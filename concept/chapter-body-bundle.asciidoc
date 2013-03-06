@@ -1,0 +1,222 @@
+[[body-bundle]]
+== Bodies and Bundles
+
+To emphasize the fact that CFEngine is not an imperative programming
+language, and to keep closely to the nomenclature of Promise Theory,
+CFEngine uses two concepts throughout: bundles and bodies.
+
+=== Bodies
+
+Promises are the fundamental statements in CFEngine. Promises are the
+policy atoms. If there is no promise, nothing happens.
+
+However, promises can become quite complicated and readability becomes
+an issue, so it is useful to have a way of breaking them down into
+independent components. The structure of a promise is this:
+
+Promiser::
+    This is the object that formally makes the promise. It is always
+    the affected object, since objects can only make promises about
+    their own state or behavior in CFEngine. 
+
+Promisee (optional)::
+    This is a possible stakeholder, someone who is interested in the
+    outcome of the promise. It is used as documentation, and it is
+    used for reasoning in the  commercial CFEngine product. 
+
+Promise body::
+    Everything else about a promise is defined in the body of the
+    promise. We use this word in the sense of `body of a contract' or
+    the `body of a document'  (like <body>) tags in HTML, for example.
+
+A promise body is a list of declarations of the following form:
+
+[source,cfengine]
+----
+CFEngine_attribute_type => user_defined_value or template
+----
+
+==== Body parts
+
+The CFEngine reserved word body is used to define parameterized
+templates for bodies to hide the details of complex promise
+specifications. For complex body lists, you must fill in a body
+declaration as an `attachment' to the promise, e.g.
+
+[source,cfengine]
+----
+files:
+
+    "/tmp/promiser"        # Promiser
+
+    perms => myexample;  # The body is just one line, 
+                         # but needs an attachment
+----
+
+The attachment is declared like this, with a `type' that matches the
+left hand side of the declaration in the promise:
+
+[source,cfengine]
+----
+body perms myexample
+{
+    mode => "644";
+    owners => { "mark", "sarah", "angel" };
+    groups => { "users", "sysadmins", "mythical_beasts" };
+}
+----
+
+The structure is this:
+
+[source,cfengine]
+----
+promiser
+    LVALUE => RVALUE
+     
+body LVALUE RVALUE
+{
+    LVALUE => RVALUE;
+    LVALUE => RVALUE;
+}
+----
+
+Another way of looking at it is this:
+
+[source,cfengine]
+----     
+promiser
+    CFEngine_word => user_defined_value
+
+body CFEngine_word user_defined_value
+{
+    CFEngine_word => user_defined_value;
+    CFEngine_word => user_defined_value;
+}
+----     
+
+Body attachments are required items. You cannot choose to put the
+attachments in-line. This is a lesson that was learned from CFEngine
+2. Readability is quickly lost if too many details are placed in-line.
+
+==== Control bodies
+
+Some promises in CFEngine are implicit and hard-coded into the
+program. For example, the fact that CFEngine looks for a number of
+files to read and execute them in a sequence cannot be changed.
+However, you can change the behavior of such promises by setting
+control parameters. These are formally parts of the `promise body', so
+we use the body structure to set them. Each agent, (CFEngine software
+component) has a special body whose name is control, used for setting
+these parameters. For cf-agent and cf-serverd we can have:
+
+[source,cfengine]
+----
+body agent control
+{
+    bundlesequence => { "test" };
+}
+
+body server control
+{
+    allowconnects         => { "127.0.0.1" , "::1", @(def.acl) };
+}
+----
+
+=== Bundles
+
+A bundle is a simple concept. A bundle is merely a collection of
+promises in a `sub-routine-like' container. The purpose of bundles is
+to allow you greater flexibility to break down the contents of your
+policies and give them names. Bundles also allow you to re-use promise
+code by parameterizing it.
+
+Like bodies, bundles also have `types'. Bundles belong to the agent
+that is used to keep the promises in the bundle. So cf-agent has
+bundles declared as
+
+[source,cfengine]
+----
+bundle agent my_name
+{
+}
+----
+
+The cf-serverd program has bundles declared as:
+
+[source,cfengine]
+----
+bundle server my_name
+{
+}
+----
+
+and so on.
+
+==== Bundle scope
+
+Variables and classes defined inside bundles are not directly visible
+outside. All variables in CFEngine are globally accessible, however if
+you refer to a variable by ‘$(unqualified)’, then it is assumed to
+belong to the current bundle. To access any other (scalar) variable,
+you must qualify the name using the name of the bundle in which it is
+defined: ‘$(bundle_name.qualified)’.
+
+Some promise types, like var, classes may be made by any agent. These
+are called common promises. Bundles of type common are special. They
+may contain common promises. Classes defined in common bundles have
+global scope.
+
+
+=== A simple syntax pattern
+
+The syntax of CFEngine follows a simple pattern in all cases and has a
+few simple rules:
+
+CFEngine built-in words, and identifiers of your choosing (the names
+of variables, bundles, body templates and classes) may only contain
+the usual alphanumeric and underscore characters (‘a-zA-Z0-9_’). All
+other `literal' data must be quoted.
+
+Declarations of promise bundles in the form:
+
+[source,cfengine]
+----
+bundle agent-type identifier
+{
+    ...
+}
+----
+
+Declarations of promise body-parts in the form:
+
+[source,cfengine]
+----
+body constraint_type template_identifier
+{
+    ...
+}
+----
+
+matching and expanding on a reference inside a promise of the form
+‘constraint_type => template_identifier’.
+
+CFEngine uses many `constraint expressions' as part of the body of a
+promise. These take the form: left-hand-side (cfengine word) ‘=>’
+right-hand-side (user defined data). This can take several forms:
+
+[source,cfengine]
+----
+cfengine_word => user_defined_template(parameters)
+    user_defined_template
+    builtin_function()
+    "quoted literal scalar"
+    { list }
+----
+
+In each of these cases, the right hand side is a user choice.
+
+Once you have learned this pattern, it will make sense anywhere in the
+program. The figure below illustrates this pattern. Some words are
+reserved by CFEngine, and are used as types or categories for talking
+about promises. Other words (in blue) are to be defined by you. Look
+at the examples and try to identify these patterns yourself.
