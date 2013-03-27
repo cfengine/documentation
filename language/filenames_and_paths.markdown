@@ -1,7 +1,7 @@
-### 1.8 Filenames and paths
+## Filenames and paths
 
-Filenames in Unix-like operating systems use the forward slash ‘/’
-character for their directory separator . All references to file
+Filenames in Unix-like operating systems use the forward slash '/'
+character for their directory separator. All references to file
 locations must be absolute pathnames in CFEngine, i.e. they must
 begin with a complete specification of which directory they are in.
 For example:
@@ -28,7 +28,7 @@ names under Windows:
           /var/cfengine/inputs
           //fileserver/share2/dir
 
-The \`drive' name “C:” in Windows refers to a partition or device.
+The 'drive' name "C:" in Windows refers to a partition or device.
 Unlike Unix, Windows does not integrate these seamlessly into a
 single file-tree. This is not a valid absolute filename:
 

@@ -48,7 +48,7 @@ Alternatively you can integrate it into your main policy:
 		                    ...
 		                  };
 
-3. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
+4. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
 
             inputs => {
                         ...

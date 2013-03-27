@@ -1,27 +1,22 @@
-### 1.7 Decisions
+## Classes - making decisions
 
 CFEngine decisions are made behind the scenes and the results of
 certain true/false propositions are cached in Booleans referred to
-as \`classes'. There are no if-then-else statements in CFEngine;
+as 'classes'. There are no if-then-else statements in CFEngine;
 all decisions are made with classes.
 
 Classes fall into hard (discovered) and soft (user-defined) types.
-A single hard class can be one of several things:
 
--   [Hard classes](/manuals/cf3-Reference#Hard-classes)
--   [Class combination operators and precedence](/manuals/cf3-Reference#Class-combination-operators-and-precedence)
--   [Global and local classes](/manuals/cf3-Reference#Global-and-local-classes)
+Read more about classes in the Concept Guide.
 
 
-
-
-#### 1.7.1 CFEngine hard classes
+### CFEngine hard classes
 
 CFEngine runs on every computer individually and each time it wakes
 up the underlying generic agent platform discovers and classifies
 properties of the environment or context in which it runs. This
 information is cached and may be used to make decisions about
-configuration[^1^](/manuals/cf3-Reference#fn-1).
+configuration.
 
 Classes fall into hard (discovered) and soft (defined) types. A
 single class can be one of several things:
@@ -53,7 +48,7 @@ single class can be one of several things:
 -   A year (in the form `Yr1997, Yr2004`).
 -   A shift in `Night,Morning,Afternoon,Evening`, which fall into
     six hour blocks starting at 00:00 hours.
--   A \`lifecycle index', which is the year number modulo 3 (in the
+-   A 'lifecycle index', which is the year number modulo 3 (in the
     form `Lcycle_0, Lcycle_1, Lcycle_2`, used in long term resource
     memory).
 -   An arbitrary user-defined string (as specified in the `-D`
@@ -84,24 +79,24 @@ connection with `allclasses`.
 
 
 
-#### 1.7.2 Class combination operators and precedence
+### Class combination operators and precedence
 
 Classes may be combined with the usual boolean operators, in the
 usual precedence (AND binds stronger than OR). On addition the dot
 may be used for AND to improve readability, or imply the
-interpretation \`subset' or \`subclass'. In order of precedence:
+interpretation 'subset' or 'subclass'. In order of precedence:
 
-‘()’
+'()'
   ~ The parenthesis group operator.
-‘!’
+'!'
   ~ The NOT operator.
-‘.’
+'.'
   ~ The AND operator.
-‘&’
+'&'
   ~ The AND operator (alternative).
-‘|’
+'|'
   ~ The OR operator.
-‘||’
+'||'
   ~ The OR operator (alternative).
 
 So the following expression would be only true on Mondays or
@@ -114,16 +109,15 @@ Wednesdays from 2:00pm to 2:59pm on Windows XP systems:
 
 
 
-#### 1.7.3 Global and local classes
+### Global and local classes
 
 User defined classes are mostly defined in bundles, but they are
-used as a signalling mechanism between promises. We'll return to
-those in a moment.
+used as a signalling mechanism between promises.
 
 Classes promises define new classes based on combinations of old
 ones. This is how to make complex decisions in CFEngine, with
 readable results. It is like defining aliases for class
-combinations. Such class \`aliases' may be specified in any kind of
+combinations. Such class 'aliases' may be specified in any kind of
 bundle. Bundles of type `common` yield classes that are global in
 scope, whereas in all other bundle types classes are local. Classes
 are evaluated when the bundle is evaluated (and the bundles are
@@ -172,15 +166,15 @@ the following example.
         "Success";
     }
 
-Here we see that class ‘one’ is global (because it is defined
-inside the `common` bundle), while classes ‘two’ and ‘three’ are
-local (to their respective bundles). The report result \`Success'
-is therefore true because only ‘one’ and ‘three’ are in scope (and
-‘two’ is *not* in scope) inside of the third bundle.
+Here we see that class 'one' is global (because it is defined
+inside the `common` bundle), while classes 'two' and 'three' are
+local (to their respective bundles). The report result 'Success'
+is therefore true because only 'one' and 'three' are in scope (and
+'two' is *not* in scope) inside of the third bundle.
 
 Note that any class promise must have one - and only one - value
-constraint. That is, you might not leave ‘expression’ in the
-example above or add both ‘and’ and ‘xor’ constraints to the single
+constraint. That is, you might not leave 'expression' in the
+example above or add both 'and' and 'xor' constraints to the single
 promise.
 
 Another type of class definition happens when you define classes
