@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <base href="/" />
+		<meta charset=utf-8 />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>CFEngine documentation{% if page.title %} - {{ page.title }}{% endif %}</title>
+        {% css_asset_tag global %}
+        - _assets/css/style.css
+        - _assets/css/pygments.css
+
+        - _assets/js/jquery_ui/jquery-ui-1.10.2.custom.min.css
+        - _assets/js/jscrollpane/jquery.jscrollpane.css
+        {% endcss_asset_tag %}
+
+        {% javascript_asset_tag global %}
+        - _assets/js/jquery-1.9.1.min.js
+        - _assets/js/jquery_ui/jquery-ui-1.10.2.custom.min.js
+
+        - _assets/js/jscrollpane/jquery.jscrollpane.min.js
+        - _assets/js/jscrollpane/jquery.mousewheel.js
+        {% endjavascript_asset_tag %}
+	</head>
