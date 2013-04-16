@@ -1,4 +1,1 @@
-Documentation
-=============
-
 CFEngine documentation work
