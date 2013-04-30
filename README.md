@@ -4,8 +4,8 @@ Jekyll config for CFEngine documentation
 
 1. Installation
 -
-*1. execute setup.sh script from _setup folder
-*2. do steps described in file step2.txt
+1. execute setup.sh script from _setup folder
+2. do steps described in file step2.txt
 
 2. Use
 -
