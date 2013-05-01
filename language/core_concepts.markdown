@@ -26,11 +26,11 @@ just a few concepts.
 If you have used CFEngine before then the most visible part of
 CFEngine 3 will be its new language interface. Although it has been
 clear for a long time that the organically grown language used in
-CFEngine 1 and 2 developed many problems, it was not immediately
-clear exactly what would be better. It has taken years of research
-to simplify the successful features of CFEngine to a single
-overarching model. To understand the new CFEngine, it is best to
-set aside any preconceptions about what CFEngine is today. CFEngine
-3 is a genuine "next generation" effort, which will be a
-springboard into the future of system management.
+CFEngine 1 and 2 developed many problems, it was not immediately clear
+exactly what would be better. It has taken years of research to
+simplify the successful features of CFEngine to a single overarching
+model. To understand the new CFEngine, it is best to set aside any
+preconceptions about what CFEngine is today. CFEngine 3 is a genuine
+"next generation" effort, which is a springboard into the future of
+system management.
 
