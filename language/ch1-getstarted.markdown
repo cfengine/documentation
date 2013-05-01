@@ -11,7 +11,7 @@ This document describes major version 3 of CFEngine, which is a
 significant departure from earlier versions, and represents the
 newest and most carefully researched technology available for
 configuration management. It is both simpler and more powerful.
-CFEngine 3 will exist as both free open source and commercial
+CFEngine 3 exists as both free open source and commercial
 enterprise versions:
 
 -   **Community Edition** - a free and gratis core of the software
