@@ -65,6 +65,9 @@ has been replaced by `reports`.
 **Synopsis**: Regular expression to keep selected hosts from the friends
 report list
 
+This regular expression should match hosts we want to exclude from
+friend reports.
+
 **Example**:\
  \
 
@@ -76,12 +79,6 @@ report list
 
               lastseen => "0",
          friend_pattern => "host1|host2|.*\.domain\.tld";
-
-**Notes**:\
- \
-
-This regular expression should match hosts we want to exclude from
-friend reports.
 
 #### `intermittency`
 
@@ -97,9 +94,6 @@ peers, report above
 **Example**:\
  \
 
-**Notes**:\
- \
-
 #### `lastseen`
 
 **Type**: int
@@ -108,6 +102,17 @@ peers, report above
 
 **Synopsis**: Integer time threshold in hours since current peers were
 last seen, report absence
+
+In reports: After this time (hours) has passed, CFEngine will begin to
+warn about the host being overdue. After the `lastseenexpireafter`
+expiry time, hosts will be purged from this host's database (default is
+a week).
+
+In control: Determines whether CFEngine will record last seen
+intermittency profiles (reliability diagnostics) in WORKDIR/lastseen.
+This generates a separate file for each each host that connects to the
+current host. For central hubs this can result is a huge number of
+files.
 
 **Example**:\
  \
@@ -127,20 +132,6 @@ See also in reports:
 
         lastseen => "10";
 
-**Notes**:\
- \
-
-In reports: After this time (hours) has passed, CFEngine will begin to
-warn about the host being overdue. After the `lastseenexpireafter`
-expiry time, hosts will be purged from this host's database (default is
-a week).
-
-In control: Determines whether CFEngine will record last seen
-intermittency profiles (reliability diagnostics) in WORKDIR/lastseen.
-This generates a separate file for each each host that connects to the
-current host. For central hubs this can result is a huge number of
-files.
-
 #### `printfile` (body template)
 
 **Type**: (ext body)
@@ -154,6 +145,8 @@ files.
 **Synopsis**: Path name to the file that is to be sent to standard
 output
 
+Include part of a file in a report.
+
 **Example**:\
  \
 
@@ -165,10 +158,7 @@ output
          }
          
 
-**Notes**:\
- \
-
-Include the first 'x' number of lines of a file in a report. \
+\
 
 `number_of_lines`
 
@@ -178,6 +168,8 @@ Include the first 'x' number of lines of a file in a report. \
 
 **Synopsis**: Integer maximum number of lines to print from selected
 file
+
+Include the first 'x' number of lines of a file in a report.
 
 **Example**:\
  \
@@ -189,9 +181,6 @@ file
          }
          
 
-**Notes**:\
- \
-
 #### `report_to_file`
 
 **Type**: string
@@ -199,6 +188,10 @@ file
 **Allowed input range**: `"?(/.*)`
 
 **Synopsis**: The path and filename to which output should be appended
+
+Append the output of the report to the named file instead of standard
+output. If the file cannot be opened for writing then the report
+defaults to the standard output.
 
 **Example**:\
  \
@@ -213,13 +206,6 @@ file
 
            report_to_file => "/tmp/test_log";
     }
-
-**Notes**:\
- \
-
-Append the output of the report to the named file instead of standard
-output. If the file cannot be opened for writing then the report
-defaults to the standard output.
 
 #### `bundle_return_value_index`
 

@@ -15,11 +15,9 @@ Defaults promises are related to variables. If a variable or parameter
 in a promise bundle is undefined, or its value is defined to be invalid,
 a default value can be promised instead.
 
-\
-
-Note carefully that CFEngine does not use Perl semantics: i.e. undefined
-variables do not map to the empty string, they remain as variables for
-possible future expansion.
+CFEngine does not use Perl semantics: i.e. undefined variables do not
+map to the empty string, they remain as variables for possible future
+expansion.
 
 Some variables might be defined but still contain unresolved variables.
 To handle this you will need to match the `$(abc)` form of the
@@ -119,6 +117,10 @@ Another example:
 **Synopsis**: If this regular expression matches the current value of
 the variable, replace it with default
 
+If a parameter or variable is already defined in the current context,
+and the value matches this regular expression, it will be deemed invalid
+and replaced with the default value.
+
 **Example**:\
  \
 
@@ -130,13 +132,6 @@ the variable, replace it with default
       "b" string => "BBBBBBBBB",   if_match_regex => "";
     }
 
-**Notes**:\
- \
-
-If a parameter or variable is already defined in the current context,
-and the value matches this regular expression, it will be deemed invalid
-and replaced with the default value.
-
 #### `string`
 
 **Type**: string
@@ -144,6 +139,10 @@ and replaced with the default value.
 **Allowed input range**: (arbitrary string)
 
 **Synopsis**: A scalar string
+
+In previous versions of CFEngine lists were represented (as in the
+shell) using separated scalars; similar to the PATH variable. In
+CFEngine 3 lists are kept as an independent type.
 
 **Example**:\
  \
@@ -154,13 +153,6 @@ and replaced with the default value.
 
      "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
 
-**Notes**:\
- \
-
-In previous versions of CFEngine lists were represented (as in the
-shell) using separated scalars; similar to the PATH variable. In
-CFEngine 3 lists are kept as an independent type.
-
 #### `slist`
 
 **Type**: slist
@@ -168,6 +160,11 @@ CFEngine 3 lists are kept as an independent type.
 **Allowed input range**: (arbitrary string)
 
 **Synopsis**: A list of scalar strings
+
+Some functions return `slist`s (see Introduction to functions), and an
+`slist` may contain the values copied from another `slist`, `rlist`, or
+`ilist` (see List variable substitution and expansion, and policy in
+vars).
 
 **Example**:\
  \
@@ -188,9 +185,3 @@ CFEngine 3 lists are kept as an independent type.
 
      "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
 
-**Notes**:\
- \
- Some functions return `slist`s (see Introduction to functions), and an
-`slist` may contain the values copied from another `slist`, `rlist`, or
-`ilist` (see List variable substitution and expansion, see policy in
-vars).
