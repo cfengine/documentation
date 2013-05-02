@@ -5,7 +5,7 @@
 sudo apt-get install curl
 
 #download rvm
-\curl -#L https://get.rvm.io | bash -s stable --autolibs=3 --ruby
+curl -#L https://get.rvm.io | bash -s stable --autolibs=3 --ruby
 
 #add rvm to known  scripts
 source /home/vagrant/.rvm/scripts/rvm
