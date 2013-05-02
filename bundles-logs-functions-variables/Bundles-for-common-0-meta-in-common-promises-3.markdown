@@ -49,6 +49,10 @@ be used as variables and will appear in Enterprise variable reports.
 
 **Synopsis**: A scalar string
 
+In previous versions of CFEngine lists were represented (as in the
+shell) using separated scalars; similar to the PATH variable. In
+CFEngine 3 lists are kept as an independent type.
+
 **Example**:\
  \
 
@@ -58,13 +62,6 @@ be used as variables and will appear in Enterprise variable reports.
 
      "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
 
-**Notes**:\
- \
-
-In previous versions of CFEngine lists were represented (as in the
-shell) using separated scalars; similar to the PATH variable. In
-CFEngine 3 lists are kept as an independent type.
-
 #### `slist`
 
 **Type**: slist
@@ -72,6 +69,11 @@ CFEngine 3 lists are kept as an independent type.
 **Allowed input range**: (arbitrary string)
 
 **Synopsis**: A list of scalar strings
+
+Some functions return `slist`s (see Introduction to functions), and an
+`slist` may contain the values copied from another `slist`, `rlist`, or
+`ilist` (see List variable substitution and expansion, and policy in
+vars).
 
 **Example**:\
  \
@@ -92,9 +94,3 @@ CFEngine 3 lists are kept as an independent type.
 
      "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
 
-**Notes**:\
- \
- Some functions return `slist`s (see Introduction to functions), and an
-`slist` may contain the values copied from another `slist`, `rlist`, or
-`ilist` (see List variable substitution and expansion, see policy in
-vars).
