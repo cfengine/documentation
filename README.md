@@ -69,3 +69,9 @@ You must place metadata on the top of the file and divide it with ---  (repeat "
 *alias*: url (html file name) - use "url safe" names
 
 *tags*: tags relevant to this doc
+
+
+This instalation was tested on ubuntu 10.04 with vagrant and ruby 1.9.3.
+Make sure your machine has everything according to jekyll requirements: https://github.com/mojombo/jekyll.
++ you need git installed to checkout documentation.
+
