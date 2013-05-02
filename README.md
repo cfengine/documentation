@@ -10,6 +10,9 @@ Make sure your machine has everything according to jekyll requirements: https://
 
 You also need:
 + java - for closure compiler
++ python-pygments for the code hightlghting
+Make sure you added cfengine3 lexer from Diego Zamboni. 
+Instructions and code - http://zzamboni.org/blog/cfengine3-lexer-for-pygments/
 
 Gems:
 + jekyll-asset-pipeline
@@ -20,14 +23,19 @@ Gems:
 + uglifier
 + execjs
 
-+ python-pygments for the code hightlghting
-Make sure you added cfengine3 lexer from Diego Zamboni. 
-Instructions and code - http://zzamboni.org/blog/cfengine3-lexer-for-pygments/
+You can find additional information inside _setup/setup.sh
+
 
 Clean setup
 --
 1. Review and change file _setup/setup.sh acordingly to your environment
-2. do steps described in file step2.txt
+
+
+Final steps
+----
+1. Do steps described in file _setup/step2.txt
+2. Create pages folder and checkout CFEngine documentation inside. (https://github.com/cfengine/documentation)
+
 
 
 2. Use
