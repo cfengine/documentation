@@ -4,13 +4,29 @@ Jekyll config for CFEngine documentation
 
 1. Installation
 -
-This instalation was tested on ubuntu 10.04 with vagrant and ruby 1.9.3.
+This instalation was tested on ubuntu 10.04 with vagrant, ruby 1.9.3 and Java 7.
 Make sure your machine has everything according to jekyll requirements: https://github.com/mojombo/jekyll.
 + you need git installed to checkout documentation.
 
+You also need:
++ java - for closure compiler
+
+Gems:
++ jekyll-asset-pipeline
++ closure-compiler
++ yui-compressor
++ redcarpet
++ albino
++ uglifier
++ execjs
+
++ python-pygments for the code hightlghting
+Make sure you added cfengine3 lexer from Diego Zamboni. 
+Instructions and code - http://zzamboni.org/blog/cfengine3-lexer-for-pygments/
+
 Clean setup
 --
-1. execute setup.sh script from _setup folder
+1. Review and change file _setup/setup.sh acordingly to your environment
 2. do steps described in file step2.txt
 
 
