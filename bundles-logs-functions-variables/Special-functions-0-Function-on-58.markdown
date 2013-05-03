@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-on-58
+categories: [Special-functions,Function-on-58]
 published: true
-alias: Special-functions-0-Function-on-58.markdown.html
-tags: [xx]
+alias: Special-functions-Function-on-58.html
+tags: [Special-functions,Function-on-58]
 ---
 
 ### Function on
@@ -24,11 +24,13 @@ Convert an exact date/time to an integer system representation
 **Example**:\
  \
 
-    body file_select zero_age
-    {
-    mtime       => irange(on(2000,1,1,0,0,0),now);
-    file_result => "mtime";
-    }
+~~~~ {.verbatim}
+body file_select zero_age
+{
+mtime       => irange(on(2000,1,1,0,0,0),now);
+file_result => "mtime";
+}
+~~~~
 
 **Notes**:\
  \

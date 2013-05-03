@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Additional-reports-in-commercical-CFEngine-versions-4
+categories: [Logs-and-records,Additional-reports-in-commercical-CFEngine-versions-4]
 published: true
-alias: Logs-and-records-0-Additional-reports-in-commercical-CFEngine-versions-4.markdown.html
-tags: [xx]
+alias: Logs-and-records-Additional-reports-in-commercical-CFEngine-versions-4.html
+tags: [Logs-and-records,Additional-reports-in-commercical-CFEngine-versions-4]
 ---
 
 ### Additional reports in commercial CFEngine versions

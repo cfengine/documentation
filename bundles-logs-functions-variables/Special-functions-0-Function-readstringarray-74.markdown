@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-readstringarray-74
+categories: [Special-functions,Function-readstringarray-74]
 published: true
-alias: Special-functions-0-Function-readstringarray-74.markdown.html
-tags: [xx]
+alias: Special-functions-Function-readstringarray-74.html
+tags: [Special-functions,Function-readstringarray-74]
 ---
 
 ### Function readstringarray
@@ -28,16 +28,18 @@ variable
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-      "dim_array" 
+  "dim_array" 
 
-         int =>  readstringarray("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
+     int =>  readstringarray("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
+~~~~
 
 Returns an integer number of keys in the array (i.e., the number of
 lines matched). If you only want the fields in the first matching line
 (e.g., to mimic the behavior of the *getpwnam(3)* on the file
-/etc/passwd) see Function getfields, instead.
+/etc/passwd) see [Function getfields](#Function-getfields), instead.
 
 **ARGUMENTS**:
 
@@ -56,7 +58,8 @@ A regex pattern which specifies comments to be ignored in the file. The
 `comment` field will strip out unwanted patterns from the file being
 read, leaving unstripped characters to be split into fields. Using the
 empty string (`""`) indicates no comments. The regex is unanchored (See
-Anchored vs. unanchored regular expressions). \
+[Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 split
 
@@ -78,35 +81,39 @@ Reads a two dimensional array from a file. One dimension is separated by
 the character specified in the argument, the other by the the lines in
 the file. The first field of the lines names the first array argument.
 
-         
-         at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
-         avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
-         beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
-         bin:x:1:1:bin:/bin:/bin/bash
-         # Daemon has the default shell
-         daemon:x:2:2:Daemon:/sbin:
-         
+~~~~ {.smallexample}
+     
+     at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
+     avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
+     beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
+     bin:x:1:1:bin:/bin:/bin/bash
+     # Daemon has the default shell
+     daemon:x:2:2:Daemon:/sbin:
+     
+~~~~
 
 Results in a systematically indexed map of the file. Some samples are
 show below to illustrate the pattern.
 
-         ...
-         array_name[daemon][0]   daemon
-         array_name[daemon][1]   x
-         array_name[daemon][2]   2
-         array_name[daemon][3]   2
-         array_name[daemon][4]   Daemon
-         array_name[daemon][5]   /sbin
-         array_name[daemon][6]   /bin/bash
-         ...
-         array_name[at][3]       25
-         array_name[at][4]       Batch jobs daemon
-         array_name[at][5]       /var/spool/atjobs
-         array_name[at][6]       /bin/bash
-         ...
-         array_name[games][3]    100
-         array_name[games][4]    Games account
-         array_name[games][5]    /var/games
-         array_name[games][6]    /bin/bash
-         ...
-         
+~~~~ {.smallexample}
+     ...
+     array_name[daemon][0]   daemon
+     array_name[daemon][1]   x
+     array_name[daemon][2]   2
+     array_name[daemon][3]   2
+     array_name[daemon][4]   Daemon
+     array_name[daemon][5]   /sbin
+     array_name[daemon][6]   /bin/bash
+     ...
+     array_name[at][3]       25
+     array_name[at][4]       Batch jobs daemon
+     array_name[at][5]       /var/spool/atjobs
+     array_name[at][6]       /bin/bash
+     ...
+     array_name[games][3]    100
+     array_name[games][4]    Games account
+     array_name[games][5]    /var/games
+     array_name[games][6]    /bin/bash
+     ...
+     
+~~~~

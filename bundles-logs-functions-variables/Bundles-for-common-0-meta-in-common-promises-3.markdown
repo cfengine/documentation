@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: meta-in-common-promises-3
+categories: [Bundles-for-common,meta-in-common-promises-3]
 published: true
-alias: Bundles-for-common-0-meta-in-common-promises-3.markdown.html
-tags: [xx]
+alias: Bundles-for-common-meta-in-common-promises-3.html
+tags: [Bundles-for-common,meta-in-common-promises-3]
 ---
 
 ### `meta` promises in \*
@@ -19,27 +19,29 @@ be used as variables and will appear in Enterprise variable reports.
 
 \
 
-    bundle agent example
+~~~~ {.verbatim}
+bundle agent example
 
-    {     
-    meta:
+{     
+meta:
 
-      "bundle_version" string => "1.2.3";
-      "works_with_cfengine" string => "3.4.0";
+  "bundle_version" string => "1.2.3";
+  "works_with_cfengine" string => "3.4.0";
 
-    reports:
+reports:
 
-     cfengine_3::
+ cfengine_3::
 
-      "Not a local variable: $(bundle_version)";
-      "Meta data (variable): $(example_meta.bundle_version)";
+  "Not a local variable: $(bundle_version)";
+  "Meta data (variable): $(example_meta.bundle_version)";
 
-    }
+}
+~~~~
 
 \
 
--   string in meta
--   slist in meta
+-   [string in meta](#string-in-meta)
+-   [slist in meta](#slist-in-meta)
 
 #### `string`
 
@@ -56,11 +58,13 @@ CFEngine 3 lists are kept as an independent type.
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "xxx"    string => "Some literal string...";
+ "xxx"    string => "Some literal string...";
 
-     "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
+ "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
+~~~~
 
 #### `slist`
 
@@ -70,27 +74,31 @@ CFEngine 3 lists are kept as an independent type.
 
 **Synopsis**: A list of scalar strings
 
-Some functions return `slist`s (see Introduction to functions), and an
-`slist` may contain the values copied from another `slist`, `rlist`, or
-`ilist` (see List variable substitution and expansion, and policy in
-vars).
+Some functions return `slist`s (see [Introduction to
+functions](#Introduction-to-functions)), and an `slist` may contain the
+values copied from another `slist`, `rlist`, or `ilist` (see [List
+variable substitution and
+expansion](#List-variable-substitution-and-expansion), and [policy in
+vars](#policy-in-vars)).
 
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "xxx"    slist  => {  "literal1",  "literal2" };
+ "xxx"    slist  => {  "literal1",  "literal2" };
 
-     "yyy"    slist  => { 
-                        readstringlist(
-                                      "/home/mark/tmp/testlist",
-                                      "#[a-zA-Z0-9 ]*",
-                                      "[^a-zA-Z0-9]",
-                                      15,
-                                      4000
-                                      ) 
-                        };
+ "yyy"    slist  => { 
+                    readstringlist(
+                                  "/home/mark/tmp/testlist",
+                                  "#[a-zA-Z0-9 ]*",
+                                  "[^a-zA-Z0-9]",
+                                  15,
+                                  4000
+                                  ) 
+                    };
 
-     "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
+ "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
 
+~~~~

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-getgid-22
+categories: [Special-functions,Function-getgid-22]
 published: true
-alias: Special-functions-0-Function-getgid-22.markdown.html
-tags: [xx]
+alias: Special-functions-Function-getgid-22.html
+tags: [Special-functions,Function-getgid-22]
 ---
 
 ### Function getgid
@@ -19,28 +19,30 @@ Return the integer group id of the named group on this host
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    vars:
+{     
+vars:
 
-      "gid" int => getgid("users");
+  "gid" int => getgid("users");
 
-    reports:
+reports:
 
-      Yr2008::
+  Yr2008::
 
-        "Users gid is $(gid)";
+    "Users gid is $(gid)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

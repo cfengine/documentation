@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-laterthan-50
+categories: [Special-functions,Function-laterthan-50]
 published: true
-alias: Special-functions-0-Function-laterthan-50.markdown.html
-tags: [xx]
+alias: Special-functions-Function-laterthan-50.html
+tags: [Special-functions,Function-laterthan-50]
 ---
 
 ### Function laterthan
@@ -25,11 +25,13 @@ True if the current time is later than the given date
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-      "after_deadline" expression => laterthan(2000,1,1,0,0,0);
+  "after_deadline" expression => laterthan(2000,1,1,0,0,0);
+~~~~
 
 **Notes**:\
  \
 
-The arguments are standard time (See Function on).
+The arguments are standard time (See [Function on](#Function-on)).

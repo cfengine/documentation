@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: delete_005ftext-in-edit_005fxml-promises-16
+categories: [Bundles-for-agent,delete_005ftext-in-edit_005fxml-promises-16]
 published: true
-alias: Bundles-for-agent-0-delete_005ftext-in-edit_005fxml-promises-16.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-delete_005ftext-in-edit_005fxml-promises-16.html
+tags: [Bundles-for-agent,delete_005ftext-in-edit_005fxml-promises-16]
 ---
 
 ### `delete_text` promises in edit\_xml
@@ -20,13 +20,15 @@ promise object referred to is a literal string of text.
 
 \
 
-    bundle edit_xml example
-      {
-      delete_text:
-        "text content to match, as a substring, of text to be deleted from specified node"
+~~~~ {.verbatim}
+bundle edit_xml example
+  {
+  delete_text:
+    "text content to match, as a substring, of text to be deleted from specified node"
 
-        select_xpath => "/Server/Service/Engine/Host/Alias";
-      }
+    select_xpath => "/Server/Service/Engine/Host/Alias";
+  }
+~~~~
 
 \
 

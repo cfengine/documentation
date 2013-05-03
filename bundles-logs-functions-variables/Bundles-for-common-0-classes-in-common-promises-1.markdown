@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: classes-in-common-promises-1
+categories: [Bundles-for-common,classes-in-common-promises-1]
 published: true
-alias: Bundles-for-common-0-classes-in-common-promises-1.markdown.html
-tags: [xx]
+alias: Bundles-for-common-classes-in-common-promises-1.html
+tags: [Bundles-for-common,classes-in-common-promises-1]
 ---
 
 ### `classes` promises in \*
@@ -24,23 +24,25 @@ Note: The words class and context are sometimes used interchangeably.
 
 \
 
-    bundle common g
-    {
-    classes:
+~~~~ {.verbatim}
+bundle common g
+{
+classes:
 
-      "one" expression => "any";
+  "one" expression => "any";
 
-      "client_network" expression => iprange("128.39.89.0/24");
-    }
+  "client_network" expression => iprange("128.39.89.0/24");
+}
+~~~~
 
--   and in classes
--   dist in classes
--   expression in classes
--   or in classes
--   persistence in classes
--   not in classes
--   select\_class in classes
--   xor in classes
+-   [and in classes](#and-in-classes)
+-   [dist in classes](#dist-in-classes)
+-   [expression in classes](#expression-in-classes)
+-   [or in classes](#or-in-classes)
+-   [persistence in classes](#persistence-in-classes)
+-   [not in classes](#not-in-classes)
+-   [select\_class in classes](#select_005fclass-in-classes)
+-   [xor in classes](#xor-in-classes)
 
 #### `and`
 
@@ -58,9 +60,11 @@ side match, then the class on the left-hand side is defined.
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-      "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
+  "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
+~~~~
 
 #### `dist`
 
@@ -77,21 +81,25 @@ strategy in CFEngine 2.
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-      "my_dist"  
+  "my_dist"  
 
-        dist => { "10", "20", "40", "50" };
+    dist => { "10", "20", "40", "50" };
+~~~~
 
 Referring to the the sum of `10+20+40+50 = 120` in the example above,
 when generating the distribution, CFEngine picks a number between
 `1-120`. This will generate the following classes:
 
-         my_dist    (always)
-         my_dist_10 (10/120 of the time)
-         my_dist_20 (20/120 of the time)
-         my_dist_40 (40/120 of the time)
-         my_dist_50 (50/120 of the time)
+~~~~ {.smallexample}
+     my_dist    (always)
+     my_dist_10 (10/120 of the time)
+     my_dist_20 (20/120 of the time)
+     my_dist_40 (40/120 of the time)
+     my_dist_50 (50/120 of the time)
+~~~~
 
 #### `expression`
 
@@ -106,10 +114,12 @@ A way of aliasing class combinations.
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-      "class_name" expression => "solaris|(linux.specialclass)";
-      "has_toor"   expression => userexists("toor");
+  "class_name" expression => "solaris|(linux.specialclass)";
+  "has_toor"   expression => userexists("toor");
+~~~~
 
 #### `or`
 
@@ -126,11 +136,13 @@ construction for writing expressions that contain special functions.
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-        "compound_test" 
+    "compound_test" 
 
-          or => { classmatch("linux_x86_64_2_6_22.*"), "suse_10_3" };
+      or => { classmatch("linux_x86_64_2_6_22.*"), "suse_10_3" };
+~~~~
 
 #### `persistence`
 
@@ -149,67 +161,73 @@ from a non-standard naming facility.
 **Example**:\
  \
 
-    bundle common setclasses
-    {
-    classes:
+~~~~ {.verbatim}
+bundle common setclasses
+{
+classes:
 
-      "cached_classes" 
-                    or => { "any" },
-           persistence => "1";
+  "cached_classes" 
+                or => { "any" },
+       persistence => "1";
 
-      "cached_class" 
-           expression => "any",
-           persistence => "1";
+  "cached_class" 
+       expression => "any",
+       persistence => "1";
 
-    }
+}
+~~~~
 
 For example, to create a conditional inclusion of costly class
 definitions, put them into a separate bundle in a file classes.cf.
 
-    # promises.cf
+~~~~ {.verbatim}
+# promises.cf
 
-    body common control 
-    {
-    cached_classes::
-      bundlesequence => { "test" };
+body common control 
+{
+cached_classes::
+  bundlesequence => { "test" };
 
-    !cached_classes::
-      bundlesequence => {  "setclasses", "test" };
+!cached_classes::
+  bundlesequence => {  "setclasses", "test" };
 
-    !cached_classes::
-      inputs => { "classes.cf" };
-    }
-     
+!cached_classes::
+  inputs => { "classes.cf" };
+}
+ 
 
-    bundle agent test
-    {
-    reports:
+bundle agent test
+{
+reports:
 
-      !my_cached_class::
-       "no cached class";
+  !my_cached_class::
+   "no cached class";
 
-      my_cached_class::
-        "cached class defined";
-    }
-     
+  my_cached_class::
+    "cached class defined";
+}
+ 
+~~~~
 
 Then create classes.cf
 
-    # classes.cf
+~~~~ {.verbatim}
+# classes.cf
 
-    bundle common setclasses
-    {
-    classes:
+bundle common setclasses
+{
+classes:
 
-      "cached_classes"            # timer flag 
-             expression => "any",
-            persistence => "480";
+  "cached_classes"            # timer flag 
+         expression => "any",
+        persistence => "480";
 
-      "my_cached_class" 
-                    or => { ...long list or heavy function... } ,
-           persistence => "480";
+  "my_cached_class" 
+                or => { ...long list or heavy function... } ,
+       persistence => "480";
 
-    }
+}
+~~~~
 
 #### `not`
 
@@ -226,10 +244,12 @@ on the right-hand side is false.
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-       "others"  not => "linux|solaris";
-       "no_toor" not => userexists("toor");
+   "others"  not => "linux|solaris";
+   "no_toor" not => userexists("toor");
+~~~~
 
 #### `select_class`
 
@@ -255,19 +275,21 @@ that hosts will always end up in the same class every time.
 **Example**:\
  \
 
-    bundle common g
-    {
-    classes:
-      "selection" select_class => { "one", "two" };
+~~~~ {.verbatim}
+bundle common g
+{
+classes:
+  "selection" select_class => { "one", "two" };
 
-    reports:
-      one::
-        "One was selected";
-      two::
-        "Two was selected";
-      selection::
-         "A selection was made";
-    }
+reports:
+  one::
+    "One was selected";
+  two::
+    "Two was selected";
+  selection::
+     "A selection was made";
+}
+~~~~
 
 #### `xor`
 
@@ -284,6 +306,8 @@ right-hand side matches.
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-     "another_global" xor => { "any", "linux", "solaris"};
+ "another_global" xor => { "any", "linux", "solaris"};
+~~~~

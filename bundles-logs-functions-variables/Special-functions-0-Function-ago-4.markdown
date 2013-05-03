@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-ago-4
+categories: [Special-functions,Function-ago-4]
 published: true
-alias: Special-functions-0-Function-ago-4.markdown.html
-tags: [xx]
+alias: Special-functions-Function-ago-4.html
+tags: [Special-functions,Function-ago-4]
 ---
 
 ### Function ago
@@ -24,41 +24,43 @@ Convert a time relative to now to an integer system representation
 **Example**:\
  \
 
-    bundle agent testbundle
+~~~~ {.verbatim}
+bundle agent testbundle
 
-    {
-    processes:
+{
+processes:
 
-     ".*"
+ ".*"
 
-        process_count   => anyprocs,
-        process_select  => proc_finder;
+    process_count   => anyprocs,
+    process_select  => proc_finder;
 
-    reports:
+reports:
 
-     any_procs::
+ any_procs::
 
-       "Found processes out of range";
-    }
+   "Found processes out of range";
+}
 
-    ########################################################
+########################################################
 
-    body process_select proc_finder
+body process_select proc_finder
 
-    {
-    # Processes started between 5.5 hours and 20 minutes ago
-    stime_range => irange(ago(0,0,0,5,30,0),ago(0,0,0,0,20,0));
-    process_result => "stime";
-    }
+{
+# Processes started between 5.5 hours and 20 minutes ago
+stime_range => irange(ago(0,0,0,5,30,0),ago(0,0,0,0,20,0));
+process_result => "stime";
+}
 
-    ########################################################
+########################################################
 
-    body process_count anyprocs
+body process_count anyprocs
 
-    {
-    match_range => "0,0";
-    out_of_range_define => { "any_procs" };
-    }
+{
+match_range => "0,0";
+out_of_range_define => { "any_procs" };
+}
+~~~~
 
 **Notes**:\
  \

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-readstringlist-76
+categories: [Special-functions,Function-readstringlist-76]
 published: true
-alias: Special-functions-0-Function-readstringlist-76.markdown.html
-tags: [xx]
+alias: Special-functions-Function-readstringlist-76.html
+tags: [Special-functions,Function-readstringlist-76]
 ---
 
 ### Function readstringlist
@@ -25,28 +25,30 @@ Read and assign a list variable from a file of separated strings
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    vars:
+{     
+vars:
 
-      "mylist" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
+  "mylist" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
 
-    reports:
+reports:
 
-      Yr2008::
+  Yr2008::
 
-        "List entry: $(mylist)";
+    "List entry: $(mylist)";
 
-    }
+}
+~~~~
 
 **ARGUMENTS**:
 
@@ -59,7 +61,8 @@ comment
 A regex pattern which specifies comments to be ignored in the file. The
 `comment` field will strip out unwanted patterns from the file being
 read, leaving unstripped characters to be split into fields. The regex
-is unanchored (See Anchored vs. unanchored regular expressions).
+is unanchored (See [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 **Note** that the text is not treated as a collection of lines, but is
 read as a single block of `maxsize` characters, and the regex is applied
 to that as a single string. \
@@ -83,16 +86,18 @@ The maximum number of bytes to read from the file
 The following example file would be split into a list of the first ten
 Greek letters (alpha through kappa).
 
-         
-         alpha beta
-         gamma # This is a comment
-         delta epsilon zeta
-                eta
-                       theta
-         iota
-         kappa          lambda
-         mu
-         nu
-         etc
-         
-         
+~~~~ {.smallexample}
+     
+     alpha beta
+     gamma # This is a comment
+     delta epsilon zeta
+            eta
+                   theta
+     iota
+     kappa          lambda
+     mu
+     nu
+     etc
+     
+     
+~~~~

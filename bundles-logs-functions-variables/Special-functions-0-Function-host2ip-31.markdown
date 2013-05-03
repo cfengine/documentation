@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-host2ip-31
+categories: [Special-functions,Function-host2ip-31]
 published: true
-alias: Special-functions-0-Function-host2ip-31.markdown.html
-tags: [xx]
+alias: Special-functions-Function-host2ip-31.html
+tags: [Special-functions,Function-host2ip-31]
 ---
 
 ### Function host2ip
@@ -19,10 +19,12 @@ Returns the primary name-service IP address for the named host
 **Example**:\
  \
 
-    bundle server control
-    {
-    allowconnects         => { escape(host2ip("www.example.com")) };
-    }
+~~~~ {.verbatim}
+bundle server control
+{
+allowconnects         => { escape(host2ip("www.example.com")) };
+}
+~~~~
 
 **Notes**:\
  \

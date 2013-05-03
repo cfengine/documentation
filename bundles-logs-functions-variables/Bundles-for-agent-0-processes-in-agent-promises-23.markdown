@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: processes-in-agent-promises-23
+categories: [Bundles-for-agent,processes-in-agent-promises-23]
 published: true
-alias: Bundles-for-agent-0-processes-in-agent-promises-23.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-processes-in-agent-promises-23.html
+tags: [Bundles-for-agent,processes-in-agent-promises-23]
 ---
 
 ### `processes` promises in agent
@@ -16,7 +16,8 @@ this is not the same as commands (which are instructions that CFEngine
 will execute). A process is a command in some state of execution (with a
 Process Control Block). Promiser objects here are patterns that are
 unanchored, meaning that they match line fragments in the system process
-table (see Anchored vs. unanchored regular expressions).
+table (see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 *Take care to note that process table formats differ between operating
 systems, and the use of simple patterns such as program-names is
@@ -28,26 +29,30 @@ However, the process pattern `"cp"` will also match a process containing
 `"scp"`, so take care not to oversimplify your patterns (the PCRE
 pattern anchors `"\b"` and `"\B"` may prove very useful to you).
 
-         
-          processes:
-         
-            "regex contained in process line"
-         
-                process_select = process_filter_body,
-                restart_class = "activation class for process",
-                ..;
-         
+~~~~ {.smallexample}
+     
+      processes:
+     
+        "regex contained in process line"
+     
+            process_select = process_filter_body,
+            restart_class = "activation class for process",
+            ..;
+     
+~~~~
 
 In CFEngine 2 there was a restart clause for directly executing a
 command to restart a process. In CFEngine 3 there is instead a class to
 activate. You must then describe a `command` in that class to restart
 the process.
 
-    commands:
+~~~~ {.verbatim}
+commands:
 
-      restart_me::
+  restart_me::
 
-       "/path/executable" ... ;
+   "/path/executable" ... ;
+~~~~
 
 This rationalizes complex restart-commands and avoids unnecessary
 overlap between `processes` and `commands`.
@@ -63,47 +68,51 @@ CFEngine 2 and earlier.
 
 \
 
-    bundle agent example
-    {
-    processes:
+~~~~ {.verbatim}
+bundle agent example
+{
+processes:
 
-     ".*"
+ ".*"
 
-        process_count   => anyprocs,
-        process_select  => proc_finder;
+    process_count   => anyprocs,
+    process_select  => proc_finder;
 
-    reports:
+reports:
 
-     any_procs::
+ any_procs::
 
-       "Found processes out of range";
-    }
+   "Found processes out of range";
+}
 
-    ########################################################
+########################################################
 
-    body process_select proc_finder
+body process_select proc_finder
 
-    {
-    # Processes started between 5.5 hours and 20 minutes ago
-    stime_range => irange(ago(0,0,0,5,30,0),ago(0,0,0,0,20,0));
-    process_result => "stime";
-    }
+{
+# Processes started between 5.5 hours and 20 minutes ago
+stime_range => irange(ago(0,0,0,5,30,0),ago(0,0,0,0,20,0));
+process_result => "stime";
+}
 
-    ########################################################
+########################################################
 
-    body process_count anyprocs
+body process_count anyprocs
 
-    {
-    match_range => "0,0";
-    out_of_range_define => { "any_procs" };
-    }
+{
+match_range => "0,0";
+out_of_range_define => { "any_procs" };
+}
+~~~~
 
 \
 
 In CFEngine 3 we have
 
-          processes
-          commands
+~~~~ {.smallexample}
+      processes
+      commands
+~~~~
 
 so that there is a clean separation between detection (promises about
 the process table) and certain repairs (promises to execute commands
@@ -117,12 +126,16 @@ kernel instantiation, a quite different object altogether. For example:
 -   A "PID" (which is not an executable) promises to be reminded of a
     signal, e.g.
 
-                      kill signal pid
+    ~~~~ {.smallexample}
+                  kill signal pid
+    ~~~~
 
 -   An "command" promises to start or stop itself with a parameterized
     specification.
 
-                      exec command argument1 argument2 ...
+    ~~~~ {.smallexample}
+                  exec command argument1 argument2 ...
+    ~~~~
 
 Neither the file nor the pid necessarily promise to respond to these
 activations, but they are nonetheless physically meaningful phenomena or
@@ -170,70 +183,78 @@ necessary.
 If you want to ensure that a service is running, check each in the agent
 control promises individually.
 
-    bundlesequence => { Update, Service("apache"), Service("nfsd") };
+~~~~ {.verbatim}
+bundlesequence => { Update, Service("apache"), Service("nfsd") };
+~~~~
 
 or
 
-    bundlesequence => { Update, @(globals.all_services)  };
+~~~~ {.verbatim}
+bundlesequence => { Update, @(globals.all_services)  };
+~~~~
 
 The bundle for this can look like this:
 
-    bundle agent Service(service")
-    {
-    processes:
+~~~~ {.verbatim}
+bundle agent Service(service")
+{
+processes:
 
-      "$(service)" 
+  "$(service)" 
 
-          process_count => up("$(service)");
+      process_count => up("$(service)");
 
-    commands:
+commands:
 
-       "$daemons[$(service)]"  
+   "$daemons[$(service)]"  
 
-          ifvarclass => "$(service)_up",
-          args       => "$args[$(service)]";
+      ifvarclass => "$(service)_up",
+      args       => "$args[$(service)]";
 
-    }
+}
+~~~~
 
 An alternative would be self-contained:
 
-    bundle agent Service
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent Service
+{
+vars:
 
-      "service" slist => { "apache", "nfsd", "bind" };
+  "service" slist => { "apache", "nfsd", "bind" };
 
-    processes:
+processes:
 
-      "$(service)" 
+  "$(service)" 
 
-          process_count => up("$(service)");
+      process_count => up("$(service)");
 
-    commands:
+commands:
 
-       "$daemons[$(service)]"  
+   "$daemons[$(service)]"  
 
-          ifvarclass => "$(service)_up",
-          args       => "$args[$(service)]";
+      ifvarclass => "$(service)_up",
+      args       => "$args[$(service)]";
 
-    }
+}
 
-    ######################
-    # Parameterized body
-    ######################
+######################
+# Parameterized body
+######################
 
-    body process_count up("$(s)")
+body process_count up("$(s)")
 
-    {
-    match_range => "[0,10]";
-    out_of_range_define => "$(s)_up";
-    }
+{
+match_range => "[0,10]";
+out_of_range_define => "$(s)_up";
+}
+~~~~
 
--   process\_count in processes
--   process\_select in processes
--   process\_stop in processes
--   restart\_class in processes
--   signals in processes
+-   [process\_count in processes](#process_005fcount-in-processes)
+-   [process\_select in processes](#process_005fselect-in-processes)
+-   [process\_stop in processes](#process_005fstop-in-processes)
+-   [restart\_class in processes](#restart_005fclass-in-processes)
+-   [signals in processes](#signals-in-processes)
 
 #### `process_count` (body template)
 
@@ -250,12 +271,14 @@ An alternative would be self-contained:
 **Example**:\
  \
 
-         
-         body process_count example
-         {
-         in_range_define => { "class1", "class2" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_count example
+     {
+     in_range_define => { "class1", "class2" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -276,12 +299,14 @@ process
 **Example**:\
  \
 
-         
-         body process_count example
-         {
-         match_range => irange("10","50");
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_count example
+     {
+     match_range => irange("10","50");
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -301,12 +326,14 @@ the promise is considered kept. \
 **Example**:\
  \
 
-         
-         body process_count example(s)
-         {
-         out_of_range_define => { "process_anomaly", "anomaly_$(s)"};
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_count example(s)
+     {
+     out_of_range_define => { "process_anomaly", "anomaly_$(s)"};
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -330,15 +357,17 @@ process
 **Example**:\
  \
 
-         
-         body process_select example
-         
-         {
-         command => "cf-.*";
-         
-         process_result => "command";
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     
+     {
+     command => "cf-.*";
+     
+     process_result => "command";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -359,13 +388,15 @@ the end of line. \
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         pid => irange("1","10");
-         process_result => "pid";
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     pid => irange("1","10");
+     process_result => "pid";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -383,13 +414,15 @@ process
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         pgid => irange("1","10");
-         process_result => "pgid";
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     pgid => irange("1","10");
+     process_result => "pgid";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -407,13 +440,15 @@ process
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         ppid => irange("407","511");
-         process_result => "ppid";
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     ppid => irange("407","511");
+     process_result => "ppid";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -431,12 +466,14 @@ a process
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         priority => irange("-5","0");
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     priority => irange("-5","0");
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -453,19 +490,22 @@ a process
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         process_owner => { "wwwrun", "nobody" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     process_owner => { "wwwrun", "nobody" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 Regular expression should match a legal user name on the system. The
-regex is anchored, meaning it must match the entire name (see Anchored
-vs. unanchored regular expressions). \
+regex is anchored, meaning it must match the entire name (see [Anchored
+vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 `process_result`
 
@@ -480,17 +520,19 @@ of classes set by a process selection test
 **Example**:\
  \
 
-         
-         body process_select proc_finder(p)
-         
-         {
-         process_owner  => { "avahi", "bin" };
-         command        => "$(p)";
-         pid            => irange("100","199");
-         vsize          => irange("0","1000");
-         process_result => "command.(process_owner|vsize).!pid";
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select proc_finder(p)
+     
+     {
+     process_owner  => { "avahi", "bin" };
+     command        => "$(p)";
+     pid            => irange("100","199");
+     vsize          => irange("0","1000");
+     process_result => "command.(process_owner|vsize).!pid";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -511,13 +553,15 @@ process, in kilobytes
 **Example**:\
  \
 
-         
-         body process_select
-         {
-         rsize => irange("4000","8000");
-         }
-         
-         
+~~~~ {.verbatim}
+     
+     body process_select
+     {
+     rsize => irange("4000","8000");
+     }
+     
+     
+~~~~
 
 **Notes**:\
  \
@@ -534,12 +578,14 @@ process, in kilobytes
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         status => "Z";
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     status => "Z";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -558,12 +604,14 @@ have status fields. \
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         stime_range => irange(ago(0,0,0,1,0,0),now);
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     stime_range => irange(ago(0,0,0,1,0,0),now);
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -584,12 +632,14 @@ process
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         ttime_range => irange(0,accumulated(0,1,0,0,0,0));
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     ttime_range => irange(0,accumulated(0,1,0,0,0,0));
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -607,12 +657,14 @@ This is total accumulated time for a process. \
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         tty => "pts/[0-9]+";
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     tty => "pts/[0-9]+";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -632,12 +684,14 @@ process
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         threads => irange(1,5);
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     threads => irange(1,5);
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -655,12 +709,14 @@ process, in kilobytes
 **Example**:\
  \
 
-         
-         body process_select example
-         {
-         vsize => irange("4000","9000");
-         }
-         
+~~~~ {.verbatim}
+     
+     body process_select example
+     {
+     vsize => irange("4000","9000");
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -680,11 +736,14 @@ Size (Windows 2008), or VM Size (Windows XP).
 **Example**:\
  \
 
-    processes:
+~~~~ {.verbatim}
+processes:
 
-     "snmpd"
+ "snmpd"
 
-            process_stop => "/etc/init.d/snmp stop";
+        process_stop => "/etc/init.d/snmp stop";
+
+~~~~
 
 **Notes**:\
  \
@@ -704,17 +763,19 @@ running, so that a command: rule can be referred to restart the process
 **Example**:\
  \
 
-    processes:
+~~~~ {.verbatim}
+processes:
 
-       "cf-serverd"
+   "cf-serverd"
 
-         restart_class => "start_cfserverd";
+     restart_class => "start_cfserverd";
 
-    commands:
+commands:
 
-      start_cfserverd::
+  start_cfserverd::
 
-        "/var/cfengine/bin/cf-serverd";
+    "/var/cfengine/bin/cf-serverd";
+~~~~
 
 **Notes**:\
  \
@@ -737,21 +798,23 @@ information.
 
 **Allowed input range**: \
 
-                   hup
-                   int
-                   trap
-                   kill
-                   pipe
-                   cont
-                   abrt
-                   stop
-                   quit
-                   term
-                   child
-                   usr1
-                   usr2
-                   bus
-                   segv
+~~~~ {.example}
+               hup
+               int
+               trap
+               kill
+               pipe
+               cont
+               abrt
+               stop
+               quit
+               term
+               child
+               usr1
+               usr2
+               bus
+               segv
+~~~~
 
 **Synopsis**: A list of menu options representing signals to be sent to
 a process
@@ -759,21 +822,23 @@ a process
 **Example**:\
  \
 
-    processes:
+~~~~ {.verbatim}
+processes:
 
-     cfservd_out_of_control::
+ cfservd_out_of_control::
 
-       "cfservd"
+   "cfservd"
 
-            signals         => { "stop" , "term" },
-            restart_class   => "start_cfserv";
+        signals         => { "stop" , "term" },
+        restart_class   => "start_cfserv";
 
-     any::
+ any::
 
-       "snmpd"
+   "snmpd"
 
-            signals         => { "term" , "kill" };
-       
+        signals         => { "term" , "kill" };
+   
+~~~~
 
 **Notes**:\
  \

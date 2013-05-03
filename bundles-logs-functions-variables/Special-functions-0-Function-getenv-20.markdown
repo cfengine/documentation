@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-getenv-20
+categories: [Special-functions,Function-getenv-20]
 published: true
-alias: Special-functions-0-Function-getenv-20.markdown.html
-tags: [xx]
+alias: Special-functions-Function-getenv-20.html
+tags: [Special-functions,Function-getenv-20]
 ---
 
 ### Function getenv
@@ -22,27 +22,29 @@ Return the environment variable named arg1, truncated at arg2 characters
 **Example**:\
  \
 
-    bundle agent example
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent example
+{
+vars:
 
-       "myvar" string => getenv("PATH","20");
+   "myvar" string => getenv("PATH","20");
 
-    classes:
+classes:
 
-      "isdefined" not => strcmp("$(myvar)","");
+  "isdefined" not => strcmp("$(myvar)","");
 
-    reports:
+reports:
 
-      isdefined::
+  isdefined::
 
-       "The path is $(myvar)";
+   "The path is $(myvar)";
 
-      !isdefined::
+  !isdefined::
 
-       "The named variable PATH does not exist";
+   "The named variable PATH does not exist";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

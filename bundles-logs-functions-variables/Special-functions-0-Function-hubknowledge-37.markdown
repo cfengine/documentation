@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-hubknowledge-37
+categories: [Special-functions,Function-hubknowledge-37]
 published: true
-alias: Special-functions-0-Function-hubknowledge-37.markdown.html
-tags: [xx]
+alias: Special-functions-Function-hubknowledge-37.html
+tags: [Special-functions,Function-hubknowledge-37]
 ---
 
 ### Function hubknowledge
@@ -20,11 +20,13 @@ Read global knowledge from the hub host by id (commercial extension)
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-      guard::
+  guard::
 
-       "global_number" string => hubknowledge("number_variable");
+   "global_number" string => hubknowledge("number_variable");
+~~~~
 
 **Notes**:\
  \

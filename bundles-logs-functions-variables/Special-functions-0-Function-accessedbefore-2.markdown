@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-accessedbefore-2
+categories: [Special-functions,Function-accessedbefore-2]
 published: true
-alias: Special-functions-0-Function-accessedbefore-2.markdown.html
-tags: [xx]
+alias: Special-functions-Function-accessedbefore-2.html
+tags: [Special-functions,Function-accessedbefore-2]
 ---
 
 ### Function accessedbefore
@@ -20,28 +20,30 @@ True if arg1 was accessed before arg2 (atime)
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "do_it" and => { accessedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
+  "do_it" and => { accessedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
 
-    reports:
+reports:
 
-      do_it::
+  do_it::
 
-        "The secret changes have been accessed after the reference time";
+    "The secret changes have been accessed after the reference time";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -49,10 +51,12 @@ True if arg1 was accessed before arg2 (atime)
 The function accesses the `atime` fields of a file and makes a
 comparison.
 
-         
-          touch /tmp/reference
-          touch /tmp/secretfile
-         
-          /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
-          R: The secret changes have been accessed after the reference time
-         
+~~~~ {.smallexample}
+     
+      touch /tmp/reference
+      touch /tmp/secretfile
+     
+      /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
+      R: The secret changes have been accessed after the reference time
+     
+~~~~

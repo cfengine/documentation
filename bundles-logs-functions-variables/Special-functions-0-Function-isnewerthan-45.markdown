@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-isnewerthan-45
+categories: [Special-functions,Function-isnewerthan-45]
 published: true
-alias: Special-functions-0-Function-isnewerthan-45.markdown.html
-tags: [xx]
+alias: Special-functions-Function-isnewerthan-45.html
+tags: [Special-functions,Function-isnewerthan-45]
 ---
 
 ### Function isnewerthan
@@ -20,28 +20,30 @@ True if arg1 is newer (modified later) than arg2 (mtime)
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "do_it" and => { isnewerthan("/tmp/later","/tmp/earlier"), "linux" }; 
+  "do_it" and => { isnewerthan("/tmp/later","/tmp/earlier"), "linux" }; 
 
-    reports:
+reports:
 
-      do_it::
+  do_it::
 
-        "The derived file needs updating";
+    "The derived file needs updating";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

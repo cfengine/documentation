@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-changedbefore-8
+categories: [Special-functions,Function-changedbefore-8]
 published: true
-alias: Special-functions-0-Function-changedbefore-8.markdown.html
-tags: [xx]
+alias: Special-functions-Function-changedbefore-8.html
+tags: [Special-functions,Function-changedbefore-8]
 ---
 
 ### Function changedbefore
@@ -20,28 +20,30 @@ True if arg1 was changed before arg2 (ctime)
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "do_it" and => { changedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
+  "do_it" and => { changedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
 
-    reports:
+reports:
 
-      do_it::
+  do_it::
 
-        "The derived file needs updating";
+    "The derived file needs updating";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

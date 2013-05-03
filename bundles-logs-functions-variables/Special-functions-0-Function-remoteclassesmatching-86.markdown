@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-remoteclassesmatching-86
+categories: [Special-functions,Function-remoteclassesmatching-86]
 published: true
-alias: Special-functions-0-Function-remoteclassesmatching-86.markdown.html
-tags: [xx]
+alias: Special-functions-Function-remoteclassesmatching-86.html
+tags: [Special-functions,Function-remoteclassesmatching-86]
 ---
 
 ### Function remoteclassesmatching
@@ -25,7 +25,9 @@ cfengine server and add them into local context with prefix
 **Example**:\
  \
 
-     "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
+~~~~ {.verbatim}
+ "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
+~~~~
 
 **Notes**:\
  \

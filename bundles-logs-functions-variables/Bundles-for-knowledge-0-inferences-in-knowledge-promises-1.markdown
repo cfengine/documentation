@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: inferences-in-knowledge-promises-1
+categories: [Bundles-for-knowledge,inferences-in-knowledge-promises-1]
 published: true
-alias: Bundles-for-knowledge-0-inferences-in-knowledge-promises-1.markdown.html
-tags: [xx]
+alias: Bundles-for-knowledge-inferences-in-knowledge-promises-1.html
+tags: [Bundles-for-knowledge,inferences-in-knowledge-promises-1]
 ---
 
 ### `inferences` promises in knowledge
@@ -13,17 +13,19 @@ tags: [xx]
 
 \
 
-    inferences:
+~~~~ {.verbatim}
+inferences:
 
-      "is close to" 
-               comment => "Cluster property",
-             precedent => { "is close to" },
-             qualifier => { "is close to" };
+  "is close to" 
+           comment => "Cluster property",
+         precedent => { "is close to" },
+         qualifier => { "is close to" };
 
-      "is far from" 
-               comment => "Remote cluster property",
-             precedent => { "is far from" },
-             qualifier => { "is close to" };
+  "is far from" 
+           comment => "Remote cluster property",
+         precedent => { "is far from" },
+         qualifier => { "is close to" };
+~~~~
 
 \
 
@@ -38,23 +40,27 @@ i.e. the conclusion to be drawn from combining two knowledge assertions.
 The body specifies what existing associations must be in place between
 topics in order to draw the conclusion between the start and the end.
 
-         
-                     precedent                 qualifier
-           TOPIC 1 -------------- TOPIC 2 --------------- TOPIC 3
-         
-                             promised inference
-           TOPIC 1 --------------------------------------- TOPIC 3
-         
+~~~~ {.smallexample}
+     
+                 precedent                 qualifier
+       TOPIC 1 -------------- TOPIC 2 --------------- TOPIC 3
+     
+                         promised inference
+       TOPIC 1 --------------------------------------- TOPIC 3
+     
+~~~~
 
 For example,
 
-         
-                  is mother to          is married to
-           ALICE -------------- BOB ----------------- CAROL
-         
-                         is mother in law to
-           ALICE --------------------------------------- CAROL
-         
+~~~~ {.smallexample}
+     
+              is mother to          is married to
+       ALICE -------------- BOB ----------------- CAROL
+     
+                     is mother in law to
+       ALICE --------------------------------------- CAROL
+     
+~~~~
 
 Note that, like all promises, they are expected to be unique. Multiple
 promisers promising different bodies is potentially inconsistent.
@@ -62,8 +68,8 @@ However, inference is inherently ambiguous, and we need to accommodate
 multiple patterns. To this end, lists of regular expressions may be used
 to match multiple instances.
 
--   precedents in inferences
--   qualifiers in inferences
+-   [precedents in inferences](#precedents-in-inferences)
+-   [qualifiers in inferences](#qualifiers-in-inferences)
 
 #### `precedents`
 
@@ -76,12 +82,14 @@ to match multiple instances.
 **Example**:\
  \
 
-    inferences:
+~~~~ {.verbatim}
+inferences:
 
-      "is far from" 
-               comment => "Remote cluster property",
-             precedent => { "is far from"},
-             qualifier => { "is close to", "is far from" };
+  "is far from" 
+           comment => "Remote cluster property",
+         precedent => { "is far from"},
+         qualifier => { "is close to", "is far from" };
+~~~~
 
 **Notes**:\
  \
@@ -102,12 +110,14 @@ so as to make the promise unique.
 **Example**:\
  \
 
-    inferences:
+~~~~ {.verbatim}
+inferences:
 
-      "is far from" 
-               comment => "Remote cluster property",
-             precedent => { "is far from" },
-             qualifier => { "is close to|is far from" };
+  "is far from" 
+           comment => "Remote cluster property",
+         precedent => { "is far from" },
+         qualifier => { "is close to|is far from" };
+~~~~
 
 **Notes**:\
  \

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: insert_005ftree-in-edit_005fxml-promises-13
+categories: [Bundles-for-agent,insert_005ftree-in-edit_005fxml-promises-13]
 published: true
-alias: Bundles-for-agent-0-insert_005ftree-in-edit_005fxml-promises-13.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-insert_005ftree-in-edit_005fxml-promises-13.html
+tags: [Bundles-for-agent,insert_005ftree-in-edit_005fxml-promises-13]
 ---
 
 ### `insert_tree` promises in edit\_xml
@@ -20,13 +20,15 @@ referred to is a literal string representation of a balanced XML tree.
 
 \
 
-    bundle edit_xml example
-      {
-      insert_tree:
-        "Host name=\"cfe_host\">Alias>cfe_alias/Alias>/Host>"
+~~~~ {.verbatim}
+bundle edit_xml example
+  {
+  insert_tree:
+    "Host name=\"cfe_host\">Alias>cfe_alias/Alias>/Host>"
 
-        select_xpath => "/Server/Service/Engine";
-      }
+    select_xpath => "/Server/Service/Engine";
+  }
+~~~~
 
 \
 

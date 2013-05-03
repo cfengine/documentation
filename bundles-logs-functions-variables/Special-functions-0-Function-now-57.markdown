@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-now-57
+categories: [Special-functions,Function-now-57]
 published: true
-alias: Special-functions-0-Function-now-57.markdown.html
-tags: [xx]
+alias: Special-functions-Function-now-57.html
+tags: [Special-functions,Function-now-57]
 ---
 
 ### Function now
@@ -18,11 +18,13 @@ Convert the current time into system representation
 **Example**:\
  \
 
-    body file_select zero_age
-    {
-    mtime       => irange(ago(1,0,0,0,0,0),now);
-    file_result => "mtime";
-    }
+~~~~ {.verbatim}
+body file_select zero_age
+{
+mtime       => irange(ago(1,0,0,0,0,0),now);
+file_result => "mtime";
+}
+~~~~
 
 **Notes**:\
  \

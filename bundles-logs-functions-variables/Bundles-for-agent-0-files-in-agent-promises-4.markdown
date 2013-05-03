@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: files-in-agent-promises-4
+categories: [Bundles-for-agent,files-in-agent-promises-4]
 published: true
-alias: Bundles-for-agent-0-files-in-agent-promises-4.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-files-in-agent-promises-4.html
+tags: [Bundles-for-agent,files-in-agent-promises-4]
 ---
 
 ### `files` promises in agent
@@ -14,14 +14,16 @@ tags: [xx]
 Files promises are an umbrella for attributes of files. Operations fall
 basically into three categories: create, delete and edit.
 
-         
-          files:
-         
-            "/path/file_object"
-         
-                perms = perms_body,
-                ... ;
-         
+~~~~ {.smallexample}
+     
+      files:
+     
+        "/path/file_object"
+     
+            perms = perms_body,
+            ... ;
+     
+~~~~
 
 Prior to version 3, file promises were scattered into many different
 types, including `files`, `tidy`, `copy`, and `links`. File handling in
@@ -33,7 +35,9 @@ There is a natural ordering in file processing that obviates the need
 for the actionsequence. For example, the trick of using multiple
 actionsequence items with different classes.
 
-     actionsequence = ( ... files.one  ..  files.two )
+~~~~ {.verbatim}
+ actionsequence = ( ... files.one  ..  files.two )
+~~~~
 
 can now be handled more elegantly using bundles. The natural ordering
 uses that fact that some operations are mutually exclusive and that some
@@ -65,47 +69,51 @@ that file editing is done "atomically".
 
 See: \`File editing in CFEngine 3'
 
+![The normal ordering of file operators in CFEngine 3](filelogic.png)
+
 The pseudo-code for this logic is shown in the diagram and below:
 
-     for each file promise-object
-        {
-        if (depth_search) 
-          do 
-            DepthSearch (HandleLeaf)
-          else 
-            (HandleLeaf)
-          done
-        }
+~~~~ {.verbatim}
+ for each file promise-object
+    {
+    if (depth_search) 
+      do 
+        DepthSearch (HandleLeaf)
+      else 
+        (HandleLeaf)
+      done
+    }
 
-     HandleLeaf()
-       {
-       Does leaf-file exist?
+ HandleLeaf()
+   {
+   Does leaf-file exist?
 
-         NO:  create
-         YES: rename,delete,touch, 
+     NO:  create
+     YES: rename,delete,touch, 
 
-         do
-          for all servers in {localhost, @(servers)}
-             {
-             if (server-will-provide)
-                do
-                  if (depth_search)
-                     embedded source-depth-search (use file source)
-                     break
-                  else
-                     (use file source)
-                     break
-                  done
-                done
-             }
-         done
-          
-       Do all links (always local)
+     do
+      for all servers in {localhost, @(servers)}
+         {
+         if (server-will-provide)
+            do
+              if (depth_search)
+                 embedded source-depth-search (use file source)
+                 break
+              else
+                 (use file source)
+                 break
+              done
+            done
+         }
+     done
+      
+   Do all links (always local)
 
-       Check Permissions
+   Check Permissions
 
-       Do edits
-       }
+   Do edits
+   }
+~~~~
 
 **Depth searches (formerly known as 'recursion') during searches**
 
@@ -114,9 +122,11 @@ Recursion is now called "depth-search". In addition, it was possible to
 specify wildcards in the base-path for this search. CFEngine 3 replaces
 the \`globbing' symbols with standard regular expressions:
 
-          CFEngine 2               CFEngine 3
+~~~~ {.verbatim}
+      CFEngine 2               CFEngine 3
 
-    /one/*/two/thr*/four    /one/.*/two/thr.*/four
+/one/*/two/thr*/four    /one/.*/two/thr.*/four
+~~~~
 
 Note: When searching for hidden files (files with names starting with a
 \`.') or files with specific extensions, you should take care to escape
@@ -149,7 +159,8 @@ between the directory separators. In other words, CFEngine splits up any
 file paths into its component parts, and then it evaluates any regular
 expressions at a component-level.
 
-See: Anchored vs. unanchored regular expressions.
+See: [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions).
 
 What this means is that the path /tmp/gar.\* will only match filenames
 like /tmp/gar, /tmp/garbage and /tmp/garden. It will *not* match
@@ -188,27 +199,29 @@ two examples, which assumethat there first exist files named /tmp/gar,
 /tmp/garbage and /tmp/garden. Initially, the two promises look like they
 should do the same thing; but there is a subtle difference:
 
-    bundle agent foobaz            bundle agent foobaz
-    {                   {
-    files:                  files:
-     "/tmp/gar.*"                "/tmp"
-        delete => tidy,             delete => tidy,
-        classes => if_ok("done");           depth_search => recurse("0"),
-                            file_select => gars,
-                            classes => if_ok("done");
-                        }
+~~~~ {.verbatim}
+bundle agent foobaz           bundle agent foobaz
+{                   {
+files:                  files:
+ "/tmp/gar.*"                "/tmp"
+    delete => tidy,             delete => tidy,
+    classes => if_ok("done");           depth_search => recurse("0"),
+                        file_select => gars,
+                        classes => if_ok("done");
+                    }
 
-                        body file_select gars
-                        {
-                        leaf_name => { "gar.*" };
-                        file_result => "leaf_name";
-                        }
+                    body file_select gars
+                    {
+                    leaf_name => { "gar.*" };
+                    file_result => "leaf_name";
+                    }
 
-    body classes if_ok(x)           body classes if_ok(x)
-    {                   {
-    promise_repaired => { "$(x)" };     promise_repaired => { "$(x)" };
-    promise_kept => { "$(x)" };     promise_kept => { "$(x)" };
-    }                   }
+body classes if_ok(x)           body classes if_ok(x)
+{                   {
+promise_repaired => { "$(x)" };     promise_repaired => { "$(x)" };
+promise_kept => { "$(x)" };     promise_kept => { "$(x)" };
+}                   }
+~~~~
 
 In the first example, when the configuration containing this promise is
 first executed, any file starting with "gar" that exists in the /tmp
@@ -265,89 +278,92 @@ external attributes.
 
 A typical file editing stanza has the elements in the following example:
 
-    ######################################################################
-    #
-    # File editing
-    #
-    ######################################################################
+~~~~ {.verbatim}
+######################################################################
+#
+# File editing
+#
+######################################################################
 
-    body common control
+body common control
 
-    {
-    version => "1.2.3";
-    bundlesequence  => { "outerbundle"  };
-    }
+{
+version => "1.2.3";
+bundlesequence  => { "outerbundle"  };
+}
 
-    ########################################################
+########################################################
 
-    bundle agent outerbundle
+bundle agent outerbundle
 
-    {
-    files:
+{
+files:
 
-      "/home/mark/tmp/cf3_test"
+  "/home/mark/tmp/cf3_test"
 
-           create    => "true",     # Like autocreate in cf2
-           edit_line => inner_bundle;
-    }
+       create    => "true",     # Like autocreate in cf2
+       edit_line => inner_bundle;
+}
 
-    ########################################################
+########################################################
 
-    bundle edit_line inner_bundle
-      {
-      vars:
+bundle edit_line inner_bundle
+  {
+  vars:
 
-       "who" string => "SysAdmin John"; # private variable in bundle
+   "who" string => "SysAdmin John"; # private variable in bundle
 
-      insert_lines:
-        "/* This file is maintained by CFEngine (see $(who) for details) */",
-        location => first_line;
-      
-      replace_patterns:
+  insert_lines:
+    "/* This file is maintained by CFEngine (see $(who) for details) */",
+    location => first_line;
+  
+  replace_patterns:
 
-       # replace shell comments with C comments
+   # replace shell comments with C comments
 
-       "#(.*)"
+   "#(.*)"
 
-          replace_with => C_comment,
-         select_region => MySection("New section");
+      replace_with => C_comment,
+     select_region => MySection("New section");
 
-      reports:
+  reports:
 
-        someclass::
+    someclass::
 
-          "This is file $(edit.filename)";
-      }
+      "This is file $(edit.filename)";
+  }
 
-    ########################################
-    # Bodies for the library ...
-    ########################################
+########################################
+# Bodies for the library ...
+########################################
 
-    body replace_with C_comment
+body replace_with C_comment
 
-    {
-    replace_value => "/* $(match.1) */"; # backreference
-    occurrences => "all";          # first, last all
-    }
+{
+replace_value => "/* $(match.1) */"; # backreference
+occurrences => "all";          # first, last all
+}
 
-    ########################################################
+########################################################
 
-    body select_region MySection(x)
+body select_region MySection(x)
 
-    {
-    select_start => "\[$(x)\]";
-    select_end => "\[.*\]";
-    }
+{
+select_start => "\[$(x)\]";
+select_end => "\[.*\]";
+}
 
-    ########################################################
+########################################################
 
-    body location first_line
+body location first_line
 
-    {
-    before_after => "before";
-    first_last => "first";
-    select_line_matching => ".*";
-    }
+{
+before_after => "before";
+first_last => "first";
+select_line_matching => ".*";
+}
+
+~~~~
 
 There are several things to notice:
 
@@ -403,48 +419,50 @@ Community Edition only reports that changes were found, but Enterprise
 versions of CFEngine can also report on what exactly the significant
 changes were.
 
-    bundle agent example
-    {
-    files:
+~~~~ {.verbatim}
+bundle agent example
+{
+files:
 
-      "/home/mark/tmp" -> "Security team"
+  "/home/mark/tmp" -> "Security team"
 
-           changes      => lay_a_tripwire,
-           depth_search => recurse("inf"),
-           action       => background;
-    }
+       changes      => lay_a_tripwire,
+       depth_search => recurse("inf"),
+       action       => background;
+}
 
-    #########################################################
+#########################################################
 
-    body changes lay_a_tripwire
+body changes lay_a_tripwire
 
-    {
-    hash           => "md5";
-    report_changes => "content";
-    update         => "yes";
-    }
+{
+hash           => "md5";
+report_changes => "content";
+update         => "yes";
+}
+~~~~
 
 \
 
--   acl in files
--   changes in files
--   copy\_from in files
--   create in files
--   delete in files
--   depth\_search in files
--   edit\_defaults in files
--   edit\_line in files
--   edit\_template in files
--   edit\_xml in files
--   file\_select in files
--   link\_from in files
--   move\_obstructions in files
--   pathtype in files
--   perms in files
--   rename in files
--   repository in files
--   touch in files
--   transformer in files
+-   [acl in files](#acl-in-files)
+-   [changes in files](#changes-in-files)
+-   [copy\_from in files](#copy_005ffrom-in-files)
+-   [create in files](#create-in-files)
+-   [delete in files](#delete-in-files)
+-   [depth\_search in files](#depth_005fsearch-in-files)
+-   [edit\_defaults in files](#edit_005fdefaults-in-files)
+-   [edit\_line in files](#edit_005fline-in-files)
+-   [edit\_template in files](#edit_005ftemplate-in-files)
+-   [edit\_xml in files](#edit_005fxml-in-files)
+-   [file\_select in files](#file_005fselect-in-files)
+-   [link\_from in files](#link_005ffrom-in-files)
+-   [move\_obstructions in files](#move_005fobstructions-in-files)
+-   [pathtype in files](#pathtype-in-files)
+-   [perms in files](#perms-in-files)
+-   [rename in files](#rename-in-files)
+-   [repository in files](#repository-in-files)
+-   [touch in files](#touch-in-files)
+-   [transformer in files](#transformer-in-files)
 
 #### `acl` (body template)
 
@@ -462,22 +480,24 @@ changes were.
 **Example**:\
  \
 
-         
-         body acl template
-         
-         {
-         acl_method => "overwrite";
-         acl_type => "posix";
-         acl_directory_inherit => "parent";
-         
-         aces => { 
-                 "user:*:r(wwx),-r:allow", 
-                 "group:*:+rw:allow", 
-                 "mask:x:allow", 
-                 "all:r"
-                 };
-         }
-         
+~~~~ {.verbatim}
+     
+     body acl template
+     
+     {
+     acl_method => "overwrite";
+     acl_type => "posix";
+     acl_directory_inherit => "parent";
+     
+     aces => { 
+             "user:*:r(wwx),-r:allow", 
+             "group:*:+rw:allow", 
+             "mask:x:allow", 
+             "all:r"
+             };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -486,11 +506,13 @@ POSIX ACL are available in CFEngine Community starting with 3.4.0. NTFS
 ACL are available with CFEngine Nova or above. Form of the permissions
 is:
 
-                    aces = {
-                            "user:uid:mode[:perm_type]", ...,
-                            "group:gid:mode[:perm_type]", ...,
-                            "all:mode[:perm_type]"
-                            };
+~~~~ {.smallexample}
+                aces = {
+                        "user:uid:mode[:perm_type]", ...,
+                        "group:gid:mode[:perm_type]", ...,
+                        "all:mode[:perm_type]"
+                        };
+~~~~
 
 -   `user` indicates that the line applies to a user specified by the
     user identifier `uid`. `mode` is the permission mode string.
@@ -573,32 +595,36 @@ having `x` on its containing directory is sufficient. \
 
 **Allowed input range**: \
 
-                        nochange
-                        parent
-                        specify
-                        clear
+~~~~ {.example}
+                    nochange
+                    parent
+                    specify
+                    clear
+~~~~
 
 **Synopsis**: Access control list type for the affected file system
 
 **Example**:\
  \
 
-         
-         body acl template
-         
-         {
-         acl_method => "overwrite";
-         acl_type => "posix";
-         acl_directory_inherit => "parent";
-         
-         aces => {
-                 "user:*:rwx:allow",
-                 "group:*:+rw:allow",
-                 "mask:rx:allow",
-                 "all:r"
-                 };
-         }
-         
+~~~~ {.verbatim}
+     
+     body acl template
+     
+     {
+     acl_method => "overwrite";
+     acl_type => "posix";
+     acl_directory_inherit => "parent";
+     
+     aces => {
+             "user:*:rwx:allow",
+             "group:*:+rw:allow",
+             "mask:rx:allow",
+             "all:r"
+             };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -621,23 +647,27 @@ the same access ACL as the directory. \
 
 **Allowed input range**: \
 
-                        append
-                        overwrite
+~~~~ {.example}
+                    append
+                    overwrite
+~~~~
 
 **Synopsis**: Editing method for access control list
 
 **Example**:\
  \
 
-         
-         body acl template
-         
-         {
-         acl_method => "overwrite";
-         acl_type => "posix";
-         aces => { "user:*:rw:allow", "group:*:+r:allow", "all:"};
-         }
-         
+~~~~ {.verbatim}
+     
+     body acl template
+     
+     {
+     acl_method => "overwrite";
+     acl_type => "posix";
+     aces => { "user:*:rw:allow", "group:*:+r:allow", "all:"};
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -658,23 +688,27 @@ example, owning user, group and all in POSIX ACLs. \
 
 **Allowed input range**: \
 
-                        generic
-                        posix
-                        ntfs
+~~~~ {.example}
+                    generic
+                    posix
+                    ntfs
+~~~~
 
 **Synopsis**: Access control list type for the affected file system
 
 **Example**:\
  \
 
-         
-         body acl template
-         
-         {
-         acl_type => "ntfs";
-         aces => { "user:Administrator:rwx(po)", "user:Auditor:r(o)"};
-         }
-         
+~~~~ {.verbatim}
+     
+     body acl template
+     
+     {
+     acl_type => "ntfs";
+     aces => { "user:Administrator:rwx(po)", "user:Auditor:r(o)"};
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -700,10 +734,12 @@ target platform. Currently, the supported values are `posix` and `ntfs`.
 **Example**:\
  \
 
-         body acl template
-         {
-         specify_inherit_aces => {  "all:r" };
-         }
+~~~~ {.verbatim}
+     body acl template
+     {
+     specify_inherit_aces => {  "all:r" };
+     }
+~~~~
 
 **Notes**:\
  \
@@ -727,25 +763,29 @@ that do not have a clear inheritance policy.
 
 **Allowed input range**: \
 
-                        md5
-                        sha1
-                        sha224
-                        sha256
-                        sha384
-                        sha512
-                        best
+~~~~ {.example}
+                    md5
+                    sha1
+                    sha224
+                    sha256
+                    sha384
+                    sha512
+                    best
+~~~~
 
 **Synopsis**: Hash files for change detection
 
 **Example**:\
  \
 
-         
-         body changes example
-         {
-         hash => "md5";
-         }
-         
+~~~~ {.verbatim}
+     
+     body changes example
+     {
+     hash => "md5";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -759,22 +799,26 @@ known in the OpenSSL library. \
 
 **Allowed input range**: \
 
-                        all
-                        stats
-                        content
-                        none
+~~~~ {.example}
+                    all
+                    stats
+                    content
+                    none
+~~~~
 
 **Synopsis**: Specify criteria for change warnings
 
 **Example**:\
  \
 
-         
-         body changes example
-         {
-         report_changes => "content";
-         }
-         
+~~~~ {.verbatim}
+     
+     body changes example
+     {
+     report_changes => "content";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -788,24 +832,28 @@ attributes. If all is chosen all attributes are checked. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: Update hash values immediately after change warning
 
 **Example**:\
  \
 
-         
-         body changes example
-         {
-         update_hashes => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body changes example
+     {
+     update_hashes => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -820,12 +868,14 @@ change. This applies to addition and removal too. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: Generate reports summarizing the major differences between
 individual text files
@@ -833,12 +883,14 @@ individual text files
 **Example**:\
  \
 
-         
-         body changes example
-         {
-         report_diffs => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body changes example
+     {
+     report_diffs => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -872,19 +924,21 @@ the system.
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         source => "/path/to/source";
-         }
-         
-         # or
-         
-         body link_from example
-         {
-         source => "/path/to/source";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     source => "/path/to/source";
+     }
+     
+     # or
+     
+     body link_from example
+     {
+     source => "/path/to/source";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -902,13 +956,15 @@ For remote copies this refers to the file name on the remote server. \
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         servers => { "primary.example.org", "secondary.example.org", 
-                          "tertiary.other.domain" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     servers => { "primary.example.org", "secondary.example.org", 
+                      "tertiary.other.domain" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -921,12 +977,14 @@ The servers are tried in order until one of them succeeds. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: Place files in subdirectories into the root destination
 directory during copy
@@ -934,15 +992,17 @@ directory during copy
 **Example**:\
  \
 
-         
-         body copy_from mycopy(from,server)
-         
-         {
-         source      => "$(from)";
-         servers     => { "$(server)" };
-         collapse_destination_dir => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from mycopy(from,server)
+     
+     {
+     source      => "$(from)";
+     servers     => { "$(server)" };
+     collapse_destination_dir => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -961,13 +1021,15 @@ itself; in other words, a single destination directory. \
 
 **Allowed input range**: \
 
-                        atime
-                        mtime
-                        ctime
-                        digest
-                        hash
-                        exists
-                        binary
+~~~~ {.example}
+                    atime
+                    mtime
+                    ctime
+                    digest
+                    hash
+                    exists
+                    binary
+~~~~
 
 **Synopsis**: Menu option policy for comparing source and image file
 attributes
@@ -977,13 +1039,15 @@ attributes
 **Example**:\
  \
 
-         
-         body copy_from example
-         
-         {
-         compare => "digest";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     
+     {
+     compare => "digest";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1026,9 +1090,11 @@ The different options are:
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        timestamp
+~~~~ {.example}
+                    true
+                    false
+                    timestamp
+~~~~
 
 **Synopsis**: Menu option policy for file backup/version control
 
@@ -1037,12 +1103,14 @@ The different options are:
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         copy_backup => "timestamp";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     copy_backup => "timestamp";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1052,7 +1120,8 @@ system. This should be viewed in connection with the system repository,
 since a defined repository affects the location at which the backup is
 stored.
 
-See: default\_repository and repository for further details. \
+See: [default\_repository](#default_005frepository-in-agent) and
+[repository](#repository-in-files) for further details. \
 
 `encrypt`
 
@@ -1060,12 +1129,14 @@ See: default\_repository and repository for further details. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false use encrypted data stream to connect to remote
 host
@@ -1075,13 +1146,15 @@ host
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         servers  => { "remote-host.example.org" };
-         encrypt => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     servers  => { "remote-host.example.org" };
+     encrypt => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1096,12 +1169,14 @@ public/private keys for the client and server hosts. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false check permissions on the root directory when
 depth\_search
@@ -1109,12 +1184,14 @@ depth\_search
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         check_root => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     check_root => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1136,12 +1213,14 @@ instead of linked
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         copylink_patterns => { "special_node1", "other_node.*" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     copylink_patterns => { "special_node1", "other_node.*" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1163,12 +1242,14 @@ links, this feature is not available there. \
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         copy_size => irange("0","50000");
-         } 
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     copy_size => irange("0","50000");
+     } 
+     
+~~~~
 
 **Notes**:\
  \
@@ -1182,19 +1263,23 @@ as a comma separated numbers. \
 
 **Allowed input range**: \
 
-                        MacOSX
+~~~~ {.example}
+                    MacOSX
+~~~~
 
 **Synopsis**: Menu option for default finder type on MacOSX
 
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         findertype => "MacOSX";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     findertype => "MacOSX";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1213,14 +1298,16 @@ with symbolic links
 **Example**:\
  \
 
-         
-         body copy_from mycopy(from)
-         
-         {
-         source            => "$(from)";
-         linkcopy_patterns => { ".*" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from mycopy(from)
+     
+     {
+     source            => "$(from)";
+     linkcopy_patterns => { ".*" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1236,10 +1323,12 @@ See: `link_type`. \
 
 **Allowed input range**: \
 
-                        symlink
-                        hardlink
-                        relative
-                        absolute
+~~~~ {.example}
+                    symlink
+                    hardlink
+                    relative
+                    absolute
+~~~~
 
 **Synopsis**: Menu option for type of links to use when copying
 
@@ -1248,13 +1337,15 @@ See: `link_type`. \
 **Example**:\
  \
 
-         
-         body link_from example
-         {
-         link_type => "symlink";
-         source => "/tmp/source";
-         }
-         
+~~~~ {.verbatim}
+     
+     body link_from example
+     {
+     link_type => "symlink";
+     source => "/tmp/source";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1277,12 +1368,14 @@ are mutually exclusive. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false force copy update always
 
@@ -1291,12 +1384,14 @@ are mutually exclusive. \
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         force_update => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     force_update => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1313,12 +1408,14 @@ system will be disturbed by network disruptions. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false force use of ipv4 on ipv6 enabled network
 
@@ -1327,12 +1424,14 @@ system will be disturbed by network disruptions. \
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         force_ipv4 => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     force_ipv4 => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1351,12 +1450,14 @@ mis-configured setup. \
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         portnumber => "5308";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     portnumber => "5308";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1371,12 +1472,14 @@ could change in the future. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false whether to preserve file permissions on copied
 file
@@ -1386,12 +1489,14 @@ file
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         preserve => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     preserve => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1407,12 +1512,14 @@ source. This also applies to remote copies.
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false purge files on client that do not match files
 on server when a depth\_search is used
@@ -1422,12 +1529,14 @@ on server when a depth\_search is used
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         purge => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     purge => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1447,12 +1556,14 @@ file copying if `copy_backup` is set to true. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false whether to preserve time stamps on copied file
 
@@ -1461,12 +1572,14 @@ file copying if `copy_backup` is set to true. \
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         stealth => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     stealth => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1484,12 +1597,14 @@ Preserves file access and modification times on the promiser files. \
 **Example**:\
  \
 
-         
-         body runagent control
-         {
-         timeout => "10";
-         }
-         
+~~~~ {.verbatim}
+     
+     body runagent control
+     {
+     timeout => "10";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1502,12 +1617,14 @@ Timeout in seconds. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false trust public keys from remote server if
 previously unknown
@@ -1517,12 +1634,14 @@ previously unknown
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         trustkey => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     trustkey => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1549,12 +1668,14 @@ WORKDIR/ppkeys. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false compare file types before copying and require
 match
@@ -1562,12 +1683,14 @@ match
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         type_check => "false";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     type_check => "false";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1582,12 +1705,14 @@ switched off. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false verify transferred file by hashing after copy
 (resource penalty)
@@ -1597,12 +1722,14 @@ switched off. \
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         verify => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     verify => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1616,12 +1743,14 @@ file transfers.
 
 **Allowed input range**: \
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+~~~~ {.example}
+               true
+               false
+               yes
+               no
+               on
+               off
+~~~~
 
 **Default value:** false
 
@@ -1630,15 +1759,17 @@ file transfers.
 **Example**:\
  \
 
-    files:
+~~~~ {.verbatim}
+files:
 
-      "/path/plain_file"
+  "/path/plain_file"
 
-         create =>   "true";
+     create =>   "true";
 
-      "/path/dir/."
-      
-         create =>   "true";
+  "/path/dir/."
+  
+     create =>   "true";
+~~~~
 
 **Notes**:\
  \
@@ -1650,14 +1781,16 @@ defaults, you *should* specify permissions.
 
 Note that technically, /. is a regular expression. However, it is used
 as a special case meaning "directory". See **filenames and regular
-expressions** near the beginning of the section on files promises for a
-more complete discussion.
+expressions** near the beginning of the section on [files
+promises](#files-in-agent-promises) for a more complete discussion.
 
-**Note:** In general, you should not use `create` with copy\_from or
-link\_from in files promises. These latter attributes automatically
-create the promised file, and using `create` may actually prevent the
-copy or link promise from being kept (since `create` acts first, which
-may affect file comparison or linking operations).
+**Note:** In general, you should not use `create` with
+[copy\_from](#copy_005ffrom-in-files) or
+[link\_from](#link_005ffrom-in-files) in files promises. These latter
+attributes automatically create the promised file, and using `create`
+may actually prevent the copy or link promise from being kept (since
+`create` acts first, which may affect file comparison or linking
+operations).
 
 #### `delete` (body template)
 
@@ -1669,9 +1802,11 @@ may affect file comparison or linking operations).
 
 **Allowed input range**: \
 
-                        delete
-                        tidy
-                        keep
+~~~~ {.example}
+                    delete
+                    tidy
+                    keep
+~~~~
 
 **Synopsis**: Menu option policy for dealing with symbolic links to
 directories during deletion
@@ -1679,12 +1814,14 @@ directories during deletion
 **Example**:\
  \
 
-         
-         body delete example
-         {
-         dirlinks => "keep";
-         }
-         
+~~~~ {.verbatim}
+     
+     body delete example
+     {
+     dirlinks => "keep";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1713,12 +1850,14 @@ are **not** deleted.
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false whether to delete empty directories during
 recursive deletion
@@ -1726,12 +1865,14 @@ recursive deletion
 **Example**:\
  \
 
-         
-         body delete example
-         {
-         rmdirs => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body delete example
+     {
+     rmdirs => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1741,37 +1882,39 @@ deletions. In CFEngine 2 there was an option to delete the parent of the
 search. In CFEngine 3 you must code a separate promise to delete the
 single parent object.
 
-         
-         bundle agent cleanup
-         {
-         files:
-         
-           # This will not delete the parent
-         
-           "/home/mark/tmp/testcopy" 
-         
-             delete => tidyfiles,
-             file_select => changed_within_1_year,
-             depth_search => recurse("inf");
-         
-           # Now delete the parent.
-         
-           "/home/mark/tmp/testcopy" 
-             delete => tidyfiles;
-         }
-         
-         body delete tidyfiles
-         {
-         dirlinks => "delete";
-         rmdirs   => "true";
-         }
-         
-         body file_select changed_within_1_year
-         {
-         mtime     => irange(ago(1,0,0,0,0,0),now);
-         file_result => "mtime";
-         }
-         
+~~~~ {.verbatim}
+     
+     bundle agent cleanup
+     {
+     files:
+     
+       # This will not delete the parent
+     
+       "/home/mark/tmp/testcopy" 
+     
+         delete => tidyfiles,
+         file_select => changed_within_1_year,
+         depth_search => recurse("inf");
+     
+       # Now delete the parent.
+     
+       "/home/mark/tmp/testcopy" 
+         delete => tidyfiles;
+     }
+     
+     body delete tidyfiles
+     {
+     dirlinks => "delete";
+     rmdirs   => "true";
+     }
+     
+     body file_select changed_within_1_year
+     {
+     mtime     => irange(ago(1,0,0,0,0,0),now);
+     file_result => "mtime";
+     }
+     
+~~~~
 
 **Default value** (only if body is present):\
  \
@@ -1797,12 +1940,14 @@ present. If there is no `delete` body then files (and directories) are
 **Example**:\
  \
 
-         
-         body depth_search example
-         {
-         depth => "inf";
-         }
-         
+~~~~ {.verbatim}
+     
+     body depth_search example
+     {
+     depth => "inf";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1826,13 +1971,15 @@ search
 **Example**:\
  \
 
-         
-         body depth_search
-         {
-         # no dot directories
-         exclude_dirs => { "\..*" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body depth_search
+     {
+     # no dot directories
+     exclude_dirs => { "\..*" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1846,12 +1993,14 @@ a file system. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false include the start/root dir of the search
 results
@@ -1859,12 +2008,14 @@ results
 **Example**:\
  \
 
-         
-         body depth_search example
-         {
-         include_basedir => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body depth_search example
+     {
+     include_basedir => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1887,12 +2038,14 @@ search
 **Example**:\
  \
 
-         
-         body depth_search example
-         {
-         include_dirs => { "subdir1", "subdir2", "pattern.*" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body depth_search example
+     {
+     include_dirs => { "subdir1", "subdir2", "pattern.*" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1905,12 +2058,14 @@ This is the complement of `exclude_dirs`. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false remove links that point to nowhere
 
@@ -1919,12 +2074,14 @@ This is the complement of `exclude_dirs`. \
 **Example**:\
  \
 
-         
-         body depth_search example
-         {
-         rmdeadlinks => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body depth_search example
+     {
+     rmdeadlinks => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1938,12 +2095,14 @@ exist should be deleted; or kept if set to false. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false traverse symbolic links to directories
 
@@ -1952,12 +2111,14 @@ exist should be deleted; or kept if set to false. \
 **Example**:\
  \
 
-         
-         body depth_search example
-         {
-         traverse_links => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body depth_search example
+     {
+     traverse_links => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1972,12 +2133,14 @@ dangerous assumption and links are not traversed. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false exclude directories that are on different
 devices
@@ -1987,12 +2150,14 @@ devices
 **Example**:\
  \
 
-         
-         body depth_search example
-         {
-         xdev => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body depth_search example
+     {
+     xdev => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2007,10 +2172,12 @@ devices
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        timestamp
-                        rotate
+~~~~ {.example}
+                    true
+                    false
+                    timestamp
+                    rotate
+~~~~
 
 **Synopsis**: Menu option for backup policy on edit changes
 
@@ -2019,12 +2186,14 @@ devices
 **Example**:\
  \
 
-         
-         body edit_defaults example
-         {
-         edit_backup => "timestamp";
-         }
-         
+~~~~ {.verbatim}
+     
+     body edit_defaults example
+     {
+     edit_backup => "timestamp";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2036,12 +2205,14 @@ devices
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: Baseline memory model of file to zero/empty before
 commencing promised edits
@@ -2051,12 +2222,14 @@ commencing promised edits
 **Example**:\
  \
 
-         
-         body edit_defaults example
-         {
-         empty_file_before_editing => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body edit_defaults example
+     {
+     empty_file_before_editing => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2070,12 +2243,14 @@ recipe allows an ordered procedure to be convergent. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: If true this causes the sub-bundle to inherit the private
 classes of its parent
@@ -2083,19 +2258,21 @@ classes of its parent
 **Example**:\
  \
 
-         bundle agent name
-         {
-         methods:
-         
-           "group name" usebundle => my_method,
-                          inherit => "true";
-         }
-         
-         
-         body edit_defaults example
-         {
-         inherit => "true";
-         }
+~~~~ {.verbatim}
+     bundle agent name
+     {
+     methods:
+     
+       "group name" usebundle => my_method,
+                      inherit => "true";
+     }
+     
+     
+     body edit_defaults example
+     {
+     inherit => "true";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -2122,12 +2299,14 @@ reference using its bundle name. For example, \$(bundle.variable). \
 **Example**:\
  \
 
-         
-         body edit_defaults example
-         {
-         max_file_size => "50K";
-         }
-         
+~~~~ {.verbatim}
+     
+     body edit_defaults example
+     {
+     max_file_size => "50K";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2138,7 +2317,7 @@ any size may be edited. The default value of `max_file_size` is
 determined by the global control body setting whose default value is
 `100k`.
 
-See: editfilesize in agent \
+See: [editfilesize in agent](#editfilesize-in-agent) \
 
 `recognize_join`
 
@@ -2146,12 +2325,14 @@ See: editfilesize in agent \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: Join together lines that end with a backslash, up to 4kB
 limit
@@ -2161,20 +2342,22 @@ limit
 **Example**:\
  \
 
-         files:
-         
-           "/tmp/test_insert"
-                     create => "true",
-                  edit_line => Insert("$(insert.v)"),
-              edit_defaults => join;
-         }
-         
-         #
-         
-         body edit_defaults join
-         {
-         recognize_join => "true";
-         }
+~~~~ {.verbatim}
+     files:
+     
+       "/tmp/test_insert"
+                 create => "true",
+              edit_line => Insert("$(insert.v)"),
+          edit_defaults => join;
+     }
+     
+     #
+     
+     body edit_defaults join
+     {
+     recognize_join => "true";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -2199,12 +2382,14 @@ strategy is selected. Defaults to 1
 **Example**:\
  \
 
-         
-         body rename example
-         {
-         rotate => "4";
-         }
-         
+~~~~ {.verbatim}
+     
+     body rename example
+     {
+     rotate => "4";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2240,56 +2425,60 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example**:\
  \
 
-    #This is a template file /templates/input.tmpl
+~~~~ {.verbatim}
+#This is a template file /templates/input.tmpl
 
-    These lines apply to anyone
+These lines apply to anyone
 
-    [%CFEngine solaris.Monday:: %]
-    Everything after here applies only to solaris on Mondays
-    until overridden...
+[%CFEngine solaris.Monday:: %]
+Everything after here applies only to solaris on Mondays
+until overridden...
 
-    [%CFEngine linux:: %]
-    Everything after here now applies now to linux only.
+[%CFEngine linux:: %]
+Everything after here now applies now to linux only.
 
-    [%CFEngine BEGIN %]
-    This is a block of text
-    That contains list variables: $(some.list)
-    With text before and after.
-    [%CFEngine END %]
+[%CFEngine BEGIN %]
+This is a block of text
+That contains list variables: $(some.list)
+With text before and after.
+[%CFEngine END %]
 
-    nameserver $(some.list)
+nameserver $(some.list)
+~~~~
 
 For example:
 
-    [%CFEngine any:: %]
-    VirtualHost $(sys.ipv4[eth0]):80>
-            ServerAdmin             $(stage_file.params[apache_mail_address][1])
-            DocumentRoot            /var/www/htdocs
-            ServerName              $(stage_file.params[apache_server_name][1])
-            AddHandler              cgi-script cgi
-            ErrorLog                /var/log/httpd/error.log
-            AddType                 application/x-x509-ca-cert .crt
-            AddType                 application/x-pkcs7-crl    .crl
-            SSLEngine               off
-            CustomLog               /var/log/httpd/access.log
-    /VirtualHost>
+~~~~ {.verbatim}
+[%CFEngine any:: %]
+VirtualHost $(sys.ipv4[eth0]):80>
+        ServerAdmin             $(stage_file.params[apache_mail_address][1])
+        DocumentRoot            /var/www/htdocs
+        ServerName              $(stage_file.params[apache_server_name][1])
+        AddHandler              cgi-script cgi
+        ErrorLog                /var/log/httpd/error.log
+        AddType                 application/x-x509-ca-cert .crt
+        AddType                 application/x-pkcs7-crl    .crl
+        SSLEngine               off
+        CustomLog               /var/log/httpd/access.log
+/VirtualHost>
 
-    [%CFEngine webservers_prod:: %]
-    [%CFEngine BEGIN %]
-    VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>                                               
-            ServerAdmin             $(stage_file.params[apache_mail_address][1]) 
-            DocumentRoot            /var/www/htdocs                                  
-            ServerName              $(stage_file.params[apache_server_name][1])            
-            AddHandler              cgi-script cgi                                 
-            ErrorLog                /var/log/httpd/error.log                  
-            AddType                 application/x-x509-ca-cert .crt                
-            AddType                 application/x-pkcs7-crl    .crl                
-            SSLEngine               on                                             
-            SSLCertificateFile      $(stage_file.params[apache_ssl_crt][1])
-            SSLCertificateKeyFile   $(stage_file.params[apache_ssl_key][1])
-            CustomLog               /var/log/httpd/access.log                      
-    /VirtualHost>
-    [%CFEngine END %]
+[%CFEngine webservers_prod:: %]
+[%CFEngine BEGIN %]
+VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>                                               
+        ServerAdmin             $(stage_file.params[apache_mail_address][1]) 
+        DocumentRoot            /var/www/htdocs                                  
+        ServerName              $(stage_file.params[apache_server_name][1])            
+        AddHandler              cgi-script cgi                                 
+        ErrorLog                /var/log/httpd/error.log                  
+        AddType                 application/x-x509-ca-cert .crt                
+        AddType                 application/x-pkcs7-crl    .crl                
+        SSLEngine               on                                             
+        SSLCertificateFile      $(stage_file.params[apache_ssl_crt][1])
+        SSLCertificateKeyFile   $(stage_file.params[apache_ssl_key][1])
+        CustomLog               /var/log/httpd/access.log                      
+/VirtualHost>
+[%CFEngine END %]
+~~~~
 
 **Notes**:\
  \
@@ -2300,9 +2489,11 @@ The template format uses inline tags to mark regions and classes. Each
 line represents an `insert_lines` promise, unless the promises are
 grouped into a block using:
 
-    [%CFEngine BEGIN %]
-    ...
-    [%CFEngine END %]
+~~~~ {.verbatim}
+[%CFEngine BEGIN %]
+...
+[%CFEngine END %]
+~~~~
 
 Variables, scalars and list variables are expanded within each promise.
 If lines are grouped into a block, the whole block is repeated when
@@ -2310,7 +2501,9 @@ lists are expanded (see the Special Topics Guide on editing).
 
 If a class-context modified is used:
 
-    [%CFEngine class-expression:: %]
+~~~~ {.verbatim}
+[%CFEngine class-expression:: %]
+~~~~
 
 then the lines that follow are only inserted if the context matches the
 agent's current context. This allows conditional insertion.
@@ -2334,13 +2527,15 @@ agent's current context. This allows conditional insertion.
 **Example**:\
  \
 
-         
-         body file_select example
-         {
-         leaf_name => { "S[0-9]+[a-zA-Z]+", "K[0-9]+[a-zA-Z]+" };
-         file_result => "leaf_name";
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select example
+     {
+     leaf_name => { "S[0-9]+[a-zA-Z]+", "K[0-9]+[a-zA-Z]+" };
+     file_result => "leaf_name";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2358,15 +2553,17 @@ This pattern matches only the node name of the file, not its path. \
 **Example**:\
  \
 
-         
-         body file_select example
-         {
-         leaf_name => { "prog.pid", "prog.log" };
-         path_name => { "/etc/.*", "/var/run/.*" };
-         
-         file_result => "leaf_name.path_name"
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select example
+     {
+     leaf_name => { "prog.pid", "prog.log" };
+     path_name => { "/etc/.*", "/var/run/.*" };
+     
+     file_result => "leaf_name.path_name"
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2385,56 +2582,58 @@ of appropriate regular expressions. \
 **Example**:\
  \
 
-         
-         #######################################################
-         #
-         # Searching for permissions
-         #
-         #######################################################
-         
-         body common control
-            {
-            any::
-         
-               bundlesequence  => { 
-                                  "testbundle"
-                                  };
-         
-            version => "1.2.3";
-            }
-         
-         ############################################
-         
-         bundle agent testbundle
-         
-         {
-         files:
-         
-           "/home/mark/tmp/testcopy" 
-         
-             file_select => by_modes,
-             transformer => "/bin/echo DETECTED $(this.promiser)",
-             depth_search => recurse("inf");
-         
-         }
-         
-         ############################################
-         
-         body file_select by_modes
-         
-         {
-         search_mode => { "711" , "666" };
-         file_result => "mode";
-         }
-         
-         ############################################
-         
-         body depth_search recurse(d)
-         
-         {
-         depth => "$(d)";
-         }
-         
+~~~~ {.verbatim}
+     
+     #######################################################
+     #
+     # Searching for permissions
+     #
+     #######################################################
+     
+     body common control
+        {
+        any::
+     
+           bundlesequence  => { 
+                              "testbundle"
+                              };
+     
+        version => "1.2.3";
+        }
+     
+     ############################################
+     
+     bundle agent testbundle
+     
+     {
+     files:
+     
+       "/home/mark/tmp/testcopy" 
+     
+         file_select => by_modes,
+         transformer => "/bin/echo DETECTED $(this.promiser)",
+         depth_search => recurse("inf");
+     
+     }
+     
+     ############################################
+     
+     body file_select by_modes
+     
+     {
+     search_mode => { "711" , "666" };
+     file_result => "mode";
+     }
+     
+     ############################################
+     
+     body depth_search recurse(d)
+     
+     {
+     depth => "$(d)";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2454,13 +2653,15 @@ implies `u` AND `g`. \
 **Example**:\
  \
 
-         
-         body file_select example
-         {
-         search_size => irange("0","20k");
-         file_result => "size";
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select example
+     {
+     search_size => irange("0","20k");
+     file_result => "size";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2478,20 +2679,23 @@ regexes to match
 **Example**:\
  \
 
-         
-         body file_select example
-         {
-         search_owners => { "mark", "jeang", "student_.*" };
-         file_result => "owner";
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select example
+     {
+     search_owners => { "mark", "jeang", "student_.*" };
+     file_result => "owner";
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 A list of regular expressions any of which must match the entire userid
-(see Anchored vs. unanchored regular expressions). Windows does not have
-user ids, only names. \
+(see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). Windows
+does not have user ids, only names. \
 
 `search_groups`
 
@@ -2505,20 +2709,23 @@ regexes to match
 **Example**:\
  \
 
-         
-         body file_select example
-         {
-         search_groups => { "users", "special_.*" };
-         file_result => "group";
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select example
+     {
+     search_groups => { "users", "special_.*" };
+     file_result => "group";
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 A list of regular expressions, any of which must match the entire group
-(see Anchored vs. unanchored regular expressions). On Windows, files do
-not have group associations. \
+(see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). On
+Windows, files do not have group associations. \
 
 `search_bsdflags`
 
@@ -2532,12 +2739,14 @@ not have group associations. \
 **Example**:\
  \
 
-         
-         body file_select xyz
-         {
-         search_bsdflags => "archived|dump";
-         file_result => "bsdflags";
-         }
+~~~~ {.verbatim}
+     
+     body file_select xyz
+     {
+     search_bsdflags => "archived|dump";
+     file_result => "bsdflags";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -2556,13 +2765,15 @@ CFEngine). See the manual page for `chflags` for more details. \
 **Example**:\
  \
 
-         
-         body files_select example
-         {
-         ctime => irange(ago(1,0,0,0,0,0),now);
-         file_result => "ctime";
-         }
-         
+~~~~ {.verbatim}
+     
+     body files_select example
+     {
+     ctime => irange(ago(1,0,0,0,0,0),now);
+     file_result => "ctime";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2582,15 +2793,17 @@ time. \
 **Example**:\
  \
 
-         
-         body files_select example
-         
-         {
-         # Files modified more than one year ago (i.e., not in mtime range)
-         mtime => irange(ago(1,0,0,0,0,0),now);
-         file_result => "!mtime";
-         }
-         
+~~~~ {.verbatim}
+     
+     body files_select example
+     
+     {
+     # Files modified more than one year ago (i.e., not in mtime range)
+     mtime => irange(ago(1,0,0,0,0,0),now);
+     file_result => "!mtime";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2609,23 +2822,25 @@ not other attributes, such as permissions. \
 **Example**:\
  \
 
-         body file_select used_recently
-         {
-         
-         # files accessed within the last hour
-         atime     => irange(ago(0,0,0,1,0,0),now);
-         file_result => "atime";
-         }
-         
-         
-         body file_select not_used_much
-         
-         {
-         # files not accessed since 00:00 1st Jan 2000 (in the local timezime)
-         atime     => irange(on(2000,1,1,0,0,0),now);
-         file_result => "!atime";
-         }
-         
+~~~~ {.verbatim}
+     body file_select used_recently
+     {
+     
+     # files accessed within the last hour
+     atime     => irange(ago(0,0,0,1,0,0),now);
+     file_result => "atime";
+     }
+     
+     
+     body file_select not_used_much
+     
+     {
+     # files not accessed since 00:00 1st Jan 2000 (in the local timezime)
+     atime     => irange(on(2000,1,1,0,0,0),now);
+     file_result => "!atime";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2645,14 +2860,16 @@ line returned by the command
 **Example**:\
  \
 
-         
-         body file_select example
-         {
-         exec_regex => "SPECIAL_LINE: .*";
-         exec_program => "/path/test_program $(this.promiser)";
-         file_result => "exec_program.exec_regex";
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select example
+     {
+     exec_regex => "SPECIAL_LINE: .*";
+     exec_program => "/path/test_program $(this.promiser)";
+     file_result => "exec_program.exec_regex";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2660,8 +2877,8 @@ line returned by the command
 The regular expression must be used in conjunction with the
 `exec_program` test. In this way the program must both return exit
 status 0 and its output must match the regular expression. The entire
-output must be matched (see Anchored vs. unanchored regular
-expressions). \
+output must be matched (see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 `exec_program`
 
@@ -2675,13 +2892,15 @@ status is zero
 **Example**:\
  \
 
-         
-         body file_select example
-         {
-         exec_program => "/path/test_program $(this.promiser)";
-         file_result => "exec_program";
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select example
+     {
+     exec_program => "/path/test_program $(this.promiser)";
+     file_result => "exec_program";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2696,29 +2915,33 @@ matched. \
 
 **Allowed input range**: \
 
-                        plain
-                        reg
-                        symlink
-                        dir
-                        socket
-                        fifo
-                        door
-                        char
-                        block
+~~~~ {.example}
+                    plain
+                    reg
+                    symlink
+                    dir
+                    socket
+                    fifo
+                    door
+                    char
+                    block
+~~~~
 
 **Synopsis**: List of acceptable file types from menu choices
 
 **Example**:\
  \
 
-         
-         body file_select filter
-         {
-         file_types => { "plain","symlink" };
-         
-         file_result => "file_types";
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select filter
+     {
+     file_types => { "plain","symlink" };
+     
+     file_result => "file_types";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2738,12 +2961,14 @@ plain. In both cases this means not one of the "special" file types. \
 **Example**:\
  \
 
-         
-         body file_select example
-         {
-         issymlinkto => { "/etc/[^/]*", "/etc/init\.d/[a-z0-9]*" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select example
+     {
+     issymlinkto => { "/etc/[^/]*", "/etc/init\.d/[a-z0-9]*" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2766,24 +2991,26 @@ search criteria
 **Example**:\
  \
 
-         
-         body file_select year_or_less
-         
-         {
-         mtime       => irange(ago(1,0,0,0,0,0),now);  
-         file_result => "mtime"; 
-         }
-         
-         body file_select my_pdf_files_morethan1dayold
-         
-         {
-         mtime         => irange(ago(0,0,1,0,0,0),now);  
-         leaf_name     => { ".*\.pdf" , ".*\.fdf" };
-         search_owners => { "mark" };
-         
-         file_result => "owner.leaf_name.!mtime";
-         }
-         
+~~~~ {.verbatim}
+     
+     body file_select year_or_less
+     
+     {
+     mtime       => irange(ago(1,0,0,0,0,0),now);  
+     file_result => "mtime"; 
+     }
+     
+     body file_select my_pdf_files_morethan1dayold
+     
+     {
+     mtime         => irange(ago(0,0,1,0,0,0),now);  
+     leaf_name     => { ".*\.pdf" , ".*\.fdf" };
+     search_owners => { "mark" };
+     
+     file_result => "owner.leaf_name.!mtime";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2832,12 +3059,14 @@ instead of linked
 **Example**:\
  \
 
-         
-         body link_from example
-         {
-         copy_patterns =>  { "special_node1", "/path/special_node2" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body link_from example
+     {
+     copy_patterns =>  { "special_node1", "/path/special_node2" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2854,12 +3083,14 @@ updated by modification time. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false whether to link all directory's children to
 source originals
@@ -2869,12 +3100,14 @@ source originals
 **Example**:\
  \
 
-         
-         body link_from example
-         {
-         link_children => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body link_from example
+     {
+     link_children => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2888,10 +3121,12 @@ them to the source. \
 
 **Allowed input range**: \
 
-                        symlink
-                        hardlink
-                        relative
-                        absolute
+~~~~ {.example}
+                    symlink
+                    hardlink
+                    relative
+                    absolute
+~~~~
 
 **Synopsis**: The type of link used to alias the file
 
@@ -2900,13 +3135,15 @@ them to the source. \
 **Example**:\
  \
 
-         
-         body link_from example
-         {
-         link_type => "symlink";
-         source => "/tmp/source";
-         }
-         
+~~~~ {.verbatim}
+     
+     body link_from example
+     {
+     link_type => "symlink";
+     source => "/tmp/source";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2935,19 +3172,21 @@ are mutually exclusive. \
 **Example**:\
  \
 
-         
-         body copy_from example
-         {
-         source => "/path/to/source";
-         }
-         
-         # or
-         
-         body link_from example
-         {
-         source => "/path/to/source";
-         }
-         
+~~~~ {.verbatim}
+     
+     body copy_from example
+     {
+     source => "/path/to/source";
+     }
+     
+     # or
+     
+     body link_from example
+     {
+     source => "/path/to/source";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2960,8 +3199,10 @@ For remote copies this refers to the file name on the remote server. \
 
 **Allowed input range**: \
 
-                        override_file
-                        if_no_such_file
+~~~~ {.example}
+                    override_file
+                    if_no_such_file
+~~~~
 
 **Synopsis**: Policy for overriding existing files when linking
 directories of children
@@ -2969,12 +3210,14 @@ directories of children
 **Example**:\
  \
 
-         
-         body link_from example
-         {
-         when_linking_children => "if_no_such_file";
-         }
-         
+~~~~ {.verbatim}
+     
+     body link_from example
+     {
+     when_linking_children => "if_no_such_file";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -2993,9 +3236,11 @@ certain fields overridden. \
 
 **Allowed input range**: \
 
-                        force
-                        delete
-                        nop
+~~~~ {.example}
+                    force
+                    delete
+                    nop
+~~~~
 
 **Synopsis**: Behaviour when the source file to link to does not exist
 
@@ -3004,12 +3249,14 @@ certain fields overridden. \
 **Example**:\
  \
 
-         
-         body link_from example
-         {
-         when_no_source => "force";
-         }
-         
+~~~~ {.verbatim}
+     
+     body link_from example
+     {
+     when_no_source => "force";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3025,12 +3272,14 @@ or do nothing.
 
 **Allowed input range**: \
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+~~~~ {.example}
+               true
+               false
+               yes
+               no
+               on
+               off
+~~~~
 
 **Default value:** false
 
@@ -3040,13 +3289,15 @@ creation
 **Example**:\
  \
 
-    files:
+~~~~ {.verbatim}
+files:
 
-      "/tmp/testcopy" 
+  "/tmp/testcopy" 
 
-        copy_from    => mycopy("/tmp/source"),
-        move_obstructions => "true",
-        depth_search => recurse("inf");
+    copy_from    => mycopy("/tmp/source"),
+    move_obstructions => "true",
+    depth_search => recurse("inf");
+~~~~
 
 **Notes**:\
  \
@@ -3072,29 +3323,33 @@ link, if the behaviour is different.
 
 **Allowed input range**: \
 
-                   literal
-                   regex
-                   guess
+~~~~ {.example}
+               literal
+               regex
+               guess
+~~~~
 
 **Synopsis**: Menu option for interpreting promiser file object
 
 **Example**:\
  \
 
-    files:
+~~~~ {.verbatim}
+files:
 
-       "/var/lib\d"
-          pathtype => "guess",  # best guess (default)
-             perms => system;
+   "/var/lib\d"
+      pathtype => "guess",  # best guess (default)
+         perms => system;
 
-       "/var/lib\d"
-          pathtype => "regex",  # force regex interpretation
-             perms => system;
+   "/var/lib\d"
+      pathtype => "regex",  # force regex interpretation
+         perms => system;
 
-       "/var/.*/lib"
+   "/var/.*/lib"
 
-          pathtype => "literal",    # force literal interpretation
-             perms => system;
+      pathtype => "literal",    # force literal interpretation
+         perms => system;
+~~~~
 
 **Notes**:\
  \
@@ -3126,7 +3381,8 @@ separator, since the backward slash has a special meaning in a regular
 expression. Literal paths may also use backslash (`\`) as a path
 separator.
 
-See Regular expressions in paths, for more information.
+See [Regular expressions in paths](#Regular-expressions-in-paths), for
+more information.
 
 #### `perms` (body template)
 
@@ -3144,14 +3400,16 @@ See Regular expressions in paths, for more information.
 **Example**:\
  \
 
-         
-         body perms example
-         
-         {
-         bsdflags => { "uappnd","uchg","uunlnk","nodump",
-                       "opaque","sappnd","schg","sunlnk" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body perms example
+     
+     {
+     bsdflags => { "uappnd","uchg","uunlnk","nodump",
+                   "opaque","sappnd","schg","sunlnk" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3172,11 +3430,13 @@ target
 **Example**:\
  \
 
-         body perms example
-         {
-         groups => { "users", "administrators" };
-         }
-         
+~~~~ {.verbatim}
+     body perms example
+     {
+     groups => { "users", "administrators" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3200,12 +3460,14 @@ ACLs may be used in place for this. \
 **Example**:\
  \
 
-         
-         body perms example
-         {
-         mode => "a+rx,o+w";
-         }
-         
+~~~~ {.verbatim}
+     
+     body perms example
+     {
+     mode => "a+rx,o+w";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3226,12 +3488,14 @@ target
 **Example**:\
  \
 
-         
-         body perms example
-         {
-         owners => { "mark", "wwwrun", "jeang" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body perms example
+     {
+     owners => { "mark", "wwwrun", "jeang" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3252,12 +3516,14 @@ on Windows (such as the Administrators group). \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false add execute flag for directories if read flag
 is set
@@ -3265,12 +3531,14 @@ is set
 **Example**:\
  \
 
-         
-         body perms rxdirs
-         {
-         rxdirs => "false";
-         }
-         
+~~~~ {.verbatim}
+     
+     body perms rxdirs
+     {
+     rxdirs => "false";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3289,12 +3557,14 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false automatically rename and remove permissions
 
@@ -3303,13 +3573,15 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
 **Example**:\
  \
 
-         
-         body rename example
-         {
-         disable => "true"; 
-         disable_suffix => ".nuked";
-         }
-         
+~~~~ {.verbatim}
+     
+     body rename example
+     {
+     disable => "true"; 
+     disable_suffix => ".nuked";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3329,12 +3601,14 @@ unreadable. \
 **Example**:\
  \
 
-         
-         body rename example
-         {
-         disable_mode => "0600"; 
-         }
-         
+~~~~ {.verbatim}
+     
+     body rename example
+     {
+     disable_mode => "0600"; 
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3353,13 +3627,15 @@ remove the executable flag. \
 **Example**:\
  \
 
-         
-         body rename example
-         {
-         disable => "true"; 
-         disable_suffix => ".nuked";
-         }
-         
+~~~~ {.verbatim}
+     
+     body rename example
+     {
+     disable => "true"; 
+     disable_suffix => ".nuked";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3378,12 +3654,14 @@ default value is .cf-disabled. \
 **Example**:\
  \
 
-         
-         body rename example(s)
-         {
-         newname => "$(s)";
-         }
-         
+~~~~ {.verbatim}
+     
+     body rename example(s)
+     {
+     newname => "$(s)";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3400,12 +3678,14 @@ default value is .cf-disabled. \
 **Example**:\
  \
 
-         
-         body rename example
-         {
-         rotate => "4";
-         }
-         
+~~~~ {.verbatim}
+     
+     body rename example
+     {
+     rotate => "4";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -3437,19 +3717,21 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example**:\
  \
 
-    files:
+~~~~ {.verbatim}
+files:
 
-     "/path/file"
+ "/path/file"
 
-       copy_from => source,
-       repository => "/var/cfengine/repository";
+   copy_from => source,
+   repository => "/var/cfengine/repository";
+~~~~
 
 **Notes**:\
  \
 
 A local repository for this object, overrides the default.
 
-See default\_repository
+See [default\_repository](#default_005frepository-in-agent)
 
 Note that when a repository is specified, the files are stored using the
 canonified directory name of the original file, concatenated with the
@@ -3463,23 +3745,27 @@ ordinarily be stored in an alternative repository as
 
 **Allowed input range**: \
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+~~~~ {.example}
+               true
+               false
+               yes
+               no
+               on
+               off
+~~~~
 
 **Synopsis**: true/false whether to touch time stamps on file
 
 **Example**:\
  \
 
-    files:
+~~~~ {.verbatim}
+files:
 
-     "/path/file"
+ "/path/file"
 
-       touch => "true";
+   touch => "true";
+~~~~
 
 **Notes**:\
  \
@@ -3496,22 +3782,26 @@ ordinarily be stored in an alternative repository as
 **Example**:\
  \
 
-    files:
-      "/home/mark/tmp/testcopy"
+~~~~ {.verbatim}
+files:
+  "/home/mark/tmp/testcopy"
 
-        file_select => pdf_files,
-        transformer => "/usr/bin/gzip $(this.promiser)",
-        depth_search => recurse("inf");
+    file_select => pdf_files,
+    transformer => "/usr/bin/gzip $(this.promiser)",
+    depth_search => recurse("inf");
+~~~~
 
-     classes:
-        "do_update" expression => isnewerthan("/etc/postfix/alias",
-                                              "/etc/postfix/alias.cdb");
+~~~~ {.verbatim}
+ classes:
+    "do_update" expression => isnewerthan("/etc/postfix/alias",
+                                          "/etc/postfix/alias.cdb");
 
-     files:
-        "/etc/postfix/alias.cdb"
-           create => "true",        # Must have this!
-           transformer => "/usr/sbin/postalias /etc/postfix/alias",
-           ifvarclass => "do_update";
+ files:
+    "/etc/postfix/alias.cdb"
+       create => "true",        # Must have this!
+       transformer => "/usr/sbin/postalias /etc/postfix/alias",
+       ifvarclass => "do_update";
+~~~~
 
 **Notes**:\
  \
@@ -3538,13 +3828,17 @@ Note also that if you use the `$(this.promiser)` variable or other
 variable in this command, and the file object contains spaces, then you
 should quote the variable. For example:
 
-        transformer => "/usr/bin/gzip \"$(this.promiser)\"",
+~~~~ {.verbatim}
+    transformer => "/usr/bin/gzip \"$(this.promiser)\"",
+~~~~
 
 Note also that the transformer does not actually need to change the
 file. You can, for example, simply report on the existence of files
 with:
 
-        transformer => "/bin/echo I found a file named $(this.promiser)",
+~~~~ {.verbatim}
+    transformer => "/bin/echo I found a file named $(this.promiser)",
+~~~~
 
 The file streams `stdout` and `stderr` are redirected by CFEngine, and
 will not appear in any output unless you run `cf-agent` with the -v

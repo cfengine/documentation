@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: databases-in-agent-promises-2
+categories: [Bundles-for-agent,databases-in-agent-promises-2]
 published: true
-alias: Bundles-for-agent-0-databases-in-agent-promises-2.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-databases-in-agent-promises-2.html
+tags: [Bundles-for-agent,databases-in-agent-promises-2]
 ---
 
 ### `databases` promises in agent
@@ -55,89 +55,93 @@ and CFEngine cannot make promises on their behalf, unless they promise
 pre-requisite for making SQL database promises is to grant a point of
 access on the server.
 
-         
-          databases:
-         
-           "database/subkey or table"
-         
-             database_operation = "create/delete/drop",
-             database_type = "sql/ms_registry",
-             database_columns = {
-                                 "name,type,size",
-                                 "name,type",
-                                 },
-         
-             database_server = body;
-         
-         
-          body database_server name
-           {
-           db_server_owner = "account name";
-           db_server_password = "password";
-           db_server_host = "hostname or omit for localhost";
-           db_server_type = "mysql/posgres";
-           db_server_connection_db = "database we can connect to";
-           }
-         
+~~~~ {.smallexample}
+     
+      databases:
+     
+       "database/subkey or table"
+     
+         database_operation = "create/delete/drop",
+         database_type = "sql/ms_registry",
+         database_columns = {
+                             "name,type,size",
+                             "name,type",
+                             },
+     
+         database_server = body;
+     
+     
+      body database_server name
+       {
+       db_server_owner = "account name";
+       db_server_password = "password";
+       db_server_host = "hostname or omit for localhost";
+       db_server_type = "mysql/posgres";
+       db_server_connection_db = "database we can connect to";
+       }
+     
+~~~~
 
 \
 
-    body common control
-    {
-    bundlesequence => { "databases" };
-    }
+~~~~ {.verbatim}
+body common control
+{
+bundlesequence => { "databases" };
+}
 
-    bundle agent databases
+bundle agent databases
 
-    {
-    #commands:
+{
+#commands:
 
-    #  "/usr/bin/createdb cf_topic_maps",
+#  "/usr/bin/createdb cf_topic_maps",
 
-    #        contain => as_user("mysql");
+#        contain => as_user("mysql");
 
-    databases:
+databases:
 
-      "cf_topic_maps/topics"
+  "cf_topic_maps/topics"
 
-        database_operation => "create",
-        database_type => "sql",
-        database_columns => { 
-                            "topic_name,varchar,256",
-                            "topic_comment,varchar,1024",
-                            "topic_id,varchar,256",
-                            "topic_type,varchar,256",
-                            "topic_extra,varchar,26" 
-                            },
+    database_operation => "create",
+    database_type => "sql",
+    database_columns => { 
+                        "topic_name,varchar,256",
+                        "topic_comment,varchar,1024",
+                        "topic_id,varchar,256",
+                        "topic_type,varchar,256",
+                        "topic_extra,varchar,26" 
+                        },
 
-        database_server => myserver;
+    database_server => myserver;
 
 
 
-    }
+}
 
-    ################################################
+################################################
 
-    body database_server myserver
-    {
-    any::
-     db_server_owner => "postgres";
-     db_server_password => "";
-     db_server_host => "localhost";
-     db_server_type => "postgres";
-     db_server_connection_db => "postgres";
-    none::
-     db_server_owner => "root";
-     db_server_password => "";
-     db_server_host => "localhost";
-     db_server_type => "mysql";
-     db_server_connection_db => "mysql";
-    }
+body database_server myserver
+{
+any::
+ db_server_owner => "postgres";
+ db_server_password => "";
+ db_server_host => "localhost";
+ db_server_type => "postgres";
+ db_server_connection_db => "postgres";
+none::
+ db_server_owner => "root";
+ db_server_password => "";
+ db_server_host => "localhost";
+ db_server_type => "mysql";
+ db_server_connection_db => "mysql";
+}
 
-    body contain as_user(x)
-    {
-    exec_owner => "$(x)";
-    }
+body contain as_user(x)
+{
+exec_owner => "$(x)";
+}
+~~~~
 
 \
 
@@ -148,12 +152,13 @@ Windows registry for instance. Entity-relation databases do not normally
 present tables in this way, but no harm is done in representing them as
 a hierarchy of depth 1.
 
--   database\_server in databases
--   database\_type in databases
--   database\_operation in databases
--   database\_columns in databases
--   database\_rows in databases
--   registry\_exclude in databases
+-   [database\_server in databases](#database_005fserver-in-databases)
+-   [database\_type in databases](#database_005ftype-in-databases)
+-   [database\_operation in
+    databases](#database_005foperation-in-databases)
+-   [database\_columns in databases](#database_005fcolumns-in-databases)
+-   [database\_rows in databases](#database_005frows-in-databases)
+-   [registry\_exclude in databases](#registry_005fexclude-in-databases)
 
 #### `database_server` (body template)
 
@@ -170,9 +175,11 @@ a hierarchy of depth 1.
 **Example**:\
  \
 
-         
-         db_server_owner => "mark";
-         
+~~~~ {.verbatim}
+     
+     db_server_owner => "mark";
+     
+~~~~
 
 **Notes**:\
  \
@@ -189,9 +196,11 @@ a hierarchy of depth 1.
 **Example**:\
  \
 
-         
-         db_server_password => "xyz.1234";
-         
+~~~~ {.verbatim}
+     
+     db_server_password => "xyz.1234";
+     
+~~~~
 
 **Notes**:\
  \
@@ -209,9 +218,11 @@ means localhost)
 **Example**:\
  \
 
-         
-         db_server_host => "sqlserv.example.org";
-         
+~~~~ {.verbatim}
+     
+     db_server_host => "sqlserv.example.org";
+     
+~~~~
 
 **Notes**:\
  \
@@ -224,8 +235,10 @@ Hostname or IP address of the server. \
 
 **Allowed input range**: \
 
-                        postgres
-                        mysql
+~~~~ {.example}
+                    postgres
+                    mysql
+~~~~
 
 **Synopsis**: The dialect of the database server
 
@@ -234,9 +247,11 @@ Hostname or IP address of the server. \
 **Example**:\
  \
 
-         
-         db_server_type => "postgres";
-         
+~~~~ {.verbatim}
+     
+     db_server_type => "postgres";
+     
+~~~~
 
 **Notes**:\
  \
@@ -254,16 +269,18 @@ create/manage other databases
 **Example**:\
  \
 
-         
-         body database_server myserver(x)
-         {
-         db_server_owner => "$(x)";
-         db_server_password => "";
-         db_server_host => "localhost";
-         db_server_type => "$(mysql)";
-         db_server_connection_db => "$(x)";
-         }
-         
+~~~~ {.verbatim}
+     
+     body database_server myserver(x)
+     {
+     db_server_owner => "$(x)";
+     db_server_password => "";
+     db_server_host => "localhost";
+     db_server_type => "$(mysql)";
+     db_server_connection_db => "$(x)";
+     }
+     
+~~~~
 
 where x is currently `mysql` or `postgres`.
 
@@ -287,8 +304,10 @@ body.
 
 **Allowed input range**: \
 
-                   sql
-                   ms_registry
+~~~~ {.example}
+               sql
+               ms_registry
+~~~~
 
 **Default value:** none
 
@@ -297,7 +316,9 @@ body.
 **Example**:\
  \
 
-    database_type => "ms_registry";
+~~~~ {.verbatim}
+database_type => "ms_registry";
+~~~~
 
 **Notes**:\
  \
@@ -308,19 +329,23 @@ body.
 
 **Allowed input range**: \
 
-                   create
-                   delete
-                   drop
-                   cache
-                   verify
-                   restore
+~~~~ {.example}
+               create
+               delete
+               drop
+               cache
+               verify
+               restore
+~~~~
 
 **Synopsis**: The nature of the promise - to be or not to be
 
 **Example**:\
  \
 
-    database_operation => "create";
+~~~~ {.verbatim}
+database_operation => "create";
+~~~~
 
 **Notes**:\
  \
@@ -337,19 +362,21 @@ databases
 **Example**:\
  \
 
-      "cf_topic_maps/topics"
+~~~~ {.verbatim}
+  "cf_topic_maps/topics"
 
-        database_operation => "create",
-        database_type => "sql",
-        database_columns => { 
-                            "topic_name,varchar,256",
-                            "topic_comment,varchar,1024",
-                            "topic_id,varchar,256",
-                            "topic_type,varchar,256",
-                            "topic_extra,varchar,26" 
-                            },
+    database_operation => "create",
+    database_type => "sql",
+    database_columns => { 
+                        "topic_name,varchar,256",
+                        "topic_comment,varchar,1024",
+                        "topic_id,varchar,256",
+                        "topic_type,varchar,256",
+                        "topic_extra,varchar,26" 
+                        },
 
-        database_server => myserver;
+    database_server => myserver;
+~~~~
 
 **Notes**:\
  \
@@ -369,21 +396,23 @@ databases
 **Example**:\
  \
 
-    bundle agent databases
+~~~~ {.verbatim}
+bundle agent databases
 
-    {
-    databases:
+{
+databases:
 
-     windows::
+ windows::
 
-      # Regsitry has (value,data) pairs in "keys" which are directories
+  # Regsitry has (value,data) pairs in "keys" which are directories
 
-      "HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine"
+  "HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine"
 
-        database_operation => "create",
-        database_rows => { "value1,REG_SZ,new value 1", "value2,REG_DWORD,12345"} ,
-        database_type     => "ms_registry";
-    }
+    database_operation => "create",
+    database_rows => { "value1,REG_SZ,new value 1", "value2,REG_DWORD,12345"} ,
+    database_type     => "ms_registry";
+}
+~~~~
 
 **Notes**:\
  \
@@ -408,22 +437,24 @@ verification
 **Example**:\
  \
 
-    databases:
+~~~~ {.verbatim}
+databases:
 
-     "HKEY_LOCAL_MACHINE\SOFTWARE"
+ "HKEY_LOCAL_MACHINE\SOFTWARE"
 
-        database_operation => "cache",
+    database_operation => "cache",
 
-        registry_exclude => { ".*Windows.*CurrentVersion.*", 
-                              ".*Touchpad.*",
-                              ".*Capabilities.FileAssociations.*", 
-                              ".*Rfc1766.*" , 
-                              ".*Synaptics.SynTP.*", 
-                              ".*SupportedDevices.*8086", 
-                              ".*Microsoft.*ErrorThresholds" 
-                            },
+    registry_exclude => { ".*Windows.*CurrentVersion.*", 
+                          ".*Touchpad.*",
+                          ".*Capabilities.FileAssociations.*", 
+                          ".*Rfc1766.*" , 
+                          ".*Synaptics.SynTP.*", 
+                          ".*SupportedDevices.*8086", 
+                          ".*Microsoft.*ErrorThresholds" 
+                        },
 
-        database_type     => "ms_registry";
+    database_type     => "ms_registry";
+~~~~
 
 **Notes**:\
  \

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-strcmp-92
+categories: [Special-functions,Function-strcmp-92]
 published: true
-alias: Special-functions-0-Function-strcmp-92.markdown.html
-tags: [xx]
+alias: Special-functions-Function-strcmp-92.html
+tags: [Special-functions,Function-strcmp-92]
 ---
 
 ### Function strcmp
@@ -20,31 +20,33 @@ True if the two strings match exactly
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "same" expression => strcmp("test","test");
+  "same" expression => strcmp("test","test");
 
-    reports:
+reports:
 
-      same::
+  same::
 
-        "Strings are equal";
+    "Strings are equal";
 
-     !same::
+ !same::
 
-        "Strings are not equal";
-    }
+    "Strings are not equal";
+}
+~~~~
 
 **Notes**:\
  \

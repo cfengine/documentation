@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-hostinnetgroup-33
+categories: [Special-functions,Function-hostinnetgroup-33]
 published: true
-alias: Special-functions-0-Function-hostinnetgroup-33.markdown.html
-tags: [xx]
+alias: Special-functions-Function-hostinnetgroup-33.html
+tags: [Special-functions,Function-hostinnetgroup-33]
 ---
 
 ### Function hostinnetgroup
@@ -19,9 +19,11 @@ True if the current host is in the named netgroup
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-      "ingroup" expression => hostinnetgroup("my_net_group");
+  "ingroup" expression => hostinnetgroup("my_net_group");
+~~~~
 
 **Notes**:\
  \

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-randomint-68
+categories: [Special-functions,Function-randomint-68]
 published: true
-alias: Special-functions-0-Function-randomint-68.markdown.html
-tags: [xx]
+alias: Special-functions-Function-randomint-68.html
+tags: [Special-functions,Function-randomint-68]
 ---
 
 ### Function randomint
@@ -22,9 +22,11 @@ Generate a random integer between the given limits
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "ran"    int => randomint(4,88);
+ "ran"    int => randomint(4,88);
+~~~~
 
 **Notes**:\
  \

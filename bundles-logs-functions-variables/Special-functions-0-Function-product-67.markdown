@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-product-67
+categories: [Special-functions,Function-product-67]
 published: true
-alias: Special-functions-0-Function-product-67.markdown.html
-tags: [xx]
+alias: Special-functions-Function-product-67.html
+tags: [Special-functions,Function-product-67]
 ---
 
 ### Function product
@@ -20,21 +20,23 @@ Return the product of a list of reals
 **Example**:\
  \
 
-    bundle agent test
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent test
+{
+vars:
 
-      "series" rlist => { "1.1", "2.2", "3.3", "5.5", "7.7" };
+  "series" rlist => { "1.1", "2.2", "3.3", "5.5", "7.7" };
 
-      "prod" real => product("series");
-      "sum"  real => sum("series");
+  "prod" real => product("series");
+  "sum"  real => sum("series");
 
-    reports:
+reports:
 
-      cfengine_3::
+  cfengine_3::
 
-        "Product result: $(prod) > $(sum)";
-    }
+    "Product result: $(prod) > $(sum)";
+}
+~~~~
 
 **Notes**:\
  \

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Variable-context-match-3
+categories: [Special-Variables,Variable-context-match-3]
 published: true
-alias: Special-Variables-0-Variable-context-match-3.markdown.html
-tags: [xx]
+alias: Special-Variables-Variable-context-match-3.html
+tags: [Special-Variables,Variable-context-match-3]
 ---
 
 ### Variable context `match`
@@ -19,26 +19,28 @@ other is in searching for files.
 
 Consider the examples below:
 
-    bundle agent testbundle
+~~~~ {.verbatim}
+bundle agent testbundle
 
-    {
-    files:
+{
+files:
 
-      "/home/mark/tmp/(cf[23])_(.*)"
-           create    => "true",
-           edit_line => myedit("second $(match.2)");
-
-
-      # but more specifically...
-
-      "/home/mark/tmp/cf3_(test)"
-           create    => "true",
-           edit_line => myedit("second $(match.1)");
+  "/home/mark/tmp/(cf[23])_(.*)"
+       create    => "true",
+       edit_line => myedit("second $(match.2)");
 
 
-    }
+  # but more specifically...
 
--   Variable match.0
+  "/home/mark/tmp/cf3_(test)"
+       create    => "true",
+       edit_line => myedit("second $(match.1)");
+
+
+}
+~~~~
+
+-   [Variable match.0](#Variable-match_002e0)
 
 #### Variable match.0
 

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: defaults-in-common-promises-2
+categories: [Bundles-for-common,defaults-in-common-promises-2]
 published: true
-alias: Bundles-for-common-0-defaults-in-common-promises-2.markdown.html
-tags: [xx]
+alias: Bundles-for-common-defaults-in-common-promises-2.html
+tags: [Bundles-for-common,defaults-in-common-promises-2]
 ---
 
 ### `defaults` promises in \*
@@ -23,90 +23,94 @@ Some variables might be defined but still contain unresolved variables.
 To handle this you will need to match the `$(abc)` form of the
 variables.
 
-    body common control
-    {
-    bundlesequence => { "main" };
-    }
+~~~~ {.verbatim}
+body common control
+{
+bundlesequence => { "main" };
+}
 
-    bundle agent main
-    {
-    methods:
+bundle agent main
+{
+methods:
 
-      "example"  usebundle => test("one","x","","$(four)");
+  "example"  usebundle => test("one","x","","$(four)");
 
-    }
+}
 
-    bundle agent test(a,b,c,d)
-    {
-    defaults:
+bundle agent test(a,b,c,d)
+{
+defaults:
 
-     "a" string => "default a", if_match_regex => "";
-     "b" string => "default b", if_match_regex => "x";
-     "c" string => "default c", if_match_regex => "";
-     "d" string => "default d", if_match_regex => "\$\([a-zA-Z0-9_.]+\)";
+ "a" string => "default a", if_match_regex => "";
+ "b" string => "default b", if_match_regex => "x";
+ "c" string => "default c", if_match_regex => "";
+ "d" string => "default d", if_match_regex => "\$\([a-zA-Z0-9_.]+\)";
 
-    reports:
+reports:
 
-       !nothing::
+   !nothing::
 
-       "a = '$(a)', b = '$(b)', c = '$(c)' d = '$(d)'";
-    }
+   "a = '$(a)', b = '$(b)', c = '$(c)' d = '$(d)'";
+}
+~~~~
 
 Another example:
 
-    bundle agent example
+~~~~ {.verbatim}
+bundle agent example
 
-    {     
-    defaults:
+{     
+defaults:
 
-      "X" string => "I am a default value";
-      "Y" slist => { "I am a default list item 1", "I am a default list item 2" };
+  "X" string => "I am a default value";
+  "Y" slist => { "I am a default list item 1", "I am a default list item 2" };
 
-    methods:
+methods:
 
-     "example" usebundle => mymethod("","bbb");
+ "example" usebundle => mymethod("","bbb");
 
-    reports:
+reports:
 
-     !xyz::
+ !xyz::
 
-       "The default value of X is $(X)";
-       "The default value of Y is $(Y)";
-    }
+   "The default value of X is $(X)";
+   "The default value of Y is $(Y)";
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent mymethod(a,b)
+bundle agent mymethod(a,b)
 
-    {
-    vars:
+{
+vars:
 
-      "no_return" string => "ok"; # readfile("/dont/exist","123");
+  "no_return" string => "ok"; # readfile("/dont/exist","123");
 
-    defaults:
+defaults:
 
-      "a" string => "AAAAAAAAA",   if_match_regex => "";
+  "a" string => "AAAAAAAAA",   if_match_regex => "";
 
-      "b" string => "BBBBBBBBB",   if_match_regex => "";
+  "b" string => "BBBBBBBBB",   if_match_regex => "";
 
-      "no_return" string => "no such file";
+  "no_return" string => "no such file";
 
-    reports:
+reports:
 
-      !xyz::
+  !xyz::
 
-         "The value of a is $(a)";
-         "The value of b is $(b)";
+     "The value of a is $(a)";
+     "The value of b is $(b)";
 
-         "The value of no_return is $(no_return)";
+     "The value of no_return is $(no_return)";
 
-    }
+}
+~~~~
 
 \
 
--   if\_match\_regex in defaults
--   string in defaults
--   slist in defaults
+-   [if\_match\_regex in defaults](#if_005fmatch_005fregex-in-defaults)
+-   [string in defaults](#string-in-defaults)
+-   [slist in defaults](#slist-in-defaults)
 
 #### `if_match_regex`
 
@@ -124,13 +128,15 @@ and replaced with the default value.
 **Example**:\
  \
 
-    bundle agent mymethod(a,b)
-    {
-    defaults:
+~~~~ {.verbatim}
+bundle agent mymethod(a,b)
+{
+defaults:
 
-      "a" string => "AAAAAAAAA",   if_match_regex => "";
-      "b" string => "BBBBBBBBB",   if_match_regex => "";
-    }
+  "a" string => "AAAAAAAAA",   if_match_regex => "";
+  "b" string => "BBBBBBBBB",   if_match_regex => "";
+}
+~~~~
 
 #### `string`
 
@@ -147,11 +153,13 @@ CFEngine 3 lists are kept as an independent type.
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "xxx"    string => "Some literal string...";
+ "xxx"    string => "Some literal string...";
 
-     "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
+ "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
+~~~~
 
 #### `slist`
 
@@ -161,27 +169,31 @@ CFEngine 3 lists are kept as an independent type.
 
 **Synopsis**: A list of scalar strings
 
-Some functions return `slist`s (see Introduction to functions), and an
-`slist` may contain the values copied from another `slist`, `rlist`, or
-`ilist` (see List variable substitution and expansion, and policy in
-vars).
+Some functions return `slist`s (see [Introduction to
+functions](#Introduction-to-functions)), and an `slist` may contain the
+values copied from another `slist`, `rlist`, or `ilist` (see [List
+variable substitution and
+expansion](#List-variable-substitution-and-expansion), and [policy in
+vars](#policy-in-vars)).
 
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "xxx"    slist  => {  "literal1",  "literal2" };
+ "xxx"    slist  => {  "literal1",  "literal2" };
 
-     "yyy"    slist  => { 
-                        readstringlist(
-                                      "/home/mark/tmp/testlist",
-                                      "#[a-zA-Z0-9 ]*",
-                                      "[^a-zA-Z0-9]",
-                                      15,
-                                      4000
-                                      ) 
-                        };
+ "yyy"    slist  => { 
+                    readstringlist(
+                                  "/home/mark/tmp/testlist",
+                                  "#[a-zA-Z0-9 ]*",
+                                  "[^a-zA-Z0-9]",
+                                  15,
+                                  4000
+                                  ) 
+                    };
 
-     "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
+ "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
 
+~~~~

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-getfields-21
+categories: [Special-functions,Function-getfields-21]
 published: true
-alias: Special-functions-0-Function-getfields-21.markdown.html
-tags: [xx]
+alias: Special-functions-Function-getfields-21.html
+tags: [Special-functions,Function-getfields-21]
 ---
 
 ### Function getfields
@@ -23,21 +23,23 @@ split on regex arg3 as array name arg4
 **Example**:\
  \
 
-    bundle agent example
+~~~~ {.verbatim}
+bundle agent example
 
-    {     
-    vars:
+{     
+vars:
 
-      "no" int => getfields("mark:.*","/etc/passwd",":","userdata");
+  "no" int => getfields("mark:.*","/etc/passwd",":","userdata");
 
-    reports:
+reports:
 
-      cfengine_3::
+  cfengine_3::
 
-        "Found $(no) lines matching";
-        "Mark's homedir = $(userdata[6])";
+    "Found $(no) lines matching";
+    "Mark's homedir = $(userdata[6])";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -51,8 +53,9 @@ Unix password or group files.
 regex
 
 A regular expression matching one or more lines. The regular expression
-is anchored, meaning it must match the entire line (see Anchored vs.
-unanchored regular expressions). \
+is anchored, meaning it must match the entire line (see [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 filename
 
@@ -70,4 +73,5 @@ The base name of the array that returns the values.
 The function returns the number of lines matched. This function is most
 useful when you want only the first matching line (e.g., to mimic the
 behavior of the *getpwnam(3)* on the file /etc/passwd). If you want to
-examine *all* matching lines, use Function readstringarray, instead.
+examine *all* matching lines, use [Function
+readstringarray](#Function-readstringarray), instead.

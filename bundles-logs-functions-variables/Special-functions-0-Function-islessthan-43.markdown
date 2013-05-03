@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-islessthan-43
+categories: [Special-functions,Function-islessthan-43]
 published: true
-alias: Special-functions-0-Function-islessthan-43.markdown.html
-tags: [xx]
+alias: Special-functions-Function-islessthan-43.html
+tags: [Special-functions,Function-islessthan-43]
 ---
 
 ### Function islessthan
@@ -21,32 +21,34 @@ NOT strcmp
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "test"  };
-    }
+{
+bundlesequence  => { "test"  };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent test
+bundle agent test
 
-    {
-    classes:
+{
+classes:
 
-      "ok" expression => islessthan("0","1");
+  "ok" expression => islessthan("0","1");
 
-    reports:
+reports:
 
-      ok::
+  ok::
 
-        "Assertion is true";
+    "Assertion is true";
 
-     !ok::
+ !ok::
 
-      "Assertion is false";
+  "Assertion is false";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

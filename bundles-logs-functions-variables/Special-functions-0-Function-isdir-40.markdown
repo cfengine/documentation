@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-isdir-40
+categories: [Special-functions,Function-isdir-40]
 published: true
-alias: Special-functions-0-Function-isdir-40.markdown.html
-tags: [xx]
+alias: Special-functions-Function-isdir-40.html
+tags: [Special-functions,Function-isdir-40]
 ---
 
 ### Function isdir
@@ -19,29 +19,31 @@ True if the named object is a directory
 **Example**:\
  \
 
+~~~~ {.verbatim}
 
-    body common control
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "isdir" expression => isdir("/etc");
+  "isdir" expression => isdir("/etc");
 
-    reports:
+reports:
 
-      isdir::
+  isdir::
 
-        "Directory exists..";
+    "Directory exists..";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

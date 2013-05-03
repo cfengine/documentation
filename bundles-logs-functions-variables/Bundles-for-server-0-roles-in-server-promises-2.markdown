@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: roles-in-server-promises-2
+categories: [Bundles-for-server,roles-in-server-promises-2]
 published: true
-alias: Bundles-for-server-0-roles-in-server-promises-2.markdown.html
-tags: [xx]
+alias: Bundles-for-server-roles-in-server-promises-2.html
+tags: [Bundles-for-server,roles-in-server-promises-2]
 ---
 
 ### `roles` promises in server
@@ -17,15 +17,18 @@ of `cf-agent`. This implements a form of Role Based Access Control
 (RBAC) for pre-assigned class-promise bindings. The user names cited
 must be attached to trusted public keys in order to be accepted. The
 regular expression is anchored, meaning it must match the entire name
-(see Anchored vs. unanchored regular expressions).
+(see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
-         
-          roles:
-         
-            "regex"
-         
-               authorize = { "usernames", ... };
-         
+~~~~ {.smallexample}
+     
+      roles:
+     
+        "regex"
+     
+           authorize = { "usernames", ... };
+     
+~~~~
 
 *It is worth re-iterating here that it is not possible to send commands
 or modify promise definitions by remote access. At best users may try to
@@ -34,15 +37,17 @@ promises. This mechanism limits their ability to do this*.
 
 \
 
-    bundle server access_rules()
+~~~~ {.verbatim}
+bundle server access_rules()
 
-    {
-    roles:
+{
+roles:
 
-      # Allow mark
+  # Allow mark
 
-      "Myclass_.*"  authorize => { "mark" };
-    }
+  "Myclass_.*"  authorize => { "mark" };
+}
+~~~~
 
 \
 
@@ -52,7 +57,7 @@ classes matching the regular expression when Mark\_.\* using the
 of Role Based Access Control (RBAC), provided users do not have
 privileged access on the host directly.
 
--   authorize in roles
+-   [authorize in roles](#authorize-in-roles)
 
 #### `authorize`
 
@@ -66,9 +71,11 @@ the promised class during remote agent activation
 **Example**:\
  \
 
-    roles:
+~~~~ {.verbatim}
+roles:
 
-      ".*"  authorize => { "mark", "marks_friend" };
+  ".*"  authorize => { "mark", "marks_friend" };
+~~~~
 
 **Notes**:\
  \

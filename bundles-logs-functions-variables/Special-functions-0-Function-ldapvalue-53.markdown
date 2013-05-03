@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-ldapvalue-53
+categories: [Special-functions,Function-ldapvalue-53]
 published: true
-alias: Special-functions-0-Function-ldapvalue-53.markdown.html
-tags: [xx]
+alias: Special-functions-Function-ldapvalue-53.html
+tags: [Special-functions,Function-ldapvalue-53]
 ---
 
 ### Function ldapvalue
@@ -25,25 +25,29 @@ Extract the first matching named value from ldap
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-       # Get the first matching value for "uid" in schema
+   # Get the first matching value for "uid" in schema
 
-      "value" string => ldapvalue(
-                                 "ldap://ldap.example.org", 
-                                 "dc=cfengine,dc=com",
-                                 "(sn=User)",
-                                 "uid",
-                                 "subtree",
-                                 "none"
-                                 );
+  "value" string => ldapvalue(
+                             "ldap://ldap.example.org", 
+                             "dc=cfengine,dc=com",
+                             "(sn=User)",
+                             "uid",
+                             "subtree",
+                             "none"
+                             );
+~~~~
 
 **Notes**:\
  \
 
-         
-         (string) ldapvalue(uri,dn,filter,name,scope,security)
-         
+~~~~ {.example}
+     
+     (string) ldapvalue(uri,dn,filter,name,scope,security)
+     
+~~~~
 
 This function retrieves a single field from a single LDAP record
 identified by the search parameters. The first matching value it taken.
@@ -72,6 +76,8 @@ scope
 Menu option, the type of ldap search, from the specified root. May take
 values:
 
-                  subtree
-                  onelevel
-                  base
+~~~~ {.smallexample}
+              subtree
+              onelevel
+              base
+~~~~

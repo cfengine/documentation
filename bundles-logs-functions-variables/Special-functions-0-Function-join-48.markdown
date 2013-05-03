@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-join-48
+categories: [Special-functions,Function-join-48]
 published: true
-alias: Special-functions-0-Function-join-48.markdown.html
-tags: [xx]
+alias: Special-functions-Function-join-48.html
+tags: [Special-functions,Function-join-48]
 ---
 
 ### Function join
@@ -21,22 +21,24 @@ Join the items of arg2 into a string, using the conjunction in arg1
 **Example**:\
  \
 
-    bundle agent test
+~~~~ {.verbatim}
+bundle agent test
 
-    {
-    vars:
+{
+vars:
 
-      "mylist" slist => { "one", "two", "three", "four", "five" };
+  "mylist" slist => { "one", "two", "three", "four", "five" };
 
-      "scalar" string => join("->","mylist");
+  "scalar" string => join("->","mylist");
 
-    reports:
+reports:
 
-     linux::
+ linux::
 
-      "Concatenated $(scalar)";
+  "Concatenated $(scalar)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

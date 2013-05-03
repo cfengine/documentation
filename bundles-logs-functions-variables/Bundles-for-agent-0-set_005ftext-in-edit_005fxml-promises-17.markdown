@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: set_005ftext-in-edit_005fxml-promises-17
+categories: [Bundles-for-agent,set_005ftext-in-edit_005fxml-promises-17]
 published: true
-alias: Bundles-for-agent-0-set_005ftext-in-edit_005fxml-promises-17.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-set_005ftext-in-edit_005fxml-promises-17.html
+tags: [Bundles-for-agent,set_005ftext-in-edit_005fxml-promises-17]
 ---
 
 ### `set_text` promises in edit\_xml
@@ -20,13 +20,15 @@ promise object referred to is a literal string of text.
 
 \
 
-    bundle edit_xml example
-      {
-      set_text:
-        "text content to replace existing text, including whitespace, within selected node"
+~~~~ {.verbatim}
+bundle edit_xml example
+  {
+  set_text:
+    "text content to replace existing text, including whitespace, within selected node"
 
-        select_xpath => "/Server/Service/Engine/Host/Alias";
-      }
+    select_xpath => "/Server/Service/Engine/Host/Alias";
+  }
+~~~~
 
 \
 

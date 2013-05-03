@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-hostswithclass-36
+categories: [Special-functions,Function-hostswithclass-36]
 published: true
-alias: Special-functions-0-Function-hostswithclass-36.markdown.html
-tags: [xx]
+alias: Special-functions-Function-hostswithclass-36.html
+tags: [Special-functions,Function-hostswithclass-36]
 ---
 
 ### Function hostswithclass
@@ -21,26 +21,28 @@ Extract the list of hosts with the given class set from the hub database
 **Example**:\
  \
 
-    body common control
-    {
-    bundlesequence => { "test" };
-    inputs => { "cfengine_stdlib.cf" };
-    }
+~~~~ {.verbatim}
+body common control
+{
+bundlesequence => { "test" };
+inputs => { "cfengine_stdlib.cf" };
+}
 
 
-    bundle agent test
-    {
-    vars:
+bundle agent test
+{
+vars:
 
-    am_policy_hub::
-     "host_list" slist => hostswithclass( "debian", "name" );
+am_policy_hub::
+ "host_list" slist => hostswithclass( "debian", "name" );
 
-    files:
-    am_policy_hub::
-      "/tmp/master_config.cfg"
-             edit_line => insert_lines("host=$(host_list)"),
-                create => "true";
-    }
+files:
+am_policy_hub::
+  "/tmp/master_config.cfg"
+         edit_line => insert_lines("host=$(host_list)"),
+            create => "true";
+}
+~~~~
 
 **Notes**:\
  \
@@ -57,3 +59,5 @@ hub to construct custom configuration files for (classes of) hosts.
 
 Availability: Enterprise editions of CFEngine only.
 
+~~~~ {.verbatim}
+~~~~

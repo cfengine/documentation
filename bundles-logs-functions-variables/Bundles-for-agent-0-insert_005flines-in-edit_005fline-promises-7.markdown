@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: insert_005flines-in-edit_005fline-promises-7
+categories: [Bundles-for-agent,insert_005flines-in-edit_005fline-promises-7]
 published: true
-alias: Bundles-for-agent-0-insert_005flines-in-edit_005fline-promises-7.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-insert_005flines-in-edit_005fline-promises-7.html
+tags: [Bundles-for-agent,insert_005flines-in-edit_005fline-promises-7]
 ---
 
 ### `insert_lines` promises in edit\_line
@@ -16,51 +16,55 @@ the file at a specified location. The location is determined by
 body-attributes. The promise object referred to can be a literal line of
 a file-reference from which to read lines.
 
-         
-          insert_lines:
-         
-            "literal line or file reference"
-         
-               location = location_body,
-               ...;
-         
+~~~~ {.smallexample}
+     
+      insert_lines:
+     
+        "literal line or file reference"
+     
+           location = location_body,
+           ...;
+     
+~~~~
 
 \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    any::
+{
+any::
 
-      bundlesequence  => {
-                         example
-                         };   
-    }
+  bundlesequence  => {
+                     example
+                     };   
+}
 
-    #######################################################
+#######################################################
 
-    bundle agent example
+bundle agent example
 
-    {
-    files:
+{
+files:
 
-      "/var/spool/cron/crontabs/root"
+  "/var/spool/cron/crontabs/root"
 
-         edit_line => addline;
-    }
+     edit_line => addline;
+}
 
-    #######################################################
-    # For the library
-    #######################################################
+#######################################################
+# For the library
+#######################################################
 
-    bundle edit_line addline
+bundle edit_line addline
 
-    {
-    insert_lines:
+{
+insert_lines:
 
-     "0,5,10,15,20,25,30,35,40,45,50,55 * * * * /var/cfengine/bin/cf-execd -F";
+ "0,5,10,15,20,25,30,35,40,45,50,55 * * * * /var/cfengine/bin/cf-execd -F";
 
-    }
+}
+~~~~
 
 \
 
@@ -72,20 +76,22 @@ file, be careful with your intuition. If your intention is to insert a
 set of lines in a given order after a marker, then the following is
 incorrect:
 
-    bundle edit_line x
-    {
-    insert_lines:
+~~~~ {.verbatim}
+bundle edit_line x
+{
+insert_lines:
 
-      "line one" location => myloc;
-      "line two" location => myloc;
-    }
+  "line one" location => myloc;
+  "line two" location => myloc;
+}
 
-    body location myloc
+body location myloc
 
-    {
-    select_line_matching => "# Right here.*";
-    before_after => "after";
-    }
+{
+select_line_matching => "# Right here.*";
+before_after => "after";
+}
+~~~~
 
 This will reverse the order of the lines and will not converge, since
 the anchoring after the marker applies independently for each new line.
@@ -94,30 +100,38 @@ This is not a bug, but an error of logic.
 What was probably intended was to add multiple ordered lines after the
 marker, which should be a single correlated promise.
 
-    bundle edit_line x
-    {
-    insert_lines:
-     
-     "line one$(const.n)line two" location => myloc;
+~~~~ {.verbatim}
+bundle edit_line x
+{
+insert_lines:
+ 
+ "line one$(const.n)line two" location => myloc;
 
-    }
+}
+~~~~
 
 Or:
 
-    bundle edit_line x
-    {
-    insert_lines:
-     
-      "line one
-    line two" location => myloc;
+~~~~ {.verbatim}
+bundle edit_line x
+{
+insert_lines:
+ 
+  "line one
+line two" location => myloc;
 
-    }
+}
+~~~~
 
--   expand\_scalars in insert\_lines
--   insert\_type in insert\_lines
--   insert\_select in insert\_lines
--   location in insert\_lines
--   whitespace\_policy in insert\_lines
+-   [expand\_scalars in
+    insert\_lines](#expand_005fscalars-in-insert_005flines)
+-   [insert\_type in
+    insert\_lines](#insert_005ftype-in-insert_005flines)
+-   [insert\_select in
+    insert\_lines](#insert_005fselect-in-insert_005flines)
+-   [location in insert\_lines](#location-in-insert_005flines)
+-   [whitespace\_policy in
+    insert\_lines](#whitespace_005fpolicy-in-insert_005flines)
 
 #### `expand_scalars`
 
@@ -125,12 +139,14 @@ Or:
 
 **Allowed input range**: \
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+~~~~ {.example}
+               true
+               false
+               yes
+               no
+               on
+               off
+~~~~
 
 **Default value:** false
 
@@ -139,38 +155,40 @@ Or:
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "testbundle"  };
-    }
+{
+bundlesequence  => { "testbundle"  };
+}
 
-    ########################################################
+########################################################
 
-    bundle agent testbundle
+bundle agent testbundle
 
-    {
-    files:
+{
+files:
 
-      "/home/mark/tmp/file_based_on_template"
+  "/home/mark/tmp/file_based_on_template"
 
-           create    => "true",
-           edit_line => ExpandMeFrom("/tmp/source_template");
+       create    => "true",
+       edit_line => ExpandMeFrom("/tmp/source_template");
 
 
-    }
+}
 
-    ########################################################
+########################################################
 
-    bundle edit_line ExpandMeFrom(template)
-    {
-    insert_lines:
+bundle edit_line ExpandMeFrom(template)
+{
+insert_lines:
 
-       "$(template)"
+   "$(template)"
 
-              insert_type => "file",
-           expand_scalars => "true";
-    }
+          insert_type => "file",
+       expand_scalars => "true";
+}
+~~~~
 
 **Notes**:\
  \
@@ -180,9 +198,11 @@ operations. Variables should be named and scoped appropriately for the
 bundle in which this promise is made. In other words, you should qualify
 the variables with the bundle in which they are defined. For example:
 
-    $(bundle.variable)
-    $(sys.host)
-    $(mon.www_in)
+~~~~ {.verbatim}
+$(bundle.variable)
+$(sys.host)
+$(mon.www_in)
+~~~~
 
 In CFEngine 2 `editfiles` this was called ExpandVariables.
 
@@ -192,11 +212,13 @@ In CFEngine 2 `editfiles` this was called ExpandVariables.
 
 **Allowed input range**: \
 
-                   literal
-                   string
-                   file
-                   file_preserve_block
-                   preserve_block
+~~~~ {.example}
+               literal
+               string
+               file
+               file_preserve_block
+               preserve_block
+~~~~
 
 **Default value:** literal
 
@@ -205,33 +227,37 @@ In CFEngine 2 `editfiles` this was called ExpandVariables.
 **Example**:\
  \
 
-    bundle edit_line lynryd_skynyrd
-    {
-     vars:
-        "keepers" slist => { "Won't you give me", "Gimme three steps" };
+~~~~ {.verbatim}
+bundle edit_line lynryd_skynyrd
+{
+ vars:
+    "keepers" slist => { "Won't you give me", "Gimme three steps" };
 
-     insert_lines:
+ insert_lines:
 
-         "And you'll never see me no more"
-           insert_type => "literal";    # the default
+     "And you'll never see me no more"
+       insert_type => "literal";    # the default
 
-         "/song/lyrics"
-           insert_type => "file",       # read selected lines from /song/lyrics
-           insert_select => keep("@{keepers}");
-    }
+     "/song/lyrics"
+       insert_type => "file",       # read selected lines from /song/lyrics
+       insert_select => keep("@{keepers}");
+}
 
-    body insert_select keep(s)
-    {
-    insert_if_startwith_from_list => { "@(s)" };
-    }
+body insert_select keep(s)
+{
+insert_if_startwith_from_list => { "@(s)" };
+}
+~~~~
 
 This will ensure that the following lines are inserted into the promised
 file:
 
-    And you'll never see me no more
-    Gimme three steps, Mister
-    Gimme three steps towards the door
-    Gimme three steps
+~~~~ {.verbatim}
+And you'll never see me no more
+Gimme three steps, Mister
+Gimme three steps towards the door
+Gimme three steps
+~~~~
 
 **Notes**:\
  \
@@ -253,7 +279,7 @@ be cleaned up with `delete_lines` first.
 The value `file` is used to tell CFEngine that the string is non-literal
 and should be interpreted as a filename from which to import lines.
 
-See: insert\_select.
+See: [insert\_select](#insert_005fselect-in-insert_005flines).
 
 Inserted files assume non-preserve\_block semantics. An equivalent file
 setting that does preserve the ordering of lines in the file is called
@@ -274,12 +300,14 @@ setting that does preserve the ordering of lines in the file is called
 **Example**:\
  \
 
-         
-         body insert_select example
-         {
-         insert_if_startwith_from_list => { "find_me_1", "find_me_2" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body insert_select example
+     {
+     insert_if_startwith_from_list => { "find_me_1", "find_me_2" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -290,8 +318,9 @@ then that line from the secondary file will be inserted at the present
 location in the primary file.
 
 `insert_if_startswith_from_list` is ignored unless `insert_type` is
-`file` (see insert\_type in insert\_lines), or the promiser is a
-multi-line block. \
+`file` (see [insert\_type in
+insert\_lines](#insert_005ftype-in-insert_005flines)), or the promiser
+is a multi-line block. \
 
 `insert_if_not_startwith_from_list`
 
@@ -304,12 +333,14 @@ multi-line block. \
 **Example**:\
  \
 
-         
-         body insert_select example
-         {
-         insert_if_not_startwith_from_list => { "find_me_1", "find_me_2" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body insert_select example
+     {
+     insert_if_not_startwith_from_list => { "find_me_1", "find_me_2" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -321,7 +352,8 @@ file being edited.
 `insert_if_not_startswith_from_list` is ignored unless `insert_type` is
 `file` or the promiser is a multi-line block.
 
-See: insert\_type in insert\_lines \
+See: [insert\_type in
+insert\_lines](#insert_005ftype-in-insert_005flines) \
 
 `insert_if_match_from_list`
 
@@ -334,12 +366,14 @@ See: insert\_type in insert\_lines \
 **Example**:\
  \
 
-         
-         body insert_select example
-         {
-         insert_if_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body insert_select example
+     {
+     insert_if_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -349,12 +383,14 @@ being edited). If the regex matches a *complete* line of the file, that
 line from the secondary file will be inserted at the present location in
 the primary file. That is, the regex's in the list are anchored.
 
-See: Anchored vs. unanchored regular expressions
+See: [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)
 
 `insert_if_match_from_list` is ignored unless `insert_type` is `file`,
 or the promiser is a multi-line block.
 
-See insert\_type in insert\_lines \
+See [insert\_type in
+insert\_lines](#insert_005ftype-in-insert_005flines) \
 
 `insert_if_not_match_from_list`
 
@@ -367,12 +403,14 @@ See insert\_type in insert\_lines \
 **Example**:\
  \
 
-         
-         body insert_select example
-         {
-         insert_if_not_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body insert_select example
+     {
+     insert_if_not_match_from_list => { ".*find_.*_1.*", ".*find_.*_2.*" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -384,7 +422,8 @@ edited.
 `insert_if_not_match_from_list` is ignored unless `insert_type` is
 `file`, or the promiser is a multi-line block.
 
-See: insert\_type in insert\_lines \
+See: [insert\_type in
+insert\_lines](#insert_005ftype-in-insert_005flines) \
 
 `insert_if_contains_from_list`
 
@@ -397,12 +436,14 @@ See: insert\_type in insert\_lines \
 **Example**:\
  \
 
-         
-         body insert_select example
-         {
-         insert_if_contains_from_list => { "find_me_1", "find_me_2" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body insert_select example
+     {
+     insert_if_contains_from_list => { "find_me_1", "find_me_2" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -416,7 +457,8 @@ location in the primary file.
 `insert_if_contains_from_list` is ignored unless `insert_type` is
 `file`, or the promiser is a multi-line block.
 
-See: insert\_type in insert\_lines \
+See: [insert\_type in
+insert\_lines](#insert_005ftype-in-insert_005flines) \
 
 `insert_if_not_contains_from_list`
 
@@ -430,12 +472,14 @@ fragment
 **Example**:\
  \
 
-         
-         body insert_select example
-         {
-         insert_if_not_contains_from_list => { "find_me_1", "find_me_2" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body insert_select example
+     {
+     insert_if_not_contains_from_list => { "find_me_1", "find_me_2" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -446,7 +490,8 @@ found in the secondary file, it is inserted into the file being edited.
 `insert_if_not_contains_from_list` is ignored unless `insert_type` is
 `file`, or the promiser is a multi-line block.
 
-See: insert\_type in insert\_lines
+See: [insert\_type in
+insert\_lines](#insert_005ftype-in-insert_005flines)
 
 #### `location` (body template)
 
@@ -458,8 +503,10 @@ See: insert\_type in insert\_lines
 
 **Allowed input range**: \
 
-                        before
-                        after
+~~~~ {.example}
+                    before
+                    after
+~~~~
 
 **Synopsis**: Menu option, point cursor before of after matched line
 
@@ -468,14 +515,16 @@ See: insert\_type in insert\_lines
 **Example**:\
  \
 
-         
-         body location append
-         
-         {
-         #...
-         before_after => "before";
-         }
-         
+~~~~ {.verbatim}
+     
+     body location append
+     
+     {
+     #...
+     before_after => "before";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -489,8 +538,10 @@ matched line. \
 
 **Allowed input range**: \
 
-                        first
-                        last
+~~~~ {.example}
+                    first
+                    last
+~~~~
 
 **Synopsis**: Menu option, choose first or last occurrence of match in
 file
@@ -500,12 +551,14 @@ file
 **Example**:\
  \
 
-         
-         body location example
-         {
-         first_last => "last";
-         }
-         
+~~~~ {.verbatim}
+     
+     body location example
+     {
+     first_last => "last";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -527,21 +580,23 @@ significance. \
 **Example**:\
  \
 
-         
-         # Editing
-         
-         body location example
-         {
-         select_line_matching => "Expression match.* whole line";
-         }
-         
-         # Measurement promises
-         
-         body match_value example
-         {
-         select_line_matching => "Expression match.* whole line";
-         }
-         
+~~~~ {.verbatim}
+     
+     # Editing
+     
+     body location example
+     {
+     select_line_matching => "Expression match.* whole line";
+     }
+     
+     # Measurement promises
+     
+     body match_value example
+     {
+     select_line_matching => "Expression match.* whole line";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -549,7 +604,8 @@ significance. \
 The expression must match a whole line, not a fragment within a line;
 that is, it is anchored.
 
-See: Anchored vs. unanchored regular expressions
+See: [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)
 
 This attribute is mutually exclusive of `select_line_number`.
 
@@ -559,10 +615,12 @@ This attribute is mutually exclusive of `select_line_number`.
 
 **Allowed input range**: \
 
-                   ignore_leading
-                   ignore_trailing
-                   ignore_embedded
-                   exact_match
+~~~~ {.example}
+               ignore_leading
+               ignore_trailing
+               ignore_embedded
+               exact_match
+~~~~
 
 **Synopsis**: Criteria for matching and recognizing existing lines
 
@@ -571,15 +629,17 @@ This attribute is mutually exclusive of `select_line_number`.
 **Example**:\
  \
 
-    bundle edit_line Insert(service, filename)
-    {
-    insert_lines:
+~~~~ {.verbatim}
+bundle edit_line Insert(service, filename)
+{
+insert_lines:
 
-      "$(service).* $(filename)"
+  "$(service).* $(filename)"
 
-          whitespace_policy => { "ignore_trailing", "ignore_embedded" };
+      whitespace_policy => { "ignore_trailing", "ignore_embedded" };
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

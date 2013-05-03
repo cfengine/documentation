@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-classify-9
+categories: [Special-functions,Function-classify-9]
 published: true
-alias: Special-functions-0-Function-classify-9.markdown.html
-tags: [xx]
+alias: Special-functions-Function-classify-9.html
+tags: [Special-functions,Function-classify-9]
 ---
 
 ### Function classify
@@ -20,9 +20,11 @@ class
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-     "i_am_the_policy_host" expression => classify("master.example.org");
+ "i_am_the_policy_host" expression => classify("master.example.org");
+~~~~
 
 **Notes**:\
  \
@@ -31,4 +33,4 @@ This function returns true if the canonical form of the argument is
 already a defined class. This is useful for transforming variables into
 classes.
 
-See: Function canonify.
+See: [Function canonify](#Function-canonify).

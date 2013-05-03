@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-hostsseen-35
+categories: [Special-functions,Function-hostsseen-35]
 published: true
-alias: Special-functions-0-Function-hostsseen-35.markdown.html
-tags: [xx]
+alias: Special-functions-Function-hostsseen-35.html
+tags: [Special-functions,Function-hostsseen-35]
 ---
 
 ### Function hostsseen
@@ -23,20 +23,22 @@ Extract the list of hosts last seen/not seen within the last arg1 hours
 **Example**:\
  \
 
-    bundle agent test
+~~~~ {.verbatim}
+bundle agent test
 
-    {
-    vars:
+{
+vars:
 
-      "myhosts" slist => { hostsseen("inf","lastseen","address") };
+  "myhosts" slist => { hostsseen("inf","lastseen","address") };
 
-    reports:
+reports:
 
-      cfengine_3::
+  cfengine_3::
 
-        "Found client/peer: $(myhosts)";
+    "Found client/peer: $(myhosts)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

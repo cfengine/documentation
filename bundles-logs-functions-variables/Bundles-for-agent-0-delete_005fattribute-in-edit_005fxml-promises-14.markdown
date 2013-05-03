@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: delete_005fattribute-in-edit_005fxml-promises-14
+categories: [Bundles-for-agent,delete_005fattribute-in-edit_005fxml-promises-14]
 published: true
-alias: Bundles-for-agent-0-delete_005fattribute-in-edit_005fxml-promises-14.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-delete_005fattribute-in-edit_005fxml-promises-14.html
+tags: [Bundles-for-agent,delete_005fattribute-in-edit_005fxml-promises-14]
 ---
 
 ### `delete_attribute` promises in edit\_xml
@@ -21,13 +21,15 @@ attribute to be deleted.
 
 \
 
-    bundle edit_xml example
-      {
-      delete_attribute:
-        "name"
+~~~~ {.verbatim}
+bundle edit_xml example
+  {
+  delete_attribute:
+    "name"
 
-        select_xpath => "/Server/Service/Engine/Host";
-      }
+    select_xpath => "/Server/Service/Engine/Host";
+  }
+~~~~
 
 \
 

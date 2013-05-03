@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-ldaplist-52
+categories: [Special-functions,Function-ldaplist-52]
 published: true
-alias: Special-functions-0-Function-ldaplist-52.markdown.html
-tags: [xx]
+alias: Special-functions-Function-ldaplist-52.html
+tags: [Special-functions,Function-ldaplist-52]
 ---
 
 ### Function ldaplist
@@ -25,25 +25,29 @@ Extract all named values from multiple ldap records
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-       # Get all matching values for "uid" - should be a single record match
+   # Get all matching values for "uid" - should be a single record match
 
-      "list" slist =>  ldaplist(
-                               "ldap://ldap.example.org",
-                               "dc=cfengine,dc=com",
-                               "(sn=User)",
-                               "uid",
-                               "subtree",
-                               "none"
-                               );
+  "list" slist =>  ldaplist(
+                           "ldap://ldap.example.org",
+                           "dc=cfengine,dc=com",
+                           "(sn=User)",
+                           "uid",
+                           "subtree",
+                           "none"
+                           );
+~~~~
 
 **Notes**:\
  \
 
-         
-         (slist) ldaplist(uri,dn,filter,name,scope,security)
-         
+~~~~ {.example}
+     
+     (slist) ldaplist(uri,dn,filter,name,scope,security)
+     
+~~~~
 
 This function retrieves a single field from all matching LDAP records
 identified by the search parameters.
@@ -72,9 +76,11 @@ scope
 Menu option, the type of ldap search, from the specified root. May take
 values:
 
-                  subtree
-                  onelevel
-                  base
+~~~~ {.smallexample}
+              subtree
+              onelevel
+              base
+~~~~
 
 \
 
@@ -84,6 +90,8 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-                   none
-                   ssl
-                   sasl
+~~~~ {.smallexample}
+               none
+               ssl
+               sasl
+~~~~

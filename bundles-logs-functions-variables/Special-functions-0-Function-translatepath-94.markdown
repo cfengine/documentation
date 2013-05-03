@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-translatepath-94
+categories: [Special-functions,Function-translatepath-94]
 published: true
-alias: Special-functions-0-Function-translatepath-94.markdown.html
-tags: [xx]
+alias: Special-functions-Function-translatepath-94.html
+tags: [Special-functions,Function-translatepath-94]
 ---
 
 ### Function translatepath
@@ -19,26 +19,28 @@ Translate path separators from Unix style to the host's native
 **Example**:\
  \
 
-    body common control
-    {
-    bundlesequence => { "test" };
-    }
+~~~~ {.verbatim}
+body common control
+{
+bundlesequence => { "test" };
+}
 
-    ##############################
+##############################
 
-    bundle agent test
-    {
-    vars:
-      "inputs_dir" string => translatepath("$(sys.workdir)/inputs");
+bundle agent test
+{
+vars:
+  "inputs_dir" string => translatepath("$(sys.workdir)/inputs");
 
-    reports:
+reports:
 
-      windows::
-        "The path has backslashes: $(inputs_dir)";
+  windows::
+    "The path has backslashes: $(inputs_dir)";
 
-      !windows::
-        "The path has slashes: $(inputs_dir)";
-    }
+  !windows::
+    "The path has slashes: $(inputs_dir)";
+}
+~~~~
 
 **Notes**:\
  \

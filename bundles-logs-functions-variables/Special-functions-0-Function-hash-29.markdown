@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-hash-29
+categories: [Special-functions,Function-hash-29]
 published: true
-alias: Special-functions-0-Function-hash-29.markdown.html
-tags: [xx]
+alias: Special-functions-Function-hash-29.html
+tags: [Special-functions,Function-hash-29]
 ---
 
 ### Function hash
@@ -21,29 +21,31 @@ Return the hash of arg1, type arg2 and assign to a variable
 **Example**:\
  \
 
+~~~~ {.verbatim}
 
-    body common control
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    vars:
+{     
+vars:
 
-      "md5" string => hash("CFEngine is not cryptic","md5");
+  "md5" string => hash("CFEngine is not cryptic","md5");
 
-    reports:
+reports:
 
-      Yr2008::
+  Yr2008::
 
-        "Hashed to: $(md5)";
+    "Hashed to: $(md5)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-readreallist-73
+categories: [Special-functions,Function-readreallist-73]
 published: true
-alias: Special-functions-0-Function-readreallist-73.markdown.html
-tags: [xx]
+alias: Special-functions-Function-readreallist-73.html
+tags: [Special-functions,Function-readreallist-73]
 ---
 
 ### Function readreallist
@@ -25,29 +25,31 @@ Read and assign a list variable from a file of separated real numbers
 **Example**:\
  \
 
+~~~~ {.verbatim}
 
-    body common control
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    vars:
+{     
+vars:
 
-      "mylist" rlist => { readreallist("/tmp/listofreal","#.*","[\n]",10,400) };
+  "mylist" rlist => { readreallist("/tmp/listofreal","#.*","[\n]",10,400) };
 
-    reports:
+reports:
 
-      Yr2008::
+  Yr2008::
 
-        "List entry: $(mylist)";
+    "List entry: $(mylist)";
 
-    }
+}
+~~~~
 
 **ARGUMENTS**:
 
@@ -61,7 +63,8 @@ A regex pattern which specifies comments to be ignored in the file. The
 `comment` field will strip out unwanted patterns from the file being
 read, leaving unstripped characters to be split into fields. Using the
 empty string (`""`) indicates no comments. The regex is unanchored (See
-Anchored vs. unanchored regular expressions). \
+[Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 split
 

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: vars-in-common-promises-5
+categories: [Bundles-for-common,vars-in-common-promises-5]
 published: true
-alias: Bundles-for-common-0-vars-in-common-promises-5.markdown.html
-tags: [xx]
+alias: Bundles-for-common-vars-in-common-promises-5.html
+tags: [Bundles-for-common,vars-in-common-promises-5]
 ---
 
 ### `vars` promises in \*
@@ -21,36 +21,39 @@ arbitrary key.
 
 \
 
-    bundle agent example
+~~~~ {.verbatim}
+bundle agent example
 
-    {     
-    vars:
+{     
+vars:
 
-      "scalar1" string => "SCALAR 1";
-      "list1" slist => { "LIST1_1", "LIST1_2" } ;
-      "array[1]" string => "ARRAY 1";
-      "array[2]" string => "ARRAY 2";
+  "scalar1" string => "SCALAR 1";
+  "list1" slist => { "LIST1_1", "LIST1_2" } ;
+  "array[1]" string => "ARRAY 1";
+  "array[2]" string => "ARRAY 2";
 
-      "i" slist => getindices("array");
+  "i" slist => getindices("array");
 
-    reports:
+reports:
 
-      cfengine_3::
+  cfengine_3::
 
-        "Scalar $(scalar1)";
-        "List $(list1)";
-        "Array $(array[$(i)])";
-    }
+    "Scalar $(scalar1)";
+    "List $(list1)";
+    "Array $(array[$(i)])";
+}
+
+~~~~
 
 \
 
--   string in vars
--   int in vars
--   real in vars
--   slist in vars
--   ilist in vars
--   rlist in vars
--   policy in vars
+-   [string in vars](#string-in-vars)
+-   [int in vars](#int-in-vars)
+-   [real in vars](#real-in-vars)
+-   [slist in vars](#slist-in-vars)
+-   [ilist in vars](#ilist-in-vars)
+-   [rlist in vars](#rlist-in-vars)
+-   [policy in vars](#policy-in-vars)
 
 #### `string`
 
@@ -63,11 +66,13 @@ arbitrary key.
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "xxx"    string => "Some literal string...";
+ "xxx"    string => "Some literal string...";
 
-     "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
+ "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
+~~~~
 
 **Notes**:\
  \
@@ -87,13 +92,15 @@ CFEngine 3 lists are kept as an independent type.
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "scalar" int    => "16k";
+ "scalar" int    => "16k";
 
-     "ran"    int    => randomint(4,88);
+ "ran"    int    => randomint(4,88);
 
-     "dim_array" int =>  readstringarray("array_name","/etc/passwd","#[^\n]*",":",10,4000);
+ "dim_array" int =>  readstringarray("array_name","/etc/passwd","#[^\n]*",":",10,4000);
+~~~~
 
 **Notes**:\
  \
@@ -147,9 +154,11 @@ The value inf may also be used to represent an unlimited positive value.
 **Example**:\
  \
 
-    vars:
-       
-     "scalar" real   => "0.5";
+~~~~ {.verbatim}
+vars:
+   
+ "scalar" real   => "0.5";
+~~~~
 
 **Notes**:\
  \
@@ -173,28 +182,33 @@ useful for representing probabilities and performance data.
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "xxx"    slist  => {  "literal1",  "literal2" };
+ "xxx"    slist  => {  "literal1",  "literal2" };
 
-     "yyy"    slist  => { 
-                        readstringlist(
-                                      "/home/mark/tmp/testlist",
-                                      "#[a-zA-Z0-9 ]*",
-                                      "[^a-zA-Z0-9]",
-                                      15,
-                                      4000
-                                      ) 
-                        };
+ "yyy"    slist  => { 
+                    readstringlist(
+                                  "/home/mark/tmp/testlist",
+                                  "#[a-zA-Z0-9 ]*",
+                                  "[^a-zA-Z0-9]",
+                                  15,
+                                  4000
+                                  ) 
+                    };
 
-     "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
+ "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
+
+~~~~
 
 **Notes**:\
  \
- Some functions return `slist`s (see Introduction to functions), and an
-`slist` may contain the values copied from another `slist`, `rlist`, or
-`ilist` (see List variable substitution and expansion, see policy in
-vars).
+ Some functions return `slist`s (see [Introduction to
+functions](#Introduction-to-functions)), and an `slist` may contain the
+values copied from another `slist`, `rlist`, or `ilist` (see [List
+variable substitution and
+expansion](#List-variable-substitution-and-expansion), see [policy in
+vars](#policy-in-vars)).
 
 #### `ilist`
 
@@ -207,11 +221,13 @@ vars).
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-      "variable_id"
+  "variable_id"
 
-           ilist => { "10", "11", "12" };
+       ilist => { "10", "11", "12" };
+~~~~
 
 **Notes**:\
  \
@@ -222,10 +238,12 @@ interchangeable, but when you declare a variable to be type `ilist`,
 CFEngine verifies that each value you assign to it looks like an integer
 (e.g., 3, -17, 16K).
 
-Some functions return `ilist`s (see Introduction to functions), and an
-`ilist` may contain the values copied from another `slist`, `rlist`, or
-`ilist` (see List variable substitution and expansion, see policy in
-vars).
+Some functions return `ilist`s (see [Introduction to
+functions](#Introduction-to-functions)), and an `ilist` may contain the
+values copied from another `slist`, `rlist`, or `ilist` (see [List
+variable substitution and
+expansion](#List-variable-substitution-and-expansion), see [policy in
+vars](#policy-in-vars)).
 
 #### `rlist`
 
@@ -238,9 +256,11 @@ vars).
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-      "varid" rlist => { "0.1", "0.2", "0.3" };
+  "varid" rlist => { "0.1", "0.2", "0.3" };
+~~~~
 
 **Notes**:\
  \
@@ -250,10 +270,12 @@ interchangeable, but when you declare a variable to be type `rlist`,
 CFEngine verifies that each value you assign to it looks like a real
 number (e.g., 3, 3.1415, .17, 6.02e23, -9.21e-17).
 
-Some functions return `rlist`s (see Introduction to functions), and an
-`rlist` may contain the values copied from another `slist`, `rlist`, or
-`ilist` (see List variable substitution and expansion, see policy in
-vars).
+Some functions return `rlist`s (see [Introduction to
+functions](#Introduction-to-functions)), and an `rlist` may contain the
+values copied from another `slist`, `rlist`, or `ilist` (see [List
+variable substitution and
+expansion](#List-variable-substitution-and-expansion), see [policy in
+vars](#policy-in-vars)).
 
 #### `policy`
 
@@ -261,20 +283,24 @@ vars).
 
 **Allowed input range**: \
 
-                   free
-                   overridable
-                   constant
-                   ifdefined
+~~~~ {.example}
+               free
+               overridable
+               constant
+               ifdefined
+~~~~
 
 **Synopsis**: The policy for (dis)allowing (re)definition of variables
 
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-      "varid" string => "value...",
-              policy => "constant";
+  "varid" string => "value...",
+          policy => "constant";
+~~~~
 
 **Notes**:\
  \
@@ -293,12 +319,14 @@ or undefined lists are dropped. The default behaviour is otherwise to
 retain this value as an indicator of the failure to quench the variable
 reference, for example:
 
-       
-        "one" slist => { "1", "2", "3" };
+~~~~ {.verbatim}
+   
+    "one" slist => { "1", "2", "3" };
 
-       "list" slist => { "@(one)", @(two) },
+   "list" slist => { "@(one)", @(two) },
 
-                policy => "ifdefined";
+            policy => "ifdefined";
+~~~~
 
 This would result in @(list) being the same as @(one), and the reference
 to @(two) would disappear. This is useful for combining lists,

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Miscellaneous-in-common-promises-6
+categories: [Bundles-for-common,Miscellaneous-in-common-promises-6]
 published: true
-alias: Bundles-for-common-0-Miscellaneous-in-common-promises-6.markdown.html
-tags: [xx]
+alias: Bundles-for-common-Miscellaneous-in-common-promises-6.html
+tags: [Bundles-for-common,Miscellaneous-in-common-promises-6]
 ---
 
 ### `*` promises
@@ -17,13 +17,13 @@ number of promises can be made in any kind of bundle since they are of a
 generic input/output nature. These are `vars`, `classes`, and `reports`
 promises. The specific promise attributes are listed below.
 
--   action in \*
--   classes in \*
--   comment in \*
--   depends\_on in \*
--   handle in \*
--   ifvarclass in \*
--   meta in \*
+-   [action in \*](#action-in-_002a)
+-   [classes in \*](#classes-in-_002a)
+-   [comment in \*](#comment-in-_002a)
+-   [depends\_on in \*](#depends_005fon-in-_002a)
+-   [handle in \*](#handle-in-_002a)
+-   [ifvarclass in \*](#ifvarclass-in-_002a)
+-   [meta in \*](#meta-in-_002a)
 
 #### `action` (body template)
 
@@ -35,9 +35,11 @@ promises. The specific promise attributes are listed below.
 
 **Allowed input range**: \
 
-                        fix
-                        warn
-                        nop
+~~~~ {.example}
+                    fix
+                    warn
+                    nop
+~~~~
 
 **Synopsis**: Whether to repair or report about non-kept promises
 
@@ -46,12 +48,14 @@ promises. The specific promise attributes are listed below.
 
 The following example shows a simple use of transaction control:
 
-         
-         body action warn_only {
-         action_policy => "warn";
-         ifelapsed => "60";
-         }
-         
+~~~~ {.verbatim}
+     
+     body action warn_only {
+     action_policy => "warn";
+     ifelapsed => "60";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -66,47 +70,49 @@ bundles, and that promises within these do not inherit action settings
 at higher levels. Thus, in the following example there are two levels of
 action setting:
 
-         ########################################################
-         #
-         # Warn if line matched
-         #
-         ########################################################
-         
-         body common control
-         
-         {
-         bundlesequence  => { "testbundle" };
-         }
-         
-         ########################################################
-         
-         bundle agent testbundle
-         
-         {
-         files:
-         
-           "/var/cfengine/inputs/.*"
-         
-                edit_line => DeleteLinesMatching(".*cfenvd.*"),
-                action => WarnOnly;
-         }
-         
-         ########################################################
-         
-         bundle edit_line DeleteLinesMatching(regex)
-           {
-           delete_lines:
-         
-             "$(regex)" action => WarnOnly;
-         
-           }
-         
-         ########################################################
-         
-         body action WarnOnly
-         {
-         action_policy => "warn";
-         }
+~~~~ {.verbatim}
+     ########################################################
+     #
+     # Warn if line matched
+     #
+     ########################################################
+     
+     body common control
+     
+     {
+     bundlesequence  => { "testbundle" };
+     }
+     
+     ########################################################
+     
+     bundle agent testbundle
+     
+     {
+     files:
+     
+       "/var/cfengine/inputs/.*"
+     
+            edit_line => DeleteLinesMatching(".*cfenvd.*"),
+            action => WarnOnly;
+     }
+     
+     ########################################################
+     
+     bundle edit_line DeleteLinesMatching(regex)
+       {
+       delete_lines:
+     
+         "$(regex)" action => WarnOnly;
+     
+       }
+     
+     ########################################################
+     
+     body action WarnOnly
+     {
+     action_policy => "warn";
+     }
+~~~~
 
 The `action` setting for the `files` promise means that file edits will
 not be committed to disk, only warned about. This is a master-level
@@ -116,11 +122,15 @@ modelling of the file will only warn about changes rather than
 committing them to the memory model. This makes little difference to the
 end result, but it means that CFEngine will report
 
-              Need to delete line - ... - but only a warning was promised
+~~~~ {.smallexample}
+          Need to delete line - ... - but only a warning was promised
+~~~~
 
 Instead of
 
-              Deleting the promised line ... Need to save file - but only a warning was promised
+~~~~ {.smallexample}
+          Deleting the promised line ... Need to save file - but only a warning was promised
+~~~~
 
 In either case, no changes will be made to the disk, but the messages
 given by `cf-agent` will differ. \
@@ -139,22 +149,24 @@ promise
 **Example**:\
  \
 
-         
-         #local
-         
-         body action example
-         {
-         ifelapsed   => "120";  # 2 hours
-         expireafter => "240";  # 4 hours
-         }
-         
-         # global
-         
-         body agent control
-         {
-         ifelapsed   => "180";  # 3 hours
-         }
-         
+~~~~ {.verbatim}
+     
+     #local
+     
+     body action example
+     {
+     ifelapsed   => "120";  # 2 hours
+     expireafter => "240";  # 4 hours
+     }
+     
+     # global
+     
+     body agent control
+     {
+     ifelapsed   => "180";  # 3 hours
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -181,11 +193,13 @@ and retried
 **Example**:\
  \
 
-         body action example
-         {
-         ifelapsed   => "120";  # 2 hours
-         expireafter => "240";  # 4 hours
-         }
+~~~~ {.verbatim}
+     body action example
+     {
+     ifelapsed   => "120";  # 2 hours
+     expireafter => "240";  # 4 hours
+     }
+~~~~
 
 **Notes**:\
  \
@@ -205,21 +219,23 @@ verification leads to a repair
 **Example**:\
  \
 
-              
-              promise-type:
-              
-               "promiser"
-              
-                 attr = "value",
-                 action = log_me("checked $(this.promiser) in promise $(this.handle)");
-              
-              # ..
-              
-              body action log_me(s)
-              {
-              log_string = "$(s)";
-              }
-              
+~~~~ {.example}
+          
+          promise-type:
+          
+           "promiser"
+          
+             attr = "value",
+             action = log_me("checked $(this.promiser) in promise $(this.handle)");
+          
+          # ..
+          
+          body action log_me(s)
+          {
+          log_string = "$(s)";
+          }
+          
+~~~~
 
 **Notes**:\
  \
@@ -244,22 +260,26 @@ more mnemonic). \
 
 **Allowed input range**: \
 
-                        inform
-                        verbose
-                        error
-                        log
+~~~~ {.example}
+                    inform
+                    verbose
+                    error
+                    log
+~~~~
 
 **Synopsis**: The reporting level sent to syslog
 
 **Example**:\
  \
 
-         
-         body action example
-         {
-         log_level => "inform";
-         }
-         
+~~~~ {.verbatim}
+     
+     body action example
+     {
+     log_level => "inform";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -285,15 +305,17 @@ will be saved, and if undefined it goes to the system logger
 **Example**:\
  \
 
-         
-         body action logme(x)
-         {
-         log_kept => "/tmp/private_keptlog.log";
-         log_failed => "/tmp/private_faillog.log";
-         log_repaired => "/tmp/private_replog.log";
-         log_string => "$(sys.date) $(x) promise status";
-         }
-         
+~~~~ {.verbatim}
+     
+     body action logme(x)
+     {
+     log_kept => "/tmp/private_keptlog.log";
+     log_failed => "/tmp/private_faillog.log";
+     log_repaired => "/tmp/private_replog.log";
+     log_string => "$(sys.date) $(x) promise status";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -330,14 +352,16 @@ the request.
 
 **Allowed input range**: \
 
-                        emergency
-                        alert
-                        critical
-                        error
-                        warning
-                        notice
-                        info
-                        debug
+~~~~ {.example}
+                    emergency
+                    alert
+                    critical
+                    error
+                    warning
+                    notice
+                    info
+                    debug
+~~~~
 
 **Synopsis**: The priority level of the log message, as interpreted by a
 syslog server
@@ -345,10 +369,12 @@ syslog server
 **Example**:\
  \
 
-         body action low_priority
-         {
-         log_priority => "info";
-         }
+~~~~ {.verbatim}
+     body action low_priority
+     {
+     log_priority => "info";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -367,35 +393,37 @@ will be saved, if undefined it goes to the system logger
 **Example**:\
  \
 
-         
-         bundle agent test
-         {
-         vars:
-         
-           "software" slist => { "/root/xyz", "/tmp/xyz" };
-         
-         files:
-         
-           "$(software)"
-         
-             create => "true",
-              action => logme("$(software)");
-         
-         }
-         
-         body action logme(x)
-         {
-         log_kept => "/tmp/private_keptlog.log";
-         log_failed => "/tmp/private_faillog.log";
-         log_repaired => "/tmp/private_replog.log";
-         log_string => "$(sys.date) $(x) promise status";
-         }
-         
-         body action immediate_syslog(x) 
-         {
-         log_repaired => "udp_syslog"; # Nova and above 
-         log_string => "CFEngine repaired promise $(this.handle) - $(x)";
-         }
+~~~~ {.verbatim}
+     
+     bundle agent test
+     {
+     vars:
+     
+       "software" slist => { "/root/xyz", "/tmp/xyz" };
+     
+     files:
+     
+       "$(software)"
+     
+         create => "true",
+          action => logme("$(software)");
+     
+     }
+     
+     body action logme(x)
+     {
+     log_kept => "/tmp/private_keptlog.log";
+     log_failed => "/tmp/private_faillog.log";
+     log_repaired => "/tmp/private_replog.log";
+     log_string => "$(sys.date) $(x) promise status";
+     }
+     
+     body action immediate_syslog(x) 
+     {
+     log_repaired => "udp_syslog"; # Nova and above 
+     log_string => "CFEngine repaired promise $(this.handle) - $(x)";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -429,31 +457,33 @@ will be saved, and if undefined it goes to the system logger
 **Example**:\
  \
 
-         
-         bundle agent test
-         {
-         vars:
-         
-           "software" slist => { "/root/xyz", "/tmp/xyz" };
-         
-         files:
-         
-           "$(software)"
-         
-             create => "true",
-              action => logme("$(software)");
-         
-         }
-         
-         
-         body action logme(x)
-         {
-         log_kept => "/tmp/private_keptlog.log";
-         log_failed => "/tmp/private_faillog.log";
-         log_repaired => "/tmp/private_replog.log";
-         log_string => "$(sys.date) $(x) promise status";
-         }
-         
+~~~~ {.verbatim}
+     
+     bundle agent test
+     {
+     vars:
+     
+       "software" slist => { "/root/xyz", "/tmp/xyz" };
+     
+     files:
+     
+       "$(software)"
+     
+         create => "true",
+          action => logme("$(software)");
+     
+     }
+     
+     
+     body action logme(x)
+     {
+     log_kept => "/tmp/private_keptlog.log";
+     log_failed => "/tmp/private_faillog.log";
+     log_repaired => "/tmp/private_replog.log";
+     log_string => "$(sys.date) $(x) promise status";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -494,15 +524,17 @@ the request.
 **Example**:\
  \
 
-         
-         body action mydef
-         {
-         value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
-         value_repaired => "2.5";   # fixing this promise is worth 2.5 dollars per hour
-         value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
-         ifelapsed       => "60";   # one hour
-         }
-         
+~~~~ {.verbatim}
+     
+     body action mydef
+     {
+     value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
+     value_repaired => "2.5";   # fixing this promise is worth 2.5 dollars per hour
+     value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
+     ifelapsed       => "60";   # one hour
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -522,15 +554,17 @@ logged unless the agent control body switched on track\_value = "true".
 **Example**:\
  \
 
-         
-         body action mydef
-         {
-         value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
-         value_repaired => "2.5";   # fixing this promise is worth 2.5 dollars per hour
-         value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
-         ifelapsed       => "60";   # one hour
-         }
-         
+~~~~ {.verbatim}
+     
+     body action mydef
+     {
+     value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
+     value_repaired => "2.5";   # fixing this promise is worth 2.5 dollars per hour
+     value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
+     ifelapsed       => "60";   # one hour
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -551,15 +585,17 @@ keeping this promise
 **Example**:\
  \
 
-         
-         body action mydef
-         {
-         value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
-         value_repaired => "2.5";   # fixing this promise is worth 2.5 dollars per hour
-         value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
-         ifelapsed       => "60";   # one hour
-         }
-         
+~~~~ {.verbatim}
+     
+     body action mydef
+     {
+     value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
+     value_repaired => "2.5";   # fixing this promise is worth 2.5 dollars per hour
+     value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
+     ifelapsed       => "60";   # one hour
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -574,12 +610,14 @@ logged unless the agent control body switched on track\_value = "true".
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false switch for detailed audit records of this
 promise
@@ -589,14 +627,16 @@ promise
 **Example**:\
  \
 
-         
-         body action example
-         {
-         # ...
-         
-         audit => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body action example
+     {
+     # ...
+     
+     audit => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -612,12 +652,14 @@ inspected with `cf-report`, or `cfshow` in CFEngine 2. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false switch for parallelizing the promise repair
 
@@ -626,12 +668,14 @@ inspected with `cf-report`, or `cfshow` in CFEngine 2. \
 **Example**:\
  \
 
-         
-         body action example
-         {
-         background => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body action example
+     {
+     background => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -654,10 +698,12 @@ operations can not be performed in the background on windows. \
 
 **Allowed input range**: \
 
-                        inform
-                        verbose
-                        error
-                        log
+~~~~ {.example}
+                    inform
+                    verbose
+                    error
+                    log
+~~~~
 
 **Synopsis**: The reporting level for standard output for this promise
 
@@ -666,12 +712,14 @@ operations can not be performed in the background on windows. \
 **Example**:\
  \
 
-         
-         body action example
-         {
-         report_level => "verbose";
-         }
-         
+~~~~ {.verbatim}
+     
+     body action example
+     {
+     report_level => "verbose";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -696,13 +744,15 @@ this identifier
 **Example**:\
  \
 
-         
-         
-         body action measure
-         {
-         measurement_class => "$(this.promiser) long job scan of /usr";
-         }
-         
+~~~~ {.verbatim}
+     
+     
+     body action measure
+     {
+     measurement_class => "$(this.promiser) long job scan of /usr";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -712,7 +762,9 @@ current promise, and also give the measurement a name. The identifier
 forms a partial identity for optional performance scanning of promises
 of the form:
 
-              ID:promise-type:promiser.
+~~~~ {.example}
+          ID:promise-type:promiser.
+~~~~
 
 These can be seen identifying using `cf-report`, for example in the
 generated file performance.html.
@@ -732,12 +784,14 @@ generated file performance.html.
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         promise_repaired => { "change_happened" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     promise_repaired => { "change_happened" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -769,12 +823,14 @@ promises rather than \`overloading' a single one. \
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         repair_failed => { "unknown_error" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     repair_failed => { "unknown_error" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -796,12 +852,14 @@ unnecessary to call a canonify function on such inputs. \
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         repair_denied => { "permission_failure" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     repair_denied => { "permission_failure" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -822,12 +880,14 @@ so it is unnecessary to call a canonify function on such inputs. \
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         repair_timeout => { "too_slow", "did_not_wait" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     repair_timeout => { "too_slow", "did_not_wait" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -846,12 +906,14 @@ resource. \
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         promise_kept => { "success", "kaplah" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     promise_kept => { "success", "kaplah" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -883,12 +945,14 @@ promises rather than \`overloading' a single one. \
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         cancel_kept => { "success", "kaplah" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     cancel_kept => { "success", "kaplah" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -914,12 +978,14 @@ repaired
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         cancel_repaired => { "change_happened" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     cancel_repaired => { "change_happened" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -945,12 +1011,14 @@ kept for any reason
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         cancel_notkept => { "failure" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     cancel_notkept => { "failure" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -976,22 +1044,24 @@ promise
 **Example**:\
  \
 
-         bundle agent cmdtest
-         {
-         commands:
-           "/bin/false"
-            classes => example;
-         
-         reports:
-         waskept::
-           "The command-promise was kept!";
-         }
-         
-         body classes example
-         {
-         kept_returncodes => { "0", "1" };
-         promise_kept => { "waskept" };
-         }
+~~~~ {.verbatim}
+     bundle agent cmdtest
+     {
+     commands:
+       "/bin/false"
+        classes => example;
+     
+     reports:
+     waskept::
+       "The command-promise was kept!";
+     }
+     
+     body classes example
+     {
+     kept_returncodes => { "0", "1" };
+     promise_kept => { "waskept" };
+     }
+~~~~
 
 **Notes**:\
  \
@@ -1031,22 +1101,24 @@ command-related promise
 **Example**:\
  \
 
-         bundle agent cmdtest
-         {
-         commands:
-           "/bin/false"
-            classes => example;
-         
-         reports:
-         wasrepaired::
-           "The command-promise got repaired!";
-         }
-         
-         body classes example
-         {
-         repaired_returncodes => { "0", "1" };
-         promise_repaired => { "wasrepaired" };
-         }
+~~~~ {.verbatim}
+     bundle agent cmdtest
+     {
+     commands:
+       "/bin/false"
+        classes => example;
+     
+     reports:
+     wasrepaired::
+       "The command-promise got repaired!";
+     }
+     
+     body classes example
+     {
+     repaired_returncodes => { "0", "1" };
+     promise_repaired => { "wasrepaired" };
+     }
+~~~~
 
 **Notes**:\
  \
@@ -1086,37 +1158,39 @@ promise
 **Example**:\
  \
 
-         body common control
-         {
-         bundlesequence => { "cmdtest" };
-         }
-         
-         bundle agent cmdtest
-         {
-         files:
-         "/tmp/test"
-           copy_from => copy("/etc/passwd");
-         
-         
-         "/tmp/test"
-           classes => example,
-           transformer => "/bin/grep -q lkajfo999999 $(this.promiser)";
-         
-         reports:
-         wasfailed::
-           "The files-promise failed!";
-         }
-         
-         body classes example
-         {
-         failed_returncodes => { "1" };
-         repair_failed => { "wasfailed" };
-         }
-         
-         body copy_from copy(file)
-         {
-         source => "$(file)";
-         } 
+~~~~ {.verbatim}
+     body common control
+     {
+     bundlesequence => { "cmdtest" };
+     }
+     
+     bundle agent cmdtest
+     {
+     files:
+     "/tmp/test"
+       copy_from => copy("/etc/passwd");
+     
+     
+     "/tmp/test"
+       classes => example,
+       transformer => "/bin/grep -q lkajfo999999 $(this.promiser)";
+     
+     reports:
+     wasfailed::
+       "The files-promise failed!";
+     }
+     
+     body classes example
+     {
+     failed_returncodes => { "1" };
+     repair_failed => { "wasfailed" };
+     }
+     
+     body copy_from copy(file)
+     {
+     source => "$(file)";
+     } 
+~~~~
 
 **Notes**:\
  \
@@ -1156,12 +1230,14 @@ active
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         persist_time => "10";
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     persist_time => "10";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1176,8 +1252,10 @@ agent is not running. \
 
 **Allowed input range**: \
 
-                        absolute
-                        reset
+~~~~ {.example}
+                    absolute
+                    reset
+~~~~
 
 **Synopsis**: Whether a persistent class restarts its counter when
 rediscovered
@@ -1187,12 +1265,14 @@ rediscovered
 **Example**:\
  \
 
-         
-         body classes example
-         {
-         timer_policy => "reset";
-         }
-         
+~~~~ {.verbatim}
+     
+     body classes example
+     {
+     timer_policy => "reset";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1213,7 +1293,9 @@ is useful.
 **Example**:\
  \
 
-    comment => "This comment follows the data for reference ...",
+~~~~ {.verbatim}
+comment => "This comment follows the data for reference ...",
+~~~~
 
 **Notes**:\
  \
@@ -1233,24 +1315,27 @@ depends on somehow
 **Example**:\
  \
 
-    body common control
-    {
-    bundlesequence => { "one"  };
-    }
+~~~~ {.verbatim}
+body common control
+{
+bundlesequence => { "one"  };
+}
 
-    bundle agent one
-    {
-    reports:
+bundle agent one
+{
+reports:
 
-     cfengine_3::
+ cfengine_3::
 
-       "two"
-         depends_on => { "handle_one" };
+   "two"
+     depends_on => { "handle_one" };
 
-       "one"
-         handle => "handle_one";
+   "one"
+     handle => "handle_one";
 
-    }
+}
+
+~~~~
 
 **Notes**:\
  \
@@ -1280,12 +1365,14 @@ elsewhere
 **Example**:\
  \
 
-    access:
+~~~~ {.verbatim}
+access:
 
-      "/source"
+  "/source"
 
-        handle  => "update_rule",
-        admit   => { "127.0.0.1" };
+    handle  => "update_rule",
+    admit   => { "127.0.0.1" };
+~~~~
 
 **Notes**:\
  \
@@ -1294,7 +1381,8 @@ A promise handle is like a \`goto' label. It allows you to refer to a
 promise as the promisee of `depends_on` client of another promise.
 Handles are essential for mapping dependencies and performing impact
 analyses. In Enterprise versions of CFEngine, promise handles can also
-be used in `outputs` promises, See outputs in agent promises.
+be used in `outputs` promises, See [outputs in agent
+promises](#outputs-in-agent-promises).
 
 Handles may consist of regular identifier characters. CFEngine
 automatically \`canonifies' the names of handles to conform to this
@@ -1317,33 +1405,37 @@ rather than its content.
 
 The generic example has the form:
 
-         
-         promise-type:
-         
-           "promiser"
-         
-             ifvarclass = "$(program)_running|($(program)_notfoundHr12)";
-         
+~~~~ {.example}
+     
+     promise-type:
+     
+       "promiser"
+     
+         ifvarclass = "$(program)_running|($(program)_notfoundHr12)";
+     
+~~~~
 
 A specific example would be:
 
-    bundle agent example
+~~~~ {.verbatim}
+bundle agent example
 
-    {     
-    commands:
+{     
+commands:
 
-     any::
+ any::
 
-        "/bin/echo This is linux"
+    "/bin/echo This is linux"
 
-           ifvarclass => "linux";
+       ifvarclass => "linux";
 
 
-        "/bin/echo This is solaris"
+    "/bin/echo This is solaris"
 
-           ifvarclass => "solaris";
+       ifvarclass => "solaris";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -1358,21 +1450,23 @@ variable classes.
 This function is provided so that one can form expressions that link
 variables and classes. For example:
 
-    # Check that all components are running
+~~~~ {.verbatim}
+# Check that all components are running
 
-    vars:
+vars:
 
-      "component" slist => { "cf-monitord", "cf-serverd" };
+  "component" slist => { "cf-monitord", "cf-serverd" };
 
-    processes:
+processes:
 
-      "$(component)" restart_class => canonify("start_$(component)");
+  "$(component)" restart_class => canonify("start_$(component)");
 
-    commands:
+commands:
 
-       "/var/cfengine/bin/$(component)"
+   "/var/cfengine/bin/$(component)"
 
-           ifvarclass => canonify("start_$(component)");
+       ifvarclass => canonify("start_$(component)");
+~~~~
 
 Notice that the function `canonify()` is provided to convert a general
 variable input into a string composed only of legal characters, using
@@ -1389,14 +1483,16 @@ the same algorithm that CFEngine uses.
 **Example**:\
  \
 
-    files:
+~~~~ {.verbatim}
+files:
 
-      "/etc/special_file"
+  "/etc/special_file"
 
-        comment => "Special file is a requirement. Talk to Fred X.",
-        create => "true",
+    comment => "Special file is a requirement. Talk to Fred X.",
+    create => "true",
 
-        meta => { "owner=John",  "version=2.0" };
+    meta => { "owner=John",  "version=2.0" };
+~~~~
 
 **Notes**:\
  \

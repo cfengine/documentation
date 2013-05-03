@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Embedded-Databases-1
+categories: [Logs-and-records,Embedded-Databases-1]
 published: true
-alias: Logs-and-records-0-Embedded-Databases-1.markdown.html
-tags: [xx]
+alias: Logs-and-records-Embedded-Databases-1.html
+tags: [Logs-and-records,Embedded-Databases-1]
 ---
 
 ### Embedded Databases

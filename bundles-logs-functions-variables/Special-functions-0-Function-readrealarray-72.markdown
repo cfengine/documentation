@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-readrealarray-72
+categories: [Special-functions,Function-readrealarray-72]
 published: true
-alias: Special-functions-0-Function-readrealarray-72.markdown.html
-tags: [xx]
+alias: Special-functions-Function-readrealarray-72.html
+tags: [Special-functions,Function-readrealarray-72]
 ---
 
 ### Function readrealarray
@@ -28,11 +28,13 @@ variable
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-      "dim_array" 
+  "dim_array" 
 
-         int =>  readrealarray("array_name","/tmp/array","#[^\n]*",":",10,4000);
+     int =>  readrealarray("array_name","/tmp/array","#[^\n]*",":",10,4000);
+~~~~
 
 **ARGUMENTS**:
 
@@ -51,7 +53,8 @@ A regex pattern which specifies comments to be ignored in the file. The
 `comment` field will strip out unwanted patterns from the file being
 read, leaving unstripped characters to be split into fields. Using the
 empty string (`""`) indicates no comments. The regex is unanchored (See
-Anchored vs. unanchored regular expressions). \
+[Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 split
 
@@ -69,4 +72,4 @@ The maximum number of bytes to read from the file
 **Notes**:\
  \
 
-For detailed notes, See Function readintarray.
+For detailed notes, See [Function readintarray](#Function-readintarray).

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-ip2host-32
+categories: [Special-functions,Function-ip2host-32]
 published: true
-alias: Special-functions-0-Function-ip2host-32.markdown.html
-tags: [xx]
+alias: Special-functions-Function-ip2host-32.html
+tags: [Special-functions,Function-ip2host-32]
 ---
 
 ### Function ip2host
@@ -19,18 +19,20 @@ Returns the primary name-service host name for the IP address
 **Example**:\
  \
 
-    bundle agent reverse_lookup
-    {
-    vars:
-     "local4" string => ip2host("127.0.0.1");
-     "local6" string => ip2host("::1");
+~~~~ {.verbatim}
+bundle agent reverse_lookup
+{
+vars:
+ "local4" string => ip2host("127.0.0.1");
+ "local6" string => ip2host("::1");
 
 
-    reports:
-    cfengine_3::
-      "local4 is $(local4)";
-      "local6 is $(local6)";
-    }
+reports:
+cfengine_3::
+  "local4 is $(local4)";
+  "local6 is $(local6)";
+}
+~~~~
 
 **Notes**:\
  \

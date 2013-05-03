@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-regline-82
+categories: [Special-functions,Function-regline-82]
 published: true
-alias: Special-functions-0-Function-regline-82.markdown.html
-tags: [xx]
+alias: Special-functions-Function-regline-82.html
+tags: [Special-functions,Function-regline-82]
 ---
 
 ### Function regline
@@ -20,29 +20,31 @@ True if the regular expression in arg1 matches a line in file arg2
 **Example**:\
  \
 
-    bundle agent testbundle
+~~~~ {.verbatim}
+bundle agent testbundle
 
-    {
-    files:
+{
+files:
 
-      "/tmp/testfile" edit_line => test;
-    }
+  "/tmp/testfile" edit_line => test;
+}
 
-    ########################################################
+########################################################
 
-    bundle edit_line test
-    {
-    classes:
+bundle edit_line test
+{
+classes:
 
-        "ok" expression => regline(".*XYZ.*","$(edit.filename)");
+    "ok" expression => regline(".*XYZ.*","$(edit.filename)");
 
-    reports:
+reports:
 
-     ok::
+ ok::
 
-       "File $(edit.filename) has a line with \"XYZ\" in it";
+   "File $(edit.filename) has a line with \"XYZ\" in it";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -53,24 +55,26 @@ applications, where one might want to set a class for detecting the
 presence of a string that does not exactly match one being inserted. For
 example:
 
-    bundle edit_line upgrade_cfexecd
-      {
-      classes:
+~~~~ {.verbatim}
+bundle edit_line upgrade_cfexecd
+  {
+  classes:
 
-        # Check there is not already a crontab line, not identical to
-        # the one proposed below...
+    # Check there is not already a crontab line, not identical to
+    # the one proposed below...
 
-        "exec_fix" not => regline(".*cf-execd.*","$(edit.filename)");
+    "exec_fix" not => regline(".*cf-execd.*","$(edit.filename)");
 
-      insert_lines:
+  insert_lines:
 
-        exec_fix::
+    exec_fix::
 
-         "0,5,10,15,20,25,30,35,40,45,50,55 * * * * /var/cfengine/bin/cf-execd -F";
+     "0,5,10,15,20,25,30,35,40,45,50,55 * * * * /var/cfengine/bin/cf-execd -F";
 
-      reports:
+  reports:
 
-        exec_fix::
+    exec_fix::
 
-         "Added a 5 minute schedule to crontabs";
-      }
+     "Added a 5 minute schedule to crontabs";
+  }
+~~~~

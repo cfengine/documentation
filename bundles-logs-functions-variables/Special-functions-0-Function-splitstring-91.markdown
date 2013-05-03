@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-splitstring-91
+categories: [Special-functions,Function-splitstring-91]
 published: true
-alias: Special-functions-0-Function-splitstring-91.markdown.html
-tags: [xx]
+alias: Special-functions-Function-splitstring-91.html
+tags: [Special-functions,Function-splitstring-91]
 ---
 
 ### Function splitstring
@@ -22,24 +22,26 @@ a regular expression in arg2
 **Example**:\
  \
 
-    bundle agent test
+~~~~ {.verbatim}
+bundle agent test
 
-    {
-    vars:
+{
+vars:
 
-      "split1" slist => splitstring("one:two:three",":","10");
-      "split2" slist => splitstring("one:two:three",":","1");
-      "split3" slist => splitstring("alpha:xyz:beta","xyz","10");
+  "split1" slist => splitstring("one:two:three",":","10");
+  "split2" slist => splitstring("one:two:three",":","1");
+  "split3" slist => splitstring("alpha:xyz:beta","xyz","10");
 
-    reports:
+reports:
 
-     linux::
+ linux::
 
-      "split1: $(split1)";  # will list "one", "two", and "three"
-      "split2: $(split2)";  # will list "one" and "two:three"
-      "split3: $(split3)";  # will list "alpha:" and ":beta"
+  "split1: $(split1)";  # will list "one", "two", and "three"
+  "split2: $(split2)";  # will list "one" and "two:three"
+  "split3: $(split3)";  # will list "alpha:" and ":beta"
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -55,8 +57,9 @@ The string to be split. \
 regex
 
 A regex pattern which is used to parse the field separator(s) to split
-up the file into items. The regex is unanchored (See Anchored vs.
-unanchored regular expressions). \
+up the file into items. The regex is unanchored (See [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 maxent
 

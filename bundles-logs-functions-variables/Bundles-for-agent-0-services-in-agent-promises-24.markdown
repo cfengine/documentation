@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: services-in-agent-promises-24
+categories: [Bundles-for-agent,services-in-agent-promises-24]
 published: true
-alias: Bundles-for-agent-0-services-in-agent-promises-24.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-services-in-agent-promises-24.html
+tags: [Bundles-for-agent,services-in-agent-promises-24]
 ---
 
 ### `services` promises in agent
@@ -40,25 +40,27 @@ passed to services that are started by CFEngine.
 
 \
 
-    bundle agent example
-    {
-    services:
+~~~~ {.verbatim}
+bundle agent example
+{
+services:
 
-      "Dhcp"
-        service_policy => "start",
-        service_dependencies => { "Alerter", "W32Time" },
-        service_method => winmethod;
-    }
-     
-    ########################################################
+  "Dhcp"
+    service_policy => "start",
+    service_dependencies => { "Alerter", "W32Time" },
+    service_method => winmethod;
+}
+ 
+########################################################
 
-    body service_method winmethod
-    {
-      service_type => "windows";
-      service_args => "--netmask=255.255.0.0";
-      service_autostart_policy => "none";
-      service_dependence_chain => "start_parent_services";
-    }
+body service_method winmethod
+{
+  service_type => "windows";
+  service_args => "--netmask=255.255.0.0";
+  service_autostart_policy => "none";
+  service_dependence_chain => "start_parent_services";
+}
+~~~~
 
 \
 
@@ -75,10 +77,12 @@ systems and are merely as a convenient front-end to `processes` and
 `commands`. If nothing else is specified, CFEngine looks for an special
 reserved agent bundle called
 
-    bundle agent standard_services(service,state)
-    {
-    ...
-    }
+~~~~ {.verbatim}
+bundle agent standard_services(service,state)
+{
+...
+}
+~~~~
 
 This bundle is called with two parameters: the name of the service and a
 start/stop state variable. The CFEngine standard library defines many
@@ -90,56 +94,59 @@ service bundle, so this is merely a front-end.
 
 The standard bundle can be replaced with another, as follows:
 
-    body common control
-    {
-    bundlesequence => { "test" };
-    }
+~~~~ {.verbatim}
+body common control
+{
+bundlesequence => { "test" };
+}
 
-    #
+#
 
-    bundle agent test
-    {
-    vars:
+bundle agent test
+{
+vars:
 
-     "mail" slist => { "spamassassin", "postfix" };
-
-
-    services:
-
-      "www" service_policy => "start",
-            service_method => service_test;
+ "mail" slist => { "spamassassin", "postfix" };
 
 
-      "$(mail)" service_policy => "stop",
-            service_method => service_test;
-    }
+services:
 
-    #
+  "www" service_policy => "start",
+        service_method => service_test;
 
-    body service_method service_test
-    {
-    service_bundle => non_standard_services("$(this.promiser)","$(this.service_policy)");
-    }
 
-    #
+  "$(mail)" service_policy => "stop",
+        service_method => service_test;
+}
 
-    bundle agent non_standard_services(service,state)
-    {
-    reports:
+#
 
-      !done::
+body service_method service_test
+{
+service_bundle => non_standard_services("$(this.promiser)","$(this.service_policy)");
+}
 
-        "Test service promise for \"$(service)\" -> $(state)";
-    }
+#
+
+bundle agent non_standard_services(service,state)
+{
+reports:
+
+  !done::
+
+    "Test service promise for \"$(service)\" -> $(state)";
+}
+~~~~
 
 Note that the special variables `$(this.promiser)` and
 `$(this.service_policy)` may be used to fill in the service and state
 parameters from the promise definition. The `$(this.service_policy)`
 variable is only defined for services promises.
 
--   service\_policy in services
--   service\_dependencies in services
--   service\_method in services
+-   [service\_policy in services](#service_005fpolicy-in-services)
+-   [service\_dependencies in
+    services](#service_005fdependencies-in-services)
+-   [service\_method in services](#service_005fmethod-in-services)
 
 #### `service_policy`
 
@@ -147,21 +154,25 @@ variable is only defined for services promises.
 
 **Allowed input range**: \
 
-                   start
-                   stop
-                   disable
-                   restart
-                   reload
+~~~~ {.example}
+               start
+               stop
+               disable
+               restart
+               reload
+~~~~
 
 **Synopsis**: Policy for cfengine service status
 
 **Example**:\
  \
 
-    services:
-      
-      "Telnet"
-         service_policy => "disable";
+~~~~ {.verbatim}
+services:
+  
+  "Telnet"
+     service_policy => "disable";
+~~~~
 
 **Notes**:\
  \
@@ -184,11 +195,13 @@ depends
 **Example**:\
  \
 
-    services:
-      
-      "ftp"
-        service_policy => "start",
-        service_dependencies => { "network", "logging" };
+~~~~ {.verbatim}
+services:
+  
+  "ftp"
+    service_policy => "start",
+    service_dependencies => { "network", "logging" };
+~~~~
 
 **Notes**:\
  \
@@ -221,12 +234,14 @@ list.
 **Example**:\
  \
 
-         
-         body service_method example
-         {
-           service_args => "-f filename.conf --some-argument";
-         }
-         
+~~~~ {.verbatim}
+     
+     body service_method example
+     {
+       service_args => "-f filename.conf --some-argument";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -245,21 +260,25 @@ optional. \
 
 **Allowed input range**: \
 
-                        none
-                        boot_time
-                        on_demand
+~~~~ {.example}
+                    none
+                    boot_time
+                    on_demand
+~~~~
 
 **Synopsis**: Should the service be started automatically by the OS
 
 **Example**:\
  \
 
-         
-         body service_method example
-         {
-           service_autostart_policy => "boot_time";
-         }
-         
+~~~~ {.verbatim}
+     
+     body service_method example
+     {
+       service_autostart_policy => "boot_time";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -283,22 +302,26 @@ inetd or xinetd on Unix. \
 
 **Allowed input range**: \
 
-                        ignore
-                        start_parent_services
-                        stop_child_services
-                        all_related
+~~~~ {.example}
+                    ignore
+                    start_parent_services
+                    stop_child_services
+                    all_related
+~~~~
 
 **Synopsis**: How to handle dependencies and dependent services
 
 **Example**:\
  \
 
-         
-         body service_method example
-         {
-           service_dependence_chain => "start_parent_services";
-         }
-         
+~~~~ {.verbatim}
+     
+     body service_method example
+     {
+       service_dependence_chain => "start_parent_services";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -330,20 +353,24 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 
 **Allowed input range**: \
 
-                        windows
-                        generic
+~~~~ {.example}
+                    windows
+                    generic
+~~~~
 
 **Synopsis**: Service abstraction type
 
 **Example**:\
  \
 
-         
-         body service_method example
-         {
-           type => "windows";
-         }
-         
+~~~~ {.verbatim}
+     
+     body service_method example
+     {
+       type => "windows";
+     }
+     
+~~~~
 
 **Notes**:\
  \
