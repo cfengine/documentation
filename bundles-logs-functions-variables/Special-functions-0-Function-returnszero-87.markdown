@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-returnszero-87
+categories: [Special-functions,Function-returnszero-87]
 published: true
-alias: Special-functions-0-Function-returnszero-87.markdown.html
-tags: [xx]
+alias: Special-functions-Function-returnszero-87.html
+tags: [Special-functions,Function-returnszero-87]
 ---
 
 ### Function returnszero
@@ -20,28 +20,30 @@ True if named shell command has exit status zero
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "my_result" expression => returnszero("/usr/local/bin/mycommand","noshell");
+  "my_result" expression => returnszero("/usr/local/bin/mycommand","noshell");
 
-    reports:
+reports:
 
-      !my_result::
+  !my_result::
 
-        "Command failed";
+    "Command failed";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

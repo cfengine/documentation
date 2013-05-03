@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-countclassesmatching-11
+categories: [Special-functions,Function-countclassesmatching-11]
 published: true
-alias: Special-functions-0-Function-countclassesmatching-11.markdown.html
-tags: [xx]
+alias: Special-functions-Function-countclassesmatching-11.html
+tags: [Special-functions,Function-countclassesmatching-11]
 ---
 
 ### Function countclassesmatching
@@ -19,19 +19,21 @@ Count the number of defined classes matching regex arg1
 **Example**:\
  \
 
-    bundle agent example
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent example
+{
+vars:
 
-      "num" int => countclassesmatching("entropy.*low");
+  "num" int => countclassesmatching("entropy.*low");
 
-    reports:
+reports:
 
-      cfengine_3::
+  cfengine_3::
 
-        "Found $(num) classes matching";
+    "Found $(num) classes matching";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -43,7 +45,7 @@ regex
 
 A regular expression matching zero or more classes in the current list
 of defined classes. The regular expression is anchored, meaning it must
-match a complete class (See Anchored vs. unanchored regular
-expressions).
+match a complete class (See [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 The function returns the number of classes matched.

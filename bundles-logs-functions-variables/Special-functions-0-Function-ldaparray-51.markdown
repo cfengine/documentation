@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-ldaparray-51
+categories: [Special-functions,Function-ldaparray-51]
 published: true
-alias: Special-functions-0-Function-ldaparray-51.markdown.html
-tags: [xx]
+alias: Special-functions-Function-ldaparray-51.html
+tags: [Special-functions,Function-ldaparray-51]
 ---
 
 ### Function ldaparray
@@ -25,22 +25,26 @@ Extract all values from an LDAP record
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-       "gotdata" expression => ldaparray(
-                                        "myarray",
-                                        "ldap://ldap.example.org",
-                                        "dc=cfengine,dc=com",
-                                        "(uid=mark)",
-                                        "subtree",
-                                        "none");
+   "gotdata" expression => ldaparray(
+                                    "myarray",
+                                    "ldap://ldap.example.org",
+                                    "dc=cfengine,dc=com",
+                                    "(uid=mark)",
+                                    "subtree",
+                                    "none");
+~~~~
 
 **Notes**:\
  \
 
-         
-         (class) ldaparray (array,uri,dn,filter,scope,security)
-         
+~~~~ {.example}
+     
+     (class) ldaparray (array,uri,dn,filter,scope,security)
+     
+~~~~
 
 This function retrieves an entire record with all elements and populates
 an associative array with the entries. It returns a class that is true
@@ -69,9 +73,11 @@ scope
 
 Menu option, the type of ldap search, from
 
-                  subtree
-                  onelevel
-                  base
+~~~~ {.smallexample}
+              subtree
+              onelevel
+              base
+~~~~
 
 \
 
@@ -81,6 +87,8 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-                   none
-                   ssl
-                   sasl
+~~~~ {.smallexample}
+               none
+               ssl
+               sasl
+~~~~

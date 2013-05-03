@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-getindices-23
+categories: [Special-functions,Function-getindices-23]
 published: true
-alias: Special-functions-0-Function-getindices-23.markdown.html
-tags: [xx]
+alias: Special-functions-Function-getindices-23.html
+tags: [Special-functions,Function-getindices-23]
 ---
 
 ### Function getindices
@@ -21,34 +21,36 @@ variable
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    any::
+{
+any::
 
-      bundlesequence  => { "testsetvar" };   
-    }
+  bundlesequence  => { "testsetvar" };   
+}
 
 
-    #######################################################
+#######################################################
 
-    bundle agent testsetvar
+bundle agent testsetvar
 
-    {
-    vars:
+{
+vars:
 
-      "v[index_1]" string => "value_1";
-      "v[index_2]" string => "value_2";
+  "v[index_1]" string => "value_1";
+  "v[index_2]" string => "value_2";
 
-      "parameter_name" slist => getindices("v");
+  "parameter_name" slist => getindices("v");
 
-    reports:
+reports:
 
-      Yr2008::
+  Yr2008::
 
-       "Found index: $(parameter_name)";
+   "Found index: $(parameter_name)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

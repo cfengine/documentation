@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: outputs-in-agent-promises-21
+categories: [Bundles-for-agent,outputs-in-agent-promises-21]
 published: true
-alias: Bundles-for-agent-0-outputs-in-agent-promises-21.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-outputs-in-agent-promises-21.html
+tags: [Bundles-for-agent,outputs-in-agent-promises-21]
 ---
 
 ### `outputs` promises in agent
@@ -26,31 +26,35 @@ CFEngine output.
 
 \
 
-    outputs:
+~~~~ {.verbatim}
+outputs:
 
-      "run_agent";      # Promise handle, verbose (default) output
+  "run_agent";      # Promise handle, verbose (default) output
 
-      "web_server"      # Bundle handle, inform output
-         output_level => "inform",
-         promiser_type => "bundle";
+  "web_server"      # Bundle handle, inform output
+     output_level => "inform",
+     promiser_type => "bundle";
+~~~~
 
 A very handy paradigm is to include outputs promises in every bundle,
 and guard them with classes. For example:
 
-    bundle agent some_function
-    {
-    vars:
-        ...
-    classes:
-        ...
-    outputs:
-      debug_some_function::
-          "some_function"
-         output_level => "verbose",
-         promiser_type => "bundle";
-    files:
-        ...
-    }
+~~~~ {.verbatim}
+bundle agent some_function
+{
+vars:
+    ...
+classes:
+    ...
+outputs:
+  debug_some_function::
+      "some_function"
+     output_level => "verbose",
+     promiser_type => "bundle";
+files:
+    ...
+}
+~~~~
 
 You can then execute your promises normally with no extra output, but
 should you wish to temporarily enable debugging, you can simply do so
@@ -62,13 +66,13 @@ outputs promises on specific promise handles.
 \
 
 The default behaviour is to print verbose output for listed promise
-handles. See handle in \*, for bundle names.
+handles. See [handle in \*](#handle-in-_002a), for bundle names.
 
 **History** This was introduced in Nova version 1.1.3 (2010), Community
 version 3.4.0 (2012)
 
--   output\_level in outputs
--   promiser\_type in outputs
+-   [output\_level in outputs](#output_005flevel-in-outputs)
+-   [promiser\_type in outputs](#promiser_005ftype-in-outputs)
 
 #### `output_level`
 
@@ -76,9 +80,11 @@ version 3.4.0 (2012)
 
 **Allowed input range**: \
 
-                   verbose
-                   debug
-                   inform
+~~~~ {.example}
+               verbose
+               debug
+               inform
+~~~~
 
 **Default value:** verbose
 
@@ -88,18 +94,20 @@ version 3.4.0 (2012)
 **Example**:\
  \
 
-    commands:
+~~~~ {.verbatim}
+commands:
 
-      "/etc/init.d/agent start"
+  "/etc/init.d/agent start"
 
-        handle => "run_agent",
-        ifvarclass => "need_to_run_agent";
+    handle => "run_agent",
+    ifvarclass => "need_to_run_agent";
 
-    outputs:
+outputs:
 
-      "run_agent"
+  "run_agent"
 
-        output_level => "inform"; 
+    output_level => "inform"; 
+~~~~
 
 **Notes**:\
  \
@@ -112,8 +120,10 @@ With no attribute, `verbose` output is assumed.
 
 **Allowed input range**: \
 
-                   promise
-                   bundle
+~~~~ {.example}
+               promise
+               bundle
+~~~~
 
 **Default value:** promise
 
@@ -123,11 +133,13 @@ With no attribute, `verbose` output is assumed.
 **Example**:\
  \
 
-    outputs:
+~~~~ {.verbatim}
+outputs:
 
-      "web_server"
+  "web_server"
 
-         promiser_type => "bundle";
+     promiser_type => "bundle";
+~~~~
 
 **Notes**:\
  \

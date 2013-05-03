@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-peerleader-65
+categories: [Special-functions,Function-peerleader-65]
 published: true
-alias: Special-functions-0-Function-peerleader-65.markdown.html
-tags: [xx]
+alias: Special-functions-Function-peerleader-65.html
+tags: [Special-functions,Function-peerleader-65]
 ---
 
 ### Function peerleader
@@ -21,32 +21,36 @@ Get the assigned peer-leader of the partition to which we belong
 **Example**:\
  \
 
-    bundle agent peers
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent peers
+{
+vars:
 
-      "mygroup" slist => peers("/tmp/hostlist","#.*",4);
+  "mygroup" slist => peers("/tmp/hostlist","#.*",4);
 
-      "myleader" string => peerleader("/tmp/hostlist","#.*",4);
+  "myleader" string => peerleader("/tmp/hostlist","#.*",4);
 
-      "all_leaders" slist => peerleaders("/tmp/hostlist","#.*",4);
+  "all_leaders" slist => peerleaders("/tmp/hostlist","#.*",4);
 
-    reports:
+reports:
 
-     linux::
+ linux::
 
-       "mypeer $(mygroup)";
-       "myleader $(myleader)";
-       "another leader $(all_leaders)";
+   "mypeer $(mygroup)";
+   "myleader $(myleader)";
+   "another leader $(all_leaders)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
 
-         
-         (string) peerleader(file of hosts,comment pattern,group size);
-         
+~~~~ {.example}
+     
+     (string) peerleader(file of hosts,comment pattern,group size);
+     
+~~~~
 
 This function returns the name of a host that may be considered the
 leader of a group of peers of the current host. Peers are defined
@@ -69,9 +73,10 @@ A path to a list of hosts. \
 Comment pattern
 
 A pattern that matches a legal comment in the file. The regex is
-unanchored, meaning it may match a partial line (see Anchored vs.
-unanchored regular expressions). Comments are stripped as the file is
-read. \
+unanchored, meaning it may match a partial line (see [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
+Comments are stripped as the file is read. \
 
 Group size
 
@@ -81,17 +86,19 @@ nonsensical promises.
 
 Example file:
 
-         one
-         two
-         three # this is a comment
-         four
-         five
-         six
-         seven
-         eight
-         nine
-         ten
-         eleven
-         twelve
-         etc
-         
+~~~~ {.smallexample}
+     one
+     two
+     three # this is a comment
+     four
+     five
+     six
+     seven
+     eight
+     nine
+     ten
+     eleven
+     twelve
+     etc
+     
+~~~~

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-hostrange-34
+categories: [Special-functions,Function-hostrange-34]
 published: true
-alias: Special-functions-0-Function-hostrange-34.markdown.html
-tags: [xx]
+alias: Special-functions-Function-hostrange-34.html
+tags: [Special-functions,Function-hostrange-34]
 ---
 
 ### Function hostrange
@@ -21,29 +21,31 @@ specified
 **Example**:\
  \
 
+~~~~ {.verbatim}
 
-    body common control
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "compute_nodes" expression => hostrange("cpu-","01-32");
+  "compute_nodes" expression => hostrange("cpu-","01-32");
 
-    reports:
+reports:
 
-      compute_nodes::
+  compute_nodes::
 
-        "No computer is a cluster";
+    "No computer is a cluster";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

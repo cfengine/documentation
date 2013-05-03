@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-parsestringarray-62
+categories: [Special-functions,Function-parsestringarray-62]
 published: true
-alias: Special-functions-0-Function-parsestringarray-62.markdown.html
-tags: [xx]
+alias: Special-functions-Function-parsestringarray-62.html
+tags: [Special-functions,Function-parsestringarray-62]
 ---
 
 ### Function parsestringarray
@@ -28,37 +28,39 @@ variable
 **Example**:\
  \
 
-    bundle agent test(f) 
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent test(f) 
+{
+vars:
 
-     #######################################
-     # Define data inline for convenience
-     #######################################
+ #######################################
+ # Define data inline for convenience
+ #######################################
 
-      "table"   string => 
+  "table"   string => 
 
-    "one: a
-    two: b
-    three: c";
+"one: a
+two: b
+three: c";
 
-    #######################################
+#######################################
 
-     "dim" int => parsestringarray(
-                              "items",
-                      "$(table)",
-                      "\s*#[^\n]*",
-                      ":",
-                      "1000",
-                      "200000"
-                      );
+ "dim" int => parsestringarray(
+                          "items",
+                  "$(table)",
+                  "\s*#[^\n]*",
+                  ":",
+                  "1000",
+                  "200000"
+                  );
 
-     "keys" slist => getindices("items");
+ "keys" slist => getindices("items");
 
-    reports:
-      cfengine_3::
-        "$(keys)";
-    }
+reports:
+  cfengine_3::
+    "$(keys)";
+}
+~~~~
 
 **Notes**:\
  \
@@ -66,7 +68,7 @@ variable
 *History*: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
 This function mirrors the exact behaviour of `readstringarray()`, but
-reads data from a variable instead of a file (See Function
-readstringarray). By making data readable from a variable, data driven
-policies can be kept inline. This means that they will be visible in the
-CFEngine Knowledge Management portal.
+reads data from a variable instead of a file (See [Function
+readstringarray](#Function-readstringarray)). By making data readable
+from a variable, data driven policies can be kept inline. This means
+that they will be visible in the CFEngine Knowledge Management portal.

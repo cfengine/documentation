@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: storage-in-agent-promises-25
+categories: [Bundles-for-agent,storage-in-agent-promises-25]
 published: true
-alias: Bundles-for-agent-0-storage-in-agent-promises-25.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-storage-in-agent-promises-25.html
+tags: [Bundles-for-agent,storage-in-agent-promises-25]
 ---
 
 ### `storage` promises in agent
@@ -13,14 +13,16 @@ tags: [xx]
 
 Storage promises refer to disks and filesystem properties.
 
-         
-          storage:
-         
-             "/disk volume or mountpoint"
-         
-               volume = volume_body,
-               ...;
-         
+~~~~ {.smallexample}
+     
+      storage:
+     
+         "/disk volume or mountpoint"
+     
+           volume = volume_body,
+           ...;
+     
+~~~~
 
 In CFEngine 2, storage promises were divided into `disks` or `required`,
 and `misc_mounts` types. The old mount-models for binary and home
@@ -29,40 +31,42 @@ these models can reconstruct them from the low-level tools.
 
 \
 
-    bundle agent storage
+~~~~ {.verbatim}
+bundle agent storage
 
-    {
-    storage:
+{
+storage:
 
-      "/usr" volume  => mycheck("10%");
-      "/mnt" mount   => nfs("nfsserv.example.org","/home");
+  "/usr" volume  => mycheck("10%");
+  "/mnt" mount   => nfs("nfsserv.example.org","/home");
 
-    }
+}
 
-    #######################################################
+#######################################################
 
-    body volume mycheck(free)   # reusable template
+body volume mycheck(free)   # reusable template
 
-    {
-    check_foreign  => "false";
-    freespace      => "$(free)";
-    sensible_size  => "10000";
-    sensible_count => "2";
-    }
+{
+check_foreign  => "false";
+freespace      => "$(free)";
+sensible_size  => "10000";
+sensible_count => "2";
+}
 
-    body mount nfs(server,source)
+body mount nfs(server,source)
 
-    {
-    mount_type => "nfs";
-    mount_source => "$(source)";
-    mount_server => "$(server)";
-    edit_fstab => "true";
-    }
+{
+mount_type => "nfs";
+mount_source => "$(source)";
+mount_server => "$(server)";
+edit_fstab => "true";
+}
+~~~~
 
 \
 
--   mount in storage
--   volume in storage
+-   [mount in storage](#mount-in-storage)
+-   [volume in storage](#volume-in-storage)
 
 #### `mount` (body template)
 
@@ -74,12 +78,14 @@ these models can reconstruct them from the low-level tools.
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false add or remove entries to the file system table
 ("fstab")
@@ -89,12 +95,14 @@ these models can reconstruct them from the low-level tools.
 **Example**:\
  \
 
-         
-         body mount example
-         {
-         edit_fstab => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body mount example
+     {
+     edit_fstab => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -107,22 +115,26 @@ The default behaviour is to not place edits in the file system table. \
 
 **Allowed input range**: \
 
-                        nfs
-                        nfs2
-                        nfs3
-                        nfs4
+~~~~ {.example}
+                    nfs
+                    nfs2
+                    nfs3
+                    nfs4
+~~~~
 
 **Synopsis**: Protocol type of remote file system
 
 **Example**:\
  \
 
-         
-         body mount example
-         {
-         mount_type => "nfs3";
-         }
-         
+~~~~ {.verbatim}
+     
+     body mount example
+     {
+     mount_type => "nfs3";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -140,12 +152,14 @@ This field is mainly for future extensions. \
 **Example**:\
  \
 
-         
-         body mount example
-         {
-         mount_source "/location/disk/directory";
-         }
-         
+~~~~ {.verbatim}
+     
+     body mount example
+     {
+     mount_source "/location/disk/directory";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -163,12 +177,14 @@ This is the location on the remote device, server, SAN etc. \
 **Example**:\
  \
 
-         
-         body mount example
-         {
-         mount_server => "nfs_host.example.org";
-         }
-         
+~~~~ {.verbatim}
+     
+     body mount example
+     {
+     mount_server => "nfs_host.example.org";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -187,11 +203,13 @@ Hostname or IP address, this could be on a SAN. \
 **Example**:\
  \
 
-         body mount example
-         {
-         mount_options => { "rw", "acls" };
-         }
-         
+~~~~ {.verbatim}
+     body mount example
+     {
+     mount_options => { "rw", "acls" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -205,12 +223,14 @@ options must be legal options for the system mount commands. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false unmount a previously mounted filesystem
 
@@ -219,12 +239,14 @@ options must be legal options for the system mount commands. \
 **Example**:\
  \
 
-         
-         body mount example
-         {
-         unmount => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body mount example
+     {
+     unmount => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -239,12 +261,14 @@ options must be legal options for the system mount commands. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false verify storage that is mounted from a foreign
 system on this host
@@ -254,14 +278,16 @@ system on this host
 **Example**:\
  \
 
-         
-         body volume example
-         
-         {
-         #..
-         check_foreign  => "false";
-         }
-         
+~~~~ {.verbatim}
+     
+     body volume example
+     
+     {
+     #..
+     check_foreign  => "false";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -283,17 +309,19 @@ available before warning
 **Example**:\
  \
 
-         
-         body volume example1
-         {
-         freespace => "10%";
-         }
-         
-         body volume example2
-         {
-         freespace => "50M";
-         }
-         
+~~~~ {.verbatim}
+     
+     body volume example1
+     {
+     freespace => "10%";
+     }
+     
+     body volume example2
+     {
+     freespace => "50M";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -303,7 +331,7 @@ promise is found not to be kept (that is, if the free space falls below
 the promised value), warnings are generated. You may also want to use
 the results of this promise to control other promises.
 
-See: classes in \*. \
+See: [classes in \*](#classes-in-_002a). \
 
 `sensible_size`
 
@@ -317,22 +345,26 @@ sensible-looking storage device
 **Example**:\
  \
 
-         
-         body volume example
-         {
-         sensible_size => "20K";
-         }
-         
+~~~~ {.verbatim}
+     
+     body volume example
+     {
+     sensible_size => "20K";
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
-         
-         body volume control
-         {
-         sensible_size => "20K";
-         }
-         
+~~~~ {.verbatim}
+     
+     body volume control
+     {
+     sensible_size => "20K";
+     }
+     
+~~~~
 
 \
 
@@ -348,12 +380,14 @@ sensible-looking storage device
 **Example**:\
  \
 
-         
-         body volume example
-         {
-         sensible_count => "20";
-         }
-         
+~~~~ {.verbatim}
+     
+     body volume example
+     {
+     sensible_count => "20";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -367,12 +401,14 @@ the agent has privileges on volumes being checked. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false generate pseudo-periodic disk change arrival
 distribution
@@ -382,12 +418,14 @@ distribution
 **Example**:\
  \
 
-         
-         body volume example
-         {
-         scan_arrivals => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body volume example
+     {
+     scan_arrivals => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \

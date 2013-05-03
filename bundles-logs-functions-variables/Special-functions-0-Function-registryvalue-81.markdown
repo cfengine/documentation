@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-registryvalue-81
+categories: [Special-functions,Function-registryvalue-81]
 published: true
-alias: Special-functions-0-Function-registryvalue-81.markdown.html
-tags: [xx]
+alias: Special-functions-Function-registryvalue-81.html
+tags: [Special-functions,Function-registryvalue-81]
 ---
 
 ### Function registryvalue
@@ -20,19 +20,21 @@ Returns a value for an MS-Win registry key,value pair
 **Example**:\
  \
 
-    bundle agent reg
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent reg
+{
+vars:
 
-      "value" string => registryvalue("HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine","value3");
+  "value" string => registryvalue("HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine","value3");
 
-    reports:
+reports:
 
-      windows::
+  windows::
 
-       "Value extracted: $(value)";
+   "Value extracted: $(value)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

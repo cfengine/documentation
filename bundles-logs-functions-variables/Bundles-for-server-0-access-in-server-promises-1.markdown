@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: access-in-server-promises-1
+categories: [Bundles-for-server,access-in-server-promises-1]
 published: true
-alias: Bundles-for-server-0-access-in-server-promises-1.markdown.html
-tags: [xx]
+alias: Bundles-for-server-access-in-server-promises-1.html
+tags: [Bundles-for-server,access-in-server-promises-1]
 ---
 
 ### `access` promises in server
@@ -30,92 +30,96 @@ first-come-first-served basis. Thus file objects (promisers) should be
 listed in order of most-specific file first. In this way, specific
 promises will override less specific ones.
 
-         
-          access:
-         
-             "/path/file_object"
-         
-               admit   = { "hostname", "ipv4_address", "ipv6_address"  };
-         
-         
+~~~~ {.smallexample}
+     
+      access:
+     
+         "/path/file_object"
+     
+           admit   = { "hostname", "ipv4_address", "ipv6_address"  };
+     
+     
+~~~~
 
 \
 
 Example:
 
-    #########################################################
-    # Server config
-    #########################################################
+~~~~ {.verbatim}
+#########################################################
+# Server config
+#########################################################
 
-    body server control 
+body server control 
 
-    {
-    allowconnects         => { "127.0.0.1" , "::1" };
-    allowallconnects      => { "127.0.0.1" , "::1" };
-    trustkeysfrom         => { "127.0.0.1" , "::1" };
-    }
+{
+allowconnects         => { "127.0.0.1" , "::1" };
+allowallconnects      => { "127.0.0.1" , "::1" };
+trustkeysfrom         => { "127.0.0.1" , "::1" };
+}
 
-    #########################################################
+#########################################################
 
-    bundle server access_rules()
+bundle server access_rules()
 
-    {
-    access:
+{
+access:
 
-      "/source/directory"
-              comment => "Access to file transfer",
-              admit   => { "127.0.0.1" };
+  "/source/directory"
+          comment => "Access to file transfer",
+          admit   => { "127.0.0.1" };
 
-      # Grant orchestration communication
+  # Grant orchestration communication
 
-      "did.*"
-              comment => "Access to class context (enterprise)",
-        resource_type => "context",
-                admit => { "127.0.0.1" };
-
-
-      "value of my test_scalar, can expand variables here - $(sys.host)"
-              comment => "Grant access to the string in quotes, by name test_scalar",
-               handle => "test_scalar",
-        resource_type => "literal",
-                admit => { "127.0.0.1" };
-
-      "XYZ"
-              comment => "Grant access to contents of persistent scalar variable XYZ",
-        resource_type => "variable",
-                admit => { "127.0.0.1" };
-
-      # Client grants access to CFEngine hub access
-
-      "delta"
-        comment => "Grant access to cfengine hub to collect report deltas",
-        resource_type => "query",
-              admit   => { "127.0.0.1"  };
-      "full"
-              comment => "Grant access to cfengine hub to collect full report dump",
-        resource_type => "query",
-              admit   => { "127.0.0.1"  };
-
-      policy_hub::
-
-      "collect call"
-              comment => "Grant access to cfengine client to request the collection of its reports",
-        resource_type => "query",
-              admit   => { "10.1.2.*" };
+  "did.*"
+          comment => "Access to class context (enterprise)",
+    resource_type => "context",
+            admit => { "127.0.0.1" };
 
 
-    }
+  "value of my test_scalar, can expand variables here - $(sys.host)"
+          comment => "Grant access to the string in quotes, by name test_scalar",
+           handle => "test_scalar",
+    resource_type => "literal",
+            admit => { "127.0.0.1" };
+
+  "XYZ"
+          comment => "Grant access to contents of persistent scalar variable XYZ",
+    resource_type => "variable",
+            admit => { "127.0.0.1" };
+
+  # Client grants access to CFEngine hub access
+
+  "delta"
+    comment => "Grant access to cfengine hub to collect report deltas",
+    resource_type => "query",
+          admit   => { "127.0.0.1"  };
+  "full"
+          comment => "Grant access to cfengine hub to collect full report dump",
+    resource_type => "query",
+          admit   => { "127.0.0.1"  };
+
+  policy_hub::
+
+  "collect call"
+          comment => "Grant access to cfengine client to request the collection of its reports",
+    resource_type => "query",
+          admit   => { "10.1.2.*" };
+
+
+}
+~~~~
 
 \
 
 Entries may be literal addresses of IPv4 or IPv6, or any name registered
 in the POSIX `gethostbyname` service.
 
--   admit in access
--   deny in access
--   maproot in access
--   ifencrypted in access
--   resource\_type in access
+-   [admit in access](#admit-in-access)
+-   [deny in access](#deny-in-access)
+-   [maproot in access](#maproot-in-access)
+-   [ifencrypted in access](#ifencrypted-in-access)
+-   [resource\_type in access](#resource_005ftype-in-access)
 
 #### `admit`
 
@@ -129,11 +133,13 @@ objects
 **Example**:\
  \
 
-    access:
+~~~~ {.verbatim}
+access:
 
-      "/home/mark/LapTop"
+  "/home/mark/LapTop"
 
-        admit   => { "127.0.0.1", "192.168.0.1/24", ".*\.domain\.tld"  };
+    admit   => { "127.0.0.1", "192.168.0.1/24", ".*\.domain\.tld"  };
+~~~~
 
 **Notes**:\
  \
@@ -158,16 +164,18 @@ objects
 **Example**:\
  \
 
-    bundle server access_rules()
+~~~~ {.verbatim}
+bundle server access_rules()
 
-    {
-    access:
+{
+access:
 
-      "/path"
+  "/path"
 
-        admit   => { ".*\.example\.org" },
-        deny    => { "badhost_1\.example\.org", "badhost_1\.example\.org" };
-    }
+    admit   => { ".*\.example\.org" },
+    deny    => { "badhost_1\.example\.org", "badhost_1\.example\.org" };
+}
+~~~~
 
 **Notes**:\
  \
@@ -191,16 +199,18 @@ read-privilege on the server
 **Example**:\
  \
 
-    access:
+~~~~ {.verbatim}
+access:
 
-     "/home"
+ "/home"
 
-           admit => { "backup_host.example.org" },
-     ifencrypted => "true",
+       admit => { "backup_host.example.org" },
+ ifencrypted => "true",
 
-         # Backup needs to have access to all users
+     # Backup needs to have access to all users
 
-         maproot => { "backup_host.example.org" };
+     maproot => { "backup_host.example.org" };
+~~~~
 
 **Notes**:\
  \
@@ -222,12 +232,14 @@ files if the connecting user does not own the file on the server.
 
 **Allowed input range**: \
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+~~~~ {.example}
+               true
+               false
+               yes
+               no
+               on
+               off
+~~~~
 
 **Default value:** false
 
@@ -237,12 +249,14 @@ conditional on the connection from the client being encrypted
 **Example**:\
  \
 
-    access:
+~~~~ {.verbatim}
+access:
 
-       "/path/file"
+   "/path/file"
 
-        admit     => { ".*\.example\.org" },
-        ifencrypted => "true";
+    admit     => { ".*\.example\.org" },
+    ifencrypted => "true";
+~~~~
 
 **Notes**:\
  \
@@ -256,11 +270,13 @@ connection is encrypted.
 
 **Allowed input range**: \
 
-                   path
-                   literal
-                   context
-                   query
-                   variable
+~~~~ {.example}
+               path
+               literal
+               context
+               query
+               variable
+~~~~
 
 **Synopsis**: The type of object being granted access (the default
 grants access to files)
@@ -268,44 +284,46 @@ grants access to files)
 **Example**:\
  \
 
+~~~~ {.verbatim}
 
-    bundle server access_rules()
+bundle server access_rules()
 
-    {
-    access:
+{
+access:
 
-      "value of my test_scalar, can expand variables here - $(sys.host)"
-        handle => "test_scalar",
-        comment => "Grant access to contents of test_scalar VAR",
-        resource_type => "literal",
-        admit => { "127.0.0.1" };
+  "value of my test_scalar, can expand variables here - $(sys.host)"
+    handle => "test_scalar",
+    comment => "Grant access to contents of test_scalar VAR",
+    resource_type => "literal",
+    admit => { "127.0.0.1" };
 
-      "XYZ"
-        resource_type => "variable",
-        handle => "XYZ",
-        admit => { "127.0.0.1" };
-
-
-      # On the policy hub
-
-      "collect_calls"
-         resource_type => "query",
-               admit   => { "127.0.0.1" };
-
-      # On the isolated client in the field
+  "XYZ"
+    resource_type => "variable",
+    handle => "XYZ",
+    admit => { "127.0.0.1" };
 
 
-     "delta"
-        comment => "Grant access to cfengine hub to collect report deltas",
-        resource_type => "query",
-              admit   => { "127.0.0.1"  };
-      "full"
-              comment => "Grant access to cfengine hub to collect full report dump",
-        resource_type => "query",
-              admit   => { "127.0.0.1"  };
+  # On the policy hub
+
+  "collect_calls"
+     resource_type => "query",
+           admit   => { "127.0.0.1" };
+
+  # On the isolated client in the field
 
 
-    }
+ "delta"
+    comment => "Grant access to cfengine hub to collect report deltas",
+    resource_type => "query",
+          admit   => { "127.0.0.1"  };
+  "full"
+          comment => "Grant access to cfengine hub to collect full report dump",
+    resource_type => "query",
+          admit   => { "127.0.0.1"  };
+
+
+}
+~~~~
 
 **Notes**:\
  \
@@ -333,21 +351,25 @@ host (which for some reason is not available directly through policy on
 the client, e.g. because they have different policies), then you could
 use the following construction:
 
-    access:
+~~~~ {.verbatim}
+access:
 
-      "$(variable_name)"
+  "$(variable_name)"
 
-             handle => "variable_name",
-      resource_type => "literal";
+         handle => "variable_name",
+  resource_type => "literal";
+~~~~
 
 If the resource type is `context`, the promiser is treated as a regular
 expression to match persistent classes defined on the server host. If
 these are matched by the request from the client, they will be
-transmitted (See Function remoteclassesmatching).
+transmitted (See [Function
+remoteclassesmatching](#Function-remoteclassesmatching)).
 
 The term `query` may also be used in commercial versions of CFEngine to
 query the server for data from embedded databases. This is currently for
 internal use only, and is used to grant access to report \`menus'. If
 the promiser of a query request is called collect\_calls, this grants
 access to server peering collect-call tunneling (See
-call\_collect\_interval in server).
+[call\_collect\_interval in
+server](#call_005fcollect_005finterval-in-server)).

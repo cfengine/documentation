@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-parserealarray-61
+categories: [Special-functions,Function-parserealarray-61]
 published: true
-alias: Special-functions-0-Function-parserealarray-61.markdown.html
-tags: [xx]
+alias: Special-functions-Function-parserealarray-61.html
+tags: [Special-functions,Function-parserealarray-61]
 ---
 
 ### Function parserealarray
@@ -28,37 +28,39 @@ variable
 **Example**:\
  \
 
-    bundle agent test(f) 
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent test(f) 
+{
+vars:
 
-     #######################################
-     # Define data inline for convenience
-     #######################################
+ #######################################
+ # Define data inline for convenience
+ #######################################
 
-      "table"   string => 
+  "table"   string => 
 
-    "1:1.6
-    2:2.5
-    3:3.4";
+"1:1.6
+2:2.5
+3:3.4";
 
-    #######################################
+#######################################
 
-     "dim" int => parserealarray(
-                              "items",
-                      "$(table)",
-                      "\s*#[^\n]*",
-                      ":",
-                      "1000",
-                      "200000"
-                      );
+ "dim" int => parserealarray(
+                          "items",
+                  "$(table)",
+                  "\s*#[^\n]*",
+                  ":",
+                  "1000",
+                  "200000"
+                  );
 
-     "keys" slist => getindices("items");
+ "keys" slist => getindices("items");
 
-    reports:
-      cfengine_3::
-        "$(keys)";
-    }
+reports:
+  cfengine_3::
+    "$(keys)";
+}
+~~~~
 
 **Notes**:\
  \
@@ -66,7 +68,7 @@ variable
 *History*: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
 This function mirrors the exact behaviour of `readrealarray()`, but
-reads data from a variable instead of a file (See Function
-readrealarray). By making data readable from a variable, data driven
-policies can be kept inline. This means that they will be visible in the
-CFEngine Knowledge Management portal.
+reads data from a variable instead of a file (See [Function
+readrealarray](#Function-readrealarray)). By making data readable from a
+variable, data driven policies can be kept inline. This means that they
+will be visible in the CFEngine Knowledge Management portal.

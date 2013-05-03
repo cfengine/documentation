@@ -1,25 +1,27 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: commands-in-agent-promises-1
+categories: [Bundles-for-agent,commands-in-agent-promises-1]
 published: true
-alias: Bundles-for-agent-0-commands-in-agent-promises-1.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-commands-in-agent-promises-1.html
+tags: [Bundles-for-agent,commands-in-agent-promises-1]
 ---
 
 ### `commands` promises in agent
 
 \
 
-         
-         commands:
-         
-           "/path/to/command args"
-         
-                      args = "more args",
-                      contain = contain_body,
-                      module = true/false;
-         
+~~~~ {.smallexample}
+     
+     commands:
+     
+       "/path/to/command args"
+     
+                  args = "more args",
+                  contain = contain_body,
+                  module = true/false;
+     
+~~~~
 
 Command *containment* allows you to make a \`sandbox' around a command,
 to run it as a non-privileged user inside an isolated directory tree.
@@ -43,19 +45,21 @@ commands-promise in a very flexible way. See the `kept_returncodes`,
 
 \
 
-    bundle agent example
+~~~~ {.verbatim}
+bundle agent example
 
-    {
-    commands:
+{
+commands:
 
-      "/bin/sleep 10"
-         action  => background;
+  "/bin/sleep 10"
+     action  => background;
 
-      "/bin/sleep"
-         args => "20",
-         action  => background;
+  "/bin/sleep"
+     args => "20",
+     action  => background;
 
-    }
+}
+~~~~
 
 \
 
@@ -63,21 +67,23 @@ When referring to executables whose paths contain spaces, you should
 quote the entire program string separately so that CFEngine knows the
 name of the executable file. For example:
 
-         
-          commands:
-         
-           windows::
-         
-            "\"c:\Program Files\my name with space\" arg1 arg2";
-         
-           linux::
-         
-            "\"/usr/bin/funny command name\" -a -b -c";
-         
+~~~~ {.smallexample}
+     
+      commands:
+     
+       windows::
+     
+        "\"c:\Program Files\my name with space\" arg1 arg2";
+     
+       linux::
+     
+        "\"/usr/bin/funny command name\" -a -b -c";
+     
+~~~~
 
--   args in commands
--   contain in commands
--   module in commands
+-   [args in commands](#args-in-commands)
+-   [contain in commands](#contain-in-commands)
+-   [module in commands](#module-in-commands)
 
 #### `args`
 
@@ -91,11 +97,13 @@ name of the executable file. For example:
 **Example**:\
  \
 
-    commands:
+~~~~ {.verbatim}
+commands:
 
-      "/bin/echo one"
+  "/bin/echo one"
 
-       args => "two three";
+   args => "two three";
+~~~~
 
 **Notes**:\
  \
@@ -104,7 +112,9 @@ Sometimes it is convenient to separate the arguments to a command from
 the command itself. The final arguments are the concatenation with one
 space. So in the example above the command would be:
 
-     /bin/echo one two three
+~~~~ {.verbatim}
+ /bin/echo one two three
+~~~~
 
 #### `contain` (body template)
 
@@ -116,12 +126,14 @@ space. So in the example above the command would be:
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false embed the command in a shell environment
 
@@ -130,12 +142,14 @@ space. So in the example above the command would be:
 **Example**:\
  \
 
-         
-         body contain example
-         {
-         useshell => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body contain example
+     {
+     useshell => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -155,27 +169,31 @@ is true. \
 
 **Allowed input range**: \
 
-                        0
-                        77
-                        22
-                        27
-                        72
-                        077
-                        022
-                        027
-                        072
+~~~~ {.example}
+                    0
+                    77
+                    22
+                    27
+                    72
+                    077
+                    022
+                    027
+                    072
+~~~~
 
 **Synopsis**: The umask value for the child process
 
 **Example**:\
  \
 
-         
-         body contain example
-         {
-         umask => "077";
-         }
-         
+~~~~ {.verbatim}
+     
+     body contain example
+     {
+     umask => "077";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -195,12 +213,14 @@ versions of CFEngine. \
 **Example**:\
  \
 
-         
-         body contain example
-         {
-         exec_owner => "mysql_user";
-         }
-         
+~~~~ {.verbatim}
+     
+     body contain example
+     {
+     exec_owner => "mysql_user";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -224,12 +244,14 @@ CFEngine. \
 **Example**:\
  \
 
-         
-         body contain example
-         {
-         exec_group => "nogroup";
-         }
-         
+~~~~ {.verbatim}
+     
+     body contain example
+     {
+     exec_group => "nogroup";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -250,12 +272,14 @@ them. \
 **Example**:\
  \
 
-         
-         body contain example
-         {
-         exec_timeout => "30";
-         }
-         
+~~~~ {.verbatim}
+     
+     body contain example
+     {
+     exec_timeout => "30";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -276,13 +300,15 @@ process
 **Example**:\
  \
 
-         
-         body contain example
-         
-         {
-         chdir => "/containment/directory";
-         }
-         
+~~~~ {.verbatim}
+     
+     body contain example
+     
+     {
+     chdir => "/containment/directory";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -302,13 +328,15 @@ it works like the cd shell command. \
 **Example**:\
  \
 
-         
-         body contain example
-         
-         {
-         chroot => "/private/path";
-         }
-         
+~~~~ {.verbatim}
+     
+     body contain example
+     
+     {
+     chroot => "/private/path";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -323,12 +351,14 @@ root directory for the process. In security parlance, this creates a
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false preview command when running in dry-run mode
 (with -n)
@@ -338,12 +368,14 @@ root directory for the process. In security parlance, this creates a
 **Example**:\
  \
 
-         
-         body contain example
-         {
-         preview => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body contain example
+     {
+     preview => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -360,12 +392,14 @@ its safety checks to user defined scripts. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false discard all output from the command
 
@@ -374,12 +408,14 @@ its safety checks to user defined scripts. \
 **Example**:\
  \
 
-         
-         body contain example
-         {
-         no_output => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body contain example
+     {
+     no_output => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -392,12 +428,14 @@ This is equivalent to piping standard output and error to /dev/null.
 
 **Allowed input range**: \
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+~~~~ {.example}
+               true
+               false
+               yes
+               no
+               on
+               off
+~~~~
 
 **Default value:** false
 
@@ -406,11 +444,13 @@ This is equivalent to piping standard output and error to /dev/null.
 **Example**:\
  \
 
-    commands:
+~~~~ {.verbatim}
+commands:
 
-       "/masterfiles/user_script"
+   "/masterfiles/user_script"
 
-         module => "true";
+     module => "true";
+~~~~
 
 **Notes**:\
  \
@@ -427,75 +467,81 @@ beginning with @ are lists. Any other lines of output are cited by
 `cf-agent` as being erroneous, so you should normally make your module
 completely silent. Here is an example written in shell:
 
-         #!/bin/sh
-         /bin/echo "@mylist= { \"one\", \"two\", \"three\" }"
-         /bin/echo "=myscalar= scalar val"
-         /bin/echo "+module_class"
+~~~~ {.smallexample}
+     #!/bin/sh
+     /bin/echo "@mylist= { \"one\", \"two\", \"three\" }"
+     /bin/echo "=myscalar= scalar val"
+     /bin/echo "+module_class"
+~~~~
 
 And here is an example using it:
 
-    body common control
-       {
-       any::
+~~~~ {.verbatim}
+body common control
+   {
+   any::
 
-          bundlesequence  => { 
-                             def,
-                             modtest
-                             };
-       }
+      bundlesequence  => { 
+                         def,
+                         modtest
+                         };
+   }
 
-    ###################################################################
+###################################################################
 
-    bundle agent def
+bundle agent def
 
-    {
-    commands:
+{
+commands:
 
-      "$(sys.workdir)/modules/module_name" module => "true";
+  "$(sys.workdir)/modules/module_name" module => "true";
 
-    reports:
+reports:
 
-      #
-      # Each module forms a private context with its name as id
-      #
+  #
+  # Each module forms a private context with its name as id
+  #
 
-     module_class::
+ module_class::
 
-      "Module set variable $(module_name.myscalar)";
+  "Module set variable $(module_name.myscalar)";
 
-    }
+}
 
-    ###################################################################
+###################################################################
 
-    bundle agent modtest
+bundle agent modtest
 
-    {
-    vars:
+{
+vars:
 
-     "mylist" slist => { @(module_name.mylist) };
+ "mylist" slist => { @(module_name.mylist) };
 
-    reports:
+reports:
 
-     module_class::
+ module_class::
 
-      "Module set variable $(mylist)";
+  "Module set variable $(mylist)";
 
-    }
+}
+~~~~
 
 Here is an example module written in Perl:
 
-         #!/usr/bin/perl
-         #
-         # module:myplugin
-         #
-         
-           # lots of computation....
-         
-         if (special-condition)
-            {
-            print "+specialclass";
-            }
-         
+~~~~ {.smallexample}
+     #!/usr/bin/perl
+     #
+     # module:myplugin
+     #
+     
+       # lots of computation....
+     
+     if (special-condition)
+        {
+        print "+specialclass";
+        }
+     
+~~~~
 
 If your module is simple and is best expressed as a shell command, then
 we suggest that you *expose* the class being defined in the command
@@ -504,50 +550,56 @@ reading the promises file). For example, the promises could read as
 follows (the two `echo` commands are to ensure that the shell always
 exits with a successful execution of a command):
 
-    bundle agent sendmail
-    {
-    commands:
-        # This next module checks a specific failure mode of dcc, namely
-        # more than 3 error states since the last time we ran cf-agent
-        is_mailhost::
-            "/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep 'Milter (dcc): to error state' | /usr/bin/wc -l` -gt 3  echo '+start_dccm' || echo
-    ''"
-                contain => shell_command,
-                module => "true";
+~~~~ {.verbatim}
+bundle agent sendmail
+{
+commands:
+    # This next module checks a specific failure mode of dcc, namely
+    # more than 3 error states since the last time we ran cf-agent
+    is_mailhost::
+        "/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep 'Milter (dcc): to error state' | /usr/bin/wc -l` -gt 3  echo '+start_dccm' || echo
+''"
+            contain => shell_command,
+            module => "true";
 
-        start_dccm::
-            "/var/dcc/libexec/start-dccm"
-                contain => not_paranoid;
-    }
+    start_dccm::
+        "/var/dcc/libexec/start-dccm"
+            contain => not_paranoid;
+}
 
-    body contain shell_command
-    {
-        useshell    => "yes";
-    }
+body contain shell_command
+{
+    useshell    => "yes";
+}
 
-    body contain not_paranoid
-    {
-        useshell    => "no";
-        exec_owner  => "root";
-        umask       => "22";
-    }
+body contain not_paranoid
+{
+    useshell    => "no";
+    exec_owner  => "root";
+    umask       => "22";
+}
+~~~~
 
 Modules inherit the environment variables from cfagent and accept
 arguments, just as a regular command does.
 
-         #!/bin/sh
-         #
-         # module:myplugin
-         #
-         
-         /bin/echo $*
-         
+~~~~ {.smallexample}
+     #!/bin/sh
+     #
+     # module:myplugin
+     #
+     
+     /bin/echo $*
+     
+~~~~
 
 Modules define variables in `cf-agent` by outputting strings of the form
 
-         
-         =variablename=value
-         
+~~~~ {.smallexample}
+     
+     =variablename=value
+     
+~~~~
 
 These variables end up in a context that has the same name as the
 module. When the `$(allclasses)` variable becomes too large to

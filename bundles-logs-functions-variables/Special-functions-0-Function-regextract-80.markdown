@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-regextract-80
+categories: [Special-functions,Function-regextract-80]
 published: true
-alias: Special-functions-0-Function-regextract-80.markdown.html
-tags: [xx]
+alias: Special-functions-Function-regextract-80.html
+tags: [Special-functions,Function-regextract-80]
 ---
 
 ### Function regextract
@@ -23,23 +23,26 @@ sets a non-empty array of backreferences named arg3
 **Example**:\
  \
 
-    bundle agent testbundle
-    {
-    classes:
+~~~~ {.verbatim}
+bundle agent testbundle
+{
+classes:
 
-        # Extract regex backreferences and put them in an array
+    # Extract regex backreferences and put them in an array
 
-        "ok" expression => regextract(
-                                     "xx ([^\s]+) ([^\s]+).* xx",
-                                     "xx one two three four xx",
-                                     "myarray"
-                                     );
-    reports:
+    "ok" expression => regextract(
+                                 "xx ([^\s]+) ([^\s]+).* xx",
+                                 "xx one two three four xx",
+                                 "myarray"
+                                 );
+reports:
 
-     ok::
+ ok::
 
-       "ok - \"$(myarray[0])\" = xx + \"$(myarray[1])\" + \"$(myarray[2])\" + .. + xx";
-    }
+   "ok - \"$(myarray[0])\" = xx + \"$(myarray[1])\" + \"$(myarray[2])\" + .. + xx";
+}
+
+~~~~
 
 **Notes**:\
  \
@@ -50,7 +53,8 @@ sets a non-empty array of backreferences named arg3
 
 A regular expression containing one or more parenthesized back
 references. The regular expression is anchored, meaning it must match
-the entire string (See Anchored vs. unanchored regular expressions). \
+the entire string (See [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 *data*
 
@@ -62,8 +66,10 @@ The name of an array which (if there are any back reference matches from
 the regular expression) will be populated with the values, in the
 manner:
 
-              $(identifier[0]) = entire string
-              $(identifier[1]) = back reference 1, etc
+~~~~ {.example}
+          $(identifier[0]) = entire string
+          $(identifier[1]) = back reference 1, etc
+~~~~
 
 **History**: This function was introduced in CFEngine version 3.0.4
 (2010)

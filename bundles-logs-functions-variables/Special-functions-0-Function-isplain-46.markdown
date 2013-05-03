@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-isplain-46
+categories: [Special-functions,Function-isplain-46]
 published: true
-alias: Special-functions-0-Function-isplain-46.markdown.html
-tags: [xx]
+alias: Special-functions-Function-isplain-46.html
+tags: [Special-functions,Function-isplain-46]
 ---
 
 ### Function isplain
@@ -19,28 +19,30 @@ True if the named object is a plain/regular file
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "isplain" expression => isplain("/etc/passwd");
+  "isplain" expression => isplain("/etc/passwd");
 
-    reports:
+reports:
 
-      isplain::
+  isplain::
 
-        "File exists..";
+    "File exists..";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

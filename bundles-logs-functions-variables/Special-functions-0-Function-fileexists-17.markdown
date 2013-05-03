@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-fileexists-17
+categories: [Special-functions,Function-fileexists-17]
 published: true
-alias: Special-functions-0-Function-fileexists-17.markdown.html
-tags: [xx]
+alias: Special-functions-Function-fileexists-17.html
+tags: [Special-functions,Function-fileexists-17]
 ---
 
 ### Function fileexists
@@ -19,28 +19,30 @@ True if the named file can be accessed
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "exists" expression => fileexists("/etc/passwd");
+  "exists" expression => fileexists("/etc/passwd");
 
-    reports:
+reports:
 
-      exists::
+  exists::
 
-        "File exists";
+    "File exists";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

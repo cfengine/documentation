@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: delete_005ftree-in-edit_005fxml-promises-12
+categories: [Bundles-for-agent,delete_005ftree-in-edit_005fxml-promises-12]
 published: true
-alias: Bundles-for-agent-0-delete_005ftree-in-edit_005fxml-promises-12.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-delete_005ftree-in-edit_005fxml-promises-12.html
+tags: [Bundles-for-agent,delete_005ftree-in-edit_005fxml-promises-12]
 ---
 
 ### `delete_tree` promises in edit\_xml
@@ -21,13 +21,15 @@ balanced XML subtree.
 
 \
 
-    bundle edit_xml example
-      {
-      delete_tree:
-        "Host name=\"cfe_host\">/Host>"
+~~~~ {.verbatim}
+bundle edit_xml example
+  {
+  delete_tree:
+    "Host name=\"cfe_host\">/Host>"
 
-        select_xpath => "/Server/Service/Engine";
-      }
+    select_xpath => "/Server/Service/Engine";
+  }
+~~~~
 
 \
 

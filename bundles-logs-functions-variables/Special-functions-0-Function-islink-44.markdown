@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-islink-44
+categories: [Special-functions,Function-islink-44]
 published: true
-alias: Special-functions-0-Function-islink-44.markdown.html
-tags: [xx]
+alias: Special-functions-Function-islink-44.html
+tags: [Special-functions,Function-islink-44]
 ---
 
 ### Function islink
@@ -19,28 +19,30 @@ True if the named object is a symbolic link
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "isdir" expression => islink("/tmp/link");
+  "isdir" expression => islink("/tmp/link");
 
-    reports:
+reports:
 
-      isdir::
+  isdir::
 
-        "Directory exists..";
+    "Directory exists..";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

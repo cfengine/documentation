@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-isgreaterthan-42
+categories: [Special-functions,Function-isgreaterthan-42]
 published: true
-alias: Special-functions-0-Function-isgreaterthan-42.markdown.html
-tags: [xx]
+alias: Special-functions-Function-isgreaterthan-42.html
+tags: [Special-functions,Function-isgreaterthan-42]
 ---
 
 ### Function isgreaterthan
@@ -21,32 +21,34 @@ strcmp
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "test"  };
-    }
+{
+bundlesequence  => { "test"  };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent test
+bundle agent test
 
-    {
-    classes:
+{
+classes:
 
-      "ok" expression => isgreaterthan("1","0");
+  "ok" expression => isgreaterthan("1","0");
 
-    reports:
+reports:
 
-      ok::
+  ok::
 
-        "Assertion is true";
+    "Assertion is true";
 
-     !ok::
+ !ok::
 
-      "Assertion is false";
+  "Assertion is false";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

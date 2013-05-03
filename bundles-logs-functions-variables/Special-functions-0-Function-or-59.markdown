@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-or-59
+categories: [Special-functions,Function-or-59]
 published: true
-alias: Special-functions-0-Function-or-59.markdown.html
-tags: [xx]
+alias: Special-functions-Function-or-59.html
+tags: [Special-functions,Function-or-59]
 ---
 
 ### Function or
@@ -18,9 +18,11 @@ Calculate whether any argument evaluates to true
 **Example**:\
  \
 
-    commands:
-      "/usr/bin/generate_config $(config)"
-        ifvarclass => or(not(fileexists("/etc/config/$(config)")), "force_configs");
+~~~~ {.verbatim}
+commands:
+  "/usr/bin/generate_config $(config)"
+    ifvarclass => or(not(fileexists("/etc/config/$(config)")), "force_configs");
+~~~~
 
 **Notes**:\
  \

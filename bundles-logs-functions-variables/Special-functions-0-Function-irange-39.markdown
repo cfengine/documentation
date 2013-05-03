@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-irange-39
+categories: [Special-functions,Function-irange-39]
 published: true
-alias: Special-functions-0-Function-irange-39.markdown.html
-tags: [xx]
+alias: Special-functions-Function-irange-39.html
+tags: [Special-functions,Function-irange-39]
 ---
 
 ### Function irange
@@ -20,9 +20,11 @@ Define a range of integer values for cfengine internal use
 **Example**:\
  \
 
-    irange("1","100");
+~~~~ {.verbatim}
+irange("1","100");
 
-    irange(ago(0,0,0,1,30,0), "0");
+irange(ago(0,0,0,1,30,0), "0");
+~~~~
 
 **Notes**:\
  \

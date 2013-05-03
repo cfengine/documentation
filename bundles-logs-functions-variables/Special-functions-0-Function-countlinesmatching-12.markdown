@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-countlinesmatching-12
+categories: [Special-functions,Function-countlinesmatching-12]
 published: true
-alias: Special-functions-0-Function-countlinesmatching-12.markdown.html
-tags: [xx]
+alias: Special-functions-Function-countlinesmatching-12.html
+tags: [Special-functions,Function-countlinesmatching-12]
 ---
 
 ### Function countlinesmatching
@@ -20,19 +20,21 @@ Count the number of lines matching regex arg1 in file arg2
 **Example**:\
  \
 
-    bundle agent example
-    {     
-    vars:
+~~~~ {.verbatim}
+bundle agent example
+{     
+vars:
 
-      "no" int => countlinesmatching("m.*","/etc/passwd");
+  "no" int => countlinesmatching("m.*","/etc/passwd");
 
-    reports:
+reports:
 
-      cfengine_3::
+  cfengine_3::
 
-        "Found $(no) lines matching";
+    "Found $(no) lines matching";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -43,8 +45,9 @@ expression that should match the whole line.
 regex
 
 A regular expression matching zero or more lines. The regular expression
-is anchored, meaning it must match a complete line (see Anchored vs.
-unanchored regular expressions). \
+is anchored, meaning it must match a complete line (see [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 filename
 

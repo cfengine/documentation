@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: set_005fattribute-in-edit_005fxml-promises-15
+categories: [Bundles-for-agent,set_005fattribute-in-edit_005fxml-promises-15]
 published: true
-alias: Bundles-for-agent-0-set_005fattribute-in-edit_005fxml-promises-15.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-set_005fattribute-in-edit_005fxml-promises-15.html
+tags: [Bundles-for-agent,set_005fattribute-in-edit_005fxml-promises-15]
 ---
 
 ### `set_attribute` promises in edit\_xml
@@ -23,14 +23,16 @@ attribute to be set.
 
 \
 
-    bundle edit_xml example
-      {
-      set_attribute:
-        "name"
+~~~~ {.verbatim}
+bundle edit_xml example
+  {
+  set_attribute:
+    "name"
 
-        attribute_value => "cfe_host",
-        select_xpath => "/Server/Service/Engine/Host";
-      }
+    attribute_value => "cfe_host",
+    select_xpath => "/Server/Service/Engine/Host";
+  }
+~~~~
 
 \
 
@@ -38,7 +40,8 @@ Note that typically only a single attribute, within a single selected
 node, is set in each `set_attribute` promise. You may of course have
 multiple promises that each set an attribute.
 
--   attribute\_value in set\_attribute
+-   [attribute\_value in
+    set\_attribute](#attribute_005fvalue-in-set_005fattribute)
 
 #### `attribute_value`
 
@@ -52,10 +55,12 @@ of the XML file
 **Example**:\
  \
 
-    body attribute_value example(s)
-    {
-    attribute_value => "$(s)";
-    }
+~~~~ {.verbatim}
+body attribute_value example(s)
+{
+attribute_value => "$(s)";
+}
+~~~~
 
 **Notes**:\
  \

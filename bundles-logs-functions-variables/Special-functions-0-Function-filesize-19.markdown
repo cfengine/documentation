@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-filesize-19
+categories: [Special-functions,Function-filesize-19]
 published: true
-alias: Special-functions-0-Function-filesize-19.markdown.html
-tags: [xx]
+alias: Special-functions-Function-filesize-19.html
+tags: [Special-functions,Function-filesize-19]
 ---
 
 ### Function filesize
@@ -19,21 +19,23 @@ Returns the size in bytes of the file
 **Example**:\
  \
 
-    bundle agent example
-    {     
-    vars:
+~~~~ {.verbatim}
+bundle agent example
+{     
+vars:
 
-      "exists" int => filesize("/etc/passwd");
-      "nexists" int => filesize("/etc/passwdx");
+  "exists" int => filesize("/etc/passwd");
+  "nexists" int => filesize("/etc/passwdx");
 
-    reports:
+reports:
 
-      !xyz::
+  !xyz::
 
-        "File size $(exists)";
-        "Does not exist $(nexists)";
+    "File size $(exists)";
+    "Does not exist $(nexists)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

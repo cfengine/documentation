@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-sum-93
+categories: [Special-functions,Function-sum-93]
 published: true
-alias: Special-functions-0-Function-sum-93.markdown.html
-tags: [xx]
+alias: Special-functions-Function-sum-93.html
+tags: [Special-functions,Function-sum-93]
 ---
 
 ### Function sum
@@ -20,30 +20,34 @@ Return the sum of a list of reals
 **Example**:\
  \
 
-    body common control
-    {
-    bundlesequence => { "test" };
-    }
+~~~~ {.verbatim}
+body common control
+{
+bundlesequence => { "test" };
+}
 
-    ##############################
+##############################
 
-    bundle agent test
-    {
-    vars:
-      "adds_to_six" ilist => { "1", "2", "3" };
-      "six" real => sum("adds_to_six");
-      "adds_to_zero" rlist => { "1.0", "2", "-3e0" };
-      "zero" real => sum("adds_to_zero");
+bundle agent test
+{
+vars:
+  "adds_to_six" ilist => { "1", "2", "3" };
+  "six" real => sum("adds_to_six");
+  "adds_to_zero" rlist => { "1.0", "2", "-3e0" };
+  "zero" real => sum("adds_to_zero");
 
-    reports:
-      cfengine_3::
-        "six is $(six), zero is $(zero)";
-    }
+reports:
+  cfengine_3::
+    "six is $(six), zero is $(zero)";
+}
+~~~~
 
 Because `$(six)` and `$(zero)` are both real numbers, the report that is
 generated will be:
 
-    six is 6.000000, zero is 0.000000
+~~~~ {.verbatim}
+six is 6.000000, zero is 0.000000
+~~~~
 
 **Notes**:\
  \

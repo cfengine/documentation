@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-concat-7
+categories: [Special-functions,Function-concat-7]
 published: true
-alias: Special-functions-0-Function-concat-7.markdown.html
-tags: [xx]
+alias: Special-functions-Function-concat-7.html
+tags: [Special-functions,Function-concat-7]
 ---
 
 ### Function concat
@@ -18,9 +18,11 @@ Concatenate all arguments into string
 **Example**:\
  \
 
-    commands:
-      "/usr/bin/generate_config $(config)"
-        ifvarclass => concat("have_config_", canonify("$(config)"));
+~~~~ {.verbatim}
+commands:
+  "/usr/bin/generate_config $(config)"
+    ifvarclass => concat("have_config_", canonify("$(config)"));
+~~~~
 
 **Notes**:\
  \

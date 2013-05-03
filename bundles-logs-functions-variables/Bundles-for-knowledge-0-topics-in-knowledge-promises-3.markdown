@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: topics-in-knowledge-promises-3
+categories: [Bundles-for-knowledge,topics-in-knowledge-promises-3]
 published: true
-alias: Bundles-for-knowledge-0-topics-in-knowledge-promises-3.markdown.html
-tags: [xx]
+alias: Bundles-for-knowledge-topics-in-knowledge-promises-3.html
+tags: [Bundles-for-knowledge,topics-in-knowledge-promises-3]
 ---
 
 ### `topics` promises in knowledge
@@ -17,14 +17,16 @@ in a knowledge base. If a topic has a very long name, it is best to made
 the promiser object a short name and use the `comment` field to add the
 long explanation (e.g. unique acronym and full text).
 
-         
-          topics:
-         
-           "topic string"
-         
-            comment = "long name..",
-            ...;
-         
+~~~~ {.smallexample}
+     
+      topics:
+     
+       "topic string"
+     
+        comment = "long name..",
+        ...;
+     
+~~~~
 
 Topics form associative structures based entirely on an abstract space
 of natural language. Actually, this is only slightly more abstract than
@@ -40,14 +42,16 @@ environments.
 
 \
 
-    bundle knowledge example
-    {
-    topics:
+~~~~ {.verbatim}
+bundle knowledge example
+{
+topics:
 
-       "Distro"
-          comment     => "Distribution of linux",              
-          association => a("is a packaging of","Linux","is packaged as a");
-    }
+   "Distro"
+      comment     => "Distribution of linux",              
+      association => a("is a packaging of","Linux","is packaged as a");
+}
+~~~~
 
 \
 
@@ -56,9 +60,9 @@ form of the subject string. Associations form semantic links between
 topics. Topics can appear multiple times in order to form multiple
 associations.
 
--   association in topics
--   synonyms in topics
--   generalizations in topics
+-   [association in topics](#association-in-topics)
+-   [synonyms in topics](#synonyms-in-topics)
+-   [generalizations in topics](#generalizations-in-topics)
 
 #### `association` (body template)
 
@@ -76,12 +80,14 @@ associates
 **Example**:\
  \
 
-         
-         body association example
-         {
-         forward_relation => "is bigger than";
-         }
-         
+~~~~ {.verbatim}
+     
+     body association example
+     {
+     forward_relation => "is bigger than";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -99,12 +105,14 @@ promiser topic
 **Example**:\
  \
 
-         body association example
-         {
-         # ..
-         backward_relationship => "is less than";
-         }
-         
+~~~~ {.verbatim}
+     body association example
+     {
+     # ..
+     backward_relationship => "is less than";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -123,14 +131,16 @@ graph. \
 **Example**:\
  \
 
-         
-         body association example(literal,scalar,list)
-         
-         {
-         #...
-         associates => { "literal", $(scalar),  @(list)};
-         }
-         
+~~~~ {.verbatim}
+     
+     body association example(literal,scalar,list)
+     
+     {
+     #...
+     associates => { "literal", $(scalar),  @(list)};
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -150,9 +160,11 @@ defined context
 **Example**:\
  \
 
-     mathematics::
+~~~~ {.verbatim}
+ mathematics::
 
-       "tree" synonyms => { "DAG", "directed acyclic graph" };
+   "tree" synonyms => { "DAG", "directed acyclic graph" };
+~~~~
 
 **Notes**:\
  \
@@ -174,15 +186,17 @@ current topic, used when reasoning
 **Example**:\
  \
 
-     topics:
+~~~~ {.verbatim}
+ topics:
 
-      persons::
+  persons::
 
-         "mark"  generalizations => { "person", "staff", "human being" };
+     "mark"  generalizations => { "person", "staff", "human being" };
 
-      any::
+  any::
 
-         "10.10.10.10/24" generalizations => { "network", "CIDR format" };
+     "10.10.10.10/24" generalizations => { "network", "CIDR format" };
+~~~~
 
 **Notes**:\
  \

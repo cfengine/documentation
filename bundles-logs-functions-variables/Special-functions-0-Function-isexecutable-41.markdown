@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-isexecutable-41
+categories: [Special-functions,Function-isexecutable-41]
 published: true
-alias: Special-functions-0-Function-isexecutable-41.markdown.html
-tags: [xx]
+alias: Special-functions-Function-isexecutable-41.html
+tags: [Special-functions,Function-isexecutable-41]
 ---
 
 ### Function isexecutable
@@ -19,9 +19,11 @@ True if the named object has execution rights for the current user
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-      "yes" expression => isexecutable("/bin/ls");
+  "yes" expression => isexecutable("/bin/ls");
+~~~~
 
 **Notes**:\
  \

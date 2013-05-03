@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: replace_005fpatterns-in-edit_005fline-promises-9
+categories: [Bundles-for-agent,replace_005fpatterns-in-edit_005fline-promises-9]
 published: true
-alias: Bundles-for-agent-0-replace_005fpatterns-in-edit_005fline-promises-9.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-replace_005fpatterns-in-edit_005fline-promises-9.html
+tags: [Bundles-for-agent,replace_005fpatterns-in-edit_005fline-promises-9]
 ---
 
 ### `replace_patterns` promises in edit\_line
@@ -14,31 +14,35 @@ tags: [xx]
 This promise refers to arbitrary text patterns in a file. The pattern is
 expressed as a PCRE regular expression.
 
-         
-           replace_patterns:
-         
-            "search pattern"
-         
-               replace_with = replace_body,
-               ...;
-         
+~~~~ {.smallexample}
+     
+       replace_patterns:
+     
+        "search pattern"
+     
+           replace_with = replace_body,
+           ...;
+     
+~~~~
 
 \
 
-    bundle edit_line upgrade_cfexecd
-    {
-      replace_patterns:
+~~~~ {.verbatim}
+bundle edit_line upgrade_cfexecd
+{
+  replace_patterns:
 
-        "cfexecd" replace_with => value("cf-execd");
-    }
+    "cfexecd" replace_with => value("cf-execd");
+}
 
-    ########################################
+########################################
 
-    body replace_with value(x)  # defined in cfengine_stdlib.cf
-    {
-    replace_value => "$(x)";
-    occurrences => "all";
-    }
+body replace_with value(x)  # defined in cfengine_stdlib.cf
+{
+replace_value => "$(x)";
+occurrences => "all";
+}
+~~~~
 
 \
 
@@ -51,9 +55,11 @@ pattern will match.
 **NOTE:** In `replace_patterns` promises, the regular expression may
 match a line fragment, that is, it is unanchored.
 
-See: Anchored vs. unanchored regular expressions
+See: [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)
 
--   replace\_with in replace\_patterns
+-   [replace\_with in
+    replace\_patterns](#replace_005fwith-in-replace_005fpatterns)
 
 #### `replace_with` (body template)
 
@@ -65,8 +71,10 @@ See: Anchored vs. unanchored regular expressions
 
 **Allowed input range**: \
 
-                        all
-                        first
+~~~~ {.example}
+                    all
+                    first
+~~~~
 
 **Synopsis**: Menu option to replace all occurrences or just first (NB
 the latter is non-convergent)
@@ -76,12 +84,14 @@ the latter is non-convergent)
 **Example**:\
  \
 
-         
-         body replace_with example
-         {
-         occurrences => "first";        # Warning! Using "first" is non-convergent
-         }
-         
+~~~~ {.verbatim}
+     
+     body replace_with example
+     {
+     occurrences => "first";        # Warning! Using "first" is non-convergent
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -104,12 +114,14 @@ applies to. \
 **Example**:\
  \
 
-         
-         body replace_with example(s)
-         {
-         replace_value => "$(s)";
-         }
-         
+~~~~ {.verbatim}
+     
+     body replace_with example(s)
+     {
+     replace_value => "$(s)";
+     }
+     
+~~~~
 
 **Notes**:\
  \

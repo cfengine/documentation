@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-readintarray-70
+categories: [Special-functions,Function-readintarray-70]
 published: true
-alias: Special-functions-0-Function-readintarray-70.markdown.html
-tags: [xx]
+alias: Special-functions-Function-readintarray-70.html
+tags: [Special-functions,Function-readintarray-70]
 ---
 
 ### Function readintarray
@@ -28,11 +28,13 @@ variable
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-      "dim_array" 
+  "dim_array" 
 
-         int =>  readintarray("array_name","/tmp/array","#[^\n]*",":",10,4000);
+     int =>  readintarray("array_name","/tmp/array","#[^\n]*",":",10,4000);
+~~~~
 
 **ARGUMENTS**:
 
@@ -51,7 +53,8 @@ A regex pattern which specifies comments to be ignored in the file. The
 `comment` field will strip out unwanted patterns from the file being
 read, leaving unstripped characters to be split into fields. Using the
 empty string (`""`) indicates no comments. The regex is unanchored (See
-Anchored vs. unanchored regular expressions). \
+[Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 split
 
@@ -73,31 +76,35 @@ Reads a two dimensional array from a file. One dimension is separated by
 the character specified in the argument, the other by the the lines in
 the file. The first field of the lines names the first array argument.
 
-         
-         1: 5:7:21:13
-         2:19:8:14:14
-         3:45:1:78:22
-         4:64:2:98:99
+~~~~ {.smallexample}
+     
+     1: 5:7:21:13
+     2:19:8:14:14
+     3:45:1:78:22
+     4:64:2:98:99
+~~~~
 
 Results in
 
-         array_name[1][0]   1
-         array_name[1][1]   5
-         array_name[1][2]   7
-         array_name[1][3]   21
-         array_name[1][4]   13
-         array_name[2][0]   2
-         array_name[2][1]   19
-         array_name[2][2]   8
-         array_name[2][3]   14
-         array_name[2][4]   14
-         array_name[3][0]   3
-         array_name[3][1]   45
-         array_name[3][2]   1
-         array_name[3][3]   78
-         array_name[3][4]   22
-         array_name[4][0]   4
-         array_name[4][1]   64
-         array_name[4][2]   2
-         array_name[4][3]   98
-         array_name[4][4]   99
+~~~~ {.smallexample}
+     array_name[1][0]   1
+     array_name[1][1]   5
+     array_name[1][2]   7
+     array_name[1][3]   21
+     array_name[1][4]   13
+     array_name[2][0]   2
+     array_name[2][1]   19
+     array_name[2][2]   8
+     array_name[2][3]   14
+     array_name[2][4]   14
+     array_name[3][0]   3
+     array_name[3][1]   45
+     array_name[3][2]   1
+     array_name[3][3]   78
+     array_name[3][4]   22
+     array_name[4][0]   4
+     array_name[4][1]   64
+     array_name[4][2]   2
+     array_name[4][3]   98
+     array_name[4][4]   99
+~~~~

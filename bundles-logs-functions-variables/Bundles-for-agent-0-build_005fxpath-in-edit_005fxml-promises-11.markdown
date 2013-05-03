@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: build_005fxpath-in-edit_005fxml-promises-11
+categories: [Bundles-for-agent,build_005fxpath-in-edit_005fxml-promises-11]
 published: true
-alias: Bundles-for-agent-0-build_005fxpath-in-edit_005fxml-promises-11.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-build_005fxpath-in-edit_005fxml-promises-11.html
+tags: [Bundles-for-agent,build_005fxpath-in-edit_005fxml-promises-11]
 ---
 
 ### `build_xpath` promises in edit\_xml
@@ -24,11 +24,13 @@ XPath.
 
 \
 
-    bundle edit_xml example
-      {
-      build_xpath:
-        "/Server/Service/Engine/Host[ @name=\"cfe_host\" | Alias = cfe_alias ]";
-      }
+~~~~ {.verbatim}
+bundle edit_xml example
+  {
+  build_xpath:
+    "/Server/Service/Engine/Host[ @name=\"cfe_host\" | Alias = cfe_alias ]";
+  }
+~~~~
 
 \
 

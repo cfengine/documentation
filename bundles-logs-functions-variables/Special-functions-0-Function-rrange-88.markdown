@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-rrange-88
+categories: [Special-functions,Function-rrange-88]
 published: true
-alias: Special-functions-0-Function-rrange-88.markdown.html
-tags: [xx]
+alias: Special-functions-Function-rrange-88.html
+tags: [Special-functions,Function-rrange-88]
 ---
 
 ### Function rrange
@@ -20,6 +20,9 @@ Define a range of real numbers for cfengine internal use
 **Example**:\
  \
 
+~~~~ {.verbatim}
+
+~~~~
 
 **Notes**:\
  \

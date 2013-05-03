@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-readfile-69
+categories: [Special-functions,Function-readfile-69]
 published: true
-alias: Special-functions-0-Function-readfile-69.markdown.html
-tags: [xx]
+alias: Special-functions-Function-readfile-69.html
+tags: [Special-functions,Function-readfile-69]
 ---
 
 ### Function readfile
@@ -21,11 +21,13 @@ Read max number of bytes from named file and assign to variable
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "xxx"   
+ "xxx"   
 
-        string => readfile( "/home/mark/tmp/testfile" , "33" );
+    string => readfile( "/home/mark/tmp/testfile" , "33" );
+~~~~
 
 **Notes**:\
  \

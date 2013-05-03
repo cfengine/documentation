@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: field_005fedits-in-edit_005fline-promises-8
+categories: [Bundles-for-agent,field_005fedits-in-edit_005fline-promises-8]
 published: true
-alias: Bundles-for-agent-0-field_005fedits-in-edit_005fline-promises-8.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-field_005fedits-in-edit_005fline-promises-8.html
+tags: [Bundles-for-agent,field_005fedits-in-edit_005fline-promises-8]
 ---
 
 ### `field_edits` promises in edit\_line
@@ -17,86 +17,91 @@ assumes a parameterizable model for editing the fields of such files,
 using a regular expression to separate major fields and a character to
 separate sub-fields. First you match the line with a regular expression.
 The regular expression must match the entire line; that is, it is
-anchored (see Anchored vs. unanchored regular expressions). Then a
+anchored (see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). Then a
 `field_edits` body describes the separators for fields and one level of
 sub-fields, along with policies for editing these fields, ordering the
 items within them.
 
-         
-         field_edits:
-         
-             "regex matching line"
-         
-                       edit_field = body;
-         
+~~~~ {.smallexample}
+     
+     field_edits:
+     
+         "regex matching line"
+     
+                   edit_field = body;
+     
+~~~~
 
 \
 
-    bundle agent example
+~~~~ {.verbatim}
+bundle agent example
 
-    {
-    vars:
+{
+vars:
 
-     "userset" slist => { "one-x", "two-x", "three-x" };
+ "userset" slist => { "one-x", "two-x", "three-x" };
 
-    files:
+files:
 
-      "/tmp/passwd"
+  "/tmp/passwd"
 
-           create    => "true",
-           edit_line => SetUserParam("mark","6","/set/this/shell");
+       create    => "true",
+       edit_line => SetUserParam("mark","6","/set/this/shell");
 
-      "/tmp/group"
+  "/tmp/group"
 
-           create    => "true",
-           edit_line => AppendUserParam("root","4","@(userset)");
-    }
+       create    => "true",
+       edit_line => AppendUserParam("root","4","@(userset)");
+}
 
-    ########################################################
+########################################################
 
-    bundle edit_line SetUserParam(user,field,val)
-      {
-      field_edits:
+bundle edit_line SetUserParam(user,field,val)
+  {
+  field_edits:
 
-       "$(user):.*"
+   "$(user):.*"
 
-          # Set field of the file to parameter
+      # Set field of the file to parameter
 
-          edit_field => col(":","$(field)","$(val)","set");
-      }
+      edit_field => col(":","$(field)","$(val)","set");
+  }
 
-    ########################################################
+########################################################
 
-    bundle edit_line AppendUserParam(user,field,allusers)
-      {
-      vars:
+bundle edit_line AppendUserParam(user,field,allusers)
+  {
+  vars:
 
-        "val" slist => { @(allusers) };
+    "val" slist => { @(allusers) };
 
-      field_edits:
+  field_edits:
 
-       "$(user):.*"
+   "$(user):.*"
 
-          # Set field of the file to parameter
+      # Set field of the file to parameter
 
-          edit_field => col(":","$(field)","$(val)","alphanum");
+      edit_field => col(":","$(field)","$(val)","alphanum");
 
-      }
+  }
 
-    ########################################
-    # Bodies
-    ########################################
+########################################
+# Bodies
+########################################
 
-    body edit_field col(split,col,newval,method)
+body edit_field col(split,col,newval,method)
 
-    {
-    field_separator => "$(split)";
-    select_field    => "$(col)";
-    value_separator  => ",";
-    field_value     => "$(newval)";
-    field_operation => "$(method)";
-    extend_fields => "true";
-    }
+{
+field_separator => "$(split)";
+select_field    => "$(col)";
+value_separator  => ",";
+field_value     => "$(newval)";
+field_operation => "$(method)";
+extend_fields => "true";
+}
+~~~~
 
 \
 
@@ -105,12 +110,14 @@ and removing data from addressable fields. The passwd and group files
 are classic examples of tabular files, but there are many ways to use
 this feature. For example, editing a string:
 
-    VARIABLE="one two three"
+~~~~ {.verbatim}
+VARIABLE="one two three"
+~~~~
 
 View this line as a tabular line separated by " and with sub-separator
 given by the space.
 
--   edit\_field in field\_edits
+-   [edit\_field in field\_edits](#edit_005ffield-in-field_005fedits)
 
 #### `edit_field` (body template)
 
@@ -122,12 +129,14 @@ given by the space.
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false allow blank fields in a line (do not purge)
 
@@ -136,13 +145,15 @@ given by the space.
 **Example**:\
  \
 
-         
-         body edit_field example
-         {
-         # ...
-         allow_blank_fields => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body edit_field example
+     {
+     # ...
+     allow_blank_fields => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -158,12 +169,14 @@ number of field separators. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: true/false add new fields at end of line if necessary to
 complete edit
@@ -173,12 +186,14 @@ complete edit
 **Example**:\
  \
 
-         
-         body edit_field example
-         {
-         extend_fields => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body edit_field example
+     {
+     extend_fields => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -195,11 +210,13 @@ depending in this setting. If in doubt, set this to true. \
 
 **Allowed input range**: \
 
-                        prepend
-                        append
-                        alphanum
-                        delete
-                        set
+~~~~ {.example}
+                    prepend
+                    append
+                    alphanum
+                    delete
+                    set
+~~~~
 
 **Synopsis**: Menu option policy for editing subfields
 
@@ -208,12 +225,14 @@ depending in this setting. If in doubt, set this to true. \
 **Example**:\
  \
 
-         
-         body edit_field example
-         {
-         field_operation => "append";
-         }
-         
+~~~~ {.verbatim}
+     
+     body edit_field example
+     {
+     field_operation => "append";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -252,12 +271,14 @@ field/column
 **Example**:\
  \
 
-         
-         body edit_field example
-         {
-         field_separator => ":";
-         }
-         
+~~~~ {.verbatim}
+     
+     body edit_field example
+     {
+     field_separator => ":";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -277,12 +298,14 @@ edit all kinds of line-based text files. \
 **Example**:\
  \
 
-         
-         body edit_field example(s)
-         {
-         field_value => "$(s)";
-         }
-         
+~~~~ {.verbatim}
+     
+     body edit_field example(s)
+     {
+     field_value => "$(s)";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -302,11 +325,13 @@ from 1)
 **Example**:\
  \
 
-         
-         body field_edits example
-         {
-         select_field => "5";
-         }
+~~~~ {.verbatim}
+     
+     body field_edits example
+     {
+     select_field => "5";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -319,32 +344,36 @@ Numbering starts from 1 (not from 0). \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: If set, the default field numbering starts from 0
 
 **Example**:\
  \
 
-         
-         body edit_field col(split,col,newval,method)
-         
-         {
-         field_separator    => "$(split)";
-         select_field       => "$(col)";
-         value_separator    => ",";
-         field_value        => "$(newval)";
-         field_operation    => "$(method)";
-         extend_fields      => "true";
-         allow_blank_fields => "true";
-         start_fields_from_zero => "true";
-         }
-         
+~~~~ {.verbatim}
+     
+     body edit_field col(split,col,newval,method)
+     
+     {
+     field_separator    => "$(split)";
+     select_field       => "$(col)";
+     value_separator    => ",";
+     field_value        => "$(newval)";
+     field_operation    => "$(method)";
+     extend_fields      => "true";
+     allow_blank_fields => "true";
+     start_fields_from_zero => "true";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -371,12 +400,14 @@ field
 **Example**:\
  \
 
-         
-         body field_edit example
-         {
-         value_separator => ",";
-         }
-         
+~~~~ {.verbatim}
+     
+     body field_edit example
+     {
+     value_separator => ",";
+     }
+     
+~~~~
 
 **Notes**:\
  \

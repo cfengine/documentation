@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-maplist-55
+categories: [Special-functions,Function-maplist-55]
 published: true
-alias: Special-functions-0-Function-maplist-55.markdown.html
-tags: [xx]
+alias: Special-functions-Function-maplist-55.html
+tags: [Special-functions,Function-maplist-55]
 ---
 
 ### Function maplist
@@ -22,17 +22,19 @@ Return a list with each element modified by a pattern based \$(this)
 **Example**:\
  \
 
-    bundle agent test
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent test
+{
+vars:
 
-      "oldlist" slist => { "a", "b", "c" };
-      "newlist" slist => maplist("Element ($(this))","oldlist");
+  "oldlist" slist => { "a", "b", "c" };
+  "newlist" slist => maplist("Element ($(this))","oldlist");
 
-    reports:
-     linux::
-      "Transform: $(newlist)";
-    }
+reports:
+ linux::
+  "Transform: $(newlist)";
+}
+~~~~
 
 **Notes**:\
  \

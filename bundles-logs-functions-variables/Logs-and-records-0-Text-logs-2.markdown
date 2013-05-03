@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Text-logs-2
+categories: [Logs-and-records,Text-logs-2]
 published: true
-alias: Logs-and-records-0-Text-logs-2.markdown.html
-tags: [xx]
+alias: Logs-and-records-Text-logs-2.html
+tags: [Logs-and-records,Text-logs-2]
 ---
 
 ### Text logs

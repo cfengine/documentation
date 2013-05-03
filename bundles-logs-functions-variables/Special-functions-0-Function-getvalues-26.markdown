@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-getvalues-26
+categories: [Special-functions,Function-getvalues-26]
 published: true
-alias: Special-functions-0-Function-getvalues-26.markdown.html
-tags: [xx]
+alias: Special-functions-Function-getvalues-26.html
+tags: [Special-functions,Function-getvalues-26]
 ---
 
 ### Function getvalues
@@ -21,34 +21,36 @@ whose id is the argument and assign to variable
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    any::
+{
+any::
 
-      bundlesequence  => { "testsetvar" };   
-    }
+  bundlesequence  => { "testsetvar" };   
+}
 
 
-    #######################################################
+#######################################################
 
-    bundle agent testsetvar
+bundle agent testsetvar
 
-    {
-    vars:
+{
+vars:
 
-      "v[index_1]" string => "value_1";
-      "v[index_2]" string => "value_2";
+  "v[index_1]" string => "value_1";
+  "v[index_2]" string => "value_2";
 
-      "parameter_name" slist => getvalues("v");
+  "parameter_name" slist => getvalues("v");
 
-    reports:
+reports:
 
-      Yr2008::
+  Yr2008::
 
-       "Found index: $(parameter_name)";
+   "Found index: $(parameter_name)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
