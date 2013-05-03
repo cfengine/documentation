@@ -1,9 +1,0 @@
-12 Special Variables
---------------------
-
--   Variable context const
--   Variable context edit
--   Variable context match
--   Variable context mon
--   Variable context sys
--   Variable context this
