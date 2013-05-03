@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: interfaces-in-agent-promises-19
+categories: [Bundles-for-agent,interfaces-in-agent-promises-19]
 published: true
-alias: Bundles-for-agent-0-interfaces-in-agent-promises-19.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-interfaces-in-agent-promises-19.html
+tags: [Bundles-for-agent,interfaces-in-agent-promises-19]
 ---
 
 ### `interfaces` promises in agent
@@ -19,14 +19,16 @@ identity, assumed netmask and routing policy in the case of multi-homed
 hosts. For virtual machines and hosts, the list of interfaces can be
 quite large.
 
-         
-          interfaces:
-         
-            "interface name"
-         
-              tcp_ip = tcp_ip_body,
-              ...;
-         
+~~~~ {.smallexample}
+     
+      interfaces:
+     
+        "interface name"
+     
+          tcp_ip = tcp_ip_body,
+          ...;
+     
+~~~~
 
 \
 
@@ -36,7 +38,7 @@ For future use.
 
 For future use.
 
--   tcp\_ip in interfaces
+-   [tcp\_ip in interfaces](#tcp_005fip-in-interfaces)
 
 #### `tcp_ip` (body template)
 
@@ -53,12 +55,14 @@ For future use.
 **Example**:\
  \
 
-         
-         body tcp_ip example
-         {
-         ipv4_address => "123.456.789.001";
-         }
-         
+~~~~ {.verbatim}
+     
+     body tcp_ip example
+     {
+     ipv4_address => "123.456.789.001";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -78,12 +82,14 @@ services like DHCP. \
 **Example**:\
  \
 
-         
-         body tcp_ip example
-         {
-         ipv4_netmask => "255.255.254.0";
-         }
-         
+~~~~ {.verbatim}
+     
+     body tcp_ip example
+     {
+     ipv4_netmask => "255.255.254.0";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -102,11 +108,13 @@ this offers and \`old style' alternative. \
 **Example**:\
  \
 
-         
-           "eth0"
-         
-              ipv6_address => "2001:700:700:3:211:63ff:feeb:5d18/64";
-         
+~~~~ {.verbatim}
+     
+       "eth0"
+     
+          ipv6_address => "2001:700:700:3:211:63ff:feeb:5d18/64";
+     
+~~~~
 
 **Notes**:\
  \

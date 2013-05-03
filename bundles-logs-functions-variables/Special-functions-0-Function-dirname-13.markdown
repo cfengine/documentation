@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-dirname-13
+categories: [Special-functions,Function-dirname-13]
 published: true
-alias: Special-functions-0-Function-dirname-13.markdown.html
-tags: [xx]
+alias: Special-functions-Function-dirname-13.html
+tags: [Special-functions,Function-dirname-13]
 ---
 
 ### Function dirname
@@ -19,8 +19,10 @@ Return the parent directory name for given path
 **Example**:\
  \
 
-    vars:
-      "apache_dir" string => dirname("/etc/apache2/httpd.conf");
+~~~~ {.verbatim}
+vars:
+  "apache_dir" string => dirname("/etc/apache2/httpd.conf");
+~~~~
 
 **Notes**:\
  \

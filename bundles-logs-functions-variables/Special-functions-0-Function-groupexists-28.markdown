@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-groupexists-28
+categories: [Special-functions,Function-groupexists-28]
 published: true
-alias: Special-functions-0-Function-groupexists-28.markdown.html
-tags: [xx]
+alias: Special-functions-Function-groupexists-28.html
+tags: [Special-functions,Function-groupexists-28]
 ---
 
 ### Function groupexists
@@ -19,33 +19,35 @@ True if group or numerical id exists on this host
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "gname" expression => groupexists("users");
-      "gid"   expression => groupexists("100");
+  "gname" expression => groupexists("users");
+  "gid"   expression => groupexists("100");
 
-    reports:
+reports:
 
-      gname::
+  gname::
 
-        "Group exists by name";
+    "Group exists by name";
 
-      gid::
+  gid::
 
-        "Group exists by id";
+    "Group exists by id";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

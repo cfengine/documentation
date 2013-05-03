@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: guest_005fenvironments-in-agent-promises-3
+categories: [Bundles-for-agent,guest_005fenvironments-in-agent-promises-3]
 published: true
-alias: Bundles-for-agent-0-guest_005fenvironments-in-agent-promises-3.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-guest_005fenvironments-in-agent-promises-3.html
+tags: [Bundles-for-agent,guest_005fenvironments-in-agent-promises-3]
 ---
 
 ### `guest_environments` promises in agent
@@ -29,31 +29,38 @@ other machine.
 
 \
 
-     site1::
+~~~~ {.verbatim}
+ site1::
 
-      "unique_name1"
+  "unique_name1"
 
-           environment_resources => myresources("2GB","512MB"),
-           environment_interface => mymachine("hostname"),
-                environment_type => "xen",
-                environment_state => "running",
-                environment_host => "atlas";
+       environment_resources => myresources("2GB","512MB"),
+       environment_interface => mymachine("hostname"),
+            environment_type => "xen",
+            environment_state => "running",
+            environment_host => "atlas";
 
-      "unique_name2"
+  "unique_name2"
 
-                environment_type => "xen_network",
-               environment_state => "create",
-                environment_host => "atlas";
+            environment_type => "xen_network",
+           environment_state => "create",
+            environment_host => "atlas";
+~~~~
 
 \
 
 CFEngine currently provides a convergent interface to *libvirt*.
 
--   environment\_host in guest\_environments
--   environment\_interface in guest\_environments
--   environment\_resources in guest\_environments
--   environment\_state in guest\_environments
--   environment\_type in guest\_environments
+-   [environment\_host in
+    guest\_environments](#environment_005fhost-in-guest_005fenvironments)
+-   [environment\_interface in
+    guest\_environments](#environment_005finterface-in-guest_005fenvironments)
+-   [environment\_resources in
+    guest\_environments](#environment_005fresources-in-guest_005fenvironments)
+-   [environment\_state in
+    guest\_environments](#environment_005fstate-in-guest_005fenvironments)
+-   [environment\_type in
+    guest\_environments](#environment_005ftype-in-guest_005fenvironments)
 
 #### `environment_host`
 
@@ -67,16 +74,18 @@ guest machine
 **Example**:\
  \
 
-    guest_environments:
+~~~~ {.verbatim}
+guest_environments:
 
-     linux::
+ linux::
 
-     "host1"
-                     comment => "Keep this vm suspended",
-       environment_resources => myresources,
-            environment_type => "kvm",
-           environment_state => "suspended",
-            environment_host => "ubuntu";
+ "host1"
+                 comment => "Keep this vm suspended",
+   environment_resources => myresources,
+        environment_type => "kvm",
+       environment_state => "suspended",
+        environment_host => "ubuntu";
+~~~~
 
 **Notes**:\
  \
@@ -105,21 +114,23 @@ This attribute is required.
 **Example**:\
  \
 
-         
-         body environment_interface vnet(primary)
-         {
-         env_name      => "$(this.promiser)";
-         env_addresses => { "$(primary)" };
-         
-         host1::
-         
-           env_network => "default_vnet1";
-         
-         host2::
-         
-           env_network => "default_vnet2";
-         
-         }
+~~~~ {.verbatim}
+     
+     body environment_interface vnet(primary)
+     {
+     env_name      => "$(this.promiser)";
+     env_addresses => { "$(primary)" };
+     
+     host1::
+     
+       env_network => "default_vnet1";
+     
+     host2::
+     
+       env_network => "default_vnet2";
+     
+     }
+~~~~
 
 **Notes**:\
  \
@@ -138,17 +149,19 @@ time. \
 **Example**:\
  \
 
-         body environment_interface vnet(primary)
-         {
-         env_name      => "$(this.promiser)";
-         env_addresses => { "$(primary)" };
-         
-         host1::
-           env_network => "default_vnet1";
-         
-         host2::
-           env_network => "default_vnet2";
-         }
+~~~~ {.verbatim}
+     body environment_interface vnet(primary)
+     {
+     env_name      => "$(this.promiser)";
+     env_addresses => { "$(primary)" };
+     
+     host1::
+       env_network => "default_vnet1";
+     
+     host2::
+       env_network => "default_vnet2";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -167,19 +180,21 @@ identifier used as \`promiser' by the virtualization manager. \
 **Example**:\
  \
 
-         
-         body environment_interface vnet(primary)
-              {
-              env_name      => "$(this.promiser)";
-              env_addresses => { "$(primary)" };
-         
-              host1::
-                env_network => "default_vnet1";
-         
-              host2::
-                env_network => "default_vnet2";
-              }
-         
+~~~~ {.verbatim}
+     
+     body environment_interface vnet(primary)
+          {
+          env_name      => "$(this.promiser)";
+          env_addresses => { "$(primary)" };
+     
+          host1::
+            env_network => "default_vnet1";
+     
+          host2::
+            env_network => "default_vnet2";
+          }
+     
+~~~~
 
 #### `environment_resources` (body template)
 
@@ -196,14 +211,16 @@ identifier used as \`promiser' by the virtualization manager. \
 **Example**:\
  \
 
-         
-         body environment_resources my_environment
-         {
-         env_cpus => "2";
-         env_memory => "512"; # in KB
-         env_disk => "1024";  # in MB
-         }
-         
+~~~~ {.verbatim}
+     
+     body environment_resources my_environment
+     {
+     env_cpus => "2";
+     env_memory => "512"; # in KB
+     env_disk => "1024";  # in MB
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -225,14 +242,16 @@ This attribute conflicts with `env_spec`. \
 **Example**:\
  \
 
-         
-         body environment_resources my_environment
-         {
-         env_cpus => "2";
-         env_memory => "512"; # in KB
-         env_disk => "1024";  # in MB
-         }
-         
+~~~~ {.verbatim}
+     
+     body environment_resources my_environment
+     {
+     env_cpus => "2";
+     env_memory => "512"; # in KB
+     env_disk => "1024";  # in MB
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -254,14 +273,16 @@ environment (MB)
 **Example**:\
  \
 
-         
-         body environment_resources my_environment
-         {
-         env_cpus => "2";
-         env_memory => "512"; # in KB
-         env_disk => "1024";  # in MB
-         }
-         
+~~~~ {.verbatim}
+     
+     body environment_resources my_environment
+     {
+     env_cpus => "2";
+     env_memory => "512"; # in KB
+     env_disk => "1024";  # in MB
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -282,9 +303,11 @@ environment
 **Example**:\
  \
 
-         
-         env_baseline => "/path/to/image";
-         
+~~~~ {.verbatim}
+     
+     env_baseline => "/path/to/image";
+     
+~~~~
 
 **Notes**:\
  \
@@ -303,37 +326,39 @@ for the virtual instance
 **Example**:\
  \
 
-         body environment_resources virt_xml(host)
-         {
-         env_spec => 
-         
-         "domain type='xen'>
-           name>$(host)/name>
-           os>
-             type>linux/type>
-             kernel>/var/lib/xen/install/vmlinuz-ubuntu10.4-x86_64/kernel>
-             initrd>/var/lib/xen/install/initrd-vmlinuz-ubuntu10.4-x86_64/initrd>
-             cmdline> kickstart=http://example.com/myguest.ks /cmdline>
-           /os>
-           memory>131072/memory>
-           vcpu>1/vcpu>
-           devices>
-             disk type='file'>
-               source file='/var/lib/xen/images/$(host).img'/>
-               target dev='sda1'/>
-             /disk>
-             interface type='bridge'>
-               source bridge='xenbr0'/>
-               mac address='aa:00:00:00:00:11'/>
-               script path='/etc/xen/scripts/vif-bridge'/>
-             /interface>
-             graphics type='vnc' port='-1'/>
-             console tty='/dev/pts/5'/>
-           /devices>
-         /domain>
-         ";
-         }
-         
+~~~~ {.verbatim}
+     body environment_resources virt_xml(host)
+     {
+     env_spec => 
+     
+     "domain type='xen'>
+       name>$(host)/name>
+       os>
+         type>linux/type>
+         kernel>/var/lib/xen/install/vmlinuz-ubuntu10.4-x86_64/kernel>
+         initrd>/var/lib/xen/install/initrd-vmlinuz-ubuntu10.4-x86_64/initrd>
+         cmdline> kickstart=http://example.com/myguest.ks /cmdline>
+       /os>
+       memory>131072/memory>
+       vcpu>1/vcpu>
+       devices>
+         disk type='file'>
+           source file='/var/lib/xen/images/$(host).img'/>
+           target dev='sda1'/>
+         /disk>
+         interface type='bridge'>
+           source bridge='xenbr0'/>
+           mac address='aa:00:00:00:00:11'/>
+           script path='/etc/xen/scripts/vif-bridge'/>
+         /interface>
+         graphics type='vnc' port='-1'/>
+         console tty='/dev/pts/5'/>
+       /devices>
+     /domain>
+     ";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -350,27 +375,32 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 **Allowed input range**: \
 
-                   create
-                   delete
-                   running
-                   suspended
-                   down
+~~~~ {.example}
+               create
+               delete
+               running
+               suspended
+               down
+~~~~
 
 **Synopsis**: The desired dynamical state of the specified environment
 
 **Example**:\
  \
 
-    guest_environments:
+~~~~ {.verbatim}
+guest_environments:
 
-     linux::
+ linux::
 
-     "bishwa-kvm1"
-                     comment => "Keep this vm suspended",
-       environment_resources => myresources,
-            environment_type => "kvm",
-           environment_state => "suspended",
-            environment_host => "ubuntu";
+ "bishwa-kvm1"
+                 comment => "Keep this vm suspended",
+   environment_resources => myresources,
+        environment_type => "kvm",
+       environment_state => "suspended",
+        environment_host => "ubuntu";
+
+~~~~
 
 **Notes**:\
  \
@@ -405,46 +435,50 @@ The guest machine is shut down, but not deallocated.
 
 **Allowed input range**: \
 
-                   xen
-                   kvm
-                   esx
-                   vbox
-                   test
-                   xen_net
-                   kvm_net
-                   esx_net
-                   test_net
-                   zone
-                   ec2
-                   eucalyptus
+~~~~ {.example}
+               xen
+               kvm
+               esx
+               vbox
+               test
+               xen_net
+               kvm_net
+               esx_net
+               test_net
+               zone
+               ec2
+               eucalyptus
+~~~~
 
 **Synopsis**: Virtual environment type
 
 **Example**:\
  \
 
-    bundle agent my_vm_cloud
-    {
-    guest_environments:
+~~~~ {.verbatim}
+bundle agent my_vm_cloud
+{
+guest_environments:
 
-     scope::
+ scope::
 
-       "vguest1"
+   "vguest1"
 
-           environment_resources => my_environment_template,
-           environment_interface => vnet("eth0,192.168.1.100/24"),
-           environment_type      => "test",
-           environment_state     => "create",
-           environment_host      => "atlas";
+       environment_resources => my_environment_template,
+       environment_interface => vnet("eth0,192.168.1.100/24"),
+       environment_type      => "test",
+       environment_state     => "create",
+       environment_host      => "atlas";
 
-       "vguest2"
+   "vguest2"
 
-           environment_resources => my_environment_template,
-           environment_interface => vnet("eth0,192.168.1.101/24"),
-           environment_type      => "test",
-           environment_state     => "delete",
-           environment_host      => "atlas";
-    }
+       environment_resources => my_environment_template,
+       environment_interface => vnet("eth0,192.168.1.101/24"),
+       environment_type      => "test",
+       environment_state     => "delete",
+       environment_host      => "atlas";
+}
+~~~~
 
 **Notes**:\
  \

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-lsdir-54
+categories: [Special-functions,Function-lsdir-54]
 published: true
-alias: Special-functions-0-Function-lsdir-54.markdown.html
-tags: [xx]
+alias: Special-functions-Function-lsdir-54.html
+tags: [Special-functions,Function-lsdir-54]
 ---
 
 ### Function lsdir
@@ -23,8 +23,10 @@ Return a list of files in a directory matching a regular expression
 **Example**:\
  \
 
-    vars:
-      "listfiles" slist => lsdir("/etc", "(passwd|shadow).*", "true");
+~~~~ {.verbatim}
+vars:
+  "listfiles" slist => lsdir("/etc", "(passwd|shadow).*", "true");
+~~~~
 
 **Notes**:\
  \

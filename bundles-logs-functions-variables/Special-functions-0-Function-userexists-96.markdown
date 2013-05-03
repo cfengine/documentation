@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-userexists-96
+categories: [Special-functions,Function-userexists-96]
 published: true
-alias: Special-functions-0-Function-userexists-96.markdown.html
-tags: [xx]
+alias: Special-functions-Function-userexists-96.html
+tags: [Special-functions,Function-userexists-96]
 ---
 
 ### Function userexists
@@ -19,32 +19,35 @@ True if user name or numerical id exists on this host
 **Example**:\
  \
 
+~~~~ {.verbatim}
 
-    body common control
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "ok" expression => userexists("root");
+  "ok" expression => userexists("root");
 
-    reports:
+reports:
 
-      ok::
+  ok::
 
-        "Root exists";
+    "Root exists";
 
-     !ok::
+ !ok::
 
-        "Root does not exist";
-    }
+    "Root does not exist";
+}
+
+~~~~
 
 **Notes**:\
  \

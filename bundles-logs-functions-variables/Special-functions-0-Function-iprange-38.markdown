@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-iprange-38
+categories: [Special-functions,Function-iprange-38]
 published: true
-alias: Special-functions-0-Function-iprange-38.markdown.html
-tags: [xx]
+alias: Special-functions-Function-iprange-38.html
+tags: [Special-functions,Function-iprange-38]
 ---
 
 ### Function iprange
@@ -19,32 +19,34 @@ True if the current host lies in the range of IP addresses specified
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "adhoc_group_1" expression => iprange("128.39.89.10-15");
-      "adhoc_group_2" expression => iprange("128.39.74.1/23");
+  "adhoc_group_1" expression => iprange("128.39.89.10-15");
+  "adhoc_group_2" expression => iprange("128.39.74.1/23");
 
-    reports:
+reports:
 
-      adhoc_group_1::
+  adhoc_group_1::
 
-        "Some numerology";
+    "Some numerology";
 
-      adhoc_group_2::
+  adhoc_group_2::
 
-        "The masked warriors";
-    }
+    "The masked warriors";
+}
+~~~~
 
 **Notes**:\
  \

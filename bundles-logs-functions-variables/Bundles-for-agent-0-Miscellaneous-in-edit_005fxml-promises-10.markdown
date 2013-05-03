@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Miscellaneous-in-edit_005fxml-promises-10
+categories: [Bundles-for-agent,Miscellaneous-in-edit_005fxml-promises-10]
 published: true
-alias: Bundles-for-agent-0-Miscellaneous-in-edit_005fxml-promises-10.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-Miscellaneous-in-edit_005fxml-promises-10.html
+tags: [Bundles-for-agent,Miscellaneous-in-edit_005fxml-promises-10]
 ---
 
 ### Miscelleneous in `edit_xml` promises
@@ -16,8 +16,8 @@ documents represent data that is complex and can be structured in
 various ways. The XML based editing offers a powerful environment for
 editing hierarchical and structured XML datasets.
 
--   build\_xpath in \*
--   select\_xpath in \*
+-   [build\_xpath in \*](#build_005fxpath-in-_002a)
+-   [select\_xpath in \*](#select_005fxpath-in-_002a)
 
 #### `build_xpath`
 
@@ -30,10 +30,12 @@ editing hierarchical and structured XML datasets.
 **Example**:\
  \
 
-    body build_xpath example(s)
-      {
-      build_xpath => "$(s)";
-      }
+~~~~ {.verbatim}
+body build_xpath example(s)
+  {
+  build_xpath => "$(s)";
+  }
+~~~~
 
 **Notes**:\
  \
@@ -55,10 +57,12 @@ of such promises.
 **Example**:\
  \
 
-    body select_xpath example(s)
-    {
-    select_xpath => "$(s)";
-    }
+~~~~ {.verbatim}
+body select_xpath example(s)
+{
+select_xpath => "$(s)";
+}
+~~~~
 
 **Notes**:\
  \

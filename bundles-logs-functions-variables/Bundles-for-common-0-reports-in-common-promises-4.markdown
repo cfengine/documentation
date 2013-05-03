@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: reports-in-common-promises-4
+categories: [Bundles-for-common,reports-in-common-promises-4]
 published: true
-alias: Bundles-for-common-0-reports-in-common-promises-4.markdown.html
-tags: [xx]
+alias: Bundles-for-common-reports-in-common-promises-4.html
+tags: [Bundles-for-common,reports-in-common-promises-4]
 ---
 
 ### `reports` promises in \*
@@ -15,14 +15,16 @@ Reports promises simply print messages. Outputting a message without
 qualification can be a \`dangerous' operation. In a large installation
 it could unleash an avalanche of messaging.
 
-         
-          reports:
-         
-           "literal string or file refererence",
-         
-               printfile = printfile_body,
-               ...;
-         
+~~~~ {.smallexample}
+     
+      reports:
+     
+       "literal string or file refererence",
+     
+           printfile = printfile_body,
+           ...;
+     
+~~~~
 
 Messages outputted from report promises are prefixed with the letter R
 to distinguish them from other output; for example from `commands`.
@@ -32,29 +34,32 @@ has been replaced by `reports`.
 
 \
 
-    bundle agent report
-    {
-    reports:
+~~~~ {.verbatim}
+bundle agent report
+{
+reports:
 
-      linux::
+  linux::
 
-       "/etc/passwd except $(const.n)"
+   "/etc/passwd except $(const.n)"
 
-        # printfile => pr("/etc/passwd","5");
+    # printfile => pr("/etc/passwd","5");
 
-         showstate => { "otherprocs", "rootprocs" };
+     showstate => { "otherprocs", "rootprocs" };
 
-    }
+}
+~~~~
 
 \
 
--   friend\_pattern in reports
--   intermittency in reports
--   lastseen in reports
--   printfile in reports
--   report\_to\_file in reports
--   bundle\_return\_value\_index in reports
--   showstate in reports
+-   [friend\_pattern in reports](#friend_005fpattern-in-reports)
+-   [intermittency in reports](#intermittency-in-reports)
+-   [lastseen in reports](#lastseen-in-reports)
+-   [printfile in reports](#printfile-in-reports)
+-   [report\_to\_file in reports](#report_005fto_005ffile-in-reports)
+-   [bundle\_return\_value\_index in
+    reports](#bundle_005freturn_005fvalue_005findex-in-reports)
+-   [showstate in reports](#showstate-in-reports)
 
 #### `friend_pattern`
 
@@ -71,14 +76,16 @@ friend reports.
 **Example**:\
  \
 
-    reports:
+~~~~ {.verbatim}
+reports:
 
-      linux::
+  linux::
 
-       "Friend status report"
+   "Friend status report"
 
-              lastseen => "0",
-         friend_pattern => "host1|host2|.*\.domain\.tld";
+          lastseen => "0",
+     friend_pattern => "host1|host2|.*\.domain\.tld";
+~~~~
 
 #### `intermittency`
 
@@ -119,18 +126,22 @@ files.
 
 In control:
 
-    body agent control
-    {
-    lastseen => "false";
-    }
+~~~~ {.verbatim}
+body agent control
+{
+lastseen => "false";
+}
+~~~~
 
 See also in reports:
 
-    reports:
+~~~~ {.verbatim}
+reports:
 
-      "Comment"
+  "Comment"
 
-        lastseen => "10";
+    lastseen => "10";
+~~~~
 
 #### `printfile` (body template)
 
@@ -150,13 +161,15 @@ Include part of a file in a report.
 **Example**:\
  \
 
-         
-         body printfile example
-         {
-         file_to_print   => "/etc/motd";
-         number_of_lines => "10";
-         }
-         
+~~~~ {.verbatim}
+     
+     body printfile example
+     {
+     file_to_print   => "/etc/motd";
+     number_of_lines => "10";
+     }
+     
+~~~~
 
 \
 
@@ -174,12 +187,14 @@ Include the first 'x' number of lines of a file in a report.
 **Example**:\
  \
 
-         
-         body printfile example
-         {
-         number_of_lines => "10";
-         }
-         
+~~~~ {.verbatim}
+     
+     body printfile example
+     {
+     number_of_lines => "10";
+     }
+     
+~~~~
 
 #### `report_to_file`
 
@@ -196,16 +211,18 @@ defaults to the standard output.
 **Example**:\
  \
 
-    bundle agent test
-    {
-    reports:
+~~~~ {.verbatim}
+bundle agent test
+{
+reports:
 
-      linux::
+  linux::
 
-       "$(sys.date),This is a report from $(sys.host)"
+   "$(sys.date),This is a report from $(sys.host)"
 
-           report_to_file => "/tmp/test_log";
-    }
+       report_to_file => "/tmp/test_log";
+}
+~~~~
 
 #### `bundle_return_value_index`
 
@@ -220,43 +237,45 @@ return value with array index defined by this attribute.
 **Example**:\
  \
 
-    body common control
-    {
-    bundlesequence => { "test" };
-    }
+~~~~ {.verbatim}
+body common control
+{
+bundlesequence => { "test" };
+}
 
 
-    bundle agent test
-    {
-    methods:
+bundle agent test
+{
+methods:
 
-       "any" usebundle => child,
-        useresult => "my_return_var";
+   "any" usebundle => child,
+    useresult => "my_return_var";
 
 
-    reports:
+reports:
 
-      cfengine_3::
+  cfengine_3::
 
-        "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\""; 
-        
-    }
+    "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\""; 
+    
+}
 
-    bundle agent child
-    {
-    reports:
+bundle agent child
+{
+reports:
 
-     cfengine_3::
+ cfengine_3::
 
-       # Map these indices into the useresult namespace
+   # Map these indices into the useresult namespace
 
-       "this is a return value"  
-          bundle_return_value_index => "1";
+   "this is a return value"  
+      bundle_return_value_index => "1";
 
-       "this is another return value"  
-          bundle_return_value_index => "2";
+   "this is another return value"  
+      bundle_return_value_index => "2";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -275,12 +294,14 @@ reported to standard output
 **Example**:\
  \
 
-    reports:
-      cfengine::
+~~~~ {.verbatim}
+reports:
+  cfengine::
 
-        "Comment"
+    "Comment"
 
-          showstate => {"www_in", "ssh_out", "otherprocs" };
+      showstate => {"www_in", "ssh_out", "otherprocs" };
+~~~~
 
 **Notes**:\
  \

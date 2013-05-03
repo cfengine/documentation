@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Variable-context-edit-2
+categories: [Special-Variables,Variable-context-edit-2]
 published: true
-alias: Special-Variables-0-Variable-context-edit-2.markdown.html
-tags: [xx]
+alias: Special-Variables-Variable-context-edit-2.html
+tags: [Special-Variables,Variable-context-edit-2]
 ---
 
 ### Variable context `edit`
@@ -15,26 +15,28 @@ This context edit is used to access information about editing promises
 during their execution. It is context dependent and not universally
 meaningful or available. For example:
 
-    bundle agent testbundle
-    {
-    files:
+~~~~ {.verbatim}
+bundle agent testbundle
+{
+files:
 
-      "/tmp/testfile"
-         edit_line => test;
-    }
+  "/tmp/testfile"
+     edit_line => test;
+}
 
-    #
+#
 
-    bundle edit_line test
-    {
-    classes:
-        "ok" expression => regline(".*mark.*","$(edit.filename)");
+bundle edit_line test
+{
+classes:
+    "ok" expression => regline(".*mark.*","$(edit.filename)");
 
-    reports:
+reports:
 
-      ok::
-       "File matched $(edit.filename)";
-    }
+  ok::
+   "File matched $(edit.filename)";
+}
+~~~~
 
 **\$(edit.filename)**
 
@@ -42,7 +44,7 @@ This variable points to the filename of the file currently making an
 edit promise. If the file has been arrived at through a search, this
 could be different from the files promiser.
 
--   Variable edit.filename
+-   [Variable edit.filename](#Variable-edit_002efilename)
 
 #### Variable edit.filename
 

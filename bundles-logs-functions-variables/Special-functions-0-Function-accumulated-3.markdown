@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-accumulated-3
+categories: [Special-functions,Function-accumulated-3]
 published: true
-alias: Special-functions-0-Function-accumulated-3.markdown.html
-tags: [xx]
+alias: Special-functions-Function-accumulated-3.html
+tags: [Special-functions,Function-accumulated-3]
 ---
 
 ### Function accumulated
@@ -25,40 +25,42 @@ Convert an accumulated amount of time into a system representation
 **Example**:\
  \
 
-    bundle agent testbundle
+~~~~ {.verbatim}
+bundle agent testbundle
 
-    {
-    processes:
+{
+processes:
 
-     ".*"
+ ".*"
 
-        process_count   => anyprocs,
-        process_select  => proc_finder;
+    process_count   => anyprocs,
+    process_select  => proc_finder;
 
-    reports:
+reports:
 
-     any_procs::
+ any_procs::
 
-       "Found processes in range";
-    }
+   "Found processes in range";
+}
 
-    ########################################################
+########################################################
 
-    body process_select proc_finder
+body process_select proc_finder
 
-    {
-    ttime_range => irange(accumulated(0,0,0,0,2,0),accumulated(0,0,0,0,20,0));
-    process_result => "ttime";
-    }
+{
+ttime_range => irange(accumulated(0,0,0,0,2,0),accumulated(0,0,0,0,20,0));
+process_result => "ttime";
+}
 
-    ########################################################
+########################################################
 
-    body process_count anyprocs
+body process_count anyprocs
 
-    {
-    match_range => "0,0";
-    out_of_range_define => { "any_procs" };
-    }
+{
+match_range => "0,0";
+out_of_range_define => { "any_procs" };
+}
+~~~~
 
 **Notes**:\
  \

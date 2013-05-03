@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-diskfree-14
+categories: [Special-functions,Function-diskfree-14]
 published: true
-alias: Special-functions-0-Function-diskfree-14.markdown.html
-tags: [xx]
+alias: Special-functions-Function-diskfree-14.html
+tags: [Special-functions,Function-diskfree-14]
 ---
 
 ### Function diskfree
@@ -20,19 +20,21 @@ partition (0 if not found)
 **Example**:\
  \
 
-    bundle agent example
-    {     
-    vars:
+~~~~ {.verbatim}
+bundle agent example
+{     
+vars:
 
-      "free" int => diskfree("/tmp"); 
+  "free" int => diskfree("/tmp"); 
 
-    reports:
+reports:
 
-      cfengine_3::
+  cfengine_3::
 
-        "Freedisk $(free)";
+    "Freedisk $(free)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

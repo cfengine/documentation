@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-parsestringarrayidx-63
+categories: [Special-functions,Function-parsestringarrayidx-63]
 published: true
-alias: Special-functions-0-Function-parsestringarrayidx-63.markdown.html
-tags: [xx]
+alias: Special-functions-Function-parsestringarrayidx-63.html
+tags: [Special-functions,Function-parsestringarrayidx-63]
 ---
 
 ### Function parsestringarrayidx
@@ -28,37 +28,39 @@ variable with integer indexes
 **Example**:\
  \
 
-    bundle agent test(f) 
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent test(f) 
+{
+vars:
 
-     #######################################
-     # Define data inline for convenience
-     #######################################
+ #######################################
+ # Define data inline for convenience
+ #######################################
 
-      "table"   string => 
+  "table"   string => 
 
-    "one: a
-    two: b
-    three: c";
+"one: a
+two: b
+three: c";
 
-    #######################################
+#######################################
 
-     "dim" int => parsestringarrayidx(
-                              "items",
-                      "$(table)",
-                      "\s*#[^\n]*",
-                      ":",
-                      "1000",
-                      "200000"
-                      );
+ "dim" int => parsestringarrayidx(
+                          "items",
+                  "$(table)",
+                  "\s*#[^\n]*",
+                  ":",
+                  "1000",
+                  "200000"
+                  );
 
-     "keys" slist => getindices("items");
+ "keys" slist => getindices("items");
 
-    reports:
-      cfengine_3::
-        "$(keys)";
-    }
+reports:
+  cfengine_3::
+    "$(keys)";
+}
+~~~~
 
 **Notes**:\
  \
@@ -66,7 +68,8 @@ variable with integer indexes
 *History*: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
 This function mirrors the exact behaviour of `readstringarrayidx()`, but
-reads data from a variable instead of a file (See Function
-readstringarrayidx). By making data readable from a variable, data
-driven policies can be kept inline. This means that they will be visible
-in the CFEngine Knowledge Management portal.
+reads data from a variable instead of a file (See [Function
+readstringarrayidx](#Function-readstringarrayidx)). By making data
+readable from a variable, data driven policies can be kept inline. This
+means that they will be visible in the CFEngine Knowledge Management
+portal.

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-regarray-78
+categories: [Special-functions,Function-regarray-78]
 published: true
-alias: Special-functions-0-Function-regarray-78.markdown.html
-tags: [xx]
+alias: Special-functions-Function-regarray-78.html
+tags: [Special-functions,Function-regarray-78]
 ---
 
 ### Function regarray
@@ -21,39 +21,41 @@ True if arg1 matches any item in the associative array with id=arg2
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "testbundle"  };
-    }
+{
+bundlesequence  => { "testbundle"  };
+}
 
-    ###########################################
+###########################################
 
-    bundle agent testbundle
-    {
-    vars:
+bundle agent testbundle
+{
+vars:
 
-      "myarray[0]" string => "bla1";
-      "myarray[1]" string => "bla2";
-      "myarray[3]" string => "bla";
-      "myarray"    string => "345";  
-      "not"        string => "345";  
+  "myarray[0]" string => "bla1";
+  "myarray[1]" string => "bla2";
+  "myarray[3]" string => "bla";
+  "myarray"    string => "345";  
+  "not"        string => "345";  
 
-    classes:
+classes:
 
-      "ok" expression => regarray("myarray","b.*2");
+  "ok" expression => regarray("myarray","b.*2");
 
-    reports:
+reports:
 
-     ok::
+ ok::
 
-        "Found in list";
+    "Found in list";
 
-     !ok::
+ !ok::
 
-        "Not found in list";
+    "Not found in list";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -70,5 +72,6 @@ The name of the array, with no \$() surrounding it, etc. \
 regex
 
 A regular expression to match the content. The regular expression is
-anchored, meaning it must match the complete array element (See Anchored
-vs. unanchored regular expressions).
+anchored, meaning it must match the complete array element (See
+[Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).

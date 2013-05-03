@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-filesexist-18
+categories: [Special-functions,Function-filesexist-18]
 published: true
-alias: Special-functions-0-Function-filesexist-18.markdown.html
-tags: [xx]
+alias: Special-functions-Function-filesexist-18.html
+tags: [Special-functions,Function-filesexist-18]
 ---
 
 ### Function filesexist
@@ -20,37 +20,40 @@ True if the named list of files can ALL be accessed
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    vars:
+{     
+vars:
 
-      "mylist" slist => { "/tmp/a", "/tmp/b", "/tmp/c" };
+  "mylist" slist => { "/tmp/a", "/tmp/b", "/tmp/c" };
 
-    classes:
+classes:
 
-      "exists" expression => filesexist("@(mylist)");
+  "exists" expression => filesexist("@(mylist)");
 
-    reports:
+reports:
 
-      exists::
+  exists::
 
-        "Files exist";
+    "Files exist";
 
-      !exists::
+  !exists::
 
-        "Do not exist";
+    "Do not exist";
 
-    }
+}
 
+
+~~~~
 
 **Notes**:\
  \

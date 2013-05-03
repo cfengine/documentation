@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-hashmatch-30
+categories: [Special-functions,Function-hashmatch-30]
 published: true
-alias: Special-functions-0-Function-hashmatch-30.markdown.html
-tags: [xx]
+alias: Special-functions-Function-hashmatch-30.html
+tags: [Special-functions,Function-hashmatch-30]
 ---
 
 ### Function hashmatch
@@ -24,27 +24,31 @@ in arg3
 **Example**:\
  \
 
-    bundle agent example
+~~~~ {.verbatim}
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "matches" expression => hashmatch("/etc/passwd","md5","c5068b7c2b1707f8939b283a2758a691");
+  "matches" expression => hashmatch("/etc/passwd","md5","c5068b7c2b1707f8939b283a2758a691");
 
-    reports:
+reports:
 
-      matches::
+  matches::
 
-        "File has correct version";
+    "File has correct version";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
 
-         
-         (class) hashmatch(file,md5|sha1|crypt,hash-comparison);
-         
+~~~~ {.example}
+     
+     (class) hashmatch(file,md5|sha1|crypt,hash-comparison);
+     
+~~~~
 
 This function may be used to determine whether a system has a particular
 version of a binary file (e.g. software patch).

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-reglist-83
+categories: [Special-functions,Function-reglist-83]
 published: true
-alias: Special-functions-0-Function-reglist-83.markdown.html
-tags: [xx]
+alias: Special-functions-Function-reglist-83.html
+tags: [Special-functions,Function-reglist-83]
 ---
 
 ### Function reglist
@@ -21,16 +21,18 @@ whose id is arg1
 **Example**:\
  \
 
-    vars:
+~~~~ {.verbatim}
+vars:
 
-     "nameservers" slist => {
-                            "128.39.89.10",
-                            "128.39.74.16",
-                            "192.168.1.103"
-                            };
-    classes:
+ "nameservers" slist => {
+                        "128.39.89.10",
+                        "128.39.74.16",
+                        "192.168.1.103"
+                        };
+classes:
 
-      "am_name_server" expression => reglist("@(nameservers)",escape("$(sys.ipv4[eth0])"));
+  "am_name_server" expression => reglist("@(nameservers)",escape("$(sys.ipv4[eth0])"));
+~~~~
 
 **Notes**:\
  \
@@ -49,5 +51,6 @@ The list of strings to test with the regular expression. \
 regex
 
 The scalar regular expression string. The regular expression is
-anchored, meaning it must match the entire string (See Anchored vs.
-unanchored regular expressions).
+anchored, meaning it must match the entire string (See [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).

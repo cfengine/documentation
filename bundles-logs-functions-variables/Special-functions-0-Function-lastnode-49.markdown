@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-lastnode-49
+categories: [Special-functions,Function-lastnode-49]
 published: true
-alias: Special-functions-0-Function-lastnode-49.markdown.html
-tags: [xx]
+alias: Special-functions-Function-lastnode-49.html
+tags: [Special-functions,Function-lastnode-49]
 ---
 
 ### Function lastnode
@@ -20,25 +20,27 @@ Extract the last of a separated string, e.g. filename from a path
 **Example**:\
  \
 
-    bundle agent yes
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent yes
+{
+vars:
 
-      "path1" string => "/one/two/last1";
-      "path2" string => "one:two:last2";
+  "path1" string => "/one/two/last1";
+  "path2" string => "one:two:last2";
 
-      "last1" string => lastnode("$(path1)","/");
-      "last2" string => lastnode("$(path2)",":");
+  "last1" string => lastnode("$(path1)","/");
+  "last2" string => lastnode("$(path2)",":");
 
-      "last3" string => lastnode("$(path2)","/");
+  "last3" string => lastnode("$(path2)","/");
 
-    reports:
+reports:
 
-      Yr2009::
+  Yr2009::
 
-        "Last = $(last1),$(last2),$(last3)";
+    "Last = $(last1),$(last2),$(last3)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

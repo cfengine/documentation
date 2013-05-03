@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: methods-in-agent-promises-20
+categories: [Bundles-for-agent,methods-in-agent-promises-20]
 published: true
-alias: Bundles-for-agent-0-methods-in-agent-promises-20.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-methods-in-agent-promises-20.html
+tags: [Bundles-for-agent,methods-in-agent-promises-20]
 ---
 
 ### `methods` promises in agent
@@ -19,13 +19,15 @@ objects that are affected by the promise-bundle. Since the use of these
 identifiers is for the future, you can simply use any string here for
 the time being.
 
-         
-          methods:
-         
-            "any"
-         
-               usebundle = method_id("parameter",...);
-         
+~~~~ {.smallexample}
+     
+      methods:
+     
+        "any"
+     
+           usebundle = method_id("parameter",...);
+     
+~~~~
 
 Methods are useful for encapsulating repeatedly used configuration
 issues and iterating over parameters.
@@ -36,34 +38,37 @@ inline.
 
 \
 
+~~~~ {.verbatim}
 
-    bundle agent example
-    {
-    vars:
+bundle agent example
+{
+vars:
 
-     "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
+ "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
 
-    methods:
+methods:
 
-     "any" usebundle => subtest("$(userlist)");
+ "any" usebundle => subtest("$(userlist)");
 
-    }
+}
 
-    ###########################################
+###########################################
 
-    bundle agent subtest(user)
+bundle agent subtest(user)
 
-    {
-    commands:
+{
+commands:
 
-     "/bin/echo Fix $(user)";
+ "/bin/echo Fix $(user)";
 
-    reports:
+reports:
 
-     linux::
+ linux::
 
-      "Finished doing stuff for $(user)";
-    }
+  "Finished doing stuff for $(user)";
+}
+
+~~~~
 
 \
 
@@ -83,21 +88,23 @@ Care should be exercised when using this approach. In order to make the
 function call uniquely classified, CFEngine requires the promiser to
 contain the variable name of the method if the variable is a list.
 
-    bundle agent default
-    {
-    vars:
-        "m" slist  => { "x", "y" };
-        "p" string => "myfunction";
+~~~~ {.verbatim}
+bundle agent default
+{
+vars:
+    "m" slist  => { "x", "y" };
+    "p" string => "myfunction";
 
-    methods:
-        "set of $(m)" usebundle => $(m) ("one");
-        "any"         usebundle => $(p)("two");
-        
-    }
+methods:
+    "set of $(m)" usebundle => $(m) ("one");
+    "any"         usebundle => $(p)("two");
+    
+}
+~~~~
 
--   inherit in methods
--   usebundle in methods
--   useresult in methods
+-   [inherit in methods](#inherit-in-methods)
+-   [usebundle in methods](#usebundle-in-methods)
+-   [useresult in methods](#useresult-in-methods)
 
 #### `inherit`
 
@@ -105,12 +112,14 @@ contain the variable name of the method if the variable is a list.
 
 **Allowed input range**: \
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+~~~~ {.example}
+               true
+               false
+               yes
+               no
+               on
+               off
+~~~~
 
 **Synopsis**: If true this causes the sub-bundle to inherit the private
 classes of its parent
@@ -120,19 +129,21 @@ classes of its parent
 **Example**:\
  \
 
-    bundle agent name
-    {
-    methods:
+~~~~ {.verbatim}
+bundle agent name
+{
+methods:
 
-      "group name" usebundle => my_method,
-                     inherit => "true";
-    }
+  "group name" usebundle => my_method,
+                 inherit => "true";
+}
 
 
-    body edit_defaults example
-    {
-    inherit => "true";
-    }
+body edit_defaults example
+{
+inherit => "true";
+}
+~~~~
 
 **Notes**:\
  \
@@ -162,43 +173,45 @@ result/return value from the child
 **Example**:\
  \
 
-    body common control
-    {
-    bundlesequence => { "test" };
-    }
+~~~~ {.verbatim}
+body common control
+{
+bundlesequence => { "test" };
+}
 
 
-    bundle agent test
-    {
-    methods:
+bundle agent test
+{
+methods:
 
-       "any" usebundle => child,
-        useresult => "my_return_var";
+   "any" usebundle => child,
+    useresult => "my_return_var";
 
 
-    reports:
+reports:
 
-      cfengine_3::
+  cfengine_3::
 
-        "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\""; 
-        
-    }
+    "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\""; 
+    
+}
 
-    bundle agent child
-    {
-    reports:
+bundle agent child
+{
+reports:
 
-     cfengine_3::
+ cfengine_3::
 
-       # Map these indices into the useresult namespace
+   # Map these indices into the useresult namespace
 
-       "this is a return value"  
-          bundle_return_value_index => "1";
+   "this is a return value"  
+      bundle_return_value_index => "1";
 
-       "this is another return value"  
-          bundle_return_value_index => "2";
+   "this is another return value"  
+      bundle_return_value_index => "2";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

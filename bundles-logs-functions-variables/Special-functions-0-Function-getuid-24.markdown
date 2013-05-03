@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-getuid-24
+categories: [Special-functions,Function-getuid-24]
 published: true
-alias: Special-functions-0-Function-getuid-24.markdown.html
-tags: [xx]
+alias: Special-functions-Function-getuid-24.html
+tags: [Special-functions,Function-getuid-24]
 ---
 
 ### Function getuid
@@ -19,28 +19,30 @@ Return the integer user id of the named user on this host
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {
-    vars:
+{
+vars:
 
-      "uid" int => getuid("mark");
+  "uid" int => getuid("mark");
 
-    reports:
+reports:
 
-      Yr2008::
+  Yr2008::
 
-        "Users uid is $(uid)";
+    "Users uid is $(uid)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-escape-15
+categories: [Special-functions,Function-escape-15]
 published: true
-alias: Special-functions-0-Function-escape-15.markdown.html
-tags: [xx]
+alias: Special-functions-Function-escape-15.html
+tags: [Special-functions,Function-escape-15]
 ---
 
 ### Function escape
@@ -19,10 +19,12 @@ Escape regular expression characters in a string
 **Example**:\
  \
 
-    bundle server control
-    {
-    allowconnects         => { "127\.0\.0\.1", escape("192.168.2.1") };
-    }
+~~~~ {.verbatim}
+bundle server control
+{
+allowconnects         => { "127\.0\.0\.1", escape("192.168.2.1") };
+}
+~~~~
 
 **Notes**:\
  \

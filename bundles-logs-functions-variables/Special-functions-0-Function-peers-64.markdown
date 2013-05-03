@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-peers-64
+categories: [Special-functions,Function-peers-64]
 published: true
-alias: Special-functions-0-Function-peers-64.markdown.html
-tags: [xx]
+alias: Special-functions-Function-peers-64.html
+tags: [Special-functions,Function-peers-64]
 ---
 
 ### Function peers
@@ -22,32 +22,36 @@ we belong
 **Example**:\
  \
 
-    bundle agent peers
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent peers
+{
+vars:
 
-      "mygroup" slist => peers("/tmp/hostlist","#.*",4);
+  "mygroup" slist => peers("/tmp/hostlist","#.*",4);
 
-      "myleader" string => peerleader("/tmp/hostlist","#.*",4);
+  "myleader" string => peerleader("/tmp/hostlist","#.*",4);
 
-      "all_leaders" slist => peerleaders("/tmp/hostlist","#.*",4);
+  "all_leaders" slist => peerleaders("/tmp/hostlist","#.*",4);
 
-    reports:
+reports:
 
-     linux::
+ linux::
 
-       "mypeer $(mygroup)";
-       "myleader $(myleader)";
-       "another leader $(all_leaders)";
+   "mypeer $(mygroup)";
+   "myleader $(myleader)";
+   "another leader $(all_leaders)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
 
-         
-         (slist) peers(file of hosts,comment pattern,group size);
-         
+~~~~ {.example}
+     
+     (slist) peers(file of hosts,comment pattern,group size);
+     
+~~~~
 
 This function returns a list of hostnames that may be considered peers
 of the current host. Peers are defined according to a list of hosts,
@@ -70,9 +74,10 @@ A path to a list of hosts. \
 Comment pattern
 
 A pattern that matches a legal comment in the file. The regex is
-unanchored, meaning it may match a partial line (see Anchored vs.
-unanchored regular expressions). Comments are stripped as the file is
-read. \
+unanchored, meaning it may match a partial line (see [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
+Comments are stripped as the file is read. \
 
 Group size
 
@@ -82,17 +87,19 @@ nonsensical promises.
 
 Example file:
 
-         one
-         two
-         three # this is a comment
-         four
-         five
-         six
-         seven
-         eight
-         nine
-         ten
-         eleven
-         twelve
-         etc
-         
+~~~~ {.smallexample}
+     one
+     two
+     three # this is a comment
+     four
+     five
+     six
+     seven
+     eight
+     nine
+     ten
+     eleven
+     twelve
+     etc
+     
+~~~~

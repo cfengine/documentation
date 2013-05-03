@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: 
+categories: [Logs-and-records]
 published: true
-alias: Logs-and-records-0.markdown.html
-tags: [xx]
+alias: Logs-and-records.html
+tags: [Logs-and-records]
 ---
 
 Logs and records
@@ -24,8 +24,9 @@ given elsewhere.
 The filenames referred to in this section are all relative to the
 CFEngine work directory WORKDIR.
 
--   Embedded Databases
--   Text logs
--   Reports in outputs
--   Additional reports in commercial CFEngine versions
--   State information
+-   [Embedded Databases](#Embedded-Databases)
+-   [Text logs](#Text-logs)
+-   [Reports in outputs](#Reports-in-outputs)
+-   [Additional reports in commercial CFEngine
+    versions](#Additional-reports-in-commercical-CFEngine-versions)
+-   [State information](#State-information)

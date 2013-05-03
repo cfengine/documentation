@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-regldap-84
+categories: [Special-functions,Function-regldap-84]
 published: true
-alias: Special-functions-0-Function-regldap-84.markdown.html
-tags: [xx]
+alias: Special-functions-Function-regldap-84.html
+tags: [Special-functions,Function-regldap-84]
 ---
 
 ### Function regldap
@@ -27,24 +27,28 @@ search.
 **Example**:\
  \
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-       "found" expression => regldap(
-                                    "ldap://ldap.example.org",
-                                    "dc=cfengine,dc=com",
-                                    "(sn=User)",
-                                    "uid",
-                                    "subtree",
-                                    "jon.*",
-                                    "none"
-                                    );
+   "found" expression => regldap(
+                                "ldap://ldap.example.org",
+                                "dc=cfengine,dc=com",
+                                "(sn=User)",
+                                "uid",
+                                "subtree",
+                                "jon.*",
+                                "none"
+                                );
+~~~~
 
 **Notes**:\
  \
 
-         
-         (class) regldap(uri,dn,filter,name,scope,regex,security)
-         
+~~~~ {.example}
+     
+     (class) regldap(uri,dn,filter,name,scope,regex,security)
+     
+~~~~
 
 This function retrieves a single field from all matching LDAP records
 identified by the search parameters and compares it to a regular
@@ -74,9 +78,11 @@ scope
 Menu option, the type of ldap search, from the specified root. May take
 values:
 
-                  subtree
-                  onelevel
-                  base
+~~~~ {.smallexample}
+              subtree
+              onelevel
+              base
+~~~~
 
 \
 
@@ -84,7 +90,8 @@ regex
 
 A regular expression string to match to the results of an LDAP search.
 The regular expression is anchored, meaning it must match the entire
-named field (See Anchored vs. unanchored regular expressions). If any
+named field (See [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If any
 item matches the regex, the result will be true. \
 
 security
@@ -93,6 +100,8 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-                   none
-                   ssl
-                   sasl
+~~~~ {.smallexample}
+               none
+               ssl
+               sasl
+~~~~

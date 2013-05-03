@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: measurements-in-monitor-promises-1
+categories: [Bundles-for-monitor,measurements-in-monitor-promises-1]
 published: true
-alias: Bundles-for-monitor-0-measurements-in-monitor-promises-1.markdown.html
-tags: [xx]
+alias: Bundles-for-monitor-measurements-in-monitor-promises-1.html
+tags: [Bundles-for-monitor,measurements-in-monitor-promises-1]
 ---
 
 ### `measurements` promises in monitor
@@ -31,14 +31,16 @@ destined for the agent concerned (however, you do not need to add them
 to the `bundlesequence` they are executed by `cf-monitord` because they
 are bundles of type `monitor`). In this case:
 
-    bundle monitor watch
+~~~~ {.verbatim}
+bundle monitor watch
 
-    {
-    measurements:
+{
+measurements:
 
-      # promises ...
+  # promises ...
 
-    }
+}
+~~~~
 
 It is important to specify a promise `handle` for measurement promises,
 as the names defined in the handle are used to determine the name of the
@@ -50,47 +52,50 @@ form `$(mon.handle)`.
 
 \
 
-      # Follow a special process over time
-      # using CFEngine's process cache to avoid resampling
+~~~~ {.verbatim}
+  # Follow a special process over time
+  # using CFEngine's process cache to avoid resampling
 
-       "/var/cfengine/state/cf_rootprocs"
+   "/var/cfengine/state/cf_rootprocs"
 
-          handle => "monitor_self_watch",
-          stream_type => "file",
-          data_type => "int",
-          history_type => "weekly",
-          units => "kB",
-          match_value => proc_value(".*cf-monitord.*",
-             "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
+      handle => "monitor_self_watch",
+      stream_type => "file",
+      data_type => "int",
+      history_type => "weekly",
+      units => "kB",
+      match_value => proc_value(".*cf-monitord.*",
+         "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
 
 
-      # Discover disk device information
+  # Discover disk device information
 
-      "/bin/df"
+  "/bin/df"
 
-          handle => "free_diskspace_watch",
-          stream_type => "pipe",
-          data_type => "slist",
-          history_type => "static",
-          units => "device",
-          match_value => file_systems;
-          # Update this as often as possible
+      handle => "free_diskspace_watch",
+      stream_type => "pipe",
+      data_type => "slist",
+      history_type => "static",
+      units => "device",
+      match_value => file_systems;
+      # Update this as often as possible
 
-    }
+}
 
-    ##########################################################
+##########################################################
 
-    body match_value proc_value(x,y)
-    {
-    select_line_matching => "$(x)";
-    extraction_regex => "$(y)";
-    }
+body match_value proc_value(x,y)
+{
+select_line_matching => "$(x)";
+extraction_regex => "$(y)";
+}
 
-    body match_value file_systems
-    {
-    select_line_matching => "/.*";
-    extraction_regex => "(.*)";
-    }
+body match_value file_systems
+{
+select_line_matching => "/.*";
+extraction_regex => "(.*)";
+}
+
+~~~~
 
 \
 
@@ -170,11 +175,11 @@ into agent variables in the `$(mon.`name`)` context.
 
 **Measurement promise syntax:**
 
--   stream\_type in measurements
--   data\_type in measurements
--   history\_type in measurements
--   units in measurements
--   match\_value in measurements
+-   [stream\_type in measurements](#stream_005ftype-in-measurements)
+-   [data\_type in measurements](#data_005ftype-in-measurements)
+-   [history\_type in measurements](#history_005ftype-in-measurements)
+-   [units in measurements](#units-in-measurements)
+-   [match\_value in measurements](#match_005fvalue-in-measurements)
 
 #### `stream_type`
 
@@ -182,15 +187,19 @@ into agent variables in the `$(mon.`name`)` context.
 
 **Allowed input range**: \
 
-                   pipe
-                   file
+~~~~ {.example}
+               pipe
+               file
+~~~~
 
 **Synopsis**: The datatype being collected.
 
 **Example**:\
  \
 
-    stream_type => "pipe";
+~~~~ {.verbatim}
+stream_type => "pipe";
+~~~~
 
 **Notes**:\
  \
@@ -205,28 +214,33 @@ a process. However pipes from executed commands may also be invoked.
 
 **Allowed input range**: \
 
-                   counter
-                   int
-                   real
-                   string
-                   slist
+~~~~ {.example}
+               counter
+               int
+               real
+               string
+               slist
+~~~~
 
 **Synopsis**: The datatype being collected.
 
 **Example**:\
  \
 
-      "/bin/df"
+~~~~ {.verbatim}
+  "/bin/df"
 
-          handle => "free_disk_watch",
-          stream_type => "pipe",
+      handle => "free_disk_watch",
+      stream_type => "pipe",
 
-          data_type => "slist",
+      data_type => "slist",
 
-          history_type => "static",
-          units => "device",
-          match_value => file_systems,
-          action => sample_min(10,15);
+      history_type => "static",
+      units => "device",
+      match_value => file_systems,
+      action => sample_min(10,15);
+
+~~~~
 
 **Notes**:\
  \
@@ -246,10 +260,12 @@ be selected.
 
 **Allowed input range**: \
 
-                   weekly
-                   scalar
-                   static
-                   log
+~~~~ {.example}
+               weekly
+               scalar
+               static
+               log
+~~~~
 
 **Synopsis**: Whether the data can be seen as a time-series or just an
 isolated value
@@ -257,14 +273,16 @@ isolated value
 **Example**:\
  \
 
-     "/proc/meminfo"
+~~~~ {.verbatim}
+ "/proc/meminfo"
 
-          handle => "free_memory_watch",
-          stream_type => "file",
-          data_type => "int",
-          history_type => "weekly",
-          units => "kB",
-          match_value => free_memory;
+      handle => "free_memory_watch",
+      stream_type => "file",
+      data_type => "int",
+      history_type => "weekly",
+      units => "kB",
+      match_value => free_memory;
+~~~~
 
 **Notes**:\
  \
@@ -301,16 +319,18 @@ its intent used in plots
 **Example**:\
  \
 
-       "/var/cfengine/state/cf_rootprocs"
+~~~~ {.verbatim}
+   "/var/cfengine/state/cf_rootprocs"
 
-          handle => "monitor_self_watch",
-          stream_type => "file",
-          data_type => "int",
-          history_type => "weekly",
-          units => "kB",
-          match_value => proc_value(".*cf-monitord.*",
-            
-             "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
+      handle => "monitor_self_watch",
+      stream_type => "file",
+      data_type => "int",
+      history_type => "weekly",
+      units => "kB",
+      match_value => proc_value(".*cf-monitord.*",
+        
+         "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
+~~~~
 
 **Notes**:\
  \
@@ -332,28 +352,30 @@ This is an arbitary string used in documentation only.
 **Example**:\
  \
 
-         
-         # Editing
-         
-         body location example
-         {
-         select_line_matching => "Expression match.* whole line";
-         }
-         
-         # Measurement promises
-         
-         body match_value example
-         {
-         select_line_matching => "Expression match.* whole line";
-         }
-         
+~~~~ {.verbatim}
+     
+     # Editing
+     
+     body location example
+     {
+     select_line_matching => "Expression match.* whole line";
+     }
+     
+     # Measurement promises
+     
+     body match_value example
+     {
+     select_line_matching => "Expression match.* whole line";
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 The expression is anchored, meaning it must match a whole line, and not
-a fragment within a line (see Anchored vs. unanchored regular
-expressions).
+a fragment within a line (see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 This attribute is mutually exclusive of `select_line_number`. \
 
@@ -368,12 +390,14 @@ This attribute is mutually exclusive of `select_line_number`. \
 **Example**:\
  \
 
-         
-         body match_value find_line
-         {
-         select_line_number => "2";
-         }
-         
+~~~~ {.verbatim}
+     
+     body match_value find_line
+     {
+     select_line_number => "2";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -392,21 +416,24 @@ backreference for extracting a value
 **Example**:\
  \
 
-         
-         body match_value free_memory
-         {
-         select_line_matching => "MemFree:.*";
-         extraction_regex => "MemFree:\s+([0-9]+).*";
-         }
-         
+~~~~ {.verbatim}
+     
+     body match_value free_memory
+     {
+     select_line_matching => "MemFree:.*";
+     extraction_regex => "MemFree:\s+([0-9]+).*";
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 A single parenthesized backreference should be given to lift the value
 to be measured out of the text stream. The regular expression is
-unanchored, meaning it may match a partial string (see Anchored vs.
-unanchored regular expressions). \
+unanchored, meaning it may match a partial string (see [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 `track_growing_file`
 
@@ -414,12 +441,14 @@ unanchored regular expressions). \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: If true, CFEngine remembers the position to which is last
 read when opening the file, and resets to the start if the file has
@@ -428,36 +457,38 @@ since been truncated
 **Example**:\
  \
 
-         bundle monitor watch
-         {
-         measurements:
-         
-            "/home/mark/tmp/file"
-         
-                  handle => "line_counter",
-             stream_type => "file",
-               data_type => "counter",
-             match_value => scan_log("MYLINE.*"),
-            history_type => "log",
-                  action => sample_rate("0");
-         
-         }
-         
-         #
-         
-         body match_value scan_log(x)
-         {
-         select_line_matching => "^$(x)$";
-         track_growing_file => "true";
-         }
-         
-         #
-         
-         body action sample_rate(x)
-         {
-         ifelapsed => "$(x)";
-         expireafter => "10";
-         }
+~~~~ {.verbatim}
+     bundle monitor watch
+     {
+     measurements:
+     
+        "/home/mark/tmp/file"
+     
+              handle => "line_counter",
+         stream_type => "file",
+           data_type => "counter",
+         match_value => scan_log("MYLINE.*"),
+        history_type => "log",
+              action => sample_rate("0");
+     
+     }
+     
+     #
+     
+     body match_value scan_log(x)
+     {
+     select_line_matching => "^$(x)$";
+     track_growing_file => "true";
+     }
+     
+     #
+     
+     body action sample_rate(x)
+     {
+     ifelapsed => "$(x)";
+     expireafter => "10";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -477,24 +508,28 @@ logfile | grep pattern in Unix parlance. \
 
 **Allowed input range**: \
 
-                        average
-                        sum
-                        first
-                        last
+~~~~ {.example}
+                    average
+                    sum
+                    first
+                    last
+~~~~
 
 **Synopsis**: Regular expression for matching line location
 
 **Example**:\
  \
 
-         
-         body match_value myvalue(xxx)
-         {
-          select_line_matching => ".*$(xxx).*";
-          extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).*";
-          select_multiline_policy => "sum";
-         } 
-         
+~~~~ {.verbatim}
+     
+     body match_value myvalue(xxx)
+     {
+      select_line_matching => ".*$(xxx).*";
+      extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).*";
+      select_multiline_policy => "sum";
+     } 
+     
+~~~~
 
 **Notes**:\
  \

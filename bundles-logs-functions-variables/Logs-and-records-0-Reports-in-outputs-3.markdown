@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Reports-in-outputs-3
+categories: [Logs-and-records,Reports-in-outputs-3]
 published: true
-alias: Logs-and-records-0-Reports-in-outputs-3.markdown.html
-tags: [xx]
+alias: Logs-and-records-Reports-in-outputs-3.html
+tags: [Logs-and-records,Reports-in-outputs-3]
 ---
 
 ### Reports in outputs

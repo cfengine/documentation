@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-isvariable-47
+categories: [Special-functions,Function-isvariable-47]
 published: true
-alias: Special-functions-0-Function-isvariable-47.markdown.html
-tags: [xx]
+alias: Special-functions-Function-isvariable-47.html
+tags: [Special-functions,Function-isvariable-47]
 ---
 
 ### Function isvariable
@@ -20,32 +20,34 @@ True if the named variable is defined
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    vars:
+{     
+vars:
 
-      "bla" string => "xyz..";
+  "bla" string => "xyz..";
 
-    classes:
+classes:
 
-      "exists" expression => isvariable("bla");
+  "exists" expression => isvariable("bla");
 
-    reports:
+reports:
 
-      exists::
+  exists::
 
-        "Variable exists: \"$(bla)\"..";
+    "Variable exists: \"$(bla)\"..";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

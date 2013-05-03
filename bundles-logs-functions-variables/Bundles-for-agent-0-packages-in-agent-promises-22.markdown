@@ -1,30 +1,32 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: packages-in-agent-promises-22
+categories: [Bundles-for-agent,packages-in-agent-promises-22]
 published: true
-alias: Bundles-for-agent-0-packages-in-agent-promises-22.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-packages-in-agent-promises-22.html
+tags: [Bundles-for-agent,packages-in-agent-promises-22]
 ---
 
 ### `packages` promises in agent
 
 \
 
-     vars:
+~~~~ {.verbatim}
+ vars:
 
-      "match_package" slist => { 
-                               "apache2", 
-                               "apache2-mod_php5",
-                               "apache2-prefork",
-                               "php5" 
-                               };
-     packages:
+  "match_package" slist => { 
+                           "apache2", 
+                           "apache2-mod_php5",
+                           "apache2-prefork",
+                           "php5" 
+                           };
+ packages:
 
-        "$(match_package)"
+    "$(match_package)"
 
-             package_policy => "add",
-             package_method => yum;
+         package_policy => "add",
+         package_method => yum;
+~~~~
 
 CFEngine supports a generic approach to integration with native
 operating support for packaging. Package promises allow CFEngine to make
@@ -80,25 +82,29 @@ one of two different ways:
 
 -   They may be specified independently, e.g.
 
-             packages:
-             
-               "mypackage"
-             
-                  package_policy => "add",
-                  package_method => rpm,
-                  package_select => ">=",
-                  package_architectures => { "x86_64", "i586" },
-                  package_version => "1.2.3";
-             
+    ~~~~ {.verbatim}
+         packages:
+         
+           "mypackage"
+         
+              package_policy => "add",
+              package_method => rpm,
+              package_select => ">=",
+              package_architectures => { "x86_64", "i586" },
+              package_version => "1.2.3";
+         
+    ~~~~
 
 -   They may be extracted from a package identifier (promiser) or
     filename, using pattern matching. For example, a promiser
     7-Zip-4.50-x86\_64.msi and a package\_method containing the
     following:
 
-              package_name_regex => "^(\S+)-(\d+\.?)+";
-              package_version_regex => "^\S+-((\d+\.?)+)";
-              package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
+    ~~~~ {.verbatim}
+          package_name_regex => "^(\S+)-(\d+\.?)+";
+          package_version_regex => "^\S+-((\d+\.?)+)";
+          package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
+    ~~~~
 
 When scanning a list of installed packages different managers present
 the information *(n,v,a)* in quite different forms and pattern
@@ -191,26 +197,28 @@ Package not installed
 
 \
 
-    bundle agent packages
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent packages
+{
+vars:
 
-     # Test the simplest case -- leave everything to the yum smart manager
+ # Test the simplest case -- leave everything to the yum smart manager
 
-     "match_package" slist => { 
-                              "apache2", 
-                              "apache2-mod_php5",
-                              "apache2-prefork",
-                              "php5" 
-                              };
-    packages:
+ "match_package" slist => { 
+                          "apache2", 
+                          "apache2-mod_php5",
+                          "apache2-prefork",
+                          "php5" 
+                          };
+packages:
 
-      "$(match_package)"
+  "$(match_package)"
 
-         package_policy => "add",
-         package_method => yum;
+     package_policy => "add",
+     package_method => yum;
 
-    }
+}
+~~~~
 
 \
 
@@ -263,11 +271,12 @@ As of core 3.3.0, if no `package_method` is defined, CFEngine will look
 for a method called generic. Such a method is defined in the standard
 library for supported operating systems.
 
--   package\_architectures in packages
--   package\_method in packages
--   package\_policy in packages
--   package\_select in packages
--   package\_version in packages
+-   [package\_architectures in
+    packages](#package_005farchitectures-in-packages)
+-   [package\_method in packages](#package_005fmethod-in-packages)
+-   [package\_policy in packages](#package_005fpolicy-in-packages)
+-   [package\_select in packages](#package_005fselect-in-packages)
+-   [package\_version in packages](#package_005fversion-in-packages)
 
 #### `package_architectures`
 
@@ -280,13 +289,15 @@ library for supported operating systems.
 **Example**:\
  \
 
-    packages:
+~~~~ {.verbatim}
+packages:
 
-      "$(exact_package)"
+  "$(exact_package)"
 
-         package_policy => "add",
-         package_method => rpm,
-         package_architectures => { "x86_64" };
+     package_policy => "add",
+     package_method => rpm,
+     package_architectures => { "x86_64" };
+~~~~
 
 **Notes**:\
  \
@@ -311,12 +322,14 @@ package manager's behaviour prevails.
 **Example**:\
  \
 
-         
-         body package_method rpm
-         {
-         package_add_command => "/bin/rpm -i ";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method rpm
+     {
+     package_add_command => "/bin/rpm -i ";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -344,13 +357,15 @@ package architecture string
 **Example**:\
  \
 
-         
-         body package_method rpm
-         
-         {
-         package_list_arch_regex    => "[^.]+\.([^.]+)";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method rpm
+     
+     {
+     package_list_arch_regex    => "[^.]+\.([^.]+)";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -360,9 +375,10 @@ promiser, when the architecture is not specified using the
 `package_architectures` list. It is a regular expression that contains
 exactly one parenthesized back reference which marks the location in the
 *promiser* at which the architecture is specified. The regex may match a
-portion of the string (see Anchored vs. unanchored regular expressions).
-If no architecture is specified for the given package manager, then do
-not define this. \
+portion of the string (see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If no
+architecture is specified for the given package manager, then do not
+define this. \
 
 `package_changes`
 
@@ -370,8 +386,10 @@ not define this. \
 
 **Allowed input range**: \
 
-                        individual
-                        bulk
+~~~~ {.example}
+                    individual
+                    bulk
+~~~~
 
 **Synopsis**: Menu option - whether to group packages into a single
 aggregate command
@@ -379,13 +397,15 @@ aggregate command
 **Example**:\
  \
 
-         
-         body package_method rpm
-         
-         {
-         package_changes => "bulk";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method rpm
+     
+     {
+     package_changes => "bulk";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -407,13 +427,15 @@ the operating system's package manager to handle dependencies. \
 **Example**:\
  \
 
-         
-         body package_method rpm
-         
-         {
-         package_delete_command => "/bin/rpm -e --nodeps";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method rpm
+     
+     {
+     package_delete_command => "/bin/rpm -e --nodeps";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -438,14 +460,16 @@ referred to in the deletion part of a package update, e.g. \$(name)
 **Example**:\
  \
 
-         body package_method freebsd
-         
-         {
-         package_file_repositories => { "/path/to/packages" };
-         package_name_convention => "$(name)-$(version).tbz";
-         package_delete_convention => "$(name)-$(version)";
-         }
-         
+~~~~ {.verbatim}
+     body package_method freebsd
+     
+     {
+     package_file_repositories => { "/path/to/packages" };
+     package_name_convention => "$(name)-$(version).tbz";
+     package_delete_convention => "$(name)-$(version)";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -478,12 +502,14 @@ If this is not defined, it defaults to the value of
 **Example**:\
  \
 
-         
-         body package_method filebased
-         {
-         package_file_repositories => { "/package/repos1", "/packages/repos2" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method filebased
+     {
+     package_file_repositories => { "/package/repos1", "/packages/repos2" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -505,21 +531,25 @@ installed
 **Example**:\
  \
 
-         
-         body package_method yum
-         {
-         package_installed_regex => ".*installed.*";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method yum
+     {
+     package_installed_regex => ".*installed.*";
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 This regular expression must match complete lines in the output of the
-list command that are actually installed packages (see Anchored vs.
-unanchored regular expressions). If all the lines match then the regex
-can be set of .\*, however most package systems output prefix lines and
-a variety of human padding that needs to be ignored. \
+list command that are actually installed packages (see [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If all
+the lines match then the regex can be set of .\*, however most package
+systems output prefix lines and a variety of human padding that needs to
+be ignored. \
 
 `package_default_arch_command`
 
@@ -532,12 +562,14 @@ a variety of human padding that needs to be ignored. \
 **Example**:\
  \
 
-         body package_method dpkg
-         {
-           package_default_arch_command => "/usr/bin/dpkg --print-architecture";
-         
-           # ...
-         }
+~~~~ {.verbatim}
+     body package_method dpkg
+     {
+       package_default_arch_command => "/usr/bin/dpkg --print-architecture";
+     
+       # ...
+     }
+~~~~
 
 **Notes**:\
  \
@@ -564,12 +596,14 @@ package architecture string
 **Example**:\
  \
 
-         
-         body package_method rpm
-         {
-         package_list_arch_regex    => "[^|]+\|[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method rpm
+     {
+     package_list_arch_regex    => "[^|]+\|[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -577,7 +611,8 @@ package architecture string
 A regular expression that contains exactly one parenthesized back
 reference that marks the location in the listed package at which the
 architecture is specified. The regular expression may match a portion of
-the string (see Anchored vs. unanchored regular expressions). If no
+the string (see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If no
 architecture is specified for the given package manager, then do not
 define this regex. \
 
@@ -592,13 +627,15 @@ define this regex. \
 **Example**:\
  \
 
-         
-         body package_method rpm
-         
-         {
-         package_list_command => "/bin/rpm -qa --queryformat \"%{name} %{version}-%{release}\n\"";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method rpm
+     
+     {
+     package_list_command => "/bin/rpm -qa --queryformat \"%{name} %{version}-%{release}\n\"";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -624,21 +661,24 @@ package name string
 **Example**:\
  \
 
-         
-         body package_method rpm
-         
-         {
-         package_list_name_regex    => "([^\s]+).*";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method rpm
+     
+     {
+     package_list_name_regex    => "([^\s]+).*";
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 A regular expression that contains exactly one parenthesized back
 reference which marks the name of the package from the package listing.
-The regular expression may match a portion of the string (see Anchored
-vs. unanchored regular expressions). \
+The regular expression may match a portion of the string (see [Anchored
+vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 `package_list_update_command`
 
@@ -651,13 +691,15 @@ vs. unanchored regular expressions). \
 **Example**:\
  \
 
-         body package_method xyz
-         {
-         debian|ubuntu::
-         
-         package_list_update_command => "/usr/bin/apt-get update";
-         package_list_update_ifelapsed => "240";        # 4 hours
-         }
+~~~~ {.verbatim}
+     body package_method xyz
+     {
+     debian|ubuntu::
+     
+     package_list_update_command => "/usr/bin/apt-get update";
+     package_list_update_ifelapsed => "240";        # 4 hours
+     }
+~~~~
 
 **Notes**:\
  \
@@ -678,13 +720,15 @@ package list
 **Example**:\
  \
 
-         body package_method xyz
-         {
-         debian|ubuntu::
-         
-         package_list_update_command => "/usr/bin/apt-get update";
-         package_list_update_ifelapsed => "240";        # 4 hours
-         }
+~~~~ {.verbatim}
+     body package_method xyz
+     {
+     debian|ubuntu::
+     
+     package_list_update_command => "/usr/bin/apt-get update";
+     package_list_update_ifelapsed => "240";        # 4 hours
+     }
+~~~~
 
 **Notes**:\
  \
@@ -705,12 +749,14 @@ package version string
 **Example**:\
  \
 
-         body package_method rpm
-         
-         {
-         package_list_version_regex => "[^\s]+ ([^.]+).*";
-         }
-         
+~~~~ {.verbatim}
+     body package_method rpm
+     
+     {
+     package_list_version_regex => "[^\s]+ ([^.]+).*";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -718,7 +764,8 @@ package version string
 This regular expression should containe exactly one parenthesized
 back-reference that marks the version string of packages listed as
 installed. The regular expression may match a portion of the string (see
-Anchored vs. unanchored regular expressions) \
+[Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)) \
 
 `package_name_convention`
 
@@ -732,12 +779,14 @@ referred to, e.g. \$(name).\$(arch)
 **Example**:\
  \
 
-         body package_method rpm
-         
-         {
-         package_name_convention => "$(name).$(arch).rpm";
-         }
-         
+~~~~ {.verbatim}
+     body package_method rpm
+     
+     {
+     package_name_convention => "$(name).$(arch).rpm";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -767,12 +816,14 @@ package name string
 **Example**:\
  \
 
-         
-         body package_method rpm
-         {
-         package_name_regex => "([^\s]).*";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method rpm
+     {
+     package_name_regex => "([^\s]).*";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -781,8 +832,9 @@ This regular expression is only used when the *promiser* contains not
 only the name of the package, but its version and architecture also. In
 that case, this expression should contain a single parenthesized
 back-reference to extract the name of the package from the string. The
-regex may match a portion of the string (see Anchored vs. unanchored
-regular expressions) \
+regex may match a portion of the string (see [Anchored vs. unanchored
+regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
+\
 
 `package_noverify_regex`
 
@@ -795,21 +847,24 @@ regular expressions) \
 **Example**:\
  \
 
-         body package_method xyz
-         
-         {
-         package_noverify_regex => "Package .* is not installed.*";
-         package_verify_command => "/usr/bin/dpkg -s";
-         }
-         
+~~~~ {.verbatim}
+     body package_method xyz
+     
+     {
+     package_noverify_regex => "Package .* is not installed.*";
+     package_verify_command => "/usr/bin/dpkg -s";
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 A regular expression to match output from a package verification
 command. If the output string matches this expression, the package is
-deemed broken. The regex must match the entire line (see Anchored vs.
-unanchored regular expressions) \
+deemed broken. The regex must match the entire line (see [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)) \
 
 `package_noverify_returncode`
 
@@ -823,11 +878,13 @@ failure
 **Example**:\
  \
 
-         body package_method xyz
-         {
-         package_noverify_returncode => "-1";
-         package_verify_command => "/bin/rpm -V";
-         }
+~~~~ {.verbatim}
+     body package_method xyz
+     {
+     package_noverify_returncode => "-1";
+     package_verify_command => "/bin/rpm -V";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -847,12 +904,14 @@ update architecture string
 **Example**:\
  \
 
-         
-         body package_method zypper
-         {
-         package_patch_arch_regex => "";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method zypper
+     {
+     package_patch_arch_regex => "";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -860,8 +919,9 @@ update architecture string
 A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provides
 an analogous command struct to the packages for patch updates. The
-regular expression must match the entire line (see Anchored vs.
-unanchored regular expressions). \
+regular expression must match the entire line (see [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 `package_patch_command`
 
@@ -875,11 +935,13 @@ installed package
 **Example**:\
  \
 
-         body package_method zypper
-         
-         {
-         package_patch_command => "/usr/bin/zypper -non-interactive patch";
-         }
+~~~~ {.verbatim}
+     body package_method zypper
+     
+     {
+     package_patch_command => "/usr/bin/zypper -non-interactive patch";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -906,12 +968,14 @@ installed
 **Example**:\
  \
 
-         
-         body package_method zypper
-         {
-         package_patch_installed_regex => ".*(Installed|Not Applicable).*";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method zypper
+     {
+     package_patch_installed_regex => ".*(Installed|Not Applicable).*";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -919,8 +983,9 @@ installed
 A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provide an
 analogous command struct to the packages for patch updates. The regular
-expression must match the entire string (see Anchored vs. unanchored
-regular expressions). \
+expression must match the entire string (see [Anchored vs. unanchored
+regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
+\
 
 `package_patch_list_command`
 
@@ -933,9 +998,11 @@ regular expressions). \
 **Example**:\
  \
 
-         
-          package_patch_list_command => "/usr/bin/zypper patches";
-         
+~~~~ {.verbatim}
+     
+      package_patch_list_command => "/usr/bin/zypper patches";
+     
+~~~~
 
 **Notes**:\
  \
@@ -963,11 +1030,13 @@ update name string
 **Example**:\
  \
 
-         
-         body package_method zypper
-         {
-         package_patch_name_regex    => "[^|]+\|\s+([^\s]+).*";
-         }
+~~~~ {.verbatim}
+     
+     body package_method zypper
+     {
+     package_patch_name_regex    => "[^|]+\|\s+([^\s]+).*";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -975,8 +1044,9 @@ update name string
 A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provides
 an analogous command struct to the packages for patch updates. The
-regular expression may match a partial string (see Anchored vs.
-unanchored regular expressions). \
+regular expression may match a partial string (see [Anchored vs.
+unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 `package_patch_version_regex`
 
@@ -990,12 +1060,14 @@ update version string
 **Example**:\
  \
 
-         
-         body package_method zypper
-         {
-         package_patch_version_regex => "[^|]+\|[^|]+\|\s+([^\s]+).*";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method zypper
+     {
+     package_patch_version_regex => "[^|]+\|[^|]+\|\s+([^\s]+).*";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1004,7 +1076,8 @@ A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provides
 an analogous command struct to the packages for patch updates. The
 regular expression is unanchored, meaning it may match a partial string
-(see Anchored vs. unanchored regular expressions). \
+(see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 `package_update_command`
 
@@ -1018,12 +1091,14 @@ installed package
 **Example**:\
  \
 
-         
-         body package_method zypper
-         {
-         package_update_command => "/usr/bin/zypper -non-interactive update";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method zypper
+     {
+     package_update_command => "/usr/bin/zypper -non-interactive update";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1050,14 +1125,16 @@ carry out the update. \
 **Example**:\
  \
 
-         body package_method rpm
-         
-         {
-         package_verify_command => "/bin/rpm -V";
-         package_noverify_returncode => "-1";
-         }
-         
-         
+~~~~ {.verbatim}
+     body package_method rpm
+     
+     {
+     package_verify_command => "/bin/rpm -V";
+     package_noverify_returncode => "-1";
+     }
+     
+     
+~~~~
 
 **Notes**:\
  \
@@ -1092,12 +1169,14 @@ package version string
 **Example**:\
  \
 
-         
-         body package_method rpm
-         {
-         package_version_regex => "[^\s]+ ([^.]+).*";
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method rpm
+     {
+     package_version_regex => "[^\s]+ ([^.]+).*";
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1106,8 +1185,9 @@ If the version of a package is not specified separately using
 `package_version`, then this should be a regular expression that
 contains exactly one parenthesized back-reference that matches the
 version string in the promiser. The regular expression is unanchored,
-meaning it may match a partial string (see Anchored vs. unanchored
-regular expressions). \
+meaning it may match a partial string (see [Anchored vs. unanchored
+regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
+\
 
 `package_multiline_start`
 
@@ -1121,15 +1201,17 @@ package in multiline output
 **Example**:\
  \
 
-         
-         body package_method solaris (pkgname, spoolfile, adminfile)
-         {
-         package_changes => "individual";
-         package_list_command => "/usr/bin/pkginfo -l";
-         package_multiline_start    =>  "\s*PKGINST:\s+[^\s]+";
-         ...
-         }
-         
+~~~~ {.verbatim}
+     
+     body package_method solaris (pkgname, spoolfile, adminfile)
+     {
+     package_changes => "individual";
+     package_list_command => "/usr/bin/pkginfo -l";
+     package_multiline_start    =>  "\s*PKGINST:\s+[^\s]+";
+     ...
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -1145,12 +1227,14 @@ record. \
 
 **Allowed input range**: \
 
-                        true
-                        false
-                        yes
-                        no
-                        on
-                        off
+~~~~ {.example}
+                    true
+                    false
+                    yes
+                    no
+                    on
+                    off
+~~~~
 
 **Synopsis**: Whether to use shell for commands in this body
 
@@ -1159,9 +1243,11 @@ record. \
 **Example**:\
  \
 
-         
-         Fill me in (./bodyparts/package_commands_useshell_example.texinfo)
-         ""
+~~~~ {.verbatim}
+     
+     Fill me in (./bodyparts/package_commands_useshell_example.texinfo)
+     ""
+~~~~
 
 **Notes**:\
  \
@@ -1169,9 +1255,11 @@ record. \
 *History*: Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
 (2012)
 
-         
-         Fill me in (./bodyparts/package_commands_useshell_notes.texinfo)
-         ""
+~~~~ {.verbatim}
+     
+     Fill me in (./bodyparts/package_commands_useshell_notes.texinfo)
+     ""
+~~~~
 
 \
 
@@ -1187,11 +1275,13 @@ less than second one
 **Example**:\
  \
 
-         body package_method deb
-         {
-         ...
-         package_version_less_command => "dpkg --compare-versions ${v1} lt ${v2}";
-         }
+~~~~ {.verbatim}
+     body package_method deb
+     {
+     ...
+     package_version_less_command => "dpkg --compare-versions ${v1} lt ${v2}";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -1227,11 +1317,13 @@ equal to second one
 **Example**:\
  \
 
-         body package_method deb
-         {
-         ...
-         package_version_equal_command => "dpkg --compare-versions ${v1} eq ${v2}";
-         }
+~~~~ {.verbatim}
+     body package_method deb
+     {
+     ...
+     package_version_equal_command => "dpkg --compare-versions ${v1} eq ${v2}";
+     }
+~~~~
 
 **Notes**:\
  \
@@ -1259,13 +1351,15 @@ v2, and v2 is not less than v1).
 
 **Allowed input range**: \
 
-                   add
-                   delete
-                   reinstall
-                   update
-                   addupdate
-                   patch
-                   verify
+~~~~ {.example}
+               add
+               delete
+               reinstall
+               update
+               addupdate
+               patch
+               verify
+~~~~
 
 **Default value:** verify
 
@@ -1275,12 +1369,14 @@ system
 **Example**:\
  \
 
-    packages:
+~~~~ {.verbatim}
+packages:
 
-      "$(match_package)"
+  "$(match_package)"
 
-         package_policy => "add",
-         package_method => xyz;
+     package_policy => "add",
+     package_method => xyz;
+~~~~
 
 **Notes**:\
  \
@@ -1325,12 +1421,14 @@ Requires setting `package_verify_command`.
 
 **Allowed input range**: \
 
-                   
-                   
-                   ==
-                   !=
-                   =
-                   =
+~~~~ {.example}
+               
+               
+               ==
+               !=
+               =
+               =
+~~~~
 
 **Synopsis**: A criterion for first acceptable match relative to
 "package\_version"
@@ -1338,15 +1436,17 @@ Requires setting `package_verify_command`.
 **Example**:\
  \
 
-    packages:
+~~~~ {.verbatim}
+packages:
 
-      "$(exact_package)"
+  "$(exact_package)"
 
-         package_policy => "add",
-         package_method => xyz,
-         package_select => ">=",
-         package_architectures => { "x86_64" },
-         package_version => "1.2.3-456";
+     package_policy => "add",
+     package_method => xyz,
+     package_select => ">=",
+     package_architectures => { "x86_64" },
+     package_version => "1.2.3-456";
+~~~~
 
 **Notes**:\
  \
@@ -1366,14 +1466,16 @@ policy action is scheduled for promise-keeping.
 **Example**:\
  \
 
-    packages:
+~~~~ {.verbatim}
+packages:
 
-      "mypackage"
+  "mypackage"
 
-         package_policy => "add",
-         package_method => rpm,
-         package_select => "==",
-         package_version => "1.2.3";
+     package_policy => "add",
+     package_method => rpm,
+     package_select => "==",
+     package_version => "1.2.3";
+~~~~
 
 **Notes**:\
  \

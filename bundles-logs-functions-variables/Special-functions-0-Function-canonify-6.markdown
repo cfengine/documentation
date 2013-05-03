@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-canonify-6
+categories: [Special-functions,Function-canonify-6]
 published: true
-alias: Special-functions-0-Function-canonify-6.markdown.html
-tags: [xx]
+alias: Special-functions-Function-canonify-6.html
+tags: [Special-functions,Function-canonify-6]
 ---
 
 ### Function canonify
@@ -20,14 +20,16 @@ Convert an arbitrary string into a legal class name
 **Example**:\
  \
 
-    commands:
+~~~~ {.verbatim}
+commands:
 
-       "/var/cfengine/bin/$(component)"
+   "/var/cfengine/bin/$(component)"
 
-           ifvarclass => canonify("start_$(component)");
+       ifvarclass => canonify("start_$(component)");
+~~~~
 
 **Notes**:\
  \
 
-This is for use in turning arbitrary text into class data (See Function
-classify).
+This is for use in turning arbitrary text into class data (See [Function
+classify](#Function-classify)).

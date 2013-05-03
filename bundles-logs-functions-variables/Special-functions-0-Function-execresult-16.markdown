@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-execresult-16
+categories: [Special-functions,Function-execresult-16]
 published: true
-alias: Special-functions-0-Function-execresult-16.markdown.html
-tags: [xx]
+alias: Special-functions-Function-execresult-16.html
+tags: [Special-functions,Function-execresult-16]
 ---
 
 ### Function execresult
@@ -20,28 +20,30 @@ Execute named command and assign output to variable
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    vars:
+{     
+vars:
 
-      "my_result" string => execresult("/bin/ls /tmp","noshell");
+  "my_result" string => execresult("/bin/ls /tmp","noshell");
 
-    reports:
+reports:
 
-      linux::
+  linux::
 
-        "Variable is $(my_result)";
+    "Variable is $(my_result)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

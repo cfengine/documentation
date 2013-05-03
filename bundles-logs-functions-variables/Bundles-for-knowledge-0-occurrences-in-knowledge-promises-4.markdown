@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: occurrences-in-knowledge-promises-4
+categories: [Bundles-for-knowledge,occurrences-in-knowledge-promises-4]
 published: true
-alias: Bundles-for-knowledge-0-occurrences-in-knowledge-promises-4.markdown.html
-tags: [xx]
+alias: Bundles-for-knowledge-occurrences-in-knowledge-promises-4.html
+tags: [Bundles-for-knowledge,occurrences-in-knowledge-promises-4]
 ---
 
 ### `occurrences` promises in knowledge
@@ -16,43 +16,48 @@ An occurrence promise asserts that a particular document of text
 resource in fact represents information about one or more topics. This
 is used to construct references to actual information in a topic map.
 
-         
-          occurrences:
-         
-            topic_name::
-         
-              "URL reference or literal string"
-         
-                  represents = { "sub-topic disambiguator", ... },
-                  representation = "literal or url";
-         
+~~~~ {.smallexample}
+     
+      occurrences:
+     
+        topic_name::
+     
+          "URL reference or literal string"
+     
+              represents = { "sub-topic disambiguator", ... },
+              representation = "literal or url";
+     
+~~~~
 
 \
 
-     Mark_Burgess::
+~~~~ {.verbatim}
+ Mark_Burgess::
 
-         "http://www.iu.hio.no/~mark"
-                represents => { "Home Page" };
+     "http://www.iu.hio.no/~mark"
+            represents => { "Home Page" };
 
-     lvalue::
+ lvalue::
 
-         "A variable identifier, i.e. the left hand side of an '=' association. The promiser in a variable promise."
-                represents => { "Definitions" },
-                representation => "literal";
+     "A variable identifier, i.e. the left hand side of an '=' association. The promiser in a variable promise."
+            represents => { "Definitions" },
+            representation => "literal";
 
-     Editing_Files::
+ Editing_Files::
 
-     "http://www.cfengine.org/confdir/customizepasswd.html" 
-       represents => { "Setting up users" };
+ "http://www.cfengine.org/confdir/customizepasswd.html" 
+   represents => { "Setting up users" };
+
+~~~~
 
 \
 
 Occurrences are pointers to information about topics. This might be a
 literal text string or a URL reference to an external document.
 
--   about\_topics in occurrences
--   represents in occurrences
--   representation in occurrences
+-   [about\_topics in occurrences](#about_005ftopics-in-occurrences)
+-   [represents in occurrences](#represents-in-occurrences)
+-   [representation in occurrences](#representation-in-occurrences)
 
 #### `about_topics`
 
@@ -65,10 +70,12 @@ literal text string or a URL reference to an external document.
 **Example**:\
  \
 
-     "/docs/SpecialTopic_RBAC.html#tag"
+~~~~ {.verbatim}
+ "/docs/SpecialTopic_RBAC.html#tag"
 
-         represents => { "Text section" }, 
-       about_topics => { "defining roles" };
+     represents => { "Text section" }, 
+   about_topics => { "defining roles" };
+~~~~
 
 **Notes**:\
  \
@@ -94,14 +101,16 @@ has to the topics it is about
 **Example**:\
  \
 
-    occurrences:
+~~~~ {.verbatim}
+occurrences:
 
-      Promise_Theory::
+  Promise_Theory::
 
-        "A theory of autonomous actors that offer certainty through promises"
+    "A theory of autonomous actors that offer certainty through promises"
 
-          represents     => { "Definitions" },
-          representation => "literal";
+      represents     => { "Definitions" },
+      representation => "literal";
+~~~~
 
 **Notes**:\
  \
@@ -121,13 +130,15 @@ reference as a url to be reached when the image is clicked on.
 
 **Allowed input range**: \
 
-                   literal
-                   url
-                   db
-                   file
-                   web
-                   image
-                   portal
+~~~~ {.example}
+               literal
+               url
+               db
+               file
+               web
+               image
+               portal
+~~~~
 
 **Synopsis**: How to interpret the promiser string (e.g. actual data or
 reference to data)
@@ -135,14 +146,17 @@ reference to data)
 **Example**:\
  \
 
-    occurrences:
+~~~~ {.verbatim}
+occurrences:
 
-      Promise_Theory::
+  Promise_Theory::
 
-        "A theory of autonomous actors that offer certainty through promises"
+    "A theory of autonomous actors that offer certainty through promises"
 
-          represents     => { "Definitions" },
-          representation => "literal";
+      represents     => { "Definitions" },
+      representation => "literal";
+
+~~~~
 
 **Notes**:\
  \

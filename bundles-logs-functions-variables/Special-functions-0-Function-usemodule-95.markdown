@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-usemodule-95
+categories: [Special-functions,Function-usemodule-95]
 published: true
-alias: Special-functions-0-Function-usemodule-95.markdown.html
-tags: [xx]
+alias: Special-functions-Function-usemodule-95.html
+tags: [Special-functions,Function-usemodule-95]
 ---
 
 ### Function usemodule
@@ -20,30 +20,32 @@ Execute cfengine module script and set class if successful
 **Example**:\
  \
 
-    body common control
-       {
-       any::
+~~~~ {.verbatim}
+body common control
+   {
+   any::
 
-          bundlesequence  => {
-                             test
-                             };
-       }
+      bundlesequence  => {
+                         test
+                         };
+   }
 
-    ###################################################################
+###################################################################
 
-    bundle agent test
+bundle agent test
 
-    {
-    classes:
+{
+classes:
 
-      # returns $(user)
+  # returns $(user)
 
-      "done" expression => usemodule("getusers","");
+  "done" expression => usemodule("getusers","");
 
-    commands:
+commands:
 
-      "/bin/echo" args => "test $(user)";
-    }
+  "/bin/echo" args => "test $(user)";
+}
+~~~~
 
 **Notes**:\
  \

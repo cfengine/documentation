@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-and-5
+categories: [Special-functions,Function-and-5]
 published: true
-alias: Special-functions-0-Function-and-5.markdown.html
-tags: [xx]
+alias: Special-functions-Function-and-5.html
+tags: [Special-functions,Function-and-5]
 ---
 
 ### Function and
@@ -18,9 +18,11 @@ Calculate whether all arguments evaluate to true
 **Example**:\
  \
 
-    commands:
-      "/usr/bin/generate_config $(config)"
-        ifvarclass => and(not(fileexists("/etc/config/$(config)")), "generating_configs");
+~~~~ {.verbatim}
+commands:
+  "/usr/bin/generate_config $(config)"
+    ifvarclass => and(not(fileexists("/etc/config/$(config)")), "generating_configs");
+~~~~
 
 **Notes**:\
  \

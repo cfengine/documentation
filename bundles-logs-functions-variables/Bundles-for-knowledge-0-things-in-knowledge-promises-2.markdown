@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: things-in-knowledge-promises-2
+categories: [Bundles-for-knowledge,things-in-knowledge-promises-2]
 published: true
-alias: Bundles-for-knowledge-0-things-in-knowledge-promises-2.markdown.html
-tags: [xx]
+alias: Bundles-for-knowledge-things-in-knowledge-promises-2.html
+tags: [Bundles-for-knowledge,things-in-knowledge-promises-2]
 ---
 
 ### `things` promises in knowledge
@@ -26,19 +26,21 @@ introduced.
 
 \
 
-    body knowledge TheRealWorld
-    {
-    things:
+~~~~ {.verbatim}
+body knowledge TheRealWorld
+{
+things:
 
-      networks::
+  networks::
 
-         "10.20.30.40"  is_connected_to => { "router 46", "computers::computer 23" };
+     "10.20.30.40"  is_connected_to => { "router 46", "computers::computer 23" };
 
-      computers::
+  computers::
 
-         "computer 23" belongs_to => { "Phileas Phogg", "ACME punchcard agency" };
+     "computer 23" belongs_to => { "Phileas Phogg", "ACME punchcard agency" };
 
-    }
+}
+~~~~
 
 \
 
@@ -48,28 +50,29 @@ interchangeable between things and topics. The only purpose of things is
 to make plainer a description of the \`physical' configurations of
 regular worldly things.
 
--   synonyms in things
--   affects in things
--   belongs\_to in things
--   causes in things
--   certainty in things
--   determines in things
--   generalizations in things
--   implements in things
--   involves in things
--   is\_caused\_by in things
--   is\_connected\_to in things
--   is\_determined\_by in things
--   is\_followed\_by in things
--   is\_implemented\_by in things
--   is\_located\_in in things
--   is\_measured\_by in things
--   is\_part\_of in things
--   is\_preceded\_by in things
--   measures in things
--   needs in things
--   provides in things
--   uses in things
+-   [synonyms in things](#synonyms-in-things)
+-   [affects in things](#affects-in-things)
+-   [belongs\_to in things](#belongs_005fto-in-things)
+-   [causes in things](#causes-in-things)
+-   [certainty in things](#certainty-in-things)
+-   [determines in things](#determines-in-things)
+-   [generalizations in things](#generalizations-in-things)
+-   [implements in things](#implements-in-things)
+-   [involves in things](#involves-in-things)
+-   [is\_caused\_by in things](#is_005fcaused_005fby-in-things)
+-   [is\_connected\_to in things](#is_005fconnected_005fto-in-things)
+-   [is\_determined\_by in things](#is_005fdetermined_005fby-in-things)
+-   [is\_followed\_by in things](#is_005ffollowed_005fby-in-things)
+-   [is\_implemented\_by in
+    things](#is_005fimplemented_005fby-in-things)
+-   [is\_located\_in in things](#is_005flocated_005fin-in-things)
+-   [is\_measured\_by in things](#is_005fmeasured_005fby-in-things)
+-   [is\_part\_of in things](#is_005fpart_005fof-in-things)
+-   [is\_preceded\_by in things](#is_005fpreceded_005fby-in-things)
+-   [measures in things](#measures-in-things)
+-   [needs in things](#needs-in-things)
+-   [provides in things](#provides-in-things)
+-   [uses in things](#uses-in-things)
 
 #### `synonyms`
 
@@ -83,9 +86,11 @@ defined context
 **Example**:\
  \
 
-     mathematics::
+~~~~ {.verbatim}
+ mathematics::
 
-       "tree" synonyms => { "DAG", "directed acyclic graph" };
+   "tree" synonyms => { "DAG", "directed acyclic graph" };
+~~~~
 
 **Notes**:\
  \
@@ -107,9 +112,11 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-       "The Moon"   affects => {  "surf", "tides" };
+   "The Moon"   affects => {  "surf", "tides" };
+~~~~
 
 **Notes**:\
  \
@@ -127,12 +134,14 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-      "router-123" 
+  "router-123" 
 
-               comment => "Located at 23 Marlborough Street",
-            belongs_to => { "company::cfengine" };
+           comment => "Located at 23 Marlborough Street",
+        belongs_to => { "company::cfengine" };
+~~~~
 
 **Notes**:\
  \
@@ -151,14 +160,16 @@ things
 **Example**:\
  \
 
-    bundle knowledge test
-    {
-    things:
+~~~~ {.verbatim}
+bundle knowledge test
+{
+things:
 
-      "program crash" causes => { "rootprocs_low_anomaly" },
-                         certainty => "possible";
+  "program crash" causes => { "rootprocs_low_anomaly" },
+                     certainty => "possible";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -173,9 +184,11 @@ The complement of \`is\_caused\_by' for convenience.
 
 **Allowed input range**: \
 
-                   certain
-                   uncertain
-                   possible
+~~~~ {.example}
+               certain
+               uncertain
+               possible
+~~~~
 
 **Synopsis**: Selects the level of certainty for the proposed knowledge,
 for use in inferential reasoning
@@ -183,16 +196,18 @@ for use in inferential reasoning
 **Example**:\
  \
 
-    bundle knowledge test
-    {
-    things:
+~~~~ {.verbatim}
+bundle knowledge test
+{
+things:
 
-      "router one" is_connected_to => { "computer one" },
-                         certainty => "uncertain";
+  "router one" is_connected_to => { "computer one" },
+                     certainty => "uncertain";
 
-      "router"             affects => { "network services" },
-                         certainty => "possible";
-    }
+  "router"             affects => { "network services" },
+                     certainty => "possible";
+}
+~~~~
 
 **Notes**:\
  \
@@ -216,10 +231,12 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-      "router one" determines => { "network connectivity" },
-                    certainty => "uncertain";
+  "router one" determines => { "network connectivity" },
+                certainty => "uncertain";
+~~~~
 
 **Notes**:\
  \
@@ -238,15 +255,17 @@ current topic, used when reasoning
 **Example**:\
  \
 
-     topics:
+~~~~ {.verbatim}
+ topics:
 
-      persons::
+  persons::
 
-         "mark"  generalizations => { "person", "staff", "human being" };
+     "mark"  generalizations => { "person", "staff", "human being" };
 
-      any::
+  any::
 
-         "10.10.10.10/24" generalizations => { "network", "CIDR format" };
+     "10.10.10.10/24" generalizations => { "network", "CIDR format" };
+~~~~
 
 **Notes**:\
  \
@@ -272,10 +291,12 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-       "my promise"  
-                  implements => { "my goal" };
+   "my promise"  
+              implements => { "my goal" };
+~~~~
 
 **Notes**:\
  \
@@ -294,15 +315,17 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-       "desired state"
+   "desired state"
 
-          involves => { 
-                      "business goals", 
-                      "knowing what state to configure", 
-                      "knowing what objects to maintain" 
-                      };
+      involves => { 
+                  "business goals", 
+                  "knowing what state to configure", 
+                  "knowing what objects to maintain" 
+                  };
+~~~~
 
 **Notes**:\
  \
@@ -321,14 +344,16 @@ things
 **Example**:\
  \
 
-    bundle knowledge test
-    {
-    things:
+~~~~ {.verbatim}
+bundle knowledge test
+{
+things:
 
-      "core dump" is_caused_by => { "memory fault" },
-                         certainty => "certain";
+  "core dump" is_caused_by => { "memory fault" },
+                     certainty => "certain";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -349,18 +374,21 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-     networks::
+ networks::
 
-      "192.23.45.0/24"         comment => "Secure network, zone 0. Single octet for corporate offices",
-                       is_connected_to => { "oslo-hub-123" };
+  "192.23.45.0/24"         comment => "Secure network, zone 0. Single octet for corporate offices",
+                   is_connected_to => { "oslo-hub-123" };
 
-      "192.12.74.0/23"         comment => "Zone 1, double octet for the London office developer network",
-                       is_connected_to => { "oslo-hub-123" };
+  "192.12.74.0/23"         comment => "Zone 1, double octet for the London office developer network",
+                   is_connected_to => { "oslo-hub-123" };
 
-      "192.12.74.0/23"         comment => "Secure, single octet for the NYC office",
-                       is_connected_to => { "nyc-hub-456" };
+  "192.12.74.0/23"         comment => "Secure, single octet for the NYC office",
+                   is_connected_to => { "nyc-hub-456" };
+
+~~~~
 
 **Notes**:\
  \
@@ -379,9 +407,11 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-      "why" is_determined_by => { "bodyparts::comment", "Semantic commentary" };
+  "why" is_determined_by => { "bodyparts::comment", "Semantic commentary" };
+~~~~
 
 **Notes**:\
  \
@@ -402,11 +432,13 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-      "Installing CFEngine"
+  "Installing CFEngine"
 
-        is_followed_by => { "bootstrapping", "policy editing" };
+    is_followed_by => { "bootstrapping", "policy editing" };
+~~~~
 
 **Notes**:\
  \
@@ -425,10 +457,12 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-       "my goal"  
-                  is_implemented_by => { "my promise" };
+   "my goal"  
+              is_implemented_by => { "my promise" };
+~~~~
 
 **Notes**:\
  \
@@ -447,14 +481,17 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-     countries::
+ countries::
 
-       "UK"                 synonyms => { "Great Britain" },
-                       is_located_in => { "EMEA", "Europe" };
+   "UK"                 synonyms => { "Great Britain" },
+                   is_located_in => { "EMEA", "Europe" };
 
-       "Singapore"     is_located_in => { "APAC", "Asia" };
+   "Singapore"     is_located_in => { "APAC", "Asia" };
+
+~~~~
 
 **Notes**:\
  \
@@ -473,11 +510,13 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-     service_measurements::
+ service_measurements::
 
-      "login services" is_measured_by => { "ssh_in" };
+  "login services" is_measured_by => { "ssh_in" };
+~~~~
 
 **Notes**:\
  \
@@ -495,9 +534,11 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-      "host 1" is_part_of => { "123.456.789.0/24" };
+  "host 1" is_part_of => { "123.456.789.0/24" };
+~~~~
 
 **Notes**:\
  \
@@ -516,12 +557,14 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-      "disk failure"
+  "disk failure"
 
-        is_preceded_by => { "write errors", "read errors" },
-             certainty => "possible";
+    is_preceded_by => { "write errors", "read errors" },
+         certainty => "possible";
+~~~~
 
 **Notes**:\
  \
@@ -540,12 +583,14 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-     service_measurements::
+ service_measurements::
 
-      "ssh_in"     measures => { "services::login services" },
-                   measures => { "ssh" };
+  "ssh_in"     measures => { "services::login services" },
+               measures => { "ssh" };
+~~~~
 
 **Notes**:\
  \
@@ -564,12 +609,14 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-      "rack 123"     needs => { "power", "cooling" };
+  "rack 123"     needs => { "power", "cooling" };
 
-      "computer"     needs => { "cleaning", "monitoring" },
-                 certainty => "possible";
+  "computer"     needs => { "cleaning", "monitoring" },
+             certainty => "possible";
+~~~~
 
 **Notes**:\
  \
@@ -588,9 +635,11 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-       "host 23" provides => { "www", "email" };
+   "host 23" provides => { "www", "email" };
+~~~~
 
 **Notes**:\
  \
@@ -609,9 +658,11 @@ things
 **Example**:\
  \
 
-    things:
+~~~~ {.verbatim}
+things:
 
-      "apache 2.3" uses => { "mysql 4.5" };
+  "apache 2.3" uses => { "mysql 4.5" };
+~~~~
 
 **Notes**:\
  \

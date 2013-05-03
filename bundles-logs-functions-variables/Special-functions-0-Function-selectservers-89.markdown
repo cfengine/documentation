@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-selectservers-89
+categories: [Special-functions,Function-selectservers-89]
 published: true
-alias: Special-functions-0-Function-selectservers-89.markdown.html
-tags: [xx]
+alias: Special-functions-Function-selectservers-89.html
+tags: [Special-functions,Function-selectservers-89]
 ---
 
 ### Function selectservers
@@ -29,48 +29,51 @@ number, set array of names
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "test"  };
-    }
+{
+bundlesequence  => { "test"  };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent test
+bundle agent test
 
-    {     
-    vars:
+{     
+vars:
 
-     "hosts" slist => { "slogans.iu.hio.no", "eternity.iu.hio.no", "nexus.iu.hio.no" };
-     "fhosts" slist => { "www.cfengine.com", "www.cfengine.org" };
-     
-     "up_servers" int =>  selectservers("@(hosts)","80","","","100","alive_servers");
-     "has_favicon" int =>
-            selectservers(
-                "@(hosts)", "80",
-            "GET /favicon.ico HTTP/1.0$(const.n)Host: www.cfengine.com$(const.n)$(const.n)",
-            "(?s).*OK.*",
-            "200", "favicon_servers");
+ "hosts" slist => { "slogans.iu.hio.no", "eternity.iu.hio.no", "nexus.iu.hio.no" };
+ "fhosts" slist => { "www.cfengine.com", "www.cfengine.org" };
+ 
+ "up_servers" int =>  selectservers("@(hosts)","80","","","100","alive_servers");
+ "has_favicon" int =>
+        selectservers(
+            "@(hosts)", "80",
+        "GET /favicon.ico HTTP/1.0$(const.n)Host: www.cfengine.com$(const.n)$(const.n)",
+        "(?s).*OK.*",
+        "200", "favicon_servers");
 
-    classes:
+classes:
 
-      "someone_alive" expression => isgreaterthan("$(up_servers)","0");
+  "someone_alive" expression => isgreaterthan("$(up_servers)","0");
 
-      "has_favicon" expression => isgreaterthan("$(has_favicon)","0");
+  "has_favicon" expression => isgreaterthan("$(has_favicon)","0");
 
-    reports:
+reports:
 
-      cfengine_3::
-        "Number of active servers $(up_servers)";
+  cfengine_3::
+    "Number of active servers $(up_servers)";
 
-      someone_alive::
-        "First server $(alive_servers[0]) fails over to $(alive_servers[1])";
+  someone_alive::
+    "First server $(alive_servers[0]) fails over to $(alive_servers[1])";
 
-      has_favicon::
-        "At least $(favicon_servers[0]) has a favicon.ico";
+  has_favicon::
+    "At least $(favicon_servers[0]) has a favicon.ico";
 
-    }
+}
+
+~~~~
 
 **Notes**:\
  \
@@ -95,13 +98,14 @@ An optional string to send to the server to elicit a response. If
 regex\_on\_reply
 
 If a string is sent, this regex is anchored, meaning it must match the
-entire resulting reply (see Anchored vs. unanchored regular
-expressions). If there is a multi-line response from the server, special
-care must be taken to ensure that you match the newlines, too (note the
-use of `(?s)` in the example above, which allows . to also match
-newlines in the multi-line HTTP response). If `regex_on_reply` is empty,
-then no reply-checking is performed (and any server reply is deemed to
-be satisfactory). \
+entire resulting reply (see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If
+there is a multi-line response from the server, special care must be
+taken to ensure that you match the newlines, too (note the use of `(?s)`
+in the example above, which allows . to also match newlines in the
+multi-line HTTP response). If `regex_on_reply` is empty, then no
+reply-checking is performed (and any server reply is deemed to be
+satisfactory). \
 
 maxbytesread\_reply
 

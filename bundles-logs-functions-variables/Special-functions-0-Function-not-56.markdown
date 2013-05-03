@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-not-56
+categories: [Special-functions,Function-not-56]
 published: true
-alias: Special-functions-0-Function-not-56.markdown.html
-tags: [xx]
+alias: Special-functions-Function-not-56.html
+tags: [Special-functions,Function-not-56]
 ---
 
 ### Function not
@@ -19,9 +19,11 @@ Calculate whether argument is false
 **Example**:\
  \
 
-    commands:
-      "/usr/bin/generate_config $(config)"
-        ifvarclass => not(fileexists("/etc/config/$(config)"));
+~~~~ {.verbatim}
+commands:
+  "/usr/bin/generate_config $(config)"
+    ifvarclass => not(fileexists("/etc/config/$(config)"));
+~~~~
 
 **Notes**:\
  \

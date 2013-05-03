@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Introduction-to-functions-1
+categories: [Special-functions,Introduction-to-functions-1]
 published: true
-alias: Special-functions-0-Introduction-to-functions-1.markdown.html
-tags: [xx]
+alias: Special-functions-Introduction-to-functions-1.html
+tags: [Special-functions,Introduction-to-functions-1]
 ---
 
 ### Introduction to Functions
@@ -19,96 +19,96 @@ on the value or type that the function returns or processes as inputs.
 
 ##### Functions That Return Class
 
-  ----------------------- ------------- --------------- ------------- ----------------
-  accessedbefore          and           changedbefore   classify      classmatch \
-                                                                      
+  ---------------------------------------------------------- -------------------------------------- ------------------------------------------ -------------------------------------- ------------------------------------------
+  [accessedbefore](#Function-accessedbefore)                 [and](#Function-and)                   [changedbefore](#Function-changedbefore)   [classify](#Function-classify)         [classmatch](#Function-classmatch) \
+                                                                                                                                                                                      
 
-  concat                  fileexists    filesexist      groupexists   hashmatch \
-                                                                      
+  [concat](#Function-concat)                                 [fileexists](#Function-fileexists)     [filesexist](#Function-filesexist)         [groupexists](#Function-groupexists)   [hashmatch](#Function-hashmatch) \
+                                                                                                                                                                                      
 
-  hostinnetgroup          hostrange     iprange         isdir         isexecutable \
-                                                                      
+  [hostinnetgroup](#Function-hostinnetgroup)                 [hostrange](#Function-hostrange)       [iprange](#Function-iprange)               [isdir](#Function-isdir)               [isexecutable](#Function-isexecutable) \
+                                                                                                                                                                                      
 
-  isgreaterthan           islessthan    islink          isnewerthan   isplain \
-                                                                      
+  [isgreaterthan](#Function-isgreaterthan)                   [islessthan](#Function-islessthan)     [islink](#Function-islink)                 [isnewerthan](#Function-isnewerthan)   [isplain](#Function-isplain) \
+                                                                                                                                                                                      
 
-  isvariable              ldaparray     or              not           regarray \
-                                                                      
+  [isvariable](#Function-isvariable)                         [ldaparray](#Function-ldaparray)       [or](#Function-or)                         [not](#Function-not)                   [regarray](#Function-regarray) \
+                                                                                                                                                                                      
 
-  regcmp                  regextract    regldap         regline       reglist \
-                                                                      
+  [regcmp](#Function-regcmp)                                 [regextract](#Function-regextract)     [regldap](#Function-regldap)               [regline](#Function-regline)           [reglist](#Function-reglist) \
+                                                                                                                                                                                      
 
-  remoteclassesmatching   returnszero   splayclass      strcmp        usemodule \
-                                                                      
+  [remoteclassesmatching](#Function-remoteclassesmatching)   [returnszero](#Function-returnszero)   [splayclass](#Function-splayclass)         [strcmp](#Function-strcmp)             [usemodule](#Function-usemodule) \
+                                                                                                                                                                                      
 
-  userexists \
-  ----------------------- ------------- --------------- ------------- ----------------
+  [userexists](#Function-userexists) \
+  ---------------------------------------------------------- -------------------------------------- ------------------------------------------ -------------------------------------- ------------------------------------------
 
 ##### Functions That Return (i,r,s)List
 
-  --------------- ---------- ------------- -------------- ------------------
-  getindices      getusers   grep          ldaplist       maplist \
-                                                          
+  ---------------------------------------- -------------------------------- -------------------------------------- ---------------------------------------- ----------------------------------------------
+  [getindices](#Function-getindices)       [getusers](#Function-getusers)   [grep](#Function-grep)                 [ldaplist](#Function-ldaplist)           [maplist](#Function-maplist) \
+                                                                                                                                                            
 
-  peerleaders     peers      readintlist   readreallist   readstringlist \
-                                                          
+  [peerleaders](#Function-peerleaders)     [peers](#Function-peers)         [readintlist](#Function-readintlist)   [readreallist](#Function-readreallist)   [readstringlist](#Function-readstringlist) \
+                                                                                                                                                            
 
-  splitstring \
-  --------------- ---------- ------------- -------------- ------------------
+  [splitstring](#Function-splitstring) \
+  ---------------------------------------- -------------------------------- -------------------------------------- ---------------------------------------- ----------------------------------------------
 
 ##### Functions That Return Int
 
-  -------------- --------------- -------------------- -------------------- -----------------
-  accumulated    ago             countlinesmatching   diskfree             getfields \
-                                                                           
+  ---------------------------------------- ------------------------------------------ ---------------------------------------------------- ---------------------------------------------------- --------------------------------------------
+  [accumulated](#Function-accumulated)     [ago](#Function-ago)                       [countlinesmatching](#Function-countlinesmatching)   [diskfree](#Function-diskfree)                       [getfields](#Function-getfields) \
+                                                                                                                                                                                                
 
-  getgid         getuid          now                  on                   randomint \
-                                                                           
+  [getgid](#Function-getgid)               [getuid](#Function-getuid)                 [now](#Function-now)                                 [on](#Function-on)                                   [randomint](#Function-randomint) \
+                                                                                                                                                                                                
 
-  readintarray   readrealarray   readstringarray      readstringarrayidx   selectservers \
-                                                                           
-  -------------- --------------- -------------------- -------------------- -----------------
+  [readintarray](#Function-readintarray)   [readrealarray](#Function-readrealarray)   [readstringarray](#Function-readstringarray)         [readstringarrayidx](#Function-readstringarrayidx)   [selectservers](#Function-selectservers) \
+                                                                                                                                                                                                
+  ---------------------------------------- ------------------------------------------ ---------------------------------------------------- ---------------------------------------------------- --------------------------------------------
 
 ##### Functions That Return (i,r)Range
 
-  -------- ----------
-  irange   rrange \
-           
-  -------- ----------
+  ---------------------------- ------------------------------
+  [irange](#Function-irange)   [rrange](#Function-rrange) \
+                               
+  ---------------------------- ------------------------------
 
 ##### Functions That Return Real
 
-  --------- -------
-  product   sum \
-            
-  --------- -------
+  ------------------------------ ------------------------
+  [product](#Function-product)   [sum](#Function-sum) \
+                                 
+  ------------------------------ ------------------------
 
 ##### Functions That Return String
 
-  ----------------- ----------- ------------ --------------- ----------------
-  canonify          escape      execresult   getenv          hash \
-                                                             
+  -------------------------------------------- ---------------------------------- ------------------------------------ ------------------------------------------ ------------------------------------------
+  [canonify](#Function-canonify)               [escape](#Function-escape)         [execresult](#Function-execresult)   [getenv](#Function-getenv)                 [hash](#Function-hash) \
+                                                                                                                                                                  
 
-  host2ip           hostsseen   join         lastnode        ldapvalue \
-                                                             
+  [host2ip](#Function-host2ip)                 [hostsseen](#Function-hostsseen)   [join](#Function-join)               [lastnode](#Function-lastnode)             [ldapvalue](#Function-ldapvalue) \
+                                                                                                                                                                  
 
-  peerleader        readfile    readtcp      registryvalue   remotescalar \
-                                                             
+  [peerleader](#Function-peerleader)           [readfile](#Function-readfile)     [readtcp](#Function-readtcp)         [registryvalue](#Function-registryvalue)   [remotescalar](#Function-remotescalar) \
+                                                                                                                                                                  
 
-  translatepath \
-  ----------------- ----------- ------------ --------------- ----------------
+  [translatepath](#Function-translatepath) \
+  -------------------------------------------- ---------------------------------- ------------------------------------ ------------------------------------------ ------------------------------------------
 
 #### Functions That Fill Arrays
 
 The following functions all fill arrays, although they return values
 that depend on the number of items processed.
 
-  -------------- -------------- --------------- ----------------- ----------------------
-  getfields      readintarray   readrealarray   readstringarray   readstringarrayidx \
-                                                                  
+  -------------------------------------- ---------------------------------------- ------------------------------------------ ---------------------------------------------- ------------------------------------------------------
+  [getfields](#Function-getfields)       [readintarray](#Function-readintarray)   [readrealarray](#Function-readrealarray)   [readstringarray](#Function-readstringarray)   [readstringarrayidx](#Function-readstringarrayidx) \
+                                                                                                                                                                            
 
-  regextract \
-  -------------- -------------- --------------- ----------------- ----------------------
+  [regextract](#Function-regextract) \
+  -------------------------------------- ---------------------------------------- ------------------------------------------ ---------------------------------------------- ------------------------------------------------------
 
 #### Functions That Read Large Data
 
@@ -118,151 +118,151 @@ arrays, etc.).
 
 ##### Functions That Read Arrays
 
-  -------------- ------------
-  getindices \
+  -------------------------------------- ----------------------------------
+  [getindices](#Function-getindices) \
 
-  getvalues      regarray \
-                 
-  -------------- ------------
+  [getvalues](#Function-getvalues)       [regarray](#Function-regarray) \
+                                         
+  -------------------------------------- ----------------------------------
 
 ##### Functions That Read Disk Data
 
-  ------------
-  diskfree \
-  ------------
+  ----------------------------------
+  [diskfree](#Function-diskfree) \
+  ----------------------------------
 
 ##### Functions That Read From a Remote-CFEngine
 
-  ----------------------- ----------------
-  remoteclassesmatching   remotescalar \
-                          
-  ----------------------- ----------------
+  ---------------------------------------------------------- ------------------------------------------
+  [remoteclassesmatching](#Function-remoteclassesmatching)   [remotescalar](#Function-remotescalar) \
+                                                             
+  ---------------------------------------------------------- ------------------------------------------
 
 ##### Functions That Read Classes
 
-  ------ ---------- ------------ -------- -------
-  and    classify   classmatch   concat   not \
-                                          
+  ---------------------- -------------------------------- ------------------------------------ ---------------------------- ------------------------
+  [and](#Function-and)   [classify](#Function-classify)   [classmatch](#Function-classmatch)   [concat](#Function-concat)   [not](#Function-not) \
+                                                                                                                            
 
-  or \
-  ------ ---------- ------------ -------- -------
+  [or](#Function-or) \
+  ---------------------- -------------------------------- ------------------------------------ ---------------------------- ------------------------
 
 ##### Functions That Read Command Output
 
-  ------------ ------------- -------------
-  execresult   returnszero   usemodule \
-                             
-  ------------ ------------- -------------
+  ------------------------------------ -------------------------------------- ------------------------------------
+  [execresult](#Function-execresult)   [returnszero](#Function-returnszero)   [usemodule](#Function-usemodule) \
+                                                                              
+  ------------------------------------ -------------------------------------- ------------------------------------
 
 ##### Functions That Read the Environment
 
-  ----------
-  getenv \
-  ----------
+  ------------------------------
+  [getenv](#Function-getenv) \
+  ------------------------------
 
 ##### Functions That Read Files
 
-  -------------------- -------------- ----------------- -------------------- ------------------
-  countlinesmatching   getfields      getusers          hashmatch            peerleader \
-                                                                             
+  ---------------------------------------------------- ---------------------------------------- ---------------------------------------------- ---------------------------------------------------- ----------------------------------------------
+  [countlinesmatching](#Function-countlinesmatching)   [getfields](#Function-getfields)         [getusers](#Function-getusers)                 [hashmatch](#Function-hashmatch)                     [peerleader](#Function-peerleader) \
+                                                                                                                                                                                                    
 
-  peerleaders          peers          readfile          readintarray         readintlist \
-                                                                             
+  [peerleaders](#Function-peerleaders)                 [peers](#Function-peers)                 [readfile](#Function-readfile)                 [readintarray](#Function-readintarray)               [readintlist](#Function-readintlist) \
+                                                                                                                                                                                                    
 
-  readrealarray        readreallist   readstringarray   readstringarrayidx   readstringlist \
-                                                                             
+  [readrealarray](#Function-readrealarray)             [readreallist](#Function-readreallist)   [readstringarray](#Function-readstringarray)   [readstringarrayidx](#Function-readstringarrayidx)   [readstringlist](#Function-readstringlist) \
+                                                                                                                                                                                                    
 
-  regline \
-  -------------------- -------------- ----------------- -------------------- ------------------
+  [regline](#Function-regline) \
+  ---------------------------------------------------- ---------------------------------------- ---------------------------------------------- ---------------------------------------------------- ----------------------------------------------
 
 ##### Functions That Read LDAP Data
 
-  ----------- ---------- ----------- -----------
-  ldaparray   ldaplist   ldapvalue   regldap \
-                                     
-  ----------- ---------- ----------- -----------
+  ---------------------------------- -------------------------------- ---------------------------------- --------------------------------
+  [ldaparray](#Function-ldaparray)   [ldaplist](#Function-ldaplist)   [ldapvalue](#Function-ldapvalue)   [regldap](#Function-regldap) \
+                                                                                                         
+  ---------------------------------- -------------------------------- ---------------------------------- --------------------------------
 
 ##### Functions That Read From the Network
 
-  --------- -----------------
-  readtcp   selectservers \
-            
-  --------- -----------------
+  ------------------------------ --------------------------------------------
+  [readtcp](#Function-readtcp)   [selectservers](#Function-selectservers) \
+                                 
+  ------------------------------ --------------------------------------------
 
 ##### Functions That Read the Windows Registry
 
-  -----------------
-  registryvalue \
-  -----------------
+  --------------------------------------------
+  [registryvalue](#Function-registryvalue) \
+  --------------------------------------------
 
 ##### Functions That Read (i,r,s)Lists
 
-  ----------- --------
-  grep        join \
-              
+  -------------------------------- --------------------------
+  [grep](#Function-grep)           [join](#Function-join) \
+                                   
 
-  product \
+  [product](#Function-product) \
 
-  reglist \
+  [reglist](#Function-reglist) \
 
-  sum \
-  ----------- --------
+  [sum](#Function-sum) \
+  -------------------------------- --------------------------
 
 ##### Functions That Read Strings
 
-  -------- ----------------- -------- ------------ ---------------
-  hash     lastnode          regcmp   regextract   splitstring \
-                                                   
+  ---------------------------- -------------------------------------------- ---------------------------- ------------------------------------ ----------------------------------------
+  [hash](#Function-hash)       [lastnode](#Function-lastnode)               [regcmp](#Function-regcmp)   [regextract](#Function-regextract)   [splitstring](#Function-splitstring) \
+                                                                                                                                              
 
-  strcmp   translatepath \
-           
-  -------- ----------------- -------- ------------ ---------------
+  [strcmp](#Function-strcmp)   [translatepath](#Function-translatepath) \
+                               
+  ---------------------------- -------------------------------------------- ---------------------------- ------------------------------------ ----------------------------------------
 
 #### Functions That Look at File Metadata
 
 The following functions examine file metadata, but don't use the
 contents of the file.
 
-  ---------------- --------------- ------------ ------------ ---------
-  accessedbefore   changedbefore   fileexists   filesexist   isdir \
-                                                             
+  -------------------------------------------- ------------------------------------------ ------------------------------------ ------------------------------------ ----------------------------
+  [accessedbefore](#Function-accessedbefore)   [changedbefore](#Function-changedbefore)   [fileexists](#Function-fileexists)   [filesexist](#Function-filesexist)   [isdir](#Function-isdir) \
+                                                                                                                                                                    
 
-  islink           isnewerthan     isplain \
-                                   
-  ---------------- --------------- ------------ ------------ ---------
+  [islink](#Function-islink)                   [isnewerthan](#Function-isnewerthan)       [isplain](#Function-isplain) \
+                                                                                          
+  -------------------------------------------- ------------------------------------------ ------------------------------------ ------------------------------------ ----------------------------
 
 #### Functions That Look at Variables
 
-  --------------- ------------ --------------
-  isgreaterthan   islessthan   isvariable \
-                               
-  --------------- ------------ --------------
+  ------------------------------------------ ------------------------------------ --------------------------------------
+  [isgreaterthan](#Function-isgreaterthan)   [islessthan](#Function-islessthan)   [isvariable](#Function-isvariable) \
+                                                                                  
+  ------------------------------------------ ------------------------------------ --------------------------------------
 
 #### Functions Involving Date or Time
 
 The following functions all do date or time computation
 
-  ---------------- ------------- -------------- --------------- ---------------
-  accessedbefore   accumulated   ago            changedbefore   isnewerthan \
-                                                                
+  -------------------------------------------- -------------------------------------- -------------------------------------- ------------------------------------------ ----------------------------------------
+  [accessedbefore](#Function-accessedbefore)   [accumulated](#Function-accumulated)   [ago](#Function-ago)                   [changedbefore](#Function-changedbefore)   [isnewerthan](#Function-isnewerthan) \
+                                                                                                                                                                        
 
-  now              on            splayclass \
-                                 
-  ---------------- ------------- -------------- --------------- ---------------
+  [now](#Function-now)                         [on](#Function-on)                     [splayclass](#Function-splayclass) \
+                                                                                      
+  -------------------------------------------- -------------------------------------- -------------------------------------- ------------------------------------------ ----------------------------------------
 
 #### Functions That Work With or On Regular Expressions
 
-  -------------------- -------------------- --------------- --------------- -------------------
-  classmatch           countlinesmatching   escape          getfields       grep \
-                                                                            
+  ---------------------------------------------------- ---------------------------------------------------- ------------------------------------------ ---------------------------------------- ------------------------------------------------
+  [classmatch](#Function-classmatch)                   [countlinesmatching](#Function-countlinesmatching)   [escape](#Function-escape)                 [getfields](#Function-getfields)         [grep](#Function-grep) \
+                                                                                                                                                                                                
 
-  readintarray         readintlist          readrealarray   readreallist    readstringarray \
-                                                                            
+  [readintarray](#Function-readintarray)               [readintlist](#Function-readintlist)                 [readrealarray](#Function-readrealarray)   [readreallist](#Function-readreallist)   [readstringarray](#Function-readstringarray) \
+                                                                                                                                                                                                
 
-  readstringarrayidx   readstringlist       regarray        regcmp          regextract \
-                                                                            
+  [readstringarrayidx](#Function-readstringarrayidx)   [readstringlist](#Function-readstringlist)           [regarray](#Function-regarray)             [regcmp](#Function-regcmp)               [regextract](#Function-regextract) \
+                                                                                                                                                                                                
 
-  regldap              regline              reglist         splitstring \
-                                                            
-  -------------------- -------------------- --------------- --------------- -------------------
+  [regldap](#Function-regldap)                         [regline](#Function-regline)                         [reglist](#Function-reglist)               [splitstring](#Function-splitstring) \
+                                                                                                                                                       
+  ---------------------------------------------------- ---------------------------------------------------- ------------------------------------------ ---------------------------------------- ------------------------------------------------
 

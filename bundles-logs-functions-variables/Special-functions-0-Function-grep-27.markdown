@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-grep-27
+categories: [Special-functions,Function-grep-27]
 published: true
-alias: Special-functions-0-Function-grep-27.markdown.html
-tags: [xx]
+alias: Special-functions-Function-grep-27.html
+tags: [Special-functions,Function-grep-27]
 ---
 
 ### Function grep
@@ -22,28 +22,31 @@ the list named in arg2
 **Example**:\
  \
 
-    bundle agent test
+~~~~ {.verbatim}
+bundle agent test
 
-    {
-    vars:
+{
+vars:
 
-      "mylist" slist => { "One", "Two", "Three", "Four", "Five" };
+  "mylist" slist => { "One", "Two", "Three", "Four", "Five" };
 
-      "sublist" slist => grep("T.*","mylist");
+  "sublist" slist => grep("T.*","mylist");
 
-      "empty_list" slist => grep("ive","mylist");
+  "empty_list" slist => grep("ive","mylist");
 
-    reports:
+reports:
 
-     linux::
+ linux::
 
-      "Item: $(sublist)";
+  "Item: $(sublist)";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
 
 Extracts a sublist of elements matching the regular expression in arg1
 from a list variable specified in arg2. The regex is anchored (See
-Anchored vs. unanchored regular expressions).
+[Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).

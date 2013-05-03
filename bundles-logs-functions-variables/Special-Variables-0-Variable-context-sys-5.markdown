@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Variable-context-sys-5
+categories: [Special-Variables,Variable-context-sys-5]
 published: true
-alias: Special-Variables-0-Variable-context-sys-5.markdown.html
-tags: [xx]
+alias: Special-Variables-Variable-context-sys-5.html
+tags: [Special-Variables,Variable-context-sys-5]
 ---
 
 ### Variable context `sys`
@@ -15,64 +15,74 @@ System variables are derived from CFEngine's automated discovery of
 system values. They are provided as variables in order to make
 automatically adaptive rules for configuration. For example:
 
-    files:
+~~~~ {.verbatim}
+files:
 
-     any::
+ any::
 
-      "$(sys.resolv)"
+  "$(sys.resolv)"
 
-          create        => "true",
-          edit_line     => doresolv("@(this.list1)","@(this.list2)"),
-          edit_defaults => reconstruct;
+      create        => "true",
+      edit_line     => doresolv("@(this.list1)","@(this.list2)"),
+      edit_defaults => reconstruct;
+~~~~
 
 The above rule requires no class specification because the variable
 itself is class-specific.
 
--   Variable sys.arch
--   Variable sys.cdate
--   Variable sys.cf\_promises
--   Variable sys.cf\_version
--   Variable sys.class
--   Variable sys.cpus
--   Variable sys.crontab
--   Variable sys.date
--   Variable sys.doc\_root
--   Variable sys.domain
--   Variable sys.enterprise\_version
--   Variable sys.expires
--   Variable sys.exports
--   Variable sys.flavor
--   Variable sys.flavour
--   Variable sys.fqhost
--   Variable sys.fstab
--   Variable sys.hardware\_addresses
--   Variable sys.hardware\_mac[interface\_name]
--   Variable sys.host
--   Variable sys.interface
--   Variable sys.interfaces
--   Variable sys.ip\_addresses
--   Variable sys.ipv4
--   Variable sys.ipv4[interface\_name]
--   Variable sys.ipv4\_1[interface\_name]
--   Variable sys.ipv4\_2[interface\_name]
--   Variable sys.ipv4\_3[interface\_name]
--   Variable sys.license\_owner
--   Variable sys.licenses\_granted
--   Variable sys.long\_arch
--   Variable sys.maildir
--   Variable sys.nova\_version
--   Variable sys.os
--   Variable sys.ostype
--   Variable sys.policy\_hub
--   Variable sys.release
--   Variable sys.resolv
--   Variable sys.uqhost
--   Variable sys.version
--   Variable sys.windir
--   Variable sys.winprogdir
--   Variable sys.winprogdir86
--   Variable sys.winsysdir
--   Variable sys.workdir
+-   [Variable sys.arch](#Variable-sys_002earch)
+-   [Variable sys.cdate](#Variable-sys_002ecdate)
+-   [Variable sys.cf\_promises](#Variable-sys_002ecf_005fpromises)
+-   [Variable sys.cf\_version](#Variable-sys_002ecf_005fversion)
+-   [Variable sys.class](#Variable-sys_002eclass)
+-   [Variable sys.cpus](#Variable-sys_002ecpus)
+-   [Variable sys.crontab](#Variable-sys_002ecrontab)
+-   [Variable sys.date](#Variable-sys_002edate)
+-   [Variable sys.doc\_root](#Variable-sys_002edoc_005froot)
+-   [Variable sys.domain](#Variable-sys_002edomain)
+-   [Variable
+    sys.enterprise\_version](#Variable-sys_002eenterprise_005fversion)
+-   [Variable sys.expires](#Variable-sys_002eexpires)
+-   [Variable sys.exports](#Variable-sys_002eexports)
+-   [Variable sys.flavor](#Variable-sys_002eflavor)
+-   [Variable sys.flavour](#Variable-sys_002eflavour)
+-   [Variable sys.fqhost](#Variable-sys_002efqhost)
+-   [Variable sys.fstab](#Variable-sys_002efstab)
+-   [Variable
+    sys.hardware\_addresses](#Variable-sys_002ehardware_005faddresses)
+-   [Variable
+    sys.hardware\_mac[interface\_name]](#Variable-sys_002ehardware_005fmac_005binterface_005fname_005d)
+-   [Variable sys.host](#Variable-sys_002ehost)
+-   [Variable sys.interface](#Variable-sys_002einterface)
+-   [Variable sys.interfaces](#Variable-sys_002einterfaces)
+-   [Variable sys.ip\_addresses](#Variable-sys_002eip_005faddresses)
+-   [Variable sys.ipv4](#Variable-sys_002eipv4)
+-   [Variable
+    sys.ipv4[interface\_name]](#Variable-sys_002eipv4_005binterface_005fname_005d)
+-   [Variable
+    sys.ipv4\_1[interface\_name]](#Variable-sys_002eipv4_005f1_005binterface_005fname_005d)
+-   [Variable
+    sys.ipv4\_2[interface\_name]](#Variable-sys_002eipv4_005f2_005binterface_005fname_005d)
+-   [Variable
+    sys.ipv4\_3[interface\_name]](#Variable-sys_002eipv4_005f3_005binterface_005fname_005d)
+-   [Variable sys.license\_owner](#Variable-sys_002elicense_005fowner)
+-   [Variable
+    sys.licenses\_granted](#Variable-sys_002elicenses_005fgranted)
+-   [Variable sys.long\_arch](#Variable-sys_002elong_005farch)
+-   [Variable sys.maildir](#Variable-sys_002emaildir)
+-   [Variable sys.nova\_version](#Variable-sys_002enova_005fversion)
+-   [Variable sys.os](#Variable-sys_002eos)
+-   [Variable sys.ostype](#Variable-sys_002eostype)
+-   [Variable sys.policy\_hub](#Variable-sys_002epolicy_005fhub)
+-   [Variable sys.release](#Variable-sys_002erelease)
+-   [Variable sys.resolv](#Variable-sys_002eresolv)
+-   [Variable sys.uqhost](#Variable-sys_002euqhost)
+-   [Variable sys.version](#Variable-sys_002eversion)
+-   [Variable sys.windir](#Variable-sys_002ewindir)
+-   [Variable sys.winprogdir](#Variable-sys_002ewinprogdir)
+-   [Variable sys.winprogdir86](#Variable-sys_002ewinprogdir86)
+-   [Variable sys.winsysdir](#Variable-sys_002ewinsysdir)
+-   [Variable sys.workdir](#Variable-sys_002eworkdir)
 
 #### Variable sys.arch
 
@@ -80,7 +90,9 @@ itself is class-specific.
 
 The variable gives the kernel's short architecture description.
 
-    # arch = x86_64
+~~~~ {.verbatim}
+# arch = x86_64
+~~~~
 
 #### Variable sys.cdate
 
@@ -88,7 +100,9 @@ The variable gives the kernel's short architecture description.
 
 The date of the system in canonical form, i.e. in the form of a class.
 
-    # cdate = Sun_Dec__7_10_39_53_2008_
+~~~~ {.verbatim}
+# cdate = Sun_Dec__7_10_39_53_2008_
+~~~~
 
 #### Variable sys.cf\_promises
 
@@ -97,9 +111,11 @@ The date of the system in canonical form, i.e. in the form of a class.
 A variable containing the path to the CFEngine syntax analyxer
 `cf-promises` on the platform you are using.
 
-    classes:
+~~~~ {.verbatim}
+classes:
 
-      "syntax_ok" expression => returnszero("$(sys.cf_promises)");
+  "syntax_ok" expression => returnszero("$(sys.cf_promises)");
+~~~~
 
 #### Variable sys.cf\_version
 
@@ -108,7 +124,9 @@ A variable containing the path to the CFEngine syntax analyxer
 The variable gives the version of the running CFEngine Community
 Edition.
 
-    # cf_version = 3.0.5 
+~~~~ {.verbatim}
+# cf_version = 3.0.5 
+~~~~
 
 #### Variable sys.class
 
@@ -117,7 +135,9 @@ Edition.
 This variable contains the name of the hard-class category for this host
 (i.e. its top level operating system type classification).
 
-    # class = linux
+~~~~ {.verbatim}
+# class = linux
+~~~~
 
 #### Variable sys.cpus
 
@@ -131,14 +151,16 @@ physical, cores. In addition, on a single-core system the class "1\_cpu"
 is set, and on multi-core systems the class "*n*\_cpus" is set, where
 "*n*" is the number of cores identified.
 
-    reports:
+~~~~ {.verbatim}
+reports:
 
-     cfengine_3::
+ cfengine_3::
 
-       "Number of CPUS = $(sys.cpus)";
+   "Number of CPUS = $(sys.cpus)";
 
-     8_cpus::
-       "This system has 8 processors.";
+ 8_cpus::
+   "This system has 8 processors.";
+~~~~
 
 #### Variable sys.crontab
 
@@ -147,7 +169,9 @@ is set, and on multi-core systems the class "*n*\_cpus" is set, where
 The variable gives the location of the current users's master crontab
 directory.
 
-    # crontab = /var/spool/crontas/root 
+~~~~ {.verbatim}
+# crontab = /var/spool/crontas/root 
+~~~~
 
 #### Variable sys.date
 
@@ -155,7 +179,9 @@ directory.
 
 The date of the system as a text string.
 
-    # date = Sun Dec  7 10:39:53 2008
+~~~~ {.verbatim}
+# date = Sun Dec  7 10:39:53 2008
+~~~~
 
 #### Variable sys.doc\_root
 
@@ -175,8 +201,10 @@ be possible to derive the domain name from its DNS regisration, but in
 general there is no way to discover this value automatically. The
 `common control` body permits the ultimate specification of this value.
 
-    # domain = example.org
-     
+~~~~ {.verbatim}
+# domain = example.org
+ 
+~~~~
 
 #### Variable sys.enterprise\_version
 
@@ -187,17 +215,21 @@ general there is no way to discover this value automatically. The
 The variable gives the version of the running CFEngine Enterprise
 Edition.
 
-    # enterprise_version = 3.0.0
+~~~~ {.verbatim}
+# enterprise_version = 3.0.0
+~~~~
 
 #### Variable sys.expires
 
 \
 
-    reports:
+~~~~ {.verbatim}
+reports:
 
-     nova::
+ nova::
 
-      "License expires $(sys.expires)";
+  "License expires $(sys.expires)";
+~~~~
 
 #### Variable sys.exports
 
@@ -205,8 +237,10 @@ Edition.
 
 The location of the system NFS exports file.
 
-    # exports = /etc/exports
-    # exports = /etc/dfs/dfstab
+~~~~ {.verbatim}
+# exports = /etc/exports
+# exports = /etc/dfs/dfstab
+~~~~
 
 #### Variable sys.flavor
 
@@ -243,7 +277,9 @@ This is a synonym for `$(sys.flavor)`.
 The fully qualified name of the host. In order to compute this value
 properly, the domain name must be defined.
 
-    # fqhost = host.example.org
+~~~~ {.verbatim}
+# fqhost = host.example.org
+~~~~
 
 #### Variable sys.fstab
 
@@ -251,7 +287,9 @@ properly, the domain name must be defined.
 
 The location of the system filesystem (mount) table.
 
-    # fstab = /etc/fstab
+~~~~ {.verbatim}
+# fstab = /etc/fstab
+~~~~
 
 #### Variable sys.hardware\_addresses
 
@@ -270,11 +308,13 @@ system interfaces.
 
 This contains the MAC address of the named interface. For example:
 
-    reports:
+~~~~ {.verbatim}
+reports:
 
-      linux::
+  linux::
 
-        "Tell me $(harware_mac[eth0])";
+    "Tell me $(harware_mac[eth0])";
+~~~~
 
 #### Variable sys.host
 
@@ -283,7 +323,9 @@ This contains the MAC address of the named interface. For example:
 The name of the current host, according to the kernel. It is undefined
 whether this is qualified or unqualified with a domain name.
 
-    # host = myhost
+~~~~ {.verbatim}
+# host = myhost
+~~~~
 
 #### Variable sys.interface
 
@@ -291,7 +333,9 @@ whether this is qualified or unqualified with a domain name.
 
 The assumed (default) name of the main system interface on this host.
 
-    # interface = eth0
+~~~~ {.verbatim}
+# interface = eth0
+~~~~
 
 #### Variable sys.interfaces
 
@@ -306,24 +350,26 @@ variables report to a Mission Portal in commercial editions of CFEngine.
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.
 
-    bundle agent test
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent test
+{
+vars:
 
-     # To iterate, we need a local copy
+ # To iterate, we need a local copy
 
-     "i1" slist => { @(sys.ip_addresses)} ;
-     "i2" slist => { @(sys.interfaces)} ;
+ "i1" slist => { @(sys.ip_addresses)} ;
+ "i2" slist => { @(sys.interfaces)} ;
 
-    reports:
+reports:
 
-      cfengine::
+  cfengine::
 
-        "Addresses: $(i1)";
-        "Interfaces: $(i2)";
-        "Addresses of the interfaces: $(sys.ipv4[$(i2)])";
+    "Addresses: $(i1)";
+    "Interfaces: $(i2)";
+    "Addresses of the interfaces: $(sys.ipv4[$(i2)])";
 
-    }
+}
+~~~~
 
 #### Variable sys.ip\_addresses
 
@@ -338,24 +384,26 @@ Mission Portal in commercial editions of CFEngine.
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.
 
-    bundle agent test
-    {
-    vars:
+~~~~ {.verbatim}
+bundle agent test
+{
+vars:
 
-     # To iterate, we need a local copy
+ # To iterate, we need a local copy
 
-     "i1" slist => { @(sys.ip_addresses)} ;
-     "i2" slist => { @(sys.interfaces)} ;
+ "i1" slist => { @(sys.ip_addresses)} ;
+ "i2" slist => { @(sys.interfaces)} ;
 
-    reports:
+reports:
 
-      cfengine::
+  cfengine::
 
-        "Addresses: $(i1)";
-        "Interfaces: $(i2)";
-        "Addresses of the interfaces: $(sys.ipv4[$(i2)])";
+    "Addresses: $(i1)";
+    "Interfaces: $(i2)";
+    "Addresses of the interfaces: $(sys.ipv4[$(i2)])";
 
-    }
+}
+~~~~
 
 #### Variable sys.ipv4
 
@@ -368,9 +416,10 @@ All four octets of the IPv4 address of the first system interface.
 If your system has a single ethernet interface, \$(sys.ipv4) will
 contain your IPv4 address. However, if your system has multiple
 interfaces, then \$(sys.ipv4) will simply be the IPv4 address of the
-first interface in the list that has an assigned address, See Variable
-sys.ipv4[interface\_name], for details on obtaining the IPv4 addresses
-of all interfaces on a system.
+first interface in the list that has an assigned address, See [Variable
+sys.ipv4[interface\_name]](#Variable-sys_002eipv4_005binterface_005fname_005d),
+for details on obtaining the IPv4 addresses of all interfaces on a
+system.
 
 #### Variable sys.ipv4[interface\_name]
 
@@ -379,19 +428,21 @@ of all interfaces on a system.
 The full IPv4 address of the system interface named as the associative
 array index, e.g. \$(ipv4[le0]) or \$(ipv4[xr1]).
 
-    # If the IPv4 address on the interfaces are
-    #        le0 = 192.168.1.101
-    #    xr1 = 10.12.7.254
-    #
-    # Then the octets of all interfaces are accessible as an associative array
-    # ipv4_1[le0] = 192
-    # ipv4_2[le0] = 192.168
-    # ipv4_3[le0] = 192.168.1
-    #   ipv4[le0] = 192.168.1.101
-    # ipv4_1[xr1] = 10
-    # ipv4_2[xr1] = 10.12
-    # ipv4_3[xr1] = 10.12.7
-    #   ipv4[xr1] = 10.12.7.254
+~~~~ {.verbatim}
+# If the IPv4 address on the interfaces are
+#        le0 = 192.168.1.101
+#    xr1 = 10.12.7.254
+#
+# Then the octets of all interfaces are accessible as an associative array
+# ipv4_1[le0] = 192
+# ipv4_2[le0] = 192.168
+# ipv4_3[le0] = 192.168.1
+#   ipv4[le0] = 192.168.1.101
+# ipv4_1[xr1] = 10
+# ipv4_2[xr1] = 10.12
+# ipv4_3[xr1] = 10.12.7
+#   ipv4[xr1] = 10.12.7.254
+~~~~
 
 **Note**:\
 
@@ -405,7 +456,8 @@ are marked as "up" and have an IP address will be listed.
 
 The first octet of the IPv4 address of the system interface named as the
 associative array index, e.g. \$(ipv4\_1[le0]) or \$(ipv4\_1[xr1]) (See
-Variable sys.ipv4[interface\_name]).
+[Variable
+sys.ipv4[interface\_name]](#Variable-sys_002eipv4_005binterface_005fname_005d)).
 
 #### Variable sys.ipv4\_2[interface\_name]
 
@@ -413,7 +465,8 @@ Variable sys.ipv4[interface\_name]).
 
 The first two octets of the IPv4 address of the system interface named
 as the associative array index, e.g. \$(ipv4\_2[le0]) or
-\$(ipv4\_2[xr1]) (See Variable sys.ipv4[interface\_name]).
+\$(ipv4\_2[xr1]) (See [Variable
+sys.ipv4[interface\_name]](#Variable-sys_002eipv4_005binterface_005fname_005d)).
 
 #### Variable sys.ipv4\_3[interface\_name]
 
@@ -421,7 +474,8 @@ as the associative array index, e.g. \$(ipv4\_2[le0]) or
 
 The first three octets of the IPv4 address of the system interface named
 as the associative array index, e.g. \$(ipv4\_3[le0]) or
-\$(ipv4\_3[xr1]) (See Variable sys.ipv4[interface\_name]).
+\$(ipv4\_3[xr1]) (See [Variable
+sys.ipv4[interface\_name]](#Variable-sys_002eipv4_005binterface_005fname_005d)).
 
 #### Variable sys.license\_owner
 
@@ -429,11 +483,13 @@ as the associative array index, e.g. \$(ipv4\_3[le0]) or
 
 *History*: Was introduced in version 3.1.4,Nova 2.0.2 (2011)
 
-    reports:
+~~~~ {.verbatim}
+reports:
 
-     nova::
+ nova::
 
-      "This version of CFEngine is licensed to $(sys.license_owner)";
+  "This version of CFEngine is licensed to $(sys.license_owner)";
+~~~~
 
 #### Variable sys.licenses\_granted
 
@@ -441,11 +497,13 @@ as the associative array index, e.g. \$(ipv4\_3[le0]) or
 
 *History*: Was introduced in version 3.1.4,Nova 2.0.2 (2011)
 
-    reports:
+~~~~ {.verbatim}
+reports:
 
-     nova::
+ nova::
 
-      "There are $(sys.licenses_granted) licenses granted for use";
+  "There are $(sys.licenses_granted) licenses granted for use";
+~~~~
 
 #### Variable sys.long\_arch
 
@@ -454,7 +512,9 @@ as the associative array index, e.g. \$(ipv4\_3[le0]) or
 The long architecture name for this system kernel. This name is
 sometimes quite unwieldy but can be useful for logging purposes.
 
-    # long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200
+~~~~ {.verbatim}
+# long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200
+~~~~
 
 #### Variable sys.maildir
 
@@ -462,7 +522,9 @@ sometimes quite unwieldy but can be useful for logging purposes.
 
 The name of the system email spool directory.
 
-    # maildir = /var/spool/mail
+~~~~ {.verbatim}
+# maildir = /var/spool/mail
+~~~~
 
 #### Variable sys.nova\_version
 
@@ -470,7 +532,9 @@ The name of the system email spool directory.
 
 The variable gives the version of the running CFEngine Nova Edition.
 
-    # nova_version = 1.1.3
+~~~~ {.verbatim}
+# nova_version = 1.1.3
+~~~~
 
 #### Variable sys.os
 
@@ -478,7 +542,9 @@ The variable gives the version of the running CFEngine Nova Edition.
 
 The name of the operating system according to the kernel.
 
-    # os = linux
+~~~~ {.verbatim}
+# os = linux
+~~~~
 
 #### Variable sys.ostype
 
@@ -486,7 +552,9 @@ The name of the operating system according to the kernel.
 
 Another name for the operating system.
 
-    # ostype = linux_x86_64
+~~~~ {.verbatim}
+# ostype = linux_x86_64
+~~~~
 
 #### Variable sys.policy\_hub
 
@@ -498,9 +566,11 @@ undefined.
 **History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010).
 Available in Community since 3.2.0
 
-    reports:
+~~~~ {.verbatim}
+reports:
 
-     "Policy hub is $(sys.policy_hub)";
+ "Policy hub is $(sys.policy_hub)";
+~~~~
 
 #### Variable sys.release
 
@@ -508,7 +578,9 @@ Available in Community since 3.2.0
 
 The kernel release of the operating system.
 
-    # release = 2.6.22.19-0.1-default
+~~~~ {.verbatim}
+# release = 2.6.22.19-0.1-default
+~~~~
 
 #### Variable sys.resolv
 
@@ -516,7 +588,9 @@ The kernel release of the operating system.
 
 The location of the system resolver file.
 
-    # resolv = /etc/resolv.conf
+~~~~ {.verbatim}
+# resolv = /etc/resolv.conf
+~~~~
 
 #### Variable sys.uqhost
 
@@ -524,7 +598,9 @@ The location of the system resolver file.
 
 The unqualified name of the current host. See also `sys.fqhost`.
 
-    # uqhost = myhost
+~~~~ {.verbatim}
+# uqhost = myhost
+~~~~
 
 #### Variable sys.version
 
@@ -533,7 +609,9 @@ The unqualified name of the current host. See also `sys.fqhost`.
 The version of the running kernel. On Linux, this corresponds to the
 ouput of `uname -v`.
 
-    # version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011
+~~~~ {.verbatim}
+# version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011
+~~~~
 
 *History*: Was introduced in version 3.1.4,Nova 2.0.2 (2011)
 
@@ -544,7 +622,9 @@ ouput of `uname -v`.
 On the Windows version of CFEngine Nova, this is the path to the Windows
 directory of this system.
 
-    # windir = C:\WINDOWS
+~~~~ {.verbatim}
+# windir = C:\WINDOWS
+~~~~
 
 #### Variable sys.winprogdir
 
@@ -553,7 +633,9 @@ directory of this system.
 On the Windows version of CFEngine Nova, this is the path to the program
 files directory of the system.
 
-    # winprogdir = C:\Program Files
+~~~~ {.verbatim}
+# winprogdir = C:\Program Files
+~~~~
 
 #### Variable sys.winprogdir86
 
@@ -562,7 +644,9 @@ files directory of the system.
 On 64 bit Windows versions of CFEngine Nova, this is the path to the 32
 bit (x86) program files directory of the system.
 
-    # winprogdir86 = C:\Program Files (x86)
+~~~~ {.verbatim}
+# winprogdir86 = C:\Program Files (x86)
+~~~~
 
 #### Variable sys.winsysdir
 
@@ -571,7 +655,9 @@ bit (x86) program files directory of the system.
 On the Windows version of CFEngine Nova, this is the path to the Windows
 system directory.
 
-    # winsysdir = C:\WINDOWS\system32
+~~~~ {.verbatim}
+# winsysdir = C:\WINDOWS\system32
+~~~~
 
 #### Variable sys.workdir
 
@@ -580,13 +666,19 @@ system directory.
 The location of the CFEngine work directory and cache. For the system
 privileged user this is normally:
 
-    # workdir = /var/cfengine
+~~~~ {.verbatim}
+# workdir = /var/cfengine
+~~~~
 
 For non-privileged users it is in the user's home directory:
 
-    # workdir = /home/user/.cfagent
+~~~~ {.verbatim}
+# workdir = /home/user/.cfagent
+~~~~
 
 On the Windows version of CFEngine Nova, it is normally under program
 files (the directory name may change with the language of Windows):
 
-    # workdir = C:\Program Files\CFEngine
+~~~~ {.verbatim}
+# workdir = C:\Program Files\CFEngine
+~~~~

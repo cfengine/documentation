@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-splayclass-90
+categories: [Special-functions,Function-splayclass-90]
 published: true
-alias: Special-functions-0-Function-splayclass-90.markdown.html
-tags: [xx]
+alias: Special-functions-Function-splayclass-90.html
+tags: [Special-functions,Function-splayclass-90]
 ---
 
 ### Function splayclass
@@ -21,28 +21,30 @@ policy in arg2
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "my_result" expression => splayclass("$(sys.host)$(sys.ipv4)","daily");
+  "my_result" expression => splayclass("$(sys.host)$(sys.ipv4)","daily");
 
-    reports:
+reports:
 
-      my_result::
+  my_result::
 
-        "Load balanced class activated";
+    "Load balanced class activated";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \

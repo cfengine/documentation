@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: insert_005ftext-in-edit_005fxml-promises-18
+categories: [Bundles-for-agent,insert_005ftext-in-edit_005fxml-promises-18]
 published: true
-alias: Bundles-for-agent-0-insert_005ftext-in-edit_005fxml-promises-18.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-insert_005ftext-in-edit_005fxml-promises-18.html
+tags: [Bundles-for-agent,insert_005ftext-in-edit_005fxml-promises-18]
 ---
 
 ### `insert_text` promises in edit\_xml
@@ -21,13 +21,15 @@ literal string of text.
 
 \
 
-    bundle edit_xml example
-      {
-      insert_text:
-        "text content to be appended to existing text, including whitespace, within specified node"
+~~~~ {.verbatim}
+bundle edit_xml example
+  {
+  insert_text:
+    "text content to be appended to existing text, including whitespace, within specified node"
 
-        select_xpath => "/Server/Service/Engine/Host/Alias";
-      }
+    select_xpath => "/Server/Service/Engine/Host/Alias";
+  }
+~~~~
 
 \
 

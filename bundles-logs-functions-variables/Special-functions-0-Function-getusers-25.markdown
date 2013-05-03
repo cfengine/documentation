@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-getusers-25
+categories: [Special-functions,Function-getusers-25]
 published: true
-alias: Special-functions-0-Function-getusers-25.markdown.html
-tags: [xx]
+alias: Special-functions-Function-getusers-25.html
+tags: [Special-functions,Function-getusers-25]
 ---
 
 ### Function getusers
@@ -21,14 +21,16 @@ arg1 and uids in arg2
 **Example**:\
  \
 
-    vars:
-      "allusers" slist => getusers("zenoss,mysql,at","12,0");
+~~~~ {.verbatim}
+vars:
+  "allusers" slist => getusers("zenoss,mysql,at","12,0");
 
-    reports:
+reports:
 
-     linux::
+ linux::
 
-      "Found user $(allusers)";
+  "Found user $(allusers)";
+~~~~
 
 **Notes**:\
  \

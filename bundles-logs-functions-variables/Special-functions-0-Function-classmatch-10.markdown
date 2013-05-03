@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: Function-classmatch-10
+categories: [Special-functions,Function-classmatch-10]
 published: true
-alias: Special-functions-0-Function-classmatch-10.markdown.html
-tags: [xx]
+alias: Special-functions-Function-classmatch-10.html
+tags: [Special-functions,Function-classmatch-10]
 ---
 
 ### Function classmatch
@@ -19,28 +19,30 @@ True if the regular expression matches any currently defined class
 **Example**:\
  \
 
-    body common control
+~~~~ {.verbatim}
+body common control
 
-    {
-    bundlesequence  => { "example" };
-    }
+{
+bundlesequence  => { "example" };
+}
 
-    ###########################################################
+###########################################################
 
-    bundle agent example
+bundle agent example
 
-    {     
-    classes:
+{     
+classes:
 
-      "do_it" and => { classmatch(".*_cfengine_com"), "linux" }; 
+  "do_it" and => { classmatch(".*_cfengine_com"), "linux" }; 
 
-    reports:
+reports:
 
-      do_it::
+  do_it::
 
-        "Host matches pattern";
+    "Host matches pattern";
 
-    }
+}
+~~~~
 
 **Notes**:\
  \
@@ -49,4 +51,5 @@ The regular expression is matched against the current list of defined
 classes. The regular expression must match a complete class for the
 expression to be true (i.e. the regex is anchored).
 
-See: Anchored vs. unanchored regular expressions.
+See: [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions).

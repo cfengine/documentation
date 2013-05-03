@@ -1,10 +1,10 @@
 ---
 layout: default
-title: xxxx
-categories: [xxx]
+title: delete_005flines-in-edit_005fline-promises-6
+categories: [Bundles-for-agent,delete_005flines-in-edit_005fline-promises-6]
 published: true
-alias: Bundles-for-agent-0-delete_005flines-in-edit_005fline-promises-6.markdown.html
-tags: [xx]
+alias: Bundles-for-agent-delete_005flines-in-edit_005fline-promises-6.html
+tags: [Bundles-for-agent,delete_005flines-in-edit_005fline-promises-6]
 ---
 
 ### `delete_lines` promises in edit\_line
@@ -19,13 +19,15 @@ with `not_matching`).
 
 \
 
-    bundle edit_line example
-      {
-      delete_lines:
+~~~~ {.verbatim}
+bundle edit_line example
+  {
+  delete_lines:
 
-        "olduser:.*";
+    "olduser:.*";
 
-      }
+  }
+~~~~
 
 Note that typically, only a single line is specified in each
 `delete_lines` promise. However, you may of course have multiple
@@ -44,8 +46,10 @@ of the lines must exist as a contiguous block in order to be deletes.
 This gives preserve\_block semantics to any multiline `delete_lines`
 promise.
 
--   delete\_select in delete\_lines
--   not\_matching in delete\_lines
+-   [delete\_select in
+    delete\_lines](#delete_005fselect-in-delete_005flines)
+-   [not\_matching in
+    delete\_lines](#not_005fmatching-in-delete_005flines)
 
 #### `delete_select` (body template)
 
@@ -62,12 +66,14 @@ promise.
 **Example**:\
  \
 
-         
-         body delete_select example(s)
-         {
-         delete_if_startwith_from_list => { @(s) };
-         }
-         
+~~~~ {.verbatim}
+     
+     body delete_select example(s)
+     {
+     delete_if_startwith_from_list => { @(s) };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -77,29 +83,33 @@ that this determination is made only on promised lines (that is, this
 attribute modifies the selection criteria, it does not make the initial
 selection). Therefore, if the file contains the following lines:
 
-         start alpha igniter
-         start beta igniter
-         init alpha burner
-         init beta burner
-         stop beta igniter
-         stop alpha igniter
-         stop alpha burner
+~~~~ {.verbatim}
+     start alpha igniter
+     start beta igniter
+     init alpha burner
+     init beta burner
+     stop beta igniter
+     stop alpha igniter
+     stop alpha burner
+~~~~
 
 Then the following promise initially selects the four lines containing
 alpha, but is moderated by the `delete_select` attribute. Thus, the
 promise will delete only the first and third lines of the file:
 
-         bundle edit_line alpha
-         {
-         delete_lines:
-             ".*alpha.*"
-            delete_select => starters;
-         }
-         
-         body delete_select starters
-         {
-             delete_if_startwith_from_list => { "begin", "start", "init" };
-         }
+~~~~ {.verbatim}
+     bundle edit_line alpha
+     {
+     delete_lines:
+         ".*alpha.*"
+        delete_select => starters;
+     }
+     
+     body delete_select starters
+     {
+         delete_if_startwith_from_list => { "begin", "start", "init" };
+     }
+~~~~
 
 \
 
@@ -114,12 +124,14 @@ promise will delete only the first and third lines of the file:
 **Example**:\
  \
 
-         
-         body delete_select example(s)
-         {
-         delete_if_not_startwith_from_list => { @(s) };
-         }
-         
+~~~~ {.verbatim}
+     
+     body delete_select example(s)
+     {
+     delete_if_not_startwith_from_list => { @(s) };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -140,19 +152,22 @@ not make the initial selection. \
 **Example**:\
  \
 
-         
-         body delete_select example(s)
-         {
-         delete_if_match_from_list => { @(s) };
-         }
-         
+~~~~ {.verbatim}
+     
+     body delete_select example(s)
+     {
+     delete_if_match_from_list => { @(s) };
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 Delete lines from a file if the lines *completely* match any of the
 regular expressions listed. In other words, the regular expression is
-anchored (see Anchored vs. unanchored regular expressions).
+anchored (see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 Note that this attribute modifies the selection criteria, it does not
 make the initial selection, and the match determination is made only on
@@ -169,19 +184,22 @@ promised lines. \
 **Example**:\
  \
 
-         
-         body delete_select example(s)
-         {
-         delete_if_not_match_from_list => { @(s) };
-         }
-         
+~~~~ {.verbatim}
+     
+     body delete_select example(s)
+     {
+     delete_if_not_match_from_list => { @(s) };
+     }
+     
+~~~~
 
 **Notes**:\
  \
 
 Delete lines from a file unless the lines *completely* match any of the
 regular expressions listed. In other words, the regular expressions are
-anchored (see Anchored vs. unanchored regular expressions).
+anchored (see [Anchored vs. unanchored regular
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 Note that this attribute modifies the selection criteria, it does not
 make the initial selection, and the match determination is made only on
@@ -198,12 +216,14 @@ promised lines. \
 **Example**:\
  \
 
-         
-         body delete_select example(s)
-         {
-         delete_if_contains_from_list => { @(s) };
-         }
-         
+~~~~ {.verbatim}
+     
+     body delete_select example(s)
+     {
+     delete_if_contains_from_list => { @(s) };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -226,12 +246,14 @@ fragment
 **Example**:\
  \
 
-         
-         body delete_select discard(s)
-         {
-         delete_if_not_contains_from_list => { "substring1", "substring2" };
-         }
-         
+~~~~ {.verbatim}
+     
+     body delete_select discard(s)
+     {
+     delete_if_not_contains_from_list => { "substring1", "substring2" };
+     }
+     
+~~~~
 
 **Notes**:\
  \
@@ -248,12 +270,14 @@ promised lines.
 
 **Allowed input range**: \
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+~~~~ {.example}
+               true
+               false
+               yes
+               no
+               on
+               off
+~~~~
 
 **Default value:** false
 
@@ -262,11 +286,13 @@ promised lines.
 **Example**:\
  \
 
-    delete_lines:
+~~~~ {.verbatim}
+delete_lines:
 
-      # edit /etc/passwd - account names that are not "mark" or "root"
+  # edit /etc/passwd - account names that are not "mark" or "root"
 
-      "(mark|root):.*" not_matching => "true";
+  "(mark|root):.*" not_matching => "true";
+~~~~
 
 **Notes**:\
  \
