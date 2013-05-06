@@ -23,13 +23,30 @@ Generate a random integer between the given limits
  \
 
 ~~~~ {.verbatim}
-vars:
+bundle agent randomint_example
+{
+  vars:
+      "low"    string => "4";
+      "high"   string => "60";
+      "random1"    int => randomint("$(low)", "$(high)");
+      "random2"    int => randomint("$(low)", "$(random1)");
 
- "ran"    int => randomint(4,88);
+  reports:
+    cfengine::
+      "Random Number: $(random)";
+} 
+
+$ cf-agent -Kf ./randomint.cf -b randomint_example 
+R: Random Numbers: 24, 10
 ~~~~
+
 
 **Notes**:\
  \
 
 The limits must be integer values and the resulting numbers are based on
 the entropy of the md5 algorithm.
+
+It would not be convergent to recalculate a random integer on each pass, each
+instance of randomint will only be executed once.
+
