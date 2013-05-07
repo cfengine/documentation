@@ -9,7 +9,7 @@ tags: [Special-Variables,Variable-context-const]
 
 ### Variable context `const`
 
-\
+  
 
 CFEngine defines a number of variables for embedding unprintable values
 or values with special meanings in strings.
@@ -22,9 +22,9 @@ or values with special meanings in strings.
 
 #### Variable const.dollar
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 reports:
 
   some::
@@ -38,9 +38,9 @@ reports:
 
 #### Variable const.endl
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 reports:
 
  cfengine_3::
@@ -51,9 +51,9 @@ reports:
 
 #### Variable const.n
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 reports:
 
  cfengine_3::
@@ -64,9 +64,9 @@ reports:
 
 #### Variable const.r
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 reports:
 
  cfengine_3::
@@ -76,9 +76,9 @@ reports:
 
 #### Variable const.t
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 reports:
 
  cfengine_3::

@@ -9,7 +9,7 @@ tags: [Bundles-for-server,access-in-server-promises]
 
 ### `access` promises in server
 
-\
+  
 
 Access promises are conditional promises made by the server about file
 objects. The promise has two consequences. For file copy requests, the
@@ -30,7 +30,7 @@ first-come-first-served basis. Thus file objects (promisers) should be
 listed in order of most-specific file first. In this way, specific
 promises will override less specific ones.
 
-~~~~ {.smallexample}
+~~~~
      
       access:
      
@@ -41,11 +41,11 @@ promises will override less specific ones.
      
 ~~~~
 
-\
+  
 
 Example:
 
-~~~~ {.verbatim}
+~~~~
 #########################################################
 # Server config
 #########################################################
@@ -110,7 +110,7 @@ access:
 }
 ~~~~
 
-\
+  
 
 Entries may be literal addresses of IPv4 or IPv6, or any name registered
 in the POSIX `gethostbyname` service.
@@ -130,10 +130,10 @@ in the POSIX `gethostbyname` service.
 **Synopsis**: List of host names or IP addresses to grant access to file
 objects
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 access:
 
   "/home/mark/LapTop"
@@ -141,8 +141,8 @@ access:
     admit   => { "127.0.0.1", "192.168.0.1/24", ".*\.domain\.tld"  };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Admit promises grant access to file objects on the server. Arguments may
 be IP addresses or hostnames, provided DNS name resolution is active. In
@@ -161,10 +161,10 @@ expressions to match the IP address or name of the connecting host.
 **Synopsis**: List of host names or IP addresses to deny access to file
 objects
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle server access_rules()
 
 {
@@ -177,8 +177,8 @@ access:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Denial is for special exceptions. A better strategy is always to grant
 on a need to know basis. A security policy based on exceptions is a weak
@@ -196,10 +196,10 @@ list, as non-specific matches are too greedy for denial.
 **Synopsis**: List of host names or IP addresses to grant full
 read-privilege on the server
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 access:
 
  "/home"
@@ -212,8 +212,8 @@ access:
      maproot => { "backup_host.example.org" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Normally users authenticated by the server are granted access only to
 files owned by them and no-one else. Even if the `cf-serverd` process
@@ -230,9 +230,9 @@ files if the connecting user does not own the file on the server.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                true
                false
                yes
@@ -246,10 +246,10 @@ files if the connecting user does not own the file on the server.
 **Synopsis**: true/false whether the current file access promise is
 conditional on the connection from the client being encrypted
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 access:
 
    "/path/file"
@@ -258,8 +258,8 @@ access:
     ifencrypted => "true";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
@@ -268,9 +268,9 @@ connection is encrypted.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                path
                literal
                context
@@ -281,10 +281,10 @@ connection is encrypted.
 **Synopsis**: The type of object being granted access (the default
 grants access to files)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 
 bundle server access_rules()
 
@@ -325,8 +325,8 @@ access:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 By default, access to resources granted by the server are files.
 However, sometimes it is useful to cache `literal` strings, hints and
@@ -351,7 +351,7 @@ host (which for some reason is not available directly through policy on
 the client, e.g. because they have different policies), then you could
 use the following construction:
 
-~~~~ {.verbatim}
+~~~~
 access:
 
   "$(variable_name)"

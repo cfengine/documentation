@@ -11,16 +11,16 @@ tags: [Special-functions,Function-hubknowledge]
 
 **Synopsis**: hubknowledge(arg1) returns type **string**
 
-\
+  
  *arg1* : Variable identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Read global knowledge from the hub host by id (commercial extension)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
   guard::
@@ -28,8 +28,8 @@ vars:
    "global_number" string => hubknowledge("number_variable");
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This function is only available in commercial releases of CFEngine. It
 is intended for use in distributed orchestration. It is recommended that

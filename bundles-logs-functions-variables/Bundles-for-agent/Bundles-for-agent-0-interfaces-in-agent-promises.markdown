@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,interfaces-in-agent-promises]
 
 ### `interfaces` promises in agent
 
-\
+  
 
 Interfaces promises describe the configurable aspects relating to
 network interfaces. Most workstations and servers have only a single
@@ -19,7 +19,7 @@ identity, assumed netmask and routing policy in the case of multi-homed
 hosts. For virtual machines and hosts, the list of interfaces can be
 quite large.
 
-~~~~ {.smallexample}
+~~~~
      
       interfaces:
      
@@ -30,11 +30,11 @@ quite large.
      
 ~~~~
 
-\
+  
 
 For future use.
 
-\
+  
 
 For future use.
 
@@ -52,10 +52,10 @@ For future use.
 
 **Synopsis**: IPv4 address for the interface
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body tcp_ip example
      {
@@ -64,12 +64,12 @@ For future use.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The address will be checked and if necessary set. Today few hosts will
 be managed in this way. Address management will be handled by other
-services like DHCP. \
+services like DHCP.   
 
 `ipv4_netmask`
 
@@ -79,10 +79,10 @@ services like DHCP. \
 
 **Synopsis**: Netmask for the interface
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body tcp_ip example
      {
@@ -91,11 +91,11 @@ services like DHCP. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 In many cases the CIDR form of address will show the netmask as /23, but
-this offers and \`old style' alternative. \
+this offers and \`old style' alternative.   
 
 `ipv6_address`
 
@@ -105,10 +105,10 @@ this offers and \`old style' alternative. \
 
 **Synopsis**: IPv6 address for the interface
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
        "eth0"
      
@@ -116,5 +116,5 @@ this offers and \`old style' alternative. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   

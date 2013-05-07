@@ -11,25 +11,25 @@ tags: [Special-functions,Function-remotescalar]
 
 **Synopsis**: remotescalar(arg1,arg2,arg3) returns type **string**
 
-\
+  
  *arg1* : Variable identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
- *arg2* : Hostname or IP address of server, *in the range* .\* \
- *arg3* : Use enryption, *in the range* true,false,yes,no,on,off \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+ *arg2* : Hostname or IP address of server, *in the range* .\*   
+ *arg3* : Use enryption, *in the range* true,false,yes,no,on,off   
 
 Read a scalar value from a remote cfengine server
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
  "remote" string => remotescalar("test_scalar","127.0.0.1","yes");
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  The remote system's cf-serverd must accept the query for the requested
 variable from the host that is requesting it. An example of this
 configuration follows.
@@ -41,7 +41,7 @@ returned preferentially. If no such variable is found, then the server
 will look for a literal string in a server bundle with a handle that
 matches the requested object.
 
-~~~~ {.verbatim}
+~~~~
 bundle server access
 {
 access:
@@ -61,7 +61,7 @@ needed to resolve the absence of a value can lead to undesirable
 behaviour. As a general rule, users are recommended to refrain from
 relying on the availability of network resources.
 
-~~~~ {.example}
+~~~~
      
      (string) remotescalar(resource handle,host/IP address,encrypt);
      
@@ -75,17 +75,17 @@ CFEngine only.
 
 resource handle
 
-The name of the promise on the server side \
+The name of the promise on the server side   
 
 host or IP address
 
-The location of the server on which the resource resides. \
+The location of the server on which the resource resides.   
 
 encrypt
 
 Whether to encrypt the connection to the server.
 
-~~~~ {.smallexample}
+~~~~
                true
                yes
                false

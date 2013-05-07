@@ -9,7 +9,7 @@ tags: [Special-Variables,Variable-context-this]
 
 ### Variable context `this`
 
-\
+  
 
 This context this is used to access information about promises during
 their execution. It is context dependent and not universally meaningful
@@ -17,7 +17,7 @@ or available, but provides a context for variables where one is needed
 (such as when passing the value of a list variable into a parameterized
 `edit_line` promise from a `file` promise). For example:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent resolver(s,n)
 { 
 files:
@@ -74,7 +74,7 @@ pattern matching or `depth_search` that implicitly match multiple
 objects. In that case, `$(this.promiser)` refers to the currently
 identified file that makes the promise. For example:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent find666
 {
 files:
@@ -100,7 +100,7 @@ body file_select world_writeable
 This variable is set to the values of the promise attribute
 `service_policy`. For example:
 
-~~~~ {.verbatim}
+~~~~
 services:
 
   "www"  service_policy => "start";

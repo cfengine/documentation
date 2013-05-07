@@ -11,19 +11,19 @@ tags: [Special-functions,Function-hostsseen]
 
 **Synopsis**: hostsseen(arg1,arg2,arg3) returns type **slist**
 
-\
+  
  *arg1* : Horizon since last seen in hours, *in the range* 0,99999999999
-\
+  
  *arg2* : Complements for selection policy, *in the range*
-lastseen,notseen \
- *arg3* : Type of return value desired, *in the range* name,address \
+lastseen,notseen   
+ *arg3* : Type of return value desired, *in the range* name,address   
 
 Extract the list of hosts last seen/not seen within the last arg1 hours
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent test
 
 {
@@ -40,8 +40,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Finds a list of hosts seen by a CFEngine remote connection on the
 current host within the number of hours specified by argument 1.

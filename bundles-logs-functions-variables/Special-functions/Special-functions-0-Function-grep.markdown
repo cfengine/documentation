@@ -11,18 +11,18 @@ tags: [Special-functions,Function-grep]
 
 **Synopsis**: grep(arg1,arg2) returns type **slist**
 
-\
- *arg1* : Regular expression, *in the range* .\* \
+  
+ *arg1* : Regular expression, *in the range* .\*   
  *arg2* : CFEngine list identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Extract the sub-list if items matching the regular expression in arg1 of
 the list named in arg2
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent test
 
 {
@@ -43,8 +43,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Extracts a sublist of elements matching the regular expression in arg1
 from a list variable specified in arg2. The regex is anchored (See

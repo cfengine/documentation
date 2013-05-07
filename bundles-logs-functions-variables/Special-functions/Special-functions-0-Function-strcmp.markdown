@@ -11,16 +11,16 @@ tags: [Special-functions,Function-strcmp]
 
 **Synopsis**: strcmp(arg1,arg2) returns type **class**
 
-\
- *arg1* : String, *in the range* .\* \
- *arg2* : String, *in the range* .\* \
+  
+ *arg1* : String, *in the range* .\*   
+ *arg2* : String, *in the range* .\*   
 
 True if the two strings match exactly
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -48,5 +48,5 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   

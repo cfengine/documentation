@@ -11,17 +11,17 @@ tags: [Special-functions,Function-hash]
 
 **Synopsis**: hash(arg1,arg2) returns type **string**
 
-\
- *arg1* : Input text, *in the range* .\* \
+  
+ *arg1* : Input text, *in the range* .\*   
  *arg2* : Hash or digest algorithm, *in the range*
-md5,sha1,sha256,sha512,sha384,crypt \
+md5,sha1,sha256,sha512,sha384,crypt   
 
 Return the hash of arg1, type arg2 and assign to a variable
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 
 body common control
 
@@ -47,8 +47,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Hash functions are extremely sensitive to input. You should not expect
 to get the same answer from this function as you would from every other

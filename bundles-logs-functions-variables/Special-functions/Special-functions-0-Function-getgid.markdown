@@ -11,15 +11,15 @@ tags: [Special-functions,Function-getgid]
 
 **Synopsis**: getgid(arg1) returns type **int**
 
-\
- *arg1* : Group name in text, *in the range* .\* \
+  
+ *arg1* : Group name in text, *in the range* .\*   
 
 Return the integer group id of the named group on this host
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -44,8 +44,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If the named group does not exist, the variable will not be defined. On
 Windows, which does not support group ids, the variable will not be

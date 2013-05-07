@@ -11,16 +11,16 @@ tags: [Special-functions,Function-canonify]
 
 **Synopsis**: canonify(arg1) returns type **string**
 
-\
+  
  *arg1* : String containing non-identifier characters, *in the range*
-.\* \
+.\*   
 
 Convert an arbitrary string into a legal class name
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 commands:
 
    "/var/cfengine/bin/$(component)"
@@ -28,8 +28,8 @@ commands:
        ifvarclass => canonify("start_$(component)");
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is for use in turning arbitrary text into class data (See [Function
 classify](#Function-classify)).

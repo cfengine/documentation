@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,delete_005flines-in-edit_005fline-promises]
 
 ### `delete_lines` promises in edit\_line
 
-\
+  
 
 This promise assures that certain lines exactly matching regular
 expression patterns will not be present in a text file. If the lines are
@@ -17,9 +17,9 @@ found, the default promise is to remove them (this behavior may be
 modified with further pattern matching in `delete_select` and/or changed
 with `not_matching`).
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_line example
   {
   delete_lines:
@@ -39,7 +39,7 @@ are present in the file *in exactly the same order* as specified in the
 promise (with no intervening lines). That is, all the lines must match
 as a unit for the `delete_lines` promise to be kept.
 
-\
+  
 
 If the promiser contains multiple lines, then CFEngine assumes that all
 of the lines must exist as a contiguous block in order to be deletes.
@@ -63,10 +63,10 @@ promise.
 
 **Synopsis**: Delete line if it starts with a string in the list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body delete_select example(s)
      {
@@ -75,15 +75,15 @@ promise.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Delete lines from a file if they begin with the sub-strings listed. Note
 that this determination is made only on promised lines (that is, this
 attribute modifies the selection criteria, it does not make the initial
 selection). Therefore, if the file contains the following lines:
 
-~~~~ {.verbatim}
+~~~~
      start alpha igniter
      start beta igniter
      init alpha burner
@@ -97,7 +97,7 @@ Then the following promise initially selects the four lines containing
 alpha, but is moderated by the `delete_select` attribute. Thus, the
 promise will delete only the first and third lines of the file:
 
-~~~~ {.verbatim}
+~~~~
      bundle edit_line alpha
      {
      delete_lines:
@@ -111,7 +111,7 @@ promise will delete only the first and third lines of the file:
      }
 ~~~~
 
-\
+  
 
 `delete_if_not_startwith_from_list`
 
@@ -121,10 +121,10 @@ promise will delete only the first and third lines of the file:
 
 **Synopsis**: Delete line if it DOES NOT start with a string in the list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body delete_select example(s)
      {
@@ -133,13 +133,13 @@ promise will delete only the first and third lines of the file:
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Delete lines from a file unless they start with the sub-strings in the
 list given. Note that this determination is made only on promised lines.
 In other words, this attribute modifies the selection criteria, it does
-not make the initial selection. \
+not make the initial selection.   
 
 `delete_if_match_from_list`
 
@@ -149,10 +149,10 @@ not make the initial selection. \
 
 **Synopsis**: Delete line if it fully matches a regex in the list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body delete_select example(s)
      {
@@ -161,8 +161,8 @@ not make the initial selection. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Delete lines from a file if the lines *completely* match any of the
 regular expressions listed. In other words, the regular expression is
@@ -171,7 +171,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 Note that this attribute modifies the selection criteria, it does not
 make the initial selection, and the match determination is made only on
-promised lines. \
+promised lines.   
 
 `delete_if_not_match_from_list`
 
@@ -181,10 +181,10 @@ promised lines. \
 
 **Synopsis**: Delete line if it DOES NOT fully match a regex in the list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body delete_select example(s)
      {
@@ -193,8 +193,8 @@ promised lines. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Delete lines from a file unless the lines *completely* match any of the
 regular expressions listed. In other words, the regular expressions are
@@ -203,7 +203,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 Note that this attribute modifies the selection criteria, it does not
 make the initial selection, and the match determination is made only on
-promised lines. \
+promised lines.   
 
 `delete_if_contains_from_list`
 
@@ -213,10 +213,10 @@ promised lines. \
 
 **Synopsis**: Delete line if a regex in the list match a line fragment
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body delete_select example(s)
      {
@@ -225,14 +225,14 @@ promised lines. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Delete lines from a file if they contain the sub-strings listed.
 
 Note that this attribute modifies the selection criteria, it does not
 make the initial selection, and the match determination is made only on
-promised lines. \
+promised lines.   
 
 `delete_if_not_contains_from_list`
 
@@ -243,10 +243,10 @@ promised lines. \
 **Synopsis**: Delete line if a regex in the list DOES NOT match a line
 fragment
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body delete_select discard(s)
      {
@@ -255,8 +255,8 @@ fragment
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Delete lines from the file which do not contain the sub-strings listed.
 
@@ -268,9 +268,9 @@ promised lines.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                true
                false
                yes
@@ -283,10 +283,10 @@ promised lines.
 
 **Synopsis**: true/false negate match criterion
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 delete_lines:
 
   # edit /etc/passwd - account names that are not "mark" or "root"
@@ -294,8 +294,8 @@ delete_lines:
   "(mark|root):.*" not_matching => "true";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 When this option is true, it negates the pattern match of the promised
 lines.

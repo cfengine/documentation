@@ -11,16 +11,16 @@ tags: [Special-functions,Function-isnewerthan]
 
 **Synopsis**: isnewerthan(arg1,arg2) returns type **class**
 
-\
- *arg1* : Newer file name, *in the range* "?(/.\*) \
- *arg2* : Older file name, *in the range* "?(/.\*) \
+  
+ *arg1* : Newer file name, *in the range* "?(/.\*)   
+ *arg2* : Older file name, *in the range* "?(/.\*)   
 
 True if arg1 is newer (modified later) than arg2 (mtime)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -45,8 +45,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This function compares the modification time of the file, referring to
 changes of content only.

@@ -11,16 +11,16 @@ tags: [Special-functions,Function-changedbefore]
 
 **Synopsis**: changedbefore(arg1,arg2) returns type **class**
 
-\
- *arg1* : Newer filename, *in the range* "?(/.\*) \
- *arg2* : Older filename, *in the range* "?(/.\*) \
+  
+ *arg1* : Newer filename, *in the range* "?(/.\*)   
+ *arg2* : Older filename, *in the range* "?(/.\*)   
 
 True if arg1 was changed before arg2 (ctime)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -45,8 +45,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Change times include both file permissions and file contents.
 Comparisons like this are normally used for updating files (like the

@@ -9,13 +9,13 @@ tags: [Special-Variables,Variable-context-edit]
 
 ### Variable context `edit`
 
-\
+  
 
 This context edit is used to access information about editing promises
 during their execution. It is context dependent and not universally
 meaningful or available. For example:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent testbundle
 {
 files:
@@ -48,7 +48,7 @@ could be different from the files promiser.
 
 #### Variable edit.filename
 
-\
+  
 
 This variable points to the filename of the file currently making an
 edit promise. If the file has been arrived at through a search, this

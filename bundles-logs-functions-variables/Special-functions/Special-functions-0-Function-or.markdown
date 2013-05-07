@@ -11,19 +11,19 @@ tags: [Special-functions,Function-or]
 
 **Synopsis**: or(...) returns type **string**
 
-\
+  
 
 Calculate whether any argument evaluates to true
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 commands:
   "/usr/bin/generate_config $(config)"
     ifvarclass => or(not(fileexists("/etc/config/$(config)")), "force_configs");
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  *History*: Was introduced in 3.2.0, Nova 2.1.0 (2011)

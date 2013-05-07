@@ -12,20 +12,20 @@ tags: [Special-functions,Function-ldapvalue]
 **Synopsis**: ldapvalue(arg1,arg2,arg3,arg4,arg5,arg6) returns type
 **string**
 
-\
- *arg1* : URI, *in the range* .\* \
- *arg2* : Distinguished name, *in the range* .\* \
- *arg3* : Filter, *in the range* .\* \
- *arg4* : Record name, *in the range* .\* \
- *arg5* : Search scope policy, *in the range* subtree,onelevel,base \
- *arg6* : Security level, *in the range* none,ssl,sasl \
+  
+ *arg1* : URI, *in the range* .\*   
+ *arg2* : Distinguished name, *in the range* .\*   
+ *arg3* : Filter, *in the range* .\*   
+ *arg4* : Record name, *in the range* .\*   
+ *arg5* : Search scope policy, *in the range* subtree,onelevel,base   
+ *arg6* : Security level, *in the range* none,ssl,sasl   
 
 Extract the first matching named value from ldap
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
    # Get the first matching value for "uid" in schema
@@ -40,10 +40,10 @@ vars:
                              );
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-~~~~ {.example}
+~~~~
      
      (string) ldapvalue(uri,dn,filter,name,scope,security)
      
@@ -56,27 +56,28 @@ identified by the search parameters. The first matching value it taken.
 
 uri
 
-String value of the ldap server. e.g. `"ldap://ldap.cfengine.com.no"` \
+String value of the ldap server. e.g. `"ldap://ldap.cfengine.com.no"`   
 
 dn
 
 Distinguished name, an ldap formatted name built from components, e.g.
-"dc=cfengine,dc=com". \
+"dc=cfengine,dc=com".   
 
 filter
 
-String filter criterion, in ldap search, e.g. "(sn=User)". \
+String filter criterion, in ldap search, e.g. "(sn=User)".   
 
 name
 
-String value, the name of a single record to be retrieved, e.g. `uid`. \
+String value, the name of a single record to be retrieved, e.g. `uid`.
+  
 
 scope
 
 Menu option, the type of ldap search, from the specified root. May take
 values:
 
-~~~~ {.smallexample}
+~~~~
               subtree
               onelevel
               base

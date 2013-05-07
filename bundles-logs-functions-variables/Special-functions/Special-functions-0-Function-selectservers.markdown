@@ -12,24 +12,24 @@ tags: [Special-functions,Function-selectservers]
 **Synopsis**: selectservers(arg1,arg2,arg3,arg4,arg5,arg6) returns type
 **int**
 
-\
+  
  *arg1* : The identifier of a cfengine list of hosts or addresses to
-contact, *in the range* @[(][a-zA-Z0-9]+[)] \
- *arg2* : The port number, *in the range* 0,99999999999 \
- *arg3* : A query string, *in the range* .\* \
- *arg4* : A regular expression to match success, *in the range* .\* \
+contact, *in the range* @[(][a-zA-Z0-9]+[)]   
+ *arg2* : The port number, *in the range* 0,99999999999   
+ *arg3* : A query string, *in the range* .\*   
+ *arg4* : A regular expression to match success, *in the range* .\*   
  *arg5* : Maximum number of bytes to read from server, *in the range*
-0,99999999999 \
+0,99999999999   
  *arg6* : Name for array of results, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Select tcp servers which respond correctly to a query and return their
 number, set array of names
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -75,8 +75,8 @@ reports:
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This function selects all the TCP ports that are active and functioning
 from an ordered list and builds an array of their names. This allows us
@@ -84,16 +84,16 @@ to select a current list of failover alternatives that are pretested.
 
 hostlist
 
-A list of host names or IP addresses to attempt to connect to. \
+A list of host names or IP addresses to attempt to connect to.   
 
 port
 
-The port number for the service. \
+The port number for the service.   
 
 sendstr
 
 An optional string to send to the server to elicit a response. If
-`sendstr` is empty, then no query is sent to the server. \
+`sendstr` is empty, then no query is sent to the server.   
 
 regex\_on\_reply
 
@@ -105,11 +105,11 @@ taken to ensure that you match the newlines, too (note the use of `(?s)`
 in the example above, which allows . to also match newlines in the
 multi-line HTTP response). If `regex_on_reply` is empty, then no
 reply-checking is performed (and any server reply is deemed to be
-satisfactory). \
+satisfactory).   
 
 maxbytesread\_reply
 
-The maximum number of bytes to read as the server's reply. \
+The maximum number of bytes to read as the server's reply.   
 
 array\_name
 

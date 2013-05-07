@@ -11,17 +11,17 @@ tags: [Special-functions,Function-getindices]
 
 **Synopsis**: getindices(arg1) returns type **slist**
 
-\
+  
  *arg1* : Cfengine array identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Get a list of keys to the array whose id is the argument and assign to
 variable
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -52,8 +52,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Make sure you specify the correct scope when supplying the name of the
 variable.

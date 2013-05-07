@@ -11,15 +11,15 @@ tags: [Special-functions,Function-getuid]
 
 **Synopsis**: getuid(arg1) returns type **int**
 
-\
- *arg1* : User name in text, *in the range* .\* \
+  
+ *arg1* : User name in text, *in the range* .\*   
 
 Return the integer user id of the named user on this host
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -44,8 +44,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If the named user is not registered the variable will not be defined. On
 Windows, which does not support user ids, the variable will not be

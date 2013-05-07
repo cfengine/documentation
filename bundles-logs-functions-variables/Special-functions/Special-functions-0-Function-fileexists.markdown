@@ -11,15 +11,15 @@ tags: [Special-functions,Function-fileexists]
 
 **Synopsis**: fileexists(arg1) returns type **class**
 
-\
- *arg1* : File object name, *in the range* "?(/.\*) \
+  
+ *arg1* : File object name, *in the range* "?(/.\*)   
 
 True if the named file can be accessed
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -44,8 +44,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The user must have access permissions to the file for this to work
 faithfully.

@@ -11,17 +11,18 @@ tags: [Special-functions,Function-reglist]
 
 **Synopsis**: reglist(arg1,arg2) returns type **class**
 
-\
- *arg1* : Cfengine list identifier, *in the range* @[(][a-zA-Z0-9]+[)] \
- *arg2* : Regular expression, *in the range* .\* \
+  
+ *arg1* : Cfengine list identifier, *in the range* @[(][a-zA-Z0-9]+[)]
+  
+ *arg2* : Regular expression, *in the range* .\*   
 
 True if the regular expression in arg2 matches any item in the list
 whose id is arg1
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
  "nameservers" slist => {
@@ -34,8 +35,8 @@ classes:
   "am_name_server" expression => reglist("@(nameservers)",escape("$(sys.ipv4[eth0])"));
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Matches a list of test strings to a regular expression. In the example
 above, the IP address in `$(sys.ipv4[eth0])` must be `escape`d, because
@@ -46,7 +47,7 @@ regular expression "match any" characters.
 
 list
 
-The list of strings to test with the regular expression. \
+The list of strings to test with the regular expression.   
 
 regex
 

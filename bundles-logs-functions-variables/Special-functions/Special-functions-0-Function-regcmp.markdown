@@ -11,16 +11,16 @@ tags: [Special-functions,Function-regcmp]
 
 **Synopsis**: regcmp(arg1,arg2) returns type **class**
 
-\
- *arg1* : Regular expression, *in the range* .\* \
- *arg2* : Match string, *in the range* .\* \
+  
+ *arg1* : Regular expression, *in the range* .\*   
+ *arg2* : Match string, *in the range* .\*   
 
 True if arg1 is a regular expression matching that matches string arg2
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent subtest(user)
 
 {
@@ -40,8 +40,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Compares a string to a regular expression.
 
@@ -52,7 +52,7 @@ regex
 A regular expression to match the content. The regular expression is
 anchored, meaning it must match the complete content (See [Anchored vs.
 unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 string
 
@@ -65,7 +65,7 @@ using either standard regular expression syntax or using the additional
 features of PCRE (where `(?ms)` changes the way that ., \^ and \$
 behave), e.g.
 
-~~~~ {.smallexample}
+~~~~
      
      body common control
      {

@@ -11,16 +11,16 @@ tags: [Special-functions,Function-execresult]
 
 **Synopsis**: execresult(arg1,arg2) returns type **string**
 
-\
- *arg1* : Fully qualified command path, *in the range* "?(/.\*) \
- *arg2* : Shell encapsulation option, *in the range* useshell,noshell \
+  
+ *arg1* : Fully qualified command path, *in the range* "?(/.\*)   
+ *arg2* : Shell encapsulation option, *in the range* useshell,noshell   
 
 Execute named command and assign output to variable
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -45,8 +45,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The second argument (useshell/noshell) decides whether a shell will be
 used to encapsulate the command. This is necessary in order to combine

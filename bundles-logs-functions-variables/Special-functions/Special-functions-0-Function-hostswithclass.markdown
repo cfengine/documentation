@@ -11,17 +11,17 @@ tags: [Special-functions,Function-hostswithclass]
 
 **Synopsis**: hostswithclass(arg1,arg2) returns type **slist**
 
-\
- *arg1* : Class name to look for, *in the range* [a-zA-Z0-9\_]+ \
- *arg2* : Type of return value desired, *in the range* name,address \
+  
+ *arg1* : Class name to look for, *in the range* [a-zA-Z0-9\_]+   
+ *arg2* : Type of return value desired, *in the range* name,address   
 
 Extract the list of hosts with the given class set from the hub database
 (commercial extension)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 {
 bundlesequence => { "test" };
@@ -44,8 +44,8 @@ am_policy_hub::
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 On CFEngine Nova hubs, this function can be used to return a list of
 hostnames or ip-addresses of hosts that has the class given as argument
@@ -59,5 +59,5 @@ hub to construct custom configuration files for (classes of) hosts.
 
 Availability: Enterprise editions of CFEngine only.
 
-~~~~ {.verbatim}
+~~~~
 ~~~~

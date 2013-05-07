@@ -9,9 +9,9 @@ tags: [Bundles-for-agent,commands-in-agent-promises]
 
 ### `commands` promises in agent
 
-\
+  
 
-~~~~ {.smallexample}
+~~~~
      
      commands:
      
@@ -43,9 +43,9 @@ It is possible to set classes based on the return code of a
 commands-promise in a very flexible way. See the `kept_returncodes`,
 `repaired_returncodes` and `failed_returncodes` attributes.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 
 {
@@ -61,13 +61,13 @@ commands:
 }
 ~~~~
 
-\
+  
 
 When referring to executables whose paths contain spaces, you should
 quote the entire program string separately so that CFEngine knows the
 name of the executable file. For example:
 
-~~~~ {.smallexample}
+~~~~
      
       commands:
      
@@ -94,10 +94,10 @@ name of the executable file. For example:
 **Synopsis**: Alternative string of arguments for the command
 (concatenated with promiser string)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 commands:
 
   "/bin/echo one"
@@ -105,14 +105,14 @@ commands:
    args => "two three";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Sometimes it is convenient to separate the arguments to a command from
 the command itself. The final arguments are the concatenation with one
 space. So in the example above the command would be:
 
-~~~~ {.verbatim}
+~~~~
  /bin/echo one two three
 ~~~~
 
@@ -124,9 +124,9 @@ space. So in the example above the command would be:
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -139,10 +139,10 @@ space. So in the example above the command would be:
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body contain example
      {
@@ -151,8 +151,8 @@ space. So in the example above the command would be:
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The default is to *not* use a shell when executing commands. Use of a
 shell has both resource and security consequences. A shell consumes an
@@ -161,15 +161,15 @@ files and performs other actions beyond the control of CFEngine. If one
 does not need shell functionality such as piping through multiple
 commands then it is best to manage without it. In the Windows version of
 CFEngine Nova, the command is run in the the Command Prompt if useshell
-is true. \
+is true.   
 
 `umask`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     0
                     77
                     22
@@ -183,10 +183,10 @@ is true. \
 
 **Synopsis**: The umask value for the child process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body contain example
      {
@@ -195,12 +195,12 @@ is true. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Sets the internal umask for the process. Default value for the mask is
 077. On Windows, umask is not supported and is thus ignored by Windows
-versions of CFEngine. \
+versions of CFEngine.   
 
 `exec_owner`
 
@@ -210,10 +210,10 @@ versions of CFEngine. \
 
 **Synopsis**: The user name or id under which to run the process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body contain example
      {
@@ -222,8 +222,8 @@ versions of CFEngine. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is part of the restriction of privilege for child processes when
 running `cf-agent` as the root user, or a user with privileges.
@@ -231,7 +231,7 @@ running `cf-agent` as the root user, or a user with privileges.
 Windows requires the clear text password for the user account to run
 under. Keeping this in CFEngine policies could be a security hazard.
 Therefore, this option is not yet implemented on Windows versions of
-CFEngine. \
+CFEngine.   
 
 `exec_group`
 
@@ -241,10 +241,10 @@ CFEngine. \
 
 **Synopsis**: The group name or id under which to run the process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body contain example
      {
@@ -253,13 +253,13 @@ CFEngine. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is part of the restriction of privilege for child processes when
 running `cf-agent` as the root group, or a group with privileges. It is
 ignored on Windows, as processes do not have any groups associated with
-them. \
+them.   
 
 `exec_timeout`
 
@@ -269,10 +269,10 @@ them. \
 
 **Synopsis**: Timeout in seconds for command completion
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body contain example
      {
@@ -281,12 +281,12 @@ them. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Attempt to time-out after this number of seconds. This cannot be
 guaranteed as not all commands are willing to be interrupted in case of
-failure. \
+failure.   
 
 `chdir`
 
@@ -297,10 +297,10 @@ failure. \
 **Synopsis**: Directory for setting current/base directory for the
 process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body contain example
      
@@ -310,12 +310,12 @@ process
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This command has the effect of placing the running command into a
 current working directory equal to the parameter given; in other words,
-it works like the cd shell command. \
+it works like the cd shell command.   
 
 `chroot`
 
@@ -325,10 +325,10 @@ it works like the cd shell command. \
 
 **Synopsis**: Directory of root sandbox for process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body contain example
      
@@ -338,20 +338,20 @@ it works like the cd shell command. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Sets the path of the directory that will be experienced as the top-most
 root directory for the process. In security parlance, this creates a
-\`sandbox' for the process. Windows does not support this feature. \
+\`sandbox' for the process. Windows does not support this feature.   
 
 `preview`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -365,10 +365,10 @@ root directory for the process. In security parlance, this creates a
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body contain example
      {
@@ -377,22 +377,22 @@ root directory for the process. In security parlance, this creates a
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Previewing shell scripts during a dry-run is a potentially misleading
 activity. It should only be used on scripts that make no changes to the
 system. It is CFEngine best practice to never write change-functionality
 into user-written scripts except as a last resort. CFEngine can apply
-its safety checks to user defined scripts. \
+its safety checks to user defined scripts.   
 
 `no_output`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -405,10 +405,10 @@ its safety checks to user defined scripts. \
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body contain example
      {
@@ -417,8 +417,8 @@ its safety checks to user defined scripts. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is equivalent to piping standard output and error to /dev/null.
 
@@ -426,9 +426,9 @@ This is equivalent to piping standard output and error to /dev/null.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                true
                false
                yes
@@ -441,10 +441,10 @@ This is equivalent to piping standard output and error to /dev/null.
 
 **Synopsis**: true/false whether to expect the cfengine module protocol
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 commands:
 
    "/masterfiles/user_script"
@@ -452,8 +452,8 @@ commands:
      module => "true";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If true, the module protocol is supported for this script. In other
 words, it is treated as a user module. A plug-in module may be written
@@ -467,7 +467,7 @@ beginning with @ are lists. Any other lines of output are cited by
 `cf-agent` as being erroneous, so you should normally make your module
 completely silent. Here is an example written in shell:
 
-~~~~ {.smallexample}
+~~~~
      #!/bin/sh
      /bin/echo "@mylist= { \"one\", \"two\", \"three\" }"
      /bin/echo "=myscalar= scalar val"
@@ -476,7 +476,7 @@ completely silent. Here is an example written in shell:
 
 And here is an example using it:
 
-~~~~ {.verbatim}
+~~~~
 body common control
    {
    any::
@@ -528,7 +528,7 @@ reports:
 
 Here is an example module written in Perl:
 
-~~~~ {.smallexample}
+~~~~
      #!/usr/bin/perl
      #
      # module:myplugin
@@ -550,7 +550,7 @@ reading the promises file). For example, the promises could read as
 follows (the two `echo` commands are to ensure that the shell always
 exits with a successful execution of a command):
 
-~~~~ {.verbatim}
+~~~~
 bundle agent sendmail
 {
 commands:
@@ -583,7 +583,7 @@ body contain not_paranoid
 Modules inherit the environment variables from cfagent and accept
 arguments, just as a regular command does.
 
-~~~~ {.smallexample}
+~~~~
      #!/bin/sh
      #
      # module:myplugin
@@ -595,7 +595,7 @@ arguments, just as a regular command does.
 
 Modules define variables in `cf-agent` by outputting strings of the form
 
-~~~~ {.smallexample}
+~~~~
      
      =variablename=value
      

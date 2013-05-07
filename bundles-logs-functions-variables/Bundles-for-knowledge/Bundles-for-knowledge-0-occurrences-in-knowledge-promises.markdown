@@ -9,14 +9,14 @@ tags: [Bundles-for-knowledge,occurrences-in-knowledge-promises]
 
 ### `occurrences` promises in knowledge
 
-\
+  
 
 Occurrences are documents or information resources that discuss topics.
 An occurrence promise asserts that a particular document of text
 resource in fact represents information about one or more topics. This
 is used to construct references to actual information in a topic map.
 
-~~~~ {.smallexample}
+~~~~
      
       occurrences:
      
@@ -29,9 +29,9 @@ is used to construct references to actual information in a topic map.
      
 ~~~~
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
  Mark_Burgess::
 
      "http://www.iu.hio.no/~mark"
@@ -50,7 +50,7 @@ is used to construct references to actual information in a topic map.
 
 ~~~~
 
-\
+  
 
 Occurrences are pointers to information about topics. This might be a
 literal text string or a URL reference to an external document.
@@ -67,18 +67,18 @@ literal text string or a URL reference to an external document.
 
 **Synopsis**: List of topics that the document or resource addresses
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
  "/docs/SpecialTopic_RBAC.html#tag"
 
      represents => { "Text section" }, 
    about_topics => { "defining roles" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
@@ -98,10 +98,10 @@ covered by a document.
 **Synopsis**: List of explanations for what relationship this document
 has to the topics it is about
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 occurrences:
 
   Promise_Theory::
@@ -112,8 +112,8 @@ occurrences:
       representation => "literal";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The sub-topic or occurrence-type represented by the document reference
 in a knowledge base. This string is intended as an annotation to the
@@ -128,9 +128,9 @@ reference as a url to be reached when the image is clicked on.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                literal
                url
                db
@@ -143,10 +143,10 @@ reference as a url to be reached when the image is clicked on.
 **Synopsis**: How to interpret the promiser string (e.g. actual data or
 reference to data)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 occurrences:
 
   Promise_Theory::
@@ -158,8 +158,8 @@ occurrences:
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is a form of knowledge representation in a topic map occurrence
 reference. If the type `portal` is used it assumes that a new website
