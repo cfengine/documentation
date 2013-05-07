@@ -9,7 +9,7 @@ tags: [Special-Variables,Variable-context-match]
 
 ### Variable context `match`
 
-\
+  
 
 Each time CFEngine matches a string, these values are assigned to a
 special variable context `$(match.`n`)`. The fragments can be referred
@@ -19,7 +19,7 @@ other is in searching for files.
 
 Consider the examples below:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent testbundle
 
 {
@@ -44,7 +44,7 @@ files:
 
 #### Variable match.0
 
-\
+  
 
 A string matching the complete regular expression whether or not
 back-references were used in the pattern.

@@ -10,7 +10,7 @@ tags: [Bundles-for-common]
 Bundles of `common`
 -------------------
 
-\
+  
 
 Common bundles may only contain the promise types that are common to all
 bodies. Their main function is to define cross-component global
@@ -20,9 +20,9 @@ Common bundles are observed by every agent, whereas the agent specific
 bundle types are ignored by components other than the intended
 recipient.
 
-\
+  
 
-~~~~ {.smallexample}
+~~~~
      
      bundle common globals
      {

@@ -11,17 +11,17 @@ tags: [Special-functions,Function-join]
 
 **Synopsis**: join(arg1,arg2) returns type **string**
 
-\
- *arg1* : Join glue-string, *in the range* .\* \
+  
+ *arg1* : Join glue-string, *in the range* .\*   
  *arg2* : CFEngine list identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Join the items of arg2 into a string, using the conjunction in arg1
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent test
 
 {
@@ -40,8 +40,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Converts a string of type list into a scalar variable using the join
 string in first argument.

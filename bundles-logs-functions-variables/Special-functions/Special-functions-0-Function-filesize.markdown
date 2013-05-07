@@ -11,15 +11,15 @@ tags: [Special-functions,Function-filesize]
 
 **Synopsis**: filesize(arg1) returns type **int**
 
-\
- *arg1* : File object name, *in the range* "?(/.\*) \
+  
+ *arg1* : File object name, *in the range* "?(/.\*)   
 
 Returns the size in bytes of the file
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 {     
 vars:
@@ -37,8 +37,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.3,Nova 2.0.2 (2010)
 

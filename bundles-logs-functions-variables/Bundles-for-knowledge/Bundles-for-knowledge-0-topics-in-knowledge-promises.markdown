@@ -9,7 +9,7 @@ tags: [Bundles-for-knowledge,topics-in-knowledge-promises]
 
 ### `topics` promises in knowledge
 
-\
+  
 
 Topic promises are part of the knowledge management engine. A topic is
 any string that refers to a concept or subject that we wish to include
@@ -17,7 +17,7 @@ in a knowledge base. If a topic has a very long name, it is best to made
 the promiser object a short name and use the `comment` field to add the
 long explanation (e.g. unique acronym and full text).
 
-~~~~ {.smallexample}
+~~~~
      
       topics:
      
@@ -40,9 +40,9 @@ uses it as a type-label. This is used for disambiguation of subject-area
 in searches rather than for disambiguation of rules between physical
 environments.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle knowledge example
 {
 topics:
@@ -53,7 +53,7 @@ topics:
 }
 ~~~~
 
-\
+  
 
 Topics are basically identifiers, where the comment field here is a long
 form of the subject string. Associations form semantic links between
@@ -77,10 +77,10 @@ associations.
 **Synopsis**: Name of forward association between promiser topic and
 associates
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body association example
      {
@@ -89,9 +89,9 @@ associates
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `backward_relationship`
 
@@ -102,10 +102,10 @@ associates
 **Synopsis**: Name of backward/inverse association from associates to
 promiser topic
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body association example
      {
      # ..
@@ -114,11 +114,11 @@ promiser topic
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Denotes the inverse name which is used for \`moralizing' the association
-graph. \
+graph.   
 
 `associates`
 
@@ -128,10 +128,10 @@ graph. \
 
 **Synopsis**: List of associated topics by this forward relationship
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body association example(literal,scalar,list)
      
@@ -142,8 +142,8 @@ graph. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 An element of an association that is a list of topics to which the
 current topic is associated.
@@ -157,17 +157,17 @@ current topic is associated.
 **Synopsis**: A list of words to be treated as equivalents in the
 defined context
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
  mathematics::
 
    "tree" synonyms => { "DAG", "directed acyclic graph" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.3a1,Nova 2.0.2a1 (2010)
 
@@ -183,10 +183,10 @@ searches.
 **Synopsis**: A list of words to be treated as super-sets for the
 current topic, used when reasoning
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
  topics:
 
   persons::
@@ -198,8 +198,8 @@ current topic, used when reasoning
      "10.10.10.10/24" generalizations => { "network", "CIDR format" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.2, Nova 2.1 (2011)
 

@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,insert_005ftext-in-edit_005fxml-promises]
 
 ### `insert_text` promises in edit\_xml
 
-\
+  
 
 This promise is part of the XML-editing model. It assures that a value
 string, containing the matching substring, will be present in the
@@ -19,9 +19,9 @@ value string, within the specified node. The specified node is
 determined by body-attributes. The promise object referred to is a
 literal string of text.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_xml example
   {
   insert_text:
@@ -31,7 +31,7 @@ bundle edit_xml example
   }
 ~~~~
 
-\
+  
 
 Note that typically only a single value string, within a single
 specified node, is inserted in each `insert_text` promise. You may of

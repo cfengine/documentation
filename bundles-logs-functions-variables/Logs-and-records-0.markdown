@@ -10,7 +10,7 @@ tags: [Logs-and-records]
 Logs and records
 ----------------
 
-\
+  
 
 CFEngine writes numerous logs and records to its private workspace,
 referred to as WORKDIR. This chapter makes some brief notes about these

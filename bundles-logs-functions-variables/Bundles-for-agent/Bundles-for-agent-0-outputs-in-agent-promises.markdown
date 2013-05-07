@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,outputs-in-agent-promises]
 
 ### `outputs` promises in agent
 
-\
+  
 
 Outputs promises allow promises to make meta-promises about their output
 levels. More simply, you can switch on verbose or inform level output to
@@ -24,9 +24,9 @@ Output promises enable you to selectively debug individually named
 promises (or bundles), thus eliminating the need for scanning unrelated
 CFEngine output.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 outputs:
 
   "run_agent";      # Promise handle, verbose (default) output
@@ -39,7 +39,7 @@ outputs:
 A very handy paradigm is to include outputs promises in every bundle,
 and guard them with classes. For example:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent some_function
 {
 vars:
@@ -63,7 +63,7 @@ also supply multiple arguments to -D to debug multiple bundles. Of
 course, you can also provide much finer-grained control by creating
 outputs promises on specific promise handles.
 
-\
+  
 
 The default behaviour is to print verbose output for listed promise
 handles. See [handle in \*](#handle-in-_002a), for bundle names.
@@ -78,9 +78,9 @@ version 3.4.0 (2012)
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                verbose
                debug
                inform
@@ -91,10 +91,10 @@ version 3.4.0 (2012)
 **Synopsis**: Output level to observe for the named promise or bundle
 (meta-promise)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 commands:
 
   "/etc/init.d/agent start"
@@ -109,8 +109,8 @@ outputs:
     output_level => "inform"; 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 With no attribute, `verbose` output is assumed.
 
@@ -118,9 +118,9 @@ With no attribute, `verbose` output is assumed.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                promise
                bundle
 ~~~~
@@ -130,10 +130,10 @@ With no attribute, `verbose` output is assumed.
 **Synopsis**: Output level to observe for the named promise or bundle
 (meta-promise)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 outputs:
 
   "web_server"
@@ -141,8 +141,8 @@ outputs:
      promiser_type => "bundle";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Without this attribute, CFEngine assumes a list of promises to report
 on. There may be a promise for a thing that has the same name as a

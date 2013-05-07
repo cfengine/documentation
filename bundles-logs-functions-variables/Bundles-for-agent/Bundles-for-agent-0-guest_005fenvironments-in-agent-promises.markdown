@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,guest_005fenvironments-in-agent-promises]
 
 ### `guest_environments` promises in agent
 
-\
+  
 
 Guest environment promises describe enclosed computing environments that
 can host physical and virtual machines, Solaris zones, grids, clouds or
@@ -27,9 +27,9 @@ to manage what goes on within the virtual guests. For that purpose you
 should run CFEngine directly on the virtual machine, as if it were any
 other machine.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
  site1::
 
   "unique_name1"
@@ -47,7 +47,7 @@ other machine.
             environment_host => "atlas";
 ~~~~
 
-\
+  
 
 CFEngine currently provides a convergent interface to *libvirt*.
 
@@ -71,10 +71,10 @@ CFEngine currently provides a convergent interface to *libvirt*.
 **Synopsis**: A class indicating which physical node will execute this
 guest machine
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 guest_environments:
 
  linux::
@@ -87,8 +87,8 @@ guest_environments:
         environment_host => "ubuntu";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The promise will only apply to the machine with this class set. Thus,
 CFEngine must be running locally on the hypervisor for the promise to
@@ -111,10 +111,10 @@ This attribute is required.
 
 **Synopsis**: The IP addresses of the environment's network interfaces
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body environment_interface vnet(primary)
      {
@@ -132,11 +132,11 @@ This attribute is required.
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The IP addresses of the virtual machine can be overridden here at run
-time. \
+time.   
 
 `env_name`
 
@@ -146,10 +146,10 @@ time. \
 
 **Synopsis**: The hostname of the virtual environment
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body environment_interface vnet(primary)
      {
      env_name      => "$(this.promiser)";
@@ -163,11 +163,11 @@ time. \
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The \`hostname' of a virtual guest may or may not be the same as the
-identifier used as \`promiser' by the virtualization manager. \
+identifier used as \`promiser' by the virtualization manager.   
 
 `env_network`
 
@@ -177,10 +177,10 @@ identifier used as \`promiser' by the virtualization manager. \
 
 **Synopsis**: The hostname of the virtual network
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body environment_interface vnet(primary)
           {
@@ -208,10 +208,10 @@ identifier used as \`promiser' by the virtualization manager. \
 
 **Synopsis**: Number of virtual CPUs in the environment
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body environment_resources my_environment
      {
@@ -222,13 +222,13 @@ identifier used as \`promiser' by the virtualization manager. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The maximum number of cores or processors in the physical environment
 will set a natural limit on this value.
 
-This attribute conflicts with `env_spec`. \
+This attribute conflicts with `env_spec`.   
 
 `env_memory`
 
@@ -239,10 +239,10 @@ This attribute conflicts with `env_spec`. \
 **Synopsis**: Amount of primary storage (RAM) in the virtual environment
 (KB)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body environment_resources my_environment
      {
@@ -253,13 +253,13 @@ This attribute conflicts with `env_spec`. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The maximum amount of memory in the physical environment will set a
 natural limit on this value.
 
-This attribute conflicts with `env_spec`. \
+This attribute conflicts with `env_spec`.   
 
 `env_disk`
 
@@ -270,10 +270,10 @@ This attribute conflicts with `env_spec`. \
 **Synopsis**: Amount of secondary storage (DISK) in the virtual
 environment (MB)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body environment_resources my_environment
      {
@@ -284,12 +284,12 @@ environment (MB)
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This parameter is currently unsupported, for future extension.
 
-This attribute conflicts with `env_spec`. \
+This attribute conflicts with `env_spec`.   
 
 `env_baseline`
 
@@ -300,19 +300,19 @@ This attribute conflicts with `env_spec`. \
 **Synopsis**: The path to an image with which to baseline the virtual
 environment
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      env_baseline => "/path/to/image";
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-This function is for future development. \
+This function is for future development.   
 
 `env_spec`
 
@@ -323,10 +323,10 @@ This function is for future development. \
 **Synopsis**: A string containing a technology specific set of promises
 for the virtual instance
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body environment_resources virt_xml(host)
      {
      env_spec => 
@@ -360,8 +360,8 @@ for the virtual instance
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  The preferred way to specify the resources of an environment on
 creation; in other words, when `environment_state` is create.
 
@@ -373,9 +373,9 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                create
                delete
                running
@@ -385,10 +385,10 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 **Synopsis**: The desired dynamical state of the specified environment
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 guest_environments:
 
  linux::
@@ -402,28 +402,29 @@ guest_environments:
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The allowed states have the following convergent semantics.
 
 create
 
-The guest machine is allocated, installed and left in a running state. \
+The guest machine is allocated, installed and left in a running state.
+  
 
 delete
 
 The guest machine is shut down and deallocated but no files are removed.
-\
+  
 
 running
 
-The guest machine is in a running state, if it previously exists. \
+The guest machine is in a running state, if it previously exists.   
 
 suspended
 
 The guest exists in a suspended state or a shutdown state. If the guest
-is running, it is suspended; otherwise it is ignored. \
+is running, it is suspended; otherwise it is ignored.   
 
 down
 
@@ -433,9 +434,9 @@ The guest machine is shut down, but not deallocated.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                xen
                kvm
                esx
@@ -452,10 +453,10 @@ The guest machine is shut down, but not deallocated.
 
 **Synopsis**: Virtual environment type
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent my_vm_cloud
 {
 guest_environments:
@@ -480,8 +481,8 @@ guest_environments:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The currently supported types are those supported by *libvirt*. More
 will be added in the future.

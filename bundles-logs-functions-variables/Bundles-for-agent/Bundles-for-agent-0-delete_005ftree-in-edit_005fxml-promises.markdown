@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,delete_005ftree-in-edit_005fxml-promises]
 
 ### `delete_tree` promises in edit\_xml
 
-\
+  
 
 This promise is part of the XML-editing model. It assures that a
 balanced XML tree, containing the matching subtree, will not be present
@@ -19,9 +19,9 @@ specified node. The specified node is determined by body-attributes. The
 promise object referred to is a literal string representation of a
 balanced XML subtree.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_xml example
   {
   delete_tree:
@@ -31,7 +31,7 @@ bundle edit_xml example
   }
 ~~~~
 
-\
+  
 
 Note that typically, only a single tree, within a single specified node,
 is deleted in each `delete_tree` promise. You may of course have

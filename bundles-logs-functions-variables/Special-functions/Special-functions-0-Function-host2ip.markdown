@@ -11,23 +11,23 @@ tags: [Special-functions,Function-host2ip]
 
 **Synopsis**: host2ip(arg1) returns type **string**
 
-\
- *arg1* : Host name in ascii, *in the range* .\* \
+  
+ *arg1* : Host name in ascii, *in the range* .\*   
 
 Returns the primary name-service IP address for the named host
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle server control
 {
 allowconnects         => { escape(host2ip("www.example.com")) };
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Uses whatever configured name service is used by the resolver library to
 translate a hostname into an IP address. It will return an IPv6 address

@@ -11,15 +11,15 @@ tags: [Special-functions,Function-countclassesmatching]
 
 **Synopsis**: countclassesmatching(arg1) returns type **int**
 
-\
- *arg1* : Regular expression, *in the range* .\* \
+  
+ *arg1* : Regular expression, *in the range* .\*   
 
 Count the number of defined classes matching regex arg1
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 {
 vars:
@@ -35,8 +35,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This function matches classes, using a regular expression that should
 match the whole line.

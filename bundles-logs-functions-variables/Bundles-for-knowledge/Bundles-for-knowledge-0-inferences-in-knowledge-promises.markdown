@@ -9,11 +9,11 @@ tags: [Bundles-for-knowledge,inferences-in-knowledge-promises]
 
 ### `inferences` promises in knowledge
 
-\
+  
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 inferences:
 
   "is close to" 
@@ -27,7 +27,7 @@ inferences:
          qualifier => { "is close to" };
 ~~~~
 
-\
+  
 
 *History*: Was introduced in version 3.1.0
 
@@ -40,7 +40,7 @@ i.e. the conclusion to be drawn from combining two knowledge assertions.
 The body specifies what existing associations must be in place between
 topics in order to draw the conclusion between the start and the end.
 
-~~~~ {.smallexample}
+~~~~
      
                  precedent                 qualifier
        TOPIC 1 -------------- TOPIC 2 --------------- TOPIC 3
@@ -52,7 +52,7 @@ topics in order to draw the conclusion between the start and the end.
 
 For example,
 
-~~~~ {.smallexample}
+~~~~
      
               is mother to          is married to
        ALICE -------------- BOB ----------------- CAROL
@@ -79,10 +79,10 @@ to match multiple instances.
 
 **Synopsis**: The foundational vector for a trinary inference
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 inferences:
 
   "is far from" 
@@ -91,8 +91,8 @@ inferences:
          qualifier => { "is close to", "is far from" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.0b3,Nova 2.0.0b1 (2010)
 
@@ -107,10 +107,10 @@ so as to make the promise unique.
 
 **Synopsis**: The second vector in a trinary inference
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 inferences:
 
   "is far from" 
@@ -119,8 +119,8 @@ inferences:
          qualifier => { "is close to|is far from" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.0 (2010)
 

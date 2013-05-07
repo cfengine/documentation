@@ -11,19 +11,19 @@ tags: [Special-functions,Function-getfields]
 
 **Synopsis**: getfields(arg1,arg2,arg3,arg4) returns type **int**
 
-\
- *arg1* : Regular expression to match line, *in the range* .\* \
- *arg2* : Filename to read, *in the range* "?(/.\*) \
- *arg3* : Regular expression to split fields, *in the range* .\* \
- *arg4* : Return array name, *in the range* .\* \
+  
+ *arg1* : Regular expression to match line, *in the range* .\*   
+ *arg2* : Filename to read, *in the range* "?(/.\*)   
+ *arg3* : Regular expression to split fields, *in the range* .\*   
+ *arg4* : Return array name, *in the range* .\*   
 
 Get an array of fields in the lines matching regex arg1 in file arg2,
 split on regex arg3 as array name arg4
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 
 {     
@@ -41,8 +41,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This function matches lines (using a regular expression) in the named
 file, and splits the *first* matched line into fields (using a second
@@ -55,16 +55,16 @@ regex
 A regular expression matching one or more lines. The regular expression
 is anchored, meaning it must match the entire line (see [Anchored vs.
 unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 filename
 
-The name of the file to be examined. \
+The name of the file to be examined.   
 
 split
 
 A regex pattern that is used to parse the field separator(s) to split up
-the file into items \
+the file into items   
 
 array\_lval
 

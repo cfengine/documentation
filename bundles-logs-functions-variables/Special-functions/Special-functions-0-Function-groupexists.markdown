@@ -11,15 +11,15 @@ tags: [Special-functions,Function-groupexists]
 
 **Synopsis**: groupexists(arg1) returns type **class**
 
-\
- *arg1* : Group name or identifier, *in the range* .\* \
+  
+ *arg1* : Group name or identifier, *in the range* .\*   
 
 True if group or numerical id exists on this host
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -49,7 +49,7 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The group may be specified by name or number.

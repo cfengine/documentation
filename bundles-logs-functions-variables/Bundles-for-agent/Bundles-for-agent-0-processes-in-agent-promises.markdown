@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,processes-in-agent-promises]
 
 ### `processes` promises in agent
 
-\
+  
 
 Process promises refer to items in the system process table. Note that
 this is not the same as commands (which are instructions that CFEngine
@@ -29,7 +29,7 @@ However, the process pattern `"cp"` will also match a process containing
 `"scp"`, so take care not to oversimplify your patterns (the PCRE
 pattern anchors `"\b"` and `"\B"` may prove very useful to you).
 
-~~~~ {.smallexample}
+~~~~
      
       processes:
      
@@ -46,7 +46,7 @@ command to restart a process. In CFEngine 3 there is instead a class to
 activate. You must then describe a `command` in that class to restart
 the process.
 
-~~~~ {.verbatim}
+~~~~
 commands:
 
   restart_me::
@@ -66,9 +66,9 @@ execution, but stop commands are executed immediately.
 Note: `process_select` was previously called process `filters` in
 CFEngine 2 and earlier.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 {
 processes:
@@ -105,11 +105,11 @@ out_of_range_define => { "any_procs" };
 }
 ~~~~
 
-\
+  
 
 In CFEngine 3 we have
 
-~~~~ {.smallexample}
+~~~~
       processes
       commands
 ~~~~
@@ -126,14 +126,14 @@ kernel instantiation, a quite different object altogether. For example:
 -   A "PID" (which is not an executable) promises to be reminded of a
     signal, e.g.
 
-    ~~~~ {.smallexample}
+    ~~~~
                   kill signal pid
     ~~~~
 
 -   An "command" promises to start or stop itself with a parameterized
     specification.
 
-    ~~~~ {.smallexample}
+    ~~~~
                   exec command argument1 argument2 ...
     ~~~~
 
@@ -149,8 +149,8 @@ attributes associated with these objects.
 Executions lead to processes for the duration of their lifetime, so
 these two issues are related, although the promises themselves are not.
 
-\
- **Services versus processes**: \
+  
+ **Services versus processes**:   
 
 A service is an abstraction that requires processes to run and files to
 be configured. It makes a lot of sense to wrap services in modular
@@ -178,24 +178,24 @@ pids, not to the individual pids concerned. So it becomes the
 responsibility of the execution to locate and interact with the pids
 necessary.
 
-\
+  
 
 If you want to ensure that a service is running, check each in the agent
 control promises individually.
 
-~~~~ {.verbatim}
+~~~~
 bundlesequence => { Update, Service("apache"), Service("nfsd") };
 ~~~~
 
 or
 
-~~~~ {.verbatim}
+~~~~
 bundlesequence => { Update, @(globals.all_services)  };
 ~~~~
 
 The bundle for this can look like this:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent Service(service")
 {
 processes:
@@ -216,7 +216,7 @@ commands:
 
 An alternative would be self-contained:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent Service
 {
 vars:
@@ -268,10 +268,10 @@ out_of_range_define => "$(s)_up";
 
 **Synopsis**: List of classes to define if the matches are in range
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_count example
      {
@@ -280,12 +280,12 @@ out_of_range_define => "$(s)_up";
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Classes are defined if the processes that are found in the process table
 satisfy the promised process count, in other words if the promise about
-the number of processes matching the other criteria is kept. \
+the number of processes matching the other criteria is kept.   
 
 `match_range`
 
@@ -296,10 +296,10 @@ the number of processes matching the other criteria is kept. \
 **Synopsis**: Integer range for acceptable number of matches for this
 process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_count example
      {
@@ -308,12 +308,12 @@ process
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is a numerical range for the number of occurrences of the process
 in the process table. As long as it falls within the specified limits,
-the promise is considered kept. \
+the promise is considered kept.   
 
 `out_of_range_define`
 
@@ -323,10 +323,10 @@ the promise is considered kept. \
 
 **Synopsis**: List of classes to define if the matches are out of range
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_count example(s)
      {
@@ -335,8 +335,8 @@ the promise is considered kept. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Classes to activate remedial promises conditional on this promise
 failure to be kept.
@@ -354,10 +354,10 @@ failure to be kept.
 **Synopsis**: Regular expression matching the command/cmd field of a
 process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      
@@ -369,13 +369,13 @@ process
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This expression should match the entire `COMMAND` field of the process
 table, not just a fragment. This field is usually the last field on the
 line, so it thus starts with the first non-space character and ends with
-the end of line. \
+the end of line.   
 
 `pid`
 
@@ -385,10 +385,10 @@ the end of line. \
 
 **Synopsis**: Range of integers matching the process id of a process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -398,9 +398,9 @@ the end of line. \
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `pgid`
 
@@ -411,10 +411,10 @@ the end of line. \
 **Synopsis**: Range of integers matching the parent group id of a
 process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -424,9 +424,9 @@ process
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `ppid`
 
@@ -437,10 +437,10 @@ process
 **Synopsis**: Range of integers matching the parent process id of a
 process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -450,9 +450,9 @@ process
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `priority`
 
@@ -463,10 +463,10 @@ process
 **Synopsis**: Range of integers matching the priority field (PRI/NI) of
 a process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -475,9 +475,9 @@ a process
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `process_owner`
 
@@ -487,10 +487,10 @@ a process
 
 **Synopsis**: List of regexes matching the user of a process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -499,13 +499,13 @@ a process
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Regular expression should match a legal user name on the system. The
 regex is anchored, meaning it must match the entire name (see [Anchored
 vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 `process_result`
 
@@ -517,10 +517,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 **Synopsis**: Boolean class expression returning the logical combination
 of classes set by a process selection test
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select proc_finder(p)
      
@@ -534,12 +534,12 @@ of classes set by a process selection test
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A logical combination of the process selection classifiers. The syntax
 is the same as that for class expressions. There should be no spaces in
-the expressions. \
+the expressions.   
 
 `rsize`
 
@@ -550,10 +550,10 @@ the expressions. \
 **Synopsis**: Range of integers matching the resident memory size of a
 process, in kilobytes
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select
      {
@@ -563,9 +563,9 @@ process, in kilobytes
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `status`
 
@@ -575,10 +575,10 @@ process, in kilobytes
 
 **Synopsis**: Regular expression matching the status field of a process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -587,11 +587,11 @@ process, in kilobytes
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 For instance, characters in the set NRSsl+... Windows processes do not
-have status fields. \
+have status fields.   
 
 `stime_range`
 
@@ -601,10 +601,10 @@ have status fields. \
 
 **Synopsis**: Range of integers matching the start time of a process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -613,12 +613,12 @@ have status fields. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The calculation of time from process table entries is sensitive to
 Daylight Savings Time (Summer/Winter Time) so calculations could be an
-hour off. This is for now a bug to be fixed. \
+hour off. This is for now a bug to be fixed.   
 
 `ttime_range`
 
@@ -629,10 +629,10 @@ hour off. This is for now a bug to be fixed. \
 **Synopsis**: Range of integers matching the total elapsed time of a
 process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -641,10 +641,10 @@ process
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-This is total accumulated time for a process. \
+This is total accumulated time for a process.   
 
 `tty`
 
@@ -654,10 +654,10 @@ This is total accumulated time for a process. \
 
 **Synopsis**: Regular expression matching the tty field of a process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -666,11 +666,11 @@ This is total accumulated time for a process. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Windows processes are not regarded as attached to any terminal, so they
-all have tty '?'. \
+all have tty '?'.   
 
 `threads`
 
@@ -681,10 +681,10 @@ all have tty '?'. \
 **Synopsis**: Range of integers matching the threads (NLWP) field of a
 process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -693,9 +693,9 @@ process
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `vsize`
 
@@ -706,10 +706,10 @@ process
 **Synopsis**: Range of integers matching the virtual memory size of a
 process, in kilobytes
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body process_select example
      {
@@ -718,8 +718,8 @@ process, in kilobytes
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 On Windows, the virtual memory size is the amount of memory that cannot
 be shared with other processes. In Task Manager, this is called Commit
@@ -733,10 +733,10 @@ Size (Windows 2008), or VM Size (Windows XP).
 
 **Synopsis**: A command used to stop a running process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 processes:
 
  "snmpd"
@@ -745,8 +745,8 @@ processes:
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 As an alternative to sending a termination or kill signal to a process,
 one may call a \`stop script' to perform a graceful shutdown.
@@ -760,10 +760,10 @@ one may call a \`stop script' to perform a graceful shutdown.
 **Synopsis**: A class to be defined globally if the process is not
 running, so that a command: rule can be referred to restart the process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 processes:
 
    "cf-serverd"
@@ -777,8 +777,8 @@ commands:
     "/var/cfengine/bin/cf-serverd";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is a signal to restart a process that should be running, if it is
 not running. Processes are signaled first and then restarted later, at
@@ -796,9 +796,9 @@ information.
 
 **Type**: (option list)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                hup
                int
                trap
@@ -819,10 +819,10 @@ information.
 **Synopsis**: A list of menu options representing signals to be sent to
 a process
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 processes:
 
  cfservd_out_of_control::
@@ -840,8 +840,8 @@ processes:
    
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Signals are presented as an ordered list to the process. On Windows,
 only the kill signal is supported, which terminates the process.

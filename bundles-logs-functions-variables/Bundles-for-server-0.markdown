@@ -10,9 +10,9 @@ tags: [Bundles-for-server]
 Bundles of `server`
 -------------------
 
-\
+  
 
-~~~~ {.smallexample}
+~~~~
      
      bundle server access_rules()
      
@@ -35,7 +35,7 @@ Bundles of `server`
      
 ~~~~
 
-\
+  
 
 Bundles in the server describe access promises on specific file and
 class objects supplied by the server to clients.

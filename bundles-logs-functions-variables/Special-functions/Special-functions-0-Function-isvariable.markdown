@@ -11,16 +11,16 @@ tags: [Special-functions,Function-isvariable]
 
 **Synopsis**: isvariable(arg1) returns type **class**
 
-\
+  
  *arg1* : Variable identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 True if the named variable is defined
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -49,8 +49,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The variable need only exist. This says nothing about its value. Use
 `regcmp` to check variable values.

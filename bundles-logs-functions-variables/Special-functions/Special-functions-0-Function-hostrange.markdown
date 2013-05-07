@@ -11,17 +11,17 @@ tags: [Special-functions,Function-hostrange]
 
 **Synopsis**: hostrange(arg1,arg2) returns type **class**
 
-\
- *arg1* : Hostname prefix, *in the range* .\* \
- *arg2* : Enumerated range, *in the range* .\* \
+  
+ *arg1* : Hostname prefix, *in the range* .\*   
+ *arg2* : Enumerated range, *in the range* .\*   
 
 True if the current host lies in the range of enumerated hostnames
 specified
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 
 body common control
 
@@ -47,8 +47,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is a pattern matching function for non-regular (enumerated)
 expressions.

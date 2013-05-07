@@ -11,16 +11,16 @@ tags: [Special-functions,Function-product]
 
 **Synopsis**: product(arg1) returns type **real**
 
-\
+  
  *arg1* : A list of arbitrary real values, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Return the product of a list of reals
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent test
 {
 vars:
@@ -38,8 +38,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  Of course, you could easily combine `product` with `readstringarray` or
 `readreallist` etc., to collect summary information from a source
 external to CFEngine.

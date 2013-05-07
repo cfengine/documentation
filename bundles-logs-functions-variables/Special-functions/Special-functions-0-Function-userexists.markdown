@@ -11,15 +11,15 @@ tags: [Special-functions,Function-userexists]
 
 **Synopsis**: userexists(arg1) returns type **class**
 
-\
- *arg1* : User name or identifier, *in the range* .\* \
+  
+ *arg1* : User name or identifier, *in the range* .\*   
 
 True if user name or numerical id exists on this host
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 
 body common control
 
@@ -49,8 +49,8 @@ reports:
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Checks whether the user is in the password database for the current
 host. The argument must be a user name or user id.

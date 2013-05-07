@@ -11,17 +11,17 @@ tags: [Special-functions,Function-getvalues]
 
 **Synopsis**: getvalues(arg1) returns type **slist**
 
-\
+  
  *arg1* : Cfengine array identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Get a list of values corresponding to the right hand sides in an array
 whose id is the argument and assign to variable
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -52,8 +52,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Make sure you specify the correct scope when supplying the name of the
 variable. If the array contains list elements on the right hand side,
