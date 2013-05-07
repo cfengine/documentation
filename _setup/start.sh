@@ -42,3 +42,6 @@ gem install albino
 gem install uglifier 
 gem install execjs
 
+#if pandoc is used
+gem install pandoc-ruby
+gem install rdiscount

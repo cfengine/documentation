@@ -22,6 +22,9 @@ Gems:
 + albino
 + uglifier
 + execjs
+#if pandoc is used
++ pandoc-ruby
++ rdiscount
 
 You can find additional information inside _setup/setup.sh
 

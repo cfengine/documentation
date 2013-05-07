@@ -2,8 +2,7 @@
 safe: false
 #include: ./pages/
 plugins: ./_plugins/
-#url: https://cfengine.com/tmp_doc/
-base: nil
+baseurl: https://cfengine.com/tmp_docs/
 #source:      ./pages/
 #destination: 
 #layouts:     ./_layouts/
@@ -22,12 +21,11 @@ pygments: true
 #markdown: redcarpet2
 #redcarpet:
 #  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
-markdown:  redcarpet2
+markdown:  rdiscount
 pandoc:  true
 asset_pipeline:
   bundle: true            # Default = true
   compress: true          # Default = true
   output_path: assets     # Default = assets
-  #display_path: tmp_docs/assets       # Default = nil
-  display_path: assets       # Default = nil
+  display_path: tmp_docs/assets       # Default = nil
   gzip: false             # Default = false
