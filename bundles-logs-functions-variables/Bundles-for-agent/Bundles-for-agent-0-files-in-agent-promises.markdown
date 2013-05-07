@@ -2639,7 +2639,7 @@ of appropriate regular expressions.
    
 
 The mode may be specified in symbolic or numerical form with + and -
-constraints. Concatenation `ug+s` implies `u` OR `g`, and `u+g,u+s`
+constraints. Concatenation `ug+s` implies `u` OR `g`, and `u+s,g+s`
 implies `u` AND `g`.   
 
 `search_size`
