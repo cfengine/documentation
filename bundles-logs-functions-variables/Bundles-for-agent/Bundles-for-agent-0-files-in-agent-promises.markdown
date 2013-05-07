@@ -9,12 +9,12 @@ tags: [Bundles-for-agent,files-in-agent-promises]
 
 ### `files` promises in agent
 
-\
+  
 
 Files promises are an umbrella for attributes of files. Operations fall
 basically into three categories: create, delete and edit.
 
-~~~~ {.smallexample}
+~~~~
      
       files:
      
@@ -35,7 +35,7 @@ There is a natural ordering in file processing that obviates the need
 for the actionsequence. For example, the trick of using multiple
 actionsequence items with different classes.
 
-~~~~ {.verbatim}
+~~~~
  actionsequence = ( ... files.one  ..  files.two )
 ~~~~
 
@@ -73,7 +73,7 @@ See: \`File editing in CFEngine 3'
 
 The pseudo-code for this logic is shown in the diagram and below:
 
-~~~~ {.verbatim}
+~~~~
  for each file promise-object
     {
     if (depth_search) 
@@ -122,7 +122,7 @@ Recursion is now called "depth-search". In addition, it was possible to
 specify wildcards in the base-path for this search. CFEngine 3 replaces
 the \`globbing' symbols with standard regular expressions:
 
-~~~~ {.verbatim}
+~~~~
       CFEngine 2               CFEngine 3
 
 /one/*/two/thr*/four    /one/.*/two/thr.*/four
@@ -199,7 +199,7 @@ two examples, which assumethat there first exist files named /tmp/gar,
 /tmp/garbage and /tmp/garden. Initially, the two promises look like they
 should do the same thing; but there is a subtle difference:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent foobaz           bundle agent foobaz
 {                   {
 files:                  files:
@@ -278,7 +278,7 @@ external attributes.
 
 A typical file editing stanza has the elements in the following example:
 
-~~~~ {.verbatim}
+~~~~
 ######################################################################
 #
 # File editing
@@ -419,7 +419,7 @@ Community Edition only reports that changes were found, but Enterprise
 versions of CFEngine can also report on what exactly the significant
 changes were.
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 {
 files:
@@ -442,7 +442,7 @@ update         => "yes";
 }
 ~~~~
 
-\
+  
 
 -   [acl in files](#acl-in-files)
 -   [changes in files](#changes-in-files)
@@ -477,10 +477,10 @@ update         => "yes";
 
 **Synopsis**: Native settings for access control entry
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body acl template
      
@@ -499,14 +499,14 @@ update         => "yes";
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 POSIX ACL are available in CFEngine Community starting with 3.4.0. NTFS
 ACL are available with CFEngine Nova or above. Form of the permissions
 is:
 
-~~~~ {.smallexample}
+~~~~
                 aces = {
                         "user:uid:mode[:perm_type]", ...,
                         "group:gid:mode[:perm_type]", ...,
@@ -559,7 +559,7 @@ Semantics on file
 
 Semantics on directory
 
-\
+  
 
 `r`
 
@@ -567,7 +567,7 @@ Read
 
 Read data, permissions, attributes
 
-Read directory contents, permissions, attributes \
+Read directory contents, permissions, attributes   
 
 `w`
 
@@ -575,7 +575,7 @@ Write
 
 Write data
 
-Create, delete, rename subobjects \
+Create, delete, rename subobjects   
 
 `x`
 
@@ -583,19 +583,19 @@ Execute
 
 Execute file
 
-Access subobjects \
+Access subobjects   
 
 Note that the `r` permission is not necessary to read an object's
 permissions and attributes in all file systems. For example, in POSIX,
-having `x` on its containing directory is sufficient. \
+having `x` on its containing directory is sufficient.   
 
 `acl_directory_inherit`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     nochange
                     parent
                     specify
@@ -604,10 +604,10 @@ having `x` on its containing directory is sufficient. \
 
 **Synopsis**: Access control list type for the affected file system
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body acl template
      
@@ -626,8 +626,8 @@ having `x` on its containing directory is sufficient. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Directories have ACLs associated with them, but they also have the
 ability to inherit an ACL to sub-objects created within them. POSIX
@@ -639,25 +639,25 @@ ACL of directories. The default ACL can be left unchanged (`nochange`),
 empty (`clear`), or be explicitly specified (`specify`). In addition,
 the default ACL can be set equal to the directory's access ACL
 (`parent`). This has the effect that child objects of the directory gets
-the same access ACL as the directory. \
+the same access ACL as the directory.   
 
 `acl_method`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     append
                     overwrite
 ~~~~
 
 **Synopsis**: Editing method for access control list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body acl template
      
@@ -669,8 +669,8 @@ the same access ACL as the directory. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 When defining an ACL, we can either use an existing ACL as the starting
 point, or state all entries of the ACL. If we just care about one entry,
@@ -680,15 +680,15 @@ existing ACL entries that are not mentioned will be left unchanged. On
 the other hand, if `method` is set to `overwrite`, the resulting ACL
 will only contain the mentioned entries. When doing this, it is
 important to check that all the required ACL entries are set. For
-example, owning user, group and all in POSIX ACLs. \
+example, owning user, group and all in POSIX ACLs.   
 
 `acl_type`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     generic
                     posix
                     ntfs
@@ -696,10 +696,10 @@ example, owning user, group and all in POSIX ACLs. \
 
 **Synopsis**: Access control list type for the affected file system
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body acl template
      
@@ -710,8 +710,8 @@ example, owning user, group and all in POSIX ACLs. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 ACLs are supported on multiple platforms, which may have different sets
 of available permission flags. By using the constraint `acl_type`, we
@@ -720,7 +720,7 @@ The default, `generic`, is designed to work on all supported platforms.
 However, if very specific permission flags are required, like Take
 Ownership on the NTFS platform, we must set `acl_type` to indicate the
 target platform. Currently, the supported values are `posix` and `ntfs`.
-\
+  
 
 `specify_inherit_aces`
 
@@ -731,18 +731,18 @@ target platform. Currently, the supported values are `posix` and `ntfs`.
 
 **Synopsis**: Native settings for access control entry
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body acl template
      {
      specify_inherit_aces => {  "all:r" };
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 `specify_inherit_aces` (optional) is a list of access control entries
 that are set on child objects. It is also parsed from left to right and
@@ -761,9 +761,9 @@ that do not have a clear inheritance policy.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     md5
                     sha1
                     sha224
@@ -775,10 +775,10 @@ that do not have a clear inheritance policy.
 
 **Synopsis**: Hash files for change detection
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body changes example
      {
@@ -787,19 +787,19 @@ that do not have a clear inheritance policy.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The `best` option cross correlates the best two available algorithms
-known in the OpenSSL library. \
+known in the OpenSSL library.   
 
 `report_changes`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     all
                     stats
                     content
@@ -808,10 +808,10 @@ known in the OpenSSL library. \
 
 **Synopsis**: Specify criteria for change warnings
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body changes example
      {
@@ -820,19 +820,19 @@ known in the OpenSSL library. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Files can change in permissions and contents, i.e. external or internal
-attributes. If all is chosen all attributes are checked. \
+attributes. If all is chosen all attributes are checked.   
 
 `update_hashes`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -843,10 +843,10 @@ attributes. If all is chosen all attributes are checked. \
 
 **Synopsis**: Update hash values immediately after change warning
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body changes example
      {
@@ -855,20 +855,20 @@ attributes. If all is chosen all attributes are checked. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If this is positive, file hashes should be updated as soon as a change
 is registered so that multiple warnings are not given about a single
-change. This applies to addition and removal too. \
+change. This applies to addition and removal too.   
 
 `report_diffs`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -880,10 +880,10 @@ change. This applies to addition and removal too. \
 **Synopsis**: Generate reports summarizing the major differences between
 individual text files
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body changes example
      {
@@ -892,8 +892,8 @@ individual text files
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *This feature is available only in enterprise levels Nova and above.*
 
@@ -921,10 +921,10 @@ the system.
 
 **Synopsis**: Reference source file from which to copy
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -940,10 +940,10 @@ the system.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-For remote copies this refers to the file name on the remote server. \
+For remote copies this refers to the file name on the remote server.   
 
 `servers`
 
@@ -953,10 +953,10 @@ For remote copies this refers to the file name on the remote server. \
 
 **Synopsis**: List of servers in order of preference from which to copy
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -966,18 +966,18 @@ For remote copies this refers to the file name on the remote server. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-The servers are tried in order until one of them succeeds. \
+The servers are tried in order until one of them succeeds.   
 
 `collapse_destination_dir`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -989,10 +989,10 @@ The servers are tried in order until one of them succeeds. \
 **Synopsis**: Place files in subdirectories into the root destination
 directory during copy
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from mycopy(from,server)
      
@@ -1004,8 +1004,8 @@ directory during copy
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Under normal operations, recursive copies cause CFEngine to track
 subdirectories of files. So, for instance, if we copy recursively from
@@ -1013,15 +1013,15 @@ src to dest, then src/subdir/file will map to dest/subdir/file.
 
 By setting this option to true, the promiser destination directory
 promises to aggregate files searched from all subdirectories into
-itself; in other words, a single destination directory. \
+itself; in other words, a single destination directory.   
 
 `compare`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     atime
                     mtime
                     ctime
@@ -1036,10 +1036,10 @@ attributes
 
 **Default value:** mtime or ctime differs
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      
@@ -1049,8 +1049,8 @@ attributes
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The default copy method is mtime (modification time), meaning that the
 source file is copied to the destination (promiser) file, if the source
@@ -1082,15 +1082,15 @@ The different options are:
     used.
 -   `digest` a synonym for `hash`
 
-\
+  
 
 `copy_backup`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     timestamp
@@ -1100,10 +1100,10 @@ The different options are:
 
 **Default value:** true
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1112,8 +1112,8 @@ The different options are:
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Determines whether a backup of the previous version is kept on the
 system. This should be viewed in connection with the system repository,
@@ -1121,15 +1121,15 @@ since a defined repository affects the location at which the backup is
 stored.
 
 See: [default\_repository](#default_005frepository-in-agent) and
-[repository](#repository-in-files) for further details. \
+[repository](#repository-in-files) for further details.   
 
 `encrypt`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1143,10 +1143,10 @@ host
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1156,20 +1156,20 @@ host
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Client connections are encrypted with using a Blowfish randomly
 generated session key. The initial connection is encrypted using the
-public/private keys for the client and server hosts. \
+public/private keys for the client and server hosts.   
 
 `check_root`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1181,10 +1181,10 @@ public/private keys for the client and server hosts. \
 **Synopsis**: true/false check permissions on the root directory when
 depth\_search
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1193,13 +1193,13 @@ depth\_search
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 When copying files recursively (by depth search), this flag determines
 whether the permissions of the root directory should be set from the
 root of the source. The default is to check only copied file objects and
-subdirectories within this root (false). \
+subdirectories within this root (false).   
 
 `copylink_patterns`
 
@@ -1210,10 +1210,10 @@ subdirectories within this root (false). \
 **Synopsis**: List of patterns matching files that should be copied
 instead of linked
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1222,12 +1222,12 @@ instead of linked
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The matches are performed on the last node of the filename; in other
 words, the file without its path. As Windows does not support symbolic
-links, this feature is not available there. \
+links, this feature is not available there.   
 
 `copy_size`
 
@@ -1239,10 +1239,10 @@ links, this feature is not available there. \
 
 **Default value:** any size range
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1251,28 +1251,28 @@ links, this feature is not available there. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The use of the irange function is optional. Ranges may also be specified
-as a comma separated numbers. \
+as a comma separated numbers.   
 
 `findertype`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     MacOSX
 ~~~~
 
 **Synopsis**: Menu option for default finder type on MacOSX
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1281,10 +1281,10 @@ as a comma separated numbers. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-This applies only to the Mac OS X variants. \
+This applies only to the Mac OS X variants.   
 
 `linkcopy_patterns`
 
@@ -1295,10 +1295,10 @@ This applies only to the Mac OS X variants. \
 **Synopsis**: List of patterns matching files that should be replaced
 with symbolic links
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from mycopy(from)
      
@@ -1309,21 +1309,21 @@ with symbolic links
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The pattern matches the last node filename; in other words, without the
 absolute path. Windows only supports hard links.
 
-See: `link_type`. \
+See: `link_type`.   
 
 `link_type`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     symlink
                     hardlink
                     relative
@@ -1334,10 +1334,10 @@ See: `link_type`. \
 
 **Default value:** symlink
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body link_from example
      {
@@ -1347,8 +1347,8 @@ See: `link_type`. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Users are advised to be wary of \`hard links' (see Unix manual pages for
 the ln command). The behaviour of non-symbolic links is often precarious
@@ -1360,15 +1360,15 @@ from relative links. Although all of these are symbolic links, the
 nomenclature here is defined such that symlink and absolute are
 equivalent . When verifying a link, choosing \`relative' means that the
 link *must* be relative to the source, so relative and absolute links
-are mutually exclusive. \
+are mutually exclusive.   
 
 `force_update`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1381,10 +1381,10 @@ are mutually exclusive. \
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1393,22 +1393,22 @@ are mutually exclusive. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Warning: this is a non-convergent operation. Although the end point
 might stabilize in content, the operation will never quiesce. Use of
 this feature is not recommended except in exceptional circumstances
 since it creates a busy-dependency. If the copy is a network copy, the
-system will be disturbed by network disruptions. \
+system will be disturbed by network disruptions.   
 
 `force_ipv4`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1421,10 +1421,10 @@ system will be disturbed by network disruptions. \
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1433,11 +1433,11 @@ system will be disturbed by network disruptions. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 IPv6 should be harmless to most users unless you have a partially or
-mis-configured setup. \
+mis-configured setup.   
 
 `portnumber`
 
@@ -1447,10 +1447,10 @@ mis-configured setup. \
 
 **Synopsis**: Port number to connect to on server host
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1459,20 +1459,20 @@ mis-configured setup. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The standard or registered port number is tcp/5308. CFEngine does not
 presently use its registered udp port with the same number, but this
-could change in the future. \
+could change in the future.   
 
 `preserve`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1486,10 +1486,10 @@ file
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1498,21 +1498,21 @@ file
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Ensures the destination file (promiser) gets the same Unix mode as the
 source. This also applies to remote copies.
 
-*History*: Was introduced in version 3.1.0b3,Nova 2.0.0b1 (2010) \
+*History*: Was introduced in version 3.1.0b3,Nova 2.0.0b1 (2010)   
 
 `purge`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1526,10 +1526,10 @@ on server when a depth\_search is used
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1538,8 +1538,8 @@ on server when a depth\_search is used
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Purging files is a potentially dangerous matter during a file copy it
 implies that any promiser (destination) file which is not matched by a
@@ -1548,15 +1548,15 @@ will be irretrievable. Great care should be exercised when using this
 feature.
 
 Note that purging will also delete backup files generated during the
-file copying if `copy_backup` is set to true. \
+file copying if `copy_backup` is set to true.   
 
 `stealth`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1569,10 +1569,10 @@ file copying if `copy_backup` is set to true. \
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1581,10 +1581,10 @@ file copying if `copy_backup` is set to true. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-Preserves file access and modification times on the promiser files. \
+Preserves file access and modification times on the promiser files.   
 
 `timeout`
 
@@ -1594,10 +1594,10 @@ Preserves file access and modification times on the promiser files. \
 
 **Synopsis**: Connection timeout, seconds
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body runagent control
      {
@@ -1606,18 +1606,18 @@ Preserves file access and modification times on the promiser files. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-Timeout in seconds. \
+Timeout in seconds.   
 
 `trustkey`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1631,10 +1631,10 @@ previously unknown
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1643,8 +1643,8 @@ previously unknown
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If the server's public key has not already been trusted, trustkey
 provides automated key-exchange.
@@ -1660,15 +1660,15 @@ trust issue is most important on the server side.
 As soon as a public key has been exchanged, the trust option has no
 effect. A machine that has been trusted remains trusted until its key is
 manually revoked by a system administrator. Keys are stored in
-WORKDIR/ppkeys. \
+WORKDIR/ppkeys.   
 
 `type_check`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1680,10 +1680,10 @@ WORKDIR/ppkeys. \
 **Synopsis**: true/false compare file types before copying and require
 match
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1692,20 +1692,20 @@ match
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 File types at source and destination should normally match in order for
 updates to overwrite them. This option allows this checking to be
-switched off. \
+switched off.   
 
 `verify`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1719,10 +1719,10 @@ switched off. \
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -1731,8 +1731,8 @@ switched off. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is a highly resource intensive option, not recommended for large
 file transfers.
@@ -1741,9 +1741,9 @@ file transfers.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                true
                false
                yes
@@ -1756,10 +1756,10 @@ file transfers.
 
 **Synopsis**: true/false whether to create non-existing file
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 files:
 
   "/path/plain_file"
@@ -1771,8 +1771,8 @@ files:
      create =>   "true";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Directories are created by using the /. to signify a directory type.
 Note that, if no permissions are specified, mode 600 is chosen for a
@@ -1800,9 +1800,9 @@ operations).
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     delete
                     tidy
                     keep
@@ -1811,10 +1811,10 @@ operations).
 **Synopsis**: Menu option policy for dealing with symbolic links to
 directories during deletion
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body delete example
      {
@@ -1823,8 +1823,8 @@ directories during deletion
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Links to directories are normally removed just like any other link or
 file objects. By keeping directory links, you preserve the logical
@@ -1835,22 +1835,22 @@ The value `keep` instructs CFEngine not to remove directory links. The
 values `delete` and `tidy` are synonymous, and instruct CFEngine to
 remove directory links.
 
-**Default value** (only if body is present):\
- \
+**Default value** (only if body is present):  
+   
 
 The default value only has significance if there is a `delete` body
 present. If there is no `delete` body then files (and directory links)
 are **not** deleted.
 
-`dirlinks = delete` \
+`dirlinks = delete`   
 
 `rmdirs`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1862,10 +1862,10 @@ are **not** deleted.
 **Synopsis**: true/false whether to delete empty directories during
 recursive deletion
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body delete example
      {
@@ -1874,15 +1874,15 @@ recursive deletion
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Note the parent directory of a search is not deleted in recursive
 deletions. In CFEngine 2 there was an option to delete the parent of the
 search. In CFEngine 3 you must code a separate promise to delete the
 single parent object.
 
-~~~~ {.verbatim}
+~~~~
      
      bundle agent cleanup
      {
@@ -1916,8 +1916,8 @@ single parent object.
      
 ~~~~
 
-**Default value** (only if body is present):\
- \
+**Default value** (only if body is present):  
+   
 
 The default value only has significance if there is a `delete` body
 present. If there is no `delete` body then files (and directories) are
@@ -1937,10 +1937,10 @@ present. If there is no `delete` body then files (and directories) are
 
 **Synopsis**: Maximum depth level for search
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body depth_search example
      {
@@ -1949,15 +1949,15 @@ present. If there is no `delete` body then files (and directories) are
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This was previously called \`recurse' in earlier versions of CFEngine.
 Note that the value inf may be used for an unlimited value.
 
 When searching recursively from a directory, the parent directory is
 only the anchor point and is not part of the search. To alter the
-parent, a separate non-recursive promise should be made. \
+parent, a separate non-recursive promise should be made.   
 
 `exclude_dirs`
 
@@ -1968,10 +1968,10 @@ parent, a separate non-recursive promise should be made. \
 **Synopsis**: List of regexes of directory names NOT to include in depth
 search
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body depth_search
      {
@@ -1981,19 +1981,19 @@ search
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Directory names are treated specially when searching recursively through
-a file system. \
+a file system.   
 
 `include_basedir`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -2005,10 +2005,10 @@ a file system. \
 **Synopsis**: true/false include the start/root dir of the search
 results
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body depth_search example
      {
@@ -2017,14 +2017,14 @@ results
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 When checking files recursively (with `depth_search`) the promiser is a
 directory. This parameter determines whether that initial directory
 should be considered part of the promise or simply a boundary that marks
 the edge of the search. If true, the promiser directory will also
-promise the same attributes as the files inside it. \
+promise the same attributes as the files inside it.   
 
 `include_dirs`
 
@@ -2035,10 +2035,10 @@ promise the same attributes as the files inside it. \
 **Synopsis**: List of regexes of directory names to include in depth
 search
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body depth_search example
      {
@@ -2047,18 +2047,18 @@ search
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-This is the complement of `exclude_dirs`. \
+This is the complement of `exclude_dirs`.   
 
 `rmdeadlinks`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -2071,10 +2071,10 @@ This is the complement of `exclude_dirs`. \
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body depth_search example
      {
@@ -2083,19 +2083,19 @@ This is the complement of `exclude_dirs`. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A value of true determines that links pointing to files that do not
-exist should be deleted; or kept if set to false. \
+exist should be deleted; or kept if set to false.   
 
 `traverse_links`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -2108,10 +2108,10 @@ exist should be deleted; or kept if set to false. \
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body depth_search example
      {
@@ -2120,20 +2120,20 @@ exist should be deleted; or kept if set to false. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If this is true, `cf-agent` will treat symbolic links to directories as
 if they were directories. Normally this is considered a potentially
-dangerous assumption and links are not traversed. \
+dangerous assumption and links are not traversed.   
 
 `xdev`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -2147,10 +2147,10 @@ devices
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body depth_search example
      {
@@ -2159,8 +2159,8 @@ devices
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 #### `edit_defaults` (body template)
 
@@ -2170,9 +2170,9 @@ devices
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     timestamp
@@ -2183,10 +2183,10 @@ devices
 
 **Default value:** true
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body edit_defaults example
      {
@@ -2195,17 +2195,17 @@ devices
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `empty_file_before_editing`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -2219,10 +2219,10 @@ commencing promised edits
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body edit_defaults example
      {
@@ -2231,19 +2231,19 @@ commencing promised edits
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Emptying a file before reconstructing its contents according to a fixed
-recipe allows an ordered procedure to be convergent. \
+recipe allows an ordered procedure to be convergent.   
 
 `inherit`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -2255,10 +2255,10 @@ recipe allows an ordered procedure to be convergent. \
 **Synopsis**: If true this causes the sub-bundle to inherit the private
 classes of its parent
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      bundle agent name
      {
      methods:
@@ -2274,8 +2274,8 @@ classes of its parent
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
@@ -2286,7 +2286,7 @@ places: for `edit_defaults` and in `methods` promises. If set to true,
 it causes the child-bundle named in the promise to inherit only the
 classes of the parent bundle. Inheriting the variables is unnecessary as
 the child can always access the parent's variables by a qualified
-reference using its bundle name. For example, \$(bundle.variable). \
+reference using its bundle name. For example, \$(bundle.variable).   
 
 `max_file_size`
 
@@ -2296,10 +2296,10 @@ reference using its bundle name. For example, \$(bundle.variable). \
 
 **Synopsis**: Do not edit files bigger than this number of bytes
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body edit_defaults example
      {
@@ -2308,8 +2308,8 @@ reference using its bundle name. For example, \$(bundle.variable). \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 max\_file\_size is a local, per-file sanity check to make sure the file
 editing is sensible. If this is set to zero, the check is disabled and
@@ -2317,15 +2317,15 @@ any size may be edited. The default value of `max_file_size` is
 determined by the global control body setting whose default value is
 `100k`.
 
-See: [editfilesize in agent](#editfilesize-in-agent) \
+See: [editfilesize in agent](#editfilesize-in-agent)   
 
 `recognize_join`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -2339,10 +2339,10 @@ limit
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      files:
      
        "/tmp/test_insert"
@@ -2359,8 +2359,8 @@ limit
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If set to true, this option allows CFEngine to process line based files
 with backslash continuation. The default is to not process continuation
@@ -2368,7 +2368,7 @@ backslashes.
 
 Back slash lines will only be concatenated if the file requires editing,
 and will not be restored. Restoration of the backslashes is not possible
-in a meaningful and convergent fashion. \
+in a meaningful and convergent fashion.   
 
 `rotate`
 
@@ -2379,10 +2379,10 @@ in a meaningful and convergent fashion. \
 **Synopsis**: How many backups to store if 'rotate' edit\_backup
 strategy is selected. Defaults to 1
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body rename example
      {
@@ -2391,8 +2391,8 @@ strategy is selected. Defaults to 1
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Used for log rotation. If the file is named foo and the rotate attribute
 is set to 4, as above, then initially foo is copied to foo.1 and the old
@@ -2422,10 +2422,10 @@ deleted (that is, it "falls off the end" of the rotation).
 
 **Synopsis**: The name of a special CFEngine template file to expand
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 #This is a template file /templates/input.tmpl
 
 These lines apply to anyone
@@ -2448,7 +2448,7 @@ nameserver $(some.list)
 
 For example:
 
-~~~~ {.verbatim}
+~~~~
 [%CFEngine any:: %]
 VirtualHost $(sys.ipv4[eth0]):80>
         ServerAdmin             $(stage_file.params[apache_mail_address][1])
@@ -2480,8 +2480,8 @@ VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>
 [%CFEngine END %]
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
@@ -2489,7 +2489,7 @@ The template format uses inline tags to mark regions and classes. Each
 line represents an `insert_lines` promise, unless the promises are
 grouped into a block using:
 
-~~~~ {.verbatim}
+~~~~
 [%CFEngine BEGIN %]
 ...
 [%CFEngine END %]
@@ -2501,7 +2501,7 @@ lists are expanded (see the Special Topics Guide on editing).
 
 If a class-context modified is used:
 
-~~~~ {.verbatim}
+~~~~
 [%CFEngine class-expression:: %]
 ~~~~
 
@@ -2524,10 +2524,10 @@ agent's current context. This allows conditional insertion.
 
 **Synopsis**: List of regexes that match an acceptable name
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select example
      {
@@ -2537,10 +2537,10 @@ agent's current context. This allows conditional insertion.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-This pattern matches only the node name of the file, not its path. \
+This pattern matches only the node name of the file, not its path.   
 
 `path_name`
 
@@ -2550,10 +2550,10 @@ This pattern matches only the node name of the file, not its path. \
 
 **Synopsis**: List of pathnames to match acceptable target
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select example
      {
@@ -2565,11 +2565,11 @@ This pattern matches only the node name of the file, not its path. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Path name and leaf name can be conveniently tested for separately by use
-of appropriate regular expressions. \
+of appropriate regular expressions.   
 
 `search_mode`
 
@@ -2579,10 +2579,10 @@ of appropriate regular expressions. \
 
 **Synopsis**: A list of mode masks for acceptable file permissions
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      #######################################################
      #
@@ -2635,12 +2635,12 @@ of appropriate regular expressions. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The mode may be specified in symbolic or numerical form with + and -
 constraints. Concatenation `ug+s` implies `u` OR `g`, and `u+g,u+s`
-implies `u` AND `g`. \
+implies `u` AND `g`.   
 
 `search_size`
 
@@ -2650,10 +2650,10 @@ implies `u` AND `g`. \
 
 **Synopsis**: Integer range of file sizes
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select example
      {
@@ -2663,9 +2663,9 @@ implies `u` AND `g`. \
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `search_owners`
 
@@ -2676,10 +2676,10 @@ implies `u` AND `g`. \
 **Synopsis**: List of acceptable user names or ids for the file, or
 regexes to match
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select example
      {
@@ -2689,13 +2689,13 @@ regexes to match
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A list of regular expressions any of which must match the entire userid
 (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)). Windows
-does not have user ids, only names. \
+does not have user ids, only names.   
 
 `search_groups`
 
@@ -2706,10 +2706,10 @@ does not have user ids, only names. \
 **Synopsis**: List of acceptable group names or ids for the file, or
 regexes to match
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select example
      {
@@ -2719,13 +2719,13 @@ regexes to match
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A list of regular expressions, any of which must match the entire group
 (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)). On
-Windows, files do not have group associations. \
+Windows, files do not have group associations.   
 
 `search_bsdflags`
 
@@ -2736,10 +2736,10 @@ Windows, files do not have group associations. \
 
 **Synopsis**: String of flags for bsd file system flags expected set
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select xyz
      {
@@ -2748,11 +2748,11 @@ Windows, files do not have group associations. \
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Extra BSD file system flags (these have no effect on non-BSD versions of
-CFEngine). See the manual page for `chflags` for more details. \
+CFEngine). See the manual page for `chflags` for more details.   
 
 `ctime`
 
@@ -2762,10 +2762,10 @@ CFEngine). See the manual page for `chflags` for more details. \
 
 **Synopsis**: Range of change times (ctime) for acceptable files
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body files_select example
      {
@@ -2775,12 +2775,12 @@ CFEngine). See the manual page for `chflags` for more details. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The file's change time refers to both modification of content and
 attributes, such as permissions. On Windows, `ctime` refers to creation
-time. \
+time.   
 
 `mtime`
 
@@ -2790,10 +2790,10 @@ time. \
 
 **Synopsis**: Range of modification times (mtime) for acceptable files
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body files_select example
      
@@ -2805,11 +2805,11 @@ time. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The file's modification time refers to both modification of content but
-not other attributes, such as permissions. \
+not other attributes, such as permissions.   
 
 `atime`
 
@@ -2819,10 +2819,10 @@ not other attributes, such as permissions. \
 
 **Synopsis**: Range of access times (atime) for acceptable files
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body file_select used_recently
      {
      
@@ -2842,11 +2842,11 @@ not other attributes, such as permissions. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A range of times during which a file was accessed can be specified in a
-`file_select` body. This is similar to file filters in CFEngine 2. \
+`file_select` body. This is similar to file filters in CFEngine 2.   
 
 `exec_regex`
 
@@ -2857,10 +2857,10 @@ A range of times during which a file was accessed can be specified in a
 **Synopsis**: Matches file if this regular expression matches any full
 line returned by the command
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select example
      {
@@ -2871,14 +2871,14 @@ line returned by the command
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The regular expression must be used in conjunction with the
 `exec_program` test. In this way the program must both return exit
 status 0 and its output must match the regular expression. The entire
 output must be matched (see [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 `exec_program`
 
@@ -2889,10 +2889,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 **Synopsis**: Execute this command on each file and match if the exit
 status is zero
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select example
      {
@@ -2902,20 +2902,20 @@ status is zero
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is part of the customizable file search criteria. If the
 user-defined program returns exit status 0, the file is considered
-matched. \
+matched.   
 
 `file_types`
 
 **Type**: (option list)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     plain
                     reg
                     symlink
@@ -2929,10 +2929,10 @@ matched. \
 
 **Synopsis**: List of acceptable file types from menu choices
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select filter
      {
@@ -2943,12 +2943,12 @@ matched. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 File types vary in details between operating systems. The main POSIX
 types are provided here as menu options, with reg being a synonym for
-plain. In both cases this means not one of the "special" file types. \
+plain. In both cases this means not one of the "special" file types.   
 
 `issymlinkto`
 
@@ -2958,10 +2958,10 @@ plain. In both cases this means not one of the "special" file types. \
 
 **Synopsis**: List of regular expressions to match file objects
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select example
      {
@@ -2970,13 +2970,13 @@ plain. In both cases this means not one of the "special" file types. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A list of regular expressions. If the file is a symbolic link that
 points to files matched by one of these expressions, the file will be
 selected. Windows does not support symbolic links, so this attribute is
-not applicable on that platform. \
+not applicable on that platform.   
 
 `file_result`
 
@@ -2988,10 +2988,10 @@ not applicable on that platform. \
 **Synopsis**: Logical expression combining classes defined by file
 search criteria
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body file_select year_or_less
      
@@ -3012,8 +3012,8 @@ search criteria
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Sets the criteria for file selection outcome during file searches. The
 syntax is the same as for a class expression, since the file selection
@@ -3056,10 +3056,10 @@ following list:
 **Synopsis**: A set of patterns that should be copied and synchronized
 instead of linked
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body link_from example
      {
@@ -3068,22 +3068,22 @@ instead of linked
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 During the linking of files, it is sometimes useful to buffer changes
 with an actual copy, especially if the link is to an ephemeral file
 system. This list of patterns matches files that arise during a linking
 policy. A positive match means that the file should be copied and
-updated by modification time. \
+updated by modification time.   
 
 `link_children`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -3097,10 +3097,10 @@ source originals
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body link_from example
      {
@@ -3109,19 +3109,19 @@ source originals
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If the promiser is a directory, instead of copying the children, link
-them to the source. \
+them to the source.   
 
 `link_type`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     symlink
                     hardlink
                     relative
@@ -3132,10 +3132,10 @@ them to the source. \
 
 **Default value:** symlink
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body link_from example
      {
@@ -3145,8 +3145,8 @@ them to the source. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This determines what kind of link should be used to link files. Users
 are advised to be wary of \`hard links' (see Unix manual pages for the
@@ -3159,7 +3159,7 @@ from relative links. Although all of these are symbolic links, the
 nomenclature here is defined such that symlink and absolute are
 equivalent . When verifying a link, choosing \`relative' means that the
 link *must* be relative to the source, so relative and absolute links
-are mutually exclusive. \
+are mutually exclusive.   
 
 `source`
 
@@ -3169,10 +3169,10 @@ are mutually exclusive. \
 
 **Synopsis**: The source file to which the link should point
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body copy_from example
      {
@@ -3188,18 +3188,18 @@ are mutually exclusive. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-For remote copies this refers to the file name on the remote server. \
+For remote copies this refers to the file name on the remote server.   
 
 `when_linking_children`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     override_file
                     if_no_such_file
 ~~~~
@@ -3207,10 +3207,10 @@ For remote copies this refers to the file name on the remote server. \
 **Synopsis**: Policy for overriding existing files when linking
 directories of children
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body link_from example
      {
@@ -3219,8 +3219,8 @@ directories of children
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The options refer to what happens if the directory already exists, and
 is already partially populated with files. If the directory being copied
@@ -3228,15 +3228,15 @@ from contains a file with the same name as that of a link to be created,
 it must be decided whether to override the existing destination object
 with a link, or simply omit the automatic linkage for files that already
 exist. The latter case can be used to make a copy of one directory with
-certain fields overridden. \
+certain fields overridden.   
 
 `when_no_source`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     force
                     delete
                     nop
@@ -3246,10 +3246,10 @@ certain fields overridden. \
 
 **Default value:** nop
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body link_from example
      {
@@ -3258,8 +3258,8 @@ certain fields overridden. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This describes how CFEngine should respond to an attempt to create a
 link to a file that does not exist. The options are to force the
@@ -3270,9 +3270,9 @@ or do nothing.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                true
                false
                yes
@@ -3286,10 +3286,10 @@ or do nothing.
 **Synopsis**: true/false whether to move obstructions to file-object
 creation
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 files:
 
   "/tmp/testcopy" 
@@ -3299,8 +3299,8 @@ files:
     depth_search => recurse("inf");
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If we have promised to make file X a link, but it already exists as a
 file, or vice-versa, or if a file is blocking the creation of a
@@ -3321,9 +3321,9 @@ link, if the behaviour is different.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                literal
                regex
                guess
@@ -3331,10 +3331,10 @@ link, if the behaviour is different.
 
 **Synopsis**: Menu option for interpreting promiser file object
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 files:
 
    "/var/lib\d"
@@ -3351,8 +3351,8 @@ files:
          perms => system;
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  By default, CFEngine makes an educated guess as to whether the promise
 pathname involves a regular expression or not. This guesswork is needed
 due to cross-platform differences in filename interpretation.
@@ -3397,10 +3397,10 @@ more information.
 
 **Synopsis**: List of menu options for BSD file system flags to set
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body perms example
      
@@ -3411,12 +3411,12 @@ more information.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The BSD Unices (FreeBSD, OpenBSD, NetBSD) and MacOSX have additional
 file system flags which can be set. Refer to the BSD `chflags`
-documentation for this. \
+documentation for this.   
 
 `groups`
 
@@ -3427,10 +3427,10 @@ documentation for this. \
 **Synopsis**: List of acceptable groups of group ids, first is change
 target
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body perms example
      {
      groups => { "users", "administrators" };
@@ -3438,8 +3438,8 @@ target
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The first named group in the list is the default that will be configured
 if the file does not match an element of the list. The reserved word
@@ -3447,7 +3447,7 @@ none may be used to match files that are not owned by a registered
 group. On Windows, files do not have file groups associated with them,
 and thus this attribute is ignored.
 
-ACLs may be used in place for this. \
+ACLs may be used in place for this.   
 
 `mode`
 
@@ -3457,10 +3457,10 @@ ACLs may be used in place for this. \
 
 **Synopsis**: File permissions (like posix chmod)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body perms example
      {
@@ -3469,12 +3469,12 @@ ACLs may be used in place for this. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The mode string may be symbolic or numerical, like `chmod`. This is
 ignored on Windows, as the permission model uses ACLs. ACLs are
-supported by CFEngine Nova. \
+supported by CFEngine Nova.   
 
 `owners`
 
@@ -3485,10 +3485,10 @@ supported by CFEngine Nova. \
 **Synopsis**: List of acceptable owners or user ids, first is change
 target
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body perms example
      {
@@ -3497,8 +3497,8 @@ target
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The first user is the reference value that CFEngine will set the file to
 if none of the list items matches the true state of the file. The
@@ -3508,15 +3508,15 @@ registered user.
 On Windows, users can only take ownership of files, never give it. Thus,
 the first user in the list should be the user running the CFEngine
 process (usually Administrator). Additionally, some groups may be owners
-on Windows (such as the Administrators group). \
+on Windows (such as the Administrators group).   
 
 `rxdirs`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -3528,10 +3528,10 @@ on Windows (such as the Administrators group). \
 **Synopsis**: true/false add execute flag for directories if read flag
 is set
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body perms rxdirs
      {
@@ -3540,8 +3540,8 @@ is set
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Default behaviour is to set the x flag on directories automatically if
 the r flag is specified when specifying multiple files in a single
@@ -3555,9 +3555,9 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -3570,10 +3570,10 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body rename example
      {
@@ -3583,12 +3583,12 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Disabling a file means making it unusable. For executables this means
 preventing execution, for an information file it means making the file
-unreadable. \
+unreadable.   
 
 `disable_mode`
 
@@ -3598,10 +3598,10 @@ unreadable. \
 
 **Synopsis**: The permissions to set when a file is disabled
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body rename example
      {
@@ -3610,11 +3610,11 @@ unreadable. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 To disable an executable it is not enough to rename it, you should also
-remove the executable flag. \
+remove the executable flag.   
 
 `disable_suffix`
 
@@ -3624,10 +3624,10 @@ remove the executable flag. \
 
 **Synopsis**: The suffix to add to files when disabling (.cfdisabled)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body rename example
      {
@@ -3637,11 +3637,11 @@ remove the executable flag. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 To disable files in a particular manner, use this string suffix. The
-default value is .cf-disabled. \
+default value is .cf-disabled.   
 
 `newname`
 
@@ -3651,10 +3651,10 @@ default value is .cf-disabled. \
 
 **Synopsis**: The desired name for the current file
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body rename example(s)
      {
@@ -3663,9 +3663,9 @@ default value is .cf-disabled. \
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `rotate`
 
@@ -3675,10 +3675,10 @@ default value is .cf-disabled. \
 
 **Synopsis**: Maximum number of file rotations to keep
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body rename example
      {
@@ -3687,8 +3687,8 @@ default value is .cf-disabled. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Used for log rotation. If the file is named foo and the rotate attribute
 is set to 4, as above, then initially foo is copied to foo.1 and the old
@@ -3714,10 +3714,10 @@ deleted (that is, it "falls off the end" of the rotation).
 
 **Synopsis**: Name of a repository for versioning
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 files:
 
  "/path/file"
@@ -3726,8 +3726,8 @@ files:
    repository => "/var/cfengine/repository";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A local repository for this object, overrides the default.
 
@@ -3743,9 +3743,9 @@ ordinarily be stored in an alternative repository as
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                true
                false
                yes
@@ -3756,10 +3756,10 @@ ordinarily be stored in an alternative repository as
 
 **Synopsis**: true/false whether to touch time stamps on file
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 files:
 
  "/path/file"
@@ -3767,8 +3767,8 @@ files:
    touch => "true";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 #### `transformer`
 
@@ -3779,10 +3779,10 @@ files:
 **Synopsis**: Command (with full path) used to transform current file
 (no shell wrapper used)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 files:
   "/home/mark/tmp/testcopy"
 
@@ -3791,7 +3791,7 @@ files:
     depth_search => recurse("inf");
 ~~~~
 
-~~~~ {.verbatim}
+~~~~
  classes:
     "do_update" expression => isnewerthan("/etc/postfix/alias",
                                           "/etc/postfix/alias.cdb");
@@ -3803,8 +3803,8 @@ files:
        ifvarclass => "do_update";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A command to execute, usually for the promised file to transform it to
 something else (but possibly to create the promised file based on a
@@ -3828,7 +3828,7 @@ Note also that if you use the `$(this.promiser)` variable or other
 variable in this command, and the file object contains spaces, then you
 should quote the variable. For example:
 
-~~~~ {.verbatim}
+~~~~
     transformer => "/usr/bin/gzip \"$(this.promiser)\"",
 ~~~~
 
@@ -3836,7 +3836,7 @@ Note also that the transformer does not actually need to change the
 file. You can, for example, simply report on the existence of files
 with:
 
-~~~~ {.verbatim}
+~~~~
     transformer => "/bin/echo I found a file named $(this.promiser)",
 ~~~~
 

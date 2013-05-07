@@ -12,7 +12,7 @@ tags: [Logs-and-records,State-information]
 The CFEngine components keep their current process identifier number in
 \`pid files' in the work directory. For example:
 
-~~~~ {.verbatim}
+~~~~
 cf-execd.pid
 cf-serverd.pid
 ~~~~
@@ -24,12 +24,12 @@ state/env\_data
 
 This file contains a list of currently discovered classes and variable
 values that characterize the anomaly alert environment. They are altered
-by the monitor daemon. \
+by the monitor daemon.   
 
 state/all\_classes
 
 A list of all the classes that were defined the last time that CFEngine
-was run. \
+was run.   
 
 state/cf\_\*
 

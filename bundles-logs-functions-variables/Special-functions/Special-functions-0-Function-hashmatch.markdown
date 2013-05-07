@@ -11,20 +11,20 @@ tags: [Special-functions,Function-hashmatch]
 
 **Synopsis**: hashmatch(arg1,arg2,arg3) returns type **class**
 
-\
- *arg1* : Filename to hash, *in the range* "?(/.\*) \
+  
+ *arg1* : Filename to hash, *in the range* "?(/.\*)   
  *arg2* : Hash or digest algorithm, *in the range*
-md5,sha1,crypt,cf\_sha224,cf\_sha256,cf\_sha384,cf\_sha512 \
+md5,sha1,crypt,cf\_sha224,cf\_sha256,cf\_sha384,cf\_sha512   
  *arg3* : ASCII representation of hash for comparison, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Compute the hash of arg1, of type arg2 and test if it matches the value
 in arg3
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 
 {     
@@ -41,10 +41,10 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-~~~~ {.example}
+~~~~
      
      (class) hashmatch(file,md5|sha1|crypt,hash-comparison);
      

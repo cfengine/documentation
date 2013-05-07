@@ -10,9 +10,9 @@ tags: [Bundles-for-monitor]
 Bundles of `monitor`
 --------------------
 
-\
+  
 
-~~~~ {.smallexample}
+~~~~
      
      bundle monitor example
      {
@@ -37,7 +37,7 @@ Bundles of `monitor`
 Monitor bundles contain user defined promises for system discovery and
 monitoring.
 
-\
+  
 
 -   [classes in common promises](#classes-in-common-promises):
 -   [defaults in common promises](#defaults-in-common-promises):

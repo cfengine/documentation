@@ -11,15 +11,15 @@ tags: [Special-functions,Function-ip2host]
 
 **Synopsis**: ip2host(arg1) returns type **string**
 
-\
- *arg1* : IP address (IPv4 or IPv6), *in the range* .\* \
+  
+ *arg1* : IP address (IPv4 or IPv6), *in the range* .\*   
 
 Returns the primary name-service host name for the IP address
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent reverse_lookup
 {
 vars:
@@ -34,8 +34,8 @@ cfengine_3::
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Uses whatever configured name service is used by the resolver library to
 translate an IP address to a hostname. IPv6 addresses will also resolve,

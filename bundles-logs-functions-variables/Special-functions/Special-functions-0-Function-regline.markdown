@@ -11,16 +11,16 @@ tags: [Special-functions,Function-regline]
 
 **Synopsis**: regline(arg1,arg2) returns type **class**
 
-\
- *arg1* : Regular expression, *in the range* .\* \
- *arg2* : Filename to search, *in the range* .\* \
+  
+ *arg1* : Regular expression, *in the range* .\*   
+ *arg2* : Filename to search, *in the range* .\*   
 
 True if the regular expression in arg1 matches a line in file arg2
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent testbundle
 
 {
@@ -46,8 +46,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Note that the regular expression must match an entire line of the file
 in order to give a true result. This function is useful for `edit_line`
@@ -55,7 +55,7 @@ applications, where one might want to set a class for detecting the
 presence of a string that does not exactly match one being inserted. For
 example:
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_line upgrade_cfexecd
   {
   classes:

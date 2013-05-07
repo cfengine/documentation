@@ -11,19 +11,20 @@ tags: [Special-functions,Function-readtcp]
 
 **Synopsis**: readtcp(arg1,arg2,arg3,arg4) returns type **string**
 
-\
- *arg1* : Host name or IP address of server socket, *in the range* .\* \
- *arg2* : Port number, *in the range* 0,99999999999 \
- *arg3* : Protocol query string, *in the range* .\* \
+  
+ *arg1* : Host name or IP address of server socket, *in the range* .\*
+  
+ *arg2* : Port number, *in the range* 0,99999999999   
+ *arg3* : Protocol query string, *in the range* .\*   
  *arg4* : Maximum number of bytes to read, *in the range* 0,99999999999
-\
+  
 
 Connect to tcp port, send string and assign result to variable
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 
 {     
@@ -49,15 +50,15 @@ reports:
 
 hostnameip
 
-The host name or IP address of a tcp socket. \
+The host name or IP address of a tcp socket.   
 
 port
 
-The port number to connect to. \
+The port number to connect to.   
 
 sendstring
 
-A string to send to the TCP port to elicit a response \
+A string to send to the TCP port to elicit a response   
 
 maxbytes
 
@@ -67,8 +68,8 @@ Important note: not all Unix TCP read operations respond to signals for
 interruption so poorly formed requests can hang. Always test TCP
 connections fully before deploying.
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If the send string is empty, no data are sent or received from the
 socket. Then the function only tests whether the TCP port is alive and

@@ -11,15 +11,15 @@ tags: [Special-functions,Function-iprange]
 
 **Synopsis**: iprange(arg1) returns type **class**
 
-\
- *arg1* : IP address range syntax, *in the range* .\* \
+  
+ *arg1* : IP address range syntax, *in the range* .\*   
 
 True if the current host lies in the range of IP addresses specified
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -48,7 +48,7 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Pattern matching based on IP addresses.

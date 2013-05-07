@@ -9,7 +9,7 @@ tags: [Bundles-for-knowledge,things-in-knowledge-promises]
 
 ### `things` promises in knowledge
 
-\
+  
 
 *History*: Was introduced in version 3.2, Nova 2.1 (2011)
 
@@ -24,9 +24,9 @@ much more concretely than we do with abstract topics.
 To make it simpler to talk about things, `things` promises were
 introduced.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 body knowledge TheRealWorld
 {
 things:
@@ -42,7 +42,7 @@ things:
 }
 ~~~~
 
-\
+  
 
 Things promises are in every way equivalent to the more general topics
 promises. Things can be extended as topics. The contexts are
@@ -83,17 +83,17 @@ regular worldly things.
 **Synopsis**: A list of words to be treated as equivalents in the
 defined context
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
  mathematics::
 
    "tree" synonyms => { "DAG", "directed acyclic graph" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.3a1,Nova 2.0.2a1 (2010)
 
@@ -109,17 +109,17 @@ searches.
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
    "The Moon"   affects => {  "surf", "tides" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  *History*: Was introduced in version 3.2, Nova 2.1 (2011)
 
 #### `belongs_to`
@@ -131,10 +131,10 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
   "router-123" 
@@ -143,8 +143,8 @@ things:
         belongs_to => { "company::cfengine" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.2, Nova 2.1 (2011)
 
@@ -157,10 +157,10 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle knowledge test
 {
 things:
@@ -171,8 +171,8 @@ things:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.2.0, Nova 2.1.0 (2011)
 
@@ -182,9 +182,9 @@ The complement of \`is\_caused\_by' for convenience.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                certain
                uncertain
                possible
@@ -193,10 +193,10 @@ The complement of \`is\_caused\_by' for convenience.
 **Synopsis**: Selects the level of certainty for the proposed knowledge,
 for use in inferential reasoning
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle knowledge test
 {
 things:
@@ -209,8 +209,8 @@ things:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.5, Nova 2.1 (2011)
 
@@ -228,18 +228,18 @@ the relationships between things. For example, the certain relationship
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
   "router one" determines => { "network connectivity" },
                 certainty => "uncertain";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.5, Nova 2.1 (2011)
 
@@ -252,10 +252,10 @@ things:
 **Synopsis**: A list of words to be treated as super-sets for the
 current topic, used when reasoning
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
  topics:
 
   persons::
@@ -267,8 +267,8 @@ current topic, used when reasoning
      "10.10.10.10/24" generalizations => { "network", "CIDR format" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.2, Nova 2.1 (2011)
 
@@ -288,18 +288,18 @@ about issues, when searching for diagnostic explanations.
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
    "my promise"  
               implements => { "my goal" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.4.0
 
@@ -312,10 +312,10 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
    "desired state"
@@ -327,8 +327,8 @@ things:
                   };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
@@ -341,10 +341,10 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle knowledge test
 {
 things:
@@ -355,8 +355,8 @@ things:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.2.0, Nova 2.1.0 (2011)
 
@@ -371,10 +371,10 @@ The complement of \`causes' for convenience of expression.
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
  networks::
@@ -390,8 +390,8 @@ things:
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
@@ -404,17 +404,17 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
   "why" is_determined_by => { "bodyparts::comment", "Semantic commentary" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
@@ -429,10 +429,10 @@ This is the inverse of `determines`.
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
   "Installing CFEngine"
@@ -440,8 +440,8 @@ things:
     is_followed_by => { "bootstrapping", "policy editing" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
@@ -454,18 +454,18 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
    "my goal"  
               is_implemented_by => { "my promise" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.4.0
 
@@ -478,10 +478,10 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
  countries::
@@ -493,8 +493,8 @@ things:
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.2, Nova 2.1 (2011)
 
@@ -507,10 +507,10 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
  service_measurements::
@@ -518,8 +518,8 @@ things:
   "login services" is_measured_by => { "ssh_in" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  *History*: Was introduced in 3.4.0, Enterprise 3.0
 
 #### `is_part_of`
@@ -531,17 +531,17 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
   "host 1" is_part_of => { "123.456.789.0/24" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.5, Nova 2.1 (2011)
 
@@ -554,10 +554,10 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
   "disk failure"
@@ -566,8 +566,8 @@ things:
          certainty => "possible";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
@@ -580,10 +580,10 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
  service_measurements::
@@ -592,8 +592,8 @@ things:
                measures => { "ssh" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.4.0, Enterprise 3.0
 
@@ -606,10 +606,10 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
   "rack 123"     needs => { "power", "cooling" };
@@ -618,8 +618,8 @@ things:
              certainty => "possible";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.5, Nova 2.1 (2011)
 
@@ -632,17 +632,17 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
    "host 23" provides => { "www", "email" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.2, Nova 2.1 (2011)
 
@@ -655,16 +655,16 @@ things:
 **Synopsis**: Special fixed relation for describing topics that are
 things
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 things:
 
   "apache 2.3" uses => { "mysql 4.5" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.2, Nova 2.1 (2011)

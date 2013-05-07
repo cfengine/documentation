@@ -11,17 +11,17 @@ tags: [Special-functions,Function-isgreaterthan]
 
 **Synopsis**: isgreaterthan(arg1,arg2) returns type **class**
 
-\
- *arg1* : Larger string or value, *in the range* .\* \
- *arg2* : Smaller string or value, *in the range* .\* \
+  
+ *arg1* : Larger string or value, *in the range* .\*   
+ *arg2* : Smaller string or value, *in the range* .\*   
 
 True if arg1 is numerically greater than arg2, else compare strings like
 strcmp
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -50,8 +50,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The comparison is made numerically if possible. If the values are
 strings, the result is identical to that of comparing with strcmp().

@@ -11,23 +11,23 @@ tags: [Special-functions,Function-escape]
 
 **Synopsis**: escape(arg1) returns type **string**
 
-\
- *arg1* : IP address or string to escape, *in the range* .\* \
+  
+ *arg1* : IP address or string to escape, *in the range* .\*   
 
 Escape regular expression characters in a string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle server control
 {
 allowconnects         => { "127\.0\.0\.1", escape("192.168.2.1") };
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This function is useful for making inputs readable when a regular
 expression is required, but the literal string contains special

@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,field_005fedits-in-edit_005fline-promises]
 
 ### `field_edits` promises in edit\_line
 
-\
+  
 
 Certain types of text files (e.g. the passwd and group files in Unix)
 are tabular in nature, with field separators (e.g. : or ,). This promise
@@ -23,7 +23,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). Then a
 sub-fields, along with policies for editing these fields, ordering the
 items within them.
 
-~~~~ {.smallexample}
+~~~~
      
      field_edits:
      
@@ -33,9 +33,9 @@ items within them.
      
 ~~~~
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 
 {
@@ -103,14 +103,14 @@ extend_fields => "true";
 }
 ~~~~
 
-\
+  
 
 Field editing allows us to edit tabular files in a unique way, adding
 and removing data from addressable fields. The passwd and group files
 are classic examples of tabular files, but there are many ways to use
 this feature. For example, editing a string:
 
-~~~~ {.verbatim}
+~~~~
 VARIABLE="one two three"
 ~~~~
 
@@ -127,9 +127,9 @@ given by the space.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -142,10 +142,10 @@ given by the space.
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body edit_field example
      {
@@ -155,21 +155,21 @@ given by the space.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 When editing a file using the field or column model, blank fields,
 especially at the start and end are generally discarded. If this is set
 to true, CFEngine will retain the blank fields and print the appropriate
-number of field separators. \
+number of field separators.   
 
 `extend_fields`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -183,10 +183,10 @@ complete edit
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body edit_field example
      {
@@ -195,22 +195,22 @@ complete edit
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If a user specifies a field that does not exist, because there are not
 so many fields, this allows the number of fields to be extended. Without
 this setting, CFEngine will issue an error if a non-existent field is
 referenced. Blank fields in a tabular file can be eliminated or kept
-depending in this setting. If in doubt, set this to true. \
+depending in this setting. If in doubt, set this to true.   
 
 `field_operation`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     prepend
                     append
                     alphanum
@@ -222,10 +222,10 @@ depending in this setting. If in doubt, set this to true. \
 
 **Default value:** none
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body edit_field example
      {
@@ -234,8 +234,8 @@ depending in this setting. If in doubt, set this to true. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The method by which to edit a field in multi-field/column editing of
 tabular files. The methods mean:
@@ -256,7 +256,7 @@ set - replace the entire field/column with the specified value
 delete - delete the specified value (if present) in the specified
 field/column
 
-**Default value**: append \
+**Default value**: append   
 
 `field_separator`
 
@@ -268,10 +268,10 @@ field/column
 
 **Default value:** none
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body edit_field example
      {
@@ -280,12 +280,12 @@ field/column
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Most tabular files are separated by simple characters, but by allowing a
 general regular expression one can make creative use of this model to
-edit all kinds of line-based text files. \
+edit all kinds of line-based text files.   
 
 `field_value`
 
@@ -295,10 +295,10 @@ edit all kinds of line-based text files. \
 
 **Synopsis**: Set field value to a fixed value
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body edit_field example(s)
      {
@@ -307,11 +307,11 @@ edit all kinds of line-based text files. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Set a field to a constant value. For example, reset the value to a
-constant default, empty the field, or set it fixed list. \
+constant default, empty the field, or set it fixed list.   
 
 `select_field`
 
@@ -322,10 +322,10 @@ constant default, empty the field, or set it fixed list. \
 **Synopsis**: Integer index of the field required 0..n (default starts
 from 1)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body field_edits example
      {
@@ -333,18 +333,18 @@ from 1)
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-Numbering starts from 1 (not from 0). \
+Numbering starts from 1 (not from 0).   
 
 `start_fields_from_zero`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -355,10 +355,10 @@ Numbering starts from 1 (not from 0). \
 
 **Synopsis**: If set, the default field numbering starts from 0
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body edit_field col(split,col,newval,method)
      
@@ -375,8 +375,8 @@ Numbering starts from 1 (not from 0). \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
 
@@ -384,7 +384,7 @@ The numbering of fields is a matter for consistency and convention.
 Arrays are usually thought to start with first index equal to zero (0),
 but the first column in a file would normally be 1. By setting this
 option, you can tell CFEngine that the first column should be understood
-as number 0 instead, for consistency with other array functions. \
+as number 0 instead, for consistency with other array functions.   
 
 `value_separator`
 
@@ -397,10 +397,10 @@ field
 
 **Default value:** none
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body field_edit example
      {
@@ -409,8 +409,8 @@ field
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 For example, elements in the group file are separated by :, but the
 lists of users in these fields are separated by ,.

@@ -9,7 +9,7 @@ tags: [Bundles-for-common,defaults-in-common-promises]
 
 ### `defaults` promises in \*
 
-\
+  
 
 Defaults promises are related to variables. If a variable or parameter
 in a promise bundle is undefined, or its value is defined to be invalid,
@@ -23,7 +23,7 @@ Some variables might be defined but still contain unresolved variables.
 To handle this you will need to match the `$(abc)` form of the
 variables.
 
-~~~~ {.verbatim}
+~~~~
 body common control
 {
 bundlesequence => { "main" };
@@ -56,7 +56,7 @@ reports:
 
 Another example:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 
 {     
@@ -106,7 +106,7 @@ reports:
 }
 ~~~~
 
-\
+  
 
 -   [if\_match\_regex in defaults](#if_005fmatch_005fregex-in-defaults)
 -   [string in defaults](#string-in-defaults)
@@ -125,10 +125,10 @@ If a parameter or variable is already defined in the current context,
 and the value matches this regular expression, it will be deemed invalid
 and replaced with the default value.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent mymethod(a,b)
 {
 defaults:
@@ -150,10 +150,10 @@ In previous versions of CFEngine lists were represented (as in the
 shell) using separated scalars; similar to the PATH variable. In
 CFEngine 3 lists are kept as an independent type.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
  "xxx"    string => "Some literal string...";
@@ -176,10 +176,10 @@ variable substitution and
 expansion](#List-variable-substitution-and-expansion), and [policy in
 vars](#policy-in-vars)).
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };

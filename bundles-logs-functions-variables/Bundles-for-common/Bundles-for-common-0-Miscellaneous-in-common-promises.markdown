@@ -9,7 +9,7 @@ tags: [Bundles-for-common,Miscellaneous-in-common-promises]
 
 ### `*` promises
 
-\
+  
 
 Whereas most promise types are specific to a particular kind of
 interpretation that requires a typed interpreter (the bundle type), a
@@ -33,9 +33,9 @@ promises. The specific promise attributes are listed below.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     fix
                     warn
                     nop
@@ -43,12 +43,12 @@ promises. The specific promise attributes are listed below.
 
 **Synopsis**: Whether to repair or report about non-kept promises
 
-**Example**:\
- \
+**Example**:  
+   
 
 The following example shows a simple use of transaction control:
 
-~~~~ {.verbatim}
+~~~~
      
      body action warn_only {
      action_policy => "warn";
@@ -57,8 +57,8 @@ The following example shows a simple use of transaction control:
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The `action` settings allow general transaction control to be
 implemented on promise verification. Action bodies place limits on how
@@ -70,7 +70,7 @@ bundles, and that promises within these do not inherit action settings
 at higher levels. Thus, in the following example there are two levels of
 action setting:
 
-~~~~ {.verbatim}
+~~~~
      ########################################################
      #
      # Warn if line matched
@@ -122,18 +122,18 @@ modelling of the file will only warn about changes rather than
 committing them to the memory model. This makes little difference to the
 end result, but it means that CFEngine will report
 
-~~~~ {.smallexample}
+~~~~
           Need to delete line - ... - but only a warning was promised
 ~~~~
 
 Instead of
 
-~~~~ {.smallexample}
+~~~~
           Deleting the promised line ... Need to save file - but only a warning was promised
 ~~~~
 
 In either case, no changes will be made to the disk, but the messages
-given by `cf-agent` will differ. \
+given by `cf-agent` will differ.   
 
 `ifelapsed`
 
@@ -146,10 +146,10 @@ promise
 
 **Default value:** control body value
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      #local
      
@@ -168,8 +168,8 @@ promise
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This overrides the global settings. Promises which take a long time to
 verify should usually be protected with a long value for this parameter.
@@ -177,7 +177,7 @@ This serves as a resource \`spam' protection. A CFEngine check could
 easily run every 5 minutes provided resource intensive operations are
 not performed on every run. Using time classes such as `Hr12` is one
 part of this strategy; using `ifelapsed` is another, which is not tied
-to a specific time. \
+to a specific time.   
 
 `expireafter`
 
@@ -190,10 +190,10 @@ and retried
 
 **Default value:** control body value
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body action example
      {
      ifelapsed   => "120";  # 2 hours
@@ -201,11 +201,11 @@ and retried
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The locking time after which CFEngine will attempt to kill and restart
-its attempt to keep a promise. \
+its attempt to keep a promise.   
 
 `log_string`
 
@@ -216,10 +216,10 @@ its attempt to keep a promise. \
 **Synopsis**: A message to be written to the log when a promise
 verification leads to a repair
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.example}
+~~~~
           
           promise-type:
           
@@ -237,8 +237,8 @@ verification leads to a repair
           
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The `log_string` works together with `log_repair`, `log_kept` etc, to
 define a string for logging to one of the named files depending on
@@ -252,15 +252,15 @@ Hint: the promise handle \$(this.handle) can be a useful referent in a
 log message, indicating the origin of the message. In CFEngine Nova and
 above, every promise has a default handle, which is based on the
 filename and line number (specifying your own handle will probably be
-more mnemonic). \
+more mnemonic).   
 
 `log_level`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     inform
                     verbose
                     error
@@ -269,10 +269,10 @@ more mnemonic). \
 
 **Synopsis**: The reporting level sent to syslog
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body action example
      {
@@ -281,8 +281,8 @@ more mnemonic). \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Use this as an alternative to auditing if you wish to use the syslog
 mechanism to centralize or manage messaging from CFEngine. A backup of
@@ -291,7 +291,7 @@ these messages will still be kept in WORKDIR/outputs if you are using
 
 On the native Windows version of CFEngine (Nova or above), using verbose
 will include a message when the promise is kept or repaired in the event
-log. \
+log.   
 
 `log_kept`
 
@@ -302,10 +302,10 @@ log. \
 **Synopsis**: This should be the filename of a file to which log\_string
 will be saved, and if undefined it goes to the system logger
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body action logme(x)
      {
@@ -317,8 +317,8 @@ will be saved, and if undefined it goes to the system logger
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If this option is specified together with `log_string`, the current
 promise will log promise-kept status using the log string to this named
@@ -336,7 +336,7 @@ the log, of one of the following special values:
 stdout
 
 Send the log message to the standard output, prefixed with an L: to
-indicate a log message. \
+indicate a log message.   
 
 udp\_syslog
 
@@ -344,15 +344,15 @@ Attempt to connect to the `syslog_server` defined in body common control
 and log the message there, assuming the server is configured to receive
 the request.
 
-\
+  
 
 `log_priority`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     emergency
                     alert
                     critical
@@ -366,20 +366,20 @@ the request.
 **Synopsis**: The priority level of the log message, as interpreted by a
 syslog server
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body action low_priority
      {
      log_priority => "info";
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-This determines the importance of messages from CFEngine. \
+This determines the importance of messages from CFEngine.   
 
 `log_repaired`
 
@@ -390,10 +390,10 @@ This determines the importance of messages from CFEngine. \
 **Synopsis**: This should be filename of a file to which log\_string
 will be saved, if undefined it goes to the system logger
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      bundle agent test
      {
@@ -425,8 +425,8 @@ will be saved, if undefined it goes to the system logger
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This may be the name of a log to which the `log_string` is written if a
 promise is repaired. It should be the full path to a text file which
@@ -435,7 +435,7 @@ will contain the log, of one of the following special values:
 stdout
 
 Send the log message to the standard output, prefixed with an L: to
-indicate a log message. \
+indicate a log message.   
 
 udp\_syslog
 
@@ -443,7 +443,7 @@ Attempt to connect to the `syslog_server` defined in body common control
 and log the message there, assuming the server is configured to receive
 the request.
 
-\
+  
 
 `log_failed`
 
@@ -454,10 +454,10 @@ the request.
 **Synopsis**: This should be the filename of a file to which log\_string
 will be saved, and if undefined it goes to the system logger
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      bundle agent test
      {
@@ -485,8 +485,8 @@ will be saved, and if undefined it goes to the system logger
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If this option is specified together with `log_string`, the current
 promise will log promise-kept status using the log string to this named
@@ -503,7 +503,7 @@ one of the following special values:
 stdout
 
 Send the log message to the standard output, prefixed with an L: to
-indicate a log message. \
+indicate a log message.   
 
 udp\_syslog
 
@@ -511,7 +511,7 @@ Attempt to connect to the `syslog_server` defined in body common control
 and log the message there, assuming the server is configured to receive
 the request.
 
-\
+  
 
 `value_kept`
 
@@ -521,10 +521,10 @@ the request.
 
 **Synopsis**: A real number value attributed to keeping this promise
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body action mydef
      {
@@ -536,12 +536,12 @@ the request.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If nothing is specified, the default value is +1.0. However, nothing is
 logged unless the agent control body switched on track\_value = "true".
-\
+  
 
 `value_repaired`
 
@@ -551,10 +551,10 @@ logged unless the agent control body switched on track\_value = "true".
 
 **Synopsis**: A real number value attributed to repairing this promise
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body action mydef
      {
@@ -566,12 +566,12 @@ logged unless the agent control body switched on track\_value = "true".
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If nothing is specified, the default value is 0.5. However, nothing is
 logged unless the agent control body switched on track\_value = "true".
-\
+  
 
 `value_notkept`
 
@@ -582,10 +582,10 @@ logged unless the agent control body switched on track\_value = "true".
 **Synopsis**: A real number value (possibly negative) attributed to not
 keeping this promise
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body action mydef
      {
@@ -597,20 +597,20 @@ keeping this promise
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If nothing is specified, the default value is -1.0. However, nothing is
 logged unless the agent control body switched on track\_value = "true".
-\
+  
 
 `audit`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -624,10 +624,10 @@ promise
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body action example
      {
@@ -638,21 +638,21 @@ promise
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If this is set, CFEngine will perform auditing on this specific promise.
 This means that all details surrounding the verification of the current
 promise will be recorded in the audit database. The database may be
-inspected with `cf-report`, or `cfshow` in CFEngine 2. \
+inspected with `cf-report`, or `cfshow` in CFEngine 2.   
 
 `background`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -665,10 +665,10 @@ inspected with `cf-report`, or `cfshow` in CFEngine 2. \
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body action example
      {
@@ -677,8 +677,8 @@ inspected with `cf-report`, or `cfshow` in CFEngine 2. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If possible, perform the verification of the current promise in the
 background. This is advantageous only if the verification might take a
@@ -690,15 +690,15 @@ want to wait for a particular command to finish execution before
 checking the next promise. This is particular for the Windows platform
 because there is no way that a program can start itself in the
 background here; in other words, fork off a child process. However, file
-operations can not be performed in the background on windows. \
+operations can not be performed in the background on windows.   
 
 `report_level`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     inform
                     verbose
                     error
@@ -709,10 +709,10 @@ operations can not be performed in the background on windows. \
 
 **Default value:** none
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body action example
      {
@@ -721,8 +721,8 @@ operations can not be performed in the background on windows. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 cf-agent can be run in verbose mode (-v), inform mode (-I) and just
 print errors (no arguments). This attribute allows to set these three
@@ -730,7 +730,7 @@ output levels on a per promise basis, allowing the promise to be more
 verbose than the global setting (but not less).
 
 In CFEngine 2 one would say inform=true or syslog=true, and so on. This
-replaces these levels since they act as encapsulating super-sets. \
+replaces these levels since they act as encapsulating super-sets.   
 
 `measurement_class`
 
@@ -741,10 +741,10 @@ replaces these levels since they act as encapsulating super-sets. \
 **Synopsis**: If set performance will be measured and recorded under
 this identifier
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      
      body action measure
@@ -754,15 +754,15 @@ this identifier
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 By setting this string you switch on performance measurement for the
 current promise, and also give the measurement a name. The identifier
 forms a partial identity for optional performance scanning of promises
 of the form:
 
-~~~~ {.example}
+~~~~
           ID:promise-type:promiser.
 ~~~~
 
@@ -781,10 +781,10 @@ generated file performance.html.
 
 **Synopsis**: A list of classes to be defined globally
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -793,8 +793,8 @@ generated file performance.html.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If a promise is \`repaired' it means that a corrective action had to be
 taken to keep the promise.
@@ -810,7 +810,7 @@ you promise to create and file and change its permissions, when the file
 exists with incorrect permissions, `cf-agent` will report that the
 promise\_kept for the file existence, but promise\_repaired for the
 permissions. If you need separate reports, you should code two separate
-promises rather than \`overloading' a single one. \
+promises rather than \`overloading' a single one.   
 
 `repair_failed`
 
@@ -820,10 +820,10 @@ promises rather than \`overloading' a single one. \
 
 **Synopsis**: A list of classes to be defined globally
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -832,14 +832,14 @@ promises rather than \`overloading' a single one. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A promise could not be repaired because the corrective action failed for
 some reason.
 
 Any strings passed to this list are automatically canonified, so it is
-unnecessary to call a canonify function on such inputs. \
+unnecessary to call a canonify function on such inputs.   
 
 `repair_denied`
 
@@ -849,10 +849,10 @@ unnecessary to call a canonify function on such inputs. \
 
 **Synopsis**: A list of classes to be defined globally
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -861,13 +861,13 @@ unnecessary to call a canonify function on such inputs. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A promise could not be kept because access to a key resource was denied.
 
 Note that any strings passed to this list are automatically canonified,
-so it is unnecessary to call a canonify function on such inputs. \
+so it is unnecessary to call a canonify function on such inputs.   
 
 `repair_timeout`
 
@@ -877,10 +877,10 @@ so it is unnecessary to call a canonify function on such inputs. \
 
 **Synopsis**: A list of classes to be defined globally
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -889,11 +889,11 @@ so it is unnecessary to call a canonify function on such inputs. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A promise maintenance repair timed-out waiting for some dependent
-resource. \
+resource.   
 
 `promise_kept`
 
@@ -903,10 +903,10 @@ resource. \
 
 **Synopsis**: A list of classes to be defined globally
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -915,8 +915,8 @@ resource. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This class is set if no action was necessary by `cf-agent` because the
 promise concerned was already kept without further action required.
@@ -932,7 +932,7 @@ you promise to create and file and change its permissions, when the file
 exists with incorrect permissions, `cf-agent` will report that the
 promise\_kept for the file existence, but promise\_repaired for the
 permissions. If you need separate reports, you should code two separate
-promises rather than \`overloading' a single one. \
+promises rather than \`overloading' a single one.   
 
 `cancel_kept`
 
@@ -942,10 +942,10 @@ promises rather than \`overloading' a single one. \
 
 **Synopsis**: A list of classes to be canceled if the promise is kept
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -954,8 +954,8 @@ promises rather than \`overloading' a single one. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If the promise was already kept and nothing was done, cancel (undefine)
 any of the listed classes so that they are no longer defined.
@@ -964,7 +964,7 @@ Note that any strings passed to this list are automatically canonified,
 so it is unnecessary to call a canonify function on such inputs.
 
 **History**: This attribute was introduced in CFEngine version 3.0.4
-(2010) \
+(2010)   
 
 `cancel_repaired`
 
@@ -975,10 +975,10 @@ so it is unnecessary to call a canonify function on such inputs.
 **Synopsis**: A list of classes to be canceled if the promise is
 repaired
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -987,8 +987,8 @@ repaired
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If the promise was repaired and changes were made to the system, cancel
 (undefine) any of the listed classes so that they are no longer defined.
@@ -997,7 +997,7 @@ Note that any strings passed to this list are automatically canonified,
 so it is unnecessary to call a canonify function on such inputs.
 
 **History**: This attribute was introduced in CFEngine version 3.0.4
-(2010) \
+(2010)   
 
 `cancel_notkept`
 
@@ -1008,10 +1008,10 @@ so it is unnecessary to call a canonify function on such inputs.
 **Synopsis**: A list of classes to be canceled if the promise is not
 kept for any reason
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -1020,8 +1020,8 @@ kept for any reason
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If the promise was not kept but nothing could be done, cancel (undefine)
 any of the listed classes so that they are no longer defined.
@@ -1030,7 +1030,7 @@ Note that any strings passed to this list are automatically canonified,
 so it is unnecessary to call a canonify function on such inputs.
 
 **History**: This attribute was introduced in CFEngine version 3.0.4
-(2010) \
+(2010)   
 
 `kept_returncodes`
 
@@ -1041,10 +1041,10 @@ so it is unnecessary to call a canonify function on such inputs.
 **Synopsis**: A list of return codes indicating a kept command-related
 promise
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      bundle agent cmdtest
      {
      commands:
@@ -1063,8 +1063,8 @@ promise
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A list of integer return codes indicating that a command-related promise
 has been kept. This can in turn be used to define classes using the
@@ -1087,7 +1087,7 @@ Note that the return codes may overlap, so multiple classes may be set
 from one return code. In Unix systems the possible return codes are
 usually in the range from 0 to 255.
 
-*History*: Was introduced in version 3.1.3, Nova 2.0.2 (2010) \
+*History*: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
 `repaired_returncodes`
 
@@ -1098,10 +1098,10 @@ usually in the range from 0 to 255.
 **Synopsis**: A list of return codes indicating a repaired
 command-related promise
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      bundle agent cmdtest
      {
      commands:
@@ -1120,8 +1120,8 @@ command-related promise
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A list of integer return codes indicating that a command-related promise
 has been repaired. This can in turn be used to define classes using the
@@ -1144,7 +1144,7 @@ Note that the return codes may overlap, so multiple classes may be set
 from one return code. In Unix systems the possible return codes are
 usually in the range from 0 to 255.
 
-*History*: Was introduced in version 3.1.3, Nova 2.0.2 (2010) \
+*History*: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
 `failed_returncodes`
 
@@ -1155,10 +1155,10 @@ usually in the range from 0 to 255.
 **Synopsis**: A list of return codes indicating a failed command-related
 promise
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body common control
      {
      bundlesequence => { "cmdtest" };
@@ -1192,8 +1192,8 @@ promise
      } 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A list of integer return codes indicating that a command-related promise
 has failed. This can in turn be used to define classes using the
@@ -1216,7 +1216,7 @@ Note that the return codes may overlap, so multiple classes may be set
 from one return code. In Unix systems the possible return codes are
 usually in the range from 0 to 255.
 
-*History*: Was introduced in version 3.1.3, Nova 2.0.2 (2010) \
+*History*: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
 `persist_time`
 
@@ -1227,10 +1227,10 @@ usually in the range from 0 to 255.
 **Synopsis**: A number of minutes the specified classes should remain
 active
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -1239,20 +1239,20 @@ active
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 By default classes are ephemeral entities that disappear when `cf-agent`
 terminates. By setting a persistence time, they can last even when the
-agent is not running. \
+agent is not running.   
 
 `timer_policy`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     absolute
                     reset
 ~~~~
@@ -1262,10 +1262,10 @@ rediscovered
 
 **Default value:** reset
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body classes example
      {
@@ -1274,8 +1274,8 @@ rediscovered
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 In most cases resetting a timer will give a more honest appraisal of
 which classes are currently important, but if we want to activate a
@@ -1290,15 +1290,15 @@ is useful.
 
 **Synopsis**: A comment about the real intention of the promise
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 comment => "This comment follows the data for reference ...",
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Comments written in code follow the program, they are not merely
 discarded. They appear in reports and error messages.
@@ -1312,10 +1312,10 @@ discarded. They appear in reports and error messages.
 **Synopsis**: A list of promise handles that this promise builds on or
 depends on somehow
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 {
 bundlesequence => { "one"  };
@@ -1337,8 +1337,8 @@ reports:
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is a list of promise handles for whom this promise is a promisee.
 In other words, we acknowledge that this promise will be affected by the
@@ -1362,10 +1362,10 @@ Handles in other namespaces may be referred to by namespace:handle.
 **Synopsis**: A unique id-tag string for referring to this as a promisee
 elsewhere
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 access:
 
   "/source"
@@ -1374,8 +1374,8 @@ access:
     admit   => { "127.0.0.1" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A promise handle is like a \`goto' label. It allows you to refer to a
 promise as the promisee of `depends_on` client of another promise.
@@ -1400,12 +1400,12 @@ rather than its content.
 
 **Synopsis**: Extended classes ANDed with context
 
-**Example**:\
- \
+**Example**:  
+   
 
 The generic example has the form:
 
-~~~~ {.example}
+~~~~
      
      promise-type:
      
@@ -1417,7 +1417,7 @@ The generic example has the form:
 
 A specific example would be:
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 
 {     
@@ -1437,8 +1437,8 @@ commands:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is an additional class expression that will be evaluated after the
 class:: classes have selected promises. It is provided in order to
@@ -1450,7 +1450,7 @@ variable classes.
 This function is provided so that one can form expressions that link
 variables and classes. For example:
 
-~~~~ {.verbatim}
+~~~~
 # Check that all components are running
 
 vars:
@@ -1480,10 +1480,10 @@ the same algorithm that CFEngine uses.
 
 **Synopsis**: User-data associated with policy, e.g. key=value strings
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 files:
 
   "/etc/special_file"
@@ -1494,8 +1494,8 @@ files:
     meta => { "owner=John",  "version=2.0" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 

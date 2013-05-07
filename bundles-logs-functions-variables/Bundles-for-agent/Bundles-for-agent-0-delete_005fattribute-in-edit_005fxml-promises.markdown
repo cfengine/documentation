@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,delete_005fattribute-in-edit_005fxml-promises]
 
 ### `delete_attribute` promises in edit\_xml
 
-\
+  
 
 This promise is part of the XML-editing model. It assures that an
 attribute, with the given name, will not be present in the specified
@@ -19,9 +19,9 @@ specified node is determined by body-attributes. The promise object
 referred to is a literal string representation of the name of the
 attribute to be deleted.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_xml example
   {
   delete_attribute:
@@ -31,7 +31,7 @@ bundle edit_xml example
   }
 ~~~~
 
-\
+  
 
 Note that typically, only a single attribute, within a single specified
 node, is deleted in each `delete_attribute` promise. You may of course

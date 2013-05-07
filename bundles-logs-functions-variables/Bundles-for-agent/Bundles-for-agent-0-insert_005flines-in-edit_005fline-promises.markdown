@@ -9,14 +9,14 @@ tags: [Bundles-for-agent,insert_005flines-in-edit_005fline-promises]
 
 ### `insert_lines` promises in edit\_line
 
-\
+  
 
 This promise is part of the line-editing model. It inserts lines into
 the file at a specified location. The location is determined by
 body-attributes. The promise object referred to can be a literal line of
 a file-reference from which to read lines.
 
-~~~~ {.smallexample}
+~~~~
      
       insert_lines:
      
@@ -27,9 +27,9 @@ a file-reference from which to read lines.
      
 ~~~~
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -66,7 +66,7 @@ insert_lines:
 }
 ~~~~
 
-\
+  
 
 By parameterizing the editing bundle, one can make generic and reusable
 editing bundles.
@@ -76,7 +76,7 @@ file, be careful with your intuition. If your intention is to insert a
 set of lines in a given order after a marker, then the following is
 incorrect:
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_line x
 {
 insert_lines:
@@ -100,7 +100,7 @@ This is not a bug, but an error of logic.
 What was probably intended was to add multiple ordered lines after the
 marker, which should be a single correlated promise.
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_line x
 {
 insert_lines:
@@ -112,7 +112,7 @@ insert_lines:
 
 Or:
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_line x
 {
 insert_lines:
@@ -137,9 +137,9 @@ line two" location => myloc;
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                true
                false
                yes
@@ -152,10 +152,10 @@ line two" location => myloc;
 
 **Synopsis**: Expand any unexpanded variables
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -190,15 +190,15 @@ insert_lines:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A way of incorporating templates with variable expansion into file
 operations. Variables should be named and scoped appropriately for the
 bundle in which this promise is made. In other words, you should qualify
 the variables with the bundle in which they are defined. For example:
 
-~~~~ {.verbatim}
+~~~~
 $(bundle.variable)
 $(sys.host)
 $(mon.www_in)
@@ -210,9 +210,9 @@ In CFEngine 2 `editfiles` this was called ExpandVariables.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                literal
                string
                file
@@ -224,10 +224,10 @@ In CFEngine 2 `editfiles` this was called ExpandVariables.
 
 **Synopsis**: Type of object the promiser string refers to
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_line lynryd_skynyrd
 {
  vars:
@@ -252,15 +252,15 @@ insert_if_startwith_from_list => { "@(s)" };
 This will ensure that the following lines are inserted into the promised
 file:
 
-~~~~ {.verbatim}
+~~~~
 And you'll never see me no more
 Gimme three steps, Mister
 Gimme three steps towards the door
 Gimme three steps
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The default is to treat the promiser as a literal string of convergent
 lines (the values `literal` and `string` are synonymous).
@@ -297,10 +297,10 @@ setting that does preserve the ordering of lines in the file is called
 
 **Synopsis**: Insert line if it starts with a string in the list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body insert_select example
      {
@@ -309,8 +309,8 @@ setting that does preserve the ordering of lines in the file is called
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  The list contains literal strings to search for in the secondary file
 (the file being read via the `insert_type` attribute, not the main file
 being edited). If a string with matching starting characters is found,
@@ -320,7 +320,7 @@ location in the primary file.
 `insert_if_startswith_from_list` is ignored unless `insert_type` is
 `file` (see [insert\_type in
 insert\_lines](#insert_005ftype-in-insert_005flines)), or the promiser
-is a multi-line block. \
+is a multi-line block.   
 
 `insert_if_not_startwith_from_list`
 
@@ -330,10 +330,10 @@ is a multi-line block. \
 
 **Synopsis**: Insert line if it DOES NOT start with a string in the list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body insert_select example
      {
@@ -342,8 +342,8 @@ is a multi-line block. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The complement of `insert_if_startwith_from_list`. If the start of a
 line does *not* match one of the strings, that line is inserted into the
@@ -353,7 +353,7 @@ file being edited.
 `file` or the promiser is a multi-line block.
 
 See: [insert\_type in
-insert\_lines](#insert_005ftype-in-insert_005flines) \
+insert\_lines](#insert_005ftype-in-insert_005flines)   
 
 `insert_if_match_from_list`
 
@@ -363,10 +363,10 @@ insert\_lines](#insert_005ftype-in-insert_005flines) \
 
 **Synopsis**: Insert line if it fully matches a regex in the list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body insert_select example
      {
@@ -375,8 +375,8 @@ insert\_lines](#insert_005ftype-in-insert_005flines) \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  The list contains literal strings to search for in the secondary file
 (the file being read via the `insert_type` attribute, not the main file
 being edited). If the regex matches a *complete* line of the file, that
@@ -390,7 +390,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)
 or the promiser is a multi-line block.
 
 See [insert\_type in
-insert\_lines](#insert_005ftype-in-insert_005flines) \
+insert\_lines](#insert_005ftype-in-insert_005flines)   
 
 `insert_if_not_match_from_list`
 
@@ -400,10 +400,10 @@ insert\_lines](#insert_005ftype-in-insert_005flines) \
 
 **Synopsis**: Insert line if it DOES NOT fully match a regex in the list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body insert_select example
      {
@@ -412,8 +412,8 @@ insert\_lines](#insert_005ftype-in-insert_005flines) \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The complement of `insert_if_match_from_list`. If the line does *not*
 match a line in the secondary file, it is inserted into the file being
@@ -423,7 +423,7 @@ edited.
 `file`, or the promiser is a multi-line block.
 
 See: [insert\_type in
-insert\_lines](#insert_005ftype-in-insert_005flines) \
+insert\_lines](#insert_005ftype-in-insert_005flines)   
 
 `insert_if_contains_from_list`
 
@@ -433,10 +433,10 @@ insert\_lines](#insert_005ftype-in-insert_005flines) \
 
 **Synopsis**: Insert line if a regex in the list match a line fragment
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body insert_select example
      {
@@ -445,8 +445,8 @@ insert\_lines](#insert_005ftype-in-insert_005flines) \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The list contains literal strings to search for in the secondary file;
 in other words, the file being read via the `insert_type` attribute, not
@@ -458,7 +458,7 @@ location in the primary file.
 `file`, or the promiser is a multi-line block.
 
 See: [insert\_type in
-insert\_lines](#insert_005ftype-in-insert_005flines) \
+insert\_lines](#insert_005ftype-in-insert_005flines)   
 
 `insert_if_not_contains_from_list`
 
@@ -469,10 +469,10 @@ insert\_lines](#insert_005ftype-in-insert_005flines) \
 **Synopsis**: Insert line if a regex in the list DOES NOT match a line
 fragment
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body insert_select example
      {
@@ -481,8 +481,8 @@ fragment
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The complement of `insert_if_contains_from_list`. If the line is *not*
 found in the secondary file, it is inserted into the file being edited.
@@ -501,9 +501,9 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     before
                     after
 ~~~~
@@ -512,10 +512,10 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Default value:** after
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body location append
      
@@ -526,19 +526,19 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Determines whether an edit will occur before or after the currently
-matched line. \
+matched line.   
 
 `first_last`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     first
                     last
 ~~~~
@@ -548,10 +548,10 @@ file
 
 **Default value:** last
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body location example
      {
@@ -560,14 +560,14 @@ file
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 In multiple matches, decide whether the first or last occurrence of the
 matching pattern in the case affected by the change. In principle this
 could be generalized to more cases but this seems like a fragile quality
 to evaluate, and only these two cases are deemed of reproducible
-significance. \
+significance.   
 
 `select_line_matching`
 
@@ -577,10 +577,10 @@ significance. \
 
 **Synopsis**: Regular expression for matching file line location
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      # Editing
      
@@ -598,8 +598,8 @@ significance. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The expression must match a whole line, not a fragment within a line;
 that is, it is anchored.
@@ -613,9 +613,9 @@ This attribute is mutually exclusive of `select_line_number`.
 
 **Type**: (option list)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                ignore_leading
                ignore_trailing
                ignore_embedded
@@ -626,10 +626,10 @@ This attribute is mutually exclusive of `select_line_number`.
 
 **Default value**: `exact_match`
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_line Insert(service, filename)
 {
 insert_lines:
@@ -641,8 +641,8 @@ insert_lines:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The white space matching policy applies only to `insert_lines`, as a
 convenience. It works by rewriting the insert string as a regular

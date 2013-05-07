@@ -9,11 +9,11 @@ tags: [Bundles-for-agent,storage-in-agent-promises]
 
 ### `storage` promises in agent
 
-\
+  
 
 Storage promises refer to disks and filesystem properties.
 
-~~~~ {.smallexample}
+~~~~
      
       storage:
      
@@ -29,9 +29,9 @@ and `misc_mounts` types. The old mount-models for binary and home
 servers has been deprecated and removed from CFEngine 3. Users who use
 these models can reconstruct them from the low-level tools.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle agent storage
 
 {
@@ -63,7 +63,7 @@ edit_fstab => "true";
 }
 ~~~~
 
-\
+  
 
 -   [mount in storage](#mount-in-storage)
 -   [volume in storage](#volume-in-storage)
@@ -76,9 +76,9 @@ edit_fstab => "true";
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -92,10 +92,10 @@ edit_fstab => "true";
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body mount example
      {
@@ -104,18 +104,18 @@ edit_fstab => "true";
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-The default behaviour is to not place edits in the file system table. \
+The default behaviour is to not place edits in the file system table.   
 
 `mount_type`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     nfs
                     nfs2
                     nfs3
@@ -124,10 +124,10 @@ The default behaviour is to not place edits in the file system table. \
 
 **Synopsis**: Protocol type of remote file system
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body mount example
      {
@@ -136,10 +136,10 @@ The default behaviour is to not place edits in the file system table. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-This field is mainly for future extensions. \
+This field is mainly for future extensions.   
 
 `mount_source`
 
@@ -149,10 +149,10 @@ This field is mainly for future extensions. \
 
 **Synopsis**: Path of remote file system to mount
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body mount example
      {
@@ -161,10 +161,10 @@ This field is mainly for future extensions. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-This is the location on the remote device, server, SAN etc. \
+This is the location on the remote device, server, SAN etc.   
 
 `mount_server`
 
@@ -174,10 +174,10 @@ This is the location on the remote device, server, SAN etc. \
 
 **Synopsis**: Hostname or IP or remote file system server
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body mount example
      {
@@ -186,10 +186,10 @@ This is the location on the remote device, server, SAN etc. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-Hostname or IP address, this could be on a SAN. \
+Hostname or IP address, this could be on a SAN.   
 
 `mount_options`
 
@@ -200,10 +200,10 @@ Hostname or IP address, this could be on a SAN. \
 **Synopsis**: List of option strings to add to the file system table
 ("fstab")
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body mount example
      {
      mount_options => { "rw", "acls" };
@@ -211,19 +211,19 @@ Hostname or IP address, this could be on a SAN. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This list is concatenated in a form appropriate for the filesystem. The
-options must be legal options for the system mount commands. \
+options must be legal options for the system mount commands.   
 
 `unmount`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -236,10 +236,10 @@ options must be legal options for the system mount commands. \
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body mount example
      {
@@ -248,8 +248,8 @@ options must be legal options for the system mount commands. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 #### `volume` (body template)
 
@@ -259,9 +259,9 @@ options must be legal options for the system mount commands. \
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -275,10 +275,10 @@ system on this host
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body volume example
      
@@ -289,13 +289,13 @@ system on this host
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 CFEngine will not normally perform sanity checks on filesystems that are
 not local to the host. If `true` it will ignore a partition's network
 location and ask the current host to verify storage located physically
-on other systems. \
+on other systems.   
 
 `freespace`
 
@@ -306,10 +306,10 @@ on other systems. \
 **Synopsis**: Absolute or percentage minimum disk space that should be
 available before warning
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body volume example1
      {
@@ -323,15 +323,15 @@ available before warning
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The amount of freespace that is promised on a storage device. Once this
 promise is found not to be kept (that is, if the free space falls below
 the promised value), warnings are generated. You may also want to use
 the results of this promise to control other promises.
 
-See: [classes in \*](#classes-in-_002a). \
+See: [classes in \*](#classes-in-_002a).   
 
 `sensible_size`
 
@@ -342,10 +342,10 @@ See: [classes in \*](#classes-in-_002a). \
 **Synopsis**: Minimum size in bytes that should be used on a
 sensible-looking storage device
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body volume example
      {
@@ -354,10 +354,10 @@ sensible-looking storage device
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body volume control
      {
@@ -366,7 +366,7 @@ sensible-looking storage device
      
 ~~~~
 
-\
+  
 
 `sensible_count`
 
@@ -377,10 +377,10 @@ sensible-looking storage device
 **Synopsis**: Minimum number of files that should be defined on a
 sensible-looking storage device
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body volume example
      {
@@ -389,19 +389,19 @@ sensible-looking storage device
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Files must be readable by the agent. In other words, it is assumed that
-the agent has privileges on volumes being checked. \
+the agent has privileges on volumes being checked.   
 
 `scan_arrivals`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -415,10 +415,10 @@ distribution
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body volume example
      {
@@ -427,8 +427,8 @@ distribution
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This operation should not be left \`on' for more than a single run
 (maximum once per week). It causes CFEngine to perform an extensive disk

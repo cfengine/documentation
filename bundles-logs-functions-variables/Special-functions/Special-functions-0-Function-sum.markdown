@@ -11,16 +11,16 @@ tags: [Special-functions,Function-sum]
 
 **Synopsis**: sum(arg1) returns type **real**
 
-\
+  
  *arg1* : A list of arbitrary real values, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Return the sum of a list of reals
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 {
 bundlesequence => { "test" };
@@ -45,12 +45,12 @@ reports:
 Because `$(six)` and `$(zero)` are both real numbers, the report that is
 generated will be:
 
-~~~~ {.verbatim}
+~~~~
 six is 6.000000, zero is 0.000000
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  Of course, you could easily combine `sum` with `readstringarray` or
 `readreallist` etc., to collect summary information from a source
 external to CFEngine.

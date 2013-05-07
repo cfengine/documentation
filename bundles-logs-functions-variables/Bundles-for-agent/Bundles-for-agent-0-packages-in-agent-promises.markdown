@@ -9,9 +9,9 @@ tags: [Bundles-for-agent,packages-in-agent-promises]
 
 ### `packages` promises in agent
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
  vars:
 
   "match_package" slist => { 
@@ -82,7 +82,7 @@ one of two different ways:
 
 -   They may be specified independently, e.g.
 
-    ~~~~ {.verbatim}
+    ~~~~
          packages:
          
            "mypackage"
@@ -100,7 +100,7 @@ one of two different ways:
     7-Zip-4.50-x86\_64.msi and a package\_method containing the
     following:
 
-    ~~~~ {.verbatim}
+    ~~~~
           package_name_regex => "^(\S+)-(\d+\.?)+";
           package_version_regex => "^\S+-((\d+\.?)+)";
           package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
@@ -134,70 +134,112 @@ We can discuss package promise repair in the following table:
 
 Identified package matches version constraints
 
-  ----------- ---------
-  add         never \
-              
-
-  delete      =,=,= \
-              
-
-  reinstall   =,=,= \
-              
-
-  upgrade     =,=,= \
-              
-
-  patch       =,=,= \
-              
-  ----------- ---------
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">add</td>
+<td align="left">never <br /></td>
+</tr>
+<tr class="even">
+<td align="left">delete</td>
+<td align="left">=,=,= <br /></td>
+</tr>
+<tr class="odd">
+<td align="left">reinstall</td>
+<td align="left">=,=,= <br /></td>
+</tr>
+<tr class="even">
+<td align="left">upgrade</td>
+<td align="left">=,=,= <br /></td>
+</tr>
+<tr class="odd">
+<td align="left">patch</td>
+<td align="left">=,=,= <br /></td>
+</tr>
+</tbody>
+</table>
 
 Identified package matched by name, but not version
 
-  -------------------------------------------------
-  Command     Dumb manager   Smart manager \
-                             
-  ----------- -------------- ----------------------
-  add         unable         Never \
-                             
-
-  delete      unable         Attempt deletion \
-                             
-
-  reinstall   unable         Attempt delete/add \
-                             
-
-  upgrade     unable         Upgrade if capable \
-                             
-
-  patch       unable         Patch if capable \
-                             
-  -------------------------------------------------
+<table>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Dumb manager</th>
+<th align="left">Smart manager <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">add</td>
+<td align="left">unable</td>
+<td align="left">Never <br /></td>
+</tr>
+<tr class="even">
+<td align="left">delete</td>
+<td align="left">unable</td>
+<td align="left">Attempt deletion <br /></td>
+</tr>
+<tr class="odd">
+<td align="left">reinstall</td>
+<td align="left">unable</td>
+<td align="left">Attempt delete/add <br /></td>
+</tr>
+<tr class="even">
+<td align="left">upgrade</td>
+<td align="left">unable</td>
+<td align="left">Upgrade if capable <br /></td>
+</tr>
+<tr class="odd">
+<td align="left">patch</td>
+<td align="left">unable</td>
+<td align="left">Patch if capable <br /></td>
+</tr>
+</tbody>
+</table>
 
 Package not installed
 
-  --------------------------------------------------------------
-  Command     Dumb manager               Smart manager \
-                                         
-  ----------- -------------------------- -----------------------
-  add         Attempt to install named   Install any version \
-                                         
+<table>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Dumb manager</th>
+<th align="left">Smart manager <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">add</td>
+<td align="left">Attempt to install named</td>
+<td align="left">Install any version <br /></td>
+</tr>
+<tr class="even">
+<td align="left">delete</td>
+<td align="left">unable</td>
+<td align="left">unable <br /></td>
+</tr>
+<tr class="odd">
+<td align="left">reinstall</td>
+<td align="left">Attempt to install named</td>
+<td align="left">unable <br /></td>
+</tr>
+<tr class="even">
+<td align="left">upgrade</td>
+<td align="left">unable</td>
+<td align="left">unable <br /></td>
+</tr>
+<tr class="odd">
+<td align="left">patch</td>
+<td align="left">unable</td>
+<td align="left">unable <br /></td>
+</tr>
+</tbody>
+</table>
 
-  delete      unable                     unable \
-                                         
+  
 
-  reinstall   Attempt to install named   unable \
-                                         
-
-  upgrade     unable                     unable \
-                                         
-
-  patch       unable                     unable \
-                                         
-  --------------------------------------------------------------
-
-\
-
-~~~~ {.verbatim}
+~~~~
 bundle agent packages
 {
 vars:
@@ -220,7 +262,7 @@ packages:
 }
 ~~~~
 
-\
+  
 
 Packages promises can be very simple if the package manager is of the
 smart variety that handles details for you. If you need to specify
@@ -286,10 +328,10 @@ library for supported operating systems.
 
 **Synopsis**: Select the architecture for package selection
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 packages:
 
   "$(exact_package)"
@@ -299,8 +341,8 @@ packages:
      package_architectures => { "x86_64" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 It is possible to specify a list of packages of different architectures
 if it is desirable to install multiple architectures on the host. If no
@@ -319,10 +361,10 @@ package manager's behaviour prevails.
 
 **Synopsis**: Command to install a package to the system
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method rpm
      {
@@ -331,8 +373,8 @@ package manager's behaviour prevails.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This command should install a package when appended with the package
 reference id, formed using the `package_name_convention`, using the
@@ -343,7 +385,7 @@ repository containing the package.
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
-prevents CFEngine from appending the package name to the string. \
+prevents CFEngine from appending the package name to the string.   
 
 `package_arch_regex`
 
@@ -354,10 +396,10 @@ prevents CFEngine from appending the package name to the string. \
 **Synopsis**: Regular expression with one backreference to extract
 package architecture string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method rpm
      
@@ -367,8 +409,8 @@ package architecture string
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is for use when extracting architecture from the name of the
 promiser, when the architecture is not specified using the
@@ -378,15 +420,15 @@ exactly one parenthesized back reference which marks the location in the
 portion of the string (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If no
 architecture is specified for the given package manager, then do not
-define this. \
+define this.   
 
 `package_changes`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     individual
                     bulk
 ~~~~
@@ -394,10 +436,10 @@ define this. \
 **Synopsis**: Menu option - whether to group packages into a single
 aggregate command
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method rpm
      
@@ -407,14 +449,14 @@ aggregate command
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  This indicates whether the package manager is capable of handling
 package operations with multiple arguments. If this is set to bulk then
 multiple arguments will be passed to the package commands. If set to
 individual packages will be handled one by one. This might add a
 significant overhead to the operations, and also affect the ability of
-the operating system's package manager to handle dependencies. \
+the operating system's package manager to handle dependencies.   
 
 `package_delete_command`
 
@@ -424,10 +466,10 @@ the operating system's package manager to handle dependencies. \
 
 **Synopsis**: Command to remove a package from the system
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method rpm
      
@@ -437,8 +479,8 @@ the operating system's package manager to handle dependencies. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The command that deletes a package from the system when appended with
 the package reference identifier specified by `package_name_convention`.
@@ -446,7 +488,7 @@ the package reference identifier specified by `package_name_convention`.
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
-prevents CFEngine from appending the package name to the string. \
+prevents CFEngine from appending the package name to the string.   
 
 `package_delete_convention`
 
@@ -457,10 +499,10 @@ prevents CFEngine from appending the package name to the string. \
 **Synopsis**: This is how the package manager expects the package to be
 referred to in the deletion part of a package update, e.g. \$(name)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method freebsd
      
      {
@@ -471,8 +513,8 @@ referred to in the deletion part of a package update, e.g. \$(name)
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This attribute is used when `package_policy` is delete, or
 `package_policy` is update and `package_file_repositories` is set and
@@ -489,7 +531,7 @@ to expand the first repository containing the package. For example:
 \$(firstrepo)\$(name)-\$(version)-\$(arch).msi.
 
 If this is not defined, it defaults to the value of
-`package_name_convention`. \
+`package_name_convention`.   
 
 `package_file_repositories`
 
@@ -499,10 +541,10 @@ If this is not defined, it defaults to the value of
 
 **Synopsis**: A list of machine-local directories to search for packages
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method filebased
      {
@@ -511,13 +553,13 @@ If this is not defined, it defaults to the value of
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If specified, CFEngine will assume that the package installation occurs
 by filename and will search the named paths for a package matching the
 pattern `package_name_convention`. If found the name will be prefixed to
-the package name in the package commands. \
+the package name in the package commands.   
 
 `package_installed_regex`
 
@@ -528,10 +570,10 @@ the package name in the package commands. \
 **Synopsis**: Regular expression which matches packages that are already
 installed
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method yum
      {
@@ -540,8 +582,8 @@ installed
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This regular expression must match complete lines in the output of the
 list command that are actually installed packages (see [Anchored vs.
@@ -549,7 +591,7 @@ unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If all
 the lines match then the regex can be set of .\*, however most package
 systems output prefix lines and a variety of human padding that needs to
-be ignored. \
+be ignored.   
 
 `package_default_arch_command`
 
@@ -559,10 +601,10 @@ be ignored. \
 
 **Synopsis**: Command to detect the default packages' architecture
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method dpkg
      {
        package_default_arch_command => "/usr/bin/dpkg --print-architecture";
@@ -571,8 +613,8 @@ be ignored. \
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
@@ -582,7 +624,7 @@ lists architectures explicitly for multiarch-enabled packages.
 
 In case this command is not provided, CFEngine treats all packages
 without explicit architecture set as belonging to implicit default
-architecture. \
+architecture.   
 
 `package_list_arch_regex`
 
@@ -593,10 +635,10 @@ architecture. \
 **Synopsis**: Regular expression with one backreference to extract
 package architecture string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method rpm
      {
@@ -605,8 +647,8 @@ package architecture string
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A regular expression that contains exactly one parenthesized back
 reference that marks the location in the listed package at which the
@@ -614,7 +656,7 @@ architecture is specified. The regular expression may match a portion of
 the string (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If no
 architecture is specified for the given package manager, then do not
-define this regex. \
+define this regex.   
 
 `package_list_command`
 
@@ -624,10 +666,10 @@ define this regex. \
 
 **Synopsis**: Command to obtain a list of available packages
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method rpm
      
@@ -637,8 +679,8 @@ define this regex. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This command should provide a complete list of the packages installed on
 the system. It might also list packages that are not installed. Those
@@ -647,7 +689,7 @@ should be filtered out using the `package_installed_regex`.
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
-prevents CFEngine from appending the package name to the string. \
+prevents CFEngine from appending the package name to the string.   
 
 `package_list_name_regex`
 
@@ -658,10 +700,10 @@ prevents CFEngine from appending the package name to the string. \
 **Synopsis**: Regular expression with one backreference to extract
 package name string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method rpm
      
@@ -671,14 +713,14 @@ package name string
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A regular expression that contains exactly one parenthesized back
 reference which marks the name of the package from the package listing.
 The regular expression may match a portion of the string (see [Anchored
 vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 `package_list_update_command`
 
@@ -688,10 +730,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 
 **Synopsis**: Command to update the list of available packages (if any)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method xyz
      {
      debian|ubuntu::
@@ -701,12 +743,12 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Not all package managers update their list information from source
 automatically. This command allows a separate update command to be
-executed at intervals determined by `package_list_update_ifelapsed`. \
+executed at intervals determined by `package_list_update_ifelapsed`.   
 
 `package_list_update_ifelapsed`
 
@@ -717,10 +759,10 @@ executed at intervals determined by `package_list_update_ifelapsed`. \
 **Synopsis**: The ifelapsed locking time in between updates of the
 package list
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method xyz
      {
      debian|ubuntu::
@@ -730,12 +772,12 @@ package list
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Not all package managers update their list information from source
 automatically. This command allows a separate update command to be
-executed at intervals determined by `package_list_update_ifelapsed`. \
+executed at intervals determined by `package_list_update_ifelapsed`.   
 
 `package_list_version_regex`
 
@@ -746,10 +788,10 @@ executed at intervals determined by `package_list_update_ifelapsed`. \
 **Synopsis**: Regular expression with one backreference to extract
 package version string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method rpm
      
      {
@@ -758,14 +800,14 @@ package version string
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This regular expression should containe exactly one parenthesized
 back-reference that marks the version string of packages listed as
 installed. The regular expression may match a portion of the string (see
 [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)) \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions))   
 
 `package_name_convention`
 
@@ -776,10 +818,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)) \
 **Synopsis**: This is how the package manager expects the package to be
 referred to, e.g. \$(name).\$(arch)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method rpm
      
      {
@@ -788,8 +830,8 @@ referred to, e.g. \$(name).\$(arch)
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This sets the pattern for naming the package in the way expected by the
 package manager. Three special variables are defined from the extracted
@@ -802,7 +844,7 @@ When `package_policy` is update, and `package_file_repositories` is
 specified, `package_delete_convention` may be used to specify a
 different convention for the delete command.
 
-If this is not defined, it defaults to the value \$(name). \
+If this is not defined, it defaults to the value \$(name).   
 
 `package_name_regex`
 
@@ -813,10 +855,10 @@ If this is not defined, it defaults to the value \$(name). \
 **Synopsis**: Regular expression with one backreference to extract
 package name string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method rpm
      {
@@ -825,8 +867,8 @@ package name string
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This regular expression is only used when the *promiser* contains not
 only the name of the package, but its version and architecture also. In
@@ -834,7 +876,7 @@ that case, this expression should contain a single parenthesized
 back-reference to extract the name of the package from the string. The
 regex may match a portion of the string (see [Anchored vs. unanchored
 regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
-\
+  
 
 `package_noverify_regex`
 
@@ -844,10 +886,10 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
 
 **Synopsis**: Regular expression to match verification failure output
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method xyz
      
      {
@@ -857,14 +899,14 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A regular expression to match output from a package verification
 command. If the output string matches this expression, the package is
 deemed broken. The regex must match the entire line (see [Anchored vs.
 unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)) \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions))   
 
 `package_noverify_returncode`
 
@@ -875,10 +917,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)) \
 **Synopsis**: Integer return code indicating package verification
 failure
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method xyz
      {
      package_noverify_returncode => "-1";
@@ -886,11 +928,11 @@ failure
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 For use if a package verification command uses the return code as the
-signal for a failed package verification. \
+signal for a failed package verification.   
 
 `package_patch_arch_regex`
 
@@ -901,10 +943,10 @@ signal for a failed package verification. \
 **Synopsis**: Regular expression with one backreference to extract
 update architecture string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method zypper
      {
@@ -913,15 +955,15 @@ update architecture string
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provides
 an analogous command struct to the packages for patch updates. The
 regular expression must match the entire line (see [Anchored vs.
 unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 `package_patch_command`
 
@@ -932,10 +974,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 **Synopsis**: Command to update to the latest patch release of an
 installed package
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method zypper
      
      {
@@ -943,8 +985,8 @@ installed package
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  If the package manager supports patching, this command should patch a
 named package. If only patching of all packages is supported then
 consider running that as a batch operation in `commands`. Alternatively
@@ -954,7 +996,7 @@ interpret as an instruction to not append package names.
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
-prevents CFEngine from appending the package name to the string. \
+prevents CFEngine from appending the package name to the string.   
 
 `package_patch_installed_regex`
 
@@ -965,10 +1007,10 @@ prevents CFEngine from appending the package name to the string. \
 **Synopsis**: Regular expression which matches packages that are already
 installed
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method zypper
      {
@@ -977,15 +1019,15 @@ installed
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provide an
 analogous command struct to the packages for patch updates. The regular
 expression must match the entire string (see [Anchored vs. unanchored
 regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
-\
+  
 
 `package_patch_list_command`
 
@@ -995,17 +1037,17 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Synopsis**: Command to obtain a list of available patches or updates
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
       package_patch_list_command => "/usr/bin/zypper patches";
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This command, if it exists at all, is presumed to generate a list of
 patches that are available on the system, in a format analogous to (but
@@ -1016,7 +1058,7 @@ already been installed, CFEngine will ignore them.
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
-prevents CFEngine from appending the package name to the string. \
+prevents CFEngine from appending the package name to the string.   
 
 `package_patch_name_regex`
 
@@ -1027,10 +1069,10 @@ prevents CFEngine from appending the package name to the string. \
 **Synopsis**: Regular expression with one backreference to extract
 update name string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method zypper
      {
@@ -1038,15 +1080,15 @@ update name string
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provides
 an analogous command struct to the packages for patch updates. The
 regular expression may match a partial string (see [Anchored vs.
 unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 `package_patch_version_regex`
 
@@ -1057,10 +1099,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 **Synopsis**: Regular expression with one backreference to extract
 update version string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method zypper
      {
@@ -1069,15 +1111,15 @@ update version string
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A few package managers keep a separate notion of patches, as opposed to
 package updates. OpenSuSE, for example, is one of these. This provides
 an analogous command struct to the packages for patch updates. The
 regular expression is unanchored, meaning it may match a partial string
 (see [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 `package_update_command`
 
@@ -1088,10 +1130,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 **Synopsis**: Command to update to the latest version a currently
 installed package
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method zypper
      {
@@ -1100,8 +1142,8 @@ installed package
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If supported this should be a command that updates the version of a
 single currently installed package. If only bulk updates are supported,
@@ -1112,7 +1154,7 @@ When `package_file_repositories` is specified, the package reference id
 will include the full path to a repository containing the package. If
 `package_policy` is update, and this command is not specified, the
 `package_delete_command` and `package_add_command` will be executed to
-carry out the update. \
+carry out the update.   
 
 `package_verify_command`
 
@@ -1122,10 +1164,10 @@ carry out the update. \
 
 **Synopsis**: Command to verify the correctness of an installed package
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method rpm
      
      {
@@ -1136,8 +1178,8 @@ carry out the update. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If available, this is a command to verify an already installed package.
 It is required only when `package_policy` is verify.
@@ -1155,7 +1197,7 @@ installed, and the verify command must be successful according to
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
-prevents CFEngine from appending the package name to the string. \
+prevents CFEngine from appending the package name to the string.   
 
 `package_version_regex`
 
@@ -1166,10 +1208,10 @@ prevents CFEngine from appending the package name to the string. \
 **Synopsis**: Regular expression with one backreference to extract
 package version string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method rpm
      {
@@ -1178,8 +1220,8 @@ package version string
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If the version of a package is not specified separately using
 `package_version`, then this should be a regular expression that
@@ -1187,7 +1229,7 @@ contains exactly one parenthesized back-reference that matches the
 version string in the promiser. The regular expression is unanchored,
 meaning it may match a partial string (see [Anchored vs. unanchored
 regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
-\
+  
 
 `package_multiline_start`
 
@@ -1198,10 +1240,10 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 **Synopsis**: Regular expression which matches the start of a new
 package in multiline output
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body package_method solaris (pkgname, spoolfile, adminfile)
      {
@@ -1213,21 +1255,21 @@ package in multiline output
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This pattern is used in determining when a new package record begins. It
 is used when package managers (like the Solaris package manager) use
 multi-line output formats. This pattern matches the first line of a new
-record. \
+record.   
 
 `package_commands_useshell`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -1240,28 +1282,28 @@ record. \
 
 **Default value:** true
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      Fill me in (./bodyparts/package_commands_useshell_example.texinfo)
      ""
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
 (2012)
 
-~~~~ {.verbatim}
+~~~~
      
      Fill me in (./bodyparts/package_commands_useshell_notes.texinfo)
      ""
 ~~~~
 
-\
+  
 
 `package_version_less_command`
 
@@ -1272,10 +1314,10 @@ record. \
 **Synopsis**: Command to check whether first supplied package version is
 less than second one
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method deb
      {
      ...
@@ -1283,8 +1325,8 @@ less than second one
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  *History*: Was introduced in 3.4.0 (2012)
 
 This attribute allows overriding of the built-in CFEngine algorithm for
@@ -1303,7 +1345,7 @@ v2 and non-zero otherwise.
 Note that if package\_version\_equal\_command is not specified, but
 package\_version\_less\_command is, then equality will be tested by
 issuing less comparison twice (v1 equals to v2 if v1 is not less than
-v2, and v2 is not less than v1). \
+v2, and v2 is not less than v1).   
 
 `package_version_equal_command`
 
@@ -1314,10 +1356,10 @@ v2, and v2 is not less than v1). \
 **Synopsis**: Command to check whether first supplied package version is
 equal to second one
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      body package_method deb
      {
      ...
@@ -1325,8 +1367,8 @@ equal to second one
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  *History*: Was introduced in 3.4.0 (2012)
 
 This attribute allows overriding of the built-in CFEngine algorithm for
@@ -1349,9 +1391,9 @@ v2, and v2 is not less than v1).
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                add
                delete
                reinstall
@@ -1366,10 +1408,10 @@ v2, and v2 is not less than v1).
 **Synopsis**: Criteria for package installation/upgrade on the current
 system
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 packages:
 
   "$(match_package)"
@@ -1378,36 +1420,36 @@ packages:
      package_method => xyz;
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This decides what fate is intended for the named package.
 
 add
 
 Ensure that a package is present (this is the default setting from
-3.3.0). \
+3.3.0).   
 
 delete
 
-Ensure that a package is not present. \
+Ensure that a package is not present.   
 
 reinstall
 
-Delete then add package (warning, non-convergent). \
+Delete then add package (warning, non-convergent).   
 
 update
 
-Update the package if an update is available (manager dependent). \
+Update the package if an update is available (manager dependent).   
 
 addupdate
 
 Equivalent to add if the package is not installed, and update if it is
-installed. \
+installed.   
 
 patch
 
-Install one or more patches if available (manager dependent). \
+Install one or more patches if available (manager dependent).   
 
 verify
 
@@ -1419,9 +1461,9 @@ Requires setting `package_verify_command`.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                
                
                ==
@@ -1433,10 +1475,10 @@ Requires setting `package_verify_command`.
 **Synopsis**: A criterion for first acceptable match relative to
 "package\_version"
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 packages:
 
   "$(exact_package)"
@@ -1448,8 +1490,8 @@ packages:
      package_version => "1.2.3-456";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This selects the operator that compares the promiser to the state of the
 system packages currently installed. If the criterion matches, the
@@ -1463,10 +1505,10 @@ policy action is scheduled for promise-keeping.
 
 **Synopsis**: Version reference point for determining promised version
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 packages:
 
   "mypackage"
@@ -1477,8 +1519,8 @@ packages:
      package_version => "1.2.3";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Used for specifying the targeted package version when the version is
 written separately from the name of the command.

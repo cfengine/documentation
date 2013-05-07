@@ -11,15 +11,15 @@ tags: [Special-functions,Function-translatepath]
 
 **Synopsis**: translatepath(arg1) returns type **string**
 
-\
- *arg1* : Unix style path, *in the range* "?(/.\*) \
+  
+ *arg1* : Unix style path, *in the range* "?(/.\*)   
 
 Translate path separators from Unix style to the host's native
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 {
 bundlesequence => { "test" };
@@ -42,8 +42,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Takes a string argument with slashes as path separators and translate
 these to the native format for path separators on the host. For example

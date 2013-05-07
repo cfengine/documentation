@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,services-in-agent-promises]
 
 ### `services` promises in agent
 
-\
+  
  A service is a set of zero or more processes. It can be zero if the
 service is not currently running. Services run in the background, and do
 not require user intervention.
@@ -38,9 +38,9 @@ CFEngine also allows for the concept of dependencies between services,
 and can automatically start or stop these, if desired. Parameters can be
 passed to services that are started by CFEngine.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 {
 services:
@@ -62,7 +62,7 @@ body service_method winmethod
 }
 ~~~~
 
-\
+  
 
 Services promises for Windows are only available in CFEngine Nova and
 above. Windows Vista/Server 2008 and later introduced new complications
@@ -77,7 +77,7 @@ systems and are merely as a convenient front-end to `processes` and
 `commands`. If nothing else is specified, CFEngine looks for an special
 reserved agent bundle called
 
-~~~~ {.verbatim}
+~~~~
 bundle agent standard_services(service,state)
 {
 ...
@@ -94,7 +94,7 @@ service bundle, so this is merely a front-end.
 
 The standard bundle can be replaced with another, as follows:
 
-~~~~ {.verbatim}
+~~~~
 body common control
 {
 bundlesequence => { "test" };
@@ -152,9 +152,9 @@ variable is only defined for services promises.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                start
                stop
                disable
@@ -164,18 +164,18 @@ variable is only defined for services promises.
 
 **Synopsis**: Policy for cfengine service status
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 services:
   
   "Telnet"
      service_policy => "disable";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 If set to `start`, CFEngine Nova will keep the service in a running
 state, while `stop` means that the service is kept in a stopped state.
@@ -192,10 +192,10 @@ changing file permissions).
 **Synopsis**: A list of services on which the named service abstraction
 depends
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 services:
   
   "ftp"
@@ -203,8 +203,8 @@ services:
     service_dependencies => { "network", "logging" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A list of services that must be running before the service can be
 started. These dependencies can be started automatically by CFEngine
@@ -231,10 +231,10 @@ list.
 
 **Synopsis**: Parameters for starting the service as command
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body service_method example
      {
@@ -243,8 +243,8 @@ list.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 These arguments will only be passed if CFEngine Nova starts the service.
 Thus, set `service_autostart_policy` to `none` to ensure that the
@@ -252,15 +252,15 @@ arguments are always passed.
 
 Escaped quotes can be used to pass an argument containing spaces as a
 single argument, e.g. "-f \\"file name.conf\\"". Passing arguments is
-optional. \
+optional.   
 
 `service_autostart_policy`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     none
                     boot_time
                     on_demand
@@ -268,10 +268,10 @@ optional. \
 
 **Synopsis**: Should the service be started automatically by the OS
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body service_method example
      {
@@ -280,8 +280,8 @@ optional. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Defaults to `none`, which means that the service is not registered for
 automatic startup by the operating system in any way. It must be `none`
@@ -290,19 +290,19 @@ started at boot time, while `on_demand` means that the service is
 dispatched once it is being used.
 
 `on_demand` is not supported by Windows, and is implemented through
-inetd or xinetd on Unix. \
+inetd or xinetd on Unix.   
 
 `service_bundle`
 
-**Type**: (ext bundle) (Separate Bundle) \
+**Type**: (ext bundle) (Separate Bundle)   
 
 `service_dependence_chain`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     ignore
                     start_parent_services
                     stop_child_services
@@ -311,10 +311,10 @@ inetd or xinetd on Unix. \
 
 **Synopsis**: How to handle dependencies and dependent services
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body service_method example
      {
@@ -323,8 +323,8 @@ inetd or xinetd on Unix. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The service dependencies include both the dependencies defined by the
 operating system and in `service_dependencies`, as described there.
@@ -345,25 +345,25 @@ depends on C. If we want to start B, we must first make sure A is
 running. If `start_parent_services` or `all_related` is set, CFEngine
 Nova will start A, if it is not running. On the other hand, if we want
 to stop B, C needs to be stopped first. `stop_child_services` or
-`all_related` means that CFEngine Nova will stop C, if it is running. \
+`all_related` means that CFEngine Nova will stop C, if it is running.   
 
 `service_type`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     windows
                     generic
 ~~~~
 
 **Synopsis**: Service abstraction type
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body service_method example
      {
@@ -372,8 +372,8 @@ to stop B, C needs to be stopped first. `stop_child_services` or
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 On Windows this defaults to, and must be `windows`. Unix systems can
 however have multiple means of registering services, but the choice must

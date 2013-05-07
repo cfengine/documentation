@@ -11,17 +11,17 @@ tags: [Special-functions,Function-regarray]
 
 **Synopsis**: regarray(arg1,arg2) returns type **class**
 
-\
+  
  *arg1* : Cfengine array identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+ \
- *arg2* : Regular expression, *in the range* .\* \
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+ *arg2* : Regular expression, *in the range* .\*   
 
 True if arg1 matches any item in the associative array with id=arg2
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -57,8 +57,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Tests whether an associative array contains elements matching a certain
 regular expression. The result is a class.
@@ -67,7 +67,7 @@ regular expression. The result is a class.
 
 array\_name
 
-The name of the array, with no \$() surrounding it, etc. \
+The name of the array, with no \$() surrounding it, etc.   
 
 regex
 

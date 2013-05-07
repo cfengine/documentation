@@ -11,17 +11,17 @@ tags: [Special-functions,Function-peerleader]
 
 **Synopsis**: peerleader(arg1,arg2,arg3) returns type **string**
 
-\
- *arg1* : File name of host list, *in the range* "?(/.\*) \
- *arg2* : Comment regex pattern, *in the range* .\* \
- *arg3* : Peer group size, *in the range* 0,99999999999 \
+  
+ *arg1* : File name of host list, *in the range* "?(/.\*)   
+ *arg2* : Comment regex pattern, *in the range* .\*   
+ *arg3* : Peer group size, *in the range* 0,99999999999   
 
 Get the assigned peer-leader of the partition to which we belong
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent peers
 {
 vars:
@@ -43,10 +43,10 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-~~~~ {.example}
+~~~~
      
      (string) peerleader(file of hosts,comment pattern,group size);
      
@@ -68,7 +68,7 @@ not belong to the list.
 
 File of hosts
 
-A path to a list of hosts. \
+A path to a list of hosts.   
 
 Comment pattern
 
@@ -76,7 +76,7 @@ A pattern that matches a legal comment in the file. The regex is
 unanchored, meaning it may match a partial line (see [Anchored vs.
 unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
-Comments are stripped as the file is read. \
+Comments are stripped as the file is read.   
 
 Group size
 
@@ -86,7 +86,7 @@ nonsensical promises.
 
 Example file:
 
-~~~~ {.smallexample}
+~~~~
      one
      two
      three # this is a comment

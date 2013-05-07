@@ -11,20 +11,20 @@ tags: [Special-functions,Function-not]
 
 **Synopsis**: not(arg1) returns type **string**
 
-\
- *arg1* : Class value, *in the range* .\* \
+  
+ *arg1* : Class value, *in the range* .\*   
 
 Calculate whether argument is false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 commands:
   "/usr/bin/generate_config $(config)"
     ifvarclass => not(fileexists("/etc/config/$(config)"));
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  *History*: Was introduced in 3.2.0, Nova 2.1.0 (2011)

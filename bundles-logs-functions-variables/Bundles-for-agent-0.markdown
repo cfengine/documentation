@@ -10,9 +10,9 @@ tags: [Bundles-for-agent]
 Bundles of `agent`
 ------------------
 
-\
+  
 
-~~~~ {.smallexample}
+~~~~
      
      bundle agent main(parameter)
      
@@ -42,7 +42,7 @@ Bundles of `agent`
      
 ~~~~
 
-\
+  
 
 Agent bundles contain user-defined promises for `cf-agent`. The types of
 promises and their corresponding bodies are detailed below.

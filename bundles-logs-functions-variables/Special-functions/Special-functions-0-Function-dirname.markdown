@@ -11,21 +11,21 @@ tags: [Special-functions,Function-dirname]
 
 **Synopsis**: dirname(arg1) returns type **string**
 
-\
- *arg1* : File path, *in the range* .\* \
+  
+ *arg1* : File path, *in the range* .\*   
 
 Return the parent directory name for given path
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
   "apache_dir" string => dirname("/etc/apache2/httpd.conf");
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  *History*: Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
 This function returns directory name for the argument. If directory name

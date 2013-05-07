@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,databases-in-agent-promises]
 
 ### `databases` promises in agent
 
-\
+  
 
 CFEngine Nova can interact with commonly used database servers to keep
 promises about the structure and content of data within them.
@@ -32,12 +32,12 @@ There are three kinds of database supported by Nova:
 
 *LDAP - The Lightweight Directory Access Protocol*
 
-A hierarchical network database primarily for reading simple schema. \
+A hierarchical network database primarily for reading simple schema.   
 
 *SQL - Structured Query Language*
 
 A number of relational databases (currently supported: MySQL, Postgres)
-for reading and writing complex data. \
+for reading and writing complex data.   
 
 *Registry - Microsoft Registry*
 
@@ -55,7 +55,7 @@ and CFEngine cannot make promises on their behalf, unless they promise
 pre-requisite for making SQL database promises is to grant a point of
 access on the server.
 
-~~~~ {.smallexample}
+~~~~
      
       databases:
      
@@ -82,9 +82,9 @@ access on the server.
      
 ~~~~
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 body common control
 {
 bundlesequence => { "databases" };
@@ -143,7 +143,7 @@ exec_owner => "$(x)";
 }
 ~~~~
 
-\
+  
 
 The promiser in database promises is a concatenation of the database
 name and underlying tables. This presents a simple hierarchical model
@@ -172,18 +172,18 @@ a hierarchy of depth 1.
 
 **Synopsis**: User name for database connection
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      db_server_owner => "mark";
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `db_server_password`
 
@@ -193,18 +193,18 @@ a hierarchy of depth 1.
 
 **Synopsis**: Clear text password for database connection
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      db_server_password => "xyz.1234";
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `db_server_host`
 
@@ -215,27 +215,27 @@ a hierarchy of depth 1.
 **Synopsis**: Hostname or address for connection to database (blank
 means localhost)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      db_server_host => "sqlserv.example.org";
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-Hostname or IP address of the server. \
+Hostname or IP address of the server.   
 
 `db_server_type`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     postgres
                     mysql
 ~~~~
@@ -244,18 +244,18 @@ Hostname or IP address of the server. \
 
 **Default value:** none
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      db_server_type => "postgres";
      
 ~~~~
 
-**Notes**:\
- \
- \
+**Notes**:  
+   
+   
 
 `db_server_connection_db`
 
@@ -266,10 +266,10 @@ Hostname or IP address of the server. \
 **Synopsis**: The name of an existing database to connect to in order to
 create/manage other databases
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body database_server myserver(x)
      {
@@ -284,8 +284,8 @@ create/manage other databases
 
 where x is currently `mysql` or `postgres`.
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 In order to create a database on a database server (all of which
 practice voluntary cooperation), one has to be able to connect to the
@@ -302,9 +302,9 @@ body.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                sql
                ms_registry
 ~~~~
@@ -313,23 +313,23 @@ body.
 
 **Synopsis**: The type of database that is to be manipulated
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 database_type => "ms_registry";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 #### `database_operation`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                create
                delete
                drop
@@ -340,15 +340,15 @@ database_type => "ms_registry";
 
 **Synopsis**: The nature of the promise - to be or not to be
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 database_operation => "create";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 #### `database_columns`
 
@@ -359,10 +359,10 @@ database_operation => "create";
 **Synopsis**: A list of column definitions to be promised by SQL
 databases
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
   "cf_topic_maps/topics"
 
     database_operation => "create",
@@ -378,8 +378,8 @@ databases
     database_server => myserver;
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Columns are a list of tuplets (Name,type,size). Array items are
 triplets, and fixed size data elements are doublets.
@@ -393,10 +393,10 @@ triplets, and fixed size data elements are doublets.
 **Synopsis**: An ordered list of row values to be promised by SQL
 databases
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent databases
 
 {
@@ -414,8 +414,8 @@ databases:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This constraint is used only in adding data to database columns. Rows
 are considered to be instances of individual columns.
@@ -434,10 +434,10 @@ for the Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ`
 **Synopsis**: A list of regular expressions to ignore in key/value
 verification
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 databases:
 
  "HKEY_LOCAL_MACHINE\SOFTWARE"
@@ -456,8 +456,8 @@ databases:
     database_type     => "ms_registry";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 During recursive Windows registry scanning, this option allows us to
 ignore keys of values matching a list of regular expressions. Some

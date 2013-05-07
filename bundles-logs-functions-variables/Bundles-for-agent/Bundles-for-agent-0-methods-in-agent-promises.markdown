@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,methods-in-agent-promises]
 
 ### `methods` promises in agent
 
-\
+  
 
 Methods are compound promises that refer to whole bundles of promises.
 Methods may be parameterized. Methods promises are written in a form
@@ -19,7 +19,7 @@ objects that are affected by the promise-bundle. Since the use of these
 identifiers is for the future, you can simply use any string here for
 the time being.
 
-~~~~ {.smallexample}
+~~~~
      
       methods:
      
@@ -36,9 +36,9 @@ In CFEngine 2 methods referred to separate sub-programs executed as
 separate processes. Methods are now implemented as bundles that are run
 inline.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 
 bundle agent example
 {
@@ -70,7 +70,7 @@ reports:
 
 ~~~~
 
-\
+  
 
 Methods offer powerful ways to encapsulate multiple issues pertaining to
 a set of parameters.
@@ -88,7 +88,7 @@ Care should be exercised when using this approach. In order to make the
 function call uniquely classified, CFEngine requires the promiser to
 contain the variable name of the method if the variable is a list.
 
-~~~~ {.verbatim}
+~~~~
 bundle agent default
 {
 vars:
@@ -110,9 +110,9 @@ methods:
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                true
                false
                yes
@@ -126,10 +126,10 @@ classes of its parent
 
 **Default value**: false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent name
 {
 methods:
@@ -145,8 +145,8 @@ inherit => "true";
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
@@ -170,10 +170,10 @@ reference using its bundle name. For example: \$(bundle.variable).
 **Synopsis**: Specify the name of a local variable to contain any
 result/return value from the child
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 {
 bundlesequence => { "test" };
@@ -213,8 +213,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.4.0 (2012)
 
