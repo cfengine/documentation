@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,build_005fxpath-in-edit_005fxml-promises]
 
 ### `build_xpath` promises in edit\_xml
 
-\
+  
 
 This promise is part of the XML-editing model. It assures that a
 balanced XML tree, described by the given XPath, will be present within
@@ -22,9 +22,9 @@ that is described by the XPath and also found within the document. The
 promise object referred to is a literal string representation of an
 XPath.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_xml example
   {
   build_xpath:
@@ -32,7 +32,7 @@ bundle edit_xml example
   }
 ~~~~
 
-\
+  
 
 Note that typically, only a single XPath is built in each `build_xpath`
 promise. You may of course have multiple promises that each build an

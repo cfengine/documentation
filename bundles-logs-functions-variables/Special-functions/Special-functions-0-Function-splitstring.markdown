@@ -11,18 +11,18 @@ tags: [Special-functions,Function-splitstring]
 
 **Synopsis**: splitstring(arg1,arg2,arg3) returns type **slist**
 
-\
- *arg1* : A data string, *in the range* .\* \
- *arg2* : Regex to split on, *in the range* .\* \
- *arg3* : Maximum number of pieces, *in the range* 0,99999999999 \
+  
+ *arg1* : A data string, *in the range* .\*   
+ *arg2* : Regex to split on, *in the range* .\*   
+ *arg3* : Maximum number of pieces, *in the range* 0,99999999999   
 
 Convert a string in arg1 into a list of max arg3 strings by splitting on
 a regular expression in arg2
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent test
 
 {
@@ -43,8 +43,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Returns a list of strings from a string.
 
@@ -52,14 +52,14 @@ Returns a list of strings from a string.
 
 string
 
-The string to be split. \
+The string to be split.   
 
 regex
 
 A regex pattern which is used to parse the field separator(s) to split
 up the file into items. The regex is unanchored (See [Anchored vs.
 unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 maxent
 

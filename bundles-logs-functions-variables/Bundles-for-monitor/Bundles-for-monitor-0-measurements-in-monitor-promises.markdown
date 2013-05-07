@@ -9,7 +9,7 @@ tags: [Bundles-for-monitor,measurements-in-monitor-promises]
 
 ### `measurements` promises in monitor
 
-\
+  
 
 *These features are available only in Enterprise versions of CFEngine.*
 
@@ -31,7 +31,7 @@ destined for the agent concerned (however, you do not need to add them
 to the `bundlesequence` they are executed by `cf-monitord` because they
 are bundles of type `monitor`). In this case:
 
-~~~~ {.verbatim}
+~~~~
 bundle monitor watch
 
 {
@@ -50,9 +50,9 @@ in a special variable context called mon, analogous to the system
 variables in sys. Thus the values may be used in other promises in the
 form `$(mon.handle)`.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
   # Follow a special process over time
   # using CFEngine's process cache to avoid resampling
 
@@ -97,7 +97,7 @@ extraction_regex => "(.*)";
 
 ~~~~
 
-\
+  
 
 **Notes:**
 
@@ -185,24 +185,24 @@ into agent variables in the `$(mon.`name`)` context.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                pipe
                file
 ~~~~
 
 **Synopsis**: The datatype being collected.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 stream_type => "pipe";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 CFEngine treats all input using a stream abstraction. The preferred
 interface is files, since they can be read without incurring the cost of
@@ -212,9 +212,9 @@ a process. However pipes from executed commands may also be invoked.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                counter
                int
                real
@@ -224,10 +224,10 @@ a process. However pipes from executed commands may also be invoked.
 
 **Synopsis**: The datatype being collected.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
   "/bin/df"
 
       handle => "free_disk_watch",
@@ -242,8 +242,8 @@ a process. However pipes from executed commands may also be invoked.
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 When CFEngine (Nova) observes data, such as the attached partitions in
 the example above, the datatype determines how that data will be
@@ -258,9 +258,9 @@ be selected.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                weekly
                scalar
                static
@@ -270,10 +270,10 @@ be selected.
 **Synopsis**: Whether the data can be seen as a time-series or just an
 isolated value
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
  "/proc/meminfo"
 
       handle => "free_memory_watch",
@@ -284,23 +284,23 @@ isolated value
       match_value => free_memory;
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 scalar
 
 A single value, with compressed statistics is retained. The value of the
 data is not expected to change much for the lifetime of the daemon (and
-so will be sampled less often by cf-monitord). \
+so will be sampled less often by cf-monitord).   
 
 static
 
-A synonym for \`scalar'. \
+A synonym for \`scalar'.   
 
 log
 
 The measured value is logged as an infinite time-series in
-\$(sys.workdir)/state. \
+\$(sys.workdir)/state.   
 
 weekly
 
@@ -316,10 +316,10 @@ is retained.
 **Synopsis**: The engineering dimensions of this value or a note about
 its intent used in plots
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
    "/var/cfengine/state/cf_rootprocs"
 
       handle => "monitor_self_watch",
@@ -332,8 +332,8 @@ its intent used in plots
          "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is an arbitary string used in documentation only.
 
@@ -349,10 +349,10 @@ This is an arbitary string used in documentation only.
 
 **Synopsis**: Regular expression for matching line location
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      # Editing
      
@@ -370,14 +370,14 @@ This is an arbitary string used in documentation only.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The expression is anchored, meaning it must match a whole line, and not
 a fragment within a line (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
-This attribute is mutually exclusive of `select_line_number`. \
+This attribute is mutually exclusive of `select_line_number`.   
 
 `select_line_number`
 
@@ -387,10 +387,10 @@ This attribute is mutually exclusive of `select_line_number`. \
 
 **Synopsis**: Read from the n-th line of the output (fixed format)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body match_value find_line
      {
@@ -399,10 +399,10 @@ This attribute is mutually exclusive of `select_line_number`. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
-This is mutually exclusive of `select_line_matching`. \
+This is mutually exclusive of `select_line_matching`.   
 
 `extraction_regex`
 
@@ -413,10 +413,10 @@ This is mutually exclusive of `select_line_matching`. \
 **Synopsis**: Regular expression that should contain a single
 backreference for extracting a value
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body match_value free_memory
      {
@@ -426,22 +426,22 @@ backreference for extracting a value
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A single parenthesized backreference should be given to lift the value
 to be measured out of the text stream. The regular expression is
 unanchored, meaning it may match a partial string (see [Anchored vs.
 unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
+expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
 `track_growing_file`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -454,10 +454,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). \
 read when opening the file, and resets to the start if the file has
 since been truncated
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      bundle monitor watch
      {
      measurements:
@@ -490,8 +490,8 @@ since been truncated
      }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This option applies only to file based input streams. If this is true,
 CFEngine treats the file as if it were a log file, growing continuously.
@@ -500,15 +500,15 @@ each invocation. In this way, the monitor does not count lines in the
 log file redundantly.
 
 This makes a log pattern promise equivalent to something like tail -f
-logfile | grep pattern in Unix parlance. \
+logfile | grep pattern in Unix parlance.   
 
 `select_multiline_policy`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     average
                     sum
                     first
@@ -517,10 +517,10 @@ logfile | grep pattern in Unix parlance. \
 
 **Synopsis**: Regular expression for matching line location
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body match_value myvalue(xxx)
      {
@@ -531,8 +531,8 @@ logfile | grep pattern in Unix parlance. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 *History*: Was introduced in 3.4.0 (2012)
 

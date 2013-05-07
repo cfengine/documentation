@@ -10,9 +10,9 @@ tags: [Bundles-for-knowledge]
 Bundles of `knowledge`
 ----------------------
 
-\
+  
 
-~~~~ {.smallexample}
+~~~~
      
      bundle knowledge system
      
@@ -32,7 +32,7 @@ Bundles of `knowledge`
      
 ~~~~
 
-\
+  
 
 Knowledge bundles describe topic maps, i.e. Topics, Associations and
 Occurrences (of topics in documents). This is for knowledge modeling and

@@ -9,7 +9,7 @@ tags: [Special-Variables,Variable-context-mon]
 
 ### Variable context `mon`
 
-\
+  
 
 The variables discovered by `cf-monitord` are placed in this monitoring
 context. Monitoring variables are expected to be ephemeral properties,

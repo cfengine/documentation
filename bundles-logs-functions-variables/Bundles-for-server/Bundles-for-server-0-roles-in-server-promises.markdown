@@ -9,7 +9,7 @@ tags: [Bundles-for-server,roles-in-server-promises]
 
 ### `roles` promises in server
 
-\
+  
 
 Roles promises are server-side decisions about which users are allowed
 to define soft-classes on the server's system during remote invocation
@@ -20,7 +20,7 @@ regular expression is anchored, meaning it must match the entire name
 (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
-~~~~ {.smallexample}
+~~~~
      
       roles:
      
@@ -35,9 +35,9 @@ or modify promise definitions by remote access. At best users may try to
 send classes when using*`cf-runagent`*in order to activate sleeping
 promises. This mechanism limits their ability to do this*.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle server access_rules()
 
 {
@@ -49,7 +49,7 @@ roles:
 }
 ~~~~
 
-\
+  
 
 In this example user mark is granted permission to remotely activate
 classes matching the regular expression when Mark\_.\* using the
@@ -68,17 +68,17 @@ privileged access on the host directly.
 **Synopsis**: List of public-key user names that are allowed to activate
 the promised class during remote agent activation
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 roles:
 
   ".*"  authorize => { "mark", "marks_friend" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Part of Role Based Access Control (RBAC) in CFEngine. The users listed
 in this section are granted access to set certain classes by using the

@@ -9,7 +9,7 @@ tags: [Bundles-for-common,classes-in-common-promises]
 
 ### `classes` promises in \*
 
-\
+  
  Classes promises refer to the classification of different run-contexts.
 These are not related to object oriented classes, but are more like tag
 labels representing different properties of the environment.
@@ -22,9 +22,9 @@ classes in all other bundles are local.
 
 Note: The words class and context are sometimes used interchangeably.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle common g
 {
 classes:
@@ -57,10 +57,10 @@ to be ANDed together, this list form is more convenient than providing
 an expression. If all of the class expressions listed on the right-hand
 side match, then the class on the left-hand side is defined.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 classes:
 
   "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
@@ -78,10 +78,10 @@ Assign one generic class ('always') and one additional class, randomly
 weighted on a probability distribution. This was previous called a
 strategy in CFEngine 2.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 classes:
 
   "my_dist"  
@@ -93,7 +93,7 @@ Referring to the the sum of `10+20+40+50 = 120` in the example above,
 when generating the distribution, CFEngine picks a number between
 `1-120`. This will generate the following classes:
 
-~~~~ {.smallexample}
+~~~~
      my_dist    (always)
      my_dist_10 (10/120 of the time)
      my_dist_20 (20/120 of the time)
@@ -111,10 +111,10 @@ when generating the distribution, CFEngine picks a number between
 
 A way of aliasing class combinations.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 classes:
 
   "class_name" expression => "solaris|(linux.specialclass)";
@@ -133,10 +133,10 @@ The class on the left-hand side will be defined if any one (or more) of
 the class expressions on the right-hand side are true. This is useful
 construction for writing expressions that contain special functions.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 classes:
 
     "compound_test" 
@@ -158,10 +158,10 @@ calculations on each invocation. This is useful if a class discovered is
 essentially constant or only slowly varying, such as a hostname or alias
 from a non-standard naming facility.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle common setclasses
 {
 classes:
@@ -180,7 +180,7 @@ classes:
 For example, to create a conditional inclusion of costly class
 definitions, put them into a separate bundle in a file classes.cf.
 
-~~~~ {.verbatim}
+~~~~
 # promises.cf
 
 body common control 
@@ -211,7 +211,7 @@ reports:
 
 Then create classes.cf
 
-~~~~ {.verbatim}
+~~~~
 # classes.cf
 
 bundle common setclasses
@@ -241,10 +241,10 @@ This negates the effect of the promiser-pattern regular expression. The
 class on the left-hand side will only be defined if the class expression
 on the right-hand side is false.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 classes:
 
    "others"  not => "linux|solaris";
@@ -272,10 +272,10 @@ The class is chosen deterministically (not randomly) but it is not
 possible to say which host will end up in which class in advance. Only
 that hosts will always end up in the same class every time.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle common g
 {
 classes:
@@ -303,10 +303,10 @@ This behaves as the XOR operation on class expressions. It can be used
 to define a class if exactly one of the class expressions on the
 right-hand side matches.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 classes:
 
  "another_global" xor => { "any", "linux", "solaris"};

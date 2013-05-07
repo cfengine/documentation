@@ -9,7 +9,7 @@ tags: [Bundles-for-common,meta-in-common-promises]
 
 ### `meta` promises in \*
 
-\
+  
 
 Meta-data promises have no internal function. They are intended to be
 used to represent arbitrary information about promise bundles. Formally,
@@ -17,9 +17,9 @@ meta promises are implemented as variables, and the values map to a
 variable context called bundlename\_meta, and therefore the values can
 be used as variables and will appear in Enterprise variable reports.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 
 {     
@@ -38,7 +38,7 @@ reports:
 }
 ~~~~
 
-\
+  
 
 -   [string in meta](#string-in-meta)
 -   [slist in meta](#slist-in-meta)
@@ -55,10 +55,10 @@ In previous versions of CFEngine lists were represented (as in the
 shell) using separated scalars; similar to the PATH variable. In
 CFEngine 3 lists are kept as an independent type.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
  "xxx"    string => "Some literal string...";
@@ -81,10 +81,10 @@ variable substitution and
 expansion](#List-variable-substitution-and-expansion), and [policy in
 vars](#policy-in-vars)).
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };

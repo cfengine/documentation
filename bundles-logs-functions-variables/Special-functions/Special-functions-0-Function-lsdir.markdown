@@ -11,25 +11,25 @@ tags: [Special-functions,Function-lsdir]
 
 **Synopsis**: lsdir(arg1,arg2,arg3) returns type **slist**
 
-\
- *arg1* : Path to base directory, *in the range* .+ \
+  
+ *arg1* : Path to base directory, *in the range* .+   
  *arg2* : Regular expression to match files or blank, *in the range* .\*
-\
+  
  *arg3* : Include the base path in the list, *in the range*
-true,false,yes,no,on,off \
+true,false,yes,no,on,off   
 
 Return a list of files in a directory matching a regular expression
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
   "listfiles" slist => lsdir("/etc", "(passwd|shadow).*", "true");
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  *History*: Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
 This function returns list of files in directory specified in arg1,

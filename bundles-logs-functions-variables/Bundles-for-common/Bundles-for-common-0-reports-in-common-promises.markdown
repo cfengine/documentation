@@ -9,13 +9,13 @@ tags: [Bundles-for-common,reports-in-common-promises]
 
 ### `reports` promises in \*
 
-\
+  
 
 Reports promises simply print messages. Outputting a message without
 qualification can be a \`dangerous' operation. In a large installation
 it could unleash an avalanche of messaging.
 
-~~~~ {.smallexample}
+~~~~
      
       reports:
      
@@ -32,9 +32,9 @@ to distinguish them from other output; for example from `commands`.
 In CFEngine 2 reporting was performed with `alerts`. In CFEngine3 this
 has been replaced by `reports`.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle agent report
 {
 reports:
@@ -50,7 +50,7 @@ reports:
 }
 ~~~~
 
-\
+  
 
 -   [friend\_pattern in reports](#friend_005fpattern-in-reports)
 -   [intermittency in reports](#intermittency-in-reports)
@@ -73,10 +73,10 @@ report list
 This regular expression should match hosts we want to exclude from
 friend reports.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 reports:
 
   linux::
@@ -98,8 +98,8 @@ reports:
 **Synopsis**: Real number threshold [0,1] of intermittency about current
 peers, report above
 
-**Example**:\
- \
+**Example**:  
+   
 
 #### `lastseen`
 
@@ -121,12 +121,12 @@ This generates a separate file for each each host that connects to the
 current host. For central hubs this can result is a huge number of
 files.
 
-**Example**:\
- \
+**Example**:  
+   
 
 In control:
 
-~~~~ {.verbatim}
+~~~~
 body agent control
 {
 lastseen => "false";
@@ -135,7 +135,7 @@ lastseen => "false";
 
 See also in reports:
 
-~~~~ {.verbatim}
+~~~~
 reports:
 
   "Comment"
@@ -158,10 +158,10 @@ output
 
 Include part of a file in a report.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body printfile example
      {
@@ -171,7 +171,7 @@ Include part of a file in a report.
      
 ~~~~
 
-\
+  
 
 `number_of_lines`
 
@@ -184,10 +184,10 @@ file
 
 Include the first 'x' number of lines of a file in a report.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body printfile example
      {
@@ -208,10 +208,10 @@ Append the output of the report to the named file instead of standard
 output. If the file cannot be opened for writing then the report
 defaults to the standard output.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent test
 {
 reports:
@@ -234,10 +234,10 @@ reports:
 the caller can accept as a result for this bundle; in other words, a
 return value with array index defined by this attribute.
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 {
 bundlesequence => { "test" };
@@ -277,8 +277,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Return values are limited to scalars.
 
@@ -291,10 +291,10 @@ Return values are limited to scalars.
 **Synopsis**: List of services about which status reports should be
 reported to standard output
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 reports:
   cfengine::
 
@@ -303,222 +303,222 @@ reports:
       showstate => {"www_in", "ssh_out", "otherprocs" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The basic list of services is:
 
 users
 
-Users logged in \
+Users logged in   
 
 rootprocs
 
-Privileged system processes \
+Privileged system processes   
 
 otherprocs
 
-Non-privileged process \
+Non-privileged process   
 
 diskfree
 
-Free disk on / partition \
+Free disk on / partition   
 
 loadavg
 
-% kernel load utilization \
+% kernel load utilization   
 
 netbiosns\_in
 
-netbios name lookups (in) \
+netbios name lookups (in)   
 
 netbiosns\_out
 
-netbios name lookups (out) \
+netbios name lookups (out)   
 
 netbiosdgm\_in
 
-netbios name datagrams (in) \
+netbios name datagrams (in)   
 
 netbiosdgm\_out
 
-netbios name datagrams (out) \
+netbios name datagrams (out)   
 
 netbiosssn\_in
 
-netbios name sessions (in) \
+netbios name sessions (in)   
 
 netbiosssn\_out
 
-netbios name sessions (out) \
+netbios name sessions (out)   
 
 irc\_in
 
-IRC connections (in) \
+IRC connections (in)   
 
 irc\_out
 
-IRC connections (out) \
+IRC connections (out)   
 
 cfengine\_in
 
-CFEngine connections (in) \
+CFEngine connections (in)   
 
 cfengine\_out
 
-CFEngine connections (out) \
+CFEngine connections (out)   
 
 nfsd\_in
 
-nfs connections (in) \
+nfs connections (in)   
 
 nfsd\_out
 
-nfs connections (out) \
+nfs connections (out)   
 
 smtp\_in
 
-smtp connections (in) \
+smtp connections (in)   
 
 smtp\_out
 
-smtp connections (out) \
+smtp connections (out)   
 
 www\_in
 
-www connections (in) \
+www connections (in)   
 
 www\_out
 
-www connections (out) \
+www connections (out)   
 
 ftp\_in
 
-ftp connections (in) \
+ftp connections (in)   
 
 ftp\_out
 
-ftp connections (out) \
+ftp connections (out)   
 
 ssh\_in
 
-ssh connections (in) \
+ssh connections (in)   
 
 ssh\_out
 
-ssh connections (out) \
+ssh connections (out)   
 
 wwws\_in
 
-wwws connections (in) \
+wwws connections (in)   
 
 wwws\_out
 
-wwws connections (out) \
+wwws connections (out)   
 
 icmp\_in
 
-ICMP packets (in) \
+ICMP packets (in)   
 
 icmp\_out
 
-ICMP packets (out) \
+ICMP packets (out)   
 
 udp\_in
 
-UDP dgrams (in) \
+UDP dgrams (in)   
 
 udp\_out
 
-UDP dgrams (out) \
+UDP dgrams (out)   
 
 dns\_in
 
-DNS requests (in) \
+DNS requests (in)   
 
 dns\_out
 
-DNS requests (out) \
+DNS requests (out)   
 
 tcpsyn\_in
 
-TCP sessions (in) \
+TCP sessions (in)   
 
 tcpsyn\_out
 
-TCP sessions (out) \
+TCP sessions (out)   
 
 tcpack\_in
 
-TCP acks (in) \
+TCP acks (in)   
 
 tcpack\_out
 
-TCP acks (out) \
+TCP acks (out)   
 
 tcpfin\_in
 
-TCP finish (in) \
+TCP finish (in)   
 
 tcpfin\_out
 
-TCP finish (out) \
+TCP finish (out)   
 
 tcpmisc\_in
 
-TCP misc (in) \
+TCP misc (in)   
 
 tcpmisc\_out
 
-TCP misc (out) \
+TCP misc (out)   
 
 webaccess
 
-Webserver hits \
+Webserver hits   
 
 weberrors
 
-Webserver errors \
+Webserver errors   
 
 syslog
 
-New log entries (Syslog) \
+New log entries (Syslog)   
 
 messages
 
-New log entries (messages) \
+New log entries (messages)   
 
 temp0
 
-CPU Temperature 0 \
+CPU Temperature 0   
 
 temp1
 
-CPU Temperature 1 \
+CPU Temperature 1   
 
 temp2
 
-CPU Temperature 2 \
+CPU Temperature 2   
 
 temp3
 
-CPU Temperature 3 \
+CPU Temperature 3   
 
 cpu
 
-%CPU utilization (all) \
+%CPU utilization (all)   
 
 cpu0
 
-%CPU utilization 0 \
+%CPU utilization 0   
 
 cpu1
 
-%CPU utilization 1 \
+%CPU utilization 1   
 
 cpu2
 
-%CPU utilization 2 \
+%CPU utilization 2   
 
 cpu3
 

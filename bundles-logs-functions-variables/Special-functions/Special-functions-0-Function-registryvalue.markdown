@@ -11,16 +11,16 @@ tags: [Special-functions,Function-registryvalue]
 
 **Synopsis**: registryvalue(arg1,arg2) returns type **string**
 
-\
- *arg1* : Windows registry key, *in the range* .\* \
- *arg2* : Windows registry value-id, *in the range* .\* \
+  
+ *arg1* : Windows registry key, *in the range* .\*   
+ *arg2* : Windows registry value-id, *in the range* .\*   
 
 Returns a value for an MS-Win registry key,value pair
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent reg
 {
 vars:
@@ -36,8 +36,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This function applies only to Windows-based systems. It reads a data
 field for the value named in the second argument, which lies within the

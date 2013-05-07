@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,Miscellaneous-in-edit_005fxml-promises]
 
 ### Miscelleneous in `edit_xml` promises
 
-\
+  
 
 The use of XML documents in systems configuration is widespread. XML
 documents represent data that is complex and can be structured in
@@ -27,18 +27,18 @@ editing hierarchical and structured XML datasets.
 
 **Synopsis**: Build an XPath within the XML file
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body build_xpath example(s)
   {
   build_xpath => "$(s)";
   }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Please note that when `build_xpath` is defined as an attribute, within
 an `edit_xml` promise body, the tree described by the specified XPath
@@ -54,17 +54,17 @@ of such promises.
 
 **Synopsis**: Select the XPath node in the XML file to edit
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body select_xpath example(s)
 {
 select_xpath => "$(s)";
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  Edits to the XML document take place within the selected node. This
 attribute is not used when inserting XML content into an empty file.

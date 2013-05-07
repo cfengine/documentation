@@ -11,16 +11,16 @@ tags: [Special-functions,Function-returnszero]
 
 **Synopsis**: returnszero(arg1,arg2) returns type **class**
 
-\
- *arg1* : Fully qualified command path, *in the range* "?(/.\*) \
- *arg2* : Shell encapsulation option, *in the range* useshell,noshell \
+  
+ *arg1* : Fully qualified command path, *in the range* "?(/.\*)   
+ *arg2* : Shell encapsulation option, *in the range* useshell,noshell   
 
 True if named shell command has exit status zero
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -45,8 +45,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This is the complement of `execresult`, but it returns a class result
 rather than the output of the command.

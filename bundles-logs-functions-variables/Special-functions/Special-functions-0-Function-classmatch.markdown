@@ -11,15 +11,15 @@ tags: [Special-functions,Function-classmatch]
 
 **Synopsis**: classmatch(arg1) returns type **class**
 
-\
- *arg1* : Regular expression, *in the range* .\* \
+  
+ *arg1* : Regular expression, *in the range* .\*   
 
 True if the regular expression matches any currently defined class
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -44,8 +44,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The regular expression is matched against the current list of defined
 classes. The regular expression must match a complete class for the

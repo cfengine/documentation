@@ -9,12 +9,12 @@ tags: [Bundles-for-agent,replace_005fpatterns-in-edit_005fline-promises]
 
 ### `replace_patterns` promises in edit\_line
 
-\
+  
 
 This promise refers to arbitrary text patterns in a file. The pattern is
 expressed as a PCRE regular expression.
 
-~~~~ {.smallexample}
+~~~~
      
        replace_patterns:
      
@@ -25,9 +25,9 @@ expressed as a PCRE regular expression.
      
 ~~~~
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_line upgrade_cfexecd
 {
   replace_patterns:
@@ -44,7 +44,7 @@ occurrences => "all";
 }
 ~~~~
 
-\
+  
 
 This is a straightforward search and replace function. Only the portion
 of the line that matches the pattern in the promise will be replaced;
@@ -69,9 +69,9 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     all
                     first
 ~~~~
@@ -81,10 +81,10 @@ the latter is non-convergent)
 
 **Default value:** all
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body replace_with example
      {
@@ -93,15 +93,15 @@ the latter is non-convergent)
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 A policy for string replacement.
 
 Using "first" is generally unwise, as it will change a different
 matching string each time the promise is executed, and may not "catch
 up" with whatever external action is altering the text the promise
-applies to. \
+applies to.   
 
 `replace_value`
 
@@ -111,10 +111,10 @@ applies to. \
 
 **Synopsis**: Value used to replace regular expression matches in search
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body replace_with example(s)
      {
@@ -123,5 +123,5 @@ applies to. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   

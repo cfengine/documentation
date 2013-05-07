@@ -11,14 +11,14 @@ tags: [Special-functions,Function-now]
 
 **Synopsis**: now() returns type **int**
 
-\
+  
 
 Convert the current time into system representation
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body file_select zero_age
 {
 mtime       => irange(ago(1,0,0,0,0,0),now);
@@ -26,5 +26,5 @@ file_result => "mtime";
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   

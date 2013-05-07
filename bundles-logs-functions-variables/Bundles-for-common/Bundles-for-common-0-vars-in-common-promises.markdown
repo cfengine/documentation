@@ -9,7 +9,7 @@ tags: [Bundles-for-common,vars-in-common-promises]
 
 ### `vars` promises in \*
 
-\
+  
 
 Variables in CFEngine are defined as promises that an identifier
 represents a particular value. Variables in CFEngine are dynamically
@@ -19,9 +19,9 @@ also possible.
 Arrays are `associative` and use square brackets [] to enclose an
 arbitrary key.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 
 {     
@@ -45,7 +45,7 @@ reports:
 
 ~~~~
 
-\
+  
 
 -   [string in vars](#string-in-vars)
 -   [int in vars](#int-in-vars)
@@ -63,10 +63,10 @@ reports:
 
 **Synopsis**: A scalar string
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
  "xxx"    string => "Some literal string...";
@@ -74,8 +74,8 @@ vars:
  "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 In previous versions of CFEngine lists were represented (as in the
 shell) using separated scalars; similar to the PATH variable. In
@@ -89,10 +89,10 @@ CFEngine 3 lists are kept as an independent type.
 
 **Synopsis**: A scalar integer
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
  "scalar" int    => "16k";
@@ -102,8 +102,8 @@ vars:
  "dim_array" int =>  readstringarray("array_name","/etc/passwd","#[^\n]*",":",10,4000);
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  Int variables are strings that are expected to be used as integer
 numbers. The typing in CFEngine is dynamic, so the variable types are
 interchangeable. However, when you declare a variable to be type `int`,
@@ -115,27 +115,27 @@ must only have an integer numeric part (e.g. 1.5M is not allowed).
 
 k
 
-The value multiplied by 1000. \
+The value multiplied by 1000.   
 
 K
 
-The value multiplied by 1024. \
+The value multiplied by 1024.   
 
 m
 
-The value multiplied by 1000 \* 1000. \
+The value multiplied by 1000 \* 1000.   
 
 M
 
-The value multiplied by 1024 \* 1024. \
+The value multiplied by 1024 \* 1024.   
 
 g
 
-The value multiplied by 1000 \* 1000 \* 1000. \
+The value multiplied by 1000 \* 1000 \* 1000.   
 
 G
 
-The value multiplied by 1024 \* 1024 \* 1024. \
+The value multiplied by 1024 \* 1024 \* 1024.   
 
 %
 
@@ -151,17 +151,17 @@ The value inf may also be used to represent an unlimited positive value.
 
 **Synopsis**: A scalar real number
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
    
  "scalar" real   => "0.5";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  Real variables are strings that are expected to be used as real
 numbers. The typing in CFEngine is dynamic, so the variable types are
 interchangeable, but when you declare a variable to be type `real`,
@@ -179,10 +179,10 @@ useful for representing probabilities and performance data.
 
 **Synopsis**: A list of scalar strings
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };
@@ -201,8 +201,8 @@ vars:
 
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  Some functions return `slist`s (see [Introduction to
 functions](#Introduction-to-functions)), and an `slist` may contain the
 values copied from another `slist`, `rlist`, or `ilist` (see [List
@@ -218,10 +218,10 @@ vars](#policy-in-vars)).
 
 **Synopsis**: A list of integers
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
   "variable_id"
@@ -229,8 +229,8 @@ vars:
        ilist => { "10", "11", "12" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Integer lists are lists of strings that are expected to be treated as
 integers. The typing in CFEngine is dynamic, so the variable types are
@@ -253,17 +253,17 @@ vars](#policy-in-vars)).
 
 **Synopsis**: A list of real numbers
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
   "varid" rlist => { "0.1", "0.2", "0.3" };
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
  Real lists are lists of strings that are expected to be used as real
 numbers. The typing in CFEngine is dynamic, so the variable types are
 interchangeable, but when you declare a variable to be type `rlist`,
@@ -281,9 +281,9 @@ vars](#policy-in-vars)).
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                free
                overridable
                constant
@@ -292,18 +292,18 @@ vars](#policy-in-vars)).
 
 **Synopsis**: The policy for (dis)allowing (re)definition of variables
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 vars:
 
   "varid" string => "value...",
           policy => "constant";
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Variables can either be allowed to change their value dynamically (be
 redefined) or they can be constant. The use of private variable spaces
@@ -319,7 +319,7 @@ or undefined lists are dropped. The default behaviour is otherwise to
 retain this value as an indicator of the failure to quench the variable
 reference, for example:
 
-~~~~ {.verbatim}
+~~~~
    
     "one" slist => { "1", "2", "3" };
 
@@ -333,7 +333,7 @@ to @(two) would disappear. This is useful for combining lists,
 \`inheritance-style' where one can extend a base with special cases if
 they are defined.
 
-**Default value**:\
- \
+**Default value**:  
+   
 
 `policy = constant`

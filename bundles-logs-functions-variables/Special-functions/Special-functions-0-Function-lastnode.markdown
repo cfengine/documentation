@@ -11,16 +11,16 @@ tags: [Special-functions,Function-lastnode]
 
 **Synopsis**: lastnode(arg1,arg2) returns type **string**
 
-\
- *arg1* : Input string, *in the range* .\* \
- *arg2* : Link separator, e.g. /,:, *in the range* .\* \
+  
+ *arg1* : Input string, *in the range* .\*   
+ *arg2* : Link separator, e.g. /,:, *in the range* .\*   
 
 Extract the last of a separated string, e.g. filename from a path
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent yes
 {
 vars:
@@ -42,8 +42,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 This function returns the final node in a chain, given a regular
 expression to split on. This is mainly useful for finding leaf-names of

@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,Miscellaneous-in-edit_005fline-promises]
 
 ### Miscelleneous in `edit_line` promises
 
-\
+  
 
 Line based editing is a simple model for editing files. Before XML, and
 later JSON, most configuration files were line based. The line-based
@@ -26,9 +26,9 @@ templating.
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -41,10 +41,10 @@ templating.
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body select_region MySection(x)
      {
@@ -55,15 +55,15 @@ templating.
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 In a sectioned file, the line that marks the opening of a section is not
 normally included in the defined region (that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing). Setting this option to true makes it included. For example:
 
-~~~~ {.verbatim}
+~~~~
      [My section]
      one
      two
@@ -79,15 +79,15 @@ unaffected by any `delete_lines` promises. See the next section on
 `include_start_delimiter` for further details.
 
 **History**: This attribute was introduced in CFEngine version 3.0.5
-(2010) \
+(2010)   
 
 `include_end_delimiter`
 
 **Type**: (menu option)
 
-**Allowed input range**: \
+**Allowed input range**:   
 
-~~~~ {.example}
+~~~~
                     true
                     false
                     yes
@@ -100,10 +100,10 @@ unaffected by any `delete_lines` promises. See the next section on
 
 **Default value:** false
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body select_region BracketSection(x)
      {
@@ -114,15 +114,15 @@ unaffected by any `delete_lines` promises. See the next section on
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 In a sectioned file, the line that marks the end of a section is not
 normally included in the defined region; that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing. Setting this option to true makes it included. For example:
 
-~~~~ {.verbatim}
+~~~~
      /var/log/mail.log {
          monthly
          missingok
@@ -145,7 +145,7 @@ with them. Note that sections can be bounded at both the start and end
 in `include_start_delimiter`).
 
 **History**: This attribute was introduced in CFEngine version 3.0.5
-(2010) \
+(2010)   
 
 `select_start`
 
@@ -155,10 +155,10 @@ in `include_start_delimiter`).
 
 **Synopsis**: Regular expression matching start of edit region
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body select_region example(x)
      
@@ -169,14 +169,14 @@ in `include_start_delimiter`).
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 See also `select_end`. These delimiters mark out the region of a file to
 be edited. In the example, it is assumed that the file has section
 markers.
 
-~~~~ {.smallexample}
+~~~~
           [section 1]
           
           lines.
@@ -190,7 +190,7 @@ markers.
           
 ~~~~
 
-The start marker includes the first matched line. \
+The start marker includes the first matched line.   
 
 `select_end`
 
@@ -200,10 +200,10 @@ The start marker includes the first matched line. \
 
 **Synopsis**: Regular expression matches end of edit region from start
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
      
      body select_region example(x)
      
@@ -214,14 +214,14 @@ The start marker includes the first matched line. \
      
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 See also `select_start`. These delimiters mark out the region of a file
 to be edited. In this example, it is assumed that the file has section
 markers:
 
-~~~~ {.smallexample}
+~~~~
           [section 1]
           
           lines.

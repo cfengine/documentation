@@ -11,15 +11,15 @@ tags: [Special-functions,Function-isdir]
 
 **Synopsis**: isdir(arg1) returns type **class**
 
-\
- *arg1* : File object name, *in the range* "?(/.\*) \
+  
+ *arg1* : File object name, *in the range* "?(/.\*)   
 
 True if the named object is a directory
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 
 body common control
 
@@ -45,8 +45,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The CFEngine process must have access to the object concerned in order
 for this to work.

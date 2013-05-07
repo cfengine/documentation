@@ -11,15 +11,15 @@ tags: [Special-functions,Function-isplain]
 
 **Synopsis**: isplain(arg1) returns type **class**
 
-\
- *arg1* : File object name, *in the range* "?(/.\*) \
+  
+ *arg1* : File object name, *in the range* "?(/.\*)   
 
 True if the named object is a plain/regular file
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -44,5 +44,5 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   

@@ -11,17 +11,17 @@ tags: [Special-functions,Function-splayclass]
 
 **Synopsis**: splayclass(arg1,arg2) returns type **class**
 
-\
- *arg1* : Input string for classification, *in the range* .\* \
- *arg2* : Splay time policy, *in the range* daily,hourly \
+  
+ *arg1* : Input string for classification, *in the range* .\*   
+ *arg2* : Splay time policy, *in the range* daily,hourly   
 
 True if the first argument's time-slot has arrived, according to a
 policy in arg2
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 body common control
 
 {
@@ -46,8 +46,8 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 The lvalue class evaluates to true if the system clock lies within a
 scheduled time-interval that maps to a hash of the first argument (which

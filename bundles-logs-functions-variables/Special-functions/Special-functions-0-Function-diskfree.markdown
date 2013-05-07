@@ -11,16 +11,16 @@ tags: [Special-functions,Function-diskfree]
 
 **Synopsis**: diskfree(arg1) returns type **int**
 
-\
- *arg1* : File system directory, *in the range* "?(/.\*) \
+  
+ *arg1* : File system directory, *in the range* "?(/.\*)   
 
 Return the free space (in KB) available on the directory's current
 partition (0 if not found)
 
-**Example**:\
- \
+**Example**:  
+   
 
-~~~~ {.verbatim}
+~~~~
 bundle agent example
 {     
 vars:
@@ -36,7 +36,7 @@ reports:
 }
 ~~~~
 
-**Notes**:\
- \
+**Notes**:  
+   
 
 Values returned in kilobytes.

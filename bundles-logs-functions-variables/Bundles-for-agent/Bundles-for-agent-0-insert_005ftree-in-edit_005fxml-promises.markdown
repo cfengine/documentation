@@ -9,7 +9,7 @@ tags: [Bundles-for-agent,insert_005ftree-in-edit_005fxml-promises]
 
 ### `insert_tree` promises in edit\_xml
 
-\
+  
 
 This promise is part of the XML-editing model. It assures that a
 balanced XML tree, containing the matching subtree, will be present in
@@ -18,9 +18,9 @@ default promise is to insert the tree into the specified node. The
 specified node is determined by body-attributes. The promise object
 referred to is a literal string representation of a balanced XML tree.
 
-\
+  
 
-~~~~ {.verbatim}
+~~~~
 bundle edit_xml example
   {
   insert_tree:
@@ -30,7 +30,7 @@ bundle edit_xml example
   }
 ~~~~
 
-\
+  
 
 Note that typically, only a single tree, within a single specified node,
 is inserted in each `insert_tree` promise. You may of course have
