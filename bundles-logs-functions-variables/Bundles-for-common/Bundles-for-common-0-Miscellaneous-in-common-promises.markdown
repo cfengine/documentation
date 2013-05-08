@@ -643,8 +643,7 @@ promise
 
 If this is set, CFEngine will perform auditing on this specific promise.
 This means that all details surrounding the verification of the current
-promise will be recorded in the audit database. The database may be
-inspected with `cf-report`, or `cfshow` in CFEngine 2.   
+promise will be recorded in the audit database.   
 
 `background`
 
@@ -766,8 +765,6 @@ of the form:
           ID:promise-type:promiser.
 ~~~~
 
-These can be seen identifying using `cf-report`, for example in the
-generated file performance.html.
 
 #### `classes` (body template)
 
