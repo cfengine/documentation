@@ -301,10 +301,7 @@ for backward compatibility
 If this is set, CFEngine will perform auditing on promises in the
 current configuration. This means that all details surrounding the
 verification of the current promise will be recorded in the audit
-database. The database may be inspected with `cf-report`, or
-`cfshow` in CFEngine 2.
-
-
+database.
 
 ## `binarypaddingchar`
 
