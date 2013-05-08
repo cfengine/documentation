@@ -42,8 +42,6 @@ fault tolerant and opportunistic.
  
 * cf-report - This generates summary and other reports in a variety of formats for export or integration with other systems.
 
-* cf-know - This agent can generate an ISO standard Topic Map from a number of promises about system knowledge. It is used for rendering documentation as a 'semantic web'.
-
 ### CFEngine Architecture
 
 CFEngine operates autonomously in a network, under your guidance.

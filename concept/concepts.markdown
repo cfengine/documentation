@@ -117,12 +117,6 @@ measurements::
 roles::
     A promise to allow certain users to activate certain classes when executing cf-agent remotely, in cf-serverd. 
 
-topics::
-    A promise to associate knowledge with a name, and possibly other topics, in cf-know. 
-
-occurrences::
-    A promise to point or refer to a knowledge resource, in cf-know.
-
 Some promise types are straightfoward.  The "files" promise type deals with file permissions and file content, and the "packages" promise type allows you to work with packaging systems such as rpm and apt.  Other promise types deal with defining variables and classes to be used in CFEngine and are beyond the scope of this concept guide.  For a full explanation of promise types, see the CFEngine reference manual.
 
 #### Ready to Start?
