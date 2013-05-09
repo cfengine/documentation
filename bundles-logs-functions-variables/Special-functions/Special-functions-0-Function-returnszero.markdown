@@ -20,7 +20,7 @@ True if named shell command has exit status zero
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -43,7 +43,7 @@ reports:
     "Command failed";
 
 }
-~~~~
+```
 
 **Notes**:  
    

@@ -21,7 +21,7 @@ Join the items of arg2 into a string, using the conjunction in arg1
 **Example**:  
    
 
-~~~~
+```
 bundle agent test
 
 {
@@ -38,7 +38,7 @@ reports:
   "Concatenated $(scalar)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

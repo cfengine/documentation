@@ -28,13 +28,13 @@ variable with integer indeces
 **Example**:  
    
 
-~~~~
+```
 vars:
 
   "dim_array" 
 
      int =>  readstringarrayidx("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
-~~~~
+```
 
 Returns an integer number of keys in the array (i.e., the number of
 lines matched). If you only want the fields in the first matching line
@@ -83,7 +83,7 @@ the file. The array arguments are both integer indexes, allowing for
 non-identifiers at first field (e.g. duplicates or names with spaces),
 unlike `readstringarray`.
 
-~~~~
+```
      
      at spaced:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
      duplicate:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
@@ -92,12 +92,12 @@ unlike `readstringarray`.
      # Daemon has the default shell
      daemon:x:2:2:Daemon:/sbin:
      
-~~~~
+```
 
 Results in a systematically indexed map of the file. Some samples are
 show below to illustrate the pattern.
 
-~~~~
+```
      array_name[0][0]       at spaced
      array_name[0][1]       x
      array_name[0][2]       25
@@ -114,4 +114,4 @@ show below to illustrate the pattern.
      array_name[1][6]       /bin/false
      ...
      
-~~~~
+```

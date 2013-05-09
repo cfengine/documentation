@@ -24,13 +24,13 @@ Convert an exact date/time to an integer system representation
 **Example**:  
    
 
-~~~~
+```
 body file_select zero_age
 {
 mtime       => irange(on(2000,1,1,0,0,0),now);
 file_result => "mtime";
 }
-~~~~
+```
 
 **Notes**:  
    

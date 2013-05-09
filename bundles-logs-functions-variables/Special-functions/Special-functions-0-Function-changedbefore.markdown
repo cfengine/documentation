@@ -20,7 +20,7 @@ True if arg1 was changed before arg2 (ctime)
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -43,7 +43,7 @@ reports:
     "The derived file needs updating";
 
 }
-~~~~
+```
 
 **Notes**:  
    

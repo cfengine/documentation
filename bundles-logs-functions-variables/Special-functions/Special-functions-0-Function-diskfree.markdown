@@ -20,7 +20,7 @@ partition (0 if not found)
 **Example**:  
    
 
-~~~~
+```
 bundle agent example
 {     
 vars:
@@ -34,7 +34,7 @@ reports:
     "Freedisk $(free)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

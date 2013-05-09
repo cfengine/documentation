@@ -13,7 +13,7 @@ tags: [Bundles-for-knowledge,inferences-in-knowledge-promises]
 
   
 
-~~~~
+```
 inferences:
 
   "is close to" 
@@ -25,7 +25,7 @@ inferences:
            comment => "Remote cluster property",
          precedent => { "is far from" },
          qualifier => { "is close to" };
-~~~~
+```
 
   
 
@@ -40,7 +40,7 @@ i.e. the conclusion to be drawn from combining two knowledge assertions.
 The body specifies what existing associations must be in place between
 topics in order to draw the conclusion between the start and the end.
 
-~~~~
+```
      
                  precedent                 qualifier
        TOPIC 1 -------------- TOPIC 2 --------------- TOPIC 3
@@ -48,11 +48,11 @@ topics in order to draw the conclusion between the start and the end.
                          promised inference
        TOPIC 1 --------------------------------------- TOPIC 3
      
-~~~~
+```
 
 For example,
 
-~~~~
+```
      
               is mother to          is married to
        ALICE -------------- BOB ----------------- CAROL
@@ -60,7 +60,7 @@ For example,
                      is mother in law to
        ALICE --------------------------------------- CAROL
      
-~~~~
+```
 
 Note that, like all promises, they are expected to be unique. Multiple
 promisers promising different bodies is potentially inconsistent.
@@ -82,14 +82,14 @@ to match multiple instances.
 **Example**:  
    
 
-~~~~
+```
 inferences:
 
   "is far from" 
            comment => "Remote cluster property",
          precedent => { "is far from"},
          qualifier => { "is close to", "is far from" };
-~~~~
+```
 
 **Notes**:  
    
@@ -110,14 +110,14 @@ so as to make the promise unique.
 **Example**:  
    
 
-~~~~
+```
 inferences:
 
   "is far from" 
            comment => "Remote cluster property",
          precedent => { "is far from" },
          qualifier => { "is close to|is far from" };
-~~~~
+```
 
 **Notes**:  
    

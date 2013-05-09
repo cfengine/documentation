@@ -23,7 +23,7 @@ split on regex arg3 as array name arg4
 **Example**:  
    
 
-~~~~
+```
 bundle agent example
 
 {     
@@ -39,7 +39,7 @@ reports:
     "Mark's homedir = $(userdata[6])";
 
 }
-~~~~
+```
 
 **Notes**:  
    

@@ -17,7 +17,7 @@ in a knowledge base. If a topic has a very long name, it is best to made
 the promiser object a short name and use the `comment` field to add the
 long explanation (e.g. unique acronym and full text).
 
-~~~~
+```
      
       topics:
      
@@ -26,7 +26,7 @@ long explanation (e.g. unique acronym and full text).
         comment = "long name..",
         ...;
      
-~~~~
+```
 
 Topics form associative structures based entirely on an abstract space
 of natural language. Actually, this is only slightly more abstract than
@@ -42,7 +42,7 @@ environments.
 
   
 
-~~~~
+```
 bundle knowledge example
 {
 topics:
@@ -51,7 +51,7 @@ topics:
       comment     => "Distribution of linux",              
       association => a("is a packaging of","Linux","is packaged as a");
 }
-~~~~
+```
 
   
 
@@ -80,14 +80,14 @@ associates
 **Example**:  
    
 
-~~~~
+```
      
      body association example
      {
      forward_relation => "is bigger than";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -105,14 +105,14 @@ promiser topic
 **Example**:  
    
 
-~~~~
+```
      body association example
      {
      # ..
      backward_relationship => "is less than";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -131,7 +131,7 @@ graph.
 **Example**:  
    
 
-~~~~
+```
      
      body association example(literal,scalar,list)
      
@@ -140,7 +140,7 @@ graph.
      associates => { "literal", $(scalar),  @(list)};
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -160,11 +160,11 @@ defined context
 **Example**:  
    
 
-~~~~
+```
  mathematics::
 
    "tree" synonyms => { "DAG", "directed acyclic graph" };
-~~~~
+```
 
 **Notes**:  
    
@@ -186,7 +186,7 @@ current topic, used when reasoning
 **Example**:  
    
 
-~~~~
+```
  topics:
 
   persons::
@@ -196,7 +196,7 @@ current topic, used when reasoning
   any::
 
      "10.10.10.10/24" generalizations => { "network", "CIDR format" };
-~~~~
+```
 
 **Notes**:  
    

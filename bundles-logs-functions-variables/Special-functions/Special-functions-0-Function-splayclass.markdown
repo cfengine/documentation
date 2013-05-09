@@ -21,7 +21,7 @@ policy in arg2
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -44,7 +44,7 @@ reports:
     "Load balanced class activated";
 
 }
-~~~~
+```
 
 **Notes**:  
    

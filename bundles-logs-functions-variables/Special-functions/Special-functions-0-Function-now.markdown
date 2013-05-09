@@ -18,13 +18,13 @@ Convert the current time into system representation
 **Example**:  
    
 
-~~~~
+```
 body file_select zero_age
 {
 mtime       => irange(ago(1,0,0,0,0,0),now);
 file_result => "mtime";
 }
-~~~~
+```
 
 **Notes**:  
    

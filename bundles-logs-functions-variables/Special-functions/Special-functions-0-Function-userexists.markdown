@@ -19,7 +19,7 @@ True if user name or numerical id exists on this host
 **Example**:  
    
 
-~~~~
+```
 
 body common control
 
@@ -47,7 +47,7 @@ reports:
     "Root does not exist";
 }
 
-~~~~
+```
 
 **Notes**:  
    

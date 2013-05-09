@@ -21,7 +21,7 @@ Get the assigned peer-leader of the partition to which we belong
 **Example**:  
    
 
-~~~~
+```
 bundle agent peers
 {
 vars:
@@ -41,16 +41,16 @@ reports:
    "another leader $(all_leaders)";
 
 }
-~~~~
+```
 
 **Notes**:  
    
 
-~~~~
+```
      
      (string) peerleader(file of hosts,comment pattern,group size);
      
-~~~~
+```
 
 This function returns the name of a host that may be considered the
 leader of a group of peers of the current host. Peers are defined
@@ -86,7 +86,7 @@ nonsensical promises.
 
 Example file:
 
-~~~~
+```
      one
      two
      three # this is a comment
@@ -101,4 +101,4 @@ Example file:
      twelve
      etc
      
-~~~~
+```

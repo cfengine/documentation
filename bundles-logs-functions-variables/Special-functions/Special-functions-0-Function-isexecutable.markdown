@@ -19,11 +19,11 @@ True if the named object has execution rights for the current user
 **Example**:  
    
 
-~~~~
+```
 classes:
 
   "yes" expression => isexecutable("/bin/ls");
-~~~~
+```
 
 **Notes**:  
    

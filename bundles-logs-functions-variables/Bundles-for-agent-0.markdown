@@ -12,7 +12,7 @@ Bundles of `agent`
 
   
 
-~~~~
+```
      
      bundle agent main(parameter)
      
@@ -40,7 +40,7 @@ Bundles of `agent`
      
      }
      
-~~~~
+```
 
   
 

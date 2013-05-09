@@ -22,7 +22,7 @@ we belong
 **Example**:  
    
 
-~~~~
+```
 bundle agent peers
 {
 vars:
@@ -42,16 +42,16 @@ reports:
    "another leader $(all_leaders)";
 
 }
-~~~~
+```
 
 **Notes**:  
    
 
-~~~~
+```
      
      (slist) peers(file of hosts,comment pattern,group size);
      
-~~~~
+```
 
 This function returns a list of hostnames that may be considered peers
 of the current host. Peers are defined according to a list of hosts,
@@ -87,7 +87,7 @@ nonsensical promises.
 
 Example file:
 
-~~~~
+```
      one
      two
      three # this is a comment
@@ -102,4 +102,4 @@ Example file:
      twelve
      etc
      
-~~~~
+```

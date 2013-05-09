@@ -17,7 +17,7 @@ or available, but provides a context for variables where one is needed
 (such as when passing the value of a list variable into a parameterized
 `edit_line` promise from a `file` promise). For example:
 
-~~~~
+```
 bundle agent resolver(s,n)
 { 
 files:
@@ -27,7 +27,7 @@ files:
       edit_line     => doresolv("@(this.s)","@(this.n)"),
       edit_defaults => reconstruct;
 }
-~~~~
+```
 
 Note that every unqualified variable is automatically considered to be
 in context this, so that a reference to the variable `$(foo)` is
@@ -74,7 +74,7 @@ pattern matching or `depth_search` that implicitly match multiple
 objects. In that case, `$(this.promiser)` refers to the currently
 identified file that makes the promise. For example:
 
-~~~~
+```
 bundle agent find666
 {
 files:
@@ -93,18 +93,18 @@ body file_select world_writeable
   search_mode => { "o+w" };
   file_result => "mode";
 }
-~~~~
+```
 
 #### Variable service\_policy
 
 This variable is set to the values of the promise attribute
 `service_policy`. For example:
 
-~~~~
+```
 services:
 
   "www"  service_policy => "start";
-~~~~
+```
 
 This is typically used in the adaptations for custom services bundles in
 the service methods (See [service\_method in

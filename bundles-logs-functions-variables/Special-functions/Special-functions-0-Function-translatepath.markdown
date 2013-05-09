@@ -19,7 +19,7 @@ Translate path separators from Unix style to the host's native
 **Example**:  
    
 
-~~~~
+```
 body common control
 {
 bundlesequence => { "test" };
@@ -40,7 +40,7 @@ reports:
   !windows::
     "The path has slashes: $(inputs_dir)";
 }
-~~~~
+```
 
 **Notes**:  
    

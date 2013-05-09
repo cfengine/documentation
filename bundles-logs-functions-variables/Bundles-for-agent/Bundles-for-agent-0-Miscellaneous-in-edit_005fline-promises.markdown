@@ -28,14 +28,14 @@ templating.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: Whether to include the section delimiter
 
@@ -44,7 +44,7 @@ templating.
 **Example**:  
    
 
-~~~~
+```
      
      body select_region MySection(x)
      {
@@ -53,7 +53,7 @@ templating.
      include_start_delimiter => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -63,12 +63,12 @@ normally included in the defined region (that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing). Setting this option to true makes it included. For example:
 
-~~~~
+```
      [My section]
      one
      two
      three
-~~~~
+```
 
 In the example above, the section does not normally include the line [My
 section]. By setting `include_start_delimiter` to trueit would be
@@ -87,14 +87,14 @@ unaffected by any `delete_lines` promises. See the next section on
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: Whether to include the section delimiter
 
@@ -103,7 +103,7 @@ unaffected by any `delete_lines` promises. See the next section on
 **Example**:  
    
 
-~~~~
+```
      
      body select_region BracketSection(x)
      {
@@ -112,7 +112,7 @@ unaffected by any `delete_lines` promises. See the next section on
      include_end_delimiter => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -122,14 +122,14 @@ normally included in the defined region; that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing. Setting this option to true makes it included. For example:
 
-~~~~
+```
      /var/log/mail.log {
          monthly
          missingok
          notifempty
          rotate 7
          }
-~~~~
+```
 
 The section does not normally include the line containing }. By setting
 `include_end_delimiter` to trueit would be possible for example, to
@@ -158,7 +158,7 @@ in `include_start_delimiter`).
 **Example**:  
    
 
-~~~~
+```
      
      body select_region example(x)
      
@@ -167,7 +167,7 @@ in `include_start_delimiter`).
      select_end => "\[.*\]";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -176,7 +176,7 @@ See also `select_end`. These delimiters mark out the region of a file to
 be edited. In the example, it is assumed that the file has section
 markers.
 
-~~~~
+```
           [section 1]
           
           lines.
@@ -188,7 +188,7 @@ markers.
           lines ....
           etc..
           
-~~~~
+```
 
 The start marker includes the first matched line.   
 
@@ -203,7 +203,7 @@ The start marker includes the first matched line.
 **Example**:  
    
 
-~~~~
+```
      
      body select_region example(x)
      
@@ -212,7 +212,7 @@ The start marker includes the first matched line.
      select_end => "\[.*\]";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -221,7 +221,7 @@ See also `select_start`. These delimiters mark out the region of a file
 to be edited. In this example, it is assumed that the file has section
 markers:
 
-~~~~
+```
           [section 1]
           
           lines.
@@ -233,7 +233,7 @@ markers:
           lines ....
           etc..
           
-~~~~
+```
 
 If you want to match from a starting location to the end of the file
 (even if there are other lines matching `select_start` intervening),

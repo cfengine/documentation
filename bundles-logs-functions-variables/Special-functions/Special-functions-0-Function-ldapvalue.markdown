@@ -25,7 +25,7 @@ Extract the first matching named value from ldap
 **Example**:  
    
 
-~~~~
+```
 vars:
 
    # Get the first matching value for "uid" in schema
@@ -38,16 +38,16 @@ vars:
                              "subtree",
                              "none"
                              );
-~~~~
+```
 
 **Notes**:  
    
 
-~~~~
+```
      
      (string) ldapvalue(uri,dn,filter,name,scope,security)
      
-~~~~
+```
 
 This function retrieves a single field from a single LDAP record
 identified by the search parameters. The first matching value it taken.
@@ -77,8 +77,8 @@ scope
 Menu option, the type of ldap search, from the specified root. May take
 values:
 
-~~~~
+```
               subtree
               onelevel
               base
-~~~~
+```

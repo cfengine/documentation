@@ -23,7 +23,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). Then a
 sub-fields, along with policies for editing these fields, ordering the
 items within them.
 
-~~~~
+```
      
      field_edits:
      
@@ -31,11 +31,11 @@ items within them.
      
                    edit_field = body;
      
-~~~~
+```
 
   
 
-~~~~
+```
 bundle agent example
 
 {
@@ -101,7 +101,7 @@ field_value     => "$(newval)";
 field_operation => "$(method)";
 extend_fields => "true";
 }
-~~~~
+```
 
   
 
@@ -110,9 +110,9 @@ and removing data from addressable fields. The passwd and group files
 are classic examples of tabular files, but there are many ways to use
 this feature. For example, editing a string:
 
-~~~~
+```
 VARIABLE="one two three"
-~~~~
+```
 
 View this line as a tabular line separated by " and with sub-separator
 given by the space.
@@ -129,14 +129,14 @@ given by the space.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false allow blank fields in a line (do not purge)
 
@@ -145,7 +145,7 @@ given by the space.
 **Example**:  
    
 
-~~~~
+```
      
      body edit_field example
      {
@@ -153,7 +153,7 @@ given by the space.
      allow_blank_fields => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -169,14 +169,14 @@ number of field separators.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false add new fields at end of line if necessary to
 complete edit
@@ -186,14 +186,14 @@ complete edit
 **Example**:  
    
 
-~~~~
+```
      
      body edit_field example
      {
      extend_fields => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -210,13 +210,13 @@ depending in this setting. If in doubt, set this to true.
 
 **Allowed input range**:   
 
-~~~~
+```
                     prepend
                     append
                     alphanum
                     delete
                     set
-~~~~
+```
 
 **Synopsis**: Menu option policy for editing subfields
 
@@ -225,14 +225,14 @@ depending in this setting. If in doubt, set this to true.
 **Example**:  
    
 
-~~~~
+```
      
      body edit_field example
      {
      field_operation => "append";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -271,14 +271,14 @@ field/column
 **Example**:  
    
 
-~~~~
+```
      
      body edit_field example
      {
      field_separator => ":";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -298,14 +298,14 @@ edit all kinds of line-based text files.
 **Example**:  
    
 
-~~~~
+```
      
      body edit_field example(s)
      {
      field_value => "$(s)";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -325,13 +325,13 @@ from 1)
 **Example**:  
    
 
-~~~~
+```
      
      body field_edits example
      {
      select_field => "5";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -344,21 +344,21 @@ Numbering starts from 1 (not from 0).
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: If set, the default field numbering starts from 0
 
 **Example**:  
    
 
-~~~~
+```
      
      body edit_field col(split,col,newval,method)
      
@@ -373,7 +373,7 @@ Numbering starts from 1 (not from 0).
      start_fields_from_zero => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -400,14 +400,14 @@ field
 **Example**:  
    
 
-~~~~
+```
      
      body field_edit example
      {
      value_separator => ",";
      }
      
-~~~~
+```
 
 **Notes**:  
    

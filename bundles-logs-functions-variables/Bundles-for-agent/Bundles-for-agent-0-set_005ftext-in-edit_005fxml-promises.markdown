@@ -20,7 +20,7 @@ promise object referred to is a literal string of text.
 
   
 
-~~~~
+```
 bundle edit_xml example
   {
   set_text:
@@ -28,7 +28,7 @@ bundle edit_xml example
 
     select_xpath => "/Server/Service/Engine/Host/Alias";
   }
-~~~~
+```
 
   
 

@@ -26,7 +26,7 @@ CFEngine output.
 
   
 
-~~~~
+```
 outputs:
 
   "run_agent";      # Promise handle, verbose (default) output
@@ -34,12 +34,12 @@ outputs:
   "web_server"      # Bundle handle, inform output
      output_level => "inform",
      promiser_type => "bundle";
-~~~~
+```
 
 A very handy paradigm is to include outputs promises in every bundle,
 and guard them with classes. For example:
 
-~~~~
+```
 bundle agent some_function
 {
 vars:
@@ -54,7 +54,7 @@ outputs:
 files:
     ...
 }
-~~~~
+```
 
 You can then execute your promises normally with no extra output, but
 should you wish to temporarily enable debugging, you can simply do so
@@ -80,11 +80,11 @@ version 3.4.0 (2012)
 
 **Allowed input range**:   
 
-~~~~
+```
                verbose
                debug
                inform
-~~~~
+```
 
 **Default value:** verbose
 
@@ -94,7 +94,7 @@ version 3.4.0 (2012)
 **Example**:  
    
 
-~~~~
+```
 commands:
 
   "/etc/init.d/agent start"
@@ -107,7 +107,7 @@ outputs:
   "run_agent"
 
     output_level => "inform"; 
-~~~~
+```
 
 **Notes**:  
    
@@ -120,10 +120,10 @@ With no attribute, `verbose` output is assumed.
 
 **Allowed input range**:   
 
-~~~~
+```
                promise
                bundle
-~~~~
+```
 
 **Default value:** promise
 
@@ -133,13 +133,13 @@ With no attribute, `verbose` output is assumed.
 **Example**:  
    
 
-~~~~
+```
 outputs:
 
   "web_server"
 
      promiser_type => "bundle";
-~~~~
+```
 
 **Notes**:  
    

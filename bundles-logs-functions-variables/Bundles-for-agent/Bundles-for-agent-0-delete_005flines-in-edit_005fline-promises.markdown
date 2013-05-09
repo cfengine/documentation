@@ -19,7 +19,7 @@ with `not_matching`).
 
   
 
-~~~~
+```
 bundle edit_line example
   {
   delete_lines:
@@ -27,7 +27,7 @@ bundle edit_line example
     "olduser:.*";
 
   }
-~~~~
+```
 
 Note that typically, only a single line is specified in each
 `delete_lines` promise. However, you may of course have multiple
@@ -66,14 +66,14 @@ promise.
 **Example**:  
    
 
-~~~~
+```
      
      body delete_select example(s)
      {
      delete_if_startwith_from_list => { @(s) };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -83,7 +83,7 @@ that this determination is made only on promised lines (that is, this
 attribute modifies the selection criteria, it does not make the initial
 selection). Therefore, if the file contains the following lines:
 
-~~~~
+```
      start alpha igniter
      start beta igniter
      init alpha burner
@@ -91,13 +91,13 @@ selection). Therefore, if the file contains the following lines:
      stop beta igniter
      stop alpha igniter
      stop alpha burner
-~~~~
+```
 
 Then the following promise initially selects the four lines containing
 alpha, but is moderated by the `delete_select` attribute. Thus, the
 promise will delete only the first and third lines of the file:
 
-~~~~
+```
      bundle edit_line alpha
      {
      delete_lines:
@@ -109,7 +109,7 @@ promise will delete only the first and third lines of the file:
      {
          delete_if_startwith_from_list => { "begin", "start", "init" };
      }
-~~~~
+```
 
   
 
@@ -124,14 +124,14 @@ promise will delete only the first and third lines of the file:
 **Example**:  
    
 
-~~~~
+```
      
      body delete_select example(s)
      {
      delete_if_not_startwith_from_list => { @(s) };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -152,14 +152,14 @@ not make the initial selection.
 **Example**:  
    
 
-~~~~
+```
      
      body delete_select example(s)
      {
      delete_if_match_from_list => { @(s) };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -184,14 +184,14 @@ promised lines.
 **Example**:  
    
 
-~~~~
+```
      
      body delete_select example(s)
      {
      delete_if_not_match_from_list => { @(s) };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -216,14 +216,14 @@ promised lines.
 **Example**:  
    
 
-~~~~
+```
      
      body delete_select example(s)
      {
      delete_if_contains_from_list => { @(s) };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -246,14 +246,14 @@ fragment
 **Example**:  
    
 
-~~~~
+```
      
      body delete_select discard(s)
      {
      delete_if_not_contains_from_list => { "substring1", "substring2" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -270,14 +270,14 @@ promised lines.
 
 **Allowed input range**:   
 
-~~~~
+```
                true
                false
                yes
                no
                on
                off
-~~~~
+```
 
 **Default value:** false
 
@@ -286,13 +286,13 @@ promised lines.
 **Example**:  
    
 
-~~~~
+```
 delete_lines:
 
   # edit /etc/passwd - account names that are not "mark" or "root"
 
   "(mark|root):.*" not_matching => "true";
-~~~~
+```
 
 **Notes**:  
    

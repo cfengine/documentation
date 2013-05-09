@@ -14,7 +14,7 @@ tags: [Bundles-for-agent,replace_005fpatterns-in-edit_005fline-promises]
 This promise refers to arbitrary text patterns in a file. The pattern is
 expressed as a PCRE regular expression.
 
-~~~~
+```
      
        replace_patterns:
      
@@ -23,11 +23,11 @@ expressed as a PCRE regular expression.
            replace_with = replace_body,
            ...;
      
-~~~~
+```
 
   
 
-~~~~
+```
 bundle edit_line upgrade_cfexecd
 {
   replace_patterns:
@@ -42,7 +42,7 @@ body replace_with value(x)  # defined in cfengine_stdlib.cf
 replace_value => "$(x)";
 occurrences => "all";
 }
-~~~~
+```
 
   
 
@@ -71,10 +71,10 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)
 
 **Allowed input range**:   
 
-~~~~
+```
                     all
                     first
-~~~~
+```
 
 **Synopsis**: Menu option to replace all occurrences or just first (NB
 the latter is non-convergent)
@@ -84,14 +84,14 @@ the latter is non-convergent)
 **Example**:  
    
 
-~~~~
+```
      
      body replace_with example
      {
      occurrences => "first";        # Warning! Using "first" is non-convergent
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -114,14 +114,14 @@ applies to.
 **Example**:  
    
 
-~~~~
+```
      
      body replace_with example(s)
      {
      replace_value => "$(s)";
      }
      
-~~~~
+```
 
 **Notes**:  
    

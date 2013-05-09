@@ -22,11 +22,11 @@ Generate a random integer between the given limits
 **Example**:  
    
 
-~~~~
+```
 vars:
 
  "ran"    int => randomint(4,88);
-~~~~
+```
 
 **Notes**:  
    

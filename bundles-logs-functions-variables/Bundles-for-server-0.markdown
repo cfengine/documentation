@@ -12,7 +12,7 @@ Bundles of `server`
 
   
 
-~~~~
+```
      
      bundle server access_rules()
      
@@ -33,7 +33,7 @@ Bundles of `server`
      }
      
      
-~~~~
+```
 
   
 

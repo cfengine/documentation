@@ -20,7 +20,7 @@ True if arg1 is newer (modified later) than arg2 (mtime)
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -43,7 +43,7 @@ reports:
     "The derived file needs updating";
 
 }
-~~~~
+```
 
 **Notes**:  
    

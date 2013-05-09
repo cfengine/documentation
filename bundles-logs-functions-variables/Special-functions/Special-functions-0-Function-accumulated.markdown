@@ -25,7 +25,7 @@ Convert an accumulated amount of time into a system representation
 **Example**:  
    
 
-~~~~
+```
 bundle agent testbundle
 
 {
@@ -60,7 +60,7 @@ body process_count anyprocs
 match_range => "0,0";
 out_of_range_define => { "any_procs" };
 }
-~~~~
+```
 
 **Notes**:  
    

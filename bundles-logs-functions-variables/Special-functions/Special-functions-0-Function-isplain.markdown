@@ -19,7 +19,7 @@ True if the named object is a plain/regular file
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -42,7 +42,7 @@ reports:
     "File exists..";
 
 }
-~~~~
+```
 
 **Notes**:  
    

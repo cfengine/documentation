@@ -12,7 +12,7 @@ Bundles of `monitor`
 
   
 
-~~~~
+```
      
      bundle monitor example
      {
@@ -32,7 +32,7 @@ Bundles of `monitor`
      
      }
      
-~~~~
+```
 
 Monitor bundles contain user defined promises for system discovery and
 monitoring.

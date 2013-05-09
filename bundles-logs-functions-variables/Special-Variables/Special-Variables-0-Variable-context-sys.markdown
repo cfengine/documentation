@@ -15,7 +15,7 @@ System variables are derived from CFEngine's automated discovery of
 system values. They are provided as variables in order to make
 automatically adaptive rules for configuration. For example:
 
-~~~~
+```
 files:
 
  any::
@@ -25,7 +25,7 @@ files:
       create        => "true",
       edit_line     => doresolv("@(this.list1)","@(this.list2)"),
       edit_defaults => reconstruct;
-~~~~
+```
 
 The above rule requires no class specification because the variable
 itself is class-specific.
@@ -90,9 +90,9 @@ itself is class-specific.
 
 The variable gives the kernel's short architecture description.
 
-~~~~
+```
 # arch = x86_64
-~~~~
+```
 
 #### Variable sys.cdate
 
@@ -100,9 +100,9 @@ The variable gives the kernel's short architecture description.
 
 The date of the system in canonical form, i.e. in the form of a class.
 
-~~~~
+```
 # cdate = Sun_Dec__7_10_39_53_2008_
-~~~~
+```
 
 #### Variable sys.cf\_promises
 
@@ -111,11 +111,11 @@ The date of the system in canonical form, i.e. in the form of a class.
 A variable containing the path to the CFEngine syntax analyxer
 `cf-promises` on the platform you are using.
 
-~~~~
+```
 classes:
 
   "syntax_ok" expression => returnszero("$(sys.cf_promises)");
-~~~~
+```
 
 #### Variable sys.cf\_version
 
@@ -124,9 +124,9 @@ classes:
 The variable gives the version of the running CFEngine Community
 Edition.
 
-~~~~
+```
 # cf_version = 3.0.5 
-~~~~
+```
 
 #### Variable sys.class
 
@@ -135,9 +135,9 @@ Edition.
 This variable contains the name of the hard-class category for this host
 (i.e. its top level operating system type classification).
 
-~~~~
+```
 # class = linux
-~~~~
+```
 
 #### Variable sys.cpus
 
@@ -151,7 +151,7 @@ physical, cores. In addition, on a single-core system the class "1\_cpu"
 is set, and on multi-core systems the class "*n*\_cpus" is set, where
 "*n*" is the number of cores identified.
 
-~~~~
+```
 reports:
 
  cfengine_3::
@@ -160,7 +160,7 @@ reports:
 
  8_cpus::
    "This system has 8 processors.";
-~~~~
+```
 
 #### Variable sys.crontab
 
@@ -169,9 +169,9 @@ reports:
 The variable gives the location of the current users's master crontab
 directory.
 
-~~~~
+```
 # crontab = /var/spool/crontas/root 
-~~~~
+```
 
 #### Variable sys.date
 
@@ -179,9 +179,9 @@ directory.
 
 The date of the system as a text string.
 
-~~~~
+```
 # date = Sun Dec  7 10:39:53 2008
-~~~~
+```
 
 #### Variable sys.doc\_root
 
@@ -201,10 +201,10 @@ be possible to derive the domain name from its DNS regisration, but in
 general there is no way to discover this value automatically. The
 `common control` body permits the ultimate specification of this value.
 
-~~~~
+```
 # domain = example.org
  
-~~~~
+```
 
 #### Variable sys.enterprise\_version
 
@@ -215,21 +215,21 @@ general there is no way to discover this value automatically. The
 The variable gives the version of the running CFEngine Enterprise
 Edition.
 
-~~~~
+```
 # enterprise_version = 3.0.0
-~~~~
+```
 
 #### Variable sys.expires
 
   
 
-~~~~
+```
 reports:
 
  nova::
 
   "License expires $(sys.expires)";
-~~~~
+```
 
 #### Variable sys.exports
 
@@ -237,10 +237,10 @@ reports:
 
 The location of the system NFS exports file.
 
-~~~~
+```
 # exports = /etc/exports
 # exports = /etc/dfs/dfstab
-~~~~
+```
 
 #### Variable sys.flavor
 
@@ -277,9 +277,9 @@ This is a synonym for `$(sys.flavor)`.
 The fully qualified name of the host. In order to compute this value
 properly, the domain name must be defined.
 
-~~~~
+```
 # fqhost = host.example.org
-~~~~
+```
 
 #### Variable sys.fstab
 
@@ -287,9 +287,9 @@ properly, the domain name must be defined.
 
 The location of the system filesystem (mount) table.
 
-~~~~
+```
 # fstab = /etc/fstab
-~~~~
+```
 
 #### Variable sys.hardware\_addresses
 
@@ -308,13 +308,13 @@ system interfaces.
 
 This contains the MAC address of the named interface. For example:
 
-~~~~
+```
 reports:
 
   linux::
 
     "Tell me $(harware_mac[eth0])";
-~~~~
+```
 
 #### Variable sys.host
 
@@ -323,9 +323,9 @@ reports:
 The name of the current host, according to the kernel. It is undefined
 whether this is qualified or unqualified with a domain name.
 
-~~~~
+```
 # host = myhost
-~~~~
+```
 
 #### Variable sys.interface
 
@@ -333,9 +333,9 @@ whether this is qualified or unqualified with a domain name.
 
 The assumed (default) name of the main system interface on this host.
 
-~~~~
+```
 # interface = eth0
-~~~~
+```
 
 #### Variable sys.interfaces
 
@@ -350,7 +350,7 @@ variables report to a Mission Portal in commercial editions of CFEngine.
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.
 
-~~~~
+```
 bundle agent test
 {
 vars:
@@ -369,7 +369,7 @@ reports:
     "Addresses of the interfaces: $(sys.ipv4[$(i2)])";
 
 }
-~~~~
+```
 
 #### Variable sys.ip\_addresses
 
@@ -384,7 +384,7 @@ Mission Portal in commercial editions of CFEngine.
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.
 
-~~~~
+```
 bundle agent test
 {
 vars:
@@ -403,7 +403,7 @@ reports:
     "Addresses of the interfaces: $(sys.ipv4[$(i2)])";
 
 }
-~~~~
+```
 
 #### Variable sys.ipv4
 
@@ -428,7 +428,7 @@ system.
 The full IPv4 address of the system interface named as the associative
 array index, e.g. \$(ipv4[le0]) or \$(ipv4[xr1]).
 
-~~~~
+```
 # If the IPv4 address on the interfaces are
 #        le0 = 192.168.1.101
 #    xr1 = 10.12.7.254
@@ -442,7 +442,7 @@ array index, e.g. \$(ipv4[le0]) or \$(ipv4[xr1]).
 # ipv4_2[xr1] = 10.12
 # ipv4_3[xr1] = 10.12.7
 #   ipv4[xr1] = 10.12.7.254
-~~~~
+```
 
 **Note**:  
 
@@ -483,13 +483,13 @@ sys.ipv4[interface\_name]](#Variable-sys_002eipv4_005binterface_005fname_005d)).
 
 *History*: Was introduced in version 3.1.4,Nova 2.0.2 (2011)
 
-~~~~
+```
 reports:
 
  nova::
 
   "This version of CFEngine is licensed to $(sys.license_owner)";
-~~~~
+```
 
 #### Variable sys.licenses\_granted
 
@@ -497,13 +497,13 @@ reports:
 
 *History*: Was introduced in version 3.1.4,Nova 2.0.2 (2011)
 
-~~~~
+```
 reports:
 
  nova::
 
   "There are $(sys.licenses_granted) licenses granted for use";
-~~~~
+```
 
 #### Variable sys.long\_arch
 
@@ -512,9 +512,9 @@ reports:
 The long architecture name for this system kernel. This name is
 sometimes quite unwieldy but can be useful for logging purposes.
 
-~~~~
+```
 # long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200
-~~~~
+```
 
 #### Variable sys.maildir
 
@@ -522,9 +522,9 @@ sometimes quite unwieldy but can be useful for logging purposes.
 
 The name of the system email spool directory.
 
-~~~~
+```
 # maildir = /var/spool/mail
-~~~~
+```
 
 #### Variable sys.nova\_version
 
@@ -532,9 +532,9 @@ The name of the system email spool directory.
 
 The variable gives the version of the running CFEngine Nova Edition.
 
-~~~~
+```
 # nova_version = 1.1.3
-~~~~
+```
 
 #### Variable sys.os
 
@@ -542,9 +542,9 @@ The variable gives the version of the running CFEngine Nova Edition.
 
 The name of the operating system according to the kernel.
 
-~~~~
+```
 # os = linux
-~~~~
+```
 
 #### Variable sys.ostype
 
@@ -552,9 +552,9 @@ The name of the operating system according to the kernel.
 
 Another name for the operating system.
 
-~~~~
+```
 # ostype = linux_x86_64
-~~~~
+```
 
 #### Variable sys.policy\_hub
 
@@ -566,11 +566,11 @@ undefined.
 **History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010).
 Available in Community since 3.2.0
 
-~~~~
+```
 reports:
 
  "Policy hub is $(sys.policy_hub)";
-~~~~
+```
 
 #### Variable sys.release
 
@@ -578,9 +578,9 @@ reports:
 
 The kernel release of the operating system.
 
-~~~~
+```
 # release = 2.6.22.19-0.1-default
-~~~~
+```
 
 #### Variable sys.resolv
 
@@ -588,9 +588,9 @@ The kernel release of the operating system.
 
 The location of the system resolver file.
 
-~~~~
+```
 # resolv = /etc/resolv.conf
-~~~~
+```
 
 #### Variable sys.uqhost
 
@@ -598,9 +598,9 @@ The location of the system resolver file.
 
 The unqualified name of the current host. See also `sys.fqhost`.
 
-~~~~
+```
 # uqhost = myhost
-~~~~
+```
 
 #### Variable sys.version
 
@@ -609,9 +609,9 @@ The unqualified name of the current host. See also `sys.fqhost`.
 The version of the running kernel. On Linux, this corresponds to the
 ouput of `uname -v`.
 
-~~~~
+```
 # version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011
-~~~~
+```
 
 *History*: Was introduced in version 3.1.4,Nova 2.0.2 (2011)
 
@@ -622,9 +622,9 @@ ouput of `uname -v`.
 On the Windows version of CFEngine Nova, this is the path to the Windows
 directory of this system.
 
-~~~~
+```
 # windir = C:\WINDOWS
-~~~~
+```
 
 #### Variable sys.winprogdir
 
@@ -633,9 +633,9 @@ directory of this system.
 On the Windows version of CFEngine Nova, this is the path to the program
 files directory of the system.
 
-~~~~
+```
 # winprogdir = C:\Program Files
-~~~~
+```
 
 #### Variable sys.winprogdir86
 
@@ -644,9 +644,9 @@ files directory of the system.
 On 64 bit Windows versions of CFEngine Nova, this is the path to the 32
 bit (x86) program files directory of the system.
 
-~~~~
+```
 # winprogdir86 = C:\Program Files (x86)
-~~~~
+```
 
 #### Variable sys.winsysdir
 
@@ -655,9 +655,9 @@ bit (x86) program files directory of the system.
 On the Windows version of CFEngine Nova, this is the path to the Windows
 system directory.
 
-~~~~
+```
 # winsysdir = C:\WINDOWS\system32
-~~~~
+```
 
 #### Variable sys.workdir
 
@@ -666,19 +666,19 @@ system directory.
 The location of the CFEngine work directory and cache. For the system
 privileged user this is normally:
 
-~~~~
+```
 # workdir = /var/cfengine
-~~~~
+```
 
 For non-privileged users it is in the user's home directory:
 
-~~~~
+```
 # workdir = /home/user/.cfagent
-~~~~
+```
 
 On the Windows version of CFEngine Nova, it is normally under program
 files (the directory name may change with the language of Windows):
 
-~~~~
+```
 # workdir = C:\Program Files\CFEngine
-~~~~
+```

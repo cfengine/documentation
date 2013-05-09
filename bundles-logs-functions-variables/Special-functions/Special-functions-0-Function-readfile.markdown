@@ -21,13 +21,13 @@ Read max number of bytes from named file and assign to variable
 **Example**:  
    
 
-~~~~
+```
 vars:
 
  "xxx"   
 
     string => readfile( "/home/mark/tmp/testfile" , "33" );
-~~~~
+```
 
 **Notes**:  
    

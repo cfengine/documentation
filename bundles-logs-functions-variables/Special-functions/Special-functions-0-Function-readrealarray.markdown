@@ -28,13 +28,13 @@ variable
 **Example**:  
    
 
-~~~~
+```
 vars:
 
   "dim_array" 
 
      int =>  readrealarray("array_name","/tmp/array","#[^\n]*",":",10,4000);
-~~~~
+```
 
 **ARGUMENTS**:
 

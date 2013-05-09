@@ -22,7 +22,7 @@ a regular expression in arg2
 **Example**:  
    
 
-~~~~
+```
 bundle agent test
 
 {
@@ -41,7 +41,7 @@ reports:
   "split3: $(split3)";  # will list "alpha:" and ":beta"
 
 }
-~~~~
+```
 
 **Notes**:  
    

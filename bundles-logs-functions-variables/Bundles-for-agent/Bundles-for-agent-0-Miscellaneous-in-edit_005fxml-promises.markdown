@@ -30,12 +30,12 @@ editing hierarchical and structured XML datasets.
 **Example**:  
    
 
-~~~~
+```
 body build_xpath example(s)
   {
   build_xpath => "$(s)";
   }
-~~~~
+```
 
 **Notes**:  
    
@@ -57,12 +57,12 @@ of such promises.
 **Example**:  
    
 
-~~~~
+```
 body select_xpath example(s)
 {
 select_xpath => "$(s)";
 }
-~~~~
+```
 
 **Notes**:  
    

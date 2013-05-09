@@ -28,13 +28,13 @@ variable
 **Example**:  
    
 
-~~~~
+```
 vars:
 
   "dim_array" 
 
      int =>  readstringarray("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
-~~~~
+```
 
 Returns an integer number of keys in the array (i.e., the number of
 lines matched). If you only want the fields in the first matching line
@@ -81,7 +81,7 @@ Reads a two dimensional array from a file. One dimension is separated by
 the character specified in the argument, the other by the the lines in
 the file. The first field of the lines names the first array argument.
 
-~~~~
+```
      
      at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
      avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
@@ -90,12 +90,12 @@ the file. The first field of the lines names the first array argument.
      # Daemon has the default shell
      daemon:x:2:2:Daemon:/sbin:
      
-~~~~
+```
 
 Results in a systematically indexed map of the file. Some samples are
 show below to illustrate the pattern.
 
-~~~~
+```
      ...
      array_name[daemon][0]   daemon
      array_name[daemon][1]   x
@@ -116,4 +116,4 @@ show below to illustrate the pattern.
      array_name[games][6]    /bin/bash
      ...
      
-~~~~
+```

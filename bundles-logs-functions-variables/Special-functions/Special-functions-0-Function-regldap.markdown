@@ -27,7 +27,7 @@ search.
 **Example**:  
    
 
-~~~~
+```
 classes:
 
    "found" expression => regldap(
@@ -39,16 +39,16 @@ classes:
                                 "jon.*",
                                 "none"
                                 );
-~~~~
+```
 
 **Notes**:  
    
 
-~~~~
+```
      
      (class) regldap(uri,dn,filter,name,scope,regex,security)
      
-~~~~
+```
 
 This function retrieves a single field from all matching LDAP records
 identified by the search parameters and compares it to a regular
@@ -79,11 +79,11 @@ scope
 Menu option, the type of ldap search, from the specified root. May take
 values:
 
-~~~~
+```
               subtree
               onelevel
               base
-~~~~
+```
 
   
 
@@ -101,8 +101,8 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-~~~~
+```
                none
                ssl
                sasl
-~~~~
+```

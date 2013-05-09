@@ -31,7 +31,7 @@ destined for the agent concerned (however, you do not need to add them
 to the `bundlesequence` they are executed by `cf-monitord` because they
 are bundles of type `monitor`). In this case:
 
-~~~~
+```
 bundle monitor watch
 
 {
@@ -40,7 +40,7 @@ measurements:
   # promises ...
 
 }
-~~~~
+```
 
 It is important to specify a promise `handle` for measurement promises,
 as the names defined in the handle are used to determine the name of the
@@ -52,7 +52,7 @@ form `$(mon.handle)`.
 
   
 
-~~~~
+```
   # Follow a special process over time
   # using CFEngine's process cache to avoid resampling
 
@@ -95,7 +95,7 @@ select_line_matching => "/.*";
 extraction_regex => "(.*)";
 }
 
-~~~~
+```
 
   
 
@@ -187,19 +187,19 @@ into agent variables in the `$(mon.`name`)` context.
 
 **Allowed input range**:   
 
-~~~~
+```
                pipe
                file
-~~~~
+```
 
 **Synopsis**: The datatype being collected.
 
 **Example**:  
    
 
-~~~~
+```
 stream_type => "pipe";
-~~~~
+```
 
 **Notes**:  
    
@@ -214,20 +214,20 @@ a process. However pipes from executed commands may also be invoked.
 
 **Allowed input range**:   
 
-~~~~
+```
                counter
                int
                real
                string
                slist
-~~~~
+```
 
 **Synopsis**: The datatype being collected.
 
 **Example**:  
    
 
-~~~~
+```
   "/bin/df"
 
       handle => "free_disk_watch",
@@ -240,7 +240,7 @@ a process. However pipes from executed commands may also be invoked.
       match_value => file_systems,
       action => sample_min(10,15);
 
-~~~~
+```
 
 **Notes**:  
    
@@ -260,12 +260,12 @@ be selected.
 
 **Allowed input range**:   
 
-~~~~
+```
                weekly
                scalar
                static
                log
-~~~~
+```
 
 **Synopsis**: Whether the data can be seen as a time-series or just an
 isolated value
@@ -273,7 +273,7 @@ isolated value
 **Example**:  
    
 
-~~~~
+```
  "/proc/meminfo"
 
       handle => "free_memory_watch",
@@ -282,7 +282,7 @@ isolated value
       history_type => "weekly",
       units => "kB",
       match_value => free_memory;
-~~~~
+```
 
 **Notes**:  
    
@@ -319,7 +319,7 @@ its intent used in plots
 **Example**:  
    
 
-~~~~
+```
    "/var/cfengine/state/cf_rootprocs"
 
       handle => "monitor_self_watch",
@@ -330,7 +330,7 @@ its intent used in plots
       match_value => proc_value(".*cf-monitord.*",
         
          "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
-~~~~
+```
 
 **Notes**:  
    
@@ -352,7 +352,7 @@ This is an arbitary string used in documentation only.
 **Example**:  
    
 
-~~~~
+```
      
      # Editing
      
@@ -368,7 +368,7 @@ This is an arbitary string used in documentation only.
      select_line_matching => "Expression match.* whole line";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -390,14 +390,14 @@ This attribute is mutually exclusive of `select_line_number`.
 **Example**:  
    
 
-~~~~
+```
      
      body match_value find_line
      {
      select_line_number => "2";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -416,7 +416,7 @@ backreference for extracting a value
 **Example**:  
    
 
-~~~~
+```
      
      body match_value free_memory
      {
@@ -424,7 +424,7 @@ backreference for extracting a value
      extraction_regex => "MemFree:\s+([0-9]+).*";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -441,14 +441,14 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: If true, CFEngine remembers the position to which is last
 read when opening the file, and resets to the start if the file has
@@ -457,7 +457,7 @@ since been truncated
 **Example**:  
    
 
-~~~~
+```
      bundle monitor watch
      {
      measurements:
@@ -488,7 +488,7 @@ since been truncated
      ifelapsed => "$(x)";
      expireafter => "10";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -508,19 +508,19 @@ logfile | grep pattern in Unix parlance.
 
 **Allowed input range**:   
 
-~~~~
+```
                     average
                     sum
                     first
                     last
-~~~~
+```
 
 **Synopsis**: Regular expression for matching line location
 
 **Example**:  
    
 
-~~~~
+```
      
      body match_value myvalue(xxx)
      {
@@ -529,7 +529,7 @@ logfile | grep pattern in Unix parlance.
       select_multiline_policy => "sum";
      } 
      
-~~~~
+```
 
 **Notes**:  
    

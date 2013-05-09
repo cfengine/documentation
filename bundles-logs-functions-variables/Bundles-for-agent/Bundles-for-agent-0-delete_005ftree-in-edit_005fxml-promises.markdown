@@ -21,7 +21,7 @@ balanced XML subtree.
 
   
 
-~~~~
+```
 bundle edit_xml example
   {
   delete_tree:
@@ -29,7 +29,7 @@ bundle edit_xml example
 
     select_xpath => "/Server/Service/Engine";
   }
-~~~~
+```
 
   
 

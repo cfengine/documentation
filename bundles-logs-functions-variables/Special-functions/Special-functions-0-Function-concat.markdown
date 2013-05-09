@@ -18,11 +18,11 @@ Concatenate all arguments into string
 **Example**:  
    
 
-~~~~
+```
 commands:
   "/usr/bin/generate_config $(config)"
     ifvarclass => concat("have_config_", canonify("$(config)"));
-~~~~
+```
 
 **Notes**:  
    

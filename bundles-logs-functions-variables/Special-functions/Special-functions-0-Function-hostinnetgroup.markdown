@@ -19,11 +19,11 @@ True if the current host is in the named netgroup
 **Example**:  
    
 
-~~~~
+```
 classes:
 
   "ingroup" expression => hostinnetgroup("my_net_group");
-~~~~
+```
 
 **Notes**:  
    

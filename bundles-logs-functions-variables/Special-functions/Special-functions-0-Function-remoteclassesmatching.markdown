@@ -25,9 +25,9 @@ cfengine server and add them into local context with prefix
 **Example**:  
    
 
-~~~~
+```
  "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
-~~~~
+```
 
 **Notes**:  
    

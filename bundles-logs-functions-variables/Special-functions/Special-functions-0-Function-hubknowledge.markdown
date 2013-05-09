@@ -20,13 +20,13 @@ Read global knowledge from the hub host by id (commercial extension)
 **Example**:  
    
 
-~~~~
+```
 vars:
 
   guard::
 
    "global_number" string => hubknowledge("number_variable");
-~~~~
+```
 
 **Notes**:  
    

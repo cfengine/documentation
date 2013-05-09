@@ -22,11 +22,11 @@ Read a scalar value from a remote cfengine server
 **Example**:  
    
 
-~~~~
+```
 vars:
 
  "remote" string => remotescalar("test_scalar","127.0.0.1","yes");
-~~~~
+```
 
 **Notes**:  
    
@@ -41,7 +41,7 @@ returned preferentially. If no such variable is found, then the server
 will look for a literal string in a server bundle with a handle that
 matches the requested object.
 
-~~~~
+```
 bundle server access
 {
 access:
@@ -51,7 +51,7 @@ access:
     resource_type => "literal",
     admit => { "127.0.0.1" };
 }
-~~~~
+```
 
 CFEngine caches the value of this variable, so that, if the network is
 unavailable, the last known value will be used. Hence use of this
@@ -61,11 +61,11 @@ needed to resolve the absence of a value can lead to undesirable
 behaviour. As a general rule, users are recommended to refrain from
 relying on the availability of network resources.
 
-~~~~
+```
      
      (string) remotescalar(resource handle,host/IP address,encrypt);
      
-~~~~
+```
 
 This function downloads a string from a remote server, using the promise
 handle as a variable identifier. Availability: Enterprise editions of
@@ -85,12 +85,12 @@ encrypt
 
 Whether to encrypt the connection to the server.
 
-~~~~
+```
                true
                yes
                false
                no
-~~~~
+```
 
 Note that this function assumes that you have already performed a
 successful key exchange between systems, (e.g. using either a remote

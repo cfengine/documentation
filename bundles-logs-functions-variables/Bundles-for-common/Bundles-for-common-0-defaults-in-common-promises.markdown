@@ -23,7 +23,7 @@ Some variables might be defined but still contain unresolved variables.
 To handle this you will need to match the `$(abc)` form of the
 variables.
 
-~~~~
+```
 body common control
 {
 bundlesequence => { "main" };
@@ -52,11 +52,11 @@ reports:
 
    "a = '$(a)', b = '$(b)', c = '$(c)' d = '$(d)'";
 }
-~~~~
+```
 
 Another example:
 
-~~~~
+```
 bundle agent example
 
 {     
@@ -104,7 +104,7 @@ reports:
      "The value of no_return is $(no_return)";
 
 }
-~~~~
+```
 
   
 
@@ -128,7 +128,7 @@ and replaced with the default value.
 **Example**:  
    
 
-~~~~
+```
 bundle agent mymethod(a,b)
 {
 defaults:
@@ -136,7 +136,7 @@ defaults:
   "a" string => "AAAAAAAAA",   if_match_regex => "";
   "b" string => "BBBBBBBBB",   if_match_regex => "";
 }
-~~~~
+```
 
 #### `string`
 
@@ -153,13 +153,13 @@ CFEngine 3 lists are kept as an independent type.
 **Example**:  
    
 
-~~~~
+```
 vars:
 
  "xxx"    string => "Some literal string...";
 
  "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
-~~~~
+```
 
 #### `slist`
 
@@ -179,7 +179,7 @@ vars](#policy-in-vars)).
 **Example**:  
    
 
-~~~~
+```
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };
@@ -196,4 +196,4 @@ vars:
 
  "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
 
-~~~~
+```

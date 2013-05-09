@@ -19,7 +19,7 @@ True if the named object is a symbolic link
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -42,7 +42,7 @@ reports:
     "Directory exists..";
 
 }
-~~~~
+```
 
 **Notes**:  
    

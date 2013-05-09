@@ -29,7 +29,7 @@ However, the process pattern `"cp"` will also match a process containing
 `"scp"`, so take care not to oversimplify your patterns (the PCRE
 pattern anchors `"\b"` and `"\B"` may prove very useful to you).
 
-~~~~
+```
      
       processes:
      
@@ -39,20 +39,20 @@ pattern anchors `"\b"` and `"\B"` may prove very useful to you).
             restart_class = "activation class for process",
             ..;
      
-~~~~
+```
 
 In CFEngine 2 there was a restart clause for directly executing a
 command to restart a process. In CFEngine 3 there is instead a class to
 activate. You must then describe a `command` in that class to restart
 the process.
 
-~~~~
+```
 commands:
 
   restart_me::
 
    "/path/executable" ... ;
-~~~~
+```
 
 This rationalizes complex restart-commands and avoids unnecessary
 overlap between `processes` and `commands`.
@@ -68,7 +68,7 @@ CFEngine 2 and earlier.
 
   
 
-~~~~
+```
 bundle agent example
 {
 processes:
@@ -103,16 +103,16 @@ body process_count anyprocs
 match_range => "0,0";
 out_of_range_define => { "any_procs" };
 }
-~~~~
+```
 
   
 
 In CFEngine 3 we have
 
-~~~~
+```
       processes
       commands
-~~~~
+```
 
 so that there is a clean separation between detection (promises about
 the process table) and certain repairs (promises to execute commands
@@ -126,16 +126,16 @@ kernel instantiation, a quite different object altogether. For example:
 -   A "PID" (which is not an executable) promises to be reminded of a
     signal, e.g.
 
-    ~~~~
+    ```
                   kill signal pid
-    ~~~~
+    ```
 
 -   An "command" promises to start or stop itself with a parameterized
     specification.
 
-    ~~~~
+    ```
                   exec command argument1 argument2 ...
-    ~~~~
+    ```
 
 Neither the file nor the pid necessarily promise to respond to these
 activations, but they are nonetheless physically meaningful phenomena or
@@ -183,19 +183,19 @@ necessary.
 If you want to ensure that a service is running, check each in the agent
 control promises individually.
 
-~~~~
+```
 bundlesequence => { Update, Service("apache"), Service("nfsd") };
-~~~~
+```
 
 or
 
-~~~~
+```
 bundlesequence => { Update, @(globals.all_services)  };
-~~~~
+```
 
 The bundle for this can look like this:
 
-~~~~
+```
 bundle agent Service(service")
 {
 processes:
@@ -212,11 +212,11 @@ commands:
       args       => "$args[$(service)]";
 
 }
-~~~~
+```
 
 An alternative would be self-contained:
 
-~~~~
+```
 bundle agent Service
 {
 vars:
@@ -248,7 +248,7 @@ body process_count up("$(s)")
 match_range => "[0,10]";
 out_of_range_define => "$(s)_up";
 }
-~~~~
+```
 
 -   [process\_count in processes](#process_005fcount-in-processes)
 -   [process\_select in processes](#process_005fselect-in-processes)
@@ -271,14 +271,14 @@ out_of_range_define => "$(s)_up";
 **Example**:  
    
 
-~~~~
+```
      
      body process_count example
      {
      in_range_define => { "class1", "class2" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -299,14 +299,14 @@ process
 **Example**:  
    
 
-~~~~
+```
      
      body process_count example
      {
      match_range => irange("10","50");
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -326,14 +326,14 @@ the promise is considered kept.
 **Example**:  
    
 
-~~~~
+```
      
      body process_count example(s)
      {
      out_of_range_define => { "process_anomaly", "anomaly_$(s)"};
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -357,7 +357,7 @@ process
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      
@@ -367,7 +367,7 @@ process
      process_result => "command";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -388,7 +388,7 @@ the end of line.
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
@@ -396,7 +396,7 @@ the end of line.
      process_result => "pid";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -414,7 +414,7 @@ process
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
@@ -422,7 +422,7 @@ process
      process_result => "pgid";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -440,7 +440,7 @@ process
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
@@ -448,7 +448,7 @@ process
      process_result => "ppid";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -466,14 +466,14 @@ a process
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
      priority => irange("-5","0");
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -490,14 +490,14 @@ a process
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
      process_owner => { "wwwrun", "nobody" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -520,7 +520,7 @@ of classes set by a process selection test
 **Example**:  
    
 
-~~~~
+```
      
      body process_select proc_finder(p)
      
@@ -532,7 +532,7 @@ of classes set by a process selection test
      process_result => "command.(process_owner|vsize).!pid";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -553,7 +553,7 @@ process, in kilobytes
 **Example**:  
    
 
-~~~~
+```
      
      body process_select
      {
@@ -561,7 +561,7 @@ process, in kilobytes
      }
      
      
-~~~~
+```
 
 **Notes**:  
    
@@ -578,14 +578,14 @@ process, in kilobytes
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
      status => "Z";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -604,14 +604,14 @@ have status fields.
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
      stime_range => irange(ago(0,0,0,1,0,0),now);
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -632,14 +632,14 @@ process
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
      ttime_range => irange(0,accumulated(0,1,0,0,0,0));
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -657,14 +657,14 @@ This is total accumulated time for a process.
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
      tty => "pts/[0-9]+";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -684,14 +684,14 @@ process
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
      threads => irange(1,5);
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -709,14 +709,14 @@ process, in kilobytes
 **Example**:  
    
 
-~~~~
+```
      
      body process_select example
      {
      vsize => irange("4000","9000");
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -736,14 +736,14 @@ Size (Windows 2008), or VM Size (Windows XP).
 **Example**:  
    
 
-~~~~
+```
 processes:
 
  "snmpd"
 
         process_stop => "/etc/init.d/snmp stop";
 
-~~~~
+```
 
 **Notes**:  
    
@@ -763,7 +763,7 @@ running, so that a command: rule can be referred to restart the process
 **Example**:  
    
 
-~~~~
+```
 processes:
 
    "cf-serverd"
@@ -775,7 +775,7 @@ commands:
   start_cfserverd::
 
     "/var/cfengine/bin/cf-serverd";
-~~~~
+```
 
 **Notes**:  
    
@@ -798,7 +798,7 @@ information.
 
 **Allowed input range**:   
 
-~~~~
+```
                hup
                int
                trap
@@ -814,7 +814,7 @@ information.
                usr2
                bus
                segv
-~~~~
+```
 
 **Synopsis**: A list of menu options representing signals to be sent to
 a process
@@ -822,7 +822,7 @@ a process
 **Example**:  
    
 
-~~~~
+```
 processes:
 
  cfservd_out_of_control::
@@ -838,7 +838,7 @@ processes:
 
         signals         => { "term" , "kill" };
    
-~~~~
+```
 
 **Notes**:  
    

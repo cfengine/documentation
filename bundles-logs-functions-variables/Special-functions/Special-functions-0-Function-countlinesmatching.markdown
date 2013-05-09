@@ -20,7 +20,7 @@ Count the number of lines matching regex arg1 in file arg2
 **Example**:  
    
 
-~~~~
+```
 bundle agent example
 {     
 vars:
@@ -34,7 +34,7 @@ reports:
     "Found $(no) lines matching";
 
 }
-~~~~
+```
 
 **Notes**:  
    

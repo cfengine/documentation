@@ -25,11 +25,11 @@ True if the current time is later than the given date
 **Example**:  
    
 
-~~~~
+```
 classes:
 
   "after_deadline" expression => laterthan(2000,1,1,0,0,0);
-~~~~
+```
 
 **Notes**:  
    

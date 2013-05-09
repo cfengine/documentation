@@ -20,7 +20,7 @@ True if the regular expression in arg1 matches a line in file arg2
 **Example**:  
    
 
-~~~~
+```
 bundle agent testbundle
 
 {
@@ -44,7 +44,7 @@ reports:
    "File $(edit.filename) has a line with \"XYZ\" in it";
 
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -55,7 +55,7 @@ applications, where one might want to set a class for detecting the
 presence of a string that does not exactly match one being inserted. For
 example:
 
-~~~~
+```
 bundle edit_line upgrade_cfexecd
   {
   classes:
@@ -77,4 +77,4 @@ bundle edit_line upgrade_cfexecd
 
      "Added a 5 minute schedule to crontabs";
   }
-~~~~
+```

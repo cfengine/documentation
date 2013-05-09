@@ -20,7 +20,7 @@ Execute named command and assign output to variable
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -43,7 +43,7 @@ reports:
     "Variable is $(my_result)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

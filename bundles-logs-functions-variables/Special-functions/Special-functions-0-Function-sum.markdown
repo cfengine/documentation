@@ -20,7 +20,7 @@ Return the sum of a list of reals
 **Example**:  
    
 
-~~~~
+```
 body common control
 {
 bundlesequence => { "test" };
@@ -40,14 +40,14 @@ reports:
   cfengine_3::
     "six is $(six), zero is $(zero)";
 }
-~~~~
+```
 
 Because `$(six)` and `$(zero)` are both real numbers, the report that is
 generated will be:
 
-~~~~
+```
 six is 6.000000, zero is 0.000000
-~~~~
+```
 
 **Notes**:  
    

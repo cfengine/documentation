@@ -19,7 +19,7 @@ identity, assumed netmask and routing policy in the case of multi-homed
 hosts. For virtual machines and hosts, the list of interfaces can be
 quite large.
 
-~~~~
+```
      
       interfaces:
      
@@ -28,7 +28,7 @@ quite large.
           tcp_ip = tcp_ip_body,
           ...;
      
-~~~~
+```
 
   
 
@@ -55,14 +55,14 @@ For future use.
 **Example**:  
    
 
-~~~~
+```
      
      body tcp_ip example
      {
      ipv4_address => "123.456.789.001";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -82,14 +82,14 @@ services like DHCP.
 **Example**:  
    
 
-~~~~
+```
      
      body tcp_ip example
      {
      ipv4_netmask => "255.255.254.0";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -108,13 +108,13 @@ this offers and \`old style' alternative.
 **Example**:  
    
 
-~~~~
+```
      
        "eth0"
      
           ipv6_address => "2001:700:700:3:211:63ff:feeb:5d18/64";
      
-~~~~
+```
 
 **Notes**:  
    

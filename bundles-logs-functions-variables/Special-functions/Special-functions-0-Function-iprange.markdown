@@ -19,7 +19,7 @@ True if the current host lies in the range of IP addresses specified
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -46,7 +46,7 @@ reports:
 
     "The masked warriors";
 }
-~~~~
+```
 
 **Notes**:  
    

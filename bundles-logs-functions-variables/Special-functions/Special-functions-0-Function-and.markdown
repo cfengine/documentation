@@ -18,11 +18,11 @@ Calculate whether all arguments evaluate to true
 **Example**:  
    
 
-~~~~
+```
 commands:
   "/usr/bin/generate_config $(config)"
     ifvarclass => and(not(fileexists("/etc/config/$(config)")), "generating_configs");
-~~~~
+```
 
 **Notes**:  
    

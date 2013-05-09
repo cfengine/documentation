@@ -23,10 +23,10 @@ Return a list of files in a directory matching a regular expression
 **Example**:  
    
 
-~~~~
+```
 vars:
   "listfiles" slist => lsdir("/etc", "(passwd|shadow).*", "true");
-~~~~
+```
 
 **Notes**:  
    

@@ -16,7 +16,7 @@ An occurrence promise asserts that a particular document of text
 resource in fact represents information about one or more topics. This
 is used to construct references to actual information in a topic map.
 
-~~~~
+```
      
       occurrences:
      
@@ -27,11 +27,11 @@ is used to construct references to actual information in a topic map.
               represents = { "sub-topic disambiguator", ... },
               representation = "literal or url";
      
-~~~~
+```
 
   
 
-~~~~
+```
  Mark_Burgess::
 
      "http://www.iu.hio.no/~mark"
@@ -48,7 +48,7 @@ is used to construct references to actual information in a topic map.
  "http://www.cfengine.org/confdir/customizepasswd.html" 
    represents => { "Setting up users" };
 
-~~~~
+```
 
   
 
@@ -70,12 +70,12 @@ literal text string or a URL reference to an external document.
 **Example**:  
    
 
-~~~~
+```
  "/docs/SpecialTopic_RBAC.html#tag"
 
      represents => { "Text section" }, 
    about_topics => { "defining roles" };
-~~~~
+```
 
 **Notes**:  
    
@@ -101,7 +101,7 @@ has to the topics it is about
 **Example**:  
    
 
-~~~~
+```
 occurrences:
 
   Promise_Theory::
@@ -110,7 +110,7 @@ occurrences:
 
       represents     => { "Definitions" },
       representation => "literal";
-~~~~
+```
 
 **Notes**:  
    
@@ -130,7 +130,7 @@ reference as a url to be reached when the image is clicked on.
 
 **Allowed input range**:   
 
-~~~~
+```
                literal
                url
                db
@@ -138,7 +138,7 @@ reference as a url to be reached when the image is clicked on.
                web
                image
                portal
-~~~~
+```
 
 **Synopsis**: How to interpret the promiser string (e.g. actual data or
 reference to data)
@@ -146,7 +146,7 @@ reference to data)
 **Example**:  
    
 
-~~~~
+```
 occurrences:
 
   Promise_Theory::
@@ -156,7 +156,7 @@ occurrences:
       represents     => { "Definitions" },
       representation => "literal";
 
-~~~~
+```
 
 **Notes**:  
    

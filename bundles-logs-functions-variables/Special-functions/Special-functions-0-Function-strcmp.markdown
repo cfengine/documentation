@@ -20,7 +20,7 @@ True if the two strings match exactly
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -46,7 +46,7 @@ reports:
 
     "Strings are not equal";
 }
-~~~~
+```
 
 **Notes**:  
    

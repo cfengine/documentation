@@ -25,7 +25,7 @@ Read and assign a list variable from a file of separated real numbers
 **Example**:  
    
 
-~~~~
+```
 
 body common control
 
@@ -49,7 +49,7 @@ reports:
     "List entry: $(mylist)";
 
 }
-~~~~
+```
 
 **ARGUMENTS**:
 

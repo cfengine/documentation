@@ -14,7 +14,7 @@ tags: [Bundles-for-agent,files-in-agent-promises]
 Files promises are an umbrella for attributes of files. Operations fall
 basically into three categories: create, delete and edit.
 
-~~~~
+```
      
       files:
      
@@ -23,7 +23,7 @@ basically into three categories: create, delete and edit.
             perms = perms_body,
             ... ;
      
-~~~~
+```
 
 Prior to version 3, file promises were scattered into many different
 types, including `files`, `tidy`, `copy`, and `links`. File handling in
@@ -35,9 +35,9 @@ There is a natural ordering in file processing that obviates the need
 for the actionsequence. For example, the trick of using multiple
 actionsequence items with different classes.
 
-~~~~
+```
  actionsequence = ( ... files.one  ..  files.two )
-~~~~
+```
 
 can now be handled more elegantly using bundles. The natural ordering
 uses that fact that some operations are mutually exclusive and that some
@@ -73,7 +73,7 @@ See: \`File editing in CFEngine 3'
 
 The pseudo-code for this logic is shown in the diagram and below:
 
-~~~~
+```
  for each file promise-object
     {
     if (depth_search) 
@@ -113,7 +113,7 @@ The pseudo-code for this logic is shown in the diagram and below:
 
    Do edits
    }
-~~~~
+```
 
 **Depth searches (formerly known as 'recursion') during searches**
 
@@ -122,11 +122,11 @@ Recursion is now called "depth-search". In addition, it was possible to
 specify wildcards in the base-path for this search. CFEngine 3 replaces
 the \`globbing' symbols with standard regular expressions:
 
-~~~~
+```
       CFEngine 2               CFEngine 3
 
 /one/*/two/thr*/four    /one/.*/two/thr.*/four
-~~~~
+```
 
 Note: When searching for hidden files (files with names starting with a
 \`.') or files with specific extensions, you should take care to escape
@@ -199,7 +199,7 @@ two examples, which assumethat there first exist files named /tmp/gar,
 /tmp/garbage and /tmp/garden. Initially, the two promises look like they
 should do the same thing; but there is a subtle difference:
 
-~~~~
+```
 bundle agent foobaz           bundle agent foobaz
 {                   {
 files:                  files:
@@ -221,7 +221,7 @@ body classes if_ok(x)           body classes if_ok(x)
 promise_repaired => { "$(x)" };     promise_repaired => { "$(x)" };
 promise_kept => { "$(x)" };     promise_kept => { "$(x)" };
 }                   }
-~~~~
+```
 
 In the first example, when the configuration containing this promise is
 first executed, any file starting with "gar" that exists in the /tmp
@@ -278,7 +278,7 @@ external attributes.
 
 A typical file editing stanza has the elements in the following example:
 
-~~~~
+```
 ######################################################################
 #
 # File editing
@@ -363,7 +363,7 @@ first_last => "first";
 select_line_matching => ".*";
 }
 
-~~~~
+```
 
 There are several things to notice:
 
@@ -419,7 +419,7 @@ Community Edition only reports that changes were found, but Enterprise
 versions of CFEngine can also report on what exactly the significant
 changes were.
 
-~~~~
+```
 bundle agent example
 {
 files:
@@ -440,7 +440,7 @@ hash           => "md5";
 report_changes => "content";
 update         => "yes";
 }
-~~~~
+```
 
   
 
@@ -480,7 +480,7 @@ update         => "yes";
 **Example**:  
    
 
-~~~~
+```
      
      body acl template
      
@@ -497,7 +497,7 @@ update         => "yes";
              };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -506,13 +506,13 @@ POSIX ACL are available in CFEngine Community starting with 3.4.0. NTFS
 ACL are available with CFEngine Nova or above. Form of the permissions
 is:
 
-~~~~
+```
                 aces = {
                         "user:uid:mode[:perm_type]", ...,
                         "group:gid:mode[:perm_type]", ...,
                         "all:mode[:perm_type]"
                         };
-~~~~
+```
 
 -   `user` indicates that the line applies to a user specified by the
     user identifier `uid`. `mode` is the permission mode string.
@@ -595,19 +595,19 @@ having `x` on its containing directory is sufficient.
 
 **Allowed input range**:   
 
-~~~~
+```
                     nochange
                     parent
                     specify
                     clear
-~~~~
+```
 
 **Synopsis**: Access control list type for the affected file system
 
 **Example**:  
    
 
-~~~~
+```
      
      body acl template
      
@@ -624,7 +624,7 @@ having `x` on its containing directory is sufficient.
              };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -647,17 +647,17 @@ the same access ACL as the directory.
 
 **Allowed input range**:   
 
-~~~~
+```
                     append
                     overwrite
-~~~~
+```
 
 **Synopsis**: Editing method for access control list
 
 **Example**:  
    
 
-~~~~
+```
      
      body acl template
      
@@ -667,7 +667,7 @@ the same access ACL as the directory.
      aces => { "user:*:rw:allow", "group:*:+r:allow", "all:"};
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -688,18 +688,18 @@ example, owning user, group and all in POSIX ACLs.
 
 **Allowed input range**:   
 
-~~~~
+```
                     generic
                     posix
                     ntfs
-~~~~
+```
 
 **Synopsis**: Access control list type for the affected file system
 
 **Example**:  
    
 
-~~~~
+```
      
      body acl template
      
@@ -708,7 +708,7 @@ example, owning user, group and all in POSIX ACLs.
      aces => { "user:Administrator:rwx(po)", "user:Auditor:r(o)"};
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -734,12 +734,12 @@ target platform. Currently, the supported values are `posix` and `ntfs`.
 **Example**:  
    
 
-~~~~
+```
      body acl template
      {
      specify_inherit_aces => {  "all:r" };
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -763,7 +763,7 @@ that do not have a clear inheritance policy.
 
 **Allowed input range**:   
 
-~~~~
+```
                     md5
                     sha1
                     sha224
@@ -771,21 +771,21 @@ that do not have a clear inheritance policy.
                     sha384
                     sha512
                     best
-~~~~
+```
 
 **Synopsis**: Hash files for change detection
 
 **Example**:  
    
 
-~~~~
+```
      
      body changes example
      {
      hash => "md5";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -799,26 +799,26 @@ known in the OpenSSL library.
 
 **Allowed input range**:   
 
-~~~~
+```
                     all
                     stats
                     content
                     none
-~~~~
+```
 
 **Synopsis**: Specify criteria for change warnings
 
 **Example**:  
    
 
-~~~~
+```
      
      body changes example
      {
      report_changes => "content";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -832,28 +832,28 @@ attributes. If all is chosen all attributes are checked.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: Update hash values immediately after change warning
 
 **Example**:  
    
 
-~~~~
+```
      
      body changes example
      {
      update_hashes => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -868,14 +868,14 @@ change. This applies to addition and removal too.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: Generate reports summarizing the major differences between
 individual text files
@@ -883,14 +883,14 @@ individual text files
 **Example**:  
    
 
-~~~~
+```
      
      body changes example
      {
      report_diffs => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -924,7 +924,7 @@ the system.
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
@@ -938,7 +938,7 @@ the system.
      source => "/path/to/source";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -956,7 +956,7 @@ For remote copies this refers to the file name on the remote server.
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
@@ -964,7 +964,7 @@ For remote copies this refers to the file name on the remote server.
                       "tertiary.other.domain" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -977,14 +977,14 @@ The servers are tried in order until one of them succeeds.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: Place files in subdirectories into the root destination
 directory during copy
@@ -992,7 +992,7 @@ directory during copy
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from mycopy(from,server)
      
@@ -1002,7 +1002,7 @@ directory during copy
      collapse_destination_dir => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1021,7 +1021,7 @@ itself; in other words, a single destination directory.
 
 **Allowed input range**:   
 
-~~~~
+```
                     atime
                     mtime
                     ctime
@@ -1029,7 +1029,7 @@ itself; in other words, a single destination directory.
                     hash
                     exists
                     binary
-~~~~
+```
 
 **Synopsis**: Menu option policy for comparing source and image file
 attributes
@@ -1039,7 +1039,7 @@ attributes
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      
@@ -1047,7 +1047,7 @@ attributes
      compare => "digest";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1090,11 +1090,11 @@ The different options are:
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     timestamp
-~~~~
+```
 
 **Synopsis**: Menu option policy for file backup/version control
 
@@ -1103,14 +1103,14 @@ The different options are:
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      copy_backup => "timestamp";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1129,14 +1129,14 @@ See: [default\_repository](#default_005frepository-in-agent) and
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false use encrypted data stream to connect to remote
 host
@@ -1146,7 +1146,7 @@ host
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
@@ -1154,7 +1154,7 @@ host
      encrypt => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1169,14 +1169,14 @@ public/private keys for the client and server hosts.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false check permissions on the root directory when
 depth\_search
@@ -1184,14 +1184,14 @@ depth\_search
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      check_root => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1213,14 +1213,14 @@ instead of linked
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      copylink_patterns => { "special_node1", "other_node.*" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1242,14 +1242,14 @@ links, this feature is not available there.
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      copy_size => irange("0","50000");
      } 
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1263,23 +1263,23 @@ as a comma separated numbers.
 
 **Allowed input range**:   
 
-~~~~
+```
                     MacOSX
-~~~~
+```
 
 **Synopsis**: Menu option for default finder type on MacOSX
 
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      findertype => "MacOSX";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1298,7 +1298,7 @@ with symbolic links
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from mycopy(from)
      
@@ -1307,7 +1307,7 @@ with symbolic links
      linkcopy_patterns => { ".*" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1323,12 +1323,12 @@ See: `link_type`.
 
 **Allowed input range**:   
 
-~~~~
+```
                     symlink
                     hardlink
                     relative
                     absolute
-~~~~
+```
 
 **Synopsis**: Menu option for type of links to use when copying
 
@@ -1337,7 +1337,7 @@ See: `link_type`.
 **Example**:  
    
 
-~~~~
+```
      
      body link_from example
      {
@@ -1345,7 +1345,7 @@ See: `link_type`.
      source => "/tmp/source";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1368,14 +1368,14 @@ are mutually exclusive.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false force copy update always
 
@@ -1384,14 +1384,14 @@ are mutually exclusive.
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      force_update => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1408,14 +1408,14 @@ system will be disturbed by network disruptions.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false force use of ipv4 on ipv6 enabled network
 
@@ -1424,14 +1424,14 @@ system will be disturbed by network disruptions.
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      force_ipv4 => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1450,14 +1450,14 @@ mis-configured setup.
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      portnumber => "5308";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1472,14 +1472,14 @@ could change in the future.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false whether to preserve file permissions on copied
 file
@@ -1489,14 +1489,14 @@ file
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      preserve => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1512,14 +1512,14 @@ source. This also applies to remote copies.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false purge files on client that do not match files
 on server when a depth\_search is used
@@ -1529,14 +1529,14 @@ on server when a depth\_search is used
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      purge => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1556,14 +1556,14 @@ file copying if `copy_backup` is set to true.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false whether to preserve time stamps on copied file
 
@@ -1572,14 +1572,14 @@ file copying if `copy_backup` is set to true.
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      stealth => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1597,14 +1597,14 @@ Preserves file access and modification times on the promiser files.
 **Example**:  
    
 
-~~~~
+```
      
      body runagent control
      {
      timeout => "10";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1617,14 +1617,14 @@ Timeout in seconds.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false trust public keys from remote server if
 previously unknown
@@ -1634,14 +1634,14 @@ previously unknown
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      trustkey => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1668,14 +1668,14 @@ WORKDIR/ppkeys.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false compare file types before copying and require
 match
@@ -1683,14 +1683,14 @@ match
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      type_check => "false";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1705,14 +1705,14 @@ switched off.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false verify transferred file by hashing after copy
 (resource penalty)
@@ -1722,14 +1722,14 @@ switched off.
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
      verify => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1743,14 +1743,14 @@ file transfers.
 
 **Allowed input range**:   
 
-~~~~
+```
                true
                false
                yes
                no
                on
                off
-~~~~
+```
 
 **Default value:** false
 
@@ -1759,7 +1759,7 @@ file transfers.
 **Example**:  
    
 
-~~~~
+```
 files:
 
   "/path/plain_file"
@@ -1769,7 +1769,7 @@ files:
   "/path/dir/."
   
      create =>   "true";
-~~~~
+```
 
 **Notes**:  
    
@@ -1802,11 +1802,11 @@ operations).
 
 **Allowed input range**:   
 
-~~~~
+```
                     delete
                     tidy
                     keep
-~~~~
+```
 
 **Synopsis**: Menu option policy for dealing with symbolic links to
 directories during deletion
@@ -1814,14 +1814,14 @@ directories during deletion
 **Example**:  
    
 
-~~~~
+```
      
      body delete example
      {
      dirlinks => "keep";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1850,14 +1850,14 @@ are **not** deleted.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false whether to delete empty directories during
 recursive deletion
@@ -1865,14 +1865,14 @@ recursive deletion
 **Example**:  
    
 
-~~~~
+```
      
      body delete example
      {
      rmdirs => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1882,7 +1882,7 @@ deletions. In CFEngine 2 there was an option to delete the parent of the
 search. In CFEngine 3 you must code a separate promise to delete the
 single parent object.
 
-~~~~
+```
      
      bundle agent cleanup
      {
@@ -1914,7 +1914,7 @@ single parent object.
      file_result => "mtime";
      }
      
-~~~~
+```
 
 **Default value** (only if body is present):  
    
@@ -1940,14 +1940,14 @@ present. If there is no `delete` body then files (and directories) are
 **Example**:  
    
 
-~~~~
+```
      
      body depth_search example
      {
      depth => "inf";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1971,7 +1971,7 @@ search
 **Example**:  
    
 
-~~~~
+```
      
      body depth_search
      {
@@ -1979,7 +1979,7 @@ search
      exclude_dirs => { "\..*" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1993,14 +1993,14 @@ a file system.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false include the start/root dir of the search
 results
@@ -2008,14 +2008,14 @@ results
 **Example**:  
    
 
-~~~~
+```
      
      body depth_search example
      {
      include_basedir => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2038,14 +2038,14 @@ search
 **Example**:  
    
 
-~~~~
+```
      
      body depth_search example
      {
      include_dirs => { "subdir1", "subdir2", "pattern.*" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2058,14 +2058,14 @@ This is the complement of `exclude_dirs`.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false remove links that point to nowhere
 
@@ -2074,14 +2074,14 @@ This is the complement of `exclude_dirs`.
 **Example**:  
    
 
-~~~~
+```
      
      body depth_search example
      {
      rmdeadlinks => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2095,14 +2095,14 @@ exist should be deleted; or kept if set to false.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false traverse symbolic links to directories
 
@@ -2111,14 +2111,14 @@ exist should be deleted; or kept if set to false.
 **Example**:  
    
 
-~~~~
+```
      
      body depth_search example
      {
      traverse_links => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2133,14 +2133,14 @@ dangerous assumption and links are not traversed.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false exclude directories that are on different
 devices
@@ -2150,14 +2150,14 @@ devices
 **Example**:  
    
 
-~~~~
+```
      
      body depth_search example
      {
      xdev => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2172,12 +2172,12 @@ devices
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     timestamp
                     rotate
-~~~~
+```
 
 **Synopsis**: Menu option for backup policy on edit changes
 
@@ -2186,14 +2186,14 @@ devices
 **Example**:  
    
 
-~~~~
+```
      
      body edit_defaults example
      {
      edit_backup => "timestamp";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2205,14 +2205,14 @@ devices
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: Baseline memory model of file to zero/empty before
 commencing promised edits
@@ -2222,14 +2222,14 @@ commencing promised edits
 **Example**:  
    
 
-~~~~
+```
      
      body edit_defaults example
      {
      empty_file_before_editing => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2243,14 +2243,14 @@ recipe allows an ordered procedure to be convergent.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: If true this causes the sub-bundle to inherit the private
 classes of its parent
@@ -2258,7 +2258,7 @@ classes of its parent
 **Example**:  
    
 
-~~~~
+```
      bundle agent name
      {
      methods:
@@ -2272,7 +2272,7 @@ classes of its parent
      {
      inherit => "true";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -2299,14 +2299,14 @@ reference using its bundle name. For example, \$(bundle.variable).
 **Example**:  
    
 
-~~~~
+```
      
      body edit_defaults example
      {
      max_file_size => "50K";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2325,14 +2325,14 @@ See: [editfilesize in agent](#editfilesize-in-agent)
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: Join together lines that end with a backslash, up to 4kB
 limit
@@ -2342,7 +2342,7 @@ limit
 **Example**:  
    
 
-~~~~
+```
      files:
      
        "/tmp/test_insert"
@@ -2357,7 +2357,7 @@ limit
      {
      recognize_join => "true";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -2382,14 +2382,14 @@ strategy is selected. Defaults to 1
 **Example**:  
    
 
-~~~~
+```
      
      body rename example
      {
      rotate => "4";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2425,7 +2425,7 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example**:  
    
 
-~~~~
+```
 #This is a template file /templates/input.tmpl
 
 These lines apply to anyone
@@ -2444,11 +2444,11 @@ With text before and after.
 [%CFEngine END %]
 
 nameserver $(some.list)
-~~~~
+```
 
 For example:
 
-~~~~
+```
 [%CFEngine any:: %]
 VirtualHost $(sys.ipv4[eth0]):80>
         ServerAdmin             $(stage_file.params[apache_mail_address][1])
@@ -2478,7 +2478,7 @@ VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>
         CustomLog               /var/log/httpd/access.log                      
 /VirtualHost>
 [%CFEngine END %]
-~~~~
+```
 
 **Notes**:  
    
@@ -2489,11 +2489,11 @@ The template format uses inline tags to mark regions and classes. Each
 line represents an `insert_lines` promise, unless the promises are
 grouped into a block using:
 
-~~~~
+```
 [%CFEngine BEGIN %]
 ...
 [%CFEngine END %]
-~~~~
+```
 
 Variables, scalars and list variables are expanded within each promise.
 If lines are grouped into a block, the whole block is repeated when
@@ -2501,9 +2501,9 @@ lists are expanded (see the Special Topics Guide on editing).
 
 If a class-context modified is used:
 
-~~~~
+```
 [%CFEngine class-expression:: %]
-~~~~
+```
 
 then the lines that follow are only inserted if the context matches the
 agent's current context. This allows conditional insertion.
@@ -2527,7 +2527,7 @@ agent's current context. This allows conditional insertion.
 **Example**:  
    
 
-~~~~
+```
      
      body file_select example
      {
@@ -2535,7 +2535,7 @@ agent's current context. This allows conditional insertion.
      file_result => "leaf_name";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2553,7 +2553,7 @@ This pattern matches only the node name of the file, not its path.
 **Example**:  
    
 
-~~~~
+```
      
      body file_select example
      {
@@ -2563,7 +2563,7 @@ This pattern matches only the node name of the file, not its path.
      file_result => "leaf_name.path_name"
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2582,7 +2582,7 @@ of appropriate regular expressions.
 **Example**:  
    
 
-~~~~
+```
      
      #######################################################
      #
@@ -2633,7 +2633,7 @@ of appropriate regular expressions.
      depth => "$(d)";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2653,7 +2653,7 @@ implies `u` AND `g`.
 **Example**:  
    
 
-~~~~
+```
      
      body file_select example
      {
@@ -2661,7 +2661,7 @@ implies `u` AND `g`.
      file_result => "size";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2679,7 +2679,7 @@ regexes to match
 **Example**:  
    
 
-~~~~
+```
      
      body file_select example
      {
@@ -2687,7 +2687,7 @@ regexes to match
      file_result => "owner";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2709,7 +2709,7 @@ regexes to match
 **Example**:  
    
 
-~~~~
+```
      
      body file_select example
      {
@@ -2717,7 +2717,7 @@ regexes to match
      file_result => "group";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2739,14 +2739,14 @@ Windows, files do not have group associations.
 **Example**:  
    
 
-~~~~
+```
      
      body file_select xyz
      {
      search_bsdflags => "archived|dump";
      file_result => "bsdflags";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -2765,7 +2765,7 @@ CFEngine). See the manual page for `chflags` for more details.
 **Example**:  
    
 
-~~~~
+```
      
      body files_select example
      {
@@ -2773,7 +2773,7 @@ CFEngine). See the manual page for `chflags` for more details.
      file_result => "ctime";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2793,7 +2793,7 @@ time.
 **Example**:  
    
 
-~~~~
+```
      
      body files_select example
      
@@ -2803,7 +2803,7 @@ time.
      file_result => "!mtime";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2822,7 +2822,7 @@ not other attributes, such as permissions.
 **Example**:  
    
 
-~~~~
+```
      body file_select used_recently
      {
      
@@ -2840,7 +2840,7 @@ not other attributes, such as permissions.
      file_result => "!atime";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2860,7 +2860,7 @@ line returned by the command
 **Example**:  
    
 
-~~~~
+```
      
      body file_select example
      {
@@ -2869,7 +2869,7 @@ line returned by the command
      file_result => "exec_program.exec_regex";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2892,7 +2892,7 @@ status is zero
 **Example**:  
    
 
-~~~~
+```
      
      body file_select example
      {
@@ -2900,7 +2900,7 @@ status is zero
      file_result => "exec_program";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2915,7 +2915,7 @@ matched.
 
 **Allowed input range**:   
 
-~~~~
+```
                     plain
                     reg
                     symlink
@@ -2925,14 +2925,14 @@ matched.
                     door
                     char
                     block
-~~~~
+```
 
 **Synopsis**: List of acceptable file types from menu choices
 
 **Example**:  
    
 
-~~~~
+```
      
      body file_select filter
      {
@@ -2941,7 +2941,7 @@ matched.
      file_result => "file_types";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2961,14 +2961,14 @@ plain. In both cases this means not one of the "special" file types.
 **Example**:  
    
 
-~~~~
+```
      
      body file_select example
      {
      issymlinkto => { "/etc/[^/]*", "/etc/init\.d/[a-z0-9]*" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -2991,7 +2991,7 @@ search criteria
 **Example**:  
    
 
-~~~~
+```
      
      body file_select year_or_less
      
@@ -3010,7 +3010,7 @@ search criteria
      file_result => "owner.leaf_name.!mtime";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3059,14 +3059,14 @@ instead of linked
 **Example**:  
    
 
-~~~~
+```
      
      body link_from example
      {
      copy_patterns =>  { "special_node1", "/path/special_node2" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3083,14 +3083,14 @@ updated by modification time.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false whether to link all directory's children to
 source originals
@@ -3100,14 +3100,14 @@ source originals
 **Example**:  
    
 
-~~~~
+```
      
      body link_from example
      {
      link_children => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3121,12 +3121,12 @@ them to the source.
 
 **Allowed input range**:   
 
-~~~~
+```
                     symlink
                     hardlink
                     relative
                     absolute
-~~~~
+```
 
 **Synopsis**: The type of link used to alias the file
 
@@ -3135,7 +3135,7 @@ them to the source.
 **Example**:  
    
 
-~~~~
+```
      
      body link_from example
      {
@@ -3143,7 +3143,7 @@ them to the source.
      source => "/tmp/source";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3172,7 +3172,7 @@ are mutually exclusive.
 **Example**:  
    
 
-~~~~
+```
      
      body copy_from example
      {
@@ -3186,7 +3186,7 @@ are mutually exclusive.
      source => "/path/to/source";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3199,10 +3199,10 @@ For remote copies this refers to the file name on the remote server.
 
 **Allowed input range**:   
 
-~~~~
+```
                     override_file
                     if_no_such_file
-~~~~
+```
 
 **Synopsis**: Policy for overriding existing files when linking
 directories of children
@@ -3210,14 +3210,14 @@ directories of children
 **Example**:  
    
 
-~~~~
+```
      
      body link_from example
      {
      when_linking_children => "if_no_such_file";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3236,11 +3236,11 @@ certain fields overridden.
 
 **Allowed input range**:   
 
-~~~~
+```
                     force
                     delete
                     nop
-~~~~
+```
 
 **Synopsis**: Behaviour when the source file to link to does not exist
 
@@ -3249,14 +3249,14 @@ certain fields overridden.
 **Example**:  
    
 
-~~~~
+```
      
      body link_from example
      {
      when_no_source => "force";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3272,14 +3272,14 @@ or do nothing.
 
 **Allowed input range**:   
 
-~~~~
+```
                true
                false
                yes
                no
                on
                off
-~~~~
+```
 
 **Default value:** false
 
@@ -3289,7 +3289,7 @@ creation
 **Example**:  
    
 
-~~~~
+```
 files:
 
   "/tmp/testcopy" 
@@ -3297,7 +3297,7 @@ files:
     copy_from    => mycopy("/tmp/source"),
     move_obstructions => "true",
     depth_search => recurse("inf");
-~~~~
+```
 
 **Notes**:  
    
@@ -3323,18 +3323,18 @@ link, if the behaviour is different.
 
 **Allowed input range**:   
 
-~~~~
+```
                literal
                regex
                guess
-~~~~
+```
 
 **Synopsis**: Menu option for interpreting promiser file object
 
 **Example**:  
    
 
-~~~~
+```
 files:
 
    "/var/lib\d"
@@ -3349,7 +3349,7 @@ files:
 
       pathtype => "literal",    # force literal interpretation
          perms => system;
-~~~~
+```
 
 **Notes**:  
    
@@ -3400,7 +3400,7 @@ more information.
 **Example**:  
    
 
-~~~~
+```
      
      body perms example
      
@@ -3409,7 +3409,7 @@ more information.
                    "opaque","sappnd","schg","sunlnk" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3430,13 +3430,13 @@ target
 **Example**:  
    
 
-~~~~
+```
      body perms example
      {
      groups => { "users", "administrators" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3460,14 +3460,14 @@ ACLs may be used in place for this.
 **Example**:  
    
 
-~~~~
+```
      
      body perms example
      {
      mode => "a+rx,o+w";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3488,14 +3488,14 @@ target
 **Example**:  
    
 
-~~~~
+```
      
      body perms example
      {
      owners => { "mark", "wwwrun", "jeang" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3516,14 +3516,14 @@ on Windows (such as the Administrators group).
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false add execute flag for directories if read flag
 is set
@@ -3531,14 +3531,14 @@ is set
 **Example**:  
    
 
-~~~~
+```
      
      body perms rxdirs
      {
      rxdirs => "false";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3557,14 +3557,14 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false automatically rename and remove permissions
 
@@ -3573,7 +3573,7 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
 **Example**:  
    
 
-~~~~
+```
      
      body rename example
      {
@@ -3581,7 +3581,7 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
      disable_suffix => ".nuked";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3601,14 +3601,14 @@ unreadable.
 **Example**:  
    
 
-~~~~
+```
      
      body rename example
      {
      disable_mode => "0600"; 
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3627,7 +3627,7 @@ remove the executable flag.
 **Example**:  
    
 
-~~~~
+```
      
      body rename example
      {
@@ -3635,7 +3635,7 @@ remove the executable flag.
      disable_suffix => ".nuked";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3654,14 +3654,14 @@ default value is .cf-disabled.
 **Example**:  
    
 
-~~~~
+```
      
      body rename example(s)
      {
      newname => "$(s)";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3678,14 +3678,14 @@ default value is .cf-disabled.
 **Example**:  
    
 
-~~~~
+```
      
      body rename example
      {
      rotate => "4";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -3717,14 +3717,14 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example**:  
    
 
-~~~~
+```
 files:
 
  "/path/file"
 
    copy_from => source,
    repository => "/var/cfengine/repository";
-~~~~
+```
 
 **Notes**:  
    
@@ -3745,27 +3745,27 @@ ordinarily be stored in an alternative repository as
 
 **Allowed input range**:   
 
-~~~~
+```
                true
                false
                yes
                no
                on
                off
-~~~~
+```
 
 **Synopsis**: true/false whether to touch time stamps on file
 
 **Example**:  
    
 
-~~~~
+```
 files:
 
  "/path/file"
 
    touch => "true";
-~~~~
+```
 
 **Notes**:  
    
@@ -3782,16 +3782,16 @@ files:
 **Example**:  
    
 
-~~~~
+```
 files:
   "/home/mark/tmp/testcopy"
 
     file_select => pdf_files,
     transformer => "/usr/bin/gzip $(this.promiser)",
     depth_search => recurse("inf");
-~~~~
+```
 
-~~~~
+```
  classes:
     "do_update" expression => isnewerthan("/etc/postfix/alias",
                                           "/etc/postfix/alias.cdb");
@@ -3801,7 +3801,7 @@ files:
        create => "true",        # Must have this!
        transformer => "/usr/sbin/postalias /etc/postfix/alias",
        ifvarclass => "do_update";
-~~~~
+```
 
 **Notes**:  
    
@@ -3828,17 +3828,17 @@ Note also that if you use the `$(this.promiser)` variable or other
 variable in this command, and the file object contains spaces, then you
 should quote the variable. For example:
 
-~~~~
+```
     transformer => "/usr/bin/gzip \"$(this.promiser)\"",
-~~~~
+```
 
 Note also that the transformer does not actually need to change the
 file. You can, for example, simply report on the existence of files
 with:
 
-~~~~
+```
     transformer => "/bin/echo I found a file named $(this.promiser)",
-~~~~
+```
 
 The file streams `stdout` and `stderr` are redirected by CFEngine, and
 will not appear in any output unless you run `cf-agent` with the -v

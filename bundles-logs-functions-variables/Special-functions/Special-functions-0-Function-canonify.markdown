@@ -20,13 +20,13 @@ Convert an arbitrary string into a legal class name
 **Example**:  
    
 
-~~~~
+```
 commands:
 
    "/var/cfengine/bin/$(component)"
 
        ifvarclass => canonify("start_$(component)");
-~~~~
+```
 
 **Notes**:  
    

@@ -19,7 +19,7 @@ other is in searching for files.
 
 Consider the examples below:
 
-~~~~
+```
 bundle agent testbundle
 
 {
@@ -38,7 +38,7 @@ files:
 
 
 }
-~~~~
+```
 
 -   [Variable match.0](#Variable-match_002e0)
 

@@ -19,10 +19,10 @@ Return the parent directory name for given path
 **Example**:  
    
 
-~~~~
+```
 vars:
   "apache_dir" string => dirname("/etc/apache2/httpd.conf");
-~~~~
+```
 
 **Notes**:  
    

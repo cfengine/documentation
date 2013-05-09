@@ -11,7 +11,7 @@ tags: [Bundles-for-agent,packages-in-agent-promises]
 
   
 
-~~~~
+```
  vars:
 
   "match_package" slist => { 
@@ -26,7 +26,7 @@ tags: [Bundles-for-agent,packages-in-agent-promises]
 
          package_policy => "add",
          package_method => yum;
-~~~~
+```
 
 CFEngine supports a generic approach to integration with native
 operating support for packaging. Package promises allow CFEngine to make
@@ -82,7 +82,7 @@ one of two different ways:
 
 -   They may be specified independently, e.g.
 
-    ~~~~
+    ```
          packages:
          
            "mypackage"
@@ -93,18 +93,18 @@ one of two different ways:
               package_architectures => { "x86_64", "i586" },
               package_version => "1.2.3";
          
-    ~~~~
+    ```
 
 -   They may be extracted from a package identifier (promiser) or
     filename, using pattern matching. For example, a promiser
     7-Zip-4.50-x86\_64.msi and a package\_method containing the
     following:
 
-    ~~~~
+    ```
           package_name_regex => "^(\S+)-(\d+\.?)+";
           package_version_regex => "^\S+-((\d+\.?)+)";
           package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
-    ~~~~
+    ```
 
 When scanning a list of installed packages different managers present
 the information *(n,v,a)* in quite different forms and pattern
@@ -239,7 +239,7 @@ Package not installed
 
   
 
-~~~~
+```
 bundle agent packages
 {
 vars:
@@ -260,7 +260,7 @@ packages:
      package_method => yum;
 
 }
-~~~~
+```
 
   
 
@@ -331,7 +331,7 @@ library for supported operating systems.
 **Example**:  
    
 
-~~~~
+```
 packages:
 
   "$(exact_package)"
@@ -339,7 +339,7 @@ packages:
      package_policy => "add",
      package_method => rpm,
      package_architectures => { "x86_64" };
-~~~~
+```
 
 **Notes**:  
    
@@ -364,14 +364,14 @@ package manager's behaviour prevails.
 **Example**:  
    
 
-~~~~
+```
      
      body package_method rpm
      {
      package_add_command => "/bin/rpm -i ";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -399,7 +399,7 @@ package architecture string
 **Example**:  
    
 
-~~~~
+```
      
      body package_method rpm
      
@@ -407,7 +407,7 @@ package architecture string
      package_list_arch_regex    => "[^.]+\.([^.]+)";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -428,10 +428,10 @@ define this.
 
 **Allowed input range**:   
 
-~~~~
+```
                     individual
                     bulk
-~~~~
+```
 
 **Synopsis**: Menu option - whether to group packages into a single
 aggregate command
@@ -439,7 +439,7 @@ aggregate command
 **Example**:  
    
 
-~~~~
+```
      
      body package_method rpm
      
@@ -447,7 +447,7 @@ aggregate command
      package_changes => "bulk";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -469,7 +469,7 @@ the operating system's package manager to handle dependencies.
 **Example**:  
    
 
-~~~~
+```
      
      body package_method rpm
      
@@ -477,7 +477,7 @@ the operating system's package manager to handle dependencies.
      package_delete_command => "/bin/rpm -e --nodeps";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -502,7 +502,7 @@ referred to in the deletion part of a package update, e.g. \$(name)
 **Example**:  
    
 
-~~~~
+```
      body package_method freebsd
      
      {
@@ -511,7 +511,7 @@ referred to in the deletion part of a package update, e.g. \$(name)
      package_delete_convention => "$(name)-$(version)";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -544,14 +544,14 @@ If this is not defined, it defaults to the value of
 **Example**:  
    
 
-~~~~
+```
      
      body package_method filebased
      {
      package_file_repositories => { "/package/repos1", "/packages/repos2" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -573,14 +573,14 @@ installed
 **Example**:  
    
 
-~~~~
+```
      
      body package_method yum
      {
      package_installed_regex => ".*installed.*";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -604,14 +604,14 @@ be ignored.
 **Example**:  
    
 
-~~~~
+```
      body package_method dpkg
      {
        package_default_arch_command => "/usr/bin/dpkg --print-architecture";
      
        # ...
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -638,14 +638,14 @@ package architecture string
 **Example**:  
    
 
-~~~~
+```
      
      body package_method rpm
      {
      package_list_arch_regex    => "[^|]+\|[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -669,7 +669,7 @@ define this regex.
 **Example**:  
    
 
-~~~~
+```
      
      body package_method rpm
      
@@ -677,7 +677,7 @@ define this regex.
      package_list_command => "/bin/rpm -qa --queryformat \"%{name} %{version}-%{release}\n\"";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -703,7 +703,7 @@ package name string
 **Example**:  
    
 
-~~~~
+```
      
      body package_method rpm
      
@@ -711,7 +711,7 @@ package name string
      package_list_name_regex    => "([^\s]+).*";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -733,7 +733,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 **Example**:  
    
 
-~~~~
+```
      body package_method xyz
      {
      debian|ubuntu::
@@ -741,7 +741,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
      package_list_update_command => "/usr/bin/apt-get update";
      package_list_update_ifelapsed => "240";        # 4 hours
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -762,7 +762,7 @@ package list
 **Example**:  
    
 
-~~~~
+```
      body package_method xyz
      {
      debian|ubuntu::
@@ -770,7 +770,7 @@ package list
      package_list_update_command => "/usr/bin/apt-get update";
      package_list_update_ifelapsed => "240";        # 4 hours
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -791,14 +791,14 @@ package version string
 **Example**:  
    
 
-~~~~
+```
      body package_method rpm
      
      {
      package_list_version_regex => "[^\s]+ ([^.]+).*";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -821,14 +821,14 @@ referred to, e.g. \$(name).\$(arch)
 **Example**:  
    
 
-~~~~
+```
      body package_method rpm
      
      {
      package_name_convention => "$(name).$(arch).rpm";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -858,14 +858,14 @@ package name string
 **Example**:  
    
 
-~~~~
+```
      
      body package_method rpm
      {
      package_name_regex => "([^\s]).*";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -889,7 +889,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
 **Example**:  
    
 
-~~~~
+```
      body package_method xyz
      
      {
@@ -897,7 +897,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
      package_verify_command => "/usr/bin/dpkg -s";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -920,13 +920,13 @@ failure
 **Example**:  
    
 
-~~~~
+```
      body package_method xyz
      {
      package_noverify_returncode => "-1";
      package_verify_command => "/bin/rpm -V";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -946,14 +946,14 @@ update architecture string
 **Example**:  
    
 
-~~~~
+```
      
      body package_method zypper
      {
      package_patch_arch_regex => "";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -977,13 +977,13 @@ installed package
 **Example**:  
    
 
-~~~~
+```
      body package_method zypper
      
      {
      package_patch_command => "/usr/bin/zypper -non-interactive patch";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -1010,14 +1010,14 @@ installed
 **Example**:  
    
 
-~~~~
+```
      
      body package_method zypper
      {
      package_patch_installed_regex => ".*(Installed|Not Applicable).*";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1040,11 +1040,11 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 **Example**:  
    
 
-~~~~
+```
      
       package_patch_list_command => "/usr/bin/zypper patches";
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1072,13 +1072,13 @@ update name string
 **Example**:  
    
 
-~~~~
+```
      
      body package_method zypper
      {
      package_patch_name_regex    => "[^|]+\|\s+([^\s]+).*";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -1102,14 +1102,14 @@ update version string
 **Example**:  
    
 
-~~~~
+```
      
      body package_method zypper
      {
      package_patch_version_regex => "[^|]+\|[^|]+\|\s+([^\s]+).*";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1133,14 +1133,14 @@ installed package
 **Example**:  
    
 
-~~~~
+```
      
      body package_method zypper
      {
      package_update_command => "/usr/bin/zypper -non-interactive update";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1167,7 +1167,7 @@ carry out the update.
 **Example**:  
    
 
-~~~~
+```
      body package_method rpm
      
      {
@@ -1176,7 +1176,7 @@ carry out the update.
      }
      
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1211,14 +1211,14 @@ package version string
 **Example**:  
    
 
-~~~~
+```
      
      body package_method rpm
      {
      package_version_regex => "[^\s]+ ([^.]+).*";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1243,7 +1243,7 @@ package in multiline output
 **Example**:  
    
 
-~~~~
+```
      
      body package_method solaris (pkgname, spoolfile, adminfile)
      {
@@ -1253,7 +1253,7 @@ package in multiline output
      ...
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1269,14 +1269,14 @@ record.
 
 **Allowed input range**:   
 
-~~~~
+```
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: Whether to use shell for commands in this body
 
@@ -1285,11 +1285,11 @@ record.
 **Example**:  
    
 
-~~~~
+```
      
      Fill me in (./bodyparts/package_commands_useshell_example.texinfo)
      ""
-~~~~
+```
 
 **Notes**:  
    
@@ -1297,11 +1297,11 @@ record.
 *History*: Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
 (2012)
 
-~~~~
+```
      
      Fill me in (./bodyparts/package_commands_useshell_notes.texinfo)
      ""
-~~~~
+```
 
   
 
@@ -1317,13 +1317,13 @@ less than second one
 **Example**:  
    
 
-~~~~
+```
      body package_method deb
      {
      ...
      package_version_less_command => "dpkg --compare-versions ${v1} lt ${v2}";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -1359,13 +1359,13 @@ equal to second one
 **Example**:  
    
 
-~~~~
+```
      body package_method deb
      {
      ...
      package_version_equal_command => "dpkg --compare-versions ${v1} eq ${v2}";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -1393,7 +1393,7 @@ v2, and v2 is not less than v1).
 
 **Allowed input range**:   
 
-~~~~
+```
                add
                delete
                reinstall
@@ -1401,7 +1401,7 @@ v2, and v2 is not less than v1).
                addupdate
                patch
                verify
-~~~~
+```
 
 **Default value:** verify
 
@@ -1411,14 +1411,14 @@ system
 **Example**:  
    
 
-~~~~
+```
 packages:
 
   "$(match_package)"
 
      package_policy => "add",
      package_method => xyz;
-~~~~
+```
 
 **Notes**:  
    
@@ -1463,14 +1463,14 @@ Requires setting `package_verify_command`.
 
 **Allowed input range**:   
 
-~~~~
+```
                
                
                ==
                !=
                =
                =
-~~~~
+```
 
 **Synopsis**: A criterion for first acceptable match relative to
 "package\_version"
@@ -1478,7 +1478,7 @@ Requires setting `package_verify_command`.
 **Example**:  
    
 
-~~~~
+```
 packages:
 
   "$(exact_package)"
@@ -1488,7 +1488,7 @@ packages:
      package_select => ">=",
      package_architectures => { "x86_64" },
      package_version => "1.2.3-456";
-~~~~
+```
 
 **Notes**:  
    
@@ -1508,7 +1508,7 @@ policy action is scheduled for promise-keeping.
 **Example**:  
    
 
-~~~~
+```
 packages:
 
   "mypackage"
@@ -1517,7 +1517,7 @@ packages:
      package_method => rpm,
      package_select => "==",
      package_version => "1.2.3";
-~~~~
+```
 
 **Notes**:  
    

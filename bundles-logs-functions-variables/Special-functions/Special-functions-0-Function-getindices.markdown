@@ -21,7 +21,7 @@ variable
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -50,7 +50,7 @@ reports:
    "Found index: $(parameter_name)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

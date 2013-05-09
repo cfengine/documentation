@@ -20,7 +20,7 @@ referred to is a literal string representation of a balanced XML tree.
 
   
 
-~~~~
+```
 bundle edit_xml example
   {
   insert_tree:
@@ -28,7 +28,7 @@ bundle edit_xml example
 
     select_xpath => "/Server/Service/Engine";
   }
-~~~~
+```
 
   
 

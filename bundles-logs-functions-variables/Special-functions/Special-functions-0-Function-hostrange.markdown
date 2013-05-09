@@ -21,7 +21,7 @@ specified
 **Example**:  
    
 
-~~~~
+```
 
 body common control
 
@@ -45,7 +45,7 @@ reports:
     "No computer is a cluster";
 
 }
-~~~~
+```
 
 **Notes**:  
    

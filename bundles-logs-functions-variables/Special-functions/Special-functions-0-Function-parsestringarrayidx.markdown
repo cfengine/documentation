@@ -28,7 +28,7 @@ variable with integer indexes
 **Example**:  
    
 
-~~~~
+```
 bundle agent test(f) 
 {
 vars:
@@ -60,7 +60,7 @@ reports:
   cfengine_3::
     "$(keys)";
 }
-~~~~
+```
 
 **Notes**:  
    

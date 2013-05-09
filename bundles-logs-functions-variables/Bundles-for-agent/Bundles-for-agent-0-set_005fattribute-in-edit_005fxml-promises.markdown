@@ -23,7 +23,7 @@ attribute to be set.
 
   
 
-~~~~
+```
 bundle edit_xml example
   {
   set_attribute:
@@ -32,7 +32,7 @@ bundle edit_xml example
     attribute_value => "cfe_host",
     select_xpath => "/Server/Service/Engine/Host";
   }
-~~~~
+```
 
   
 
@@ -55,12 +55,12 @@ of the XML file
 **Example**:  
    
 
-~~~~
+```
 body attribute_value example(s)
 {
 attribute_value => "$(s)";
 }
-~~~~
+```
 
 **Notes**:  
    

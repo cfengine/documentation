@@ -19,7 +19,7 @@ True if the regular expression matches any currently defined class
 **Example**:  
    
 
-~~~~
+```
 body common control
 
 {
@@ -42,7 +42,7 @@ reports:
     "Host matches pattern";
 
 }
-~~~~
+```
 
 **Notes**:  
    

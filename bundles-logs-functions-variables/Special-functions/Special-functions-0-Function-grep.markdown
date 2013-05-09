@@ -22,7 +22,7 @@ the list named in arg2
 **Example**:  
    
 
-~~~~
+```
 bundle agent test
 
 {
@@ -41,7 +41,7 @@ reports:
   "Item: $(sublist)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

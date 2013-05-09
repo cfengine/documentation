@@ -20,7 +20,7 @@ Extract the last of a separated string, e.g. filename from a path
 **Example**:  
    
 
-~~~~
+```
 bundle agent yes
 {
 vars:
@@ -40,7 +40,7 @@ reports:
     "Last = $(last1),$(last2),$(last3)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

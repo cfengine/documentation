@@ -24,7 +24,7 @@ Note: The words class and context are sometimes used interchangeably.
 
   
 
-~~~~
+```
 bundle common g
 {
 classes:
@@ -33,7 +33,7 @@ classes:
 
   "client_network" expression => iprange("128.39.89.0/24");
 }
-~~~~
+```
 
 -   [and in classes](#and-in-classes)
 -   [dist in classes](#dist-in-classes)
@@ -60,11 +60,11 @@ side match, then the class on the left-hand side is defined.
 **Example**:  
    
 
-~~~~
+```
 classes:
 
   "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
-~~~~
+```
 
 #### `dist`
 
@@ -81,25 +81,25 @@ strategy in CFEngine 2.
 **Example**:  
    
 
-~~~~
+```
 classes:
 
   "my_dist"  
 
     dist => { "10", "20", "40", "50" };
-~~~~
+```
 
 Referring to the the sum of `10+20+40+50 = 120` in the example above,
 when generating the distribution, CFEngine picks a number between
 `1-120`. This will generate the following classes:
 
-~~~~
+```
      my_dist    (always)
      my_dist_10 (10/120 of the time)
      my_dist_20 (20/120 of the time)
      my_dist_40 (40/120 of the time)
      my_dist_50 (50/120 of the time)
-~~~~
+```
 
 #### `expression`
 
@@ -114,12 +114,12 @@ A way of aliasing class combinations.
 **Example**:  
    
 
-~~~~
+```
 classes:
 
   "class_name" expression => "solaris|(linux.specialclass)";
   "has_toor"   expression => userexists("toor");
-~~~~
+```
 
 #### `or`
 
@@ -136,13 +136,13 @@ construction for writing expressions that contain special functions.
 **Example**:  
    
 
-~~~~
+```
 classes:
 
     "compound_test" 
 
       or => { classmatch("linux_x86_64_2_6_22.*"), "suse_10_3" };
-~~~~
+```
 
 #### `persistence`
 
@@ -161,7 +161,7 @@ from a non-standard naming facility.
 **Example**:  
    
 
-~~~~
+```
 bundle common setclasses
 {
 classes:
@@ -175,12 +175,12 @@ classes:
        persistence => "1";
 
 }
-~~~~
+```
 
 For example, to create a conditional inclusion of costly class
 definitions, put them into a separate bundle in a file classes.cf.
 
-~~~~
+```
 # promises.cf
 
 body common control 
@@ -207,11 +207,11 @@ reports:
     "cached class defined";
 }
  
-~~~~
+```
 
 Then create classes.cf
 
-~~~~
+```
 # classes.cf
 
 bundle common setclasses
@@ -227,7 +227,7 @@ classes:
        persistence => "480";
 
 }
-~~~~
+```
 
 #### `not`
 
@@ -244,12 +244,12 @@ on the right-hand side is false.
 **Example**:  
    
 
-~~~~
+```
 classes:
 
    "others"  not => "linux|solaris";
    "no_toor" not => userexists("toor");
-~~~~
+```
 
 #### `select_class`
 
@@ -275,7 +275,7 @@ that hosts will always end up in the same class every time.
 **Example**:  
    
 
-~~~~
+```
 bundle common g
 {
 classes:
@@ -289,7 +289,7 @@ reports:
   selection::
      "A selection was made";
 }
-~~~~
+```
 
 #### `xor`
 
@@ -306,8 +306,8 @@ right-hand side matches.
 **Example**:  
    
 
-~~~~
+```
 classes:
 
  "another_global" xor => { "any", "linux", "solaris"};
-~~~~
+```

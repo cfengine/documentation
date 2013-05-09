@@ -26,7 +26,7 @@ introduced.
 
   
 
-~~~~
+```
 body knowledge TheRealWorld
 {
 things:
@@ -40,7 +40,7 @@ things:
      "computer 23" belongs_to => { "Phileas Phogg", "ACME punchcard agency" };
 
 }
-~~~~
+```
 
   
 
@@ -86,11 +86,11 @@ defined context
 **Example**:  
    
 
-~~~~
+```
  mathematics::
 
    "tree" synonyms => { "DAG", "directed acyclic graph" };
-~~~~
+```
 
 **Notes**:  
    
@@ -112,11 +112,11 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
    "The Moon"   affects => {  "surf", "tides" };
-~~~~
+```
 
 **Notes**:  
    
@@ -134,14 +134,14 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
   "router-123" 
 
            comment => "Located at 23 Marlborough Street",
         belongs_to => { "company::cfengine" };
-~~~~
+```
 
 **Notes**:  
    
@@ -160,7 +160,7 @@ things
 **Example**:  
    
 
-~~~~
+```
 bundle knowledge test
 {
 things:
@@ -169,7 +169,7 @@ things:
                      certainty => "possible";
 
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -184,11 +184,11 @@ The complement of \`is\_caused\_by' for convenience.
 
 **Allowed input range**:   
 
-~~~~
+```
                certain
                uncertain
                possible
-~~~~
+```
 
 **Synopsis**: Selects the level of certainty for the proposed knowledge,
 for use in inferential reasoning
@@ -196,7 +196,7 @@ for use in inferential reasoning
 **Example**:  
    
 
-~~~~
+```
 bundle knowledge test
 {
 things:
@@ -207,7 +207,7 @@ things:
   "router"             affects => { "network services" },
                      certainty => "possible";
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -231,12 +231,12 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
   "router one" determines => { "network connectivity" },
                 certainty => "uncertain";
-~~~~
+```
 
 **Notes**:  
    
@@ -255,7 +255,7 @@ current topic, used when reasoning
 **Example**:  
    
 
-~~~~
+```
  topics:
 
   persons::
@@ -265,7 +265,7 @@ current topic, used when reasoning
   any::
 
      "10.10.10.10/24" generalizations => { "network", "CIDR format" };
-~~~~
+```
 
 **Notes**:  
    
@@ -291,12 +291,12 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
    "my promise"  
               implements => { "my goal" };
-~~~~
+```
 
 **Notes**:  
    
@@ -315,7 +315,7 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
    "desired state"
@@ -325,7 +325,7 @@ things:
                   "knowing what state to configure", 
                   "knowing what objects to maintain" 
                   };
-~~~~
+```
 
 **Notes**:  
    
@@ -344,7 +344,7 @@ things
 **Example**:  
    
 
-~~~~
+```
 bundle knowledge test
 {
 things:
@@ -353,7 +353,7 @@ things:
                      certainty => "certain";
 
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -374,7 +374,7 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
  networks::
@@ -388,7 +388,7 @@ things:
   "192.12.74.0/23"         comment => "Secure, single octet for the NYC office",
                    is_connected_to => { "nyc-hub-456" };
 
-~~~~
+```
 
 **Notes**:  
    
@@ -407,11 +407,11 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
   "why" is_determined_by => { "bodyparts::comment", "Semantic commentary" };
-~~~~
+```
 
 **Notes**:  
    
@@ -432,13 +432,13 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
   "Installing CFEngine"
 
     is_followed_by => { "bootstrapping", "policy editing" };
-~~~~
+```
 
 **Notes**:  
    
@@ -457,12 +457,12 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
    "my goal"  
               is_implemented_by => { "my promise" };
-~~~~
+```
 
 **Notes**:  
    
@@ -481,7 +481,7 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
  countries::
@@ -491,7 +491,7 @@ things:
 
    "Singapore"     is_located_in => { "APAC", "Asia" };
 
-~~~~
+```
 
 **Notes**:  
    
@@ -510,13 +510,13 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
  service_measurements::
 
   "login services" is_measured_by => { "ssh_in" };
-~~~~
+```
 
 **Notes**:  
    
@@ -534,11 +534,11 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
   "host 1" is_part_of => { "123.456.789.0/24" };
-~~~~
+```
 
 **Notes**:  
    
@@ -557,14 +557,14 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
   "disk failure"
 
     is_preceded_by => { "write errors", "read errors" },
          certainty => "possible";
-~~~~
+```
 
 **Notes**:  
    
@@ -583,14 +583,14 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
  service_measurements::
 
   "ssh_in"     measures => { "services::login services" },
                measures => { "ssh" };
-~~~~
+```
 
 **Notes**:  
    
@@ -609,14 +609,14 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
   "rack 123"     needs => { "power", "cooling" };
 
   "computer"     needs => { "cleaning", "monitoring" },
              certainty => "possible";
-~~~~
+```
 
 **Notes**:  
    
@@ -635,11 +635,11 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
    "host 23" provides => { "www", "email" };
-~~~~
+```
 
 **Notes**:  
    
@@ -658,11 +658,11 @@ things
 **Example**:  
    
 
-~~~~
+```
 things:
 
   "apache 2.3" uses => { "mysql 4.5" };
-~~~~
+```
 
 **Notes**:  
    

@@ -19,7 +19,7 @@ True if the named object is a directory
 **Example**:  
    
 
-~~~~
+```
 
 body common control
 
@@ -43,7 +43,7 @@ reports:
     "Directory exists..";
 
 }
-~~~~
+```
 
 **Notes**:  
    
