@@ -582,35 +582,6 @@ e.g.
 
 
 
-## `exclamation`
-
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
-
-**Default value:** true
-
-**Synopsis**: true/false print exclamation marks during security
-warnings
-
-    body agent control
-    {
-    exclamation => "false";
-    }
-
-**Notes**:
-
-This affects only the output format of warnings.
-
-
-
 ## `expireafter`
 
 **Type**: int
