@@ -41,8 +41,6 @@ fault tolerant and opportunistic.
 * cf-runagent - This is a helper program that can talk to cf-serverd and request that it execute cf-agent with its existing policy. It can thus be used to simulate a push of changes to CFEngine hosts, if their policy includes that they check for updates.
  
 
-* cf-know - This agent can generate an ISO standard Topic Map from a number of promises about system knowledge. It is used for rendering documentation as a 'semantic web'.
-
 ### CFEngine Architecture
 
 CFEngine operates autonomously in a network, under your guidance.
