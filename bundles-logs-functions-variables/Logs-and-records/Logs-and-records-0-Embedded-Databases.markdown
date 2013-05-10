@@ -9,9 +9,6 @@ tags: [Logs-and-records,Embedded-Databases]
 
 ### Embedded Databases
 
-The embedded databases can be viewed and printed using the reporting
-tool `cf-report`.
-
 Their file extensions will vary based on which library is used to
 implement them; either Tokyo Cabinet (`.tcdb`), Quick Database Manager
 (`.qdbm`), or Berkeley DB (`.db`). Converting one database format to
