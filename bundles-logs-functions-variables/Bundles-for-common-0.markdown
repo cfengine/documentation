@@ -84,11 +84,5 @@ recipient.
 -   [storage in agent promises](#storage-in-agent-promises):
 -   [access in server promises](#access-in-server-promises):
 -   [roles in server promises](#roles-in-server-promises):
--   [inferences in knowledge
-    promises](#inferences-in-knowledge-promises):
--   [things in knowledge promises](#things-in-knowledge-promises):
--   [topics in knowledge promises](#topics-in-knowledge-promises):
--   [occurrences in knowledge
-    promises](#occurrences-in-knowledge-promises):
 -   [measurements in monitor
     promises](#measurements-in-monitor-promises):

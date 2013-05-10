@@ -301,10 +301,7 @@ for backward compatibility
 If this is set, CFEngine will perform auditing on promises in the
 current configuration. This means that all details surrounding the
 verification of the current promise will be recorded in the audit
-database. The database may be inspected with `cf-report`, or
-`cfshow` in CFEngine 2.
-
-
+database.
 
 ## `binarypaddingchar`
 
@@ -579,35 +576,6 @@ e.g.
     # Required by apt-cache, debian
     
     environment => { "LANG=C"};
-
-
-
-## `exclamation`
-
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
-
-**Default value:** true
-
-**Synopsis**: true/false print exclamation marks during security
-warnings
-
-    body agent control
-    {
-    exclamation => "false";
-    }
-
-**Notes**:
-
-This affects only the output format of warnings.
 
 
 
