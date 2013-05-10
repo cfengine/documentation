@@ -29,7 +29,7 @@ vars:
  "ran"    int => randomint(4,88);
 ```
 =======
-~~~~ {.verbatim}
+``` {.verbatim}
 bundle agent randomint_example
 # Demonstrate random number calculation
 {
@@ -70,7 +70,7 @@ bundle agent randomint_example
 }
 Example output:
 R: Random Numbers: 32, 56, 37
-~~~~
+```
 >>>>>>> upstream/master
 
 **Notes**:  
