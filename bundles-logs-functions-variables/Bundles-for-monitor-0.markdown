@@ -12,7 +12,7 @@ Bundles of `monitor`
 
   
 
-```
+```cf3
      
      bundle monitor example
      {

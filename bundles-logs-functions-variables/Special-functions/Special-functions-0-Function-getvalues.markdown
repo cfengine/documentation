@@ -21,7 +21,7 @@ whose id is the argument and assign to variable
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

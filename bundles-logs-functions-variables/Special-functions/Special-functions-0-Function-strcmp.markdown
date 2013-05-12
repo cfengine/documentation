@@ -20,7 +20,7 @@ True if the two strings match exactly
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

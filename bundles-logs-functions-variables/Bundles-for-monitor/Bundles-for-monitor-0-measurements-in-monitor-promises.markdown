@@ -31,7 +31,7 @@ destined for the agent concerned (however, you do not need to add them
 to the `bundlesequence` they are executed by `cf-monitord` because they
 are bundles of type `monitor`). In this case:
 
-```
+```cf3
 bundle monitor watch
 
 {
@@ -52,7 +52,7 @@ form `$(mon.handle)`.
 
   
 
-```
+```cf3
   # Follow a special process over time
   # using CFEngine's process cache to avoid resampling
 
@@ -187,7 +187,7 @@ into agent variables in the `$(mon.`name`)` context.
 
 **Allowed input range**:   
 
-```
+```cf3
                pipe
                file
 ```
@@ -197,7 +197,7 @@ into agent variables in the `$(mon.`name`)` context.
 **Example**:  
    
 
-```
+```cf3
 stream_type => "pipe";
 ```
 
@@ -214,7 +214,7 @@ a process. However pipes from executed commands may also be invoked.
 
 **Allowed input range**:   
 
-```
+```cf3
                counter
                int
                real
@@ -227,7 +227,7 @@ a process. However pipes from executed commands may also be invoked.
 **Example**:  
    
 
-```
+```cf3
   "/bin/df"
 
       handle => "free_disk_watch",
@@ -260,7 +260,7 @@ be selected.
 
 **Allowed input range**:   
 
-```
+```cf3
                weekly
                scalar
                static
@@ -273,7 +273,7 @@ isolated value
 **Example**:  
    
 
-```
+```cf3
  "/proc/meminfo"
 
       handle => "free_memory_watch",
@@ -319,7 +319,7 @@ its intent used in plots
 **Example**:  
    
 
-```
+```cf3
    "/var/cfengine/state/cf_rootprocs"
 
       handle => "monitor_self_watch",
@@ -352,7 +352,7 @@ This is an arbitary string used in documentation only.
 **Example**:  
    
 
-```
+```cf3
      
      # Editing
      
@@ -390,7 +390,7 @@ This attribute is mutually exclusive of `select_line_number`.
 **Example**:  
    
 
-```
+```cf3
      
      body match_value find_line
      {
@@ -416,7 +416,7 @@ backreference for extracting a value
 **Example**:  
    
 
-```
+```cf3
      
      body match_value free_memory
      {
@@ -441,7 +441,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -457,7 +457,7 @@ since been truncated
 **Example**:  
    
 
-```
+```cf3
      bundle monitor watch
      {
      measurements:
@@ -508,7 +508,7 @@ logfile | grep pattern in Unix parlance.
 
 **Allowed input range**:   
 
-```
+```cf3
                     average
                     sum
                     first
@@ -520,7 +520,7 @@ logfile | grep pattern in Unix parlance.
 **Example**:  
    
 
-```
+```cf3
      
      body match_value myvalue(xxx)
      {

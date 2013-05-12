@@ -23,7 +23,7 @@ split on regex arg3 as array name arg4
 **Example**:  
    
 
-```
+```cf3
 bundle agent example
 
 {     

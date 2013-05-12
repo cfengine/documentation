@@ -24,7 +24,7 @@ in arg3
 **Example**:  
    
 
-```
+```cf3
 bundle agent example
 
 {     
@@ -44,7 +44,7 @@ reports:
 **Notes**:  
    
 
-```
+```cf3
      
      (class) hashmatch(file,md5|sha1|crypt,hash-comparison);
      

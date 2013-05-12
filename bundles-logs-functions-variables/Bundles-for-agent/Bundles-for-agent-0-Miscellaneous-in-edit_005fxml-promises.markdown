@@ -30,7 +30,7 @@ editing hierarchical and structured XML datasets.
 **Example**:  
    
 
-```
+```cf3
 body build_xpath example(s)
   {
   build_xpath => "$(s)";
@@ -57,7 +57,7 @@ of such promises.
 **Example**:  
    
 
-```
+```cf3
 body select_xpath example(s)
 {
 select_xpath => "$(s)";

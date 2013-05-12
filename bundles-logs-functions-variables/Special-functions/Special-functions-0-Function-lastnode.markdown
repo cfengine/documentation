@@ -20,7 +20,7 @@ Extract the last of a separated string, e.g. filename from a path
 **Example**:  
    
 
-```
+```cf3
 bundle agent yes
 {
 vars:

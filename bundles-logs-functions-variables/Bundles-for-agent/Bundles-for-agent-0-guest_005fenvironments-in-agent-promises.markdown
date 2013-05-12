@@ -29,7 +29,7 @@ other machine.
 
   
 
-```
+```cf3
  site1::
 
   "unique_name1"
@@ -74,7 +74,7 @@ guest machine
 **Example**:  
    
 
-```
+```cf3
 guest_environments:
 
  linux::
@@ -114,7 +114,7 @@ This attribute is required.
 **Example**:  
    
 
-```
+```cf3
      
      body environment_interface vnet(primary)
      {
@@ -149,7 +149,7 @@ time.
 **Example**:  
    
 
-```
+```cf3
      body environment_interface vnet(primary)
      {
      env_name      => "$(this.promiser)";
@@ -180,7 +180,7 @@ identifier used as \`promiser' by the virtualization manager.
 **Example**:  
    
 
-```
+```cf3
      
      body environment_interface vnet(primary)
           {
@@ -211,7 +211,7 @@ identifier used as \`promiser' by the virtualization manager.
 **Example**:  
    
 
-```
+```cf3
      
      body environment_resources my_environment
      {
@@ -242,7 +242,7 @@ This attribute conflicts with `env_spec`.
 **Example**:  
    
 
-```
+```cf3
      
      body environment_resources my_environment
      {
@@ -273,7 +273,7 @@ environment (MB)
 **Example**:  
    
 
-```
+```cf3
      
      body environment_resources my_environment
      {
@@ -303,7 +303,7 @@ environment
 **Example**:  
    
 
-```
+```cf3
      
      env_baseline => "/path/to/image";
      
@@ -326,7 +326,7 @@ for the virtual instance
 **Example**:  
    
 
-```
+```cf3
      body environment_resources virt_xml(host)
      {
      env_spec => 
@@ -375,7 +375,7 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 **Allowed input range**:   
 
-```
+```cf3
                create
                delete
                running
@@ -388,7 +388,7 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 **Example**:  
    
 
-```
+```cf3
 guest_environments:
 
  linux::
@@ -436,7 +436,7 @@ The guest machine is shut down, but not deallocated.
 
 **Allowed input range**:   
 
-```
+```cf3
                xen
                kvm
                esx
@@ -456,7 +456,7 @@ The guest machine is shut down, but not deallocated.
 **Example**:  
    
 
-```
+```cf3
 bundle agent my_vm_cloud
 {
 guest_environments:

@@ -15,7 +15,7 @@ This context edit is used to access information about editing promises
 during their execution. It is context dependent and not universally
 meaningful or available. For example:
 
-```
+```cf3
 bundle agent testbundle
 {
 files:

@@ -18,7 +18,7 @@ Calculate whether all arguments evaluate to true
 **Example**:  
    
 
-```
+```cf3
 commands:
   "/usr/bin/generate_config $(config)"
     ifvarclass => and(not(fileexists("/etc/config/$(config)")), "generating_configs");

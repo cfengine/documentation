@@ -24,7 +24,7 @@ Convert a time relative to now to an integer system representation
 **Example**:  
    
 
-```
+```cf3
 bundle agent testbundle
 
 {

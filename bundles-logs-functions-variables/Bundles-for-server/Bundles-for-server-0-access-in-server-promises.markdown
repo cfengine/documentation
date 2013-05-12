@@ -30,7 +30,7 @@ first-come-first-served basis. Thus file objects (promisers) should be
 listed in order of most-specific file first. In this way, specific
 promises will override less specific ones.
 
-```
+```cf3
      
       access:
      
@@ -45,7 +45,7 @@ promises will override less specific ones.
 
 Example:
 
-```
+```cf3
 #########################################################
 # Server config
 #########################################################
@@ -133,7 +133,7 @@ objects
 **Example**:  
    
 
-```
+```cf3
 access:
 
   "/home/mark/LapTop"
@@ -164,7 +164,7 @@ objects
 **Example**:  
    
 
-```
+```cf3
 bundle server access_rules()
 
 {
@@ -199,7 +199,7 @@ read-privilege on the server
 **Example**:  
    
 
-```
+```cf3
 access:
 
  "/home"
@@ -232,7 +232,7 @@ files if the connecting user does not own the file on the server.
 
 **Allowed input range**:   
 
-```
+```cf3
                true
                false
                yes
@@ -249,7 +249,7 @@ conditional on the connection from the client being encrypted
 **Example**:  
    
 
-```
+```cf3
 access:
 
    "/path/file"
@@ -270,7 +270,7 @@ connection is encrypted.
 
 **Allowed input range**:   
 
-```
+```cf3
                path
                literal
                context
@@ -284,7 +284,7 @@ grants access to files)
 **Example**:  
    
 
-```
+```cf3
 
 bundle server access_rules()
 
@@ -351,7 +351,7 @@ host (which for some reason is not available directly through policy on
 the client, e.g. because they have different policies), then you could
 use the following construction:
 
-```
+```cf3
 access:
 
   "$(variable_name)"

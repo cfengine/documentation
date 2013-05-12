@@ -23,7 +23,7 @@ sets a non-empty array of backreferences named arg3
 **Example**:  
    
 
-```
+```cf3
 bundle agent testbundle
 {
 classes:
@@ -66,7 +66,7 @@ The name of an array which (if there are any back reference matches from
 the regular expression) will be populated with the values, in the
 manner:
 
-```
+```cf3
           $(identifier[0]) = entire string
           $(identifier[1]) = back reference 1, etc
 ```

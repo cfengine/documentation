@@ -21,7 +21,7 @@ balanced XML subtree.
 
   
 
-```
+```cf3
 bundle edit_xml example
   {
   delete_tree:

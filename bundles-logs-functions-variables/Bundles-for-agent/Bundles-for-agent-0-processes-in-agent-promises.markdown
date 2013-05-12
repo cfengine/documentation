@@ -29,7 +29,7 @@ However, the process pattern `"cp"` will also match a process containing
 `"scp"`, so take care not to oversimplify your patterns (the PCRE
 pattern anchors `"\b"` and `"\B"` may prove very useful to you).
 
-```
+```cf3
      
       processes:
      
@@ -46,7 +46,7 @@ command to restart a process. In CFEngine 3 there is instead a class to
 activate. You must then describe a `command` in that class to restart
 the process.
 
-```
+```cf3
 commands:
 
   restart_me::
@@ -68,7 +68,7 @@ CFEngine 2 and earlier.
 
   
 
-```
+```cf3
 bundle agent example
 {
 processes:
@@ -109,7 +109,7 @@ out_of_range_define => { "any_procs" };
 
 In CFEngine 3 we have
 
-```
+```cf3
       processes
       commands
 ```
@@ -126,14 +126,14 @@ kernel instantiation, a quite different object altogether. For example:
 -   A "PID" (which is not an executable) promises to be reminded of a
     signal, e.g.
 
-    ```
+    ```cf3
                   kill signal pid
     ```
 
 -   An "command" promises to start or stop itself with a parameterized
     specification.
 
-    ```
+    ```cf3
                   exec command argument1 argument2 ...
     ```
 
@@ -183,19 +183,19 @@ necessary.
 If you want to ensure that a service is running, check each in the agent
 control promises individually.
 
-```
+```cf3
 bundlesequence => { Update, Service("apache"), Service("nfsd") };
 ```
 
 or
 
-```
+```cf3
 bundlesequence => { Update, @(globals.all_services)  };
 ```
 
 The bundle for this can look like this:
 
-```
+```cf3
 bundle agent Service(service")
 {
 processes:
@@ -216,7 +216,7 @@ commands:
 
 An alternative would be self-contained:
 
-```
+```cf3
 bundle agent Service
 {
 vars:
@@ -271,7 +271,7 @@ out_of_range_define => "$(s)_up";
 **Example**:  
    
 
-```
+```cf3
      
      body process_count example
      {
@@ -299,7 +299,7 @@ process
 **Example**:  
    
 
-```
+```cf3
      
      body process_count example
      {
@@ -326,7 +326,7 @@ the promise is considered kept.
 **Example**:  
    
 
-```
+```cf3
      
      body process_count example(s)
      {
@@ -357,7 +357,7 @@ process
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      
@@ -388,7 +388,7 @@ the end of line.
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -414,7 +414,7 @@ process
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -440,7 +440,7 @@ process
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -466,7 +466,7 @@ a process
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -490,7 +490,7 @@ a process
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -520,7 +520,7 @@ of classes set by a process selection test
 **Example**:  
    
 
-```
+```cf3
      
      body process_select proc_finder(p)
      
@@ -553,7 +553,7 @@ process, in kilobytes
 **Example**:  
    
 
-```
+```cf3
      
      body process_select
      {
@@ -578,7 +578,7 @@ process, in kilobytes
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -604,7 +604,7 @@ have status fields.
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -632,7 +632,7 @@ process
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -657,7 +657,7 @@ This is total accumulated time for a process.
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -684,7 +684,7 @@ process
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -709,7 +709,7 @@ process, in kilobytes
 **Example**:  
    
 
-```
+```cf3
      
      body process_select example
      {
@@ -736,7 +736,7 @@ Size (Windows 2008), or VM Size (Windows XP).
 **Example**:  
    
 
-```
+```cf3
 processes:
 
  "snmpd"
@@ -763,7 +763,7 @@ running, so that a command: rule can be referred to restart the process
 **Example**:  
    
 
-```
+```cf3
 processes:
 
    "cf-serverd"
@@ -798,7 +798,7 @@ information.
 
 **Allowed input range**:   
 
-```
+```cf3
                hup
                int
                trap
@@ -822,7 +822,7 @@ a process
 **Example**:  
    
 
-```
+```cf3
 processes:
 
  cfservd_out_of_control::

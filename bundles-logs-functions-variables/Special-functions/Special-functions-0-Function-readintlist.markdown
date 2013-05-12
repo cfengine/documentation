@@ -25,7 +25,7 @@ Read and assign a list variable from a file of separated ints
 **Example**:  
    
 
-```
+```cf3
 
 body common control
 

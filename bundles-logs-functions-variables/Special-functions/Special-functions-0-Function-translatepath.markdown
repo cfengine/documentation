@@ -19,7 +19,7 @@ Translate path separators from Unix style to the host's native
 **Example**:  
    
 
-```
+```cf3
 body common control
 {
 bundlesequence => { "test" };

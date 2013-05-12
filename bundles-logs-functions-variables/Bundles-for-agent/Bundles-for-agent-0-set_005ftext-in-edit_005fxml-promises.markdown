@@ -20,7 +20,7 @@ promise object referred to is a literal string of text.
 
   
 
-```
+```cf3
 bundle edit_xml example
   {
   set_text:

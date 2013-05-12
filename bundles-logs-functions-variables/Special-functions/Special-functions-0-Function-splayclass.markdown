@@ -21,7 +21,7 @@ policy in arg2
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

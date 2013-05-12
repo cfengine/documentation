@@ -20,7 +20,7 @@ True if arg1 was accessed before arg2 (atime)
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {
@@ -51,7 +51,7 @@ reports:
 The function accesses the `atime` fields of a file and makes a
 comparison.
 
-```
+```cf3
      
       touch /tmp/reference
       touch /tmp/secretfile

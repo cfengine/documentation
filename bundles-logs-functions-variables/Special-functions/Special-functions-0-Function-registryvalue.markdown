@@ -20,7 +20,7 @@ Returns a value for an MS-Win registry key,value pair
 **Example**:  
    
 
-```
+```cf3
 bundle agent reg
 {
 vars:

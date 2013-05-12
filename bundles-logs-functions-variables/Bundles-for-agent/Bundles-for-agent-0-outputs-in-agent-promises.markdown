@@ -26,7 +26,7 @@ CFEngine output.
 
   
 
-```
+```cf3
 outputs:
 
   "run_agent";      # Promise handle, verbose (default) output
@@ -39,7 +39,7 @@ outputs:
 A very handy paradigm is to include outputs promises in every bundle,
 and guard them with classes. For example:
 
-```
+```cf3
 bundle agent some_function
 {
 vars:
@@ -80,7 +80,7 @@ version 3.4.0 (2012)
 
 **Allowed input range**:   
 
-```
+```cf3
                verbose
                debug
                inform
@@ -94,7 +94,7 @@ version 3.4.0 (2012)
 **Example**:  
    
 
-```
+```cf3
 commands:
 
   "/etc/init.d/agent start"
@@ -120,7 +120,7 @@ With no attribute, `verbose` output is assumed.
 
 **Allowed input range**:   
 
-```
+```cf3
                promise
                bundle
 ```
@@ -133,7 +133,7 @@ With no attribute, `verbose` output is assumed.
 **Example**:  
    
 
-```
+```cf3
 outputs:
 
   "web_server"

@@ -20,7 +20,7 @@ referred to is a literal string representation of a balanced XML tree.
 
   
 
-```
+```cf3
 bundle edit_xml example
   {
   insert_tree:

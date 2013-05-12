@@ -27,7 +27,7 @@ search.
 **Example**:  
    
 
-```
+```cf3
 classes:
 
    "found" expression => regldap(
@@ -44,7 +44,7 @@ classes:
 **Notes**:  
    
 
-```
+```cf3
      
      (class) regldap(uri,dn,filter,name,scope,regex,security)
      
@@ -79,7 +79,7 @@ scope
 Menu option, the type of ldap search, from the specified root. May take
 values:
 
-```
+```cf3
               subtree
               onelevel
               base
@@ -101,7 +101,7 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-```
+```cf3
                none
                ssl
                sasl

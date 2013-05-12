@@ -21,7 +21,7 @@ arbitrary key.
 
   
 
-```
+```cf3
 bundle agent example
 
 {     
@@ -66,7 +66,7 @@ reports:
 **Example**:  
    
 
-```
+```cf3
 vars:
 
  "xxx"    string => "Some literal string...";
@@ -92,7 +92,7 @@ CFEngine 3 lists are kept as an independent type.
 **Example**:  
    
 
-```
+```cf3
 vars:
 
  "scalar" int    => "16k";
@@ -154,7 +154,7 @@ The value inf may also be used to represent an unlimited positive value.
 **Example**:  
    
 
-```
+```cf3
 vars:
    
  "scalar" real   => "0.5";
@@ -182,7 +182,7 @@ useful for representing probabilities and performance data.
 **Example**:  
    
 
-```
+```cf3
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };
@@ -221,7 +221,7 @@ vars](#policy-in-vars)).
 **Example**:  
    
 
-```
+```cf3
 vars:
 
   "variable_id"
@@ -256,7 +256,7 @@ vars](#policy-in-vars)).
 **Example**:  
    
 
-```
+```cf3
 vars:
 
   "varid" rlist => { "0.1", "0.2", "0.3" };
@@ -283,7 +283,7 @@ vars](#policy-in-vars)).
 
 **Allowed input range**:   
 
-```
+```cf3
                free
                overridable
                constant
@@ -295,7 +295,7 @@ vars](#policy-in-vars)).
 **Example**:  
    
 
-```
+```cf3
 vars:
 
   "varid" string => "value...",
@@ -319,7 +319,7 @@ or undefined lists are dropped. The default behaviour is otherwise to
 retain this value as an indicator of the failure to quench the variable
 reference, for example:
 
-```
+```cf3
    
     "one" slist => { "1", "2", "3" };
 

@@ -20,7 +20,7 @@ Count the number of lines matching regex arg1 in file arg2
 **Example**:  
    
 
-```
+```cf3
 bundle agent example
 {     
 vars:

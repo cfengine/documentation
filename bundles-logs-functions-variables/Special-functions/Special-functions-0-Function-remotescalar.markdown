@@ -22,7 +22,7 @@ Read a scalar value from a remote cfengine server
 **Example**:  
    
 
-```
+```cf3
 vars:
 
  "remote" string => remotescalar("test_scalar","127.0.0.1","yes");
@@ -41,7 +41,7 @@ returned preferentially. If no such variable is found, then the server
 will look for a literal string in a server bundle with a handle that
 matches the requested object.
 
-```
+```cf3
 bundle server access
 {
 access:
@@ -61,7 +61,7 @@ needed to resolve the absence of a value can lead to undesirable
 behaviour. As a general rule, users are recommended to refrain from
 relying on the availability of network resources.
 
-```
+```cf3
      
      (string) remotescalar(resource handle,host/IP address,encrypt);
      
@@ -85,7 +85,7 @@ encrypt
 
 Whether to encrypt the connection to the server.
 
-```
+```cf3
                true
                yes
                false

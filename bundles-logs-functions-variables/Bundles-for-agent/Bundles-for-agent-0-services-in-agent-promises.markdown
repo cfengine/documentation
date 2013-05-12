@@ -40,7 +40,7 @@ passed to services that are started by CFEngine.
 
   
 
-```
+```cf3
 bundle agent example
 {
 services:
@@ -77,7 +77,7 @@ systems and are merely as a convenient front-end to `processes` and
 `commands`. If nothing else is specified, CFEngine looks for an special
 reserved agent bundle called
 
-```
+```cf3
 bundle agent standard_services(service,state)
 {
 ...
@@ -94,7 +94,7 @@ service bundle, so this is merely a front-end.
 
 The standard bundle can be replaced with another, as follows:
 
-```
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -154,7 +154,7 @@ variable is only defined for services promises.
 
 **Allowed input range**:   
 
-```
+```cf3
                start
                stop
                disable
@@ -167,7 +167,7 @@ variable is only defined for services promises.
 **Example**:  
    
 
-```
+```cf3
 services:
   
   "Telnet"
@@ -195,7 +195,7 @@ depends
 **Example**:  
    
 
-```
+```cf3
 services:
   
   "ftp"
@@ -234,7 +234,7 @@ list.
 **Example**:  
    
 
-```
+```cf3
      
      body service_method example
      {
@@ -260,7 +260,7 @@ optional.
 
 **Allowed input range**:   
 
-```
+```cf3
                     none
                     boot_time
                     on_demand
@@ -271,7 +271,7 @@ optional.
 **Example**:  
    
 
-```
+```cf3
      
      body service_method example
      {
@@ -302,7 +302,7 @@ inetd or xinetd on Unix.
 
 **Allowed input range**:   
 
-```
+```cf3
                     ignore
                     start_parent_services
                     stop_child_services
@@ -314,7 +314,7 @@ inetd or xinetd on Unix.
 **Example**:  
    
 
-```
+```cf3
      
      body service_method example
      {
@@ -353,7 +353,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 
 **Allowed input range**:   
 
-```
+```cf3
                     windows
                     generic
 ```
@@ -363,7 +363,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 **Example**:  
    
 
-```
+```cf3
      
      body service_method example
      {

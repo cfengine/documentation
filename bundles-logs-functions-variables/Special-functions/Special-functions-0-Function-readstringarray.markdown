@@ -28,7 +28,7 @@ variable
 **Example**:  
    
 
-```
+```cf3
 vars:
 
   "dim_array" 
@@ -81,7 +81,7 @@ Reads a two dimensional array from a file. One dimension is separated by
 the character specified in the argument, the other by the the lines in
 the file. The first field of the lines names the first array argument.
 
-```
+```cf3
      
      at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
      avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
@@ -95,7 +95,7 @@ the file. The first field of the lines names the first array argument.
 Results in a systematically indexed map of the file. Some samples are
 show below to illustrate the pattern.
 
-```
+```cf3
      ...
      array_name[daemon][0]   daemon
      array_name[daemon][1]   x

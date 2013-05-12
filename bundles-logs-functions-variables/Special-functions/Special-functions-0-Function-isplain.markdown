@@ -19,7 +19,7 @@ True if the named object is a plain/regular file
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

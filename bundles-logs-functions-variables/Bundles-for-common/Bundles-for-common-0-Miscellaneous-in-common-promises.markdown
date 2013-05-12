@@ -35,7 +35,7 @@ promises. The specific promise attributes are listed below.
 
 **Allowed input range**:   
 
-```
+```cf3
                     fix
                     warn
                     nop
@@ -48,7 +48,7 @@ promises. The specific promise attributes are listed below.
 
 The following example shows a simple use of transaction control:
 
-```
+```cf3
      
      body action warn_only {
      action_policy => "warn";
@@ -70,7 +70,7 @@ bundles, and that promises within these do not inherit action settings
 at higher levels. Thus, in the following example there are two levels of
 action setting:
 
-```
+```cf3
      ########################################################
      #
      # Warn if line matched
@@ -122,13 +122,13 @@ modelling of the file will only warn about changes rather than
 committing them to the memory model. This makes little difference to the
 end result, but it means that CFEngine will report
 
-```
+```cf3
           Need to delete line - ... - but only a warning was promised
 ```
 
 Instead of
 
-```
+```cf3
           Deleting the promised line ... Need to save file - but only a warning was promised
 ```
 
@@ -149,7 +149,7 @@ promise
 **Example**:  
    
 
-```
+```cf3
      
      #local
      
@@ -193,7 +193,7 @@ and retried
 **Example**:  
    
 
-```
+```cf3
      body action example
      {
      ifelapsed   => "120";  # 2 hours
@@ -219,7 +219,7 @@ verification leads to a repair
 **Example**:  
    
 
-```
+```cf3
           
           promise-type:
           
@@ -260,7 +260,7 @@ more mnemonic).
 
 **Allowed input range**:   
 
-```
+```cf3
                     inform
                     verbose
                     error
@@ -272,7 +272,7 @@ more mnemonic).
 **Example**:  
    
 
-```
+```cf3
      
      body action example
      {
@@ -305,7 +305,7 @@ will be saved, and if undefined it goes to the system logger
 **Example**:  
    
 
-```
+```cf3
      
      body action logme(x)
      {
@@ -352,7 +352,7 @@ the request.
 
 **Allowed input range**:   
 
-```
+```cf3
                     emergency
                     alert
                     critical
@@ -369,7 +369,7 @@ syslog server
 **Example**:  
    
 
-```
+```cf3
      body action low_priority
      {
      log_priority => "info";
@@ -393,7 +393,7 @@ will be saved, if undefined it goes to the system logger
 **Example**:  
    
 
-```
+```cf3
      
      bundle agent test
      {
@@ -457,7 +457,7 @@ will be saved, and if undefined it goes to the system logger
 **Example**:  
    
 
-```
+```cf3
      
      bundle agent test
      {
@@ -524,7 +524,7 @@ the request.
 **Example**:  
    
 
-```
+```cf3
      
      body action mydef
      {
@@ -554,7 +554,7 @@ logged unless the agent control body switched on track\_value = "true".
 **Example**:  
    
 
-```
+```cf3
      
      body action mydef
      {
@@ -585,7 +585,7 @@ keeping this promise
 **Example**:  
    
 
-```
+```cf3
      
      body action mydef
      {
@@ -610,7 +610,7 @@ logged unless the agent control body switched on track\_value = "true".
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -627,7 +627,7 @@ promise
 **Example**:  
    
 
-```
+```cf3
      
      body action example
      {
@@ -651,7 +651,7 @@ promise will be recorded in the audit database.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -667,7 +667,7 @@ promise will be recorded in the audit database.
 **Example**:  
    
 
-```
+```cf3
      
      body action example
      {
@@ -697,7 +697,7 @@ operations can not be performed in the background on windows.
 
 **Allowed input range**:   
 
-```
+```cf3
                     inform
                     verbose
                     error
@@ -711,7 +711,7 @@ operations can not be performed in the background on windows.
 **Example**:  
    
 
-```
+```cf3
      
      body action example
      {
@@ -743,7 +743,7 @@ this identifier
 **Example**:  
    
 
-```
+```cf3
      
      
      body action measure
@@ -761,7 +761,7 @@ current promise, and also give the measurement a name. The identifier
 forms a partial identity for optional performance scanning of promises
 of the form:
 
-```
+```cf3
           ID:promise-type:promiser.
 ```
 
@@ -781,7 +781,7 @@ of the form:
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -820,7 +820,7 @@ promises rather than \`overloading' a single one.
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -849,7 +849,7 @@ unnecessary to call a canonify function on such inputs.
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -877,7 +877,7 @@ so it is unnecessary to call a canonify function on such inputs.
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -903,7 +903,7 @@ resource.
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -942,7 +942,7 @@ promises rather than \`overloading' a single one.
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -975,7 +975,7 @@ repaired
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -1008,7 +1008,7 @@ kept for any reason
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -1041,7 +1041,7 @@ promise
 **Example**:  
    
 
-```
+```cf3
      bundle agent cmdtest
      {
      commands:
@@ -1098,7 +1098,7 @@ command-related promise
 **Example**:  
    
 
-```
+```cf3
      bundle agent cmdtest
      {
      commands:
@@ -1155,7 +1155,7 @@ promise
 **Example**:  
    
 
-```
+```cf3
      body common control
      {
      bundlesequence => { "cmdtest" };
@@ -1227,7 +1227,7 @@ active
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -1249,7 +1249,7 @@ agent is not running.
 
 **Allowed input range**:   
 
-```
+```cf3
                     absolute
                     reset
 ```
@@ -1262,7 +1262,7 @@ rediscovered
 **Example**:  
    
 
-```
+```cf3
      
      body classes example
      {
@@ -1290,7 +1290,7 @@ is useful.
 **Example**:  
    
 
-```
+```cf3
 comment => "This comment follows the data for reference ...",
 ```
 
@@ -1312,7 +1312,7 @@ depends on somehow
 **Example**:  
    
 
-```
+```cf3
 body common control
 {
 bundlesequence => { "one"  };
@@ -1362,7 +1362,7 @@ elsewhere
 **Example**:  
    
 
-```
+```cf3
 access:
 
   "/source"
@@ -1402,7 +1402,7 @@ rather than its content.
 
 The generic example has the form:
 
-```
+```cf3
      
      promise-type:
      
@@ -1414,7 +1414,7 @@ The generic example has the form:
 
 A specific example would be:
 
-```
+```cf3
 bundle agent example
 
 {     
@@ -1447,7 +1447,7 @@ variable classes.
 This function is provided so that one can form expressions that link
 variables and classes. For example:
 
-```
+```cf3
 # Check that all components are running
 
 vars:
@@ -1480,7 +1480,7 @@ the same algorithm that CFEngine uses.
 **Example**:  
    
 
-```
+```cf3
 files:
 
   "/etc/special_file"

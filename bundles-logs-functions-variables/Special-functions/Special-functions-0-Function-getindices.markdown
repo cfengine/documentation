@@ -21,7 +21,7 @@ variable
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

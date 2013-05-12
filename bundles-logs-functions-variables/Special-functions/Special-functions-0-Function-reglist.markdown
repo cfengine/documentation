@@ -22,7 +22,7 @@ whose id is arg1
 **Example**:  
    
 
-```
+```cf3
 vars:
 
  "nameservers" slist => {

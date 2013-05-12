@@ -12,7 +12,7 @@ tags: [Logs-and-records,State-information]
 The CFEngine components keep their current process identifier number in
 \`pid files' in the work directory. For example:
 
-```
+```cf3
 cf-execd.pid
 cf-serverd.pid
 ```

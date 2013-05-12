@@ -19,7 +19,7 @@ Return the integer group id of the named group on this host
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

@@ -23,7 +23,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). Then a
 sub-fields, along with policies for editing these fields, ordering the
 items within them.
 
-```
+```cf3
      
      field_edits:
      
@@ -35,7 +35,7 @@ items within them.
 
   
 
-```
+```cf3
 bundle agent example
 
 {
@@ -110,7 +110,7 @@ and removing data from addressable fields. The passwd and group files
 are classic examples of tabular files, but there are many ways to use
 this feature. For example, editing a string:
 
-```
+```cf3
 VARIABLE="one two three"
 ```
 
@@ -129,7 +129,7 @@ given by the space.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -145,7 +145,7 @@ given by the space.
 **Example**:  
    
 
-```
+```cf3
      
      body edit_field example
      {
@@ -169,7 +169,7 @@ number of field separators.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -186,7 +186,7 @@ complete edit
 **Example**:  
    
 
-```
+```cf3
      
      body edit_field example
      {
@@ -210,7 +210,7 @@ depending in this setting. If in doubt, set this to true.
 
 **Allowed input range**:   
 
-```
+```cf3
                     prepend
                     append
                     alphanum
@@ -225,7 +225,7 @@ depending in this setting. If in doubt, set this to true.
 **Example**:  
    
 
-```
+```cf3
      
      body edit_field example
      {
@@ -271,7 +271,7 @@ field/column
 **Example**:  
    
 
-```
+```cf3
      
      body edit_field example
      {
@@ -298,7 +298,7 @@ edit all kinds of line-based text files.
 **Example**:  
    
 
-```
+```cf3
      
      body edit_field example(s)
      {
@@ -325,7 +325,7 @@ from 1)
 **Example**:  
    
 
-```
+```cf3
      
      body field_edits example
      {
@@ -344,7 +344,7 @@ Numbering starts from 1 (not from 0).
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -358,7 +358,7 @@ Numbering starts from 1 (not from 0).
 **Example**:  
    
 
-```
+```cf3
      
      body edit_field col(split,col,newval,method)
      
@@ -400,7 +400,7 @@ field
 **Example**:  
    
 
-```
+```cf3
      
      body field_edit example
      {

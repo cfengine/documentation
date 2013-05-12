@@ -21,7 +21,7 @@ attribute to be deleted.
 
   
 
-```
+```cf3
 bundle edit_xml example
   {
   delete_attribute:

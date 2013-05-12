@@ -21,7 +21,7 @@ literal string of text.
 
   
 
-```
+```cf3
 bundle edit_xml example
   {
   insert_text:

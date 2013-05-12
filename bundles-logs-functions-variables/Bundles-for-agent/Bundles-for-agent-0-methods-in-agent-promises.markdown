@@ -19,7 +19,7 @@ objects that are affected by the promise-bundle. Since the use of these
 identifiers is for the future, you can simply use any string here for
 the time being.
 
-```
+```cf3
      
       methods:
      
@@ -38,7 +38,7 @@ inline.
 
   
 
-```
+```cf3
 
 bundle agent example
 {
@@ -88,7 +88,7 @@ Care should be exercised when using this approach. In order to make the
 function call uniquely classified, CFEngine requires the promiser to
 contain the variable name of the method if the variable is a list.
 
-```
+```cf3
 bundle agent default
 {
 vars:
@@ -112,7 +112,7 @@ methods:
 
 **Allowed input range**:   
 
-```
+```cf3
                true
                false
                yes
@@ -129,7 +129,7 @@ classes of its parent
 **Example**:  
    
 
-```
+```cf3
 bundle agent name
 {
 methods:
@@ -173,7 +173,7 @@ result/return value from the child
 **Example**:  
    
 
-```
+```cf3
 body common control
 {
 bundlesequence => { "test" };

@@ -19,7 +19,7 @@ True if the named object is a symbolic link
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

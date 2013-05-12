@@ -19,7 +19,7 @@ identity, assumed netmask and routing policy in the case of multi-homed
 hosts. For virtual machines and hosts, the list of interfaces can be
 quite large.
 
-```
+```cf3
      
       interfaces:
      
@@ -55,7 +55,7 @@ For future use.
 **Example**:  
    
 
-```
+```cf3
      
      body tcp_ip example
      {
@@ -82,7 +82,7 @@ services like DHCP.
 **Example**:  
    
 
-```
+```cf3
      
      body tcp_ip example
      {
@@ -108,7 +108,7 @@ this offers and \`old style' alternative.
 **Example**:  
    
 
-```
+```cf3
      
        "eth0"
      

@@ -19,7 +19,7 @@ True if group or numerical id exists on this host
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

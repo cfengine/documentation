@@ -13,7 +13,7 @@ tags: [Bundles-for-agent,storage-in-agent-promises]
 
 Storage promises refer to disks and filesystem properties.
 
-```
+```cf3
      
       storage:
      
@@ -31,7 +31,7 @@ these models can reconstruct them from the low-level tools.
 
   
 
-```
+```cf3
 bundle agent storage
 
 {
@@ -78,7 +78,7 @@ edit_fstab => "true";
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -95,7 +95,7 @@ edit_fstab => "true";
 **Example**:  
    
 
-```
+```cf3
      
      body mount example
      {
@@ -115,7 +115,7 @@ The default behaviour is to not place edits in the file system table.
 
 **Allowed input range**:   
 
-```
+```cf3
                     nfs
                     nfs2
                     nfs3
@@ -127,7 +127,7 @@ The default behaviour is to not place edits in the file system table.
 **Example**:  
    
 
-```
+```cf3
      
      body mount example
      {
@@ -152,7 +152,7 @@ This field is mainly for future extensions.
 **Example**:  
    
 
-```
+```cf3
      
      body mount example
      {
@@ -177,7 +177,7 @@ This is the location on the remote device, server, SAN etc.
 **Example**:  
    
 
-```
+```cf3
      
      body mount example
      {
@@ -203,7 +203,7 @@ Hostname or IP address, this could be on a SAN.
 **Example**:  
    
 
-```
+```cf3
      body mount example
      {
      mount_options => { "rw", "acls" };
@@ -223,7 +223,7 @@ options must be legal options for the system mount commands.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -239,7 +239,7 @@ options must be legal options for the system mount commands.
 **Example**:  
    
 
-```
+```cf3
      
      body mount example
      {
@@ -261,7 +261,7 @@ options must be legal options for the system mount commands.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -278,7 +278,7 @@ system on this host
 **Example**:  
    
 
-```
+```cf3
      
      body volume example
      
@@ -309,7 +309,7 @@ available before warning
 **Example**:  
    
 
-```
+```cf3
      
      body volume example1
      {
@@ -345,7 +345,7 @@ sensible-looking storage device
 **Example**:  
    
 
-```
+```cf3
      
      body volume example
      {
@@ -357,7 +357,7 @@ sensible-looking storage device
 **Notes**:  
    
 
-```
+```cf3
      
      body volume control
      {
@@ -380,7 +380,7 @@ sensible-looking storage device
 **Example**:  
    
 
-```
+```cf3
      
      body volume example
      {
@@ -401,7 +401,7 @@ the agent has privileges on volumes being checked.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -418,7 +418,7 @@ distribution
 **Example**:  
    
 
-```
+```cf3
      
      body volume example
      {

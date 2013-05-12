@@ -21,7 +21,7 @@ Join the items of arg2 into a string, using the conjunction in arg1
 **Example**:  
    
 
-```
+```cf3
 bundle agent test
 
 {

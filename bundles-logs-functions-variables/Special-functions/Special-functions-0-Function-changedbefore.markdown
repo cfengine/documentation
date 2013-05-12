@@ -20,7 +20,7 @@ True if arg1 was changed before arg2 (ctime)
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

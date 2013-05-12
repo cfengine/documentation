@@ -24,7 +24,7 @@ Note: The words class and context are sometimes used interchangeably.
 
   
 
-```
+```cf3
 bundle common g
 {
 classes:
@@ -60,7 +60,7 @@ side match, then the class on the left-hand side is defined.
 **Example**:  
    
 
-```
+```cf3
 classes:
 
   "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
@@ -81,7 +81,7 @@ strategy in CFEngine 2.
 **Example**:  
    
 
-```
+```cf3
 classes:
 
   "my_dist"  
@@ -93,7 +93,7 @@ Referring to the the sum of `10+20+40+50 = 120` in the example above,
 when generating the distribution, CFEngine picks a number between
 `1-120`. This will generate the following classes:
 
-```
+```cf3
      my_dist    (always)
      my_dist_10 (10/120 of the time)
      my_dist_20 (20/120 of the time)
@@ -114,7 +114,7 @@ A way of aliasing class combinations.
 **Example**:  
    
 
-```
+```cf3
 classes:
 
   "class_name" expression => "solaris|(linux.specialclass)";
@@ -136,7 +136,7 @@ construction for writing expressions that contain special functions.
 **Example**:  
    
 
-```
+```cf3
 classes:
 
     "compound_test" 
@@ -161,7 +161,7 @@ from a non-standard naming facility.
 **Example**:  
    
 
-```
+```cf3
 bundle common setclasses
 {
 classes:
@@ -180,7 +180,7 @@ classes:
 For example, to create a conditional inclusion of costly class
 definitions, put them into a separate bundle in a file classes.cf.
 
-```
+```cf3
 # promises.cf
 
 body common control 
@@ -211,7 +211,7 @@ reports:
 
 Then create classes.cf
 
-```
+```cf3
 # classes.cf
 
 bundle common setclasses
@@ -244,7 +244,7 @@ on the right-hand side is false.
 **Example**:  
    
 
-```
+```cf3
 classes:
 
    "others"  not => "linux|solaris";
@@ -275,7 +275,7 @@ that hosts will always end up in the same class every time.
 **Example**:  
    
 
-```
+```cf3
 bundle common g
 {
 classes:
@@ -306,7 +306,7 @@ right-hand side matches.
 **Example**:  
    
 
-```
+```cf3
 classes:
 
  "another_global" xor => { "any", "linux", "solaris"};

@@ -20,7 +20,7 @@ Return the product of a list of reals
 **Example**:  
    
 
-```
+```cf3
 bundle agent test
 {
 vars:

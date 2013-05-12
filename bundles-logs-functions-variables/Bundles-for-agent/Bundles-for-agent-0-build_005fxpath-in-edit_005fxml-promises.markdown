@@ -24,7 +24,7 @@ XPath.
 
   
 
-```
+```cf3
 bundle edit_xml example
   {
   build_xpath:

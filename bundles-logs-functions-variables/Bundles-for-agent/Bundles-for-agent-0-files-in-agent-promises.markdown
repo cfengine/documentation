@@ -14,7 +14,7 @@ tags: [Bundles-for-agent,files-in-agent-promises]
 Files promises are an umbrella for attributes of files. Operations fall
 basically into three categories: create, delete and edit.
 
-```
+```cf3
      
       files:
      
@@ -35,7 +35,7 @@ There is a natural ordering in file processing that obviates the need
 for the actionsequence. For example, the trick of using multiple
 actionsequence items with different classes.
 
-```
+```cf3
  actionsequence = ( ... files.one  ..  files.two )
 ```
 
@@ -73,7 +73,7 @@ See: \`File editing in CFEngine 3'
 
 The pseudo-code for this logic is shown in the diagram and below:
 
-```
+```cf3
  for each file promise-object
     {
     if (depth_search) 
@@ -122,7 +122,7 @@ Recursion is now called "depth-search". In addition, it was possible to
 specify wildcards in the base-path for this search. CFEngine 3 replaces
 the \`globbing' symbols with standard regular expressions:
 
-```
+```cf3
       CFEngine 2               CFEngine 3
 
 /one/*/two/thr*/four    /one/.*/two/thr.*/four
@@ -199,7 +199,7 @@ two examples, which assumethat there first exist files named /tmp/gar,
 /tmp/garbage and /tmp/garden. Initially, the two promises look like they
 should do the same thing; but there is a subtle difference:
 
-```
+```cf3
 bundle agent foobaz           bundle agent foobaz
 {                   {
 files:                  files:
@@ -278,7 +278,7 @@ external attributes.
 
 A typical file editing stanza has the elements in the following example:
 
-```
+```cf3
 ######################################################################
 #
 # File editing
@@ -419,7 +419,7 @@ Community Edition only reports that changes were found, but Enterprise
 versions of CFEngine can also report on what exactly the significant
 changes were.
 
-```
+```cf3
 bundle agent example
 {
 files:
@@ -480,7 +480,7 @@ update         => "yes";
 **Example**:  
    
 
-```
+```cf3
      
      body acl template
      
@@ -506,7 +506,7 @@ POSIX ACL are available in CFEngine Community starting with 3.4.0. NTFS
 ACL are available with CFEngine Nova or above. Form of the permissions
 is:
 
-```
+```cf3
                 aces = {
                         "user:uid:mode[:perm_type]", ...,
                         "group:gid:mode[:perm_type]", ...,
@@ -595,7 +595,7 @@ having `x` on its containing directory is sufficient.
 
 **Allowed input range**:   
 
-```
+```cf3
                     nochange
                     parent
                     specify
@@ -607,7 +607,7 @@ having `x` on its containing directory is sufficient.
 **Example**:  
    
 
-```
+```cf3
      
      body acl template
      
@@ -647,7 +647,7 @@ the same access ACL as the directory.
 
 **Allowed input range**:   
 
-```
+```cf3
                     append
                     overwrite
 ```
@@ -657,7 +657,7 @@ the same access ACL as the directory.
 **Example**:  
    
 
-```
+```cf3
      
      body acl template
      
@@ -688,7 +688,7 @@ example, owning user, group and all in POSIX ACLs.
 
 **Allowed input range**:   
 
-```
+```cf3
                     generic
                     posix
                     ntfs
@@ -699,7 +699,7 @@ example, owning user, group and all in POSIX ACLs.
 **Example**:  
    
 
-```
+```cf3
      
      body acl template
      
@@ -734,7 +734,7 @@ target platform. Currently, the supported values are `posix` and `ntfs`.
 **Example**:  
    
 
-```
+```cf3
      body acl template
      {
      specify_inherit_aces => {  "all:r" };
@@ -763,7 +763,7 @@ that do not have a clear inheritance policy.
 
 **Allowed input range**:   
 
-```
+```cf3
                     md5
                     sha1
                     sha224
@@ -778,7 +778,7 @@ that do not have a clear inheritance policy.
 **Example**:  
    
 
-```
+```cf3
      
      body changes example
      {
@@ -799,7 +799,7 @@ known in the OpenSSL library.
 
 **Allowed input range**:   
 
-```
+```cf3
                     all
                     stats
                     content
@@ -811,7 +811,7 @@ known in the OpenSSL library.
 **Example**:  
    
 
-```
+```cf3
      
      body changes example
      {
@@ -832,7 +832,7 @@ attributes. If all is chosen all attributes are checked.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -846,7 +846,7 @@ attributes. If all is chosen all attributes are checked.
 **Example**:  
    
 
-```
+```cf3
      
      body changes example
      {
@@ -868,7 +868,7 @@ change. This applies to addition and removal too.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -883,7 +883,7 @@ individual text files
 **Example**:  
    
 
-```
+```cf3
      
      body changes example
      {
@@ -924,7 +924,7 @@ the system.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -956,7 +956,7 @@ For remote copies this refers to the file name on the remote server.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -977,7 +977,7 @@ The servers are tried in order until one of them succeeds.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -992,7 +992,7 @@ directory during copy
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from mycopy(from,server)
      
@@ -1021,7 +1021,7 @@ itself; in other words, a single destination directory.
 
 **Allowed input range**:   
 
-```
+```cf3
                     atime
                     mtime
                     ctime
@@ -1039,7 +1039,7 @@ attributes
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      
@@ -1090,7 +1090,7 @@ The different options are:
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     timestamp
@@ -1103,7 +1103,7 @@ The different options are:
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1129,7 +1129,7 @@ See: [default\_repository](#default_005frepository-in-agent) and
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1146,7 +1146,7 @@ host
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1169,7 +1169,7 @@ public/private keys for the client and server hosts.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1184,7 +1184,7 @@ depth\_search
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1213,7 +1213,7 @@ instead of linked
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1242,7 +1242,7 @@ links, this feature is not available there.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1263,7 +1263,7 @@ as a comma separated numbers.
 
 **Allowed input range**:   
 
-```
+```cf3
                     MacOSX
 ```
 
@@ -1272,7 +1272,7 @@ as a comma separated numbers.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1298,7 +1298,7 @@ with symbolic links
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from mycopy(from)
      
@@ -1323,7 +1323,7 @@ See: `link_type`.
 
 **Allowed input range**:   
 
-```
+```cf3
                     symlink
                     hardlink
                     relative
@@ -1337,7 +1337,7 @@ See: `link_type`.
 **Example**:  
    
 
-```
+```cf3
      
      body link_from example
      {
@@ -1368,7 +1368,7 @@ are mutually exclusive.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1384,7 +1384,7 @@ are mutually exclusive.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1408,7 +1408,7 @@ system will be disturbed by network disruptions.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1424,7 +1424,7 @@ system will be disturbed by network disruptions.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1450,7 +1450,7 @@ mis-configured setup.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1472,7 +1472,7 @@ could change in the future.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1489,7 +1489,7 @@ file
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1512,7 +1512,7 @@ source. This also applies to remote copies.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1529,7 +1529,7 @@ on server when a depth\_search is used
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1556,7 +1556,7 @@ file copying if `copy_backup` is set to true.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1572,7 +1572,7 @@ file copying if `copy_backup` is set to true.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1597,7 +1597,7 @@ Preserves file access and modification times on the promiser files.
 **Example**:  
    
 
-```
+```cf3
      
      body runagent control
      {
@@ -1617,7 +1617,7 @@ Timeout in seconds.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1634,7 +1634,7 @@ previously unknown
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1668,7 +1668,7 @@ WORKDIR/ppkeys.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1683,7 +1683,7 @@ match
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1705,7 +1705,7 @@ switched off.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1722,7 +1722,7 @@ switched off.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -1743,7 +1743,7 @@ file transfers.
 
 **Allowed input range**:   
 
-```
+```cf3
                true
                false
                yes
@@ -1759,7 +1759,7 @@ file transfers.
 **Example**:  
    
 
-```
+```cf3
 files:
 
   "/path/plain_file"
@@ -1802,7 +1802,7 @@ operations).
 
 **Allowed input range**:   
 
-```
+```cf3
                     delete
                     tidy
                     keep
@@ -1814,7 +1814,7 @@ directories during deletion
 **Example**:  
    
 
-```
+```cf3
      
      body delete example
      {
@@ -1850,7 +1850,7 @@ are **not** deleted.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1865,7 +1865,7 @@ recursive deletion
 **Example**:  
    
 
-```
+```cf3
      
      body delete example
      {
@@ -1882,7 +1882,7 @@ deletions. In CFEngine 2 there was an option to delete the parent of the
 search. In CFEngine 3 you must code a separate promise to delete the
 single parent object.
 
-```
+```cf3
      
      bundle agent cleanup
      {
@@ -1940,7 +1940,7 @@ present. If there is no `delete` body then files (and directories) are
 **Example**:  
    
 
-```
+```cf3
      
      body depth_search example
      {
@@ -1971,7 +1971,7 @@ search
 **Example**:  
    
 
-```
+```cf3
      
      body depth_search
      {
@@ -1993,7 +1993,7 @@ a file system.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -2008,7 +2008,7 @@ results
 **Example**:  
    
 
-```
+```cf3
      
      body depth_search example
      {
@@ -2038,7 +2038,7 @@ search
 **Example**:  
    
 
-```
+```cf3
      
      body depth_search example
      {
@@ -2058,7 +2058,7 @@ This is the complement of `exclude_dirs`.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -2074,7 +2074,7 @@ This is the complement of `exclude_dirs`.
 **Example**:  
    
 
-```
+```cf3
      
      body depth_search example
      {
@@ -2095,7 +2095,7 @@ exist should be deleted; or kept if set to false.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -2111,7 +2111,7 @@ exist should be deleted; or kept if set to false.
 **Example**:  
    
 
-```
+```cf3
      
      body depth_search example
      {
@@ -2133,7 +2133,7 @@ dangerous assumption and links are not traversed.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -2150,7 +2150,7 @@ devices
 **Example**:  
    
 
-```
+```cf3
      
      body depth_search example
      {
@@ -2172,7 +2172,7 @@ devices
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     timestamp
@@ -2186,7 +2186,7 @@ devices
 **Example**:  
    
 
-```
+```cf3
      
      body edit_defaults example
      {
@@ -2205,7 +2205,7 @@ devices
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -2222,7 +2222,7 @@ commencing promised edits
 **Example**:  
    
 
-```
+```cf3
      
      body edit_defaults example
      {
@@ -2243,7 +2243,7 @@ recipe allows an ordered procedure to be convergent.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -2258,7 +2258,7 @@ classes of its parent
 **Example**:  
    
 
-```
+```cf3
      bundle agent name
      {
      methods:
@@ -2299,7 +2299,7 @@ reference using its bundle name. For example, \$(bundle.variable).
 **Example**:  
    
 
-```
+```cf3
      
      body edit_defaults example
      {
@@ -2325,7 +2325,7 @@ See: [editfilesize in agent](#editfilesize-in-agent)
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -2342,7 +2342,7 @@ limit
 **Example**:  
    
 
-```
+```cf3
      files:
      
        "/tmp/test_insert"
@@ -2382,7 +2382,7 @@ strategy is selected. Defaults to 1
 **Example**:  
    
 
-```
+```cf3
      
      body rename example
      {
@@ -2425,7 +2425,7 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example**:  
    
 
-```
+```cf3
 #This is a template file /templates/input.tmpl
 
 These lines apply to anyone
@@ -2448,7 +2448,7 @@ nameserver $(some.list)
 
 For example:
 
-```
+```cf3
 [%CFEngine any:: %]
 VirtualHost $(sys.ipv4[eth0]):80>
         ServerAdmin             $(stage_file.params[apache_mail_address][1])
@@ -2489,7 +2489,7 @@ The template format uses inline tags to mark regions and classes. Each
 line represents an `insert_lines` promise, unless the promises are
 grouped into a block using:
 
-```
+```cf3
 [%CFEngine BEGIN %]
 ...
 [%CFEngine END %]
@@ -2501,7 +2501,7 @@ lists are expanded (see the Special Topics Guide on editing).
 
 If a class-context modified is used:
 
-```
+```cf3
 [%CFEngine class-expression:: %]
 ```
 
@@ -2527,7 +2527,7 @@ agent's current context. This allows conditional insertion.
 **Example**:  
    
 
-```
+```cf3
      
      body file_select example
      {
@@ -2553,7 +2553,7 @@ This pattern matches only the node name of the file, not its path.
 **Example**:  
    
 
-```
+```cf3
      
      body file_select example
      {
@@ -2582,7 +2582,7 @@ of appropriate regular expressions.
 **Example**:  
    
 
-```
+```cf3
      
      #######################################################
      #
@@ -2653,7 +2653,7 @@ implies `u` AND `g`.
 **Example**:  
    
 
-```
+```cf3
      
      body file_select example
      {
@@ -2679,7 +2679,7 @@ regexes to match
 **Example**:  
    
 
-```
+```cf3
      
      body file_select example
      {
@@ -2709,7 +2709,7 @@ regexes to match
 **Example**:  
    
 
-```
+```cf3
      
      body file_select example
      {
@@ -2739,7 +2739,7 @@ Windows, files do not have group associations.
 **Example**:  
    
 
-```
+```cf3
      
      body file_select xyz
      {
@@ -2765,7 +2765,7 @@ CFEngine). See the manual page for `chflags` for more details.
 **Example**:  
    
 
-```
+```cf3
      
      body files_select example
      {
@@ -2793,7 +2793,7 @@ time.
 **Example**:  
    
 
-```
+```cf3
      
      body files_select example
      
@@ -2822,7 +2822,7 @@ not other attributes, such as permissions.
 **Example**:  
    
 
-```
+```cf3
      body file_select used_recently
      {
      
@@ -2860,7 +2860,7 @@ line returned by the command
 **Example**:  
    
 
-```
+```cf3
      
      body file_select example
      {
@@ -2892,7 +2892,7 @@ status is zero
 **Example**:  
    
 
-```
+```cf3
      
      body file_select example
      {
@@ -2915,7 +2915,7 @@ matched.
 
 **Allowed input range**:   
 
-```
+```cf3
                     plain
                     reg
                     symlink
@@ -2932,7 +2932,7 @@ matched.
 **Example**:  
    
 
-```
+```cf3
      
      body file_select filter
      {
@@ -2961,7 +2961,7 @@ plain. In both cases this means not one of the "special" file types.
 **Example**:  
    
 
-```
+```cf3
      
      body file_select example
      {
@@ -2991,7 +2991,7 @@ search criteria
 **Example**:  
    
 
-```
+```cf3
      
      body file_select year_or_less
      
@@ -3059,7 +3059,7 @@ instead of linked
 **Example**:  
    
 
-```
+```cf3
      
      body link_from example
      {
@@ -3083,7 +3083,7 @@ updated by modification time.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -3100,7 +3100,7 @@ source originals
 **Example**:  
    
 
-```
+```cf3
      
      body link_from example
      {
@@ -3121,7 +3121,7 @@ them to the source.
 
 **Allowed input range**:   
 
-```
+```cf3
                     symlink
                     hardlink
                     relative
@@ -3135,7 +3135,7 @@ them to the source.
 **Example**:  
    
 
-```
+```cf3
      
      body link_from example
      {
@@ -3172,7 +3172,7 @@ are mutually exclusive.
 **Example**:  
    
 
-```
+```cf3
      
      body copy_from example
      {
@@ -3199,7 +3199,7 @@ For remote copies this refers to the file name on the remote server.
 
 **Allowed input range**:   
 
-```
+```cf3
                     override_file
                     if_no_such_file
 ```
@@ -3210,7 +3210,7 @@ directories of children
 **Example**:  
    
 
-```
+```cf3
      
      body link_from example
      {
@@ -3236,7 +3236,7 @@ certain fields overridden.
 
 **Allowed input range**:   
 
-```
+```cf3
                     force
                     delete
                     nop
@@ -3249,7 +3249,7 @@ certain fields overridden.
 **Example**:  
    
 
-```
+```cf3
      
      body link_from example
      {
@@ -3272,7 +3272,7 @@ or do nothing.
 
 **Allowed input range**:   
 
-```
+```cf3
                true
                false
                yes
@@ -3289,7 +3289,7 @@ creation
 **Example**:  
    
 
-```
+```cf3
 files:
 
   "/tmp/testcopy" 
@@ -3323,7 +3323,7 @@ link, if the behaviour is different.
 
 **Allowed input range**:   
 
-```
+```cf3
                literal
                regex
                guess
@@ -3334,7 +3334,7 @@ link, if the behaviour is different.
 **Example**:  
    
 
-```
+```cf3
 files:
 
    "/var/lib\d"
@@ -3400,7 +3400,7 @@ more information.
 **Example**:  
    
 
-```
+```cf3
      
      body perms example
      
@@ -3430,7 +3430,7 @@ target
 **Example**:  
    
 
-```
+```cf3
      body perms example
      {
      groups => { "users", "administrators" };
@@ -3460,7 +3460,7 @@ ACLs may be used in place for this.
 **Example**:  
    
 
-```
+```cf3
      
      body perms example
      {
@@ -3488,7 +3488,7 @@ target
 **Example**:  
    
 
-```
+```cf3
      
      body perms example
      {
@@ -3516,7 +3516,7 @@ on Windows (such as the Administrators group).
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -3531,7 +3531,7 @@ is set
 **Example**:  
    
 
-```
+```cf3
      
      body perms rxdirs
      {
@@ -3557,7 +3557,7 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -3573,7 +3573,7 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
 **Example**:  
    
 
-```
+```cf3
      
      body rename example
      {
@@ -3601,7 +3601,7 @@ unreadable.
 **Example**:  
    
 
-```
+```cf3
      
      body rename example
      {
@@ -3627,7 +3627,7 @@ remove the executable flag.
 **Example**:  
    
 
-```
+```cf3
      
      body rename example
      {
@@ -3654,7 +3654,7 @@ default value is .cf-disabled.
 **Example**:  
    
 
-```
+```cf3
      
      body rename example(s)
      {
@@ -3678,7 +3678,7 @@ default value is .cf-disabled.
 **Example**:  
    
 
-```
+```cf3
      
      body rename example
      {
@@ -3717,7 +3717,7 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example**:  
    
 
-```
+```cf3
 files:
 
  "/path/file"
@@ -3745,7 +3745,7 @@ ordinarily be stored in an alternative repository as
 
 **Allowed input range**:   
 
-```
+```cf3
                true
                false
                yes
@@ -3759,7 +3759,7 @@ ordinarily be stored in an alternative repository as
 **Example**:  
    
 
-```
+```cf3
 files:
 
  "/path/file"
@@ -3782,7 +3782,7 @@ files:
 **Example**:  
    
 
-```
+```cf3
 files:
   "/home/mark/tmp/testcopy"
 
@@ -3791,7 +3791,7 @@ files:
     depth_search => recurse("inf");
 ```
 
-```
+```cf3
  classes:
     "do_update" expression => isnewerthan("/etc/postfix/alias",
                                           "/etc/postfix/alias.cdb");
@@ -3828,7 +3828,7 @@ Note also that if you use the `$(this.promiser)` variable or other
 variable in this command, and the file object contains spaces, then you
 should quote the variable. For example:
 
-```
+```cf3
     transformer => "/usr/bin/gzip \"$(this.promiser)\"",
 ```
 
@@ -3836,7 +3836,7 @@ Note also that the transformer does not actually need to change the
 file. You can, for example, simply report on the existence of files
 with:
 
-```
+```cf3
     transformer => "/bin/echo I found a file named $(this.promiser)",
 ```
 

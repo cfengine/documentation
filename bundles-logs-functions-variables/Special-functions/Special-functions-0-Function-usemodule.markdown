@@ -20,7 +20,7 @@ Execute cfengine module script and set class if successful
 **Example**:  
    
 
-```
+```cf3
 body common control
    {
    any::

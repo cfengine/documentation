@@ -24,7 +24,7 @@ Connect to tcp port, send string and assign result to variable
 **Example**:  
    
 
-```
+```cf3
 bundle agent example
 
 {     

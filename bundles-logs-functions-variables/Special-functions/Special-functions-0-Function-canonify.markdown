@@ -20,7 +20,7 @@ Convert an arbitrary string into a legal class name
 **Example**:  
    
 
-```
+```cf3
 commands:
 
    "/var/cfengine/bin/$(component)"

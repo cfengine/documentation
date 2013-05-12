@@ -23,7 +23,7 @@ Return a list of files in a directory matching a regular expression
 **Example**:  
    
 
-```
+```cf3
 vars:
   "listfiles" slist => lsdir("/etc", "(passwd|shadow).*", "true");
 ```

@@ -14,7 +14,7 @@ tags: [Bundles-for-agent,replace_005fpatterns-in-edit_005fline-promises]
 This promise refers to arbitrary text patterns in a file. The pattern is
 expressed as a PCRE regular expression.
 
-```
+```cf3
      
        replace_patterns:
      
@@ -27,7 +27,7 @@ expressed as a PCRE regular expression.
 
   
 
-```
+```cf3
 bundle edit_line upgrade_cfexecd
 {
   replace_patterns:
@@ -71,7 +71,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)
 
 **Allowed input range**:   
 
-```
+```cf3
                     all
                     first
 ```
@@ -84,7 +84,7 @@ the latter is non-convergent)
 **Example**:  
    
 
-```
+```cf3
      
      body replace_with example
      {
@@ -114,7 +114,7 @@ applies to.
 **Example**:  
    
 
-```
+```cf3
      
      body replace_with example(s)
      {

@@ -28,7 +28,7 @@ variable with integer indexes
 **Example**:  
    
 
-```
+```cf3
 bundle agent test(f) 
 {
 vars:

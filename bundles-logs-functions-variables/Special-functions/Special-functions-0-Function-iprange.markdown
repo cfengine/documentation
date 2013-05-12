@@ -19,7 +19,7 @@ True if the current host lies in the range of IP addresses specified
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

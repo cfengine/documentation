@@ -20,7 +20,7 @@ True if arg1 is newer (modified later) than arg2 (mtime)
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

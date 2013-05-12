@@ -23,7 +23,7 @@ Some variables might be defined but still contain unresolved variables.
 To handle this you will need to match the `$(abc)` form of the
 variables.
 
-```
+```cf3
 body common control
 {
 bundlesequence => { "main" };
@@ -56,7 +56,7 @@ reports:
 
 Another example:
 
-```
+```cf3
 bundle agent example
 
 {     
@@ -128,7 +128,7 @@ and replaced with the default value.
 **Example**:  
    
 
-```
+```cf3
 bundle agent mymethod(a,b)
 {
 defaults:
@@ -153,7 +153,7 @@ CFEngine 3 lists are kept as an independent type.
 **Example**:  
    
 
-```
+```cf3
 vars:
 
  "xxx"    string => "Some literal string...";
@@ -179,7 +179,7 @@ vars](#policy-in-vars)).
 **Example**:  
    
 
-```
+```cf3
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };

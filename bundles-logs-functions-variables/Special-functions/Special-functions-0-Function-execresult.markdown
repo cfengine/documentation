@@ -20,7 +20,7 @@ Execute named command and assign output to variable
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

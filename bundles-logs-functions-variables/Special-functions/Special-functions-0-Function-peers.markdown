@@ -22,7 +22,7 @@ we belong
 **Example**:  
    
 
-```
+```cf3
 bundle agent peers
 {
 vars:
@@ -47,7 +47,7 @@ reports:
 **Notes**:  
    
 
-```
+```cf3
      
      (slist) peers(file of hosts,comment pattern,group size);
      
@@ -87,7 +87,7 @@ nonsensical promises.
 
 Example file:
 
-```
+```cf3
      one
      two
      three # this is a comment

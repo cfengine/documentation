@@ -19,7 +19,7 @@ True if the named object has execution rights for the current user
 **Example**:  
    
 
-```
+```cf3
 classes:
 
   "yes" expression => isexecutable("/bin/ls");

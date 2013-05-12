@@ -21,7 +21,7 @@ Read max number of bytes from named file and assign to variable
 **Example**:  
    
 
-```
+```cf3
 vars:
 
  "xxx"   

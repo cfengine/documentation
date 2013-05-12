@@ -20,7 +20,7 @@ True if arg1 is a regular expression matching that matches string arg2
 **Example**:  
    
 
-```
+```cf3
 bundle agent subtest(user)
 
 {
@@ -65,7 +65,7 @@ using either standard regular expression syntax or using the additional
 features of PCRE (where `(?ms)` changes the way that ., \^ and \$
 behave), e.g.
 
-```
+```cf3
      
      body common control
      {

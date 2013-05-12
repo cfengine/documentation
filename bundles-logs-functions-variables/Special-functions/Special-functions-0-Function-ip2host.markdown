@@ -19,7 +19,7 @@ Returns the primary name-service host name for the IP address
 **Example**:  
    
 
-```
+```cf3
 bundle agent reverse_lookup
 {
 vars:

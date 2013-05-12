@@ -19,7 +19,7 @@ other is in searching for files.
 
 Consider the examples below:
 
-```
+```cf3
 bundle agent testbundle
 
 {

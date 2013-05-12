@@ -11,7 +11,7 @@ tags: [Bundles-for-agent,commands-in-agent-promises]
 
   
 
-```
+```cf3
      
      commands:
      
@@ -45,7 +45,7 @@ commands-promise in a very flexible way. See the `kept_returncodes`,
 
   
 
-```
+```cf3
 bundle agent example
 
 {
@@ -67,7 +67,7 @@ When referring to executables whose paths contain spaces, you should
 quote the entire program string separately so that CFEngine knows the
 name of the executable file. For example:
 
-```
+```cf3
      
       commands:
      
@@ -97,7 +97,7 @@ name of the executable file. For example:
 **Example**:  
    
 
-```
+```cf3
 commands:
 
   "/bin/echo one"
@@ -112,7 +112,7 @@ Sometimes it is convenient to separate the arguments to a command from
 the command itself. The final arguments are the concatenation with one
 space. So in the example above the command would be:
 
-```
+```cf3
  /bin/echo one two three
 ```
 
@@ -126,7 +126,7 @@ space. So in the example above the command would be:
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -142,7 +142,7 @@ space. So in the example above the command would be:
 **Example**:  
    
 
-```
+```cf3
      
      body contain example
      {
@@ -169,7 +169,7 @@ is true.
 
 **Allowed input range**:   
 
-```
+```cf3
                     0
                     77
                     22
@@ -186,7 +186,7 @@ is true.
 **Example**:  
    
 
-```
+```cf3
      
      body contain example
      {
@@ -213,7 +213,7 @@ versions of CFEngine.
 **Example**:  
    
 
-```
+```cf3
      
      body contain example
      {
@@ -244,7 +244,7 @@ CFEngine.
 **Example**:  
    
 
-```
+```cf3
      
      body contain example
      {
@@ -272,7 +272,7 @@ them.
 **Example**:  
    
 
-```
+```cf3
      
      body contain example
      {
@@ -300,7 +300,7 @@ process
 **Example**:  
    
 
-```
+```cf3
      
      body contain example
      
@@ -328,7 +328,7 @@ it works like the cd shell command.
 **Example**:  
    
 
-```
+```cf3
      
      body contain example
      
@@ -351,7 +351,7 @@ root directory for the process. In security parlance, this creates a
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -368,7 +368,7 @@ root directory for the process. In security parlance, this creates a
 **Example**:  
    
 
-```
+```cf3
      
      body contain example
      {
@@ -392,7 +392,7 @@ its safety checks to user defined scripts.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -408,7 +408,7 @@ its safety checks to user defined scripts.
 **Example**:  
    
 
-```
+```cf3
      
      body contain example
      {
@@ -428,7 +428,7 @@ This is equivalent to piping standard output and error to /dev/null.
 
 **Allowed input range**:   
 
-```
+```cf3
                true
                false
                yes
@@ -444,7 +444,7 @@ This is equivalent to piping standard output and error to /dev/null.
 **Example**:  
    
 
-```
+```cf3
 commands:
 
    "/masterfiles/user_script"
@@ -467,7 +467,7 @@ beginning with @ are lists. Any other lines of output are cited by
 `cf-agent` as being erroneous, so you should normally make your module
 completely silent. Here is an example written in shell:
 
-```
+```cf3
      #!/bin/sh
      /bin/echo "@mylist= { \"one\", \"two\", \"three\" }"
      /bin/echo "=myscalar= scalar val"
@@ -476,7 +476,7 @@ completely silent. Here is an example written in shell:
 
 And here is an example using it:
 
-```
+```cf3
 body common control
    {
    any::
@@ -528,7 +528,7 @@ reports:
 
 Here is an example module written in Perl:
 
-```
+```cf3
      #!/usr/bin/perl
      #
      # module:myplugin
@@ -550,7 +550,7 @@ reading the promises file). For example, the promises could read as
 follows (the two `echo` commands are to ensure that the shell always
 exits with a successful execution of a command):
 
-```
+```cf3
 bundle agent sendmail
 {
 commands:
@@ -583,7 +583,7 @@ body contain not_paranoid
 Modules inherit the environment variables from cfagent and accept
 arguments, just as a regular command does.
 
-```
+```cf3
      #!/bin/sh
      #
      # module:myplugin
@@ -595,7 +595,7 @@ arguments, just as a regular command does.
 
 Modules define variables in `cf-agent` by outputting strings of the form
 
-```
+```cf3
      
      =variablename=value
      

@@ -19,7 +19,7 @@ True if the named file can be accessed
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

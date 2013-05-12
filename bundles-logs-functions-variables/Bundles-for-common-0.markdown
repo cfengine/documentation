@@ -22,7 +22,7 @@ recipient.
 
   
 
-```
+```cf3
      
      bundle common globals
      {

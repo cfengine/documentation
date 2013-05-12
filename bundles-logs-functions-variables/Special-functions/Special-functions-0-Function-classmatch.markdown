@@ -19,7 +19,7 @@ True if the regular expression matches any currently defined class
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

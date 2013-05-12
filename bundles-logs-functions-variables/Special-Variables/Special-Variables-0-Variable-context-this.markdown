@@ -17,7 +17,7 @@ or available, but provides a context for variables where one is needed
 (such as when passing the value of a list variable into a parameterized
 `edit_line` promise from a `file` promise). For example:
 
-```
+```cf3
 bundle agent resolver(s,n)
 { 
 files:
@@ -74,7 +74,7 @@ pattern matching or `depth_search` that implicitly match multiple
 objects. In that case, `$(this.promiser)` refers to the currently
 identified file that makes the promise. For example:
 
-```
+```cf3
 bundle agent find666
 {
 files:
@@ -100,7 +100,7 @@ body file_select world_writeable
 This variable is set to the values of the promise attribute
 `service_policy`. For example:
 
-```
+```cf3
 services:
 
   "www"  service_policy => "start";

@@ -20,7 +20,7 @@ True if named shell command has exit status zero
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

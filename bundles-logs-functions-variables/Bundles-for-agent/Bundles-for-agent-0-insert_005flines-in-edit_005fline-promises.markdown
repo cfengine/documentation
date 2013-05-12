@@ -16,7 +16,7 @@ the file at a specified location. The location is determined by
 body-attributes. The promise object referred to can be a literal line of
 a file-reference from which to read lines.
 
-```
+```cf3
      
       insert_lines:
      
@@ -29,7 +29,7 @@ a file-reference from which to read lines.
 
   
 
-```
+```cf3
 body common control
 
 {
@@ -76,7 +76,7 @@ file, be careful with your intuition. If your intention is to insert a
 set of lines in a given order after a marker, then the following is
 incorrect:
 
-```
+```cf3
 bundle edit_line x
 {
 insert_lines:
@@ -100,7 +100,7 @@ This is not a bug, but an error of logic.
 What was probably intended was to add multiple ordered lines after the
 marker, which should be a single correlated promise.
 
-```
+```cf3
 bundle edit_line x
 {
 insert_lines:
@@ -112,7 +112,7 @@ insert_lines:
 
 Or:
 
-```
+```cf3
 bundle edit_line x
 {
 insert_lines:
@@ -139,7 +139,7 @@ line two" location => myloc;
 
 **Allowed input range**:   
 
-```
+```cf3
                true
                false
                yes
@@ -155,7 +155,7 @@ line two" location => myloc;
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {
@@ -198,7 +198,7 @@ operations. Variables should be named and scoped appropriately for the
 bundle in which this promise is made. In other words, you should qualify
 the variables with the bundle in which they are defined. For example:
 
-```
+```cf3
 $(bundle.variable)
 $(sys.host)
 $(mon.www_in)
@@ -212,7 +212,7 @@ In CFEngine 2 `editfiles` this was called ExpandVariables.
 
 **Allowed input range**:   
 
-```
+```cf3
                literal
                string
                file
@@ -227,7 +227,7 @@ In CFEngine 2 `editfiles` this was called ExpandVariables.
 **Example**:  
    
 
-```
+```cf3
 bundle edit_line lynryd_skynyrd
 {
  vars:
@@ -252,7 +252,7 @@ insert_if_startwith_from_list => { "@(s)" };
 This will ensure that the following lines are inserted into the promised
 file:
 
-```
+```cf3
 And you'll never see me no more
 Gimme three steps, Mister
 Gimme three steps towards the door
@@ -300,7 +300,7 @@ setting that does preserve the ordering of lines in the file is called
 **Example**:  
    
 
-```
+```cf3
      
      body insert_select example
      {
@@ -333,7 +333,7 @@ is a multi-line block.
 **Example**:  
    
 
-```
+```cf3
      
      body insert_select example
      {
@@ -366,7 +366,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 **Example**:  
    
 
-```
+```cf3
      
      body insert_select example
      {
@@ -403,7 +403,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 **Example**:  
    
 
-```
+```cf3
      
      body insert_select example
      {
@@ -436,7 +436,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 **Example**:  
    
 
-```
+```cf3
      
      body insert_select example
      {
@@ -472,7 +472,7 @@ fragment
 **Example**:  
    
 
-```
+```cf3
      
      body insert_select example
      {
@@ -503,7 +503,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Allowed input range**:   
 
-```
+```cf3
                     before
                     after
 ```
@@ -515,7 +515,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 **Example**:  
    
 
-```
+```cf3
      
      body location append
      
@@ -538,7 +538,7 @@ matched line.
 
 **Allowed input range**:   
 
-```
+```cf3
                     first
                     last
 ```
@@ -551,7 +551,7 @@ file
 **Example**:  
    
 
-```
+```cf3
      
      body location example
      {
@@ -580,7 +580,7 @@ significance.
 **Example**:  
    
 
-```
+```cf3
      
      # Editing
      
@@ -615,7 +615,7 @@ This attribute is mutually exclusive of `select_line_number`.
 
 **Allowed input range**:   
 
-```
+```cf3
                ignore_leading
                ignore_trailing
                ignore_embedded
@@ -629,7 +629,7 @@ This attribute is mutually exclusive of `select_line_number`.
 **Example**:  
    
 
-```
+```cf3
 bundle edit_line Insert(service, filename)
 {
 insert_lines:

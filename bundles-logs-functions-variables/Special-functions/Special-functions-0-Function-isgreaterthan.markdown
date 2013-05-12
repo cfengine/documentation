@@ -21,7 +21,7 @@ strcmp
 **Example**:  
    
 
-```
+```cf3
 body common control
 
 {

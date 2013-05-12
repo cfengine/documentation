@@ -20,7 +20,7 @@ Read global knowledge from the hub host by id (commercial extension)
 **Example**:  
    
 
-```
+```cf3
 vars:
 
   guard::

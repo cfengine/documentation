@@ -15,7 +15,7 @@ System variables are derived from CFEngine's automated discovery of
 system values. They are provided as variables in order to make
 automatically adaptive rules for configuration. For example:
 
-```
+```cf3
 files:
 
  any::
@@ -90,7 +90,7 @@ itself is class-specific.
 
 The variable gives the kernel's short architecture description.
 
-```
+```cf3
 # arch = x86_64
 ```
 
@@ -100,7 +100,7 @@ The variable gives the kernel's short architecture description.
 
 The date of the system in canonical form, i.e. in the form of a class.
 
-```
+```cf3
 # cdate = Sun_Dec__7_10_39_53_2008_
 ```
 
@@ -111,7 +111,7 @@ The date of the system in canonical form, i.e. in the form of a class.
 A variable containing the path to the CFEngine syntax analyxer
 `cf-promises` on the platform you are using.
 
-```
+```cf3
 classes:
 
   "syntax_ok" expression => returnszero("$(sys.cf_promises)");
@@ -124,7 +124,7 @@ classes:
 The variable gives the version of the running CFEngine Community
 Edition.
 
-```
+```cf3
 # cf_version = 3.0.5 
 ```
 
@@ -135,7 +135,7 @@ Edition.
 This variable contains the name of the hard-class category for this host
 (i.e. its top level operating system type classification).
 
-```
+```cf3
 # class = linux
 ```
 
@@ -151,7 +151,7 @@ physical, cores. In addition, on a single-core system the class "1\_cpu"
 is set, and on multi-core systems the class "*n*\_cpus" is set, where
 "*n*" is the number of cores identified.
 
-```
+```cf3
 reports:
 
  cfengine_3::
@@ -169,7 +169,7 @@ reports:
 The variable gives the location of the current users's master crontab
 directory.
 
-```
+```cf3
 # crontab = /var/spool/crontas/root 
 ```
 
@@ -179,7 +179,7 @@ directory.
 
 The date of the system as a text string.
 
-```
+```cf3
 # date = Sun Dec  7 10:39:53 2008
 ```
 
@@ -201,7 +201,7 @@ be possible to derive the domain name from its DNS regisration, but in
 general there is no way to discover this value automatically. The
 `common control` body permits the ultimate specification of this value.
 
-```
+```cf3
 # domain = example.org
  
 ```
@@ -215,7 +215,7 @@ general there is no way to discover this value automatically. The
 The variable gives the version of the running CFEngine Enterprise
 Edition.
 
-```
+```cf3
 # enterprise_version = 3.0.0
 ```
 
@@ -223,7 +223,7 @@ Edition.
 
   
 
-```
+```cf3
 reports:
 
  nova::
@@ -237,7 +237,7 @@ reports:
 
 The location of the system NFS exports file.
 
-```
+```cf3
 # exports = /etc/exports
 # exports = /etc/dfs/dfstab
 ```
@@ -277,7 +277,7 @@ This is a synonym for `$(sys.flavor)`.
 The fully qualified name of the host. In order to compute this value
 properly, the domain name must be defined.
 
-```
+```cf3
 # fqhost = host.example.org
 ```
 
@@ -287,7 +287,7 @@ properly, the domain name must be defined.
 
 The location of the system filesystem (mount) table.
 
-```
+```cf3
 # fstab = /etc/fstab
 ```
 
@@ -308,7 +308,7 @@ system interfaces.
 
 This contains the MAC address of the named interface. For example:
 
-```
+```cf3
 reports:
 
   linux::
@@ -323,7 +323,7 @@ reports:
 The name of the current host, according to the kernel. It is undefined
 whether this is qualified or unqualified with a domain name.
 
-```
+```cf3
 # host = myhost
 ```
 
@@ -333,7 +333,7 @@ whether this is qualified or unqualified with a domain name.
 
 The assumed (default) name of the main system interface on this host.
 
-```
+```cf3
 # interface = eth0
 ```
 
@@ -350,7 +350,7 @@ variables report to a Mission Portal in commercial editions of CFEngine.
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.
 
-```
+```cf3
 bundle agent test
 {
 vars:
@@ -384,7 +384,7 @@ Mission Portal in commercial editions of CFEngine.
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.
 
-```
+```cf3
 bundle agent test
 {
 vars:
@@ -428,7 +428,7 @@ system.
 The full IPv4 address of the system interface named as the associative
 array index, e.g. \$(ipv4[le0]) or \$(ipv4[xr1]).
 
-```
+```cf3
 # If the IPv4 address on the interfaces are
 #        le0 = 192.168.1.101
 #    xr1 = 10.12.7.254
@@ -483,7 +483,7 @@ sys.ipv4[interface\_name]](#Variable-sys_002eipv4_005binterface_005fname_005d)).
 
 *History*: Was introduced in version 3.1.4,Nova 2.0.2 (2011)
 
-```
+```cf3
 reports:
 
  nova::
@@ -497,7 +497,7 @@ reports:
 
 *History*: Was introduced in version 3.1.4,Nova 2.0.2 (2011)
 
-```
+```cf3
 reports:
 
  nova::
@@ -512,7 +512,7 @@ reports:
 The long architecture name for this system kernel. This name is
 sometimes quite unwieldy but can be useful for logging purposes.
 
-```
+```cf3
 # long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200
 ```
 
@@ -522,7 +522,7 @@ sometimes quite unwieldy but can be useful for logging purposes.
 
 The name of the system email spool directory.
 
-```
+```cf3
 # maildir = /var/spool/mail
 ```
 
@@ -532,7 +532,7 @@ The name of the system email spool directory.
 
 The variable gives the version of the running CFEngine Nova Edition.
 
-```
+```cf3
 # nova_version = 1.1.3
 ```
 
@@ -542,7 +542,7 @@ The variable gives the version of the running CFEngine Nova Edition.
 
 The name of the operating system according to the kernel.
 
-```
+```cf3
 # os = linux
 ```
 
@@ -552,7 +552,7 @@ The name of the operating system according to the kernel.
 
 Another name for the operating system.
 
-```
+```cf3
 # ostype = linux_x86_64
 ```
 
@@ -566,7 +566,7 @@ undefined.
 **History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010).
 Available in Community since 3.2.0
 
-```
+```cf3
 reports:
 
  "Policy hub is $(sys.policy_hub)";
@@ -578,7 +578,7 @@ reports:
 
 The kernel release of the operating system.
 
-```
+```cf3
 # release = 2.6.22.19-0.1-default
 ```
 
@@ -588,7 +588,7 @@ The kernel release of the operating system.
 
 The location of the system resolver file.
 
-```
+```cf3
 # resolv = /etc/resolv.conf
 ```
 
@@ -598,7 +598,7 @@ The location of the system resolver file.
 
 The unqualified name of the current host. See also `sys.fqhost`.
 
-```
+```cf3
 # uqhost = myhost
 ```
 
@@ -609,7 +609,7 @@ The unqualified name of the current host. See also `sys.fqhost`.
 The version of the running kernel. On Linux, this corresponds to the
 ouput of `uname -v`.
 
-```
+```cf3
 # version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011
 ```
 
@@ -622,7 +622,7 @@ ouput of `uname -v`.
 On the Windows version of CFEngine Nova, this is the path to the Windows
 directory of this system.
 
-```
+```cf3
 # windir = C:\WINDOWS
 ```
 
@@ -633,7 +633,7 @@ directory of this system.
 On the Windows version of CFEngine Nova, this is the path to the program
 files directory of the system.
 
-```
+```cf3
 # winprogdir = C:\Program Files
 ```
 
@@ -644,7 +644,7 @@ files directory of the system.
 On 64 bit Windows versions of CFEngine Nova, this is the path to the 32
 bit (x86) program files directory of the system.
 
-```
+```cf3
 # winprogdir86 = C:\Program Files (x86)
 ```
 
@@ -655,7 +655,7 @@ bit (x86) program files directory of the system.
 On the Windows version of CFEngine Nova, this is the path to the Windows
 system directory.
 
-```
+```cf3
 # winsysdir = C:\WINDOWS\system32
 ```
 
@@ -666,19 +666,19 @@ system directory.
 The location of the CFEngine work directory and cache. For the system
 privileged user this is normally:
 
-```
+```cf3
 # workdir = /var/cfengine
 ```
 
 For non-privileged users it is in the user's home directory:
 
-```
+```cf3
 # workdir = /home/user/.cfagent
 ```
 
 On the Windows version of CFEngine Nova, it is normally under program
 files (the directory name may change with the language of Windows):
 
-```
+```cf3
 # workdir = C:\Program Files\CFEngine
 ```

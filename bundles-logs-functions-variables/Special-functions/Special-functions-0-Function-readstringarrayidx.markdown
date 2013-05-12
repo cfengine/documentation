@@ -28,7 +28,7 @@ variable with integer indeces
 **Example**:  
    
 
-```
+```cf3
 vars:
 
   "dim_array" 
@@ -83,7 +83,7 @@ the file. The array arguments are both integer indexes, allowing for
 non-identifiers at first field (e.g. duplicates or names with spaces),
 unlike `readstringarray`.
 
-```
+```cf3
      
      at spaced:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
      duplicate:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
@@ -97,7 +97,7 @@ unlike `readstringarray`.
 Results in a systematically indexed map of the file. Some samples are
 show below to illustrate the pattern.
 
-```
+```cf3
      array_name[0][0]       at spaced
      array_name[0][1]       x
      array_name[0][2]       25

@@ -28,7 +28,7 @@ templating.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -44,7 +44,7 @@ templating.
 **Example**:  
    
 
-```
+```cf3
      
      body select_region MySection(x)
      {
@@ -63,7 +63,7 @@ normally included in the defined region (that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing). Setting this option to true makes it included. For example:
 
-```
+```cf3
      [My section]
      one
      two
@@ -87,7 +87,7 @@ unaffected by any `delete_lines` promises. See the next section on
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -103,7 +103,7 @@ unaffected by any `delete_lines` promises. See the next section on
 **Example**:  
    
 
-```
+```cf3
      
      body select_region BracketSection(x)
      {
@@ -122,7 +122,7 @@ normally included in the defined region; that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing. Setting this option to true makes it included. For example:
 
-```
+```cf3
      /var/log/mail.log {
          monthly
          missingok
@@ -158,7 +158,7 @@ in `include_start_delimiter`).
 **Example**:  
    
 
-```
+```cf3
      
      body select_region example(x)
      
@@ -176,7 +176,7 @@ See also `select_end`. These delimiters mark out the region of a file to
 be edited. In the example, it is assumed that the file has section
 markers.
 
-```
+```cf3
           [section 1]
           
           lines.
@@ -203,7 +203,7 @@ The start marker includes the first matched line.
 **Example**:  
    
 
-```
+```cf3
      
      body select_region example(x)
      
@@ -221,7 +221,7 @@ See also `select_start`. These delimiters mark out the region of a file
 to be edited. In this example, it is assumed that the file has section
 markers:
 
-```
+```cf3
           [section 1]
           
           lines.

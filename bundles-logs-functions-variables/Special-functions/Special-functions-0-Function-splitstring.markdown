@@ -22,7 +22,7 @@ a regular expression in arg2
 **Example**:  
    
 
-```
+```cf3
 bundle agent test
 
 {

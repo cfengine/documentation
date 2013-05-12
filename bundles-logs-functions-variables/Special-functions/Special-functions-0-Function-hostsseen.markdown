@@ -23,7 +23,7 @@ Extract the list of hosts last seen/not seen within the last arg1 hours
 **Example**:  
    
 
-```
+```cf3
 bundle agent test
 
 {

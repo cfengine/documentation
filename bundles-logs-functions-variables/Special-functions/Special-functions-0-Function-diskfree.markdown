@@ -20,7 +20,7 @@ partition (0 if not found)
 **Example**:  
    
 
-```
+```cf3
 bundle agent example
 {     
 vars:

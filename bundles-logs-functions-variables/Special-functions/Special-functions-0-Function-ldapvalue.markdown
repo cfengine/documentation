@@ -25,7 +25,7 @@ Extract the first matching named value from ldap
 **Example**:  
    
 
-```
+```cf3
 vars:
 
    # Get the first matching value for "uid" in schema
@@ -43,7 +43,7 @@ vars:
 **Notes**:  
    
 
-```
+```cf3
      
      (string) ldapvalue(uri,dn,filter,name,scope,security)
      
@@ -77,7 +77,7 @@ scope
 Menu option, the type of ldap search, from the specified root. May take
 values:
 
-```
+```cf3
               subtree
               onelevel
               base

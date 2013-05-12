@@ -15,7 +15,7 @@ Reports promises simply print messages. Outputting a message without
 qualification can be a \`dangerous' operation. In a large installation
 it could unleash an avalanche of messaging.
 
-```
+```cf3
      
       reports:
      
@@ -34,7 +34,7 @@ has been replaced by `reports`.
 
   
 
-```
+```cf3
 bundle agent report
 {
 reports:
@@ -76,7 +76,7 @@ friend reports.
 **Example**:  
    
 
-```
+```cf3
 reports:
 
   linux::
@@ -126,7 +126,7 @@ files.
 
 In control:
 
-```
+```cf3
 body agent control
 {
 lastseen => "false";
@@ -135,7 +135,7 @@ lastseen => "false";
 
 See also in reports:
 
-```
+```cf3
 reports:
 
   "Comment"
@@ -161,7 +161,7 @@ Include part of a file in a report.
 **Example**:  
    
 
-```
+```cf3
      
      body printfile example
      {
@@ -187,7 +187,7 @@ Include the first 'x' number of lines of a file in a report.
 **Example**:  
    
 
-```
+```cf3
      
      body printfile example
      {
@@ -211,7 +211,7 @@ defaults to the standard output.
 **Example**:  
    
 
-```
+```cf3
 bundle agent test
 {
 reports:
@@ -237,7 +237,7 @@ return value with array index defined by this attribute.
 **Example**:  
    
 
-```
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -294,7 +294,7 @@ reported to standard output
 **Example**:  
    
 
-```
+```cf3
 reports:
   cfengine::
 

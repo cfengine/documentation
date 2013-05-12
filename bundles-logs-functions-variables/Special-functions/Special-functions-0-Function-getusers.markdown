@@ -21,7 +21,7 @@ arg1 and uids in arg2
 **Example**:  
    
 
-```
+```cf3
 vars:
   "allusers" slist => getusers("zenoss,mysql,at","12,0");
 

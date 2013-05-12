@@ -25,7 +25,7 @@ Extract all values from an LDAP record
 **Example**:  
    
 
-```
+```cf3
 classes:
 
    "gotdata" expression => ldaparray(
@@ -40,7 +40,7 @@ classes:
 **Notes**:  
    
 
-```
+```cf3
      
      (class) ldaparray (array,uri,dn,filter,scope,security)
      
@@ -73,7 +73,7 @@ scope
 
 Menu option, the type of ldap search, from
 
-```
+```cf3
               subtree
               onelevel
               base
@@ -87,7 +87,7 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-```
+```cf3
                none
                ssl
                sasl

@@ -21,7 +21,7 @@ specified
 **Example**:  
    
 
-```
+```cf3
 
 body common control
 

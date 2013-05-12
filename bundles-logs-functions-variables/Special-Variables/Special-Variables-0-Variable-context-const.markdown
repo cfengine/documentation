@@ -24,7 +24,7 @@ or values with special meanings in strings.
 
   
 
-```
+```cf3
 reports:
 
   some::
@@ -40,7 +40,7 @@ reports:
 
   
 
-```
+```cf3
 reports:
 
  cfengine_3::
@@ -53,7 +53,7 @@ reports:
 
   
 
-```
+```cf3
 reports:
 
  cfengine_3::
@@ -66,7 +66,7 @@ reports:
 
   
 
-```
+```cf3
 reports:
 
  cfengine_3::
@@ -78,7 +78,7 @@ reports:
 
   
 
-```
+```cf3
 reports:
 
  cfengine_3::

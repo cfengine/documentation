@@ -20,7 +20,7 @@ True if the regular expression in arg1 matches a line in file arg2
 **Example**:  
    
 
-```
+```cf3
 bundle agent testbundle
 
 {
@@ -55,7 +55,7 @@ applications, where one might want to set a class for detecting the
 presence of a string that does not exactly match one being inserted. For
 example:
 
-```
+```cf3
 bundle edit_line upgrade_cfexecd
   {
   classes:

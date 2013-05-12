@@ -55,7 +55,7 @@ and CFEngine cannot make promises on their behalf, unless they promise
 pre-requisite for making SQL database promises is to grant a point of
 access on the server.
 
-```
+```cf3
      
       databases:
      
@@ -84,7 +84,7 @@ access on the server.
 
   
 
-```
+```cf3
 body common control
 {
 bundlesequence => { "databases" };
@@ -175,7 +175,7 @@ a hierarchy of depth 1.
 **Example**:  
    
 
-```
+```cf3
      
      db_server_owner => "mark";
      
@@ -196,7 +196,7 @@ a hierarchy of depth 1.
 **Example**:  
    
 
-```
+```cf3
      
      db_server_password => "xyz.1234";
      
@@ -218,7 +218,7 @@ means localhost)
 **Example**:  
    
 
-```
+```cf3
      
      db_server_host => "sqlserv.example.org";
      
@@ -235,7 +235,7 @@ Hostname or IP address of the server.
 
 **Allowed input range**:   
 
-```
+```cf3
                     postgres
                     mysql
 ```
@@ -247,7 +247,7 @@ Hostname or IP address of the server.
 **Example**:  
    
 
-```
+```cf3
      
      db_server_type => "postgres";
      
@@ -269,7 +269,7 @@ create/manage other databases
 **Example**:  
    
 
-```
+```cf3
      
      body database_server myserver(x)
      {
@@ -304,7 +304,7 @@ body.
 
 **Allowed input range**:   
 
-```
+```cf3
                sql
                ms_registry
 ```
@@ -316,7 +316,7 @@ body.
 **Example**:  
    
 
-```
+```cf3
 database_type => "ms_registry";
 ```
 
@@ -329,7 +329,7 @@ database_type => "ms_registry";
 
 **Allowed input range**:   
 
-```
+```cf3
                create
                delete
                drop
@@ -343,7 +343,7 @@ database_type => "ms_registry";
 **Example**:  
    
 
-```
+```cf3
 database_operation => "create";
 ```
 
@@ -362,7 +362,7 @@ databases
 **Example**:  
    
 
-```
+```cf3
   "cf_topic_maps/topics"
 
     database_operation => "create",
@@ -396,7 +396,7 @@ databases
 **Example**:  
    
 
-```
+```cf3
 bundle agent databases
 
 {
@@ -437,7 +437,7 @@ verification
 **Example**:  
    
 
-```
+```cf3
 databases:
 
  "HKEY_LOCAL_MACHINE\SOFTWARE"

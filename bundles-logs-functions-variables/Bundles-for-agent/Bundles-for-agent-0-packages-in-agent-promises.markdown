@@ -11,7 +11,7 @@ tags: [Bundles-for-agent,packages-in-agent-promises]
 
   
 
-```
+```cf3
  vars:
 
   "match_package" slist => { 
@@ -82,7 +82,7 @@ one of two different ways:
 
 -   They may be specified independently, e.g.
 
-    ```
+    ```cf3
          packages:
          
            "mypackage"
@@ -100,7 +100,7 @@ one of two different ways:
     7-Zip-4.50-x86\_64.msi and a package\_method containing the
     following:
 
-    ```
+    ```cf3
           package_name_regex => "^(\S+)-(\d+\.?)+";
           package_version_regex => "^\S+-((\d+\.?)+)";
           package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
@@ -239,7 +239,7 @@ Package not installed
 
   
 
-```
+```cf3
 bundle agent packages
 {
 vars:
@@ -331,7 +331,7 @@ library for supported operating systems.
 **Example**:  
    
 
-```
+```cf3
 packages:
 
   "$(exact_package)"
@@ -364,7 +364,7 @@ package manager's behaviour prevails.
 **Example**:  
    
 
-```
+```cf3
      
      body package_method rpm
      {
@@ -399,7 +399,7 @@ package architecture string
 **Example**:  
    
 
-```
+```cf3
      
      body package_method rpm
      
@@ -428,7 +428,7 @@ define this.
 
 **Allowed input range**:   
 
-```
+```cf3
                     individual
                     bulk
 ```
@@ -439,7 +439,7 @@ aggregate command
 **Example**:  
    
 
-```
+```cf3
      
      body package_method rpm
      
@@ -469,7 +469,7 @@ the operating system's package manager to handle dependencies.
 **Example**:  
    
 
-```
+```cf3
      
      body package_method rpm
      
@@ -502,7 +502,7 @@ referred to in the deletion part of a package update, e.g. \$(name)
 **Example**:  
    
 
-```
+```cf3
      body package_method freebsd
      
      {
@@ -544,7 +544,7 @@ If this is not defined, it defaults to the value of
 **Example**:  
    
 
-```
+```cf3
      
      body package_method filebased
      {
@@ -573,7 +573,7 @@ installed
 **Example**:  
    
 
-```
+```cf3
      
      body package_method yum
      {
@@ -604,7 +604,7 @@ be ignored.
 **Example**:  
    
 
-```
+```cf3
      body package_method dpkg
      {
        package_default_arch_command => "/usr/bin/dpkg --print-architecture";
@@ -638,7 +638,7 @@ package architecture string
 **Example**:  
    
 
-```
+```cf3
      
      body package_method rpm
      {
@@ -669,7 +669,7 @@ define this regex.
 **Example**:  
    
 
-```
+```cf3
      
      body package_method rpm
      
@@ -703,7 +703,7 @@ package name string
 **Example**:  
    
 
-```
+```cf3
      
      body package_method rpm
      
@@ -733,7 +733,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 **Example**:  
    
 
-```
+```cf3
      body package_method xyz
      {
      debian|ubuntu::
@@ -762,7 +762,7 @@ package list
 **Example**:  
    
 
-```
+```cf3
      body package_method xyz
      {
      debian|ubuntu::
@@ -791,7 +791,7 @@ package version string
 **Example**:  
    
 
-```
+```cf3
      body package_method rpm
      
      {
@@ -821,7 +821,7 @@ referred to, e.g. \$(name).\$(arch)
 **Example**:  
    
 
-```
+```cf3
      body package_method rpm
      
      {
@@ -858,7 +858,7 @@ package name string
 **Example**:  
    
 
-```
+```cf3
      
      body package_method rpm
      {
@@ -889,7 +889,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
 **Example**:  
    
 
-```
+```cf3
      body package_method xyz
      
      {
@@ -920,7 +920,7 @@ failure
 **Example**:  
    
 
-```
+```cf3
      body package_method xyz
      {
      package_noverify_returncode => "-1";
@@ -946,7 +946,7 @@ update architecture string
 **Example**:  
    
 
-```
+```cf3
      
      body package_method zypper
      {
@@ -977,7 +977,7 @@ installed package
 **Example**:  
    
 
-```
+```cf3
      body package_method zypper
      
      {
@@ -1010,7 +1010,7 @@ installed
 **Example**:  
    
 
-```
+```cf3
      
      body package_method zypper
      {
@@ -1040,7 +1040,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 **Example**:  
    
 
-```
+```cf3
      
       package_patch_list_command => "/usr/bin/zypper patches";
      
@@ -1072,7 +1072,7 @@ update name string
 **Example**:  
    
 
-```
+```cf3
      
      body package_method zypper
      {
@@ -1102,7 +1102,7 @@ update version string
 **Example**:  
    
 
-```
+```cf3
      
      body package_method zypper
      {
@@ -1133,7 +1133,7 @@ installed package
 **Example**:  
    
 
-```
+```cf3
      
      body package_method zypper
      {
@@ -1167,7 +1167,7 @@ carry out the update.
 **Example**:  
    
 
-```
+```cf3
      body package_method rpm
      
      {
@@ -1211,7 +1211,7 @@ package version string
 **Example**:  
    
 
-```
+```cf3
      
      body package_method rpm
      {
@@ -1243,7 +1243,7 @@ package in multiline output
 **Example**:  
    
 
-```
+```cf3
      
      body package_method solaris (pkgname, spoolfile, adminfile)
      {
@@ -1269,7 +1269,7 @@ record.
 
 **Allowed input range**:   
 
-```
+```cf3
                     true
                     false
                     yes
@@ -1285,7 +1285,7 @@ record.
 **Example**:  
    
 
-```
+```cf3
      
      Fill me in (./bodyparts/package_commands_useshell_example.texinfo)
      ""
@@ -1297,7 +1297,7 @@ record.
 *History*: Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
 (2012)
 
-```
+```cf3
      
      Fill me in (./bodyparts/package_commands_useshell_notes.texinfo)
      ""
@@ -1317,7 +1317,7 @@ less than second one
 **Example**:  
    
 
-```
+```cf3
      body package_method deb
      {
      ...
@@ -1359,7 +1359,7 @@ equal to second one
 **Example**:  
    
 
-```
+```cf3
      body package_method deb
      {
      ...
@@ -1393,7 +1393,7 @@ v2, and v2 is not less than v1).
 
 **Allowed input range**:   
 
-```
+```cf3
                add
                delete
                reinstall
@@ -1411,7 +1411,7 @@ system
 **Example**:  
    
 
-```
+```cf3
 packages:
 
   "$(match_package)"
@@ -1463,7 +1463,7 @@ Requires setting `package_verify_command`.
 
 **Allowed input range**:   
 
-```
+```cf3
                
                
                ==
@@ -1478,7 +1478,7 @@ Requires setting `package_verify_command`.
 **Example**:  
    
 
-```
+```cf3
 packages:
 
   "$(exact_package)"
@@ -1508,7 +1508,7 @@ policy action is scheduled for promise-keeping.
 **Example**:  
    
 
-```
+```cf3
 packages:
 
   "mypackage"

@@ -28,7 +28,7 @@ variable
 **Example**:  
    
 
-```
+```cf3
 vars:
 
   "dim_array" 
@@ -76,7 +76,7 @@ Reads a two dimensional array from a file. One dimension is separated by
 the character specified in the argument, the other by the the lines in
 the file. The first field of the lines names the first array argument.
 
-```
+```cf3
      
      1: 5:7:21:13
      2:19:8:14:14
@@ -86,7 +86,7 @@ the file. The first field of the lines names the first array argument.
 
 Results in
 
-```
+```cf3
      array_name[1][0]   1
      array_name[1][1]   5
      array_name[1][2]   7

@@ -23,13 +23,13 @@ Generate a random integer between the given limits
    
 
 <<<<<<< HEAD
-```
+```cf3
 vars:
 
  "ran"    int => randomint(4,88);
 ```
 =======
-``` {.verbatim}
+```cf3 {.verbatim}
 bundle agent randomint_example
 # Demonstrate random number calculation
 {

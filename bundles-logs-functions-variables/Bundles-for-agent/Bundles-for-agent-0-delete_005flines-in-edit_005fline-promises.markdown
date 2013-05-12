@@ -19,7 +19,7 @@ with `not_matching`).
 
   
 
-```
+```cf3
 bundle edit_line example
   {
   delete_lines:
@@ -66,7 +66,7 @@ promise.
 **Example**:  
    
 
-```
+```cf3
      
      body delete_select example(s)
      {
@@ -83,7 +83,7 @@ that this determination is made only on promised lines (that is, this
 attribute modifies the selection criteria, it does not make the initial
 selection). Therefore, if the file contains the following lines:
 
-```
+```cf3
      start alpha igniter
      start beta igniter
      init alpha burner
@@ -97,7 +97,7 @@ Then the following promise initially selects the four lines containing
 alpha, but is moderated by the `delete_select` attribute. Thus, the
 promise will delete only the first and third lines of the file:
 
-```
+```cf3
      bundle edit_line alpha
      {
      delete_lines:
@@ -124,7 +124,7 @@ promise will delete only the first and third lines of the file:
 **Example**:  
    
 
-```
+```cf3
      
      body delete_select example(s)
      {
@@ -152,7 +152,7 @@ not make the initial selection.
 **Example**:  
    
 
-```
+```cf3
      
      body delete_select example(s)
      {
@@ -184,7 +184,7 @@ promised lines.
 **Example**:  
    
 
-```
+```cf3
      
      body delete_select example(s)
      {
@@ -216,7 +216,7 @@ promised lines.
 **Example**:  
    
 
-```
+```cf3
      
      body delete_select example(s)
      {
@@ -246,7 +246,7 @@ fragment
 **Example**:  
    
 
-```
+```cf3
      
      body delete_select discard(s)
      {
@@ -270,7 +270,7 @@ promised lines.
 
 **Allowed input range**:   
 
-```
+```cf3
                true
                false
                yes
@@ -286,7 +286,7 @@ promised lines.
 **Example**:  
    
 
-```
+```cf3
 delete_lines:
 
   # edit /etc/passwd - account names that are not "mark" or "root"
