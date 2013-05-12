@@ -18,11 +18,11 @@ Calculate whether any argument evaluates to true
 **Example**:  
    
 
-~~~~
+```cf3
 commands:
   "/usr/bin/generate_config $(config)"
     ifvarclass => or(not(fileexists("/etc/config/$(config)")), "force_configs");
-~~~~
+```
 
 **Notes**:  
    

@@ -21,7 +21,7 @@ Get a list of peer leaders from the named partitioning
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent peers
 {
 vars:
@@ -41,16 +41,16 @@ reports:
    "another leader $(all_leaders)";
 
 }
-~~~~
+```
 
 **Notes**:  
    
 
-~~~~
+```cf3
      
      (slist) peers(file of hosts,comment pattern,group size);
      
-~~~~
+```
 
 This function returns a list of hostnames that may be considered peer
 leaders in the partitioning scheme described in the file of hosts. Peers
@@ -84,7 +84,7 @@ nonsensical promises.
 
 Example file:
 
-~~~~
+```cf3
      one
      two
      three # this is a comment
@@ -99,4 +99,4 @@ Example file:
      twelve
      etc
      
-~~~~
+```

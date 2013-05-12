@@ -20,7 +20,7 @@ True if arg1 was accessed before arg2 (atime)
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 
 {
@@ -43,7 +43,7 @@ reports:
     "The secret changes have been accessed after the reference time";
 
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -51,7 +51,7 @@ reports:
 The function accesses the `atime` fields of a file and makes a
 comparison.
 
-~~~~
+```cf3
      
       touch /tmp/reference
       touch /tmp/secretfile
@@ -59,4 +59,4 @@ comparison.
       /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
       R: The secret changes have been accessed after the reference time
      
-~~~~
+```

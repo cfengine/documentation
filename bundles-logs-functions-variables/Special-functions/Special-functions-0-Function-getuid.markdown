@@ -19,7 +19,7 @@ Return the integer user id of the named user on this host
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 
 {
@@ -42,7 +42,7 @@ reports:
     "Users uid is $(uid)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

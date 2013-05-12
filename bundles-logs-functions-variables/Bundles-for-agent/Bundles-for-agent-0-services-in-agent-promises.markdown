@@ -40,7 +40,7 @@ passed to services that are started by CFEngine.
 
   
 
-~~~~
+```cf3
 bundle agent example
 {
 services:
@@ -60,7 +60,7 @@ body service_method winmethod
   service_autostart_policy => "none";
   service_dependence_chain => "start_parent_services";
 }
-~~~~
+```
 
   
 
@@ -77,12 +77,12 @@ systems and are merely as a convenient front-end to `processes` and
 `commands`. If nothing else is specified, CFEngine looks for an special
 reserved agent bundle called
 
-~~~~
+```cf3
 bundle agent standard_services(service,state)
 {
 ...
 }
-~~~~
+```
 
 This bundle is called with two parameters: the name of the service and a
 start/stop state variable. The CFEngine standard library defines many
@@ -94,7 +94,7 @@ service bundle, so this is merely a front-end.
 
 The standard bundle can be replaced with another, as follows:
 
-~~~~
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -136,7 +136,7 @@ reports:
 
     "Test service promise for \"$(service)\" -> $(state)";
 }
-~~~~
+```
 
 Note that the special variables `$(this.promiser)` and
 `$(this.service_policy)` may be used to fill in the service and state
@@ -154,25 +154,25 @@ variable is only defined for services promises.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                start
                stop
                disable
                restart
                reload
-~~~~
+```
 
 **Synopsis**: Policy for cfengine service status
 
 **Example**:  
    
 
-~~~~
+```cf3
 services:
   
   "Telnet"
      service_policy => "disable";
-~~~~
+```
 
 **Notes**:  
    
@@ -195,13 +195,13 @@ depends
 **Example**:  
    
 
-~~~~
+```cf3
 services:
   
   "ftp"
     service_policy => "start",
     service_dependencies => { "network", "logging" };
-~~~~
+```
 
 **Notes**:  
    
@@ -234,14 +234,14 @@ list.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body service_method example
      {
        service_args => "-f filename.conf --some-argument";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -260,25 +260,25 @@ optional.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     none
                     boot_time
                     on_demand
-~~~~
+```
 
 **Synopsis**: Should the service be started automatically by the OS
 
 **Example**:  
    
 
-~~~~
+```cf3
      
      body service_method example
      {
        service_autostart_policy => "boot_time";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -302,26 +302,26 @@ inetd or xinetd on Unix.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     ignore
                     start_parent_services
                     stop_child_services
                     all_related
-~~~~
+```
 
 **Synopsis**: How to handle dependencies and dependent services
 
 **Example**:  
    
 
-~~~~
+```cf3
      
      body service_method example
      {
        service_dependence_chain => "start_parent_services";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -353,24 +353,24 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     windows
                     generic
-~~~~
+```
 
 **Synopsis**: Service abstraction type
 
 **Example**:  
    
 
-~~~~
+```cf3
      
      body service_method example
      {
        type => "windows";
      }
      
-~~~~
+```
 
 **Notes**:  
    

@@ -19,7 +19,7 @@ be used as variables and will appear in Enterprise variable reports.
 
   
 
-~~~~
+```cf3
 bundle agent example
 
 {     
@@ -36,7 +36,7 @@ reports:
   "Meta data (variable): $(example_meta.bundle_version)";
 
 }
-~~~~
+```
 
   
 
@@ -58,13 +58,13 @@ CFEngine 3 lists are kept as an independent type.
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
  "xxx"    string => "Some literal string...";
 
  "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
-~~~~
+```
 
 #### `slist`
 
@@ -84,7 +84,7 @@ vars](#policy-in-vars)).
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };
@@ -101,4 +101,4 @@ vars:
 
  "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
 
-~~~~
+```

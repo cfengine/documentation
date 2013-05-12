@@ -22,7 +22,7 @@ recipient.
 
   
 
-~~~~
+```cf3
      
      bundle common globals
      {
@@ -35,7 +35,7 @@ recipient.
        "global_class" expression = "value";
      }
      
-~~~~
+```
 
 -   [classes in common promises](#classes-in-common-promises):
 -   [defaults in common promises](#defaults-in-common-promises):

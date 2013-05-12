@@ -35,11 +35,11 @@ promises. The specific promise attributes are listed below.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     fix
                     warn
                     nop
-~~~~
+```
 
 **Synopsis**: Whether to repair or report about non-kept promises
 
@@ -48,14 +48,14 @@ promises. The specific promise attributes are listed below.
 
 The following example shows a simple use of transaction control:
 
-~~~~
+```cf3
      
      body action warn_only {
      action_policy => "warn";
      ifelapsed => "60";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -70,7 +70,7 @@ bundles, and that promises within these do not inherit action settings
 at higher levels. Thus, in the following example there are two levels of
 action setting:
 
-~~~~
+```cf3
      ########################################################
      #
      # Warn if line matched
@@ -112,7 +112,7 @@ action setting:
      {
      action_policy => "warn";
      }
-~~~~
+```
 
 The `action` setting for the `files` promise means that file edits will
 not be committed to disk, only warned about. This is a master-level
@@ -122,15 +122,15 @@ modelling of the file will only warn about changes rather than
 committing them to the memory model. This makes little difference to the
 end result, but it means that CFEngine will report
 
-~~~~
+```cf3
           Need to delete line - ... - but only a warning was promised
-~~~~
+```
 
 Instead of
 
-~~~~
+```cf3
           Deleting the promised line ... Need to save file - but only a warning was promised
-~~~~
+```
 
 In either case, no changes will be made to the disk, but the messages
 given by `cf-agent` will differ.   
@@ -149,7 +149,7 @@ promise
 **Example**:  
    
 
-~~~~
+```cf3
      
      #local
      
@@ -166,7 +166,7 @@ promise
      ifelapsed   => "180";  # 3 hours
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -193,13 +193,13 @@ and retried
 **Example**:  
    
 
-~~~~
+```cf3
      body action example
      {
      ifelapsed   => "120";  # 2 hours
      expireafter => "240";  # 4 hours
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -219,7 +219,7 @@ verification leads to a repair
 **Example**:  
    
 
-~~~~
+```cf3
           
           promise-type:
           
@@ -235,7 +235,7 @@ verification leads to a repair
           log_string = "$(s)";
           }
           
-~~~~
+```
 
 **Notes**:  
    
@@ -260,26 +260,26 @@ more mnemonic).
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     inform
                     verbose
                     error
                     log
-~~~~
+```
 
 **Synopsis**: The reporting level sent to syslog
 
 **Example**:  
    
 
-~~~~
+```cf3
      
      body action example
      {
      log_level => "inform";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -305,7 +305,7 @@ will be saved, and if undefined it goes to the system logger
 **Example**:  
    
 
-~~~~
+```cf3
      
      body action logme(x)
      {
@@ -315,7 +315,7 @@ will be saved, and if undefined it goes to the system logger
      log_string => "$(sys.date) $(x) promise status";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -352,7 +352,7 @@ the request.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     emergency
                     alert
                     critical
@@ -361,7 +361,7 @@ the request.
                     notice
                     info
                     debug
-~~~~
+```
 
 **Synopsis**: The priority level of the log message, as interpreted by a
 syslog server
@@ -369,12 +369,12 @@ syslog server
 **Example**:  
    
 
-~~~~
+```cf3
      body action low_priority
      {
      log_priority => "info";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -393,7 +393,7 @@ will be saved, if undefined it goes to the system logger
 **Example**:  
    
 
-~~~~
+```cf3
      
      bundle agent test
      {
@@ -423,7 +423,7 @@ will be saved, if undefined it goes to the system logger
      log_repaired => "udp_syslog"; # Nova and above 
      log_string => "CFEngine repaired promise $(this.handle) - $(x)";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -457,7 +457,7 @@ will be saved, and if undefined it goes to the system logger
 **Example**:  
    
 
-~~~~
+```cf3
      
      bundle agent test
      {
@@ -483,7 +483,7 @@ will be saved, and if undefined it goes to the system logger
      log_string => "$(sys.date) $(x) promise status";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -524,7 +524,7 @@ the request.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body action mydef
      {
@@ -534,7 +534,7 @@ the request.
      ifelapsed       => "60";   # one hour
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -554,7 +554,7 @@ logged unless the agent control body switched on track\_value = "true".
 **Example**:  
    
 
-~~~~
+```cf3
      
      body action mydef
      {
@@ -564,7 +564,7 @@ logged unless the agent control body switched on track\_value = "true".
      ifelapsed       => "60";   # one hour
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -585,7 +585,7 @@ keeping this promise
 **Example**:  
    
 
-~~~~
+```cf3
      
      body action mydef
      {
@@ -595,7 +595,7 @@ keeping this promise
      ifelapsed       => "60";   # one hour
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -610,14 +610,14 @@ logged unless the agent control body switched on track\_value = "true".
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false switch for detailed audit records of this
 promise
@@ -627,7 +627,7 @@ promise
 **Example**:  
    
 
-~~~~
+```cf3
      
      body action example
      {
@@ -636,7 +636,7 @@ promise
      audit => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -651,14 +651,14 @@ promise will be recorded in the audit database.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false switch for parallelizing the promise repair
 
@@ -667,14 +667,14 @@ promise will be recorded in the audit database.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body action example
      {
      background => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -697,12 +697,12 @@ operations can not be performed in the background on windows.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     inform
                     verbose
                     error
                     log
-~~~~
+```
 
 **Synopsis**: The reporting level for standard output for this promise
 
@@ -711,14 +711,14 @@ operations can not be performed in the background on windows.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body action example
      {
      report_level => "verbose";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -743,7 +743,7 @@ this identifier
 **Example**:  
    
 
-~~~~
+```cf3
      
      
      body action measure
@@ -751,7 +751,7 @@ this identifier
      measurement_class => "$(this.promiser) long job scan of /usr";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -761,9 +761,9 @@ current promise, and also give the measurement a name. The identifier
 forms a partial identity for optional performance scanning of promises
 of the form:
 
-~~~~
+```cf3
           ID:promise-type:promiser.
-~~~~
+```
 
 
 #### `classes` (body template)
@@ -781,14 +781,14 @@ of the form:
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      promise_repaired => { "change_happened" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -820,14 +820,14 @@ promises rather than \`overloading' a single one.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      repair_failed => { "unknown_error" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -849,14 +849,14 @@ unnecessary to call a canonify function on such inputs.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      repair_denied => { "permission_failure" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -877,14 +877,14 @@ so it is unnecessary to call a canonify function on such inputs.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      repair_timeout => { "too_slow", "did_not_wait" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -903,14 +903,14 @@ resource.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      promise_kept => { "success", "kaplah" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -942,14 +942,14 @@ promises rather than \`overloading' a single one.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      cancel_kept => { "success", "kaplah" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -975,14 +975,14 @@ repaired
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      cancel_repaired => { "change_happened" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1008,14 +1008,14 @@ kept for any reason
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      cancel_notkept => { "failure" };
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1041,7 +1041,7 @@ promise
 **Example**:  
    
 
-~~~~
+```cf3
      bundle agent cmdtest
      {
      commands:
@@ -1058,7 +1058,7 @@ promise
      kept_returncodes => { "0", "1" };
      promise_kept => { "waskept" };
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -1098,7 +1098,7 @@ command-related promise
 **Example**:  
    
 
-~~~~
+```cf3
      bundle agent cmdtest
      {
      commands:
@@ -1115,7 +1115,7 @@ command-related promise
      repaired_returncodes => { "0", "1" };
      promise_repaired => { "wasrepaired" };
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -1155,7 +1155,7 @@ promise
 **Example**:  
    
 
-~~~~
+```cf3
      body common control
      {
      bundlesequence => { "cmdtest" };
@@ -1187,7 +1187,7 @@ promise
      {
      source => "$(file)";
      } 
-~~~~
+```
 
 **Notes**:  
    
@@ -1227,14 +1227,14 @@ active
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      persist_time => "10";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1249,10 +1249,10 @@ agent is not running.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     absolute
                     reset
-~~~~
+```
 
 **Synopsis**: Whether a persistent class restarts its counter when
 rediscovered
@@ -1262,14 +1262,14 @@ rediscovered
 **Example**:  
    
 
-~~~~
+```cf3
      
      body classes example
      {
      timer_policy => "reset";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -1290,9 +1290,9 @@ is useful.
 **Example**:  
    
 
-~~~~
+```cf3
 comment => "This comment follows the data for reference ...",
-~~~~
+```
 
 **Notes**:  
    
@@ -1312,7 +1312,7 @@ depends on somehow
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 {
 bundlesequence => { "one"  };
@@ -1332,7 +1332,7 @@ reports:
 
 }
 
-~~~~
+```
 
 **Notes**:  
    
@@ -1362,14 +1362,14 @@ elsewhere
 **Example**:  
    
 
-~~~~
+```cf3
 access:
 
   "/source"
 
     handle  => "update_rule",
     admit   => { "127.0.0.1" };
-~~~~
+```
 
 **Notes**:  
    
@@ -1402,7 +1402,7 @@ rather than its content.
 
 The generic example has the form:
 
-~~~~
+```cf3
      
      promise-type:
      
@@ -1410,11 +1410,11 @@ The generic example has the form:
      
          ifvarclass = "$(program)_running|($(program)_notfoundHr12)";
      
-~~~~
+```
 
 A specific example would be:
 
-~~~~
+```cf3
 bundle agent example
 
 {     
@@ -1432,7 +1432,7 @@ commands:
        ifvarclass => "solaris";
 
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -1447,7 +1447,7 @@ variable classes.
 This function is provided so that one can form expressions that link
 variables and classes. For example:
 
-~~~~
+```cf3
 # Check that all components are running
 
 vars:
@@ -1463,7 +1463,7 @@ commands:
    "/var/cfengine/bin/$(component)"
 
        ifvarclass => canonify("start_$(component)");
-~~~~
+```
 
 Notice that the function `canonify()` is provided to convert a general
 variable input into a string composed only of legal characters, using
@@ -1480,7 +1480,7 @@ the same algorithm that CFEngine uses.
 **Example**:  
    
 
-~~~~
+```cf3
 files:
 
   "/etc/special_file"
@@ -1489,7 +1489,7 @@ files:
     create => "true",
 
     meta => { "owner=John",  "version=2.0" };
-~~~~
+```
 
 **Notes**:  
    

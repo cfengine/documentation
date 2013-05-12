@@ -22,7 +22,7 @@ whose id is arg1
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
  "nameservers" slist => {
@@ -33,7 +33,7 @@ vars:
 classes:
 
   "am_name_server" expression => reglist("@(nameservers)",escape("$(sys.ipv4[eth0])"));
-~~~~
+```
 
 **Notes**:  
    

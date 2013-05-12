@@ -55,7 +55,7 @@ and CFEngine cannot make promises on their behalf, unless they promise
 pre-requisite for making SQL database promises is to grant a point of
 access on the server.
 
-~~~~
+```cf3
      
       databases:
      
@@ -80,11 +80,11 @@ access on the server.
        db_server_connection_db = "database we can connect to";
        }
      
-~~~~
+```
 
   
 
-~~~~
+```cf3
 body common control
 {
 bundlesequence => { "databases" };
@@ -141,7 +141,7 @@ body contain as_user(x)
 {
 exec_owner => "$(x)";
 }
-~~~~
+```
 
   
 
@@ -175,11 +175,11 @@ a hierarchy of depth 1.
 **Example**:  
    
 
-~~~~
+```cf3
      
      db_server_owner => "mark";
      
-~~~~
+```
 
 **Notes**:  
    
@@ -196,11 +196,11 @@ a hierarchy of depth 1.
 **Example**:  
    
 
-~~~~
+```cf3
      
      db_server_password => "xyz.1234";
      
-~~~~
+```
 
 **Notes**:  
    
@@ -218,11 +218,11 @@ means localhost)
 **Example**:  
    
 
-~~~~
+```cf3
      
      db_server_host => "sqlserv.example.org";
      
-~~~~
+```
 
 **Notes**:  
    
@@ -235,10 +235,10 @@ Hostname or IP address of the server.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     postgres
                     mysql
-~~~~
+```
 
 **Synopsis**: The dialect of the database server
 
@@ -247,11 +247,11 @@ Hostname or IP address of the server.
 **Example**:  
    
 
-~~~~
+```cf3
      
      db_server_type => "postgres";
      
-~~~~
+```
 
 **Notes**:  
    
@@ -269,7 +269,7 @@ create/manage other databases
 **Example**:  
    
 
-~~~~
+```cf3
      
      body database_server myserver(x)
      {
@@ -280,7 +280,7 @@ create/manage other databases
      db_server_connection_db => "$(x)";
      }
      
-~~~~
+```
 
 where x is currently `mysql` or `postgres`.
 
@@ -304,10 +304,10 @@ body.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                sql
                ms_registry
-~~~~
+```
 
 **Default value:** none
 
@@ -316,9 +316,9 @@ body.
 **Example**:  
    
 
-~~~~
+```cf3
 database_type => "ms_registry";
-~~~~
+```
 
 **Notes**:  
    
@@ -329,23 +329,23 @@ database_type => "ms_registry";
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                create
                delete
                drop
                cache
                verify
                restore
-~~~~
+```
 
 **Synopsis**: The nature of the promise - to be or not to be
 
 **Example**:  
    
 
-~~~~
+```cf3
 database_operation => "create";
-~~~~
+```
 
 **Notes**:  
    
@@ -362,7 +362,7 @@ databases
 **Example**:  
    
 
-~~~~
+```cf3
   "cf_topic_maps/topics"
 
     database_operation => "create",
@@ -376,7 +376,7 @@ databases
                         },
 
     database_server => myserver;
-~~~~
+```
 
 **Notes**:  
    
@@ -396,7 +396,7 @@ databases
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent databases
 
 {
@@ -412,7 +412,7 @@ databases:
     database_rows => { "value1,REG_SZ,new value 1", "value2,REG_DWORD,12345"} ,
     database_type     => "ms_registry";
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -437,7 +437,7 @@ verification
 **Example**:  
    
 
-~~~~
+```cf3
 databases:
 
  "HKEY_LOCAL_MACHINE\SOFTWARE"
@@ -454,7 +454,7 @@ databases:
                         },
 
     database_type     => "ms_registry";
-~~~~
+```
 
 **Notes**:  
    

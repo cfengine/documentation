@@ -19,7 +19,7 @@ Returns the size in bytes of the file
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent example
 {     
 vars:
@@ -35,7 +35,7 @@ reports:
     "Does not exist $(nexists)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

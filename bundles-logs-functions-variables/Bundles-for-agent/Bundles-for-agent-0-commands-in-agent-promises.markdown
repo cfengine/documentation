@@ -11,7 +11,7 @@ tags: [Bundles-for-agent,commands-in-agent-promises]
 
   
 
-~~~~
+```cf3
      
      commands:
      
@@ -21,7 +21,7 @@ tags: [Bundles-for-agent,commands-in-agent-promises]
                   contain = contain_body,
                   module = true/false;
      
-~~~~
+```
 
 Command *containment* allows you to make a \`sandbox' around a command,
 to run it as a non-privileged user inside an isolated directory tree.
@@ -45,7 +45,7 @@ commands-promise in a very flexible way. See the `kept_returncodes`,
 
   
 
-~~~~
+```cf3
 bundle agent example
 
 {
@@ -59,7 +59,7 @@ commands:
      action  => background;
 
 }
-~~~~
+```
 
   
 
@@ -67,7 +67,7 @@ When referring to executables whose paths contain spaces, you should
 quote the entire program string separately so that CFEngine knows the
 name of the executable file. For example:
 
-~~~~
+```cf3
      
       commands:
      
@@ -79,7 +79,7 @@ name of the executable file. For example:
      
         "\"/usr/bin/funny command name\" -a -b -c";
      
-~~~~
+```
 
 -   [args in commands](#args-in-commands)
 -   [contain in commands](#contain-in-commands)
@@ -97,13 +97,13 @@ name of the executable file. For example:
 **Example**:  
    
 
-~~~~
+```cf3
 commands:
 
   "/bin/echo one"
 
    args => "two three";
-~~~~
+```
 
 **Notes**:  
    
@@ -112,9 +112,9 @@ Sometimes it is convenient to separate the arguments to a command from
 the command itself. The final arguments are the concatenation with one
 space. So in the example above the command would be:
 
-~~~~
+```cf3
  /bin/echo one two three
-~~~~
+```
 
 #### `contain` (body template)
 
@@ -126,14 +126,14 @@ space. So in the example above the command would be:
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false embed the command in a shell environment
 
@@ -142,14 +142,14 @@ space. So in the example above the command would be:
 **Example**:  
    
 
-~~~~
+```cf3
      
      body contain example
      {
      useshell => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -169,7 +169,7 @@ is true.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     0
                     77
                     22
@@ -179,21 +179,21 @@ is true.
                     022
                     027
                     072
-~~~~
+```
 
 **Synopsis**: The umask value for the child process
 
 **Example**:  
    
 
-~~~~
+```cf3
      
      body contain example
      {
      umask => "077";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -213,14 +213,14 @@ versions of CFEngine.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body contain example
      {
      exec_owner => "mysql_user";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -244,14 +244,14 @@ CFEngine.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body contain example
      {
      exec_group => "nogroup";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -272,14 +272,14 @@ them.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body contain example
      {
      exec_timeout => "30";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -300,7 +300,7 @@ process
 **Example**:  
    
 
-~~~~
+```cf3
      
      body contain example
      
@@ -308,7 +308,7 @@ process
      chdir => "/containment/directory";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -328,7 +328,7 @@ it works like the cd shell command.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body contain example
      
@@ -336,7 +336,7 @@ it works like the cd shell command.
      chroot => "/private/path";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -351,14 +351,14 @@ root directory for the process. In security parlance, this creates a
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false preview command when running in dry-run mode
 (with -n)
@@ -368,14 +368,14 @@ root directory for the process. In security parlance, this creates a
 **Example**:  
    
 
-~~~~
+```cf3
      
      body contain example
      {
      preview => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -392,14 +392,14 @@ its safety checks to user defined scripts.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     true
                     false
                     yes
                     no
                     on
                     off
-~~~~
+```
 
 **Synopsis**: true/false discard all output from the command
 
@@ -408,14 +408,14 @@ its safety checks to user defined scripts.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body contain example
      {
      no_output => "true";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -428,14 +428,14 @@ This is equivalent to piping standard output and error to /dev/null.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                true
                false
                yes
                no
                on
                off
-~~~~
+```
 
 **Default value:** false
 
@@ -444,13 +444,13 @@ This is equivalent to piping standard output and error to /dev/null.
 **Example**:  
    
 
-~~~~
+```cf3
 commands:
 
    "/masterfiles/user_script"
 
      module => "true";
-~~~~
+```
 
 **Notes**:  
    
@@ -467,16 +467,16 @@ beginning with @ are lists. Any other lines of output are cited by
 `cf-agent` as being erroneous, so you should normally make your module
 completely silent. Here is an example written in shell:
 
-~~~~
+```cf3
      #!/bin/sh
      /bin/echo "@mylist= { \"one\", \"two\", \"three\" }"
      /bin/echo "=myscalar= scalar val"
      /bin/echo "+module_class"
-~~~~
+```
 
 And here is an example using it:
 
-~~~~
+```cf3
 body common control
    {
    any::
@@ -524,11 +524,11 @@ reports:
   "Module set variable $(mylist)";
 
 }
-~~~~
+```
 
 Here is an example module written in Perl:
 
-~~~~
+```cf3
      #!/usr/bin/perl
      #
      # module:myplugin
@@ -541,7 +541,7 @@ Here is an example module written in Perl:
         print "+specialclass";
         }
      
-~~~~
+```
 
 If your module is simple and is best expressed as a shell command, then
 we suggest that you *expose* the class being defined in the command
@@ -550,7 +550,7 @@ reading the promises file). For example, the promises could read as
 follows (the two `echo` commands are to ensure that the shell always
 exits with a successful execution of a command):
 
-~~~~
+```cf3
 bundle agent sendmail
 {
 commands:
@@ -578,12 +578,12 @@ body contain not_paranoid
     exec_owner  => "root";
     umask       => "22";
 }
-~~~~
+```
 
 Modules inherit the environment variables from cfagent and accept
 arguments, just as a regular command does.
 
-~~~~
+```cf3
      #!/bin/sh
      #
      # module:myplugin
@@ -591,15 +591,15 @@ arguments, just as a regular command does.
      
      /bin/echo $*
      
-~~~~
+```
 
 Modules define variables in `cf-agent` by outputting strings of the form
 
-~~~~
+```cf3
      
      =variablename=value
      
-~~~~
+```
 
 These variables end up in a context that has the same name as the
 module. When the `$(allclasses)` variable becomes too large to

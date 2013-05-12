@@ -19,7 +19,7 @@ objects that are affected by the promise-bundle. Since the use of these
 identifiers is for the future, you can simply use any string here for
 the time being.
 
-~~~~
+```cf3
      
       methods:
      
@@ -27,7 +27,7 @@ the time being.
      
            usebundle = method_id("parameter",...);
      
-~~~~
+```
 
 Methods are useful for encapsulating repeatedly used configuration
 issues and iterating over parameters.
@@ -38,7 +38,7 @@ inline.
 
   
 
-~~~~
+```cf3
 
 bundle agent example
 {
@@ -68,7 +68,7 @@ reports:
   "Finished doing stuff for $(user)";
 }
 
-~~~~
+```
 
   
 
@@ -88,7 +88,7 @@ Care should be exercised when using this approach. In order to make the
 function call uniquely classified, CFEngine requires the promiser to
 contain the variable name of the method if the variable is a list.
 
-~~~~
+```cf3
 bundle agent default
 {
 vars:
@@ -100,7 +100,7 @@ methods:
     "any"         usebundle => $(p)("two");
     
 }
-~~~~
+```
 
 -   [inherit in methods](#inherit-in-methods)
 -   [usebundle in methods](#usebundle-in-methods)
@@ -112,14 +112,14 @@ methods:
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                true
                false
                yes
                no
                on
                off
-~~~~
+```
 
 **Synopsis**: If true this causes the sub-bundle to inherit the private
 classes of its parent
@@ -129,7 +129,7 @@ classes of its parent
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent name
 {
 methods:
@@ -143,7 +143,7 @@ body edit_defaults example
 {
 inherit => "true";
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -173,7 +173,7 @@ result/return value from the child
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -211,7 +211,7 @@ reports:
       bundle_return_value_index => "2";
 
 }
-~~~~
+```
 
 **Notes**:  
    

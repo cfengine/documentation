@@ -22,7 +22,14 @@ Generate a random integer between the given limits
 **Example**:  
    
 
-~~~~ {.verbatim}
+<<<<<<< HEAD
+```cf3
+vars:
+
+ "ran"    int => randomint(4,88);
+```
+=======
+```cf3 {.verbatim}
 bundle agent randomint_example
 # Demonstrate random number calculation
 {
@@ -63,7 +70,8 @@ bundle agent randomint_example
 }
 Example output:
 R: Random Numbers: 32, 56, 37
-~~~~
+```
+>>>>>>> upstream/master
 
 **Notes**:  
    

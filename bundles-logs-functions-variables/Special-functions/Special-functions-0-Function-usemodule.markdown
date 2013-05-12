@@ -20,7 +20,7 @@ Execute cfengine module script and set class if successful
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
    {
    any::
@@ -45,7 +45,7 @@ commands:
 
   "/bin/echo" args => "test $(user)";
 }
-~~~~
+```
 
 **Notes**:  
    
