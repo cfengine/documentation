@@ -387,11 +387,8 @@ databases:
 
 **Allowed input range**: (arbitrary string)
 
-A list of regular expressions to ignore in key/value verification can be defined in a `registry_exclude` slist.
-
-During recursive Windows registry scanning, this option allows us to ignore keys of values matching a list of regular expressions. Some
-values in the registry are ephemeral and some should not be considered. This provides a convenient way of avoiding names. It is analogous to
-`exclude_dirs` for files.
+**Synopsis**: A list of regular expressions to ignore in key/value
+verification
 
 **Example**:  
    
@@ -415,3 +412,11 @@ databases:
     database_type     => "ms_registry";
 ```
 
+**Notes**:  
+   
+
+During recursive Windows registry scanning, this option allows us to
+ignore keys of values matching a list of regular expressions. Some
+values in the registry are ephemeral and some should not be considered.
+This provides a convenient way of avoiding names. It is analogous to
+`exclude_dirs` for files.
