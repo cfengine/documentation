@@ -39,8 +39,6 @@ are present in the file *in exactly the same order* as specified in the
 promise (with no intervening lines). That is, all the lines must match
 as a unit for the `delete_lines` promise to be kept.
 
-  
-
 If the promiser contains multiple lines, then CFEngine assumes that all
 of the lines must exist as a contiguous block in order to be deletes.
 This gives preserve\_block semantics to any multiline `delete_lines`
@@ -61,7 +59,13 @@ promise.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Delete line if it starts with a string in the list
+**Notes**:  
+   
+
+Delete lines from a file if they begin with the sub-strings listed. Note
+that this determination is made only on promised lines (that is, this
+attribute modifies the selection criteria, it does not make the initial
+selection). 
 
 **Example**:  
    
@@ -75,13 +79,8 @@ promise.
      
 ```
 
-**Notes**:  
-   
-
-Delete lines from a file if they begin with the sub-strings listed. Note
-that this determination is made only on promised lines (that is, this
-attribute modifies the selection criteria, it does not make the initial
-selection). Therefore, if the file contains the following lines:
+If the file contains the following lines, then the following promise initially selects the four lines containing
+alpha, but is moderated by the `delete_select` attribute.
 
 ```cf3
      start alpha igniter
@@ -93,9 +92,7 @@ selection). Therefore, if the file contains the following lines:
      stop alpha burner
 ```
 
-Then the following promise initially selects the four lines containing
-alpha, but is moderated by the `delete_select` attribute. Thus, the
-promise will delete only the first and third lines of the file:
+Thus, the promise will delete only the first and third lines of the file:
 
 ```cf3
      bundle edit_line alpha
@@ -111,15 +108,14 @@ promise will delete only the first and third lines of the file:
      }
 ```
 
-  
-
 `delete_if_not_startwith_from_list`
 
 **Type**: slist
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Delete line if it DOES NOT start with a string in the list
+Delete lines from a file unless they start with the sub-strings in the list given. Note that this determination is made only on promised lines.
+In other words, this attribute modifies the selection criteria, it does not make the initial selection.   
 
 **Example**:  
    
@@ -133,21 +129,17 @@ promise will delete only the first and third lines of the file:
      
 ```
 
-**Notes**:  
-   
-
-Delete lines from a file unless they start with the sub-strings in the
-list given. Note that this determination is made only on promised lines.
-In other words, this attribute modifies the selection criteria, it does
-not make the initial selection.   
-
 `delete_if_match_from_list`
 
 **Type**: slist
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Delete line if it fully matches a regex in the list
+Delete lines from a file if the lines *completely* match any of the regular expressions listed. In other words, the regular expression is
+anchored (see [Anchored vs. unanchored regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
+
+Note that this attribute modifies the selection criteria, it does not make the initial selection, and the match determination is made only on
+promised lines.   
 
 **Example**:  
    
@@ -161,25 +153,17 @@ not make the initial selection.
      
 ```
 
-**Notes**:  
-   
-
-Delete lines from a file if the lines *completely* match any of the
-regular expressions listed. In other words, the regular expression is
-anchored (see [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
-
-Note that this attribute modifies the selection criteria, it does not
-make the initial selection, and the match determination is made only on
-promised lines.   
-
 `delete_if_not_match_from_list`
 
 **Type**: slist
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Delete line if it DOES NOT fully match a regex in the list
+Delete lines from a file unless the lines *completely* match any of the regular expressions listed. In other words, the regular expressions are
+anchored (see [Anchored vs. unanchored regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
+
+Note that this attribute modifies the selection criteria, it does not make the initial selection, and the match determination is made only on
+promised lines.   
 
 **Example**:  
    
@@ -193,25 +177,16 @@ promised lines.
      
 ```
 
-**Notes**:  
-   
-
-Delete lines from a file unless the lines *completely* match any of the
-regular expressions listed. In other words, the regular expressions are
-anchored (see [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
-
-Note that this attribute modifies the selection criteria, it does not
-make the initial selection, and the match determination is made only on
-promised lines.   
-
 `delete_if_contains_from_list`
 
 **Type**: slist
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Delete line if a regex in the list match a line fragment
+Delete lines from a file if they contain the sub-strings listed.
+
+Note that this attribute modifies the selection criteria, it does not make the initial selection, and the match determination is made only on
+promised lines.   
 
 **Example**:  
    
@@ -225,23 +200,17 @@ promised lines.
      
 ```
 
-**Notes**:  
-   
-
-Delete lines from a file if they contain the sub-strings listed.
-
-Note that this attribute modifies the selection criteria, it does not
-make the initial selection, and the match determination is made only on
-promised lines.   
-
 `delete_if_not_contains_from_list`
 
 **Type**: slist
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Delete line if a regex in the list DOES NOT match a line
-fragment
+Delete lines from the file which do not contain the sub-strings listed.
+
+Note that this attribute modifies the selection criteria, it does not
+make the initial selection, and the match determination is made only on
+promised lines.
 
 **Example**:  
    
@@ -254,15 +223,6 @@ fragment
      }
      
 ```
-
-**Notes**:  
-   
-
-Delete lines from the file which do not contain the sub-strings listed.
-
-Note that this attribute modifies the selection criteria, it does not
-make the initial selection, and the match determination is made only on
-promised lines.
 
 #### `not_matching`
 
@@ -281,7 +241,14 @@ promised lines.
 
 **Default value:** false
 
-**Synopsis**: true/false negate match criterion
+When this option is true, it negates the pattern match of the promised lines.
+
+**NOTE** that this does not negate any condition expressed in `delete_select`. It only negates the match of the initially promised
+lines.
+
+Note, this makes no sense for multi-line deletions, and is therefore disallowed. Either a multi-line promiser matches and it should be
+removed (i.e. `not_matching` is false), or it does not match the whole thing and the ordered lines have no meaning anymore as an entity. In
+this case, the lines can be separately stated.
 
 **Example**:  
    
@@ -294,18 +261,3 @@ delete_lines:
   "(mark|root):.*" not_matching => "true";
 ```
 
-**Notes**:  
-   
-
-When this option is true, it negates the pattern match of the promised
-lines.
-
-**NOTE** that this does not negate any condition expressed in
-`delete_select`. It only negates the match of the initially promised
-lines.
-
-Note, this makes no sense for multi-line deletions, and is therefore
-disallowed. Either a multi-line promiser matches and it should be
-removed (i.e. `not_matching` is false), or it does not match the whole
-thing and the ordered lines have no meaning anymore as an entity. In
-this case, the lines can be separately stated.
