@@ -19,12 +19,12 @@ Returns the primary name-service IP address for the named host
 **Example**:  
    
 
-~~~~
+```cf3
 bundle server control
 {
 allowconnects         => { escape(host2ip("www.example.com")) };
 }
-~~~~
+```
 
 **Notes**:  
    

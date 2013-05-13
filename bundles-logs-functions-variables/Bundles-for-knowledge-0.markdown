@@ -12,7 +12,7 @@ Bundles of `knowledge`
 
   
 
-~~~~
+```cf3
      
      bundle knowledge system
      
@@ -30,7 +30,7 @@ Bundles of `knowledge`
        "Bad memory reference";
      }
      
-~~~~
+```
 
   
 

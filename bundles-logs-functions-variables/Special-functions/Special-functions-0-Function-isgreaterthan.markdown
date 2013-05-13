@@ -21,7 +21,7 @@ strcmp
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 
 {
@@ -48,7 +48,7 @@ reports:
   "Assertion is false";
 
 }
-~~~~
+```
 
 **Notes**:  
    

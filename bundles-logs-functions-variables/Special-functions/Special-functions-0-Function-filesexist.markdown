@@ -20,7 +20,7 @@ True if the named list of files can ALL be accessed
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 
 {
@@ -53,7 +53,7 @@ reports:
 }
 
 
-~~~~
+```
 
 **Notes**:  
    

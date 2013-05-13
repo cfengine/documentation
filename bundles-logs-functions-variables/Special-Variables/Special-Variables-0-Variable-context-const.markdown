@@ -24,7 +24,7 @@ or values with special meanings in strings.
 
   
 
-~~~~
+```cf3
 reports:
 
   some::
@@ -34,54 +34,54 @@ reports:
 
    # This will report: But the value of \$(dollar) is \$(dollar)
    "But the value of \$(dollar) is \$(dollar)";
-~~~~
+```
 
 #### Variable const.endl
 
   
 
-~~~~
+```cf3
 reports:
 
  cfengine_3::
 
   "A newline with either $(const.n) or with $(const.endl) is ok";
   "But a string with \n in it does not have a newline!";
-~~~~
+```
 
 #### Variable const.n
 
   
 
-~~~~
+```cf3
 reports:
 
  cfengine_3::
 
   "A newline with either $(const.n) or with $(const.endl) is ok";
   "But a string with \n in it does not have a newline!";
-~~~~
+```
 
 #### Variable const.r
 
   
 
-~~~~
+```cf3
 reports:
 
  cfengine_3::
 
   "A carriage return character is $(const.r)";
-~~~~
+```
 
 #### Variable const.t
 
   
 
-~~~~
+```cf3
 reports:
 
  cfengine_3::
 
   "A report with a$(const.t)tab in it";
-~~~~
+```

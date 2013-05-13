@@ -21,7 +21,7 @@ arbitrary key.
 
   
 
-~~~~
+```cf3
 bundle agent example
 
 {     
@@ -43,7 +43,7 @@ reports:
     "Array $(array[$(i)])";
 }
 
-~~~~
+```
 
   
 
@@ -66,13 +66,13 @@ reports:
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
  "xxx"    string => "Some literal string...";
 
  "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
-~~~~
+```
 
 **Notes**:  
    
@@ -92,7 +92,7 @@ CFEngine 3 lists are kept as an independent type.
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
  "scalar" int    => "16k";
@@ -100,7 +100,7 @@ vars:
  "ran"    int    => randomint(4,88);
 
  "dim_array" int =>  readstringarray("array_name","/etc/passwd","#[^\n]*",":",10,4000);
-~~~~
+```
 
 **Notes**:  
    
@@ -154,11 +154,11 @@ The value inf may also be used to represent an unlimited positive value.
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
    
  "scalar" real   => "0.5";
-~~~~
+```
 
 **Notes**:  
    
@@ -182,7 +182,7 @@ useful for representing probabilities and performance data.
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
  "xxx"    slist  => {  "literal1",  "literal2" };
@@ -199,7 +199,7 @@ vars:
 
  "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
 
-~~~~
+```
 
 **Notes**:  
    
@@ -221,13 +221,13 @@ vars](#policy-in-vars)).
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
   "variable_id"
 
        ilist => { "10", "11", "12" };
-~~~~
+```
 
 **Notes**:  
    
@@ -256,11 +256,11 @@ vars](#policy-in-vars)).
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
   "varid" rlist => { "0.1", "0.2", "0.3" };
-~~~~
+```
 
 **Notes**:  
    
@@ -283,24 +283,24 @@ vars](#policy-in-vars)).
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                free
                overridable
                constant
                ifdefined
-~~~~
+```
 
 **Synopsis**: The policy for (dis)allowing (re)definition of variables
 
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
   "varid" string => "value...",
           policy => "constant";
-~~~~
+```
 
 **Notes**:  
    
@@ -319,14 +319,14 @@ or undefined lists are dropped. The default behaviour is otherwise to
 retain this value as an indicator of the failure to quench the variable
 reference, for example:
 
-~~~~
+```cf3
    
     "one" slist => { "1", "2", "3" };
 
    "list" slist => { "@(one)", @(two) },
 
             policy => "ifdefined";
-~~~~
+```
 
 This would result in @(list) being the same as @(one), and the reference
 to @(two) would disappear. This is useful for combining lists,

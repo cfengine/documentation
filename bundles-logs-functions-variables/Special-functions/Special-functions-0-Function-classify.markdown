@@ -20,11 +20,11 @@ class
 **Example**:  
    
 
-~~~~
+```cf3
 classes:
 
  "i_am_the_policy_host" expression => classify("master.example.org");
-~~~~
+```
 
 **Notes**:  
    

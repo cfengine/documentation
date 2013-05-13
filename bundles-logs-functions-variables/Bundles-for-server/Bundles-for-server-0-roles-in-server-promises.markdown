@@ -20,7 +20,7 @@ regular expression is anchored, meaning it must match the entire name
 (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
-~~~~
+```cf3
      
       roles:
      
@@ -28,7 +28,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
      
            authorize = { "usernames", ... };
      
-~~~~
+```
 
 *It is worth re-iterating here that it is not possible to send commands
 or modify promise definitions by remote access. At best users may try to
@@ -37,7 +37,7 @@ promises. This mechanism limits their ability to do this*.
 
   
 
-~~~~
+```cf3
 bundle server access_rules()
 
 {
@@ -47,7 +47,7 @@ roles:
 
   "Myclass_.*"  authorize => { "mark" };
 }
-~~~~
+```
 
   
 
@@ -71,11 +71,11 @@ the promised class during remote agent activation
 **Example**:  
    
 
-~~~~
+```cf3
 roles:
 
   ".*"  authorize => { "mark", "marks_friend" };
-~~~~
+```
 
 **Notes**:  
    

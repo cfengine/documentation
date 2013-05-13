@@ -24,13 +24,13 @@ XPath.
 
   
 
-~~~~
+```cf3
 bundle edit_xml example
   {
   build_xpath:
     "/Server/Service/Engine/Host[ @name=\"cfe_host\" | Alias = cfe_alias ]";
   }
-~~~~
+```
 
   
 
