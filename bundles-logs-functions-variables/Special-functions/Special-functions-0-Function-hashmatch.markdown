@@ -24,7 +24,7 @@ in arg3
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent example
 
 {     
@@ -39,16 +39,16 @@ reports:
     "File has correct version";
 
 }
-~~~~
+```
 
 **Notes**:  
    
 
-~~~~
+```cf3
      
      (class) hashmatch(file,md5|sha1|crypt,hash-comparison);
      
-~~~~
+```
 
 This function may be used to determine whether a system has a particular
 version of a binary file (e.g. software patch).

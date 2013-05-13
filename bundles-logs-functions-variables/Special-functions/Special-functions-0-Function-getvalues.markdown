@@ -21,7 +21,7 @@ whose id is the argument and assign to variable
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 
 {
@@ -50,7 +50,7 @@ reports:
    "Found index: $(parameter_name)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

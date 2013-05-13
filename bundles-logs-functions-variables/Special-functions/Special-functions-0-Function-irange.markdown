@@ -20,11 +20,11 @@ Define a range of integer values for cfengine internal use
 **Example**:  
    
 
-~~~~
+```cf3
 irange("1","100");
 
 irange(ago(0,0,0,1,30,0), "0");
-~~~~
+```
 
 **Notes**:  
    

@@ -19,11 +19,11 @@ Calculate whether argument is false
 **Example**:  
    
 
-~~~~
+```cf3
 commands:
   "/usr/bin/generate_config $(config)"
     ifvarclass => not(fileexists("/etc/config/$(config)"));
-~~~~
+```
 
 **Notes**:  
    

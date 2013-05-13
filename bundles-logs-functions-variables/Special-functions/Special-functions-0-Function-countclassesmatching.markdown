@@ -19,7 +19,7 @@ Count the number of defined classes matching regex arg1
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent example
 {
 vars:
@@ -33,7 +33,7 @@ reports:
     "Found $(num) classes matching";
 
 }
-~~~~
+```
 
 **Notes**:  
    

@@ -21,7 +21,7 @@ Extract the list of hosts with the given class set from the hub database
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -42,7 +42,7 @@ am_policy_hub::
          edit_line => insert_lines("host=$(host_list)"),
             create => "true";
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -59,5 +59,5 @@ hub to construct custom configuration files for (classes of) hosts.
 
 Availability: Enterprise editions of CFEngine only.
 
-~~~~
-~~~~
+```cf3
+```

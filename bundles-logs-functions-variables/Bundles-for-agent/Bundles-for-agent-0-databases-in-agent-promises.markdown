@@ -55,7 +55,7 @@ and CFEngine cannot make promises on their behalf, unless they promise
 pre-requisite for making SQL database promises is to grant a point of
 access on the server.
 
-~~~~
+```cf3
      
       databases:
      
@@ -80,11 +80,11 @@ access on the server.
        db_server_connection_db = "database we can connect to";
        }
      
-~~~~
+```
 
   
 
-~~~~
+```cf3
 body common control
 {
 bundlesequence => { "databases" };
@@ -141,7 +141,7 @@ body contain as_user(x)
 {
 exec_owner => "$(x)";
 }
-~~~~
+```
 
   
 
@@ -170,19 +170,16 @@ a hierarchy of depth 1.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: User name for database connection
+The user name for a database connection is defined by `db_server_order`.
 
 **Example**:  
    
 
-~~~~
+```cf3
      
      db_server_owner => "mark";
      
-~~~~
-
-**Notes**:  
-   
+```  
    
 
 `db_server_password`
@@ -191,20 +188,16 @@ a hierarchy of depth 1.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Clear text password for database connection
+The clear text password for a database connection is defined by `db_server_password`.
 
 **Example**:  
    
 
-~~~~
+```cf3
      
      db_server_password => "xyz.1234";
      
-~~~~
-
-**Notes**:  
-   
-   
+```
 
 `db_server_host`
 
@@ -212,22 +205,13 @@ a hierarchy of depth 1.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Hostname or address for connection to database (blank
-means localhost)
+The hostname or address for a database connection is defined by `db_server_host`. A blank value is equal to localhost.
 
-**Example**:  
-   
-
-~~~~
+```cf3
      
      db_server_host => "sqlserv.example.org";
      
-~~~~
-
-**Notes**:  
-   
-
-Hostname or IP address of the server.   
+```
 
 `db_server_type`
 
@@ -235,27 +219,23 @@ Hostname or IP address of the server.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                     postgres
                     mysql
-~~~~
-
-**Synopsis**: The dialect of the database server
+```
 
 **Default value:** none
+
+The type of database server is defined by `db_server_type`.
 
 **Example**:  
    
 
-~~~~
+```cf3
      
      db_server_type => "postgres";
      
-~~~~
-
-**Notes**:  
-   
-   
+```
 
 `db_server_connection_db`
 
@@ -263,13 +243,18 @@ Hostname or IP address of the server.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The name of an existing database to connect to in order to
-create/manage other databases
+The name of an existing database to connect to in order to create/manage other databases is defined by `db_server_connection_db`.
+
+In order to create a database on a database server (all of which practice voluntary cooperation), one has to be able to connect to the
+server, however, without an existing database this is not allowed. Thus, database servers provide a default database that can be connected to in order to thereafter create new databases. These are called `postgres` and `mysql` for their respective database servers.
+
+For the knowledge agent, this setting is made in the control body, for database verification promises, it is made in the `database_server` body.
+
 
 **Example**:  
    
 
-~~~~
+```cf3
      
      body database_server myserver(x)
      {
@@ -280,23 +265,10 @@ create/manage other databases
      db_server_connection_db => "$(x)";
      }
      
-~~~~
+```
 
 where x is currently `mysql` or `postgres`.
 
-**Notes**:  
-   
-
-In order to create a database on a database server (all of which
-practice voluntary cooperation), one has to be able to connect to the
-server, however, without an existing database this is not allowed. Thus,
-database servers provide a default database that can be connected to in
-order to thereafter create new databases. These are called `postgres`
-and `mysql` for their respective database servers.
-
-For the knowledge agent, this setting is made in the control body, for
-database verification promises, it is made in the `database_server`
-body.
 
 #### `database_type`
 
@@ -304,24 +276,21 @@ body.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                sql
                ms_registry
-~~~~
+```
 
 **Default value:** none
 
-**Synopsis**: The type of database that is to be manipulated
+The type of database that is to be manipulated is defined by `database_type`
 
 **Example**:  
    
 
-~~~~
+```cf3
 database_type => "ms_registry";
-~~~~
-
-**Notes**:  
-   
+```
 
 #### `database_operation`
 
@@ -329,26 +298,23 @@ database_type => "ms_registry";
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                create
                delete
                drop
                cache
                verify
                restore
-~~~~
+```
 
-**Synopsis**: The nature of the promise - to be or not to be
+The nature of the promise is defined by `database_operation`.
 
 **Example**:  
    
 
-~~~~
+```cf3
 database_operation => "create";
-~~~~
-
-**Notes**:  
-   
+```
 
 #### `database_columns`
 
@@ -356,13 +322,15 @@ database_operation => "create";
 
 **Allowed input range**: `.*`
 
-**Synopsis**: A list of column definitions to be promised by SQL
-databases
+A list of column definitions to be promised by SQL databases can be defined in a `database_columns` slist.
+
+Columns are a list of tuplets (Name,type,size). Array items are triplets, and fixed size data elements are doublets.
+
 
 **Example**:  
    
 
-~~~~
+```cf3
   "cf_topic_maps/topics"
 
     database_operation => "create",
@@ -376,13 +344,7 @@ databases
                         },
 
     database_server => myserver;
-~~~~
-
-**Notes**:  
-   
-
-Columns are a list of tuplets (Name,type,size). Array items are
-triplets, and fixed size data elements are doublets.
+```
 
 #### `database_rows`
 
@@ -390,13 +352,18 @@ triplets, and fixed size data elements are doublets.
 
 **Allowed input range**: `.*,.*`
 
-**Synopsis**: An ordered list of row values to be promised by SQL
-databases
+An ordered list of row values to be promised by SQL databases can be defined in a `database_rows` slist.
+
+This constraint is used only in adding data to database columns. Rows are considered to be instances of individual columns.
+
+In the case of the system registry on Windows, the rows represent data on data-value pairs. The currently supported types (the middle field)
+for the Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string) and `REG_DWORD` (double word).
+
 
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent databases
 
 {
@@ -412,18 +379,7 @@ databases:
     database_rows => { "value1,REG_SZ,new value 1", "value2,REG_DWORD,12345"} ,
     database_type     => "ms_registry";
 }
-~~~~
-
-**Notes**:  
-   
-
-This constraint is used only in adding data to database columns. Rows
-are considered to be instances of individual columns.
-
-In the case of the system registry on Windows, the rows represent data
-on data-value pairs. The currently supported types (the middle field)
-for the Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ`
-(expandable string) and `REG_DWORD` (double word).
+```
 
 #### `registry_exclude`
 
@@ -431,13 +387,16 @@ for the Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ`
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: A list of regular expressions to ignore in key/value
-verification
+A list of regular expressions to ignore in key/value verification can be defined in a `registry_exclude` slist.
+
+During recursive Windows registry scanning, this option allows us to ignore keys of values matching a list of regular expressions. Some
+values in the registry are ephemeral and some should not be considered. This provides a convenient way of avoiding names. It is analogous to
+`exclude_dirs` for files.
 
 **Example**:  
    
 
-~~~~
+```cf3
 databases:
 
  "HKEY_LOCAL_MACHINE\SOFTWARE"
@@ -454,13 +413,5 @@ databases:
                         },
 
     database_type     => "ms_registry";
-~~~~
+```
 
-**Notes**:  
-   
-
-During recursive Windows registry scanning, this option allows us to
-ignore keys of values matching a list of regular expressions. Some
-values in the registry are ephemeral and some should not be considered.
-This provides a convenient way of avoiding names. It is analogous to
-`exclude_dirs` for files.

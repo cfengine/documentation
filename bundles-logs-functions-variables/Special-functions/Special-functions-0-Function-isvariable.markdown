@@ -20,7 +20,7 @@ True if the named variable is defined
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 
 {
@@ -47,7 +47,7 @@ reports:
     "Variable exists: \"$(bla)\"..";
 
 }
-~~~~
+```
 
 **Notes**:  
    

@@ -30,7 +30,7 @@ first-come-first-served basis. Thus file objects (promisers) should be
 listed in order of most-specific file first. In this way, specific
 promises will override less specific ones.
 
-~~~~
+```cf3
      
       access:
      
@@ -39,13 +39,13 @@ promises will override less specific ones.
            admit   = { "hostname", "ipv4_address", "ipv6_address"  };
      
      
-~~~~
+```
 
   
 
 Example:
 
-~~~~
+```cf3
 #########################################################
 # Server config
 #########################################################
@@ -108,7 +108,7 @@ access:
 
 
 }
-~~~~
+```
 
   
 
@@ -133,13 +133,13 @@ objects
 **Example**:  
    
 
-~~~~
+```cf3
 access:
 
   "/home/mark/LapTop"
 
     admit   => { "127.0.0.1", "192.168.0.1/24", ".*\.domain\.tld"  };
-~~~~
+```
 
 **Notes**:  
    
@@ -164,7 +164,7 @@ objects
 **Example**:  
    
 
-~~~~
+```cf3
 bundle server access_rules()
 
 {
@@ -175,7 +175,7 @@ access:
     admit   => { ".*\.example\.org" },
     deny    => { "badhost_1\.example\.org", "badhost_1\.example\.org" };
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -199,7 +199,7 @@ read-privilege on the server
 **Example**:  
    
 
-~~~~
+```cf3
 access:
 
  "/home"
@@ -210,7 +210,7 @@ access:
      # Backup needs to have access to all users
 
      maproot => { "backup_host.example.org" };
-~~~~
+```
 
 **Notes**:  
    
@@ -232,14 +232,14 @@ files if the connecting user does not own the file on the server.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                true
                false
                yes
                no
                on
                off
-~~~~
+```
 
 **Default value:** false
 
@@ -249,14 +249,14 @@ conditional on the connection from the client being encrypted
 **Example**:  
    
 
-~~~~
+```cf3
 access:
 
    "/path/file"
 
     admit     => { ".*\.example\.org" },
     ifencrypted => "true";
-~~~~
+```
 
 **Notes**:  
    
@@ -270,13 +270,13 @@ connection is encrypted.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                path
                literal
                context
                query
                variable
-~~~~
+```
 
 **Synopsis**: The type of object being granted access (the default
 grants access to files)
@@ -284,7 +284,7 @@ grants access to files)
 **Example**:  
    
 
-~~~~
+```cf3
 
 bundle server access_rules()
 
@@ -323,7 +323,7 @@ access:
 
 
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -351,14 +351,14 @@ host (which for some reason is not available directly through policy on
 the client, e.g. because they have different policies), then you could
 use the following construction:
 
-~~~~
+```cf3
 access:
 
   "$(variable_name)"
 
          handle => "variable_name",
   resource_type => "literal";
-~~~~
+```
 
 If the resource type is `context`, the promiser is treated as a regular
 expression to match persistent classes defined on the server host. If
