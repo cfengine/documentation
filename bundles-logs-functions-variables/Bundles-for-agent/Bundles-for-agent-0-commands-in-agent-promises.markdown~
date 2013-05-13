@@ -512,7 +512,8 @@ body contain not_paranoid
 }
 ```
 
-Modules inherit the environment variables from cfagent and accept arguments, just as a regular command does.
+Modules inherit the environment variables from cfagent and accept
+arguments, just as a regular command does.
 
 ```cf3
      #!/bin/sh
