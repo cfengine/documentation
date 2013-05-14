@@ -18,11 +18,11 @@ CFE_DIR: _site
 paginate: 500
 
 pygments: true
-#markdown: redcarpet2
-#redcarpet:
-#  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
-markdown:  rdiscount
-pandoc:  true
+markdown: redcarpet2
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
+#markdown:  rdiscount
+#pandoc:  true
 asset_pipeline:
   bundle: true            # Default = true
   compress: true          # Default = true
