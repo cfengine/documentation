@@ -21,7 +21,7 @@ Return the hash of arg1, type arg2 and assign to a variable
 **Example**:  
    
 
-~~~~
+```cf3
 
 body common control
 
@@ -45,7 +45,7 @@ reports:
     "Hashed to: $(md5)";
 
 }
-~~~~
+```
 
 **Notes**:  
    

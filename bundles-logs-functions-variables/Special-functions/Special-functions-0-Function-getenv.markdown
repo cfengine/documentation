@@ -22,7 +22,7 @@ Return the environment variable named arg1, truncated at arg2 characters
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent example
 {
 vars:
@@ -44,7 +44,7 @@ reports:
    "The named variable PATH does not exist";
 
 }
-~~~~
+```
 
 **Notes**:  
    

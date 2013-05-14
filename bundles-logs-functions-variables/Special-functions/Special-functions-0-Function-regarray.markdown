@@ -21,7 +21,7 @@ True if arg1 matches any item in the associative array with id=arg2
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 
 {
@@ -55,7 +55,7 @@ reports:
     "Not found in list";
 
 }
-~~~~
+```
 
 **Notes**:  
    

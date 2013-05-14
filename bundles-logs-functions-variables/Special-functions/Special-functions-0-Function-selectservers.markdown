@@ -29,7 +29,7 @@ number, set array of names
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 
 {
@@ -73,7 +73,7 @@ reports:
 
 }
 
-~~~~
+```
 
 **Notes**:  
    

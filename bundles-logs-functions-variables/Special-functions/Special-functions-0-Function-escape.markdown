@@ -19,12 +19,12 @@ Escape regular expression characters in a string
 **Example**:  
    
 
-~~~~
+```cf3
 bundle server control
 {
 allowconnects         => { "127\.0\.0\.1", escape("192.168.2.1") };
 }
-~~~~
+```
 
 **Notes**:  
    

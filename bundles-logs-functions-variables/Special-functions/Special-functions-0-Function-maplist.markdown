@@ -22,7 +22,7 @@ Return a list with each element modified by a pattern based \$(this)
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent test
 {
 vars:
@@ -34,7 +34,7 @@ reports:
  linux::
   "Transform: $(newlist)";
 }
-~~~~
+```
 
 **Notes**:  
    

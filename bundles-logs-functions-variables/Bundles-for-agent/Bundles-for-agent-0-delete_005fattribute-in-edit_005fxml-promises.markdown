@@ -21,7 +21,7 @@ attribute to be deleted.
 
   
 
-~~~~
+```cf3
 bundle edit_xml example
   {
   delete_attribute:
@@ -29,7 +29,7 @@ bundle edit_xml example
 
     select_xpath => "/Server/Service/Engine/Host";
   }
-~~~~
+```
 
   
 

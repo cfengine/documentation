@@ -29,7 +29,7 @@ other machine.
 
   
 
-~~~~
+```cf3
  site1::
 
   "unique_name1"
@@ -45,7 +45,7 @@ other machine.
             environment_type => "xen_network",
            environment_state => "create",
             environment_host => "atlas";
-~~~~
+```
 
   
 
@@ -74,7 +74,7 @@ guest machine
 **Example**:  
    
 
-~~~~
+```cf3
 guest_environments:
 
  linux::
@@ -85,7 +85,7 @@ guest_environments:
         environment_type => "kvm",
        environment_state => "suspended",
         environment_host => "ubuntu";
-~~~~
+```
 
 **Notes**:  
    
@@ -114,7 +114,7 @@ This attribute is required.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body environment_interface vnet(primary)
      {
@@ -130,7 +130,7 @@ This attribute is required.
        env_network => "default_vnet2";
      
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -149,7 +149,7 @@ time.
 **Example**:  
    
 
-~~~~
+```cf3
      body environment_interface vnet(primary)
      {
      env_name      => "$(this.promiser)";
@@ -161,7 +161,7 @@ time.
      host2::
        env_network => "default_vnet2";
      }
-~~~~
+```
 
 **Notes**:  
    
@@ -180,7 +180,7 @@ identifier used as \`promiser' by the virtualization manager.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body environment_interface vnet(primary)
           {
@@ -194,7 +194,7 @@ identifier used as \`promiser' by the virtualization manager.
             env_network => "default_vnet2";
           }
      
-~~~~
+```
 
 #### `environment_resources` (body template)
 
@@ -211,7 +211,7 @@ identifier used as \`promiser' by the virtualization manager.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body environment_resources my_environment
      {
@@ -220,7 +220,7 @@ identifier used as \`promiser' by the virtualization manager.
      env_disk => "1024";  # in MB
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -242,7 +242,7 @@ This attribute conflicts with `env_spec`.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body environment_resources my_environment
      {
@@ -251,7 +251,7 @@ This attribute conflicts with `env_spec`.
      env_disk => "1024";  # in MB
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -273,7 +273,7 @@ environment (MB)
 **Example**:  
    
 
-~~~~
+```cf3
      
      body environment_resources my_environment
      {
@@ -282,7 +282,7 @@ environment (MB)
      env_disk => "1024";  # in MB
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -303,11 +303,11 @@ environment
 **Example**:  
    
 
-~~~~
+```cf3
      
      env_baseline => "/path/to/image";
      
-~~~~
+```
 
 **Notes**:  
    
@@ -326,7 +326,7 @@ for the virtual instance
 **Example**:  
    
 
-~~~~
+```cf3
      body environment_resources virt_xml(host)
      {
      env_spec => 
@@ -358,7 +358,7 @@ for the virtual instance
      ";
      }
      
-~~~~
+```
 
 **Notes**:  
    
@@ -375,20 +375,20 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                create
                delete
                running
                suspended
                down
-~~~~
+```
 
 **Synopsis**: The desired dynamical state of the specified environment
 
 **Example**:  
    
 
-~~~~
+```cf3
 guest_environments:
 
  linux::
@@ -400,7 +400,7 @@ guest_environments:
        environment_state => "suspended",
         environment_host => "ubuntu";
 
-~~~~
+```
 
 **Notes**:  
    
@@ -436,7 +436,7 @@ The guest machine is shut down, but not deallocated.
 
 **Allowed input range**:   
 
-~~~~
+```cf3
                xen
                kvm
                esx
@@ -449,14 +449,14 @@ The guest machine is shut down, but not deallocated.
                zone
                ec2
                eucalyptus
-~~~~
+```
 
 **Synopsis**: Virtual environment type
 
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent my_vm_cloud
 {
 guest_environments:
@@ -479,7 +479,7 @@ guest_environments:
        environment_state     => "delete",
        environment_host      => "atlas";
 }
-~~~~
+```
 
 **Notes**:  
    

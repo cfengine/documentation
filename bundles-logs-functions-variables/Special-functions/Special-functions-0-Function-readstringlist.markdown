@@ -25,7 +25,7 @@ Read and assign a list variable from a file of separated strings
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 
 {
@@ -48,7 +48,7 @@ reports:
     "List entry: $(mylist)";
 
 }
-~~~~
+```
 
 **ARGUMENTS**:
 
@@ -86,7 +86,7 @@ The maximum number of bytes to read from the file
 The following example file would be split into a list of the first ten
 Greek letters (alpha through kappa).
 
-~~~~
+```cf3
      
      alpha beta
      gamma # This is a comment
@@ -100,4 +100,4 @@ Greek letters (alpha through kappa).
      etc
      
      
-~~~~
+```

@@ -28,13 +28,13 @@ variable
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
   "dim_array" 
 
      int =>  readintarray("array_name","/tmp/array","#[^\n]*",":",10,4000);
-~~~~
+```
 
 **ARGUMENTS**:
 
@@ -76,17 +76,17 @@ Reads a two dimensional array from a file. One dimension is separated by
 the character specified in the argument, the other by the the lines in
 the file. The first field of the lines names the first array argument.
 
-~~~~
+```cf3
      
      1: 5:7:21:13
      2:19:8:14:14
      3:45:1:78:22
      4:64:2:98:99
-~~~~
+```
 
 Results in
 
-~~~~
+```cf3
      array_name[1][0]   1
      array_name[1][1]   5
      array_name[1][2]   7
@@ -107,4 +107,4 @@ Results in
      array_name[4][2]   2
      array_name[4][3]   98
      array_name[4][4]   99
-~~~~
+```

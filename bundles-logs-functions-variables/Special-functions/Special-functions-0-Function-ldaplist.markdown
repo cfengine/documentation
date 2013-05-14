@@ -25,7 +25,7 @@ Extract all named values from multiple ldap records
 **Example**:  
    
 
-~~~~
+```cf3
 vars:
 
    # Get all matching values for "uid" - should be a single record match
@@ -38,16 +38,16 @@ vars:
                            "subtree",
                            "none"
                            );
-~~~~
+```
 
 **Notes**:  
    
 
-~~~~
+```cf3
      
      (slist) ldaplist(uri,dn,filter,name,scope,security)
      
-~~~~
+```
 
 This function retrieves a single field from all matching LDAP records
 identified by the search parameters.
@@ -77,11 +77,11 @@ scope
 Menu option, the type of ldap search, from the specified root. May take
 values:
 
-~~~~
+```cf3
               subtree
               onelevel
               base
-~~~~
+```
 
   
 
@@ -91,8 +91,8 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-~~~~
+```cf3
                none
                ssl
                sasl
-~~~~
+```

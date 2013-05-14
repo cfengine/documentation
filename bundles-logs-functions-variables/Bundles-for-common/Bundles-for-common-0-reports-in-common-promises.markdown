@@ -15,7 +15,7 @@ Reports promises simply print messages. Outputting a message without
 qualification can be a \`dangerous' operation. In a large installation
 it could unleash an avalanche of messaging.
 
-~~~~
+```cf3
      
       reports:
      
@@ -24,7 +24,7 @@ it could unleash an avalanche of messaging.
            printfile = printfile_body,
            ...;
      
-~~~~
+```
 
 Messages outputted from report promises are prefixed with the letter R
 to distinguish them from other output; for example from `commands`.
@@ -34,7 +34,7 @@ has been replaced by `reports`.
 
   
 
-~~~~
+```cf3
 bundle agent report
 {
 reports:
@@ -48,7 +48,7 @@ reports:
      showstate => { "otherprocs", "rootprocs" };
 
 }
-~~~~
+```
 
   
 
@@ -76,7 +76,7 @@ friend reports.
 **Example**:  
    
 
-~~~~
+```cf3
 reports:
 
   linux::
@@ -85,7 +85,7 @@ reports:
 
           lastseen => "0",
      friend_pattern => "host1|host2|.*\.domain\.tld";
-~~~~
+```
 
 #### `intermittency`
 
@@ -126,22 +126,22 @@ files.
 
 In control:
 
-~~~~
+```cf3
 body agent control
 {
 lastseen => "false";
 }
-~~~~
+```
 
 See also in reports:
 
-~~~~
+```cf3
 reports:
 
   "Comment"
 
     lastseen => "10";
-~~~~
+```
 
 #### `printfile` (body template)
 
@@ -161,7 +161,7 @@ Include part of a file in a report.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body printfile example
      {
@@ -169,7 +169,7 @@ Include part of a file in a report.
      number_of_lines => "10";
      }
      
-~~~~
+```
 
   
 
@@ -187,14 +187,14 @@ Include the first 'x' number of lines of a file in a report.
 **Example**:  
    
 
-~~~~
+```cf3
      
      body printfile example
      {
      number_of_lines => "10";
      }
      
-~~~~
+```
 
 #### `report_to_file`
 
@@ -211,7 +211,7 @@ defaults to the standard output.
 **Example**:  
    
 
-~~~~
+```cf3
 bundle agent test
 {
 reports:
@@ -222,7 +222,7 @@ reports:
 
        report_to_file => "/tmp/test_log";
 }
-~~~~
+```
 
 #### `bundle_return_value_index`
 
@@ -237,7 +237,7 @@ return value with array index defined by this attribute.
 **Example**:  
    
 
-~~~~
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -275,7 +275,7 @@ reports:
       bundle_return_value_index => "2";
 
 }
-~~~~
+```
 
 **Notes**:  
    
@@ -294,14 +294,14 @@ reported to standard output
 **Example**:  
    
 
-~~~~
+```cf3
 reports:
   cfengine::
 
     "Comment"
 
       showstate => {"www_in", "ssh_out", "otherprocs" };
-~~~~
+```
 
 **Notes**:  
    

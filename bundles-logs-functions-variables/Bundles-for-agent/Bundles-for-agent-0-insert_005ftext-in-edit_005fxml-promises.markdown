@@ -21,7 +21,7 @@ literal string of text.
 
   
 
-~~~~
+```cf3
 bundle edit_xml example
   {
   insert_text:
@@ -29,7 +29,7 @@ bundle edit_xml example
 
     select_xpath => "/Server/Service/Engine/Host/Alias";
   }
-~~~~
+```
 
   
 

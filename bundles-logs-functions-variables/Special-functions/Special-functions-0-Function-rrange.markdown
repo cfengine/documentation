@@ -20,9 +20,9 @@ Define a range of real numbers for cfengine internal use
 **Example**:  
    
 
-~~~~
+```cf3
 
-~~~~
+```
 
 **Notes**:  
    
