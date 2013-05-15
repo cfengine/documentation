@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Variable-context-this
+title: Variable context this
 categories: [Special-Variables,Variable-context-this]
 published: true
 alias: Special-Variables-Variable-context-this.html
-tags: [Special-Variables,Variable-context-this]
+tags: [Special Variables,Variable context this]
 ---
 
 ### Variable context `this`

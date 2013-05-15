@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-islessthan
+title: Function islessthan
 categories: [Special-functions,Function-islessthan]
 published: true
 alias: Special-functions-Function-islessthan.html
-tags: [Special-functions,Function-islessthan]
+tags: [Special functions,Function islessthan]
 ---
 
 ### Function islessthan

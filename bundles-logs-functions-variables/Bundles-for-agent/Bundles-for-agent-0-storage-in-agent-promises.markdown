@@ -1,10 +1,10 @@
 ---
 layout: default
-title: storage-in-agent-promises
+title: storage in agent promises
 categories: [Bundles-for-agent,storage-in-agent-promises]
 published: true
 alias: Bundles-for-agent-storage-in-agent-promises.html
-tags: [Bundles-for-agent,storage-in-agent-promises]
+tags: [Bundles for agent,storage in agent promises]
 ---
 
 ### `storage` promises in agent

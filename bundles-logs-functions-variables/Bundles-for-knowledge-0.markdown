@@ -4,7 +4,7 @@ title:
 categories: [Bundles-for-knowledge]
 published: true
 alias: Bundles-for-knowledge.html
-tags: [Bundles-for-knowledge]
+tags: [Bundles for knowledge]
 ---
 
 Bundles of `knowledge`

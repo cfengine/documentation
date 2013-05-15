@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Variable-context-sys
+title: Variable context sys
 categories: [Special-Variables,Variable-context-sys]
 published: true
 alias: Special-Variables-Variable-context-sys.html
-tags: [Special-Variables,Variable-context-sys]
+tags: [Special Variables,Variable context sys]
 ---
 
 ### Variable context `sys`

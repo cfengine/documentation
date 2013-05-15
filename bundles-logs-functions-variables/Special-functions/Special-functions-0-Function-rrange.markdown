@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-rrange
+title: Function rrange
 categories: [Special-functions,Function-rrange]
 published: true
 alias: Special-functions-Function-rrange.html
-tags: [Special-functions,Function-rrange]
+tags: [Special functions,Function rrange]
 ---
 
 ### Function rrange

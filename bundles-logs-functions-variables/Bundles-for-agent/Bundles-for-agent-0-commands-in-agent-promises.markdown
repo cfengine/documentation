@@ -1,10 +1,10 @@
 ---
 layout: default
-title: commands-in-agent-promises
+title: commands in agent promises
 categories: [Bundles-for-agent,commands-in-agent-promises]
 published: true
 alias: Bundles-for-agent-commands-in-agent-promises.html
-tags: [Bundles-for-agent,commands-in-agent-promises]
+tags: [Bundles for agent,commands in agent promises]
 ---
 
 ### `commands` promises in agent

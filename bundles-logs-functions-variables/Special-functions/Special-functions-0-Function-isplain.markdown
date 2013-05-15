@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-isplain
+title: Function isplain
 categories: [Special-functions,Function-isplain]
 published: true
 alias: Special-functions-Function-isplain.html
-tags: [Special-functions,Function-isplain]
+tags: [Special functions,Function isplain]
 ---
 
 ### Function isplain

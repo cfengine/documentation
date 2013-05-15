@@ -1,10 +1,10 @@
 ---
 layout: default
-title: outputs-in-agent-promises
+title: outputs in agent promises
 categories: [Bundles-for-agent,outputs-in-agent-promises]
 published: true
 alias: Bundles-for-agent-outputs-in-agent-promises.html
-tags: [Bundles-for-agent,outputs-in-agent-promises]
+tags: [Bundles for agent,outputs in agent promises]
 ---
 
 ### `outputs` promises in agent

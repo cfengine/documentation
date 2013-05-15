@@ -1,10 +1,10 @@
 ---
 layout: default
-title: set_005ftext-in-edit_005fxml-promises
-categories: [Bundles-for-agent,set_005ftext-in-edit_005fxml-promises]
+title: set ftext in edit fxml promises
+categories: [Bundles-for-agent,set-ftext-in-edit-fxml-promises]
 published: true
-alias: Bundles-for-agent-set_005ftext-in-edit_005fxml-promises.html
-tags: [Bundles-for-agent,set_005ftext-in-edit_005fxml-promises]
+alias: Bundles-for-agent-set-ftext-in-edit-fxml-promises.html
+tags: [Bundles for agent,set ftext in edit fxml promises]
 ---
 
 ### `set_text` promises in edit\_xml

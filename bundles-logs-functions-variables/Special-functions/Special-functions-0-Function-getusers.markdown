@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-getusers
+title: Function getusers
 categories: [Special-functions,Function-getusers]
 published: true
 alias: Special-functions-Function-getusers.html
-tags: [Special-functions,Function-getusers]
+tags: [Special functions,Function getusers]
 ---
 
 ### Function getusers

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Miscellaneous-in-edit_005fline-promises
-categories: [Bundles-for-agent,Miscellaneous-in-edit_005fline-promises]
+title: Miscellaneous in edit fline promises
+categories: [Bundles-for-agent,Miscellaneous-in-edit-fline-promises]
 published: true
-alias: Bundles-for-agent-Miscellaneous-in-edit_005fline-promises.html
-tags: [Bundles-for-agent,Miscellaneous-in-edit_005fline-promises]
+alias: Bundles-for-agent-Miscellaneous-in-edit-fline-promises.html
+tags: [Bundles for agent,Miscellaneous in edit fline promises]
 ---
 
 ### Miscelleneous in `edit_line` promises

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-usemodule
+title: Function usemodule
 categories: [Special-functions,Function-usemodule]
 published: true
 alias: Special-functions-Function-usemodule.html
-tags: [Special-functions,Function-usemodule]
+tags: [Special functions,Function usemodule]
 ---
 
 ### Function usemodule

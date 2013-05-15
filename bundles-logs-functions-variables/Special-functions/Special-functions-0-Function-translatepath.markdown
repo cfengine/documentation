@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-translatepath
+title: Function translatepath
 categories: [Special-functions,Function-translatepath]
 published: true
 alias: Special-functions-Function-translatepath.html
-tags: [Special-functions,Function-translatepath]
+tags: [Special functions,Function translatepath]
 ---
 
 ### Function translatepath

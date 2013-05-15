@@ -1,10 +1,10 @@
 ---
 layout: default
-title: insert_005flines-in-edit_005fline-promises
-categories: [Bundles-for-agent,insert_005flines-in-edit_005fline-promises]
+title: insert flines in edit fline promises
+categories: [Bundles-for-agent,insert-flines-in-edit-fline-promises]
 published: true
-alias: Bundles-for-agent-insert_005flines-in-edit_005fline-promises.html
-tags: [Bundles-for-agent,insert_005flines-in-edit_005fline-promises]
+alias: Bundles-for-agent-insert-flines-in-edit-fline-promises.html
+tags: [Bundles for agent,insert flines in edit fline promises]
 ---
 
 ### `insert_lines` promises in edit\_line

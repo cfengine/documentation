@@ -1,10 +1,10 @@
 ---
 layout: default
-title: delete_005ftree-in-edit_005fxml-promises
-categories: [Bundles-for-agent,delete_005ftree-in-edit_005fxml-promises]
+title: delete ftree in edit fxml promises
+categories: [Bundles-for-agent,delete-ftree-in-edit-fxml-promises]
 published: true
-alias: Bundles-for-agent-delete_005ftree-in-edit_005fxml-promises.html
-tags: [Bundles-for-agent,delete_005ftree-in-edit_005fxml-promises]
+alias: Bundles-for-agent-delete-ftree-in-edit-fxml-promises.html
+tags: [Bundles for agent,delete ftree in edit fxml promises]
 ---
 
 ### `delete_tree` promises in edit\_xml

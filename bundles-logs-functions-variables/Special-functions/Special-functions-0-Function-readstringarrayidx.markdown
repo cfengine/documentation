@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-readstringarrayidx
+title: Function readstringarrayidx
 categories: [Special-functions,Function-readstringarrayidx]
 published: true
 alias: Special-functions-Function-readstringarrayidx.html
-tags: [Special-functions,Function-readstringarrayidx]
+tags: [Special functions,Function readstringarrayidx]
 ---
 
 ### Function readstringarrayidx

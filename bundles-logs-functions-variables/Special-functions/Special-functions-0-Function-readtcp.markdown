@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-readtcp
+title: Function readtcp
 categories: [Special-functions,Function-readtcp]
 published: true
 alias: Special-functions-Function-readtcp.html
-tags: [Special-functions,Function-readtcp]
+tags: [Special functions,Function readtcp]
 ---
 
 ### Function readtcp

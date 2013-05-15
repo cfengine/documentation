@@ -1,10 +1,10 @@
 ---
 layout: default
-title: delete_005fattribute-in-edit_005fxml-promises
-categories: [Bundles-for-agent,delete_005fattribute-in-edit_005fxml-promises]
+title: delete fattribute in edit fxml promises
+categories: [Bundles-for-agent,delete-fattribute-in-edit-fxml-promises]
 published: true
-alias: Bundles-for-agent-delete_005fattribute-in-edit_005fxml-promises.html
-tags: [Bundles-for-agent,delete_005fattribute-in-edit_005fxml-promises]
+alias: Bundles-for-agent-delete-fattribute-in-edit-fxml-promises.html
+tags: [Bundles for agent,delete fattribute in edit fxml promises]
 ---
 
 ### `delete_attribute` promises in edit\_xml

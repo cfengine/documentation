@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-hostswithclass
+title: Function hostswithclass
 categories: [Special-functions,Function-hostswithclass]
 published: true
 alias: Special-functions-Function-hostswithclass.html
-tags: [Special-functions,Function-hostswithclass]
+tags: [Special functions,Function hostswithclass]
 ---
 
 ### Function hostswithclass

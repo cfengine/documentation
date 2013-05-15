@@ -4,7 +4,7 @@ title:
 categories: [Bundles-for-server]
 published: true
 alias: Bundles-for-server.html
-tags: [Bundles-for-server]
+tags: [Bundles for server]
 ---
 
 Bundles of `server`

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: guest_005fenvironments-in-agent-promises
-categories: [Bundles-for-agent,guest_005fenvironments-in-agent-promises]
+title: guest fenvironments in agent promises
+categories: [Bundles-for-agent,guest-fenvironments-in-agent-promises]
 published: true
-alias: Bundles-for-agent-guest_005fenvironments-in-agent-promises.html
-tags: [Bundles-for-agent,guest_005fenvironments-in-agent-promises]
+alias: Bundles-for-agent-guest-fenvironments-in-agent-promises.html
+tags: [Bundles for agent,guest fenvironments in agent promises]
 ---
 
 ### `guest_environments` promises in agent
