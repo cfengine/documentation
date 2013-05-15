@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-remoteclassesmatching
+title: Function remoteclassesmatching
 categories: [Special-functions,Function-remoteclassesmatching]
 published: true
 alias: Special-functions-Function-remoteclassesmatching.html
-tags: [Special-functions,Function-remoteclassesmatching]
+tags: [Special functions,Function remoteclassesmatching]
 ---
 
 ### Function remoteclassesmatching

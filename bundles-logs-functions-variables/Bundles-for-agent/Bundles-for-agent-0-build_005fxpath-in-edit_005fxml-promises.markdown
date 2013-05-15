@@ -1,10 +1,10 @@
 ---
 layout: default
-title: build_005fxpath-in-edit_005fxml-promises
-categories: [Bundles-for-agent,build_005fxpath-in-edit_005fxml-promises]
+title: build fxpath in edit fxml promises
+categories: [Bundles-for-agent,build-fxpath-in-edit-fxml-promises]
 published: true
-alias: Bundles-for-agent-build_005fxpath-in-edit_005fxml-promises.html
-tags: [Bundles-for-agent,build_005fxpath-in-edit_005fxml-promises]
+alias: Bundles-for-agent-build-fxpath-in-edit-fxml-promises.html
+tags: [Bundles for agent,build fxpath in edit fxml promises]
 ---
 
 ### `build_xpath` promises in edit\_xml

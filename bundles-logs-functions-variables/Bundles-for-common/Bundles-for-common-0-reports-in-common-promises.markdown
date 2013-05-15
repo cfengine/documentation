@@ -1,10 +1,10 @@
 ---
 layout: default
-title: reports-in-common-promises
+title: reports in common promises
 categories: [Bundles-for-common,reports-in-common-promises]
 published: true
 alias: Bundles-for-common-reports-in-common-promises.html
-tags: [Bundles-for-common,reports-in-common-promises]
+tags: [Bundles for common,reports in common promises]
 ---
 
 ### `reports` promises in \*

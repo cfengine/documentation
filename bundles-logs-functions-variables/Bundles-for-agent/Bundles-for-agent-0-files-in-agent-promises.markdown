@@ -1,10 +1,10 @@
 ---
 layout: default
-title: files-in-agent-promises
+title: files in agent promises
 categories: [Bundles-for-agent,files-in-agent-promises]
 published: true
 alias: Bundles-for-agent-files-in-agent-promises.html
-tags: [Bundles-for-agent,files-in-agent-promises]
+tags: [Bundles for agent,files in agent promises]
 ---
 
 ### `files` promises in agent

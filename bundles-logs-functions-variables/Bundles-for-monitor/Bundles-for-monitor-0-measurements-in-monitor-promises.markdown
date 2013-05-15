@@ -1,10 +1,10 @@
 ---
 layout: default
-title: measurements-in-monitor-promises
+title: measurements in monitor promises
 categories: [Bundles-for-monitor,measurements-in-monitor-promises]
 published: true
 alias: Bundles-for-monitor-measurements-in-monitor-promises.html
-tags: [Bundles-for-monitor,measurements-in-monitor-promises]
+tags: [Bundles for monitor,measurements in monitor promises]
 ---
 
 ### `measurements` promises in monitor

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: processes-in-agent-promises
+title: processes in agent promises
 categories: [Bundles-for-agent,processes-in-agent-promises]
 published: true
 alias: Bundles-for-agent-processes-in-agent-promises.html
-tags: [Bundles-for-agent,processes-in-agent-promises]
+tags: [Bundles for agent,processes in agent promises]
 ---
 
 ### `processes` promises in agent

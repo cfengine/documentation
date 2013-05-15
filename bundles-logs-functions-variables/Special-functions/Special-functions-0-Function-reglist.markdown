@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-reglist
+title: Function reglist
 categories: [Special-functions,Function-reglist]
 published: true
 alias: Special-functions-Function-reglist.html
-tags: [Special-functions,Function-reglist]
+tags: [Special functions,Function reglist]
 ---
 
 ### Function reglist

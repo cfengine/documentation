@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-canonify
+title: Function canonify
 categories: [Special-functions,Function-canonify]
 published: true
 alias: Special-functions-Function-canonify.html
-tags: [Special-functions,Function-canonify]
+tags: [Special functions,Function canonify]
 ---
 
 ### Function canonify

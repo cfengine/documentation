@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-isvariable
+title: Function isvariable
 categories: [Special-functions,Function-isvariable]
 published: true
 alias: Special-functions-Function-isvariable.html
-tags: [Special-functions,Function-isvariable]
+tags: [Special functions,Function isvariable]
 ---
 
 ### Function isvariable

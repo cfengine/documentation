@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-regline
+title: Function regline
 categories: [Special-functions,Function-regline]
 published: true
 alias: Special-functions-Function-regline.html
-tags: [Special-functions,Function-regline]
+tags: [Special functions,Function regline]
 ---
 
 ### Function regline

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-ldaplist
+title: Function ldaplist
 categories: [Special-functions,Function-ldaplist]
 published: true
 alias: Special-functions-Function-ldaplist.html
-tags: [Special-functions,Function-ldaplist]
+tags: [Special functions,Function ldaplist]
 ---
 
 ### Function ldaplist

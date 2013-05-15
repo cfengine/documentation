@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-strcmp
+title: Function strcmp
 categories: [Special-functions,Function-strcmp]
 published: true
 alias: Special-functions-Function-strcmp.html
-tags: [Special-functions,Function-strcmp]
+tags: [Special functions,Function strcmp]
 ---
 
 ### Function strcmp

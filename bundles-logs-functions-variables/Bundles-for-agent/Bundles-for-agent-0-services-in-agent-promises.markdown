@@ -1,10 +1,10 @@
 ---
 layout: default
-title: services-in-agent-promises
+title: services in agent promises
 categories: [Bundles-for-agent,services-in-agent-promises]
 published: true
 alias: Bundles-for-agent-services-in-agent-promises.html
-tags: [Bundles-for-agent,services-in-agent-promises]
+tags: [Bundles for agent,services in agent promises]
 ---
 
 ### `services` promises in agent

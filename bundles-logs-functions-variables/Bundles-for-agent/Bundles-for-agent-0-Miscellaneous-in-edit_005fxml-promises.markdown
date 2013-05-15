@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Miscellaneous-in-edit_005fxml-promises
-categories: [Bundles-for-agent,Miscellaneous-in-edit_005fxml-promises]
+title: Miscellaneous in edit fxml promises
+categories: [Bundles-for-agent,Miscellaneous-in-edit-fxml-promises]
 published: true
-alias: Bundles-for-agent-Miscellaneous-in-edit_005fxml-promises.html
-tags: [Bundles-for-agent,Miscellaneous-in-edit_005fxml-promises]
+alias: Bundles-for-agent-Miscellaneous-in-edit-fxml-promises.html
+tags: [Bundles for agent,Miscellaneous in edit fxml promises]
 ---
 
 ### Miscelleneous in `edit_xml` promises

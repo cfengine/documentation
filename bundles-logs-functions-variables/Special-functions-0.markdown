@@ -4,7 +4,7 @@ title:
 categories: [Special-functions]
 published: true
 alias: Special-functions.html
-tags: [Special-functions]
+tags: [Special functions]
 ---
 
 Special functions

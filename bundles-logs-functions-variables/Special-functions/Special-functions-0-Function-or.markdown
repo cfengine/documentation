@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-or
+title: Function or
 categories: [Special-functions,Function-or]
 published: true
 alias: Special-functions-Function-or.html
-tags: [Special-functions,Function-or]
+tags: [Special functions,Function or]
 ---
 
 ### Function or

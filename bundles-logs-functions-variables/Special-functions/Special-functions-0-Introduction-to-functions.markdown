@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Introduction-to-functions
+title: Introduction to functions
 categories: [Special-functions,Introduction-to-functions]
 published: true
 alias: Special-functions-Introduction-to-functions.html
-tags: [Special-functions,Introduction-to-functions]
+tags: [Special functions,Introduction to functions]
 ---
 
 ### Introduction to Functions

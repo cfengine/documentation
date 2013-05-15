@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-selectservers
+title: Function selectservers
 categories: [Special-functions,Function-selectservers]
 published: true
 alias: Special-functions-Function-selectservers.html
-tags: [Special-functions,Function-selectservers]
+tags: [Special functions,Function selectservers]
 ---
 
 ### Function selectservers
