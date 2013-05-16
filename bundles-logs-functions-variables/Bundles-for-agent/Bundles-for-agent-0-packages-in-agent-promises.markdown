@@ -1,10 +1,10 @@
 ---
 layout: default
-title: packages-in-agent-promises
+title: packages in agent promises
 categories: [Bundles-for-agent,packages-in-agent-promises]
 published: true
 alias: Bundles-for-agent-packages-in-agent-promises.html
-tags: [Bundles-for-agent,packages-in-agent-promises]
+tags: [Bundles for agent,packages in agent promises]
 ---
 
 ### `packages` promises in agent

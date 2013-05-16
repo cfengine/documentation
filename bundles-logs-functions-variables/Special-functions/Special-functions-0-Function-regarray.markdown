@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-regarray
+title: Function regarray
 categories: [Special-functions,Function-regarray]
 published: true
 alias: Special-functions-Function-regarray.html
-tags: [Special-functions,Function-regarray]
+tags: [Special functions,Function regarray]
 ---
 
 ### Function regarray

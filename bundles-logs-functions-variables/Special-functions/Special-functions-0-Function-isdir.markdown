@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-isdir
+title: Function isdir
 categories: [Special-functions,Function-isdir]
 published: true
 alias: Special-functions-Function-isdir.html
-tags: [Special-functions,Function-isdir]
+tags: [Special functions,Function isdir]
 ---
 
 ### Function isdir

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: replace_005fpatterns-in-edit_005fline-promises
-categories: [Bundles-for-agent,replace_005fpatterns-in-edit_005fline-promises]
+title: replace fpatterns in edit fline promises
+categories: [Bundles-for-agent,replace-fpatterns-in-edit-fline-promises]
 published: true
-alias: Bundles-for-agent-replace_005fpatterns-in-edit_005fline-promises.html
-tags: [Bundles-for-agent,replace_005fpatterns-in-edit_005fline-promises]
+alias: Bundles-for-agent-replace-fpatterns-in-edit-fline-promises.html
+tags: [Bundles for agent,replace fpatterns in edit fline promises]
 ---
 
 ### `replace_patterns` promises in edit\_line

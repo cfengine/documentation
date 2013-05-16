@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-ago
+title: Function ago
 categories: [Special-functions,Function-ago]
 published: true
 alias: Special-functions-Function-ago.html
-tags: [Special-functions,Function-ago]
+tags: [Special functions,Function ago]
 ---
 
 ### Function ago

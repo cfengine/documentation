@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-hostsseen
+title: Function hostsseen
 categories: [Special-functions,Function-hostsseen]
 published: true
 alias: Special-functions-Function-hostsseen.html
-tags: [Special-functions,Function-hostsseen]
+tags: [Special functions,Function hostsseen]
 ---
 
 ### Function hostsseen

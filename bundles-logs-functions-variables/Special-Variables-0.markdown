@@ -4,7 +4,7 @@ title:
 categories: [Special-Variables]
 published: true
 alias: Special-Variables.html
-tags: [Special-Variables]
+tags: [Special Variables]
 ---
 
 Special Variables

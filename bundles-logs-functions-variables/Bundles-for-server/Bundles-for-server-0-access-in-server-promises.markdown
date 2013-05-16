@@ -1,10 +1,10 @@
 ---
 layout: default
-title: access-in-server-promises
+title: access in server promises
 categories: [Bundles-for-server,access-in-server-promises]
 published: true
 alias: Bundles-for-server-access-in-server-promises.html
-tags: [Bundles-for-server,access-in-server-promises]
+tags: [Bundles for server,access in server promises]
 ---
 
 ### `access` promises in server

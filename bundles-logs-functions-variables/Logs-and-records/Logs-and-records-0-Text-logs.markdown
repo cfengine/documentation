@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Text-logs
+title: Text logs
 categories: [Logs-and-records,Text-logs]
 published: true
 alias: Logs-and-records-Text-logs.html
-tags: [Logs-and-records,Text-logs]
+tags: [Logs and records,Text logs]
 ---
 
 ### Text logs

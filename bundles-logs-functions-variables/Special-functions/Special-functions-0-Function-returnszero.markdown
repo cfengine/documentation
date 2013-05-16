@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-returnszero
+title: Function returnszero
 categories: [Special-functions,Function-returnszero]
 published: true
 alias: Special-functions-Function-returnszero.html
-tags: [Special-functions,Function-returnszero]
+tags: [Special functions,Function returnszero]
 ---
 
 ### Function returnszero

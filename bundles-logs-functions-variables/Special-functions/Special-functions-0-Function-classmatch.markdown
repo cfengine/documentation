@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-classmatch
+title: Function classmatch
 categories: [Special-functions,Function-classmatch]
 published: true
 alias: Special-functions-Function-classmatch.html
-tags: [Special-functions,Function-classmatch]
+tags: [Special functions,Function classmatch]
 ---
 
 ### Function classmatch

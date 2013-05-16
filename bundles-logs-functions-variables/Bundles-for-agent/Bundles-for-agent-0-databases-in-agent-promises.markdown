@@ -1,10 +1,10 @@
 ---
 layout: default
-title: databases-in-agent-promises
+title: databases in agent promises
 categories: [Bundles-for-agent,databases-in-agent-promises]
 published: true
 alias: Bundles-for-agent-databases-in-agent-promises.html
-tags: [Bundles-for-agent,databases-in-agent-promises]
+tags: [Bundles for agent,databases in agent promises]
 ---
 
 ### `databases` promises in agent

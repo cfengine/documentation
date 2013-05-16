@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-getvalues
+title: Function getvalues
 categories: [Special-functions,Function-getvalues]
 published: true
 alias: Special-functions-Function-getvalues.html
-tags: [Special-functions,Function-getvalues]
+tags: [Special functions,Function getvalues]
 ---
 
 ### Function getvalues

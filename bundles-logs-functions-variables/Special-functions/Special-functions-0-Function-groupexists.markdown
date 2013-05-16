@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Function-groupexists
+title: Function groupexists
 categories: [Special-functions,Function-groupexists]
 published: true
 alias: Special-functions-Function-groupexists.html
-tags: [Special-functions,Function-groupexists]
+tags: [Special functions,Function groupexists]
 ---
 
 ### Function groupexists

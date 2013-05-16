@@ -1,10 +1,10 @@
 ---
 layout: default
-title: methods-in-agent-promises
+title: methods in agent promises
 categories: [Bundles-for-agent,methods-in-agent-promises]
 published: true
 alias: Bundles-for-agent-methods-in-agent-promises.html
-tags: [Bundles-for-agent,methods-in-agent-promises]
+tags: [Bundles for agent,methods in agent promises]
 ---
 
 ### `methods` promises in agent

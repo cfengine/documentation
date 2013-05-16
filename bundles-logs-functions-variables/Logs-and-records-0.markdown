@@ -4,7 +4,7 @@ title:
 categories: [Logs-and-records]
 published: true
 alias: Logs-and-records.html
-tags: [Logs-and-records]
+tags: [Logs and records]
 ---
 
 Logs and records

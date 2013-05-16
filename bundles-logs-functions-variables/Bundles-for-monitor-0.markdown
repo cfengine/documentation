@@ -4,7 +4,7 @@ title:
 categories: [Bundles-for-monitor]
 published: true
 alias: Bundles-for-monitor.html
-tags: [Bundles-for-monitor]
+tags: [Bundles for monitor]
 ---
 
 Bundles of `monitor`

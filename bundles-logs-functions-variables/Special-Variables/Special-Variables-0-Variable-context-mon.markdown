@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Variable-context-mon
+title: Variable context mon
 categories: [Special-Variables,Variable-context-mon]
 published: true
 alias: Special-Variables-Variable-context-mon.html
-tags: [Special-Variables,Variable-context-mon]
+tags: [Special Variables,Variable context mon]
 ---
 
 ### Variable context `mon`

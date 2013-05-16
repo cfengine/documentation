@@ -1,10 +1,10 @@
 ---
 layout: default
-title: delete_005flines-in-edit_005fline-promises
-categories: [Bundles-for-agent,delete_005flines-in-edit_005fline-promises]
+title: delete flines in edit fline promises
+categories: [Bundles-for-agent,delete-flines-in-edit-fline-promises]
 published: true
-alias: Bundles-for-agent-delete_005flines-in-edit_005fline-promises.html
-tags: [Bundles-for-agent,delete_005flines-in-edit_005fline-promises]
+alias: Bundles-for-agent-delete-flines-in-edit-fline-promises.html
+tags: [Bundles for agent,delete flines in edit fline promises]
 ---
 
 ### `delete_lines` promises in edit\_line
