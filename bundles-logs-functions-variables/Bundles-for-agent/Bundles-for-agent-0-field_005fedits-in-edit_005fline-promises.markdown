@@ -138,9 +138,11 @@ given by the space.
                     off
 ```
 
-**Synopsis**: true/false allow blank fields in a line (do not purge)
-
 **Default value:** false
+
+Setting `allow_blank_fields` defines how blank fields in a line are handled.
+   
+When editing a file using the field or column model, blank fields, especially at the start and end are generally discarded. If `allow_blank_fields` is set to true, CFEngine will retain the blank fields and print the appropriate number of field separators. 
 
 **Example**:  
    
@@ -155,13 +157,7 @@ given by the space.
      
 ```
 
-**Notes**:  
-   
 
-When editing a file using the field or column model, blank fields,
-especially at the start and end are generally discarded. If this is set
-to true, CFEngine will retain the blank fields and print the appropriate
-number of field separators.   
 
 `extend_fields`
 
@@ -178,10 +174,12 @@ number of field separators.
                     off
 ```
 
-**Synopsis**: true/false add new fields at end of line if necessary to
-complete edit
-
 **Default value:** false
+
+Setting `extend_fields` can add new fields, to avoid triggering an error.
+
+If a user specifies a field that does not exist, because there are not so many fields, this allows the number of fields to be extended. Without
+this setting, CFEngine will issue an error if a non-existent field is referenced. Blank fields in a tabular file can be eliminated or kept depending in this setting. If in doubt, set this to true. 
 
 **Example**:  
    
@@ -195,16 +193,7 @@ complete edit
      
 ```
 
-**Notes**:  
-   
-
-If a user specifies a field that does not exist, because there are not
-so many fields, this allows the number of fields to be extended. Without
-this setting, CFEngine will issue an error if a non-existent field is
-referenced. Blank fields in a tabular file can be eliminated or kept
-depending in this setting. If in doubt, set this to true.   
-
-`field_operation`
+ `field_operation`
 
 **Type**: (menu option)
 
@@ -218,9 +207,22 @@ depending in this setting. If in doubt, set this to true.
                     set
 ```
 
-**Synopsis**: Menu option policy for editing subfields
+**Default value**: append 
 
-**Default value:** none
+Menu option policy for editing subfields is determined by setting `field_operation`.
+
+The method by which to edit a field in multi-field/column editing of tabular files. The methods mean:
+
+append - append the specified value to the end of the field/column, separating (potentially) multiple values with value\_separator
+
+prepend - prepend the specified value at the beginning of the field/column, separating (potentially) multiple values with value\_separator
+
+alphanum - insert the specified value into the field/column, keeping all the values (separated by value\_separator) in alphanumerically sorted
+order
+
+set - replace the entire field/column with the specified value
+
+delete - delete the specified value (if present) in the specified field/column
 
 **Example**:  
    
@@ -234,30 +236,6 @@ depending in this setting. If in doubt, set this to true.
      
 ```
 
-**Notes**:  
-   
-
-The method by which to edit a field in multi-field/column editing of
-tabular files. The methods mean:
-
-append - append the specified value to the end of the field/column,
-separating (potentially) multiple values with value\_separator
-
-prepend - prepend the specified value at the beginning of the
-field/column, separating (potentially) multiple values with
-value\_separator
-
-alphanum - insert the specified value into the field/column, keeping all
-the values (separated by value\_separator) in alphanumerically sorted
-order
-
-set - replace the entire field/column with the specified value
-
-delete - delete the specified value (if present) in the specified
-field/column
-
-**Default value**: append   
-
 `field_separator`
 
 **Type**: string
@@ -267,6 +245,10 @@ field/column
 **Synopsis**: The regular expression used to separate fields in a line
 
 **Default value:** none
+
+Most tabular files are separated by simple characters, but by allowing a
+general regular expression one can make creative use of this model to
+edit all kinds of line-based text files.   
 
 **Example**:  
    
@@ -280,20 +262,14 @@ field/column
      
 ```
 
-**Notes**:  
-   
-
-Most tabular files are separated by simple characters, but by allowing a
-general regular expression one can make creative use of this model to
-edit all kinds of line-based text files.   
-
 `field_value`
 
 **Type**: string
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Set field value to a fixed value
+  Set a field to a constant value. For example, reset the value to a
+constant default, empty the field, or set it fixed list.   
 
 **Example**:  
    
@@ -307,11 +283,6 @@ edit all kinds of line-based text files.
      
 ```
 
-**Notes**:  
-   
-
-Set a field to a constant value. For example, reset the value to a
-constant default, empty the field, or set it fixed list.   
 
 `select_field`
 
@@ -319,8 +290,8 @@ constant default, empty the field, or set it fixed list.
 
 **Allowed input range**: `0,99999999`
 
-**Synopsis**: Integer index of the field required 0..n (default starts
-from 1)
+Setting `select_field` determines the index of the field required 0..n (default starts
+from 1). 
 
 **Example**:  
    
@@ -333,10 +304,7 @@ from 1)
      }
 ```
 
-**Notes**:  
-   
 
-Numbering starts from 1 (not from 0).   
 
 `start_fields_from_zero`
 
@@ -353,7 +321,11 @@ Numbering starts from 1 (not from 0).
                     off
 ```
 
-**Synopsis**: If set, the default field numbering starts from 0
+**Introduced**: Version 3.1.0b1,Nova 2.0.0b1 (2010)
+
+The numbering of fields is a matter for consistency and convention. Arrays are usually thought to start with first index equal to zero (0),
+but the first column in a file would normally be 1. By setting this option, you can tell CFEngine that the first column should be understood
+as number 0 instead, for consistency with other array functions.   
 
 **Example**:  
    
@@ -375,27 +347,15 @@ Numbering starts from 1 (not from 0).
      
 ```
 
-**Notes**:  
-   
-
-*History*: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
-
-The numbering of fields is a matter for consistency and convention.
-Arrays are usually thought to start with first index equal to zero (0),
-but the first column in a file would normally be 1. By setting this
-option, you can tell CFEngine that the first column should be understood
-as number 0 instead, for consistency with other array functions.   
-
 `value_separator`
 
 **Type**: string
 
 **Allowed input range**: `^.$`
 
-**Synopsis**: Character separator for subfields inside the selected
-field
-
 **Default value:** none
+
+Setting `value_separator` defines the character separator for subfields inside the selected field. For example, elements in the group file are separated by a colon (':'), but the lists of users in these fields are separated by a comma (',').
 
 **Example**:  
    
@@ -409,8 +369,4 @@ field
      
 ```
 
-**Notes**:  
-   
 
-For example, elements in the group file are separated by :, but the
-lists of users in these fields are separated by ,.
