@@ -33,6 +33,12 @@ But keeping this consistent gives us better navigation through the source files.
 
 ## Style Guide
 
+### Writing for the web
+
+* use subheadings to structure content
+* keep paragraphs short
+* support scanning of pages
+
 ### Spelling
 
 CFEngine documentation follows the American spelling.
@@ -76,6 +82,19 @@ As a general note, avoiding abbreviations provides better readibility.
 * etc. (and so forth)
 * vs.(versus)
 * et al. (and others)
+
+### Charts and graphs
+
+* use clear shapes
+* avoid shadows
+* stick to black, white, and grey
+* avoid background fill colors on large items
+
+### Code
+
+* use proper, consistent indentation
+* always run it through Pygments plus the appropriate lexer
+* avoid custom color schemes and hand-coded HTML
 
 ## Publishing
 

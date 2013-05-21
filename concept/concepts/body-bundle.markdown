@@ -1,3 +1,12 @@
+---
+layout: default
+title: Defining Promises: Bodies and Bundles
+categories: [CFEngine Concepts Guide]
+published: true
+alias: bodies-bundles.html
+tags: [Concepts Body Bundle]
+---
+
 ## Defining Promises: Bodies and Bundles
 
 CFEngine's promises are declarative, you tell CFEngine what promises

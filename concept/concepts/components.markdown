@@ -1,3 +1,12 @@
+---
+layout: default
+title: CFEngine Components
+categories: [CFEngine Concepts Guide]
+published: true
+alias: cfengine-components.html
+tags: [Concepts Components cf-agent]
+---
+
 ## CFEngine Components
 
 CFEngine is comprised of a number of components: components

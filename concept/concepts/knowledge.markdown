@@ -1,3 +1,12 @@
+---
+layout: default
+title: CFEngine Knowledge Management
+categories: [CFEngine Concepts Guide]
+published: false 
+alias: knowledge-management.html
+tags: [Concepts Knowledge]
+---
+
 ## Knowledge Management
 
 A unique aspect of CFEngine, that is fully developed in the commercial
