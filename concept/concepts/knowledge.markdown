@@ -1,10 +1,10 @@
 ---
 layout: default
 title: CFEngine Knowledge Management
-categories: [CFEngine Concepts Guide]
+categories: [CFEngine Concepts Guide, Knowledge Management]
 published: false 
-alias: knowledge-management.html
-tags: [Concepts Knowledge]
+alias: concept-guide-knowledge-management.html
+tags: [Concepts, Knowledge]
 ---
 
 ## Knowledge Management

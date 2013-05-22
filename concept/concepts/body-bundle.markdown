@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Defining Promises - Bodies and Bundles
-categories: [CFEngine Concepts Guide]
+categories: [CFEngine Concepts Guide, Bodies and Bundles]
 published: true
-alias: bodies-bundles.html
-tags: [Concepts Body Bundle]
+alias: concepts-bodies-bundles.html
+tags: [Concepts, Body, Bundle]
 ---
 
 ## Defining Promises: Bodies and Bundles

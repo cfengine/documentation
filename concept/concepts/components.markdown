@@ -1,10 +1,10 @@
 ---
 layout: default
 title: CFEngine Components
-categories: [CFEngine Concepts Guide]
+categories: [CFEngine Concepts Guide, Components]
 published: true
-alias: cfengine-components.html
-tags: [Concepts Components cf-agent]
+alias: concepts-components.html
+tags: [Concepts, Components, cf-agent]
 ---
 
 ## CFEngine Components
