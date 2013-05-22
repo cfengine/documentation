@@ -1,3 +1,12 @@
+---
+layout: default
+title: cf-agent
+categories: [Reference, Components, cf-agent]
+published: true
+alias: reference-component-cfagent.html
+tags: [Components]
+---
+
 # `cf-agent`
 
 Active agent - responsible for maintaining promises about the state
