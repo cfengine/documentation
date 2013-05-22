@@ -1,6 +1,6 @@
 ---
 layout: default
-title: cf-serverd
+title: server control promises 
 categories: [Reference, Components, cf-serverd, server control promises]
 published: true
 alias: reference-components-cfserverd-control-promises.html

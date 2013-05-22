@@ -1,6 +1,6 @@
 ---
 layout: default
-title: cf-execd
+title: executor control promises 
 categories: [Reference, Components, cf-execd, executor control promises]
 published: true
 alias: reference-components-cfexecd-control-promises.html
