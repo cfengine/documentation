@@ -11,25 +11,32 @@ the documentation, and maybe help the community of CFEngine users by correcting 
 
 ## File Structure
 
-Pages are organized hierarchically in category/subcategory relationships. Create a file with the same name as
-the category, and create folder with the same name and place files inside:
+Pages are organized hierarchically in category/subcategory relationships. Those are defined by the META data in the
+markdown file:
 
-* category.markdown
-* category
-    * category_subcategory.markdown
+    layout: default
+    title: The Title
+    categories: [Path, Of, Categories, This]
+    published: true|false
+    alias: path-of-categories-this.html
+    tags: [List, of, Tags with space]
 
-You must specify relation in the META categories too, ie 
+This creates the navigation structure to the left. The HTML files are all created into the same directory, so the alias
+META has to specify a unique filename.
 
-    cf-agent.markdown
-    categories: [Components, cf-agent]
+To make files easier to locate in the repository, the markdown sources are organized in a directory structure that
+corresponds with the categorization, ie
 
-or
+* documentation/Path/Of/Categories/This.markdown
 
-    cf-agent_inner.markdown
-    categories: [Components, cf-agent, cf-agent_inner]
+Markdown-files in each subdirectory can be created as well with content providing an overview for that category.
 
-Note that the file name is not actually important, Jekyll will use the alias you specified in META alias.
-But keeping this consistent gives us better navigation through the source files.
+Note that the file name is not actually important, Jekyll will use the alias you specified in META alias. But keeping
+this consistent gives us better navigation through the source files.
+
+## Images files
+
+...
 
 ## Style Guide
 
