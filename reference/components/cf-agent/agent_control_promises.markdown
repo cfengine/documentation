@@ -1,7 +1,7 @@
 ---
 layout: default
-title: cf-agent control promises 
-categories: [Reference, Components, cf-agent]
+title: cf-agent control promises
+categories: [Reference, Components, cf-agent, cfagent control promises]
 published: true
 alias: reference-components-cf-agent-control-promises.html
 tags: [Reference, Components, cf-agent, control promises]

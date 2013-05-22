@@ -4,7 +4,7 @@ title: cf-agent
 categories: [Reference, Components, cf-agent]
 published: true
 alias: reference-component-cfagent.html
-tags: [Components]
+tags: [Components, cf-agent]
 ---
 
 # `cf-agent`
