@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Variable context match
-categories: [Special-Variables,Variable-context-match]
+categories: [Special Variables,Variable context match]
 published: true
 alias: Special-Variables-Variable-context-match.html
 tags: [Special Variables,Variable context match]

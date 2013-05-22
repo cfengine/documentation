@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function parserealarray
-categories: [Special-functions,Function-parserealarray]
+categories: [Special functions,Function parserealarray]
 published: true
 alias: Special-functions-Function-parserealarray.html
 tags: [Special functions,Function parserealarray]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Text logs
-categories: [Logs-and-records,Text-logs]
+categories: [Logs and records,Text logs]
 published: true
 alias: Logs-and-records-Text-logs.html
 tags: [Logs and records,Text logs]

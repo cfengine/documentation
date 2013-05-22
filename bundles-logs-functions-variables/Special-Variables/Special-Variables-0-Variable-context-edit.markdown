@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Variable context edit
-categories: [Special-Variables,Variable-context-edit]
+categories: [Special Variables,Variable context edit]
 published: true
 alias: Special-Variables-Variable-context-edit.html
 tags: [Special Variables,Variable context edit]

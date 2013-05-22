@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function sum
-categories: [Special-functions,Function-sum]
+categories: [Special functions,Function sum]
 published: true
 alias: Special-functions-Function-sum.html
 tags: [Special functions,Function sum]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Variable context const
-categories: [Special-Variables,Variable-context-const]
+categories: [Special Variables,Variable context const]
 published: true
 alias: Special-Variables-Variable-context-const.html
 tags: [Special Variables,Variable context const]

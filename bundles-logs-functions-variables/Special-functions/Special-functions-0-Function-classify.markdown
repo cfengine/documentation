@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function classify
-categories: [Special-functions,Function-classify]
+categories: [Special functions,Function classify]
 published: true
 alias: Special-functions-Function-classify.html
 tags: [Special functions,Function classify]

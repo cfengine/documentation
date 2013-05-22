@@ -1,7 +1,7 @@
 ---
 layout: default
 title: State information
-categories: [Logs-and-records,State-information]
+categories: [Logs and records,State information]
 published: true
 alias: Logs-and-records-State-information.html
 tags: [Logs and records,State information]

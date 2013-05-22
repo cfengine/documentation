@@ -1,7 +1,7 @@
 ---
 layout: default
 title: meta in common promises
-categories: [Bundles-for-common,meta-in-common-promises]
+categories: [Bundles for common,meta in common promises]
 published: true
 alias: Bundles-for-common-meta-in-common-promises.html
 tags: [Bundles for common,meta in common promises]

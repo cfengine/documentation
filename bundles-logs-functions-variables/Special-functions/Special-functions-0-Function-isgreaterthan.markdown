@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function isgreaterthan
-categories: [Special-functions,Function-isgreaterthan]
+categories: [Special functions,Function isgreaterthan]
 published: true
 alias: Special-functions-Function-isgreaterthan.html
 tags: [Special functions,Function isgreaterthan]

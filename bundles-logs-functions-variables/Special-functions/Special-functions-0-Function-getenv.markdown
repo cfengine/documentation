@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function getenv
-categories: [Special-functions,Function-getenv]
+categories: [Special functions,Function getenv]
 published: true
 alias: Special-functions-Function-getenv.html
 tags: [Special functions,Function getenv]

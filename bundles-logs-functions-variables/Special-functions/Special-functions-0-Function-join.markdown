@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function join
-categories: [Special-functions,Function-join]
+categories: [Special functions,Function join]
 published: true
 alias: Special-functions-Function-join.html
 tags: [Special functions,Function join]

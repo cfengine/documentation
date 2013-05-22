@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function on
-categories: [Special-functions,Function-on]
+categories: [Special functions,Function on]
 published: true
 alias: Special-functions-Function-on.html
 tags: [Special functions,Function on]

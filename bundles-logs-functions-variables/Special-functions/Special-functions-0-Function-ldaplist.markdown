@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function ldaplist
-categories: [Special-functions,Function-ldaplist]
+categories: [Special functions,Function ldaplist]
 published: true
 alias: Special-functions-Function-ldaplist.html
 tags: [Special functions,Function ldaplist]

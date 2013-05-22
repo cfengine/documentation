@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function splayclass
-categories: [Special-functions,Function-splayclass]
+categories: [Special functions,Function splayclass]
 published: true
 alias: Special-functions-Function-splayclass.html
 tags: [Special functions,Function splayclass]

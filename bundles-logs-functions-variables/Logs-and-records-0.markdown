@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 
-categories: [Logs-and-records]
+categories: [Logs and records]
 published: true
 alias: Logs-and-records.html
 tags: [Logs and records]

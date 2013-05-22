@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function parseintarray
-categories: [Special-functions,Function-parseintarray]
+categories: [Special functions,Function parseintarray]
 published: true
 alias: Special-functions-Function-parseintarray.html
 tags: [Special functions,Function parseintarray]

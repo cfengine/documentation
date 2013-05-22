@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function filesize
-categories: [Special-functions,Function-filesize]
+categories: [Special functions,Function filesize]
 published: true
 alias: Special-functions-Function-filesize.html
 tags: [Special functions,Function filesize]

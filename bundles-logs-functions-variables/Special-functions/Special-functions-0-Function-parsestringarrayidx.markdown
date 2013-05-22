@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function parsestringarrayidx
-categories: [Special-functions,Function-parsestringarrayidx]
+categories: [Special functions,Function parsestringarrayidx]
 published: true
 alias: Special-functions-Function-parsestringarrayidx.html
 tags: [Special functions,Function parsestringarrayidx]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function readstringlist
-categories: [Special-functions,Function-readstringlist]
+categories: [Special functions,Function readstringlist]
 published: true
 alias: Special-functions-Function-readstringlist.html
 tags: [Special functions,Function readstringlist]

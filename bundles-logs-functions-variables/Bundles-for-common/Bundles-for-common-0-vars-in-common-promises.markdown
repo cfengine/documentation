@@ -1,7 +1,7 @@
 ---
 layout: default
 title: vars in common promises
-categories: [Bundles-for-common,vars-in-common-promises]
+categories: [Bundles for common,vars in common promises]
 published: true
 alias: Bundles-for-common-vars-in-common-promises.html
 tags: [Bundles for common,vars in common promises]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function readfile
-categories: [Special-functions,Function-readfile]
+categories: [Special functions,Function readfile]
 published: true
 alias: Special-functions-Function-readfile.html
 tags: [Special functions,Function readfile]

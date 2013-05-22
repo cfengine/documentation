@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function escape
-categories: [Special-functions,Function-escape]
+categories: [Special functions,Function escape]
 published: true
 alias: Special-functions-Function-escape.html
 tags: [Special functions,Function escape]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function rrange
-categories: [Special-functions,Function-rrange]
+categories: [Special functions,Function rrange]
 published: true
 alias: Special-functions-Function-rrange.html
 tags: [Special functions,Function rrange]

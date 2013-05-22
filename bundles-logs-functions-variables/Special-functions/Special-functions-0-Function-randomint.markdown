@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function randomint
-categories: [Special-functions,Function-randomint]
+categories: [Special functions,Function randomint]
 published: true
 alias: Special-functions-Function-randomint.html
 tags: [Special functions,Function randomint]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function hubknowledge
-categories: [Special-functions,Function-hubknowledge]
+categories: [Special functions,Function hubknowledge]
 published: true
 alias: Special-functions-Function-hubknowledge.html
 tags: [Special functions,Function hubknowledge]

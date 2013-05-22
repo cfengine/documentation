@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function getfields
-categories: [Special-functions,Function-getfields]
+categories: [Special functions,Function getfields]
 published: true
 alias: Special-functions-Function-getfields.html
 tags: [Special functions,Function getfields]

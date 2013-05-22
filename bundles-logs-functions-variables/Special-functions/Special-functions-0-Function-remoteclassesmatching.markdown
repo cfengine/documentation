@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function remoteclassesmatching
-categories: [Special-functions,Function-remoteclassesmatching]
+categories: [Special functions,Function remoteclassesmatching]
 published: true
 alias: Special-functions-Function-remoteclassesmatching.html
 tags: [Special functions,Function remoteclassesmatching]

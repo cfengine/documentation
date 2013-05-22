@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function readintlist
-categories: [Special-functions,Function-readintlist]
+categories: [Special functions,Function readintlist]
 published: true
 alias: Special-functions-Function-readintlist.html
 tags: [Special functions,Function readintlist]

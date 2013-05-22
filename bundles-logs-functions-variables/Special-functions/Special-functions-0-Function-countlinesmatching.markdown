@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function countlinesmatching
-categories: [Special-functions,Function-countlinesmatching]
+categories: [Special functions,Function countlinesmatching]
 published: true
 alias: Special-functions-Function-countlinesmatching.html
 tags: [Special functions,Function countlinesmatching]

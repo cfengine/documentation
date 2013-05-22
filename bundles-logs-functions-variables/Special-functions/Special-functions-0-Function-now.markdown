@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function now
-categories: [Special-functions,Function-now]
+categories: [Special functions,Function now]
 published: true
 alias: Special-functions-Function-now.html
 tags: [Special functions,Function now]

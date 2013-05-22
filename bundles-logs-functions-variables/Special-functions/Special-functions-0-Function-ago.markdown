@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function ago
-categories: [Special-functions,Function-ago]
+categories: [Special functions,Function ago]
 published: true
 alias: Special-functions-Function-ago.html
 tags: [Special functions,Function ago]

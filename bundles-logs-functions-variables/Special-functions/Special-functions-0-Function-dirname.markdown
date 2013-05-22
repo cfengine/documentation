@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function dirname
-categories: [Special-functions,Function-dirname]
+categories: [Special functions,Function dirname]
 published: true
 alias: Special-functions-Function-dirname.html
 tags: [Special functions,Function dirname]
