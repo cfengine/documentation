@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function readstringarray
-categories: [Special-functions,Function-readstringarray]
+categories: [Special functions,Function readstringarray]
 published: true
 alias: Special-functions-Function-readstringarray.html
 tags: [Special functions,Function readstringarray]

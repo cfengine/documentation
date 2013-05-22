@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function grep
-categories: [Special-functions,Function-grep]
+categories: [Special functions,Function grep]
 published: true
 alias: Special-functions-Function-grep.html
 tags: [Special functions,Function grep]

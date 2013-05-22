@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function remotescalar
-categories: [Special-functions,Function-remotescalar]
+categories: [Special functions,Function remotescalar]
 published: true
 alias: Special-functions-Function-remotescalar.html
 tags: [Special functions,Function remotescalar]

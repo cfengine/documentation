@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function peers
-categories: [Special-functions,Function-peers]
+categories: [Special functions,Function peers]
 published: true
 alias: Special-functions-Function-peers.html
 tags: [Special functions,Function peers]

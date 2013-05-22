@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function usemodule
-categories: [Special-functions,Function-usemodule]
+categories: [Special functions,Function usemodule]
 published: true
 alias: Special-functions-Function-usemodule.html
 tags: [Special functions,Function usemodule]

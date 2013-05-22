@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function getgid
-categories: [Special-functions,Function-getgid]
+categories: [Special functions,Function getgid]
 published: true
 alias: Special-functions-Function-getgid.html
 tags: [Special functions,Function getgid]

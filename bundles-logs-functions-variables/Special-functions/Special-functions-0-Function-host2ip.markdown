@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function host2ip
-categories: [Special-functions,Function-host2ip]
+categories: [Special functions,Function host2ip]
 published: true
 alias: Special-functions-Function-host2ip.html
 tags: [Special functions,Function host2ip]

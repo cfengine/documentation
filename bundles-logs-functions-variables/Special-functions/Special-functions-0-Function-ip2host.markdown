@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function ip2host
-categories: [Special-functions,Function-ip2host]
+categories: [Special functions,Function ip2host]
 published: true
 alias: Special-functions-Function-ip2host.html
 tags: [Special functions,Function ip2host]

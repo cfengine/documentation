@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function islink
-categories: [Special-functions,Function-islink]
+categories: [Special functions,Function islink]
 published: true
 alias: Special-functions-Function-islink.html
 tags: [Special functions,Function islink]

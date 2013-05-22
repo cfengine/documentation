@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function regcmp
-categories: [Special-functions,Function-regcmp]
+categories: [Special functions,Function regcmp]
 published: true
 alias: Special-functions-Function-regcmp.html
 tags: [Special functions,Function regcmp]

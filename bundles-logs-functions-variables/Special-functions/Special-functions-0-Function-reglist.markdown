@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function reglist
-categories: [Special-functions,Function-reglist]
+categories: [Special functions,Function reglist]
 published: true
 alias: Special-functions-Function-reglist.html
 tags: [Special functions,Function reglist]

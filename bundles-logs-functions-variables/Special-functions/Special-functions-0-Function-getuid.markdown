@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function getuid
-categories: [Special-functions,Function-getuid]
+categories: [Special functions,Function getuid]
 published: true
 alias: Special-functions-Function-getuid.html
 tags: [Special functions,Function getuid]

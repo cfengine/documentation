@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function lastnode
-categories: [Special-functions,Function-lastnode]
+categories: [Special functions,Function lastnode]
 published: true
 alias: Special-functions-Function-lastnode.html
 tags: [Special functions,Function lastnode]

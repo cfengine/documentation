@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function irange
-categories: [Special-functions,Function-irange]
+categories: [Special functions,Function irange]
 published: true
 alias: Special-functions-Function-irange.html
 tags: [Special functions,Function irange]

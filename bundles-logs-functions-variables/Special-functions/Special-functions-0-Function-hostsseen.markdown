@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function hostsseen
-categories: [Special-functions,Function-hostsseen]
+categories: [Special functions,Function hostsseen]
 published: true
 alias: Special-functions-Function-hostsseen.html
 tags: [Special functions,Function hostsseen]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function isplain
-categories: [Special-functions,Function-isplain]
+categories: [Special functions,Function isplain]
 published: true
 alias: Special-functions-Function-isplain.html
 tags: [Special functions,Function isplain]

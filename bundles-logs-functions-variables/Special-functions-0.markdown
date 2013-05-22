@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 
-categories: [Special-functions]
+categories: [Special functions]
 published: true
 alias: Special-functions.html
 tags: [Special functions]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function concat
-categories: [Special-functions,Function-concat]
+categories: [Special functions,Function concat]
 published: true
 alias: Special-functions-Function-concat.html
 tags: [Special functions,Function concat]

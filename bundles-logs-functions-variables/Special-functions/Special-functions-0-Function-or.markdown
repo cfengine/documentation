@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function or
-categories: [Special-functions,Function-or]
+categories: [Special functions,Function or]
 published: true
 alias: Special-functions-Function-or.html
 tags: [Special functions,Function or]

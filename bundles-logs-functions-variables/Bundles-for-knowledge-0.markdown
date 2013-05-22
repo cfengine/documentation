@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 
-categories: [Bundles-for-knowledge]
+categories: [Bundles for knowledge]
 published: true
 alias: Bundles-for-knowledge.html
 tags: [Bundles for knowledge]

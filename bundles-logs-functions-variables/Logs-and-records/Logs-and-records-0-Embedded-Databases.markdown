@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Embedded Databases
-categories: [Logs-and-records,Embedded-Databases]
+categories: [Logs and records,Embedded Databases]
 published: true
 alias: Logs-and-records-Embedded-Databases.html
 tags: [Logs and records,Embedded Databases]

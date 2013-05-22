@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Reports in outputs
-categories: [Logs-and-records,Reports-in-outputs]
+categories: [Logs and records,Reports in outputs]
 published: true
 alias: Logs-and-records-Reports-in-outputs.html
 tags: [Logs and records,Reports in outputs]

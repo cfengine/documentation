@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function diskfree
-categories: [Special-functions,Function-diskfree]
+categories: [Special functions,Function diskfree]
 published: true
 alias: Special-functions-Function-diskfree.html
 tags: [Special functions,Function diskfree]

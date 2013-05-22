@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function classmatch
-categories: [Special-functions,Function-classmatch]
+categories: [Special functions,Function classmatch]
 published: true
 alias: Special-functions-Function-classmatch.html
 tags: [Special functions,Function classmatch]

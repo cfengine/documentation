@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function userexists
-categories: [Special-functions,Function-userexists]
+categories: [Special functions,Function userexists]
 published: true
 alias: Special-functions-Function-userexists.html
 tags: [Special functions,Function userexists]

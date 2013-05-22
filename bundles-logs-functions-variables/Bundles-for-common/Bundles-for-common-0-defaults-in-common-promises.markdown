@@ -1,7 +1,7 @@
 ---
 layout: default
 title: defaults in common promises
-categories: [Bundles-for-common,defaults-in-common-promises]
+categories: [Bundles for common,defaults in common promises]
 published: true
 alias: Bundles-for-common-defaults-in-common-promises.html
 tags: [Bundles for common,defaults in common promises]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function readreallist
-categories: [Special-functions,Function-readreallist]
+categories: [Special functions,Function readreallist]
 published: true
 alias: Special-functions-Function-readreallist.html
 tags: [Special functions,Function readreallist]

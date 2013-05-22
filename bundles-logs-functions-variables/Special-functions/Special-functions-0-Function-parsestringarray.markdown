@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function parsestringarray
-categories: [Special-functions,Function-parsestringarray]
+categories: [Special functions,Function parsestringarray]
 published: true
 alias: Special-functions-Function-parsestringarray.html
 tags: [Special functions,Function parsestringarray]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function regextract
-categories: [Special-functions,Function-regextract]
+categories: [Special functions,Function regextract]
 published: true
 alias: Special-functions-Function-regextract.html
 tags: [Special functions,Function regextract]

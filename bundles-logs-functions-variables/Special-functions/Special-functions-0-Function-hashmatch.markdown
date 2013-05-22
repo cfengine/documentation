@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function hashmatch
-categories: [Special-functions,Function-hashmatch]
+categories: [Special functions,Function hashmatch]
 published: true
 alias: Special-functions-Function-hashmatch.html
 tags: [Special functions,Function hashmatch]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function ldaparray
-categories: [Special-functions,Function-ldaparray]
+categories: [Special functions,Function ldaparray]
 published: true
 alias: Special-functions-Function-ldaparray.html
 tags: [Special functions,Function ldaparray]

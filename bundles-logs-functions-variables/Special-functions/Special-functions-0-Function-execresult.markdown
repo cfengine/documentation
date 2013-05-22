@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function execresult
-categories: [Special-functions,Function-execresult]
+categories: [Special functions,Function execresult]
 published: true
 alias: Special-functions-Function-execresult.html
 tags: [Special functions,Function execresult]
