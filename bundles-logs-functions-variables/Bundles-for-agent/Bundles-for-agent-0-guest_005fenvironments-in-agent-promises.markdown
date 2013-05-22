@@ -1,7 +1,7 @@
 ---
 layout: default
 title: guest fenvironments in agent promises
-categories: [Bundles-for-agent,guest-fenvironments-in-agent-promises]
+categories: [Bundles for agent,guest fenvironments in agent promises]
 published: true
 alias: Bundles-for-agent-guest-fenvironments-in-agent-promises.html
 tags: [Bundles for agent,guest fenvironments in agent promises]

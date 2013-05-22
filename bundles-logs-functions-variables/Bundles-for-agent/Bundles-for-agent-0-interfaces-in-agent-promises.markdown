@@ -1,7 +1,7 @@
 ---
 layout: default
 title: interfaces in agent promises
-categories: [Bundles-for-agent,interfaces-in-agent-promises]
+categories: [Bundles for agent,interfaces in agent promises]
 published: true
 alias: Bundles-for-agent-interfaces-in-agent-promises.html
 tags: [Bundles for agent,interfaces in agent promises]
