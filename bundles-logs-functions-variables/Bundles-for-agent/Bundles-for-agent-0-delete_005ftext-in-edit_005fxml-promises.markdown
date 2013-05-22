@@ -1,7 +1,7 @@
 ---
 layout: default
 title: delete ftext in edit fxml promises
-categories: [Bundles-for-agent,delete-ftext-in-edit-fxml-promises]
+categories: [Bundles for agent,delete ftext in edit fxml promises]
 published: true
 alias: Bundles-for-agent-delete-ftext-in-edit-fxml-promises.html
 tags: [Bundles for agent,delete ftext in edit fxml promises]

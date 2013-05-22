@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Miscellaneous in edit fline promises
-categories: [Bundles-for-agent,Miscellaneous-in-edit-fline-promises]
+categories: [Bundles for agent,Miscellaneous in edit fline promises]
 published: true
 alias: Bundles-for-agent-Miscellaneous-in-edit-fline-promises.html
 tags: [Bundles for agent,Miscellaneous in edit fline promises]

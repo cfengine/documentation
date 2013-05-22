@@ -1,7 +1,7 @@
 ---
 layout: default
 title: delete flines in edit fline promises
-categories: [Bundles-for-agent,delete-flines-in-edit-fline-promises]
+categories: [Bundles for agent,delete flines in edit fline promises]
 published: true
 alias: Bundles-for-agent-delete-flines-in-edit-fline-promises.html
 tags: [Bundles for agent,delete flines in edit fline promises]

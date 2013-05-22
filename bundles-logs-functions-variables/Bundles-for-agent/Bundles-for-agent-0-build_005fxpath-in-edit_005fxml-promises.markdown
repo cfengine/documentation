@@ -1,7 +1,7 @@
 ---
 layout: default
 title: build fxpath in edit fxml promises
-categories: [Bundles-for-agent,build-fxpath-in-edit-fxml-promises]
+categories: [Bundles for agent,build fxpath in edit fxml promises]
 published: true
 alias: Bundles-for-agent-build-fxpath-in-edit-fxml-promises.html
 tags: [Bundles for agent,build fxpath in edit fxml promises]

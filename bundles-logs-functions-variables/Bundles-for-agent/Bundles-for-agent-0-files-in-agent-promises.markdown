@@ -1,7 +1,7 @@
 ---
 layout: default
 title: files in agent promises
-categories: [Bundles-for-agent,files-in-agent-promises]
+categories: [Bundles for agent,files in agent promises]
 published: true
 alias: Bundles-for-agent-files-in-agent-promises.html
 tags: [Bundles for agent,files in agent promises]
@@ -475,7 +475,8 @@ update         => "yes";
 **Allowed input range**:
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
 
-**Synopsis**: Native settings for access control entry
+**Description**:
+Native settings for access control entry are defined by 'aces'. POSIX ACL are available in CFEngine Community starting with 3.4.0. NTFS ACL are available with CFEngine Nova or above.
 
 **Example**:  
    
@@ -499,12 +500,7 @@ update         => "yes";
      
 ```
 
-**Notes**:  
-   
-
-POSIX ACL are available in CFEngine Community starting with 3.4.0. NTFS
-ACL are available with CFEngine Nova or above. Form of the permissions
-is:
+Form of the permissions is as follows:
 
 ```cf3
                 aces = {
@@ -602,7 +598,12 @@ having `x` on its containing directory is sufficient.
                     clear
 ```
 
-**Synopsis**: Access control list type for the affected file system
+**Description**: The access control list type for the affected file system is determined by `acl_directory_inherit`. 
+
+Directories have ACLs associated with them, but they also have the ability to inherit an ACL to sub-objects created within them. POSIX calls the former ACL type "access ACL" and the latter "default ACL", and we will use the same terminology.
+
+The constraint `acl_directory_inherit` gives control over the default ACL of directories. The default ACL can be left unchanged (`nochange`),
+empty (`clear`), or be explicitly specified (`specify`). In addition, the default ACL can be set equal to the directory's access ACL (`parent`). This has the effect that child objects of the directory gets the same access ACL as the directory.   
 
 **Example**:  
    
@@ -626,21 +627,6 @@ having `x` on its containing directory is sufficient.
      
 ```
 
-**Notes**:  
-   
-
-Directories have ACLs associated with them, but they also have the
-ability to inherit an ACL to sub-objects created within them. POSIX
-calls the former ACL type "access ACL" and the latter "default ACL", and
-we will use the same terminology.
-
-The constraint `acl_directory_inherit` gives control over the default
-ACL of directories. The default ACL can be left unchanged (`nochange`),
-empty (`clear`), or be explicitly specified (`specify`). In addition,
-the default ACL can be set equal to the directory's access ACL
-(`parent`). This has the effect that child objects of the directory gets
-the same access ACL as the directory.   
-
 `acl_method`
 
 **Type**: (menu option)
@@ -652,7 +638,10 @@ the same access ACL as the directory.
                     overwrite
 ```
 
-**Synopsis**: Editing method for access control list
+**Description**: The `acl_method` menu option defines the editing method for an access control list.
+
+When defining an ACL, we can either use an existing ACL as the starting point, or state all entries of the ACL. If we just care about one entry, say that the superuser has full access, the `method` constraint can be set to `append`, which is the default. This has the effect that all the existing ACL entries that are not mentioned will be left unchanged. On the other hand, if `method` is set to `overwrite`, the resulting ACL will only contain the mentioned entries. When doing this, it is important to check that all the required ACL entries are set. For
+example, owning user, group and all in POSIX ACLs.   
 
 **Example**:  
    
@@ -669,19 +658,6 @@ the same access ACL as the directory.
      
 ```
 
-**Notes**:  
-   
-
-When defining an ACL, we can either use an existing ACL as the starting
-point, or state all entries of the ACL. If we just care about one entry,
-say that the superuser has full access, the `method` constraint can be
-set to `append`, which is the default. This has the effect that all the
-existing ACL entries that are not mentioned will be left unchanged. On
-the other hand, if `method` is set to `overwrite`, the resulting ACL
-will only contain the mentioned entries. When doing this, it is
-important to check that all the required ACL entries are set. For
-example, owning user, group and all in POSIX ACLs.   
-
 `acl_type`
 
 **Type**: (menu option)
@@ -694,7 +670,13 @@ example, owning user, group and all in POSIX ACLs.
                     ntfs
 ```
 
-**Synopsis**: Access control list type for the affected file system
+**Description**: The `acl_type` menu option defines the access control list type for the affected file system.
+
+ACLs are supported on multiple platforms, which may have different sets of available permission flags. By using the constraint `acl_type`, we
+can specify which platform, or ACL API, we are targeting with the ACL.
+
+The default, `generic`, is designed to work on all supported platforms. However, if very specific permission flags are required, like Take
+Ownership on the NTFS platform, we must set `acl_type` to indicate the target platform. Currently, the supported values are `posix` and `ntfs`.
 
 **Example**:  
    
@@ -709,18 +691,7 @@ example, owning user, group and all in POSIX ACLs.
      }
      
 ```
-
-**Notes**:  
-   
-
-ACLs are supported on multiple platforms, which may have different sets
-of available permission flags. By using the constraint `acl_type`, we
-can specify which platform, or ACL API, we are targeting with the ACL.
-The default, `generic`, is designed to work on all supported platforms.
-However, if very specific permission flags are required, like Take
-Ownership on the NTFS platform, we must set `acl_type` to indicate the
-target platform. Currently, the supported values are `posix` and `ntfs`.
-  
+ 
 
 `specify_inherit_aces`
 
@@ -729,7 +700,13 @@ target platform. Currently, the supported values are `posix` and `ntfs`.
 **Allowed input range**:
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
 
-**Synopsis**: Native settings for access control entry
+**Description**: The slist `specify_inherit_aces` specifies the native settings for access control entry.
+
+`specify_inherit_aces` (optional) is a list of access control entries that are set on child objects. It is also parsed from left to right and
+allows multiple entries with same entity-type and id. Only valid if `acl_directory_inherit` is set to `specify`.
+
+This is an ACL which makes explicit setting for the acl inherited by new objects within a directory. It is included for those implementations
+that do not have a clear inheritance policy.
 
 **Example**:  
    
@@ -741,17 +718,7 @@ target platform. Currently, the supported values are `posix` and `ntfs`.
      }
 ```
 
-**Notes**:  
-   
 
-`specify_inherit_aces` (optional) is a list of access control entries
-that are set on child objects. It is also parsed from left to right and
-allows multiple entries with same entity-type and id. Only valid if
-`acl_directory_inherit` is set to `specify`.
-
-This is an ACL which makes explicit setting for the acl inherited by new
-objects within a directory. It is included for those implementations
-that do not have a clear inheritance policy.
 
 #### `changes` (body template)
 
@@ -773,7 +740,9 @@ that do not have a clear inheritance policy.
                     best
 ```
 
-**Synopsis**: Hash files for change detection
+**Description**: The `hash` menu option defines the ash files for change detection.
+
+The `best` option cross correlates the best two available algorithms known in the OpenSSL library. 
 
 **Example**:  
    
@@ -787,11 +756,7 @@ that do not have a clear inheritance policy.
      
 ```
 
-**Notes**:  
-   
 
-The `best` option cross correlates the best two available algorithms
-known in the OpenSSL library.   
 
 `report_changes`
 
@@ -806,7 +771,9 @@ known in the OpenSSL library.
                     none
 ```
 
-**Synopsis**: Specify criteria for change warnings
+**Description**: Specify criteria for change warnings using the `report_changes` menu option.
+
+Files can change in permissions and contents, i.e. external or internal attributes. If all is chosen all attributes are checked.
 
 **Example**:  
    
@@ -819,12 +786,6 @@ known in the OpenSSL library.
      }
      
 ```
-
-**Notes**:  
-   
-
-Files can change in permissions and contents, i.e. external or internal
-attributes. If all is chosen all attributes are checked.   
 
 `update_hashes`
 
@@ -841,7 +802,9 @@ attributes. If all is chosen all attributes are checked.
                     off
 ```
 
-**Synopsis**: Update hash values immediately after change warning
+**Description**: Use of `update_hashes` determines whether hash values should be updated immediately after a change.
+  
+If this is positive, file hashes should be updated as soon as a change is registered so that multiple warnings are not given about a single change. This applies to addition and removal too.   
 
 **Example**:  
    
@@ -854,13 +817,6 @@ attributes. If all is chosen all attributes are checked.
      }
      
 ```
-
-**Notes**:  
-   
-
-If this is positive, file hashes should be updated as soon as a change
-is registered so that multiple warnings are not given about a single
-change. This applies to addition and removal too.   
 
 `report_diffs`
 
@@ -877,8 +833,14 @@ change. This applies to addition and removal too.
                     off
 ```
 
-**Synopsis**: Generate reports summarizing the major differences between
-individual text files
+**Versions**: This feature is available only in enterprise levels Nova and above.
+
+**Description**: Setting `report_diffs` determines whether to generate reports summarizing the major differences between
+individual text files.
+
+If true, CFEngine will log a \`diff' summary of major changes to the files. It is not permitted to combine this promise with a depth search, since this would consume a dangerous amount of resources and would lead to unreadable reports.
+
+The feature is intended as a informational summary, not as a version control function suitable for transaction control. If you want to do versioning on system files, you should keep a single repository for them and use CFEngine to synchronize changes from the repository source. Repositories should not be used to attempt to capture random changes of the system.
 
 **Example**:  
    
@@ -892,23 +854,6 @@ individual text files
      
 ```
 
-**Notes**:  
-   
-
-*This feature is available only in enterprise levels Nova and above.*
-
-If true, CFEngine will log a \`diff' summary of major changes to the
-files. It is not permitted to combine this promise with a depth search,
-since this would consume a dangerous amount of resources and would lead
-to unreadable reports.
-
-The feature is intended as a informational summary, not as a version
-control function suitable for transaction control. If you want to do
-versioning on system files, you should keep a single repository for them
-and use CFEngine to synchronize changes from the repository source.
-Repositories should not be used to attempt to capture random changes of
-the system.
-
 #### `copy_from` (body template)
 
 **Type**: (ext body)
@@ -919,7 +864,8 @@ the system.
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Reference source file from which to copy
+**Description**: The `source` string represents the reference source file from which to copy. For remote copies this refers to the file name on the remote server. 
+
 
 **Example**:  
    
@@ -940,18 +886,14 @@ the system.
      
 ```
 
-**Notes**:  
-   
-
-For remote copies this refers to the file name on the remote server.   
-
 `servers`
 
 **Type**: slist
 
 **Allowed input range**: `[A-Za-z0-9_.:-]+`
 
-**Synopsis**: List of servers in order of preference from which to copy
+**Description**: The `servers` slist names servers in order of preference from which to copy. The servers are tried in order until one of them succeeds. 
+
 
 **Example**:  
    
@@ -965,11 +907,6 @@ For remote copies this refers to the file name on the remote server.
      }
      
 ```
-
-**Notes**:  
-   
-
-The servers are tried in order until one of them succeeds.   
 
 `collapse_destination_dir`
 
@@ -986,8 +923,14 @@ The servers are tried in order until one of them succeeds.
                     off
 ```
 
-**Synopsis**: Place files in subdirectories into the root destination
-directory during copy
+**Description**: The `collapse_destination_dir` menu option supports the placing of files in subdirectories into the root destination
+directory during copy.
+  
+Under normal operations, recursive copies cause CFEngine to track subdirectories of files. So, for instance, if we copy recursively from src to dest, then src/subdir/file will map to dest/subdir/file.
+
+By setting this option to true, the promiser destination directory promises to aggregate files searched from all subdirectories into
+itself; in other words, a single destination directory. 
+
 
 **Example**:  
    
@@ -1003,17 +946,6 @@ directory during copy
      }
      
 ```
-
-**Notes**:  
-   
-
-Under normal operations, recursive copies cause CFEngine to track
-subdirectories of files. So, for instance, if we copy recursively from
-src to dest, then src/subdir/file will map to dest/subdir/file.
-
-By setting this option to true, the promiser destination directory
-promises to aggregate files searched from all subdirectories into
-itself; in other words, a single destination directory.   
 
 `compare`
 
@@ -1031,10 +963,11 @@ itself; in other words, a single destination directory.
                     binary
 ```
 
-**Synopsis**: Menu option policy for comparing source and image file
-attributes
-
 **Default value:** mtime or ctime differs
+
+**Description**: The menu option policy `compare` is used for comparing source and image file attributes.
+
+The default copy method is mtime (modification time), meaning that the source file is copied to the destination (promiser) file, if the source file has been modified more recently than the destination.
 
 **Example**:  
    
@@ -1049,14 +982,7 @@ attributes
      
 ```
 
-**Notes**:  
-   
-
-The default copy method is mtime (modification time), meaning that the
-source file is copied to the destination (promiser) file, if the source
-file has been modified more recently than the destination.
-
-The different options are:
+**Options**:
 
 -   `mtime` CFEngine copies the file if the modification time of the
     source file is more recent than that of the promised file
@@ -1082,7 +1008,6 @@ The different options are:
     used.
 -   `digest` a synonym for `hash`
 
-  
 
 `copy_backup`
 
@@ -1096,13 +1021,14 @@ The different options are:
                     timestamp
 ```
 
-**Synopsis**: Menu option policy for file backup/version control
+**Description**: Menu option policy for file backup/version control
+ 
+Determines whether a backup of the previous version is kept on the system. This should be viewed in connection with the system repository, since a defined repository affects the location at which the backup is stored.
 
 **Default value:** true
 
 **Example**:  
    
-
 ```cf3
      
      body copy_from example
@@ -1112,16 +1038,7 @@ The different options are:
      
 ```
 
-**Notes**:  
-   
-
-Determines whether a backup of the previous version is kept on the
-system. This should be viewed in connection with the system repository,
-since a defined repository affects the location at which the backup is
-stored.
-
-See: [default\_repository](#default_005frepository-in-agent) and
-[repository](#repository-in-files) for further details.   
+**See Also**: [default\_repository](#default_005frepository-in-agent) and [repository](#repository-in-files) 
 
 `encrypt`
 
@@ -1138,10 +1055,13 @@ See: [default\_repository](#default_005frepository-in-agent) and
                     off
 ```
 
-**Synopsis**: true/false use encrypted data stream to connect to remote
-host
-
 **Default value:** false
+
+**Description**: The `encrypt` menu option policy describes whether to use encrypted data stream to connect to remote
+hosts.
+  
+
+Client connections are encrypted with using a Blowfish randomly generated session key. The initial connection is encrypted using the public/private keys for the client and server hosts. 
 
 **Example**:  
    
@@ -1155,13 +1075,6 @@ host
      }
      
 ```
-
-**Notes**:  
-   
-
-Client connections are encrypted with using a Blowfish randomly
-generated session key. The initial connection is encrypted using the
-public/private keys for the client and server hosts.   
 
 `check_root`
 
@@ -1178,8 +1091,9 @@ public/private keys for the client and server hosts.
                     off
 ```
 
-**Synopsis**: true/false check permissions on the root directory when
-depth\_search
+**Description**: The `check_root` menu option policy checks permissions on the root directory when copying files recursively by depth\_search. 
+
+This flag determines whether the permissions of the root directory should be set from the root of the source. The default is to check only copied file objects and subdirectories within this root (false). 
 
 **Example**:  
    
@@ -1193,22 +1107,15 @@ depth\_search
      
 ```
 
-**Notes**:  
-   
-
-When copying files recursively (by depth search), this flag determines
-whether the permissions of the root directory should be set from the
-root of the source. The default is to check only copied file objects and
-subdirectories within this root (false).   
-
 `copylink_patterns`
 
 **Type**: slist
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of patterns matching files that should be copied
-instead of linked
+**Description**: The `copylink_patterns` slist of patterns are matching files that should be copied instead of linked.
+
+The matches are performed on the last node of the filename; in other words, the file without its path. As Windows does not support symbolic links, this feature is not available there. 
 
 **Example**:  
    
@@ -1222,20 +1129,15 @@ instead of linked
      
 ```
 
-**Notes**:  
-   
-
-The matches are performed on the last node of the filename; in other
-words, the file without its path. As Windows does not support symbolic
-links, this feature is not available there.   
-
 `copy_size`
 
 **Type**: irange [int,int]
 
 **Allowed input range**: `0,inf`
 
-**Synopsis**: Integer range of file sizes that may be copied
+**Description**: The integers specified in `copy_size` determines the range for the size of files that may be copied.
+
+The use of the irange function is optional. Ranges may also be specified as a comma separated numbers. 
 
 **Default value:** any size range
 
@@ -1251,12 +1153,6 @@ links, this feature is not available there.
      
 ```
 
-**Notes**:  
-   
-
-The use of the irange function is optional. Ranges may also be specified
-as a comma separated numbers.   
-
 `findertype`
 
 **Type**: (menu option)
@@ -1267,7 +1163,10 @@ as a comma separated numbers.
                     MacOSX
 ```
 
-**Synopsis**: Menu option for default finder type on MacOSX
+**Description**: The `findertype` menu option policy describes the default finder type on MacOSX.
+
+This applies only to the Mac OS X variants.   
+
 
 **Example**:  
    
@@ -1281,19 +1180,15 @@ as a comma separated numbers.
      
 ```
 
-**Notes**:  
-   
-
-This applies only to the Mac OS X variants.   
-
 `linkcopy_patterns`
 
 **Type**: slist
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of patterns matching files that should be replaced
-with symbolic links
+**Synopsis**: The `linkcopy_patterns` contains patterns for matching files that should be replaced with symbolic links.
+
+The pattern matches the last node filename; in other words, without the absolute path. Windows only supports hard links.
 
 **Example**:  
    
@@ -1309,13 +1204,7 @@ with symbolic links
      
 ```
 
-**Notes**:  
-   
-
-The pattern matches the last node filename; in other words, without the
-absolute path. Windows only supports hard links.
-
-See: `link_type`.   
+**See Also**: `link_type`.   
 
 `link_type`
 
@@ -1330,13 +1219,16 @@ See: `link_type`.
                     absolute
 ```
 
-**Synopsis**: Menu option for type of links to use when copying
-
 **Default value:** symlink
+
+**Description**: The `link_type` menu option policy contains the type of links to use when copying.
+
+Users are advised to be wary of \`hard links' (see Unix manual pages for the ln command). The behaviour of non-symbolic links is often precarious and unpredictable. However, hard links are the only supported type by Windows.
+
+Note that symlink is synonymous with absolute links, which are different from relative links. Although all of these are symbolic links, the nomenclature here is defined such that symlink and absolute are equivalent. When verifying a link, choosing \`relative' means that the link *must* be relative to the source, so relative and absolute links are mutually exclusive.   
 
 **Example**:  
    
-
 ```cf3
      
      body link_from example
@@ -1346,21 +1238,6 @@ See: `link_type`.
      }
      
 ```
-
-**Notes**:  
-   
-
-Users are advised to be wary of \`hard links' (see Unix manual pages for
-the ln command). The behaviour of non-symbolic links is often precarious
-and unpredictable. However, hard links are the only supported type by
-Windows.
-
-Note that symlink is synonymous with absolute links, which are different
-from relative links. Although all of these are symbolic links, the
-nomenclature here is defined such that symlink and absolute are
-equivalent . When verifying a link, choosing \`relative' means that the
-link *must* be relative to the source, so relative and absolute links
-are mutually exclusive.   
 
 `force_update`
 
@@ -1377,9 +1254,11 @@ are mutually exclusive.
                     off
 ```
 
-**Synopsis**: true/false force copy update always
-
 **Default value:** false
+
+**Description**: The `force_update` menu option policy instructs whether to always force copy update.
+
+**Warning**: this is a non-convergent operation. Although the end point might stabilize in content, the operation will never quiesce. Use of this feature is not recommended except in exceptional circumstances since it creates a busy-dependency. If the copy is a network copy, the system will be disturbed by network disruptions.   
 
 **Example**:  
    
@@ -1392,15 +1271,6 @@ are mutually exclusive.
      }
      
 ```
-
-**Notes**:  
-   
-
-Warning: this is a non-convergent operation. Although the end point
-might stabilize in content, the operation will never quiesce. Use of
-this feature is not recommended except in exceptional circumstances
-since it creates a busy-dependency. If the copy is a network copy, the
-system will be disturbed by network disruptions.   
 
 `force_ipv4`
 
@@ -1417,9 +1287,11 @@ system will be disturbed by network disruptions.
                     off
 ```
 
-**Synopsis**: true/false force use of ipv4 on ipv6 enabled network
-
 **Default value:** false
+
+**Description**: The `force_ipv4` menu option policy can determine whether to use ipv4 on an ipv6 enabled network.
+
+IPv6 should be harmless to most users unless you have a partially or mis-configured setup.   
 
 **Example**:  
    
@@ -1433,19 +1305,15 @@ system will be disturbed by network disruptions.
      
 ```
 
-**Notes**:  
-   
-
-IPv6 should be harmless to most users unless you have a partially or
-mis-configured setup.   
-
 `portnumber`
 
 **Type**: int
 
 **Allowed input range**: `1024,99999`
 
-**Synopsis**: Port number to connect to on server host
+**Description**: Setting `portnumber` determines the port number to connect to on a server host.
+
+The standard or registered port number is tcp/5308. CFEngine does not presently use its registered udp port with the same number, but this could change in the future.   
 
 **Example**:  
    
@@ -1458,13 +1326,6 @@ mis-configured setup.
      }
      
 ```
-
-**Notes**:  
-   
-
-The standard or registered port number is tcp/5308. CFEngine does not
-presently use its registered udp port with the same number, but this
-could change in the future.   
 
 `preserve`
 
@@ -1481,10 +1342,10 @@ could change in the future.
                     off
 ```
 
-**Synopsis**: true/false whether to preserve file permissions on copied
-file
-
 **Default value:** false
+
+**Description**: Setting the `preserve` menu option polict determines whether to preserve file permissions on copied
+files. This ensures that the destination file (promiser) gets the same Unix mode as the source. This also applies to remote copies.
 
 **Example**:  
    
@@ -1498,13 +1359,7 @@ file
      
 ```
 
-**Notes**:  
-   
-
-Ensures the destination file (promiser) gets the same Unix mode as the
-source. This also applies to remote copies.
-
-*History*: Was introduced in version 3.1.0b3,Nova 2.0.0b1 (2010)   
+**Introduced**: Version 3.1.0b3,Nova 2.0.0b1 (2010)   
 
 `purge`
 
@@ -1521,10 +1376,14 @@ source. This also applies to remote copies.
                     off
 ```
 
-**Synopsis**: true/false purge files on client that do not match files
-on server when a depth\_search is used
-
 **Default value:** false
+
+**Description**: The `purge` menu option polict instructs on whether to purge files on client that do not match files
+on server when a depth\_search is used.
+
+Purging files is a potentially dangerous matter during a file copy it implies that any promiser (destination) file which is not matched by a source will be deleted. Since there is no source, this means the file will be irretrievable. Great care should be exercised when using this feature.
+
+Note that purging will also delete backup files generated during the file copying if `copy_backup` is set to true.   
 
 **Example**:  
    
@@ -1537,18 +1396,6 @@ on server when a depth\_search is used
      }
      
 ```
-
-**Notes**:  
-   
-
-Purging files is a potentially dangerous matter during a file copy it
-implies that any promiser (destination) file which is not matched by a
-source will be deleted. Since there is no source, this means the file
-will be irretrievable. Great care should be exercised when using this
-feature.
-
-Note that purging will also delete backup files generated during the
-file copying if `copy_backup` is set to true.   
 
 `stealth`
 
@@ -1565,7 +1412,7 @@ file copying if `copy_backup` is set to true.
                     off
 ```
 
-**Synopsis**: true/false whether to preserve time stamps on copied file
+**Description**: Setting the `stealth` menu option policy determines whether to preserve time stamps on copied files. This preserves file access and modification times on the promiser files. 
 
 **Default value:** false
 
@@ -1581,18 +1428,13 @@ file copying if `copy_backup` is set to true.
      
 ```
 
-**Notes**:  
-   
-
-Preserves file access and modification times on the promiser files.   
-
 `timeout`
 
 **Type**: int
 
 **Allowed input range**: `1,3600`
 
-**Synopsis**: Connection timeout, seconds
+**Synopsis**: The integer set in `timeout` is the value for the connection timeout, in seconds.
 
 **Example**:  
    
@@ -1605,11 +1447,6 @@ Preserves file access and modification times on the promiser files.
      }
      
 ```
-
-**Notes**:  
-   
-
-Timeout in seconds.   
 
 `trustkey`
 
@@ -1626,10 +1463,16 @@ Timeout in seconds.
                     off
 ```
 
-**Synopsis**: true/false trust public keys from remote server if
-previously unknown
-
 **Default value:** false
+
+**Description**: The `trustkey` menu option polict determines whether to trust public keys from a remote server, if
+previously unknown.
+
+If the server's public key has not already been trusted, trustkey provides automated key-exchange.
+
+Note that, as a simple security precaution, trustkey should normally be set to false. Even though the risks to the client low, it is a good security practice to avoid key exchange with a server one is not one hundred percent sure about. On the server-side however, trust is often granted to many clients or to a whole network in which possibly unauthorized parties might be able to obtain an IP address. Thus the trust issue is most important on the server side.
+
+As soon as a public key has been exchanged, the trust option has no effect. A machine that has been trusted remains trusted until its key is manually revoked by a system administrator. Keys are stored in WORKDIR/ppkeys.   
 
 **Example**:  
    
@@ -1642,25 +1485,6 @@ previously unknown
      }
      
 ```
-
-**Notes**:  
-   
-
-If the server's public key has not already been trusted, trustkey
-provides automated key-exchange.
-
-Note that, as a simple security precaution, trustkey should normally be
-set to false. Even though the risks to the client low, it is a good
-security practice to avoid key exchange with a server one is not one
-hundred percent sure about. On the server-side however, trust is often
-granted to many clients or to a whole network in which possibly
-unauthorized parties might be able to obtain an IP address. Thus the
-trust issue is most important on the server side.
-
-As soon as a public key has been exchanged, the trust option has no
-effect. A machine that has been trusted remains trusted until its key is
-manually revoked by a system administrator. Keys are stored in
-WORKDIR/ppkeys.   
 
 `type_check`
 
@@ -1677,8 +1501,8 @@ WORKDIR/ppkeys.
                     off
 ```
 
-**Synopsis**: true/false compare file types before copying and require
-match
+**Description**: The `type_check` menu option policy compares file types before copying. File types at source and destination should normally match in order for updates to overwrite them. This option allows this checking to be switched off.   
+
 
 **Example**:  
    
@@ -1691,13 +1515,6 @@ match
      }
      
 ```
-
-**Notes**:  
-   
-
-File types at source and destination should normally match in order for
-updates to overwrite them. This option allows this checking to be
-switched off.   
 
 `verify`
 
@@ -1714,10 +1531,12 @@ switched off.
                     off
 ```
 
-**Synopsis**: true/false verify transferred file by hashing after copy
-(resource penalty)
-
 **Default value:** false
+
+**Synopsis**: The `verify` menu option policy instructs whether to verify transferred file by hashing after copy
+(resource penalty). 
+
+**Warning**: This is a highly resource intensive option, and is not recommended for large file transfers.
 
 **Example**:  
    
@@ -1730,12 +1549,6 @@ switched off.
      }
      
 ```
-
-**Notes**:  
-   
-
-This is a highly resource intensive option, not recommended for large
-file transfers.
 
 #### `create`
 

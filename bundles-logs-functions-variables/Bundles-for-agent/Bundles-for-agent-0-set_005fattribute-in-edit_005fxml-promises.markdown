@@ -1,7 +1,7 @@
 ---
 layout: default
 title: set fattribute in edit fxml promises
-categories: [Bundles-for-agent,set-fattribute-in-edit-fxml-promises]
+categories: [Bundles for agent,set fattribute in edit fxml promises]
 published: true
 alias: Bundles-for-agent-set-fattribute-in-edit-fxml-promises.html
 tags: [Bundles for agent,set fattribute in edit fxml promises]
