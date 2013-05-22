@@ -1,3 +1,12 @@
+---
+layout: default
+title: cf-runagent
+categories: [Reference, Components, cf-runagent]
+published: true
+alias: reference-components-cfrunagent.html
+tags: [Components, cf-runagent]
+---
+
 # `cf-runagent`
 
 Remote run agent - used to execute `cf-agent` on a remote machine

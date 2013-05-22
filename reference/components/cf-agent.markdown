@@ -3,7 +3,7 @@ layout: default
 title: cf-agent
 categories: [Reference, Components, cf-agent]
 published: true
-alias: reference-component-cfagent.html
+alias: reference-components-cfagent.html
 tags: [Components, cf-agent]
 ---
 

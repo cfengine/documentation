@@ -1,3 +1,12 @@
+---
+layout: default
+title: hub control promises
+categories: [Reference, Components, cf-hub, hub control promises]
+published: true
+alias: reference-components-cfhub-control-promises.html
+tags: [Components, cf-hub, control promises]
+---
+
 # `hub` control promises
 
     body hub control

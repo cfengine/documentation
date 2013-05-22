@@ -1,3 +1,12 @@
+---
+layout: default
+title: cf-hub
+categories: [Reference, Components, cf-hub]
+published: true
+alias: reference-components-cfhub.html
+tags: [Components, cf-hub]
+---
+
 # `cf-hub`
 
 A data aggregator used as part of the commercial product.

@@ -1,3 +1,12 @@
+---
+layout: default
+title: cf-monitord
+categories: [Reference, Components, cf-monitord]
+published: true
+alias: reference-components-cfmonitord.html
+tags: [Components, cf-monitord]
+---
+
 # `cf-monitord`
 
 Passive monitoring agent - responsible for collecting information

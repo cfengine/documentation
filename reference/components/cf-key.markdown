@@ -1,3 +1,13 @@
+---
+layout: default
+title: cf-key
+categories: [Reference, Components, cf-key]
+published: true
+alias: reference-components-cfkey.html
+tags: [Components, cf-key]
+---
+
+
 # `cf-key`
 
 Key generation tool - run once on every host to create public/private key pairs for secure communication (in CFEngine 2 the key generation tool was called `cfkey`). `cf-key` does not keep any promises. 

@@ -1,3 +1,12 @@
+---
+layout: default
+title: cf-promises
+categories: [Reference, Components, cf-promises]
+published: true
+alias: reference-components-cfpromises.html
+tags: [Components, cf-promises]
+---
+
 # `cf-promises`	
 
 Promise validator - used to verify that the promises used by the

@@ -1,3 +1,12 @@
+---
+layout: default
+title: runagent control promises
+categories: [Reference, Components, cf-runagent, runagent control promises]
+published: true
+alias: reference-components-cfrunagent-control-promises.html
+tags: [Components, cf-runagent, control promises]
+---
+
 # `runagent` control promises
 
      body runagent control

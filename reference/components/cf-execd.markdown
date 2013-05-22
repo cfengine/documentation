@@ -1,3 +1,12 @@
+---
+layout: default
+title: cf-execd
+categories: [Reference, Components, cf-execd]
+published: true
+alias: reference-components-cfexecd.html
+tags: [Components, cf-execd]
+---
+
 # `cf-execd`
 
 Scheduler - responsible for running `cf-agent` on a regular (and

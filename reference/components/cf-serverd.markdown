@@ -1,3 +1,12 @@
+---
+layout: default
+title: cf-serverd
+categories: [Reference, Components, cf-serverd]
+published: true
+alias: reference-components-cfserver.html
+tags: [Components, cf-serverd]
+---
+
 # `cf-serverd`
 
 Server - used to distribute policy and/or data files to clients

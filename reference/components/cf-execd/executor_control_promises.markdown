@@ -1,3 +1,12 @@
+---
+layout: default
+title: cf-execd
+categories: [Reference, Components, cf-execd, executor control promises]
+published: true
+alias: reference-components-cfexecd-control-promises.html
+tags: [Components, cf-execd, control promises]
+---
+
 # `executor` control promises
      
      body executor control

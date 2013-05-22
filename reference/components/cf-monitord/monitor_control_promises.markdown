@@ -1,3 +1,12 @@
+---
+layout: default
+title: monitor control promises
+categories: [Reference, Components, cf-monitord, monitor control promises]
+published: true
+alias: reference-components-cfmonitord-control-promises.html
+tags: [Components, cf-monitord, control promises]
+---
+
 # `monitor` control promises
          
          body monitor control()

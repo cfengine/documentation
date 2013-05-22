@@ -1,3 +1,12 @@
+---
+layout: default
+title: cf-serverd
+categories: [Reference, Components, cf-serverd, server control promises]
+published: true
+alias: reference-components-cfserverd-control-promises.html
+tags: [Components, cf-serverd, control promises]
+---
+
 # `server` control promises
 
          body server control
