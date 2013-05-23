@@ -91,23 +91,32 @@ access:
   # Client grants access to CFEngine hub access
 
   "delta"
-    comment => "Grant access to cfengine hub to collect report deltas",
-    resource_type => "query",
-          admit   => { "127.0.0.1"  };
+               comment => "Grant access to cfengine hub to collect report deltas",
+         resource_type => "query",
+    report_data_select => report_filter,
+                 admit => { "127.0.0.1"  };
   "full"
-          comment => "Grant access to cfengine hub to collect full report dump",
-    resource_type => "query",
-          admit   => { "127.0.0.1"  };
+               comment => "Grant access to cfengine hub to collect full report dump",
+         resource_type => "query",
+    report_data_select => report_filter,
+                 admit => { "127.0.0.1"  };
 
   policy_hub::
 
   "collect call"
           comment => "Grant access to cfengine client to request the collection of its reports",
     resource_type => "query",
-          admit   => { "10.1.2.*" };
+            admit => { "10.1.2.*" };
 
 
 }
+
+body report_data_select report_filter
+{
+    variables_include => { "sys..*", "mon..*" };
+    variables_exclude => { "sys.host" };
+}
+
 ```
 
   
@@ -120,6 +129,7 @@ in the POSIX `gethostbyname` service.
 -   [maproot in access](#maproot-in-access)
 -   [ifencrypted in access](#ifencrypted-in-access)
 -   [resource\_type in access](#resource_005ftype-in-access)
+-   [report\_data\_select in access](#report_data_select-in-access)
 
 #### `admit`
 
@@ -373,3 +383,344 @@ the promiser of a query request is called collect\_calls, this grants
 access to server peering collect-call tunneling (See
 [call\_collect\_interval in
 server](#call_005fcollect_005finterval-in-server)).
+
+
+#### `report_data_select` (body template)
+
+**Type**: body
+
+**Synopsis**: Restricts access to data for specified query type reported to Enterprise Hub.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    variables_include => { "sys..*" };
+    monitoring_exclude => { ".*" };
+}
+```
+
+**Notes**:
+
+
+This body template allow user to control content of reports collected by Enterprise Hub.
+It can be used to differentiate content of delta and full reports as also allow user
+to strip unwanted data e.g. temporary variables from reporting.
+Report content can be differentiated between hosts which is controlled
+by class expression on access promiser.
+
+If more than one select statement apply to same host, all of them are applied.
+Usage of this body in only allowed in conjunction with using
+resource_type => "query" as this is the resource type that is being affected.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`classes_include`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down class report content to contain only classes matching
+specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    classes_include => { "report_only_my_classes_.*" };
+}
+```
+
+**Notes**:
+
+
+This attribute is used to filter content of class report collected by Enterprise Hub.
+Classes matching specified regular expression list will only be send back in the report.
+If attribute is not used, report content is not reduced.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`classes_exclude`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down class report content to exclude classes matching
+specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    classes_exclude => { "my_tmp_class.*" };
+}
+```
+
+**Notes**:
+
+
+This attribute is used to filter content of class report collected by Enterprise Hub.
+Classes matching specified regular expression list will be excluded from report.
+If attribute is used in conjunction with classes_include it will exclude entries from
+subset selected by include expression.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`variables_include`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down variable report content to contain only variables matching
+specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    variables_include => { "my_bundle.my_variable_prefix_.*" };
+}
+```
+
+**Notes**:
+
+
+This attribute is used to filter content of variables report collected by Enterprise Hub.
+Variables matching specified regular expression list will only be send back in the report.
+Regular expression if matched agents variable name including scope: <scope>.<variable_name>
+If attribute is not used, report content is not reduced.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`variables_exclude`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down variable report content to exclude variables matching
+specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    variables_exclude => { "my_bundle.tmp_var_test.*" };
+}
+```
+
+**Notes**:
+
+
+This attribute is used to filter content of variable report collected by Enterprise Hub.
+Variables matching specified regular expression list will be excluded from report.
+Regular expression if matched agents variable name including scope: <scope>.<variable_name>
+If attribute is used in conjunction with variables_include it will exclude entries from
+subset selected by include expression.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`promise_notkept_log_include`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down promise not kept log report content to contain only promise
+handles matching specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    promise_notkept_log_include => { "my_none_important_promises_.*" };
+}
+```
+
+**Notes**:
+
+
+This attribute is used to filter content of not kept log report collected by Enterprise Hub.
+Handles matching specified regular expression list will only be send back in the report.
+If attribute is not used, report content is not reduced.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`promise_notkept_log_exclude`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down promise not kept log report content to exclude promise handles matching
+specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    promise_notkept_log_exclude => { "my_tmp_promise_handle.*" };
+}
+```
+
+**Notes**:  
+
+
+This attribute is used to filter content of not kept log report collected by Enterprise Hub.
+Handles matching specified regular expression list will be excluded from report.
+If attribute is used in conjunction with promise_notkept_log_include it will exclude entries from
+subset selected by include expression.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`promise_repaired_log_include`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down promise repaired log report content to contain only promise
+handles matching specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    promise_repaired_log_include => { "my_none_important_promises_.*" };
+}
+```
+
+**Notes**:
+
+
+This attribute is used to filter content of repaired log report collected by Enterprise Hub.
+Handles matching specified regular expression list will only be send back in the report.
+If attribute is not used, report content is not reduced.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`promise_repaired_log_exclude`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down promise repaired log report content to exclude promise handles matching
+specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    promise_repaired_log_exclude => { "my_tmp_promise_handle.*" };
+}
+```
+
+**Notes**:
+
+
+This attribute is used to filter content of repaired log report collected by Enterprise Hub.
+Handles matching specified regular expression list will be excluded from report.
+If attribute is used in conjunction with promise_repaired_log_include it will exclude entries from
+subset selected by include expression.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`monitoring_include`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down monitoring report content to contain only observed objects 
+matching specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    monitoring_include => { "mem_.*" };
+}
+```
+
+**Notes**:
+
+
+This attribute is used to filter content of monitoring report collected by Enterprise Hub.
+Object names matching specified regular expression list will only be send back in the report.
+If attribute is not used, report content is not reduced.
+
+History: Introduced in Enterprise 3.5.0
+
+
+`monitoring_exclude`
+
+**Type**: slist
+
+**Allowed input range**: (arbitrary string)
+
+**Synopsis**: Scope down monitoring content to exclude observed objects matching
+specified regular expression list.
+
+**Example**:
+
+
+```cf3
+
+body report_data_select
+{
+    monitoring_exclude => { "mem_swap", "mem_freeswap" };
+}
+```
+
+**Notes**:
+
+
+This attribute is used to filter content of monitoring report collected by Enterprise Hub.
+Object names matching specified regular expression list will be excluded from report.
+If attribute is used in conjunction with monitoring_include it will exclude entries from
+subset selected by include expression.
+
+History: Introduced in Enterprise 3.5.0
