@@ -8,6 +8,8 @@ tags: [Manuals]
 ---
 
 * [Getting Started with CFEngine](https://cfengine.com/getting-started)
+* From Zero to Hero
 * Concept Guide
+* Language Concepts
 * Default policy structure
 
