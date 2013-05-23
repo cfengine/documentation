@@ -1,16 +1,12 @@
 ---
 layout: default
-title: 
-categories: [Bundles for knowledge]
-published: true
-alias: Bundles-for-knowledge.html
-tags: [Bundles for knowledge]
+title: Bundles for knowledge 
+categories: [Reference, Components, Bundles for knowledge]
+published: false
+alias: reference-components-bundles-for-knowledge.html
+tags: [components, knowledge, bundles]
 ---
 
-Bundles of `knowledge`
-----------------------
-
-  
 
 ```cf3
      
