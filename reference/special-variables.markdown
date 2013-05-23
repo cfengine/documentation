@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 
+title: Special Variables 
 categories: [Special Variables]
 published: true
 alias: Special-Variables.html
