@@ -1,4 +1,11 @@
-## Customize Message of the Day (motd)
+---
+layout: default
+title: Example - Customize Message of the Day
+categories: [Examples, Customize Message of the Day]
+published: true
+alias: examples-customize-message-of-the-day.html
+tags: [Examples, motd, file editing, files]
+---
 
 The Message of the Day is diplayed when you log in or connect to a server. It typically shows information about the operating system, license information, last login, etc.
 
@@ -6,6 +13,7 @@ It is often useful to customize the Message of the Day to inform your users abou
 
 The bundle is defined like this:
 
+```cf3
 	bundle agent edit_motd
 	{
 	files:
@@ -30,27 +38,6 @@ The bundle is defined like this:
 	Network interfaces on this system are $(interfaces_str),
 	and the ip-addresses assigned are $(ipaddresses_str).";
 	}
+```
 
-You can find this bundle in the file <path/to/edit_motd.cf TBD>
-
-The following usage of this bundle presumes that you integrate it into the main policy file, `promises.cf`, and that the CFEngine standard library is included in `promises.cf`. To use this bundle:
-
-1. Copy the above content into `/var/cfengine/masterfiles/example_edit_motd.cf` or copy the file from `<path/to/example_edit_motd.cf>` to `/var/cfengine/masterfiles`.
-
-2. Insert the bundle name in the `bundlesequence` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-	    bundlesequence => {
-		                    ...
-		                    "edit_motd",
-		                    ...
-		                  };
-
-3. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-            inputs => {
-                        ...
-                        "example_edit_motd.cf",
-                        ...
-                      };
-
-This policy snippet will now be executed every five minutes along with the rest of your main policy.
+You can find this bundle in the file `/var/cfengine/share/doc/examples/edit_motd.cf`

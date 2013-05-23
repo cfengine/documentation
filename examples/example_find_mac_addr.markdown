@@ -1,7 +1,15 @@
-## Find the MAC address
+---
+layout: default
+title: Example - Find the MAC address
+categories: [Examples, Find the MAC address]
+published: true
+alias: examples-find-the-mac-address.html
+tags: [Examples, MAC address]
+---
 
 Finding the ethernet address can be hard, but on Linux it is straightforward. We will use CFEngine's built in function `execresult` to execute  commands adapted for different operating systems, assign the output to variables, and filter for the MAC adress. We then report on the result.
 
+```cf3
     bundle agent test
     {
     vars:
@@ -62,25 +70,6 @@ Finding the ethernet address can be hard, but on Linux it is straightforward. We
       "MAC address is $(mac[1])";
 
     }
+```
 
-This policy does not exist as an example file in the current packages, but will be included from Community 3.5.0 and Enterprise 3.1.0 on. You can still integrate it into your main policy:
-
-1. Copy the above content into a file called `/var/cfengine/masterfiles/example_find_mac_addr.cf`.
-
-2. Insert the bundle name in the `bundlesequence` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-	    bundlesequence => {
-		                    ...
-		                    "test",
-		                    ...
-		                  };
-
-3. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-            inputs => {
-                        ...
-                        "example_find_mac_addr.cf",
-                        ...
-                      };
-
-This policy snippet will now be executed every five minutes along with the rest of your main policy.
+This policy can be found in `/var/cfengine/masterfiles/example_find_mac_addr.cf`

@@ -1,7 +1,15 @@
-## Mount NFS filesystem
+---
+layout: default
+title: Example - Mount NFS filesystem
+categories: [Examples, Mount NFS filesystem]
+published: true
+alias: examples-mount-nfs-filesystem.html
+tags: [Examples, mount, nfs, filesystem]
+---
 
 Mounting an NFS filesystem is straightforward using CFEngine's storage promises. The following bundle specifies the name of a remote file system server, the path of the remote file system and the mount point directory on the local machine:
 
+```cf3
 	bundle agent mounts
 
 	{
@@ -27,25 +35,6 @@ Mounting an NFS filesystem is straightforward using CFEngine's storage promises.
 	edit_fstab => "true";          # True/false add or remove entries to the file system table ("fstab")
 	unmount => "true";             # True/false unmount a previously mounted filesystem
 	}
+```
 
-The following usage of this bundle presumes that you integrate it into the main policy file, `promises.cf`. To use this policy:
-
-1. Copy the above content into `/var/cfengine/masterfiles/example_mount_nfs.cf` or copy the file from <path/to/example_mount_nfs.cf> to `/var/cfengine/masterfiles`.
-
-2. Insert the bundle name in the `bundlesequence` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-	    bundlesequence => {
-		                    ...
-		                    "mounts",
-		                    ...
-		                  };
-
-3. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-            inputs => {
-                        ...
-                        "example_mount_nfs.cf",
-                        ...
-                      };
-
-
+This policy can be found in `/var/cfengine/share/doc/examples/example_mount_nfs.cf`

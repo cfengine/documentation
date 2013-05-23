@@ -1,7 +1,15 @@
-## Set up name resolution (DNS)
+---
+layout: default
+title: Example - Set up name resolution with DNS
+categories: [Examples, Set up name resolution with DNS]
+published: true
+alias: examples-setup-name-resolution-dns.html
+tags: [Examples, dns, file editing, files]
+---
 
-There are many ways to do name resolution setup. A simple and straightforward approach is to implement this as a simple editing promise for the /etc/resolv.conf file.
+There are many ways to do name resolution setup. A simple and straightforward approach is to implement this as a simple editing promise for the `/etc/resolv.conf` file.
 
+```cf3
 	bundle agent edit_name_resolution
 	{
 
@@ -40,55 +48,6 @@ There are many ways to do name resolution setup. A simple and straightforward ap
 	  "nameserver 128.39.74.66";
 
 	}
+```
 
-The following usage of this bundle presumes that you integrate it into the main policy file, `promises.cf`, and that the CFEngine standard library is included in `promises.cf`. To use this bundle:
-
-1. Copy the above content into `/var/cfengine/masterfiles/example_edit_name_resolution.cf` or copy the file from `<path/to/example_edit_name_resolution.cf>` to `/var/cfengine/masterfiles`.
-
-2. Insert the bundle name in the `bundlesequence` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-	    bundlesequence => {
-		                    ...
-		                    "edit_name_resolution",
-		                    ...
-		                  };
-
-3. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-            inputs => {
-                        ...
-                        "example_edit_name_resolution.cf",
-                        ...
-                      };
-
-Note: DNS is not the only name service, of course. Unix has its older `/etc/hosts` file which can also be managed using file editing. A similar policy can easily be made for `/etc/hosts` with corresponding content, i.e.:
-
-	bundle agent system_files
-	{
-	files:
-
-	   "/etc/hosts"
-
-	     comment => "Add hosts to the /etc/hosts file",
-	   edit_line => fix_etc_hosts;
-	}
-
-	bundle edit_line fix_etc_hosts
-	{
-	vars:
-
-	 "names[127.0.0.1]"    string => "localhost localhost.CFEngine.com";
-	 "names[128.39.89.12]" string => "myhost myhost.CFEngine.com";
-	 "names[128.39.89.13]" string => "otherhost otherhost.CFEngine.com";
-
-	 # etc
-
-
-	 "i" slist => getindices("names");
-
-	insert_lines:
-
-	 "$(i)     $(names[$(i)])";
-
-	}
-
+This policy can be found in `/var/cfengine/masterfiles/example_edit_name_resolution.cf`

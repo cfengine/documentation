@@ -1,9 +1,20 @@
-## Updating from a central hub
+---
+layout: default
+title: Example - Updating from a central policy server
+categories: [Examples, Updating from a central policy server]
+published: true
+alias: examples-updating-from-a-central-policy-server.html
+tags: [Examples, updating, policy server]
+---
 
 This is a conceptual example without any test policy associated with it.
 
-The default policy shipped with CFEngine contains a centralized updating of policy that covers more subtleties than this example, and handles fault tolerance. Here is the main idea behind it. For simplicity, we assume that all hosts are on network 10.20.30.* and that the central policy server/hub is 10.20.30.123.
+The default policy shipped with CFEngine contains a centralized updating of policy that
+covers more subtleties than this example, and handles fault tolerance. Here is the main
+idea behind it. For simplicity, we assume that all hosts are on network 10.20.30.* and that
+the central policy server is 10.20.30.123.
 
+```cf3
     bundle agent update
     {
     vars:
@@ -27,9 +38,11 @@ The default policy shipped with CFEngine contains a centralized updating of poli
         copy_from => remote_cp("/usr/local/sbin","localhost"),
         depth_search => recurse("inf"); # This ensures recursive copying of all subdirectories
     }
+```
 
 In addition the server needs to grant access to the clients, this is done in the `body server control`:
 
+```cf3
     body server control
 
     {
@@ -37,6 +50,7 @@ In addition the server needs to grant access to the clients, this is done in the
     allowallconnects      => { "127.0.0.1" , "10.20.30" };
     trustkeysfrom         => { "127.0.0.1" , "10.20.30" };
     }
+```
 
 Since we assume that all hosts are on network 10.20.30.* they will be granted access. In the default policy this is set to `$(sys.policy_hub)/16`, i.e. all hosts in the same class B network as the hub will gain access. You will need to modify the access control list in `body server control` if you have clients outside of the policy server's class B network.
 

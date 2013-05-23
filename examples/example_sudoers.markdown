@@ -1,7 +1,15 @@
-## Set up sudo
+---
+layout: default
+title: Example - Set up sudo
+categories: [Examples, Set up sudo]
+published: true
+alias: examples-setup-sudo.html
+tags: [Examples, sudo, file editing]
+---
 
 Setting up sudo is straightforward, we recommend managing it by copying trusted files from a repository. The following bundle will copy a master sudoers file to `/etc/sudoers`:
 
+```cf3
 	bundle agent sudoers
 	{
 
@@ -21,28 +29,9 @@ Setting up sudo is straightforward, we recommend managing it by copying trusted 
 	   copy_from => secure_cp("$(master_location)/sudoers","$(policy_server)");
 
 	}
+```
 
 We recommend editing the master sudoers file using `visudo` or a similar tool. It is possible to use CFEngine's file editing capabilities to do this directly, but this does not guarantee syntax correctness of the sudoers file and you might end up being locked out of you system.
-
-The following usage of this bundle presumes that you integrate it into the main policy file, `promises.cf`, and that the CFEngine standard library is included in `promises.cf`. To use this policy:
-
-1. Copy the above content into `/var/cfengine/masterfiles/example_sudoers.cf` or copy the file from <path/to/example_sudoers.cf> to `/var/cfengine/masterfiles`.
-
-2. Insert the bundle name in the `bundlesequence` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-	    bundlesequence => {
-		                    ...
-		                    "sudoers",
-		                    ...
-		                  };
-
-3. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-            inputs => {
-                        ...
-                        "example_sudoers.cf",
-                        ...
-                      };
 
 For reference we include an example of a simple sudoers file:
 

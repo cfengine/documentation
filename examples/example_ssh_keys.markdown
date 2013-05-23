@@ -1,9 +1,17 @@
-## Distribute ssh keys
+---
+layout: default
+title: Example - Distribute ssh keys
+categories: [Examples, Distribute ssh keys]
+published: true
+alias: examples-distribute-ssh-keys.html
+tags: [Examples, ssh, distribution]
+---
 
 In this example we assume that we have collected all users' public keys into a single source area on the server and that users exist on the clients (and have corresponding home directory). The specifics of SSH configuration has to be handled elsewhere. First we copy the keys we need to localhost, and then edit them into the the user's local keyring. 
 
 You have to adapt this policy in the mentioned places for it to work in your environment.
 
+```cf3
 	bundle agent distribute_ssh_keys
 	{
 	vars:
@@ -65,28 +73,4 @@ You have to adapt this policy in the mentioned places for it to work in your env
 	    "$(file)"
 		 insert_type => "file";
 	}
-
-You can find this bundle in the file <path/to/example_ssh_keys.cf TBD>
-
-The following usage of this bundle presumes that you integrate it into the main policy file, `promises.cf`, and that the CFEngine standard library is included in `promises.cf`. To use this bundle:
-
-1. Copy the above content into `/var/cfengine/masterfiles/example_ssh_keys.cf` or copy the file from `<path/to/example_ssh_keys.cf>` to `/var/cfengine/masterfiles`.
-
-2. Insert the bundle name in the `bundlesequence` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-	    bundlesequence => {
-		                    ...
-		                    "distribute_ssh_keys",
-		                    ...
-		                  };
-
-3. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-            inputs => {
-                        ...
-                        "example_ssh_keys.cf",
-                        ...
-                      };
-
-This policy snippet will now be executed every five minutes along with the rest of your main policy.
-
+```

@@ -1,7 +1,18 @@
-## Set up time management through NTP
+---
+layout: default
+title: Example - Set up time management through NTP
+categories: [Examples, Set up time management through NTP]
+published: true
+alias: examples-setup-time-management-through-ntp.html
+tags: [Examples, ntp, file editing]
+---
 
-The following sets up a local NTP server that synchronizes with pool.ntp.org and clients that synchronize with your local NTP server. See bottom of this example if you don't want to build a server, but use a "brute force" method.
 
+The following sets up a local NTP server that synchronizes with pool.ntp.org and
+clients that synchronize with your local NTP server. See bottom of this example
+if you don't want to build a server, but use a "brute force" method.
+
+```cf3
 	bundle agent system_time_ntp
 	{
 	 vars:
@@ -221,33 +232,13 @@ The following sets up a local NTP server that synchronizes with pool.ntp.org and
 	insert_lines:
 	 "$(list)";
 	}
+```
 
-The following usage of this bundle presumes that you integrate it into the main policy file, `promises.cf`, and that the CFEngine standard library is included in `promises.cf`. To use this policy:
-
-1. Copy the above content into `/var/cfengine/masterfiles/example_ntp.cf` or copy the file from <path/to/example_ntp.cf> to `/var/cfengine/masterfiles`.
-
-2. Insert the bundle name in the `bundlesequence` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-	    bundlesequence => {
-		                    ...
-		                    "system_time_ntp",
-		                    ...
-		                  };
-
-3. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-            inputs => {
-                        ...
-                        "example_ntp.cf",
-                        ...
-                      };
-
-The NTP daemon will gradually correct your the time on your machines. This may take several hours if the current time on your machine deviates a lot from the actual time.
-
-**********
+This policy can be found in `/var/cfengine/share/doc/examples/example_ntp.cf`
 
 If you don't want to build a server, you might do like this:
 
+```cf3
 	bundle agent time_management
 	{
 	 vars:
@@ -265,7 +256,13 @@ If you don't want to build a server, you might do like this:
 		 contain => silent;
 
 	}
+```
 
-This is a hard reset of the time, it corrects it immediately. This may cause problems if there are large deviations in time and you are using time sensitive software on your system. An NTP daemon setup as shown above, on the other hand, slowly adapts the time to avoid causing disruption. In addition, the NTP daemon can be configured to learn your system's time drift and automatically adjust for it without having to be in touch with the server at all times.
+This is a hard reset of the time, it corrects it immediately. This may cause problems
+if there are large deviations in time and you are using time sensitive software on your
+system. An NTP daemon setup as shown above, on the other hand, slowly adapts the time
+to avoid causing disruption. In addition, the NTP daemon can be configured to learn your
+system's time drift and automatically adjust for it without having to be in touch with
+the server at all times.
 
 

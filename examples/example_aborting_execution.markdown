@@ -1,7 +1,18 @@
-## Aborting execution
+---
+layout: default
+title: Example - Aborting execution 
+categories: [Examples, Aborting execution]
+published: true
+alias: examples-aborting-execution.html
+tags: [Examples, aborting execution]
+---
 
-Sometimes it is useful to abort a bundle execution if certain conditions are not met, for example when validating input to a bundle. The following policy uses a list of regular expressions for classes, or class expressions that `cf-agent` will watch out for. If any of these classes becomes defined, it will cause the current bundle to be aborted.
+Sometimes it is useful to abort a bundle execution if certain conditions are not met,
+for example when validating input to a bundle. The following policy uses a list of 
+regular expressions for classes, or class expressions that `cf-agent` will watch out for.
+If any of these classes becomes defined, it will cause the current bundle to be aborted.
 
+```cf3
     body common control
 
     {
@@ -53,46 +64,23 @@ Sometimes it is useful to abort a bundle execution if certain conditions are not
 
       "User name $(user) is invalid";
     }
+```
 
-This policy can be found in `/var/cfengine/share/doc/examples/unit_abort.cf`. You can test it locally by copying it into `/var/cfengine/inputs` and running:
+This policy can be found in `/var/cfengine/share/doc/examples/unit_abort.cf`.
 
-	/var/cfengine/bin/cf-agent -f /var/cfengine/inputs/unit_abort.cf
+To run this example file as part of your main policy you need to make an
+additional change:
 
-Alternatively you can integrate it into your main policy:
+There cannot be two `body agent control` in the main policy. Copy and paste 
+`abortbundleclasses => { "invalid" };` into /var/cfengine/masterfiles/controls/cf_agent.cf. 
+If you add it to the end of the file it should look something like this:
 
-1. Copy the above content into a file called `/var/cfengine/masterfiles/unit_abort.cf` or copy the file from `/var/cfengine/share/doc/examples/unit_abort.cf` to `/var/cfengine/masterfiles`.
-
-2. Delete the `body common control` section in `/var/cfengine/masterfiles/unit_abort.cf`:
-
-		body common control
-		{
-		bundlesequence  => { "testbundle" };
-		}
-
-3. There cannot be two `body agent control` in the main policy. Copy and paste `abortbundleclasses => { "invalid" };` into /var/cfengine/masterfiles/controls/cf_agent.cf. If you add it to the end of the file it should look something like this:
-
-        ...
+```cf3
+    ...
         #  dryrun => "true";
         
         abortbundleclasses => { "invalid" };
-        }
+    }
+```
 
-Delete the `body agent control`section from section from /var/cfengine/masterfiles/unit_abort.cf.
-
-4. Insert the bundle name in the `bundlesequence` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-	    bundlesequence => {
-		                    ...
-		                    "testbundle",
-		                    ...
-		                  };
-
-5. Insert the policy file name in the `inputs` section of the main policy file (`/var/cfengine/masterfiles/promises.cf`) on the policy server:
-
-            inputs => {
-                        ...
-                        "unit_abort.cf",
-                        ...
-                      };
-
-This policy snippet will now be executed every five minutes along with the rest of your main policy.
+Delete the `body agent control` section from /var/cfengine/masterfiles/unit_abort.cf.
