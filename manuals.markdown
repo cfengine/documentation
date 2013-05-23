@@ -4,8 +4,23 @@ title: CFEngine Manuals
 categories: [Manuals]
 published: true
 alias: manuals.html
-tags: [Manuals]
+tags: [manuals, hello world]
 ---
+
+Here is the simplest `Hello world' program in CFEngine 3:
+
+```cf3
+    body common control
+    {
+    bundlesequence  => { "test" };
+    }
+    
+    bundle agent test
+    {
+    reports:
+        "Hello world";
+    }
+```
 
 * [Getting Started with CFEngine](https://cfengine.com/getting-started)
 * From Zero to Hero

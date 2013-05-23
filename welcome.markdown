@@ -1,4 +1,10 @@
-## 1 CFEngine 3.4.2 - Getting started
+---
+layout: default
+title: CFEngine 3.5 
+categories: [whatsnew]
+published: true
+alias: index.html
+---
 
 CFEngine is a suite of programs for integrated autonomic management
 of either individual or networked computers. It has existed as as
