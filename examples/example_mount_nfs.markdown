@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Mount NFS filesystem
+title: Mount NFS filesystem
 categories: [Examples, Mount NFS filesystem]
 published: true
 alias: examples-mount-nfs-filesystem.html

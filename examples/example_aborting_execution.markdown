@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Aborting execution 
+title: Aborting execution 
 categories: [Examples, Aborting execution]
 published: true
 alias: examples-aborting-execution.html

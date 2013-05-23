@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Check filesystem space
+title: Check filesystem space
 categories: [Examples, Check filesystem space]
 published: true
 alias: examples-check-filesystem-space.html

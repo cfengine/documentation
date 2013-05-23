@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Distribute ssh keys
+title: Distribute ssh keys
 categories: [Examples, Distribute ssh keys]
 published: true
 alias: examples-distribute-ssh-keys.html

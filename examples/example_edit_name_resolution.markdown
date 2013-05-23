@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Set up name resolution with DNS
+title: Set up name resolution with DNS
 categories: [Examples, Set up name resolution with DNS]
 published: true
 alias: examples-setup-name-resolution-dns.html

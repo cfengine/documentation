@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Restart a Process
+title: Restart a Process
 categories: [Examples, Restart a Process]
 published: true
 alias: examples-restart-a-process.html

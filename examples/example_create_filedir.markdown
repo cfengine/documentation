@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Create files and directories
+title: Create files and directories
 categories: [Examples, Create files and directories]
 published: true
 alias: examples-create-files-and-directories.html

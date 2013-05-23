@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Set up sudo
+title: Set up sudo
 categories: [Examples, Set up sudo]
 published: true
 alias: examples-setup-sudo.html

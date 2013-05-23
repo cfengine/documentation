@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Customize Message of the Day
+title: Customize Message of the Day
 categories: [Examples, Customize Message of the Day]
 published: true
 alias: examples-customize-message-of-the-day.html

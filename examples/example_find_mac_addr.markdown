@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Find the MAC address
+title: Find the MAC address
 categories: [Examples, Find the MAC address]
 published: true
 alias: examples-find-the-mac-address.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Change detection
+title: Change detection
 categories: [Examples, Change detection]
 published: true
 alias: examples-change-detection.html

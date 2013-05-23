@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Ensure a process is not running
+title: Ensure a process is not running
 categories: [Examples, Ensure a process is not running]
 published: true
 alias: examples-ensure-process-not-running.html

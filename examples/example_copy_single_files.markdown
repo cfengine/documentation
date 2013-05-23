@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Copy single files
+title: Copy single files
 categories: [Examples, Copy single files]
 published: true
 alias: examples-copy-single-files.html

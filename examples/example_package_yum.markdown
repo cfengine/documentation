@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Software and Patch Installation
+title: Software and Patch Installation
 categories: [Examples, Software and Patch Installation]
 published: true
 alias: examples-software-and-patch-installation.html

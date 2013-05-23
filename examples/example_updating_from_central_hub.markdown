@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Updating from a central policy server
+title: Updating from a central policy server
 categories: [Examples, Updating from a central policy server]
 published: true
 alias: examples-updating-from-a-central-policy-server.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Example - Set up time management through NTP
+title: Set up time management through NTP
 categories: [Examples, Set up time management through NTP]
 published: true
 alias: examples-setup-time-management-through-ntp.html
