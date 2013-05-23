@@ -11,3 +11,6 @@ tags: [What's New]
 * installation and upgrade guide
 * link to change logs
 * licensing
+* platform support
+* support and community
+* how to contribute (to code and/or documentation)
