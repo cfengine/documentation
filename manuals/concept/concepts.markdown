@@ -1,10 +1,10 @@
 ---
 layout: default
 title: CFEngine Concepts
-categories: [CFEngine Concepts Guide]
+categories: [Manuals, Concepts Guide]
 published: true
-alias: cfengine-concepts.html
-tags: [Concepts]
+alias: manuals-concepts.html
+tags: [manuals, concepts, promise]
 ---
 
 ## CFEngine Concepts
@@ -50,6 +50,7 @@ Not all of these elements are necessary every time, but when you combine them th
 
 Next, consider a real promise example .   This promise ensures that there is a file named "test_plain" in the directory "/home/mark/tmp".   It is making a promise to some entity named "system blue team", and the promise is that the file will have a list of owners that is defined by a variable named "usernames".  The create attribute instructs CFEngine to create the file if it doesn't exist.  The comment attribute in this example can be added to any promise.  It has no actual function other than to provide more information to the user in error tracing and auditing.
 
+```cf3
      # Promise type
      files:
      
@@ -58,6 +59,7 @@ Next, consider a real promise example .   This promise ensures that there is a f
              comment => "Hello World",
              perms   => owner("@(usernames)"),
              create  => "true";
+```
 
 You see several kinds of objects in this example. All literal strings (e.g. "true") in CFEngine 3 must be quoted. This provides absolute consistency and makes type-checking easy and error-correction powerful. All function-like objects (e.g. users("..")) are either built-in special functions or parameterized templates. Not everything in this previous example can be explained without diving into variable references and special functions, but you should be able to decipher what this promise it promising from the clear syntax of a promise.
 
@@ -67,15 +69,19 @@ The key point is that this is a promise that will affect the state of file on th
 
 Promises often contain implicit behavior.   While we generally recommend promise writers be very explicit to make it easy to understand promise, there can be cases which call for simplicity.   For example, the following promise simply prints out a log message "hello world".   In this case, all that was needed was a +type+ "reports" and a string literal which is automatically interpreted as a log message.
 
+```cf3
      reports:
      
      "hello world";
+```
 
 The same promise could be implemented using the "commands" type in concert with the echo command:
 
+````cf3
      commands:
      
      "/bin/echo hello world";
+````
 
 The two previous promises have default attributes for everything except the `promiser' which isn't needed as both promises simply cause CFEngine to print a message.
 
@@ -83,60 +89,60 @@ The two previous promises have default attributes for everything except the `pro
 
 There is one mystery yet to be explained: what is a type?  The types your seen so far, "commands", "reports", and "files", these are built-in promise types. Promise types generally belong to a particular component of CFEngine, as the components are designed to keep different kinds of promises. A few types, such as vars, classes and reports are common to all the different component bundles.   Here is a list of types available in CFEngine:
 
-vars::
-    A promise to be a variable, representing a value. 
+    vars::
+        A promise to be a variable, representing a value. 
 
-classes::
-    A promise to be a class representing a state of the system. 
+    classes::
+        A promise to be a class representing a state of the system. 
 
-reports::
-    A promise to report a message.
+    reports::
+        A promise to report a message.
 
 These following promise types may be used only in agent bundles
 
-commands::
-    A promise to execute a command. 
+    commands::
+        A promise to execute a command. 
 
-databases::
-    A promise to configure a database. 
+    databases::
+        A promise to configure a database. 
 
-files::
-    A promise to configure a file, including its existence, attributes and contents. 
+    files::
+        A promise to configure a file, including its existence, attributes and contents. 
 
-interfaces::
-    A promise to configure a network interface. 
+    interfaces::
+        A promise to configure a network interface. 
 
-methods::
-    A promise to take on a whole bundle of other promises. 
+    methods::
+        A promise to take on a whole bundle of other promises. 
 
-packages::
-    A promise to install a package. 
+    packages::
+        A promise to install a package. 
 
-storage::
-    A promise to verify attached storage.
+    storage::
+        A promise to verify attached storage.
 
 These promise types belong to other components:
 
-access::
-    A promise to grant or deny access to file objects in cf-serverd. 
+    access::
+        A promise to grant or deny access to file objects in cf-serverd. 
 
-measurements::
-    A promise to measure or sample data from the system, for monitoring or reporting in cf-monitord (CFEngine Nova and above). 
+    measurements::
+        A promise to measure or sample data from the system, for monitoring or reporting in cf-monitord (CFEngine Nova and above). 
 
-roles::
-    A promise to allow certain users to activate certain classes when executing cf-agent remotely, in cf-serverd. 
+    roles::
+        A promise to allow certain users to activate certain classes when executing cf-agent remotely, in cf-serverd. 
 
-Some promise types are straightfoward.  The "files" promise type deals with file permissions and file content, and the "packages" promise type allows you to work with packaging systems such as rpm and apt.  Other promise types deal with defining variables and classes to be used in CFEngine and are beyond the scope of this concept guide.  For a full explanation of promise types, see the CFEngine reference manual.
+Some promise types are straightforward.  The "files" promise type deals with file permissions and file content, and the "packages" promise type allows you to work with packaging systems such as rpm and apt.  Other promise types deal with defining variables and classes to be used in CFEngine and are beyond the scope of this concept guide.  For a full explanation of promise types, see the CFEngine reference manual.
 
 #### Ready to Start?
 
-If you are impatient to get started writing promises, now might be a good time to take a break from Concepts and try out your first promises in the http://cfengine.com/manuals/cf3-tutorial.html#First-promises[CFEngine tutorial].   You may be able to learn promises as you progress through the tutorial, but there are basic concepts such as classes, function, and variables which will in your understand.   If you are in a hurry, go read the Tutorial.  If you want a solid foundation for your use of CFEngine continue reading this concept guide.
+If you are impatient to get started writing promises, now might be a good time to take a break from Concepts and try out your first promises in the [CFEngine tutorial](http://cfengine.com/manuals/cf3-tutorial.html#First-promises). You may be able to learn promises as you progress through the tutorial, but there are basic concepts such as classes, function, and variables which will in your understand.   If you are in a hurry, go read the Tutorial.  If you want a solid foundation for your use of CFEngine continue reading this concept guide.
 
 ### Making Decisions with Classes
 
-When you write promises in CFEngine, you don't write a series of control statements and loops.  You don't write if/else statements CFEngine to control when and how a promise is fulfilled.   Instead you use +classes+ to apply promise bodies to particular environments depending on context.   +classes+ are simply variables, Boolean variables, which evaluate to true or false depending on context.
+When you write promises in CFEngine, you don't write a series of control statements and loops. You don't write if/else statements CFEngine to control when and how a promise is fulfilled. Instead you use +classes+ to apply promise bodies to particular environments depending on context. +classes+ are simply variables, Boolean variables, which evaluate to true or false depending on context.
 
-Let's make it more concrete than that with a few examples.  Consider one of the previous examples in this chapter that manipulated file permissions.   You could decide that this promise is only applicable to machines that are running Max OSX, or you could decide that you only want to implement this promise on the third day of every month.    Classes are simply facts that represent the current state or context of a system and they can be used for much more than just applying specific recipes to different operating systems.  For example, you can use CFEngine classes to increase capacity for a system during business hours and decrease capacity at night.
+Let's make it more concrete than that with a few examples.  Consider one of the previous examples in this chapter that manipulated file permissions. You could decide that this promise is only applicable to machines that are running Max OSX, or you could decide that you only want to implement this promise on the third day of every month.    Classes are simply facts that represent the current state or context of a system and they can be used for much more than just applying specific recipes to different operating systems.  For example, you can use CFEngine classes to increase capacity for a system during business hours and decrease capacity at night.
 
 #### How Classes Work
 
@@ -550,6 +556,7 @@ There are no loops.  There is no imperative, procedural language involved in CFE
 
 Loops are really a way to iterate a variable over a list. Try the following.
 
+```cf3
     body common control
     {
         bundlesequence  => { "example" };
@@ -568,6 +575,7 @@ Loops are really a way to iterate a variable over a list. Try the following.
             cfengine_3::
                 "$(component) is $(array[$(component)])";
     }
+````
 
 The output looks something like this:
  
