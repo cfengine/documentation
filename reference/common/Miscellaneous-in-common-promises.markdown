@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Miscellaneous in common promises
-categories: [Bundles for common,Miscellaneous in common promises]
+categories: [Reference, Bundles for Common, Miscellaneous in common promises]
 published: true
-alias: Bundles-for-common-Miscellaneous-in-common-promises.html
-tags: [Bundles for common,Miscellaneous in common promises]
+alias: reference-bundles-for-common-miscellaneous-in-common-promises.html
+tags: [reference, bundles, common, miscellaneous, promises]
 ---
 
 ### `*` promises

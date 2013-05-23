@@ -1,10 +1,10 @@
 ---
 layout: default
 title: meta in common promises
-categories: [Bundles for common,meta in common promises]
+categories: [Reference, Bundles for Common,meta in common promises]
 published: true
-alias: Bundles-for-common-meta-in-common-promises.html
-tags: [Bundles for common,meta in common promises]
+alias: reference-bundles-for-common-meta-in-common-promises.html
+tags: [reference, bundles, common, meta, promises]
 ---
 
 ### `meta` promises in \*

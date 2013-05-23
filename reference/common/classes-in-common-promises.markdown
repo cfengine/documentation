@@ -1,10 +1,10 @@
 ---
 layout: default
-title: classes in common promises
-categories: [Bundles for common,classes in common promises]
+title: Classes in common Promises
+categories: [Reference, Bundles for common, classes in common promises]
 published: true
-alias: Bundles-for-common-classes-in-common-promises.html
-tags: [Bundles for common,classes in common promises]
+alias: reference-bundles-for-common-classes-in-common-promises.html
+tags: [bundles, common, classes, promises]
 ---
 
 ### `classes` promises in \*

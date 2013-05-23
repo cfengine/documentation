@@ -1,15 +1,13 @@
 ---
 layout: default
-title: defaults in common promises
-categories: [Bundles for common,defaults in common promises]
+title: Defaults Promises
+categories: [Reference, Bundles for Common, Defaults in common promises]
 published: true
-alias: Bundles-for-common-defaults-in-common-promises.html
-tags: [Bundles for common,defaults in common promises]
+alias: reference-bundles-for-common-defaults-in-common-promises.html
+tags: [reference, bundles, common, defaults, promises]
 ---
 
 ### `defaults` promises in \*
-
-  
 
 Defaults promises are related to variables. If a variable or parameter
 in a promise bundle is undefined, or its value is defined to be invalid,

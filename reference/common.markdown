@@ -1,16 +1,11 @@
 ---
 layout: default
-title: 
-categories: [Bundles for common]
+title: Bundles for Common
+categories: [Reference, Bundles for Common]
 published: true
-alias: Bundles-for-common.html
-tags: [Bundles for common]
+alias: reference-bundles-for-common.html
+tags: [reference, bundles, common]
 ---
-
-Bundles of `common`
--------------------
-
-  
 
 Common bundles may only contain the promise types that are common to all
 bodies. Their main function is to define cross-component global
