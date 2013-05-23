@@ -1,14 +1,11 @@
 ---
 layout: default
 title: Special Variables 
-categories: [Special Variables]
+categories: [Reference, Special Variables]
 published: true
-alias: Special-Variables.html
-tags: [Special Variables]
+alias: reference-special-variables.html
+tags: [reference, variables]
 ---
-
-Special Variables
------------------
 
 -   [Variable context const](#Variable-context-const)
 -   [Variable context edit](#Variable-context-edit)

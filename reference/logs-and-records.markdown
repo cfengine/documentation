@@ -1,16 +1,11 @@
 ---
 layout: default
-title: 
-categories: [Logs and records]
+title: Logs and Records
+categories: [Reference, Logs and records]
 published: true
-alias: Logs-and-records.html
-tags: [Logs and records]
----
-
-Logs and records
-----------------
-
-  
+alias: reference-logs-and-records.html
+tags: [reference, logs, records]
+---  
 
 CFEngine writes numerous logs and records to its private workspace,
 referred to as WORKDIR. This chapter makes some brief notes about these

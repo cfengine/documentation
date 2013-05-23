@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Hard Classes 
-categories: [Hard Classes]
+categories: [Reference, Hard Classes]
 published: true
-alias: hard-classes.html
-tags: [Hard Classes, classes]
+alias: reference-hard-classes.html
+tags: [Reference, Hard Classes, classes]
 ---
 

@@ -1,14 +1,11 @@
 ---
 layout: default
-title: 
-categories: [Special functions]
+title: Functions
+categories: [Reference, Functions]
 published: true
-alias: Special-functions.html
-tags: [Special functions]
+alias: reference-functions.html
+tags: [Reference, Functions]
 ---
-
-Special functions
------------------
 
 -   [Introduction to functions](#Introduction-to-functions)
 -   [Function accessedbefore](#Function-accessedbefore)
