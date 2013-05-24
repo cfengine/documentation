@@ -9,36 +9,59 @@ directly here, then you can report the issue in the regular [CFEngine bug tracke
 Use the "Documentation" category when you create bugs. And of course you can search the bug tracker for known issues with
 the documentation, and maybe help the community of CFEngine users by correcting some of those here!
 
-## File Structure
+## Documentation Structure
 
-Pages are organized hierarchically in category/subcategory relationships. Those are defined by the META data in the
-markdown file:
+Pages are organized hierarchically in category/subcategory relationships. Those are defined by the `categories` META
+data in the markdown file:
+
+    categories: [Path, Of, Categories, Page]
+
+This creates the navigation structure on the left hand side of the published documentation. The HTML files are
+all created into the same directory, so the alias META has to specify a unique filename.
+
+    alias: path-of-categories-page.html
+
+To make it easier to locate files in the repository, the markdown sources are organized in a directory structure that
+corresponds with the categorization, ie
+
+    documentation/path/of/categories/page.markdown
+
+Filenames are lower-case. Markdown-files in each subdirectory can be created as well with content providing an overview
+for that category.
+
+### META tags
+
+Additional META tags you should set are:
 
     layout: default
+
+Leave this as default.
+
     title: The Title
-    categories: [Path, Of, Categories, This]
+
+The title of the page.
+
     published: true|false
-    alias: path-of-categories-this.html
-    tags: [List, of, tags with space, all lowercase]
+
+Pages that set this tag to `false` will not be published.
+
+    tags: [list, of, tags with space, all lowercase]
+
+Keywords for this page, which will be displayed on top of the page, and used when generating the tag-pages.
+
     reviewed: yyyy-mm-dd
     reviewed-by: github-user
 
-This creates the navigation structure to the left. The HTML files are all created into the same directory, so the alias
-META has to specify a unique filename.
+Keeping track of when a documentation page has last been reviewed.
 
-To make files easier to locate in the repository, the markdown sources are organized in a directory structure that
-corresponds with the categorization, ie
+META tag values will be interpreted literally, and cannot contain `:`, `[` and `]`.
 
-* documentation/Path/Of/Categories/This.markdown
+### Image files
 
-Markdown-files in each subdirectory can be created as well with content providing an overview for that category.
+Image files are in the same directory as the markdown files that embed them. Give files unique names to avoid overwrites
+in the generated website.
 
-Note that the file name is not actually important, Jekyll will use the alias you specified in META alias. But keeping
-this consistent gives us better navigation through the source files.
-
-## Images files
-
-...
+See [Style Guide - Charts and graphs](#Charts_and_graphs) for style requirements for images.
 
 ## Style Guide
 
