@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CFEngine 3.5 
-categories: [whatsnew]
+categories: [Getting Started]
 published: true
 alias: index.html
 ---
