@@ -10,11 +10,6 @@ tags: [manuals, hello world]
 Here is the simplest `Hello world' program in CFEngine 3:
 
 ```cf3
-    body common control
-    {
-    bundlesequence  => { "test" };
-    }
-    
     bundle agent test
     {
     reports:
