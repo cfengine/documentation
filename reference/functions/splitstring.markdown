@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function splitstring
-categories: [Reference, Functions, splitstring]
+categories: [Special functions,Function splitstring]
 published: true
-alias: reference-functions-splitstring.html
-tags: [reference, functions, splitstring]
+alias: Special-functions-Function-splitstring.html
+tags: [Special functions,Function splitstring]
 ---
 
 ### Function splitstring

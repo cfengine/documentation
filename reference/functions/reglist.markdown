@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function reglist
-categories: [Reference, Functions, reglist]
+categories: [Special functions,Function reglist]
 published: true
-alias: reference-functions-reglist.html
-tags: [reference, functions, reglist]
+alias: Special-functions-Function-reglist.html
+tags: [Special functions,Function reglist]
 ---
 
 ### Function reglist

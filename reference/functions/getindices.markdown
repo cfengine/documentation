@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function getindices
-categories: [Reference, Functions, getindices]
+categories: [Special functions,Function getindices]
 published: true
-alias: reference-functions-getindices.html
-tags: [reference, functions, getindices]
+alias: Special-functions-Function-getindices.html
+tags: [Special functions,Function getindices]
 ---
 
 ### Function getindices

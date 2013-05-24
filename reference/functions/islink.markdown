@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function islink
-categories: [Reference, Functions, islink]
+categories: [Special functions,Function islink]
 published: true
-alias: reference-functions-islink.html
-tags: [reference, functions, islink]
+alias: Special-functions-Function-islink.html
+tags: [Special functions,Function islink]
 ---
 
 ### Function islink

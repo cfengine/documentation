@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function lastnode
-categories: [Reference, Functions, lastnode]
+categories: [Special functions,Function lastnode]
 published: true
-alias: reference-functions-lastnode.html
-tags: [reference, functions, lastnode]
+alias: Special-functions-Function-lastnode.html
+tags: [Special functions,Function lastnode]
 ---
 
 ### Function lastnode

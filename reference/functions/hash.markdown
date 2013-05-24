@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function hash
-categories: [Reference, Functions, hash]
+categories: [Special functions,Function hash]
 published: true
-alias: reference-functions-hash.html
-tags: [reference, functions, hash]
+alias: Special-functions-Function-hash.html
+tags: [Special functions,Function hash]
 ---
 
 ### Function hash

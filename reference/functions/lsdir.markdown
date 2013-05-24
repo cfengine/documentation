@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function lsdir
-categories: [Reference, Functions, lsdir]
+categories: [Special functions,Function lsdir]
 published: true
-alias: reference-functions-lsdir.html
-tags: [reference, functions, lsdir]
+alias: Special-functions-Function-lsdir.html
+tags: [Special functions,Function lsdir]
 ---
 
 ### Function lsdir

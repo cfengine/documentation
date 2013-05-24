@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function now
-categories: [Reference, Functions, now]
+categories: [Special functions,Function now]
 published: true
-alias: reference-functions-now.html
-tags: [reference, functions, now]
+alias: Special-functions-Function-now.html
+tags: [Special functions,Function now]
 ---
 
 ### Function now

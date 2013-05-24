@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function registryvalue
-categories: [Reference, Functions, registryvalue]
+categories: [Special functions,Function registryvalue]
 published: true
-alias: reference-functions-registryvalue.html
-tags: [reference, functions, registryvalue]
+alias: Special-functions-Function-registryvalue.html
+tags: [Special functions,Function registryvalue]
 ---
 
 ### Function registryvalue

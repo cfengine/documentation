@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function iprange
-categories: [Reference, Functions, iprange]
+categories: [Special functions,Function iprange]
 published: true
-alias: reference-functions-iprange.html
-tags: [reference, functions, iprange]
+alias: Special-functions-Function-iprange.html
+tags: [Special functions,Function iprange]
 ---
 
 ### Function iprange

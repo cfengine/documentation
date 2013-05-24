@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function changedbefore
-categories: [Reference, Functions, changedbefore]
+categories: [Special functions,Function changedbefore]
 published: true
-alias: reference-functions-changedbefore.html
-tags: [reference, functions, changedbefore]
+alias: Special-functions-Function-changedbefore.html
+tags: [Special functions,Function changedbefore]
 ---
 
 ### Function changedbefore
