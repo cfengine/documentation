@@ -4,7 +4,7 @@ title: Function getindices
 categories: [Reference, Functions,Function getindices]
 published: true
 alias: reference-functions-function-getindices.html
-tags: [Special functions,Function getindices]
+tags: [reference, functions, function getindices]
 ---
 
 ### Function getindices

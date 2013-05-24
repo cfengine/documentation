@@ -4,7 +4,7 @@ title: Function readrealarray
 categories: [Reference, Functions,Function readrealarray]
 published: true
 alias: reference-functions-function-readrealarray.html
-tags: [Special functions,Function readrealarray]
+tags: [reference, functions, function readrealarray]
 ---
 
 ### Function readrealarray

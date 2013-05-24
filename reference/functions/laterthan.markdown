@@ -4,7 +4,7 @@ title: Function laterthan
 categories: [Reference, Functions,Function laterthan]
 published: true
 alias: reference-functions-function-laterthan.html
-tags: [Special functions,Function laterthan]
+tags: [reference, functions, function laterthan]
 ---
 
 ### Function laterthan

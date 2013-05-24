@@ -4,7 +4,7 @@ title: Function peerleader
 categories: [Reference, Functions,Function peerleader]
 published: true
 alias: reference-functions-function-peerleader.html
-tags: [Special functions,Function peerleader]
+tags: [reference, functions, function peerleader]
 ---
 
 ### Function peerleader

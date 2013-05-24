@@ -4,7 +4,7 @@ title: Function classmatch
 categories: [Reference, Functions,Function classmatch]
 published: true
 alias: reference-functions-function-classmatch.html
-tags: [Special functions,Function classmatch]
+tags: [reference, functions, function classmatch]
 ---
 
 ### Function classmatch

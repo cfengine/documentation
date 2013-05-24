@@ -4,7 +4,7 @@ title: Function hostswithclass
 categories: [Reference, Functions,Function hostswithclass]
 published: true
 alias: reference-functions-function-hostswithclass.html
-tags: [Special functions,Function hostswithclass]
+tags: [reference, functions, function hostswithclass]
 ---
 
 ### Function hostswithclass

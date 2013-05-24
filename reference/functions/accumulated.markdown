@@ -4,7 +4,7 @@ title: Function accumulated
 categories: [Reference, Functions,Function accumulated]
 published: true
 alias: reference-functions-function-accumulated.html
-tags: [Special functions,Function accumulated]
+tags: [reference, functions, function accumulated]
 ---
 
 ### Function accumulated

@@ -4,7 +4,7 @@ title: Function diskfree
 categories: [Reference, Functions,Function diskfree]
 published: true
 alias: reference-functions-function-diskfree.html
-tags: [Special functions,Function diskfree]
+tags: [reference, functions, function diskfree]
 ---
 
 ### Function diskfree

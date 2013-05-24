@@ -4,7 +4,7 @@ title: Function readfile
 categories: [Reference, Functions,Function readfile]
 published: true
 alias: reference-functions-function-readfile.html
-tags: [Special functions,Function readfile]
+tags: [reference, functions, function readfile]
 ---
 
 ### Function readfile

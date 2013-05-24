@@ -4,7 +4,7 @@ title: Function and
 categories: [Reference, Functions,Function and]
 published: true
 alias: reference-functions-function-and.html
-tags: [Special functions,Function and]
+tags: [reference, functions, function and]
 ---
 
 ### Function and

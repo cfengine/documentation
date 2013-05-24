@@ -4,7 +4,7 @@ title: Function escape
 categories: [Reference, Functions,Function escape]
 published: true
 alias: reference-functions-function-escape.html
-tags: [Special functions,Function escape]
+tags: [reference, functions, function escape]
 ---
 
 ### Function escape

@@ -4,7 +4,7 @@ title: Function islessthan
 categories: [Reference, Functions,Function islessthan]
 published: true
 alias: reference-functions-function-islessthan.html
-tags: [Special functions,Function islessthan]
+tags: [reference, functions, function islessthan]
 ---
 
 ### Function islessthan

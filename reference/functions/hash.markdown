@@ -4,7 +4,7 @@ title: Function hash
 categories: [Reference, Functions,Function hash]
 published: true
 alias: reference-functions-function-hash.html
-tags: [Special functions,Function hash]
+tags: [reference, functions, function hash]
 ---
 
 ### Function hash

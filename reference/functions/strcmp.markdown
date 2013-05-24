@@ -4,7 +4,7 @@ title: Function strcmp
 categories: [Reference, Functions,Function strcmp]
 published: true
 alias: reference-functions-function-strcmp.html
-tags: [Special functions,Function strcmp]
+tags: [reference, functions, function strcmp]
 ---
 
 ### Function strcmp

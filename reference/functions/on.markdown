@@ -4,7 +4,7 @@ title: Function on
 categories: [Reference, Functions,Function on]
 published: true
 alias: reference-functions-function-on.html
-tags: [Special functions,Function on]
+tags: [reference, functions, function on]
 ---
 
 ### Function on

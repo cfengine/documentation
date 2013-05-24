@@ -4,7 +4,7 @@ title: Function islink
 categories: [Reference, Functions,Function islink]
 published: true
 alias: reference-functions-function-islink.html
-tags: [Special functions,Function islink]
+tags: [reference, functions, function islink]
 ---
 
 ### Function islink

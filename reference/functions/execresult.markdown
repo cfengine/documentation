@@ -4,7 +4,7 @@ title: Function execresult
 categories: [Reference, Functions,Function execresult]
 published: true
 alias: reference-functions-function-execresult.html
-tags: [Special functions,Function execresult]
+tags: [reference, functions, function execresult]
 ---
 
 ### Function execresult

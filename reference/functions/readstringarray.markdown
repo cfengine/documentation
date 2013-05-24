@@ -4,7 +4,7 @@ title: Function readstringarray
 categories: [Reference, Functions,Function readstringarray]
 published: true
 alias: reference-functions-function-readstringarray.html
-tags: [Special functions,Function readstringarray]
+tags: [reference, functions, function readstringarray]
 ---
 
 ### Function readstringarray

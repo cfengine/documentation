@@ -4,7 +4,7 @@ title: Function grep
 categories: [Reference, Functions,Function grep]
 published: true
 alias: reference-functions-function-grep.html
-tags: [Special functions,Function grep]
+tags: [reference, functions, function grep]
 ---
 
 ### Function grep

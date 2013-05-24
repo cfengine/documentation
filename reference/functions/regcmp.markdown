@@ -4,7 +4,7 @@ title: Function regcmp
 categories: [Reference, Functions,Function regcmp]
 published: true
 alias: reference-functions-function-regcmp.html
-tags: [Special functions,Function regcmp]
+tags: [reference, functions, function regcmp]
 ---
 
 ### Function regcmp

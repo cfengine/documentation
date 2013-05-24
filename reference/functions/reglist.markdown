@@ -4,7 +4,7 @@ title: Function reglist
 categories: [Reference, Functions,Function reglist]
 published: true
 alias: reference-functions-function-reglist.html
-tags: [Special functions,Function reglist]
+tags: [reference, functions, function reglist]
 ---
 
 ### Function reglist

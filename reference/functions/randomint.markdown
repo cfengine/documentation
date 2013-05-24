@@ -4,7 +4,7 @@ title: Function randomint
 categories: [Reference, Functions,Function randomint]
 published: true
 alias: reference-functions-function-randomint.html
-tags: [Special functions,Function randomint]
+tags: [reference, functions, function randomint]
 ---
 
 ### Function randomint

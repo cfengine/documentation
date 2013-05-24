@@ -4,7 +4,7 @@ title: Function getusers
 categories: [Reference, Functions,Function getusers]
 published: true
 alias: reference-functions-function-getusers.html
-tags: [Special functions,Function getusers]
+tags: [reference, functions, function getusers]
 ---
 
 ### Function getusers

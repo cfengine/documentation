@@ -4,7 +4,7 @@ title: Function groupexists
 categories: [Reference, Functions,Function groupexists]
 published: true
 alias: reference-functions-function-groupexists.html
-tags: [Special functions,Function groupexists]
+tags: [reference, functions, function groupexists]
 ---
 
 ### Function groupexists

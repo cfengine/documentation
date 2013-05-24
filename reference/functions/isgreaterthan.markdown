@@ -4,7 +4,7 @@ title: Function isgreaterthan
 categories: [Reference, Functions,Function isgreaterthan]
 published: true
 alias: reference-functions-function-isgreaterthan.html
-tags: [Special functions,Function isgreaterthan]
+tags: [reference, functions, function isgreaterthan]
 ---
 
 ### Function isgreaterthan

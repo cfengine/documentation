@@ -4,7 +4,7 @@ title: Function parseintarray
 categories: [Reference, Functions,Function parseintarray]
 published: true
 alias: reference-functions-function-parseintarray.html
-tags: [Special functions,Function parseintarray]
+tags: [reference, functions, function parseintarray]
 ---
 
 ### Function parseintarray

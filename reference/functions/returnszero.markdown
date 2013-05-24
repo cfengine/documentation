@@ -4,7 +4,7 @@ title: Function returnszero
 categories: [Reference, Functions,Function returnszero]
 published: true
 alias: reference-functions-function-returnszero.html
-tags: [Special functions,Function returnszero]
+tags: [reference, functions, function returnszero]
 ---
 
 ### Function returnszero

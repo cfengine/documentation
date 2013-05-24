@@ -4,7 +4,7 @@ title: Function canonify
 categories: [Reference, Functions,Function canonify]
 published: true
 alias: reference-functions-function-canonify.html
-tags: [Special functions,Function canonify]
+tags: [reference, functions, function canonify]
 ---
 
 ### Function canonify

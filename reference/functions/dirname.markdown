@@ -4,7 +4,7 @@ title: Function dirname
 categories: [Reference, Functions,Function dirname]
 published: true
 alias: reference-functions-function-dirname.html
-tags: [Special functions,Function dirname]
+tags: [reference, functions, function dirname]
 ---
 
 ### Function dirname

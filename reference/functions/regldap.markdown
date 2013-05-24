@@ -4,7 +4,7 @@ title: Function regldap
 categories: [Reference, Functions,Function regldap]
 published: true
 alias: reference-functions-function-regldap.html
-tags: [Special functions,Function regldap]
+tags: [reference, functions, function regldap]
 ---
 
 ### Function regldap

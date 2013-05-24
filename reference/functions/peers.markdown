@@ -4,7 +4,7 @@ title: Function peers
 categories: [Reference, Functions,Function peers]
 published: true
 alias: reference-functions-function-peers.html
-tags: [Special functions,Function peers]
+tags: [reference, functions, function peers]
 ---
 
 ### Function peers

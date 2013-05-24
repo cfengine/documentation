@@ -4,7 +4,7 @@ title: Function translatepath
 categories: [Reference, Functions,Function translatepath]
 published: true
 alias: reference-functions-function-translatepath.html
-tags: [Special functions,Function translatepath]
+tags: [reference, functions, function translatepath]
 ---
 
 ### Function translatepath

@@ -4,7 +4,7 @@ title: Function parserealarray
 categories: [Reference, Functions,Function parserealarray]
 published: true
 alias: reference-functions-function-parserealarray.html
-tags: [Special functions,Function parserealarray]
+tags: [reference, functions, function parserealarray]
 ---
 
 ### Function parserealarray

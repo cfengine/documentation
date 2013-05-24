@@ -4,7 +4,7 @@ title: Function filesize
 categories: [Reference, Functions,Function filesize]
 published: true
 alias: reference-functions-function-filesize.html
-tags: [Special functions,Function filesize]
+tags: [reference, functions, function filesize]
 ---
 
 ### Function filesize

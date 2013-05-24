@@ -4,7 +4,7 @@ title: Function getfields
 categories: [Reference, Functions,Function getfields]
 published: true
 alias: reference-functions-function-getfields.html
-tags: [Special functions,Function getfields]
+tags: [reference, functions, function getfields]
 ---
 
 ### Function getfields

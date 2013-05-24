@@ -4,7 +4,7 @@ title: Function splayclass
 categories: [Reference, Functions,Function splayclass]
 published: true
 alias: reference-functions-function-splayclass.html
-tags: [Special functions,Function splayclass]
+tags: [reference, functions, function splayclass]
 ---
 
 ### Function splayclass

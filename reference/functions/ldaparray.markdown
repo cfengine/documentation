@@ -4,7 +4,7 @@ title: Function ldaparray
 categories: [Reference, Functions,Function ldaparray]
 published: true
 alias: reference-functions-function-ldaparray.html
-tags: [Special functions,Function ldaparray]
+tags: [reference, functions, function ldaparray]
 ---
 
 ### Function ldaparray

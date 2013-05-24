@@ -4,7 +4,7 @@ title: Function classify
 categories: [Reference, Functions,Function classify]
 published: true
 alias: reference-functions-function-classify.html
-tags: [Special functions,Function classify]
+tags: [reference, functions, function classify]
 ---
 
 ### Function classify

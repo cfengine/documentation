@@ -4,7 +4,7 @@ title: Function readintlist
 categories: [Reference, Functions,Function readintlist]
 published: true
 alias: reference-functions-function-readintlist.html
-tags: [Special functions,Function readintlist]
+tags: [reference, functions, function readintlist]
 ---
 
 ### Function readintlist

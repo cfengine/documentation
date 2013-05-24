@@ -4,7 +4,7 @@ title: Function getenv
 categories: [Reference, Functions,Function getenv]
 published: true
 alias: reference-functions-function-getenv.html
-tags: [Special functions,Function getenv]
+tags: [reference, functions, function getenv]
 ---
 
 ### Function getenv

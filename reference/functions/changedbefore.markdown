@@ -4,7 +4,7 @@ title: Function changedbefore
 categories: [Reference, Functions,Function changedbefore]
 published: true
 alias: reference-functions-function-changedbefore.html
-tags: [Special functions,Function changedbefore]
+tags: [reference, functions, function changedbefore]
 ---
 
 ### Function changedbefore

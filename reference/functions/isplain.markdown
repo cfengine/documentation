@@ -4,7 +4,7 @@ title: Function isplain
 categories: [Reference, Functions,Function isplain]
 published: true
 alias: reference-functions-function-isplain.html
-tags: [Special functions,Function isplain]
+tags: [reference, functions, function isplain]
 ---
 
 ### Function isplain

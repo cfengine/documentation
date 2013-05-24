@@ -4,7 +4,7 @@ title: Function now
 categories: [Reference, Functions,Function now]
 published: true
 alias: reference-functions-function-now.html
-tags: [Special functions,Function now]
+tags: [reference, functions, function now]
 ---
 
 ### Function now

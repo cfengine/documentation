@@ -4,7 +4,7 @@ title: Function hostrange
 categories: [Reference, Functions,Function hostrange]
 published: true
 alias: reference-functions-function-hostrange.html
-tags: [Special functions,Function hostrange]
+tags: [reference, functions, function hostrange]
 ---
 
 ### Function hostrange

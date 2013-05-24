@@ -4,7 +4,7 @@ title: Function countclassesmatching
 categories: [Reference, Functions,Function countclassesmatching]
 published: true
 alias: reference-functions-function-countclassesmatching.html
-tags: [Special functions,Function countclassesmatching]
+tags: [reference, functions, function countclassesmatching]
 ---
 
 ### Function countclassesmatching

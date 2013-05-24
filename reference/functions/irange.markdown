@@ -4,7 +4,7 @@ title: Function irange
 categories: [Reference, Functions,Function irange]
 published: true
 alias: reference-functions-function-irange.html
-tags: [Special functions,Function irange]
+tags: [reference, functions, function irange]
 ---
 
 ### Function irange

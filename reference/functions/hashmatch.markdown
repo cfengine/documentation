@@ -4,7 +4,7 @@ title: Function hashmatch
 categories: [Reference, Functions,Function hashmatch]
 published: true
 alias: reference-functions-function-hashmatch.html
-tags: [Special functions,Function hashmatch]
+tags: [reference, functions, function hashmatch]
 ---
 
 ### Function hashmatch

@@ -4,7 +4,7 @@ title: Function getgid
 categories: [Reference, Functions,Function getgid]
 published: true
 alias: reference-functions-function-getgid.html
-tags: [Special functions,Function getgid]
+tags: [reference, functions, function getgid]
 ---
 
 ### Function getgid

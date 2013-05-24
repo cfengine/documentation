@@ -4,7 +4,7 @@ title: Function countlinesmatching
 categories: [Reference, Functions,Function countlinesmatching]
 published: true
 alias: reference-functions-function-countlinesmatching.html
-tags: [Special functions,Function countlinesmatching]
+tags: [reference, functions, function countlinesmatching]
 ---
 
 ### Function countlinesmatching

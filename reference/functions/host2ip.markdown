@@ -4,7 +4,7 @@ title: Function host2ip
 categories: [Reference, Functions,Function host2ip]
 published: true
 alias: reference-functions-function-host2ip.html
-tags: [Special functions,Function host2ip]
+tags: [reference, functions, function host2ip]
 ---
 
 ### Function host2ip

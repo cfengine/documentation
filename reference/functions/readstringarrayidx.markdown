@@ -4,7 +4,7 @@ title: Function readstringarrayidx
 categories: [Reference, Functions,Function readstringarrayidx]
 published: true
 alias: reference-functions-function-readstringarrayidx.html
-tags: [Special functions,Function readstringarrayidx]
+tags: [reference, functions, function readstringarrayidx]
 ---
 
 ### Function readstringarrayidx

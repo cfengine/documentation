@@ -4,7 +4,7 @@ title: Function join
 categories: [Reference, Functions,Function join]
 published: true
 alias: reference-functions-function-join.html
-tags: [Special functions,Function join]
+tags: [reference, functions, function join]
 ---
 
 ### Function join

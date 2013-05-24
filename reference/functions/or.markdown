@@ -4,7 +4,7 @@ title: Function or
 categories: [Reference, Functions,Function or]
 published: true
 alias: reference-functions-function-or.html
-tags: [Special functions,Function or]
+tags: [reference, functions, function or]
 ---
 
 ### Function or

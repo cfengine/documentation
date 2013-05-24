@@ -4,7 +4,7 @@ title: Function remoteclassesmatching
 categories: [Reference, Functions,Function remoteclassesmatching]
 published: true
 alias: reference-functions-function-remoteclassesmatching.html
-tags: [Special functions,Function remoteclassesmatching]
+tags: [reference, functions, function remoteclassesmatching]
 ---
 
 ### Function remoteclassesmatching

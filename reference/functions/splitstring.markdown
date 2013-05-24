@@ -4,7 +4,7 @@ title: Function splitstring
 categories: [Reference, Functions,Function splitstring]
 published: true
 alias: reference-functions-function-splitstring.html
-tags: [Special functions,Function splitstring]
+tags: [reference, functions, function splitstring]
 ---
 
 ### Function splitstring

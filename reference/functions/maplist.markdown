@@ -4,7 +4,7 @@ title: Function maplist
 categories: [Reference, Functions,Function maplist]
 published: true
 alias: reference-functions-function-maplist.html
-tags: [Special functions,Function maplist]
+tags: [reference, functions, function maplist]
 ---
 
 ### Function maplist

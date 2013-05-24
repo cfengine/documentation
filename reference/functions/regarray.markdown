@@ -4,7 +4,7 @@ title: Function regarray
 categories: [Reference, Functions,Function regarray]
 published: true
 alias: reference-functions-function-regarray.html
-tags: [Special functions,Function regarray]
+tags: [reference, functions, function regarray]
 ---
 
 ### Function regarray

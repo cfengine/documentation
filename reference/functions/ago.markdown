@@ -4,7 +4,7 @@ title: Function ago
 categories: [Reference, Functions,Function ago]
 published: true
 alias: reference-functions-function-ago.html
-tags: [Special functions,Function ago]
+tags: [reference, functions, function ago]
 ---
 
 ### Function ago

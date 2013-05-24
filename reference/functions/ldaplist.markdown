@@ -4,7 +4,7 @@ title: Function ldaplist
 categories: [Reference, Functions,Function ldaplist]
 published: true
 alias: reference-functions-function-ldaplist.html
-tags: [Special functions,Function ldaplist]
+tags: [reference, functions, function ldaplist]
 ---
 
 ### Function ldaplist

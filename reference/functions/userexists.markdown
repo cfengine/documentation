@@ -4,7 +4,7 @@ title: Function userexists
 categories: [Reference, Functions,Function userexists]
 published: true
 alias: reference-functions-function-userexists.html
-tags: [Special functions,Function userexists]
+tags: [reference, functions, function userexists]
 ---
 
 ### Function userexists

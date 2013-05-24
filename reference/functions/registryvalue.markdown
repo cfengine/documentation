@@ -4,7 +4,7 @@ title: Function registryvalue
 categories: [Reference, Functions,Function registryvalue]
 published: true
 alias: reference-functions-function-registryvalue.html
-tags: [Special functions,Function registryvalue]
+tags: [reference, functions, function registryvalue]
 ---
 
 ### Function registryvalue

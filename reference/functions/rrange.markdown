@@ -4,7 +4,7 @@ title: Function rrange
 categories: [Reference, Functions,Function rrange]
 published: true
 alias: reference-functions-function-rrange.html
-tags: [Special functions,Function rrange]
+tags: [reference, functions, function rrange]
 ---
 
 ### Function rrange

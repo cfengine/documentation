@@ -4,7 +4,7 @@ title: Function getuid
 categories: [Reference, Functions,Function getuid]
 published: true
 alias: reference-functions-function-getuid.html
-tags: [Special functions,Function getuid]
+tags: [reference, functions, function getuid]
 ---
 
 ### Function getuid

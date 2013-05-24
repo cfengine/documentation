@@ -4,7 +4,7 @@ title: Function regextract
 categories: [Reference, Functions,Function regextract]
 published: true
 alias: reference-functions-function-regextract.html
-tags: [Special functions,Function regextract]
+tags: [reference, functions, function regextract]
 ---
 
 ### Function regextract

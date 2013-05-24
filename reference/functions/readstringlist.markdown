@@ -4,7 +4,7 @@ title: Function readstringlist
 categories: [Reference, Functions,Function readstringlist]
 published: true
 alias: reference-functions-function-readstringlist.html
-tags: [Special functions,Function readstringlist]
+tags: [reference, functions, function readstringlist]
 ---
 
 ### Function readstringlist

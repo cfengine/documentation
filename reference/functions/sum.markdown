@@ -4,7 +4,7 @@ title: Function sum
 categories: [Reference, Functions,Function sum]
 published: true
 alias: reference-functions-function-sum.html
-tags: [Special functions,Function sum]
+tags: [reference, functions, function sum]
 ---
 
 ### Function sum

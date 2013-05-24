@@ -4,7 +4,7 @@ title: Function isexecutable
 categories: [Reference, Functions,Function isexecutable]
 published: true
 alias: reference-functions-function-isexecutable.html
-tags: [Special functions,Function isexecutable]
+tags: [reference, functions, function isexecutable]
 ---
 
 ### Function isexecutable

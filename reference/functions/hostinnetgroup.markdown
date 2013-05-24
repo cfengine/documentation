@@ -4,7 +4,7 @@ title: Function hostinnetgroup
 categories: [Reference, Functions,Function hostinnetgroup]
 published: true
 alias: reference-functions-function-hostinnetgroup.html
-tags: [Special functions,Function hostinnetgroup]
+tags: [reference, functions, function hostinnetgroup]
 ---
 
 ### Function hostinnetgroup

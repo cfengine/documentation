@@ -4,7 +4,7 @@ title: Function lsdir
 categories: [Reference, Functions,Function lsdir]
 published: true
 alias: reference-functions-function-lsdir.html
-tags: [Special functions,Function lsdir]
+tags: [reference, functions, function lsdir]
 ---
 
 ### Function lsdir

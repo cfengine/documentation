@@ -4,7 +4,7 @@ title: Function readtcp
 categories: [Reference, Functions,Function readtcp]
 published: true
 alias: reference-functions-function-readtcp.html
-tags: [Special functions,Function readtcp]
+tags: [reference, functions, function readtcp]
 ---
 
 ### Function readtcp

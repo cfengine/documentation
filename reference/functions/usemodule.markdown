@@ -4,7 +4,7 @@ title: Function usemodule
 categories: [Reference, Functions,Function usemodule]
 published: true
 alias: reference-functions-function-usemodule.html
-tags: [Special functions,Function usemodule]
+tags: [reference, functions, function usemodule]
 ---
 
 ### Function usemodule

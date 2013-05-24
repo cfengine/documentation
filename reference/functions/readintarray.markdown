@@ -4,7 +4,7 @@ title: Function readintarray
 categories: [Reference, Functions,Function readintarray]
 published: true
 alias: reference-functions-function-readintarray.html
-tags: [Special functions,Function readintarray]
+tags: [reference, functions, function readintarray]
 ---
 
 ### Function readintarray

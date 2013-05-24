@@ -4,7 +4,7 @@ title: Function getvalues
 categories: [Reference, Functions,Function getvalues]
 published: true
 alias: reference-functions-function-getvalues.html
-tags: [Special functions,Function getvalues]
+tags: [reference, functions, function getvalues]
 ---
 
 ### Function getvalues

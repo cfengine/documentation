@@ -4,7 +4,7 @@ title: Function regline
 categories: [Reference, Functions,Function regline]
 published: true
 alias: reference-functions-function-regline.html
-tags: [Special functions,Function regline]
+tags: [reference, functions, function regline]
 ---
 
 ### Function regline

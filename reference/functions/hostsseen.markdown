@@ -4,7 +4,7 @@ title: Function hostsseen
 categories: [Reference, Functions,Function hostsseen]
 published: true
 alias: reference-functions-function-hostsseen.html
-tags: [Special functions,Function hostsseen]
+tags: [reference, functions, function hostsseen]
 ---
 
 ### Function hostsseen

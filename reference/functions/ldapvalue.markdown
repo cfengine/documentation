@@ -4,7 +4,7 @@ title: Function ldapvalue
 categories: [Reference, Functions,Function ldapvalue]
 published: true
 alias: reference-functions-function-ldapvalue.html
-tags: [Special functions,Function ldapvalue]
+tags: [reference, functions, function ldapvalue]
 ---
 
 ### Function ldapvalue

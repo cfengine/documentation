@@ -4,7 +4,7 @@ title: Function readreallist
 categories: [Reference, Functions,Function readreallist]
 published: true
 alias: reference-functions-function-readreallist.html
-tags: [Special functions,Function readreallist]
+tags: [reference, functions, function readreallist]
 ---
 
 ### Function readreallist

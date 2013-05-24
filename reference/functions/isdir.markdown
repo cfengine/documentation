@@ -4,7 +4,7 @@ title: Function isdir
 categories: [Reference, Functions,Function isdir]
 published: true
 alias: reference-functions-function-isdir.html
-tags: [Special functions,Function isdir]
+tags: [reference, functions, function isdir]
 ---
 
 ### Function isdir

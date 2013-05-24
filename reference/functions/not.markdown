@@ -4,7 +4,7 @@ title: Function not
 categories: [Reference, Functions,Function not]
 published: true
 alias: reference-functions-function-not.html
-tags: [Special functions,Function not]
+tags: [reference, functions, function not]
 ---
 
 ### Function not

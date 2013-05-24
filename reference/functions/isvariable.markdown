@@ -4,7 +4,7 @@ title: Function isvariable
 categories: [Reference, Functions,Function isvariable]
 published: true
 alias: reference-functions-function-isvariable.html
-tags: [Special functions,Function isvariable]
+tags: [reference, functions, function isvariable]
 ---
 
 ### Function isvariable

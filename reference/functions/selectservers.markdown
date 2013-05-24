@@ -4,7 +4,7 @@ title: Function selectservers
 categories: [Reference, Functions,Function selectservers]
 published: true
 alias: reference-functions-function-selectservers.html
-tags: [Special functions,Function selectservers]
+tags: [reference, functions, function selectservers]
 ---
 
 ### Function selectservers

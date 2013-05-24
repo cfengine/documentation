@@ -4,7 +4,7 @@ title: Function isnewerthan
 categories: [Reference, Functions,Function isnewerthan]
 published: true
 alias: reference-functions-function-isnewerthan.html
-tags: [Special functions,Function isnewerthan]
+tags: [reference, functions, function isnewerthan]
 ---
 
 ### Function isnewerthan

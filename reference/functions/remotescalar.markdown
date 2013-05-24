@@ -4,7 +4,7 @@ title: Function remotescalar
 categories: [Reference, Functions,Function remotescalar]
 published: true
 alias: reference-functions-function-remotescalar.html
-tags: [Special functions,Function remotescalar]
+tags: [reference, functions, function remotescalar]
 ---
 
 ### Function remotescalar

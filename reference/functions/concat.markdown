@@ -4,7 +4,7 @@ title: Function concat
 categories: [Reference, Functions,Function concat]
 published: true
 alias: reference-functions-function-concat.html
-tags: [Special functions,Function concat]
+tags: [reference, functions, function concat]
 ---
 
 ### Function concat

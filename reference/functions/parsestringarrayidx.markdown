@@ -4,7 +4,7 @@ title: Function parsestringarrayidx
 categories: [Reference, Functions,Function parsestringarrayidx]
 published: true
 alias: reference-functions-function-parsestringarrayidx.html
-tags: [Special functions,Function parsestringarrayidx]
+tags: [reference, functions, function parsestringarrayidx]
 ---
 
 ### Function parsestringarrayidx

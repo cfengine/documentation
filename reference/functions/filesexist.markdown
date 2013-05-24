@@ -4,7 +4,7 @@ title: Function filesexist
 categories: [Reference, Functions,Function filesexist]
 published: true
 alias: reference-functions-function-filesexist.html
-tags: [Special functions,Function filesexist]
+tags: [reference, functions, function filesexist]
 ---
 
 ### Function filesexist
