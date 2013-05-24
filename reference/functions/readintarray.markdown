@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function readintarray
-categories: [Special functions,Function readintarray]
+categories: [Reference, Functions, readintarray]
 published: true
-alias: Special-functions-Function-readintarray.html
-tags: [Special functions,Function readintarray]
+alias: reference-functions-readintarray.html
+tags: [reference, functions, readintarray]
 ---
 
 ### Function readintarray

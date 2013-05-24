@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function peers
-categories: [Special functions,Function peers]
+categories: [Reference, Functions, peers]
 published: true
-alias: Special-functions-Function-peers.html
-tags: [Special functions,Function peers]
+alias: reference-functions-peers.html
+tags: [reference, functions, peers]
 ---
 
 ### Function peers

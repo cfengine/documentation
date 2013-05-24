@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function parsestringarrayidx
-categories: [Special functions,Function parsestringarrayidx]
+categories: [Reference, Functions, parsestringarrayidx]
 published: true
-alias: Special-functions-Function-parsestringarrayidx.html
-tags: [Special functions,Function parsestringarrayidx]
+alias: reference-functions-parsestringarrayidx.html
+tags: [reference, functions, parsestringarrayidx]
 ---
 
 ### Function parsestringarrayidx

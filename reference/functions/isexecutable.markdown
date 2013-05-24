@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function isexecutable
-categories: [Special functions,Function isexecutable]
+categories: [Reference, Functions, isexecutable]
 published: true
-alias: Special-functions-Function-isexecutable.html
-tags: [Special functions,Function isexecutable]
+alias: reference-functions-isexecutable.html
+tags: [reference, functions, isexecutable]
 ---
 
 ### Function isexecutable

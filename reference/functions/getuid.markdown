@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function getuid
-categories: [Special functions,Function getuid]
+categories: [Reference, Functions, getuid]
 published: true
-alias: Special-functions-Function-getuid.html
-tags: [Special functions,Function getuid]
+alias: reference-functions-getuid.html
+tags: [reference, functions, getuid]
 ---
 
 ### Function getuid

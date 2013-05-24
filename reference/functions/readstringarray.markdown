@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function readstringarray
-categories: [Special functions,Function readstringarray]
+categories: [Reference, Functions, readstringarray]
 published: true
-alias: Special-functions-Function-readstringarray.html
-tags: [Special functions,Function readstringarray]
+alias: reference-functions-readstringarray.html
+tags: [reference, functions, readstringarray]
 ---
 
 ### Function readstringarray

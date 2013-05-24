@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function hashmatch
-categories: [Special functions,Function hashmatch]
+categories: [Reference, Functions, hashmatch]
 published: true
-alias: Special-functions-Function-hashmatch.html
-tags: [Special functions,Function hashmatch]
+alias: reference-functions-hashmatch.html
+tags: [reference, functions, hashmatch]
 ---
 
 ### Function hashmatch

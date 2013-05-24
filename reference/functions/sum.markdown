@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function sum
-categories: [Special functions,Function sum]
+categories: [Reference, Functions, sum]
 published: true
-alias: Special-functions-Function-sum.html
-tags: [Special functions,Function sum]
+alias: reference-functions-sum.html
+tags: [reference, functions, sum]
 ---
 
 ### Function sum

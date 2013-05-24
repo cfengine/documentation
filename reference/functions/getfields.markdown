@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function getfields
-categories: [Special functions,Function getfields]
+categories: [Reference, Functions, getfields]
 published: true
-alias: Special-functions-Function-getfields.html
-tags: [Special functions,Function getfields]
+alias: reference-functions-getfields.html
+tags: [reference, functions, getfields]
 ---
 
 ### Function getfields

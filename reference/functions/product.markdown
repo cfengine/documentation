@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function product
-categories: [Special functions,Function product]
+categories: [Reference, Functions, product]
 published: true
-alias: Special-functions-Function-product.html
-tags: [Special functions,Function product]
+alias: reference-functions-product.html
+tags: [reference, functions, product]
 ---
 
 ### Function product

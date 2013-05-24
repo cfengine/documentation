@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function irange
-categories: [Special functions,Function irange]
+categories: [Reference, Functions, irange]
 published: true
-alias: Special-functions-Function-irange.html
-tags: [Special functions,Function irange]
+alias: reference-functions-irange.html
+tags: [reference, functions, irange]
 ---
 
 ### Function irange
