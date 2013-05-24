@@ -19,7 +19,9 @@ markdown file:
     categories: [Path, Of, Categories, This]
     published: true|false
     alias: path-of-categories-this.html
-    tags: [List, of, Tags with space]
+    tags: [List, of, tags with space, all lowercase]
+    reviewed: yyyy-mm-dd
+    reviewed-by: github-user
 
 This creates the navigation structure to the left. The HTML files are all created into the same directory, so the alias
 META has to specify a unique filename.
