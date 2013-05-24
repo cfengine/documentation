@@ -1,13 +1,11 @@
 ---
 layout: default
 title: State information
-categories: [Logs and records,State information]
+categories: [Reference, Logs and records,State information]
 published: true
-alias: Logs-and-records-State-information.html
-tags: [Logs and records,State information]
+alias: reference-logs-and-records-state-information.html
+tags: [reference, logs, records, State, information]
 ---
-
-### State information
 
 The CFEngine components keep their current process identifier number in
 \`pid files' in the work directory. For example:
