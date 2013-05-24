@@ -1,15 +1,11 @@
 ---
 layout: default
 title: Variable context mon
-categories: [Special Variables,Variable context mon]
+categories: [Reference, Special Variables, Variable context mon]
 published: true
-alias: Special-Variables-Variable-context-mon.html
-tags: [Special Variables,Variable context mon]
+alias: reference-special-variables-variable-context-mon.html
+tags: [reference, variables, variable context mon, cf-monitord, monitoring]
 ---
-
-### Variable context `mon`
-
-  
 
 The variables discovered by `cf-monitord` are placed in this monitoring
 context. Monitoring variables are expected to be ephemeral properties,

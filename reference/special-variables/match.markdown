@@ -1,15 +1,12 @@
 ---
 layout: default
 title: Variable context match
-categories: [Special Variables,Variable context match]
+categories: [Reference, Special Variables,Variable context match]
 published: true
-alias: Special-Variables-Variable-context-match.html
-tags: [Special Variables,Variable context match]
+alias: reference-special-Variables-Variable-context-match.html
+tags: [reference, variables, variable context match, strings, file editing, files promises, edit_line]
 ---
 
-### Variable context `match`
-
-  
 
 Each time CFEngine matches a string, these values are assigned to a
 special variable context `$(match.`n`)`. The fragments can be referred

@@ -1,15 +1,12 @@
 ---
 layout: default
 title: Variable context sys
-categories: [Special Variables,Variable context sys]
+categories: [Reference, Special Variables,Variable context sys]
 published: true
-alias: Special-Variables-Variable-context-sys.html
-tags: [Special Variables,Variable context sys]
+alias: reference-special-variables-variable-context-sys.html
+tags: [reference, variables, variable context sys, discovery, system, inventory]
 ---
 
-### Variable context `sys`
-
-  
 
 System variables are derived from CFEngine's automated discovery of
 system values. They are provided as variables in order to make

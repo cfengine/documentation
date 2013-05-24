@@ -1,15 +1,12 @@
 ---
 layout: default
 title: Variable context const
-categories: [Special Variables,Variable context const]
+categories: [Reference, Special Variables, Variable context const]
 published: true
-alias: Special-Variables-Variable-context-const.html
-tags: [Special Variables,Variable context const]
+alias: reference-special-Variables-Variable-context-const.html
+tags: [reference, variables, variable context const, const]
 ---
 
-### Variable context `const`
-
-  
 
 CFEngine defines a number of variables for embedding unprintable values
 or values with special meanings in strings.

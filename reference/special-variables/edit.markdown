@@ -1,15 +1,11 @@
 ---
 layout: default
 title: Variable context edit
-categories: [Special Variables,Variable context edit]
+categories: [Reference, Special Variables, Variable context edit]
 published: true
-alias: Special-Variables-Variable-context-edit.html
-tags: [Special Variables,Variable context edit]
+alias: reference-special-Variables-Variable-context-edit.html
+tags: [reference, variables, variable context edit, edit_line, files promises]
 ---
-
-### Variable context `edit`
-
-  
 
 This context edit is used to access information about editing promises
 during their execution. It is context dependent and not universally

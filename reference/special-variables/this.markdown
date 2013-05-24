@@ -1,15 +1,12 @@
 ---
 layout: default
 title: Variable context this
-categories: [Special Variables,Variable context this]
+categories: [Reference, Special Variables,Variable context this]
 published: true
-alias: Special-Variables-Variable-context-this.html
-tags: [Special Variables,Variable context this]
+alias: reference-special-variables-variable-context-this.html
+tags: [reference, variables, variable context this, this]
 ---
 
-### Variable context `this`
-
-  
 
 This context this is used to access information about promises during
 their execution. It is context dependent and not universally meaningful
