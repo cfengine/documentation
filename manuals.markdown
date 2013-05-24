@@ -5,6 +5,8 @@ categories: [Manuals]
 published: true
 alias: manuals.html
 tags: [manuals, hello world]
+reviewed: 2013-05-24
+reviewed-by: atsaloli
 ---
 
 Here is the simplest `Hello world' program in CFEngine 3:
@@ -22,4 +24,6 @@ Here is the simplest `Hello world' program in CFEngine 3:
 * Concept Guide
 * Language Concepts
 * Default policy structure
+* Design Center
+* Multi-Site Support
 
