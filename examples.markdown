@@ -72,3 +72,13 @@ doing the following on your policy server:
 
 The example policy will now be executed every five minutes along with the rest
 of your main policy.
+
+*NOTE* You may have to fill the example with data before it will work.
+For example, the LDAP query in `active_directory.cf` needs a domain name.
+In the variable declaration, replace "cftesting" with your domain name:
+
+```cf3
+vars:
+# NOTE: Edit this to your domain, e.g. "corp"
+  "domain_name" string => "cftesting";
+```
