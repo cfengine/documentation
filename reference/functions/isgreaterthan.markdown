@@ -3,7 +3,7 @@ layout: default
 title: Function isgreaterthan
 categories: [Reference, Functions,Function isgreaterthan]
 published: true
-alias: Special-functions-Function-isgreaterthan.html
+alias: reference-functions-function-isgreaterthan.html
 tags: [Special functions,Function isgreaterthan]
 ---
 

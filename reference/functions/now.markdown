@@ -3,7 +3,7 @@ layout: default
 title: Function now
 categories: [Reference, Functions,Function now]
 published: true
-alias: Special-functions-Function-now.html
+alias: reference-functions-function-now.html
 tags: [Special functions,Function now]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function join
 categories: [Reference, Functions,Function join]
 published: true
-alias: Special-functions-Function-join.html
+alias: reference-functions-function-join.html
 tags: [Special functions,Function join]
 ---
 

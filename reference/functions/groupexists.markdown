@@ -3,7 +3,7 @@ layout: default
 title: Function groupexists
 categories: [Reference, Functions,Function groupexists]
 published: true
-alias: Special-functions-Function-groupexists.html
+alias: reference-functions-function-groupexists.html
 tags: [Special functions,Function groupexists]
 ---
 

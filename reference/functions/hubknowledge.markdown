@@ -3,7 +3,7 @@ layout: default
 title: Function hubknowledge
 categories: [Reference, Functions,Function hubknowledge]
 published: true
-alias: Special-functions-Function-hubknowledge.html
+alias: reference-functions-function-hubknowledge.html
 tags: [Special functions,Function hubknowledge]
 ---
 

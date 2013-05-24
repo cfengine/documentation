@@ -3,7 +3,7 @@ layout: default
 title: Function usemodule
 categories: [Reference, Functions,Function usemodule]
 published: true
-alias: Special-functions-Function-usemodule.html
+alias: reference-functions-function-usemodule.html
 tags: [Special functions,Function usemodule]
 ---
 

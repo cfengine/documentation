@@ -3,7 +3,7 @@ layout: default
 title: Function getvalues
 categories: [Reference, Functions,Function getvalues]
 published: true
-alias: Special-functions-Function-getvalues.html
+alias: reference-functions-function-getvalues.html
 tags: [Special functions,Function getvalues]
 ---
 

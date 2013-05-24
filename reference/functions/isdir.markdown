@@ -3,7 +3,7 @@ layout: default
 title: Function isdir
 categories: [Reference, Functions,Function isdir]
 published: true
-alias: Special-functions-Function-isdir.html
+alias: reference-functions-function-isdir.html
 tags: [Special functions,Function isdir]
 ---
 

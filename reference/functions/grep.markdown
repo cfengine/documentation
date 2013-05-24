@@ -3,7 +3,7 @@ layout: default
 title: Function grep
 categories: [Reference, Functions,Function grep]
 published: true
-alias: Special-functions-Function-grep.html
+alias: reference-functions-function-grep.html
 tags: [Special functions,Function grep]
 ---
 

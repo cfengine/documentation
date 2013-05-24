@@ -3,7 +3,7 @@ layout: default
 title: Function reglist
 categories: [Reference, Functions,Function reglist]
 published: true
-alias: Special-functions-Function-reglist.html
+alias: reference-functions-function-reglist.html
 tags: [Special functions,Function reglist]
 ---
 

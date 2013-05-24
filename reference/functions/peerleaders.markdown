@@ -3,7 +3,7 @@ layout: default
 title: Function peerleaders
 categories: [Reference, Functions,Function peerleaders]
 published: true
-alias: Special-functions-Function-peerleaders.html
+alias: reference-functions-function-peerleaders.html
 tags: [Special functions,Function peerleaders]
 ---
 

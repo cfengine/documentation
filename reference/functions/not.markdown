@@ -3,7 +3,7 @@ layout: default
 title: Function not
 categories: [Reference, Functions,Function not]
 published: true
-alias: Special-functions-Function-not.html
+alias: reference-functions-function-not.html
 tags: [Special functions,Function not]
 ---
 

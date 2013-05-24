@@ -3,7 +3,7 @@ layout: default
 title: Function strcmp
 categories: [Reference, Functions,Function strcmp]
 published: true
-alias: Special-functions-Function-strcmp.html
+alias: reference-functions-function-strcmp.html
 tags: [Special functions,Function strcmp]
 ---
 

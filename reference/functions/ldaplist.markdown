@@ -3,7 +3,7 @@ layout: default
 title: Function ldaplist
 categories: [Reference, Functions,Function ldaplist]
 published: true
-alias: Special-functions-Function-ldaplist.html
+alias: reference-functions-function-ldaplist.html
 tags: [Special functions,Function ldaplist]
 ---
 

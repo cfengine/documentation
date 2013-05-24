@@ -3,7 +3,7 @@ layout: default
 title: Function lastnode
 categories: [Reference, Functions,Function lastnode]
 published: true
-alias: Special-functions-Function-lastnode.html
+alias: reference-functions-function-lastnode.html
 tags: [Special functions,Function lastnode]
 ---
 

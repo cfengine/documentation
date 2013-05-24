@@ -3,7 +3,7 @@ layout: default
 title: Function readstringlist
 categories: [Reference, Functions,Function readstringlist]
 published: true
-alias: Special-functions-Function-readstringlist.html
+alias: reference-functions-function-readstringlist.html
 tags: [Special functions,Function readstringlist]
 ---
 

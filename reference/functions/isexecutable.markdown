@@ -3,7 +3,7 @@ layout: default
 title: Function isexecutable
 categories: [Reference, Functions,Function isexecutable]
 published: true
-alias: Special-functions-Function-isexecutable.html
+alias: reference-functions-function-isexecutable.html
 tags: [Special functions,Function isexecutable]
 ---
 

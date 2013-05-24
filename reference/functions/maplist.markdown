@@ -3,7 +3,7 @@ layout: default
 title: Function maplist
 categories: [Reference, Functions,Function maplist]
 published: true
-alias: Special-functions-Function-maplist.html
+alias: reference-functions-function-maplist.html
 tags: [Special functions,Function maplist]
 ---
 

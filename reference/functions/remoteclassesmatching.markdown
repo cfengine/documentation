@@ -3,7 +3,7 @@ layout: default
 title: Function remoteclassesmatching
 categories: [Reference, Functions,Function remoteclassesmatching]
 published: true
-alias: Special-functions-Function-remoteclassesmatching.html
+alias: reference-functions-function-remoteclassesmatching.html
 tags: [Special functions,Function remoteclassesmatching]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function ago
 categories: [Reference, Functions,Function ago]
 published: true
-alias: Special-functions-Function-ago.html
+alias: reference-functions-function-ago.html
 tags: [Special functions,Function ago]
 ---
 

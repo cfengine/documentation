@@ -3,7 +3,7 @@ layout: default
 title: Function hostswithclass
 categories: [Reference, Functions,Function hostswithclass]
 published: true
-alias: Special-functions-Function-hostswithclass.html
+alias: reference-functions-function-hostswithclass.html
 tags: [Special functions,Function hostswithclass]
 ---
 

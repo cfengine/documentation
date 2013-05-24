@@ -3,7 +3,7 @@ layout: default
 title: Function ldaparray
 categories: [Reference, Functions,Function ldaparray]
 published: true
-alias: Special-functions-Function-ldaparray.html
+alias: reference-functions-function-ldaparray.html
 tags: [Special functions,Function ldaparray]
 ---
 

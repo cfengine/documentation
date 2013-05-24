@@ -3,7 +3,7 @@ layout: default
 title: Function concat
 categories: [Reference, Functions,Function concat]
 published: true
-alias: Special-functions-Function-concat.html
+alias: reference-functions-function-concat.html
 tags: [Special functions,Function concat]
 ---
 

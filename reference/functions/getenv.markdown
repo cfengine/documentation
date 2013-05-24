@@ -3,7 +3,7 @@ layout: default
 title: Function getenv
 categories: [Reference, Functions,Function getenv]
 published: true
-alias: Special-functions-Function-getenv.html
+alias: reference-functions-function-getenv.html
 tags: [Special functions,Function getenv]
 ---
 

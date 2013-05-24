@@ -3,7 +3,7 @@ layout: default
 title: Function hostrange
 categories: [Reference, Functions,Function hostrange]
 published: true
-alias: Special-functions-Function-hostrange.html
+alias: reference-functions-function-hostrange.html
 tags: [Special functions,Function hostrange]
 ---
 

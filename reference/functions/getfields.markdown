@@ -3,7 +3,7 @@ layout: default
 title: Function getfields
 categories: [Reference, Functions,Function getfields]
 published: true
-alias: Special-functions-Function-getfields.html
+alias: reference-functions-function-getfields.html
 tags: [Special functions,Function getfields]
 ---
 

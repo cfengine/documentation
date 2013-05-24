@@ -3,7 +3,7 @@ layout: default
 title: Function splitstring
 categories: [Reference, Functions,Function splitstring]
 published: true
-alias: Special-functions-Function-splitstring.html
+alias: reference-functions-function-splitstring.html
 tags: [Special functions,Function splitstring]
 ---
 

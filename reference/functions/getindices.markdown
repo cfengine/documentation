@@ -3,7 +3,7 @@ layout: default
 title: Function getindices
 categories: [Reference, Functions,Function getindices]
 published: true
-alias: Special-functions-Function-getindices.html
+alias: reference-functions-function-getindices.html
 tags: [Special functions,Function getindices]
 ---
 

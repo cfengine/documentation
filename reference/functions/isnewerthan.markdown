@@ -3,7 +3,7 @@ layout: default
 title: Function isnewerthan
 categories: [Reference, Functions,Function isnewerthan]
 published: true
-alias: Special-functions-Function-isnewerthan.html
+alias: reference-functions-function-isnewerthan.html
 tags: [Special functions,Function isnewerthan]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function laterthan
 categories: [Reference, Functions,Function laterthan]
 published: true
-alias: Special-functions-Function-laterthan.html
+alias: reference-functions-function-laterthan.html
 tags: [Special functions,Function laterthan]
 ---
 

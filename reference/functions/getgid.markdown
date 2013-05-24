@@ -3,7 +3,7 @@ layout: default
 title: Function getgid
 categories: [Reference, Functions,Function getgid]
 published: true
-alias: Special-functions-Function-getgid.html
+alias: reference-functions-function-getgid.html
 tags: [Special functions,Function getgid]
 ---
 

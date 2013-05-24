@@ -3,7 +3,7 @@ layout: default
 title: Function rrange
 categories: [Reference, Functions,Function rrange]
 published: true
-alias: Special-functions-Function-rrange.html
+alias: reference-functions-function-rrange.html
 tags: [Special functions,Function rrange]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function islessthan
 categories: [Reference, Functions,Function islessthan]
 published: true
-alias: Special-functions-Function-islessthan.html
+alias: reference-functions-function-islessthan.html
 tags: [Special functions,Function islessthan]
 ---
 

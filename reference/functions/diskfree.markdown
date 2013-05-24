@@ -3,7 +3,7 @@ layout: default
 title: Function diskfree
 categories: [Reference, Functions,Function diskfree]
 published: true
-alias: Special-functions-Function-diskfree.html
+alias: reference-functions-function-diskfree.html
 tags: [Special functions,Function diskfree]
 ---
 

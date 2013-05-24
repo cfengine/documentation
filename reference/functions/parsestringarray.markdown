@@ -3,7 +3,7 @@ layout: default
 title: Function parsestringarray
 categories: [Reference, Functions,Function parsestringarray]
 published: true
-alias: Special-functions-Function-parsestringarray.html
+alias: reference-functions-function-parsestringarray.html
 tags: [Special functions,Function parsestringarray]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function countlinesmatching
 categories: [Reference, Functions,Function countlinesmatching]
 published: true
-alias: Special-functions-Function-countlinesmatching.html
+alias: reference-functions-function-countlinesmatching.html
 tags: [Special functions,Function countlinesmatching]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function regline
 categories: [Reference, Functions,Function regline]
 published: true
-alias: Special-functions-Function-regline.html
+alias: reference-functions-function-regline.html
 tags: [Special functions,Function regline]
 ---
 

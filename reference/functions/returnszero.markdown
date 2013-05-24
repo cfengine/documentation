@@ -3,7 +3,7 @@ layout: default
 title: Function returnszero
 categories: [Reference, Functions,Function returnszero]
 published: true
-alias: Special-functions-Function-returnszero.html
+alias: reference-functions-function-returnszero.html
 tags: [Special functions,Function returnszero]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function readintlist
 categories: [Reference, Functions,Function readintlist]
 published: true
-alias: Special-functions-Function-readintlist.html
+alias: reference-functions-function-readintlist.html
 tags: [Special functions,Function readintlist]
 ---
 

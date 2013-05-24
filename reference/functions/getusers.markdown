@@ -3,7 +3,7 @@ layout: default
 title: Function getusers
 categories: [Reference, Functions,Function getusers]
 published: true
-alias: Special-functions-Function-getusers.html
+alias: reference-functions-function-getusers.html
 tags: [Special functions,Function getusers]
 ---
 

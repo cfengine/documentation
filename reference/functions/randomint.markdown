@@ -3,7 +3,7 @@ layout: default
 title: Function randomint
 categories: [Reference, Functions,Function randomint]
 published: true
-alias: Special-functions-Function-randomint.html
+alias: reference-functions-function-randomint.html
 tags: [Special functions,Function randomint]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function peers
 categories: [Reference, Functions,Function peers]
 published: true
-alias: Special-functions-Function-peers.html
+alias: reference-functions-function-peers.html
 tags: [Special functions,Function peers]
 ---
 

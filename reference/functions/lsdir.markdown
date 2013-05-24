@@ -3,7 +3,7 @@ layout: default
 title: Function lsdir
 categories: [Reference, Functions,Function lsdir]
 published: true
-alias: Special-functions-Function-lsdir.html
+alias: reference-functions-function-lsdir.html
 tags: [Special functions,Function lsdir]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function getuid
 categories: [Reference, Functions,Function getuid]
 published: true
-alias: Special-functions-Function-getuid.html
+alias: reference-functions-function-getuid.html
 tags: [Special functions,Function getuid]
 ---
 

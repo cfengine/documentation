@@ -3,7 +3,7 @@ layout: default
 title: Function classify
 categories: [Reference, Functions,Function classify]
 published: true
-alias: Special-functions-Function-classify.html
+alias: reference-functions-function-classify.html
 tags: [Special functions,Function classify]
 ---
 

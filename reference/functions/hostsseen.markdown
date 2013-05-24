@@ -3,7 +3,7 @@ layout: default
 title: Function hostsseen
 categories: [Reference, Functions,Function hostsseen]
 published: true
-alias: Special-functions-Function-hostsseen.html
+alias: reference-functions-function-hostsseen.html
 tags: [Special functions,Function hostsseen]
 ---
 

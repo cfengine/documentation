@@ -3,7 +3,7 @@ layout: default
 title: Function canonify
 categories: [Reference, Functions,Function canonify]
 published: true
-alias: Special-functions-Function-canonify.html
+alias: reference-functions-function-canonify.html
 tags: [Special functions,Function canonify]
 ---
 

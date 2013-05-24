@@ -3,7 +3,7 @@ layout: default
 title: Function readstringarrayidx
 categories: [Reference, Functions,Function readstringarrayidx]
 published: true
-alias: Special-functions-Function-readstringarrayidx.html
+alias: reference-functions-function-readstringarrayidx.html
 tags: [Special functions,Function readstringarrayidx]
 ---
 

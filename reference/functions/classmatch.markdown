@@ -3,7 +3,7 @@ layout: default
 title: Function classmatch
 categories: [Reference, Functions,Function classmatch]
 published: true
-alias: Special-functions-Function-classmatch.html
+alias: reference-functions-function-classmatch.html
 tags: [Special functions,Function classmatch]
 ---
 

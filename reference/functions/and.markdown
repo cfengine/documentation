@@ -3,7 +3,7 @@ layout: default
 title: Function and
 categories: [Reference, Functions,Function and]
 published: true
-alias: Special-functions-Function-and.html
+alias: reference-functions-function-and.html
 tags: [Special functions,Function and]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function userexists
 categories: [Reference, Functions,Function userexists]
 published: true
-alias: Special-functions-Function-userexists.html
+alias: reference-functions-function-userexists.html
 tags: [Special functions,Function userexists]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function readtcp
 categories: [Reference, Functions,Function readtcp]
 published: true
-alias: Special-functions-Function-readtcp.html
+alias: reference-functions-function-readtcp.html
 tags: [Special functions,Function readtcp]
 ---
 

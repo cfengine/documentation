@@ -3,7 +3,7 @@ layout: default
 title: Function changedbefore
 categories: [Reference, Functions,Function changedbefore]
 published: true
-alias: Special-functions-Function-changedbefore.html
+alias: reference-functions-function-changedbefore.html
 tags: [Special functions,Function changedbefore]
 ---
 

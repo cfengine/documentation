@@ -3,7 +3,7 @@ layout: default
 title: Function accessedbefore
 categories: [Reference, Functions,Function accessedbefore]
 published: true
-alias: Special-functions-Function-accessedbefore.html
+alias: reference-functions-function-accessedbefore.html
 tags: [Special functions,Function accessedbefore]
 ---
 

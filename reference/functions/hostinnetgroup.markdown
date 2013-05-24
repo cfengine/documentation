@@ -3,7 +3,7 @@ layout: default
 title: Function hostinnetgroup
 categories: [Reference, Functions,Function hostinnetgroup]
 published: true
-alias: Special-functions-Function-hostinnetgroup.html
+alias: reference-functions-function-hostinnetgroup.html
 tags: [Special functions,Function hostinnetgroup]
 ---
 
