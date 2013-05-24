@@ -1,16 +1,14 @@
 ---
 layout: default
-title: 
+title: Bundles for monitor
 categories: [Reference, Components, cf-monitord, Bundles for monitor]
 published: true
 alias: reference-components-bundles-for-monitor.html
 tags: [reference, components, bundles, monitor, cf-monitord]
 ---
-
-Bundles of `monitor`
---------------------
-
   
+Monitor bundles contain user defined promises for system discovery and
+monitoring.
 
 ```cf3
      
@@ -33,9 +31,6 @@ Bundles of `monitor`
      }
      
 ```
-
-Monitor bundles contain user defined promises for system discovery and
-monitoring.
 
   
 

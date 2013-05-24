@@ -1,16 +1,15 @@
 ---
 layout: default
-title: 
+title: Bundles for server
 categories: [Reference, Components, cf-serverd, Bundles for server]
 published: true
 alias: reference-components-cfserverd-bundles-for-server.html
 tags: [reference, components, cf-serverd, bundles, server]
 ---
 
-Bundles of `server`
--------------------
+Bundles in the server describe access promises on specific file and
+class objects supplied by the server to clients.
 
-  
 
 ```cf3
      
@@ -35,10 +34,6 @@ Bundles of `server`
      
 ```
 
-  
-
-Bundles in the server describe access promises on specific file and
-class objects supplied by the server to clients.
 
 -   [classes in common promises](#classes-in-common-promises):
 -   [defaults in common promises](#defaults-in-common-promises):
