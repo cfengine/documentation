@@ -1,7 +1,12 @@
 ---
 layout: default
+<<<<<<< HEAD:reference/common/defaults-in-common-promises.markdown
 title: Defaults Promises
 categories: [Reference, Bundles for Common, Defaults in common promises]
+=======
+title: defaults in common promises
+categories: [Bundles for common,defaults in common promises]
+>>>>>>> 702a8ca0231da6ae5e2672b6298561254d98aa29:bundles-logs-functions-variables/Bundles-for-common/Bundles-for-common-0-defaults-in-common-promises.markdown
 published: true
 alias: reference-bundles-for-common-defaults-in-common-promises.html
 tags: [reference, bundles, common, defaults, promises]

@@ -1,7 +1,12 @@
 ---
 layout: default
+<<<<<<< HEAD:reference/common/classes-in-common-promises.markdown
 title: Classes in common Promises
 categories: [Reference, Bundles for common, classes in common promises]
+=======
+title: classes in common promises
+categories: [Bundles for common,classes in common promises]
+>>>>>>> 702a8ca0231da6ae5e2672b6298561254d98aa29:bundles-logs-functions-variables/Bundles-for-common/Bundles-for-common-0-classes-in-common-promises.markdown
 published: true
 alias: reference-bundles-for-common-classes-in-common-promises.html
 tags: [bundles, common, classes, promises]
