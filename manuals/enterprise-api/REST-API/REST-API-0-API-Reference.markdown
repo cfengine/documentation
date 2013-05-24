@@ -28,15 +28,6 @@ Users and Roles determine who has access to what data from the API.
 Roles are defined by regular expressions that determine which hosts the
 user can see, and what policy outcomes are restricted.
 
-* * * * *
-
-Next:[Example - Creating a New
-User](/manuals/Enterprise-3-0-API#Example-_002d-Creating-a-New-User),
-Previous:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles),
-Up:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles)
-
 #### 1.5.1 Example: Listing Users
 
 **Request**
@@ -72,15 +63,6 @@ Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles)
       ]
     }
 
-* * * * *
-
-Next:[Example - Updating an Existing
-User](/manuals/Enterprise-3-0-API#Example-_002d-Updating-an-Existing-User),
-Previous:[Example - Listing
-Users](/manuals/Enterprise-3-0-API#Example-_002d-Listing-Users),
-Up:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles)
-
 #### 1.5.2 Example: Creating a New User
 
 All users will be created for the internal user table. The API will
@@ -101,15 +83,6 @@ never attempt to write to an external LDAP server.
     201 Created
     }
 
-* * * * *
-
-Next:[Example - Retrieving a
-User](/manuals/Enterprise-3-0-API#Example-_002d-Retrieving-a-User),
-Previous:[Example - Creating a New
-User](/manuals/Enterprise-3-0-API#Example-_002d-Creating-a-New-User),
-Up:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles)
-
 #### 1.5.3 Example: Updating an Existing User
 
 Both internal and external users may be updated. When updating an
@@ -129,15 +102,6 @@ authenticated by their user credentials.
 
     204 No Content
     }
-
-* * * * *
-
-Next:[Example - Adding a User to a
-Role](/manuals/Enterprise-3-0-API#Example-_002d-Adding-a-User-to-a-Role),
-Previous:[Example - Updating an Existing
-User](/manuals/Enterprise-3-0-API#Example-_002d-Updating-an-Existing-User),
-Up:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles)
 
 #### 1.5.4 Example: Retrieving a User
 
@@ -171,15 +135,6 @@ a regular expression for *id*.
       ]
     }
 
-* * * * *
-
-Next:[Example - Deleting a
-User](/manuals/Enterprise-3-0-API#Example-_002d-Deleting-a-User),
-Previous:[Example - Retrieving a
-User](/manuals/Enterprise-3-0-API#Example-_002d-Retrieving-a-User),
-Up:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles)
-
 #### 1.5.5 Example: Adding a User to a Role
 
 Adding a user to a role is just an update operation on the user. The
@@ -201,15 +156,6 @@ same approach is used to remove a user from a role.
     204 No Content
     }
 
-* * * * *
-
-Next:[Example - Creating a New
-Role](/manuals/Enterprise-3-0-API#Example-_002d-Creating-a-New-Role),
-Previous:[Example - Adding a User to a
-Role](/manuals/Enterprise-3-0-API#Example-_002d-Adding-a-User-to-a-Role),
-Up:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles)
-
 #### 1.5.6 Example: Deleting a User
 
 Users can only be deleted from the internal users table.
@@ -221,13 +167,6 @@ Users can only be deleted from the internal users table.
 **Response**
 
     204 No Content
-
-* * * * *
-
-Previous:[Example - Deleting a
-User](/manuals/Enterprise-3-0-API#Example-_002d-Deleting-a-User),
-Up:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles)
 
 #### 1.5.7 Example: Creating a New Role
 
@@ -254,9 +193,3 @@ to updating and deleting users, using POST and DELETE.
 
     204 No Content
 
-* * * * *
-
-Next:[SQL Queries](/manuals/Enterprise-3-0-API#SQL-Queries),
-Previous:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles), Up:[REST
-API](/manuals/Enterprise-3-0-API#REST-API)

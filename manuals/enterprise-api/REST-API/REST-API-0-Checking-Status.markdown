@@ -40,10 +40,3 @@ the API involves using SQL. This is new in 3.0 and was done to provide
 users with maximal flexibility for crafting custom reports based on the
 wealth of data residing on the Hub.
 
-* * * * *
-
-Next:[Differences between the CFEngine Nova 2.2 REST API and the
-CFEngine Enterprise 3.0
-API](/manuals/Enterprise-3-0-API#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API),
-Previous:[REST API](/manuals/Enterprise-3-0-API#REST-API), Up:[REST
-API](/manuals/Enterprise-3-0-API#REST-API)

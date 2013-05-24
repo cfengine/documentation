@@ -54,9 +54,3 @@ basic diagnostics.
       ]
     }
 
-* * * * *
-
-Next:[Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles),
-Previous:[Checking Status](/manuals/Enterprise-3-0-API#Checking-Status),
-Up:[REST API](/manuals/Enterprise-3-0-API#REST-API)
