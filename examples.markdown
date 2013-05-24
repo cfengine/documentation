@@ -20,8 +20,8 @@ test them locally by copying the respective _example___file.cf_ file into
 
 ## Integrating the Example into your Main Policy
 
-The following steps makes the example policy part of your main policy. Some examples require
-addition steps - see the respective documentation page for details.
+The following steps make the example policy part of your main policy. Some examples require
+additional steps - see the respective documentation page for details.
 
 1. Copy the file from `/var/cfengine/share/doc/examples` to
     `/var/cfengine/masterfiles`.
