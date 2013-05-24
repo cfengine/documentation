@@ -1,7 +1,12 @@
 ---
 layout: default
+<<<<<<< HEAD:reference/logs-and-records.markdown
 title: Logs and Records
 categories: [Reference, Logs and records]
+=======
+title: 
+categories: [Logs and records]
+>>>>>>> 702a8ca0231da6ae5e2672b6298561254d98aa29:bundles-logs-functions-variables/Logs-and-records-0.markdown
 published: true
 alias: reference-logs-and-records.html
 tags: [reference, logs, records]

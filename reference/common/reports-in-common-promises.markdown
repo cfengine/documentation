@@ -1,7 +1,11 @@
 ---
 layout: default
 title: reports in common promises
+<<<<<<< HEAD:reference/common/reports-in-common-promises.markdown
 categories: [Reference, Bundles for common, reports in common promises]
+=======
+categories: [Bundles for common,reports in common promises]
+>>>>>>> 702a8ca0231da6ae5e2672b6298561254d98aa29:bundles-logs-functions-variables/Bundles-for-common/Bundles-for-common-0-reports-in-common-promises.markdown
 published: true
 alias: reference-bundles-for-common-reports-in-common-promises.html
 tags: [reference, bundles, common, reports, promises]

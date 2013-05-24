@@ -1,10 +1,18 @@
 ---
 layout: default
+<<<<<<< HEAD:reference/components/knowledge.markdown
 title: Bundles for knowledge 
 categories: [Reference, Components, Bundles for knowledge]
 published: false
 alias: reference-components-bundles-for-knowledge.html
 tags: [components, knowledge, bundles]
+=======
+title: 
+categories: [Bundles for knowledge]
+published: true
+alias: Bundles-for-knowledge.html
+tags: [Bundles for knowledge]
+>>>>>>> 702a8ca0231da6ae5e2672b6298561254d98aa29:bundles-logs-functions-variables/Bundles-for-knowledge-0.markdown
 ---
 
 

@@ -1,7 +1,12 @@
 ---
 layout: default
+<<<<<<< HEAD:reference/common.markdown
 title: Bundles for Common
 categories: [Reference, Bundles for Common]
+=======
+title: 
+categories: [Bundles for common]
+>>>>>>> 702a8ca0231da6ae5e2672b6298561254d98aa29:bundles-logs-functions-variables/Bundles-for-common-0.markdown
 published: true
 alias: reference-bundles-for-common.html
 tags: [reference, bundles, common]

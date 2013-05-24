@@ -1,7 +1,12 @@
 ---
 layout: default
+<<<<<<< HEAD:reference/functions.markdown
 title: Functions
 categories: [Reference, Functions]
+=======
+title: 
+categories: [Special functions]
+>>>>>>> 702a8ca0231da6ae5e2672b6298561254d98aa29:bundles-logs-functions-variables/Special-functions-0.markdown
 published: true
 alias: reference-functions.html
 tags: [Reference, Functions]

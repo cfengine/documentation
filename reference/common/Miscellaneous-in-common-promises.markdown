@@ -1,7 +1,11 @@
 ---
 layout: default
 title: Miscellaneous in common promises
+<<<<<<< HEAD:reference/common/Miscellaneous-in-common-promises.markdown
 categories: [Reference, Bundles for Common, Miscellaneous in common promises]
+=======
+categories: [Bundles for common,Miscellaneous in common promises]
+>>>>>>> 702a8ca0231da6ae5e2672b6298561254d98aa29:bundles-logs-functions-variables/Bundles-for-common/Bundles-for-common-0-Miscellaneous-in-common-promises.markdown
 published: true
 alias: reference-bundles-for-common-miscellaneous-in-common-promises.html
 tags: [reference, bundles, common, miscellaneous, promises]
