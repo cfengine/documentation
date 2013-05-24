@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function randomint
-categories: [Reference, Functions, Function randomint]
+categories: [Reference, Functions,Function randomint]
 published: true
-alias: reference-functions-randomint.html
-tags: [reference, functions, randomint]
+alias: Special-functions-Function-randomint.html
+tags: [Special functions,Function randomint]
 ---
 
 ### Function randomint

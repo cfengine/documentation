@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function concat
-categories: [Reference, Functions, Function concat]
+categories: [Reference, Functions,Function concat]
 published: true
-alias: reference-functions-concat.html
-tags: [reference, functions, concat]
+alias: Special-functions-Function-concat.html
+tags: [Special functions,Function concat]
 ---
 
 ### Function concat

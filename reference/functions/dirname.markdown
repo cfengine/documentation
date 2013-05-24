@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function dirname
-categories: [Reference, Functions, Function dirname]
+categories: [Reference, Functions,Function dirname]
 published: true
-alias: reference-functions-dirname.html
-tags: [reference, functions, dirname]
+alias: Special-functions-Function-dirname.html
+tags: [Special functions,Function dirname]
 ---
 
 ### Function dirname

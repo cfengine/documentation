@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function classify
-categories: [Reference, Functions, Function classify]
+categories: [Reference, Functions,Function classify]
 published: true
-alias: reference-functions-classify.html
-tags: [reference, functions, classify]
+alias: Special-functions-Function-classify.html
+tags: [Special functions,Function classify]
 ---
 
 ### Function classify

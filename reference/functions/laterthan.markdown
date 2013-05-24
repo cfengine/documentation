@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function laterthan
-categories: [Reference, Functions, Function laterthan]
+categories: [Reference, Functions,Function laterthan]
 published: true
-alias: reference-functions-laterthan.html
-tags: [reference, functions, laterthan]
+alias: Special-functions-Function-laterthan.html
+tags: [Special functions,Function laterthan]
 ---
 
 ### Function laterthan
