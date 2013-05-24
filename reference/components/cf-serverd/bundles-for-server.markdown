@@ -1,10 +1,10 @@
 ---
 layout: default
 title: 
-categories: [Bundles for server]
+categories: [Reference, Components, cf-serverd, Bundles for server]
 published: true
-alias: Bundles-for-server.html
-tags: [Bundles for server]
+alias: reference-components-cfserverd-bundles-for-server.html
+tags: [reference, components, cf-serverd, bundles, server]
 ---
 
 Bundles of `server`

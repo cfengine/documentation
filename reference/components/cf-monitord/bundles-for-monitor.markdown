@@ -1,10 +1,10 @@
 ---
 layout: default
 title: 
-categories: [Bundles for monitor]
+categories: [Reference, Components, cf-monitord, Bundles for monitor]
 published: true
-alias: Bundles-for-monitor.html
-tags: [Bundles for monitor]
+alias: reference-components-bundles-for-monitor.html
+tags: [reference, components, bundles, monitor, cf-monitord]
 ---
 
 Bundles of `monitor`
