@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function islessthan
-categories: [Reference, Functions, islessthan]
+categories: [Reference, Functions, Function islessthan]
 published: true
 alias: reference-functions-islessthan.html
 tags: [reference, functions, islessthan]

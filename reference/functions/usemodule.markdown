@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function usemodule
-categories: [Reference, Functions, usemodule]
+categories: [Reference, Functions, Function usemodule]
 published: true
 alias: reference-functions-usemodule.html
 tags: [reference, functions, usemodule]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function getusers
-categories: [Reference, Functions, getusers]
+categories: [Reference, Functions, Function getusers]
 published: true
 alias: reference-functions-getusers.html
 tags: [reference, functions, getusers]

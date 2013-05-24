@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function isnewerthan
-categories: [Reference, Functions, isnewerthan]
+categories: [Reference, Functions, Function isnewerthan]
 published: true
 alias: reference-functions-isnewerthan.html
 tags: [reference, functions, isnewerthan]

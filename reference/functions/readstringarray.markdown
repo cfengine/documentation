@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function readstringarray
-categories: [Reference, Functions, readstringarray]
+categories: [Reference, Functions, Function readstringarray]
 published: true
 alias: reference-functions-readstringarray.html
 tags: [reference, functions, readstringarray]

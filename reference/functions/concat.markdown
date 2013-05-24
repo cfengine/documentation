@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function concat
-categories: [Reference, Functions, concat]
+categories: [Reference, Functions, Function concat]
 published: true
 alias: reference-functions-concat.html
 tags: [reference, functions, concat]

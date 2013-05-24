@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function isgreaterthan
-categories: [Reference, Functions, isgreaterthan]
+categories: [Reference, Functions, Function isgreaterthan]
 published: true
 alias: reference-functions-isgreaterthan.html
 tags: [reference, functions, isgreaterthan]

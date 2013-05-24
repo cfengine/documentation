@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function hubknowledge
-categories: [Reference, Functions, hubknowledge]
+categories: [Reference, Functions, Function hubknowledge]
 published: true
 alias: reference-functions-hubknowledge.html
 tags: [reference, functions, hubknowledge]

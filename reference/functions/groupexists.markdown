@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function groupexists
-categories: [Reference, Functions, groupexists]
+categories: [Reference, Functions, Function groupexists]
 published: true
 alias: reference-functions-groupexists.html
 tags: [reference, functions, groupexists]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function returnszero
-categories: [Reference, Functions, returnszero]
+categories: [Reference, Functions, Function returnszero]
 published: true
 alias: reference-functions-returnszero.html
 tags: [reference, functions, returnszero]

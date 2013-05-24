@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function hostrange
-categories: [Reference, Functions, hostrange]
+categories: [Reference, Functions, Function hostrange]
 published: true
 alias: reference-functions-hostrange.html
 tags: [reference, functions, hostrange]

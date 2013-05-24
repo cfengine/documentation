@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function readreallist
-categories: [Reference, Functions, readreallist]
+categories: [Reference, Functions, Function readreallist]
 published: true
 alias: reference-functions-readreallist.html
 tags: [reference, functions, readreallist]

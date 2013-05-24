@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function or
-categories: [Reference, Functions, or]
+categories: [Reference, Functions, Function or]
 published: true
 alias: reference-functions-or.html
 tags: [reference, functions, or]

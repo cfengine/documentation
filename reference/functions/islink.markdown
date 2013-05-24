@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function islink
-categories: [Reference, Functions, islink]
+categories: [Reference, Functions, Function islink]
 published: true
 alias: reference-functions-islink.html
 tags: [reference, functions, islink]

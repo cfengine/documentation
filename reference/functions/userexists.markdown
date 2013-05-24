@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function userexists
-categories: [Reference, Functions, userexists]
+categories: [Reference, Functions, Function userexists]
 published: true
 alias: reference-functions-userexists.html
 tags: [reference, functions, userexists]

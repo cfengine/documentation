@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function readtcp
-categories: [Reference, Functions, readtcp]
+categories: [Reference, Functions, Function readtcp]
 published: true
 alias: reference-functions-readtcp.html
 tags: [reference, functions, readtcp]

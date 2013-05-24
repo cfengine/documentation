@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Function execresult
-categories: [Reference, Functions, execresult]
+categories: [Reference, Functions, Function execresult]
 published: true
 alias: reference-functions-execresult.html
 tags: [reference, functions, execresult]
