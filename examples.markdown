@@ -20,8 +20,7 @@ test them locally by copying the respective _example___file.cf_ file into
 
 ## Integrating the Example into your Main Policy
 
-The following steps make the example policy part of your main policy. Some examples require
-additional steps - see the respective documentation page for details.
+The following steps make the example policy part of your main policy.
 
 Do these steps on the policy server:
 
