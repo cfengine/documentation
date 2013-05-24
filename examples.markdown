@@ -8,7 +8,7 @@ tags: [Examples]
 ---
 
 You can find more examples for CFEngine Code in the
-[GitHub repository](https://github.com/cfengine/core/tree/master/examples).
+[GitHub repository](https://github.com/cfengine/design-center/tree/master/examples).
 
 ## Running the Example policies
 
@@ -16,12 +16,12 @@ The policy files can be found in `/var/cfengine/share/doc/examples`. You can
 test them locally by copying the respective _example___file.cf_ file into
 `/var/cfengine/inputs` and running:
 
-	/var/cfengine/bin/cf-agent -f /var/cfengine/inputs/example_file.cf
+	/var/cfengine/bin/cf-agent -f example_file.cf
 
 ## Integrating the Example into your Main Policy
 
-The following steps makes the example policy part of your main policy. Some examples require
-addition steps - see the respective documentation page for details.
+Make the example policy part of your main policy by
+doing the following on your policy server:
 
 1. Copy the file from `/var/cfengine/share/doc/examples` to
     `/var/cfengine/masterfiles`.
@@ -37,8 +37,7 @@ addition steps - see the respective documentation page for details.
 ```
 
 3. Insert the example's bundle name in the `bundlesequence` section
-    of the main policy file `/var/cfengine/masterfiles/promises.cf` on
-    the policy server:
+    of the main policy file `/var/cfengine/masterfiles/promises.cf`:
 
 ```cf3
     bundlesequence => {
@@ -49,7 +48,7 @@ addition steps - see the respective documentation page for details.
 ```
 
 4. Insert the policy file name in the `inputs` section of the main policy file
-    `/var/cfengine/masterfiles/promises.cf` on the policy server:
+    `/var/cfengine/masterfiles/promises.cf`:
 
 ```cf3
      inputs => {
