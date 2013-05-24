@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function parsestringarray
-categories: [Special functions,Function parsestringarray]
+categories: [Reference, Functions, parsestringarray]
 published: true
-alias: Special-functions-Function-parsestringarray.html
-tags: [Special functions,Function parsestringarray]
+alias: reference-functions-parsestringarray.html
+tags: [reference, functions, parsestringarray]
 ---
 
 ### Function parsestringarray

@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function execresult
-categories: [Special functions,Function execresult]
+categories: [Reference, Functions, execresult]
 published: true
-alias: Special-functions-Function-execresult.html
-tags: [Special functions,Function execresult]
+alias: reference-functions-execresult.html
+tags: [reference, functions, execresult]
 ---
 
 ### Function execresult

@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function ip2host
-categories: [Special functions,Function ip2host]
+categories: [Reference, Functions, ip2host]
 published: true
-alias: Special-functions-Function-ip2host.html
-tags: [Special functions,Function ip2host]
+alias: reference-functions-ip2host.html
+tags: [reference, functions, ip2host]
 ---
 
 ### Function ip2host

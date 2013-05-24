@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function accumulated
-categories: [Special functions,Function accumulated]
+categories: [Reference, Functions, accumulated]
 published: true
-alias: Special-functions-Function-accumulated.html
-tags: [Special functions,Function accumulated]
+alias: reference-functions-accumulated.html
+tags: [reference, functions, accumulated]
 ---
 
 ### Function accumulated

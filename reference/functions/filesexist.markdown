@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function filesexist
-categories: [Special functions,Function filesexist]
+categories: [Reference, Functions, filesexist]
 published: true
-alias: Special-functions-Function-filesexist.html
-tags: [Special functions,Function filesexist]
+alias: reference-functions-filesexist.html
+tags: [reference, functions, filesexist]
 ---
 
 ### Function filesexist

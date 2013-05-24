@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function join
-categories: [Special functions,Function join]
+categories: [Reference, Functions, join]
 published: true
-alias: Special-functions-Function-join.html
-tags: [Special functions,Function join]
+alias: reference-functions-join.html
+tags: [reference, functions, join]
 ---
 
 ### Function join

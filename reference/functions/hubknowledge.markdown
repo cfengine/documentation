@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function hubknowledge
-categories: [Special functions,Function hubknowledge]
+categories: [Reference, Functions, hubknowledge]
 published: true
-alias: Special-functions-Function-hubknowledge.html
-tags: [Special functions,Function hubknowledge]
+alias: reference-functions-hubknowledge.html
+tags: [reference, functions, hubknowledge]
 ---
 
 ### Function hubknowledge

@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function maplist
-categories: [Special functions,Function maplist]
+categories: [Reference, Functions, maplist]
 published: true
-alias: Special-functions-Function-maplist.html
-tags: [Special functions,Function maplist]
+alias: reference-functions-maplist.html
+tags: [reference, functions, maplist]
 ---
 
 ### Function maplist

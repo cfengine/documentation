@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function not
-categories: [Special functions,Function not]
+categories: [Reference, Functions, not]
 published: true
-alias: Special-functions-Function-not.html
-tags: [Special functions,Function not]
+alias: reference-functions-not.html
+tags: [reference, functions, not]
 ---
 
 ### Function not

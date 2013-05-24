@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function isplain
-categories: [Special functions,Function isplain]
+categories: [Reference, Functions, isplain]
 published: true
-alias: Special-functions-Function-isplain.html
-tags: [Special functions,Function isplain]
+alias: reference-functions-isplain.html
+tags: [reference, functions, isplain]
 ---
 
 ### Function isplain

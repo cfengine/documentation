@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function countclassesmatching
-categories: [Special functions,Function countclassesmatching]
+categories: [Reference, Functions, countclassesmatching]
 published: true
-alias: Special-functions-Function-countclassesmatching.html
-tags: [Special functions,Function countclassesmatching]
+alias: reference-functions-countclassesmatching.html
+tags: [reference, functions, countclassesmatching]
 ---
 
 ### Function countclassesmatching

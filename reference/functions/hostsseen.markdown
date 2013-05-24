@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function hostsseen
-categories: [Special functions,Function hostsseen]
+categories: [Reference, Functions, hostsseen]
 published: true
-alias: Special-functions-Function-hostsseen.html
-tags: [Special functions,Function hostsseen]
+alias: reference-functions-hostsseen.html
+tags: [reference, functions, hostsseen]
 ---
 
 ### Function hostsseen

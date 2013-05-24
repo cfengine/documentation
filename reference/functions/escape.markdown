@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function escape
-categories: [Special functions,Function escape]
+categories: [Reference, Functions, escape]
 published: true
-alias: Special-functions-Function-escape.html
-tags: [Special functions,Function escape]
+alias: reference-functions-escape.html
+tags: [reference, functions, escape]
 ---
 
 ### Function escape

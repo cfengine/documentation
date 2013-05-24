@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function and
-categories: [Special functions,Function and]
+categories: [Reference, Functions, and]
 published: true
-alias: Special-functions-Function-and.html
-tags: [Special functions,Function and]
+alias: reference-functions-and.html
+tags: [reference, functions, and]
 ---
 
 ### Function and

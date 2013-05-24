@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function isnewerthan
-categories: [Special functions,Function isnewerthan]
+categories: [Reference, Functions, isnewerthan]
 published: true
-alias: Special-functions-Function-isnewerthan.html
-tags: [Special functions,Function isnewerthan]
+alias: reference-functions-isnewerthan.html
+tags: [reference, functions, isnewerthan]
 ---
 
 ### Function isnewerthan

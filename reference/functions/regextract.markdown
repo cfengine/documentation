@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function regextract
-categories: [Special functions,Function regextract]
+categories: [Reference, Functions, regextract]
 published: true
-alias: Special-functions-Function-regextract.html
-tags: [Special functions,Function regextract]
+alias: reference-functions-regextract.html
+tags: [reference, functions, regextract]
 ---
 
 ### Function regextract

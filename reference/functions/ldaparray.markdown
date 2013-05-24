@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function ldaparray
-categories: [Special functions,Function ldaparray]
+categories: [Reference, Functions, ldaparray]
 published: true
-alias: Special-functions-Function-ldaparray.html
-tags: [Special functions,Function ldaparray]
+alias: reference-functions-ldaparray.html
+tags: [reference, functions, ldaparray]
 ---
 
 ### Function ldaparray
