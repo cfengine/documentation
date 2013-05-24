@@ -1,15 +1,11 @@
 ---
 layout: default
 title: interfaces in agent promises
-categories: [Bundles for agent,interfaces in agent promises]
+categories: [Reference, Bundles for agent,interfaces in agent promises]
 published: true
-alias: Bundles-for-agent-interfaces-in-agent-promises.html
-tags: [Bundles for agent,interfaces in agent promises]
+alias: reference-bundles-for-agent-interfaces-in-agent-promises.html
+tags: [reference, bundles, agent, interfaces, promises, promise types]
 ---
-
-### `interfaces` promises in agent
-
-  
 
 Interfaces promises describe the configurable aspects relating to
 network interfaces. Most workstations and servers have only a single

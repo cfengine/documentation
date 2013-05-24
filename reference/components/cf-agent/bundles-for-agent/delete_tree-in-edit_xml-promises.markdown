@@ -1,15 +1,11 @@
 ---
 layout: default
-title: delete ftree in edit fxml promises
-categories: [Bundles for agent,delete ftree in edit fxml promises]
+title: delete_tree in edit_xml promises
+categories: [Reference, Bundles for agent, delete_tree in edit_xml promises]
 published: true
-alias: Bundles-for-agent-delete-ftree-in-edit-fxml-promises.html
-tags: [Bundles for agent,delete ftree in edit fxml promises]
+alias: reference-bundles-for-agent-delete-tree-in-edit-xml-promises.html
+tags: [reference, bundles for agent, delete_tree, edit_xml, xml, files promises, promises]
 ---
-
-### `delete_tree` promises in edit\_xml
-
-  
 
 This promise is part of the XML-editing model. It assures that a
 balanced XML tree, containing the matching subtree, will not be present

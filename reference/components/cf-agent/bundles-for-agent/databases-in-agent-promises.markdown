@@ -1,15 +1,11 @@
 ---
 layout: default
 title: databases in agent promises
-categories: [Bundles for agent,databases in agent promises]
+categories: [Reference, Bundles for agent, databases in agent promises]
 published: true
-alias: Bundles-for-agent-databases-in-agent-promises.html
-tags: [Bundles for agent,databases in agent promises]
+alias: reference-bundles-for-agent-databases-in-agent-promises.html
+tags: [Reference, Bundles, agent, databases, promises, promise types]
 ---
-
-### `databases` promises in agent
-
-  
 
 CFEngine Nova can interact with commonly used database servers to keep
 promises about the structure and content of data within them.
@@ -26,7 +22,7 @@ types.
 
 For example, creating 100 new databases for test purposes is a task for
 CFEngine; but adding a new item to an important production database is
-not a recomended task for CFEngine.
+not a recommended task for CFEngine.
 
 There are three kinds of database supported by Nova:
 

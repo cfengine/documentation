@@ -1,15 +1,11 @@
 ---
 layout: default
-title: delete fattribute in edit fxml promises
-categories: [Bundles for agent,delete fattribute in edit fxml promises]
+title: delete_attribute in edit_xml promises
+categories: [Reference, Bundles for agent,delete_attribute in edit_xml promises]
 published: true
-alias: Bundles-for-agent-delete-fattribute-in-edit-fxml-promises.html
-tags: [Bundles for agent,delete fattribute in edit fxml promises]
+alias: reference-bundles-for-agent-delete-attribute-in-edit-fxml-promises.html
+tags: [reference, bundles, agent, delete_attribute, edit_xml, xml, files promises, promises]
 ---
-
-### `delete_attribute` promises in edit\_xml
-
-  
 
 This promise is part of the XML-editing model. It assures that an
 attribute, with the given name, will not be present in the specified

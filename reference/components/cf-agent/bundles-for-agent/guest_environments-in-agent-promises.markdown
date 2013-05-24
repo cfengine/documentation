@@ -1,15 +1,11 @@
 ---
 layout: default
-title: guest fenvironments in agent promises
-categories: [Bundles for agent,guest fenvironments in agent promises]
+title: guest_environments in agent promises
+categories: [Reference, Bundles for agent, guest_environments in agent promises]
 published: true
-alias: Bundles-for-agent-guest-fenvironments-in-agent-promises.html
-tags: [Bundles for agent,guest fenvironments in agent promises]
+alias: reference-bundles-for-agent-guest-environments-in-agent-promises.html
+tags: [reference, bundles, agent, guest_environments, promises, promise types, virtual machines, agent, promises, libvirt, KVM, VMWare]
 ---
-
-### `guest_environments` promises in agent
-
-  
 
 Guest environment promises describe enclosed computing environments that
 can host physical and virtual machines, Solaris zones, grids, clouds or

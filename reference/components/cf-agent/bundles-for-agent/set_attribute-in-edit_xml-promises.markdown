@@ -1,15 +1,11 @@
 ---
 layout: default
-title: set fattribute in edit fxml promises
-categories: [Bundles for agent,set fattribute in edit fxml promises]
+title: set_attribute in edit_xml promises
+categories: [Reference, Bundles for agent, set_attribute in edit_xml promises]
 published: true
-alias: Bundles-for-agent-set-fattribute-in-edit-fxml-promises.html
-tags: [Bundles for agent,set fattribute in edit fxml promises]
+alias: reference-bundles-for-agent-set-attribute-in-edit-xml-promises.html
+tags: [reference, bundles, agent, set_attribute, edit_xml, xml, files_promises, promises]
 ---
-
-### `set_attribute` promises in edit\_xml
-
-  
 
 This promise is part of the XML-editing model. It assures that an
 attribute, with the given name and value, will be present in the

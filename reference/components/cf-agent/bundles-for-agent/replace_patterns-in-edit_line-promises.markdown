@@ -1,15 +1,11 @@
 ---
 layout: default
-title: replace fpatterns in edit fline promises
-categories: [Bundles for agent,replace fpatterns in edit fline promises]
+title: replace_patterns in edit_line promises
+categories: [Reference, Bundles for agent, replace_patterns in edit_line promises]
 published: true
-alias: Bundles-for-agent-replace-fpatterns-in-edit-fline-promises.html
-tags: [Bundles for agent,replace fpatterns in edit fline promises]
+alias: reference-bundles-for-agent-replace-patterns-in-edit-line-promises.html
+tags: [reference, bundles, agent, replace_patterns, edit_line, files promises]
 ---
-
-### `replace_patterns` promises in edit\_line
-
-  
 
 This promise refers to arbitrary text patterns in a file. The pattern is
 expressed as a PCRE regular expression.

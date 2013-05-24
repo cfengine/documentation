@@ -1,15 +1,11 @@
 ---
 layout: default
 title: files in agent promises
-categories: [Bundles for agent,files in agent promises]
+categories: [Reference, Bundles for agent,files in agent promises]
 published: true
-alias: Bundles-for-agent-files-in-agent-promises.html
-tags: [Bundles for agent,files in agent promises]
+alias: reference-bundles-for-agent-files-in-agent-promises.html
+tags: [reference, bundles, agent, files, promises, files promises, promise types]
 ---
-
-### `files` promises in agent
-
-  
 
 Files promises are an umbrella for attributes of files. Operations fall
 basically into three categories: create, delete and edit.

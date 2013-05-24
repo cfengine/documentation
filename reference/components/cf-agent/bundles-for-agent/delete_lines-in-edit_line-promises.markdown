@@ -1,15 +1,11 @@
 ---
 layout: default
-title: delete flines in edit fline promises
-categories: [Bundles for agent,delete flines in edit fline promises]
+title: delete_lines in edit_line promises
+categories: [Reference, Bundles for agent,delete_lines in edit_line promises]
 published: true
-alias: Bundles-for-agent-delete-flines-in-edit-fline-promises.html
-tags: [Bundles for agent,delete flines in edit fline promises]
+alias: reference-bundles-for-agent-delete-lines-in-edit-line-promises.html
+tags: [reference, bundles, agent, delete_lines, edit_line, files promises]
 ---
-
-### `delete_lines` promises in edit\_line
-
-  
 
 This promise assures that certain lines exactly matching regular
 expression patterns will not be present in a text file. If the lines are

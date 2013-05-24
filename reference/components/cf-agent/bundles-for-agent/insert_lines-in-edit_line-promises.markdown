@@ -1,15 +1,12 @@
 ---
 layout: default
-title: insert flines in edit fline promises
-categories: [Bundles for agent,insert flines in edit fline promises]
+title: insert_lines in edit_line promises
+categories: [Reference, Bundles for agent, insert_lines in edit_line promises]
 published: true
-alias: Bundles-for-agent-insert-flines-in-edit-fline-promises.html
-tags: [Bundles for agent,insert flines in edit fline promises]
+alias: reference-bundles-for-agent-insert-lines-in-edit-line-promises.html
+tags: [Reference, bundles, agent, insert_lines, edit_line, files promises]
 ---
 
-### `insert_lines` promises in edit\_line
-
-  
 
 This promise is part of the line-editing model. It inserts lines into
 the file at a specified location. The location is determined by

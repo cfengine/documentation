@@ -1,15 +1,11 @@
 ---
 layout: default
-title: field fedits in edit fline promises
-categories: [Bundles for agent,field fedits in edit fline promises]
+title: field_edits in edit_line promises
+categories: [Reference, Bundles for agent, field_edits in edit_line promises]
 published: true
-alias: Bundles-for-agent-field-fedits-in-edit-fline-promises.html
-tags: [Bundles for agent,field fedits in edit fline promises]
+alias: reference-bundles-for-agent-field-edits-in-edit-line-promises.html
+tags: [reference, bundles, agent, field_edits, edit_line, files promises]
 ---
-
-### `field_edits` promises in edit\_line
-
-  
 
 Certain types of text files (e.g. the passwd and group files in Unix)
 are tabular in nature, with field separators (e.g. : or ,). This promise

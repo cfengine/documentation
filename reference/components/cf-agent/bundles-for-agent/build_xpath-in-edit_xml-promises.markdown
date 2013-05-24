@@ -1,15 +1,11 @@
 ---
 layout: default
-title: build fxpath in edit fxml promises
-categories: [Bundles for agent,build fxpath in edit fxml promises]
+title: build\_xpath in edit\_xml promises
+categories: [Reference, Bundles for agent,build_xpath in edit_xml promises]
 published: true
-alias: Bundles-for-agent-build-fxpath-in-edit-fxml-promises.html
-tags: [Bundles for agent,build fxpath in edit fxml promises]
----
-
-### `build_xpath` promises in edit\_xml
-
-  
+alias: reference-bundles-for-agent-build-xpath-in-edit-xml-promises.html
+tags: [reference, bundles, agent, xpath, edit_xml, xml, files promises, promises]
+---  
 
 This promise is part of the XML-editing model. It assures that a
 balanced XML tree, described by the given XPath, will be present within
@@ -25,13 +21,12 @@ XPath.
   
 
 ```cf3
-bundle edit_xml example
-  {
-  build_xpath:
-    "/Server/Service/Engine/Host[ @name=\"cfe_host\" | Alias = cfe_alias ]";
-  }
+    bundle edit_xml example
+    {
+    build_xpath:
+       "/Server/Service/Engine/Host[ @name=\"cfe_host\" | Alias = cfe_alias ]";
+    }
 ```
-
   
 
 Note that typically, only a single XPath is built in each `build_xpath`

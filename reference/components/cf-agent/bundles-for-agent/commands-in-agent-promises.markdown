@@ -1,15 +1,15 @@
 ---
 layout: default
 title: commands in agent promises
-categories: [Bundles for agent,commands in agent promises]
+categories: [Reference, Bundles for agent, commands in agent promises]
 published: true
-alias: Bundles-for-agent-commands-in-agent-promises.html
-tags: [Bundles for agent,commands in agent promises]
+alias: reference-bundles-for-agent-commands-in-agent-promises.html
+tags: [reference, bundles, agent, commands, promises, promise types]
 ---
 
 ### `commands` promises in agent
 
-Command *containment* allows you to make a \`sandbox' around a command,
+Command *containment* allows you to make a `sandbox' around a command,
 to run it as a non-privileged user inside an isolated directory tree.
 CFEngine `modules` are commands that support a simple protocol (see
 below) in order to set additional variables and classes on execution

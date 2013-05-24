@@ -1,15 +1,11 @@
 ---
 layout: default
-title: Miscellaneous in edit fline promises
-categories: [Bundles for agent,Miscellaneous in edit fline promises]
+title: edit_line promises
+categories: [Reference, Bundles for agent, edit_line promises]
 published: true
-alias: Bundles-for-agent-Miscellaneous-in-edit-fline-promises.html
-tags: [Bundles for agent,Miscellaneous in edit fline promises]
+alias: reference-bundles-for-agent-edit-line-promises.html
+tags: [reference, bundles, agent, edit_line, edit_line promises, files promises]
 ---
-
-### Miscelleneous in `edit_line` promises
-
-  
 
 Line based editing is a simple model for editing files. Before XML, and
 later JSON, most configuration files were line based. The line-based

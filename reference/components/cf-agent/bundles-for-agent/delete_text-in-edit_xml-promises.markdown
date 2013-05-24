@@ -1,15 +1,11 @@
 ---
 layout: default
-title: delete ftext in edit fxml promises
-categories: [Bundles for agent,delete ftext in edit fxml promises]
+title: delete_text in edit_xml promises
+categories: [Reference, Bundles for agent, delete_text in edit_xml promises]
 published: true
-alias: Bundles-for-agent-delete-ftext-in-edit-fxml-promises.html
-tags: [Bundles for agent,delete ftext in edit fxml promises]
+alias: reference-bundles-for-agent-delete-text-in-edit-xml-promises.html
+tags: [reference, bundles, agent, delete_text, edit_xml, xml, files promises, promises]
 ---
-
-### `delete_text` promises in edit\_xml
-
-  
 
 This promise is part of the XML-editing model. It assures that a value
 string, containing the matching substring, will not be present in the

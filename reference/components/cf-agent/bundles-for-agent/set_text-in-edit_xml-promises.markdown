@@ -1,15 +1,11 @@
 ---
 layout: default
-title: set ftext in edit fxml promises
-categories: [Bundles for agent,set ftext in edit fxml promises]
+title: set_text in edit_xml promises
+categories: [Reference, Bundles for agent,set_text in edit_xml promises]
 published: true
-alias: Bundles-for-agent-set-ftext-in-edit-fxml-promises.html
-tags: [Bundles for agent,set ftext in edit fxml promises]
+alias: reference-bundles-for-agent-set-text-in-edit-xml-promises.html
+tags: [reference, bundles, agent, set_text, edit_xml, edit_xml promises, files promises]
 ---
-
-### `set_text` promises in edit\_xml
-
-  
 
 This promise is part of the XML-editing model. It assures that a
 matching value string will be present in the specified node within the

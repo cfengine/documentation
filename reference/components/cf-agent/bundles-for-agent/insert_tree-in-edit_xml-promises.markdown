@@ -1,16 +1,12 @@
 ---
 layout: default
-title: insert ftree in edit fxml promises
-categories: [Bundles for agent,insert ftree in edit fxml promises]
+title: insert_tree in edit_xml promises
+categories: [Reference, Bundles for agent,insert_tree in edit_xml promises]
 published: true
-alias: Bundles-for-agent-insert-ftree-in-edit-fxml-promises.html
-tags: [Bundles for agent,insert ftree in edit fxml promises]
+alias: reference-bundles-for-agent-insert-tree-in-edit-xml-promises.html
+tags: [reference, bundles, agent,insert_tree, edit_xml, xml, files promises]
 ---
-
-### `insert_tree` promises in edit\_xml
-
   
-
 This promise is part of the XML-editing model. It assures that a
 balanced XML tree, containing the matching subtree, will be present in
 the specified node within the XML file. If the subtree is not found, the

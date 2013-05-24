@@ -1,15 +1,18 @@
 ---
 layout: default
 title: packages in agent promises
-categories: [Bundles for agent,packages in agent promises]
+categories: [Reference, Bundles for agent, packages in agent promises]
 published: true
-alias: Bundles-for-agent-packages-in-agent-promises.html
-tags: [Bundles for agent,packages in agent promises]
+alias: reference-bundles-for-agent-packages-in-agent-promises.html
+tags: [reference, bundles, agent, packages, packages promises, promise types]
 ---
 
-### `packages` promises in agent
-
-  
+CFEngine supports a generic approach to integration with native
+operating support for packaging. Package promises allow CFEngine to make
+promises regarding the state of software packages *conditionally*, given
+the assumption that a native package manager will perform the actual
+manipulations. Since no agent can make unconditional promises about
+another, this is the best that can be achieved.
 
 ```cf3
  vars:
@@ -27,13 +30,6 @@ tags: [Bundles for agent,packages in agent promises]
          package_policy => "add",
          package_method => yum;
 ```
-
-CFEngine supports a generic approach to integration with native
-operating support for packaging. Package promises allow CFEngine to make
-promises regarding the state of software packages *conditionally*, given
-the assumption that a native package manager will perform the actual
-manipulations. Since no agent can make unconditional promises about
-another, this is the best that can be achieved.
 
 Packages are treated as black-boxes with three labels:
 

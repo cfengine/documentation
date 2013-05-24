@@ -1,15 +1,11 @@
 ---
 layout: default
-title: Miscellaneous in edit fxml promises
-categories: [Bundles for agent,Miscellaneous in edit fxml promises]
+title: edit_xml promises
+categories: [Reference, Bundles for agent, edit_xml promises]
 published: true
-alias: Bundles-for-agent-Miscellaneous-in-edit-fxml-promises.html
-tags: [Bundles for agent,Miscellaneous in edit fxml promises]
+alias: reference-bundles-for-agent-edit-xml-promises.html
+tags: [reference, bundles, agent, edit_xml, xml, edit_xml promises, files promises]
 ---
-
-### Miscelleneous in `edit_xml` promises
-
-  
 
 The use of XML documents in systems configuration is widespread. XML
 documents represent data that is complex and can be structured in
