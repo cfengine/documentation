@@ -16,7 +16,7 @@ The policy files can be found in `/var/cfengine/share/doc/examples`. You can
 test them locally by copying the respective _example___file.cf_ file into
 `/var/cfengine/inputs` and running:
 
-	/var/cfengine/bin/cf-agent -f /var/cfengine/inputs/example_file.cf
+	/var/cfengine/bin/cf-agent -f example_file.cf
 
 ## Integrating the Example into your Main Policy
 
