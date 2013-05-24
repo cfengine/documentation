@@ -23,6 +23,8 @@ test them locally by copying the respective _example___file.cf_ file into
 The following steps make the example policy part of your main policy. Some examples require
 additional steps - see the respective documentation page for details.
 
+Do these steps on the policy server:
+
 1. Copy the file from `/var/cfengine/share/doc/examples` to
     `/var/cfengine/masterfiles`.
 
@@ -37,8 +39,7 @@ additional steps - see the respective documentation page for details.
 ```
 
 3. Insert the example's bundle name in the `bundlesequence` section
-    of the main policy file `/var/cfengine/masterfiles/promises.cf` on
-    the policy server:
+    of the main policy file `/var/cfengine/masterfiles/promises.cf`:
 
 ```cf3
     bundlesequence => {
@@ -49,7 +50,7 @@ additional steps - see the respective documentation page for details.
 ```
 
 4. Insert the policy file name in the `inputs` section of the main policy file
-    `/var/cfengine/masterfiles/promises.cf` on the policy server:
+    `/var/cfengine/masterfiles/promises.cf`:
 
 ```cf3
      inputs => {
