@@ -1,10 +1,10 @@
 ---
 layout: default
 title: access in server promises
-categories: [Bundles for server,access in server promises]
+categories: [Reference, Bundles for server, access in server promises]
 published: true
-alias: Bundles-for-server-access-in-server-promises.html
-tags: [Bundles for server,access in server promises]
+alias: reference-bundles-for-server-access-in-server-promises.html
+tags: [reference, bundles, server, cf-serverd, access, server promises, acl, trust, encryption]
 ---
 
 ### `access` promises in server

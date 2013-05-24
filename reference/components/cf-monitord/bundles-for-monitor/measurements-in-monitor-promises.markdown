@@ -1,17 +1,17 @@
 ---
 layout: default
 title: measurements in monitor promises
-categories: [Bundles for monitor,measurements in monitor promises]
+categories: [Reference, Bundles for monitor, measurements in monitor promises]
 published: true
-alias: Bundles-for-monitor-measurements-in-monitor-promises.html
-tags: [Bundles for monitor,measurements in monitor promises]
+alias: reference-bundles-for-monitor-measurements-in-monitor-promises.html
+tags: [reference, bundles, monitor, measurements, monitoring, promise types]
 ---
 
 ### `measurements` promises in monitor
 
   
 
-*These features are available only in Enterprise versions of CFEngine.*
+**These features are available only in CFEngine Enterprise.**
 
 By default,CFEngine's monitoring component `cf-monitord` records
 performance data about the system. These include process counts, service
