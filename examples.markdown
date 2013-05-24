@@ -8,7 +8,7 @@ tags: [Examples]
 ---
 
 You can find more examples for CFEngine Code in the
-[GitHub repository](https://github.com/cfengine/core/tree/master/examples).
+[GitHub repository](https://github.com/cfengine/design-center/tree/master/examples).
 
 ## Running the Example policies
 
