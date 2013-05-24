@@ -57,6 +57,18 @@ doing the following on your policy server:
          ...
     };
 ```
+5. *CONDITIONAL* If the example contains a control body section
+   (e.g. "body agent control"):
+
+   You cannot have duplicate control bodies (i.e. two
+   agent control bodies, one in the main file and one
+   in the example) as CFEngine won't know which it
+   should use and they may conflict.
+
+   To resolve this, copy the contents of the
+   control body section from the example into the identically named control body
+   section in the main policy file `/var/cfengine/masterfiles/promises.cf`
+   and then remove the control body from the example.
 
 The example policy will now be executed every five minutes along with the rest
 of your main policy.
