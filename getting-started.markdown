@@ -39,6 +39,5 @@ background in programming. We have found the following steps a good way to learn
 ## 3rd party Tutorials, Examples and Documentation
 
 * [Getting Started with CFEngine 3](http://www.verticalsysadmin.com/cfengine/Getting_Started_with_CFEngine_3.pdf) by Vertical Sysadmin
-* [CFEngine 3 Beginning Examples](http://www.verticalsysadmin.com/cfengine/beginning_examples/) by Vertical Sysadmin.
-  This is, basically, a selection from /usr/local/share/doc/cfengine/ which has over 200 examples.
+* [CFEngine 3 Beginning Examples](http://www.verticalsysadmin.com/cfengine/beginning_examples/) by Vertical Sysadmin
 * ["CFEngine 3 Tutorial"](http://watson-wilson.ca/2011/05/cfengine-3-cookbook-begins.html) by Neil Watson
