@@ -6,6 +6,3 @@ published: true
 alias: reference-components.html
 tags: [Reference, Components]
 ---
-
-Some text about components
-
