@@ -35,7 +35,7 @@ CFEngine:
 * **TODO: Continue from there From Zero to Hero**
 * Download syntax highlighters for [vim](https://github.com/neilhwatson/vim_cf3) or
   [emacs](https://github.com/cfengine/core/blob/master/contrib/cfengine.el)
-* <a href="http://cf-learn.info" target="_blank">"Get the book</a>
+* <a href="http://cf-learn.info" target="_blank">Get the book</a>
 * Study the [tutorials and examples](examples.html)
 * Read the documentation about [Language Concepts](manuals-language-concepts.html)
   and about [Managing Environments](manuals-managing-environments.html)
