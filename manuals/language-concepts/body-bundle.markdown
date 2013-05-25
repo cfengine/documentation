@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Defining Promises - Bodies and Bundles
-categories: [Manuals, Concept Guide, Bodies and Bundles]
+categories: [Manuals, Language Concepts, Bodies and Bundles]
 published: true
-alias: manuals-concept-bodies-bundles.html
-tags: [concepts, body, bundle]
+alias: manuals-language-concepts-bodies-bundles.html
+tags: [language, concepts, syntax, body, bundle]
 ---
 
 CFEngine's promises are declarative, you tell CFEngine what promises

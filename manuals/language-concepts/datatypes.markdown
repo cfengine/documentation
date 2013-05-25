@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Datatypes
-categories: [Manuals, Concept Guide, Datatypes]
+categories: [Manuals, Language Concepts, Datatypes]
 published: true
-alias: manuals-concept-datatypes.html
-tags: [manuals, concepts, datatypes, language]
+alias: manuals-language-concepts-datatypes.html
+tags: [manuals, language, syntax, concepts, datatypes]
 ---
 
 ### Datatypes

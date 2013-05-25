@@ -1,6 +1,11 @@
-## Introduction
-
-### Managing Environments Seamlessly
+---
+layout: default
+title: Managing Environments Seamlessly
+categories: [Manuals, Managing Environments]
+published: true
+alias: manuals-managing-environments.html
+tags: [manuals, systems, configuration management, automation]
+---
 
 CFEngine was designed to enable scalable configuration management in
 any kind of environment with an emphasis on supporting larger systems

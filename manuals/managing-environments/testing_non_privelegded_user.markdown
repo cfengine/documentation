@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Testing Policies
-categories: [Manuals, Concept Guide, Testing Policies]
+categories: [Manuals, Managing Environment, Testing Policies]
 published: true
-alias: manuals-concept-testing-policies.html
-tags: [manuals, concepts, testing, work directory]
+alias: manuals-managing-environments-testing-policies.html
+tags: [manuals, systems, configuration management, automation, testing, work directory]
 ---
 
 One of the practical advantages of CFEngine is that you can test it

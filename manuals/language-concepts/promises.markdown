@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Promises
-categories: [Manuals, Concept Guide, Promises]
+categories: [Manuals, Language Concepts, Promises]
 published: true
-alias: manuals-concepts-promises.html
-tags: [manuals, concepts, promises]
+alias: manuals-language-concepts-promises.html
+tags: [manuals, language, syntax, concepts, promises]
 ---
 
 

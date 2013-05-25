@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Controlling Frequency
-categories: [Manuals, Concept Guide, Controlling Frequency]
+categories: [Manuals, Managing Environment, Controlling Frequency]
 published: true
-alias: manuals-concept-controlling-frequency.html
-tags: [manuals, concepts, controlling, frequency, performance]
+alias: manuals-managing-environments-controlling-frequency.html
+tags: [manuals, systems, configuration management, automation, control, frequency, performance]
 ---
 
 ### Controlling Frequency

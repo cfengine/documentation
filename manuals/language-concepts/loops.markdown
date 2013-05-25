@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Loops
-categories: [Manuals, Concept Guide, Loops]
+categories: [Manuals, Language Concepts, Loops]
 published: true
-alias: manuals-concept-loops.html
-tags: [manuals, concepts, loops, language]
+alias: manuals-language-concepts-loops.html
+tags: [manuals, language, syntax, concepts, loops]
 ---
 
 ### Loops

@@ -1,13 +1,11 @@
 ---
 layout: default
-title: The Working Directory
-categories: [Manuals, Concept Guide, The Work Directory]
+title: The Work Directory
+categories: [Manuals, Managing Environment, The Work Directory]
 published: true
-alias: manuals-concept-work-directory.html
-tags: [manuals, concepts, directory, work directory]
+alias: manuals-managing-environments-work-directory.html
+tags: [manuals, systems, configuration management, automation, directory, work directory]
 ---
-
-## The work directory
 
 In order to achieve the desired simplifications, it was decided to
 reserve a private work area for the CFEngine tool-set.

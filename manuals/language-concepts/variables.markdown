@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Variables
-categories: [Manuals, Concept Guide, Variables]
+categories: [Manuals, Language Concepts, Variables]
 published: true
-alias: manuals-concept-variables.html
-tags: [manuals, concepts, variables]
+alias: manuals-language-concepts-variables.html
+tags: [manuals, language, syntax, concepts, variables]
 ---
 
 Just like classes are defined as promises.  Variables (or "variable definitions") are also promises.  Variables can be defined in any promise bundle. CFEngine recognizes two variable object types: scalars and lists (lists contain 0 or more objects), as well as three data-types (string, integer and real).

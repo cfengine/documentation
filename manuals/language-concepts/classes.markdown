@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Making Decisions with Classes
-categories: [Manuals, Concept Guide, Making Decisions with Classes]
+categories: [Manuals, Language Concepts, Making Decisions with Classes]
 published: true
-alias: manuals-concepts-classes.html
-tags: [manuals, concepts, classes]
+alias: manuals-language-concepts-classes.html
+tags: [manuals, language, syntax, concepts, classes]
 ---
 
 TODO: remove duplication
