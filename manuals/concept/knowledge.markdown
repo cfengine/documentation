@@ -7,6 +7,31 @@ alias: manuals-concept-guide-knowledge-management.html
 tags: [concepts, knowledge]
 ---
 
+### Why does Knowledge Matter?
+
+Above all, CFEngine promotes a human understanding of complex processes.
+Its promises are easily documentable using comments that the system
+remembers and reminds us about in error reporting. It hides irrelevant
+and transitory details of implementation so that the intentions behind
+the promises are highlighted for all to see. This means that the
+knowledge of your organization can be encoded into a terse,
+easy-to-understand CFEngine language based on promises.
+
+It is this human understanding of large systems that often makes the
+difference between a sustainable automation effort, and an effort that
+fails to gain traction:
+
+1.  Technical descriptions are hard to remember. You might understand
+    your configuration decisions when you are writing them, but a few
+    months later when something goes wrong, you will probably have
+    forgotten what you were thinking. That costs you time and effort to
+    diagnose.
+
+2.  Organizations are fragile to the loss of those individuals who code
+    policy. If they leave, often there is no one left who can understand
+    or fix the system. Only with proper documentation is it possible to
+    immunize against loss.
+
 A unique aspect of CFEngine, that is fully developed in the commercial
 editions of the software, its ability to enable integrated knowledge
 management as part of an automation process, and to use its

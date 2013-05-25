@@ -1,13 +1,24 @@
-## Testing as a non-privilieged user
+---
+layout: default
+title: Testing Policies
+categories: [Manuals, Concept Guide, Testing Policies]
+published: true
+alias: manuals-concept-testing-policies.html
+tags: [manuals, concepts, testing, work directory]
+---
 
 One of the practical advantages of CFEngine is that you can test it
-without the need for root or administrator privileges. This is useful if you are concerned about manipulating important system files, but naturally limits the possibilities for what CFEngine is able to do.
+without the need for root or administrator privileges. This is useful if you are
+concerned about manipulating important system files, but naturally limits the
+possibilities for what CFEngine is able to do.
+
+## Testing as a non-privileged user
 
 CFEngine operates with the notion of a work-directory. The default
 work directory for the `root` user is /var/cfengine (except on
 Debian Linux and various derivatives which prefer
 /var/lib/cfengine). For any other user, the work directory lies in
-the user's home directory, named \~/.cfagent. CFEngine prefers you
+the user's home directory, named ~/.cfagent. CFEngine prefers you
 to keep certain files here. You should not resist this too strongly
 or you will make unnecessary trouble for yourself. The decision to
 have this 'known directory' was made to simplify a lot of

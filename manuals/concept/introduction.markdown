@@ -1,6 +1,5 @@
 ## Introduction
 
-
 ### Managing Environments Seamlessly
 
 CFEngine was designed to enable scalable configuration management in
@@ -54,7 +53,7 @@ series of promised that each client is responsible for delivering on.
 CFEngine works on a simple notion of promises. Everything in CFEngine
 can be thought of as a promise to be kept by different resources in the
 system. In a system that delivers a web site with Apache httpd, an
-imprtant promise may be to make sure that httpd is installed, running,
+important promise may be to make sure that httpd is installed, running,
 and accessible on port 80, and in a system which needs to satisfy
 mid-day traffic on a busy web site a promise may be to ensure that there
 are 20 application servers running during normal business hours.
@@ -62,7 +61,7 @@ are 20 application servers running during normal business hours.
 This promises are not top-down directives for a central authority to act
 upon, they are the rules which clients are responsible for implementing.
 Try running a large organization on top-down authority alone. Try to
-managing a group of people without empowering and tristing them to make
+manage a group of people without empowering and trusting them to make
 independent decisions. In CFEngine, we've implemented a system that
 emphasizes the promise a client makes to the overall CFEngine network,
 and we can create large systems of scale because we don't create a bulky
@@ -90,7 +89,7 @@ make decisions about the systems you are managing, and it if the
 client's job to automate and deliver a promise.
 
 This separation of concerns is often violated in systems that require
-users to write explict instructions for even the simplest tasks. If the
+users to write explicit instructions for even the simplest tasks. If the
 client isn't given the power to make decisions about how to implement
 promises, then you really haven't automated anything. If you can't trust
 the "self-discipline" of individual nodes to deliver on simple promise,
@@ -113,58 +112,4 @@ In fact the opposite is true: forcing humans to do the work of machines,
 in repetitive and reliable ways is what dehumanizes people. The only way
 to make progress with a bad habit is to recognize it as one and be
 willing to abandon the habit.
-
-### What is CFEngine?
-
-At its code, CFEngine is a simple framework based on promises which
-supplies a rich standard library of tools to implement and manage very
-large systems. The following diagram captures the scope of CFEngine.
-
-![](introduction-cfdude.png)
-
-For many users, CFEngine is simply a configuration tool – i.e. software
-for deploying and patching systems according to a policy. Policy is
-described using promises. Every statement in CFEngine 3 is a promise to
-be kept at some time or location. More than this, however, CFEngine is
-not like otherautomation tools that \`roll out' an image of some
-software once and hope for the best. Every promise that you make in
-CFEngine is continuously verified and maintained. It is not a one-off
-operation, but a process that can repairing itself should anything
-deviate from the policy.
-
-That clearly places CFEngine in the realm of automation, which often
-begs the question: so it's just another scripting language? Certainly,
-CFEngine contains a powerful scripting language, but it is not like any
-other. CFEngine doesn't use a scripting language like Perl, Python or
-Ruby for a reason as these languages often complicate systems and
-encourage users to write long procedures instead of declarative
-promises. CFEngine language is a language of promises, in which you
-express very high-level intentions about a system. CFEngine then takes
-the promises and compiles them into real-world action.
-
-### Why does Knowledge Matter?
-
-Above all, CFEngine promotes a human understanding of complex processes.
-Its promises are easily documentable using comments that the system
-remembers and reminds us about in error reporting. It hides irrelevant
-and transitory details of implementation so that the intentions behind
-the promises are highlighted for all to see. This means that the
-knowledge of your organization can be encoded into a terse,
-easy-to-understand CFEngine language based on promises.
-
-It is this human understanding of large systems that often makes the
-difference between a sustainable automation effort, and an effort that
-fails to gain traction:
-
-1.  Technical descriptions are hard to remember. You might understand
-    your configuration decisions when you are writing them, but a few
-    months later when something goes wrong, you will probably have
-    forgotten what you were thinking. That costs you time and effort to
-    diagnose.
-
-2.  Organizations are fragile to the loss of those individuals who code
-    policy. If they leave, often there is no one left who can understand
-    or fix the system. Only with proper documentation is it possible to
-    immunize against loss.
-
 
