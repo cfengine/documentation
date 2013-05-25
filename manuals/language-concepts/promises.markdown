@@ -8,7 +8,7 @@ tags: [manuals, language, syntax, concepts, promises]
 ---
 
 
-One concept in CFEngine should stand out from the rest as being the most important: promises.   Everything else is just an abstraction that allows us to declare promises and model the various actors in the system, but if you wanted to summarize CFEngine concepts in a single sentence that sentence would be:
+One concept in CFEngine should stand out from the rest as being the most important: promises. Everything else is just an abstraction that allows us to declare promises and model the various actors in the system, but if you wanted to summarize CFEngine concepts in a single sentence that sentence would be:
 
 CFEngine is a platform for defining and delivering promises.
 
