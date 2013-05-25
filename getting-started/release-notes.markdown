@@ -25,16 +25,13 @@ in CFEngine 3.5 will make it easy for you to get stuff done.
 
 **TODO:** screenshot, video, messaging?
 
-### Improved out-of-the-box installation for Enterprise customers
-
-The CFEngine Server and the Mission Portal UI are all up and running as soon
-as the package installation is completed.
-
 ### Significantly improved parsing and evaluation of policies
 
 Policy developers get clear and consistent messages from the parser,
 and operators benefit from a range of improvements in logging output, both to
 the syslog and to the standard output.
+
+**TODO:** screenshot, example, ???
 
 ### New built-in functions and capabilities
 
@@ -69,6 +66,13 @@ significantly and offer completely new functionality.
     * [`maparray`](reference-functions-maparray.html)
 * function for getting detailed file information
     * [`filestat`](reference-functions-filestat.html)
+
+**TODO:** screenshot or code snippet?
+
+### Improved out-of-the-box installation for Enterprise customers
+
+The CFEngine Server and the Mission Portal UI are all up and running as soon
+as the package installation is completed.
 
 ## Report collection at arbitrary scale
 
