@@ -3,7 +3,7 @@ layout: default
 title: Name Spaces
 categories: [Manuals, Language Concepts, Name Spaces]
 published: true
-alias: manuals-language-concepts-009-name-spaces.html
+alias: manuals-language-concepts-name-spaces.html
 tags: [manuals, language, syntax, concepts, name spaces]
 ---
 

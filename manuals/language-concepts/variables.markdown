@@ -3,7 +3,7 @@ layout: default
 title: Variables
 categories: [Manuals, Language Concepts, Variables]
 published: true
-alias: manuals-language-concepts-004-variables.html
+alias: manuals-language-concepts-variables.html
 tags: [manuals, language, syntax, concepts, variables]
 ---
 
@@ -146,7 +146,7 @@ As of CFEngine core version 3.1.0, the value ‘cf_null’ may be used as a NULL
 
       "empty_list" slist => { "cf_null" };
 
-### Associative Arrays
+#### Associative Arrays in CFEngine 3
 
 Associative Array variables are written with ‘[’ and ‘]’ brackets. The following example defines three values in an associative array under the keys "cf-monitord", "cf-serverd", and "cf-execd".  These keys are associated with values, and are sequently printed with the echo command.
 

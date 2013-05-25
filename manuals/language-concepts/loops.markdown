@@ -3,7 +3,7 @@ layout: default
 title: Loops
 categories: [Manuals, Language Concepts, Loops]
 published: true
-alias: manuals-language-concepts-006-loops.html
+alias: manuals-language-concepts-loops.html
 tags: [manuals, language, syntax, concepts, loops]
 ---
 

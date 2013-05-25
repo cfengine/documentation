@@ -3,7 +3,7 @@ layout: default
 title: Pattern Matching and Referencing
 categories: [Manuals, Language Concepts, Pattern Matching and Referencing]
 published: true
-alias: manuals-language-concepts-007-pattern-matching-and-referencing.html
+alias: manuals-language-concepts-pattern-matching-and-referencing.html
 tags: [manuals, language, syntax, concepts, pattern, regexp, matching]
 ---
 

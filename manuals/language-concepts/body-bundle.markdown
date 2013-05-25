@@ -3,7 +3,7 @@ layout: default
 title: Defining Promises - Bodies and Bundles
 categories: [Manuals, Language Concepts, Bodies and Bundles]
 published: true
-alias: manuals-language-concepts-002-bodies-bundles.html
+alias: manuals-language-concepts-bodies-bundles.html
 tags: [language, concepts, syntax, body, bundle]
 ---
 
