@@ -66,6 +66,7 @@ module Jekyll
             if p.data['categories'].length == i
               struct = {}
               struct['published'] = p.data['published']
+              struct['sortkey']   = p.data['sortkey']
               struct['title']     = p.data['title']
               struct['type']      = 'page'
               struct['alias']     = p.data['alias']
