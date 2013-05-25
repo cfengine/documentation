@@ -15,13 +15,13 @@ but official release date for 3.5 has not been set.*
 <!--- move up when no longer a pre-release
 -->
 
-## Easier to use
+## Easier to Use
 
 No matter if you are just starting with configuration management and system automation,
 if you are a CFEngine novice or a battle-hardened policy coder, the new features
 in CFEngine 3.5 will make it easy for you to get stuff done.
 
-### Design Center, with UI in Enterprise
+### Design Center, with UI in CFEngine Enterprise
 
 **TODO:** screenshot, video, messaging?
 
