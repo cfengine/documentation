@@ -4,7 +4,6 @@ title: Release Notes
 categories: [Getting Started, Release Notes]
 published: true
 alias: getting-started-release-notes.html
-tags: [getting started, release notes]
 ---
 
 **IMPORTANT NOTE:** *This is a pre-release of 3.5, intended for testing and showcase only.

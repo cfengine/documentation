@@ -4,7 +4,6 @@ title: What's New in CFEngine 3.5
 categories: [What's New]
 published: true
 alias: whats-new.html
-tags: [what's New]
 ---
 
 CFEngine 3.5 is the latest version of CFEngine 3. It enables Infrastructure
