@@ -31,7 +31,7 @@ credentials to get CFEngine to work, and if large portions of your
 network stop working individual nodes in the CFEngine system
 understand how to keep on running and delivering promises.
 
-![](fig/components-overview.png)
+![](components-overview.png)
 
 If the network is not working, CFEngine agents skip new promises and
 continue with what they already have. CFEngine was specifically
