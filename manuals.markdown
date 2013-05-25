@@ -25,7 +25,7 @@ At its core, CFEngine is a simple framework based on promises which
 supplies a rich standard library of tools to implement and manage very
 large systems. The following diagram captures the scope of CFEngine.
 
-![](introduction-cfdude.png)
+![](manuals-scope.png)
 
 For many users, CFEngine is simply a configuration tool – i.e. software
 for deploying and patching systems according to a policy. Policy is
