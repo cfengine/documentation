@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CFEngine Components
-categories: [Manuals, Managing Environment, Components]
+categories: [Manuals, Managing Environments, Components]
 published: true
 alias: manuals-managing-environments-components.html
 tags: [manuals, systems, configuration management, automation, components, cf-agent]

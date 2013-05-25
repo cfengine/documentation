@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Testing Policies
-categories: [Manuals, Managing Environment, Testing Policies]
+categories: [Manuals, Managing Environments, Testing Policies]
 published: true
 alias: manuals-managing-environments-testing-policies.html
 tags: [manuals, systems, configuration management, automation, testing, work directory]
