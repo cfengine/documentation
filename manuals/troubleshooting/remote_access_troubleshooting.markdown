@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Variables
+title: Remote Access
 categories: [Manuals, Troubleshooting, Remote Access]
 published: true
-alias: manuals-concept-variables.html
-tags: [manuals, concepts, variables]
+alias: manuals-troubleshooting-remote-access.html
+tags: [manuals, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 
 
