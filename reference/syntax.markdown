@@ -1,4 +1,11 @@
-## Syntax, identifiers and names
+---
+layout: default
+title: Syntax, identifiers and names
+categories: [Reference, Syntax]
+published: true
+alias: reference-syntax.html
+tags: [reference, syntax]
+---
 
 The CFEngine 3 language has a few simple rules:
 

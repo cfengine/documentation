@@ -1,14 +1,11 @@
 ---
 layout: default
 title: Filenames and Paths
-categories: [Manuals, Concept Guide, Filenames and Paths]
+categories: [Reference, Syntax, Filenames and Paths]
 published: true
-alias: manuals-concept-filenames-and-paths.html
-tags: [manuals, concepts, directory, paths, filesystem]
+alias: reference-syntax-filenames-and-paths.html
+tags: [reference, syntax, directory, paths, filesystem]
 ---
-
-
-## Filenames and paths
 
 Filenames in Unix-like operating systems use the forward slash '/'
 character for their directory separator. All references to file
