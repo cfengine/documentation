@@ -1,3 +1,12 @@
+---
+layout: default
+title: The Working Directory
+categories: [Manuals, Concept Guide, The Work Directory]
+published: true
+alias: manuals-concept-work-directory.html
+tags: [manuals, concepts, directory, work directory]
+---
+
 ## The work directory
 
 In order to achieve the desired simplifications, it was decided to
@@ -16,7 +25,10 @@ and in CFEngine 3.x this is preserved._
 
 A trusted cache of the input files must now be maintained in the
 `inputs` subdirectory. When CFEngine is invoked by the scheduler, it
-reads only from this directory. The default behavior of CFEngine will copy policy from the default repository (`/var/cfengine/masterfiles`) to the `inputs` subdirectory. For other architecural solutions (e.g. pull from an external policy repository) it is up to the user to keep this
+reads only from this directory. The default behavior of CFEngine will
+copy policy from the default repository (`/var/cfengine/masterfiles`)
+to the `inputs` subdirectory. For other architecural solutions (e.g.
+pull from an external policy repository) it is up to the user to keep this
 cache updated, on each host. This simplifies and consolidates the
 CFEngine resources in a single place.
 
