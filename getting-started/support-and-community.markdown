@@ -17,6 +17,9 @@ Help from the CFEngine community is available to all users on our Google Groups 
 
 Bugs and improvement suggestions can be registered with our development team in our [public bug tracker](http://bug.cfengine.com/).
 
-You can follow us on [twitter](https://twitter.com/cfengine), [facebook](https://www.facebook.com/pages/Cfengine/311003700627?ref=ts) and [LinkedIn](http://www.linkedin.com/groups?gid=136574&trk=hb_side_g).
+You can [read our blog](http://cfengine.com/blog) and follow us on
+<a href="https://twitter.com/cfengine" target="_blank">twitter</a>,
+<a href="https://www.facebook.com/pages/Cfengine/311003700627?ref=ts" target="_blank">facebook</a> and
+<a href="http://www.linkedin.com/groups?gid=136574&trk=hb_side_g" target="_blank">LinkedIn</a>.
 
 If you want to learn more about how CFEngine can help you and your organization, [contact us](https://cfengine.com/contactUs).
