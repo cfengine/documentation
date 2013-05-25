@@ -65,6 +65,8 @@ See [Style Guide - Charts and graphs](#Charts_and_graphs) for style requirements
 
 ## Style Guide
 
+Make sure you follow this style guide to make using CFEngine and the documentation a consistent and pleasant experience.
+
 ### Writing for the web
 
 * use subheadings to structure content
@@ -104,7 +106,7 @@ The period ending a sentence should be followed by 1 space.
 
 ### Abbreviations
 
-As a general note, avoiding abbreviations provides better readibility.
+As a general note, avoiding abbreviations provides better readability.
 
 **Latin expressions commonly used in English**
 
