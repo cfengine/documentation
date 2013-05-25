@@ -114,6 +114,10 @@ These operators can be combined to form complex expressions.  For example, the f
 
     (Monday|Wednesday).Hr14.WinXP::
 
+### Variables in class expressions
+
+The class predicate `ifvarclass` is `AND`ed with the normal class expression, and is evaluated together with the promise. It may contain variables as long as the resulting expansion is a legal class expression.
+
 ### Global and local classes
 
 User defined classes are mostly defined in bundles, but they are
