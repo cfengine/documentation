@@ -12,7 +12,7 @@ intended for production environments. Do not upgrade or use in conjunction with 
 versions at this point. We are planning monthly snapshot (alpha) releases going forward,
 but official release date for 3.5 has not been set.*
 
-<!--- move up when no longer a pre-release
+<!--- TODO: move up when no longer a pre-release
 -->
 
 ## Easier to Use

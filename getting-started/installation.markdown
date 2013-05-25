@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installing CFEngine 3 
+title: Installing CFEngine
 categories: [Getting Started, Installation]
 published: true
 alias: getting-started-installation.html
@@ -8,8 +8,8 @@ tags: [getting started, installation]
 ---
 
 IMPORTANT NOTE: This is an early alpha release of 3.5, intended for testing and showcase only. This version is not supported, not covered by service level agreements (SLAs) and not intended for production environments. Do not upgrade or use in conjuction with other versions at this point. We are planning monthly snapshot (alpha) releases going forward, but official release date for 3.5 has not been set (expect several months from now). See also http://cfengine.com/blog/january-2013-release-now-available for more information.
-
-For information about supported platforms, compatible hub/client configurations and an overview of changes, please see the "3.5-Release-Notes-CFEngine-3-Enterprise.txt" file (available on cfengine.com/25free or in the commercial software download directory).
+<!--- TODO: move up when no longer a pre-release
+-->
 
 ## Requirements
 

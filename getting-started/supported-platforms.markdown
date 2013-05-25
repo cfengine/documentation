@@ -7,10 +7,11 @@ alias: getting-started-supported-platforms.html
 tags: [getting started, platforms, versions, support]
 ---
 
-<!--- switch for release
-CFEngine 3 Enterprise 3.5 has been tested and is generally available on the following platforms:
+<!--- TODO: switch for release
+CFEngine Enterprise 3.5 has been tested and is generally available on the following platforms:
 -->
-CFEngine 3 Enterprise 3.5 has been rudimentarily tested and released on the following platforms:
+This pre-release of CFEngine Enterprise 3.5 has been rudimentarily tested and released
+on the following platforms:
 
 ## Hub
 
