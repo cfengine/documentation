@@ -3,8 +3,7 @@ layout: default
 title: Promises
 categories: [Manuals, Language Concepts, Promises]
 published: true
-alias: manuals-language-concepts-001-promises.html
-permalink: manuals-language-concepts-promises.html
+alias: manuals-language-concepts-promises.html
 tags: [manuals, language, syntax, concepts, promises]
 ---
 
