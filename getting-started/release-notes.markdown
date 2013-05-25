@@ -16,37 +16,6 @@ but official release date for 3.5 has not been set.*
 <!--- move up when no longer a pre-release
 -->
 
-CFEngine 3.5 is the latest version of CFEngine. It enables Infrastructure
-Engineers to automate their infrastructure easier, faster and at a greater
-scale than ever before. CFEngine 3.5 allows you to address the challenges
-that come with managing very large and complex IT infrastructure
-installations when agility, scalability, security and stability are critical,
-in spite of platform diversity.
-
-Infrastructure Engineers can boost productivity using the ready-made sketches
-from the **TODO:[CFEngine Design Center](manuals-design-center.html)**. These components
-allow you to roll out of data-driven configuration changes, without having to
-worry about the details of the policy language. Enterprise customers can
-use the Design Center UI from within the Mission Portal, which makes building
-and adjusting infrastructure as simple as a mouse click.
-
-Large CFEngine installations can grow to well over 100.000 hosts distributed
-over multiple sites, and there is no upper limit to the scalability. CFEngine
-3.5 introduces **TODO:[multi-site reporting](manuals-multi-site-reporting.html)**,
-which enables collection of information from an arbitrary number of CFEngine
-3 Enterprise sites into a central data storage.
-
-Operators of CFEngine installations benefit from the improved tooling for
-diagnosing and controlling their system. Enterprise customers get comprehensive
-**diagnostics data** about the performance of their server's data collection,
-and can **fine-tune the data collection** volume through policy language.
-**TODO:** links to cf-agent --self-diagnostics, hub diagnostics and server config
-for data collection
-
-CFEngine 3.5 is compatible with all previous versions of CFEngine 3. The
-following sections summarize some of the key improvements in the latest
-version of CFEngine.
-
 ## Easier to use
 
 No matter if you are just starting with configuration management and system automation,
