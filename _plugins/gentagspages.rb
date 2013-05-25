@@ -11,6 +11,7 @@ module Jekyll
         site.pages.each do |page|
           if page.data["tags"] != nil
               page.data["tags"].each do |tag|
+                tag.downcase!
                 key = page.data['alias']
                 tags[tag] ||=[]
                 # assign page to tags array - so we can use all information about page inside group_index.html
