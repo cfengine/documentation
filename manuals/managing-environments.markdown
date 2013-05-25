@@ -4,7 +4,7 @@ title: Managing Environments Seamlessly
 categories: [Manuals, Managing Environments]
 published: true
 alias: manuals-managing-environments.html
-tags: [manuals, systems, configuration management, automation]
+tags: [manuals, systems,configuration management, automation]
 ---
 
 CFEngine was designed to enable scalable configuration management in
