@@ -7,7 +7,7 @@ alias: getting-started-upgrade.html
 tags: [getting started, upgrade]
 ---
 
-Upgrading CFEngine 3 Enterprise can be tricky, there are many dependencies on the
+Upgrading CFEngine Enterprise can be tricky, there are many dependencies on the
 customer's policy. We have created shell script to optionally do the job for you,
 trying to be as generic as possible to not interfere with existing policy. The script
 is not perfect because we cannot predict all factors, such as what files customers use
