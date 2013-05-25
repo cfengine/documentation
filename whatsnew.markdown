@@ -7,7 +7,7 @@ alias: whats-new.html
 tags: [what's New]
 ---
 
-CFEngine 3.5 is the latest version of CFEngine. It enables Infrastructure
+CFEngine 3.5 is the latest version of CFEngine 3. It enables Infrastructure
 Engineers to automate their infrastructure easier, faster and at a greater
 scale than ever before. CFEngine 3.5 allows you to address the challenges
 that come with managing very large and complex IT infrastructure
