@@ -22,8 +22,8 @@ module Jekyll
       published_pages = []
 
       site.pages.each do |page|
-        #published_pages << page if page.data["published"] != false
-        published_pages << page
+        published_pages << page if page.data["published"] != false
+        #published_pages << page
       end
 
       #puts JSON.pretty_generate(published_pages)
