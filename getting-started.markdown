@@ -7,8 +7,8 @@ alias: getting-started.html
 tags: [getting started]
 ---
 
-Don't have CFEngine yet? Get ready to use
-[CFEngine Enterprise in 10 minute](https://cfengine.com/evaluate-enterprise) using a ready-made
+Don't have CFEngine yet? Start using
+[CFEngine Enterprise in 10 minute](https://cfengine.com/evaluate-enterprise) with the ready-made
 [VirtualBox](https://cfengine.com/enterprise-getting-started) or
 [KVM](https://cfengine.com/cfengine-enterprise-getting-started-using-kvm) image.
 
@@ -44,7 +44,7 @@ CFEngine:
 * Read [our blog](http://cfengine.com/blog) and follow us on 
   <a href="https://twitter.com/cfengine" target="_blank">twitter</a>,
   <a href="https://www.facebook.com/pages/Cfengine/311003700627?ref=ts" target="_blank">facebook</a> and
-  <a href="http://www.linkedin.com/groups?gid=136574&trk=hb_side_g" target="_blank">LinkedIn</a>.
+  <a href="http://www.linkedin.com/groups?gid=136574&trk=hb_side_g" target="_blank">LinkedIn</a>
   to stay in touch with what's happening in CFEngine and the Configuration Management industry
 * Start contributing to
   <a href="https://github.com/cfengine/design-center" target="_blank">Design Center</a>,
