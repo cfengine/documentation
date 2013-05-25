@@ -3,7 +3,7 @@ layout: default
 title: Classes - Making Decisions
 categories: [Manuals, Language Concepts, Classes]
 published: true
-alias: manuals-language-concepts-classes.html
+alias: manuals-language-concepts-003-classes.html
 tags: [manuals, language, syntax, concepts, classes, decisions]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Normal Ordering
 categories: [Manuals, Language Concepts, Normal Ordering]
 published: true
-alias: manuals-language-concepts-normal-ordering.html
+alias: manuals-language-concepts-008-normal-ordering.html
 tags: [manuals, language, syntax, concepts, ordering]
 ---
 

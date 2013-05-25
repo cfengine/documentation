@@ -3,7 +3,7 @@ layout: default
 title: Datatypes
 categories: [Manuals, Language Concepts, Datatypes]
 published: true
-alias: manuals-language-concepts-datatypes.html
+alias: manuals-language-concepts-005-datatypes.html
 tags: [manuals, language, syntax, concepts, datatypes]
 ---
 
