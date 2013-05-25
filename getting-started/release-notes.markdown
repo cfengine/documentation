@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Release Notes 
+title: Release Notes
+sortkey: 0
 categories: [Getting Started, Release Notes]
 published: true
 alias: getting-started-release-notes.html

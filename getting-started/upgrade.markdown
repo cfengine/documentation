@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Upgrade instructions 
+title: Upgrade Instructions
+sortkey: 2
 categories: [Getting Started, Upgrade]
 published: true
 alias: getting-started-upgrade.html

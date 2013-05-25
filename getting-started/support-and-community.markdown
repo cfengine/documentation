@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Support and Community
+sortkey: 4
 categories: [Getting Started, Support and Community]
 published: true
 alias: getting-started-support-and-community.html
