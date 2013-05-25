@@ -101,7 +101,7 @@ Not all of these elements are necessary every time, but when you combine them th
              comment => "Hello World";
 ```
 
-In this example, the promise is about a file named `test_plain` in the directory `/home/mark/tmp`, and the promise is made to some entity named `system blue team`. The `create` attribute instructs CFEngine to create the file if it doesn't exist. It has a list of owners that is defined by a variable named "usernames".
+In this example, the promise is about a file named `test_plain` in the directory `/home/mark/tmp`, and the promise is made to some entity named `system blue team`. The `create` attribute instructs CFEngine to create the file if it doesn't exist. It has a list of owners that is defined by a variable named "usernames" (see the documentation about [Bodies](manuals-language-concepts-bodies.html) for more details on this last expression).
 
 The comment attribute in this example can be added to any promise. It has no actual function other than to provide more information to the user in error tracing and auditing.
 

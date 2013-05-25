@@ -1,11 +1,13 @@
 ---
 layout: default
-title: Classes - Making Decisions
+title: Classes
 categories: [Manuals, Language Concepts, Classes]
 published: true
 alias: manuals-language-concepts-classes.html
 tags: [manuals, language, syntax, concepts, classes, decisions]
 ---
+
+#### Making Decisions
 
 When you write promises in CFEngine, you don't write a series of control statements and loops. You don't write if/else statements CFEngine to control when and how a promise is fulfilled. Instead you use +classes+ to apply promise bodies to particular environments depending on context. +classes+ are simply variables, Boolean variables, which evaluate to true or false depending on context.
 

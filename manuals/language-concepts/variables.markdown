@@ -7,48 +7,66 @@ alias: manuals-language-concepts-variables.html
 tags: [manuals, language, syntax, concepts, variables]
 ---
 
-Just like classes are defined as promises, variables (or "variable definitions") are also promises.
-Variables can be defined in any promise bundle. CFEngine recognizes two variable object types: scalars and lists
-(lists contain 0 or more objects), as well as three data-types (string, integer and real).
+Just like [classes](manuals-language-concepts-classes.html) are defined as promises, variables (or "variable definitions") are also promises. Variables can be defined in any promise [bundle](manuals-language-concepts-bundles.html).
+
+### Datatypes
+
+CFEngine variables have two high-level types: scalars and lists. 
+
+* A scalar is a single value,
+* a list is a collection of scalars.
+
+Each scalar may have one of three types: string, int or real. String scalars are sequences of characters, integers are whole numbers, and reals are float pointing numbers.
+
+CFEngine typing is mostly dynamic, and CFEngine will try to coerce string values into int and real types, and if it cannot it will report an error. However, arguments to built-in [functions](reference-functions.html) check the defined argument type for consistency.
+
+Integer constants may use suffixes to represent large numbers.  The following suffixes can be used to create integer values for common powers of 1000.
+
+* 'k' = value times 1000
+* 'm' = value times 1000^2
+* 'g' = value times 1000^3
+
+Since computing systems such as storage and memory are based on binary values, CFEngine also provide the following uppercase suffixes to create integer values for common powers of 1024.
+
+* 'K' = value times 1024.
+* 'M' = value times 1024^2
+* 'G' = value times 1024^3
+
+In some contexts, `%` can be used a special suffix to denote percentages.
+
+Lastly, there is a reserved value which can be used to specific a parameter as having no limit at all.
+
+* 'inf' = a constant representing an unlimited value.
+
 
 ### Scalar Variables
 
-Scalar variables hold a single value. Here are a series of variable definitions which set a string, an int, and a real variable. Notice that they are defined in a bundle that has the name `name`. This bundle name can be used as a context
-when using variables outside of the bundle they are defined in.
+Scalar variables hold a single value.
 
 ```cf3
-    bundle <type> name
-    {
-        vars:
-            "my_scalar" string => "String contents...";
-            "my_int" int    => "1234";
-            "my_real" real   => "567.89";
-    }
+      vars:
+          "my_scalar" string => "String contents...";
+          "my_int" int    => "1234";
+          "my_real" real   => "567.89";
 ```
 
-In this previous example, the `type` indicates that any kind of bundle applies here. 
+Here are a series of variable definitions which set a string, an int, and a real variable. Notice that they are defined in a bundle of type `common` that has the name `examples`. This bundle name can be used as a context when using variables outside of the bundle they are defined in.
 
 #### Scalar Referencing and Expansion
 
-* Scalar variables are referenced by ‘$(my_scalar)’ (or ‘${my_scalar}’) and they represent a
-  single value at a time.
-* Scalars that are written without a context, e.g. ‘$(myvar)’ are local to the current bundle.
-* Scalars are globally available everywhere provided one uses the context to reference
+Scalar variables are referenced by `$(my_scalar)` (or `${my_scalar}`) and expand to the single value they hold at that time. if you refer to a variable by ‘$(unqualified)’, then it is assumed to belong to the current bundle. To access any other (scalar) variable, you must qualify the name, using the name of the bundle in which it is defined:
 
-In the previous example, a variable defined in the "name" bundle could be reference from outside this bundle by using the syntax '$(name.my_scalar)'.
+    $(bundle_name.qualified)
 
 ### Lists
 
 List variables hold several values. The are declared as follows:
 
 ```cf3
-    bundle <type> name
-    {
-        vars:
-            "my_slist" slist => { "list", "of", "strings" };
-            "my_ilist" ilist => { "1234", "5678" };
-            "my_rlist" rlist => { "567.89" };
-    }
+     vars:
+         "my_slist" slist => { "list", "of", "strings" };
+         "my_ilist" ilist => { "1234", "5678" };
+         "my_rlist" rlist => { "567.89" };
 ```
 
 #### List Substitution and Expansion
