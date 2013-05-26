@@ -1,15 +1,11 @@
 ---
 layout: default
-title: processes in agent promises
-categories: [Reference, Components, cf-agent, Bundles for agent, processes in agent promises]
+title: processes
+categories: [Reference, Components, cf-agent, Bundles for agent, processes]
 published: true
-alias: reference-components-bundles-for-agent-processes-in-agent-promises.html
+alias: reference-components-bundles-for-agent-processes.html
 tags: [reference, bundles, agent, promise types, processes, processes promises, promise types]
 ---
-
-### `processes` promises in agent
-
-  
 
 Process promises refer to items in the system process table. Note that
 this is not the same as commands (which are instructions that CFEngine

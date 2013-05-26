@@ -1,13 +1,11 @@
 ---
 layout: default
-title: methods in agent promises
-categories: [Reference, Components, cf-agent, Bundles for agent,methods in agent promises]
+title: methods
+categories: [Reference, Components, cf-agent, Bundles for agent,methods]
 published: true
-alias: reference-components-bundles-for-agent-methods-in-agent-promises.html
+alias: reference-components-bundles-for-agent-methods.html
 tags: [reference, bundles, agent, methods, promises, promise types]
 ---
-
-  
 
 Methods are compound promises that refer to whole bundles of promises.
 Methods may be parameterized. Methods promises are written in a form

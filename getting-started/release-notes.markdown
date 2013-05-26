@@ -116,7 +116,7 @@ as the package installation is completed.
 
 ## Microsoft Windows specific improvements
 
-* Windows PowerShell support in [commands promises](reference-bundles-for-agent-commands-in-agent-promises.html),
+* Windows PowerShell support in [commands promises](reference-bundles-for-agent-commands.html),
   [`execresult`](reference-functions-execresult.html) and [`returnszero`](reference-functions-returnszero.html)
 * Improved ACL handling on Windows
 ** Note the syntax changes in the **TODO**[ChangeLog]

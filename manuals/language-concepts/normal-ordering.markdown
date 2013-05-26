@@ -56,7 +56,7 @@ following, converging towards a final state:
     databases
     reports
 
-Within [`edit_line` bundles in files promises](reference-bundles-for-agent-files-in-agent-promises.html),
+Within [`edit_line` bundles in files promises](reference-bundles-for-agent-files.html),
 the normal ordering is:
 
     vars

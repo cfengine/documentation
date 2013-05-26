@@ -1,15 +1,13 @@
 ---
 layout: default
-title: outputs in agent promises
-categories: [Reference, Components, cf-agent, Bundles for agent,outputs in agent promises]
+title: outputs
+categories: [Reference, Components, cf-agent, Bundles for agent,outputs]
 published: true
-alias: reference-components-bundles-for-agent-outputs-in-agent-promises.html
+alias: reference-components-bundles-for-agent-outputs.html
 tags: [reference, bundles, agent, outputs, outputs promises, promises, promise types]
 ---
 
-### `outputs` promises in agent
-
-  
+**TODO: obsolete?**
 
 Outputs promises allow promises to make meta-promises about their output
 levels. More simply, you can switch on verbose or inform level output to

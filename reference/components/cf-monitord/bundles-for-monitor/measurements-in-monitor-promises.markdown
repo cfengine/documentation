@@ -7,10 +7,6 @@ alias: reference-components-bundles-for-monitor-measurements.html
 tags: [reference, bundles, monitor, measurements, monitoring, promise types]
 ---
 
-### `measurements` promises in monitor
-
-  
-
 **These features are available only in CFEngine Enterprise.**
 
 By default,CFEngine's monitoring component `cf-monitord` records

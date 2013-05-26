@@ -1,16 +1,13 @@
 ---
 layout: default
-title: services in agent promises
-categories: [Reference, Components, cf-agent, Bundles for agent,services in agent promises]
+title: services
+categories: [Reference, Components, cf-agent, Bundles for agent,services]
 published: true
-alias: reference-components-bundles-for-agent-services-in-agent-promises.html
+alias: reference-components-bundles-for-agent-services.html
 tags: [reference, bundles, agent, services, processes, services promises, promise types]
 ---
 
-### `services` promises in agent
-
-  
- A service is a set of zero or more processes. It can be zero if the
+A service is a set of zero or more processes. It can be zero if the
 service is not currently running. Services run in the background, and do
 not require user intervention.
 

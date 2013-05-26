@@ -1,15 +1,11 @@
 ---
 layout: default
-title: storage in agent promises
-categories: [Reference, Components, cf-agent, Bundles for agent, storage in agent promises]
+title: storage
+categories: [Reference, Components, cf-agent, Bundles for agent, storage]
 published: true
-alias: reference-components-bundles-for-agent-storage-in-agent-promises.html
+alias: reference-components-bundles-for-agent-storage.html
 tags: [reference, bundles, agent, storage, storage promises, mount, filesystem, disks]
 ---
-
-### `storage` promises in agent
-
-  
 
 Storage promises refer to disks and filesystem properties.
 

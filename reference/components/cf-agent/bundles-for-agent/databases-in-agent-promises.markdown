@@ -1,13 +1,13 @@
 ---
 layout: default
-title: databases in agent promises
-categories: [Reference, Components, cf-agent, Bundles for agent, databases in agent promises]
+title: databases
+categories: [Reference, Components, cf-agent, Bundles for agent, databases]
 published: true
-alias: reference-components-bundles-for-agent-databases-in-agent-promises.html
+alias: reference-components-bundles-for-agent-databases.html
 tags: [Reference, Bundles, agent, databases, promises, promise types]
 ---
 
-CFEngine Nova can interact with commonly used database servers to keep
+CFEngine can interact with commonly used database servers to keep
 promises about the structure and content of data within them.
 
 There are two main cases of database management to address: small

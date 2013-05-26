@@ -1,13 +1,11 @@
 ---
 layout: default
-title: commands in agent promises
-categories: [Reference, Components, cf-agent, Bundles for agent, commands in agent promises]
+title: commands
+categories: [Reference, Components, cf-agent, Bundles for agent, commands]
 published: true
-alias: reference-components-bundles-for-agent-commands-in-agent-promises.html
+alias: reference-components-bundles-for-agent-commands.html
 tags: [reference, bundles, agent, commands, promises, promise types]
 ---
-
-### `commands` promises in agent
 
 Command *containment* allows you to make a `sandbox' around a command,
 to run it as a non-privileged user inside an isolated directory tree.
