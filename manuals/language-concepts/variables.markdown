@@ -23,7 +23,8 @@ Each scalar may have one of three types: string, int or real. String scalars
 are sequences of characters, integers are whole numbers, and reals are float 
 pointing numbers.
 
-List variables can be of type `slist`, `ilist` or `rlist` to hold lists of strings, integers or reals, respectively.
+List variables can be of type `slist`, `ilist` or `rlist` to hold lists of 
+strings, integers or reals, respectively.
 
 Integer constants may use suffixes to represent large numbers.  The following 
 suffixes can be used to create integer values for common powers of 1000.
@@ -191,13 +192,16 @@ hardening bundle.
                 "Other: $(other)";
     }
 ```
-This time, the `hardening` bundle does not take an argument. Instead it converts the `va.tmpdirs` list into a local list variable "x" directly.
+This time, the `hardening` bundle does not take an argument. Instead it 
+converts the `va.tmpdirs` list into a local list variable "x" directly.
 
 ### A List Variable with Nothing (`cf_null`)
 
 **TODO: should be removed?**
 
-As of CFEngine core version 3.1.0, the value ‘cf_null’ may be used as a NULL value within lists. This value is ignored in list variable expansion, and can be used as a placeholder.
+As of CFEngine core version 3.1.0, the value ‘cf_null’ may be used as a NULL 
+value within lists. This value is ignored in list variable expansion, and can 
+be used as a placeholder.
 
 ```cf3
     vars:
@@ -228,7 +232,8 @@ an arbitrary key. These keys are associated with values
 ```
 
 This example defines three values in an associative array under the keys 
-`cf-monitord`, `cf-serverd`, and `cf-execd`. They and are sequently printed with the echo command.
+`cf-monitord`, `cf-serverd`, and `cf-execd`. They and are sequently printed 
+with the echo command.
 
 Arrays are associative and may be of type scalar or list. Enumerated arrays 
 are simply treated as a special case of associative arrays, since there are no 
