@@ -1,9 +1,9 @@
 ---
 layout: default
 title: edit_line promises
-categories: [Reference, Bundles for agent, edit_line promises]
+categories: [Reference, Components, cf-agent, Bundles for agent, edit_line promises]
 published: true
-alias: reference-bundles-for-agent-edit-line-promises.html
+alias: reference-components-bundles-for-agent-edit-line-promises.html
 tags: [reference, bundles, agent, edit_line, edit_line promises, files promises]
 ---
 

@@ -1,9 +1,9 @@
 ---
 layout: default
 title: delete_lines in edit_line promises
-categories: [Reference, Bundles for agent,delete_lines in edit_line promises]
+categories: [Reference, Components, cf-agent, Bundles for agent,delete_lines in edit_line promises]
 published: true
-alias: reference-bundles-for-agent-delete-lines-in-edit-line-promises.html
+alias: reference-components-bundles-for-agent-delete-lines-in-edit-line-promises.html
 tags: [reference, bundles, agent, delete_lines, edit_line, files promises]
 ---
 

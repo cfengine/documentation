@@ -1,9 +1,9 @@
 ---
 layout: default
 title: build_xpath in edit_xml promises
-categories: [Reference, Bundles for agent,build_xpath in edit_xml promises]
+categories: [Reference, Components, cf-agent, Bundles for agent,build_xpath in edit_xml promises]
 published: true
-alias: reference-bundles-for-agent-build-xpath-in-edit-xml-promises.html
+alias: reference-components-bundles-for-agent-build-xpath-in-edit-xml-promises.html
 tags: [reference, bundles, agent, xpath, edit_xml, xml, files promises, promises]
 ---  
 

@@ -1,9 +1,9 @@
 ---
 layout: default
 title: methods in agent promises
-categories: [Reference, Bundles for agent,methods in agent promises]
+categories: [Reference, Components, cf-agent, Bundles for agent,methods in agent promises]
 published: true
-alias: reference-bundles-for-agent-methods-in-agent-promises.html
+alias: reference-components-bundles-for-agent-methods-in-agent-promises.html
 tags: [reference, bundles, agent, methods, promises, promise types]
 ---
 

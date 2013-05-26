@@ -1,9 +1,9 @@
 ---
 layout: default
 title: delete_text in edit_xml promises
-categories: [Reference, Bundles for agent, delete_text in edit_xml promises]
+categories: [Reference, Components, cf-agent, Bundles for agent, delete_text in edit_xml promises]
 published: true
-alias: reference-bundles-for-agent-delete-text-in-edit-xml-promises.html
+alias: reference-components-bundles-for-agent-delete-text-in-edit-xml-promises.html
 tags: [reference, bundles, agent, delete_text, edit_xml, xml, files promises, promises]
 ---
 

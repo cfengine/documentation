@@ -1,9 +1,9 @@
 ---
 layout: default
 title: insert_text in edit_xml promises
-categories: [Reference, Bundles for agent, insert_text in edit_xml promises]
+categories: [Reference, Components, cf-agent, Bundles for agent, insert_text in edit_xml promises]
 published: true
-alias: reference-bundles-for-agent-insert-text-in-edit-xml-promises.html
+alias: reference-components-bundles-for-agent-insert-text-in-edit-xml-promises.html
 tags: [reference, bundles, agent, insert_text, edit_xml, xml, files promises]
 ---
 

@@ -1,9 +1,9 @@
 ---
 layout: default
 title: commands in agent promises
-categories: [Reference, Bundles for agent, commands in agent promises]
+categories: [Reference, Components, cf-agent, Bundles for agent, commands in agent promises]
 published: true
-alias: reference-bundles-for-agent-commands-in-agent-promises.html
+alias: reference-components-bundles-for-agent-commands-in-agent-promises.html
 tags: [reference, bundles, agent, commands, promises, promise types]
 ---
 

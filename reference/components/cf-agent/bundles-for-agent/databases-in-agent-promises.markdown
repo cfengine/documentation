@@ -1,9 +1,9 @@
 ---
 layout: default
 title: databases in agent promises
-categories: [Reference, Bundles for agent, databases in agent promises]
+categories: [Reference, Components, cf-agent, Bundles for agent, databases in agent promises]
 published: true
-alias: reference-bundles-for-agent-databases-in-agent-promises.html
+alias: reference-components-bundles-for-agent-databases-in-agent-promises.html
 tags: [Reference, Bundles, agent, databases, promises, promise types]
 ---
 
