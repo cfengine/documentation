@@ -3,7 +3,7 @@ layout: default
 title: Function readrealarray
 categories: [Reference, Functions,Function readrealarray]
 published: true
-alias: reference-functions-function-readrealarray.html
+alias: reference-functions-readrealarray.html
 tags: [reference, functions, function readrealarray]
 ---
 

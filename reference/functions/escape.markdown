@@ -3,7 +3,7 @@ layout: default
 title: Function escape
 categories: [Reference, Functions,Function escape]
 published: true
-alias: reference-functions-function-escape.html
+alias: reference-functions-escape.html
 tags: [reference, functions, function escape]
 ---
 

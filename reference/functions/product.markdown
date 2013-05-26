@@ -3,7 +3,7 @@ layout: default
 title: Function product
 categories: [Reference, Functions,Function product]
 published: true
-alias: reference-functions-function-product.html
+alias: reference-functions-product.html
 tags: [reference, functions, function product]
 ---
 

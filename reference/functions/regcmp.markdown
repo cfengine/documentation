@@ -3,7 +3,7 @@ layout: default
 title: Function regcmp
 categories: [Reference, Functions,Function regcmp]
 published: true
-alias: reference-functions-function-regcmp.html
+alias: reference-functions-regcmp.html
 tags: [reference, functions, function regcmp]
 ---
 

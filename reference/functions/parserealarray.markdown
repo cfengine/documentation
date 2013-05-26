@@ -3,7 +3,7 @@ layout: default
 title: Function parserealarray
 categories: [Reference, Functions,Function parserealarray]
 published: true
-alias: reference-functions-function-parserealarray.html
+alias: reference-functions-parserealarray.html
 tags: [reference, functions, function parserealarray]
 ---
 

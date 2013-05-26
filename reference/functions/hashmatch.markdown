@@ -3,7 +3,7 @@ layout: default
 title: Function hashmatch
 categories: [Reference, Functions,Function hashmatch]
 published: true
-alias: reference-functions-function-hashmatch.html
+alias: reference-functions-hashmatch.html
 tags: [reference, functions, function hashmatch]
 ---
 

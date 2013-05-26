@@ -3,7 +3,7 @@ layout: default
 title: Function readreallist
 categories: [Reference, Functions,Function readreallist]
 published: true
-alias: reference-functions-function-readreallist.html
+alias: reference-functions-readreallist.html
 tags: [reference, functions, function readreallist]
 ---
 

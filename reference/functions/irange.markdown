@@ -3,7 +3,7 @@ layout: default
 title: Function irange
 categories: [Reference, Functions,Function irange]
 published: true
-alias: reference-functions-function-irange.html
+alias: reference-functions-irange.html
 tags: [reference, functions, function irange]
 ---
 

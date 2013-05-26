@@ -3,7 +3,7 @@ layout: default
 title: Function fileexists
 categories: [Reference, Functions,Function fileexists]
 published: true
-alias: reference-functions-function-fileexists.html
+alias: reference-functions-fileexists.html
 tags: [reference, functions, function fileexists]
 ---
 

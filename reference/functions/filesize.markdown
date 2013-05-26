@@ -3,7 +3,7 @@ layout: default
 title: Function filesize
 categories: [Reference, Functions,Function filesize]
 published: true
-alias: reference-functions-function-filesize.html
+alias: reference-functions-filesize.html
 tags: [reference, functions, function filesize]
 ---
 

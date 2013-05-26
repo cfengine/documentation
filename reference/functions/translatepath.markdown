@@ -3,7 +3,7 @@ layout: default
 title: Function translatepath
 categories: [Reference, Functions,Function translatepath]
 published: true
-alias: reference-functions-function-translatepath.html
+alias: reference-functions-translatepath.html
 tags: [reference, functions, function translatepath]
 ---
 

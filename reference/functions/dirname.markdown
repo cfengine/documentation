@@ -3,7 +3,7 @@ layout: default
 title: Function dirname
 categories: [Reference, Functions,Function dirname]
 published: true
-alias: reference-functions-function-dirname.html
+alias: reference-functions-dirname.html
 tags: [reference, functions, function dirname]
 ---
 

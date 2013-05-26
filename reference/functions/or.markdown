@@ -3,7 +3,7 @@ layout: default
 title: Function or
 categories: [Reference, Functions,Function or]
 published: true
-alias: reference-functions-function-or.html
+alias: reference-functions-or.html
 tags: [reference, functions, function or]
 ---
 

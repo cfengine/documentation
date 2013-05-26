@@ -3,7 +3,7 @@ layout: default
 title: Function parseintarray
 categories: [Reference, Functions,Function parseintarray]
 published: true
-alias: reference-functions-function-parseintarray.html
+alias: reference-functions-parseintarray.html
 tags: [reference, functions, function parseintarray]
 ---
 

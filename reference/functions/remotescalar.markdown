@@ -3,7 +3,7 @@ layout: default
 title: Function remotescalar
 categories: [Reference, Functions,Function remotescalar]
 published: true
-alias: reference-functions-function-remotescalar.html
+alias: reference-functions-remotescalar.html
 tags: [reference, functions, function remotescalar]
 ---
 

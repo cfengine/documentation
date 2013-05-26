@@ -3,7 +3,7 @@ layout: default
 title: Function on
 categories: [Reference, Functions,Function on]
 published: true
-alias: reference-functions-function-on.html
+alias: reference-functions-on.html
 tags: [reference, functions, function on]
 ---
 

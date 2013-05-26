@@ -3,7 +3,7 @@ layout: default
 title: Function regextract
 categories: [Reference, Functions,Function regextract]
 published: true
-alias: reference-functions-function-regextract.html
+alias: reference-functions-regextract.html
 tags: [reference, functions, function regextract]
 ---
 

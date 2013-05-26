@@ -3,7 +3,7 @@ layout: default
 title: Function isplain
 categories: [Reference, Functions,Function isplain]
 published: true
-alias: reference-functions-function-isplain.html
+alias: reference-functions-isplain.html
 tags: [reference, functions, function isplain]
 ---
 

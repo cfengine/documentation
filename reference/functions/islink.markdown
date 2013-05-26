@@ -3,7 +3,7 @@ layout: default
 title: Function islink
 categories: [Reference, Functions,Function islink]
 published: true
-alias: reference-functions-function-islink.html
+alias: reference-functions-islink.html
 tags: [reference, functions, function islink]
 ---
 

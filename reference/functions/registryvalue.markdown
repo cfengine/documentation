@@ -3,7 +3,7 @@ layout: default
 title: Function registryvalue
 categories: [Reference, Functions,Function registryvalue]
 published: true
-alias: reference-functions-function-registryvalue.html
+alias: reference-functions-registryvalue.html
 tags: [reference, functions, function registryvalue]
 ---
 

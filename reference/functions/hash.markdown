@@ -3,7 +3,7 @@ layout: default
 title: Function hash
 categories: [Reference, Functions,Function hash]
 published: true
-alias: reference-functions-function-hash.html
+alias: reference-functions-hash.html
 tags: [reference, functions, function hash]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function selectservers
 categories: [Reference, Functions,Function selectservers]
 published: true
-alias: reference-functions-function-selectservers.html
+alias: reference-functions-selectservers.html
 tags: [reference, functions, function selectservers]
 ---
 

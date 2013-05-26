@@ -3,7 +3,7 @@ layout: default
 title: Function readfile
 categories: [Reference, Functions,Function readfile]
 published: true
-alias: reference-functions-function-readfile.html
+alias: reference-functions-readfile.html
 tags: [reference, functions, function readfile]
 ---
 

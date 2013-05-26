@@ -241,7 +241,7 @@ numerical loops in CFEngine. Special functions exist to extract lists of keys
 from array variables for iteration purposes.
 
 Here is an example of using the function 
-[`getindices()`](reference-functions-function-getindices.html) which extracts 
+[`getindices()`](reference-functions-getindices.html) which extracts 
 all of the keys from an associative array. If this series of promises were 
 executed it would print out two messages, one for each key.
 

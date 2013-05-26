@@ -3,7 +3,7 @@ layout: default
 title: Function iprange
 categories: [Reference, Functions,Function iprange]
 published: true
-alias: reference-functions-function-iprange.html
+alias: reference-functions-iprange.html
 tags: [reference, functions, function iprange]
 ---
 

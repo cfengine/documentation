@@ -3,7 +3,7 @@ layout: default
 title: Function splayclass
 categories: [Reference, Functions,Function splayclass]
 published: true
-alias: reference-functions-function-splayclass.html
+alias: reference-functions-splayclass.html
 tags: [reference, functions, function splayclass]
 ---
 

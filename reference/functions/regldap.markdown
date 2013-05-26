@@ -3,7 +3,7 @@ layout: default
 title: Function regldap
 categories: [Reference, Functions,Function regldap]
 published: true
-alias: reference-functions-function-regldap.html
+alias: reference-functions-regldap.html
 tags: [reference, functions, function regldap]
 ---
 

@@ -3,7 +3,7 @@ layout: default
 title: Function sum
 categories: [Reference, Functions,Function sum]
 published: true
-alias: reference-functions-function-sum.html
+alias: reference-functions-sum.html
 tags: [reference, functions, function sum]
 ---
 

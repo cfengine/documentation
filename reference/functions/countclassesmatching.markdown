@@ -3,7 +3,7 @@ layout: default
 title: Function countclassesmatching
 categories: [Reference, Functions,Function countclassesmatching]
 published: true
-alias: reference-functions-function-countclassesmatching.html
+alias: reference-functions-countclassesmatching.html
 tags: [reference, functions, function countclassesmatching]
 ---
 

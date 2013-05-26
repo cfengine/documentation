@@ -3,7 +3,7 @@ layout: default
 title: Function execresult
 categories: [Reference, Functions,Function execresult]
 published: true
-alias: reference-functions-function-execresult.html
+alias: reference-functions-execresult.html
 tags: [reference, functions, function execresult]
 ---
 

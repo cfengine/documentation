@@ -3,7 +3,7 @@ layout: default
 title: Function regarray
 categories: [Reference, Functions,Function regarray]
 published: true
-alias: reference-functions-function-regarray.html
+alias: reference-functions-regarray.html
 tags: [reference, functions, function regarray]
 ---
 
