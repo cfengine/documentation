@@ -7,14 +7,6 @@ alias: manuals-troubleshooting-remote-access.html
 tags: [manuals, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 
-
--   [Server connection](#Server-connection)
--   [Key exchange](#Key-exchange)
--   [Time windows](/manuals/cf3-Reference#Time-windows)
--   [Other users than root](/manuals/cf3-Reference#Other-users-than-root)
--   [Encryption](/manuals/cf3-Reference#Encryption)
-
-
 ### Server connection
 
 When setting up `cf-serverd`, you might see the error message

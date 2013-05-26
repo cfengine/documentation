@@ -148,7 +148,7 @@ that reveal the existence of process chains.
 
 CFEngine can analyze the promises you have made, index and cross reference them using the command:
 
-    # cf-promises -r
+    $ cf-promises -r
 
 Normally, the default policy in Nova or Constellation will perform this command each time the policy is changed.
 

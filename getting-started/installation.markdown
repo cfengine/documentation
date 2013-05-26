@@ -8,30 +8,63 @@ alias: getting-started-installation.html
 tags: [getting started, installation]
 ---
 
-IMPORTANT NOTE: This is an early alpha release of 3.5, intended for testing and showcase only. This version is not supported, not covered by service level agreements (SLAs) and not intended for production environments. Do not upgrade or use in conjuction with other versions at this point. We are planning monthly snapshot (alpha) releases going forward, but official release date for 3.5 has not been set (expect several months from now). See also http://cfengine.com/blog/january-2013-release-now-available for more information.
+IMPORTANT NOTE: This is an early alpha release of 3.5, intended for testing 
+and showcase only. This version is not supported, not covered by service level 
+agreements (SLAs) and not intended for production environments. Do not upgrade 
+or use in conjuction with other versions at this point. We are planning 
+monthly snapshot (alpha) releases going forward, but official release date for 
+3.5 has not been set (expect several months from now). See also 
+http://cfengine.com/blog/january-2013-release-now-available for more 
+information.
 <!--- TODO: move up when no longer a pre-release
 -->
 
 ## Requirements
 
-CFEngine recommends that your hub machine should have at least 2 GB of memory and a modern 64 bit processor. For a large number of clients we recommend, as a rule of thumb, to have 8 GB of memory available per 500 hosts bootstrapped to the hub (not applicable to CFEngine 3 Free Enterprise). Please contact your sales representative if you have any questions regarding these numbers. 
+CFEngine recommends that your hub machine should have at least 2 GB of memory 
+and a modern 64 bit processor. For a large number of clients we recommend, as 
+a rule of thumb, to have 8 GB of memory available per 500 hosts bootstrapped 
+to the hub (not applicable to CFEngine 3 Free Enterprise). Please contact your 
+sales representative if you have any questions regarding these numbers. 
 
-CFEngine recommends to have 256 MB available memory on the clients. For machines under CFEngine’s management (clients), a full installation of CFEngine 3 Enterprise requires about 25 MB of disk storage. Otherwise disk usage depends on your specific policies, especially those that concern reporting.
+CFEngine recommends to have 256 MB available memory on the clients. For 
+machines under CFEngine’s management (clients), a full installation of 
+CFEngine 3 Enterprise requires about 25 MB of disk storage. Otherwise disk 
+usage depends on your specific policies, especially those that concern 
+reporting.
 
-Verify that the machine’s network connection is working and that port 5308 (used by CFEngine) and port 80 (used for the Mission Portal) is open for both incoming and outgoing connections. A common problem is that iptables are active by default on some operating systems. Remember to stop this service or adapt it to allow for communication on the above ports. If applicable, typing the following two commands: "/etc/init.d/iptables stop" and "chkconfig iptables off".
+Verify that the machine’s network connection is working and that port 5308 
+(used by CFEngine) and port 80 (used for the Mission Portal) is open for both 
+incoming and outgoing connections. A common problem is that iptables are 
+active by default on some operating systems. Remember to stop this service or 
+adapt it to allow for communication on the above ports. If applicable, typing 
+the following two commands: "/etc/init.d/iptables stop" and "chkconfig 
+iptables off".
 
-A working package manager is required on the hub/policy server to install an Apache Web Server, php module, etc. You should start from a blank system (i.e. with none of these components installed) to avoid potential interference with the installation process. No special software is otherwise required on machines in your network, CFEngine bundles all critical dependencies in the CFEngine 3 Enterprise package (see also SOFTWARE DEPENDENCIES below).
+A working package manager is required on the hub/policy server to install an 
+Apache Web Server, php module, etc. You should start from a blank system (i.e. 
+with none of these components installed) to avoid potential interference with 
+the installation process. No special software is otherwise required on 
+machines in your network, CFEngine bundles all critical dependencies in the 
+CFEngine 3 Enterprise package (see also SOFTWARE DEPENDENCIES below).
 
 Requirements specific to MongoDB:
-1. Filesystem type:
-- ext4 ( kernel version >= 2.6.23 )
-- xfs ( kernel version >= 2.6.25 )
-2. Memory: Approximately 8 GB per 500 hosts
-3. Turn off NUMA if running on numa hardware. http://www.mongodb.org/display/DOCS/NUMA
-4. Do not use large VM pages with Linux (info about large pages: http://linuxgazette.net/155/krishnakumar.html)
-5. Set file descriptor limit and user process limit to 4k+ (see etc/limits and ulimit)
 
-For those running databases on ext4 filesystems, a 2.6.23 kernel is required for efficient filesystem preallocation, 2.6.25 is required for XFS support of the same feature. High filesystem I/O following the allocation of new database files is one symptom of this problem.
+1. Filesystem type:
+   - ext4 ( kernel version >= 2.6.23 )
+   - xfs ( kernel version >= 2.6.25 )
+2. Memory: Approximately 8 GB per 500 hosts
+3. Turn off NUMA if running on numa hardware. 
+   http://www.mongodb.org/display/DOCS/NUMA
+4. Do not use large VM pages with Linux (info about large pages: 
+   http://linuxgazette.net/155/krishnakumar.html)
+5. Set file descriptor limit and user process limit to 4k+ (see etc/limits and 
+   ulimit)
+
+For those running databases on ext4 filesystems, a 2.6.23 kernel is required 
+for efficient filesystem preallocation, 2.6.25 is required for XFS support of 
+the same feature. High filesystem I/O following the allocation of new database 
+files is one symptom of this problem.
 
 ----------------------------------------------------------------------------
 
@@ -40,12 +73,19 @@ INSTALLATION INSTRUCTIONS (CLEAN INSTALL):
 * Do not upgrade from previous versions of CFEngine 3 Enterprise/Nova.
 * As always, install HUB first, then client(s).
 
-CFEngine 3 Enterprise is provided in three packages (two hub and one client package). These are the three packages (inside the respective hub and client sections found under each platform in the software listing, example for 64 bit rpm packages):
-    Hub:
-	cfengine-nova-3.5xxx.x86_64.rpm
-	cfengine-nova-expansion-3.5xxx.x86_64.rpm
-    Client:
-	cfengine-nova-3.5xxx.x86_64.rpm 
+CFEngine 3 Enterprise is provided in three packages (two hub and one client 
+package). These are the three packages (inside the respective hub and client 
+sections found under each platform in the software listing, example for 64 bit 
+rpm packages):
+
+**Hub:**
+
+* cfengine-nova-3.5xxx.x86_64.rpm
+* cfengine-nova-expansion-3.5xxx.x86_64.rpm
+
+**Client:**
+
+* cfengine-nova-3.5xxx.x86_64.rpm 
 
 RedHat 6 Users: RedHat has split their main repository into several repositories. Some of our dependencies used to be in the main repository but have been moved to the Server Optional repository. Please make sure you have that repository configured before installing CFEngine Enterprise 3.5
 

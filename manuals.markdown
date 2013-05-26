@@ -51,11 +51,9 @@ the promises and compiles them into real-world action.
 #### Ready to Start?
 
 If you are impatient to [get started](gettings-started.html) writing promises,
-now might be a good time to take a break from concepts and try out your first promises.
+now might be a good time to take a break from concepts and try out your first promises. You can study the [examples](examples.html) and look things up in the [reference](reference.html) as you go along.
 
-**TODO: link to tutorials and examples**
-
-If you want a solid foundation for your use of CFEngine continue reading this concept guide.
+If you want a solid foundation for your use of CFEngine, continue reading this concept guide.
 
 * TODO: Design Center
 * TODO: Multi-Site Support

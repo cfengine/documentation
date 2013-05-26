@@ -9,10 +9,11 @@ tags: [getting started, platforms, versions, support]
 ---
 
 <!--- TODO: switch for release
-CFEngine Enterprise 3.5 has been tested and is generally available on the following platforms:
+CFEngine Enterprise 3.5 has been tested and is generally available on the 
+following platforms:
 -->
-This pre-release of CFEngine Enterprise 3.5 has been rudimentarily tested and released
-on the following platforms:
+This pre-release of CFEngine Enterprise 3.5 has been rudimentarily tested and 
+released on the following platforms:
 
 ## Hub
 
@@ -34,16 +35,16 @@ on the following platforms:
 
 ## Hub/Host compatibility
 
-We strongly recommend to install identical versions on all hosts and servers in your
-system.
+We strongly recommend to install identical versions on all hosts and servers 
+in your system.
 
-A server running CFEngine Enterprise 3.5 can serve policy and collect data from hosts
-running the following versions of CFEngine:
+A server running CFEngine Enterprise 3.5 can serve policy and collect data 
+from hosts running the following versions of CFEngine:
 
 * 3.5.x
 * 3.0.x
 * 2.2.x
 
 
-Some data will not be available from older hosts, and the policy you serve needs to
-take into account hosts with different versions.
+Some data will not be available from older hosts, and the policy you serve 
+needs to take into account hosts with different versions.

@@ -7,6 +7,8 @@ alias: manuals-managing-environments.html
 tags: [manuals, systems,configuration management, automation]
 ---
 
+**TODO: rewrite**
+
 CFEngine was designed to enable scalable configuration management in
 any kind of environment with an emphasis on supporting larger systems
 with partial of unreliable connectivity. While almost every other

@@ -126,14 +126,16 @@ As a general note, avoiding abbreviations provides better readability.
 
 ### Code
 
-* use proper, consistent indentation
+* use proper, consistent indentation **TODO: coding style guide**
 * always run it through Pygments plus the appropriate lexer
 * avoid custom color schemes and hand-coded HTML
+* document the example after the example code
 
 ## Publishing
 
 Jekyll is used to generate the HTML pages. The toolchain is avaiable at https://github.com/cfengine/documentation-generator
-After you compile pages, Jekyll will place all files into the _site folder, without subdirectories.
+After you compile pages, Jekyll will place all files into the _site folder, 
+without subdirectories.
 
-Commits in this repository trigger the documentation generator to run, which then updates the contents of
-http://cfengine.com/tmp_docs/
+Commits in this repository trigger the documentation generator to run, which 
+then updates the contents of http://cfengine.com/tmp_docs/
