@@ -63,7 +63,7 @@ in the generated website.
 
 See [Style Guide - Charts and graphs](#Charts_and_graphs) for style requirements for images.
 
-## Style Guide
+##Style Guide
 
 Make sure you follow this style guide to make using CFEngine and the documentation a consistent and pleasant experience.
 
@@ -131,9 +131,46 @@ As a general note, avoiding abbreviations provides better readability.
 * avoid custom color schemes and hand-coded HTML
 * document the example after the example code
 
+### Structure of technical reference documentation
+
+The structure of the technical documentation about CFEngine attributes or 
+functions is as follows:
+
+    ## Language Element
+
+    **Synopsis:** One line summary.
+
+    **Type:** `Datatype` - if applicable.
+
+    **Allowed input range:** `value range` or
+    ```cf3
+        List
+        of
+        menu
+        options
+    ```
+
+    **Default value:** `Language Element => default value`, if applicable
+
+    **Example:** 
+    ```f3
+        Some code with 
+        cf3 markers
+        for syntax highlighting
+    ```
+
+    **Notes:**
+    
+    Additional information, spanning as many paragraphs as necessary, but mind
+    the style guide.
+    
+    In case of menu option types t's important to cover all allowed values.
+    
+    If the example is long and complex, explain it here.
+
 ## Publishing
 
-Jekyll is used to generate the HTML pages. The toolchain is avaiable at https://github.com/cfengine/documentation-generator
+Jekyll is used to generate the HTML pages. The toolchain is available at https://github.com/cfengine/documentation-generator
 After you compile pages, Jekyll will place all files into the _site folder, 
 without subdirectories.
 
