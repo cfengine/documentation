@@ -14,7 +14,7 @@ CFEngine way, every host is responsible for its own data.
 
 On hosts, CFEngine writes numerous logs and records to its private workspace, 
 referred  to as 
-[`WORKDIR`](manuals-managing-environments-work-directory.html) in the 
+[`WORKDIR`](manuals-architecture-work-directory.html) in the 
 documentation.
 
 CFEngine Enterprise provides solutions for centralization and network-wide 

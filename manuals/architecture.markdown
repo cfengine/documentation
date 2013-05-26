@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Managing Environments Seamlessly
-categories: [Manuals, Managing Environments]
+title: CFEngine Architecture
+categories: [Manuals, Architecture]
 published: true
-alias: manuals-managing-environments.html
+alias: manuals-architecture.html
 tags: [manuals, systems,configuration management, automation]
 ---
 

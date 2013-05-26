@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Controlling Frequency
-categories: [Manuals, Managing Environments, Controlling Frequency]
+categories: [Manuals, Architecture, Controlling Frequency]
 published: true
-alias: manuals-managing-environments-controlling-frequency.html
+alias: manuals-architecture-controlling-frequency.html
 tags: [manuals, systems, configuration management, automation, control, frequency, performance]
 ---
 

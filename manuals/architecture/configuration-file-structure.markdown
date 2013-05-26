@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Default Configuration File Structure
-categories: [Manuals, Managing Environments, Configuration File Structure]
+categories: [Manuals, Architecture, Configuration File Structure]
 published: true
-alias: manuals-managing-environments-configuration-file-structure.html
+alias: manuals-architecture-configuration-file-structure.html
 tags: [manuals, systems, configuration management, automation, policy, failsafe, update, file system]
 ---
 

@@ -42,15 +42,17 @@ are a good way to learn CFEngine:
 * **TODO: Continue from there From Zero to Hero**
 * Download syntax highlighters for
   [vim](https://github.com/neilhwatson/vim_cf3) or
-  [emacs](https://github.com/cfengine/core/blob/master/contrib/cfengine.el)
-* <a href="http://cf-learn.info" target="_blank">Get the book</a>
-* Study the [tutorials and examples](examples.html)
-* Read the documentation about [Language 
-  Concepts](manuals-language-concepts.html)
-  and about [Managing Environments](manuals-managing-environments.html)
+  [emacs](https://github.com/cfengine/core/blob/master/contrib/cfengine.el).
+* <a href="http://cf-learn.info" target="_blank">Get the book!</a>
+* Study the [tutorials and examples](examples.html).
+* Read the documentation about the [Architecture](manuals-architecture.html),
+  the [CFEngine Components](manuals-architecture-components.html).
+  and [Language Concepts](manuals-language-concepts.html)
+* Find out what CFEngine can do for you in the [Bundles for Agent 
+  reference](reference-components-bundles-for-agent.html) documentation
 * Join the [help and support 
   forums](getting-started-support-and-community.html) and become part
-  of the CFEngine Community
+  of the CFEngine Community.
 * Read [our blog](http://cfengine.com/blog) and follow us on 
   <a href="https://twitter.com/cfengine" target="_blank">twitter</a>,
   <a href="https://www.facebook.com/pages/Cfengine/311003700627?ref=ts" 

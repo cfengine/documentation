@@ -1,9 +1,9 @@
 ---
 layout: default
 title: The Work Directory
-categories: [Manuals, Managing Environments, The Work Directory]
+categories: [Manuals, Architecture, The Work Directory]
 published: true
-alias: manuals-managing-environments-work-directory.html
+alias: manuals-architecture-work-directory.html
 tags: [manuals, systems, configuration management, automation, directory, work directory]
 ---
 
