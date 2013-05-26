@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function getfields
+title: getfields
 categories: [Reference, Functions,Function getfields]
 published: true
 alias: reference-functions-getfields.html

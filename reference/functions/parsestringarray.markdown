@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function parsestringarray
+title: parsestringarray
 categories: [Reference, Functions,Function parsestringarray]
 published: true
 alias: reference-functions-parsestringarray.html

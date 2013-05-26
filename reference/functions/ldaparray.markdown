@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function ldaparray
+title: ldaparray
 categories: [Reference, Functions,Function ldaparray]
 published: true
 alias: reference-functions-ldaparray.html

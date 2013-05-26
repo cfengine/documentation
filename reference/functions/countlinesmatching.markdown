@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function countlinesmatching
+title: countlinesmatching
 categories: [Reference, Functions,Function countlinesmatching]
 published: true
 alias: reference-functions-countlinesmatching.html

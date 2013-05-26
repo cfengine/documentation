@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function hashmatch
+title: hashmatch
 categories: [Reference, Functions,Function hashmatch]
 published: true
 alias: reference-functions-hashmatch.html

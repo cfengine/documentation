@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function isexecutable
+title: isexecutable
 categories: [Reference, Functions,Function isexecutable]
 published: true
 alias: reference-functions-isexecutable.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function product
+title: product
 categories: [Reference, Functions,Function product]
 published: true
 alias: reference-functions-product.html

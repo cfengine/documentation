@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function not
+title: not
 categories: [Reference, Functions,Function not]
 published: true
 alias: reference-functions-not.html

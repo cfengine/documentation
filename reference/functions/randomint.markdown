@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function randomint
+title: randomint
 categories: [Reference, Functions,Function randomint]
 published: true
 alias: reference-functions-randomint.html

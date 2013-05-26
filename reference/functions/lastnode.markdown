@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function lastnode
+title: lastnode
 categories: [Reference, Functions,Function lastnode]
 published: true
 alias: reference-functions-lastnode.html

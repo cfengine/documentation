@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function readintarray
+title: readintarray
 categories: [Reference, Functions,Function readintarray]
 published: true
 alias: reference-functions-readintarray.html
