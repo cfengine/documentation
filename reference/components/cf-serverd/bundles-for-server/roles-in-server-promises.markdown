@@ -1,15 +1,11 @@
 ---
 layout: default
-title: roles in server promises
-categories: [Reference, Bundles for server,roles in server promises]
+title: roles
+categories: [Reference, Components, cf-serverd, Bundles for server, roles]
 published: true
-alias: reference-bundles-for-server-roles-in-server-promises.html
-tags: [reference, bundles, server, cf-serverd, cf-agent, cf-runagent, access control, users, roles, server promises]
+alias: reference-components-bundles-for-server-roles.html
+tags: [reference, bundles, server, cf-serverd, cf-agent, cf-runagent, access control, users, roles, server, promise types]
 ---
-
-### `roles` promises in server
-
-  
 
 Roles promises are server-side decisions about which users are allowed
 to define soft-classes on the server's system during remote invocation

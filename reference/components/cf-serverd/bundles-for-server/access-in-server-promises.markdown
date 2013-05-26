@@ -1,15 +1,11 @@
 ---
 layout: default
-title: access in server promises
-categories: [Reference, Bundles for server, access in server promises]
+title: access
+categories: [Reference, Components, cf-serverd, Bundles for server, access]
 published: true
-alias: reference-bundles-for-server-access-in-server-promises.html
-tags: [reference, bundles, server, cf-serverd, access, server promises, acl, trust, encryption]
+alias: reference-components-bundles-for-server-access.html
+tags: [reference, bundles, server, cf-serverd, access, server, promise types, acl, trust, encryption]
 ---
-
-### `access` promises in server
-
-  
 
 Access promises are conditional promises made by the server about file
 objects. The promise has two consequences. For file copy requests, the

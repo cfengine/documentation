@@ -3,7 +3,7 @@ layout: default
 title: Bundles for server
 categories: [Reference, Components, cf-serverd, Bundles for server]
 published: true
-alias: reference-components-cfserverd-bundles-for-server.html
+alias: reference-components-bundles-for-server.html
 tags: [reference, components, cf-serverd, bundles, server]
 ---
 
