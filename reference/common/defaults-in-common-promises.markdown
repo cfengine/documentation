@@ -7,57 +7,53 @@ alias: reference-common-promises-defaults.html
 tags: [reference, bundles, common, defaults, promises]
 ---
 
-### `defaults` promises in \*
+Defaults promises are related to 
+[variables](manuals-language-concepts-variables.html). If a variable or 
+parameter in a promise bundle is undefined, or its value is defined to be 
+invalid, a default value can be promised instead.
 
-Defaults promises are related to variables. If a variable or parameter
-in a promise bundle is undefined, or its value is defined to be invalid,
-a default value can be promised instead.
-
-CFEngine does not use Perl semantics: i.e. undefined variables do not
-map to the empty string, they remain as variables for possible future
-expansion.
-
-Some variables might be defined but still contain unresolved variables.
-To handle this you will need to match the `$(abc)` form of the
-variables.
+**TODO:would better be in vars reference or variable language guide?**
+CFEngine does not use Perl semantics: i.e. undefined variables do not map to 
+the empty string, they remain as variables for possible future expansion. Some 
+variables might be defined but still contain unresolved variables. To handle 
+this you will need to match the `$(abc)` form of the variables.
 
 ```cf3
-body common control
-{
-bundlesequence => { "main" };
-}
+    body common control
+    {
+    bundlesequence => { "main" };
+    }
 
-bundle agent main
-{
-methods:
+    bundle agent main
+    {
+    methods:
 
-  "example"  usebundle => test("one","x","","$(four)");
+      "example"  usebundle => test("one","x","","$(four)");
 
-}
+    }
 
-bundle agent test(a,b,c,d)
-{
-defaults:
+    bundle agent test(a,b,c,d)
+    {
+    defaults:
 
- "a" string => "default a", if_match_regex => "";
- "b" string => "default b", if_match_regex => "x";
- "c" string => "default c", if_match_regex => "";
- "d" string => "default d", if_match_regex => "\$\([a-zA-Z0-9_.]+\)";
+     "a" string => "default a", if_match_regex => "";
+     "b" string => "default b", if_match_regex => "x";
+     "c" string => "default c", if_match_regex => "";
+     "d" string => "default d", if_match_regex => "\$\([a-zA-Z0-9_.]+\)";
 
-reports:
+    reports:
 
-   !nothing::
+       !nothing::
 
-   "a = '$(a)', b = '$(b)', c = '$(c)' d = '$(d)'";
-}
+       "a = '$(a)', b = '$(b)', c = '$(c)' d = '$(d)'";
+    }
 ```
 
 Another example:
 
 ```cf3
 bundle agent example
-
-{     
+{
 defaults:
 
   "X" string => "I am a default value";
@@ -78,7 +74,6 @@ reports:
 ###########################################################
 
 bundle agent mymethod(a,b)
-
 {
 vars:
 
@@ -87,9 +82,7 @@ vars:
 defaults:
 
   "a" string => "AAAAAAAAA",   if_match_regex => "";
-
   "b" string => "BBBBBBBBB",   if_match_regex => "";
-
   "no_return" string => "no such file";
 
 reports:
@@ -100,98 +93,30 @@ reports:
      "The value of b is $(b)";
 
      "The value of no_return is $(no_return)";
-
 }
 ```
 
-  
-
--   [if\_match\_regex in defaults](#if_005fmatch_005fregex-in-defaults)
--   [string in defaults](#string-in-defaults)
--   [slist in defaults](#slist-in-defaults)
-
-#### `if_match_regex`
-
-**Type**: string
-
-**Allowed input range**: (arbitrary string)
+### if_match_regex
 
 **Synopsis**: If this regular expression matches the current value of
 the variable, replace it with default
 
-If a parameter or variable is already defined in the current context,
-and the value matches this regular expression, it will be deemed invalid
-and replaced with the default value.
+If a parameter or variable is already defined in the current context, and the 
+value matches this regular expression, it will be deemed invalid and replaced 
+with the default value.
 
-**Example**:  
-   
-
-```cf3
-bundle agent mymethod(a,b)
-{
-defaults:
-
-  "a" string => "AAAAAAAAA",   if_match_regex => "";
-  "b" string => "BBBBBBBBB",   if_match_regex => "";
-}
-```
-
-#### `string`
-
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: A scalar string
-
-In previous versions of CFEngine lists were represented (as in the
-shell) using separated scalars; similar to the PATH variable. In
-CFEngine 3 lists are kept as an independent type.
-
 **Example**:  
-   
 
 ```cf3
-vars:
+    bundle agent mymethod(a,b)
+    {
+    defaults:
 
- "xxx"    string => "Some literal string...";
-
- "yyy"    string => readfile( "/home/mark/tmp/testfile" , "33" );
-```
-
-#### `slist`
-
-**Type**: slist
-
-**Allowed input range**: (arbitrary string)
-
-**Synopsis**: A list of scalar strings
-
-Some functions return `slist`s (see [Introduction to
-functions](#Introduction-to-functions)), and an `slist` may contain the
-values copied from another `slist`, `rlist`, or `ilist` (see [List
-variable substitution and
-expansion](#List-variable-substitution-and-expansion), and [policy in
-vars](#policy-in-vars)).
-
-**Example**:  
-   
-
-```cf3
-vars:
-
- "xxx"    slist  => {  "literal1",  "literal2" };
-
- "yyy"    slist  => { 
-                    readstringlist(
-                                  "/home/mark/tmp/testlist",
-                                  "#[a-zA-Z0-9 ]*",
-                                  "[^a-zA-Z0-9]",
-                                  15,
-                                  4000
-                                  ) 
-                    };
-
- "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
-
+      "a" string => "AAAAAAAAA",   if_match_regex => "";
+      "b" string => "BBBBBBBBB",   if_match_regex => "";
+    }
 ```

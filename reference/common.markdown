@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Bundles for Common
+title: Bundles for common
 categories: [Reference, Common promises]
 published: true
-alias: reference-bundles-for-common.html
+alias: reference-common-promises.html
 tags: [reference, bundles, common]
 ---
 

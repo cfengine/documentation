@@ -455,6 +455,58 @@ copy transactions.
 
 
 
+## `default_repository`
+
+**Type**: string
+
+**Allowed input range**: `"?(/.*)`
+
+**Default value:** in situ
+
+**Synopsis**: Path to the default file repository
+
+    body agent control
+    {
+    default_repository => "/var/cfengine/repository";
+    }
+
+**Notes**:
+
+If defined the default repository is the location where versions of
+files altered by CFEngine are stored. This should be understood in
+relation to the policy for 'backup' in copying, editing etc. If the
+backups are time-stamped, this becomes effective a version control
+repository. See also [repository](#repository-in-files) for a way
+to locally override the global repository.
+
+Note that when a repository is specified, the files are stored
+using the canonified directory name of the original file,
+concatenated with the name of the file. So, for example,
+/usr/local/etc/postfix.conf would ordinarily be stored in an
+alternative repository as \_usr\_local\_etc\_postfix.conf.cfsaved.
+
+## `default_timeout`
+
+**Type**: int
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** 10 seconds
+
+**Synopsis**: Maximum time a network connection should attempt to
+connect
+
+    body agent control
+    {
+    default_timeout => "10";
+    }
+
+**Notes**:
+
+The time is in seconds. It is not a guaranteed number, since it
+depends on system behaviour. under Linux, the kernel version plays
+a role, since not all system calls seem to respect the signals.
+
 ## `dryrun`
 
 **Type**: (menu option)
@@ -957,38 +1009,6 @@ process table. This keeps improves the efficiency of the agent.
 
 
 
-## `default_repository`
-
-**Type**: string
-
-**Allowed input range**: `"?(/.*)`
-
-**Default value:** in situ
-
-**Synopsis**: Path to the default file repository
-
-    body agent control
-    {
-    default_repository => "/var/cfengine/repository";
-    }
-
-**Notes**:
-
-If defined the default repository is the location where versions of
-files altered by CFEngine are stored. This should be understood in
-relation to the policy for 'backup' in copying, editing etc. If the
-backups are time-stamped, this becomes effective a version control
-repository. See also [repository](#repository-in-files) for a way
-to locally override the global repository.
-
-Note that when a repository is specified, the files are stored
-using the canonified directory name of the original file,
-concatenated with the name of the file. So, for example,
-/usr/local/etc/postfix.conf would ordinarily be stored in an
-alternative repository as \_usr\_local\_etc\_postfix.conf.cfsaved.
-
-
-
 ## `secureinput`
 
 **Type**: (menu option)
@@ -1186,30 +1206,6 @@ with
     }
 
 **Notes**:
-
-
-
-## `default_timeout`
-
-**Type**: int
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** 10 seconds
-
-**Synopsis**: Maximum time a network connection should attempt to
-connect
-
-    body agent control
-    {
-    default_timeout => "10";
-    }
-
-**Notes**:
-
-The time is in seconds. It is not a guaranteed number, since it
-depends on system behaviour. under Linux, the kernel version plays
-a role, since not all system calls seem to respect the signals.
 
 
 

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Miscellaneous
-categories: [Reference, Common promises, Miscellaneous ]
+title: Common attributes
+categories: [Reference, Common promises, Common attributes]
 published: true
 alias: reference-common-promises-miscellaneous.html
 tags: [reference, bundles, common, miscellaneous, promises]
@@ -9,15 +9,12 @@ tags: [reference, bundles, common, miscellaneous, promises]
 
 **TODO: de-miscellaneou-fy**
 
-### `*` promises
 
-
-
-Whereas most promise types are specific to a particular kind of
-interpretation that requires a typed interpreter (the bundle type), a
-number of promises can be made in any kind of bundle since they are of a
-generic input/output nature. These are `vars`, `classes`, and `reports`
-promises. The specific promise attributes are listed below.
+Whereas most promise types are specific to a particular kind of interpretation 
+that requires a typed interpreter (the bundle type), a number of promises can 
+be made in any kind of bundle since they are of a generic input/output nature. 
+These are `vars`, `classes`, and `reports` promises. The specific promise 
+attributes are listed below.
 
 -   [action in \*](#action-in-_002a)
 -   [classes in \*](#classes-in-_002a)
