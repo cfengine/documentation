@@ -1,15 +1,11 @@
 ---
 layout: default
-title: meta in common promises
-categories: [Reference, Bundles for Common,meta in common promises]
+title: meta
+categories: [Reference, Common promises, meta]
 published: true
-alias: reference-bundles-for-common-meta-in-common-promises.html
+alias: reference-common-promises-meta.html
 tags: [reference, bundles, common, meta, promises]
 ---
-
-### `meta` promises in \*
-
-  
 
 Meta-data promises have no internal function. They are intended to be
 used to represent arbitrary information about promise bundles. Formally,
@@ -17,7 +13,6 @@ meta promises are implemented as variables, and the values map to a
 variable context called bundlename\_meta, and therefore the values can
 be used as variables and will appear in Enterprise variable reports.
 
-  
 
 ```cf3
 bundle agent example

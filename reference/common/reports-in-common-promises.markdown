@@ -1,15 +1,11 @@
 ---
 layout: default
-title: reports in common promises
-categories: [Reference, Bundles for common, reports in common promises]
+title: reports
+categories: [Reference, Common promises, reports]
 published: true
-alias: reference-bundles-for-common-reports-in-common-promises.html
+alias: reference-common-promises-reports.html
 tags: [reference, bundles, common, reports, promises]
 ---
-
-### `reports` promises in \*
-
-  
 
 Reports promises simply print messages. Outputting a message without
 qualification can be a \`dangerous' operation. In a large installation

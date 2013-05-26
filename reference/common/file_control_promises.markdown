@@ -1,3 +1,12 @@
+---
+layout: default
+title: file control
+categories: [Reference, Common promises, file control]
+published: true
+alias: reference-common-promises-file-control.html
+tags: [body, bodies, common, namespace, promises, bundlesequence]
+---
+
 # `file` control promises
 
     body file control

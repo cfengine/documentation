@@ -1,16 +1,13 @@
 ---
 layout: default
-title: Classes in common Promises
-categories: [Reference, Bundles for common, classes in common promises]
+title: classes
+categories: [Reference, Common promises, classes]
 published: true
-alias: reference-bundles-for-common-classes-in-common-promises.html
+alias: reference-common-promises-classes.html
 tags: [bundles, common, classes, promises]
 ---
 
-### `classes` promises in \*
-
-  
- Classes promises refer to the classification of different run-contexts.
+Classes promises refer to the classification of different run-contexts.
 These are not related to object oriented classes, but are more like tag
 labels representing different properties of the environment.
 
@@ -22,7 +19,6 @@ classes in all other bundles are local.
 
 Note: The words class and context are sometimes used interchangeably.
 
-  
 
 ```cf3
 bundle common g

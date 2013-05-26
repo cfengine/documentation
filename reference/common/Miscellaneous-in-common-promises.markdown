@@ -1,15 +1,17 @@
 ---
 layout: default
-title: Miscellaneous in common promises
-categories: [Reference, Bundles for Common, Miscellaneous in common promises]
+title: Miscellaneous
+categories: [Reference, Common promises, Miscellaneous ]
 published: true
-alias: reference-bundles-for-common-miscellaneous-in-common-promises.html
+alias: reference-common-promises-miscellaneous.html
 tags: [reference, bundles, common, miscellaneous, promises]
 ---
 
+**TODO: de-miscellaneou-fy**
+
 ### `*` promises
 
-  
+
 
 Whereas most promise types are specific to a particular kind of
 interpretation that requires a typed interpreter (the bundle type), a

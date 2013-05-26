@@ -1,15 +1,11 @@
 ---
 layout: default
-title: vars in common promises
-categories: [Reference, Bundles for common, vars in common promises]
+title: vars
+categories: [Reference, Common promises, vars]
 published: true
-alias: reference-bundles-for-common-vars-in-common-promises.html
+alias: reference-common-promises-vars.html
 tags: [reference, bundles, common, vars, promises]
 ---
-
-### `vars` promises in \*
-
-  
 
 Variables in CFEngine are defined as promises that an identifier
 represents a particular value. Variables in CFEngine are dynamically
