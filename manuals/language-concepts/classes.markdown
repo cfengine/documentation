@@ -14,7 +14,7 @@ applied on Sundays, or only when a
 
 Classes are simply facts that represent that current state or context of a 
 system. They are either `set` or `not set`, depending on context. The list of 
-classes set classifies the current environment.
+set classes classifies the environment at time of execution.
 
 In CFEngine Enterprise, the list of set classes is reported to the CFEngine 
 Database Server, and can be used there for reporting and inventory management.
