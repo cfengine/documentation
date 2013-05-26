@@ -1,6 +1,6 @@
 ---
 layout: default
-title: now
+title: Function now
 categories: [Reference, Functions,Function now]
 published: true
 alias: reference-functions-now.html

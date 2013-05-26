@@ -1,6 +1,6 @@
 ---
 layout: default
-title: regldap
+title: Function regldap
 categories: [Reference, Functions,Function regldap]
 published: true
 alias: reference-functions-regldap.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: splayclass
+title: Function splayclass
 categories: [Reference, Functions,Function splayclass]
 published: true
 alias: reference-functions-splayclass.html

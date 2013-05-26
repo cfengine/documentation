@@ -1,6 +1,6 @@
 ---
 layout: default
-title: rrange
+title: Function rrange
 categories: [Reference, Functions,Function rrange]
 published: true
 alias: reference-functions-rrange.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: iprange
+title: Function iprange
 categories: [Reference, Functions,Function iprange]
 published: true
 alias: reference-functions-iprange.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: isdir
+title: Function isdir
 categories: [Reference, Functions,Function isdir]
 published: true
 alias: reference-functions-isdir.html

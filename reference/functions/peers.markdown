@@ -1,6 +1,6 @@
 ---
 layout: default
-title: peers
+title: Function peers
 categories: [Reference, Functions,Function peers]
 published: true
 alias: reference-functions-peers.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: peerleaders
+title: Function peerleaders
 categories: [Reference, Functions,Function peerleaders]
 published: true
 alias: reference-functions-peerleaders.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: isnewerthan
+title: Function isnewerthan
 categories: [Reference, Functions,Function isnewerthan]
 published: true
 alias: reference-functions-isnewerthan.html

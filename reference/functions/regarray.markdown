@@ -1,6 +1,6 @@
 ---
 layout: default
-title: regarray
+title: Function regarray
 categories: [Reference, Functions,Function regarray]
 published: true
 alias: reference-functions-regarray.html

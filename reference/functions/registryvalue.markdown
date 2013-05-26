@@ -1,6 +1,6 @@
 ---
 layout: default
-title: registryvalue
+title: Function registryvalue
 categories: [Reference, Functions,Function registryvalue]
 published: true
 alias: reference-functions-registryvalue.html

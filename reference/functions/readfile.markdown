@@ -1,6 +1,6 @@
 ---
 layout: default
-title: readfile
+title: Function readfile
 categories: [Reference, Functions,Function readfile]
 published: true
 alias: reference-functions-readfile.html

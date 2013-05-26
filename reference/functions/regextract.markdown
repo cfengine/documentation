@@ -1,6 +1,6 @@
 ---
 layout: default
-title: regextract
+title: Function regextract
 categories: [Reference, Functions,Function regextract]
 published: true
 alias: reference-functions-regextract.html

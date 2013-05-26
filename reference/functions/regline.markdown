@@ -1,6 +1,6 @@
 ---
 layout: default
-title: regline
+title: Function regline
 categories: [Reference, Functions,Function regline]
 published: true
 alias: reference-functions-regline.html

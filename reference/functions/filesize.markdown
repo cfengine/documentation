@@ -1,6 +1,6 @@
 ---
 layout: default
-title: filesize
+title: Function filesize
 categories: [Reference, Functions,Function filesize]
 published: true
 alias: reference-functions-filesize.html

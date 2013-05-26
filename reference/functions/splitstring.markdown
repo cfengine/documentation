@@ -1,6 +1,6 @@
 ---
 layout: default
-title: splitstring
+title: Function splitstring
 categories: [Reference, Functions,Function splitstring]
 published: true
 alias: reference-functions-splitstring.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: readintlist
+title: Function readintlist
 categories: [Reference, Functions,Function readintlist]
 published: true
 alias: reference-functions-readintlist.html

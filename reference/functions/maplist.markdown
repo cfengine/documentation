@@ -1,6 +1,6 @@
 ---
 layout: default
-title: maplist
+title: Function maplist
 categories: [Reference, Functions,Function maplist]
 published: true
 alias: reference-functions-maplist.html

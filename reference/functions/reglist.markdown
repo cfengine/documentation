@@ -1,6 +1,6 @@
 ---
 layout: default
-title: reglist
+title: Function reglist
 categories: [Reference, Functions,Function reglist]
 published: true
 alias: reference-functions-reglist.html

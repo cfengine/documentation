@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ldapvalue
+title: Function ldapvalue
 categories: [Reference, Functions,Function ldapvalue]
 published: true
 alias: reference-functions-ldapvalue.html

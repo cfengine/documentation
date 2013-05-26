@@ -1,6 +1,6 @@
 ---
 layout: default
-title: remoteclassesmatching
+title: Function remoteclassesmatching
 categories: [Reference, Functions,Function remoteclassesmatching]
 published: true
 alias: reference-functions-remoteclassesmatching.html

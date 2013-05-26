@@ -1,6 +1,6 @@
 ---
 layout: default
-title: countclassesmatching
+title: Function countclassesmatching
 categories: [Reference, Functions,Function countclassesmatching]
 published: true
 alias: reference-functions-countclassesmatching.html

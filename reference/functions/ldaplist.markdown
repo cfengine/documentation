@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ldaplist
+title: Function ldaplist
 categories: [Reference, Functions,Function ldaplist]
 published: true
 alias: reference-functions-ldaplist.html

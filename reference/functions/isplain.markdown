@@ -1,6 +1,6 @@
 ---
 layout: default
-title: isplain
+title: Function isplain
 categories: [Reference, Functions,Function isplain]
 published: true
 alias: reference-functions-isplain.html

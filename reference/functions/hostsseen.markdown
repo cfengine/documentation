@@ -1,6 +1,6 @@
 ---
 layout: default
-title: hostsseen
+title: Function hostsseen
 categories: [Reference, Functions,Function hostsseen]
 published: true
 alias: reference-functions-hostsseen.html
