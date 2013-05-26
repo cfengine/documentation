@@ -7,13 +7,12 @@ alias: reference-components-cfpromises.html
 tags: [Components, cf-promises]
 ---
 
-# `cf-promises`	
+Promise validator - used to verify that the promises used by the other 
+components of CFEngine are syntactically valid. `cf-promises` does not execute 
+any promises, but can syntax-check all of them. Configurations that make 
+changes must be approved by this validator before being executed.
 
-Promise validator - used to verify that the promises used by the
-other components of CFEngine are syntactically valid. `cf-promises`
-does not execute any promises, but can syntax-check all of them. 
-Configurations that make changes must be approved by this validator
-before being executed.
+## Command reference
 
     '--help'
        (-h) - Print the help message
