@@ -1,6 +1,6 @@
 ---
 layout: default
-title: sum
+title: Function sum
 categories: [Reference, Functions,Function sum]
 published: true
 alias: reference-functions-sum.html

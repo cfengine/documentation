@@ -1,6 +1,6 @@
 ---
 layout: default
-title: join
+title: Function join
 categories: [Reference, Functions,Function join]
 published: true
 alias: reference-functions-join.html

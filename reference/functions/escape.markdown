@@ -1,6 +1,6 @@
 ---
 layout: default
-title: escape
+title: Function escape
 categories: [Reference, Functions,Function escape]
 published: true
 alias: reference-functions-escape.html
