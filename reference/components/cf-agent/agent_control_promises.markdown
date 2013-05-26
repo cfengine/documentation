@@ -7,32 +7,24 @@ alias: reference-components-cf-agent-control-promises.html
 tags: [Reference, Components, cf-agent, control promises]
 ---
 
-# `cf-agent` control promises
+    body agent control
+    {
+    123_456_789::
 
+      domain => "mydomain.com";
 
-        body agent control
-        {
-        123_456_789::
-        
-          domain => "mydomain.com";
-        
-        123_456_789_111::
-        
-          auditing => "true";
-        
-        any::
-        
-          fullencryption => "true";
-        
-        }
-        
+    123_456_789_111::
 
-        
+      auditing => "true";
+
+    any::
+
+      fullencryption => "true";
+
+    }
 
 Settings describing the details of the fixed behavioural promises
 made by `cf-agent`.
-
-   
 
 
 #### `abortclasses`
@@ -207,7 +199,7 @@ than a security measure.
 **Notes**:
 
 Sets the agent's syslog facility level. See the manual pages for
-syslog. This is ignored on Windows, as CFEngine Nova creates event
+syslog. This is ignored on Windows, as CFEngine Enterprise creates event
 logs.
 
 
@@ -234,7 +226,7 @@ logs.
 
 **Notes**:
 
-*History*: Was introduced in 3.2.0, Nova 2.1.0 (2011)
+*History*: Was introduced in 3.2.0, Enterprise 2.1.0 (2011)
 
 This option determines whether state/allclasses.txt file is written
 to disk during agent execution. This functionality is retained only
@@ -272,7 +264,7 @@ will always be checked before executing, or only after updates
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.2,Nova 2.0.1 (2010)
+*History*: Was introduced in version 3.1.2,Enterprise 2.0.1 (2010)
 
 The agents `cf-agent`, and `cfserverd` etc can run `cf-promises` to
 validate inputs before attempting to execute a configuration. As of
@@ -950,7 +942,7 @@ named in this list (lazy evaluation)
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.3,Nova 2.0.2 (2010)
+*History*: Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
 
 If this list of regular expressions is non-null and an existing
 bundle is mentioned or matched in this list, CFEngine will reload

@@ -7,26 +7,22 @@ alias: reference-components-cfserverd-control-promises.html
 tags: [Components, cf-serverd, control promises]
 ---
 
-# `server` control promises
 
-         body server control
-         
-         {
-         allowconnects         => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
-         allowallconnects      => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
-         
-         # Uncomment me under controlled circumstances
-         #trustkeysfrom         => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
-         }
+Settings describing the details of the fixed behavioral promises made by 
+`cf-serverd`. Server controls are mainly about determining access policy for 
+the connection protocol: i.e. access to the server itself. Access to specific 
+files must be granted in addition.
 
-Settings describing the details of the fixed behavioural promises
-made by `cf-serverd`. Server controls are mainly about determining
-access policy for the connection protocol: i.e. access to the
-server itself. Access to specific files must be granted in
-addition.
+```cf3
+    body server control
+    {
+        allowconnects         => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
+        allowallconnects      => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
 
-
-
+        # Uncomment me under controlled circumstances
+        #trustkeysfrom         => { "127.0.0.1" , "::1" ,  ".*\.example\.org" };
+    }
+```
 
 
 ## `allowallconnects`
@@ -49,12 +45,10 @@ connection to the server port
 **Notes**:
 
 This list of regular expressions matches hosts that are allowed to
-connect an umlimited number of times up to the maximum connection
+connect an unlimited number of times up to the maximum connection
 limit. Without this, a host may only connect once (which is a very
 strong constraint, as the host must wait for the TCP FIN\_WAIT to
 expire before reconnection can be attempted).
-
-In CFEngine 2 this corresponds to `AllowMultipleConnectionsFrom`.
 
 Note that `127.0.0.1` is a regular expression (i.e., "127 any
 character 0 any character 0 any character 1"), but this will only
@@ -63,9 +57,6 @@ domain names, as the hostname regular expression `www.domain.com`
 will potentially match more than one hostname (e.g.,
 `wwwxdomain.com`, in addition to the desired hostname
 `www.domain.com`).
-
-
-
 
 
 ## `allowconnects`
@@ -95,9 +86,6 @@ See also the warning about regular expressions in
 `allowallconnects`.
 
 
-
-
-
 ## `allowusers`
 
 **Type**: slist
@@ -116,20 +104,18 @@ identities during client-server connections. These may or may not
 correspond to system identities on the server-side system.
 
 
-
-
-
 ## `auditing`
 
 **Type**: (menu option)
 
 **Allowed input range**:
-   true
-   false
-   yes
-   no
-   on
-   off
+
+    true
+    false
+    yes
+    no
+    on
+    off
 
 **Default value:** false
 
@@ -148,7 +134,6 @@ verification of the current promise will be recorded in the audit
 database.
 
 
-
 ## `bindtointerface`
 
 **Type**: string
@@ -165,9 +150,6 @@ on multi-homed hosts
 On multi-homed hosts, the server and client can bind to a specific
 interface for server traffic. The IP address of the interface must
 be given as the argument, not the device name.
-
-
-
 
 
 ## `cfruncommand`
@@ -193,24 +175,22 @@ could also point to the `cf-execd`, or even another program or
 shell command at your own risk.
 
 
-
-
-
 ## `call_collect_interval`
+
+CFEngine Enterprise only.
 
 **Type**: int
 
 **Allowed input range**: `0,99999999999`
 
 **Synopsis**: The interval in minutes in between collect calls to
-the policy hub offering a tunnel for report collection
-(Enterprise)
+the CFEngine Server offering a tunnel for report collection.
 
     call_collect_interval => "5";
 
 **Notes**:
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+*History*: Was introduced Enterprise 3.0.0 (2012)
 
 If option time is set, it causes the server daemon to peer with a
 policy hub by attempting a connection at regular intervals of the
@@ -223,10 +203,10 @@ behind a network address translator then the hub is not able to
 open a channel to address them directly. The effect is to place a
 \`collect call' with the policy hub.
 
-If this option is set, the client's cf-serverd will \`peer' with
-the server daemon on a policy hub. This means that, cf-serverd on
+If this option is set, the client's `cf-serverd` will "peer" with
+the server daemon on a policy hub. This means that, `cf-serverd` on
 an unreachable (e.g. NATed) host will attempt to report in to the
-cf-serverd on its assigned policy hub and offer it a short time
+`cf-serverd` on its assigned policy hub and offer it a short time
 window in which to download reports over the established
 connection. The effect is to establish a temporary secure tunnel
 between hosts, initiated from the satellite host end. The
@@ -236,30 +216,31 @@ any time, in the usual way (avoiding DOS attacks). Normal access
 controls must be set for communication in both directions.
 
 Collect calling cannot be as efficient as data collection by the
-cf-hub, as the hub is not able to load balance. Hosts that use this
+`cf-hub`, as the hub is not able to load balance. Hosts that use this
 approach should exclude themselves from the cf-hub data
 collection.
 
 The sequence of events is this:
 
--   Satellite cf-serverd connects to its registered policy hub
--   The satellite indentifies itself to authentication and access
-    control and sends a collect-call \`pull' request to the hub
--   The hub might honour this, if the access control grants access.
--   If access is granted, the hub has `collect_window` seconds to
-    initiate a query to the satellite for its reports.
--   The policy hub indentifies itself to authentication and access
-    control and sends a query request to the hub to collect the
+-   The host's `cf-serverd` connects to its registered CFEngine Server
+-   The host identifies itself to authentication and access
+    control and sends a collect-call pull-request to the server
+-   The server might honor this, if the access control grants access.
+-   If access is granted, the server has `collect_window` seconds to
+    initiate a query to the host for its reports.
+-   The server identifies itself to authentication and access
+    control and sends a query request to the host to collect the
     reports.
--   When finished the satellite closes the tunnel.
-    The full configuration would look something like this
+-   When finished, the host closes the tunnel.
 
+The full configuration would look something like this
+
+```cf3
         #########################################################
         # Server config
         #########################################################
         
         body server control 
-        
         {
         allowconnects         => { "10.10.10" , "::1" };
         allowallconnects      => { "10.10.10" , "::1" };
@@ -293,13 +274,12 @@ The sequence of events is this:
               resource_type => "query",
                     admit   => { "policy_hub"  };
         }
-        
-
-    
-
+```
 
 
 ## `collect_window`
+
+CFEngine Enterprise only.
 
 **Type**: int
 
@@ -313,12 +293,9 @@ open to a hub to attempt a report transfer before it is closed
 
 **Notes**:
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+*History*: Was introduced in Enterprise 3.0.0 (2012)
 
 The time is measured in seconds, default value 10s.
-
-
-
 
 
 ## `denybadclocks`
@@ -327,12 +304,12 @@ The time is measured in seconds, default value 10s.
 
 **Allowed input range**:
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+    true
+    false
+    yes
+    no
+    on
+    off
 
 **Default value:** true
 
@@ -354,11 +331,6 @@ from the server clock (where "too far" is currently defined as
 "more than an hour off"). This serves as a warning about clock
 asynchronization and also a protection against Denial of Service
 attempts based on clock corruption.
-
-
-
-
-
 
 
 ## `denyconnects`
@@ -389,9 +361,6 @@ See also the warning about regular expressions in
 `allowallconnects`.
 
 
-
-
-
 ## `dynamicaddresses`
 
 **Type**: slist
@@ -417,21 +386,18 @@ public keys in files that do not match the current hostname or IP.
 handled transparently.
 
 
-
-
-
 ## `hostnamekeys`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+    true
+    false
+    yes
+    no
+    on
+    off
 
 **Default value:** false
 
@@ -452,9 +418,6 @@ than IP address. This is useful for hosts with dynamic addresses.
 identification is now handled transparently.
 
 
-
-
-
 ## `keycacheTTL`
 
 **Type**: int
@@ -466,7 +429,6 @@ identification is now handled transparently.
 **Synopsis**: Maximum number of hours to hold public keys in the
 cache
 
-*History*: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
     body server control
     {
     keycacheTTL => "24";
@@ -474,10 +436,7 @@ cache
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
-
-
-
+*History*: Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010)
 
 
 ## `logallconnections`
@@ -486,12 +445,12 @@ cache
 
 **Allowed input range**:
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+    true
+    false
+    yes
+    no
+    on
+    off
 
 **Default value:** false
 
@@ -508,21 +467,18 @@ connections to syslog
 If set, the server will record connection attempts in syslog.
 
 
-
-
-
 ## `logencryptedtransfers`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+    true
+    false
+    yes
+    no
+    on
+    off
 
 **Default value:** false
 
@@ -541,9 +497,6 @@ requires to encrypted in order to grant access (see `ifencrypted`)
 to syslog. These files are deemed to be particularly sensitive.
 
 
-
-
-
 ## `maxconnections`
 
 **Type**: int
@@ -553,7 +506,6 @@ to syslog. These files are deemed to be particularly sensitive.
 **Default value:** 30 remote queries
 
 **Synopsis**: Maximum number of connections that will be accepted
-by cf-serverd
 
     # client side 
     
@@ -573,9 +525,6 @@ by cf-serverd
 
 Watch out for kernel limitations for maximum numbers of open file
 descriptors which can limit this.
-
-
-
 
 
 ## `port`
@@ -612,25 +561,22 @@ Changing the standard port number is not recommended practice. You
 should not do it without a good reason.
 
 
-
-
-
 ## `serverfacility`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-                   LOG_USER
-                   LOG_DAEMON
-                   LOG_LOCAL0
-                   LOG_LOCAL1
-                   LOG_LOCAL2
-                   LOG_LOCAL3
-                   LOG_LOCAL4
-                   LOG_LOCAL5
-                   LOG_LOCAL6
-                   LOG_LOCAL7
+    LOG_USER
+    LOG_DAEMON
+    LOG_LOCAL0
+    LOG_LOCAL1
+    LOG_LOCAL2
+    LOG_LOCAL3
+    LOG_LOCAL4
+    LOG_LOCAL5
+    LOG_LOCAL6
+    LOG_LOCAL7
 
 **Default value:** LOG\_USER
 
@@ -644,9 +590,6 @@ should not do it without a good reason.
 **Notes**:
 
 See syslog notes.
-
-
-
 
 
 ## `skipverify`
@@ -672,9 +615,6 @@ See also the warning about regular expressions in
 `allowallconnects`.
 
 
-
-
-
 ## `trustkeysfrom`
 
 **Type**: slist
@@ -690,16 +630,11 @@ See also the warning about regular expressions in
 
 **Notes**:
 
-If connecting clients' public keys have not already been trusted,
-this allows us to say \`yes' to accepting the keys on trust.
-Normally this should be an empty list except in controlled
-circumstances.
+If connecting hosts' public keys have not already been trusted, this allows us 
+to accept the keys on trust. Normally this should be an empty list except in 
+controlled circumstances.
 
-See also the warning about regular expressions in
-`allowallconnects`.
-
-
-
+See also the warning about regular expressions in `allowallconnects`.
 
 
 ## `listen`
@@ -708,12 +643,12 @@ See also the warning about regular expressions in
 
 **Allowed input range**:
 
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+    true
+    false
+    yes
+    no
+    on
+    off
 
 **Default value:** true
 
