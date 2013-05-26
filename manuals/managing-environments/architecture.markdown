@@ -71,12 +71,10 @@ direction). All of the desired-state changes are managed locally by each
 individual host, and continuously repaired to ensure on-going compliance 
 with policy.
 
-## CFEngine Workflow Flow
+## CFEngine Policy Workflow
 
 CFEngine does not make absolute choices for you, like other tools.  Almost 
-everything about its behavior is matter of policy and can be changed. However, 
-a structure for use, like the following, is recommended (see the following 
-figure **TODO:figure?**).
+everything about its behavior is matter of policy and can be changed.
 
 In order to keep operations as simple as possible, CFEngine maintains a 
 private [working directory](manuals-managing-environments-work-directory.html) 
@@ -84,7 +82,9 @@ on each machine, referred to in documentation as WORKDIR and in policy by the
 variable `$(sys.workdir)`. By default, this is located at `/var/cfengine` or 
 `C:\var\CFEngine`. It contains everything CFEngine needs to run.
 
-The figure **TODO:figure?** below shows how decisions flow through the parts of a system.
+The figure below shows how decisions flow through the parts of a system.
+
+![Policy decision and distribution flowchart](policy-decision-flow.png)
 
 * It makes sense to have a single point of coordination. Decisions are 
   therefore usually made in a single location (the Policy Definition Point). 

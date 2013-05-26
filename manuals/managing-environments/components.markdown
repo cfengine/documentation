@@ -18,9 +18,7 @@ another as shown in the following figure, using a protocol that allows each
 host to distribute promises, act upon them, and report status to a central 
 server.
 
-![](components-overview.png)
-
-## Network Services
+![Components overview](components-overview.png)
 
 Unlike other approaches to automation, CFEngine does not rely on SSH key 
 authentication and configuring trust, the communication between hosts is very 
@@ -81,3 +79,12 @@ hosts, if their policy includes that they check for updates.
 
 Privileges can be granted to users to provide a kind of Role Based Access 
 Control (RBAC) to certain parts of the existing policy. **TODO: how?**
+
+## Distributed Discovery
+
+**TODO: Orchestration? Or explicit network topography page?**
+
+CFEngine's philosophy and modus operandi is to make machines as self-reliant as possible. This is the path to scalability. Sometimes we want machines to be able to detect one another and sample each others' behaviour. This can be accomplished using probes and server functions.
+
+For example, testing whether services are up and running can be a useful probe even from a local host. CFEngine has in-built functions for generically probing the environment; these are designed to encourage decentralized monitoring.
+
