@@ -12,7 +12,7 @@ promises, variables (or "variable definitions") are also promises. Variables
 can be defined in any promise 
 [bundle](manuals-language-concepts-bundles.html).
 
-### Datatypes
+## Datatypes
 
 CFEngine variables have two high-level types: scalars and lists. 
 
@@ -23,10 +23,7 @@ Each scalar may have one of three types: string, int or real. String scalars
 are sequences of characters, integers are whole numbers, and reals are float 
 pointing numbers.
 
-CFEngine typing is mostly dynamic, and CFEngine will try to coerce string 
-values into int and real types, and if it cannot it will report an error. 
-However, arguments to built-in [functions](reference-functions.html) check the 
-defined argument type for consistency.
+List variables can be of type `slist`, `ilist` or `rlist` to hold lists of strings, integers or reals, respectively.
 
 Integer constants may use suffixes to represent large numbers.  The following 
 suffixes can be used to create integer values for common powers of 1000.
@@ -43,6 +40,9 @@ values for common powers of 1024.
 * 'M' = value times 1024^2
 * 'G' = value times 1024^3
 
+However, the values must have an integer numeric part (e.g. 1.5M is not 
+allowed).
+
 In some contexts, `%` can be used a special suffix to denote percentages.
 
 Lastly, there is a reserved value which can be used to specific a parameter as 
@@ -50,16 +50,20 @@ having no limit at all.
 
 * 'inf' = a constant representing an unlimited value.
 
+CFEngine typing is mostly dynamic, and CFEngine will try to coerce string 
+values into int and real types, and if it cannot it will report an error. 
+However, arguments to built-in [functions](reference-functions.html) check the 
+defined argument type for consistency.
 
-### Scalar Variables
+## Scalar Variables
 
 Scalar variables hold a single value.
 
 ```cf3
-      vars:
-          "my_scalar" string => "String contents...";
-          "my_int" int    => "1234";
-          "my_real" real   => "567.89";
+    vars:
+      "my_scalar" string => "String contents...";
+      "my_int" int    => "1234";
+      "my_real" real   => "567.89";
 ```
 
 Here are a series of variable definitions which set a string, an int, and a 
@@ -67,7 +71,7 @@ real variable. Notice that they are defined in a bundle of type `common` that
 has the name `examples`. This bundle name can be used as a context when using 
 variables outside of the bundle they are defined in.
 
-#### Scalar Referencing and Expansion
+### Scalar Referencing and Expansion
 
 Scalar variables are referenced by `$(my_scalar)` (or `${my_scalar}`) and 
 expand to the single value they hold at that time. if you refer to a variable 
@@ -77,7 +81,7 @@ of the bundle in which it is defined:
 
     $(bundle_name.qualified)
 
-### Lists
+## Lists
 
 List variables hold several values. The are declared as follows:
 
@@ -88,7 +92,7 @@ List variables hold several values. The are declared as follows:
          "my_rlist" rlist => { "567.89" };
 ```
 
-#### List Substitution and Expansion
+### List Substitution and Expansion
 
 An entire list is referenced with the symbol ‘@’ and can be passed in their 
 entirety in any context where a list is expected as ‘@(list)’. For example, 
@@ -113,7 +117,7 @@ iterate over the values in the list. E.g. suppose we have local list variable
 ‘@(list)’, then the scalar ‘$(list)’ implies an iteration over every value of 
 the list.
 
-#### Mapping Global and Local Lists
+### Mapping Global and Local Lists
 
 Only local lists can be expanded directly. Thus ‘$(list)’ can be expanded but 
 not ‘$(context.list)’. Global list references have to be mapped into a local 
@@ -189,7 +193,7 @@ hardening bundle.
 ```
 This time, the `hardening` bundle does not take an argument. Instead it converts the `va.tmpdirs` list into a local list variable "x" directly.
 
-#### A List Variable with Nothing (`cf_null`)
+### A List Variable with Nothing (`cf_null`)
 
 **TODO: should be removed?**
 
@@ -200,12 +204,10 @@ As of CFEngine core version 3.1.0, the value ‘cf_null’ may be used as a NULL
       "empty_list" slist => { "cf_null" };
 ```
 
-#### Associative Arrays
+## Associative Arrays
 
-Associative Array variables are written with `[` and `]` brackets. The 
-following example defines three values in an associative array under the keys 
-`cf-monitord`, `cf-serverd`, and `cf-execd`.These keys are associated with 
-values, and are sequently printed with the echo command.
+Associative array variables are written with `[` and `]` brackets that enclose 
+an arbitrary key. These keys are associated with values
 
 ```cf3
     bundle agent example
@@ -224,6 +226,9 @@ values, and are sequently printed with the echo command.
                 args => "$(array[$(component)])";
     }
 ```
+
+This example defines three values in an associative array under the keys 
+`cf-monitord`, `cf-serverd`, and `cf-execd`. They and are sequently printed with the echo command.
 
 Arrays are associative and may be of type scalar or list. Enumerated arrays 
 are simply treated as a special case of associative arrays, since there are no 
