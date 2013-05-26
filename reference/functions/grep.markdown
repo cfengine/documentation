@@ -1,6 +1,6 @@
 ---
 layout: default
-title: grep
+title: Function grep
 categories: [Reference, Functions,Function grep]
 published: true
 alias: reference-functions-grep.html

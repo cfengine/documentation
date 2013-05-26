@@ -1,6 +1,6 @@
 ---
 layout: default
-title: dirname
+title: Function dirname
 categories: [Reference, Functions,Function dirname]
 published: true
 alias: reference-functions-dirname.html

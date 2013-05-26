@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ago
+title: Function ago
 categories: [Reference, Functions,Function ago]
 published: true
 alias: reference-functions-ago.html

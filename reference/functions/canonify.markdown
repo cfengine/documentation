@@ -1,6 +1,6 @@
 ---
 layout: default
-title: canonify
+title: Function canonify
 categories: [Reference, Functions,Function canonify]
 published: true
 alias: reference-functions-canonify.html
