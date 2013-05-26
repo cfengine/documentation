@@ -136,9 +136,11 @@ As a general note, avoiding abbreviations provides better readability.
 The structure of the technical documentation about CFEngine attributes or 
 functions is as follows:
 
-    ## Language Element
+    ### Language Element
 
     **Synopsis:** One line summary.
+
+    Longer explanation on what it does.
 
     **Type:** `Datatype` - if applicable.
 
@@ -159,14 +161,14 @@ functions is as follows:
         for syntax highlighting
     ```
 
+    If the example requires explanation, do it here.
+
     **Notes:**
     
     Additional information, spanning as many paragraphs as necessary, but mind
     the style guide.
     
-    In case of menu option types t's important to cover all allowed values.
-    
-    If the example is long and complex, explain it here.
+    In case of menu option types, make sure you cover all allowed values.
 
 ## Publishing
 
