@@ -7,42 +7,34 @@ alias: reference-special-variables-variable-context-this.html
 tags: [reference, variables, variable context this, this]
 ---
 
+**TODO: link to bundle type reference documentation**
 
 This context this is used to access information about promises during
 their execution. It is context dependent and not universally meaningful
 or available, but provides a context for variables where one is needed
 (such as when passing the value of a list variable into a parameterized
-`edit_line` promise from a `file` promise). For example:
+`edit_line` promise from a `files` promise).
 
 ```cf3
-bundle agent resolver(s,n)
-{ 
-files:
-  "$(sys.resolv)" 
+    bundle agent resolver(s,n)
+    { 
+    files:
+      "$(sys.resolv)" 
 
-      create        => "true",
-      edit_line     => doresolv("@(this.s)","@(this.n)"),
-      edit_defaults => reconstruct;
-}
+          create        => "true",
+          edit_line     => doresolv("@(this.s)","@(this.n)"),
+          edit_defaults => reconstruct;
+    }
 ```
 
 Note that every unqualified variable is automatically considered to be
-in context this, so that a reference to the variable `$(foo)` is
+in context `this`, so that a reference to the variable `$(foo)` is
 identical to referencing `$(this.foo)`. You are strongly encouraged to
-**not** take advantage of this behaviour, but simply to be aware that if
+**not** take advantage of this behavior, but simply to be aware that if
 you attempt to declare a variable name with one of the following special
 reserved names, CFEngine will issue a warning (and you can reference
 your variable by qualifying it with the bundle name in which it is
 declared).
-
--   [Variable this.handle](#Variable-this_002ehandle)
--   [Variable
-    this.promise\_filename](#Variable-this_002epromise_005ffilename)
--   [Variable
-    this.promise\_linenumber](#Variable-this_002epromise_005flinenumber)
--   [Variable this.promiser](#Variable-this_002epromiser)
--   [Variable service\_policy](#Variable-service_005fpolicy)
--   [Variable this.this](#Variable-this_002ethis)
 
 #### Variable this.handle
 
@@ -72,24 +64,24 @@ objects. In that case, `$(this.promiser)` refers to the currently
 identified file that makes the promise. For example:
 
 ```cf3
-bundle agent find666
-{
-files:
-  "/home"
-    file_select => world_writeable,
-    transformer => "/bin/echo DETECTED $(this.promiser)",
-    depth_search => recurse("inf");
+    bundle agent find666
+    {
+    files:
+      "/home"
+        file_select => world_writeable,
+        transformer => "/bin/echo DETECTED $(this.promiser)",
+        depth_search => recurse("inf");
 
-  "/etc/.*"
-    file_select => world_writeable,
-    transformer => "/bin/echo DETECTED $(this.promiser)";
-}
+      "/etc/.*"
+        file_select => world_writeable,
+        transformer => "/bin/echo DETECTED $(this.promiser)";
+    }
 
-body file_select world_writeable
-{
-  search_mode => { "o+w" };
-  file_result => "mode";
-}
+    body file_select world_writeable
+    {
+      search_mode => { "o+w" };
+      file_result => "mode";
+    }
 ```
 
 #### Variable service\_policy
@@ -98,17 +90,16 @@ This variable is set to the values of the promise attribute
 `service_policy`. For example:
 
 ```cf3
-services:
+    services:
 
-  "www"  service_policy => "start";
+      "www"  service_policy => "start";
 ```
 
 This is typically used in the adaptations for custom services bundles in
-the service methods (See [service\_method in
-services](#service_005fmethod-in-services)).
+the service methods.
 
 #### Variable this.this
 
-From version core 3.3.0 this variables is reserved. It is used by
+From version 3.3.0 on, this variables is reserved. It is used by
 functions like `maplist()` to represent the current object in a
 transformation map.

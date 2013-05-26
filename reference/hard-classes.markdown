@@ -16,6 +16,8 @@ configuration.
 Classes fall into hard (discovered) and soft (defined) types. A
 single class can be one of several things:
 
+**TODO: cleanup, split into sub-pages**
+
 * Operating System Classes
     * Operating System Architecture - `ultrix, sun4`, etc.
 * Network Classes
@@ -86,10 +88,11 @@ single class can be one of several things:
 
 To see all of the classes defined on a particular host, run
 
-         host# cf-promises -v
+    $ cf-promises -v
 
-as a privileged user. Note that some of the classes are set only if
-a trusted link can be established with cf-monitord, i.e. if both
-are running with privilege, and the `/var/cfengine/state/env_data`
-file is secure. More information about classes can be found in
-connection with `allclasses`.
+as a privileged user. Note that some of the classes are set only if a trusted 
+link can be established with 
+[`cf-monitord`](reference-components-cfmonitord.html), i.e. if both are 
+running  with privilege, and the `/var/cfengine/state/env_data` file is 
+secure. More  information about classes can be found in connection with 
+`allclasses`.

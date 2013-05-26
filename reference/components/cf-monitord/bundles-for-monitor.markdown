@@ -6,7 +6,7 @@ published: true
 alias: reference-components-bundles-for-monitor.html
 tags: [reference, components, bundles, monitoring, cf-monitord]
 ---
-  
+
 Monitor bundles contain user defined promises for system discovery and
 monitoring.
 
