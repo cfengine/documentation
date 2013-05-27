@@ -3,7 +3,7 @@ layout: default
 title:  Checking Status
 categories: [Manuals, Enterprise API, Checking Status]
 published: true
-alias: alias: manuals-enterprise-api-checking-status.html
+alias: manuals-enterprise-api-checking-status.html
 tags: [manuals, enterprise, rest, api, reporting, status]
 ---
 
