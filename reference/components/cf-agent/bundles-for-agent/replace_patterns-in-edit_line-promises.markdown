@@ -1,9 +1,9 @@
 ---
 layout: default
-title: replace_patterns in edit_line promises
-categories: [Reference, Promise Types, replace_patterns in edit_line promises]
+title: replace_patterns
+categories: [Reference, Promise Types, files, edit_line, replace_patterns]
 published: true
-alias: reference-promise-types-replace-patterns-in-edit-line-promises.html
+alias: reference-promise-types-files-edit_line-replace_patterns.html
 tags: [reference, bundles, agent, replace_patterns, edit_line, files promises]
 ---
 
