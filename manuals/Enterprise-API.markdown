@@ -1,11 +1,27 @@
----
 layout: default
-title: Checking-Status
-categories: [REST API,Checking Status]
+title: Enterprise 3.0 API
+categories: [Enterprise 3.0 API]
 published: true
-alias: REST-API-Checking-Status.html
-tags: [REST API,Checking Status]
+alias: Enterprise-API.html
+tags: [Enterprise 3.0 API]
 ---
+CFEngine Enterprise 3.0 API
+---------------------------
+
+[](/manuals/Enterprise-3-0-API#Contents)
+
+COMPLETE TABLE OF CONTENTS
+==========================
+
+Summary of contents
+-------------------
+
+-   [REST API](/manuals/Enterprise-3-0-API#REST-API)
+
+* * * * *
+
+Previous: [Top](/manuals/Enterprise-3-0-API#Top),
+Up: [Top](/manuals/Enterprise-3-0-API#Top)
 
 1 REST API
 ----------
@@ -39,4 +55,12 @@ The Enterprise API is a REST API, but a central part of interacting with
 the API involves using SQL. This is new in 3.0 and was done to provide
 users with maximal flexibility for crafting custom reports based on the
 wealth of data residing on the Hub.
+
+* * * * *
+
+Next: [Differences between the CFEngine Nova 2.2 REST API and the
+CFEngine Enterprise 3.0
+API](/manuals/Enterprise-3-0-API#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API),
+Previous: [REST API](/manuals/Enterprise-3-0-API#REST-API), Up: [REST
+API](/manuals/Enterprise-3-0-API#REST-API)
 

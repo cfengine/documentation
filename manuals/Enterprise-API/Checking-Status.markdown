@@ -1,12 +1,10 @@
----
 layout: default
-title: Browsing-Host-Information
-categories: [REST API,Browsing Host Information]
+title: 
+categories: [Enterprise 3.0 API,]
 published: true
-alias: REST-API-Browsing-Host-Information.html
-tags: [REST API,Browsing Host Information]
+alias: Differences-between-the-CFEngine-Nova--REST-API-and-the-CFEngine-Enterprise--API.html
+tags: [Enterprise 3.0 API,]
 ---
-
 ### 1.3 Checking Status
 
 You can get basic info about the API by issuing *GET /api*. This status
@@ -53,4 +51,12 @@ basic diagnostics.
         }
       ]
     }
+
+* * * * *
+
+Next: [Managing Users and
+Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles),
+Previous: [Checking
+Status](/manuals/Enterprise-3-0-API#Checking-Status), Up: [REST
+API](/manuals/Enterprise-3-0-API#REST-API)
 

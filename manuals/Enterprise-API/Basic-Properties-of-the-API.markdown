@@ -1,12 +1,10 @@
----
 layout: default
-title: Managing-Settings
-categories: [REST API,Managing Settings]
+title: 
+categories: [Enterprise 3.0 API,]
 published: true
-alias: REST-API-Managing-Settings.html
-tags: [REST API,Managing Settings]
+alias: Enterprise-API.html
+tags: [Enterprise 3.0 API,]
 ---
-
 ### 1.1 Basic Properties of the API
 
 -   [HTTP + JSON](/manuals/Enterprise-3-0-API#HTTP-_002b-JSON)
@@ -17,12 +15,27 @@ tags: [REST API,Managing Settings]
 -   [Authentication](/manuals/Enterprise-3-0-API#Authentication)
 -   [Authorization](/manuals/Enterprise-3-0-API#Authorization)
 
+* * * * *
+
+Next: [Requests](/manuals/Enterprise-3-0-API#Requests), Previous: [Basic
+Properties of the
+API](/manuals/Enterprise-3-0-API#Basic-Properties-of-the-API),
+Up: [Basic Properties of the
+API](/manuals/Enterprise-3-0-API#Basic-Properties-of-the-API)
+
 #### 1.1.1 HTTP + JSON
 
 The Enterprise API is a conventional REST API in the sense that it has a
 number of URI resources that support one or more GET, PUT, POST, or
 DELETE operations. While reporting is done using SQL, this query is
 always wrapped in a JSON request.
+
+* * * * *
+
+Next: [Responses](/manuals/Enterprise-3-0-API#Responses),
+Previous: [HTTP + JSON](/manuals/Enterprise-3-0-API#HTTP-_002b-JSON),
+Up: [Basic Properties of the
+API](/manuals/Enterprise-3-0-API#Basic-Properties-of-the-API)
 
 #### 1.1.2 Requests
 
@@ -36,6 +49,13 @@ individual resource to return, e.g. */api/user/homer*. **PUT** request
 typically create a new resource, e.g. a user. **POST** requests
 typically updates an existing resource. **DELETE** requests are also
 supported in some cases.
+
+* * * * *
+
+Next: [Pagination](/manuals/Enterprise-3-0-API#Pagination),
+Previous: [Requests](/manuals/Enterprise-3-0-API#Requests), Up: [Basic
+Properties of the
+API](/manuals/Enterprise-3-0-API#Basic-Properties-of-the-API)
 
 #### 1.1.3 Responses
 
@@ -63,16 +83,37 @@ contain objects. Response objects typically do not contain error codes.
 If the response is not *200 OK*, the appropriate HTTP error code
 returned along with a (possibly non-JSON) payload.
 
+* * * * *
+
+Next: [Time](/manuals/Enterprise-3-0-API#Time),
+Previous: [Responses](/manuals/Enterprise-3-0-API#Responses), Up: [Basic
+Properties of the
+API](/manuals/Enterprise-3-0-API#Basic-Properties-of-the-API)
+
 #### 1.1.4 Pagination
 
 Pagination is handled by **page** and **count** query parameters to a
-**GET** request, e.g. */api/user?page=5count=30* to get the 5th page of
+**GET** request, e.g. */api/user?page=5&count=30* to get the 5th page of
 pages of 30 entries each. The default **page** is 1 and the default
 **count** is 50 if these are not specified explicitly.
+
+* * * * *
+
+Next: [Authentication](/manuals/Enterprise-3-0-API#Authentication),
+Previous: [Pagination](/manuals/Enterprise-3-0-API#Pagination),
+Up: [Basic Properties of the
+API](/manuals/Enterprise-3-0-API#Basic-Properties-of-the-API)
 
 #### 1.1.5 Time
 
 All timestamps are reported in *Unix Time*, i.e. seconds since 1970.
+
+* * * * *
+
+Next: [Authorization](/manuals/Enterprise-3-0-API#Authorization),
+Previous: [Time](/manuals/Enterprise-3-0-API#Time), Up: [Basic
+Properties of the
+API](/manuals/Enterprise-3-0-API#Basic-Properties-of-the-API)
 
 #### 1.1.6 Authentication
 
@@ -80,6 +121,12 @@ The API supports both internal and external authentication. The internal
 users table will always be consulted first, followed by an external
 source specified in the settings. External sources are *OpenLDAP* or
 *Active Directory* servers configurable through *POST /api/settings*.
+
+* * * * *
+
+Previous: [Authentication](/manuals/Enterprise-3-0-API#Authentication),
+Up: [Basic Properties of the
+API](/manuals/Enterprise-3-0-API#Basic-Properties-of-the-API)
 
 #### 1.1.7 Authorization
 
@@ -89,4 +136,11 @@ role. Roles are managed with */api/role*. Role Based Access Control
 permission to access their own resources, e.g. their own scheduled
 reports. See the Enterprise 3.0 Owner's Manual for more information on
 RBAC.
+
+* * * * *
+
+Next: [Checking Status](/manuals/Enterprise-3-0-API#Checking-Status),
+Previous: [Basic Properties of the
+API](/manuals/Enterprise-3-0-API#Basic-Properties-of-the-API), Up: [REST
+API](/manuals/Enterprise-3-0-API#REST-API)
 

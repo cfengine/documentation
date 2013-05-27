@@ -1,12 +1,10 @@
----
 layout: default
-title: SQL-Queries
-categories: [REST API,SQL Queries]
+title: 
+categories: [Enterprise 3.0 API,]
 published: true
-alias: REST-API-SQL-Queries.html
-tags: [REST API,SQL Queries]
+alias: Checking-Status.html
+tags: [Enterprise 3.0 API,]
 ---
-
 ### 1.4 Managing Settings
 
 -   [Viewing settings](/manuals/Enterprise-3-0-API#Viewing-settings)
@@ -22,6 +20,14 @@ authentication of users. Settings support two operations, **GET** (view
 settings) and **POST** (update settings). When settings are updated,
 they are sanity checked individually and as a whole. All or no settings
 will be updated for a request.
+
+* * * * *
+
+Next: [Example - Configuring
+LDAP](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-LDAP),
+Previous: [Managing
+Settings](/manuals/Enterprise-3-0-API#Managing-Settings), Up: [Managing
+Settings](/manuals/Enterprise-3-0-API#Managing-Settings)
 
 #### 1.4.1 Viewing settings
 
@@ -59,6 +65,14 @@ will be updated for a request.
       ]
     }
 
+* * * * *
+
+Next: [Example - Configuring Active
+Directory](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-Active-Directory),
+Previous: [Viewing
+settings](/manuals/Enterprise-3-0-API#Viewing-settings), Up: [Managing
+Settings](/manuals/Enterprise-3-0-API#Managing-Settings)
+
 #### 1.4.2 Example: Configuring LDAP
 
 The setting **ldapEnabled** turns external authentication on or off.
@@ -88,6 +102,14 @@ describing the error.
 
     204 No Content
 
+* * * * *
+
+Next: [Example - Changing The Log
+Level](/manuals/Enterprise-3-0-API#Example-_002d-Changing-The-Log-Level),
+Previous: [Example - Configuring
+LDAP](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-LDAP),
+Up: [Managing Settings](/manuals/Enterprise-3-0-API#Managing-Settings)
+
 #### 1.4.3 Example: Configuring Active Directory
 
 Active Directory is configured in much the same way as OpenLDAP, but the
@@ -113,6 +135,12 @@ is also changed from *standard* to *activeDirectory*.
 
     204 No Content
 
+* * * * *
+
+Previous: [Example - Configuring Active
+Directory](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-Active-Directory),
+Up: [Managing Settings](/manuals/Enterprise-3-0-API#Managing-Settings)
+
 #### 1.4.4 Example: Changing The Log Level
 
 The API uses standard Unix syslog to log a number of events.
@@ -132,4 +160,12 @@ Changing it to *info* is done as follows.
 **Response**
 
     204 No Content
+
+* * * * *
+
+Next: [Browsing Host
+Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information),
+Previous: [Managing
+Settings](/manuals/Enterprise-3-0-API#Managing-Settings), Up: [REST
+API](/manuals/Enterprise-3-0-API#REST-API)
 
