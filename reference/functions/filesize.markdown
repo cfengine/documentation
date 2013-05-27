@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function filesize
-categories: [Reference, Functions,Function filesize]
+categories: [Special functions,Function filesize]
 published: true
-alias: reference-functions-filesize.html
-tags: [reference, functions, function filesize]
+alias: Special-functions-Function-filesize.html
+tags: [Special functions,Function filesize]
 ---
 
 ### Function filesize

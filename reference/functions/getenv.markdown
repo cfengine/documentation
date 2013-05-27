@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function getenv
-categories: [Reference, Functions,Function getenv]
+categories: [Special functions,Function getenv]
 published: true
-alias: reference-functions-getenv.html
-tags: [reference, functions, function getenv]
+alias: Special-functions-Function-getenv.html
+tags: [Special functions,Function getenv]
 ---
 
 ### Function getenv

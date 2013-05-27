@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function hostrange
-categories: [Reference, Functions,Function hostrange]
+categories: [Special functions,Function hostrange]
 published: true
-alias: reference-functions-hostrange.html
-tags: [reference, functions, function hostrange]
+alias: Special-functions-Function-hostrange.html
+tags: [Special functions,Function hostrange]
 ---
 
 ### Function hostrange

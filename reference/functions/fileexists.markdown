@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function fileexists
-categories: [Reference, Functions,Function fileexists]
+categories: [Special functions,Function fileexists]
 published: true
-alias: reference-functions-fileexists.html
-tags: [reference, functions, function fileexists]
+alias: Special-functions-Function-fileexists.html
+tags: [Special functions,Function fileexists]
 ---
 
 ### Function fileexists

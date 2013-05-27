@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function on
-categories: [Reference, Functions,Function on]
+categories: [Special functions,Function on]
 published: true
-alias: reference-functions-on.html
-tags: [reference, functions, function on]
+alias: Special-functions-Function-on.html
+tags: [Special functions,Function on]
 ---
 
 ### Function on

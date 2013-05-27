@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function isvariable
-categories: [Reference, Functions,Function isvariable]
+categories: [Special functions,Function isvariable]
 published: true
-alias: reference-functions-isvariable.html
-tags: [reference, functions, function isvariable]
+alias: Special-functions-Function-isvariable.html
+tags: [Special functions,Function isvariable]
 ---
 
 ### Function isvariable

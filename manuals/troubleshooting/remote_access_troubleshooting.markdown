@@ -1,13 +1,15 @@
----
-layout: default
-title: Remote Access
-categories: [Manuals, Troubleshooting, Remote Access]
-published: true
-alias: manuals-troubleshooting-remote-access.html
-tags: [manuals, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
----
+### 1.13 Remote access troubleshooting
 
-### Server connection
+-   [Server connection](/manuals/cf3-Reference#Server-connection)
+-   [Key exchange](/manuals/cf3-Reference#Key-exchange)
+-   [Time windows](/manuals/cf3-Reference#Time-windows)
+-   [Other users than root](/manuals/cf3-Reference#Other-users-than-root)
+-   [Encryption](/manuals/cf3-Reference#Encryption)
+
+
+
+
+#### 1.13.1 Server connection
 
 When setting up `cf-serverd`, you might see the error message
 
@@ -55,7 +57,7 @@ verbose ‘-v’ or even debugging mode ‘-d2’.
 
 
 
-### Key exchange
+#### 1.13.2 Key exchange
 
 The key exchange model used by CFEngine is based on that used by
 OpenSSH. It is a peer to peer exchange model, not a central
@@ -134,7 +136,7 @@ interactively (as with `ssh`) for you to accept or deny manually:
 
 
 
-### Time windows (races)
+#### 1.13.3 Time windows (races)
 
 Once public keys have been exchanged from client to server and from
 server to client, the issue of trust is solved according to public
@@ -197,7 +199,7 @@ remote hosts it might be an easier way to manage trust.
 
 
 
-### Other users than root
+#### 1.13.4 Other users than root
 
 CFEngine normally runs as user "root" (except on Windows which does
 not normally have a root user), i.e. a privileged administrator. If
@@ -208,7 +210,7 @@ users must be added to the server configuration file.
 
 
 
-### Encryption
+#### 1.13.5 Encryption
 
 CFEngine provides encryption for keeping file contents private
 during transfer. It is assumed that users will use this

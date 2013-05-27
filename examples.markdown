@@ -7,13 +7,13 @@ alias: examples.html
 tags: [Examples]
 ---
 
-You can find more examples for CFEngine Code in the Design Center
+You can find more examples for CFEngine Code in the
 [GitHub repository](https://github.com/cfengine/design-center/tree/master/examples).
 
 ## Running the Example policies
 
 The policy files can be found in `/var/cfengine/share/doc/examples`. You can 
-test them locally by copying the respective _`example_file.cf`_ file into
+test them locally by copying the respective _example___file.cf_ file into
 `/var/cfengine/inputs` and running:
 
 	/var/cfengine/bin/cf-agent -f example_file.cf
@@ -29,7 +29,7 @@ doing the following on your policy server:
 2. Delete the `body common control` section in
     `/var/cfengine/masterfiles/example_file.cf`:
 
-```cf3
+``` cf3
     body common control
 	{
 	    bundlesequence  => { "testbundle" };
@@ -51,35 +51,12 @@ doing the following on your policy server:
     `/var/cfengine/masterfiles/promises.cf`:
 
 ```cf3
-    inputs => {
+     inputs => {
          ...
          "example_file.cf",
          ...
     };
 ```
 
-5. *CONDITIONAL* If the example contains a control body section
-   (e.g. `body agent control`):
-
-You cannot have duplicate control bodies (i.e. two
-agent control bodies, one in the main file and one
-in the example) as CFEngine won't know which it
-should use and they may conflict.
-
-To resolve this, copy the contents of the control body section from the
-example into the identically named control body section in the main policy
-file `/var/cfengine/masterfiles/promises.cf`and then remove the control body
-from the example.
-
 The example policy will now be executed every five minutes along with the rest
 of your main policy.
-
-*NOTE* You may have to fill the example with data before it will work.
-For example, the LDAP query in `active_directory.cf` needs a domain name.
-In the variable declaration, replace "cftesting" with your domain name:
-
-```cf3
-    vars:
-        # NOTE: Edit this to your domain, e.g. "corp"
-       "domain_name" string => "cftesting";
-```

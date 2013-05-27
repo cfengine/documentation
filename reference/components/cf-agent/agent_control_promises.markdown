@@ -7,24 +7,32 @@ alias: reference-components-cf-agent-control-promises.html
 tags: [Reference, Components, cf-agent, control promises]
 ---
 
-    body agent control
-    {
-    123_456_789::
+# `cf-agent` control promises
 
-      domain => "mydomain.com";
 
-    123_456_789_111::
+        body agent control
+        {
+        123_456_789::
+        
+          domain => "mydomain.com";
+        
+        123_456_789_111::
+        
+          auditing => "true";
+        
+        any::
+        
+          fullencryption => "true";
+        
+        }
+        
 
-      auditing => "true";
-
-    any::
-
-      fullencryption => "true";
-
-    }
+        
 
 Settings describing the details of the fixed behavioural promises
 made by `cf-agent`.
+
+   
 
 
 #### `abortclasses`
@@ -199,7 +207,7 @@ than a security measure.
 **Notes**:
 
 Sets the agent's syslog facility level. See the manual pages for
-syslog. This is ignored on Windows, as CFEngine Enterprise creates event
+syslog. This is ignored on Windows, as CFEngine Nova creates event
 logs.
 
 
@@ -226,7 +234,7 @@ logs.
 
 **Notes**:
 
-*History*: Was introduced in 3.2.0, Enterprise 2.1.0 (2011)
+*History*: Was introduced in 3.2.0, Nova 2.1.0 (2011)
 
 This option determines whether state/allclasses.txt file is written
 to disk during agent execution. This functionality is retained only
@@ -264,7 +272,7 @@ will always be checked before executing, or only after updates
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.2,Enterprise 2.0.1 (2010)
+*History*: Was introduced in version 3.1.2,Nova 2.0.1 (2010)
 
 The agents `cf-agent`, and `cfserverd` etc can run `cf-promises` to
 validate inputs before attempting to execute a configuration. As of
@@ -454,58 +462,6 @@ Sets the global default policy for comparing source and image in
 copy transactions.
 
 
-
-## `default_repository`
-
-**Type**: string
-
-**Allowed input range**: `"?(/.*)`
-
-**Default value:** in situ
-
-**Synopsis**: Path to the default file repository
-
-    body agent control
-    {
-    default_repository => "/var/cfengine/repository";
-    }
-
-**Notes**:
-
-If defined the default repository is the location where versions of
-files altered by CFEngine are stored. This should be understood in
-relation to the policy for 'backup' in copying, editing etc. If the
-backups are time-stamped, this becomes effective a version control
-repository. See also [repository](#repository-in-files) for a way
-to locally override the global repository.
-
-Note that when a repository is specified, the files are stored
-using the canonified directory name of the original file,
-concatenated with the name of the file. So, for example,
-/usr/local/etc/postfix.conf would ordinarily be stored in an
-alternative repository as \_usr\_local\_etc\_postfix.conf.cfsaved.
-
-## `default_timeout`
-
-**Type**: int
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** 10 seconds
-
-**Synopsis**: Maximum time a network connection should attempt to
-connect
-
-    body agent control
-    {
-    default_timeout => "10";
-    }
-
-**Notes**:
-
-The time is in seconds. It is not a guaranteed number, since it
-depends on system behaviour. under Linux, the kernel version plays
-a role, since not all system calls seem to respect the signals.
 
 ## `dryrun`
 
@@ -994,7 +950,7 @@ named in this list (lazy evaluation)
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
+*History*: Was introduced in version 3.1.3,Nova 2.0.2 (2010)
 
 If this list of regular expressions is non-null and an existing
 bundle is mentioned or matched in this list, CFEngine will reload
@@ -1006,6 +962,38 @@ In the example above we use a non-empty list with the name \`none'.
 This is not a reserved word, but as long as there are no bundles
 with the name \`none' this has the effect of *never* reloading the
 process table. This keeps improves the efficiency of the agent.
+
+
+
+## `default_repository`
+
+**Type**: string
+
+**Allowed input range**: `"?(/.*)`
+
+**Default value:** in situ
+
+**Synopsis**: Path to the default file repository
+
+    body agent control
+    {
+    default_repository => "/var/cfengine/repository";
+    }
+
+**Notes**:
+
+If defined the default repository is the location where versions of
+files altered by CFEngine are stored. This should be understood in
+relation to the policy for 'backup' in copying, editing etc. If the
+backups are time-stamped, this becomes effective a version control
+repository. See also [repository](#repository-in-files) for a way
+to locally override the global repository.
+
+Note that when a repository is specified, the files are stored
+using the canonified directory name of the original file,
+concatenated with the name of the file. So, for example,
+/usr/local/etc/postfix.conf would ordinarily be stored in an
+alternative repository as \_usr\_local\_etc\_postfix.conf.cfsaved.
 
 
 
@@ -1206,6 +1194,30 @@ with
     }
 
 **Notes**:
+
+
+
+## `default_timeout`
+
+**Type**: int
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** 10 seconds
+
+**Synopsis**: Maximum time a network connection should attempt to
+connect
+
+    body agent control
+    {
+    default_timeout => "10";
+    }
+
+**Notes**:
+
+The time is in seconds. It is not a guaranteed number, since it
+depends on system behaviour. under Linux, the kernel version plays
+a role, since not all system calls seem to respect the signals.
 
 
 

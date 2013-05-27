@@ -7,21 +7,28 @@ alias: reference-components-cfrunagent-control-promises.html
 tags: [Components, cf-runagent, control promises]
 ---
 
-Settings describing the details of the fixed behavioral promises made by 
-`cf-runagent`. The most important parameter here is the list of hosts that the 
-agent will poll for connections. This is easily read in from a file list, 
-however when doing so always have a stable input source that does not depend 
-on the network (including a database or directory service) in any way: 
-introducing such dependencies makes configuration brittle.
+# `runagent` control promises
 
-```cf3
      body runagent control
      {
-         # default port is 5308
-         hosts => { "127.0.0.1:5308", "eternity.iu.hio.no:80", "slogans.iu.hio.no" };
+     # default port is 5308
      
-         #output_to_file => "true";
+     hosts => { "127.0.0.1:5308", "eternity.iu.hio.no:80", "slogans.iu.hio.no" };
+     
+     #output_to_file => "true";
      }
+
+Settings describing the details of the fixed behavioural promises
+made by `cf-runagent`. The most important parameter here is the
+list of hosts that the agent will poll for connections. This is
+easily read in from a file list, however when doing so always have
+a stable input source that does not depend on the network
+(including a database or directory service) in any way: introducing
+such dependencies makes configuration brittle.
+
+
+
+
 
 
 ## `hosts`
@@ -48,6 +55,10 @@ The complete list of contactable hosts. The values may be either
 numerical IP addresses or DNS names, optionally suffixed by a ':'
 and a port number. If no port number is given, the default CFEngine
 port 5308 is assumed.
+
+
+
+
 
 
 ## `port`
@@ -84,18 +95,22 @@ Changing the standard port number is not recommended practice. You
 should not do it without a good reason.
 
 
+
+
+
+
 ## `force_ipv4`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-    true
-    false
-    yes
-    no
-    on
-    off
+                   true
+                   false
+                   yes
+                   no
+                   on
+                   off
 
 **Default value:** false
 
@@ -112,18 +127,22 @@ IPv6 should be harmless to most users unless you have a partially
 or misconfigured setup.
 
 
+
+
+
+
 ## `trustkey`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-    true
-    false
-    yes
-    no
-    on
-    off
+                   true
+                   false
+                   yes
+                   no
+                   on
+                   off
 
 **Default value:** false
 
@@ -154,18 +173,22 @@ key is manually revoked by a system administrator. Keys are stored
 in WORKDIR/ppkeys.
 
 
+
+
+
+
 ## `encrypt`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-    true
-    false
-    yes
-    no
-    on
-    off
+                   true
+                   false
+                   yes
+                   no
+                   on
+                   off
 
 **Default value:** false
 
@@ -184,18 +207,22 @@ generated session key. The intial connection is encrypted using the
 public/private keys for the client and server hosts.
 
 
-ren`
+
+
+
+
+## `background_children`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-    true
-    false
-    yes
-    no
-    on
-    off
+                   true
+                   false
+                   yes
+                   no
+                   on
+                   off
 
 **Default value:** false
 
@@ -210,6 +237,10 @@ ren`
 
 Causes the runagent to attempt parallelized connections to the
 servers.
+
+
+
+
 
 
 ## `max_children`
@@ -245,18 +276,22 @@ the disk resources slowing down tasks considerably; there is thus a
 law of diminishing returns.
 
 
+
+
+
+
 ## `output_to_file`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-    true
-    false
-    yes
-    no
-    on
-    off
+                   true
+                   false
+                   yes
+                   no
+                   on
+                   off
 
 **Default value:** false
 
@@ -274,6 +309,10 @@ Filenames are chosen automatically and placed in the
 WORKDIR/outputs/hostname\_runagent.out.
 
 
+
+
+
+
 ## `output_directory`
 
 **Type**: string
@@ -289,10 +328,14 @@ WORKDIR/outputs/hostname\_runagent.out.
 
 **Notes**:
 
-*History*: Was introduced in version 3.2.0, Enterprise 2.1.0 (2011)
+*History*: Was introduced in version 3.2.0, Nova 2.1.0 (2011)
 
 Defines the location for parallelized output to be saved when
 running `cf-runagent` in parallel mode.
+
+
+
+
 
 
 ## `timeout`

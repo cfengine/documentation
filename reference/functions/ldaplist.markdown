@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function ldaplist
-categories: [Reference, Functions,Function ldaplist]
+categories: [Special functions,Function ldaplist]
 published: true
-alias: reference-functions-ldaplist.html
-tags: [reference, functions, function ldaplist]
+alias: Special-functions-Function-ldaplist.html
+tags: [Special functions,Function ldaplist]
 ---
 
 ### Function ldaplist
