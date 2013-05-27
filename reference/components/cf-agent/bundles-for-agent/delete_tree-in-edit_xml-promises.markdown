@@ -1,7 +1,7 @@
 ---
 layout: default
 title: delete_tree
-categories: [Reference, Promise Types, edit_xml, delete_tree]
+categories: [Reference, Promise Types, files, edit_xml, delete_tree]
 published: true
 alias: reference-promise-types-files-edit_xml-delete_tree.html
 tags: [reference, bundles for agent, delete_tree, edit_xml, xml, files promises, promises]

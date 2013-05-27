@@ -1,7 +1,7 @@
 ---
 layout: default
 title: delete_lines
-categories: [Reference, Promise Types, edit_line, delete_lines]
+categories: [Reference, Promise Types, files, edit_line, delete_lines]
 published: true
 alias: reference-promise-types-files-edit_line-delete_lines.html
 tags: [reference, bundles, agent, delete_lines, edit_line, files promises]

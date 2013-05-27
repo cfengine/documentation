@@ -1,7 +1,7 @@
 ---
 layout: default
 title: build_xpath
-categories: [Reference, Promise Types, edit_xml, build_xpath]
+categories: [Reference, Promise Types, files, edit_xml, build_xpath]
 published: true
 alias: reference-promise-types-files-edit_xml-build_xpath.html
 tags: [reference, bundles, agent, xpath, edit_xml, xml, files promises, promises]
