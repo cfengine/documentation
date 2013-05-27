@@ -7,11 +7,9 @@ alias: manuals-enterprise-api-checking-status.html
 tags: [manuals, enterprise, rest, api, reporting, status]
 ---
 
-### 1.3 Checking Status
-
-You can get basic info about the API by issuing *GET /api*. This status
-information may also be useful if you contact support, as it gives some
-basic diagnostics.
+You can get basic info about the API by issuing `GET /api`. This status 
+information may also be useful if you contact support, as it gives some basic 
+diagnostics.
 
 **Request**
 
@@ -53,12 +51,4 @@ basic diagnostics.
         }
       ]
     }
-
-* * * * *
-
-Next: [Managing Users and
-Roles](/manuals/Enterprise-3-0-API#Managing-Users-and-Roles),
-Previous: [Checking
-Status](/manuals/Enterprise-3-0-API#Checking-Status), Up: [REST
-API](/manuals/Enterprise-3-0-API#REST-API)
 

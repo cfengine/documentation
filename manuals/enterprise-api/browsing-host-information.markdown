@@ -7,36 +7,10 @@ alias: manuals-enterprise-api-browsing-host-information.html
 tags: [manuals, enterprise, rest, api, reporting, hosts]
 ---
 
-### 1.6 Browsing Host Information
+A resource `/api/host` is added as an alternative interface for browsing host information. For full flexibility we recommend using SQL **TODO: link** reports via `/api/query` for this. however, currently vital signs (data gathered from `cf-monitord`) is not part of the SQL reports data model.
 
--   [Example - Listing Hosts With A Given
-    Context](/manuals/Enterprise-3-0-API#Example-_002d-Listing-Hosts-With-A-Given-Context)
--   [Example - Looking Up Hosts By
-    Hostname](/manuals/Enterprise-3-0-API#Example-_002d-Looking-Up-Hosts-By-Hostname)
--   [Example - Looking Up Hosts By
-    IP](/manuals/Enterprise-3-0-API#Example-_002d-Looking-Up-Hosts-By-IP)
--   [Example - Removing Host
-    Data](/manuals/Enterprise-3-0-API#Example-_002d-Removing-Host-Data)
--   [Example - Listing Available Vital Signs For A
-    Host](/manuals/Enterprise-3-0-API#Example-_002d-Listing-Available-Vital-Signs-For-A-Host)
--   [Example - Retrieving Vital Sign
-    Data](/manuals/Enterprise-3-0-API#Example-_002d-Retrieving-Vital-Sign-Data)
 
-A resource */api/host* is added as an alternative interface for browsing
-host information. For full flexibility we recommend using SQL reports
-via */api/query* for this, however, currently vital signs (data gathered
-from cf-monitord) is not part of the SQL reports data model.
-
-* * * * *
-
-Next: [Example - Looking Up Hosts By
-Hostname](/manuals/Enterprise-3-0-API#Example-_002d-Looking-Up-Hosts-By-Hostname),
-Previous: [Browsing Host
-Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information),
-Up: [Browsing Host
-Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information)
-
-#### 1.6.1 Example: Listing Hosts With A Given Context
+## Example: Listing Hosts With A Given Context
 
 **Request**
 
@@ -65,22 +39,13 @@ Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information)
       ]
     }
 
-* * * * *
+## Example: Looking Up Hosts By Hostname
 
-Next: [Example - Looking Up Hosts By
-IP](/manuals/Enterprise-3-0-API#Example-_002d-Looking-Up-Hosts-By-IP),
-Previous: [Example - Listing Hosts With A Given
-Context](/manuals/Enterprise-3-0-API#Example-_002d-Listing-Hosts-With-A-Given-Context),
-Up: [Browsing Host
-Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information)
-
-#### 1.6.2 Example: Looking Up Hosts By Hostname
-
-Contexts are powerful, as you can use them to categorize hosts according
-to a rich set of tags. For example, each host is automatically tagged
-with a canonicalized version of its hostname and IP-address. So we could
-lookup the host with hostname *windows2003-2.test.cfengine.com* as
-follows (lines split and indented for presentability).
+Contexts are powerful, as you can use them to categorize hosts according to a 
+rich set of tags. For example, each host is automatically tagged with a 
+canonicalized version of its hostname and IP-address. So we could lookup the 
+host with hostname `windows2003-2.test.cfengine.com` as follows (lines split 
+and indented for presentability).
 
 **Request**
 
@@ -105,20 +70,12 @@ follows (lines split and indented for presentability).
       ]
     }
 
-* * * * *
 
-Next: [Example - Removing Host
-Data](/manuals/Enterprise-3-0-API#Example-_002d-Removing-Host-Data),
-Previous: [Example - Looking Up Hosts By
-Hostname](/manuals/Enterprise-3-0-API#Example-_002d-Looking-Up-Hosts-By-Hostname),
-Up: [Browsing Host
-Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information)
+#### Example: Looking Up Hosts By IP
 
-#### 1.6.3 Example: Looking Up Hosts By IP
-
-Similarly we can lookup the host with hostname
-*windows2008-2.test.cfengine.com* by IP as follows (lines split and
-indented for presentability).
+Similarly we can lookup the host with hostname 
+`windows2008-2.test.cfengine.com` by IP as follows (lines split and indented 
+for presentability).
 
 **Request**
 
@@ -143,20 +100,12 @@ indented for presentability).
       ]
     }
 
-* * * * *
 
-Next: [Example - Listing Available Vital Signs For A
-Host](/manuals/Enterprise-3-0-API#Example-_002d-Listing-Available-Vital-Signs-For-A-Host),
-Previous: [Example - Looking Up Hosts By
-IP](/manuals/Enterprise-3-0-API#Example-_002d-Looking-Up-Hosts-By-IP),
-Up: [Browsing Host
-Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information)
+## Example: Removing Host Data
 
-#### 1.6.4 Example: Removing Host Data
-
-If a host has been decommissioned from a Hub, we can explicitly remove
-data associated with the host from the Hub, by issuing a DELETE request
-(lines split and indented for presentability).
+If a host has been decommissioned from a Hub, we can explicitly remove data 
+associated with the host from the Hub, by issuing a DELETE request (lines 
+split and indented for presentability).
 
 **Request**
 
@@ -167,20 +116,11 @@ data associated with the host from the Hub, by issuing a DELETE request
 
     204 No Content
 
-* * * * *
+## Example: Listing Available Vital Signs For A Host
 
-Next: [Example - Retrieving Vital Sign
-Data](/manuals/Enterprise-3-0-API#Example-_002d-Retrieving-Vital-Sign-Data),
-Previous: [Example - Removing Host
-Data](/manuals/Enterprise-3-0-API#Example-_002d-Removing-Host-Data),
-Up: [Browsing Host
-Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information)
-
-#### 1.6.5 Example: Listing Available Vital Signs For A Host
-
-Each host record on the Hub has a set of vital signs collected by
-cf-monitord on the agent. We can view the list of vitals signs from as
-host as follows (lines split and indented for presentability).
+Each host record on the Hub has a set of vital signs collected by 
+`cf-monitord` on the agent. We can view the list of vitals signs from as host 
+as follows (lines split and indented for presentability).
 
 **Request**
 
@@ -223,20 +163,13 @@ host as follows (lines split and indented for presentability).
         },
     }
 
-* * * * *
+## Example: Retrieving Vital Sign Data
 
-Previous: [Example - Listing Available Vital Signs For A
-Host](/manuals/Enterprise-3-0-API#Example-_002d-Listing-Available-Vital-Signs-For-A-Host),
-Up: [Browsing Host
-Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information)
-
-#### 1.6.6 Example: Retrieving Vital Sign Data
-
-Each vital sign has a collected time series of values for up to one
-week. Here we retrieve the time series for the *mem\_free* vital sign at
-host *4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a*
-for October 23rd 2012 12:20pm to 12:45pm GMT (lines split and indented
-for presentability).
+Each vital sign has a collected time series of values for up to one week. Here 
+we retrieve the time series for the *mem\_free* vital sign at host 
+`4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a` for October 
+23rd 2012 12:20pm to 12:45pm GMT (lines split and indented for 
+presentability).
 
 **Request**
 
@@ -286,11 +219,4 @@ for presentability).
           ]
         }
       ]
-
-* * * * *
-
-Next: [API Reference](/manuals/Enterprise-3-0-API#API-Reference),
-Previous: [Browsing Host
-Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information),
-Up: [REST API](/manuals/Enterprise-3-0-API#REST-API)
 

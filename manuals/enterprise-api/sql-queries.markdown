@@ -7,17 +7,9 @@ alias: manuals-enterprise-api-sql-queries.html
 tags: [manuals, enterprise, rest, api, reporting, sql, queries]
 ---
 
-### 1.7 SQL Queries
-
--   [Synchronous
-    Queries](/manuals/Enterprise-3-0-API#Synchronous-Queries)
--   [Asynchronous
-    Queries](/manuals/Enterprise-3-0-API#Asynchronous-Queries)
--   [Subscribed Queries](/manuals/Enterprise-3-0-API#Subscribed-Queries)
-
-The standard way of creating reports in CFEngine Enterprise 3.0 is with
-SQL queries. See the chapter on SQL queries for an explanation. The API
-has a few ways of creating a report.
+The standard way of creating reports in CFEngine Enterprise 3.0 is with SQL 
+queries. See the chapter on SQL queries for an explanation. The API has a few 
+ways of creating a report.
 
 -   Synchronous query, where we issue a query and wait for the table to
     be sent back with the response.
@@ -26,20 +18,13 @@ has a few ways of creating a report.
 -   Subscribed query, where we specify a query to be run on a schedule
     and have the result emailed to someone.
 
-* * * * *
-
-Next: [Asynchronous
-Queries](/manuals/Enterprise-3-0-API#Asynchronous-Queries),
-Previous: [SQL Queries](/manuals/Enterprise-3-0-API#SQL-Queries),
-Up: [SQL Queries](/manuals/Enterprise-3-0-API#SQL-Queries)
-
-#### 1.7.1 Synchronous Queries
+## Synchronous Queries
 
 Issuing a synchronous query is the most straight forward way of running
 an SQL query. We simply issue the query and wait for a result to come
 back.
 
-##### 1.7.1.1 Example: Listing Hostname and IP for Ubuntu Hosts
+### Example: Listing Hostname and IP for Ubuntu Hosts
 
 **Request**(lines split and indented for presentability)
 
@@ -87,22 +72,15 @@ back.
       ]
     }
 
-The **cached** and **sortDescending** fields here mean that the the
+The `cached` and `sortDescending` fields here mean that the the
 result was not retrieved from cache, and that post-processing sorting
-was not applied. It is also possible to specify **skip** and **limit**
+was not applied. It is also possible to specify `skip` and `limit`
 fields that will be applied to the result set after it is returned by
 the SQL engine. These fields are mainly used by the Mission Portal to
 paginate quickly on already processed queries.
 
-* * * * *
 
-Next: [Subscribed
-Queries](/manuals/Enterprise-3-0-API#Subscribed-Queries),
-Previous: [Synchronous
-Queries](/manuals/Enterprise-3-0-API#Synchronous-Queries), Up: [SQL
-Queries](/manuals/Enterprise-3-0-API#SQL-Queries)
-
-#### 1.7.2 Asynchronous Queries
+## Asynchronous Queries
 
 Because some queries may take some time to compute, it is possible to
 fire off a query and check the status of it later. This is useful for
@@ -113,7 +91,7 @@ of three steps.
 2.  Check status of processing using the id
 3.  When the query is completed, get a download link using the id
 
-##### 1.7.2.1 Issuing The Query
+### Issuing The Query
 
 **Request**
 
@@ -140,7 +118,7 @@ of three steps.
       ]
     ]
 
-##### 1.7.2.2 Checking Status
+### Checking Status
 
 **Request**
 
@@ -162,7 +140,7 @@ of three steps.
         ]
     }
 
-##### 1.7.2.3 Getting The Completed Report
+### Getting The Completed Report
 
 This is the same API call as checking the status. Eventually, the
 **percentageComplete** field will reach 100 and there will be a link to
@@ -190,28 +168,22 @@ the completed report available for downloading.
       ]
     }
 
-* * * * *
-
-Previous: [Asynchronous
-Queries](/manuals/Enterprise-3-0-API#Asynchronous-Queries), Up: [SQL
-Queries](/manuals/Enterprise-3-0-API#SQL-Queries)
-
-#### 1.7.3 Subscribed Queries
+## Subscribed Queries
 
 Subscribed queries happen in the context of a user. Any user can create
 a query on a schedule and have it email to someone.
 
-##### 1.7.3.1 Example: Creating A Subscribed Query
+### Example: Creating A Subscribed Query
 
-Here we create a new query to count file changes by name and have the
-result sent to us by email. The schedule field is any CFEngine context
-expression. The backend polls subscriptions in a loop and checks whether
-it's time to generate a report and send it out. In the following
-example, user *milton* creates a new subscription to a report which he
-names *file-changes-report*, which will be sent out every Monday night.
-His boss will get an email with a link to a PDF version of the report.
+Here we create a new query to count file changes by name and have the result 
+sent to us by email. The schedule field is any CFEngine context expression. 
+The backend polls subscriptions in a loop and checks whether it's time to 
+generate a report and send it out. In the following example, user `milton` 
+creates a new subscription to a report which he names `file-changes-report`, 
+which will be sent out every Monday night. His boss will get an email with a 
+link to a PDF version of the report.
 
-**Request**(lines split and indented for presentability)
+**Request** (lines split and indented for presentability)
 
     curl -k --user admin:admin https://test.cfengine.com/api/user/milton/
        subscription/query/file-changes-report -X PUT -d
@@ -228,7 +200,7 @@ His boss will get an email with a link to a PDF version of the report.
 
     204 No Content
 
-##### 1.7.3.2 Example: Listing Report Subscriptions
+### Example: Listing Report Subscriptions
 
 Milton can list all his current subscriptions by issuing the following.
 
@@ -257,7 +229,7 @@ Milton can list all his current subscriptions by issuing the following.
         }
     ]
 
-##### 1.7.3.3 Example: Removing A Report Subscription
+### Example: Removing A Report Subscription
 
 **Request** (lines split and indented for presentability)
 
@@ -267,9 +239,3 @@ Milton can list all his current subscriptions by issuing the following.
 **Response**
 
     204 No Content
-
-* * * * *
-
-Previous: [SQL Queries](/manuals/Enterprise-3-0-API#SQL-Queries),
-Up: [REST API](/manuals/Enterprise-3-0-API#REST-API)
-

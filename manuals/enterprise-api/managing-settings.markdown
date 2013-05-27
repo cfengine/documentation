@@ -6,31 +6,13 @@ published: true
 alias: manuals-enterprise-api-managing-settings.html
 tags: [manuals, enterprise, rest, api, reporting, settings]
 ---
-### 1.4 Managing Settings
 
--   [Viewing settings](/manuals/Enterprise-3-0-API#Viewing-settings)
--   [Example - Configuring
-    LDAP](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-LDAP)
--   [Example - Configuring Active
-    Directory](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-Active-Directory)
--   [Example - Changing The Log
-    Level](/manuals/Enterprise-3-0-API#Example-_002d-Changing-The-Log-Level)
+Most of the settings configurable in the API relate to LDAP authentication of 
+users. Settings support two operations, **GET** (view settings) and **POST** 
+(update settings). When settings are updated, they are sanity checked 
+individually and as a whole. All or no settings will be updated for a request.
 
-Most of the settings configurable in the API relate to LDAP
-authentication of users. Settings support two operations, **GET** (view
-settings) and **POST** (update settings). When settings are updated,
-they are sanity checked individually and as a whole. All or no settings
-will be updated for a request.
-
-* * * * *
-
-Next: [Example - Configuring
-LDAP](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-LDAP),
-Previous: [Managing
-Settings](/manuals/Enterprise-3-0-API#Managing-Settings), Up: [Managing
-Settings](/manuals/Enterprise-3-0-API#Managing-Settings)
-
-#### 1.4.1 Viewing settings
+## Viewing settings
 
 **Request**
 
@@ -66,22 +48,13 @@ Settings](/manuals/Enterprise-3-0-API#Managing-Settings)
       ]
     }
 
-* * * * *
+## 1.4.2 Example: Configuring LDAP
 
-Next: [Example - Configuring Active
-Directory](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-Active-Directory),
-Previous: [Viewing
-settings](/manuals/Enterprise-3-0-API#Viewing-settings), Up: [Managing
-Settings](/manuals/Enterprise-3-0-API#Managing-Settings)
-
-#### 1.4.2 Example: Configuring LDAP
-
-The setting **ldapEnabled** turns external authentication on or off.
-When turned on, the API will check to see that the other LDAP related
-settings make sense, and attempt to authenticate using the configured
-credentials. If it is not successful in doing this, no settings will be
-changed. The API will notify you with a return code an a message
-describing the error.
+The setting `ldapEnabled` turns external authentication on or off. When turned 
+on, the API will check to see that the other LDAP related settings make sense, 
+and attempt to authenticate using the configured credentials. If it is not 
+successful in doing this, no settings will be changed. The API will notify you 
+with a return code an a message describing the error.
 
 **Request**
 
@@ -103,19 +76,11 @@ describing the error.
 
     204 No Content
 
-* * * * *
+## Example: Configuring Active Directory
 
-Next: [Example - Changing The Log
-Level](/manuals/Enterprise-3-0-API#Example-_002d-Changing-The-Log-Level),
-Previous: [Example - Configuring
-LDAP](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-LDAP),
-Up: [Managing Settings](/manuals/Enterprise-3-0-API#Managing-Settings)
-
-#### 1.4.3 Example: Configuring Active Directory
-
-Active Directory is configured in much the same way as OpenLDAP, but the
-additional field **ldapActiveDirectoryDomain** is required. **ldapMode**
-is also changed from *standard* to *activeDirectory*.
+Active Directory is configured in much the same way as OpenLDAP, but the 
+additional field `ldapActiveDirectoryDomain` is required. `ldapMode` is also 
+changed from `standard` to `activeDirectory`.
 
 **Request**
 
@@ -136,20 +101,14 @@ is also changed from *standard* to *activeDirectory*.
 
     204 No Content
 
-* * * * *
 
-Previous: [Example - Configuring Active
-Directory](/manuals/Enterprise-3-0-API#Example-_002d-Configuring-Active-Directory),
-Up: [Managing Settings](/manuals/Enterprise-3-0-API#Managing-Settings)
+## Example: Changing The Log Level
 
-#### 1.4.4 Example: Changing The Log Level
-
-The API uses standard Unix syslog to log a number of events.
-Additionally, log events are sent to stderr, which means they may also
-end up in your Apache log. Log events are filtered based on the log
-level in settings. Suppose you wanted to have greater visibility into
-the processing done at the backend. The standard log level is *error*.
-Changing it to *info* is done as follows.
+The API uses standard Unix syslog to log a number of events. Additionally, log 
+events are sent to `stderr`, which means they may also end up in your Apache 
+log. Log events are filtered based on the log level in settings. Suppose you 
+wanted to have greater visibility into the processing done at the backend. The 
+standard log level is `error`. Changing it to `info` is done as follows.
 
 **Request**
 
@@ -161,12 +120,4 @@ Changing it to *info* is done as follows.
 **Response**
 
     204 No Content
-
-* * * * *
-
-Next: [Browsing Host
-Information](/manuals/Enterprise-3-0-API#Browsing-Host-Information),
-Previous: [Managing
-Settings](/manuals/Enterprise-3-0-API#Managing-Settings), Up: [REST
-API](/manuals/Enterprise-3-0-API#REST-API)
 
