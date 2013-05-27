@@ -5,6 +5,7 @@ categories: [Manuals, Enterprise API, Basic Properties]
 published: true
 alias: manuals-enterprise-api-basic-properties.html
 tags: [manuals, enterprise, rest, api, reporting]
+---
 
 The Enterprise API is a conventional REST API in the sense that it has a
 number of URI resources that support one or more GET, PUT, POST, or
