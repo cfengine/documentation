@@ -1,10 +1,12 @@
+---
 layout: default
 title:  Browsing Host Information
-categories: [Manuals,Enterprise 3.0 API, Browsing Host Information]
+categories: [Manuals, Enterprise API, Browsing Host Information]
 published: true
-alias: Browsing-Host-Information.html
-tags: [Manuals,Enterprise 3.0 API, Browsing Host Information]
+alias: manuals-enterprise-api-browsing-host-information.html
+tags: [manuals, enterprise, rest, api, reporting, hosts]
 ---
+
 ### 1.6 Browsing Host Information
 
 -   [Example - Listing Hosts With A Given

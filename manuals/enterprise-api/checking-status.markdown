@@ -1,10 +1,12 @@
+---
 layout: default
 title:  Checking Status
-categories: [Manuals,Enterprise 3.0 API, Checking Status]
+categories: [Manuals, Enterprise API, Checking Status]
 published: true
-alias: Checking-Status.html
-tags: [Manuals,Enterprise 3.0 API, Checking Status]
+alias: alias: manuals-enterprise-api-checking-status.html
+tags: [manuals, enterprise, rest, api, reporting, status]
 ---
+
 ### 1.3 Checking Status
 
 You can get basic info about the API by issuing *GET /api*. This status

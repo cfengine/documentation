@@ -1,12 +1,11 @@
-layout: default
-title: Enterprise 3.0 API
-categories: [Manuals,Enterprise 3.0 API]
-published: true
-alias: Enterprise-API.html
-tags: [Manuals,Enterprise 3.0 API]
 ---
-CFEngine Enterprise 3.0 API
----------------------------
+layout: default
+title: Enterprise API
+categories: [Manuals, Enterprise API]
+published: true
+alias: manuals-enterprise-api.html
+tags: [manuals, enterprise, REST, API, reporting]
+---
 
 [](/manuals/Enterprise-3-0-API#Contents)
 

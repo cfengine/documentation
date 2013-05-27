@@ -1,9 +1,9 @@
 layout: default
-title:  API Reference
-categories: [Manuals,Enterprise 3.0 API, API Reference]
+title:  Enterprise  API Reference
+categories: [Reference, Enterprise API]
 published: true
-alias: API-Reference.html
-tags: [Manuals,Enterprise 3.0 API, API Reference]
+alias: reference-enterprise-api.html
+tags: [reference, enterprise, REST, API, reporting, sql]
 ---
 ### 1.8 API Reference
 

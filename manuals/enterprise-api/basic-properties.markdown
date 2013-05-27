@@ -1,9 +1,11 @@
+---
 layout: default
 title:  Basic Properties of the API
-categories: [Manuals,Enterprise 3.0 API, Basic Properties of the API]
+categories: [Manuals, Enterprise API, Basic Properties]
 published: true
-alias: Basic-Properties-of-the-API.html
-tags: [Manuals,Enterprise 3.0 API, Basic Properties of the API]
+alias: manuals-enterprise-api-basic-properties.html
+tags: [manuals, enterprise, rest, api, reporting]
+
 ---
 ### 1.1 Basic Properties of the API
 

@@ -1,9 +1,10 @@
+---
 layout: default
 title:  Managing Settings
-categories: [Manuals,Enterprise 3.0 API, Managing Settings]
+categories: [Manuals, Enterprise API, Managing Settings]
 published: true
-alias: Managing-Settings.html
-tags: [Manuals,Enterprise 3.0 API, Managing Settings]
+alias: manuals-enterprise-api-managing-settings.html
+tags: [manuals, enterprise, rest, api, reporting, settings]
 ---
 ### 1.4 Managing Settings
 

@@ -1,10 +1,12 @@
+---
 layout: default
 title:  SQL Queries
-categories: [Manuals,Enterprise 3.0 API, SQL Queries]
+categories: [Manuals, Enterprise API, SQL Queries]
 published: true
-alias: SQL-Queries.html
-tags: [Manuals,Enterprise 3.0 API, SQL Queries]
+alias: manuals-enterprise-api-sql-queries.html
+tags: [manuals, enterprise, rest, api, reporting, sql, queries]
 ---
+
 ### 1.7 SQL Queries
 
 -   [Synchronous

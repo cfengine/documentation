@@ -1,9 +1,10 @@
+---
 layout: default
 title:  Managing Users and Roles
-categories: [Manuals,Enterprise 3.0 API, Managing Users and Roles]
+categories: [Manuals, Enterprise API, Managing Users and Roles]
 published: true
-alias: Managing-Users-and-Roles.html
-tags: [Manuals,Enterprise 3.0 API, Managing Users and Roles]
+alias: manuals-enterprise-api-managing-users-and-roles.html
+tags: [manuals, enterprise, rest, api, reporting, users, roles]
 ---
 ### 1.5 Managing Users and Roles
 
