@@ -1,9 +1,9 @@
 ---
 layout: default
 title: vars
-categories: [Reference, Common promises, vars]
+categories: [Reference, Promise Types, vars]
 published: true
-alias: reference-common-promises-vars.html
+alias: reference-promise-types-vars.html
 tags: [reference, bundles, common, vars, promises]
 ---
 

@@ -1,9 +1,9 @@
 ---
 layout: default
 title: meta
-categories: [Reference, Common promises, meta]
+categories: [Reference, Promise Types,meta]
 published: true
-alias: reference-common-promises-meta.html
+alias: reference-promise-types-meta.html
 tags: [reference, bundles, common, meta, promises]
 ---
 

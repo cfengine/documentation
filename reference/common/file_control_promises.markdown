@@ -1,10 +1,10 @@
 ---
 layout: default
 title: file control
-categories: [Reference, Common promises, file control]
+categories: [Reference, Components, file control]
 published: true
-alias: reference-common-promises-file-control.html
-tags: [body, bodies, common, namespace, promises, bundlesequence]
+alias: reference-components-file-control.html
+tags: [body, bodies, components, common, namespace, promises, bundlesequence]
 ---
 
 

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Defaults Promises
-categories: [Reference, Common promises, Defaults]
+title: defaults
+categories: [Reference, Promise Types, defaults]
 published: true
-alias: reference-common-promises-defaults.html
+alias: reference-promise-types-defaults.html
 tags: [reference, bundles, common, defaults, promises]
 ---
 

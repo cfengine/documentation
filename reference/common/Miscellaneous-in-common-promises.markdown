@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Common attributes
-categories: [Reference, Common promises, Common attributes]
+categories: [Reference, Promise Types, Common attributes]
 published: true
-alias: reference-common-promises-miscellaneous.html
+alias: reference-promise-types-miscellaneous.html
 tags: [reference, bundles, common, miscellaneous, promises]
 ---
 

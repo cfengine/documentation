@@ -1,12 +1,11 @@
 ---
 layout: default
-title: control
-categories: [Reference, Common promises, control]
+title: common control
+categories: [Reference, Components, commmon control]
 published: true
-alias: reference-common-promises-control.html
-tags: [body, bodies, common, control, promises, bundlesequence]
+alias: reference-components-common-control.html
+tags: [body, bodies, components, common, control, promises, bundlesequence]
 ---
-
 
 # `common` control promises
  
