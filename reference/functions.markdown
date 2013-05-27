@@ -7,6 +7,8 @@ alias: reference-functions.html
 tags: [Reference, Functions]
 ---
 
+**TODO: fix links, make proper markdown tables**
+
 There are a large number of functions built into CFEngine, and finding
 the right one to use can be a daunting task. The following tables are
 designed to make it easier for you to find the function you need, based
