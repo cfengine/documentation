@@ -1,9 +1,9 @@
 ---
 layout: default
 title: packages
-categories: [Reference, Components, cf-agent, Bundles for agent, packages]
+categories: [Reference, Promise Types, packages]
 published: true
-alias: reference-components-bundles-for-agent-packages.html
+alias: reference-promise-types-packages.html
 tags: [reference, bundles, agent, packages, packages promises, promise types]
 ---
 

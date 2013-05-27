@@ -1,9 +1,9 @@
 ---
 layout: default
 title: services
-categories: [Reference, Components, cf-agent, Bundles for agent,services]
+categories: [Reference, Promise Types,services]
 published: true
-alias: reference-components-bundles-for-agent-services.html
+alias: reference-promise-types-services.html
 tags: [reference, bundles, agent, services, processes, services promises, promise types]
 ---
 

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: edit_xml promises
-categories: [Reference, Components, cf-agent, Bundles for agent, edit_xml promises]
+title: edit_xml
+categories: [Reference, Promise Types, files, edit_xml]
 published: true
-alias: reference-components-bundles-for-agent-edit-xml-promises.html
+alias: reference-promise-types-edit-xml-promises.html
 tags: [reference, bundles, agent, edit_xml, xml, edit_xml promises, files promises]
 ---
 

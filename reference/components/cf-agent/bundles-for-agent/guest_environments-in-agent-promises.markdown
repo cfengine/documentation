@@ -1,9 +1,9 @@
 ---
 layout: default
 title: guest_environments
-categories: [Reference, Components, cf-agent, Bundles for agent, guest_environments]
+categories: [Reference, Promise Types, guest_environments]
 published: true
-alias: reference-components-bundles-for-agent-guest-environments.html
+alias: reference-promise-types-guest-environments.html
 tags: [reference, bundles, agent, guest_environments, promises, promise types, virtual machines, agent, promises, libvirt, KVM, VMWare]
 ---
 

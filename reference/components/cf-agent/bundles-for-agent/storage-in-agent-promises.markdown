@@ -1,9 +1,9 @@
 ---
 layout: default
 title: storage
-categories: [Reference, Components, cf-agent, Bundles for agent, storage]
+categories: [Reference, Promise Types, storage]
 published: true
-alias: reference-components-bundles-for-agent-storage.html
+alias: reference-promise-types-storage.html
 tags: [reference, bundles, agent, storage, storage promises, mount, filesystem, disks]
 ---
 

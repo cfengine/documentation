@@ -1,9 +1,9 @@
 ---
 layout: default
 title: outputs
-categories: [Reference, Components, cf-agent, Bundles for agent,outputs]
+categories: [Reference, Promise Types,outputs]
 published: true
-alias: reference-components-bundles-for-agent-outputs.html
+alias: reference-promise-types-outputs.html
 tags: [reference, bundles, agent, outputs, outputs promises, promises, promise types]
 ---
 

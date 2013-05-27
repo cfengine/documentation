@@ -1,9 +1,9 @@
 ---
 layout: default
-title: set_text in edit_xml promises
-categories: [Reference, Components, cf-agent, Bundles for agent,set_text in edit_xml promises]
+title: set_text
+categories: [Reference, Promise Types, edit_xml, set_text]
 published: true
-alias: reference-components-bundles-for-agent-set-text-in-edit-xml-promises.html
+alias: reference-promise-types-files-edit_xml-set_text.html
 tags: [reference, bundles, agent, set_text, edit_xml, edit_xml promises, files promises]
 ---
 

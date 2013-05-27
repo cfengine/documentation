@@ -1,9 +1,9 @@
 ---
 layout: default
 title: replace_patterns in edit_line promises
-categories: [Reference, Components, cf-agent, Bundles for agent, replace_patterns in edit_line promises]
+categories: [Reference, Promise Types, replace_patterns in edit_line promises]
 published: true
-alias: reference-components-bundles-for-agent-replace-patterns-in-edit-line-promises.html
+alias: reference-promise-types-replace-patterns-in-edit-line-promises.html
 tags: [reference, bundles, agent, replace_patterns, edit_line, files promises]
 ---
 

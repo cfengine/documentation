@@ -1,9 +1,9 @@
 ---
 layout: default
 title: access
-categories: [Reference, Components, cf-serverd, Bundles for server, access]
+categories: [Reference, Promise Types, access]
 published: true
-alias: reference-components-bundles-for-server-access.html
+alias: reference-promise-types-access.html
 tags: [reference, bundles, server, cf-serverd, access, server, promise types, acl, trust, encryption]
 ---
 

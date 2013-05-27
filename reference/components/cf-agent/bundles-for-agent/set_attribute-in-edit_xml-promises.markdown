@@ -1,9 +1,9 @@
 ---
 layout: default
-title: set_attribute in edit_xml promises
-categories: [Reference, Components, cf-agent, Bundles for agent, set_attribute in edit_xml promises]
+title: set_attribute
+categories: [Reference, Promise Types, files, edit_xml, set_attribute]
 published: true
-alias: reference-components-bundles-for-agent-set-attribute-in-edit-xml-promises.html
+alias: reference-promise-types-files-edit_xml-set_attribute.html
 tags: [reference, bundles, agent, set_attribute, edit_xml, xml, files_promises, promises]
 ---
 

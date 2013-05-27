@@ -1,9 +1,9 @@
 ---
 layout: default
 title: processes
-categories: [Reference, Components, cf-agent, Bundles for agent, processes]
+categories: [Reference, Promise Types, processes]
 published: true
-alias: reference-components-bundles-for-agent-processes.html
+alias: reference-promise-types-processes.html
 tags: [reference, bundles, agent, promise types, processes, processes promises, promise types]
 ---
 

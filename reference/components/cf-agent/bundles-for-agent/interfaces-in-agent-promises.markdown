@@ -1,9 +1,9 @@
 ---
 layout: default
 title: interfaces
-categories: [Reference, Components, cf-agent, Bundles for agent,interfaces]
+categories: [Reference, Promise Types,interfaces]
 published: true
-alias: reference-components-bundles-for-agent-interfaces.html
+alias: reference-promise-types-interfaces.html
 tags: [reference, bundles, agent, interfaces, promises, promise types]
 ---
 

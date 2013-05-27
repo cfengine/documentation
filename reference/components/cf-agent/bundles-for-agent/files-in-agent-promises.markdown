@@ -1,9 +1,9 @@
 ---
 layout: default
 title: files
-categories: [Reference, Components, cf-agent, Bundles for agent,files]
+categories: [Reference, Promise Types,files]
 published: true
-alias: reference-components-bundles-for-agent-files.html
+alias: reference-promise-types-files.html
 tags: [reference, bundles, agent, files, promises, files promises, promise types]
 ---
 

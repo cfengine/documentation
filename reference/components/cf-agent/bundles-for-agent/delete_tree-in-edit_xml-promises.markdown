@@ -1,9 +1,9 @@
 ---
 layout: default
-title: delete_tree in edit_xml promises
-categories: [Reference, Components, cf-agent, Bundles for agent, delete_tree in edit_xml promises]
+title: delete_tree
+categories: [Reference, Promise Types, edit_xml, delete_tree]
 published: true
-alias: reference-components-bundles-for-agent-delete-tree-in-edit-xml-promises.html
+alias: reference-promise-types-files-edit_xml-delete_tree.html
 tags: [reference, bundles for agent, delete_tree, edit_xml, xml, files promises, promises]
 ---
 

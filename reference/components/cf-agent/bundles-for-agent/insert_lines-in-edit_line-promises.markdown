@@ -1,9 +1,9 @@
 ---
 layout: default
-title: insert_lines in edit_line promises
-categories: [Reference, Components, cf-agent, Bundles for agent, insert_lines in edit_line promises]
+title: insert_lines
+categories: [Reference, Promise Types, files, edit_line, insert_lines]
 published: true
-alias: reference-components-bundles-for-agent-insert-lines-in-edit-line-promises.html
+alias: reference-promise-types-files-edit_line-insert_-_lines.html
 tags: [Reference, bundles, agent, insert_lines, edit_line, files promises]
 ---
 

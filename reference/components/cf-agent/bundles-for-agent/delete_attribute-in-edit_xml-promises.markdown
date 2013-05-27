@@ -1,9 +1,9 @@
 ---
 layout: default
-title: delete_attribute in edit_xml promises
-categories: [Reference, Components, cf-agent, Bundles for agent,delete_attribute in edit_xml promises]
+title: delete_attribute
+categories: [Reference, Promise Types, edit_xml, delete_attribute]
 published: true
-alias: reference-components-bundles-for-agent-delete-attribute-in-edit-fxml-promises.html
+alias: reference-promise-types-files-edit_xml-delete_attribute.html
 tags: [reference, bundles, agent, delete_attribute, edit_xml, xml, files promises, promises]
 ---
 

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: insert_tree in edit_xml promises
-categories: [Reference, Components, cf-agent, Bundles for agent,insert_tree in edit_xml promises]
+title: insert_tree
+categories: [Reference, Promise Types, files, edit_xml, insert_tree]
 published: true
-alias: reference-components-bundles-for-agent-insert-tree-in-edit-xml-promises.html
+alias: reference-promise-types-files-edit_xml-insert_tree.html
 tags: [reference, bundles, agent,insert_tree, edit_xml, xml, files promises]
 ---
   

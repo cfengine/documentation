@@ -1,9 +1,9 @@
 ---
 layout: default
 title: measurements
-categories: [Reference, Components, cf-monitord, Bundles for monitor, measurements]
+categories: [Reference, Promise Types, measurements]
 published: true
-alias: reference-components-bundles-for-monitor-measurements.html
+alias: reference-promise-types-measurements.html
 tags: [reference, bundles, monitor, measurements, monitoring, promise types]
 ---
 
