@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function regcmp
-categories: [Reference, Functions,Function regcmp]
+categories: [Special functions,Function regcmp]
 published: true
-alias: reference-functions-regcmp.html
-tags: [reference, functions, function regcmp]
+alias: Special-functions-Function-regcmp.html
+tags: [Special functions,Function regcmp]
 ---
 
 ### Function regcmp

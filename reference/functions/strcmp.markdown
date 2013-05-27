@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function strcmp
-categories: [Reference, Functions,Function strcmp]
+categories: [Special functions,Function strcmp]
 published: true
-alias: reference-functions-strcmp.html
-tags: [reference, functions, function strcmp]
+alias: Special-functions-Function-strcmp.html
+tags: [Special functions,Function strcmp]
 ---
 
 ### Function strcmp

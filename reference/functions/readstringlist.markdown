@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function readstringlist
-categories: [Reference, Functions,Function readstringlist]
+categories: [Special functions,Function readstringlist]
 published: true
-alias: reference-functions-readstringlist.html
-tags: [reference, functions, function readstringlist]
+alias: Special-functions-Function-readstringlist.html
+tags: [Special functions,Function readstringlist]
 ---
 
 ### Function readstringlist

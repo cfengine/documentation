@@ -7,22 +7,24 @@ alias: reference-components-cfmonitord-control-promises.html
 tags: [Components, cf-monitord, control promises]
 ---
 
-Settings describing the details of the fixed behavioral promises
+# `monitor` control promises
+         
+         body monitor control()
+            {
+            #version => "1.2.3.4";
+         
+            forgetrate => "0.7";
+            tcpdump => "false";
+            tcpdumpcommand => "/usr/sbin/tcpdump -i eth1 -n -t -v";
+         
+            }
+         
+Settings describing the details of the fixed behavioural promises
 made by `cf-monitord`. The system defaults will be sufficient for
 most users. This configurability potential, however, will be a key
 to developing the integrated monitoring capabilities of CFEngine.
 
 
-```cf3         
-    body monitor control()
-    {
-        #version => "1.2.3.4";
-
-        forgetrate => "0.7";
-        tcpdump => "false";
-        tcpdumpcommand => "/usr/sbin/tcpdump -i eth1 -n -t -v";
-    }
-```
 
 
 ## `forgetrate`
@@ -44,9 +46,12 @@ old in 2d-average computation
 **Notes**:
 
 Configurable settings for the machine-learning algorithm that
-tracks system behavior. This is only for expert users. This
+tracks system behaviour. This is only for expert users. This
 parameter effectively determines (together with the monitoring
 rate) how quickly CFEngine forgets its previous history.
+
+
+
 
 
 ## `monitorfacility`
@@ -55,16 +60,16 @@ rate) how quickly CFEngine forgets its previous history.
 
 **Allowed input range**:
 
-    LOG_USER
-    LOG_DAEMON
-    LOG_LOCAL0
-    LOG_LOCAL1
-    LOG_LOCAL2
-    LOG_LOCAL3
-    LOG_LOCAL4
-    LOG_LOCAL5
-    LOG_LOCAL6
-    LOG_LOCAL7
+                   LOG_USER
+                   LOG_DAEMON
+                   LOG_LOCAL0
+                   LOG_LOCAL1
+                   LOG_LOCAL2
+                   LOG_LOCAL3
+                   LOG_LOCAL4
+                   LOG_LOCAL5
+                   LOG_LOCAL6
+                   LOG_LOCAL7
 
 **Default value:** LOG\_USER
 
@@ -80,18 +85,21 @@ rate) how quickly CFEngine forgets its previous history.
 See notes for syslog.
 
 
+
+
+
 ## `histograms`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-    true
-    false
-    yes
-    no
-    on
-    off
+                   true
+                   false
+                   yes
+                   no
+                   on
+                   off
 
 **Default value:** true
 
@@ -110,18 +118,21 @@ CFEngine to learn the conformally transformed distributions of
 fluctuations about the mean.
 
 
+
+
+
 ## `tcpdump`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-    true
-    false
-    yes
-    no
-    on
-    off
+                   true
+                   false
+                   yes
+                   no
+                   on
+                   off
 
 **Default value:** false
 
@@ -135,6 +146,8 @@ fluctuations about the mean.
 **Notes**:
 
 Interface with TCP stream if possible.
+
+
 
 
 ## `tcpdumpcommand`

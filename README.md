@@ -9,63 +9,36 @@ directly here, then you can report the issue in the regular [CFEngine bug tracke
 Use the "Documentation" category when you create bugs. And of course you can search the bug tracker for known issues with
 the documentation, and maybe help the community of CFEngine users by correcting some of those here!
 
-## Documentation Structure
+## File Structure
 
-Pages are organized hierarchically in category/subcategory relationships. Those are defined by the `categories` META
-data in the markdown file:
-
-    categories: [Path, Of, Categories, Page]
-
-This creates the navigation structure on the left hand side of the published documentation. The HTML files are
-all created into the same directory, so the alias META has to specify a unique filename.
-
-    alias: path-of-categories-page.html
-
-To make it easier to locate files in the repository, the markdown sources are organized in a directory structure that
-corresponds with the categorization, ie
-
-    documentation/path/of/categories/page.markdown
-
-Filenames are lower-case. Markdown-files in each subdirectory can be created as well with content providing an overview
-for that category.
-
-### META tags
-
-Additional META tags you should set are:
+Pages are organized hierarchically in category/subcategory relationships. Those are defined by the META data in the
+markdown file:
 
     layout: default
-
-Leave this as default.
-
     title: The Title
-
-The title of the page.
-
+    categories: [Path, Of, Categories, This]
     published: true|false
+    alias: path-of-categories-this.html
+    tags: [List, of, Tags with space]
 
-Pages that set this tag to `false` will not be published.
+This creates the navigation structure to the left. The HTML files are all created into the same directory, so the alias
+META has to specify a unique filename.
 
-    tags: [list, of, tags with space, all lowercase]
+To make files easier to locate in the repository, the markdown sources are organized in a directory structure that
+corresponds with the categorization, ie
 
-Keywords for this page, which will be displayed on top of the page, and used when generating the tag-pages.
+* documentation/Path/Of/Categories/This.markdown
 
-    reviewed: yyyy-mm-dd
-    reviewed-by: github-user
+Markdown-files in each subdirectory can be created as well with content providing an overview for that category.
 
-Keeping track of when a documentation page has last been reviewed.
+Note that the file name is not actually important, Jekyll will use the alias you specified in META alias. But keeping
+this consistent gives us better navigation through the source files.
 
-META tag values will be interpreted literally, and cannot contain `:`, `[` and `]`.
+## Images files
 
-### Image files
+...
 
-Image files are in the same directory as the markdown files that embed them. Give files unique names to avoid overwrites
-in the generated website.
-
-See [Style Guide - Charts and graphs](#Charts_and_graphs) for style requirements for images.
-
-##Style Guide
-
-Make sure you follow this style guide to make using CFEngine and the documentation a consistent and pleasant experience.
+## Style Guide
 
 ### Writing for the web
 
@@ -106,7 +79,7 @@ The period ending a sentence should be followed by 1 space.
 
 ### Abbreviations
 
-As a general note, avoiding abbreviations provides better readability.
+As a general note, avoiding abbreviations provides better readibility.
 
 **Latin expressions commonly used in English**
 
@@ -126,55 +99,14 @@ As a general note, avoiding abbreviations provides better readability.
 
 ### Code
 
-* use proper, consistent indentation **TODO: coding style guide**
+* use proper, consistent indentation
 * always run it through Pygments plus the appropriate lexer
 * avoid custom color schemes and hand-coded HTML
-* document the example after the example code
-
-### Structure of technical reference documentation
-
-The structure of the technical documentation about CFEngine attributes or 
-functions is as follows:
-
-    ### Language Element
-
-    **Synopsis:** One line summary.
-
-    Longer explanation on what it does.
-
-    **Type:** `Datatype` - if applicable.
-
-    **Allowed input range:** `value range` or
-    ```cf3
-        List
-        of
-        menu
-        options
-    ```
-
-    **Default value:** `Language Element => default value`, if applicable
-
-    **Example:** 
-    ```f3
-        Some code with 
-        cf3 markers
-        for syntax highlighting
-    ```
-
-    If the example requires explanation, do it here.
-
-    **Notes:**
-    
-    Additional information, spanning as many paragraphs as necessary, but mind
-    the style guide.
-    
-    In case of menu option types, make sure you cover all allowed values.
 
 ## Publishing
 
-Jekyll is used to generate the HTML pages. The toolchain is available at https://github.com/cfengine/documentation-generator
-After you compile pages, Jekyll will place all files into the _site folder, 
-without subdirectories.
+Jekyll is used to generate the HTML pages. The toolchain is avaiable at https://github.com/cfengine/documentation-generator
+After you compile pages, Jekyll will place all files into the _site folder, without subdirectories.
 
-Commits in this repository trigger the documentation generator to run, which 
-then updates the contents of http://cfengine.com/tmp_docs/
+Commits in this repository trigger the documentation generator to run, which then updates the contents of
+http://cfengine.com/tmp_docs/

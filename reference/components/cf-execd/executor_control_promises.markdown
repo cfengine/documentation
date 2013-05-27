@@ -7,19 +7,27 @@ alias: reference-components-cfexecd-control-promises.html
 tags: [Components, cf-execd, control promises]
 ---
 
-These body settings determine the behavior of `cf-execd`,including scheduling 
-times and output capture to `WORKDIR/outputs` and relay via email.
-
-```cf3
+# `executor` control promises
+     
      body executor control
+     
      {
-         splaytime  => "5";
-         mailto     => "cfengine@example.org";
-         mailfrom   => "cfengine@$(host).example.org";
-         smtpserver => "localhost";
-         schedule   => { "Min00_05", "Min30_35" }
+     splaytime  => "5";
+     mailto     => "cfengine@example.org";
+     mailfrom   => "cfengine@$(host).example.org";
+     smtpserver => "localhost";
+     schedule   => { "Min00_05", "Min30_35" }
      }
-```
+     
+These body settings determine the behaviour of `cf-execd`,
+including scheduling times and output capture to WORKDIR/outputs
+and relay via email. Note that the `splaytime` and `schedule`
+parameters are now coded here rather than (as previously) in the
+agent.
+
+
+
+
 
 ## `splaytime`
 
@@ -32,12 +40,10 @@ times and output capture to `WORKDIR/outputs` and relay via email.
 **Synopsis**: Time in minutes to splay this host based on its name
 hash
 
-```cf3
     body executor control
     {
-        splaytime => "2";
+    splaytime => "2";
     }
-```
 
 **Notes**:  
 Whenever any class listed in the `schedule` attribute is present,
@@ -60,6 +66,11 @@ The default value is 0 minutes.
 **See also:** The `splayclass()` function for a task-specific means
 for setting splay times.
 
+
+
+
+
+
 ## `mailfrom`
 
 **Type**: string
@@ -68,14 +79,16 @@ for setting splay times.
 
 **Synopsis**: Email-address cfengine mail appears to come from
 
-```cf3
     body executor control
     {
-        mailfrom => "mrcfengine@example.org";
+    mailfrom => "mrcfengine@example.org";
     }
-```
 
 **Notes**:
+
+
+
+
 
 
 ## `mailto`
@@ -86,16 +99,18 @@ for setting splay times.
 
 **Synopsis**: Email-address cfengine mail is sent to
 
-```cf3
     body executor control
     {
-        mailto => "cfengine_alias@example.org";
+    mailto => "cfengine_alias@example.org";
     }
-```
 
 **Notes**:
 
 The address to whom email is sent if an smtp host is configured.
+
+
+
+
 
 
 ## `smtpserver`
@@ -107,18 +122,20 @@ The address to whom email is sent if an smtp host is configured.
 **Synopsis**: Name or IP of a willing smtp server for sending
 email
 
-```cf3
     body executor control
     {
-        smtpserver => "smtp.example.org";
+    smtpserver => "smtp.example.org";
     }
-```cf3
 
 **Notes**:
 
-This should point to a standard port 25 server without encyption. If you are 
-running secured or encrypted email then you should run a mail relay on 
-localhost and point this to localhost.
+This should point to a standard port 25 server without encyption.
+If you are running secured or encrypted email then you should run a
+mail relay on localhost and point this to localhost.
+
+
+
+
 
 
 ## `mailmaxlines`
@@ -138,10 +155,15 @@ localhost and point this to localhost.
 
 **Notes**:
 
-This limit prevents anomalously large outputs from clogging up a system 
-administrator's mailbox. The output is truncated in the email report, but the 
-complete original transcript is stored in `WORKDIR/outputs/*` where it can be 
-viewed on demand. A reference to the appropriate file is given.
+This limit prevents anomalously large outputs from clogging up a
+system administrator's mailbox. The output is truncated in the
+email report, but the complete original transcript is stored in
+WORKDIR/outputs/\* where it can be viewed on demand. A reference to
+the appropriate file is given.
+
+
+
+
 
 
 ## `schedule`
@@ -177,22 +199,26 @@ function may be affected by changing the `schedule`.
               "Min30", "Min35", "Min40", "Min45", "Min50", "Min55" };
 
 
+
+
+
+
 ## `executorfacility`
 
 **Type**: (menu option)
 
 **Allowed input range**:
 
-    LOG_USER
-    LOG_DAEMON
-    LOG_LOCAL0
-    LOG_LOCAL1
-    LOG_LOCAL2
-    LOG_LOCAL3
-    LOG_LOCAL4
-    LOG_LOCAL5
-    LOG_LOCAL6
-    LOG_LOCAL7
+                   LOG_USER
+                   LOG_DAEMON
+                   LOG_LOCAL0
+                   LOG_LOCAL1
+                   LOG_LOCAL2
+                   LOG_LOCAL3
+                   LOG_LOCAL4
+                   LOG_LOCAL5
+                   LOG_LOCAL6
+                   LOG_LOCAL7
 
 **Default value:** LOG\_USER
 
@@ -206,6 +232,10 @@ function may be affected by changing the `schedule`.
 **Notes**:
 
 See the syslog manual pages.
+
+
+
+
 
 
 ## `exec_command`
@@ -225,6 +255,10 @@ The command is run in a shell encapsulation so pipes and shell
 symbols may be used if desired. Unlike, CFEngine 2, CFEngine 3 does
 not automatically run a separate update sequence before its normal
 run. This can be handled using the approach in the example above.
+
+
+
+
 
 
 ## `agent_expireafter`

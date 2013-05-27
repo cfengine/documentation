@@ -7,14 +7,15 @@ alias: reference-components-cfhub-control-promises.html
 tags: [Components, cf-hub, control promises]
 ---
 
-**TODO:overview**
+# `hub` control promises
 
-```cf3
     body hub control
     {
     export_zenoss => "/var/www/reports/summary.z";
     }
-```
+
+
+
 
 ## `export_zenoss`
 
@@ -33,9 +34,12 @@ tags: [Components, cf-hub, control promises]
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
+*History*: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
 
 For integration with the Zenoss monitoring software.
+
+
+
 
 
 ## `exclude_hosts`
@@ -54,7 +58,7 @@ report collection
 
 **Notes**:
 
-*History*: Was introduced in 3.3.0, Enterprise 2.1.1 (2011)
+*History*: Was introduced in 3.3.0, Nova 2.1.1 (2011)
 
 In commercial CFEngine editions, this list of IP addresses will not
 be queried for reports by `cf-hub`, even though they are in the
@@ -63,6 +67,9 @@ last-seen database.
 The lists may contain network addresses in CIDR notation or regular
 expressions to match the IP address. However, host names are
 currently not supported.
+
+
+
 
 
 ## `hub_schedule`
@@ -81,7 +88,10 @@ collation
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
+*History*: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
+
+
+
 
 
 ## `port`
@@ -110,10 +120,11 @@ collation
 
 **Notes**:
 
-The standard or registered port number is tcp/5308. CFEngine does not 
-presently use its registered udp port with the same number, but this could 
-change in the future.
+The standard or registered port number is tcp/5308. CFEngine does
+not presently use its registered udp port with the same number, but
+this could change in the future.
 
-Changing the standard port number is not recommended practice. You should not 
-do it without a good reason.
+Changing the standard port number is not recommended practice. You
+should not do it without a good reason.
+
 

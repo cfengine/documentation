@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Function ldapvalue
-categories: [Reference, Functions,Function ldapvalue]
+categories: [Special functions,Function ldapvalue]
 published: true
-alias: reference-functions-ldapvalue.html
-tags: [reference, functions, function ldapvalue]
+alias: Special-functions-Function-ldapvalue.html
+tags: [Special functions,Function ldapvalue]
 ---
 
 ### Function ldapvalue
