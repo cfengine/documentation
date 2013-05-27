@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function on
+title: "on"
 categories: [Reference, Functions,Function on]
 published: true
 alias: reference-functions-on.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function getindices
+title: getindices
 categories: [Reference, Functions,Function getindices]
 published: true
 alias: reference-functions-getindices.html

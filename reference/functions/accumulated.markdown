@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function accumulated
+title: accumulated
 categories: [Reference, Functions,Function accumulated]
 published: true
 alias: reference-functions-accumulated.html

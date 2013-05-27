@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function returnszero
+title: returnszero
 categories: [Reference, Functions,Function returnszero]
 published: true
 alias: reference-functions-returnszero.html

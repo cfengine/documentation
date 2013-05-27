@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function classify
+title: classify
 categories: [Reference, Functions,Function classify]
 published: true
 alias: reference-functions-classify.html

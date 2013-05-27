@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function ip2host
+title: ip2host
 categories: [Reference, Functions,Function ip2host]
 published: true
 alias: reference-functions-ip2host.html

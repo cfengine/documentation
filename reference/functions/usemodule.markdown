@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function usemodule
+title: usemodule
 categories: [Reference, Functions,Function usemodule]
 published: true
 alias: reference-functions-usemodule.html

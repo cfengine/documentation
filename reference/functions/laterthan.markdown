@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function laterthan
+title: laterthan
 categories: [Reference, Functions,Function laterthan]
 published: true
 alias: reference-functions-laterthan.html

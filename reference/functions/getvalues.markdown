@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function getvalues
+title: getvalues
 categories: [Reference, Functions,Function getvalues]
 published: true
 alias: reference-functions-getvalues.html

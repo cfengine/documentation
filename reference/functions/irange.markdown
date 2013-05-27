@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function irange
+title: irange
 categories: [Reference, Functions,Function irange]
 published: true
 alias: reference-functions-irange.html

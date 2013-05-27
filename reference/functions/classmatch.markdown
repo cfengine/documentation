@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function classmatch
+title: classmatch
 categories: [Reference, Functions,Function classmatch]
 published: true
 alias: reference-functions-classmatch.html

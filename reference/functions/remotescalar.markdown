@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function remotescalar
+title: remotescalar
 categories: [Reference, Functions,Function remotescalar]
 published: true
 alias: reference-functions-remotescalar.html

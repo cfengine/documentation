@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function islink
+title: islink
 categories: [Reference, Functions,Function islink]
 published: true
 alias: reference-functions-islink.html

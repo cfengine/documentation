@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function translatepath
+title: translatepath
 categories: [Reference, Functions,Function translatepath]
 published: true
 alias: reference-functions-translatepath.html

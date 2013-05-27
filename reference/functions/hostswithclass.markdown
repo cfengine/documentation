@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function hostswithclass
+title: hostswithclass
 categories: [Reference, Functions,Function hostswithclass]
 published: true
 alias: reference-functions-hostswithclass.html

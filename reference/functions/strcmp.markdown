@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function strcmp
+title: strcmp
 categories: [Reference, Functions,Function strcmp]
 published: true
 alias: reference-functions-strcmp.html

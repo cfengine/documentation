@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function hash
+title: hash
 categories: [Reference, Functions,Function hash]
 published: true
 alias: reference-functions-hash.html

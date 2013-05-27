@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function selectservers
+title: selectservers
 categories: [Reference, Functions,Function selectservers]
 published: true
 alias: reference-functions-selectservers.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function readstringlist
+title: readstringlist
 categories: [Reference, Functions,Function readstringlist]
 published: true
 alias: reference-functions-readstringlist.html

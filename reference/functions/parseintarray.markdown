@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Function parseintarray
+title: parseintarray
 categories: [Reference, Functions,Function parseintarray]
 published: true
 alias: reference-functions-parseintarray.html
