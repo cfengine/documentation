@@ -1,10 +1,10 @@
 ---
 layout: default
 title: returnszero
-categories: [Reference, Functions,Function returnszero]
+categories: [Reference, Functions, returnszero]
 published: true
 alias: reference-functions-returnszero.html
-tags: [reference, functions, function returnszero]
+tags: [reference, functions, returnszero]
 ---
 
 ### Function returnszero

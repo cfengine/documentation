@@ -1,10 +1,10 @@
 ---
 layout: default
 title: readrealarray
-categories: [Reference, Functions,Function readrealarray]
+categories: [Reference, Functions, readrealarray]
 published: true
 alias: reference-functions-readrealarray.html
-tags: [reference, functions, function readrealarray]
+tags: [reference, functions, readrealarray]
 ---
 
 ### Function readrealarray

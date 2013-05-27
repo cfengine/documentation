@@ -1,10 +1,10 @@
 ---
 layout: default
 title: isdir
-categories: [Reference, Functions,Function isdir]
+categories: [Reference, Functions, isdir]
 published: true
 alias: reference-functions-isdir.html
-tags: [reference, functions, function isdir]
+tags: [reference, functions, isdir]
 ---
 
 ### Function isdir

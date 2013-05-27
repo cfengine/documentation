@@ -1,10 +1,10 @@
 ---
 layout: default
 title: getgid
-categories: [Reference, Functions,Function getgid]
+categories: [Reference, Functions, getgid]
 published: true
 alias: reference-functions-getgid.html
-tags: [reference, functions, function getgid]
+tags: [reference, functions, getgid]
 ---
 
 ### Function getgid

@@ -1,10 +1,10 @@
 ---
 layout: default
 title: rrange
-categories: [Reference, Functions,Function rrange]
+categories: [Reference, Functions, rrange]
 published: true
 alias: reference-functions-rrange.html
-tags: [reference, functions, function rrange]
+tags: [reference, functions, rrange]
 ---
 
 ### Function rrange

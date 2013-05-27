@@ -1,10 +1,10 @@
 ---
 layout: default
 title: peers
-categories: [Reference, Functions,Function peers]
+categories: [Reference, Functions, peers]
 published: true
 alias: reference-functions-peers.html
-tags: [reference, functions, function peers]
+tags: [reference, functions, peers]
 ---
 
 ### Function peers

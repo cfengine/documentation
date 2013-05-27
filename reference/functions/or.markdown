@@ -1,10 +1,10 @@
 ---
 layout: default
 title: or
-categories: [Reference, Functions,Function or]
+categories: [Reference, Functions, or]
 published: true
 alias: reference-functions-or.html
-tags: [reference, functions, function or]
+tags: [reference, functions, or]
 ---
 
 ### Function or

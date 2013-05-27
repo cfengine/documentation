@@ -1,10 +1,10 @@
 ---
 layout: default
 title: diskfree
-categories: [Reference, Functions,Function diskfree]
+categories: [Reference, Functions, diskfree]
 published: true
 alias: reference-functions-diskfree.html
-tags: [reference, functions, function diskfree]
+tags: [reference, functions, diskfree]
 ---
 
 ### Function diskfree

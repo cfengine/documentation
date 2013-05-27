@@ -1,10 +1,10 @@
 ---
 layout: default
 title: "on"
-categories: [Reference, Functions,Function on]
+categories: [Reference, Functions, "on"]
 published: true
 alias: reference-functions-on.html
-tags: [reference, functions, function on]
+tags: [reference, functions, "on"]
 ---
 
 ### Function on

@@ -1,10 +1,10 @@
 ---
 layout: default
 title: readintlist
-categories: [Reference, Functions,Function readintlist]
+categories: [Reference, Functions, readintlist]
 published: true
 alias: reference-functions-readintlist.html
-tags: [reference, functions, function readintlist]
+tags: [reference, functions, readintlist]
 ---
 
 ### Function readintlist

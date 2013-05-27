@@ -1,10 +1,10 @@
 ---
 layout: default
 title: countlinesmatching
-categories: [Reference, Functions,Function countlinesmatching]
+categories: [Reference, Functions, countlinesmatching]
 published: true
 alias: reference-functions-countlinesmatching.html
-tags: [reference, functions, function countlinesmatching]
+tags: [reference, functions, countlinesmatching]
 ---
 
 ### Function countlinesmatching

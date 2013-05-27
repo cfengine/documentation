@@ -1,10 +1,10 @@
 ---
 layout: default
 title: canonify
-categories: [Reference, Functions,Function canonify]
+categories: [Reference, Functions, canonify]
 published: true
 alias: reference-functions-canonify.html
-tags: [reference, functions, function canonify]
+tags: [reference, functions, canonify]
 ---
 
 ### Function canonify

@@ -1,10 +1,10 @@
 ---
 layout: default
 title: parserealarray
-categories: [Reference, Functions,Function parserealarray]
+categories: [Reference, Functions, parserealarray]
 published: true
 alias: reference-functions-parserealarray.html
-tags: [reference, functions, function parserealarray]
+tags: [reference, functions, parserealarray]
 ---
 
 ### Function parserealarray

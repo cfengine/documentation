@@ -1,10 +1,10 @@
 ---
 layout: default
 title: hostswithclass
-categories: [Reference, Functions,Function hostswithclass]
+categories: [Reference, Functions, hostswithclass]
 published: true
 alias: reference-functions-hostswithclass.html
-tags: [reference, functions, function hostswithclass]
+tags: [reference, functions, hostswithclass]
 ---
 
 ### Function hostswithclass

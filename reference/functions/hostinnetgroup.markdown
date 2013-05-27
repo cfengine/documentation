@@ -1,10 +1,10 @@
 ---
 layout: default
 title: hostinnetgroup
-categories: [Reference, Functions,Function hostinnetgroup]
+categories: [Reference, Functions, hostinnetgroup]
 published: true
 alias: reference-functions-hostinnetgroup.html
-tags: [reference, functions, function hostinnetgroup]
+tags: [reference, functions, hostinnetgroup]
 ---
 
 ### Function hostinnetgroup

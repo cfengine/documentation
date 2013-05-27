@@ -1,10 +1,10 @@
 ---
 layout: default
 title: readfile
-categories: [Reference, Functions,Function readfile]
+categories: [Reference, Functions, readfile]
 published: true
 alias: reference-functions-readfile.html
-tags: [reference, functions, function readfile]
+tags: [reference, functions, readfile]
 ---
 
 ### Function readfile

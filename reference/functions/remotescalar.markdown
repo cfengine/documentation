@@ -1,10 +1,10 @@
 ---
 layout: default
 title: remotescalar
-categories: [Reference, Functions,Function remotescalar]
+categories: [Reference, Functions, remotescalar]
 published: true
 alias: reference-functions-remotescalar.html
-tags: [reference, functions, function remotescalar]
+tags: [reference, functions, remotescalar]
 ---
 
 ### Function remotescalar

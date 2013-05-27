@@ -1,10 +1,10 @@
 ---
 layout: default
 title: parseintarray
-categories: [Reference, Functions,Function parseintarray]
+categories: [Reference, Functions, parseintarray]
 published: true
 alias: reference-functions-parseintarray.html
-tags: [reference, functions, function parseintarray]
+tags: [reference, functions, parseintarray]
 ---
 
 ### Function parseintarray

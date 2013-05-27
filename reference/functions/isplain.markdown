@@ -1,10 +1,10 @@
 ---
 layout: default
 title: isplain
-categories: [Reference, Functions,Function isplain]
+categories: [Reference, Functions, isplain]
 published: true
 alias: reference-functions-isplain.html
-tags: [reference, functions, function isplain]
+tags: [reference, functions, isplain]
 ---
 
 ### Function isplain

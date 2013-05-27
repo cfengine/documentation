@@ -1,10 +1,10 @@
 ---
 layout: default
 title: grep
-categories: [Reference, Functions,Function grep]
+categories: [Reference, Functions, grep]
 published: true
 alias: reference-functions-grep.html
-tags: [reference, functions, function grep]
+tags: [reference, functions, grep]
 ---
 
 ### Function grep

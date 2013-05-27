@@ -1,10 +1,10 @@
 ---
 layout: default
 title: groupexists
-categories: [Reference, Functions,Function groupexists]
+categories: [Reference, Functions, groupexists]
 published: true
 alias: reference-functions-groupexists.html
-tags: [reference, functions, function groupexists]
+tags: [reference, functions, groupexists]
 ---
 
 ### Function groupexists

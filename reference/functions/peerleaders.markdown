@@ -1,10 +1,10 @@
 ---
 layout: default
 title: peerleaders
-categories: [Reference, Functions,Function peerleaders]
+categories: [Reference, Functions, peerleaders]
 published: true
 alias: reference-functions-peerleaders.html
-tags: [reference, functions, function peerleaders]
+tags: [reference, functions, peerleaders]
 ---
 
 ### Function peerleaders

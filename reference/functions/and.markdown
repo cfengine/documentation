@@ -1,10 +1,10 @@
 ---
 layout: default
 title: and
-categories: [Reference, Functions,Function and]
+categories: [Reference, Functions, and]
 published: true
 alias: reference-functions-and.html
-tags: [reference, functions, function and]
+tags: [reference, functions, and]
 ---
 
 ### Function and
