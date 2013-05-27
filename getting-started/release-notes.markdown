@@ -79,8 +79,9 @@ as the package installation is completed.
 
 ### Infinite scalability across multiple sites
 
-* first support for multi-site reporting
-* improved performance of cf-serverd, handling more connections in parallel
+* support for [Multi-Site
+  Querying](manuals-enterprise-api-multi-site-queries.html)
+* improved performance of `cf-serverd`, handling more connections in parallel
 
 **TODO:** Link to demo video
 
@@ -89,22 +90,22 @@ as the package installation is completed.
 * Promise logs, file, software and compliance information are available
   through SQL Report app
 * Regular expressions are supported in SQL queries
-* **TODO:[Enterprise API](reference-enterprise-api.html)** supports host
+* [Enterprise API](manuals-enterprise-api.html)** supports host
   and promise filtering
 
 ## Better tools for CFEngine operators
 
 * Self-diagnostics of agent binaries **TODO:**link to --self-diagnosics
 * Collect data for hub diagnostics
-** performance data from MongoDB
-** Include lastseen report data
-** FirstReportTimeStamp is recorded for all hosts
-** diagnostic data from cf-hub
-** data is available through SQL queries
+    * performance data from MongoDB
+    * Include lastseen report data
+    * FirstReportTimeStamp is recorded for all hosts
+    * diagnostic data from cf-hub
+    * data is available through SQL queries
 * Configurable data collection for Enterprise
-** Host-side report content filter, controlled by `report_data_select` body
-   in **TODO**[access promise](reference-bundles-for-server-access-in-server-promises.html)
-** filters for class, variable, promise log and monitoring reports
+    * Host-side report content filter, controlled by `report_data_select` body
+   in [access promise](reference-promise-types-access.html)
+    * filters for class, variable, promise log and monitoring reports
 
 ## Streamlined Mission Portal
 
@@ -116,10 +117,12 @@ as the package installation is completed.
 
 ## Microsoft Windows specific improvements
 
-* Windows PowerShell support in [commands promises](reference-bundles-for-agent-commands.html),
-  [`execresult`](reference-functions-execresult.html) and [`returnszero`](reference-functions-returnszero.html)
+* Windows PowerShell support in [commands
+  promises](reference-promise-types-commands.html),
+  [`execresult`](reference-functions-execresult.html) and 
+  [`returnszero`](reference-functions-returnszero.html)
 * Improved ACL handling on Windows
-** Note the syntax changes in the **TODO**[ChangeLog]
+   * Note the syntax changes in the **TODO**[ChangeLog]
 
 
 For a complete list of changes in the CFEngine Core, see the
