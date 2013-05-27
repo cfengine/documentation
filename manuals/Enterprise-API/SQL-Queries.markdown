@@ -1,9 +1,9 @@
 layout: default
-title: 
-categories: [Enterprise 3.0 API,]
+title:  SQL Queries
+categories: [Enterprise 3.0 API, SQL Queries]
 published: true
-alias: Browsing-Host-Information.html
-tags: [Enterprise 3.0 API,]
+alias: SQL-Queries.html
+tags: [Enterprise 3.0 API, SQL Queries]
 ---
 ### 1.7 SQL Queries
 

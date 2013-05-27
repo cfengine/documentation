@@ -1,9 +1,9 @@
 layout: default
-title: 
-categories: [Enterprise 3.0 API,]
+title:  API Reference
+categories: [Enterprise 3.0 API, API Reference]
 published: true
-alias: SQL-Queries.html
-tags: [Enterprise 3.0 API,]
+alias: API-Reference.html
+tags: [Enterprise 3.0 API, API Reference]
 ---
 ### 1.8 API Reference
 

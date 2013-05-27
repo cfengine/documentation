@@ -1,9 +1,9 @@
 layout: default
-title: 
-categories: [Enterprise 3.0 API,]
+title:  Managing Settings
+categories: [Enterprise 3.0 API, Managing Settings]
 published: true
-alias: Checking-Status.html
-tags: [Enterprise 3.0 API,]
+alias: Managing-Settings.html
+tags: [Enterprise 3.0 API, Managing Settings]
 ---
 ### 1.4 Managing Settings
 

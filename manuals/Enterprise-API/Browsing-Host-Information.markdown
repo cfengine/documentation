@@ -1,9 +1,9 @@
 layout: default
-title: 
-categories: [Enterprise 3.0 API,]
+title:  Browsing Host Information
+categories: [Enterprise 3.0 API, Browsing Host Information]
 published: true
-alias: Managing-Users-and-Roles.html
-tags: [Enterprise 3.0 API,]
+alias: Browsing-Host-Information.html
+tags: [Enterprise 3.0 API, Browsing Host Information]
 ---
 ### 1.6 Browsing Host Information
 

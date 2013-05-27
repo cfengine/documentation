@@ -1,9 +1,9 @@
 layout: default
-title: 
-categories: [Enterprise 3.0 API,]
+title:  Basic Properties of the API
+categories: [Enterprise 3.0 API, Basic Properties of the API]
 published: true
-alias: Enterprise-API.html
-tags: [Enterprise 3.0 API,]
+alias: Basic-Properties-of-the-API.html
+tags: [Enterprise 3.0 API, Basic Properties of the API]
 ---
 ### 1.1 Basic Properties of the API
 

@@ -1,9 +1,9 @@
 layout: default
-title: 
-categories: [Enterprise 3.0 API,]
+title:  Checking Status
+categories: [Enterprise 3.0 API, Checking Status]
 published: true
-alias: Differences-between-the-CFEngine-Nova--REST-API-and-the-CFEngine-Enterprise--API.html
-tags: [Enterprise 3.0 API,]
+alias: Checking-Status.html
+tags: [Enterprise 3.0 API, Checking Status]
 ---
 ### 1.3 Checking Status
 

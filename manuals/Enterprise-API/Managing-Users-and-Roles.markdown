@@ -1,9 +1,9 @@
 layout: default
-title: 
-categories: [Enterprise 3.0 API,]
+title:  Managing Users and Roles
+categories: [Enterprise 3.0 API, Managing Users and Roles]
 published: true
-alias: Managing-Settings.html
-tags: [Enterprise 3.0 API,]
+alias: Managing-Users-and-Roles.html
+tags: [Enterprise 3.0 API, Managing Users and Roles]
 ---
 ### 1.5 Managing Users and Roles
 
