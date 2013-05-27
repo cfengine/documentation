@@ -7,10 +7,10 @@ alias: manuals-language-concepts-namespaces.html
 tags: [manuals, language, syntax, concepts, namespace]
 ---
 
-Name spaces are private bundle and body contexts, allowing multiple files to 
+Namespaces are private bundle and body contexts, allowing multiple files to 
 define the bundles and bodies with the same name, without conflict.
 
-To isolate a file into its own name space, you add a control promise to the 
+To isolate a file into its own namespace, you add a control promise to the 
 file before the relevant bundles or bodies. All files start off in the 
 `default` namespace if you don't explicitly set this. Once set, this applies 
 until the end of the file or the next namespace change.
