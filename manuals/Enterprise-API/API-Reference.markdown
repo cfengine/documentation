@@ -1,9 +1,9 @@
 layout: default
 title:  API Reference
-categories: [Enterprise 3.0 API, API Reference]
+categories: [Manuals,Enterprise 3.0 API, API Reference]
 published: true
 alias: API-Reference.html
-tags: [Enterprise 3.0 API, API Reference]
+tags: [Manuals,Enterprise 3.0 API, API Reference]
 ---
 ### 1.8 API Reference
 

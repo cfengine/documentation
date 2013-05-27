@@ -1,9 +1,9 @@
 layout: default
 title:  Checking Status
-categories: [Enterprise 3.0 API, Checking Status]
+categories: [Manuals,Enterprise 3.0 API, Checking Status]
 published: true
 alias: Checking-Status.html
-tags: [Enterprise 3.0 API, Checking Status]
+tags: [Manuals,Enterprise 3.0 API, Checking Status]
 ---
 ### 1.3 Checking Status
 

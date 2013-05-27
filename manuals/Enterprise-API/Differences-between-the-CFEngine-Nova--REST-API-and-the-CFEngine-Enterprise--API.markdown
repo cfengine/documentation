@@ -1,9 +1,9 @@
 layout: default
 title:  Differences between the CFEngine Nova  REST API and the CFEngine Enterprise  API
-categories: [Enterprise 3.0 API, Differences between the CFEngine Nova  REST API and the CFEngine Enterprise  API]
+categories: [Manuals,Enterprise 3.0 API, Differences between the CFEngine Nova  REST API and the CFEngine Enterprise  API]
 published: true
 alias: Differences-between-the-CFEngine-Nova--REST-API-and-the-CFEngine-Enterprise--API.html
-tags: [Enterprise 3.0 API, Differences between the CFEngine Nova  REST API and the CFEngine Enterprise  API]
+tags: [Manuals,Enterprise 3.0 API, Differences between the CFEngine Nova  REST API and the CFEngine Enterprise  API]
 ---
 ### 1.2 Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API
 

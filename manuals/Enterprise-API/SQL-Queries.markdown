@@ -1,9 +1,9 @@
 layout: default
 title:  SQL Queries
-categories: [Enterprise 3.0 API, SQL Queries]
+categories: [Manuals,Enterprise 3.0 API, SQL Queries]
 published: true
 alias: SQL-Queries.html
-tags: [Enterprise 3.0 API, SQL Queries]
+tags: [Manuals,Enterprise 3.0 API, SQL Queries]
 ---
 ### 1.7 SQL Queries
 

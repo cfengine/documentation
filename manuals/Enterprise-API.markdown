@@ -1,9 +1,9 @@
 layout: default
 title: Enterprise 3.0 API
-categories: [Enterprise 3.0 API]
+categories: [Manuals,Enterprise 3.0 API]
 published: true
 alias: Enterprise-API.html
-tags: [Enterprise 3.0 API]
+tags: [Manuals,Enterprise 3.0 API]
 ---
 CFEngine Enterprise 3.0 API
 ---------------------------

@@ -1,9 +1,9 @@
 layout: default
 title:  Browsing Host Information
-categories: [Enterprise 3.0 API, Browsing Host Information]
+categories: [Manuals,Enterprise 3.0 API, Browsing Host Information]
 published: true
 alias: Browsing-Host-Information.html
-tags: [Enterprise 3.0 API, Browsing Host Information]
+tags: [Manuals,Enterprise 3.0 API, Browsing Host Information]
 ---
 ### 1.6 Browsing Host Information
 

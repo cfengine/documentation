@@ -1,9 +1,9 @@
 layout: default
 title:  Managing Settings
-categories: [Enterprise 3.0 API, Managing Settings]
+categories: [Manuals,Enterprise 3.0 API, Managing Settings]
 published: true
 alias: Managing-Settings.html
-tags: [Enterprise 3.0 API, Managing Settings]
+tags: [Manuals,Enterprise 3.0 API, Managing Settings]
 ---
 ### 1.4 Managing Settings
 
