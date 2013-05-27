@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Basic Properties of the API
+title: Basic Properties of the API
 categories: [Manuals, Enterprise API, Basic Properties]
 published: true
 alias: manuals-enterprise-api-basic-properties.html

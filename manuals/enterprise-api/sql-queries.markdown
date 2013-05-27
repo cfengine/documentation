@@ -168,7 +168,7 @@ the completed report available for downloading.
       ]
     }
 
-## Subscribed Queries
+##<a id="SubscribedQueries"> Subscribed Queries
 
 Subscribed queries happen in the context of a user. Any user can create
 a query on a schedule and have it email to someone.
