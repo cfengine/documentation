@@ -22,5 +22,8 @@ API, you can:
   reports](manuals-enterprise-api-sql-queries.html#SubscribedQueries) for 
   email and later download
 
-The Enterprise API is a REST API, but a central part of interacting with the API involves using SQL. With the simplicity of REST and the flexibility of SQL, users can craft custom reports based on the wealth of data residing on the CFEngine Database Server.
+The Enterprise API is a REST API, but a central part of interacting with the 
+API involves using SQL. With the simplicity of REST and the flexibility of 
+SQL, users can craft custom reports based on the wealth of data residing on 
+the CFEngine Database Server.
 
