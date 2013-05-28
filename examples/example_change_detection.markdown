@@ -30,23 +30,6 @@ This is a standalone policy that will look for changes recursively in a director
        changes      => detect_all_change,
        depth_search => recurse("inf");
     }
-
-    #########################################################
-
-    body changes detect_all_change
-
-    {
-    report_changes => "all";  # This will log all changes to the repaired log (/var/cfengine/cf_repair.log)
-    update_hashes  => "true"; # Update hash values immediately after change warning
-    }
-
-    #########################################################
-
-    body depth_search recurse(d)
-
-    {
-    depth        => "$(d)";
-    }
 ```
 
 This policy can be found in `/var/cfengine/share/doc/examples/unit_change_detect.cf`.
