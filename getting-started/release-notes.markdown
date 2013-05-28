@@ -40,7 +40,8 @@ previous versions of CFEngine. With 3.5, many of those can disappear.
 Policy developers get **clear and consistent messages** from the parser.
 `cf-promises` allowing partial check of policy - now you are not required
 to have `body common control` to check syntax. This will allow better
-integration with editors to perform automatic syntax.
+integration with editors to perform automatic syntax validation.
+TODO: screenshot showing syntastic with vim
 
 `action_policy => warn` now sets `not_kept` classes, which allows you to see deeper than first order changes that might occur during **dry-runs**.
 
