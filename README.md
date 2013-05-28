@@ -9,10 +9,26 @@ directly here, then you can report the issue in the regular [CFEngine bug tracke
 Use the "Documentation" category when you create bugs. And of course you can search the bug tracker for known issues with
 the documentation, and maybe help the community of CFEngine users by correcting some of those here!
 
+## Writing Documentation
+
+The CFEngine documentation is written in regular [markdown](http://daringfireball.net/projects/markdown/syntax).
+
+To keep the source readable in git and workable with a broad range of tools, keep the line length in paragraphs below
+78 characters.
+
+If you don't know git, then you can still contribute to the documentation using the GitHub interface as long as you have
+a GitHub account. Fork this repository (called the *upstream*) using the GitHub web interface, make changes in your fork
+and create pull requests so that your changes can be merged into the *upstream* repository.
+
+It is in general advisable to make small commit that are submitted through pull requests frequently. Otherwise any
+structural changes to documentation content can cause merge conflicts that are hard to resolve.
+
 ## Documentation Structure
 
+### Structure
+
 Pages are organized hierarchically in category/subcategory relationships. Those are defined by the `categories` META
-data in the markdown file:
+data (in YAML) in the markdown file:
 
     categories: [Path, Of, Categories, Page]
 
@@ -37,9 +53,9 @@ Additional META tags you should set are:
 
 Leave this as default.
 
-    title: The Title
+    title: "The Title"
 
-The title of the page.
+The title of the page. Quoting is only necessary if the title contains YAML keywords (like "on").
 
     published: true|false
 
