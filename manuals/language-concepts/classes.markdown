@@ -21,11 +21,76 @@ Database Server, and can be used there for reporting and inventory management.
 
 ## Making Decisions based on classes
 
-**TODO:Example**
-
 The class predicate `ifvarclass` is `AND`ed with the normal class expression, 
 and is evaluated together with the promise. It may contain variables as long 
 as the resulting expansion is a legal class expression.
+
+```cf3
+    bundle agent example
+    {
+      vars:
+          "french_cities"  slist => { "toulouse", "paris" };
+          "german_cities"  slist => { "berlin" };
+          "italian_cities" slist => { "milan" };
+          "usa_cities"     slist => { "lawrence" };
+
+          "cities" slist => { @(french_cities), @(german_cities), @(italian_cities), @(usa_cities) };
+
+      classes:
+          "italy"   or => { "milan" };
+          "germany" or => { "berlin" };
+          "france"  or => { "toulouse", "paris" };
+
+      reports:
+        Morning.italy::
+          "Good morning from $(cities)",
+            ifvarclass => "$(cities)";
+
+        Afternoon.germany::
+          "Good afternoon from $(cities)",
+            ifvarclass => "$(cities)";
+
+        france::
+          "Hello from $(cities)",
+            ifvarclass => "$(cities)";
+    }
+```
+
+Example Output:
+
+```
+    cf-agent -Kf example.cf -D lawrence -b example
+    R: It's Tue May 28 16:47:33 2013 here
+    R: Hello from lawrence
+
+    cf-agent -Kf example.cf -D paris -b example
+    R: It's Tue May 28 16:48:18 2013 here
+    R: Hello from France
+    R: Hello from paris
+
+    cf-agent -Kf example.cf -D milan -b example
+    R: It's Tue May 28 16:48:40 2013 here
+    R: Hello from milan
+
+    cf-agent -Kf example.cf -D germany -b example
+    R: It's Tue May 28 16:49:01 2013 here
+
+    cf-agent -Kf example.cf -D berlin -b example
+    R: It's Tue May 28 16:51:53 2013 here
+    R: Good afternoon from Germany
+    R: Hello from berlin
+```
+
+
+In the example lists of cities are defined in the `vars` section and these
+lists are combined into a list of all cities. These variable lists are used to
+qualify the greetings and to make the policy more consice. In the `classes`
+section a country class is defined if a class described on the right hand side
+evaluates to true. In the reports section the current time is always reported
+but only agents found to have the `Morning` and `italy` classes defined will
+report "Good morning from Italy", this is further qualified by ensuring that
+the report is only generated if one of the known cities also has a class
+defined.
 
 ## Hard Classes
 
