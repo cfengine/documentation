@@ -27,10 +27,6 @@ The CFEngine reserved word `body` is used to encapsulate the details of complex
 attribute values. Bodies can optionally have parameters.
 
 ```cf3
-    files:
-        "/home/promiser"
-            perms => myexample;
-
     bundle agent example
     {
       files:
