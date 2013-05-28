@@ -23,34 +23,58 @@ components.
 
 ### Bodies
 
-The CFEngine reserved word `body` is used to define parameterized **TODO: no 
-example given for parameterized*** templates that encapsulate the details of 
-complex attribute values.
+The CFEngine reserved word `body` is used to encapsulate the details of complex
+attribute values. Bodies can optionally have parameters.
 
 ```cf3
     files:
         "/home/promiser"
             perms => myexample;
+
+    bundle agent example
+    {
+      files:
+        !windows::
+          "/etc/passwd"
+            handle => "example_files_not_windows_passwd",
+            perms => system;
+    
+          "/home/bill/id_rsa.pub"
+            handle => "example_files_not_windows_bills_priv_ssh_key",
+            perms => mog("600", "bill", "sysop"),
+            create => "true";
+    }
 ```
 
-The promiser in this example is a file `/tmp/promiser` and the promise is that 
-the `perms` attribute type is associated with a named, user-defined promise 
-body `myexample`.
+The promisors in this example are the files `/etc/passwd` and
+`/home/bill/id_rsa.pub`. The promise is that the `perms` attribute type is
+associated with a named, user-defined promise body `system` and `mog`
+respectively.
 
 ```cf3
-    body perms myexample
+    body perms system
     {
-        mode => "644";
-        owners => { "mark", "sarah", "angel" };
-        groups => { "users", "sysadmins", "mythical_beasts" };
-     }
+      mode => "644";
+      owners => { "root" };
+      groups => { "root" };
+    }
+    
+    body perms mog(mode,user,group)
+    {
+      owners => { "$(user)" };
+      groups => { "$(group)" };
+      mode   => "$(mode)";
+    }
 ```
 
-The `body` of this `myexample` promise consists of the file permissions, the 
-file owners, and the file groups. `myexample` has a type that matches the left 
-hand side `perms` of the declaration in the `files` promise.
+The `body` of the `system` promise consists of the file permissions, the 
+file owner, and the file group. `system` has a type that matches the left 
+hand side `perms` of the declaration in the `files` promise. The `body` of the
+`mog` promise also consists of the file permissions, file owner, and file group
+but the values of those attributes are passed in as parameters.
 
-Such a body can be reused in multiple promises.
+Such bodies can be reused in multiple promises.
+
 
 #### Implicit, Control Bodies
 
