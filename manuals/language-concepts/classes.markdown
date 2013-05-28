@@ -29,30 +29,37 @@ as the resulting expansion is a legal class expression.
     bundle agent example
     {
       vars:
-          "french_cities"  slist => { "toulouse", "paris" };
-          "german_cities"  slist => { "berlin" };
-          "italian_cities" slist => { "milan" };
-          "usa_cities"     slist => { "lawrence" };
-
-          "cities" slist => { @(french_cities), @(german_cities), @(italian_cities), @(usa_cities) };
-
+              "french_cities"  slist => { "toulouse", "paris" };
+              "german_cities"  slist => { "berlin" };
+              "italian_cities" slist => { "milan" };
+              "usa_cities"     slist => { "lawrence" };
+             
+              "all_cities" slist => { @(french_cities), @(german_cities), @(italian_cities), @(usa_cities) };
+    
       classes:
-          "italy"   or => { "milan" };
-          "germany" or => { "berlin" };
-          "france"  or => { "toulouse", "paris" };
-
+          "italy"   or => { @(italian_cities) };
+          "germany" or => { @(german_cities) };
+          "france"  or => { @(french_cities) };
+    
       reports:
+        any::
+          "It's $(sys.date) here";
+    
         Morning.italy::
-          "Good morning from $(cities)",
-            ifvarclass => "$(cities)";
-
+          "Good morning from Italy",
+            ifvarclass => "$(all_cities)";
+          
         Afternoon.germany::
-          "Good afternoon from $(cities)",
-            ifvarclass => "$(cities)";
-
+          "Good afternoon from Germany",
+            ifvarclass => "$(all_cities)";
+    
         france::
-          "Hello from $(cities)",
-            ifvarclass => "$(cities)";
+          "Hello from France",
+            ifvarclass => "$(all_cities)";
+    
+        any::
+          "Hello from $(all_cities)",
+            ifvarclass => "$(all_cities)";
     }
 ```
 
