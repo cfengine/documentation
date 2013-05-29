@@ -173,9 +173,12 @@ functions is as follows:
 
     ### Language Element
 
-    **Synopsis:** One line summary.
+    **Description:** One line summary.
 
-    Longer explanation on what it does.
+    Longer explanation on what it does and why it is useful,
+    over multiple paragraphs if necessary.
+
+    Specifics about "input range" in the notes.
 
     **Type:** `Datatype` - if applicable.
 
@@ -189,14 +192,16 @@ functions is as follows:
 
     **Default value:** `Language Element => default value`, if applicable
 
-    **Example:** 
+    **Example:**
+
     ```f3
         Some code with 
         cf3 markers
         for syntax highlighting
     ```
 
-    If the example requires explanation, do it here.
+    If the example requires explanation, do it here. Consider using
+    CFEngine comments within the code directly to explain.
 
     **Notes:**
     
