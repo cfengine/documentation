@@ -31,7 +31,32 @@ Bundles can be parameterized, allowing for code re-use. If you need to do the
 same thing over and over again with slight variations, using a promise bundle 
 is an easy way to avoid unnecessary duplication in your promises.
 
-**TODO: example for parameterized bundle**
+    bundle agent hello_world
+    {
+      vars:
+          "myfiles"     => "/tmp/world.txt";
+          "desired_content" string => "hello";
+    
+      methods:
+          "Hello World"
+            usebundle => ensure_file_has_content("$(myfiles)", "$(desired_content)");
+        
+    
+    }
+
+    bundle agent ensure_file_has_content(file, content)
+    {
+      files:
+    
+          "$(file)"
+            handle => "$(this.bundle)_file_content",
+            create => "true",
+            edit_defaults => empty,
+            edit_line => append_if_no_line("$(content)"),
+            comment => "Ensure that the given parameter for file '$(file)' has only
+                        the contents of the given parameter for content '$(content)'";
+    
+    }
 
 ### Scope
 
