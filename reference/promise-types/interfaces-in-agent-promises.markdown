@@ -2,10 +2,13 @@
 layout: default
 title: interfaces
 categories: [Reference, Promise Types,interfaces]
-published: true
+published: false
 alias: reference-promise-types-interfaces.html
 tags: [reference, bundles, agent, interfaces, promises, promise types]
 ---
+
+**TODO: un-publishing this as it is presumably not implemented.**
+See https://cfengine.com/dev/issues/1153
 
 Interfaces promises describe the configurable aspects relating to
 network interfaces. Most workstations and servers have only a single
@@ -30,11 +33,6 @@ quite large.
 
 For future use.
 
-  
-
-For future use.
-
--   [tcp\_ip in interfaces](#tcp_005fip-in-interfaces)
 
 #### `tcp_ip` (body template)
 
