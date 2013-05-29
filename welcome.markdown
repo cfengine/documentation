@@ -6,6 +6,9 @@ published: true
 alias: index.html
 ---
 
+The purpose of configuration management is to keep systems stable
+long enough to do useful work.
+
 CFEngine 3 represents the newest and most carefully researched
 technology available for configuration management. It is both simpler
 and more powerful than previous versions. With CFEngine 3 you can install,
