@@ -8,6 +8,17 @@ alias: getting-started-installation.html
 tags: [getting started, installation]
 ---
 
+-IMPORTANT NOTE: This is an early alpha release of 3.5, intended for testing 
+-and showcase only. This version is not supported, not covered by service level 
+-agreements (SLAs) and not intended for production environments. Do not upgrade 
+-or use in conjuction with other versions at this point. We are planning 
+-monthly snapshot (alpha) releases going forward, but official release date for 
+-3.5 has not been set (expect it soon). See also 
+-http://cfengine.com/blog/?page=4 for more information.
+-<!--- TODO: move up when no longer a pre-release
+--->
+-
+
 ## Requirements
 
 CFEngine recommends that your hub machine should have at least 2 GB of memory 
@@ -142,7 +153,7 @@ The same as for RPM except you should use the following command to do the instal
 	 Hub:
            $ dpkg -i <hub package>.deb 
 	 Agent:
-           $ dpkg -i <client package>.deb
+           $ dpkg -i <agent package>.deb
            
 See Enterprise 3.5 Owner's Manual for more detailed installation instructions and troubleshooting tips.
 
