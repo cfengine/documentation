@@ -80,7 +80,7 @@ inputs => {
   "libraries/cfengine_stdlib.cf",
 };
 ```
-This is necessary, since any cfengine_stdlib.cf is already included
+This is necessary, since cfengine_stdlib.cf is already included
 in the inputs section of the master policy.
 
 
