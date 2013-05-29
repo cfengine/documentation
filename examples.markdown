@@ -71,6 +71,19 @@ example into the identically named control body section in the main policy
 file `/var/cfengine/masterfiles/promises.cf`and then remove the control body
 from the example.
 
+6. You must remove the inputs section from the example, which 
+   includes the external library:
+
+```cf3
+inputs => {
+
+  "libraries/cfengine_stdlib.cf",
+};
+```
+This is necessary, since any cfengine_stdlib.cf is already included
+in the inputs section of the master policy.
+
+
 The example policy will now be executed every five minutes along with the rest
 of your main policy.
 
