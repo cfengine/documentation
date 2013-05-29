@@ -76,7 +76,7 @@ significantly and offer completely new functionality.
     * [`nth`](reference-functions-nth.html)
     * [`length`](reference-functions-length.html)
     * [`sublist`](reference-functions-sublist.html)
-    * [`uniq`](reference-functions-uniq.html)
+    * [`unique`](reference-functions-unique.html)
     * [`sort`](reference-functions-sort.html)
     * [`filter`](reference-functions-filter.html)
 * function that returns an slist of all the classes that match a regular
