@@ -23,11 +23,27 @@ CFEngine differs from most management systems in being
 
 CFEngine 3 exists in [two editions](https://cfengine.com/cfengine-comparison):
 
-- **[Enterprise](https://cfengine.com/enterprise)**
-  for organizations that demand a reliable automation in a heterogenous
-  infrastructure
-- **[Community Edition](https://cfengine.com/community)** - the core
-  of CFEngine for basic configuration management needs
+- **[Community Edition](https://cfengine.com/community)** - the core of
+CFEngine provides reliable automation of heterogeneous system configuration
+(nearly forty UNIX-like OSs supported) and basic knowledge management
+to help you track why systems are configured, who cares about them, and
+what the dependencies are.
+
+- **[Enterprise](https://cfengine.com/enterprise)** - add-ons to the core
+provide additional configuration management functionality and advanced knowledge
+management to bring stability, predictibility and control to complex
+hetergeneous distributed systems. 
+
+The Enterprise add-ons:
+* increase the reach and range of CFEngine (more platforms and functionality),
+* facilitate orchestration,
+* enable scalability of complex systems through insight from
+system configuration reports; goal, policy and project compliance
+reports; pre- and post-change impact analysis; troubleshooting and
+diagnostics; and modeling of dependencies and relationships -- all adding
+up to stabler systems, tighter integration between business and IT, and
+more value from IT to the business, including increased uptime and
+reduced labor costs.
 
 This documentation is valid for **all versions** of CFEngine. Whenever
 a feature is only available in a specific version, that fact will be
