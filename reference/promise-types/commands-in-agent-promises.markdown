@@ -116,15 +116,24 @@ So in the example above the command would be:
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    useshell
+    noshell
+    powershell
 ```
 
-**Default value:** false
+For compatibility, the following values are also supported, and map to
+`useshell` and `noshell`, respectively.
+
+```cf3
+    true
+    false
+    yes
+    no
+    on
+    off
+```
+
+**Default value:** `noshell`
   
 The default is to *not* use a shell when executing commands. Use of a
 shell has both resource and security consequences. A shell consumes an
@@ -144,7 +153,7 @@ is true.
      
      body contain example
      {
-     useshell => "true";
+     useshell => "useshell";
      }
      
 ```
