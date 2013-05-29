@@ -64,3 +64,4 @@ promise checks. Several different cf-agent instances can run concurrently, and
 the locks ensure that promises will never be verified by two cf-agents at the 
 same time, or too soon after a verification.
 
+| Previous: [Default Configuration File Structure](manuals-architecture-configuration-file-structure.html) | Next: [Testing Policies](manuals-architecture-testing-policies.html) |

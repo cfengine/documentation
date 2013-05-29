@@ -54,3 +54,5 @@ than the CFEngine 2 binaries. They all start with the cf- prefix.
 
          host$ ~/.cfagent/bin/cf-agent
 
+
+| Previous: [Controlling Frequency](manuals-architecture-controlling-frequency.html) |

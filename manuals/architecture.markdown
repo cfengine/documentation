@@ -52,3 +52,4 @@ managing machines and people.
 Combining promises with patterns to describe where and when promises should 
 apply is what CFEngine is all about.
 
+Next: [Automation with CFEngine](manuals-architecture-automation.html)
