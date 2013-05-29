@@ -8,9 +8,9 @@ tags: [manuals, systems, configuration management, automation, testing, work dir
 ---
 
 One of the practical advantages of CFEngine is that you can test it
-without the need for root or administrator privileges. This is useful if you are
-concerned about manipulating important system files, but naturally limits the
-possibilities for what CFEngine is able to do.
+without the need for root or administrator privileges. This is useful if you 
+are concerned about manipulating important system files, but naturally limits 
+the possibilities for what CFEngine is able to do.
 
 ## Testing as a non-privileged user
 

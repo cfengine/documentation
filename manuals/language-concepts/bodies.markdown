@@ -76,7 +76,7 @@ Such bodies can be reused in multiple promises.
 
 A special case for bodies are the implicit promises that configure the basic 
 operation of CFEngine. These are hard-coded to CFEngine and control the basic 
-operation of the agents, such as cf-agent and cf-serverd. Each agent has a 
+operation of the agents, such as `cf-agent` and `cf-serverd`. Each agent has a 
 special body whose name is `control`.
 
 ```cf3
