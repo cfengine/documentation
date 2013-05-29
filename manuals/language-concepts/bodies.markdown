@@ -42,7 +42,7 @@ attribute values. Bodies can optionally have parameters.
     }
 ```
 
-The promisors in this example are the files `/etc/passwd` and
+The promisers in this example are the files `/etc/passwd` and
 `/home/bill/id_rsa.pub`. The promise is that the `perms` attribute type is
 associated with a named, user-defined promise body `system` and `mog`
 respectively.
