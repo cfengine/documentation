@@ -68,7 +68,7 @@ significantly and offer completely new functionality.
     intersections/differences:
     * [`every`](reference-functions-every.html)
     * [`none`](reference-functions-none.html)
-    * [`some`](reference-functions-every.html)
+    * [`some`](reference-functions-some.html)
     * [`intersection`](reference-functions-intersection.html),
     * [`difference`](reference-functions-difference.html)
 * list functions  to look up a specific element, find the list length, extract a
@@ -78,6 +78,7 @@ significantly and offer completely new functionality.
     * [`sublist`](reference-functions-sublist.html)
     * [`unique`](reference-functions-unique.html)
     * [`sort`](reference-functions-sort.html)
+    * [`shuffle`](reference-functions-shuffle.html)
     * [`filter`](reference-functions-filter.html)
 * function that returns an slist of all the classes that match a regular
   expression
