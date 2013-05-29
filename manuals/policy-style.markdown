@@ -1,4 +1,12 @@
-# CFEngine Policy Style Guide
+---
+layout: default
+title: Policy Style Guide
+categories: [Manuals]
+published: true
+alias: manuals-policy-style-guide.html
+tags: [manuals, style, policy]
+---
+
 Style is a very personal choice and the contents of this guide should only be
 considered suggestions. We invite you to contribute to the growth of this
 guide.
