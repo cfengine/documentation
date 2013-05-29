@@ -484,7 +484,7 @@ Native settings for access control entry are defined by 'aces'. POSIX ACL are av
      {
      acl_method => "overwrite";
      acl_type => "posix";
-     acl_directory_inherit => "parent";
+     acl_default => "access";
      
      aces => { 
              "user:*:r(wwx),-r:allow", 
@@ -581,7 +581,7 @@ Note that the `r` permission is not necessary to read an object's
 permissions and attributes in all file systems. For example, in POSIX,
 having `x` on its containing directory is sufficient.   
 
-`acl_directory_inherit`
+`acl_default`
 
 **Type**: (menu option)
 
@@ -589,17 +589,17 @@ having `x` on its containing directory is sufficient.
 
 ```cf3
                     nochange
-                    parent
+                    access
                     specify
                     clear
 ```
 
-**Description**: The access control list type for the affected file system is determined by `acl_directory_inherit`. 
+**Description**: The access control list type for the affected file system is determined by `acl_default`. 
 
 Directories have ACLs associated with them, but they also have the ability to inherit an ACL to sub-objects created within them. POSIX calls the former ACL type "access ACL" and the latter "default ACL", and we will use the same terminology.
 
-The constraint `acl_directory_inherit` gives control over the default ACL of directories. The default ACL can be left unchanged (`nochange`),
-empty (`clear`), or be explicitly specified (`specify`). In addition, the default ACL can be set equal to the directory's access ACL (`parent`). This has the effect that child objects of the directory gets the same access ACL as the directory.   
+The constraint `acl_default` gives control over the default ACL of directories. The default ACL can be left unchanged (`nochange`),
+empty (`clear`), or be explicitly specified (`specify`). In addition, the default ACL can be set equal to the directory's access ACL (`access`). This has the effect that child objects of the directory gets the same access ACL as the directory.   
 
 **Example**:  
    
@@ -611,7 +611,7 @@ empty (`clear`), or be explicitly specified (`specify`). In addition, the defaul
      {
      acl_method => "overwrite";
      acl_type => "posix";
-     acl_directory_inherit => "parent";
+     acl_default => "access";
      
      aces => {
              "user:*:rwx:allow",
@@ -622,6 +622,10 @@ empty (`clear`), or be explicitly specified (`specify`). In addition, the defaul
      }
      
 ```
+
+*History*: Was introduced in 3.5. Replaces the now deprecated 
+acl_directory_inherit.
+
 
 `acl_method`
 
@@ -689,16 +693,16 @@ Ownership on the NTFS platform, we must set `acl_type` to indicate the target pl
 ```
  
 
-`specify_inherit_aces`
+`specify_default_aces`
 
 **Type**: slist
 
 **Allowed input range**:
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
 
-**Description**: The slist `specify_inherit_aces` specifies the native settings for access control entry.
+**Description**: The slist `specify_default_aces` specifies the native settings for access control entry.
 
-`specify_inherit_aces` (optional) is a list of access control entries that are set on child objects. It is also parsed from left to right and
+`specify_default_aces` (optional) is a list of access control entries that are set on child objects. It is also parsed from left to right and
 allows multiple entries with same entity-type and id. Only valid if `acl_directory_inherit` is set to `specify`.
 
 This is an ACL which makes explicit setting for the acl inherited by new objects within a directory. It is included for those implementations
@@ -710,7 +714,7 @@ that do not have a clear inheritance policy.
 ```cf3
      body acl template
      {
-     specify_inherit_aces => {  "all:r" };
+     specify_default_aces => {  "all:r" };
      }
 ```
 
