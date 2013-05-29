@@ -31,7 +31,7 @@ Generally if opening and closing braces are not on a single line they should
 be aligned vertically.
 
 Example:
-```
+```cf3
 bundle agent example
 {
   vars:
@@ -54,7 +54,7 @@ listed should have a blank line before the next promise type.
 
 This example illustrates the blank line before the "classes" type.
 
-```
+```cf3
 bundle agent example
 {
   vars:
@@ -74,7 +74,7 @@ blank line preceding it.
 
 This example illustrates the blank line before the second context class
 expression (solaris) in the files type promise section:
-```
+```cf3
 bundle agent example
 {
   files:
@@ -102,7 +102,7 @@ should not be indented. Comments about specific promise behavior should be
 placed before the promise at the same indention level as the promiser or on
 the same line after the attribute.
 
-```
+```cf3
 bundle agent example(param1)
 # This is an example bundle to illustrate comments
 # param1 - string - 
@@ -132,7 +132,7 @@ Hash rockets should be aligned within a promise body scope and for grouped
 single line promises.
 
 Example:
-```
+```cf3
 bundle agent example
 {
   files:
