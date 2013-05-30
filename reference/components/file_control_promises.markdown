@@ -28,12 +28,12 @@ outside of body and bundle definitions.
 
 ### namespace
 
+**Description**: The namespace string identifies a private namespace 
+to switch to in order to protect the current file from duplicate definitions.
+
 **Type**: `string`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
-
-**Description**: The namespace string identifies a private namespace 
-to switch to in order to protect the current file from duplicate definitions.
 
 **Example**:
 
