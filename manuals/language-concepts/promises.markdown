@@ -75,9 +75,6 @@ may only be used in agent bundles:
       A promise to configure a file, including its existence, attributes and   
       contents. 
 
-    interfaces:
-      A promise to configure a network interface. 
-
     methods:
       A promise to take on a whole bundle of other promises. 
 

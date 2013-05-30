@@ -47,8 +47,6 @@ following, converging towards a final state:
 
     vars
     classes
-    outputs
-    interfaces
     files
     packages
     guest_environments

@@ -3655,7 +3655,7 @@ with:
 
 The file streams `stdout` and `stderr` are redirected by CFEngine, and
 will not appear in any output unless you run `cf-agent` with the -v
-switch (or enable `verbose` in an `outputs` promise).
+switch.
 
 It is possible to set classes based on the return code of a
 transformer-command in a very flexible way. See the `kept_returncodes`,

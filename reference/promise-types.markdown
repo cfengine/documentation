@@ -1250,14 +1250,11 @@ reports:
 to this as a promisee elsewhere.
 
 A promise handle is like a \`goto' label. It allows you to refer to a promise
- as the promisee of `depends_on` client of another promise. Handles are 
- essential for mapping dependencies and performing impact analyses. In 
- Enterprise versions of CFEngine, promise handles can also be used in 
- `outputs` promises, See [outputs in agent promises]
- (#outputs-in-agent-promises).
+as the promisee of `depends_on` client of another promise. Handles are 
+essential for mapping dependencies and performing impact analyses.
 
 Handles may consist of regular identifier characters. CFEngine automatically 
-\`canonifies' the names of handles to conform to this standard.
+`canonifies' the names of handles to conform to this standard.
 
 **Example**:  
    

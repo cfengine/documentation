@@ -880,12 +880,6 @@ It is equivalent to (and when present, overrides) the command line option
     }
 ```
 
-**Notes**:
-
-Every promiser makes an implicit default promise to use output
-settings declared using `outputs` promises.
-
-
 ### intermittency
 
 **Deprecated**: Yes. This menu option policy does nothing and is 
@@ -1319,7 +1313,3 @@ promise.
     }
 ```
 
-**Notes**:
-
-Every promiser makes an implicit default promise to use output
-settings declared using `outputs` promises.
