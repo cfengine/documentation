@@ -29,7 +29,7 @@ made by `cf-agent`.
 ```
 
 
-### `abortclasses`
+### abortclasses
 
 **Type**: slist
 
@@ -44,7 +44,7 @@ current execution of `cf-agent` to be aborted. This may be used for
 validation, for example. To handle class expressions, simply create
 an alias for the expression with a single name.
 
-
+**Example**:
 ```cf3
      body agent control
     
@@ -54,7 +54,7 @@ an alias for the expression with a single name.
 ```
 
 
-### `abortbundleclasses`
+### abortbundleclasses
 
 **Type**: slist
 
@@ -68,7 +68,7 @@ that `cf-agent` will watch out for. If any of these classes becomes
 defined, it will cause the current bundle to be aborted. This may
 be used for validation, for example.
 
-
+**Example**:
 This example shows how to use the feature to validate input to a
 method bundle.
 
@@ -125,7 +125,7 @@ method bundle.
 ```
 
 
-### `addclasses`
+### addclasses
 
 **Type**: slist
 
@@ -137,6 +137,7 @@ always in the current context.
 This adds global, literal classes. The only predicates available during 
 the control section are hard-classes.
 
+**Example**:
 ```cf3
 
     any::
@@ -156,7 +157,7 @@ used to predicate definition, then they must be defined in terms of
 global hard classes.
 
 
-### `agentaccess`
+### agentaccess
 
 **Type**: slist
 
@@ -169,12 +170,12 @@ This represents a list of user names that will be allowed to attempt
 execution of the current configuration. This is mainly a sanity check 
 rather than a security measure.
 
-
+**Example**:
 ```cf3
      agentaccess => { "mark", "root", "sudo" };
 ```
 
-### `agentfacility`
+### agentfacility
 
 **Type**: (menu option)
 
@@ -196,17 +197,17 @@ rather than a security measure.
 **Description**: The `agentfacility` mentu option policy sets the agent's 
 syslog facility level.
 
+**Example**:
 ```cf3
     agentfacility => "LOG_USER";
 ```
 **Notes**:
 
-This is ignored on Windows, as CFEngine Enterprise creates event
-logs.
+This is ignored on Windows, as CFEngine Enterprise creates event logs.
 
 **See Also**: Manual pages for syslog. 
 
-### `allclassesreport`
+### allclassesreport
 
 **Type**: (menu option)
 
@@ -227,6 +228,7 @@ whether to generate the allclasses.txt report.
 If set to true, the state/allclasses.txt file will be written to disk 
 during agent execution. 
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -243,7 +245,7 @@ results.
 *History*: Was introduced in 3.2.0, Enterprise 2.1.0 (2011)
 
 
-### `alwaysvalidate`
+### alwaysvalidate
 
 **Type**: (menu option)
 
@@ -260,6 +262,7 @@ results.
 flag to determine whether configurations will always be checked before 
 executing, or only after updates.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -282,7 +285,10 @@ will force a revalidation of the input.
 *History*: Was introduced in version 3.1.2,Enterprise 2.0.1 (2010)
 
 
-### `auditing`
+### auditing
+
+**Deprecated*: Yes. This menu option policy is deprecated, does 
+nothing and is kept for backward compatibility.
 
 **Type**: (menu option)
 
@@ -297,9 +303,7 @@ will force a revalidation of the input.
 
 **Default value:** false
 
-**Description**: The `auditing` menu option policy is deprecated, does 
-nothing and is kept for backward compatibility.
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -308,7 +312,7 @@ nothing and is kept for backward compatibility.
 ```
 
 
-### `binarypaddingchar`
+### binarypaddingchar
 
 **Type**: string
 
@@ -325,7 +329,7 @@ jumps would be destroyed. CFEngine will therefore not allow
 replacements that are larger in size than the original, but shorter
 strings can be padded out to the same length.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -336,7 +340,7 @@ strings can be padded out to the same length.
 **Default value**: empty (i.e., no padding)
 
 
-### `bindtointerface`
+### bindtointerface
 
 **Type**: string
 
@@ -349,13 +353,13 @@ On multi-homed hosts, the server and client can bind to a specific
 interface for server traffic. The IP address of the interface must
 be given as the argument, not the device name.
 
-
+**Example**:
 ```cf3
     bindtointerface => "192.168.1.1";
 ```
 
 
-### `hashupdates`
+### hashupdates
 
 **Type**: (menu option)
 
@@ -377,7 +381,7 @@ If 'true' the stored reference value is updated as soon as a warning
 message has been given. As most changes are benign (package updates 
 etc) this is a common setting.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -386,7 +390,7 @@ etc) this is a common setting.
 ```
 
 
-### `childlibpath`
+### childlibpath
 
 **Type**: string
 
@@ -398,7 +402,7 @@ for child processes.
 This string may be used to set the internal `LD_LIBRARY_PATH` environment 
 of the agent.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -407,7 +411,7 @@ of the agent.
 ```
 
 
-### `checksum_alert_time`
+### checksum_alert_time
 
 **Type**: int
 
@@ -415,14 +419,14 @@ of the agent.
 
 **Default value:** 10 mins
 
-**Description**: The value of `checksum_alert_time` represents the 
+**Description**: The value of checksum_alert_time represents the 
 persistence time for the checksum\_alert class.
 
 When checksum changes trigger an alert, this is registered as a
 persistent class. This value determines the longevity of that
 class.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -431,7 +435,7 @@ class.
 ```
 
 
-### `defaultcopytype`
+### defaultcopytype
 
 **Type**: (menu option)
 
@@ -447,6 +451,7 @@ class.
 **Description**: The `defaultcopytype` menu option policy sets the global 
 default policy for comparing source and image in copy transactions.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -456,7 +461,7 @@ default policy for comparing source and image in copy transactions.
 ```
 
 
-### `default_repository`
+### default_repository
 
 **Type**: string
 
@@ -473,6 +478,7 @@ relation to the policy for 'backup' in copying, editing etc. If the
 backups are time-stamped, this becomes effective a version control
 repository. 
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -490,7 +496,7 @@ alternative repository as \_usr\_local\_etc\_postfix.conf.cfsaved.
 to locally override the global repository.
 
 
-### `default_timeout`
+### default_timeout
 
 **Type**: int
 
@@ -504,6 +510,7 @@ time a network connection should attempt to connect.
 The time is in seconds. It is not a guaranteed number, since it
 depends on system behaviour. 
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -515,7 +522,7 @@ depends on system behaviour.
 since not all system calls seem to respect the signals.
 
 
-### `dryrun`
+### dryrun
 
 **Type**: (menu option)
 
@@ -533,6 +540,7 @@ since not all system calls seem to respect the signals.
 **Description**: The `dryrun` menu option, if set, makes no changes to 
 the system, and will only report what it needs to do.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -541,7 +549,7 @@ the system, and will only report what it needs to do.
 ```
 
 
-### `editbinaryfilesize`
+### editbinaryfilesize
 
 **Type**: int
 
@@ -555,7 +563,7 @@ on maximum binary file size to be edited.
 This is a global setting for the file-editing safety-net for binary files,
 and may be overridden on a per-promise basis with `max_file_size`. 
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -574,7 +582,7 @@ generally be set higher than for text files.
 **See Also**: [edit\_defaults in files](#edit_005fdefaults-in-files)
 
 
-### `editfilesize`
+### editfilesize
 
 **Type**: int
 
@@ -588,7 +596,7 @@ file size to be edited.
 This is a global setting for the file-editing safety-net, and may be 
 overridden on a per-promise basis with `max_file_size`.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -604,7 +612,7 @@ Use of special units is allowed (See [Datatypes in CFEngine 3]
 **See Also**: [edit\_defaults in files](#edit_005fdefaults-in-files)
 
 
-### `environment`
+### environment
 
 **Type**: slist
 
@@ -616,6 +624,7 @@ to be inherited by children.
 This may be used to set the runtime environment of the agent process. 
 The values of environment variables are inherited by child commands. 
 
+**Example**:
 ```cf3
     body common control
     {
@@ -635,10 +644,7 @@ The values of environment variables are inherited by child commands.
     }
 ```
 
-**Notes**:
-
-Some interactive programs insist on values being set,
-for example:
+Some interactive programs insist on values being set, for example:
 
 ```cf3
     # Required by apt-cache, debian
@@ -647,7 +653,7 @@ for example:
 ```
 
 
-### `expireafter`
+### expireafter
 
 **Type**: int
 
@@ -661,7 +667,7 @@ before on-going promise repairs are interrupted.
 This represents the locking time after which CFEngine will attempt to 
 kill and restart its attempt to keep a promise.
 
-
+**Example**:
 ```cf3
     body action example
     {
@@ -671,7 +677,7 @@ kill and restart its attempt to keep a promise.
 ```
 
 
-### `files_single_copy`
+### files_single_copy
 
 **Type**: slist
 
@@ -687,7 +693,7 @@ protection against accidential overlap of copies from diverse
 remote sources, or as a first-come-first-served disambiguation tool
 for lazy-evaluation of overlapping file-copy promises.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -696,7 +702,7 @@ for lazy-evaluation of overlapping file-copy promises.
 ```
 
 
-### `files_auto_define`
+### files_auto_define
 
 **Type**: slist
 
@@ -714,7 +720,7 @@ of the class. Thus in the example the copying of /etc/passwd would
 lead to the class 'auto\_\_etc\_passwd' being defined
 automatically.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -723,9 +729,9 @@ automatically.
 ```
 
 
-### `hostnamekeys`
+### hostnamekeys
 
-**Deprecated**: Since 3.1.0. Host identification is now handled 
+**Deprecated**: Yes, since 3.1.0. Host identification is now handled 
 transparently.
 
 **Type**: (menu option)
@@ -748,7 +754,7 @@ This represents a client side choice to base key associations on host
 names rather than IP address. This is useful for hosts with dynamic 
 addresses.
 
-
+**Example**:
 ```cf3
     body server control
     {
@@ -757,7 +763,7 @@ addresses.
 ```
 
 
-### `ifelapsed`
+### ifelapsed
 
 **Type**: int
 
@@ -776,7 +782,7 @@ operations are not performed on every run. Using time classes like
 `Hr12` etc., is one part of this strategy; using `ifelapsed` is
 another which is not tied to a specific time.
 
-
+**Example**:
 ```cf3
     #local
     
@@ -795,7 +801,7 @@ another which is not tied to a specific time.
 ```
 
 
-### `inform`
+### inform
 
 **Type**: (menu option)
 
@@ -816,7 +822,7 @@ level \`permanently' within the class context indicated.
 It is equivalent to (and when present, overrides) the command line option
 '-I'. 
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -830,10 +836,10 @@ Every promiser makes an implicit default promise to use output
 settings declared using `outputs` promises.
 
 
-### `intermittency`
+### intermittency
 
-**Deprecated**: Yes. This option does nothing and is kept for backward 
-compatibility.
+**Deprecated**: Yes. This menu option policy does nothing and is 
+kept for backward  compatibility.
 
 **Type**: (menu option)
 
@@ -849,7 +855,7 @@ compatibility.
 **Default value:** false
 
 
-### `max_children`
+### max_children
 
 **Type**: int
 
@@ -867,7 +873,7 @@ concurrently. Background jobs often lead to contention of the disk
 resources slowing down tasks considerably; there is thus a law of 
 diminishing returns.
 
-
+**Example**:
 ```cf3
     body runagent control
     {
@@ -883,7 +889,7 @@ diminishing returns.
 ```
 
 
-### `maxconnections`
+### maxconnections
 
 **Type**: int
 
@@ -894,6 +900,7 @@ diminishing returns.
 **Description**: The value of `maxconnections` represents the maximum 
 number of outgoing connections to cf-serverd.
 
+**Example**:
 ```cf3
     # client side 
     
@@ -916,7 +923,7 @@ Watch out for kernel limitations for maximum numbers of open file
 descriptors which can limit this.
 
 
-### `mountfilesystems`
+### mountfilesystems
 
 **Type**: (menu option)
 
@@ -937,7 +944,7 @@ whether to mount any filesystems promised.
 It issues the generic command to mount file systems defined in the
 file system table.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -946,7 +953,7 @@ file system table.
 ```
 
 
-### `nonalphanumfiles`
+### nonalphanumfiles
 
 **Type**: (menu option)
 
@@ -966,7 +973,7 @@ whether to warn about filenames with no alphanumeric content.
 
 This test is applied in all recursive/depth searches.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -974,7 +981,7 @@ This test is applied in all recursive/depth searches.
     }
 ```
 
-### `repchar`
+### repchar
 
 **Type**: string
 
@@ -985,6 +992,7 @@ This test is applied in all recursive/depth searches.
 **Description**: The `repchar` string represents a character used to 
 canonize pathnames in the file repository.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -995,7 +1003,7 @@ canonize pathnames in the file repository.
 **Notes**:
 
 
-### `refresh_processes`
+### refresh_processes
 
 **Type**: slist
 
@@ -1011,7 +1019,7 @@ the process table at the start of the named bundle, each time is is
 scheduled. If the list is null, the process list will be reloaded
 at the start of every scheduled bundle.
 
-
+**Example**:
 ```cf3
     body agent control
     {
@@ -1030,7 +1038,7 @@ process table. This keeps improves the efficiency of the agent.
 *History*: Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
 
 
-### `secureinput`
+### secureinput
 
 **Type**: (menu option)
 
@@ -1051,6 +1059,7 @@ input files are writable by unauthorized users.
 If this is set, the agent will not accept an input file that is not
 owned by a privileged user.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -1059,7 +1068,7 @@ owned by a privileged user.
 ```
 
 
-### `sensiblecount`
+### sensiblecount
 
 **Type**: int
 
@@ -1070,6 +1079,7 @@ owned by a privileged user.
 **Description**: The value of `sensiblecount` represents the minimum 
 number of files a mounted filesystem is expected to have.
 
+**Example**:
 ```cf3
     body agent control 
     {
@@ -1078,7 +1088,7 @@ number of files a mounted filesystem is expected to have.
 ```
 
 
-### `sensiblesize`
+### sensiblesize
 
 **Type**: int
 
@@ -1089,6 +1099,7 @@ number of files a mounted filesystem is expected to have.
 **Description**: The value of `sensiblesize` represents the minimum 
 number of bytes a mounted filesystem is expected to have.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -1097,7 +1108,7 @@ number of bytes a mounted filesystem is expected to have.
 ```
 
 
-### `skipidentify`
+### skipidentify
 
 **Type**: (menu option)
 
@@ -1121,6 +1132,7 @@ credentials for a secondary confirmation of their identity to a
 CFEngine server. This causes the agent to ignore its missing DNS
 credentials.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -1129,7 +1141,7 @@ credentials.
 ```
 
 
-### `suspiciousnames`
+### suspiciousnames
 
 **Type**: slist
 
@@ -1141,6 +1153,7 @@ if found during any file search.
 If CFEngine sees these names during recursive (depth) file searches
 it will warn about them.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -1148,7 +1161,7 @@ it will warn about them.
     }
 
 
-### `syslog`
+### syslog
 
 **Type**: (menu option)
 
@@ -1166,6 +1179,7 @@ it will warn about them.
 **Description**: The `syslog` menu option policy determines wether to 
 switch on output to syslog at the inform level.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -1174,7 +1188,7 @@ switch on output to syslog at the inform level.
 ```
 
 
-### `track_value`
+### track_value
 
 **Type**: (menu option)
 
@@ -1198,6 +1212,7 @@ the system automation as a running log, `value_kept`, etc. The
 format of the file is date, sum value kept, sum value repaired, 
 sum value notkept.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -1206,7 +1221,7 @@ sum value notkept.
 ```
 
 
-### `timezone`
+### timezone
 
 **Type**: slist
 
@@ -1215,6 +1230,7 @@ sum value notkept.
 **Description**: The `timezone` slist contains allowed timezones this 
 machine must comply with.
 
+**Example**:
 ```cf3
     body agent control
     {
@@ -1223,7 +1239,7 @@ machine must comply with.
 ```
 
 
-### `verbose`
+### verbose
 
 **Type**: (menu option)
 
@@ -1245,7 +1261,7 @@ It is equivalent to (and when present, overrides) the command line option
 '-v'. Sets the default output level \`permanently' for this
 promise.
 
-
+**Example**:
 ```cf3
     body agent control
     {
