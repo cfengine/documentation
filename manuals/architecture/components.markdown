@@ -142,4 +142,4 @@ client/server network communications.
 
 ****
 
-Next: [Workflows](manuals-architecture-workflows.html)
+Next: [Networking](manuals-architecture-networking.html)

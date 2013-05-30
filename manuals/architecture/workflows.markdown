@@ -7,7 +7,7 @@ alias: manuals-architecture-workflows.html
 tags: [manuals, systems, configuration management, automation, workflows]
 ---
 
-Previous: [CFEngine Components](manuals-architecture-components.html)
+Previous: [Networking](manuals-architecture-networking.html)
 
 ****
 
