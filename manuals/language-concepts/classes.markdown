@@ -58,6 +58,36 @@ where the state of a class can change during the execution of a policy,
 depending on the [order](manuals-language-concepts-normal-ordering.html) in 
 which bundles and promises are evaluated.
 
+### Operands that are functions
+
+If an operand is another function and the return value of the function is 
+undefined, the result of the logical operation will also be undefined. 
+For this reason, when using functions as operators, it is safer to collapse
+the functions down to scalar values and to test if the values are either
+true or false before using them as operands in a logical expression.
+
+e.g.
+
+```cf3
+...
+classes:
+          "variable_1" 
+          expression => fileexists("/etc/aliases.db");
+...
+
+"result" 
+or => { isnewerthan("/etc/aliases", "/etc/aliases.db"),
+"!variable_1" };
+
+```
+
+The function, isnewerthan can return "undefined" if one or other of the files 
+does not exist. In that case, result would also be undefined. By checking the 
+validity of the return value before using it as an operand in a logical expression,
+unpredictable results are avoided. i.e negative knowledge does not necessarily 
+imply that something is not the case, it could simply be unknown. Checking if
+each file exists before calling isnewerthan would avoid this problem.
+
 ## Operators and Precedence
 
 Classes promises define new classes based on combinations of old ones. This is 
@@ -98,7 +128,7 @@ to 2:59pm on Windows XP systems:
     bundle agent myclasses
     {
     classes:
-      "solinus" expression => "linux||solaris";
+      "solinux" expression => "linux||solaris";
       "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
       "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
 
