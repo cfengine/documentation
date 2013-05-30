@@ -71,11 +71,16 @@ advised to prefix them with the namespace like this:
 This is not prepended automatically because references to this class in class 
 expressions cannot be detected and modified automatically.
 
-To access variables or meta-data in bundles in a different namespace, use the 
+To access classes, variables, or meta-data in bundles in a different namespace, use the 
 colon as a namespace prefix:
 
     $(namespace:bundle.variable)  
     $(namespace:bundle_meta.variable)  
+
+Note that this means that if you are in a namespace that's not `default`, you *must* qualify classes from `default` fully:
+
+    default:myclass::
+       "do something" ifvarclass => "default:myotherclass";
 
 ****
 
