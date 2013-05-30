@@ -24,7 +24,7 @@ introducing such dependencies makes configuration brittle.
      }
 
 
-## `hosts`
+### hosts
 
 **Type**: slist
 
@@ -50,7 +50,7 @@ and a port number. If no port number is given, the default CFEngine
 port 5308 is assumed.
 
 
-## `port`
+### port
 
 **Type**: int
 
@@ -58,7 +58,7 @@ port 5308 is assumed.
 
 **Default value:** 5308
 
-**Synopsis**: Default port for cfengine server
+**Synopsis**: Default port for CFEngine server
 
     body hub control
     {
@@ -84,7 +84,7 @@ Changing the standard port number is not recommended practice. You
 should not do it without a good reason.
 
 
-## `force_ipv4`
+### force_ipv4
 
 **Type**: (menu option)
 
@@ -112,7 +112,7 @@ IPv6 should be harmless to most users unless you have a partially
 or misconfigured setup.
 
 
-## `trustkey`
+### trustkey
 
 **Type**: (menu option)
 
@@ -140,7 +140,7 @@ from servers
 If the server's public key has not already been trusted, this
 allows us to accept the key in automated key-exchange.
 
-Note that, as a simple security precaution, trustkey should
+Note that, as a simple security precaution, `trustkey` should
 normally be set to 'false', to avoid key exchange with a server one
 is not one hundred percent sure about, though the risks for a
 client are rather low. On the server-side however, trust is often
@@ -154,7 +154,7 @@ key is manually revoked by a system administrator. Keys are stored
 in WORKDIR/ppkeys.
 
 
-## `encrypt`
+### encrypt
 
 **Type**: (menu option)
 
@@ -180,11 +180,11 @@ in WORKDIR/ppkeys.
 **Notes**:
 
 Client connections are encrypted with using a Blowfish randomly
-generated session key. The intial connection is encrypted using the
+generated session key. The initial connection is encrypted using the
 public/private keys for the client and server hosts.
 
 
-ren`
+### background_children
 
 **Type**: (menu option)
 
@@ -212,7 +212,7 @@ Causes the runagent to attempt parallelized connections to the
 servers.
 
 
-## `max_children`
+### max_children
 
 **Type**: int
 
@@ -245,7 +245,7 @@ the disk resources slowing down tasks considerably; there is thus a
 law of diminishing returns.
 
 
-## `output_to_file`
+### output_to_file
 
 **Type**: (menu option)
 
@@ -274,7 +274,7 @@ Filenames are chosen automatically and placed in the
 WORKDIR/outputs/hostname\_runagent.out.
 
 
-## `output_directory`
+### output_directory
 
 **Type**: string
 
@@ -295,7 +295,7 @@ Defines the location for parallelized output to be saved when
 running `cf-runagent` in parallel mode.
 
 
-## `timeout`
+### timeout
 
 **Type**: int
 

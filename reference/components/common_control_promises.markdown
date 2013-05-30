@@ -7,7 +7,10 @@ alias: reference-components-common-control.html
 tags: [body, bodies, components, common, control, promises, bundlesequence]
 ---
 
-# `common` control promises
+The `common` control body refers to those promises that are
+hard-coded into all the components of CFEngine, and therefore
+affect the behavior of all the components.
+
 
 ```cf3 
      body common control
@@ -32,12 +35,8 @@ tags: [body, bodies, components, common, control, promises, bundlesequence]
      }
 ```
 
-The `common` control body refers to those promises that are
-hard-coded into all the components of CFEngine, and therefore
-affect the behaviour of all the components.
 
-
-## `bundlesequence`
+### bundlesequence
 
 **Type**: slist
 
@@ -118,7 +117,7 @@ may also be specified using the `-b` or `--bundlesequence` command
 line option.
 
 
-## `goal_patterns`
+### goal_patterns
 
 **Type**: slist
 
@@ -143,7 +142,7 @@ promisees that represent business goals in promises.
 *History*: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
 
-## `ignore_missing_bundles`
+### ignore_missing_bundles
 
 **Type**: (menu option)
 
@@ -178,7 +177,7 @@ undefined bundles cause a fatal error in parsing, and a transition
 to failsafe mode.
 
 
-## `ignore_missing_inputs`
+### ignore_missing_inputs
 
 **Type**: (menu option)
 
@@ -213,7 +212,7 @@ effort' with those that do exist. The default of all Booleans is
 false, so the normal behaviour is to signal an error if an input is
 not found.
 
-## `inputs`
+### inputs
 
 **Type**: slist
 
@@ -244,7 +243,7 @@ There is no default value. If no filenames are specified, no other
 filenames will be included in the compilation process.
 
 
-## `version`
+### version
 
 **Type**: string
 
@@ -271,7 +270,7 @@ a special meaning in the context of knowledge management. This
 restriction might be lifted later.
 
 
-## `lastseenexpireafter`
+### lastseenexpireafter
 
 **Type**: int
 
@@ -292,7 +291,7 @@ purged.
 ```
 
 
-## `output_prefix`
+### output_prefix
 
 **Type**: string
 
@@ -315,7 +314,7 @@ On native Windows versions of CFEngine (Enterprise), this
 string is also prefixed messages in the event log.
 
 
-## `domain`
+### domain
 
 **Type**: string
 
@@ -337,7 +336,7 @@ discovery and name-lookup.
 ```
 
 
-## `require_comments`
+### require_comments
 
 **Type**: (menu option)
 
@@ -376,7 +375,7 @@ comments. Variables promises are exempted from this rule, since
 they may be considered self-documenting.
 
 
-## `host_licenses_paid`
+### host_licenses_paid
 
 **Type**: int
 
@@ -404,7 +403,7 @@ all separate configuration files, e.g. failsafe.cf, promises.cf.
 ```
 
 
-## `site_classes`
+### site_classes
 
 **Type**: clist
 
@@ -436,7 +435,7 @@ interpreting location.
 *History*: Was introduced in version 3.2.0, Nova 2.1.0 (2011)
 
 
-## `syslog_host`
+### syslog_host
 
 **Type**: string
 
@@ -465,7 +464,7 @@ CFEngine's components may promise to send data.
 This feature is provided in CFEngine Nova and above.
 
 
-## `syslog_port`
+### syslog_port
 
 **Type**: int
 
@@ -492,7 +491,7 @@ components may promise to send data.
 This feature is provided in CFEngine Nova and above.
 
 
-## `fips_mode`
+### fips_mode
 
 **Type**: (menu option)
 

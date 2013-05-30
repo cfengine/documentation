@@ -7,6 +7,9 @@ alias: reference-components-cf-agent-control-promises.html
 tags: [Reference, Components, cf-agent, control promises]
 ---
 
+Settings describing the details of the fixed behavioral promises
+made by `cf-agent`.
+
     body agent control
     {
     123_456_789::
@@ -23,11 +26,8 @@ tags: [Reference, Components, cf-agent, control promises]
 
     }
 
-Settings describing the details of the fixed behavioural promises
-made by `cf-agent`.
 
-
-#### `abortclasses`
+### abortclasses
 
 **Type**: slist
 
@@ -52,7 +52,7 @@ an alias for the expression with a single name.
 
 
 
-## `abortbundleclasses`
+### abortbundleclasses
 
 **Type**: slist
 
@@ -124,7 +124,7 @@ be used for validation, for example.
 
 
 
-## `addclasses`
+### addclasses
 
 **Type**: slist
 
@@ -155,7 +155,7 @@ global hard classes.
 
 
 
-## `agentaccess`
+### agentaccess
 
 **Type**: slist
 
@@ -173,7 +173,7 @@ than a security measure.
 
 
 
-## `agentfacility`
+### agentfacility
 
 **Type**: (menu option)
 
@@ -204,7 +204,7 @@ logs.
 
 
 
-## `allclassesreport`
+### allclassesreport
 
 **Type**: (menu option)
 
@@ -237,7 +237,7 @@ This option is turned off by default.
 
 
 
-## `alwaysvalidate`
+### alwaysvalidate
 
 **Type**: (menu option)
 
@@ -274,7 +274,7 @@ will force a revalidation of the input.
 
 
 
-## `auditing`
+### auditing
 
 **Type**: (menu option)
 
@@ -304,7 +304,7 @@ current configuration. This means that all details surrounding the
 verification of the current promise will be recorded in the audit
 database.
 
-## `binarypaddingchar`
+### binarypaddingchar
 
 **Type**: string
 
@@ -335,7 +335,7 @@ padding)
 
 
 
-## `bindtointerface`
+### bindtointerface
 
 **Type**: string
 
@@ -353,7 +353,7 @@ be given as the argument, not the device name.
 
 
 
-## `hashupdates`
+### hashupdates
 
 **Type**: (menu option)
 
@@ -384,7 +384,7 @@ updates etc) this is a common setting.
 
 
 
-## `childlibpath`
+### childlibpath
 
 **Type**: string
 
@@ -404,7 +404,7 @@ environment of the agent.
 
 
 
-## `checksum_alert_time`
+### checksum_alert_time
 
 **Type**: int
 
@@ -427,7 +427,7 @@ class.
 
 
 
-## `defaultcopytype`
+### defaultcopytype
 
 **Type**: (menu option)
 
@@ -455,7 +455,7 @@ copy transactions.
 
 
 
-## `default_repository`
+### default_repository
 
 **Type**: string
 
@@ -485,7 +485,7 @@ concatenated with the name of the file. So, for example,
 /usr/local/etc/postfix.conf would ordinarily be stored in an
 alternative repository as \_usr\_local\_etc\_postfix.conf.cfsaved.
 
-## `default_timeout`
+### default_timeout
 
 **Type**: int
 
@@ -507,7 +507,7 @@ The time is in seconds. It is not a guaranteed number, since it
 depends on system behaviour. under Linux, the kernel version plays
 a role, since not all system calls seem to respect the signals.
 
-## `dryrun`
+### dryrun
 
 **Type**: (menu option)
 
@@ -536,7 +536,7 @@ only reports what it needs to do.
 
 
 
-## `editbinaryfilesize`
+### editbinaryfilesize
 
 **Type**: int
 
@@ -568,7 +568,7 @@ generally be set higher than for text files.
 
 
 
-## `editfilesize`
+### editfilesize
 
 **Type**: int
 
@@ -594,7 +594,7 @@ permissible suffixes.
 
 
 
-## `environment`
+### environment
 
 **Type**: slist
 
@@ -632,7 +632,7 @@ e.g.
 
 
 
-## `expireafter`
+### expireafter
 
 **Type**: int
 
@@ -656,7 +656,7 @@ restart its attempt to keep a promise.
 
 
 
-## `files_single_copy`
+### files_single_copy
 
 **Type**: slist
 
@@ -681,7 +681,7 @@ for lazy-evaluation of overlapping file-copy promises.
 
 
 
-## `files_auto_define`
+### files_auto_define
 
 **Type**: slist
 
@@ -707,7 +707,7 @@ automatically.
 
 
 
-## `hostnamekeys`
+### hostnamekeys
 
 **Type**: (menu option)
 
@@ -740,7 +740,7 @@ identification is now handled transparently.
 
 
 
-## `ifelapsed`
+### ifelapsed
 
 **Type**: int
 
@@ -778,7 +778,7 @@ another which is not tied to a specific time.
 
 
 
-## `inform`
+### inform
 
 **Type**: (menu option)
 
@@ -811,7 +811,7 @@ settings declared using `outputs` promises.
 
 
 
-## `intermittency`
+### intermittency
 
 **Type**: (menu option)
 
@@ -834,7 +834,7 @@ for backward compatibility
 
 
 
-## `max_children`
+### max_children
 
 **Type**: int
 
@@ -868,7 +868,7 @@ law of diminishing returns.
 
 
 
-## `maxconnections`
+### maxconnections
 
 **Type**: int
 
@@ -899,7 +899,7 @@ descriptors which can limit this.
 
 
 
-## `mountfilesystems`
+### mountfilesystems
 
 **Type**: (menu option)
 
@@ -928,7 +928,7 @@ file system table.
 
 
 
-## `nonalphanumfiles`
+### nonalphanumfiles
 
 **Type**: (menu option)
 
@@ -957,7 +957,7 @@ This test is applied in all recursive/depth searches.
 
 
 
-## `repchar`
+### repchar
 
 **Type**: string
 
@@ -977,7 +977,7 @@ repository
 
 
 
-## `refresh_processes`
+### refresh_processes
 
 **Type**: slist
 
@@ -1009,7 +1009,7 @@ process table. This keeps improves the efficiency of the agent.
 
 
 
-## `secureinput`
+### secureinput
 
 **Type**: (menu option)
 
@@ -1039,7 +1039,7 @@ owned by a privileged user.
 
 
 
-## `sensiblecount`
+### sensiblecount
 
 **Type**: int
 
@@ -1059,7 +1059,7 @@ expected to have
 
 
 
-## `sensiblesize`
+### sensiblesize
 
 **Type**: int
 
@@ -1079,7 +1079,7 @@ expected to have
 
 
 
-## `skipidentify`
+### skipidentify
 
 **Type**: (menu option)
 
@@ -1111,7 +1111,7 @@ credentials.
 
 
 
-## `suspiciousnames`
+### suspiciousnames
 
 **Type**: slist
 
@@ -1132,7 +1132,7 @@ it will warn about them.
 
 
 
-## `syslog`
+### syslog
 
 **Type**: (menu option)
 
@@ -1159,7 +1159,7 @@ level
 
 
 
-## `track_value`
+### track_value
 
 **Type**: (menu option)
 
@@ -1191,7 +1191,7 @@ format of the file is
 
 
 
-## `timezone`
+### timezone
 
 **Type**: slist
 
@@ -1209,7 +1209,7 @@ with
 
 
 
-## `verbose`
+### verbose
 
 **Type**: (menu option)
 
