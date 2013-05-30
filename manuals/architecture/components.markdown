@@ -11,16 +11,16 @@ Previous: [Automation with CFEngine](manuals-architecture-automation.html)
 
 ****
 
-CFEngine is comprised of a number of components: components
-responsible for implementing promises, components responsible for
-organizing large networks of agents, and other components responsible
-for providing the infrastructure of CFEngine.
+There are a number of components in CFEngine, with each component performing a 
+unique function: components responsible for implementing promises, components 
+responsible for organizing large networks of agents, and other components 
+responsible for providing the infrastructure of CFEngine.
 
-CFEngine's software agents are independent components running on the
-various systems that make up your infrastructure. They communicate with one 
-another as shown in the following figure, using a protocol that allows each 
-host to distribute promises, act upon them, and report status to a central 
-server.
+These components form the basis of automation with CFEngine. They are 
+independent software agents running on the various systems that make up your 
+infrastructure. They communicate with one  another as shown in the following 
+figure, using a protocol that allows each  host to distribute promises, act 
+upon them, and report status to a central server.
 
 ![Components overview](components-overview.png)
 
@@ -88,7 +88,7 @@ Control (RBAC) to certain parts of the existing policy. **TODO: how?**
 
 **TODO: Orchestration? Or explicit network topography page?**
 
-CFEngine's philosophy and modus operandi is to make machines as self-reliant as possible. This is the path to scalability. Sometimes we want machines to be able to detect one another and sample each others' behaviour. This can be accomplished using probes and server functions.
+CFEngine's philosophy and modus operandi is to make machines as self-reliant as possible. This is the path to scalability. Sometimes we want machines to be able to detect one another and sample each others' behavior. This can be accomplished using probes and server functions.
 
 For example, testing whether services are up and running can be a useful probe even from a local host. CFEngine has in-built functions for generically probing the environment; these are designed to encourage decentralized monitoring.
 

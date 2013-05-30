@@ -24,6 +24,13 @@ be given explicit instructions for completing tasks. It is your job to make
 decisions about the systems you are managing and to describe those in suitable 
 promises. It is CFEngine's job to automate and deliver a promise.
 
+CFEngine is a distributed solution that is completely independent of host
+operating systems, network topology or system processes. You describe the
+ideal state of a given system by creating promises and the CFEngine agents
+ensures that the necessary steps are taken to achieve this state. Automation
+in CFEngine is executed through a series of
+[components](manuals-architecture-components.html) that run locally on hosts.
+
 <!--- **TODO** decide if any of this is needed at all in the documentation
 
 This separation of concerns is often violated in systems that require
