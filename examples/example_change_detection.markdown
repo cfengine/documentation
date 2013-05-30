@@ -5,9 +5,11 @@ categories: [Examples, Change detection]
 published: true
 alias: examples-change-detection.html
 tags: [Examples, change detection]
+reviewed: 2013-05-30
+reviewed-by: atsaloli
 ---
 
-This is a standalone policy that will look for changes recursively in a directory and log them in the promise repaired log.
+This is a standalone policy that will look for changes recursively in a directory.
 
 ```cf3
     body common control
