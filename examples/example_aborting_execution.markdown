@@ -17,6 +17,12 @@ If any of these classes becomes defined, it will cause the current bundle to be 
 ```cf3
 
 
+body common control
+
+{
+bundlesequence  => { "testbundle"  };
+}
+
 body agent control
 
 {
@@ -50,14 +56,14 @@ This policy can be found in `/var/cfengine/share/doc/examples/unit_abort.cf`.
 
 This is how the policy runs when the userlist is valid:
 
-    # cf-agent -f ./unit_abort.cf  -b testbundle 
+    # cf-agent -f unit_abort.cf
     R: User name mark is valid at 4 letters
     R: User name john is valid at 4 letters
     # 
 
 This is how the policy runs when the userlist contains an invalid entry:
 
-    # cf-agent -f ./unit_abort.cf  -b testbundle 
+    # cf-agent -f unit_abort.cf
     Bundle testbundle aborted on defined class "invalid"
     # 
 
