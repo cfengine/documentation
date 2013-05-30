@@ -7,35 +7,9 @@ alias: reference-promise-types-miscellaneous.html
 tags: [reference, bundles, common, miscellaneous, promises]
 ---
 
-Common bundles may only contain the promise types that are common to all 
-bodies. Their main function is to define cross-component global definitions.
-
-Common bundles are observed by every agent, whereas the agent specific 
-bundle types are ignored by components other than the intended recipient.
-
-```cf3
-     
-     bundle common globals
-     {
-     vars:
-     
-       "global_var" string = "value";
-     
-     classes:
-     
-       "global_class" expression = "value";
-     }
-     
-```
-
-**TODO: de-miscellaneou-fy**
 
 
-Whereas most promise types are specific to a particular kind of interpretation 
-that requires a typed interpreter (the bundle type), a number of promises can 
-be made in any kind of bundle since they are of a generic input/output nature. 
-These are `vars`, `classes`, and `reports` promises. The specific promise 
-attributes are listed below.
+
 
 #### `action` (body template)
 

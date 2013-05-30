@@ -19,20 +19,54 @@ related to configuring a web server or a file system would be named
 
 Most promise types are specific to a particular kind of interpretation that 
 requires a typed interpreter - the bundle *type*. Bundles belong to the agent 
-that is used to keep the promises in the bundle. So cf-agent has bundles 
+that is used to keep the promises in the bundle. So `cf-agent` has bundles 
 declared as:
 
 ```cf3
     bundle agent my_name
     {
     }
+```
 
-while cf-serverd has bundles declared as:
+while `cf-serverd` has bundles declared as:
 
+```cf3
     bundle server my_name
     {
     }
 ```
+
+and `cf-monitord` has bundles declared as
+
+```cf3
+    bundle monitor my_name
+    {
+    }
+```
+
+A number of promises can be made in any kind of bundle since they are of a generic input/output nature. These are `vars`, `classes`, `defaults`, `meta` and `reports` promises.
+
+Bundles of type `common` may only contain the promise types that are common to 
+all bodies. Their main function is to define cross-component global 
+definitions.
+
+```cf3
+     bundle common globals
+     {
+     vars:
+     
+       "global_var" string = "value";
+     
+     classes:
+     
+       "global_class" expression = "value";
+     }
+     
+```
+
+Common bundles are observed by every agent, whereas the agent 
+specific bundle types are ignored by components other than the intended 
+recipient.
 
 Bundles can be parameterized, allowing for code re-use. If you need to do the 
 same thing over and over again with slight variations, using a promise bundle 
