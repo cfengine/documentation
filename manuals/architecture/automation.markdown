@@ -7,6 +7,10 @@ alias: manuals-architecture-automation.html
 tags: [manuals, systems, configuration management, automation]
 ---
 
+Previous: [CFEngine Architecture](manuals-architecture.html)
+
+***
+
 Users are good at researching solutions and making design decisions, but awful 
 at repeated execution. Machines are pitiful at making decisions, but very good 
 at reliable implementation at very large scale. It makes sense to let each 
@@ -48,4 +52,6 @@ to make progress with a bad habit is to recognize it as one and be
 willing to abandon the habit.
 -->
 
-| Previous: [CFEngine Architecture](manuals-architecture.html) | Next: [CFEngine Components](manuals-architecture-components.html) |
+****
+
+Next: [CFEngine Components](manuals-architecture-components.html)

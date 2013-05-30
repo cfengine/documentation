@@ -7,6 +7,10 @@ alias: manuals-architecture-components.html
 tags: [manuals, systems, configuration management, automation, components, cf-agent]
 ---
 
+Previous: [Automation with CFEngine](manuals-architecture-automation.html)
+
+****
+
 CFEngine is comprised of a number of components: components
 responsible for implementing promises, components responsible for
 organizing large networks of agents, and other components responsible
@@ -88,5 +92,6 @@ CFEngine's philosophy and modus operandi is to make machines as self-reliant as 
 
 For example, testing whether services are up and running can be a useful probe even from a local host. CFEngine has in-built functions for generically probing the environment; these are designed to encourage decentralized monitoring.
 
+****
 
-| Previous: [Automation with CFEngine](manuals-architecture-automation.html) | Next: [Workflows](manuals-architecture-workflows.html) |
+Next: [Workflows](manuals-architecture-workflows.html)

@@ -7,6 +7,10 @@ alias: manuals-architecture-configuration-file-structure.html
 tags: [manuals, systems, configuration management, automation, policy, failsafe, update, file system]
 ---
 
+Previous: [Workflows](manuals-architecture-workflows.html)
+
+****
+
 **TODO: include some extracts, or link to github**
 **TODO: Documentation for default policy layout/structure including 
 cf_promises_validated and update mechanism **
@@ -89,4 +93,6 @@ to client machines, the failsafe.cf policy on those machines will run (and
 will eventually download a working policy, once you fix it on the policy 
 host).
 
-| Previous: [Workflows](manuals-architecture-workflows.html) | Next: [The Working Directory](manuals-architecture-work-directory.html) |
+****
+
+Next: [The Working Directory](manuals-architecture-work-directory.html)

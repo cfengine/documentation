@@ -7,6 +7,10 @@ alias: manuals-architecture-testing-policies.html
 tags: [manuals, systems, configuration management, automation, testing, work directory]
 ---
 
+Previous: [Controlling Frequency](manuals-architecture-controlling-frequency.html)
+
+****
+
 One of the practical advantages of CFEngine is that you can test it
 without the need for root or administrator privileges. This is useful if you 
 are concerned about manipulating important system files, but naturally limits 
@@ -54,5 +58,3 @@ than the CFEngine 2 binaries. They all start with the cf- prefix.
 
          host$ ~/.cfagent/bin/cf-agent
 
-
-| Previous: [Controlling Frequency](manuals-architecture-controlling-frequency.html) |
