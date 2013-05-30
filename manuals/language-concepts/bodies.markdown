@@ -11,24 +11,11 @@ Previous: [Bundles](manuals-language-concepts-bundles.html)
 
 ****
 
-#### Defining Promises
-
-CFEngine's promises are declarative, you tell CFEngine what promises you want 
-it to keep, and it keeps them. With CFEngine you can clearly specify the 
-desired end-state of a system in the form of promises and let CFEngine take 
-care of the rest.
-
-[Promises](manuals-language-concepts-promises.html) are the fundamental 
-statements that make up an entire system based on a series of commitments. 
-While the idea of a promise is very simple - a commitment or a guarantee to 
-satisfy a condition - the definition of a promise can grow complicated. 
-Complex promises are best understood by breaking them down into independent 
-components.
-
-### Bodies
-
-The CFEngine reserved word `body` is used to encapsulate the details of complex
-attribute values. Bodies can optionally have parameters.
+While the idea of a promise is very simple, the definition of a promise can 
+grow complicated. Complex promises are best understood by breaking them down 
+into independent, re-usable components. The CFEngine reserved word `body` is 
+used to encapsulate the details of complex promise attribute values. Bodies 
+can optionally have parameters.
 
 ```cf3
     bundle agent example
@@ -67,14 +54,11 @@ respectively.
     }
 ```
 
-The `body` of the `system` promise consists of the file permissions, the 
-file owner, and the file group. `system` has a type that matches the left 
-hand side `perms` of the declaration in the `files` promise. The `body` of the
-`mog` promise also consists of the file permissions, file owner, and file group
-but the values of those attributes are passed in as parameters.
+Like [bundles](manuals-language-concepts-bundles.html), bodies have a *type*. The type of the body has to mach the left-hand side of the promise attribute in which it is used. In this case, `files` promises have an attribute `perms` that can be associated with any body of type `perms`.
 
-Such bodies can be reused in multiple promises.
+The attributes within the body are then type specific. Bodies of type `perms` consist of the file permissions, the file owner, and the file group, which the instance `system` sets to `644`, `root` and `root`, respectively.
 
+Such bodies can be reused in multiple promises. Like bundles, bodies can have parameters. The body `mog` also consists of the file permissions, file owner, and file group, but the values of those attributes are passed in as parameters.
 
 #### Implicit, Control Bodies
 
