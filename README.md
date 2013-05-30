@@ -94,7 +94,7 @@ Give files unique names to avoid overwrites in the generated website.
 See [Style Guide - Charts and graphs](#Charts_and_graphs) for style
 requirements for images.
 
-##Style Guide
+## Content Style Guide
 
 Make sure you follow this style guide to make using CFEngine and the
 documentation a consistent and pleasant experience.
@@ -159,17 +159,12 @@ As a general note, avoiding abbreviations provides better readability.
 * stick to black, white, and grey
 * avoid background fill colors on large items
 
-### Code
+## Technical reference documentation
 
-* use proper, consistent indentation **TODO: coding style guide**
-* always run it through Pygments plus the appropriate lexer
-* avoid custom color schemes and hand-coded HTML
-* document the example after the example code
+### Structure
 
-### Structure of technical reference documentation
-
-The structure of the technical documentation about CFEngine attributes or 
-functions is as follows:
+The structure of the technical documentation about CFEngine attributes, 
+functions etc is as follows:
 
     ### Language Element
 
@@ -209,6 +204,14 @@ functions is as follows:
     the style guide.
     
     In case of menu option types, make sure you cover all allowed values.
+
+### Code
+
+* follow the [Policy Style Guide](manuals/policy-style.markdown)
+  in examples and code snippets
+* always run it through Pygments plus the appropriate lexer
+* avoid custom color schemes and hand-coded HTML
+* document the example after the example code
 
 ## Publishing
 
