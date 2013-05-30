@@ -430,4 +430,4 @@ with great care!
 
 ****
 
-Next: [Namespaces](language-concepts-namespaces.html)
+Next: [Namespaces](manuals-language-concepts-namespaces.html)
