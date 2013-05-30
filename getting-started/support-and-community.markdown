@@ -15,8 +15,7 @@ services](https://cfengine.com/support) are generally available.
 Help from the CFEngine community is available to all users on our Google 
 Groups forums:
 
-* [Free 25- 25 hosts 
-  edition](https://groups.google.com/forum/?hl=en&fromgroups#!forum/cfengine-enterprise-free-25) - 
+* [Free 25- 25 hosts edition](https://groups.google.com/forum/?hl=en&fromgroups#!forum/cfengine-enterprise-free-25) - 
   help for people who downloaded the free version of CFEngine 3 Enterprise
 * [help-cfengine](https://groups.google.com/forum/?hl=en&fromgroups#!forum/help-cfengine) -
   a general forum for all of your CFEngine questions
