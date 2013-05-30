@@ -7,6 +7,10 @@ alias: manuals-language-concepts-namespaces.html
 tags: [manuals, language, syntax, concepts, namespace]
 ---
 
+Previous: [Pattern Matching and Referencing](manuals-language-concepts-pattern-matching-and-referencing.html)
+
+****
+
 Namespaces are private bundle and body contexts, allowing multiple files to 
 define the bundles and bodies with the same name, without conflict.
 
@@ -72,3 +76,7 @@ colon as a namespace prefix:
 
     $(namespace:bundle.variable)  
     $(namespace:bundle_meta.variable)  
+
+****
+
+Next: [Language Concepts](language-concepts.html)
