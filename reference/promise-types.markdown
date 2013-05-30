@@ -1,15 +1,42 @@
 ---
 layout: default
-title: Common attributes
-categories: [Reference, Promise Types, Common attributes]
+title: Promise Types and Common Attributes
+categories: [Reference, Promise Types]
 published: true
-alias: reference-promise-types-miscellaneous.html
-tags: [reference, bundles, common, miscellaneous, promises]
+alias: reference-promise-types.html
+tags: [reference, bundles, common, promises]
 ---
 
+Within a bundle, the promise types are executed in a round-robin fashion in the following 'normal ordering'. Which promise types are available depends on the bundle type:
 
 
+| Promise Type            ||| Bundle Type                    ||
+|                         | common | agent | server | monitor |
+|-------------------------|:------:|:-----:|:------:|:--------|
+| [meta](reference-promise-types-meta.html) | x      | x     | x      | x       |
+| [vars](reference-promise-types-vars.html) | x      | x     | x      | x       |
+| [defaults](reference-promise-types-defaults.html) | x      | x     | x      | x       |
+| [classes](reference-promise-types-classes.html) | x      | x     | x      | x       |
+| [files](reference-promise-types-files.html) |        | x     |        |         |
+| [packages](reference-promise-types-packages.html) |        | x     |        |         |
+| [guest_environments](reference-promise-types-guest_environments.html) |        | x     |        |         |
+| [methods](reference-promise-types-methods.html) |        | x     |        |         |
+| [processes](reference-promise-types-processes.html) |        | x     |        |         |
+| [services](reference-promise-types-services.html) |        | x     |        |         |
+| [commands](reference-promise-types-commands.html) |        | x     |        |         |
+| [storage](reference-promise-types-storage.html) |        | x     |        |         |
+| [databases](reference-promise-types-databases.html) |        | x     |        |         |
+| [access](reference-promise-types-access.html) |        |       | x      |         |
+| [roles](reference-promise-types-roles.html) |        |       | x      |         |
+| [measurements](reference-promise-types-measurements.html) |        |       |        | x       |
+| [reports](reference-promise-types-reports.html) | x      | x     | x      | x       |
 
+See each promise type's reference documentation for detailed lists of 
+available attributes.
+
+## Common Attributes
+
+The following attributes are available to all promise types.
 
 #### `action` (body template)
 
