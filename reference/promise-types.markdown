@@ -9,7 +9,6 @@ tags: [reference, bundles, common, promises]
 
 Within a bundle, the promise types are executed in a round-robin fashion in the following 'normal ordering'. Which promise types are available depends on the bundle type:
 
-|                || Bundle Type                    |||
 | Promise Type   | common | agent | server | monitor |
 |----------------|:------:|:-----:|:------:|:--------|
 | [meta](reference-promise-types-meta.html) | x      | x     | x      | x       |
