@@ -7,6 +7,10 @@ alias: manuals-language-concepts-pattern-matching-and-referencing.html
 tags: [manuals, language, syntax, concepts, pattern, regexp, matching]
 ---
 
+Previous: [Loops](manuals-language-concepts-loops.html)
+
+****
+
 One of the strengths of CFEngine 3 is the ability to recognize and exploit 
 patterns. All string patterns in CFEngine 3 are matched using PCRE regular 
 expressions.
@@ -423,3 +427,7 @@ work slightly differently, so check the documentation for the specifics):
 
 The `/s`, `/m`, and `/x` switches from PCRE are also available, but use them 
 with great care!
+
+****
+
+Next: [Namespaces](language-concepts-namespaces.html)

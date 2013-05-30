@@ -7,6 +7,10 @@ alias: manuals-language-concepts-classes.html
 tags: [manuals, language, syntax, concepts, classes, decisions]
 ---
 
+Previous: [Bodies](manuals-language-concepts-bodies.html)
+
+****
+
 Classes are used to apply promises only to particular environments, depending 
 on context. A promise might only apply to Linux systems, or should only be 
 applied on Sundays, or only when a 
@@ -170,7 +174,7 @@ to 2:59pm on Windows XP systems:
     bundle agent myclasses
     {
     classes:
-      "solinus" expression => "linux||solaris";
+      "solinux" expression => "linux||solaris";
       "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
       "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
 
@@ -196,6 +200,35 @@ This example defines a few soft classes local to the `myclasses` bundle.
 * The `oth_class` soft class is defined as the combination of two `fileexists`
   functions - `/etc/shadow` and `/etc/passwd`.  If both of these files are 
   present the `oth_class` class will also be set.
+
+### Operands that are functions
+
+If an operand is another function and the return value of the function is 
+undefined, the result of the logical operation will also be undefined. 
+For this reason, when using functions as operators, it is safer to collapse
+the functions down to scalar values and to test if the values are either
+true or false before using them as operands in a logical expression.
+
+e.g.
+
+```cf3
+    ...
+    classes:
+            "variable_1" 
+            expression => fileexists("/etc/aliases.db");
+    ...
+
+    "result" 
+    or => { isnewerthan("/etc/aliases", "/etc/aliases.db"),
+    "!variable_1" };
+```
+
+The function, `isnewerthan` can return "undefined" if one or other of the files 
+does not exist. In that case, result would also be undefined. By checking the 
+validity of the return value before using it as an operand in a logical expression,
+unpredictable results are avoided. i.e negative knowledge does not necessarily 
+imply that something is not the case, it could simply be unknown. Checking if
+each file exists before calling `isnewerthan` would avoid this problem.
 
 
 ## Global and Local classes
@@ -275,3 +308,7 @@ are local to those bundles.
 The `local_two` bundle promises a report "Success" which applies only if 
 `zero.!one.two` evaluates to true. Within the `local_two` scope this evaluates 
 to `true` because the `one` class is not set.
+
+****
+
+Next: [Variables](manuals-language-concepts-variables.html)

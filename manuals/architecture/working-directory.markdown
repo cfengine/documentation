@@ -7,6 +7,10 @@ alias: manuals-architecture-work-directory.html
 tags: [manuals, systems, configuration management, automation, directory, work directory]
 ---
 
+Previous: [Default Configuration File Structure](manuals-architecture-configuration-file-structure.html)
+
+****
+
 In order to achieve the desired simplifications, it was decided to
 reserve a private work area for the CFEngine tool-set.
 
@@ -38,3 +42,6 @@ are often mailed to the administrator by `cf-execd`, or can be
 copied to another central location and viewed in an alternative
 browser.
 
+****
+
+Next: [Controlling Frequency](manuals-architecture-controlling-frequency.html)

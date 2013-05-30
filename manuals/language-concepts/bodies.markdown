@@ -7,6 +7,10 @@ alias: manuals-language-concepts-bodies.html
 tags: [language, concepts, syntax, body]
 ---
 
+Previous: [Bundles](manuals-language-concepts-bundles.html)
+
+****
+
 #### Defining Promises
 
 CFEngine's promises are declarative, you tell CFEngine what promises you want 
@@ -42,7 +46,7 @@ attribute values. Bodies can optionally have parameters.
     }
 ```
 
-The promisors in this example are the files `/etc/passwd` and
+The promisers in this example are the files `/etc/passwd` and
 `/home/bill/id_rsa.pub`. The promise is that the `perms` attribute type is
 associated with a named, user-defined promise body `system` and `mog`
 respectively.
@@ -76,7 +80,7 @@ Such bodies can be reused in multiple promises.
 
 A special case for bodies are the implicit promises that configure the basic 
 operation of CFEngine. These are hard-coded to CFEngine and control the basic 
-operation of the agents, such as cf-agent and cf-serverd. Each agent has a 
+operation of the agents, such as `cf-agent` and `cf-serverd`. Each agent has a 
 special body whose name is `control`.
 
 ```cf3
@@ -98,3 +102,7 @@ This promise bodies configures the `bundlesequence` to execute on a cf-agent.
 This promise bodies defines the clients allowed to connect to a cf-serverd. 
 For more information, see the reference documentation about the [CFEngine 
 Agents](reference-components.html)
+
+****
+
+Next: [Classes](manuals-language-concepts-classes.html)

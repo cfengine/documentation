@@ -7,6 +7,10 @@ alias: manuals-architecture-workflows.html
 tags: [manuals, systems, configuration management, automation, workflows]
 ---
 
+Previous: [CFEngine Components](manuals-architecture-components.html)
+
+****
+
 CFEngine operates autonomously in a network, under your guidance. While 
 CFEngine supports anything from 1 servers to 100,000+ servers, the essence of 
 any CFEngine deployment is the same.
@@ -112,3 +116,7 @@ this pull-based architecture, CFEngine will tolerate network outages and will
 recover from deployment errors easily. By placing the burden of responsibility 
 for decision at the top, and for implementation at the bottom, we avoid 
 needless fragility and keep two independent quality assurance processes apart.
+
+****
+
+Next: [Default Configuration File Structure](manuals-architecture-configuration-file-structure.html)

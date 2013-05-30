@@ -25,7 +25,7 @@ to developing the integrated monitoring capabilities of CFEngine.
 ```
 
 
-## `forgetrate`
+### forgetrate
 
 **Type**: real
 
@@ -49,7 +49,37 @@ parameter effectively determines (together with the monitoring
 rate) how quickly CFEngine forgets its previous history.
 
 
-## `monitorfacility`
+### histograms
+
+**Type**: (menu option)
+
+**Allowed input range**:
+
+    true
+    false
+    yes
+    no
+    on
+    off
+
+**Default value:** true
+
+**Synopsis**: Ignored, kept for backward compatibility
+
+    body monitor control
+    {
+    histograms => "true";
+    }
+
+**Notes**:
+
+`cf-monitord` now always keeps histograms information, so this
+option is a no-op kept for backward compatibility. It used to cause
+CFEngine to learn the conformally transformed distributions of
+fluctuations about the mean.
+
+
+### monitorfacility
 
 **Type**: (menu option)
 
@@ -80,37 +110,7 @@ rate) how quickly CFEngine forgets its previous history.
 See notes for syslog.
 
 
-## `histograms`
-
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
-
-**Default value:** true
-
-**Synopsis**: Ignored, kept for backward compatibility
-
-    body monitor control
-    {
-    histograms => "true";
-    }
-
-**Notes**:
-
-`cf-monitord` now always keeps histograms information, so this
-option is a no-op kept for backward compatibility. It used to cause
-CFEngine to learn the conformally transformed distributions of
-fluctuations about the mean.
-
-
-## `tcpdump`
+### tcpdump
 
 **Type**: (menu option)
 
@@ -137,7 +137,7 @@ fluctuations about the mean.
 Interface with TCP stream if possible.
 
 
-## `tcpdumpcommand`
+### tcpdumpcommand
 
 **Type**: string
 

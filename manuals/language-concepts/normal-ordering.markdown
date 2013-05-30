@@ -7,6 +7,10 @@ alias: manuals-language-concepts-normal-ordering.html
 tags: [manuals, language, syntax, concepts, ordering, depends_on]
 ---
 
+Previous: [Variables](manuals-language-concepts-variables.html)
+
+****
+
 CFEngine takes a pragmatic point of view to ordering. When promising `scalar` 
 attributes and properties, ordering is irrelevant and needs not be considered. 
 More complex patterned data structures require ordering to be preserved, e.g. 
@@ -117,3 +121,6 @@ Within a knowledge bundle, the normal ordering is:
     reports
 -->
 
+****
+
+Next: [Loops](manuals-language-concepts-loops.html)

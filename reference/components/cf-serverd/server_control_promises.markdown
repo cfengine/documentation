@@ -25,7 +25,7 @@ files must be granted in addition.
 ```
 
 
-## `allowallconnects`
+### allowallconnects
 
 **Type**: slist
 
@@ -59,7 +59,7 @@ will potentially match more than one hostname (e.g.,
 `www.domain.com`).
 
 
-## `allowconnects`
+### allowconnects
 
 **Type**: slist
 
@@ -86,7 +86,7 @@ See also the warning about regular expressions in
 `allowallconnects`.
 
 
-## `allowusers`
+### allowusers
 
 **Type**: slist
 
@@ -104,7 +104,7 @@ identities during client-server connections. These may or may not
 correspond to system identities on the server-side system.
 
 
-## `auditing`
+### auditing
 
 **Type**: (menu option)
 
@@ -134,7 +134,7 @@ verification of the current promise will be recorded in the audit
 database.
 
 
-## `bindtointerface`
+### bindtointerface
 
 **Type**: string
 
@@ -152,7 +152,7 @@ interface for server traffic. The IP address of the interface must
 be given as the argument, not the device name.
 
 
-## `cfruncommand`
+### cfruncommand
 
 **Type**: string
 
@@ -175,7 +175,7 @@ could also point to the `cf-execd`, or even another program or
 shell command at your own risk.
 
 
-## `call_collect_interval`
+### call_collect_interval
 
 CFEngine Enterprise only.
 
@@ -277,7 +277,7 @@ The full configuration would look something like this
 ```
 
 
-## `collect_window`
+### collect_window
 
 CFEngine Enterprise only.
 
@@ -298,7 +298,7 @@ open to a hub to attempt a report transfer before it is closed
 The time is measured in seconds, default value 10s.
 
 
-## `denybadclocks`
+### denybadclocks
 
 **Type**: (menu option)
 
@@ -333,7 +333,7 @@ asynchronization and also a protection against Denial of Service
 attempts based on clock corruption.
 
 
-## `denyconnects`
+### denyconnects
 
 **Type**: slist
 
@@ -352,7 +352,7 @@ server port
 Hosts or IP addresses that are explicitly denied access. This
 should only be used in special circumstances. One should never
 grant generic access to everything and then deny special cases.
-Since the default server behaviour is to grant no access to
+Since the default server behavior is to grant no access to
 anything, this list is unnecessary unless you have already granted
 access to some set of hosts using a generic pattern, to which you
 intend to make an exception.
@@ -361,7 +361,7 @@ See also the warning about regular expressions in
 `allowallconnects`.
 
 
-## `dynamicaddresses`
+### dynamicaddresses
 
 **Type**: slist
 
@@ -386,7 +386,7 @@ public keys in files that do not match the current hostname or IP.
 handled transparently.
 
 
-## `hostnamekeys`
+### hostnamekeys
 
 **Type**: (menu option)
 
@@ -418,7 +418,7 @@ than IP address. This is useful for hosts with dynamic addresses.
 identification is now handled transparently.
 
 
-## `keycacheTTL`
+### keycacheTTL
 
 **Type**: int
 
@@ -439,7 +439,7 @@ cache
 *History*: Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010)
 
 
-## `logallconnections`
+### logallconnections
 
 **Type**: (menu option)
 
@@ -467,7 +467,7 @@ connections to syslog
 If set, the server will record connection attempts in syslog.
 
 
-## `logencryptedtransfers`
+### logencryptedtransfers
 
 **Type**: (menu option)
 
@@ -497,7 +497,7 @@ requires to encrypted in order to grant access (see `ifencrypted`)
 to syslog. These files are deemed to be particularly sensitive.
 
 
-## `maxconnections`
+### maxconnections
 
 **Type**: int
 
@@ -527,7 +527,7 @@ Watch out for kernel limitations for maximum numbers of open file
 descriptors which can limit this.
 
 
-## `port`
+### port
 
 **Type**: int
 
@@ -561,7 +561,7 @@ Changing the standard port number is not recommended practice. You
 should not do it without a good reason.
 
 
-## `serverfacility`
+### serverfacility
 
 **Type**: (menu option)
 
@@ -592,7 +592,7 @@ should not do it without a good reason.
 See syslog notes.
 
 
-## `skipverify`
+### skipverify
 
 **Type**: slist
 
@@ -615,7 +615,7 @@ See also the warning about regular expressions in
 `allowallconnects`.
 
 
-## `trustkeysfrom`
+### trustkeysfrom
 
 **Type**: slist
 
@@ -637,7 +637,7 @@ controlled circumstances.
 See also the warning about regular expressions in `allowallconnects`.
 
 
-## `listen`
+### listen
 
 **Type**: (menu option)
 

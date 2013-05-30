@@ -7,7 +7,10 @@ alias: reference-components-common-control.html
 tags: [body, bodies, components, common, control, promises, bundlesequence]
 ---
 
-# `common` control promises
+The `common` control body refers to those promises that are
+hard-coded into all the components of CFEngine, and therefore
+affect the behavior of all the components.
+
 
 ```cf3 
      body common control
@@ -32,12 +35,8 @@ tags: [body, bodies, components, common, control, promises, bundlesequence]
      }
 ```
 
-The `common` control body refers to those promises that are
-hard-coded into all the components of CFEngine, and therefore
-affect the behaviour of all the components.
 
-
-## `bundlesequence`
+### bundlesequence
 
 **Type**: slist
 
@@ -50,6 +49,8 @@ The `bundlesequence` determines which of the compiled bundles will
 be executed and in what order they will be executed. The list
 refers to the names of bundles (which might be parameterized
 function-like objects).
+
+**Example**:
 
 ```cf3
     body common control
@@ -74,6 +75,8 @@ bundles act like characteristics of the systems. If you want
 different systems to have different bundlesequences, distinguish
 them with classes
 
+**Example**:
+
 ```cf3
     webservers::
     
@@ -85,7 +88,7 @@ them with classes
 ```
 
 If you want to add a basic common sequence to all sequences, then
-use global variable lists to do this
+use global variable lists to do this:
 
 ```cf3
     body common control
@@ -114,7 +117,7 @@ may also be specified using the `-b` or `--bundlesequence` command
 line option.
 
 
-## `goal_patterns`
+### goal_patterns
 
 **Type**: slist
 
@@ -127,6 +130,8 @@ It is used as identifier to mark business and organizational goals in
 commercial versions of CFEngine. CFEngine uses this to match
 promisees that represent business goals in promises.
 
+**Example**:
+
 ```cf3
     body common control
     {
@@ -137,7 +142,7 @@ promisees that represent business goals in promises.
 *History*: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
 
-## `ignore_missing_bundles`
+### ignore_missing_bundles
 
 **Type**: (menu option)
 
@@ -158,6 +163,8 @@ whether to ignore missing bundles.
 If `ignore_missing_bundles` is set to true, if any bundles in the bundle 
 sequence do not exist, ignore and continue.
 
+**Example**:
+
 ```cf3
     ignore_missing_bundles => "true";
 ```
@@ -170,7 +177,7 @@ undefined bundles cause a fatal error in parsing, and a transition
 to failsafe mode.
 
 
-## `ignore_missing_inputs`
+### ignore_missing_inputs
 
 **Type**: (menu option)
 
@@ -183,13 +190,20 @@ to failsafe mode.
                    on
                    off
 
-**Default value:** false
+**Default value**: false
 
 **Description**: If any input files do not exist, ignore and continue
 
 The inputs lists determines which files are parsed by CFEngine.
 Normally stringent security checks are made on input files to
 prevent abuse of the system by unauthorized users. 
+
+**Example**:
+
+```cf3
+    ignore_missing_inputs => "true";
+```
+**Notes**:
 
 Sometimes however, it is appropriate to consider the automatic plug-in of
 modules that might or might not exist. This option permits CFEngine
@@ -198,12 +212,7 @@ effort' with those that do exist. The default of all Booleans is
 false, so the normal behaviour is to signal an error if an input is
 not found.
 
-```cf3
-    ignore_missing_inputs => "true";
-```
-
-
-## `inputs`
+### inputs
 
 **Type**: slist
 
@@ -215,6 +224,8 @@ The filenames specified are all assumed to be in the same directory
 as the file which references them (this is usually
 `$(sys.workdir)/inputs`, but may be overridden by the `-f` or
 `--file` command line option.
+
+**Example**:
 
 ```cf3
     body common control
@@ -232,7 +243,7 @@ There is no default value. If no filenames are specified, no other
 filenames will be included in the compilation process.
 
 
-## `version`
+### version
 
 **Type**: string
 
@@ -242,6 +253,8 @@ filenames will be included in the compilation process.
 configuration. 
 
 It is is used in error messages and reports.
+
+**Example**:
 
 ```cf3
     body common control
@@ -257,7 +270,7 @@ a special meaning in the context of knowledge management. This
 restriction might be lifted later.
 
 
-## `lastseenexpireafter`
+### lastseenexpireafter
 
 **Type**: int
 
@@ -268,6 +281,8 @@ restriction might be lifted later.
 **Description**: The value of `lastseenexpireafter` is the number of minutes after which last-seen entries are
 purged.
 
+**Example**:
+
 ```cf3
     body common control
     {
@@ -276,16 +291,15 @@ purged.
 ```
 
 
-
-
-
-## `output_prefix`
+### output_prefix
 
 **Type**: string
 
 **Allowed input range**: (arbitrary string)
 
 **Description**: The string prefix for standard output
+
+**Example**:
 
 ```cf3
     body common control
@@ -300,10 +314,7 @@ On native Windows versions of CFEngine (Enterprise), this
 string is also prefixed messages in the event log.
 
 
-
-
-
-## `domain`
+### domain
 
 **Type**: string
 
@@ -315,6 +326,7 @@ There is no standard, universal or reliable way of determining the
 DNS domain name of a host, so it can be set explicitly to simplify
 discovery and name-lookup.
 
+**Example**:
 
 ```cf3
     body common control
@@ -324,9 +336,7 @@ discovery and name-lookup.
 ```
 
 
-
-
-## `require_comments`
+### require_comments
 
 **Type**: (menu option)
 
@@ -347,6 +357,8 @@ promises that do not have comment documentation.
 This may be used as a policy Quality Assurance measure, to remind
 policy makers to properly document their promises. 
 
+**Example**:
+
 ```cf3
     body common control
     
@@ -363,10 +375,7 @@ comments. Variables promises are exempted from this rule, since
 they may be considered self-documenting.
 
 
-
-
-
-## `host_licenses_paid`
+### host_licenses_paid
 
 **Type**: int
 
@@ -384,6 +393,7 @@ the number of licenses they have paid for. This is tallied with the
 number of licenses granted. This declaration should be placed in
 all separate configuration files, e.g. failsafe.cf, promises.cf.
 
+**Example**:
 
 ```cf3
     body common control
@@ -393,10 +403,7 @@ all separate configuration files, e.g. failsafe.cf, promises.cf.
 ```
 
 
-
-
-
-## `site_classes`
+### site_classes
 
 **Type**: clist
 
@@ -405,6 +412,8 @@ all separate configuration files, e.g. failsafe.cf, promises.cf.
 **Description**: A `site_classes` clist contains classes that will represent 
 geographical site locations for hosts. These should be defined elsewhere in 
 the configuration in a classes promise.
+
+**Example**:
 
 ```cf3
     body common control
@@ -426,10 +435,7 @@ interpreting location.
 *History*: Was introduced in version 3.2.0, Nova 2.1.0 (2011)
 
 
-
-
-
-## `syslog_host`
+### syslog_host
 
 **Type**: string
 
@@ -442,6 +448,8 @@ host to which syslog messages should be sent directly by UDP.
 
 This is the hostname or IP address of a local syslog service to which all
 CFEngine's components may promise to send data. 
+
+**Example**:
 
 ```cf3
     body common control
@@ -456,10 +464,7 @@ CFEngine's components may promise to send data.
 This feature is provided in CFEngine Nova and above.
 
 
-
-
-
-## `syslog_port`
+### syslog_port
 
 **Type**: int
 
@@ -471,6 +476,8 @@ of a UDP syslog service.
 It is the UDP port of a local syslog service to which all CFEngine's
 components may promise to send data. 
 
+**Example**:
+
 ```cf3
     body common control
     {
@@ -481,14 +488,10 @@ components may promise to send data.
 
 **Notes**:
 
-This feature is provided in
-CFEngine Nova and above.
+This feature is provided in CFEngine Nova and above.
 
 
-
-
-
-## `fips_mode`
+### fips_mode
 
 **Type**: (menu option)
 
@@ -505,6 +508,8 @@ CFEngine Nova and above.
 
 **Description**: The `fips_mode` menu option policy determines whether 
 to activate full FIPS mode restrictions.
+
+**Example**:
 
 ```cf3
     body common control
