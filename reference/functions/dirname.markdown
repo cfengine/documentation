@@ -30,3 +30,5 @@ vars:
 
 This function returns directory name for the argument. If directory name
 is provided, name of parent directory is returned.
+
+See also: `lastnode`, `filestat`, `splitstring`.
