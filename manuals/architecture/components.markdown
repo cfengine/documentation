@@ -79,11 +79,14 @@ configuration promises before attempting to execute.
 
 * [cf-runagent](reference-components-cfrunagent.html)
 
-This is a helper program which can be used to run `cf-agent` on a number of 
-remote hosts. It cannot be used to tell `cf-agent` what to do, it can only ask 
+A helper program which can be used to run `cf-agent` on a number of remote 
+hosts. It cannot be used to tell `cf-agent` what to do, it can only ask 
 `cf-serverd` on the remote host to run the `cf-agent` with its existing 
-policy. It can thus be used to simulate a push of changes to CFEngine 
-hosts, if their policy includes that they check for updates.
+policy. It can thus be used to trigger an immediate deployment of new policy, 
+if their existing policy includes that they check for updates.
+
+Privileges can be granted to users to provide a kind of Role Based Access 
+Control (RBAC) to certain parts of the existing policy.
 
 
 The `/var/cfengine/lib` directory stores shared objects and dependencies that 
@@ -135,10 +138,6 @@ client/server network communications.
 * `/var/cfengine/share`
 
 **TODO**
-
-
-Privileges can be granted to users to provide a kind of Role Based Access 
-Control (RBAC) to certain parts of the existing policy. **TODO: how?**
 
 
 ****
