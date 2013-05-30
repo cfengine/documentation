@@ -16,7 +16,7 @@ tags: [getting started, installation]
 -3.5 has not been set (expect it soon). See also 
 -http://cfengine.com/blog/?page=4 for more information.
 -<!--- TODO: move up when no longer a pre-release
---->
+-->
 -
 
 ## Requirements
