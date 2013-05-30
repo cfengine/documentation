@@ -5,30 +5,48 @@ categories: [Examples, Change detection]
 published: true
 alias: examples-change-detection.html
 tags: [Examples, change detection]
+reviewed: 2013-05-30
+reviewed-by: atsaloli
 ---
 
-This is a standalone policy that will look for changes recursively in a directory and log them in the promise repaired log.
+This policy will look for changes recursively in a directory.
 
 ```cf3
-    body common control
 
+    body common control
+    
     {
     bundlesequence  => { "testbundle"  };
     }
-
+    
     ########################################################
-
+    
     bundle agent testbundle
-
+    
     {
     files:
-
-      "/home/mark/tmp/web" -> "me"  # Directory to monitor for changes.
-                                    # The right arrow denotes a promisee,
-                                    # or stakeholder, used for documentation purposes
-
+    
+      "/home/mark/tmp/web"    # Directory to monitor for changes.
+    
        changes      => detect_all_change,
        depth_search => recurse("inf");
+    }
+        
+    #########################################################
+        
+    body changes detect_all_change
+    
+    {
+    report_changes => "all";  
+    update_hashes  => "true";
+    }
+    
+    #########################################################
+    
+    body depth_search recurse(d)
+    
+    {
+    depth        => "$(d)";
     }
 ```
 

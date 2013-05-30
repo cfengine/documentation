@@ -5,6 +5,8 @@ categories: [Examples, Aborting execution]
 published: true
 alias: examples-aborting-execution.html
 tags: [Examples, aborting execution]
+reviewed: 2013-05-30
+reviewed-by: atsaloli
 ---
 
 Sometimes it is useful to abort a bundle execution if certain conditions are not met,
@@ -13,60 +15,56 @@ regular expressions for classes, or class expressions that `cf-agent` will watch
 If any of these classes becomes defined, it will cause the current bundle to be aborted.
 
 ```cf3
+
     body common control
 
     {
     bundlesequence  => { "testbundle"  };
-
-    version => "1.2.3";
     }
-
-    ###########################################
 
     body agent control
-
+    
     {
-    abortbundleclasses => { "invalid" };            # Abort bundle execution if this class is set
+    abortbundleclasses => { "invalid" };      # Abort bundle execution if this class is set
     }
-
+    
     ###########################################
-
+    
     bundle agent testbundle
     {
     vars:
-
-     "userlist" slist => { "xyz", "mark", "jeang", "jonhenrik", "thomas", "eben" };
-
-    methods:
-
-     "any" usebundle => subtest("$(userlist)");
-
-    }
-
-    ###########################################
-
-    bundle agent subtest(user)
-
-    {
+    
+     #"userlist" slist => { "mark", "john" };           # contains all valid entries
+     "userlist" slist => { "mark", "john", "thomas" };  # contains one invalid entry
+    
     classes:
-
-      "invalid" not => regcmp("[a-z][a-z][a-z][a-z]","$(user)"); # The class 'invalid' is set if the user name does not
-                                                                 # contain exactly four un-capitalized letters (bundle
-                                                                 # execution will be aborted if set)
-
+    
+      "invalid" not => regcmp("[a-z][a-z][a-z][a-z]","$(userlist)"); # The class 'invalid' is set if the user name does not
+                                                                     # contain exactly four un-capitalized letters (bundle
+                                                                     # execution will be aborted if set)
+    
     reports:
-
+    
      !invalid::
-
-      "User name $(user) is valid at 4 letters";
-
-     invalid::
-
-      "User name $(user) is invalid";
+    
+      "User name $(userlist) is valid at 4 letters";
     }
 ```
 
 This policy can be found in `/var/cfengine/share/doc/examples/unit_abort.cf`.
+
+This is how the policy runs when the userlist is valid:
+
+    # cf-agent -f unit_abort.cf
+    R: User name mark is valid at 4 letters
+    R: User name john is valid at 4 letters
+    # 
+
+This is how the policy runs when the userlist contains an invalid entry:
+
+    # cf-agent -f unit_abort.cf
+    Bundle testbundle aborted on defined class "invalid"
+    # 
 
 To run this example file as part of your main policy you need to make an
 additional change:
