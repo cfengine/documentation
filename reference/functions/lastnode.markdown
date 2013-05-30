@@ -48,3 +48,5 @@ reports:
 This function returns the final node in a chain, given a regular
 expression to split on. This is mainly useful for finding leaf-names of
 files, from a fully qualified path name.
+
+See also: `filestat`, dirname`, `splitstring`.
