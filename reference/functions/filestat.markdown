@@ -42,3 +42,5 @@ The list of fields may be extended as needed.
 
 If the file object does not exist, the function call fails and the
 variable does not expand.
+
+See also: `lastnode`, dirname`, `splitstring`.
