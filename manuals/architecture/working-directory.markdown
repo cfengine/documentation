@@ -38,3 +38,4 @@ are often mailed to the administrator by `cf-execd`, or can be
 copied to another central location and viewed in an alternative
 browser.
 
+| Previous: [Default Configuration File Structure](manuals-architecture-configuration-file-structure.html) | Next: [Controlling Frequency](manuals-architecture-controlling-frequency.html) |

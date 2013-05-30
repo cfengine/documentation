@@ -89,4 +89,4 @@ to client machines, the failsafe.cf policy on those machines will run (and
 will eventually download a working policy, once you fix it on the policy 
 host).
 
-| Previous: [Workflows](manuals-architecture-workflows.html) | Next: [Controlling Frequency](manuals-architecture-controlling-frequency.html) |
+| Previous: [Workflows](manuals-architecture-workflows.html) | Next: [The Working Directory](manuals-architecture-work-directory.html) |

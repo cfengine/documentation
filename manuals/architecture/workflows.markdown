@@ -113,6 +113,9 @@ recover from deployment errors easily. By placing the burden of responsibility
 for decision at the top, and for implementation at the bottom, we avoid 
 needless fragility and keep two independent quality assurance processes apart.
 
-| | |
-|:-|-:|
-| Previous: [CFEngine Components](manuals-architecture-components.html) | Next: [Default Configuration File Structure](manuals-architecture-configuration-file-structure.html) |
+<table>
+    <tr>
+    <td align="left">Previous: [CFEngine Components](manuals-architecture-components.html)</td>
+    <td align=:"right">Next: [Default Configuration File Structure](manuals-architecture-configuration-file-structure.html)</td>
+    </tr>
+</table>
