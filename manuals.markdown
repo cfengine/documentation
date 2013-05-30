@@ -56,4 +56,3 @@ now might be a good time to take a break from concepts and try out your first pr
 If you want a solid foundation for your use of CFEngine, continue reading this concept guide.
 
 * TODO: Design Center
-* TODO: Multi-Site Support
