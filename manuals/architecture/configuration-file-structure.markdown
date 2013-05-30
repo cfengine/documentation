@@ -11,14 +11,14 @@ Previous: [Workflows](manuals-architecture-workflows.html)
 
 ****
 
+
 **TODO: include some extracts, or link to github**
 **TODO: Documentation for default policy layout/structure including 
-cf_promises_validated and update mechanism **
+cf_promises_validated and update mechanism**
 
 
 The following configuration files are part of the default CFEngine 
-installation in
-`/var/cfengine/inputs`, and have special roles.
+installation in `/var/cfengine/inputs`, and have special roles.
 
 ## promises.cf
 
@@ -89,7 +89,7 @@ interpret the policy. If the failover is due to the use of new features, they
 will not parse until the software itself has been updated (so we recommend 
 that you always update CFEngine before updating policy to use new features). 
 If you accidentally cause a bad (i.e., unparseable) policy to be distributed 
-to client machines, the failsafe.cf policy on those machines will run (and 
+to client machines, the `failsafe.cf` policy on those machines will run (and 
 will eventually download a working policy, once you fix it on the policy 
 host).
 

@@ -4,7 +4,7 @@ title: CFEngine Components
 categories: [Manuals, Architecture, Components]
 published: true
 alias: manuals-architecture-components.html
-tags: [manuals, systems, configuration management, automation, components, cf-agent]
+tags: [manuals, systems, configuration management, automation, components, cf-agent, directory]
 ---
 
 Previous: [Automation with CFEngine](manuals-architecture-automation.html)
@@ -38,6 +38,10 @@ fault tolerant and opportunistic.
 
 
 ### Core Components
+
+The CFEngine application is fully contained within the `/var/cfengine` 
+directory tree. `/var/cfengine/bin` consists of the CFEngine software 
+components:
 
 * [cf-agent](reference-components-cfagent.html)
 
@@ -81,16 +85,61 @@ remote hosts. It cannot be used to tell `cf-agent` what to do, it can only ask
 policy. It can thus be used to simulate a push of changes to CFEngine 
 hosts, if their policy includes that they check for updates.
 
+
+The `/var/cfengine/lib` directory stores shared objects and dependencies that 
+are in the bundled packages.
+
+### Policy files
+
+* `/var/cfengine/masterfiles`
+
+Policy repository which grants access to local or bootstrapped CFEngine 
+clients when they need to update their policies. Policies obtained from 
+`/var/cfengine/masterfiles` are then cached in `/var/cfengine/inputs` for 
+local policy execution. The `cf-agent` executable does not execute policies 
+directly from this repository. 
+
+* `/var/cfengine/inputs`
+
+Cached policy repository located on a CFEngine client. The `cf-agent` 
+executable executes policies from this repository.
+
+* `/var/cfengine/modules`
+
+**TODO**
+
+### Output Directories
+
+* `/var/cfengine/outputs`
+
+Directory where `cf-agent` creates its output files.
+
+* `/var/cfengine/reports`
+
+Directory used to store reports. **TODO: still there without cf-report?**
+
+* `/var/cfengine/ppkeys`
+
+Directory used to store encrypted public/private keys for CFEngine
+client/server network communications.
+
+* `/var/cfengine/state`
+
+**TODO: what's there?**
+
+* `/var/cfengine/lastseen`
+
+**TODO**
+
+
+* `/var/cfengine/share`
+
+**TODO**
+
+
 Privileges can be granted to users to provide a kind of Role Based Access 
 Control (RBAC) to certain parts of the existing policy. **TODO: how?**
 
-## Distributed Discovery
-
-**TODO: Orchestration? Or explicit network topography page?**
-
-CFEngine's philosophy and modus operandi is to make machines as self-reliant as possible. This is the path to scalability. Sometimes we want machines to be able to detect one another and sample each others' behavior. This can be accomplished using probes and server functions.
-
-For example, testing whether services are up and running can be a useful probe even from a local host. CFEngine has in-built functions for generically probing the environment; these are designed to encourage decentralized monitoring.
 
 ****
 
