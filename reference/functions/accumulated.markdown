@@ -48,8 +48,6 @@ Minutes of runtime 0-59
 
 Seconds of runtime
 
-
-
 **Example**:  
    
 

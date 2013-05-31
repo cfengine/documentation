@@ -7,51 +7,43 @@ alias: reference-functions-classmatch.html
 tags: [reference, functions, classmatch]
 ---
 
-
-
-**Synopsis**: classmatch(arg1) 
+**Synopsis**: `classmatch(arg1)`
 
 **Return type**: `class`
 
-  
- *arg1* : Regular expression, *in the range* .\*   
+**Description**: Tests whether `arg1` matches any currently set class.
 
-True if the regular expression matches any currently defined class
+The regular expression `arg1` is matched against the current list of defined
+classes. The regular expression must match a complete class for the expression 
+to be true (i.e. the regex is [anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions)).
+
+Returns true if the regular expression matches any currently defined class, 
+otherwise returns false.
+
+**Arguments**:
+
+*  *arg1* : Regular expression, *in the range* .\*   
 
 **Example**:  
    
 
 ```cf3
-body common control
+    body common control
+    {
+      bundlesequence  => { "example" };
+    }
 
-{
-bundlesequence  => { "example" };
-}
+    bundle agent example
+    {     
+      classes:
 
-###########################################################
+        "do_it" and => { classmatch(".*_cfengine_com"), "linux" }; 
 
-bundle agent example
+      reports:
 
-{     
-classes:
+        do_it::
 
-  "do_it" and => { classmatch(".*_cfengine_com"), "linux" }; 
-
-reports:
-
-  do_it::
-
-    "Host matches pattern";
-
-}
+          "Host matches pattern";
+    }
 ```
 
-**Notes**:  
-   
-
-The regular expression is matched against the current list of defined
-classes. The regular expression must match a complete class for the
-expression to be true (i.e. the regex is anchored).
-
-See: [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions).

@@ -7,7 +7,7 @@ alias: reference-functions-ago.html
 tags: [reference, functions, ago]
 ---
 
-**Synopsis**: ago(arg1,arg2,arg3,arg4,arg5,arg6) 
+**Synopsis**: `ago(Years, Months, Days, Hours, Minutes, Seconds)`
 
 **Return type**: `int`
 
@@ -22,47 +22,33 @@ ago(0,0,0,72,0,0).
 
 **ARGUMENTS**:
 
-* *arg1* : Years, *in the range* 0,1000   
-* *arg2* : Months, *in the range* 0,1000   
-* *arg3* : Days, *in the range* 0,1000   
-* *arg4* : Hours, *in the range* 0,1000   
-* *arg5* : Minutes, *in the range* 0,1000   
-* *arg6* : Seconds, *in the range* 0,40000   
+* Years, *in the range* 0,1000   
 
-* Years
+Years of run time. For convenience in conversion, a year of runtime is
+always 365 days (one year equals 31,536,000 seconds).   
 
-Years ago. If today is February 29, and "**n** years ago" is not within
-a leap-year, February 28 will be used.   
+* Month, *in the range* 0,1000   
 
-* Month
+Months of run time. For convenience in conversion, a month of runtime is
+always equal to 30 days of runtime (one month equals 2,592,000 seconds).
 
-Months ago. If the current month has more days that "**n** months ago",
-the last day of "**n** months ago" will be used (e.g., if today is April
-31 and you compute a date 1 month ago, the resulting date will be March
-30), equal to 30 days of runtime (one month equals 2,592,000 seconds).
+* Days, *in the range* 0,1000   
 
+Days of runtime (one day equals 86,400 seconds)   
 
-* Day
+* Hours, *in the range* 0,1000
 
-Days ago (you may, for example, specify 120 days)   
+Hours of runtime   
 
-* Hours
+* Minutes, *in the range* 0,1000
 
-Hours ago. Since all computation are done using "Epoch time", 1 hour ago
-will alway result in a time 60 minutes in the past, even during the
-transition from Daylight time to Standard time.   
+Minutes of runtime 0-59   
 
-* Minutes
+* Seconds, *in the range* 0,40000
 
-Minutes ago 0-59   
+Seconds of runtime
 
-* Seconds
-
-Seconds ago
-
-
-**Example**:  
-   
+**Example**:
 
 ```cf3
     bundle agent testbundle

@@ -7,51 +7,44 @@ alias: reference-functions-classesmatching.html
 tags: [reference, functions, classesmatching]
 ---
 
-
-
-**Synopsis**: classesmatching(arg1) 
+**Synopsis**: `classesmatching(arg1)`
 
 **Return type**: `slist`
 
-  
- *arg1* : Regular expression, *in the range* .\*   
+**Description**: Return the list of set classes matching regex `arg1`.
 
-Return the defined classes matching regex arg1
+This function searches for the regular expression in the list of currently set 
+classes (in order hard, then soft, then local to the current bundle).
+
+
+**Arguments**:
+
+* *arg1* : Regular expression, *in the range* .\*   
+
+A regular expression matching zero or more classes in the current list
+of defined classes. The regular expression is not [anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions)).
 
 **Example**:  
-   
+
 
 ```cf3
-body common control
-{
-      bundlesequence => { run };
-}
+    body common control
+    {
+          bundlesequence => { run };
+    }
 
-bundle agent run
-{
-  vars:
-      "all" slist => classesmatching(".*");
-      "c" slist => classesmatching("cfengine");
-  reports:
-      "All classes = $(all)";
-      "Classes matching 'cfengine' = $(c)";
-}
+    bundle agent run
+    {
+      vars:
+          "all" slist => classesmatching(".*");
+          "c" slist => classesmatching("cfengine");
+      reports:
+          "All classes = $(all)";
+          "Classes matching 'cfengine' = $(c)";
+    }
 
 ```
 
-**Notes**:  
-   
-This function searches for the regular expression in the list of
-currently defined classes (hard, then soft, then local to the current
-bundle).
 
-This function replaces the `allclasses.txt` static file available
+**Note**: This function replaces the `allclasses.txt` static file available
 in older versions of CFEngine.
-
-regex
-
-A regular expression matching zero or more classes in the current list
-of defined classes. The regular expression is not anchored
-(See [Anchored vs. unanchored regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
-
-The function returns the list of classes matched.

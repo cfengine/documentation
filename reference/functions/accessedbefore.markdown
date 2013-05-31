@@ -11,10 +11,9 @@ tags: [reference, functions, accessedbefore]
 
 **Return type**: `class`
 
-**Description**: The function compares the `atime` fields of two files
+**Description**: Compares the `atime` fields of two files.
 
-Sets the class if `newer_filename` was accessed before `older_filename`.
-
+Return true if `newer_filename` was accessed before `older_filename`.
 
 **Arguments**:
 
@@ -27,33 +26,29 @@ Sets the class if `newer_filename` was accessed before `older_filename`.
 ```cf3
     body common control
     {
-    bundlesequence  => { "example" };
+      bundlesequence  => { "example" };
     }
 
     bundle agent example
-
     {     
-    classes:
+      classes:
 
-      "do_it" and => { accessedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
+        "do_it" and => { accessedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
 
-    reports:
+      reports:
 
-      do_it::
+        do_it::
 
-        "The secret changes have been accessed after the reference time";
-
+          "The secret changes have been accessed after the reference time";
     }
 ```
 
 Example output:
 
 ```
-     
-      touch /tmp/reference
-      touch /tmp/secretfile
-     
-      /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
-      R: The secret changes have been accessed after the reference time
-     
+    touch /tmp/reference
+    touch /tmp/secretfile
+
+    /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
+    R: The secret changes have been accessed after the reference time
 ```
