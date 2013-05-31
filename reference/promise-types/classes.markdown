@@ -221,8 +221,6 @@ Then create `classes.cf`
 The class on the left-hand side will be set if the class expression on the 
 right-hand side evaluates to false.
 
-This negates the effect of the promiser-pattern regular expression. 
-**TODO:does this sentence make sense?**
 
 **Type**: `class`
 
