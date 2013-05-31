@@ -11,8 +11,9 @@ tags: [reference, functions, regldap]
 
 
 
-**Synopsis**: regldap(arg1,arg2,arg3,arg4,arg5,arg6,arg7) returns type
-**class**
+**Synopsis**: regldap(arg1,arg2,arg3,arg4,arg5,arg6,arg7) 
+
+**Return type**: `class`
 
   
  *arg1* : URI, *in the range* .\*   

@@ -9,7 +9,9 @@ tags: [reference, functions, format]
 
 
 
-**Synopsis**: format(...) returns type **string**
+**Synopsis**: format(...) 
+
+**Return type**: `string`
 
   
 

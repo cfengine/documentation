@@ -9,7 +9,9 @@ tags: [reference, functions, getenv]
 
 
 
-**Synopsis**: getenv(arg1,arg2) returns type **string**
+**Synopsis**: getenv(arg1,arg2) 
+
+**Return type**: `string`
 
   
  *arg1* : Name of environment variable, *in the range*

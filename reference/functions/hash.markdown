@@ -9,7 +9,9 @@ tags: [reference, functions, hash]
 
 
 
-**Synopsis**: hash(arg1,arg2) returns type **string**
+**Synopsis**: hash(arg1,arg2) 
+
+**Return type**: `string`
 
   
  *arg1* : Input text, *in the range* .\*   

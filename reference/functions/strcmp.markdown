@@ -9,7 +9,9 @@ tags: [reference, functions, strcmp]
 
 
 
-**Synopsis**: strcmp(arg1,arg2) returns type **class**
+**Synopsis**: strcmp(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : String, *in the range* .\*   

@@ -9,7 +9,9 @@ tags: [reference, functions, getindices]
 
 
 
-**Synopsis**: getindices(arg1) returns type **slist**
+**Synopsis**: getindices(arg1) 
+
+**Return type**: `slist`
 
   
  *arg1* : Cfengine array identifier, *in the range*

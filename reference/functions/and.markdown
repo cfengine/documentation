@@ -9,7 +9,9 @@ tags: [reference, functions, and]
 
 
 
-**Synopsis**: and(...) returns type **string**
+**Synopsis**: and(...) 
+
+**Return type**: `string`
 
   
 

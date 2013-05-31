@@ -9,7 +9,9 @@ tags: [reference, functions, some]
 
 
 
-**Synopsis**: some(arg1,arg2) returns type **class**
+**Synopsis**: some(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Unanchored regular expression to find, *in the range* .\*

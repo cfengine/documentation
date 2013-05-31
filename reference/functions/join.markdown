@@ -9,7 +9,9 @@ tags: [reference, functions, join]
 
 
 
-**Synopsis**: join(arg1,arg2) returns type **string**
+**Synopsis**: join(arg1,arg2) 
+
+**Return type**: `string`
 
   
  *arg1* : Join glue-string, *in the range* .\*   

@@ -9,7 +9,9 @@ tags: [reference, functions, diskfree]
 
 
 
-**Synopsis**: diskfree(arg1) returns type **int**
+**Synopsis**: diskfree(arg1) 
+
+**Return type**: `int`
 
   
  *arg1* : File system directory, *in the range* "?(/.\*)   

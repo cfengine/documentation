@@ -9,7 +9,9 @@ tags: [reference, functions, usemodule]
 
 
 
-**Synopsis**: usemodule(arg1,arg2) returns type **class**
+**Synopsis**: usemodule(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Name of module command, *in the range* .\*   

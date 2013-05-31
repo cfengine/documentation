@@ -9,7 +9,9 @@ tags: [reference, functions, iprange]
 
 
 
-**Synopsis**: iprange(arg1) returns type **class**
+**Synopsis**: iprange(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : IP address range syntax, *in the range* .\*   

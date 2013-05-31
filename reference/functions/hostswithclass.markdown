@@ -11,7 +11,9 @@ tags: [reference, functions, hostswithclass]
 
 
 
-**Synopsis**: hostswithclass(arg1,arg2) returns type **slist**
+**Synopsis**: hostswithclass(arg1,arg2) 
+
+**Return type**: `slist`
 
   
  *arg1* : Class name to look for, *in the range* [a-zA-Z0-9\_]+   

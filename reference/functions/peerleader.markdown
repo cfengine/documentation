@@ -9,7 +9,9 @@ tags: [reference, functions, peerleader]
 
 
 
-**Synopsis**: peerleader(arg1,arg2,arg3) returns type **string**
+**Synopsis**: peerleader(arg1,arg2,arg3) 
+
+**Return type**: `string`
 
   
  *arg1* : File name of host list, *in the range* "?(/.\*)   

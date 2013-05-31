@@ -9,7 +9,9 @@ tags: [reference, functions, ago]
 
 
 
-**Synopsis**: ago(arg1,arg2,arg3,arg4,arg5,arg6) returns type **int**
+**Synopsis**: ago(arg1,arg2,arg3,arg4,arg5,arg6) 
+
+**Return type**: `int`
 
   
  *arg1* : Years, *in the range* 0,1000   

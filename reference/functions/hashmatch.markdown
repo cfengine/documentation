@@ -9,7 +9,9 @@ tags: [reference, functions, hashmatch]
 
 
 
-**Synopsis**: hashmatch(arg1,arg2,arg3) returns type **class**
+**Synopsis**: hashmatch(arg1,arg2,arg3) 
+
+**Return type**: `class`
 
   
  *arg1* : Filename to hash, *in the range* "?(/.\*)   

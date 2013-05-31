@@ -9,7 +9,9 @@ tags: [reference, functions, returnszero]
 
 
 
-**Synopsis**: returnszero(arg1,arg2) returns type **class**
+**Synopsis**: returnszero(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Fully qualified command path, *in the range* "?(/.\*)   

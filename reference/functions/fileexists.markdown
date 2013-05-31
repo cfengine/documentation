@@ -9,7 +9,9 @@ tags: [reference, functions, fileexists]
 
 
 
-**Synopsis**: fileexists(arg1) returns type **class**
+**Synopsis**: fileexists(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : File object name, *in the range* "?(/.\*)   

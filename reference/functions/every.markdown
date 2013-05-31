@@ -9,7 +9,9 @@ tags: [reference, functions, every]
 
 
 
-**Synopsis**: every(arg1,arg2) returns type **class**
+**Synopsis**: every(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Regular expression to find, *in the range* .\*

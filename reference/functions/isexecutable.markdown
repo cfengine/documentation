@@ -9,7 +9,9 @@ tags: [reference, functions, isexecutable]
 
 
 
-**Synopsis**: isexecutable(arg1) returns type **class**
+**Synopsis**: isexecutable(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : File object name, *in the range* "?(/.\*)   

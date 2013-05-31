@@ -9,7 +9,9 @@ tags: [reference, functions, reglist]
 
 
 
-**Synopsis**: reglist(arg1,arg2) returns type **class**
+**Synopsis**: reglist(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Cfengine list identifier, *in the range* @[(][a-zA-Z0-9]+[)]

@@ -9,7 +9,9 @@ tags: [reference, functions, filter]
 
 
 
-**Synopsis**: filter(arg1,arg2,arg3,arg4,arg5) returns type **slist**
+**Synopsis**: filter(arg1,arg2,arg3,arg4,arg5) 
+
+**Return type**: `slist`
 
   
  *arg1* : Anchored regular expression or static string to find, *in the range* .\*

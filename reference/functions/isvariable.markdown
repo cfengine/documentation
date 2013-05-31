@@ -9,7 +9,9 @@ tags: [reference, functions, isvariable]
 
 
 
-**Synopsis**: isvariable(arg1) returns type **class**
+**Synopsis**: isvariable(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : Variable identifier, *in the range*

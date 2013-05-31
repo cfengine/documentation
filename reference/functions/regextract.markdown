@@ -9,7 +9,9 @@ tags: [reference, functions, regextract]
 
 
 
-**Synopsis**: regextract(arg1,arg2,arg3) returns type **class**
+**Synopsis**: regextract(arg1,arg2,arg3) 
+
+**Return type**: `class`
 
   
  *arg1* : Regular expression, *in the range* .\*   

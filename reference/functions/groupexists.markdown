@@ -9,7 +9,9 @@ tags: [reference, functions, groupexists]
 
 
 
-**Synopsis**: groupexists(arg1) returns type **class**
+**Synopsis**: groupexists(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : Group name or identifier, *in the range* .\*   

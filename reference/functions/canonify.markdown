@@ -9,7 +9,9 @@ tags: [reference, functions, canonify]
 
 
 
-**Synopsis**: canonify(arg1) returns type **string**
+**Synopsis**: canonify(arg1) 
+
+**Return type**: `string`
 
   
  *arg1* : String containing non-identifier characters, *in the range*

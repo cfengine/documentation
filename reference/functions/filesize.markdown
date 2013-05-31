@@ -9,7 +9,9 @@ tags: [reference, functions, filesize]
 
 
 
-**Synopsis**: filesize(arg1) returns type **int**
+**Synopsis**: filesize(arg1) 
+
+**Return type**: `int`
 
   
  *arg1* : File object name, *in the range* "?(/.\*)   

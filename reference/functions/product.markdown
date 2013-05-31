@@ -9,7 +9,9 @@ tags: [reference, functions, product]
 
 
 
-**Synopsis**: product(arg1) returns type **real**
+**Synopsis**: product(arg1) 
+
+**Return type**: `real`
 
   
  *arg1* : A list of arbitrary real values, *in the range*

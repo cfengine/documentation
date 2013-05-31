@@ -9,7 +9,9 @@ tags: [reference, functions, hostinnetgroup]
 
 
 
-**Synopsis**: hostinnetgroup(arg1) returns type **class**
+**Synopsis**: hostinnetgroup(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : Netgroup name, *in the range* .\*   

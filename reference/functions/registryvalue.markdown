@@ -9,7 +9,9 @@ tags: [reference, functions, registryvalue]
 
 
 
-**Synopsis**: registryvalue(arg1,arg2) returns type **string**
+**Synopsis**: registryvalue(arg1,arg2) 
+
+**Return type**: `string`
 
   
  *arg1* : Windows registry key, *in the range* .\*   

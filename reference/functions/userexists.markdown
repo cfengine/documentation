@@ -9,7 +9,9 @@ tags: [reference, functions, userexists]
 
 
 
-**Synopsis**: userexists(arg1) returns type **class**
+**Synopsis**: userexists(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : User name or identifier, *in the range* .\*   

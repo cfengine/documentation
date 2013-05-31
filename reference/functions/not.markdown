@@ -9,7 +9,9 @@ tags: [reference, functions, not]
 
 
 
-**Synopsis**: not(arg1) returns type **string**
+**Synopsis**: not(arg1) 
+
+**Return type**: `string`
 
   
  *arg1* : Class value, *in the range* .\*   

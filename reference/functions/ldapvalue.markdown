@@ -11,8 +11,11 @@ tags: [reference, functions, ldapvalue]
 
 
 
-**Synopsis**: ldapvalue(arg1,arg2,arg3,arg4,arg5,arg6) returns type
-**string**
+**Synopsis**: ldapvalue(arg1,arg2,arg3,arg4,arg5,arg6) 
+
+**Return type**:
+
+`string`
 
   
  *arg1* : URI, *in the range* .\*   

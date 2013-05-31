@@ -9,7 +9,9 @@ tags: [reference, functions, getfields]
 
 
 
-**Synopsis**: getfields(arg1,arg2,arg3,arg4) returns type **int**
+**Synopsis**: getfields(arg1,arg2,arg3,arg4) 
+
+**Return type**: `int`
 
   
  *arg1* : Regular expression to match line, *in the range* .\*   

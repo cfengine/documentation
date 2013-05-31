@@ -11,8 +11,9 @@ tags: [reference, functions, remoteclassesmatching]
 
 
 
-**Synopsis**: remoteclassesmatching(arg1,arg2,arg3,arg4) returns type
-**class**
+**Synopsis**: remoteclassesmatching(arg1,arg2,arg3,arg4) 
+
+**Return type**: `class`
 
   
  *arg1* : Regular expression, *in the range* .\*   

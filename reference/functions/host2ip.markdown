@@ -9,7 +9,9 @@ tags: [reference, functions, host2ip]
 
 
 
-**Synopsis**: host2ip(arg1) returns type **string**
+**Synopsis**: host2ip(arg1) 
+
+**Return type**: `string`
 
   
  *arg1* : Host name in ascii, *in the range* .\*   

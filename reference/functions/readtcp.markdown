@@ -9,7 +9,9 @@ tags: [reference, functions, readtcp]
 
 
 
-**Synopsis**: readtcp(arg1,arg2,arg3,arg4) returns type **string**
+**Synopsis**: readtcp(arg1,arg2,arg3,arg4) 
+
+**Return type**: `string`
 
   
  *arg1* : Host name or IP address of server socket, *in the range* .\*

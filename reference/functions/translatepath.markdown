@@ -9,7 +9,9 @@ tags: [reference, functions, translatepath]
 
 
 
-**Synopsis**: translatepath(arg1) returns type **string**
+**Synopsis**: translatepath(arg1) 
+
+**Return type**: `string`
 
   
  *arg1* : Unix style path, *in the range* "?(/.\*)   

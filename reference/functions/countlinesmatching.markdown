@@ -9,7 +9,9 @@ tags: [reference, functions, countlinesmatching]
 
 
 
-**Synopsis**: countlinesmatching(arg1,arg2) returns type **int**
+**Synopsis**: countlinesmatching(arg1,arg2) 
+
+**Return type**: `int`
 
   
  *arg1* : Regular expression, *in the range* .\*   

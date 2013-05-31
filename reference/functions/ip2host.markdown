@@ -9,7 +9,9 @@ tags: [reference, functions, ip2host]
 
 
 
-**Synopsis**: ip2host(arg1) returns type **string**
+**Synopsis**: ip2host(arg1) 
+
+**Return type**: `string`
 
   
  *arg1* : IP address (IPv4 or IPv6), *in the range* .\*   

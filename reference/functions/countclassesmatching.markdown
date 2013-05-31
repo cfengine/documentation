@@ -9,7 +9,9 @@ tags: [reference, functions, countclassesmatching]
 
 
 
-**Synopsis**: countclassesmatching(arg1) returns type **int**
+**Synopsis**: countclassesmatching(arg1) 
+
+**Return type**: `int`
 
   
  *arg1* : Regular expression, *in the range* .\*   

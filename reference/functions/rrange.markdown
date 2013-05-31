@@ -9,7 +9,9 @@ tags: [reference, functions, rrange]
 
 
 
-**Synopsis**: rrange(arg1,arg2) returns type **rrange [real,real]**
+**Synopsis**: rrange(arg1,arg2) 
+
+**Return type**: `rrange [real,real]``
 
   
  *arg1* : Real number, *in the range* -9.99999E100,9.99999E100   

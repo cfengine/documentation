@@ -9,7 +9,9 @@ tags: [reference, functions, or]
 
 
 
-**Synopsis**: or(...) returns type **string**
+**Synopsis**: or(...) 
+
+**Return type**: `string`
 
   
 

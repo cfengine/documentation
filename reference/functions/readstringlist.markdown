@@ -9,8 +9,9 @@ tags: [reference, functions, readstringlist]
 
 
 
-**Synopsis**: readstringlist(arg1,arg2,arg3,arg4,arg5) returns type
-**slist**
+**Synopsis**: readstringlist(arg1,arg2,arg3,arg4,arg5) 
+
+**Return type**: `slist`
 
   
  *arg1* : File name to read, *in the range* "?(/.\*)   

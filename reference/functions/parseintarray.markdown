@@ -9,8 +9,9 @@ tags: [reference, functions, parseintarray]
 
 
 
-**Synopsis**: parseintarray(arg1,arg2,arg3,arg4,arg5,arg6) returns type
-**int**
+**Synopsis**: parseintarray(arg1,arg2,arg3,arg4,arg5,arg6) 
+
+**Return type**: `int`
 
   
  *arg1* : Array identifier to populate, *in the range*

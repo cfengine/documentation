@@ -9,7 +9,9 @@ tags: [reference, functions, getvalues]
 
 
 
-**Synopsis**: getvalues(arg1) returns type **slist**
+**Synopsis**: getvalues(arg1) 
+
+**Return type**: `slist`
 
   
  *arg1* : Cfengine array identifier, *in the range*

@@ -9,7 +9,9 @@ tags: [reference, functions, lsdir]
 
 
 
-**Synopsis**: lsdir(arg1,arg2,arg3) returns type **slist**
+**Synopsis**: lsdir(arg1,arg2,arg3) 
+
+**Return type**: `slist`
 
   
  *arg1* : Path to base directory, *in the range* .+   

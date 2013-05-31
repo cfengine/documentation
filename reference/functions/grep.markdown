@@ -9,7 +9,9 @@ tags: [reference, functions, grep]
 
 
 
-**Synopsis**: grep(arg1,arg2) returns type **slist**
+**Synopsis**: grep(arg1,arg2) 
+
+**Return type**: `slist`
 
   
  *arg1* : Regular expression, *in the range* .\*   

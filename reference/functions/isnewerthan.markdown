@@ -9,7 +9,9 @@ tags: [reference, functions, isnewerthan]
 
 
 
-**Synopsis**: isnewerthan(arg1,arg2) returns type **class**
+**Synopsis**: isnewerthan(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Newer file name, *in the range* "?(/.\*)   

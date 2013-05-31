@@ -9,7 +9,9 @@ tags: [reference, functions, isdir]
 
 
 
-**Synopsis**: isdir(arg1) returns type **class**
+**Synopsis**: isdir(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : File object name, *in the range* "?(/.\*)   

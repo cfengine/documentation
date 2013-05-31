@@ -9,7 +9,9 @@ tags: [reference, functions, dirname]
 
 
 
-**Synopsis**: dirname(arg1) returns type **string**
+**Synopsis**: dirname(arg1) 
+
+**Return type**: `string`
 
   
  *arg1* : File path, *in the range* .\*   

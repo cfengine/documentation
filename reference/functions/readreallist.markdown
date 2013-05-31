@@ -9,8 +9,9 @@ tags: [reference, functions, readreallist]
 
 
 
-**Synopsis**: readreallist(arg1,arg2,arg3,arg4,arg5) returns type
-**rlist**
+**Synopsis**: readreallist(arg1,arg2,arg3,arg4,arg5) 
+
+**Return type**: `rlist`
 
   
  *arg1* : File name to read, *in the range* "?(/.\*)   

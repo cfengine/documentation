@@ -9,7 +9,9 @@ tags: [reference, functions, readfile]
 
 
 
-**Synopsis**: readfile(arg1,arg2) returns type **string**
+**Synopsis**: readfile(arg1,arg2) 
+
+**Return type**: `string`
 
   
  *arg1* : File name, *in the range* "?(/.\*)   

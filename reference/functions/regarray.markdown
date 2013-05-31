@@ -9,7 +9,9 @@ tags: [reference, functions, regarray]
 
 
 
-**Synopsis**: regarray(arg1,arg2) returns type **class**
+**Synopsis**: regarray(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Cfengine array identifier, *in the range*

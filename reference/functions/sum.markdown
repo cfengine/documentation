@@ -9,7 +9,9 @@ tags: [reference, functions, sum]
 
 
 
-**Synopsis**: sum(arg1) returns type **real**
+**Synopsis**: sum(arg1) 
+
+**Return type**: `real`
 
   
  *arg1* : A list of arbitrary real values, *in the range*

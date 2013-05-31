@@ -9,7 +9,9 @@ tags: [reference, functions, remotescalar]
 
 
 
-**Synopsis**: remotescalar(arg1,arg2,arg3) returns type **string**
+**Synopsis**: remotescalar(arg1,arg2,arg3) 
+
+**Return type**: `string`
 
   
  *arg1* : Variable identifier, *in the range*
@@ -30,7 +32,7 @@ vars:
 
 **Notes**:  
    
- The remote system's cf-serverd must accept the query for the requested
+The remote system's cf-serverd must accept the query for the requested
 variable from the host that is requesting it. An example of this
 configuration follows.
 

@@ -9,7 +9,9 @@ tags: [reference, functions, now]
 
 
 
-**Synopsis**: now() returns type **int**
+**Synopsis**: now() 
+
+**Return type**: `int`
 
   
 

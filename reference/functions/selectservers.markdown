@@ -9,8 +9,9 @@ tags: [reference, functions, selectservers]
 
 
 
-**Synopsis**: selectservers(arg1,arg2,arg3,arg4,arg5,arg6) returns type
-**int**
+**Synopsis**: selectservers(arg1,arg2,arg3,arg4,arg5,arg6) 
+
+**Return type**: `int`
 
   
  *arg1* : The identifier of a cfengine list of hosts or addresses to

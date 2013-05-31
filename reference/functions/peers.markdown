@@ -9,7 +9,9 @@ tags: [reference, functions, peers]
 
 
 
-**Synopsis**: peers(arg1,arg2,arg3) returns type **slist**
+**Synopsis**: peers(arg1,arg2,arg3) 
+
+**Return type**: `slist`
 
   
  *arg1* : File name of host list, *in the range* "?(/.\*)   

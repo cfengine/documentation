@@ -9,7 +9,9 @@ tags: [reference, functions, unique]
 
 
 
-**Synopsis**: unique(arg1) returns type **slist**
+**Synopsis**: unique(arg1) 
+
+**Return type**: `slist`
 
  *arg1* : The name of the list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   

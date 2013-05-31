@@ -9,7 +9,9 @@ tags: [reference, functions, maplist]
 
 
 
-**Synopsis**: maplist(arg1,arg2) returns type **slist**
+**Synopsis**: maplist(arg1,arg2) 
+
+**Return type**: `slist`
 
   
  *arg1* : Pattern based on \$(this) as original text, *in the range* .\*

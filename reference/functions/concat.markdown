@@ -9,7 +9,9 @@ tags: [reference, functions, concat]
 
 
 
-**Synopsis**: concat(...) returns type **string**
+**Synopsis**: concat(...) 
+
+**Return type**: `string`
 
   
 

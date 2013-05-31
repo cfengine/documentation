@@ -9,8 +9,11 @@ tags: [reference, functions, laterthan]
 
 
 
-**Synopsis**: laterthan(arg1,arg2,arg3,arg4,arg5,arg6) returns type
-**class**
+**Synopsis**: laterthan(arg1,arg2,arg3,arg4,arg5,arg6) 
+
+**Return type**:
+
+`class`
 
   
  *arg1* : Years, *in the range* 0,1000   

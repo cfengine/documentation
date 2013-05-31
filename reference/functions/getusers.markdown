@@ -9,7 +9,9 @@ tags: [reference, functions, getusers]
 
 
 
-**Synopsis**: getusers(arg1,arg2) returns type **slist**
+**Synopsis**: getusers(arg1,arg2) 
+
+**Return type**: `slist`
 
   
  *arg1* : Comma separated list of User names, *in the range* .\*   

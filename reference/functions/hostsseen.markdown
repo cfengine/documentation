@@ -9,7 +9,9 @@ tags: [reference, functions, hostsseen]
 
 
 
-**Synopsis**: hostsseen(arg1,arg2,arg3) returns type **slist**
+**Synopsis**: hostsseen(arg1,arg2,arg3) 
+
+**Return type**: `slist`
 
   
  *arg1* : Horizon since last seen in hours, *in the range* 0,99999999999

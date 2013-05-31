@@ -9,7 +9,9 @@ tags: [reference, functions, isgreaterthan]
 
 
 
-**Synopsis**: isgreaterthan(arg1,arg2) returns type **class**
+**Synopsis**: isgreaterthan(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Larger string or value, *in the range* .\*   

@@ -9,7 +9,9 @@ tags: [reference, functions, isplain]
 
 
 
-**Synopsis**: isplain(arg1) returns type **class**
+**Synopsis**: isplain(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : File object name, *in the range* "?(/.\*)   

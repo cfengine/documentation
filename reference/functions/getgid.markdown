@@ -9,7 +9,9 @@ tags: [reference, functions, getgid]
 
 
 
-**Synopsis**: getgid(arg1) returns type **int**
+**Synopsis**: getgid(arg1) 
+
+**Return type**: `int`
 
   
  *arg1* : Group name in text, *in the range* .\*   

@@ -9,7 +9,9 @@ tags: [reference, functions, lastnode]
 
 
 
-**Synopsis**: lastnode(arg1,arg2) returns type **string**
+**Synopsis**: lastnode(arg1,arg2) 
+
+**Return type**: `string`
 
   
  *arg1* : Input string, *in the range* .\*   

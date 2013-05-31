@@ -9,7 +9,9 @@ tags: [reference, functions, nth]
 
 
 
-**Synopsis**: nth(arg1,arg2) returns type **string**
+**Synopsis**: nth(arg1,arg2) 
+
+**Return type**: `string`
 
  *arg1* : The name of the list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   

@@ -9,7 +9,9 @@ tags: [reference, functions, classesmatching]
 
 
 
-**Synopsis**: classesmatching(arg1) returns type **slist**
+**Synopsis**: classesmatching(arg1) 
+
+**Return type**: `slist`
 
   
  *arg1* : Regular expression, *in the range* .\*   

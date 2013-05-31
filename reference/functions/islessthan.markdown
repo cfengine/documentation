@@ -9,7 +9,9 @@ tags: [reference, functions, islessthan]
 
 
 
-**Synopsis**: islessthan(arg1,arg2) returns type **class**
+**Synopsis**: islessthan(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Smaller string or value, *in the range* .\*   

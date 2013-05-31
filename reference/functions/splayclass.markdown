@@ -9,7 +9,9 @@ tags: [reference, functions, splayclass]
 
 
 
-**Synopsis**: splayclass(arg1,arg2) returns type **class**
+**Synopsis**: splayclass(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Input string for classification, *in the range* .\*   

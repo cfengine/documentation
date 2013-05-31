@@ -9,7 +9,9 @@ tags: [reference, functions, shuffle]
 
 
 
-**Synopsis**: shuffle(arg1,arg2) returns type **slist**
+**Synopsis**: shuffle(arg1,arg2) 
+
+**Return type**: `slist`
 
  *arg1* : The name of the list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   

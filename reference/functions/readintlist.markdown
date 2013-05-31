@@ -9,8 +9,9 @@ tags: [reference, functions, readintlist]
 
 
 
-**Synopsis**: readintlist(arg1,arg2,arg3,arg4,arg5) returns type
-**ilist**
+**Synopsis**: readintlist(arg1,arg2,arg3,arg4,arg5) 
+
+**Return type**: `ilist`
 
   
  *arg1* : File name to read, *in the range* "?(/.\*)   

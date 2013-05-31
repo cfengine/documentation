@@ -9,10 +9,11 @@ tags: [reference, functions, accumulated]
 
 
 
-**Synopsis**: accumulated(arg1,arg2,arg3,arg4,arg5,arg6) returns type
-**int**
+**Synopsis**: accumulated(arg1,arg2,arg3,arg4,arg5,arg6) 
 
-  
+**Return type**: `int`
+
+
  *arg1* : Years, *in the range* 0,1000   
  *arg2* : Months, *in the range* 0,1000   
  *arg3* : Days, *in the range* 0,1000   

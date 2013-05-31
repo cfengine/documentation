@@ -9,7 +9,9 @@ tags: [reference, functions, filesexist]
 
 
 
-**Synopsis**: filesexist(arg1) returns type **class**
+**Synopsis**: filesexist(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : Array identifier containing list, *in the range*

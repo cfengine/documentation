@@ -9,7 +9,9 @@ tags: [reference, functions, classify]
 
 
 
-**Synopsis**: classify(arg1) returns type **class**
+**Synopsis**: classify(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : Input string, *in the range* .\*   

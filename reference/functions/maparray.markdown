@@ -9,7 +9,9 @@ tags: [reference, functions, maparray]
 
 
 
-**Synopsis**: maparray(arg1,arg2) returns type **slist**
+**Synopsis**: maparray(arg1,arg2) 
+
+**Return type**: `slist`
 
   
  *arg1* : Pattern based on \$(this.k) and \$(this.v) as original text, *in the range* .\*

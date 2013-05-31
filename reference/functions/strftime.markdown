@@ -9,7 +9,9 @@ tags: [reference, functions, strftime]
 
 
 
-**Synopsis**: strftime(arg1,arg2) returns type **string**
+**Synopsis**: strftime(arg1,arg2) 
+
+**Return type**: `string`
 
   
  *arg1* : Mode, *in the range* gmtime,localtime   

@@ -9,7 +9,9 @@ tags: [reference, functions, regline]
 
 
 
-**Synopsis**: regline(arg1,arg2) returns type **class**
+**Synopsis**: regline(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Regular expression, *in the range* .\*   

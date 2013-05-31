@@ -9,7 +9,9 @@ tags: [reference, functions, hostrange]
 
 
 
-**Synopsis**: hostrange(arg1,arg2) returns type **class**
+**Synopsis**: hostrange(arg1,arg2) 
+
+**Return type**: `class`
 
   
  *arg1* : Hostname prefix, *in the range* .\*   

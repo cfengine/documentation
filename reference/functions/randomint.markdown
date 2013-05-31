@@ -9,7 +9,9 @@ tags: [reference, functions, randomint]
 
 
 
-**Synopsis**: randomint(arg1,arg2) returns type **int**
+**Synopsis**: randomint(arg1,arg2) 
+
+**Return type**: `int`
 
   
  *arg1* : Lower inclusive bound, *in the range* -99999999999,9999999999

@@ -9,7 +9,10 @@ tags: [reference, functions, irange]
 
 
 
-**Synopsis**: irange(arg1,arg2) returns type **irange [int,int]**
+**Synopsis**: irange(arg1,arg2) 
+
+**Return type**:
+ **irange [int,int]**
 
   
  *arg1* : Integer, *in the range* -99999999999,9999999999   

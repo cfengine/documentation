@@ -9,7 +9,9 @@ tags: [reference, functions, execresult]
 
 
 
-**Synopsis**: execresult(arg1,arg2) returns type **string**
+**Synopsis**: execresult(arg1,arg2) 
+
+**Return type**: `string`
 
   
  *arg1* : Fully qualified command path, *in the range* "?(/.\*)   

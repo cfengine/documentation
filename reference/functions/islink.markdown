@@ -9,7 +9,9 @@ tags: [reference, functions, islink]
 
 
 
-**Synopsis**: islink(arg1) returns type **class**
+**Synopsis**: islink(arg1) 
+
+**Return type**: `class`
 
   
  *arg1* : File object name, *in the range* "?(/.\*)   

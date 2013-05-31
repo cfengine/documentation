@@ -9,7 +9,9 @@ tags: [reference, functions, length]
 
 
 
-**Synopsis**: length(arg1) returns type **int**
+**Synopsis**: length(arg1) 
+
+**Return type**: `int`
 
  *arg1* : The name of the list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   

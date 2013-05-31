@@ -9,7 +9,10 @@ tags: [reference, functions, accessedbefore]
 
 
 
-**Synopsis**: accessedbefore(arg1,arg2) returns type **class**
+**Synopsis**: accessedbefore(arg1,arg2) 
+
+**Return type**: `class`
+
 
   
  *arg1* : Newer filename, *in the range* "?(/.\*)   

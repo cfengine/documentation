@@ -9,7 +9,9 @@ tags: [reference, functions, getuid]
 
 
 
-**Synopsis**: getuid(arg1) returns type **int**
+**Synopsis**: getuid(arg1) 
+
+**Return type**: `int`
 
   
  *arg1* : User name in text, *in the range* .\*   

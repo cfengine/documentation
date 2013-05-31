@@ -9,7 +9,9 @@ tags: [reference, functions, splitstring]
 
 
 
-**Synopsis**: splitstring(arg1,arg2,arg3) returns type **slist**
+**Synopsis**: splitstring(arg1,arg2,arg3) 
+
+**Return type**: `slist`
 
   
  *arg1* : A data string, *in the range* .\*   

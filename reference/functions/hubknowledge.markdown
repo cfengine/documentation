@@ -11,7 +11,9 @@ tags: [reference, functions, hubknowledge]
 
 
 
-**Synopsis**: hubknowledge(arg1) returns type **string**
+**Synopsis**: hubknowledge(arg1) 
+
+**Return type**: `string`
 
   
  *arg1* : Variable identifier, *in the range*

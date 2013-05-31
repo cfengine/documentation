@@ -9,7 +9,9 @@ tags: [reference, functions, difference]
 
 
 
-**Synopsis**: difference(arg1,arg2) returns type **slist**
+**Synopsis**: difference(arg1,arg2) 
+
+**Return type**: `slist`
 
  *arg1* : The name of the base list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   

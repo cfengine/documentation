@@ -9,7 +9,9 @@ tags: [reference, functions, filestat]
 
 
 
-**Synopsis**: filestat(arg1, arg2) returns type **string**
+**Synopsis**: filestat(arg1, arg2) 
+
+**Return type**: `string`
 
   
  *arg1* : File object name, *in the range* "?(/.\*)   

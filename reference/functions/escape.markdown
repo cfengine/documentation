@@ -9,7 +9,9 @@ tags: [reference, functions, escape]
 
 
 
-**Synopsis**: escape(arg1) returns type **string**
+**Synopsis**: escape(arg1) 
+
+**Return type**: `string`
 
   
  *arg1* : IP address or string to escape, *in the range* .\*   

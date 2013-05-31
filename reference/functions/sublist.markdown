@@ -9,7 +9,9 @@ tags: [reference, functions, sublist]
 
 
 
-**Synopsis**: sublist(arg1,arg2,arg3) returns type **slist**
+**Synopsis**: sublist(arg1,arg2,arg3) 
+
+**Return type**: `slist`
 
  *arg1* : The name of the list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
