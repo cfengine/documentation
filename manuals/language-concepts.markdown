@@ -57,7 +57,7 @@ This documentation about the language concepts introduces in addition
 * [**loops**](manuals-language-concepts-loops.html),
 * [**pattern matching and 
 referencing**](manuals-language-concepts-pattern-matching-and-referencing.html), and
-* [*namespaces*](manuals-language-concepts-namespaces.html)
+* [**namespaces**](manuals-language-concepts-namespaces.html)
 
 See the reference documentation for more information about
 [Syntax, identifiers and names](reference-syntax.html).
