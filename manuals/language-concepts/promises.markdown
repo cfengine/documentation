@@ -30,7 +30,7 @@ syntax. There is only one grammatical form for statements in the language that
 you need to know and promise definitions follow this general syntax:
 
 ```cf3
-    type:
+    promise_type:
 
       classes::
 
@@ -47,60 +47,11 @@ attributes, and values.
 
 ### Promise Types
 
-The `type` defines what kind of object is making the promise. The type 
-dictates how CFEngine interprets the promise body.
+The `promise_type` defines what kind of object is making the promise. The type 
+dictates how CFEngine interprets the promise body. These promise types are straightforward: The `files` promise type deals with file permissions and file content, and the `packages` promise type allows you to work with packaging systems such as rpm and apt.
 
-These common promise types deal with defining variables and classes to be used 
-in CFEngine.
-
-    vars:
-      A promise to be a variable, representing a value.
-
-    classes:
-      A promise to be a class representing a state of the system. 
-
-    reports:
-      A promise to report a message.
-
-The following promise types are used to define the state of the system, and 
-may only be used in agent bundles:
-
-    commands:
-      A promise to execute a command. 
-
-    databases:
-      A promise to configure a database. 
-
-    files:
-      A promise to configure a file, including its existence, attributes and   
-      contents. 
-
-    methods:
-      A promise to take on a whole bundle of other promises. 
-
-    packages:
-      A promise to install a package. 
-
-    storage:
-      A promise to verify attached storage.
-
-These promise types are straightforward: The `files` promise type deals with 
-file permissions and file content, and the `packages` promise type allows you 
-to work with packaging systems such as rpm and apt.
-
-The following promise types belong to other CFEngine components and define the 
-behavior of CFEngine itself:
-
-    access:
-      A promise to grant or deny access to file objects in cf-serverd. 
-
-    measurements:
-      A promise to measure or sample data from the system, for monitoring or 
-      reporting in cf-monitord (only available in CFEngine Enteprise)
-
-    roles:
-      A promise to allow certain users to activate certain classes when 
-      executing cf-agent remotely, in cf-serverd. 
+Some promise types are common to all CFEngine components, while others can only be executed by one of them. `cf-serverd` cannot keep `packages` promises, and `cf-agent` cannot keep `access` promises. See the
+[Promise Type reference](reference-promise-types.html) for a comprehensive list of promise types.
 
 ### The Promiser
 

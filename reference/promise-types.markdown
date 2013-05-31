@@ -7,27 +7,29 @@ alias: reference-promise-types.html
 tags: [reference, bundles, common, promises]
 ---
 
-Within a bundle, the promise types are executed in a round-robin fashion in the following 'normal ordering'. Which promise types are available depends on the bundle type:
+Within a bundle, the promise types are executed in a round-robin fashion in 
+the following 'normal ordering'. Which promise types are available depends on 
+the [bundle](manuals-language-concepts-bundles.html) type:
 
 | Promise Type   | common | agent | server | monitor |
 |----------------|:------:|:-----:|:------:|:--------|
-| [meta](reference-promise-types-meta.html) | x      | x     | x      | x       |
-| [vars](reference-promise-types-vars.html) | x      | x     | x      | x       |
-| [defaults](reference-promise-types-defaults.html) | x      | x     | x      | x       |
-| [classes](reference-promise-types-classes.html) | x      | x     | x      | x       |
-| [files](reference-promise-types-files.html) |        | x     |        |         |
-| [packages](reference-promise-types-packages.html) |        | x     |        |         |
+| [meta](reference-promise-types-meta.html) - information about promise bundles | x      | x     | x      | x       |
+| [vars](reference-promise-types-vars.html) - a variable, representing a value | x      | x     | x      | x       |
+| [defaults](reference-promise-types-defaults.html) - a default value for bundle parameters | x      | x     | x      | x       |
+| [classes](reference-promise-types-classes.html) - a class, representing a state of the system | x      | x     | x      | x       |
+| [files](reference-promise-types-files.html) - configure a file |        | x     |        |         |
+| [packages](reference-promise-types-packages.html) - install a package |        | x     |        |         |
 | [guest_environments](reference-promise-types-guest_environments.html) |        | x     |        |         |
-| [methods](reference-promise-types-methods.html) |        | x     |        |         |
-| [processes](reference-promise-types-processes.html) |        | x     |        |         |
-| [services](reference-promise-types-services.html) |        | x     |        |         |
-| [commands](reference-promise-types-commands.html) |        | x     |        |         |
-| [storage](reference-promise-types-storage.html) |        | x     |        |         |
-| [databases](reference-promise-types-databases.html) |        | x     |        |         |
-| [access](reference-promise-types-access.html) |        |       | x      |         |
-| [roles](reference-promise-types-roles.html) |        |       | x      |         |
-| [measurements](reference-promise-types-measurements.html) |        |       |        | x       |
-| [reports](reference-promise-types-reports.html) | x      | x     | x      | x       |
+| [methods](reference-promise-types-methods.html) - take on a whole bundle of other promises |        | x     |        |         |
+| [processes](reference-promise-types-processes.html) - start or terminate processes |        | x     |        |         |
+| [services](reference-promise-types-services.html) - start or stop services |        | x     |        |         |
+| [commands](reference-promise-types-commands.html) - execute a command |        | x     |        |         |
+| [storage](reference-promise-types-storage.html) - verify attached storage |        | x     |        |         |
+| [databases](reference-promise-types-databases.html) - configure a database |        | x     |        |         |
+| [access](reference-promise-types-access.html) - grant or deny access to file objects |        |       | x      |         |
+| [roles](reference-promise-types-roles.html) - allow certain users to activate certain classes |        |       | x      |         |
+| [measurements](reference-promise-types-measurements.html) - measure or sample data from the system |        |       |        | x       |
+| [reports](reference-promise-types-reports.html) - report a message | x      | x     | x      | x       |
 
 See each promise type's reference documentation for detailed lists of 
 available attributes.
