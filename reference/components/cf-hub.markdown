@@ -61,7 +61,7 @@ The data aggregator of CFEngine Enterprise. **TODO: more!**
 
 ### export_zenoss
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -83,7 +83,7 @@ For integration with the Zenoss monitoring software.
 
 ### exclude_hosts
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -110,7 +110,7 @@ currently not supported.
 
 ### hub_schedule
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -129,7 +129,7 @@ collation
 
 ### port
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `1024,99999`
 

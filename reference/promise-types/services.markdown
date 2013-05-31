@@ -182,7 +182,7 @@ changing file permissions).
 
 #### `service_dependencies`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -222,7 +222,7 @@ list.
 
 `service_args`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 

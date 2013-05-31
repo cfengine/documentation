@@ -287,7 +287,7 @@ setting that does preserve the ordering of lines in the file is called
 
 `insert_if_startwith_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -320,7 +320,7 @@ is a multi-line block.
 
 `insert_if_not_startwith_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -353,7 +353,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 `insert_if_match_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -390,7 +390,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 `insert_if_not_match_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -423,7 +423,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 `insert_if_contains_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -458,7 +458,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 `insert_if_not_contains_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -567,7 +567,7 @@ significance.
 
 `select_line_matching`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 

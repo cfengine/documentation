@@ -147,7 +147,7 @@ given by `cf-agent` will differ.
 
 `ifelapsed`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -188,7 +188,7 @@ to a specific time.
 
 `expireafter`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -211,7 +211,7 @@ CFEngine will attempt to kill and restart its attempt to keep a promise.
 
 
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -289,7 +289,7 @@ log.
 
 `log_kept`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `stdout|udp_syslog|("?[a-zA-Z]:\\.*)|(/.*)`
 
@@ -369,7 +369,7 @@ importance of messages from CFEngine.
 
 `log_repaired`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `stdout|udp_syslog|("?[a-zA-Z]:\\.*)|(/.*)`
 
@@ -429,7 +429,7 @@ the request.
 
 `log_failed`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `stdout|udp_syslog|("?[a-zA-Z]:\\.*)|(/.*)`
 
@@ -491,7 +491,7 @@ the request.
 
 `value_kept`
 
-**Type**: real
+**Type**: `real`
 
 **Allowed input range**: `-9.99999E100,9.99999E100`
 
@@ -517,7 +517,7 @@ on track\_value = "true".
 
 `value_repaired`
 
-**Type**: real
+**Type**: `real`
 
 **Allowed input range**: `-9.99999E100,9.99999E100`
 
@@ -543,7 +543,7 @@ switched on track\_value = "true".
 
 `value_notkept`
 
-**Type**: real
+**Type**: `real`
 
 **Allowed input range**: `-9.99999E100,9.99999E100`
 
@@ -684,7 +684,7 @@ less).
 
 `measurement_class`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -719,7 +719,7 @@ The identifier forms a partial identity for optional performance scanning of pro
 
 `promise_repaired`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -754,7 +754,7 @@ promises rather than 'overloading' a single one.
 
 `repair_failed`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -777,7 +777,7 @@ canonified, so it is unnecessary to call a canonify function on such inputs.
 
 `repair_denied`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -804,7 +804,7 @@ resource was denied.
 
 `repair_timeout`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -827,7 +827,7 @@ In the above example, a promise maintenance repair timed-out waiting for some de
 
 `promise_kept`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -864,7 +864,7 @@ promises rather than 'overloading' a single one.
 
 `cancel_kept`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -892,7 +892,7 @@ defined.
 
 `cancel_repaired`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -921,7 +921,7 @@ no longer defined.
 
 `cancel_notkept`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -949,7 +949,7 @@ defined.
 
 `kept_returncodes`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[-0-9_$(){}\[\].]+`
 
@@ -1003,7 +1003,7 @@ usually in the range from 0 to 255.
 
 `repaired_returncodes`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[-0-9_$(){}\[\].]+`
 
@@ -1055,7 +1055,7 @@ in the range from 0 to 255.
 
 `failed_returncodes`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[-0-9_$(){}\[\].]+`
 
@@ -1124,7 +1124,7 @@ the range from 0 to 255.
 
 `persist_time`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -1178,7 +1178,7 @@ duration as a rare event then an absolute time limit is useful.
 
 #### `comment`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1195,7 +1195,7 @@ comment => "This comment follows the data for reference ...",
 
 #### `depends_on`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1240,7 +1240,7 @@ reports:
 
 #### `handle`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1272,7 +1272,7 @@ rather than its content.
 
 #### `ifvarclass`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1348,7 +1348,7 @@ that CFEngine uses.
 
 #### `meta`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 

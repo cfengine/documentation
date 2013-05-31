@@ -234,7 +234,7 @@ delete - delete the specified value (if present) in the specified field/column
 
 `field_separator`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
@@ -260,7 +260,7 @@ edit all kinds of line-based text files.
 
 `field_value`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
@@ -282,7 +282,7 @@ constant default, empty the field, or set it fixed list.
 
 `select_field`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999`
 
@@ -345,7 +345,7 @@ as number 0 instead, for consistency with other array functions.
 
 `value_separator`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `^.$`
 

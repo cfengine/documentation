@@ -17,7 +17,7 @@ editing hierarchical and structured XML datasets.
 
 #### `build_xpath`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -44,7 +44,7 @@ of such promises.
 
 #### `select_xpath`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 

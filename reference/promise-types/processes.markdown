@@ -251,7 +251,7 @@ out_of_range_define => "$(s)_up";
 
 `in_range_define`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -306,7 +306,7 @@ the promise is considered kept.
 
 `out_of_range_define`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -336,7 +336,7 @@ failure to be kept.
 
 `command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -470,7 +470,7 @@ a process
 
 `process_owner`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -498,7 +498,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 `process_result`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**:
 `[(process_owner|pid|ppid||pgid|rsize|vsize|status|command|ttime|stime|tty|priority|threads)[|!.]*]*`
@@ -558,7 +558,7 @@ process, in kilobytes
 
 `status`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -637,7 +637,7 @@ This is total accumulated time for a process.
 
 `tty`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -716,7 +716,7 @@ Size (Windows 2008), or VM Size (Windows XP).
 
 #### `process_stop`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -742,7 +742,7 @@ one may call a 'stop script' to perform a graceful shutdown.
 
 #### `restart_class`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 

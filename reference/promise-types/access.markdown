@@ -129,7 +129,7 @@ in the POSIX `gethostbyname` service.
 
 #### `admit`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -160,7 +160,7 @@ expressions to match the IP address or name of the connecting host.
 
 #### `deny`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -195,7 +195,7 @@ list, as non-specific matches are too greedy for denial.
 
 #### `maproot`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -420,7 +420,7 @@ History: Introduced in Enterprise 3.5.0
 
 `classes_include`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -450,7 +450,7 @@ History: Introduced in Enterprise 3.5.0
 
 `classes_exclude`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -481,7 +481,7 @@ History: Introduced in Enterprise 3.5.0
 
 `variables_include`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -515,7 +515,7 @@ History: Introduced in Enterprise 3.5.0
 
 `variables_exclude`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -547,7 +547,7 @@ History: Introduced in Enterprise 3.5.0
 
 `promise_notkept_log_include`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -577,7 +577,7 @@ History: Introduced in Enterprise 3.5.0
 
 `promise_notkept_log_exclude`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -608,7 +608,7 @@ History: Introduced in Enterprise 3.5.0
 
 `promise_repaired_log_include`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -638,7 +638,7 @@ History: Introduced in Enterprise 3.5.0
 
 `promise_repaired_log_exclude`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -669,7 +669,7 @@ History: Introduced in Enterprise 3.5.0
 
 `monitoring_include`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -699,7 +699,7 @@ History: Introduced in Enterprise 3.5.0
 
 `monitoring_exclude`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 

@@ -453,7 +453,7 @@ update         => "yes";
 
 `aces`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**:
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
@@ -684,7 +684,7 @@ Ownership on the NTFS platform, we must set `acl_type` to indicate the target pl
 
 `specify_default_aces`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**:
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
@@ -850,7 +850,7 @@ The feature is intended as a informational summary, not as a version control fun
 
 `source`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -878,7 +878,7 @@ The feature is intended as a informational summary, not as a version control fun
 
 `servers`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[A-Za-z0-9_.:-]+`
 
@@ -1099,7 +1099,7 @@ This flag determines whether the permissions of the root directory should be set
 
 `copylink_patterns`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1172,7 +1172,7 @@ This applies only to the Mac OS X variants.
 
 `linkcopy_patterns`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1297,7 +1297,7 @@ IPv6 should be harmless to most users unless you have a partially or mis-configu
 
 `portnumber`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `1024,99999`
 
@@ -1420,7 +1420,7 @@ Note that purging will also delete backup files generated during the file copyin
 
 `timeout`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `1,3600`
 
@@ -1733,7 +1733,7 @@ present. If there is no `delete` body then files (and directories) are
 
 `depth`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -1763,7 +1763,7 @@ parent, a separate non-recursive promise should be made.
 
 `exclude_dirs`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -1830,7 +1830,7 @@ promise the same attributes as the files inside it.
 
 `include_dirs`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -2092,7 +2092,7 @@ reference using its bundle name. For example, \$(bundle.variable).
 
 `max_file_size`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -2174,7 +2174,7 @@ in a meaningful and convergent fashion.
 
 `rotate`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99`
 
@@ -2218,7 +2218,7 @@ deleted (that is, it "falls off the end" of the rotation).
 
 #### `edit_template`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -2320,7 +2320,7 @@ agent's current context. This allows conditional insertion.
 
 `leaf_name`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -2346,7 +2346,7 @@ This pattern matches only the node name of the file, not its path.
 
 `path_name`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -2375,7 +2375,7 @@ of appropriate regular expressions.
 
 `search_mode`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[0-7augorwxst,+-]+`
 
@@ -2471,7 +2471,7 @@ implies `u` AND `g`.
 
 `search_owners`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -2501,7 +2501,7 @@ does not have user ids, only names.
 
 `search_groups`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -2531,7 +2531,7 @@ Windows, files do not have group associations.
 
 `search_bsdflags`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**:
 `[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+`
@@ -2652,7 +2652,7 @@ A range of times during which a file was accessed can be specified in a
 
 `exec_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
@@ -2684,7 +2684,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 `exec_program`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -2754,7 +2754,7 @@ plain. In both cases this means not one of the "special" file types.
 
 `issymlinkto`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -2782,7 +2782,7 @@ not applicable on that platform.
 
 `file_result`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**:
 `[!*(leaf_name|path_name|file_types|mode|size|owner|group|atime|ctime|mtime|issymlinkto|exec_regex|exec_program|bsdflags)[|.]*]*`
@@ -2851,7 +2851,7 @@ following list:
 
 `copy_patterns`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -2965,7 +2965,7 @@ are mutually exclusive.
 
 `source`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -3192,7 +3192,7 @@ more information.
 
 `bsdflags`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**:
 `[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+`
@@ -3222,7 +3222,7 @@ documentation for this.
 
 `groups`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$.-]+`
 
@@ -3253,7 +3253,7 @@ ACLs may be used in place for this.
 
 `mode`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `[0-7augorwxst,+-]+`
 
@@ -3279,7 +3279,7 @@ ignored on Windows, as the permission model uses ACLs.
 
 `owners`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$.-]+`
 
@@ -3393,7 +3393,7 @@ unreadable.
 
 `disable_mode`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `[0-7augorwxst,+-]+`
 
@@ -3419,7 +3419,7 @@ remove the executable flag.
 
 `disable_suffix`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -3446,7 +3446,7 @@ default value is .cf-disabled.
 
 `newname`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -3470,7 +3470,7 @@ default value is .cf-disabled.
 
 `rotate`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99`
 
@@ -3509,7 +3509,7 @@ deleted (that is, it "falls off the end" of the rotation).
 
 #### `repository`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -3573,7 +3573,7 @@ files:
 
 #### `transformer`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 

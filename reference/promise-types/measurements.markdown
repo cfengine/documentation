@@ -305,7 +305,7 @@ is retained.
 
 #### `units`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -339,7 +339,7 @@ This is an arbitary string used in documentation only.
 
 `select_line_matching`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
@@ -377,7 +377,7 @@ This attribute is mutually exclusive of `select_line_number`.
 
 `select_line_number`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -402,7 +402,7 @@ This is mutually exclusive of `select_line_matching`.
 
 `extraction_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 

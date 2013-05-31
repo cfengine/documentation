@@ -41,7 +41,7 @@ multiple promises that each set an attribute.
 
 #### `attribute_value`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 

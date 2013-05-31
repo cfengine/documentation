@@ -133,7 +133,7 @@ This field is mainly for future extensions.
 
 `mount_source`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -158,7 +158,7 @@ This is the location on the remote device, server, SAN etc.
 
 `mount_server`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -183,7 +183,7 @@ Hostname or IP address, this could be on a SAN.
 
 `mount_options`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -289,7 +289,7 @@ on other systems.
 
 `freespace`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `[0-9]+[MBkKgGmb%]`
 
@@ -325,7 +325,7 @@ See: [classes in \*](#classes-in-_002a).
 
 `sensible_size`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -360,7 +360,7 @@ sensible-looking storage device
 
 `sensible_count`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 

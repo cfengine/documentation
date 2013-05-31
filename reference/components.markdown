@@ -50,17 +50,17 @@ affect the behavior of all the components.
 
 ### bundlesequence
 
-**Type**: slist
-
-**Allowed input range**: `.*`
-
-**Description**: A `bundlesequence` slist contains promise bundles
- to verify, in a specific order.
+**Description**: The `bundlesequence` contains promise bundles
+to verify, in a specific order.
 
 The `bundlesequence` determines which of the compiled bundles will
 be executed and in what order they will be executed. The list
-refers to the names of bundles (which might be parameterized
+refers to the names of bundles (which might be parameterized,
 function-like objects).
+
+**Type**: `slist`
+
+**Allowed input range**: `.*`
 
 **Example**:
 
@@ -84,7 +84,7 @@ you use them.
 
 The `bundlesequence` is like a genetic makeup of a machine. The
 bundles act like characteristics of the systems. If you want
-different systems to have different bundlesequences, distinguish
+different systems to have different `bundlesequences`, distinguish
 them with classes
 
 **Example**:
@@ -124,23 +124,23 @@ use global variable lists to do this:
 ```
 
 There is no default value for `bundlesequence`, and the absence of
-a `bundlesequence` will cause a compilation error. A bundlesequence
+a `bundlesequence` will cause a compilation error. A `bundlesequence`
 may also be specified using the `-b` or `--bundlesequence` command
 line option.
 
 
 ### goal_patterns
 
-**Type**: slist
-
-**Allowed input range**: (arbitrary string)
-
-**Description**: A `goal_patterns` slist contains regular expressions 
-that match promisees/topics considered to be organizational goals
+**Description**: Contains regular expressions that match promisees/topics 
+considered to be organizational goals
 
 It is used as identifier to mark business and organizational goals in
 CFEngine Enterprise. CFEngine uses this to match promisees that represent 
 business goals in promises.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -156,6 +156,11 @@ business goals in promises.
 
 ### ignore_missing_bundles
 
+**Description**: Determines whether to ignore missing bundles.
+
+If `ignore_missing_bundles` is set to true, if any bundles in the bundle 
+sequence do not exist, ignore and continue.
+
 **Type**: (menu option)
 
 **Allowed input range**
@@ -168,12 +173,6 @@ business goals in promises.
                    off
 
 **Default value**: false
-
-**Description**: The `ignore_missing_bundles` menu option policy determines 
-whether to ignore missing bundles.
-
-If `ignore_missing_bundles` is set to true, if any bundles in the bundle 
-sequence do not exist, ignore and continue.
 
 **Example**:
 
@@ -226,7 +225,7 @@ not found.
 
 ### inputs
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -257,7 +256,7 @@ filenames will be included in the compilation process.
 
 ### version
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -284,7 +283,7 @@ restriction might be lifted later.
 
 ### lastseenexpireafter
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -305,7 +304,7 @@ purged.
 
 ### output_prefix
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -328,7 +327,7 @@ string is also prefixed messages in the event log.
 
 ### domain
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
@@ -389,7 +388,7 @@ they may be considered self-documenting.
 
 ### host_licenses_paid
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -417,13 +416,15 @@ promises.cf.
 
 ### site_classes
 
-**Type**: clist
+**Description**: A `site_classes` contains classes that will represent 
+geographical site locations for hosts. These should be defined elsewhere in 
+the configuration in a classes promise.
+
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_!&@@$|.()\[\]{}:]+`
 
-**Description**: A `site_classes` clist contains classes that will represent 
-geographical site locations for hosts. These should be defined elsewhere in 
-the configuration in a classes promise.
+Each string is expected to be a class.
 
 **Example**:
 
@@ -449,7 +450,7 @@ interpreting location.
 
 ### syslog_host
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}.:-]+`
 
@@ -473,7 +474,7 @@ CFEngine's components may promise to send data.
 
 ### syslog_port
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 

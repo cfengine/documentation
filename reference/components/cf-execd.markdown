@@ -79,7 +79,7 @@ times and output capture to `WORKDIR/outputs` and relay via email.
 
 ### agent_expireafter
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,10080`
 
@@ -147,7 +147,7 @@ See the syslog manual pages.
 
 ### exec_command
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -164,7 +164,7 @@ symbols may be used if desired.
 
 ### mailfrom
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*@.*`
 
@@ -183,7 +183,7 @@ symbols may be used if desired.
 
 ### mailmaxlines
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,1000`
 
@@ -207,7 +207,7 @@ viewed on demand. A reference to the appropriate file is given.
 
 ### mailto
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*@.*`
 
@@ -228,7 +228,7 @@ The address to whom email is sent if an smtp host is configured.
 
 ### schedule
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -262,7 +262,7 @@ function may be affected by changing the `schedule`.
 
 ### smtpserver
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
@@ -286,7 +286,7 @@ localhost and point this to localhost.
 
 ### splaytime
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 

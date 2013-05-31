@@ -318,7 +318,7 @@ library for supported operating systems.
 
 #### `package_architectures`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -351,7 +351,7 @@ package manager's behaviour prevails.
 
 `package_add_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -385,7 +385,7 @@ prevents CFEngine from appending the package name to the string.
 
 `package_arch_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -456,7 +456,7 @@ the operating system's package manager to handle dependencies.
 
 `package_delete_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -488,7 +488,7 @@ prevents CFEngine from appending the package name to the string.
 
 `package_delete_convention`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -531,7 +531,7 @@ If this is not defined, it defaults to the value of
 
 `package_file_repositories`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -559,7 +559,7 @@ the package name in the package commands.
 
 `package_installed_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -591,7 +591,7 @@ be ignored.
 
 `package_default_arch_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -624,7 +624,7 @@ architecture.
 
 `package_list_arch_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -656,7 +656,7 @@ define this regex.
 
 `package_list_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -689,7 +689,7 @@ prevents CFEngine from appending the package name to the string.
 
 `package_list_name_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -720,7 +720,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 `package_list_update_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -748,7 +748,7 @@ executed at intervals determined by `package_list_update_ifelapsed`.
 
 `package_list_update_ifelapsed`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `-99999999999,9999999999`
 
@@ -777,7 +777,7 @@ executed at intervals determined by `package_list_update_ifelapsed`.
 
 `package_list_version_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -807,7 +807,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions))
 
 `package_name_convention`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -844,7 +844,7 @@ If this is not defined, it defaults to the value \$(name).
 
 `package_name_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -876,7 +876,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
 
 `package_noverify_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -906,7 +906,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions))
 
 `package_noverify_returncode`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `-99999999999,9999999999`
 
@@ -932,7 +932,7 @@ signal for a failed package verification.
 
 `package_patch_arch_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -963,7 +963,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 `package_patch_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -996,7 +996,7 @@ prevents CFEngine from appending the package name to the string.
 
 `package_patch_installed_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1027,7 +1027,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 `package_patch_list_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -1058,7 +1058,7 @@ prevents CFEngine from appending the package name to the string.
 
 `package_patch_name_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1088,7 +1088,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 `package_patch_version_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1119,7 +1119,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 `package_update_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -1154,7 +1154,7 @@ carry out the update.
 
 `package_verify_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -1197,7 +1197,7 @@ prevents CFEngine from appending the package name to the string.
 
 `package_version_regex`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1229,7 +1229,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 `package_multiline_start`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1303,7 +1303,7 @@ record.
 
 `package_version_less_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -1345,7 +1345,7 @@ v2, and v2 is not less than v1).
 
 `package_version_equal_command`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -1495,7 +1495,7 @@ policy action is scheduled for promise-keeping.
 
 #### `package_version`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 

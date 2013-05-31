@@ -78,7 +78,7 @@ command itself.
 
 Sometimes it is convenient to separate command and arguments. The final arguments are the concatenation with one space.
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -221,7 +221,7 @@ Therefore, this option is not yet implemented on Windows versions of
 CFEngine. 
 
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string) 
 
@@ -246,7 +246,7 @@ running `cf-agent` as the root group, or a group with privileges. It is
 ignored on Windows, as processes do not have any groups associated with
 them. 
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -269,7 +269,7 @@ them.
 This cannot be guaranteed as not all commands are willing to be interrupted in 
 case of failure. 
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `1,3600`
 
@@ -293,7 +293,7 @@ This attribute has the effect of placing the running command into a
 current working directory equal to the parameter given; in other words,
 it works like the cd shell command.
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -321,7 +321,7 @@ for the process. In security parlance, this creates a 'sandbox' for the
 process. Windows does not support this feature.   
 
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 

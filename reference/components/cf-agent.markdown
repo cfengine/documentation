@@ -83,7 +83,7 @@ made by `cf-agent`.
 
 ### abortclasses
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -108,7 +108,7 @@ an alias for the expression with a single name.
 
 ### abortbundleclasses
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -179,7 +179,7 @@ method bundle.
 
 ### addclasses
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -211,7 +211,7 @@ global hard classes.
 
 ### agentaccess
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -366,7 +366,7 @@ nothing and is kept for backward compatibility.
 
 ### binarypaddingchar
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -394,7 +394,7 @@ strings can be padded out to the same length.
 
 ### bindtointerface
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
@@ -444,7 +444,7 @@ etc) this is a common setting.
 
 ### childlibpath
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
@@ -465,7 +465,7 @@ of the agent.
 
 ### checksum_alert_time
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,60`
 
@@ -515,7 +515,7 @@ default policy for comparing source and image in copy transactions.
 
 ### default_repository
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -550,7 +550,7 @@ to locally override the global repository.
 
 ### default_timeout
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -603,7 +603,7 @@ the system, and will only report what it needs to do.
 
 ### editbinaryfilesize
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -636,7 +636,7 @@ generally be set higher than for text files.
 
 ### editfilesize
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -666,7 +666,7 @@ Use of special units is allowed (See [Datatypes in CFEngine 3]
 
 ### environment
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[A-Za-z0-9_]+=.*`
 
@@ -707,7 +707,7 @@ Some interactive programs insist on values being set, for example:
 
 ### expireafter
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -731,7 +731,7 @@ kill and restart its attempt to keep a promise.
 
 ### files_single_copy
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -756,7 +756,7 @@ for lazy-evaluation of overlapping file-copy promises.
 
 ### files_auto_define
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -817,7 +817,7 @@ addresses.
 
 ### ifelapsed
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -903,7 +903,7 @@ kept for backward  compatibility.
 
 ### max_children
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -937,7 +937,7 @@ diminishing returns.
 
 ### maxconnections
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -1029,7 +1029,7 @@ This test is applied in all recursive/depth searches.
 
 ### repchar
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.`
 
@@ -1051,7 +1051,7 @@ canonize pathnames in the file repository.
 
 ### refresh_processes
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
@@ -1116,7 +1116,7 @@ owned by a privileged user.
 
 ### sensiblecount
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -1136,7 +1136,7 @@ number of files a mounted filesystem is expected to have.
 
 ### sensiblesize
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -1189,7 +1189,7 @@ credentials.
 
 ### suspiciousnames
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -1269,7 +1269,7 @@ sum value notkept.
 
 ### timezone
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 

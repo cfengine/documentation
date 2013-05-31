@@ -156,7 +156,7 @@ reference using its bundle name. For example: \$(bundle.variable).
 
 #### `useresult`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 

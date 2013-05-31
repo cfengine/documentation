@@ -72,7 +72,7 @@ files must be granted in addition.
 
 ### allowallconnects
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -106,7 +106,7 @@ will potentially match more than one hostname (e.g.,
 
 ### allowconnects
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -133,7 +133,7 @@ See also the warning about regular expressions in
 
 ### allowusers
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -181,7 +181,7 @@ database.
 
 ### bindtointerface
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -199,7 +199,7 @@ be given as the argument, not the device name.
 
 ### cfruncommand
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.+`
 
@@ -224,7 +224,7 @@ shell command at your own risk.
 
 CFEngine Enterprise only.
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -326,7 +326,7 @@ The full configuration would look something like this
 
 CFEngine Enterprise only.
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -380,7 +380,7 @@ attempts based on clock corruption.
 
 ### denyconnects
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -408,7 +408,7 @@ See also the warning about regular expressions in
 
 ### dynamicaddresses
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -465,7 +465,7 @@ identification is now handled transparently.
 
 ### keycacheTTL
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -544,7 +544,7 @@ to syslog. These files are deemed to be particularly sensitive.
 
 ### maxconnections
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -574,7 +574,7 @@ descriptors which can limit this.
 
 ### port
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `1024,99999`
 
@@ -639,7 +639,7 @@ See syslog notes.
 
 ### skipverify
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -662,7 +662,7 @@ See also the warning about regular expressions in
 
 ### trustkeysfrom
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 

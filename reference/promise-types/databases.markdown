@@ -162,7 +162,7 @@ a hierarchy of depth 1.
 
 `db_server_owner`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -180,7 +180,7 @@ The user name for a database connection is defined by `db_server_order`.
 
 `db_server_password`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -197,7 +197,7 @@ The clear text password for a database connection is defined by `db_server_passw
 
 `db_server_host`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -235,7 +235,7 @@ The type of database server is defined by `db_server_type`.
 
 `db_server_connection_db`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -314,7 +314,7 @@ database_operation => "create";
 
 #### `database_columns`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -344,7 +344,7 @@ Columns are a list of tuplets (Name,type,size). Array items are triplets, and fi
 
 #### `database_rows`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*,.*`
 
@@ -379,7 +379,7 @@ databases:
 
 #### `registry_exclude`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 

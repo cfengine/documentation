@@ -51,7 +51,7 @@ promise.
 
 `delete_if_startwith_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -106,7 +106,7 @@ Thus, the promise will delete only the first and third lines of the file:
 
 `delete_if_not_startwith_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -127,7 +127,7 @@ In other words, this attribute modifies the selection criteria, it does not make
 
 `delete_if_match_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -151,7 +151,7 @@ promised lines.
 
 `delete_if_not_match_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -175,7 +175,7 @@ promised lines.
 
 `delete_if_contains_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 
@@ -198,7 +198,7 @@ promised lines.
 
 `delete_if_not_contains_from_list`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: `.*`
 

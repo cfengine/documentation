@@ -60,7 +60,7 @@ CFEngine currently provides a convergent interface to *libvirt*.
 
 #### `environment_host`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `[a-zA-Z0-9_]+`
 
@@ -101,7 +101,7 @@ This attribute is required.
 
 `env_addresses`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -136,7 +136,7 @@ time.
 
 `env_name`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -167,7 +167,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 `env_network`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
@@ -198,7 +198,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 `env_cpus`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -228,7 +228,7 @@ This attribute conflicts with `env_spec`.
 
 `env_memory`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -259,7 +259,7 @@ This attribute conflicts with `env_spec`.
 
 `env_disk`
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -289,7 +289,7 @@ This attribute conflicts with `env_spec`.
 
 `env_baseline`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -312,7 +312,7 @@ This function is for future development.
 
 `env_spec`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 

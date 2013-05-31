@@ -101,7 +101,7 @@ applies to.
 
 `replace_value`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 

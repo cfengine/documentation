@@ -57,7 +57,7 @@ privileged access on the host directly.
 
 #### `authorize`
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 

@@ -85,7 +85,7 @@ introducing such dependencies makes configuration brittle.
 
 ### hosts
 
-**Type**: slist
+**Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
@@ -111,7 +111,7 @@ port 5308 is assumed.
 
 ### port
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `1024,99999`
 
@@ -273,7 +273,7 @@ servers.
 
 ### max_children
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
@@ -335,7 +335,7 @@ WORKDIR/outputs/hostname\_runagent.out.
 
 ### output_directory
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
@@ -356,7 +356,7 @@ running `cf-runagent` in parallel mode.
 
 ### timeout
 
-**Type**: int
+**Type**: `int`
 
 **Allowed input range**: `1,9999`
 

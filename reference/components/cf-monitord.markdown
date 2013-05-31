@@ -71,7 +71,7 @@ to developing the integrated monitoring capabilities of CFEngine.
 
 ### forgetrate
 
-**Type**: real
+**Type**: `real`
 
 **Allowed input range**: `0,1`
 
@@ -183,7 +183,7 @@ Interface with TCP stream if possible.
 
 ### tcpdumpcommand
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 

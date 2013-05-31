@@ -145,7 +145,7 @@ in `include_start_delimiter`).
 
 `select_start`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
@@ -190,7 +190,7 @@ The start marker includes the first matched line.
 
 `select_end`
 
-**Type**: string
+**Type**: `string`
 
 **Allowed input range**: `.*`
 
