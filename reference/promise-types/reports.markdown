@@ -73,50 +73,6 @@ peers, report above
 **Default value:** `intermittency => "0"`
 
 
-#### lastseen
-
-**Synopsis**: Integer time threshold in hours since current peers were
-last seen, report absence
-
-In reports: After this time has passed, CFEngine will begin to warn 
-about the host being overdue. After the `lastseenexpireafter` expiry time, 
-hosts will be purged from this host's database.
-
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value**: `lastseen => 168 # one week`
-
-<!--- **Documented in body agent control as deprecated**
-In control: Determines whether CFEngine will record last seen
-intermittency profiles (reliability diagnostics) in WORKDIR/lastseen.
-This generates a separate file for each each host that connects to the
-current host. For central hubs this can result is a huge number of
-files.
--->
-
-**Example**:  
-
-<!--- **Documented in body agent control as deprecated**
-In control:
-
-```cf3
-body agent control
-{
-lastseen => "false";
-}
-```
--->
-
-```cf3
-    reports:
-
-      "Comment"
-
-        lastseen => "10";
-```
-
 ### printfile
 
 **Synopsis**: Outputs the content of a file to standard output
@@ -247,78 +203,10 @@ Return values are limited to scalars.
 
 ### showstate
 
-**Synopsis**: List of services about which status reports should be
-reported to standard output
+**Deprecated**: This attribute is kept for source compatibility,
+and has no effect.
 
-**Type**: `slist`
+### lastseen
 
-**Allowed input range**: (arbitrary string)
-
-**Example**:  
-
-```cf3
-    reports:
-      cfengine::
-
-        "Current state:"
-          showstate => {"www_in", "ssh_out", "otherprocs" };
-```
-
-**Notes**:  
-   
-The basic list of services is:
-
-* users - Users logged in   
-* rootprocs - Privileged system processes   
-* otherprocs - Non-privileged process   
-* diskfree - Free disk on / partition   
-* loadavg - % kernel load utilization   
-* netbiosns\_in - netbios name lookups (in)   
-* netbiosns\_out - netbios name lookups (out)   
-* netbiosdgm\_in - netbios name datagrams (in)   
-* netbiosdgm\_out - netbios name datagrams (out)   
-* netbiosssn\_in - netbios name sessions (in)   
-* netbiosssn\_out - netbios name sessions (out)   
-* irc\_in - IRC connections (in)   
-* irc\_out - IRC connections (out)   
-* cfengine\_in - CFEngine connections (in)   
-* cfengine\_out - CFEngine connections (out)   
-* nfsd\_in - nfs connections (in)   
-* nfsd\_out - nfs connections (out)   
-* smtp\_in - smtp connections (in)   
-* smtp\_out - smtp connections (out)   
-* www\_in - www connections (in)   
-* www\_out - www connections (out)   
-* ftp\_in - ftp connections (in)   
-* ftp\_out - ftp connections (out)   
-* ssh\_in - ssh connections (in)   
-* ssh\_out - ssh connections (out)   
-* wwws\_in - wwws connections (in)   
-* wwws\_out - wwws connections (out)   
-* icmp\_in - ICMP packets (in)   
-* icmp\_out - ICMP packets (out)   
-* udp\_in - UDP dgrams (in)   
-* udp\_out - UDP dgrams (out)   
-* dns\_in - DNS requests (in)   
-* dns\_out - DNS requests (out)   
-* tcpsyn\_in - TCP sessions (in)   
-* tcpsyn\_out - TCP sessions (out)   
-* tcpack\_in - TCP acks (in)   
-* tcpack\_out - TCP acks (out)   
-* tcpfin\_in - TCP finish (in)   
-* tcpfin\_out - TCP finish (out)   
-* tcpmisc\_in - TCP misc (in)   
-* tcpmisc\_out - TCP misc (out)   
-* webaccess - Webserver hits   
-* weberrors - Webserver errors   
-* syslog - New log entries (Syslog)   
-* messages -  - New log entries (messages)   
-* temp0 - CPU Temperature 0   
-* temp1 - CPU Temperature 1   
-* temp2 - CPU Temperature 2   
-* temp3 - CPU Temperature 3   
-* cpu - %CPU utilization (all)   
-* cpu0 - %CPU utilization 0   
-* cpu1 - %CPU utilization 1   
-* cpu2 - %CPU utilization 2   
-* cpu3 - %CPU utilization 3
+**Deprecated**: This attribute is kept for source compatibility,
+and has no effect.
