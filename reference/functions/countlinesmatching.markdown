@@ -7,52 +7,40 @@ alias: reference-functions-countlinesmatching.html
 tags: [reference, functions, countlinesmatching]
 ---
 
-
-
-**Synopsis**: countlinesmatching(arg1,arg2) 
+**Synopsis**: `countlinesmatching(regex, filename)`
 
 **Return type**: `int`
 
-  
- *arg1* : Regular expression, *in the range* .\*   
- *arg2* : Filename, *in the range* "?(/.\*)   
+**Description**: Count the number of lines in file `filename` matching 
+`regex`.
 
-Count the number of lines matching regex arg1 in file arg2
+This function matches lines in the named file, using a regular expression that should match the whole line, and returns the number of lines matched.
+
+**Arguments**:
+
+* `regex`, *in the range* .\*
+
+A regular expression matching zero or more lines. The regular expression is 
+[anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions),
+
+* *filename*, *in the range* "?(/.\*)
+
+The name of the file to be examined.
 
 **Example**:  
    
 
 ```cf3
-bundle agent example
-{     
-vars:
+    bundle agent example
+    {     
+      vars:
 
-  "no" int => countlinesmatching("m.*","/etc/passwd");
+        "no" int => countlinesmatching("m.*","/etc/passwd");
 
-reports:
+      reports:
 
-  cfengine_3::
+        cfengine_3::
 
-    "Found $(no) lines matching";
-
-}
+          "Found $(no) lines matching";
+    }
 ```
-
-**Notes**:  
-   
-
-This function matches lines in the named file, using a regular
-expression that should match the whole line.
-
-regex
-
-A regular expression matching zero or more lines. The regular expression
-is anchored, meaning it must match a complete line (see [Anchored vs.
-unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
-
-filename
-
-The name of the file to be examined.
-
-The function returns the number of lines matched.

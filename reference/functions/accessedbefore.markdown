@@ -7,18 +7,18 @@ alias: reference-functions-accessedbefore.html
 tags: [reference, functions, accessedbefore]
 ---
 
-**Synopsis**: `accessedbefore(newer_filename, older_filename)`
+**Synopsis**: `accessedbefore(newer, older)`
 
 **Return type**: `class`
 
 **Description**: Compares the `atime` fields of two files.
 
-Return true if `newer_filename` was accessed before `older_filename`.
+Return true if `newer` was accessed before `older`.
 
 **Arguments**:
 
-* *arg1* : Newer filename, *in the range* "?(/.\*)   
-* *arg2* : Older filename, *in the range* "?(/.\*)   
+* `newer` : Newer filename, *in the range* "?(/.\*)   
+* `older` : Older filename, *in the range* "?(/.\*)   
 
 **Example**:  
 

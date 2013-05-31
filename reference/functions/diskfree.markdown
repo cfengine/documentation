@@ -7,38 +7,30 @@ alias: reference-functions-diskfree.html
 tags: [reference, functions, diskfree]
 ---
 
-
-
-**Synopsis**: diskfree(arg1) 
+**Synopsis**: `diskfree(path)`
 
 **Return type**: `int`
 
-  
- *arg1* : File system directory, *in the range* "?(/.\*)   
+**Descriptions**: Return the free space (in KB) available on the current
+partition of `path`.
 
-Return the free space (in KB) available on the directory's current
-partition (0 if not found)
+If `path` is not found, this function returns 0.
+
+**Arguments**:  
+
+* `path` : File system directory, *in the range* "?(/.\*)   
 
 **Example**:  
-   
 
 ```cf3
-bundle agent example
-{     
-vars:
+    bundle agent example
+    {     
+      vars:
+        "free" int => diskfree("/tmp"); 
 
-  "free" int => diskfree("/tmp"); 
+      reports:
+        cfengine_3::
 
-reports:
-
-  cfengine_3::
-
-    "Freedisk $(free)";
-
-}
+          "Freedisk $(free)";
+    }
 ```
-
-**Notes**:  
-   
-
-Values returned in kilobytes.

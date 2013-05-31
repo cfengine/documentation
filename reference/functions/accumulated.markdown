@@ -7,7 +7,7 @@ alias: reference-functions-accumulated.html
 tags: [reference, functions, accumulated]
 ---
 
-**Synopsis**: `accumulated(Years, Months, Days, Hours, Minutes, Seconds)`
+**Synopsis**: `accumulated(years, months, days, hours, minutes, seconds)`
 
 **Return type**: `int`
 
@@ -22,29 +22,29 @@ for example, accumulated(0,0,0,48,0,0) or accumulated(0,0,0,0,90,0).
 
 **ARGUMENTS**:
 
-* Years, *in the range* 0,1000   
+* `years`, *in the range* 0,1000
 
 Years of run time. For convenience in conversion, a year of runtime is
-always 365 days (one year equals 31,536,000 seconds).   
+always 365 days (one year equals 31,536,000 seconds).
 
-* Month, *in the range* 0,1000   
+* `month`, *in the range* 0,1000
 
 Months of run time. For convenience in conversion, a month of runtime is
 always equal to 30 days of runtime (one month equals 2,592,000 seconds).
 
-* Days, *in the range* 0,1000   
+* `days`, *in the range* 0,1000
 
 Days of runtime (one day equals 86,400 seconds)   
 
-* Hours, *in the range* 0,1000
+* `hours`, *in the range* 0,1000
 
 Hours of runtime   
 
-* Minutes, *in the range* 0,1000
+* `minutes`, *in the range* 0,1000
 
 Minutes of runtime 0-59   
 
-* Seconds, *in the range* 0,40000
+* `seconds`, *in the range* 0,40000
 
 Seconds of runtime
 

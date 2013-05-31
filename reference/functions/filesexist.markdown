@@ -7,58 +7,48 @@ alias: reference-functions-filesexist.html
 tags: [reference, functions, filesexist]
 ---
 
-
-
-**Synopsis**: filesexist(arg1) 
+**Synopsis**: `filesexist(list)`
 
 **Return type**: `class`
 
-  
- *arg1* : Array identifier containing list, *in the range*
-@[(][a-zA-Z0-9]+[)]   
+**Description**: Returns whether all the files in `list` can be accessed.
 
-True if the named list of files can ALL be accessed
+All files must exist, and the user must have access permissions to them for 
+this function to return true.
 
-**Example**:  
-   
+**Arguments**:
+
+* `list` : Reference to a list variable, *in the range*
+@[(][a-zA-Z0-9]+[)]
+
+**Example**:
 
 ```cf3
-body common control
+    body common control
 
-{
-bundlesequence  => { "example" };
-}
+    {
+      bundlesequence  => { "example" };
+    }
 
-###########################################################
+    bundle agent example
 
-bundle agent example
+    {     
+      vars:
 
-{     
-vars:
+        "mylist" slist => { "/tmp/a", "/tmp/b", "/tmp/c" };
 
-  "mylist" slist => { "/tmp/a", "/tmp/b", "/tmp/c" };
+      classes:
 
-classes:
+        "exists" expression => filesexist("@(mylist)");
 
-  "exists" expression => filesexist("@(mylist)");
+      reports:
 
-reports:
+        exists::
 
-  exists::
+          "All files exist";
 
-    "Files exist";
+        !exists::
 
-  !exists::
-
-    "Do not exist";
-
-}
-
-
+          "Not all files exist";
+    }
 ```
-
-**Notes**:  
-   
-
-The user must have access permissions to the file for this to work
-faithfully.

@@ -7,13 +7,13 @@ alias: reference-functions-changedbefore.html
 tags: [reference, functions, changedbefore]
 ---
 
-**Synopsis**: `changedbefore(arg1,arg2)`
+**Synopsis**: `changedbefore(newer, older)`
 
 **Return type**: `class`
 
 **Description**: Compares the `ctime` fields of two files.
 
-Returns true if arg1 was changed before arg2 (ctime), otherwise returns false.
+Returns true if `newer` was changed before `older`, otherwise returns false.
 
 Change times include both file permissions and file contents.
 Comparisons like this are normally used for updating files (like the
@@ -21,8 +21,8 @@ Comparisons like this are normally used for updating files (like the
 
 **Arguments**:
  
-* *arg1* : Newer filename, *in the range* "?(/.\*)
-* *arg2* : Older filename, *in the range* "?(/.\*)
+* `newer` : Newer filename, *in the range* "?(/.\*)
+* `older` : Older filename, *in the range* "?(/.\*)
 
 **Example**:  
 

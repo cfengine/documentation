@@ -7,18 +7,18 @@ alias: reference-functions-canonify.html
 tags: [reference, functions, canonify]
 ---
 
-**Synopsis**: `canonify(arg1)`
+**Synopsis**: `canonify(text)`
 
 **Return type**: `string`
 
-**Description**: Convert an arbitrary string into a legal class name.
+**Description**: Convert an arbitrary string `text` into a legal class name.
 
 This function turns arbitrary text into class data (See
 [classify](reference-functions-classfiy.html)).
 
 **Arguments**:
 
-* *arg1* : String containing non-identifier characters, *in the range* .\*   
+* `text` : String containing non-identifier characters, *in the range* .\*   
 
 **Example**:  
 

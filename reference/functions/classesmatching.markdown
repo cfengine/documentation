@@ -7,22 +7,22 @@ alias: reference-functions-classesmatching.html
 tags: [reference, functions, classesmatching]
 ---
 
-**Synopsis**: `classesmatching(arg1)`
+**Synopsis**: `classesmatching(regex)`
 
 **Return type**: `slist`
 
-**Description**: Return the list of set classes matching regex `arg1`.
+**Description**: Return the list of set classes matching `regex`.
 
 This function searches for the regular expression in the list of currently set 
 classes (in order hard, then soft, then local to the current bundle).
 
-
 **Arguments**:
 
-* *arg1* : Regular expression, *in the range* .\*   
+* `regex` : Regular expression, *in the range* .\*   
 
 A regular expression matching zero or more classes in the current list
-of defined classes. The regular expression is not [anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions)).
+of set classes. The regular expression is not 
+[anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions)).
 
 **Example**:  
 
@@ -30,7 +30,7 @@ of defined classes. The regular expression is not [anchored](manuals-language-co
 ```cf3
     body common control
     {
-          bundlesequence => { run };
+      bundlesequence => { run };
     }
 
     bundle agent run

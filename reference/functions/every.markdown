@@ -7,19 +7,21 @@ alias: reference-functions-every.html
 tags: [reference, functions, every]
 ---
 
-
-
-**Synopsis**: every(arg1,arg2) 
+**Synopsis**: `every(regex,list)`
 
 **Return type**: `class`
 
-  
- *arg1* : Regular expression to find, *in the range* .\*
-  
- *arg2* : The name of the list variable to check, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+**Description**: Returns whether every element in the variable `list` matches
+`regex`.
 
-Return true if every element of the list matches the regular expression.
+**Arguments**:
+
+* `regex` : Regular expression to find, *in the range* .\*
+
+The regular expression is unanchored.
+  
+* `list` : The name of the list variable to check, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 **Example**:  
    
@@ -58,4 +60,3 @@ bundle agent test
    
 See also `filter`, `some`, and `none`.
 
-The regular expression is unanchored.

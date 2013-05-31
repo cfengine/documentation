@@ -7,11 +7,11 @@ alias: reference-functions-classify.html
 tags: [reference, functions, classify]
 ---
 
-**Synopsis**: `classify(arg1)`
+**Synopsis**: `classify(text)`
 
 **Return type**: `class`
 
-**Description**: Returns whether the canonicalization of `arg1` is a currently 
+**Description**: Returns whether the canonicalization of `text` is a currently 
 set class.
 
 This is useful for transforming variables into classes. See also 
@@ -19,7 +19,7 @@ This is useful for transforming variables into classes. See also
 
 **Arguments**:
 
-* *arg1* : Input string, *in the range* .\*
+* `text` : Input string, *in the range* .\*
 
 **Example**:  
 
