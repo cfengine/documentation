@@ -12,7 +12,7 @@ tags: [reference, hard classes, soft classes, classes]
 classes that might be set by CFEngine, and soft classes used by CFEngine's 
 default policy.
 
-## Hard Classes
+## Listing Classes
 
 To see all of the classes defined on a particular host, run
 
@@ -23,6 +23,16 @@ link can be established with
 [`cf-monitord`](reference-components-cfmonitord.html), i.e. if both are 
 running  with privilege, and the `/var/cfengine/state/env_data` file is 
 secure.
+
+You can use
+https://github.com/cfengine/design-center/tree/master/tools/hcgrep to
+obtain this list in a format suitable for other tools like `grep` (one
+class per line).
+
+You can also use the built-in `classesmatching` function to get a list
+of all the defined classes in a list, inside CFEngine policy itself.
+
+## Hard Classes
 
 * Operating System Classes
     * Operating System Architecture - `ultrix, sun4`, etc.
