@@ -12,7 +12,7 @@ The data aggregator of CFEngine Enterprise. **TODO: more!**
 `cf-hub` keeps the promises made in `common`, and is affected by
 `common` and `hub` control bodies.
 
-# Command reference
+## Command reference
 
     '--cache'
        (-a) - Rebuild database caches used for efficient query handling (e.g. 
@@ -59,7 +59,7 @@ The data aggregator of CFEngine Enterprise. **TODO: more!**
     }
 ```
 
-## `export_zenoss`
+### export_zenoss
 
 **Type**: string
 
@@ -81,7 +81,7 @@ The data aggregator of CFEngine Enterprise. **TODO: more!**
 For integration with the Zenoss monitoring software.
 
 
-## `exclude_hosts`
+### exclude_hosts
 
 **Type**: slist
 
@@ -108,7 +108,7 @@ expressions to match the IP address. However, host names are
 currently not supported.
 
 
-## `hub_schedule`
+### hub_schedule
 
 **Type**: slist
 
@@ -127,7 +127,7 @@ collation
 *History*: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
 
 
-## `port`
+### port
 
 **Type**: int
 
