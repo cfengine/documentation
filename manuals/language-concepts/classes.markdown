@@ -18,16 +18,101 @@ applied on Sundays, or only when a
 
 Classes are simply facts that represent that current state or context of a 
 system. They are either `set` or `not set`, depending on context. The list of 
-set classes classifies the environment at time of execution.
+set classes classifies the environment at time of execution. In CFEngine 
+Enterprise, the list of set classes is reported to the CFEngine Database 
+Server, and can be used there for reporting and inventory management.
 
-In CFEngine Enterprise, the list of set classes is reported to the CFEngine 
-Database Server, and can be used there for reporting and inventory management.
+Classes fall into hard classes that are discovered by CFEngine, and soft classes that are user-defined.
+
+## Hard Classes
+
+Hard classes are discovered by CFEngine. Each time it wakes up, it discovers 
+and reads properties of the environment or context in which it runs.It turns 
+these properties of the environment into classes. This information is 
+effectively cached and may be used to make decisions about configuration.
+
+You can see all of the classes defined on a particular host by running the following command as a privileged user.
+
+    $ cf-promises -v
+
+These are classes that describe your operating system, the time of day, the 
+week of the year, etc. Time-varying classes will change if you do this a few 
+times over the course of a week.
+
+## Soft Classes
+
+Soft classes are user-defined classes which you can use to implement your own 
+classifications. These classes are defined in bundles, and are evaluated when 
+the bundle is evaluated. They can be based on test functions or on other 
+classes.
+
+```cf3
+    bundle agent myclasses
+    {
+    classes:
+      "solinux" expression => "linux||solaris";
+      "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
+      "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
+
+    reports:
+      alt_class::
+        # This will only report "Boo!" on linux, solaris, or any system
+        # on which the file /etc/fstab exists
+        "Boo!";
+    }
+```
+
+This example defines a few soft classes local to the `myclasses` bundle.
+
+* The `solinux` soft class is defined as a combination of the `linux` or the 
+  `solaris` hard classes. This class will be set if the operating 
+  system family is either of these values.
+
+* The `atl_class` soft class is defined as a combination of `linux`, 
+  `solaris`, or the presence of a file named `/etc/fstab`. If one of the two 
+  hard classes evaluate to true, or if there is a file named `/etc/fstab`, the 
+  `alt_class` class will also be set.
+
+* The `oth_class` soft class is defined as the combination of two `fileexists`
+  functions - `/etc/shadow` and `/etc/passwd`.  If both of these files are 
+  present the `oth_class` class will also be set.
+
+
+
+### Negative Knowledge
+
+If a class is set, then it is certain that the corresponding fact is true.
+However, that a class is not set could mean that something is not the case, or 
+that something is simply not known. This is only a problem with soft classes,
+where the state of a class can change during the execution of a policy, 
+depending on the [order](manuals-language-concepts-normal-ordering.html) in 
+which bundles and promises are evaluated.
 
 ## Making Decisions based on classes
 
-The class predicate `ifvarclass` is `AND`ed with the normal class expression, 
-and is evaluated together with the promise. It may contain variables as long 
-as the resulting expansion is a legal class expression.
+The easiest way to limit the application of a promise to certain conditions is to use the following notation:
+
+```cf3
+    bundle agent greetings
+    {
+     reports:
+       Morning::
+         "Good morning!";
+
+       Evening::
+         "Good evening!";
+    }
+```
+
+In this example, the report "Good morning!" is only printed if the class 
+`Morning` is set, while the report "Good evening!" is only printed when the 
+class `Evening` is set.
+
+A limitation of this notation is that the class expression needs to be 
+constant. The class predicate `ifvarclass` can be used if variable class 
+expressions are required. It is `AND`ed with the normal class expression, and 
+is evaluated together with the promise. It may contain variables as long as 
+the resulting expansion is a legal class expression.
 
 ```cf3
     bundle agent example
@@ -93,46 +178,15 @@ Example Output:
 ```
 
 
-In the example lists of cities are defined in the `vars` section and these
+In this example, lists of cities are defined in the `vars` section and these
 lists are combined into a list of all cities. These variable lists are used to
-qualify the greetings and to make the policy more consice. In the `classes`
+qualify the greetings and to make the policy more concise. In the `classes`
 section a country class is defined if a class described on the right hand side
 evaluates to true. In the reports section the current time is always reported
 but only agents found to have the `Morning` and `italy` classes defined will
 report "Good morning from Italy", this is further qualified by ensuring that
 the report is only generated if one of the known cities also has a class
 defined.
-
-## Hard Classes
-
-Hard classes are discovered by CFEngine. Each time it wakes up, it discovers 
-and reads properties of the environment or context in which it runs.It turns 
-these properties of the environment into classes. This information is 
-effectively cached and may be used to make decisions about configuration.
-
-You can see all of the classes defined on a particular host by running the following command as a privileged user.
-
-    host# cf-promises -v
-
-These are classes that describe your operating system, the time of day, the 
-week of the year, etc. Time-varying classes will change if you do this a few 
-times over the course of a week.
-
-## Soft Classes
-
-Soft classes are user-defined classes which you can use to implement your own 
-classifications. These classes are defined in bundles, and are evaluated when 
-the bundle is evaluated. They can be based on test functions or on other 
-classes.
-
-### Negative Knowledge
-
-If a class is set, then it is certain that the corresponding fact is true.
-However, that a class is not set could mean that something is not the case, or 
-that something is simply not known. This is only a problem with soft classes,
-where the state of a class can change during the execution of a policy, 
-depending on the [order](manuals-language-concepts-normal-ordering.html) in 
-which bundles and promises are evaluated.
 
 ## Operators and Precedence
 
@@ -167,39 +221,6 @@ following expression would be only true on Mondays or Wednesdays from 2:00pm
 to 2:59pm on Windows XP systems:
 
     (Monday|Wednesday).Hr14.WinXP::
-
-### An Example
-
-```cf3
-    bundle agent myclasses
-    {
-    classes:
-      "solinux" expression => "linux||solaris";
-      "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
-      "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
-
-    reports:
-      alt_class::
-        # This will only report "Boo!" on linux, solaris, or any system
-        # on which the file /etc/fstab exists
-        "Boo!";
-    }
-```
-
-This example defines a few soft classes local to the `myclasses` bundle.
-
-* The `solinux` soft class is defined as a combination of the `linux` or the 
-  `solaris` hard classes. This class will be set if the operating 
-  system family is either of these values.
-
-* The `atl_class` soft class is defined as a combination of `linux`, 
-  `solaris`, or the presence of a file named `/etc/fstab`. If one of the two 
-  hard classes evaluate to true or if there is a file named `/etc/fstab`, the 
-  `alt_class` class will also be set.
-
-* The `oth_class` soft class is defined as the combination of two `fileexists`
-  functions - `/etc/shadow` and `/etc/passwd`.  If both of these files are 
-  present the `oth_class` class will also be set.
 
 ### Operands that are functions
 
