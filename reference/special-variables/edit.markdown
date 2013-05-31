@@ -34,7 +34,7 @@ available.
     }
 ```
 
-#### Variable edit.filename
+### edit.filename
 
 This variable points to the filename of the file currently making an
 edit promise. If the file has been arrived at through a search, this

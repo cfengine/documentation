@@ -10,7 +10,7 @@ tags: [reference, variables, variable context const, const]
 CFEngine defines a number of variables for embedding unprintable values
 or values with special meanings in strings.
 
-#### Variable const.dollar
+### const.dollar
 
 
 ```cf3
@@ -24,7 +24,7 @@ or values with special meanings in strings.
        "But the value of \$(dollar) is \$(dollar)";
 ```
 
-#### Variable const.endl
+### const.endl
 
 ```cf3
     reports:
@@ -35,7 +35,7 @@ or values with special meanings in strings.
       "But a string with \n in it does not have a newline!";
 ```
 
-#### Variable const.n
+### const.n
 
 ```cf3
     reports:
@@ -46,7 +46,7 @@ or values with special meanings in strings.
       "But a string with \n in it does not have a newline!";
 ```
 
-#### Variable const.r
+### const.r
 
 ```cf3
     reports:
@@ -56,7 +56,7 @@ or values with special meanings in strings.
       "A carriage return character is $(const.r)";
 ```
 
-#### Variable const.t
+### const.t
 
 ```cf3
     reports:

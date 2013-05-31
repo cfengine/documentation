@@ -30,7 +30,7 @@ files.
     }
 ```
 
-#### Variable match.0
+### match.0
 
 A string matching the complete regular expression whether or not
 back-references were used in the pattern.
