@@ -7,7 +7,7 @@ alias: reference-functions-getindices.html
 tags: [reference, functions, getindices]
 ---
 
-### Function getindices
+
 
 **Synopsis**: getindices(arg1) returns type **slist**
 

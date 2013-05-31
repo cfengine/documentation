@@ -7,7 +7,7 @@ alias: reference-functions-and.html
 tags: [reference, functions, and]
 ---
 
-### Function and
+
 
 **Synopsis**: and(...) returns type **string**
 

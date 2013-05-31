@@ -7,7 +7,7 @@ alias: reference-functions-peerleader.html
 tags: [reference, functions, peerleader]
 ---
 
-### Function peerleader
+
 
 **Synopsis**: peerleader(arg1,arg2,arg3) returns type **string**
 

@@ -7,7 +7,7 @@ alias: reference-functions-usemodule.html
 tags: [reference, functions, usemodule]
 ---
 
-### Function usemodule
+
 
 **Synopsis**: usemodule(arg1,arg2) returns type **class**
 

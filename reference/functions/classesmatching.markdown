@@ -7,7 +7,7 @@ alias: reference-functions-classesmatching.html
 tags: [reference, functions, classesmatching]
 ---
 
-### Function classesmatching
+
 
 **Synopsis**: classesmatching(arg1) returns type **slist**
 

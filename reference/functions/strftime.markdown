@@ -7,7 +7,7 @@ alias: reference-functions-strftime.html
 tags: [reference, functions, strftime]
 ---
 
-### Function strftime
+
 
 **Synopsis**: strftime(arg1,arg2) returns type **string**
 

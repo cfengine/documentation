@@ -7,7 +7,7 @@ alias: reference-functions-filestat.html
 tags: [reference, functions, filestat]
 ---
 
-### Function filestat
+
 
 **Synopsis**: filestat(arg1, arg2) returns type **string**
 

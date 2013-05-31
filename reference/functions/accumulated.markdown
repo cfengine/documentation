@@ -7,7 +7,7 @@ alias: reference-functions-accumulated.html
 tags: [reference, functions, accumulated]
 ---
 
-### Function accumulated
+
 
 **Synopsis**: accumulated(arg1,arg2,arg3,arg4,arg5,arg6) returns type
 **int**

@@ -7,7 +7,7 @@ alias: reference-functions-fileexists.html
 tags: [reference, functions, fileexists]
 ---
 
-### Function fileexists
+
 
 **Synopsis**: fileexists(arg1) returns type **class**
 

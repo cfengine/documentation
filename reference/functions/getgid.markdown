@@ -7,7 +7,7 @@ alias: reference-functions-getgid.html
 tags: [reference, functions, getgid]
 ---
 
-### Function getgid
+
 
 **Synopsis**: getgid(arg1) returns type **int**
 

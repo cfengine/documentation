@@ -7,7 +7,7 @@ alias: reference-functions-randomint.html
 tags: [reference, functions, randomint]
 ---
 
-### Function randomint
+
 
 **Synopsis**: randomint(arg1,arg2) returns type **int**
 

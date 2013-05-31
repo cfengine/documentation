@@ -7,7 +7,7 @@ alias: reference-functions-selectservers.html
 tags: [reference, functions, selectservers]
 ---
 
-### Function selectservers
+
 
 **Synopsis**: selectservers(arg1,arg2,arg3,arg4,arg5,arg6) returns type
 **int**

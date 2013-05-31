@@ -7,7 +7,7 @@ alias: reference-functions-now.html
 tags: [reference, functions, now]
 ---
 
-### Function now
+
 
 **Synopsis**: now() returns type **int**
 

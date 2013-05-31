@@ -7,7 +7,7 @@ alias: reference-functions-none.html
 tags: [reference, functions, none]
 ---
 
-### Function none
+
 
 **Synopsis**: none(arg1,arg2) returns type **class**
 

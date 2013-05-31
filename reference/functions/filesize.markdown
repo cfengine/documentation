@@ -7,7 +7,7 @@ alias: reference-functions-filesize.html
 tags: [reference, functions, filesize]
 ---
 
-### Function filesize
+
 
 **Synopsis**: filesize(arg1) returns type **int**
 

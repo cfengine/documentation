@@ -7,7 +7,7 @@ alias: reference-functions-countlinesmatching.html
 tags: [reference, functions, countlinesmatching]
 ---
 
-### Function countlinesmatching
+
 
 **Synopsis**: countlinesmatching(arg1,arg2) returns type **int**
 

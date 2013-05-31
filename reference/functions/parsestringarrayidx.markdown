@@ -7,7 +7,7 @@ alias: reference-functions-parsestringarrayidx.html
 tags: [reference, functions, parsestringarrayidx]
 ---
 
-### Function parsestringarrayidx
+
 
 **Synopsis**: parsestringarrayidx(arg1,arg2,arg3,arg4,arg5,arg6) returns
 type **int**

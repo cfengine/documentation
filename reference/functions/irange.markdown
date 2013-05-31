@@ -7,7 +7,7 @@ alias: reference-functions-irange.html
 tags: [reference, functions, irange]
 ---
 
-### Function irange
+
 
 **Synopsis**: irange(arg1,arg2) returns type **irange [int,int]**
 

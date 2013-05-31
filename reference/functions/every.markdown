@@ -7,7 +7,7 @@ alias: reference-functions-every.html
 tags: [reference, functions, every]
 ---
 
-### Function every
+
 
 **Synopsis**: every(arg1,arg2) returns type **class**
 

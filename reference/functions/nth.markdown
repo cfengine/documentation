@@ -7,7 +7,7 @@ alias: reference-functions-nth.html
 tags: [reference, functions, nth]
 ---
 
-### Function nth
+
 
 **Synopsis**: nth(arg1,arg2) returns type **string**
 

@@ -7,7 +7,7 @@ alias: reference-functions-getuid.html
 tags: [reference, functions, getuid]
 ---
 
-### Function getuid
+
 
 **Synopsis**: getuid(arg1) returns type **int**
 

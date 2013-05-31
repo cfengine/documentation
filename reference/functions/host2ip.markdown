@@ -7,7 +7,7 @@ alias: reference-functions-host2ip.html
 tags: [reference, functions, host2ip]
 ---
 
-### Function host2ip
+
 
 **Synopsis**: host2ip(arg1) returns type **string**
 

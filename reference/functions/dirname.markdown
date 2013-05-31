@@ -7,7 +7,7 @@ alias: reference-functions-dirname.html
 tags: [reference, functions, dirname]
 ---
 
-### Function dirname
+
 
 **Synopsis**: dirname(arg1) returns type **string**
 

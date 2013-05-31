@@ -9,7 +9,7 @@ tags: [reference, functions, ldaparray]
 
 **This function is only available in CFEngine Enterprise.**
 
-### Function ldaparray
+
 
 **Synopsis**: ldaparray(arg1,arg2,arg3,arg4,arg5,arg6) returns type
 **class**

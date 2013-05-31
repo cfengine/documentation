@@ -7,7 +7,7 @@ alias: reference-functions-regcmp.html
 tags: [reference, functions, regcmp]
 ---
 
-### Function regcmp
+
 
 **Synopsis**: regcmp(arg1,arg2) returns type **class**
 

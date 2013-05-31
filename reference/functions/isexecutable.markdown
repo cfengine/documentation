@@ -7,7 +7,7 @@ alias: reference-functions-isexecutable.html
 tags: [reference, functions, isexecutable]
 ---
 
-### Function isexecutable
+
 
 **Synopsis**: isexecutable(arg1) returns type **class**
 

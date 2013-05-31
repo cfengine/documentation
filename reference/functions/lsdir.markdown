@@ -7,7 +7,7 @@ alias: reference-functions-lsdir.html
 tags: [reference, functions, lsdir]
 ---
 
-### Function lsdir
+
 
 **Synopsis**: lsdir(arg1,arg2,arg3) returns type **slist**
 

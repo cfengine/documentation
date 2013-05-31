@@ -7,7 +7,7 @@ alias: reference-functions-changedbefore.html
 tags: [reference, functions, changedbefore]
 ---
 
-### Function changedbefore
+
 
 **Synopsis**: changedbefore(arg1,arg2) returns type **class**
 

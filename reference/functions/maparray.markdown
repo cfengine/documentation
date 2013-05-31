@@ -7,7 +7,7 @@ alias: reference-functions-maparray.html
 tags: [reference, functions, maparray]
 ---
 
-### Function maparray
+
 
 **Synopsis**: maparray(arg1,arg2) returns type **slist**
 

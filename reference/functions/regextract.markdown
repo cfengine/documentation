@@ -7,7 +7,7 @@ alias: reference-functions-regextract.html
 tags: [reference, functions, regextract]
 ---
 
-### Function regextract
+
 
 **Synopsis**: regextract(arg1,arg2,arg3) returns type **class**
 

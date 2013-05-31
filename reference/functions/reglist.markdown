@@ -7,7 +7,7 @@ alias: reference-functions-reglist.html
 tags: [reference, functions, reglist]
 ---
 
-### Function reglist
+
 
 **Synopsis**: reglist(arg1,arg2) returns type **class**
 

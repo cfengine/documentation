@@ -7,7 +7,7 @@ alias: reference-functions-readintarray.html
 tags: [reference, functions, readintarray]
 ---
 
-### Function readintarray
+
 
 **Synopsis**: readintarray(arg1,arg2,arg3,arg4,arg5,arg6) returns type
 **int**

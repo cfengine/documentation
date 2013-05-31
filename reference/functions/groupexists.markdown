@@ -7,7 +7,7 @@ alias: reference-functions-groupexists.html
 tags: [reference, functions, groupexists]
 ---
 
-### Function groupexists
+
 
 **Synopsis**: groupexists(arg1) returns type **class**
 

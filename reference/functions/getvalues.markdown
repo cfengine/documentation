@@ -7,7 +7,7 @@ alias: reference-functions-getvalues.html
 tags: [reference, functions, getvalues]
 ---
 
-### Function getvalues
+
 
 **Synopsis**: getvalues(arg1) returns type **slist**
 

@@ -7,7 +7,7 @@ alias: reference-functions-isvariable.html
 tags: [reference, functions, isvariable]
 ---
 
-### Function isvariable
+
 
 **Synopsis**: isvariable(arg1) returns type **class**
 

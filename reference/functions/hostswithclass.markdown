@@ -9,7 +9,7 @@ tags: [reference, functions, hostswithclass]
 
 **This function is only available in CFEngine Enterprise.**
 
-### Function hostswithclass
+
 
 **Synopsis**: hostswithclass(arg1,arg2) returns type **slist**
 

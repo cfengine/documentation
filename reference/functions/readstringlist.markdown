@@ -7,7 +7,7 @@ alias: reference-functions-readstringlist.html
 tags: [reference, functions, readstringlist]
 ---
 
-### Function readstringlist
+
 
 **Synopsis**: readstringlist(arg1,arg2,arg3,arg4,arg5) returns type
 **slist**

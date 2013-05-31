@@ -7,7 +7,7 @@ alias: reference-functions-islessthan.html
 tags: [reference, functions, islessthan]
 ---
 
-### Function islessthan
+
 
 **Synopsis**: islessthan(arg1,arg2) returns type **class**
 

@@ -7,7 +7,7 @@ alias: reference-functions-translatepath.html
 tags: [reference, functions, translatepath]
 ---
 
-### Function translatepath
+
 
 **Synopsis**: translatepath(arg1) returns type **string**
 

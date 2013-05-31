@@ -7,7 +7,7 @@ alias: reference-functions-length.html
 tags: [reference, functions, length]
 ---
 
-### Function length
+
 
 **Synopsis**: length(arg1) returns type **int**
 

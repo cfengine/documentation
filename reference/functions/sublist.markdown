@@ -7,7 +7,7 @@ alias: reference-functions-sublist.html
 tags: [reference, functions, sublist]
 ---
 
-### Function sublist
+
 
 **Synopsis**: sublist(arg1,arg2,arg3) returns type **slist**
 

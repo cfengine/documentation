@@ -7,7 +7,7 @@ alias: reference-functions-diskfree.html
 tags: [reference, functions, diskfree]
 ---
 
-### Function diskfree
+
 
 **Synopsis**: diskfree(arg1) returns type **int**
 

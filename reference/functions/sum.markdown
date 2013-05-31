@@ -7,7 +7,7 @@ alias: reference-functions-sum.html
 tags: [reference, functions, sum]
 ---
 
-### Function sum
+
 
 **Synopsis**: sum(arg1) returns type **real**
 

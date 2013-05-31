@@ -7,7 +7,7 @@ alias: reference-functions-format.html
 tags: [reference, functions, format]
 ---
 
-### Function format
+
 
 **Synopsis**: format(...) returns type **string**
 

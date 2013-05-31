@@ -7,7 +7,7 @@ alias: reference-functions-ago.html
 tags: [reference, functions, ago]
 ---
 
-### Function ago
+
 
 **Synopsis**: ago(arg1,arg2,arg3,arg4,arg5,arg6) returns type **int**
 

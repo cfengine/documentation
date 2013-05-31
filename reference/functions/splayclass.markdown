@@ -7,7 +7,7 @@ alias: reference-functions-splayclass.html
 tags: [reference, functions, splayclass]
 ---
 
-### Function splayclass
+
 
 **Synopsis**: splayclass(arg1,arg2) returns type **class**
 

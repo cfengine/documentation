@@ -7,7 +7,7 @@ alias: reference-functions-readrealarray.html
 tags: [reference, functions, readrealarray]
 ---
 
-### Function readrealarray
+
 
 **Synopsis**: readrealarray(arg1,arg2,arg3,arg4,arg5,arg6) returns type
 **int**

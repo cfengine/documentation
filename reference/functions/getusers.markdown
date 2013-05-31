@@ -7,7 +7,7 @@ alias: reference-functions-getusers.html
 tags: [reference, functions, getusers]
 ---
 
-### Function getusers
+
 
 **Synopsis**: getusers(arg1,arg2) returns type **slist**
 

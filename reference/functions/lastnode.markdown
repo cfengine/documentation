@@ -7,7 +7,7 @@ alias: reference-functions-lastnode.html
 tags: [reference, functions, lastnode]
 ---
 
-### Function lastnode
+
 
 **Synopsis**: lastnode(arg1,arg2) returns type **string**
 

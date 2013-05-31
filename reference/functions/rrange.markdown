@@ -7,7 +7,7 @@ alias: reference-functions-rrange.html
 tags: [reference, functions, rrange]
 ---
 
-### Function rrange
+
 
 **Synopsis**: rrange(arg1,arg2) returns type **rrange [real,real]**
 

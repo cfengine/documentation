@@ -7,7 +7,7 @@ alias: reference-functions-readintlist.html
 tags: [reference, functions, readintlist]
 ---
 
-### Function readintlist
+
 
 **Synopsis**: readintlist(arg1,arg2,arg3,arg4,arg5) returns type
 **ilist**

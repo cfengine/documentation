@@ -7,7 +7,7 @@ alias: reference-functions-readfile.html
 tags: [reference, functions, readfile]
 ---
 
-### Function readfile
+
 
 **Synopsis**: readfile(arg1,arg2) returns type **string**
 

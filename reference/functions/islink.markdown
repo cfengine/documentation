@@ -7,7 +7,7 @@ alias: reference-functions-islink.html
 tags: [reference, functions, islink]
 ---
 
-### Function islink
+
 
 **Synopsis**: islink(arg1) returns type **class**
 

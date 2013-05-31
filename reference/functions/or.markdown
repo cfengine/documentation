@@ -7,7 +7,7 @@ alias: reference-functions-or.html
 tags: [reference, functions, or]
 ---
 
-### Function or
+
 
 **Synopsis**: or(...) returns type **string**
 

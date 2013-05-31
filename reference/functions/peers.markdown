@@ -7,7 +7,7 @@ alias: reference-functions-peers.html
 tags: [reference, functions, peers]
 ---
 
-### Function peers
+
 
 **Synopsis**: peers(arg1,arg2,arg3) returns type **slist**
 

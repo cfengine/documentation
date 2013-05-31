@@ -7,7 +7,7 @@ alias: reference-functions-userexists.html
 tags: [reference, functions, userexists]
 ---
 
-### Function userexists
+
 
 **Synopsis**: userexists(arg1) returns type **class**
 

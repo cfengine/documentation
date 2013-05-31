@@ -7,7 +7,7 @@ alias: reference-functions-classmatch.html
 tags: [reference, functions, classmatch]
 ---
 
-### Function classmatch
+
 
 **Synopsis**: classmatch(arg1) returns type **class**
 

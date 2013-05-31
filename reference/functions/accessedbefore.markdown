@@ -7,7 +7,7 @@ alias: reference-functions-accessedbefore.html
 tags: [reference, functions, accessedbefore]
 ---
 
-### Function accessedbefore
+
 
 **Synopsis**: accessedbefore(arg1,arg2) returns type **class**
 

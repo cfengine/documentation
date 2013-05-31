@@ -7,7 +7,7 @@ alias: reference-functions-getfields.html
 tags: [reference, functions, getfields]
 ---
 
-### Function getfields
+
 
 **Synopsis**: getfields(arg1,arg2,arg3,arg4) returns type **int**
 

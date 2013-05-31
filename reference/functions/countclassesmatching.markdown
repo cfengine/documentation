@@ -7,7 +7,7 @@ alias: reference-functions-countclassesmatching.html
 tags: [reference, functions, countclassesmatching]
 ---
 
-### Function countclassesmatching
+
 
 **Synopsis**: countclassesmatching(arg1) returns type **int**
 

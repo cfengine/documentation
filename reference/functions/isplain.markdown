@@ -7,7 +7,7 @@ alias: reference-functions-isplain.html
 tags: [reference, functions, isplain]
 ---
 
-### Function isplain
+
 
 **Synopsis**: isplain(arg1) returns type **class**
 

@@ -7,7 +7,7 @@ alias: reference-functions-filter.html
 tags: [reference, functions, filter]
 ---
 
-### Function filter
+
 
 **Synopsis**: filter(arg1,arg2,arg3,arg4,arg5) returns type **slist**
 

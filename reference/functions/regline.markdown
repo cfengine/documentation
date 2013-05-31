@@ -7,7 +7,7 @@ alias: reference-functions-regline.html
 tags: [reference, functions, regline]
 ---
 
-### Function regline
+
 
 **Synopsis**: regline(arg1,arg2) returns type **class**
 

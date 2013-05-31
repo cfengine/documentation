@@ -7,7 +7,7 @@ alias: reference-functions-hostrange.html
 tags: [reference, functions, hostrange]
 ---
 
-### Function hostrange
+
 
 **Synopsis**: hostrange(arg1,arg2) returns type **class**
 

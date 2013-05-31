@@ -7,7 +7,7 @@ alias: reference-functions-splitstring.html
 tags: [reference, functions, splitstring]
 ---
 
-### Function splitstring
+
 
 **Synopsis**: splitstring(arg1,arg2,arg3) returns type **slist**
 

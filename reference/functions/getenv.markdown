@@ -7,7 +7,7 @@ alias: reference-functions-getenv.html
 tags: [reference, functions, getenv]
 ---
 
-### Function getenv
+
 
 **Synopsis**: getenv(arg1,arg2) returns type **string**
 

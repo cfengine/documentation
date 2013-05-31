@@ -7,7 +7,7 @@ alias: reference-functions-isnewerthan.html
 tags: [reference, functions, isnewerthan]
 ---
 
-### Function isnewerthan
+
 
 **Synopsis**: isnewerthan(arg1,arg2) returns type **class**
 

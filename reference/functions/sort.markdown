@@ -7,7 +7,7 @@ alias: reference-functions-sort.html
 tags: [reference, functions, sort]
 ---
 
-### Function sort
+
 
 **Synopsis**: sort(arg1,arg2) returns type **slist**
 

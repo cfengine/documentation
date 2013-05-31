@@ -7,7 +7,7 @@ alias: reference-functions-execresult.html
 tags: [reference, functions, execresult]
 ---
 
-### Function execresult
+
 
 **Synopsis**: execresult(arg1,arg2) returns type **string**
 

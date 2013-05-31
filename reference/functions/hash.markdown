@@ -7,7 +7,7 @@ alias: reference-functions-hash.html
 tags: [reference, functions, hash]
 ---
 
-### Function hash
+
 
 **Synopsis**: hash(arg1,arg2) returns type **string**
 

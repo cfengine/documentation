@@ -7,7 +7,7 @@ alias: reference-functions-iprange.html
 tags: [reference, functions, iprange]
 ---
 
-### Function iprange
+
 
 **Synopsis**: iprange(arg1) returns type **class**
 

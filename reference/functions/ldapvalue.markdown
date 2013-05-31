@@ -9,7 +9,7 @@ tags: [reference, functions, ldapvalue]
 
 **This function is only available in CFEngine Enterprise.**
 
-### Function ldapvalue
+
 
 **Synopsis**: ldapvalue(arg1,arg2,arg3,arg4,arg5,arg6) returns type
 **string**

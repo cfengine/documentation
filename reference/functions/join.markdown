@@ -7,7 +7,7 @@ alias: reference-functions-join.html
 tags: [reference, functions, join]
 ---
 
-### Function join
+
 
 **Synopsis**: join(arg1,arg2) returns type **string**
 

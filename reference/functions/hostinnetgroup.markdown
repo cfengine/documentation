@@ -7,7 +7,7 @@ alias: reference-functions-hostinnetgroup.html
 tags: [reference, functions, hostinnetgroup]
 ---
 
-### Function hostinnetgroup
+
 
 **Synopsis**: hostinnetgroup(arg1) returns type **class**
 

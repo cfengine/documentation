@@ -7,7 +7,7 @@ alias: reference-functions-classify.html
 tags: [reference, functions, classify]
 ---
 
-### Function classify
+
 
 **Synopsis**: classify(arg1) returns type **class**
 

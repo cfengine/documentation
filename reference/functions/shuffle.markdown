@@ -7,7 +7,7 @@ alias: reference-functions-shuffle.html
 tags: [reference, functions, shuffle]
 ---
 
-### Function shuffle
+
 
 **Synopsis**: shuffle(arg1,arg2) returns type **slist**
 

@@ -7,7 +7,7 @@ alias: reference-functions-unique.html
 tags: [reference, functions, unique]
 ---
 
-### Function unique
+
 
 **Synopsis**: unique(arg1) returns type **slist**
 

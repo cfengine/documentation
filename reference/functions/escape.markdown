@@ -7,7 +7,7 @@ alias: reference-functions-escape.html
 tags: [reference, functions, escape]
 ---
 
-### Function escape
+
 
 **Synopsis**: escape(arg1) returns type **string**
 

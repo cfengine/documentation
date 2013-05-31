@@ -7,7 +7,7 @@ alias: reference-functions-hashmatch.html
 tags: [reference, functions, hashmatch]
 ---
 
-### Function hashmatch
+
 
 **Synopsis**: hashmatch(arg1,arg2,arg3) returns type **class**
 

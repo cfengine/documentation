@@ -7,7 +7,7 @@ alias: reference-functions-some.html
 tags: [reference, functions, some]
 ---
 
-### Function some
+
 
 **Synopsis**: some(arg1,arg2) returns type **class**
 

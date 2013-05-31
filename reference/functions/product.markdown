@@ -7,7 +7,7 @@ alias: reference-functions-product.html
 tags: [reference, functions, product]
 ---
 
-### Function product
+
 
 **Synopsis**: product(arg1) returns type **real**
 

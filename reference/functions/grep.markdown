@@ -7,7 +7,7 @@ alias: reference-functions-grep.html
 tags: [reference, functions, grep]
 ---
 
-### Function grep
+
 
 **Synopsis**: grep(arg1,arg2) returns type **slist**
 

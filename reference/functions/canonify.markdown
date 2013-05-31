@@ -7,7 +7,7 @@ alias: reference-functions-canonify.html
 tags: [reference, functions, canonify]
 ---
 
-### Function canonify
+
 
 **Synopsis**: canonify(arg1) returns type **string**
 

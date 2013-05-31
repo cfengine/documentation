@@ -7,7 +7,7 @@ alias: reference-functions-maplist.html
 tags: [reference, functions, maplist]
 ---
 
-### Function maplist
+
 
 **Synopsis**: maplist(arg1,arg2) returns type **slist**
 
