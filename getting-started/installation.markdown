@@ -71,8 +71,7 @@ files is one symptom of this problem.
 INSTALLATION INSTRUCTIONS (CLEAN INSTALL)
 -----------------------------------------
 * Clean install is tested
-* Do not upgrade from previous versions of CFEngine 3 Enterprise/Nova.
-MC
+* Do not upgrade from previous versions of CFEngine 3 Enterprise.
 * As always, install HUB first, then client(s).
 
  
