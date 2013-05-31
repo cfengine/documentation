@@ -1,22 +1,28 @@
 ---
 layout: default
-title: Hard Classes 
-categories: [Reference, Hard Classes]
+title: Classes 
+categories: [Reference, Classes]
 published: true
-alias: reference-hard-classes.html
-tags: [reference, hard classes, classes]
+alias: reference-classes.html
+tags: [reference, hard classes, soft classes, classes]
 ---
 
-CFEngine runs on every computer individually and each time it wakes
-up the underlying generic agent platform discovers and classifies
-properties of the environment or context in which it runs. This
-information is cached and may be used to make decisions about
-configuration.
+[Classes](manuals-language-concepts-classes.html) fall into **hard**
+(discovered) and **soft** (defined) types. This reference documents the hard 
+classes that might be set by CFEngine, and soft classes used by CFEngine's 
+default policy.
 
-Classes fall into hard (discovered) and soft (defined) types. A
-single class can be one of several things:
+## Hard Classes
 
-**TODO: cleanup, split into sub-pages**
+To see all of the classes defined on a particular host, run
+
+    $ cf-promises -v
+
+as a privileged user. Note that some of the classes are set only if a trusted 
+link can be established with 
+[`cf-monitord`](reference-components-cfmonitord.html), i.e. if both are 
+running  with privilege, and the `/var/cfengine/state/env_data` file is 
+secure.
 
 * Operating System Classes
     * Operating System Architecture - `ultrix, sun4`, etc.
@@ -86,13 +92,30 @@ single class can be one of several things:
 -   On Solaris-10 systems, the zone name (in the form
     `zone_global, zone_foo, zone_baz`).
 
-To see all of the classes defined on a particular host, run
+## Soft Classes
 
-    $ cf-promises -v
+The following classes can be set via 
 
-as a privileged user. Note that some of the classes are set only if a trusted 
-link can be established with 
-[`cf-monitord`](reference-components-cfmonitord.html), i.e. if both are 
-running  with privilege, and the `/var/cfengine/state/env_data` file is 
-secure. More  information about classes can be found in connection with 
-`allclasses`.
+    $ cf-agent -Dclass
+
+or
+
+    $ cf-runagent -Dclass
+    
+to change the behavior of CFEngine without having to edit the policy.
+
+### persistent\_disable\_*DAEMON*
+
+**Description**: Disable a CFEngine Enterprise daemon component persistently.
+
+`DAEMON` can be one of `cf_execd`, `cf_monitord` or `cf_serverd`.
+
+This will stop the AGENT from starting automatically.
+
+### clear_persistent\_disable\_*DAEMON*
+
+**Description**: Re-enable a previously disabled CFEngine Enterprise daemon 
+component.
+
+`DAEMON` can be one of `cf_execd`, `cf_monitord` or `cf_serverd`.
+
