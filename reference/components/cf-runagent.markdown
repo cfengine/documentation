@@ -48,7 +48,8 @@ access control.
        (-I) - Print basic information about changes made to the
         system, i.e. promises repaired
     '--remote-options'
-       (-o value) - Pass options to a remote server process
+       (-o value) - Pass options `value` to the `cf-agent` on the remote 
+        server
     '--diagnostic'
        (-x) - Activate internal diagnostics (developers only)
     '--hail'
