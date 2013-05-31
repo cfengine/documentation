@@ -7,6 +7,38 @@ alias: reference-functions.html
 tags: [Reference, Functions]
 ---
 
+Functions are parameterized "RVALUES".
+
+They can return scalar and list values:
+
+```cf3
+    vars:
+      "random" int => randomint("0", "100");
+      "list" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
+```
+
+In addition, functions with return type `class` set the class if the function evaluates to true. If the function evaluates to false, the class is unset.
+
+```cf3
+    bundle agent test
+    {
+    vars:
+      "five" int => "5";
+      "seven" " int => "7";
+    classes:
+      "ok" expression => islessthan("$(five)","$(seven)");
+
+    reports:
+
+      ok::
+        "$(five) is smaller than $(seven)";
+
+     !ok::
+        "$(seven) is smaller than $(five)";
+
+    }
+```
+
 **TODO: fix links, make proper markdown tables**
 
 There are a large number of functions built into CFEngine, and finding
