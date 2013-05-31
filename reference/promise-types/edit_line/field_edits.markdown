@@ -317,7 +317,7 @@ from 1).
                     off
 ```
 
-**Introduced**: Version 3.1.0b1,Nova 2.0.0b1 (2010)
+**History**: Version 3.1.0b1,Nova 2.0.0b1 (2010)
 
 The numbering of fields is a matter for consistency and convention. Arrays are usually thought to start with first index equal to zero (0),
 but the first column in a file would normally be 1. By setting this option, you can tell CFEngine that the first column should be understood

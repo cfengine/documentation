@@ -142,9 +142,9 @@ files and performs other actions beyond the control of CFEngine.
 
 If one does not need shell functionality such as piping through multiple
 commands then it is best to manage without it. In the Windows version of
-CFEngine Nova, the command is run in the the Command Prompt if useshell
-is true. 
-
+CFEngine Enterprise, the command is run in the `cmd` Command Prompt if this 
+attribute is set to `useshell`, or in the PowerShell if the attribute is set 
+to `powershell`.
 
 **Example**:  
    

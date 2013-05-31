@@ -7,6 +7,8 @@ alias: reference-functions-remoteclassesmatching.html
 tags: [reference, functions, remoteclassesmatching]
 ---
 
+**This function is only available in CFEngine Enterprise.**
+
 ### Function remoteclassesmatching
 
 **Synopsis**: remoteclassesmatching(arg1,arg2,arg3,arg4) returns type
@@ -30,9 +32,6 @@ cfengine server and add them into local context with prefix
 ```
 
 **Notes**:  
-   
- This function is only available in Enterprise versions of CFEngine
-(Nova, Enterprise, etc).
 
 This function contacts a remote `cf-serverd` and requests access to
 defined *persistent classes* on that system. These must be granted

@@ -24,7 +24,7 @@ For example, creating 100 new databases for test purposes is a task for
 CFEngine; but adding a new item to an important production database is
 not a recommended task for CFEngine.
 
-There are three kinds of database supported by Nova:
+There are three kinds of database supported by CFEngine:
 
 *LDAP - The Lightweight Directory Access Protocol*
 
@@ -38,7 +38,7 @@ for reading and writing complex data.
 *Registry - Microsoft Registry*
 
 An embedded database for interfacing with system values in Microsoft
-Windows (Only CFEngine Nova)
+Windows (Only CFEngine Enterprise)
 
 In addition, CFEngine uses a variety of embedded databases for its own
 internals.

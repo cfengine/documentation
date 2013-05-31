@@ -459,7 +459,9 @@ update         => "yes";
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
 
 **Description**:
-Native settings for access control entry are defined by 'aces'. POSIX ACL are available in CFEngine Community starting with 3.4.0. NTFS ACL are available with CFEngine Nova or above.
+Native settings for access control entry are defined by 'aces'. POSIX ACL are 
+available in CFEngine Community starting with 3.4.0. NTFS ACL are available in 
+with CFEngine Enterprise.
 
 **Example**:  
    
@@ -820,7 +822,8 @@ If this is positive, file hashes should be updated as soon as a change is regist
                     off
 ```
 
-**Versions**: This feature is available only in enterprise levels Nova and above.
+**Versions**: This feature requires CFEngine Enterprise.
+
 
 **Description**: Setting `report_diffs` determines whether to generate reports summarizing the major differences between
 individual text files.
@@ -1346,7 +1349,7 @@ files. This ensures that the destination file (promiser) gets the same Unix mode
      
 ```
 
-**Introduced**: Version 3.1.0b3,Nova 2.0.0b1 (2010)   
+**History**: Version 3.1.0b3,Nova 2.0.0b1 (2010)   
 
 `purge`
 
@@ -3272,8 +3275,7 @@ ACLs may be used in place for this.
    
 
 The mode string may be symbolic or numerical, like `chmod`. This is
-ignored on Windows, as the permission model uses ACLs. ACLs are
-supported by CFEngine Nova.   
+ignored on Windows, as the permission model uses ACLs.
 
 `owners`
 

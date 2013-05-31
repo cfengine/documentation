@@ -150,5 +150,6 @@ CFEngine can analyze the promises you have made, index and cross reference them 
 
     $ cf-promises -r
 
-Normally, the default policy in Nova or Constellation will perform this command each time the policy is changed.
+Normally, the default policy in CFEngine Enterprise will perform this command 
+each time the policy is changed.
 

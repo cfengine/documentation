@@ -247,9 +247,9 @@ regular system output messages.
 ```
 
 **Hint**: The promise handle \$(this.handle) can be a useful referent in a 
-log message, indicating the origin of the message. In CFEngine Nova and 
-above, every promise has a default handle, which is based on the filename 
-and line number (specifying your own handle will probably be more mnemonic).   
+log message, indicating the origin of the message. In CFEngine Enterprise, 
+every promise has a default handle, which is based on the filename 
+and line number (specifying your own handle will probably be more mnemonic).
 
 `log_level`
 
@@ -270,7 +270,7 @@ syslog mechanism to centralize or manage messaging from CFEngine. A backup
  of these messages will still be kept in WORKDIR/outputs if you are using 
  `cf-execd`.
 
-On the native Windows version of CFEngine (Nova or above), using verbose 
+On the native Windows version of CFEngine Enterprise, using verbose 
 will include a message when the promise is kept or repaired in the event 
 log.   
 
@@ -407,7 +407,7 @@ logger.
      
      body action immediate_syslog(x) 
      {
-     log_repaired => "udp_syslog"; # Nova and above 
+     log_repaired => "udp_syslog";
      log_string => "CFEngine repaired promise $(this.handle) - $(x)";
      }
 ```
@@ -626,12 +626,12 @@ verification of the current promise in the background. This is advantageous
 only if the verification might take a significant amount of time, e.g. 
 in remote copying of filesystem/disk scans.
 
-On the Windows version of CFEngine Nova, this can be useful if we don't
- want to wait for a particular command to finish execution before checking 
- the next promise. This is particular for the Windows platform because there 
- is no way that a program can start itself in the background here; in other 
- words, fork off a child process. However, file operations can not be 
- performed in the background on Windows.   
+On the Windows version of CFEngine Enterprise, this can be useful if we don't
+want to wait for a particular command to finish execution before checking 
+the next promise. This is particular for the Windows platform because there 
+is no way that a program can start itself in the background here; in other 
+words, fork off a child process. However, file operations can not be 
+performed in the background on Windows.   
 
 **Default value:** false
 

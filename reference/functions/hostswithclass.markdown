@@ -48,7 +48,7 @@ am_policy_hub::
 **Notes**:  
    
 
-On CFEngine Nova hubs, this function can be used to return a list of
+On CFEngine Enterprise, this function can be used to return a list of
 hostnames or ip-addresses of hosts that has the class given as argument
 1. Argument 2 may be address or name, to return IP address or hostname
 form.
@@ -57,8 +57,3 @@ Note that this function only works locally on the hub, but allows the
 hub to construct custom configuration files for (classes of) hosts.
 
 *History*: Was introduced in 3.3.0, Nova 2.2.0 (2012)
-
-Availability: Enterprise editions of CFEngine only.
-
-```cf3
-```

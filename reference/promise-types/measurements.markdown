@@ -14,14 +14,14 @@ performance data about the system. These include process counts, service
 traffic, load average and CPU utilization and temperature when
 available.
 
-CFEngine Nova extends this in two ways. First it adds a three year trend
-summary based any \`shift'-averages. Second, it adds customizable
+CFEngine Enterprise extends this in two ways. First it adds a three year trend
+summary based any 'shift'-averages. Second, it adds customizable
 promises to monitor or log very specific user data through a generic
 interface. The end result is to either generate a periodic time series,
 like the above mentioned values, or to log the results to custom-defined
 reports.
 
-CFEngine Nova adds a new promise type in bundles for the monitoring
+CFEngine Enterprise adds a new promise type in bundles for the monitoring
 agent. These are written just like all other promises within a bundle
 destined for the agent concerned (however, you do not need to add them
 to the `bundlesequence` they are executed by `cf-monitord` because they
@@ -164,9 +164,9 @@ and currently has less support for out-of-the-box probes.
 54. cpu3: %CPU utilization core 3
 
 Slots with a higher number are used for custom measurement promises in
-CFEngine Nova.
+CFEngine Enterprise.
 
-These values collected and analysed by `cf-monitord` are transformed
+These values collected and analyzed by `cf-monitord` are transformed
 into agent variables in the `$(mon.`name`)` context.
 
 **Measurement promise syntax:**
@@ -241,7 +241,7 @@ a process. However pipes from executed commands may also be invoked.
 **Notes**:  
    
 
-When CFEngine (Nova) observes data, such as the attached partitions in
+When CFEngine observes data, such as the attached partitions in
 the example above, the datatype determines how that data will be
 handled. Integer and real values, counters etc., are recorded as
 time-series if the history type is \`weekly', or as single values

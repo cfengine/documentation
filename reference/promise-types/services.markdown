@@ -61,12 +61,12 @@ body service_method winmethod
 
   
 
-Services promises for Windows are only available in CFEngine Nova and
-above. Windows Vista/Server 2008 and later introduced new complications
+Services promises for Windows are only available in CFEngine Enterprise. 
+Windows Vista/Server 2008 and later introduced new complications
 to the service security policy. Therefore, when testing `services`
 promises from the command line, CFEngine may not be given proper access
 rights, which gives errors like "Access is denied". However, when
-running through the CFEngine Nova Executor service, typical for on
+running through the CFEngine Enterprise Executor service, typical for on
 production machines, CFEngine has sufficient rights.
 
 Services of type generic promises are implemented for all operating
@@ -174,7 +174,7 @@ services:
 **Notes**:  
    
 
-If set to `start`, CFEngine Nova will keep the service in a running
+If set to `start`, CFEngine Enterprise will keep the service in a running
 state, while `stop` means that the service is kept in a stopped state.
 `disable` implies `stop`, and ensures that the service can not be
 started directly, but needs to be enabled somehow first (e.g. by
@@ -205,13 +205,13 @@ services:
 
 A list of services that must be running before the service can be
 started. These dependencies can be started automatically by CFEngine
-Nova if they are not running see `service_dependence_chain`. However,
-the dependencies will never be implicitly stopped by CFEngine Nova.
+Enterprise if they are not running see `service_dependence_chain`. However,
+the dependencies will never be implicitly stopped by CFEngine.
 Specifying dependencies is optional.
 
 Note that the operating system may keep an additional list of
 dependencies for a given service, defined during installation of the
-service. CFEngine Nova requires these dependencies to be running as well
+service. CFEngine Enterprise requires these dependencies to be running as well
 before starting the service. The complete list of dependencies is thus
 the union of `service_dependencies` and the internal operating system
 list.
@@ -243,7 +243,7 @@ list.
 **Notes**:  
    
 
-These arguments will only be passed if CFEngine Nova starts the service.
+These arguments will only be passed if CFEngine Enterprise starts the service.
 Thus, set `service_autostart_policy` to `none` to ensure that the
 arguments are always passed.
 
@@ -326,7 +326,7 @@ inetd or xinetd on Unix.
 The service dependencies include both the dependencies defined by the
 operating system and in `service_dependencies`, as described there.
 
-Defaults to `ignore`, which means that CFEngine Nova will never start or
+Defaults to `ignore`, which means that CFEngine Enterprise will never start or
 stop dependencies or dependent services, but fail if dependencies are
 not satisfied. `start_parent_services` means that all dependencies of
 the service will be started if they are not already running. When
@@ -340,9 +340,9 @@ on.
 For example, consider the case where service A depends on B, which
 depends on C. If we want to start B, we must first make sure A is
 running. If `start_parent_services` or `all_related` is set, CFEngine
-Nova will start A, if it is not running. On the other hand, if we want
+Enterprise will start A, if it is not running. On the other hand, if we want
 to stop B, C needs to be stopped first. `stop_child_services` or
-`all_related` means that CFEngine Nova will stop C, if it is running.   
+`all_related` means that CFEngine Enterprise will stop C, if it is running.   
 
 `service_type`
 
