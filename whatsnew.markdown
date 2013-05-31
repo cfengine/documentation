@@ -46,7 +46,7 @@ for data collection
 ## Get started today!
 
 CFEngine 3.5 is compatible with all previous versions of CFEngine 3. See the
-[Release Notes](getting-started-release-notes.html) for a comprehensive list
+[Release Notes](whats-new-release-notes.html) for a comprehensive list
 of the key improvements in the latest version of CFEngine.
 
 Don't have CFEngine yet?

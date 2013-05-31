@@ -2,9 +2,9 @@
 layout: default
 title: Release Notes
 sortkey: 0
-categories: [Getting Started, Release Notes]
+categories: [What's New, Release Notes]
 published: true
-alias: getting-started-release-notes.html
+alias: whats-new-release-notes.html
 ---
 
 **IMPORTANT NOTE:** *This is a pre-release of 3.5, intended for testing and showcase only.
