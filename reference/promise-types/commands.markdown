@@ -118,6 +118,7 @@ as a non-privileged user inside an isolated directory tree.
            chdir => "/working/path";
           chroot => "/private/path";
     }
+```
 
 #### useshell
 
