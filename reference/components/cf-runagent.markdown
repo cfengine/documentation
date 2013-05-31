@@ -56,9 +56,6 @@ access control.
          overriding default list
     '--interactive'
        (-i) - Enable interactive mode for key trust
-    '--query'
-       (-q value) - Query a server for a knowledge menu (commercial
-         editions only)
     '--timeout'
        (-t value) - Connection timeout, seconds
     '--legacy-output'

@@ -7,6 +7,8 @@ alias: reference-functions-regldap.html
 tags: [reference, functions, regldap]
 ---
 
+**This function is only available in CFEngine Enterprise.**
+
 ### Function regldap
 
 **Synopsis**: regldap(arg1,arg2,arg3,arg4,arg5,arg6,arg7) returns type

@@ -51,7 +51,7 @@ the network and work as a class-based clock for scheduling.
        (-O) - Run once and then exit
     '--no-winsrv'
        (-W) - Do not run as a service on windows - use this when
-        running from a command shell (commercial editions only)
+        running from a command shell (CFEngine Enterprise only)
     '--ld-library-path'
        (-L value) - Set the internal value of LD\_LIBRARY\_PATH for
         child processes

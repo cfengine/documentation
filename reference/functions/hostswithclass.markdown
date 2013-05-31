@@ -7,6 +7,8 @@ alias: reference-functions-hostswithclass.html
 tags: [reference, functions, hostswithclass]
 ---
 
+**This function is only available in CFEngine Enterprise.**
+
 ### Function hostswithclass
 
 **Synopsis**: hostswithclass(arg1,arg2) returns type **slist**
@@ -15,8 +17,7 @@ tags: [reference, functions, hostswithclass]
  *arg1* : Class name to look for, *in the range* [a-zA-Z0-9\_]+   
  *arg2* : Type of return value desired, *in the range* name,address   
 
-Extract the list of hosts with the given class set from the hub database
-(commercial extension)
+Extract the list of hosts with the given class set from the CFEngine Database.
 
 **Example**:  
    

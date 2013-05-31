@@ -7,6 +7,8 @@ alias: reference-functions-ldaplist.html
 tags: [reference, functions, ldaplist]
 ---
 
+**This function is only available in CFEngine Enterprise.**
+
 ### Function ldaplist
 
 **Synopsis**: ldaplist(arg1,arg2,arg3,arg4,arg5,arg6) returns type

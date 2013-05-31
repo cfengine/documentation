@@ -224,7 +224,7 @@ The assumed (default) name of the main system interface on this host.
 
 Displays a system list of configured interfaces currently active in use
 by the system. This list is detected at runtime and it passed in the
-variables report to a Mission Portal in commercial editions of CFEngine.
+variables report to the CFEngine Enterprise Database.
 
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.
@@ -254,8 +254,8 @@ local variables can be iterated.
 *History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 Displays a system list of IP addresses currently in use by the system.
-This list is detected at runtime and passed in the variables report to a
-Mission Portal in commercial editions of CFEngine.
+This list is detected at runtime and passed in the variables report to the 
+CFEngine Enterprise Database.
 
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.

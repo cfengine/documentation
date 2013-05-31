@@ -139,8 +139,8 @@ line option.
 that match promisees/topics considered to be organizational goals
 
 It is used as identifier to mark business and organizational goals in
-commercial versions of CFEngine. CFEngine uses this to match
-promisees that represent business goals in promises.
+CFEngine Enterprise. CFEngine uses this to match promisees that represent 
+business goals in promises.
 
 **Example**:
 
@@ -397,13 +397,13 @@ they may be considered self-documenting.
 
 **Description**: The value of `host_licenses_paid` represents the number
  of licenses that you promise to have paid for by setting this value 
- (legally binding for commercial license).
+ (legally binding for CFEngine Enterprise).
 
-Licensees of the commercial CFEngine releases have to make a
-promise in acceptance of contract terms by setting this value to
-the number of licenses they have paid for. This is tallied with the
-number of licenses granted. This declaration should be placed in
-all separate configuration files, e.g. failsafe.cf, promises.cf.
+Licensees of CFEngine Enterprise have to make a promise in acceptance of 
+contract terms by setting this value to the number of licenses they have paid 
+for. This is tallied with the number of licenses granted. This declaration 
+should be placed in all separate configuration files, e.g. failsafe.cf, 
+promises.cf.
 
 **Example**:
 
@@ -532,11 +532,10 @@ to activate full FIPS mode restrictions.
 
 **Notes**:
 
-Appears as of Nova 2.0. In CFEngine commercial editions this value
-may be set to avoid the use of old deprecated algorithms that are
-no longer FIPS 140-2 compliant. If not set, there is some degree of
-compatibility with older versions and algorithms. During an
-upgrade, setting this parameter can cause a lot of recomputation of
-checksums etc. Government bodies starting with Nova 2.0 or higher
-should set this to 'true' from the start.
+In CFEngine Enterprise, this value may be set to avoid the use of old 
+deprecated algorithms that are no longer FIPS 140-2 compliant. If not set, 
+there is some degree of compatibility with older versions and algorithms. 
+During an upgrade, setting this parameter can cause a lot of recomputation of 
+checksums etc. Government bodies starting with CFEngine Enterprise 2.0 or  
+higher should set this to 'true' from the start.
 

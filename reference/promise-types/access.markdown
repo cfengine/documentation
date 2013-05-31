@@ -372,20 +372,21 @@ these are matched by the request from the client, they will be
 transmitted (See [Function
 remoteclassesmatching](#Function-remoteclassesmatching)).
 
-The term `query` may also be used in commercial versions of CFEngine to
-query the server for data from embedded databases. This is currently for
-internal use only, and is used to grant access to report \`menus'. If
-the promiser of a query request is called collect\_calls, this grants
-access to server peering collect-call tunneling (See
-[call\_collect\_interval in
-server](#call_005fcollect_005finterval-in-server)).
+The term `query` may also be used in CFEngine Enterprise to query the server 
+for data from embedded databases. This is currently for internal use only, and 
+is used to grant access to report 'menus'. If the promiser of a query request 
+is called `collect_calls`, this grants access to server peering collect-call 
+tunneling.
 
 
 #### `report_data_select` (body template)
 
+**This body is only available in CFEngine Enterprise.**
+
 **Type**: body
 
-**Synopsis**: Restricts access to data for specified query type reported to Enterprise Hub.
+**Synopsis**: Restricts access to data for specified query type reported to 
+the CFEngine Enterprise Database.
 
 **Example**:
 
@@ -402,8 +403,10 @@ body report_data_select
 **Notes**:
 
 
-This body template allow user to control content of reports collected by Enterprise Hub.
-It can be used to differentiate content of delta and full reports as also allow user
+This body template allow user to control content of reports collected by the 
+Enterprise Database Server.
+It can be used to differentiate content of delta and full reports as also 
+allow user
 to strip unwanted data e.g. temporary variables from reporting.
 Report content can be differentiated between hosts which is controlled
 by class expression on access promiser.
@@ -501,7 +504,10 @@ body report_data_select
 
 This attribute is used to filter content of variables report collected by Enterprise Hub.
 Variables matching specified regular expression list will only be send back in the report.
-Regular expression if matched agents variable name including scope: <scope>.<variable_name>
+Regular expression if matched agents variable name including scope: 
+
+    <scope>.<variable_name>
+
 If attribute is not used, report content is not reduced.
 
 History: Introduced in Enterprise 3.5.0

@@ -7,6 +7,8 @@ alias: reference-functions-hubknowledge.html
 tags: [reference, functions, hubknowledge]
 ---
 
+**This function is only available in CFEngine Enterprise.**
+
 ### Function hubknowledge
 
 **Synopsis**: hubknowledge(arg1) returns type **string**
@@ -15,7 +17,7 @@ tags: [reference, functions, hubknowledge]
  *arg1* : Variable identifier, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
-Read global knowledge from the hub host by id (commercial extension)
+Read global knowledge from the hub host by id.
 
 **Example**:  
    
@@ -31,7 +33,7 @@ vars:
 **Notes**:  
    
 
-This function is only available in commercial releases of CFEngine. It
+This function is only available in CFEngine Enterprise. It
 is intended for use in distributed orchestration. It is recommended that
 you use this function sparingly with *guards*, as it contributes to
 network traffic and depends on the network for its function. Unlike

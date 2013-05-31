@@ -99,7 +99,7 @@ report collection
 
 *History*: Was introduced in 3.3.0, Enterprise 2.1.1 (2011)
 
-In commercial CFEngine editions, this list of IP addresses will not
+In CFEngine Enterprise, this list of IP addresses will not
 be queried for reports by `cf-hub`, even though they are in the
 last-seen database.
 
