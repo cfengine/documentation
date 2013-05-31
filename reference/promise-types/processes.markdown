@@ -37,10 +37,7 @@ pattern anchors `"\b"` and `"\B"` may prove very useful to you).
      
 ```
 
-In CFEngine 2 there was a restart clause for directly executing a
-command to restart a process. In CFEngine 3 there is instead a class to
-activate. You must then describe a `command` in that class to restart
-the process.
+To restart a process, you must use a class to activate and then describe a `command` in that class.
 
 ```cf3
 commands:
@@ -59,10 +56,6 @@ intended only for commands of the form /etc/inetd service stop, not for
 processes that persist. Processes are restarted at the end of a bundle's
 execution, but stop commands are executed immediately.
 
-Note: `process_select` was previously called process `filters` in
-CFEngine 2 and earlier.
-
-  
 
 ```cf3
 bundle agent example

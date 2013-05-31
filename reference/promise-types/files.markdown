@@ -43,8 +43,7 @@ both remove a file and rename it.
 
 **File copying**
 
-One of the first things users of CFEngine 2 will notice is that copying
-is now \`backwards'. Instead of the default object being source and the
+Copying is 'backwards'. Instead of the default object being source and the
 option being the destination, in CFEngine 3 the destination is paramount
 and the source is an option. This is because the model of voluntary
 cooperation tells us that it is the object that is changed, which is the
@@ -53,10 +52,10 @@ with CFEngine, one can only invite change from a source.
 
 **Normal ordering of promise attributes**
 
-CFEngine 3 no longer has an \`action sequence'. Ordering of operations
+CFEngine has no 'action sequence'. Ordering of operations
 has, in most cases, a natural ordering that is assumed by the agent. For
-example, \`delete then create' (normal ordering) makes sense, but
-\`create then delete' does not. This sort of principle can be extended
+example, 'delete then create' (normal ordering) makes sense, but
+'create then delete' does not. This sort of principle can be extended
 to deal with all aspects of file promises.
 
 The diagram below shows the ordering. Notice that the same ordering
@@ -111,21 +110,15 @@ The pseudo-code for this logic is shown in the diagram and below:
    }
 ```
 
-**Depth searches (formerly known as 'recursion') during searches**
+**Depth searches (aka 'recursion') during searches**
 
-In CFEngine 2 there was the concept of recursion during file searches.
-Recursion is now called "depth-search". In addition, it was possible to
-specify wildcards in the base-path for this search. CFEngine 3 replaces
-the \`globbing' symbols with standard regular expressions:
+Recursion is called "depth-search", and CFEngine uses the 'globbing' symbols 
+with standard regular expressions:
 
-```cf3
-      CFEngine 2               CFEngine 3
-
-/one/*/two/thr*/four    /one/.*/two/thr.*/four
-```
+    /one/.*/two/thr.*/four
 
 Note: When searching for hidden files (files with names starting with a
-\`.') or files with specific extensions, you should take care to escape
+'.') or files with specific extensions, you should take care to escape
 the dot (e.g., `\.cshrc` or `.*\.txt`) when you wish it to mean a
 literal character and not the any character interpretation provided by
 regular expression interpretation.
@@ -260,14 +253,8 @@ Depth search is not allowed with `edit_line` promises.
 
 **File editing in CFEngine 3**
 
-CFEngine 2 assumed that all files were line-edited, because it was based
-on Unix traditions. Since then many new file formats have emerged,
-including XML. CFEngine 3 opens up the possibility for multiple models
-of file editing. Line based editing still exists, but is now more
-powerful and has been simplified compared with previous versions.
-
 File editing is not just a single kind of promise but a whole range of
-\`promises within files'. It is therefore not merely a body to a single
+'promises within files'. It is therefore not merely a body to a single
 kind of promise, but a bundle of sub-promises. After all, inside each
 file are new objects that can make promises, quite separate from files'
 external attributes.
@@ -1691,9 +1678,8 @@ recursive deletion
    
 
 Note the parent directory of a search is not deleted in recursive
-deletions. In CFEngine 2 there was an option to delete the parent of the
-search. In CFEngine 3 you must code a separate promise to delete the
-single parent object.
+deletions. You must code a separate promise to delete the single parent 
+object.
 
 ```cf3
      
@@ -2659,7 +2645,7 @@ not other attributes, such as permissions.
    
 
 A range of times during which a file was accessed can be specified in a
-`file_select` body. This is similar to file filters in CFEngine 2.   
+`file_select` body.
 
 `exec_regex`
 

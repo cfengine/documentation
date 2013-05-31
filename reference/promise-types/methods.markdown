@@ -25,11 +25,8 @@ the time being.
      
 ```
 
-Methods are useful for encapsulating repeatedly used configuration
-issues and iterating over parameters.
-
-In CFEngine 2 methods referred to separate sub-programs executed as
-separate processes. Methods are now implemented as bundles that are run
+Methods are useful for encapsulating repeatedly used configuration issues and 
+iterating over parameters. They are implemented as bundles that are run 
 inline.
 
   

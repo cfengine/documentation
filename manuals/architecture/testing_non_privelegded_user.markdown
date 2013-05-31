@@ -52,9 +52,3 @@ This is always the way to start checking a configuration in
 CFEngine 3. If a configuration does not pass this check/test, you
 will not be allowed to use it, and cf-agent will look for the file
 failsafe.cf.
-
-Notice that the CFEngine 3 binaries have slightly different names
-than the CFEngine 2 binaries. They all start with the cf- prefix.
-
-         host$ ~/.cfagent/bin/cf-agent
-

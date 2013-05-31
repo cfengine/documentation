@@ -201,7 +201,6 @@ $(sys.host)
 $(mon.www_in)
 ```
 
-In CFEngine 2 `editfiles` this was called ExpandVariables.
 
 #### `insert_type`
 

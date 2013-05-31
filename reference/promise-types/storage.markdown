@@ -20,12 +20,6 @@ Storage promises refer to disks and filesystem properties.
      
 ```
 
-In CFEngine 2, storage promises were divided into `disks` or `required`,
-and `misc_mounts` types. The old mount-models for binary and home
-servers has been deprecated and removed from CFEngine 3. Users who use
-these models can reconstruct them from the low-level tools.
-
-  
 
 ```cf3
 bundle agent storage

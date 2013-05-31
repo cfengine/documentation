@@ -669,9 +669,6 @@ attribute allows to set these three output levels on a per promise basis,
 allowing the promise to be more verbose than the global setting (but not 
 less).
 
-In CFEngine 2 one would say inform=true or syslog=true, and so on. This 
-replaces these levels since they act as encapsulating super-sets.   
-
 **Example**:  
    
 
