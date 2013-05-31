@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Promise Types and Common Attributes
+title: Promise Types and Attributes
 categories: [Reference, Promise Types]
 published: true
 alias: reference-promise-types.html
