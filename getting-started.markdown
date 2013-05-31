@@ -8,9 +8,13 @@ tags: [getting started]
 ---
 
 Don't have CFEngine yet? Start using
-[CFEngine Enterprise in 10 minute](https://cfengine.com/evaluate-enterprise) with the ready-made
+[CFEngine Enterprise in 10 minute](https://cfengine.com/evaluate-enterprise) 
+with the ready-made
 [VirtualBox](https://cfengine.com/enterprise-getting-started) or
-[KVM](https://cfengine.com/cfengine-enterprise-getting-started-using-kvm) image.
+[KVM](https://cfengine.com/cfengine-enterprise-getting-started-using-kvm) 
+image.
+
+****
 
 CFEngine is a powerful tool, but the basic architecture is very simple:
 
@@ -33,8 +37,17 @@ through the Mission Portal, easily installing and configuring policies across
 all your machines.
 
 The CFEngine policy language is declarative and easy to learn, also for users
-with little background in programming. We have found that the following steps 
-are a good way to learn CFEngine:
+with little background in programming. Here is the simplest `Hello world' program in CFEngine 3:
+
+```cf3
+    bundle agent test
+    {
+    reports:
+        "Hello world";
+    }
+```
+
+We have found that the following steps are a good way to learn CFEngine:
 
 * Complete Step 2 of the getting started guide: Deploy your first policy on
    [VirtualBox](https://cfengine.com/enterprise-getting-started-2) or 

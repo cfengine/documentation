@@ -26,24 +26,7 @@ promise that a particular directory has a particular set of permissions and
 the proper owner to serve web pages via Apache.
 
 This simple but powerful idea allows a very practical uniformity in CFEngine 
-syntax. There is only one grammatical form for statements in the language that 
-you need to know and promise definitions follow this general syntax:
-
-```cf3
-    promise_type:
-
-      classes::
-
-        "promiser" -> { "promisee1", "promisee2", ... }
-
-            attribute_1 => value_1,
-            attribute_2 => value_2,
-            ...
-            attribute_n => value_n;
-```
-
-There are many concepts in this code: type, classes, promiser, promisee, 
-attributes, and values.
+syntax. 
 
 ### Promise Types
 

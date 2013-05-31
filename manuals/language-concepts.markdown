@@ -7,7 +7,25 @@ alias: manuals-language-concepts.html
 tags: [manuals, language, syntax, concepts, promises]
 ---
 
-You can recognize *everything* in CFEngine 3 from just a few concepts.
+There is only one grammatical form for statements in the language:
+
+```cf3
+    bundle bundle_type name
+    {
+    promise_type:
+
+      classes::
+
+        "promiser" -> { "promisee1", "promisee2", ... }
+
+            attribute_1 => value_1,
+            attribute_2 => value_2,
+            ...
+            attribute_n => value_n;
+    }
+```
+
+You can recognize *everything* in CFEngine from just those few concepts.
 
 * [**Promise**](manuals-language-concepts-promises.html)
 
@@ -15,13 +33,14 @@ A declaration about the *state* we desire to maintain (e.g., the permissions
 or contents of a file, the availability or absence of a service, the 
 (de)installation of a package).
 
-* [**Promise bundles**](manuals-language-concepts-bundles.html)
+* [**Bundles**](manuals-language-concepts-bundles.html)
 
 A collection of promises.
 
-* [**Promise bodies**](manuals-language-concepts-bodies.html)
+* [**Bodies**](manuals-language-concepts-bodies.html)
 
-A part of a promise which details and constrains its nature.
+A part of a promise which details and constrains its nature, possibly in 
+separate and re-usable parts.
 
 * [**Classes**](manuals-language-concepts-classes.html)
 
@@ -29,9 +48,8 @@ CFEngine's boolean classifiers that describe context.
 
 * [**Variables and Datatypes**](manuals-language-concepts-variables.html)
 
-An association of the form "LVALUE *represents* RVALUE", where rval may be a 
-scalar value or a list of scalar values. An interpretation of a scalar value: 
-string, integer or real number.
+An association of the form "LVALUE *represents* RVALUE", where RVALUE may be a 
+scalar value or a list of scalar values: a string, integer or real number.
 
 This documentation about the language concepts introduces in addition
 
