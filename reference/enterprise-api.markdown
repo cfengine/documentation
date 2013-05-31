@@ -306,7 +306,7 @@ Some resources require that the request user is a member of the *admin* role. Ro
 -   `error` *(string)* Error if anything went wrong.
 
 
-### 1.8.16 /api/query/async/:async-query-id
+### /api/query/async/:async-query-id
 
 **Supported Operations**: `GET`, `DELETE`
 
