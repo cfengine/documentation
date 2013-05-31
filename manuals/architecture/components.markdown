@@ -68,9 +68,9 @@ and server bundles containing
 
 * [cf-execd](reference-components-cfexecd.html)
 
-This is a scheduling daemon (which can either supplement or replace cron). It 
-also works as a wrapper, executing and collecting the output of `cf-agent` and 
-E-mailing it if necessary to a system account.
+This is a scheduling daemon for `cf-agent`, similar to cron.
+It executes and collects the output of `cf-agent` and
+e-mails any output to the configured e-mail address (see body executor control, TODO LINKME).
 
 * [cf-promises](reference-components-cfpromises.html)
 
