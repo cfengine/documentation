@@ -16,16 +16,6 @@ tags: [reference, functions, accessedbefore]
 Sets the class if `newer_filename` was accessed before `older_filename`.
 
 
-```
-     
-      touch /tmp/reference
-      touch /tmp/secretfile
-     
-      /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
-      R: The secret changes have been accessed after the reference time
-     
-```
-
 **Arguments**:
 
 * *arg1* : Newer filename, *in the range* "?(/.\*)   
@@ -54,4 +44,16 @@ Sets the class if `newer_filename` was accessed before `older_filename`.
         "The secret changes have been accessed after the reference time";
 
     }
+```
+
+Example output:
+
+```
+     
+      touch /tmp/reference
+      touch /tmp/secretfile
+     
+      /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
+      R: The secret changes have been accessed after the reference time
+     
 ```
