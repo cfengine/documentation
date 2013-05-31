@@ -17,7 +17,9 @@ They can return scalar and list values:
       "list" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
 ```
 
-In addition, functions with return type `class` set the class if the function evaluates to true. If the function evaluates to false, the class is unset.
+In addition, functions with return type `class` evaluate to `true` or `false`. 
+The class on the left-hand side is set if the function evaluates to true. If 
+the function evaluates to false, then the class remains unchanged.
 
 ```cf3
     bundle agent test
