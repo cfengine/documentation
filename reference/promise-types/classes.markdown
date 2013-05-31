@@ -214,7 +214,7 @@ Then create `classes.cf`
     }
 ```
 
-#### not
+### not
 
 **Synopsis**: Evaluate the negation of string expression in normal form
 
@@ -244,7 +244,7 @@ something is the case. That a class is not set could mean either. See the note
 on [Negative Knowledge](manuals-language-concepts-classes.html).
 
 
-#### select_class
+### select_class
 
 **Synopsis**: Select one of the named list of classes to define based on
 host identity
@@ -285,7 +285,7 @@ distributed across a controlled list of classes (e.g for load balancing
 purposes).
 
 
-#### `xor`
+### xor
 
 **Synopsis**: Combine class sources with XOR
 
