@@ -45,6 +45,8 @@ affected by `common` and `server` control bodies.
     '--ld-library-path'
        (-L value) - Set the internal value of LD\_LIBRARY\_PATH for
         child processes
+    '--legacy-output'
+       (-l) - Use legacy output format
 
 Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
 

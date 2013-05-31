@@ -61,6 +61,8 @@ access control.
          editions only)
     '--timeout'
        (-t value) - Connection timeout, seconds
+    '--legacy-output'
+       (-l) - Use legacy output format
 
 Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
 

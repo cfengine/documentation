@@ -51,6 +51,8 @@ affected by `common` and `agent` control bodies.
        (-v) - Output verbose information about the behaviour of the agent
     '--version'
        (-V) - Output the version of the software
+    '--legacy-output'
+       (-l) - Use legacy output format
 
 Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
 

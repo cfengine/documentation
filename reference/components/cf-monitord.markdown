@@ -43,6 +43,8 @@ affected by  `common` and `monitor` control bodies.
     '--tcpdump'
        (-T) - Interface with tcpdump if available to collect data about 
        network
+    '--legacy-output'
+       (-l) - Use legacy output format
 
 Debug levels: 1=parsing, 2=running, 3=summary,
 

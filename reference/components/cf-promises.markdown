@@ -49,6 +49,8 @@ changes must be approved by this validator before being executed.
        (-p) - Print a parse tree for the policy file in JSON format
     '--gcc-brief-format'
        (-g) - Use the GCC brief-format for output
+    '--legacy-output'
+       (-l) - Use legacy output format
 
 Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
 
