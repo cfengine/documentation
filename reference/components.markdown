@@ -471,11 +471,6 @@ CFEngine's components may promise to send data.
     }
 ```
 
-**Notes**:
-
-This feature is provided in CFEngine Nova and above.
-
-
 ### syslog_port
 
 **Type**: int
@@ -497,10 +492,6 @@ components may promise to send data.
     syslog_port => "514";
     }
 ```
-
-**Notes**:
-
-This feature is provided in CFEngine Nova and above.
 
 
 ### fips_mode
