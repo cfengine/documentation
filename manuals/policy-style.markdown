@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Policy Style Guide
-categories: [Manuals]
+categories: [Manuals, Policy Style Guide]
 published: true
 alias: manuals-policy-style-guide.html
 tags: [manuals, style, policy]
