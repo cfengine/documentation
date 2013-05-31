@@ -162,8 +162,8 @@ time.
 **Notes**:  
    
 
-The \`hostname' of a virtual guest may or may not be the same as the
-identifier used as \`promiser' by the virtualization manager.   
+The 'hostname' of a virtual guest may or may not be the same as the
+identifier used as 'promiser' by the virtualization manager.   
 
 `env_network`
 

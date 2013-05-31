@@ -244,7 +244,7 @@ a process. However pipes from executed commands may also be invoked.
 When CFEngine observes data, such as the attached partitions in
 the example above, the datatype determines how that data will be
 handled. Integer and real values, counters etc., are recorded as
-time-series if the history type is \`weekly', or as single values
+time-series if the history type is 'weekly', or as single values
 otherwise. If multiple items are matched by an observation (e.g. several
 lines in a file match the given regular expression), then these can be
 made into a list by choosing `slist`, else the first matching item will
@@ -291,7 +291,7 @@ so will be sampled less often by cf-monitord).
 
 static
 
-A synonym for \`scalar'.   
+A synonym for 'scalar'.   
 
 log
 

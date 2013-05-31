@@ -58,7 +58,7 @@ Note: you should never use this function to execute commands that make
 changes to the system, or perform lengthy computations. Such an
 operation is beyond CFEngine's ability to guarantee convergence, and on
 multiple passes and during syntax verification these function calls are
-executed, resulting in system changes that are \`covert'. Calls to
+executed, resulting in system changes that are 'covert'. Calls to
 `execresult` should be for discovery and information extraction only.
 
 Note: if the command is not found, the result will be the empty string.

@@ -50,4 +50,4 @@ reports:
 
 Change times include both file permissions and file contents.
 Comparisons like this are normally used for updating files (like the
-\`make' command).
+'make' command).

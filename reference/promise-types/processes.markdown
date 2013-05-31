@@ -108,7 +108,7 @@ the process table) and certain repairs (promises to execute commands
 that start processes).
 
 Executions are about jobs, services, scripts etc. They are properties of
-an executable file. The referring \`promiser' is a file object. On the
+an executable file. The referring 'promiser' is a file object. On the
 other hand a process is a property of a "process identifier" which is a
 kernel instantiation, a quite different object altogether. For example:
 
@@ -738,7 +738,7 @@ processes:
    
 
 As an alternative to sending a termination or kill signal to a process,
-one may call a \`stop script' to perform a graceful shutdown.
+one may call a 'stop script' to perform a graceful shutdown.
 
 #### `restart_class`
 

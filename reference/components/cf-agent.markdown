@@ -764,7 +764,7 @@ for lazy-evaluation of overlapping file-copy promises.
 define classes if copied.
 
 Classes are automatically defined by the files that are copied. The
-file is named according to the prefixed \`canonization' of the file
+file is named according to the prefixed 'canonization' of the file
 name. Canonization means that non-identifier characters are
 converted into underscores. Thus /etc/passwd would canonize to
 '\_etc\_passwd'. The prefix 'auto\_' is added to clarify the origin
@@ -828,7 +828,7 @@ the time that must elapse before a promise will be rechecked.
 
 This overrides the global settings. Promises which take a long time
 to verify should usually be protected with a long value for this
-parameter. This serves as a resource \`spam' protection. A CFEngine
+parameter. This serves as a resource 'spam' protection. A CFEngine
 check could easily run every 5 minutes provided resource intensive
 operations are not performed on every run. Using time classes like
 `Hr12` etc., is one part of this strategy; using `ifelapsed` is
@@ -869,7 +869,7 @@ another which is not tied to a specific time.
 **Default value:** false
 
 **Description**: The `inform` menu option policy sets the default  output 
-level \`permanently' within the class context indicated.
+level 'permanently' within the class context indicated.
 
 It is equivalent to (and when present, overrides) the command line option
 '-I'. 
@@ -1076,9 +1076,9 @@ at the start of every scheduled bundle.
 
 **Notes**:
 
-In the example above we use a non-empty list with the name \`none'.
+In the example above we use a non-empty list with the name 'none'.
 This is not a reserved word, but as long as there are no bundles
-with the name \`none' this has the effect of *never* reloading the
+with the name 'none' this has the effect of *never* reloading the
 process table. This keeps improves the efficiency of the agent.
 
 *History*: Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
@@ -1253,7 +1253,7 @@ switch on output to syslog at the inform level.
 to switch on tracking of promise valuation.
 
 If this is true, CFEngine generates a log in
-WORKDIR/state/cf\_value.log of the estmated \`business value' of
+WORKDIR/state/cf\_value.log of the estmated 'business value' of
 the system automation as a running log, `value_kept`, etc. The
 format of the file is date, sum value kept, sum value repaired, 
 sum value notkept.
@@ -1304,7 +1304,7 @@ machine must comply with.
 switch on verbose standard output.
 
 It is equivalent to (and when present, overrides) the command line option
-'-v'. Sets the default output level \`permanently' for this
+'-v'. Sets the default output level 'permanently' for this
 promise.
 
 **Example**:

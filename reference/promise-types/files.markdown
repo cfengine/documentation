@@ -24,7 +24,7 @@ basically into three categories: create, delete and edit.
 Prior to version 3, file promises were scattered into many different
 types, including `files`, `tidy`, `copy`, and `links`. File handling in
 CFEngine 3 uses regular expressions everywhere for pattern matching. The
-old \`wildcard/globbing' expressions \* and ? are deprecated, and
+old 'wildcard/globbing' expressions \* and ? are deprecated, and
 everything is based consistently on Perl Compatible Regular Expressions.
 
 There is a natural ordering in file processing that obviates the need
@@ -62,7 +62,7 @@ The diagram below shows the ordering. Notice that the same ordering
 applies regardless of file type (plain-file or directory). Note also
 that file editing is done "atomically".
 
-See: \`File editing in CFEngine 3'
+See: 'File editing in CFEngine 3'
 
 ![The normal ordering of file operators in CFEngine 3](filelogic.png)
 
@@ -828,7 +828,7 @@ If this is positive, file hashes should be updated as soon as a change is regist
 **Description**: Setting `report_diffs` determines whether to generate reports summarizing the major differences between
 individual text files.
 
-If true, CFEngine will log a \`diff' summary of major changes to the files. It is not permitted to combine this promise with a depth search, since this would consume a dangerous amount of resources and would lead to unreadable reports.
+If true, CFEngine will log a 'diff' summary of major changes to the files. It is not permitted to combine this promise with a depth search, since this would consume a dangerous amount of resources and would lead to unreadable reports.
 
 The feature is intended as a informational summary, not as a version control function suitable for transaction control. If you want to do versioning on system files, you should keep a single repository for them and use CFEngine to synchronize changes from the repository source. Repositories should not be used to attempt to capture random changes of the system.
 
@@ -1213,9 +1213,9 @@ The pattern matches the last node filename; in other words, without the absolute
 
 **Description**: The `link_type` menu option policy contains the type of links to use when copying.
 
-Users are advised to be wary of \`hard links' (see Unix manual pages for the ln command). The behaviour of non-symbolic links is often precarious and unpredictable. However, hard links are the only supported type by Windows.
+Users are advised to be wary of 'hard links' (see Unix manual pages for the ln command). The behaviour of non-symbolic links is often precarious and unpredictable. However, hard links are the only supported type by Windows.
 
-Note that symlink is synonymous with absolute links, which are different from relative links. Although all of these are symbolic links, the nomenclature here is defined such that symlink and absolute are equivalent. When verifying a link, choosing \`relative' means that the link *must* be relative to the source, so relative and absolute links are mutually exclusive.   
+Note that symlink is synonymous with absolute links, which are different from relative links. Although all of these are symbolic links, the nomenclature here is defined such that symlink and absolute are equivalent. When verifying a link, choosing 'relative' means that the link *must* be relative to the source, so relative and absolute links are mutually exclusive.   
 
 **Example**:  
    
@@ -1754,7 +1754,7 @@ present. If there is no `delete` body then files (and directories) are
 **Notes**:  
    
 
-This was previously called \`recurse' in earlier versions of CFEngine.
+This was previously called 'recurse' in earlier versions of CFEngine.
 Note that the value inf may be used for an unlimited value.
 
 When searching recursively from a directory, the parent directory is
@@ -2951,7 +2951,7 @@ them to the source.
    
 
 This determines what kind of link should be used to link files. Users
-are advised to be wary of \`hard links' (see Unix manual pages for the
+are advised to be wary of 'hard links' (see Unix manual pages for the
 ln command). The behaviour of non-symbolic links is often precarious and
 unpredictable. However, hard links are the only supported type by
 Windows.
@@ -2959,7 +2959,7 @@ Windows.
 Note that symlink is synonymous with absolute links, which are different
 from relative links. Although all of these are symbolic links, the
 nomenclature here is defined such that symlink and absolute are
-equivalent . When verifying a link, choosing \`relative' means that the
+equivalent . When verifying a link, choosing 'relative' means that the
 link *must* be relative to the source, so relative and absolute links
 are mutually exclusive.   
 
@@ -3180,7 +3180,7 @@ means a single literal object with a name composed of dots and stars.
 
 On Windows paths using `regex` must use the forward slash (`/`) as path
 separator, since the backward slash has a special meaning in a regular
-expression. Literal paths may also use backslash (`\`) as a path
+expression. Literal paths may also use backslash (`') as a path
 separator.
 
 See [Regular expressions in paths](#Regular-expressions-in-paths), for

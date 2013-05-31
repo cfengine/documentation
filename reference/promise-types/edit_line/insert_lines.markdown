@@ -646,7 +646,7 @@ expression when *matching* lines (that is, when determining if the line
 is already in the file), but leaving the string as specified when
 actually inserting it.
 
-Simply put, the \`does this line exist' test will be changed to a regexp
+Simply put, the 'does this line exist' test will be changed to a regexp
 match. The line being tested will optionally have "\\s\*" prepended or
 appended if `ignore_leading` or `ignore_trailing` is specified, and if
 `ignore_imbedded` is used then all embedded white spaces are replaced

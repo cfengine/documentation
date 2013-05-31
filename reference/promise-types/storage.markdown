@@ -420,7 +420,7 @@ distribution
 **Notes**:  
    
 
-This operation should not be left \`on' for more than a single run
+This operation should not be left 'on' for more than a single run
 (maximum once per week). It causes CFEngine to perform an extensive disk
 scan noting the schedule of changes between files. This can be used for
 a number of analyses including optimum backup schedule computation.

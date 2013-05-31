@@ -246,7 +246,7 @@ hosts that are not directly addressable from a hub data-aggregation
 process. For example, if some of the clients of a policy hub are
 behind a network address translator then the hub is not able to
 open a channel to address them directly. The effect is to place a
-\`collect call' with the policy hub.
+'collect call' with the policy hub.
 
 If this option is set, the client's `cf-serverd` will "peer" with
 the server daemon on a policy hub. This means that, `cf-serverd` on

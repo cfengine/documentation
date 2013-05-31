@@ -158,7 +158,7 @@ a promise is set using `ifelapsed`. This overrides the global settings.
 Promises which take a long time to verify should usually be protected 
 with a long value for this parameter.
 
-This serves as a resource \`spam' protection. A CFEngine check could 
+This serves as a resource 'spam' protection. A CFEngine check could 
 easily run every 5 minutes provided resource intensive operations are 
 not performed on every run. Using time classes such as `Hr12` is one 
 part of this strategy; using `ifelapsed` is another, which is not tied 
@@ -724,7 +724,7 @@ The identifier forms a partial identity for optional performance scanning of pro
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Description**: The `promise_repaired` slist contains classes to be defined 
-globally. If a promise is \`repaired' it means that a corrective action had 
+globally. If a promise is 'repaired' it means that a corrective action had 
 to be taken to keep the promise.
 
 Note that any strings passed to this list are automatically canonified, so 
@@ -749,7 +749,7 @@ you promise to create and file and change its permissions, when the file
 exists with incorrect permissions, `cf-agent` will report that the 
 promise\_kept for the file existence, but promise\_repaired for the 
 permissions. If you need separate reports, you should code two separate 
-promises rather than \`overloading' a single one.   
+promises rather than 'overloading' a single one.   
 
 
 `repair_failed`
@@ -860,7 +860,7 @@ if you promise to create and file and change its permissions, when the
 file exists with incorrect permissions, `cf-agent` will report that the 
 promise\_kept for the file existence, but promise\_repaired for the 
 permissions. If you need separate reports, you should code two separate 
-promises rather than \`overloading' a single one.   
+promises rather than 'overloading' a single one.   
 
 `cancel_kept`
 
@@ -1247,7 +1247,7 @@ reports:
 **Description**: The `handle` string is a unique id-tag string for referring 
 to this as a promisee elsewhere.
 
-A promise handle is like a \`goto' label. It allows you to refer to a promise
+A promise handle is like a 'goto' label. It allows you to refer to a promise
 as the promisee of `depends_on` client of another promise. Handles are 
 essential for mapping dependencies and performing impact analyses.
 

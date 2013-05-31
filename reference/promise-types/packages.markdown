@@ -67,7 +67,7 @@ system.
 Package promises are like `commands` promises in the sense that CFEngine
 promises nothing about the outcome of executing a command. All it can
 promise is to interface with it, starting it and using the results in
-good faith. Packages are basically \`outsourced', to invoke IT parlance.
+good faith. Packages are basically 'outsourced', to invoke IT parlance.
 
 **Behaviour**
 
@@ -267,7 +267,7 @@ but the options are flexible and designed for maximal adaptability.
 
 **Patching**
 
-Some package systems also support the idea of \`patches'. These might be
+Some package systems also support the idea of 'patches'. These might be
 formally different objects to packages. A patch might contain material
 for several packages and be numbered differently. When you select
 patching-policy the package name (promiser) can be a regular expression
@@ -275,7 +275,7 @@ that will match possible patch names, otherwise identifying specific
 patches can be cumbersome.
 
 Note that patching is a subtle business. There is no simple way using
-the patch settings to install \`all new system patches'.
+the patch settings to install 'all new system patches'.
 
 If we specify the name of a patch, then CFEngine will try to see if it
 exists and/or is installed. If it exists in the pending list, it will be

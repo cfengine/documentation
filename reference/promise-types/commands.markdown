@@ -295,7 +295,7 @@ it works like the cd shell command.
 
 Sets the path of the directory that will be experienced as the top-most
 root directory for the process. In security parlance, this creates a
-\`sandbox' for the process. Windows does not support this feature.   
+'sandbox' for the process. Windows does not support this feature.   
 
 **Example**: 
    
