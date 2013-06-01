@@ -9,18 +9,19 @@ tags: [reference, functions, strftime]
 
 
 
-**Synopsis**: strftime(arg1,arg2) 
+**Synopsis**: strftime(mode,template,time)
 
 **Return type**: `string`
 
   
- *arg1* : Mode, *in the range* gmtime,localtime   
- *arg2* : Format string, *in the range* .\*   
- *arg3* : Unix epoch time *in the range* \d+
+ *mode* : Mode, *in the range* gmtime,localtime
+ *template* : Format string, *in the range* .\*
+ *time* : Unix epoch time *in the range* \d+
 
-Interprets a time and date format string at a particular point in GMT or local time using Unix epoch time.
+Interprets a time and date format string at a particular point in GMT or local
+time using Unix epoch time.
 
-**Example**:  
+**Example**:
    
 
 ```cf3
@@ -55,7 +56,8 @@ bundle agent example
 Note that `strftime` is a standard C function and you should
 consult its reference to be sure of the specifiers it allows.  The below
 is from the documentation of the standard `strftime` implementation
-in the glibc manual at http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html#Formatting-Calendar-Time
+in the glibc manual at
+http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html#Formatting-Calendar-Time
 
 This function takes a *mode*, a *template* and a *time*.
 

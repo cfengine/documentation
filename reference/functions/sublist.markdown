@@ -9,18 +9,18 @@ tags: [reference, functions, sublist]
 
 
 
-**Synopsis**: sublist(arg1,arg2,arg3) 
+**Synopsis**: sublist(list,extract_from,max_elements)
 
 **Return type**: `slist`
 
- *arg1* : The name of the list variable, *in the range*
+ *list* : The name of the list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
- *arg2* : Whether to extract elements from the beginning or from the end. *in the range* head,tail
+ *extract_from* : Whether to extract elements from the beginning or from the end. *in the range* head,tail
 
- *arg3* : Maximum number of elements to return *in the range* 0,999999999
+ *elements* : Maximum number of elements to return *in the range* 0,999999999
 
-Return list of up to arg3 elements of arg1, obtained from head or tail depending on arg2.
+Return list of up to elements of list, obtained from head or tail depending on extract_from.
 
 **Example**:  
    

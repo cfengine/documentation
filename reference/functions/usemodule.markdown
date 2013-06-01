@@ -9,13 +9,13 @@ tags: [reference, functions, usemodule]
 
 
 
-**Synopsis**: usemodule(arg1,arg2) 
+**Synopsis**: usemodule(name,args)
 
 **Return type**: `class`
 
   
- *arg1* : Name of module command, *in the range* .\*   
- *arg2* : Argument string for the module, *in the range* .\*   
+ *name* : Name of module command, *in the range* .\*
+ *args* : Argument string for the module, *in the range* .\*
 
 Execute cfengine module script and set class if successful
 
@@ -24,28 +24,26 @@ Execute cfengine module script and set class if successful
 
 ```cf3
 body common control
-   {
-   any::
-
-      bundlesequence  => {
+{
+  any::
+    bundlesequence  => {
                          test
-                         };
-   }
+                       };
+}
 
 ###################################################################
 
 bundle agent test
-
 {
-classes:
+  classes:
 
-  # returns $(user)
+      # returns $(user)
 
-  "done" expression => usemodule("getusers","");
+      "done" expression => usemodule("getusers","");
 
-commands:
+  commands:
 
-  "/bin/echo" args => "test $(user)";
+      "/bin/echo" args => "test $(user)";
 }
 ```
 

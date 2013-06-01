@@ -9,12 +9,12 @@ tags: [reference, functions, translatepath]
 
 
 
-**Synopsis**: translatepath(arg1) 
+**Synopsis**: translatepath(path)
 
 **Return type**: `string`
 
   
- *arg1* : Unix style path, *in the range* "?(/.\*)   
+ *path* : Unix style path, *in the range* "?(/.\*)
 
 Translate path separators from Unix style to the host's native
 
@@ -24,23 +24,23 @@ Translate path separators from Unix style to the host's native
 ```cf3
 body common control
 {
-bundlesequence => { "test" };
+  bundlesequence => { "test" };
 }
 
 ##############################
 
 bundle agent test
 {
-vars:
-  "inputs_dir" string => translatepath("$(sys.workdir)/inputs");
+  vars:
+      "inputs_dir" string => translatepath("$(sys.workdir)/inputs");
 
-reports:
+  reports:
 
-  windows::
-    "The path has backslashes: $(inputs_dir)";
+    windows::
+      "The path has backslashes: $(inputs_dir)";
 
-  !windows::
-    "The path has slashes: $(inputs_dir)";
+    !windows::
+      "The path has slashes: $(inputs_dir)";
 }
 ```
 

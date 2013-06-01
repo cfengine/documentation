@@ -9,15 +9,15 @@ tags: [reference, functions, unique]
 
 
 
-**Synopsis**: unique(arg1) 
+**Synopsis**: unique(list)
 
 **Return type**: `slist`
 
- *arg1* : The name of the list variable, *in the range*
+ *list* : The name of the list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 
-Return list of unique elements of arg1.
+Return list of unique elements from list.
 
 **Example**:  
    
