@@ -7,60 +7,12 @@ alias: reference-functions-parsestringarrayidx.html
 tags: [reference, functions, parsestringarrayidx]
 ---
 
-**Prototype**: `parsestringarrayidx(arg1, arg2, arg3, arg4,arg5, arg6)`
+**Prototype**: `parsestringarrayidx(array, input, regex, split, maxentries, maxbytes)`
 
 **Return type**: `int`
 
-* `arg1` : Array identifier to populate, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
-* `arg2` : A string to parse for input data, *in the range* "?(/.\*)
-* `arg3` : Regex matching comments, *in the range* .\*
-* `arg4` : Regex to split data, *in the range* .\*
-* `arg5` : Maximum number of entries to read, *in the range*
-0,99999999999   
-* `arg6` : Maximum bytes to read, *in the range* 0,99999999999   
-
-Read an array of strings from a file and assign the dimension to a
-variable with integer indexes
-
-**Example**:
-
-```cf3
-bundle agent test(f) 
-{
-vars:
-
- #######################################
- # Define data inline for convenience
- #######################################
-
-  "table"   string => 
-
-"one: a
-two: b
-three: c";
-
-#######################################
-
- "dim" int => parsestringarrayidx(
-                          "items",
-                  "$(table)",
-                  "\s*#[^\n]*",
-                  ":",
-                  "1000",
-                  "200000"
-                  );
-
- "keys" slist => getindices("items");
-
-reports:
-  cfengine_3::
-    "$(keys)";
-}
-```
-
-**Notes**:
-**History**: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
+**Description**: Parses up to `maxentries` key/value pairs from the first 
+`maxbytes` bytes in string `input`, fills `array` and returns the dimension.
 
 This function mirrors the exact behaviour of `readstringarrayidx()`, but
 reads data from a variable instead of a file (See [Function
@@ -68,3 +20,46 @@ readstringarrayidx](#Function-readstringarrayidx)). By making data
 readable from a variable, data driven policies can be kept inline. This
 means that they will be visible in the CFEngine Knowledge Management
 portal.
+
+**Arguments**:
+
+* `array` : Array identifier to populate, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `input` : A string to parse for input data, *in the range* "?(/.\*)
+* `regex` : Regex matching comments, *in the range* .\*
+* `split` : Regex to split data, *in the range* .\*
+* `maxentries` : Maximum number of entries to read, *in the range*
+0,99999999999   
+* `maxbytes` : Maximum bytes to read, *in the range* 0,99999999999   
+
+**Example**:
+
+```cf3
+    bundle agent test(f) 
+    {
+    vars:
+      # Define data inline for convenience
+      "table"   string => "one: a
+                           two: b
+                         three: c";
+
+    #######################################
+
+     "dim" int => parsestringarrayidx(
+                      "items",
+                      "$(table)",
+                      "\s*#[^\n]*",
+                      ":",
+                      "1000",
+                      "200000"
+                      );
+
+     "keys" slist => getindices("items");
+
+    reports:
+      cfengine_3::
+        "$(keys)";
+    }
+```
+
+**History**: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
