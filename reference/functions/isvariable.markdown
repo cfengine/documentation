@@ -7,28 +7,24 @@ alias: reference-functions-isvariable.html
 tags: [reference, functions, isvariable]
 ---
 
-**Prototype**: `isvariable(arg1)`
+**Prototype**: `isvariable(var)`
 
 **Return type**: `class`
 
-* `arg1` : Variable identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+**Description**: Returns whether a variable named `var` is defined.
 
-True if the named variable is defined
+The variable need only exist. This says nothing about its value. Use
+`regcmp` to check variable values.
+
+**Arguments**:
+
+* `var` : Variable identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 **Example**:
 
 ```cf3
-body common control
-
-{
-bundlesequence  => { "example" };
-}
-
-###########################################################
-
 bundle agent example
-
 {     
 vars:
 
@@ -46,7 +42,3 @@ reports:
 
 }
 ```
-
-**Notes**:
-The variable need only exist. This says nothing about its value. Use
-`regcmp` to check variable values.

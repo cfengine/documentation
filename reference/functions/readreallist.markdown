@@ -11,7 +11,7 @@ tags: [reference, functions, readreallist]
 
 **Return type**: `rlist`
 
-* `arg1` : File name to read, *in the range* "?(/.\*)   
+* `arg1` : File name to read, *in the range* "?(/.\*)
 * `arg2` : Regex matching comments, *in the range* .\*
 * `arg3` : Regex to split data, *in the range* .\*
 * `arg4` : Maximum number of entries to read, *in the range*

@@ -7,51 +7,41 @@ alias: reference-functions-getvalues.html
 tags: [reference, functions, getvalues]
 ---
 
-**Prototype**: `getvalues(arg1)`
+**Prototype**: `getvalues(array)`
 
 **Return type**: `slist`
 
-* `arg1` : array identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+**Description**: Returns the list of values in `array`.
 
-Get a list of values corresponding to the right hand sides in an array
-whose id is the argument and assign to variable
+If the array contains list values, then all of the list elements are flattened 
+into a single list to make the return value a list.
+
+Make sure you specify the correct scope when supplying the name of the
+variable.
+
+**Arguments**:
+
+* `array` : array identifier, *in the range* [a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 **Example**:
 
 ```cf3
-body common control
-
-{
-any::
-
-  bundlesequence  => { "testsetvar" };   
-}
-
-
-#######################################################
-
-bundle agent testsetvar
-
+bundle agent example
 {
 vars:
 
   "v[index_1]" string => "value_1";
   "v[index_2]" string => "value_2";
 
-  "parameter_name" slist => getvalues("v");
+  "values" slist => getvalues("v");
 
 reports:
 
   Yr2008::
 
-   "Found index: $(parameter_name)";
+   "Found values: $(values)";
 
 }
 ```
 
 **Notes**:
-Make sure you specify the correct scope when supplying the name of the
-variable. If the array contains list elements on the right hand side,
-then all of the list elements are flattened into a single list to make
-the return value a list.

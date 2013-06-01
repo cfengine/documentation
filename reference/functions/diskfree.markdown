@@ -18,7 +18,7 @@ If `path` is not found, this function returns 0.
 
 **Arguments**:  
 
-* `path` : File system directory, *in the range* "?(/.\*)   
+* `path` : File system directory, *in the range* "?(/.\*)
 
 **Example**:  
 

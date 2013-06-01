@@ -7,13 +7,17 @@ alias: reference-functions-groupexists.html
 tags: [reference, functions, groupexists]
 ---
 
-**Prototype**: `groupexists(arg1)`
+**Prototype**: `groupexists(group)`
 
 **Return type**: `class`
 
-* `arg1` : Group name or identifier, *in the range* .\*
+**Description**: Returns whether a group `group` exists on this host.
 
-True if group or numerical id exists on this host
+The group may be specified by name or identifier.
+
+**Arguments**:
+
+* `group` : Group name or identifier, *in the range* .\*
 
 **Example**:
 
@@ -46,6 +50,3 @@ reports:
 
 }
 ```
-
-**Notes**:
-The group may be specified by name or number.

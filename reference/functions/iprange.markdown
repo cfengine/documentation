@@ -7,28 +7,24 @@ alias: reference-functions-iprange.html
 tags: [reference, functions, iprange]
 ---
 
-**Prototype**: `iprange(arg1)`
+**Prototype**: `iprange(range)`
 
 **Return type**: `class`
 
-* `arg1` : IP address range syntax, *in the range* .\*
+**Description**: Returns whether the current host lies in the range of IP 
+addresses specified.
 
-True if the current host lies in the range of IP addresses specified
+Pattern matching based on IP addresses.
+
+**Arguments**:
+
+* `range` : IP address range syntax, *in the range* .\*
 
 **Example**:
 
 ```cf3
-body common control
-
-{
-bundlesequence  => { "example" };
-}
-
-###########################################################
-
 bundle agent example
-
-{     
+{
 classes:
 
   "adhoc_group_1" expression => iprange("128.39.89.10-15");
@@ -45,6 +41,3 @@ reports:
     "The masked warriors";
 }
 ```
-
-**Notes**:
-Pattern matching based on IP addresses.

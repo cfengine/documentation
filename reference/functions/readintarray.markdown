@@ -13,7 +13,7 @@ tags: [reference, functions, readintarray]
 
 * `arg1` : Array identifier to populate, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
-* `arg2` : File name to read, *in the range* "?(/.\*)   
+* `arg2` : File name to read, *in the range* "?(/.\*)
 * `arg3` : Regex matching comments, *in the range* .\*
 * `arg4` : Regex to split data, *in the range* .\*
 * `arg5` : Maximum number of entries to read, *in the range*

@@ -7,29 +7,24 @@ alias: reference-functions-isgreaterthan.html
 tags: [reference, functions, isgreaterthan]
 ---
 
-**Prototype**: `isgreaterthan(arg1, arg2)`
+**Prototype**: `isgreaterthan(value1, value2)`
 
 **Return type**: `class`
 
-* `arg1` : Larger string or value, *in the range* .\*
-* `arg2` : Smaller string or value, *in the range* .\*
+**Description**: Returns whether `value1` is greater than `value2`.
 
-True if arg1 is numerically greater than arg2, else compare strings like
-strcmp
+The comparison is made numerically if possible. If the values are
+strings, the result is identical to that of comparing with strcmp().
+
+**Arguments**:
+
+* `value1` : Larger string or value, *in the range* .\*
+* `value2` : Smaller string or value, *in the range* .\*
 
 **Example**:
 
 ```cf3
-body common control
-
-{
-bundlesequence  => { "test"  };
-}
-
-###########################################################
-
-bundle agent test
-
+bundle agent example
 {
 classes:
 
@@ -47,7 +42,3 @@ reports:
 
 }
 ```
-
-**Notes**:
-The comparison is made numerically if possible. If the values are
-strings, the result is identical to that of comparing with strcmp().

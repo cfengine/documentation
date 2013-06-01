@@ -7,28 +7,22 @@ alias: reference-functions-isdir.html
 tags: [reference, functions, isdir]
 ---
 
-**Prototype**: `isdir(arg1)`
+**Prototype**: `isdir(filename)`
 
 **Return type**: `class`
 
-* `arg1` : File object name, *in the range* "?(/.\*)   
+**Description**: Returns whether the named object `filename` is a directory.
 
-True if the named object is a directory
+The CFEngine process must have access to `filename` in order for this to work.
+
+**Arguments**:
+
+* `filename` : File object name, *in the range* "?(/.\*)
 
 **Example**:
 
 ```cf3
-
-body common control
-
-{
-bundlesequence  => { "example" };
-}
-
-###########################################################
-
 bundle agent example
-
 {     
 classes:
 
@@ -42,7 +36,3 @@ reports:
 
 }
 ```
-
-**Notes**:
-The CFEngine process must have access to the object concerned in order
-for this to work.

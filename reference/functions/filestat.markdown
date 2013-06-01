@@ -20,7 +20,7 @@ See also: `lastnode`, dirname`, `splitstring`.
 
 **Arguments**:
 
-* `filename` : File object name, *in the range* "?(/.\*)   
+* `filename` : File object name, *in the range* "?(/.\*)
 * `field` : Name of field to retrieve, one of
     * size
     * gid

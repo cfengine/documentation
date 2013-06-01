@@ -13,7 +13,7 @@ tags: [reference, functions, parsestringarray]
 
 * `arg1` : Array identifier to populate, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
-* `arg2` : A string to parse for input data, *in the range* "?(/.\*)   
+* `arg2` : A string to parse for input data, *in the range* "?(/.\*)
 * `arg3` : Regex matching comments, *in the range* .\*
 * `arg4` : Regex to split data, *in the range* .\*
 * `arg5` : Maximum number of entries to read, *in the range*

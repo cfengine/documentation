@@ -7,22 +7,31 @@ alias: reference-functions-hostsseen.html
 tags: [reference, functions, hostsseen]
 ---
 
-**Prototype**: `hostsseen(arg1, arg2, arg3)`
+**Prototype**: `hostsseen(horizon, seen, field)`
 
 **Return type**: `slist`
 
-* `arg1` : Horizon since last seen in hours, *in the range* 0,99999999999
-* `arg2` : Complements for selection policy, *in the range*
-lastseen,notseen   
-* `arg3` : Type of return value desired, *in the range* name,address   
+**Description**: Returns a list with the information `field` of hosts that were seen or not seen within the last `horizon` hours.
 
-Extract the list of hosts last seen/not seen within the last arg1 hours
+Finds a list of hosts seen by a CFEngine remote connection on the current host 
+within the number of hours specified in `horizon`. The argument `seen` may be 
+lastseen or notseen, the latter selecting all hosts not observed to have 
+connected within the specified time.
+
+**Arguments**:
+
+* `horizon` : Horizon since last seen in hours, *in the range* 0,99999999999
+* `seen` : Selection criteria, one of
+    * lastseen
+    * notseen   
+* `field` : Type of return value desired, one of
+    * name
+    * address   
 
 **Example**:
 
 ```cf3
 bundle agent test
-
 {
 vars:
 
@@ -36,10 +45,3 @@ reports:
 
 }
 ```
-
-**Notes**:
-Finds a list of hosts seen by a CFEngine remote connection on the
-current host within the number of hours specified by argument 1.
-Argument 2 may be lastseen or notseen, the latter being all hosts not
-observed to have connected within the specified time. Argument 3 may be
-address or name, to return IP address or hostname form.

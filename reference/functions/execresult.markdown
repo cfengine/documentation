@@ -17,7 +17,7 @@ If the command is not found, the result will be the empty string.
 
 **Arguments**:
 
-* `command` : Fully qualified command path, *in the range* "?(/.\*)   
+* `command` : Fully qualified command path, *in the range* "?(/.\*)
 * `shell` : Shell encapsulation option, *in the range* useshell,noshell
 
 Decides whether a shell will be used to encapsulate the command. This is 

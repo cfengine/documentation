@@ -7,13 +7,15 @@ alias: reference-functions-isexecutable.html
 tags: [reference, functions, isexecutable]
 ---
 
-**Prototype**: `isexecutable(arg1)`
+**Prototype**: `isexecutable(filaname)`
 
 **Return type**: `class`
 
-* `arg1` : File object name, *in the range* "?(/.\*)   
+**Description**: Returns whether the named object `filename` has execution rights for the current user.
 
-True if the named object has execution rights for the current user
+**Arguments**:
+
+* `filename` : File object name, *in the range* "?(/.\*)
 
 **Example**:
 
@@ -23,5 +25,4 @@ classes:
   "yes" expression => isexecutable("/bin/ls");
 ```
 
-**Notes**:
 **History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

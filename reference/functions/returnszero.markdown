@@ -11,7 +11,7 @@ tags: [reference, functions, returnszero]
 
 **Return type**: `class`
 
-* `arg1` : Fully qualified command path, *in the range* "?(/.\*)   
+* `arg1` : Fully qualified command path, *in the range* "?(/.\*)
 * `arg2` : Shell encapsulation option, *in the range* useshell,noshell   
 
 True if named shell command has exit status zero

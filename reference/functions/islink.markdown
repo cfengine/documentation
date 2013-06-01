@@ -7,42 +7,34 @@ alias: reference-functions-islink.html
 tags: [reference, functions, islink]
 ---
 
-**Prototype**: `islink(arg1)`
+**Prototype**: `islink(filename)`
 
 **Return type**: `class`
 
-* `arg1` : File object name, *in the range* "?(/.\*)   
+**Description**: Returns whether the named object `filename` is a symbolic 
+link.
 
-True if the named object is a symbolic link
+The link node must both exist and be a symbolic link. Hard links cannot
+be detected using this function.
+
+**Arguments**:
+
+* `filename` : File object name, *in the range* "?(/.\*)
 
 **Example**:
 
 ```cf3
-body common control
-
-{
-bundlesequence  => { "example" };
-}
-
-###########################################################
-
 bundle agent example
-
 {     
 classes:
 
-  "isdir" expression => islink("/tmp/link");
+  "islink" expression => islink("/tmp/link");
 
 reports:
 
-  isdir::
+  islink::
 
-    "Directory exists..";
+    "It's a link.";
 
 }
 ```
-
-**Notes**:
-The link node must both exist and be a symbolic link. Hard links cannot
-be detected using this function. A hard link is a regular file or
-directory.
