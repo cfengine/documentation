@@ -159,7 +159,7 @@ variable is only defined for services promises.
                reload
 ```
 
-**Synopsis**: Policy for cfengine service status
+**Description**: Policy for cfengine service status
 
 **Example**:  
    
@@ -186,7 +186,7 @@ changing file permissions).
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Synopsis**: A list of services on which the named service abstraction
+**Description**: A list of services on which the named service abstraction
 depends
 
 **Example**:  
@@ -226,7 +226,7 @@ list.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Parameters for starting the service as command
+**Description**: Parameters for starting the service as command
 
 **Example**:  
    
@@ -263,7 +263,7 @@ optional.
                     on_demand
 ```
 
-**Synopsis**: Should the service be started automatically by the OS
+**Description**: Should the service be started automatically by the OS
 
 **Example**:  
    
@@ -306,7 +306,7 @@ inetd or xinetd on Unix.
                     all_related
 ```
 
-**Synopsis**: How to handle dependencies and dependent services
+**Description**: How to handle dependencies and dependent services
 
 **Example**:  
    
@@ -355,7 +355,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
                     generic
 ```
 
-**Synopsis**: Service abstraction type
+**Description**: Service abstraction type
 
 **Example**:  
    

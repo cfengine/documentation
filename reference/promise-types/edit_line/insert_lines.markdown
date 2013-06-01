@@ -147,7 +147,7 @@ line two" location => myloc;
 
 **Default value:** false
 
-**Synopsis**: Expand any unexpanded variables
+**Description**: Expand any unexpanded variables
 
 **Example**:  
    
@@ -218,7 +218,7 @@ $(mon.www_in)
 
 **Default value:** literal
 
-**Synopsis**: Type of object the promiser string refers to
+**Description**: Type of object the promiser string refers to
 
 **Example**:  
    
@@ -291,7 +291,7 @@ setting that does preserve the ordering of lines in the file is called
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Insert line if it starts with a string in the list
+**Description**: Insert line if it starts with a string in the list
 
 **Example**:  
    
@@ -324,7 +324,7 @@ is a multi-line block.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Insert line if it DOES NOT start with a string in the list
+**Description**: Insert line if it DOES NOT start with a string in the list
 
 **Example**:  
    
@@ -357,7 +357,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Insert line if it fully matches a regex in the list
+**Description**: Insert line if it fully matches a regex in the list
 
 **Example**:  
    
@@ -394,7 +394,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Insert line if it DOES NOT fully match a regex in the list
+**Description**: Insert line if it DOES NOT fully match a regex in the list
 
 **Example**:  
    
@@ -427,7 +427,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Insert line if a regex in the list match a line fragment
+**Description**: Insert line if a regex in the list match a line fragment
 
 **Example**:  
    
@@ -462,7 +462,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Insert line if a regex in the list DOES NOT match a line
+**Description**: Insert line if a regex in the list DOES NOT match a line
 fragment
 
 **Example**:  
@@ -504,7 +504,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
                     after
 ```
 
-**Synopsis**: Menu option, point cursor before of after matched line
+**Description**: Menu option, point cursor before of after matched line
 
 **Default value:** after
 
@@ -539,7 +539,7 @@ matched line.
                     last
 ```
 
-**Synopsis**: Menu option, choose first or last occurrence of match in
+**Description**: Menu option, choose first or last occurrence of match in
 file
 
 **Default value:** last
@@ -571,7 +571,7 @@ significance.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Regular expression for matching file line location
+**Description**: Regular expression for matching file line location
 
 **Example**:  
    
@@ -618,7 +618,7 @@ This attribute is mutually exclusive of `select_line_number`.
                exact_match
 ```
 
-**Synopsis**: Criteria for matching and recognizing existing lines
+**Description**: Criteria for matching and recognizing existing lines
 
 **Default value**: `exact_match`
 

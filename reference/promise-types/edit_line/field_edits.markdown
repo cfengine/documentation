@@ -238,7 +238,7 @@ delete - delete the specified value (if present) in the specified field/column
 
 **Allowed input range**: `.*`
 
-**Synopsis**: The regular expression used to separate fields in a line
+**Description**: The regular expression used to separate fields in a line
 
 **Default value:** none
 

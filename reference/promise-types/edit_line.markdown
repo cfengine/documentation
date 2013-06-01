@@ -33,7 +33,7 @@ templating.
                     off
 ```
 
-**Synopsis**: Whether to include the section delimiter
+**Description**: Whether to include the section delimiter
 
 **Default value:** false
 
@@ -92,7 +92,7 @@ unaffected by any `delete_lines` promises. See the next section on
                     off
 ```
 
-**Synopsis**: Whether to include the section delimiter
+**Description**: Whether to include the section delimiter
 
 **Default value:** false
 
@@ -149,7 +149,7 @@ in `include_start_delimiter`).
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Regular expression matching start of edit region
+**Description**: Regular expression matching start of edit region
 
 **Example**:  
    
@@ -194,7 +194,7 @@ The start marker includes the first matched line.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Regular expression matches end of edit region from start
+**Description**: Regular expression matches end of edit region from start
 
 **Example**:  
    

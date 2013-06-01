@@ -98,7 +98,7 @@ reports:
 
 ### if_match_regex
 
-**Synopsis**: If this regular expression matches the current value of
+**Description**: If this regular expression matches the current value of
 the variable, replace it with default
 
 If a parameter or variable is already defined in the current context, and the 

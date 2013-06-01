@@ -1176,7 +1176,7 @@ This applies only to the Mac OS X variants.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The `linkcopy_patterns` contains patterns for matching files that should be replaced with symbolic links.
+**Description**: The `linkcopy_patterns` contains patterns for matching files that should be replaced with symbolic links.
 
 The pattern matches the last node filename; in other words, without the absolute path. Windows only supports hard links.
 
@@ -1424,7 +1424,7 @@ Note that purging will also delete backup files generated during the file copyin
 
 **Allowed input range**: `1,3600`
 
-**Synopsis**: The integer set in `timeout` is the value for the connection timeout, in seconds.
+**Description**: The integer set in `timeout` is the value for the connection timeout, in seconds.
 
 **Example**:  
    
@@ -1523,7 +1523,7 @@ As soon as a public key has been exchanged, the trust option has no effect. A ma
 
 **Default value:** false
 
-**Synopsis**: The `verify` menu option policy instructs whether to verify transferred file by hashing after copy
+**Description**: The `verify` menu option policy instructs whether to verify transferred file by hashing after copy
 (resource penalty). 
 
 **Warning**: This is a highly resource intensive option, and is not recommended for large file transfers.
@@ -1557,7 +1557,7 @@ As soon as a public key has been exchanged, the trust option has no effect. A ma
 
 **Default value:** false
 
-**Synopsis**: true/false whether to create non-existing file
+**Description**: true/false whether to create non-existing file
 
 **Example**:  
    
@@ -1611,7 +1611,7 @@ operations).
                     keep
 ```
 
-**Synopsis**: Menu option policy for dealing with symbolic links to
+**Description**: Menu option policy for dealing with symbolic links to
 directories during deletion
 
 **Example**:  
@@ -1662,7 +1662,7 @@ are **not** deleted.
                     off
 ```
 
-**Synopsis**: true/false whether to delete empty directories during
+**Description**: true/false whether to delete empty directories during
 recursive deletion
 
 **Example**:  
@@ -1737,7 +1737,7 @@ present. If there is no `delete` body then files (and directories) are
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Maximum depth level for search
+**Description**: Maximum depth level for search
 
 **Example**:  
    
@@ -1767,7 +1767,7 @@ parent, a separate non-recursive promise should be made.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: List of regexes of directory names NOT to include in depth
+**Description**: List of regexes of directory names NOT to include in depth
 search
 
 **Example**:  
@@ -1804,7 +1804,7 @@ a file system.
                     off
 ```
 
-**Synopsis**: true/false include the start/root dir of the search
+**Description**: true/false include the start/root dir of the search
 results
 
 **Example**:  
@@ -1834,7 +1834,7 @@ promise the same attributes as the files inside it.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: List of regexes of directory names to include in depth
+**Description**: List of regexes of directory names to include in depth
 search
 
 **Example**:  
@@ -1869,7 +1869,7 @@ This is the complement of `exclude_dirs`.
                     off
 ```
 
-**Synopsis**: true/false remove links that point to nowhere
+**Description**: true/false remove links that point to nowhere
 
 **Default value:** false
 
@@ -1906,7 +1906,7 @@ exist should be deleted; or kept if set to false.
                     off
 ```
 
-**Synopsis**: true/false traverse symbolic links to directories
+**Description**: true/false traverse symbolic links to directories
 
 **Default value:** false
 
@@ -1944,7 +1944,7 @@ dangerous assumption and links are not traversed.
                     off
 ```
 
-**Synopsis**: true/false exclude directories that are on different
+**Description**: true/false exclude directories that are on different
 devices
 
 **Default value:** false
@@ -1981,7 +1981,7 @@ devices
                     rotate
 ```
 
-**Synopsis**: Menu option for backup policy on edit changes
+**Description**: Menu option for backup policy on edit changes
 
 **Default value:** true
 
@@ -2016,7 +2016,7 @@ devices
                     off
 ```
 
-**Synopsis**: Baseline memory model of file to zero/empty before
+**Description**: Baseline memory model of file to zero/empty before
 commencing promised edits
 
 **Default value:** false
@@ -2054,7 +2054,7 @@ recipe allows an ordered procedure to be convergent.
                     off
 ```
 
-**Synopsis**: If true this causes the sub-bundle to inherit the private
+**Description**: If true this causes the sub-bundle to inherit the private
 classes of its parent
 
 **Example**:  
@@ -2096,7 +2096,7 @@ reference using its bundle name. For example, \$(bundle.variable).
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Do not edit files bigger than this number of bytes
+**Description**: Do not edit files bigger than this number of bytes
 
 **Example**:  
    
@@ -2136,7 +2136,7 @@ See: [editfilesize in agent](#editfilesize-in-agent)
                     off
 ```
 
-**Synopsis**: Join together lines that end with a backslash, up to 4kB
+**Description**: Join together lines that end with a backslash, up to 4kB
 limit
 
 **Default value:** false
@@ -2178,7 +2178,7 @@ in a meaningful and convergent fashion.
 
 **Allowed input range**: `0,99`
 
-**Synopsis**: How many backups to store if 'rotate' edit\_backup
+**Description**: How many backups to store if 'rotate' edit\_backup
 strategy is selected. Defaults to 1
 
 **Example**:  
@@ -2222,7 +2222,7 @@ deleted (that is, it "falls off the end" of the rotation).
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: The name of a special CFEngine template file to expand
+**Description**: The name of a special CFEngine template file to expand
 
 **Example**:  
    
@@ -2324,7 +2324,7 @@ agent's current context. This allows conditional insertion.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of regexes that match an acceptable name
+**Description**: List of regexes that match an acceptable name
 
 **Example**:  
    
@@ -2350,7 +2350,7 @@ This pattern matches only the node name of the file, not its path.
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: List of pathnames to match acceptable target
+**Description**: List of pathnames to match acceptable target
 
 **Example**:  
    
@@ -2379,7 +2379,7 @@ of appropriate regular expressions.
 
 **Allowed input range**: `[0-7augorwxst,+-]+`
 
-**Synopsis**: A list of mode masks for acceptable file permissions
+**Description**: A list of mode masks for acceptable file permissions
 
 **Example**:  
    
@@ -2450,7 +2450,7 @@ implies `u` AND `g`.
 
 **Allowed input range**: `0,inf`
 
-**Synopsis**: Integer range of file sizes
+**Description**: Integer range of file sizes
 
 **Example**:  
    
@@ -2475,7 +2475,7 @@ implies `u` AND `g`.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of acceptable user names or ids for the file, or
+**Description**: List of acceptable user names or ids for the file, or
 regexes to match
 
 **Example**:  
@@ -2505,7 +2505,7 @@ does not have user ids, only names.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of acceptable group names or ids for the file, or
+**Description**: List of acceptable group names or ids for the file, or
 regexes to match
 
 **Example**:  
@@ -2536,7 +2536,7 @@ Windows, files do not have group associations.
 **Allowed input range**:
 `[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+`
 
-**Synopsis**: String of flags for bsd file system flags expected set
+**Description**: String of flags for bsd file system flags expected set
 
 **Example**:  
    
@@ -2562,7 +2562,7 @@ CFEngine). See the manual page for `chflags` for more details.
 
 **Allowed input range**: `0,2147483647`
 
-**Synopsis**: Range of change times (ctime) for acceptable files
+**Description**: Range of change times (ctime) for acceptable files
 
 **Example**:  
    
@@ -2590,7 +2590,7 @@ time.
 
 **Allowed input range**: `0,2147483647`
 
-**Synopsis**: Range of modification times (mtime) for acceptable files
+**Description**: Range of modification times (mtime) for acceptable files
 
 **Example**:  
    
@@ -2619,7 +2619,7 @@ not other attributes, such as permissions.
 
 **Allowed input range**: `0,2147483647`
 
-**Synopsis**: Range of access times (atime) for acceptable files
+**Description**: Range of access times (atime) for acceptable files
 
 **Example**:  
    
@@ -2656,7 +2656,7 @@ A range of times during which a file was accessed can be specified in a
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Matches file if this regular expression matches any full
+**Description**: Matches file if this regular expression matches any full
 line returned by the command
 
 **Example**:  
@@ -2688,7 +2688,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: Execute this command on each file and match if the exit
+**Description**: Execute this command on each file and match if the exit
 status is zero
 
 **Example**:  
@@ -2729,7 +2729,7 @@ matched.
                     block
 ```
 
-**Synopsis**: List of acceptable file types from menu choices
+**Description**: List of acceptable file types from menu choices
 
 **Example**:  
    
@@ -2758,7 +2758,7 @@ plain. In both cases this means not one of the "special" file types.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of regular expressions to match file objects
+**Description**: List of regular expressions to match file objects
 
 **Example**:  
    
@@ -2787,7 +2787,7 @@ not applicable on that platform.
 **Allowed input range**:
 `[!*(leaf_name|path_name|file_types|mode|size|owner|group|atime|ctime|mtime|issymlinkto|exec_regex|exec_program|bsdflags)[|.]*]*`
 
-**Synopsis**: Logical expression combining classes defined by file
+**Description**: Logical expression combining classes defined by file
 search criteria
 
 **Example**:  
@@ -2855,7 +2855,7 @@ following list:
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: A set of patterns that should be copied and synchronized
+**Description**: A set of patterns that should be copied and synchronized
 instead of linked
 
 **Example**:  
@@ -2894,7 +2894,7 @@ updated by modification time.
                     off
 ```
 
-**Synopsis**: true/false whether to link all directory's children to
+**Description**: true/false whether to link all directory's children to
 source originals
 
 **Default value:** false
@@ -2930,7 +2930,7 @@ them to the source.
                     absolute
 ```
 
-**Synopsis**: The type of link used to alias the file
+**Description**: The type of link used to alias the file
 
 **Default value:** symlink
 
@@ -2969,7 +2969,7 @@ are mutually exclusive.
 
 **Allowed input range**: `.+`
 
-**Synopsis**: The source file to which the link should point
+**Description**: The source file to which the link should point
 
 **Example**:  
    
@@ -3006,7 +3006,7 @@ For remote copies this refers to the file name on the remote server.
                     if_no_such_file
 ```
 
-**Synopsis**: Policy for overriding existing files when linking
+**Description**: Policy for overriding existing files when linking
 directories of children
 
 **Example**:  
@@ -3044,7 +3044,7 @@ certain fields overridden.
                     nop
 ```
 
-**Synopsis**: Behaviour when the source file to link to does not exist
+**Description**: Behaviour when the source file to link to does not exist
 
 **Default value:** nop
 
@@ -3085,7 +3085,7 @@ or do nothing.
 
 **Default value:** false
 
-**Synopsis**: true/false whether to move obstructions to file-object
+**Description**: true/false whether to move obstructions to file-object
 creation
 
 **Example**:  
@@ -3131,7 +3131,7 @@ link, if the behaviour is different.
                guess
 ```
 
-**Synopsis**: Menu option for interpreting promiser file object
+**Description**: Menu option for interpreting promiser file object
 
 **Example**:  
    
@@ -3197,7 +3197,7 @@ more information.
 **Allowed input range**:
 `[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+`
 
-**Synopsis**: List of menu options for BSD file system flags to set
+**Description**: List of menu options for BSD file system flags to set
 
 **Example**:  
    
@@ -3226,7 +3226,7 @@ documentation for this.
 
 **Allowed input range**: `[a-zA-Z0-9_$.-]+`
 
-**Synopsis**: List of acceptable groups of group ids, first is change
+**Description**: List of acceptable groups of group ids, first is change
 target
 
 **Example**:  
@@ -3257,7 +3257,7 @@ ACLs may be used in place for this.
 
 **Allowed input range**: `[0-7augorwxst,+-]+`
 
-**Synopsis**: File permissions (like posix chmod)
+**Description**: File permissions (like posix chmod)
 
 **Example**:  
    
@@ -3283,7 +3283,7 @@ ignored on Windows, as the permission model uses ACLs.
 
 **Allowed input range**: `[a-zA-Z0-9_$.-]+`
 
-**Synopsis**: List of acceptable owners or user ids, first is change
+**Description**: List of acceptable owners or user ids, first is change
 target
 
 **Example**:  
@@ -3326,7 +3326,7 @@ on Windows (such as the Administrators group).
                     off
 ```
 
-**Synopsis**: true/false add execute flag for directories if read flag
+**Description**: true/false add execute flag for directories if read flag
 is set
 
 **Example**:  
@@ -3367,7 +3367,7 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
                     off
 ```
 
-**Synopsis**: true/false automatically rename and remove permissions
+**Description**: true/false automatically rename and remove permissions
 
 **Default value:** false
 
@@ -3397,7 +3397,7 @@ unreadable.
 
 **Allowed input range**: `[0-7augorwxst,+-]+`
 
-**Synopsis**: The permissions to set when a file is disabled
+**Description**: The permissions to set when a file is disabled
 
 **Example**:  
    
@@ -3423,7 +3423,7 @@ remove the executable flag.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The suffix to add to files when disabling (.cfdisabled)
+**Description**: The suffix to add to files when disabling (.cfdisabled)
 
 **Example**:  
    
@@ -3450,7 +3450,7 @@ default value is .cf-disabled.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The desired name for the current file
+**Description**: The desired name for the current file
 
 **Example**:  
    
@@ -3474,7 +3474,7 @@ default value is .cf-disabled.
 
 **Allowed input range**: `0,99`
 
-**Synopsis**: Maximum number of file rotations to keep
+**Description**: Maximum number of file rotations to keep
 
 **Example**:  
    
@@ -3513,7 +3513,7 @@ deleted (that is, it "falls off the end" of the rotation).
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: Name of a repository for versioning
+**Description**: Name of a repository for versioning
 
 **Example**:  
    
@@ -3555,7 +3555,7 @@ ordinarily be stored in an alternative repository as
                off
 ```
 
-**Synopsis**: true/false whether to touch time stamps on file
+**Description**: true/false whether to touch time stamps on file
 
 **Example**:  
    
@@ -3577,7 +3577,7 @@ files:
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: Command (with full path) used to transform current file
+**Description**: Command (with full path) used to transform current file
 (no shell wrapper used)
 
 **Example**:  

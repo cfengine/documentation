@@ -64,7 +64,7 @@ CFEngine currently provides a convergent interface to *libvirt*.
 
 **Allowed input range**: `[a-zA-Z0-9_]+`
 
-**Synopsis**: A class indicating which physical node will execute this
+**Description**: A class indicating which physical node will execute this
 guest machine
 
 **Example**:  
@@ -105,7 +105,7 @@ This attribute is required.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The IP addresses of the environment's network interfaces
+**Description**: The IP addresses of the environment's network interfaces
 
 **Example**:  
    
@@ -140,7 +140,7 @@ time.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The hostname of the virtual environment
+**Description**: The hostname of the virtual environment
 
 **Example**:  
    
@@ -171,7 +171,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The hostname of the virtual network
+**Description**: The hostname of the virtual network
 
 **Example**:  
    
@@ -202,7 +202,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Number of virtual CPUs in the environment
+**Description**: Number of virtual CPUs in the environment
 
 **Example**:  
    
@@ -232,7 +232,7 @@ This attribute conflicts with `env_spec`.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Amount of primary storage (RAM) in the virtual environment
+**Description**: Amount of primary storage (RAM) in the virtual environment
 (KB)
 
 **Example**:  
@@ -263,7 +263,7 @@ This attribute conflicts with `env_spec`.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Amount of secondary storage (DISK) in the virtual
+**Description**: Amount of secondary storage (DISK) in the virtual
 environment (MB)
 
 **Example**:  
@@ -293,7 +293,7 @@ This attribute conflicts with `env_spec`.
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: The path to an image with which to baseline the virtual
+**Description**: The path to an image with which to baseline the virtual
 environment
 
 **Example**:  
@@ -316,7 +316,7 @@ This function is for future development.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: A string containing a technology specific set of promises
+**Description**: A string containing a technology specific set of promises
 for the virtual instance
 
 **Example**:  
@@ -379,7 +379,7 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
                down
 ```
 
-**Synopsis**: The desired dynamical state of the specified environment
+**Description**: The desired dynamical state of the specified environment
 
 **Example**:  
    
@@ -447,7 +447,7 @@ The guest machine is shut down, but not deallocated.
                eucalyptus
 ```
 
-**Synopsis**: Virtual environment type
+**Description**: Virtual environment type
 
 **Example**:  
    

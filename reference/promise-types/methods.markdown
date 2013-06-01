@@ -114,7 +114,7 @@ methods:
                off
 ```
 
-**Synopsis**: If true this causes the sub-bundle to inherit the private
+**Description**: If true this causes the sub-bundle to inherit the private
 classes of its parent
 
 **Default value**: false
@@ -160,7 +160,7 @@ reference using its bundle name. For example: \$(bundle.variable).
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Synopsis**: Specify the name of a local variable to contain any
+**Description**: Specify the name of a local variable to contain any
 result/return value from the child
 
 **Example**:  

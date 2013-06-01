@@ -17,7 +17,7 @@ key.
 
 ### string
 
-**Synopsis**: A scalar string
+**Description**: A scalar string
 
 **Type**: `string`
 
@@ -35,7 +35,7 @@ key.
 
 ### int
 
-**Synopsis**: A scalar integer
+**Description**: A scalar integer
 
 **Type**: `int`
 
@@ -60,7 +60,7 @@ the value you assign to it looks like an integer (e.g., 3, -17, 16K).
 
 ### real
 
-**Synopsis**: A scalar real number
+**Description**: A scalar real number
 
 **Type**: `real`
 
@@ -92,7 +92,7 @@ comma-separated list of values.
 
 ### slist
 
-**Synopsis**: A list of scalar strings
+**Description**: A list of scalar strings
 
 **Type**: `slist`
 
@@ -125,7 +125,7 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 ### ilist
 
-**Synopsis**: A list of integers
+**Description**: A list of integers
 
 **Type**: `ilist`
 
@@ -155,7 +155,7 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 ### rlist
 
-**Synopsis**: A list of real numbers
+**Description**: A list of real numbers
 
 **Type**: `rlist`
 
@@ -184,7 +184,7 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See `policy
 
 ### policy
 
-**Synopsis**: The policy for (dis)allowing (re)definition of variables
+**Description**: The policy for (dis)allowing (re)definition of variables
 
 Variables can either be allowed to change their value dynamically (be
 redefined) or they can be constant.

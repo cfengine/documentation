@@ -61,7 +61,7 @@ privileged access on the host directly.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of public-key user names that are allowed to activate
+**Description**: List of public-key user names that are allowed to activate
 the promised class during remote agent activation
 
 **Example**:  

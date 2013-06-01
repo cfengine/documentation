@@ -188,7 +188,7 @@ into agent variables in the `$(mon.`name`)` context.
                file
 ```
 
-**Synopsis**: The datatype being collected.
+**Description**: The datatype being collected.
 
 **Example**:  
    
@@ -218,7 +218,7 @@ a process. However pipes from executed commands may also be invoked.
                slist
 ```
 
-**Synopsis**: The datatype being collected.
+**Description**: The datatype being collected.
 
 **Example**:  
    
@@ -263,7 +263,7 @@ be selected.
                log
 ```
 
-**Synopsis**: Whether the data can be seen as a time-series or just an
+**Description**: Whether the data can be seen as a time-series or just an
 isolated value
 
 **Example**:  
@@ -309,7 +309,7 @@ is retained.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The engineering dimensions of this value or a note about
+**Description**: The engineering dimensions of this value or a note about
 its intent used in plots
 
 **Example**:  
@@ -343,7 +343,7 @@ This is an arbitary string used in documentation only.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Regular expression for matching line location
+**Description**: Regular expression for matching line location
 
 **Example**:  
    
@@ -381,7 +381,7 @@ This attribute is mutually exclusive of `select_line_number`.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Read from the n-th line of the output (fixed format)
+**Description**: Read from the n-th line of the output (fixed format)
 
 **Example**:  
    
@@ -406,7 +406,7 @@ This is mutually exclusive of `select_line_matching`.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression that should contain a single
+**Description**: Regular expression that should contain a single
 backreference for extracting a value
 
 **Example**:  
@@ -446,7 +446,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
                     off
 ```
 
-**Synopsis**: If true, CFEngine remembers the position to which is last
+**Description**: If true, CFEngine remembers the position to which is last
 read when opening the file, and resets to the start if the file has
 since been truncated
 
@@ -511,7 +511,7 @@ logfile | grep pattern in Unix parlance.
                     last
 ```
 
-**Synopsis**: Regular expression for matching line location
+**Description**: Regular expression for matching line location
 
 **Example**:  
    

@@ -21,7 +21,7 @@ editing hierarchical and structured XML datasets.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Build an XPath within the XML file
+**Description**: Build an XPath within the XML file
 
 **Example**:  
    
@@ -48,7 +48,7 @@ of such promises.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Select the XPath node in the XML file to edit
+**Description**: Select the XPath node in the XML file to edit
 
 **Example**:  
    

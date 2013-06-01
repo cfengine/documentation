@@ -322,7 +322,7 @@ library for supported operating systems.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Select the architecture for package selection
+**Description**: Select the architecture for package selection
 
 **Example**:  
    
@@ -355,7 +355,7 @@ package manager's behaviour prevails.
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Command to install a package to the system
+**Description**: Command to install a package to the system
 
 **Example**:  
    
@@ -389,7 +389,7 @@ prevents CFEngine from appending the package name to the string.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression with one backreference to extract
+**Description**: Regular expression with one backreference to extract
 package architecture string
 
 **Example**:  
@@ -429,7 +429,7 @@ define this.
                     bulk
 ```
 
-**Synopsis**: Menu option - whether to group packages into a single
+**Description**: Menu option - whether to group packages into a single
 aggregate command
 
 **Example**:  
@@ -460,7 +460,7 @@ the operating system's package manager to handle dependencies.
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Command to remove a package from the system
+**Description**: Command to remove a package from the system
 
 **Example**:  
    
@@ -492,7 +492,7 @@ prevents CFEngine from appending the package name to the string.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: This is how the package manager expects the package to be
+**Description**: This is how the package manager expects the package to be
 referred to in the deletion part of a package update, e.g. \$(name)
 
 **Example**:  
@@ -535,7 +535,7 @@ If this is not defined, it defaults to the value of
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: A list of machine-local directories to search for packages
+**Description**: A list of machine-local directories to search for packages
 
 **Example**:  
    
@@ -563,7 +563,7 @@ the package name in the package commands.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression which matches packages that are already
+**Description**: Regular expression which matches packages that are already
 installed
 
 **Example**:  
@@ -595,7 +595,7 @@ be ignored.
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: Command to detect the default packages' architecture
+**Description**: Command to detect the default packages' architecture
 
 **Example**:  
    
@@ -628,7 +628,7 @@ architecture.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression with one backreference to extract
+**Description**: Regular expression with one backreference to extract
 package architecture string
 
 **Example**:  
@@ -660,7 +660,7 @@ define this regex.
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Command to obtain a list of available packages
+**Description**: Command to obtain a list of available packages
 
 **Example**:  
    
@@ -693,7 +693,7 @@ prevents CFEngine from appending the package name to the string.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression with one backreference to extract
+**Description**: Regular expression with one backreference to extract
 package name string
 
 **Example**:  
@@ -724,7 +724,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Command to update the list of available packages (if any)
+**Description**: Command to update the list of available packages (if any)
 
 **Example**:  
    
@@ -752,7 +752,7 @@ executed at intervals determined by `package_list_update_ifelapsed`.
 
 **Allowed input range**: `-99999999999,9999999999`
 
-**Synopsis**: The ifelapsed locking time in between updates of the
+**Description**: The ifelapsed locking time in between updates of the
 package list
 
 **Example**:  
@@ -781,7 +781,7 @@ executed at intervals determined by `package_list_update_ifelapsed`.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression with one backreference to extract
+**Description**: Regular expression with one backreference to extract
 package version string
 
 **Example**:  
@@ -811,7 +811,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions))
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: This is how the package manager expects the package to be
+**Description**: This is how the package manager expects the package to be
 referred to, e.g. \$(name).\$(arch)
 
 **Example**:  
@@ -848,7 +848,7 @@ If this is not defined, it defaults to the value \$(name).
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression with one backreference to extract
+**Description**: Regular expression with one backreference to extract
 package name string
 
 **Example**:  
@@ -880,7 +880,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression to match verification failure output
+**Description**: Regular expression to match verification failure output
 
 **Example**:  
    
@@ -910,7 +910,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions))
 
 **Allowed input range**: `-99999999999,9999999999`
 
-**Synopsis**: Integer return code indicating package verification
+**Description**: Integer return code indicating package verification
 failure
 
 **Example**:  
@@ -936,7 +936,7 @@ signal for a failed package verification.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression with one backreference to extract
+**Description**: Regular expression with one backreference to extract
 update architecture string
 
 **Example**:  
@@ -967,7 +967,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Command to update to the latest patch release of an
+**Description**: Command to update to the latest patch release of an
 installed package
 
 **Example**:  
@@ -1000,7 +1000,7 @@ prevents CFEngine from appending the package name to the string.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression which matches packages that are already
+**Description**: Regular expression which matches packages that are already
 installed
 
 **Example**:  
@@ -1031,7 +1031,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Command to obtain a list of available patches or updates
+**Description**: Command to obtain a list of available patches or updates
 
 **Example**:  
    
@@ -1062,7 +1062,7 @@ prevents CFEngine from appending the package name to the string.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression with one backreference to extract
+**Description**: Regular expression with one backreference to extract
 update name string
 
 **Example**:  
@@ -1092,7 +1092,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression with one backreference to extract
+**Description**: Regular expression with one backreference to extract
 update version string
 
 **Example**:  
@@ -1123,7 +1123,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Command to update to the latest version a currently
+**Description**: Command to update to the latest version a currently
 installed package
 
 **Example**:  
@@ -1158,7 +1158,7 @@ carry out the update.
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Command to verify the correctness of an installed package
+**Description**: Command to verify the correctness of an installed package
 
 **Example**:  
    
@@ -1201,7 +1201,7 @@ prevents CFEngine from appending the package name to the string.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression with one backreference to extract
+**Description**: Regular expression with one backreference to extract
 package version string
 
 **Example**:  
@@ -1233,7 +1233,7 @@ regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression which matches the start of a new
+**Description**: Regular expression which matches the start of a new
 package in multiline output
 
 **Example**:  
@@ -1274,7 +1274,7 @@ record.
                     off
 ```
 
-**Synopsis**: Whether to use shell for commands in this body
+**Description**: Whether to use shell for commands in this body
 
 **Default value:** true
 
@@ -1307,7 +1307,7 @@ record.
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Command to check whether first supplied package version is
+**Description**: Command to check whether first supplied package version is
 less than second one
 
 **Example**:  
@@ -1349,7 +1349,7 @@ v2, and v2 is not less than v1).
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Command to check whether first supplied package version is
+**Description**: Command to check whether first supplied package version is
 equal to second one
 
 **Example**:  
@@ -1401,7 +1401,7 @@ v2, and v2 is not less than v1).
 
 **Default value:** verify
 
-**Synopsis**: Criteria for package installation/upgrade on the current
+**Description**: Criteria for package installation/upgrade on the current
 system
 
 **Example**:  
@@ -1468,7 +1468,7 @@ Requires setting `package_verify_command`.
                =
 ```
 
-**Synopsis**: A criterion for first acceptable match relative to
+**Description**: A criterion for first acceptable match relative to
 "package\_version"
 
 **Example**:  
@@ -1499,7 +1499,7 @@ policy action is scheduled for promise-keeping.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Version reference point for determining promised version
+**Description**: Version reference point for determining promised version
 
 **Example**:  
    

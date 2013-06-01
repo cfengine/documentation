@@ -77,7 +77,7 @@ edit_fstab => "true";
                     off
 ```
 
-**Synopsis**: true/false add or remove entries to the file system table
+**Description**: true/false add or remove entries to the file system table
 ("fstab")
 
 **Default value:** false
@@ -112,7 +112,7 @@ The default behaviour is to not place edits in the file system table.
                     nfs4
 ```
 
-**Synopsis**: Protocol type of remote file system
+**Description**: Protocol type of remote file system
 
 **Example**:  
    
@@ -137,7 +137,7 @@ This field is mainly for future extensions.
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: Path of remote file system to mount
+**Description**: Path of remote file system to mount
 
 **Example**:  
    
@@ -162,7 +162,7 @@ This is the location on the remote device, server, SAN etc.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Hostname or IP or remote file system server
+**Description**: Hostname or IP or remote file system server
 
 **Example**:  
    
@@ -187,7 +187,7 @@ Hostname or IP address, this could be on a SAN.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of option strings to add to the file system table
+**Description**: List of option strings to add to the file system table
 ("fstab")
 
 **Example**:  
@@ -222,7 +222,7 @@ options must be legal options for the system mount commands.
                     off
 ```
 
-**Synopsis**: true/false unmount a previously mounted filesystem
+**Description**: true/false unmount a previously mounted filesystem
 
 **Default value:** false
 
@@ -260,7 +260,7 @@ options must be legal options for the system mount commands.
                     off
 ```
 
-**Synopsis**: true/false verify storage that is mounted from a foreign
+**Description**: true/false verify storage that is mounted from a foreign
 system on this host
 
 **Default value:** false
@@ -293,7 +293,7 @@ on other systems.
 
 **Allowed input range**: `[0-9]+[MBkKgGmb%]`
 
-**Synopsis**: Absolute or percentage minimum disk space that should be
+**Description**: Absolute or percentage minimum disk space that should be
 available before warning
 
 **Example**:  
@@ -329,7 +329,7 @@ See: [classes in \*](#classes-in-_002a).
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Minimum size in bytes that should be used on a
+**Description**: Minimum size in bytes that should be used on a
 sensible-looking storage device
 
 **Example**:  
@@ -364,7 +364,7 @@ sensible-looking storage device
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Minimum number of files that should be defined on a
+**Description**: Minimum number of files that should be defined on a
 sensible-looking storage device
 
 **Example**:  
@@ -400,7 +400,7 @@ the agent has privileges on volumes being checked.
                     off
 ```
 
-**Synopsis**: true/false generate pseudo-periodic disk change arrival
+**Description**: true/false generate pseudo-periodic disk change arrival
 distribution
 
 **Default value:** false

@@ -45,7 +45,7 @@ multiple promises that each set an attribute.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Value of the attribute to be inserted into the XPath node
+**Description**: Value of the attribute to be inserted into the XPath node
 of the XML file
 
 **Example**:  

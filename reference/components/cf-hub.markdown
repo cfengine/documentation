@@ -65,7 +65,7 @@ The data aggregator of CFEngine Enterprise. **TODO: more!**
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Generate report for Zenoss integration
+**Description**: Generate report for Zenoss integration
 
     body hub control
     {
@@ -87,7 +87,7 @@ For integration with the Zenoss monitoring software.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: A list of IP addresses of hosts to exclude from
+**Description**: A list of IP addresses of hosts to exclude from
 report collection
 
     body hub control
@@ -114,7 +114,7 @@ currently not supported.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The class schedule used by cf-hub for report
+**Description**: The class schedule used by cf-hub for report
 collation
 
     body hub control
@@ -135,7 +135,7 @@ collation
 
 **Default value:** 5308
 
-**Synopsis**: Default port for contacting hub nodes
+**Description**: Default port for contacting hub nodes
 
     body hub control
     {

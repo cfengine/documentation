@@ -255,7 +255,7 @@ out_of_range_define => "$(s)_up";
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of classes to define if the matches are in range
+**Description**: List of classes to define if the matches are in range
 
 **Example**:  
    
@@ -282,7 +282,7 @@ the number of processes matching the other criteria is kept.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Integer range for acceptable number of matches for this
+**Description**: Integer range for acceptable number of matches for this
 process
 
 **Example**:  
@@ -310,7 +310,7 @@ the promise is considered kept.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of classes to define if the matches are out of range
+**Description**: List of classes to define if the matches are out of range
 
 **Example**:  
    
@@ -340,7 +340,7 @@ failure to be kept.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression matching the command/cmd field of a
+**Description**: Regular expression matching the command/cmd field of a
 process
 
 **Example**:  
@@ -372,7 +372,7 @@ the end of line.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Range of integers matching the process id of a process
+**Description**: Range of integers matching the process id of a process
 
 **Example**:  
    
@@ -397,7 +397,7 @@ the end of line.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Range of integers matching the parent group id of a
+**Description**: Range of integers matching the parent group id of a
 process
 
 **Example**:  
@@ -423,7 +423,7 @@ process
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Range of integers matching the parent process id of a
+**Description**: Range of integers matching the parent process id of a
 process
 
 **Example**:  
@@ -449,7 +449,7 @@ process
 
 **Allowed input range**: `-20,+20`
 
-**Synopsis**: Range of integers matching the priority field (PRI/NI) of
+**Description**: Range of integers matching the priority field (PRI/NI) of
 a process
 
 **Example**:  
@@ -474,7 +474,7 @@ a process
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of regexes matching the user of a process
+**Description**: List of regexes matching the user of a process
 
 **Example**:  
    
@@ -503,7 +503,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 **Allowed input range**:
 `[(process_owner|pid|ppid||pgid|rsize|vsize|status|command|ttime|stime|tty|priority|threads)[|!.]*]*`
 
-**Synopsis**: Boolean class expression returning the logical combination
+**Description**: Boolean class expression returning the logical combination
 of classes set by a process selection test
 
 **Example**:  
@@ -536,7 +536,7 @@ the expressions.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Range of integers matching the resident memory size of a
+**Description**: Range of integers matching the resident memory size of a
 process, in kilobytes
 
 **Example**:  
@@ -562,7 +562,7 @@ process, in kilobytes
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression matching the status field of a process
+**Description**: Regular expression matching the status field of a process
 
 **Example**:  
    
@@ -588,7 +588,7 @@ have status fields.
 
 **Allowed input range**: `0,2147483647`
 
-**Synopsis**: Range of integers matching the start time of a process
+**Description**: Range of integers matching the start time of a process
 
 **Example**:  
    
@@ -615,7 +615,7 @@ hour off. This is for now a bug to be fixed.
 
 **Allowed input range**: `0,2147483647`
 
-**Synopsis**: Range of integers matching the total elapsed time of a
+**Description**: Range of integers matching the total elapsed time of a
 process
 
 **Example**:  
@@ -641,7 +641,7 @@ This is total accumulated time for a process.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Regular expression matching the tty field of a process
+**Description**: Regular expression matching the tty field of a process
 
 **Example**:  
    
@@ -667,7 +667,7 @@ all have tty '?'.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Range of integers matching the threads (NLWP) field of a
+**Description**: Range of integers matching the threads (NLWP) field of a
 process
 
 **Example**:  
@@ -692,7 +692,7 @@ process
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: Range of integers matching the virtual memory size of a
+**Description**: Range of integers matching the virtual memory size of a
 process, in kilobytes
 
 **Example**:  
@@ -720,7 +720,7 @@ Size (Windows 2008), or VM Size (Windows XP).
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: A command used to stop a running process
+**Description**: A command used to stop a running process
 
 **Example**:  
    
@@ -746,7 +746,7 @@ one may call a 'stop script' to perform a graceful shutdown.
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Synopsis**: A class to be defined globally if the process is not
+**Description**: A class to be defined globally if the process is not
 running, so that a command: rule can be referred to restart the process
 
 **Example**:  
@@ -805,7 +805,7 @@ information.
                segv
 ```
 
-**Synopsis**: A list of menu options representing signals to be sent to
+**Description**: A list of menu options representing signals to be sent to
 a process
 
 **Example**:  

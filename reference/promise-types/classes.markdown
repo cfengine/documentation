@@ -26,7 +26,7 @@ Note: The term class and context are sometimes used interchangeably.
 
 ### and
 
-**Synopsis**: Combine class sources with AND
+**Description**: Combine class sources with AND
 
 The class on the left-hand side is set if all of the class expressions listed 
 on the right-hand side are true.
@@ -51,7 +51,7 @@ expression.
 
 ### dist
 
-**Synopsis**: Generate a probabilistic class distribution
+**Description**: Generate a probabilistic class distribution
 
 Always set one generic class and one additional class, randomly weighted on a 
 probability distribution.
@@ -85,7 +85,7 @@ the distribution, CFEngine picks a number between `1-120`, and set the class
 
 ### expression
 
-**Synopsis**: Evaluate string expression of classes in normal form
+**Description**: Evaluate string expression of classes in normal form
 
 Set the class on the left-hand side if the expression on the right-hand
 side evaluates to true.
@@ -105,7 +105,7 @@ side evaluates to true.
 
 ### or
 
-**Synopsis**: Combine class sources with inclusive OR
+**Description**: Combine class sources with inclusive OR
 
 The class on the left-hand side will be set if any one (or more) of
 the class expressions on the right-hand side are true.
@@ -130,7 +130,7 @@ This is useful construction for writing expressions that contain functions.
 
 ### persistence
 
-**Synopsis**: Make the class persistent to avoid re-evaluation
+**Description**: Make the class persistent to avoid re-evaluation
 
 The value specifies time in minutes.
 
@@ -216,7 +216,7 @@ Then create `classes.cf`
 
 ### not
 
-**Synopsis**: Evaluate the negation of string expression in normal form
+**Description**: Evaluate the negation of string expression in normal form
 
 The class on the left-hand side will be set if the class expression on the 
 right-hand side evaluates to false.
@@ -244,7 +244,7 @@ on [Negative Knowledge](manuals-language-concepts-classes.html).
 
 ### select_class
 
-**Synopsis**: Select one of the named list of classes to define based on
+**Description**: Select one of the named list of classes to define based on
 host identity
 
 The class is chosen deterministically (not randomly) but it is not
@@ -285,7 +285,7 @@ purposes).
 
 ### xor
 
-**Synopsis**: Combine class sources with XOR
+**Description**: Combine class sources with XOR
 
 The class on the left-hand side is set if exactly one of the class expressions
 on the right-hand side matches.

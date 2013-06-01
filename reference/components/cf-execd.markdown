@@ -85,7 +85,7 @@ times and output capture to `WORKDIR/outputs` and relay via email.
 
 **Default value:** 10080
 
-**Synopsis**: Maximum agent runtime (in minutes)
+**Description**: Maximum agent runtime (in minutes)
 
     body executor control
     {
@@ -133,7 +133,7 @@ The default value is 10080 minutes (one week).
 
 **Default value:** LOG\_USER
 
-**Synopsis**: Menu option for syslog facility level
+**Description**: Menu option for syslog facility level
 
     body executor control
     {
@@ -151,7 +151,7 @@ See the syslog manual pages.
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: The full path and command to the executable run by
+**Description**: The full path and command to the executable run by
 default (overriding builtin)
 
     exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
@@ -168,7 +168,7 @@ symbols may be used if desired.
 
 **Allowed input range**: `.*@.*`
 
-**Synopsis**: Email-address cfengine mail appears to come from
+**Description**: Email-address cfengine mail appears to come from
 
 ```cf3
     body executor control
@@ -189,7 +189,7 @@ symbols may be used if desired.
 
 **Default value:** 30
 
-**Synopsis**: Maximum number of lines of output to send by email
+**Description**: Maximum number of lines of output to send by email
 
     body executor control
     {
@@ -211,7 +211,7 @@ viewed on demand. A reference to the appropriate file is given.
 
 **Allowed input range**: `.*@.*`
 
-**Synopsis**: Email-address cfengine mail is sent to
+**Description**: Email-address cfengine mail is sent to
 
 ```cf3
     body executor control
@@ -232,7 +232,7 @@ The address to whom email is sent if an smtp host is configured.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: The class schedule used by cf-execd for activating
+**Description**: The class schedule used by cf-execd for activating
 cf-agent
 
     body executor control
@@ -266,7 +266,7 @@ function may be affected by changing the `schedule`.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Name or IP of a willing smtp server for sending
+**Description**: Name or IP of a willing smtp server for sending
 email
 
 ```cf3
@@ -292,7 +292,7 @@ localhost and point this to localhost.
 
 **Default value:** 0
 
-**Synopsis**: Time in minutes to splay this host based on its name
+**Description**: Time in minutes to splay this host based on its name
 hash
 
 ```cf3

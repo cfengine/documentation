@@ -89,7 +89,7 @@ introducing such dependencies makes configuration brittle.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of host or IP addresses to attempt connection
+**Description**: List of host or IP addresses to attempt connection
 with
 
     body runagent control
@@ -117,7 +117,7 @@ port 5308 is assumed.
 
 **Default value:** 5308
 
-**Synopsis**: Default port for CFEngine server
+**Description**: Default port for CFEngine server
 
     body hub control
     {
@@ -158,7 +158,7 @@ should not do it without a good reason.
 
 **Default value:** false
 
-**Synopsis**: true/false force use of ipv4 in connection
+**Description**: true/false force use of ipv4 in connection
 
     body copy_from example
     {
@@ -186,7 +186,7 @@ or misconfigured setup.
 
 **Default value:** false
 
-**Synopsis**: true/false automatically accept all keys on trust
+**Description**: true/false automatically accept all keys on trust
 from servers
 
     body copy_from example
@@ -228,7 +228,7 @@ in WORKDIR/ppkeys.
 
 **Default value:** false
 
-**Synopsis**: true/false encrypt connections with servers
+**Description**: true/false encrypt connections with servers
 
     body copy_from example
     {
@@ -258,7 +258,7 @@ public/private keys for the client and server hosts.
 
 **Default value:** false
 
-**Synopsis**: true/false parallelize connections to servers
+**Description**: true/false parallelize connections to servers
 
     body runagent control
     {
@@ -279,7 +279,7 @@ servers.
 
 **Default value:** 50 runagents
 
-**Synopsis**: Maximum number of simultaneous connections to
+**Description**: Maximum number of simultaneous connections to
 attempt
 
     body runagent control
@@ -319,7 +319,7 @@ law of diminishing returns.
 
 **Default value:** false
 
-**Synopsis**: true/false whether to send collected output to
+**Description**: true/false whether to send collected output to
 file(s)
 
     body runagent control
@@ -339,7 +339,7 @@ WORKDIR/outputs/hostname\_runagent.out.
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: Directory where the output is stored
+**Description**: Directory where the output is stored
 
     body runagent control
     {
@@ -360,7 +360,7 @@ running `cf-runagent` in parallel mode.
 
 **Allowed input range**: `1,9999`
 
-**Synopsis**: Connection timeout, sec
+**Description**: Connection timeout, sec
 
     body runagent control
     {

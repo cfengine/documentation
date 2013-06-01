@@ -72,7 +72,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)
                     first
 ```
 
-**Synopsis**: Menu option to replace all occurrences or just first (NB
+**Description**: Menu option to replace all occurrences or just first (NB
 the latter is non-convergent)
 
 **Default value:** all
@@ -105,7 +105,7 @@ applies to.
 
 **Allowed input range**: `.*`
 
-**Synopsis**: Value used to replace regular expression matches in search
+**Description**: Value used to replace regular expression matches in search
 
 **Example**:  
    

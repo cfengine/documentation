@@ -133,7 +133,7 @@ in the POSIX `gethostbyname` service.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of host names or IP addresses to grant access to file
+**Description**: List of host names or IP addresses to grant access to file
 objects
 
 **Example**:  
@@ -164,7 +164,7 @@ expressions to match the IP address or name of the connecting host.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of host names or IP addresses to deny access to file
+**Description**: List of host names or IP addresses to deny access to file
 objects
 
 **Example**:  
@@ -199,7 +199,7 @@ list, as non-specific matches are too greedy for denial.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of host names or IP addresses to grant full
+**Description**: List of host names or IP addresses to grant full
 read-privilege on the server
 
 **Example**:  
@@ -249,7 +249,7 @@ files if the connecting user does not own the file on the server.
 
 **Default value:** false
 
-**Synopsis**: true/false whether the current file access promise is
+**Description**: true/false whether the current file access promise is
 conditional on the connection from the client being encrypted
 
 **Example**:  
@@ -284,7 +284,7 @@ connection is encrypted.
                variable
 ```
 
-**Synopsis**: The type of object being granted access (the default
+**Description**: The type of object being granted access (the default
 grants access to files)
 
 **Example**:  
@@ -385,7 +385,7 @@ tunneling.
 
 **Type**: body
 
-**Synopsis**: Restricts access to data for specified query type reported to 
+**Description**: Restricts access to data for specified query type reported to 
 the CFEngine Enterprise Database.
 
 **Example**:
@@ -424,7 +424,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down class report content to contain only classes matching
+**Description**: Scope down class report content to contain only classes matching
 specified regular expression list.
 
 **Example**:
@@ -454,7 +454,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down class report content to exclude classes matching
+**Description**: Scope down class report content to exclude classes matching
 specified regular expression list.
 
 **Example**:
@@ -485,7 +485,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down variable report content to contain only variables matching
+**Description**: Scope down variable report content to contain only variables matching
 specified regular expression list.
 
 **Example**:
@@ -519,7 +519,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down variable report content to exclude variables matching
+**Description**: Scope down variable report content to exclude variables matching
 specified regular expression list.
 
 **Example**:
@@ -551,7 +551,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down promise not kept log report content to contain only promise
+**Description**: Scope down promise not kept log report content to contain only promise
 handles matching specified regular expression list.
 
 **Example**:
@@ -581,7 +581,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down promise not kept log report content to exclude promise handles matching
+**Description**: Scope down promise not kept log report content to exclude promise handles matching
 specified regular expression list.
 
 **Example**:
@@ -612,7 +612,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down promise repaired log report content to contain only promise
+**Description**: Scope down promise repaired log report content to contain only promise
 handles matching specified regular expression list.
 
 **Example**:
@@ -642,7 +642,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down promise repaired log report content to exclude promise handles matching
+**Description**: Scope down promise repaired log report content to exclude promise handles matching
 specified regular expression list.
 
 **Example**:
@@ -673,7 +673,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down monitoring report content to contain only observed objects 
+**Description**: Scope down monitoring report content to contain only observed objects 
 matching specified regular expression list.
 
 **Example**:
@@ -703,7 +703,7 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: Scope down monitoring content to exclude observed objects matching
+**Description**: Scope down monitoring content to exclude observed objects matching
 specified regular expression list.
 
 **Example**:

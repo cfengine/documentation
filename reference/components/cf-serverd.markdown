@@ -76,7 +76,7 @@ files must be granted in addition.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of IPs or hostnames that may have more than one
+**Description**: List of IPs or hostnames that may have more than one
 connection to the server port
 
     allowallconnects      => { 
@@ -110,7 +110,7 @@ will potentially match more than one hostname (e.g.,
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of IPs or hostnames that may connect to the
+**Description**: List of IPs or hostnames that may connect to the
 server port
 
     allowconnects => { 
@@ -137,7 +137,7 @@ See also the warning about regular expressions in
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of usernames who may execute requests from this
+**Description**: List of usernames who may execute requests from this
 server
 
     allowusers => { "cfengine", "root" };
@@ -164,7 +164,7 @@ correspond to system identities on the server-side system.
 
 **Default value:** false
 
-**Synopsis**: true/false activate auditing of server connections
+**Description**: true/false activate auditing of server connections
 
     body agent control
     {
@@ -185,7 +185,7 @@ database.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: IP of the interface to which the server should bind
+**Description**: IP of the interface to which the server should bind
 on multi-homed hosts
 
     bindtointerface => "192.168.1.1";
@@ -203,7 +203,7 @@ be given as the argument, not the device name.
 
 **Allowed input range**: `.+`
 
-**Synopsis**: Path to the cf-agent command or cf-execd wrapper for
+**Description**: Path to the cf-agent command or cf-execd wrapper for
 remote execution
 
     body server control
@@ -228,7 +228,7 @@ CFEngine Enterprise only.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: The interval in minutes in between collect calls to
+**Description**: The interval in minutes in between collect calls to
 the CFEngine Server offering a tunnel for report collection.
 
     call_collect_interval => "5";
@@ -330,7 +330,7 @@ CFEngine Enterprise only.
 
 **Allowed input range**: `0,99999999999`
 
-**Synopsis**: A time in seconds that a collect-call tunnel remains
+**Description**: A time in seconds that a collect-call tunnel remains
 open to a hub to attempt a report transfer before it is closed
 (Enterprise)
 
@@ -358,7 +358,7 @@ The time is measured in seconds, default value 10s.
 
 **Default value:** true
 
-**Synopsis**: true/false accept connections from hosts with clocks
+**Description**: true/false accept connections from hosts with clocks
 that are out of sync
 
     body server control
@@ -384,7 +384,7 @@ attempts based on clock corruption.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of IPs or hostnames that may NOT connect to the
+**Description**: List of IPs or hostnames that may NOT connect to the
 server port
 
     body server control
@@ -412,7 +412,7 @@ See also the warning about regular expressions in
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of IPs or hostnames for which the IP/name
+**Description**: List of IPs or hostnames for which the IP/name
 binding is expected to change
 
     body server control
@@ -446,7 +446,7 @@ handled transparently.
 
 **Default value:** false
 
-**Synopsis**: true/false store keys using hostname lookup instead
+**Description**: true/false store keys using hostname lookup instead
 of IP addresses
 
     body server control
@@ -471,7 +471,7 @@ identification is now handled transparently.
 
 **Default value:** 24
 
-**Synopsis**: Maximum number of hours to hold public keys in the
+**Description**: Maximum number of hours to hold public keys in the
 cache
 
     body server control
@@ -499,7 +499,7 @@ cache
 
 **Default value:** false
 
-**Synopsis**: true/false causes the server to log all new
+**Description**: true/false causes the server to log all new
 connections to syslog
 
     body server control
@@ -527,7 +527,7 @@ If set, the server will record connection attempts in syslog.
 
 **Default value:** false
 
-**Synopsis**: true/false log all successful transfers required to
+**Description**: true/false log all successful transfers required to
 be encrypted
 
     body server control
@@ -550,7 +550,7 @@ to syslog. These files are deemed to be particularly sensitive.
 
 **Default value:** 30 remote queries
 
-**Synopsis**: Maximum number of connections that will be accepted
+**Description**: Maximum number of connections that will be accepted
 
     # client side 
     
@@ -580,7 +580,7 @@ descriptors which can limit this.
 
 **Default value:** 5308
 
-**Synopsis**: Default port for cfengine server
+**Description**: Default port for cfengine server
 
     body hub control
     {
@@ -625,7 +625,7 @@ should not do it without a good reason.
 
 **Default value:** LOG\_USER
 
-**Synopsis**: Menu option for syslog facility level
+**Description**: Menu option for syslog facility level
 
     body server control
     {
@@ -643,7 +643,7 @@ See syslog notes.
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of IPs or hostnames for which we expect no DNS
+**Description**: List of IPs or hostnames for which we expect no DNS
 binding and cannot verify
 
     body server control
@@ -666,7 +666,7 @@ See also the warning about regular expressions in
 
 **Allowed input range**: (arbitrary string)
 
-**Synopsis**: List of IPs from whom we accept public keys on trust
+**Description**: List of IPs from whom we accept public keys on trust
 
     body server control
     {
@@ -697,7 +697,7 @@ See also the warning about regular expressions in `allowallconnects`.
 
 **Default value:** true
 
-**Synopsis**: true/false enable server deamon to listen on defined
+**Description**: true/false enable server deamon to listen on defined
 port
 
     body server control

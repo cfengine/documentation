@@ -77,7 +77,7 @@ to developing the integrated monitoring capabilities of CFEngine.
 
 **Default value:** 0.6
 
-**Synopsis**: Decimal fraction [0,1] weighting of new values over
+**Description**: Decimal fraction [0,1] weighting of new values over
 old in 2d-average computation
 
     body monitor control
@@ -108,7 +108,7 @@ rate) how quickly CFEngine forgets its previous history.
 
 **Default value:** true
 
-**Synopsis**: Ignored, kept for backward compatibility
+**Description**: Ignored, kept for backward compatibility
 
     body monitor control
     {
@@ -142,7 +142,7 @@ fluctuations about the mean.
 
 **Default value:** LOG\_USER
 
-**Synopsis**: Menu option for syslog facility
+**Description**: Menu option for syslog facility
 
     body monitor control
     {
@@ -169,7 +169,7 @@ See notes for syslog.
 
 **Default value:** false
 
-**Synopsis**: true/false use tcpdump if found
+**Description**: true/false use tcpdump if found
 
     body monitor control
     {
@@ -187,7 +187,7 @@ Interface with TCP stream if possible.
 
 **Allowed input range**: `"?(/.*)`
 
-**Synopsis**: Path to the tcpdump command on this system
+**Description**: Path to the tcpdump command on this system
 
     body monitor control
     {
