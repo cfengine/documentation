@@ -7,7 +7,7 @@ alias: reference-functions-or.html
 tags: [reference, functions, or]
 ---
 
-**Prototype**: or(...) 
+**Prototype**: `or(...)`
 
 **Return type**: `string`
 

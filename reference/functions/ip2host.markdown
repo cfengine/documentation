@@ -7,7 +7,7 @@ alias: reference-functions-ip2host.html
 tags: [reference, functions, ip2host]
 ---
 
-**Prototype**: ip2host(arg1) 
+**Prototype**: `ip2host(arg1)`
 
 **Return type**: `string`
 

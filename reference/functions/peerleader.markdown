@@ -7,7 +7,7 @@ alias: reference-functions-peerleader.html
 tags: [reference, functions, peerleader]
 ---
 
-**Prototype**: peerleader(arg1,arg2,arg3) 
+**Prototype**: `peerleader(arg1,arg2,arg3)`
 
 **Return type**: `string`
 

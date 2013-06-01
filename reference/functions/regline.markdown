@@ -7,7 +7,7 @@ alias: reference-functions-regline.html
 tags: [reference, functions, regline]
 ---
 
-**Prototype**: regline(arg1,arg2) 
+**Prototype**: `regline(arg1,arg2)`
 
 **Return type**: `class`
 

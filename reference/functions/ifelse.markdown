@@ -7,7 +7,7 @@ alias: reference-functions-ifelse.html
 tags: [reference, functions, ifelse]
 ---
 
-**Prototype**: ifelse(...) 
+**Prototype**: `ifelse(...)`
 
 **Return type**: `string`
 

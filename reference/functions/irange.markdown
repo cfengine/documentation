@@ -7,7 +7,7 @@ alias: reference-functions-irange.html
 tags: [reference, functions, irange]
 ---
 
-**Prototype**: irange(arg1,arg2) 
+**Prototype**: `irange(arg1,arg2)`
 
 **Return type**:
  **irange [int,int]**

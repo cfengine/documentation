@@ -7,7 +7,7 @@ alias: reference-functions-getusers.html
 tags: [reference, functions, getusers]
 ---
 
-**Prototype**: getusers(arg1,arg2) 
+**Prototype**: `getusers(usernames,userids)`
 
 **Return type**: `slist`
 

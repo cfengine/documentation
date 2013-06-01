@@ -7,7 +7,7 @@ alias: reference-functions-groupexists.html
 tags: [reference, functions, groupexists]
 ---
 
-**Prototype**: groupexists(arg1) 
+**Prototype**: `groupexists(arg1)`
 
 **Return type**: `class`
 

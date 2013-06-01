@@ -7,7 +7,7 @@ alias: reference-functions-selectservers.html
 tags: [reference, functions, selectservers]
 ---
 
-**Prototype**: selectservers(arg1,arg2,arg3,arg4,arg5,arg6) 
+**Prototype**: `selectservers(arg1,arg2,arg3,arg4,arg5,arg6)`
 
 **Return type**: `int`
 

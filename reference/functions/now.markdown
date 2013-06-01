@@ -7,7 +7,7 @@ alias: reference-functions-now.html
 tags: [reference, functions, now]
 ---
 
-**Prototype**: now() 
+**Prototype**: `now()`
 
 **Return type**: `int`
 

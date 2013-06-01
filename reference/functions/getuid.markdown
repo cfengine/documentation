@@ -7,7 +7,7 @@ alias: reference-functions-getuid.html
 tags: [reference, functions, getuid]
 ---
 
-**Prototype**: getuid(arg1) 
+**Prototype**: `getuid(arg1)`
 
 **Return type**: `int`
 

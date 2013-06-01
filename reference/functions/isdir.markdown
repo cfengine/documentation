@@ -7,7 +7,7 @@ alias: reference-functions-isdir.html
 tags: [reference, functions, isdir]
 ---
 
-**Prototype**: isdir(arg1) 
+**Prototype**: `isdir(arg1)`
 
 **Return type**: `class`
 

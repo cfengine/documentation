@@ -7,7 +7,7 @@ alias: reference-functions-iprange.html
 tags: [reference, functions, iprange]
 ---
 
-**Prototype**: iprange(arg1) 
+**Prototype**: `iprange(arg1)`
 
 **Return type**: `class`
 

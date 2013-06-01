@@ -7,7 +7,7 @@ alias: reference-functions-islink.html
 tags: [reference, functions, islink]
 ---
 
-**Prototype**: islink(arg1) 
+**Prototype**: `islink(arg1)`
 
 **Return type**: `class`
 

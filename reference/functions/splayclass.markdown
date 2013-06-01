@@ -7,7 +7,7 @@ alias: reference-functions-splayclass.html
 tags: [reference, functions, splayclass]
 ---
 
-**Prototype**: splayclass(arg1,arg2) 
+**Prototype**: `splayclass(arg1,arg2)`
 
 **Return type**: `class`
 

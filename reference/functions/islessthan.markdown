@@ -7,7 +7,7 @@ alias: reference-functions-islessthan.html
 tags: [reference, functions, islessthan]
 ---
 
-**Prototype**: islessthan(arg1,arg2) 
+**Prototype**: `islessthan(arg1,arg2)`
 
 **Return type**: `class`
 

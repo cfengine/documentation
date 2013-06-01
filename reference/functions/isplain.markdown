@@ -7,7 +7,7 @@ alias: reference-functions-isplain.html
 tags: [reference, functions, isplain]
 ---
 
-**Prototype**: isplain(arg1) 
+**Prototype**: `isplain(arg1)`
 
 **Return type**: `class`
 

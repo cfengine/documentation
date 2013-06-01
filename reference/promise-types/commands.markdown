@@ -222,7 +222,7 @@ CFEngine.
 
 **Type**: `string`
 
-**Allowed input range**: (arbitrary string) 
+**Allowed input range**: (arbitrary string)
 
 **Example**: 
    

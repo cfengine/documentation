@@ -7,7 +7,7 @@ alias: reference-functions-not.html
 tags: [reference, functions, not]
 ---
 
-**Prototype**: not(arg1) 
+**Prototype**: `not(arg1)`
 
 **Return type**: `string`
 

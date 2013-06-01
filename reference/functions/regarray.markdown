@@ -7,7 +7,7 @@ alias: reference-functions-regarray.html
 tags: [reference, functions, regarray]
 ---
 
-**Prototype**: regarray(arg1,arg2) 
+**Prototype**: `regarray(arg1,arg2)`
 
 **Return type**: `class`
 

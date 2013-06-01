@@ -7,7 +7,7 @@ alias: reference-functions-remotescalar.html
 tags: [reference, functions, remotescalar]
 ---
 
-**Prototype**: remotescalar(arg1,arg2,arg3) 
+**Prototype**: `remotescalar(arg1,arg2,arg3)`
 
 **Return type**: `string`
 

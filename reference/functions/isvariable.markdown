@@ -7,7 +7,7 @@ alias: reference-functions-isvariable.html
 tags: [reference, functions, isvariable]
 ---
 
-**Prototype**: isvariable(arg1) 
+**Prototype**: `isvariable(arg1)`
 
 **Return type**: `class`
 

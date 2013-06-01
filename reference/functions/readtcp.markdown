@@ -7,7 +7,7 @@ alias: reference-functions-readtcp.html
 tags: [reference, functions, readtcp]
 ---
 
-**Prototype**: readtcp(arg1,arg2,arg3,arg4) 
+**Prototype**: `readtcp(arg1,arg2,arg3,arg4)`
 
 **Return type**: `string`
 

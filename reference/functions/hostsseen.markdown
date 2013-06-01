@@ -7,7 +7,7 @@ alias: reference-functions-hostsseen.html
 tags: [reference, functions, hostsseen]
 ---
 
-**Prototype**: hostsseen(arg1,arg2,arg3) 
+**Prototype**: `hostsseen(arg1,arg2,arg3)`
 
 **Return type**: `slist`
 

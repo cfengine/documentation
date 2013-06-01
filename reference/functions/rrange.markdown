@@ -7,7 +7,7 @@ alias: reference-functions-rrange.html
 tags: [reference, functions, rrange]
 ---
 
-**Prototype**: rrange(arg1,arg2) 
+**Prototype**: `rrange(arg1,arg2)`
 
 **Return type**: `rrange [real,real]``
 

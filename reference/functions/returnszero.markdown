@@ -7,7 +7,7 @@ alias: reference-functions-returnszero.html
 tags: [reference, functions, returnszero]
 ---
 
-**Prototype**: returnszero(arg1,arg2) 
+**Prototype**: `returnszero(arg1,arg2)`
 
 **Return type**: `class`
 

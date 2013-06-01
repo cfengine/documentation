@@ -9,7 +9,7 @@ tags: [reference, functions, regldap]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: regldap(arg1,arg2,arg3,arg4,arg5,arg6,arg7) 
+**Prototype**: `regldap(arg1,arg2,arg3,arg4,arg5,arg6,arg7)`
 
 **Return type**: `class`
 

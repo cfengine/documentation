@@ -9,7 +9,7 @@ tags: [reference, functions, hostswithclass]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: hostswithclass(arg1,arg2) 
+**Prototype**: `hostswithclass(arg1,arg2)`
 
 **Return type**: `slist`
 

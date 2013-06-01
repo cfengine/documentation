@@ -7,7 +7,7 @@ alias: reference-functions-registryvalue.html
 tags: [reference, functions, registryvalue]
 ---
 
-**Prototype**: registryvalue(arg1,arg2) 
+**Prototype**: `registryvalue(arg1,arg2)`
 
 **Return type**: `string`
 

@@ -7,7 +7,7 @@ alias: reference-functions-isexecutable.html
 tags: [reference, functions, isexecutable]
 ---
 
-**Prototype**: isexecutable(arg1) 
+**Prototype**: `isexecutable(arg1)`
 
 **Return type**: `class`
 

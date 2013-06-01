@@ -9,7 +9,7 @@ tags: [reference, functions, hubknowledge]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: hubknowledge(arg1) 
+**Prototype**: `hubknowledge(arg1)`
 
 **Return type**: `string`
 

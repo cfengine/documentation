@@ -7,7 +7,7 @@ alias: reference-functions-length.html
 tags: [reference, functions, length]
 ---
 
-**Prototype**: length(arg1) 
+**Prototype**: `length(arg1)`
 
 **Return type**: `int`
 

@@ -7,7 +7,7 @@ alias: reference-functions-hashmatch.html
 tags: [reference, functions, hashmatch]
 ---
 
-**Prototype**: hashmatch(arg1,arg2,arg3) 
+**Prototype**: `hashmatch(arg1,arg2,arg3)`
 
 **Return type**: `class`
 

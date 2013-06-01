@@ -7,7 +7,7 @@ alias: reference-functions-splitstring.html
 tags: [reference, functions, splitstring]
 ---
 
-**Prototype**: splitstring(arg1,arg2,arg3) 
+**Prototype**: `splitstring(arg1,arg2,arg3)`
 
 **Return type**: `slist`
 

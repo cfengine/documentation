@@ -7,7 +7,7 @@ alias: reference-functions-nth.html
 tags: [reference, functions, nth]
 ---
 
-**Prototype**: nth(arg1,arg2) 
+**Prototype**: `nth(arg1,arg2)`
 
 **Return type**: `string`
 

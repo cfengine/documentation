@@ -1015,7 +1015,7 @@ Determines whether a backup of the previous version is kept on the system. This 
      
 ```
 
-**See Also**: [default\_repository](#default_005frepository-in-agent) and [repository](#repository-in-files) 
+**See Also**: [default\_repository](#default_005frepository-in-agent) and [repository](#repository-in-files)
 
 `encrypt`
 
