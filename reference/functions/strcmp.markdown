@@ -7,28 +7,22 @@ alias: reference-functions-strcmp.html
 tags: [reference, functions, strcmp]
 ---
 
-**Prototype**: `strcmp(arg1, arg2)`
+**Prototype**: `strcmp(string1, string2)`
 
 **Return type**: `class`
 
-* `arg1` : String, *in the range* .\*
-* `arg2` : String, *in the range* .\*
+**Description**: Returns whether the two strings `string1` and `string2` match 
+exactly.
 
-True if the two strings match exactly
+**Arguments**:
+
+* `string1` : The first string, *in the range* .\*
+* `string2` : The second string, *in the range* .\*
 
 **Example**:
 
 ```cf3
-body common control
-
-{
-bundlesequence  => { "example" };
-}
-
-###########################################################
-
 bundle agent example
-
 {     
 classes:
 
@@ -45,6 +39,3 @@ reports:
     "Strings are not equal";
 }
 ```
-
-**Notes**:  
-   

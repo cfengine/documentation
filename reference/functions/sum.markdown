@@ -11,21 +11,20 @@ tags: [reference, functions, sum]
 
 **Return type**: `real`
 
- *list* : A list of arbitrary real values, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+**Description**: Return the sum of the reals in `list`.
 
-Return the sum of a list of reals
+This function might be used for simple ring computation. Of course, you could 
+easily combine `sum` with `readstringarray` or `readreallist` etc., to collect 
+summary information from a source external to CFEngine.
+
+**Arguments**:
+
+* `list` : A list of arbitrary real values, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 **Example**:
 
 ```cf3
-body common control
-{
-  bundlesequence => { "test" };
-}
-
-##############################
-
 bundle agent test
 {
   vars:
@@ -49,10 +48,4 @@ six is 6.000000, zero is 0.000000
 
 **Notes**:  
    
- Of course, you could easily combine `sum` with `readstringarray` or
-`readreallist` etc., to collect summary information from a source
-external to CFEngine.
-
 **History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
-
-This function might be used for simple ring computation.

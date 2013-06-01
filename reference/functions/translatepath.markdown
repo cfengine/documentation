@@ -11,20 +11,21 @@ tags: [reference, functions, translatepath]
 
 **Return type**: `string`
 
- *path* : Unix style path, *in the range* "?(/.\*)
+**Description**: Translate path separators from Unix style to the host's 
+native style and returns the result.
 
-Translate path separators from Unix style to the host's native
+Takes a string argument with slashes as path separators and translate
+these to the native format for path separators on the host. For example
+translatepath("a/b/c") would yield "a/b/c" on Unix platforms, but
+"a\\b\\c" on Windows.
+
+**Arguments**:
+
+* `path` : Unix style path, *in the range* "?(/.\*)
 
 **Example**:
 
 ```cf3
-body common control
-{
-  bundlesequence => { "test" };
-}
-
-##############################
-
 bundle agent test
 {
   vars:
@@ -40,14 +41,8 @@ bundle agent test
 }
 ```
 
-**Notes**:
-Takes a string argument with slashes as path separators and translate
-these to the native format for path separators on the host. For example
-translatepath("a/b/c") would yield "a/b/c" on Unix platforms, but
-"a\\b\\c" on Windows.
-
-Be careful when using this function in combination with regular
+**Notes**: Be careful when using this function in combination with regular
 expressions, since backslash is also used as escape character in
-regex's. For example, in the regex dir/.abc, the dot represents the
-regular expression "any character", while in the regex dir\\.abc, the
+regex's. For example, in the regex `dir/.abc`, the dot represents the
+regular expression "any character", while in the regex `dir\.abc`, the
 backslash-dot represents a literal dot character.

@@ -11,40 +11,34 @@ tags: [reference, functions, userexists]
 
 **Return type**: `class`
 
- *user* : User name or identifier, *in the range* .\*
+**Description**: Return whether `user` name or numerical id exists on this 
+host.
 
-True if user name or numerical id exists on this host
+Checks whether the user is in the password database for the current host. The
+argument must be a user name or user id.
+
+**Arguments**:
+
+* `user` : User name or identifier, *in the range* .\*
 
 **Example**:
 
 ```cf3
+    bundle agent example
+    {     
+      classes:
 
-body common control
-{
-  bundlesequence => { "example" };
-}
+          "ok" expression => userexists("root");
 
-###########################################################
+      reports:
 
-bundle agent example
-{     
-  classes:
+        ok::
 
-      "ok" expression => userexists("root");
+          "Root exists";
 
-  reports:
+        !ok::
 
-    ok::
-
-      "Root exists";
-
-    !ok::
-
-      "Root does not exist";
-}
-
+          "Root does not exist";
+    }
 ```
 
-**Notes**:
-Checks whether the user is in the password database for the current host. The
-argument must be a user name or user id.

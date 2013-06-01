@@ -7,22 +7,27 @@ alias: reference-functions-splitstring.html
 tags: [reference, functions, splitstring]
 ---
 
-**Prototype**: `splitstring(arg1, arg2, arg3)`
+**Prototype**: `splitstring(string, regex, maxent)`
 
 **Return type**: `slist`
 
-* `arg1` : A data string, *in the range* .\*
-* `arg2` : Regex to split on, *in the range* .\*
-* `arg3` : Maximum number of pieces, *in the range* 0,99999999999   
+**Description**: Splits `string` into substrings wherever `regex` occurs, and 
+returns the list with at most `maxent` those strings.
 
-Convert a string in arg1 into a list of max arg3 strings by splitting on
-a regular expression in arg2
+If the maximum number of splits is insufficient to accommodate all entries, 
+then the final entry in the `slist` that is generated will contain the rest of 
+the un-split string.
+
+**Arguments**:
+
+* `string` : A data string, *in the range* .\*
+* `regex` : Unanchored regular expression to split on, *in the range* .\*
+* `maxent` : Maximum number of pieces, *in the range* 0,99999999999   
 
 **Example**:
 
 ```cf3
 bundle agent test
-
 {
 vars:
 
@@ -40,27 +45,3 @@ reports:
 
 }
 ```
-
-**Notes**:
-Returns a list of strings from a string.
-
-**ARGUMENTS**:
-
-string
-
-The string to be split.   
-
-regex
-
-A regex pattern which is used to parse the field separator(s) to split
-up the file into items. The regex is unanchored (See [Anchored vs.
-unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
-
-maxent
-
-The maximum number of splits to perform.
-
-If the maximum number of splits is insufficient to accommodate all
-entries, the final entry in the slist that is generated will contain the
-rest of the unsplit string.

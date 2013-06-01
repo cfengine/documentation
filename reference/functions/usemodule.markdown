@@ -11,24 +11,21 @@ tags: [reference, functions, usemodule]
 
 **Return type**: `class`
 
- *name* : Name of module command, *in the range* .\*
- *args* : Argument string for the module, *in the range* .\*
+**Description**: Execute CFEngine module script `name` with `args` and return 
+whether successful.
 
-Execute cfengine module script and set class if successful
+**Arguments**:
+
+* `name` : Name of module command, *in the range* .\*
+
+The name of the module without its leading path, since it is assumed to
+be in the registered modules directory, WORKDIR/modules.
+
+* `args` : Argument string for the module, *in the range* .\*
 
 **Example**:
 
 ```cf3
-body common control
-{
-  any::
-    bundlesequence  => {
-                         test
-                       };
-}
-
-###################################################################
-
 bundle agent test
 {
   classes:
@@ -43,17 +40,3 @@ bundle agent test
 }
 ```
 
-**Notes**:
-Modules must reside in WORKDIR/modules but no longer require a special
-naming convention.
-
-**ARGUMENTS**:
-
-Module name
-
-The name of the module without its leading path, since it is assumed to
-be in the registered modules directory.   
-
-Argument string
-
-Any command link arguments to pass to the module.
