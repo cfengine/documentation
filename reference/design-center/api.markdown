@@ -1484,7 +1484,8 @@ coverage of every single installed sketch:
         "log": [],
         "tags": {}
     }
-}```
+}
+```
 
 
 ## API CLI Interface and config.json
