@@ -11,7 +11,6 @@ tags: [reference, functions, userexists]
 
 **Return type**: `class`
 
-  
  *user* : User name or identifier, *in the range* .\*
 
 True if user name or numerical id exists on this host

@@ -11,7 +11,6 @@ tags: [reference, functions, hostinnetgroup]
 
 **Return type**: `class`
 
-  
  *arg1* : Netgroup name, *in the range* .\*   
 
 True if the current host is in the named netgroup

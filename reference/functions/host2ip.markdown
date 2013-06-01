@@ -11,7 +11,6 @@ tags: [reference, functions, host2ip]
 
 **Return type**: `string`
 
-  
  *arg1* : Host name in ascii, *in the range* .\*   
 
 Returns the primary name-service IP address for the named host

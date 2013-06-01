@@ -11,7 +11,6 @@ tags: [reference, functions, isnewerthan]
 
 **Return type**: `class`
 
-  
  *arg1* : Newer file name, *in the range* "?(/.\*)   
  *arg2* : Older file name, *in the range* "?(/.\*)   
 

@@ -20,7 +20,7 @@ characters, so that you do not have to.
 
 
 **Arguments**:
-  
+
 * `text` : IP address or string to escape, *in the range* .\*   
 
 **Example**:  

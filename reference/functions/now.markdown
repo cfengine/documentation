@@ -11,7 +11,6 @@ tags: [reference, functions, now]
 
 **Return type**: `int`
 
-  
 
 Convert the current time into system representation
 

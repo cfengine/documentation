@@ -11,7 +11,6 @@ tags: [reference, functions, getvalues]
 
 **Return type**: `slist`
 
-  
  *arg1* : Cfengine array identifier, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
 

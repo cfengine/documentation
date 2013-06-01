@@ -11,7 +11,6 @@ tags: [reference, functions, readstringarray]
 
 **Return type**: `int`
 
-  
  *arg1* : Array identifier to populate, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
  *arg2* : File name to read, *in the range* "?(/.\*)   

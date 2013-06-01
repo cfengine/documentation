@@ -11,7 +11,6 @@ tags: [reference, functions, readstringlist]
 
 **Return type**: `slist`
 
-  
  *arg1* : File name to read, *in the range* "?(/.\*)   
  *arg2* : Regex matching comments, *in the range* .\*   
  *arg3* : Regex to split data, *in the range* .\*   

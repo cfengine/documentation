@@ -11,7 +11,6 @@ tags: [reference, functions, selectservers]
 
 **Return type**: `int`
 
-  
  *arg1* : The identifier of a cfengine list of hosts or addresses to
 contact, *in the range* @[(][a-zA-Z0-9]+[)]   
  *arg2* : The port number, *in the range* 0,99999999999   

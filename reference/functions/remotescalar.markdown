@@ -11,7 +11,6 @@ tags: [reference, functions, remotescalar]
 
 **Return type**: `string`
 
-  
  *arg1* : Variable identifier, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
  *arg2* : Hostname or IP address of server, *in the range* .\*   

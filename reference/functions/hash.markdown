@@ -11,7 +11,6 @@ tags: [reference, functions, hash]
 
 **Return type**: `string`
 
-  
  *arg1* : Input text, *in the range* .\*   
  *arg2* : Hash or digest algorithm, *in the range*
 md5,sha1,sha256,sha512,sha384,crypt   

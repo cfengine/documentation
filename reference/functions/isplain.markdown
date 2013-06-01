@@ -11,7 +11,6 @@ tags: [reference, functions, isplain]
 
 **Return type**: `class`
 
-  
  *arg1* : File object name, *in the range* "?(/.\*)   
 
 True if the named object is a plain/regular file

@@ -11,7 +11,6 @@ tags: [reference, functions, strcmp]
 
 **Return type**: `class`
 
-  
  *arg1* : String, *in the range* .\*   
  *arg2* : String, *in the range* .\*   
 

@@ -11,7 +11,6 @@ tags: [reference, functions, regarray]
 
 **Return type**: `class`
 
-  
  *arg1* : Cfengine array identifier, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
  *arg2* : Regular expression, *in the range* .\*   

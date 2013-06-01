@@ -11,7 +11,6 @@ tags: [reference, functions, lastnode]
 
 **Return type**: `string`
 
-  
  *arg1* : Input string, *in the range* .\*   
  *arg2* : Link separator, e.g. /,:, *in the range* .\*   
 

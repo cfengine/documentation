@@ -11,7 +11,6 @@ tags: [reference, functions, regcmp]
 
 **Return type**: `class`
 
-  
  *arg1* : Regular expression, *in the range* .\*   
  *arg2* : Match string, *in the range* .\*   
 

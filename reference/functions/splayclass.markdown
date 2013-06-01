@@ -11,7 +11,6 @@ tags: [reference, functions, splayclass]
 
 **Return type**: `class`
 
-  
  *arg1* : Input string for classification, *in the range* .\*   
  *arg2* : Splay time policy, *in the range* daily,hourly   
 

@@ -11,7 +11,6 @@ tags: [reference, functions, join]
 
 **Return type**: `string`
 
-  
  *arg1* : Join glue-string, *in the range* .\*   
  *arg2* : CFEngine list identifier, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   

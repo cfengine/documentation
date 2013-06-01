@@ -11,7 +11,6 @@ tags: [reference, functions, ifelse]
 
 **Return type**: `string`
 
-  
 
 Requires an odd number of arguments.  Evaluate each pair of arguments up to the last one as a (class, value) tuple, returning the value if the class is true.  If none are true, returns the last argument.
 

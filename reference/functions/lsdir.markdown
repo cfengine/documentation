@@ -11,10 +11,8 @@ tags: [reference, functions, lsdir]
 
 **Return type**: `slist`
 
-  
  *arg1* : Path to base directory, *in the range* .+   
  *arg2* : Regular expression to match files or blank, *in the range* .\*
-  
  *arg3* : Include the base path in the list, *in the range*
 true,false,yes,no,on,off   
 

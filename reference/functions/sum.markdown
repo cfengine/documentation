@@ -11,7 +11,6 @@ tags: [reference, functions, sum]
 
 **Return type**: `real`
 
-  
  *list* : A list of arbitrary real values, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
 

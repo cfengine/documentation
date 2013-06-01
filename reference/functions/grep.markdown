@@ -11,7 +11,6 @@ tags: [reference, functions, grep]
 
 **Return type**: `slist`
 
-  
  *arg1* : Regular expression, *in the range* .\*   
  *arg2* : CFEngine list identifier, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   

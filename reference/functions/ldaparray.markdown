@@ -15,7 +15,6 @@ tags: [reference, functions, ldaparray]
 
 `class`
 
-  
  *arg1* : Array name, *in the range* .\*   
  *arg2* : URI, *in the range* .\*   
  *arg3* : Distinguished name, *in the range* .\*   
@@ -79,7 +78,6 @@ Menu option, the type of ldap search, from
               base
 ```
 
-  
 
 security
 

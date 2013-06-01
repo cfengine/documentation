@@ -11,9 +11,7 @@ tags: [reference, functions, maparray]
 
 **Return type**: `slist`
 
-  
  *arg1* : Pattern based on \$(this.k) and \$(this.v) as original text, *in the range* .\*
-  
  *arg2* : The name of the array variable to map, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
 

@@ -11,7 +11,6 @@ tags: [reference, functions, translatepath]
 
 **Return type**: `string`
 
-  
  *path* : Unix style path, *in the range* "?(/.\*)
 
 Translate path separators from Unix style to the host's native

@@ -11,7 +11,6 @@ tags: [reference, functions, regline]
 
 **Return type**: `class`
 
-  
  *arg1* : Regular expression, *in the range* .\*   
  *arg2* : Filename to search, *in the range* .\*   
 

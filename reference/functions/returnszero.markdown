@@ -11,7 +11,6 @@ tags: [reference, functions, returnszero]
 
 **Return type**: `class`
 
-  
  *arg1* : Fully qualified command path, *in the range* "?(/.\*)   
  *arg2* : Shell encapsulation option, *in the range* useshell,noshell   
 

@@ -13,7 +13,6 @@ tags: [reference, functions, laterthan]
 
 `class`
 
-  
  *arg1* : Years, *in the range* 0,1000   
  *arg2* : Months, *in the range* 0,1000   
  *arg3* : Days, *in the range* 0,1000   

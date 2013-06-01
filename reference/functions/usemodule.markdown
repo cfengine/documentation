@@ -11,7 +11,6 @@ tags: [reference, functions, usemodule]
 
 **Return type**: `class`
 
-  
  *name* : Name of module command, *in the range* .\*
  *args* : Argument string for the module, *in the range* .\*
 

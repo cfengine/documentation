@@ -13,7 +13,6 @@ tags: [reference, functions, remoteclassesmatching]
 
 **Return type**: `class`
 
-  
  *arg1* : Regular expression, *in the range* .\*   
  *arg2* : Server name or address, *in the range* .\*   
  *arg3* : Use encryption, *in the range* true,false,yes,no,on,off   

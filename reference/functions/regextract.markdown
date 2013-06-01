@@ -11,7 +11,6 @@ tags: [reference, functions, regextract]
 
 **Return type**: `class`
 
-  
  *arg1* : Regular expression, *in the range* .\*   
  *arg2* : Match string, *in the range* .\*   
  *arg3* : Identifier for back-references, *in the range*

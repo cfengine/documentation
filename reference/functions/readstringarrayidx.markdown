@@ -11,7 +11,6 @@ tags: [reference, functions, readstringarrayidx]
 
 **Return type**: `int`
 
-  
  *arg1* : Array identifier to populate, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
  *arg2* : A string to parse for input data, *in the range* "?(/.\*)   

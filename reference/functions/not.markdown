@@ -11,7 +11,6 @@ tags: [reference, functions, not]
 
 **Return type**: `string`
 
-  
  *arg1* : Class value, *in the range* .\*   
 
 Calculate whether argument is false

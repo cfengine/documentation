@@ -11,7 +11,6 @@ tags: [reference, functions, islessthan]
 
 **Return type**: `class`
 
-  
  *arg1* : Smaller string or value, *in the range* .\*   
  *arg2* : Larger string or value, *in the range* .\*   
 

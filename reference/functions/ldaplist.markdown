@@ -15,7 +15,6 @@ tags: [reference, functions, ldaplist]
 
 `slist`
 
-  
  *arg1* : URI, *in the range* .\*   
  *arg2* : Distinguished name, *in the range* .\*   
  *arg3* : Filter, *in the range* .\*   
@@ -70,7 +69,6 @@ String filter criterion, in ldap search, e.g. "(sn=User)".
 name
 
 String value, the name of a single record to be retrieved, e.g. `uid`.
-  
 
 scope
 
@@ -83,7 +81,6 @@ values:
               base
 ```
 
-  
 
 security
 

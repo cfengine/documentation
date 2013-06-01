@@ -11,7 +11,6 @@ tags: [reference, functions, hashmatch]
 
 **Return type**: `class`
 
-  
  *arg1* : Filename to hash, *in the range* "?(/.\*)   
  *arg2* : Hash or digest algorithm, *in the range*
 md5,sha1,crypt,cf\_sha224,cf\_sha256,cf\_sha384,cf\_sha512   

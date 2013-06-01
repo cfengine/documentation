@@ -11,7 +11,6 @@ tags: [reference, functions, "on"]
 
 **Return type**: `int`
 
-  
  *arg1* : Year, *in the range* 1970,3000   
  *arg2* : Month, *in the range* 1,12   
  *arg3* : Day, *in the range* 1,31   

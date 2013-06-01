@@ -7,18 +7,39 @@ alias: reference-functions-getfields.html
 tags: [reference, functions, getfields]
 ---
 
-**Prototype**: getfields(arg1,arg2,arg3,arg4) 
+**Prototype**: `getfields(regex, filename, split, array_lval)`
 
 **Return type**: `int`
 
-  
- *arg1* : Regular expression to match line, *in the range* .\*   
- *arg2* : Filename to read, *in the range* "?(/.\*)   
- *arg3* : Regular expression to split fields, *in the range* .\*   
- *arg4* : Return array name, *in the range* .\*   
+**Description**: Fill `arrayl_lval` with fields in the lines from file `filename` that match `regex`, split on `split`.
 
-Get an array of fields in the lines matching regex arg1 in file arg2,
-split on regex arg3 as array name arg4
+The function returns the number of lines matched. This function is most
+useful when you want only the first matching line (e.g., to mimic the
+behavior of the *getpwnam(3)* on the file /etc/passwd). If you want to
+examine *all* matching lines, use 
+[readstringarray](reference-functions-readstringarray.html) instead.
+
+**Arguments**:
+
+* `regex` : Regular expression to match line, *in the range* .\*  
+
+A regular expression matching one or more lines. The regular expression
+is 
+[anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions), meaning it must match the entire 
+line.   
+
+* `filename` : Filename to read, *in the range* "?(/.\*)
+
+The name of the file to be examined.   
+
+* `split` : Regular expression to split fields, *in the range* .\*
+
+A regex pattern that is used to parse the field separator(s) to split up
+the file into items   
+
+* `array_lval` : Return array name, *in the range* .\*
+
+The base name of the array that returns the values.
 
 **Example**:
 
@@ -46,29 +67,3 @@ file, and splits the *first* matched line into fields (using a second
 regular expression), placing these into a named array whose elements are
 `array[1],array[2],..`. This is useful for examining user data in the
 Unix password or group files.
-
-regex
-
-A regular expression matching one or more lines. The regular expression
-is anchored, meaning it must match the entire line (see [Anchored vs.
-unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
-
-filename
-
-The name of the file to be examined.   
-
-split
-
-A regex pattern that is used to parse the field separator(s) to split up
-the file into items   
-
-array\_lval
-
-The base name of the array that returns the values.
-
-The function returns the number of lines matched. This function is most
-useful when you want only the first matching line (e.g., to mimic the
-behavior of the *getpwnam(3)* on the file /etc/passwd). If you want to
-examine *all* matching lines, use [Function
-readstringarray](#Function-readstringarray), instead.

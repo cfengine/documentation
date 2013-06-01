@@ -13,7 +13,6 @@ tags: [reference, functions, hubknowledge]
 
 **Return type**: `string`
 
-  
  *arg1* : Variable identifier, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
 

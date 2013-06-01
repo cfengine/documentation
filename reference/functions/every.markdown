@@ -19,7 +19,7 @@ tags: [reference, functions, every]
 * `regex` : Regular expression to find, *in the range* .\*
 
 The regular expression is unanchored.
-  
+
 * `list` : The name of the list variable to check, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
 

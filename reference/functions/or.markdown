@@ -11,7 +11,6 @@ tags: [reference, functions, or]
 
 **Return type**: `string`
 
-  
 
 Calculate whether any argument evaluates to true
 

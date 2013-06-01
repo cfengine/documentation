@@ -11,9 +11,7 @@ tags: [reference, functions, reglist]
 
 **Return type**: `class`
 
-  
  *arg1* : Cfengine list identifier, *in the range* @[(][a-zA-Z0-9]+[)]
-  
  *arg2* : Regular expression, *in the range* .\*   
 
 True if the regular expression in arg2 matches any item in the list

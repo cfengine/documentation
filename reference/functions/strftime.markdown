@@ -11,7 +11,6 @@ tags: [reference, functions, strftime]
 
 **Return type**: `string`
 
-  
  *mode* : Mode, *in the range* gmtime,localtime
  *template* : Format string, *in the range* .\*
  *time* : Unix epoch time *in the range* \d+

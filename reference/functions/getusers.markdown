@@ -11,7 +11,6 @@ tags: [reference, functions, getusers]
 
 **Return type**: `slist`
 
-  
  *arg1* : Comma separated list of User names, *in the range* .\*   
  *arg2* : Comma separated list of UserID numbers, *in the range* .\*   
 

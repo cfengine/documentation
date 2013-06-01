@@ -11,9 +11,7 @@ tags: [reference, functions, hostsseen]
 
 **Return type**: `slist`
 
-  
  *arg1* : Horizon since last seen in hours, *in the range* 0,99999999999
-  
  *arg2* : Complements for selection policy, *in the range*
 lastseen,notseen   
  *arg3* : Type of return value desired, *in the range* name,address   

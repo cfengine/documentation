@@ -11,7 +11,6 @@ tags: [reference, functions, registryvalue]
 
 **Return type**: `string`
 
-  
  *arg1* : Windows registry key, *in the range* .\*   
  *arg2* : Windows registry value-id, *in the range* .\*   
 
