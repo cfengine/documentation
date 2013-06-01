@@ -31,7 +31,9 @@ Generally if opening and closing braces are not on a single line they should
 be aligned vertically.
 
 Example:
+
 ```cf3
+
     bundle agent example
     {
       vars:
