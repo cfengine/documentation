@@ -19,7 +19,7 @@ If any of these classes becomes defined, it will cause the current bundle to be 
     body common control
 
     {
-    bundlesequence  => { "testbundle"  };
+    bundlesequence  => { "example"  };
     }
 
     body agent control
@@ -30,7 +30,7 @@ If any of these classes becomes defined, it will cause the current bundle to be 
     
     ###########################################
     
-    bundle agent testbundle
+    bundle agent example
     {
     vars:
     
@@ -63,7 +63,7 @@ This is how the policy runs when the userlist is valid:
 This is how the policy runs when the userlist contains an invalid entry:
 
     # cf-agent -f unit_abort.cf
-    Bundle testbundle aborted on defined class "invalid"
+    Bundle example aborted on defined class "invalid"
     # 
 
 To run this example file as part of your main policy you need to make an
