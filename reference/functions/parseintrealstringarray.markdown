@@ -7,14 +7,14 @@ alias: reference-functions-parseintrealstringarray.html
 tags: [reference, functions, parseintarray, parserealarray, parsestringarray]
 ---
 
-**Prototype**: `parseintarray(array, input, regex, split, maxentries, maxbytes)`<br>
-**Prototype**: `parserealarray(array, input, regex, split, maxentries, maxbytes)`<br>
-**Prototype**: `parsestringarray(array, input, regex, split, maxentries, maxbytes)`<br>
+**Prototype**: `parseintarray(array, input, comment, split, maxentries, maxbytes)`<br>
+**Prototype**: `parserealarray(array, input, comment, split, maxentries, maxbytes)`<br>
+**Prototype**: `parsestringarray(array, input, comment, split, maxentries, maxbytes)`<br>
 
 **Return type**: `int`
 
-**Description**: Parses up to `maxentries` key/value pairs from the first 
-`maxbytes` bytes in string `input`, fills `array` and returns the dimension.
+**Description**: Parses up to `maxentries` values from the first `maxbytes` 
+bytes in string `input` and populates `array`. Returns the dimension.
 
 The parsing of the input string depends on the exact function called.
 
@@ -28,8 +28,8 @@ policies can be kept inline.
 * `array` : Array identifier to populate, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
 * `input` : A string to parse for input data, *in the range* "?(/.\*)
-* `regex` : Regex matching comments, *in the range* .\*
-* `split` : Regex to split data, *in the range* .\*
+* `comment` : Unanchored regex matching comments, *in the range* .\*
+* `split` : Unanchored regex to split data, *in the range* .\*
 * `maxentries` : Maximum number of entries to read, *in the range*
 0,99999999999
 * `maxbytes` : Maximum bytes to read, *in the range* 0,99999999999

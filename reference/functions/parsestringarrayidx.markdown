@@ -7,26 +7,22 @@ alias: reference-functions-parsestringarrayidx.html
 tags: [reference, functions, parsestringarrayidx]
 ---
 
-**Prototype**: `parsestringarrayidx(array, input, regex, split, maxentries, maxbytes)`
+**Prototype**: `parsestringarrayidx(array, input, comment, split, maxentries, maxbytes)`
 
 **Return type**: `int`
 
 **Description**: Parses up to `maxentries` key/value pairs from the first 
 `maxbytes` bytes in string `input`, fills `array` and returns the dimension.
 
-This function mirrors the exact behaviour of `readstringarrayidx()`, but
-reads data from a variable instead of a file (See [Function
-readstringarrayidx](#Function-readstringarrayidx)). By making data
-readable from a variable, data driven policies can be kept inline. This
-means that they will be visible in the CFEngine Knowledge Management
-portal.
+This function mirrors the exact behavior of `readstringarrayidx()`, but
+reads data from a variable instead of a file. By making data readable from a variable, data driven policies can be kept inline.
 
 **Arguments**:
 
 * `array` : Array identifier to populate, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
 * `input` : A string to parse for input data, *in the range* "?(/.\*)
-* `regex` : Regex matching comments, *in the range* .\*
+* `comment` : Regex matching comments, *in the range* .\*
 * `split` : Regex to split data, *in the range* .\*
 * `maxentries` : Maximum number of entries to read, *in the range*
 0,99999999999   
