@@ -4,7 +4,7 @@ title: Integrating Mission Portal with git
 categories: [Manuals, Design Center UI, Integrating with git]
 published: true
 alias: reference-design-center-ui-integrating-with-git.html
-tags: [ sketch, tutorial, mission portal, enterprise, masterfiles, version control ]
+tags: [sketch, design center, git, mission portal, enterprise, masterfiles, version control]
 ---
 
 CFEngine Enterprise 3.5 introduces integration with a git repository for 

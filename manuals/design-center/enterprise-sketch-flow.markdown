@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Sketch Flow in CFEngine Enterprise
-categories: [Reference, Design Center UI, Enterprise Sketch Flow]
+categories: [Manuals, Design Center UI, Enterprise Sketch Flow]
 published: true
-alias: reference-design-center-ui-enterprise-sketch-flow.html
-tags: [ sketch, reference, design center, version control, git, masterfiles, Mission Portal ]
+alias: manuals-design-center-ui-enterprise-sketch-flow.html
+tags: [sketch, design center, version control, git, masterfiles, Mission Portal, enterprise]
 ---
 
 The CFEngine Enterprise Design Center graphical user interface (GUI) relies on 
