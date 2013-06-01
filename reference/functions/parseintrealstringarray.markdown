@@ -16,8 +16,6 @@ tags: [reference, functions, parseintarray, parserealarray, parsestringarray]
 **Description**: Parses up to `maxentries` values from the first `maxbytes` 
 bytes in string `input` and populates `array`. Returns the dimension.
 
-The parsing of the input string depends on the exact function called.
-
 These functions mirror the exact behavior of their 
 `read[int|real|string]array()` counterparts, but read data from a variable 
 instead of a file. By making data readable from a variable, data driven 

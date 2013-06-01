@@ -11,8 +11,8 @@ tags: [reference, functions, parsestringarrayidx]
 
 **Return type**: `int`
 
-**Description**: Parses up to `maxentries` key/value pairs from the first 
-`maxbytes` bytes in string `input`, fills `array` and returns the dimension.
+**Description**: Populates the two-dimensional array `array` with up to 
+`maxentries` fields from the first `maxbytes` bytes of the string `input`.
 
 This function mirrors the exact behavior of `readstringarrayidx()`, but
 reads data from a variable instead of a file. By making data readable from a variable, data driven policies can be kept inline.
