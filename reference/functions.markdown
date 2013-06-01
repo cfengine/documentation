@@ -7,7 +7,9 @@ alias: reference-functions.html
 tags: [Reference, Functions]
 ---
 
-Functions are parameterized "RVALUES".
+Functions are parameterized "RVALUES". Parameter values need to be of the
+type and range as documented for each functions. Some functions are documented
+with a `...`, in which case they take an arbitrary amount of parameters.
 
 They can return scalar and list values:
 
