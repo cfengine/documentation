@@ -7,15 +7,23 @@ alias: reference-functions-maplist.html
 tags: [reference, functions, maplist]
 ---
 
-**Prototype**: `maplist(arg1, arg2)`
+**TODO: formulation confusing**
+
+**Prototype**: `maplist(pattern, list)`
 
 **Return type**: `slist`
 
-* `arg1` : Pattern based on \$(this) as original text, *in the range* .\*
-* `arg2` : The name of the list variable to map, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+**Description**: Return a list with each element in `list` modified by a 
+pattern based on $(this).
 
-Return a list with each element modified by a pattern based \$(this)
+This is essentially like the map() function in Perl, and applies to
+lists.
+
+**Arguments**:
+
+* `pattern` : Pattern based on \$(this) as original text, *in the range* .\*
+* `list` : The name of the list variable to map, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 **Example**:
 
@@ -33,8 +41,4 @@ reports:
 }
 ```
 
-**Notes**:
 **History**: Was introduced in 3.3.0, Nova 2.2.0 (2011)
-
-This is essentially like the map() function in Perl, and applies to
-lists.

@@ -7,21 +7,23 @@ alias: reference-functions-none.html
 tags: [reference, functions, none]
 ---
 
-**Prototype**: `none(arg1, arg2)`
+**Prototype**: `none(regex, list)`
 
 **Return type**: `class`
 
-* `arg1` : Unanchored regular expression to find, *in the range* .\*
-* `arg2` : The name of the list variable to check, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+**Description**: Returns whether no element in `list` matches the regular 
+expression `regex`.
 
-Return true if no element of the list matches the regular expression.
+**Arguments**:
+
+* `regex` : Unanchored regular expression to find, *in the range* .\*
+* `list` : The name of the list variable to check, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 **Example**:
 
 ```cf3
-bundle agent test
-
+bundle agent example
 {
   classes:
       "none1" expression => none("jebadiah", "test");
@@ -52,5 +54,3 @@ bundle agent test
 **Notes**:  
    
 See also `filter`, `every`, and `some`.
-
-The regular expression is unanchored.

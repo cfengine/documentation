@@ -7,13 +7,15 @@ alias: reference-functions-not.html
 tags: [reference, functions, not]
 ---
 
-**Prototype**: `not(arg1)`
+**Prototype**: `not(expression)`
 
 **Return type**: `string`
 
-* `arg1` : Class value, *in the range* .\*
+**Description**: Calculate whether `expression` is false
 
-Calculate whether argument is false
+**Arguments**:
+
+* `expression` : Class expression, *in the range* .\*
 
 **Example**:
 
@@ -25,4 +27,4 @@ commands:
 
 **Notes**:  
    
- **History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)
+**History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)

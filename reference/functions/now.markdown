@@ -11,18 +11,14 @@ tags: [reference, functions, now]
 
 **Return type**: `int`
 
-
-Convert the current time into system representation
+**Description**: Return the current time in system representation.
 
 **Example**:
 
 ```cf3
-body file_select zero_age
-{
-mtime       => irange(ago(1,0,0,0,0,0),now);
-file_result => "mtime";
-}
+    body file_select zero_age
+    {
+      mtime       => irange(ago(1,0,0,0,0,0),now);
+      file_result => "mtime";
+    }
 ```
-
-**Notes**:  
-   

@@ -11,17 +11,16 @@ tags: [reference, functions, or]
 
 **Return type**: `string`
 
-
-Calculate whether any argument evaluates to true
+**Description**: Calculate whether any argument evaluates to true
 
 **Example**:
 
 ```cf3
-commands:
-  "/usr/bin/generate_config $(config)"
-    ifvarclass => or(not(fileexists("/etc/config/$(config)")), "force_configs");
+    commands:
+      "/usr/bin/generate_config $(config)"
+        ifvarclass => or(not(fileexists("/etc/config/$(config)")), "force_configs");
 ```
 
 **Notes**:  
-   
- **History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)
+
+**History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)

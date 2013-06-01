@@ -7,22 +7,25 @@ alias: reference-functions-nth.html
 tags: [reference, functions, nth]
 ---
 
-**Prototype**: `nth(arg1, arg2)`
+**Prototype**: `nth(list, position)`
 
 **Return type**: `string`
 
-* `arg1` : The name of the list variable, *in the range*
+**Description**: Returns the element of `list` at zero-based `position`.
+
+If an invalid position (below 0 or above the size of the list minus 1)
+is requested, this function does not return a valid value.
+
+**Arguments**:
+
+* `list` : The name of the list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
-
-* `arg2` : Zero-based position of element to extract *in the range* 0,999999999
-
-Return the element of arg1 at zero-based position arg2.
+* `position` : Zero-based position of element *in the range* 0,999999999
 
 **Example**:
 
 ```cf3
 bundle agent test
-
 {
   vars:
       "test" slist => {
@@ -46,8 +49,5 @@ bundle agent test
 ```
 
 **Notes**:  
-
-If an invalid position (under 0 or over the size of the list minus 1)
-is requested, this function does not return a valid value.
 
 See also `length`.
