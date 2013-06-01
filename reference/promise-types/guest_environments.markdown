@@ -92,7 +92,7 @@ take effect.
 
 This attribute is required.
 
-*History*: this feature was introduced in Nova 2.0.0 (2010), Community
+**History**: this feature was introduced in Nova 2.0.0 (2010), Community
 3.3.0 (2012)
 
 #### `environment_interface` (body template)
@@ -363,7 +363,7 @@ creation; in other words, when `environment_state` is create.
 
 This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
-*History*: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
+**History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
 
 #### `environment_state`
 

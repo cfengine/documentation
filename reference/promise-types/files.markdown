@@ -612,7 +612,7 @@ empty (`clear`), or be explicitly specified (`specify`). In addition, the defaul
      
 ```
 
-*History*: Was introduced in 3.5. Replaces the now deprecated 
+**History**: Was introduced in 3.5. Replaces the now deprecated 
 acl_directory_inherit.
 
 
@@ -2079,7 +2079,7 @@ classes of its parent
 **Notes**:  
    
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 **Default value**: false
 
@@ -2285,7 +2285,7 @@ VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>
 **Notes**:  
    
 
-*History*: Was introduced in 3.3.0, Nova 2.2.0 (2012)
+**History**: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
 The template format uses inline tags to mark regions and classes. Each
 line represents an `insert_lines` promise, unless the promises are

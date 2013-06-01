@@ -61,4 +61,4 @@ See also: `lastnode`, dirname`, `splitstring`.
    
 The list of fields may be extended as needed.
 
-*History*: Was introduced in version 3.5.0,Enterprise 3.1 (2013)
+**History**: Was introduced in version 3.5.0,Enterprise 3.1 (2013)

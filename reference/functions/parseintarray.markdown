@@ -66,7 +66,7 @@ reports:
 **Notes**:  
    
 
-*History*: Was introduced in version 3.1.5a1, Nova 2.1.0 (2011)
+**History**: Was introduced in version 3.1.5a1, Nova 2.1.0 (2011)
 
 This function mirrors the exact behaviour of `readintarray()`, but reads
 data from a variable instead of a file (See [Function

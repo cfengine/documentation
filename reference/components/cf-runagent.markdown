@@ -348,7 +348,7 @@ WORKDIR/outputs/hostname\_runagent.out.
 
 **Notes**:
 
-*History*: Was introduced in version 3.2.0, Enterprise 2.1.0 (2011)
+**History**: Was introduced in version 3.2.0, Enterprise 2.1.0 (2011)
 
 Defines the location for parallelized output to be saved when
 running `cf-runagent` in parallel mode.

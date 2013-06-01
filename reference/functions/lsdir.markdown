@@ -32,7 +32,7 @@ vars:
 
 **Notes**:  
    
- *History*: Was introduced in 3.3.0, Nova 2.2.0 (2011)
+ **History**: Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
 This function returns list of files in directory specified in arg1,
 matched with regular expression in arg2. In case arg3 is true, full

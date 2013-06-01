@@ -29,6 +29,6 @@ directory, then the name of its parent directory is returned.
 
 **Notes**:
 
-*History*: Was introduced in 3.3.0, Nova 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
 See also: `lastnode`, `filestat`, `splitstring`.

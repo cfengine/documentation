@@ -20,7 +20,7 @@ tags: [body, bodies, components, common, namespace, promises, bundlesequence]
     }
 ```
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 This directive can be given multiple times within any file,
 outside of body and bundle definitions.
@@ -46,7 +46,7 @@ to switch to in order to protect the current file from duplicate definitions.
 
 **Notes**:
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 This directive can be given within any file, outside of body and bundle 
 definitions, to change the

@@ -76,7 +76,7 @@ The data aggregator of CFEngine Enterprise. **TODO: more!**
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
+**History**: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
 
 For integration with the Zenoss monitoring software.
 
@@ -97,7 +97,7 @@ report collection
 
 **Notes**:
 
-*History*: Was introduced in 3.3.0, Enterprise 2.1.1 (2011)
+**History**: Was introduced in 3.3.0, Enterprise 2.1.1 (2011)
 
 In CFEngine Enterprise, this list of IP addresses will not
 be queried for reports by `cf-hub`, even though they are in the
@@ -124,7 +124,7 @@ collation
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
+**History**: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
 
 
 ### port

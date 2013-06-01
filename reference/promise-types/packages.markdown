@@ -612,7 +612,7 @@ be ignored.
 **Notes**:  
    
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 This command allows CFEngine to detect default architecture of packages
 managed by package manager. As an example, multiarch-enabled dpkg only
@@ -1290,7 +1290,7 @@ record.
 **Notes**:  
    
 
-*History*: Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
+**History**: Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
 (2012)
 
 ```cf3
@@ -1323,7 +1323,7 @@ less than second one
 
 **Notes**:  
    
- *History*: Was introduced in 3.4.0 (2012)
+ **History**: Was introduced in 3.4.0 (2012)
 
 This attribute allows overriding of the built-in CFEngine algorithm for
 version comparison, by calling an external command to check whether the
@@ -1365,7 +1365,7 @@ equal to second one
 
 **Notes**:  
    
- *History*: Was introduced in 3.4.0 (2012)
+ **History**: Was introduced in 3.4.0 (2012)
 
 This attribute allows overriding of the built-in CFEngine algorithm for
 version comparison by calling an external command to check whether the

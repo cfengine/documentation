@@ -141,7 +141,7 @@ inherit => "true";
 **Notes**:  
    
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 The `inherit` constraint can be added to the CFEngine code in two
 places; for `edit_defaults` and in `methods` promises. If set to true,
@@ -209,6 +209,6 @@ reports:
 **Notes**:  
    
 
-*History*: Was introduced in 3.4.0 (2012)
+**History**: Was introduced in 3.4.0 (2012)
 
 Return values are limited to scalars.

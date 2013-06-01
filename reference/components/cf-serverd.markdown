@@ -235,7 +235,7 @@ the CFEngine Server offering a tunnel for report collection.
 
 **Notes**:
 
-*History*: Was introduced Enterprise 3.0.0 (2012)
+**History**: Was introduced Enterprise 3.0.0 (2012)
 
 If option time is set, it causes the server daemon to peer with a
 policy hub by attempting a connection at regular intervals of the
@@ -338,7 +338,7 @@ open to a hub to attempt a report transfer before it is closed
 
 **Notes**:
 
-*History*: Was introduced in Enterprise 3.0.0 (2012)
+**History**: Was introduced in Enterprise 3.0.0 (2012)
 
 The time is measured in seconds, default value 10s.
 
@@ -481,7 +481,7 @@ cache
 
 **Notes**:
 
-*History*: Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010)
+**History**: Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010)
 
 
 ### logallconnections
@@ -712,7 +712,7 @@ port
 
 **Notes**:
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0 (2012)
+**History**: Was introduced in 3.4.0, Enterprise 3.0 (2012)
 
 This attribute allows to disable `cf-serverd` from listening on any
 port. Should be used in conjunction with `call_collect_interval`.

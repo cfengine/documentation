@@ -1051,7 +1051,7 @@ Note that the return codes may overlap, so multiple classes may be set
 from one return code. In Unix systems the possible return codes are usually 
 in the range from 0 to 255.
 
-*History*: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
+**History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
 `failed_returncodes`
 

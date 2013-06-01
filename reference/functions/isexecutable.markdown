@@ -30,4 +30,4 @@ classes:
 **Notes**:  
    
 
-*History*: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
+**History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

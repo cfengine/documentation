@@ -68,7 +68,7 @@ This variable contains the name of the hard-class category for this host
 
 ### sys.cpus
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2012)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2012)
 
 A variable containing the number of CPU cores detected. On systems which
 provide virtual cores, it is set to the total number of virtual, not
@@ -104,7 +104,7 @@ The date of the system as a text string.
 
 ### sys.doc\_root
 
-*History*: Was introduced in 3.1.0, Enterprise 2.0.
+**History**: Was introduced in 3.1.0, Enterprise 2.0.
 
 A scalar variable containing the default path for the document root of
 the standard web server package.
@@ -123,7 +123,7 @@ general there is no way to discover this value automatically. The
 
 ### sys.enterprise\_version
 
-*History*: Was introduced in 3.5.0, Enterprise 3.0.0
+**History**: Was introduced in 3.5.0, Enterprise 3.0.0
 
 The variable gives the version of the running CFEngine Enterprise
 Edition.
@@ -153,7 +153,7 @@ The location of the system NFS exports file.
 
 ###s sys.flavor, sys.flavour
 
-*History*: Was introduced in 3.2.0, Enterprise 2.0
+**History**: Was introduced in 3.2.0, Enterprise 2.0
 
 A variable containing an operating system identification string that is
 used to determine the current release of the operating system in a form
@@ -182,14 +182,14 @@ The location of the system filesystem (mount) table.
 
 ### sys.hardware\_addresses
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 This is a list variable containing a list of all known MAC addresses for
 system interfaces.
 
 ### sys.hardware\_mac[interface\_name]
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 This contains the MAC address of the named interface. For example:
 
@@ -220,7 +220,7 @@ The assumed (default) name of the main system interface on this host.
 
 ### sys.interfaces
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 Displays a system list of configured interfaces currently active in use
 by the system. This list is detected at runtime and it passed in the
@@ -251,7 +251,7 @@ local variables can be iterated.
 
 ### sys.ip_addresses
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 Displays a system list of IP addresses currently in use by the system.
 This list is detected at runtime and passed in the variables report to the 
@@ -335,7 +335,7 @@ The first three octets of the IPv4 address of the system interface named as the 
 
 ### sys.license\_owner
 
-*History*: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
+**History**: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
 
 ```cf3
     reports:
@@ -347,7 +347,7 @@ The first three octets of the IPv4 address of the system interface named as the 
 
 ### sys.licenses\_granted
 
-*History*: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
+**History**: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
 
 ```cf3
     reports:
@@ -448,7 +448,7 @@ output of `uname -v`.
     # version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011
 ```
 
-*History*: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
+**History**: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
 
 ### sys.windir
 

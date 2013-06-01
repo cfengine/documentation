@@ -151,7 +151,7 @@ business goals in promises.
     }
 ```
 
-*History*: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
+**History**: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
 
 ### ignore_missing_bundles
@@ -445,7 +445,7 @@ classifier. This list will add alternative class contexts for
 interpreting location.
 
 
-*History*: Was introduced in version 3.2.0, Nova 2.1.0 (2011)
+**History**: Was introduced in version 3.2.0, Nova 2.1.0 (2011)
 
 
 ### syslog_host

@@ -530,7 +530,7 @@ logfile | grep pattern in Unix parlance.
 **Notes**:  
    
 
-*History*: Was introduced in 3.4.0 (2012)
+**History**: Was introduced in 3.4.0 (2012)
 
 This option governs how CFEngine handels multiple matching lines in the
 input stream. We can average or sum values if they are integer or real,

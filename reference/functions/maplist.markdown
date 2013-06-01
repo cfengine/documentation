@@ -41,7 +41,7 @@ reports:
 **Notes**:  
    
 
-*History*: Was introduced in 3.3.0, Nova 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
 This is essentially like the map() function in Perl, and applies to
 lists.
