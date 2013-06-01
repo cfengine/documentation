@@ -9,20 +9,27 @@ tags: [reference, functions, getenv]
 
 
 
-**Prototype**: getenv(arg1,arg2) 
+**Prototype**: `getenv(variable, maxlength)`
 
 **Return type**: `string`
 
-  
- *arg1* : Name of environment variable, *in the range*
+**Description**: Return the environment variable `variable`, truncated at 
+`maxlength` characters
+
+Returns an empty string if the environment variable is not defined. 
+`maxlength` is used to avoid unexpectedly large return values, which could 
+lead to security issues. Choose a reasonable value based on the environment 
+variable you are querying.
+
+
+**Arguments**
+
+* `variable` : Name of environment variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
- *arg2* : Maximum number of characters to read , *in the range*
-0,99999999999   
+* `maxlength` : Maximum number of characters to read , *in the range*
+0,99999999999
 
-Return the environment variable named arg1, truncated at arg2 characters
-
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent example
@@ -49,12 +56,6 @@ reports:
 ```
 
 **Notes**:  
-   
-
-Returns an empty string if the environment variable is not defined. Arg2
-is used to avoid unexpectedly large return values, which could lead to
-security issues. Choose a reasonable value based on the environment
-variable you are querying.
 
 **History**: This function was introduced in CFEngine version 3.0.4
 (2010)
