@@ -45,11 +45,11 @@ promise.
 -   [not\_matching in
     delete\_lines](#not_005fmatching-in-delete_005flines)
 
-#### `delete_select` (body template)
+### delete_select
 
-**Type**: (ext body)
+**Type**: `body delete_select`
 
-`delete_if_startwith_from_list`
+#### delete_if_startwith_from_list
 
 **Type**: `slist`
 
@@ -101,7 +101,7 @@ Thus, the promise will delete only the first and third lines of the file:
      }
 ```
 
-`delete_if_not_startwith_from_list`
+#### delete_if_not_startwith_from_list
 
 **Type**: `slist`
 
@@ -121,7 +121,7 @@ In other words, this attribute modifies the selection criteria, it does not make
      
 ```
 
-`delete_if_match_from_list`
+#### delete_if_match_from_list
 
 **Type**: `slist`
 
@@ -144,7 +144,7 @@ promised lines.
      
 ```
 
-`delete_if_not_match_from_list`
+`delete_if_not_match_from_list
 
 **Type**: `slist`
 
@@ -167,7 +167,7 @@ promised lines.
      
 ```
 
-`delete_if_contains_from_list`
+#### delete_if_contains_from_list
 
 **Type**: `slist`
 
@@ -189,7 +189,7 @@ promised lines.
      
 ```
 
-`delete_if_not_contains_from_list`
+#### delete_if_not_contains_from_list
 
 **Type**: `slist`
 
@@ -212,7 +212,7 @@ promised lines.
      
 ```
 
-#### `not_matching`
+### not_matching
 
 **Type**: (menu option)
 

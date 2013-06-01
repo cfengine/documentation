@@ -69,10 +69,10 @@ promises nothing about the outcome of executing a command. All it can
 promise is to interface with it, starting it and using the results in
 good faith. Packages are basically 'outsourced', to invoke IT parlance.
 
-**Behaviour**
+**Behavior**
 
 A package promise consists of a name, a version and an architecture,
-*(n,v,a)*, and behaviour to be promised about packages that match
+*(n,v,a)*, and behavior to be promised about packages that match
 criteria based on these. The components *(n,v,a)* can be determined in
 one of two different ways:
 
@@ -316,7 +316,7 @@ library for supported operating systems.
 -   [package\_select in packages](#package_005fselect-in-packages)
 -   [package\_version in packages](#package_005fversion-in-packages)
 
-#### `package_architectures`
+### package_architectures
 
 **Type**: `slist`
 
@@ -342,11 +342,11 @@ if it is desirable to install multiple architectures on the host. If no
 value is specified, CFEngine makes no promise about the result; the
 package manager's behaviour prevails.
 
-#### `package_method` (body template)
+### package_method
 
-**Type**: (ext body)
+**Type**: `body package_method`
 
-`package_add_command`
+#### package_add_command
 
 **Type**: `string`
 
@@ -377,7 +377,7 @@ a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
 prevents CFEngine from appending the package name to the string.   
 
-`package_arch_regex`
+#### package_arch_regex
 
 **Type**: `string`
 
@@ -409,7 +409,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If no
 architecture is specified for the given package manager, then do not
 define this.   
 
-`package_changes`
+#### package_changes
 
 **Type**: (menu option)
 
@@ -444,7 +444,7 @@ individual packages will be handled one by one. This might add a
 significant overhead to the operations, and also affect the ability of
 the operating system's package manager to handle dependencies.   
 
-`package_delete_command`
+#### package_delete_command
 
 **Type**: `string`
 
@@ -473,7 +473,7 @@ a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
 prevents CFEngine from appending the package name to the string.   
 
-`package_delete_convention`
+#### package_delete_convention
 
 **Type**: `string`
 
@@ -513,7 +513,7 @@ to expand the first repository containing the package. For example:
 If this is not defined, it defaults to the value of
 `package_name_convention`.   
 
-`package_file_repositories`
+#### package_file_repositories
 
 **Type**: `slist`
 
@@ -538,7 +538,7 @@ by filename and will search the named paths for a package matching the
 pattern `package_name_convention`. If found the name will be prefixed to
 the package name in the package commands.   
 
-`package_installed_regex`
+#### package_installed_regex
 
 **Type**: `string`
 
@@ -567,7 +567,7 @@ the lines match then the regex can be set of .\*, however most package
 systems output prefix lines and a variety of human padding that needs to
 be ignored.   
 
-`package_default_arch_command`
+#### package_default_arch_command
 
 **Type**: `string`
 
@@ -586,7 +586,6 @@ be ignored.
      }
 ```
 
-**Notes**:
 **History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 This command allows CFEngine to detect default architecture of packages
@@ -597,7 +596,7 @@ In case this command is not provided, CFEngine treats all packages
 without explicit architecture set as belonging to implicit default
 architecture.   
 
-`package_list_arch_regex`
+#### package_list_arch_regex
 
 **Type**: `string`
 
@@ -626,7 +625,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)). If no
 architecture is specified for the given package manager, then do not
 define this regex.   
 
-`package_list_command`
+#### package_list_command
 
 **Type**: `string`
 
@@ -656,7 +655,7 @@ a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
 prevents CFEngine from appending the package name to the string.   
 
-`package_list_name_regex`
+#### package_list_name_regex
 
 **Type**: `string`
 
@@ -684,7 +683,7 @@ The regular expression may match a portion of the string (see [Anchored
 vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
-`package_list_update_command`
+#### package_list_update_command
 
 **Type**: `string`
 
@@ -709,7 +708,7 @@ Not all package managers update their list information from source
 automatically. This command allows a separate update command to be
 executed at intervals determined by `package_list_update_ifelapsed`.   
 
-`package_list_update_ifelapsed`
+#### package_list_update_ifelapsed
 
 **Type**: `int`
 
@@ -735,7 +734,7 @@ Not all package managers update their list information from source
 automatically. This command allows a separate update command to be
 executed at intervals determined by `package_list_update_ifelapsed`.   
 
-`package_list_version_regex`
+#### package_list_version_regex
 
 **Type**: `string`
 
@@ -762,7 +761,7 @@ installed. The regular expression may match a portion of the string (see
 [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions))   
 
-`package_name_convention`
+#### package_name_convention
 
 **Type**: `string`
 
@@ -796,7 +795,7 @@ different convention for the delete command.
 
 If this is not defined, it defaults to the value \$(name).   
 
-`package_name_regex`
+#### package_name_regex
 
 **Type**: `string`
 
@@ -825,7 +824,7 @@ regex may match a portion of the string (see [Anchored vs. unanchored
 regular expressions](#Anchored-vs_002e-unanchored-regular-expressions))
   
 
-`package_noverify_regex`
+#### package_noverify_regex
 
 **Type**: `string`
 
@@ -852,7 +851,7 @@ deemed broken. The regex must match the entire line (see [Anchored vs.
 unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions))   
 
-`package_noverify_returncode`
+#### package_noverify_returncode
 
 **Type**: `int`
 
@@ -875,7 +874,7 @@ failure
 For use if a package verification command uses the return code as the
 signal for a failed package verification.   
 
-`package_patch_arch_regex`
+#### package_patch_arch_regex
 
 **Type**: `string`
 
@@ -903,7 +902,7 @@ regular expression must match the entire line (see [Anchored vs.
 unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
-`package_patch_command`
+#### package_patch_command
 
 **Type**: `string`
 
@@ -935,7 +934,7 @@ a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
 prevents CFEngine from appending the package name to the string.   
 
-`package_patch_installed_regex`
+#### package_patch_installed_regex
 
 **Type**: `string`
 
@@ -963,7 +962,7 @@ expression must match the entire string (see [Anchored vs. unanchored
 regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
   
 
-`package_patch_list_command`
+#### package_patch_list_command
 
 **Type**: `string`
 
@@ -991,7 +990,7 @@ a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
 prevents CFEngine from appending the package name to the string.   
 
-`package_patch_name_regex`
+#### package_patch_name_regex
 
 **Type**: `string`
 
@@ -1018,7 +1017,7 @@ regular expression may match a partial string (see [Anchored vs.
 unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
-`package_patch_version_regex`
+#### package_patch_version_regex
 
 **Type**: `string`
 
@@ -1046,7 +1045,7 @@ regular expression is unanchored, meaning it may match a partial string
 (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
-`package_update_command`
+#### package_update_command
 
 **Type**: `string`
 
@@ -1078,7 +1077,7 @@ will include the full path to a repository containing the package. If
 `package_delete_command` and `package_add_command` will be executed to
 carry out the update.   
 
-`package_verify_command`
+#### package_verify_command
 
 **Type**: `string`
 
@@ -1118,7 +1117,7 @@ a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with \$
 prevents CFEngine from appending the package name to the string.   
 
-`package_version_regex`
+#### package_version_regex
 
 **Type**: `string`
 
@@ -1147,7 +1146,7 @@ meaning it may match a partial string (see [Anchored vs. unanchored
 regular expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
   
 
-`package_multiline_start`
+#### package_multiline_start
 
 **Type**: `string`
 
@@ -1176,7 +1175,7 @@ is used when package managers (like the Solaris package manager) use
 multi-line output formats. This pattern matches the first line of a new
 record.   
 
-`package_commands_useshell`
+#### package_commands_useshell
 
 **Type**: (menu option)
 
@@ -1203,19 +1202,10 @@ record.
      ""
 ```
 
-**Notes**:
 **History**: Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
 (2012)
 
-```cf3
-     
-     Fill me in (./bodyparts/package_commands_useshell_notes.texinfo)
-     ""
-```
-
-  
-
-`package_version_less_command`
+#### package_version_less_command
 
 **Type**: `string`
 
@@ -1256,7 +1246,7 @@ package\_version\_less\_command is, then equality will be tested by
 issuing less comparison twice (v1 equals to v2 if v1 is not less than
 v2, and v2 is not less than v1).   
 
-`package_version_equal_command`
+#### package_version_equal_command
 
 **Type**: `string`
 
@@ -1295,7 +1285,7 @@ package\_version\_less\_command is, then equality will be tested by
 issuing less comparison twice (v1 equals to v2 if v1 is not less than
 v2, and v2 is not less than v1).
 
-#### `package_policy`
+### package_policy
 
 **Type**: (menu option)
 
@@ -1362,7 +1352,7 @@ Verify the correctness of the package (manager dependent). The promise
 is kept if the package is installed correctly, not kept otherwise.
 Requires setting `package_verify_command`.
 
-#### `package_select`
+### package_select
 
 **Type**: (menu option)
 
@@ -1399,7 +1389,7 @@ This selects the operator that compares the promiser to the state of the
 system packages currently installed. If the criterion matches, the
 policy action is scheduled for promise-keeping.
 
-#### `package_version`
+### package_version
 
 **Type**: `string`
 

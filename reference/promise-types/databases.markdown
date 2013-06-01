@@ -139,8 +139,6 @@ exec_owner => "$(x)";
 }
 ```
 
-  
-
 The promiser in database promises is a concatenation of the database
 name and underlying tables. This presents a simple hierarchical model
 that looks like a file-system. This is the normal structure within the
@@ -148,19 +146,11 @@ Windows registry for instance. Entity-relation databases do not normally
 present tables in this way, but no harm is done in representing them as
 a hierarchy of depth 1.
 
--   [database\_server in databases](#database_005fserver-in-databases)
--   [database\_type in databases](#database_005ftype-in-databases)
--   [database\_operation in
-    databases](#database_005foperation-in-databases)
--   [database\_columns in databases](#database_005fcolumns-in-databases)
--   [database\_rows in databases](#database_005frows-in-databases)
--   [registry\_exclude in databases](#registry_005fexclude-in-databases)
+### database_server
 
-#### `database_server` (body template)
+**Type**: `body database_server`
 
-**Type**: (ext body)
-
-`db_server_owner`
+#### db_server_owner
 
 **Type**: `string`
 
@@ -177,7 +167,7 @@ The user name for a database connection is defined by `db_server_order`.
 ```  
    
 
-`db_server_password`
+#### db_server_password
 
 **Type**: `string`
 
@@ -193,7 +183,7 @@ The clear text password for a database connection is defined by `db_server_passw
      
 ```
 
-`db_server_host`
+#### db_server_host
 
 **Type**: `string`
 
@@ -207,7 +197,7 @@ The hostname or address for a database connection is defined by `db_server_host`
      
 ```
 
-`db_server_type`
+#### db_server_type
 
 **Type**: (menu option)
 
@@ -230,7 +220,7 @@ The type of database server is defined by `db_server_type`.
      
 ```
 
-`db_server_connection_db`
+#### db_server_connection_db
 
 **Type**: `string`
 
@@ -262,7 +252,7 @@ For the knowledge agent, this setting is made in the control body, for database 
 where x is currently `mysql` or `postgres`.
 
 
-#### `database_type`
+### database_type
 
 **Type**: (menu option)
 
@@ -283,7 +273,7 @@ The type of database that is to be manipulated is defined by `database_type`
 database_type => "ms_registry";
 ```
 
-#### `database_operation`
+### database_operation
 
 **Type**: (menu option)
 
@@ -306,7 +296,7 @@ The nature of the promise is defined by `database_operation`.
 database_operation => "create";
 ```
 
-#### `database_columns`
+### database_columns
 
 **Type**: `slist`
 
@@ -335,7 +325,7 @@ Columns are a list of tuplets (Name,type,size). Array items are triplets, and fi
     database_server => myserver;
 ```
 
-#### `database_rows`
+### database_rows
 
 **Type**: `slist`
 
@@ -369,7 +359,7 @@ databases:
 }
 ```
 
-#### `registry_exclude`
+### registry_exclude
 
 **Type**: `slist`
 

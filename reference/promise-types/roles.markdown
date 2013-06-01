@@ -53,9 +53,7 @@ classes matching the regular expression when Mark\_.\* using the
 of Role Based Access Control (RBAC), provided users do not have
 privileged access on the host directly.
 
--   [authorize in roles](#authorize-in-roles)
-
-#### `authorize`
+### authorize
 
 **Type**: `slist`
 

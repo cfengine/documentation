@@ -15,7 +15,7 @@ editing hierarchical and structured XML datasets.
 -   [build\_xpath in \*](#build_005fxpath-in-_002a)
 -   [select\_xpath in \*](#select_005fxpath-in-_002a)
 
-#### `build_xpath`
+### build_xpath
 
 **Type**: `string`
 
@@ -39,7 +39,7 @@ will be verified and built BEFORE other `edit_xml` promises within same
 promise body. Therefore, the file will not be empty during the execution
 of such promises.
 
-#### `select_xpath`
+### select_xpath
 
 **Type**: `string`
 

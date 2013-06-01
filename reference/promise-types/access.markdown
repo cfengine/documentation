@@ -127,7 +127,7 @@ in the POSIX `gethostbyname` service.
 -   [resource\_type in access](#resource_005ftype-in-access)
 -   [report\_data\_select in access](#report_data_select-in-access)
 
-#### `admit`
+### admit
 
 **Type**: `slist`
 
@@ -155,7 +155,7 @@ standard connection tests in the control body.
 The lists may contain network addresses in CIDR notation or regular
 expressions to match the IP address or name of the connecting host.
 
-#### `deny`
+### deny
 
 **Type**: `slist`
 
@@ -187,7 +187,7 @@ one.
 Note that only regular expressions or exact matches are allowed in this
 list, as non-specific matches are too greedy for denial.
 
-#### `maproot`
+### maproot
 
 **Type**: `slist`
 
@@ -223,7 +223,7 @@ A typical case where mapping is important is in making backups of many
 user files. On Windows, `cf-serverd`, `maproot` is required to read
 files if the connecting user does not own the file on the server.
 
-#### `ifencrypted`
+### ifencrypted
 
 **Type**: (menu option)
 
@@ -258,7 +258,7 @@ access:
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
 
-#### `resource_type`
+### resource_type
 
 **Type**: (menu option)
 
@@ -364,17 +364,16 @@ is called `collect_calls`, this grants access to server peering collect-call
 tunneling.
 
 
-#### `report_data_select` (body template)
+### report_data_select
 
 **This body is only available in CFEngine Enterprise.**
 
-**Type**: body
+**Type**: `body report_data_select`
 
 **Description**: Restricts access to data for specified query type reported to 
 the CFEngine Enterprise Database.
 
 **Example**:
-
 
 ```cf3
 
@@ -402,8 +401,7 @@ resource_type => "query" as this is the resource type that is being affected.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`classes_include`
+#### classes_include
 
 **Type**: `slist`
 
@@ -413,7 +411,6 @@ History: Introduced in Enterprise 3.5.0
 specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 
@@ -432,8 +429,7 @@ If attribute is not used, report content is not reduced.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`classes_exclude`
+#### classes_exclude
 
 **Type**: `slist`
 
@@ -443,7 +439,6 @@ History: Introduced in Enterprise 3.5.0
 specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 
@@ -463,8 +458,7 @@ subset selected by include expression.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`variables_include`
+#### variables_include
 
 **Type**: `slist`
 
@@ -474,7 +468,6 @@ History: Introduced in Enterprise 3.5.0
 specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 
@@ -497,8 +490,7 @@ If attribute is not used, report content is not reduced.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`variables_exclude`
+#### variables_exclude
 
 **Type**: `slist`
 
@@ -508,7 +500,6 @@ History: Introduced in Enterprise 3.5.0
 specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 
@@ -523,14 +514,13 @@ body report_data_select
 
 This attribute is used to filter content of variable report collected by Enterprise Hub.
 Variables matching specified regular expression list will be excluded from report.
-Regular expression if matched agents variable name including scope: <scope>.<variable_name>
+Regular expression if matched agents variable name including scope: `<scope>.<variable_name>`
 If attribute is used in conjunction with variables_include it will exclude entries from
 subset selected by include expression.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`promise_notkept_log_include`
+#### promise_notkept_log_include
 
 **Type**: `slist`
 
@@ -540,7 +530,6 @@ History: Introduced in Enterprise 3.5.0
 handles matching specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 
@@ -559,8 +548,7 @@ If attribute is not used, report content is not reduced.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`promise_notkept_log_exclude`
+#### promise_notkept_log_exclude
 
 **Type**: `slist`
 
@@ -570,7 +558,6 @@ History: Introduced in Enterprise 3.5.0
 specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 
@@ -590,8 +577,7 @@ subset selected by include expression.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`promise_repaired_log_include`
+#### promise_repaired_log_include
 
 **Type**: `slist`
 
@@ -601,7 +587,6 @@ History: Introduced in Enterprise 3.5.0
 handles matching specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 
@@ -620,8 +605,7 @@ If attribute is not used, report content is not reduced.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`promise_repaired_log_exclude`
+#### promise_repaired_log_exclude
 
 **Type**: `slist`
 
@@ -631,7 +615,6 @@ History: Introduced in Enterprise 3.5.0
 specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 
@@ -651,8 +634,7 @@ subset selected by include expression.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`monitoring_include`
+#### monitoring_include
 
 **Type**: `slist`
 
@@ -662,7 +644,6 @@ History: Introduced in Enterprise 3.5.0
 matching specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 
@@ -681,8 +662,7 @@ If attribute is not used, report content is not reduced.
 
 History: Introduced in Enterprise 3.5.0
 
-
-`monitoring_exclude`
+#### monitoring_exclude
 
 **Type**: `slist`
 
@@ -692,7 +672,6 @@ History: Introduced in Enterprise 3.5.0
 specified regular expression list.
 
 **Example**:
-
 
 ```cf3
 

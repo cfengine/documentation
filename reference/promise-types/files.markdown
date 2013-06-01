@@ -251,207 +251,11 @@ consequences, but this might occasionally be useful.
 
 Depth search is not allowed with `edit_line` promises.
 
-**File editing in CFEngine 3**
+### acl
 
-File editing is not just a single kind of promise but a whole range of
-'promises within files'. It is therefore not merely a body to a single
-kind of promise, but a bundle of sub-promises. After all, inside each
-file are new objects that can make promises, quite separate from files'
-external attributes.
+**Type**: `body acl`
 
-A typical file editing stanza has the elements in the following example:
-
-```cf3
-######################################################################
-#
-# File editing
-#
-######################################################################
-
-body common control
-
-{
-version => "1.2.3";
-bundlesequence  => { "outerbundle"  };
-}
-
-########################################################
-
-bundle agent outerbundle
-
-{
-files:
-
-  "/home/mark/tmp/cf3_test"
-
-       create    => "true",     # Like autocreate in cf2
-       edit_line => inner_bundle;
-}
-
-########################################################
-
-bundle edit_line inner_bundle
-  {
-  vars:
-
-   "who" string => "SysAdmin John"; # private variable in bundle
-
-  insert_lines:
-    "/* This file is maintained by CFEngine (see $(who) for details) */",
-    location => first_line;
-  
-  replace_patterns:
-
-   # replace shell comments with C comments
-
-   "#(.*)"
-
-      replace_with => C_comment,
-     select_region => MySection("New section");
-
-  reports:
-
-    someclass::
-
-      "This is file $(edit.filename)";
-  }
-
-########################################
-# Bodies for the library ...
-########################################
-
-body replace_with C_comment
-
-{
-replace_value => "/* $(match.1) */"; # backreference
-occurrences => "all";          # first, last all
-}
-
-########################################################
-
-body select_region MySection(x)
-
-{
-select_start => "\[$(x)\]";
-select_end => "\[.*\]";
-}
-
-########################################################
-
-body location first_line
-
-{
-before_after => "before";
-first_last => "first";
-select_line_matching => ".*";
-}
-
-```
-
-There are several things to notice:
-
--   The line-editing promises are all convergent promises about patterns
-    within the file. They have bodies, just like other attributes do and
-    these allow us to make simple templates about file editing while
-    extending the power of the basic primitives.
--   All file edits specified in a single `edit_line` bundle are handled
-    "atomically". CFEngine edits files like this:
-    -   CFEngine makes a copy of the file you you want to edit.
-    -   CFEngine makes all the edits in the **copy** of the file. The
-        filename is the same as your original file with the extension
-        .cf-after-edit appended.
-    -   After all edits are complete (the `delete_lines`, `field_edits`,
-        `insert_lines`, and finally `replace_patterns` promises),
-        CFEngine checks to see if the new file is the same as the
-        original one. If there are no differences, the promises have
-        converged, so it deletes the copy, and the original is left
-        completely unmodified.
-    -   If there are any differences, CFEngine makes a copy of your
-        original file with the extension .cf-before-edit (so you always
-        have the most recent backup available), and then renames the
-        edited version to your original filename.
-
-    Because file rename is an atomic operation (guaranteed by the
-    operating system), any application program will either see the old
-    version of the file or the new one. There is no "window of
-    opportunity" where a partially edited file can be seen (unless an
-    application intentionally looks for the .cf-after-edit file).
-    Problems during editing (such as disk-full or permission errors) are
-    likewise detected, and CFEngine will not rename a partial file over
-    your original.
--   All pattern matching is through Perl Compatible Regular Expressions
--   Editing takes place within a marked region (which defaults to the
-    whole file if not otherwise specified).
--   Search/replace functions now allow back-references.
--   The line edit model now contains a field or column model for dealing
-    with tabular files such as Unix passwd and group files. We can now
-    apply powerful convergent editing operations to single fields inside
-    a table, to append, order and delete items from lists inside fields.
--   The special variable `$(edit.filename)` contains the name of the
-    file being edited within an edit bundle.
-
-In the example above, back references are used to allow conversion of
-comments from shell-style to C-style.
-
-Another example of files promises is to look for changes in files. The
-following example reports on all recent changes to files in a directory
-by maintaining the most recent version of the `md5` hash of the file
-contents. Similar checks can be used to examine metadata or both the
-contents and metadata, as well as using different difference checks. The
-Community Edition only reports that changes were found, but Enterprise
-versions of CFEngine can also report on what exactly the significant
-changes were.
-
-```cf3
-bundle agent example
-{
-files:
-
-  "/home/mark/tmp" -> "Security team"
-
-       changes      => lay_a_tripwire,
-       depth_search => recurse("inf"),
-       action       => background;
-}
-
-#########################################################
-
-body changes lay_a_tripwire
-
-{
-hash           => "md5";
-report_changes => "content";
-update         => "yes";
-}
-```
-
-  
-
--   [acl in files](#acl-in-files)
--   [changes in files](#changes-in-files)
--   [copy\_from in files](#copy_005ffrom-in-files)
--   [create in files](#create-in-files)
--   [delete in files](#delete-in-files)
--   [depth\_search in files](#depth_005fsearch-in-files)
--   [edit\_defaults in files](#edit_005fdefaults-in-files)
--   [edit\_line in files](#edit_005fline-in-files)
--   [edit\_template in files](#edit_005ftemplate-in-files)
--   [edit\_xml in files](#edit_005fxml-in-files)
--   [file\_select in files](#file_005fselect-in-files)
--   [link\_from in files](#link_005ffrom-in-files)
--   [move\_obstructions in files](#move_005fobstructions-in-files)
--   [pathtype in files](#pathtype-in-files)
--   [perms in files](#perms-in-files)
--   [rename in files](#rename-in-files)
--   [repository in files](#repository-in-files)
--   [touch in files](#touch-in-files)
--   [transformer in files](#transformer-in-files)
-
-#### `acl` (body template)
-
-**Type**: (ext body)
-
-`aces`
+#### aces
 
 **Type**: `slist`
 
@@ -569,7 +373,7 @@ Note that the `r` permission is not necessary to read an object's
 permissions and attributes in all file systems. For example, in POSIX,
 having `x` on its containing directory is sufficient.   
 
-`acl_default`
+#### acl_default
 
 **Type**: (menu option)
 
@@ -614,7 +418,7 @@ empty (`clear`), or be explicitly specified (`specify`). In addition, the defaul
 acl_directory_inherit.
 
 
-`acl_method`
+#### acl_method
 
 **Type**: (menu option)
 
@@ -644,7 +448,7 @@ example, owning user, group and all in POSIX ACLs.
      
 ```
 
-`acl_type`
+#### acl_type
 
 **Type**: (menu option)
 
@@ -678,7 +482,7 @@ Ownership on the NTFS platform, we must set `acl_type` to indicate the target pl
 ```
  
 
-`specify_default_aces`
+#### specify_default_aces
 
 **Type**: `slist`
 
@@ -704,11 +508,11 @@ that do not have a clear inheritance policy.
 
 
 
-#### `changes` (body template)
+### changes
 
-**Type**: (ext body)
+**Type**: `body changes`
 
-`hash`
+#### hash
 
 **Type**: (menu option)
 
@@ -740,8 +544,7 @@ The `best` option cross correlates the best two available algorithms known in th
 ```
 
 
-
-`report_changes`
+#### report_changes
 
 **Type**: (menu option)
 
@@ -769,7 +572,7 @@ Files can change in permissions and contents, i.e. external or internal attribut
      
 ```
 
-`update_hashes`
+#### update_hashes
 
 **Type**: (menu option)
 
@@ -799,7 +602,7 @@ If this is positive, file hashes should be updated as soon as a change is regist
      
 ```
 
-`report_diffs`
+#### report_diffs
 
 **Type**: (menu option)
 
@@ -835,11 +638,11 @@ The feature is intended as a informational summary, not as a version control fun
      
 ```
 
-#### `copy_from` (body template)
+### copy_from
 
-**Type**: (ext body)
+**Type**: `body copy_from`
 
-`source`
+#### source
 
 **Type**: `string`
 
@@ -866,7 +669,7 @@ The feature is intended as a informational summary, not as a version control fun
      
 ```
 
-`servers`
+#### servers
 
 **Type**: `slist`
 
@@ -887,7 +690,7 @@ The feature is intended as a informational summary, not as a version control fun
      
 ```
 
-`collapse_destination_dir`
+#### collapse_destination_dir
 
 **Type**: (menu option)
 
@@ -925,7 +728,7 @@ itself; in other words, a single destination directory.
      
 ```
 
-`compare`
+#### compare
 
 **Type**: (menu option)
 
@@ -985,8 +788,7 @@ The default copy method is mtime (modification time), meaning that the source fi
     used.
 -   `digest` a synonym for `hash`
 
-
-`copy_backup`
+#### copy_backup
 
 **Type**: (menu option)
 
@@ -1017,7 +819,7 @@ Determines whether a backup of the previous version is kept on the system. This 
 
 **See Also**: [default\_repository](#default_005frepository-in-agent) and [repository](#repository-in-files)
 
-`encrypt`
+#### encrypt
 
 **Type**: (menu option)
 
@@ -1052,7 +854,7 @@ Client connections are encrypted with using a Blowfish randomly generated sessio
      
 ```
 
-`check_root`
+#### check_root
 
 **Type**: (menu option)
 
@@ -1082,7 +884,7 @@ This flag determines whether the permissions of the root directory should be set
      
 ```
 
-`copylink_patterns`
+#### copylink_patterns
 
 **Type**: `slist`
 
@@ -1103,7 +905,7 @@ The matches are performed on the last node of the filename; in other words, the 
      
 ```
 
-`copy_size`
+#### copy_size
 
 **Type**: irange [int,int]
 
@@ -1126,7 +928,7 @@ The use of the irange function is optional. Ranges may also be specified as a co
      
 ```
 
-`findertype`
+#### findertype
 
 **Type**: (menu option)
 
@@ -1152,7 +954,7 @@ This applies only to the Mac OS X variants.
      
 ```
 
-`linkcopy_patterns`
+#### linkcopy_patterns
 
 **Type**: `slist`
 
@@ -1177,7 +979,7 @@ The pattern matches the last node filename; in other words, without the absolute
 
 **See Also**: `link_type`.   
 
-`link_type`
+#### link_type
 
 **Type**: (menu option)
 
@@ -1210,7 +1012,7 @@ Note that symlink is synonymous with absolute links, which are different from re
      
 ```
 
-`force_update`
+#### force_update
 
 **Type**: (menu option)
 
@@ -1242,7 +1044,7 @@ Note that symlink is synonymous with absolute links, which are different from re
      
 ```
 
-`force_ipv4`
+#### force_ipv4
 
 **Type**: (menu option)
 
@@ -1274,7 +1076,7 @@ IPv6 should be harmless to most users unless you have a partially or mis-configu
      
 ```
 
-`portnumber`
+#### portnumber
 
 **Type**: `int`
 
@@ -1295,7 +1097,7 @@ The standard or registered port number is tcp/5308. CFEngine does not presently 
      
 ```
 
-`preserve`
+#### preserve
 
 **Type**: (menu option)
 
@@ -1328,7 +1130,7 @@ files. This ensures that the destination file (promiser) gets the same Unix mode
 
 **History**: Version 3.1.0b3,Nova 2.0.0b1 (2010)   
 
-`purge`
+#### purge
 
 **Type**: (menu option)
 
@@ -1363,7 +1165,7 @@ Note that purging will also delete backup files generated during the file copyin
      
 ```
 
-`stealth`
+#### stealth
 
 **Type**: (menu option)
 
@@ -1393,7 +1195,7 @@ Note that purging will also delete backup files generated during the file copyin
      
 ```
 
-`timeout`
+#### timeout
 
 **Type**: `int`
 
@@ -1412,7 +1214,7 @@ Note that purging will also delete backup files generated during the file copyin
      
 ```
 
-`trustkey`
+#### trustkey
 
 **Type**: (menu option)
 
@@ -1449,7 +1251,7 @@ As soon as a public key has been exchanged, the trust option has no effect. A ma
      
 ```
 
-`type_check`
+#### type_check
 
 **Type**: (menu option)
 
@@ -1478,7 +1280,7 @@ As soon as a public key has been exchanged, the trust option has no effect. A ma
      
 ```
 
-`verify`
+#### verify
 
 **Type**: (menu option)
 
@@ -1511,7 +1313,7 @@ As soon as a public key has been exchanged, the trust option has no effect. A ma
      
 ```
 
-#### `create`
+### create
 
 **Type**: (menu option)
 
@@ -1563,11 +1365,11 @@ may actually prevent the copy or link promise from being kept (since
 `create` acts first, which may affect file comparison or linking
 operations).
 
-#### `delete` (body template)
+### delete
 
-**Type**: (ext body)
+**Type**: `body delete`
 
-`dirlinks`
+#### dirlinks
 
 **Type**: (menu option)
 
@@ -1612,7 +1414,7 @@ are **not** deleted.
 
 `dirlinks = delete`   
 
-`rmdirs`
+#### rmdirs
 
 **Type**: (menu option)
 
@@ -1689,11 +1491,11 @@ present. If there is no `delete` body then files (and directories) are
 
 `rmdirs = true`
 
-#### `depth_search` (body template)
+### depth_search
 
-**Type**: (ext body)
+**Type**: `body depth_search`
 
-`depth`
+#### depth
 
 **Type**: `int`
 
@@ -1720,7 +1522,7 @@ When searching recursively from a directory, the parent directory is
 only the anchor point and is not part of the search. To alter the
 parent, a separate non-recursive promise should be made.   
 
-`exclude_dirs`
+#### exclude_dirs
 
 **Type**: `slist`
 
@@ -1745,7 +1547,7 @@ search
 Directory names are treated specially when searching recursively through
 a file system.   
 
-`include_basedir`
+#### include_basedir
 
 **Type**: (menu option)
 
@@ -1781,7 +1583,7 @@ should be considered part of the promise or simply a boundary that marks
 the edge of the search. If true, the promiser directory will also
 promise the same attributes as the files inside it.   
 
-`include_dirs`
+#### include_dirs
 
 **Type**: `slist`
 
@@ -1804,7 +1606,7 @@ search
 **Notes**:
 This is the complement of `exclude_dirs`.   
 
-`rmdeadlinks`
+#### rmdeadlinks
 
 **Type**: (menu option)
 
@@ -1838,7 +1640,7 @@ This is the complement of `exclude_dirs`.
 A value of true determines that links pointing to files that do not
 exist should be deleted; or kept if set to false.   
 
-`traverse_links`
+#### traverse_links
 
 **Type**: (menu option)
 
@@ -1873,7 +1675,7 @@ If this is true, `cf-agent` will treat symbolic links to directories as
 if they were directories. Normally this is considered a potentially
 dangerous assumption and links are not traversed.   
 
-`xdev`
+#### xdev
 
 **Type**: (menu option)
 
@@ -1904,12 +1706,11 @@ devices
      
 ```
 
-**Notes**:
-#### `edit_defaults` (body template)
+### edit_defaults
 
-**Type**: (ext body)
+**Type**: `body edit_defaults`
 
-`edit_backup`
+#### edit_backup
 
 **Type**: (menu option)
 
@@ -1937,11 +1738,7 @@ devices
      
 ```
 
-**Notes**:  
-   
-   
-
-`empty_file_before_editing`
+#### empty_file_before_editing
 
 **Type**: (menu option)
 
@@ -1976,7 +1773,7 @@ commencing promised edits
 Emptying a file before reconstructing its contents according to a fixed
 recipe allows an ordered procedure to be convergent.   
 
-`inherit`
+#### inherit
 
 **Type**: (menu option)
 
@@ -2012,7 +1809,6 @@ classes of its parent
      }
 ```
 
-**Notes**:
 **History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 **Default value**: false
@@ -2024,7 +1820,7 @@ classes of the parent bundle. Inheriting the variables is unnecessary as
 the child can always access the parent's variables by a qualified
 reference using its bundle name. For example, \$(bundle.variable).   
 
-`max_file_size`
+#### max_file_size
 
 **Type**: `int`
 
@@ -2052,7 +1848,7 @@ determined by the global control body setting whose default value is
 
 See: [editfilesize in agent](#editfilesize-in-agent)   
 
-`recognize_join`
+#### recognize_join
 
 **Type**: (menu option)
 
@@ -2100,7 +1896,7 @@ Back slash lines will only be concatenated if the file requires editing,
 and will not be restored. Restoration of the backslashes is not possible
 in a meaningful and convergent fashion.   
 
-`rotate`
+#### rotate
 
 **Type**: `int`
 
@@ -2137,11 +1933,11 @@ files, plus the one "main" file. In the example above, the file foo.3
 will be renamed foo.4, but the old version of the file foo.4 will be
 deleted (that is, it "falls off the end" of the rotation).
 
-#### `edit_line`
+### edit_line
 
-**Type**: (ext bundle) (Separate Bundle)
+**Type**: `bundle edit_line`
 
-#### `edit_template`
+### edit_template
 
 **Type**: `string`
 
@@ -2152,61 +1948,60 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example**:
 
 ```cf3
-#This is a template file /templates/input.tmpl
+    #This is a template file /templates/input.tmpl
 
-These lines apply to anyone
+    These lines apply to anyone
 
-[%CFEngine solaris.Monday:: %]
-Everything after here applies only to solaris on Mondays
-until overridden...
+    [%CFEngine solaris.Monday:: %]
+    Everything after here applies only to solaris on Mondays
+    until overridden...
 
-[%CFEngine linux:: %]
-Everything after here now applies now to linux only.
+    [%CFEngine linux:: %]
+    Everything after here now applies now to linux only.
 
-[%CFEngine BEGIN %]
-This is a block of text
-That contains list variables: $(some.list)
-With text before and after.
-[%CFEngine END %]
+    [%CFEngine BEGIN %]
+    This is a block of text
+    That contains list variables: $(some.list)
+    With text before and after.
+    [%CFEngine END %]
 
-nameserver $(some.list)
+    nameserver $(some.list)
 ```
 
 For example:
 
 ```cf3
-[%CFEngine any:: %]
-VirtualHost $(sys.ipv4[eth0]):80>
-        ServerAdmin             $(stage_file.params[apache_mail_address][1])
-        DocumentRoot            /var/www/htdocs
-        ServerName              $(stage_file.params[apache_server_name][1])
-        AddHandler              cgi-script cgi
-        ErrorLog                /var/log/httpd/error.log
-        AddType                 application/x-x509-ca-cert .crt
-        AddType                 application/x-pkcs7-crl    .crl
-        SSLEngine               off
-        CustomLog               /var/log/httpd/access.log
-/VirtualHost>
+    [%CFEngine any:: %]
+    VirtualHost $(sys.ipv4[eth0]):80>
+            ServerAdmin             $(stage_file.params[apache_mail_address][1])
+            DocumentRoot            /var/www/htdocs
+            ServerName              $(stage_file.params[apache_server_name][1])
+            AddHandler              cgi-script cgi
+            ErrorLog                /var/log/httpd/error.log
+            AddType                 application/x-x509-ca-cert .crt
+            AddType                 application/x-pkcs7-crl    .crl
+            SSLEngine               off
+            CustomLog               /var/log/httpd/access.log
+    /VirtualHost>
 
-[%CFEngine webservers_prod:: %]
-[%CFEngine BEGIN %]
-VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>                                               
-        ServerAdmin             $(stage_file.params[apache_mail_address][1]) 
-        DocumentRoot            /var/www/htdocs                                  
-        ServerName              $(stage_file.params[apache_server_name][1])            
-        AddHandler              cgi-script cgi                                 
-        ErrorLog                /var/log/httpd/error.log                  
-        AddType                 application/x-x509-ca-cert .crt                
-        AddType                 application/x-pkcs7-crl    .crl                
-        SSLEngine               on                                             
-        SSLCertificateFile      $(stage_file.params[apache_ssl_crt][1])
-        SSLCertificateKeyFile   $(stage_file.params[apache_ssl_key][1])
-        CustomLog               /var/log/httpd/access.log                      
-/VirtualHost>
-[%CFEngine END %]
+    [%CFEngine webservers_prod:: %]
+    [%CFEngine BEGIN %]
+    VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443>                                               
+            ServerAdmin             $(stage_file.params[apache_mail_address][1]) 
+            DocumentRoot            /var/www/htdocs                                  
+            ServerName              $(stage_file.params[apache_server_name][1])            
+            AddHandler              cgi-script cgi                                 
+            ErrorLog                /var/log/httpd/error.log                  
+            AddType                 application/x-x509-ca-cert .crt                
+            AddType                 application/x-pkcs7-crl    .crl                
+            SSLEngine               on                                             
+            SSLCertificateFile      $(stage_file.params[apache_ssl_crt][1])
+            SSLCertificateKeyFile   $(stage_file.params[apache_ssl_key][1])
+            CustomLog               /var/log/httpd/access.log                      
+    /VirtualHost>
+    [%CFEngine END %]
 ```
 
-**Notes**:
 **History**: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
 The template format uses inline tags to mark regions and classes. Each
@@ -2214,9 +2009,9 @@ line represents an `insert_lines` promise, unless the promises are
 grouped into a block using:
 
 ```cf3
-[%CFEngine BEGIN %]
-...
-[%CFEngine END %]
+    [%CFEngine BEGIN %]
+    ...
+    [%CFEngine END %]
 ```
 
 Variables, scalars and list variables are expanded within each promise.
@@ -2232,15 +2027,15 @@ If a class-context modified is used:
 then the lines that follow are only inserted if the context matches the
 agent's current context. This allows conditional insertion.
 
-#### `edit_xml`
+### edit_xml
 
-**Type**: (ext bundle) (Separate Bundle)
+**Type**: `bundle edit_xml`
 
-#### `file_select` (body template)
+### file_select
 
-**Type**: (ext body)
+**Type**: `body file_select`
 
-`leaf_name`
+#### leaf_name
 
 **Type**: `slist`
 
@@ -2263,7 +2058,7 @@ agent's current context. This allows conditional insertion.
 **Notes**:
 This pattern matches only the node name of the file, not its path.   
 
-`path_name`
+#### path_name
 
 **Type**: `slist`
 
@@ -2289,7 +2084,7 @@ This pattern matches only the node name of the file, not its path.
 Path name and leaf name can be conveniently tested for separately by use
 of appropriate regular expressions.   
 
-`search_mode`
+#### search_mode
 
 **Type**: `slist`
 
@@ -2357,7 +2152,7 @@ The mode may be specified in symbolic or numerical form with + and -
 constraints. Concatenation `ug+s` implies `u` OR `g`, and `u+s,g+s`
 implies `u` AND `g`.   
 
-`search_size`
+#### search_size
 
 **Type**: irange [int,int]
 
@@ -2377,11 +2172,7 @@ implies `u` AND `g`.
      
 ```
 
-**Notes**:  
-   
-   
-
-`search_owners`
+#### search_owners
 
 **Type**: `slist`
 
@@ -2408,7 +2199,7 @@ A list of regular expressions any of which must match the entire userid
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)). Windows
 does not have user ids, only names.   
 
-`search_groups`
+#### search_groups
 
 **Type**: `slist`
 
@@ -2435,7 +2226,7 @@ A list of regular expressions, any of which must match the entire group
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)). On
 Windows, files do not have group associations.   
 
-`search_bsdflags`
+#### search_bsdflags
 
 **Type**: `slist`
 
@@ -2459,7 +2250,7 @@ Windows, files do not have group associations.
 Extra BSD file system flags (these have no effect on non-BSD versions of
 CFEngine). See the manual page for `chflags` for more details.   
 
-`ctime`
+#### ctime
 
 **Type**: irange [int,int]
 
@@ -2484,7 +2275,7 @@ The file's change time refers to both modification of content and
 attributes, such as permissions. On Windows, `ctime` refers to creation
 time.   
 
-`mtime`
+#### mtime
 
 **Type**: irange [int,int]
 
@@ -2510,7 +2301,7 @@ time.
 The file's modification time refers to both modification of content but
 not other attributes, such as permissions.   
 
-`atime`
+#### atime
 
 **Type**: irange [int,int]
 
@@ -2544,7 +2335,7 @@ not other attributes, such as permissions.
 A range of times during which a file was accessed can be specified in a
 `file_select` body.
 
-`exec_regex`
+#### exec_regex
 
 **Type**: `string`
 
@@ -2573,7 +2364,7 @@ status 0 and its output must match the regular expression. The entire
 output must be matched (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
-`exec_program`
+#### exec_program
 
 **Type**: `string`
 
@@ -2599,7 +2390,7 @@ This is part of the customizable file search criteria. If the
 user-defined program returns exit status 0, the file is considered
 matched.   
 
-`file_types`
+#### file_types
 
 **Type**: (option list)
 
@@ -2637,7 +2428,7 @@ File types vary in details between operating systems. The main POSIX
 types are provided here as menu options, with reg being a synonym for
 plain. In both cases this means not one of the "special" file types.   
 
-`issymlinkto`
+#### issymlinkto
 
 **Type**: `slist`
 
@@ -2662,7 +2453,7 @@ points to files matched by one of these expressions, the file will be
 selected. Windows does not support symbolic links, so this attribute is
 not applicable on that platform.   
 
-`file_result`
+#### file_result
 
 **Type**: `string`
 
@@ -2724,11 +2515,11 @@ following list:
 -   exec\_program
 -   bsdflags
 
-#### `link_from` (body template)
+### link_from
 
-**Type**: (ext body)
+**Type**: `body link_from`
 
-`copy_patterns`
+#### copy_patterns
 
 **Type**: `slist`
 
@@ -2755,7 +2546,7 @@ system. This list of patterns matches files that arise during a linking
 policy. A positive match means that the file should be copied and
 updated by modification time.   
 
-`link_children`
+#### link_children
 
 **Type**: (menu option)
 
@@ -2790,7 +2581,7 @@ source originals
 If the promiser is a directory, instead of copying the children, link
 them to the source.   
 
-`link_type`
+#### link_type
 
 **Type**: (menu option)
 
@@ -2833,7 +2624,7 @@ equivalent . When verifying a link, choosing 'relative' means that the
 link *must* be relative to the source, so relative and absolute links
 are mutually exclusive.   
 
-`source`
+#### source
 
 **Type**: `string`
 
@@ -2862,7 +2653,7 @@ are mutually exclusive.
 **Notes**:
 For remote copies this refers to the file name on the remote server.   
 
-`when_linking_children`
+#### when_linking_children
 
 **Type**: (menu option)
 
@@ -2896,7 +2687,7 @@ with a link, or simply omit the automatic linkage for files that already
 exist. The latter case can be used to make a copy of one directory with
 certain fields overridden.   
 
-`when_no_source`
+#### when_no_source
 
 **Type**: (menu option)
 
@@ -2929,7 +2720,7 @@ link to a file that does not exist. The options are to force the
 creation to a file that does not (yet) exist, delete any existing link,
 or do nothing.
 
-#### `move_obstructions`
+### move_obstructions
 
 **Type**: (menu option)
 
@@ -2977,7 +2768,7 @@ Some operating systems (Solaris) use symbolic links in path names.
 Copying to a directory could then result in renaming of the important
 link, if the behaviour is different.
 
-#### `pathtype`
+### pathtype
 
 **Type**: (menu option)
 
@@ -3043,11 +2834,11 @@ separator.
 See [Regular expressions in paths](#Regular-expressions-in-paths), for
 more information.
 
-#### `perms` (body template)
+### perms
 
-**Type**: (ext body)
+**Type**: `body perms`
 
-`bsdflags`
+#### bsdflags
 
 **Type**: `slist`
 
@@ -3074,7 +2865,7 @@ The BSD Unices (FreeBSD, OpenBSD, NetBSD) and MacOSX have additional
 file system flags which can be set. Refer to the BSD `chflags`
 documentation for this.   
 
-`groups`
+#### groups
 
 **Type**: `slist`
 
@@ -3102,7 +2893,7 @@ and thus this attribute is ignored.
 
 ACLs may be used in place for this.   
 
-`mode`
+#### mode
 
 **Type**: `string`
 
@@ -3125,7 +2916,7 @@ ACLs may be used in place for this.
 The mode string may be symbolic or numerical, like `chmod`. This is
 ignored on Windows, as the permission model uses ACLs.
 
-`owners`
+#### owners
 
 **Type**: `slist`
 
@@ -3156,7 +2947,7 @@ the first user in the list should be the user running the CFEngine
 process (usually Administrator). Additionally, some groups may be owners
 on Windows (such as the Administrators group).   
 
-`rxdirs`
+#### rxdirs
 
 **Type**: (menu option)
 
@@ -3190,11 +2981,11 @@ Default behaviour is to set the x flag on directories automatically if
 the r flag is specified when specifying multiple files in a single
 promise. This is ignored on Windows, as the permission model uses ACLs.
 
-#### `rename` (body template)
+### rename
 
-**Type**: (ext body)
+**Type**: `body rename`
 
-`disable`
+#### disable
 
 **Type**: (menu option)
 
@@ -3230,7 +3021,7 @@ Disabling a file means making it unusable. For executables this means
 preventing execution, for an information file it means making the file
 unreadable.   
 
-`disable_mode`
+#### disable_mode
 
 **Type**: `string`
 
@@ -3253,7 +3044,7 @@ unreadable.
 To disable an executable it is not enough to rename it, you should also
 remove the executable flag.   
 
-`disable_suffix`
+#### disable_suffix
 
 **Type**: `string`
 
@@ -3277,7 +3068,7 @@ remove the executable flag.
 To disable files in a particular manner, use this string suffix. The
 default value is .cf-disabled.   
 
-`newname`
+#### newname
 
 **Type**: `string`
 
@@ -3296,11 +3087,7 @@ default value is .cf-disabled.
      
 ```
 
-**Notes**:  
-   
-   
-
-`rotate`
+#### rotate
 
 **Type**: `int`
 
@@ -3336,7 +3123,7 @@ files plus the one "main" file. In the example above, the file foo.3
 will be renamed foo.4, but the old version of the file foo.4 will be
 deleted (that is, it "falls off the end" of the rotation).
 
-#### `repository`
+### repository
 
 **Type**: `string`
 
@@ -3366,7 +3153,7 @@ name of the file. So, for example, /usr/local/etc/postfix.conf would
 ordinarily be stored in an alternative repository as
 \_usr\_local\_etc\_postfix.conf.cfsaved.
 
-#### `touch`
+### touch
 
 **Type**: (menu option)
 
@@ -3393,8 +3180,7 @@ files:
    touch => "true";
 ```
 
-**Notes**:
-#### `transformer`
+### transformer
 
 **Type**: `string`
 

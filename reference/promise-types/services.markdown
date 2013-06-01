@@ -140,12 +140,7 @@ Note that the special variables `$(this.promiser)` and
 parameters from the promise definition. The `$(this.service_policy)`
 variable is only defined for services promises.
 
--   [service\_policy in services](#service_005fpolicy-in-services)
--   [service\_dependencies in
-    services](#service_005fdependencies-in-services)
--   [service\_method in services](#service_005fmethod-in-services)
-
-#### `service_policy`
+### service_policy
 
 **Type**: (menu option)
 
@@ -177,7 +172,7 @@ state, while `stop` means that the service is kept in a stopped state.
 started directly, but needs to be enabled somehow first (e.g. by
 changing file permissions).
 
-#### `service_dependencies`
+### service_dependencies
 
 **Type**: `slist`
 
@@ -210,11 +205,11 @@ before starting the service. The complete list of dependencies is thus
 the union of `service_dependencies` and the internal operating system
 list.
 
-#### `service_method` (body template)
+### service_method
 
-**Type**: (ext body)
+**Type**: `body service_method`
 
-`service_args`
+#### service_args
 
 **Type**: `string`
 
@@ -242,7 +237,7 @@ Escaped quotes can be used to pass an argument containing spaces as a
 single argument, e.g. "-f \\"file name.conf\\"". Passing arguments is
 optional.   
 
-`service_autostart_policy`
+#### service_autostart_policy
 
 **Type**: (menu option)
 
@@ -277,11 +272,11 @@ dispatched once it is being used.
 `on_demand` is not supported by Windows, and is implemented through
 inetd or xinetd on Unix.   
 
-`service_bundle`
+#### service_bundle
 
-**Type**: (ext bundle) (Separate Bundle)   
+**Type**: `bundle agent`
 
-`service_dependence_chain`
+#### service_dependence_chain
 
 **Type**: (menu option)
 
@@ -329,7 +324,7 @@ Enterprise will start A, if it is not running. On the other hand, if we want
 to stop B, C needs to be stopped first. `stop_child_services` or
 `all_related` means that CFEngine Enterprise will stop C, if it is running.   
 
-`service_type`
+`service_type
 
 **Type**: (menu option)
 

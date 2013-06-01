@@ -130,7 +130,7 @@ line two" location => myloc;
 -   [whitespace\_policy in
     insert\_lines](#whitespace_005fpolicy-in-insert_005flines)
 
-#### `expand_scalars`
+### expand_scalars
 
 **Type**: (menu option)
 
@@ -199,7 +199,7 @@ $(mon.www_in)
 ```
 
 
-#### `insert_type`
+### insert_type
 
 **Type**: (menu option)
 
@@ -275,11 +275,11 @@ Inserted files assume non-preserve\_block semantics. An equivalent file
 setting that does preserve the ordering of lines in the file is called
 `file_preserve_block`. This was added in CFEngine Core 3.5.x.
 
-#### `insert_select` (body template)
+### insert_select
 
-**Type**: (ext body)
+**Type**: `body insert_select`
 
-`insert_if_startwith_from_list`
+#### insert_if_startwith_from_list
 
 **Type**: `slist`
 
@@ -311,7 +311,7 @@ location in the primary file.
 insert\_lines](#insert_005ftype-in-insert_005flines)), or the promiser
 is a multi-line block.   
 
-`insert_if_not_startwith_from_list`
+#### insert_if_not_startwith_from_list
 
 **Type**: `slist`
 
@@ -341,7 +341,7 @@ file being edited.
 See: [insert\_type in
 insert\_lines](#insert_005ftype-in-insert_005flines)   
 
-`insert_if_match_from_list`
+#### insert_if_match_from_list
 
 **Type**: `slist`
 
@@ -377,7 +377,7 @@ or the promiser is a multi-line block.
 See [insert\_type in
 insert\_lines](#insert_005ftype-in-insert_005flines)   
 
-`insert_if_not_match_from_list`
+#### insert_if_not_match_from_list
 
 **Type**: `slist`
 
@@ -407,7 +407,7 @@ edited.
 See: [insert\_type in
 insert\_lines](#insert_005ftype-in-insert_005flines)   
 
-`insert_if_contains_from_list`
+#### insert_if_contains_from_list
 
 **Type**: `slist`
 
@@ -439,7 +439,7 @@ location in the primary file.
 See: [insert\_type in
 insert\_lines](#insert_005ftype-in-insert_005flines)   
 
-`insert_if_not_contains_from_list`
+#### insert_if_not_contains_from_list
 
 **Type**: `slist`
 
@@ -469,11 +469,11 @@ found in the secondary file, it is inserted into the file being edited.
 See: [insert\_type in
 insert\_lines](#insert_005ftype-in-insert_005flines)
 
-#### `location` (body template)
+### location
 
-**Type**: (ext body)
+**Type**: `body location`
 
-`before_after`
+#### before_after
 
 **Type**: (menu option)
 
@@ -505,7 +505,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 Determines whether an edit will occur before or after the currently
 matched line.   
 
-`first_last`
+#### first_last
 
 **Type**: (menu option)
 
@@ -539,7 +539,7 @@ could be generalized to more cases but this seems like a fragile quality
 to evaluate, and only these two cases are deemed of reproducible
 significance.   
 
-`select_line_matching`
+#### select_line_matching
 
 **Type**: `string`
 
@@ -576,7 +576,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)
 
 This attribute is mutually exclusive of `select_line_number`.
 
-#### `whitespace_policy`
+### whitespace_policy
 
 **Type**: (option list)
 

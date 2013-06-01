@@ -58,7 +58,7 @@ CFEngine currently provides a convergent interface to *libvirt*.
 -   [environment\_type in
     guest\_environments](#environment_005ftype-in-guest_005fenvironments)
 
-#### `environment_host`
+### environment_host
 
 **Type**: `string`
 
@@ -92,11 +92,11 @@ This attribute is required.
 **History**: this feature was introduced in Nova 2.0.0 (2010), Community
 3.3.0 (2012)
 
-#### `environment_interface` (body template)
+### environment_interface
 
-**Type**: (ext body)
+**Type**: `body environment_interface`
 
-`env_addresses`
+#### env_addresses
 
 **Type**: `slist`
 
@@ -128,7 +128,7 @@ This attribute is required.
 The IP addresses of the virtual machine can be overridden here at run
 time.   
 
-`env_name`
+#### env_name
 
 **Type**: `string`
 
@@ -156,7 +156,7 @@ time.
 The 'hostname' of a virtual guest may or may not be the same as the
 identifier used as 'promiser' by the virtualization manager.   
 
-`env_network`
+#### env_network
 
 **Type**: `string`
 
@@ -182,11 +182,11 @@ identifier used as 'promiser' by the virtualization manager.
      
 ```
 
-#### `environment_resources` (body template)
+### environment_resources
 
-**Type**: (ext body)
+**Type**: `body enviornment_resources`
 
-`env_cpus`
+#### env_cpus
 
 **Type**: `int`
 
@@ -213,7 +213,7 @@ will set a natural limit on this value.
 
 This attribute conflicts with `env_spec`.   
 
-`env_memory`
+#### env_memory
 
 **Type**: `int`
 
@@ -241,7 +241,7 @@ natural limit on this value.
 
 This attribute conflicts with `env_spec`.   
 
-`env_disk`
+#### env_disk
 
 **Type**: `int`
 
@@ -268,7 +268,7 @@ This parameter is currently unsupported, for future extension.
 
 This attribute conflicts with `env_spec`.   
 
-`env_baseline`
+#### env_baseline
 
 **Type**: `string`
 
@@ -288,7 +288,7 @@ environment
 **Notes**:
 This function is for future development.   
 
-`env_spec`
+#### env_spec
 
 **Type**: `string`
 
@@ -335,14 +335,14 @@ for the virtual instance
 
 **Notes**:  
    
- The preferred way to specify the resources of an environment on
+The preferred way to specify the resources of an environment on
 creation; in other words, when `environment_state` is create.
 
 This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 **History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
 
-#### `environment_state`
+### environment_state
 
 **Type**: (menu option)
 
@@ -400,7 +400,7 @@ down
 
 The guest machine is shut down, but not deallocated.
 
-#### `environment_type`
+### environment_type
 
 **Type**: (menu option)
 

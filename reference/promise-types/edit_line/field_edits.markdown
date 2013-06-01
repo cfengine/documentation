@@ -113,13 +113,11 @@ VARIABLE="one two three"
 View this line as a tabular line separated by " and with sub-separator
 given by the space.
 
--   [edit\_field in field\_edits](#edit_005ffield-in-field_005fedits)
+### edit_field
 
-#### `edit_field` (body template)
+**Type**: `body edit_field`
 
-**Type**: (ext body)
-
-`allow_blank_fields`
+#### allow_blank_fields
 
 **Type**: (menu option)
 
@@ -153,8 +151,7 @@ When editing a file using the field or column model, blank fields, especially at
 ```
 
 
-
-`extend_fields`
+#### extend_fields
 
 **Type**: (menu option)
 
@@ -187,7 +184,7 @@ this setting, CFEngine will issue an error if a non-existent field is referenced
      
 ```
 
- `field_operation`
+ `field_operation
 
 **Type**: (menu option)
 
@@ -229,7 +226,7 @@ delete - delete the specified value (if present) in the specified field/column
      
 ```
 
-`field_separator`
+`field_separator
 
 **Type**: `string`
 
@@ -254,7 +251,7 @@ edit all kinds of line-based text files.
      
 ```
 
-`field_value`
+`field_value
 
 **Type**: `string`
 
@@ -274,8 +271,7 @@ constant default, empty the field, or set it fixed list.
      
 ```
 
-
-`select_field`
+#### select_field
 
 **Type**: `int`
 
@@ -295,8 +291,7 @@ from 1).
 ```
 
 
-
-`start_fields_from_zero`
+#### start_fields_from_zero
 
 **Type**: (menu option)
 
@@ -336,7 +331,7 @@ as number 0 instead, for consistency with other array functions.
      
 ```
 
-`value_separator`
+`value_separator
 
 **Type**: `string`
 

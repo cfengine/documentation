@@ -171,13 +171,7 @@ into agent variables in the `$(mon.`name`)` context.
 
 **Measurement promise syntax:**
 
--   [stream\_type in measurements](#stream_005ftype-in-measurements)
--   [data\_type in measurements](#data_005ftype-in-measurements)
--   [history\_type in measurements](#history_005ftype-in-measurements)
--   [units in measurements](#units-in-measurements)
--   [match\_value in measurements](#match_005fvalue-in-measurements)
-
-#### `stream_type`
+### stream_type
 
 **Type**: (menu option)
 
@@ -201,7 +195,7 @@ CFEngine treats all input using a stream abstraction. The preferred
 interface is files, since they can be read without incurring the cost of
 a process. However pipes from executed commands may also be invoked.
 
-#### `data_type`
+### data_type
 
 **Type**: (menu option)
 
@@ -244,7 +238,7 @@ lines in a file match the given regular expression), then these can be
 made into a list by choosing `slist`, else the first matching item will
 be selected.
 
-#### `history_type`
+### history_type
 
 **Type**: (menu option)
 
@@ -294,7 +288,7 @@ weekly
 A standard CFEngine two-dimensional time average (over a weekly period)
 is retained.
 
-#### `units`
+### units
 
 **Type**: `string`
 
@@ -321,11 +315,11 @@ its intent used in plots
 **Notes**:
 This is an arbitary string used in documentation only.
 
-#### `match_value` (body template)
+### match_value
 
-**Type**: (ext body)
+**Type**: `body match_value`
 
-`select_line_matching`
+#### select_line_matching
 
 **Type**: `string`
 
@@ -360,7 +354,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 
 This attribute is mutually exclusive of `select_line_number`.   
 
-`select_line_number`
+#### select_line_number
 
 **Type**: `int`
 
@@ -382,7 +376,7 @@ This attribute is mutually exclusive of `select_line_number`.
 **Notes**:
 This is mutually exclusive of `select_line_matching`.   
 
-`extraction_regex`
+#### extraction_regex
 
 **Type**: `string`
 
@@ -410,7 +404,7 @@ unanchored, meaning it may match a partial string (see [Anchored vs.
 unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
-`track_growing_file`
+#### track_growing_file
 
 **Type**: (menu option)
 
@@ -474,7 +468,7 @@ log file redundantly.
 This makes a log pattern promise equivalent to something like tail -f
 logfile | grep pattern in Unix parlance.   
 
-`select_multiline_policy`
+#### select_multiline_policy
 
 **Type**: (menu option)
 
@@ -502,7 +496,6 @@ logfile | grep pattern in Unix parlance.
      
 ```
 
-**Notes**:
 **History**: Was introduced in 3.4.0 (2012)
 
 This option governs how CFEngine handels multiple matching lines in the

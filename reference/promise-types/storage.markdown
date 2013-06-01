@@ -58,11 +58,11 @@ edit_fstab => "true";
 -   [mount in storage](#mount-in-storage)
 -   [volume in storage](#volume-in-storage)
 
-#### `mount` (body template)
+### mount
 
-**Type**: (ext body)
+**Type**: `body mount`
 
-`edit_fstab`
+#### edit_fstab
 
 **Type**: (menu option)
 
@@ -96,7 +96,7 @@ edit_fstab => "true";
 **Notes**:
 The default behaviour is to not place edits in the file system table.   
 
-`mount_type`
+#### mount_type
 
 **Type**: (menu option)
 
@@ -125,7 +125,7 @@ The default behaviour is to not place edits in the file system table.
 **Notes**:
 This field is mainly for future extensions.   
 
-`mount_source`
+#### mount_source
 
 **Type**: `string`
 
@@ -147,7 +147,7 @@ This field is mainly for future extensions.
 **Notes**:
 This is the location on the remote device, server, SAN etc.   
 
-`mount_server`
+#### mount_server
 
 **Type**: `string`
 
@@ -169,7 +169,7 @@ This is the location on the remote device, server, SAN etc.
 **Notes**:
 Hostname or IP address, this could be on a SAN.   
 
-`mount_options`
+#### mount_options
 
 **Type**: `slist`
 
@@ -192,7 +192,7 @@ Hostname or IP address, this could be on a SAN.
 This list is concatenated in a form appropriate for the filesystem. The
 options must be legal options for the system mount commands.   
 
-`unmount`
+#### unmount
 
 **Type**: (menu option)
 
@@ -222,12 +222,11 @@ options must be legal options for the system mount commands.
      
 ```
 
-**Notes**:
-#### `volume` (body template)
+### volume
 
-**Type**: (ext body)
+**Type**: `body volume`
 
-`check_foreign`
+#### check_foreign
 
 **Type**: (menu option)
 
@@ -266,7 +265,7 @@ not local to the host. If `true` it will ignore a partition's network
 location and ask the current host to verify storage located physically
 on other systems.   
 
-`freespace`
+#### freespace
 
 **Type**: `string`
 
@@ -299,7 +298,7 @@ the results of this promise to control other promises.
 
 See: [classes in \*](#classes-in-_002a).   
 
-`sensible_size`
+#### sensible_size
 
 **Type**: `int`
 
@@ -329,9 +328,7 @@ sensible-looking storage device
      
 ```
 
-  
-
-`sensible_count`
+#### sensible_count
 
 **Type**: `int`
 
@@ -355,7 +352,7 @@ sensible-looking storage device
 Files must be readable by the agent. In other words, it is assumed that
 the agent has privileges on volumes being checked.   
 
-`scan_arrivals`
+#### scan_arrivals
 
 **Type**: (menu option)
 

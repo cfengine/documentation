@@ -95,11 +95,7 @@ methods:
 }
 ```
 
--   [inherit in methods](#inherit-in-methods)
--   [usebundle in methods](#usebundle-in-methods)
--   [useresult in methods](#useresult-in-methods)
-
-#### `inherit`
+### inherit
 
 **Type**: (menu option)
 
@@ -112,7 +108,7 @@ methods:
                no
                on
                off
-```
+``
 
 **Description**: If true this causes the sub-bundle to inherit the private
 classes of its parent
@@ -137,7 +133,6 @@ inherit => "true";
 }
 ```
 
-**Notes**:
 **History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 The `inherit` constraint can be added to the CFEngine code in two
@@ -147,15 +142,15 @@ classes of the parent bundle. Inheriting the variables is unnecessary as
 the child can always access the parent's variables by a qualified
 reference using its bundle name. For example: \$(bundle.variable).
 
-#### `usebundle`
+### usebundle
 
 **Type**: (ext bundle) (Separate Bundle)
 
-#### `useresult`
+### useresult
 
-**Type**: `string`
+**Type**: `string
 
-**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
+**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+
 
 **Description**: Specify the name of a local variable to contain any
 result/return value from the child
@@ -202,7 +197,6 @@ reports:
 }
 ```
 
-**Notes**:
 **History**: Was introduced in 3.4.0 (2012)
 
 Return values are limited to scalars.

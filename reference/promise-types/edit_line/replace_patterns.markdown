@@ -57,11 +57,11 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)
 -   [replace\_with in
     replace\_patterns](#replace_005fwith-in-replace_005fpatterns)
 
-#### `replace_with` (body template)
+### replace_with
 
-**Type**: (ext body)
+**Type**: `body replace_with`
 
-`occurrences`
+#### occurrences
 
 **Type**: (menu option)
 
@@ -96,7 +96,7 @@ matching string each time the promise is executed, and may not "catch
 up" with whatever external action is altering the text the promise
 applies to.   
 
-`replace_value`
+#### replace_value
 
 **Type**: `string`
 

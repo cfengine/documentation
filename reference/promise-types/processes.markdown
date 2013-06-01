@@ -239,17 +239,12 @@ out_of_range_define => "$(s)_up";
 }
 ```
 
--   [process\_count in processes](#process_005fcount-in-processes)
--   [process\_select in processes](#process_005fselect-in-processes)
--   [process\_stop in processes](#process_005fstop-in-processes)
--   [restart\_class in processes](#restart_005fclass-in-processes)
--   [signals in processes](#signals-in-processes)
 
-#### `process_count` (body template)
+### process_count
 
-**Type**: (ext body)
+**Type**: `body process_count`
 
-`in_range_define`
+#### in_range_define
 
 **Type**: `slist`
 
@@ -273,7 +268,7 @@ Classes are defined if the processes that are found in the process table
 satisfy the promised process count, in other words if the promise about
 the number of processes matching the other criteria is kept.   
 
-`match_range`
+#### match_range
 
 **Type**: irange [int,int]
 
@@ -298,7 +293,7 @@ This is a numerical range for the number of occurrences of the process
 in the process table. As long as it falls within the specified limits,
 the promise is considered kept.   
 
-`out_of_range_define`
+#### out_of_range_define
 
 **Type**: `slist`
 
@@ -321,11 +316,11 @@ the promise is considered kept.
 Classes to activate remedial promises conditional on this promise
 failure to be kept.
 
-#### `process_select` (body template)
+### process_select
 
-**Type**: (ext body)
+**Type**: `body process_select`
 
-`command`
+#### command
 
 **Type**: `string`
 
@@ -354,7 +349,7 @@ table, not just a fragment. This field is usually the last field on the
 line, so it thus starts with the first non-space character and ends with
 the end of line.   
 
-`pid`
+#### pid
 
 **Type**: irange [int,int]
 
@@ -378,7 +373,7 @@ the end of line.
    
    
 
-`pgid`
+#### pgid
 
 **Type**: irange [int,int]
 
@@ -403,7 +398,7 @@ process
    
    
 
-`ppid`
+#### ppid
 
 **Type**: irange [int,int]
 
@@ -428,7 +423,7 @@ process
    
    
 
-`priority`
+#### priority
 
 **Type**: irange [int,int]
 
@@ -452,7 +447,7 @@ a process
    
    
 
-`process_owner`
+#### process_owner
 
 **Type**: `slist`
 
@@ -477,7 +472,7 @@ regex is anchored, meaning it must match the entire name (see [Anchored
 vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
 
-`process_result`
+#### process_result
 
 **Type**: `string`
 
@@ -508,7 +503,7 @@ A logical combination of the process selection classifiers. The syntax
 is the same as that for class expressions. There should be no spaces in
 the expressions.   
 
-`rsize`
+#### rsize
 
 **Type**: irange [int,int]
 
@@ -529,11 +524,7 @@ process, in kilobytes
      
 ```
 
-**Notes**:  
-   
-   
-
-`status`
+#### status
 
 **Type**: `string`
 
@@ -556,7 +547,7 @@ process, in kilobytes
 For instance, characters in the set NRSsl+... Windows processes do not
 have status fields.   
 
-`stime_range`
+#### stime_range
 
 **Type**: irange [int,int]
 
@@ -580,7 +571,7 @@ The calculation of time from process table entries is sensitive to
 Daylight Savings Time (Summer/Winter Time) so calculations could be an
 hour off. This is for now a bug to be fixed.   
 
-`ttime_range`
+#### ttime_range
 
 **Type**: irange [int,int]
 
@@ -603,7 +594,7 @@ process
 **Notes**:
 This is total accumulated time for a process.   
 
-`tty`
+#### tty
 
 **Type**: `string`
 
@@ -626,7 +617,7 @@ This is total accumulated time for a process.
 Windows processes are not regarded as attached to any terminal, so they
 all have tty '?'.   
 
-`threads`
+#### threads
 
 **Type**: irange [int,int]
 
@@ -646,11 +637,7 @@ process
      
 ```
 
-**Notes**:  
-   
-   
-
-`vsize`
+#### vsize
 
 **Type**: irange [int,int]
 
@@ -675,7 +662,7 @@ On Windows, the virtual memory size is the amount of memory that cannot
 be shared with other processes. In Task Manager, this is called Commit
 Size (Windows 2008), or VM Size (Windows XP).
 
-#### `process_stop`
+### process_stop
 
 **Type**: `string`
 
@@ -698,7 +685,7 @@ processes:
 As an alternative to sending a termination or kill signal to a process,
 one may call a 'stop script' to perform a graceful shutdown.
 
-#### `restart_class`
+### restart_class
 
 **Type**: `string`
 
@@ -736,7 +723,7 @@ background to true in a commands promise that is invoked by the class
 set by restart\_class. See the commands promise type for more
 information.
 
-#### `signals`
+### signals
 
 **Type**: (option list)
 

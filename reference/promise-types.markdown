@@ -38,11 +38,11 @@ available attributes.
 
 The following attributes are available to all promise types.
 
-#### `action` (body template)
+### action
 
-**Type**: (ext body)
+**Type**: `body action`
 
-`action_policy`
+#### action_policy
 
 **Type**: (menu option)
 
@@ -144,7 +144,7 @@ Instead of
 In either case, no changes will be made to the disk, but the messages
 given by `cf-agent` will differ.   
 
-`ifelapsed`
+#### ifelapsed
 
 **Type**: `int`
 
@@ -184,7 +184,7 @@ to a specific time.
      
 ```
 
-`expireafter`
+#### expireafter
 
 **Type**: `int`
 
@@ -206,7 +206,7 @@ CFEngine will attempt to kill and restart its attempt to keep a promise.
      }
 ```
 
-
+#### log_string_
 
 **Type**: `string`
 
@@ -247,7 +247,7 @@ log message, indicating the origin of the message. In CFEngine Enterprise,
 every promise has a default handle, which is based on the filename 
 and line number (specifying your own handle will probably be more mnemonic).
 
-`log_level`
+#### log_level
 
 **Type**: (menu option)
 
@@ -282,7 +282,7 @@ log.
      
 ```
 
-`log_kept`
+#### log_kept
 
 **Type**: `string`
 
@@ -330,7 +330,7 @@ Attempt to connect to the `syslog_server` defined in body common control and
 log the message there, assuming the server is configured to receive the 
 request.
 
-`log_priority`
+#### log_priority
 
 **Type**: (menu option)
 
@@ -360,7 +360,7 @@ importance of messages from CFEngine.
      }
 ```
 
-`log_repaired`
+#### log_repaired
 
 **Type**: `string`
 
@@ -419,7 +419,7 @@ Attempt to connect to the `syslog_server` defined in body common control
 and log the message there, assuming the server is configured to receive 
 the request.
 
-`log_failed`
+#### log_failed
 
 **Type**: `string`
 
@@ -480,7 +480,7 @@ Attempt to connect to the `syslog_server` defined in body common control
 and log the message there, assuming the server is configured to receive 
 the request.
 
-`value_kept`
+#### value_kept
 
 **Type**: `real`
 
@@ -505,7 +505,7 @@ on track\_value = "true".
      
 ```
 
-`value_repaired`
+#### value_repaired
 
 **Type**: `real`
 
@@ -530,7 +530,7 @@ switched on track\_value = "true".
      
 ```
 
-`value_notkept`
+#### value_notkept
 
 **Type**: `real`
 
@@ -556,7 +556,7 @@ body switched on track\_value = "true".
 ```
 
 
-`audit`
+#### audit
 
 **Type**: (menu option)
 
@@ -592,7 +592,7 @@ database.
      
 ```
 
-`background`
+#### background
 
 **Type**: (menu option)
 
@@ -633,7 +633,7 @@ performed in the background on Windows.
      
 ```
 
-`report_level`
+#### report_level
 
 **Type**: (menu option)
 
@@ -667,7 +667,7 @@ less).
 ```
 
 
-`measurement_class`
+#### measurement_class
 
 **Type**: `string`
 
@@ -697,12 +697,12 @@ The identifier forms a partial identity for optional performance scanning of pro
 ```
 
 
-#### `classes` (body template)
+### classes
 
-**Type**: (ext body)
+**Type**: `body classes`
 
 
-`promise_repaired`
+#### promise_repaired
 
 **Type**: `slist`
 
@@ -737,7 +737,7 @@ permissions. If you need separate reports, you should code two separate
 promises rather than 'overloading' a single one.   
 
 
-`repair_failed`
+#### repair_failed
 
 **Type**: `slist`
 
@@ -759,7 +759,7 @@ canonified, so it is unnecessary to call a canonify function on such inputs.
      
 ```
 
-`repair_denied`
+#### repair_denied
 
 **Type**: `slist`
 
@@ -786,7 +786,7 @@ In the above example, a promise could not be kept because access to a key
 resource was denied. 
 
 
-`repair_timeout`
+#### repair_timeout
 
 **Type**: `slist`
 
@@ -808,7 +808,7 @@ globally.
 
 In the above example, a promise maintenance repair timed-out waiting for some dependent resource.   
 
-`promise_kept`
+#### promise_kept
 
 **Type**: `slist`
 
@@ -844,7 +844,7 @@ promise\_kept for the file existence, but promise\_repaired for the
 permissions. If you need separate reports, you should code two separate 
 promises rather than 'overloading' a single one.   
 
-`cancel_kept`
+#### cancel_kept
 
 **Type**: `slist`
 
@@ -872,7 +872,7 @@ defined.
 
 **History**: This attribute was introduced in CFEngine version 3.0.4 (2010)   
 
-`cancel_repaired`
+#### cancel_repaired
 
 **Type**: `slist`
 
@@ -900,7 +900,7 @@ no longer defined.
 
 **History**: This attribute was introduced in CFEngine version 3.0.4 (2010)   
 
-`cancel_notkept`
+#### cancel_notkept
 
 **Type**: `slist`
 
@@ -928,7 +928,7 @@ defined.
 
 **History**: This attribute was introduced in CFEngine version 3.0.4 (2010)   
 
-`kept_returncodes`
+#### kept_returncodes
 
 **Type**: `slist`
 
@@ -981,7 +981,7 @@ usually in the range from 0 to 255.
 
 **History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
-`repaired_returncodes`
+#### repaired_returncodes
 
 **Type**: `slist`
 
@@ -1033,7 +1033,7 @@ in the range from 0 to 255.
 
 **History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
-`failed_returncodes`
+#### failed_returncodes
 
 **Type**: `slist`
 
@@ -1101,7 +1101,7 @@ the range from 0 to 255.
 
 **History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
-`persist_time`
+#### persist_time
 
 **Type**: `int`
 
@@ -1123,7 +1123,7 @@ time, they can last even when the agent is not running.
      
 ```
 
-`timer_policy`
+#### timer_policy
 
 **Type**: (menu option)
 
@@ -1153,7 +1153,7 @@ duration as a rare event then an absolute time limit is useful.
      
 ```
 
-#### `comment`
+### comment
 
 **Type**: `string`
 
@@ -1169,7 +1169,7 @@ discarded; they appear in reports and error messages.
 comment => "This comment follows the data for reference ...",
 ```
 
-#### `depends_on`
+### depends_on
 
 **Type**: `slist`
 
@@ -1213,7 +1213,7 @@ reports:
 
 ```
 
-#### `handle`
+### handle
 
 **Type**: `string`
 
@@ -1244,7 +1244,7 @@ access:
 fails to expand, the handle will be based on the name of the variable
 rather than its content.
 
-#### `ifvarclass`
+### ifvarclass
 
 **Type**: `string`
 
@@ -1319,7 +1319,7 @@ Notice that the function `canonify()` is provided to convert a general variable
 input into a string composed only of legal characters, using the same algorithm 
 that CFEngine uses.
 
-#### `meta`
+### meta
 
 **Type**: `slist`
 
@@ -1346,4 +1346,3 @@ files:
 ```
 
 **History**: Was introduced in 3.3.0, Nova 2.2.0 (2012)
-s
