@@ -7,14 +7,12 @@ alias: reference-functions-sum.html
 tags: [reference, functions, sum]
 ---
 
-
-
-**Prototype**: sum(arg1) 
+**Prototype**: `sum(list)`
 
 **Return type**: `real`
 
   
- *arg1* : A list of arbitrary real values, *in the range*
+ *list* : A list of arbitrary real values, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+   
 
 Return the sum of a list of reals
@@ -25,29 +23,29 @@ Return the sum of a list of reals
 ```cf3
 body common control
 {
-bundlesequence => { "test" };
+  bundlesequence => { "test" };
 }
 
 ##############################
 
 bundle agent test
 {
-vars:
-  "adds_to_six" ilist => { "1", "2", "3" };
-  "six" real => sum("adds_to_six");
-  "adds_to_zero" rlist => { "1.0", "2", "-3e0" };
-  "zero" real => sum("adds_to_zero");
+  vars:
+      "adds_to_six" ilist => { "1", "2", "3" };
+      "six" real => sum("adds_to_six");
+      "adds_to_zero" rlist => { "1.0", "2", "-3e0" };
+      "zero" real => sum("adds_to_zero");
 
-reports:
-  cfengine_3::
-    "six is $(six), zero is $(zero)";
+  reports:
+    cfengine_3::
+      "six is $(six), zero is $(zero)";
 }
 ```
 
 Because `$(six)` and `$(zero)` are both real numbers, the report that is
 generated will be:
 
-```cf3
+```
 six is 6.000000, zero is 0.000000
 ```
 
