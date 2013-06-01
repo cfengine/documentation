@@ -7,7 +7,7 @@ alias: reference-functions-usemodule.html
 tags: [reference, functions, usemodule]
 ---
 
-**Prototype**: `usemodule(name,args)`
+**Prototype**: `usemodule(name, args)`
 
 **Return type**: `class`
 

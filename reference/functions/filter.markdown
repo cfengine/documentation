@@ -7,7 +7,7 @@ alias: reference-functions-filter.html
 tags: [reference, functions, filter]
 ---
 
-**Prototype**: `filter(filter,list,is_regex,invert,max_return)`
+**Prototype**: `filter(filter, list, is_regex, invert, max_return)`
 
 **Return type**: `slist`
 

@@ -7,7 +7,7 @@ alias: reference-functions-strftime.html
 tags: [reference, functions, strftime]
 ---
 
-**Prototype**: `strftime(mode,template,time)`
+**Prototype**: `strftime(mode, template, time)`
 
 **Return type**: `string`
 

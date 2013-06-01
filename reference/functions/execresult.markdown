@@ -7,7 +7,7 @@ alias: reference-functions-execresult.html
 tags: [reference, functions, execresult]
 ---
 
-**Prototype**: `execresult(command,shell)` 
+**Prototype**: `execresult(command, shell)` 
 
 **Return type**: `string`
 
