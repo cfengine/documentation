@@ -9,7 +9,7 @@ tags: [reference, functions, regextract]
 
 
 
-**Synopsis**: regextract(arg1,arg2,arg3) 
+**Prototype**: regextract(arg1,arg2,arg3) 
 
 **Return type**: `class`
 

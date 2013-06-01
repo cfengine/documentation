@@ -9,7 +9,7 @@ tags: [reference, functions, join]
 
 
 
-**Synopsis**: join(arg1,arg2) 
+**Prototype**: join(arg1,arg2) 
 
 **Return type**: `string`
 

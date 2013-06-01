@@ -9,7 +9,7 @@ tags: [reference, functions, "on"]
 
 
 
-**Synopsis**: on(arg1,arg2,arg3,arg4,arg5,arg6) 
+**Prototype**: on(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**: `int`
 

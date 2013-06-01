@@ -9,7 +9,7 @@ tags: [reference, functions, intersection]
 
 
 
-**Synopsis**: intersection(arg1,arg2) 
+**Prototype**: intersection(arg1,arg2) 
 
 **Return type**: `slist`
 

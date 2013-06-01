@@ -9,7 +9,7 @@ tags: [reference, functions, product]
 
 
 
-**Synopsis**: product(arg1) 
+**Prototype**: product(arg1) 
 
 **Return type**: `real`
 

@@ -9,7 +9,7 @@ tags: [reference, functions, splayclass]
 
 
 
-**Synopsis**: splayclass(arg1,arg2) 
+**Prototype**: splayclass(arg1,arg2) 
 
 **Return type**: `class`
 

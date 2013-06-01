@@ -7,7 +7,7 @@ alias: reference-functions-countlinesmatching.html
 tags: [reference, functions, countlinesmatching]
 ---
 
-**Synopsis**: `countlinesmatching(regex, filename)`
+**Prototype**: `countlinesmatching(regex, filename)`
 
 **Return type**: `int`
 

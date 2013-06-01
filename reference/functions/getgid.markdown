@@ -9,7 +9,7 @@ tags: [reference, functions, getgid]
 
 
 
-**Synopsis**: getgid(arg1) 
+**Prototype**: getgid(arg1) 
 
 **Return type**: `int`
 

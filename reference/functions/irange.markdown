@@ -9,7 +9,7 @@ tags: [reference, functions, irange]
 
 
 
-**Synopsis**: irange(arg1,arg2) 
+**Prototype**: irange(arg1,arg2) 
 
 **Return type**:
  **irange [int,int]**

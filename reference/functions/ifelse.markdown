@@ -9,7 +9,7 @@ tags: [reference, functions, ifelse]
 
 
 
-**Synopsis**: ifelse(...) 
+**Prototype**: ifelse(...) 
 
 **Return type**: `string`
 

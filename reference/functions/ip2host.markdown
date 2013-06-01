@@ -9,7 +9,7 @@ tags: [reference, functions, ip2host]
 
 
 
-**Synopsis**: ip2host(arg1) 
+**Prototype**: ip2host(arg1) 
 
 **Return type**: `string`
 

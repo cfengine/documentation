@@ -7,7 +7,7 @@ alias: reference-functions-changedbefore.html
 tags: [reference, functions, changedbefore]
 ---
 
-**Synopsis**: `changedbefore(newer, older)`
+**Prototype**: `changedbefore(newer, older)`
 
 **Return type**: `class`
 

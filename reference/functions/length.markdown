@@ -9,7 +9,7 @@ tags: [reference, functions, length]
 
 
 
-**Synopsis**: length(arg1) 
+**Prototype**: length(arg1) 
 
 **Return type**: `int`
 

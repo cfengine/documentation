@@ -9,7 +9,7 @@ tags: [reference, functions, translatepath]
 
 
 
-**Synopsis**: translatepath(arg1) 
+**Prototype**: translatepath(arg1) 
 
 **Return type**: `string`
 

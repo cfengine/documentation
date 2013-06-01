@@ -7,7 +7,7 @@ alias: reference-functions-filestat.html
 tags: [reference, functions, filestat]
 ---
 
-**Synopsis**: `filestat(filename, field)`
+**Prototype**: `filestat(filename, field)`
 
 **Return type**: `string`
 

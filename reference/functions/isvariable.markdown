@@ -9,7 +9,7 @@ tags: [reference, functions, isvariable]
 
 
 
-**Synopsis**: isvariable(arg1) 
+**Prototype**: isvariable(arg1) 
 
 **Return type**: `class`
 

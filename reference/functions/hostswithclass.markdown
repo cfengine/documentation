@@ -11,7 +11,7 @@ tags: [reference, functions, hostswithclass]
 
 
 
-**Synopsis**: hostswithclass(arg1,arg2) 
+**Prototype**: hostswithclass(arg1,arg2) 
 
 **Return type**: `slist`
 

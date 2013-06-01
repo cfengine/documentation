@@ -9,7 +9,7 @@ tags: [reference, functions, host2ip]
 
 
 
-**Synopsis**: host2ip(arg1) 
+**Prototype**: host2ip(arg1) 
 
 **Return type**: `string`
 

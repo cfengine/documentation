@@ -9,7 +9,7 @@ tags: [reference, functions, nth]
 
 
 
-**Synopsis**: nth(arg1,arg2) 
+**Prototype**: nth(arg1,arg2) 
 
 **Return type**: `string`
 

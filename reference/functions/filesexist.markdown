@@ -7,7 +7,7 @@ alias: reference-functions-filesexist.html
 tags: [reference, functions, filesexist]
 ---
 
-**Synopsis**: `filesexist(list)`
+**Prototype**: `filesexist(list)`
 
 **Return type**: `class`
 

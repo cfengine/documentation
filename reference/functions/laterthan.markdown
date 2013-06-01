@@ -9,7 +9,7 @@ tags: [reference, functions, laterthan]
 
 
 
-**Synopsis**: laterthan(arg1,arg2,arg3,arg4,arg5,arg6) 
+**Prototype**: laterthan(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**:
 

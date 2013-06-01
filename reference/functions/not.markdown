@@ -9,7 +9,7 @@ tags: [reference, functions, not]
 
 
 
-**Synopsis**: not(arg1) 
+**Prototype**: not(arg1) 
 
 **Return type**: `string`
 

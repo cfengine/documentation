@@ -7,7 +7,7 @@ alias: reference-functions-concat.html
 tags: [reference, functions, concat]
 ---
 
-**Synopsis**: `concat(...)`
+**Prototype**: `concat(...)`
 
 **Return type**: `string`
 

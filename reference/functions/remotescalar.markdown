@@ -9,7 +9,7 @@ tags: [reference, functions, remotescalar]
 
 
 
-**Synopsis**: remotescalar(arg1,arg2,arg3) 
+**Prototype**: remotescalar(arg1,arg2,arg3) 
 
 **Return type**: `string`
 

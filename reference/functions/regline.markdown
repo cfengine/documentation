@@ -9,7 +9,7 @@ tags: [reference, functions, regline]
 
 
 
-**Synopsis**: regline(arg1,arg2) 
+**Prototype**: regline(arg1,arg2) 
 
 **Return type**: `class`
 

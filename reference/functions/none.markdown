@@ -9,7 +9,7 @@ tags: [reference, functions, none]
 
 
 
-**Synopsis**: none(arg1,arg2) 
+**Prototype**: none(arg1,arg2) 
 
 **Return type**: `class`
 

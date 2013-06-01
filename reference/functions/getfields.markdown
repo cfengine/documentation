@@ -9,7 +9,7 @@ tags: [reference, functions, getfields]
 
 
 
-**Synopsis**: getfields(arg1,arg2,arg3,arg4) 
+**Prototype**: getfields(arg1,arg2,arg3,arg4) 
 
 **Return type**: `int`
 

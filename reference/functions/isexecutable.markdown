@@ -9,7 +9,7 @@ tags: [reference, functions, isexecutable]
 
 
 
-**Synopsis**: isexecutable(arg1) 
+**Prototype**: isexecutable(arg1) 
 
 **Return type**: `class`
 

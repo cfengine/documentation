@@ -9,7 +9,7 @@ tags: [reference, functions, islink]
 
 
 
-**Synopsis**: islink(arg1) 
+**Prototype**: islink(arg1) 
 
 **Return type**: `class`
 

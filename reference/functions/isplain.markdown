@@ -9,7 +9,7 @@ tags: [reference, functions, isplain]
 
 
 
-**Synopsis**: isplain(arg1) 
+**Prototype**: isplain(arg1) 
 
 **Return type**: `class`
 

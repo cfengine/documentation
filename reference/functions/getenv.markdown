@@ -9,7 +9,7 @@ tags: [reference, functions, getenv]
 
 
 
-**Synopsis**: getenv(arg1,arg2) 
+**Prototype**: getenv(arg1,arg2) 
 
 **Return type**: `string`
 

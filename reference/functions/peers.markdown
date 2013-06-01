@@ -9,7 +9,7 @@ tags: [reference, functions, peers]
 
 
 
-**Synopsis**: peers(arg1,arg2,arg3) 
+**Prototype**: peers(arg1,arg2,arg3) 
 
 **Return type**: `slist`
 

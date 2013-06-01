@@ -9,7 +9,7 @@ tags: [reference, functions, getindices]
 
 
 
-**Synopsis**: getindices(arg1) 
+**Prototype**: getindices(arg1) 
 
 **Return type**: `slist`
 

@@ -9,7 +9,7 @@ tags: [reference, functions, randomint]
 
 
 
-**Synopsis**: randomint(arg1,arg2) 
+**Prototype**: randomint(arg1,arg2) 
 
 **Return type**: `int`
 

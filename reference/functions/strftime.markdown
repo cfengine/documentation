@@ -9,7 +9,7 @@ tags: [reference, functions, strftime]
 
 
 
-**Synopsis**: strftime(arg1,arg2) 
+**Prototype**: strftime(arg1,arg2) 
 
 **Return type**: `string`
 

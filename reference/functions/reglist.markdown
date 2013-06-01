@@ -9,7 +9,7 @@ tags: [reference, functions, reglist]
 
 
 
-**Synopsis**: reglist(arg1,arg2) 
+**Prototype**: reglist(arg1,arg2) 
 
 **Return type**: `class`
 

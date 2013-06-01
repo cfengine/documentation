@@ -9,7 +9,7 @@ tags: [reference, functions, readtcp]
 
 
 
-**Synopsis**: readtcp(arg1,arg2,arg3,arg4) 
+**Prototype**: readtcp(arg1,arg2,arg3,arg4) 
 
 **Return type**: `string`
 

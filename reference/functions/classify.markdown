@@ -7,7 +7,7 @@ alias: reference-functions-classify.html
 tags: [reference, functions, classify]
 ---
 
-**Synopsis**: `classify(text)`
+**Prototype**: `classify(text)`
 
 **Return type**: `class`
 

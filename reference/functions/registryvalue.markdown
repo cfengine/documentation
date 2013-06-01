@@ -9,7 +9,7 @@ tags: [reference, functions, registryvalue]
 
 
 
-**Synopsis**: registryvalue(arg1,arg2) 
+**Prototype**: registryvalue(arg1,arg2) 
 
 **Return type**: `string`
 

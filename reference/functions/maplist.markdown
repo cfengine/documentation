@@ -9,7 +9,7 @@ tags: [reference, functions, maplist]
 
 
 
-**Synopsis**: maplist(arg1,arg2) 
+**Prototype**: maplist(arg1,arg2) 
 
 **Return type**: `slist`
 

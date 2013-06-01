@@ -9,7 +9,7 @@ tags: [reference, functions, sort]
 
 
 
-**Synopsis**: sort(arg1,arg2) 
+**Prototype**: sort(arg1,arg2) 
 
 **Return type**: `slist`
 

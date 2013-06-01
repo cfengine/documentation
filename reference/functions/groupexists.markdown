@@ -9,7 +9,7 @@ tags: [reference, functions, groupexists]
 
 
 
-**Synopsis**: groupexists(arg1) 
+**Prototype**: groupexists(arg1) 
 
 **Return type**: `class`
 

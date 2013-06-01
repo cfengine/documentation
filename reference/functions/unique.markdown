@@ -9,7 +9,7 @@ tags: [reference, functions, unique]
 
 
 
-**Synopsis**: unique(arg1) 
+**Prototype**: unique(arg1) 
 
 **Return type**: `slist`
 

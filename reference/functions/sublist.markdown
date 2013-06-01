@@ -9,7 +9,7 @@ tags: [reference, functions, sublist]
 
 
 
-**Synopsis**: sublist(arg1,arg2,arg3) 
+**Prototype**: sublist(arg1,arg2,arg3) 
 
 **Return type**: `slist`
 

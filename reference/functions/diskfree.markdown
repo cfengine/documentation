@@ -7,7 +7,7 @@ alias: reference-functions-diskfree.html
 tags: [reference, functions, diskfree]
 ---
 
-**Synopsis**: `diskfree(path)`
+**Prototype**: `diskfree(path)`
 
 **Return type**: `int`
 

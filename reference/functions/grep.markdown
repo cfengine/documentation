@@ -9,7 +9,7 @@ tags: [reference, functions, grep]
 
 
 
-**Synopsis**: grep(arg1,arg2) 
+**Prototype**: grep(arg1,arg2) 
 
 **Return type**: `slist`
 

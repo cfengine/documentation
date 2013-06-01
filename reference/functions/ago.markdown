@@ -7,7 +7,7 @@ alias: reference-functions-ago.html
 tags: [reference, functions, ago]
 ---
 
-**Synopsis**: `ago(years, months, days, hours, minutes, seconds)`
+**Prototype**: `ago(years, months, days, hours, minutes, seconds)`
 
 **Return type**: `int`
 

@@ -9,7 +9,7 @@ tags: [reference, functions, islessthan]
 
 
 
-**Synopsis**: islessthan(arg1,arg2) 
+**Prototype**: islessthan(arg1,arg2) 
 
 **Return type**: `class`
 

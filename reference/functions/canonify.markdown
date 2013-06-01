@@ -7,7 +7,7 @@ alias: reference-functions-canonify.html
 tags: [reference, functions, canonify]
 ---
 
-**Synopsis**: `canonify(text)`
+**Prototype**: `canonify(text)`
 
 **Return type**: `string`
 

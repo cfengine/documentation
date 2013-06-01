@@ -9,7 +9,7 @@ tags: [reference, functions, hostsseen]
 
 
 
-**Synopsis**: hostsseen(arg1,arg2,arg3) 
+**Prototype**: hostsseen(arg1,arg2,arg3) 
 
 **Return type**: `slist`
 

@@ -9,7 +9,7 @@ tags: [reference, functions, isdir]
 
 
 
-**Synopsis**: isdir(arg1) 
+**Prototype**: isdir(arg1) 
 
 **Return type**: `class`
 

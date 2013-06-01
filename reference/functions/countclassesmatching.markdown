@@ -7,7 +7,7 @@ alias: reference-functions-countclassesmatching.html
 tags: [reference, functions, countclassesmatching]
 ---
 
-**Synopsis**: `countclassesmatching(regex)`
+**Prototype**: `countclassesmatching(regex)`
 
 **Return type**: `int`
 

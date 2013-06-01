@@ -11,7 +11,7 @@ tags: [reference, functions, hubknowledge]
 
 
 
-**Synopsis**: hubknowledge(arg1) 
+**Prototype**: hubknowledge(arg1) 
 
 **Return type**: `string`
 

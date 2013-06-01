@@ -9,7 +9,7 @@ tags: [reference, functions, userexists]
 
 
 
-**Synopsis**: userexists(arg1) 
+**Prototype**: userexists(arg1) 
 
 **Return type**: `class`
 

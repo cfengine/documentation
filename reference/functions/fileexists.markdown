@@ -7,7 +7,7 @@ alias: reference-functions-fileexists.html
 tags: [reference, functions, fileexists]
 ---
 
-**Synopsis**: `fileexists(filename)`
+**Prototype**: `fileexists(filename)`
 
 **Return type**: `class`
 

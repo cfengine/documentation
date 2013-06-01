@@ -11,7 +11,7 @@ tags: [reference, functions, remoteclassesmatching]
 
 
 
-**Synopsis**: remoteclassesmatching(arg1,arg2,arg3,arg4) 
+**Prototype**: remoteclassesmatching(arg1,arg2,arg3,arg4) 
 
 **Return type**: `class`
 

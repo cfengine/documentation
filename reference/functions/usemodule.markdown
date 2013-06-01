@@ -9,7 +9,7 @@ tags: [reference, functions, usemodule]
 
 
 
-**Synopsis**: usemodule(arg1,arg2) 
+**Prototype**: usemodule(arg1,arg2) 
 
 **Return type**: `class`
 

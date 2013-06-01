@@ -9,7 +9,7 @@ tags: [reference, functions, or]
 
 
 
-**Synopsis**: or(...) 
+**Prototype**: or(...) 
 
 **Return type**: `string`
 

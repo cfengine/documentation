@@ -7,7 +7,7 @@ alias: reference-functions-every.html
 tags: [reference, functions, every]
 ---
 
-**Synopsis**: `every(regex,list)`
+**Prototype**: `every(regex,list)`
 
 **Return type**: `class`
 

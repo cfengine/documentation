@@ -9,7 +9,7 @@ tags: [reference, functions, getusers]
 
 
 
-**Synopsis**: getusers(arg1,arg2) 
+**Prototype**: getusers(arg1,arg2) 
 
 **Return type**: `slist`
 

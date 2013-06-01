@@ -9,7 +9,7 @@ tags: [reference, functions, now]
 
 
 
-**Synopsis**: now() 
+**Prototype**: now() 
 
 **Return type**: `int`
 

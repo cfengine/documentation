@@ -7,7 +7,7 @@ alias: reference-functions-filesize.html
 tags: [reference, functions, filesize]
 ---
 
-**Synopsis**: `filesize(filename)`
+**Prototype**: `filesize(filename)`
 
 **Return type**: `int`
 

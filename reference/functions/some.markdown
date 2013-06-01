@@ -9,7 +9,7 @@ tags: [reference, functions, some]
 
 
 
-**Synopsis**: some(arg1,arg2) 
+**Prototype**: some(arg1,arg2) 
 
 **Return type**: `class`
 

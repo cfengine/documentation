@@ -11,7 +11,7 @@ tags: [reference, functions, ldaparray]
 
 
 
-**Synopsis**: ldaparray(arg1,arg2,arg3,arg4,arg5,arg6) 
+**Prototype**: ldaparray(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**:
 

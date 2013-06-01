@@ -9,7 +9,7 @@ tags: [reference, functions, isnewerthan]
 
 
 
-**Synopsis**: isnewerthan(arg1,arg2) 
+**Prototype**: isnewerthan(arg1,arg2) 
 
 **Return type**: `class`
 

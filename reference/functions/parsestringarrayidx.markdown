@@ -9,7 +9,7 @@ tags: [reference, functions, parsestringarrayidx]
 
 
 
-**Synopsis**: parsestringarrayidx(arg1,arg2,arg3,arg4,arg5,arg6)
+**Prototype**: parsestringarrayidx(arg1,arg2,arg3,arg4,arg5,arg6)
 
 **Return type**: `int`
 

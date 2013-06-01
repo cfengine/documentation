@@ -9,7 +9,7 @@ tags: [reference, functions, hash]
 
 
 
-**Synopsis**: hash(arg1,arg2) 
+**Prototype**: hash(arg1,arg2) 
 
 **Return type**: `string`
 

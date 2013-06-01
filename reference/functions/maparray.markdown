@@ -9,7 +9,7 @@ tags: [reference, functions, maparray]
 
 
 
-**Synopsis**: maparray(arg1,arg2) 
+**Prototype**: maparray(arg1,arg2) 
 
 **Return type**: `slist`
 

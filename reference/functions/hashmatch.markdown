@@ -9,7 +9,7 @@ tags: [reference, functions, hashmatch]
 
 
 
-**Synopsis**: hashmatch(arg1,arg2,arg3) 
+**Prototype**: hashmatch(arg1,arg2,arg3) 
 
 **Return type**: `class`
 

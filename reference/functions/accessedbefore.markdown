@@ -7,7 +7,7 @@ alias: reference-functions-accessedbefore.html
 tags: [reference, functions, accessedbefore]
 ---
 
-**Synopsis**: `accessedbefore(newer, older)`
+**Prototype**: `accessedbefore(newer, older)`
 
 **Return type**: `class`
 

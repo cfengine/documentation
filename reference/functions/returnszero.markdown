@@ -9,7 +9,7 @@ tags: [reference, functions, returnszero]
 
 
 
-**Synopsis**: returnszero(arg1,arg2) 
+**Prototype**: returnszero(arg1,arg2) 
 
 **Return type**: `class`
 

@@ -9,7 +9,7 @@ tags: [reference, functions, sum]
 
 
 
-**Synopsis**: sum(arg1) 
+**Prototype**: sum(arg1) 
 
 **Return type**: `real`
 

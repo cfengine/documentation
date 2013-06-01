@@ -9,7 +9,7 @@ tags: [reference, functions, iprange]
 
 
 
-**Synopsis**: iprange(arg1) 
+**Prototype**: iprange(arg1) 
 
 **Return type**: `class`
 

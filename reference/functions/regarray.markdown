@@ -9,7 +9,7 @@ tags: [reference, functions, regarray]
 
 
 
-**Synopsis**: regarray(arg1,arg2) 
+**Prototype**: regarray(arg1,arg2) 
 
 **Return type**: `class`
 

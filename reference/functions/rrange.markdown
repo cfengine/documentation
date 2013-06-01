@@ -9,7 +9,7 @@ tags: [reference, functions, rrange]
 
 
 
-**Synopsis**: rrange(arg1,arg2) 
+**Prototype**: rrange(arg1,arg2) 
 
 **Return type**: `rrange [real,real]``
 

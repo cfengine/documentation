@@ -9,7 +9,7 @@ tags: [reference, functions, strcmp]
 
 
 
-**Synopsis**: strcmp(arg1,arg2) 
+**Prototype**: strcmp(arg1,arg2) 
 
 **Return type**: `class`
 

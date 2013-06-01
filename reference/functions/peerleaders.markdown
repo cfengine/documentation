@@ -9,7 +9,7 @@ tags: [reference, functions, peerleaders]
 
 
 
-**Synopsis**: peerleaders(arg1,arg2,arg3) 
+**Prototype**: peerleaders(arg1,arg2,arg3) 
 
 **Return type**: `slist`
 

@@ -7,7 +7,7 @@ alias: reference-functions-difference.html
 tags: [reference, functions, difference]
 ---
 
-**Synopsis**: `difference(list1, list2)`
+**Prototype**: `difference(list1, list2)`
 
 **Return type**: `slist`
 

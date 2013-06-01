@@ -9,7 +9,7 @@ tags: [reference, functions, splitstring]
 
 
 
-**Synopsis**: splitstring(arg1,arg2,arg3) 
+**Prototype**: splitstring(arg1,arg2,arg3) 
 
 **Return type**: `slist`
 

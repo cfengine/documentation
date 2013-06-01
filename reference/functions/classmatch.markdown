@@ -7,7 +7,7 @@ alias: reference-functions-classmatch.html
 tags: [reference, functions, classmatch]
 ---
 
-**Synopsis**: `classmatch(regex)`
+**Prototype**: `classmatch(regex)`
 
 **Return type**: `class`
 

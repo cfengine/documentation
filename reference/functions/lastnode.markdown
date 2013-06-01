@@ -9,7 +9,7 @@ tags: [reference, functions, lastnode]
 
 
 
-**Synopsis**: lastnode(arg1,arg2) 
+**Prototype**: lastnode(arg1,arg2) 
 
 **Return type**: `string`
 

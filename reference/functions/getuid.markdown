@@ -9,7 +9,7 @@ tags: [reference, functions, getuid]
 
 
 
-**Synopsis**: getuid(arg1) 
+**Prototype**: getuid(arg1) 
 
 **Return type**: `int`
 

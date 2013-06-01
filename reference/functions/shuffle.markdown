@@ -9,7 +9,7 @@ tags: [reference, functions, shuffle]
 
 
 
-**Synopsis**: shuffle(arg1,arg2) 
+**Prototype**: shuffle(arg1,arg2) 
 
 **Return type**: `slist`
 

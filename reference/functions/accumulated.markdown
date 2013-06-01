@@ -7,7 +7,7 @@ alias: reference-functions-accumulated.html
 tags: [reference, functions, accumulated]
 ---
 
-**Synopsis**: `accumulated(years, months, days, hours, minutes, seconds)`
+**Prototype**: `accumulated(years, months, days, hours, minutes, seconds)`
 
 **Return type**: `int`
 
