@@ -12,7 +12,8 @@ All Design Center sketches consists of at least two files:
 * sketch.json
 * main.cf
 
-There might be additional supporting files for testing and additional CFEngine policy files (*.cf) for more advanced sketches.
+There might be additional supporting files for testing and additional CFEngine 
+policy files (*.cf) for more advanced sketches.
 
 ## sketch.json
 
@@ -57,15 +58,22 @@ sketch. A minimal sketch.json file contains the following attributes:
 
 ### CFEngine Enterprise Compatibility
 
-For a sketch to work well with the CFEngine Enterprise Design Center graphical user interface (GUI), all of the above attributes must be specified. Some additional requirements are noted below.
+For a sketch to work well with the CFEngine Enterprise Design Center graphical 
+user interface (GUI), all of the above attributes must be specified. Some 
+additional requirements are noted below.
 
-The `enterprise_compatible` tag must be set, otherwise it will not show up as an available sketch in the GUI.
+The `enterprise_compatible` tag must be set, otherwise it will not show up as 
+an available sketch in the GUI.
 
 All items in api.bundlename:
 
-* any element that takes input (exluding e.g. runenv and metadata) must have `type` either `string` or `list` (support for more types will be added in the future)
-* `validation` must be a validation that has been defined in the API (living either in `constdata.conf` or `vardata.conf`)
-* the referenced validation must only use `minimum_value`, `maximum_value`, or `valid_regex`
+* any element that takes input (exluding e.g. runenv and metadata) must have 
+`type` either `string` or `list` (support for more types will be added in the 
+future)
+* `validation` must be a validation that has been defined in the API (living 
+either in `constdata.conf` or `vardata.conf`)
+* the referenced validation must only use `minimum_value`, `maximum_value`, or 
+`valid_regex`
 
 
 ## main.cf

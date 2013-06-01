@@ -14,13 +14,14 @@ Version: 0.0.1-1
 The Design Center API (DC API or just API henceforth) is a simple JSON-based
 protocol for communicating with the Design Center backend.  The backend may be
 running locally or remotely; the API makes no assumptions about the transport
-channel and is entirely a line-based text protocol consisting of *one* JSON line
-each way.
+channel and is entirely a line-based text protocol consisting of *one* JSON 
+line each way.
 
 The API client makes a request and gets a response over the same channel.
-Again, the request and the response can only be a single line of text, ended by
-the transport channel's standard line-ending sequence, e.g. CRLF for HTTP.  JSON
-escapes such sequences so they should not happen anywhere in the payloads.
+Again, the request and the response can only be a single line of text, ended 
+by the transport channel's standard line-ending sequence, e.g. CRLF for HTTP.  
+JSON escapes such sequences so they should not happen anywhere in the 
+payloads.
 
 ## Requests
 
@@ -30,10 +31,10 @@ API requests have the following general structure:
 { dc_api_version: "0.0.1", request: { ...commands... } }
 ```
 
-The version is strictly semantically versioned as *major.minor.patch*.  It must
-match exactly, so you can't have a _0.0.1_ client talking to a _0.0.2_ server
-for instance (the client has to say "0.0.2" to be usable).  We expect backwards
-compatibility, this is just a way to avoid misunderstandings.
+The version is strictly semantically versioned as *major.minor.patch*.  It 
+must match exactly, so you can't have a _0.0.1_ client talking to a _0.0.2_ 
+server for instance (the client has to say "0.0.2" to be usable).  We expect 
+backwards compatibility, this is just a way to avoid misunderstandings.
 
 **Note**: Generally, only *one* command may be specified per request.
 
@@ -128,7 +129,8 @@ Many commands take *terms*.  *Terms* are one of the following:
 
 The `list` command lists *installed* sketches.
 
-Here are examples of three `list` commands.  The first one lists everything installed.
+Here are examples of three `list` commands.  The first one lists everything 
+installed.
 
 ```json
 { dc_api_version: "0.0.1", request: {list: true } }
@@ -199,7 +201,8 @@ The next one takes *terms* and lists all the sketches whose name satisfies the
 
 #### option: describe
 
-When `describe` is given as a top-level option with a value of `true`, as in the example below, the returned data is the contents of `sketch.json`.
+When `describe` is given as a top-level option with a value of `true`, as in 
+the example below, the returned data is the contents of `sketch.json`.
 
 ```json
 { dc_api_version: "0.0.1", request: {describe: true, list: [["name", "matches", "ping"]] } }
@@ -495,7 +498,8 @@ The sketch source repository.  Must be in the API's `recognized_sources`.
 }
 ```
 
-The return data is a key-value array as follows, describing the installation details.
+The return data is a key-value array as follows, describing the installation 
+details.
 
 ```json
 {
@@ -581,7 +585,8 @@ The sketch install directory we want to clean.  Must be in the API's
 }
 ```
 
-The `inventory_save` key in the return indicates whether the inventory (`cfsketches.json`) was written successfully.
+The `inventory_save` key in the return indicates whether the inventory 
+(`cfsketches.json`) was written successfully.
 
 ### compositions
 
@@ -680,7 +685,8 @@ The `compose` command defines a composition.  It returns the same data as
 
 ### decompose
 
-The `decompose` command undefines a composition by name.  It returns the same data as `compositions`.
+The `decompose` command undefines a composition by name.  It returns the same 
+data as `compositions`.
 
 ```json
 { dc_api_version: "0.0.1", request: {decompose: "mirror_to_template_1" } }
@@ -709,7 +715,8 @@ The `decompose` command undefines a composition by name.  It returns the same da
 }
 ```
 
-(Note that Monty Python has beaten us to this joke by decades with "The Decomposing Composers.")
+(Note that Monty Python has beaten us to this joke by decades with "The 
+Decomposing Composers.")
 
 ### activations
 
