@@ -7,14 +7,20 @@ alias: reference-functions-lastnode.html
 tags: [reference, functions, lastnode]
 ---
 
-**Prototype**: `lastnode(arg1, arg2)`
+**Prototype**: `lastnode(string, separator)`
 
 **Return type**: `string`
 
-* `arg1` : Input string, *in the range* .\*
-* `arg2` : Link separator, e.g. /,:, *in the range* .\*
+**Description**: Returns the part of `string` after the last `separator`.
 
-Extract the last of a separated string, e.g. filename from a path
+This function returns the final node in a chain, given a regular
+expression to split on. This is mainly useful for finding leaf-names of
+files, from a fully qualified path name.
+
+**Arguments**:
+
+* `string` : Input string, *in the range* .\*
+* `separator` : Link separator, e.g. `/` or `:`, *in the range* .\*
 
 **Example**:
 
@@ -41,8 +47,5 @@ reports:
 ```
 
 **Notes**:
-This function returns the final node in a chain, given a regular
-expression to split on. This is mainly useful for finding leaf-names of
-files, from a fully qualified path name.
 
 See also: `filestat`, dirname`, `splitstring`.

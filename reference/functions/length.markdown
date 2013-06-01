@@ -7,14 +7,16 @@ alias: reference-functions-length.html
 tags: [reference, functions, length]
 ---
 
-**Prototype**: `length(arg1)`
+**Prototype**: `length(list)`
 
 **Return type**: `int`
 
-* `arg1` : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+**Description**: Returns the length of `list`.
 
-Return the length of list arg1.
+**Arguments**:
+
+* `list` : The name of the list variable, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 **Example**:
 

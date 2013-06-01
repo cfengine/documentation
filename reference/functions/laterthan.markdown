@@ -7,28 +7,47 @@ alias: reference-functions-laterthan.html
 tags: [reference, functions, laterthan]
 ---
 
-**Prototype**: `laterthan(arg1, arg2, arg3, arg4,arg5, arg6)`
+**Prototype**: `laterthan(years, months, days, hours, minutes, seconds)`
 
-**Return type**:
+**Return type**: `class`
 
-`class`
+**Description**: Returns whether the current time is later than the given 
+date and time.
 
-* `arg1` : Years, *in the range* 0,1000   
-* `arg2` : Months, *in the range* 0,1000   
-* `arg3` : Days, *in the range* 0,1000   
-* `arg4` : Hours, *in the range* 0,1000   
-* `arg5` : Minutes, *in the range* 0,1000   
-* `arg6` : Seconds, *in the range* 0,40000   
+The arguments are standard time (See [Function on](#Function-on)).
 
-True if the current time is later than the given date
+**Arguments**:
+
+* `years`, *in the range* 0,1000   
+
+Years of run time. For convenience in conversion, a year of runtime is
+always 365 days (one year equals 31,536,000 seconds).   
+
+* `month`, *in the range* 0,1000   
+
+Months of run time. For convenience in conversion, a month of runtime is
+always equal to 30 days of runtime (one month equals 2,592,000 seconds).
+
+* `days`, *in the range* 0,1000   
+
+Days of runtime (one day equals 86,400 seconds)   
+
+* `hours`, *in the range* 0,1000
+
+Hours of runtime   
+
+* `minutes`, *in the range* 0,1000
+
+Minutes of runtime 0-59   
+
+* `seconds`, *in the range* 0,40000
+
+Seconds of runtime
 
 **Example**:
 
 ```cf3
-classes:
+    classes:
 
-  "after_deadline" expression => laterthan(2000,1,1,0,0,0);
+      "after_deadline" expression => laterthan(2000,1,1,0,0,0);
 ```
-
-**Notes**:
-The arguments are standard time (See [Function on](#Function-on)).
