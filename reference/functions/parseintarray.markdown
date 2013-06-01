@@ -1,22 +1,25 @@
 ---
 layout: default
-title: parseintarray
-categories: [Reference, Functions, parseintarray]
+title: "parse[int|real|string]array"
+categories: [Reference, Functions, parse*array]
 published: true
-alias: reference-functions-parseintarray.html
-tags: [reference, functions, parseintarray]
+alias: reference-functions-parseintrealstringarray.html
+tags: [reference, functions, parseintarray, parserealarray, parsestringarray]
 ---
 
-**Prototype**: `parseintarray(array, input, regex, split, maxentires, maxbytes)`
+**Prototype**: `parseintarray(array, input, regex, split, maxentries, maxbytes)`<br>
+**Prototype**: `parserealarray(array, input, regex, split, maxentries, maxbytes)`<br>
+**Prototype**: `parsestringarray(array, input, regex, split, maxentries, maxbytes)`<br>
 
 **Return type**: `int`
 
-**Description**: Reads up to `maxentries` integers from the first `maxbytes` 
-bytes in string `input` into `array` and returns the dimension.
+**Description**: Parses up to `maxentries` key/value pairs from the first 
+`maxbytes` bytes in string `input`, fills `array` and returns the dimension.
 
-This function mirrors the exact behavior of `readintarray()`, but reads
-data from a variable instead of a file. By making data readable from a
-variable, data driven policies can be kept inline.
+These functions mirror the exact behavior of their 
+`read[int|real|string]array()` counterparts, but read data from a variable 
+instead of a file. By making data readable from a variable, data driven 
+policies can be kept inline.
 
 **Arguments**:
 
@@ -27,7 +30,7 @@ variable, data driven policies can be kept inline.
 * `split` : Regex to split data, *in the range* .\*
 * `maxentries` : Maximum number of entries to read, *in the range*
 0,99999999999
-* `maxbyes` : Maximum bytes to read, *in the range* 0,99999999999
+* `maxbytes` : Maximum bytes to read, *in the range* 0,99999999999
 
 **Example**:
 
