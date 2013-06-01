@@ -7,63 +7,55 @@ alias: reference-functions-parseintarray.html
 tags: [reference, functions, parseintarray]
 ---
 
-**Prototype**: `parseintarray(arg1, arg2, arg3, arg4,arg5, arg6)`
+**Prototype**: `parseintarray(array, input, regex, split, maxentires, maxbytes)`
 
 **Return type**: `int`
 
-* `arg1` : Array identifier to populate, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
-* `arg2` : A string to parse for input data, *in the range* "?(/.\*)
-* `arg3` : Regex matching comments, *in the range* .\*
-* `arg4` : Regex to split data, *in the range* .\*
-* `arg5` : Maximum number of entries to read, *in the range*
-0,99999999999   
-* `arg6` : Maximum bytes to read, *in the range* 0,99999999999   
+**Description**: Reads up to `maxentries` integers from the first `maxbytes` 
+bytes in string `input` into `array` and returns the dimension.
 
-Read an array of integers from a file and assign the dimension to a
-variable
+This function mirrors the exact behavior of `readintarray()`, but reads
+data from a variable instead of a file. By making data readable from a
+variable, data driven policies can be kept inline.
+
+**Arguments**:
+
+* `array` : Array identifier to populate, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `input` : A string to parse for input data, *in the range* "?(/.\*)
+* `regex` : Regex matching comments, *in the range* .\*
+* `split` : Regex to split data, *in the range* .\*
+* `maxentries` : Maximum number of entries to read, *in the range*
+0,99999999999
+* `maxbyes` : Maximum bytes to read, *in the range* 0,99999999999
 
 **Example**:
 
 ```cf3
-bundle agent test(f) 
-{
-vars:
+    bundle agent test(f) 
+    {
+      vars:
+         # Define data inline for convenience
+        "table"   string => 
+          "1:2
+          3:4
+          5:6";
 
- #######################################
- # Define data inline for convenience
- #######################################
+       "dim" int => parseintarray(
+                                "items",
+                        "$(table)",
+                        "\s*#[^\n]*",
+                        ":",
+                        "1000",
+                        "200000"
+                        );
 
-  "table"   string => 
+       "keys" slist => getindices("items");
 
-"1:2
-3:4
-5:6";
-
-#######################################
-
- "dim" int => parseintarray(
-                          "items",
-                  "$(table)",
-                  "\s*#[^\n]*",
-                  ":",
-                  "1000",
-                  "200000"
-                  );
-
- "keys" slist => getindices("items");
-
-reports:
-  cfengine_3::
-    "$(keys)";
-}
+      reports:
+        cfengine_3::
+          "$(keys)";
+    }
 ```
 
-**Notes**:
 **History**: Was introduced in version 3.1.5a1, Nova 2.1.0 (2011)
-
-This function mirrors the exact behaviour of `readintarray()`, but reads
-data from a variable instead of a file (See [Function
-readintarray](#Function-readintarray)). By making data readable from a
-variable, data driven policies can be kept inline. This means that they
-will be visible in the CFEngine Knowledge Management portal.
