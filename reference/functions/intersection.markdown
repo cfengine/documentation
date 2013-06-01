@@ -7,7 +7,7 @@ alias: reference-functions-intersection.html
 tags: [reference, functions, intersection]
 ---
 
-**Prototype**: `intersection(arg1,arg2)`
+**Prototype**: `intersection(arg1, arg2)`
 
 **Return type**: `slist`
 

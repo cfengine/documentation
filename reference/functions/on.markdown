@@ -7,7 +7,7 @@ alias: reference-functions-on.html
 tags: [reference, functions, "on"]
 ---
 
-**Prototype**: `on(arg1,arg2,arg3,arg4,arg5,arg6)`
+**Prototype**: `on(arg1, arg2, arg3, arg4,arg5, arg6)`
 
 **Return type**: `int`
 

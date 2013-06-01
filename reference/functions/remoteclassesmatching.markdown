@@ -9,7 +9,7 @@ tags: [reference, functions, remoteclassesmatching]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: `remoteclassesmatching(arg1,arg2,arg3,arg4)`
+**Prototype**: `remoteclassesmatching(arg1, arg2, arg3, arg4)`
 
 **Return type**: `class`
 

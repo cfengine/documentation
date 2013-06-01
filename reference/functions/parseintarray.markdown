@@ -7,7 +7,7 @@ alias: reference-functions-parseintarray.html
 tags: [reference, functions, parseintarray]
 ---
 
-**Prototype**: `parseintarray(arg1,arg2,arg3,arg4,arg5,arg6)`
+**Prototype**: `parseintarray(arg1, arg2, arg3, arg4,arg5, arg6)`
 
 **Return type**: `int`
 

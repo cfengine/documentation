@@ -7,7 +7,7 @@ alias: reference-functions-readrealarray.html
 tags: [reference, functions, readrealarray]
 ---
 
-**Prototype**: `readrealarray(arg1,arg2,arg3,arg4,arg5,arg6)`
+**Prototype**: `readrealarray(arg1, arg2, arg3, arg4,arg5, arg6)`
 
 **Return type**: `int`
 

@@ -7,7 +7,7 @@ alias: reference-functions-isgreaterthan.html
 tags: [reference, functions, isgreaterthan]
 ---
 
-**Prototype**: `isgreaterthan(arg1,arg2)`
+**Prototype**: `isgreaterthan(arg1, arg2)`
 
 **Return type**: `class`
 

@@ -7,7 +7,7 @@ alias: reference-functions-some.html
 tags: [reference, functions, some]
 ---
 
-**Prototype**: `some(arg1,arg2)`
+**Prototype**: `some(arg1, arg2)`
 
 **Return type**: `class`
 

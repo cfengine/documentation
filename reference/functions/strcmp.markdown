@@ -7,7 +7,7 @@ alias: reference-functions-strcmp.html
 tags: [reference, functions, strcmp]
 ---
 
-**Prototype**: `strcmp(arg1,arg2)`
+**Prototype**: `strcmp(arg1, arg2)`
 
 **Return type**: `class`
 

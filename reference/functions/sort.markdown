@@ -7,7 +7,7 @@ alias: reference-functions-sort.html
 tags: [reference, functions, sort]
 ---
 
-**Prototype**: `sort(arg1,arg2)`
+**Prototype**: `sort(arg1, arg2)`
 
 **Return type**: `slist`
 

@@ -7,7 +7,7 @@ alias: reference-functions-randomint.html
 tags: [reference, functions, randomint]
 ---
 
-**Prototype**: `randomint(arg1,arg2)`
+**Prototype**: `randomint(arg1, arg2)`
 
 **Return type**: `int`
 

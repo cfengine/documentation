@@ -7,7 +7,7 @@ alias: reference-functions-readreallist.html
 tags: [reference, functions, readreallist]
 ---
 
-**Prototype**: `readreallist(arg1,arg2,arg3,arg4,arg5)`
+**Prototype**: `readreallist(arg1, arg2, arg3, arg4,arg5)`
 
 **Return type**: `rlist`
 

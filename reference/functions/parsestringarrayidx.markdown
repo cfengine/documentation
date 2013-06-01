@@ -7,7 +7,7 @@ alias: reference-functions-parsestringarrayidx.html
 tags: [reference, functions, parsestringarrayidx]
 ---
 
-**Prototype**: `parsestringarrayidx(arg1,arg2,arg3,arg4,arg5,arg6)`
+**Prototype**: `parsestringarrayidx(arg1, arg2, arg3, arg4,arg5, arg6)`
 
 **Return type**: `int`
 

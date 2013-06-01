@@ -7,7 +7,7 @@ alias: reference-functions-readintarray.html
 tags: [reference, functions, readintarray]
 ---
 
-**Prototype**: `readintarray(arg1,arg2,arg3,arg4,arg5,arg6)`
+**Prototype**: `readintarray(arg1, arg2, arg3, arg4,arg5, arg6)`
 
 **Return type**: `int`
 

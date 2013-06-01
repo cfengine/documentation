@@ -7,7 +7,7 @@ alias: reference-functions-laterthan.html
 tags: [reference, functions, laterthan]
 ---
 
-**Prototype**: `laterthan(arg1,arg2,arg3,arg4,arg5,arg6)`
+**Prototype**: `laterthan(arg1, arg2, arg3, arg4,arg5, arg6)`
 
 **Return type**:
 

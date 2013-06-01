@@ -7,7 +7,7 @@ alias: reference-functions-maparray.html
 tags: [reference, functions, maparray]
 ---
 
-**Prototype**: `maparray(arg1,arg2)`
+**Prototype**: `maparray(arg1, arg2)`
 
 **Return type**: `slist`
 

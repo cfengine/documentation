@@ -7,7 +7,7 @@ alias: reference-functions-peers.html
 tags: [reference, functions, peers]
 ---
 
-**Prototype**: `peers(arg1,arg2,arg3)`
+**Prototype**: `peers(arg1, arg2, arg3)`
 
 **Return type**: `slist`
 

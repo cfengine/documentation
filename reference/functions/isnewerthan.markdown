@@ -7,7 +7,7 @@ alias: reference-functions-isnewerthan.html
 tags: [reference, functions, isnewerthan]
 ---
 
-**Prototype**: `isnewerthan(arg1,arg2)`
+**Prototype**: `isnewerthan(arg1, arg2)`
 
 **Return type**: `class`
 

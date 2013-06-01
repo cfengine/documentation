@@ -7,7 +7,7 @@ alias: reference-functions-reglist.html
 tags: [reference, functions, reglist]
 ---
 
-**Prototype**: `reglist(arg1,arg2)`
+**Prototype**: `reglist(arg1, arg2)`
 
 **Return type**: `class`
 

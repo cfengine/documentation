@@ -7,7 +7,7 @@ alias: reference-functions-lsdir.html
 tags: [reference, functions, lsdir]
 ---
 
-**Prototype**: `lsdir(arg1,arg2,arg3)`
+**Prototype**: `lsdir(arg1, arg2, arg3)`
 
 **Return type**: `slist`
 

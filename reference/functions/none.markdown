@@ -7,7 +7,7 @@ alias: reference-functions-none.html
 tags: [reference, functions, none]
 ---
 
-**Prototype**: `none(arg1,arg2)`
+**Prototype**: `none(arg1, arg2)`
 
 **Return type**: `class`
 

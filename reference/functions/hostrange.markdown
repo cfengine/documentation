@@ -7,7 +7,7 @@ alias: reference-functions-hostrange.html
 tags: [reference, functions, hostrange]
 ---
 
-**Prototype**: `hostrange(arg1,arg2)`
+**Prototype**: `hostrange(arg1, arg2)`
 
 **Return type**: `class`
 

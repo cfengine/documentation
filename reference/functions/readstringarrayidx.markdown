@@ -7,7 +7,7 @@ alias: reference-functions-readstringarrayidx.html
 tags: [reference, functions, readstringarrayidx]
 ---
 
-**Prototype**: `readstringarrayidx(arg1,arg2,arg3,arg4,arg5,arg6)`
+**Prototype**: `readstringarrayidx(arg1, arg2, arg3, arg4,arg5, arg6)`
 
 **Return type**: `int`
 

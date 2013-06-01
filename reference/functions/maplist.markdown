@@ -7,7 +7,7 @@ alias: reference-functions-maplist.html
 tags: [reference, functions, maplist]
 ---
 
-**Prototype**: `maplist(arg1,arg2)`
+**Prototype**: `maplist(arg1, arg2)`
 
 **Return type**: `slist`
 
