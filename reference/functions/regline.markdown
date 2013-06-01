@@ -11,8 +11,8 @@ tags: [reference, functions, regline]
 
 **Return type**: `class`
 
- *arg1* : Regular expression, *in the range* .\*   
- *arg2* : Filename to search, *in the range* .\*   
+* `arg1` : Regular expression, *in the range* .\*
+* `arg2` : Filename to search, *in the range* .\*
 
 True if the regular expression in arg1 matches a line in file arg2
 

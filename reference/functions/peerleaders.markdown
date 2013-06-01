@@ -11,9 +11,9 @@ tags: [reference, functions, peerleaders]
 
 **Return type**: `slist`
 
- *arg1* : File name of host list, *in the range* "?(/.\*)   
- *arg2* : Comment regex pattern, *in the range* .\*   
- *arg3* : Peer group size, *in the range* 0,99999999999   
+* `arg1` : File name of host list, *in the range* "?(/.\*)   
+* `arg2` : Comment regex pattern, *in the range* .\*
+* `arg3` : Peer group size, *in the range* 0,99999999999   
 
 Get a list of peer leaders from the named partitioning
 

@@ -13,8 +13,8 @@ tags: [reference, functions, hubknowledge]
 
 **Return type**: `string`
 
- *arg1* : Variable identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : Variable identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Read global knowledge from the hub host by id.
 

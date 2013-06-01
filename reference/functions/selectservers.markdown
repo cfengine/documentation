@@ -11,15 +11,15 @@ tags: [reference, functions, selectservers]
 
 **Return type**: `int`
 
- *arg1* : The identifier of a cfengine list of hosts or addresses to
+* `arg1` : The identifier of a cfengine list of hosts or addresses to
 contact, *in the range* @[(][a-zA-Z0-9]+[)]   
- *arg2* : The port number, *in the range* 0,99999999999   
- *arg3* : A query string, *in the range* .\*   
- *arg4* : A regular expression to match success, *in the range* .\*   
- *arg5* : Maximum number of bytes to read from server, *in the range*
+* `arg2` : The port number, *in the range* 0,99999999999   
+* `arg3` : A query string, *in the range* .\*
+* `arg4` : A regular expression to match success, *in the range* .\*
+* `arg5` : Maximum number of bytes to read from server, *in the range*
 0,99999999999   
- *arg6* : Name for array of results, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg6` : Name for array of results, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Select tcp servers which respond correctly to a query and return their
 number, set array of names

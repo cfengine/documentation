@@ -11,8 +11,8 @@ tags: [reference, functions, lastnode]
 
 **Return type**: `string`
 
- *arg1* : Input string, *in the range* .\*   
- *arg2* : Link separator, e.g. /,:, *in the range* .\*   
+* `arg1` : Input string, *in the range* .\*
+* `arg2` : Link separator, e.g. /,:, *in the range* .\*
 
 Extract the last of a separated string, e.g. filename from a path
 

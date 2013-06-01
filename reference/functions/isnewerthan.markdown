@@ -11,8 +11,8 @@ tags: [reference, functions, isnewerthan]
 
 **Return type**: `class`
 
- *arg1* : Newer file name, *in the range* "?(/.\*)   
- *arg2* : Older file name, *in the range* "?(/.\*)   
+* `arg1` : Newer file name, *in the range* "?(/.\*)   
+* `arg2` : Older file name, *in the range* "?(/.\*)   
 
 True if arg1 is newer (modified later) than arg2 (mtime)
 

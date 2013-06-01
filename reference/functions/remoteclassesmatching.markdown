@@ -13,11 +13,11 @@ tags: [reference, functions, remoteclassesmatching]
 
 **Return type**: `class`
 
- *arg1* : Regular expression, *in the range* .\*   
- *arg2* : Server name or address, *in the range* .\*   
- *arg3* : Use encryption, *in the range* true,false,yes,no,on,off   
- *arg4* : Return class prefix, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : Regular expression, *in the range* .\*
+* `arg2` : Server name or address, *in the range* .\*
+* `arg3` : Use encryption, *in the range* true,false,yes,no,on,off   
+* `arg4` : Return class prefix, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Read persistent classes matching a regular expression from a remote
 cfengine server and add them into local context with prefix

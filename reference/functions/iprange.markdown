@@ -11,7 +11,7 @@ tags: [reference, functions, iprange]
 
 **Return type**: `class`
 
- *arg1* : IP address range syntax, *in the range* .\*   
+* `arg1` : IP address range syntax, *in the range* .\*
 
 True if the current host lies in the range of IP addresses specified
 

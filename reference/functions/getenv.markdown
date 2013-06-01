@@ -23,7 +23,7 @@ variable you are querying.
 **Arguments**
 
 * `variable` : Name of environment variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 * `maxlength` : Maximum number of characters to read , *in the range*
 0,99999999999
 

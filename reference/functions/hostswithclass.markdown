@@ -13,8 +13,8 @@ tags: [reference, functions, hostswithclass]
 
 **Return type**: `slist`
 
- *arg1* : Class name to look for, *in the range* [a-zA-Z0-9\_]+   
- *arg2* : Type of return value desired, *in the range* name,address   
+* `arg1` : Class name to look for, *in the range* [a-zA-Z0-9\_]+
+* `arg2` : Type of return value desired, *in the range* name,address   
 
 Extract the list of hosts with the given class set from the CFEngine Database.
 

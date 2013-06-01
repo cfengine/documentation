@@ -11,7 +11,7 @@ tags: [reference, functions, ip2host]
 
 **Return type**: `string`
 
- *arg1* : IP address (IPv4 or IPv6), *in the range* .\*   
+* `arg1` : IP address (IPv4 or IPv6), *in the range* .\*
 
 Returns the primary name-service host name for the IP address
 

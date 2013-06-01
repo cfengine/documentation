@@ -11,7 +11,7 @@ tags: [reference, functions, isexecutable]
 
 **Return type**: `class`
 
- *arg1* : File object name, *in the range* "?(/.\*)   
+* `arg1` : File object name, *in the range* "?(/.\*)   
 
 True if the named object has execution rights for the current user
 

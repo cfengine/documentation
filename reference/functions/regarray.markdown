@@ -11,9 +11,9 @@ tags: [reference, functions, regarray]
 
 **Return type**: `class`
 
- *arg1* : Cfengine array identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
- *arg2* : Regular expression, *in the range* .\*   
+* `arg1` : array identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `arg2` : Regular expression, *in the range* .\*
 
 True if arg1 matches any item in the associative array with id=arg2
 

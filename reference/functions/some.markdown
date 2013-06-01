@@ -11,9 +11,9 @@ tags: [reference, functions, some]
 
 **Return type**: `class`
 
- *arg1* : Unanchored regular expression to find, *in the range* .\*
- *arg2* : The name of the list variable to check, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : Unanchored regular expression to find, *in the range* .\*
+* `arg2` : The name of the list variable to check, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Return true if any element of the list matches the regular expression.
 

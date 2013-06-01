@@ -11,14 +11,14 @@ tags: [reference, functions, parseintarray]
 
 **Return type**: `int`
 
- *arg1* : Array identifier to populate, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
- *arg2* : A string to parse for input data, *in the range* "?(/.\*)   
- *arg3* : Regex matching comments, *in the range* .\*   
- *arg4* : Regex to split data, *in the range* .\*   
- *arg5* : Maximum number of entries to read, *in the range*
+* `arg1` : Array identifier to populate, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `arg2` : A string to parse for input data, *in the range* "?(/.\*)   
+* `arg3` : Regex matching comments, *in the range* .\*
+* `arg4` : Regex to split data, *in the range* .\*
+* `arg5` : Maximum number of entries to read, *in the range*
 0,99999999999   
- *arg6* : Maximum bytes to read, *in the range* 0,99999999999   
+* `arg6` : Maximum bytes to read, *in the range* 0,99999999999   
 
 Read an array of integers from a file and assign the dimension to a
 variable

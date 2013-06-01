@@ -11,10 +11,10 @@ tags: [reference, functions, regextract]
 
 **Return type**: `class`
 
- *arg1* : Regular expression, *in the range* .\*   
- *arg2* : Match string, *in the range* .\*   
- *arg3* : Identifier for back-references, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : Regular expression, *in the range* .\*
+* `arg2` : Match string, *in the range* .\*
+* `arg3` : Identifier for back-references, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 True if the regular expression in arg 1 matches the string in arg2 and
 sets a non-empty array of backreferences named arg3

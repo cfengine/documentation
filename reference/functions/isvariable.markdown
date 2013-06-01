@@ -11,8 +11,8 @@ tags: [reference, functions, isvariable]
 
 **Return type**: `class`
 
- *arg1* : Variable identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : Variable identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 True if the named variable is defined
 

@@ -11,8 +11,8 @@ tags: [reference, functions, hostrange]
 
 **Return type**: `class`
 
- *arg1* : Hostname prefix, *in the range* .\*   
- *arg2* : Enumerated range, *in the range* .\*   
+* `arg1` : Hostname prefix, *in the range* .\*
+* `arg2` : Enumerated range, *in the range* .\*
 
 True if the current host lies in the range of enumerated hostnames
 specified

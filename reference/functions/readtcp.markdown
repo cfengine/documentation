@@ -11,10 +11,10 @@ tags: [reference, functions, readtcp]
 
 **Return type**: `string`
 
- *arg1* : Host name or IP address of server socket, *in the range* .\*
- *arg2* : Port number, *in the range* 0,99999999999   
- *arg3* : Protocol query string, *in the range* .\*   
- *arg4* : Maximum number of bytes to read, *in the range* 0,99999999999
+* `arg1` : Host name or IP address of server socket, *in the range* .\*
+* `arg2` : Port number, *in the range* 0,99999999999   
+* `arg3` : Protocol query string, *in the range* .\*
+* `arg4` : Maximum number of bytes to read, *in the range* 0,99999999999
 
 Connect to tcp port, send string and assign result to variable
 

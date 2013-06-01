@@ -12,7 +12,7 @@ tags: [reference, functions, sublist]
 **Return type**: `slist`
 
  *list* : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
  *extract_from* : Whether to extract elements from the beginning or from the end. *in the range* head,tail
 

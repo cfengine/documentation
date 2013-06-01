@@ -11,7 +11,7 @@ tags: [reference, functions, getuid]
 
 **Return type**: `int`
 
- *arg1* : User name in text, *in the range* .\*   
+* `arg1` : User name in text, *in the range* .\*
 
 Return the integer user id of the named user on this host
 

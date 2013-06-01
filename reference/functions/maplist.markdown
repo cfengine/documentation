@@ -11,9 +11,9 @@ tags: [reference, functions, maplist]
 
 **Return type**: `slist`
 
- *arg1* : Pattern based on \$(this) as original text, *in the range* .\*
- *arg2* : The name of the list variable to map, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : Pattern based on \$(this) as original text, *in the range* .\*
+* `arg2` : The name of the list variable to map, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Return a list with each element modified by a pattern based \$(this)
 

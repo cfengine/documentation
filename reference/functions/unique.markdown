@@ -12,7 +12,7 @@ tags: [reference, functions, unique]
 **Return type**: `slist`
 
  *list* : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 
 Return list of unique elements from list.

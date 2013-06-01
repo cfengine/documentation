@@ -11,7 +11,7 @@ tags: [reference, functions, groupexists]
 
 **Return type**: `class`
 
- *arg1* : Group name or identifier, *in the range* .\*   
+* `arg1` : Group name or identifier, *in the range* .\*
 
 True if group or numerical id exists on this host
 

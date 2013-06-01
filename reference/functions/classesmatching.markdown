@@ -18,7 +18,7 @@ classes (in order hard, then soft, then local to the current bundle).
 
 **Arguments**:
 
-* `regex` : Regular expression, *in the range* .\*   
+* `regex` : Regular expression, *in the range* .\*
 
 A regular expression matching zero or more classes in the current list
 of set classes. The regular expression is not 

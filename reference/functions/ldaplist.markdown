@@ -15,12 +15,12 @@ tags: [reference, functions, ldaplist]
 
 `slist`
 
- *arg1* : URI, *in the range* .\*   
- *arg2* : Distinguished name, *in the range* .\*   
- *arg3* : Filter, *in the range* .\*   
- *arg4* : Record name, *in the range* .\*   
- *arg5* : Search scope policy, *in the range* subtree,onelevel,base   
- *arg6* : Security level, *in the range* none,ssl,sasl   
+* `arg1` : URI, *in the range* .\*
+* `arg2` : Distinguished name, *in the range* .\*
+* `arg3` : Filter, *in the range* .\*
+* `arg4` : Record name, *in the range* .\*
+* `arg5` : Search scope policy, *in the range* subtree,onelevel,base   
+* `arg6` : Security level, *in the range* none,ssl,sasl   
 
 Extract all named values from multiple ldap records
 

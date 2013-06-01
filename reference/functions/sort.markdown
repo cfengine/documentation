@@ -11,10 +11,10 @@ tags: [reference, functions, sort]
 
 **Return type**: `slist`
 
- *arg1* : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : The name of the list variable, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
- *arg2* : Sorting mode *in the range* lex
+* `arg2` : Sorting mode *in the range* lex
 
 Return arg1 sorted according to arg2.
 

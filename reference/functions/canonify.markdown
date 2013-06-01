@@ -18,7 +18,7 @@ This function turns arbitrary text into class data (See
 
 **Arguments**:
 
-* `text` : String containing non-identifier characters, *in the range* .\*   
+* `text` : String containing non-identifier characters, *in the range* .\*
 
 **Example**:  
 

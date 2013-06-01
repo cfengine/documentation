@@ -11,8 +11,8 @@ tags: [reference, functions, readfile]
 
 **Return type**: `string`
 
- *arg1* : File name, *in the range* "?(/.\*)   
- *arg2* : Maximum number of bytes to read, *in the range* 0,99999999999
+* `arg1` : File name, *in the range* "?(/.\*)   
+* `arg2` : Maximum number of bytes to read, *in the range* 0,99999999999
 
 Read max number of bytes from named file and assign to variable
 

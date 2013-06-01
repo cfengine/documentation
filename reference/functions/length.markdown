@@ -11,8 +11,8 @@ tags: [reference, functions, length]
 
 **Return type**: `int`
 
- *arg1* : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : The name of the list variable, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Return the length of list arg1.
 

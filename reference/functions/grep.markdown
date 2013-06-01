@@ -11,9 +11,9 @@ tags: [reference, functions, grep]
 
 **Return type**: `slist`
 
- *arg1* : Regular expression, *in the range* .\*   
- *arg2* : CFEngine list identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : Regular expression, *in the range* .\*
+* `arg2` : CFEngine list identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Extract the sub-list if items matching the regular expression in arg1 of
 the list named in arg2

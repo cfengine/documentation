@@ -11,10 +11,10 @@ tags: [reference, functions, remotescalar]
 
 **Return type**: `string`
 
- *arg1* : Variable identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
- *arg2* : Hostname or IP address of server, *in the range* .\*   
- *arg3* : Use enryption, *in the range* true,false,yes,no,on,off   
+* `arg1` : Variable identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `arg2` : Hostname or IP address of server, *in the range* .\*
+* `arg3` : Use enryption, *in the range* true,false,yes,no,on,off   
 
 Read a scalar value from a remote cfengine server
 

@@ -11,8 +11,8 @@ tags: [reference, functions, getindices]
 
 **Return type**: `slist`
 
- *arg1* : Cfengine array identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : array identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Get a list of keys to the array whose id is the argument and assign to
 variable

@@ -15,12 +15,12 @@ tags: [reference, functions, ldaparray]
 
 `class`
 
- *arg1* : Array name, *in the range* .\*   
- *arg2* : URI, *in the range* .\*   
- *arg3* : Distinguished name, *in the range* .\*   
- *arg4* : Filter, *in the range* .\*   
- *arg5* : Search scope policy, *in the range* subtree,onelevel,base   
- *arg6* : Security level, *in the range* none,ssl,sasl   
+* `arg1` : Array name, *in the range* .\*
+* `arg2` : URI, *in the range* .\*
+* `arg3` : Distinguished name, *in the range* .\*
+* `arg4` : Filter, *in the range* .\*
+* `arg5` : Search scope policy, *in the range* subtree,onelevel,base   
+* `arg6` : Security level, *in the range* none,ssl,sasl   
 
 Extract all values from an LDAP record
 

@@ -11,10 +11,10 @@ tags: [reference, functions, shuffle]
 
 **Return type**: `slist`
 
- *arg1* : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : The name of the list variable, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
- *arg2* : Shuffle seed *in the range* .\*
+* `arg2` : Shuffle seed *in the range* .\*
 
 Return arg1 shuffled with seed arg2.
 

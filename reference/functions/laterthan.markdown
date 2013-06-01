@@ -13,12 +13,12 @@ tags: [reference, functions, laterthan]
 
 `class`
 
- *arg1* : Years, *in the range* 0,1000   
- *arg2* : Months, *in the range* 0,1000   
- *arg3* : Days, *in the range* 0,1000   
- *arg4* : Hours, *in the range* 0,1000   
- *arg5* : Minutes, *in the range* 0,1000   
- *arg6* : Seconds, *in the range* 0,40000   
+* `arg1` : Years, *in the range* 0,1000   
+* `arg2` : Months, *in the range* 0,1000   
+* `arg3` : Days, *in the range* 0,1000   
+* `arg4` : Hours, *in the range* 0,1000   
+* `arg5` : Minutes, *in the range* 0,1000   
+* `arg6` : Seconds, *in the range* 0,40000   
 
 True if the current time is later than the given date
 

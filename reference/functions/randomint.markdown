@@ -11,8 +11,8 @@ tags: [reference, functions, randomint]
 
 **Return type**: `int`
 
- *arg1* : Lower inclusive bound, *in the range* -99999999999,9999999999
- *arg2* : Upper inclusive bound, *in the range* -99999999999,9999999999
+* `arg1` : Lower inclusive bound, *in the range* -99999999999,9999999999
+* `arg2` : Upper inclusive bound, *in the range* -99999999999,9999999999
 
 Generate a random integer between the given limits
 

@@ -11,8 +11,8 @@ tags: [reference, functions, product]
 
 **Return type**: `real`
 
- *arg1* : A list of arbitrary real values, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : A list of arbitrary real values, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Return the product of a list of reals
 

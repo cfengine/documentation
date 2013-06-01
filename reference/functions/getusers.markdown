@@ -11,8 +11,8 @@ tags: [reference, functions, getusers]
 
 **Return type**: `slist`
 
- *arg1* : Comma separated list of User names, *in the range* .\*   
- *arg2* : Comma separated list of UserID numbers, *in the range* .\*   
+* `arg1` : Comma separated list of User names, *in the range* .\*
+* `arg2` : Comma separated list of UserID numbers, *in the range* .\*
 
 Get a list of all system users defined, minus those names defined in
 arg1 and uids in arg2

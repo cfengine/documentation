@@ -11,11 +11,11 @@ tags: [reference, functions, intersection]
 
 **Return type**: `slist`
 
- *arg1* : The name of the base list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : The name of the base list variable, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
- *arg2* : The name of the intersected list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg2` : The name of the intersected list variable, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 Returns the unique elements in arg1 that are also in arg2.
 

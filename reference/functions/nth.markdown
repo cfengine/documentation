@@ -11,10 +11,10 @@ tags: [reference, functions, nth]
 
 **Return type**: `string`
 
- *arg1* : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+* `arg1` : The name of the list variable, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
- *arg2* : Zero-based position of element to extract *in the range* 0,999999999
+* `arg2` : Zero-based position of element to extract *in the range* 0,999999999
 
 Return the element of arg1 at zero-based position arg2.
 

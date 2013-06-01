@@ -11,9 +11,9 @@ tags: [reference, functions, splitstring]
 
 **Return type**: `slist`
 
- *arg1* : A data string, *in the range* .\*   
- *arg2* : Regex to split on, *in the range* .\*   
- *arg3* : Maximum number of pieces, *in the range* 0,99999999999   
+* `arg1` : A data string, *in the range* .\*
+* `arg2` : Regex to split on, *in the range* .\*
+* `arg3` : Maximum number of pieces, *in the range* 0,99999999999   
 
 Convert a string in arg1 into a list of max arg3 strings by splitting on
 a regular expression in arg2

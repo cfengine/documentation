@@ -11,12 +11,12 @@ tags: [reference, functions, readreallist]
 
 **Return type**: `rlist`
 
- *arg1* : File name to read, *in the range* "?(/.\*)   
- *arg2* : Regex matching comments, *in the range* .\*   
- *arg3* : Regex to split data, *in the range* .\*   
- *arg4* : Maximum number of entries to read, *in the range*
+* `arg1` : File name to read, *in the range* "?(/.\*)   
+* `arg2` : Regex matching comments, *in the range* .\*
+* `arg3` : Regex to split data, *in the range* .\*
+* `arg4` : Maximum number of entries to read, *in the range*
 0,99999999999   
- *arg5* : Maximum bytes to read, *in the range* 0,99999999999   
+* `arg5` : Maximum bytes to read, *in the range* 0,99999999999   
 
 Read and assign a list variable from a file of separated real numbers
 

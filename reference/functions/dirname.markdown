@@ -18,7 +18,7 @@ directory, then the name of its parent directory is returned.
 
 **Arguments**:
 
-* `path` : File path, *in the range* .\*   
+* `path` : File path, *in the range* .\*
 
 **Example**:  
 
