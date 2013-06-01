@@ -10,6 +10,13 @@ tags: [Examples, MAC address]
 Finding the ethernet address can be hard, but on Linux it is straightforward. We will use CFEngine's built in function `execresult` to execute  commands adapted for different operating systems, assign the output to variables, and filter for the MAC adress. We then report on the result.
 
 ```cf3
+    body common control
+    
+    {
+    bundlesequence => { "example" };
+    }
+
+
     bundle agent example
     {
     vars:
