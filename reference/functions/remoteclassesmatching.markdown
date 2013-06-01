@@ -9,56 +9,48 @@ tags: [reference, functions, remoteclassesmatching]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: `remoteclassesmatching(arg1, arg2, arg3, arg4)`
+**Prototype**: `remoteclassesmatching(regex, server, encrypt, prefix)`
 
 **Return type**: `class`
 
-* `arg1` : Regular expression, *in the range* .\*
-* `arg2` : Server name or address, *in the range* .\*
-* `arg3` : Use encryption, *in the range* true,false,yes,no,on,off   
-* `arg4` : Return class prefix, *in the range*
+**Description**: Read persistent classes matching regular expression `regex`
+from a remote CFEngine server `server` and add them into local context with 
+`prefix`.
+
+The return value is true (sets the class) if communication with the server was 
+successful and classes were populated in the current bundle.
+
+This function contacts a remote `cf-serverd` and requests access to defined 
+*persistent classes* on that system. Access must be granted by making an 
+`access` promise with `resource_type` set to `context`.
+
+**Arguments**:
+
+* `regex` : Regular expression, *in the range* .\*
+
+This should match a list of *persistent* classes of be returned from the
+server, if the server has granted access to them.
+
+* `server` : Server name or address, *in the range* .\*
+
+The name or IP address of the remote server.
+
+* `encrypt` : Use encryption, *in the range* true,false,yes,no,on,off   
+
+* `prefix` : Return class prefix, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
 
-Read persistent classes matching a regular expression from a remote
-cfengine server and add them into local context with prefix
+A string to be added to the returned classes. If the server defines a 
+persistent class `alpha`, then this would generate a private class in the 
+current bundle called `prefix_alpha`.
 
 **Example**:
 
 ```cf3
- "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
+   "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
 ```
 
-**Notes**:  
-
-This function contacts a remote `cf-serverd` and requests access to
-defined *persistent classes* on that system. These must be granted
-access to by making an `access` promise with `resource_type` set to
-`context`.
-
-The return value is true (sets the class) if communication with the
-server was successful and classes are populated in the current bundle
-with a prefix of your choosing. The arguments are:
-
-*Regular expression*
-
-This should match a list of *persistent* classes of be returned from the
-server, if the server has granted access to them.   
-
-*Server*
-
-The name or IP address of the remote server.   
-
-*Encryption*
-
-Boolean value, whether or not to encrypt communication.   
-
-*Prefix*
-
-A string to be added to the returned classes. For example, if the server
-defines a persistent class alpha, then this would generate a private
-class in the current bundle called myprefix\_alpha.
-
-Note that this function assumes that you have already performed a
+**Notes**: Note that this function assumes that you have already performed a
 successful key exchange between systems, (e.g. using either a remote
 copy or `cf-runagent` connection). It contains no mechanism for trust
 establishment and will fail if there is no trust relationship

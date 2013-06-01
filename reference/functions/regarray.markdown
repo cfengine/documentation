@@ -7,67 +7,44 @@ alias: reference-functions-regarray.html
 tags: [reference, functions, regarray]
 ---
 
-**Prototype**: `regarray(arg1, arg2)`
+**Prototype**: `regarray(array, regex)`
 
 **Return type**: `class`
 
-* `arg1` : array identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
-* `arg2` : Regular expression, *in the range* .\*
+**Description**: Returns whether `array` contains elements matching the
+regular expression `regex`.
 
-True if arg1 matches any item in the associative array with id=arg2
+* `array` : array identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `regex` : Regular expression, *in the range* .\*
+
+A regular expression to match the content. The regular expression is
+anchored, meaning it must match the complete array element.
 
 **Example**:
 
 ```cf3
-body common control
+    bundle agent example
+    {
+    vars:
 
-{
-bundlesequence  => { "testbundle"  };
-}
+      "myarray[0]" string => "bla1";
+      "myarray[1]" string => "bla2";
+      "myarray[3]" string => "bla";
 
-###########################################
+    classes:
 
-bundle agent testbundle
-{
-vars:
+      "ok" expression => regarray("myarray","b.*2");
 
-  "myarray[0]" string => "bla1";
-  "myarray[1]" string => "bla2";
-  "myarray[3]" string => "bla";
-  "myarray"    string => "345";  
-  "not"        string => "345";  
+    reports:
 
-classes:
+     ok::
 
-  "ok" expression => regarray("myarray","b.*2");
+        "Found in list";
 
-reports:
+     !ok::
 
- ok::
+        "Not found in list";
 
-    "Found in list";
-
- !ok::
-
-    "Not found in list";
-
-}
+    }
 ```
-
-**Notes**:
-Tests whether an associative array contains elements matching a certain
-regular expression. The result is a class.
-
-**ARGUMENTS**:
-
-array\_name
-
-The name of the array, with no \$() surrounding it, etc.   
-
-regex
-
-A regular expression to match the content. The regular expression is
-anchored, meaning it must match the complete array element (See
-[Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).

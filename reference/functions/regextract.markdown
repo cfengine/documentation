@@ -7,64 +7,51 @@ alias: reference-functions-regextract.html
 tags: [reference, functions, regextract]
 ---
 
-**Prototype**: `regextract(arg1, arg2, arg3)`
+**Prototype**: `regextract(regex, string, backref)`
 
 **Return type**: `class`
 
-* `arg1` : Regular expression, *in the range* .\*
-* `arg2` : Match string, *in the range* .\*
-* `arg3` : Identifier for back-references, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+**Description**: Returns whether `regex` matches the `string`, and fills the array `backref` with back-references.
 
-True if the regular expression in arg 1 matches the string in arg2 and
-sets a non-empty array of backreferences named arg3
+If there are any back reference matches from the regular expression, then the array will be populated with the values, in the manner:
+
+```cf3
+    $(identifier[0]) = entire string
+    $(identifier[1]) = back reference 1, etc
+```
+
+**Arguments**:
+
+* `regex` : Regular expression, *in the range* .\*
+
+A regular expression containing one or more parenthesized back
+references. The regular expression is anchored, meaning it must match
+the entire string
+
+* `string` : Match string, *in the range* .\*
+* `backref` : Identifier for back-references, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
 **Example**:
 
 ```cf3
-bundle agent testbundle
-{
-classes:
+    bundle agent example
+    {
+    classes:
 
-    # Extract regex backreferences and put them in an array
+        # Extract regex backreferences and put them in an array
 
-    "ok" expression => regextract(
-                                 "xx ([^\s]+) ([^\s]+).* xx",
-                                 "xx one two three four xx",
-                                 "myarray"
-                                 );
-reports:
+        "ok" expression => regextract(
+                                     "xx ([^\s]+) ([^\s]+).* xx",
+                                     "xx one two three four xx",
+                                     "myarray"
+                                     );
+    reports:
 
- ok::
+     ok::
 
-   "ok - \"$(myarray[0])\" = xx + \"$(myarray[1])\" + \"$(myarray[2])\" + .. + xx";
-}
-
-```
-
-**Notes**:
-**Arguments:**
-
-*regex*
-
-A regular expression containing one or more parenthesized back
-references. The regular expression is anchored, meaning it must match
-the entire string (See [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
-
-*data*
-
-A string to be matched to the regular expression.   
-
-*identifier*
-
-The name of an array which (if there are any back reference matches from
-the regular expression) will be populated with the values, in the
-manner:
-
-```cf3
-          $(identifier[0]) = entire string
-          $(identifier[1]) = back reference 1, etc
+       "ok - \"$(myarray[0])\" = xx + \"$(myarray[1])\" + \"$(myarray[2])\" + .. + xx";
+    }
 ```
 
 **History**: This function was introduced in CFEngine version 3.0.4

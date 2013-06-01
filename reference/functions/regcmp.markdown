@@ -7,84 +7,66 @@ alias: reference-functions-regcmp.html
 tags: [reference, functions, regcmp]
 ---
 
-**Prototype**: `regcmp(arg1, arg2)`
+**Prototype**: `regcmp(regex, string)`
 
 **Return type**: `class`
 
-* `arg1` : Regular expression, *in the range* .\*
-* `arg2` : Match string, *in the range* .\*
+**Description**: Returns whether the regular expression `regex` matches the 
+`string.`
 
-True if arg1 is a regular expression matching that matches string arg2
+**Arguments**:
+
+* `regex` : Regular expression, *in the range* .\*
+* `string` : Match string, *in the range* .\*
+
+The regular expression is anchored, meaning it must match the complete 
+content.
 
 **Example**:
 
 ```cf3
-bundle agent subtest(user)
+    bundle agent subtest(user)
+    {
+    classes:
 
-{
-classes:
+      "invalid" not => regcmp("[a-z]{4}","$(user)");
 
-  "invalid" not => regcmp("[a-z]{4}","$(user)");
+    reports:
 
-reports:
+     !invalid::
 
- !invalid::
+      "User name $(user) is valid at exactly 4 letters";
 
-  "User name $(user) is valid at exactly 4 letters";
+     invalid::
 
- invalid::
-
-  "User name $(user) is invalid";
-}
+      "User name $(user) is invalid";
+    }
 ```
 
-**Notes**:
-Compares a string to a regular expression.
-
-**ARGUMENTS**:
-
-regex
-
-A regular expression to match the content. The regular expression is
-anchored, meaning it must match the complete content (See [Anchored vs.
-unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
-
-string
-
-Test data for the regular expression.
-
-If there are multiple-lines in the data, it is necessary to code these
+If the string contains multiple lines, then it is necessary to code these
 explicitly, as regular expressions do not normally match the end of line
 as a regular character (they only match end of string). You can do this
 using either standard regular expression syntax or using the additional
-features of PCRE (where `(?ms)` changes the way that ., \^ and \$
-behave), e.g.
+features of PCRE (where `(?ms)` changes the way that ., `^` and `$` behave), e.g.
 
 ```cf3
-     
-     body common control
-     {
-     bundlesequence = { "example" };
-     }
-     
      bundle agent example
      {
      vars:
      
        "x" string = "
-     NAME: apache2 - Apache 2.2 web server
-     CATEGORY: application
-     ARCH: all
-     VERSION: 2.2.3,REV=2006.09.01
-     BASEDIR: /
-     VENDOR: http://httpd.apache.org/ packaged for CSW by Cory Omand
-     PSTAMP: comand@thor-20060901022929
-     INSTDATE: Dec 14 2006 16:05
-     HOTLINE: http://www.blastwave.org/bugtrack/
-     EMAIL: comand@blastwave.org
-     STATUS: completely installed
-     ";
+           NAME: apache2 - Apache 2.2 web server
+           CATEGORY: application
+           ARCH: all
+           VERSION: 2.2.3,REV=2006.09.01
+           BASEDIR: /
+           VENDOR: http://httpd.apache.org/ packaged for CSW by Cory Omand
+           PSTAMP: comand@thor-20060901022929
+           INSTDATE: Dec 14 2006 16:05
+           HOTLINE: http://www.blastwave.org/bugtrack/
+           EMAIL: comand@blastwave.org
+           STATUS: completely installed
+         ";
      
      classes:
      
@@ -102,6 +84,4 @@ behave), e.g.
      
          "in root";
      }
-     
-     
 ```

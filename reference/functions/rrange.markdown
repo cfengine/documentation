@@ -2,7 +2,7 @@
 layout: default
 title: rrange
 categories: [Reference, Functions, rrange]
-published: true
+published: false
 alias: reference-functions-rrange.html
 tags: [reference, functions, rrange]
 ---
@@ -11,10 +11,12 @@ tags: [reference, functions, rrange]
 
 **Return type**: `rrange [real,real]``
 
+**Description**: Define a range of real numbers for CFEngine internal use.
+
+**Arguments**:
+
 * `arg1` : Real number, *in the range* -9.99999E100,9.99999E100   
 * `arg2` : Real number, *in the range* -9.99999E100,9.99999E100   
-
-Define a range of real numbers for cfengine internal use
 
 **Example**:
 

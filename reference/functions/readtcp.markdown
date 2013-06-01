@@ -7,69 +7,56 @@ alias: reference-functions-readtcp.html
 tags: [reference, functions, readtcp]
 ---
 
-**Prototype**: `readtcp(arg1, arg2, arg3, arg4)`
+**Prototype**: `readtcp(hostnameip, port, sendstring, maxbytes)`
 
 **Return type**: `string`
 
-* `arg1` : Host name or IP address of server socket, *in the range* .\*
-* `arg2` : Port number, *in the range* 0,99999999999   
-* `arg3` : Protocol query string, *in the range* .\*
-* `arg4` : Maximum number of bytes to read, *in the range* 0,99999999999
+**Description**: Connects to tcp `port` of `hostnameip`, sends `sendstring`,
+reads at most `maxbytes` from the response and returns those.
 
-Connect to tcp port, send string and assign result to variable
+If the send string is empty, no data are sent or received from the
+socket. Then the function only tests whether the TCP port is alive and
+returns an empty string.
+
+Not all Unix TCP read operations respond to signals for interruption, so 
+poorly formed requests can block the `cf-agent` process. Always test TCP 
+connections fully before deploying.
+
+**Arguments**:
+
+* `host` : Host name or IP address of server socket, *in the range* .\*
+* `port` : Port number to connect to, *in the range* 0,99999999999   
+* `sendstring` : Protocol query string, *in the range* .\*
+* `maxbytes` : Maximum number of bytes to read in response, *in the range* 
+0,99999999999
 
 **Example**:
 
 ```cf3
-bundle agent example
+    bundle agent example
+    {     
+    vars:
 
-{     
-vars:
+      "my80" string => readtcp("research.iu.hio.no","80","GET /index.php HTTP/1.1$(const.r)$(const.n)Host: research.iu.hio.no$(const.r)$(const.n)$(const.r)$(const.n)",20);
 
-  "my80" string => readtcp("research.iu.hio.no","80","GET /index.php HTTP/1.1$(const.r)$(const.n)Host: research.iu.hio.no$(const.r)$(const.n)$(const.r)$(const.n)",20);
+    classes:
 
-classes:
+      "server_ok" expression => regcmp("[^\n]*200 OK.*\n.*","$(my80)");
 
-  "server_ok" expression => regcmp("[^\n]*200 OK.*\n.*","$(my80)");
+    reports:
 
-reports:
+      server_ok::
 
-  server_ok::
+        "Server is alive";
 
-    "Server is alive";
+      !server_ok::
 
-  !server_ok::
-
-    "Server is not responding - got $(my80)";
-}
+        "Server is not responding - got $(my80)";
+    }
 ```
 
-hostnameip
+**Notes**: Note that on some systems the timeout mechanism does not seem to
+successfully interrupt the waiting system calls so this might hang if you send 
+an incorrect query string. This should not happen, but the cause has yet to be 
+diagnosed.
 
-The host name or IP address of a tcp socket.   
-
-port
-
-The port number to connect to.   
-
-sendstring
-
-A string to send to the TCP port to elicit a response   
-
-maxbytes
-
-The maximum number of bytes to read in response.
-
-Important note: not all Unix TCP read operations respond to signals for
-interruption so poorly formed requests can hang. Always test TCP
-connections fully before deploying.
-
-**Notes**:
-If the send string is empty, no data are sent or received from the
-socket. Then the function only tests whether the TCP port is alive and
-returns an empty variable.
-
-Note that on some systems the timeout mechanism does not seem to
-successfully interrupt the waiting system calls so this might hang if
-you send a query string that is incorrect. This should not happen, but
-the cause has yet to be diagnosed.
