@@ -32,7 +32,7 @@ lines matched.
 * `array` : Array identifier to populate, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
 * `filename` : File name to read, *in the range* "?(/.\*)
-* `commnet` : Unanchored regex matching comments, *in the range* .\*
+* `comment` : Unanchored regex matching comments, *in the range* .\*
 * `split` : Unanchored regex to split lines into fields, *in the range* .\*
 * `maxentries` : Maximum number of entries to read, *in the range*
 0,99999999999   
