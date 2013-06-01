@@ -7,8 +7,6 @@ alias: reference-functions-getfields.html
 tags: [reference, functions, getfields]
 ---
 
-
-
 **Prototype**: getfields(arg1,arg2,arg3,arg4) 
 
 **Return type**: `int`
@@ -22,8 +20,7 @@ tags: [reference, functions, getfields]
 Get an array of fields in the lines matching regex arg1 in file arg2,
 split on regex arg3 as array name arg4
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent example
@@ -43,9 +40,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This function matches lines (using a regular expression) in the named
 file, and splits the *first* matched line into fields (using a second
 regular expression), placing these into a named array whose elements are

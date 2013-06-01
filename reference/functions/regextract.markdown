@@ -7,8 +7,6 @@ alias: reference-functions-regextract.html
 tags: [reference, functions, regextract]
 ---
 
-
-
 **Prototype**: regextract(arg1,arg2,arg3) 
 
 **Return type**: `class`
@@ -22,8 +20,7 @@ tags: [reference, functions, regextract]
 True if the regular expression in arg 1 matches the string in arg2 and
 sets a non-empty array of backreferences named arg3
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent testbundle
@@ -46,9 +43,7 @@ reports:
 
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 **Arguments:**
 
 *regex*

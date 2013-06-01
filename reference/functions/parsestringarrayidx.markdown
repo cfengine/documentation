@@ -7,8 +7,6 @@ alias: reference-functions-parsestringarrayidx.html
 tags: [reference, functions, parsestringarrayidx]
 ---
 
-
-
 **Prototype**: parsestringarrayidx(arg1,arg2,arg3,arg4,arg5,arg6)
 
 **Return type**: `int`
@@ -26,8 +24,7 @@ tags: [reference, functions, parsestringarrayidx]
 Read an array of strings from a file and assign the dimension to a
 variable with integer indexes
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test(f) 
@@ -63,9 +60,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 **History**: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
 This function mirrors the exact behaviour of `readstringarrayidx()`, but

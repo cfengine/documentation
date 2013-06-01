@@ -7,8 +7,6 @@ alias: reference-functions-readrealarray.html
 tags: [reference, functions, readrealarray]
 ---
 
-
-
 **Prototype**: readrealarray(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**: `int`
@@ -26,8 +24,7 @@ tags: [reference, functions, readrealarray]
 Read an array of real numbers from a file and assign the dimension to a
 variable
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 vars:
@@ -70,7 +67,5 @@ maxsize
 
 The maximum number of bytes to read from the file
 
-**Notes**:  
-   
-
+**Notes**:
 For detailed notes, See [Function readintarray](#Function-readintarray).

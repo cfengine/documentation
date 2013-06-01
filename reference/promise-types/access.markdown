@@ -136,8 +136,7 @@ in the POSIX `gethostbyname` service.
 **Description**: List of host names or IP addresses to grant access to file
 objects
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 access:
@@ -147,9 +146,7 @@ access:
     admit   => { "127.0.0.1", "192.168.0.1/24", ".*\.domain\.tld"  };
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Admit promises grant access to file objects on the server. Arguments may
 be IP addresses or hostnames, provided DNS name resolution is active. In
 order to reach this stage, a client must first have passed all of the
@@ -167,8 +164,7 @@ expressions to match the IP address or name of the connecting host.
 **Description**: List of host names or IP addresses to deny access to file
 objects
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle server access_rules()
@@ -183,9 +179,7 @@ access:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Denial is for special exceptions. A better strategy is always to grant
 on a need to know basis. A security policy based on exceptions is a weak
 one.
@@ -202,8 +196,7 @@ list, as non-specific matches are too greedy for denial.
 **Description**: List of host names or IP addresses to grant full
 read-privilege on the server
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 access:
@@ -218,9 +211,7 @@ access:
      maproot => { "backup_host.example.org" };
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Normally users authenticated by the server are granted access only to
 files owned by them and no-one else. Even if the `cf-serverd` process
 runs with root privileges on the server side of a client-server
@@ -252,8 +243,7 @@ files if the connecting user does not own the file on the server.
 **Description**: true/false whether the current file access promise is
 conditional on the connection from the client being encrypted
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 access:
@@ -264,9 +254,7 @@ access:
     ifencrypted => "true";
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
 
@@ -287,8 +275,7 @@ connection is encrypted.
 **Description**: The type of object being granted access (the default
 grants access to files)
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 
@@ -331,9 +318,7 @@ access:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 By default, access to resources granted by the server are files.
 However, sometimes it is useful to cache `literal` strings, hints and
 data on the server for easy access (e.g. the contents of variables or

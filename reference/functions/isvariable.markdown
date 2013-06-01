@@ -7,8 +7,6 @@ alias: reference-functions-isvariable.html
 tags: [reference, functions, isvariable]
 ---
 
-
-
 **Prototype**: isvariable(arg1) 
 
 **Return type**: `class`
@@ -19,8 +17,7 @@ tags: [reference, functions, isvariable]
 
 True if the named variable is defined
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -51,8 +48,6 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The variable need only exist. This says nothing about its value. Use
 `regcmp` to check variable values.

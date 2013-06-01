@@ -7,8 +7,6 @@ alias: reference-functions-readstringlist.html
 tags: [reference, functions, readstringlist]
 ---
 
-
-
 **Prototype**: readstringlist(arg1,arg2,arg3,arg4,arg5) 
 
 **Return type**: `slist`
@@ -23,8 +21,7 @@ tags: [reference, functions, readstringlist]
 
 Read and assign a list variable from a file of separated strings
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -81,9 +78,7 @@ maxsize
 
 The maximum number of bytes to read from the file
 
-**Notes**:  
-   
-
+**Notes**:
 The following example file would be split into a list of the first ten
 Greek letters (alpha through kappa).
 

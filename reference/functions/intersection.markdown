@@ -7,8 +7,6 @@ alias: reference-functions-intersection.html
 tags: [reference, functions, intersection]
 ---
 
-
-
 **Prototype**: intersection(arg1,arg2) 
 
 **Return type**: `slist`
@@ -21,8 +19,7 @@ tags: [reference, functions, intersection]
 
 Returns the unique elements in arg1 that are also in arg2.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 undle agent test

@@ -17,8 +17,7 @@ tags: [reference, functions, usemodule]
 
 Execute cfengine module script and set class if successful
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -45,9 +44,7 @@ bundle agent test
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Modules must reside in WORKDIR/modules but no longer require a special
 naming convention.
 

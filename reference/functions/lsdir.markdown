@@ -7,8 +7,6 @@ alias: reference-functions-lsdir.html
 tags: [reference, functions, lsdir]
 ---
 
-
-
 **Prototype**: lsdir(arg1,arg2,arg3) 
 
 **Return type**: `slist`
@@ -22,8 +20,7 @@ true,false,yes,no,on,off
 
 Return a list of files in a directory matching a regular expression
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 vars:

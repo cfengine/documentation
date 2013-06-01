@@ -7,8 +7,6 @@ alias: reference-functions-islessthan.html
 tags: [reference, functions, islessthan]
 ---
 
-
-
 **Prototype**: islessthan(arg1,arg2) 
 
 **Return type**: `class`
@@ -20,8 +18,7 @@ tags: [reference, functions, islessthan]
 True if arg1 is numerically less than arg2, else compare strings like
 NOT strcmp
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -52,9 +49,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The complement of `isgreaterthan`. The comparison is made numerically if
 possible. If the values are strings, the result is identical to that of
 comparing with strcmp().

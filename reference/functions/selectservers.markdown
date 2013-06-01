@@ -7,8 +7,6 @@ alias: reference-functions-selectservers.html
 tags: [reference, functions, selectservers]
 ---
 
-
-
 **Prototype**: selectservers(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**: `int`
@@ -27,8 +25,7 @@ contact, *in the range* @[(][a-zA-Z0-9]+[)]
 Select tcp servers which respond correctly to a query and return their
 number, set array of names
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -76,9 +73,7 @@ reports:
 
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This function selects all the TCP ports that are active and functioning
 from an ordered list and builds an array of their names. This allows us
 to select a current list of failover alternatives that are pretested.

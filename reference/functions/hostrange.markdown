@@ -7,8 +7,6 @@ alias: reference-functions-hostrange.html
 tags: [reference, functions, hostrange]
 ---
 
-
-
 **Prototype**: hostrange(arg1,arg2) 
 
 **Return type**: `class`
@@ -20,8 +18,7 @@ tags: [reference, functions, hostrange]
 True if the current host lies in the range of enumerated hostnames
 specified
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 
@@ -49,8 +46,6 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is a pattern matching function for non-regular (enumerated)
 expressions.

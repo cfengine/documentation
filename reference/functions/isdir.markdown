@@ -7,8 +7,6 @@ alias: reference-functions-isdir.html
 tags: [reference, functions, isdir]
 ---
 
-
-
 **Prototype**: isdir(arg1) 
 
 **Return type**: `class`
@@ -18,8 +16,7 @@ tags: [reference, functions, isdir]
 
 True if the named object is a directory
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 
@@ -47,8 +44,6 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The CFEngine process must have access to the object concerned in order
 for this to work.

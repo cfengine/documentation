@@ -20,8 +20,7 @@ tags: [reference, functions, sublist]
 
 Return list of up to elements of list, obtained from head or tail depending on extract_from.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test

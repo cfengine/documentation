@@ -61,8 +61,7 @@ Action bodies place limits on how often to verify the promise and what
 classes to raise in the case that the promise can or cannot be kept.
 
 
-**Example**:  
-   
+**Example**:
 
 The following example shows a simple use of transaction control:
 
@@ -164,8 +163,7 @@ not performed on every run. Using time classes such as `Hr12` is one
 part of this strategy; using `ifelapsed` is another, which is not tied 
 to a specific time.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -198,8 +196,7 @@ to a specific time.
 and retried is set with `expireafter`. This is the locking time after which 
 CFEngine will attempt to kill and restart its attempt to keep a promise.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      body action example
@@ -225,8 +222,7 @@ on standard output are denoted by an L: prefix.
 Note that `log_string` does not interact with `log_level`, which is about 
 regular system output messages.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
           
@@ -275,8 +271,7 @@ will include a message when the promise is kept or repaired in the event
 log.   
 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -307,8 +302,7 @@ promise will log promise-kept status using the log string to this named
 It is intended that named file logs should be different for the three 
 cases: promise kept, promise not kept and promise repaired.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -357,8 +351,7 @@ request.
 of the log message, as interpreted by a syslog server. It determines the 
 importance of messages from CFEngine.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      body action low_priority
@@ -377,8 +370,7 @@ importance of messages from CFEngine.
 file to which log\_string will be saved, if undefined it goes to the system 
 logger.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -442,8 +434,7 @@ destination for the log string is syslog, but only for non-kept promises.
 Only the `log_string` is affected by this setting. Other messages 
 destined for logging are sent to syslog.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -500,8 +491,7 @@ to keeping this promise. If nothing is specified, the default value is
 +1.0. However, nothing is logged unless the agent control body switched 
 on track\_value = "true".
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -526,8 +516,7 @@ attributed to repairing a promise. If nothing is specified, the default
 value is 0.5. However, nothing is logged unless the agent control body 
 switched on track\_value = "true".
   
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -552,8 +541,7 @@ negative) attributed to not keeping a promise. If nothing is specified, the
 default value is -1.0. However, nothing is logged unless the agent control 
 body switched on track\_value = "true".
   
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -591,8 +579,7 @@ database.
 
 **Default value:** false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -635,8 +622,7 @@ performed in the background on Windows.
 
 **Default value:** false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -669,8 +655,7 @@ attribute allows to set these three output levels on a per promise basis,
 allowing the promise to be more verbose than the global setting (but not 
 less).
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -763,8 +748,7 @@ globally. A promise could not be repaired because the corrective action
 failed for some reason. Any strings passed to this list are automatically 
 canonified, so it is unnecessary to call a canonify function on such inputs.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -811,8 +795,7 @@ resource was denied.
 **Description**: The `repair_timeout` slist contains classes to be defined 
 globally.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -836,8 +819,7 @@ globally. Note that any strings passed to this list are automatically
 canonified, so it is unnecessary to call a canonify function on such inputs.
 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -901,8 +883,7 @@ if the promise is repaired. Note that any strings passed to this list are
 automatically canonified, so it is unnecessary to call a canonify function 
 on such inputs.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -956,8 +937,7 @@ defined.
 **Description**: A `kept_returncodes` slist contains return codes indicating a 
 kept command-related promise.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      bundle agent cmdtest
@@ -1062,8 +1042,7 @@ in the range from 0 to 255.
 **Description**: A `failed_returncodes` slist contains return codes 
 indicating a failed command-related promise.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      body common control
@@ -1133,8 +1112,7 @@ the specified classes should remain active. By default classes are ephemeral
 entities that disappear when `cf-agent` terminates. By setting a persistence 
 time, they can last even when the agent is not running.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -1164,8 +1142,7 @@ duration as a rare event then an absolute time limit is useful.
 
 **Default value:** reset
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -1186,8 +1163,7 @@ duration as a rare event then an absolute time limit is useful.
 promise. Comments written in code follow the program, they are not merely 
 discarded; they appear in reports and error messages.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 comment => "This comment follows the data for reference ...",
@@ -1213,8 +1189,7 @@ dependee can be verified.
 
 Handles in other namespaces may be referred to by namespace:handle.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -1254,8 +1229,7 @@ essential for mapping dependencies and performing impact analyses.
 Handles may consist of regular identifier characters. CFEngine automatically 
 `canonifies' the names of handles to conform to this standard.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 access:
@@ -1284,8 +1258,7 @@ to enable a channel between variables and classes.
 The result is thus the logical AND of the ordinary classes and the variable 
 classes.
 
-**Example**:  
-   
+**Example**:
 
 The generic example has the form:
 
@@ -1359,8 +1332,7 @@ It is sometimes convenient to attach meta-data of a more technical nature to
 policy. It may be used for arbitrary key=value strings for example.
 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 files:

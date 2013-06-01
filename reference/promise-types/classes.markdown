@@ -294,8 +294,7 @@ on the right-hand side matches.
 
 **Allowed input range**: `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
     classes:

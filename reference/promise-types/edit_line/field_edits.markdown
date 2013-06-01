@@ -140,8 +140,7 @@ Setting `allow_blank_fields` defines how blank fields in a line are handled.
    
 When editing a file using the field or column model, blank fields, especially at the start and end are generally discarded. If `allow_blank_fields` is set to true, CFEngine will retain the blank fields and print the appropriate number of field separators. 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -177,8 +176,7 @@ Setting `extend_fields` can add new fields, to avoid triggering an error.
 If a user specifies a field that does not exist, because there are not so many fields, this allows the number of fields to be extended. Without
 this setting, CFEngine will issue an error if a non-existent field is referenced. Blank fields in a tabular file can be eliminated or kept depending in this setting. If in doubt, set this to true. 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -220,8 +218,7 @@ set - replace the entire field/column with the specified value
 
 delete - delete the specified value (if present) in the specified field/column
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -246,8 +243,7 @@ Most tabular files are separated by simple characters, but by allowing a
 general regular expression one can make creative use of this model to
 edit all kinds of line-based text files.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -267,8 +263,7 @@ edit all kinds of line-based text files.
   Set a field to a constant value. For example, reset the value to a
 constant default, empty the field, or set it fixed list.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -289,8 +284,7 @@ constant default, empty the field, or set it fixed list.
 Setting `select_field` determines the index of the field required 0..n (default starts
 from 1). 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -323,8 +317,7 @@ The numbering of fields is a matter for consistency and convention. Arrays are u
 but the first column in a file would normally be 1. By setting this option, you can tell CFEngine that the first column should be understood
 as number 0 instead, for consistency with other array functions.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -353,8 +346,7 @@ as number 0 instead, for consistency with other array functions.
 
 Setting `value_separator` defines the character separator for subfields inside the selected field. For example, elements in the group file are separated by a colon (':'), but the lists of users in these fields are separated by a comma (',').
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      

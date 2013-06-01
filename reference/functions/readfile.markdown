@@ -7,8 +7,6 @@ alias: reference-functions-readfile.html
 tags: [reference, functions, readfile]
 ---
 
-
-
 **Prototype**: readfile(arg1,arg2) 
 
 **Return type**: `string`
@@ -20,8 +18,7 @@ tags: [reference, functions, readfile]
 
 Read max number of bytes from named file and assign to variable
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 vars:
@@ -31,7 +28,5 @@ vars:
     string => readfile( "/home/mark/tmp/testfile" , "33" );
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The file (fragment) is read into a single scalar variable.

@@ -7,8 +7,6 @@ alias: reference-functions-readtcp.html
 tags: [reference, functions, readtcp]
 ---
 
-
-
 **Prototype**: readtcp(arg1,arg2,arg3,arg4) 
 
 **Return type**: `string`
@@ -23,8 +21,7 @@ tags: [reference, functions, readtcp]
 
 Connect to tcp port, send string and assign result to variable
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent example
@@ -70,9 +67,7 @@ Important note: not all Unix TCP read operations respond to signals for
 interruption so poorly formed requests can hang. Always test TCP
 connections fully before deploying.
 
-**Notes**:  
-   
-
+**Notes**:
 If the send string is empty, no data are sent or received from the
 socket. Then the function only tests whether the TCP port is alive and
 returns an empty variable.

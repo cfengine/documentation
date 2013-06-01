@@ -25,8 +25,7 @@ regular expression must match a complete class for the expression to be true
 (i.e. the regex is 
 [anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions)).
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
     body common control

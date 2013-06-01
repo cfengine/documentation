@@ -9,8 +9,6 @@ tags: [reference, functions, ldapvalue]
 
 **This function is only available in CFEngine Enterprise.**
 
-
-
 **Prototype**: ldapvalue(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**:
@@ -27,8 +25,7 @@ tags: [reference, functions, ldapvalue]
 
 Extract the first matching named value from ldap
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 vars:
@@ -45,9 +42,7 @@ vars:
                              );
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 ```cf3
      
      (string) ldapvalue(uri,dn,filter,name,scope,security)

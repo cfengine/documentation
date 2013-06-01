@@ -7,8 +7,6 @@ alias: reference-functions-splitstring.html
 tags: [reference, functions, splitstring]
 ---
 
-
-
 **Prototype**: splitstring(arg1,arg2,arg3) 
 
 **Return type**: `slist`
@@ -21,8 +19,7 @@ tags: [reference, functions, splitstring]
 Convert a string in arg1 into a list of max arg3 strings by splitting on
 a regular expression in arg2
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test
@@ -45,9 +42,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Returns a list of strings from a string.
 
 **ARGUMENTS**:

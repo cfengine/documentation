@@ -7,8 +7,6 @@ alias: reference-functions-peerleaders.html
 tags: [reference, functions, peerleaders]
 ---
 
-
-
 **Prototype**: peerleaders(arg1,arg2,arg3) 
 
 **Return type**: `slist`
@@ -20,8 +18,7 @@ tags: [reference, functions, peerleaders]
 
 Get a list of peer leaders from the named partitioning
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent peers
@@ -45,9 +42,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 ```cf3
      
      (slist) peers(file of hosts,comment pattern,group size);

@@ -7,8 +7,6 @@ alias: reference-functions-isplain.html
 tags: [reference, functions, isplain]
 ---
 
-
-
 **Prototype**: isplain(arg1) 
 
 **Return type**: `class`
@@ -18,8 +16,7 @@ tags: [reference, functions, isplain]
 
 True if the named object is a plain/regular file
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control

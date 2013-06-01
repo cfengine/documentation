@@ -7,8 +7,6 @@ alias: reference-functions-maplist.html
 tags: [reference, functions, maplist]
 ---
 
-
-
 **Prototype**: maplist(arg1,arg2) 
 
 **Return type**: `slist`
@@ -21,8 +19,7 @@ tags: [reference, functions, maplist]
 
 Return a list with each element modified by a pattern based \$(this)
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test
@@ -38,9 +35,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 **History**: Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
 This is essentially like the map() function in Perl, and applies to

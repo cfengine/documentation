@@ -7,8 +7,6 @@ alias: reference-functions-regline.html
 tags: [reference, functions, regline]
 ---
 
-
-
 **Prototype**: regline(arg1,arg2) 
 
 **Return type**: `class`
@@ -19,8 +17,7 @@ tags: [reference, functions, regline]
 
 True if the regular expression in arg1 matches a line in file arg2
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent testbundle
@@ -48,9 +45,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Note that the regular expression must match an entire line of the file
 in order to give a true result. This function is useful for `edit_line`
 applications, where one might want to set a class for detecting the

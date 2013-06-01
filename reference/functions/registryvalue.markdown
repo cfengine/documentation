@@ -7,8 +7,6 @@ alias: reference-functions-registryvalue.html
 tags: [reference, functions, registryvalue]
 ---
 
-
-
 **Prototype**: registryvalue(arg1,arg2) 
 
 **Return type**: `string`
@@ -19,8 +17,7 @@ tags: [reference, functions, registryvalue]
 
 Returns a value for an MS-Win registry key,value pair
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent reg
@@ -38,9 +35,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This function applies only to Windows-based systems. It reads a data
 field for the value named in the second argument, which lies within the
 registry key given by the first argument.

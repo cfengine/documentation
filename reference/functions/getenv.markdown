@@ -7,8 +7,6 @@ alias: reference-functions-getenv.html
 tags: [reference, functions, getenv]
 ---
 
-
-
 **Prototype**: `getenv(variable, maxlength)`
 
 **Return type**: `string`

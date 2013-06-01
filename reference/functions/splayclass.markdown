@@ -7,8 +7,6 @@ alias: reference-functions-splayclass.html
 tags: [reference, functions, splayclass]
 ---
 
-
-
 **Prototype**: splayclass(arg1,arg2) 
 
 **Return type**: `class`
@@ -20,8 +18,7 @@ tags: [reference, functions, splayclass]
 True if the first argument's time-slot has arrived, according to a
 policy in arg2
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -48,9 +45,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The lvalue class evaluates to true if the system clock lies within a
 scheduled time-interval that maps to a hash of the first argument (which
 may be any arbitrary string). Different strings will hash to different

@@ -9,8 +9,6 @@ tags: [reference, functions, regldap]
 
 **This function is only available in CFEngine Enterprise.**
 
-
-
 **Prototype**: regldap(arg1,arg2,arg3,arg4,arg5,arg6,arg7) 
 
 **Return type**: `class`
@@ -27,8 +25,7 @@ tags: [reference, functions, regldap]
 True if the regular expression in arg6 matches a value item in an LDAP
 search.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 classes:
@@ -44,9 +41,7 @@ classes:
                                 );
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 ```cf3
      
      (class) regldap(uri,dn,filter,name,scope,regex,security)

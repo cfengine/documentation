@@ -7,8 +7,6 @@ alias: reference-functions-getvalues.html
 tags: [reference, functions, getvalues]
 ---
 
-
-
 **Prototype**: getvalues(arg1) 
 
 **Return type**: `slist`
@@ -20,8 +18,7 @@ tags: [reference, functions, getvalues]
 Get a list of values corresponding to the right hand sides in an array
 whose id is the argument and assign to variable
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -54,9 +51,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Make sure you specify the correct scope when supplying the name of the
 variable. If the array contains list elements on the right hand side,
 then all of the list elements are flattened into a single list to make

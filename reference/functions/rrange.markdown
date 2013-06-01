@@ -7,8 +7,6 @@ alias: reference-functions-rrange.html
 tags: [reference, functions, rrange]
 ---
 
-
-
 **Prototype**: rrange(arg1,arg2) 
 
 **Return type**: `rrange [real,real]``
@@ -19,14 +17,11 @@ tags: [reference, functions, rrange]
 
 Define a range of real numbers for cfengine internal use
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is not yet used.

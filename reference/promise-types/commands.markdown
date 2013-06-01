@@ -160,8 +160,7 @@ For compatibility, the following values are also supported, and map to
 
 **Default value:** `noshell`
   
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -364,8 +363,7 @@ checks to user defined scripts.
 
 **Default value:** false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -448,8 +446,7 @@ should normally make your module completely silent.
 **Default value:** false
 
 
-**Example**:  
-   
+**Example**:
 
 Here is an example module written in shell:
 

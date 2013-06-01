@@ -17,8 +17,7 @@ tags: [reference, functions, sum]
 
 Return the sum of a list of reals
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control

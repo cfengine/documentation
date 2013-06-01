@@ -9,8 +9,6 @@ tags: [reference, functions, hostswithclass]
 
 **This function is only available in CFEngine Enterprise.**
 
-
-
 **Prototype**: hostswithclass(arg1,arg2) 
 
 **Return type**: `slist`
@@ -21,8 +19,7 @@ tags: [reference, functions, hostswithclass]
 
 Extract the list of hosts with the given class set from the CFEngine Database.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -47,9 +44,7 @@ am_policy_hub::
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 On CFEngine Enterprise, this function can be used to return a list of
 hostnames or ip-addresses of hosts that has the class given as argument
 1. Argument 2 may be address or name, to return IP address or hostname

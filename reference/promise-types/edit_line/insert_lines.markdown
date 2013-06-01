@@ -149,8 +149,7 @@ line two" location => myloc;
 
 **Description**: Expand any unexpanded variables
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -187,9 +186,7 @@ insert_lines:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 A way of incorporating templates with variable expansion into file
 operations. Variables should be named and scoped appropriately for the
 bundle in which this promise is made. In other words, you should qualify
@@ -220,8 +217,7 @@ $(mon.www_in)
 
 **Description**: Type of object the promiser string refers to
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle edit_line lynryd_skynyrd
@@ -255,9 +251,7 @@ Gimme three steps towards the door
 Gimme three steps
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The default is to treat the promiser as a literal string of convergent
 lines (the values `literal` and `string` are synonymous).
 
@@ -293,8 +287,7 @@ setting that does preserve the ordering of lines in the file is called
 
 **Description**: Insert line if it starts with a string in the list
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -326,8 +319,7 @@ is a multi-line block.
 
 **Description**: Insert line if it DOES NOT start with a string in the list
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -338,9 +330,7 @@ is a multi-line block.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The complement of `insert_if_startwith_from_list`. If the start of a
 line does *not* match one of the strings, that line is inserted into the
 file being edited.
@@ -359,8 +349,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Description**: Insert line if it fully matches a regex in the list
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -396,8 +385,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Description**: Insert line if it DOES NOT fully match a regex in the list
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -408,9 +396,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The complement of `insert_if_match_from_list`. If the line does *not*
 match a line in the secondary file, it is inserted into the file being
 edited.
@@ -429,8 +415,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Description**: Insert line if a regex in the list match a line fragment
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -441,9 +426,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The list contains literal strings to search for in the secondary file;
 in other words, the file being read via the `insert_type` attribute, not
 the main file being edited. If the string is found in a line of the
@@ -465,8 +448,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 **Description**: Insert line if a regex in the list DOES NOT match a line
 fragment
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -477,9 +459,7 @@ fragment
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The complement of `insert_if_contains_from_list`. If the line is *not*
 found in the secondary file, it is inserted into the file being edited.
 
@@ -508,8 +488,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
 
 **Default value:** after
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -522,9 +501,7 @@ insert\_lines](#insert_005ftype-in-insert_005flines)
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Determines whether an edit will occur before or after the currently
 matched line.   
 
@@ -544,8 +521,7 @@ file
 
 **Default value:** last
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -556,9 +532,7 @@ file
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 In multiple matches, decide whether the first or last occurrence of the
 matching pattern in the case affected by the change. In principle this
 could be generalized to more cases but this seems like a fragile quality
@@ -573,8 +547,7 @@ significance.
 
 **Description**: Regular expression for matching file line location
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -594,9 +567,7 @@ significance.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The expression must match a whole line, not a fragment within a line;
 that is, it is anchored.
 
@@ -622,8 +593,7 @@ This attribute is mutually exclusive of `select_line_number`.
 
 **Default value**: `exact_match`
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle edit_line Insert(service, filename)
@@ -637,9 +607,7 @@ insert_lines:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The white space matching policy applies only to `insert_lines`, as a
 convenience. It works by rewriting the insert string as a regular
 expression when *matching* lines (that is, when determining if the line

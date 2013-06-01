@@ -9,8 +9,6 @@ tags: [reference, functions, ldaplist]
 
 **This function is only available in CFEngine Enterprise.**
 
-
-
 **Prototype**: ldaplist(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**:
@@ -27,8 +25,7 @@ tags: [reference, functions, ldaplist]
 
 Extract all named values from multiple ldap records
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 vars:
@@ -45,9 +42,7 @@ vars:
                            );
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 ```cf3
      
      (slist) ldaplist(uri,dn,filter,name,scope,security)

@@ -37,8 +37,7 @@ templating.
 
 **Default value:** false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -51,9 +50,7 @@ templating.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 In a sectioned file, the line that marks the opening of a section is not
 normally included in the defined region (that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
@@ -96,8 +93,7 @@ unaffected by any `delete_lines` promises. See the next section on
 
 **Default value:** false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -110,9 +106,7 @@ unaffected by any `delete_lines` promises. See the next section on
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 In a sectioned file, the line that marks the end of a section is not
 normally included in the defined region; that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
@@ -151,8 +145,7 @@ in `include_start_delimiter`).
 
 **Description**: Regular expression matching start of edit region
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -165,9 +158,7 @@ in `include_start_delimiter`).
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 See also `select_end`. These delimiters mark out the region of a file to
 be edited. In the example, it is assumed that the file has section
 markers.
@@ -196,8 +187,7 @@ The start marker includes the first matched line.
 
 **Description**: Regular expression matches end of edit region from start
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -210,9 +200,7 @@ The start marker includes the first matched line.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 See also `select_start`. These delimiters mark out the region of a file
 to be edited. In this example, it is assumed that the file has section
 markers:

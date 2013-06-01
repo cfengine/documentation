@@ -7,8 +7,6 @@ alias: reference-functions-peerleader.html
 tags: [reference, functions, peerleader]
 ---
 
-
-
 **Prototype**: peerleader(arg1,arg2,arg3) 
 
 **Return type**: `string`
@@ -20,8 +18,7 @@ tags: [reference, functions, peerleader]
 
 Get the assigned peer-leader of the partition to which we belong
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent peers
@@ -45,9 +42,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 ```cf3
      
      (string) peerleader(file of hosts,comment pattern,group size);

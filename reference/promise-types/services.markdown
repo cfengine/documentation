@@ -161,8 +161,7 @@ variable is only defined for services promises.
 
 **Description**: Policy for cfengine service status
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 services:
@@ -171,9 +170,7 @@ services:
      service_policy => "disable";
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 If set to `start`, CFEngine Enterprise will keep the service in a running
 state, while `stop` means that the service is kept in a stopped state.
 `disable` implies `stop`, and ensures that the service can not be
@@ -189,8 +186,7 @@ changing file permissions).
 **Description**: A list of services on which the named service abstraction
 depends
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 services:
@@ -200,9 +196,7 @@ services:
     service_dependencies => { "network", "logging" };
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 A list of services that must be running before the service can be
 started. These dependencies can be started automatically by CFEngine
 Enterprise if they are not running see `service_dependence_chain`. However,
@@ -228,8 +222,7 @@ list.
 
 **Description**: Parameters for starting the service as command
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -240,9 +233,7 @@ list.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 These arguments will only be passed if CFEngine Enterprise starts the service.
 Thus, set `service_autostart_policy` to `none` to ensure that the
 arguments are always passed.
@@ -265,8 +256,7 @@ optional.
 
 **Description**: Should the service be started automatically by the OS
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -277,9 +267,7 @@ optional.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Defaults to `none`, which means that the service is not registered for
 automatic startup by the operating system in any way. It must be `none`
 if `service_policy` is not `start`. `boot_time` means the service is
@@ -308,8 +296,7 @@ inetd or xinetd on Unix.
 
 **Description**: How to handle dependencies and dependent services
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -320,9 +307,7 @@ inetd or xinetd on Unix.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The service dependencies include both the dependencies defined by the
 operating system and in `service_dependencies`, as described there.
 
@@ -357,8 +342,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 
 **Description**: Service abstraction type
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -369,9 +353,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 On Windows this defaults to, and must be `windows`. Unix systems can
 however have multiple means of registering services, but the choice must
 be available on the given system.

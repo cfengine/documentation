@@ -7,8 +7,6 @@ alias: reference-functions-or.html
 tags: [reference, functions, or]
 ---
 
-
-
 **Prototype**: or(...) 
 
 **Return type**: `string`
@@ -17,8 +15,7 @@ tags: [reference, functions, or]
 
 Calculate whether any argument evaluates to true
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 commands:

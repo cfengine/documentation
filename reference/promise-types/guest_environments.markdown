@@ -67,8 +67,7 @@ CFEngine currently provides a convergent interface to *libvirt*.
 **Description**: A class indicating which physical node will execute this
 guest machine
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 guest_environments:
@@ -83,9 +82,7 @@ guest_environments:
         environment_host => "ubuntu";
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The promise will only apply to the machine with this class set. Thus,
 CFEngine must be running locally on the hypervisor for the promise to
 take effect.
@@ -107,8 +104,7 @@ This attribute is required.
 
 **Description**: The IP addresses of the environment's network interfaces
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -128,9 +124,7 @@ This attribute is required.
      }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The IP addresses of the virtual machine can be overridden here at run
 time.   
 
@@ -142,8 +136,7 @@ time.
 
 **Description**: The hostname of the virtual environment
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      body environment_interface vnet(primary)
@@ -159,9 +152,7 @@ time.
      }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The 'hostname' of a virtual guest may or may not be the same as the
 identifier used as 'promiser' by the virtualization manager.   
 
@@ -173,8 +164,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 **Description**: The hostname of the virtual network
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -204,8 +194,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 **Description**: Number of virtual CPUs in the environment
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -218,9 +207,7 @@ identifier used as 'promiser' by the virtualization manager.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The maximum number of cores or processors in the physical environment
 will set a natural limit on this value.
 
@@ -235,8 +222,7 @@ This attribute conflicts with `env_spec`.
 **Description**: Amount of primary storage (RAM) in the virtual environment
 (KB)
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -249,9 +235,7 @@ This attribute conflicts with `env_spec`.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The maximum amount of memory in the physical environment will set a
 natural limit on this value.
 
@@ -266,8 +250,7 @@ This attribute conflicts with `env_spec`.
 **Description**: Amount of secondary storage (DISK) in the virtual
 environment (MB)
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -280,9 +263,7 @@ environment (MB)
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This parameter is currently unsupported, for future extension.
 
 This attribute conflicts with `env_spec`.   
@@ -296,8 +277,7 @@ This attribute conflicts with `env_spec`.
 **Description**: The path to an image with which to baseline the virtual
 environment
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -305,9 +285,7 @@ environment
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This function is for future development.   
 
 `env_spec`
@@ -319,8 +297,7 @@ This function is for future development.
 **Description**: A string containing a technology specific set of promises
 for the virtual instance
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      body environment_resources virt_xml(host)
@@ -381,8 +358,7 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 **Description**: The desired dynamical state of the specified environment
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 guest_environments:
@@ -398,9 +374,7 @@ guest_environments:
 
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The allowed states have the following convergent semantics.
 
 create
@@ -449,8 +423,7 @@ The guest machine is shut down, but not deallocated.
 
 **Description**: Virtual environment type
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent my_vm_cloud
@@ -477,8 +450,6 @@ guest_environments:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The currently supported types are those supported by *libvirt*. More
 will be added in the future.

@@ -7,8 +7,6 @@ alias: reference-functions-islink.html
 tags: [reference, functions, islink]
 ---
 
-
-
 **Prototype**: islink(arg1) 
 
 **Return type**: `class`
@@ -18,8 +16,7 @@ tags: [reference, functions, islink]
 
 True if the named object is a symbolic link
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -46,9 +43,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The link node must both exist and be a symbolic link. Hard links cannot
 be detected using this function. A hard link is a regular file or
 directory.

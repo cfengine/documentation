@@ -16,8 +16,7 @@ tags: [reference, functions, userexists]
 
 True if user name or numerical id exists on this host
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 
@@ -47,8 +46,6 @@ bundle agent example
 
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Checks whether the user is in the password database for the current host. The
 argument must be a user name or user id.

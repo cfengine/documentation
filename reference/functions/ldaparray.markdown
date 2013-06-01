@@ -9,8 +9,6 @@ tags: [reference, functions, ldaparray]
 
 **This function is only available in CFEngine Enterprise.**
 
-
-
 **Prototype**: ldaparray(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**:
@@ -27,8 +25,7 @@ tags: [reference, functions, ldaparray]
 
 Extract all values from an LDAP record
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 classes:
@@ -42,9 +39,7 @@ classes:
                                     "none");
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 ```cf3
      
      (class) ldaparray (array,uri,dn,filter,scope,security)

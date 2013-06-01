@@ -7,8 +7,6 @@ alias: reference-functions-groupexists.html
 tags: [reference, functions, groupexists]
 ---
 
-
-
 **Prototype**: groupexists(arg1) 
 
 **Return type**: `class`
@@ -18,8 +16,7 @@ tags: [reference, functions, groupexists]
 
 True if group or numerical id exists on this host
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -51,7 +48,5 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The group may be specified by name or number.

@@ -27,8 +27,7 @@ A regular expression matching zero or more lines. The regular expression is
 
 The name of the file to be examined.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
     bundle agent example

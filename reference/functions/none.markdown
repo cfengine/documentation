@@ -7,8 +7,6 @@ alias: reference-functions-none.html
 tags: [reference, functions, none]
 ---
 
-
-
 **Prototype**: none(arg1,arg2) 
 
 **Return type**: `class`
@@ -21,8 +19,7 @@ tags: [reference, functions, none]
 
 Return true if no element of the list matches the regular expression.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test

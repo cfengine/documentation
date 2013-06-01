@@ -55,16 +55,13 @@ promise.
 
 **Allowed input range**: `.*`
 
-**Notes**:  
-   
-
+**Notes**:
 Delete lines from a file if they begin with the sub-strings listed. Note
 that this determination is made only on promised lines (that is, this
 attribute modifies the selection criteria, it does not make the initial
 selection). 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -113,8 +110,7 @@ Thus, the promise will delete only the first and third lines of the file:
 Delete lines from a file unless they start with the sub-strings in the list given. Note that this determination is made only on promised lines.
 In other words, this attribute modifies the selection criteria, it does not make the initial selection.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -137,8 +133,7 @@ anchored (see [Anchored vs. unanchored regular expressions](#Anchored-vs_002e-un
 Note that this attribute modifies the selection criteria, it does not make the initial selection, and the match determination is made only on
 promised lines.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -161,8 +156,7 @@ anchored (see [Anchored vs. unanchored regular expressions](#Anchored-vs_002e-un
 Note that this attribute modifies the selection criteria, it does not make the initial selection, and the match determination is made only on
 promised lines.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -184,8 +178,7 @@ Delete lines from a file if they contain the sub-strings listed.
 Note that this attribute modifies the selection criteria, it does not make the initial selection, and the match determination is made only on
 promised lines.   
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -208,8 +201,7 @@ Note that this attribute modifies the selection criteria, it does not
 make the initial selection, and the match determination is made only on
 promised lines.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -246,8 +238,7 @@ Note, this makes no sense for multi-line deletions, and is therefore disallowed.
 removed (i.e. `not_matching` is false), or it does not match the whole thing and the ordered lines have no meaning anymore as an entity. In
 this case, the lines can be separately stated.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 delete_lines:

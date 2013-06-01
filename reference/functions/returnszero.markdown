@@ -7,8 +7,6 @@ alias: reference-functions-returnszero.html
 tags: [reference, functions, returnszero]
 ---
 
-
-
 **Prototype**: returnszero(arg1,arg2) 
 
 **Return type**: `class`
@@ -19,8 +17,7 @@ tags: [reference, functions, returnszero]
 
 True if named shell command has exit status zero
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -47,8 +44,6 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is the complement of `execresult`, but it returns a class result
 rather than the output of the command.

@@ -7,8 +7,6 @@ alias: reference-functions-grep.html
 tags: [reference, functions, grep]
 ---
 
-
-
 **Prototype**: grep(arg1,arg2) 
 
 **Return type**: `slist`
@@ -21,8 +19,7 @@ tags: [reference, functions, grep]
 Extract the sub-list if items matching the regular expression in arg1 of
 the list named in arg2
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test
@@ -45,9 +42,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Extracts a sublist of elements matching the regular expression in arg1
 from a list variable specified in arg2. The regex is anchored (See
 [Anchored vs. unanchored regular

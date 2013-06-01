@@ -7,8 +7,6 @@ alias: reference-functions-iprange.html
 tags: [reference, functions, iprange]
 ---
 
-
-
 **Prototype**: iprange(arg1) 
 
 **Return type**: `class`
@@ -18,8 +16,7 @@ tags: [reference, functions, iprange]
 
 True if the current host lies in the range of IP addresses specified
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -50,7 +47,5 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Pattern matching based on IP addresses.

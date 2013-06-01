@@ -7,8 +7,6 @@ alias: reference-functions-hostsseen.html
 tags: [reference, functions, hostsseen]
 ---
 
-
-
 **Prototype**: hostsseen(arg1,arg2,arg3) 
 
 **Return type**: `slist`
@@ -22,8 +20,7 @@ lastseen,notseen
 
 Extract the list of hosts last seen/not seen within the last arg1 hours
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test
@@ -42,9 +39,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Finds a list of hosts seen by a CFEngine remote connection on the
 current host within the number of hours specified by argument 1.
 Argument 2 may be lastseen or notseen, the latter being all hosts not

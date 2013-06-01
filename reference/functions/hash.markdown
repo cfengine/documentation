@@ -7,8 +7,6 @@ alias: reference-functions-hash.html
 tags: [reference, functions, hash]
 ---
 
-
-
 **Prototype**: hash(arg1,arg2) 
 
 **Return type**: `string`
@@ -20,8 +18,7 @@ md5,sha1,sha256,sha512,sha384,crypt
 
 Return the hash of arg1, type arg2 and assign to a variable
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 
@@ -49,9 +46,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Hash functions are extremely sensitive to input. You should not expect
 to get the same answer from this function as you would from every other
 tool, since it depends on how whitespace and end of file characters are

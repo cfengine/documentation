@@ -7,8 +7,6 @@ alias: reference-functions-on.html
 tags: [reference, functions, "on"]
 ---
 
-
-
 **Prototype**: on(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**: `int`
@@ -23,8 +21,7 @@ tags: [reference, functions, "on"]
 
 Convert an exact date/time to an integer system representation
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body file_select zero_age
@@ -34,9 +31,7 @@ file_result => "mtime";
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 An absolute date in the local timezone. Note that in process matching
 dates could be wrong by an hour depending on Daylight Savings Time /
 Summer Time. This is a known bug to be fixed.

@@ -7,8 +7,6 @@ alias: reference-functions-sort.html
 tags: [reference, functions, sort]
 ---
 
-
-
 **Prototype**: sort(arg1,arg2) 
 
 **Return type**: `slist`
@@ -20,8 +18,7 @@ tags: [reference, functions, sort]
 
 Return arg1 sorted according to arg2.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control

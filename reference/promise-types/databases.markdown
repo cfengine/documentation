@@ -168,8 +168,7 @@ a hierarchy of depth 1.
 
 The user name for a database connection is defined by `db_server_order`.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -186,8 +185,7 @@ The user name for a database connection is defined by `db_server_order`.
 
 The clear text password for a database connection is defined by `db_server_password`.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -224,8 +222,7 @@ The hostname or address for a database connection is defined by `db_server_host`
 
 The type of database server is defined by `db_server_type`.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -247,8 +244,7 @@ server, however, without an existing database this is not allowed. Thus, databas
 For the knowledge agent, this setting is made in the control body, for database verification promises, it is made in the `database_server` body.
 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -281,8 +277,7 @@ where x is currently `mysql` or `postgres`.
 
 The type of database that is to be manipulated is defined by `database_type`
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 database_type => "ms_registry";
@@ -305,8 +300,7 @@ database_type => "ms_registry";
 
 The nature of the promise is defined by `database_operation`.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 database_operation => "create";
@@ -323,8 +317,7 @@ A list of column definitions to be promised by SQL databases can be defined in a
 Columns are a list of tuplets (Name,type,size). Array items are triplets, and fixed size data elements are doublets.
 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
   "cf_topic_maps/topics"
@@ -356,8 +349,7 @@ In the case of the system registry on Windows, the rows represent data on data-v
 for the Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string) and `REG_DWORD` (double word).
 
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent databases
@@ -389,8 +381,7 @@ During recursive Windows registry scanning, this option allows us to ignore keys
 values in the registry are ephemeral and some should not be considered. This provides a convenient way of avoiding names. It is analogous to
 `exclude_dirs` for files.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 databases:

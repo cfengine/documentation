@@ -7,8 +7,6 @@ alias: reference-functions-lastnode.html
 tags: [reference, functions, lastnode]
 ---
 
-
-
 **Prototype**: lastnode(arg1,arg2) 
 
 **Return type**: `string`
@@ -19,8 +17,7 @@ tags: [reference, functions, lastnode]
 
 Extract the last of a separated string, e.g. filename from a path
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent yes
@@ -44,9 +41,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This function returns the final node in a chain, given a regular
 expression to split on. This is mainly useful for finding leaf-names of
 files, from a fully qualified path name.

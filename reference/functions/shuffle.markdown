@@ -7,8 +7,6 @@ alias: reference-functions-shuffle.html
 tags: [reference, functions, shuffle]
 ---
 
-
-
 **Prototype**: shuffle(arg1,arg2) 
 
 **Return type**: `slist`
@@ -20,8 +18,7 @@ tags: [reference, functions, shuffle]
 
 Return arg1 shuffled with seed arg2.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control

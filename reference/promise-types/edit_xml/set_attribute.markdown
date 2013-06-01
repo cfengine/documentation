@@ -48,8 +48,7 @@ multiple promises that each set an attribute.
 **Description**: Value of the attribute to be inserted into the XPath node
 of the XML file
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body attribute_value example(s)

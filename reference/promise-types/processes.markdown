@@ -257,8 +257,7 @@ out_of_range_define => "$(s)_up";
 
 **Description**: List of classes to define if the matches are in range
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -269,9 +268,7 @@ out_of_range_define => "$(s)_up";
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Classes are defined if the processes that are found in the process table
 satisfy the promised process count, in other words if the promise about
 the number of processes matching the other criteria is kept.   
@@ -285,8 +282,7 @@ the number of processes matching the other criteria is kept.
 **Description**: Integer range for acceptable number of matches for this
 process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -297,9 +293,7 @@ process
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is a numerical range for the number of occurrences of the process
 in the process table. As long as it falls within the specified limits,
 the promise is considered kept.   
@@ -312,8 +306,7 @@ the promise is considered kept.
 
 **Description**: List of classes to define if the matches are out of range
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -324,9 +317,7 @@ the promise is considered kept.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Classes to activate remedial promises conditional on this promise
 failure to be kept.
 
@@ -343,8 +334,7 @@ failure to be kept.
 **Description**: Regular expression matching the command/cmd field of a
 process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -358,9 +348,7 @@ process
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This expression should match the entire `COMMAND` field of the process
 table, not just a fragment. This field is usually the last field on the
 line, so it thus starts with the first non-space character and ends with
@@ -374,8 +362,7 @@ the end of line.
 
 **Description**: Range of integers matching the process id of a process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -400,8 +387,7 @@ the end of line.
 **Description**: Range of integers matching the parent group id of a
 process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -426,8 +412,7 @@ process
 **Description**: Range of integers matching the parent process id of a
 process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -452,8 +437,7 @@ process
 **Description**: Range of integers matching the priority field (PRI/NI) of
 a process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -476,8 +460,7 @@ a process
 
 **Description**: List of regexes matching the user of a process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -488,9 +471,7 @@ a process
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Regular expression should match a legal user name on the system. The
 regex is anchored, meaning it must match the entire name (see [Anchored
 vs. unanchored regular
@@ -506,8 +487,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 **Description**: Boolean class expression returning the logical combination
 of classes set by a process selection test
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -523,9 +503,7 @@ of classes set by a process selection test
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 A logical combination of the process selection classifiers. The syntax
 is the same as that for class expressions. There should be no spaces in
 the expressions.   
@@ -539,8 +517,7 @@ the expressions.
 **Description**: Range of integers matching the resident memory size of a
 process, in kilobytes
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -564,8 +541,7 @@ process, in kilobytes
 
 **Description**: Regular expression matching the status field of a process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -576,9 +552,7 @@ process, in kilobytes
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 For instance, characters in the set NRSsl+... Windows processes do not
 have status fields.   
 
@@ -590,8 +564,7 @@ have status fields.
 
 **Description**: Range of integers matching the start time of a process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -602,9 +575,7 @@ have status fields.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The calculation of time from process table entries is sensitive to
 Daylight Savings Time (Summer/Winter Time) so calculations could be an
 hour off. This is for now a bug to be fixed.   
@@ -618,8 +589,7 @@ hour off. This is for now a bug to be fixed.
 **Description**: Range of integers matching the total elapsed time of a
 process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -630,9 +600,7 @@ process
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is total accumulated time for a process.   
 
 `tty`
@@ -643,8 +611,7 @@ This is total accumulated time for a process.
 
 **Description**: Regular expression matching the tty field of a process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -655,9 +622,7 @@ This is total accumulated time for a process.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Windows processes are not regarded as attached to any terminal, so they
 all have tty '?'.   
 
@@ -670,8 +635,7 @@ all have tty '?'.
 **Description**: Range of integers matching the threads (NLWP) field of a
 process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -695,8 +659,7 @@ process
 **Description**: Range of integers matching the virtual memory size of a
 process, in kilobytes
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -707,9 +670,7 @@ process, in kilobytes
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 On Windows, the virtual memory size is the amount of memory that cannot
 be shared with other processes. In Task Manager, this is called Commit
 Size (Windows 2008), or VM Size (Windows XP).
@@ -722,8 +683,7 @@ Size (Windows 2008), or VM Size (Windows XP).
 
 **Description**: A command used to stop a running process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 processes:
@@ -734,9 +694,7 @@ processes:
 
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 As an alternative to sending a termination or kill signal to a process,
 one may call a 'stop script' to perform a graceful shutdown.
 
@@ -749,8 +707,7 @@ one may call a 'stop script' to perform a graceful shutdown.
 **Description**: A class to be defined globally if the process is not
 running, so that a command: rule can be referred to restart the process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 processes:
@@ -766,9 +723,7 @@ commands:
     "/var/cfengine/bin/cf-serverd";
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is a signal to restart a process that should be running, if it is
 not running. Processes are signaled first and then restarted later, at
 the end of bundle execution, after all possible corrective actions have
@@ -808,8 +763,7 @@ information.
 **Description**: A list of menu options representing signals to be sent to
 a process
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 processes:
@@ -829,8 +783,6 @@ processes:
    
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Signals are presented as an ordered list to the process. On Windows,
 only the kill signal is supported, which terminates the process.

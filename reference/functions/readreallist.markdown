@@ -7,8 +7,6 @@ alias: reference-functions-readreallist.html
 tags: [reference, functions, readreallist]
 ---
 
-
-
 **Prototype**: readreallist(arg1,arg2,arg3,arg4,arg5) 
 
 **Return type**: `rlist`
@@ -23,8 +21,7 @@ tags: [reference, functions, readreallist]
 
 Read and assign a list variable from a file of separated real numbers
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 

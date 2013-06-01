@@ -9,8 +9,6 @@ tags: [reference, functions, hubknowledge]
 
 **This function is only available in CFEngine Enterprise.**
 
-
-
 **Prototype**: hubknowledge(arg1) 
 
 **Return type**: `string`
@@ -21,8 +19,7 @@ tags: [reference, functions, hubknowledge]
 
 Read global knowledge from the hub host by id.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 vars:
@@ -32,9 +29,7 @@ vars:
    "global_number" string => hubknowledge("number_variable");
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This function is only available in CFEngine Enterprise. It
 is intended for use in distributed orchestration. It is recommended that
 you use this function sparingly with *guards*, as it contributes to

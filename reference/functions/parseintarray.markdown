@@ -7,8 +7,6 @@ alias: reference-functions-parseintarray.html
 tags: [reference, functions, parseintarray]
 ---
 
-
-
 **Prototype**: parseintarray(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**: `int`
@@ -26,8 +24,7 @@ tags: [reference, functions, parseintarray]
 Read an array of integers from a file and assign the dimension to a
 variable
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test(f) 
@@ -63,9 +60,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 **History**: Was introduced in version 3.1.5a1, Nova 2.1.0 (2011)
 
 This function mirrors the exact behaviour of `readintarray()`, but reads

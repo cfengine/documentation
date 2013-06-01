@@ -7,8 +7,6 @@ alias: reference-functions-getuid.html
 tags: [reference, functions, getuid]
 ---
 
-
-
 **Prototype**: getuid(arg1) 
 
 **Return type**: `int`
@@ -18,8 +16,7 @@ tags: [reference, functions, getuid]
 
 Return the integer user id of the named user on this host
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -46,9 +43,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 If the named user is not registered the variable will not be defined. On
 Windows, which does not support user ids, the variable will not be
 defined.

@@ -7,8 +7,6 @@ alias: reference-functions-irange.html
 tags: [reference, functions, irange]
 ---
 
-
-
 **Prototype**: irange(arg1,arg2) 
 
 **Return type**:
@@ -20,8 +18,7 @@ tags: [reference, functions, irange]
 
 Define a range of integer values for cfengine internal use
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 irange("1","100");
@@ -29,9 +26,7 @@ irange("1","100");
 irange(ago(0,0,0,1,30,0), "0");
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Used for any scalar attribute which requires an integer range. You can
 generally interchangeably say "1,10" or irange("1","10"). However, if
 you want to create a range of dates or times, you must use irange if you

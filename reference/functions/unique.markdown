@@ -17,8 +17,7 @@ tags: [reference, functions, unique]
 
 Return list of unique elements from list.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test

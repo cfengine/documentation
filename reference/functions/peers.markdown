@@ -7,8 +7,6 @@ alias: reference-functions-peers.html
 tags: [reference, functions, peers]
 ---
 
-
-
 **Prototype**: peers(arg1,arg2,arg3) 
 
 **Return type**: `slist`
@@ -21,8 +19,7 @@ tags: [reference, functions, peers]
 Get a list of peers (not including ourself) from the partition to which
 we belong
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent peers
@@ -46,9 +43,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 ```cf3
      
      (slist) peers(file of hosts,comment pattern,group size);

@@ -7,8 +7,6 @@ alias: reference-functions-nth.html
 tags: [reference, functions, nth]
 ---
 
-
-
 **Prototype**: nth(arg1,arg2) 
 
 **Return type**: `string`
@@ -20,8 +18,7 @@ tags: [reference, functions, nth]
 
 Return the element of arg1 at zero-based position arg2.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test

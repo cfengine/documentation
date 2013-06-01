@@ -16,8 +16,7 @@ tags: [reference, functions, translatepath]
 
 Translate path separators from Unix style to the host's native
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -42,9 +41,7 @@ bundle agent test
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Takes a string argument with slashes as path separators and translate
 these to the native format for path separators on the host. For example
 translatepath("a/b/c") would yield "a/b/c" on Unix platforms, but

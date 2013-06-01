@@ -7,8 +7,6 @@ alias: reference-functions-maparray.html
 tags: [reference, functions, maparray]
 ---
 
-
-
 **Prototype**: maparray(arg1,arg2) 
 
 **Return type**: `slist`
@@ -21,8 +19,7 @@ tags: [reference, functions, maparray]
 
 Return a list with each element modified by a pattern based on \$(this.k) and \$(this.v)
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control

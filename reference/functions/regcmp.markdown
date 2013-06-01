@@ -7,8 +7,6 @@ alias: reference-functions-regcmp.html
 tags: [reference, functions, regcmp]
 ---
 
-
-
 **Prototype**: regcmp(arg1,arg2) 
 
 **Return type**: `class`
@@ -19,8 +17,7 @@ tags: [reference, functions, regcmp]
 
 True if arg1 is a regular expression matching that matches string arg2
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent subtest(user)
@@ -42,9 +39,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Compares a string to a regular expression.
 
 **ARGUMENTS**:

@@ -64,8 +64,7 @@ privileged access on the host directly.
 **Description**: List of public-key user names that are allowed to activate
 the promised class during remote agent activation
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 roles:
@@ -73,9 +72,7 @@ roles:
   ".*"  authorize => { "mark", "marks_friend" };
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Part of Role Based Access Control (RBAC) in CFEngine. The users listed
 in this section are granted access to set certain classes by using the
 remote `cf-runagent`. The user-names will refer to public key identities

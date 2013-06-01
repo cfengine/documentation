@@ -190,16 +190,13 @@ into agent variables in the `$(mon.`name`)` context.
 
 **Description**: The datatype being collected.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 stream_type => "pipe";
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 CFEngine treats all input using a stream abstraction. The preferred
 interface is files, since they can be read without incurring the cost of
 a process. However pipes from executed commands may also be invoked.
@@ -220,8 +217,7 @@ a process. However pipes from executed commands may also be invoked.
 
 **Description**: The datatype being collected.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
   "/bin/df"
@@ -238,9 +234,7 @@ a process. However pipes from executed commands may also be invoked.
 
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 When CFEngine observes data, such as the attached partitions in
 the example above, the datatype determines how that data will be
 handled. Integer and real values, counters etc., are recorded as
@@ -266,8 +260,7 @@ be selected.
 **Description**: Whether the data can be seen as a time-series or just an
 isolated value
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
  "/proc/meminfo"
@@ -280,9 +273,7 @@ isolated value
       match_value => free_memory;
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 scalar
 
 A single value, with compressed statistics is retained. The value of the
@@ -312,8 +303,7 @@ is retained.
 **Description**: The engineering dimensions of this value or a note about
 its intent used in plots
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
    "/var/cfengine/state/cf_rootprocs"
@@ -328,9 +318,7 @@ its intent used in plots
          "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is an arbitary string used in documentation only.
 
 #### `match_value` (body template)
@@ -345,8 +333,7 @@ This is an arbitary string used in documentation only.
 
 **Description**: Regular expression for matching line location
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -366,9 +353,7 @@ This is an arbitary string used in documentation only.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The expression is anchored, meaning it must match a whole line, and not
 a fragment within a line (see [Anchored vs. unanchored regular
 expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
@@ -383,8 +368,7 @@ This attribute is mutually exclusive of `select_line_number`.
 
 **Description**: Read from the n-th line of the output (fixed format)
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -395,9 +379,7 @@ This attribute is mutually exclusive of `select_line_number`.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is mutually exclusive of `select_line_matching`.   
 
 `extraction_regex`
@@ -409,8 +391,7 @@ This is mutually exclusive of `select_line_matching`.
 **Description**: Regular expression that should contain a single
 backreference for extracting a value
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -422,9 +403,7 @@ backreference for extracting a value
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 A single parenthesized backreference should be given to lift the value
 to be measured out of the text stream. The regular expression is
 unanchored, meaning it may match a partial string (see [Anchored vs.
@@ -450,8 +429,7 @@ expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
 read when opening the file, and resets to the start if the file has
 since been truncated
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      bundle monitor watch
@@ -486,9 +464,7 @@ since been truncated
      }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This option applies only to file based input streams. If this is true,
 CFEngine treats the file as if it were a log file, growing continuously.
 Thus the monitor reads all new entries since the last sampling time on
@@ -513,8 +489,7 @@ logfile | grep pattern in Unix parlance.
 
 **Description**: Regular expression for matching line location
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -527,9 +502,7 @@ logfile | grep pattern in Unix parlance.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 **History**: Was introduced in 3.4.0 (2012)
 
 This option governs how CFEngine handels multiple matching lines in the

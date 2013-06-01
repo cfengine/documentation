@@ -82,8 +82,7 @@ edit_fstab => "true";
 
 **Default value:** false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -94,9 +93,7 @@ edit_fstab => "true";
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The default behaviour is to not place edits in the file system table.   
 
 `mount_type`
@@ -114,8 +111,7 @@ The default behaviour is to not place edits in the file system table.
 
 **Description**: Protocol type of remote file system
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -126,9 +122,7 @@ The default behaviour is to not place edits in the file system table.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This field is mainly for future extensions.   
 
 `mount_source`
@@ -139,8 +133,7 @@ This field is mainly for future extensions.
 
 **Description**: Path of remote file system to mount
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -151,9 +144,7 @@ This field is mainly for future extensions.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is the location on the remote device, server, SAN etc.   
 
 `mount_server`
@@ -164,8 +155,7 @@ This is the location on the remote device, server, SAN etc.
 
 **Description**: Hostname or IP or remote file system server
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -176,9 +166,7 @@ This is the location on the remote device, server, SAN etc.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Hostname or IP address, this could be on a SAN.   
 
 `mount_options`
@@ -190,8 +178,7 @@ Hostname or IP address, this could be on a SAN.
 **Description**: List of option strings to add to the file system table
 ("fstab")
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      body mount example
@@ -201,9 +188,7 @@ Hostname or IP address, this could be on a SAN.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This list is concatenated in a form appropriate for the filesystem. The
 options must be legal options for the system mount commands.   
 
@@ -226,8 +211,7 @@ options must be legal options for the system mount commands.
 
 **Default value:** false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -238,9 +222,7 @@ options must be legal options for the system mount commands.
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 #### `volume` (body template)
 
 **Type**: (ext body)
@@ -265,8 +247,7 @@ system on this host
 
 **Default value:** false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -279,9 +260,7 @@ system on this host
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 CFEngine will not normally perform sanity checks on filesystems that are
 not local to the host. If `true` it will ignore a partition's network
 location and ask the current host to verify storage located physically
@@ -296,8 +275,7 @@ on other systems.
 **Description**: Absolute or percentage minimum disk space that should be
 available before warning
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -313,9 +291,7 @@ available before warning
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The amount of freespace that is promised on a storage device. Once this
 promise is found not to be kept (that is, if the free space falls below
 the promised value), warnings are generated. You may also want to use
@@ -332,8 +308,7 @@ See: [classes in \*](#classes-in-_002a).
 **Description**: Minimum size in bytes that should be used on a
 sensible-looking storage device
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -344,9 +319,7 @@ sensible-looking storage device
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 ```cf3
      
      body volume control
@@ -367,8 +340,7 @@ sensible-looking storage device
 **Description**: Minimum number of files that should be defined on a
 sensible-looking storage device
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -379,9 +351,7 @@ sensible-looking storage device
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Files must be readable by the agent. In other words, it is assumed that
 the agent has privileges on volumes being checked.   
 
@@ -405,8 +375,7 @@ distribution
 
 **Default value:** false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -417,9 +386,7 @@ distribution
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This operation should not be left 'on' for more than a single run
 (maximum once per week). It causes CFEngine to perform an extensive disk
 scan noting the schedule of changes between files. This can be used for

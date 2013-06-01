@@ -7,8 +7,6 @@ alias: reference-functions-strcmp.html
 tags: [reference, functions, strcmp]
 ---
 
-
-
 **Prototype**: strcmp(arg1,arg2) 
 
 **Return type**: `class`
@@ -19,8 +17,7 @@ tags: [reference, functions, strcmp]
 
 True if the two strings match exactly
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control

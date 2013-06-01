@@ -119,8 +119,7 @@ classes of its parent
 
 **Default value**: false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent name
@@ -138,9 +137,7 @@ inherit => "true";
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 **History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 The `inherit` constraint can be added to the CFEngine code in two
@@ -163,8 +160,7 @@ reference using its bundle name. For example: \$(bundle.variable).
 **Description**: Specify the name of a local variable to contain any
 result/return value from the child
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -206,9 +202,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 **History**: Was introduced in 3.4.0 (2012)
 
 Return values are limited to scalars.

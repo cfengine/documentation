@@ -7,8 +7,6 @@ alias: reference-functions-product.html
 tags: [reference, functions, product]
 ---
 
-
-
 **Prototype**: product(arg1) 
 
 **Return type**: `real`
@@ -19,8 +17,7 @@ tags: [reference, functions, product]
 
 Return the product of a list of reals
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test

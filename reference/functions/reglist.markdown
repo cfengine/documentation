@@ -7,8 +7,6 @@ alias: reference-functions-reglist.html
 tags: [reference, functions, reglist]
 ---
 
-
-
 **Prototype**: reglist(arg1,arg2) 
 
 **Return type**: `class`
@@ -21,8 +19,7 @@ tags: [reference, functions, reglist]
 True if the regular expression in arg2 matches any item in the list
 whose id is arg1
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 vars:
@@ -37,9 +34,7 @@ classes:
   "am_name_server" expression => reglist("@(nameservers)",escape("$(sys.ipv4[eth0])"));
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Matches a list of test strings to a regular expression. In the example
 above, the IP address in `$(sys.ipv4[eth0])` must be `escape`d, because
 if not, the dot (.) characters in the IP address would be interpreted as

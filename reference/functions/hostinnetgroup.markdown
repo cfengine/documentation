@@ -7,8 +7,6 @@ alias: reference-functions-hostinnetgroup.html
 tags: [reference, functions, hostinnetgroup]
 ---
 
-
-
 **Prototype**: hostinnetgroup(arg1) 
 
 **Return type**: `class`
@@ -18,8 +16,7 @@ tags: [reference, functions, hostinnetgroup]
 
 True if the current host is in the named netgroup
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 classes:

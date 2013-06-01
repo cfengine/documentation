@@ -7,8 +7,6 @@ alias: reference-functions-getgid.html
 tags: [reference, functions, getgid]
 ---
 
-
-
 **Prototype**: getgid(arg1) 
 
 **Return type**: `int`
@@ -18,8 +16,7 @@ tags: [reference, functions, getgid]
 
 Return the integer group id of the named group on this host
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -46,9 +43,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 If the named group does not exist, the variable will not be defined. On
 Windows, which does not support group ids, the variable will not be
 defined.

@@ -7,8 +7,6 @@ alias: reference-functions-getindices.html
 tags: [reference, functions, getindices]
 ---
 
-
-
 **Prototype**: getindices(arg1) 
 
 **Return type**: `slist`
@@ -20,8 +18,7 @@ tags: [reference, functions, getindices]
 Get a list of keys to the array whose id is the argument and assign to
 variable
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -54,8 +51,6 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Make sure you specify the correct scope when supplying the name of the
 variable.

@@ -7,8 +7,6 @@ alias: reference-functions-length.html
 tags: [reference, functions, length]
 ---
 
-
-
 **Prototype**: length(arg1) 
 
 **Return type**: `int`
@@ -18,8 +16,7 @@ tags: [reference, functions, length]
 
 Return the length of list arg1.
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test

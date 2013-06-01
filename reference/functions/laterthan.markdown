@@ -7,8 +7,6 @@ alias: reference-functions-laterthan.html
 tags: [reference, functions, laterthan]
 ---
 
-
-
 **Prototype**: laterthan(arg1,arg2,arg3,arg4,arg5,arg6) 
 
 **Return type**:
@@ -25,8 +23,7 @@ tags: [reference, functions, laterthan]
 
 True if the current time is later than the given date
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 classes:
@@ -34,7 +31,5 @@ classes:
   "after_deadline" expression => laterthan(2000,1,1,0,0,0);
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The arguments are standard time (See [Function on](#Function-on)).

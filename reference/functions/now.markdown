@@ -7,8 +7,6 @@ alias: reference-functions-now.html
 tags: [reference, functions, now]
 ---
 
-
-
 **Prototype**: now() 
 
 **Return type**: `int`
@@ -17,8 +15,7 @@ tags: [reference, functions, now]
 
 Convert the current time into system representation
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body file_select zero_age

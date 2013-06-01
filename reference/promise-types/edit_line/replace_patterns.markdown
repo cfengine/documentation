@@ -77,8 +77,7 @@ the latter is non-convergent)
 
 **Default value:** all
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      
@@ -89,9 +88,7 @@ the latter is non-convergent)
      
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 A policy for string replacement.
 
 Using "first" is generally unwise, as it will change a different
@@ -107,8 +104,7 @@ applies to.
 
 **Description**: Value used to replace regular expression matches in search
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
      

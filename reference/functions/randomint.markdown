@@ -7,8 +7,6 @@ alias: reference-functions-randomint.html
 tags: [reference, functions, randomint]
 ---
 
-
-
 **Prototype**: randomint(arg1,arg2) 
 
 **Return type**: `int`
@@ -21,8 +19,7 @@ tags: [reference, functions, randomint]
 
 Generate a random integer between the given limits
 
-**Example**:  
-   
+**Example**:
 
 <<<<<<< HEAD
 ```cf3
@@ -75,9 +72,7 @@ R: Random Numbers: 32, 56, 37
 ```
 >>>>>>> upstream/master
 
-**Notes**:  
-   
-
+**Notes**:
 The limits must be integer values and the resulting numbers are based on
 the entropy of the md5 algorithm.
 

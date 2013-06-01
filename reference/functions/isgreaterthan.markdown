@@ -7,8 +7,6 @@ alias: reference-functions-isgreaterthan.html
 tags: [reference, functions, isgreaterthan]
 ---
 
-
-
 **Prototype**: isgreaterthan(arg1,arg2) 
 
 **Return type**: `class`
@@ -20,8 +18,7 @@ tags: [reference, functions, isgreaterthan]
 True if arg1 is numerically greater than arg2, else compare strings like
 strcmp
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -52,8 +49,6 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 The comparison is made numerically if possible. If the values are
 strings, the result is identical to that of comparing with strcmp().

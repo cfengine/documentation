@@ -7,8 +7,6 @@ alias: reference-functions-readstringarray.html
 tags: [reference, functions, readstringarray]
 ---
 
-
-
 **Prototype**: readstringarray(arg1,arg2,arg3,arg4,arg5,arg6)
 
 **Return type**: `int`
@@ -26,8 +24,7 @@ tags: [reference, functions, readstringarray]
 Read an array of strings from a file and assign the dimension to a
 variable
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 vars:
@@ -75,9 +72,7 @@ maxsize
 
 The maximum number of bytes to read from the file
 
-**Notes**:  
-   
-
+**Notes**:
 Reads a two dimensional array from a file. One dimension is separated by
 the character specified in the argument, the other by the the lines in
 the file. The first field of the lines names the first array argument.

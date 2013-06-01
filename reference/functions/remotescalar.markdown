@@ -7,8 +7,6 @@ alias: reference-functions-remotescalar.html
 tags: [reference, functions, remotescalar]
 ---
 
-
-
 **Prototype**: remotescalar(arg1,arg2,arg3) 
 
 **Return type**: `string`
@@ -21,8 +19,7 @@ tags: [reference, functions, remotescalar]
 
 Read a scalar value from a remote cfengine server
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 vars:

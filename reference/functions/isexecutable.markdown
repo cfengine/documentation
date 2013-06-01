@@ -7,8 +7,6 @@ alias: reference-functions-isexecutable.html
 tags: [reference, functions, isexecutable]
 ---
 
-
-
 **Prototype**: isexecutable(arg1) 
 
 **Return type**: `class`
@@ -18,8 +16,7 @@ tags: [reference, functions, isexecutable]
 
 True if the named object has execution rights for the current user
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 classes:
@@ -27,7 +24,5 @@ classes:
   "yes" expression => isexecutable("/bin/ls");
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 **History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

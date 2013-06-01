@@ -7,8 +7,6 @@ alias: reference-functions-isnewerthan.html
 tags: [reference, functions, isnewerthan]
 ---
 
-
-
 **Prototype**: isnewerthan(arg1,arg2) 
 
 **Return type**: `class`
@@ -19,8 +17,7 @@ tags: [reference, functions, isnewerthan]
 
 True if arg1 is newer (modified later) than arg2 (mtime)
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -47,8 +44,6 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This function compares the modification time of the file, referring to
 changes of content only.

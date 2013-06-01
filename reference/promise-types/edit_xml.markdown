@@ -23,8 +23,7 @@ editing hierarchical and structured XML datasets.
 
 **Description**: Build an XPath within the XML file
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body build_xpath example(s)
@@ -33,9 +32,7 @@ body build_xpath example(s)
   }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Please note that when `build_xpath` is defined as an attribute, within
 an `edit_xml` promise body, the tree described by the specified XPath
 will be verified and built BEFORE other `edit_xml` promises within same
@@ -50,8 +47,7 @@ of such promises.
 
 **Description**: Select the XPath node in the XML file to edit
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body select_xpath example(s)

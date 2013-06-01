@@ -7,8 +7,6 @@ alias: reference-functions-join.html
 tags: [reference, functions, join]
 ---
 
-
-
 **Prototype**: join(arg1,arg2) 
 
 **Return type**: `string`
@@ -20,8 +18,7 @@ tags: [reference, functions, join]
 
 Join the items of arg2 into a string, using the conjunction in arg1
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent test
@@ -42,8 +39,6 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Converts a string of type list into a scalar variable using the join
 string in first argument.

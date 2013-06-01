@@ -48,9 +48,7 @@ bundle agent example
 
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Note that `strftime` is a standard C function and you should
 consult its reference to be sure of the specifiers it allows.  The below
 is from the documentation of the standard `strftime` implementation

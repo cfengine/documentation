@@ -9,8 +9,6 @@ tags: [reference, functions, remoteclassesmatching]
 
 **This function is only available in CFEngine Enterprise.**
 
-
-
 **Prototype**: remoteclassesmatching(arg1,arg2,arg3,arg4) 
 
 **Return type**: `class`
@@ -25,8 +23,7 @@ tags: [reference, functions, remoteclassesmatching]
 Read persistent classes matching a regular expression from a remote
 cfengine server and add them into local context with prefix
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
  "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");

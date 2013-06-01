@@ -7,8 +7,6 @@ alias: reference-functions-not.html
 tags: [reference, functions, not]
 ---
 
-
-
 **Prototype**: not(arg1) 
 
 **Return type**: `string`
@@ -18,8 +16,7 @@ tags: [reference, functions, not]
 
 Calculate whether argument is false
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 commands:

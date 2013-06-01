@@ -7,8 +7,6 @@ alias: reference-functions-hashmatch.html
 tags: [reference, functions, hashmatch]
 ---
 
-
-
 **Prototype**: hashmatch(arg1,arg2,arg3) 
 
 **Return type**: `class`
@@ -23,8 +21,7 @@ md5,sha1,crypt,cf\_sha224,cf\_sha256,cf\_sha384,cf\_sha512
 Compute the hash of arg1, of type arg2 and test if it matches the value
 in arg3
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 bundle agent example
@@ -43,9 +40,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 ```cf3
      
      (class) hashmatch(file,md5|sha1|crypt,hash-comparison);

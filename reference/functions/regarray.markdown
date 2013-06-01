@@ -7,8 +7,6 @@ alias: reference-functions-regarray.html
 tags: [reference, functions, regarray]
 ---
 
-
-
 **Prototype**: regarray(arg1,arg2) 
 
 **Return type**: `class`
@@ -20,8 +18,7 @@ tags: [reference, functions, regarray]
 
 True if arg1 matches any item in the associative array with id=arg2
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
 body common control
@@ -59,9 +56,7 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 Tests whether an associative array contains elements matching a certain
 regular expression. The result is a class.
 
