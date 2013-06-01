@@ -12,11 +12,11 @@ The following is a standalone policy that will create the file `/home/mark/tmp/t
 ```cf3
     body common control
 	{
-	bundlesequence  => { "testbundle"  };
+	bundlesequence  => { "example"  };
 	}
 
 
-	bundle agent testbundle
+	bundle agent example
 
 	{
 	files:

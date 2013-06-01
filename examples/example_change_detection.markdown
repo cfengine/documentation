@@ -16,12 +16,12 @@ This policy will look for changes recursively in a directory.
     body common control
     
     {
-    bundlesequence  => { "testbundle"  };
+    bundlesequence  => { "example"  };
     }
     
     ########################################################
     
-    bundle agent testbundle
+    bundle agent example
     
     {
     files:
