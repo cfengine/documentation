@@ -1,16 +1,13 @@
 ---
 layout: default
-title: Sketch structure
-sortkey: 1
-categories: [ Reference, Design Center, Sketch ]
+title: Sketch Structure
+categories: [Reference, Design Center, Sketch Structure]
 published: true
-alias: reference-design-center-sketch.html
-tags: [sketch, structure, reference, design center ]
+alias: reference-design-center-sketch-structure.html
+tags: [sketch, structure, reference, design center]
 ---
 
-## Sketch structure
-
-All sketches consists of at least two files:
+All Design Center sketches consists of at least two files:
 
 * sketch.json
 * main.cf
@@ -19,8 +16,8 @@ There might be additional supporting files for testing and additional CFEngine p
 
 ## sketch.json
 
-This file contains metadata about the sketch and declares the interface to the sketch.
-A minimal sketch.json file contains the following attributes:
+This file contains metadata about the sketch and declares the interface to the 
+sketch. A minimal sketch.json file contains the following attributes:
 
 ````
 {
@@ -100,13 +97,16 @@ bundle agent installed(runenv, metadata, mystring, mylist)
 
 ### CFEngine Enterprise Compatibility
 
-In order to map a sketch activation to reports (so that sketch activation and compliance can be detected),
-CFEngine Enterprise requires the `activation_id` above to be defined. This `activation_id` must be prefixed
-the handle in at least one promise in the sketch order to detect that the sketch has been run.
+In order to map a sketch activation to reports (so that sketch activation and 
+compliance can be detected), CFEngine Enterprise requires the `activation_id` 
+above to be defined. This `activation_id` must be prefixed the handle in at 
+least one promise in the sketch order to detect that the sketch has been run.
 
-It is also important that promises that are used to measure compliance (like package installations and file edits)
-have this handle prefix. Otherwise, the reporting will not detect sketch failure when these promises are not kept.
+It is also important that promises that are used to measure compliance (like 
+package installations and file edits) have this handle prefix. Otherwise, the 
+reporting will not detect sketch failure when these promises are not kept.
 
-It may also be beneficial to include extra promises for reporting purposes and prefix their handle with `activation_id`.
-For example, a promise that will become not kept if a web service goes down will be helpful to detect noncompliance
-in a sketch that upgrades that web service.
+It may also be beneficial to include extra promises for reporting purposes and 
+prefix their handle with `activation_id`. For example, a promise that will 
+become not kept if a web service goes down will be helpful to detect 
+noncompliance in a sketch that upgrades that web service.

@@ -1,12 +1,15 @@
-# The Design Center API
+---
+layout: default
+title: The Design Center API
+categories: [Reference, Design Center, API]
+published: true
+alias: reference-design-center-api.html
+tags: [reference, design center, sketch, cf-sketch, api]
+---
 
-## Design Center HOWTO series
+Author: Ted Zlatanov <tzz@lifelogs.com>
 
-### Author: Ted Zlatanov <tzz@lifelogs.com>
-
-### Version: 0.0.1-1
-
-### API General Information
+Version: 0.0.1-1
 
 The Design Center API (DC API or just API henceforth) is a simple JSON-based
 protocol for communicating with the Design Center backend.  The backend may be
@@ -19,6 +22,8 @@ Again, the request and the response can only be a single line of text, ended by
 the transport channel's standard line-ending sequence, e.g. CRLF for HTTP.  JSON
 escapes such sequences so they should not happen anywhere in the payloads.
 
+## Requests
+
 API requests have the following general structure:
 
 ```json
@@ -30,7 +35,9 @@ match exactly, so you can't have a _0.0.1_ client talking to a _0.0.2_ server
 for instance (the client has to say "0.0.2" to be usable).  We expect backwards
 compatibility, this is just a way to avoid misunderstandings.
 
-#### NOTE: Generally, only *one* command may be specified per request.
+**Note**: Generally, only *one* command may be specified per request.
+
+## Responses
 
 API responses look like this:
 
@@ -51,57 +58,73 @@ API responses look like this:
 
 The top key can be one of the following:
 
-* `api_ok`: the command was processed correctly and the response is enclosed as
-  valid JSON (note that this doesn't mean the response indicates success!!!)
+* `api_ok`
+
+The command was processed correctly and the response is enclosed as valid JSON 
+(note that this doesn't mean the response indicates success!!!)
   
-* `api_error`: the command was not processed correctly and the response may not
-  be valid JSON at all.  It may be good JSON and even contain keys like `api_ok`
-  promises, e.g. `warnings` or `success`, but you can't rely on that.
+* `api_error`
+
+The command was not processed correctly and the response may not be valid JSON 
+at all.  It may be good JSON and even contain keys like `api_ok` promises, 
+e.g. `warnings` or `success`, but you can't rely on that.
 
 The API client may wish to replace unparseable data with
 `{api_error: "BAD JSON (escaped data here)"}` or something similar to make the
 response handler simpler.
 
-Inside the API response, under the `api_ok` key, you can expect to find the following:
+Inside the API response, under the `api_ok` key, you can expect to find the 
+following:
 
-* `success`: indicates, generally speaking, that the command succeeded or
-  failed.  Any complex commands can fail in subtle ways, but the API will do its
-  best to make this a good indicator.
-  
-* `errors` and `warnings`: lists of strings that log errors and warnings for the
-  command.
-  
-* `error_tags`: key-value array of tag strings assigned to the error messages.
-  This lets the client tell what stages or areas of the command triggered the
-  errors.
-  
-* `log`: list of general message strings.  This is optional and purely informational.
-  
-* `tags`: key-value array of tag strings assigned to the response, not
-  associated with errors.  This lets the client tell what stages or areas of the
-  command triggered messages or warnings, or more generally what stages or areas
-  of the command were executed.  This is optional and purely informational.
+* `success`
 
-* `data`: the meat of the response plate, if you will.  This key contains all
-  the response data that the API command generated.  Each command has different
-  return data so the specifics are listed per command.
+Indicates, generally speaking, that the command succeeded or failed.  Any 
+complex commands can fail in subtle ways, but the API will do its best to make 
+this a good indicator.
   
-### API Commands
+* `errors` and `warnings`
 
-The API commands and their data responses are listed below.  Generally they are
-exclusive of each other, and the order below is the order in which they are
-answered.  Thus, for instance, a request that issues both `list` and `search`
-will get just the `list` results.
+Lists of strings that log errors and warnings for the command.
+  
+* `error_tags`
+
+Key-value array of tag strings assigned to the error messages. This lets the 
+client tell what stages or areas of the command triggered the errors.
+  
+* `log`
+
+List of general message strings.  This is optional and purely informational.
+  
+* `tags`
+
+Key-value array of tag strings assigned to the response, not associated with 
+errors.  This lets the client tell what stages or areas of the command 
+triggered messages or warnings, or more generally what stages or areas of the 
+command were executed.  This is optional and purely informational.
+
+* `data`
+
+The meat of the response plate, if you will. This key contains all the 
+response data that the API command generated.  Each command has different 
+return data so the specifics are listed per command.
+  
+## API Commands
+
+The API commands and their data responses are listed below.  Generally they 
+are exclusive of each other, and the order below is the order in which they 
+are answered. Thus, for instance, a request that issues both `list` and 
+`search` will get just the `list` results.
 
 Many commands take *terms*.  *Terms* are one of the following:
 
 * a string (matches any field)
 * a list of strings (any of them may match any field)
-* a list of lists, with each one in the following format: either
-  `[FIELD, "matches", REGEX]` or `[FIELD, "equals", STRING]` or
-  `[[FIELD1, FIELD2,...], "matches", STRING]`.
+* a list of lists, with each one in the following formats:
+    * `[FIELD, "matches", REGEX]` or
+    * `[FIELD, "equals", STRING]` or
+    * `[[FIELD1, FIELD2,...], "matches", STRING]`
 
-#### `list`
+### list
 
 The `list` command lists *installed* sketches.
 
@@ -174,10 +197,9 @@ The next one takes *terms* and lists all the sketches whose name satisfies the
 }
 ```
 
-##### option: `describe`
+#### option: describe
 
-When `describe` is given as a top-level option with a value of `true`, as in the
-example below, the returned data is the contents of `sketch.json`.
+When `describe` is given as a top-level option with a value of `true`, as in the example below, the returned data is the contents of `sketch.json`.
 
 ```json
 { dc_api_version: "0.0.1", request: {describe: true, list: [["name", "matches", "ping"]] } }
@@ -271,8 +293,8 @@ example below, the returned data is the contents of `sketch.json`.
 When `describe` is given as a top-level option with a value of `README`, as in
 the example below, the returned data is actually the sketch's auto-generated
 `README.md` file (which comes from `sketch.json`).  The `tools/test/Makefile`
-testing Makefile has a convenience `regenerate_readme` target to do this for all
-the DC sketches.
+testing Makefile has a convenience `regenerate_readme` target to do this for 
+all the DC sketches.
 
 ```json
 { dc_api_version: "0.0.1", request: {describe: "README", list: [["name", "matches", "ping"]] } }
@@ -298,17 +320,17 @@ the DC sketches.
 }
 ```
 
-#### `search`
+### search
 
-The `search` command works exactly like `list` above, except that the candidate
-list contains all available sketches (from `recognized_sources`), not just the
-installed sketches.
+The `search` command works exactly like `list` above, except that the 
+candidate list contains all available sketches (from `recognized_sources`), 
+not just the installed sketches.
 
-##### option: `describe`
+#### option: describe
 
 The `describe` option to `search` works exactly like it does for `list` above.
 
-#### `describe`
+### describe
 
 The `describe` command gives the contents of `sketch.json` for the matching
 installed sketches by name.
@@ -430,20 +452,28 @@ installed sketches by name.
 }
 ```
 
-#### `install`
+### install
 
-The `install` command installs any number of sketches.  The data provides is a
+The `install` command installs any number of sketches. The data provides is a
 list of key-value arrays with keys:
 
-* `force`: boolean, false by default.  Whether any existing installations of the
-  sketch should be respected or overwritten.  Also asks the API to ignore OS and
-  CFEngine version dependencies.
+* `force`
 
-* `sketch`: the sketch name.
+Boolean, false by default.Whether any existing installations of the sketch 
+should be respected or overwritten.  Also asks the API to ignore OS and 
+CFEngine version dependencies.
 
-* `target`: the sketch install directory.  Must be in the API's `repolist`.
+* `sketch`
 
-* `source`: the sketch source repository.  Must be in the API's `recognized_sources`.
+The sketch name.
+
+* `target`
+
+The sketch install directory. Must be in the API's `repolist`.
+
+* `source`
+
+The sketch source repository.  Must be in the API's `recognized_sources`.
 
 ```json
 {
@@ -509,14 +539,19 @@ The return data is a key-value array as follows, describing the installation det
 }
 ```
 
-#### `uninstall`
+### uninstall
 
 The `uninstall` command simply deletes the top-level sketch directory and
-everything under it.  It takes a list of key-value arrays with keys:
+everything under it. It takes a list of key-value arrays with keys:
 
-* `sketch`: the sketch name.
+* `sketch`
 
-* `target`: the sketch install directory we want to clean.  Must be in the API's `repolist`.
+The sketch name.
+
+* `target`
+
+The sketch install directory we want to clean.  Must be in the API's 
+`repolist`.
 
 ```json
 { dc_api_version: "0.0.1", request: {uninstall: [ { sketch: "CFEngine::stdlib", target: "~/.cfagent/inputs/sketches" } ] } }
@@ -548,7 +583,7 @@ everything under it.  It takes a list of key-value arrays with keys:
 
 The `inventory_save` key in the return indicates whether the inventory (`cfsketches.json`) was written successfully.
 
-#### `compositions`
+### compositions
 
 The `compositions` command lists the defined compositions.
 
@@ -585,9 +620,10 @@ The `compositions` command lists the defined compositions.
 }
 ```
 
-#### `compose`
+### compose
 
-The `compose` command defines a composition.  It returns the same data as `compositions`.
+The `compose` command defines a composition.  It returns the same data as 
+`compositions`.
 
 ```json
 {
@@ -642,7 +678,7 @@ The `compose` command defines a composition.  It returns the same data as `compo
 }
 ```
 
-#### `decompose`
+### decompose
 
 The `decompose` command undefines a composition by name.  It returns the same data as `compositions`.
 
@@ -675,7 +711,7 @@ The `decompose` command undefines a composition by name.  It returns the same da
 
 (Note that Monty Python has beaten us to this joke by decades with "The Decomposing Composers.")
 
-#### `activations`
+### activations
 
 The `activations` command lists the defined activations.
 
@@ -716,7 +752,7 @@ The `activations` command lists the defined activations.
 }
 ```
 
-#### `activate`
+### activate
 
 The `activate` command defines a new activation of a sketch.
 
@@ -729,9 +765,9 @@ name, and a list of parameter names.
 { dc_api_version: "0.0.1", request: {activate: { "VCS::vcs_mirror": { target: "~/.cfagent/inputs/sketches", environment: "testing", params: [ "vcs_base", "git_mirror_core" ] } } } }
 ```
 
-The sketch bundle will be selected based on which one is satisfied by the given
-parameters and compositions.  You can use the `__bundle__` parameter key to
-specify the bundle explicitly.
+The sketch bundle will be selected based on which one is satisfied by the 
+given parameters and compositions.  You can use the `__bundle__` parameter key 
+to specify the bundle explicitly.
 
 ```json
 {
@@ -761,20 +797,20 @@ You can pass a `identifier` parameter to an `activate` command, which can then
 be used to `deactivate` an activation specifically, and which will show up in
 the classes and prefixes of that activation.
 
-You can pass a `metadata` parameter to an `activate` command, which will show up
-under the `activation` key in the metadata.
+You can pass a `metadata` parameter to an `activate` command, which will show 
+up under the `activation` key in the metadata.
 
-You can pass a `target` parameter to an `activate` command with an install location,
-which will only activate sketches that exist in that location.
+You can pass a `target` parameter to an `activate` command with an install 
+location, which will only activate sketches that exist in that location.
 
-##### option: `compose`
+#### option: `compose`
 
 When the `activate` command has a `compose` key with a list of composition
 names, those compositions are considered whenever the parameters alone are not
-enough to activate the sketch.  Thus compositions and parameters work together,
-as late and immediate bindings of the passed data respectively.
+enough to activate the sketch.  Thus compositions and parameters work 
+together, as late and immediate bindings of the passed data respectively.
 
-#### `deactivate`
+### deactivate
 
 The `deactivate` command removes sketch activations.  It can take either the
 name of a sketch or `true` to indicate all activations should be removed.
@@ -823,14 +859,14 @@ name of a sketch or `true` to indicate all activations should be removed.
 }
 ```
 
-#### `definitions`
+### definitions
 
-The `definitions` command lists the parameter definitions.  This is the DC API's
-central library of knowledge.  Every parameter definition is a source of
+The `definitions` command lists the parameter definitions.  This is the DC 
+API's central library of knowledge.  Every parameter definition is a source of
 configuration data (like a CFEngine common bundle, but applied directly to a
-sketch bundle).  Parameter definitions have names, which are used when you want
-to activate a sketch, and can contain more than one sketch's parameters or only
-part of a sketch's parameters.
+sketch bundle).  Parameter definitions have names, which are used when you 
+want to activate a sketch, and can contain more than one sketch's parameters 
+or only part of a sketch's parameters.
 
 ```json
 { dc_api_version: "0.0.1", request: {definitions:true} }
@@ -862,22 +898,16 @@ part of a sketch's parameters.
 }
 ```
 
-#### `define`
+### define
 
-The `define` command creates a parameter definition with a name.  The example
-here creates some base parameters for the `VCS::vcs_mirror` sketch and then lays
-specific configuration to mirror the [https://github.com/cfengine/core.git]
-repository's master branch from Git.  In this case, we do it in two steps, but
-could have done it in one step.
+The `define` command creates a parameter definition with a name. You can use 
+the `function` expression in data, as shown below, to make sure 
+that the DC API will make a function call and not just pass a string.  So, 
+instead of `getenv("LOGNAME", "128")` you need to use
+`{ "function": "getenv", "args": ["LOGNAME", "128"] }` to make sure the 
+function call is preserved.
 
 Note that the reply doesn't tell you more than "I got it, thanks."
-
-You can use the `function` expression in data, as shown below, to make sure that
-the DC API will make a function call and not just pass a string.  So, instead of
-`getenv("LOGNAME", "128")` you need to use
-`{ "function": "getenv", "args": ["LOGNAME", "128"] }` to make sure the function
-call is preserved.
-
 
 ```json
 { dc_api_version: "0.0.1", request: {define: { "vcs_base": { "VCS::vcs_mirror": { options: { parent_dir: { owner: { "function": "getenv", "args": ["LOGNAME", "128"] }, group: { "function": "getenv", "args": ["LOGNAME", "128"] }, perms: "755", ensure: true }, nowipe: true, vcs: { runas: { "function": "getenv", "args": ["LOGNAME", "128"] }, umask: "000" } } } } } } }
@@ -927,9 +957,14 @@ call is preserved.
 }
 ```
 
-#### `undefine`
+The example here creates some base parameters for the `VCS::vcs_mirror` sketch 
+and then  lays specific configuration to mirror the [CFEngine  
+Core](https://github.com/cfengine/core.git) repository's master branch from 
+Git. In this case, we do it in two steps, but could have done it in one step.
 
-The `undefine` command removes a parameter definition by name.  You can pass a
+### undefine
+
+The `undefine` command removes a parameter definition by name. You can pass a
 list of string parameter definition names or simply `true` to remove all the
 parameter definitions.
 
@@ -957,7 +992,7 @@ parameter definitions.
 }
 ```
 
-#### `environments`
+### environments
 
 The `environments` command lists the run environments.
 
@@ -966,16 +1001,17 @@ execution of bundles globally, so it's not intended to be specific for each
 bundle activation.
 
 The sketch bundle chooses to have a run environment by specifying a parameter
-with type `environment`.  Only a run environment can satisfy that API parameter.
+with type `environment`.  Only a run environment can satisfy that API 
+parameter.
 
 Good examples of run environments are *production*, *production_debug*, or
 *development_nodebug*.  In a run environment you'd expect to find at least the
 `activated`, `verbose`, and `test` variables.  For each of those, the DC API
 will also provide a class named `runenv_ENVIRONMENTNAME_ENVIRONMENTVARIABLE`.
-Here's an example of a `testing` run environment, as it appears in the generated
-runfile:
+Here's an example of a `testing` run environment, as it appears in the 
+generated runfile:
 
-```
+```cf3
 bundle common testing
 {
   vars:
@@ -1019,13 +1055,13 @@ And here is the definition of that run environment:
 ```
 
 The last thing to note is that any run environment variable can have values
-other than `true` and `false`.  If they are a string, then that string is a
+other than `true` and `false`. If they are a string, then that string is a
 class expression.  So, for instance, if `activated` is `Monday` then the run
 environment will only be activated on Mondays.
 
-If `activated` is a key-value array with the key `include` pointing to an array
-of regular expressions, then every element of that array will be AND-ed in a
-classmatch.  So, if for the environment _testing_ you specify:
+If `activated` is a key-value array with the key `include` pointing to an 
+array of regular expressions, then every element of that array will be AND-ed 
+in a classmatch.  So, if for the environment _testing_ you specify:
 
 ```
 activated: { include: [ "x", "y", "regex.*" ] }
@@ -1033,13 +1069,13 @@ activated: { include: [ "x", "y", "regex.*" ] }
 
 That will produce, in the runfile,
 
-```
+```cf3
 classes:
   "runenv_testing_activated" and => { classmatch("x"), classmatch("y"), classmatch("regex.*") };
 ```
 It's trivial to do an OR with alternation in the regular expression.
 
-#### `define_environment`
+### define_environment
 
 The `define_environemnt` command defines a run environment.  The `testing`
 example above can be defined like so:
@@ -1068,10 +1104,11 @@ example above can be defined like so:
 }
 ```
 
-Again, remember that each of those variables can be a string, to be interpreted
-as a class expression, and that you can have more than those three variables.
+Again, remember that each of those variables can be a string, to be 
+interpreted as a class expression, and that you can have more than those three 
+variables.
 
-#### `undefine_environment`
+### undefine_environment
 
 The `undefine_environemnt` command removes a run environment.  It takes a list
 of environment names.
@@ -1100,7 +1137,7 @@ of environment names.
 }
 ```
 
-#### `validations`
+### validations
 
 The `validations` command lists the data validations.
 
@@ -1120,38 +1157,52 @@ define_validation: { MOG_SEQUENCE: { sequence: [ "OCTAL", "UID", "GID"	 ] } }
 define_validation: { ARRAY_OF_NUMBERS_TO_URLS: { array_k: [ "NUMBER" ], array_v: [ "URL" ] } }
 ```
 
-* `derived` defines a parent data validation.  So a _NUMBER_ validation requires
-  that _DIGITS_ and any other parent data validations be checked first.
+* `derived`
 
-* `choice` defines a list of exact string matches.  So _AB_ must be given `A` or
-  `B` to pass validation.
+Defines a parent data validation.  So a _NUMBER_ validation requires that 
+_DIGITS_ and any other parent data validations be checked first.
 
-* `minimum_value` and then `maximum_value` are numeric checks.  So _8BIT_NUMBER_
-  has to be between 0 and 255.  Any invalid numbers, e.g. `hello`, will be
-  treated as 0.
+* `choice`
 
-* `invalid_regex` and then `valid_regex` are regular expressions written as
-  strings.  They follow the Perl regex syntax right now.  So _DIGITS_ can only
-  contain the decimal digits 0 through 9 and will reject the empty string `` or
-  `hello`.
+Defines a list of exact string matches.  So _AB_ must be given `A` or `B` to 
+pass validation.
 
-* `invalid_ipv4` and `valid_ipv4` are TODO.
+* `minimum_value` and `maximum_value` 
 
-* `list` ensures that the given data is a list of one of several data types.  So
-  in the example, _LIST_OF_NUMBERS_ will check that every element passes the
-  _NUMBER_ validation.
+Numeric checks.  So _8BIT_NUMBER_ has to be between 0 and 255. Any invalid 
+numbers, e.g. `hello`, will be treated as 0.
 
-* `sequence` is like a record: it ensures that the data is a sequence (list) of
-  the given data types.  So for example, _MOG_SEQUENCE_ has to have three
-  elements, of which the first one passes _OCTAL_ validation, the second passed
-  _UID_ validation, and the third passes _GID_ validation.
+* `invalid_regex` and `valid_regex`
+
+Regular expressions written as strings.  They follow the Perl regex syntax 
+right now.  So _DIGITS_ can only contain the decimal digits 0 through 9 and 
+will reject the empty string `` or `hello`.
+
+* `invalid_ipv4` and `valid_ipv4`
+
+**TODO**
+
+* `list`
+
+Ensures that the given data is a list of one of several data types. So in the 
+example, _LIST_OF_NUMBERS_ will check that every element passes the _NUMBER_ 
+validation.
+
+* `sequence`
+
+Like a record: it ensures that the data is a sequence (list) of the given data 
+types.  So for example, _MOG_SEQUENCE_ has to have three elements, of which 
+the first one passes _OCTAL_ validation, the second passed _UID_ validation, 
+and the third passes _GID_ validation.
   
-* `array_k` and `array_v` are almost exactly like `list` but they validate the
-  keys and values of a key-value array, respectively, against a list of several
-  data types.  So _ARRAY_OF_NUMBERS_TO_URLS_ requires that every key pass the
-  _NUMBER_ validation and every value pass the _URL_ validation.
+* `array_k` and `array_v`
 
-#### `define_validation`
+Like `list`, but they validate the keys and values of a key-value array, 
+respectively, against a list of several data types.  So 
+_ARRAY_OF_NUMBERS_TO_URLS_ requires that every key pass the _NUMBER_ 
+validation and every value pass the _URL_ validation.
+
+### define_validation
 
 The `define_validation` command defines a data validation.  In the return data
 you will find all the currently defined data validations.
@@ -1183,7 +1234,7 @@ you will find all the currently defined data validations.
 ```
 
 
-#### `undefine_validation`
+### undefine_validation
 
 The `undefine_validation` command removes a data validation by name.
 
@@ -1211,7 +1262,7 @@ The `undefine_validation` command removes a data validation by name.
 }
 ```
 
-#### `validate`
+### validate
 
 The `validate` command validates data using a named data validation.
 
@@ -1294,7 +1345,7 @@ DCAPI::log4(Validation.pm:166): Validating URL: checking valid_regex ^[A-Za-z]{3
 }
 ```
 
-#### `regenerate`
+### regenerate
 
 The `regenerate` command writes the API runfile (as specified in the API
 configuration) from all the known activations, compositions, run environments,
@@ -1303,11 +1354,11 @@ parameter definitions, and data validations.
 The command does not allow the user to change the runfile type (standalone or
 not) or location, as that is a possible security risk.
 
-#### `test`
+### test
 
 The `test` command tests *installed* sketches.  It always returns true if the
-test harness ran, even if the individual tests failed.  It's up to you to check
-the result of each sketch's test.
+test harness ran, even if the individual tests failed.  It's up to you to 
+check the result of each sketch's test.
 
 Here are examples of two `test` commands.  The first one tests everything
 installed (shown when no sketches were installed for brevity; see below for a
@@ -1395,9 +1446,9 @@ added in the future.  Do not depend on the format of the `bench` value.
 }
 ```
 
-You can skip the actual testing and just get the coverage if you give the `test`
-command the `coverage` parameter.  Here's how you can inspect the coverage of
-every single installed sketch:
+You can skip the actual testing and just get the coverage if you give the 
+`test` command the `coverage` parameter.  Here's how you can inspect the 
+coverage of every single installed sketch:
 
 ```json
 {"dc_api_version":"0.0.1","request":{"coverage":1,"test":["1"]}}
@@ -1428,48 +1479,12 @@ every single installed sketch:
     }
 }```
 
-### API CLI Interface and config.json
+
+## API CLI Interface and config.json
 
 From the command line, you can run `cd tools/cf-sketch; ./cf-dc-api.pl
 config.json` where `config.json` contains the necessary configuration for the
 API:
-
-#### `log`
-
-Either `STDOUT` or `STDERR` or a file name.
-
-#### `log_level`
-
-1-5 currently.  4 or 5 for debugging; 1 or 2 for normal usage.
-
-3 is for people who can't make up their mind.
-
-#### `repolist`
-
-A list of local directories where sketches may be installed.
-
-#### `recognized_sources`
-
-A list of DC repositories where sketches may be installed FROM.  There can be
-local directories or URLs.
-
-#### `runfile`
-
-A key-value array with keys `location` for the place where the runfile is
-written; `standalone` for the runfile standalone (when false, this setting makes
-the runfile suitable for inclusion in the main `promises.cf`); `relocate_path`
-for what to add to all inputs.
-
-If you specify the array `filter_inputs` under `runfile`, any inputs matching
-any elements in that array will be omitted from the generated runfile.  That way
-you can, for example, exclude the `cfengine_stdlib.cf` that Design Center
-provides.
-
-#### `vardata`
-
-The file location where the API will record all data.
-
-#### Full `config.json` example
 
 ```json
 {
@@ -1481,3 +1496,40 @@ The file location where the API will record all data.
  vardata: "~/.cfagent/vardata.conf",
 }
 ```
+
+
+### log
+
+Either `STDOUT` or `STDERR` or a file name.
+
+### log_level
+
+1-5 currently.  4 or 5 for debugging; 1 or 2 for normal usage.
+
+3 is for people who can't make up their mind.
+
+### repolist
+
+A list of local directories where sketches may be installed.
+
+### recognized_sources
+
+A list of DC repositories where sketches may be installed FROM.  There can be
+local directories or URLs.
+
+### runfile
+
+A key-value array with keys `location` for the place where the runfile is
+written; `standalone` for the runfile standalone (when false, this setting 
+makes the runfile suitable for inclusion in the main `promises.cf`); 
+`relocate_path` for what to add to all inputs.
+
+If you specify the array `filter_inputs` under `runfile`, any inputs matching
+any elements in that array will be omitted from the generated runfile.  That 
+way you can, for example, exclude the `cfengine_stdlib.cf` that Design Center
+provides.
+
+### vardata
+
+The file location where the API will record all data.
+
