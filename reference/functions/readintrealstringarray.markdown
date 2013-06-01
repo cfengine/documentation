@@ -1,15 +1,15 @@
 ---
 layout: default
-title: readintarray
-categories: [Reference, Functions, readintarray]
+title: "read[int|real|string]array"
+categories: [Reference, Functions, read*array]
 published: true
-alias: reference-functions-readintarray.html
-tags: [reference, functions, readintarray]
+alias: reference-functions-readintrealstringarray.html
+tags: [reference, functions, readintarray, readrealarray, readstringarray]
 ---
 
 **Prototype**: `readintarray(array, filename, comment, split, maxentries, maxbytes)`<br>
-**Prototype**: `readrealarray(arg1, arg2, arg3, arg4,arg5, arg6)`<br>
-**Prototype**: `readstringarray(arg1, arg2, arg3, arg4,arg5, arg6)`
+**Prototype**: `readrealarray(array, filename, comment, split, maxentries, maxbytes)`<br>
+**Prototype**: `readstringarray(array, filename, comment, split, maxentries, maxbytes)`
 
 **Return type**: `int`
 
