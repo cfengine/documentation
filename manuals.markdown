@@ -37,7 +37,7 @@ If you are impatient to [get started](gettings-started.html) writing promises,
 now might be a good time to take a break from concepts and try out your first promises. You can study the [examples](examples.html) and look things up in the [reference](reference.html) as you go along.
 
 If you want a solid foundation for your use of CFEngine, continue reading to 
-understand the [architecture](manuals-architecture.html) and [language 
+understand the [design](manuals-design.html) and [language 
 concepts](manuals-language-concepts.html) of CFEngine.
 
 * TODO: Design Center

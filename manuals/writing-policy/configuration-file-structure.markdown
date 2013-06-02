@@ -1,15 +1,11 @@
 ---
 layout: default
 title: Default Configuration File Structure
-categories: [Manuals, Architecture, Configuration File Structure]
+categories: [Manuals, Writing Policy, Configuration File Structure]
 published: true
-alias: manuals-architecture-configuration-file-structure.html
+alias: manuals-writing-policy-configuration-file-structure.html
 tags: [manuals, systems, configuration management, automation, policy, failsafe, update, file system]
 ---
-
-Previous: [Workflows](manuals-architecture-workflows.html)
-
-****
 
 
 **TODO: include some extracts, or link to github**
@@ -93,6 +89,3 @@ to client machines, the `failsafe.cf` policy on those machines will run (and
 will eventually download a working policy, once you fix it on the policy 
 host).
 
-****
-
-Next: [The Working Directory](manuals-architecture-work-directory.html)

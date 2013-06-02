@@ -7,10 +7,6 @@ alias: manuals-architecture-networking.html
 tags: [manuals, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 
-Previous: [CFEngine Components](manuals-architecture-components.html)
-
-****
-
 By starting `cf-serverd`, you set up a line of communication between hosts. 
 This daemon authenticates requests from the network and processes them 
 according to rules specified in the server control body and server bundles 
@@ -23,6 +19,18 @@ only able request access to files on the remote server.
 
 Lastly, `cf-runagent` can be used to run `cf-agent` on a number of remote 
 hosts.
+
+Unlike other approaches to automation, CFEngine does not rely on SSH key 
+authentication and configuring trust, the communication between hosts is very 
+structured and also able to react to availability issues. This means that you 
+don't have to arrange risk login credentials to get CFEngine to work. If large 
+portions of your network stop working, individual host in the CFEngine system
+understand how to keep on running and delivering promises.
+
+If the network is not working, CFEngine agents skip new promises and continue 
+with what they already have. CFEngine was specifically designed be resilient 
+against connectivity issues network failure may be in question. CFEngine is
+fault tolerant and opportunistic.
 
 ## Server Connection
 
@@ -214,7 +222,3 @@ of the error, to avoid giving away information which might be used
 by an attacker. To find out the real reason for a denial, use
 verbose ‘-v’ or even debugging mode ‘-d2’.
 
-
-****
-
-Next: [Workflows](manuals-architecture-workflows.html)

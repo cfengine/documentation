@@ -1,15 +1,11 @@
 ---
 layout: default
-title: CFEngine Components
-categories: [Manuals, Architecture, Components]
+title: The CFEngine Components
+categories: [Manuals, CFEngine Components]
 published: true
-alias: manuals-architecture-components.html
+alias: manuals-components.html
 tags: [manuals, systems, configuration management, automation, components, cf-agent, directory]
 ---
-
-Previous: [Automation with CFEngine](manuals-architecture-automation.html)
-
-****
 
 There are a number of components in CFEngine, with each component performing a 
 unique function: components responsible for implementing promises, components 
@@ -24,24 +20,14 @@ upon them, and report status to a central server.
 
 ![Components overview](components-overview.png)
 
-Unlike other approaches to automation, CFEngine does not rely on SSH key 
-authentication and configuring trust, the communication between hosts is very 
-structured and also able to react to availability issues. This means that you 
-don't have to arrange risk login credentials to get CFEngine to work. If large 
-portions of your network stop working, individual host in the CFEngine system
-understand how to keep on running and delivering promises.
+## The Working Directory
 
-If the network is not working, CFEngine agents skip new promises and continue 
-with what they already have. CFEngine was specifically designed be resilient 
-against connectivity issues network failure may be in question. CFEngine is
-fault tolerant and opportunistic.
-
+The CFEngine application is fully contained within the `/var/cfengine` 
+directory tree.
 
 ### Core Components
 
-The CFEngine application is fully contained within the `/var/cfengine` 
-directory tree. `/var/cfengine/bin` consists of the CFEngine software 
-components:
+The CFEngine software components exist in `/var/cfengine/bin`.
 
 * [cf-agent](reference-components-cfagent.html)
 
@@ -88,10 +74,6 @@ if their existing policy includes that they check for updates.
 Privileges can be granted to users to provide a kind of Role Based Access 
 Control (RBAC) to certain parts of the existing policy.
 
-
-The `/var/cfengine/lib` directory stores shared objects and dependencies that 
-are in the bundled packages.
-
 ### Policy files
 
 * `/var/cfengine/masterfiles`
@@ -100,12 +82,12 @@ Policy repository which grants access to local or bootstrapped CFEngine
 clients when they need to update their policies. Policies obtained from 
 `/var/cfengine/masterfiles` are then cached in `/var/cfengine/inputs` for 
 local policy execution. The `cf-agent` executable does not execute policies 
-directly from this repository. 
+directly from this repository.
 
 * `/var/cfengine/inputs`
 
-Cached policy repository located on a CFEngine client. The `cf-agent` 
-executable executes policies from this repository.
+Cached policy repository on each CFEngine client. When `cf-agent` is 
+invoked by `cf-execd`, it reads only from this directory.
 
 * `/var/cfengine/modules`
 
@@ -115,7 +97,10 @@ executable executes policies from this repository.
 
 * `/var/cfengine/outputs`
 
-Directory where `cf-agent` creates its output files.
+Directory where `cf-agent` creates its output files. The outputs directory is 
+a record of spooled run-reports. These are often mailed to the administrator 
+by `cf-execd`, or can be copied to another central location and viewed in an 
+alternative browser.
 
 * `/var/cfengine/reports`
 
@@ -139,7 +124,3 @@ client/server network communications.
 
 **TODO**
 
-
-****
-
-Next: [Networking](manuals-architecture-networking.html)

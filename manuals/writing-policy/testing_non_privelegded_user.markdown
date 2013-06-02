@@ -1,15 +1,11 @@
 ---
 layout: default
 title: Testing Policies
-categories: [Manuals, Architecture, Testing Policies]
+categories: [Manuals, Writing Policy, Testing Policies]
 published: true
-alias: manuals-architecture-testing-policies.html
+alias: manuals-writing-policy-testing-policies.html
 tags: [manuals, systems, configuration management, automation, testing, work directory]
 ---
-
-Previous: [Controlling Frequency](manuals-architecture-controlling-frequency.html)
-
-****
 
 One of the practical advantages of CFEngine is that you can test it
 without the need for root or administrator privileges. This is useful if you 

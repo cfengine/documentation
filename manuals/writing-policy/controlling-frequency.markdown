@@ -1,15 +1,11 @@
 ---
 layout: default
 title: Controlling Frequency
-categories: [Manuals, Architecture, Controlling Frequency]
+categories: [Manuals, Writing Policy, Controlling Frequency]
 published: true
-alias: manuals-architecture-controlling-frequency.html
+alias: manuals-writing-policy-controlling-frequency.html
 tags: [manuals, systems, configuration management, automation, control, frequency, performance]
 ---
-
-Previous: [The Working Directory](manuals-architecture-work-directory.html)
-
-****
 
 When checking a series of expensive functions and verifying complex promises, 
 you may want to make sure that CFEngine is not checking too frequently. One 
@@ -68,6 +64,3 @@ promise checks. Several different cf-agent instances can run concurrently, and
 the locks ensure that promises will never be verified by two cf-agents at the 
 same time, or too soon after a verification.
 
-****
-
-Next: [Testing Policies](manuals-architecture-testing-policies.html)

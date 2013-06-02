@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Policy Style Guide
-categories: [Manuals, Policy Style Guide]
+categories: [Manuals, Writing Policy, Policy Style Guide]
 published: true
-alias: manuals-policy-style-guide.html
+alias: manuals-writing-policy-policy-style-guide.html
 tags: [manuals, style, policy]
 ---
 
