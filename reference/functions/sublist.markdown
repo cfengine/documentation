@@ -7,17 +7,17 @@ alias: reference-functions-sublist.html
 tags: [reference, functions, sublist]
 ---
 
-**Prototype**: `sublist(list, extract_from, max_elements)`
+**Prototype**: `sublist(list, head_or_tail, max_elements)`
 
 **Return type**: `slist`
 
-**Description**: Returns list of up to `max_elements` of `list`, obtained from head or tail depending on `extract_from`.
+**Description**: Returns list of up to `max_elements` of `list`, obtained from head or tail depending on `head_or_tail`.
 
 **Arguments**:
 
 * `list` : The name of the list variable, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
-* `extract_from` : Whether to extract elements from the beginning or from the 
+* `head_or_tail` : Whether to extract elements from the beginning or from the 
 end. *in the range* `head`, `tail`
 * `max_elements` : Maximum number of elements to return *in the range* 
 0,999999999
