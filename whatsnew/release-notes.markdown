@@ -7,20 +7,21 @@ published: true
 alias: whats-new-release-notes.html
 ---
 
-**IMPORTANT NOTE:** *This is a pre-release of 3.5, intended for testing and showcase only.
-This version is not supported, not covered by service level agreements (SLAs) and not
-intended for production environments. Do not upgrade or use in conjunction with other
-versions at this point. We are planning monthly snapshot (alpha) releases going forward,
-but official release date for 3.5 has not been set.*
+**IMPORTANT NOTE:** *This is a pre-release of 3.5, intended for testing and 
+showcase only. This version is not supported, not covered by service level 
+agreements (SLAs) and not intended for production environments. Do not upgrade 
+or use in conjunction with other versions at this point. We are planning 
+monthly snapshot (alpha) releases going forward, but official release date for 
+3.5 has not been set.*
 
 <!--- TODO: move up when no longer a pre-release
 -->
 
 ## Easier to Use
 
-No matter if you are just starting with configuration management and system automation,
-if you are a CFEngine novice or a battle-hardened policy coder, the new features
-in CFEngine 3.5 will make it easy for you to get stuff done.
+No matter if you are just starting with configuration management and system 
+automation, if you are a CFEngine novice or a battle-hardened policy coder, 
+the new features in CFEngine 3.5 will make it easy for you to get stuff done.
 
 ### Design Center, with UI in CFEngine Enterprise
 
@@ -37,13 +38,20 @@ A large number of parser and evaluation problems have been fixed. Iterating
 over **arrays with nested lists** has caused many headaches and workarounds in 
 previous versions of CFEngine. With 3.5, many of those can disappear.
 
-Policy developers get **clear and consistent messages** from the parser.
-`cf-promises` allowing partial check of policy - now you are not required
-to have `body common control` to check syntax. This will allow better
-integration with editors to perform automatic syntax validation.
-TODO: screenshot showing syntastic with vim
+Policy developers get **clear and consistent messages** from the 
+**stricter parser**. `cf-promises` allowing partial check of policy - now you 
+are not required to have `body common control` to check syntax. This will 
+allow better integration with editors to perform automatic syntax validation.
 
-`action_policy => warn` now sets `not_kept` classes, which allows you to see deeper than first order changes that might occur during **dry-runs**.
+**TODO: screenshot showing syntastic with vim**
+
+**Note:** If your policy has syntactically incorrect code, then the new parser 
+will mark those as errors. Fixing those errors should be straight forward, but 
+see the respective section in
+[Known Issues](getting-started-known-issues.html) for information.
+
+`action_policy => warn` now sets `not_kept` classes, which allows you to see 
+deeper than first order changes that might occur during **dry-runs**.
 
 The **new `scope` attribute** in `classes` bodies allows policy writers to set 
 non global classes based on result of a promise. This reduces managing class 
@@ -71,8 +79,8 @@ significantly and offer completely new functionality.
     * [`some`](reference-functions-some.html)
     * [`intersection`](reference-functions-intersection.html),
     * [`difference`](reference-functions-difference.html)
-* list functions  to look up a specific element, find the list length, extract a
-  portion of the list, reduce it to unique element, sort it, and filter it
+* list functions  to look up a specific element, find the list length, extract 
+  a portion of the list, reduce it to unique element, sort it, and filter it
     * [`nth`](reference-functions-nth.html)
     * [`length`](reference-functions-length.html)
     * [`sublist`](reference-functions-sublist.html)
@@ -80,12 +88,12 @@ significantly and offer completely new functionality.
     * [`sort`](reference-functions-sort.html)
     * [`shuffle`](reference-functions-shuffle.html)
     * [`filter`](reference-functions-filter.html)
-* function that returns an slist of all the classes that match a regular
+* function that returns a list of all the classes that match a regular
   expression
     * [`classesmatching`](reference-functions-classesmatching.html)
-* function that prints the time now or at a particular point
+* function that converts date/time values into a formatted string
     * [`strftime`](reference-functions-strftime.html)
-* function for building strings using sprintf semantics
+* function for building a string from data, using sprintf semantics
     * [`format`](reference-functions-format.html)
 * function for making logical decisions in a function call based on classes
     * [`ifelse`](reference-functions-ifelse.html)
@@ -99,7 +107,9 @@ significantly and offer completely new functionality.
 ### Improved out-of-the-box installation
 
 In CFEngine Enterprise, the CFEngine Server and the Mission Portal UI are all 
-up and running as soon as the package installation is completed.
+up and running as soon as the package installation is completed. CFEngine will
+take over from there, and continue to maintain a healthy Server configuration 
+through policy.
 
 **New bootstrap semantics** makes bootstrapping simpler. **avahi auto
 discovery** is available now in addition to specifying a static ip. Clearer
@@ -118,31 +128,30 @@ things might not have worked.
 
 ### Improved SQL reporting
 
-* Promise logs, file, software and compliance information are available
-  through SQL Report app
-
 All **CFEngine reports** are now based on **SQL syntax**. Run one of our
-ready-madereports with a single click, or define your own using the graphical 
+ready-made reports with a single click, or define your own using the graphical 
 query  builder or direct SQL input. Save and schedule your reports in a quick 
 and easy way.
 
+* Promise logs, file, software and compliance information are available
+  through SQL Report app
 * Regular expressions are supported in SQL queries
 * [Enterprise API](manuals-enterprise-api.html)** supports host
   and promise filtering
 
 ## Better tools for CFEngine operators
 
-* Self-diagnostics of agent binaries **TODO:**link to --self-diagnosics
-* Collect data for hub diagnostics
+* CFEngine Enterprise collects data for diagnostics, available through SQL 
+queries
     * performance data from MongoDB
-    * Include lastseen report data
-    * FirstReportTimeStamp is recorded for all hosts
-    * diagnostic data from cf-hub
-    * data is available through SQL queries
+    * lastseen report data for information about host connectivity
+    * `FirstReportTimeStamp` is recorded for all hosts
+    * Performance data from `cf-hub`
 * Configurable data collection for Enterprise
     * Host-side report content filter, controlled by `report_data_select` body
    in [access promise](reference-promise-types-access.html)
     * filters for class, variable, promise log and monitoring reports
+* Self-diagnostics of agent binaries **TODO:**link to --self-diagnosics
 
 ## Streamlined Mission Portal
 
