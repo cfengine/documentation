@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Integrating Mission Portal with git
-categories: [Manuals, Design Center UI, Integrating with git]
+categories: [Manuals, Design Center, Integrating with git]
 published: true
-alias: reference-design-center-ui-integrating-with-git.html
+alias: reference-design-center-integrating-with-git.html
 tags: [sketch, design center, git, mission portal, enterprise, masterfiles, version control]
 ---
 
