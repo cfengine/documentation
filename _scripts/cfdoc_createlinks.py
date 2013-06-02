@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # The MIT License (MIT)
 #
 # Copyright (c) 2013 CFEngine AS
@@ -20,7 +22,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-#!/usr/bin/python
 
 import cfdoc_linkresolver as linkresolver
 import os
@@ -66,9 +67,6 @@ import os
 
 CFDOC_LINKFILE=os.environ.get('CFDOC_LINKFILE')
 CFDOC_DIRNAME=os.environ.get('CFDOC_DIRNAME')
-
-print CFDOC_LINKFILE
-print CFDOC_DIRNAME
 
 if CFDOC_LINKFILE == None or CFDOC_DIRNAME == None:
 	
