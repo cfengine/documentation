@@ -11,18 +11,18 @@ tags: [reference, functions, splitstring]
 
 **Return type**: `slist`
 
-**Description**: Splits `string` into substrings wherever `regex` occurs, and 
-returns the list with at most `maxent` those strings.
+**Description**: Splits `string` into at most `maxent` substrings wherever 
+`regex` occurs, and  returns the list with those strings.
 
-If the maximum number of splits is insufficient to accommodate all entries, 
-then the final entry in the `slist` that is generated will contain the rest of 
-the un-split string.
+If the maximum number of substrings is insufficient to accommodate all 
+entries,then the final entry in the `slist` that is generated will contain the 
+rest of the un-split string.
 
 **Arguments**:
 
 * `string` : A data string, *in the range* .\*
 * `regex` : Unanchored regular expression to split on, *in the range* .\*
-* `maxent` : Maximum number of pieces, *in the range* 0,99999999999   
+* `maxent` : Maximum number of substrings, *in the range* 0,99999999999   
 
 **Example**:
 
