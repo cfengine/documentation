@@ -7,6 +7,8 @@ alias: reference-promise-types-access.html
 tags: [reference, bundles, server, cf-serverd, access, server, promise types, acl, trust, encryption]
 ---
 
+### in bundle server
+
 Access promises are conditional promises made by the server about file
 objects. The promise has two consequences. For file copy requests, the
 file becomes transferable to the remote client according to the
