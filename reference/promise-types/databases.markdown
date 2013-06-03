@@ -287,7 +287,7 @@ that is to be manipulated.
 database_type => "ms_registry";
 ```
 
-#### database_operation
+### database_operation
 
 **Type**: (menu option)
 
@@ -311,7 +311,7 @@ nature of the promise.
 database_operation => "create";
 ```
 
-#### database_columns
+### database_columns
 
 **Type**: `slist`
 
@@ -341,7 +341,7 @@ and fixed size data elements are doublets.
     database_server => myserver;
 ```
 
-#### database_rows
+### database_rows
 
 **Type**: `slist`
 
@@ -380,7 +380,7 @@ data-value pairs. The currently supported types (the middle field) for the
 Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string) 
 and `REG_DWORD` (double word).
 
-#### registry_exclude
+### registry_exclude
 
 **Type**: `slist`
 
