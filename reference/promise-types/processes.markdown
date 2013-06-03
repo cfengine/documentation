@@ -7,23 +7,8 @@ alias: reference-promise-types-processes.html
 tags: [reference, bundles, agent, promise types, processes, processes promises, promise types]
 ---
 
-Process promises refer to items in the system process table. Note that
-this is not the same as commands (which are instructions that CFEngine
-will execute). A process is a command in some state of execution (with a
-Process Control Block). Promiser objects here are patterns that are
-unanchored, meaning that they match line fragments in the system process
-table (see [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
-
-*Take care to note that process table formats differ between operating
-systems, and the use of simple patterns such as program-names is
-recommended. For more sophisticated matches, users should use
-the*`process_select`*feature.* For example, on many systems, the process
-pattern `"^cp"` may not match any processes, even though `"cp"` is
-running. This is because the process table entry may list `"/bin/cp"`.
-However, the process pattern `"cp"` will also match a process containing
-`"scp"`, so take care not to oversimplify your patterns (the PCRE
-pattern anchors `"\b"` and `"\B"` may prove very useful to you).
+Process promises refer to items in the system process table, i.e., a command 
+in some state of execution (with a Process Control Block). Promiser objects are patterns that are unanchored, meaning that they match line fragments in the system process table.
 
 ```cf3
      
@@ -37,18 +22,30 @@ pattern anchors `"\b"` and `"\B"` may prove very useful to you).
      
 ```
 
-To restart a process, you must use a class to activate and then describe a `command` in that class.
+**Note**: Process table formats differ between operating systems, and the use 
+of simple patterns such as program-names is recommended. For more 
+sophisticated matches, users should use the*`process_select`*feature.* For 
+example, on many systems, the process pattern `"^cp"` may not match any 
+processes, even though `"cp"` is running. This is because the process table 
+entry may list `"/bin/cp"`. However, the process pattern `"cp"` will also 
+match a process containing `"scp"`, so take care not to oversimplify your 
+patterns (the PCRE pattern anchors `"\b"` and `"\B"` may prove very useful to 
+you).
+
+
+To restart a process, you must use a class to activate and then describe a 
+`command` in that class.
 
 ```cf3
-commands:
+    commands:
 
-  restart_me::
+      restart_me::
 
-   "/path/executable" ... ;
+       "/path/executable" ... ;
 ```
 
-This rationalizes complex restart-commands and avoids unnecessary
-overlap between `processes` and `commands`.
+This rationalizes complex restart-commands and avoids unnecessary overlap 
+between `processes` and `commands`.
 
 The `process_stop` is also arguably a command, but it should be an
 ephemeral command that does not lead to a persistent process. It is
@@ -56,75 +53,62 @@ intended only for commands of the form /etc/inetd service stop, not for
 processes that persist. Processes are restarted at the end of a bundle's
 execution, but stop commands are executed immediately.
 
-
 ```cf3
-bundle agent example
-{
-processes:
+    bundle agent example
+    {
+    processes:
 
- ".*"
+     ".*"
 
-    process_count   => anyprocs,
-    process_select  => proc_finder;
+        process_count   => anyprocs,
+        process_select  => proc_finder;
 
-reports:
+    reports:
 
- any_procs::
+     any_procs::
 
-   "Found processes out of range";
-}
+       "Found processes out of range";
+    }
 
-########################################################
+    body process_select proc_finder
+    {
+      # Processes started between 5.5 hours and 20 minutes ago
+      stime_range => irange(ago(0,0,0,5,30,0),ago(0,0,0,0,20,0));
+      process_result => "stime";
+    }
 
-body process_select proc_finder
-
-{
-# Processes started between 5.5 hours and 20 minutes ago
-stime_range => irange(ago(0,0,0,5,30,0),ago(0,0,0,0,20,0));
-process_result => "stime";
-}
-
-########################################################
-
-body process_count anyprocs
-
-{
-match_range => "0,0";
-out_of_range_define => { "any_procs" };
-}
+    body process_count anyprocs
+    {
+      match_range => "0,0";
+      out_of_range_define => { "any_procs" };
+    }
 ```
 
-  
+### Commands and Processes
 
-In CFEngine 3 we have
+CFEngine distinguishes between `processes` and [`commands`][commands] so that 
+there is a clean separation between detection (promises about the process 
+table) and certain repairs (promises to execute commands that start 
+processes).
 
-```cf3
-      processes
-      commands
-```
-
-so that there is a clean separation between detection (promises about
-the process table) and certain repairs (promises to execute commands
-that start processes).
-
-Executions are about jobs, services, scripts etc. They are properties of
-an executable file. The referring 'promiser' is a file object. On the
-other hand a process is a property of a "process identifier" which is a
-kernel instantiation, a quite different object altogether. For example:
+Command executions are about jobs, services, scripts etc. They are properties 
+of an executable file, and the referring 'promiser' is a file object. On the
+other hand a process is a property of a "process identifier" which is a kernel 
+instantiation, a quite different object altogether. For example:
 
 -   A "PID" (which is not an executable) promises to be reminded of a
     signal, e.g.
 
-    ```cf3
-                  kill signal pid
-    ```
+```cf3
+    kill signal pid
+```
 
 -   An "command" promises to start or stop itself with a parameterized
     specification.
 
-    ```cf3
-                  exec command argument1 argument2 ...
-    ```
+```cf3
+    exec command argument1 argument2 ...
+```
 
 Neither the file nor the pid necessarily promise to respond to these
 activations, but they are nonetheless physically meaningful phenomena or
@@ -138,8 +122,7 @@ attributes associated with these objects.
 Executions lead to processes for the duration of their lifetime, so
 these two issues are related, although the promises themselves are not.
 
-  
- **Services versus processes**:   
+### Services and Processes
 
 A service is an abstraction that requires processes to run and files to
 be configured. It makes a lot of sense to wrap services in modular
@@ -167,78 +150,73 @@ pids, not to the individual pids concerned. So it becomes the
 responsibility of the execution to locate and interact with the pids
 necessary.
 
-  
-
 If you want to ensure that a service is running, check each in the agent
 control promises individually.
 
 ```cf3
-bundlesequence => { Update, Service("apache"), Service("nfsd") };
+    bundlesequence => { Update, Service("apache"), Service("nfsd") };
 ```
 
 or
 
 ```cf3
-bundlesequence => { Update, @(globals.all_services)  };
+    bundlesequence => { Update, @(globals.all_services)  };
 ```
 
 The bundle for this can look like this:
 
 ```cf3
-bundle agent Service(service")
-{
-processes:
+    bundle agent Service(service)
+    {
+    processes:
 
-  "$(service)" 
+      "$(service)" 
 
-      process_count => up("$(service)");
+          process_count => up("$(service)");
 
-commands:
+    commands:
 
-   "$daemons[$(service)]"  
+       "$daemons[$(service)]"
 
-      ifvarclass => "$(service)_up",
-      args       => "$args[$(service)]";
-
-}
+          ifvarclass => "$(service)_up",
+          args       => "$args[$(service)]";
+    }
 ```
 
 An alternative would be self-contained:
 
 ```cf3
-bundle agent Service
-{
-vars:
+    bundle agent Service
+    {
+    vars:
 
-  "service" slist => { "apache", "nfsd", "bind" };
+      "service" slist => { "apache", "nfsd", "bind" };
 
-processes:
+    processes:
 
-  "$(service)" 
+      "$(service)" 
 
-      process_count => up("$(service)");
+          process_count => up("$(service)");
 
-commands:
+    commands:
 
-   "$daemons[$(service)]"  
+       "$daemons[$(service)]"  
 
-      ifvarclass => "$(service)_up",
-      args       => "$args[$(service)]";
+          ifvarclass => "$(service)_up",
+          args       => "$args[$(service)]";
 
-}
+    }
 
-######################
-# Parameterized body
-######################
-
-body process_count up("$(s)")
-
-{
-match_range => "[0,10]";
-out_of_range_define => "$(s)_up";
-}
+    body process_count up("$(s)")
+    {
+      match_range => "[0,10]";
+      out_of_range_define => "$(s)_up";
+    }
 ```
 
+****
+
+## Attributes
 
 ### process_count
 
@@ -246,11 +224,15 @@ out_of_range_define => "$(s)_up";
 
 #### in_range_define
 
+**Description**: List of classes to define if the matches are in range
+
+Classes are defined if the processes that are found in the process table
+satisfy the promised process count, in other words if the promise about
+the number of processes matching the other criteria is kept.   
+
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: List of classes to define if the matches are in range
 
 **Example**:
 
@@ -263,19 +245,18 @@ out_of_range_define => "$(s)_up";
      
 ```
 
-**Notes**:
-Classes are defined if the processes that are found in the process table
-satisfy the promised process count, in other words if the promise about
-the number of processes matching the other criteria is kept.   
-
 #### match_range
-
-**Type**: irange [int,int]
-
-**Allowed input range**: `0,99999999999`
 
 **Description**: Integer range for acceptable number of matches for this
 process
+
+This is a numerical range for the number of occurrences of the process
+in the process table. As long as it falls within the specified limits,
+the promise is considered kept.   
+
+**Type**: irange[int,int]
+
+**Allowed input range**: `0,99999999999`
 
 **Example**:
 
@@ -288,18 +269,16 @@ process
      
 ```
 
-**Notes**:
-This is a numerical range for the number of occurrences of the process
-in the process table. As long as it falls within the specified limits,
-the promise is considered kept.   
-
 #### out_of_range_define
+
+**Description**: List of classes to define if the matches are out of range
+
+Classes to activate remedial promises conditional on this promise
+failure to be kept.
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: List of classes to define if the matches are out of range
 
 **Example**:
 
@@ -312,22 +291,23 @@ the promise is considered kept.
      
 ```
 
-**Notes**:
-Classes to activate remedial promises conditional on this promise
-failure to be kept.
-
 ### process_select
 
 **Type**: `body process_select`
 
 #### command
 
+**Description**: Regular expression matching the command/cmd field of a
+process
+
+This expression should match the entire `COMMAND` field of the process
+table, not just a fragment. This field is usually the last field on the
+line, so it thus starts with the first non-space character and ends with
+the end of line.   
+
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: Regular expression matching the command/cmd field of a
-process
 
 **Example**:
 
@@ -343,19 +323,13 @@ process
      
 ```
 
-**Notes**:
-This expression should match the entire `COMMAND` field of the process
-table, not just a fragment. This field is usually the last field on the
-line, so it thus starts with the first non-space character and ends with
-the end of line.   
-
 #### pid
+
+**Description**: Range of integers matching the process id of a process
 
 **Type**: irange [int,int]
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Range of integers matching the process id of a process
 
 **Example**:
 
@@ -369,18 +343,14 @@ the end of line.
      
 ```
 
-**Notes**:  
-   
-   
-
 #### pgid
+
+**Description**: Range of integers matching the parent group id of a
+process
 
 **Type**: irange [int,int]
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Range of integers matching the parent group id of a
-process
 
 **Example**:
 
@@ -394,18 +364,14 @@ process
      
 ```
 
-**Notes**:  
-   
-   
-
 #### ppid
+
+**Description**: Range of integers matching the parent process id of a
+process
 
 **Type**: irange [int,int]
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Range of integers matching the parent process id of a
-process
 
 **Example**:
 
@@ -419,18 +385,14 @@ process
      
 ```
 
-**Notes**:  
-   
-   
-
 #### priority
+
+**Description**: Range of integers matching the priority field (PRI/NI) of
+a process
 
 **Type**: irange [int,int]
 
 **Allowed input range**: `-20,+20`
-
-**Description**: Range of integers matching the priority field (PRI/NI) of
-a process
 
 **Example**:
 
@@ -443,17 +405,16 @@ a process
      
 ```
 
-**Notes**:  
-   
-   
-
 #### process_owner
+
+**Description**: List of regexes matching the user of a process
+
+The regular expressions should match a legal user name on the system. The
+regex is anchored, meaning it must match the entire name.
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: List of regexes matching the user of a process
 
 **Example**:
 
@@ -466,21 +427,19 @@ a process
      
 ```
 
-**Notes**:
-Regular expression should match a legal user name on the system. The
-regex is anchored, meaning it must match the entire name (see [Anchored
-vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
-
 #### process_result
+
+**Description**: Boolean class expression returning the logical combination
+of classes set by a process selection test
+
+A logical combination of the process selection classifiers. The syntax
+is the same as that for class expressions. There should be no spaces in
+the expressions.
 
 **Type**: `string`
 
 **Allowed input range**:
 `[(process_owner|pid|ppid||pgid|rsize|vsize|status|command|ttime|stime|tty|priority|threads)[|!.]*]*`
-
-**Description**: Boolean class expression returning the logical combination
-of classes set by a process selection test
 
 **Example**:
 
@@ -498,19 +457,14 @@ of classes set by a process selection test
      
 ```
 
-**Notes**:
-A logical combination of the process selection classifiers. The syntax
-is the same as that for class expressions. There should be no spaces in
-the expressions.   
-
 #### rsize
+
+**Description**: Range of integers matching the resident memory size of a
+process, in kilobytes
 
 **Type**: irange [int,int]
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Range of integers matching the resident memory size of a
-process, in kilobytes
 
 **Example**:
 
@@ -526,11 +480,14 @@ process, in kilobytes
 
 #### status
 
+**Description**: Regular expression matching the status field of a process
+
+For instance, characters in the set `NRSsl+..`. Windows processes do not
+have status fields.
+
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: Regular expression matching the status field of a process
 
 **Example**:
 
@@ -543,17 +500,17 @@ process, in kilobytes
      
 ```
 
-**Notes**:
-For instance, characters in the set NRSsl+... Windows processes do not
-have status fields.   
-
 #### stime_range
+
+**Description**: Range of integers matching the start time of a process
+
+The calculation of time from process table entries is sensitive to
+Daylight Savings Time (Summer/Winter Time) so calculations could be an
+hour off. This is for now a bug to be fixed.
 
 **Type**: irange [int,int]
 
 **Allowed input range**: `0,2147483647`
-
-**Description**: Range of integers matching the start time of a process
 
 **Example**:
 
@@ -566,19 +523,16 @@ have status fields.
      
 ```
 
-**Notes**:
-The calculation of time from process table entries is sensitive to
-Daylight Savings Time (Summer/Winter Time) so calculations could be an
-hour off. This is for now a bug to be fixed.   
-
 #### ttime_range
+
+**Description**: Range of integers matching the total elapsed time of a
+process.
+
+This is total accumulated time for a process.
 
 **Type**: irange [int,int]
 
 **Allowed input range**: `0,2147483647`
-
-**Description**: Range of integers matching the total elapsed time of a
-process
 
 **Example**:
 
@@ -591,16 +545,16 @@ process
      
 ```
 
-**Notes**:
-This is total accumulated time for a process.   
-
 #### tty
+
+**Description**: Regular expression matching the tty field of a process
+
+Windows processes are not regarded as attached to any terminal, so they
+all have tty '?'.
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: Regular expression matching the tty field of a process
 
 **Example**:
 
@@ -613,18 +567,14 @@ This is total accumulated time for a process.
      
 ```
 
-**Notes**:
-Windows processes are not regarded as attached to any terminal, so they
-all have tty '?'.   
-
 #### threads
+
+**Description**: Range of integers matching the threads (NLWP) field of a
+process
 
 **Type**: irange [int,int]
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Range of integers matching the threads (NLWP) field of a
-process
 
 **Example**:
 
@@ -639,12 +589,16 @@ process
 
 #### vsize
 
+**Description**: Range of integers matching the virtual memory size of a
+process, in kilobytes.
+
+On Windows, the virtual memory size is the amount of memory that cannot
+be shared with other processes. In Task Manager, this is called Commit
+Size (Windows 2008), or VM Size (Windows XP).
+
 **Type**: irange [int,int]
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Range of integers matching the virtual memory size of a
-process, in kilobytes
 
 **Example**:
 
@@ -657,42 +611,48 @@ process, in kilobytes
      
 ```
 
-**Notes**:
-On Windows, the virtual memory size is the amount of memory that cannot
-be shared with other processes. In Task Manager, this is called Commit
-Size (Windows 2008), or VM Size (Windows XP).
-
 ### process_stop
+
+**Description**: A command used to stop a running process
+
+As an alternative to sending a termination or kill signal to a process,
+one may call a 'stop script' to perform a graceful shutdown.
 
 **Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
-**Description**: A command used to stop a running process
-
 **Example**:
 
 ```cf3
-processes:
+    processes:
 
- "snmpd"
+     "snmpd"
 
-        process_stop => "/etc/init.d/snmp stop";
-
+            process_stop => "/etc/init.d/snmp stop";
 ```
 
-**Notes**:
-As an alternative to sending a termination or kill signal to a process,
-one may call a 'stop script' to perform a graceful shutdown.
 
 ### restart_class
+
+**Description**: A class to be defined globally if the process is not
+running, so that a `command:` rule can be referred to restart the process
+
+This is a signal to restart a process that should be running, if it is
+not running. Processes are signaled first and then restarted later, at
+the end of bundle execution, after all possible corrective actions have
+been made that could influence their execution.
+
+Windows does not support having processes start themselves in the
+background, like Unix daemons usually do; as fork off a child process.
+Therefore, it may be useful to specify an `action` body that sets
+`background` to true in a commands promise that is invoked by the class
+set by `restart_class`. See the `commands` promise type for more
+information.
 
 **Type**: `string`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
-
-**Description**: A class to be defined globally if the process is not
-running, so that a command: rule can be referred to restart the process
 
 **Example**:
 
@@ -710,66 +670,52 @@ commands:
     "/var/cfengine/bin/cf-serverd";
 ```
 
-**Notes**:
-This is a signal to restart a process that should be running, if it is
-not running. Processes are signaled first and then restarted later, at
-the end of bundle execution, after all possible corrective actions have
-been made that could influence their execution.
-
-Windows does not support having processes start themselves in the
-background, like Unix daemons usually do; as fork off a child process.
-Therefore, it may be useful to specify an action bodypart that sets
-background to true in a commands promise that is invoked by the class
-set by restart\_class. See the commands promise type for more
-information.
-
 ### signals
+
+**Description**: A list of menu options representing signals to be sent to
+a process.
+
+Signals are presented as an ordered list to the process. On Windows,
+only the kill signal is supported, which terminates the process.
 
 **Type**: (option list)
 
 **Allowed input range**:   
 
 ```cf3
-               hup
-               int
-               trap
-               kill
-               pipe
-               cont
-               abrt
-               stop
-               quit
-               term
-               child
-               usr1
-               usr2
-               bus
-               segv
+       hup
+       int
+       trap
+       kill
+       pipe
+       cont
+       abrt
+       stop
+       quit
+       term
+       child
+       usr1
+       usr2
+       bus
+       segv
 ```
-
-**Description**: A list of menu options representing signals to be sent to
-a process
 
 **Example**:
 
 ```cf3
-processes:
+    processes:
 
- cfservd_out_of_control::
+     cfservd_out_of_control::
 
-   "cfservd"
+       "cfservd"
 
-        signals         => { "stop" , "term" },
-        restart_class   => "start_cfserv";
+            signals         => { "stop" , "term" },
+            restart_class   => "start_cfserv";
 
- any::
+     any::
 
-   "snmpd"
+       "snmpd"
 
-        signals         => { "term" , "kill" };
-   
+            signals         => { "term" , "kill" };
 ```
 
-**Notes**:
-Signals are presented as an ordered list to the process. On Windows,
-only the kill signal is supported, which terminates the process.
