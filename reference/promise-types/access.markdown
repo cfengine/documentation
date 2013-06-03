@@ -41,7 +41,7 @@ promises will override less specific ones.
 
   
 
-Example:
+**Example**:
 
 ```cf3
 #########################################################
@@ -117,17 +117,9 @@ body report_data_select report_filter
 
 ```
 
-  
-
 Entries may be literal addresses of IPv4 or IPv6, or any name registered
 in the POSIX `gethostbyname` service.
 
--   [admit in access](#admit-in-access)
--   [deny in access](#deny-in-access)
--   [maproot in access](#maproot-in-access)
--   [ifencrypted in access](#ifencrypted-in-access)
--   [resource\_type in access](#resource_005ftype-in-access)
--   [report\_data\_select in access](#report_data_select-in-access)
 
 ### admit
 
@@ -135,8 +127,16 @@ in the POSIX `gethostbyname` service.
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: List of host names or IP addresses to grant access to file
-objects
+**Description**: The `admit` slist contains host names or IP addresses 
+to grant access to file objects.
+
+Admit promises grant access to file objects on the server. Arguments may
+be IP addresses or hostnames, provided DNS name resolution is active. In
+order to reach this stage, a client must first have passed all of the
+standard connection tests in the control body.
+
+The lists may contain network addresses in CIDR notation or regular
+expressions to match the IP address or name of the connecting host.
 
 **Example**:
 
@@ -148,23 +148,18 @@ access:
     admit   => { "127.0.0.1", "192.168.0.1/24", ".*\.domain\.tld"  };
 ```
 
-**Notes**:
-Admit promises grant access to file objects on the server. Arguments may
-be IP addresses or hostnames, provided DNS name resolution is active. In
-order to reach this stage, a client must first have passed all of the
-standard connection tests in the control body.
-
-The lists may contain network addresses in CIDR notation or regular
-expressions to match the IP address or name of the connecting host.
-
 ### deny
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: List of host names or IP addresses to deny access to file
-objects
+**Description**: The `deny` sist contains host names or IP addresses 
+to deny access to file objects.
+
+Denial is for special exceptions. A better strategy is always to grant
+on a need to know basis. A security policy based on exceptions is a weak
+one.
 
 **Example**:
 
@@ -182,12 +177,9 @@ access:
 ```
 
 **Notes**:
-Denial is for special exceptions. A better strategy is always to grant
-on a need to know basis. A security policy based on exceptions is a weak
-one.
 
-Note that only regular expressions or exact matches are allowed in this
-list, as non-specific matches are too greedy for denial.
+Only regular expressions or exact matches are allowed in this list, 
+as non-specific matches are too greedy for denial.
 
 ### maproot
 
@@ -195,8 +187,15 @@ list, as non-specific matches are too greedy for denial.
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: List of host names or IP addresses to grant full
-read-privilege on the server
+**Description**: The `maproot` sist contains host names or IP addresses 
+to grant full read-privilege on the server.
+
+Normally users authenticated by the server are granted access only to
+files owned by them and no-one else. Even if the `cf-serverd` process
+runs with root privileges on the server side of a client-server
+connection, the client is not automatically granted access to download
+files owned by non-privileged users. If `maproot` is true then remote
+`root` users are granted access to all files.
 
 **Example**:
 
@@ -214,12 +213,6 @@ access:
 ```
 
 **Notes**:
-Normally users authenticated by the server are granted access only to
-files owned by them and no-one else. Even if the `cf-serverd` process
-runs with root privileges on the server side of a client-server
-connection, the client is not automatically granted access to download
-files owned by non-privileged users. If `maproot` is true then remote
-`root` users are granted access to all files.
 
 A typical case where mapping is important is in making backups of many
 user files. On Windows, `cf-serverd`, `maproot` is required to read
@@ -242,8 +235,12 @@ files if the connecting user does not own the file on the server.
 
 **Default value:** false
 
-**Description**: true/false whether the current file access promise is
-conditional on the connection from the client being encrypted
+**Description**: The `ifencrypted` menu option determines whether the 
+current file access promise is conditional on the connection from the 
+client being encrypted.
+
+If this flag is true a client cannot access the file object unless its
+connection is encrypted.
 
 **Example**:
 
@@ -256,9 +253,6 @@ access:
     ifencrypted => "true";
 ```
 
-**Notes**:
-If this flag is true a client cannot access the file object unless its
-connection is encrypted.
 
 ### resource_type
 
@@ -274,8 +268,15 @@ connection is encrypted.
                variable
 ```
 
-**Description**: The type of object being granted access (the default
-grants access to files)
+**Description**: The `resource_type` is the type of object being granted 
+access.
+
+By default, access to resources granted by the server are files.
+However, sometimes it is useful to cache `literal` strings, hints and
+data on the server for easy access (e.g. the contents of variables or
+hashed passwords). In the case of literal data, the promise handle
+serves as the reference identifier for queries. Queries are instigated
+by function calls by any agent.
 
 **Example**:
 
@@ -321,12 +322,6 @@ access:
 ```
 
 **Notes**:
-By default, access to resources granted by the server are files.
-However, sometimes it is useful to cache `literal` strings, hints and
-data on the server for easy access (e.g. the contents of variables or
-hashed passwords). In the case of literal data, the promise handle
-serves as the reference identifier for queries. Queries are instigated
-by function calls by any agent.
 
 If the resource type is `literal`, CFEngine will grant access to a
 literal data string. This string is defined either by the promiser
@@ -372,8 +367,12 @@ tunneling.
 
 **Type**: `body report_data_select`
 
-**Description**: Restricts access to data for specified query type reported to 
-the CFEngine Enterprise Database.
+**Description**: The `report_data_select` body restricts access to data 
+for the specified query types reported to the CFEngine Enterprise Database.
+
+This body template allows users to control the content of reports collected 
+by the Enterprise Database Server, and allows users to strip unwanted data 
+(e.g. temporary variables from reporting).
 
 **Example**:
 
@@ -388,20 +387,15 @@ body report_data_select
 
 **Notes**:
 
+Report content can be differentiated between hosts that are controlled
+by the class expression on access promiser.
 
-This body template allow user to control content of reports collected by the 
-Enterprise Database Server.
-It can be used to differentiate content of delta and full reports as also 
-allow user
-to strip unwanted data e.g. temporary variables from reporting.
-Report content can be differentiated between hosts which is controlled
-by class expression on access promiser.
+If more than one select statement applies to the same host, all of them are applied.
 
-If more than one select statement apply to same host, all of them are applied.
-Usage of this body in only allowed in conjunction with using
-resource_type => "query" as this is the resource type that is being affected.
+Usage of this body is only allowed in conjunction with using 
+resource_type => "query", as this is the resource type that is being affected.
 
-History: Introduced in Enterprise 3.5.0
+**History**: Introduced in Enterprise 3.5.0
 
 #### classes_include
 
@@ -409,8 +403,14 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down class report content to contain only classes matching
-specified regular expression list.
+**Description**: The `classes_include` attribute is used to filter content 
+of the class report collected by Enterprise Hub, to include classes matching 
+specified regular expressions on the list.
+
+Only classes matching the specified regular expressions on the list will 
+be sent back in the report. 
+
+If this attribute is not used, the report content is not reduced.
 
 **Example**:
 
@@ -422,14 +422,8 @@ body report_data_select
 }
 ```
 
-**Notes**:
+**History**: Introduced in Enterprise 3.5.0
 
-
-This attribute is used to filter content of class report collected by Enterprise Hub.
-Classes matching specified regular expression list will only be send back in the report.
-If attribute is not used, report content is not reduced.
-
-History: Introduced in Enterprise 3.5.0
 
 #### classes_exclude
 
@@ -437,8 +431,9 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down class report content to exclude classes matching
-specified regular expression list.
+**Description**: The `classes_exclude` attribute is used to filter content 
+of the class report collected by Enterprise Hub, to exclude classes matching 
+specified regular expressions on the list.
 
 **Example**:
 
@@ -452,13 +447,12 @@ body report_data_select
 
 **Notes**:
 
+If this attribute is used in conjunction with `classes_include` it will 
+exclude entries from the subset selected by the include expression.
 
-This attribute is used to filter content of class report collected by Enterprise Hub.
-Classes matching specified regular expression list will be excluded from report.
-If attribute is used in conjunction with classes_include it will exclude entries from
-subset selected by include expression.
+Regular expressions for this attribute use the form <scope>.<variable_name>.
 
-History: Introduced in Enterprise 3.5.0
+**History**: Introduced in Enterprise 3.5.0
 
 #### variables_include
 
@@ -466,8 +460,11 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down variable report content to contain only variables matching
-specified regular expression list.
+**Description**: The `variables_include` attribute is used to filter 
+content of the variables report collected by Enterprise Hub, to contain 
+only variables matching specified regular expressions on the list.
+
+If the attribute is not used, the report content is not reduced.
 
 **Example**:
 
@@ -481,16 +478,10 @@ body report_data_select
 
 **Notes**:
 
+Regular expressions for this attribute use the form <scope>.<variable_name>.
 
-This attribute is used to filter content of variables report collected by Enterprise Hub.
-Variables matching specified regular expression list will only be send back in the report.
-Regular expression if matched agents variable name including scope: 
+**History**: Introduced in Enterprise 3.5.0
 
-    <scope>.<variable_name>
-
-If attribute is not used, report content is not reduced.
-
-History: Introduced in Enterprise 3.5.0
 
 #### variables_exclude
 
@@ -498,8 +489,9 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down variable report content to exclude variables matching
-specified regular expression list.
+**Description**: The `variables_exclude` attribute is used to filter 
+content of the variable report collected by Enterprise Hub, to exclude 
+variables matching specified regular expression list.
 
 **Example**:
 
@@ -513,14 +505,13 @@ body report_data_select
 
 **Notes**:
 
+Regular expressions for this attribute use the form <scope>.<variable_name>.
 
-This attribute is used to filter content of variable report collected by Enterprise Hub.
-Variables matching specified regular expression list will be excluded from report.
-Regular expression if matched agents variable name including scope: `<scope>.<variable_name>`
-If attribute is used in conjunction with variables_include it will exclude entries from
-subset selected by include expression.
+If this attribute is used in conjunction with `variables_include`, it will 
+exclude entries from the subset selected by the include expression.
 
-History: Introduced in Enterprise 3.5.0
+**History**: Introduced in Enterprise 3.5.0
+
 
 #### promise_notkept_log_include
 
@@ -528,8 +519,15 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down promise not kept log report content to contain only promise
-handles matching specified regular expression list.
+**Description**: The `promise_notkept_log_include` attribute is used to 
+filter content of the not kept log report collected by Enterprise Hub, 
+to contain promise handles matching specified regular expressions on 
+the list.
+
+Only those handles matching the regular expressions on the list will 
+be sent back in the report.
+
+If the attribute is not used, the report content will not bes reduced.
 
 **Example**:
 
@@ -541,14 +539,7 @@ body report_data_select
 }
 ```
 
-**Notes**:
-
-
-This attribute is used to filter content of not kept log report collected by Enterprise Hub.
-Handles matching specified regular expression list will only be send back in the report.
-If attribute is not used, report content is not reduced.
-
-History: Introduced in Enterprise 3.5.0
+**History**: Introduced in Enterprise 3.5.0
 
 #### promise_notkept_log_exclude
 
@@ -556,8 +547,13 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down promise not kept log report content to exclude promise handles matching
-specified regular expression list.
+**Description**: The `promise_notkept_log_exclude` attribute is used to 
+filter content of the not kept log report collected by Enterprise Hub, 
+to exclude promise handles matching specified regular expressions on the 
+list.
+
+Only those handles matching regular expression on the list will be excluded 
+from the report.
 
 **Example**:
 
@@ -569,15 +565,11 @@ body report_data_select
 }
 ```
 
-**Notes**:  
+**Notes**: If this attribute is used in conjunction with the 
+`promise_notkept_log_include` attribute, it will exclude entries 
+from the subset selected by the include expression.
 
-
-This attribute is used to filter content of not kept log report collected by Enterprise Hub.
-Handles matching specified regular expression list will be excluded from report.
-If attribute is used in conjunction with promise_notkept_log_include it will exclude entries from
-subset selected by include expression.
-
-History: Introduced in Enterprise 3.5.0
+**History**: Introduced in Enterprise 3.5.0
 
 #### promise_repaired_log_include
 
@@ -585,8 +577,13 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down promise repaired log report content to contain only promise
-handles matching specified regular expression list.
+**Description**: The `promise_repaired_log_include` attribute is used to 
+filter content of the repaired log report collected by Enterprise Hub, 
+to include regular expressions matched on the list.
+
+Only those handles matching the regular expression on the list will be 
+sent back in the report. If attribute is not used, the report content 
+will not be filtered.
 
 **Example**:
 
@@ -598,14 +595,7 @@ body report_data_select
 }
 ```
 
-**Notes**:
-
-
-This attribute is used to filter content of repaired log report collected by Enterprise Hub.
-Handles matching specified regular expression list will only be send back in the report.
-If attribute is not used, report content is not reduced.
-
-History: Introduced in Enterprise 3.5.0
+**History**: Introduced in Enterprise 3.5.0
 
 #### promise_repaired_log_exclude
 
@@ -613,8 +603,12 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down promise repaired log report content to exclude promise handles matching
-specified regular expression list.
+**Description**: The `promise_repaired_log_exclude` attribute is used to 
+filter content of the repaired log report collected by Enterprise Hub, 
+to exclude promise handles matching regular expression on the list.
+
+Only those handles matching regular expression on the list will be excluded 
+from the report.
 
 **Example**:
 
@@ -628,13 +622,11 @@ body report_data_select
 
 **Notes**:
 
+If this attribute is used in conjunction with `promise_repaired_log_include`, 
+it will exclude entries from the subset selected by the include expression.
 
-This attribute is used to filter content of repaired log report collected by Enterprise Hub.
-Handles matching specified regular expression list will be excluded from report.
-If attribute is used in conjunction with promise_repaired_log_include it will exclude entries from
-subset selected by include expression.
+**History**: Introduced in Enterprise 3.5.0
 
-History: Introduced in Enterprise 3.5.0
 
 #### monitoring_include
 
@@ -642,8 +634,13 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down monitoring report content to contain only observed objects 
-matching specified regular expression list.
+**Description**: The `monitoring_include` attribute is used to filter 
+content of the monitoring report collected by Enterprise Hub, to contain 
+only observed objects matching regular expressions on the list.
+
+Only object names matching regular expression on the list will be sent 
+back in the report. If the attribute is not used, the report content will 
+not be filtered.
 
 **Example**:
 
@@ -655,14 +652,7 @@ body report_data_select
 }
 ```
 
-**Notes**:
-
-
-This attribute is used to filter content of monitoring report collected by Enterprise Hub.
-Object names matching specified regular expression list will only be send back in the report.
-If attribute is not used, report content is not reduced.
-
-History: Introduced in Enterprise 3.5.0
+**History**: Introduced in Enterprise 3.5.0
 
 #### monitoring_exclude
 
@@ -670,8 +660,12 @@ History: Introduced in Enterprise 3.5.0
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Scope down monitoring content to exclude observed objects matching
-specified regular expression list.
+**Description**: The `monitoring_exclude` attribute is used to filter 
+content of the monitoring report collected by Enterprise Hub, to exclude 
+observed objects matching specified regular expressions on the list.
+
+Only object names matching regular expression list will be excluded from 
+the report.
 
 **Example**:
 
@@ -685,10 +679,7 @@ body report_data_select
 
 **Notes**:
 
+If this attribute is used in conjunction with `monitoring_include` it will 
+exclude entries from the subset selected by the include expression.
 
-This attribute is used to filter content of monitoring report collected by Enterprise Hub.
-Object names matching specified regular expression list will be excluded from report.
-If attribute is used in conjunction with monitoring_include it will exclude entries from
-subset selected by include expression.
-
-History: Introduced in Enterprise 3.5.0
+**History**: Introduced in Enterprise 3.5.0
