@@ -154,7 +154,7 @@ access:
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The `deny` sist contains host names or IP addresses 
+**Description**: The `deny` slist contains host names or IP addresses 
 to deny access to file objects.
 
 Denial is for special exceptions. A better strategy is always to grant
