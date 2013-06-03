@@ -18,8 +18,6 @@ that is described by the XPath and also found within the document. The
 promise object referred to is a literal string representation of an
 XPath.
 
-  
-
 ```cf3
     bundle edit_xml example
     {
@@ -27,7 +25,6 @@ XPath.
        "/Server/Service/Engine/Host[ @name=\"cfe_host\" | Alias = cfe_alias ]";
     }
 ```
-  
 
 Note that typically, only a single XPath is built in each `build_xpath`
 promise. You may of course have multiple promises that each build an

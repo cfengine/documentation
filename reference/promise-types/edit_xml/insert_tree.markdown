@@ -14,19 +14,15 @@ default promise is to insert the tree into the specified node. The
 specified node is determined by body-attributes. The promise object
 referred to is a literal string representation of a balanced XML tree.
 
-  
-
 ```cf3
-bundle edit_xml example
-  {
-  insert_tree:
-    "Host name=\"cfe_host\">Alias>cfe_alias/Alias>/Host>"
+    bundle edit_xml example
+    {
+    insert_tree:
 
-    select_xpath => "/Server/Service/Engine";
-  }
+      "Host name=\"cfe_host\">Alias>cfe_alias/Alias>/Host>"
+        select_xpath => "/Server/Service/Engine";
+    }
 ```
-
-  
 
 Note that typically, only a single tree, within a single specified node,
 is inserted in each `insert_tree` promise. You may of course have

@@ -15,19 +15,14 @@ specified node is determined by body-attributes. The promise object
 referred to is a literal string representation of the name of the
 attribute to be deleted.
 
-  
-
 ```cf3
-bundle edit_xml example
-  {
-  delete_attribute:
-    "name"
-
-    select_xpath => "/Server/Service/Engine/Host";
-  }
+    bundle edit_xml example
+    {
+    delete_attribute:
+      "attribute name"
+        select_xpath => "/Server/Service/Engine/Host";
+    }
 ```
-
-  
 
 Note that typically, only a single attribute, within a single specified
 node, is deleted in each `delete_attribute` promise. You may of course

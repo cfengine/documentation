@@ -17,45 +17,28 @@ attribute value are each determined by body-attributes. The promise
 object referred to is a literal string representation of the name of the
 attribute to be set.
 
-  
-
 ```cf3
-bundle edit_xml example
-  {
-  set_attribute:
-    "name"
+    bundle edit_xml example
+    {
+    set_attribute:
+      "name"
 
-    attribute_value => "cfe_host",
-    select_xpath => "/Server/Service/Engine/Host";
-  }
+        attribute_value => "cfe_host",
+           select_xpath => "/Server/Service/Engine/Host";
+    }
 ```
-
-  
 
 Note that typically only a single attribute, within a single selected
 node, is set in each `set_attribute` promise. You may of course have
 multiple promises that each set an attribute.
 
--   [attribute\_value in
-    set\_attribute](#attribute_005fvalue-in-set_005fattribute)
+## Attributes
 
 ### attribute_value
-
-**Type**: `string`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: Value of the attribute to be inserted into the XPath node
 of the XML file
 
-**Example**:
+**Type**: `string`
 
-```cf3
-body attribute_value example(s)
-{
-attribute_value => "$(s)";
-}
-```
-
-**Notes**:  
-   
+**Allowed input range**: (arbitrary string)
