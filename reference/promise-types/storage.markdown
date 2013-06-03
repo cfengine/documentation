@@ -22,41 +22,33 @@ Storage promises refer to disks and filesystem properties.
 
 
 ```cf3
-bundle agent storage
+    bundle agent storage
+    {
+      storage:
 
-{
-storage:
+        "/usr" volume  => mycheck("10%");
+        "/mnt" mount   => nfs("nfsserv.example.org","/home");
 
-  "/usr" volume  => mycheck("10%");
-  "/mnt" mount   => nfs("nfsserv.example.org","/home");
+    }
 
-}
+    body volume mycheck(free)   # reusable template
 
-#######################################################
+    {
+      check_foreign  => "false";
+      freespace      => "$(free)";
+      sensible_size  => "10000";
+      sensible_count => "2";
+    }
 
-body volume mycheck(free)   # reusable template
+    body mount nfs(server,source)
 
-{
-check_foreign  => "false";
-freespace      => "$(free)";
-sensible_size  => "10000";
-sensible_count => "2";
-}
-
-body mount nfs(server,source)
-
-{
-mount_type => "nfs";
-mount_source => "$(source)";
-mount_server => "$(server)";
-edit_fstab => "true";
-}
+    {
+      mount_type => "nfs";
+      mount_source => "$(source)";
+      mount_server => "$(server)";
+      edit_fstab => "true";
+    }
 ```
-
-  
-
--   [mount in storage](#mount-in-storage)
--   [volume in storage](#volume-in-storage)
 
 ### mount
 
@@ -64,21 +56,23 @@ edit_fstab => "true";
 
 #### edit_fstab
 
+**Description**: true/false add or remove entries to the file system table
+("fstab")
+
+The default behavior is to not place edits in the file system table.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false add or remove entries to the file system table
-("fstab")
 
 **Default value:** false
 
@@ -88,28 +82,25 @@ edit_fstab => "true";
      
      body mount example
      {
-     edit_fstab => "true";
+       edit_fstab => "true";
      }
      
 ```
 
-**Notes**:
-The default behaviour is to not place edits in the file system table.   
-
 #### mount_type
+
+**Description**: Protocol type of remote file system
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    nfs
-                    nfs2
-                    nfs3
-                    nfs4
+    nfs
+    nfs2
+    nfs3
+    nfs4
 ```
-
-**Description**: Protocol type of remote file system
 
 **Example**:
 
@@ -127,11 +118,13 @@ This field is mainly for future extensions.
 
 #### mount_source
 
+**Description**: Path of remote file system to mount.
+
+This is the location on the remote device, server, SAN etc.
+
 **Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
-
-**Description**: Path of remote file system to mount
 
 **Example**:
 
@@ -144,70 +137,62 @@ This field is mainly for future extensions.
      
 ```
 
-**Notes**:
-This is the location on the remote device, server, SAN etc.   
-
 #### mount_server
+
+**Description**: Hostname or IP or remote file system server.
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: Hostname or IP or remote file system server
-
 **Example**:
 
 ```cf3
      
      body mount example
      {
-     mount_server => "nfs_host.example.org";
+       mount_server => "nfs_host.example.org";
      }
      
 ```
 
-**Notes**:
-Hostname or IP address, this could be on a SAN.   
-
 #### mount_options
+
+**Description**: List of option strings to add to the file system table
+("fstab").
+
+This list is concatenated in a form appropriate for the filesystem. The
+options must be legal options for the system mount commands.   
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: List of option strings to add to the file system table
-("fstab")
-
 **Example**:
 
 ```cf3
      body mount example
      {
-     mount_options => { "rw", "acls" };
+       mount_options => { "rw", "acls" };
      }
-     
 ```
 
-**Notes**:
-This list is concatenated in a form appropriate for the filesystem. The
-options must be legal options for the system mount commands.   
-
 #### unmount
+
+**Description**: true/false unmount a previously mounted filesystem
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false unmount a previously mounted filesystem
 
 **Default value:** false
 
@@ -228,51 +213,51 @@ options must be legal options for the system mount commands.
 
 #### check_foreign
 
+**Description**: If true, verify storage that is mounted from a foreign
+system on this host.
+
+CFEngine will not normally perform sanity checks on filesystems that are
+not local to the host. If `true` it will ignore a partition's network
+location and ask the current host to verify storage located physically
+on other systems.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false verify storage that is mounted from a foreign
-system on this host
 
 **Default value:** false
 
 **Example**:
 
 ```cf3
-     
      body volume example
-     
      {
-     #..
-     check_foreign  => "false";
+       check_foreign  => "true";
      }
-     
 ```
 
-**Notes**:
-CFEngine will not normally perform sanity checks on filesystems that are
-not local to the host. If `true` it will ignore a partition's network
-location and ask the current host to verify storage located physically
-on other systems.   
-
 #### freespace
+
+**Description**: Absolute or percentage minimum disk space that should be
+available before warning
+
+The amount of free space that is promised on a storage device. Once this
+promise is found not to be kept (that is, if the free space falls below
+the promised value), warnings are generated. You may also want to use
+the results of this promise to control other promises.
 
 **Type**: `string`
 
 **Allowed input range**: `[0-9]+[MBkKgGmb%]`
-
-**Description**: Absolute or percentage minimum disk space that should be
-available before warning
 
 **Example**:
 
@@ -290,22 +275,14 @@ available before warning
      
 ```
 
-**Notes**:
-The amount of freespace that is promised on a storage device. Once this
-promise is found not to be kept (that is, if the free space falls below
-the promised value), warnings are generated. You may also want to use
-the results of this promise to control other promises.
-
-See: [classes in \*](#classes-in-_002a).   
-
 #### sensible_size
+
+**Description**: Minimum size in bytes that should be used on a
+sensible-looking storage device
 
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Minimum size in bytes that should be used on a
-sensible-looking storage device
 
 **Example**:
 
@@ -318,24 +295,17 @@ sensible-looking storage device
      
 ```
 
-**Notes**:
-```cf3
-     
-     body volume control
-     {
-     sensible_size => "20K";
-     }
-     
-```
-
 #### sensible_count
+
+**Description**: Minimum number of files that should be defined on a
+sensible-looking storage device.
+
+Files must be readable by the agent. In other words, it is assumed that
+the agent has privileges on volumes being checked.
 
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Minimum number of files that should be defined on a
-sensible-looking storage device
 
 **Example**:
 
@@ -348,43 +318,36 @@ sensible-looking storage device
      
 ```
 
-**Notes**:
-Files must be readable by the agent. In other words, it is assumed that
-the agent has privileges on volumes being checked.   
-
 #### scan_arrivals
+
+**Description**: If true, generate pseudo-periodic disk change arrival
+distribution.
+
+This operation should not be left 'on' for more than a single run
+(maximum once per week). It causes CFEngine to perform an extensive disk
+scan noting the schedule of changes between files. This can be used for
+a number of analyses including optimum backup schedule computation.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false generate pseudo-periodic disk change arrival
-distribution
 
 **Default value:** false
 
 **Example**:
 
 ```cf3
-     
      body volume example
      {
-     scan_arrivals => "true";
+       scan_arrivals => "true";
      }
-     
 ```
-
-**Notes**:
-This operation should not be left 'on' for more than a single run
-(maximum once per week). It causes CFEngine to perform an extensive disk
-scan noting the schedule of changes between files. This can be used for
-a number of analyses including optimum backup schedule computation.
