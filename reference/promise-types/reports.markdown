@@ -36,6 +36,8 @@ Messages outputted from report promises are prefixed with the letter R to distin
     }
 ```
 
+## Attributes
+
 ### friend_pattern
 
 **Description**: Regular expression to keep selected hosts from the friends
@@ -151,6 +153,8 @@ standard output.
 the caller can accept as a result for this bundle; in other words, a
 return value with array index defined by this attribute.
 
+Return values are limited to scalars.
+
 **Type**: `string`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
@@ -162,7 +166,6 @@ return value with array index defined by this attribute.
     {
     bundlesequence => { "test" };
     }
-
 
     bundle agent test
     {
@@ -197,9 +200,6 @@ return value with array index defined by this attribute.
     }
 ```
 
-**Notes**:
-
-Return values are limited to scalars.
 
 ### showstate
 
