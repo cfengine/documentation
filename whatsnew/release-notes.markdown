@@ -118,7 +118,7 @@ things might not have worked.
 
 ## Report collection at arbitrary scale
 
-### Infinite scalability across multiple sites
+### Scalability across multiple sites
 
 * support for [Multi-Site
   Querying](manuals-enterprise-api-multi-site-queries.html)
