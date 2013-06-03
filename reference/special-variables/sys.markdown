@@ -21,7 +21,7 @@ rules for configuration.
           edit_defaults => reconstruct;
 ```
 
-#### Variable sys.arch
+### sys.arch
 
 The variable gives the kernel's short architecture description.
 
@@ -29,7 +29,7 @@ The variable gives the kernel's short architecture description.
     # arch = x86_64
 ```
 
-#### Variable sys.cdate
+### sys.cdate
 
 The date of the system in canonical form, i.e. in the form of a class.
 
@@ -37,7 +37,7 @@ The date of the system in canonical form, i.e. in the form of a class.
     # cdate = Sun_Dec__7_10_39_53_2008_
 ```
 
-#### Variable sys.cf\_promises
+### sys.cf\_promises
 
 A variable containing the path to the CFEngine syntax analyzer
 `cf-promises` on the platform you are using.
@@ -48,7 +48,7 @@ A variable containing the path to the CFEngine syntax analyzer
       "syntax_ok" expression => returnszero("$(sys.cf_promises)");
 ```
 
-#### Variable sys.cf\_version
+### sys.cf\_version
 
 The variable gives the version of the running CFEngine Community
 Edition.
@@ -57,7 +57,7 @@ Edition.
     # cf_version = 3.0.5 
 ```
 
-#### Variable sys.class
+### sys.class
 
 This variable contains the name of the hard-class category for this host
 (i.e. its top level operating system type classification).
@@ -66,9 +66,9 @@ This variable contains the name of the hard-class category for this host
     # class = linux
 ```
 
-#### Variable sys.cpus
+### sys.cpus
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2012)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2012)
 
 A variable containing the number of CPU cores detected. On systems which
 provide virtual cores, it is set to the total number of virtual, not
@@ -85,7 +85,7 @@ is set, and on multi-core systems the class "*n*\_cpus" is set, where
        "This system has 8 processors.";
 ```
 
-#### Variable sys.crontab
+### sys.crontab
 
 The variable gives the location of the current users's master crontab
 directory.
@@ -94,7 +94,7 @@ directory.
     # crontab = /var/spool/crontab/root 
 ```
 
-#### Variable sys.date
+### sys.date
 
 The date of the system as a text string.
 
@@ -102,14 +102,14 @@ The date of the system as a text string.
     # date = Sun Dec  7 10:39:53 2008
 ```
 
-#### Variable sys.doc\_root
+### sys.doc\_root
 
-*History*: Was introduced in 3.1.0, Enterprise 2.0.
+**History**: Was introduced in 3.1.0, Enterprise 2.0.
 
 A scalar variable containing the default path for the document root of
 the standard web server package.
 
-#### Variable sys.domain
+### sys.domain
 
 The domain name as discovered by CFEngine. If the DNS is in use, it could
 be possible to derive the domain name from its DNS registration, but in
@@ -121,9 +121,9 @@ general there is no way to discover this value automatically. The
  
 ```
 
-#### Variable sys.enterprise\_version
+### sys.enterprise\_version
 
-*History*: Was introduced in 3.5.0, Enterprise 3.0.0
+**History**: Was introduced in 3.5.0, Enterprise 3.0.0
 
 The variable gives the version of the running CFEngine Enterprise
 Edition.
@@ -132,7 +132,7 @@ Edition.
     # enterprise_version = 3.0.0
 ```
 
-#### Variable sys.expires
+### sys.expires
 
 ```cf3
     reports:
@@ -142,7 +142,7 @@ Edition.
       "License expires $(sys.expires)";
 ```
 
-#### Variable sys.exports
+### sys.exports
 
 The location of the system NFS exports file.
 
@@ -151,9 +151,9 @@ The location of the system NFS exports file.
     # exports = /etc/dfs/dfstab
 ```
 
-#### Variables sys.flavor, sys.flavour
+###s sys.flavor, sys.flavour
 
-*History*: Was introduced in 3.2.0, Enterprise 2.0
+**History**: Was introduced in 3.2.0, Enterprise 2.0
 
 A variable containing an operating system identification string that is
 used to determine the current release of the operating system in a form
@@ -163,7 +163,7 @@ CFEngine.
 
 These two variables are synonyms for each other.
 
-#### Variable sys.fqhost
+### sys.fqhost
 
 The fully qualified name of the host. In order to compute this value
 properly, the domain name must be defined.
@@ -172,7 +172,7 @@ properly, the domain name must be defined.
     # fqhost = host.example.org
 ```
 
-#### Variable sys.fstab
+### sys.fstab
 
 The location of the system filesystem (mount) table.
 
@@ -180,16 +180,16 @@ The location of the system filesystem (mount) table.
     # fstab = /etc/fstab
 ```
 
-#### Variable sys.hardware\_addresses
+### sys.hardware\_addresses
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 This is a list variable containing a list of all known MAC addresses for
 system interfaces.
 
-#### Variable sys.hardware\_mac[interface\_name]
+### sys.hardware\_mac[interface\_name]
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 This contains the MAC address of the named interface. For example:
 
@@ -201,7 +201,7 @@ This contains the MAC address of the named interface. For example:
         "Tell me $(harware_mac[eth0])";
 ```
 
-#### Variable sys.host
+### sys.host
 
 The name of the current host, according to the kernel. It is undefined
 whether this is qualified or unqualified with a domain name.
@@ -210,7 +210,7 @@ whether this is qualified or unqualified with a domain name.
     # host = myhost
 ```
 
-#### Variable sys.interface
+### sys.interface
 
 The assumed (default) name of the main system interface on this host.
 
@@ -218,13 +218,13 @@ The assumed (default) name of the main system interface on this host.
     # interface = eth0
 ```
 
-#### Variable sys.interfaces
+### sys.interfaces
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 Displays a system list of configured interfaces currently active in use
 by the system. This list is detected at runtime and it passed in the
-variables report to a Mission Portal in commercial editions of CFEngine.
+variables report to the CFEngine Enterprise Database.
 
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.
@@ -249,13 +249,13 @@ local variables can be iterated.
     }
 ```
 
-#### Variable sys.ip_addresses
+### sys.ip_addresses
 
-*History*: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
+**History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 Displays a system list of IP addresses currently in use by the system.
-This list is detected at runtime and passed in the variables report to a
-Mission Portal in commercial editions of CFEngine.
+This list is detected at runtime and passed in the variables report to the 
+CFEngine Enterprise Database.
 
 To use this list in a policy, you will need a local copy since only
 local variables can be iterated.
@@ -280,7 +280,7 @@ local variables can be iterated.
     }
 ```
 
-#### Variable sys.ipv4
+### sys.ipv4
 
 All four octets of the IPv4 address of the first system interface.
 
@@ -292,7 +292,7 @@ your IPv4 address. However, if your system has multiple interfaces, then
 list that has an assigned address, Use `$(sys.ipv4[interface\_name])` for 
 details on obtaining the IPv4 addresses of all interfaces on a system.
 
-#### Variable sys.ipv4[interface\_name]
+### sys.ipv4[interface\_name]
 
 The full IPv4 address of the system interface named as the associative
 array index, e.g. `$(ipv4[le0])` or `$(ipv4[xr1])`.
@@ -319,23 +319,23 @@ The list of interfaces may be acquired with `getindices("sys.ipv4")` (or
 from any of the other associative arrays). Only those interfaces which
 are marked as "up" and have an IP address will be listed.
 
-#### Variable sys.ipv4\_1[interface\_name]
+### sys.ipv4\_1[interface\_name]
 
 
 The first octet of the IPv4 address of the system interface named as the
 associative array index, e.g. `$(ipv4_1[le0])` or `$(ipv4_1[xr1])`.
 
-#### Variable sys.ipv4\_2[interface\_name]
+### sys.ipv4\_2[interface\_name]
 
 The first two octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_2[le0])` or `$(ipv4_2[xr1])`.
 
-#### Variable sys.ipv4\_3[interface\_name]
+### sys.ipv4\_3[interface\_name]
 
 The first three octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_3[le0])` or `$(ipv4_3[xr1])`.
 
-#### Variable sys.license\_owner
+### sys.license\_owner
 
-*History*: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
+**History**: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
 
 ```cf3
     reports:
@@ -345,9 +345,9 @@ The first three octets of the IPv4 address of the system interface named as the 
       "This version of CFEngine is licensed to $(sys.license_owner)";
 ```
 
-#### Variable sys.licenses\_granted
+### sys.licenses\_granted
 
-*History*: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
+**History**: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
 
 ```cf3
     reports:
@@ -357,7 +357,7 @@ The first three octets of the IPv4 address of the system interface named as the 
       "There are $(sys.licenses_granted) licenses granted for use";
 ```
 
-#### Variable sys.long\_arch
+### sys.long\_arch
 
 The long architecture name for this system kernel. This name is
 sometimes quite unwieldy but can be useful for logging purposes.
@@ -366,7 +366,7 @@ sometimes quite unwieldy but can be useful for logging purposes.
     # long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200
 ```
 
-#### Variable sys.maildir
+### sys.maildir
 
 The name of the system email spool directory.
 
@@ -375,7 +375,7 @@ The name of the system email spool directory.
 ```
 
 <!---
-#### Variable sys.nova\_version
+### sys.nova\_version
 
 The variable gives the version of the running CFEngine Enterprise Edition.
 
@@ -384,7 +384,7 @@ The variable gives the version of the running CFEngine Enterprise Edition.
 ```
 -->
 
-#### Variable sys.os
+### sys.os
 
 The name of the operating system according to the kernel.
 
@@ -392,7 +392,7 @@ The name of the operating system according to the kernel.
     # os = linux
 ```
 
-#### Variable sys.ostype
+### sys.ostype
 
 Another name for the operating system.
 
@@ -400,7 +400,7 @@ Another name for the operating system.
     # ostype = linux_x86_64
 ```
 
-#### Variable sys.policy\_hub
+### sys.policy\_hub
 
 Hostname of the machine acting as the policy server. This value is set
 during bootstrap. In case bootstrap was not performed, it is set to
@@ -415,7 +415,7 @@ Available in Community since 3.2.0
      "Policy hub is $(sys.policy_hub)";
 ```
 
-#### Variable sys.release
+### sys.release
 
 The kernel release of the operating system.
 
@@ -423,7 +423,7 @@ The kernel release of the operating system.
     # release = 2.6.22.19-0.1-default
 ```
 
-#### Variable sys.resolv
+### sys.resolv
 
 The location of the system resolver file.
 
@@ -431,7 +431,7 @@ The location of the system resolver file.
     # resolv = /etc/resolv.conf
 ```
 
-#### Variable sys.uqhost
+### sys.uqhost
 
 The unqualified name of the current host. See also `sys.fqhost`.
 
@@ -439,7 +439,7 @@ The unqualified name of the current host. See also `sys.fqhost`.
     # uqhost = myhost
 ```
 
-#### Variable sys.version
+### sys.version
 
 The version of the running kernel. On Linux, this corresponds to the
 output of `uname -v`.
@@ -448,9 +448,9 @@ output of `uname -v`.
     # version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011
 ```
 
-*History*: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
+**History**: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
 
-#### Variable sys.windir
+### sys.windir
 
 On the Windows version of CFEngine Enterprise, this is the path to the Windows
 directory of this system.
@@ -459,7 +459,7 @@ directory of this system.
     # windir = C:\WINDOWS
 ```
 
-#### Variable sys.winprogdir
+### sys.winprogdir
 
 On the Windows version of CFEngine Enterprise, this is the path to the program
 files directory of the system.
@@ -468,7 +468,7 @@ files directory of the system.
     # winprogdir = C:\Program Files
 ```
 
-#### Variable sys.winprogdir86
+### sys.winprogdir86
 
 On 64 bit Windows versions of CFEngine Enterprise, this is the path to the 32
 bit (x86) program files directory of the system.
@@ -477,7 +477,7 @@ bit (x86) program files directory of the system.
     # winprogdir86 = C:\Program Files (x86)
 ```
 
-#### Variable sys.winsysdir
+### sys.winsysdir
 
 On the Windows version of CFEngine Enterprise, this is the path to the Windows
 system directory.
@@ -486,7 +486,7 @@ system directory.
     # winsysdir = C:\WINDOWS\system32
 ```
 
-#### Variable sys.workdir
+### sys.workdir
 
 The location of the CFEngine [work 
 directory](manuals-architecture-working-directory.html) and cache. 

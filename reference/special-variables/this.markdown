@@ -36,22 +36,30 @@ reserved names, CFEngine will issue a warning (and you can reference
 your variable by qualifying it with the bundle name in which it is
 declared).
 
-#### Variable this.handle
+### this.bundle
+
+This variable contains the current bundle name.
+
+### this.handle
 
 This variable points to the promise handle of the currently handled
 promise; it is useful for referring to the intention in log messages.
 
-#### Variable this.promise\_filename
+### this.namespace
+
+This variable contains the current namespace name.
+
+### this.promise\_filename
 
 This variable reveals the name of the file in which the current promise
 is defined.
 
-#### Variable this.promise\_linenumber
+### this.promise\_linenumber
 
 This variable reveals the line number in the file at which it is used.
 It is useful to differentiate otherwise identical reports promises.
 
-#### Variable this.promiser
+### this.promiser
 
 The special variable `$(this.promiser)` is used to refer to the current
 value of the promiser itself, in a number of allowed cases, typically
@@ -84,7 +92,7 @@ identified file that makes the promise. For example:
     }
 ```
 
-#### Variable service\_policy
+### service\_policy
 
 This variable is set to the values of the promise attribute
 `service_policy`. For example:
@@ -98,7 +106,7 @@ This variable is set to the values of the promise attribute
 This is typically used in the adaptations for custom services bundles in
 the service methods.
 
-#### Variable this.this
+### this.this
 
 From version 3.3.0 on, this variables is reserved. It is used by
 functions like `maplist()` to represent the current object in a

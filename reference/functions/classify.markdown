@@ -7,30 +7,25 @@ alias: reference-functions-classify.html
 tags: [reference, functions, classify]
 ---
 
-### Function classify
+**Prototype**: `classify(text)`
 
-**Synopsis**: classify(arg1) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Input string, *in the range* .\*   
+**Description**: Returns whether the canonicalization of `text` is a currently 
+set class.
 
-True if the canonicalization of the argument is a currently defined
-class
+This is useful for transforming variables into classes. See also 
+[canonify](reference-functions-canonify.html).
+
+**Arguments**:
+
+* `text` : Input string, *in the range* .\*
 
 **Example**:  
-   
 
 ```cf3
-classes:
+    classes:
 
- "i_am_the_policy_host" expression => classify("master.example.org");
+     "i_am_the_policy_host" expression => classify("master.example.org");
 ```
 
-**Notes**:  
-   
-
-This function returns true if the canonical form of the argument is
-already a defined class. This is useful for transforming variables into
-classes.
-
-See: [Function canonify](#Function-canonify).

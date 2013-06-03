@@ -1,3 +1,4 @@
+---
 layout: default
 title:  Enterprise  API Reference
 categories: [Reference, Enterprise API]
@@ -34,7 +35,7 @@ Pagination is handled by `page` and `count` query parameters to a **GET** reques
 Enterprise API responses are always of the following format, consisting of a 
 'meta' object and a 'data' array.
 
-```json
+```
     {
       "meta": {
         "page": 1,
@@ -305,7 +306,7 @@ Some resources require that the request user is a member of the *admin* role. Ro
 -   `error` *(string)* Error if anything went wrong.
 
 
-### 1.8.16 /api/query/async/:async-query-id
+### /api/query/async/:async-query-id
 
 **Supported Operations**: `GET`, `DELETE`
 

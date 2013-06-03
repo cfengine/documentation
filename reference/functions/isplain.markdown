@@ -7,30 +7,22 @@ alias: reference-functions-isplain.html
 tags: [reference, functions, isplain]
 ---
 
-### Function isplain
+**Prototype**: `isplain(filename)`
 
-**Synopsis**: isplain(arg1) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : File object name, *in the range* "?(/.\*)   
+**Description**: Returns whether the named object `filename` is a 
+plain/regular file.
 
-True if the named object is a plain/regular file
+**Arguments**:
 
-**Example**:  
-   
+* `arg1` : File object name, *in the range* "?(/.\*)
+
+**Example**:
 
 ```cf3
-body common control
-
-{
-bundlesequence  => { "example" };
-}
-
-###########################################################
-
 bundle agent example
-
-{     
+{
 classes:
 
   "isplain" expression => isplain("/etc/passwd");
@@ -43,6 +35,3 @@ reports:
 
 }
 ```
-
-**Notes**:  
-   

@@ -20,7 +20,7 @@ tags: [body, bodies, components, common, namespace, promises, bundlesequence]
     }
 ```
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 This directive can be given multiple times within any file,
 outside of body and bundle definitions.
@@ -28,8 +28,8 @@ outside of body and bundle definitions.
 
 ### namespace
 
-**Synopsis**: Switch to a private namespace to protect
-current file from duplicate definitions
+**Description**: The namespace string identifies a private namespace 
+to switch to in order to protect the current file from duplicate definitions.
 
 **Type**: `string`
 
@@ -37,16 +37,18 @@ current file from duplicate definitions
 
 **Example**:
 
+```cf3
     body file control
     {
     namespace => "name1"; 
     }
+```
 
 **Notes**:
 
-*History*: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 This directive can be given within any file, outside of body and bundle 
-definitions, to change the 
+definitions, to change the
 [namespace](manuals-language-concepts-namespaces.html) of subsequent bundles 
 and bodies.

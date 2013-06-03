@@ -2,29 +2,27 @@
 layout: default
 title: rrange
 categories: [Reference, Functions, rrange]
-published: true
+published: false
 alias: reference-functions-rrange.html
 tags: [reference, functions, rrange]
 ---
 
-### Function rrange
+**Prototype**: `rrange(arg1, arg2)`
 
-**Synopsis**: rrange(arg1,arg2) returns type **rrange [real,real]**
+**Return type**: `rrange [real,real]``
 
-  
- *arg1* : Real number, *in the range* -9.99999E100,9.99999E100   
- *arg2* : Real number, *in the range* -9.99999E100,9.99999E100   
+**Description**: Define a range of real numbers for CFEngine internal use.
 
-Define a range of real numbers for cfengine internal use
+**Arguments**:
 
-**Example**:  
-   
+* `arg1` : Real number, *in the range* -9.99999E100,9.99999E100   
+* `arg2` : Real number, *in the range* -9.99999E100,9.99999E100   
+
+**Example**:
 
 ```cf3
 
 ```
 
-**Notes**:  
-   
-
+**Notes**:
 This is not yet used.

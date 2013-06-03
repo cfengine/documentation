@@ -7,46 +7,34 @@ alias: reference-functions-isnewerthan.html
 tags: [reference, functions, isnewerthan]
 ---
 
-### Function isnewerthan
+**Prototype**: `isnewerthan(newer, older)`
 
-**Synopsis**: isnewerthan(arg1,arg2) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Newer file name, *in the range* "?(/.\*)   
- *arg2* : Older file name, *in the range* "?(/.\*)   
+**Description**: Returns whether the file `newer` is newer (modified later) 
+than the file `older`.
 
-True if arg1 is newer (modified later) than arg2 (mtime)
+This function compares the modification time (mtime) of the files, referring 
+to changes of content only.
 
-**Example**:  
-   
+**Arguments**:
+
+* `arg1` : Newer file name, *in the range* "?(/.\*)
+* `arg2` : Older file name, *in the range* "?(/.\*)
+
+**Example**:
 
 ```cf3
-body common control
+    bundle agent example
+    {     
+    classes:
 
-{
-bundlesequence  => { "example" };
-}
+      "do_it" and => { isnewerthan("/tmp/later","/tmp/earlier"), "linux" }; 
 
-###########################################################
+    reports:
 
-bundle agent example
+      do_it::
 
-{     
-classes:
-
-  "do_it" and => { isnewerthan("/tmp/later","/tmp/earlier"), "linux" }; 
-
-reports:
-
-  do_it::
-
-    "The derived file needs updating";
-
-}
+        "The derived file needs updating";
+    }
 ```
-
-**Notes**:  
-   
-
-This function compares the modification time of the file, referring to
-changes of content only.

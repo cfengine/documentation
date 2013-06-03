@@ -7,29 +7,24 @@ alias: reference-functions-getgid.html
 tags: [reference, functions, getgid]
 ---
 
-### Function getgid
+**Prototype**: `getgid(groupname)`
 
-**Synopsis**: getgid(arg1) returns type **int**
+**Return type**: `int`
 
-  
- *arg1* : Group name in text, *in the range* .\*   
+**Description**: Return the integer group id of the group `groupname` on this 
+host.
 
-Return the integer group id of the named group on this host
+If the named group does not exist, the function will fail and the variable 
+will not be defined. 
 
-**Example**:  
-   
+**Arguments**:
+
+* `groupname` : Group name as text, *in the range* .\*
+
+**Example**:
 
 ```cf3
-body common control
-
-{
-bundlesequence  => { "example" };
-}
-
-###########################################################
-
 bundle agent example
-
 {     
 vars:
 
@@ -40,13 +35,9 @@ reports:
   Yr2008::
 
     "Users gid is $(gid)";
-
 }
 ```
 
-**Notes**:  
-   
-
-If the named group does not exist, the variable will not be defined. On
-Windows, which does not support group ids, the variable will not be
+**Notes**:
+On Windows, which does not support group ids, the variable will not be
 defined.

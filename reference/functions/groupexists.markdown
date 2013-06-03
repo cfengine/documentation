@@ -7,17 +7,19 @@ alias: reference-functions-groupexists.html
 tags: [reference, functions, groupexists]
 ---
 
-### Function groupexists
+**Prototype**: `groupexists(group)`
 
-**Synopsis**: groupexists(arg1) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Group name or identifier, *in the range* .\*   
+**Description**: Returns whether a group `group` exists on this host.
 
-True if group or numerical id exists on this host
+The group may be specified by name or identifier.
 
-**Example**:  
-   
+**Arguments**:
+
+* `group` : Group name or identifier, *in the range* .\*
+
+**Example**:
 
 ```cf3
 body common control
@@ -48,8 +50,3 @@ reports:
 
 }
 ```
-
-**Notes**:  
-   
-
-The group may be specified by name or number.

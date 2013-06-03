@@ -7,23 +7,25 @@ alias: reference-functions-join.html
 tags: [reference, functions, join]
 ---
 
-### Function join
+**Prototype**: `join(glue, list)`
 
-**Synopsis**: join(arg1,arg2) returns type **string**
+**Return type**: `string`
 
-  
- *arg1* : Join glue-string, *in the range* .\*   
- *arg2* : CFEngine list identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+**Description**: Join the items of `list` into a string, using the conjunction in `glue`.
 
-Join the items of arg2 into a string, using the conjunction in arg1
+Converts a string of type list into a scalar variable using the join
+string in first argument.
 
-**Example**:  
-   
+**Arguments**:
+
+* `glue` : Join glue-string, *in the range* .\*
+* `list` : CFEngine list identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+
+**Example**:
 
 ```cf3
 bundle agent test
-
 {
 vars:
 
@@ -36,12 +38,5 @@ reports:
  linux::
 
   "Concatenated $(scalar)";
-
 }
 ```
-
-**Notes**:  
-   
-
-Converts a string of type list into a scalar variable using the join
-string in first argument.

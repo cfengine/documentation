@@ -7,62 +7,50 @@ alias: reference-functions-remoteclassesmatching.html
 tags: [reference, functions, remoteclassesmatching]
 ---
 
-### Function remoteclassesmatching
+**This function is only available in CFEngine Enterprise.**
 
-**Synopsis**: remoteclassesmatching(arg1,arg2,arg3,arg4) returns type
-**class**
+**Prototype**: `remoteclassesmatching(regex, server, encrypt, prefix)`
 
-  
- *arg1* : Regular expression, *in the range* .\*   
- *arg2* : Server name or address, *in the range* .\*   
- *arg3* : Use encryption, *in the range* true,false,yes,no,on,off   
- *arg4* : Return class prefix, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+**Return type**: `class`
 
-Read persistent classes matching a regular expression from a remote
-cfengine server and add them into local context with prefix
+**Description**: Read persistent classes matching regular expression `regex`
+from a remote CFEngine server `server` and add them into local context with 
+`prefix`.
 
-**Example**:  
-   
+The return value is true (sets the class) if communication with the server was 
+successful and classes were populated in the current bundle.
 
-```cf3
- "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
-```
+This function contacts a remote `cf-serverd` and requests access to defined 
+*persistent classes* on that system. Access must be granted by making an 
+`access` promise with `resource_type` set to `context`.
 
-**Notes**:  
-   
- This function is only available in Enterprise versions of CFEngine
-(Nova, Enterprise, etc).
+**Arguments**:
 
-This function contacts a remote `cf-serverd` and requests access to
-defined *persistent classes* on that system. These must be granted
-access to by making an `access` promise with `resource_type` set to
-`context`.
-
-The return value is true (sets the class) if communication with the
-server was successful and classes are populated in the current bundle
-with a prefix of your choosing. The arguments are:
-
-*Regular expression*
+* `regex` : Regular expression, *in the range* .\*
 
 This should match a list of *persistent* classes of be returned from the
-server, if the server has granted access to them.   
+server, if the server has granted access to them.
 
-*Server*
+* `server` : Server name or address, *in the range* .\*
 
-The name or IP address of the remote server.   
+The name or IP address of the remote server.
 
-*Encryption*
+* `encrypt` : Use encryption, *in the range* true,false,yes,no,on,off   
 
-Boolean value, whether or not to encrypt communication.   
+* `prefix` : Return class prefix, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
 
-*Prefix*
+A string to be added to the returned classes. If the server defines a 
+persistent class `alpha`, then this would generate a private class in the 
+current bundle called `prefix_alpha`.
 
-A string to be added to the returned classes. For example, if the server
-defines a persistent class alpha, then this would generate a private
-class in the current bundle called myprefix\_alpha.
+**Example**:
 
-Note that this function assumes that you have already performed a
+```cf3
+   "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
+```
+
+**Notes**: Note that this function assumes that you have already performed a
 successful key exchange between systems, (e.g. using either a remote
 copy or `cf-runagent` connection). It contains no mechanism for trust
 establishment and will fail if there is no trust relationship

@@ -7,29 +7,27 @@ alias: reference-functions-canonify.html
 tags: [reference, functions, canonify]
 ---
 
-### Function canonify
+**Prototype**: `canonify(text)`
 
-**Synopsis**: canonify(arg1) returns type **string**
+**Return type**: `string`
 
-  
- *arg1* : String containing non-identifier characters, *in the range*
-.\*   
+**Description**: Convert an arbitrary string `text` into a legal class name.
 
-Convert an arbitrary string into a legal class name
+This function turns arbitrary text into class data (See
+[classify](reference-functions-classfiy.html)).
+
+**Arguments**:
+
+* `text` : String containing non-identifier characters, *in the range* .\*
 
 **Example**:  
-   
+
 
 ```cf3
-commands:
+    commands:
 
-   "/var/cfengine/bin/$(component)"
+       "/var/cfengine/bin/$(component)"
 
-       ifvarclass => canonify("start_$(component)");
+           ifvarclass => canonify("start_$(component)");
 ```
 
-**Notes**:  
-   
-
-This is for use in turning arbitrary text into class data (See [Function
-classify](#Function-classify)).

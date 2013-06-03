@@ -7,26 +7,32 @@ alias: reference-functions-hashmatch.html
 tags: [reference, functions, hashmatch]
 ---
 
-### Function hashmatch
+**Prototype**: `hashmatch(filename, algorthm, hash)`
 
-**Synopsis**: hashmatch(arg1,arg2,arg3) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Filename to hash, *in the range* "?(/.\*)   
- *arg2* : Hash or digest algorithm, *in the range*
-md5,sha1,crypt,cf\_sha224,cf\_sha256,cf\_sha384,cf\_sha512   
- *arg3* : ASCII representation of hash for comparison, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+**Description**: Compute the hash of file `filename` using the hash `algorithm` and test if it matches `hash`.
 
-Compute the hash of arg1, of type arg2 and test if it matches the value
-in arg3
+This function may be used to determine whether a system has a particular
+version of a binary file (e.g. software patch).
 
-**Example**:  
-   
+**ARGUMENTS**:
+
+* `filename` : Filename to hash, *in the range* "?(/.\*)
+* `algorithm` : Hash or digest algorithm, one of
+    * md5
+    * sha1
+    * sha256
+    * sha512
+    * sha384
+    * crypt   
+* `hash` : ASCII representation of hash for comparison, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+
+**Example**:
 
 ```cf3
 bundle agent example
-
 {     
 classes:
 
@@ -40,21 +46,3 @@ reports:
 
 }
 ```
-
-**Notes**:  
-   
-
-```cf3
-     
-     (class) hashmatch(file,md5|sha1|crypt,hash-comparison);
-     
-```
-
-This function may be used to determine whether a system has a particular
-version of a binary file (e.g. software patch).
-
-**ARGUMENTS**:
-
--   The file concerned
--   The type of hash
--   A string of the hash to which we expect the file to conform.

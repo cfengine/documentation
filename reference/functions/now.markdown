@@ -7,24 +7,18 @@ alias: reference-functions-now.html
 tags: [reference, functions, now]
 ---
 
-### Function now
+**Prototype**: `now()`
 
-**Synopsis**: now() returns type **int**
+**Return type**: `int`
 
-  
+**Description**: Return the current time in system representation.
 
-Convert the current time into system representation
-
-**Example**:  
-   
+**Example**:
 
 ```cf3
-body file_select zero_age
-{
-mtime       => irange(ago(1,0,0,0,0,0),now);
-file_result => "mtime";
-}
+    body file_select zero_age
+    {
+      mtime       => irange(ago(1,0,0,0,0,0),now);
+      file_result => "mtime";
+    }
 ```
-
-**Notes**:  
-   

@@ -7,32 +7,25 @@ alias: reference-functions-hostrange.html
 tags: [reference, functions, hostrange]
 ---
 
-### Function hostrange
+**Prototype**: `hostrange(prefix, range)`
 
-**Synopsis**: hostrange(arg1,arg2) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Hostname prefix, *in the range* .\*   
- *arg2* : Enumerated range, *in the range* .\*   
+**Description**: Returns whether the current host lies in the `range` of 
+enumerated hostnames specified with `prefix`.
 
-True if the current host lies in the range of enumerated hostnames
-specified
+This is a pattern matching function for non-regular (enumerated)
+expressions.
 
-**Example**:  
-   
+**Arguments**:
+
+* `prefix` : Hostname prefix, *in the range* .\*
+* `range` : Enumerated range, *in the range* .\*
+
+**Example**:
 
 ```cf3
-
-body common control
-
-{
-bundlesequence  => { "example" };
-}
-
-###########################################################
-
 bundle agent example
-
 {     
 classes:
 
@@ -47,8 +40,3 @@ reports:
 }
 ```
 
-**Notes**:  
-   
-
-This is a pattern matching function for non-regular (enumerated)
-expressions.

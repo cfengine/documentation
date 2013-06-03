@@ -7,56 +7,48 @@ alias: reference-functions-accessedbefore.html
 tags: [reference, functions, accessedbefore]
 ---
 
-### Function accessedbefore
+**Prototype**: `accessedbefore(newer, older)`
 
-**Synopsis**: accessedbefore(arg1,arg2) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Newer filename, *in the range* "?(/.\*)   
- *arg2* : Older filename, *in the range* "?(/.\*)   
+**Description**: Compares the `atime` fields of two files.
 
-True if arg1 was accessed before arg2 (atime)
+Return true if `newer` was accessed before `older`.
+
+**Arguments**:
+
+* `newer` : Newer filename, *in the range* "?(/.\*)
+* `older` : Older filename, *in the range* "?(/.\*)
 
 **Example**:  
-   
+
 
 ```cf3
-body common control
+    body common control
+    {
+      bundlesequence  => { "example" };
+    }
 
-{
-bundlesequence  => { "example" };
-}
+    bundle agent example
+    {     
+      classes:
 
-###########################################################
+        "do_it" and => { accessedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
 
-bundle agent example
+      reports:
 
-{     
-classes:
+        do_it::
 
-  "do_it" and => { accessedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
-
-reports:
-
-  do_it::
-
-    "The secret changes have been accessed after the reference time";
-
-}
+          "The secret changes have been accessed after the reference time";
+    }
 ```
 
-**Notes**:  
-   
+Example output:
 
-The function accesses the `atime` fields of a file and makes a
-comparison.
+```
+    touch /tmp/reference
+    touch /tmp/secretfile
 
-```cf3
-     
-      touch /tmp/reference
-      touch /tmp/secretfile
-     
-      /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
-      R: The secret changes have been accessed after the reference time
-     
+    /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
+    R: The secret changes have been accessed after the reference time
 ```

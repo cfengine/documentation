@@ -7,23 +7,20 @@ alias: reference-functions-hostinnetgroup.html
 tags: [reference, functions, hostinnetgroup]
 ---
 
-### Function hostinnetgroup
+**Prototype**: `hostinnetgroup(netgroup)`
 
-**Synopsis**: hostinnetgroup(arg1) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Netgroup name, *in the range* .\*   
+**Description**: True if the current host is in the named `netgroup`.
 
-True if the current host is in the named netgroup
+**Arguments**:
 
-**Example**:  
-   
+* `netgroup` : Netgroup name, *in the range* .\*
+
+**Example**:
 
 ```cf3
-classes:
+    classes:
 
-  "ingroup" expression => hostinnetgroup("my_net_group");
+      "ingroup" expression => hostinnetgroup("my_net_group");
 ```
-
-**Notes**:  
-   

@@ -7,45 +7,38 @@ alias: reference-functions-fileexists.html
 tags: [reference, functions, fileexists]
 ---
 
-### Function fileexists
+**Prototype**: `fileexists(filename)`
 
-**Synopsis**: fileexists(arg1) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : File object name, *in the range* "?(/.\*)   
+**Description**: Returns whether the file `filename` can be accessed.
 
-True if the named file can be accessed
+The file must exist, and the user must have access permissions to the file for 
+this function to return true.
+
+**Arguments**:
+
+* `filename` : File object name, *in the range* "?(/.\*)
 
 **Example**:  
-   
 
 ```cf3
-body common control
+    body common control
+    {
+      bundlesequence  => { "example" };
+    }
 
-{
-bundlesequence  => { "example" };
-}
+    bundle agent example
+    {     
+      classes:
 
-###########################################################
+        "exists" expression => fileexists("/etc/passwd");
 
-bundle agent example
+      reports:
 
-{     
-classes:
+        exists::
 
-  "exists" expression => fileexists("/etc/passwd");
-
-reports:
-
-  exists::
-
-    "File exists";
-
-}
+          "File exists";
+    }
 ```
 
-**Notes**:  
-   
-
-The user must have access permissions to the file for this to work
-faithfully.

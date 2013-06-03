@@ -8,10 +8,9 @@ alias: whats-new.html
 
 CFEngine 3.5 is the latest version of CFEngine 3. It enables Infrastructure
 Engineers to automate IT systems easier, faster and at a greater
-scale than ever before. CFEngine 3.5 allows you to address the challenges
-that come with managing very large and complex IT infrastructure
-installations when agility, scalability, security and stability are critical,
-in spite of platform diversity.
+scale than ever before. CFEngine 3.5 allows you to manage very large and 
+complex IT infrastructure installations when agility, scalability, security 
+and stability are critical.
 
 ## CFEngine Design Center
 
@@ -34,6 +33,10 @@ of CFEngine 3 Enterprise sites.
 
 **TODO: screenshots, videos, demos**
 
+## Improved Parser
+
+**TODO:**
+
 ## More control for CFEngine operators
 
 Operators of CFEngine installations benefit from the improved tooling for
@@ -46,7 +49,7 @@ for data collection
 ## Get started today!
 
 CFEngine 3.5 is compatible with all previous versions of CFEngine 3. See the
-[Release Notes](getting-started-release-notes.html) for a comprehensive list
+[Release Notes](whats-new-release-notes.html) for a comprehensive list
 of the key improvements in the latest version of CFEngine.
 
 Don't have CFEngine yet?

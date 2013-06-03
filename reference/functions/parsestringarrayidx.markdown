@@ -7,69 +7,55 @@ alias: reference-functions-parsestringarrayidx.html
 tags: [reference, functions, parsestringarrayidx]
 ---
 
-### Function parsestringarrayidx
+**Prototype**: `parsestringarrayidx(array, input, comment, split, maxentries, maxbytes)`
 
-**Synopsis**: parsestringarrayidx(arg1,arg2,arg3,arg4,arg5,arg6) returns
-type **int**
+**Return type**: `int`
 
-  
- *arg1* : Array identifier to populate, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
- *arg2* : A string to parse for input data, *in the range* "?(/.\*)   
- *arg3* : Regex matching comments, *in the range* .\*   
- *arg4* : Regex to split data, *in the range* .\*   
- *arg5* : Maximum number of entries to read, *in the range*
+**Description**: Populates the two-dimensional array `array` with up to 
+`maxentries` fields from the first `maxbytes` bytes of the string `input`.
+
+This function mirrors the exact behavior of `readstringarrayidx()`, but
+reads data from a variable instead of a file. By making data readable from a variable, data driven policies can be kept inline.
+
+**Arguments**:
+
+* `array` : Array identifier to populate, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `input` : A string to parse for input data, *in the range* "?(/.\*)
+* `comment` : Regex matching comments, *in the range* .\*
+* `split` : Regex to split data, *in the range* .\*
+* `maxentries` : Maximum number of entries to read, *in the range*
 0,99999999999   
- *arg6* : Maximum bytes to read, *in the range* 0,99999999999   
+* `maxbytes` : Maximum bytes to read, *in the range* 0,99999999999   
 
-Read an array of strings from a file and assign the dimension to a
-variable with integer indexes
-
-**Example**:  
-   
+**Example**:
 
 ```cf3
-bundle agent test(f) 
-{
-vars:
+    bundle agent test(f) 
+    {
+    vars:
+      # Define data inline for convenience
+      "table"   string => "one: a
+                           two: b
+                         three: c";
 
- #######################################
- # Define data inline for convenience
- #######################################
+    #######################################
 
-  "table"   string => 
+     "dim" int => parsestringarrayidx(
+                      "items",
+                      "$(table)",
+                      "\s*#[^\n]*",
+                      ":",
+                      "1000",
+                      "200000"
+                      );
 
-"one: a
-two: b
-three: c";
+     "keys" slist => getindices("items");
 
-#######################################
-
- "dim" int => parsestringarrayidx(
-                          "items",
-                  "$(table)",
-                  "\s*#[^\n]*",
-                  ":",
-                  "1000",
-                  "200000"
-                  );
-
- "keys" slist => getindices("items");
-
-reports:
-  cfengine_3::
-    "$(keys)";
-}
+    reports:
+      cfengine_3::
+        "$(keys)";
+    }
 ```
 
-**Notes**:  
-   
-
-*History*: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
-
-This function mirrors the exact behaviour of `readstringarrayidx()`, but
-reads data from a variable instead of a file (See [Function
-readstringarrayidx](#Function-readstringarrayidx)). By making data
-readable from a variable, data driven policies can be kept inline. This
-means that they will be visible in the CFEngine Knowledge Management
-portal.
+**History**: Was introduced in version 3.1.5, Nova 2.1.0 (2011)

@@ -7,23 +7,22 @@ alias: reference-functions-and.html
 tags: [reference, functions, and]
 ---
 
-### Function and
+**Prototype**: `and(...)`
 
-**Synopsis**: and(...) returns type **string**
+**Return type**: `string`
 
-  
+**Description**: Returns whether all arguments evaluate to true.
 
-Calculate whether all arguments evaluate to true
+**Arguments**: A list of classes and class expressions
 
-**Example**:  
-   
+**Example**:
 
 ```cf3
-commands:
-  "/usr/bin/generate_config $(config)"
-    ifvarclass => and(not(fileexists("/etc/config/$(config)")), "generating_configs");
+    commands:
+      "/usr/bin/generate_config $(config)"
+        ifvarclass => and(not(fileexists("/etc/config/$(config)")), "generating_configs");
 ```
 
 **Notes**:  
    
- *History*: Was introduced in 3.2.0, Nova 2.1.0 (2011)
+**History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)

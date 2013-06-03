@@ -7,59 +7,36 @@ alias: reference-functions-usemodule.html
 tags: [reference, functions, usemodule]
 ---
 
-### Function usemodule
+**Prototype**: `usemodule(name, args)`
 
-**Synopsis**: usemodule(arg1,arg2) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Name of module command, *in the range* .\*   
- *arg2* : Argument string for the module, *in the range* .\*   
+**Description**: Execute CFEngine module script `name` with `args` and return 
+whether successful.
 
-Execute cfengine module script and set class if successful
+**Arguments**:
 
-**Example**:  
-   
+* `name` : Name of module command, *in the range* .\*
+
+The name of the module without its leading path, since it is assumed to
+be in the registered modules directory, WORKDIR/modules.
+
+* `args` : Argument string for the module, *in the range* .\*
+
+**Example**:
 
 ```cf3
-body common control
-   {
-   any::
-
-      bundlesequence  => {
-                         test
-                         };
-   }
-
-###################################################################
-
 bundle agent test
-
 {
-classes:
+  classes:
 
-  # returns $(user)
+      # returns $(user)
 
-  "done" expression => usemodule("getusers","");
+      "done" expression => usemodule("getusers","");
 
-commands:
+  commands:
 
-  "/bin/echo" args => "test $(user)";
+      "/bin/echo" args => "test $(user)";
 }
 ```
 
-**Notes**:  
-   
-
-Modules must reside in WORKDIR/modules but no longer require a special
-naming convention.
-
-**ARGUMENTS**:
-
-Module name
-
-The name of the module without its leading path, since it is assumed to
-be in the registered modules directory.   
-
-Argument string
-
-Any command link arguments to pass to the module.

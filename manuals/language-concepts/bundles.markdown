@@ -1,37 +1,105 @@
 ---
 layout: default
-title: Bodies
-categories: [Manuals, Language Concepts, Bodies and Bundles]
+title: Bundles
+categories: [Manuals, Language Concepts, Bundles]
 published: true
-alias: manuals-language-concepts-bodies-bundles.html
+alias: manuals-language-concepts-bundles.html
 tags: [language, concepts, syntax, body, bundle]
 ---
 
+Previous: [*Promises*](manuals-language-concepts-promises.html)
+
+****
+
 A bundle is a collection of promises. They allow to group related promises 
 together into named building blocks that can be thought of as "subroutines" in 
-the CFEngine promise language. A number of promises related to configuring a 
-web server or a file system you can name those bundles "webserver" or 
-"filesystem", respectively.
+the CFEngine promise language. A bundle that groups a number of promises 
+related to configuring a web server or a file system would be named 
+"webserver" or "filesystem", respectively.
 
-Like [bodies](manuals-language-concepts-bodies.html), bundles also have 
-`types'. Bundles belong to the agent that is used to keep the promises in the 
-bundle. So cf-agent has bundles declared as:
+Most promise types are specific to a particular kind of interpretation that 
+requires a typed interpreter - the bundle *type*. Bundles belong to the agent 
+that is used to keep the promises in the bundle. So `cf-agent` has bundles 
+declared as:
 
+```cf3
     bundle agent my_name
     {
     }
+```
 
-while cf-serverd has bundles declared as:
+while `cf-serverd` has bundles declared as:
 
+```cf3
     bundle server my_name
     {
     }
+```
+
+and `cf-monitord` has bundles declared as
+
+```cf3
+    bundle monitor my_name
+    {
+    }
+```
+
+A number of promises can be made in any kind of bundle since they are of a generic input/output nature. These are `vars`, `classes`, `defaults`, `meta` and `reports` promises.
+
+Bundles of type `common` may only contain the promise types that are common to 
+all bodies. Their main function is to define cross-component global 
+definitions.
+
+```cf3
+     bundle common globals
+     {
+     vars:
+     
+       "global_var" string = "value";
+     
+     classes:
+     
+       "global_class" expression = "value";
+     }
+     
+```
+
+Common bundles are observed by every agent, whereas the agent 
+specific bundle types are ignored by components other than the intended 
+recipient.
 
 Bundles can be parameterized, allowing for code re-use. If you need to do the 
 same thing over and over again with slight variations, using a promise bundle 
 is an easy way to avoid unnecessary duplication in your promises.
 
-**TODO: example for parameterized bundle**
+```
+    bundle agent hello_world
+    {
+      vars:
+          "myfiles"     => "/tmp/world.txt";
+          "desired_content" string => "hello";
+    
+      methods:
+          "Hello World"
+            usebundle => ensure_file_has_content("$(myfiles)", "$(desired_content)");
+        
+    
+    }
+
+    bundle agent ensure_file_has_content(file, content)
+    {
+      files:
+    
+          "$(file)"
+            handle => "$(this.bundle)_file_content",
+            create => "true",
+            edit_defaults => empty,
+            edit_line => append_if_no_line("$(content)"),
+            comment => "Ensure that the given parameter for file '$(file)' has only
+                        the contents of the given parameter for content '$(content)'";
+    
+    }
+```
 
 ### Scope
 
@@ -47,3 +115,5 @@ of the bundle in which it is defined:
 Bundles of type `common` may contain common promises. 
 [Classes](manuals-language-concepts-classes.html) defined in `common` bundles 
 have global scope.
+
+Next: [Bodies](manuals-language-concepts-bodies.html)

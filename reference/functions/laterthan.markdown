@@ -7,31 +7,28 @@ alias: reference-functions-laterthan.html
 tags: [reference, functions, laterthan]
 ---
 
-### Function laterthan
+**Prototype**: `laterthan(years, months, days, hours, minutes, seconds)`
 
-**Synopsis**: laterthan(arg1,arg2,arg3,arg4,arg5,arg6) returns type
-**class**
+**Return type**: `class`
 
-  
- *arg1* : Years, *in the range* 0,1000   
- *arg2* : Months, *in the range* 0,1000   
- *arg3* : Days, *in the range* 0,1000   
- *arg4* : Hours, *in the range* 0,1000   
- *arg5* : Minutes, *in the range* 0,1000   
- *arg6* : Seconds, *in the range* 0,40000   
-
-True if the current time is later than the given date
-
-**Example**:  
-   
-
-```cf3
-classes:
-
-  "after_deadline" expression => laterthan(2000,1,1,0,0,0);
-```
-
-**Notes**:  
-   
+**Description**: Returns whether the current time is later than the given 
+date and time.
 
 The arguments are standard time (See [Function on](#Function-on)).
+
+**Arguments**:
+
+* `years` : year *in the range* 1970,3000
+* `month` : month, *in the range* 1,12
+* `day` : day of month, *in the range* 1,31
+* `hour` : hour of day, *in the range* 0,23
+* `minute` : minute, *in the range* 0,59
+* `second` : second, *in the range* 0,59
+
+**Example**:
+
+```cf3
+    classes:
+
+      "after_deadline" expression => laterthan(2000,1,1,0,0,0);
+```

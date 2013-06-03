@@ -7,23 +7,18 @@ alias: reference-functions-concat.html
 tags: [reference, functions, concat]
 ---
 
-### Function concat
+**Prototype**: `concat(...)`
 
-**Synopsis**: concat(...) returns type **string**
+**Return type**: `string`
 
-  
-
-Concatenate all arguments into string
+**Description**: Concatenates all arguments into a string.
 
 **Example**:  
-   
 
 ```cf3
-commands:
-  "/usr/bin/generate_config $(config)"
-    ifvarclass => concat("have_config_", canonify("$(config)"));
+    commands:
+      "/usr/bin/generate_config $(config)"
+        ifvarclass => concat("have_config_", canonify("$(config)"));
 ```
 
-**Notes**:  
-   
- *History*: Was introduced in 3.2.0, Nova 2.1.0 (2011)
+**History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)

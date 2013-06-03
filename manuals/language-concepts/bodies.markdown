@@ -7,56 +7,64 @@ alias: manuals-language-concepts-bodies.html
 tags: [language, concepts, syntax, body]
 ---
 
-#### Defining Promises
+Previous: [Bundles](manuals-language-concepts-bundles.html)
 
-CFEngine's promises are declarative, you tell CFEngine what promises you want 
-it to keep, and it keeps them. With CFEngine you can clearly specify the 
-desired end-state of a system in the form of promises and let CFEngine take 
-care of the rest.
+****
 
-[Promises](manuals-language-concepts-promises.html) are the fundamental 
-statements that make up an entire system based on a series of commitments. 
-While the idea of a promise is very simple - a commitment or a guarantee to 
-satisfy a condition - the definition of a promise can grow complicated. 
-Complex promises are best understood by breaking them down into independent 
-components.
-
-### Bodies
-
-The CFEngine reserved word `body` is used to define parameterized **TODO: no 
-example given for parameterized*** templates that encapsulate the details of 
-complex attribute values.
+While the idea of a promise is very simple, the definition of a promise can 
+grow complicated. Complex promises are best understood by breaking them down 
+into independent, re-usable components. The CFEngine reserved word `body` is 
+used to encapsulate the details of complex promise attribute values. Bodies 
+can optionally have parameters.
 
 ```cf3
-    files:
-        "/home/promiser"
-            perms => myexample;
-```
-
-The promiser in this example is a file `/tmp/promiser` and the promise is that 
-the `perms` attribute type is associated with a named, user-defined promise 
-body `myexample`.
-
-```cf3
-    body perms myexample
+    bundle agent example
     {
-        mode => "644";
-        owners => { "mark", "sarah", "angel" };
-        groups => { "users", "sysadmins", "mythical_beasts" };
-     }
+      files:
+        !windows::
+          "/etc/passwd"
+            handle => "example_files_not_windows_passwd",
+            perms => system;
+    
+          "/home/bill/id_rsa.pub"
+            handle => "example_files_not_windows_bills_priv_ssh_key",
+            perms => mog("600", "bill", "sysop"),
+            create => "true";
+    }
 ```
 
-The `body` of this `myexample` promise consists of the file permissions, the 
-file owners, and the file groups. `myexample` has a type that matches the left 
-hand side `perms` of the declaration in the `files` promise.
+The promisers in this example are the files `/etc/passwd` and
+`/home/bill/id_rsa.pub`. The promise is that the `perms` attribute type is
+associated with a named, user-defined promise body `system` and `mog`
+respectively.
 
-Such a body can be reused in multiple promises.
+```cf3
+    body perms system
+    {
+      mode => "644";
+      owners => { "root" };
+      groups => { "root" };
+    }
+    
+    body perms mog(mode,user,group)
+    {
+      owners => { "$(user)" };
+      groups => { "$(group)" };
+      mode   => "$(mode)";
+    }
+```
+
+Like [bundles](manuals-language-concepts-bundles.html), bodies have a *type*. The type of the body has to mach the left-hand side of the promise attribute in which it is used. In this case, `files` promises have an attribute `perms` that can be associated with any body of type `perms`.
+
+The attributes within the body are then type specific. Bodies of type `perms` consist of the file permissions, the file owner, and the file group, which the instance `system` sets to `644`, `root` and `root`, respectively.
+
+Such bodies can be reused in multiple promises. Like bundles, bodies can have parameters. The body `mog` also consists of the file permissions, file owner, and file group, but the values of those attributes are passed in as parameters.
 
 #### Implicit, Control Bodies
 
 A special case for bodies are the implicit promises that configure the basic 
 operation of CFEngine. These are hard-coded to CFEngine and control the basic 
-operation of the agents, such as cf-agent and cf-serverd. Each agent has a 
+operation of the agents, such as `cf-agent` and `cf-serverd`. Each agent has a 
 special body whose name is `control`.
 
 ```cf3
@@ -78,3 +86,7 @@ This promise bodies configures the `bundlesequence` to execute on a cf-agent.
 This promise bodies defines the clients allowed to connect to a cf-serverd. 
 For more information, see the reference documentation about the [CFEngine 
 Agents](reference-components.html)
+
+****
+
+Next: [Classes](manuals-language-concepts-classes.html)

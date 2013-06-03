@@ -7,17 +7,25 @@ alias: reference-functions-ip2host.html
 tags: [reference, functions, ip2host]
 ---
 
-### Function ip2host
+**Prototype**: `ip2host(ip)`
 
-**Synopsis**: ip2host(arg1) returns type **string**
+**Return type**: `string`
 
-  
- *arg1* : IP address (IPv4 or IPv6), *in the range* .\*   
+**Description**: Returns the primary name-service host name for the IP address 
+`ip`.
 
-Returns the primary name-service host name for the IP address
+Uses whatever configured name service is used by the resolver library to
+translate an IP address to a hostname. IPv6 addresses will also resolve,
+if supported by the resolver library.
 
-**Example**:  
-   
+Note that DNS lookups may take time and thus cause CFEngine agents to
+wait for responses, slowing their progress significantly.
+
+**Arguments**:
+
+* `ip` : IP address (IPv4 or IPv6), *in the range* .\*
+
+**Example**:
 
 ```cf3
 bundle agent reverse_lookup
@@ -34,14 +42,4 @@ cfengine_3::
 }
 ```
 
-**Notes**:  
-   
-
-Uses whatever configured name service is used by the resolver library to
-translate an IP address to a hostname. IPv6 addresses will also resolve,
-if supported by the resolver library.
-
-Note that DNS lookups may take time and thus cause CFEngine agents to
-wait for responses, slowing their progress significantly.
-
-*History*: Was introduced in version 3.1.3, Nova 2.0.2 (2010)
+**History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)

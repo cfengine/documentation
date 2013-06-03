@@ -7,6 +7,10 @@ alias: manuals-language-concepts-variables.html
 tags: [manuals, language, syntax, concepts, variables]
 ---
 
+Previous: [Classes](manuals-language-concepts-classes.html)
+
+****
+
 Just like [classes](manuals-language-concepts-classes.html) are defined as 
 promises, variables (or "variable definitions") are also promises. Variables 
 can be defined in any promise 
@@ -264,3 +268,6 @@ executed it would print out two messages, one for each key.
     }
 ```
 
+****
+
+Next: [Normal Ordering](manuals-language-concepts-normal-ordering.html)

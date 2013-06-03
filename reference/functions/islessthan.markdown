@@ -7,31 +7,24 @@ alias: reference-functions-islessthan.html
 tags: [reference, functions, islessthan]
 ---
 
-### Function islessthan
+**Prototype**: `islessthan(value1, value2)`
 
-**Synopsis**: islessthan(arg1,arg2) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Smaller string or value, *in the range* .\*   
- *arg2* : Larger string or value, *in the range* .\*   
+**Description**: Returns whether `value1` is less than `value2`.
 
-True if arg1 is numerically less than arg2, else compare strings like
-NOT strcmp
+The comparison is made numerically if possible. If the values are
+strings, the result is the inverse to that of comparing with strcmp().
 
-**Example**:  
-   
+**Arguments**:
+
+* `value1` : Smaller string or value, *in the range* .\*
+* `value2` : Larger string or value, *in the range* .\*
+
+**Example**:
 
 ```cf3
-body common control
-
-{
-bundlesequence  => { "test"  };
-}
-
-###########################################################
-
 bundle agent test
-
 {
 classes:
 
@@ -50,9 +43,6 @@ reports:
 }
 ```
 
-**Notes**:  
-   
+**Notes**:
 
-The complement of `isgreaterthan`. The comparison is made numerically if
-possible. If the values are strings, the result is identical to that of
-comparing with strcmp().
+See also `isgreaterthan`.

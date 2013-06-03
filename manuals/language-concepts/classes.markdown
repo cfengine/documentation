@@ -7,6 +7,10 @@ alias: manuals-language-concepts-classes.html
 tags: [manuals, language, syntax, concepts, classes, decisions]
 ---
 
+Previous: [Bodies](manuals-language-concepts-bodies.html)
+
+****
+
 Classes are used to apply promises only to particular environments, depending 
 on context. A promise might only apply to Linux systems, or should only be 
 applied on Sundays, or only when a 
@@ -14,18 +18,11 @@ applied on Sundays, or only when a
 
 Classes are simply facts that represent that current state or context of a 
 system. They are either `set` or `not set`, depending on context. The list of 
-set classes classifies the environment at time of execution.
+set classes classifies the environment at time of execution. In CFEngine 
+Enterprise, the list of set classes is reported to the CFEngine Database 
+Server, and can be used there for reporting and inventory management.
 
-In CFEngine Enterprise, the list of set classes is reported to the CFEngine 
-Database Server, and can be used there for reporting and inventory management.
-
-## Making Decisions based on classes
-
-**TODO:Example**
-
-The class predicate `ifvarclass` is `AND`ed with the normal class expression, 
-and is evaluated together with the promise. It may contain variables as long 
-as the resulting expansion is a legal class expression.
+Classes fall into hard classes that are discovered by CFEngine, and soft classes that are user-defined.
 
 ## Hard Classes
 
@@ -36,7 +33,7 @@ effectively cached and may be used to make decisions about configuration.
 
 You can see all of the classes defined on a particular host by running the following command as a privileged user.
 
-    host# cf-promises -v
+    $ cf-promises -v
 
 These are classes that describe your operating system, the time of day, the 
 week of the year, etc. Time-varying classes will change if you do this a few 
@@ -49,6 +46,39 @@ classifications. These classes are defined in bundles, and are evaluated when
 the bundle is evaluated. They can be based on test functions or on other 
 classes.
 
+```cf3
+    bundle agent myclasses
+    {
+    classes:
+      "solinux" expression => "linux||solaris";
+      "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
+      "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
+
+    reports:
+      alt_class::
+        # This will only report "Boo!" on linux, solaris, or any system
+        # on which the file /etc/fstab exists
+        "Boo!";
+    }
+```
+
+This example defines a few soft classes local to the `myclasses` bundle.
+
+* The `solinux` soft class is defined as a combination of the `linux` or the 
+  `solaris` hard classes. This class will be set if the operating 
+  system family is either of these values.
+
+* The `atl_class` soft class is defined as a combination of `linux`, 
+  `solaris`, or the presence of a file named `/etc/fstab`. If one of the two 
+  hard classes evaluate to true, or if there is a file named `/etc/fstab`, the 
+  `alt_class` class will also be set.
+
+* The `oth_class` soft class is defined as the combination of two `fileexists`
+  functions - `/etc/shadow` and `/etc/passwd`.  If both of these files are 
+  present the `oth_class` class will also be set.
+
+
+
 ### Negative Knowledge
 
 If a class is set, then it is certain that the corresponding fact is true.
@@ -57,6 +87,106 @@ that something is simply not known. This is only a problem with soft classes,
 where the state of a class can change during the execution of a policy, 
 depending on the [order](manuals-language-concepts-normal-ordering.html) in 
 which bundles and promises are evaluated.
+
+## Making Decisions based on classes
+
+The easiest way to limit the application of a promise to certain conditions is to use the following notation:
+
+```cf3
+    bundle agent greetings
+    {
+     reports:
+       Morning::
+         "Good morning!";
+
+       Evening::
+         "Good evening!";
+    }
+```
+
+In this example, the report "Good morning!" is only printed if the class 
+`Morning` is set, while the report "Good evening!" is only printed when the 
+class `Evening` is set.
+
+A limitation of this notation is that the class expression needs to be 
+constant. The class predicate `ifvarclass` can be used if variable class 
+expressions are required. It is `AND`ed with the normal class expression, and 
+is evaluated together with the promise. It may contain variables as long as 
+the resulting expansion is a legal class expression.
+
+```cf3
+    bundle agent example
+    {
+      vars:
+              "french_cities"  slist => { "toulouse", "paris" };
+              "german_cities"  slist => { "berlin" };
+              "italian_cities" slist => { "milan" };
+              "usa_cities"     slist => { "lawrence" };
+             
+              "all_cities" slist => { @(french_cities), @(german_cities), @(italian_cities), @(usa_cities) };
+    
+      classes:
+          "italy"   or => { @(italian_cities) };
+          "germany" or => { @(german_cities) };
+          "france"  or => { @(french_cities) };
+    
+      reports:
+        any::
+          "It's $(sys.date) here";
+    
+        Morning.italy::
+          "Good morning from Italy",
+            ifvarclass => "$(all_cities)";
+          
+        Afternoon.germany::
+          "Good afternoon from Germany",
+            ifvarclass => "$(all_cities)";
+    
+        france::
+          "Hello from France",
+            ifvarclass => "$(all_cities)";
+    
+        any::
+          "Hello from $(all_cities)",
+            ifvarclass => "$(all_cities)";
+    }
+```
+
+Example Output:
+
+```
+    cf-agent -Kf example.cf -D lawrence -b example
+    R: It's Tue May 28 16:47:33 2013 here
+    R: Hello from lawrence
+
+    cf-agent -Kf example.cf -D paris -b example
+    R: It's Tue May 28 16:48:18 2013 here
+    R: Hello from France
+    R: Hello from paris
+
+    cf-agent -Kf example.cf -D milan -b example
+    R: It's Tue May 28 16:48:40 2013 here
+    R: Hello from milan
+
+    cf-agent -Kf example.cf -D germany -b example
+    R: It's Tue May 28 16:49:01 2013 here
+
+    cf-agent -Kf example.cf -D berlin -b example
+    R: It's Tue May 28 16:51:53 2013 here
+    R: Good afternoon from Germany
+    R: Hello from berlin
+```
+
+
+In this example, lists of cities are defined in the `vars` section and these
+lists are combined into a list of all cities. These variable lists are used to
+qualify the greetings and to make the policy more concise. In the `classes`
+section a country class is defined if a class described on the right hand side
+evaluates to true. In the reports section the current time is always reported
+but only agents found to have the `Morning` and `italy` classes defined will
+report "Good morning from Italy", this is further qualified by ensuring that
+the report is only generated if one of the known cities also has a class
+defined.
 
 ## Operators and Precedence
 
@@ -92,38 +222,34 @@ to 2:59pm on Windows XP systems:
 
     (Monday|Wednesday).Hr14.WinXP::
 
-### An Example
+### Operands that are functions
+
+If an operand is another function and the return value of the function is 
+undefined, the result of the logical operation will also be undefined. 
+For this reason, when using functions as operators, it is safer to collapse
+the functions down to scalar values and to test if the values are either
+true or false before using them as operands in a logical expression.
+
+e.g.
 
 ```cf3
-    bundle agent myclasses
-    {
+    ...
     classes:
-      "solinus" expression => "linux||solaris";
-      "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
-      "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
+            "variable_1" 
+            expression => fileexists("/etc/aliases.db");
+    ...
 
-    reports:
-      alt_class::
-        # This will only report "Boo!" on linux, solaris, or any system
-        # on which the file /etc/fstab exists
-        "Boo!";
-    }
+    "result" 
+    or => { isnewerthan("/etc/aliases", "/etc/aliases.db"),
+    "!variable_1" };
 ```
 
-This example defines a few soft classes local to the `myclasses` bundle.
-
-* The `solinux` soft class is defined as a combination of the `linux` or the 
-  `solaris` hard classes. This class will be set if the operating 
-  system family is either of these values.
-
-* The `atl_class` soft class is defined as a combination of `linux`, 
-  `solaris`, or the presence of a file named `/etc/fstab`. If one of the two 
-  hard classes evaluate to true or if there is a file named `/etc/fstab`, the 
-  `alt_class` class will also be set.
-
-* The `oth_class` soft class is defined as the combination of two `fileexists`
-  functions - `/etc/shadow` and `/etc/passwd`.  If both of these files are 
-  present the `oth_class` class will also be set.
+The function, `isnewerthan` can return "undefined" if one or other of the files 
+does not exist. In that case, result would also be undefined. By checking the 
+validity of the return value before using it as an operand in a logical expression,
+unpredictable results are avoided. i.e negative knowledge does not necessarily 
+imply that something is not the case, it could simply be unknown. Checking if
+each file exists before calling `isnewerthan` would avoid this problem.
 
 
 ## Global and Local classes
@@ -203,3 +329,7 @@ are local to those bundles.
 The `local_two` bundle promises a report "Success" which applies only if 
 `zero.!one.two` evaluates to true. Within the `local_two` scope this evaluates 
 to `true` because the `one` class is not set.
+
+****
+
+Next: [Variables](manuals-language-concepts-variables.html)

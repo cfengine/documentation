@@ -7,17 +7,17 @@ alias: reference-functions-isexecutable.html
 tags: [reference, functions, isexecutable]
 ---
 
-### Function isexecutable
+**Prototype**: `isexecutable(filaname)`
 
-**Synopsis**: isexecutable(arg1) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : File object name, *in the range* "?(/.\*)   
+**Description**: Returns whether the named object `filename` has execution rights for the current user.
 
-True if the named object has execution rights for the current user
+**Arguments**:
 
-**Example**:  
-   
+* `filename` : File object name, *in the range* "?(/.\*)
+
+**Example**:
 
 ```cf3
 classes:
@@ -25,7 +25,4 @@ classes:
   "yes" expression => isexecutable("/bin/ls");
 ```
 
-**Notes**:  
-   
-
-*History*: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
+**History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

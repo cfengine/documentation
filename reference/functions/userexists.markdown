@@ -7,50 +7,38 @@ alias: reference-functions-userexists.html
 tags: [reference, functions, userexists]
 ---
 
-### Function userexists
+**Prototype**: `userexists(user)`
 
-**Synopsis**: userexists(arg1) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : User name or identifier, *in the range* .\*   
+**Description**: Return whether `user` name or numerical id exists on this 
+host.
 
-True if user name or numerical id exists on this host
+Checks whether the user is in the password database for the current host. The
+argument must be a user name or user id.
 
-**Example**:  
-   
+**Arguments**:
+
+* `user` : User name or identifier, *in the range* .\*
+
+**Example**:
 
 ```cf3
+    bundle agent example
+    {     
+      classes:
 
-body common control
+          "ok" expression => userexists("root");
 
-{
-bundlesequence  => { "example" };
-}
+      reports:
 
-###########################################################
+        ok::
 
-bundle agent example
+          "Root exists";
 
-{     
-classes:
+        !ok::
 
-  "ok" expression => userexists("root");
-
-reports:
-
-  ok::
-
-    "Root exists";
-
- !ok::
-
-    "Root does not exist";
-}
-
+          "Root does not exist";
+    }
 ```
 
-**Notes**:  
-   
-
-Checks whether the user is in the password database for the current
-host. The argument must be a user name or user id.

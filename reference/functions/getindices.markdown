@@ -7,34 +7,24 @@ alias: reference-functions-getindices.html
 tags: [reference, functions, getindices]
 ---
 
-### Function getindices
+**Prototype**: `getindices(array)`
 
-**Synopsis**: getindices(arg1) returns type **slist**
+**Return type**: `slist`
 
-  
- *arg1* : Cfengine array identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
+**Description**: Returns a list of keys in `array`.
 
-Get a list of keys to the array whose id is the argument and assign to
-variable
+Make sure you specify the correct scope when supplying the name of the
+variable.
 
-**Example**:  
-   
+**Arguments**:
+
+* `array` : array identifier, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+
+**Example**:
 
 ```cf3
-body common control
-
-{
-any::
-
-  bundlesequence  => { "testsetvar" };   
-}
-
-
-#######################################################
-
-bundle agent testsetvar
-
+bundle agent example
 {
 vars:
 
@@ -51,9 +41,3 @@ reports:
 
 }
 ```
-
-**Notes**:  
-   
-
-Make sure you specify the correct scope when supplying the name of the
-variable.

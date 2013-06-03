@@ -7,30 +7,25 @@ alias: reference-functions-returnszero.html
 tags: [reference, functions, returnszero]
 ---
 
-### Function returnszero
+**Prototype**: `returnszero(command, shell)`
 
-**Synopsis**: returnszero(arg1,arg2) returns type **class**
+**Return type**: `class`
 
-  
- *arg1* : Fully qualified command path, *in the range* "?(/.\*)   
- *arg2* : Shell encapsulation option, *in the range* useshell,noshell   
+**Description**: Runs `command` and returns whether it has returned with exit 
+status zero.
 
-True if named shell command has exit status zero
+This is the complement of `execresult()`, but it returns a class result
+rather than the output of the command.
 
-**Example**:  
-   
+**Arguments**:
+
+* `command` : Fully qualified command path, *in the range* "?(/.\*)
+* `shelll` : Shell encapsulation option, *in the range* useshell,noshell   
+
+**Example**:
 
 ```cf3
-body common control
-
-{
-bundlesequence  => { "example" };
-}
-
-###########################################################
-
 bundle agent example
-
 {     
 classes:
 
@@ -44,9 +39,3 @@ reports:
 
 }
 ```
-
-**Notes**:  
-   
-
-This is the complement of `execresult`, but it returns a class result
-rather than the output of the command.

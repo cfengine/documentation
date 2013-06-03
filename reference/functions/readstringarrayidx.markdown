@@ -7,83 +7,49 @@ alias: reference-functions-readstringarrayidx.html
 tags: [reference, functions, readstringarrayidx]
 ---
 
-### Function readstringarrayidx
+**Prototype**: `readstringarrayidx(array, filename, comment, split, maxentries, maxbytes)`
 
-**Synopsis**: readstringarrayidx(arg1,arg2,arg3,arg4,arg5,arg6) returns
-type **int**
+**Return type**: `int`
 
-  
- *arg1* : Array identifier to populate, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+   
- *arg2* : A string to parse for input data, *in the range* "?(/.\*)   
- *arg3* : Regex matching comments, *in the range* .\*   
- *arg4* : Regex to split data, *in the range* .\*   
- *arg5* : Maximum number of entries to read, *in the range*
+**Description**: Populates the two-dimensional array `array` with up to 
+`maxentries` fields from the first `maxbytes` bytes of file `filename`.
+
+One dimension is separated by the regex `split`, the other by the the lines in
+the file. The array arguments are both integer indexes, allowing for 
+non-identifiers at first field (e.g. duplicates or names with spaces), unlike 
+`readstringarray`.
+
+The `comment` field will strip out unwanted patterns from the file being read, leaving unstripped characters to be split into fields. Using the empty string (`""`) indicates no comments.
+
+Returns an integer number of keys in the array (i.e., the number of lines 
+matched). If you only want the fields in the first matching line (e.g., to 
+mimic the behavior of the *getpwnam(3)* on the file `/etc/passwd`), use 
+`getfields()`, instead.
+
+**Arguments**:
+
+* `array` : Array identifier to populate, *in the range*
+[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `filename` : A string to parse for input data, *in the range* "?(/.\*)
+* `comment` : Unanchored regex matching comments, *in the range* .\*
+* `split` : Unanchored regex to split data, *in the range* .\*
+* `maxentries` : Maximum number of entries to read, *in the range*
 0,99999999999   
- *arg6* : Maximum bytes to read, *in the range* 0,99999999999   
+* `maxbytes` : Maximum bytes to read, *in the range* 0,99999999999   
 
-Read an array of strings from a file and assign the dimension to a
-variable with integer indeces
-
-**Example**:  
-   
+**Example**:
 
 ```cf3
-vars:
+    vars:
 
-  "dim_array" 
+      "dim_array" 
 
-     int =>  readstringarrayidx("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
+         int =>  readstringarrayidx("array_name","/tmp/array","\s*#[^\n]*",":",10,4000);
 ```
 
-Returns an integer number of keys in the array (i.e., the number of
-lines matched). If you only want the fields in the first matching line
-(e.g., to mimic the behavior of the *getpwnam(3)* on the file
-/etc/passwd), see [Function getfields](#Function-getfields), instead.
+Input example:
 
-**ARGUMENTS**:
-
-array\_name
-
-The name to be used for the container array (the array is filled by this
-routine).   
-
-filename
-
-The name of a text file containing the text to be split up as a list.   
-
-comment
-
-A regex pattern which specifies comments to be ignored in the file. The
-`comment` field will strip out unwanted patterns from the file being
-read, leaving unstripped characters to be split into fields. Using the
-empty string (`""`) indicates no commments. The regex is unanchored (See
-[Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
-
-split
-
-A regex pattern which is used to parse the field separator(s) to split
-up the file into items. The `split` regex is also unanchored.   
-
-maxent
-
-The maximum number of list items to read from the file   
-
-maxsize
-
-The maximum number of bytes to read from the file
-
-**Notes**:  
-   
-
-Reads a two dimensional array from a file. One dimension is separated by
-the character specified in the argument, the other by the the lines in
-the file. The array arguments are both integer indexes, allowing for
-non-identifiers at first field (e.g. duplicates or names with spaces),
-unlike `readstringarray`.
-
-```cf3
+```
      
      at spaced:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
      duplicate:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
@@ -94,10 +60,9 @@ unlike `readstringarray`.
      
 ```
 
-Results in a systematically indexed map of the file. Some samples are
-show below to illustrate the pattern.
+Results in a systematically indexed map of the file:
 
-```cf3
+```
      array_name[0][0]       at spaced
      array_name[0][1]       x
      array_name[0][2]       25
@@ -113,5 +78,4 @@ show below to illustrate the pattern.
      array_name[1][5]       /var/run/avahi-daemon
      array_name[1][6]       /bin/false
      ...
-     
 ```
