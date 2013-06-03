@@ -150,13 +150,14 @@ a hierarchy of depth 1.
 
 **Type**: `body database_server`
 
-#### db_server_owner
+### db_server_owner
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-The user name for a database connection is defined by `db_server_order`.
+**Description**: The `db_server_owner` string represents the user name 
+for a database connection.
 
 **Example**:
 
@@ -167,13 +168,14 @@ The user name for a database connection is defined by `db_server_order`.
 ```  
    
 
-#### db_server_password
+### db_server_password
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-The clear text password for a database connection is defined by `db_server_password`.
+**Description**: The `db_server_password ` string represents the clear 
+text password for a database connection.
 
 **Example**:
 
@@ -183,13 +185,16 @@ The clear text password for a database connection is defined by `db_server_passw
      
 ```
 
-#### db_server_host
+### db_server_host
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-The hostname or address for a database connection is defined by `db_server_host`. A blank value is equal to localhost.
+**Description**: The `db_server_host` string represents the hostname or 
+address for a database connection. 
+
+A blank value is equal to localhost.
 
 ```cf3
      
@@ -197,7 +202,7 @@ The hostname or address for a database connection is defined by `db_server_host`
      
 ```
 
-#### db_server_type
+### db_server_type
 
 **Type**: (menu option)
 
@@ -210,7 +215,8 @@ The hostname or address for a database connection is defined by `db_server_host`
 
 **Default value:** none
 
-The type of database server is defined by `db_server_type`.
+**Description**: The `db_server_type` string represents the type of 
+database server being used.
 
 **Example**:
 
@@ -220,19 +226,21 @@ The type of database server is defined by `db_server_type`.
      
 ```
 
-#### db_server_connection_db
+### db_server_connection_db
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-The name of an existing database to connect to in order to create/manage other databases is defined by `db_server_connection_db`.
+**Description**: The `db_server_connection_db` string is the name of an 
+existing database to connect to in order to create/manage other databases.
 
-In order to create a database on a database server (all of which practice voluntary cooperation), one has to be able to connect to the
-server, however, without an existing database this is not allowed. Thus, database servers provide a default database that can be connected to in order to thereafter create new databases. These are called `postgres` and `mysql` for their respective database servers.
-
-For the knowledge agent, this setting is made in the control body, for database verification promises, it is made in the `database_server` body.
-
+In order to create a database on a database server (all of which practice 
+voluntary cooperation), one has to be able to connect to the server. 
+However, without an existing database this is not allowed. Thus, database 
+servers provide a default database that can be connected to in order to 
+thereafter create new databases. These are called `postgres` and `mysql` 
+for their respective database servers.
 
 **Example**:
 
@@ -251,6 +259,11 @@ For the knowledge agent, this setting is made in the control body, for database 
 
 where x is currently `mysql` or `postgres`.
 
+**Notes**:
+
+For the knowledge agent, this setting is made in the control body. For 
+database verification promises, it is made in the `database_server` body.
+
 
 ### database_type
 
@@ -265,7 +278,8 @@ where x is currently `mysql` or `postgres`.
 
 **Default value:** none
 
-The type of database that is to be manipulated is defined by `database_type`
+**Description**: The `database_type` menu option is a type of database 
+that is to be manipulated.
 
 **Example**:
 
@@ -288,7 +302,8 @@ database_type => "ms_registry";
                restore
 ```
 
-The nature of the promise is defined by `database_operation`.
+**Description**: The `database_operation` menu option represents the 
+nature of the promise.
 
 **Example**:
 
@@ -302,10 +317,11 @@ database_operation => "create";
 
 **Allowed input range**: `.*`
 
-A list of column definitions to be promised by SQL databases can be defined in a `database_columns` slist.
+**Description**: A `database_columns` slist defines column definitions 
+to be promised by SQL databases.
 
-Columns are a list of tuplets (Name,type,size). Array items are triplets, and fixed size data elements are doublets.
-
+Columns are a list of tuplets (Name,type,size). Array items are triplets, 
+and fixed size data elements are doublets.
 
 **Example**:
 
@@ -331,13 +347,11 @@ Columns are a list of tuplets (Name,type,size). Array items are triplets, and fi
 
 **Allowed input range**: `.*,.*`
 
-An ordered list of row values to be promised by SQL databases can be defined in a `database_rows` slist.
+**Description**: `database_rows` is an ordered list of row values to be 
+promised by SQL databases.
 
-This constraint is used only in adding data to database columns. Rows are considered to be instances of individual columns.
-
-In the case of the system registry on Windows, the rows represent data on data-value pairs. The currently supported types (the middle field)
-for the Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string) and `REG_DWORD` (double word).
-
+This constraint is used only in adding data to database columns. Rows are 
+considered to be instances of individual columns.
 
 **Example**:
 
@@ -359,17 +373,27 @@ databases:
 }
 ```
 
+**Notes**:
+
+In the case of the system registry on Windows, the rows represent data on 
+data-value pairs. The currently supported types (the middle field) for the 
+Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string) 
+and `REG_DWORD` (double word).
+
 ### registry_exclude
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
-A list of regular expressions to ignore in key/value verification can be defined in a `registry_exclude` slist.
+**Description**: An `registry_exclude` slist contains regular expressions 
+to ignore in key/value verification.
 
-During recursive Windows registry scanning, this option allows us to ignore keys of values matching a list of regular expressions. Some
-values in the registry are ephemeral and some should not be considered. This provides a convenient way of avoiding names. It is analogous to
-`exclude_dirs` for files.
+During recursive Windows registry scanning, this option allows us to ignore 
+keys of values matching a list of regular expressions. Some values in the 
+registry are ephemeral and some should not be considered. This provides a 
+convenient way of avoiding names. It is analogous to `exclude_dirs` for 
+files.
 
 **Example**:
 
@@ -391,4 +415,7 @@ databases:
 
     database_type     => "ms_registry";
 ```
+
+
+
 
