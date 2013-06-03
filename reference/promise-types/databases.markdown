@@ -150,7 +150,7 @@ a hierarchy of depth 1.
 
 **Type**: `body database_server`
 
-### db_server_owner
+#### db_server_owner
 
 **Type**: `string`
 
@@ -168,7 +168,7 @@ for a database connection.
 ```  
    
 
-### db_server_password
+#### db_server_password
 
 **Type**: `string`
 
@@ -185,7 +185,7 @@ text password for a database connection.
      
 ```
 
-### db_server_host
+#### db_server_host
 
 **Type**: `string`
 
@@ -202,7 +202,7 @@ A blank value is equal to localhost.
      
 ```
 
-### db_server_type
+#### db_server_type
 
 **Type**: (menu option)
 
@@ -226,7 +226,7 @@ database server being used.
      
 ```
 
-### db_server_connection_db
+#### db_server_connection_db
 
 **Type**: `string`
 
@@ -265,7 +265,7 @@ For the knowledge agent, this setting is made in the control body. For
 database verification promises, it is made in the `database_server` body.
 
 
-### database_type
+#### database_type
 
 **Type**: (menu option)
 
@@ -287,7 +287,7 @@ that is to be manipulated.
 database_type => "ms_registry";
 ```
 
-### database_operation
+#### database_operation
 
 **Type**: (menu option)
 
@@ -311,7 +311,7 @@ nature of the promise.
 database_operation => "create";
 ```
 
-### database_columns
+#### database_columns
 
 **Type**: `slist`
 
@@ -341,7 +341,7 @@ and fixed size data elements are doublets.
     database_server => myserver;
 ```
 
-### database_rows
+#### database_rows
 
 **Type**: `slist`
 
@@ -380,7 +380,7 @@ data-value pairs. The currently supported types (the middle field) for the
 Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string) 
 and `REG_DWORD` (double word).
 
-### registry_exclude
+#### registry_exclude
 
 **Type**: `slist`
 
