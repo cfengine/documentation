@@ -132,7 +132,7 @@ example: `$(bundle.variable)`.
 
 ### usebundle
 
-**Type**: (Separate Bundle)
+**Type**: `bundle agent`
 
 ### useresult
 
