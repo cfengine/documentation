@@ -186,8 +186,9 @@ update         => "yes";
 }
 ```
 
+****
 
--   [select\_region in \*](#select_005fregion-in-_002a)
+## Attributes
 
 ### select_region
 
@@ -195,41 +196,40 @@ update         => "yes";
 
 #### include_start_delimiter
 
+**Description**: Whether to include the section delimiter
+
+In a sectioned file, the line that marks the opening of a section is not
+normally included in the defined region (that is, it is recognized as a
+delimiter, but it is not included as one of the lines available for
+editing). Setting this option to true makes it included.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: Whether to include the section delimiter
 
 **Default value:** false
 
 **Example**:
 
 ```cf3
-     
      body select_region MySection(x)
      {
-     select_start => "\[$(x)\]";
-     select_end => "\[.*\]";
-     include_start_delimiter => "true";
+       select_start => "\[$(x)\]";
+       select_end => "\[.*\]";
+       include_start_delimiter => "true";
      }
-     
 ```
 
-**Notes**:
-In a sectioned file, the line that marks the opening of a section is not
-normally included in the defined region (that is, it is recognized as a
-delimiter, but it is not included as one of the lines available for
-editing). Setting this option to true makes it included. For example:
+Input file:
 
 ```cf3
      [My section]
@@ -238,8 +238,8 @@ editing). Setting this option to true makes it included. For example:
      three
 ```
 
-In the example above, the section does not normally include the line [My
-section]. By setting `include_start_delimiter` to trueit would be
+In this example, the section does not normally include the line [My
+section]. By setting `include_start_delimiter` to `true` it would be
 possible for example, to delete the entire section, including the
 section header. If however `include_start_delimiter` is false, the
 *contents* of the section could be deleted, but the header would be
@@ -251,41 +251,40 @@ unaffected by any `delete_lines` promises. See the next section on
 
 #### include_end_delimiter
 
+**Description**: Whether to include the section delimiter
+
+In a sectioned file, the line that marks the end of a section is not
+normally included in the defined region; that is, it is recognized as a
+delimiter, but it is not included as one of the lines available for
+editing. Setting this option to true makes it included.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: Whether to include the section delimiter
 
 **Default value:** false
 
 **Example**:
 
 ```cf3
-     
      body select_region BracketSection(x)
      {
      select_start => "$(x) \{";
      select_end => "}";
      include_end_delimiter => "true";
      }
-     
 ```
 
-**Notes**:
-In a sectioned file, the line that marks the end of a section is not
-normally included in the defined region; that is, it is recognized as a
-delimiter, but it is not included as one of the lines available for
-editing. Setting this option to true makes it included. For example:
+Input file:
 
 ```cf3
      /var/log/mail.log {
@@ -297,7 +296,7 @@ editing. Setting this option to true makes it included. For example:
 ```
 
 The section does not normally include the line containing }. By setting
-`include_end_delimiter` to trueit would be possible for example, to
+`include_end_delimiter` to `true` it would be possible for example, to
 delete the entire section, including the section trailer. If however
 `include_end_delimiter` is false, the *contents* of the section could be
 deleted, but the header would be unaffected by any `delete_lines`
@@ -314,84 +313,44 @@ in `include_start_delimiter`).
 
 #### select_start
 
+**Description**: Regular expression matching start of edit region
+
+See also `select_end`. These delimiters mark out the region of a file to
+be edited.
+
 **Type**: `string`
 
 **Allowed input range**: `.*`
 
-**Description**: Regular expression matching start of edit region
-
 **Example**:
 
 ```cf3
-     
      body select_region example(x)
-     
      {
-     select_start => "\[$(x)\]";
-     select_end => "\[.*\]";
+       select_start => "\[$(x)\]";
+       select_end => "\[.*\]";
      }
-     
 ```
-
-**Notes**:
-See also `select_end`. These delimiters mark out the region of a file to
-be edited. In the example, it is assumed that the file has section
-markers.
-
-```cf3
-          [section 1]
-          
-          lines.
-          lines...
-          
-          
-          [section 2]
-          
-          lines ....
-          etc..
-          
-```
-
-The start marker includes the first matched line.   
 
 #### select_end
 
+**Description**: Regular expression matches end of edit region from start
+
+See also `select_start`. These delimiters mark out the region of a file
+to be edited.
+
 **Type**: `string`
 
 **Allowed input range**: `.*`
 
-**Description**: Regular expression matches end of edit region from start
-
 **Example**:
 
 ```cf3
-     
      body select_region example(x)
-     
      {
      select_start => "\[$(x)\]";
      select_end => "\[.*\]";
      }
-     
-```
-
-**Notes**:
-See also `select_start`. These delimiters mark out the region of a file
-to be edited. In this example, it is assumed that the file has section
-markers:
-
-```cf3
-          [section 1]
-          
-          lines.
-          lines...
-          
-          
-          [section 2]
-          
-          lines ....
-          etc..
-          
 ```
 
 If you want to match from a starting location to the end of the file
