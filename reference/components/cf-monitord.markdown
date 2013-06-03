@@ -48,8 +48,74 @@ affected by  `common` and `monitor` control bodies.
 
 Debug levels: 1=parsing, 2=running, 3=summary,
 
-## Control Promises
+## Standard measurements:
 
+The `cf-monitord` service monitors a number of variables as standard on Unix 
+and Windows systems. Windows is fundamentally different from Unix and 
+currently has less support for out-of-the-box probes.
+
+1.  users: Users logged in
+2.  rootprocs: Privileged system processes
+3.  otherprocs: Non-privileged process
+4.  diskfree: Free disk on / partition
+5.  loadavg: % kernel load utilization
+6.  netbiosns\_in: netbios name lookups (in)
+7.  netbiosns\_out: netbios name lookups (out)
+8.  netbiosdgm\_in: netbios name datagrams (in)
+9.  netbiosdgm\_out: netbios name datagrams (out)
+10. netbiosssn\_in: netbios name sessions (in)
+11. netbiosssn\_out: netbios name sessions (out)
+12. irc\_in: IRC connections (in)
+13. irc\_out: IRC connections (out)
+14. cfengine\_in: CFEngine connections (in)
+15. cfengine\_out: CFEngine connections (out)
+16. nfsd\_in: nfs connections (in)
+17. nfsd\_out: nfs connections (out)
+18. smtp\_in: smtp connections (in)
+19. smtp\_out: smtp connections (out)
+20. www\_in: www connections (in)
+21. www\_out: www connections (out)
+22. ftp\_in: ftp connections (in)
+23. ftp\_out: ftp connections (out)
+24. ssh\_in: ssh connections (in)
+25. ssh\_out: ssh connections (out)
+26. wwws\_in: wwws connections (in)
+27. wwws\_out: wwws connections (out)
+28. icmp\_in: ICMP packets (in)
+29. icmp\_out: ICMP packets (out)
+30. udp\_in: UDP dgrams (in)
+31. udp\_out: UDP dgrams (out)
+32. dns\_in: DNS requests (in)
+33. dns\_out: DNS requests (out)
+34. tcpsyn\_in: TCP sessions (in)
+35. tcpsyn\_out: TCP sessions (out)
+36. tcpack\_in: TCP acks (in)
+37. tcpack\_out: TCP acks (out)
+38. tcpfin\_in: TCP finish (in)
+39. tcpfin\_out: TCP finish (out)
+40. tcpmisc\_in: TCP misc (in)
+41. tcpmisc\_out: TCP misc (out)
+42. webaccess: Webserver hits
+43. weberrors: Webserver errors
+44. syslog: New log entries (Syslog)
+45. messages: New log entries (messages)
+46. temp0: CPU Temperature core 0
+47. temp1: CPU Temperature core 1
+48. temp2: CPU Temperature core 2
+49. temp3: CPU Temperature core 3
+50. cpu: %CPU utilization (all)
+51. cpu0: %CPU utilization core 0
+52. cpu1: %CPU utilization core 1
+53. cpu2: %CPU utilization core 2
+54. cpu3: %CPU utilization core 3
+
+Slots with a higher number are used for custom measurement promises in
+CFEngine Enterprise.
+
+These values collected and analyzed by `cf-monitord` are transformed
+into agent variables in the `$(mon.`name`)` context.
+
+## Control Promises
 
 Settings describing the details of the fixed behavioral promises
 made by `cf-monitord`. The system defaults will be sufficient for
@@ -58,7 +124,7 @@ to developing the integrated monitoring capabilities of CFEngine.
 
 
 ```cf3         
-    body monitor control()
+    body monitor control
     {
         #version => "1.2.3.4";
 

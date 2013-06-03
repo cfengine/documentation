@@ -9,180 +9,96 @@ tags: [reference, bundles, monitor, measurements, monitoring, promise types]
 
 **These features are available only in CFEngine Enterprise.**
 
-By default,CFEngine's monitoring component `cf-monitord` records
-performance data about the system. These include process counts, service
-traffic, load average and CPU utilization and temperature when
-available.
+By default,CFEngine's monitoring component `cf-monitord` records performance data about the system. These include process counts, service traffic, load average and CPU utilization and temperature when available.
 
 CFEngine Enterprise extends this in two ways. First it adds a three year trend
-summary based any 'shift'-averages. Second, it adds customizable
-promises to monitor or log very specific user data through a generic
-interface. The end result is to either generate a periodic time series,
-like the above mentioned values, or to log the results to custom-defined
-reports.
-
-CFEngine Enterprise adds a new promise type in bundles for the monitoring
-agent. These are written just like all other promises within a bundle
-destined for the agent concerned (however, you do not need to add them
-to the `bundlesequence` they are executed by `cf-monitord` because they
-are bundles of type `monitor`). In this case:
+summary based any 'shift'-averages. Second, it adds customizable 
+`measurements` promises to  monitor or log very specific user data through a 
+generic interface. The end-result is to either generate a periodic time 
+series, like the above mentioned values, or to log the results to 
+custom-defined reports.
 
 ```cf3
-bundle monitor watch
-
-{
-measurements:
-
-  # promises ...
-
-}
+    bundle monitor self_watch
+    {
+    measurements:
 ```
 
-It is important to specify a promise `handle` for measurement promises,
-as the names defined in the handle are used to determine the name of the
-log file or variable to which data will be reported. Log files are
-created under WORKDIR/state. Data that have no history type are stored
-in a special variable context called mon, analogous to the system
-variables in sys. Thus the values may be used in other promises in the
-form `$(mon.handle)`.
-
-  
+Promises of type `measurement` are written just like all other promises within 
+a bundle destined for the agent concerned, in this case `monitor`. However, it 
+is not necessary to add them to the `bundlesequence`, because `cf-monitord` 
+executes all bundles of type `monitor`.
 
 ```cf3
-  # Follow a special process over time
-  # using CFEngine's process cache to avoid resampling
+      # Follow a special process over time
+      # using CFEngine's process cache to avoid resampling
 
-   "/var/cfengine/state/cf_rootprocs"
+       "/var/cfengine/state/cf_rootprocs"
 
-      handle => "monitor_self_watch",
-      stream_type => "file",
-      data_type => "int",
-      history_type => "weekly",
-      units => "kB",
-      match_value => proc_value(".*cf-monitord.*",
-         "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
+          handle => "monitor_self_watch",
+          stream_type => "file",
+          data_type => "int",
+          history_type => "weekly",
+          units => "kB",
+          match_value => proc_value(".*cf-monitord.*",
+             "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
+    }
 
-
-  # Discover disk device information
-
-  "/bin/df"
-
-      handle => "free_diskspace_watch",
-      stream_type => "pipe",
-      data_type => "slist",
-      history_type => "static",
-      units => "device",
-      match_value => file_systems;
-      # Update this as often as possible
-
-}
-
-##########################################################
-
-body match_value proc_value(x,y)
-{
-select_line_matching => "$(x)";
-extraction_regex => "$(y)";
-}
-
-body match_value file_systems
-{
-select_line_matching => "/.*";
-extraction_regex => "(.*)";
-}
-
+    body match_value proc_value(x,y)
+    {
+      select_line_matching => "$(x)";
+      extraction_regex => "$(y)";
+    }
 ```
 
-  
+It is important to specify a promise `handle` for measurement promises, as the names defined in the handle are used to determine the name of the log file or variable to which data will be reported. Log files are created under `WORKDIR/state`. Data that have no history type are stored in a special variable context called `mon`, analogous to the system variables in sys. Thus the values may be used in other promises in the form `$(mon.handle)`.
 
-**Notes:**
+```cf3
+    bundle monitor watch_diskspace
+    {
+      # Discover disk device information
+      "/bin/df"
 
-The general pattern of these promises is to decide whether the source of
-the information is either a file or pipe, determine the data type
-(integer, string etc.), specify a pattern to match the result in the
-file stream and then specify what to do with the result afterwards.
+          handle => "free_diskspace_watch",
+          stream_type => "pipe",
+          data_type => "slist",
+          history_type => "static",
+          units => "device",
+          match_value => file_systems;
+          # Update this as often as possible
 
-**Standard measurements:**
+    }
 
-The `cf-monitord` service monitors a number of variables as standard on
-Unix and Windows systems. Windows is fundamentally different from Unix
-and currently has less support for out-of-the-box probes.
+    body match_value file_systems
+    {
+      select_line_matching => "/.*";
+      extraction_regex => "(.*)";
+    }
+```
 
-1.  users: Users logged in
-2.  rootprocs: Privileged system processes
-3.  otherprocs: Non-privileged process
-4.  diskfree: Free disk on / partition
-5.  loadavg: % kernel load utilization
-6.  netbiosns\_in: netbios name lookups (in)
-7.  netbiosns\_out: netbios name lookups (out)
-8.  netbiosdgm\_in: netbios name datagrams (in)
-9.  netbiosdgm\_out: netbios name datagrams (out)
-10. netbiosssn\_in: netbios name sessions (in)
-11. netbiosssn\_out: netbios name sessions (out)
-12. irc\_in: IRC connections (in)
-13. irc\_out: IRC connections (out)
-14. cfengine\_in: CFEngine connections (in)
-15. cfengine\_out: CFEngine connections (out)
-16. nfsd\_in: nfs connections (in)
-17. nfsd\_out: nfs connections (out)
-18. smtp\_in: smtp connections (in)
-19. smtp\_out: smtp connections (out)
-20. www\_in: www connections (in)
-21. www\_out: www connections (out)
-22. ftp\_in: ftp connections (in)
-23. ftp\_out: ftp connections (out)
-24. ssh\_in: ssh connections (in)
-25. ssh\_out: ssh connections (out)
-26. wwws\_in: wwws connections (in)
-27. wwws\_out: wwws connections (out)
-28. icmp\_in: ICMP packets (in)
-29. icmp\_out: ICMP packets (out)
-30. udp\_in: UDP dgrams (in)
-31. udp\_out: UDP dgrams (out)
-32. dns\_in: DNS requests (in)
-33. dns\_out: DNS requests (out)
-34. tcpsyn\_in: TCP sessions (in)
-35. tcpsyn\_out: TCP sessions (out)
-36. tcpack\_in: TCP acks (in)
-37. tcpack\_out: TCP acks (out)
-38. tcpfin\_in: TCP finish (in)
-39. tcpfin\_out: TCP finish (out)
-40. tcpmisc\_in: TCP misc (in)
-41. tcpmisc\_out: TCP misc (out)
-42. webaccess: Webserver hits
-43. weberrors: Webserver errors
-44. syslog: New log entries (Syslog)
-45. messages: New log entries (messages)
-46. temp0: CPU Temperature core 0
-47. temp1: CPU Temperature core 1
-48. temp2: CPU Temperature core 2
-49. temp3: CPU Temperature core 3
-50. cpu: %CPU utilization (all)
-51. cpu0: %CPU utilization core 0
-52. cpu1: %CPU utilization core 1
-53. cpu2: %CPU utilization core 2
-54. cpu3: %CPU utilization core 3
+The general pattern of these promises is to decide whether the source of the 
+information is either a file or pipe, determine the data type (integer, string 
+etc.), specify a pattern to match the result in the file stream and then 
+specify what to do with the result afterwards.
 
-Slots with a higher number are used for custom measurement promises in
-CFEngine Enterprise.
-
-These values collected and analyzed by `cf-monitord` are transformed
-into agent variables in the `$(mon.`name`)` context.
-
-**Measurement promise syntax:**
+## Attributes
 
 ### stream_type
 
+**Description**: The datatype being collected.
+
+CFEngine treats all input using a stream abstraction. The preferred interface 
+is files, since they can be read without incurring the cost of a process. 
+However pipes from executed commands may also be invoked.
+
 **Type**: (menu option)
 
-**Allowed input range**:   
+**Allowed input range**:
 
 ```cf3
-               pipe
-               file
+     pipe
+     file
 ```
-
-**Description**: The datatype being collected.
 
 **Example**:
 
@@ -190,26 +106,23 @@ into agent variables in the `$(mon.`name`)` context.
 stream_type => "pipe";
 ```
 
-**Notes**:
-CFEngine treats all input using a stream abstraction. The preferred
-interface is files, since they can be read without incurring the cost of
-a process. However pipes from executed commands may also be invoked.
-
 ### data_type
+
+**Description**: The datatype being collected.
+
+When CFEngine observes data, such as the attached partitions in the example above, the datatype determines how that data will be handled. Integer and real values, counters etc., are recorded as time-series if the history type is 'weekly', or as single values otherwise. If multiple items are matched by an observation (e.g. several lines in a file match the given regular expression), then these can be made into a list by choosing `slist`, else the first matching item will be selected.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-               counter
-               int
-               real
-               string
-               slist
+    counter
+    int
+    real
+    string
+    slist
 ```
-
-**Description**: The datatype being collected.
 
 **Example**:
 
@@ -228,31 +141,34 @@ a process. However pipes from executed commands may also be invoked.
 
 ```
 
-**Notes**:
-When CFEngine observes data, such as the attached partitions in
-the example above, the datatype determines how that data will be
-handled. Integer and real values, counters etc., are recorded as
-time-series if the history type is 'weekly', or as single values
-otherwise. If multiple items are matched by an observation (e.g. several
-lines in a file match the given regular expression), then these can be
-made into a list by choosing `slist`, else the first matching item will
-be selected.
-
 ### history_type
+
+**Description**: Whether the data can be seen as a time-series or just an
+isolated value
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
-```cf3
-               weekly
-               scalar
-               static
-               log
-```
+* `scalar`
 
-**Description**: Whether the data can be seen as a time-series or just an
-isolated value
+A single value, with compressed statistics is retained. The value of the
+data is not expected to change much for the lifetime of the daemon (and
+so will be sampled less often by cf-monitord).   
+
+* `static`
+
+A synonym for 'scalar'.   
+
+* `log`
+
+The measured value is logged as an infinite time-series in
+\$(sys.workdir)/state.   
+
+* `weekly`
+
+A standard CFEngine two-dimensional time average (over a weekly period)
+is retained.
 
 **Example**:
 
@@ -267,35 +183,16 @@ isolated value
       match_value => free_memory;
 ```
 
-**Notes**:
-scalar
-
-A single value, with compressed statistics is retained. The value of the
-data is not expected to change much for the lifetime of the daemon (and
-so will be sampled less often by cf-monitord).   
-
-static
-
-A synonym for 'scalar'.   
-
-log
-
-The measured value is logged as an infinite time-series in
-\$(sys.workdir)/state.   
-
-weekly
-
-A standard CFEngine two-dimensional time average (over a weekly period)
-is retained.
-
 ### units
+
+**Description**: The engineering dimensions of this value or a note about
+its intent used in plots
+
+This is an arbitrary string used in documentation only.
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The engineering dimensions of this value or a note about
-its intent used in plots
 
 **Example**:
 
@@ -312,20 +209,22 @@ its intent used in plots
          "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
 ```
 
-**Notes**:
-This is an arbitary string used in documentation only.
-
 ### match_value
 
 **Type**: `body match_value`
 
 #### select_line_matching
 
+**Description**: Regular expression for matching line location
+
+The expression is anchored, meaning it must match a whole line, and not
+a fragment within a line.
+
+This attribute is mutually exclusive of `select_line_number`.
+
 **Type**: `string`
 
 **Allowed input range**: `.*`
-
-**Description**: Regular expression for matching line location
 
 **Example**:
 
@@ -347,20 +246,15 @@ This is an arbitary string used in documentation only.
      
 ```
 
-**Notes**:
-The expression is anchored, meaning it must match a whole line, and not
-a fragment within a line (see [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).
-
-This attribute is mutually exclusive of `select_line_number`.   
-
 #### select_line_number
+
+**Description**: Read from the n-th line of the output (fixed format)
+
+This is mutually exclusive of `select_line_matching`.   
 
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Read from the n-th line of the output (fixed format)
 
 **Example**:
 
@@ -370,20 +264,23 @@ This attribute is mutually exclusive of `select_line_number`.
      {
      select_line_number => "2";
      }
-     
 ```
 
 **Notes**:
-This is mutually exclusive of `select_line_matching`.   
+
 
 #### extraction_regex
+
+**Description**: Regular expression that should contain a single
+back-reference for extracting a value.
+
+A single parenthesized back-reference should be given to lift the value to be 
+measured out of the text stream. The regular expression is unanchored, meaning 
+it may match a partial string
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: Regular expression that should contain a single
-backreference for extracting a value
 
 **Example**:
 
@@ -397,31 +294,33 @@ backreference for extracting a value
      
 ```
 
-**Notes**:
-A single parenthesized backreference should be given to lift the value
-to be measured out of the text stream. The regular expression is
-unanchored, meaning it may match a partial string (see [Anchored vs.
-unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
-
 #### track_growing_file
+
+**Description**: If true, CFEngine remembers the position to which is last
+read when opening the file, and resets to the start if the file has
+since been truncated
+
+This option applies only to file based input streams. If this is true, 
+CFEngine treats the file as if it were a log file, growing continuously.
+Thus the monitor reads all new entries since the last sampling time on
+each invocation. In this way, the monitor does not count lines in the
+log file redundantly.
+
+This makes a log pattern promise equivalent to something like tail -f
+logfile | grep pattern in Unix parlance.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: If true, CFEngine remembers the position to which is last
-read when opening the file, and resets to the start if the file has
-since been truncated
 
 **Example**:
 
@@ -458,30 +357,27 @@ since been truncated
      }
 ```
 
-**Notes**:
-This option applies only to file based input streams. If this is true,
-CFEngine treats the file as if it were a log file, growing continuously.
-Thus the monitor reads all new entries since the last sampling time on
-each invocation. In this way, the monitor does not count lines in the
-log file redundantly.
-
-This makes a log pattern promise equivalent to something like tail -f
-logfile | grep pattern in Unix parlance.   
 
 #### select_multiline_policy
+
+**Description**: Regular expression for matching line location
+
+This option governs how CFEngine handles multiple matching lines in the
+input stream. It can average or sum values if they are integer or real,
+or use first or last representative samples. If non-numerical data types
+are used only the first match is used.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    average
-                    sum
-                    first
-                    last
+    average
+    sum
+    first
+    last
 ```
 
-**Description**: Regular expression for matching line location
 
 **Example**:
 
@@ -497,8 +393,3 @@ logfile | grep pattern in Unix parlance.
 ```
 
 **History**: Was introduced in 3.4.0 (2012)
-
-This option governs how CFEngine handels multiple matching lines in the
-input stream. We can average or sum values if they are integer or real,
-or use first or last representative samples. If non-numerical data types
-are used on the the first match is used.
