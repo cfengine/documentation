@@ -87,6 +87,21 @@ CFEngine you can do this without having to execute the `touch`, `chmod`, and
 promise) that you want CFEngine to keep and you leave the details up to the 
 tool.
 
+### Promise Attributes
+
+Promise attributes have a type and a value. The type can be any of the [datatypes][Variables#Datatypes] that are allowed for variables, and in addition
+
+* Boolean - allowed input values are
+    * `"true"`/`"false"`
+    * `"on"`/`"off"`
+    * `"yes"`/`"no"`
+
+* Menu option - one value from a list of values
+
+* [Body](manuals-language-concepts-bodies.html) - a complex set of attributes expressed in a separate, reusable block
+
+* [Bundle](manuals-language-concepts-bundle.html) - a separate bundle that is used as a sub-routine or a sub-set of promises
+
 ### Implicit Promises
 
 Some promise types can have implicit behavior. For example, the following 
