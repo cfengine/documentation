@@ -21,8 +21,7 @@ name both when it is running and not.
 Some operating systems are bundled with a lot of unused services that
 are running as default. At the same time, faulty or inherently insecure
 services are often the cause of security issues. With CFEngine, one can
-create promises stating the services that should be stopped and
-disabled.
+create promises stating the services that should be stopped and disabled.
 
 The operating system may start a service at boot time, or it can be
 started by CFEngine. Either way, CFEngine will ensure that the service
@@ -35,31 +34,25 @@ CFEngine also allows for the concept of dependencies between services,
 and can automatically start or stop these, if desired. Parameters can be
 passed to services that are started by CFEngine.
 
-  
-
 ```cf3
-bundle agent example
-{
-services:
+    bundle agent example
+    {
+    services:
 
-  "Dhcp"
-    service_policy => "start",
-    service_dependencies => { "Alerter", "W32Time" },
-    service_method => winmethod;
-}
- 
-########################################################
+      "Dhcp"
+        service_policy => "start",
+        service_dependencies => { "Alerter", "W32Time" },
+        service_method => winmethod;
+    }
 
-body service_method winmethod
-{
-  service_type => "windows";
-  service_args => "--netmask=255.255.0.0";
-  service_autostart_policy => "none";
-  service_dependence_chain => "start_parent_services";
-}
+    body service_method winmethod
+    {
+      service_type => "windows";
+      service_args => "--netmask=255.255.0.0";
+      service_autostart_policy => "none";
+      service_dependence_chain => "start_parent_services";
+    }
 ```
-
-  
 
 Services promises for Windows are only available in CFEngine Enterprise. 
 Windows Vista/Server 2008 and later introduced new complications
@@ -75,64 +68,51 @@ systems and are merely as a convenient front-end to `processes` and
 reserved agent bundle called
 
 ```cf3
-bundle agent standard_services(service,state)
-{
-...
-}
+    bundle agent standard_services(service,state)
+    {
+    ...
+    }
 ```
 
 This bundle is called with two parameters: the name of the service and a
 start/stop state variable. The CFEngine standard library defines many
 common services for standard operating systems for convenience. If no
 `service_bundle` is defined in a `service_method` body, then CFEngine
-assumes the standard\_services bundle to be the default source of action
+assumes the `standard_services` bundle to be the default source of action
 for the services. This is executed just like a `methods` promise on the
 service bundle, so this is merely a front-end.
 
 The standard bundle can be replaced with another, as follows:
 
 ```cf3
-body common control
-{
-bundlesequence => { "test" };
-}
+    bundle agent test
+    {
+    vars:
 
-#
+     "mail" slist => { "spamassassin", "postfix" };
 
-bundle agent test
-{
-vars:
+    services:
 
- "mail" slist => { "spamassassin", "postfix" };
+      "www" service_policy => "start",
+            service_method => service_test;
 
+      "$(mail)" service_policy => "stop",
+            service_method => service_test;
+    }
 
-services:
+    body service_method service_test
+    {
+      service_bundle => non_standard_services("$(this.promiser)","$(this.service_policy)");
+    }
 
-  "www" service_policy => "start",
-        service_method => service_test;
+    bundle agent non_standard_services(service,state)
+    {
+    reports:
 
+      !done::
 
-  "$(mail)" service_policy => "stop",
-        service_method => service_test;
-}
-
-#
-
-body service_method service_test
-{
-service_bundle => non_standard_services("$(this.promiser)","$(this.service_policy)");
-}
-
-#
-
-bundle agent non_standard_services(service,state)
-{
-reports:
-
-  !done::
-
-    "Test service promise for \"$(service)\" -> $(state)";
-}
+        "Test service promise for \"$(service)\" -> $(state)";
+    }
 ```
 
 Note that the special variables `$(this.promiser)` and
@@ -140,7 +120,17 @@ Note that the special variables `$(this.promiser)` and
 parameters from the promise definition. The `$(this.service_policy)`
 variable is only defined for services promises.
 
+## Attributes
+
 ### service_policy
+
+**Description**: Policy for CFEngine service status.
+
+If set to `start`, CFEngine Enterprise will keep the service in a running
+state, while `stop` means that the service is kept in a stopped state.
+`disable` implies `stop`, and ensures that the service can not be started 
+directly, but needs to be enabled somehow first (e.g. by changing file 
+permissions).
 
 **Type**: (menu option)
 
@@ -154,8 +144,6 @@ variable is only defined for services promises.
                reload
 ```
 
-**Description**: Policy for cfengine service status
-
 **Example**:
 
 ```cf3
@@ -165,21 +153,25 @@ services:
      service_policy => "disable";
 ```
 
-**Notes**:
-If set to `start`, CFEngine Enterprise will keep the service in a running
-state, while `stop` means that the service is kept in a stopped state.
-`disable` implies `stop`, and ensures that the service can not be
-started directly, but needs to be enabled somehow first (e.g. by
-changing file permissions).
-
 ### service_dependencies
+
+**Description**: A list of services on which the named service abstraction
+depends
+
+A list of services that must be running before the service can be started. 
+These dependencies can be started automatically by CFEngine Enterprise if they 
+are not running see `service_dependence_chain`. However, the dependencies will 
+never be implicitly stopped by CFEngine. Specifying dependencies is optional.
+
+Note that the operating system may keep an additional list of dependencies for 
+a given service, defined during installation of the service. CFEngine 
+Enterprise requires these dependencies to be running as well before starting 
+the service. The complete list of dependencies is thus the union of 
+`service_dependencies` and the internal operating system list.
 
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
-
-**Description**: A list of services on which the named service abstraction
-depends
 
 **Example**:
 
@@ -191,31 +183,25 @@ services:
     service_dependencies => { "network", "logging" };
 ```
 
-**Notes**:
-A list of services that must be running before the service can be
-started. These dependencies can be started automatically by CFEngine
-Enterprise if they are not running see `service_dependence_chain`. However,
-the dependencies will never be implicitly stopped by CFEngine.
-Specifying dependencies is optional.
-
-Note that the operating system may keep an additional list of
-dependencies for a given service, defined during installation of the
-service. CFEngine Enterprise requires these dependencies to be running as well
-before starting the service. The complete list of dependencies is thus
-the union of `service_dependencies` and the internal operating system
-list.
-
 ### service_method
 
 **Type**: `body service_method`
 
 #### service_args
 
+**Description**: Parameters for starting the service as command
+
+These arguments will only be passed if CFEngine Enterprise starts the service.
+Thus, set `service_autostart_policy` to `none` to ensure that the
+arguments are always passed.
+
+Escaped quotes can be used to pass an argument containing spaces as a
+single argument, e.g. `-f \"file name.conf\"`. Passing arguments is
+optional.
+
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: Parameters for starting the service as command
 
 **Example**:
 
@@ -228,28 +214,25 @@ list.
      
 ```
 
-**Notes**:
-These arguments will only be passed if CFEngine Enterprise starts the service.
-Thus, set `service_autostart_policy` to `none` to ensure that the
-arguments are always passed.
-
-Escaped quotes can be used to pass an argument containing spaces as a
-single argument, e.g. "-f \\"file name.conf\\"". Passing arguments is
-optional.   
-
 #### service_autostart_policy
+
+**Description**: Should the service be started automatically by the OS
+
+Defaults to `none`, which means that the service is not registered for
+automatic startup by the operating system in any way. It must be `none`
+if `service_policy` is not `start`. `boot_time` means the service is
+started at boot time, while `on_demand` means that the service is
+dispatched once it is being used.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    none
-                    boot_time
-                    on_demand
+    none
+    boot_time
+    on_demand
 ```
-
-**Description**: Should the service be started automatically by the OS
 
 **Example**:
 
@@ -262,15 +245,9 @@ optional.
      
 ```
 
-**Notes**:
-Defaults to `none`, which means that the service is not registered for
-automatic startup by the operating system in any way. It must be `none`
-if `service_policy` is not `start`. `boot_time` means the service is
-started at boot time, while `on_demand` means that the service is
-dispatched once it is being used.
-
-`on_demand` is not supported by Windows, and is implemented through
+**Notes**: `on_demand` is not supported by Windows, and is implemented through
 inetd or xinetd on Unix.   
+
 
 #### service_bundle
 
@@ -278,31 +255,8 @@ inetd or xinetd on Unix.
 
 #### service_dependence_chain
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-                    ignore
-                    start_parent_services
-                    stop_child_services
-                    all_related
-```
-
 **Description**: How to handle dependencies and dependent services
 
-**Example**:
-
-```cf3
-     
-     body service_method example
-     {
-       service_dependence_chain => "start_parent_services";
-     }
-     
-```
-
-**Notes**:
 The service dependencies include both the dependencies defined by the
 operating system and in `service_dependencies`, as described there.
 
@@ -324,15 +278,37 @@ Enterprise will start A, if it is not running. On the other hand, if we want
 to stop B, C needs to be stopped first. `stop_child_services` or
 `all_related` means that CFEngine Enterprise will stop C, if it is running.   
 
-`service_type
+**Type**: (menu option)
+
+**Allowed input range**:   
+
+```cf3
+    ignore
+    start_parent_services
+    stop_child_services
+    all_related
+```
+
+**Example**:
+
+```cf3
+     
+     body service_method example
+     {
+       service_dependence_chain => "start_parent_services";
+     }
+     
+```
+
+#### `service_type
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    windows
-                    generic
+    windows
+    generic
 ```
 
 **Description**: Service abstraction type
