@@ -47,25 +47,14 @@ other machine.
 
 CFEngine currently provides a convergent interface to *libvirt*.
 
--   [environment\_host in
-    guest\_environments](#environment_005fhost-in-guest_005fenvironments)
--   [environment\_interface in
-    guest\_environments](#environment_005finterface-in-guest_005fenvironments)
--   [environment\_resources in
-    guest\_environments](#environment_005fresources-in-guest_005fenvironments)
--   [environment\_state in
-    guest\_environments](#environment_005fstate-in-guest_005fenvironments)
--   [environment\_type in
-    guest\_environments](#environment_005ftype-in-guest_005fenvironments)
-
 ### environment_host
 
 **Type**: `string`
 
 **Allowed input range**: `[a-zA-Z0-9_]+`
 
-**Description**: A class indicating which physical node will execute this
-guest machine
+**Description**: `environment_host` is a class indicating which 
+physical node will execute this guest machine
 
 **Example**:
 
@@ -102,7 +91,8 @@ This attribute is required.
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The IP addresses of the environment's network interfaces
+**Description**: `env_addresses` is the IP addresses of the environment's 
+network interfaces
 
 **Example**:
 
@@ -134,7 +124,7 @@ time.
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The hostname of the virtual environment
+**Description**: `env_name` is the hostname of the virtual environment.
 
 **Example**:
 
@@ -192,7 +182,8 @@ identifier used as 'promiser' by the virtualization manager.
 
 **Allowed input range**: `0,99999999999`
 
-**Description**: Number of virtual CPUs in the environment
+**Description**: `env_cpus` represents the number of virtual CPUs 
+in the environment.
 
 **Example**:
 
@@ -219,8 +210,8 @@ This attribute conflicts with `env_spec`.
 
 **Allowed input range**: `0,99999999999`
 
-**Description**: Amount of primary storage (RAM) in the virtual environment
-(KB)
+**Description**: `env_memory` represents the amount of primary storage 
+(RAM) in the virtual environment (in KB).
 
 **Example**:
 
@@ -247,8 +238,8 @@ This attribute conflicts with `env_spec`.
 
 **Allowed input range**: `0,99999999999`
 
-**Description**: Amount of secondary storage (DISK) in the virtual
-environment (MB)
+**Description**: `env_disk` represents the amount of secondary storage 
+(DISK) in the virtual environment (in KB).
 
 **Example**:
 
@@ -274,8 +265,8 @@ This attribute conflicts with `env_spec`.
 
 **Allowed input range**: `"?(/.*)`
 
-**Description**: The path to an image with which to baseline the virtual
-environment
+**Description**: The `env_baseline` string represents a path to an 
+image with which to baseline the virtual environment.
 
 **Example**:
 
@@ -294,8 +285,11 @@ This function is for future development.
 
 **Allowed input range**: `.*`
 
-**Description**: A string containing a technology specific set of promises
-for the virtual instance
+**Description**: A `env_spec` string contains a technology specific 
+set of promises for the virtual instance.
+
+This is the preferred way to specify the resources of an environment on 
+creation; in other words, when `environment_state` is create.
 
 **Example**:
 
@@ -334,9 +328,6 @@ for the virtual instance
 ```
 
 **Notes**:  
-   
-The preferred way to specify the resources of an environment on
-creation; in other words, when `environment_state` is create.
 
 This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
@@ -356,7 +347,33 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
                down
 ```
 
-**Description**: The desired dynamical state of the specified environment
+**Description**: The `environment_state` defines the desired dynamic state
+ of the specified environment.
+ 
+The allowed states have the following convergent semantics:
+
+#####create
+
+The guest machine is allocated, installed and left in a running state.
+  
+
+#####delete
+
+The guest machine is shut down and deallocated but no files are removed.
+  
+
+#####running
+
+The guest machine is in a running state, if it previously exists.   
+
+#####suspended
+
+The guest exists in a suspended state or a shutdown state. If the guest
+is running, it is suspended; otherwise it is ignored.   
+
+#####down
+
+The guest machine is shut down, but not deallocated.
 
 **Example**:
 
@@ -374,31 +391,6 @@ guest_environments:
 
 ```
 
-**Notes**:
-The allowed states have the following convergent semantics.
-
-create
-
-The guest machine is allocated, installed and left in a running state.
-  
-
-delete
-
-The guest machine is shut down and deallocated but no files are removed.
-  
-
-running
-
-The guest machine is in a running state, if it previously exists.   
-
-suspended
-
-The guest exists in a suspended state or a shutdown state. If the guest
-is running, it is suspended; otherwise it is ignored.   
-
-down
-
-The guest machine is shut down, but not deallocated.
 
 ### environment_type
 
@@ -421,7 +413,10 @@ The guest machine is shut down, but not deallocated.
                eucalyptus
 ```
 
-**Description**: Virtual environment type
+**Description**: `environment_type` defines the virtual environment type.
+
+The currently supported types are those supported by *libvirt*. More
+will be added in the future.
 
 **Example**:
 
@@ -450,6 +445,4 @@ guest_environments:
 }
 ```
 
-**Notes**:
-The currently supported types are those supported by *libvirt*. More
-will be added in the future.
+
