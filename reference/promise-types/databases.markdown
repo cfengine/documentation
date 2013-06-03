@@ -265,7 +265,7 @@ For the knowledge agent, this setting is made in the control body. For
 database verification promises, it is made in the `database_server` body.
 
 
-#### database_type
+### database_type
 
 **Type**: (menu option)
 
