@@ -55,7 +55,7 @@ package-manager command in a very flexible way. See the
 `kept_returncodes`, `repaired_returncodes` and `failed_returncodes`
 attributes.
 
-**Domain knowledge**
+### Domain knowledge
 
 CFEngine does not maintain operating system specific expert knowledge
 internally, rather it uses a generic model for dealing with promises
@@ -69,203 +69,121 @@ promises nothing about the outcome of executing a command. All it can
 promise is to interface with it, starting it and using the results in
 good faith. Packages are basically 'outsourced', to invoke IT parlance.
 
-**Behavior**
+### Behavior
 
 A package promise consists of a name, a version and an architecture,
 *(n,v,a)*, and behavior to be promised about packages that match
 criteria based on these. The components *(n,v,a)* can be determined in
 one of two different ways:
 
--   They may be specified independently, e.g.
+* They may be specified independently, e.g.
 
-    ```cf3
-         packages:
-         
-           "mypackage"
-         
-              package_policy => "add",
-              package_method => rpm,
-              package_select => ">=",
-              package_architectures => { "x86_64", "i586" },
-              package_version => "1.2.3";
-         
-    ```
+```cf3
+     packages:
+     
+       "mypackage"
+     
+          package_policy => "add",
+          package_method => rpm,
+          package_select => ">=",
+          package_architectures => { "x86_64", "i586" },
+          package_version => "1.2.3";
+     
+```
 
--   They may be extracted from a package identifier (promiser) or
+* They may be extracted from a package identifier (promiser) or
     filename, using pattern matching. For example, a promiser
     7-Zip-4.50-x86\_64.msi and a package\_method containing the
     following:
 
-    ```cf3
-          package_name_regex => "^(\S+)-(\d+\.?)+";
-          package_version_regex => "^\S+-((\d+\.?)+)";
-          package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
-    ```
+```cf3
+      package_name_regex => "^(\S+)-(\d+\.?)+";
+      package_version_regex => "^\S+-((\d+\.?)+)";
+      package_arch_regex => "^\S+-[\d\.]+-(.*).msi";
+```
 
 When scanning a list of installed packages different managers present
 the information *(n,v,a)* in quite different forms and pattern
 extraction is necessary. When making a promise about a specific package,
 the CFEngine user may choose one or the other model.
 
-**Smart and dumb package systems**
+### Smart and dumb package systems
 
 Package managers vary enormously in their capabilities and in the kinds
 of promises they make. There are broadly two types:
 
--   Smart package systems that resolve dependencies and require only a
-    symbolic package name.
--   Dumb package managers that do not resolve dependencies and need
-    filename input.
+- Smart package systems that resolve dependencies and require only a
+  symbolic package name.
+- Dumb package managers that do not resolve dependencies and need
+  filename input.
 
 Normal ordering for packages is the following:
 
--   Delete
--   Add
--   Update
--   Patch
+- Delete
+- Add
+- Update
+- Patch
 
-**Promise repair logic**
+### Promise repair logic
 
 We can discuss package promise repair in the following table:
 
-Identified package matches version constraints
+| Identified package matches version constraints ||
+|------------------------------------------------||
+| add       | never |
+| delete    | =,=,= |
+| reinstall | =,=,= |
+| upgrade   | =,=,= |
+| patch     | =,=,= |
 
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">add</td>
-<td align="left">never <br /></td>
-</tr>
-<tr class="even">
-<td align="left">delete</td>
-<td align="left">=,=,= <br /></td>
-</tr>
-<tr class="odd">
-<td align="left">reinstall</td>
-<td align="left">=,=,= <br /></td>
-</tr>
-<tr class="even">
-<td align="left">upgrade</td>
-<td align="left">=,=,= <br /></td>
-</tr>
-<tr class="odd">
-<td align="left">patch</td>
-<td align="left">=,=,= <br /></td>
-</tr>
-</tbody>
-</table>
+| Identified package matched by name, but not version ||
+|-----------------------------------------------------||
+| Command | Dumb manager | Smart manager |
+| add | unable | Never |
+| delete | unable | Attempt deletion |
+| reinstall | unable | Attempt delete/add |
+| upgrade | unable | Upgrade if capable |
+| patch | unable | Patch if capable |
 
-Identified package matched by name, but not version
+| Package not installed ||
+|-----------------------------------------------------||
+| Command | Dumb manager | Smart manager |
+| add | Attempt to install named | Install any version |
+| delete | unable | unable |
+| reinstall | Attempt to install named | unable |
+| upgrade | unable | unable |
+| patch | unable | unable |
 
-<table>
-<thead>
-<tr class="header">
-<th align="left">Command</th>
-<th align="left">Dumb manager</th>
-<th align="left">Smart manager <br /></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">add</td>
-<td align="left">unable</td>
-<td align="left">Never <br /></td>
-</tr>
-<tr class="even">
-<td align="left">delete</td>
-<td align="left">unable</td>
-<td align="left">Attempt deletion <br /></td>
-</tr>
-<tr class="odd">
-<td align="left">reinstall</td>
-<td align="left">unable</td>
-<td align="left">Attempt delete/add <br /></td>
-</tr>
-<tr class="even">
-<td align="left">upgrade</td>
-<td align="left">unable</td>
-<td align="left">Upgrade if capable <br /></td>
-</tr>
-<tr class="odd">
-<td align="left">patch</td>
-<td align="left">unable</td>
-<td align="left">Patch if capable <br /></td>
-</tr>
-</tbody>
-</table>
-
-Package not installed
-
-<table>
-<thead>
-<tr class="header">
-<th align="left">Command</th>
-<th align="left">Dumb manager</th>
-<th align="left">Smart manager <br /></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">add</td>
-<td align="left">Attempt to install named</td>
-<td align="left">Install any version <br /></td>
-</tr>
-<tr class="even">
-<td align="left">delete</td>
-<td align="left">unable</td>
-<td align="left">unable <br /></td>
-</tr>
-<tr class="odd">
-<td align="left">reinstall</td>
-<td align="left">Attempt to install named</td>
-<td align="left">unable <br /></td>
-</tr>
-<tr class="even">
-<td align="left">upgrade</td>
-<td align="left">unable</td>
-<td align="left">unable <br /></td>
-</tr>
-<tr class="odd">
-<td align="left">patch</td>
-<td align="left">unable</td>
-<td align="left">unable <br /></td>
-</tr>
-</tbody>
-</table>
-
-  
 
 ```cf3
-bundle agent packages
-{
-vars:
+    bundle agent packages
+    {
+    vars:
 
- # Test the simplest case -- leave everything to the yum smart manager
+     # Test the simplest case -- leave everything to the yum smart manager
 
- "match_package" slist => { 
-                          "apache2", 
-                          "apache2-mod_php5",
-                          "apache2-prefork",
-                          "php5" 
-                          };
-packages:
+     "match_package" slist => { 
+                              "apache2", 
+                              "apache2-mod_php5",
+                              "apache2-prefork",
+                              "php5" 
+                              };
+    packages:
 
-  "$(match_package)"
+      "$(match_package)"
 
-     package_policy => "add",
-     package_method => yum;
+         package_policy => "add",
+         package_method => yum;
 
-}
+    }
 ```
-
-  
 
 Packages promises can be very simple if the package manager is of the
 smart variety that handles details for you. If you need to specify
 architecture and version numbers of packages, this adds some complexity,
 but the options are flexible and designed for maximal adaptability.
 
-**Patching**
+### Patching
 
 Some package systems also support the idea of 'patches'. These might be
 formally different objects to packages. A patch might contain material
@@ -294,7 +212,7 @@ are:
 -   To generate reports of available and installed patches during system
     reporting.
 
-**Installers without package/patch arguments**
+### Installers without package/patch arguments
 
 CFEngine supports the syntax \$ at the end of a command to mean that no
 package name arguments should be used or appended after the dollar sign.
@@ -303,18 +221,13 @@ require an empty list. The default behaviour is to try to append the
 name of one or more packages to the command, depending on whether the
 policy is for individual or bulk installation.
 
-**Default package method**
+### Default package method
 
 As of core 3.3.0, if no `package_method` is defined, CFEngine will look
 for a method called generic. Such a method is defined in the standard
 library for supported operating systems.
 
--   [package\_architectures in
-    packages](#package_005farchitectures-in-packages)
--   [package\_method in packages](#package_005fmethod-in-packages)
--   [package\_policy in packages](#package_005fpolicy-in-packages)
--   [package\_select in packages](#package_005fselect-in-packages)
--   [package\_version in packages](#package_005fversion-in-packages)
+## Attributes
 
 ### package_architectures
 
