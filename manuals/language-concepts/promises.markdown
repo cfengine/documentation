@@ -96,11 +96,16 @@ Promise attributes have a type and a value. The type can be any of the [datatype
     * `"on"`/`"off"`
     * `"yes"`/`"no"`
 
+* `irange[min, max]` and `rrange[min, max]` - a range of integer or real 
+  values, created via the [`irange()`]() and [`rrange()`]() functions
+
 * Menu option - one value from a list of values
 
-* [Body](manuals-language-concepts-bodies.html) - a complex set of attributes expressed in a separate, reusable block
+* [`body` *type*](manuals-language-concepts-bodies.html) - a complex set of 
+  attributes expressed in a separate, reusable block
 
-* [Bundle](manuals-language-concepts-bundle.html) - a separate bundle that is used as a sub-routine or a sub-set of promises
+* [`bundle` *type*](manuals-language-concepts-bundle.html) - a separate bundle 
+  that is used as a sub-routine or a sub-set of promises
 
 ### Implicit Promises
 
