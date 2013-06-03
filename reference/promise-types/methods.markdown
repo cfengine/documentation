@@ -29,41 +29,31 @@ Methods are useful for encapsulating repeatedly used configuration issues and
 iterating over parameters. They are implemented as bundles that are run 
 inline.
 
-  
-
 ```cf3
+    bundle agent example
+    {
+      vars:
 
-bundle agent example
-{
-vars:
+       "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
 
- "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
+      methods:
 
-methods:
+       "any" usebundle => subtest("$(userlist)");
+    }
 
- "any" usebundle => subtest("$(userlist)");
+    bundle agent subtest(user)
+    {
+      commands:
 
-}
+       "/bin/echo Fix $(user)";
 
-###########################################
+      reports:
 
-bundle agent subtest(user)
+       linux::
 
-{
-commands:
-
- "/bin/echo Fix $(user)";
-
-reports:
-
- linux::
-
-  "Finished doing stuff for $(user)";
-}
-
+        "Finished doing stuff for $(user)";
+    }
 ```
-
-  
 
 Methods offer powerful ways to encapsulate multiple issues pertaining to
 a set of parameters.
@@ -89,114 +79,97 @@ vars:
     "p" string => "myfunction";
 
 methods:
-    "set of $(m)" usebundle => $(m) ("one");
+    "set of $(m)" usebundle => $(m)("one");
     "any"         usebundle => $(p)("two");
-    
 }
 ```
 
+## Attributes
+
 ### inherit
+
+**Description**: If true this causes the sub-bundle to inherit the private
+classes of its parent
+
+Inheriting the variables is unnecessary as the child can always access the 
+parent's variables through a qualified reference using its bundle name. For 
+example: `$(bundle.variable)`.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-               true
-               false
-               yes
-               no
-               on
-               off
+    true
+    false
+    yes
+    no
+    on
+    off
 ``
-
-**Description**: If true this causes the sub-bundle to inherit the private
-classes of its parent
 
 **Default value**: false
 
 **Example**:
 
 ```cf3
-bundle agent name
-{
-methods:
+    bundle agent name
+    {
+    methods:
 
-  "group name" usebundle => my_method,
-                 inherit => "true";
-}
+      "group name" usebundle => my_method,
+                     inherit => "true";
+    }
 
 
-body edit_defaults example
-{
-inherit => "true";
-}
+    body edit_defaults example
+    {
+    inherit => "true";
+    }
 ```
 
 **History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
-The `inherit` constraint can be added to the CFEngine code in two
-places; for `edit_defaults` and in `methods` promises. If set to true,
-it causes the child-bundle named in the promise to inherit only the
-classes of the parent bundle. Inheriting the variables is unnecessary as
-the child can always access the parent's variables by a qualified
-reference using its bundle name. For example: \$(bundle.variable).
-
 ### usebundle
 
-**Type**: (ext bundle) (Separate Bundle)
+**Type**: (Separate Bundle)
 
 ### useresult
-
-**Type**: `string
-
-**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+
 
 **Description**: Specify the name of a local variable to contain any
 result/return value from the child
 
+Return values are limited to scalars.
+
+**Type**: `string`
+
+**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+
+
 **Example**:
 
 ```cf3
-body common control
-{
-bundlesequence => { "test" };
-}
+    bundle agent test
+    {
+    methods:
 
+       "any" usebundle => child,
+             useresult => "my_return_var";
 
-bundle agent test
-{
-methods:
+    reports:
+        "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\""; 
+    }
 
-   "any" usebundle => child,
-    useresult => "my_return_var";
+    bundle agent child
+    {
+    reports:
+       # Map these indices into the useresult namespace
 
+       "this is a return value"  
+          bundle_return_value_index => "1";
 
-reports:
-
-  cfengine_3::
-
-    "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\""; 
-    
-}
-
-bundle agent child
-{
-reports:
-
- cfengine_3::
-
-   # Map these indices into the useresult namespace
-
-   "this is a return value"  
-      bundle_return_value_index => "1";
-
-   "this is another return value"  
-      bundle_return_value_index => "2";
-
-}
+       "this is another return value"  
+          bundle_return_value_index => "2";
+    }
 ```
 
 **History**: Was introduced in 3.4.0 (2012)
-
-Return values are limited to scalars.
