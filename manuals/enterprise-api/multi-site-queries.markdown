@@ -7,9 +7,21 @@ alias: manuals-enterprise-api-multi-site-queries.html
 tags: [manuals, enterprise, rest, api, reporting, sql, queries, multi-site]
 ---
 
-**TODO: introduction to multi-site queries**
+### Multi-site queries
+A CFEngine site can be viewed as an independent group of machines/devices managed and maintained by CFEngine. Distribution and execution of policies and report collection happen within a site.
 
-**TODO: Simplified diagram?**
+Policy distribution is handled by the policy-server(cf-serverd). CFEngine agents (cf-agent) "pull" the policies made available by the policy-server and apply them to the clients. CFEngine's report collector (cf-hub) gathers reports from all the available agents and stores them into a centralized reporting database. These reports can then be accessed through the CFEngine Mission Portal or the CFEngine Enterprise API (introduced in v3.0). An organization can maintain multiple sites. Until CFEngine Enterprise v3.0.x, the reports collected in one site could not be easily compared/co-related with another site.
+
+In 3.5, with enhancements to the Enterprise API, querying multiple sites with a single command is possible. SQL queries can be executed on different sites transparently with multi-site query tool, thus making it is easier for users get a high level overview of their systems. The same queries that was being used to find answers about a particluar site can be used on multiple sites.
+
+eg. SELECT count(*) as total_count FROM Hosts;
+
+when executed with the multi-query tool gives the total number of hosts bootstrapped to "all" the sites.
+
+The following diagram shows an overview of how multi-query reporting tool works.
+
+![](multisite_query_simplified.png)
+
 
 ### Definition
 
@@ -18,9 +30,10 @@ tags: [manuals, enterprise, rest, api, reporting, sql, queries, multi-site]
 A python script `multidb-query.py` that distributes the queries to available 
 CFEngine Database Servers and aggregates the result.
 
-* Virtual table interface **TODO: implementation detail?**
+* Aggregated database interface
 
 Combines all the sqlite3 result files and presents an interface for the aggregator to send the aggregation query.
+This is implemented internally with the use of sqlite's ATTACH DATABASE command.
 
 * Replica detection
 
@@ -33,22 +46,78 @@ available replica set to redirect the query.
 A part of reporting engine that converts the result-set into a sqlite3 db file for transfer to the aggregator.
 **TODO: if official part of REST API, document there; otherwise, skip as implementation detail**
 
-### Use cases to be covered
+### Common use cases
 
-1. Simple query (SELECT * FROM Variables;)
+1. Simple query (SELECT * FROM Hosts;)
+
+    ```bash
+    ./multidb-query.py -u"admin" -p"admin" -H'[["192.168.0.2", "192.168.0.3", "192.168.0.4"],["192.168.0.5"],["192.168.0.6"]]' -q"SELECT * FROM Hosts;" -s"http" -c
+    HostKey									HostName	IPAddress	ReportTimeStamp	FirstReportTimeStamp
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7	192.168.0.6	192.168.0.6	1370294146	1370282434
+    0821cf714637e2446df0d445fd4a25b587df3f00bd6eb408e6a90f0bf67342e8	master		192.168.0.2	1370294127	1370281540
+    5252d3cdbcdcd61bedc0b4e49f890a54a75693848ab50f8e1276d426a5d235d5	192.168.0.5	192.168.0.5	1370294140	1370282119
+```
+
 2. Joins between multiple tables
+	
+    Find all redhat hosts
+    ```bash
+    ./multidb-query.py -u"admin" -p"admin" -s"http" -c -H'[["192.168.0.2", "192.168.0.3", "192.168.0.4"],["192.168.0.5"],["192.168.0.6"]]' -q"SELECT h.HostName AS hname, v.VariableValue AS vvalue FROM Hosts AS h INNER JOIN Variables AS v ON h.HostKey=v.HostKey where v.VariableName=\"flavour\" AND v.VariableValue REGEXP(\"redhat.*\");"	
+    hname		vvalue
+    192.168.0.6	redhat_5
+    master		redhat_5
+    192.168.0.5	redhat_5	
+```
+	Important: It is recommended for column names / table names to be aliased during JOIN queries. "SELECT *" on a JOIN query may result in errors, because different tables can have columns with the same name, eg. HostKey is common in most tables. The Enterprise API (server) will not be able to create intermediate(results) database for transfer to the client.
+
 3. Count & Aggregation queries
+
+    Count the number of redhat hosts
+```bash
+    ./multidb-query.py -u"admin" -p"admin" -s"http" -c -H'[["192.168.0.2", "192.168.0.3", "192.168.0.4"],["192.168.0.5"],["192.168.0.6"]]' -q"SELECT count(h.HostName) as redhat_hosts_count FROM Hosts AS h INNER JOIN Variables AS v ON h.HostKey=v.HostKey where v.VariableName=\"flavour\" AND v.VariableValue REGEXP(\"redhat.*\");"
+    redhat_hosts_count
+    3
+```	
 4. Sorting and Grouping
+	
+```bash
+    ./multidb-query.py -u"admin" -p"admin" -H'[["192.168.0.2", "192.168.0.3", "192.168.0.4"],["192.168.0.5"],["192.168.0.6"]]' -q"SELECT * FROM Variables ORDER BY VariableType LIMIT 4;" -s"http" -c
+    HostKey								 NameSpace	Bundle		VariableName	VariableValue	VariableType
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys	workdir	/var/cfengine	string
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys	winsysdir	/dev/null	string
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys	winprogdir86	/dev/null	string
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys	winprogdir	/dev/null	string
+```
 
 ### Interface
 
 * Input: SQL query, CFEngine Enterprise Servers with replica set defined e.g. [[cfdb1,cfdb2,cfdb3], [cfdb4,cfdb5,cfdb6]], username/password
-* Output: query result table as JSON (Note: The output is dumped on the terminal as table, JSON conversion yet to be done)
-* Error: HOST_NOT_FOUND, QUERY_FAILURE, TIMEOUT, SUCCESS (add more...)
+* Output: Query result table printed to the terminal (tab separated)
+* Errors: displayed in the format - "ERROR:[host IP]:Error message"
+* Debugging and trouble shooting: Various output levels (--info, --debug) available
 
-**TODO: proper command line documentation, including options like -i or -d**
-
-
+Command line interface:  
+  
+    optional arguments:  
+    -h, --help            show this help message and exit  
+    -d, --debug           Enable debugging output  
+    -i, --inform          Output details about the current operation. Similar to 'verbose' mode  
+    -t TIMEOUT, --timeout TIMEOUT  
+    			  Maximum time to wait for a hub to respond
+    -c, --cleanup         Remove intermediate files  
+    -e, --continue-on-error  
+			Continue on error. Reports will be generated if report collection from at least one hub is succesful  
+    -s URL_SCHEME_NAME, --url-scheme-name URL_SCHEME_NAME  
+			Url scheme name. eg. https(default), http  
+  
+    Required arguments:  
+     -u USER, --user USER  Username that has permissions to query all the hubs  
+     -p PASSWORD, --password PASSWORD  
+			Password for user  
+     -H HUBS, --hubs HUBS  2D array of hub ips. eg.  
+			"[['10.0.0.5','10.0.0.6'],['10.0.0.7']]"  
+     -q SQL, --sql SQL     SQL query string  
+  
 
 ### Limitations:
 
@@ -140,6 +209,9 @@ This means that none of the members in the replica set could be contacted.
 This is the HTTP response code received from the server. Currently only 200 
 (success) is regarded as valid
 
+Check if CFEngine enterprise api is running and responding correctly on the site.
+eg. curl admin:admin http://10.100.100.130/api
+
 #### Connection Error
 
 Connection errors can be caused due to various reasons. A stack trace is 
@@ -162,4 +234,28 @@ You can specify a different scheme name with the option:
     $ ./multidb-query.py -u"admin" -p"admin"
       -H'[["10.100.100.177"],["10.100.100.179"]]' -q"SELECT * from hosts;"
       -s"http" -i
+
+#### Invalid input IP addresses list
+The parsing of input ip addresses is a bit fragile at the moment. If you do not supply the correct JSON array, you might get an error such as the following:
+
+	ERROR 2013-05-29 14:50:02,158 Invalid hub IP addresses list. No JSON object could be decoded
+	or,
+	ERROR 2013-05-29 14:55:40,419 Invalid hub IP addresses list. Expecting , delimiter: line 1 column 8 (char 8)
+  
+Please make sure that the IP address list supplied is properly formatted.  
+
+	-H"['10.100.100.130'],['10.100.100.131']" --> incorrect, not a proper json array,
+							needs to be enclosed in an outer square brackets []
+
+	-H"[['10.100.100.130'],['10.100.100.131']]" --> incorrect,
+							notice the outer double quotes, and inner single quotes
+
+	-H'[["10.100.100.130"],["10.100.100.131"]]' --> correct  
+
+To supply replica set groups:  
+
+	-H'[["10.100.100.130", "10.100.100.132", "10.100.100.133"],["10.100.100.131", "10.100.100.135"]]'
+
+
+
 
