@@ -43,18 +43,20 @@ other machine.
             environment_host => "atlas";
 ```
 
-  
-
 CFEngine currently provides a convergent interface to *libvirt*.
 
 ### environment_host
 
+**Description**: `environment_host` is a class indicating which 
+physical node will execute this guest machine
+
+The promise will only apply to the machine with this class set. Thus,
+CFEngine must be running locally on the hypervisor for the promise to
+take effect.
+
 **Type**: `string`
 
 **Allowed input range**: `[a-zA-Z0-9_]+`
-
-**Description**: `environment_host` is a class indicating which 
-physical node will execute this guest machine
 
 **Example**:
 
@@ -71,10 +73,6 @@ guest_environments:
         environment_host => "ubuntu";
 ```
 
-**Notes**:
-The promise will only apply to the machine with this class set. Thus,
-CFEngine must be running locally on the hypervisor for the promise to
-take effect.
 
 This attribute is required.
 
@@ -87,13 +85,16 @@ This attribute is required.
 
 #### env_addresses
 
+**Description**: `env_addresses` is the IP addresses of the environment's 
+network interfaces
+
+The IP addresses of the virtual machine can be overridden here at run
+time.
+
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: `env_addresses` is the IP addresses of the environment's 
-network interfaces
-
 **Example**:
 
 ```cf3
@@ -113,18 +114,17 @@ network interfaces
      
      }
 ```
-
-**Notes**:
-The IP addresses of the virtual machine can be overridden here at run
-time.   
 
 #### env_name
 
+**Description**: `env_name` is the hostname of the virtual environment.
+
+The 'hostname' of a virtual guest may or may not be the same as the
+identifier used as 'promiser' by the virtualization manager.   
+
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: `env_name` is the hostname of the virtual environment.
 
 **Example**:
 
@@ -142,34 +142,28 @@ time.
      }
 ```
 
-**Notes**:
-The 'hostname' of a virtual guest may or may not be the same as the
-identifier used as 'promiser' by the virtualization manager.   
-
 #### env_network
+
+**Description**: The hostname of the virtual network
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The hostname of the virtual network
-
 **Example**:
 
 ```cf3
-     
-     body environment_interface vnet(primary)
-          {
-          env_name      => "$(this.promiser)";
-          env_addresses => { "$(primary)" };
-     
-          host1::
-            env_network => "default_vnet1";
-     
-          host2::
-            env_network => "default_vnet2";
-          }
-     
+    body environment_interface vnet(primary)
+    {
+    env_name      => "$(this.promiser)";
+    env_addresses => { "$(primary)" };
+
+    host1::
+      env_network => "default_vnet1";
+
+    host2::
+      env_network => "default_vnet2";
+    }
 ```
 
 ### environment_resources
@@ -178,12 +172,15 @@ identifier used as 'promiser' by the virtualization manager.
 
 #### env_cpus
 
+**Description**: `env_cpus` represents the number of virtual CPUs 
+in the environment.
+
+The maximum number of cores or processors in the physical environment
+will set a natural limit on this value.
+
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: `env_cpus` represents the number of virtual CPUs 
-in the environment.
 
 **Example**:
 
@@ -199,19 +196,19 @@ in the environment.
 ```
 
 **Notes**:
-The maximum number of cores or processors in the physical environment
-will set a natural limit on this value.
-
 This attribute conflicts with `env_spec`.   
 
 #### env_memory
 
+**Description**: `env_memory` represents the amount of primary storage 
+(RAM) in the virtual environment (in KB).
+
+The maximum amount of memory in the physical environment will set a
+natural limit on this value.
+
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: `env_memory` represents the amount of primary storage 
-(RAM) in the virtual environment (in KB).
 
 **Example**:
 
@@ -227,19 +224,18 @@ This attribute conflicts with `env_spec`.
 ```
 
 **Notes**:
-The maximum amount of memory in the physical environment will set a
-natural limit on this value.
-
 This attribute conflicts with `env_spec`.   
 
 #### env_disk
 
+**Description**: `env_disk` represents the amount of secondary storage 
+(DISK) in the virtual environment (in KB).
+
+This parameter is currently unsupported, for future extension.
+
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: `env_disk` represents the amount of secondary storage 
-(DISK) in the virtual environment (in KB).
 
 **Example**:
 
@@ -261,12 +257,12 @@ This attribute conflicts with `env_spec`.
 
 #### env_baseline
 
+**Description**: The `env_baseline` string represents a path to an 
+image with which to baseline the virtual environment.
+
 **Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
-
-**Description**: The `env_baseline` string represents a path to an 
-image with which to baseline the virtual environment.
 
 **Example**:
 
@@ -281,15 +277,15 @@ This function is for future development.
 
 #### env_spec
 
-**Type**: `string`
-
-**Allowed input range**: `.*`
-
 **Description**: A `env_spec` string contains a technology specific 
 set of promises for the virtual instance.
 
 This is the preferred way to specify the resources of an environment on 
 creation; in other words, when `environment_state` is create.
+
+**Type**: `string`
+
+**Allowed input range**: `.*`
 
 **Example**:
 
@@ -335,43 +331,31 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 ### environment_state
 
+**Description**: The `environment_state` defines the desired dynamic state
+ of the specified environment.
+ 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
-```cf3
-               create
-               delete
-               running
-               suspended
-               down
-```
-
-**Description**: The `environment_state` defines the desired dynamic state
- of the specified environment.
- 
-The allowed states have the following convergent semantics:
-
-#####create
+* `create`
 
 The guest machine is allocated, installed and left in a running state.
-  
 
-#####delete
+* `delete`
 
-The guest machine is shut down and deallocated but no files are removed.
-  
+The guest machine is shut down and deallocated, but no files are removed.
 
-#####running
+* `running`
 
 The guest machine is in a running state, if it previously exists.   
 
-#####suspended
+* `suspended`
 
 The guest exists in a suspended state or a shutdown state. If the guest
 is running, it is suspended; otherwise it is ignored.   
 
-#####down
+* `down`
 
 The guest machine is shut down, but not deallocated.
 
@@ -391,32 +375,31 @@ guest_environments:
 
 ```
 
-
 ### environment_type
+
+**Description**: `environment_type` defines the virtual environment type.
+
+The currently supported types are those supported by *libvirt*. More
+will be added in the future.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-               xen
-               kvm
-               esx
-               vbox
-               test
-               xen_net
-               kvm_net
-               esx_net
-               test_net
-               zone
-               ec2
-               eucalyptus
+    xen
+    kvm
+    esx
+    vbox
+    test
+    xen_net
+    kvm_net
+    esx_net
+    test_net
+    zone
+    ec2
+    eucalyptus
 ```
-
-**Description**: `environment_type` defines the virtual environment type.
-
-The currently supported types are those supported by *libvirt*. More
-will be added in the future.
 
 **Example**:
 
