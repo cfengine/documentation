@@ -126,19 +126,20 @@ Normal ordering for packages is the following:
 
 ### Promise repair logic
 
-We can discuss package promise repair in the following table:
-
 **Identified package matches version constraints**
 
+| Command   | Version match |
+|-----------|---------------|
 | add       | never |
-| delete    | =,=,= |
-| reinstall | =,=,= |
-| upgrade   | =,=,= |
-| patch     | =,=,= |
+| delete    | =,>=,<= |
+| reinstall | =,>=,<= |
+| upgrade   | =,>=,<= |
+| patch     | =,>=,<= |
 
 **Identified package matched by name, but not version**
 
 | Command | Dumb manager | Smart manager |
+|---------|--------------|---------------|
 | add | unable | Never |
 | delete | unable | Attempt deletion |
 | reinstall | unable | Attempt delete/add |
@@ -148,6 +149,7 @@ We can discuss package promise repair in the following table:
 **Package not installed**
 
 | Command | Dumb manager | Smart manager |
+|---------|--------------|---------------|
 | add | Attempt to install named | Install any version |
 | delete | unable | unable |
 | reinstall | Attempt to install named | unable |
