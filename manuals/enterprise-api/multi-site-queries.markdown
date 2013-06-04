@@ -64,6 +64,16 @@ A part of reporting engine that converts the result-set into a sqlite3 db file
 for transfer to the aggregator.
 **TODO: if official part of REST API, document there; otherwise, skip as implementation detail**
 
+### Installation
+
+Ubuntu 12.04 (precise):
+```bash
+sudo apt-get install gdebi-core
+sudo gdebi cfengine-multihub_1.0.0_all.deb (installs dependencies too)
+sudo apt-get install python-pip (might need to upgrade requests see Troubleshooting)
+sudo pip install requests --upgrade
+```
+
 ### Common use cases
 
 1. Simple query (SELECT * FROM Hosts;)
@@ -305,4 +315,17 @@ Correct.
 To supply replica set groups:  
 
     -H'[["10.100.100.130", "10.100.100.132", "10.100.100.133"],["10.100.100.131", "10.100.100.135"]]'
+
+#### Outdated python-requests version
+The api for python-requests has been changed v1.0.0 (https://github.com/kennethreitz/requests/blob/master/HISTORY.rst)  
+Sample errors:
+
+	AttributeError: 'Response' object has no attribute 'json'
+	AttributeError: 'Response' object has no attribute 'text'
+
+To upgrade python-requests:
+
+```bash
+sudo pip install requests --upgrade
+```
 
