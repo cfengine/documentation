@@ -488,13 +488,21 @@ CFEngine version dependencies.
 
 The sketch name.
 
+* `version`
+
+The sketch version.  Optional.
+
 * `target`
 
 The sketch install directory. Must be in the API's `repolist`.
 
+Optional; when not given, the first element of the `repolist` will be used.
+
 * `source`
 
 The sketch source repository.  Must be in the API's `recognized_sources`.
+
+Optional; when not given, every element of the `recognized_sources` will be tried.  Can be a string or an array of strings.
 
 ```
 {
@@ -502,9 +510,7 @@ The sketch source repository.  Must be in the API's `recognized_sources`.
     request: {
         install: [{
             sketch: "CFEngine::sketch_template",
-            force: true,
-            target: "~/.cfagent/inputs/sketches",
-            source: "/home/tzz/source/design-center/tools/test/../../sketches"
+            force: true
         },
         {
             sketch: "VCS::vcs_mirror",
