@@ -7,10 +7,6 @@ alias: reference-design-center-api.html
 tags: [reference, design center, sketch, cf-sketch, api]
 ---
 
-Author: Ted Zlatanov <tzz@lifelogs.com>
-
-Version: 0.0.1-1
-
 The Design Center API (DC API or just API henceforth) is a simple JSON-based
 protocol for communicating with the Design Center backend.  The backend may be
 running locally or remotely; the API makes no assumptions about the transport
@@ -110,6 +106,8 @@ response data that the API command generated.  Each command has different
 return data so the specifics are listed per command.
   
 ## API Commands
+
+**Version:** 0.0.1-1
 
 The API commands and their data responses are listed below.  Generally they 
 are exclusive of each other, and the order below is the order in which they 

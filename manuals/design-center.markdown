@@ -6,8 +6,6 @@ published: true
 alias: manuals-design-center.html
 ---
 
-# CFEngine Design Center
-
 ## A Breezy Walkthrough
 
 This walkthrough will show how a Design Center sketch can be found,
