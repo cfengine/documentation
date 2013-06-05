@@ -58,7 +58,7 @@ def addToLinkFile(file_name,output_file,cur_dir):
 
 	current_file_label = current_title.replace(" ","-")	
 	current_file_label = current_file_label.lstrip('-')
-	output_string = '['+current_file_label+']: '+cur_dir+"/"+current_file_name+' \"'+current_title+'\"'
+	output_string = '['+current_file_label+']: '+current_file_name+' \"'+current_title+'\"'
 
 	open(output_file, "a").write(output_string+"\n")
 
