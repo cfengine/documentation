@@ -30,7 +30,7 @@ CFEngine is a powerful tool, but the basic architecture is very simple:
   about changes made from all hosts
 
 The easiest way to use CFEngine is through the 
-**TODO:[Design Center](manuals-design-center.html)**,
+**[Design Center](manuals-design-center.html)**,
 which provides ready-made components that can be directly imported and used in 
 CFEngine policies. With CFEngine Enterprise you can use the Design Center UI 
 through the Mission Portal, easily installing and configuring policies across 
