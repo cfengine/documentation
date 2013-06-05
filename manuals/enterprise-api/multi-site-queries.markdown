@@ -67,11 +67,12 @@ for transfer to the aggregator.
 ### Installation
 
 Ubuntu 12.04 (precise):
-```bash
-sudo apt-get install gdebi-core
-sudo gdebi cfengine-multihub_1.0.0_all.deb (installs dependencies too)
-sudo apt-get install python-pip (might need to upgrade requests see Troubleshooting)
-sudo pip install requests --upgrade
+
+```
+    $ sudo apt-get install gdebi-core
+    $ sudo gdebi cfengine-multihub_1.0.0_all.deb (installs dependencies too)
+    $ sudo apt-get install python-pip (might need to upgrade requests see Troubleshooting)
+    $ sudo pip install requests --upgrade
 ```
 
 ### Common use cases
