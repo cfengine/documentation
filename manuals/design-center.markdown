@@ -15,12 +15,13 @@ It requires a Unix that can run Perl and, of course, CFEngine itself.
 
 ### Checkout Design Center
 
-First, we check out Design Center from Git.  Go to
-https://github.com/cfengine/design-center if you need to browse the
-source code from a web browser or look at the Design Center wiki.
+You can browse the source for examples, tools, sketches (generic
+reusable policy), or read through the Design Center wiki by browsing
+https://github.com/cfengine/design-center
 
-When you're ready to go, change to a directory that will not be
-cleaned up automatically (don't use `/tmp` for example) and run:
+After you have explored and you are ready to go, change to a directory
+that will not be cleaned up automatically (don't use `/tmp` for
+example) and run:
 
     git checkout git@github.com:cfengine/design-center.git
     
@@ -70,6 +71,12 @@ The paths you see are all relative to your home directory.  The `log`
 can be set to a file.  The `log_level` can be lowered to 1 if you want
 less noise (here we'll work with it at 4).
 
+`vardata` is where the Design Center API stores all the configuration.
+
+`runfile` describes where the Design Center API will save an
+executable policy with all the sketches you have installed and
+activated.
+
 The `repolist` is where sketches will be *installed*.
 
 The `recognized_sources` is where sketches will be *found*.  It can be
@@ -85,13 +92,13 @@ use `$DCJ` and it will expand to the filename above.
 
 From this point on, we'll refer to this command
 
-    $CHECKOUTtools/cf-sketch/cf-dc-api.pl
+    $CHECKOUT/tools/cf-sketch/cf-dc-api.pl
 
 as `$CFAPI` for brevity.
 
 You can save some typing by saying
 
-    export CFAPI=$CHECKOUTtools/cf-sketch/cf-dc-api.pl
+    export CFAPI=$CHECKOUT/tools/cf-sketch/cf-dc-api.pl
     
 at the prompt.  From that point on, all command-line interaction can
 use `$CFAPI` and it will expand to the command above.
