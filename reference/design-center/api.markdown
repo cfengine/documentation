@@ -229,8 +229,7 @@ the example below, the returned data is the contents of `sketch.json`.
                                 "documentation": true
                             },
                             "params/example.json": {
-                                "comment": "Example parameters to report on ↩ 
-                                  a few hosts connectivity."
+                                "comment": "Example parameters to report on a few hosts connectivity."
                             },
                             "main.cf": {
                                 "desc": "main file"
@@ -238,8 +237,7 @@ the example below, the returned data is the contents of `sketch.json`.
                         },
                         "interface": ["main.cf"],
                         "metadata": {
-                            "authors": ["Nick Anderson <nick@cmdln.org>", ↩ 
-                               "Ted Zlatanov <tzz@lifelogs.com>"],
+                            "authors": ["Nick Anderson <nick@cmdln.org>", "Ted Zlatanov <tzz@lifelogs.com>"],
                             "version": 1.2,
                             "name": "Utilities::ping_report",
                             "license": "MIT",
@@ -313,23 +311,7 @@ all the DC sketches.
         "data": {
             "list": {
                 "/home/tzz/.cfagent/inputs/sketches": {
-                    "Utilities::ping_report": ↩ 
-                  ["/home/tzz/.cfagent/inputs/sketches/utilities/ping_report", ↩
-                   "# Utilities::ping_report version 1.2\n\nLicense: ↩
-                   MIT\nTags: cfdc\nAuthors: Nick Anderson <nick@cmdln.org>, ↩
-                   Ted Zlatanov <tzz@lifelogs.com>\n\n## Description\nReport ↩
-                   on pingability of hosts\n\n## ↩
-                   Dependencies\nCFEngine::dclib, CFEngine::stdlib\n\n## ↩
-                   API\n### bundle: ping\n* parameter _environment_ *runenv* ↩
-                   (default: none, description: none)\n\n* parameter ↩
-                   _metadata_ *metadata* (default: none, description: ↩
-                   none)\n\n* parameter _list_ *hosts* (default: none, ↩
-                   description: none)\n\n* parameter _string_ *count* ↩
-                   (default: none, description: none)\n\n* returns _return_ ↩
-                   *reached* (default: none, description: none)\n\n* returns ↩
-                   _return_ *not_reached* (default: none, description: ↩
-                   none)\n\n\n## SAMPLE USAGE\nSee `test.cf` or the example ↩
-                   parameters provided\n\n"]
+                    "Utilities::ping_report": ["/home/tzz/.cfagent/inputs/sketches/utilities/ping_report", "# Utilities::ping_report version 1.2\n\nLicense: MIT\nTags: cfdc\nAuthors: Nick Anderson <nick@cmdln.org>, Ted Zlatanov <tzz@lifelogs.com>\n\n## Description\nReport on pingability of hosts\n\n## Dependencies\nCFEngine::dclib, CFEngine::stdlib\n\n## API\n### bundle: ping\n* parameter _environment_ *runenv* (default: none, description: none)\n\n* parameter _metadata_ *metadata* (default: none, description: none)\n\n* parameter _list_ *hosts* (default: none, description: none)\n\n* parameter _string_ *count* (default: none, description: none)\n\n* returns _return_ *reached* (default: none, description: none)\n\n* returns _return_ *not_reached* (default: none, description: none)\n\n\n## SAMPLE USAGE\nSee `test.cf` or the example parameters provided\n\n"]
                 }
             }
         },
