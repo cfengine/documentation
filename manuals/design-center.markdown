@@ -21,13 +21,13 @@ https://github.com/cfengine/design-center
 
 After you have explored and you are ready to go, change to a directory
 that will not be cleaned up automatically (don't use `/tmp` for
-example) and run:
+example; here we used `~/source`) and run:
 
-    git checkout git@github.com:cfengine/design-center.git
+    git clone git@github.com:cfengine/design-center.git
     
 or, if the Git native protocol is blocked at your site:
 
-    git checkout https://github.com/cfengine/design-center.git
+    git clone https://github.com/cfengine/design-center.git
 
 You should end up with a directory called `design-center`.  We'll call
 this directory the *CHECKOUT* directory and refer to it as
