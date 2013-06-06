@@ -86,7 +86,9 @@ Add cfe_internal_hub_vars to bundlesequence section.
 Add cfsketch_run to bundlesequence and cf-sketch-runfile.cf to inputs section.
      
 
-       * for a person who says "no", we replace update.cf with update_bins.cf and update_policy.cf
+If you've never added your custom-built promises to /var/cfengine/bin/masterfiles/failsafe.cf or /var/cfengine/masterfiles/update.cf?
+we replace update.cf with update_bins.cf and update_policy.cf:
+
       $ sed -i 's/"update.cf",/"update_bins.cf",\n                    "update_policy.cf",/g' $WORKDIR/masterfiles/promises.cf
 
        * rename goal_1 to goal_infosec
