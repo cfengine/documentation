@@ -7,7 +7,7 @@ alias: reference-components-cfhub.html
 tags: [reference, components, cf-hub, enterprise]
 ---
 
-The data aggregator of CFEngine Enterprise. **TODO: more!**
+The data aggregator of CFEngine Enterprise.
 
 `cf-hub` keeps the promises made in `common`, and is affected by
 `common` and `hub` control bodies.
