@@ -205,7 +205,7 @@ Applications::Memcached Sketch for installing, configuring, and starting memcach
 ...
 Yale::stdlib Yale standard library
 
-cf-sketch> 
+cf-sketch> quit
 ```
 
 Obviously that's easiest but you may want the expert or direct API
@@ -323,7 +323,7 @@ cf-sketch> install System::motd
 
 Sketch System::motd installed under /home/tzz/.cfagent/inputs/sketches.
 
-cf-sketch> 
+cf-sketch> quit
 ```
 
 Oh, and if you miss all that verbose output, you can still use
@@ -436,7 +436,7 @@ Activating sketch System::motd with parameters motd_params.
 ...
 DCAPI::log(DCAPI.pm:1061): Activations for sketch System::motd are now [{"params":["parameter definition from /home/tzz/source/design-center/sketches/system/motd/params/simple.json"],"environment":"cf_sketch_testing","target":"/home/tzz/.cfagent/inputs/sketches"},{"params":["motd_params"],"environment":"walkthrough","target":"/home/tzz/.cfagent/inputs/sketches","identifier":"System::motd-1"}]
 
-cf-sketch> 
+cf-sketch> quit
 ```
 
 As you can see the expert and interactive modes have completely
@@ -512,6 +512,8 @@ cf-sketch> generate
 ...
 DCAPI::log(DCAPI.pm:249): Saving runfile /home/tzz/.cfagent/inputs/api-runfile.cf
 Runfile /home/tzz/.cfagent/inputs/api-runfile.cf successfully generated.
+
+cf-sketch> quit
 ```
 
 There you go.  Run it.  Do it.
