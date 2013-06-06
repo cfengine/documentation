@@ -50,7 +50,11 @@ directory:
 
     mkdir ~/.cfagent
     cp $CHECKOUT/tools/cf-sketch/config.json ~/.cfagent/dc-api-config.json
-    
+
+(Note that there's also a `config-root.json` intended for privileged
+(root) usage.  It sets things up under `/var/cfengine` but still
+expects the checkout under `~/source/design-center`.)
+
 Now if you look at this file, you'll see that it has some JSON data:
 
 ```json
