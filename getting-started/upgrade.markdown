@@ -8,102 +8,83 @@ alias: getting-started-upgrade.html
 tags: [getting started, upgrade]
 ---
 
-Upgrading CFEngine Enterprise can be tricky, there are many dependencies on 
-the customer's policy. We have created shell script to optionally do the job 
-for you, trying to be as generic as possible to not interfere with existing 
-policy. The script is not perfect because we cannot predict all factors, such 
-as what files customers use or do not use, what kind of a directory structure 
-they have, etc.  Manual work (especially cosmetic work to the policy) should 
-be made after usage of the script. 
+###<center>This upgrade guide assumes that you are upgrading an existing CFEngine installation</center>
+###<center>of one of the following versions: 2.1.x/2.2.x/3.0.x to CFEngine 3.5.0</center>
 
-Of course, we do not want to force you to use the upgrade script. With this 
-document we go through each step so you can choose whether you want to use the 
-script, or upgrade manually by doing the same steps by yourself. Whichever 
-option you choose:
+Upgrading CFEngine Enterprise needs some planning, since there may be dependencies on 
+your existing policies and/or changes in naming convention/syntax in CFEngine itself. For this reason, it is currently a manual process. Automatic upgrade of agents is possible through the hub but again, needs careful planning and consideration before applying to a large schema.
 
-**ALWAYS TEST UPGRADE IN A TEST ENVIRONMENT PRIOR TO UPGRADING PRODUCTION 
-ENVIRONMENTS**
+Before embarking on the upgrade, you should familiarize yourself with the known issues and have a good understanding of the existing configuration of the
+hub or agents or both. As much as possible is convered in this document, taking into consideration its scope and intended audience. Other more detailed problems,
+specific to your own setup may not be covered here. It is therefore imperative that  any questions or doubts you have are directed towards your support representative.
 
-If you have any questions, please do not hesitate to contact your sales 
+Please do not hesitate to contact your sales 
 representative, or our support engineers through the [support 
-channel](https://cfengine.com/otrs/customer.pl)
+system](https://cfengine.zendesk.com/home)
 
-THE UPGRADE SCRIPT IS AVAILABLE AT 
-https://cfengine.com/software/?dir=Enterprise-3.0.0/.upgrade_script
-or in the document listing for CFEngine Enterprise Free 25.
 
-## Upgrade procedure for the Hub
+**<center>ALWAYS TEST UPGRADE IN A TEST ENVIRONMENT PRIOR TO UPGRADING PRODUCTION 
+ENVIRONMENTS</center>**
 
-This is the upgrade script, step by step, and also applicable to manual 
-upgrades (but you do not need to do all of the following steps)
+
+
 
 ### Prerequisites
 
-* CFEngine 3 Enterprise HUB version 2.1.x/2.2.x
+* CFEngine 3 Enterprise HUB version 2.1.x/2.2.x/3.0.x
 * Linux shell
 
-***** WARNING *****
-STANDARD LIBRARY: The script will upgrade cfengine_stdlib.cf automatically. If 
-you have added your own bodies to the file, they will be overwritten. Also, 
-CFEngine Nova 2.0.x clients will fail to execute the new standard library. If 
-you use the script, we suggest backing up your old cfengine_stdlib.cf and 
-copying it over the one installed by the script.
-*** END WARNING ***
+**Making a Backup of Important CFEngine Files Before you Start**
 
-* Do not panic if the script fails. Please see how to rollback your 
-  configuration in "THERE IS SOMETHING WRONG. HOW CAN I ROOLBACK MY BINARY 
-  VERSION AND CONFIGURATION?"
+Backup /var/cfengine/masterfiles to /var/cfengine/masterfiles_$(date) using
+the following command:
 
-* backup /var/cfengine/masterfiles to /var/cfengine/masterfiles_$(date)
+<code>
   $ cp -r $WORKDIR/masterfiles $WORKDIR/masterfiles_$(date +%T_%F)
+</code>
 
-* upgrade cfengine-nova and cfengine-nova-expansion packages
-  Redhat/SuSE
-  $ rpm -Uvh $2/cfengine-nova*$1*.rpm
-  Debian
-  $ dpkg --install $2/cfengine-nova_*$1*.deb $2/cfengine-nova-*$1*.deb
 
 * move/copy/update some files to the new policy framework (for more details 
   about the new framework, see 3.0.0-Release_Notes_CFEngine_3_Enterprise.txt)
-
-    *
+ 
 * update /var/cfengine/bin/cf-twin to the latest version
   $ cp -vf $WORKDIR/bin/cf-agent $WORKDIR/bin/cf-twin
 
 * remove MongoDB lock file
   $ rm -f $WORKDIR/state/mongod.lock
 
-* reset webroot directory to avoid confilct on 3.0.0
-  $ rm -rf $DOCROOT/*
+**NB: This section can be skipped if you are upgrading from 3.0.x to 3.5**
 
-* edit /var/cfengine/masterfiles/promises.cf
-    * add cfe_internal/ to path of all CFE_ prefixed files  (the new default 
-      location of CFE_ prefixed files is now  
-      `/var/cfengine/masterfiles/cfe_internal`)
+As part of the process from 2.x to 3, more structure was introduced to the 
+cfengine working directory, such that CFE_prefixed files were moved into a new 
+subdirectory `/var/cfengine/masterfiles/cfe_internal`
+It's therefore necessary to make some edits to your 
+`/var/cfengine/masterfiles/promises.cf` by adding cfe_internal/ to the path of all CFE_ prefixed files.
 
-      $ sed -i 's/"CFE_knowledge.cf",/"cfe_internal\/CFE_knowledge.cf",/g' $WORKDIR/masterfiles/promises.cf
-      $ sed -i 's/"CFE_hub_specific.cf",/"cfe_internal\/CFE_hub_specific.cf",/g' $WORKDIR/masterfiles/promises.cf
-      $ sed -i 's/"CFE_cfengine.cf",/"cfe_internal\/CFE_cfengine.cf",/g' $WORKDIR/masterfiles/promises.cf
+For example, in the old form, you might find:
 
-     * add cfe_internal/example_use_goals.cf to inputs.
+`CFE_knowledge.cf`
 
-      $ sed -i 's/"cfe_internal\/CFE_knowledge.cf",/"cfe_internal\/CFE_knowledge.cf",\n                    "cfe_internal\/example_use_goals.cf",/g' $WORKDIR/masterfiles/promises.cf
+the new form for 3.x would be:
 
-     * add libraries/ to path of cfengine_stdlib.cf (the new default location of cfengine_stdlib.cf is now /var/cfengine/masterfiles/libraries)
-    $ sed -i 's/"cfengine_stdlib.cf",/"libraries\/cfengine_stdlib.cf",/g' $WORKDIR/masterfiles/promises.cf
+`cfe_internal/CFE_knowledge.cf`
 
-    * add services/ to path of file_change.cf (we group services together in a directory to avoid ending up cluttering the content of masterfiles when there are many service policies)
-      $ sed -i 's/"file_change.cf",/"services\/file_change.cf",/g' $WORKDIR/masterfiles/promises.cf
+A list of files that this applies to is:
 
-       * rename cfengine_management to cfe_internal_management
-      $ sed -i 's/cfengine_management/cfe_internal_management/g' $WORKDIR/masterfiles/promises.cf
+CFE_knowledge.cf
+CFE_hub_specific.cf
+CFE_cfengine.cf 
 
-       * add cfe_internal_hub_vars to bundlesequence
-      $ sed -i 's/"def",/"def",\n                    "cfe_internal_hub_vars",/g' $WORKDIR/masterfiles/promises.cf
+Add cfe_internal/example_use_goals.cf to inputs section in '$WORKDIR/masterfiles/promises.cf.'
 
-       * add cfsketch_run to bundlesequence and cf-sketch-runfile.cf to inputs
-      $ sed -i 's/"cfe_internal_hub_vars",/"cfe_internal_hub_vars",\n                    "cfsketch_run",/g' $WORKDIR/masterfiles/promises.cf
-      $ sed -i 's/"libraries\/cfengine_stdlib.cf",/"libraries\/cfengine_stdlib.cf",\n                    "cf-sketch-runfile.cf",/g' $WORKDIR/masterfiles/promises.cf
+Ensure that libraries/ is added as a prefix to any reference to cfengine_stdlib.cf.
+
+Add services/ to path of file_change.cf (we group services together in a directory to avoid ending up cluttering the content of masterfiles when there are many service policies)
+     
+Add cfe_internal_hub_vars to bundlesequence section.
+    
+Add cfsketch_run to bundlesequence and cf-sketch-runfile.cf to inputs section.
+     
 
        * for a person who says "no", we replace update.cf with update_bins.cf and update_policy.cf
       $ sed -i 's/"update.cf",/"update_bins.cf",\n                    "update_policy.cf",/g' $WORKDIR/masterfiles/promises.cf
@@ -129,11 +110,10 @@ copying it over the one installed by the script.
       $ sed -i '/depends_on/d' $WORKDIR/masterfiles/services/file_change.cf
       $ sed -i '/depends_on/d' $WORKDIR/masterfiles/update.cf
 
-## Once the script is done...
+## Once the edits are done...
 
- * If you answered "no" to "Have you ever added your custom-built promises to /var/cfengine/bin/masterfiles/failsafe.cf or /var/cfengine/masterfiles/update.cf?":
 
-    * Even if you anwered "no" to the question, please make sure your policy is correct by verifying the resultant policy files.
+* please make sure your policy is correct by verifying the resultant policy files.
 
     * verify for syntax errors
       $ /var/cfengine/bin/cf-promises -f /var/cfengine/masterfiles/failsafe.cf
@@ -146,7 +126,7 @@ copying it over the one installed by the script.
 
     * You should keep all control bodies (body agent/executor/server/hub/reporter/monitor/runagent control) and server access_rule() bundle to at least have some suggested attributes
 
- * If you answered "yes" to "Have you ever added your custom-built promises to /var/cfengine/bin/masterfiles/failsafe.cf or /var/cfengine/masterfiles/update.cf?":
+ * If you have ever added your custom-built promises to /var/cfengine/bin/masterfiles/failsafe.cf or /var/cfengine/masterfiles/update.cf?":
 
     * you should synchronize the contents in failsafe.cf and update.cf manually. 
 
@@ -174,8 +154,8 @@ copying it over the one installed by the script.
 
  * remove /var/cfengine/masterfiles and /var/cfengine/inputs directories
  * rename /var/cfengine/masterfiles_$(date) to /var/cfengine/masterfiles
- * remove your current 3.0.0 cfengine-nova and cfengine-nova-expansion packages
- * reinstall your previous cfengine-nova and cfengien-nova-expansion packages
+ * remove the 3.5.0 cfengine-nova-hub package
+ * reinstall your previous cfengine packages
  * rebootstrap the HUB. MP should be up and running in less than 10 minutes
 
 
@@ -195,3 +175,35 @@ For Windows systems copy/overwrite the content of `C:\Program Files\Cfengine\bin
 ### Automatic
 
 On the hub, copy the client cfengine-nova packages to the operating system specific distribution directories in `/var/cfengine/master_software_updates` and CFEngine 3 Enterprise will take care of the rest.
+
+#Known Issues
+
+Policy file parser is stricter in CFEngine 3.5.0 . The parser is now fully compliant with the CFEngine [language syntax reference](https://cfengine.com/tmp_docs/manuals-language-concepts.html) The main difference you will encounter is that promiser/promisee no longer allows a comma at the end of the line. This will cause your existing policies to produce errors when they are read by CFEngine 3.5.0. 
+
+An example of what you might see as a result of this issue can be found below:
+
+```cf3
+/var/cfengine/inputs/CFE_hub_specific.cf:621:28: error: syntax error
+Q: ".../cf-execd"":    "/usr/sbin/a2enmod php5",
+Q: ".../cf-execd"":                            ^
+Q: ".../cf-execd"": /var/cfengine/inputs/CFE_hub_specific.cf:621:28: error: Expected attribute, got ','
+Q: ".../cf-execd"":    "/usr/sbin/a2enmod php5",
+Q: ".../cf-execd"":                            ^
+```
+
+This can be remedied by editing the policy and removing the comma at the end of the appropriate promiser/promisee line.
+
+###Agent package upgrade through the hub from v2.2.3
+Please note that although it is possible to upgrade agents through the hub, for Debian format (.deb) packages (both x86_64 and i386) it is necessary to edit your update.cf on each agent before proceeding. The reason for this is that the naming convention used in 2.2.3 is at odds with the one that has since been adopted by CFEngine and in the wider community. As a result, the update.cf script in v2.2.3 clients expects i686 (hard coded) and x86_64 for the architecture part in the package name. So package upgrade will only work for .deb packages if the package is renamed before it is copied into the relevant architecture subdirectory under /var/cfengine/master_software_updates. For example, if your upgrade package is named like this:
+
+cfengine-nova_3.5.0XXXX_amd64.deb or cfengine-nova_3.5.0XXXX_i386.deb
+
+you should rename them so they look like this:
+
+cfengine-nova_3.5.0XXXX_x86_64.deb or cfengine-nova_3.5.0XXXX_i686.deb
+
+ *before* copying them into 
+
+/var/cfengine/master_software_updates/<arch subdirectory> on the hub
+
+
