@@ -222,18 +222,17 @@ The `force` parameter tells the Design Center API to overwrite the
 sketch even if it's installed already.
 
 Output:
-```
-DCAPI::log3(DCAPI.pm:173): Successfully loaded vardata file /home/tzz/.cfagent/vardata.conf
-...
-DCAPI::log(DCAPI.pm:576): Installing sketch: {"source":["~/source/design-center/sketches"],"target":"~/.cfagent/inputs/sketches","sketch":"System::motd","force":true}
-DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/README.md to /home/tzz/.cfagent/inputs/sketches/system/motd/README.md
-DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/main.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/main.cf
-DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_squeeze.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_squeeze.json
-DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_wheezy.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_wheezy.json
-DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/example.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/example.json
-DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/simple.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/simple.json
-DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/test.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/test.cf
-```
+
+    DCAPI::log3(DCAPI.pm:173): Successfully loaded vardata file /home/tzz/.cfagent/vardata.conf
+    ...
+    DCAPI::log(DCAPI.pm:576): Installing sketch: {"source":["~/source/design-center/sketches"],"target":"~/.cfagent/inputs/sketches","sketch":"System::motd","force":true}
+    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/README.md to /home/tzz/.cfagent/inputs/sketches/system/motd/README.md
+    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/main.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/main.cf
+    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_squeeze.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_squeeze.json
+    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_wheezy.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_wheezy.json
+    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/example.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/example.json
+    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/simple.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/simple.json
+    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/test.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/test.cf
 
 After lots of fireworks (again, remember to drop down to `log_level` 1 or 0 if you want to skip all these messages) the sketch is installed!
 
