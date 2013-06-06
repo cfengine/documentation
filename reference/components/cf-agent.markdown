@@ -26,8 +26,8 @@ affected by `common` and `agent` control bodies.
     '--define'
        (-D value) - Define a list of comma separated classes to be defined 
        at the start of execution
-    '--diagnostic'
-       (-x) - Activate internal diagnostics (developers only)
+    '--self-diagnostic'
+       (-x) - Run checks to diagnose a CFEngine agent installation
     '--dry-run'
        (-n) - All talk and no action mode - make no changes, only inform 
        of promises not kept
