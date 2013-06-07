@@ -156,7 +156,7 @@ classes:
 }
 ```
 
-**NOTES**:
+**Notes**:
 
 This feature can be used to avoid recomputing expensive classes calculations 
 on each invocation. This is useful if a class discovered is essentially 
