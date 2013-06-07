@@ -4,7 +4,7 @@ title: insert_tree
 categories: [Reference, Promise Types, files, edit_xml, insert_tree]
 published: true
 alias: reference-promise-types-files-edit_xml-insert_tree.html
-tags: [reference, bundles, agent,insert_tree, edit_xml, xml, files promises]
+tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing, insert_tree]
 ---
   
 This promise is part of the XML-editing model. It assures that a

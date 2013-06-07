@@ -4,7 +4,7 @@ title: set_attribute
 categories: [Reference, Promise Types, files, edit_xml, set_attribute]
 published: true
 alias: reference-promise-types-files-edit_xml-set_attribute.html
-tags: [reference, bundles, agent, set_attribute, edit_xml, xml, files_promises, promises]
+tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing, set_attribute]
 ---
 
 This promise is part of the XML-editing model. It assures that an
@@ -31,6 +31,8 @@ attribute to be set.
 Note that typically only a single attribute, within a single selected
 node, is set in each `set_attribute` promise. You may of course have
 multiple promises that each set an attribute.
+
+***
 
 ## Attributes
 

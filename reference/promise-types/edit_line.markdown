@@ -1,10 +1,10 @@
 ---
 layout: default
-title: edit_line promises
+title: bundle edit_line
 categories: [Reference, Promise Types, files, edit_line]
 published: true
 alias: reference-promise-types-files-edit-line.html
-tags: [reference, bundles, agent, edit_line, edit_line promises, files promises]
+tags: [reference, bundle agent, bundle edit_line, files promises, file editing]
 ---
 
 Line based editing is a simple model for editing files. Before XML, and
@@ -12,7 +12,7 @@ later JSON, most configuration files were line based. The line-based
 editing offers a powerful environment for model-based editing and
 templating.
 
-**File editing in CFEngine 3**
+### File editing in CFEngine 3
 
 File editing is not just a single kind of promise but a whole range of
 'promises within files'. It is therefore not merely a body to a single

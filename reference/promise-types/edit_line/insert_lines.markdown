@@ -4,7 +4,7 @@ title: insert_lines
 categories: [Reference, Promise Types, files, edit_line, insert_lines]
 published: true
 alias: reference-promise-types-files-edit_line-insert_-_lines.html
-tags: [Reference, bundles, agent, insert_lines, edit_line, files promises]
+tags: [reference, bundle agent, bundle edit_line, files promises, file editing, insert_lines]
 ---
 
 This promise is part of the line-editing model. It inserts lines into

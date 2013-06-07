@@ -4,10 +4,8 @@ title: access
 categories: [Reference, Promise Types, access]
 published: true
 alias: reference-promise-types-access.html
-tags: [reference, bundles, server, cf-serverd, access, server, promise types, acl, trust, encryption]
+tags: [reference, bundle server, cf-serverd, access, server, promise types, acl, trust, encryption]
 ---
-
-### in bundle server
 
 Access promises are conditional promises made by the server about file
 objects. The promise has two consequences. For file copy requests, the
@@ -120,6 +118,9 @@ body report_data_select report_filter
 Entries may be literal addresses of IPv4 or IPv6, or any name registered
 in the POSIX `gethostbyname` service.
 
+****
+
+## Attributes
 
 ### admit
 

@@ -4,7 +4,7 @@ title: delete_lines
 categories: [Reference, Promise Types, files, edit_line, delete_lines]
 published: true
 alias: reference-promise-types-files-edit_line-delete_lines.html
-tags: [reference, bundles, agent, delete_lines, edit_line, files promises]
+tags: [reference, bundle agent, bundle edit_line, files promises, file editing, delete_lines]
 ---
 
 This promise assures that certain lines exactly matching regular
@@ -37,6 +37,10 @@ If the promiser contains multiple lines, then CFEngine assumes that all
 of the lines must exist as a contiguous block in order to be deletes.
 This gives preserve\_block semantics to any multiline `delete_lines`
 promise.
+
+***
+
+## Attributes
 
 ### delete_select
 

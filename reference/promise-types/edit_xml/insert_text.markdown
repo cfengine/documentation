@@ -4,7 +4,7 @@ title: insert_text
 categories: [Reference, Promise Types, files, edit_xml, insert_text]
 published: true
 alias: reference-promise-types-files-edit-xml-insert-text.html
-tags: [reference, bundles, agent, insert_text, edit_xml, xml, files promises]
+tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing, insert_text]
 ---
 
 This promise is part of the XML-editing model. It assures that a value

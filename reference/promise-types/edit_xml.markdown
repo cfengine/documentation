@@ -1,16 +1,18 @@
 ---
 layout: default
-title: edit_xml
+title: bundle edit_xml
 categories: [Reference, Promise Types, files, edit_xml]
 published: true
 alias: reference-promise-types-edit-xml-promises.html
-tags: [reference, bundles, agent, edit_xml, xml, edit_xml promises, files promises]
+tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing]
 ---
 
 The use of XML documents in systems configuration is widespread. XML
 documents represent data that is complex and can be structured in
 various ways. The XML based editing offers a powerful environment for
 editing hierarchical and structured XML datasets.
+
+***
 
 ## Attributes
 

@@ -4,7 +4,7 @@ title: delete_attribute
 categories: [Reference, Promise Types, files, edit_xml, delete_attribute]
 published: true
 alias: reference-promise-types-files-edit_xml-delete_attribute.html
-tags: [reference, bundles, agent, delete_attribute, edit_xml, xml, files promises, promises]
+tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing, delete_attribute]
 ---
 
 This promise is part of the XML-editing model. It assures that an

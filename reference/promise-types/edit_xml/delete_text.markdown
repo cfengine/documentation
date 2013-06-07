@@ -4,7 +4,7 @@ title: delete_text
 categories: [Reference, Promise Types, files, edit_xml, delete_text]
 published: true
 alias: reference-promise-types-files-edit-xml-delete-text.html
-tags: [reference, bundles, agent, delete_text, edit_xml, xml, files promises, promises]
+tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing, delete_text]
 ---
 
 This promise is part of the XML-editing model. It assures that a value

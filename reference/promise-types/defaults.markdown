@@ -4,7 +4,7 @@ title: defaults
 categories: [Reference, Promise Types, defaults]
 published: true
 alias: reference-promise-types-defaults.html
-tags: [reference, bundles, common, defaults, promises]
+tags: [reference, bundle common, defaults, promises]
 ---
 
 Defaults promises are related to 
@@ -95,6 +95,10 @@ reports:
      "The value of no_return is $(no_return)";
 }
 ```
+
+***
+
+## Attributes
 
 ### if_match_regex
 

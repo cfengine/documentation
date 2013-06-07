@@ -4,7 +4,7 @@ title: replace_patterns
 categories: [Reference, Promise Types, files, edit_line, replace_patterns]
 published: true
 alias: reference-promise-types-files-edit_line-replace_patterns.html
-tags: [reference, bundles, agent, replace_patterns, edit_line, files promises]
+tags: [reference, bundle agent, bundle edit_line, files promises, file editing]
 ---
 
 This promise refers to arbitrary text patterns in a file. The pattern is

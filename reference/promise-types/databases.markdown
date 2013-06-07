@@ -4,7 +4,7 @@ title: databases
 categories: [Reference, Promise Types, databases]
 published: true
 alias: reference-promise-types-databases.html
-tags: [Reference, Bundles, agent, databases, promises, promise types]
+tags: [Reference, bundle agent, databases, promises, promise types]
 ---
 
 CFEngine can interact with commonly used database servers to keep
@@ -144,6 +144,10 @@ that looks like a file-system. This is the normal structure within the
 Windows registry for instance. Entity-relation databases do not normally
 present tables in this way, but no harm is done in representing them as
 a hierarchy of depth 1.
+
+***
+
+## Attributes
 
 ### database_server
 

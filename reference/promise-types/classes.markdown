@@ -4,7 +4,7 @@ title: classes
 categories: [Reference, Promise Types, classes]
 published: true
 alias: reference-promise-types-classes.html
-tags: [bundles, common, classes, promises]
+tags: [bundle common, classes, promises]
 ---
 
 [Classes](manuals-language-concepts-classes.html) promises may be made in any 
@@ -23,6 +23,10 @@ Note: The term class and context are sometimes used interchangeably.
       "client_network" expression => iprange("128.39.89.0/24");
     }
 ```
+
+***
+
+## Attributes
 
 ### and
 

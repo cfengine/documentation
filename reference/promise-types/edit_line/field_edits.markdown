@@ -4,7 +4,7 @@ title: field_edits
 categories: [Reference, Promise Types, files, edit_line, field_edits]
 published: true
 alias: reference-promise-types-files-edit_line-field_edits.html
-tags: [reference, bundles, agent, field_edits, edit_line, files promises]
+tags: [reference, bundle agent, bundle edit_line, files promises, file editing, field_edits]
 ---
 
 Certain types of text files are tabular in nature, with field separators (e.g. 
@@ -93,6 +93,9 @@ Then a `field_edits` body describes the separators for fields and
 one level of sub-fields, along with policies for editing these fields, 
 ordering the items within them.
 
+***
+
+## Attributes
 
 ### edit_field
 
