@@ -47,11 +47,8 @@ if you have any questions regarding these numbers.
 
 The CFEngine Enterprise server hosts the Mission Portal through Apache, so make sure that port 80 is open.
 
-A working package manager is required on the hub/policy server to install an 
-Apache Web Server, php module, etc. All of these dependencies are included in 
-the CFEngine Enterprise package. To avoid potential interference with 
-the installation process, start from a blank system (i.e. with none of these 
-components installed) 
+To avoid potential interference with the installation process, start from a blank system (i.e. no Apache Web
+Server, no MongoDB, etc).
 
 Requirements specific to MongoDB:
 
@@ -115,8 +112,8 @@ package) with the following names:
 * RPM Package: `cfengine-nova-3.5.0-XXXX.i386.rpm` or 
 `cfengine-nova-3.5.0-XXXX.x86_64.rpm`
 
-* Debian Package: `cfengine-nova_3.5.0XXXX_amd64.deb` or 
-`cfengine-nova_3.5.0XXXX_i386.deb`
+* Debian Package: `cfengine-nova_3.5.0XXXX_i386.deb` or 
+`cfengine-nova_3.5.0XXXX_amd64.deb`
 
 
 Follow these steps to install CFEngine:
@@ -143,7 +140,7 @@ the client packages to each of the other hosts.
     [Debian/Ubuntu]      $ dpkg -i <agent package>.deb
 ```
 
-4. Bootstrap the machines to the hub (starting with bootstrapping the hub to itself. NOTE: please see AUTO-BOOTSTRAP INSTRUCTIONS for an alternative to this step):
+4. Bootstrap the machines to the hub (starting with bootstrapping the hub to itself. NOTE: For host machines please see AUTO-BOOTSTRAP INSTRUCTIONS for an alternative to this step, the hub machine cannot be auto-bootstrapped):
 
 ```
      $ /var/cfengine/bin/cf-agent --bootstrap <IP ADDRESS OF HUB>
