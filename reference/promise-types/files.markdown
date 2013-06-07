@@ -4,35 +4,33 @@ title: files
 categories: [Reference, Promise Types,files]
 published: true
 alias: reference-promise-types-files.html
-tags: [reference, bundles, agent, files, promises, files promises, promise types]
+tags: [reference, bundle agent, files, promises, files promises, promise types]
 ---
 
 Files promises are an umbrella for attributes of files. Operations fall
 basically into three categories: create, delete and edit.
 
 ```cf3
-     
-      files:
-     
-        "/path/file_object"
-     
-            perms = perms_body,
-            ... ;
-     
+    files:
+
+      "/path/file_object"
+
+          perms = perms_body,
+          ... ;
 ```
 
 Prior to version 3, file promises were scattered into many different
 types, including `files`, `tidy`, `copy`, and `links`. File handling in
 CFEngine 3 uses regular expressions everywhere for pattern matching. The
-old 'wildcard/globbing' expressions \* and ? are deprecated, and
+old 'wildcard/globbing' expressions `\*` and `?` are deprecated, and
 everything is based consistently on Perl Compatible Regular Expressions.
 
 There is a natural ordering in file processing that obviates the need
-for the actionsequence. For example, the trick of using multiple
-actionsequence items with different classes.
+for the `actionsequence`. For example, the trick of using multiple
+`actionsequence` items with different classes.
 
 ```cf3
- actionsequence = ( ... files.one  ..  files.two )
+    actionsequence = ( ... files.one  ..  files.two )
 ```
 
 can now be handled more elegantly using bundles. The natural ordering
@@ -41,7 +39,7 @@ operations do not make sense in reverse order. For example, editing a
 file and then copying onto it would be nonsense. Similarly, you cannot
 both remove a file and rename it.
 
-**File copying**
+### File copying
 
 Copying is 'backwards'. Instead of the default object being source and the
 option being the destination, in CFEngine 3 the destination is paramount
@@ -50,7 +48,7 @@ cooperation tells us that it is the object that is changed, which is the
 agent making the promise. One cannot force change onto a destination
 with CFEngine, one can only invite change from a source.
 
-**Normal ordering of promise attributes**
+### Normal ordering of promise attributes
 
 CFEngine has no 'action sequence'. Ordering of operations
 has, in most cases, a natural ordering that is assumed by the agent. For
@@ -61,8 +59,6 @@ to deal with all aspects of file promises.
 The diagram below shows the ordering. Notice that the same ordering
 applies regardless of file type (plain-file or directory). Note also
 that file editing is done "atomically".
-
-See: 'File editing in CFEngine 3'
 
 ![The normal ordering of file operators in CFEngine 3](filelogic.png)
 
@@ -110,34 +106,34 @@ The pseudo-code for this logic is shown in the diagram and below:
    }
 ```
 
-**Depth searches (aka 'recursion') during searches**
+### Depth searches (aka 'recursion') during searches
 
 Recursion is called "depth-search", and CFEngine uses the 'globbing' symbols 
 with standard regular expressions:
 
     /one/.*/two/thr.*/four
 
-Note: When searching for hidden files (files with names starting with a
+When searching for hidden files (files with names starting with a
 '.') or files with specific extensions, you should take care to escape
 the dot (e.g., `\.cshrc` or `.*\.txt`) when you wish it to mean a
 literal character and not the any character interpretation provided by
 regular expression interpretation.
 
-Note: When doing a recursive search, the files '.' and '..' are never
+When doing a recursive search, the files '.' and '..' are never
 included in the matched files, even if the regular expression in the
-leaf\_name specifically allows them.
+`leaf_name` specifically allows them.
 
-Note: The filename /dir/ect/ory/. is a special case used with the create
-attribute to indicate the directory named /dir/ect/ory and not any of
+The filename `/dir/ect/ory/.` is a special case used with the `create`
+attribute to indicate the directory named `/dir/ect/ory` and not any of
 the files under it. If you really want to specify a regular expression
-that matches any single-character filename, use /dir/ect/ory/[\\w\\W] as
-your promise regular expression (you can't use /dir/ect/ory[\^/], see
+that matches any single-character filename, use `/dir/ect/ory/[\w\W]` as
+your promise regular expression (you can't use `/dir/ect/ory[^/]`, see
 below for an explanation.
 
 Depth search refers to a search for file objects that starts from the
 one or more matched base-paths as shown in the example above.
 
-**Filenames and regular expressions**
+### Filenames and regular expressions
 
 CFEngine allows regular expressions within filenames, but only after
 first doing some sanity checking to prevent some readily avoidable
@@ -148,35 +144,32 @@ between the directory separators. In other words, CFEngine splits up any
 file paths into its component parts, and then it evaluates any regular
 expressions at a component-level.
 
-See: [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions).
-
-What this means is that the path /tmp/gar.\* will only match filenames
-like /tmp/gar, /tmp/garbage and /tmp/garden. It will *not* match
-filename like /tmp/gar/baz; because even though the .\* in a regular
+What this means is that the path `/tmp/gar.*` will only match filenames
+like `/tmp/gar`, `/tmp/garbage` and `/tmp/garden`. It will *not* match
+filename like `/tmp/gar/baz`; because even though the `.*` in a regular
 expression means "zero or more of any character", CFEngine restricts
 that to mean "zero or more of any character *in a path component*".
 
-Correspondingly, CFEngine also restricts where you can use the /
+Correspondingly, CFEngine also restricts where you can use the `/`
 character. For example, you cannot use it in a character class like
-[\^/] or in a parenthesized or repeated regular expression component.
+`[^/]` or in a parenthesized or repeated regular expression component.
 
 This means that regular expressions that include "optional directory
 components" will not work. You cannot have a files promise to tidy the
-directory (/usr)?/tmp. Instead, you need to be more verbose and specify
-/usr/tmp|/tmp. Potentially more efficient would be a declarative
-approach. First, create an *slist* that contains both the strings /tmp
-and /usr/tmp; and then allow CFEngine to iterate over the list.
+directory `(/usr)?/tmp`. Instead, you need to be more verbose and specify
+`/usr/tmp|/tmp`. Potentially more efficient would be a declarative
+approach. First, create an `slist` that contains both the strings `/tmp`
+and `/usr/tmp` and then allow CFEngine to iterate over the list.
 
-This also means that the path /tmp/.\*/something will match files such
-as /tmp/abc/something or /tmp/xyzzy/something. However, even though the
-pattern .\* means "zero or more of any character (except /)", CFEngine
+This also means that the path `/tmp/.*/something` will match files such
+as `/tmp/abc/something` or `/tmp/xyzzy/something`. However, even though the
+pattern `.*` means "zero or more of any character (except /)", CFEngine
 matches files bounded by directory separators. So even though the
-pathname /tmp//something is technically the same as the pathname
-/tmp/something, the regular expression /tmp/.\*/something will *not*
-match on the case of /tmp//something (or /tmp/something).
+pathname `/tmp//something` is technically the same as the pathname
+`/tmp/something`, the regular expression `/tmp/.*/something` will *not*
+match on the case of `/tmp//something` (or `/tmp/something`).
 
-**Promises involving regular expressions**
+### Promises involving regular expressions
 
 CFEngine can only keep (or repair, or fail to keep) a promise on files
 which actually exist. If you make a promise based on a wildcard match,
@@ -184,55 +177,75 @@ then the promise is only ever attempted if the match succeeds. However,
 if you make a promise containing a recursive search that includes a
 wildcard match, then the promise can be kept or repaired, provided that
 the directory specified in the promise exists. Consider the following
-two examples, which assumethat there first exist files named /tmp/gar,
-/tmp/garbage and /tmp/garden. Initially, the two promises look like they
+two examples, which assume that there first exist files named `/tmp/gar`,
+`/tmp/garbage` and `/tmp/garden`. Initially, the two promises look like they
 should do the same thing; but there is a subtle difference:
 
-```cf3
-bundle agent foobaz           bundle agent foobaz
-{                   {
-files:                  files:
- "/tmp/gar.*"                "/tmp"
-    delete => tidy,             delete => tidy,
-    classes => if_ok("done");           depth_search => recurse("0"),
-                        file_select => gars,
-                        classes => if_ok("done");
-                    }
+<table><tr><td>
+<pre>
+bundle agent foobaz           
+{
+files:
+ "/tmp/gar.*"
+    delete => tidy,
+    classes => if_ok("done");
+}
 
-                    body file_select gars
-                    {
-                    leaf_name => { "gar.*" };
-                    file_result => "leaf_name";
-                    }
+body classes if_ok(x)
+{
+  promise_repaired => { "$(x)" };
+  promise_kept => { "$(x)" };
+}
+</pre>
+</td>
+<td>
+<pre>
+bundle agent foobaz
+{
+  files:
+    "/tmp"
+      delete => tidy,
+      depth_search => recurse("0"),
+      file_select => gars,
+      classes => if_ok("done");
+}
 
-body classes if_ok(x)           body classes if_ok(x)
-{                   {
-promise_repaired => { "$(x)" };     promise_repaired => { "$(x)" };
-promise_kept => { "$(x)" };     promise_kept => { "$(x)" };
-}                   }
-```
+body file_select gars
+{
+leaf_name => { "gar.*" };
+file_result => "leaf_name";
+}
+
+body classes if_ok(x)
+{
+  promise_repaired => { "$(x)" };
+  promise_kept => { "$(x)" };
+}
+</pre>
+</td></tr>
+</table>
 
 In the first example, when the configuration containing this promise is
-first executed, any file starting with "gar" that exists in the /tmp
+first executed, any file starting with "gar" that exists in the `/tmp`
 directory will be removed, and the done class will be set. However, when
-the configuration is executed a second time, the pattern /tmp/gar.\*
+the configuration is executed a second time, the pattern `/tmp/gar.*`
 will not match any files, and that promise will not even be *attempted*
 (and, consequently the done class will *not* be set).
 
 In the second example, when the configuration containing this promise is
-first executed, any file starting with "gar" that exists in the /tmp
+first executed, any file starting with "gar" that exists in the `/tmp`
 directory will also be removed, and the done class will also be set. The
 second time the configuration is executed, however, the promise on the
-/tmp directory will still be executed (because /tmp of course still
+`/tmp` directory will still be executed (because `/tmp` of course still
 exists), and the done class *will* be set, because all files matching
-the file\_select attribute have been deleted from that directory.
+the `file_select` attribute have been deleted from that directory.
 
-**Local and remote searches**
+### Local and remote searches
 
 There are two distinct kinds of depth search:
 
--   A local search over promiser agents.
--   A remote search over provider agents.
+* A local search over promiser agents.
+* A remote search over provider agents.
 
 When we are *copying* or *linking* to a file source, it is the search
 over the *remote* source that drives the content of a promise (the
@@ -251,21 +264,108 @@ consequences, but this might occasionally be useful.
 
 Depth search is not allowed with `edit_line` promises.
 
+***
+
+## Attributes
+
 ### acl
 
 **Type**: `body acl`
 
 #### aces
 
+**Description**:
+Native settings for access control entry are defined by 'aces'. POSIX ACL are 
+available in CFEngine Community starting with 3.4.0. NTFS ACL are available in 
+with CFEngine Enterprise.
+
 **Type**: `slist`
 
 **Allowed input range**:
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
 
-**Description**:
-Native settings for access control entry are defined by 'aces'. POSIX ACL are 
-available in CFEngine Community starting with 3.4.0. NTFS ACL are available in 
-with CFEngine Enterprise.
+Form of the permissions is as follows:
+
+```cf3
+                aces = {
+                        "user:uid:mode[:perm_type]", ...,
+                        "group:gid:mode[:perm_type]", ...,
+                        "all:mode[:perm_type]"
+                        };
+```
+
+*   `user`
+
+indicates that the line applies to a user specified by the user identifier 
+`uid`. `mode` is the permission mode string.
+
+*   `group`
+
+
+Indicates that the line applies to a group specified by the group identifier 
+`gid`. `mode` The permission mode string.
+
+* `all`
+
+Indicates that the line applies to every user. `mode` is the permission mode 
+string.
+
+* `uid`
+
+A valid user identifier for the system and cannot be empty. However, `uid` can 
+be set to `*` as a synonym for the entity that owns the file system object 
+(e.g. user:\*:r).
+
+* `gid` 
+
+A valid group identifier for the system and cannot be empty. However, in some 
+ACL types, `gid` can be set to `*` to indicate a special group (e.g. in POSIX 
+this refers to the file group).
+
+* `mode` 
+
+One or more strings `op`|`perms`|(`nperms`); a concatenation of `op`, `perms` 
+and optionally (`nperms`) separated with commas (e.g. +rx,-w(s) ). `mode` is 
+parsed from left to right.
+
+* `op`
+
+Specifies the operation on any existing permissions, if the defined ACE 
+already exists. `op` can be =, empty, + or -. = or empty sets the permissions 
+to the ACE as stated. + adds and - removes the permissions from any existing 
+ACE.
+
+* `nperms` (optional)
+
+Specifies file system specific (native) permissions. Only valid if `acl_type` 
+is defined. `nperms` will only be enforced if the file object is stored on a 
+file system supporting the ACL type set in `acl_type`. For example, `nperms` 
+will be ignored if `acl_type:``ntfs` and the object is stored on a file system 
+not supporting NTFS ACLs. Valid values for `nperms` varies with different ACL 
+types, and is defined in subsequent sections.
+
+* `perm_type` (optional)
+
+Can be set to either `allow` or `deny`, and defaults to `allow`. `deny` is 
+only valid if `acl_type` is set to an ACL type that support deny permissions. 
+A `deny` ACE will only be enforced if the file object is stored on a file 
+system supporting the acl type set in `acl_type`.
+
+* `gperms` (generic permissions) 
+
+A concatenation of zero or more of the characters shown in the table below. If 
+left empty, none of the permissions are set.
+
+| Flag | Description | Semantics on file | Semantics on directory |
+|:----:|-------------|-------------------|------------------------|
+| r    | Read        | Read data, permissions, attributes | Read directory contents, permissions, attributes   |
+| w    | Write | Write data | Create, delete, rename subobjects |
+| x    | Execute | Execute file | Access subobjects |
+
+Note that the `r` permission is not necessary to read an object's
+permissions and attributes in all file systems. For example, in POSIX,
+having `x` on its containing directory is sufficient.
+
 
 **Example**:
 
@@ -288,110 +388,32 @@ with CFEngine Enterprise.
      
 ```
 
-Form of the permissions is as follows:
-
-```cf3
-                aces = {
-                        "user:uid:mode[:perm_type]", ...,
-                        "group:gid:mode[:perm_type]", ...,
-                        "all:mode[:perm_type]"
-                        };
-```
-
--   `user` indicates that the line applies to a user specified by the
-    user identifier `uid`. `mode` is the permission mode string.
--   `group` indicates that the line applies to a group specified by the
-    group identitfier `gid`. `mode` is the permission mode string.
--   `all` indicates that the line applies to every user. `mode` is the
-    permission mode string.
--   `uid` is a valid user identifier for the system and cannot be empty.
-    However, `uid` can be set to \* as a synonym for the entity that
-    owns the file system object (e.g. user:\*:r).
--   `gid` is a valid group identifier for the system and cannot be
-    empty. However, in some ACL types, `gid` can be set to \* to
-    indicate a special group (e.g. in POSIX this refers to the file
-    group).
--   `mode` is one or more strings `op`|`perms`|(`nperms`); a
-    concatenation of `op`, `perms` and optionally (`nperms`) separated
-    with commas (e.g. +rx,-w(s) ). `mode` is parsed from left to right.
--   `op` specifies the operation on any existing permissions, if the
-    defined ACE already exists. `op` can be =, empty, + or -. = or empty
-    sets the permissions to the ACE as stated. + adds and - removes the
-    permissions from any existing ACE.
--   `nperms` (optional) specifies file system specific (native)
-    permissions. Only valid if `acl_type` is defined. `nperms` will only
-    be enforced if the file object is stored on a file system supporting
-    the ACL type set in `acl_type`. For example, `nperms` will be
-    ignored if `acl_type:``ntfs` and the object is stored on a file
-    system not supporting NTFS ACLs. Valid values for `nperms` varies
-    with different ACL types, and is defined in subsequent sections.
--   `perm_type` (optional) can be set to either `allow` or `deny`, and
-    defaults to `allow`. `deny` is only valid if `acl_type` is set to an
-    ACL type that support deny permissions. A `deny` ACE will only be
-    enforced if the file object is stored on a file system supporting
-    the acl type set in `acl_type`.
-
-`gperms` (generic permissions) is a concatenation of zero or more of the
-characters shown in the table below. If left empty, none of the
-permissions are set.
-
-Flag
-
-Description
-
-Semantics on file
-
-Semantics on directory
-
-  
-
-`r`
-
-Read
-
-Read data, permissions, attributes
-
-Read directory contents, permissions, attributes   
-
-`w`
-
-Write
-
-Write data
-
-Create, delete, rename subobjects   
-
-`x`
-
-Execute
-
-Execute file
-
-Access subobjects   
-
-Note that the `r` permission is not necessary to read an object's
-permissions and attributes in all file systems. For example, in POSIX,
-having `x` on its containing directory is sufficient.   
-
 #### acl_default
+
+**Description**: The access control list type for the affected file system is determined by `acl_default`. 
+
+Directories have ACLs associated with them, but they also have the ability to 
+inherit an ACL to sub-objects created within them. POSIX calls the former ACL 
+type "access ACL" and the latter "default ACL", and we will use the same 
+terminology.
+
+The constraint `acl_default` gives control over the default ACL of 
+directories. The default ACL can be left unchanged (`nochange`),
+empty (`clear`), or be explicitly specified (`specify`). In addition, the 
+default ACL can be set equal to the directory's access ACL (`access`). This 
+has the effect that child objects of the directory gets the same access ACL as 
+the directory.   
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    nochange
-                    access
-                    specify
-                    clear
+    nochange
+    access
+    specify
+    clear
 ```
-
-**Description**: The access control list type for the affected file system is determined by `acl_default`. 
-
-Directories have ACLs associated with them, but they also have the ability to inherit an ACL to sub-objects created within them. POSIX calls the former ACL type "access ACL" and the latter "default ACL", and we will use the same terminology.
-
-The constraint `acl_default` gives control over the default ACL of directories. The default ACL can be left unchanged (`nochange`),
-empty (`clear`), or be explicitly specified (`specify`). In addition, the default ACL can be set equal to the directory's access ACL (`access`). This has the effect that child objects of the directory gets the same access ACL as the directory.   
 
 **Example**:
 
@@ -420,19 +442,26 @@ acl_directory_inherit.
 
 #### acl_method
 
+**Description**: The `acl_method` menu option defines the editing method for 
+an access control list.
+
+When defining an ACL, we can either use an existing ACL as the starting point, 
+or state all entries of the ACL. If we just care about one entry, say that the 
+superuser has full access, the `method` constraint can be set to `append`, 
+which is the default. This has the effect that all the existing ACL entries 
+that are not mentioned will be left unchanged. On the other hand, if `method` 
+is set to `overwrite`, the resulting ACL will only contain the mentioned 
+entries. When doing this, it is important to check that all the required ACL 
+entries are set. For example, owning user, group and all in POSIX ACLs.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    append
-                    overwrite
+    append
+    overwrite
 ```
-
-**Description**: The `acl_method` menu option defines the editing method for an access control list.
-
-When defining an ACL, we can either use an existing ACL as the starting point, or state all entries of the ACL. If we just care about one entry, say that the superuser has full access, the `method` constraint can be set to `append`, which is the default. This has the effect that all the existing ACL entries that are not mentioned will be left unchanged. On the other hand, if `method` is set to `overwrite`, the resulting ACL will only contain the mentioned entries. When doing this, it is important to check that all the required ACL entries are set. For
-example, owning user, group and all in POSIX ACLs.   
 
 **Example**:
 
@@ -450,23 +479,27 @@ example, owning user, group and all in POSIX ACLs.
 
 #### acl_type
 
+**Description**: The `acl_type` menu option defines the access control list 
+type for the affected file system.
+
+ACLs are supported on multiple platforms, which may have different sets of 
+available permission flags. By using the constraint `acl_type`, we
+can specify which platform, or ACL API, we are targeting with the ACL.
+
+The default, `generic`, is designed to work on all supported platforms. 
+However, if very specific permission flags are required, like Take
+Ownership on the NTFS platform, we must set `acl_type` to indicate the target 
+platform. Currently, the supported values are `posix` and `ntfs`.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    generic
-                    posix
-                    ntfs
+    generic
+    posix
+    ntfs
 ```
-
-**Description**: The `acl_type` menu option defines the access control list type for the affected file system.
-
-ACLs are supported on multiple platforms, which may have different sets of available permission flags. By using the constraint `acl_type`, we
-can specify which platform, or ACL API, we are targeting with the ACL.
-
-The default, `generic`, is designed to work on all supported platforms. However, if very specific permission flags are required, like Take
-Ownership on the NTFS platform, we must set `acl_type` to indicate the target platform. Currently, the supported values are `posix` and `ntfs`.
 
 **Example**:
 
@@ -480,22 +513,25 @@ Ownership on the NTFS platform, we must set `acl_type` to indicate the target pl
      }
      
 ```
- 
 
 #### specify_default_aces
+
+**Description**: The slist `specify_default_aces` specifies the native 
+settings for access control entry.
+
+`specify_default_aces` (optional) is a list of access control entries that are 
+set on child objects. It is also parsed from left to right and
+allows multiple entries with same entity-type and id. Only valid if 
+`acl_directory_inherit` is set to `specify`.
+
+This is an ACL which makes explicit setting for the acl inherited by new 
+objects within a directory. It is included for those implementations
+that do not have a clear inheritance policy.
 
 **Type**: `slist`
 
 **Allowed input range**:
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
-
-**Description**: The slist `specify_default_aces` specifies the native settings for access control entry.
-
-`specify_default_aces` (optional) is a list of access control entries that are set on child objects. It is also parsed from left to right and
-allows multiple entries with same entity-type and id. Only valid if `acl_directory_inherit` is set to `specify`.
-
-This is an ACL which makes explicit setting for the acl inherited by new objects within a directory. It is included for those implementations
-that do not have a clear inheritance policy.
 
 **Example**:
 
@@ -506,31 +542,29 @@ that do not have a clear inheritance policy.
      }
 ```
 
-
-
 ### changes
 
 **Type**: `body changes`
 
 #### hash
 
+**Description**: The `hash` menu option defines the ash files for change detection.
+
+The `best` option cross correlates the best two available algorithms known in the OpenSSL library. 
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    md5
-                    sha1
-                    sha224
-                    sha256
-                    sha384
-                    sha512
-                    best
+    md5
+    sha1
+    sha224
+    sha256
+    sha384
+    sha512
+    best
 ```
-
-**Description**: The `hash` menu option defines the ash files for change detection.
-
-The `best` option cross correlates the best two available algorithms known in the OpenSSL library. 
 
 **Example**:
 
@@ -546,20 +580,20 @@ The `best` option cross correlates the best two available algorithms known in th
 
 #### report_changes
 
+**Description**: Specify criteria for change warnings using the `report_changes` menu option.
+
+Files can change in permissions and contents, i.e. external or internal attributes. If all is chosen all attributes are checked.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    all
-                    stats
-                    content
-                    none
+    all
+    stats
+    content
+    none
 ```
-
-**Description**: Specify criteria for change warnings using the `report_changes` menu option.
-
-Files can change in permissions and contents, i.e. external or internal attributes. If all is chosen all attributes are checked.
 
 **Example**:
 
@@ -574,22 +608,25 @@ Files can change in permissions and contents, i.e. external or internal attribut
 
 #### update_hashes
 
+**Description**: Use of `update_hashes` determines whether hash values should 
+be updated immediately after a change.
+  
+If this is positive, file hashes should be updated as soon as a change is 
+registered so that multiple warnings are not given about a single change. This 
+applies to addition and removal too.   
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: Use of `update_hashes` determines whether hash values should be updated immediately after a change.
-  
-If this is positive, file hashes should be updated as soon as a change is registered so that multiple warnings are not given about a single change. This applies to addition and removal too.   
 
 **Example**:
 
@@ -604,28 +641,33 @@ If this is positive, file hashes should be updated as soon as a change is regist
 
 #### report_diffs
 
+**This feature requires CFEngine Enterprise.**
+
+**Description**: Setting `report_diffs` determines whether to generate reports 
+summarizing the major differences between individual text files.
+
+If true, CFEngine will log a 'diff' summary of major changes to the files. It 
+is not permitted to combine this promise with a depth search, since this would 
+consume a dangerous amount of resources and would lead to unreadable reports.
+
+The feature is intended as a informational summary, not as a version control 
+function suitable for transaction control. If you want to do versioning on 
+system files, you should keep a single repository for them and use CFEngine to 
+synchronize changes from the repository source. Repositories should not be 
+used to attempt to capture random changes of the system.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Versions**: This feature requires CFEngine Enterprise.
-
-
-**Description**: Setting `report_diffs` determines whether to generate reports summarizing the major differences between
-individual text files.
-
-If true, CFEngine will log a 'diff' summary of major changes to the files. It is not permitted to combine this promise with a depth search, since this would consume a dangerous amount of resources and would lead to unreadable reports.
-
-The feature is intended as a informational summary, not as a version control function suitable for transaction control. If you want to do versioning on system files, you should keep a single repository for them and use CFEngine to synchronize changes from the repository source. Repositories should not be used to attempt to capture random changes of the system.
 
 **Example**:
 
@@ -644,11 +686,11 @@ The feature is intended as a informational summary, not as a version control fun
 
 #### source
 
+**Description**: The `source` string represents the reference source file from which to copy. For remote copies this refers to the file name on the remote server. 
+
 **Type**: `string`
 
 **Allowed input range**: `.+`
-
-**Description**: The `source` string represents the reference source file from which to copy. For remote copies this refers to the file name on the remote server. 
 
 
 **Example**:
@@ -671,12 +713,11 @@ The feature is intended as a informational summary, not as a version control fun
 
 #### servers
 
+**Description**: The `servers` slist names servers in order of preference from which to copy. The servers are tried in order until one of them succeeds. 
+
 **Type**: `slist`
 
 **Allowed input range**: `[A-Za-z0-9_.:-]+`
-
-**Description**: The `servers` slist names servers in order of preference from which to copy. The servers are tried in order until one of them succeeds. 
-
 
 **Example**:
 
@@ -692,34 +733,36 @@ The feature is intended as a informational summary, not as a version control fun
 
 #### collapse_destination_dir
 
+**Description**: The `collapse_destination_dir` menu option supports the 
+placing of files in subdirectories into the root destination
+directory during copy.
+  
+Under normal operations, recursive copies cause CFEngine to track 
+subdirectories of files. So, for instance, if we copy recursively from src to 
+dest, then src/subdir/file will map to dest/subdir/file.
+
+By setting this option to true, the promiser destination directory promises to 
+aggregate files searched from all subdirectories into
+itself; in other words, a single destination directory. 
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: The `collapse_destination_dir` menu option supports the placing of files in subdirectories into the root destination
-directory during copy.
-  
-Under normal operations, recursive copies cause CFEngine to track subdirectories of files. So, for instance, if we copy recursively from src to dest, then src/subdir/file will map to dest/subdir/file.
-
-By setting this option to true, the promiser destination directory promises to aggregate files searched from all subdirectories into
-itself; in other words, a single destination directory. 
-
 
 **Example**:
 
 ```cf3
      
      body copy_from mycopy(from,server)
-     
      {
      source      => "$(from)";
      servers     => { "$(server)" };
@@ -730,25 +773,60 @@ itself; in other words, a single destination directory.
 
 #### compare
 
+**Description**: The menu option policy `compare` is used for comparing source 
+and image file attributes.
+
+The default copy method is `mtime` (modification time), meaning that the 
+source file is copied to the destination (promiser) file, if the source file 
+has been modified more recently than the destination.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
-```cf3
-                    atime
-                    mtime
-                    ctime
-                    digest
-                    hash
-                    exists
-                    binary
-```
+* `mtime`
+
+CFEngine copies the file if the modification time of the source file is more 
+recent than that of the promised file
+
+* `ctime`
+
+CFEngine copies the file if the creation time of the source file is more 
+recent than that of the promised file
+
+* `atime`
+
+CFEngine copies the file if the modification time or creation time of the 
+source file is more recent than that of the promised file. If the times are 
+equal, a byte-for-bye comparison is done on the files to determine if it needs 
+to be copied.
+
+* `exists`
+
+CFEngine copies the file if the promised file does not already exist.
+
+* `binary`
+
+CFEngine copies the file if they are both plain files and a
+byte-for-byte comparison determines that they are different. If both
+are not plain files, CFEngine reverts to comparing the `mtime` and
+`ctime` of the files. If the source file is on a different machine
+(e.g. network copy), then `hash` is used instead to reduce network
+bandwidth.
+
+* `hash`
+
+CFEngine copies the file if they are both plain files and a
+message digest comparison indicates that the files are different. In
+Enterprise versions of CFEngine version 3.1.0 and later, SHA256 is
+used as a message digest hash to conform with FIPS; in older
+Enterprise versions of CFEngine and all Community versions, MD5 is
+used.
+
+* `digest` a synonym for `hash`
+
 
 **Default value:** mtime or ctime differs
-
-**Description**: The menu option policy `compare` is used for comparing source and image file attributes.
-
-The default copy method is mtime (modification time), meaning that the source file is copied to the destination (promiser) file, if the source file has been modified more recently than the destination.
 
 **Example**:
 
@@ -762,47 +840,23 @@ The default copy method is mtime (modification time), meaning that the source fi
      
 ```
 
-**Options**:
-
--   `mtime` CFEngine copies the file if the modification time of the
-    source file is more recent than that of the promised file
--   `ctime` CFEngine copies the file if the creation time of the source
-    file is more recent than that of the promised file
--   `atime` CFEngine copies the file if the modification time or
-    creation time of the source file is more recent than that of the
-    promised file. If the times are equal, a byte-for-bye comparison is
-    done on the files to determine if it needs to be copied.
--   `exists` CFEngine copies the file if the promised file does not
-    already exist.
--   `binary` CFEngine copies the file if they are both plain files and a
-    byte-for-byte comparison determines that they are different. If both
-    are not plain files, CFEngine reverts to comparing the `mtime` and
-    `ctime` of the files. If the source file is on a different machine
-    (e.g. network copy), then `hash` is used instead to reduce network
-    bandwidth.
--   `hash` CFEngine copies the file if they are both plain files and a
-    message digest comparison indicates that the files are different. In
-    Enterprise versions of CFEngine version 3.1.0 and later, SHA256 is
-    used as a message digest hash to conform with FIPS; in older
-    Enterprise versions of CFEngine and all Community versions, MD5 is
-    used.
--   `digest` a synonym for `hash`
-
 #### copy_backup
+
+**Description**: Menu option policy for file backup/version control
+ 
+Determines whether a backup of the previous version is kept on the system. 
+This should be viewed in connection with the system repository, since a 
+defined repository affects the location at which the backup is stored.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    timestamp
+    true
+    false
+    timestamp
 ```
-
-**Description**: Menu option policy for file backup/version control
- 
-Determines whether a backup of the previous version is kept on the system. This should be viewed in connection with the system repository, since a defined repository affects the location at which the backup is stored.
 
 **Default value:** true
 
@@ -817,30 +871,29 @@ Determines whether a backup of the previous version is kept on the system. This 
      
 ```
 
-**See Also**: [default\_repository](#default_005frepository-in-agent) and [repository](#repository-in-files)
-
 #### encrypt
+
+**Description**: The `encrypt` menu option policy describes whether to use 
+encrypted data stream to connect to remote hosts.
+
+Client connections are encrypted with using a Blowfish randomly generated 
+session key. The initial connection is encrypted using the public/private keys 
+for the client and server hosts. 
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
 
 **Default value:** false
-
-**Description**: The `encrypt` menu option policy describes whether to use encrypted data stream to connect to remote
-hosts.
-  
-
-Client connections are encrypted with using a Blowfish randomly generated session key. The initial connection is encrypted using the public/private keys for the client and server hosts. 
 
 **Example**:
 
@@ -856,22 +909,25 @@ Client connections are encrypted with using a Blowfish randomly generated sessio
 
 #### check_root
 
+**Description**: The `check_root` menu option policy checks permissions on the 
+root directory when copying files recursively by depth\_search. 
+
+This flag determines whether the permissions of the root directory should be 
+set from the root of the source. The default is to check only copied file 
+objects and subdirectories within this root (false). 
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: The `check_root` menu option policy checks permissions on the root directory when copying files recursively by depth\_search. 
-
-This flag determines whether the permissions of the root directory should be set from the root of the source. The default is to check only copied file objects and subdirectories within this root (false). 
 
 **Example**:
 
@@ -886,13 +942,16 @@ This flag determines whether the permissions of the root directory should be set
 
 #### copylink_patterns
 
+**Description**: The `copylink_patterns` slist of patterns are matching files 
+that should be copied instead of linked.
+
+The matches are performed on the last node of the filename; in other words, 
+the file without its path. As Windows does not support symbolic links, this 
+feature is not available there. 
+
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The `copylink_patterns` slist of patterns are matching files that should be copied instead of linked.
-
-The matches are performed on the last node of the filename; in other words, the file without its path. As Windows does not support symbolic links, this feature is not available there. 
 
 **Example**:
 
@@ -907,13 +966,15 @@ The matches are performed on the last node of the filename; in other words, the 
 
 #### copy_size
 
-**Type**: irange [int,int]
+**Description**: The integers specified in `copy_size` determines the range 
+for the size of files that may be copied.
+
+The use of the `irange` function is optional. Ranges may also be specified as 
+comma separated numbers.
+
+**Type**: irange[int,int]
 
 **Allowed input range**: `0,inf`
-
-**Description**: The integers specified in `copy_size` determines the range for the size of files that may be copied.
-
-The use of the irange function is optional. Ranges may also be specified as a comma separated numbers. 
 
 **Default value:** any size range
 
@@ -930,18 +991,17 @@ The use of the irange function is optional. Ranges may also be specified as a co
 
 #### findertype
 
+**Description**: The `findertype` menu option policy describes the default finder type on MacOSX.
+
+This applies only to the Mac OS X variants.   
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    MacOSX
+    MacOSX
 ```
-
-**Description**: The `findertype` menu option policy describes the default finder type on MacOSX.
-
-This applies only to the Mac OS X variants.   
-
 
 **Example**:
 
@@ -956,13 +1016,15 @@ This applies only to the Mac OS X variants.
 
 #### linkcopy_patterns
 
+**Description**: The `linkcopy_patterns` contains patterns for matching files 
+that should be replaced with symbolic links.
+
+The pattern matches the last node filename; in other words, without the 
+absolute path. Windows only supports hard links.
+
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The `linkcopy_patterns` contains patterns for matching files that should be replaced with symbolic links.
-
-The pattern matches the last node filename; in other words, without the absolute path. Windows only supports hard links.
 
 **Example**:
 
@@ -981,24 +1043,31 @@ The pattern matches the last node filename; in other words, without the absolute
 
 #### link_type
 
+**Description**: The `link_type` menu option policy contains the type of links 
+to use when copying.
+
+Users are advised to be wary of 'hard links' (see Unix manual pages for the ln 
+command). The behavior of non-symbolic links is often precarious and 
+unpredictable. However, hard links are the only supported type by Windows.
+
+Note that symlink is synonymous with absolute links, which are different from 
+relative links. Although all of these are symbolic links, the nomenclature 
+here is defined such that symlink and absolute are equivalent. When verifying 
+a link, choosing 'relative' means that the link *must* be relative to the 
+source, so relative and absolute links are mutually exclusive.   
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    symlink
-                    hardlink
-                    relative
-                    absolute
+    symlink
+    hardlink
+    relative
+    absolute
 ```
 
 **Default value:** symlink
-
-**Description**: The `link_type` menu option policy contains the type of links to use when copying.
-
-Users are advised to be wary of 'hard links' (see Unix manual pages for the ln command). The behavior of non-symbolic links is often precarious and unpredictable. However, hard links are the only supported type by Windows.
-
-Note that symlink is synonymous with absolute links, which are different from relative links. Although all of these are symbolic links, the nomenclature here is defined such that symlink and absolute are equivalent. When verifying a link, choosing 'relative' means that the link *must* be relative to the source, so relative and absolute links are mutually exclusive.   
 
 **Example**:  
    
@@ -1014,24 +1083,29 @@ Note that symlink is synonymous with absolute links, which are different from re
 
 #### force_update
 
+**Description**: The `force_update` menu option policy instructs whether to 
+always force copy update.
+
+**Warning**: this is a non-convergent operation. Although the end point might 
+stabilize in content, the operation will never quiesce. Use of this feature is 
+not recommended except in exceptional circumstances since it creates a 
+busy-dependency. If the copy is a network copy, the system will be disturbed 
+by network disruptions.   
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
 
 **Default value:** false
-
-**Description**: The `force_update` menu option policy instructs whether to always force copy update.
-
-**Warning**: this is a non-convergent operation. Although the end point might stabilize in content, the operation will never quiesce. Use of this feature is not recommended except in exceptional circumstances since it creates a busy-dependency. If the copy is a network copy, the system will be disturbed by network disruptions.   
 
 **Example**:
 
@@ -1046,24 +1120,24 @@ Note that symlink is synonymous with absolute links, which are different from re
 
 #### force_ipv4
 
+**Description**: The `force_ipv4` menu option policy can determine whether to use ipv4 on an ipv6 enabled network.
+
+IPv6 should be harmless to most users unless you have a partially or mis-configured setup.   
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
 
 **Default value:** false
-
-**Description**: The `force_ipv4` menu option policy can determine whether to use ipv4 on an ipv6 enabled network.
-
-IPv6 should be harmless to most users unless you have a partially or mis-configured setup.   
 
 **Example**:
 
@@ -1078,13 +1152,16 @@ IPv6 should be harmless to most users unless you have a partially or mis-configu
 
 #### portnumber
 
+**Description**: Setting `portnumber` determines the port number to connect to 
+on a server host.
+
+The standard or registered port number is tcp/5308. CFEngine does not 
+presently use its registered udp port with the same number, but this could 
+change in the future.
+
 **Type**: `int`
 
 **Allowed input range**: `1024,99999`
-
-**Description**: Setting `portnumber` determines the port number to connect to on a server host.
-
-The standard or registered port number is tcp/5308. CFEngine does not presently use its registered udp port with the same number, but this could change in the future.   
 
 **Example**:
 
@@ -1099,23 +1176,26 @@ The standard or registered port number is tcp/5308. CFEngine does not presently 
 
 #### preserve
 
+**Description**: Setting the `preserve` menu option policy determines whether 
+to preserve file permissions on copied files.
+
+This ensures that the destination file (promiser) gets the same Unix mode as 
+the source. This also applies to remote copies.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
 
 **Default value:** false
-
-**Description**: Setting the `preserve` menu option polict determines whether to preserve file permissions on copied
-files. This ensures that the destination file (promiser) gets the same Unix mode as the source. This also applies to remote copies.
 
 **Example**:
 
@@ -1132,27 +1212,32 @@ files. This ensures that the destination file (promiser) gets the same Unix mode
 
 #### purge
 
+**Description**: The `purge` menu option policy instructs on whether to purge 
+files on client that do not match files on server when a `depth_search` is 
+used.
+
+Purging files is a potentially dangerous matter during a file copy it implies 
+that any promiser (destination) file which is not matched by a source will be 
+deleted. Since there is no source, this means the file will be irretrievable. 
+Great care should be exercised when using this feature.
+
+Note that purging will also delete backup files generated during the file 
+copying if `copy_backup` is set to true.   
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
 
 **Default value:** false
-
-**Description**: The `purge` menu option polict instructs on whether to purge files on client that do not match files
-on server when a depth\_search is used.
-
-Purging files is a potentially dangerous matter during a file copy it implies that any promiser (destination) file which is not matched by a source will be deleted. Since there is no source, this means the file will be irretrievable. Great care should be exercised when using this feature.
-
-Note that purging will also delete backup files generated during the file copying if `copy_backup` is set to true.   
 
 **Example**:
 
@@ -1167,20 +1252,22 @@ Note that purging will also delete backup files generated during the file copyin
 
 #### stealth
 
+**Description**: Setting the `stealth` menu option policy determines whether 
+to preserve time stamps on copied files. This preserves file access and 
+modification times on the promiser files. 
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: Setting the `stealth` menu option policy determines whether to preserve time stamps on copied files. This preserves file access and modification times on the promiser files. 
 
 **Default value:** false
 
@@ -1197,11 +1284,12 @@ Note that purging will also delete backup files generated during the file copyin
 
 #### timeout
 
+**Description**: The integer set in `timeout` is the value for the connection 
+timeout, in seconds.
+
 **Type**: `int`
 
 **Allowed input range**: `1,3600`
-
-**Description**: The integer set in `timeout` is the value for the connection timeout, in seconds.
 
 **Example**:
 
@@ -1216,29 +1304,38 @@ Note that purging will also delete backup files generated during the file copyin
 
 #### trustkey
 
+**Description**: The `trustkey` menu option policy determines whether to trust 
+public keys from a remote server, if previously unknown.
+
+If the server's public key has not already been trusted, `trustkey` provides 
+automated key-exchange.
+
+Note that, as a simple security precaution, `trustkey` should normally be set 
+to false. Even though the risks to the client low, it is a good security 
+practice to avoid key exchange with a server one is not one hundred percent 
+sure about. On the server-side however, trust is often granted to many clients 
+or to a whole network in which possibly unauthorized parties might be able to 
+obtain an IP address. Thus the trust issue is most important on the server 
+side.
+
+As soon as a public key has been exchanged, the trust option has no effect. A 
+machine that has been trusted remains trusted until its key is manually 
+revoked by a system administrator. Keys are stored in `WORKDIR/ppkeys`.   
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
 
 **Default value:** false
-
-**Description**: The `trustkey` menu option polict determines whether to trust public keys from a remote server, if
-previously unknown.
-
-If the server's public key has not already been trusted, trustkey provides automated key-exchange.
-
-Note that, as a simple security precaution, trustkey should normally be set to false. Even though the risks to the client low, it is a good security practice to avoid key exchange with a server one is not one hundred percent sure about. On the server-side however, trust is often granted to many clients or to a whole network in which possibly unauthorized parties might be able to obtain an IP address. Thus the trust issue is most important on the server side.
-
-As soon as a public key has been exchanged, the trust option has no effect. A machine that has been trusted remains trusted until its key is manually revoked by a system administrator. Keys are stored in WORKDIR/ppkeys.   
 
 **Example**:
 
@@ -1253,21 +1350,25 @@ As soon as a public key has been exchanged, the trust option has no effect. A ma
 
 #### type_check
 
+**Description**: The `type_check` menu option policy compares file types 
+before copying.
+
+File types at source and destination should normally match in order for 
+updates to overwrite them. This option allows this checking to be switched 
+off.   
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: The `type_check` menu option policy compares file types before copying. File types at source and destination should normally match in order for updates to overwrite them. This option allows this checking to be switched off.   
-
 
 **Example**:
 
@@ -1282,25 +1383,26 @@ As soon as a public key has been exchanged, the trust option has no effect. A ma
 
 #### verify
 
+**Description**: The `verify` menu option policy instructs whether to verify 
+transferred file by hashing after copy.
+
+**Warning**: This is a highly resource intensive option, and is not 
+recommended for large file transfers.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
 
 **Default value:** false
-
-**Description**: The `verify` menu option policy instructs whether to verify transferred file by hashing after copy
-(resource penalty). 
-
-**Warning**: This is a highly resource intensive option, and is not recommended for large file transfers.
 
 **Example**:
 
@@ -1315,22 +1417,31 @@ As soon as a public key has been exchanged, the trust option has no effect. A ma
 
 ### create
 
+**Description**: true/false whether to create non-existing file
+
+Directories are created by using the `/.` to signify a directory type.
+Note that, if no permissions are specified, mode 600 is chosen for a
+file, and mode 755 is chosen for a directory. If you cannot accept these
+defaults, you *should* specify permissions.
+
+Note that technically, `/.` is a regular expression. However, it is used
+as a special case meaning "directory". See **filenames and regular
+expressions** for a more complete discussion.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-               true
-               false
-               yes
-               no
-               on
-               off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
 
 **Default value:** false
-
-**Description**: true/false whether to create non-existing file
 
 **Example**:
 
@@ -1346,24 +1457,11 @@ files:
      create =>   "true";
 ```
 
-**Notes**:
-Directories are created by using the /. to signify a directory type.
-Note that, if no permissions are specified, mode 600 is chosen for a
-file, and mode 755 is chosen for a directory. If you cannot accept these
-defaults, you *should* specify permissions.
-
-Note that technically, /. is a regular expression. However, it is used
-as a special case meaning "directory". See **filenames and regular
-expressions** near the beginning of the section on [files
-promises](#files-in-agent-promises) for a more complete discussion.
-
-**Note:** In general, you should not use `create` with
-[copy\_from](#copy_005ffrom-in-files) or
-[link\_from](#link_005ffrom-in-files) in files promises. These latter
-attributes automatically create the promised file, and using `create`
-may actually prevent the copy or link promise from being kept (since
-`create` acts first, which may affect file comparison or linking
-operations).
+**Note:** In general, you should not use `create` with `copy_from` or 
+`link_from` in files promises. These latter attributes automatically create 
+the promised file, and using `create` may actually prevent the copy or link 
+promise from being kept (since `create` acts first, which may affect file 
+comparison or linking operations).
 
 ### delete
 
@@ -1371,18 +1469,28 @@ operations).
 
 #### dirlinks
 
+**Description**: Menu option policy for dealing with symbolic links to
+directories during deletion
+
+Links to directories are normally removed just like any other link or
+file objects. By keeping directory links, you preserve the logical
+directory structure of the file system, so that a link to a directory is
+not removed but is treated as a directory to be descended into.
+
+The value `keep` instructs CFEngine not to remove directory links. The
+values `delete` and `tidy` are synonymous, and instruct CFEngine to
+remove directory links.
+
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    delete
-                    tidy
-                    keep
+    delete
+    tidy
+    keep
 ```
-
-**Description**: Menu option policy for dealing with symbolic links to
-directories during deletion
 
 **Example**:
 
@@ -1395,42 +1503,30 @@ directories during deletion
      
 ```
 
-**Notes**:
-Links to directories are normally removed just like any other link or
-file objects. By keeping directory links, you preserve the logical
-directory structure of the file system, so that a link to a directory is
-not removed but is treated as a directory to be descended into.
-
-The value `keep` instructs CFEngine not to remove directory links. The
-values `delete` and `tidy` are synonymous, and instruct CFEngine to
-remove directory links.
-
-**Default value** (only if body is present):  
-   
+**Default value** (only if body is present): `dirlinks = delete`
 
 The default value only has significance if there is a `delete` body
 present. If there is no `delete` body then files (and directory links)
 are **not** deleted.
 
-`dirlinks = delete`   
-
 #### rmdirs
+
+**Description**: true/false whether to delete empty directories during
+recursive deletion
+
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false whether to delete empty directories during
-recursive deletion
 
 **Example**:
 
@@ -1443,7 +1539,6 @@ recursive deletion
      
 ```
 
-**Notes**:
 Note the parent directory of a search is not deleted in recursive
 deletions. You must code a separate promise to delete the single parent 
 object.
@@ -1482,14 +1577,11 @@ object.
      
 ```
 
-**Default value** (only if body is present):  
-   
+**Default value** (only if body is present): `rmdirs = true`
 
 The default value only has significance if there is a `delete` body
 present. If there is no `delete` body then files (and directories) are
 **not** deleted.
-
-`rmdirs = true`
 
 ### depth_search
 
@@ -1497,11 +1589,17 @@ present. If there is no `delete` body then files (and directories) are
 
 #### depth
 
+**Description**: Maximum depth level for search
+
+When searching recursively from a directory, the parent directory is
+only the anchor point and is not part of the search. To alter the
+parent, a separate non-recursive promise should be made.   
+
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
-**Description**: Maximum depth level for search
+Note that the value inf may be used for an unlimited value.
 
 **Example**:
 
@@ -1514,22 +1612,17 @@ present. If there is no `delete` body then files (and directories) are
      
 ```
 
-**Notes**:
-This was previously called 'recurse' in earlier versions of CFEngine.
-Note that the value inf may be used for an unlimited value.
-
-When searching recursively from a directory, the parent directory is
-only the anchor point and is not part of the search. To alter the
-parent, a separate non-recursive promise should be made.   
-
 #### exclude_dirs
+
+**Description**: List of regexes of directory names NOT to include in depth
+search
+
+Directory names are treated specially when searching recursively through
+a file system.
 
 **Type**: `slist`
 
 **Allowed input range**: `.*`
-
-**Description**: List of regexes of directory names NOT to include in depth
-search
 
 **Example**:
 
@@ -1543,27 +1636,30 @@ search
      
 ```
 
-**Notes**:
-Directory names are treated specially when searching recursively through
-a file system.   
-
 #### include_basedir
+
+**Description**: true/false include the start/root dir of the search
+results
+
+When checking files recursively (with `depth_search`) the promiser is a
+directory. This parameter determines whether that initial directory
+should be considered part of the promise or simply a boundary that marks
+the edge of the search. If true, the promiser directory will also
+promise the same attributes as the files inside it.   
+
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false include the start/root dir of the search
-results
 
 **Example**:
 
@@ -1576,21 +1672,16 @@ results
      
 ```
 
-**Notes**:
-When checking files recursively (with `depth_search`) the promiser is a
-directory. This parameter determines whether that initial directory
-should be considered part of the promise or simply a boundary that marks
-the edge of the search. If true, the promiser directory will also
-promise the same attributes as the files inside it.   
-
 #### include_dirs
+
+**Description**: List of regexes of directory names to include in depth
+search
+
+This is the complement of `exclude_dirs`.
 
 **Type**: `slist`
 
 **Allowed input range**: `.*`
-
-**Description**: List of regexes of directory names to include in depth
-search
 
 **Example**:
 
@@ -1603,25 +1694,25 @@ search
      
 ```
 
-**Notes**:
-This is the complement of `exclude_dirs`.   
-
 #### rmdeadlinks
+
+**Description**: true/false remove links that point to nowhere
+
+A value of true determines that links pointing to files that do not
+exist should be deleted; or kept if set to false.   
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false remove links that point to nowhere
 
 **Default value:** false
 
@@ -1636,26 +1727,26 @@ This is the complement of `exclude_dirs`.
      
 ```
 
-**Notes**:
-A value of true determines that links pointing to files that do not
-exist should be deleted; or kept if set to false.   
-
 #### traverse_links
+
+**Description**: true/false traverse symbolic links to directories
+
+If this is true, `cf-agent` will treat symbolic links to directories as
+if they were directories. Normally this is considered a potentially
+dangerous assumption and links are not traversed.   
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false traverse symbolic links to directories
 
 **Default value:** false
 
@@ -1670,28 +1761,23 @@ exist should be deleted; or kept if set to false.
      
 ```
 
-**Notes**:
-If this is true, `cf-agent` will treat symbolic links to directories as
-if they were directories. Normally this is considered a potentially
-dangerous assumption and links are not traversed.   
-
 #### xdev
+
+**Description**: true/false exclude directories that are on different
+devices
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false exclude directories that are on different
-devices
 
 **Default value:** false
 
@@ -1712,18 +1798,18 @@ devices
 
 #### edit_backup
 
+**Description**: Menu option for backup policy on edit changes
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    timestamp
-                    rotate
+    true
+    false
+    timestamp
+    rotate
 ```
-
-**Description**: Menu option for backup policy on edit changes
 
 **Default value:** true
 
@@ -1740,21 +1826,24 @@ devices
 
 #### empty_file_before_editing
 
+**Description**: Baseline memory model of file to zero/empty before
+commencing promised edits.
+
+Emptying a file before reconstructing its contents according to a fixed
+recipe allows an ordered procedure to be convergent.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: Baseline memory model of file to zero/empty before
-commencing promised edits
 
 **Default value:** false
 
@@ -1769,27 +1858,23 @@ commencing promised edits
      
 ```
 
-**Notes**:
-Emptying a file before reconstructing its contents according to a fixed
-recipe allows an ordered procedure to be convergent.   
-
 #### inherit
+
+**Description**: If true this causes the sub-bundle to inherit the private
+classes of its parent
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: If true this causes the sub-bundle to inherit the private
-classes of its parent
 
 **Example**:
 
@@ -1802,7 +1887,6 @@ classes of its parent
                       inherit => "true";
      }
      
-     
      body edit_defaults example
      {
      inherit => "true";
@@ -1813,6 +1897,7 @@ classes of its parent
 
 **Default value**: false
 
+**Notes**:
 The `inherit` constraint can be added to the CFEngine code in two
 places: for `edit_defaults` and in `methods` promises. If set to true,
 it causes the child-bundle named in the promise to inherit only the
@@ -1822,11 +1907,17 @@ reference using its bundle name. For example, \$(bundle.variable).
 
 #### max_file_size
 
+**Description**: Do not edit files bigger than this number of bytes
+
+`max_file_size` is a local, per-file sanity check to make sure the file
+editing is sensible. If this is set to zero, the check is disabled and
+any size may be edited. The default value of `max_file_size` is
+determined by the global control body setting whose default value is
+`100k`.
+
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
-
-**Description**: Do not edit files bigger than this number of bytes
 
 **Example**:
 
@@ -1839,32 +1930,32 @@ reference using its bundle name. For example, \$(bundle.variable).
      
 ```
 
-**Notes**:
-max\_file\_size is a local, per-file sanity check to make sure the file
-editing is sensible. If this is set to zero, the check is disabled and
-any size may be edited. The default value of `max_file_size` is
-determined by the global control body setting whose default value is
-`100k`.
-
-See: [editfilesize in agent](#editfilesize-in-agent)   
-
 #### recognize_join
+
+**Description**: Join together lines that end with a backslash, up to 4kB
+limit
+
+If set to true, this option allows CFEngine to process line based files
+with backslash continuation. The default is to not process continuation
+backslashes.
+
+Back slash lines will only be concatenated if the file requires editing,
+and will not be restored. Restoration of the backslashes is not possible
+in a meaningful and convergent fashion.   
+
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: Join together lines that end with a backslash, up to 4kB
-limit
 
 **Default value:** false
 
@@ -1887,36 +1978,11 @@ limit
      }
 ```
 
-**Notes**:
-If set to true, this option allows CFEngine to process line based files
-with backslash continuation. The default is to not process continuation
-backslashes.
-
-Back slash lines will only be concatenated if the file requires editing,
-and will not be restored. Restoration of the backslashes is not possible
-in a meaningful and convergent fashion.   
-
 #### rotate
 
-**Type**: `int`
-
-**Allowed input range**: `0,99`
-
-**Description**: How many backups to store if 'rotate' edit\_backup
+**Description**: How many backups to store if 'rotate' `edit_backup`
 strategy is selected. Defaults to 1
 
-**Example**:
-
-```cf3
-     
-     body rename example
-     {
-     rotate => "4";
-     }
-     
-```
-
-**Notes**:
 Used for log rotation. If the file is named foo and the rotate attribute
 is set to 4, as above, then initially foo is copied to foo.1 and the old
 file foo is zeroed out. In other words, the inode of the original
@@ -1933,9 +1999,25 @@ files, plus the one "main" file. In the example above, the file foo.3
 will be renamed foo.4, but the old version of the file foo.4 will be
 deleted (that is, it "falls off the end" of the rotation).
 
+
+**Type**: `int`
+
+**Allowed input range**: `0,99`
+
+**Example**:
+
+```cf3
+     
+     body rename example
+     {
+     rotate => "4";
+     }
+     
+```
+
 ### edit_line
 
-**Type**: `bundle edit_line`
+**Type**: [`bundle edit_line`](reference-promise-types-files-edit_line.html)
 
 ### edit_template
 
