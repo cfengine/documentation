@@ -220,7 +220,7 @@ Sometimes however, it is appropriate to consider the automatic plug-in of
 modules that might or might not exist. This option permits CFEngine
 to list possible files that might not exist and continue 'best
 effort' with those that do exist. The default of all Booleans is
-false, so the normal behaviour is to signal an error if an input is
+false, so the normal behavior is to signal an error if an input is
 not found.
 
 ### inputs

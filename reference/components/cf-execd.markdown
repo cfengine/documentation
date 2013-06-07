@@ -22,7 +22,7 @@ the network and work as a class-based clock for scheduling.
     '--debug'
        (-d value) - Set debugging level 0,1,2,3
     '--verbose'
-       (-v) - Output verbose information about the behaviour of the
+       (-v) - Output verbose information about the behavior of the
         agent
     '--dry-run'
        (-n) - All talk and no action mode - make no changes, only

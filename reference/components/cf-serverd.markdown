@@ -20,7 +20,7 @@ affected by `common` and `server` control bodies.
     '--debug'
        (-d value) - Set debugging level 0,1,2,3
     '--verbose'
-       (-v) - Output verbose information about the behaviour of the
+       (-v) - Output verbose information about the behavior of the
         agent
     '--version'
        (-V) - Output the version of the software

@@ -17,7 +17,7 @@ pairs for secure communication. `cf-key` does not keep any promises.
     '--debug'
        (-d value) - Set debugging level 0,1,2,3
     '--verbose'
-       (-v) - Output verbose information about the behaviour of the agent
+       (-v) - Output verbose information about the behavior of the agent
     '--version'
        (-V) - Output the version of the software
     '--output-file'

@@ -58,7 +58,7 @@ CFEngine introduced the promise model for configuration in order to
 flatten out this learning curve. It can lead to simplifications in
 use, because a lot of the thinking has been done already and is
 encapsulated into the model. One of its special properties is that it
-is both a model for system behaviour and a model for knowledge
+is both a model for system behavior and a model for knowledge
 representation (this is what declarative languages seek to be, of
 course). More specifically, it incorporated a subset of the ISO
 standard for `Topic Maps', an open technology for semantic indexing of

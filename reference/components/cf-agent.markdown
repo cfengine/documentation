@@ -48,7 +48,7 @@ affected by `common` and `agent` control bodies.
        (-B) - Define the server name or IP address of the a policy server 
        (for use with bootstrap).
     '--verbose'
-       (-v) - Output verbose information about the behaviour of the agent
+       (-v) - Output verbose information about the behavior of the agent
     '--version'
        (-V) - Output the version of the software
     '--legacy-output'
@@ -560,7 +560,7 @@ to locally override the global repository.
 time a network connection should attempt to connect.
 
 The time is in seconds. It is not a guaranteed number, since it
-depends on system behaviour. 
+depends on system behavior. 
 
 **Example**:
 ```cf3

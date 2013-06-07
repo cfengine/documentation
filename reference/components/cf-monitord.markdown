@@ -21,7 +21,7 @@ affected by  `common` and `monitor` control bodies.
     '--debug'
        (-d value) - Set debugging level 0,1,2,3
     '--verbose'
-       (-v) - Output verbose information about the behaviour of the agent
+       (-v) - Output verbose information about the behavior of the agent
     '--dry-run'
        (-n) - All talk and no action mode - make no changes, only
         inform of promises not kept

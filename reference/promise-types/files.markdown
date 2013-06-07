@@ -245,7 +245,7 @@ If we specify depth search together with copy of a directory, then the
 implied remote source search is assumed, and it is made after the search
 over local base-path objects has been made. If you mix complex promise
 body operations in a single promise, this could lead to confusion about
-the resulting behaviour, and a warning is issued. In general it is not
+the resulting behavior, and a warning is issued. In general it is not
 recommended to mix searches without a full understanding of the
 consequences, but this might occasionally be useful.
 
@@ -996,7 +996,7 @@ The pattern matches the last node filename; in other words, without the absolute
 
 **Description**: The `link_type` menu option policy contains the type of links to use when copying.
 
-Users are advised to be wary of 'hard links' (see Unix manual pages for the ln command). The behaviour of non-symbolic links is often precarious and unpredictable. However, hard links are the only supported type by Windows.
+Users are advised to be wary of 'hard links' (see Unix manual pages for the ln command). The behavior of non-symbolic links is often precarious and unpredictable. However, hard links are the only supported type by Windows.
 
 Note that symlink is synonymous with absolute links, which are different from relative links. Although all of these are symbolic links, the nomenclature here is defined such that symlink and absolute are equivalent. When verifying a link, choosing 'relative' means that the link *must* be relative to the source, so relative and absolute links are mutually exclusive.   
 
@@ -2613,7 +2613,7 @@ them to the source.
 **Notes**:
 This determines what kind of link should be used to link files. Users
 are advised to be wary of 'hard links' (see Unix manual pages for the
-ln command). The behaviour of non-symbolic links is often precarious and
+ln command). The behavior of non-symbolic links is often precarious and
 unpredictable. However, hard links are the only supported type by
 Windows.
 
@@ -2761,12 +2761,12 @@ intervention. Files and directories are saved/renamed, but symbolic
 links are deleted.
 
 Note that symbolic links for directories are treated as directories, not
-links. This behaviour can be discussed, but the aim is to err on the
+links. This behavior can be discussed, but the aim is to err on the
 side of caution.
 
 Some operating systems (Solaris) use symbolic links in path names.
 Copying to a directory could then result in renaming of the important
-link, if the behaviour is different.
+link, if the behavior is different.
 
 ### pathtype
 
@@ -2977,7 +2977,7 @@ is set
 ```
 
 **Notes**:
-Default behaviour is to set the x flag on directories automatically if
+Default behavior is to set the x flag on directories automatically if
 the r flag is specified when specifying multiple files in a single
 promise. This is ignored on Windows, as the permission model uses ACLs.
 

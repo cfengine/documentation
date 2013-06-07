@@ -59,7 +59,7 @@ attributes.
 
 CFEngine does not maintain operating system specific expert knowledge
 internally, rather it uses a generic model for dealing with promises
-about packages (which depend on the behaviour of an external package
+about packages (which depend on the behavior of an external package
 manager). The approach is to define package system details in
 body-constraints that can be written once and for all, for each package
 system.
@@ -219,7 +219,7 @@ are:
 CFEngine supports the syntax \$ at the end of a command to mean that no
 package name arguments should be used or appended after the dollar sign.
 This is because some commands require a list of packages, while others
-require an empty list. The default behaviour is to try to append the
+require an empty list. The default behavior is to try to append the
 name of one or more packages to the command, depending on whether the
 policy is for individual or bulk installation.
 
