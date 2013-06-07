@@ -4,7 +4,7 @@ title: storage
 categories: [Reference, Promise Types, storage]
 published: true
 alias: reference-promise-types-storage.html
-tags: [reference, bundles, agent, storage, storage promises, mount, filesystem, disks]
+tags: [reference, bundle agent, storage, storage promises, mount, filesystem, disks]
 ---
 
 Storage promises refer to disks and filesystem properties.
@@ -49,6 +49,10 @@ Storage promises refer to disks and filesystem properties.
       edit_fstab => "true";
     }
 ```
+
+***
+
+## Attributes
 
 ### mount
 

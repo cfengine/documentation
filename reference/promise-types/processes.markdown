@@ -4,7 +4,7 @@ title: processes
 categories: [Reference, Promise Types, processes]
 published: true
 alias: reference-promise-types-processes.html
-tags: [reference, bundles, agent, promise types, processes, processes promises, promise types]
+tags: [reference, bundle agent, promise types, processes, processes promises, promise types]
 ---
 
 Process promises refer to items in the system process table, i.e., a command 

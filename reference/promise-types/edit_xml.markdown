@@ -3,7 +3,7 @@ layout: default
 title: bundle edit_xml
 categories: [Reference, Promise Types, files, edit_xml]
 published: true
-alias: reference-promise-types-edit-xml-promises.html
+alias: reference-promise-types-edit_xml.html
 tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing]
 ---
 

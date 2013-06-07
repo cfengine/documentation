@@ -4,7 +4,7 @@ title: packages
 categories: [Reference, Promise Types, packages]
 published: true
 alias: reference-promise-types-packages.html
-tags: [reference, bundles, agent, packages, packages promises, promise types]
+tags: [reference, bundle agent, packages, packages promises, promise types]
 ---
 
 CFEngine supports a generic approach to integration with native

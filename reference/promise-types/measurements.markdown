@@ -4,7 +4,7 @@ title: measurements
 categories: [Reference, Promise Types, measurements]
 published: true
 alias: reference-promise-types-measurements.html
-tags: [reference, bundles, monitor, measurements, monitoring, promise types]
+tags: [reference, bundle monitor, measurements, monitoring, promise types]
 ---
 
 **These features are available only in CFEngine Enterprise.**
@@ -80,6 +80,8 @@ The general pattern of these promises is to decide whether the source of the
 information is either a file or pipe, determine the data type (integer, string 
 etc.), specify a pattern to match the result in the file stream and then 
 specify what to do with the result afterwards.
+
+***
 
 ## Attributes
 

@@ -4,7 +4,7 @@ title: services
 categories: [Reference, Promise Types,services]
 published: true
 alias: reference-promise-types-services.html
-tags: [reference, bundles, agent, services, processes, services promises, promise types]
+tags: [reference, bundle agent, services, processes, services promises, promise types]
 ---
 
 A service is a set of zero or more processes. It can be zero if the
@@ -120,6 +120,8 @@ Note that the special variables `$(this.promiser)` and
 parameters from the promise definition. The `$(this.service_policy)`
 variable is only defined for services promises.
 
+****
+
 ## Attributes
 
 ### service_policy
@@ -137,11 +139,11 @@ permissions).
 **Allowed input range**:   
 
 ```cf3
-               start
-               stop
-               disable
-               restart
-               reload
+    start
+    stop
+    disable
+    restart
+    reload
 ```
 
 **Example**:

@@ -3,7 +3,7 @@ layout: default
 title: insert_lines
 categories: [Reference, Promise Types, files, edit_line, insert_lines]
 published: true
-alias: reference-promise-types-files-edit_line-insert_-_lines.html
+alias: reference-promise-types-files-edit_line-insert_lines.html
 tags: [reference, bundle agent, bundle edit_line, files promises, file editing, insert_lines]
 ---
 

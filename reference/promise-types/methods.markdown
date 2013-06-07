@@ -4,7 +4,7 @@ title: methods
 categories: [Reference, Promise Types,methods]
 published: true
 alias: reference-promise-types-methods.html
-tags: [reference, bundles, agent, methods, promises, promise types]
+tags: [reference, bundle agent, methods, promises, promise types]
 ---
 
 Methods are compound promises that refer to whole bundles of promises.
@@ -16,13 +16,13 @@ identifiers is for the future, you can simply use any string here for
 the time being.
 
 ```cf3
-     
-      methods:
-     
-        "any"
-     
-           usebundle = method_id("parameter",...);
-     
+
+    methods:
+
+      "any"
+
+         usebundle = method_id("parameter",...);
+
 ```
 
 Methods are useful for encapsulating repeatedly used configuration issues and 
@@ -72,17 +72,19 @@ function call uniquely classified, CFEngine requires the promiser to
 contain the variable name of the method if the variable is a list.
 
 ```cf3
-bundle agent default
-{
-vars:
-    "m" slist  => { "x", "y" };
-    "p" string => "myfunction";
+    bundle agent default
+    {
+    vars:
+        "m" slist  => { "x", "y" };
+        "p" string => "myfunction";
 
-methods:
-    "set of $(m)" usebundle => $(m)("one");
-    "any"         usebundle => $(p)("two");
-}
+    methods:
+        "set of $(m)" usebundle => $(m)("one");
+        "any"         usebundle => $(p)("two");
+    }
 ```
+
+***
 
 ## Attributes
 

@@ -3,7 +3,7 @@ layout: default
 title: insert_text
 categories: [Reference, Promise Types, files, edit_xml, insert_text]
 published: true
-alias: reference-promise-types-files-edit-xml-insert-text.html
+alias: reference-promise-types-files-edit_xml-insert_text.html
 tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing, insert_text]
 ---
 

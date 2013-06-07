@@ -4,10 +4,8 @@ title: roles
 categories: [Reference, Promise Types, roles]
 published: true
 alias: reference-promise-types-roles.html
-tags: [reference, bundles, server, cf-serverd, cf-agent, cf-runagent, access control, users, roles, server, promise types]
+tags: [reference, bundle server, cf-serverd, cf-runagent, access control, users, roles, server, promise types]
 ---
-
-### in bundle server
 
 Roles promises are server-side decisions about which users are allowed
 to define soft-classes on the server's system during remote invocation
@@ -43,6 +41,8 @@ roles:
 In this example user `mark` is granted permission to remotely activate
 classes matching the regular expression `Myclass_.*` hen using the
 `cf-runagent` to activate CFEngine.
+
+****
 
 ## Attributes
 

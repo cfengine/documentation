@@ -4,7 +4,7 @@ title: meta
 categories: [Reference, Promise Types,meta]
 published: true
 alias: reference-promise-types-meta.html
-tags: [reference, bundles, common, meta, promises]
+tags: [reference, bundle common, meta, promises]
 ---
 
 Meta-data promises have no internal function. They are intended to be used to 

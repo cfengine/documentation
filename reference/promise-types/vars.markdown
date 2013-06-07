@@ -4,7 +4,7 @@ title: vars
 categories: [Reference, Promise Types, vars]
 published: true
 alias: reference-promise-types-vars.html
-tags: [reference, bundles, common, vars, promises]
+tags: [reference, bundle common, vars, promises]
 ---
 
 [Variables](manuals-language-concepts-variables.html) in CFEngine are defined 
@@ -12,6 +12,8 @@ as promises that an identifier of a certain type represents a particular
 value. Variables can be scalars or lists of types `string`, `int` or `real`. 
 Arrays are `associative` and use square brackets `[]` to enclose an-arbitrary 
 key.
+
+***
 
 ## Scalar Variables
 
@@ -84,6 +86,8 @@ value you assign to it looks like a real number (e.g., 3, 3.1415, .17,
 
 Real numbers are not used in many places in CFEngine, but they are useful for 
 representing probabilities and performance data.
+
+***
 
 ## List variables
 
@@ -179,6 +183,8 @@ number (e.g., 3, 3.1415, .17, 6.02e23, -9.21e-17).
 
 Some [functions](reference-functions.html) return `rlist`s, and an `rlist` may 
 contain the values copied from another `slist`, `rlist`, or `ilist`. See `policy`
+
+***
 
 ## Attributes
 

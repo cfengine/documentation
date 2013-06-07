@@ -4,7 +4,7 @@ title: reports
 categories: [Reference, Promise Types, reports]
 published: true
 alias: reference-promise-types-reports.html
-tags: [reference, bundles, common, reports, promises]
+tags: [reference, bundle common, reports, promises]
 ---
 
 Reports promises simply print messages. Outputting a message without qualification can be a dangerous operation. In a large installation
@@ -35,6 +35,8 @@ Messages outputted from report promises are prefixed with the letter R to distin
          showstate => { "otherprocs", "rootprocs" };
     }
 ```
+
+****
 
 ## Attributes
 

@@ -4,7 +4,7 @@ title: guest_environments
 categories: [Reference, Promise Types, guest_environments]
 published: true
 alias: reference-promise-types-guest_environments.html
-tags: [reference, bundles, agent, guest_environments, promises, promise types, virtual machines, agent, promises, libvirt, KVM, VMWare]
+tags: [reference, bundle agent, guest_environments, promises, promise types, virtual machines, agent, promises, libvirt, KVM, VMWare]
 ---
 
 Guest environment promises describe enclosed computing environments that
@@ -44,6 +44,10 @@ other machine.
 ```
 
 CFEngine currently provides a convergent interface to *libvirt*.
+
+***
+
+## Attributes
 
 ### environment_host
 
