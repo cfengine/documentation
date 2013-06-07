@@ -13,8 +13,8 @@ tags: [getting started, installation]
 -agreements (SLAs) and not intended for production environments. Do not upgrade 
 -or use in conjuction with other versions at this point. We are planning 
 -monthly snapshot (alpha) releases going forward, but official release date for 
--3.5 has not been set (expect it soon). See also 
--http://cfengine.com/blog/?page=4 for more information.
+-3.5 has not been set (expect it soon). [More information](http://cfengine.com/blog/?page=4).
+
 -<!--- TODO: move up when no longer a pre-release
 --->
 -
@@ -201,10 +201,36 @@ cf-agent will not bootstrap if no hub/policy server was found in the network. If
    $> /var/cfengine/bin/cf-agent --bootstrap <IP address>
 If only one Policy Server is found in the network cf-agent will perform the bootstrap without any further manual intervention of the user.
 
-Limitations:
+Limitations
+-----------
+
 Support ONLY for Linux.
 Automatic bootstrap is limited only to one subnet.
 This feature requires Policy Server machine to have only one IP address. With more IP adrresses i.e IPv4 and IPv6 at the same time server will be discovered as two different machines and user will be asked to specify IP address manually while bootstrap. Similar situation will occure when machine have more than one network interface installed.
+
+Known Issues 
+------------
+Invoking netstat on Windows or Linux/Unices to monitor listening
+ports for the serverd process currently shows port 5308 as bound
+with IPV6. To work around this issue, a small modification can be
+made to cf_serverd.cf which you'll find in the following location:
+ (Linux/Unices)
+ cfengine/inputs/controls/
+(Windows)
+ C:\Program Files\CFengine\inputs\controls
+
+At the top of the file, inside body_server_control, add the following line:
+
+```cf3
+
+body server control
+
+{
+...
+ bindtointerface 	  => "0.0.0.0";
+...
+
+```
 
 ----------------------------------------------------------------------------
 
