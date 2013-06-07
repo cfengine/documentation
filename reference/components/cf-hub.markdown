@@ -44,10 +44,15 @@ The data aggregator of CFEngine Enterprise.
     '--splay_updates'
        (-s) - Splay/load balance full-updates, overriding bootstrap times, 
        assuming a default 5 minute update schedule.
+    '--query'
+       (-q) - Collect reports from remote host. Value is 'full' or 'delta'.
+       -H option is required.
+    '--query-host'
+       (-H) - Remote hosts to gather reports from (for -q)
     '--version'
        (-V) - Output the version of the software
     '--verbose'
-       (-v) - Output verbose information about the behaviour of the agent
+       (-v) - Output verbose information about the behavior of the agent
 
 ## Control Promises
 
