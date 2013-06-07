@@ -36,7 +36,7 @@ PRODUCTION ENVIRONMENTS</center>**
 
 ### Prerequisites
 
-* CFEngine 3 Enterprise HUB version 2.1.x/2.2.x/3.0.x
+* CFEngine 3 Enterprise HUB version 2.2.x/3.0.x
 * Linux shell
 
 **Making a Backup of Important CFEngine Files Before you Start**
