@@ -187,7 +187,7 @@ as non-specific matches are too greedy for denial.
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The `maproot` sist contains host names or IP addresses 
+**Description**: The `maproot` slist contains host names or IP addresses 
 to grant full read-privilege on the server.
 
 Normally users authenticated by the server are granted access only to

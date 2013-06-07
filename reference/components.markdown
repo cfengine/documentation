@@ -229,7 +229,7 @@ not found.
 
 **Allowed input range**: `.*`
 
-**Description**: The `inputs` sist contains additional filenames to parse for promises.
+**Description**: The `inputs` slist contains additional filenames to parse for promises.
 
 The filenames specified are all assumed to be in the same directory
 as the file which references them (this is usually
