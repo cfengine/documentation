@@ -69,9 +69,11 @@ This is how the policy runs when the userlist contains an invalid entry:
 To run this example file as part of your main policy you need to make an
 additional change:
 
-There cannot be two `body agent control` in the main policy. Copy and paste 
-`abortbundleclasses => { "invalid" };` into /var/cfengine/masterfiles/controls/cf_agent.cf. 
-If you add it to the end of the file it should look something like this:
+There cannot be two `body agent control` in the main policy. Delete the
+`body agent control` section from /var/cfengine/masterfiles/unit_abort.cf.
+Copy and paste `abortbundleclasses => { "invalid" };` into
+/var/cfengine/masterfiles/controls/cf_agent.cf.  If you add it to
+the end of the file it should look something like this:
 
 ```cf3
     ...
@@ -81,4 +83,3 @@ If you add it to the end of the file it should look something like this:
     }
 ```
 
-Delete the `body agent control` section from /var/cfengine/masterfiles/unit_abort.cf.
