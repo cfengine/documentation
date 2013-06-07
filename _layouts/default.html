@@ -40,9 +40,9 @@
                     {% endfor %}
                 </div>
 
-                <button id="jump_to">
+                <!-- <button id="jump_to">
                     Jump to
-                </button>
+                </button> -->
                 <div class="clear"></div>
             </div>
             <article>
@@ -51,7 +51,7 @@
                     <ul>
                         {% for tag in page.tags %}
                         <li>
-                            <a href="tags/{{ tag | cleanString | downcase}}.html">{{ tag }}</a>
+                            <a href="{{site.baseurl}}tags/{{ tag | cleanString | downcase}}.html">{{ tag }}</a>
                         </li>
                         {% endfor %}
                     </ul>

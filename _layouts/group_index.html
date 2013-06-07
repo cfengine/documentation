@@ -9,7 +9,7 @@
 <ul>
 {% for post in paginator.posts %}
   <!-- Print post entry short stuff -->
-  <li><a href="/{{ post.alias }}">{{ post.title }}</a></li>
+  <li><a href="{{site.baseurl}}{{ post.alias }}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
 {% endif %}
