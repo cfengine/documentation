@@ -26,16 +26,16 @@ not a recommended task for CFEngine.
 
 There are three kinds of database supported by CFEngine:
 
-*LDAP - The Lightweight Directory Access Protocol*
+* *LDAP - The Lightweight Directory Access Protocol*
 
 A hierarchical network database primarily for reading simple schema.   
 
-*SQL - Structured Query Language*
+* *SQL - Structured Query Language*
 
 A number of relational databases (currently supported: MySQL, Postgres)
 for reading and writing complex data.   
 
-*Registry - Microsoft Registry*
+* *Registry - Microsoft Registry*
 
 An embedded database for interfacing with system values in Microsoft
 Windows (Only CFEngine Enterprise)
@@ -53,90 +53,89 @@ access on the server.
 
 ```cf3
      
-      databases:
-     
-       "database/subkey or table"
-     
-         database_operation = "create/delete/drop",
-         database_type = "sql/ms_registry",
-         database_columns = {
-                             "name,type,size",
-                             "name,type",
-                             },
-     
-         database_server = body;
-     
-     
-      body database_server name
-       {
-       db_server_owner = "account name";
-       db_server_password = "password";
-       db_server_host = "hostname or omit for localhost";
-       db_server_type = "mysql/posgres";
-       db_server_connection_db = "database we can connect to";
-       }
+    databases:
+
+    "database/subkey or table"
+
+       database_operation => "create/delete/drop",
+       database_type => "sql/ms_registry",
+       database_columns => {
+                           "name,type,size",
+                           "name,type",
+                           },
+
+       database_server => body;
+
+    body database_server name
+    {
+      db_server_owner = "account name";
+      db_server_password = "password";
+      db_server_host = "hostname or omit for localhost";
+      db_server_type = "mysql/posgres";
+      db_server_connection_db = "database we can connect to";
+    }
      
 ```
 
   
 
 ```cf3
-body common control
-{
-bundlesequence => { "databases" };
-}
+    body common control
+    {
+    bundlesequence => { "databases" };
+    }
 
-bundle agent databases
+    bundle agent databases
 
-{
-#commands:
+    {
+    #commands:
 
-#  "/usr/bin/createdb cf_topic_maps",
+    #  "/usr/bin/createdb cf_topic_maps",
 
-#        contain => as_user("mysql");
+    #        contain => as_user("mysql");
 
-databases:
+    databases:
 
-  "cf_topic_maps/topics"
+      "cf_topic_maps/topics"
 
-    database_operation => "create",
-    database_type => "sql",
-    database_columns => { 
-                        "topic_name,varchar,256",
-                        "topic_comment,varchar,1024",
-                        "topic_id,varchar,256",
-                        "topic_type,varchar,256",
-                        "topic_extra,varchar,26" 
-                        },
+        database_operation => "create",
+        database_type => "sql",
+        database_columns => { 
+                            "topic_name,varchar,256",
+                            "topic_comment,varchar,1024",
+                            "topic_id,varchar,256",
+                            "topic_type,varchar,256",
+                            "topic_extra,varchar,26" 
+                            },
 
-    database_server => myserver;
+        database_server => myserver;
 
 
 
-}
+    }
 
-################################################
+    ################################################
 
-body database_server myserver
-{
-any::
- db_server_owner => "postgres";
- db_server_password => "";
- db_server_host => "localhost";
- db_server_type => "postgres";
- db_server_connection_db => "postgres";
-none::
- db_server_owner => "root";
- db_server_password => "";
- db_server_host => "localhost";
- db_server_type => "mysql";
- db_server_connection_db => "mysql";
-}
+    body database_server myserver
+    {
+    any::
+     db_server_owner => "postgres";
+     db_server_password => "";
+     db_server_host => "localhost";
+     db_server_type => "postgres";
+     db_server_connection_db => "postgres";
+    none::
+     db_server_owner => "root";
+     db_server_password => "";
+     db_server_host => "localhost";
+     db_server_type => "mysql";
+     db_server_connection_db => "mysql";
+    }
 
-body contain as_user(x)
-{
-exec_owner => "$(x)";
-}
+    body contain as_user(x)
+    {
+    exec_owner => "$(x)";
+    }
 ```
 
 The promiser in database promises is a concatenation of the database
@@ -209,8 +208,8 @@ A blank value is equal to localhost.
 **Allowed input range**:   
 
 ```cf3
-                    postgres
-                    mysql
+    postgres
+    mysql
 ```
 
 **Default value:** none
@@ -272,8 +271,8 @@ database verification promises, it is made in the `database_server` body.
 **Allowed input range**:   
 
 ```cf3
-               sql
-               ms_registry
+    sql
+    ms_registry
 ```
 
 **Default value:** none
@@ -294,12 +293,12 @@ database_type => "ms_registry";
 **Allowed input range**:   
 
 ```cf3
-               create
-               delete
-               drop
-               cache
-               verify
-               restore
+    create
+    delete
+    drop
+    cache
+    verify
+    restore
 ```
 
 **Description**: The `database_operation` menu option represents the 
@@ -357,7 +356,6 @@ considered to be instances of individual columns.
 
 ```cf3
 bundle agent databases
-
 {
 databases:
 
