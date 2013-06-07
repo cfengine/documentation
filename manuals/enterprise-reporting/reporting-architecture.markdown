@@ -62,9 +62,10 @@ see up-to-date data, check the following points:
 
 `ps -e` should list processes 'cf-hub', 'httpd' and 'mongod'
 
-If that is not the case, run
+If that is not the case, run:
 
-    /var/cfengine/bin/cf-twin -Kv > cfout.log
+    $ rm -f /var/cfengine/state/mongod.lock
+    $ /var/cfengine/bin/cf-execd -Ov > cfout.log
 
 * check the CFEngine output
 
