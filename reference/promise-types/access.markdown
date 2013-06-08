@@ -221,18 +221,7 @@ files if the connecting user does not own the file on the server.
 
 ### ifencrypted
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-               true
-               false
-               yes
-               no
-               on
-               off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 

@@ -558,18 +558,7 @@ body switched on track\_value = "true".
 
 #### audit
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Description**: The `audit` menu option policy is a true/false switch for 
 detailed audit records of a promise. If this is set, CFEngine will perform 
@@ -594,18 +583,7 @@ database.
 
 #### background
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Description**: The `background` menu option policy is a true/false 
 switch for parallelizing the promise repair. If possible, perform the 

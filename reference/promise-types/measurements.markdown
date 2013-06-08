@@ -311,18 +311,7 @@ log file redundantly.
 This makes a log pattern promise equivalent to something like tail -f
 logfile | grep pattern in Unix parlance.
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-    true
-    false
-    yes
-    no
-    on
-    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Example**:
 

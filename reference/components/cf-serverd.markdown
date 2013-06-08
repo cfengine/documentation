@@ -151,16 +151,7 @@ correspond to system identities on the server-side system.
 
 ### auditing
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -345,16 +336,7 @@ The time is measured in seconds, default value 10s.
 
 ### denybadclocks
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** true
 
@@ -433,16 +415,7 @@ handled transparently.
 
 ### hostnamekeys
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -486,16 +459,7 @@ cache
 
 ### logallconnections
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -514,16 +478,7 @@ If set, the server will record connection attempts in syslog.
 
 ### logencryptedtransfers
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -684,16 +639,7 @@ See also the warning about regular expressions in `allowallconnects`.
 
 ### listen
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** true
 

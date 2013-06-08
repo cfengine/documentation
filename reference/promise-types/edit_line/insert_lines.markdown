@@ -94,18 +94,7 @@ the variables with the bundle in which they are defined. For example:
     $(mon.www_in)
 ```
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-    true
-    false
-    yes
-    no
-    on
-    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 

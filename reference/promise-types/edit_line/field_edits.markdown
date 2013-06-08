@@ -127,18 +127,7 @@ at the start and end, are generally discarded. If `allow_blank_fields` is set
 to true, CFEngine will retain the blank fields and print the appropriate 
 number of field separators. 
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-    true
-    false
-    yes
-    no
-    on
-    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -162,18 +151,7 @@ CFEngine will issue an error if a non-existent field is referenced. Blank
 fields in a tabular file can be eliminated or kept depending  in this setting. 
 If in doubt, set this to true. 
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-    true
-    false
-    yes
-    no
-    on
-    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -300,18 +278,7 @@ convention. Arrays are usually thought to start with first index equal to zero
 option, you can tell CFEngine that the first column should be understood as 
 number 0 instead, for consistency with other array functions.   
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-      true
-      false
-      yes
-      no
-      on
-      off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **History**: Version 3.1.0b1,Nova 2.0.0b1 (2010)
 

@@ -145,16 +145,7 @@ should not do it without a good reason.
 
 ### force_ipv4
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -173,16 +164,7 @@ or misconfigured setup.
 
 ### trustkey
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -215,16 +197,7 @@ in WORKDIR/ppkeys.
 
 ### encrypt
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -245,16 +218,7 @@ public/private keys for the client and server hosts.
 
 ### background_children
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -306,16 +270,7 @@ law of diminishing returns.
 
 ### output_to_file
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 

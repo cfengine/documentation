@@ -161,16 +161,7 @@ business goals in promises.
 If `ignore_missing_bundles` is set to true, if any bundles in the bundle 
 sequence do not exist, ignore and continue.
 
-**Type**: (menu option)
-
-**Allowed input range**
-
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value**: false
 
@@ -190,16 +181,7 @@ to failsafe mode.
 
 ### ignore_missing_inputs
 
-**Type**: (menu option)
-
-**Allowed input range**
-
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value**: false
 
@@ -349,16 +331,7 @@ discovery and name-lookup.
 
 ### require_comments
 
-**Type**: (menu option)
-
-**Allowed input range**
-
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -497,16 +470,7 @@ components may promise to send data.
 
 ### fips_mode
 
-**Type**: (menu option)
-
-**Allowed input range**
-
-                   true
-                   false
-                   yes
-                   no
-                   on
-                   off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 

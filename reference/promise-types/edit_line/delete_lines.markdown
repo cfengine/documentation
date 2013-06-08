@@ -204,18 +204,7 @@ This makes no sense for multi-line deletions, and is therefore disallowed. Eithe
 Note that this does not negate any condition expressed in `delete_select`. It 
 only negates the match of the initially promised lines.
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-               true
-               false
-               yes
-               no
-               on
-               off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 

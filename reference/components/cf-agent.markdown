@@ -244,7 +244,7 @@ rather than a security measure.
        LOG_LOCAL6
        LOG_LOCAL7
 
-**Default value:** LOG\_USER
+**Default value:** `LOG_USER`
 
 **Description**: The `agentfacility` mentu option policy sets the agent's 
 syslog facility level.
@@ -261,18 +261,9 @@ This is ignored on Windows, as CFEngine Enterprise creates event logs.
 
 ### allclassesreport
 
-**Type**: (menu option)
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
-
-**Default value**: off
+**Default value**: false
 
 **Description**: The `allclassesreport` menu option policy determines
 whether to generate the allclasses.txt report.
@@ -299,16 +290,7 @@ results.
 
 ### alwaysvalidate
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Description**: The `alwaysvalidate` menu option policy is a true/false 
 flag to determine whether configurations will always be checked before 
@@ -342,16 +324,7 @@ will force a revalidation of the input.
 **Deprecated*: Yes. This menu option policy is deprecated, does 
 nothing and is kept for backward compatibility.
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -413,16 +386,7 @@ be given as the argument, not the device name.
 
 ### hashupdates
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -576,16 +540,7 @@ since not all system calls seem to respect the signals.
 
 ### dryrun
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -786,16 +741,7 @@ automatically.
 **Deprecated**: Yes, since 3.1.0. Host identification is now handled 
 transparently.
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -855,16 +801,7 @@ another which is not tied to a specific time.
 
 ### inform
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -887,16 +824,7 @@ It is equivalent to (and when present, overrides) the command line option
 **Deprecated**: Yes. This menu option policy does nothing and is 
 kept for backward  compatibility.
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -971,16 +899,7 @@ descriptors which can limit this.
 
 ### mountfilesystems
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -1001,16 +920,7 @@ file system table.
 
 ### nonalphanumfiles
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -1086,16 +996,7 @@ process table. This keeps improves the efficiency of the agent.
 
 ### secureinput
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -1156,16 +1057,7 @@ number of bytes a mounted filesystem is expected to have.
 
 ### skipidentify
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -1209,16 +1101,7 @@ it will warn about them.
 
 ### syslog
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -1236,16 +1119,7 @@ switch on output to syslog at the inform level.
 
 ### track_value
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -1287,16 +1161,7 @@ machine must comply with.
 
 ### verbose
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-       true
-       false
-       yes
-       no
-       on
-       off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 

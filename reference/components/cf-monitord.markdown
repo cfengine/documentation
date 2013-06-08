@@ -161,16 +161,7 @@ rate) how quickly CFEngine forgets its previous history.
 
 ### histograms
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** true
 
@@ -222,16 +213,7 @@ See notes for syslog.
 
 ### tcpdump
 
-**Type**: (menu option)
-
-**Allowed input range**:
-
-    true
-    false
-    yes
-    no
-    on
-    off
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 

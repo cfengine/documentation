@@ -65,18 +65,7 @@ Storage promises refer to disks and filesystem properties.
 
 The default behavior is to not place edits in the file system table.
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-    true
-    false
-    yes
-    no
-    on
-    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -185,18 +174,7 @@ options must be legal options for the system mount commands.
 
 **Description**: true/false unmount a previously mounted filesystem
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-    true
-    false
-    yes
-    no
-    on
-    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -225,18 +203,7 @@ not local to the host. If `true` it will ignore a partition's network
 location and ask the current host to verify storage located physically
 on other systems.
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-    true
-    false
-    yes
-    no
-    on
-    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
@@ -332,18 +299,7 @@ This operation should not be left 'on' for more than a single run
 scan noting the schedule of changes between files. This can be used for
 a number of analyses including optimum backup schedule computation.
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-    true
-    false
-    yes
-    no
-    on
-    off
-```
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
