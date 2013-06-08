@@ -51,8 +51,6 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-
-
 **Example**:
 
 ```cf3

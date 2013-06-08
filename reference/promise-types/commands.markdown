@@ -212,8 +212,7 @@ CFEngine.
 
 **Allowed input range**: (arbitrary string)
 
-**Example**: 
-   
+**Example**:
 
 ```cf3
      
@@ -259,7 +258,7 @@ case of failure.
 
 **Allowed input range**: `1,3600`
 
-**Example**: 
+**Example**:
 
 ```cf3
      
@@ -282,9 +281,7 @@ it works like the cd shell command.
 
 **Allowed input range**: `"?(/.*)`
 
-
-**Example**: 
-   
+**Example**:
 
 ```cf3
      
@@ -303,15 +300,13 @@ process.
 
 The path of the directory will be experienced as the top-most root directory 
 for the process. In security parlance, this creates a 'sandbox' for the 
-process. Windows does not support this feature.   
-
+process. Windows does not support this feature.
 
 **Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
-**Example**: 
-   
+**Example**:
 
 ```cf3
      
@@ -395,7 +390,6 @@ should normally make your module completely silent.
 **Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
-
 
 **Example**:
 

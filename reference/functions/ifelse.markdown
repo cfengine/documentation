@@ -61,7 +61,6 @@ affect the default case?).  Here's the alternative with `ifelse`:
                              "z");
 ```
 
-
 **Example**:
 
 ```cf3

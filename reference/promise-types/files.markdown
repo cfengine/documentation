@@ -366,7 +366,6 @@ Note that the `r` permission is not necessary to read an object's
 permissions and attributes in all file systems. For example, in POSIX,
 having `x` on its containing directory is sufficient.
 
-
 **Example**:
 
 ```cf3
@@ -669,7 +668,6 @@ used to attempt to capture random changes of the system.
 **Type**: `string`
 
 **Allowed input range**: `.+`
-
 
 **Example**:
 
@@ -2917,7 +2915,6 @@ transformer-command in a very flexible way. See the `kept_returncodes`,
 
 Finally, you should note that the command is not run in a shell. This
 means that you cannot perform file redirection or create pipelines.
-
 
 **Type**: `string`
 

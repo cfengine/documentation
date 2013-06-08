@@ -22,7 +22,6 @@ The regex is anchored.
 * `list` : list identifier, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
 
-
 **Example**:
 
 ```cf3

@@ -41,7 +41,6 @@ See also: `lastnode`, dirname`, `splitstring`.
     * basename
     * dirname
 
-
 **Example**:
 
 ```cf3

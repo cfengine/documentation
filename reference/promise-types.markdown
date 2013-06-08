@@ -60,7 +60,6 @@ general transaction control to be implemented on promise verification.
 Action bodies place limits on how often to verify the promise and what 
 classes to raise in the case that the promise can or cannot be kept.
 
-
 **Example**:
 
 The following example shows a simple use of transaction control:
@@ -269,7 +268,6 @@ syslog mechanism to centralize or manage messaging from CFEngine. A backup
 On the native Windows version of CFEngine Enterprise, using verbose 
 will include a message when the promise is kept or repaired in the event 
 log.   
-
 
 **Example**:
 
@@ -796,7 +794,6 @@ In the above example, a promise maintenance repair timed-out waiting for some de
 globally. Note that any strings passed to this list are automatically 
 canonified, so it is unnecessary to call a canonify function on such inputs.
 
-
 **Example**:
 
 ```cf3
@@ -1308,7 +1305,6 @@ e.g. key=value strings.
 
 It is sometimes convenient to attach meta-data of a more technical nature to 
 policy. It may be used for arbitrary key=value strings for example.
-
 
 **Example**:
 

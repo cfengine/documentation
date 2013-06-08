@@ -244,7 +244,6 @@ package manager's behavior prevails.
 
 **Allowed input range**: (arbitrary string)
 
-
 **Example**:
 
 ```cf3
@@ -612,7 +611,6 @@ package list
 **Type**: `int`
 
 **Allowed input range**: `-99999999999,9999999999`
-
 
 **Example**:
 
@@ -1074,7 +1072,6 @@ Note that if `package_version_equal_command` is not specified, but
 issuing less comparison twice (v1 equals to v2 if v1 is not less than
 v2, and v2 is not less than v1).
 
-
 **Type**: `string`
 
 **Allowed input range**: `.+`
@@ -1111,7 +1108,6 @@ Note that if `package_version_equal_command` is not specified, but
 `package_version_less_command` is, then equality will be tested by
 issuing less comparison twice (v1 equals to v2 if v1 is not less than
 v2, and v2 is not less than v1).
-
 
 **Type**: `string`
 
