@@ -56,7 +56,6 @@ The data aggregator of CFEngine Enterprise.
 
 ## Control Promises
 
-
 ```cf3
     body hub control
     {
@@ -66,11 +65,13 @@ The data aggregator of CFEngine Enterprise.
 
 ### export_zenoss
 
+**Description**: Generate report for Zenoss integration
+
 **Type**: `string`
 
 **Allowed input range**: `.+`
 
-**Description**: Generate report for Zenoss integration
+**Example**:
 
     body hub control
     {
@@ -81,19 +82,27 @@ The data aggregator of CFEngine Enterprise.
 
 **Notes**:
 
-**History**: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
-
 For integration with the Zenoss monitoring software.
 
+**History**: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
 
 ### exclude_hosts
+
+**Description**: A list of IP addresses of hosts to exclude from
+report collection
+
+This list of IP addresses will not be queried for reports by `cf-hub`, even 
+though they are in the last-seen database.
+
+The lists may contain network addresses in CIDR notation or regular
+expressions to match the IP address. However, host names are
+currently not supported.
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: A list of IP addresses of hosts to exclude from
-report collection
+**Example**:
 
     body hub control
     {
@@ -104,35 +113,28 @@ report collection
 
 **History**: Was introduced in 3.3.0, Enterprise 2.1.1 (2011)
 
-In CFEngine Enterprise, this list of IP addresses will not
-be queried for reports by `cf-hub`, even though they are in the
-last-seen database.
-
-The lists may contain network addresses in CIDR notation or regular
-expressions to match the IP address. However, host names are
-currently not supported.
-
-
 ### hub_schedule
+
+**Description**: The class schedule used by cf-hub for report
+collation
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The class schedule used by cf-hub for report
-collation
+**Example**:
 
     body hub control
     {
     hub_schedule => { "Min00", "Min30", "(Evening|Night).Min45_50" };
     }
 
-**Notes**:
-
 **History**: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
 
 
 ### port
+
+**Description**: Default port for contacting hosts
 
 **Type**: `int`
 
@@ -140,8 +142,9 @@ collation
 
 **Default value:** 5308
 
-**Description**: Default port for contacting hub nodes
+**Examples**:
 
+```cf3
     body hub control
     {
     port => "5308";
@@ -155,6 +158,7 @@ collation
     !specialhost::
      port => "5308";
     }
+```
 
 **Notes**:
 

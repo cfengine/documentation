@@ -133,7 +133,7 @@ initial selection, and the match determination is made only on promised lines.
      }
 ```
 
-#### `delete_if_not_match_from_list
+#### delete_if_not_match_from_list
 
 **Description**: Delete lines from a file unless the lines *completely* match any of the anchored regular expressions listed.
 

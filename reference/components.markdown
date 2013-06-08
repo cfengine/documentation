@@ -58,6 +58,11 @@ be executed and in what order they will be executed. The list
 refers to the names of bundles (which might be parameterized,
 function-like objects).
 
+There is no default value for `bundlesequence`, and the absence of
+a `bundlesequence` will cause a compilation error. A `bundlesequence`
+may also be specified using the `-b` or `--bundlesequence` command
+line option.
+
 **Type**: `slist`
 
 **Allowed input range**: `.*`
@@ -76,8 +81,6 @@ function-like objects).
     }
 ```
 
-**Notes**:
-
 The order in which you execute bundles can affect the outcome of
 your promises. In general you should always define variables before
 you use them.
@@ -86,8 +89,6 @@ The `bundlesequence` is like a genetic makeup of a machine. The
 bundles act like characteristics of the systems. If you want
 different systems to have different `bundlesequences`, distinguish
 them with classes
-
-**Example**:
 
 ```cf3
     webservers::
@@ -122,12 +123,6 @@ use global variable lists to do this:
       "bs" slist => { "main", "basic_stuff" }; 
     }
 ```
-
-There is no default value for `bundlesequence`, and the absence of
-a `bundlesequence` will cause a compilation error. A `bundlesequence`
-may also be specified using the `-b` or `--bundlesequence` command
-line option.
-
 
 ### goal_patterns
 
@@ -181,22 +176,11 @@ to failsafe mode.
 
 ### ignore_missing_inputs
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value**: false
-
 **Description**: If any input files do not exist, ignore and continue
 
 The inputs lists determines which files are parsed by CFEngine.
 Normally stringent security checks are made on input files to
 prevent abuse of the system by unauthorized users. 
-
-**Example**:
-
-```cf3
-    ignore_missing_inputs => "true";
-```
-**Notes**:
 
 Sometimes however, it is appropriate to consider the automatic plug-in of
 modules that might or might not exist. This option permits CFEngine
@@ -205,11 +189,17 @@ effort' with those that do exist. The default of all Booleans is
 false, so the normal behavior is to signal an error if an input is
 not found.
 
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value**: false
+
+**Example**:
+
+```cf3
+    ignore_missing_inputs => "true";
+```
+
 ### inputs
-
-**Type**: `slist`
-
-**Allowed input range**: `.*`
 
 **Description**: The `inputs` slist contains additional filenames to parse for promises.
 
@@ -217,6 +207,10 @@ The filenames specified are all assumed to be in the same directory
 as the file which references them (this is usually
 `$(sys.workdir)/inputs`, but may be overridden by the `-f` or
 `--file` command line option.
+
+**Type**: `slist`
+
+**Allowed input range**: `.*`
 
 **Example**:
 
@@ -232,20 +226,23 @@ as the file which references them (this is usually
 
 **Notes**:
 
-There is no default value. If no filenames are specified, no other
-filenames will be included in the compilation process.
-
+If no filenames are specified, no other filenames will be included in the 
+compilation process.
 
 ### version
-
-**Type**: `string`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The `version` string contains the scalar version of the 
 configuration. 
 
 It is is used in error messages and reports.
+
+**Type**: `string`
+
+**Allowed input range**: (arbitrary string)
+
+This string should not contain the colon ':' character, as this has
+a special meaning in the context of knowledge management. This
+restriction might be lifted later.
 
 **Example**:
 
@@ -256,23 +253,16 @@ It is is used in error messages and reports.
     }
 ```
 
-**Notes**:
-
-This string should not contain the colon ':' character, as this has
-a special meaning in the context of knowledge management. This
-restriction might be lifted later.
-
-
 ### lastseenexpireafter
+
+**Description**: The value of `lastseenexpireafter` is the number of minutes 
+after which last-seen entries are purged.
 
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
 **Default value:** One week
-
-**Description**: The value of `lastseenexpireafter` is the number of minutes after which last-seen entries are
-purged.
 
 **Example**:
 
@@ -283,14 +273,13 @@ purged.
     }
 ```
 
-
 ### output_prefix
+
+**Description**: The string prefix for standard output
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The string prefix for standard output
 
 **Example**:
 
@@ -306,18 +295,17 @@ purged.
 On native Windows versions of CFEngine (Enterprise), this
 string is also prefixed messages in the event log.
 
-
 ### domain
-
-**Type**: `string`
-
-**Allowed input range**: `.*`
 
 **Description**: The `domain` string specifies the domain name for this host.
 
 There is no standard, universal or reliable way of determining the
 DNS domain name of a host, so it can be set explicitly to simplify
 discovery and name-lookup.
+
+**Type**: `string`
+
+**Allowed input range**: `.*`
 
 **Example**:
 
@@ -328,18 +316,20 @@ discovery and name-lookup.
     }
 ```
 
-
 ### require_comments
-
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
 
 **Description**: The `require_comments` menu option policy warns about 
 promises that do not have comment documentation.
 
-This may be used as a policy Quality Assurance measure, to remind
-policy makers to properly document their promises. 
+When true, `cf-promises` will report loudly on promises that do not have
+comments. Variables promises are exempted from this rule, since
+they may be considered self-documenting. This may be used as a policy Quality 
+Assurance measure, to remind policy makers to properly document their 
+promises.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 
@@ -353,29 +343,24 @@ policy makers to properly document their promises.
     }
 ```
 
-**Notes**:
-When true, `cf-promises` will report loudly on promises that do not have
-comments. Variables promises are exempted from this rule, since
-they may be considered self-documenting.
-
 
 ### host_licenses_paid
 
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** 25
-
 **Description**: The value of `host_licenses_paid` represents the number
- of licenses that you promise to have paid for by setting this value 
- (legally binding for CFEngine Enterprise).
+of licenses that you promise to have paid for by setting this value 
+(legally binding for CFEngine Enterprise).
 
 Licensees of CFEngine Enterprise have to make a promise in acceptance of 
 contract terms by setting this value to the number of licenses they have paid 
 for. This is tallied with the number of licenses granted. This declaration 
 should be placed in all separate configuration files, e.g. failsafe.cf, 
 promises.cf.
+
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** 25
 
 **Example**:
 
@@ -386,12 +371,18 @@ promises.cf.
     }
 ```
 
-
 ### site_classes
 
 **Description**: A `site_classes` contains classes that will represent 
 geographical site locations for hosts. These should be defined elsewhere in 
 the configuration in a classes promise.
+
+This list is used to match against topics when connecting
+inferences about host locations in the knowledge map. Normally any
+CFEngine classes promise whose name is defined as a thing or topic
+under class `locations::` will be assumed to be a location defining
+classifier. This list will add alternative class contexts for
+interpreting location.
 
 **Type**: `slist`
 
@@ -408,32 +399,22 @@ Each string is expected to be a class.
     }
 ```
 
-**Notes**:
-
-This list is used to match against topics when connecting
-inferences about host locations in the knowledge map. Normally any
-CFEngine classes promise whose name is defined as a thing or topic
-under class `locations::` will be assumed to be a location defining
-classifier. This list will add alternative class contexts for
-interpreting location.
-
-
 **History**: Was introduced in version 3.2.0, Nova 2.1.0 (2011)
 
 
 ### syslog_host
-
-**Type**: `string`
-
-**Allowed input range**: `[a-zA-Z0-9_$(){}.:-]+`
-
-**Default value:** 514
 
 **Description**: The `syslog_host` contains the name or address of a 
 host to which syslog messages should be sent directly by UDP.
 
 This is the hostname or IP address of a local syslog service to which all
 CFEngine's components may promise to send data. 
+
+**Type**: `string`
+
+**Allowed input range**: `[a-zA-Z0-9_$(){}.:-]+`
+
+**Default value:** 514
 
 **Example**:
 
@@ -447,15 +428,15 @@ CFEngine's components may promise to send data.
 
 ### syslog_port
 
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
 **Description**: The value of `syslog_port` represents the port number 
 of a UDP syslog service.
 
 It is the UDP port of a local syslog service to which all CFEngine's
 components may promise to send data. 
+
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
 
 **Example**:
 
@@ -467,15 +448,21 @@ components may promise to send data.
     }
 ```
 
-
 ### fips_mode
+
+**Description**: The `fips_mode` menu option policy determines whether 
+to activate full FIPS mode restrictions.
+
+In CFEngine Enterprise, this value may be set to avoid the use of old 
+deprecated algorithms that are no longer FIPS 140-2 compliant. If not set, 
+there is some degree of compatibility with older versions and algorithms. 
+During an upgrade, setting this parameter can cause a lot of recomputation of 
+checksums etc. Government bodies starting with CFEngine Enterprise 2.0 or  
+higher should set this to 'true' from the start.
 
 **Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
-
-**Description**: The `fips_mode` menu option policy determines whether 
-to activate full FIPS mode restrictions.
 
 **Example**:
 
@@ -485,13 +472,3 @@ to activate full FIPS mode restrictions.
     fips_mode => "true";
     }
 ```
-
-**Notes**:
-
-In CFEngine Enterprise, this value may be set to avoid the use of old 
-deprecated algorithms that are no longer FIPS 140-2 compliant. If not set, 
-there is some degree of compatibility with older versions and algorithms. 
-During an upgrade, setting this parameter can cause a lot of recomputation of 
-checksums etc. Government bodies starting with CFEngine Enterprise 2.0 or  
-higher should set this to 'true' from the start.
-

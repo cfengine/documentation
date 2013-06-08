@@ -79,20 +79,8 @@ times and output capture to `WORKDIR/outputs` and relay via email.
 
 ### agent_expireafter
 
-**Type**: `int`
-
-**Allowed input range**: `0,10080`
-
-**Default value:** 10080
-
 **Description**: Maximum agent runtime (in minutes)
 
-    body executor control
-    {
-    agent_expireafter => "120";
-    }
-
-**Notes**:  
 Sets a maximum time on any run of the command in `exec_command`. If
 no data is received from the pipe opened to the process created
 with `exec_command` after the time has elapsed, the process gets
@@ -104,17 +92,30 @@ run of `cf-agent` that you want to leave alone. Alternatively, you
 can make your jobs output something to STDOUT at least as often as
 this threshold. This will reset the timer.
 
+**Type**: `int`
+
+**Allowed input range**: `0,10080`
+
+**Default value:** 10080
+
+**Example**:
+
+```cf3
+    body executor control
+    {
+    agent_expireafter => "120";
+    }
+```
+
+**Notes**:  
 The setting will effectively allow you to set a threshold on the
 number of simultaneous agents that are running. For example, if you
 set it to `120` and you are using a 5-minute agent schedule, a
 maximum of 120 / 5 = 24 agents should be enforced.
 
-**Default value**:
-
-The default value is 10080 minutes (one week).
-
-
 ### executorfacility
+
+**Description**: Menu option for syslog facility level
 
 **Type**: (menu option)
 
@@ -131,44 +132,44 @@ The default value is 10080 minutes (one week).
     LOG_LOCAL6
     LOG_LOCAL7
 
-**Default value:** LOG\_USER
+See the syslog manual pages.
 
-**Description**: Menu option for syslog facility level
+**Default value:** `LOG_USER`
 
+**Example**:
+
+```cf3
     body executor control
     {
     executorfacility => "LOG_USER";
     }
-
-**Notes**:
-
-See the syslog manual pages.
-
+```
 
 ### exec_command
+
+**Description**: The full path and command to the executable run by
+default (overriding `builtin`)
+
+The command is run in a shell encapsulation so pipes and shell
+symbols may be used if desired.
 
 **Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
-**Description**: The full path and command to the executable run by
-default (overriding builtin)
+**Example**:
 
     exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
 
-**Notes**:
-
-The command is run in a shell encapsulation so pipes and shell
-symbols may be used if desired.
-
-
 ### mailfrom
+
+**Description**: Email-address cfengine mail appears to come from
 
 **Type**: `string`
 
 **Allowed input range**: `.*@.*`
 
-**Description**: Email-address cfengine mail appears to come from
+**Example**:
 
 ```cf3
     body executor control
@@ -177,11 +178,14 @@ symbols may be used if desired.
     }
 ```
 
-**Notes**:
-
-
-
 ### mailmaxlines
+
+**Description**: Maximum number of lines of output to send by email
+
+This limit prevents anomalously large outputs from clogging up a system 
+administrator's mailbox. The output is truncated in the email report, but the 
+complete original transcript is stored in `WORKDIR/outputs/*` where it can be 
+viewed on demand. A reference to the appropriate file is given.
 
 **Type**: `int`
 
@@ -189,29 +193,26 @@ symbols may be used if desired.
 
 **Default value:** 30
 
-**Description**: Maximum number of lines of output to send by email
+**Example**:
 
+```cf3
     body executor control
     {
     mailmaxlines => "100";
     }
-
-**Notes**:
-
-This limit prevents anomalously large outputs from clogging up a system 
-administrator's mailbox. The output is truncated in the email report, but the 
-complete original transcript is stored in `WORKDIR/outputs/*` where it can be 
-viewed on demand. A reference to the appropriate file is given.
-
-
+````
 
 ### mailto
+
+**Description**: Email-address cfengine mail is sent to
+
+The address to whom email is sent if an smtp host is configured.
 
 **Type**: `string`
 
 **Allowed input range**: `.*@.*`
 
-**Description**: Email-address cfengine mail is sent to
+**Example**:
 
 ```cf3
     body executor control
@@ -220,27 +221,10 @@ viewed on demand. A reference to the appropriate file is given.
     }
 ```
 
-**Notes**:
-
-The address to whom email is sent if an smtp host is configured.
-
-
-
 ### schedule
-
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The class schedule used by cf-execd for activating
 cf-agent
-
-    body executor control
-    {
-    schedule => { "Min00", "(Evening|Night).Min15_20", "Min30", "(Evening|Night).Min45_50" };
-    }
-
-**Notes**:
 
 The list should contain class expressions comprised of classes
 which are visible to the `cf-execd` daemon. In principle, any
@@ -253,21 +237,38 @@ and may be deferred by promise caching and the value of
 `ifelapsed`. Note also that the effectiveness of the `splayclass`
 function may be affected by changing the `schedule`.
 
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
+
 **Default value**:
 
     schedule => { "Min00", "Min05", "Min10", "Min15", "Min20", "Min25",
               "Min30", "Min35", "Min40", "Min45", "Min50", "Min55" };
 
+**Example**:
 
+```cf3
+    body executor control
+    {
+    schedule => { "Min00", "(Evening|Night).Min15_20", "Min30", "(Evening|Night).Min45_50" };
+    }
+```
 
 ### smtpserver
+
+**Description**: Name or IP of a willing smtp server for sending
+email
+
+This should point to a standard port 25 server without encryption. If you are 
+running secured or encrypted email then you should run a mail relay on 
+localhost and point this to localhost.
 
 **Type**: `string`
 
 **Allowed input range**: `.*`
 
-**Description**: Name or IP of a willing smtp server for sending
-email
+**Example**:
 
 ```cf3
   body executor control
@@ -276,33 +277,11 @@ email
   }
 ```cf3
 
-**Notes**:
-
-This should point to a standard port 25 server without encyption. If you are 
-running secured or encrypted email then you should run a mail relay on 
-localhost and point this to localhost.
-
-
-
 ### splaytime
-
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** 0
 
 **Description**: Time in minutes to splay this host based on its name
 hash
 
-```cf3
-  body executor control
-  {
-      splaytime => "2";
-  }
-```
-
-**Notes**:  
 Whenever any class listed in the `schedule` attribute is present,
 `cf-execd` can schedule an execution of `cf-agent`. The actual
 execution will be delayed an integer number of seconds between
@@ -312,13 +291,26 @@ all execute at different times, and surges in network traffic can
 be avoided.
 
 A rough rule of thumb for scaling of small updates is set the splay
-time between 1-5 minutes for up a few thousand hosts. The splaytime
+time between 1-5 minutes for up a few thousand hosts. The `splaytime`
 should not be set to a value larger than the `cf-execd` scheduling
 interval, else multiple clients might contend for data.
 
-**Default value**:
+**Type**: `int`
 
-The default value is 0 minutes.
+**Allowed input range**: `0,99999999999`
+
+**Default value:** 0
+
+The CFEngine default policy sets `splaytime` to 1.
+
+**Example**:
+
+```cf3
+  body executor control
+  {
+      splaytime => "2";
+  }
+```
 
 **See also:** The `splayclass()` function for a task-specific means
 for setting splay times.

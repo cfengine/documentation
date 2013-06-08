@@ -137,42 +137,32 @@ to developing the integrated monitoring capabilities of CFEngine.
 
 ### forgetrate
 
-**Type**: `real`
-
-**Allowed input range**: `0,1`
-
-**Default value:** 0.6
-
 **Description**: Decimal fraction [0,1] weighting of new values over
 old in 2d-average computation
-
-    body monitor control
-    {
-    forgetrate => "0.7";
-    }
-
-**Notes**:
 
 Configurable settings for the machine-learning algorithm that
 tracks system behavior. This is only for expert users. This
 parameter effectively determines (together with the monitoring
 rate) how quickly CFEngine forgets its previous history.
 
+**Type**: `real`
+
+**Allowed input range**: `0,1`
+
+**Default value:** 0.6
+
+**Example**:
+
+```cf3
+    body monitor control
+    {
+    forgetrate => "0.7";
+    }
+```
 
 ### histograms
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** true
-
-**Description**: Ignored, kept for backward compatibility
-
-    body monitor control
-    {
-    histograms => "true";
-    }
-
-**Notes**:
+**Deprecated**: Ignored, kept for backward compatibility
 
 `cf-monitord` now always keeps histograms information, so this
 option is a no-op kept for backward compatibility. It used to cause
@@ -180,7 +170,22 @@ CFEngine to learn the conformally transformed distributions of
 fluctuations about the mean.
 
 
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** true
+
+**Example**:
+
+```cf3
+    body monitor control
+    {
+    histograms => "true";
+    }
+```
+
 ### monitorfacility
+
+**Description**: Menu option for syslog facility
 
 **Type**: (menu option)
 
@@ -197,53 +202,46 @@ fluctuations about the mean.
     LOG_LOCAL6
     LOG_LOCAL7
 
-**Default value:** LOG\_USER
+**Default value:** `LOG_USER`
 
-**Description**: Menu option for syslog facility
+**Example**:
 
     body monitor control
     {
     monitorfacility => "LOG_USER";
     }
 
-**Notes**:
-
-See notes for syslog.
-
-
 ### tcpdump
+
+**Description**: true/false use tcpdump if found
+
+Interface with TCP stream if possible.
 
 **Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
-
-**Description**: true/false use tcpdump if found
 
     body monitor control
     {
     tcpdump => "true";
     }
 
-**Notes**:
-
-Interface with TCP stream if possible.
-
-
 ### tcpdumpcommand
+
+**Description**: Path to the tcpdump command on this system
+
+If this is defined, the monitor will try to interface with the TCP
+stream and monitor generic package categories for anomalies.
 
 **Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
-**Description**: Path to the tcpdump command on this system
+**Example**:
 
+```cf3
     body monitor control
     {
     tcpdumpcommand => "/usr/sbin/tcpdump -i eth1";
     }
-
-**Notes**:
-
-If this is defined, the monitor will try to interface with the TCP
-stream and monitor generic package categories for anomalies.
-
+```

@@ -302,7 +302,9 @@ to stop B, C needs to be stopped first. `stop_child_services` or
      
 ```
 
-#### `service_type
+#### service_type
+
+**Description**: Service abstraction type
 
 **Type**: (menu option)
 
@@ -312,8 +314,6 @@ to stop B, C needs to be stopped first. `stop_child_services` or
     windows
     generic
 ```
-
-**Description**: Service abstraction type
 
 **Example**:
 

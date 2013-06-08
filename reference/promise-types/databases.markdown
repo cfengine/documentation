@@ -155,12 +155,12 @@ a hierarchy of depth 1.
 
 #### db_server_owner
 
+**Description**: The `db_server_owner` string represents the user name 
+for a database connection.
+
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The `db_server_owner` string represents the user name 
-for a database connection.
 
 **Example**:
 
@@ -168,17 +168,16 @@ for a database connection.
      
      db_server_owner => "mark";
      
-```  
-   
+```
 
 #### db_server_password
+
+**Description**: The `db_server_password ` string represents the clear 
+text password for a database connection.
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The `db_server_password ` string represents the clear 
-text password for a database connection.
 
 **Example**:
 
@@ -190,15 +189,16 @@ text password for a database connection.
 
 #### db_server_host
 
-**Type**: `string`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `db_server_host` string represents the hostname or 
 address for a database connection. 
 
 A blank value is equal to localhost.
 
+**Type**: `string`
+
+**Allowed input range**: (arbitrary string)
+
+**Example**:
 ```cf3
      
      db_server_host => "sqlserv.example.org";
@@ -206,6 +206,9 @@ A blank value is equal to localhost.
 ```
 
 #### db_server_type
+
+**Description**: The `db_server_type` string represents the type of 
+database server being used.
 
 **Type**: (menu option)
 
@@ -218,9 +221,6 @@ A blank value is equal to localhost.
 
 **Default value:** none
 
-**Description**: The `db_server_type` string represents the type of 
-database server being used.
-
 **Example**:
 
 ```cf3
@@ -231,10 +231,6 @@ database server being used.
 
 #### db_server_connection_db
 
-**Type**: `string`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `db_server_connection_db` string is the name of an 
 existing database to connect to in order to create/manage other databases.
 
@@ -244,6 +240,10 @@ However, without an existing database this is not allowed. Thus, database
 servers provide a default database that can be connected to in order to 
 thereafter create new databases. These are called `postgres` and `mysql` 
 for their respective database servers.
+
+**Type**: `string`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -262,13 +262,10 @@ for their respective database servers.
 
 where x is currently `mysql` or `postgres`.
 
-**Notes**:
-
-For the knowledge agent, this setting is made in the control body. For 
-database verification promises, it is made in the `database_server` body.
-
-
 ### database_type
+
+**Description**: The `database_type` menu option is a type of database 
+that is to be manipulated.
 
 **Type**: (menu option)
 
@@ -281,9 +278,6 @@ database verification promises, it is made in the `database_server` body.
 
 **Default value:** none
 
-**Description**: The `database_type` menu option is a type of database 
-that is to be manipulated.
-
 **Example**:
 
 ```cf3
@@ -291,6 +285,9 @@ database_type => "ms_registry";
 ```
 
 ### database_operation
+
+**Description**: The `database_operation` menu option represents the 
+nature of the promise.
 
 **Type**: (menu option)
 
@@ -305,9 +302,6 @@ database_type => "ms_registry";
     restore
 ```
 
-**Description**: The `database_operation` menu option represents the 
-nature of the promise.
-
 **Example**:
 
 ```cf3
@@ -316,15 +310,15 @@ database_operation => "create";
 
 ### database_columns
 
-**Type**: `slist`
-
-**Allowed input range**: `.*`
-
 **Description**: A `database_columns` slist defines column definitions 
 to be promised by SQL databases.
 
 Columns are a list of tuplets (Name,type,size). Array items are triplets, 
 and fixed size data elements are doublets.
+
+**Type**: `slist`
+
+**Allowed input range**: `.*`
 
 **Example**:
 
@@ -346,15 +340,15 @@ and fixed size data elements are doublets.
 
 ### database_rows
 
-**Type**: `slist`
-
-**Allowed input range**: `.*,.*`
-
 **Description**: `database_rows` is an ordered list of row values to be 
 promised by SQL databases.
 
 This constraint is used only in adding data to database columns. Rows are 
 considered to be instances of individual columns.
+
+**Type**: `slist`
+
+**Allowed input range**: `.*,.*`
 
 **Example**:
 
@@ -384,10 +378,6 @@ and `REG_DWORD` (double word).
 
 ### registry_exclude
 
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: An `registry_exclude` slist contains regular expressions 
 to ignore in key/value verification.
 
@@ -396,6 +386,10 @@ keys of values matching a list of regular expressions. Some values in the
 registry are ephemeral and some should not be considered. This provides a 
 convenient way of avoiding names. It is analogous to `exclude_dirs` for 
 files.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -417,7 +411,3 @@ databases:
 
     database_type     => "ms_registry";
 ```
-
-
-
-

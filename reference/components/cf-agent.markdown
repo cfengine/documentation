@@ -56,6 +56,7 @@ affected by `common` and `agent` control bodies.
 
 Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
 
+****
 
 ## Control Promises
 
@@ -83,10 +84,6 @@ made by `cf-agent`.
 
 ### abortclasses
 
-**Type**: `slist`
-
-**Allowed input range**: `.*`
-
 **Description**: The `abortclasses` slist contains classes which if defined 
 lead to termination of cf-agent.
 
@@ -95,6 +92,10 @@ for. If any matching class becomes defined, it will cause the
 current execution of `cf-agent` to be aborted. This may be used for
 validation, for example. To handle class expressions, simply create
 an alias for the expression with a single name.
+
+**Type**: `slist`
+
+**Allowed input range**: `.*`
 
 **Example**:
 ```cf3
@@ -105,12 +106,7 @@ an alias for the expression with a single name.
       }
 ```
 
-
 ### abortbundleclasses
-
-**Type**: `slist`
-
-**Allowed input range**: `.*`
 
 **Description**: The `abortbundleclasses` slist contains classes which 
 if defined lead to termination of current bundle.
@@ -119,6 +115,10 @@ Regular expressions are used for classes, or class expressions
 that `cf-agent` will watch out for. If any of these classes becomes
 defined, it will cause the current bundle to be aborted. This may
 be used for validation, for example.
+
+**Type**: `slist`
+
+**Allowed input range**: `.*`
 
 **Example**:
 This example shows how to use the feature to validate input to a
@@ -179,15 +179,15 @@ method bundle.
 
 ### addclasses
 
-**Type**: `slist`
-
-**Allowed input range**: `.*`
-
 **Description**: The `addclasses` slist contains classes to be defined 
 always in the current context.
 
 This adds global, literal classes. The only predicates available during 
 the control section are hard-classes.
+
+**Type**: `slist`
+
+**Allowed input range**: `.*`
 
 **Example**:
 ```cf3
@@ -204,16 +204,12 @@ the control section are hard-classes.
 **Notes**:
 
 Another place to make global aliases for system hardclasses.
-Classes here are added unqeuivocally to the system. If classes are
+Classes here are added unequivocally to the system. If classes are
 used to predicate definition, then they must be defined in terms of
 global hard classes.
 
 
 ### agentaccess
-
-**Type**: `slist`
-
-**Allowed input range**: `.*`
 
 **Description**: A `agentaccess` slist contains user names that are 
 allowed to execute cf-agent.
@@ -221,6 +217,10 @@ allowed to execute cf-agent.
 This represents a list of user names that will be allowed to attempt 
 execution of the current configuration. This is mainly a sanity check 
 rather than a security measure.
+
+**Type**: `slist`
+
+**Allowed input range**: `.*`
 
 **Example**:
 ```cf3
@@ -261,15 +261,15 @@ This is ignored on Windows, as CFEngine Enterprise creates event logs.
 
 ### allclassesreport
 
+**Description**: The `allclassesreport` menu option policy determines
+whether to generate the `allclasses.txt` report.
+
+If set to true, the `state/allclasses.txt` file will be written to disk 
+during agent execution. 
+
 **Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value**: false
-
-**Description**: The `allclassesreport` menu option policy determines
-whether to generate the allclasses.txt report.
-
-If set to true, the state/allclasses.txt file will be written to disk 
-during agent execution. 
 
 **Example**:
 ```cf3
@@ -287,14 +287,13 @@ results.
 
 **History**: Was introduced in 3.2.0, Enterprise 2.1.0 (2011)
 
-
 ### alwaysvalidate
-
-**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Description**: The `alwaysvalidate` menu option policy is a true/false 
 flag to determine whether configurations will always be checked before 
 executing, or only after updates.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Example**:
 ```cf3
@@ -310,7 +309,7 @@ executing, or only after updates.
 
 **Notes**:
 
-The agents `cf-agent`, and `cfserverd` etc can run `cf-promises` to
+The agents `cf-agent` and `cfserverd` can run `cf-promises` to
 validate inputs before attempting to execute a configuration. As of
 version 3.1.2 core, this only happens if the configuration file has
 changed to save CPU cycles. When this attribute is set, `cf-agent`
@@ -321,7 +320,7 @@ will force a revalidation of the input.
 
 ### auditing
 
-**Deprecated*: Yes. This menu option policy is deprecated, does 
+**Deprecated**: This menu option policy is deprecated, does 
 nothing and is kept for backward compatibility.
 
 **Type**: [`boolean`][Promises#Promise_Attributes]
@@ -339,12 +338,6 @@ nothing and is kept for backward compatibility.
 
 ### binarypaddingchar
 
-**Type**: `string`
-
-**Allowed input range**: (arbitrary string)
-
-**Default value:** space (ASC=32)
-
 **Description**: The `binarypaddingchar` contains the character used to 
 pad unequal replacements in binary editing.
 
@@ -353,6 +346,12 @@ string with one that is longer or shorter as byte references and
 jumps would be destroyed. CFEngine will therefore not allow
 replacements that are larger in size than the original, but shorter
 strings can be padded out to the same length.
+
+**Type**: `string`
+
+**Allowed input range**: (arbitrary string)
+
+**Default value:** space (ASC=32)
 
 **Example**:
 ```cf3
@@ -367,10 +366,6 @@ strings can be padded out to the same length.
 
 ### bindtointerface
 
-**Type**: `string`
-
-**Allowed input range**: `.*`
-
 **Description**: The `bindtointerface` string describes the interface 
 to be used for outgoing connections.
 
@@ -378,17 +373,16 @@ On multi-homed hosts, the server and client can bind to a specific
 interface for server traffic. The IP address of the interface must
 be given as the argument, not the device name.
 
+**Type**: `string`
+
+**Allowed input range**: `.*`
+
 **Example**:
 ```cf3
     bindtointerface => "192.168.1.1";
 ```
 
-
 ### hashupdates
-
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
 
 **Description**: The `hashupdates` determines whether stored hashes are 
 updated when change is detected in source.
@@ -396,6 +390,10 @@ updated when change is detected in source.
 If 'true' the stored reference value is updated as soon as a warning 
 message has been given. As most changes are benign (package updates 
 etc) this is a common setting.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 ```cf3
@@ -408,15 +406,15 @@ etc) this is a common setting.
 
 ### childlibpath
 
-**Type**: `string`
-
-**Allowed input range**: `.*`
-
 **Description**: The `childlibpath` string contains the LD\_LIBRARY\_PATH 
 for child processes.
 
 This string may be used to set the internal `LD_LIBRARY_PATH` environment 
 of the agent.
+
+**Type**: `string`
+
+**Allowed input range**: `.*`
 
 **Example**:
 ```cf3
@@ -429,18 +427,18 @@ of the agent.
 
 ### checksum_alert_time
 
-**Type**: `int`
-
-**Allowed input range**: `0,60`
-
-**Default value:** 10 mins
-
 **Description**: The value of checksum_alert_time represents the 
 persistence time for the checksum\_alert class.
 
 When checksum changes trigger an alert, this is registered as a
 persistent class. This value determines the longevity of that
 class.
+
+**Type**: `int`
+
+**Allowed input range**: `0,60`
+
+**Default value:** 10 mins
 
 **Example**:
 ```cf3
@@ -450,8 +448,10 @@ class.
     }
 ```
 
-
 ### defaultcopytype
+
+**Description**: The `defaultcopytype` menu option policy sets the global 
+default policy for comparing source and image in copy transactions.
 
 **Type**: (menu option)
 
@@ -463,9 +463,6 @@ class.
        digest
        hash
        binary
-
-**Description**: The `defaultcopytype` menu option policy sets the global 
-default policy for comparing source and image in copy transactions.
 
 **Example**:
 ```cf3
@@ -479,12 +476,6 @@ default policy for comparing source and image in copy transactions.
 
 ### default_repository
 
-**Type**: `string`
-
-**Allowed input range**: `"?(/.*)`
-
-**Default value:** in situ
-
 **Description**: The `default_repository` string contains the path to the 
 default file repository.
 
@@ -493,6 +484,12 @@ files altered by CFEngine are stored. This should be understood in
 relation to the policy for 'backup' in copying, editing etc. If the
 backups are time-stamped, this becomes effective a version control
 repository. 
+
+**Type**: `string`
+
+**Allowed input range**: `"?(/.*)`
+
+**Default value:** in situ
 
 **Example**:
 ```cf3
@@ -505,26 +502,22 @@ repository.
 **Notes**: When a repository is specified, the files are stored
 using the canonified directory name of the original file,
 concatenated with the name of the file. So, for example,
-/usr/local/etc/postfix.conf would ordinarily be stored in an
-alternative repository as \_usr\_local\_etc\_postfix.conf.cfsaved.
-
-**See also**: [repository](#repository-in-files) for a way
-to locally override the global repository.
-
+`/usr/local/etc/postfix.conf` would ordinarily be stored in an
+alternative repository as `_usr_local_etc_postfix.conf.cfsaved`.
 
 ### default_timeout
-
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** 10 seconds
 
 **Description**: The value of `default_timeout` represents the maximum 
 time a network connection should attempt to connect.
 
 The time is in seconds. It is not a guaranteed number, since it
 depends on system behavior. 
+
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** 10 seconds
 
 **Example**:
 ```cf3
@@ -534,18 +527,17 @@ depends on system behavior.
     }
 ```
 
-**Notes**: Under Linux, the kernel version plays a role, 
-since not all system calls seem to respect the signals.
-
+**Notes**: Under Linux, the kernel version plays a role, since not all system 
+calls seem to respect the signals.
 
 ### dryrun
+
+**Description**: The `dryrun` menu option, if set, makes no changes to 
+the system, and will only report what it needs to do.
 
 **Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
-
-**Description**: The `dryrun` menu option, if set, makes no changes to 
-the system, and will only report what it needs to do.
 
 **Example**:
 ```cf3
@@ -558,17 +550,17 @@ the system, and will only report what it needs to do.
 
 ### editbinaryfilesize
 
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** `100k`
-
 **Description**: The value of `editbinaryfilesize` represents the limit 
 on maximum binary file size to be edited.
 
 This is a global setting for the file-editing safety-net for binary files,
 and may be overridden on a per-promise basis with `max_file_size`. 
+
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** `100k`
 
 **Example**:
 ```cf3
@@ -579,29 +571,22 @@ and may be overridden on a per-promise basis with `max_file_size`.
 ```
 
 **Notes**:
-
-The use of special units is allowed (See [Datatypes in CFEngine 3]
-(#Datatypes-in-CFEngine-3), for a list of permissible suffixes).
-
 When setting limits, the limit on editing binary files should
 generally be set higher than for text files.
 
-**See Also**: [edit\_defaults in files](#edit_005fdefaults-in-files)
-
-
 ### editfilesize
-
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** 100000
 
 **Description**: The value of `editfilesize` is the limit on maximum text 
 file size to be edited.
 
 This is a global setting for the file-editing safety-net, and may be 
 overridden on a per-promise basis with `max_file_size`.
+
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** 100000
 
 **Example**:
 ```cf3
@@ -611,25 +596,17 @@ overridden on a per-promise basis with `max_file_size`.
     }
 ```
 
-**Notes**:
-
-Use of special units is allowed (See [Datatypes in CFEngine 3]
-(#Datatypes-in-CFEngine-3) for a list of permissible suffixes).
-
-**See Also**: [edit\_defaults in files](#edit_005fdefaults-in-files)
-
-
 ### environment
-
-**Type**: `slist`
-
-**Allowed input range**: `[A-Za-z0-9_]+=.*`
 
 **Description**: The `environment` slist contains environment variables 
 to be inherited by children.
 
 This may be used to set the runtime environment of the agent process. 
 The values of environment variables are inherited by child commands. 
+
+**Type**: `slist`
+
+**Allowed input range**: `[A-Za-z0-9_]+=.*`
 
 **Example**:
 ```cf3
@@ -662,17 +639,17 @@ Some interactive programs insist on values being set, for example:
 
 ### expireafter
 
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** 1 min
-
 **Description**: The value of `expireafter` is a global default for time 
 before on-going promise repairs are interrupted.
 
 This represents the locking time after which CFEngine will attempt to 
 kill and restart its attempt to keep a promise.
+
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** 1 min
 
 **Example**:
 ```cf3
@@ -683,12 +660,7 @@ kill and restart its attempt to keep a promise.
     }
 ```
 
-
 ### files_single_copy
-
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The `files_single_copy` slist contains filenames to be 
 watched for multiple-source conflicts.
@@ -700,6 +672,10 @@ protection against accidential overlap of copies from diverse
 remote sources, or as a first-come-first-served disambiguation tool
 for lazy-evaluation of overlapping file-copy promises.
 
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
+
 **Example**:
 ```cf3
     body agent control
@@ -708,12 +684,7 @@ for lazy-evaluation of overlapping file-copy promises.
     }
 ```
 
-
 ### files_auto_define
-
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The `files_auto_define` slist contains filenames to 
 define classes if copied.
@@ -721,11 +692,15 @@ define classes if copied.
 Classes are automatically defined by the files that are copied. The
 file is named according to the prefixed 'canonization' of the file
 name. Canonization means that non-identifier characters are
-converted into underscores. Thus /etc/passwd would canonize to
-'\_etc\_passwd'. The prefix 'auto\_' is added to clarify the origin
-of the class. Thus in the example the copying of /etc/passwd would
-lead to the class 'auto\_\_etc\_passwd' being defined
+converted into underscores. Thus `/etc/passwd` would canonize to
+`_etc_passwd`. The prefix `auto_` is added to clarify the origin
+of the class. Thus in the example the copying of `/etc/passwd` would
+lead to the class `auto__etc_passwd` being defined
 automatically.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 ```cf3
@@ -735,15 +710,9 @@ automatically.
     }
 ```
 
-
 ### hostnamekeys
 
-**Deprecated**: Yes, since 3.1.0. Host identification is now handled 
-transparently.
-
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
+**Deprecated**: Host identification is now handled transparently.
 
 **Description**: The `hostnamekeys` menu option policy determines whether 
 to label ppkeys by hostname not IP address.
@@ -751,6 +720,10 @@ to label ppkeys by hostname not IP address.
 This represents a client side choice to base key associations on host 
 names rather than IP address. This is useful for hosts with dynamic 
 addresses.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 ```cf3
@@ -760,14 +733,7 @@ addresses.
     }
 ```
 
-
 ### ifelapsed
-
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** 1
 
 **Description**: The value of `ifelapsed` is a global default representing 
 the time that must elapse before a promise will be rechecked.
@@ -779,6 +745,12 @@ check could easily run every 5 minutes provided resource intensive
 operations are not performed on every run. Using time classes like
 `Hr12` etc., is one part of this strategy; using `ifelapsed` is
 another which is not tied to a specific time.
+
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** 1
 
 **Example**:
 ```cf3
@@ -798,18 +770,17 @@ another which is not tied to a specific time.
     }
 ```
 
-
 ### inform
-
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
 
 **Description**: The `inform` menu option policy sets the default  output 
 level 'permanently' within the class context indicated.
 
 It is equivalent to (and when present, overrides) the command line option
 '-I'. 
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 ```cf3
@@ -821,8 +792,8 @@ It is equivalent to (and when present, overrides) the command line option
 
 ### intermittency
 
-**Deprecated**: Yes. This menu option policy does nothing and is 
-kept for backward  compatibility.
+**Deprecated**: This attribute does nothing and is kept for backward  
+compatibility.
 
 **Type**: [`boolean`][Promises#Promise_Attributes]
 
@@ -830,12 +801,6 @@ kept for backward  compatibility.
 
 
 ### max_children
-
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** 1 concurrent agent promise
 
 **Description**: The value of `max_children` represents the maximum number 
 of background tasks that should be allowed concurrently.
@@ -847,15 +812,14 @@ concurrently. Background jobs often lead to contention of the disk
 resources slowing down tasks considerably; there is thus a law of 
 diminishing returns.
 
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** 1 concurrent agent promise
+
 **Example**:
 ```cf3
-    body runagent control
-    {
-    max_children => "10";
-    }
-    
-    # or
-    
     body agent control
     {
     max_children => "10";
@@ -865,27 +829,20 @@ diminishing returns.
 
 ### maxconnections
 
+**Description**: The value of `maxconnections` represents the maximum 
+number of outgoing connections to `cf-serverd`.
+
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
 **Default value:** 30 remote queries
 
-**Description**: The value of `maxconnections` represents the maximum 
-number of outgoing connections to cf-serverd.
-
 **Example**:
 ```cf3
     # client side 
     
     body agent control
-    {
-    maxconnections => "1000";
-    }
-    
-    # server side
-    
-    body server control
     {
     maxconnections => "1000";
     }
@@ -899,15 +856,15 @@ descriptors which can limit this.
 
 ### mountfilesystems
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
-
 **Description**: The `mountfilesystems` menu option policy determines 
 whether to mount any filesystems promised.
 
 It issues the generic command to mount file systems defined in the
 file system table.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 ```cf3
@@ -917,17 +874,16 @@ file system table.
     }
 ```
 
-
 ### nonalphanumfiles
-
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
 
 **Description**: The `nonalphanumfiles` menu option policy determines 
 whether to warn about filenames with no alphanumeric content.
 
 This test is applied in all recursive/depth searches.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 ```cf3
@@ -939,14 +895,14 @@ This test is applied in all recursive/depth searches.
 
 ### repchar
 
+**Description**: The `repchar` string represents a character used to 
+canonize pathnames in the file repository.
+
 **Type**: `string`
 
 **Allowed input range**: `.`
 
-**Default value:** \_
-
-**Description**: The `repchar` string represents a character used to 
-canonize pathnames in the file repository.
+**Default value:** `_`
 
 **Example**:
 ```cf3
@@ -958,12 +914,7 @@ canonize pathnames in the file repository.
 
 **Notes**:
 
-
 ### refresh_processes
-
-**Type**: `slist`
-
-**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Description**: The `refresh_processes` slist contains bundles to reload 
 the process table before verifying the bundles named in this list 
@@ -975,6 +926,10 @@ the process table at the start of the named bundle, each time is is
 scheduled. If the list is null, the process list will be reloaded
 at the start of every scheduled bundle.
 
+**Type**: `slist`
+
+**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
+
 **Example**:
 ```cf3
     body agent control
@@ -984,27 +939,24 @@ at the start of every scheduled bundle.
     }
 ```
 
-**Notes**:
-
-In the example above we use a non-empty list with the name 'none'.
-This is not a reserved word, but as long as there are no bundles
-with the name 'none' this has the effect of *never* reloading the
-process table. This keeps improves the efficiency of the agent.
+This examples uses a non-empty list with the name 'none'. This is not a 
+reserved word, but as long as there are no bundles with the name 'none' this 
+has the effect of *never* reloading the process table. This keeps improves the 
+efficiency of the agent.
 
 **History**: Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
 
-
 ### secureinput
-
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
 
 **Description**: The `secureinput` menu option policy checks whether 
 input files are writable by unauthorized users.
 
 If this is set, the agent will not accept an input file that is not
 owned by a privileged user.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 ```cf3
@@ -1014,17 +966,16 @@ owned by a privileged user.
     }
 ```
 
-
 ### sensiblecount
+
+**Description**: The value of `sensiblecount` represents the minimum 
+number of files a mounted filesystem is expected to have.
 
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
 **Default value:** 2 files
-
-**Description**: The value of `sensiblecount` represents the minimum 
-number of files a mounted filesystem is expected to have.
 
 **Example**:
 ```cf3
@@ -1034,17 +985,16 @@ number of files a mounted filesystem is expected to have.
     }
 ```
 
-
 ### sensiblesize
+
+**Description**: The value of `sensiblesize` represents the minimum 
+number of bytes a mounted filesystem is expected to have.
 
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
 **Default value:** 1000 bytes
-
-**Description**: The value of `sensiblesize` represents the minimum 
-number of bytes a mounted filesystem is expected to have.
 
 **Example**:
 ```cf3
@@ -1057,10 +1007,6 @@ number of bytes a mounted filesystem is expected to have.
 
 ### skipidentify
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
-
 **Description**: The `skipidentify` menu option policy determines whether 
 to send an IP/name during server connection because address resolution is 
 broken.
@@ -1070,6 +1016,10 @@ credentials for a secondary confirmation of their identity to a
 CFEngine server. This causes the agent to ignore its missing DNS
 credentials.
 
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
+
 **Example**:
 ```cf3
     body agent control
@@ -1078,18 +1028,17 @@ credentials.
     }
 ```
 
-
 ### suspiciousnames
-
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The `suspiciousnames` slist contains names to warn about 
 if found during any file search.
 
 If CFEngine sees these names during recursive (depth) file searches
 it will warn about them.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 ```cf3
@@ -1101,12 +1050,12 @@ it will warn about them.
 
 ### syslog
 
+**Description**: The `syslog` menu option policy determines wether to 
+switch on output to syslog at the inform level.
+
 **Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
-
-**Description**: The `syslog` menu option policy determines wether to 
-switch on output to syslog at the inform level.
 
 **Example**:
 ```cf3
@@ -1116,21 +1065,19 @@ switch on output to syslog at the inform level.
     }
 ```
 
-
 ### track_value
-
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
 
 **Description**: The `track_value` menu option policy determines whether 
 to switch on tracking of promise valuation.
 
-If this is true, CFEngine generates a log in
-WORKDIR/state/cf\_value.log of the estmated 'business value' of
-the system automation as a running log, `value_kept`, etc. The
-format of the file is date, sum value kept, sum value repaired, 
-sum value notkept.
+If true, CFEngine generates a log in `WORKDIR/state/cf_value.log` of the 
+estimated 'business value' of the system automation as a running log, 
+`value_kept`, etc. The format of the file is date, sum value kept, sum value 
+repaired, sum value notkept.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 ```cf3
@@ -1143,12 +1090,12 @@ sum value notkept.
 
 ### timezone
 
+**Description**: The `timezone` slist contains allowed timezones this 
+machine must comply with.
+
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The `timezone` slist contains allowed timezones this 
-machine must comply with.
 
 **Example**:
 ```cf3
@@ -1161,16 +1108,16 @@ machine must comply with.
 
 ### verbose
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
-
 **Description**: The `verbose` menu option policy determines whether to 
 switch on verbose standard output.
 
 It is equivalent to (and when present, overrides) the command line option
 '-v'. Sets the default output level 'permanently' for this
 promise.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 ```cf3
