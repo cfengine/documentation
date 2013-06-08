@@ -10,10 +10,55 @@ tags: [reference, enterprise, REST, API, reporting, sql, schema]
 CFEngine allows all standardized SQL `SELECT` constructs to query, with the 
 following additions:
 
-TIMESTAMP_UNIX() - seconds elapsed since 1970
-TIMESTAMP_UNIX_DAYS() - days elapsed since 1970
+* `TIMESTAMP_UNIX()` - seconds elapsed since 1970
+* `TIMESTAMP_UNIX_DAYS()` - days elapsed since 1970
 
 These are added to avoid use of non-portable SQL date/time functions.
+
+## Examples
+
+* Group LAST status of promises in bundle "ntp" in hosts matching class 
+"ntp_server".
+
+The result should include a list of the promises in the bundle, together with 
+counts of the four statuses (kept, repaired, not kept, unknown).
+
+```
+    SELECT Status, Count(*)
+      FROM PromiseStatusLast
+     WHERE Bundle=ntp_server AND Context=ntp_server
+     GROUP BY Status
+```
+
+* Group all file changes by file name occurred between a from and to 
+time-stamp on context "ubuntu".
+
+There should be counters on how many total occurrences and distinct host occurrences found.
+
+```
+    SELECT FileName, Count(*), Distinct(Count(HostKey))
+      FROM FileChanges
+     WHERE ChangeTime < TO AND ChangeTime > FROM AND Context=ubuntu
+     GROUP BY FileName
+```
+
+* List all package names and versions, with the host ip address and OS that 
+has it.
+
+```
+    SELECT 
+         software.name, 
+         software.version, 
+         variables.name, 
+         variables.value 
+    FROM software 
+    JOIN variables 
+    WHERE 
+         variables.name='ipv4' 
+         AND variables.value='172.20.10.41' 
+         AND variables.value='os' 
+         AND variables.value='linux';
+```
 
 ## Inventory
 
