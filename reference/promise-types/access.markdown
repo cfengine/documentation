@@ -42,22 +42,14 @@ promises will override less specific ones.
 **Example**:
 
 ```cf3
-#########################################################
-# Server config
-#########################################################
-
 body server control 
-
 {
 allowconnects         => { "127.0.0.1" , "::1" };
 allowallconnects      => { "127.0.0.1" , "::1" };
 trustkeysfrom         => { "127.0.0.1" , "::1" };
 }
 
-#########################################################
-
 bundle server access_rules()
-
 {
 access:
 
@@ -124,10 +116,6 @@ in the POSIX `gethostbyname` service.
 
 ### admit
 
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `admit` slist contains host names or IP addresses 
 to grant access to file objects.
 
@@ -138,6 +126,10 @@ standard connection tests in the control body.
 
 The lists may contain network addresses in CIDR notation or regular
 expressions to match the IP address or name of the connecting host.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -151,10 +143,6 @@ access:
 
 ### deny
 
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `deny` slist contains host names or IP addresses 
 to deny access to file objects.
 
@@ -162,11 +150,14 @@ Denial is for special exceptions. A better strategy is always to grant
 on a need to know basis. A security policy based on exceptions is a weak
 one.
 
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
+
 **Example**:
 
 ```cf3
 bundle server access_rules()
-
 {
 access:
 
@@ -178,15 +169,10 @@ access:
 ```
 
 **Notes**:
-
 Only regular expressions or exact matches are allowed in this list, 
 as non-specific matches are too greedy for denial.
 
 ### maproot
-
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The `maproot` slist contains host names or IP addresses 
 to grant full read-privilege on the server.
@@ -197,6 +183,13 @@ runs with root privileges on the server side of a client-server
 connection, the client is not automatically granted access to download
 files owned by non-privileged users. If `maproot` is true then remote
 `root` users are granted access to all files.
+
+A typical case where mapping is important is in making backups of many
+user files.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -215,15 +208,10 @@ access:
 
 **Notes**:
 
-A typical case where mapping is important is in making backups of many
-user files. On Windows, `cf-serverd`, `maproot` is required to read
-files if the connecting user does not own the file on the server.
+On Windows, `cf-serverd`, `maproot` is required to read files if the 
+connecting user does not own the file on the server.
 
 ### ifencrypted
-
-**Type**: [`boolean`][Promises#Promise_Attributes]
-
-**Default value:** false
 
 **Description**: The `ifencrypted` menu option determines whether the 
 current file access promise is conditional on the connection from the 
@@ -231,6 +219,10 @@ client being encrypted.
 
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
+
+**Default value:** false
 
 **Example**:
 
@@ -246,18 +238,6 @@ access:
 
 ### resource_type
 
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-               path
-               literal
-               context
-               query
-               variable
-```
-
 **Description**: The `resource_type` is the type of object being granted 
 access.
 
@@ -268,50 +248,17 @@ hashed passwords). In the case of literal data, the promise handle
 serves as the reference identifier for queries. Queries are instigated
 by function calls by any agent.
 
-**Example**:
+**Type**: (menu option)
+
+**Allowed input range**:   
 
 ```cf3
-
-bundle server access_rules()
-
-{
-access:
-
-  "value of my test_scalar, can expand variables here - $(sys.host)"
-    handle => "test_scalar",
-    comment => "Grant access to contents of test_scalar VAR",
-    resource_type => "literal",
-    admit => { "127.0.0.1" };
-
-  "XYZ"
-    resource_type => "variable",
-    handle => "XYZ",
-    admit => { "127.0.0.1" };
-
-
-  # On the policy hub
-
-  "collect_calls"
-     resource_type => "query",
-           admit   => { "127.0.0.1" };
-
-  # On the isolated client in the field
-
-
- "delta"
-    comment => "Grant access to cfengine hub to collect report deltas",
-    resource_type => "query",
-          admit   => { "127.0.0.1"  };
-  "full"
-          comment => "Grant access to cfengine hub to collect full report dump",
-    resource_type => "query",
-          admit   => { "127.0.0.1"  };
-
-
-}
+    path
+    literal
+    context
+    query
+    variable
 ```
-
-**Notes**:
 
 If the resource type is `literal`, CFEngine will grant access to a
 literal data string. This string is defined either by the promiser
@@ -350,12 +297,48 @@ is used to grant access to report 'menus'. If the promiser of a query request
 is called `collect_calls`, this grants access to server peering collect-call 
 tunneling.
 
+**Example**:
+
+```cf3
+bundle server access_rules()
+{
+access:
+
+  "value of my test_scalar, can expand variables here - $(sys.host)"
+    handle => "test_scalar",
+    comment => "Grant access to contents of test_scalar VAR",
+    resource_type => "literal",
+    admit => { "127.0.0.1" };
+
+  "XYZ"
+    resource_type => "variable",
+    handle => "XYZ",
+    admit => { "127.0.0.1" };
+
+
+  # On the policy hub
+
+  "collect_calls"
+     resource_type => "query",
+           admit   => { "127.0.0.1" };
+
+  # On the isolated client in the field
+
+
+ "delta"
+    comment => "Grant access to cfengine hub to collect report deltas",
+    resource_type => "query",
+          admit   => { "127.0.0.1"  };
+  "full"
+          comment => "Grant access to cfengine hub to collect full report dump",
+    resource_type => "query",
+          admit   => { "127.0.0.1"  };
+}
+```
 
 ### report_data_select
 
 **This body is only available in CFEngine Enterprise.**
-
-**Type**: `body report_data_select`
 
 **Description**: The `report_data_select` body restricts access to data 
 for the specified query types reported to the CFEngine Enterprise Database.
@@ -363,6 +346,16 @@ for the specified query types reported to the CFEngine Enterprise Database.
 This body template allows users to control the content of reports collected 
 by the Enterprise Database Server, and allows users to strip unwanted data 
 (e.g. temporary variables from reporting).
+
+Report content can be differentiated between hosts that are controlled
+by the class expression on access promiser.
+
+If more than one select statement applies to the same host, all of them are applied.
+
+Usage of this body is only allowed in conjunction with using 
+`resource_type => "query"`, as this is the resource type that is being affected.
+
+**Type**: `body report_data_select`
 
 **Example**:
 
@@ -375,23 +368,9 @@ body report_data_select
 }
 ```
 
-**Notes**:
-
-Report content can be differentiated between hosts that are controlled
-by the class expression on access promiser.
-
-If more than one select statement applies to the same host, all of them are applied.
-
-Usage of this body is only allowed in conjunction with using 
-resource_type => "query", as this is the resource type that is being affected.
-
 **History**: Introduced in Enterprise 3.5.0
 
 #### classes_include
-
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The `classes_include` attribute is used to filter content 
 of the class report collected by Enterprise Hub, to include classes matching 
@@ -401,6 +380,10 @@ Only classes matching the specified regular expressions on the list will
 be sent back in the report. 
 
 If this attribute is not used, the report content is not reduced.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -414,16 +397,18 @@ body report_data_select
 
 **History**: Introduced in Enterprise 3.5.0
 
-
 #### classes_exclude
-
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The `classes_exclude` attribute is used to filter content 
 of the class report collected by Enterprise Hub, to exclude classes matching 
 specified regular expressions on the list.
+
+If this attribute is used in conjunction with `classes_include` it will 
+exclude entries from the subset selected by the include expression.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -437,24 +422,21 @@ body report_data_select
 
 **Notes**:
 
-If this attribute is used in conjunction with `classes_include` it will 
-exclude entries from the subset selected by the include expression.
-
-Regular expressions for this attribute use the form <scope>.<variable_name>.
-
 **History**: Introduced in Enterprise 3.5.0
 
 #### variables_include
-
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The `variables_include` attribute is used to filter 
 content of the variables report collected by Enterprise Hub, to contain 
 only variables matching specified regular expressions on the list.
 
 If the attribute is not used, the report content is not reduced.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
+
+Regular expressions for this attribute use the form `<scope>.<variable_name>`.
 
 **Example**:
 
@@ -466,23 +448,21 @@ body report_data_select
 }
 ```
 
-**Notes**:
-
-Regular expressions for this attribute use the form <scope>.<variable_name>.
-
 **History**: Introduced in Enterprise 3.5.0
 
 
 #### variables_exclude
 
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `variables_exclude` attribute is used to filter 
 content of the variable report collected by Enterprise Hub, to exclude 
 variables matching specified regular expression list.
 
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
+
+Regular expressions for this attribute use the form <scope>.<variable_name>.
+  
 **Example**:
 
 ```cf3
@@ -494,20 +474,12 @@ body report_data_select
 ```
 
 **Notes**:
-
-Regular expressions for this attribute use the form <scope>.<variable_name>.
-
 If this attribute is used in conjunction with `variables_include`, it will 
 exclude entries from the subset selected by the include expression.
 
 **History**: Introduced in Enterprise 3.5.0
 
-
 #### promise_notkept_log_include
-
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
 
 **Description**: The `promise_notkept_log_include` attribute is used to 
 filter content of the not kept log report collected by Enterprise Hub, 
@@ -517,7 +489,11 @@ the list.
 Only those handles matching the regular expressions on the list will 
 be sent back in the report.
 
-If the attribute is not used, the report content will not bes reduced.
+If the attribute is not used, the report content will not be reduced.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -533,10 +509,6 @@ body report_data_select
 
 #### promise_notkept_log_exclude
 
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `promise_notkept_log_exclude` attribute is used to 
 filter content of the not kept log report collected by Enterprise Hub, 
 to exclude promise handles matching specified regular expressions on the 
@@ -544,6 +516,10 @@ list.
 
 Only those handles matching regular expression on the list will be excluded 
 from the report.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -563,10 +539,6 @@ from the subset selected by the include expression.
 
 #### promise_repaired_log_include
 
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `promise_repaired_log_include` attribute is used to 
 filter content of the repaired log report collected by Enterprise Hub, 
 to include regular expressions matched on the list.
@@ -574,6 +546,10 @@ to include regular expressions matched on the list.
 Only those handles matching the regular expression on the list will be 
 sent back in the report. If attribute is not used, the report content 
 will not be filtered.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -589,16 +565,16 @@ body report_data_select
 
 #### promise_repaired_log_exclude
 
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `promise_repaired_log_exclude` attribute is used to 
 filter content of the repaired log report collected by Enterprise Hub, 
 to exclude promise handles matching regular expression on the list.
 
 Only those handles matching regular expression on the list will be excluded 
 from the report.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -611,7 +587,6 @@ body report_data_select
 ```
 
 **Notes**:
-
 If this attribute is used in conjunction with `promise_repaired_log_include`, 
 it will exclude entries from the subset selected by the include expression.
 
@@ -620,10 +595,6 @@ it will exclude entries from the subset selected by the include expression.
 
 #### monitoring_include
 
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `monitoring_include` attribute is used to filter 
 content of the monitoring report collected by Enterprise Hub, to contain 
 only observed objects matching regular expressions on the list.
@@ -631,6 +602,10 @@ only observed objects matching regular expressions on the list.
 Only object names matching regular expression on the list will be sent 
 back in the report. If the attribute is not used, the report content will 
 not be filtered.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
@@ -646,16 +621,16 @@ body report_data_select
 
 #### monitoring_exclude
 
-**Type**: `slist`
-
-**Allowed input range**: (arbitrary string)
-
 **Description**: The `monitoring_exclude` attribute is used to filter 
 content of the monitoring report collected by Enterprise Hub, to exclude 
 observed objects matching specified regular expressions on the list.
 
 Only object names matching regular expression list will be excluded from 
 the report.
+
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 

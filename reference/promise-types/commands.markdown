@@ -123,7 +123,6 @@ as a non-privileged user inside an isolated directory tree.
 
 #### useshell
 
-
 **Description**: Specifies which shell to use when executing the command.
 
 The default is to *not* use a shell when executing commands. Use of a
@@ -163,9 +162,7 @@ For compatibility, the boolean values are also supported, and map to
      
 ```
 
-
 #### umask
-
 
 **Description**: Sets the internal umask for the process.
 
@@ -211,7 +208,6 @@ under. Keeping this in CFEngine policies could be a security hazard.
 Therefore, this option is not yet implemented on Windows versions of
 CFEngine. 
 
-
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
@@ -242,7 +238,6 @@ them.
 **Allowed input range**: (arbitrary string)
 
 **Example**: 
-   
 
 ```cf3
      
@@ -265,7 +260,6 @@ case of failure.
 **Allowed input range**: `1,3600`
 
 **Example**: 
-   
 
 ```cf3
      
