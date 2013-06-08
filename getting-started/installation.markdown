@@ -11,13 +11,10 @@ tags: [getting started, installation]
 **IMPORTANT NOTE:** *This is a pre-release of 3.5, intended for testing and 
 showcase only. This version is not supported, not covered by service level 
 agreements (SLAs) and not intended for production environments. Do not upgrade 
-or use in conjunction with other versions at this point. We are planning 
-monthly snapshot (alpha) releases going forward, but official release date for 
-3.5 has not been set.*
+or use in conjunction with other versions at this point.
 
 <!--- TODO: move up when no longer a pre-release
 -->
-
 
 ## Requirements
 
