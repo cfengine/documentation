@@ -17,13 +17,11 @@ If any of these classes becomes defined, it will cause the current bundle to be 
 ```cf3
 
 body common control
-
 {
 bundlesequence  => { "example"  };
 }
 
 body agent control
-
 {
 abortbundleclasses => { "invalid" };      # Abort bundle execution if this class is set
 }
