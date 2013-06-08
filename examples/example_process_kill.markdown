@@ -5,6 +5,8 @@ categories: [Examples, Ensure a process is not running]
 published: true
 alias: examples-ensure-process-not-running.html
 tags: [Examples, process, kill]
+reviewed: 2013-06-08
+reviewed-by: atsaloli
 ---
 
 This is a standalone policy that will kill the `sleep` process. You can adapt
