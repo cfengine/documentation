@@ -701,14 +701,7 @@ used to attempt to capture random changes of the system.
      {
      source => "/path/to/source";
      }
-     
-     # or
-     
-     body link_from example
-     {
-     source => "/path/to/source";
-     }
-     
+
 ```
 
 #### servers
@@ -833,7 +826,6 @@ used.
 ```cf3
      
      body copy_from example
-     
      {
      compare => "digest";
      }
@@ -972,7 +964,7 @@ for the size of files that may be copied.
 The use of the `irange` function is optional. Ranges may also be specified as 
 comma separated numbers.
 
-**Type**: irange[int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,inf`
 
@@ -1031,7 +1023,6 @@ absolute path. Windows only supports hard links.
 ```cf3
      
      body copy_from mycopy(from)
-     
      {
      source            => "$(from)";
      linkcopy_patterns => { ".*" };
@@ -2021,11 +2012,34 @@ deleted (that is, it "falls off the end" of the rotation).
 
 ### edit_template
 
+**Description**: The name of a special CFEngine template file to expand
+
+The template format uses inline tags to mark regions and classes. Each
+line represents an `insert_lines` promise, unless the promises are
+grouped into a block using:
+
+```cf3
+    [%CFEngine BEGIN %]
+    ...
+    [%CFEngine END %]
+```
+
+Variables, scalars and list variables are expanded within each promise.
+If lines are grouped into a block, the whole block is repeated when
+lists are expanded (see the Special Topics Guide on editing).
+
+If a class-context modified is used:
+
+```cf3
+[%CFEngine class-expression:: %]
+```
+
+then the lines that follow are only inserted if the context matches the
+agent's current context. This allows conditional insertion.
+
 **Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
-
-**Description**: The name of a special CFEngine template file to expand
 
 **Example**:
 
@@ -2086,32 +2100,9 @@ For example:
 
 **History**: Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
-The template format uses inline tags to mark regions and classes. Each
-line represents an `insert_lines` promise, unless the promises are
-grouped into a block using:
-
-```cf3
-    [%CFEngine BEGIN %]
-    ...
-    [%CFEngine END %]
-```
-
-Variables, scalars and list variables are expanded within each promise.
-If lines are grouped into a block, the whole block is repeated when
-lists are expanded (see the Special Topics Guide on editing).
-
-If a class-context modified is used:
-
-```cf3
-[%CFEngine class-expression:: %]
-```
-
-then the lines that follow are only inserted if the context matches the
-agent's current context. This allows conditional insertion.
-
 ### edit_xml
 
-**Type**: `bundle edit_xml`
+**Type**: [`bundle edit_xml`](bundle edit_xml)
 
 ### file_select
 
@@ -2119,11 +2110,13 @@ agent's current context. This allows conditional insertion.
 
 #### leaf_name
 
+**Description**: List of regexes that match an acceptable name
+
+This pattern matches only the node name of the file, not its path.
+
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: List of regexes that match an acceptable name
 
 **Example**:
 
@@ -2137,16 +2130,16 @@ agent's current context. This allows conditional insertion.
      
 ```
 
-**Notes**:
-This pattern matches only the node name of the file, not its path.   
-
 #### path_name
+
+**Description**: List of pathnames to match acceptable target
+
+Path name and leaf name can be conveniently tested for separately by use
+of appropriate regular expressions.   
 
 **Type**: `slist`
 
 **Allowed input range**: `"?(/.*)`
-
-**Description**: List of pathnames to match acceptable target
 
 **Example**:
 
@@ -2162,43 +2155,22 @@ This pattern matches only the node name of the file, not its path.
      
 ```
 
-**Notes**:
-Path name and leaf name can be conveniently tested for separately by use
-of appropriate regular expressions.   
-
 #### search_mode
+
+**Description**: A list of mode masks for acceptable file permissions
+
+The mode may be specified in symbolic or numerical form with + and -
+constraints. Concatenation `ug+s` implies `u` OR `g`, and `u+s,g+s`
+implies `u` AND `g`.   
 
 **Type**: `slist`
 
 **Allowed input range**: `[0-7augorwxst,+-]+`
 
-**Description**: A list of mode masks for acceptable file permissions
-
 **Example**:
 
 ```cf3
-     
-     #######################################################
-     #
-     # Searching for permissions
-     #
-     #######################################################
-     
-     body common control
-        {
-        any::
-     
-           bundlesequence  => { 
-                              "testbundle"
-                              };
-     
-        version => "1.2.3";
-        }
-     
-     ############################################
-     
      bundle agent testbundle
-     
      {
      files:
      
@@ -2210,33 +2182,22 @@ of appropriate regular expressions.
      
      }
      
-     ############################################
-     
      body file_select by_modes
-     
      {
      search_mode => { "711" , "666" };
      file_result => "mode";
      }
      
-     ############################################
-     
      body depth_search recurse(d)
-     
      {
      depth => "$(d)";
      }
      
 ```
 
-**Notes**:
-The mode may be specified in symbolic or numerical form with + and -
-constraints. Concatenation `ug+s` implies `u` OR `g`, and `u+s,g+s`
-implies `u` AND `g`.   
-
 #### search_size
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,inf`
 
@@ -2256,12 +2217,15 @@ implies `u` AND `g`.
 
 #### search_owners
 
+**Description**: List of acceptable user names or ids for the file, or
+regexes to match
+
+A list of anchored regular expressions any of which must match the entire 
+userid.
+
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: List of acceptable user names or ids for the file, or
-regexes to match
 
 **Example**:
 
@@ -2276,19 +2240,18 @@ regexes to match
 ```
 
 **Notes**:
-A list of regular expressions any of which must match the entire userid
-(see [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). Windows
-does not have user ids, only names.   
+Windows does not have user ids, only names.
 
 #### search_groups
+
+**Description**: List of acceptable group names or ids for the file, or
+regexes to match
+
+A list of anchored regular expressions, any of which must match the entire group.
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: List of acceptable group names or ids for the file, or
-regexes to match
 
 **Example**:
 
@@ -2303,19 +2266,19 @@ regexes to match
 ```
 
 **Notes**:
-A list of regular expressions, any of which must match the entire group
-(see [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)). On
-Windows, files do not have group associations.   
+On Windows, files do not have group associations.   
 
 #### search_bsdflags
+
+**Description**: String of flags for bsd file system flags expected set
+
+Extra BSD file system flags (these have no effect on non-BSD versions of
+CFEngine). See the manual page for `chflags` for more details.
 
 **Type**: `slist`
 
 **Allowed input range**:
 `[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+`
-
-**Description**: String of flags for bsd file system flags expected set
 
 **Example**:
 
@@ -2328,17 +2291,17 @@ Windows, files do not have group associations.
      }
 ```
 
-**Notes**:
-Extra BSD file system flags (these have no effect on non-BSD versions of
-CFEngine). See the manual page for `chflags` for more details.   
-
 #### ctime
 
-**Type**: irange [int,int]
+**Description**: Range of change times (ctime) for acceptable files
+
+The file's change time refers to both modification of content and
+attributes, such as permissions. On Windows, `ctime` refers to creation
+time.   
+
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,2147483647`
-
-**Description**: Range of change times (ctime) for acceptable files
 
 **Example**:
 
@@ -2352,25 +2315,22 @@ CFEngine). See the manual page for `chflags` for more details.
      
 ```
 
-**Notes**:
-The file's change time refers to both modification of content and
-attributes, such as permissions. On Windows, `ctime` refers to creation
-time.   
-
 #### mtime
 
-**Type**: irange [int,int]
+**Description**: Range of modification times (mtime) for acceptable files
+
+The file's modification time refers to both modification of content but
+not other attributes, such as permissions.   
+
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,2147483647`
-
-**Description**: Range of modification times (mtime) for acceptable files
 
 **Example**:
 
 ```cf3
      
      body files_select example
-     
      {
      # Files modified more than one year ago (i.e., not in mtime range)
      mtime => irange(ago(1,0,0,0,0,0),now);
@@ -2379,24 +2339,22 @@ time.
      
 ```
 
-**Notes**:
-The file's modification time refers to both modification of content but
-not other attributes, such as permissions.   
-
 #### atime
 
-**Type**: irange [int,int]
+**Description**: Range of access times (atime) for acceptable files
+
+A range of times during which a file was accessed can be specified in a
+`file_select` body.
+
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,2147483647`
-
-**Description**: Range of access times (atime) for acceptable files
 
 **Example**:
 
 ```cf3
      body file_select used_recently
      {
-     
      # files accessed within the last hour
      atime     => irange(ago(0,0,0,1,0,0),now);
      file_result => "atime";
@@ -2404,7 +2362,6 @@ not other attributes, such as permissions.
      
      
      body file_select not_used_much
-     
      {
      # files not accessed since 00:00 1st Jan 2000 (in the local timezime)
      atime     => irange(on(2000,1,1,0,0,0),now);
@@ -2413,18 +2370,19 @@ not other attributes, such as permissions.
      
 ```
 
-**Notes**:
-A range of times during which a file was accessed can be specified in a
-`file_select` body.
-
 #### exec_regex
+
+**Description**: Matches file if this regular expression matches any full
+line returned by the command
+
+The regular expression must be used in conjunction with the
+`exec_program` test. In this way the program must both return exit
+status 0 and its output must match the regular expression. The entire
+output must be matched.   
 
 **Type**: `string`
 
 **Allowed input range**: `.*`
-
-**Description**: Matches file if this regular expression matches any full
-line returned by the command
 
 **Example**:
 
@@ -2439,21 +2397,18 @@ line returned by the command
      
 ```
 
-**Notes**:
-The regular expression must be used in conjunction with the
-`exec_program` test. In this way the program must both return exit
-status 0 and its output must match the regular expression. The entire
-output must be matched (see [Anchored vs. unanchored regular
-expressions](#Anchored-vs_002e-unanchored-regular-expressions)).   
-
 #### exec_program
+
+**Description**: Execute this command on each file and match if the exit
+status is zero
+
+This is part of the customizable file search criteria. If the
+user-defined program returns exit status 0, the file is considered
+matched.   
 
 **Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
-
-**Description**: Execute this command on each file and match if the exit
-status is zero
 
 **Example**:
 
@@ -2467,30 +2422,29 @@ status is zero
      
 ```
 
-**Notes**:
-This is part of the customizable file search criteria. If the
-user-defined program returns exit status 0, the file is considered
-matched.   
-
 #### file_types
+
+**Description**: List of acceptable file types from menu choices
+
+File types vary in details between operating systems. The main POSIX
+types are provided here as menu options, with reg being a synonym for
+plain. In both cases this means not one of the "special" file types.   
 
 **Type**: (option list)
 
 **Allowed input range**:   
 
 ```cf3
-                    plain
-                    reg
-                    symlink
-                    dir
-                    socket
-                    fifo
-                    door
-                    char
-                    block
+    plain
+    reg
+    symlink
+    dir
+    socket
+    fifo
+    door
+    char
+    block
 ```
-
-**Description**: List of acceptable file types from menu choices
 
 **Example**:
 
@@ -2505,18 +2459,16 @@ matched.
      
 ```
 
-**Notes**:
-File types vary in details between operating systems. The main POSIX
-types are provided here as menu options, with reg being a synonym for
-plain. In both cases this means not one of the "special" file types.   
-
 #### issymlinkto
+
+**Description**: List of regular expressions to match file objects
+
+If the file is a symbolic link that points to files matched by one of these 
+expressions, the file will be selected.
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: List of regular expressions to match file objects
 
 **Example**:
 
@@ -2530,34 +2482,35 @@ plain. In both cases this means not one of the "special" file types.
 ```
 
 **Notes**:
-A list of regular expressions. If the file is a symbolic link that
-points to files matched by one of these expressions, the file will be
-selected. Windows does not support symbolic links, so this attribute is
-not applicable on that platform.   
+Windows does not support symbolic links, so this attribute is not applicable on that platform.
 
 #### file_result
+
+**Description**: Logical expression combining classes defined by file
+search criteria
+
+The syntax is the same as for a class expression, since the file selection
+is a classification of the file-search in the same way that system
+classes are a classification of the abstract host-search. That is, you
+may specify a boolean expression involving any of the file-matching
+components. 
 
 **Type**: `string`
 
 **Allowed input range**:
 `[!*(leaf_name|path_name|file_types|mode|size|owner|group|atime|ctime|mtime|issymlinkto|exec_regex|exec_program|bsdflags)[|.]*]*`
 
-**Description**: Logical expression combining classes defined by file
-search criteria
-
 **Example**:
 
 ```cf3
      
      body file_select year_or_less
-     
      {
      mtime       => irange(ago(1,0,0,0,0,0),now);  
      file_result => "mtime"; 
      }
      
      body file_select my_pdf_files_morethan1dayold
-     
      {
      mtime         => irange(ago(0,0,1,0,0,0),now);  
      leaf_name     => { ".*\.pdf" , ".*\.fdf" };
@@ -2568,34 +2521,10 @@ search criteria
      
 ```
 
-**Notes**:
-Sets the criteria for file selection outcome during file searches. The
-syntax is the same as for a class expression, since the file selection
-is a classification of the file-search in the same way that system
-classes are a classification of the abstract host-search. That is, you
-may specify a boolean expression involving any of the file-matching
-components. In this way, you may specify arbitrarily complex
-file-matching parameters, such as what is shown above, "is owned by
-mark, has the extension '.pdf' or '.fdf', and whose modification time is
-not between 1 day ago and now"; that is, it is older than 1 day.
-
-Items in the boolean expression in `file_result` must be from the
-following list:
-
--   leaf\_name
--   path\_name
--   file\_types
--   mode
--   size
--   owner
--   group
--   atime
--   ctime
--   mtime
--   issymlinkto
--   exec\_regex
--   exec\_program
--   bsdflags
+You may specify arbitrarily complex file-matching parameters, such as what is 
+shown above, "is owned by mark, has the extension '.pdf' or '.fdf', and whose 
+modification time is not between 1 day ago and now"; that is, it is older than 
+1 day.
 
 ### link_from
 
@@ -2603,12 +2532,18 @@ following list:
 
 #### copy_patterns
 
+**Description**: A set of patterns that should be copied and synchronized
+instead of linked
+
+During the linking of files, it is sometimes useful to buffer changes
+with an actual copy, especially if the link is to an ephemeral file
+system. This list of patterns matches files that arise during a linking
+policy. A positive match means that the file should be copied and
+updated by modification time.
+
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: A set of patterns that should be copied and synchronized
-instead of linked
 
 **Example**:
 
@@ -2621,30 +2556,26 @@ instead of linked
      
 ```
 
-**Notes**:
-During the linking of files, it is sometimes useful to buffer changes
-with an actual copy, especially if the link is to an ephemeral file
-system. This list of patterns matches files that arise during a linking
-policy. A positive match means that the file should be copied and
-updated by modification time.   
-
 #### link_children
+
+**Description**: true/false whether to link all directory's children to
+source originals
+
+If the promiser is a directory, instead of copying the children, link
+them to the source.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false whether to link all directory's children to
-source originals
 
 **Default value:** false
 
@@ -2659,24 +2590,32 @@ source originals
      
 ```
 
-**Notes**:
-If the promiser is a directory, instead of copying the children, link
-them to the source.   
-
 #### link_type
+
+**Description**: The type of link used to alias the file
+
+This determines what kind of link should be used to link files. Users
+are advised to be wary of 'hard links' (see Unix manual pages for the
+`ln` command). The behavior of non-symbolic links is often precarious and
+unpredictable.
+
+Note that symlink is synonymous with absolute links, which are different
+from relative links. Although all of these are symbolic links, the
+nomenclature here is defined such that symlink and absolute are
+equivalent . When verifying a link, choosing 'relative' means that the
+link *must* be relative to the source, so relative and absolute links
+are mutually exclusive.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    symlink
-                    hardlink
-                    relative
-                    absolute
+    symlink
+    hardlink
+    relative
+    absolute
 ```
-
-**Description**: The type of link used to alias the file
 
 **Default value:** symlink
 
@@ -2693,37 +2632,21 @@ them to the source.
 ```
 
 **Notes**:
-This determines what kind of link should be used to link files. Users
-are advised to be wary of 'hard links' (see Unix manual pages for the
-ln command). The behavior of non-symbolic links is often precarious and
-unpredictable. However, hard links are the only supported type by
-Windows.
-
-Note that symlink is synonymous with absolute links, which are different
-from relative links. Although all of these are symbolic links, the
-nomenclature here is defined such that symlink and absolute are
-equivalent . When verifying a link, choosing 'relative' means that the
-link *must* be relative to the source, so relative and absolute links
-are mutually exclusive.   
+On Windows, hard links are the only supported type.
 
 #### source
+
+**Description**: The source file to which the link should point
+
+For remote copies this refers to the file name on the remote server.
 
 **Type**: `string`
 
 **Allowed input range**: `.+`
 
-**Description**: The source file to which the link should point
-
 **Example**:
 
 ```cf3
-     
-     body copy_from example
-     {
-     source => "/path/to/source";
-     }
-     
-     # or
      
      body link_from example
      {
@@ -2732,22 +2655,28 @@ are mutually exclusive.
      
 ```
 
-**Notes**:
-For remote copies this refers to the file name on the remote server.   
 
 #### when_linking_children
+
+**Description**: Policy for overriding existing files when linking
+directories of children
+
+The options refer to what happens if the directory already exists, and
+is already partially populated with files. If the directory being copied
+from contains a file with the same name as that of a link to be created,
+it must be decided whether to override the existing destination object
+with a link, or simply omit the automatic linkage for files that already
+exist. The latter case can be used to make a copy of one directory with
+certain fields overridden.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    override_file
-                    if_no_such_file
+    override_file
+    if_no_such_file
 ```
-
-**Description**: Policy for overriding existing files when linking
-directories of children
 
 **Example**:
 
@@ -2760,30 +2689,26 @@ directories of children
      
 ```
 
-**Notes**:
-The options refer to what happens if the directory already exists, and
-is already partially populated with files. If the directory being copied
-from contains a file with the same name as that of a link to be created,
-it must be decided whether to override the existing destination object
-with a link, or simply omit the automatic linkage for files that already
-exist. The latter case can be used to make a copy of one directory with
-certain fields overridden.   
-
 #### when_no_source
+
+**Description**: Behavior when the source file to link to does not exist
+
+This describes how CFEngine should respond to an attempt to create a
+link to a file that does not exist. The options are to force the
+creation to a file that does not (yet) exist, delete any existing link,
+or do nothing.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    force
-                    delete
-                    nop
+    force
+    delete
+    nop
 ```
 
-**Description**: Behaviour when the source file to link to does not exist
-
-**Default value:** nop
+**Default value:** `nop`
 
 **Example**:
 
@@ -2796,45 +2721,11 @@ certain fields overridden.
      
 ```
 
-**Notes**:
-This describes how CFEngine should respond to an attempt to create a
-link to a file that does not exist. The options are to force the
-creation to a file that does not (yet) exist, delete any existing link,
-or do nothing.
-
 ### move_obstructions
-
-**Type**: (menu option)
-
-**Allowed input range**:   
-
-```cf3
-               true
-               false
-               yes
-               no
-               on
-               off
-```
-
-**Default value:** false
 
 **Description**: true/false whether to move obstructions to file-object
 creation
 
-**Example**:
-
-```cf3
-files:
-
-  "/tmp/testcopy" 
-
-    copy_from    => mycopy("/tmp/source"),
-    move_obstructions => "true",
-    depth_search => recurse("inf");
-```
-
-**Notes**:
 If we have promised to make file X a link, but it already exists as a
 file, or vice-versa, or if a file is blocking the creation of a
 directory, then normally CFEngine will report an error. If this is set,
@@ -2846,23 +2737,72 @@ Note that symbolic links for directories are treated as directories, not
 links. This behavior can be discussed, but the aim is to err on the
 side of caution.
 
+**Type**: (menu option)
+
+**Allowed input range**:   
+
+```cf3
+    true
+    false
+    yes
+    no
+    on
+    off
+```
+
+**Default value:** false
+
+**Example**:
+
+```cf3
+    files:
+
+      "/tmp/testcopy" 
+
+        copy_from    => mycopy("/tmp/source"),
+        move_obstructions => "true",
+        depth_search => recurse("inf");
+```
+
+**Notes**:
 Some operating systems (Solaris) use symbolic links in path names.
 Copying to a directory could then result in renaming of the important
 link, if the behavior is different.
 
 ### pathtype
 
+**Description**: Menu option for interpreting promiser file object
+
+By default, CFEngine makes an educated guess as to whether the promise
+pathname involves a regular expression or not. This guesswork is needed
+due to cross-platform differences in filename interpretation.
+
+If CFEngine guesses (or is told) that the pathname uses a regular
+expression pattern, it will undertake a file search to find possible
+matches. This can consume significant resources, and so the guess option
+will always try to optimize this. Guesswork is, however, imperfect, so
+you have the option to declare your intention.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-               literal
-               regex
-               guess
+    literal
+    regex
+    guess
 ```
 
-**Description**: Menu option for interpreting promiser file object
+If the keyword `literal` is invoked, a path will be treated as a literal
+string regardless of what characters it contains. If it is declared
+`regex`, it will be treated as a pattern to match.
+
+Note that CFEngine splits the promiser up into path links before
+matching, so that each link in the path chain is matched separately.
+Thus it it meaningless to have a `/` in a regular expression, as the
+comparison will never see this character.
+
+**Default value**: `guess`
 
 **Example**:
 
@@ -2883,38 +2823,15 @@ files:
          perms => system;
 ```
 
-**Notes**:  
-   
- By default, CFEngine makes an educated guess as to whether the promise
-pathname involves a regular expression or not. This guesswork is needed
-due to cross-platform differences in filename interpretation.
-
-If CFEngine guesses (or is told) that the pathname uses a regular
-expression pattern, it will undertake a file search to find possible
-matches. This can consume significant resources, and so the guess option
-will always try to optimize this. Guesswork is, however, imperfect, so
-you have the option to declare your intention.
-
-If the keyword `literal` is invoked, a path will be treated as a literal
-string regardless of what characters it contains. If it is declared
-regex, it will be treated as a pattern to match.
-
-Note that CFEngine splits the promiser up into path links before
-matching, so that each link in the path chain is matched separately.
-Thus it it meaningless to have a / in a regular expression, as the
-comparison will never see this character.
-
-In the examples above, at least one case implies an iteration over all
+In these examples, at least one case implies an iteration over all
 files/directories matching the regular expression, while the last case
 means a single literal object with a name composed of dots and stars.
 
+**Notes**:  
 On Windows paths using `regex` must use the forward slash (`/`) as path
 separator, since the backward slash has a special meaning in a regular
-expression. Literal paths may also use backslash (`') as a path
+expression. Literal paths may also use backslash (`\`) as a path
 separator.
-
-See [Regular expressions in paths](#Regular-expressions-in-paths), for
-more information.
 
 ### perms
 
@@ -2922,19 +2839,18 @@ more information.
 
 #### bsdflags
 
+**Description**: List of menu options for BSD file system flags to set
+
 **Type**: `slist`
 
 **Allowed input range**:
 `[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+`
-
-**Description**: List of menu options for BSD file system flags to set
 
 **Example**:
 
 ```cf3
      
      body perms example
-     
      {
      bsdflags => { "uappnd","uchg","uunlnk","nodump",
                    "opaque","sappnd","schg","sunlnk" };
@@ -2945,16 +2861,21 @@ more information.
 **Notes**:
 The BSD Unices (FreeBSD, OpenBSD, NetBSD) and MacOSX have additional
 file system flags which can be set. Refer to the BSD `chflags`
-documentation for this.   
+documentation for this.
 
 #### groups
+
+**Description**: List of acceptable groups of group ids, first is change
+target
+
+The first named group in the list is the default that will be configured
+if the file does not match an element of the list. The reserved word
+none may be used to match files that are not owned by a registered
+group.
 
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$.-]+`
-
-**Description**: List of acceptable groups of group ids, first is change
-target
 
 **Example**:
 
@@ -2967,21 +2888,18 @@ target
 ```
 
 **Notes**:
-The first named group in the list is the default that will be configured
-if the file does not match an element of the list. The reserved word
-none may be used to match files that are not owned by a registered
-group. On Windows, files do not have file groups associated with them,
-and thus this attribute is ignored.
-
-ACLs may be used in place for this.   
+On Windows, files do not have file groups associated with them,
+and thus this attribute is ignored. ACLs may be used in place for this.   
 
 #### mode
+
+**Description**: File permissions
+
+The mode string may be symbolic or numerical, like `chmod`.
 
 **Type**: `string`
 
 **Allowed input range**: `[0-7augorwxst,+-]+`
-
-**Description**: File permissions (like posix chmod)
 
 **Example**:
 
@@ -2995,17 +2913,21 @@ ACLs may be used in place for this.
 ```
 
 **Notes**:
-The mode string may be symbolic or numerical, like `chmod`. This is
-ignored on Windows, as the permission model uses ACLs.
+This is ignored on Windows, as the permission model uses ACLs.
 
 #### owners
+
+**Description**: List of acceptable owners or user ids, first is change
+target
+
+The first user is the reference value that CFEngine will set the file to
+if none of the list items matches the true state of the file. The
+reserved word none may be used to match files that are not owned by a
+registered user.
 
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$.-]+`
-
-**Description**: List of acceptable owners or user ids, first is change
-target
 
 **Example**:
 
@@ -3019,11 +2941,6 @@ target
 ```
 
 **Notes**:
-The first user is the reference value that CFEngine will set the file to
-if none of the list items matches the true state of the file. The
-reserved word none may be used to match files that are not owned by a
-registered user.
-
 On Windows, users can only take ownership of files, never give it. Thus,
 the first user in the list should be the user running the CFEngine
 process (usually Administrator). Additionally, some groups may be owners
@@ -3031,21 +2948,25 @@ on Windows (such as the Administrators group).
 
 #### rxdirs
 
+**Description**: true/false add execute flag for directories if read flag
+is set
+
+Default behavior is to set the x flag on directories automatically if
+the r flag is specified when specifying multiple files in a single
+promise.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false add execute flag for directories if read flag
-is set
 
 **Example**:
 
@@ -3059,9 +2980,7 @@ is set
 ```
 
 **Notes**:
-Default behavior is to set the x flag on directories automatically if
-the r flag is specified when specifying multiple files in a single
-promise. This is ignored on Windows, as the permission model uses ACLs.
+This is ignored on Windows, as the permission model uses ACLs.
 
 ### rename
 
@@ -3069,20 +2988,24 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
 
 #### disable
 
+**Description**: true/false automatically rename and remove permissions
+
+Disabling a file means making it unusable. For executables this means
+preventing execution, for an information file it means making the file
+unreadable.   
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-                    true
-                    false
-                    yes
-                    no
-                    on
-                    off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false automatically rename and remove permissions
 
 **Default value:** false
 
@@ -3098,18 +3021,16 @@ promise. This is ignored on Windows, as the permission model uses ACLs.
      
 ```
 
-**Notes**:
-Disabling a file means making it unusable. For executables this means
-preventing execution, for an information file it means making the file
-unreadable.   
-
 #### disable_mode
+
+**Description**: The permissions to set when a file is disabled
+
+To disable an executable it is not enough to rename it, you should also
+remove the executable flag.   
 
 **Type**: `string`
 
 **Allowed input range**: `[0-7augorwxst,+-]+`
-
-**Description**: The permissions to set when a file is disabled
 
 **Example**:
 
@@ -3122,17 +3043,17 @@ unreadable.
      
 ```
 
-**Notes**:
-To disable an executable it is not enough to rename it, you should also
-remove the executable flag.   
-
 #### disable_suffix
+
+**Description**: The suffix to add to files when disabling
+
+To disable files in a particular manner, use this string suffix.
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The suffix to add to files when disabling (.cfdisabled)
+**Default value**: `.cfdisabled`
 
 **Example**:
 
@@ -3146,17 +3067,13 @@ remove the executable flag.
      
 ```
 
-**Notes**:
-To disable files in a particular manner, use this string suffix. The
-default value is .cf-disabled.   
-
 #### newname
+
+**Description**: The desired name for the current file
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The desired name for the current file
 
 **Example**:
 
@@ -3171,11 +3088,25 @@ default value is .cf-disabled.
 
 #### rotate
 
+**Description**: Maximum number of file rotations to keep
+
+Used for log rotation. If the file is named `foo` and the rotate attribute
+is set to 4, as above, then initially `foo` is copied to `foo.1` and the old
+file `foo` is zeroed out (that is, the inode of the original logfile does
+not change, but the original log file will be empty after the rotation
+is complete).
+
+The next time the promise is executed, `foo.1` will be renamed `foo.2`, `foo`
+is again copied to `foo.1` and the old file `foo` is again zeroed out.
+
+Each time the promise is executed (and typically, the promise would be
+executed as guarded by time-based or file-size-based classes), the files
+are copied/zeroed or rotated as above until there are rotate numbered
+files plus the one "main" file.
+
 **Type**: `int`
 
 **Allowed input range**: `0,99`
-
-**Description**: Maximum number of file rotations to keep
 
 **Example**:
 
@@ -3188,130 +3119,74 @@ default value is .cf-disabled.
      
 ```
 
-**Notes**:
-Used for log rotation. If the file is named foo and the rotate attribute
-is set to 4, as above, then initially foo is copied to foo.1 and the old
-file foo is zeroed out (that is, the inode of the original logfile does
-not change, but the original log file will be empty after the rotation
-is complete).
-
-The next time the promise is executed, foo.1 will be renamed foo.2, foo
-is again copied to foo.1 and the old file foo is again zeroed out.
-
-Each time the promise is executed (and typically, the promise would be
-executed as guarded by time-based or file-size-based classes), the files
-are copied/zeroed or rotated as above until there are rotate numbered
-files plus the one "main" file. In the example above, the file foo.3
-will be renamed foo.4, but the old version of the file foo.4 will be
-deleted (that is, it "falls off the end" of the rotation).
+In the example above, the file `foo.3` will be renamed `foo.4`, but the old 
+version of the file `foo.4` will be deleted (that is, it "falls off the end" 
+of the rotation).
 
 ### repository
+
+**Description**: Name of a repository for versioning
+
+A local repository for this object, overrides the default.
+
+Note that when a repository is specified, the files are stored using the
+canonified directory name of the original file, concatenated with the
+name of the file. So, for example, `/usr/local/etc/postfix.conf` would
+ordinarily be stored in an alternative repository as
+`_usr_local_etc_postfix.conf.cfsaved`.
 
 **Type**: `string`
 
 **Allowed input range**: `"?(/.*)`
 
-**Description**: Name of a repository for versioning
-
 **Example**:
 
 ```cf3
-files:
+    files:
 
- "/path/file"
+     "/path/file"
 
-   copy_from => source,
-   repository => "/var/cfengine/repository";
+       copy_from => source,
+       repository => "/var/cfengine/repository";
 ```
 
-**Notes**:
-A local repository for this object, overrides the default.
-
-See [default\_repository](#default_005frepository-in-agent)
-
-Note that when a repository is specified, the files are stored using the
-canonified directory name of the original file, concatenated with the
-name of the file. So, for example, /usr/local/etc/postfix.conf would
-ordinarily be stored in an alternative repository as
-\_usr\_local\_etc\_postfix.conf.cfsaved.
-
 ### touch
+
+**Description**: true/false whether to touch time stamps on file
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
 ```cf3
-               true
-               false
-               yes
-               no
-               on
-               off
+    true
+    false
+    yes
+    no
+    on
+    off
 ```
-
-**Description**: true/false whether to touch time stamps on file
 
 **Example**:
 
 ```cf3
-files:
+    files:
 
- "/path/file"
+     "/path/file"
 
-   touch => "true";
+       touch => "true";
 ```
 
 ### transformer
 
-**Type**: `string`
-
-**Allowed input range**: `"?(/.*)`
-
 **Description**: Command (with full path) used to transform current file
 (no shell wrapper used)
 
-**Example**:
-
-```cf3
-files:
-  "/home/mark/tmp/testcopy"
-
-    file_select => pdf_files,
-    transformer => "/usr/bin/gzip $(this.promiser)",
-    depth_search => recurse("inf");
-```
-
-```cf3
- classes:
-    "do_update" expression => isnewerthan("/etc/postfix/alias",
-                                          "/etc/postfix/alias.cdb");
-
- files:
-    "/etc/postfix/alias.cdb"
-       create => "true",        # Must have this!
-       transformer => "/usr/sbin/postalias /etc/postfix/alias",
-       ifvarclass => "do_update";
-```
-
-**Notes**:
 A command to execute, usually for the promised file to transform it to
 something else (but possibly to create the promised file based on a
-different origin file). The examples above show both types of promises.
+different origin file). 
 
 The promiser file must exist in order to effect the transformer.
-
-In the first example, the promise is made on the file that we wish to
-transform. If the promised file exists, the transformer will change the
-file to a compressed version (and the next time CFEngine runs, the
-promised file will no longer exist, because it now has the .gz
-extension).
-
-In the second example, the promise is made on the file *resulting from*
-the transformation (and the promise is conditional on the original file
-being newer than the result file). In this case, we *must* specify
-create = true. If we do not, then if the promised file is removed the
-transformer will not be executed.
 
 Note also that if you use the `$(this.promiser)` variable or other
 variable in this command, and the file object contains spaces, then you
@@ -3339,3 +3214,45 @@ transformer-command in a very flexible way. See the `kept_returncodes`,
 
 Finally, you should note that the command is not run in a shell. This
 means that you cannot perform file redirection or create pipelines.
+
+
+**Type**: `string`
+
+**Allowed input range**: `"?(/.*)`
+
+**Example**:
+
+These examples show both types of promises.
+
+```cf3
+    files:
+      "/home/mark/tmp/testcopy"
+
+        file_select => pdf_files,
+        transformer => "/usr/bin/gzip $(this.promiser)",
+        depth_search => recurse("inf");
+```
+
+In the first example, the promise is made on the file that we wish to
+transform. If the promised file exists, the transformer will change the
+file to a compressed version (and the next time CFEngine runs, the
+promised file will no longer exist, because it now has the .gz
+extension).
+
+```cf3
+     classes:
+        "do_update" expression => isnewerthan("/etc/postfix/alias",
+                                              "/etc/postfix/alias.cdb");
+
+     files:
+        "/etc/postfix/alias.cdb"
+           create => "true",        # Must have this!
+           transformer => "/usr/sbin/postalias /etc/postfix/alias",
+           ifvarclass => "do_update";
+```
+
+In the second example, the promise is made on the file *resulting from*
+the transformation (and the promise is conditional on the original file
+being newer than the result file). In this case, we *must* specify
+create = true. If we do not, then if the promised file is removed the
+transformer will not be executed.
