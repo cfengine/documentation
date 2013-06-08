@@ -77,7 +77,8 @@ bundle edit_line insert_file_if_no_line_matching(user,file)
 # Check if user exists in the authorized_keys file
 classes:
 
-  "have_user" expression => regline("$(user).*","$(this.promiser)");
+  "have_user"
+    expression => regline("$(user).*","$(this.promiser)");
 
 # Insert the content of the key file into authorized_keys if the user's key is not already there
 insert_lines:
@@ -85,7 +86,7 @@ insert_lines:
   !have_user::
 
     "$(file)"
-   insert_type => "file";
+      insert_type => "file";
 }
 ```
 
@@ -124,6 +125,7 @@ The above error only happens on the first run.  Then /var/cfengine/inputs/ssh_ke
 is created and this error does not recur.
 
 The local cache now contains the users' public keys:
+
 ```
 ls /var/cfengine/inputs/ssh_keys/
 user1.pub
