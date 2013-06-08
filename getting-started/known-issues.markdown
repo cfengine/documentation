@@ -13,7 +13,7 @@ TODO: move down when no longer a pre-release -->
 
 * This is a pre-release, features are not complete and not fully tested
 
-### New Syntax Errors
+### Comma in promiser/promisee declaration generates Syntax Error
 
 The policy file parser is stricter in CFEngine 3.5.0 . The parser is now fully 
 compliant with the CFEngine [language syntax  reference](manuals-language-concepts.html).
