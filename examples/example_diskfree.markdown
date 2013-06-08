@@ -17,8 +17,6 @@ body common control
 bundlesequence  => { "example" };
 }
 
-###########################################################
-
 bundle agent example
 {
 vars:
