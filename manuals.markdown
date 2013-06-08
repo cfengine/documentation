@@ -39,5 +39,3 @@ now might be a good time to take a break from concepts and try out your first pr
 If you want a solid foundation for your use of CFEngine, continue reading to 
 understand the [design](manuals-design.html) and [language 
 concepts](manuals-language-concepts.html) of CFEngine.
-
-* TODO: Design Center
