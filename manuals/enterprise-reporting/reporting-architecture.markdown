@@ -17,11 +17,10 @@ Like all CFEngine components, [`cf-hub`](reference-components-cfhub.html) is
 located in `/var/cfengine/bin`. It is a daemon process that runs in the 
 background, and is started by `cf-agent` through the `failsafe` policy.
 
-Every 5 minutes it wakes up to connect to the `cf-serverd` of each host via 
-port 5308, and to download new data (delta report). A download of the complete 
-set of data is performed every 6 hours.
+`cf-hub` wakes up every 5 minutes, and connects to the `cf-serverd` of each 
+host to download new data. Delta reports include new data in the last interval and a subset of variable information. A download of the complete set of data is performed every 6 hours.
 
-In addition, cf-hub runs a maintenance check and database cleanup routine 
+In addition, `cf-hub` runs a maintenance check and database cleanup routine 
 every 6 hours, and collects data about its own performance, the status of the 
 database and connectivity status for hosts.
 
@@ -52,41 +51,3 @@ listens on port 80.
 Apache is part of the CFEngine Enterprise installation in 
 `/var/cfengine/httpd`. A user `apache` is created with privileges to run 
 `cf-runagent`.
-
-### Troubleshooting of CFEngine Enterprise
-
-If you are experiencing problems with logging into the Mission Portal or don't 
-see up-to-date data, check the following points:
-
-* Make sure that the daemon processes are running
-
-`ps -e` should list processes 'cf-hub', 'httpd' and 'mongod'
-
-If that is not the case, run:
-
-    $ rm -f /var/cfengine/state/mongod.lock
-    $ /var/cfengine/bin/cf-execd -Ov > cfout.log
-
-* check the CFEngine output
-
-If the processes are still not running after this, check the generated output file for:
-
-    [timestamp] verbose: Comment 'Start CFE httpd process if not exist'
-
-and
-
-    [timestamp] verbose: Comment 'Check for mongod process'
-
-The lines around those comments might give an indication why the respective 
-processes failed to start.
-
-* Check apache and mongo logs
-
-If problems remain in spite of running processes, or if the processes 
-terminated immediately after a successful start, check the logs in:
-
-    /var/cfengine/httpd/logs/*
-    /var/log/mongo.log
-
-These should provide details about why the processes refused to start, shut 
-down or continue to deny access.
