@@ -68,8 +68,7 @@ for efficient filesystem preallocation, 2.6.25 is required for XFS support of
 the same feature. High filesystem I/O following the allocation of new database 
 files is one symptom of this problem.
 
-----------------------------------------------------------------------------
-
+****
 
 ## Installation Instructions
 
@@ -140,11 +139,14 @@ the client packages to each of the other hosts.
     [Debian/Ubuntu]      $ dpkg -i <agent package>.deb
 ```
 
-4. Bootstrap the machines to the hub (starting with bootstrapping the hub to itself. NOTE: For host machines please see AUTO-BOOTSTRAP INSTRUCTIONS for an alternative to this step, the hub machine cannot be auto-bootstrapped):
+4. Bootstrap the machines to the hub, starting with the hub itself.
 
 ```
      $ /var/cfengine/bin/cf-agent --bootstrap <IP ADDRESS OF HUB>
 ```
+
+**Note**: For host machines, see below for an automatic alternative to this 
+step.
 
 6. CFEngine should now be up and running on your system.
 
@@ -182,7 +184,7 @@ The sample output should look like this:
 Once the hub is configured as an Avahi service, you can auto-bootstrap clients 
 to it.
 
-    $ /var/cfengine/bin/cf-agent -B
+    $ /var/cfengine/bin/cf-agent -B :avahi
 
 The clients require Avahi libraries to be installed in order to use this 
 functionality. By default `cf-agent` looks for libraries in standard install 
@@ -194,7 +196,7 @@ installed in non-standard location (i.e. compiled from source) set the
 
 If more than one server was found, or the server had more than one IP address, 
 the list of all available servers will be printed and user will be asked to 
-manually specify the IP address of the correct server by running starndard 
+manually specify the IP address of the correct server by running standard 
 bootstrap command of cf-agent:
 
    $ /var/cfengine/bin/cf-agent --bootstrap <IP address>
