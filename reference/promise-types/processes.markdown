@@ -162,7 +162,7 @@ This is a numerical range for the number of occurrences of the process
 in the process table. As long as it falls within the specified limits,
 the promise is considered kept.   
 
-**Type**: irange[int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,99999999999`
 
@@ -235,7 +235,7 @@ the end of line.
 
 **Description**: Range of integers matching the process id of a process
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,99999999999`
 
@@ -256,7 +256,7 @@ the end of line.
 **Description**: Range of integers matching the parent group id of a
 process
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,99999999999`
 
@@ -277,7 +277,7 @@ process
 **Description**: Range of integers matching the parent process id of a
 process
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,99999999999`
 
@@ -298,7 +298,7 @@ process
 **Description**: Range of integers matching the priority field (PRI/NI) of
 a process
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `-20,+20`
 
@@ -370,7 +370,7 @@ the expressions.
 **Description**: Range of integers matching the resident memory size of a
 process, in kilobytes
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,99999999999`
 
@@ -416,7 +416,7 @@ The calculation of time from process table entries is sensitive to
 Daylight Savings Time (Summer/Winter Time) so calculations could be an
 hour off. This is for now a bug to be fixed.
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,2147483647`
 
@@ -438,7 +438,7 @@ process.
 
 This is total accumulated time for a process.
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,2147483647`
 
@@ -480,7 +480,7 @@ all have tty '?'.
 **Description**: Range of integers matching the threads (NLWP) field of a
 process
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,99999999999`
 
@@ -504,7 +504,7 @@ On Windows, the virtual memory size is the amount of memory that cannot
 be shared with other processes. In Task Manager, this is called Commit
 Size (Windows 2008), or VM Size (Windows XP).
 
-**Type**: irange [int,int]
+**Type**: `irange[int,int]`
 
 **Allowed input range**: `0,99999999999`
 

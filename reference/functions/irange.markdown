@@ -9,7 +9,7 @@ tags: [reference, functions, irange]
 
 **Prototype**: `irange(arg1, arg2)`
 
-**Return type**: `irange [int,int]`
+**Return type**: `irange[int,int]`
 
 **Description**: Define a range of integer values for CFEngine internal use.
 
