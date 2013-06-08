@@ -5,9 +5,11 @@ categories: [Examples, Customize Message of the Day]
 published: true
 alias: examples-customize-message-of-the-day.html
 tags: [Examples, motd, file editing, files]
+reviewed: 2013-06-08
+reviewed-by: atsaloli
 ---
 
-The Message of the Day is diplayed when you log in or connect to a server. It typically shows information about the operating system, license information, last login, etc.
+The Message of the Day is displayed when you log in or connect to a server. It typically shows information about the operating system, license information, last login, etc.
 
 It is often useful to customize the Message of the Day to inform your users about some specifics of the system they are connecting to. In this example we will look at a bundle which adds three lines to the `/etc/motd` file to inform about some system characteristics and that the system is managed by CFEngine.
 
