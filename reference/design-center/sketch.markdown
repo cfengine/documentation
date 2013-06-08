@@ -62,6 +62,13 @@ For a sketch to work well with the CFEngine Enterprise Design Center graphical
 user interface (GUI), all of the above attributes must be specified. Some 
 additional requirements are noted below.
 
+The depens.os attribute is checked when a user is activating a sketch, to
+warn on cases where a user attempts to activate a sketch on an operating system
+the sketch does not (yet) support. It is therefore useful to make sure that
+all the operating systems listed in depends.os is working well with the sketch.
+Each element has the format { "os_class" : "OS friendly name" }. "OS friendly
+name" is displayed in the GUI.
+
 The `enterprise_compatible` tag must be set, otherwise it will not show up as 
 an available sketch in the GUI.
 
