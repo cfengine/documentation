@@ -5,11 +5,11 @@ sortkey: 2
 categories: [Getting Started, Upgrade]
 published: true
 alias: getting-started-upgrade.html
-tags: [getting started, upgrade]
+tags: [getting started, enterprise, upgrade]
 ---
 
-###<center>This upgrade guide assumes that you are upgrading an existing CFEngine installation</center>
-###<center>of one of the following versions: 2.2.x/3.0.x to CFEngine 3.5.0</center>
+###<center>This upgrade guide assumes that you are upgrading an existing CFEngine installation of one of the following versions:</center>
+###<center>2.2.x or 3.0.x</center>
 
 Upgrading CFEngine Enterprise needs some planning, since there may be 
 dependencies on your existing policies and/or changes in naming 
@@ -18,28 +18,26 @@ manual process. Automatic upgrade of agents is possible through the hub but
 again, needs careful planning and consideration before applying to a large 
 schema.
 
+###<center>Always verify the upgrade in a test environment prior to upgrading production environments!</center>
+
 Before embarking on the upgrade, you should familiarize yourself with the 
 [known issues](getting-started-known-issues.html) and have a good 
 understanding of the existing configuration of 
 the hub or agents or both. As much as possible is covered in this document, 
 taking into consideration its scope and intended audience. Other more detailed 
 problems, specific to your own setup may not be covered here. It is therefore 
-imperative that  any questions or doubts you have are directed towards your 
+imperative that any questions or doubts you have are directed towards your 
 support representative.
 
 Please do not hesitate to contact your sales representative, or our support 
 engineers through the [support system](https://cfengine.zendesk.com/home)
 
-
-**<center>ALWAYS TEST UPGRADE IN A TEST ENVIRONMENT PRIOR TO UPGRADING 
-PRODUCTION ENVIRONMENTS</center>**
-
-### Prerequisites
+## Prerequisites
 
 * CFEngine 3 Enterprise HUB version 2.2.x/3.0.x
 * Linux shell
 
-**Making a Backup of Important CFEngine Files Before you Start**
+## Before you start: Make a Backup
 
 Backup /var/cfengine/masterfiles to /var/cfengine/masterfiles_$(date) using
 the following command:
@@ -58,7 +56,18 @@ the following command:
 * remove MongoDB lock file
   $ rm -f $WORKDIR/state/mongod.lock
 
-**NB: This section can be skipped if you are upgrading from 3.0.x to 3.5**
+### In case of Failure: Restoring the previous installation from backup
+
+ * remove `/var/cfengine/masterfiles` and `/var/cfengine/inputs` directories
+ * rename `/var/cfengine/masterfiles_$(date)` to `/var/cfengine/masterfiles`
+ * remove the 3.5.0 `cfengine-nova-hub` package
+ * reinstall your previous cfengine packages
+ * rebootstrap the HUB. MP should be up and running in less than 10 minutes
+
+
+## Prepare policy files when upgrading from 2.2.x
+
+This section can be skipped if you are upgrading from 3.0.x to 3.5
 
 As part of the process from 2.x to 3, more structure was introduced to the 
 CFEngine working directory, such that CFE_ prefixed files were moved into a 
@@ -95,9 +104,9 @@ Add `cfe_internal_hub_vars` to `bundlesequence` section.
 Add `cfsketch_run` to `bundlesequence` and `cf-sketch-runfile.cf` to inputs 
 section.
 
-## If you've never added your custom-built promises to `/var/cfengine/bin/masterfiles/failsafe.cf` or `/var/cfengine/masterfiles/update.cf`?
+### If you've never modified `failsafe.cf` or `update.cf`...
 
-We replace `update.cf` with `update_bins.cf` and `update_policy.cf`:
+Replace `update.cf` with `update_bins.cf` and `update_policy.cf`:
 
       $ sed -i 's/"update.cf",/"update_bins.cf",\n                    "update_policy.cf",/g' $WORKDIR/masterfiles/promises.cf
 
@@ -140,11 +149,13 @@ Once the edits are done, please make sure your policy is correct by verifying th
 
 * You should keep all control bodies (body agent/executor/server/hub/reporter/monitor/runagent control) and server access_rule() bundle to at least have some suggested attributes
 
-## If you have ever added your custom-built promises to /var/cfengine/bin/masterfiles/failsafe.cf or /var/cfengine/masterfiles/update.cf?":
+### If you have modified `failsafe.cf` or `update.cf?`...
 
 Synchronize the contents in failsafe.cf and update.cf manually.
 
-For example; the promiser "/var/cfengine/bin/mongod <parameters>" in bundle update in update.cf: please change it to run in file-based configuration mode (this bundle is called update_policy in the 3.0.0 policy framework) .
+For example; the promiser `/var/cfengine/bin/mongod <parameters>` in bundle 
+`update` in update.cf: change it to run in file-based configuration mode 
+(this bundle is called `update_policy` in the 3.0.0 policy framework).
        
 ```cf3
        vars:
@@ -164,15 +175,9 @@ For example; the promiser "/var/cfengine/bin/mongod <parameters>" in bundle upda
          "/var/cfengine/bin/mongod --dbpath $(update_policy.mongodb_dir) --config $(update_policy.mongodb_conf_file) > /dev/null < /dev/null 2>&1"
 ```
 
-Some contents of your current bundle agent update_bins in update.cf might be outdated. Please keep it similar to `/var/cfengine/share/NovaBase/failsafe/update_bins.cf` as much as possible.
-
-## Something went wrong - how can I rollback my binary version and configuration?
-
- * remove `/var/cfengine/masterfiles` and `/var/cfengine/inputs` directories
- * rename `/var/cfengine/masterfiles_$(date)` to `/var/cfengine/masterfiles`
- * remove the 3.5.0 `cfengine-nova-hub` package
- * reinstall your previous cfengine packages
- * rebootstrap the HUB. MP should be up and running in less than 10 minutes
+Some contents of your current bundle agent update_bins in update.cf might be 
+outdated. Please keep it similar to 
+`/var/cfengine/share/NovaBase/failsafe/update_bins.cf` as much as possible.
 
 
 ## Upgrade procedure for the hosts
@@ -189,21 +194,24 @@ For Windows systems copy/overwrite the content of `C:\Program Files\Cfengine\bin
 
 ### Automatic
 
-On the hub, copy the client cfengine-nova packages to the operating system specific distribution directories in `/var/cfengine/master_software_updates` and CFEngine 3 Enterprise will take care of the rest.
+On the hub, copy the client `cfengine-nova` packages to the operating system 
+specific distribution directories in `/var/cfengine/master_software_updates` 
+and CFEngine 3 Enterprise will take care of the rest.
 
 ### Agent package upgrade through the hub from v2.2.3
 
 Please note that although it is possible to upgrade agents through the hub, 
 for Debian format (.deb) packages (both `x86_64` and `i386`) it is necessary 
-to edit your update.cf on each agent before proceeding. The reason for this is 
-that the naming convention used in 2.2.3 is at odds with the one that has 
+to edit the `update.cf` on each agent before proceeding. The reason for this 
+is that the naming convention used in 2.2.3 is at odds with the one that has 
 since been adopted by CFEngine and in the wider community. As a result, the 
-update.cf script in v2.2.3 clients expects i686 (hard coded) and x86_64 for 
+`update.cf` script in v2.2.3 clients expects i686 (hard coded) and x86_64 for 
 the architecture part in the package name. So package upgrade will only work 
 for .deb packages if the package is renamed before it is copied into the 
 relevant architecture subdirectory under 
-`/var/cfengine/master_software_updates`. For example, if your upgrade package 
-is named like this:
+`/var/cfengine/master_software_updates`.
+
+For example, if your upgrade package is named like this:
 
 `cfengine-nova_3.5.0XXXX_amd64.deb` or `cfengine-nova_3.5.0XXXX_i386.deb`
 
