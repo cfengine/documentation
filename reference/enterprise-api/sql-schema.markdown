@@ -30,35 +30,47 @@ counts of the four statuses (kept, repaired, not kept, unknown).
      GROUP BY Status
 ```
 
-* Group all file changes by file name occurred between a from and to 
-time-stamp on context "ubuntu".
+* Group all file changes by file name occurred on context "ubuntu". There are counters on how many distinct host occurrences and total occurrences found.
 
-There should be counters on how many total occurrences and distinct host occurrences found.
-
+``
+    SELECT
+         FileChanges.FileName,
+         Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
+         COUNT(1) AS ChangeCount
+      FROM
+         FileChanges JOIN Contexts
+      WHERE 
+         Contexts.ContextName='ubuntu'
+      GROUP BY
+         FileChanges.FileName
+      ORDER BY
+         ChangeCount DESC
 ```
-    SELECT FileName, Count(*), Distinct(Count(HostKey))
-      FROM FileChanges
-     WHERE ChangeTime < TO AND ChangeTime > FROM AND Context=ubuntu
-     GROUP BY FileName
-```
 
-* List all package names and versions, with the host ip address and OS that 
-has it.
+![File changes example output](reference-sql-filechanges-example-output.png)
+
+* List all software names and versions installed, with the host and host OS.
 
 ```
     SELECT 
-         software.name, 
-         software.version, 
-         variables.name, 
-         variables.value 
-    FROM software 
-    JOIN variables 
-    WHERE 
-         variables.name='ipv4' 
-         AND variables.value='172.20.10.41' 
-         AND variables.value='os' 
-         AND variables.value='linux';
+          Hosts.Hostname,
+          Variables.VariableValue,
+          Software.SoftwareName, 
+          Software.SoftwareVersion
+     FROM 
+          Hosts,
+          Variables,
+          Software 
+     WHERE
+          Variables.VariableName='flavor'
+          AND Hosts.HostKey=Variables.HostKey
+          AND Variables.HostKey=Software.HostKey
+     ORDER BY 
+          Software.SoftwareName
 ```
+
+![Software example output](reference-sql-software-example-output.png)
+
 
 ## Inventory
 
