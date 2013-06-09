@@ -7,19 +7,16 @@ alias: reference-functions-maparray.html
 tags: [reference, functions, maparray]
 ---
 
-**TODO: formulation confusing, this.k/v not well explained.**
-
 **Prototype**: `maparray(pattern, array)`
 
 **Return type**: `slist`
 
-**Description**: Returns a list with each element modified by a pattern based 
-on $(this.k) and $(this.v)
+**Description**: Returns a list with each array element modified by a pattern.
 
-The `this.k` and `this.v` variables will be available for expansion in the 
-string scope, similar to the way `this` is available for `maplist`.
+The `$(this.k)` and `$(this.v)` variables expand to the key and value of the 
+array element, similar to the way `this` is available for `maplist`.
 
-If a value in the array is an slist, you'll get one result for each
+If a value in the array is an `slist`, you'll get one result for each
 value (implicit looping).
 
 The order of the array keys is not guaranteed.  Use the `sort`

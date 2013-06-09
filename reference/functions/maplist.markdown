@@ -7,15 +7,14 @@ alias: reference-functions-maplist.html
 tags: [reference, functions, maplist]
 ---
 
-**TODO: formulation confusing**
-
 **Prototype**: `maplist(pattern, list)`
 
 **Return type**: `slist`
 
 **Description**: Return a list with each element in `list` modified by a 
-pattern based on $(this).
+pattern.
 
+The `$(this)` variable expands to the currently processed entry from `list`. 
 This is essentially like the map() function in Perl, and applies to
 lists.
 
