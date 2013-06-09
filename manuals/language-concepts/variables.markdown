@@ -199,19 +199,6 @@ hardening bundle.
 This time, the `hardening` bundle does not take an argument. Instead it 
 converts the `va.tmpdirs` list into a local list variable "x" directly.
 
-### A List Variable with Nothing (`cf_null`)
-
-**TODO: should be removed?**
-
-As of CFEngine core version 3.1.0, the value ‘cf_null’ may be used as a NULL 
-value within lists. This value is ignored in list variable expansion, and can 
-be used as a placeholder.
-
-```cf3
-    vars:
-      "empty_list" slist => { "cf_null" };
-```
-
 ## Associative Arrays
 
 Associative array variables are written with `[` and `]` brackets that enclose 
