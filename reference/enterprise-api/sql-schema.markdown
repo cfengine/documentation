@@ -136,14 +136,23 @@ exact query. Use an embedded query with `DISTINCT()` to avoid this.
 
 **example**:
 
-    SELECT Hosts.Name, BundleNTP.PromiseHandle FROM Hosts,
-        (SELECT DISTINCT(PromiseHandle)
-           FROM PromiseDefinitions
-           WHERE Bundle='ntp')
-        AS BundleNTP, PromiseStatusLast
-        WHERE Hosts.HostKey=PromiseStatusLast.HostKey
-          AND BundleNTP.PromiseHandle=PromiseStatusLast.PromiseHandle
-          AND PromiseStatusLast.PromiseStatus='notkept'
+    SELECT
+           Hosts.Name, BundleNTP.PromiseHandle
+      FROM 
+           Hosts,
+           (SELECT
+                   DISTINCT(PromiseHandle)
+              FROM
+                   PromiseDefinitions
+              WHERE
+                   Bundle='ntp'
+           )
+        AS
+           BundleNTP, PromiseStatusLast
+     WHERE
+           Hosts.HostKey=PromiseStatusLast.HostKey
+           AND BundleNTP.PromiseHandle=PromiseStatusLast.PromiseHandle
+           AND PromiseStatusLast.PromiseStatus='notkept'
 
 | NameSpace| PromiseHandle | Promiser | Bundle | Promisee |
 |---------|--------------|-------------|-------|---------|
@@ -257,17 +266,17 @@ Performance is measured in time the operation took, in millisecond. Data sizes a
 
 | ReportRoundTimeStamp | ReportsCollected | TotalCollectionPerformance | AverageCollectionPerformanceByHost | LowestCollectionPerformanceByHost | LowestCollectionPerformanceHostKey | AverageDataSizeByHost | LargestDataSizeByHost | LargestDataSizeHostKey | SampleAnalyzePerformance |
 |----------------------|------------------|----------------------------|------------------------------------|-----------------------------------|------------------------------------|-----------------------|-----------------------|------------------------|--------------------------|
-| 1361959894 | 1 | 3685 | 456 | 456 | 3045bcff2df88b9d737b5303fb97edbb8cad261b9c02ab9230d47a0df4658e43 | 359 | 359 | 3045bcff2df88b9d737b5303fb97edbb8cad261b9c02ab9230d47a0df4658e43 | 1 |
+| 1361959894 | 1 | 3685 | 456 | 456 | 12377 | 359 | 359 | 12377 | 1 |
 | 1361959894 |0 | 2085 | 0 | 0 | none | 0 | 0 | none | 1 |
 
 ### HubConnectionErrors
 
 | ReportRoundTimeStamp | HostKey | Status |
 |----------------------|---------|--------|
-| 1361969437 | 7d75fc7c0baf36dbdb50f81789d8bc01cd1c297f639d83ed384c216d8058577e | ServerNoReply |
-| 1361969737 | 7d75fc7c0baf36dbdb50f81789d8bc01cd1c297f639d83ed384c216d8058577e	| ServerAuthenticationError |
-| 1361969137 | 7d75fc7c0baf36dbdb50f81789d8bc01cd1c297f639d83ed384c216d8058577e	| InvalidData |
-| 1361959894 | 7d75fc7c0baf36dbdb50f81789d8bc01cd1c297f639d83ed384c216d8058577e	| Unknown |
+| 1361969437 | 12377 | ServerNoReply |
+| 1361969737 | 12377	| ServerAuthenticationError |
+| 1361969137 | 12377	| InvalidData |
+| 1361959894 | 12377	| Unknown |
 
 ### HubMaintenancePerformance
 
@@ -280,5 +289,5 @@ Performance is measured in time the operation took, in millisecond. Data sizes a
 
 | MaintenanceTimeStamp | HostKey | Message |
 |----------------------|---------|---------|
-| 1361969437 | 7d75fc7c0baf36dbdb50f81789d8bc01cd1c297f639d83ed384c216d8058577e | Operation: PurgeTimestampedReports (484572386e818614af188402f543ee822592e20684ecee1895a672926a2054b2) exited with message: ... |
+| 1361969437 | 12377 | Operation: PurgeTimestampedReports (12377) exited with message: ... |
 | 1361969737 | none | Operation: Remove old entries in hub maintenance performance diagnostics () exited with message: "..." |
