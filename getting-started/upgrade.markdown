@@ -139,6 +139,7 @@ Once the edits are done, please make sure your policy is correct by verifying th
       $ /var/cfengine/bin/cf-promises -f /var/cfengine/masterfiles/failsafe.cf
       $ /var/cfengine/bin/cf-promises -f /var/cfengine/masterfiles/promises.cf
 ```
+
 * if there is no error, please run failsafe to start up all CFEngine processes
 
 ```
@@ -156,7 +157,7 @@ Synchronize the contents in failsafe.cf and update.cf manually.
 For example; the promiser `/var/cfengine/bin/mongod <parameters>` in bundle 
 `update` in update.cf: change it to run in file-based configuration mode 
 (this bundle is called `update_policy` in the 3.0.0 policy framework).
-       
+
 ```cf3
        vars:
 
