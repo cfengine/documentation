@@ -5,3 +5,4 @@
 [boolean]: manuals-language-concepts-promises.html#Promise_Attributes
 [anchored]: manuals-language-concepts-pattern-matching-and-referencing.html#Anchored_vs__unanchored_regular_expressions
 [unanchored]: manuals-language-concepts-pattern-matching-and-referencing.html#Anchored_vs__unanchored_regular_expressions
+[datatypes]: manuals-language-concepts-variables.html#datatypes
