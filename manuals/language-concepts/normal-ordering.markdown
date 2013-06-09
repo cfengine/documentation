@@ -71,7 +71,8 @@ the normal ordering is:
 
 The order of promises within one of the above types follows their top-down 
 ordering within the bundle itself. The order may be overridden by making a 
-promise depend on a class that is set by another promise. **TODO: reference to depends_on**
+promise depend on a class that is set by another promise, or by using the
+`depends_on` attribute in the promise.
 
 ### Server normal ordering
 

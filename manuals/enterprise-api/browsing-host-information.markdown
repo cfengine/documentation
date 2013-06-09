@@ -7,7 +7,10 @@ alias: manuals-enterprise-api-browsing-host-information.html
 tags: [manuals, enterprise, rest, api, reporting, hosts]
 ---
 
-A resource `/api/host` is added as an alternative interface for browsing host information. For full flexibility we recommend using SQL **TODO: link** reports via `/api/query` for this. however, currently vital signs (data gathered from `cf-monitord`) is not part of the SQL reports data model.
+A resource `/api/host` is added as an alternative interface for browsing host 
+information. For full flexibility we recommend using [SQL][ **TODO: link** ]
+reports via `/api/query` for this. however, currently vital signs (data 
+gathered from `cf-monitord`) is not part of the SQL reports data model.
 
 
 ## Example: Listing Hosts With A Given Context

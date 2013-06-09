@@ -261,7 +261,7 @@ specified in the `bundlesequence`).
 
 Note that any class promise must have one - and only one - value constraint. 
 That is, you might not leave 'expression' in the example above or add both 
-'and' and 'xor' constraints to the single promise. **TODO: rephrase this**
+'and' and 'xor' constraints to the single promise.
 
 Another type of class definition happens when you define classes based on the 
 outcome of a promise, e.g. to set a class if a promise is repaired, one might 
@@ -273,10 +273,9 @@ write:
         classes => if_repaired("signal_class");
 ```
 
-These classes are global in scope. Finally `restart_class` classes
+These classes are global in scope. Finally, `restart_class` classes
 in `processes` are global.
 **TODO: document scope-attribute of classes bodies**
-
 
 ### Class Scopes: A More Complex Example
 

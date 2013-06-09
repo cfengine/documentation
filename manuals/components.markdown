@@ -56,7 +56,7 @@ and server bundles containing
 
 This is a scheduling daemon for `cf-agent`, similar to cron.
 It executes and collects the output of `cf-agent` and
-e-mails any output to the configured e-mail address (see body executor control, TODO LINKME).
+e-mails any output to the configured e-mail address.
 
 * [cf-promises](reference-components-cfpromises.html)
 
@@ -91,7 +91,7 @@ invoked by `cf-execd`, it reads only from this directory.
 
 * `/var/cfengine/modules`
 
-**TODO**
+Location of scripts used in `commands` promises.
 
 ### Output Directories
 
@@ -104,7 +104,7 @@ alternative browser.
 
 * `/var/cfengine/reports`
 
-Directory used to store reports. **TODO: still there without cf-report?**
+Directory used to store reports.
 
 * `/var/cfengine/ppkeys`
 
@@ -113,14 +113,10 @@ client/server network communications.
 
 * `/var/cfengine/state`
 
-**TODO: what's there?**
+State data such as current process identifiers of running processes, 
+persistent classes and other cached data.
 
 * `/var/cfengine/lastseen`
 
-**TODO**
-
-
-* `/var/cfengine/share`
-
-**TODO**
+Log data for incoming and outgoing connections.
 
