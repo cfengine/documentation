@@ -3,97 +3,15 @@ layout: default
 title: Design Center
 categories: [Manuals, Design Center]
 published: true
-sorting: 50
 alias: manuals-design-center.html
 ---
 
-# Design Center - an introduction and walkthrough
+## A Breezy Walkthrough
 
-The CFEngine Design Center is a repository of pre-made components
-called *sketches* that allow you to use the full power of CFEngine
-without having to learn the CFEngine policy language. Although
-sketches are themselves written in the CFEngine policy language, you
-can make use of them by simply installing them, configuring them using
-the appropriate parameters, and deploying them on your
-infrastructure. This can be easily done using both a command-line
-interface called `cf-sketch`, or the Design Center UI included with
-CFEngine Enterprise 3.5.0.
+This walkthrough will show how a Design Center sketch can be found,
+installed, configured, and executed as policy.
 
-In this walkthrough we will show how a Design Center sketch can be
-found, installed, configured, and executed as policy, using
-command-line tools.
-
-## Requirements
-
-To follow this tutorial, you will need:
-
-- A Unix-like system
-- Perl (most Unix systems come with Perl preinstalled)
-- CFEngine Community 3.4.0 or newer, or CFEngine Enterprise 3.0.0 or
-  newer.
-- Optional but recommended: the `Term::ReadLine::Gnu` Perl module. On
-  many systems it is available in the standard package repositories
-  (for example, on Ubuntu Linux you can install it using `apt-get
-  install libterm-readline-gnu-perl`). You can also install it using
-  the `cpan` utility included with Perl.
-
-## Basic concepts
-
-There are a few concepts that will help you understand much better how
-the Design Center works. There are three main types of "things" in the
-Design Center framework:
-
-- *Sketches* contain the code that will be executed by CFEngine to
-   perform some task. Sketches are contributed by the CFEngine
-   community and hosted in the Design Center repositories. Most
-   sketches take a few parameters to configure their precise
-   behavior. For example, the `System::tzconfig` sketch contains the
-   code to update the appropriate files in the system to set the
-   correct timezone.
-- *Parameter sets* contain the parameters that tell a CFEngine sketch
-   the details of what to do. For example, the `System::tzconfig`
-   sketch takes a parameter telling it which timezone should be set in
-   the system. The Design Center framework can store several parameter
-   sets (each one identified by a name) for the same sketch, and from
-   which you can choose to apply according to arbitrary circumstances.
-- *Enviroments* Contain conditions, expressed as
-   [CFEngine Class Expressions](https://github.com/cfengine/documentation/blob/master/manuals/language-concepts/classes.markdown),
-   that indicate when and where a particular sketch will be executed
-   with a particular set of parameters. Environments also contain
-   expressions that determine when and where test and verbose modes
-   will be enabled for a sketch. The Design Center can also store
-   multiple named environment definitions, which you can combine in
-   arbitrary ways to fine tune the execution of each sketch on each
-   machine.
-   
-Sketches, Parameters and Environments, by themselves, do nothing. they
-have to be combined into *Activations*:
-
-An *activation* is a combination of a sketch, a parameter set and an
-environment (all three specified by name) that defines which sketches
-will be executed under which conditions, with which parameters. It is
-only through activations that you put sketches to work, and make the
-decisions as to how different parts of your infrastructure will be
-configured. For example, you could have two different parameter sets
-for the `System::tzconfig` sketch, one for Linux and another one for
-Solaris machines. You could then, on the central CFEngine Policy
-Server, create two activations:
-
-- Activation #1: Sketch `System::tzconfig`, parameter set
-`tzconfig-linux`, Environment `linux`
-- Activation #2: Sketch `System::tzconfig`, parameter set
-  `tzconfig-solaris`, Environment `solaris`
-  
-When these activations are distributed by the policy server to all the
-clients, only Linux and Solaris machines will execute the
-`System::tzconfig` sketch, and each one of them will apply the
-appropriate parameters.
-
-There are some other concepts that will make your use of the Design
-Center even more powerful, but these are enough to get us started and
-to be able to go through this tutorial.
-
-## A Walk Through the CFEngine Design Center
+It requires a Unix that can run Perl and, of course, CFEngine itself.
 
 ### Checkout Design Center
 
@@ -304,18 +222,17 @@ The `force` parameter tells the Design Center API to overwrite the
 sketch even if it's installed already.
 
 Output:
-
 ```
-    DCAPI::log3(DCAPI.pm:173): Successfully loaded vardata file /home/tzz/.cfagent/vardata.conf
-    ...
-    DCAPI::log(DCAPI.pm:576): Installing sketch: {"source":["~/source/design-center/sketches"],"target":"~/.cfagent/inputs/sketches","sketch":"System::motd","force":true}
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/README.md to /home/tzz/.cfagent/inputs/sketches/system/motd/README.md
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/main.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/main.cf
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_squeeze.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_squeeze.json
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_wheezy.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_wheezy.json
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/example.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/example.json
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/simple.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/simple.json
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/test.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/test.cf
+DCAPI::log3(DCAPI.pm:173): Successfully loaded vardata file /home/tzz/.cfagent/vardata.conf
+...
+DCAPI::log(DCAPI.pm:576): Installing sketch: {"source":["~/source/design-center/sketches"],"target":"~/.cfagent/inputs/sketches","sketch":"System::motd","force":true}
+DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/README.md to /home/tzz/.cfagent/inputs/sketches/system/motd/README.md
+DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/main.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/main.cf
+DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_squeeze.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_squeeze.json
+DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_wheezy.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_wheezy.json
+DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/example.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/example.json
+DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/simple.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/simple.json
+DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/test.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/test.cf
 ```
 
 After lots of fireworks (again, remember to drop down to `log_level` 1 or 0 if you want to skip all these messages) the sketch is installed!
@@ -603,7 +520,6 @@ There you go.  Run it.  Do it.
 
 The output will be the same as in the previous section.
 
-<!--
 ## An Easy Overview
 TODO
 
@@ -627,4 +543,3 @@ TODO
 
 ## The Design Center Architecture
 TODO
--->
