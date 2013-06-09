@@ -1,36 +1,45 @@
 <header>
-	<div class="wrapper">
-		<div id="logo">
-			<a href="{{site.baseurl}}"><img src="media/images/logo.png" width="245" height="54" alt=""></a>
-		</div>
-		<!-- <div id="top_form">
-			<select>
-				<option value="2.0">Version 2.0</option>
-				<option value="3.0">Version 3.0</option>
-			</select>
-			<input id="top_search" type="text" placeholder="Search with CFEngine.com">
-		</div> -->
-	</div>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="{{site.baseurl}}"><img src="media/images/logo.png" width="245" height="54" alt=""></a>
+        </div>
+        <div id="top_form">
+            <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                <option value="{{site.baseurl}}" selected>Version 3.5</option>
+                <option value="https://cfengine.com/manuals">Version 3.0</option>
+                <option value="https://cfengine.com/manuals/cf2-Reference/">Version 2.0</option>
+            </select>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </header>
-<nav id="top_nav">
-	<div class="wrapper">
-		<ul>
-			<li>
-				<a href="{{site.baseurl}}getting-started.html">Getting Started</a>
-			</li>
-			<li>
-				<a href="{{site.baseurl}}whats-new.html">New in CFEngine</a>
-			</li>
-			<li>
-				<a href="{{site.baseurl}}manuals.html">Manuals</a>
-			</li>
-			<li>
-				<a href="{{site.baseurl}}reference.html">Reference</a>
-			</li>
-			<li>
-				<a href="{{site.baseurl}}examples.html">Examples</a>
-			</li>
-		</ul>
-	</div>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="{{site.baseurl}}getting-started.html">Getting Started</a>
+            </li>
+            <li>
+                <a href="{{site.baseurl}}whats-new.html">New in CFEngine</a>
+            </li>
+            <li>
+                <a href="{{site.baseurl}}manuals.html">Manuals</a>
+            </li>
+            <li>
+                <a href="{{site.baseurl}}reference.html">Reference</a>
+            </li>
+            <li>
+                <a href="{{site.baseurl}}examples.html">Examples</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 

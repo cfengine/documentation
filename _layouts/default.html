@@ -1,50 +1,10 @@
 {% include head.html %}
 <body>
     {% include header_nav.html %}
-    <!-- https://github.com/cf-gary/md-documents/settings/collaboration -->
     <div class="wrapper">
-        <div id="left_col">
-            <div id="resizable_zone">
-                <div id="nav_level1_wrapper" class="scroll-pane">
-                    {{site.nav_level1_html}}
-                </div>
-            </div>
-            {% for item in site.nav_levels_html %}
-            <div id="{{item[1]['key'] | cleanString | downcase  }}" class="level2">
-                {{item[1]['data']}}
-            </div>
-            {% endfor %}
-
-            <div id="nav_show_category">
-                Show all in category
-            </div>
-        </div>
+    {% include left_col.html %}
         <div id="content_col">
-            <div>
-                <div id="breadcrumbs">
-                    {% for item in page.categories %}
-                    <ul>
-                        {% if site.breadcrumbsAll[item] != nil %}
-                        <li>
-                            {% if site.breadcrumbsAll[item].alias != page.alias %}
-                            <a href="{{ site.breadcrumbsAll[item].alias }}">{{ site.breadcrumbsAll[item].title }}</a>
-                        <li>
-                            <i class="arrow">&nbsp;</i>
-                        </li>
-                        {% else %}
-                        <span>{{ site.breadcrumbsAll[item].title }}</span>
-                        {% endif %}
-                        </li>
-                        {% endif %}
-                    </ul>
-                    {% endfor %}
-                </div>
-
-                <!-- <button id="jump_to">
-                    Jump to
-                </button> -->
-                <div class="clear"></div>
-            </div>
+              {% include breadcrumbs.html %}
             <article>
                 {% if page.tags != nil %}
                 <div id="tags">
@@ -60,128 +20,11 @@
                 {% endif %}
 
                 <h1>{{page.title}}</h1>
-                {{ content }}
+                    {{ content }}
             </article>
         </div>
     </div>
-
-    <div class="clear"></div>
-    <div id="moveTop">
-        <a href="#top"><span>&uarr;</span></a>
-    </div>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            /* toggle visibility of second level navigation */
-            $('#nav_level1 li a').click(function(e) {
-                var level2_div = $(this).attr('class');
-                if (level2_div) {
-                    level2_div = "#" + level2_div;
-                    $("#left_col .level2").not(level2_div).hide();
-                    $(level2_div).toggle();
-                }
-                e.preventDefault()
-            });
-
-            /* Resize for first level menu */
-            $("#resizable_zone").resizable({
-                handles : 's',
-                containment : '#left_col',
-                alsoResize : '#nav_level1_wrapper',
-                resize : function(event, ui) {
-                    resizePane(100);
-                },
-                stop : function(event, ui) {
-                    resizePane()
-                }
-            });
-            
-
-            // if resize request was made - set to true
-            var scheduleResize = false;
-            // if we should resize - set to true
-            var doResize = false;
-
-            function resizePane(interval) {
-                if (interval) {
-                    scheduleResize = true;
-                    lazyScPaneInit(interval);
-                } else {
-                    initScrollpane();
-                }
-            }
-            /* Do not recalculate jspane for each pixel */
-            function lazyScPaneInit(interval) {
-                // skip if we have scheduled resize and have't finished it yet
-                if (doResize && scheduleResize) {
-                    scheduleResize = false;
-                    return;
-                }
-                // we have scheduled update, and it came from setTimeout
-                if (scheduleResize && !doResize) {
-                    initScrollpane();
-                    doResize = false;
-                } else {
-                    scheduleResize = true;
-                    doResize = false;
-                    setTimeout('lazyScPaneInit()', interval);
-                }
-            }
-            
-            /*delayed scrollpane initialization/recalculation*/
-            function initScrollpane() {
-                var pane = $(".scroll-pane").each(function() {
-                    var paneObj = $(this).data('jsp');
-                    if (!paneObj) {
-                        setTimeout(initScrollpane, 100);
-                        return;
-                    }
-                    paneObj.reinitialise({
-                        verticalGutter : 0
-                    });
-                });
-            }
-
-            /*Scroll pane initialization*/
-            $('.scroll-pane').jScrollPane({
-                //autoReinitialise: true,
-                showArrows : false,
-                verticalArrowPositions : "split",
-                horizontalArrowPositions : "split"
-            });
-
-            /* Resize drag pointer for left nav */
-            function resizeDragPointer() {
-                var $resizePoiner = $(".ui-resizable-s");
-                $resizePoiner.css({
-                    'width' : $resizePoiner.parent().width() + "px"
-                });
-            }
-
-            /*Left navigation resize*/
-            $(window).resize(function() {
-                resizeDragPointer();
-            });
-
-            resizeDragPointer();
-
-            /*show/hide moveTop link */
-            var showMoveTop = false;
-            $("#moveTop a").click(function(e) {
-                $(window).scrollTop($('#top_nav').offset().top);
-                showMoveTop = false;
-                e.preventDefault();
-            });
-           
-            $(window).scroll(function() {
-                if ($(window).scrollTop() > 380 && showMoveTop===false) {
-                    $("#moveTop").show();
-                    showMoveTop = true;
-                } else if($(window).scrollTop()<380 && showMoveTop === true ) {
-                    $("#moveTop").hide();
-                    showMoveTop = false;
-                }
-            });
-        });
-    </script>
+    {% include move_to_top.html %}
+    {% include google_search.html %}
 </body>
 </html>

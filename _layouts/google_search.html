@@ -1,0 +1,23 @@
+{% include head.html %}
+<body>
+    {% include header_nav.html %}
+    <div class="wrapper">
+        <div id="content_col" class="googleSearch">
+            <form id="cse-search-box" action="search.html">
+                <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                <input type="hidden" name="ie" value="UTF-8" />
+                <div class="formbody">
+                    <input type="text" name="q" id="top_search_searchpage" class="text" value="" placeholder="Search" />
+                    <input type="submit" value="Search" class="submit" >
+                </div>
+            </form>
+            <article>
+                <h1>Search results</h1>
+                <gcse:searchresults-only></gcse:searchresults-only>
+            </article>
+        </div>
+    </div>
+    {% include move_to_top.html %}
+    {% include google_search.html %}
+</body>
+</html>

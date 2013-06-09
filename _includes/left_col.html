@@ -1,0 +1,14 @@
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            {{ site.leftNavigation[page.categories.last].level1 }}
+        </div>
+    </div>
+    {% if site.leftNavigation[page.categories.last].level2 != nil %}
+    <div id="nav_show_category">
+        <div class="level2">
+            {{ site.leftNavigation[page.categories.last].level2 }}
+        </div>
+    </div>
+    {% endif %}
+</div>
