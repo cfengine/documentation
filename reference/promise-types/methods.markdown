@@ -97,7 +97,7 @@ Inheriting the variables is unnecessary as the child can always access the
 parent's variables through a qualified reference using its bundle name. For 
 example: `$(bundle.variable)`.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value**: false
 

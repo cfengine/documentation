@@ -218,7 +218,7 @@ client being encrypted.
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 

@@ -63,7 +63,7 @@ Storage promises refer to disks and filesystem properties.
 
 The default behavior is to not place edits in the file system table.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -164,7 +164,7 @@ options must be legal options for the system mount commands.
 
 **Description**: true/false unmount a previously mounted filesystem
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -191,7 +191,7 @@ not local to the host. If `true` it will ignore a partition's network
 location and ask the current host to verify storage located physically
 on other systems.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -281,7 +281,7 @@ This operation should not be left 'on' for more than a single run
 scan noting the schedule of changes between files. This can be used for
 a number of analyses including optimum backup schedule computation.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 

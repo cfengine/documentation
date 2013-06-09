@@ -170,7 +170,7 @@ CFEngine to learn the conformally transformed distributions of
 fluctuations about the mean.
 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** true
 
@@ -217,7 +217,7 @@ fluctuations about the mean.
 
 Interface with TCP stream if possible.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 

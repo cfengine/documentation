@@ -535,7 +535,7 @@ If this is set, CFEngine will perform auditing on this specific promise. This
 means that all details surrounding the verification of the current promise 
 will be recorded in the audit database.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -552,7 +552,7 @@ will be recorded in the audit database.
 
 #### background
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Description**: A true/false switch for parallelizing the promise repair.
 

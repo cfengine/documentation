@@ -602,7 +602,7 @@ If this is positive, file hashes should be updated as soon as a change is
 registered so that multiple warnings are not given about a single change. This 
 applies to addition and removal too.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 
@@ -630,7 +630,7 @@ system files, you should keep a single repository for them and use CFEngine to
 synchronize changes from the repository source. Repositories should not be 
 used to attempt to capture random changes of the system.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 
@@ -695,7 +695,7 @@ By setting this option to true, the promiser destination directory promises to
 aggregate files searched from all subdirectories into
 itself; in other words, a single destination directory. 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 
@@ -812,7 +812,7 @@ Client connections are encrypted with using a Blowfish randomly generated
 session key. The initial connection is encrypted using the public/private keys 
 for the client and server hosts. 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -835,7 +835,7 @@ This flag determines whether the permissions of the root directory should be
 set from the root of the source. The default is to check only copied file 
 objects and subdirectories within this root (false). 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 
@@ -987,7 +987,7 @@ not recommended except in exceptional circumstances since it creates a
 busy-dependency. If the copy is a network copy, the system will be disturbed 
 by network disruptions.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1006,7 +1006,7 @@ by network disruptions.
 
 IPv6 should be harmless to most users unless you have a partially or mis-configured setup.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1049,7 +1049,7 @@ to preserve file permissions on copied files.
 This ensures that the destination file (promiser) gets the same Unix mode as 
 the source. This also applies to remote copies.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1078,7 +1078,7 @@ Great care should be exercised when using this feature.
 Note that purging will also delete backup files generated during the file 
 copying if `copy_backup` is set to true.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1097,7 +1097,7 @@ copying if `copy_backup` is set to true.
 to preserve time stamps on copied files. This preserves file access and 
 modification times on the promiser files. 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1148,7 +1148,7 @@ As soon as a public key has been exchanged, the trust option has no effect. A
 machine that has been trusted remains trusted until its key is manually 
 revoked by a system administrator. Keys are stored in `WORKDIR/ppkeys`.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1170,7 +1170,7 @@ File types at source and destination should normally match in order for
 updates to overwrite them. This option allows this checking to be switched 
 off.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 
@@ -1189,7 +1189,7 @@ transferred file by hashing after copy.
 **Warning**: This is a highly resource intensive option, and is not 
 recommended for large file transfers.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1215,7 +1215,7 @@ Note that technically, `/.` is a regular expression. However, it is used
 as a special case meaning "directory". See **filenames and regular
 expressions** for a more complete discussion.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1289,7 +1289,7 @@ are **not** deleted.
 recursive deletion
 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 
@@ -1403,7 +1403,7 @@ the edge of the search. If true, the promiser directory will also
 promise the same attributes as the files inside it.   
 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 
@@ -1441,7 +1441,7 @@ This is the complement of `exclude_dirs`.
 A value of true determines that links pointing to files that do not
 exist should be deleted; or kept if set to false.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1462,7 +1462,7 @@ If this is true, `cf-agent` will treat symbolic links to directories as
 if they were directories. Normally this is considered a potentially
 dangerous assumption and links are not traversed.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1480,7 +1480,7 @@ dangerous assumption and links are not traversed.
 **Description**: true/false exclude directories that are on different
 devices
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1531,7 +1531,7 @@ commencing promised edits.
 Emptying a file before reconstructing its contents according to a fixed
 recipe allows an ordered procedure to be convergent.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1549,7 +1549,7 @@ recipe allows an ordered procedure to be convergent.
 **Description**: If true this causes the sub-bundle to inherit the private
 classes of its parent
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 
@@ -1617,7 +1617,7 @@ and will not be restored. Restoration of the backslashes is not possible
 in a meaningful and convergent fashion.   
 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -2204,7 +2204,7 @@ source originals
 If the promiser is a directory, instead of copying the children, link
 them to the source.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -2356,7 +2356,7 @@ Note that symbolic links for directories are treated as directories, not
 links. This behavior can be discussed, but the aim is to err on the
 side of caution.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -2556,7 +2556,7 @@ Default behavior is to set the x flag on directories automatically if
 the r flag is specified when specifying multiple files in a single
 promise.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 
@@ -2582,7 +2582,7 @@ Disabling a file means making it unusable. For executables this means
 preventing execution, for an information file it means making the file
 unreadable.   
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -2721,7 +2721,7 @@ ordinarily be stored in an alternative repository as
 
 **Description**: true/false whether to touch time stamps on file
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 

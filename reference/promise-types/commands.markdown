@@ -311,7 +311,7 @@ system. It is CFEngine best practice to never write change-functionality into
 user-written scripts except as a last resort. CFEngine can apply its safety 
 checks to user defined scripts. 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -331,7 +331,7 @@ checks to user defined scripts.
 Setting this attribute to `true` is equivalent to piping standard output and 
 error to `/dev/null`.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -365,7 +365,7 @@ These variables end up in a context that has the same name as the module.
 Any other lines of output are cited by `cf-agent` as being erroneous, so you 
 should normally make your module completely silent.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 

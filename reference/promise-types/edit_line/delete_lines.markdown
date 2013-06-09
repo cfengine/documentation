@@ -204,7 +204,7 @@ This makes no sense for multi-line deletions, and is therefore disallowed. Eithe
 Note that this does not negate any condition expressed in `delete_select`. It 
 only negates the match of the initially promised lines.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 

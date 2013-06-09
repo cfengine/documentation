@@ -156,7 +156,7 @@ business goals in promises.
 If `ignore_missing_bundles` is set to true, if any bundles in the bundle 
 sequence do not exist, ignore and continue.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value**: false
 
@@ -189,7 +189,7 @@ effort' with those that do exist. The default of all Booleans is
 false, so the normal behavior is to signal an error if an input is
 not found.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value**: false
 
@@ -327,7 +327,7 @@ they may be considered self-documenting. This may be used as a policy Quality
 Assurance measure, to remind policy makers to properly document their 
 promises.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -460,7 +460,7 @@ During an upgrade, setting this parameter can cause a lot of recomputation of
 checksums etc. Government bodies starting with CFEngine Enterprise 2.0 or  
 higher should set this to 'true' from the start.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 

@@ -306,7 +306,7 @@ log file redundantly.
 This makes a log pattern promise equivalent to something like tail -f
 logfile | grep pattern in Unix parlance.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 

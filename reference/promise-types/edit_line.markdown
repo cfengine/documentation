@@ -203,7 +203,7 @@ normally included in the defined region (that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing). Setting this option to true makes it included.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -247,7 +247,7 @@ normally included in the defined region; that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing. Setting this option to true makes it included.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 

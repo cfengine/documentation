@@ -160,7 +160,7 @@ current configuration. This means that all details surrounding the
 verification of the current promise will be recorded in the audit
 database.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -342,7 +342,7 @@ from the server clock (where "too far" is currently defined as
 asynchronization and also a protection against Denial of Service
 attempts based on clock corruption.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** true
 
@@ -418,7 +418,7 @@ true/false store keys using hostname lookup instead of IP addresses
 Client side choice to base key associations on host names rather
 than IP address. This is useful for hosts with dynamic addresses.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -461,7 +461,7 @@ connections to syslog
 
 If set, the server will record connection attempts in syslog.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -483,7 +483,7 @@ If true the server will log all transfers of files which the server
 requires to encrypted in order to grant access (see `ifencrypted`)
 to syslog. These files are deemed to be particularly sensitive.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -654,7 +654,7 @@ This setting only applies to CFEngine clients, the policy hub will
 not be affected. Changing this setting requires a restart of
 `cf-serverd` for the change to take effect.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** true
 

@@ -267,7 +267,7 @@ whether to generate the `allclasses.txt` report.
 If set to true, the `state/allclasses.txt` file will be written to disk 
 during agent execution. 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value**: false
 
@@ -293,7 +293,7 @@ results.
 flag to determine whether configurations will always be checked before 
 executing, or only after updates.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Example**:
 ```cf3
@@ -323,7 +323,7 @@ will force a revalidation of the input.
 **Deprecated**: This menu option policy is deprecated, does 
 nothing and is kept for backward compatibility.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -391,7 +391,7 @@ If 'true' the stored reference value is updated as soon as a warning
 message has been given. As most changes are benign (package updates 
 etc) this is a common setting.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -535,7 +535,7 @@ calls seem to respect the signals.
 **Description**: The `dryrun` menu option, if set, makes no changes to 
 the system, and will only report what it needs to do.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -721,7 +721,7 @@ This represents a client side choice to base key associations on host
 names rather than IP address. This is useful for hosts with dynamic 
 addresses.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -778,7 +778,7 @@ level 'permanently' within the class context indicated.
 It is equivalent to (and when present, overrides) the command line option
 '-I'. 
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -795,7 +795,7 @@ It is equivalent to (and when present, overrides) the command line option
 **Deprecated**: This attribute does nothing and is kept for backward  
 compatibility.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -862,7 +862,7 @@ whether to mount any filesystems promised.
 It issues the generic command to mount file systems defined in the
 file system table.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -881,7 +881,7 @@ whether to warn about filenames with no alphanumeric content.
 
 This test is applied in all recursive/depth searches.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -954,7 +954,7 @@ input files are writable by unauthorized users.
 If this is set, the agent will not accept an input file that is not
 owned by a privileged user.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1016,7 +1016,7 @@ credentials for a secondary confirmation of their identity to a
 CFEngine server. This causes the agent to ignore its missing DNS
 credentials.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1053,7 +1053,7 @@ it will warn about them.
 **Description**: The `syslog` menu option policy determines wether to 
 switch on output to syslog at the inform level.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1075,7 +1075,7 @@ estimated 'business value' of the system automation as a running log,
 `value_kept`, etc. The format of the file is date, sum value kept, sum value 
 repaired, sum value notkept.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -1115,7 +1115,7 @@ It is equivalent to (and when present, overrides) the command line option
 '-v'. Sets the default output level 'permanently' for this
 promise.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 

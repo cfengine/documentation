@@ -93,7 +93,7 @@ the variables with the bundle in which they are defined. For example:
     $(mon.www_in)
 ```
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 

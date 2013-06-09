@@ -152,7 +152,7 @@ should not do it without a good reason.
 
 **Description**: true/false force use of ipv4 in connection
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -190,7 +190,7 @@ effect. A machine that has been trusted remains trusted until its
 key is manually revoked by a system administrator. Keys are stored
 in `WORKDIR/ppkeys`.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -211,7 +211,7 @@ Client connections are encrypted with using a Blowfish randomly
 generated session key. The initial connection is encrypted using the
 public/private keys for the client and server hosts.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -232,7 +232,7 @@ public/private keys for the client and server hosts.
 Causes `cf-runagent` to attempt parallelized connections to the
 servers.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
@@ -280,7 +280,7 @@ file(s)
 Filenames are chosen automatically and placed in the
 `WORKDIR/outputs/hostname_runagent.out`.
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Type**: [`boolean`][boolean]
 
 **Default value:** false
 
