@@ -100,10 +100,16 @@ pre {
     -o-box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px inset;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px inset;
     border-radius: 3px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
     font-weight: normal;
+        
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+     /* width: 99%; */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
+
 pre code {
     font-weight: normal;
     border: 1px solid #e8eff1;

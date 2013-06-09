@@ -15,9 +15,19 @@ module Jekyll
         seed
       end
     end
+    
+    
+    def sortNavBySortingKey(data, recursive=false)
+      data.each  do |k, arr|
+          if (recursive && arr.has_key?('childrens') && !arr['childrens'].empty?)
+              data[k]['childrens'] = sortNavBySortingKey(arr['childrens'], true)
+          end
+      end
 
+      return data.sort_by { |i, v| v['sorting'] }
+    end
 
-
+          
     def generate(site)
 
       # First remove all invisible items (default: nil = show in nav)
@@ -70,13 +80,24 @@ module Jekyll
             if p.data['categories'].length == i
               struct = {}
               struct['published'] = p.data['published']
-              struct['sortkey']   = p.data['sortkey']
+              #struct['sortkey']   = p.data['sorting']
               struct['title']     = p.data['title']
               struct['type']      = 'page'
               struct['alias']     = p.data['alias']
 
               tmp[value]['own_url'] ||= {}
               tmp[value]['own_url'] = struct
+              
+              # if sorting is not set - use ASCII number
+              if (p.data['sorting'] == nil)
+                if (p.data['title'] != nil)
+                  tmp[value]['sorting'] = (p.data['title'][0].ord)*100 + p.data['title'][1].ord
+                else
+                  tmp[value]['sorting'] = 10 
+                end  
+              else
+                tmp[value]['sorting'] = p.data['sorting'].to_i
+              end  
             end
 
             if tmp.has_key?('childrens') == false
@@ -90,13 +111,9 @@ module Jekyll
       end
 #
       #puts JSON.pretty_generate(nav_pages)
-
-      # Sort all pages by alphabet in all levels - recursively
-      # if failed - add this to convert keys{|x, y| x.to_s <=> y.to_s}
-      nav_pages = sort_by_key(nav_pages, true)
-
-      #puts JSON.pretty_generate(nav_pages)
-
+      
+      nav_pages = sortNavBySortingKey(nav_pages, true)
+ 
       $leftNavigation = {}
 
       buildLeftNavigation(nav_pages)
