@@ -63,4 +63,13 @@ In addition, the git author name and email is set to the user name and email add
 user logged into the Mission Portal when the commit is made. This allows you to see exactly
 which users are making which changes in the git commit log.
 
-TODO: insert git log command to see committer and author name/email.
+````
+$ git log --pretty=format:"%h %an: %s" --committer='Mission Portal'
+0ac4ae0 bob: Setting up dev environment. Ticket #123.
+5ffc4d1 bob: Configuring postgres on test envirnoment. Ticket #124.
+4190ca5 bob: My test activation
+0ac4ae0 tom: remove failed activation
+5ffc4d1 tom: print echo example
+dc9518d rachel: Rolling out Apache, Phase 2
+3cfaf93 rachel: Rolling out Apache, Phase 1
+````
