@@ -123,9 +123,9 @@ comma-separated list of values.
 
 **Notes**:
 
-Some [functions](reference-functions.html]) return `slist`s, and an `slist` 
+Some [functions](reference-functions.html) return `slist`s, and an `slist` 
 may contain the values copied from another `slist`, `rlist`, or `ilist`. See 
-`policy`. **TODO: NEED anchors in pages**
+[`policy`](#policy).
 
 ### ilist
 
@@ -153,9 +153,9 @@ interchangeable, but when you declare a variable to be type `ilist`,
 CFEngine verifies that each value you assign to it looks like an integer
 (e.g., 3, -17, 16K).
 
-Some [functions](reference-functions.htm) return `ilist`s, and an `ilist` may 
+Some [functions](reference-functions.html) return `ilist`s, and an `ilist` may 
 contain the values copied from another `slist`, `rlist`, or `ilist`. See 
-`policy`
+[`policy`](#policy)
 
 ### rlist
 
@@ -182,7 +182,7 @@ CFEngine verifies that each value you assign to it looks like a real
 number (e.g., 3, 3.1415, .17, 6.02e23, -9.21e-17).
 
 Some [functions](reference-functions.html) return `rlist`s, and an `rlist` may 
-contain the values copied from another `slist`, `rlist`, or `ilist`. See `policy`
+contain the values copied from another `slist`, `rlist`, or `ilist`. See [`policy`](#policy)
 
 ***
 
