@@ -199,7 +199,7 @@ the patch settings to install 'all new system patches'.
 If we specify the name of a patch, then CFEngine will try to see if it
 exists and/or is installed. If it exists in the pending list, it will be
 installed. If it exists in the installed list it will not be installed.
-Now consider the pattern .\*. This will match any installed package, so
+Now consider the pattern `.*`. This will match any installed package, so
 CFEngine will assume the relevant patch has been installed already. On
 the other hand, the pattern no match will not match an installed patch,
 but it will not match a named patch either.
@@ -215,7 +215,7 @@ are:
 
 ### Installers without package/patch arguments
 
-CFEngine supports the syntax \$ at the end of a command to mean that no
+CFEngine supports the syntax `$` at the end of a command to mean that no
 package name arguments should be used or appended after the dollar sign.
 This is because some commands require a list of packages, while others
 require an empty list. The default behavior is to try to append the

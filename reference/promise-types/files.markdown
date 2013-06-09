@@ -1578,7 +1578,7 @@ places: for `edit_defaults` and in `methods` promises. If set to true,
 it causes the child-bundle named in the promise to inherit only the
 classes of the parent bundle. Inheriting the variables is unnecessary as
 the child can always access the parent's variables by a qualified
-reference using its bundle name. For example, \$(bundle.variable).   
+reference using its bundle name. For example, `$(bundle.variable)`.
 
 #### max_file_size
 
