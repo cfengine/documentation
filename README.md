@@ -85,6 +85,7 @@ categories: [Components, cf-agent]
 published: true
 alias: cf-agent.html
 tags: [cf-agent, promises]
+sorting: 19
 ---
 ```
 
@@ -105,5 +106,7 @@ You must place metadata on the top of the file and divide it with ---  (repeat "
 *alias*: url (html file name) - use "url safe" names
 
 *tags*: tags relevant to this doc
+
+*sorting*: specify page order in the left menu.
 
 
