@@ -16,39 +16,37 @@ If any of these classes becomes defined, it will cause the current bundle to be 
 
 ```cf3
 
-    body common control
+body common control
+{
+bundlesequence  => { "example"  };
+}
 
-    {
-    bundlesequence  => { "example"  };
-    }
+body agent control
+{
+abortbundleclasses => { "invalid" };      # Abort bundle execution if this class is set
+}
 
-    body agent control
-    
-    {
-    abortbundleclasses => { "invalid" };      # Abort bundle execution if this class is set
-    }
-    
-    ###########################################
-    
-    bundle agent example
-    {
-    vars:
-    
-     #"userlist" slist => { "mark", "john" };           # contains all valid entries
-     "userlist" slist => { "mark", "john", "thomas" };  # contains one invalid entry
-    
-    classes:
-    
-      "invalid" not => regcmp("[a-z][a-z][a-z][a-z]","$(userlist)"); # The class 'invalid' is set if the user name does not
-                                                                     # contain exactly four un-capitalized letters (bundle
-                                                                     # execution will be aborted if set)
-    
-    reports:
-    
-     !invalid::
-    
-      "User name $(userlist) is valid at 4 letters";
-    }
+###########################################
+
+bundle agent example
+{
+vars:
+
+  #"userlist" slist => { "mark", "john" };           # contains all valid entries
+  "userlist" slist => { "mark", "john", "thomas" };  # contains one invalid entry
+
+classes:
+
+  "invalid" not => regcmp("[a-z][a-z][a-z][a-z]","$(userlist)"); # The class 'invalid' is set if the user name does not
+                                                                 # contain exactly four un-capitalized letters (bundle
+                                                                 # execution will be aborted if set)
+
+reports:
+
+  !invalid::
+
+    "User name $(userlist) is valid at 4 letters";
+}
 ```
 
 This policy can be found in `/var/cfengine/share/doc/examples/unit_abort.cf`.
@@ -76,10 +74,10 @@ Copy and paste `abortbundleclasses => { "invalid" };` into
 the end of the file it should look something like this:
 
 ```cf3
-    ...
-        #  dryrun => "true";
-        
-        abortbundleclasses => { "invalid" };
-    }
+...
+    #  dryrun => "true";
+    
+    abortbundleclasses => { "invalid" };
+}
 ```
 
