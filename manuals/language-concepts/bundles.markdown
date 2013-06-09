@@ -7,7 +7,7 @@ alias: manuals-language-concepts-bundles.html
 tags: [language, concepts, syntax, body, bundle]
 ---
 
-Previous: [*Promises*](manuals-language-concepts-promises.html)
+Previous: [*Promises*][Promises]
 
 ****
 
