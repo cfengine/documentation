@@ -1,0 +1,162 @@
+ #nav_wrapper {
+     background: url('../media/images/nav_bg.png') repeat-x;
+     height: 53px;
+     line-height: 53px;
+     overflow: hidden;
+ }
+
+    #nav_wrapper ul {
+       height: 53px;
+       margin: 0;
+       padding: 0;
+    }
+        #nav_wrapper ul li {
+            float: left;
+            list-style: none;
+        }
+
+            #nav_wrapper li a,
+            #nav_wrapper li span {
+                padding: 0 2em;
+                color: #fff;
+                font-size: 1.1em;
+                font-family: DINRoundWeb, sans-serif, serif;
+                text-transform: uppercase;
+                display: block;
+                height: 53px;
+            }
+
+            #nav_wrapper li:first-child a {
+                padding-left: 0 !important;
+            }
+
+            #nav_wrapper a {
+                text-decoration: none;
+            }
+
+            #nav_wrapper a:hover, #top_nav span {
+                background: url('../media/images/sprites.png') 50% -3122px  no-repeat;
+                text-decoration: none
+            }
+
+
+#breadcrumbs ul,
+#left_col ul {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#breadcrumbs li,
+#left_col li {
+  list-style: none;
+}
+
+
+ #left_col ul li {
+    text-align: left;
+    font-size: 15px;
+    text-decoration: none;
+    padding-right: 18px;
+    line-height: 26px;
+    white-space: nowrap;
+    clear: both;
+ }
+
+    #left_col ul li a,
+    #left_col ul li span {
+        text-decoration: none;
+        color: #156a90;
+        background-image: url('../media/images/sprites.png');
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-position: 0 4px;
+    }
+
+    #left_col li a:hover,
+    #left_col li span {
+        background-position:0 -496px;
+    }
+
+    #left_col .level1 li a,
+    #left_col .level1 li span {
+        font-size: 1.1em;
+        line-height: 1.8;
+        padding-left: 1em;
+    }
+
+    #left_col .level2 li a,
+    #left_col .level2 li span{
+        font-size: 0.9em;
+        line-height: 1.3;
+        padding-left: 1em;
+        margin-left: 20px;
+    }
+
+    #left_col li.selected span {
+        color: #F5821F
+    }
+
+
+
+
+
+#breadcrumbs li {
+    float: left;
+    margin: 1em 10px 0 0;
+}
+
+#breadcrumbs a {
+    text-decoration: none;
+    color: #156a90;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #b8d2dd;
+    font-size: 1em
+}
+#breadcrumbs a:hover {
+    border-bottom: none;
+}
+
+#breadcrumbs span {
+    color: #222;
+    font-size: 1em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f5821f;
+}
+
+#breadcrumbs i {
+    width: 7px;
+    display: block;
+    background: url('../media/images/sprites.png') 0 6px no-repeat transparent;
+}
+
+
+
+#tags {
+    display: block;
+    width: 100%;
+    margin: 2em 0;
+}
+
+    #tags ul {
+        margin: 0;
+        padding: 0;
+    }
+
+        #tags li{
+            float: left;
+            list-style: none;
+        }
+
+            #tags li a {
+                display: inline-block;
+                color: #555;
+                margin: 0.5em 1em 0 0;
+                padding: 5px 10px;
+                background: #e5e5e5;
+                font-size: 0.9em;
+                text-decoration: none;
+            }
+
+            #tags li a:hover {
+                text-decoration: underline;
+            }
