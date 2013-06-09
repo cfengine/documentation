@@ -5,6 +5,8 @@ categories: [Examples, Restart a Process]
 published: true
 alias: examples-restart-a-process.html
 tags: [Examples, process, restart]
+reviewed: 2013-06-08
+reviewed-by: atsaloli
 ---
 
 This is a standalone policy that will restart three CFEngine processes if they are not running. 
