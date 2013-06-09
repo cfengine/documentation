@@ -23,7 +23,8 @@ Gems:
 + uglifier
 + execjs
 + sanitize
-#if pandoc is used
+
+######if pandoc is used
 + pandoc-ruby
 + rdiscount
 
