@@ -44,57 +44,48 @@ The following attributes are available to all promise types.
 
 #### action_policy
 
+**Description**: Determines whether to repair or report about non-kept 
+promises
+
+The `action` settings allow general transaction control to be implemented on 
+promise verification. Action bodies place limits on how often to verify the 
+promise and what classes to raise in the case that the promise can or cannot 
+be kept.
+
 **Type**: (menu option)
 
 **Allowed input range**:   
 
-```cf3
-                    fix
-                    warn
-                    nop
 ```
-
-**Description**: The `action_policy` menu option policy determines whether 
-to repair or report about non-kept promises. The `action` settings allow 
-general transaction control to be implemented on promise verification. 
-Action bodies place limits on how often to verify the promise and what 
-classes to raise in the case that the promise can or cannot be kept.
+    fix
+    warn
+    nop
+```
 
 **Example**:
 
 The following example shows a simple use of transaction control:
 
 ```cf3
-     
-     body action warn_only {
+     body action warn_only
+     {
      action_policy => "warn";
      ifelapsed => "60";
      }
-     
 ```
 
 Note that actions can be added to sub-bundles like methods and editing 
 bundles, and that promises within these do not inherit action settings 
 at higher levels. Thus, in the following example there are two levels
- of action setting:
+of action setting:
 
 ```cf3
-     ########################################################
-     #
-     # Warn if line matched
-     #
-     ########################################################
-     
      body common control
-     
      {
      bundlesequence  => { "testbundle" };
      }
      
-     ########################################################
-     
      bundle agent testbundle
-     
      {
      files:
      
@@ -104,52 +95,43 @@ at higher levels. Thus, in the following example there are two levels
             action => WarnOnly;
      }
      
-     ########################################################
-     
      bundle edit_line DeleteLinesMatching(regex)
-       {
+     {
        delete_lines:
      
          "$(regex)" action => WarnOnly;
      
-       }
-     
-     ########################################################
+     }
      
      body action WarnOnly
      {
-     action_policy => "warn";
+       action_policy => "warn";
      }
 ```
 
+**Notes**:
 The `action` setting for the `files` promise means that file edits will
 not be committed to disk, only warned about. This is a master-level
 promise that overrides anything that happens during the editing. The
-`action` setting in the edit\_line bundle means that the internal memory
-modelling of the file will only warn about changes rather than
+`action` setting in the `edit_line` bundle means that the internal memory
+modeling of the file will only warn about changes rather than
 committing them to the memory model. This makes little difference to the
 end result, but it means that CFEngine will report
 
 ```cf3
-          Need to delete line - ... - but only a warning was promised
+    Need to delete line - ... - but only a warning was promised
 ```
 
 Instead of
 
 ```cf3
-          Deleting the promised line ... Need to save file - but only a warning was promised
+    Deleting the promised line ... Need to save file - but only a warning was promised
 ```
 
 In either case, no changes will be made to the disk, but the messages
 given by `cf-agent` will differ.   
 
 #### ifelapsed
-
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value:** control body value
 
 **Description**: The number of minutes before next allowed assessment of 
 a promise is set using `ifelapsed`. This overrides the global settings. 
@@ -162,10 +144,15 @@ not performed on every run. Using time classes such as `Hr12` is one
 part of this strategy; using `ifelapsed` is another, which is not tied 
 to a specific time.   
 
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
+
+**Default value:** control body value
+
 **Example**:
 
 ```cf3
-     
      #local
      
      body action example
@@ -180,20 +167,19 @@ to a specific time.
      {
      ifelapsed   => "180";  # 3 hours
      }
-     
 ```
 
 #### expireafter
+
+**Description**: The Number of minutes before a repair action is interrupted 
+and retried is set with `expireafter`. This is the locking time after which 
+CFEngine will attempt to kill and restart its attempt to keep a promise.   
 
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
 **Default value:** control body value
-
-**Description**: The Number of minutes before a repair action is interrupted 
-and retried is set with `expireafter`. This is the locking time after which 
-CFEngine will attempt to kill and restart its attempt to keep a promise.   
 
 **Example**:
 
@@ -205,105 +191,111 @@ CFEngine will attempt to kill and restart its attempt to keep a promise.
      }
 ```
 
-#### log_string_
+#### log_string
+
+**Description**: The message to be written to the log when a promise 
+verification leads to a repair.
+
+The `log_string` works together with `log_repair`, `log_kept` etc, to define 
+a string for logging to one of the named files depending on promise outcome, 
+or to standard output if the log file is stipulated as `stdout`. Log strings 
+on standard output are denoted by an `L:` prefix.
+
+Note that `log_string` does not interact with `log_level`, which is about 
+regular system output messages.
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The message to be written to the log when a promise 
-verification leads to a repair is determined by the `log_string`. The 
-`log_string` works together with `log_repair`, `log_kept` etc, to define 
-a string for logging to one of the named files depending on promise outcome, 
-or to standard output if the log file is stipulated as stdout. Log strings 
-on standard output are denoted by an L: prefix.
-
-Note that `log_string` does not interact with `log_level`, which is about 
-regular system output messages.
-
 **Example**:
 
 ```cf3
-          
-          promise-type:
-          
-           "promiser"
-          
-             attr = "value",
-             action = log_me("checked $(this.promiser) in promise $(this.handle)");
-          
-          # ..
-          
-          body action log_me(s)
-          {
-          log_string = "$(s)";
-          }
-          
+    promise-type:
+
+     "promiser"
+
+       attr = "value",
+       action = log_me("checked $(this.promiser) in promise $(this.handle)");
+
+    # ..
+
+    body action log_me(s)
+    {
+    log_string = "$(s)";
+    }
 ```
 
-**Hint**: The promise handle \$(this.handle) can be a useful referent in a 
+**Hint**: The promise handle `$(this.handle)` can be a useful referent in a 
 log message, indicating the origin of the message. In CFEngine Enterprise, 
 every promise has a default handle, which is based on the filename 
 and line number (specifying your own handle will probably be more mnemonic).
 
 #### log_level
 
-**Type**: (menu option)
+**Description**: Describes the reporting level sent to syslog.
 
-**Allowed input range**:   
-
-```cf3
-                    inform
-                    verbose
-                    error
-                    log
-```
-
-**Description**: The `log_level` describes the reporting level sent to 
-syslog. Use this as an alternative to auditing if you wish to use the 
-syslog mechanism to centralize or manage messaging from CFEngine. A backup
- of these messages will still be kept in WORKDIR/outputs if you are using 
- `cf-execd`.
+Use this as an alternative to auditing if you wish to use the syslog mechanism 
+to centralize or manage messaging from CFEngine. A backup of these messages 
+will still be kept in `WORKDIR/outputs` if you are using `cf-execd`.
 
 On the native Windows version of CFEngine Enterprise, using verbose 
 will include a message when the promise is kept or repaired in the event 
 log.   
 
+**Type**: (menu option)
+
+**Allowed input range**:   
+
+```
+    inform
+    verbose
+    error
+    log
+```
+
 **Example**:
 
 ```cf3
-     
      body action example
      {
      log_level => "inform";
      }
-     
 ```
 
 #### log_kept
+
+**Description**: The name of a file to which `log_string` will be saved
+for kept promises.
+
+If this option is specified together with `log_string`, the current 
+promise will log promise-kept status using the log string to this named
+file. If these log names are absent, the default logging destination 
+for the log string is syslog, but only for non-kept promises. Only the 
+`log_string` is affected by this setting. Other messages destined for 
+logging are sent to syslog.
 
 **Type**: `string`
 
 **Allowed input range**: `stdout|udp_syslog|("?[a-zA-Z]:\\.*)|(/.*)`
 
-**Description**: The `log_kept` string should be the filename of a 
-file to which log\_string will be saved, and if undefined it goes to 
-the system logger.
+This string should be the full path to a text file which will contain 
+the log, or one of the following special values:
 
-If this option is specified together with `log_string`, the current 
-promise will log promise-kept status using the log string to this named
- file. If these log names are absent, the default logging destination 
- for the log string is syslog, but only for non-kept promises. Only the 
- `log_string` is affected by this setting. Other messages destined for 
- logging are sent to syslog.
+* `stdout`
 
-It is intended that named file logs should be different for the three 
-cases: promise kept, promise not kept and promise repaired.
+Send the log message to the standard output, prefixed with an L: to indicate 
+a log message.   
+
+* `udp_syslog`
+
+Attempt to connect to the `syslog_server` defined in body common control and 
+log the message there, assuming the server is configured to receive the 
+request.
 
 **Example**:
 
 ```cf3
-     
      body action logme(x)
      {
      log_kept => "/tmp/private_keptlog.log";
@@ -311,22 +303,11 @@ cases: promise kept, promise not kept and promise repaired.
      log_repaired => "/tmp/private_replog.log";
      log_string => "$(sys.date) $(x) promise status";
      }
-     
 ```
 
-This string should be the full path to a text file which will contain 
-the log, of one of the following special values:
+It is intended that named file logs should be different for the three cases: 
+promise kept, promise not kept and promise repaired.
 
-stdout
-
-Send the log message to the standard output, prefixed with an L: to indicate 
-a log message.   
-
-udp\_syslog
-
-Attempt to connect to the `syslog_server` defined in body common control and 
-log the message there, assuming the server is configured to receive the 
-request.
 
 #### log_priority
 
@@ -334,15 +315,15 @@ request.
 
 **Allowed input range**:   
 
-```cf3
-                    emergency
-                    alert
-                    critical
-                    error
-                    warning
-                    notice
-                    info
-                    debug
+```
+    emergency
+    alert
+    critical
+    error
+    warning
+    notice
+    info
+    debug
 ```
 
 **Description**: The `log_priority` menu option policy is the priority level 
@@ -360,18 +341,30 @@ importance of messages from CFEngine.
 
 #### log_repaired
 
+**Description**: The name of a file to which `log_string` will be saved for 
+repaired promises.
+
 **Type**: `string`
 
 **Allowed input range**: `stdout|udp_syslog|("?[a-zA-Z]:\\.*)|(/.*)`
 
-**Description**: The `log_repaired` string should contain the filename of a 
-file to which log\_string will be saved, if undefined it goes to the system 
-logger.
+This string should be the full path to a text file which will contain 
+the log, or one of the following special values:
+
+* `stdout`
+
+Send the log message to the standard output, prefixed with an L: to indicate 
+a log message.   
+
+* `udp_syslog`
+
+Attempt to connect to the `syslog_server` defined in body common control and 
+log the message there, assuming the server is configured to receive the 
+request.
 
 **Example**:
 
 ```cf3
-     
      bundle agent test
      {
      vars:
@@ -402,40 +395,41 @@ logger.
      }
 ```
 
-`log_repaired` may be the name of a log to which the `log_string` is 
-written if a promise is repaired. It should be the full path to a text 
-file which will contain the log, of one of the following special values:
-
-stdout
-
-Send the log message to the standard output, prefixed with an L: to 
-indicate a log message.   
-
-udp\_syslog
-
-Attempt to connect to the `syslog_server` defined in body common control 
-and log the message there, assuming the server is configured to receive 
-the request.
+It is intended that named file logs should be different for the three cases: 
+promise kept, promise not kept and promise repaired.
 
 #### log_failed
+
+**Description**: The name of a file to which `log_string` will be saved for 
+failed promises.
+
+If this option is specified together with `log_string`, the current promise 
+will log promise not kept status using the log string to this named file. If 
+these log names are absent, the default logging destination for the log string 
+is syslog, but only for non-kept promises. Only the `log_string` is affected 
+by this setting. Other messages destined for logging are sent to syslog.
 
 **Type**: `string`
 
 **Allowed input range**: `stdout|udp_syslog|("?[a-zA-Z]:\\.*)|(/.*)`
 
-**Description**: The string `log_failed` should contain the filename of a 
-file to which log\_stringvwill be saved, and if undefined it goes to the 
-system logger. If this option is specified together with `log_string`, 
-the current promise will log promise-kept status using the log string to 
-this named file. If these log names are absent, the default logging 
-destination for the log string is syslog, but only for non-kept promises. 
-Only the `log_string` is affected by this setting. Other messages 
-destined for logging are sent to syslog.
+This string should be the full path to a text file which will contain 
+the log, or one of the following special values:
+
+* `stdout`
+
+Send the log message to the standard output, prefixed with an L: to indicate 
+a log message.   
+
+* `udp_syslog`
+
+Attempt to connect to the `syslog_server` defined in body common control and 
+log the message there, assuming the server is configured to receive the 
+request.
 
 **Example**:
 
 ```cf3
-     
      bundle agent test
      {
      vars:
@@ -459,40 +453,25 @@ destined for logging are sent to syslog.
      log_repaired => "/tmp/private_replog.log";
      log_string => "$(sys.date) $(x) promise status";
      }
-     
 ```
 
 It is intended that named file logs should be different for the three cases: 
-promise kept, promise not kept and promise repaired. This string should be 
-the full path to a text file which will contain the log, of one of the 
-following special values:
-
-stdout
-
-Send the log message to the standard output, prefixed with an L: to indicate 
-a log message.   
-
-udp\_syslog
-
-Attempt to connect to the `syslog_server` defined in body common control 
-and log the message there, assuming the server is configured to receive 
-the request.
+promise kept, promise not kept and promise repaired.
 
 #### value_kept
+
+**Description**: The value attributed to keeping this promise.
+
+If nothing is specified, the default value is +1.0. However, nothing is logged 
+unless the agent control body sets `track_value` to "true".
 
 **Type**: `real`
 
 **Allowed input range**: `-9.99999E100,9.99999E100`
 
-**Description**: The value of `value_kept` is a real number value attributed 
-to keeping this promise. If nothing is specified, the default value is 
-+1.0. However, nothing is logged unless the agent control body switched 
-on track\_value = "true".
-
 **Example**:
 
 ```cf3
-     
      body action mydef
      {
      value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
@@ -500,24 +479,21 @@ on track\_value = "true".
      value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
      ifelapsed       => "60";   # one hour
      }
-     
 ```
 
 #### value_repaired
 
+**Description**: The value attributed to repairing a promise.
+
+If nothing is specified, the default value is 0.5. However, nothing is logged unless the agent control body set `track_value` to "true".
+
 **Type**: `real`
 
 **Allowed input range**: `-9.99999E100,9.99999E100`
 
-**Description**: The value of `value_repaired` is a real number value 
-attributed to repairing a promise. If nothing is specified, the default 
-value is 0.5. However, nothing is logged unless the agent control body 
-switched on track\_value = "true".
-  
 **Example**:
 
 ```cf3
-     
      body action mydef
      {
      value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
@@ -525,24 +501,23 @@ switched on track\_value = "true".
      value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
      ifelapsed       => "60";   # one hour
      }
-     
 ```
 
 #### value_notkept
 
+**Description**: The (possibly negative) value attributed to not keeping a 
+promise.
+
+If nothing is specified, the default value is -1.0. However, nothing is logged 
+unless the agent control body sets `track_value` to "true".
+  
 **Type**: `real`
 
 **Allowed input range**: `-9.99999E100,9.99999E100`
 
-**Description**: The value of `value_notkept` is a real number value (possibly 
-negative) attributed to not keeping a promise. If nothing is specified, the 
-default value is -1.0. However, nothing is logged unless the agent control 
-body switched on track\_value = "true".
-  
 **Example**:
 
 ```cf3
-     
      body action mydef
      {
      value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
@@ -550,44 +525,40 @@ body switched on track\_value = "true".
      value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
      ifelapsed       => "60";   # one hour
      }
-     
 ```
-
 
 #### audit
 
-**Type**: [`boolean`][Promises#Promise_Attributes]
+**Description**: A true/false switch for detailed audit records of a promise.
 
-**Description**: The `audit` menu option policy is a true/false switch for 
-detailed audit records of a promise. If this is set, CFEngine will perform 
-auditing on this specific promise. This means that all details surrounding 
-the verification of the current promise will be recorded in the audit 
-database.   
+If this is set, CFEngine will perform auditing on this specific promise. This 
+means that all details surrounding the verification of the current promise 
+will be recorded in the audit database.   
+
+**Type**: [`boolean`][Promises#Promise_Attributes]
 
 **Default value:** false
 
 **Example**:
 
 ```cf3
-     
      body action example
      {
      # ...
      
      audit => "true";
      }
-     
 ```
 
 #### background
 
 **Type**: [`boolean`][Promises#Promise_Attributes]
 
-**Description**: The `background` menu option policy is a true/false 
-switch for parallelizing the promise repair. If possible, perform the 
-verification of the current promise in the background. This is advantageous 
-only if the verification might take a significant amount of time, e.g. 
-in remote copying of filesystem/disk scans.
+**Description**: A true/false switch for parallelizing the promise repair.
+
+If possible, perform the verification of the current promise in the 
+background. This is advantageous only if the verification might take a 
+significant amount of time, e.g. in remote copying of filesystem/disk scans.
 
 On the Windows version of CFEngine Enterprise, this can be useful if we don't
 want to wait for a particular command to finish execution before checking 
@@ -601,75 +572,68 @@ performed in the background on Windows.
 **Example**:
 
 ```cf3
-     
      body action example
      {
      background => "true";
      }
-     
 ```
 
 #### report_level
+
+**Description**: Defines the reporting level for standard output for this promise.
+
+`cf-agent` can be run in verbose mode (-v), inform mode (-I) and just print 
+errors (no arguments). This attribute allows to set these three output levels 
+on a per promise basis, allowing the promise to be more verbose than the 
+global setting (but not less).
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
-```cf3
-                    inform
-                    verbose
-                    error
-                    log
+```
+    inform
+    verbose
+    error
+    log
 ```
 
 **Default value:** none
 
-**Description**: The `report_level` menu option policy defines the reporting 
-level for standard output for this promise. cf-agent can be run in verbose 
-mode (-v), inform mode (-I) and just print errors (no arguments). This 
-attribute allows to set these three output levels on a per promise basis, 
-allowing the promise to be more verbose than the global setting (but not 
-less).
-
 **Example**:
 
 ```cf3
-     
      body action example
      {
      report_level => "verbose";
      }
-     
 ```
 
-
 #### measurement_class
+
+**Description**: If set, performance will be measured and recorded under this 
+identifier.
+
+By setting this string you switch on performance measurement for the current 
+promise, and also give the measurement a name. 
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The `measurement_class` string, if set, performance 
-will be measured and recorded under this identifier. By setting this string 
-you switch on performance measurement for the current promise, and also 
-give the measurement a name. 
-
 **Example**:  
    
 ```cf3
-     
-     
      body action measure
      {
      measurement_class => "$(this.promiser) long job scan of /usr";
      }
-     
 ```
 
 The identifier forms a partial identity for optional performance scanning of promises of the form:
 
 ```cf3
-          ID:promise-type:promiser.
+    ID:promise-type:promiser.
 ```
 
 
@@ -680,13 +644,14 @@ The identifier forms a partial identity for optional performance scanning of pro
 
 #### promise_repaired
 
+**Description**: Classes to be defined globally if the promise was 'repaired'.
+
+If the classes are set, a corrective action had to be taken to keep the 
+promise.
+
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
-
-**Description**: The `promise_repaired` slist contains classes to be defined 
-globally. If a promise is 'repaired' it means that a corrective action had 
-to be taken to keep the promise.
 
 Note that any strings passed to this list are automatically canonified, so 
 it is unnecessary to call a canonify function on such inputs.
@@ -694,12 +659,10 @@ it is unnecessary to call a canonify function on such inputs.
 **Example**:  
    
 ```cf3
-     
      body classes example
      {
      promise_repaired => { "change_happened" };
      }
-     
 ```
 
 **Important**: Complex promises can report misleadingly; for example, 
@@ -715,47 +678,47 @@ promises rather than 'overloading' a single one.
 
 #### repair_failed
 
+**Description**: Classes to be defined globally if the promise could not be 
+kept.
+
+If the classes are set, the corrective action to keep the promise failed for 
+some reason.
+
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Description**: A `repair_failed` list contains classes to be defined 
-globally. A promise could not be repaired because the corrective action 
-failed for some reason. Any strings passed to this list are automatically 
-canonified, so it is unnecessary to call a canonify function on such inputs.   
+Note that any strings passed to this list are automatically canonified, so it 
+is unnecessary to call a canonify function on such inputs.   
 
 **Example**:
 
 ```cf3
-     
      body classes example
      {
      repair_failed => { "unknown_error" };
      }
-     
 ```
 
 #### repair_denied
+
+**Description**: Classes to be defined globally if the promise could not be 
+repaired due to denied access to required resources.
 
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Description**: The `repair_denied` slist contains classes to be defined 
-globally. Note that any strings passed to this list are automatically 
-canonified, so it is unnecessary to call a canonify function on such 
-inputs.   
-
+Note that any strings passed to this list are automatically canonified, so 
+it is unnecessary to call a canonify function on such inputs.
 
 **Example**:  
    
 ```cf3
-     
      body classes example
      {
      repair_denied => { "permission_failure" };
      }
-     
 ```
 
 In the above example, a promise could not be kept because access to a key 
@@ -764,81 +727,80 @@ resource was denied.
 
 #### repair_timeout
 
+**Description**: Classes to be defined globally if the promise could not be 
+repaired due to timeout.
+
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Description**: The `repair_timeout` slist contains classes to be defined 
-globally.
+Note that any strings passed to this list are automatically canonified, so 
+it is unnecessary to call a canonify function on such inputs.
 
 **Example**:
 
 ```cf3
-     
      body classes example
      {
      repair_timeout => { "too_slow", "did_not_wait" };
      }
-     
 ``` 
 
 In the above example, a promise maintenance repair timed-out waiting for some dependent resource.   
 
 #### promise_kept
 
+**Description**: Classes to be defined globally if the promise was kept 
+without any corrective action.
+
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Description**: The `promise_kept` slist contains classes to be defined 
-globally. Note that any strings passed to this list are automatically 
-canonified, so it is unnecessary to call a canonify function on such inputs.
+Note that any strings passed to this list are automatically canonified, so 
+it is unnecessary to call a canonify function on such inputs.
 
 **Example**:
 
 ```cf3
-     
      body classes example
      {
      promise_kept => { "success", "kaplah" };
      }
-     
 ```
 
 The class in the above example is set if no action was necessary by 
 `cf-agent`, because the promise concerned was already kept without further 
 action required.
 
-**Important**: complex promises can report misleadingly. For example, 
+**Note**: Complex promises can report misleadingly. For example, 
 `files`promises that set multiple parameters on a file simultaneously.
 
 The classes for different parts of a promise are not separable. Thus, 
 if you promise to create and file and change its permissions, when the 
 file exists with incorrect permissions, `cf-agent` will report that the 
-promise\_kept for the file existence, but promise\_repaired for the 
+`promise_kept` for the file existence, but `promise_repaired` for the 
 permissions. If you need separate reports, you should code two separate 
-promises rather than 'overloading' a single one.   
+promises rather than 'overloading' a single one.
 
 #### cancel_kept
+
+**Description**: Classes to be canceled if the promise is kept.
 
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Description**: A `cancel_kept` slist contains classes to be canceled if 
-the promise is kept. Note that any strings passed to this list are 
-automatically canonified, so it is unnecessary to call a canonify function 
-on such inputs.
+Note that any strings passed to this list are automatically canonified, so 
+it is unnecessary to call a canonify function on such inputs.
 
 **Example**:  
    
 ```cf3
-     
      body classes example
      {
      cancel_kept => { "success", "kaplah" };
      }
-     
 ```
 
 In the above example, if the promise was already kept and nothing was done, 
@@ -849,24 +811,22 @@ defined.
 
 #### cancel_repaired
 
+**Description**: Classes to be canceled if the promise is repaired.
+
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Description**: A `cancel_repaired` slist contains classes to be canceled 
-if the promise is repaired. Note that any strings passed to this list are 
-automatically canonified, so it is unnecessary to call a canonify function 
-on such inputs.
+Note that any strings passed to this list are automatically canonified, so 
+it is unnecessary to call a canonify function on such inputs.
 
 **Example**:
 
 ```cf3
-     
      body classes example
      {
      cancel_repaired => { "change_happened" };
      }
-     
 ```
 
 In the above example, if the promise was repaired and changes were made to 
@@ -877,24 +837,23 @@ no longer defined.
 
 #### cancel_notkept
 
+**Description**: Classes to be canceled if the promise is not kept for any 
+reason.
+
 **Type**: `slist`
 
 **Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Description**: A `cancel_notkept` slist contains classes to be canceled 
-if the promise is not kept for any reason. Note that any strings passed 
-to this list are automatically canonified, so it is unnecessary to call 
-a canonify function on such inputs.
+Note that any strings passed to this list are automatically canonified, so 
+it is unnecessary to call a canonify function on such inputs.
 
 **Example**:  
    
 ```cf3
-     
      body classes example
      {
      cancel_notkept => { "failure" };
      }
-     
 ```
 
 In the above example, if the promise was not kept but nothing could be done, 
@@ -905,12 +864,27 @@ defined.
 
 #### kept_returncodes
 
+**Description**: Return codes that indicate a kept `commands` promise.
+
+Currently, the attribute has impact on the following command-related 
+promises:
+
+* All promises of type `commands:`
+* `files`-promises containing a `transformer`-attribute
+* The package manager change command in `packages`-promises (e.g. the 
+command for add, remove, etc.)
+
+If none of the attributes `kept_returncodes`, `repaired_returncodes`, or 
+`failed_returncodes` are set, the default is to consider a return code 
+zero as promise repaired, and nonzero as promise failed.
+
 **Type**: `slist`
 
 **Allowed input range**: `[-0-9_$(){}\[\].]+`
 
-**Description**: A `kept_returncodes` slist contains return codes indicating a 
-kept command-related promise.
+Note that the return codes may overlap, so multiple classes may be set 
+from one return code. In Unix systems the possible return codes are 
+usually in the range from 0 to 255.
 
 **Example**:
 
@@ -922,8 +896,8 @@ kept command-related promise.
         classes => example;
      
      reports:
-     waskept::
-       "The command-promise was kept!";
+       waskept::
+         "The command-promise was kept!";
      }
      
      body classes example
@@ -938,32 +912,31 @@ command-related promise has been kept. This can in turn be used to define
 classes using the `promise_kept` attribute, or merely alter the total 
 compliance statistics.
 
+**History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
+
+#### repaired_returncodes
+
+**Description**: Return codes that indicate a repaired `commands` promise
+
 Currently, the attribute has impact on the following command-related 
 promises:
 
--   All promises of type `commands:`
--   `files`-promises containing a `transformer`-attribute
--   The package manager change command in `packages`-promises (e.g. the 
+* All promises of type `commands:`
+* `files`-promises containing a `transformer`-attribute
+* The package manager change command in `packages`-promises (e.g. the 
 command for add, remove, etc.)
 
 If none of the attributes `kept_returncodes`, `repaired_returncodes`, or 
 `failed_returncodes` are set, the default is to consider a return code 
 zero as promise repaired, and nonzero as promise failed.
 
-Note that the return codes may overlap, so multiple classes may be set 
-from one return code. In Unix systems the possible return codes are 
-usually in the range from 0 to 255.
-
-**History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
-
-#### repaired_returncodes
-
 **Type**: `slist`
 
 **Allowed input range**: `[-0-9_$(){}\[\].]+`
 
-**Description**: A `repaired_returncodes` slist contains return codes 
-indicating a repaired command-related promise
+Note that the return codes may overlap, so multiple classes may be set 
+from one return code. In Unix systems the possible return codes are usually 
+in the range from 0 to 255.
 
 **Example**:  
    
@@ -990,32 +963,32 @@ In the above example, a list of integer return codes indicating that a
 command-related promise has been repaired. This can in turn be used to 
 define classes using the `promise_repaired` attribute, or merely alter the total compliance statistics.
 
-Currently, the attribute has impact on the following command-related 
-promises:
-
--   All promises of type `commands:`
--   `files`-promises containing a `transformer`-attribute
--   The package manager change command in `packages`-promises (e.g. the 
-command for add, remove, etc.)
-
-If none of the attributes `kept_returncodes`, `repaired_returncodes`, 
-or `failed_returncodes` are set, the default is to consider a return 
-code zero as promise repaired, and nonzero as promise failed.
-
-Note that the return codes may overlap, so multiple classes may be set 
-from one return code. In Unix systems the possible return codes are usually 
-in the range from 0 to 255.
-
 **History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
 #### failed_returncodes
+
+**Description**: A `failed_returncodes` slist contains return codes 
+indicating a failed command-related promise.
+
+Currently, the attribute has impact on the following command-related 
+promises:
+
+* All promises of type `commands:`
+* `files`-promises containing a `transformer`-attribute
+* The package manager change command in `packages`-promises (e.g. the 
+command for add, remove, etc.)
+
+If none of the attributes `kept_returncodes`, `repaired_returncodes`, or 
+`failed_returncodes` are set, the default is to consider a return code 
+zero as promise repaired, and nonzero as promise failed.
 
 **Type**: `slist`
 
 **Allowed input range**: `[-0-9_$(){}\[\].]+`
 
-**Description**: A `failed_returncodes` slist contains return codes 
-indicating a failed command-related promise.
+Note that the return codes may overlap, so multiple classes may be set 
+from one return code. In Unix systems the possible return codes are usually 
+in the range from 0 to 255.
 
 **Example**:
 
@@ -1058,103 +1031,85 @@ that a command-related promise has failed. This can in turn be used to
 define classes using the `promise_repaired` attribute, or merely alter 
 the total compliance statistics.
 
-Currently, the attribute has impact on the following command-related 
-promises.
-
--   All promises of type `commands:`
--   `files`-promises containing a `transformer`-attribute
--   The package manager change command in `packages`-promises (e.g. the 
-command for add, remove, etc.)
-
-If none of the attributes `kept_returncodes`, `repaired_returncodes`, or 
-`failed_returncodes` are set, the default is to consider a return code 
-zero as promise repaired, and nonzero as promise failed.
-
-Note that the return codes may overlap, so multiple classes may be set from 
-one return code. In Unix systems the possible return codes are usually in 
-the range from 0 to 255.
-
 **History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
 #### persist_time
+
+**Description**: The number of minutes the specified classes should remain 
+active.
+
+By default classes are ephemeral entities that disappear when `cf-agent` 
+terminates. By setting a persistence time, they can last even when the agent 
+is not running.
 
 **Type**: `int`
 
 **Allowed input range**: `0,99999999999`
 
-**Description**: The value of `persist_time` defines the number of minutes 
-the specified classes should remain active. By default classes are ephemeral 
-entities that disappear when `cf-agent` terminates. By setting a persistence 
-time, they can last even when the agent is not running.   
-
 **Example**:
 
 ```cf3
-     
      body classes example
      {
      persist_time => "10";
      }
-     
 ```
 
 #### timer_policy
+
+**Description**: Determines whether a persistent class restarts its counter 
+when rediscovered.
+
+In most cases resetting a timer will give a more honest appraisal of which 
+classes are currently important, but if we want to activate a response of 
+limited duration as a rare event then an absolute time limit is useful.
 
 **Type**: (menu option)
 
 **Allowed input range**:   
 
-```cf3
-                    absolute
-                    reset
 ```
-
-**Description**: The `timer_policy` menu option policy determines whether 
-a persistent class restarts its counter when rediscovered. In most cases 
-resetting a timer will give a more honest appraisal of which classes are 
-currently important, but if we want to activate a response of limited 
-duration as a rare event then an absolute time limit is useful.
+    absolute
+    reset
+```
 
 **Default value:** reset
 
 **Example**:
 
 ```cf3
-     
      body classes example
      {
      timer_policy => "reset";
      }
-     
 ```
 
 ### comment
+
+**Description**: Describes the real intention of the promise.
+
+Comments written in code follow the program, they are not merely discarded; 
+they appear in reports and error messages.
 
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
 
-**Description**: The `comment` string describes the real intention of the 
-promise. Comments written in code follow the program, they are not merely 
-discarded; they appear in reports and error messages.
-
 **Example**:
 
 ```cf3
-comment => "This comment follows the data for reference ...",
+    comment => "This comment follows the data for reference ...",
 ```
 
 ### depends_on
 
-**Type**: `slist`
+**Description**: Promise handles that this promise builds on or depends on 
+somehow.
 
-**Allowed input range**: (arbitrary string)
-
-**Description**: A `depends_on` slist contains promise handles that this 
-promise builds on or depends on somehow. This is a list of promise handles 
-for whom this promise is a promisee. In other words, we acknowledge that 
-this promise will be affected by the list of promises whose handles are 
-specified. It has the effect of partially ordering promises.
+This is a list of promise handles for whom this promise is a promisee. In 
+other words, we acknowledge that this promise will be affected by the list of 
+promises whose handles are specified. It has the effect of partially ordering 
+promises.
 
 As of version 3.4.0, this feature may be considered short-hand for setting 
 classes. If one promise depends on a list of others, it will not be verified 
@@ -1164,42 +1119,39 @@ dependee can be verified.
 
 Handles in other namespaces may be referred to by namespace:handle.
 
+**Type**: `slist`
+
+**Allowed input range**: (arbitrary string)
+
 **Example**:
 
 ```cf3
-body common control
-{
-bundlesequence => { "one"  };
-}
+    bundle agent one
+    {
+    reports:
 
-bundle agent one
-{
-reports:
+     cfengine_3::
 
- cfengine_3::
+       "two"
+         depends_on => { "handle_one" };
 
-   "two"
-     depends_on => { "handle_one" };
-
-   "one"
-     handle => "handle_one";
-
-}
-
+       "one"
+         handle => "handle_one";
+    }
 ```
 
 ### handle
 
+**Description**: A unique id-tag string for referring to this as a promisee 
+elsewhere.
+
+A promise handle allows you to refer to a promise as the promisee of 
+`depends_on` client of another promise. Handles are essential for mapping 
+dependencies and performing impact analyses.
+
 **Type**: `string`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The `handle` string is a unique id-tag string for referring 
-to this as a promisee elsewhere.
-
-A promise handle is like a 'goto' label. It allows you to refer to a promise
-as the promisee of `depends_on` client of another promise. Handles are 
-essential for mapping dependencies and performing impact analyses.
 
 Handles may consist of regular identifier characters. CFEngine automatically 
 `canonifies' the names of handles to conform to this standard.
@@ -1215,96 +1167,91 @@ access:
     admit   => { "127.0.0.1" };
 ```
 
-**Caution**: If the handle name is based on a variable, and the variable
+**Notes**: If the handle name is based on a variable, and the variable
 fails to expand, the handle will be based on the name of the variable
 rather than its content.
 
 ### ifvarclass
 
-**Type**: `string`
+**Description**: Describes extended classes ANDed with context.
 
-**Allowed input range**: (arbitrary string)
-
-**Description**: The `ifvarclass` string describes extended classes ANDed 
-with context. This is an additional class expression that will be evaluated 
-after the class:: classes have selected promises. It is provided in order 
-to enable a channel between variables and classes.
+This is an additional class expression that will be evaluated after the 
+`class::` classes have selected promises. It is provided in order to enable a 
+channel between variables and classes.
 
 The result is thus the logical AND of the ordinary classes and the variable 
 classes.
+
+**Type**: `string`
+
+**Allowed input range**: (arbitrary string)
 
 **Example**:
 
 The generic example has the form:
 
 ```cf3
-     
      promise-type:
      
        "promiser"
      
          ifvarclass = "$(program)_running|($(program)_notfoundHr12)";
-     
 ```
 
 A specific example would be:
 
 ```cf3
-bundle agent example
+    bundle agent example
+    {     
+    commands:
 
-{     
-commands:
+     any::
 
- any::
+        "/bin/echo This is linux"
 
-    "/bin/echo This is linux"
+           ifvarclass => "linux";
 
-       ifvarclass => "linux";
+        "/bin/echo This is solaris"
 
-
-    "/bin/echo This is solaris"
-
-       ifvarclass => "solaris";
-
-}
+           ifvarclass => "solaris";
+    }
 ```
 
 This function is provided so that one can form expressions that link 
 variables and classes. For example:
 
 ```cf3
-# Check that all components are running
+    # Check that all components are running
 
-vars:
+    vars:
 
-  "component" slist => { "cf-monitord", "cf-serverd" };
+      "component" slist => { "cf-monitord", "cf-serverd" };
 
-processes:
+    processes:
 
-  "$(component)" restart_class => canonify("start_$(component)");
+      "$(component)" restart_class => canonify("start_$(component)");
 
-commands:
+    commands:
 
-   "/var/cfengine/bin/$(component)"
+       "/var/cfengine/bin/$(component)"
 
-       ifvarclass => canonify("start_$(component)");
+           ifvarclass => canonify("start_$(component)");
 ```
 
-Notice that the function `canonify()` is provided to convert a general variable 
-input into a string composed only of legal characters, using the same algorithm 
-that CFEngine uses.
+Notice that the function `canonify()` is provided to convert a general 
+variable input into a string composed only of legal characters, using the same 
+algorithm that CFEngine uses.
 
 ### meta
+
+**Description**: User-data associated with policy, e.g. key=value strings.
+
+It is sometimes convenient to attach meta-data of a more technical nature to 
+policy. It may be used for arbitrary key=value strings for example.
 
 **Type**: `slist`
 
 **Allowed input range**: (arbitrary string)
-
-**Description**: The `meta` string describes user-data associated with policy, 
-e.g. key=value strings.
-
-It is sometimes convenient to attach meta-data of a more technical nature to 
-policy. It may be used for arbitrary key=value strings for example.
 
 **Example**:
 
