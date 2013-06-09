@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CFEngine 3.5
-categories: [Getting Started]
+categories: [CFEngine 3.5]
 published: true
 alias: index.html
 ---
@@ -20,11 +20,12 @@ CFEngine differs from most management systems in being
 
 CFEngine 3 exists in [two editions](https://cfengine.com/cfengine-comparison):
 
-- **[Enterprise](https://cfengine.com/enterprise)**
-  for organizations that demand a reliable automation in a heterogenous
-  infrastructure
+- **[Enterprise](https://cfengine.com/enterprise)** for organizations that 
+  demand predictability, control and orchestration of complex, heterogenous 
+  and distributed infrastructures
 - **[Community Edition](https://cfengine.com/community)** - the core
-  of CFEngine for basic configuration management needs
+  of CFEngine for configuration management of servers running Unix like
+  operating systems
 
 This documentation is valid for **all versions** of CFEngine. Whenever
 a feature is only available in a specific version, that fact will be
