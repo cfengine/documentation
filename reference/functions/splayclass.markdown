@@ -25,7 +25,7 @@ The function is similar to the `splaytime` feature in `cf-execd`, except that it
 
 **Arguments**:
 
-* `input` : Input string for classification, *in the range* .\*
+* `input` : Input string for classification, in the range `.*`
 
 The variation in `input` determines how effectively CFEngine will be able to 
 distribute tasks. CFEngine instances with the same `input` will yield a true 
@@ -34,7 +34,7 @@ different times. Thus tasks could be scheduled according to group names for
 predictability, or according to IP addresses for distribution across the 
 policy interval.
 
-* `policy` : Splay time policy, *in the range* `daily`, `hourly`
+* `policy` : Splay time policy, in the range `daily`, `hourly`
 
 The times at which the `splayclass` will be defined depends on the `policy`. 
 If it is `hourly` then the class will be defined for a 5-minute interval every 

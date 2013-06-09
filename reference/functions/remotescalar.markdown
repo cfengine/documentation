@@ -35,10 +35,11 @@ relying on the availability of network resources.
 
 **Arguments**:
 
-* `id` : resource identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
-* `server` : Hostname or IP address of server, *in the range* .\*
-* `encrypt` : Use enryption, *in the range* true,false,yes,no,on,off
+* `id` : resource identifier, in the range `[a-zA-Z0-9_$(){}\[\].:]+`
+* `server` : Hostname or IP address of server, in the range `.*`
+* `encrypt` : Boolean
+
+Use enryption.
 
 **Example**:
 

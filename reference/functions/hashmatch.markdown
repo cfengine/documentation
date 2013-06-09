@@ -18,7 +18,7 @@ version of a binary file (e.g. software patch).
 
 **ARGUMENTS**:
 
-* `filename` : Filename to hash, *in the range* "?(/.\*)
+* `filename` : Filename to hash, in the range `"?(/.*)`
 * `algorithm` : Hash or digest algorithm, one of
     * md5
     * sha1
@@ -26,8 +26,8 @@ version of a binary file (e.g. software patch).
     * sha512
     * sha384
     * crypt   
-* `hash` : ASCII representation of hash for comparison, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `hash` : ASCII representation of hash for comparison, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

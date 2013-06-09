@@ -19,8 +19,8 @@ files, from a fully qualified path name.
 
 **Arguments**:
 
-* `string` : Input string, *in the range* .\*
-* `separator` : Link separator, e.g. `/` or `:`, *in the range* .\*
+* `string` : Input string, in the range `.*`
+* `separator` : Link separator, e.g. `/` or `:`, in the range `.*`
 
 **Example**:
 

@@ -20,9 +20,9 @@ lists.
 
 **Arguments**:
 
-* `pattern` : Pattern based on \$(this) as original text, *in the range* .\*
-* `list` : The name of the list variable to map, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `pattern` : Pattern based on $(this) as original text, in the range `.*`
+* `list` : The name of the list variable to map, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

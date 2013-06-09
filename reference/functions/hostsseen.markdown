@@ -20,7 +20,7 @@ connected within the specified time.
 
 **Arguments**:
 
-* `horizon` : Horizon since last seen in hours, *in the range* 0,99999999999
+* `horizon` : Horizon since last seen in hours, in the range `0,99999999999`
 * `seen` : Selection criteria, one of
     * lastseen
     * notseen   

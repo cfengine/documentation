@@ -24,9 +24,9 @@ function if you need order in the resulting output.
 
 **Arguments**:
 
-* `pattern` : Pattern based on $(this.k) and $(this.v) as original text, *in the range* .\*
-* `array` : The name of the array variable to map, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `pattern` : Pattern based on $(this.k) and $(this.v) as original text, in the range `.*`
+* `array` : The name of the array variable to map, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

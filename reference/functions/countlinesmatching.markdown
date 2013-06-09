@@ -18,12 +18,12 @@ This function matches lines in the named file, using a regular expression that s
 
 **Arguments**:
 
-* `regex`, *in the range* .\*
+* `regex`, in the range `.*`
 
 A regular expression matching zero or more lines. The regular expression is 
 [anchored][anchored],
 
-* *filename*, *in the range* "?(/.\*)
+* *filename*, in the range `"?(/.*)`
 
 The name of the file to be examined.
 

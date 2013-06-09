@@ -22,20 +22,20 @@ expression `regex`.
 
 **Arguments**:
 
-* `uri` : URI, *in the range* .\*
+* `uri` : URI, in the range `.*`
 
 String value of the ldap server. e.g. `"ldap://ldap.cfengine.com.no"`   
 
-* `dn` : Distinguished name, *in the range* .\*
+* `dn` : Distinguished name, in the range `.*`
 
 Distinguished name, an ldap formatted name built from components, e.g.
 "dc=cfengine,dc=com".   
 
-* `filter` : Filter, *in the range* .\*
+* `filter` : Filter, in the range `.*`
 
 String filter criterion, in ldap search, e.g. "(sn=User)".   
 
-* `record` : Record name, *in the range* .\*
+* `record` : Record name, in the range `.*`
 
 String value with the name of the single record to be retrieved, e.g. `uid`.
 
@@ -44,7 +44,7 @@ String value with the name of the single record to be retrieved, e.g. `uid`.
     * onelevel
     * base
 
-* `arg6` : Regex to match results, *in the range* .\*
+* `arg6` : Regex to match results, in the range `.*`
 
 * `security` : Security level, one of
     * none

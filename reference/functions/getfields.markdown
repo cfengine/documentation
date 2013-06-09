@@ -21,23 +21,21 @@ examine *all* matching lines, use
 
 **Arguments**:
 
-* `regex` : Regular expression to match line, *in the range* .\*  
+* `regex` : Regular expression to match line, in the range `.*`  
 
 A regular expression matching one or more lines. The regular expression
-is 
-[anchored][anchored], meaning it must match the entire 
-line.   
+is [anchored][anchored], meaning it must match the entire line.   
 
-* `filename` : Filename to read, *in the range* "?(/.\*)
+* `filename` : Filename to read, in the range `"?(/.*)`
 
 The name of the file to be examined.   
 
-* `split` : Regular expression to split fields, *in the range* .\*
+* `split` : Regular expression to split fields, in the range `.*`
 
 A regex pattern that is used to parse the field separator(s) to split up
 the file into items   
 
-* `array_lval` : Return array name, *in the range* .\*
+* `array_lval` : Return array name, in the range `.*`
 
 The base name of the array that returns the values.
 

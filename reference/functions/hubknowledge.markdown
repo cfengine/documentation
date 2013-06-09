@@ -38,7 +38,7 @@ bundle with a handle that matches the requested object.
 
 **Arguments**:
 
-* `id` : identifier, *in the range* [a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `id` : identifier, in the range `[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

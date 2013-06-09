@@ -18,9 +18,9 @@ string in first argument.
 
 **Arguments**:
 
-* `glue` : Join glue-string, *in the range* .\*
-* `list` : CFEngine list identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `glue` : Join glue-string, in the range `.*`
+* `list` : CFEngine list identifier, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

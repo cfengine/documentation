@@ -16,12 +16,12 @@ whether successful.
 
 **Arguments**:
 
-* `name` : Name of module command, *in the range* .\*
+* `name` : Name of module command, in the range `.*`
 
 The name of the module without its leading path, since it is assumed to
 be in the registered modules directory, WORKDIR/modules.
 
-* `args` : Argument string for the module, *in the range* .\*
+* `args` : Argument string for the module, in the range `.*`
 
 **Example**:
 

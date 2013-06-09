@@ -19,7 +19,7 @@ will not be defined.
 
 **Arguments**:
 
-* `groupname` : Group name as text, *in the range* .\*
+* `groupname` : Group name as text, in the range `.*`
 
 **Example**:
 

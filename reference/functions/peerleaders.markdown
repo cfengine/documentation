@@ -23,17 +23,17 @@ The current host does not need to belong to this file.
 
 **Arguments**:
 
-* `filename` : File name of host list, *in the range* "?(/.\*)
+* `filename` : File name of host list, in the range `"?(/.*)`
 
 A path to a file containing the list of hosts.
 
-* `regex` : Comment regex pattern, *in the range* .\*
+* `regex` : Comment regex pattern, in the range `.*`
 
 A pattern that matches a legal comment in the file. The regex is [unanchored][unanchored], 
 meaning it may match a partial line. Comments are stripped as the file is 
 read.
 
-* `arg3` : Peer group size, *in the range* 0,99999999999   
+* `arg3` : Peer group size, in the range `0,99999999999`   
 
 A number between 2 and 64 which represents the number of peers in a 
 peer-group. An arbitrary limit of 64 is set on groups to avoid nonsensical 

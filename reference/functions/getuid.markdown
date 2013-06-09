@@ -17,7 +17,7 @@ If the named user is not registered the variable will not be defined.
 
 **Arguments**:
 
-* `username` : User name in text, *in the range* .\*
+* `username` : User name in text, in the range `.*`
 
 **Example**:
 

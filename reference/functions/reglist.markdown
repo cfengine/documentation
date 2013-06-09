@@ -15,8 +15,8 @@ tags: [reference, functions, reglist]
 
 **Arguments**:
 
-* `list` : list identifier, *in the range* @[(][a-zA-Z0-9]+[)]
-* `regex` : Regular expression, *in the range* .\*
+* `list` : list identifier, in the range `@[(][a-zA-Z0-9]+[)]`
+* `regex` : Regular expression, in the range `.*`
 
 The regular expression is [anchored][anchored], meaning it must match the entire string.
 

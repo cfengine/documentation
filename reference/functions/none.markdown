@@ -16,9 +16,9 @@ expression `regex`.
 
 **Arguments**:
 
-* `regex` : [Unanchored][unanchored] regular expression to find, *in the range* .\*
-* `list` : The name of the list variable to check, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `regex` : [Unanchored][unanchored] regular expression to find, in the range `.*`
+* `list` : The name of the list variable to check, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

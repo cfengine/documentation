@@ -19,8 +19,8 @@ rather than the output of the command.
 
 **Arguments**:
 
-* `command` : Fully qualified command path, *in the range* "?(/.\*)
-* `shelll` : Shell encapsulation option, *in the range* useshell,noshell   
+* `command` : Fully qualified command path, in the range `"?(/.*)`
+* `shelll` : Shell encapsulation option, in the range `useshell`,`noshell`
 
 **Example**:
 

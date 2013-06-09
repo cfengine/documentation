@@ -20,7 +20,7 @@ handled.
 
 **Arguments**:
 
-* `input` : Input text, *in the range* .\*
+* `input` : Input text, in the range `.*`
 * `algorithm` : Hash or digest algorithm, one of
   * md5
   * sha1

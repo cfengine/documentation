@@ -22,15 +22,15 @@ If there are any back reference matches from the regular expression, then the ar
 
 **Arguments**:
 
-* `regex` : Regular expression, *in the range* .\*
+* `regex` : Regular expression, in the range `.*`
 
 A regular expression containing one or more parenthesized back
 references. The regular expression is [anchored][anchored], meaning it must match
 the entire string
 
-* `string` : Match string, *in the range* .\*
-* `backref` : Identifier for back-references, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `string` : Match string, in the range `.*`
+* `backref` : Identifier for back-references, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

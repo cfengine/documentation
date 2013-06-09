@@ -17,8 +17,8 @@ Return true if `newer` was accessed before `older`.
 
 **Arguments**:
 
-* `newer` : Newer filename, *in the range* "?(/.\*)
-* `older` : Older filename, *in the range* "?(/.\*)
+* `newer` : Newer filename, in the range `"?(/.*)`
+* `older` : Older filename, in the range `"?(/.*)`
 
 **Example**:  
 

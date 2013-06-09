@@ -15,7 +15,7 @@ tags: [reference, functions, not]
 
 **Arguments**:
 
-* `expression` : Class expression, *in the range* .\*
+* `expression` : Class expression, in the range `.*`
 
 **Example**:
 

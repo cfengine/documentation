@@ -17,9 +17,9 @@ Only lexicographical sorting is supported currently.
 
 **Arguments**:
 
-* `list` : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
-* `mode` : Sorting mode *in the range* lex
+* `list` : The name of the list variable, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
+* `mode` : Sorting mode, in the range `lex`
 
 **Example**:
 

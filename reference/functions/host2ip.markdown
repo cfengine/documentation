@@ -22,7 +22,7 @@ to debug the behavior of the resolver.
 
 **Arguments**:
 
-* `hostname` : Host name in ascii, *in the range* .\*
+* `hostname` : Host name in ascii, in the range `.*`
 
 **Example**:
 

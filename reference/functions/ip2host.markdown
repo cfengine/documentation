@@ -23,7 +23,7 @@ wait for responses, slowing their progress significantly.
 
 **Arguments**:
 
-* `ip` : IP address (IPv4 or IPv6), *in the range* .\*
+* `ip` : IP address (IPv4 or IPv6), in the range `.*`
 
 **Example**:
 

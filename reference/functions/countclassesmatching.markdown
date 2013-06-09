@@ -18,7 +18,7 @@ match the whole line. The function returns the number of classes matched.
 
 **Arguments**:
 
-* `regex` : Regular expression, *in the range* .\*
+* `regex` : Regular expression, in the range `.*`
 
 A regular expression matching zero or more classes in the current list
 of set classes. The regular expression is 

@@ -17,12 +17,12 @@ The specified date/time is an absolute date in the local timezone.
 
 **Arguments**:
 
-* `years` : year *in the range* 1970,3000
-* `month` : month, *in the range* 1,12
-* `day` : day of month, *in the range* 1,31
-* `hour` : hour of day, *in the range* 0,23
-* `minute` : minute, *in the range* 0,59
-* `second` : second, *in the range* 0,59
+* `years` : year in the range `1970,3000`
+* `month` : month, in the range `1,12`
+* `day` : day of month, in the range `1,31`
+* `hour` : hour of day, in the range `0,23`
+* `minute` : minute, in the range `0,59`
+* `second` : second, in the range `0,59`
 
 **Example**:
 

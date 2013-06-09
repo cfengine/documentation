@@ -15,8 +15,8 @@ tags: [reference, functions, readfile]
 
 **Arguments**:
 
-* `filename` : File name, *in the range* "?(/.\*)
-* `maxbytes` : Maximum number of bytes to read, *in the range* 0,99999999999
+* `filename` : File name, in the range `"?(/.*)`
+* `maxbytes` : Maximum number of bytes to read, in the range `0,99999999999`
 
 **Example**:
 

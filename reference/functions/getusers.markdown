@@ -15,8 +15,8 @@ tags: [reference, functions, getusers]
 
 **Arguments**:
 
-* `exclude_names` : Comma separated list of User names, *in the range* .\*
-* `exclude_ids` : Comma separated list of UserID numbers, *in the range* .\*
+* `exclude_names` : Comma separated list of User names, in the range `.*`
+* `exclude_ids` : Comma separated list of UserID numbers, in the range `.*`
 
 **Example**:
 

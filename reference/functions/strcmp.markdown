@@ -16,8 +16,8 @@ exactly.
 
 **Arguments**:
 
-* `string1` : The first string, *in the range* .\*
-* `string2` : The second string, *in the range* .\*
+* `string1` : The first string, in the range `.*`
+* `string2` : The second string, in the range `.*`
 
 **Example**:
 

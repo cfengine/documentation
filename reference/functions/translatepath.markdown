@@ -21,7 +21,7 @@ translatepath("a/b/c") would yield "a/b/c" on Unix platforms, but
 
 **Arguments**:
 
-* `path` : Unix style path, *in the range* "?(/.\*)
+* `path` : Unix style path, in the range `"?(/.*)`
 
 **Example**:
 

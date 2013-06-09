@@ -15,7 +15,7 @@ tags: [reference, functions, hostinnetgroup]
 
 **Arguments**:
 
-* `netgroup` : Netgroup name, *in the range* .\*
+* `netgroup` : Netgroup name, in the range `.*`
 
 **Example**:
 

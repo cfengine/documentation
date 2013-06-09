@@ -17,7 +17,7 @@ The group may be specified by name or identifier.
 
 **Arguments**:
 
-* `group` : Group name or identifier, *in the range* .\*
+* `group` : Group name or identifier, in the range `.*`
 
 **Example**:
 

@@ -21,8 +21,8 @@ context class expression as shown in the example.
 
 **Arguments**:
 
-* `lower` : Lower inclusive bound, *in the range* -99999999999,9999999999
-* `upper` : Upper inclusive bound, *in the range* -99999999999,9999999999
+* `lower` : Lower inclusive bound, in the range `-99999999999,9999999999`
+* `upper` : Upper inclusive bound, in the range `-99999999999,9999999999`
 
 **Example**:
 

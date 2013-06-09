@@ -26,19 +26,21 @@ This function contacts a remote `cf-serverd` and requests access to defined
 
 **Arguments**:
 
-* `regex` : Regular expression, *in the range* .\*
+* `regex` : Regular expression, in the range `.*`
 
 This should match a list of *persistent* classes of be returned from the
 server, if the server has granted access to them.
 
-* `server` : Server name or address, *in the range* .\*
+* `server` : Server name or address, in the range `.*`
 
 The name or IP address of the remote server.
 
-* `encrypt` : Use encryption, *in the range* true,false,yes,no,on,off   
+* `encrypt` : Boolean
 
-* `prefix` : Return class prefix, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+Use encryption.
+
+* `prefix` : Return class prefix, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 A string to be added to the returned classes. If the server defines a 
 persistent class `alpha`, then this would generate a private class in the 

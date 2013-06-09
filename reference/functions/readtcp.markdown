@@ -24,11 +24,11 @@ connections fully before deploying.
 
 **Arguments**:
 
-* `host` : Host name or IP address of server socket, *in the range* .\*
-* `port` : Port number to connect to, *in the range* 0,99999999999   
-* `sendstring` : Protocol query string, *in the range* .\*
-* `maxbytes` : Maximum number of bytes to read in response, *in the range* 
-0,99999999999
+* `host` : Host name or IP address of server socket, in the range `.*`
+* `port` : Port number to connect to, in the range `0,99999999999`   
+* `sendstring` : Protocol query string, in the range `.*`
+* `maxbytes` : Maximum number of bytes to read in response, in the range 
+`0,99999999999`
 
 **Example**:
 

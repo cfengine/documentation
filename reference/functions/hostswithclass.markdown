@@ -22,7 +22,7 @@ configuration files for (classes of) hosts.
 
 **Arguments**:
 
-* `class` : Class name to look for, *in the range* [a-zA-Z0-9\_]+
+* `class` : Class name to look for, in the range `[a-zA-Z0-9\_]+`
 * `field` : Type of return value desired, one of
     * name
     * address   

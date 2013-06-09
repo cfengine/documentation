@@ -16,18 +16,18 @@ point in GMT or local time using Unix epoch time.
 
 **Arguments**:
 
-* `mode` : Mode, *in the range* `gmtime`, `localtime`
+* `mode` : Mode, in the range `gmtime`, `localtime`
 
 The `mode` is either `gmtime` (to get GMT times and dates) or
 `localtime` (to get times and dates according to the local
 timezone, usually specified by the `TZ` environment variable).
 
-* `template` : Format string, *in the range* .\*
+* `template` : Format string, in the range `.*`
 
 The conversion specifications that can appear in the format `template`
 are specialized for printing components of the date and time according to the system locale.
 
-* `time` : Unix epoch time *in the range* \d+
+* `time` : Unix epoch time in the range `\d+`
 
 **Example**:
 

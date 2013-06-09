@@ -21,7 +21,7 @@ variable.
 
 **Arguments**:
 
-* `array` : array identifier, *in the range* [a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `array` : array identifier, in the range `[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

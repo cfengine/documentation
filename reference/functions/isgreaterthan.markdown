@@ -18,8 +18,8 @@ strings, the result is identical to that of comparing with strcmp().
 
 **Arguments**:
 
-* `value1` : Larger string or value, *in the range* .\*
-* `value2` : Smaller string or value, *in the range* .\*
+* `value1` : Larger string or value, in the range `.*`
+* `value2` : Smaller string or value, in the range `.*`
 
 **Example**:
 

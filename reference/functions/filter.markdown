@@ -21,12 +21,18 @@ See also `grep`, `every`, `some`, and `none`.
 
 **Arguments**:
 
-* filter : [Anchored][anchored] regular expression or static string to find, *in the range* .\*
-* list : The name of the list variable to check, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
-* is_regex_ : Boolean: treat `filter` as a regular expression or as a static string. *in the range* true,false
-* `invert` : Boolean: Invert filter. *in the range* true,false
-* `max_return` : Maximum number of elements to return *in the range* 0,999999999
+* filter : [Anchored][anchored] regular expression or static string to find, in the range `.*`
+* list : The name of the list variable to check, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
+* is_regex_ : Boolean
+
+Treat `filter` as a regular expression or as a static string.
+
+* `invert` : Boolean
+
+Invert filter.
+
+* `max_return` : Maximum number of elements to return in the range `0,999999999`
 
 **Example**:  
 

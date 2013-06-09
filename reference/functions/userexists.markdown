@@ -19,7 +19,7 @@ argument must be a user name or user id.
 
 **Arguments**:
 
-* `user` : User name or identifier, *in the range* .\*
+* `user` : User name or identifier, in the range `.*`
 
 **Example**:
 

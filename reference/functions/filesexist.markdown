@@ -18,8 +18,8 @@ this function to return true.
 
 **Arguments**:
 
-* `list` : Reference to a list variable, *in the range*
-@[(][a-zA-Z0-9]+[)]
+* `list` : Reference to a list variable, in the range
+`@[(][a-zA-Z0-9]+[)]`
 
 **Example**:
 

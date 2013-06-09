@@ -21,8 +21,8 @@ Comparisons like this are normally used for updating files (like the
 
 **Arguments**:
  
-* `newer` : Newer filename, *in the range* "?(/.\*)
-* `older` : Older filename, *in the range* "?(/.\*)
+* `newer` : Newer filename, in the range `"?(/.*)`
+* `older` : Older filename, in the range `"?(/.*)`
 
 **Example**:  
 

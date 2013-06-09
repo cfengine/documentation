@@ -18,10 +18,9 @@ provide a random seed with the `randomint` function.
 
 **Arguments**:
 
-* `list` : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
-
-* `seed` : Shuffle seed *in the range* .\*
+* `list` : The name of the list variable, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
+* `seed` : Shuffle seed in the range `.*`
 
 **Example**:
 

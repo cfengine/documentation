@@ -22,19 +22,19 @@ allows maintaining a list of pretested failover alternatives.
 **Arguments**:
 
 * `hostlist` : The identifier of a cfengine list of hosts or addresses to
-contact, *in the range* @[(][a-zA-Z0-9]+[)]   
-* `port` : The port number, *in the range* 0,99999999999   
-* `query` : An optional query string, *in the range* .\*
-* `regex` : A regular expression to match success, *in the range* .\*
+contact, in the range `@[(][a-zA-Z0-9]+[)]`
+* `port` : The port number, in the range `0,99999999999`   
+* `query` : An optional query string, in the range `.*`
+* `regex` : A regular expression to match success, in the range `.*`
 
 If a query string is sent, this regular expression is [anchored][anchored], meaning it 
 must match the entire resulting reply. If `query` is empty, then no reply-checking is performed (and any server reply is deemed to be
 satisfactory).
 
-* `maxbytes` : Maximum number of bytes to read from server, *in the range*
-0,99999999999   
-* `array` : Name for array of results, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `maxbytes` : Maximum number of bytes to read from server, in the range
+`0,99999999999`
+* `array` : Name for array of results, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

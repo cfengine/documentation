@@ -19,7 +19,7 @@ This is useful for transforming variables into classes. See also
 
 **Arguments**:
 
-* `text` : Input string, *in the range* .\*
+* `text` : Input string, in the range `.*`
 
 **Example**:  
 

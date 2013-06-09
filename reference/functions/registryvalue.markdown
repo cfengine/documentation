@@ -19,8 +19,8 @@ string.
 
 **Arguments**:
 
-* `key` : Windows registry key, *in the range* .\*
-* `value-id` : Windows registry value-id, *in the range* .\*
+* `key` : Windows registry key, in the range `.*`
+* `value-id` : Windows registry value-id, in the range `.*`
 
 **Example**:
 

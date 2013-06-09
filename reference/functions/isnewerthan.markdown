@@ -19,8 +19,8 @@ to changes of content only.
 
 **Arguments**:
 
-* `arg1` : Newer file name, *in the range* "?(/.\*)
-* `arg2` : Older file name, *in the range* "?(/.\*)
+* `arg1` : Newer file name, in the range `"?(/.*)`
+* `arg2` : Older file name, in the range `"?(/.*)`
 
 **Example**:
 

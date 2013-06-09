@@ -18,8 +18,8 @@ Note that `regex` must match an entire line of the file in order to give a true 
 
 **Arguments**:
 
-* `regex` : Regular expression, *in the range* .\*
-* `filename` : Filename to search, *in the range* .\*
+* `regex` : Regular expression, in the range `.*`
+* `filename` : Filename to search, in the range `.*`
 
 **Example**:
 

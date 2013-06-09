@@ -15,8 +15,8 @@ tags: [reference, functions, unique]
 
 **Arguments**:
 
-* `list` : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `list` : The name of the list variable, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

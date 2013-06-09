@@ -17,7 +17,7 @@ The CFEngine process must have access to `filename` in order for this to work.
 
 **Arguments**:
 
-* `filename` : File object name, *in the range* "?(/.\*)
+* `filename` : File object name, in the range `"?(/.*)`
 
 **Example**:
 

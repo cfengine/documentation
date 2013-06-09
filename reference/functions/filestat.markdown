@@ -20,26 +20,26 @@ See also: `lastnode`, dirname`, `splitstring`.
 
 **Arguments**:
 
-* `filename` : File object name, *in the range* "?(/.\*)
-* `field` : Name of field to retrieve, one of
-    * size
-    * gid
-    * uid
-    * ino
-    * nlink
-    * ctime
-    * atime
-    * mtime
-    * mode
-    * modeoct
-    * permstr
-    * permoct
-    * type
-    * devno
-    * dev_minor
-    * dev_major
-    * basename
-    * dirname
+* `filename` : File object name, in the range `"?(/.*)`
+* `field` : Name of field to retrieve, in the range
+    * `size`
+    * `gid`
+    * `uid`
+    * `ino`
+    * `nlink`
+    * `ctime`
+    * `atime`
+    * `mtime`
+    * `mode`
+    * `modeoct`
+    * `permstr`
+    * `permoct`
+    * `type`
+    * `devno`
+    * `dev_minor`
+    * `dev_major`
+    * `basename`
+    * `dirname`
 
 **Example**:
 

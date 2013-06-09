@@ -19,15 +19,11 @@ relative to the the directory are returned.
 
 **Arguments**:
 
-* `arg1` : Path to base directory, *in the range* .+   
-* `arg2` : Regular expression to match files or blank, *in the range* .\*
-* `arg3` : Include the base path in the list, one of
-    * true
-    * false
-    * yes
-    * no
-    * on
-    * off
+* `path` : Path to base directory, in the range `.+`
+* `regex` : Regular expression to match files or blank, in the range `.*`
+* `include_base` : Boolean
+
+Include the base path in the list.
 
 **Example**:
 

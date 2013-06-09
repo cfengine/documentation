@@ -15,12 +15,12 @@ tags: [reference, functions, sublist]
 
 **Arguments**:
 
-* `list` : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `list` : The name of the list variable, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 * `head_or_tail` : Whether to extract elements from the beginning or from the 
-end. *in the range* `head`, `tail`
-* `max_elements` : Maximum number of elements to return *in the range* 
-0,999999999
+end. in the range `head`, `tail`
+* `max_elements` : Maximum number of elements to return in the range 
+`0,999999999`
 
 **Example**:
 

@@ -18,7 +18,7 @@ variable does not expand.
 
 **Arguments**:
 
-* `filename` : File object name, *in the range* "?(/.\*)
+* `filename` : File object name, in the range `"?(/.*)`
 
 **Example**:  
 

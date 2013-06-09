@@ -19,8 +19,8 @@ expressions.
 
 **Arguments**:
 
-* `prefix` : Hostname prefix, *in the range* .\*
-* `range` : Enumerated range, *in the range* .\*
+* `prefix` : Hostname prefix, in the range `.*`
+* `range` : Enumerated range, in the range `.*`
 
 **Example**:
 

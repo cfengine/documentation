@@ -18,7 +18,7 @@ Pattern matching based on IP addresses.
 
 **Arguments**:
 
-* `range` : IP address range syntax, *in the range* .\*
+* `range` : IP address range syntax, in the range `.*`
 
 **Example**:
 

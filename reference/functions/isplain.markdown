@@ -16,7 +16,7 @@ plain/regular file.
 
 **Arguments**:
 
-* `arg1` : File object name, *in the range* "?(/.\*)
+* `arg1` : File object name, in the range `"?(/.*)`
 
 **Example**:
 

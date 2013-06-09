@@ -15,14 +15,8 @@ tags: [reference, functions, rrange]
 
 **Arguments**:
 
-* `arg1` : Real number, *in the range* -9.99999E100,9.99999E100   
-* `arg2` : Real number, *in the range* -9.99999E100,9.99999E100   
-
-**Example**:
-
-```cf3
-
-```
+* `arg1` : Real number, in the range `-9.99999E100,9.99999E100`
+* `arg2` : Real number, in the range `-9.99999E100,9.99999E100`
 
 **Notes**:
 This is not yet used.

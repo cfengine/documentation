@@ -18,7 +18,7 @@ otherwise returns false.
 
 **Arguments**:
 
-* `regex` : Regular expression, *in the range* .\*
+* `regex` : Regular expression, in the range `.*`
 
 A regular expression matched against the current list of set classes. The 
 regular expression must match a complete class for the expression to be true 

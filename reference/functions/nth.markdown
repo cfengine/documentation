@@ -18,9 +18,9 @@ is requested, this function does not return a valid value.
 
 **Arguments**:
 
-* `list` : The name of the list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
-* `position` : Zero-based position of element *in the range* 0,999999999
+* `list` : The name of the list variable, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
+* `position` : Zero-based position of element in the range `0,999999999`
 
 **Example**:
 

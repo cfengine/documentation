@@ -15,11 +15,11 @@ tags: [reference, functions, intersection]
 
 **Arguments**:
 
-* `list1` : The name of the base list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `list1` : The name of the base list variable, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
-* `list2` : The name of the intersected list variable, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `list2` : The name of the intersected list variable, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 

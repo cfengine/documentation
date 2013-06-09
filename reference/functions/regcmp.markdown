@@ -16,8 +16,8 @@ tags: [reference, functions, regcmp]
 
 **Arguments**:
 
-* `regex` : Regular expression, *in the range* .\*
-* `string` : Match string, *in the range* .\*
+* `regex` : Regular expression, in the range `.*`
+* `string` : Match string, in the range `.*`
 
 The regular expression is [anchored][anchored], meaning it must match the complete 
 content.

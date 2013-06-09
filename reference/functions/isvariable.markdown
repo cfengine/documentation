@@ -18,8 +18,8 @@ The variable need only exist. This says nothing about its value. Use
 
 **Arguments**:
 
-* `var` : Variable identifier, *in the range*
-[a-zA-Z0-9\_\$(){}\\[\\].:]+
+* `var` : Variable identifier, in the range
+`[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example**:
 
