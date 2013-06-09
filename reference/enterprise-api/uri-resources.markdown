@@ -151,29 +151,6 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI]
 -   `hostname` *(string)* Hostname of a host.
 -   `ip` *(string)* IP address of a host.
 
-
-### /api/host/:host-id/context
-
-**Supported Operations**: `GET`
-
-
-### /api/host/:host-id/context/:context-id
-
-**Supported Operations**: `GET`
-
-**Fields**:
-
--   `id` *(string)* ID of a context (class name)
--   `mean` *(real)* Occurrence probability of the context in an agent
-    run.
--   `stdv` *(real)* Standard deviation of occurrence probability.
--   `timestamp` *(integer*) Last time context was activated on agent.
-
-
-### /api/host/:host-id/vital
-
-**Supported Operations**: `GET`
-
 #### /api/host/:host-id/vital/:vital-id
 
 **Supported Operations**: `GET`
@@ -192,27 +169,6 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI]
 -   `timestamp` *(integer)* Timestamp of the last received data point.
 -   `values` *(array of [ t, y ], where t is the sample timestamp)*
     Vital sign data.
-
-
-### /api/promise
-
-**Supported Operations**: `GET`
-
-
-### /api/promise/:promise-id
-
-**Supported Operations**: `GET`
-
-**Fields**:
-
--   `id` *(string)* Promise handle.
--   `type` *(string)* Promise type.
--   `promiser` *(string)* Promiser of the promise.
--   `promisees` *(array of strings)* A list of promisees of the
-    promise.
--   `bundle` *(string)* The bundle this promise belongs to
--   `comment` *(string)* Associated comment for the promise.
-
 
 ### /api/query
 
