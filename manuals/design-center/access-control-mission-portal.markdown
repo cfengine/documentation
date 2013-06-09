@@ -14,14 +14,13 @@ access rights for making changes with the Design Center GUI to your users.
 Please note that use of the role-based access control (RBAC) for reporting in the Mission Portal
 is not yet supported in conjunction with the Design Center GUI. For the time being, 
 we recommend turning RBAC globally off in the Mission Portal settings when using the
-Design Center GUI. Support may be included in future versions.
+Design Center GUI. Support for RBAC may be included in future versions.
 
 
 ## Roles
 
 There are two user roles that impact users' abilities in the Design Center GUI.
 
-TODO: is this correct markdown for itemizing?
 * cf_vcs. If a user is member of the cf_vcs role, he is allowed to use the Design Center GUI
 in the Mission Portal and commit to the git service configured in the settings. Conversely,
 if a user is not member of this role, he will not be able to access the Desing Center GUI -- not

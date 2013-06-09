@@ -7,7 +7,7 @@ alias: manuals-design-center-integrating-mission-portal-with-git.html
 tags: [sketch, design center, git, mission portal, enterprise, masterfiles, version control, Mission Portal, ui]
 ---
 
-CFEngine Enterprise 3.5 introduces integration with a git repository for 
+CFEngine Enterprise 3.5 introduces integration with git repositories for 
 managing CFEngine policy. In particular, the Design Center GUI requires access 
 to a git repository in order to manage sketches.
 
@@ -34,66 +34,54 @@ SSH key to authenticate with the Mission Portal. Please generate a new SSH key i
 you do not want the Mission Portal users to use your private key to push to
 the git service.
 
-1. Log in to the git server and install the git package
+1. Log in to the git server and install the git package.
 
-````
-user@workstation $ ssh root@gitserver
-  root@gitserver # yum install git
-````
 
-2. Create the git user and create .ssh directory
+        user@workstation $ ssh root@gitserver
+          root@gitserver # yum install git
 
-````
-root@gitserver # adduser git
-root@gitserver # su git
- git@gitserver $ mkdir ~/.ssh
- git@gitserver $ chmod 700 ~/.ssh
-````
+2. Create the git user and a .ssh directory.
 
-3. Use workstation's SSH key to authenticate with git
+        root@gitserver # adduser git
+        root@gitserver # su git
+         git@gitserver $ mkdir ~/.ssh
+         git@gitserver $ chmod 700 ~/.ssh
 
-````
- user@workstation $ scp ~/.ssh/id_rsa.pub root@gitserver:/home/git/.ssh/authorized_keys
-````
+3. Use workstation's SSH key to authenticate with git.
 
-4. Test that you can log in as the git user
+         user@workstation $ scp ~/.ssh/id_rsa.pub root@gitserver:/home/git/.ssh/authorized_keys
 
-````
-user@workstation $ ssh git@gitserver
-   git@gitserver $
-````
+4. Test that you can log in as the git user.
 
-5. Create the masterfiles repository
+        user@workstation $ ssh git@gitserver
+           git@gitserver $
 
-````
-   git@gitserver $ mkdir masterfiles.git
-   git@gitserver $ cd masterfiles.git/
-   git@gitserver $ $ git init --bare
-                     Initialized empty Git repository in /home/git/masterfiles.git/
-````
+5. Create the masterfiles repository.
+
+           git@gitserver $ mkdir masterfiles.git
+           git@gitserver $ cd masterfiles.git/
+           git@gitserver $ $ git init --bare
+                             Initialized empty Git repository in /home/git/masterfiles.git/
 
 ## Initializing the git repository
 
-1. Make a local clone of the git repository
+1. Make a local clone of the git repository.
 
-````
-user@workstation $ git clone git@gitserver:masterfiles.git
-Initialized empty Git repository in /home/user/masterfiles/.git/
-warning: You appear to have cloned an empty repository.
-user@workstation $ cd masterfiles
-````
+        user@workstation $ git clone git@gitserver:masterfiles.git
+        Initialized empty Git repository in /home/user/masterfiles/.git/
+        warning: You appear to have cloned an empty repository.
+        user@workstation $ cd masterfiles
 
-2. Copy and push initial masterfiles
+2. Copy and push initial masterfiles.
 
 Get the initial masterfiles from a cfengine-nova-hub package.
 If you install it on a fresh system, they will end up in
 /var/cfengine/masterfiles (copied from /var/cfengine/share/NovaBase).
-````
-user@workstation $ cp -R /path/to/initial/cfengine/enterprise/masterfiles/* .
-user@workstation $ git add -A
-user@workstation $ git commit -m "initial masterfiles"
-user@workstation $ git push origin master
-````
+
+        user@workstation $ cp -R /path/to/initial/cfengine/enterprise/masterfiles/* .
+        user@workstation $ git add -A
+        user@workstation $ git commit -m "initial masterfiles"
+        user@workstation $ git push origin master
 
 
 ## Connecting the Mission Portal to the git repository
@@ -124,8 +112,10 @@ Under
 
 Our test sketch is now committed to the git repository. Go to a clone of the
 git repository, pull from the git service and see that the commit is there:
-1. $ git fetch upstream
-2. $ git rebase upstream/master  # adjust to the branch you are using
+1. 
+        $ git fetch upstream
+2. 
+        $ git rebase upstream/master  # adjust to the branch you are using
 3. $ 
 
 TODO: git log author name, committer name command, etc.
