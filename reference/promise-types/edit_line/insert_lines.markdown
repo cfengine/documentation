@@ -363,7 +363,7 @@ matched line.
 
 **Allowed input range**:   
 
-```cf3
+```
     before
     after
 ```
@@ -393,7 +393,7 @@ significance.
 
 **Allowed input range**:   
 
-```cf3
+```
     first
     last
 ```

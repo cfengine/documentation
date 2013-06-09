@@ -118,7 +118,7 @@ When CFEngine observes data, such as the attached partitions in the example abov
 
 **Allowed input range**:   
 
-```cf3
+```
     counter
     int
     real
@@ -362,7 +362,7 @@ are used only the first match is used.
 
 **Allowed input range**:   
 
-```cf3
+```
     average
     sum
     first

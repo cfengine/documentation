@@ -199,7 +199,7 @@ redefined) or they can be constant.
 
 **Allowed input range**:   
 
-```cf3
+```
     free
     overridable
     constant

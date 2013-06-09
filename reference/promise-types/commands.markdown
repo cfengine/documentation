@@ -140,7 +140,7 @@ to `powershell`.
 
 **Allowed input range**:   
 
-```cf3
+```
     useshell
     noshell
     powershell
@@ -173,7 +173,7 @@ thus ignored by Windows versions of CFEngine.
 
 **Allowed input range**:   
 
-```cf3
+```
     0
     77
     22

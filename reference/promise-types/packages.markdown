@@ -336,7 +336,7 @@ the operating system's package manager to handle dependencies.
 
 **Allowed input range**:   
 
-```cf3
+```
       individual
       bulk
 ```
@@ -1197,7 +1197,7 @@ policy action is scheduled for promise-keeping.
 
 **Allowed input range**:   
 
-```cf3
+```
      <
      >
      ==

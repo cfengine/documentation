@@ -138,7 +138,7 @@ permissions).
 
 **Allowed input range**:   
 
-```cf3
+```
     start
     stop
     disable
@@ -230,7 +230,7 @@ dispatched once it is being used.
 
 **Allowed input range**:   
 
-```cf3
+```
     none
     boot_time
     on_demand
@@ -284,7 +284,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 
 **Allowed input range**:   
 
-```cf3
+```
     ignore
     start_parent_services
     stop_child_services
@@ -310,7 +310,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 
 **Allowed input range**:   
 
-```cf3
+```
     windows
     generic
 ```

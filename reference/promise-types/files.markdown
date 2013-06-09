@@ -407,7 +407,7 @@ the directory.
 
 **Allowed input range**:   
 
-```cf3
+```
     nochange
     access
     specify
@@ -457,7 +457,7 @@ entries are set. For example, owning user, group and all in POSIX ACLs.
 
 **Allowed input range**:   
 
-```cf3
+```
     append
     overwrite
 ```
@@ -494,7 +494,7 @@ platform. Currently, the supported values are `posix` and `ntfs`.
 
 **Allowed input range**:   
 
-```cf3
+```
     generic
     posix
     ntfs
@@ -555,7 +555,7 @@ The `best` option cross correlates the best two available algorithms known in th
 
 **Allowed input range**:   
 
-```cf3
+```
     md5
     sha1
     sha224
@@ -587,7 +587,7 @@ Files can change in permissions and contents, i.e. external or internal attribut
 
 **Allowed input range**:   
 
-```cf3
+```
     all
     stats
     content
@@ -809,7 +809,7 @@ defined repository affects the location at which the backup is stored.
 
 **Allowed input range**:   
 
-```cf3
+```
     true
     false
     timestamp
@@ -934,7 +934,7 @@ This applies only to the Mac OS X variants.
 
 **Allowed input range**:   
 
-```cf3
+```
     MacOSX
 ```
 
@@ -994,7 +994,7 @@ source, so relative and absolute links are mutually exclusive.
 
 **Allowed input range**:   
 
-```cf3
+```
     symlink
     hardlink
     relative
@@ -1321,7 +1321,7 @@ remove directory links.
 
 **Allowed input range**:   
 
-```cf3
+```
     delete
     tidy
     keep
@@ -1584,7 +1584,7 @@ devices
 
 **Allowed input range**:   
 
-```cf3
+```
     true
     false
     timestamp
@@ -2355,7 +2355,7 @@ are mutually exclusive.
 
 **Allowed input range**:   
 
-```cf3
+```
     symlink
     hardlink
     relative
@@ -2418,7 +2418,7 @@ certain fields overridden.
 
 **Allowed input range**:   
 
-```cf3
+```
     override_file
     if_no_such_file
 ```
@@ -2447,7 +2447,7 @@ or do nothing.
 
 **Allowed input range**:   
 
-```cf3
+```
     force
     delete
     nop
@@ -2521,7 +2521,7 @@ you have the option to declare your intention.
 
 **Allowed input range**:   
 
-```cf3
+```
     literal
     regex
     guess

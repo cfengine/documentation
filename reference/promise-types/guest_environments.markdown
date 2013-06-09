@@ -390,7 +390,7 @@ will be added in the future.
 
 **Allowed input range**:   
 
-```cf3
+```
     xen
     kvm
     esx

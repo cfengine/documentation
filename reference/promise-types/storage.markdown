@@ -88,7 +88,7 @@ The default behavior is to not place edits in the file system table.
 
 **Allowed input range**:   
 
-```cf3
+```
     nfs
     nfs2
     nfs3

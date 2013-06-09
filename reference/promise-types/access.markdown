@@ -252,7 +252,7 @@ by function calls by any agent.
 
 **Allowed input range**:   
 
-```cf3
+```
     path
     literal
     context

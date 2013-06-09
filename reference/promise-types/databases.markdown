@@ -214,7 +214,7 @@ database server being used.
 
 **Allowed input range**:   
 
-```cf3
+```
     postgres
     mysql
 ```
@@ -271,7 +271,7 @@ that is to be manipulated.
 
 **Allowed input range**:   
 
-```cf3
+```
     sql
     ms_registry
 ```
@@ -293,7 +293,7 @@ nature of the promise.
 
 **Allowed input range**:   
 
-```cf3
+```
     create
     delete
     drop
