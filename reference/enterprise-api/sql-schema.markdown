@@ -30,35 +30,47 @@ counts of the four statuses (kept, repaired, not kept, unknown).
      GROUP BY Status
 ```
 
-* Group all file changes by file name occurred between a from and to 
-time-stamp on context "ubuntu".
+* Group all file changes by file name occurred on context "ubuntu". There are counters on how many distinct host occurrences and total occurrences found.
 
-There should be counters on how many total occurrences and distinct host occurrences found.
-
+``
+    SELECT
+         FileChanges.FileName,
+         Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
+         COUNT(1) AS ChangeCount
+      FROM
+         FileChanges JOIN Contexts
+      WHERE 
+         Contexts.ContextName='ubuntu'
+      GROUP BY
+         FileChanges.FileName
+      ORDER BY
+         ChangeCount DESC
 ```
-    SELECT FileName, Count(*), Distinct(Count(HostKey))
-      FROM FileChanges
-     WHERE ChangeTime < TO AND ChangeTime > FROM AND Context=ubuntu
-     GROUP BY FileName
-```
 
-* List all package names and versions, with the host ip address and OS that 
-has it.
+![File changes example output](reference-sql-filechanges-example-output.png)
+
+* List all software names and versions installed, with the host and host OS.
 
 ```
     SELECT 
-         software.name, 
-         software.version, 
-         variables.name, 
-         variables.value 
-    FROM software 
-    JOIN variables 
-    WHERE 
-         variables.name='ipv4' 
-         AND variables.value='172.20.10.41' 
-         AND variables.value='os' 
-         AND variables.value='linux';
+          Hosts.Hostname,
+          Variables.VariableValue,
+          Software.SoftwareName, 
+          Software.SoftwareVersion
+     FROM 
+          Hosts,
+          Variables,
+          Software 
+     WHERE
+          Variables.VariableName='flavor'
+          AND Hosts.HostKey=Variables.HostKey
+          AND Variables.HostKey=Software.HostKey
+     ORDER BY 
+          Software.SoftwareName
 ```
+
+![Software example output](reference-sql-software-example-output.png)
+
 
 ## Inventory
 
@@ -98,8 +110,8 @@ Possible types: `string`, `int`, `real`, `menu`, `string list`, `int list`,
 
 | HostKey | PromiseHandle  | FileName | ChangeTimeStamp | ChangeType | LineNumber | ChangeDetails |
 |--------|-----------------|----------|-----------------|------------|----------|------------|
-| SHA-... | promise_handle1 | /etc/passwd | 12345| add | 10 | user1:x:2000:2000:User1 Name:/home/user1:/bin/bash |
-| SHA-... | promise_handle2 | /etc/passwd | 12345| remove | 19 | user2:x:2000:2000:User2 Name:/home/user2:/bin/bash |
+| 12332 | promise_handle1 | /etc/passwd | 12345| add | 10 | user1:x:2000:2000:User1 Name:/home/user1:/bin/bash |
+| 12332 | promise_handle2 | /etc/passwd | 12345| remove | 19 | user2:x:2000:2000:User2 Name:/home/user2:/bin/bash |
 
 ## Promise information
 
@@ -146,8 +158,8 @@ exact query. Use an embedded query with `DISTINCT()` to avoid this.
 
 | HostKey | PromiseHandle | PromiseStatus  | PromiseLogReport | TimeStamp |
 |---------|---------------|----------------|------------------|-----------|
-| SHA-... | promise_handle1 | repaired | promise repaired message| 12345 |
-| SHA-... | promise_handle2 | notkept | promise not kept message| 12345 |
+| 12332 | promise_handle1 | repaired | promise repaired message| 12345 |
+| 12332 | promise_handle2 | notkept | promise not kept message| 12345 |
 
 Until CFEngine Enterprise v3.0 Promise logs were separated into: Promise 
 Repaired log and Promise NotKept log. The SQL Reporting Engine merges these 
@@ -157,22 +169,22 @@ reports into one with the introduction of a new field(column): PromiseStatus
 
 | HostKey | Bundle  | PercentageCompliance | CheckTimeStamp |
 |---------|---------|----------------------|----------------|
-| SHA-... | bundle1 | 100.0| 12345 | 
-| SHA-... | bundle2 | 80.0| 12345 | 
+| 12332 | bundle1 | 100.0| 12345 | 
+| 12332 | bundle2 | 80.0| 12345 | 
 
 ### Benchmarks
 
 | HostKey | EventName  | TimeTaken | CheckTimeStamp |
 |---------|------------|-----------|----------------|
-| SHA-... | action1 | 0.1| 12345| 
-| SHA-... | action2 | 12| 12345| 
+| 12332 | action1 | 0.1| 12345| 
+| 12332 | action2 | 12| 12345| 
 
 ### PolicyStatus
 
 | HostKey | PolicyName  | TotalKept | TotalRepaired | TotalNotKept | CheckTimeStamp | 
 |---------|-------------|-----------|---------------|--------------|---------|
-| SHA-... | promises.cf ... | 80| 10| 1 | 12345 |
-| SHA-... | promises.cf v... | 90| 10| 12 | 12345 |
+| 12332 | promises.cf ... | 80| 10| 1 | 12345 |
+| 12332 | promises.cf v... | 90| 10| 12 | 12345 |
 
 
 ## Software
@@ -189,8 +201,8 @@ reports into one with the introduction of a new field(column): PromiseStatus
 
 | HostKey | PatchReportType  | PatchName | PatchVersion | PatchArchitecture | 
 |---------|------------------|-----------|--------------|-------------------|
-| SHA-... | Installed | SuSEfirewall2 | 4330| default |
-| SHA-... | Available | MozillaFirefox | 4195| default |
+| 12332 | Installed | SuSEfirewall2 | 4330| default |
+| 12332 | Available | MozillaFirefox | 4195| default |
 
 
 ## Database Diagnostics
@@ -202,8 +214,8 @@ Diagnostics of the MongoDB database. For detailed documentation, see the
 
 | HostKey | LastSeenDirection  | RemoteHostKey | LastseenAt | LastseenInterval | 
 |---------|--------------------|---------------|------------|----------------|
-| SHA-... | Out | SHA-...| 12345| 120 |
-| SHA-... | In | SHA-...| 12345| 50 |
+| 12332 | Out | 12331| 12345| 120 |
+| 12332 | In | 12331| 12345| 50 |
 
 ### DatabaseServerStatus
 
@@ -268,5 +280,5 @@ Performance is measured in time the operation took, in millisecond. Data sizes a
 
 | MaintenanceTimeStamp | HostKey | Message |
 |----------------------|---------|---------|
-| 1361969437 | 7d75fc7c0baf36dbdb50f81789d8bc01cd1c297f639d83ed384c216d8058577e | Operation: PurgeTimestampedReports (SHA=484572386e818614af188402f543ee822592e20684ecee1895a672926a2054b2) exited with message: ... |
+| 1361969437 | 7d75fc7c0baf36dbdb50f81789d8bc01cd1c297f639d83ed384c216d8058577e | Operation: PurgeTimestampedReports (484572386e818614af188402f543ee822592e20684ecee1895a672926a2054b2) exited with message: ... |
 | 1361969737 | none | Operation: Remove old entries in hub maintenance performance diagnostics () exited with message: "..." |
