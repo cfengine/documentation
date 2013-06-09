@@ -22,7 +22,9 @@ Gems:
 + albino
 + uglifier
 + execjs
-#if pandoc is used
++ sanitize
+
+######if pandoc is used
 + pandoc-ruby
 + rdiscount
 

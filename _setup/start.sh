@@ -22,7 +22,7 @@ sudo apt-get install build-essential
 
 
 ## Install Java  used for google closure
-sudo apt-get install python-software-properties 
+sudo apt-get install python-software-properties
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get install oracle-java7-installer
@@ -39,8 +39,10 @@ gem install closure-compiler
 gem install yui-compressor
 gem install redcarpet
 gem install albino
-gem install uglifier 
+gem install uglifier
 gem install execjs
+gem install sanitize
+
 
 #if pandoc is used
 gem install pandoc-ruby
