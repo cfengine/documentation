@@ -88,7 +88,6 @@ one of two different ways:
           package_select => ">=",
           package_architectures => { "x86_64", "i586" },
           package_version => "1.2.3";
-     
 ```
 
 * They may be extracted from a package identifier (promiser) or
@@ -282,12 +281,10 @@ prevents CFEngine from appending the package name to the string.
 **Example**:
 
 ```cf3
-     
      body package_method rpm
      {
      package_add_command => "/bin/rpm -i ";
      }
-     
 ```
 
 #### package_arch_regex
@@ -308,13 +305,11 @@ the *promiser* at which the architecture is specified.
 **Example**:
 
 ```cf3
-     
      body package_method rpm
      
      {
      package_list_arch_regex    => "[^.]+\.([^.]+)";
      }
-     
 ```
 
 **Notes**: If no architecture is specified for thegiven package manager, then 
@@ -344,13 +339,11 @@ the operating system's package manager to handle dependencies.
 **Example**:
 
 ```cf3
-     
      body package_method rpm
      
      {
      package_changes => "bulk";
      }
-     
 ```
 
 #### package_delete_command
@@ -372,12 +365,10 @@ prevents CFEngine from appending the package name to the string.
 **Example**:
 
 ```cf3
-     
      body package_method rpm
      {
      package_delete_command => "/bin/rpm -e --nodeps";
      }
-     
 ```
 
 #### package_delete_convention
@@ -413,7 +404,6 @@ to expand the first repository containing the package. For example:
      package_name_convention => "$(name)-$(version).tbz";
      package_delete_convention => "$(name)-$(version)";
      }
-     
 ```
 
 **Notes**:
@@ -436,12 +426,10 @@ the package name in the package commands.
 **Example**:
 
 ```cf3
-     
      body package_method filebased
      {
      package_file_repositories => { "/package/repos1", "/packages/repos2" };
      }
-     
 ```
 
 #### package_installed_regex
@@ -462,12 +450,10 @@ be ignored.
 **Example**:
 
 ```cf3
-     
      body package_method yum
      {
      package_installed_regex => ".*installed.*";
      }
-     
 ```
 
 #### package_default_arch_command
@@ -515,12 +501,10 @@ architecture is specified.
 **Example**:
 
 ```cf3
-     
      body package_method rpm
      {
      package_list_arch_regex    => "[^|]+\|[^|]+\|[^|]+\|[^|]+\|\s+([^\s]+).*";
      }
-     
 ```
 
 **Notes**: If no architecture is specified for the given package manager, then 
@@ -546,13 +530,11 @@ prevents CFEngine from appending the package name to the string.
 **Example**:
 
 ```cf3
-     
      body package_method rpm
      
      {
      package_list_command => "/bin/rpm -qa --queryformat \"%{name} %{version}-%{release}\n\"";
      }
-     
 ```
 
 #### package_list_name_regex
@@ -570,13 +552,11 @@ reference which marks the name of the package from the package listing.
 **Example**:
 
 ```cf3
-     
      body package_method rpm
      
      {
      package_list_name_regex    => "([^\s]+).*";
      }
-     
 ```
 
 #### package_list_update_command
@@ -645,7 +625,6 @@ installed.
      {
      package_list_version_regex => "[^\s]+ ([^.]+).*";
      }
-     
 ```
 
 #### package_name_convention
@@ -677,7 +656,6 @@ If this is not defined, it defaults to the value `$(name)`.
      {
      package_name_convention => "$(name).$(arch).rpm";
      }
-     
 ```
 
 #### package_name_regex
@@ -697,12 +675,10 @@ back-reference to extract the name of the package from the string.
 **Example**:
 
 ```cf3
-     
      body package_method rpm
      {
      package_name_regex => "([^\s]).*";
      }
-     
 ```
 
 #### package_noverify_regex
@@ -726,7 +702,6 @@ broken.
      package_noverify_regex => "Package .* is not installed.*";
      package_verify_command => "/usr/bin/dpkg -s";
      }
-     
 ```
 
 #### package_noverify_returncode
@@ -767,12 +742,10 @@ an analogous command struct to the packages for patch updates.
 **Example**:
 
 ```cf3
-     
      body package_method zypper
      {
      package_patch_arch_regex => "";
      }
-     
 ```
 
 #### package_patch_command
@@ -816,12 +789,10 @@ analogous command struct to the packages for patch updates.
 **Example**:
 
 ```cf3
-     
      body package_method zypper
      {
      package_patch_installed_regex => ".*(Installed|Not Applicable).*";
      }
-     
 ```
 
 #### package_patch_list_command
@@ -846,9 +817,7 @@ prevents CFEngine from appending the package name to the string.
 **Example**:
 
 ```cf3
-     
       package_patch_list_command => "/usr/bin/zypper patches";
-     
 ```
 
 #### package_patch_name_regex
@@ -867,7 +836,6 @@ an analogous command struct to the packages for patch updates.
 **Example**:
 
 ```cf3
-     
      body package_method zypper
      {
      package_patch_name_regex    => "[^|]+\|\s+([^\s]+).*";
@@ -890,12 +858,10 @@ an analogous command struct to the packages for patch updates.
 **Example**:
 
 ```cf3
-     
      body package_method zypper
      {
      package_patch_version_regex => "[^|]+\|[^|]+\|\s+([^\s]+).*";
      }
-     
 ```
 
 #### package_update_command
@@ -921,12 +887,10 @@ carry out the update.
 **Example**:
 
 ```cf3
-     
      body package_method zypper
      {
      package_update_command => "/usr/bin/zypper -non-interactive update";
      }
-     
 ```
 
 #### package_verify_command
@@ -983,12 +947,10 @@ version string in the promiser.
 **Example**:
 
 ```cf3
-     
      body package_method rpm
      {
      package_version_regex => "[^\s]+ ([^.]+).*";
      }
-     
 ```
 
 #### package_multiline_start
@@ -1008,7 +970,6 @@ record.
 **Example**:
 
 ```cf3
-     
      body package_method solaris (pkgname, spoolfile, adminfile)
      {
      package_changes => "individual";
@@ -1016,7 +977,6 @@ record.
      package_multiline_start    =>  "\s*PKGINST:\s+[^\s]+";
      ...
      }
-     
 ```
 
 #### package_commands_useshell
@@ -1041,7 +1001,6 @@ record.
 **Example**:
 
 ```cf3
-     
      Fill me in (./bodyparts/package_commands_useshell_example.texinfo)
      ""
 ```

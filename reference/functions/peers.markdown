@@ -62,7 +62,6 @@ Example file:
      eleven
      twelve
      etc
-     
 ```
 
 ```cf3

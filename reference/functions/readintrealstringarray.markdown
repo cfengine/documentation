@@ -85,14 +85,12 @@ Results in:
 Input:
 
 ```cf3
-     
      at:x:25:25:Batch jobs daemon:/var/spool/atjobs:/bin/bash
      avahi:x:103:105:User for Avahi:/var/run/avahi-daemon:/bin/false    # Disallow login
      beagleindex:x:104:106:User for Beagle indexing:/var/cache/beagle:/bin/bash
      bin:x:1:1:bin:/bin:/bin/bash
      # Daemon has the default shell
      daemon:x:2:2:Daemon:/sbin:
-     
 ```
 
 Results in a systematically indexed map of the file:
@@ -117,5 +115,4 @@ Results in a systematically indexed map of the file:
      array_name[games][5]    /var/games
      array_name[games][6]    /bin/bash
      ...
-     
 ```

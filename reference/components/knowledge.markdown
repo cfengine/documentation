@@ -9,7 +9,6 @@ tags: [components, knowledge, bundles]
 
 
 ```cf3
-     
      bundle knowledge system
      
      {
@@ -25,7 +24,6 @@ tags: [components, knowledge, bundles]
        "Print server not running";
        "Bad memory reference";
      }
-     
 ```
 
 Knowledge bundles describe topic maps, i.e. Topics, Associations and

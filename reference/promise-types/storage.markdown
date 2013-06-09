@@ -10,14 +10,12 @@ tags: [reference, bundle agent, storage, storage promises, mount, filesystem, di
 Storage promises refer to disks and filesystem properties.
 
 ```cf3
-     
       storage:
      
          "/disk volume or mountpoint"
      
            volume = volume_body,
            ...;
-     
 ```
 
 
@@ -72,12 +70,10 @@ The default behavior is to not place edits in the file system table.
 **Example**:
 
 ```cf3
-     
      body mount example
      {
        edit_fstab => "true";
      }
-     
 ```
 
 #### mount_type
@@ -98,12 +94,10 @@ The default behavior is to not place edits in the file system table.
 **Example**:
 
 ```cf3
-     
      body mount example
      {
      mount_type => "nfs3";
      }
-     
 ```
 
 **Notes**:
@@ -122,12 +116,10 @@ This is the location on the remote device, server, SAN etc.
 **Example**:
 
 ```cf3
-     
      body mount example
      {
      mount_source "/location/disk/directory";
      }
-     
 ```
 
 #### mount_server
@@ -141,12 +133,10 @@ This is the location on the remote device, server, SAN etc.
 **Example**:
 
 ```cf3
-     
      body mount example
      {
        mount_server => "nfs_host.example.org";
      }
-     
 ```
 
 #### mount_options
@@ -181,12 +171,10 @@ options must be legal options for the system mount commands.
 **Example**:
 
 ```cf3
-     
      body mount example
      {
      unmount => "true";
      }
-     
 ```
 
 ### volume
@@ -233,7 +221,6 @@ the results of this promise to control other promises.
 **Example**:
 
 ```cf3
-     
      body volume example1
      {
      freespace => "10%";
@@ -243,7 +230,6 @@ the results of this promise to control other promises.
      {
      freespace => "50M";
      }
-     
 ```
 
 #### sensible_size
@@ -258,12 +244,10 @@ sensible-looking storage device
 **Example**:
 
 ```cf3
-     
      body volume example
      {
      sensible_size => "20K";
      }
-     
 ```
 
 #### sensible_count
@@ -281,12 +265,10 @@ the agent has privileges on volumes being checked.
 **Example**:
 
 ```cf3
-     
      body volume example
      {
      sensible_count => "20";
      }
-     
 ```
 
 #### scan_arrivals

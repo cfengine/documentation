@@ -208,12 +208,10 @@ optional.
 **Example**:
 
 ```cf3
-     
      body service_method example
      {
        service_args => "-f filename.conf --some-argument";
      }
-     
 ```
 
 #### service_autostart_policy
@@ -239,12 +237,10 @@ dispatched once it is being used.
 **Example**:
 
 ```cf3
-     
      body service_method example
      {
        service_autostart_policy => "boot_time";
      }
-     
 ```
 
 **Notes**: `on_demand` is not supported by Windows, and is implemented through
@@ -294,12 +290,10 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 **Example**:
 
 ```cf3
-     
      body service_method example
      {
        service_dependence_chain => "start_parent_services";
      }
-     
 ```
 
 #### service_type
@@ -318,12 +312,10 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 **Example**:
 
 ```cf3
-     
      body service_method example
      {
        type => "windows";
      }
-     
 ```
 
 **Notes**:

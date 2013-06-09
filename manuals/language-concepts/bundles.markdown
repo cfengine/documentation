@@ -61,7 +61,6 @@ definitions.
      
        "global_class" expression = "value";
      }
-     
 ```
 
 Common bundles are observed by every agent, whereas the agent 

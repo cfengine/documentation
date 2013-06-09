@@ -13,7 +13,6 @@ stricter type separation allows for more careful conflict analysis to be
 carried out.
 
 ```cf3
-     
      commands:
      
        "/path/to/command args"
@@ -21,7 +20,6 @@ carried out.
                   args = "more args",
                   contain = contain_body,
                   module = true/false;
-     
 ```
 
 Output from commands executed here is quoted inline, but prefixed with
@@ -55,7 +53,6 @@ quote the entire program string separately so that CFEngine knows the
 name of the executable file. For example:
 
 ```cf3
-     
       commands:
      
        windows::
@@ -65,7 +62,6 @@ name of the executable file. For example:
        linux::
      
         "\"/usr/bin/funny command name\" -a -b -c";
-     
 ```
 
 ****
@@ -154,12 +150,10 @@ For compatibility, the boolean values are also supported, and map to
 **Example**:
 
 ```cf3
-     
      body contain example
      {
      useshell => "useshell";
      }
-     
 ```
 
 #### umask
@@ -188,12 +182,10 @@ thus ignored by Windows versions of CFEngine.
 **Example**: 
 
 ```cf3
-     
      body contain example
      {
      umask => "077";
      }
-     
 ```
 
 #### exec_owner
@@ -215,12 +207,10 @@ CFEngine.
 **Example**:
 
 ```cf3
-     
      body contain example
      {
      exec_owner => "mysql_user";
      }
-     
 ```
 
 #### exec_group
@@ -239,12 +229,10 @@ them.
 **Example**: 
 
 ```cf3
-     
      body contain example
      {
      exec_group => "nogroup";
      }
-     
 ```
 
 #### exec_timeout
@@ -261,12 +249,10 @@ case of failure.
 **Example**:
 
 ```cf3
-     
      body contain example
      {
      exec_timeout => "30";
      }
-     
 ```
 
 #### chdir
@@ -284,13 +270,11 @@ it works like the cd shell command.
 **Example**:
 
 ```cf3
-     
      body contain example
      
      {
      chdir => "/containment/directory";
      }
-     
 ```
 
 #### chroot
@@ -309,13 +293,11 @@ process. Windows does not support this feature.
 **Example**:
 
 ```cf3
-     
      body contain example
      
      {
      chroot => "/private/path";
      }
-     
 ```
 
 #### preview
@@ -336,12 +318,10 @@ checks to user defined scripts.
 **Example**:
 
 ```cf3
-     
      body contain example
      {
      preview => "true";
      }
-     
 ```
 
 #### no_output
@@ -358,12 +338,10 @@ error to `/dev/null`.
 **Example**:
 
 ```cf3
-     
      body contain example
      {
      no_output => "true";
      }
-     
 ```
 
 ### module
@@ -454,7 +432,6 @@ Here is an example module written in Perl:
         {
         print "+specialclass";
         }
-     
 ```
 
 If your module is simple and is best expressed as a shell command, then we 

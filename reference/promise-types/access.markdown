@@ -27,13 +27,11 @@ listed in order of most-specific file first. In this way, specific
 promises will override less specific ones.
 
 ```cf3
-     
       access:
      
          "/path/file_object"
      
            admit   = { "hostname", "ipv4_address", "ipv6_address"  };
-     
      
 ```
 

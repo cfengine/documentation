@@ -231,7 +231,6 @@ This attribute is mutually exclusive of `select_line_number`.
 **Example**:
 
 ```cf3
-     
      # Editing
      
      body location example
@@ -245,7 +244,6 @@ This attribute is mutually exclusive of `select_line_number`.
      {
      select_line_matching => "Expression match.* whole line";
      }
-     
 ```
 
 #### select_line_number
@@ -261,7 +259,6 @@ This is mutually exclusive of `select_line_matching`.
 **Example**:
 
 ```cf3
-     
      body match_value find_line
      {
      select_line_number => "2";
@@ -287,13 +284,11 @@ it may match a partial string
 **Example**:
 
 ```cf3
-     
      body match_value free_memory
      {
      select_line_matching => "MemFree:.*";
      extraction_regex => "MemFree:\s+([0-9]+).*";
      }
-     
 ```
 
 #### track_growing_file
@@ -372,14 +367,12 @@ are used only the first match is used.
 **Example**:
 
 ```cf3
-     
      body match_value myvalue(xxx)
      {
       select_line_matching => ".*$(xxx).*";
       extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).*";
       select_multiline_policy => "sum";
      } 
-     
 ```
 
 **History**: Was introduced in 3.4.0 (2012)

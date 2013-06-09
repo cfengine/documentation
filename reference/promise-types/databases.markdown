@@ -52,7 +52,6 @@ pre-requisite for making SQL database promises is to grant a point of
 access on the server.
 
 ```cf3
-     
     databases:
 
     "database/subkey or table"
@@ -74,7 +73,6 @@ access on the server.
       db_server_type = "mysql/posgres";
       db_server_connection_db = "database we can connect to";
     }
-     
 ```
 
   
@@ -165,9 +163,7 @@ for a database connection.
 **Example**:
 
 ```cf3
-     
      db_server_owner => "mark";
-     
 ```
 
 #### db_server_password
@@ -182,9 +178,7 @@ text password for a database connection.
 **Example**:
 
 ```cf3
-     
      db_server_password => "xyz.1234";
-     
 ```
 
 #### db_server_host
@@ -200,9 +194,7 @@ A blank value is equal to localhost.
 
 **Example**:
 ```cf3
-     
      db_server_host => "sqlserv.example.org";
-     
 ```
 
 #### db_server_type
@@ -224,9 +216,7 @@ database server being used.
 **Example**:
 
 ```cf3
-     
      db_server_type => "postgres";
-     
 ```
 
 #### db_server_connection_db
@@ -248,7 +238,6 @@ for their respective database servers.
 **Example**:
 
 ```cf3
-     
      body database_server myserver(x)
      {
      db_server_owner => "$(x)";
@@ -257,7 +246,6 @@ for their respective database servers.
      db_server_type => "$(mysql)";
      db_server_connection_db => "$(x)";
      }
-     
 ```
 
 where x is currently `mysql` or `postgres`.

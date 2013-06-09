@@ -115,7 +115,6 @@ ordering the items within them.
        allow_blank_fields => "true";
        start_fields_from_zero => "true";
      }
-     
 ```
 
 #### allow_blank_fields

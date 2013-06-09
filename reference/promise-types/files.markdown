@@ -369,7 +369,6 @@ having `x` on its containing directory is sufficient.
 **Example**:
 
 ```cf3
-     
      body acl template
      
      {
@@ -384,7 +383,6 @@ having `x` on its containing directory is sufficient.
              "all:r"
              };
      }
-     
 ```
 
 #### acl_default
@@ -417,7 +415,6 @@ the directory.
 **Example**:
 
 ```cf3
-     
      body acl template
      
      {
@@ -432,7 +429,6 @@ the directory.
              "all:r"
              };
      }
-     
 ```
 
 **History**: Was introduced in 3.5. Replaces the now deprecated 
@@ -465,7 +461,6 @@ entries are set. For example, owning user, group and all in POSIX ACLs.
 **Example**:
 
 ```cf3
-     
      body acl template
      
      {
@@ -473,7 +468,6 @@ entries are set. For example, owning user, group and all in POSIX ACLs.
      acl_type => "posix";
      aces => { "user:*:rw:allow", "group:*:+r:allow", "all:"};
      }
-     
 ```
 
 #### acl_type
@@ -503,14 +497,12 @@ platform. Currently, the supported values are `posix` and `ntfs`.
 **Example**:
 
 ```cf3
-     
      body acl template
      
      {
      acl_type => "ntfs";
      aces => { "user:Administrator:rwx(po)", "user:Auditor:r(o)"};
      }
-     
 ```
 
 #### specify_default_aces
@@ -568,12 +560,10 @@ The `best` option cross correlates the best two available algorithms known in th
 **Example**:
 
 ```cf3
-     
      body changes example
      {
      hash => "md5";
      }
-     
 ```
 
 
@@ -597,12 +587,10 @@ Files can change in permissions and contents, i.e. external or internal attribut
 **Example**:
 
 ```cf3
-     
      body changes example
      {
      report_changes => "content";
      }
-     
 ```
 
 #### update_hashes
@@ -619,12 +607,10 @@ applies to addition and removal too.
 **Example**:
 
 ```cf3
-     
      body changes example
      {
      update_hashes => "true";
      }
-     
 ```
 
 #### report_diffs
@@ -649,12 +635,10 @@ used to attempt to capture random changes of the system.
 **Example**:
 
 ```cf3
-     
      body changes example
      {
      report_diffs => "true";
      }
-     
 ```
 
 ### copy_from
@@ -672,7 +656,6 @@ used to attempt to capture random changes of the system.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      source => "/path/to/source";
@@ -691,13 +674,11 @@ used to attempt to capture random changes of the system.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      servers => { "primary.example.org", "secondary.example.org", 
                       "tertiary.other.domain" };
      }
-     
 ```
 
 #### collapse_destination_dir
@@ -719,14 +700,12 @@ itself; in other words, a single destination directory.
 **Example**:
 
 ```cf3
-     
      body copy_from mycopy(from,server)
      {
      source      => "$(from)";
      servers     => { "$(server)" };
      collapse_destination_dir => "true";
      }
-     
 ```
 
 #### compare
@@ -789,12 +768,10 @@ used.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      compare => "digest";
      }
-     
 ```
 
 #### copy_backup
@@ -820,12 +797,10 @@ defined repository affects the location at which the backup is stored.
 **Example**:  
    
 ```cf3
-     
      body copy_from example
      {
      copy_backup => "timestamp";
      }
-     
 ```
 
 #### encrypt
@@ -844,13 +819,11 @@ for the client and server hosts.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      servers  => { "remote-host.example.org" };
      encrypt => "true";
      }
-     
 ```
 
 #### check_root
@@ -867,12 +840,10 @@ objects and subdirectories within this root (false).
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      check_root => "true";
      }
-     
 ```
 
 #### copylink_patterns
@@ -891,12 +862,10 @@ feature is not available there.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      copylink_patterns => { "special_node1", "other_node.*" };
      }
-     
 ```
 
 #### copy_size
@@ -916,12 +885,10 @@ comma separated numbers.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      copy_size => irange("0","50000");
      } 
-     
 ```
 
 #### findertype
@@ -941,12 +908,10 @@ This applies only to the Mac OS X variants.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      findertype => "MacOSX";
      }
-     
 ```
 
 #### linkcopy_patterns
@@ -964,13 +929,11 @@ absolute path. Windows only supports hard links.
 **Example**:
 
 ```cf3
-     
      body copy_from mycopy(from)
      {
      source            => "$(from)";
      linkcopy_patterns => { ".*" };
      }
-     
 ```
 
 **See Also**: `link_type`.   
@@ -1006,13 +969,11 @@ source, so relative and absolute links are mutually exclusive.
 **Example**:  
    
 ```cf3
-     
      body link_from example
      {
      link_type => "symlink";
      source => "/tmp/source";
      }
-     
 ```
 
 #### force_update
@@ -1033,12 +994,10 @@ by network disruptions.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      force_update => "true";
      }
-     
 ```
 
 #### force_ipv4
@@ -1054,12 +1013,10 @@ IPv6 should be harmless to most users unless you have a partially or mis-configu
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      force_ipv4 => "true";
      }
-     
 ```
 
 #### portnumber
@@ -1078,12 +1035,10 @@ change in the future.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      portnumber => "5308";
      }
-     
 ```
 
 #### preserve
@@ -1101,12 +1056,10 @@ the source. This also applies to remote copies.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      preserve => "true";
      }
-     
 ```
 
 **History**: Version 3.1.0b3,Nova 2.0.0b1 (2010)   
@@ -1132,12 +1085,10 @@ copying if `copy_backup` is set to true.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      purge => "true";
      }
-     
 ```
 
 #### stealth
@@ -1153,12 +1104,10 @@ modification times on the promiser files.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      stealth => "true";
      }
-     
 ```
 
 #### timeout
@@ -1173,12 +1122,10 @@ timeout, in seconds.
 **Example**:
 
 ```cf3
-     
      body runagent control
      {
      timeout => "10";
      }
-     
 ```
 
 #### trustkey
@@ -1208,12 +1155,10 @@ revoked by a system administrator. Keys are stored in `WORKDIR/ppkeys`.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      trustkey => "true";
      }
-     
 ```
 
 #### type_check
@@ -1230,12 +1175,10 @@ off.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      type_check => "false";
      }
-     
 ```
 
 #### verify
@@ -1253,12 +1196,10 @@ recommended for large file transfers.
 **Example**:
 
 ```cf3
-     
      body copy_from example
      {
      verify => "true";
      }
-     
 ```
 
 ### create
@@ -1330,12 +1271,10 @@ remove directory links.
 **Example**:
 
 ```cf3
-     
      body delete example
      {
      dirlinks => "keep";
      }
-     
 ```
 
 **Default value** (only if body is present): `dirlinks = delete`
@@ -1355,12 +1294,10 @@ recursive deletion
 **Example**:
 
 ```cf3
-     
      body delete example
      {
      rmdirs => "true";
      }
-     
 ```
 
 Note the parent directory of a search is not deleted in recursive
@@ -1368,7 +1305,6 @@ deletions. You must code a separate promise to delete the single parent
 object.
 
 ```cf3
-     
      bundle agent cleanup
      {
      files:
@@ -1398,7 +1334,6 @@ object.
      mtime     => irange(ago(1,0,0,0,0,0),now);
      file_result => "mtime";
      }
-     
 ```
 
 **Default value** (only if body is present): `rmdirs = true`
@@ -1428,12 +1363,10 @@ Note that the value inf may be used for an unlimited value.
 **Example**:
 
 ```cf3
-     
      body depth_search example
      {
      depth => "inf";
      }
-     
 ```
 
 #### exclude_dirs
@@ -1451,13 +1384,11 @@ a file system.
 **Example**:
 
 ```cf3
-     
      body depth_search
      {
      # no dot directories
      exclude_dirs => { "\..*" };
      }
-     
 ```
 
 #### include_basedir
@@ -1477,12 +1408,10 @@ promise the same attributes as the files inside it.
 **Example**:
 
 ```cf3
-     
      body depth_search example
      {
      include_basedir => "true";
      }
-     
 ```
 
 #### include_dirs
@@ -1499,12 +1428,10 @@ This is the complement of `exclude_dirs`.
 **Example**:
 
 ```cf3
-     
      body depth_search example
      {
      include_dirs => { "subdir1", "subdir2", "pattern.*" };
      }
-     
 ```
 
 #### rmdeadlinks
@@ -1521,12 +1448,10 @@ exist should be deleted; or kept if set to false.
 **Example**:
 
 ```cf3
-     
      body depth_search example
      {
      rmdeadlinks => "true";
      }
-     
 ```
 
 #### traverse_links
@@ -1544,12 +1469,10 @@ dangerous assumption and links are not traversed.
 **Example**:
 
 ```cf3
-     
      body depth_search example
      {
      traverse_links => "true";
      }
-     
 ```
 
 #### xdev
@@ -1564,12 +1487,10 @@ devices
 **Example**:
 
 ```cf3
-     
      body depth_search example
      {
      xdev => "true";
      }
-     
 ```
 
 ### edit_defaults
@@ -1596,12 +1517,10 @@ devices
 **Example**:
 
 ```cf3
-     
      body edit_defaults example
      {
      edit_backup => "timestamp";
      }
-     
 ```
 
 #### empty_file_before_editing
@@ -1619,12 +1538,10 @@ recipe allows an ordered procedure to be convergent.
 **Example**:
 
 ```cf3
-     
      body edit_defaults example
      {
      empty_file_before_editing => "true";
      }
-     
 ```
 
 #### inherit
@@ -1680,12 +1597,10 @@ determined by the global control body setting whose default value is
 **Example**:
 
 ```cf3
-     
      body edit_defaults example
      {
      max_file_size => "50K";
      }
-     
 ```
 
 #### recognize_join
@@ -1754,12 +1669,10 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example**:
 
 ```cf3
-     
      body rename example
      {
      rotate => "4";
      }
-     
 ```
 
 ### edit_line
@@ -1877,13 +1790,11 @@ This pattern matches only the node name of the file, not its path.
 **Example**:
 
 ```cf3
-     
      body file_select example
      {
      leaf_name => { "S[0-9]+[a-zA-Z]+", "K[0-9]+[a-zA-Z]+" };
      file_result => "leaf_name";
      }
-     
 ```
 
 #### path_name
@@ -1900,7 +1811,6 @@ of appropriate regular expressions.
 **Example**:
 
 ```cf3
-     
      body file_select example
      {
      leaf_name => { "prog.pid", "prog.log" };
@@ -1908,7 +1818,6 @@ of appropriate regular expressions.
      
      file_result => "leaf_name.path_name"
      }
-     
 ```
 
 #### search_mode
@@ -1948,7 +1857,6 @@ implies `u` AND `g`.
      {
      depth => "$(d)";
      }
-     
 ```
 
 #### search_size
@@ -1962,13 +1870,11 @@ implies `u` AND `g`.
 **Example**:
 
 ```cf3
-     
      body file_select example
      {
      search_size => irange("0","20k");
      file_result => "size";
      }
-     
 ```
 
 #### search_owners
@@ -1986,13 +1892,11 @@ userid.
 **Example**:
 
 ```cf3
-     
      body file_select example
      {
      search_owners => { "mark", "jeang", "student_.*" };
      file_result => "owner";
      }
-     
 ```
 
 **Notes**:
@@ -2012,13 +1916,11 @@ A list of anchored regular expressions, any of which must match the entire group
 **Example**:
 
 ```cf3
-     
      body file_select example
      {
      search_groups => { "users", "special_.*" };
      file_result => "group";
      }
-     
 ```
 
 **Notes**:
@@ -2039,7 +1941,6 @@ CFEngine). See the manual page for `chflags` for more details.
 **Example**:
 
 ```cf3
-     
      body file_select xyz
      {
      search_bsdflags => "archived|dump";
@@ -2062,13 +1963,11 @@ time.
 **Example**:
 
 ```cf3
-     
      body files_select example
      {
      ctime => irange(ago(1,0,0,0,0,0),now);
      file_result => "ctime";
      }
-     
 ```
 
 #### mtime
@@ -2085,14 +1984,12 @@ not other attributes, such as permissions.
 **Example**:
 
 ```cf3
-     
      body files_select example
      {
      # Files modified more than one year ago (i.e., not in mtime range)
      mtime => irange(ago(1,0,0,0,0,0),now);
      file_result => "!mtime";
      }
-     
 ```
 
 #### atime
@@ -2123,7 +2020,6 @@ A range of times during which a file was accessed can be specified in a
      atime     => irange(on(2000,1,1,0,0,0),now);
      file_result => "!atime";
      }
-     
 ```
 
 #### exec_regex
@@ -2143,14 +2039,12 @@ output must be matched.
 **Example**:
 
 ```cf3
-     
      body file_select example
      {
      exec_regex => "SPECIAL_LINE: .*";
      exec_program => "/path/test_program $(this.promiser)";
      file_result => "exec_program.exec_regex";
      }
-     
 ```
 
 #### exec_program
@@ -2169,13 +2063,11 @@ matched.
 **Example**:
 
 ```cf3
-     
      body file_select example
      {
      exec_program => "/path/test_program $(this.promiser)";
      file_result => "exec_program";
      }
-     
 ```
 
 #### file_types
@@ -2205,14 +2097,12 @@ plain. In both cases this means not one of the "special" file types.
 **Example**:
 
 ```cf3
-     
      body file_select filter
      {
      file_types => { "plain","symlink" };
      
      file_result => "file_types";
      }
-     
 ```
 
 #### issymlinkto
@@ -2229,12 +2119,10 @@ expressions, the file will be selected.
 **Example**:
 
 ```cf3
-     
      body file_select example
      {
      issymlinkto => { "/etc/[^/]*", "/etc/init\.d/[a-z0-9]*" };
      }
-     
 ```
 
 **Notes**:
@@ -2259,7 +2147,6 @@ components.
 **Example**:
 
 ```cf3
-     
      body file_select year_or_less
      {
      mtime       => irange(ago(1,0,0,0,0,0),now);  
@@ -2274,7 +2161,6 @@ components.
      
      file_result => "owner.leaf_name.!mtime";
      }
-     
 ```
 
 You may specify arbitrarily complex file-matching parameters, such as what is 
@@ -2304,12 +2190,10 @@ updated by modification time.
 **Example**:
 
 ```cf3
-     
      body link_from example
      {
      copy_patterns =>  { "special_node1", "/path/special_node2" };
      }
-     
 ```
 
 #### link_children
@@ -2327,12 +2211,10 @@ them to the source.
 **Example**:
 
 ```cf3
-     
      body link_from example
      {
      link_children => "true";
      }
-     
 ```
 
 #### link_type
@@ -2367,13 +2249,11 @@ are mutually exclusive.
 **Example**:
 
 ```cf3
-     
      body link_from example
      {
      link_type => "symlink";
      source => "/tmp/source";
      }
-     
 ```
 
 **Notes**:
@@ -2392,12 +2272,10 @@ For remote copies this refers to the file name on the remote server.
 **Example**:
 
 ```cf3
-     
      body link_from example
      {
      source => "/path/to/source";
      }
-     
 ```
 
 
@@ -2426,12 +2304,10 @@ certain fields overridden.
 **Example**:
 
 ```cf3
-     
      body link_from example
      {
      when_linking_children => "if_no_such_file";
      }
-     
 ```
 
 #### when_no_source
@@ -2458,12 +2334,10 @@ or do nothing.
 **Example**:
 
 ```cf3
-     
      body link_from example
      {
      when_no_source => "force";
      }
-     
 ```
 
 ### move_obstructions
@@ -2583,13 +2457,11 @@ separator.
 **Example**:
 
 ```cf3
-     
      body perms example
      {
      bsdflags => { "uappnd","uchg","uunlnk","nodump",
                    "opaque","sappnd","schg","sunlnk" };
      }
-     
 ```
 
 **Notes**:
@@ -2618,7 +2490,6 @@ group.
      {
      groups => { "users", "administrators" };
      }
-     
 ```
 
 **Notes**:
@@ -2638,12 +2509,10 @@ The mode string may be symbolic or numerical, like `chmod`.
 **Example**:
 
 ```cf3
-     
      body perms example
      {
      mode => "a+rx,o+w";
      }
-     
 ```
 
 **Notes**:
@@ -2666,12 +2535,10 @@ registered user.
 **Example**:
 
 ```cf3
-     
      body perms example
      {
      owners => { "mark", "wwwrun", "jeang" };
      }
-     
 ```
 
 **Notes**:
@@ -2694,12 +2561,10 @@ promise.
 **Example**:
 
 ```cf3
-     
      body perms rxdirs
      {
      rxdirs => "false";
      }
-     
 ```
 
 **Notes**:
@@ -2724,13 +2589,11 @@ unreadable.
 **Example**:
 
 ```cf3
-     
      body rename example
      {
      disable => "true"; 
      disable_suffix => ".nuked";
      }
-     
 ```
 
 #### disable_mode
@@ -2747,12 +2610,10 @@ remove the executable flag.
 **Example**:
 
 ```cf3
-     
      body rename example
      {
      disable_mode => "0600"; 
      }
-     
 ```
 
 #### disable_suffix
@@ -2770,13 +2631,11 @@ To disable files in a particular manner, use this string suffix.
 **Example**:
 
 ```cf3
-     
      body rename example
      {
      disable => "true"; 
      disable_suffix => ".nuked";
      }
-     
 ```
 
 #### newname
@@ -2790,12 +2649,10 @@ To disable files in a particular manner, use this string suffix.
 **Example**:
 
 ```cf3
-     
      body rename example(s)
      {
      newname => "$(s)";
      }
-     
 ```
 
 #### rotate
@@ -2823,12 +2680,10 @@ files plus the one "main" file.
 **Example**:
 
 ```cf3
-     
      body rename example
      {
      rotate => "4";
      }
-     
 ```
 
 In the example above, the file `foo.3` will be renamed `foo.4`, but the old 

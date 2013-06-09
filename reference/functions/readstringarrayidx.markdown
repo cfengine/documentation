@@ -57,7 +57,6 @@ Input example:
      duplicate:x:1:1:bin:/bin:/bin/bash
      # Daemon has the default shell
      daemon:x:2:2:Daemon:/sbin:
-     
 ```
 
 Results in a systematically indexed map of the file:

@@ -102,7 +102,6 @@ time.
 **Example**:
 
 ```cf3
-     
      body environment_interface vnet(primary)
      {
      env_name      => "$(this.promiser)";
@@ -189,14 +188,12 @@ will set a natural limit on this value.
 **Example**:
 
 ```cf3
-     
      body environment_resources my_environment
      {
      env_cpus => "2";
      env_memory => "512"; # in KB
      env_disk => "1024";  # in MB
      }
-     
 ```
 
 **Notes**:
@@ -217,14 +214,12 @@ natural limit on this value.
 **Example**:
 
 ```cf3
-     
      body environment_resources my_environment
      {
      env_cpus => "2";
      env_memory => "512"; # in KB
      env_disk => "1024";  # in MB
      }
-     
 ```
 
 **Notes**:
@@ -244,14 +239,12 @@ This parameter is currently unsupported, for future extension.
 **Example**:
 
 ```cf3
-     
      body environment_resources my_environment
      {
      env_cpus => "2";
      env_memory => "512"; # in KB
      env_disk => "1024";  # in MB
      }
-     
 ```
 
 **Notes**:
@@ -271,9 +264,7 @@ image with which to baseline the virtual environment.
 **Example**:
 
 ```cf3
-     
      env_baseline => "/path/to/image";
-     
 ```
 
 **Notes**:
@@ -324,7 +315,6 @@ creation; in other words, when `environment_state` is create.
      /domain>
      ";
      }
-     
 ```
 
 **Notes**:  

@@ -13,7 +13,6 @@ body-attributes. The promise object referred to can be a literal line of
 a file-reference from which to read lines.
 
 ```cf3
-     
       insert_lines:
      
         "literal line or file reference"

@@ -11,7 +11,6 @@ Process promises refer to items in the system process table, i.e., a command
 in some state of execution (with a Process Control Block). Promiser objects are patterns that are unanchored, meaning that they match line fragments in the system process table.
 
 ```cf3
-     
       processes:
      
         "regex contained in process line"
@@ -19,7 +18,6 @@ in some state of execution (with a Process Control Block). Promiser objects are 
             process_select = process_filter_body,
             restart_class = "activation class for process",
             ..;
-     
 ```
 
 **Note**: Process table formats differ between operating systems, and the use 
@@ -145,12 +143,10 @@ the number of processes matching the other criteria is kept.
 **Example**:
 
 ```cf3
-     
      body process_count example
      {
      in_range_define => { "class1", "class2" };
      }
-     
 ```
 
 #### match_range
@@ -169,12 +165,10 @@ the promise is considered kept.
 **Example**:
 
 ```cf3
-     
      body process_count example
      {
      match_range => irange("10","50");
      }
-     
 ```
 
 #### out_of_range_define
@@ -191,12 +185,10 @@ failure to be kept.
 **Example**:
 
 ```cf3
-     
      body process_count example(s)
      {
      out_of_range_define => { "process_anomaly", "anomaly_$(s)"};
      }
-     
 ```
 
 ### process_select
@@ -220,7 +212,6 @@ the end of line.
 **Example**:
 
 ```cf3
-     
      body process_select example
      
      {
@@ -228,7 +219,6 @@ the end of line.
      
      process_result => "command";
      }
-     
 ```
 
 #### pid
@@ -242,13 +232,11 @@ the end of line.
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      pid => irange("1","10");
      process_result => "pid";
      }
-     
 ```
 
 #### pgid
@@ -263,13 +251,11 @@ process
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      pgid => irange("1","10");
      process_result => "pgid";
      }
-     
 ```
 
 #### ppid
@@ -284,13 +270,11 @@ process
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      ppid => irange("407","511");
      process_result => "ppid";
      }
-     
 ```
 
 #### priority
@@ -305,12 +289,10 @@ a process
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      priority => irange("-5","0");
      }
-     
 ```
 
 #### process_owner
@@ -327,12 +309,10 @@ regex is anchored, meaning it must match the entire name.
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      process_owner => { "wwwrun", "nobody" };
      }
-     
 ```
 
 #### process_result
@@ -352,7 +332,6 @@ the expressions.
 **Example**:
 
 ```cf3
-     
      body process_select proc_finder(p)
      
      {
@@ -362,7 +341,6 @@ the expressions.
      vsize          => irange("0","1000");
      process_result => "command.(process_owner|vsize).!pid";
      }
-     
 ```
 
 #### rsize
@@ -377,12 +355,10 @@ process, in kilobytes
 **Example**:
 
 ```cf3
-     
      body process_select
      {
      rsize => irange("4000","8000");
      }
-     
      
 ```
 
@@ -400,12 +376,10 @@ have status fields.
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      status => "Z";
      }
-     
 ```
 
 #### stime_range
@@ -423,12 +397,10 @@ hour off. This is for now a bug to be fixed.
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      stime_range => irange(ago(0,0,0,1,0,0),now);
      }
-     
 ```
 
 #### ttime_range
@@ -445,12 +417,10 @@ This is total accumulated time for a process.
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      ttime_range => irange(0,accumulated(0,1,0,0,0,0));
      }
-     
 ```
 
 #### tty
@@ -467,12 +437,10 @@ all have tty '?'.
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      tty => "pts/[0-9]+";
      }
-     
 ```
 
 #### threads
@@ -487,12 +455,10 @@ process
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      threads => irange(1,5);
      }
-     
 ```
 
 #### vsize
@@ -511,12 +477,10 @@ Size (Windows 2008), or VM Size (Windows XP).
 **Example**:
 
 ```cf3
-     
      body process_select example
      {
      vsize => irange("4000","9000");
      }
-     
 ```
 
 ### process_stop
