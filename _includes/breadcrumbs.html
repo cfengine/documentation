@@ -1,0 +1,26 @@
+<div>
+    <div id="breadcrumbs">
+        <ul>
+            {% for item in page.categories %}
+
+            {% if site.breadcrumbsAll[item] != nil %}
+            <li>
+                {% if site.breadcrumbsAll[item].alias != page.alias %}
+                <a href="{{ site.breadcrumbsAll[item].alias }}">{{ site.breadcrumbsAll[item].title }}</a>
+            <li>
+                <i class="arrow">&nbsp;</i>
+            </li>
+            {% else %}
+            <span>{{ site.breadcrumbsAll[item].title }}</span>
+            {% endif %}
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- <button id="jump_to">
+        Jump to
+    </button> -->
+    <div class="clear"></div>
+</div>
