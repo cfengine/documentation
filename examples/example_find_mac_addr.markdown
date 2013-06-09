@@ -86,3 +86,34 @@ Example run:
 2013-06-08T16:59:19-0700   notice: R: MAC address is a4:ba:db:d7:59:32
 #
 ```
+
+While the above illustrates the flexiblity of CFEngine in 
+running external commands and parsing their output,
+as of CFEngine 3.3.0, Nova 2.2.0 (2011), you can get the MAC
+address natively:
+
+```cf3
+body common control
+{
+bundlesequence => { "example" };
+}
+
+
+bundle agent example
+{
+vars:
+
+  linux::   "interface" string => "eth0";
+
+  solaris:: "interface" string => "bge0";
+
+  freebsd:: "interface" string => "le0";
+
+  darwin::  "interface" string => "en0";
+
+
+reports:
+
+    "MAC address of $(interface) is: $(sys.hardware_mac[$(interface)])";
+}
+```
