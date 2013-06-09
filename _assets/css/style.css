@@ -29,8 +29,35 @@ ol li {
    list-style-position: outside
 }
 
-strong {
+strong, b {
     font-weight: bold;
+}
+
+ em, i {
+    font-style: italic
+ }
+
+aside {
+    display: block;
+    float: right;
+    width: 390px;
+}
+blockquote {
+    border-left:.5em solid #eee;
+    padding: 0 2em;
+    margin-left:0;
+    max-width: 476px;
+}
+blockquote  cite {
+    font-size:14px;
+    line-height:20px;
+}
+blockquote cite:before {
+    content: '\2014 \00A0';
+}
+
+blockquote p {
+    max-width: 460px;
 }
 
 dd {
@@ -45,6 +72,17 @@ dd p {
 dd pre {
     margin: 1em 0px;
 }
+
+sub {
+    font-size: xx-small;
+    vertical-align: sub
+}
+
+sup {
+    font-size: xx-small;
+    vertical-align: super
+}
+
 
 code {
     font-family: "Liberation Mono", Consolas, monospace;
