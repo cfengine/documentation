@@ -1,6 +1,6 @@
 ---
 layout: default
-title: What's New in CFEngine 3.5 
+title: New in CFEngine
 categories: [What's New]
 published: true
 alias: whats-new.html
