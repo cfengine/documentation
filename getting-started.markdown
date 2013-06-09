@@ -14,6 +14,10 @@ with the ready-made
 [KVM](https://cfengine.com/cfengine-enterprise-getting-started-using-kvm) 
 image.
 
+
+
+[3rd Party Tutorials, Examples, and Documentation](#3rd-party-tutorials-examples-and-documentation)
+
 ****
 
 CFEngine is a powerful tool, but the basic architecture is very simple:
@@ -80,7 +84,7 @@ We have found that the following steps are a good way to learn CFEngine:
   target="_blank">Documentation</a> and the
   <a href="https://github.com/cfengine/core" target="_blank">Code</a>
 
-## 3rd party Tutorials, Examples and Documentation
+## <a id="3rd-party-tutorials-examples-and-documentation></a>3rd party Tutorials, Examples and Documentation
 
 * <a href="http://www.verticalsysadmin.com/cfengine/Getting_Started_with_CFEngine_3.pdf"
   target="_blank">Getting Started with CFEngine 3</a> by Vertical Sysadmin
