@@ -100,30 +100,69 @@ If you install it on a fresh system, they will end up in
 2. Click on the `Design Center` app at the left.
 3. You should now see a listing of some sketches that are available out of the box.
 4. Click on the `Packages::packages_removed` sketch.
-5. Fill out the fields as shown by the example below, and click `Show hosts` and `Activate`.
+5. Fill out the fields as shown by the example below, and click `Show Hosts` and `Activate`.
+![Test activation in Mission Portal](mission-portal-test-activation.png)
 6. Type in "My test activation" into the commit message box and commit.
 
-TODO: screenshot of filled out packages_removed sketch
-NOTE:
-Fill out e.g. `Test activation` in the activation name field, and `nosuchpackage` in the 
-field for packages that should not be installed (no change is made to the system if
-the package is not already installed).
-Under 
+### See the commit in the log
 
 Our test sketch is now committed to the git repository. Go to a clone of the
 git repository, pull from the git service and see that the commit is there:
-1. 
+
+1. Fetch our latest commit.
+
         $ git fetch upstream
-2. 
-        $ git rebase upstream/master  # adjust to the branch you are using
-3. $ 
 
-TODO: git log author name, committer name command, etc.
+2. Rebase, adjust to the branch you are using (master in this example).
 
-TODO: show that author name and email matches MP settings
+        $ git rebase upstream/master
+
+3. Note that the git author (name and email) is set to the user of the Mission Portal,
+while the git committer (name and email) comes from the Mission Portal settings, under Version Control Repository.
+
+        $ git log --pretty=format:"%h - %an, %ae, %cn, %ce : %s"
+                4190ca5 - test, test@localhost.com, Mission Portal, missionportal@cfengine.com : My test activation
 
 We have now confirmed that the Mission Portal is able to commit to our
-git service, and that author information is kept. There is just one step remaining.
+git service, and that author information is kept.
+
+
+## Filtering commits by Mission Portal and users
+
+If the Mission Portal is just one out of several users of your git service, you can easily filter
+which commits came from the Mission Portal, and which users of the Mission Portal authored the commit.
+
+
+### Show all commits done through Mission Portal
+
+In order to see only commits made by users of the Mission Portal, we filter on the committer name.
+Note that this needs to match what you have configured as the committer name in the settings,
+under Version Control Repository (we are using 'Mission Portal' in the example below).
+
+We can also see the user name of the Mission Portal user by printing the author name.
+
+````
+$ git log --pretty=format:"%h %an: %s" --committer='Mission Portal'
+0ac4ae0 bob: Setting up dev environment. Ticket #123.
+5ffc4d1 bob: Configuring postgres on test envirnoment. Ticket #124.
+4190ca5 bob: My test activation
+0ac4ae0 tom: remove failed activation
+5ffc4d1 tom: print echo example
+dc9518d rachel: Rolling out Apache, Phase 2
+3cfaf93 rachel: Rolling out Apache, Phase 1
+````
+
+### Show commits by a Mission Portal user
+
+If you are only interested in seeing the commits by a particular user of the
+Mission Portal, you can filter on the author name as well ('bob' in the example below).
+
+````
+ $ git log --pretty=oneline --abbrev-commit --committer='Mission Portal' --author='bob'
+0ac4ae0 Setting up dev environment. Ticket #123.
+5ffc4d1 Configuring postgres on test envirnoment. Ticket #124.
+4190ca5 My test activation
+````
 
 
 ## Pulling from git to the policy server
