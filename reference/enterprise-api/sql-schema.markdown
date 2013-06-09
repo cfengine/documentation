@@ -32,7 +32,7 @@ counts of the four statuses (kept, repaired, not kept, unknown).
 
 * Group all file changes by file name occurred on context "ubuntu". There are counters on how many distinct host occurrences and total occurrences found.
 
-``
+```
     SELECT
          FileChanges.FileName,
          Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
