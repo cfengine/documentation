@@ -16,6 +16,8 @@ module Jekyll
       end
     end
 
+   
+
     def generate(site)
 
       # First remove all invisible items (default: nil = show in nav)
@@ -23,7 +25,6 @@ module Jekyll
 
       site.pages.each do |page|
         published_pages << page if page.data["published"] != false
-        #published_pages << page
       end
 
       #puts JSON.pretty_generate(published_pages)
@@ -39,10 +40,13 @@ module Jekyll
         end
       end
       site.config["breadcrumbsAll"] = breadcrumbs
-      # puts JSON.pretty_generate(breadcrumbs)
+
+      #puts JSON.pretty_generate(breadcrumbs)
+
 
       # Create an array which consists of pages, placed by categories and levels
-      nav_pages = {}
+      nav_pages    = {}
+      pages_levels = {}
       published_pages.each do |p|
 
         tmp = nav_pages
@@ -84,38 +88,101 @@ module Jekyll
 
         end
       end
-
-      # puts JSON.pretty_generate(nav_pages)
+#
+      #puts JSON.pretty_generate(nav_pages)
 
       # Sort all pages by alphabet in all levels - recursively
       # if failed - add this to convert keys{|x, y| x.to_s <=> y.to_s}
       nav_pages = sort_by_key(nav_pages, true)
 
       #puts JSON.pretty_generate(nav_pages)
+  
+      $leftNavigation = {}
+      
+      buildLeftNavigation(nav_pages)
+      
 
-      # Generate html list with pages
-      # nav_level1 - store data for first level only - used to click and open
-      # nav_html[] - store level2 and next levels
+    
+    site.config["leftNavigation"] = $leftNavigation;
 
-      level1 = '';
-      li = ''
+    end #/fnc
+      
+      
+ def buildLeftNavigation(navHash, parentSection='')
+       navHash.each do |k, arr|
+        $leftNavigation[k] ||={}
+       
+        #check if page has childrens and create level 1 and level2 pages if it has, and recursively call for childrens
+          if (arr.has_key?('childrens') && !arr['childrens'].empty?)
+                $leftNavigation[k]['level1']    = buildSingleLevelNav(navHash, arr['own_url']['alias'])
 
-      nav_html = {}
+                # level1RAW - we need this to be able to restore parent nav for pages without children
+                $leftNavigation[k]['level1RAW'] = getRawPagesArray(navHash)
+                
+                
+                $leftNavigation[k]['level2'] = buildSingleLevelNav(arr['childrens'], nil) 
+                
+                buildLeftNavigation(arr['childrens'], k)
+          
+          else
+            # if page doesn't have childrens => level 1 for it would be parent section or current section if there are no pages "above"
+             
+              if (parentSection !='' && $leftNavigation.has_key?(parentSection))
+                $leftNavigation[k]['level1'] = buildSingleLevelNav($leftNavigation[parentSection]['level1RAW'], nil)
+               
+                # level 2 would be current section
+                $leftNavigation[k]['level2']  = buildSingleLevelNav(navHash, arr['own_url']['alias'])
+               
+              else
 
-      nav_pages.each do |k, arr|
-        li += '<li><a href="#"  class="' + k.downcase.gsub(/[^a-z0-9_-]+/i, "-") +'">' + k + '</a></li>'
-        nav_html[k] ||={}
-        nav_html[k]['key']  = k
-        nav_html[k]['data'] = HtmlListMaker.new(arr['childrens']).list
-      end
+                # current section - for page which doesn't have anything above (first level navigation)
+                $leftNavigation[k]['level1']  = buildSingleLevelNav(navHash, arr['own_url']['alias'])
+              end
+                
+          end  
+        end
+       end
+      
+      
+     def getRawPagesArray(hash)
+        result = {}
+        if (!hash.empty?)
+            hash.each do |k, arr|
+              if (arr.has_key?('own_url') && !arr['own_url'].empty?)
+                result[k] = arr
+              end
+            end  
+         end
+        
+        return result
+     end
+      
+     def buildSingleLevelNav(hash, currentPage='')
+       result = []
+       str = ''
+           if (!hash.empty?)
+               hash.each do |k, arr|
+                  if (arr.has_key?('own_url') && !arr['own_url'].empty?)
 
-      nav_level1 = '<ul id="nav_level1">' + li + "</ul>"
 
-      #puts JSON.pretty_generate(nav_html)
-
-      # Access this in Liquid using: site.html_nav_list
-      site.config["nav_level1_html"] = nav_level1
-      site.config["nav_levels_html"] = nav_html
-    end
+                    if (currentPage ==  arr['own_url']['alias'])
+                       # active page
+                       result <<  '<li class="selected"><span>'+ arr['own_url']['title']  +'</span></li>';
+                    else
+                       result <<  '<li><a href="' + arr['own_url']['alias'] + '">'+ arr['own_url']['title']  +'</a></li>';
+                    end  
+                  end  
+               end  
+           end  
+           
+        if (!result.empty?)
+          str ='<ul>' + result.join() + '</ul>'
+        end  
+        
+         return str
+     end   
   end
+
+
+  
 end
