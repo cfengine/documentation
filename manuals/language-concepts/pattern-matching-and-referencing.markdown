@@ -237,7 +237,7 @@ CFEngine.
         replace_value => "$(c) $(match.1)";
         occurrences => "all";
     }
-
+```
 
 ### Regular expressions in paths
 
