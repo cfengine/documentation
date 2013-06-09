@@ -110,8 +110,8 @@ Possible types: `string`, `int`, `real`, `menu`, `string list`, `int list`,
 
 | HostKey | PromiseHandle  | FileName | ChangeTimeStamp | ChangeType | LineNumber | ChangeDetails |
 |--------|-----------------|----------|-----------------|------------|----------|------------|
-| SHA-... | promise_handle1 | /etc/passwd | 12345| add | 10 | user1:x:2000:2000:User1 Name:/home/user1:/bin/bash |
-| SHA-... | promise_handle2 | /etc/passwd | 12345| remove | 19 | user2:x:2000:2000:User2 Name:/home/user2:/bin/bash |
+| 12332 | promise_handle1 | /etc/passwd | 12345| add | 10 | user1:x:2000:2000:User1 Name:/home/user1:/bin/bash |
+| 12332 | promise_handle2 | /etc/passwd | 12345| remove | 19 | user2:x:2000:2000:User2 Name:/home/user2:/bin/bash |
 
 ## Promise information
 
@@ -158,8 +158,8 @@ exact query. Use an embedded query with `DISTINCT()` to avoid this.
 
 | HostKey | PromiseHandle | PromiseStatus  | PromiseLogReport | TimeStamp |
 |---------|---------------|----------------|------------------|-----------|
-| SHA-... | promise_handle1 | repaired | promise repaired message| 12345 |
-| SHA-... | promise_handle2 | notkept | promise not kept message| 12345 |
+| 12332 | promise_handle1 | repaired | promise repaired message| 12345 |
+| 12332 | promise_handle2 | notkept | promise not kept message| 12345 |
 
 Until CFEngine Enterprise v3.0 Promise logs were separated into: Promise 
 Repaired log and Promise NotKept log. The SQL Reporting Engine merges these 
@@ -169,22 +169,22 @@ reports into one with the introduction of a new field(column): PromiseStatus
 
 | HostKey | Bundle  | PercentageCompliance | CheckTimeStamp |
 |---------|---------|----------------------|----------------|
-| SHA-... | bundle1 | 100.0| 12345 | 
-| SHA-... | bundle2 | 80.0| 12345 | 
+| 12332 | bundle1 | 100.0| 12345 | 
+| 12332 | bundle2 | 80.0| 12345 | 
 
 ### Benchmarks
 
 | HostKey | EventName  | TimeTaken | CheckTimeStamp |
 |---------|------------|-----------|----------------|
-| SHA-... | action1 | 0.1| 12345| 
-| SHA-... | action2 | 12| 12345| 
+| 12332 | action1 | 0.1| 12345| 
+| 12332 | action2 | 12| 12345| 
 
 ### PolicyStatus
 
 | HostKey | PolicyName  | TotalKept | TotalRepaired | TotalNotKept | CheckTimeStamp | 
 |---------|-------------|-----------|---------------|--------------|---------|
-| SHA-... | promises.cf ... | 80| 10| 1 | 12345 |
-| SHA-... | promises.cf v... | 90| 10| 12 | 12345 |
+| 12332 | promises.cf ... | 80| 10| 1 | 12345 |
+| 12332 | promises.cf v... | 90| 10| 12 | 12345 |
 
 
 ## Software
@@ -201,8 +201,8 @@ reports into one with the introduction of a new field(column): PromiseStatus
 
 | HostKey | PatchReportType  | PatchName | PatchVersion | PatchArchitecture | 
 |---------|------------------|-----------|--------------|-------------------|
-| SHA-... | Installed | SuSEfirewall2 | 4330| default |
-| SHA-... | Available | MozillaFirefox | 4195| default |
+| 12332 | Installed | SuSEfirewall2 | 4330| default |
+| 12332 | Available | MozillaFirefox | 4195| default |
 
 
 ## Database Diagnostics
@@ -214,8 +214,8 @@ Diagnostics of the MongoDB database. For detailed documentation, see the
 
 | HostKey | LastSeenDirection  | RemoteHostKey | LastseenAt | LastseenInterval | 
 |---------|--------------------|---------------|------------|----------------|
-| SHA-... | Out | SHA-...| 12345| 120 |
-| SHA-... | In | SHA-...| 12345| 50 |
+| 12332 | Out | 12331| 12345| 120 |
+| 12332 | In | 12331| 12345| 50 |
 
 ### DatabaseServerStatus
 
@@ -280,5 +280,5 @@ Performance is measured in time the operation took, in millisecond. Data sizes a
 
 | MaintenanceTimeStamp | HostKey | Message |
 |----------------------|---------|---------|
-| 1361969437 | 7d75fc7c0baf36dbdb50f81789d8bc01cd1c297f639d83ed384c216d8058577e | Operation: PurgeTimestampedReports (SHA=484572386e818614af188402f543ee822592e20684ecee1895a672926a2054b2) exited with message: ... |
+| 1361969437 | 7d75fc7c0baf36dbdb50f81789d8bc01cd1c297f639d83ed384c216d8058577e | Operation: PurgeTimestampedReports (484572386e818614af188402f543ee822592e20684ecee1895a672926a2054b2) exited with message: ... |
 | 1361969737 | none | Operation: Remove old entries in hub maintenance performance diagnostics () exited with message: "..." |
