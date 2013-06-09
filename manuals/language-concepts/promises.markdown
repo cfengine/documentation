@@ -89,7 +89,8 @@ tool.
 
 ### Promise Attributes
 
-Promise attributes have a type and a value. The type can be any of the [datatypes][Variables#Datatypes] that are allowed for variables, and in addition
+Promise attributes have a type and a value. The type can be any of the
+[datatypes][datatypes] that are allowed for variables, and in addition
 
 * Boolean - allowed input values are
     * `"true"`/`"false"`
