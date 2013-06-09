@@ -83,13 +83,18 @@ img {
     max-width: 100%;
 }
 
+.tableOverflow {
+    width: 100%;
+    overflow: auto;
+    padding-bottom: 10px;
+}
 
-table
-  {
+table {
   border-spacing: 0;
   border-collapse: collapse;
-
+  table-layout: fixed;
 }
+
 table , td {
      border: 1px solid #ccc
 }

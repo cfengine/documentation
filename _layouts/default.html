@@ -25,6 +25,9 @@
         </div>
     </div>
     {% include move_to_top.html %}
-    {% include google_search.html %}
+
+    {% javascript_asset_tag footer %}
+    - _assets/js/google_analytics_search.js
+    {% endjavascript_asset_tag %}
 </body>
 </html>
