@@ -27,7 +27,7 @@ There is only one grammatical form for statements in the language:
 
 You can recognize *everything* in CFEngine from just those few concepts.
 
-* [**Promise**](manuals-language-concepts-promises.html)
+* [**Promise**][promises]
 
 A declaration about the *state* we desire to maintain (e.g., the permissions 
 or contents of a file, the availability or absence of a service, the 
@@ -64,4 +64,4 @@ See the reference documentation for more information about
 
 ****
 
-Next: [*Promises*](manuals-language-concepts-promises.html)
+Next: [*Promises*][Promises]
