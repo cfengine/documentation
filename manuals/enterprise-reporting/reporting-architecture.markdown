@@ -20,6 +20,13 @@ background, and is started by `cf-agent` through the `failsafe` policy.
 `cf-hub` wakes up every 5 minutes, and connects to the `cf-serverd` of each 
 host to download new data. Delta reports include new data in the last interval and a subset of variable information. A download of the complete set of data is performed every 6 hours.
 
+Report collection from any host can be triggered manually by running
+
+    $ /var/cfengine/bin/cf-hub -q full -H <host IP>
+
+Run in verbose mode (-v) to diagnose connectivity issues and trace the data 
+collected.
+
 In addition, `cf-hub` runs a maintenance check and database cleanup routine 
 every 6 hours, and collects data about its own performance, the status of the 
 database and connectivity status for hosts.
