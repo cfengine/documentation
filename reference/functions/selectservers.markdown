@@ -27,7 +27,7 @@ contact, *in the range* @[(][a-zA-Z0-9]+[)]
 * `query` : An optional query string, *in the range* .\*
 * `regex` : A regular expression to match success, *in the range* .\*
 
-If a query string is sent, this regular expression is anchored, meaning it 
+If a query string is sent, this regular expression is [anchored][anchored], meaning it 
 must match the entire resulting reply. If `query` is empty, then no reply-checking is performed (and any server reply is deemed to be
 satisfactory).
 

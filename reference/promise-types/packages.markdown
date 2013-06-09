@@ -294,7 +294,7 @@ package architecture string
 
 This is for use when extracting architecture from the name of the
 promiser, when the architecture is not specified using the
-`package_architectures` list. It is an unanchored regular expression that 
+`package_architectures` list. It is an [unanchored][unanchored] regular expression that 
 contains exactly one parenthesized back-reference which marks the location in 
 the *promiser* at which the architecture is specified.
 
@@ -490,7 +490,7 @@ architecture.
 **Description**: Regular expression with one back-reference to extract
 package architecture string
 
-An unanchored regular expression that contains exactly one parenthesized back
+An [unanchored][unanchored] regular expression that contains exactly one parenthesized back
 reference that marks the location in the listed package at which the
 architecture is specified.
 
@@ -542,7 +542,7 @@ prevents CFEngine from appending the package name to the string.
 **Description**: Regular expression with one back-reference to extract
 package name string
 
-An unanchored regular expression that contains exactly one parenthesized back
+An [unanchored][unanchored] regular expression that contains exactly one parenthesized back
 reference which marks the name of the package from the package listing.
 
 **Type**: `string`
@@ -609,7 +609,7 @@ package list
 **Description**: Regular expression with one back-reference to extract
 package version string
 
-This unanchored regular expression should contain exactly one parenthesized
+This [unanchored][unanchored] regular expression should contain exactly one parenthesized
 back-reference that marks the version string of packages listed as
 installed.
 
@@ -663,7 +663,7 @@ If this is not defined, it defaults to the value `$(name)`.
 **Description**: Regular expression with one back-reference to extract
 package name string
 
-This unanchored regular expression is only used when the *promiser* contains 
+This [unanchored][unanchored] regular expression is only used when the *promiser* contains 
 not only the name of the package, but its version and architecture also. In
 that case, this expression should contain a single parenthesized 
 back-reference to extract the name of the package from the string.
@@ -685,7 +685,7 @@ back-reference to extract the name of the package from the string.
 
 **Description**: Regular expression to match verification failure output
 
-An anchored regular expression to match output from a package verification
+An[anchored][anchored] regular expression to match output from a package verification
 command. If the output string matches this expression, the package is deemed 
 broken.
 
@@ -728,7 +728,7 @@ signal for a failed package verification.
 
 #### package_patch_arch_regex
 
-**Description**: Anchored regular expression with one back-reference to 
+**Description**: [Anchored][anchored] regular expression with one back-reference to 
 extract update architecture string
 
 A few package managers keep a separate notion of patches, as opposed to
@@ -775,7 +775,7 @@ interpret as an instruction to not append package names.
 
 #### package_patch_installed_regex
 
-**Description**: Anchored regular expression which matches packages that are 
+**Description**: [Anchored][anchored] regular expression which matches packages that are 
 already installed
 
 A few package managers keep a separate notion of patches, as opposed to
@@ -822,7 +822,7 @@ prevents CFEngine from appending the package name to the string.
 
 #### package_patch_name_regex
 
-**Description**: Unanchored regular expression with one back-reference to 
+**Description**: [Unanchored][unanchored] regular expression with one back-reference to 
 extract update name string.
 
 A few package managers keep a separate notion of patches, as opposed to
@@ -844,7 +844,7 @@ an analogous command struct to the packages for patch updates.
 
 #### package_patch_version_regex
 
-**Description**: Unanchored regular expression with one back-reference to 
+**Description**: [Unanchored][unanchored] regular expression with one back-reference to 
 extract update version string.
 
 A few package managers keep a separate notion of patches, as opposed to
@@ -936,7 +936,7 @@ prevents CFEngine from appending the package name to the string.
 package version string
 
 If the version of a package is not specified separately using
-`package_version`, then this should be an unanchored regular expression that
+`package_version`, then this should be an [unanchored][unanchored] regular expression that
 contains exactly one parenthesized back-reference that matches the
 version string in the promiser.
 

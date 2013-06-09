@@ -21,7 +21,7 @@ See also `grep`, `every`, `some`, and `none`.
 
 **Arguments**:
 
-* filter : Anchored regular expression or static string to find, *in the range* .\*
+* filter : [Anchored][anchored] regular expression or static string to find, *in the range* .\*
 * list : The name of the list variable to check, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+
 * is_regex_ : Boolean: treat `filter` as a regular expression or as a static string. *in the range* true,false

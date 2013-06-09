@@ -20,7 +20,7 @@ expressed as a PCRE regular expression.
 ```
 
 In `replace_patterns` promises, the regular expression may
-match a line fragment, that is, it is unanchored.
+match a line fragment, that is, it is [unanchored][unanchored].
 
 ```cf3
     bundle edit_line upgrade_cfexecd

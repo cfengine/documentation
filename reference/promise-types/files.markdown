@@ -1882,7 +1882,7 @@ implies `u` AND `g`.
 **Description**: List of acceptable user names or ids for the file, or
 regexes to match
 
-A list of anchored regular expressions any of which must match the entire 
+A list of [anchored][anchored] regular expressions any of which must match the entire 
 userid.
 
 **Type**: `slist`
@@ -1907,7 +1907,7 @@ Windows does not have user ids, only names.
 **Description**: List of acceptable group names or ids for the file, or
 regexes to match
 
-A list of anchored regular expressions, any of which must match the entire group.
+A list of [anchored][anchored] regular expressions, any of which must match the entire group.
 
 **Type**: `slist`
 

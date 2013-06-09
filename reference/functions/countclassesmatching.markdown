@@ -22,7 +22,7 @@ match the whole line. The function returns the number of classes matched.
 
 A regular expression matching zero or more classes in the current list
 of set classes. The regular expression is 
-[anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions), meaning it must match a complete 
+[anchored][anchored], meaning it must match a complete 
 class.
 
 **Example**:  

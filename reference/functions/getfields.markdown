@@ -25,7 +25,7 @@ examine *all* matching lines, use
 
 A regular expression matching one or more lines. The regular expression
 is 
-[anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions), meaning it must match the entire 
+[anchored][anchored], meaning it must match the entire 
 line.   
 
 * `filename` : Filename to read, *in the range* "?(/.\*)

@@ -19,7 +19,7 @@ tags: [reference, functions, regcmp]
 * `regex` : Regular expression, *in the range* .\*
 * `string` : Match string, *in the range* .\*
 
-The regular expression is anchored, meaning it must match the complete 
+The regular expression is [anchored][anchored], meaning it must match the complete 
 content.
 
 **Example**:

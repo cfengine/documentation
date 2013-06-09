@@ -219,7 +219,7 @@ This is an arbitrary string used in documentation only.
 
 **Description**: Regular expression for matching line location
 
-The expression is anchored, meaning it must match a whole line, and not
+The expression is [anchored][anchored], meaning it must match a whole line, and not
 a fragment within a line.
 
 This attribute is mutually exclusive of `select_line_number`.
@@ -274,7 +274,7 @@ This is mutually exclusive of `select_line_matching`.
 back-reference for extracting a value.
 
 A single parenthesized back-reference should be given to lift the value to be 
-measured out of the text stream. The regular expression is unanchored, meaning 
+measured out of the text stream. The regular expression is [unanchored][unanchored], meaning 
 it may match a partial string
 
 **Type**: `string`

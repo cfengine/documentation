@@ -12,7 +12,7 @@ to define soft-classes on the server's system during remote invocation
 of `cf-agent`. This implements a form of Role Based Access Control
 (RBAC) for pre-assigned class-promise bindings. The user names cited
 must be attached to trusted public keys in order to be accepted. The
-regular expression is anchored, meaning it must match the entire name.
+regular expression is [anchored][anchored], meaning it must match the entire name.
 
 ```cf3
     roles:

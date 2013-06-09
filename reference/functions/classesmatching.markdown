@@ -21,8 +21,7 @@ classes (in order hard, then soft, then local to the current bundle).
 * `regex` : Regular expression, *in the range* .\*
 
 A regular expression matching zero or more classes in the current list
-of set classes. The regular expression is not 
-[anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions)).
+of set classes. The regular expression is [unanchored][unanchored].
 
 **Example**:  
 

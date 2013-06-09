@@ -8,7 +8,7 @@ tags: [reference, bundle agent, promise types, processes, processes promises, pr
 ---
 
 Process promises refer to items in the system process table, i.e., a command 
-in some state of execution (with a Process Control Block). Promiser objects are patterns that are unanchored, meaning that they match line fragments in the system process table.
+in some state of execution (with a Process Control Block). Promiser objects are patterns that are [unanchored][unanchored], meaning that they match line fragments in the system process table.
 
 ```cf3
       processes:
@@ -300,7 +300,7 @@ a process
 **Description**: List of regexes matching the user of a process
 
 The regular expressions should match a legal user name on the system. The
-regex is anchored, meaning it must match the entire name.
+regex is [anchored][anchored], meaning it must match the entire name.
 
 **Type**: `slist`
 

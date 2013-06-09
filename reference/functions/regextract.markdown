@@ -25,7 +25,7 @@ If there are any back reference matches from the regular expression, then the ar
 * `regex` : Regular expression, *in the range* .\*
 
 A regular expression containing one or more parenthesized back
-references. The regular expression is anchored, meaning it must match
+references. The regular expression is [anchored][anchored], meaning it must match
 the entire string
 
 * `string` : Match string, *in the range* .\*

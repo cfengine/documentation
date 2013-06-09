@@ -21,7 +21,7 @@ This function matches lines in the named file, using a regular expression that s
 * `regex`, *in the range* .\*
 
 A regular expression matching zero or more lines. The regular expression is 
-[anchored](manuals-language-concepts-pattern-matching-and-referencing.html#Anchored-vs-unanchored-regular-expressions),
+[anchored][anchored],
 
 * *filename*, *in the range* "?(/.\*)
 

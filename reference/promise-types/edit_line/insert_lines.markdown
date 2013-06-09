@@ -255,7 +255,7 @@ The list contains literal strings to search for in the secondary file
 (the file being read via the `insert_type` attribute, not the main file
 being edited). If the regex matches a *complete* line of the file, that
 line from the secondary file will be inserted at the present location in
-the primary file. That is, the regex's in the list are anchored.
+the primary file. That is, the regex's in the list are [anchored][anchored].
 
 `insert_if_match_from_list` is ignored unless `insert_type` is `file`,
 or the promiser is a multi-line block.
@@ -413,7 +413,7 @@ significance.
 **Description**: Regular expression for matching file line location
 
 The expression must match a whole line, not a fragment within a line;
-that is, it is anchored.
+that is, it is [anchored][anchored].
 
 This attribute is mutually exclusive of `select_line_number`.
 

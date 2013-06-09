@@ -17,7 +17,7 @@ tags: [reference, functions, grep]
 
 * `regex` : Regular expression, *in the range* .\*
 
-The regex is anchored.
+The regex is [anchored][anchored].
 
 * `list` : list identifier, *in the range*
 [a-zA-Z0-9\_\$(){}\\[\\].:]+

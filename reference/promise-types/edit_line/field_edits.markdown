@@ -75,7 +75,7 @@ fields of such files.
 ```
 
 First you match the line with a regular expression. The regular expression 
-must match the entire line; that is, it is anchored.
+must match the entire line; that is, it is [anchored][anchored].
 
 ```cf3
     body edit_field col(split,col,newval,method)

@@ -34,7 +34,7 @@ A path to a file containing the list of hosts.
 
 * `regex` : Comment regex pattern, *in the range* .\*
 
-A pattern that matches a legal comment in the file. The regex is unanchored, 
+A pattern that matches a legal comment in the file. The regex is [unanchored][unanchored], 
 meaning it may match a partial line. Comments are stripped as the file is 
 read.
 

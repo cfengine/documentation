@@ -115,7 +115,7 @@ selection.
 
 #### delete_if_match_from_list
 
-**Description**: Delete lines from a file if the lines *completely* match any of the anchored regular expressions listed.
+**Description**: Delete lines from a file if the lines *completely* match any of the [anchored][anchored] regular expressions listed.
 
 Note that this attribute modifies the selection criteria, it does not make the 
 initial selection, and the match determination is made only on promised lines.   
@@ -135,7 +135,7 @@ initial selection, and the match determination is made only on promised lines.
 
 #### delete_if_not_match_from_list
 
-**Description**: Delete lines from a file unless the lines *completely* match any of the anchored regular expressions listed.
+**Description**: Delete lines from a file unless the lines *completely* match any of the [anchored][anchored] regular expressions listed.
 
 Note that this attribute modifies the selection criteria, it does not make the 
 initial selection, and the match determination is made only on promised lines.   
