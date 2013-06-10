@@ -42,10 +42,11 @@ clients we recommend, as a rule of thumb, to have 8 GB of memory available per
 500 hosts bootstrapped to the server. Please contact your sales representative 
 if you have any questions regarding these numbers. 
 
-The CFEngine Enterprise server hosts the Mission Portal through Apache, so make sure that port 80 is open.
+The CFEngine Enterprise server hosts the Mission Portal through Apache, so 
+make sure that port 80 is open.
 
-To avoid potential interference with the installation process, start from a blank system (i.e. no Apache Web
-Server, no MongoDB, etc).
+To avoid potential interference with the installation process, start from a 
+blank system (i.e. no Apache Web Server, no MongoDB, etc).
 
 Requirements specific to MongoDB:
 
@@ -201,7 +202,8 @@ bootstrap command of cf-agent:
 
    $ /var/cfengine/bin/cf-agent --bootstrap <IP address>
 
-If only one Policy Server is found in the network cf-agent will perform the bootstrap without any further manual intervention of the user.
+If only one Policy Server is found in the network `cf-agent` will perform the 
+bootstrap without any further manual intervention of the user.
 
 ### Limitations:
 

@@ -18,7 +18,7 @@ installation in `/var/cfengine/inputs`, and have special roles.
 
 ## promises.cf
 
-This file is the first file that cf-agent with no arguments will try to look 
+This file is the first file that `cf-agent` with no arguments will try to look 
 for. It should contain all of the basic configuration settings, including a 
 list of other files to include. In normal operation, it must have a 
 `bundlesequence`.

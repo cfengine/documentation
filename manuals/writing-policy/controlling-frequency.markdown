@@ -26,7 +26,7 @@ time has elapsed. Default time is 1 minute.
 
     expireafter
 
-The maximum amount (in minutes) of time cf-agent should wait for an old 
+The maximum amount (in minutes) of time `cf-agent` should wait for an old 
 instantiation to finish before killing it and starting again. You can think 
 about `expireafter` as a timeout to use when a promise verification may 
 involve an operation that could wait indefinitely. Default time is 120  
@@ -59,8 +59,8 @@ promise body by setting `ifelapsed` in the promise body.
 This promise which overrides the global 60 minute time period and defines a 
 frequency of 90 minutes.
 
-These locks do not prevent the whole of cf-agent from running, only atomic 
-promise checks. Several different cf-agent instances can run concurrently, and 
+These locks do not prevent the whole of `cf-agent` from running, only atomic 
+promise checks. Several different `cf-agent` instances can run concurrently, and 
 the locks ensure that promises will never be verified by two cf-agents at the 
 same time, or too soon after a verification.
 
