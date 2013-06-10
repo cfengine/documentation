@@ -3,6 +3,7 @@ layout: default
 title: CFEngine Manuals 
 categories: [Manuals]
 published: true
+sorting: 30
 alias: manuals.html
 tags: [manuals, hello world]
 ---

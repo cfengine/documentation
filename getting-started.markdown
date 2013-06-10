@@ -3,6 +3,7 @@ layout: default
 title: Getting Started 
 categories: [Getting Started]
 published: true
+sorting: 10
 alias: getting-started.html
 tags: [getting started]
 ---

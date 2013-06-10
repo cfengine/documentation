@@ -3,6 +3,7 @@ layout: default
 title: CFEngine Reference 
 categories: [Reference]
 published: true
+sorting: 40
 alias: reference.html
 tags: [Reference]
 ---

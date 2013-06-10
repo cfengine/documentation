@@ -3,6 +3,7 @@ layout: default
 title: CFEngine Examples 
 categories: [Examples]
 published: true
+sorting: 50
 alias: examples.html
 tags: [Examples]
 ---

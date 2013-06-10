@@ -3,6 +3,7 @@ layout: default
 title: New in CFEngine
 categories: [What's New]
 published: true
+sorting: 20
 alias: whats-new.html
 ---
 
