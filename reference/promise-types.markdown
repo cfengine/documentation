@@ -672,7 +672,7 @@ it is unnecessary to call a canonify function on such inputs.
 The classes for different parts of a promise are not separable. Thus, if 
 you promise to create and file and change its permissions, when the file 
 exists with incorrect permissions, `cf-agent` will report that the 
-promise\_kept for the file existence, but promise\_repaired for the 
+`promise_kept` for the file existence, but `promise_repaired` for the 
 permissions. If you need separate reports, you should code two separate 
 promises rather than 'overloading' a single one.   
 

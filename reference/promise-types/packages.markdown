@@ -92,7 +92,7 @@ one of two different ways:
 
 * They may be extracted from a package identifier (promiser) or
     filename, using pattern matching. For example, a promiser
-    7-Zip-4.50-x86\_64.msi and a package\_method containing the
+    7-Zip-4.50-x86_64.msi and a `package_method` containing the
     following:
 
 ```cf3
