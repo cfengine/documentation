@@ -95,7 +95,7 @@ of all the defined classes in a list, inside CFEngine policy itself.
     `ipv4_192_0_0_1<!-- /@w -->`, `ipv4_192_0_0<!-- /@w -->`,
     `ipv4_192_0<!-- /@w -->`, `ipv4_192<!-- /@w -->`), provided they
     are not excluded by a regular expression in the file
-    WORKDIR/inputs/ignore\_interfaces.rx.
+    `WORKDIR/inputs/ignore_interfaces.rx`.
 -   The names of the active interfaces (in the form
     `net_iface_xl0`, `net_iface_vr0`).
 -   System status and entropy information reported by

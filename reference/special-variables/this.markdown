@@ -47,12 +47,12 @@ promise; it is useful for referring to the intention in log messages.
 
 This variable contains the current namespace name.
 
-### this.promise\_filename
+### this.promise_filename
 
 This variable reveals the name of the file in which the current promise
 is defined.
 
-### this.promise\_linenumber
+### this.promise_linenumber
 
 This variable reveals the line number in the file at which it is used.
 It is useful to differentiate otherwise identical reports promises.
@@ -90,7 +90,7 @@ identified file that makes the promise. For example:
     }
 ```
 
-### service\_policy
+### service_policy
 
 This variable is set to the values of the promise attribute
 `service_policy`. For example:

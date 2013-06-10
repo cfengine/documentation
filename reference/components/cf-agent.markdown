@@ -428,7 +428,7 @@ of the agent.
 ### checksum_alert_time
 
 **Description**: The value of checksum_alert_time represents the 
-persistence time for the checksum\_alert class.
+persistence time for the checksum_alert class.
 
 When checksum changes trigger an alert, this is registered as a
 persistent class. This value determines the longevity of that
