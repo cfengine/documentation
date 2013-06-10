@@ -983,27 +983,11 @@ record.
 
 **Description**: Whether to use shell for commands in this body
 
-**Type**: (menu option)
+**Type**: [`boolean`][boolean]
 
-**Allowed input range**: **TODO: useshell/noshell/powershell?**
-
-```cf3
-      true
-      false
-      yes
-      no
-      on
-      off
-```
+<!-- **TODO: useshell/noshell/powershell?** -->
 
 **Default value:** true
-
-**Example**:
-
-```cf3
-     Fill me in (./bodyparts/package_commands_useshell_example.texinfo)
-     ""
-```
 
 **History**: Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
 (2012)

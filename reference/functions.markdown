@@ -44,7 +44,7 @@ the function evaluates to false, then the class remains unchanged.
     }
 ```
 
-**TODO: fix links, make proper markdown tables**
+<!-- **TODO: fix links, make proper markdown tables** -->
 
 There are a large number of functions built into CFEngine, and finding
 the right one to use can be a daunting task. The following tables are

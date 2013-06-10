@@ -12,7 +12,6 @@ Defaults promises are related to
 parameter in a promise bundle is undefined, or its value is defined to be 
 invalid, a default value can be promised instead.
 
-**TODO:would better be in vars reference or variable language guide?**
 CFEngine does not use Perl semantics: i.e. undefined variables do not map to 
 the empty string, they remain as variables for possible future expansion. Some 
 variables might be defined but still contain unresolved variables. To handle 
