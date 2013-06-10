@@ -55,7 +55,7 @@ Now let's do it again with inform mode turned on, and CFEngine will show the pro
 # 
 ```
 
-If we add the -v switch to turn on verbose mode, we see the /bin/ps command CFEngine used to scan the process table:
+If we add the -v switch to turn on verbose mode, we see the /bin/ps command CFEngine used to dump the process table:
 
 ```
 # cf-agent -f unit_process_kill.cf -Kv
