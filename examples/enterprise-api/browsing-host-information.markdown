@@ -8,7 +8,7 @@ tags: [examples, enterprise, rest, api, reporting, hosts]
 ---
 
 A resource `/api/host` is added as an alternative interface for browsing host 
-information. For full flexibility we recommend using [SQL][ **TODO: link** ]
+information. For full flexibility we recommend using [SQL][SQL Schema]
 reports via `/api/query` for this. however, currently vital signs (data 
 gathered from `cf-monitord`) is not part of the SQL reports data model.
 
@@ -169,7 +169,7 @@ as follows (lines split and indented for presentability).
 ## Example: Retrieving Vital Sign Data
 
 Each vital sign has a collected time series of values for up to one week. Here 
-we retrieve the time series for the *mem\_free* vital sign at host 
+we retrieve the time series for the `mem_free` vital sign at host 
 `4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a` for October 
 23rd 2012 12:20pm to 12:45pm GMT (lines split and indented for 
 presentability).

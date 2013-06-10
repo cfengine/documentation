@@ -26,5 +26,5 @@ every 5 minutes from all bootstrapped hosts, and includes information about:
 This data can be mined using SQL queries, and then be used for inventory 
 management, compliance reporting, system diagnostics, capacity planning etc.
 
-Access to the data is provided through the [Enterprise API]() and the [Mission 
-Portal](**TODO**) web front-end.
+Access to the data is provided through the [Enterprise API][Enterprise API] 
+and the [Mission Portal][Mission Portal] web front-end.

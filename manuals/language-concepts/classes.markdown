@@ -272,7 +272,8 @@ write:
 
 These classes are global in scope. Finally, `restart_class` classes
 in `processes` are global.
-**TODO: document scope-attribute of classes bodies**
+
+<!-- **TODO: document scope-attribute of classes bodies** -->
 
 ### Class Scopes: A More Complex Example
 

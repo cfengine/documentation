@@ -14,7 +14,7 @@ installation](getting-started-installation.html).
 
 ### cf-hub
 
-Like all CFEngine components, [`cf-hub`](reference-components-cfhub.html) is 
+Like all CFEngine components, [`cf-hub`][cf-hub] is 
 located in `/var/cfengine/bin`. It is a daemon process that runs in the 
 background, and is started by `cf-agent` through the `failsafe` policy.
 
@@ -46,15 +46,15 @@ a week. Oldest data is continuously purged by the `cf-hub` maintenance
 process, and replaced by new incoming data. An exception is data about file 
 changes, which is stored for up to one year.
 
-The [Enterprise API](manuals-enterprise-api.html) implementation connects to 
+The [Enterprise API][Enterprise API] implementation connects to 
 the database to provide access to the data via SQL queries.
 
 ### Apache
 
-REST over HTTP is provided by the [Apache http 
-server](http://httpd.apache.org) which also hosts the [Mission 
-Portal](**TODO**). The`httpd` process is started through CFEngine policy, and 
-listens on port 80.
+REST over HTTP is provided by the
+[Apache http server](http://httpd.apache.org) which also hosts the
+[Mission Portal][Mission Portal]. The`httpd` process is started through 
+CFEngine policy, and listens on port 80.
 
 Apache is part of the CFEngine Enterprise installation in 
 `/var/cfengine/httpd`. A user `apache` is created with privileges to run 

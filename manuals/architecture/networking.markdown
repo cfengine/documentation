@@ -155,8 +155,7 @@ It is possible, though somewhat laborious, to transfer the keys out of band, by 
 
          localhost.pub -> root-128.39.74.71.pub
 
-**TODO: update with new key file name format**
-
+<!--**TODO: update with new key file name format** -->
 
 ### Other users than root
 
@@ -185,7 +184,7 @@ connection from your client machine. The message is deliberately non-specific
 so that anyone attempting to attack or exploit the service will not be given 
 information which might be useful to them.
 
-**TODO: how/where to check the server log?**
+<!-- **TODO: how/where to check the server log?** -->
 
 There is a simple checklist for curing this problem:
 
