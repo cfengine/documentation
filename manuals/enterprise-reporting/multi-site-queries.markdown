@@ -3,6 +3,7 @@ layout: default
 title:  Multi-Site Queries
 categories: [Manuals, Enterprise Reporting, Multi-Site Queries]
 published: true
+sorting: 40
 alias: manuals-enterprise-reporting-multi-site-queries.html
 tags: [manuals, enterprise, rest, api, reporting, sql, queries, multi-site]
 ---
