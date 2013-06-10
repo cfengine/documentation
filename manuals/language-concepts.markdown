@@ -3,6 +3,7 @@ layout: default
 title: Language Concepts
 categories: [Manuals, Language Concepts]
 published: true
+sorting: 40
 alias: manuals-language-concepts.html
 tags: [manuals, language, syntax, concepts, promises]
 ---

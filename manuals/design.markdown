@@ -1,8 +1,9 @@
 ---
 layout: default
-title: CFEngine Design
+title: Design
 categories: [Manuals, Design]
 published: true
+sorting: 10
 alias: manuals-design.html
 tags: [manuals, systems, configuration management, automation, design, promises]
 ---

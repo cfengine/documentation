@@ -3,11 +3,10 @@ layout: default
 title: Enterprise Reporting
 categories: [Manuals, Enterprise Reporting]
 published: true
+sorting: 80
 alias: manuals-enterprise-reporting.html
 tags: [manuals, enterprise, reporting]
 ---
-
-## Introduction to reporting in Enterprise
 
 The CFEngine Enterprise edition offers a framework for configuration 
 management that goes beyond building and deploying systems. Features include 

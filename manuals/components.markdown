@@ -3,6 +3,7 @@ layout: default
 title: The CFEngine Components
 categories: [Manuals, CFEngine Components]
 published: true
+sorting: 30
 alias: manuals-components.html
 tags: [manuals, systems, configuration management, automation, components, cf-agent, directory]
 ---

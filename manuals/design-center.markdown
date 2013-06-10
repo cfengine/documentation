@@ -3,6 +3,7 @@ layout: default
 title: Design Center
 categories: [Manuals, Design Center]
 published: true
+sorting: 50
 alias: manuals-design-center.html
 ---
 
