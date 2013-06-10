@@ -8,10 +8,10 @@ alias: manuals-language-concepts-variables.html
 tags: [manuals, language, syntax, concepts, variables]
 ---
 
-Just like [classes](manuals-language-concepts-classes.html) are defined as 
+Just like [classes][classes and decisions] are defined as 
 promises, variables (or "variable definitions") are also promises. Variables 
 can be defined in any promise 
-[bundle](manuals-language-concepts-bundles.html).
+[bundle][bundles].
 
 ## Datatypes
 
@@ -54,7 +54,7 @@ having no limit at all.
 
 CFEngine typing is mostly dynamic, and CFEngine will try to coerce string 
 values into int and real types, and if it cannot it will report an error. 
-However, arguments to built-in [functions](reference-functions.html) check the 
+However, arguments to built-in [functions][Functions] check the 
 defined argument type for consistency.
 
 ## Scalar Variables
@@ -228,10 +228,9 @@ are simply treated as a special case of associative arrays, since there are no
 numerical loops in CFEngine. Special functions exist to extract lists of keys 
 from array variables for iteration purposes.
 
-Here is an example of using the function 
-[`getindices()`](reference-functions-getindices.html) which extracts 
-all of the keys from an associative array. If this series of promises were 
-executed it would print out two messages, one for each key.
+Here is an example of using the function [`getindices()`][getindices] which 
+extracts all of the keys from an associative array. If this series of promises 
+were executed it would print out two messages, one for each key.
 
 ```cf3
     bundle agent array

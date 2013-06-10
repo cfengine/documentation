@@ -30,7 +30,7 @@ directory tree.
 
 The CFEngine software components exist in `/var/cfengine/bin`.
 
-* [cf-agent](reference-components-cfagent.html)
+* [`cf-agent`][cf-agent]
 
 This is the instigator of change. Everything that happens on a client machine 
 happens because of cf-agent. The agent is the part of CFEngine that 
@@ -40,7 +40,7 @@ manipulates system resources.
 does not and cannot grant any access to a system from the network. It is only 
 able request access to files from the server component.
 
-* [cf-serverd](reference-components-cfserverd.html)
+* [`cf-serverd`][cf-serverd]
 
 By starting this daemon you can set up a line of communication between hosts.
 The server is able to share files and receive requests to execute existing 
@@ -49,22 +49,21 @@ information to CFEngine from outside.
 
 This daemon authenticates requests from the network and processes them 
 according to rules specified in the
-[server control body](reference-components-cfserverd-control-promises.html) 
-and server bundles containing
-[access promises](reference-components-cfserverd-bundles-for-server.html).
+[server control body][cf-serverd#Control Promises] and server bundles 
+containing [access promises][access].
 
-* [cf-execd](reference-components-cfexecd.html)
+* [`cf-execd`][cf-execd]
 
 This is a scheduling daemon for `cf-agent`, similar to cron.
 It executes and collects the output of `cf-agent` and
 e-mails any output to the configured e-mail address.
 
-* [cf-promises](reference-components-cfpromises.html)
+* [`cf-promises`][cf-promises]
 
 The promise verifier and compiler. This is used to run a "pre-check" of 
 configuration promises before attempting to execute.
 
-* [cf-runagent](reference-components-cfrunagent.html)
+* [`cf-runagent`][cf-runagent]
 
 A helper program which can be used to run `cf-agent` on a number of remote 
 hosts. It cannot be used to tell `cf-agent` what to do, it can only ask 
@@ -127,7 +126,7 @@ Log data for incoming and outgoing connections.
 
 On hosts, CFEngine writes numerous logs and records to its private workspace. 
 
-[CFEngine Enterprise](manuals-enterprise-reporting.html) provides solutions 
+[CFEngine Enterprise][Enterprise Reporting] provides solutions 
 for centralization and network-wide reporting at arbitrary scale.
 
 ### Embedded Databases

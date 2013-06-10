@@ -335,7 +335,7 @@ string. An unanchored regex may use anchors (such as `^`, `$`, `\A`, `\Z`,
 unanchored regular expression may be easily converted into a partially- or 
 fully-anchored regex.
 
-For example, the comment parameter in [`readstringarray`](reference-functions-readstringarray.html)
+For example, the comment parameter in [`readstringarray()`][readstringarray]
 is an unanchored regex. If you specify the regular expression as `#.*`, then 
 on any line which contains a pound sign, everything from there until the end 
 of the line will be removed as a comment. However, if you specify the regular 

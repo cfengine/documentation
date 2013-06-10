@@ -49,6 +49,5 @@ to switch to in order to protect the current file from duplicate definitions.
 **History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 This directive can be given within any file, outside of body and bundle 
-definitions, to change the
-[namespace](manuals-language-concepts-namespaces.html) of subsequent bundles 
+definitions, to change the [namespace][namespaces] of subsequent bundles 
 and bodies.

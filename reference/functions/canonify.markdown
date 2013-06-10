@@ -14,7 +14,7 @@ tags: [reference, functions, canonify]
 **Description**: Convert an arbitrary string `text` into a legal class name.
 
 This function turns arbitrary text into class data (See
-[classify](reference-functions-classfiy.html)).
+[classify()][classify]).
 
 **Arguments**:
 

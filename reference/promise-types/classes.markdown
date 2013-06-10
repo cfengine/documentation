@@ -7,7 +7,7 @@ alias: reference-promise-types-classes.html
 tags: [bundle common, classes, promises]
 ---
 
-[Classes](manuals-language-concepts-classes.html) promises may be made in any 
+[Classes][classes] promises may be made in any 
 bundle. Classes that are set in `common` bundles are global in scope, 
 while classes in all other bundles are local.
 
@@ -243,7 +243,7 @@ right-hand side evaluates to false.
 
 Knowing that something is not the case is not the same as not knowing whether 
 something is the case. That a class is not set could mean either. See the note
-on [Negative Knowledge](manuals-language-concepts-classes.html).
+on [Negative Knowledge][classes and decisions].
 
 
 ### select_class
@@ -279,11 +279,10 @@ that hosts will always end up in the same class every time.
 
 **Notes**:
 
-This feature is similar to the
-[`splayclass` function](reference-functions-splayclass.html). However, instead 
-of selecting a class for a moment in time, it always chooses one class in the 
-list; the same class each time for a given host. This allows hosts to be 
-distributed across a controlled list of classes (e.g for load balancing 
+This feature is similar to the [`splayclass` function][splayclass]. However, 
+instead of selecting a class for a moment in time, it always chooses one class 
+in the list; the same class each time for a given host. This allows hosts to 
+be distributed across a controlled list of classes (e.g for load balancing 
 purposes).
 
 

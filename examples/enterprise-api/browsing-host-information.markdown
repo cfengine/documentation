@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Browsing Host Information
+title: Browsing Host Information
 categories: [Examples, Enterprise API, Browsing Host Information]
 published: true
 alias: examples-enterprise-api-browsing-host-information.html

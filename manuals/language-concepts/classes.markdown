@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Classes
+title: Classes and Decisions
 categories: [Manuals, Language Concepts, Classes]
 published: true
 sorting: 40
@@ -11,7 +11,7 @@ tags: [manuals, language, syntax, concepts, classes, decisions]
 Classes are used to apply promises only to particular environments, depending 
 on context. A promise might only apply to Linux systems, or should only be 
 applied on Sundays, or only when a 
-[variable](manuals-language-concepts-variables.html) has a certain value.
+[variable][variables] has a certain value.
 
 Classes are simply facts that represent that current state or context of a 
 system. They are either `set` or `not set`, depending on context. The list of 
@@ -82,8 +82,8 @@ If a class is set, then it is certain that the corresponding fact is true.
 However, that a class is not set could mean that something is not the case, or 
 that something is simply not known. This is only a problem with soft classes,
 where the state of a class can change during the execution of a policy, 
-depending on the [order](manuals-language-concepts-normal-ordering.html) in 
-which bundles and promises are evaluated.
+depending on the [order][normal ordering] in which bundles and promises are 
+evaluated.
 
 ## Making Decisions based on classes
 

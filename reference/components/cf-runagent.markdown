@@ -12,9 +12,9 @@ Remote run agent - used to execute `cf-agent` on a remote machine.
 machine to do so.
 
 The run agent connects to a list of running instances of the 
-[`cf-serverd`](reference-components-cfserverd.html) service. The agent allows 
+[`cf-serverd`][cf-serverd] service. The agent allows 
 a user to forego the usual scheduling interval for the agent and activate 
-[`cf-agent`](reference-components-cfagent.html) on a remote host. 
+[`cf-agent`][cf-agent] on a remote host. 
 Additionally, a user can send additional classes to be defined on the remote 
 host. Two kinds of classes may be sent: classes to decide on which hosts the 
 agent will be started, and classes that the user requests the agent should 

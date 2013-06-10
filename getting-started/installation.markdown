@@ -151,8 +151,9 @@ step.
 The Mission Portal should be immediately accessible, and you should be able to 
 connect to the hub IP-address through your web browser (http and port 80).
 
-To be able to use the Mission Portals' Design Center front-end, continue with 
-[integrating Mission Portal with git]().
+To be able to use the [Mission Portals'][Mission Portal] Design Center 
+front-end, continue with 
+[integrating Mission Portal with git][Integrating Mission Portal with git].
 
 ## Automatic Bootstrapping
 

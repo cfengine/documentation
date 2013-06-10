@@ -1677,7 +1677,7 @@ deleted (that is, it "falls off the end" of the rotation).
 
 ### edit_line
 
-**Type**: [`bundle edit_line`](reference-promise-types-files-edit_line.html)
+**Type**: [`bundle edit_line`][bundle edit_line]
 
 ### edit_template
 
@@ -1771,7 +1771,7 @@ For example:
 
 ### edit_xml
 
-**Type**: [`bundle edit_xml`](bundle edit_xml)
+**Type**: [`bundle edit_xml`][bundle edit_xml]
 
 ### file_select
 

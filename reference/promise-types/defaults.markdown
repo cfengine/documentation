@@ -8,7 +8,7 @@ tags: [reference, bundle common, defaults, promises]
 ---
 
 Defaults promises are related to 
-[variables](manuals-language-concepts-variables.html). If a variable or 
+[variables][variables]. If a variable or 
 parameter in a promise bundle is undefined, or its value is defined to be 
 invalid, a default value can be promised instead.
 

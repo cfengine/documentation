@@ -31,7 +31,8 @@ The `promise_type` defines what kind of object is making the promise. The type
 dictates how CFEngine interprets the promise body. These promise types are straightforward: The `files` promise type deals with file permissions and file content, and the `packages` promise type allows you to work with packaging systems such as rpm and apt.
 
 Some promise types are common to all CFEngine components, while others can only be executed by one of them. `cf-serverd` cannot keep `packages` promises, and `cf-agent` cannot keep `access` promises. See the
-[Promise Type reference](reference-promise-types.html) for a comprehensive list of promise types.
+[Promise Type reference][Promise Types and Attributes] for a comprehensive 
+list of promise types.
 
 ### The Promiser
 
@@ -50,7 +51,7 @@ become relevant as your system grows in complexity.
 The **classes** in a promise control the conditions that make the promise 
 valid. Examples are the operating system on which the policy is executed, or 
 the day of the week. More about that in the [classes and decision 
-making](manuals-language-concepts-classes.html) section.
+making][classes and decisions] section.
 
 Not all of these elements are necessary every time, but when you combine them 
 they enable a wide range of behavior.
@@ -71,7 +72,7 @@ directory `/home/mark/tmp`, and the promise is made to some entity named
 `system blue team`. The `create` attribute instructs CFEngine to create the 
 file if it doesn't exist. It has a list of owners that is defined by a 
 variable named "usernames" (see the documentation about 
-[Bodies](manuals-language-concepts-bodies.html) for more details on this last 
+[Bodies][bodies] for more details on this last 
 expression).
 
 The comment attribute in this example can be added to any promise. It has no 
@@ -95,14 +96,15 @@ Promise attributes have a type and a value. The type can be any of the
     * `"yes"`/`"no"`
 
 * `irange[min, max]` and `rrange[min, max]` - a range of integer or real 
-  values, created via the [`irange()`]() and [`rrange()`]() functions
+  values, created via the [`irange()`][irange] and [`rrange()`][rrange] 
+  functions
 
 * Menu option - one value from a list of values
 
-* [`body` *type*](manuals-language-concepts-bodies.html) - a complex set of 
+* [`body` *type*][bodies] - a complex set of 
   attributes expressed in a separate, reusable block
 
-* [`bundle` *type*](manuals-language-concepts-bundle.html) - a separate bundle 
+* [`bundle` *type*][bundles] - a separate bundle 
   that is used as a sub-routine or a sub-set of promises
 
 ### Implicit Promises

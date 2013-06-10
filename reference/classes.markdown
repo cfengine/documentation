@@ -8,7 +8,7 @@ alias: reference-classes.html
 tags: [reference, hard classes, soft classes, classes]
 ---
 
-[Classes](manuals-language-concepts-classes.html) fall into **hard**
+[Classes][classes and decisions] fall into **hard**
 (discovered) and **soft** (defined) types. This reference documents the hard 
 classes that might be set by CFEngine, and soft classes used by CFEngine's 
 default policy.
@@ -21,7 +21,7 @@ To see all of the classes defined on a particular host, run
 
 as a privileged user. Note that some of the classes are set only if a trusted 
 link can be established with 
-[`cf-monitord`](reference-components-cfmonitord.html), i.e. if both are 
+[`cf-monitord`][cf-monitord], i.e. if both are 
 running  with privilege, and the `/var/cfengine/state/env_data` file is 
 secure.
 

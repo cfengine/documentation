@@ -15,8 +15,9 @@ behavior using the `control` promise bodies. Control behavior is
 defined in bodies because the actual promises are fixed and you only
 change their details within sensible limits.
 
-See the [manual](manuals-architecture-components.html) for a 
-high-level overview of the CFEngine components, and each component's reference documentation for the details about the specific control bodies.
+See the [manual][The CFEngine Components] for a high-level overview of the 
+CFEngine components, and each component's reference documentation for the 
+details about the specific control bodies.
 
 ## Common Control
 

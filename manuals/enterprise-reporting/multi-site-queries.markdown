@@ -55,8 +55,8 @@ the use of sqlite's ATTACH DATABASE command.
 
 * Replica detection
 
-The [Enterprise API](manuals-enterprise-api-checking-status.html) returns the 
-available replica set to redirect the query.
+The [Enterprise API][Enterprise API] returns the available replica set to 
+redirect the query.
 
 * sqlite3 export
 

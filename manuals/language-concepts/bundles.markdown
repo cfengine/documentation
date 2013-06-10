@@ -100,7 +100,7 @@ is an easy way to avoid unnecessary duplication in your promises.
 ### Scope
 
 Variables and classes defined inside bundles are not directly visible outside 
-those bundles. All [variables](manuals-language-concepts-variables.html) in 
+those bundles. All [variables][variables] in 
 CFEngine are globally accessible. However, if you refer to a variable by 
 ‘$(unqualified)’, then it is assumed to belong to the current bundle. To 
 access any other (scalar) variable, you must qualify the name, using the name 
@@ -109,5 +109,5 @@ of the bundle in which it is defined:
     $(bundle_name.qualified)
 
 Bundles of type `common` may contain common promises. 
-[Classes](manuals-language-concepts-classes.html) defined in `common` bundles 
+[Classes][classes and decisions] defined in `common` bundles 
 have global scope.

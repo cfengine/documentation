@@ -489,7 +489,7 @@ system directory.
 ### sys.workdir
 
 The location of the CFEngine [work 
-directory](manuals-architecture-working-directory.html) and cache. 
+directory][The CFEngine Components#The Working Directory] and cache. 
 For the system privileged user this is normally:
 
 ```cf3

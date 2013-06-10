@@ -7,10 +7,9 @@ alias: reference-promise-types-commands.html
 tags: [reference, bundle agent, commands, promises, promise types]
 ---
 
-Commands and [processes](reference-promise-types-processes.html) are separated 
-cleanly. Restarting of processes must be coded as a separate command. This 
-stricter type separation allows for more careful conflict analysis to be 
-carried out.
+Commands and [processes][processes] are separated cleanly. Restarting of 
+processes must be coded as a separate command. This stricter type separation 
+allows for more careful conflict analysis to be carried out.
 
 ```cf3
      commands:

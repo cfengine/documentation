@@ -15,7 +15,7 @@ tags: [reference, functions, classify]
 set class.
 
 This is useful for transforming variables into classes. See also 
-[canonify](reference-functions-canonify.html).
+[canonify()][canonify]
 
 **Arguments**:
 

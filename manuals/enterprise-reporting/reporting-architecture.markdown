@@ -10,7 +10,7 @@ tags: [manuals, enterprise, reporting, architecture, cf-hub]
 
 The reporting architecture of CFEngine Enterprise consists of software 
 components that are included in the hub-package of the [CFEngine Enterprise 
-installation](getting-started-installation.html).
+installation][Installing CFEngine].
 
 ### cf-hub
 

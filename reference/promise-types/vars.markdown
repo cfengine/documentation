@@ -7,7 +7,7 @@ alias: reference-promise-types-vars.html
 tags: [reference, bundle common, vars, promises]
 ---
 
-[Variables](manuals-language-concepts-variables.html) in CFEngine are defined 
+[Variables][variables] in CFEngine are defined 
 as promises that an identifier of a certain type represents a particular 
 value. Variables can be scalars or lists of types `string`, `int` or `real`. 
 Arrays are `associative` and use square brackets `[]` to enclose an-arbitrary 
@@ -123,7 +123,7 @@ comma-separated list of values.
 
 **Notes**:
 
-Some [functions](reference-functions.html) return `slist`s, and an `slist` 
+Some [functions][Functions] return `slist`s, and an `slist` 
 may contain the values copied from another `slist`, `rlist`, or `ilist`. See 
 [`policy`](#policy).
 
@@ -153,7 +153,7 @@ interchangeable, but when you declare a variable to be type `ilist`,
 CFEngine verifies that each value you assign to it looks like an integer
 (e.g., 3, -17, 16K).
 
-Some [functions](reference-functions.html) return `ilist`s, and an `ilist` may 
+Some [functions][Functions] return `ilist`s, and an `ilist` may 
 contain the values copied from another `slist`, `rlist`, or `ilist`. See 
 [`policy`](#policy)
 
@@ -181,7 +181,7 @@ interchangeable, but when you declare a variable to be type `rlist`,
 CFEngine verifies that each value you assign to it looks like a real
 number (e.g., 3, 3.1415, .17, 6.02e23, -9.21e-17).
 
-Some [functions](reference-functions.html) return `rlist`s, and an `rlist` may 
+Some [functions][Functions] return `rlist`s, and an `rlist` may 
 contain the values copied from another `slist`, `rlist`, or `ilist`. See [`policy`](#policy)
 
 ***
