@@ -31,11 +31,10 @@ CFEngine is a powerful tool, but the basic architecture is very simple:
   about changes made from all hosts
 
 The easiest way to use CFEngine is through the 
-**[Design Center](manuals-design-center.html)**,
-which provides ready-made components that can be directly imported and used in 
-CFEngine policies. With CFEngine Enterprise you can use the Design Center UI 
-through the Mission Portal, easily installing and configuring policies across 
-all your machines.
+**[Design Center][Design Center]**, which provides ready-made components that 
+can be directly imported and used in  CFEngine policies. With CFEngine 
+Enterprise you can use the Design Center UI through the Mission Portal, easily 
+installing and configuring policies across all your machines.
 
 The CFEngine policy language is declarative and easy to learn, also for users
 with little background in programming. Here is the simplest `Hello world' program in CFEngine 3:
@@ -50,22 +49,22 @@ with little background in programming. Here is the simplest `Hello world' progra
 
 We have found that the following steps are a good way to learn CFEngine:
 
+<!-- * **TODO: Continue with From Zero to Hero** -->
+
 * Complete Step 2 of the getting started guide: Deploy your first policy on
    [VirtualBox](https://cfengine.com/enterprise-getting-started-2) or 
      [KVM](https://cfengine.com/cfengine-enterprise-getting-started-using-kvm-step-2)
-* **TODO: Continue from there From Zero to Hero**
 * Download syntax highlighters for
   [vim](https://github.com/neilhwatson/vim_cf3) or
   [emacs](https://github.com/cfengine/core/blob/master/contrib/cfengine.el).
 * <a href="http://cf-learn.info" target="_blank">Get the book!</a>
-* Study the [tutorials and examples](examples.html).
-* Read the documentation about the [Architecture](manuals-architecture.html),
-  the [CFEngine Components](manuals-architecture-components.html).
-  and [Language Concepts](manuals-language-concepts.html)
-* Find out what CFEngine can do for you in the [Bundles for Agent 
-  reference](reference-components-bundles-for-agent.html) documentation
-* Join the [help and support 
-  forums](getting-started-support-and-community.html) and become part
+* Study the [tutorials and examples][examples].
+* Read the documentation about the [Design][Design],
+  the [CFEngine Components][The CFEngine Components].
+  and [Language Concepts][Language Concepts]
+* Find out what CFEngine can do for you in the
+  [Promise Type reference][promise types and attributes] documentation
+* Join the [help and support forums][Support and Community] and become part
   of the CFEngine Community.
 * Read [our blog][cfengine blog] and follow us on 
   <a href="https://twitter.com/cfengine" target="_blank">twitter</a>,

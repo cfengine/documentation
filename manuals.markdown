@@ -12,7 +12,7 @@ At its core, CFEngine is a simple framework which supplies a rich standard
 library of tools to implement and manage very large systems. The following 
 diagram captures the scope of CFEngine.
 
-![](manuals-scope.png)
+![The Scope of CFEngine](manuals-scope.png)
 
 For many users, CFEngine is simply a configuration tool – i.e. software
 for deploying and patching systems according to a policy. Policy is
@@ -34,9 +34,9 @@ the promises and compiles them into real-world action.
 
 ### Ready to Start?
 
-If you are impatient to [get started](gettings-started.html) writing promises,
-now might be a good time to take a break from concepts and try out your first promises. You can study the [examples](examples.html) and look things up in the [reference](reference.html) as you go along.
+If you are impatient to [get started][Getting Started] writing promises,
+now might be a good time to take a break from concepts and try out your first promises. You can study the [examples][Examples] and look things up in the [reference][Reference] as you go along.
 
 If you want a solid foundation for your use of CFEngine, continue reading to 
-understand the [design](manuals-design.html) and [language 
-concepts](manuals-language-concepts.html) of CFEngine.
+understand the [design][Design] and [language 
+concepts][Language Concepts] of CFEngine.

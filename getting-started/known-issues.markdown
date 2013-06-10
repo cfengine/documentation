@@ -16,7 +16,7 @@ TODO: move down when no longer a pre-release -->
 ### Comma in promiser/promisee declaration generates Syntax Error
 
 The policy file parser is stricter in CFEngine 3.5.0 . The parser is now fully 
-compliant with the CFEngine [language syntax  reference](manuals-language-concepts.html).
+compliant with the CFEngine [language syntax reference][Language Concepts].
 The main difference you will encounter is that promiser/promisee no longer 
 allows a comma at the end of the line. This will cause your existing policies 
 to produce errors when they are read by CFEngine 3.5.0.

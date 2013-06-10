@@ -11,10 +11,10 @@ CFEngine does not make absolute choices for you, like other tools.  Almost
 everything about its behavior is matter of policy and can be changed.
 
 In order to keep operations as simple as possible, CFEngine maintains a 
-private [working directory](manuals-architecture-work-directory.html) 
-on each machine, referred to in documentation as WORKDIR and in policy by the 
-variable `$(sys.workdir)`. By default, this is located at `/var/cfengine` or 
-`C:\var\CFEngine`. It contains everything CFEngine needs to run.
+private [working directory][The CFEngine Components#The Working Directory] 
+on each machine, referred to in documentation as `WORKDIR` and in policy by 
+the variable `$(sys.workdir)`. By default, this is located at `/var/cfengine` 
+or `C:\var\CFEngine`. It contains everything CFEngine needs to run.
 
 The figure below shows how decisions flow through the parts of a system.
 
