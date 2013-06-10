@@ -7,9 +7,7 @@ alias: reference-special-variables-variable-context-this.html
 tags: [reference, variables, variable context this, this]
 ---
 
-**TODO: link to bundle type reference documentation**
-
-This context this is used to access information about promises during
+The context `this` is used to access information about promises during
 their execution. It is context dependent and not universally meaningful
 or available, but provides a context for variables where one is needed
 (such as when passing the value of a list variable into a parameterized
