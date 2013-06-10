@@ -1,14 +1,14 @@
 ---
 layout: default
-title:  Porting Guide
-categories: [Manuals, Enterprise API, Porting Guide]
+title:  API Porting Guide
+categories: [Manuals, Enterprise Reporting, Porting Guide]
 published: true
-alias: manuals-enterprise-api-porting-guide.html
+sorting: 80
+alias: manuals-enterprise-reporting-porting-guide.html
 tags: [manuals, enterprise, rest, api, reporting, porting]
 ---
 
-Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 
-API. In CFEngine Enterprise 3.5, the old 2.2 API is still available along 
+In CFEngine Enterprise 3.5, the old 2.2 API is still available along 
 side the new API, so you can keep calling the old API if needed. Starting in 
 CFEngine Enterprise 3.0, most of the API is exercised by the Mission Portal
 web-UI.
@@ -16,9 +16,9 @@ web-UI.
 
 ## Read vs. Read/Write
 
-The 2.2 API was read-only and users, roles and settings was managed by
-the Mission Portal. By contrast, the 3.0 API is read/write and
-completely standalone from the Mission Portal. In the CFEngine
+The 2.2 API was read-only and users, roles and settings were managed by
+the Mission Portal. In contrast, the 3.0 API is read/write and
+completely independent from the Mission Portal. In CFEngine
 Enterprise 3.0, users, roles and settings belong in the API, and the
 Mission Portal uses this to determine access to data. Additionally, some
 other resources support PUT, POST and DELETE, but most data collected
