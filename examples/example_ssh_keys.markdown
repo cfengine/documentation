@@ -92,7 +92,7 @@ insert_lines:
 
 Example run:
 
-Key distribution point:
+First, let's setup for the run. Put users' SSH keys into the key distribution point on the policy hub:
 
 ```
 policy_hub# ls /var/cfengine/masterfiles/ssh_keys/*pub 
@@ -100,7 +100,7 @@ policy_hub# ls /var/cfengine/masterfiles/ssh_keys/*pub
 policy_hub# 
 ```
 
-There is no authorized_keys on the managed servers, but the home directory (and .ssh directory) exists:
+There are no authorized_keys files on the managed servers, but the home (and .ssh) directories exist:
 
 ```
 # ls -d /home/user*/.ssh
@@ -110,10 +110,10 @@ ls: cannot access /home/user?/.ssh/authorized_keys: No such file or directory
 #
 ```
 
-Now let's run CFEngine on one of the managed servers.  It will create
+Run CFEngine on one of the managed servers to create
 and populate /var/cfengine/inputs/ssh_keys from source
-policy_hub:/var/cfengine/masterfiles/ssh_keys 
-and then will install each user's key into that user's
+(policy_hub:/var/cfengine/masterfiles/ssh_keys)
+and then install each user's key into that user's
 authorized_keys file:
 
 ```
@@ -121,7 +121,7 @@ authorized_keys file:
 2013-06-08T15:49:29-0700    error: Failed to chdir into '/var/cfengine/inputs/ssh_keys'
 #
 ```
-The above error only happens on the first run.  Then /var/cfengine/inputs/ssh_keys
+Note: the above error only happens on the first run.  Then /var/cfengine/inputs/ssh_keys
 is created and this error does not recur.
 
 The local cache now contains the users' public keys:
@@ -140,6 +140,7 @@ CFEngine created authorized_keys files:
 /home/user1/.ssh/authorized_keys
 /home/user2/.ssh/authorized_keys
 #
+```
 
 CFEngine installed the user's keys:
 
