@@ -34,12 +34,13 @@ the new features in CFEngine 3.5 will make it easy for you to get stuff done.
 
 ### Design Center, with UI in CFEngine Enterprise
 
-**TODO:** screenshot, video, messaging?
 
 CFEngine Enterprise 3.5 includes the brand-new **Design Center app** in the 
 Mission Portal. You are now able to conveniently configure and activate
 sketches through an easy to use graphical interface, and to follow up on
 the activation progress.
+
+![Design Center - Sketch Configuration](new-design-center-config.png)
 
 ### Significantly improved parsing and evaluation of policies
 
@@ -52,12 +53,9 @@ Policy developers get **clear and consistent messages** from the
 are not required to have `body common control` to check syntax. This will 
 allow better integration with editors to perform automatic syntax validation.
 
-**TODO: screenshot showing syntastic with vim**
-
 **Note:** If your policy has syntactically incorrect code, then the new parser 
 will mark those as errors. Fixing those errors should be straight forward, but 
-see the respective section in
-[Known Issues](getting-started-known-issues.html) for information.
+see the respective section in [Known Issues][known issues] for information.
 
 `action_policy => warn` now sets `not_kept` classes, which allows you to see 
 deeper than first order changes that might occur during **dry-runs**.
@@ -74,8 +72,6 @@ paths that are well known.
 CFEngine operators benefit from a range of improvements in **logging output**, 
 both to the syslog and to the standard output.
 
-**TODO:** screenshot, example, ???
-
 ### New built-in functions and capabilities
 
 A broad range of new built-in functions simplify the coding of policies
@@ -83,35 +79,33 @@ significantly and offer completely new functionality.
 
 * set operation functions that test for set membership and find
     intersections/differences:
-    * [`every`](reference-functions-every.html)
-    * [`none`](reference-functions-none.html)
-    * [`some`](reference-functions-some.html)
-    * [`intersection`](reference-functions-intersection.html),
-    * [`difference`](reference-functions-difference.html)
+    * [`every`][every]
+    * [`none`][none]
+    * [`some`][some]
+    * [`intersection`][intersection]
+    * [`difference`][difference]
 * list functions  to look up a specific element, find the list length, extract 
   a portion of the list, reduce it to unique element, sort it, and filter it
-    * [`nth`](reference-functions-nth.html)
-    * [`length`](reference-functions-length.html)
-    * [`sublist`](reference-functions-sublist.html)
-    * [`unique`](reference-functions-unique.html)
-    * [`sort`](reference-functions-sort.html)
-    * [`shuffle`](reference-functions-shuffle.html)
-    * [`filter`](reference-functions-filter.html)
+    * [`nth`][nth]
+    * [`length`][length]
+    * [`sublist`][sublist]
+    * [`unique`][unique]
+    * [`sort`][sort]
+    * [`shuffle`][shuffle]
+    * [`filter`][filter]
 * function that returns a list of all the classes that match a regular
   expression
-    * [`classesmatching`](reference-functions-classesmatching.html)
+    * [`classesmatching`][classesmatching]
 * function that converts date/time values into a formatted string
-    * [`strftime`](reference-functions-strftime.html)
+    * [`strftime`][strftime]
 * function for building a string from data, using sprintf semantics
-    * [`format`](reference-functions-format.html)
+    * [`format`][format]
 * function for making logical decisions in a function call based on classes
-    * [`ifelse`](reference-functions-ifelse.html)
+    * [`ifelse`][ifelse]
 * mapping function for arrays
-    * [`maparray`](reference-functions-maparray.html)
+    * [`maparray`][maparray]
 * function for getting detailed file information
-    * [`filestat`](reference-functions-filestat.html)
-
-**TODO:** screenshot or code snippet?
+    * [`filestat`][filestat]
 
 ### Improved out-of-the-box installation
 
@@ -129,11 +123,12 @@ things might not have worked.
 
 ### Scalability across multiple sites
 
-* support for [Multi-Site
-  Querying](manuals-enterprise-api-multi-site-queries.html)
-* improved performance of `cf-serverd`, handling more connections in parallel
+Support for [**Multi-Site Querying**][Multi-Site Queries] enables the 
+generation of reports across multiple, globally distributed CFEngine Server 
+installations, and the centralized aggregation of data collected.
 
-**TODO:** Link to demo video
+Improved performance of `cf-serverd` allows the handling of more connections 
+in parallel, resulting in faster policy distribution through the network.
 
 ### Improved SQL reporting
 
@@ -143,10 +138,12 @@ query  builder or direct SQL input. Save and schedule your reports in a quick
 and easy way.
 
 * Promise logs, file, software and compliance information are available
-  through SQL Report app
+  through **SQL Report app**
 * Regular expressions are supported in SQL queries
-* [Enterprise API](manuals-enterprise-api.html)** supports host
+* [**Enterprise API**][Enterprise API] supports host
   and promise filtering
+
+![Improved SQL Report App in Mission Portal](new-sql-reports-app.png)
 
 ## Better tools for CFEngine operators
 
@@ -158,21 +155,23 @@ queries
     * Performance data from `cf-hub` **TODO: links**
 * Configurable data collection for Enterprise
     * Host-side report content filter, controlled by `report_data_select` body
-   in [access promise](reference-promise-types-access.html)
+   in [access promise][access#report_data_select]
     * filters for class, variable, promise log and monitoring reports
-* [Self-diagnostics]() of a CFEngine agent installation
+* [Self-diagnostics][cf-agent] of a CFEngine agent installation
 
 ## Streamlined Mission Portal
 
-**TODO:** screenshot
-
 The Mission Portal has received another **major facelift** for this release. 
 Plenty of polish went into the visual and interaction design.
+
+![New Mission Portal UI](new-mission-portal-ui.png)
 
 **Host categorizations** (aka navigation trees) has received a performance 
 boost, and can now be shared between users. Partition your system any way you 
 like, save your categorization, and give others access. Or simply add others’ 
 categorizations to your own account.
+
+![Sharing Trees in Mission Portal](new-mission-portal-sharing.png)
 
 ## Microsoft Windows specific improvements
 
