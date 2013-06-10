@@ -7,8 +7,8 @@ table {border-collapse: collapse; border-spacing: 0}
 body {
     background: #fff;
     font-family: museo_sans500, sans-serif, serif;
-    font-size: 14px;
-    line-height: 1.4;
+    font-size: 1em;
+    line-height: 1.6;
     padding-bottom: 4em
 }
 
@@ -89,9 +89,10 @@ code {
     font-weight: bold;
     font-size: small;
     background: #f5f9fb;
+    color: #444;
 }
 p code {
-    color: #008000;
+    color: #444;
 }
 
 pre {
@@ -121,7 +122,6 @@ pre code {
     margin: 2em 0;
 }
 
-
 img {
     max-height: 100%;
     max-width: 100%;
@@ -142,8 +142,7 @@ table {
 table , td {
      border: 1px solid #ccc
 }
-td
-  {
+td {
   text-align: left;
   font-weight: normal;
 }
@@ -158,9 +157,9 @@ td, th {
 
 
 #left_col{
-    float:left;
-    width:300px;
-    padding-top: 21px;
+    float: left;
+    width: 300px;
+    padding-top: 29px;
 }
 #content_col{
     margin-left: 360px;
@@ -250,9 +249,7 @@ article h3 {font-size: 1.4em;}
 article h4 {font-size: 1.2em;}
 
 article p {
-    font-size: 1em;
-    color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
 }
 
  #nav_show_category {
@@ -262,49 +259,6 @@ article p {
      width: 100%;
      border-top: 1px solid #e5e5e5;
  }
-
-#jump_to {
-     background: url('../media/images/sprites.png') right -990px no-repeat #f6f6f6;
-     border: 2px solid #aac4d0;
-     border-radius: 5px;
-     color: #777;
-     height: 34px;
-     padding-left: 13px;
-     padding-right: 20px;
-     margin-left: 15px;
-     width: 110px;
-     text-align: left;
-     float: right;
-     margin-top: 1em;
-}
-
-#moveTop {
-    bottom: 0;
-    left: 0;
-    opacity: 0.3;
-    position: fixed;
-    top: 0;
-    width: 40px;
-    display:none;
-}
-
-
-#moveTop a {
-    display: block;
-    width: 40px;
-    text-align: center;
-    height: 100%;
-    text-decoration: none;
-}
-#moveTop a:hover {
-    background: #ccc;
-    text-decoration: underline;
-}
-#moveTop a span {
-    font-size: 1em;
-    padding-top: 1em;
-    display: inline-block
-}
 
 .gsc-above-wrapper-area table,
 .gsc-above-wrapper-area td,
@@ -321,20 +275,6 @@ article p {
 
 .top_search_form {
     float: right;
-}
-
-
-#toc li {
-    list-style: none;
-    font-size: 1em;
-    line-height: 1.4
-}
-#toc .link_H3 {
-    margin-left: 1em;
-}
-
-#toc .link_H4 {
-    margin-left: 2em;
 }
 
 

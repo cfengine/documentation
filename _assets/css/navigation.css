@@ -34,7 +34,7 @@
                 text-decoration: none;
             }
 
-            #nav_wrapper a:hover, #top_nav span {
+            #nav_wrapper a:hover, #nav_wrapper a.navselected  {
                 background: url('../media/images/sprites.png') 50% -3122px  no-repeat;
                 text-decoration: none
             }
@@ -69,7 +69,7 @@
         background-image: url('../media/images/sprites.png');
         background-repeat: no-repeat;
         background-color: transparent;
-        background-position: 0 4px;
+        background-position: 0 8px;
     }
 
     #left_col li a:hover,
@@ -98,11 +98,13 @@
 
 
 
-
+#breadcrumbs_wrapper {
+    margin: 0 0;
+}
 
 #breadcrumbs li {
     float: left;
-    margin: 1em 10px 0 0;
+    margin: 0 10px 1em 0;
 }
 
 #breadcrumbs a {
@@ -126,7 +128,7 @@
 #breadcrumbs i {
     width: 7px;
     display: block;
-    background: url('../media/images/sprites.png') 0 6px no-repeat transparent;
+    background: url('../media/images/sprites.png') 0 8px no-repeat transparent;
 }
 
 
@@ -134,7 +136,7 @@
 #tags {
     display: block;
     width: 100%;
-    margin: 2em 0;
+    margin: 0 0 2em 0;
 }
 
     #tags ul {
@@ -153,10 +155,113 @@
                 margin: 0.5em 1em 0 0;
                 padding: 5px 10px;
                 background: #e5e5e5;
-                font-size: 0.9em;
+                font-size: 0.8em;
                 text-decoration: none;
             }
 
             #tags li a:hover {
                 text-decoration: underline;
             }
+
+
+#jumpto_wrapper {
+     position: relative;
+     float: right;
+     display: none;
+ }
+
+
+#jump_to {
+     background: url('../media/images/sprites.png') right -990px no-repeat #f6f6f6;
+     border: 2px solid #aac4d0;
+     border-radius: 5px;
+     color: #0071a6;
+     font-size: 1em;
+     height: 34px;
+     line-height: 34px;
+     padding-left: 13px;
+     padding-right: 20px;
+     margin-left: 15px;
+     width: 110px;
+     text-align: left;
+     float: right;
+
+}
+
+#jumpto_list {
+    position: absolute;
+    background: #333333;
+    border-radius: 5px;
+    padding: 15px;
+    width: 200px;
+    right: 0;
+    top: 50px;
+    display: none;
+    max-height: 420px;
+    overflow: auto;
+}
+
+#jumpto_wrapper:hover #jumpto_list {
+    display: block !important;
+    opacity: 0.9
+}
+
+#jumpto_wrapper:hover #jump_to {
+    color: #fff !important;
+    border: 2px solid #000 !important;
+    background: url('../media/images/sprites.png') right -990px no-repeat #000 !important;
+}
+
+#jumpto_list ul {
+    margin: 0;
+    padding: 0;
+}
+
+#jumpto_list li {
+    list-style: none;
+    line-height: 1.6;
+}
+#jumpto_list li a {
+    color: #fff;
+    font-size: 1em;
+    text-decoration: none;
+}
+#jumpto_list li a:hover {
+    text-decoration: underline;
+}
+
+#jumpto_list .link_H3 {
+    margin-left: 1em;
+}
+
+#jumpto_list .link_H4 {
+    margin-left: 2em;
+}
+
+
+#moveTop {
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+    position: fixed;
+    top: 0;
+    width: 40px;
+    display:none;
+}
+
+#moveTop a {
+    display: block;
+    width: 40px;
+    text-align: center;
+    height: 100%;
+    text-decoration: none;
+}
+#moveTop a:hover {
+    background: #ccc;
+    text-decoration: underline;
+}
+#moveTop a span {
+    font-size: 1em;
+    padding-top: 1em;
+    display: inline-block
+}

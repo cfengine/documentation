@@ -25,19 +25,19 @@
     <div class="wrapper">
         <ul>
             <li>
-                <a href="{{site.baseurl}}getting-started.html">Getting Started</a>
+                <a href="{{site.baseurl}}getting-started.html" {% if  page.categories[0] == 'Getting Started' %} class="navselected" {% endif %}>Getting Started</a>
             </li>
             <li>
-                <a href="{{site.baseurl}}whats-new.html">New in CFEngine</a>
+                <a href="{{site.baseurl}}whats-new.html" {% if page.categories[0] == "What's New" %} class="navselected" {% endif %}>New in CFEngine</a>
             </li>
             <li>
-                <a href="{{site.baseurl}}manuals.html">Manuals</a>
+                <a href="{{site.baseurl}}manuals.html" {% if page.categories[0] == 'Manuals' %} class="navselected" {% endif %}>Manuals</a>
             </li>
             <li>
-                <a href="{{site.baseurl}}reference.html">Reference</a>
+                <a href="{{site.baseurl}}reference.html" {% if page.categories[0] == 'Reference' %} class="navselected" {% endif %}>Reference</a>
             </li>
             <li>
-                <a href="{{site.baseurl}}examples.html">Examples</a>
+                <a href="{{site.baseurl}}examples.html" {% if page.categories[0] == 'Examples' %} class="navselected" {% endif %}>Examples</a>
             </li>
         </ul>
     </div>

@@ -19,12 +19,14 @@ $(document).ready(function() {
         }
     });
 
-    var ToC =
-        "<nav role='navigation' class='table-of-contents'>" +
-            "<h3>Table of contents:</h3>" +
-                "<ul>";
+var ToC_start =
+        "<nav role='navigation'>" +
+             "<ul>";
+    var ToC_End =
+            "</ul>" +
+        "</nav>";
 
-    var newLine, el, title, link, elClass, url;
+    var newLine, el, title, link, elClass, url, ToC='';
     $("article h2, article h3, article h4").each(function() {
         el      = $(this);
         title   = el.text();
@@ -39,12 +41,11 @@ $(document).ready(function() {
                     title +
                 "</a>" +
             "</li>";
-
         ToC += newLine;
     });
-    ToC +=
-            "</ul>" +
-        "</nav>";
-
-    $("article #toc").append(ToC);
+    if (ToC.length)
+    {
+        $("#jumpto_wrapper").show();
+        $("#jumpto_wrapper #jumpto_list").append(ToC_start + ToC + ToC_End);
+    }
 });
