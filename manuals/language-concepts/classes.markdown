@@ -3,13 +3,10 @@ layout: default
 title: Classes
 categories: [Manuals, Language Concepts, Classes]
 published: true
+sorting: 40
 alias: manuals-language-concepts-classes.html
 tags: [manuals, language, syntax, concepts, classes, decisions]
 ---
-
-Previous: [Bodies](manuals-language-concepts-bodies.html)
-
-****
 
 Classes are used to apply promises only to particular environments, depending 
 on context. A promise might only apply to Linux systems, or should only be 
@@ -328,7 +325,3 @@ are local to those bundles.
 The `local_two` bundle promises a report "Success" which applies only if 
 `zero.!one.two` evaluates to true. Within the `local_two` scope this evaluates 
 to `true` because the `one` class is not set.
-
-****
-
-Next: [Variables](manuals-language-concepts-variables.html)

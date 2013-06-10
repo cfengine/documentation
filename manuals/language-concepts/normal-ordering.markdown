@@ -3,13 +3,10 @@ layout: default
 title: Normal Ordering
 categories: [Manuals, Language Concepts, Normal Ordering]
 published: true
+sorting: 60
 alias: manuals-language-concepts-normal-ordering.html
 tags: [manuals, language, syntax, concepts, ordering, depends_on]
 ---
-
-Previous: [Variables](manuals-language-concepts-variables.html)
-
-****
 
 CFEngine takes a pragmatic point of view to ordering. When promising `scalar` 
 attributes and properties, ordering is irrelevant and needs not be considered. 
@@ -120,6 +117,3 @@ Within a knowledge bundle, the normal ordering is:
     reports
 -->
 
-****
-
-Next: [Loops](manuals-language-concepts-loops.html)

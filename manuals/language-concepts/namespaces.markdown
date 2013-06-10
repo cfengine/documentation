@@ -3,13 +3,10 @@ layout: default
 title: Namespaces
 categories: [Manuals, Language Concepts, Namespaces]
 published: true
+sorting: 90
 alias: manuals-language-concepts-namespaces.html
 tags: [manuals, language, syntax, concepts, namespace]
 ---
-
-Previous: [Pattern Matching and Referencing](manuals-language-concepts-pattern-matching-and-referencing.html)
-
-****
 
 Namespaces are private bundle and body contexts, allowing multiple files to 
 define the bundles and bodies with the same name, without conflict.
@@ -82,6 +79,3 @@ Note that this means that if you are in a namespace that's not `default`, you *m
     default:myclass::
        "do something" ifvarclass => "default:myotherclass";
 
-****
-
-Next: [Language Concepts](language-concepts.html)

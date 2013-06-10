@@ -3,13 +3,10 @@ layout: default
 title: Bundles
 categories: [Manuals, Language Concepts, Bundles]
 published: true
+sorting: 20
 alias: manuals-language-concepts-bundles.html
 tags: [language, concepts, syntax, body, bundle]
 ---
-
-Previous: [*Promises*][Promises]
-
-****
 
 A bundle is a collection of promises. They allow to group related promises 
 together into named building blocks that can be thought of as "subroutines" in 
@@ -114,5 +111,3 @@ of the bundle in which it is defined:
 Bundles of type `common` may contain common promises. 
 [Classes](manuals-language-concepts-classes.html) defined in `common` bundles 
 have global scope.
-
-Next: [Bodies](manuals-language-concepts-bodies.html)

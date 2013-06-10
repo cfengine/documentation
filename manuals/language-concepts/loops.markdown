@@ -3,13 +3,10 @@ layout: default
 title: Loops
 categories: [Manuals, Language Concepts, Loops]
 published: true
+sorting: 70
 alias: manuals-language-concepts-loops.html
 tags: [manuals, language, syntax, concepts, loops]
 ---
-
-Previous: [Normal Ordering](manuals-language-concepts-normal-ordering.html)
-
-****
 
 There are no explicit loops in CFEngine, instead there are lists. To make a 
 loop, you simply refer to a list as a scalar and CFEngine will assume a loop 
@@ -116,6 +113,3 @@ This example uses two lists, `stats` and `monvars`. We can now iterate over both
 
 The leftward lists are iterated over completely before going to the next value in the rightward lists.
 
-****
-
-Next: [Pattern Matching and Referencing](manuals-language-concepts-pattern-matching-and-referencing.html)

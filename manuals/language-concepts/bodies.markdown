@@ -3,13 +3,10 @@ layout: default
 title: Bodies
 categories: [Manuals, Language Concepts, Bodies]
 published: true
+sorting: 30
 alias: manuals-language-concepts-bodies.html
 tags: [language, concepts, syntax, body]
 ---
-
-Previous: [Bundles](manuals-language-concepts-bundles.html)
-
-****
 
 While the idea of a promise is very simple, the definition of a promise can 
 grow complicated. Complex promises are best understood by breaking them down 
@@ -86,7 +83,3 @@ This promise bodies configures the `bundlesequence` to execute on a cf-agent.
 This promise bodies defines the clients allowed to connect to a cf-serverd. 
 For more information, see the reference documentation about the [CFEngine 
 Agents](reference-components.html)
-
-****
-
-Next: [Classes](manuals-language-concepts-classes.html)

@@ -3,13 +3,10 @@ layout: default
 title: Promises
 categories: [Manuals, Language Concepts, Promises]
 published: true
+sorting: 10
 alias: manuals-language-concepts-promises.html
 tags: [manuals, language, syntax, concepts, promises]
 ---
-
-Previous: [*Language Concepts*](manuals-language-concepts.html)
-
-****
 
 One concept in CFEngine should stand out from the rest as being the most 
 important: promises. Everything else is just an abstraction that allows us to 
@@ -129,6 +126,3 @@ echo command:
 These two promises have default attributes for everything except the 
 `promiser'. Both promises simply cause CFEngine to print a message.
 
-****
-
-Next: [Bundles](manuals-language-concepts-bundles.html)
