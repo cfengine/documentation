@@ -36,25 +36,45 @@ def createLinkFile(cur_name,output_file,cur_dir):
 
 def addToLinkFile(file_name,output_file,cur_dir):
 	
-	f = open(file_name,"r")
-	lines = f.readlines()
-	f.close()
-	
+	in_file = open(file_name,"r")
+	lines = in_file.readlines()
+	in_file.close()
+
+	out_file = open(output_file, "a")
 	current_file_name = ""
 	current_file_label = ""
 	current_title = ""
+	header_list = []
 	
 	for line in lines:
 		if line.find("title:") == 0:
 			current_title = line.split('title: ')					
-			current_title = current_title[1].rstrip()	
+			current_title = current_title[1].rstrip()
+			current_title = current_title.lstrip()
 		elif line.find("alias:") == 0:
-	
-			current_file_name = line.split('alias: ')					
-			current_file_name = current_file_name[1].rstrip()		
+			current_file_name = line.split('alias: ')
+			current_file_name = current_file_name[1].rstrip()
+		elif line.find("#") == 0:
+			current_header = line.lstrip('#').rstrip().lstrip()
+			header_list.append(current_header)
 
-	current_file_label = current_title.lstrip()
-	output_string = '['+current_file_label+']: '+current_file_name+' \"'+current_title+'\"'
+	current_file_label = current_title
 
-	open(output_file, "a").write(output_string+"\n")
-
+	if current_file_label != "" and current_file_name != "":
+		output_string = '['+current_file_label+']: '+current_file_name+' \"'+current_title+'\"'
+		out_file.write(output_string+"\n")
+		for header in header_list:
+			if header == "":
+				continue
+			anchor = header.lower()
+			anchor = anchor.replace(" ", "-")
+			anchor = anchor.replace(":", "-")
+			anchor = anchor.replace("`", "-")
+			anchor = anchor.replace("/", "-")
+			anchor = anchor.replace("$", "-")
+			anchor = anchor.replace("(", "-")
+			anchor = anchor.replace(")", "-")
+			anchor = anchor.replace("--", "-")
+			anchor = anchor.lstrip("-").rstrip("-")
+			output_string = '['+current_file_label+ '#' + header + ']: '+current_file_name+ '#' + anchor + ' \"'+current_title+'\"'
+			out_file.write(output_string+"\n")
