@@ -53,7 +53,7 @@ def addToLinkFile(file_name,output_file,cur_dir):
 			current_file_name = line.split('alias: ')					
 			current_file_name = current_file_name[1].rstrip()		
 
-	current_file_label = current_title
+	current_file_label = current_title.lstrip()
 	output_string = '['+current_file_label+']: '+current_file_name+' \"'+current_title+'\"'
 
 	open(output_file, "a").write(output_string+"\n")
