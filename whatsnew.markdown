@@ -184,6 +184,7 @@ categorizations to your own account.
    * Note the syntax changes in the **TODO**[ChangeLog]
 
 
-For a complete list of changes in the CFEngine Core, see the
-[ChangeLog](https://github.com/cfengine/core/blob/3.5.x/ChangeLog).
-**TODO: check package contents for ChangeLog files**
+For a complete list of changes in the CFEngine, see the `ChangeLog` and 
+`ChangeLog.Enterprise` files in `/var/cfengine/share/doc`. The Core change log
+is also available 
+[online](https://github.com/cfengine/core/blob/3.5.x/ChangeLog).
