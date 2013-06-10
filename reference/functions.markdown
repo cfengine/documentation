@@ -3,6 +3,7 @@ layout: default
 title: Functions
 categories: [Reference, Functions]
 published: true
+sorting: 30
 alias: reference-functions.html
 tags: [Reference, Functions]
 ---

@@ -3,6 +3,7 @@ layout: default
 title: Components and Common Control
 categories: [Reference, Components]
 published: true
+sorting: 10
 alias: reference-components.html
 tags: [Reference, Components]
 ---

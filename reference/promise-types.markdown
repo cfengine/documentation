@@ -3,6 +3,7 @@ layout: default
 title: Promise Types and Attributes
 categories: [Reference, Promise Types]
 published: true
+sorting: 20
 alias: reference-promise-types.html
 tags: [reference, bundles, common, promises]
 ---

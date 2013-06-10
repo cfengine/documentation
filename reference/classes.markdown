@@ -3,6 +3,7 @@ layout: default
 title: Classes 
 categories: [Reference, Classes]
 published: true
+sorting: 40
 alias: reference-classes.html
 tags: [reference, hard classes, soft classes, classes]
 ---
