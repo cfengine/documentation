@@ -250,9 +250,23 @@ to make sure the root user has access to pull updates from git).
 
         root@policy_server # /etc/init.d/cfengine3 start
 
+
+## End-to-end waiting time
+
+If we set up the CFEngine policy server to pull automatically from git and CFEngine runs
+every 5 minutes everywhere (the default), the maximum time elapsed from committing to git
+until reports are collected is **15 minutes**:
+
+*  0 minutes: commit to git (e.g. from the Design Center GUI).
+*  5 minutes: the policy server has updated `/var/cfengine/masterfiles`.
+* 10 minutes: all hosts have downloaded and run the policy.
+* 15 minutes: `cf-hub` on the database server has collected reports from all hosts.
+
+
 ## Access control and security
 
 Please see Access control for git in the Mission Portal
 (TODO: link to access-control-mission-portal.markdown) for an introduction
 to how to allow or limit the Mission Portal users' ability to commit to the
 git repository and make changes to the hosts.
+
