@@ -152,12 +152,12 @@ queries
     * performance data from MongoDB
     * lastseen report data for information about host connectivity
     * `FirstReportTimeStamp` is recorded for all hosts
-    * [Performance data][SQL Schema#hub-diagnostics] from `cf-hub`
+    * [Performance data][SQL Schema#hub diagnostics] from `cf-hub`
 * Configurable data collection for Enterprise
     * Host-side report content filter, controlled by `report_data_select` body
    in [access promise][access#report_data_select]
     * filters for class, variable, promise log and monitoring reports
-* [Self-diagnostics][cf-agent] of a CFEngine agent installation
+* [Self-diagnostics][cf-agent#Command Reference] of a CFEngine agent installation
 
 ## Streamlined Mission Portal
 
