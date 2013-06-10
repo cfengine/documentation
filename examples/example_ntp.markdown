@@ -5,12 +5,17 @@ categories: [Examples, Set up time management through NTP]
 published: true
 alias: examples-setup-time-management-through-ntp.html
 tags: [Examples, ntp, file editing]
+reviewed: 2013-06-09
+reviewed-by: atsaloli
 ---
 
 
 The following sets up a local NTP server that synchronizes with pool.ntp.org and
 clients that synchronize with your local NTP server. See bottom of this example
-if you don't want to build a server, but use a "brute force" method.
+if you don't want to build a server, but use a "brute force" method (repeated
+ntpdate syncs).
+
+This example demonstrates you can have a lot of low-level detailed control if you want it.
 
 ```cf3
 	bundle agent system_time_ntp
