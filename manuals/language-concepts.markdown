@@ -62,7 +62,3 @@ referencing**](manuals-language-concepts-pattern-matching-and-referencing.html),
 
 See the reference documentation for more information about
 [Syntax, identifiers and names](reference-syntax.html).
-
-****
-
-Next: [*Promises*][Promises]
