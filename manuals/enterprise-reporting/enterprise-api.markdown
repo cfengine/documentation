@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Enterprise API
-categories: [Manuals, Enterprise API]
+categories: [Manuals, Enterprise Reporting, API]
 published: true
+sorting: 20
 alias: manuals-enterprise-api.html
 tags: [manuals, enterprise, REST, API, reporting]
 ---
@@ -31,4 +32,4 @@ The Enterprise API is a REST API, but a central part of interacting with the
 API involves using SQL. With the simplicity of REST, the flexibility of 
 SQL and the scalability through Multi-Site queries, users can craft custom 
 reports about systems of arbitrary scale, mining a wealth of data residing 
-on the CFEngine Database Server.
+on globally distributed CFEngine Database Servers.
