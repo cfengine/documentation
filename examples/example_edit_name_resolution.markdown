@@ -64,7 +64,6 @@ before_after => "before";
 Example run:
 
 ```
-# rm unit_edit_name_resolution.cf
 # cf-agent -f unit_edit_name_resolution.cf
 # cat /tmp/resolv.conf
 search mydomain.tld
