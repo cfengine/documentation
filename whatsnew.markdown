@@ -24,7 +24,7 @@ complex IT infrastructure installations when agility, scalability, security
 and stability are critical.
 
 CFEngine 3.5 is compatible with all previous versions of CFEngine 3. Don't 
-have CFEngine yet? [**Get started withCFEngine Enterprise in 10 minutes**](https://cfengine.com/enterprise-getting-started)!
+have CFEngine yet? [**Get started with CFEngine Enterprise in 10 minutes**](https://cfengine.com/enterprise-getting-started)!
 
 ## Easier to Use
 
@@ -55,7 +55,7 @@ allow better integration with editors to perform automatic syntax validation.
 
 **Note:** If your policy has syntactically incorrect code, then the new parser 
 will mark those as errors. Fixing those errors should be straight forward, but 
-see the respective section in [Known Issues][known-issues] for information.
+see the respective section in [Known Issues][known issues] for information.
 
 `action_policy => warn` now sets `not_kept` classes, which allows you to see 
 deeper than first order changes that might occur during **dry-runs**.
@@ -140,7 +140,7 @@ and easy way.
 * Promise logs, file, software and compliance information are available
   through **SQL Report app**
 * Regular expressions are supported in SQL queries
-* [**Enterprise API**][Enterprise-API] supports host
+* [**Enterprise API**][Enterprise API] supports host
   and promise filtering
 
 ![Improved SQL Report App in Mission Portal](new-sql-reports-app.png)
@@ -152,7 +152,7 @@ queries
     * performance data from MongoDB
     * lastseen report data for information about host connectivity
     * `FirstReportTimeStamp` is recorded for all hosts
-    * [Performance data][SQL-Schema#hub-diagnostics] from `cf-hub`
+    * [Performance data][SQL Schema#hub-diagnostics] from `cf-hub`
 * Configurable data collection for Enterprise
     * Host-side report content filter, controlled by `report_data_select` body
    in [access promise][access#report_data_select]
@@ -175,10 +175,10 @@ categorizations to your own account.
 
 ## Microsoft Windows specific improvements
 
-* Windows PowerShell support in [commands
-  promises](reference-promise-types-commands.html),
-  [`execresult`](reference-functions-execresult.html) and 
-  [`returnszero`](reference-functions-returnszero.html)
+* Windows PowerShell support in [`commands`
+  promises][commands],
+  [`execresult`][execresult] and 
+  [`returnszero`][returnszero]
 * Improved ACL handling on Windows
    * Note the syntax changes in the [ChangeLog][New in CFEngine#changelog]
 
