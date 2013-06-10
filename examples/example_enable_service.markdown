@@ -3,7 +3,7 @@ layout: default
 title: Ensure a service is enabled and running
 categories: [Examples, Ensure a service is enabled and running]
 published: true
-alias: examples-setup-time-management-through-ntp.html
+alias: examples-ensure-service-is-enabled-and-running.html
 tags: [Examples, ntp, file editing]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
