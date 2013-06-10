@@ -12,3 +12,4 @@
 [readintlist]: reference-functions-readintrealstringlist.html
 [readreallist]: reference-functions-readintrealstringlist.html
 [readstringlist]: reference-functions-readintrealstringlist.html
+[Multi-Site Queries]: manuals-enterprise-reporting-multi-site-queries.html
