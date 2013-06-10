@@ -11,7 +11,7 @@ reviewed-by: atsaloli
 
 Sometimes it is useful to abort a bundle execution if certain conditions are not met,
 for example when validating input to a bundle. The following policy uses a list of 
-regular expressions for classes, or class expressions that `cf-agent` will watch out for.
+regular expressions for classes, or class expressions that [`cf-agent`][cf-agent] will watch out for.
 If any of these classes becomes defined, it will cause the current bundle to be aborted.
 
 ```cf3
