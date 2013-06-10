@@ -101,7 +101,7 @@ pre {
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px inset;
     border-radius: 3px;
     font-weight: normal;
-        
+
     white-space: pre-wrap;
     white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
     white-space: -pre-wrap; /* Opera 4-6 */
@@ -322,6 +322,21 @@ article p {
 .top_search_form {
     float: right;
 }
+
+
+#toc li {
+    list-style: none;
+    font-size: 1em;
+    line-height: 1.4
+}
+#toc .link_H3 {
+    margin-left: 1em;
+}
+
+#toc .link_H4 {
+    margin-left: 2em;
+}
+
 
 @media all and (min-width: 1200px) {
     .wrapper {
