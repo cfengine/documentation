@@ -76,7 +76,7 @@ We will create a sketch that just echos what the user inputs in the GUI.
         # cd /var/cfengine/design-center/sketches/system/echo
 
 2. Fill `main.cf` with the following.
-
+```cf3
         body file control
         {
               namespace => "myskeches_echo";
@@ -99,6 +99,7 @@ We will create a sketch that just echos what the user inputs in the GUI.
                   comment => "Print to console for testing",
                   handle => "$(activation_id)_echo";
         }
+```
 
 3. Fill `sketch.json` with the following.
 
