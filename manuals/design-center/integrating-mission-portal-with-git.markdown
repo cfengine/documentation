@@ -181,10 +181,73 @@ reports come back, until the policy from git is copied into
 The following steps show how to configure ´cf-agent´ on the policy server to
 pull from git every time it runs (by default every 5 minutes).
 
-1. 
+1. On a working copy of your git repository, add the promise to update from git.
+Save the following in `update/update_from_repository.cf`.
 
-TODO: steps + policy, create clone in /var/cfengine/masterfiles, etc.
+        bundle agent update_from_repository
+        {
+        commands:
 
+        am_policy_hub::
+
+          "/usr/bin/git fetch --all"
+            contain => u_no_output;
+
+          "/usr/bin/git reset --hard origin/master"   # change to your branch
+            contain => u_no_output;
+        }
+
+        body contain u_no_output
+        {
+        no_output => "true";
+        }
+
+2. Include the file into the failsafe policy, change the follwoing in `failsafe/failsafe.cf`.
+
+        ...
+        "cfe_internal_update_policy",
+        "cfe_internal_update_processes",
+        ...
+
+        ...
+        "cfe_internal_update_policy",
+        "update_from_repository",
+        "cfe_internal_update_processes",
+        ...
+
+
+3. Commit the two above changes to the git service.
+
+        user@workstation $ git add update.cf update/update_from_repository.cf
+        user@workstation $ git commit -m "automatically fetch masterfiles from git"
+        user@workstation $ git push origin master         # change to your branch
+
+4. Log in to the policy server and make sure CFEngine is not running.
+
+        root@policy_server # /etc/init.d/cfengine3 stop
+        Shutting down cf-execd:                                    [  OK  ]
+        Shutting down cf-serverd:                                  [  OK  ]
+        Shutting down cf-monitord:                                 [  OK  ]
+
+5. Move current masterfiles out of the way.
+
+        root@policy_server # mv /var/cfengine/masterfiles/ /var/cfengine/masterfiles.orig
+
+6. Clone your git repository into /var/cfengine/masterfiles. We assume
+that the git service is running on the policy server here for simplicity.
+Please adjust to use your git remote url, if neccessary (you then also need
+to make sure the root user has access to pull updates from git).
+
+        root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
+        Initialized empty Git repository in /var/cfengine/masterfiles/.git/
+
+7. Make sure that the policy has valid syntax. `cf-promises` should not give output.
+
+        root@policy_server # /var/cfengine/bin/cf-promises -f /var/cfengine/masterfiles/update.cf
+
+8. Start CFEngine again.
+
+        root@policy_server # /etc/init.d/cfengine3 start
 
 ## Access control and security
 
