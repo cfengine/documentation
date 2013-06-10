@@ -1,10 +1,10 @@
 ---
 layout: default
 title:  Browsing Host Information
-categories: [Manuals, Enterprise API, Browsing Host Information]
+categories: [Examples, Enterprise API, Browsing Host Information]
 published: true
-alias: manuals-enterprise-api-browsing-host-information.html
-tags: [manuals, enterprise, rest, api, reporting, hosts]
+alias: examples-enterprise-api-browsing-host-information.html
+tags: [examples, enterprise, rest, api, reporting, hosts]
 ---
 
 A resource `/api/host` is added as an alternative interface for browsing host 

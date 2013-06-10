@@ -1,10 +1,10 @@
 ---
 layout: default
 title:  Managing Settings
-categories: [Manuals, Enterprise API, Managing Settings]
+categories: [Examples, Enterprise API, Managing Settings]
 published: true
-alias: manuals-enterprise-api-managing-settings.html
-tags: [manuals, enterprise, rest, api, reporting, settings]
+alias: examples-enterprise-api-managing-settings.html
+tags: [examples, enterprise, rest, api, reporting, settings]
 ---
 
 Most of the settings configurable in the API relate to LDAP authentication of 
@@ -48,7 +48,7 @@ individually and as a whole. All or no settings will be updated for a request.
       ]
     }
 
-## 1.4.2 Example: Configuring LDAP
+## Example: Configuring LDAP
 
 The setting `ldapEnabled` turns external authentication on or off. When turned 
 on, the API will check to see that the other LDAP related settings make sense, 

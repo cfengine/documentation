@@ -1,10 +1,10 @@
 ---
 layout: default
 title:  Managing Users and Roles
-categories: [Manuals, Enterprise API, Managing Users and Roles]
+categories: [Examples, Enterprise API, Managing Users and Roles]
 published: true
-alias: manuals-enterprise-api-managing-users-and-roles.html
-tags: [manuals, enterprise, rest, api, reporting, users, roles]
+alias: examples-enterprise-api-managing-users-and-roles.html
+tags: [examples, enterprise, rest, api, reporting, users, roles]
 ---
 
 Users and Roles determine who has access to what data from the API.
