@@ -77,18 +77,6 @@ in CFEngine is executed through a series of
 
 ## Phases of System Management
 
-CFEngine operates autonomously in a network, under your guidance. While 
-CFEngine supports anything from 1 servers to 100,000+ servers, the essence of 
-any CFEngine deployment is the same.
-
-CFEngine supports networks of any size, from a handful of nodes to
-hundreds of thousands of computers. It is built to scale. If your site
-is very large (thousands or of servers) you should spend some time
-discussing your requirements with the CFEngine experts. They will know
-how to tune promises and configurations to your environment as scale
-requires you to have more infrastructure, and a potentially more
-complicated configuration.
-
 There are four commonly cited phases in managing systems with CFEngine: Build, 
 Deploy, Manage, and Audit.
 
