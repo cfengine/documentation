@@ -120,6 +120,7 @@ commands:
 
 Example run:
 
+```
 # /etc/init.d/ntp stop
  * Stopping NTP server ntpd                                                                                                                     [ OK ] 
 # cf-agent -f enable_service.cf -K
