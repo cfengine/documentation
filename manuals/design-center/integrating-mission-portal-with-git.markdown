@@ -16,14 +16,14 @@ CFEngine masterfiles together with configuring the CFEngine Mission Portal to
 use this repository.
 
 When following these steps, it might be helpful to look at the diagram
-in the CFEngine Enterprise sketch flow (TODO: link to enterprise-sketch-flow.markdown).
+in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise].
 
 
 ## Setting up the git service
 
 We will need a git service with the capability to serve git over a key-based 
 SSH channel. The easiest way to do this is to use a service like 
-[github](https://github.com/), but it is not hard to set up a local git 
+[github][github], but it is not hard to set up a local git 
 service either.
 
 For Red Hat (and derived distributions), we need to do the following steps to 

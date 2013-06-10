@@ -21,16 +21,10 @@ schema.
 ###<center>Always verify the upgrade in a test environment prior to upgrading production environments!</center>
 
 Before embarking on the upgrade, you should familiarize yourself with the 
-[known issues](getting-started-known-issues.html) and have a good 
-understanding of the existing configuration of 
-the hub or agents or both. As much as possible is covered in this document, 
-taking into consideration its scope and intended audience. Other more detailed 
-problems, specific to your own setup may not be covered here. It is therefore 
-imperative that any questions or doubts you have are directed towards your 
-support representative.
+[known issues][known issues] and have a good understanding of the existing configuration of the hub or agents or both. As much as possible is covered in this document, taking into consideration its scope and intended audience. Other more detailed problems, specific to your own setup may not be covered here. It is therefore imperative that any questions or doubts you have are directed towards your support representative.
 
 Please do not hesitate to contact your sales representative, or our support 
-engineers through the [support system](https://cfengine.zendesk.com/home)
+engineers through the [support system][support desk]
 
 ## Prerequisites
 
@@ -47,8 +41,7 @@ the following command:
 </code>
 
 
-* move/copy/update some files to the new policy framework (for more details 
-  about the new framework, see 3.0.0-Release_Notes_CFEngine_3_Enterprise.txt)
+* move/copy/update some files to the new policy framework
  
 * update /var/cfengine/bin/cf-twin to the latest version
   $ cp -vf $WORKDIR/bin/cf-agent $WORKDIR/bin/cf-twin

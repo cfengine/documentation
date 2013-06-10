@@ -46,8 +46,8 @@ deployment into a test environment. We provide throughly tested packages that
 integrate with the platforms respective package management system, and our 
 technical staff is working on these platforms on a daily basis.
 
-You should expect the [CFEngine source code](https://github.com/cfengine/core)
-to compile and work on these platforms at all times.
+You should expect the [CFEngine source code][github core] to compile and work 
+on these platforms at all times.
 
 #### CFEngine Enterprise Server
 
@@ -94,7 +94,7 @@ CFEngine is known to run on a wide range of other platforms. As long as the
 platform is POSIX compliant, has a C compiler toolchain that fully implements 
 the C99 standard, and is in general supported by the vendor, we are happy to 
 work with you to make CFEngine available. Please [contact our sales
-team](http://info.cfengine.com/ContactUs.html) for details.
+team][contact us] for details.
 
 We know that the current version of CFEngine can be made to work on the 
 following platforms. However, note that certain CFEngine functionality might 

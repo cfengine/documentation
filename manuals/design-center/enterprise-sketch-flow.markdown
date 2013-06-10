@@ -18,7 +18,7 @@ are shown in the diagram below.
 This service needs to offer git over ssh. It is the canonical place for 
 masterfiles, and needs to be initialized with the CFEngine Enterprise 
 masterfiles (version 3.5 and onwards). It can be hosted on an internal git 
-server, or services like [github](http://www.github.com).
+server, or services like [github][github].
 
 ### Mission Portal GUI
 
@@ -38,12 +38,12 @@ automatically get pulled down by all CFEngine hosts.
 ### /var/cfengine/design-center
 
 This is a stable version of the official [Design Center 
-repository](https://github.com/cfengine/design-center). It contains all the 
+repository][github design-center]. It contains all the 
 sketches that becomes available to the Mission Portal Design Center GUI, as 
 well as tools and APIs utilized internally by the GUI. Note in particular the 
 `tools/cf-sketch/constdata.conf` file that contains out-of-the-box validations 
 and other definitions. See the reference documentation for the [sketch 
-structure](reference-design-center-sketch-structure.html) for a complete 
+structure][Sketch Structure] for a complete 
 list of requirements for a sketch to work well with the GUI.
 
 ### /opt/cfengine/userworkdir/$(user)/masterfiles

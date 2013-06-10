@@ -969,8 +969,8 @@ Note that the reply doesn't tell you more than "I got it, thanks."
 ```
 
 The example here creates some base parameters for the `VCS::vcs_mirror` sketch 
-and then  lays specific configuration to mirror the [CFEngine  
-Core](https://github.com/cfengine/core.git) repository's master branch from 
+and then  lays specific configuration to mirror the
+[CFEngine  Core][github core] repository's master branch from 
 Git. In this case, we do it in two steps, but could have done it in one step.
 
 ### undefine

@@ -9,7 +9,7 @@ tags: [getting started]
 ---
 
 Don't have CFEngine yet? Start using
-[CFEngine Enterprise in 10 minute](https://cfengine.com/evaluate-enterprise) 
+[CFEngine Enterprise in 10 minute][evaluate cfengine] 
 with the ready-made
 [VirtualBox](https://cfengine.com/enterprise-getting-started) or
 [KVM](https://cfengine.com/cfengine-enterprise-getting-started-using-kvm) 
@@ -67,7 +67,7 @@ We have found that the following steps are a good way to learn CFEngine:
 * Join the [help and support 
   forums](getting-started-support-and-community.html) and become part
   of the CFEngine Community.
-* Read [our blog](http://cfengine.com/blog) and follow us on 
+* Read [our blog][cfengine blog] and follow us on 
   <a href="https://twitter.com/cfengine" target="_blank">twitter</a>,
   <a href="https://www.facebook.com/pages/Cfengine/311003700627?ref=ts" 
      target="_blank">facebook</a> and
