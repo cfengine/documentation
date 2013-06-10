@@ -55,7 +55,7 @@ allow better integration with editors to perform automatic syntax validation.
 
 **Note:** If your policy has syntactically incorrect code, then the new parser 
 will mark those as errors. Fixing those errors should be straight forward, but 
-see the respective section in [Known Issues][known issues] for information.
+see the respective section in [Known Issues][known-issues] for information.
 
 `action_policy => warn` now sets `not_kept` classes, which allows you to see 
 deeper than first order changes that might occur during **dry-runs**.
@@ -140,7 +140,7 @@ and easy way.
 * Promise logs, file, software and compliance information are available
   through **SQL Report app**
 * Regular expressions are supported in SQL queries
-* [**Enterprise API**][Enterprise API] supports host
+* [**Enterprise API**][Enterprise-API] supports host
   and promise filtering
 
 ![Improved SQL Report App in Mission Portal](new-sql-reports-app.png)
@@ -152,7 +152,7 @@ queries
     * performance data from MongoDB
     * lastseen report data for information about host connectivity
     * `FirstReportTimeStamp` is recorded for all hosts
-    * Performance data from `cf-hub` **TODO: links**
+    * [Performance data][SQL-Schema#hub-diagnostics] from `cf-hub`
 * Configurable data collection for Enterprise
     * Host-side report content filter, controlled by `report_data_select` body
    in [access promise][access#report_data_select]
@@ -180,8 +180,9 @@ categorizations to your own account.
   [`execresult`](reference-functions-execresult.html) and 
   [`returnszero`](reference-functions-returnszero.html)
 * Improved ACL handling on Windows
-   * Note the syntax changes in the **TODO**[ChangeLog]
+   * Note the syntax changes in the [ChangeLog][New in CFEngine#changelog]
 
+## ChangeLog
 
 For a complete list of changes in the CFEngine, see the `ChangeLog` and 
 `ChangeLog.Enterprise` files in `/var/cfengine/share/doc`. The Core change log
