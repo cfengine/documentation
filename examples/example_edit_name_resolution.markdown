@@ -30,7 +30,6 @@ files:
      edit_line     => resolver,   # Call the resolver bundle defined below to do the editing
      edit_defaults => empty;      # Baseline memory model of file to empty before processing
                                   # bundle edit_line resolver
-
 }
 
 bundle edit_line resolver
@@ -46,7 +45,6 @@ insert_lines:
                               # The search line will always be at the start of the file
   "nameserver 128.39.89.8";
   "nameserver 128.39.74.66";
-
 }
 
 body edit_defaults empty
