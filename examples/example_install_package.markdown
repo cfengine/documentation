@@ -52,15 +52,15 @@ identifiers with numbers and letters.
 Example run:
 
 ```
-# dpkg -r lynx ntp
+# dpkg -r lynx ntp # remove packages so CFEngine has something to repair
 (Reading database ... 234887 files and directories currently installed.)
 Removing lynx ...
 Removing ntp ...
  * Stopping NTP server ntpd                                                                                                                     [ OK ] 
 Processing triggers for ureadahead ...
 Processing triggers for man-db ...
-# cf-agent -f install_packages.cf
-# dpkg -l lynx ntp
+# cf-agent -f install_packages.cf # install packages
+# dpkg -l lynx ntp # show installed packages
 Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
 |/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
