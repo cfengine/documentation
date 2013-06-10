@@ -79,6 +79,5 @@ if CFDOC_LINKFILE == None or CFDOC_DIRNAME == None:
 	exit(1)
 else:	
 
-	os.system("rm "+CFDOC_LINKFILE)
 	linkresolver.createLinkFile(CFDOC_DIRNAME,CFDOC_LINKFILE,"")
 	exit(0)
