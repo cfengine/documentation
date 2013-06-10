@@ -57,13 +57,11 @@ the use of sqlite's ATTACH DATABASE command.
 
 The [Enterprise API](manuals-enterprise-api-checking-status.html) returns the 
 available replica set to redirect the query.
-**TODO: make sure to update API reference accordingly**
 
 * sqlite3 export
 
 A part of reporting engine that converts the result-set into a sqlite3 db file 
 for transfer to the aggregator.
-**TODO: if official part of REST API, document there; otherwise, skip as implementation detail**
 
 ### Installation
 
