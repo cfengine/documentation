@@ -94,6 +94,14 @@ Give files unique names to avoid overwrites in the generated website.
 See [Style Guide - Charts and graphs](#Charts_and_graphs) for style
 requirements for images.
 
+### Links
+
+To link to pages and sections within the documentation, use the syntax:
+
+    [Link text][Page Title#Section in Page]
+
+This also applies to links to sections within the current page:
+
 ## Content Style Guide
 
 Make sure you follow this style guide to make using CFEngine and the
