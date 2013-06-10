@@ -87,7 +87,7 @@ either in `constdata.conf` or `vardata.conf`)
 
 This is the CFEngine policy that "implements" the sketch.
 
-````
+```cf3
 body file control
 {
       namespace => "cfdc_sketch_name_namespace";
@@ -108,7 +108,7 @@ bundle agent installed(runenv, metadata, mystring, mylist)
       "mylist contents: $(mylist)"
          handle => "$(activation_id)_report_mylist";
 }
-````
+```
 
 ### CFEngine Enterprise Compatibility
 
