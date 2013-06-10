@@ -62,7 +62,7 @@ For a sketch to work well with the CFEngine Enterprise Design Center graphical
 user interface (GUI), all of the above attributes must be specified. Some 
 additional requirements are noted below.
 
-The depens.os attribute is checked when a user is activating a sketch, to
+The depends.os attribute is checked when a user is activating a sketch, to
 warn on cases where a user attempts to activate a sketch on an operating system
 the sketch does not (yet) support. It is therefore useful to make sure that
 all the operating systems listed in depends.os is working well with the sketch.
@@ -74,7 +74,7 @@ an available sketch in the GUI.
 
 All items in api.bundlename:
 
-* any element that takes input (exluding e.g. runenv and metadata) must have 
+* any element that takes input (excluding e.g. runenv and metadata) must have 
 `type` either `string` or `list` (support for more types will be added in the 
 future)
 * `validation` must be a validation that has been defined in the API (living 
