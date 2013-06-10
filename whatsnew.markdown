@@ -150,14 +150,16 @@ and easy way.
 * CFEngine Enterprise collects data for diagnostics, available through SQL 
 queries
     * performance data from MongoDB
-    * lastseen report data for information about host connectivity
-    * `FirstReportTimeStamp` is recorded for all hosts
+    * [lastseen report data][SQL Schema#Database Diagnostics] for information
+      about host connectivity
+    * [`FirstReportTimeStamp`][SQL Schema#Hosts] is recorded for all hosts
     * [Performance data][SQL Schema#hub diagnostics] from `cf-hub`
 * Configurable data collection for Enterprise
     * Host-side report content filter, controlled by `report_data_select` body
    in [access promise][access#report_data_select]
     * filters for class, variable, promise log and monitoring reports
-* [Self-diagnostics][cf-agent#Command Reference] of a CFEngine agent installation
+* [Self-diagnostics][cf-agent#Command Reference] of a CFEngine agent 
+  installation
 
 ## Streamlined Mission Portal
 
@@ -175,12 +177,11 @@ categorizations to your own account.
 
 ## Microsoft Windows specific improvements
 
-* Windows PowerShell support in [`commands`
-  promises][commands],
-  [`execresult`][execresult] and 
-  [`returnszero`][returnszero]
+* Windows PowerShell support in [`commands` promises][commands],
+  [`execresult`][execresult] and [`returnszero`][returnszero]
 * Improved ACL handling on Windows
-   * Note the syntax changes in the [ChangeLog][New in CFEngine#changelog]
+   * Note the [syntax changes][files#acl_default] in the
+     [ChangeLog][New in CFEngine#changelog]
 
 ## ChangeLog
 
