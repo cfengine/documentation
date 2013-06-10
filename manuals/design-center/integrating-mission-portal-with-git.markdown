@@ -144,7 +144,7 @@ We can also see the user name of the Mission Portal user by printing the author 
 ````
 $ git log --pretty=format:"%h %an: %s" --committer='Mission Portal'
 0ac4ae0 bob: Setting up dev environment. Ticket #123.
-5ffc4d1 bob: Configuring postgres on test envirnoment. Ticket #124.
+5ffc4d1 bob: Configuring postgres on test environment. Ticket #124.
 4190ca5 bob: My test activation
 0ac4ae0 tom: remove failed activation
 5ffc4d1 tom: print echo example
@@ -160,7 +160,7 @@ Mission Portal, you can filter on the author name as well ('bob' in the example 
 ````
  $ git log --pretty=oneline --abbrev-commit --committer='Mission Portal' --author='bob'
 0ac4ae0 Setting up dev environment. Ticket #123.
-5ffc4d1 Configuring postgres on test envirnoment. Ticket #124.
+5ffc4d1 Configuring postgres on test environment. Ticket #124.
 4190ca5 My test activation
 ````
 
@@ -202,7 +202,7 @@ Save the following in `update/update_from_repository.cf`.
         no_output => "true";
         }
 
-2. Include the file into the failsafe policy, change the follwoing in `failsafe/failsafe.cf`.
+2. Include the file into the failsafe policy, change the following in `failsafe/failsafe.cf`.
 
         ...
         "cfe_internal_update_policy",
@@ -235,7 +235,7 @@ Save the following in `update/update_from_repository.cf`.
 
 6. Clone your git repository into /var/cfengine/masterfiles. We assume
 that the git service is running on the policy server here for simplicity.
-Please adjust to use your git remote url, if neccessary (you then also need
+Please adjust to use your git remote url, if necessary (you then also need
 to make sure the root user has access to pull updates from git).
 
         root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
@@ -252,6 +252,6 @@ to make sure the root user has access to pull updates from git).
 ## Access control and security
 
 Please see Access control for git in the Mission Portal
-(TODO: link to access-control-mission-portal.mardown) for an introduction
+(TODO: link to access-control-mission-portal.markdown) for an introduction
 to how to allow or limit the Mission Portal users' ability to commit to the
 git repository and make changes to the hosts.

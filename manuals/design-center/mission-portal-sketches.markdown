@@ -58,7 +58,7 @@ Prior to our change, the list of available sketches in the GUI looks like the fo
 
         # make
 
-The sketch is now filtered out from the GUI, as shown by the following GUI screenshot.
+The sketch is now filtered out from the GUI, as shown by the following GUI screen-shot.
 
 ![Sketches available in the Mission Portal after filtering](mission-portal-sketches-available-sketch-filtered.png)
 
@@ -140,7 +140,7 @@ The sketch is now available in the GUI, as shown below.
 
 ![New echo sketch available in the Mission Portal](mission-portal-sketch-add-echo.png)
 
-When going to the configuration page of the new echo sketch (clikcing on it), you can see the input
+When going to the configuration page of the new echo sketch (clicking on it), you can see the input
 and description we configured in its `sketch.json`.
 
 ![New echo sketch configuration in the Mission Portal](mission-portal-sketch-add-echo-activation.png)

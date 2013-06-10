@@ -44,7 +44,7 @@ well as tools and APIs utilized internally by the GUI. Note in particular the
 `tools/cf-sketch/constdata.conf` file that contains out-of-the-box validations 
 and other definitions. See the reference documentation for the [sketch 
 structure](reference-design-center-sketch-structure.html) for a complete 
-list of requirements for a sketch to work wellwith the GUI.
+list of requirements for a sketch to work well with the GUI.
 
 ### /opt/cfengine/userworkdir/$(user)/masterfiles
 
@@ -56,9 +56,9 @@ will be pushed to the git service for applying the changes to the CFEngine
 policy.
 
 `/opt/cfengine` is chosen as the base directory rather than `/var/cfengine` 
-due tospace utilization concerns in `/var` when many users check out their 
+due to space utilization concerns in `/var` when many users check out their 
 local git  clone. It should have enough free space to store the size of the 
-gitmasterfiles clone times the number of users in the `cf_vcs` role.
+git masterfiles clone times the number of users in the `cf_vcs` role.
 
 ### The hosts and /var/cfengine/inputs
 

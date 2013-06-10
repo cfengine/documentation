@@ -23,7 +23,7 @@ There are two user roles that impact users' abilities in the Design Center GUI.
 
 * cf_vcs. If a user is member of the cf_vcs role, he is allowed to use the Design Center GUI
 in the Mission Portal and commit to the git service configured in the settings. Conversely,
-if a user is not member of this role, he will not be able to access the Desing Center GUI -- not
+if a user is not member of this role, he will not be able to access the Design Center GUI -- not
 even to list the available sketches.
 * cf_remoteagent. This role allows users to invoke `cf-agent` on remote hosts and display the verbose
 output from the agents. In the context of the Design Center GUI this is used if a sketch activation
@@ -66,7 +66,7 @@ which users are making which changes in the git commit log.
 ````
 $ git log --pretty=format:"%h %an: %s" --committer='Mission Portal'
 0ac4ae0 bob: Setting up dev environment. Ticket #123.
-5ffc4d1 bob: Configuring postgres on test envirnoment. Ticket #124.
+5ffc4d1 bob: Configuring postgres on test environment. Ticket #124.
 4190ca5 bob: My test activation
 0ac4ae0 tom: remove failed activation
 5ffc4d1 tom: print echo example
