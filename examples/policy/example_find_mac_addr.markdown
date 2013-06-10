@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Find the MAC address
-categories: [Examples, Find the MAC address]
+categories: [Examples, Policy, Find the MAC address]
 published: true
-alias: examples-find-the-mac-address.html
-tags: [Examples, MAC address]
+alias: examples-policy-find-the-mac-address.html
+tags: [Examples, Policy, MAC address]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

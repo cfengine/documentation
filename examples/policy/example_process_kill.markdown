@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Ensure a process is not running
-categories: [Examples, Ensure a process is not running]
+categories: [Examples, Policy, Ensure a process is not running]
 published: true
-alias: examples-ensure-process-not-running.html
-tags: [Examples, process, kill]
+alias: examples-policy-ensure-process-not-running.html
+tags: [Examples, Policy, process, kill]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

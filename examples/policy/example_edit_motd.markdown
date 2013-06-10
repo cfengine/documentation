@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Customize Message of the Day
-categories: [Examples, Customize Message of the Day]
+categories: [Examples, Policy, Customize Message of the Day]
 published: true
-alias: examples-customize-message-of-the-day.html
-tags: [Examples, motd, file editing, files]
+alias: examples-policy-customize-message-of-the-day.html
+tags: [Examples, Policy, motd, file editing, files]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

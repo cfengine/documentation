@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Distribute ssh keys
-categories: [Examples, Distribute ssh keys]
+categories: [Examples, Policy, Distribute ssh keys]
 published: true
-alias: examples-distribute-ssh-keys.html
-tags: [Examples, ssh, distribution]
+alias: examples-policy-distribute-ssh-keys.html
+tags: [Examples, Policy, ssh, distribution]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Mount NFS filesystem
-categories: [Examples, Mount NFS filesystem]
+categories: [Examples, Policy, Mount NFS filesystem]
 published: true
-alias: examples-mount-nfs-filesystem.html
-tags: [Examples, mount, nfs, filesystem]
+alias: examples-policy-mount-nfs-filesystem.html
+tags: [Examples, Policy, mount, nfs, filesystem]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Restart a Process
-categories: [Examples, Restart a Process]
+categories: [Examples, Policy, Restart a Process]
 published: true
-alias: examples-restart-a-process.html
-tags: [Examples, process, restart]
+alias: examples-policy-restart-a-process.html
+tags: [Examples, Policy, process, restart]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Check filesystem space
-categories: [Examples, Check filesystem space]
+categories: [Examples, Policy, Check filesystem space]
 published: true
-alias: examples-check-filesystem-space.html
-tags: [Examples, check, filesystem]
+alias: examples-policy-check-filesystem-space.html
+tags: [Examples, Policy, check, filesystem]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

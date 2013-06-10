@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Set up sudo
-categories: [Examples, Set up sudo]
+categories: [Examples, Policy, Set up sudo]
 published: true
-alias: examples-setup-sudo.html
-tags: [Examples, sudo, file editing]
+alias: examples-policy-setup-sudo.html
+tags: [Examples, Policy, sudo, file editing]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

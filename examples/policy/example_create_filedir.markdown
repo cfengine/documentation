@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Create files and directories
-categories: [Examples, Create files and directories]
+categories: [Examples, Policy, Create files and directories]
 published: true
-alias: examples-create-files-and-directories.html
-tags: [Examples, create, files and directories]
+alias: examples-policy-create-files-and-directories.html
+tags: [Examples, Policy, create, files and directories]
 ---
 
 The following is a standalone policy that will create the file

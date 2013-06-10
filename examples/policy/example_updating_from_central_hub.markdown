@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Updating from a central policy server
-categories: [Examples, Updating from a central policy server]
+categories: [Examples, Policy, Updating from a central policy server]
 published: true
-alias: examples-updating-from-a-central-policy-server.html
-tags: [Examples, updating, policy server]
+alias: examples-policy-updating-from-a-central-policy-server.html
+tags: [Examples, Policy, updating, policy server]
 reviewed: 2013-06-09
 reviewed-by: atsaloli
 ---

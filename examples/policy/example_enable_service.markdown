@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Ensure a service is enabled and running
-categories: [Examples, Ensure a service is enabled and running]
+categories: [Examples, Policy, Ensure a service is enabled and running]
 published: true
-alias: examples-ensure-service-is-enabled-and-running.html
-tags: [Examples, ntp, file editing]
+alias: examples-policy-ensure-service-is-enabled-and-running.html
+tags: [Examples, Policy, ntp, file editing]
 reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---

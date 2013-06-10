@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Aborting execution 
-categories: [Examples, Aborting execution]
+categories: [Examples, Policy, Aborting execution]
 published: true
-alias: examples-aborting-execution.html
-tags: [Examples, aborting execution]
+alias: examples-policy-aborting-execution.html
+tags: [Examples, Policy, aborting execution]
 reviewed: 2013-05-30
 reviewed-by: atsaloli
 ---
