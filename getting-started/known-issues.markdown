@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Known Issues
-sortkey: 5
+sorting: 50
 categories: [Getting Started, Known Issues]
 published: true
 alias: getting-started-known-issues.html

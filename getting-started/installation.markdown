@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Installing CFEngine
-sortkey: 1
+sorting: 10
 categories: [Getting Started, Installation]
 published: true
 alias: getting-started-installation.html
