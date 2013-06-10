@@ -17,7 +17,7 @@ The policy files can be found in `/var/cfengine/share/doc/examples`. You can
 test them locally by copying the respective _`example_file.cf`_ file into
 `/var/cfengine/inputs` and running:
 
-	/var/cfengine/bin/cf-agent -f example_file.cf
+    $ /var/cfengine/bin/cf-agent -f example_file.cf
 
 ## Integrating the Example into your Main Policy
 
@@ -32,9 +32,9 @@ doing the following on your policy server:
 
 ```cf3
     body common control
-	{
-	    bundlesequence  => { "testbundle" };
-	}
+    {
+      bundlesequence  => { "testbundle" };
+    }
 ```
 
 3. Insert the example's bundle name in the `bundlesequence` section
@@ -76,19 +76,17 @@ from the example.
    includes the external library:
 
 ```cf3
-inputs => {
-
-  "libraries/cfengine_stdlib.cf",
-};
+    inputs => {
+      "libraries/cfengine_stdlib.cf"
+    };
 ```
-This is necessary, since cfengine_stdlib.cf is already included
+This is necessary, since `cfengine_stdlib.cf` is already included
 in the inputs section of the master policy.
-
 
 The example policy will now be executed every five minutes along with the rest
 of your main policy.
 
-*NOTE* You may have to fill the example with data before it will work.
+**Notes**: You may have to fill the example with data before it will work.
 For example, the LDAP query in `active_directory.cf` needs a domain name.
 In the variable declaration, replace "cftesting" with your domain name:
 
