@@ -226,6 +226,7 @@ Diagnostics of the MongoDB database. For detailed documentation, see the
 | 12332 | Out | 12331| 12345| 120 |
 | 12332 | In | 12331| 12345| 50 |
 
+<!-- **TODO: un-comment once Quere has been fixed to be Query in API
 ### DatabaseServerStatus
 
 | ReportRoundTimeStamp | Host  | Version | Uptime | GlobalLockTotalTime | GlobalLockTime | GlobalLockQuereTotal| GlobalLockQuereReaders| GlobalLockQuereWriters| MemoryResident| MemoryVirtual| MemoryMapped| BackgroundFlushCount| BackgroundFlushTotalTime| BackgroundFlushAverageTime| BackgroundFlushLastTime|
@@ -234,6 +235,7 @@ Diagnostics of the MongoDB database. For detailed documentation, see the
 | 1359378624 | ubuntu | 2.2.2 | 1650.0 | 0.0 | 0.0 | 0 | 0 | 0 | 86 | 358 | 240 | 27 | 1333 | 0 | 46 |
 
 Data can be correlated with hub diagnostics by ReportTimeStamp.
+-->
 
 ### DatabaseStatus
 
