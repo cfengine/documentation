@@ -5,6 +5,8 @@ categories: [Examples, Set up time management through NTP]
 published: true
 alias: examples-setup-time-management-through-ntp.html
 tags: [Examples, ntp, file editing]
+reviewed: 2013-06-09
+reviewed-by: atsaloli
 ---
 
 

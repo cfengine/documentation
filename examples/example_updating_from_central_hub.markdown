@@ -5,6 +5,8 @@ categories: [Examples, Updating from a central policy server]
 published: true
 alias: examples-updating-from-a-central-policy-server.html
 tags: [Examples, updating, policy server]
+reviewed: 2013-06-09
+reviewed-by: atsaloli
 ---
 
 This is a conceptual example without any test policy associated with it.
