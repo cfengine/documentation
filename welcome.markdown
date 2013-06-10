@@ -3,6 +3,7 @@ layout: default
 title: CFEngine 3.5
 categories: [CFEngine 3.5]
 published: true
+sorting: 1
 alias: index.html
 ---
 
