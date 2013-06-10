@@ -49,6 +49,8 @@ is "httpd" on Red Hat, and "apache2" on Debian.
 Version comparison can be tricky when involving multipart version
 identifiers with numbers and letters.
 
+CFEngine downloads the necessary packages from the default repositories if they are not present on the local machine, then installs them if they are not already installed.
+
 Example run:
 
 ```
@@ -70,3 +72,10 @@ ii  lynx                            2.8.8dev.12-2ubuntu0 all                  Te
 ii  ntp                             1:4.2.6.p3+dfsg-1ubu amd64                Network Time Protocol daemon and utility programs
 # 
 ```
+
+There are examples in `/var/cfengine/share/doc/examples/` of installing packages using specific package managers:
+- Red Hat (unit_package_yum.cf)
+- Debian (unit_package_apt.cf)
+- MSI for Windows (unit_package_msi_file.cf)
+- Solaris (unit_package_solaris.cf)
+- SuSE Linux (unit_package_zypper.cf)
