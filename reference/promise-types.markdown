@@ -642,6 +642,32 @@ The identifier forms a partial identity for optional performance scanning of pro
 
 **Type:** `body classes`
 
+#### scope
+
+**Description:** Scope of the contexts set by this body.
+
+**Type:** (menu option)
+
+**Allowed input range:**
+
+```
+    namespace
+    bundle
+```
+
+**Default value:** namespace
+
+**Example:**
+
+```cf3
+    body classes bundle_class
+    {
+      scope => "bundle";
+      promise_kept => { "bundle_context" };
+    }
+```
+
+**History:** This attribute was introduced in CFEngine 3.5
 
 #### promise_repaired
 
