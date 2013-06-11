@@ -7,35 +7,39 @@ alias: mission-portal-design-center-sketches-available.html
 tags: [available, sketch, design center, mission portal, enterprise, repository, extend]
 ---
 
-As seen in the CFEngine Enterprise sketch flow (TODO: link to enterprise-sketch-flow.markdown),
-the contents of `/var/cfengine/design-center/sketches` controls what is available to users
-of the Design Center GUI. This document explains how to adjust the available sketches
-and add your own.
+As seen in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise],
+the contents of `/var/cfengine/design-center/sketches` controls what is 
+available to users of the Design Center GUI. This document explains how to 
+adjust the available sketches and add your own.
 
-Please note that the Design Center GUI imposes requirements on the sketches to be able
-to sufficiently guide the user of the GUI. See Sketch Structure (TODO: link to reference/sketch.markdown)
-for a complete list of sketch requirements for CFEngine Enterprise compatibility.
-
+Please note that the Design Center GUI imposes requirements on the sketches to 
+be able to sufficiently guide the user of the GUI. See
+[Sketch Structure][Sketch Structure] for a complete list of sketch 
+requirements for CFEngine Enterprise compatibility.
 
 ## Filtering of available sketches
 
-Perhaps you do not want to offer all of the sketches that come out of the box with CFEngine Enterprise
-to all the users of the Design Center GUI. You have two options:
+Perhaps you do not want to offer all of the sketches that come out of the box 
+with CFEngine Enterprise to all the users of the Design Center GUI. You have 
+two options:
 
 * Remove the sketch from `/var/cfengine/design-center/sketches`
-* Remove the `enterprise_compatible` tag in `sketch.json` found in the directory of the sketch.
+* Remove the `enterprise_compatible` tag in `sketch.json` found in the 
+  directory of the sketch.
 
-After doing either of these, we will need to run `make` inside `/var/cfengine/design-center/sketches` in
-order to update the description of available sketches for the GUI
-(it regenerates `/var/cfengine/design-center/sketches/cfsketches.json`).
+After doing either of these, we will need to run `make` inside 
+`/var/cfengine/design-center/sketches` in order to update the description of 
+available sketches for the GUI (it regenerates 
+`/var/cfengine/design-center/sketches/cfsketches.json`).
 
 
 ### Example: filtering out the Packages::removed sketch
 
-In this example, we will remove the Packages::removed sketch from the GUI by removing its `enterprise_compatible`
-tag.
+In this example, we will remove the Packages::removed sketch from the GUI by 
+removing its `enterprise_compatible` tag.
 
-Prior to our change, the list of available sketches in the GUI looks like the following.
+Prior to our change, the list of available sketches in the GUI looks like the 
+following.
 
 ![Sketches available in the Mission Portal](mission-portal-sketches-available.png)
 
@@ -58,17 +62,18 @@ Prior to our change, the list of available sketches in the GUI looks like the fo
 
         # make
 
-The sketch is now filtered out from the GUI, as shown by the following GUI screen-shot.
+The sketch is now filtered out from the GUI, as shown by the following GUI 
+screen-shot.
 
 ![Sketches available in the Mission Portal after filtering](mission-portal-sketches-available-sketch-filtered.png)
 
 
 ## Adding a new sketch to the GUI
 
-In order to add a new sketch, we must make sure it complies with the Enterprise specification for sketches
-(TODO: link to reference/sketch.markdown).
+In order to add a new sketch, we must make sure it complies with the 
+Enterprise [specification for sketches][Sketch Structure].
 
-We will create a sketch that just echos what the user inputs in the GUI.
+We will create a sketch that just echoes what the user inputs in the GUI.
 
 1. Make the directory for our new sketch.
 
@@ -76,6 +81,7 @@ We will create a sketch that just echos what the user inputs in the GUI.
         # cd /var/cfengine/design-center/sketches/system/echo
 
 2. Fill `main.cf` with the following.
+
 ```cf3
         body file control
         {
@@ -129,7 +135,7 @@ We will create a sketch that just echos what the user inputs in the GUI.
             },
             namespace: "myskeches_echo",
             interface: [ "main.cf" ]
-}
+    }
 
 3. Regenerate the description of the sketches.
 
@@ -141,7 +147,7 @@ The sketch is now available in the GUI, as shown below.
 
 ![New echo sketch available in the Mission Portal](mission-portal-sketch-add-echo.png)
 
-When going to the configuration page of the new echo sketch (clicking on it), you can see the input
-and description we configured in its `sketch.json`.
+When going to the configuration page of the new echo sketch (clicking on it), 
+you can see the input and description we configured in its `sketch.json`.
 
 ![New echo sketch configuration in the Mission Portal](mission-portal-sketch-add-echo-activation.png)

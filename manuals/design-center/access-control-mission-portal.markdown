@@ -7,9 +7,9 @@ alias: mission-portal-design-center-access-control.html
 tags: [access, security, role, user, sketch, design center, git, mission portal, enterprise, version control]
 ---
 
-After you have set up the integration between CFEngine Enterprise and git
-(TODO: link to integrating-mission-portal-with-git.markdown), you may grant or revoke
-access rights for making changes with the Design Center GUI to your users.
+After you have set up the [integration between CFEngine Enterprise and git][Integrating Mission Portal with git],
+you may grant or revoke access rights for making changes with the Design 
+Center GUI to your users.
 
 Please note that use of the role-based access control (RBAC) for reporting in the Mission Portal
 is not yet supported in conjunction with the Design Center GUI. For the time being, 
@@ -40,15 +40,19 @@ the GUI, users can only change files that CFEngine monitors. All users will see 
 and be allowed to activate on all hosts. There is not yet a concept of RBAC for the Design Center GUI.
 
 The sketches that are available are controlled with the contents of `/var/cfenigne/design-center` on the
-Mission Portal server. Please see (TODO: link to doc for creating new sketches) for more information.
+Mission Portal server.
+
+<!-- Please see (TODO: link to doc for creating new sketches) for more information. -->
 
 Note however, that malicious users can potentially do damage to hosts even if you limit their
 abilities. For example, if a user creates many activations of the Security::file_integrity sketch
 for a large amount of directories, this will have a performance impact across the infrastructure.
 
-To get complete control over what users do, changes can be reviewed before they are copied to
-`/var/cfengine/masterfiles` on the policy server. Please see Integrating Mission Portal with git
-(TODO: link to integrating-mission-portal-with-git.markdown) for more information.
+To get complete control over what users do, changes can be reviewed before 
+they are copied to `/var/cfengine/masterfiles` on the policy server. Please 
+see [Integrating Mission Portal with git][[Integrating Mission Portal with 
+git]
+for more information.
 
 
 ## Audit log
