@@ -8,1112 +8,894 @@ tags: [reference, variables, mon, cf-monitord, monitoring]
 ---
 
 The variables discovered by `cf-monitord` are placed in this monitoring
-context. Monitoring variables are expected to be changing rapidly.
+context. Monitoring variables are expected to be changing rapidly - values are 
+typically updated or added every 2.5 minutes.
 
 In CFEngine Enterprise, custom defined monitoring targets also become 
 variables in this context, named by the handle of the promise that defined 
 them.
 
-### mon.listening\_udp4\_ports
+### mon.listening_udp4_ports
 
-List variable containing an observational measure collected every 2.5
-minutes from `cf-monitord`. Description: port numbers that were observed
+Port numbers that were observed to be set up to receive connections on the 
+host concerned.
+
+### mon.listening_tcp4_ports
+
+Port numbers that were observed to be set up to receive connections on the 
+host concerned.
+
+### mon.listening_udp6_ports
+
+Port numbers that were observed to be set up to receive connections on the 
+host concerned.
+
+### mon.listening_tcp6_ports
+
+port numbers that were observed
 to be set up to receive connections on the host concerned.
 
-### mon.listening\_tcp4\_ports
+### mon.value_users
 
-List variable containing an observational measure collected every 2.5
-minutes from `cf-monitord`. Description: port numbers that were observed
-to be set up to receive connections on the host concerned.
+Users with active processes, including system users.
 
-### mon.listening\_udp6\_ports
-
-List variable containing an observational measure collected every 2.5
-minutes from `cf-monitord`. Description: port numbers that were observed
-to be set up to receive connections on the host concerned.
-
-### mon.listening\_tcp6\_ports
-
-List variable containing an observational measure collected every 2.5
-minutes from `cf-monitord`. Description: port numbers that were observed
-to be set up to receive connections on the host concerned.
-
-### mon.value\_users
+### mon.av_users
 
 Observational measure collected every 2.5 minutes from `cf-monitord`.
 Description: Users with active processes, including system users.
 
-### mon.av\_users
+### mon.dev_users
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Users with active processes, including system users.
+Users with active processes, including system users.
 
-### mon.dev\_users
+### mon.value_rootprocs
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Users with active processes, including system users.
+Sum privileged system processes.
 
-### mon.value\_rootprocs
+### mon.av_rootprocs
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Sum privileged system processes.
+Sum privileged system processes.
 
-### mon.av\_rootprocs
+### mon.dev_rootprocs
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Sum privileged system processes.
+Sum privileged system processes.
 
-### mon.dev\_rootprocs
+### mon.value_otherprocs
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Sum privileged system processes.
+Sum non-privileged process.
 
-### mon.value\_otherprocs
+### mon.av_otherprocs
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Sum non-privileged process.
+Sum non-privileged process.
 
-### mon.av\_otherprocs
+### mon.dev_otherprocs
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Sum non-privileged process.
+Sum non-privileged process.
 
-### mon.dev\_otherprocs
+### mon.value_diskfree
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Sum non-privileged process.
+Free disk on / partition.
 
-### mon.value\_diskfree
+### mon.av_diskfree
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Free disk on / partition.
+Free disk on / partition.
 
-### mon.av\_diskfree
+### mon.dev_diskfree
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Free disk on / partition.
+Free disk on / partition.
 
-### mon.dev\_diskfree
+### mon.value_loadavg
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Free disk on / partition.
+Kernel load average utilization (sum over cores).
 
-### mon.value\_loadavg
+### mon.av_loadavg
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Kernel load average utilization (sum over cores).
+Kernel load average utilization (sum over cores).
 
-### mon.av\_loadavg
+### mon.dev_loadavg
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Kernel load average utilization (sum over cores).
+Kernel load average utilization (sum over cores).
 
-### mon.dev\_loadavg
+### mon.value_netbiosns_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Kernel load average utilization (sum over cores).
+netbios name lookups (in).
 
-### mon.value\_netbiosns\_in
+### mon.av_netbiosns_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name lookups (in).
+netbios name lookups (in).
 
-### mon.av\_netbiosns\_in
+### mon.dev_netbiosns_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name lookups (in).
+netbios name lookups (in).
 
-### mon.dev\_netbiosns\_in
+### mon.value_netbiosns_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name lookups (in).
+netbios name lookups (out).
 
-### mon.value\_netbiosns\_out
+### mon.av_netbiosns_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name lookups (out).
+netbios name lookups (out).
 
-### mon.av\_netbiosns\_out
+### mon.dev_netbiosns_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name lookups (out).
+netbios name lookups (out).
 
-### mon.dev\_netbiosns\_out
+### mon.value_netbiosdgm_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name lookups (out).
+netbios name datagrams (in).
 
-### mon.value\_netbiosdgm\_in
+### mon.av_netbiosdgm_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name datagrams (in).
+netbios name datagrams (in).
 
-### mon.av\_netbiosdgm\_in
+### mon.dev_netbiosdgm_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name datagrams (in).
+netbios name datagrams (in).
 
-### mon.dev\_netbiosdgm\_in
+### mon.value_netbiosdgm_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name datagrams (in).
+netbios name datagrams (out).
 
-### mon.value\_netbiosdgm\_out
+### mon.av_netbiosdgm_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name datagrams (out).
+netbios name datagrams (out).
 
-### mon.av\_netbiosdgm\_out
+### mon.dev_netbiosdgm_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name datagrams (out).
+netbios name datagrams (out).
 
-### mon.dev\_netbiosdgm\_out
+### mon.value_netbiosssn_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: netbios name datagrams (out).
+Samba/netbios name sessions (in).
 
-### mon.value\_netbiosssn\_in
+### mon.av_netbiosssn_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/netbios name sessions (in).
+Samba/netbios name sessions (in).
 
-### mon.av\_netbiosssn\_in
+### mon.dev_netbiosssn_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/netbios name sessions (in).
+Samba/netbios name sessions (in).
 
-### mon.dev\_netbiosssn\_in
+### mon.value_netbiosssn_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/netbios name sessions (in).
+Samba/netbios name sessions (out).
 
-### mon.value\_netbiosssn\_out
+### mon.av_netbiosssn_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/netbios name sessions (out).
+Samba/netbios name sessions (out).
 
-### mon.av\_netbiosssn\_out
+### mon.dev_netbiosssn_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/netbios name sessions (out).
+Samba/netbios name sessions (out).
 
-### mon.dev\_netbiosssn\_out
+### mon.value_imap_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/netbios name sessions (out).
+imap mail client sessions (in).
 
-### mon.value\_imap\_in
+### mon.av_imap_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: imap mail client sessions (in).
+imap mail client sessions (in).
 
-### mon.av\_imap\_in
+### mon.dev_imap_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: imap mail client sessions (in).
+imap mail client sessions (in).
 
-### mon.dev\_imap\_in
+### mon.value_imap_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: imap mail client sessions (in).
+imap mail client sessions (out).
 
-### mon.value\_imap\_out
+### mon.av_imap_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: imap mail client sessions (out).
+imap mail client sessions (out).
 
-### mon.av\_imap\_out
+### mon.dev_imap_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: imap mail client sessions (out).
+imap mail client sessions (out).
 
-### mon.dev\_imap\_out
+### mon.value_cfengine_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: imap mail client sessions (out).
+cfengine connections (in).
 
-### mon.value\_cfengine\_in
+### mon.av_cfengine_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: cfengine connections (in).
+cfengine connections (in).
 
-### mon.av\_cfengine\_in
+### mon.dev_cfengine_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: cfengine connections (in).
+cfengine connections (in).
 
-### mon.dev\_cfengine\_in
+### mon.value_cfengine_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: cfengine connections (in).
+cfengine connections (out).
 
-### mon.value\_cfengine\_out
+### mon.av_cfengine_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: cfengine connections (out).
+cfengine connections (out).
 
-### mon.av\_cfengine\_out
+### mon.dev_cfengine_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: cfengine connections (out).
+cfengine connections (out).
 
-### mon.dev\_cfengine\_out
+### mon.value_nfsd_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: cfengine connections (out).
+nfs connections (in).
 
-### mon.value\_nfsd\_in
+### mon.av_nfsd_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: nfs connections (in).
+nfs connections (in).
 
-### mon.av\_nfsd\_in
+### mon.dev_nfsd_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: nfs connections (in).
+nfs connections (in).
 
-### mon.dev\_nfsd\_in
+### mon.value_nfsd_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: nfs connections (in).
+nfs connections (out).
 
-### mon.value\_nfsd\_out
+### mon.av_nfsd_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: nfs connections (out).
+nfs connections (out).
 
-### mon.av\_nfsd\_out
+### mon.dev_nfsd_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: nfs connections (out).
+nfs connections (out).
 
-### mon.dev\_nfsd\_out
+### mon.value_smtp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: nfs connections (out).
+smtp connections (in).
 
-### mon.value\_smtp\_in
+### mon.av_smtp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: smtp connections (in).
+smtp connections (in).
 
-### mon.av\_smtp\_in
+### mon.dev_smtp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: smtp connections (in).
+smtp connections (in).
 
-### mon.dev\_smtp\_in
+### mon.value_smtp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: smtp connections (in).
+smtp connections (out).
 
-### mon.value\_smtp\_out
+### mon.av_smtp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: smtp connections (out).
+smtp connections (out).
 
-### mon.av\_smtp\_out
+### mon.dev_smtp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: smtp connections (out).
+smtp connections (out).
 
-### mon.dev\_smtp\_out
+### mon.value_www_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: smtp connections (out).
+www connections (in).
 
-### mon.value\_www\_in
+### mon.av_www_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: www connections (in).
+www connections (in).
 
-### mon.av\_www\_in
+### mon.dev_www_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: www connections (in).
+www connections (in).
 
-### mon.dev\_www\_in
+### mon.value_www_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: www connections (in).
+www connections (out).
 
-### mon.value\_www\_out
+### mon.av_www_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: www connections (out).
+www connections (out).
 
-### mon.av\_www\_out
+### mon.dev_www_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: www connections (out).
+www connections (out).
 
-### mon.dev\_www\_out
+### mon.value_ftp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: www connections (out).
+ftp connections (in).
 
-### mon.value\_ftp\_in
+### mon.av_ftp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ftp connections (in).
+ftp connections (in).
 
-### mon.av\_ftp\_in
+### mon.dev_ftp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ftp connections (in).
+ftp connections (in).
 
-### mon.dev\_ftp\_in
+### mon.value_ftp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ftp connections (in).
+ftp connections (out).
 
-### mon.value\_ftp\_out
+### mon.av_ftp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ftp connections (out).
+ftp connections (out).
 
-### mon.av\_ftp\_out
+### mon.dev_ftp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ftp connections (out).
+ftp connections (out).
 
-### mon.dev\_ftp\_out
+### mon.value_ssh_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ftp connections (out).
+ssh connections (in).
 
-### mon.value\_ssh\_in
+### mon.av_ssh_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ssh connections (in).
+ssh connections (in).
 
-### mon.av\_ssh\_in
+### mon.dev_ssh_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ssh connections (in).
+ssh connections (in).
 
-### mon.dev\_ssh\_in
+### mon.value_ssh_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ssh connections (in).
+ssh connections (out).
 
-### mon.value\_ssh\_out
+### mon.av_ssh_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ssh connections (out).
+ssh connections (out).
 
-### mon.av\_ssh\_out
+### mon.dev_ssh_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ssh connections (out).
+ssh connections (out).
 
-### mon.dev\_ssh\_out
+### mon.value_wwws_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ssh connections (out).
+wwws connections (in).
 
-### mon.value\_wwws\_in
+### mon.av_wwws_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: wwws connections (in).
+wwws connections (in).
 
-### mon.av\_wwws\_in
+### mon.dev_wwws_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: wwws connections (in).
+wwws connections (in).
 
-### mon.dev\_wwws\_in
+### mon.value_wwws_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: wwws connections (in).
+wwws connections (out).
 
-### mon.value\_wwws\_out
+### mon.av_wwws_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: wwws connections (out).
+wwws connections (out).
 
-### mon.av\_wwws\_out
+### mon.dev_wwws_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: wwws connections (out).
+wwws connections (out).
 
-### mon.dev\_wwws\_out
+### mon.value_icmp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: wwws connections (out).
+ICMP packets (in).
 
-### mon.value\_icmp\_in
+### mon.av_icmp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ICMP packets (in).
+ICMP packets (in).
 
-### mon.av\_icmp\_in
+### mon.dev_icmp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ICMP packets (in).
+ICMP packets (in).
 
-### mon.dev\_icmp\_in
+### mon.value_icmp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ICMP packets (in).
+ICMP packets (out).
 
-### mon.value\_icmp\_out
+### mon.av_icmp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ICMP packets (out).
+ICMP packets (out).
 
-### mon.av\_icmp\_out
+### mon.dev_icmp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ICMP packets (out).
+ICMP packets (out).
 
-### mon.dev\_icmp\_out
+### mon.value_udp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: ICMP packets (out).
+UDP dgrams (in).
 
-### mon.value\_udp\_in
+### mon.av_udp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: UDP dgrams (in).
+UDP dgrams (in).
 
-### mon.av\_udp\_in
+### mon.dev_udp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: UDP dgrams (in).
+UDP dgrams (in).
 
-### mon.dev\_udp\_in
+### mon.value_udp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: UDP dgrams (in).
+UDP dgrams (out).
 
-### mon.value\_udp\_out
+### mon.av_udp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: UDP dgrams (out).
+UDP dgrams (out).
 
-### mon.av\_udp\_out
+### mon.dev_udp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: UDP dgrams (out).
+UDP dgrams (out).
 
-### mon.dev\_udp\_out
+### mon.value_dns_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: UDP dgrams (out).
+DNS requests (in).
 
-### mon.value\_dns\_in
+### mon.av_dns_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: DNS requests (in).
+DNS requests (in).
 
-### mon.av\_dns\_in
+### mon.dev_dns_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: DNS requests (in).
+DNS requests (in).
 
-### mon.dev\_dns\_in
+### mon.value_dns_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: DNS requests (in).
+DNS requests (out).
 
-### mon.value\_dns\_out
+### mon.av_dns_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: DNS requests (out).
+DNS requests (out).
 
-### mon.av\_dns\_out
+### mon.dev_dns_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: DNS requests (out).
+DNS requests (out).
 
-### mon.dev\_dns\_out
+### mon.value_tcpsyn_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: DNS requests (out).
+TCP sessions (in).
 
-### mon.value\_tcpsyn\_in
+### mon.av_tcpsyn_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP sessions (in).
+TCP sessions (in).
 
-### mon.av\_tcpsyn\_in
+### mon.dev_tcpsyn_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP sessions (in).
+TCP sessions (in).
 
-### mon.dev\_tcpsyn\_in
+### mon.value_tcpsyn_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP sessions (in).
+TCP sessions (out).
 
-### mon.value\_tcpsyn\_out
+### mon.av_tcpsyn_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP sessions (out).
+TCP sessions (out).
 
-### mon.av\_tcpsyn\_out
+### mon.dev_tcpsyn_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP sessions (out).
+TCP sessions (out).
 
-### mon.dev\_tcpsyn\_out
+### mon.value_tcpack_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP sessions (out).
+TCP acks (in).
 
-### mon.value\_tcpack\_in
+### mon.av_tcpack_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP acks (in).
+TCP acks (in).
 
-### mon.av\_tcpack\_in
+### mon.dev_tcpack_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP acks (in).
+TCP acks (in).
 
-### mon.dev\_tcpack\_in
+### mon.value_tcpack_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP acks (in).
+TCP acks (out).
 
-### mon.value\_tcpack\_out
+### mon.av_tcpack_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP acks (out).
+TCP acks (out).
 
-### mon.av\_tcpack\_out
+### mon.dev_tcpack_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP acks (out).
+TCP acks (out).
 
-### mon.dev\_tcpack\_out
+### mon.value_tcpfin_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP acks (out).
+TCP finish (in).
 
-### mon.value\_tcpfin\_in
+### mon.av_tcpfin_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP finish (in).
+TCP finish (in).
 
-### mon.av\_tcpfin\_in
+### mon.dev_tcpfin_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP finish (in).
+TCP finish (in).
 
-### mon.dev\_tcpfin\_in
+### mon.value_tcpfin_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP finish (in).
+TCP finish (out).
 
-### mon.value\_tcpfin\_out
+### mon.av_tcpfin_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP finish (out).
+TCP finish (out).
 
-### mon.av\_tcpfin\_out
+### mon.dev_tcpfin_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP finish (out).
+TCP finish (out).
 
-### mon.dev\_tcpfin\_out
+### mon.value_tcpmisc_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP finish (out).
+TCP misc (in).
 
-### mon.value\_tcpmisc\_in
+### mon.av_tcpmisc_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP misc (in).
+TCP misc (in).
 
-### mon.av\_tcpmisc\_in
+### mon.dev_tcpmisc_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP misc (in).
+TCP misc (in).
 
-### mon.dev\_tcpmisc\_in
+### mon.value_tcpmisc_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP misc (in).
+TCP misc (out).
 
-### mon.value\_tcpmisc\_out
+### mon.av_tcpmisc_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP misc (out).
+TCP misc (out).
 
-### mon.av\_tcpmisc\_out
+### mon.dev_tcpmisc_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP misc (out).
+TCP misc (out).
 
-### mon.dev\_tcpmisc\_out
+### mon.value_webaccess
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: TCP misc (out).
+Webserver hits.
 
-### mon.value\_webaccess
+### mon.av_webaccess
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Webserver hits.
+Webserver hits.
 
-### mon.av\_webaccess
+### mon.dev_webaccess
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Webserver hits.
+Webserver hits.
 
-### mon.dev\_webaccess
+### mon.value_weberrors
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Webserver hits.
+Webserver errors.
 
-### mon.value\_weberrors
+### mon.av_weberrors
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Webserver errors.
+Webserver errors.
 
-### mon.av\_weberrors
+### mon.dev_weberrors
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Webserver errors.
+Webserver errors.
 
-### mon.dev\_weberrors
+### mon.value_syslog
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Webserver errors.
+New log entries (Syslog).
 
-### mon.value\_syslog
+### mon.av_syslog
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: New log entries (Syslog).
+New log entries (Syslog).
 
-### mon.av\_syslog
+### mon.dev_syslog
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: New log entries (Syslog).
+New log entries (Syslog).
 
-### mon.dev\_syslog
+### mon.value_messages
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: New log entries (Syslog).
+New log entries (messages).
 
-### mon.value\_messages
+### mon.av_messages
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: New log entries (messages).
+New log entries (messages).
 
-### mon.av\_messages
+### mon.dev_messages
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: New log entries (messages).
+New log entries (messages).
 
-### mon.dev\_messages
+### mon.value_temp0
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: New log entries (messages).
+CPU Temperature 0.
 
-### mon.value\_temp0
+### mon.av_temp0
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 0.
+CPU Temperature 0.
 
-### mon.av\_temp0
+### mon.dev_temp0
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 0.
+CPU Temperature 0.
 
-### mon.dev\_temp0
+### mon.value_temp1
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 0.
+CPU Temperature 1.
 
-### mon.value\_temp1
+### mon.av_temp1
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 1.
+CPU Temperature 1.
 
-### mon.av\_temp1
+### mon.dev_temp1
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 1.
+CPU Temperature 1.
 
-### mon.dev\_temp1
+### mon.value_temp2
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 1.
+CPU Temperature 2.
 
-### mon.value\_temp2
+### mon.av_temp2
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 2.
+CPU Temperature 2.
 
-### mon.av\_temp2
+### mon.dev_temp2
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 2.
+CPU Temperature 2.
 
-### mon.dev\_temp2
+### mon.value_temp3
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 2.
+CPU Temperature 3.
 
-### mon.value\_temp3
+### mon.av_temp3
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 3.
+CPU Temperature 3.
 
-### mon.av\_temp3
+### mon.dev_temp3
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 3.
+CPU Temperature 3.
 
-### mon.dev\_temp3
+### mon.value_cpu
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: CPU Temperature 3.
+%CPU utilization (all).
 
-### mon.value\_cpu
+### mon.av_cpu
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization (all).
+%CPU utilization (all).
 
-### mon.av\_cpu
+### mon.dev_cpu
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization (all).
+%CPU utilization (all).
 
-### mon.dev\_cpu
+### mon.value_cpu0
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization (all).
+%CPU utilization 0.
 
-### mon.value\_cpu0
+### mon.av_cpu0
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 0.
+%CPU utilization 0.
 
-### mon.av\_cpu0
+### mon.dev_cpu0
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 0.
+%CPU utilization 0.
 
-### mon.dev\_cpu0
+### mon.value_cpu1
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 0.
+%CPU utilization 1.
 
-### mon.value\_cpu1
+### mon.av_cpu1
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 1.
+%CPU utilization 1.
 
-### mon.av\_cpu1
+### mon.dev_cpu1
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 1.
+%CPU utilization 1.
 
-### mon.dev\_cpu1
+### mon.value_cpu2
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 1.
+%CPU utilization 2.
 
-### mon.value\_cpu2
+### mon.av_cpu2
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 2.
+%CPU utilization 2.
 
-### mon.av\_cpu2
+### mon.dev_cpu2
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 2.
+%CPU utilization 2.
 
-### mon.dev\_cpu2
+### mon.value_cpu3
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 2.
+%CPU utilization 3.
 
-### mon.value\_cpu3
+### mon.av_cpu3
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 3.
+%CPU utilization 3.
 
-### mon.av\_cpu3
+### mon.dev_cpu3
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 3.
+%CPU utilization 3.
 
-### mon.dev\_cpu3
+### mon.value_microsoft_ds_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: %CPU utilization 3.
+Samba/MS_ds name sessions (in).
 
-### mon.value\_microsoft\_ds\_in
+### mon.av_microsoft_ds_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/MS\_ds name sessions (in).
+Samba/MS_ds name sessions (in).
 
-### mon.av\_microsoft\_ds\_in
+### mon.dev_microsoft_ds_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/MS\_ds name sessions (in).
+Samba/MS_ds name sessions (in).
 
-### mon.dev\_microsoft\_ds\_in
+### mon.value_microsoft_ds_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/MS\_ds name sessions (in).
+Samba/MS_ds name sessions (out).
 
-### mon.value\_microsoft\_ds\_out
+### mon.av_microsoft_ds_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/MS\_ds name sessions (out).
+Samba/MS_ds name sessions (out).
 
-### mon.av\_microsoft\_ds\_out
+### mon.dev_microsoft_ds_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/MS\_ds name sessions (out).
+Samba/MS_ds name sessions (out).
 
-### mon.dev\_microsoft\_ds\_out
+### mon.value_www_alt_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Samba/MS\_ds name sessions (out).
+Alternative web service connections (in).
 
-### mon.value\_www\_alt\_in
+### mon.av_www_alt_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Alternative web service connections (in).
+Alternative web service connections (in).
 
-### mon.av\_www\_alt\_in
+### mon.dev_www_alt_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Alternative web service connections (in).
+Alternative web service connections (in).
 
-### mon.dev\_www\_alt\_in
+### mon.value_www_alt_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Alternative web service connections (in).
+Alternative web client connections (out).
 
-### mon.value\_www\_alt\_out
+### mon.av_www_alt_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Alternative web client connections (out).
+Alternative web client connections (out).
 
-### mon.av\_www\_alt\_out
+### mon.dev_www_alt_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Alternative web client connections (out).
+Alternative web client connections (out).
 
-### mon.dev\_www\_alt\_out
+### mon.value_imaps_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Alternative web client connections (out).
+encrypted imap mail service sessions (in).
 
-### mon.value\_imaps\_in
+### mon.av_imaps_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: encrypted imap mail service sessions (in).
+encrypted imap mail service sessions (in).
 
-### mon.av\_imaps\_in
+### mon.dev_imaps_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: encrypted imap mail service sessions (in).
+encrypted imap mail service sessions (in).
 
-### mon.dev\_imaps\_in
+### mon.value_imaps_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: encrypted imap mail service sessions (in).
+encrypted imap mail client sessions (out).
 
-### mon.value\_imaps\_out
+### mon.av_imaps_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: encrypted imap mail client sessions (out).
+encrypted imap mail client sessions (out).
 
-### mon.av\_imaps\_out
+### mon.dev_imaps_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: encrypted imap mail client sessions (out).
+encrypted imap mail client sessions (out).
 
-### mon.dev\_imaps\_out
+### mon.value_ldap_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: encrypted imap mail client sessions (out).
+LDAP directory service service sessions (in).
 
-### mon.value\_ldap\_in
+### mon.av_ldap_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service service sessions (in).
+LDAP directory service service sessions (in).
 
-### mon.av\_ldap\_in
+### mon.dev_ldap_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service service sessions (in).
+LDAP directory service service sessions (in).
 
-### mon.dev\_ldap\_in
+### mon.value_ldap_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service service sessions (in).
+LDAP directory service client sessions (out).
 
-### mon.value\_ldap\_out
+### mon.av_ldap_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service client sessions (out).
+LDAP directory service client sessions (out).
 
-### mon.av\_ldap\_out
+### mon.dev_ldap_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service client sessions (out).
+LDAP directory service client sessions (out).
 
-### mon.dev\_ldap\_out
+### mon.value_ldaps_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service client sessions (out).
+LDAP directory service service sessions (in).
 
-### mon.value\_ldaps\_in
+### mon.av_ldaps_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service service sessions (in).
+LDAP directory service service sessions (in).
 
-### mon.av\_ldaps\_in
+### mon.dev_ldaps_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service service sessions (in).
+LDAP directory service service sessions (in).
 
-### mon.dev\_ldaps\_in
+### mon.value_ldaps_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service service sessions (in).
+LDAP directory service client sessions (out).
 
-### mon.value\_ldaps\_out
+### mon.av_ldaps_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service client sessions (out).
+LDAP directory service client sessions (out).
 
-### mon.av\_ldaps\_out
+### mon.dev_ldaps_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service client sessions (out).
+LDAP directory service client sessions (out).
 
-### mon.dev\_ldaps\_out
+### mon.value_mongo_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: LDAP directory service client sessions (out).
+Mongo database service sessions (in).
 
-### mon.value\_mongo\_in
+### mon.av_mongo_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Mongo database service sessions (in).
+Mongo database service sessions (in).
 
-### mon.av\_mongo\_in
+### mon.dev_mongo_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Mongo database service sessions (in).
+Mongo database service sessions (in).
 
-### mon.dev\_mongo\_in
+### mon.value_mongo_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Mongo database service sessions (in).
+Mongo database client sessions (out).
 
-### mon.value\_mongo\_out
+### mon.av_mongo_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Mongo database client sessions (out).
+Mongo database client sessions (out).
 
-### mon.av\_mongo\_out
+### mon.dev_mongo_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Mongo database client sessions (out).
+Mongo database client sessions (out).
 
-### mon.dev\_mongo\_out
+### mon.value_mysql_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Mongo database client sessions (out).
+MySQL database service sessions (in).
 
-### mon.value\_mysql\_in
+### mon.av_mysql_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: MySQL database service sessions (in).
+MySQL database service sessions (in).
 
-### mon.av\_mysql\_in
+### mon.dev_mysql_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: MySQL database service sessions (in).
+MySQL database service sessions (in).
 
-### mon.dev\_mysql\_in
+### mon.value_mysql_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: MySQL database service sessions (in).
+MySQL database client sessions (out).
 
-### mon.value\_mysql\_out
+### mon.av_mysql_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: MySQL database client sessions (out).
+MySQL database client sessions (out).
 
-### mon.av\_mysql\_out
+### mon.dev_mysql_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: MySQL database client sessions (out).
+MySQL database client sessions (out).
 
-### mon.dev\_mysql\_out
+### mon.value_postgres_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: MySQL database client sessions (out).
+PostgreSQL database service sessions (in).
 
-### mon.value\_postgres\_in
+### mon.av_postgres_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: PostgreSQL database service sessions (in).
+PostgreSQL database service sessions (in).
 
-### mon.av\_postgres\_in
+### mon.dev_postgres_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: PostgreSQL database service sessions (in).
+PostgreSQL database service sessions (in).
 
-### mon.dev\_postgres\_in
+### mon.value_postgres_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: PostgreSQL database service sessions (in).
+PostgreSQL database client sessions (out).
 
-### mon.value\_postgres\_out
+### mon.av_postgres_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: PostgreSQL database client sessions (out).
+PostgreSQL database client sessions (out).
 
-### mon.av\_postgres\_out
+### mon.dev_postgres_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: PostgreSQL database client sessions (out).
+PostgreSQL database client sessions (out).
 
-### mon.dev\_postgres\_out
+### mon.value_ipp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: PostgreSQL database client sessions (out).
+Internet Printer Protocol (in).
 
-### mon.value\_ipp\_in
+### mon.av_ipp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Internet Printer Protocol (in).
+Internet Printer Protocol (in).
 
-### mon.av\_ipp\_in
+### mon.dev_ipp_in
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Internet Printer Protocol (in).
+Internet Printer Protocol (in).
 
-### mon.dev\_ipp\_in
+### mon.value_ipp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Internet Printer Protocol (in).
+Internet Printer Protocol (out).
 
-### mon.value\_ipp\_out
+### mon.av_ipp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Internet Printer Protocol (out).
+Internet Printer Protocol (out).
 
-### mon.av\_ipp\_out
+### mon.dev_ipp_out
 
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Internet Printer Protocol (out).
-
-### mon.dev\_ipp\_out
-
-Observational measure collected every 2.5 minutes from `cf-monitord`.
-Description: Internet Printer Protocol (out).
+Internet Printer Protocol (out).
