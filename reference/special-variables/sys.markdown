@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Variable context sys
-categories: [Reference, Special Variables,Variable context sys]
+title: Context sys
+categories: [Reference, Special Variables, context sys]
 published: true
-alias: reference-special-variables-variable-context-sys.html
-tags: [reference, variables, variable context sys, discovery, system, inventory]
+alias: reference-special-variables-context-sys.html
+tags: [reference, variables, context sys, discovery, system, inventory]
 ---
 
 System variables are derived from CFEngine's automated discovery of system 
@@ -434,7 +434,7 @@ The location of the system resolver file.
 ### sys.uqhost
 
 The unqualified name of the current host. See also
-[`sys.fqhost`][Variable context sys#sys.fqhost].
+[`sys.fqhost`][context sys#sys.fqhost].
 
 ```cf3
     # uqhost = myhost
