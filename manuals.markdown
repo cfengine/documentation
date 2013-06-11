@@ -35,8 +35,10 @@ the promises and compiles them into real-world action.
 ### Ready to Start?
 
 If you are impatient to [get started][Getting Started] writing promises,
-now might be a good time to take a break from concepts and try out your first promises. You can study the [examples][Examples] and look things up in the [reference][Reference] as you go along.
+now might be a good time to take a break from concepts and try out your first 
+promises. You can study the [examples][CFEngine Examples] and look things up 
+in the [reference][CFEngine Reference] as you go along.
 
 If you want a solid foundation for your use of CFEngine, continue reading to 
-understand the [design][Design] and [language 
-concepts][Language Concepts] of CFEngine.
+understand the [design][Design] and [language concepts][Language Concepts] of 
+CFEngine.
