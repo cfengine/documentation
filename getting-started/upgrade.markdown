@@ -97,7 +97,7 @@ Add `cfe_internal_hub_vars` to `bundlesequence` section.
 Add `cfsketch_run` to `bundlesequence` and `cf-sketch-runfile.cf` to inputs 
 section.
 
-### If you've never modified `failsafe.cf` or `update.cf`...
+### If you've never modified failsafe.cf or update.cf...
 
 Replace `update.cf` with `update_bins.cf` and `update_policy.cf`:
 
@@ -143,7 +143,7 @@ Once the edits are done, please make sure your policy is correct by verifying th
 
 * You should keep all control bodies (body agent/executor/server/hub/reporter/monitor/runagent control) and server access_rule() bundle to at least have some suggested attributes
 
-### If you have modified `failsafe.cf` or `update.cf?`...
+### If you have modified failsafe.cf or update.cf?...
 
 Synchronize the contents in failsafe.cf and update.cf manually.
 
