@@ -14,8 +14,7 @@ tags: [reference, functions, classify]
 **Description**: Returns whether the canonicalization of `text` is a currently 
 set class.
 
-This is useful for transforming variables into classes. See also 
-[canonify()][canonify]
+This is useful for transforming variables into classes.
 
 **Arguments**:
 
@@ -29,3 +28,4 @@ This is useful for transforming variables into classes. See also
      "i_am_the_policy_host" expression => classify("master.example.org");
 ```
 
+**See also**: [canonify()][canonify]

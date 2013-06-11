@@ -22,8 +22,6 @@ tags: [reference, functions, difference]
 * `list2` : The name of the subtracted list variable, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-See also [`intersection()`][intersection].
-
 **Example**:
 
 ```cf3
@@ -44,3 +42,5 @@ See also [`intersection()`][intersection].
           "The difference of list '$($(listname1)_str)' with '$($(listname2)_str)' is '$(diff_$(listname1)_$(listname2)_str)'";
 }
 ```
+
+**See also**: [`intersection()`][intersection].
