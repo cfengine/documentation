@@ -54,8 +54,8 @@ passed to services that are started by CFEngine.
     }
 ```
 
-Services promises for Windows are only available in CFEngine Enterprise. 
-Windows Vista/Server 2008 and later introduced new complications
+**Note:** Services promises for Windows are only available in CFEngine 
+Enterprise. Windows Vista/Server 2008 and later introduced new complications
 to the service security policy. Therefore, when testing `services`
 promises from the command line, CFEngine may not be given proper access
 rights, which gives errors like "Access is denied". However, when
@@ -115,10 +115,13 @@ The standard bundle can be replaced with another, as follows:
     }
 ```
 
-Note that the special variables `$(this.promiser)` and
-`$(this.service_policy)` may be used to fill in the service and state
-parameters from the promise definition. The `$(this.service_policy)`
-variable is only defined for services promises.
+Note that the special variables [`$(this.promiser)`][this#this.promiser] and
+[`$(this.service_policy)`][this#this.service_policy] may be used to fill in 
+the service and state parameters from the promise definition. The 
+[`$(this.service_policy)`][this#this.service_policy] variable is only defined 
+for services promises.
+
+**History:** This promise type was introduced in CFEngine 3.3.0 (2012).
 
 ****
 
@@ -128,7 +131,7 @@ variable is only defined for services promises.
 
 **Description:** Policy for CFEngine service status.
 
-If set to `start`, CFEngine Enterprise will keep the service in a running
+If set to `start`, CFEngine will keep the service in a running
 state, while `stop` means that the service is kept in a stopped state.
 `disable` implies `stop`, and ensures that the service can not be started 
 directly, but needs to be enabled somehow first (e.g. by changing file 
@@ -161,13 +164,13 @@ services:
 depends
 
 A list of services that must be running before the service can be started. 
-These dependencies can be started automatically by CFEngine Enterprise if they 
+These dependencies can be started automatically by CFEngine if they 
 are not running see `service_dependence_chain`. However, the dependencies will 
 never be implicitly stopped by CFEngine. Specifying dependencies is optional.
 
 Note that the operating system may keep an additional list of dependencies for 
 a given service, defined during installation of the service. CFEngine 
-Enterprise requires these dependencies to be running as well before starting 
+requires these dependencies to be running as well before starting 
 the service. The complete list of dependencies is thus the union of 
 `service_dependencies` and the internal operating system list.
 
@@ -193,7 +196,7 @@ services:
 
 **Description:** Parameters for starting the service as command
 
-These arguments will only be passed if CFEngine Enterprise starts the service.
+These arguments will only be passed if CFEngine starts the service.
 Thus, set `service_autostart_policy` to `none` to ensure that the
 arguments are always passed.
 
@@ -258,7 +261,7 @@ inetd or xinetd on Unix.
 The service dependencies include both the dependencies defined by the
 operating system and in `service_dependencies`, as described there.
 
-Defaults to `ignore`, which means that CFEngine Enterprise will never start or
+Defaults to `ignore`, which means that CFEngine will never start or
 stop dependencies or dependent services, but fail if dependencies are
 not satisfied. `start_parent_services` means that all dependencies of
 the service will be started if they are not already running. When
@@ -272,9 +275,9 @@ on.
 For example, consider the case where service A depends on B, which
 depends on C. If we want to start B, we must first make sure A is
 running. If `start_parent_services` or `all_related` is set, CFEngine
-Enterprise will start A, if it is not running. On the other hand, if we want
+will start A, if it is not running. On the other hand, if we want
 to stop B, C needs to be stopped first. `stop_child_services` or
-`all_related` means that CFEngine Enterprise will stop C, if it is running.   
+`all_related` means that CFEngine will stop C, if it is running.   
 
 **Type:** (menu option)
 
