@@ -26,3 +26,9 @@
 [readreallist]: reference-functions-readintrealstringlist.html
 [readstringlist]: reference-functions-readintrealstringlist.html
 [Mission Portal]: https://cfengine.com/mission-portal-screenshots
+[utility functions]: tags/utility-functions.html
+[data functions]: tags/data-functions.html
+[system functions]: tags/system-functions.html
+[io functions]: tags/io-functions.html
+[comm functions]: tags/communication-functions.html
+[files functions]: tags/files-functions.html
