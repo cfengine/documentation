@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Access control for Design Center in the Mission Portal
+title: Controlling Access to the Design Center UI
 categories: [Manuals, Design Center, Access control]
 published: true
 alias: mission-portal-design-center-access-control.html

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Available sketches for Design Center in the Mission Portal
+title: Sketches Available in the Mission Portal
 categories: [Manuals, Design Center, Sketches in the Mission Portal]
 published: true
 alias: mission-portal-design-center-sketches-available.html

@@ -265,6 +265,6 @@ until reports are collected is **15 minutes**:
 
 ## Access control and security
 
-Please see [Access control for Design Center in the Mission Portal][Access control for Design Center in the Mission Portal]
+Please see [Access control for Design Center in the Mission Portal][Controlling Access to the Design Center UI]
 for an introduction to how to allow or limit the Mission Portal users' ability 
 to commit to the git repository and make changes to the hosts.
