@@ -69,6 +69,7 @@ def addToLinkFile(file_name,output_file,cur_dir):
 			anchor = header.lower()
 			anchor = anchor.replace(" ", "-")
 			anchor = anchor.replace(":", "-")
+			anchor = anchor.replace(".", "-")
 			anchor = anchor.replace("`", "-")
 			anchor = anchor.replace("/", "-")
 			anchor = anchor.replace("$", "-")
