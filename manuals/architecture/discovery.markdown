@@ -17,5 +17,3 @@ For example, testing whether services are up and running can be a useful probe
 even from a local host. CFEngine has in-built functions for generically 
 probing the environment; these are designed to encourage decentralized 
 monitoring.
-
-<!-- **TODO: This is where it gets interesting- write about orchestration etc...** -->
