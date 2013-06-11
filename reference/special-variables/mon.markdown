@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Context mon
-categories: [Reference, Special Variables, context mon]
+title: mon
+categories: [Reference, Special Variables, mon]
 published: true
 alias: reference-special-variables-context-mon.html
-tags: [reference, variables, context mon, cf-monitord, monitoring]
+tags: [reference, variables, mon, cf-monitord, monitoring]
 ---
 
 The variables discovered by `cf-monitord` are placed in this monitoring

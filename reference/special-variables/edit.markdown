@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Context edit
-categories: [Reference, Special Variables, context edit]
+title: edit
+categories: [Reference, Special Variables, edit]
 published: true
 alias: reference-special-Variables-context-edit.html
-tags: [reference, variables, context edit, edit_line, files promises]
+tags: [reference, variables, edit, edit_line, files promises]
 ---
 
 This context is used to access information about editing promises during 

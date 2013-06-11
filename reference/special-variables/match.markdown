@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Context match
-categories: [Reference, Special Variables, context match]
+title: match
+categories: [Reference, Special Variables, match]
 published: true
 alias: reference-special-Variables-context-match.html
-tags: [reference, variables, context match, strings, file editing, files promises, edit_line]
+tags: [reference, variables, match, strings, file editing, files promises, edit_line]
 ---
 
 Each time CFEngine matches a string, these values are assigned to a special 

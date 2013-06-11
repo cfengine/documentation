@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Context const
-categories: [Reference, Special Variables, context const]
+title: const
+categories: [Reference, Special Variables, const]
 published: true
 alias: reference-special-Variables-context-const.html
-tags: [reference, variables, context const, const]
+tags: [reference, variables, const, const]
 ---
 
 CFEngine defines a number of variables for embedding unprintable values

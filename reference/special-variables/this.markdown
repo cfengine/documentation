@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Context this
-categories: [Reference, Special Variables, context this]
+title: this
+categories: [Reference, Special Variables, this]
 published: true
 alias: reference-special-variables-context-this.html
-tags: [reference, variables, context this, this]
+tags: [reference, variables, this, this]
 ---
 
 The context `this` is used to access information about promises during
