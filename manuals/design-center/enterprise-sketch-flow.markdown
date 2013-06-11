@@ -3,6 +3,7 @@ layout: default
 title: Sketch Flow in CFEngine Enterprise
 categories: [Manuals, Design Center, Enterprise Sketch Flow]
 published: true
+sorting: 20
 alias: manuals-design-center-enterprise-sketch-flow.html
 tags: [sketch, design center, version control, git, masterfiles, Mission Portal, enterprise, ui]
 ---

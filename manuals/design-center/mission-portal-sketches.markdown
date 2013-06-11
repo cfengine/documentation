@@ -3,6 +3,7 @@ layout: default
 title: Sketches Available in the Mission Portal
 categories: [Manuals, Design Center, Sketches in the Mission Portal]
 published: true
+sorting: 30
 alias: mission-portal-design-center-sketches-available.html
 tags: [available, sketch, design center, mission portal, enterprise, repository, extend]
 ---
