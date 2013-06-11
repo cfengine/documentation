@@ -320,7 +320,7 @@ will force a revalidation of the input.
 
 ### auditing
 
-**Deprecated**: This menu option policy is deprecated, does 
+**Deprecated:** This menu option policy is deprecated, does 
 nothing and is kept for backward compatibility.
 
 **Type:** [`boolean`][boolean]
@@ -712,7 +712,7 @@ automatically.
 
 ### hostnamekeys
 
-**Deprecated**: Host identification is now handled transparently.
+**Deprecated:** Host identification is now handled transparently.
 
 **Description:** The `hostnamekeys` menu option policy determines whether 
 to label ppkeys by hostname not IP address.
@@ -792,7 +792,7 @@ It is equivalent to (and when present, overrides) the command line option
 
 ### intermittency
 
-**Deprecated**: This attribute does nothing and is kept for backward  
+**Deprecated:** This attribute does nothing and is kept for backward  
 compatibility.
 
 **Type:** [`boolean`][boolean]

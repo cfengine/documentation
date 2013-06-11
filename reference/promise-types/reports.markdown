@@ -205,10 +205,10 @@ Return values are limited to scalars.
 
 ### showstate
 
-**Deprecated**: This attribute is kept for source compatibility,
+**Deprecated:** This attribute is kept for source compatibility,
 and has no effect.
 
 ### lastseen
 
-**Deprecated**: This attribute is kept for source compatibility,
+**Deprecated:** This attribute is kept for source compatibility,
 and has no effect.

@@ -162,7 +162,7 @@ rate) how quickly CFEngine forgets its previous history.
 
 ### histograms
 
-**Deprecated**: Ignored, kept for backward compatibility
+**Deprecated:** Ignored, kept for backward compatibility
 
 `cf-monitord` now always keeps histograms information, so this
 option is a no-op kept for backward compatibility. It used to cause

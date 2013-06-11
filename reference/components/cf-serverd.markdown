@@ -153,25 +153,10 @@ correspond to system identities on the server-side system.
 
 ### auditing
 
-**Description:** true/false activate auditing of server connections
-
-If true, CFEngine will perform auditing on promises in the
-current configuration. This means that all details surrounding the
-verification of the current promise will be recorded in the audit
-database.
+**Deprecated:** This menu option policy is deprecated, does 
+nothing and is kept for backward compatibility.
 
 **Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example**
-
-```cf3
-    body agent control
-    {
-    auditing  => "true";
-    }
-```
 
 ### bindtointerface
 
@@ -386,7 +371,7 @@ See also the warning about regular expressions in
 
 ### dynamicaddresses
 
-**Deprecated**: This is now handled transparently.
+**Deprecated:** This is now handled transparently.
 
 List of IPs or hostnames for which the IP/name
 binding is expected to change
@@ -411,7 +396,7 @@ public keys in files that do not match the current hostname or IP.
 
 ### hostnamekeys
 
-**Deprecated**: Host identification is now handled transparently.
+**Deprecated:** Host identification is now handled transparently.
 
 true/false store keys using hostname lookup instead of IP addresses
 
