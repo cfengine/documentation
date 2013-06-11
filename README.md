@@ -83,6 +83,11 @@ when generating the tag-pages.
 
 Keeping track of when a documentation page has last been reviewed.
 
+    sorting: number
+
+Sort order within the parent category. Tip: make jumps in 10's so that pages
+can be inserted later.
+
 META tag values will be interpreted literally, and cannot contain `:`, `[` and
 `]`.
 
