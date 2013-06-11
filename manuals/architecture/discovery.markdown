@@ -3,6 +3,7 @@ layout: default
 title: Distributed Discovery
 categories: [Manuals, Architecture, Discovery]
 published: true
+sorting: 50
 alias: manuals-architecture-distributed-discovery.html
 tags: [manuals, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---

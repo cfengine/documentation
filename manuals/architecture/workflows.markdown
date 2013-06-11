@@ -3,6 +3,7 @@ layout: default
 title: Policy Workflow
 categories: [Manuals, Architecture, Policy Workflow]
 published: true
+sorting: 20
 alias: manuals-architecture-policy-workflow.html
 tags: [manuals, systems, configuration management, automation, workflow]
 ---

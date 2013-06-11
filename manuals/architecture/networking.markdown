@@ -3,6 +3,7 @@ layout: default
 title: Networking
 categories: [Manuals, Architecture, Networking]
 published: true
+sorting: 10
 alias: manuals-architecture-networking.html
 tags: [manuals, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
