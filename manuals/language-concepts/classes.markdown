@@ -13,13 +13,17 @@ on context. A promise might only apply to Linux systems, or should only be
 applied on Sundays, or only when a 
 [variable][variables] has a certain value.
 
-Classes are simply facts that represent that current state or context of a 
-system. They are either `set` or `not set`, depending on context. The list of 
-set classes classifies the environment at time of execution. In CFEngine 
-Enterprise, the list of set classes is reported to the CFEngine Database 
-Server, and can be used there for reporting and inventory management.
+Classes are simply facts that represent the current state or context of a 
+system. The list of set classes classifies the environment at time of 
+execution.
 
-Classes fall into hard classes that are discovered by CFEngine, and soft classes that are user-defined.
+Classes are either `set` or `not set`, depending on context. Classes fall into 
+hard classes that are discovered by CFEngine, and soft classes that are 
+user-defined.
+
+In [CFEngine Enterprise][Enterprise Reporting], the list of set classes is 
+reported to the CFEngine Database Server, and can be used there for reporting, 
+grouping of hosts and inventory management.
 
 ## Hard Classes
 
