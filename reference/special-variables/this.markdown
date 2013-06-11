@@ -90,15 +90,16 @@ identified file that makes the promise. For example:
     }
 ```
 
-### service_policy
+### this.service_policy
 
-This variable is set to the values of the promise attribute
-`service_policy`. For example:
+In a services promise, this variable is set to the value of the promise 
+attribute `service_policy`. For example:
 
 ```cf3
     services:
 
       "www"  service_policy => "start";
+      service_bundle => non_standard_services;
 ```
 
 This is typically used in the adaptations for custom services bundles in
