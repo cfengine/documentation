@@ -11,7 +11,7 @@ tags: [reference, functions, regcmp]
 
 **Return type**: `class`
 
-**Description**: Returns whether the regular expression `regex` matches the 
+**Description:** Returns whether the regular expression `regex` matches the 
 `string.`
 
 **Arguments**:
@@ -22,7 +22,7 @@ tags: [reference, functions, regcmp]
 The regular expression is [anchored][anchored], meaning it must match the complete 
 content.
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent subtest(user)

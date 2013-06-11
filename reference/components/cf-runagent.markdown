@@ -85,7 +85,7 @@ introducing such dependencies makes configuration brittle.
 
 ### hosts
 
-**Description**: List of host or IP addresses to attempt connection
+**Description:** List of host or IP addresses to attempt connection
 with
 
 The complete list of contactable hosts. The values may be either
@@ -93,11 +93,11 @@ numerical IP addresses or DNS names, optionally suffixed by a ':'
 and a port number. If no port number is given, the default CFEngine
 port 5308 is assumed.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
     body runagent control
@@ -112,15 +112,15 @@ port 5308 is assumed.
 
 ### port
 
-**Description**: Default port for CFEngine server
+**Description:** Default port for CFEngine server
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `1024,99999`
+**Allowed input range:** `1024,99999`
 
 **Default value:** 5308
 
-**Example**:
+**Example:**
 
 ```cf3
     body hub control
@@ -138,7 +138,7 @@ port 5308 is assumed.
     }
 ```
 
-**Notes**:
+**Notes:**
 
 The standard or registered port number is tcp/5308. CFEngine does
 not presently use its registered udp port with the same number, but
@@ -150,13 +150,13 @@ should not do it without a good reason.
 
 ### force_ipv4
 
-**Description**: true/false force use of ipv4 in connection
+**Description:** true/false force use of ipv4 in connection
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     body copy_from example
@@ -165,13 +165,13 @@ should not do it without a good reason.
     }
 ```
 
-**Notes**:
+**Notes:**
 IPv6 should be harmless to most users unless you have a partially
 or misconfigured setup.
 
 ### trustkey
 
-**Description**: true/false automatically accept all keys on trust
+**Description:** true/false automatically accept all keys on trust
 from servers
 
 If the server's public key has not already been trusted, this
@@ -190,11 +190,11 @@ effect. A machine that has been trusted remains trusted until its
 key is manually revoked by a system administrator. Keys are stored
 in `WORKDIR/ppkeys`.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     body copy_from example
@@ -205,17 +205,17 @@ in `WORKDIR/ppkeys`.
 
 ### encrypt
 
-**Description**: true/false encrypt connections with servers
+**Description:** true/false encrypt connections with servers
 
 Client connections are encrypted with using a Blowfish randomly
 generated session key. The initial connection is encrypted using the
 public/private keys for the client and server hosts.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     body copy_from example
@@ -227,16 +227,16 @@ public/private keys for the client and server hosts.
 
 ### background_children
 
-**Description**: true/false parallelize connections to servers
+**Description:** true/false parallelize connections to servers
 
 Causes `cf-runagent` to attempt parallelized connections to the
 servers.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     body runagent control
@@ -247,7 +247,7 @@ servers.
 
 ### max_children
 
-**Description**: Maximum number of simultaneous connections to
+**Description:** Maximum number of simultaneous connections to
 attempt
 
 For the run-agent this represents the maximum number of forked
@@ -257,13 +257,13 @@ allowed concurrently. Background jobs often lead to contention of
 the disk resources slowing down tasks considerably; there is thus a
 law of diminishing returns.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
 **Default value:** 50 runagents
 
-**Example**:
+**Example:**
 
 ```cf3
     body runagent control
@@ -274,17 +274,17 @@ law of diminishing returns.
 
 ### output_to_file
 
-**Description**: true/false whether to send collected output to
+**Description:** true/false whether to send collected output to
 file(s)
 
 Filenames are chosen automatically and placed in the
 `WORKDIR/outputs/hostname_runagent.out`.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     body runagent control
@@ -295,16 +295,16 @@ Filenames are chosen automatically and placed in the
 
 ### output_directory
 
-**Description**: Directory where the output is stored
+**Description:** Directory where the output is stored
 
 Defines the location for parallelized output to be saved when
 running `cf-runagent` in parallel mode.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
     body runagent control
@@ -317,11 +317,11 @@ running `cf-runagent` in parallel mode.
 
 ### timeout
 
-**Description**: Connection timeout in seconds
+**Description:** Connection timeout in seconds
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `1,9999`
+**Allowed input range:** `1,9999`
 
 **Examples**:
 

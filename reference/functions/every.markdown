@@ -11,7 +11,7 @@ tags: [reference, functions, every]
 
 **Return type**: `class`
 
-**Description**: Returns whether every element in the variable `list` matches
+**Description:** Returns whether every element in the variable `list` matches
 `regex`.
 
 **Arguments**:
@@ -23,7 +23,7 @@ The regular expression is [unanchored][unanchored].
 * `list` : The name of the list variable to check, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test
@@ -55,4 +55,4 @@ bundle agent test
 }
 ```
 
-**See also**: [`filter()`][filter], [`some()`][some], and [`none()`][none].
+**See also:** [`filter()`][filter], [`some()`][some], and [`none()`][none].

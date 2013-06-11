@@ -11,7 +11,7 @@ tags: [reference, functions, none]
 
 **Return type**: `class`
 
-**Description**: Returns whether no element in `list` matches the regular 
+**Description:** Returns whether no element in `list` matches the regular 
 expression `regex`.
 
 **Arguments**:
@@ -20,7 +20,7 @@ expression `regex`.
 * `list` : The name of the list variable to check, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example
@@ -51,4 +51,4 @@ bundle agent example
 }
 ```
 
-**See also**: [`filter()`][filter], [`every()`][every], and [`some()`][some].
+**See also:** [`filter()`][filter], [`every()`][every], and [`some()`][some].

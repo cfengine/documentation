@@ -99,9 +99,9 @@ ordering the items within them.
 
 ### edit_field
 
-**Type**: `body edit_field`
+**Type:** `body edit_field`
 
-**Example**:
+**Example:**
 
 ```cf3
      body edit_field col(split, col, newval, method)
@@ -119,18 +119,18 @@ ordering the items within them.
 
 #### allow_blank_fields
 
-**Description**: Setting `allow_blank_fields` defines how blank fields in a line are handled.
+**Description:** Setting `allow_blank_fields` defines how blank fields in a line are handled.
    
 When editing a file using the field or column model, blank fields, especially 
 at the start and end, are generally discarded. If `allow_blank_fields` is set 
 to true, CFEngine will retain the blank fields and print the appropriate 
 number of field separators. 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body edit_field example
@@ -141,7 +141,7 @@ number of field separators.
 
 #### extend_fields
 
-**Description**: Setting `extend_fields` can add new fields, to avoid 
+**Description:** Setting `extend_fields` can add new fields, to avoid 
 triggering an error.
 
 If a user specifies a field that does not exist, because there are not so many 
@@ -150,11 +150,11 @@ CFEngine will issue an error if a non-existent field is referenced. Blank
 fields in a tabular file can be eliminated or kept depending  in this setting. 
 If in doubt, set this to true. 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body edit_field example
@@ -165,14 +165,14 @@ If in doubt, set this to true.
 
 #### field_operation
 
-**Description**: Menu option policy for editing subfields.
+**Description:** Menu option policy for editing subfields.
 
 The method by which to edit a field in multi-field/column editing of tabular 
 files.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 * `append`
 
@@ -197,9 +197,9 @@ Replace the entire field/column with the specified value.
 
 Delete the specified value (if present) in the specified field/column.
 
-**Default value**: append 
+**Default value:** append 
 
-**Example**:
+**Example:**
 
 ```cf3
      body edit_field example
@@ -210,19 +210,19 @@ Delete the specified value (if present) in the specified field/column.
 
 #### field_separator
 
-**Description**: The regular expression used to separate fields in a line.
+**Description:** The regular expression used to separate fields in a line.
 
 Most tabular files are separated by simple characters, but by allowing a
 general regular expression one can make creative use of this model to
 edit all kinds of line-based text files.   
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
 **Default value:** none
 
-**Example**:
+**Example:**
 
 ```cf3
      body edit_field example
@@ -233,16 +233,16 @@ edit all kinds of line-based text files.
 
 #### field_value
 
-**Description**: Set a field to a constant value.
+**Description:** Set a field to a constant value.
 
 For example, reset the value to a constant default, empty the field, or set it 
 fixed list.   
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body edit_field example(s)
@@ -253,14 +253,14 @@ fixed list.
 
 #### select_field
 
-**Description**: Sets the index of the field required 0..n  (default starts 
+**Description:** Sets the index of the field required 0..n  (default starts 
 from 1). 
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999`
+**Allowed input range:** `0,99999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body field_edits example
@@ -271,31 +271,31 @@ from 1).
 
 #### start_fields_from_zero
 
-**Description**: The numbering of fields is a matter for consistency and 
+**Description:** The numbering of fields is a matter for consistency and 
 convention. Arrays are usually thought to start with first index equal to zero 
 (0), but the first column in a file would normally be 1. By setting this 
 option, you can tell CFEngine that the first column should be understood as 
 number 0 instead, for consistency with other array functions.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **History**: Version 3.1.0b1,Nova 2.0.0b1 (2010)
 
 #### value_separator
 
-**Description**: Defines the character separator for subfields inside the 
+**Description:** Defines the character separator for subfields inside the 
 selected field.
 
 For example, elements in the group file are separated by a colon (':'), but 
 the lists of users in these fields are separated by a comma (',').
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `^.$`
+**Allowed input range:** `^.$`
 
 **Default value:** none
 
-**Example**:
+**Example:**
 
 ```cf3
      body field_edit example

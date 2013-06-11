@@ -11,7 +11,7 @@ tags: [reference, functions, ago]
 
 **Return type**: `int`
 
-**Description**: Convert a time relative to now to an integer system representation.
+**Description:** Convert a time relative to now to an integer system representation.
 
 The `ago` function measures time relative to now. Arguments are applied
 in order, so that ago(0,18,55,27,0,0) means "18 months, 55 days, and 27
@@ -47,7 +47,7 @@ Minutes of runtime 0-59
 
 Seconds of runtime
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent testbundle

@@ -11,7 +11,7 @@ tags: [reference, functions, groupexists]
 
 **Return type**: `class`
 
-**Description**: Returns whether a group `group` exists on this host.
+**Description:** Returns whether a group `group` exists on this host.
 
 The group may be specified by name or identifier.
 
@@ -19,7 +19,7 @@ The group may be specified by name or identifier.
 
 * `group` : Group name or identifier, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 body common control

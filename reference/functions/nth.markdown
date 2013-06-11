@@ -11,7 +11,7 @@ tags: [reference, functions, nth]
 
 **Return type**: `string`
 
-**Description**: Returns the element of `list` at zero-based `position`.
+**Description:** Returns the element of `list` at zero-based `position`.
 
 If an invalid position (below 0 or above the size of the list minus 1)
 is requested, this function does not return a valid value.
@@ -22,7 +22,7 @@ is requested, this function does not return a valid value.
 `[a-zA-Z0-9_$(){}\[\].:]+`
 * `position` : Zero-based position of element in the range `0,999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test
@@ -48,4 +48,4 @@ bundle agent test
 }
 ```
 
-**See also**: [`length()`][length].
+**See also:** [`length()`][length].

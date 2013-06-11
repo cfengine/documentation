@@ -19,13 +19,13 @@ key.
 
 ### string
 
-**Description**: A scalar string
+**Description:** A scalar string
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:  
+**Example:**  
 
 
 ```cf3
@@ -37,13 +37,13 @@ key.
 
 ### int
 
-**Description**: A scalar integer
+**Description:** A scalar integer
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `-99999999999,9999999999`
+**Allowed input range:** `-99999999999,9999999999`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     vars:
@@ -53,7 +53,7 @@ key.
      "dim_array" int =>  readstringarray("array_name","/etc/passwd","#[^\n]*",":",10,4000);
 ```
 
-**Notes**:  
+**Notes:**  
 
 Int variables are strings that are expected to be used as integer numbers. The 
 typing in CFEngine is dynamic, so the variable types are interchangeable. 
@@ -62,13 +62,13 @@ the value you assign to it looks like an integer (e.g., 3, -17, 16K).
 
 ### real
 
-**Description**: A scalar real number
+**Description:** A scalar real number
 
-**Type**: `real`
+**Type:** `real`
 
-**Allowed input range**: `-9.99999E100,9.99999E100`
+**Allowed input range:** `-9.99999E100,9.99999E100`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     vars:
@@ -76,7 +76,7 @@ the value you assign to it looks like an integer (e.g., 3, -17, 16K).
      "scalar" real   => "0.5";
 ```
 
-**Notes**:  
+**Notes:**  
 
 Real variables are strings that are expected to be used as real numbers. The 
 typing in CFEngine is dynamic, so the variable types are interchangeable, but 
@@ -96,13 +96,13 @@ comma-separated list of values.
 
 ### slist
 
-**Description**: A list of scalar strings
+**Description:** A list of scalar strings
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:  
+**Example:**  
 
 ```cf3
     vars:
@@ -121,7 +121,7 @@ comma-separated list of values.
      "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
 ```
 
-**Notes**:
+**Notes:**
 
 Some [functions][Functions] return `slist`s, and an `slist` 
 may contain the values copied from another `slist`, `rlist`, or `ilist`. See 
@@ -129,13 +129,13 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 ### ilist
 
-**Description**: A list of integers
+**Description:** A list of integers
 
-**Type**: `ilist`
+**Type:** `ilist`
 
-**Allowed input range**: `-99999999999,9999999999`
+**Allowed input range:** `-99999999999,9999999999`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     vars:
@@ -145,7 +145,7 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
            ilist => { "10", "11", "12" };
 ```
 
-**Notes**:  
+**Notes:**  
 
 Integer lists are lists of strings that are expected to be treated as
 integers. The typing in CFEngine is dynamic, so the variable types are
@@ -159,13 +159,13 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 ### rlist
 
-**Description**: A list of real numbers
+**Description:** A list of real numbers
 
-**Type**: `rlist`
+**Type:** `rlist`
 
-**Allowed input range**: `-9.99999E100,9.99999E100`
+**Allowed input range:** `-9.99999E100,9.99999E100`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     vars:
@@ -173,7 +173,7 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See
       "varid" rlist => { "0.1", "0.2", "0.3" };
 ```
 
-**Notes**:  
+**Notes:**  
    
 Real lists are lists of strings that are expected to be used as real
 numbers. The typing in CFEngine is dynamic, so the variable types are
@@ -190,14 +190,14 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See [`polic
 
 ### policy
 
-**Description**: The policy for (dis)allowing (re)definition of variables
+**Description:** The policy for (dis)allowing (re)definition of variables
 
 Variables can either be allowed to change their value dynamically (be
 redefined) or they can be constant.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     free
@@ -206,11 +206,11 @@ redefined) or they can be constant.
     ifdefined
 ```
 
-**Default value**:  
+**Default value:**  
 
 `policy = constant`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     vars:
@@ -219,7 +219,7 @@ redefined) or they can be constant.
               policy => "constant";
 ```
 
-**Notes**:  
+**Notes:**  
 
 The policy `constant` indicates that the variable value may not be changed. 
 The policies `free` and `overridable` are synonymous, and indicated that the 

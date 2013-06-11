@@ -48,7 +48,7 @@ classes matching the regular expression `Myclass_.*` hen using the
 
 ### authorize
 
-**Description**: List of public-key user names that are allowed to activate
+**Description:** List of public-key user names that are allowed to activate
 the promised class during remote agent activation
 
 Part of Role Based Access Control (RBAC) in CFEngine. The users listed
@@ -56,11 +56,11 @@ in this section are granted access to set certain classes by using the
 remote `cf-runagent`. The user-names will refer to public key identities
 already trusted on the system.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
     roles:

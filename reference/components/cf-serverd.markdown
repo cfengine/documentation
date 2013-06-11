@@ -71,7 +71,7 @@ files must be granted in addition.
 
 ### allowallconnects
 
-**Description**: List of IPs or hostnames that may have more than one
+**Description:** List of IPs or hostnames that may have more than one
 connection to the server port
 
 This list of regular expressions matches hosts that are allowed to
@@ -88,9 +88,9 @@ will potentially match more than one hostname (e.g.,
 `wwwxdomain.com`, in addition to the desired hostname
 `www.domain.com`).
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
 **Examples**:
 
@@ -106,7 +106,7 @@ will potentially match more than one hostname (e.g.,
 
 ### allowconnects
 
-**Description**: List of IPs or hostnames that may connect to the
+**Description:** List of IPs or hostnames that may connect to the
 server port
 
 If a client's identity matches an entry in this list it is granted
@@ -116,9 +116,9 @@ in this list may not connect or send data to the server.
 See also the warning about regular expressions in 
 [`allowallconnects`][cf-serverd#allowallconnects].
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
 **Examples**:
 
@@ -134,18 +134,18 @@ See also the warning about regular expressions in
 
 ### allowusers
 
-**Description**: List of usernames who may execute requests from this
+**Description:** List of usernames who may execute requests from this
 server
 
 The usernames listed in this list are those asserted as public key
 identities during client-server connections. These may or may not
 correspond to system identities on the server-side system.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
     allowusers => { "cfengine", "root" };
@@ -153,14 +153,14 @@ correspond to system identities on the server-side system.
 
 ### auditing
 
-**Description**: true/false activate auditing of server connections
+**Description:** true/false activate auditing of server connections
 
 If true, CFEngine will perform auditing on promises in the
 current configuration. This means that all details surrounding the
 verification of the current promise will be recorded in the audit
 database.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
@@ -175,16 +175,16 @@ database.
 
 ### bindtointerface
 
-**Description**: IP of the interface to which the server should bind
+**Description:** IP of the interface to which the server should bind
 on multi-homed hosts
 
 On multi-homed hosts, the server and client can bind to a specific
 interface for server traffic. The IP address of the interface must
 be given as the argument, not the device name.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
 ```cf3
     bindtointerface => "192.168.1.1";
@@ -192,16 +192,16 @@ be given as the argument, not the device name.
 
 ### cfruncommand
 
-**Description**: Path to the cf-agent command or cf-execd wrapper for
+**Description:** Path to the cf-agent command or cf-execd wrapper for
 remote execution
 
 It is normal for this to point to the location of `cf-agent` but it
 could also point to the `cf-execd`, or even another program or
 shell command at your own risk.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.+`
+**Allowed input range:** `.+`
 
 
 ```cf3
@@ -215,7 +215,7 @@ shell command at your own risk.
 
 **CFEngine Enterprise only.**
 
-**Description**: The interval in minutes in between collect calls to
+**Description:** The interval in minutes in between collect calls to
 the CFEngine Server offering a tunnel for report collection.
 
 If option time is set, it causes the server daemon to peer with a
@@ -259,11 +259,11 @@ The sequence of events is this:
     reports.
 -   When finished, the host closes the tunnel.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
     call_collect_interval => "5";
 
@@ -316,22 +316,22 @@ The full configuration would look something like this
 
 **CFEngine Enterprise only.**
 
-**Description**: A time in seconds that a collect-call tunnel remains
+**Description:** A time in seconds that a collect-call tunnel remains
 open to a hub to attempt a report transfer before it is closed
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
     collect_window => "15";
 
-**Default value**: 10.
+**Default value:** 10.
 
 **History**: Was introduced in Enterprise 3.0.0 (2012)
 
 ### denybadclocks
 
-**Description**: true/false accept connections from hosts with clocks
+**Description:** true/false accept connections from hosts with clocks
 that are out of sync
 
 A possible form of attack on the fileserver is to request files
@@ -342,11 +342,11 @@ from the server clock (where "too far" is currently defined as
 asynchronization and also a protection against Denial of Service
 attempts based on clock corruption.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** true
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -357,7 +357,7 @@ attempts based on clock corruption.
 
 ### denyconnects
 
-**Description**: List of IPs or hostnames that may NOT connect to the
+**Description:** List of IPs or hostnames that may NOT connect to the
 server port
 
 Hosts or IP addresses that are explicitly denied access. This
@@ -371,11 +371,11 @@ intend to make an exception.
 See also the warning about regular expressions in 
 [`allowallconnects`][cf-serverd#allowallconnects].
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -396,11 +396,11 @@ address-name bindings, we must therefor work harder to determine
 whether hosts credentials are trusted by looking for existing
 public keys in files that do not match the current hostname or IP.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -418,11 +418,11 @@ true/false store keys using hostname lookup instead of IP addresses
 Client side choice to base key associations on host names rather
 than IP address. This is useful for hosts with dynamic addresses.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -433,16 +433,16 @@ than IP address. This is useful for hosts with dynamic addresses.
 
 ### keycacheTTL
 
-**Description**: Maximum number of hours to hold public keys in the
+**Description:** Maximum number of hours to hold public keys in the
 cache
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
 **Default value:** 24
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -456,16 +456,16 @@ cache
 
 ### logallconnections
 
-**Description**: true/false causes the server to log all new
+**Description:** true/false causes the server to log all new
 connections to syslog
 
 If set, the server will record connection attempts in syslog.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -476,18 +476,18 @@ If set, the server will record connection attempts in syslog.
 
 ### logencryptedtransfers
 
-**Description**: true/false log all successful transfers required to
+**Description:** true/false log all successful transfers required to
 be encrypted
 
 If true the server will log all transfers of files which the server
 requires to encrypted in order to grant access (see `ifencrypted`)
 to syslog. These files are deemed to be particularly sensitive.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -498,18 +498,18 @@ to syslog. These files are deemed to be particularly sensitive.
 
 ### maxconnections
 
-**Description**: Maximum number of connections that will be accepted
+**Description:** Maximum number of connections that will be accepted
 
 Watch out for kernel limitations for maximum numbers of open file
 descriptors which can limit this.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
 **Default value:** 30 remote queries
 
-**Example**:
+**Example:**
 
 ```cf3
     # client side 
@@ -529,15 +529,15 @@ descriptors which can limit this.
 
 ### port
 
-**Description**: Default port for the CFEngine server
+**Description:** Default port for the CFEngine server
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `1024,99999`
+**Allowed input range:** `1024,99999`
 
 **Default value:** 5308
 
-**Example**:
+**Example:**
 
 ```cf3
     body hub control
@@ -555,7 +555,7 @@ descriptors which can limit this.
     }
 ```
 
-**Notes**:
+**Notes:**
 
 The standard or registered port number is tcp/5308. CFEngine does
 not presently use its registered udp port with the same number, but
@@ -566,11 +566,11 @@ should not do it without a good reason.
 
 ### serverfacility
 
-**Description**: Menu option for syslog facility level
+**Description:** Menu option for syslog facility level
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:
+**Allowed input range:**
 
     LOG_USER
     LOG_DAEMON
@@ -587,7 +587,7 @@ See syslog notes.
 
 **Default value:** `LOG_USER`
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -598,7 +598,7 @@ See syslog notes.
 
 ### skipverify
 
-**Description**: List of IPs or hostnames for which we expect no DNS
+**Description:** List of IPs or hostnames for which we expect no DNS
 binding and cannot verify
 
 Server side decision to ignore requirements of DNS identity
@@ -607,11 +607,11 @@ confirmation.
 See also the warning about regular expressions in 
 [`allowallconnects`][cf-serverd#allowallconnects].
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -622,7 +622,7 @@ See also the warning about regular expressions in
 
 ### trustkeysfrom
 
-**Description**: List of IPs from whom we accept public keys on trust
+**Description:** List of IPs from whom we accept public keys on trust
 
 If connecting hosts' public keys have not already been trusted, this allows us 
 to accept the keys on trust. Normally this should be an empty list except in 
@@ -631,11 +631,11 @@ controlled circumstances.
 See also the warning about regular expressions in 
 [`allowallconnects`][cf-serverd#allowallconnects].
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control
@@ -646,7 +646,7 @@ See also the warning about regular expressions in
 
 ### listen
 
-**Description**: true/false enable server deamon to listen on defined
+**Description:** true/false enable server deamon to listen on defined
 port
 
 This attribute allows to disable `cf-serverd` from listening on any
@@ -656,11 +656,11 @@ This setting only applies to CFEngine clients, the policy hub will
 not be affected. Changing this setting requires a restart of
 `cf-serverd` for the change to take effect.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** true
 
-**Example**:
+**Example:**
 
 ```cf3
     body server control

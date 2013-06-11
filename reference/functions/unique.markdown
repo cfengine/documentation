@@ -11,14 +11,14 @@ tags: [reference, functions, unique]
 
 **Return type**: `slist`
 
-**Description**: Returns list of unique elements from `list`.
+**Description:** Returns list of unique elements from `list`.
 
 **Arguments**:
 
 * `list` : The name of the list variable, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test

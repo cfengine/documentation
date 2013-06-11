@@ -11,7 +11,7 @@ tags: [reference, functions, canonify]
 
 **Return type**: `string`
 
-**Description**: Convert an arbitrary string `text` into a legal class name.
+**Description:** Convert an arbitrary string `text` into a legal class name.
 
 This function turns arbitrary text into class data (See
 [classify()][classify]).
@@ -20,7 +20,7 @@ This function turns arbitrary text into class data (See
 
 * `text` : String containing non-identifier characters, in the range `.*`
 
-**Example**:  
+**Example:**  
 
 
 ```cf3

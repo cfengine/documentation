@@ -11,7 +11,7 @@ tags: [reference, functions, readtcp]
 
 **Return type**: `string`
 
-**Description**: Connects to tcp `port` of `hostnameip`, sends `sendstring`,
+**Description:** Connects to tcp `port` of `hostnameip`, sends `sendstring`,
 reads at most `maxbytes` from the response and returns those.
 
 If the send string is empty, no data are sent or received from the
@@ -30,7 +30,7 @@ connections fully before deploying.
 * `maxbytes` : Maximum number of bytes to read in response, in the range 
 `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example
@@ -55,7 +55,7 @@ connections fully before deploying.
     }
 ```
 
-**Notes**: Note that on some systems the timeout mechanism does not seem to
+**Notes:** Note that on some systems the timeout mechanism does not seem to
 successfully interrupt the waiting system calls so this might hang if you send 
 an incorrect query string. This should not happen, but the cause has yet to be 
 diagnosed.

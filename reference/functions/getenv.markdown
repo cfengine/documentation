@@ -11,7 +11,7 @@ tags: [reference, functions, getenv]
 
 **Return type**: `string`
 
-**Description**: Return the environment variable `variable`, truncated at 
+**Description:** Return the environment variable `variable`, truncated at 
 `maxlength` characters
 
 Returns an empty string if the environment variable is not defined. 
@@ -27,7 +27,7 @@ variable you are querying.
 * `maxlength` : Maximum number of characters to read , in the range
 `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example
@@ -53,7 +53,7 @@ reports:
 }
 ```
 
-**Notes**:  
+**Notes:**  
 
 **History**: This function was introduced in CFEngine version 3.0.4
 (2010)

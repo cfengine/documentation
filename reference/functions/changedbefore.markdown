@@ -11,7 +11,7 @@ tags: [reference, functions, changedbefore]
 
 **Return type**: `class`
 
-**Description**: Compares the `ctime` fields of two files.
+**Description:** Compares the `ctime` fields of two files.
 
 Returns true if `newer` was changed before `older`, otherwise returns false.
 
@@ -24,7 +24,7 @@ Comparisons like this are normally used for updating files (like the
 * `newer` : Newer filename, in the range `"?(/.*)`
 * `older` : Older filename, in the range `"?(/.*)`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     body common control

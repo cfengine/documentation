@@ -11,7 +11,7 @@ tags: [reference, functions, registryvalue]
 
 **Return type**: `string`
 
-**Description**: Returns the value of `valueid` in the Windows registry key 
+**Description:** Returns the value of `valueid` in the Windows registry key 
 `key`.
 
 This function applies only to Windows-based systems. The value is parsed as a 
@@ -22,7 +22,7 @@ string.
 * `key` : Windows registry key, in the range `.*`
 * `value-id` : Windows registry value-id, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent reg
@@ -40,5 +40,5 @@ string.
     }
 ```
 
-**Notes**: Currently values of type `REG_SZ` (string), `REG_EXPAND_SZ` 
+**Notes:** Currently values of type `REG_SZ` (string), `REG_EXPAND_SZ` 
 (expandable string) and `REG_DWORD` (double word) are supported.

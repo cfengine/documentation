@@ -11,7 +11,7 @@ tags: [reference, functions, classmatch]
 
 **Return type**: `class`
 
-**Description**: Tests whether `regex` matches any currently set class.
+**Description:** Tests whether `regex` matches any currently set class.
 
 Returns true if the regular expression matches any currently defined class, 
 otherwise returns false.
@@ -25,7 +25,7 @@ regular expression must match a complete class for the expression to be true
 (i.e. the regex is 
 [anchored][anchored]).
 
-**Example**:
+**Example:**
 
 ```cf3
     body common control

@@ -11,7 +11,7 @@ tags: [reference, functions, maplist]
 
 **Return type**: `slist`
 
-**Description**: Return a list with each element in `list` modified by a 
+**Description:** Return a list with each element in `list` modified by a 
 pattern.
 
 The `$(this)` variable expands to the currently processed entry from `list`. 
@@ -24,7 +24,7 @@ lists.
 * `list` : The name of the list variable to map, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test

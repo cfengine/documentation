@@ -11,7 +11,7 @@ tags: [reference, functions, host2ip]
 
 **Return type**: `string`
 
-**Description**: Returns the primary name-service IP address for the named host `hostname`.
+**Description:** Returns the primary name-service IP address for the named host `hostname`.
 
 Uses whatever configured name service is used by the resolver library to
 translate `hostname` into an IP address. It will return an IPv6 address
@@ -24,7 +24,7 @@ to debug the behavior of the resolver.
 
 * `hostname` : Host name in ascii, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle server control

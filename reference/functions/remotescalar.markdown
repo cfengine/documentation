@@ -13,7 +13,7 @@ tags: [reference, functions, remotescalar]
 
 **Return type**: `string`
 
-**Description**: Returns a scalar value from a remote CFEngine server.
+**Description:** Returns a scalar value from a remote CFEngine server.
 
 This function asks for an identifier. It is up to the server to interpret what 
 this means and to return a value of its choosing. If the identifier matches a 
@@ -41,7 +41,7 @@ relying on the availability of network resources.
 
 Use enryption.
 
-**Example**:
+**Example:**
 
 ```cf3
     vars:
@@ -61,7 +61,7 @@ Use enryption.
     }
 ```
 
-**Notes**: Note that this function assumes that you have already performed a
+**Notes:** Note that this function assumes that you have already performed a
 successful key exchange between systems, (e.g. using either a remote
 copy or `cf-runagent` connection). It contains no mechanism for trust
 establishment and will fail if there is no trust relationship

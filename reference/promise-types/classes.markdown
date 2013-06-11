@@ -30,16 +30,16 @@ Note: The term class and context are sometimes used interchangeably.
 
 ### and
 
-**Description**: Combine class sources with AND
+**Description:** Combine class sources with AND
 
 The class on the left-hand side is set if all of the class expressions listed 
 on the right-hand side are true.
 
-**Type**: `clist`
+**Type:** `clist`
 
-**Allowed input range**: `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
+**Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     classes:
@@ -47,7 +47,7 @@ on the right-hand side are true.
       "compound_class" and => { classmatch("host[0-9].*"), "Monday", "Hr02" };
 ```
 
-**Notes**:
+**Notes:**
 
 If an expression contains a mixture of different object types that need to be
 ANDed together, this list form is more convenient than providing an 
@@ -55,16 +55,16 @@ expression.
 
 ### dist
 
-**Description**: Generate a probabilistic class distribution
+**Description:** Generate a probabilistic class distribution
 
 Always set one generic class and one additional class, randomly weighted on a 
 probability distribution.
 
-**Type**: `rlist`
+**Type:** `rlist`
 
-**Allowed input range**: `-9.99999E100,9.99999E100`
+**Allowed input range:** `-9.99999E100,9.99999E100`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     classes:
@@ -74,7 +74,7 @@ probability distribution.
         dist => { "10", "20", "40", "50" };
 ```
 
-**Notes**:
+**Notes:**
 
 In the example above the values sum up to `10+20+40+50 = 120`. When generating 
 the distribution, CFEngine picks a number between `1-120`, and set the class 
@@ -89,16 +89,16 @@ the distribution, CFEngine picks a number between `1-120`, and set the class
 
 ### expression
 
-**Description**: Evaluate string expression of classes in normal form
+**Description:** Evaluate string expression of classes in normal form
 
 Set the class on the left-hand side if the expression on the right-hand
 side evaluates to true.
 
-**Type**: `class`
+**Type:** `class`
 
-**Allowed input range**: `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
+**Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     classes:
@@ -109,16 +109,16 @@ side evaluates to true.
 
 ### or
 
-**Description**: Combine class sources with inclusive OR
+**Description:** Combine class sources with inclusive OR
 
 The class on the left-hand side will be set if any one (or more) of
 the class expressions on the right-hand side are true.
 
-**Type**: `clist`
+**Type:** `clist`
 
-**Allowed input range**: `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
+**Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example**:  
+**Example:**  
 
 ```cf3
 classes:
@@ -128,21 +128,21 @@ classes:
       or => { classmatch("linux_x86_64_2_6_22.*"), "suse_10_3" };
 ```
 
-**Notes**:
+**Notes:**
 
 This is useful construction for writing expressions that contain functions.
 
 ### persistence
 
-**Description**: Make the class persistent to avoid re-evaluation
+**Description:** Make the class persistent to avoid re-evaluation
 
 The value specifies time in minutes.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:  
+**Example:**  
 
 ```cf3
 bundle common setclasses
@@ -160,7 +160,7 @@ classes:
 }
 ```
 
-**Notes**:
+**Notes:**
 
 This feature can be used to avoid recomputing expensive classes calculations 
 on each invocation. This is useful if a class discovered is essentially 
@@ -220,17 +220,17 @@ Then create `classes.cf`
 
 ### not
 
-**Description**: Evaluate the negation of string expression in normal form
+**Description:** Evaluate the negation of string expression in normal form
 
 The class on the left-hand side will be set if the class expression on the 
 right-hand side evaluates to false.
 
 
-**Type**: `class`
+**Type:** `class`
 
-**Allowed input range**: `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
+**Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     classes:
@@ -239,7 +239,7 @@ right-hand side evaluates to false.
        "no_toor" not => userexists("toor");
 ```
 
-**Notes**:
+**Notes:**
 
 Knowing that something is not the case is not the same as not knowing whether 
 something is the case. That a class is not set could mean either. See the note
@@ -248,18 +248,18 @@ on [Negative Knowledge][classes and decisions].
 
 ### select_class
 
-**Description**: Select one of the named list of classes to define based on
+**Description:** Select one of the named list of classes to define based on
 host identity
 
 The class is chosen deterministically (not randomly) but it is not
 possible to say which host will end up in which class in advance. Only
 that hosts will always end up in the same class every time.
 
-**Type**: `clist`
+**Type:** `clist`
 
-**Allowed input range**: `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
+**Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     bundle common g
@@ -277,7 +277,7 @@ that hosts will always end up in the same class every time.
     }
 ```
 
-**Notes**:
+**Notes:**
 
 This feature is similar to the [`splayclass` function][splayclass]. However, 
 instead of selecting a class for a moment in time, it always chooses one class 
@@ -288,16 +288,16 @@ purposes).
 
 ### xor
 
-**Description**: Combine class sources with XOR
+**Description:** Combine class sources with XOR
 
 The class on the left-hand side is set if exactly one of the class expressions
 on the right-hand side matches.
 
-**Type**: `clist`
+**Type:** `clist`
 
-**Allowed input range**: `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
+**Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     classes:

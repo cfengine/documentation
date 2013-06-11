@@ -11,7 +11,7 @@ tags: [reference, functions, filesexist]
 
 **Return type**: `class`
 
-**Description**: Returns whether all the files in `list` can be accessed.
+**Description:** Returns whether all the files in `list` can be accessed.
 
 All files must exist, and the user must have access permissions to them for 
 this function to return true.
@@ -21,7 +21,7 @@ this function to return true.
 * `list` : Reference to a list variable, in the range
 `@[(][a-zA-Z0-9]+[)]`
 
-**Example**:
+**Example:**
 
 ```cf3
     body common control

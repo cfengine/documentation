@@ -112,11 +112,11 @@ For standard URLs and locations to link to, see the
 When linking to CFEngine words, use <pre>`code`</pre> markers in the link 
 text.
 
-    **See also**: [`attribute_name`][page#attributename]
+    **See also:** [`attribute_name`][page#attributename]
 
 When the word is a function, mark it as such using `()`:
 
-    **See also**: [`classify()`][classify]
+    **See also:** [`classify()`][classify]
 
 ## Content Style Guide
 
@@ -306,19 +306,19 @@ Start explaining each attribute in the body then using level4-headings:
 
     #### attribute1
     
-    **Description**:
+    **Description:**
     
-    **Type**: `datatype`
+    **Type:** `datatype`
     
-    **Allowed input range**:
+    **Allowed input range:**
     
-    **Default value**:
+    **Default value:**
     
-    **Example**:
+    **Example:**
     
-    **Notes**:
+    **Notes:**
     
-    **See also**:
+    **See also:**
 
 The sections follow the style for promise attributes, see above. Examples
 should be a code snippet at this point, no need for a complete piece of
@@ -332,7 +332,7 @@ Special Variables are documented within the page of their context.
     
     Explanation.
     
-    **See also**: [other variable][context#variable]
+    **See also:** [other variable][context#variable]
 
 ## Publishing
 

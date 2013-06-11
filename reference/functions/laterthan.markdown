@@ -11,7 +11,7 @@ tags: [reference, functions, laterthan]
 
 **Return type**: `class`
 
-**Description**: Returns whether the current time is later than the given 
+**Description:** Returns whether the current time is later than the given 
 date and time.
 
 The arguments are standard time (See [Function on](#Function-on)).
@@ -25,7 +25,7 @@ The arguments are standard time (See [Function on](#Function-on)).
 * `minute` : minute, in the range `0,59`
 * `second` : second, in the range `0,59`
 
-**Example**:
+**Example:**
 
 ```cf3
     classes:

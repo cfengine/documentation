@@ -11,7 +11,7 @@ tags: [reference, functions, accessedbefore]
 
 **Return type**: `class`
 
-**Description**: Compares the `atime` fields of two files.
+**Description:** Compares the `atime` fields of two files.
 
 Return true if `newer` was accessed before `older`.
 
@@ -20,7 +20,7 @@ Return true if `newer` was accessed before `older`.
 * `newer` : Newer filename, in the range `"?(/.*)`
 * `older` : Older filename, in the range `"?(/.*)`
 
-**Example**:  
+**Example:**  
 
 
 ```cf3

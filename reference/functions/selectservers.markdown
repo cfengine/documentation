@@ -11,7 +11,7 @@ tags: [reference, functions, selectservers]
 
 **Return type**: `int`
 
-**Description**: Returns the number of tcp servers from `hostlist` which 
+**Description:** Returns the number of tcp servers from `hostlist` which 
 respond correctly to a query send to `port`, and populates array with their 
 names.
 
@@ -36,7 +36,7 @@ satisfactory).
 * `array` : Name for array of results, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example

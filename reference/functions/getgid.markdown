@@ -11,7 +11,7 @@ tags: [reference, functions, getgid]
 
 **Return type**: `int`
 
-**Description**: Return the integer group id of the group `groupname` on this 
+**Description:** Return the integer group id of the group `groupname` on this 
 host.
 
 If the named group does not exist, the function will fail and the variable 
@@ -21,7 +21,7 @@ will not be defined.
 
 * `groupname` : Group name as text, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example
@@ -38,6 +38,6 @@ reports:
 }
 ```
 
-**Notes**:
+**Notes:**
 On Windows, which does not support group ids, the variable will not be
 defined.

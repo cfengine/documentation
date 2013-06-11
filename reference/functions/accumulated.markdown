@@ -11,7 +11,7 @@ tags: [reference, functions, accumulated]
 
 **Return type**: `int`
 
-**Description**: Convert an accumulated amount of time into a system representation.
+**Description:** Convert an accumulated amount of time into a system representation.
 
 The `accumulated` function measures total accumulated runtime. Arguments
 are applied additively, so that accumulated(0,0,2,27,90,0) means "2
@@ -48,7 +48,7 @@ Minutes of runtime 0-59
 
 Seconds of runtime
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent testbundle

@@ -11,7 +11,7 @@ tags: [reference, functions, difference]
 
 **Return type**: `slist`
 
-**Description**: Returns the unique elements in `list1` that are not in 
+**Description:** Returns the unique elements in `list1` that are not in 
 `list2`.
 
 **Arguments**:
@@ -22,7 +22,7 @@ tags: [reference, functions, difference]
 * `list2` : The name of the subtracted list variable, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test
@@ -43,4 +43,4 @@ tags: [reference, functions, difference]
 }
 ```
 
-**See also**: [`intersection()`][intersection].
+**See also:** [`intersection()`][intersection].

@@ -11,7 +11,7 @@ tags: [reference, functions, randomint]
 
 **Return type**: `int`
 
-**Description**: Returns a random integer between `lower` and `upper`.
+**Description:** Returns a random integer between `lower` and `upper`.
 
 The limits must be integer values and the resulting numbers are based on
 the entropy of the md5 algorithm.
@@ -24,7 +24,7 @@ context class expression as shown in the example.
 * `lower` : Lower inclusive bound, in the range `-99999999999,9999999999`
 * `upper` : Upper inclusive bound, in the range `-99999999999,9999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent randomint_example

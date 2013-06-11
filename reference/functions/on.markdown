@@ -11,7 +11,7 @@ tags: [reference, functions, "on"]
 
 **Return type**: `int`
 
-**Description**: Returns the specified date/time in integer system representation.
+**Description:** Returns the specified date/time in integer system representation.
 
 The specified date/time is an absolute date in the local timezone.
 
@@ -24,7 +24,7 @@ The specified date/time is an absolute date in the local timezone.
 * `minute` : minute, in the range `0,59`
 * `second` : second, in the range `0,59`
 
-**Example**:
+**Example:**
 
 ```cf3
     body file_select zero_age
@@ -34,6 +34,6 @@ The specified date/time is an absolute date in the local timezone.
     }
 ```
 
-**Notes**:
+**Notes:**
 In process matching, dates could be wrong by an hour depending on Daylight 
 Savings Time / Summer Time. This is a known bug to be fixed.

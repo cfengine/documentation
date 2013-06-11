@@ -11,14 +11,14 @@ tags: [reference, functions, length]
 
 **Return type**: `int`
 
-**Description**: Returns the length of `list`.
+**Description:** Returns the length of `list`.
 
 **Arguments**:
 
 * `list` : The name of the list variable, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test
@@ -42,4 +42,4 @@ bundle agent test
 }
 ```
 
-**See also**: [`nth()`][nth].
+**See also:** [`nth()`][nth].

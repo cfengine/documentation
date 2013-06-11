@@ -11,7 +11,7 @@ tags: [reference, functions, countclassesmatching]
 
 **Return type**: `int`
 
-**Description**: Count the number of defined classes matching `regex`.
+**Description:** Count the number of defined classes matching `regex`.
 
 This function matches classes, using a regular expression that should
 match the whole line. The function returns the number of classes matched.
@@ -25,7 +25,7 @@ of set classes. The regular expression is
 [anchored][anchored], meaning it must match a complete 
 class.
 
-**Example**:  
+**Example:**  
 
 ```cf3
     bundle agent example

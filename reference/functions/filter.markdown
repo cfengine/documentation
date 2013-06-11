@@ -11,7 +11,7 @@ tags: [reference, functions, filter]
 
 **Return type**: `slist`
 
-**Description**: Transforms a list into a subset thereof.
+**Description:** Transforms a list into a subset thereof.
 
 This is a generic filtering function that returns a list of up to `max_return` 
 elements in `list` that match the filtering rules specified in `filter`, 
@@ -32,7 +32,7 @@ Invert filter.
 
 * `max_return` : Maximum number of elements to return in the range `0,999999999`
 
-**Example**:  
+**Example:**  
 
 
 ```cf3
@@ -66,5 +66,5 @@ Invert filter.
     }
 ```
 
-**See also**: [`grep()`][grep], [`every()`][every], [`some()`][some], and 
+**See also:** [`grep()`][grep], [`every()`][every], [`some()`][some], and 
 [`none()`][none].

@@ -65,13 +65,13 @@ The data aggregator of CFEngine Enterprise.
 
 ### export_zenoss
 
-**Description**: Generate report for Zenoss integration
+**Description:** Generate report for Zenoss integration
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.+`
+**Allowed input range:** `.+`
 
-**Example**:
+**Example:**
 
     body hub control
     {
@@ -80,7 +80,7 @@ The data aggregator of CFEngine Enterprise.
       export_zenoss => "/var/www/reports/summary.z";
     }
 
-**Notes**:
+**Notes:**
 
 For integration with the Zenoss monitoring software.
 
@@ -88,7 +88,7 @@ For integration with the Zenoss monitoring software.
 
 ### exclude_hosts
 
-**Description**: A list of IP addresses of hosts to exclude from
+**Description:** A list of IP addresses of hosts to exclude from
 report collection
 
 This list of IP addresses will not be queried for reports by `cf-hub`, even 
@@ -98,31 +98,31 @@ The lists may contain network addresses in CIDR notation or regular
 expressions to match the IP address. However, host names are
 currently not supported.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
     body hub control
     {
     exclude_hosts => { "192.168.12.21", "10.10", "10.12.*" };
     }
 
-**Notes**:
+**Notes:**
 
 **History**: Was introduced in 3.3.0, Enterprise 2.1.1 (2011)
 
 ### hub_schedule
 
-**Description**: The class schedule used by cf-hub for report
+**Description:** The class schedule used by cf-hub for report
 collation
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
     body hub control
     {
@@ -134,11 +134,11 @@ collation
 
 ### port
 
-**Description**: Default port for contacting hosts
+**Description:** Default port for contacting hosts
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `1024,99999`
+**Allowed input range:** `1024,99999`
 
 **Default value:** 5308
 
@@ -160,7 +160,7 @@ collation
     }
 ```
 
-**Notes**:
+**Notes:**
 
 The standard or registered port number is tcp/5308. CFEngine does not 
 presently use its registered udp port with the same number, but this could 

@@ -11,7 +11,7 @@ tags: [reference, functions, filesize]
 
 **Return type**: `int`
 
-**Description**: Returns the size of the file `filename` in bytes.
+**Description:** Returns the size of the file `filename` in bytes.
 
 If the file object does not exist, the function call fails and the
 variable does not expand.
@@ -20,7 +20,7 @@ variable does not expand.
 
 * `filename` : File object name, in the range `"?(/.*)`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     bundle agent example

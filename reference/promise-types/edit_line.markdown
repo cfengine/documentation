@@ -192,22 +192,22 @@ update         => "yes";
 
 ### select_region
 
-**Type**: `body select_region`
+**Type:** `body select_region`
 
 #### include_start_delimiter
 
-**Description**: Whether to include the section delimiter
+**Description:** Whether to include the section delimiter
 
 In a sectioned file, the line that marks the opening of a section is not
 normally included in the defined region (that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing). Setting this option to true makes it included.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body select_region MySection(x)
@@ -240,18 +240,18 @@ unaffected by any `delete_lines` promises. See the next section on
 
 #### include_end_delimiter
 
-**Description**: Whether to include the section delimiter
+**Description:** Whether to include the section delimiter
 
 In a sectioned file, the line that marks the end of a section is not
 normally included in the defined region; that is, it is recognized as a
 delimiter, but it is not included as one of the lines available for
 editing. Setting this option to true makes it included.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body select_region BracketSection(x)
@@ -291,16 +291,16 @@ in `include_start_delimiter`).
 
 #### select_start
 
-**Description**: Regular expression matching start of edit region
+**Description:** Regular expression matching start of edit region
 
 See also [`select_end`][bundle edit_line#select_end]. These delimiters mark 
 out the region of a file to be edited.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body select_region example(x)
@@ -312,16 +312,16 @@ out the region of a file to be edited.
 
 #### select_end
 
-**Description**: Regular expression matches end of edit region from start
+**Description:** Regular expression matches end of edit region from start
 
 See also [`select_start`][bundle edit_line#select_start]. These delimiters 
 mark out the region of a file to be edited.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body select_region example(x)

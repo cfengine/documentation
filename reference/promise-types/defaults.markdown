@@ -101,18 +101,18 @@ reports:
 
 ### if_match_regex
 
-**Description**: If this regular expression matches the current value of
+**Description:** If this regular expression matches the current value of
 the variable, replace it with default
 
 If a parameter or variable is already defined in the current context, and the 
 value matches this regular expression, it will be deemed invalid and replaced 
 with the default value.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:  
+**Example:**  
 
 ```cf3
     bundle agent mymethod(a,b)

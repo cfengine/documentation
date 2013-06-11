@@ -11,7 +11,7 @@ tags: [reference, functions, strcmp]
 
 **Return type**: `class`
 
-**Description**: Returns whether the two strings `string1` and `string2` match 
+**Description:** Returns whether the two strings `string1` and `string2` match 
 exactly.
 
 **Arguments**:
@@ -19,7 +19,7 @@ exactly.
 * `string1` : The first string, in the range `.*`
 * `string2` : The second string, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

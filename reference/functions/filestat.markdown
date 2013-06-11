@@ -11,7 +11,7 @@ tags: [reference, functions, filestat]
 
 **Return type**: `string`
 
-**Description**: Returns the requested file field.
+**Description:** Returns the requested file field.
 
 If the file object does not exist, the function call fails and the
 variable does not expand.
@@ -39,7 +39,7 @@ variable does not expand.
     * `basename`
     * `dirname`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent fileinfo(f)
@@ -54,11 +54,11 @@ variable does not expand.
     }
 ```
 
-**Notes**:  
+**Notes:**  
    
 The list of fields may be extended as needed.
 
 **History**: Was introduced in version 3.5.0,Enterprise 3.1 (2013)
 
-**See also**: [`lastnode()`][lastnode], [`dirname()`][dirname], 
+**See also:** [`lastnode()`][lastnode], [`dirname()`][dirname], 
 [`splitstring()`][splitstring].

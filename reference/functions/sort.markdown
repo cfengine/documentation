@@ -11,7 +11,7 @@ tags: [reference, functions, sort]
 
 **Return type**: `slist`
 
-**Description**: Returns `list` sorted according to `mode`.
+**Description:** Returns `list` sorted according to `mode`.
 
 Only lexicographical sorting is supported currently.
 
@@ -21,7 +21,7 @@ Only lexicographical sorting is supported currently.
 `[a-zA-Z0-9_$(){}\[\].:]+`
 * `mode` : Sorting mode, in the range `lex`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test
@@ -70,4 +70,4 @@ Output:
     sorted '1,a,b' = '1,a,b'
 ```
 
-**See also**: [`shuffle()`][shuffle].
+**See also:** [`shuffle()`][shuffle].

@@ -126,7 +126,7 @@ variable is only defined for services promises.
 
 ### service_policy
 
-**Description**: Policy for CFEngine service status.
+**Description:** Policy for CFEngine service status.
 
 If set to `start`, CFEngine Enterprise will keep the service in a running
 state, while `stop` means that the service is kept in a stopped state.
@@ -134,9 +134,9 @@ state, while `stop` means that the service is kept in a stopped state.
 directly, but needs to be enabled somehow first (e.g. by changing file 
 permissions).
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     start
@@ -146,7 +146,7 @@ permissions).
     reload
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
 services:
@@ -157,7 +157,7 @@ services:
 
 ### service_dependencies
 
-**Description**: A list of services on which the named service abstraction
+**Description:** A list of services on which the named service abstraction
 depends
 
 A list of services that must be running before the service can be started. 
@@ -171,11 +171,11 @@ Enterprise requires these dependencies to be running as well before starting
 the service. The complete list of dependencies is thus the union of 
 `service_dependencies` and the internal operating system list.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
+**Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 services:
@@ -187,11 +187,11 @@ services:
 
 ### service_method
 
-**Type**: `body service_method`
+**Type:** `body service_method`
 
 #### service_args
 
-**Description**: Parameters for starting the service as command
+**Description:** Parameters for starting the service as command
 
 These arguments will only be passed if CFEngine Enterprise starts the service.
 Thus, set `service_autostart_policy` to `none` to ensure that the
@@ -201,11 +201,11 @@ Escaped quotes can be used to pass an argument containing spaces as a
 single argument, e.g. `-f \"file name.conf\"`. Passing arguments is
 optional.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body service_method example
@@ -216,7 +216,7 @@ optional.
 
 #### service_autostart_policy
 
-**Description**: Should the service be started automatically by the OS
+**Description:** Should the service be started automatically by the OS
 
 Defaults to `none`, which means that the service is not registered for
 automatic startup by the operating system in any way. It must be `none`
@@ -224,9 +224,9 @@ if `service_policy` is not `start`. `boot_time` means the service is
 started at boot time, while `on_demand` means that the service is
 dispatched once it is being used.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     none
@@ -234,7 +234,7 @@ dispatched once it is being used.
     on_demand
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body service_method example
@@ -243,17 +243,17 @@ dispatched once it is being used.
      }
 ```
 
-**Notes**: `on_demand` is not supported by Windows, and is implemented through
+**Notes:** `on_demand` is not supported by Windows, and is implemented through
 inetd or xinetd on Unix.   
 
 
 #### service_bundle
 
-**Type**: `bundle agent`
+**Type:** `bundle agent`
 
 #### service_dependence_chain
 
-**Description**: How to handle dependencies and dependent services
+**Description:** How to handle dependencies and dependent services
 
 The service dependencies include both the dependencies defined by the
 operating system and in `service_dependencies`, as described there.
@@ -276,9 +276,9 @@ Enterprise will start A, if it is not running. On the other hand, if we want
 to stop B, C needs to be stopped first. `stop_child_services` or
 `all_related` means that CFEngine Enterprise will stop C, if it is running.   
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     ignore
@@ -287,7 +287,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
     all_related
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body service_method example
@@ -298,18 +298,18 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 
 #### service_type
 
-**Description**: Service abstraction type
+**Description:** Service abstraction type
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     windows
     generic
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body service_method example
@@ -318,7 +318,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
      }
 ```
 
-**Notes**:
+**Notes:**
 On Windows this defaults to, and must be `windows`. Unix systems can
 however have multiple means of registering services, but the choice must
 be available on the given system.

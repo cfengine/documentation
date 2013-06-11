@@ -38,9 +38,9 @@ multiple promises that each set an attribute.
 
 ### attribute_value
 
-**Description**: Value of the attribute to be inserted into the XPath node
+**Description:** Value of the attribute to be inserted into the XPath node
 of the XML file
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)

@@ -11,7 +11,7 @@ tags: [reference, functions, some]
 
 **Return type**: `class`
 
-**Description**: Return whether any element of the list matches the regular 
+**Description:** Return whether any element of the list matches the regular 
 expression.
 
 **Arguments**:
@@ -20,7 +20,7 @@ expression.
 * `list` : The name of the list variable to check, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test
@@ -51,4 +51,4 @@ expression.
     }
 ```
 
-**See also**: [`filter()`][filter], [`every()`][every], and [`none()`][none].
+**See also:** [`filter()`][filter], [`every()`][every], and [`none()`][none].

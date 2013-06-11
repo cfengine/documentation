@@ -11,7 +11,7 @@ tags: [reference, functions, join]
 
 **Return type**: `string`
 
-**Description**: Join the items of `list` into a string, using the conjunction in `glue`.
+**Description:** Join the items of `list` into a string, using the conjunction in `glue`.
 
 Converts a string of type list into a scalar variable using the join
 string in first argument.
@@ -22,7 +22,7 @@ string in first argument.
 * `list` : CFEngine list identifier, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test

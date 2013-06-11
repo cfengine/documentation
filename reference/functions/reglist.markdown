@@ -11,7 +11,7 @@ tags: [reference, functions, reglist]
 
 **Return type**: `class`
 
-**Description**: Returns whether the regular expression `regex` matches any item in `list`.
+**Description:** Returns whether the regular expression `regex` matches any item in `list`.
 
 **Arguments**:
 
@@ -20,7 +20,7 @@ tags: [reference, functions, reglist]
 
 The regular expression is [anchored][anchored], meaning it must match the entire string.
 
-**Example**:
+**Example:**
 
 ```cf3
     vars:

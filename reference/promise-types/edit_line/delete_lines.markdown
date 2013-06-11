@@ -44,22 +44,22 @@ promise.
 
 ### delete_select
 
-**Type**: `body delete_select`
+**Type:** `body delete_select`
 
 #### delete_if_startwith_from_list
 
-**Description**: Delete lines from a file if they begin with the sub-strings 
+**Description:** Delete lines from a file if they begin with the sub-strings 
 listed.
 
 Note that this determination is made only on promised lines (that is, this
 attribute modifies the selection criteria, it does not make the initial 
 selection). 
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      bundle edit_line alpha
@@ -93,18 +93,18 @@ Thus, the promise will delete only the first and third lines of the file:
 
 #### delete_if_not_startwith_from_list
 
-**Description**: Delete lines from a file unless they start with the 
+**Description:** Delete lines from a file unless they start with the 
 sub-strings in the list given.
 
 Note that this determination is made only on promised lines. In other words, 
 this attribute modifies the selection criteria, it does not make the initial 
 selection.   
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body delete_select example(s)
@@ -115,16 +115,16 @@ selection.
 
 #### delete_if_match_from_list
 
-**Description**: Delete lines from a file if the lines *completely* match any of the [anchored][anchored] regular expressions listed.
+**Description:** Delete lines from a file if the lines *completely* match any of the [anchored][anchored] regular expressions listed.
 
 Note that this attribute modifies the selection criteria, it does not make the 
 initial selection, and the match determination is made only on promised lines.   
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body delete_select example(s)
@@ -135,16 +135,16 @@ initial selection, and the match determination is made only on promised lines.
 
 #### delete_if_not_match_from_list
 
-**Description**: Delete lines from a file unless the lines *completely* match any of the [anchored][anchored] regular expressions listed.
+**Description:** Delete lines from a file unless the lines *completely* match any of the [anchored][anchored] regular expressions listed.
 
 Note that this attribute modifies the selection criteria, it does not make the 
 initial selection, and the match determination is made only on promised lines.   
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body delete_select example(s)
@@ -155,17 +155,17 @@ initial selection, and the match determination is made only on promised lines.
 
 #### delete_if_contains_from_list
 
-**Description**: Delete lines from a file if they contain the sub-strings 
+**Description:** Delete lines from a file if they contain the sub-strings 
 listed.
 
 Note that this attribute modifies the selection criteria, it does not make the 
 initial selection, and the match determination is made only on promised lines.   
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body delete_select example(s)
@@ -176,17 +176,17 @@ initial selection, and the match determination is made only on promised lines.
 
 #### delete_if_not_contains_from_list
 
-**Description**: Delete lines from the file which do not contain the sub-strings listed.
+**Description:** Delete lines from the file which do not contain the sub-strings listed.
 
 Note that this attribute modifies the selection criteria, it does not
 make the initial selection, and the match determination is made only on
 promised lines.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body delete_select discard(s)
@@ -197,18 +197,18 @@ promised lines.
 
 ### not_matching
 
-**Description**: When this option is true, it negates the pattern match of the promised lines.
+**Description:** When this option is true, it negates the pattern match of the promised lines.
 
 This makes no sense for multi-line deletions, and is therefore disallowed. Either a multi-line promiser matches and it should be removed (i.e. `not_matching` is false), or it does not match the whole thing and the ordered lines have no meaning anymore as an entity. In this case, the lines can be separately stated.
 
 Note that this does not negate any condition expressed in `delete_select`. It 
 only negates the match of the initially promised lines.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     delete_lines:

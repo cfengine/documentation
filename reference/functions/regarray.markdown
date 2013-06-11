@@ -11,7 +11,7 @@ tags: [reference, functions, regarray]
 
 **Return type**: `class`
 
-**Description**: Returns whether `array` contains elements matching the
+**Description:** Returns whether `array` contains elements matching the
 regular expression `regex`.
 
 * `array` : array identifier, in the range
@@ -21,7 +21,7 @@ regular expression `regex`.
 A regular expression to match the content. The regular expression is
 anchored, meaning it must match the complete array element.
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example

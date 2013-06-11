@@ -11,7 +11,7 @@ tags: [reference, functions, maparray]
 
 **Return type**: `slist`
 
-**Description**: Returns a list with each array element modified by a pattern.
+**Description:** Returns a list with each array element modified by a pattern.
 
 The `$(this.k)` and `$(this.v)` variables expand to the key and value of the 
 array element, similar to the way `this` is available for `maplist`.
@@ -28,7 +28,7 @@ function if you need order in the resulting output.
 * `array` : The name of the array variable to map, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent run

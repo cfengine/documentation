@@ -149,18 +149,18 @@ a hierarchy of depth 1.
 
 ### database_server
 
-**Type**: `body database_server`
+**Type:** `body database_server`
 
 #### db_server_owner
 
-**Description**: The `db_server_owner` string represents the user name 
+**Description:** The `db_server_owner` string represents the user name 
 for a database connection.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      db_server_owner => "mark";
@@ -168,14 +168,14 @@ for a database connection.
 
 #### db_server_password
 
-**Description**: The `db_server_password ` string represents the clear 
+**Description:** The `db_server_password ` string represents the clear 
 text password for a database connection.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      db_server_password => "xyz.1234";
@@ -183,28 +183,28 @@ text password for a database connection.
 
 #### db_server_host
 
-**Description**: The `db_server_host` string represents the hostname or 
+**Description:** The `db_server_host` string represents the hostname or 
 address for a database connection. 
 
 A blank value is equal to localhost.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 ```cf3
      db_server_host => "sqlserv.example.org";
 ```
 
 #### db_server_type
 
-**Description**: The `db_server_type` string represents the type of 
+**Description:** The `db_server_type` string represents the type of 
 database server being used.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     postgres
@@ -213,7 +213,7 @@ database server being used.
 
 **Default value:** none
 
-**Example**:
+**Example:**
 
 ```cf3
      db_server_type => "postgres";
@@ -221,7 +221,7 @@ database server being used.
 
 #### db_server_connection_db
 
-**Description**: The `db_server_connection_db` string is the name of an 
+**Description:** The `db_server_connection_db` string is the name of an 
 existing database to connect to in order to create/manage other databases.
 
 In order to create a database on a database server (all of which practice 
@@ -231,11 +231,11 @@ servers provide a default database that can be connected to in order to
 thereafter create new databases. These are called `postgres` and `mysql` 
 for their respective database servers.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body database_server myserver(x)
@@ -252,12 +252,12 @@ where x is currently `mysql` or `postgres`.
 
 ### database_type
 
-**Description**: The `database_type` menu option is a type of database 
+**Description:** The `database_type` menu option is a type of database 
 that is to be manipulated.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     sql
@@ -266,7 +266,7 @@ that is to be manipulated.
 
 **Default value:** none
 
-**Example**:
+**Example:**
 
 ```cf3
 database_type => "ms_registry";
@@ -274,12 +274,12 @@ database_type => "ms_registry";
 
 ### database_operation
 
-**Description**: The `database_operation` menu option represents the 
+**Description:** The `database_operation` menu option represents the 
 nature of the promise.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     create
@@ -290,7 +290,7 @@ nature of the promise.
     restore
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
 database_operation => "create";
@@ -298,17 +298,17 @@ database_operation => "create";
 
 ### database_columns
 
-**Description**: A `database_columns` slist defines column definitions 
+**Description:** A `database_columns` slist defines column definitions 
 to be promised by SQL databases.
 
 Columns are a list of tuplets (Name,type,size). Array items are triplets, 
 and fixed size data elements are doublets.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
   "cf_topic_maps/topics"
@@ -328,17 +328,17 @@ and fixed size data elements are doublets.
 
 ### database_rows
 
-**Description**: `database_rows` is an ordered list of row values to be 
+**Description:** `database_rows` is an ordered list of row values to be 
 promised by SQL databases.
 
 This constraint is used only in adding data to database columns. Rows are 
 considered to be instances of individual columns.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*,.*`
+**Allowed input range:** `.*,.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent databases
@@ -357,7 +357,7 @@ databases:
 }
 ```
 
-**Notes**:
+**Notes:**
 
 In the case of the system registry on Windows, the rows represent data on 
 data-value pairs. The currently supported types (the middle field) for the 
@@ -366,7 +366,7 @@ and `REG_DWORD` (double word).
 
 ### registry_exclude
 
-**Description**: An `registry_exclude` slist contains regular expressions 
+**Description:** An `registry_exclude` slist contains regular expressions 
 to ignore in key/value verification.
 
 During recursive Windows registry scanning, this option allows us to ignore 
@@ -375,11 +375,11 @@ registry are ephemeral and some should not be considered. This provides a
 convenient way of avoiding names. It is analogous to `exclude_dirs` for 
 files.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
 databases:

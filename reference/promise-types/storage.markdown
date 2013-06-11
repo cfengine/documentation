@@ -54,20 +54,20 @@ Storage promises refer to disks and filesystem properties.
 
 ### mount
 
-**Type**: `body mount`
+**Type:** `body mount`
 
 #### edit_fstab
 
-**Description**: true/false add or remove entries to the file system table
+**Description:** true/false add or remove entries to the file system table
 ("fstab")
 
 The default behavior is to not place edits in the file system table.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body mount example
@@ -78,11 +78,11 @@ The default behavior is to not place edits in the file system table.
 
 #### mount_type
 
-**Description**: Protocol type of remote file system
+**Description:** Protocol type of remote file system
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     nfs
@@ -91,7 +91,7 @@ The default behavior is to not place edits in the file system table.
     nfs4
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body mount example
@@ -100,20 +100,20 @@ The default behavior is to not place edits in the file system table.
      }
 ```
 
-**Notes**:
+**Notes:**
 This field is mainly for future extensions.   
 
 #### mount_source
 
-**Description**: Path of remote file system to mount.
+**Description:** Path of remote file system to mount.
 
 This is the location on the remote device, server, SAN etc.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
      body mount example
@@ -124,13 +124,13 @@ This is the location on the remote device, server, SAN etc.
 
 #### mount_server
 
-**Description**: Hostname or IP or remote file system server.
+**Description:** Hostname or IP or remote file system server.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body mount example
@@ -141,17 +141,17 @@ This is the location on the remote device, server, SAN etc.
 
 #### mount_options
 
-**Description**: List of option strings to add to the file system table
+**Description:** List of option strings to add to the file system table
 ("fstab").
 
 This list is concatenated in a form appropriate for the filesystem. The
 options must be legal options for the system mount commands.   
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body mount example
@@ -162,13 +162,13 @@ options must be legal options for the system mount commands.
 
 #### unmount
 
-**Description**: true/false unmount a previously mounted filesystem
+**Description:** true/false unmount a previously mounted filesystem
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body mount example
@@ -179,11 +179,11 @@ options must be legal options for the system mount commands.
 
 ### volume
 
-**Type**: `body volume`
+**Type:** `body volume`
 
 #### check_foreign
 
-**Description**: If true, verify storage that is mounted from a foreign
+**Description:** If true, verify storage that is mounted from a foreign
 system on this host.
 
 CFEngine will not normally perform sanity checks on filesystems that are
@@ -191,11 +191,11 @@ not local to the host. If `true` it will ignore a partition's network
 location and ask the current host to verify storage located physically
 on other systems.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body volume example
@@ -206,7 +206,7 @@ on other systems.
 
 #### freespace
 
-**Description**: Absolute or percentage minimum disk space that should be
+**Description:** Absolute or percentage minimum disk space that should be
 available before warning
 
 The amount of free space that is promised on a storage device. Once this
@@ -214,11 +214,11 @@ promise is found not to be kept (that is, if the free space falls below
 the promised value), warnings are generated. You may also want to use
 the results of this promise to control other promises.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `[0-9]+[MBkKgGmb%]`
+**Allowed input range:** `[0-9]+[MBkKgGmb%]`
 
-**Example**:
+**Example:**
 
 ```cf3
      body volume example1
@@ -234,14 +234,14 @@ the results of this promise to control other promises.
 
 #### sensible_size
 
-**Description**: Minimum size in bytes that should be used on a
+**Description:** Minimum size in bytes that should be used on a
 sensible-looking storage device
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body volume example
@@ -252,17 +252,17 @@ sensible-looking storage device
 
 #### sensible_count
 
-**Description**: Minimum number of files that should be defined on a
+**Description:** Minimum number of files that should be defined on a
 sensible-looking storage device.
 
 Files must be readable by the agent. In other words, it is assumed that
 the agent has privileges on volumes being checked.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body volume example
@@ -273,7 +273,7 @@ the agent has privileges on volumes being checked.
 
 #### scan_arrivals
 
-**Description**: If true, generate pseudo-periodic disk change arrival
+**Description:** If true, generate pseudo-periodic disk change arrival
 distribution.
 
 This operation should not be left 'on' for more than a single run
@@ -281,11 +281,11 @@ This operation should not be left 'on' for more than a single run
 scan noting the schedule of changes between files. This can be used for
 a number of analyses including optimum backup schedule computation.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body volume example

@@ -11,7 +11,7 @@ tags: [reference, functions, product]
 
 **Return type**: `real`
 
-**Description**: Returns the product of the reals in `list`.
+**Description:** Returns the product of the reals in `list`.
 
 This function might be used for simple ring computation. Of course, you could 
 easily combine `product` with `readstringarray` or `readreallist` etc., to 
@@ -22,7 +22,7 @@ collect summary information from a source external to CFEngine.
 * `list` : A list of arbitrary real values, in the range 
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test

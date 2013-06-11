@@ -11,7 +11,7 @@ tags: [reference, functions, parsestringarrayidx]
 
 **Return type**: `int`
 
-**Description**: Populates the two-dimensional array `array` with up to 
+**Description:** Populates the two-dimensional array `array` with up to 
 `maxentries` fields from the first `maxbytes` bytes of the string `input`.
 
 This function mirrors the exact behavior of `readstringarrayidx()`, but
@@ -28,7 +28,7 @@ reads data from a variable instead of a file. By making data readable from a var
 `0,99999999999`
 * `maxbytes` : Maximum bytes to read, in the range `0,99999999999`   
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test(f) 

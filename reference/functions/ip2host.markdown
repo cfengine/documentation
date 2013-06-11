@@ -11,7 +11,7 @@ tags: [reference, functions, ip2host]
 
 **Return type**: `string`
 
-**Description**: Returns the primary name-service host name for the IP address 
+**Description:** Returns the primary name-service host name for the IP address 
 `ip`.
 
 Uses whatever configured name service is used by the resolver library to
@@ -25,7 +25,7 @@ wait for responses, slowing their progress significantly.
 
 * `ip` : IP address (IPv4 or IPv6), in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent reverse_lookup

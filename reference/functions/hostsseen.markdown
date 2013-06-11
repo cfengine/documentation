@@ -11,7 +11,7 @@ tags: [reference, functions, hostsseen]
 
 **Return type**: `slist`
 
-**Description**: Returns a list with the information `field` of hosts that were seen or not seen within the last `horizon` hours.
+**Description:** Returns a list with the information `field` of hosts that were seen or not seen within the last `horizon` hours.
 
 Finds a list of hosts seen by a CFEngine remote connection on the current host 
 within the number of hours specified in `horizon`. The argument `seen` may be 
@@ -28,7 +28,7 @@ connected within the specified time.
     * name
     * address   
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test

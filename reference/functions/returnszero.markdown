@@ -11,7 +11,7 @@ tags: [reference, functions, returnszero]
 
 **Return type**: `class`
 
-**Description**: Runs `command` and returns whether it has returned with exit 
+**Description:** Runs `command` and returns whether it has returned with exit 
 status zero.
 
 This is the complement of `execresult()`, but it returns a class result
@@ -22,7 +22,7 @@ rather than the output of the command.
 * `command` : Fully qualified command path, in the range `"?(/.*)`
 * `shelll` : Shell encapsulation option, in the range `useshell`,`noshell`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

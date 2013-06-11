@@ -11,13 +11,13 @@ tags: [reference, functions, not]
 
 **Return type**: `string`
 
-**Description**: Calculate whether `expression` is false
+**Description:** Calculate whether `expression` is false
 
 **Arguments**:
 
 * `expression` : Class expression, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 commands:
@@ -25,6 +25,6 @@ commands:
     ifvarclass => not(fileexists("/etc/config/$(config)"));
 ```
 
-**Notes**:  
+**Notes:**  
    
 **History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)

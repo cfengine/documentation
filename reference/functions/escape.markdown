@@ -11,7 +11,7 @@ tags: [reference, functions, escape]
 
 **Return type**: `string`
 
-**Description**: Escape regular expression characters in `text`.
+**Description:** Escape regular expression characters in `text`.
 
 This function is useful for making inputs readable when a regular
 expression is required, but the literal string contains special
@@ -23,7 +23,7 @@ characters, so that you do not have to.
 
 * `text` : IP address or string to escape, in the range `.*`
 
-**Example**:  
+**Example:**  
 
 
 ```cf3
@@ -39,6 +39,6 @@ In this example, the string "192.168.2.1" is "escaped" to be equivalent to
 (since the dot character means "match any character" when used in a regular 
 expression).
 
-**Notes**:  
+**Notes:**  
 
 **History**: This function was introduced in CFEngine version 3.0.4 (2010)

@@ -11,7 +11,7 @@ tags: [reference, functions, getvalues]
 
 **Return type**: `slist`
 
-**Description**: Returns the list of values in `array`.
+**Description:** Returns the list of values in `array`.
 
 If the array contains list values, then all of the list elements are flattened 
 into a single list to make the return value a list.
@@ -23,7 +23,7 @@ variable.
 
 * `array` : array identifier, in the range `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example
@@ -44,4 +44,4 @@ reports:
 }
 ```
 
-**Notes**:
+**Notes:**

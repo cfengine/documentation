@@ -24,7 +24,7 @@ a file-reference from which to read lines.
 By parameterizing the editing bundle, one can make generic and reusable
 editing bundles.
 
-Note: When inserting multiple lines anchored to a particular place in a
+Note: When inserting multiple lines [anchored][anchored] to a particular place in a
 file, be careful with your intuition. If your intention is to insert a
 set of lines in a given order after a marker, then the following is
 incorrect:
@@ -80,7 +80,7 @@ Or:
 
 ### expand_scalars
 
-**Description**: Expand any unexpanded variables
+**Description:** Expand any unexpanded variables
 
 This is a way of incorporating templates with variable expansion into file
 operations. Variables should be named and scoped appropriately for the
@@ -93,11 +93,11 @@ the variables with the bundle in which they are defined. For example:
     $(mon.www_in)
 ```
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent testbundle
@@ -122,14 +122,14 @@ insert_lines:
 
 ### insert_type
 
-**Description**: Type of object the promiser string refers to
+**Description:** Type of object the promiser string refers to
 
 The default is to treat the promiser as a literal string of convergent
 lines.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 * `literal` or `string`
 
@@ -159,7 +159,7 @@ This was added in CFEngine 3.5.x.
 
 **Default value:** literal
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle edit_line lynryd_skynyrd
@@ -195,11 +195,11 @@ file:
 
 ### insert_select
 
-**Type**: `body insert_select`
+**Type:** `body insert_select`
 
 #### insert_if_startwith_from_list
 
-**Description**: Insert line if it starts with a string in the list
+**Description:** Insert line if it starts with a string in the list
 
 The list contains literal strings to search for in the secondary file
 (the file being read via the `insert_type` attribute, not the main file
@@ -210,11 +210,11 @@ location in the primary file.
 `insert_if_startswith_from_list` is ignored unless `insert_type` is
 `file`, or the promiser is a multi-line block.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body insert_select example
@@ -225,7 +225,7 @@ location in the primary file.
 
 #### insert_if_not_startwith_from_list
 
-**Description**: Insert line if it DOES NOT start with a string in the list
+**Description:** Insert line if it DOES NOT start with a string in the list
 
 The complement of `insert_if_startwith_from_list`. If the start of a
 line does *not* match one of the strings, that line is inserted into the
@@ -234,11 +234,11 @@ file being edited.
 `insert_if_not_startswith_from_list` is ignored unless `insert_type` is
 `file` or the promiser is a multi-line block.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body insert_select example
@@ -249,7 +249,7 @@ file being edited.
 
 #### insert_if_match_from_list
 
-**Description**: Insert line if it fully matches a regex in the list
+**Description:** Insert line if it fully matches a regex in the list
 
 The list contains literal strings to search for in the secondary file
 (the file being read via the `insert_type` attribute, not the main file
@@ -260,11 +260,11 @@ the primary file. That is, the regex's in the list are [anchored][anchored].
 `insert_if_match_from_list` is ignored unless `insert_type` is `file`,
 or the promiser is a multi-line block.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body insert_select example
@@ -275,7 +275,7 @@ or the promiser is a multi-line block.
 
 #### insert_if_not_match_from_list
 
-**Description**: Insert line if it DOES NOT fully match a regex in the list
+**Description:** Insert line if it DOES NOT fully match a regex in the list
 
 The complement of `insert_if_match_from_list`. If the line does *not*
 match a line in the secondary file, it is inserted into the file being
@@ -284,11 +284,11 @@ edited.
 `insert_if_not_match_from_list` is ignored unless `insert_type` is
 `file`, or the promiser is a multi-line block.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body insert_select example
@@ -299,7 +299,7 @@ edited.
 
 #### insert_if_contains_from_list
 
-**Description**: Insert line if a regex in the list match a line fragment.
+**Description:** Insert line if a regex in the list match a line fragment.
 
 The list contains literal strings to search for in the secondary file;
 in other words, the file being read via the `insert_type` attribute, not
@@ -310,11 +310,11 @@ location in the primary file.
 `insert_if_contains_from_list` is ignored unless `insert_type` is
 `file`, or the promiser is a multi-line block.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body insert_select example
@@ -325,7 +325,7 @@ location in the primary file.
 
 #### insert_if_not_contains_from_list
 
-**Description**: Insert line if a regex in the list DOES NOT match a line
+**Description:** Insert line if a regex in the list DOES NOT match a line
 fragment.
 
 The complement of `insert_if_contains_from_list`. If the line is *not*
@@ -334,11 +334,11 @@ found in the secondary file, it is inserted into the file being edited.
 `insert_if_not_contains_from_list` is ignored unless `insert_type` is
 `file`, or the promiser is a multi-line block.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body insert_select example
@@ -349,18 +349,18 @@ found in the secondary file, it is inserted into the file being edited.
 
 ### location
 
-**Type**: `body location`
+**Type:** `body location`
 
 #### before_after
 
-**Description**: Menu option, point cursor before of after matched line
+**Description:** Menu option, point cursor before of after matched line
 
 Determines whether an edit will occur before or after the currently
 matched line.   
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     before
@@ -369,7 +369,7 @@ matched line.
 
 **Default value:** after
 
-**Example**:
+**Example:**
 
 ```cf3
      body location append
@@ -380,7 +380,7 @@ matched line.
 
 #### first_last
 
-**Description**: Choose first or last occurrence of match in file.
+**Description:** Choose first or last occurrence of match in file.
 
 In multiple matches, decide whether the first or last occurrence of the
 matching pattern in the case affected by the change. In principle this
@@ -388,9 +388,9 @@ could be generalized to more cases but this seems like a fragile quality
 to evaluate, and only these two cases are deemed of reproducible
 significance.   
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     first
@@ -399,7 +399,7 @@ significance.
 
 **Default value:** last
 
-**Example**:
+**Example:**
 
 ```cf3
      body location example
@@ -410,18 +410,18 @@ significance.
 
 #### select_line_matching
 
-**Description**: Regular expression for matching file line location
+**Description:** Regular expression for matching file line location
 
 The expression must match a whole line, not a fragment within a line;
 that is, it is [anchored][anchored].
 
 This attribute is mutually exclusive of `select_line_number`.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      # Editing
@@ -440,7 +440,7 @@ This attribute is mutually exclusive of `select_line_number`.
 
 ### whitespace_policy
 
-**Description**: Criteria for matching and recognizing existing lines
+**Description:** Criteria for matching and recognizing existing lines
 
 The white space matching policy applies only to `insert_lines`, as a
 convenience. It works by rewriting the insert string as a regular
@@ -459,9 +459,9 @@ Any regular expression meta-characters that exist in your input line
 will be escaped. In this way, it is possible to safely insert a line
 such as `authpriv.* /var/log/something` into a syslog config file.
 
-**Type**: (option list)
+**Type:** (option list)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```cf3
     ignore_leading
@@ -470,9 +470,9 @@ such as `authpriv.* /var/log/something` into a syslog config file.
     exact_match
 ```
 
-**Default value**: `exact_match`
+**Default value:** `exact_match`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle edit_line Insert(service, filename)

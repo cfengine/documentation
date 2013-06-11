@@ -11,9 +11,9 @@ tags: [reference, functions, or]
 
 **Return type**: `string`
 
-**Description**: Calculate whether any argument evaluates to true
+**Description:** Calculate whether any argument evaluates to true
 
-**Example**:
+**Example:**
 
 ```cf3
     commands:
@@ -21,6 +21,6 @@ tags: [reference, functions, or]
         ifvarclass => or(not(fileexists("/etc/config/$(config)")), "force_configs");
 ```
 
-**Notes**:  
+**Notes:**  
 
 **History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)

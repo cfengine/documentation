@@ -11,7 +11,7 @@ tags: [reference, functions, regextract]
 
 **Return type**: `class`
 
-**Description**: Returns whether `regex` matches the `string`, and fills the array `backref` with back-references.
+**Description:** Returns whether `regex` matches the `string`, and fills the array `backref` with back-references.
 
 If there are any back reference matches from the regular expression, then the array will be populated with the values, in the manner:
 
@@ -32,7 +32,7 @@ the entire string
 * `backref` : Identifier for back-references, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example

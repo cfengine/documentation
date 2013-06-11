@@ -270,18 +270,18 @@ Depth search is not allowed with `edit_line` promises.
 
 ### acl
 
-**Type**: `body acl`
+**Type:** `body acl`
 
 #### aces
 
-**Description**:
+**Description:**
 Native settings for access control entry are defined by 'aces'. POSIX ACL are 
 available in CFEngine Community starting with 3.4.0. NTFS ACL are available in 
 with CFEngine Enterprise.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**:
+**Allowed input range:**
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
 
 Form of the permissions is as follows:
@@ -366,7 +366,7 @@ Note that the `r` permission is not necessary to read an object's
 permissions and attributes in all file systems. For example, in POSIX,
 having `x` on its containing directory is sufficient.
 
-**Example**:
+**Example:**
 
 ```cf3
      body acl template
@@ -387,7 +387,7 @@ having `x` on its containing directory is sufficient.
 
 #### acl_default
 
-**Description**: The access control list type for the affected file system is determined by `acl_default`. 
+**Description:** The access control list type for the affected file system is determined by `acl_default`. 
 
 Directories have ACLs associated with them, but they also have the ability to 
 inherit an ACL to sub-objects created within them. POSIX calls the former ACL 
@@ -401,9 +401,9 @@ default ACL can be set equal to the directory's access ACL (`access`). This
 has the effect that child objects of the directory gets the same access ACL as 
 the directory.   
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     nochange
@@ -412,7 +412,7 @@ the directory.
     clear
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body acl template
@@ -437,7 +437,7 @@ acl_directory_inherit.
 
 #### acl_method
 
-**Description**: The `acl_method` menu option defines the editing method for 
+**Description:** The `acl_method` menu option defines the editing method for 
 an access control list.
 
 When defining an ACL, we can either use an existing ACL as the starting point, 
@@ -449,16 +449,16 @@ is set to `overwrite`, the resulting ACL will only contain the mentioned
 entries. When doing this, it is important to check that all the required ACL 
 entries are set. For example, owning user, group and all in POSIX ACLs.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     append
     overwrite
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body acl template
@@ -472,7 +472,7 @@ entries are set. For example, owning user, group and all in POSIX ACLs.
 
 #### acl_type
 
-**Description**: The `acl_type` menu option defines the access control list 
+**Description:** The `acl_type` menu option defines the access control list 
 type for the affected file system.
 
 ACLs are supported on multiple platforms, which may have different sets of 
@@ -484,9 +484,9 @@ However, if very specific permission flags are required, like Take
 Ownership on the NTFS platform, we must set `acl_type` to indicate the target 
 platform. Currently, the supported values are `posix` and `ntfs`.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     generic
@@ -494,7 +494,7 @@ platform. Currently, the supported values are `posix` and `ntfs`.
     ntfs
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body acl template
@@ -507,7 +507,7 @@ platform. Currently, the supported values are `posix` and `ntfs`.
 
 #### specify_default_aces
 
-**Description**: The slist `specify_default_aces` specifies the native 
+**Description:** The slist `specify_default_aces` specifies the native 
 settings for access control entry.
 
 `specify_default_aces` (optional) is a list of access control entries that are 
@@ -519,12 +519,12 @@ This is an ACL which makes explicit setting for the acl inherited by new
 objects within a directory. It is included for those implementations
 that do not have a clear inheritance policy.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**:
+**Allowed input range:**
 `((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)`
 
-**Example**:
+**Example:**
 
 ```cf3
      body acl template
@@ -535,17 +535,17 @@ that do not have a clear inheritance policy.
 
 ### changes
 
-**Type**: `body changes`
+**Type:** `body changes`
 
 #### hash
 
-**Description**: The `hash` menu option defines the ash files for change detection.
+**Description:** The `hash` menu option defines the ash files for change detection.
 
 The `best` option cross correlates the best two available algorithms known in the OpenSSL library. 
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     md5
@@ -557,7 +557,7 @@ The `best` option cross correlates the best two available algorithms known in th
     best
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body changes example
@@ -569,13 +569,13 @@ The `best` option cross correlates the best two available algorithms known in th
 
 #### report_changes
 
-**Description**: Specify criteria for change warnings using the `report_changes` menu option.
+**Description:** Specify criteria for change warnings using the `report_changes` menu option.
 
 Files can change in permissions and contents, i.e. external or internal attributes. If all is chosen all attributes are checked.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     all
@@ -584,7 +584,7 @@ Files can change in permissions and contents, i.e. external or internal attribut
     none
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body changes example
@@ -595,16 +595,16 @@ Files can change in permissions and contents, i.e. external or internal attribut
 
 #### update_hashes
 
-**Description**: Use of `update_hashes` determines whether hash values should 
+**Description:** Use of `update_hashes` determines whether hash values should 
 be updated immediately after a change.
   
 If this is positive, file hashes should be updated as soon as a change is 
 registered so that multiple warnings are not given about a single change. This 
 applies to addition and removal too.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      body changes example
@@ -617,7 +617,7 @@ applies to addition and removal too.
 
 **This feature requires CFEngine Enterprise.**
 
-**Description**: Setting `report_diffs` determines whether to generate reports 
+**Description:** Setting `report_diffs` determines whether to generate reports 
 summarizing the major differences between individual text files.
 
 If true, CFEngine will log a 'diff' summary of major changes to the files. It 
@@ -630,9 +630,9 @@ system files, you should keep a single repository for them and use CFEngine to
 synchronize changes from the repository source. Repositories should not be 
 used to attempt to capture random changes of the system.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      body changes example
@@ -643,17 +643,17 @@ used to attempt to capture random changes of the system.
 
 ### copy_from
 
-**Type**: `body copy_from`
+**Type:** `body copy_from`
 
 #### source
 
-**Description**: The `source` string represents the reference source file from which to copy. For remote copies this refers to the file name on the remote server. 
+**Description:** The `source` string represents the reference source file from which to copy. For remote copies this refers to the file name on the remote server. 
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.+`
+**Allowed input range:** `.+`
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -665,13 +665,13 @@ used to attempt to capture random changes of the system.
 
 #### servers
 
-**Description**: The `servers` slist names servers in order of preference from which to copy. The servers are tried in order until one of them succeeds. 
+**Description:** The `servers` slist names servers in order of preference from which to copy. The servers are tried in order until one of them succeeds. 
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `[A-Za-z0-9_.:-]+`
+**Allowed input range:** `[A-Za-z0-9_.:-]+`
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -683,7 +683,7 @@ used to attempt to capture random changes of the system.
 
 #### collapse_destination_dir
 
-**Description**: The `collapse_destination_dir` menu option supports the 
+**Description:** The `collapse_destination_dir` menu option supports the 
 placing of files in subdirectories into the root destination
 directory during copy.
   
@@ -695,9 +695,9 @@ By setting this option to true, the promiser destination directory promises to
 aggregate files searched from all subdirectories into
 itself; in other words, a single destination directory. 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from mycopy(from,server)
@@ -710,16 +710,16 @@ itself; in other words, a single destination directory.
 
 #### compare
 
-**Description**: The menu option policy `compare` is used for comparing source 
+**Description:** The menu option policy `compare` is used for comparing source 
 and image file attributes.
 
 The default copy method is `mtime` (modification time), meaning that the 
 source file is copied to the destination (promiser) file, if the source file 
 has been modified more recently than the destination.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 * `mtime`
 
@@ -765,7 +765,7 @@ used.
 
 **Default value:** mtime or ctime differs
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -776,15 +776,15 @@ used.
 
 #### copy_backup
 
-**Description**: Menu option policy for file backup/version control
+**Description:** Menu option policy for file backup/version control
  
 Determines whether a backup of the previous version is kept on the system. 
 This should be viewed in connection with the system repository, since a 
 defined repository affects the location at which the backup is stored.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     true
@@ -794,7 +794,7 @@ defined repository affects the location at which the backup is stored.
 
 **Default value:** true
 
-**Example**:  
+**Example:**  
    
 ```cf3
      body copy_from example
@@ -805,18 +805,18 @@ defined repository affects the location at which the backup is stored.
 
 #### encrypt
 
-**Description**: The `encrypt` menu option policy describes whether to use 
+**Description:** The `encrypt` menu option policy describes whether to use 
 encrypted data stream to connect to remote hosts.
 
 Client connections are encrypted with using a Blowfish randomly generated 
 session key. The initial connection is encrypted using the public/private keys 
 for the client and server hosts. 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -828,16 +828,16 @@ for the client and server hosts.
 
 #### check_root
 
-**Description**: The `check_root` menu option policy checks permissions on the 
+**Description:** The `check_root` menu option policy checks permissions on the 
 root directory when copying files recursively by depth\_search. 
 
 This flag determines whether the permissions of the root directory should be 
 set from the root of the source. The default is to check only copied file 
 objects and subdirectories within this root (false). 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -848,18 +848,18 @@ objects and subdirectories within this root (false).
 
 #### copylink_patterns
 
-**Description**: The `copylink_patterns` slist of patterns are matching files 
+**Description:** The `copylink_patterns` slist of patterns are matching files 
 that should be copied instead of linked.
 
 The matches are performed on the last node of the filename; in other words, 
 the file without its path. As Windows does not support symbolic links, this 
 feature is not available there. 
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -870,19 +870,19 @@ feature is not available there.
 
 #### copy_size
 
-**Description**: The integers specified in `copy_size` determines the range 
+**Description:** The integers specified in `copy_size` determines the range 
 for the size of files that may be copied.
 
 The use of the `irange` function is optional. Ranges may also be specified as 
 comma separated numbers.
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,inf`
+**Allowed input range:** `0,inf`
 
 **Default value:** any size range
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -893,19 +893,19 @@ comma separated numbers.
 
 #### findertype
 
-**Description**: The `findertype` menu option policy describes the default finder type on MacOSX.
+**Description:** The `findertype` menu option policy describes the default finder type on MacOSX.
 
 This applies only to the Mac OS X variants.   
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     MacOSX
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -916,17 +916,17 @@ This applies only to the Mac OS X variants.
 
 #### linkcopy_patterns
 
-**Description**: The `linkcopy_patterns` contains patterns for matching files 
+**Description:** The `linkcopy_patterns` contains patterns for matching files 
 that should be replaced with symbolic links.
 
 The pattern matches the last node filename; in other words, without the 
 absolute path. Windows only supports hard links.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from mycopy(from)
@@ -940,7 +940,7 @@ absolute path. Windows only supports hard links.
 
 #### link_type
 
-**Description**: The `link_type` menu option policy contains the type of links 
+**Description:** The `link_type` menu option policy contains the type of links 
 to use when copying.
 
 Users are advised to be wary of 'hard links' (see Unix manual pages for the ln 
@@ -953,9 +953,9 @@ here is defined such that symlink and absolute are equivalent. When verifying
 a link, choosing 'relative' means that the link *must* be relative to the 
 source, so relative and absolute links are mutually exclusive.   
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     symlink
@@ -966,7 +966,7 @@ source, so relative and absolute links are mutually exclusive.
 
 **Default value:** symlink
 
-**Example**:  
+**Example:**  
    
 ```cf3
      body link_from example
@@ -978,7 +978,7 @@ source, so relative and absolute links are mutually exclusive.
 
 #### force_update
 
-**Description**: The `force_update` menu option policy instructs whether to 
+**Description:** The `force_update` menu option policy instructs whether to 
 always force copy update.
 
 **Warning**: this is a non-convergent operation. Although the end point might 
@@ -987,11 +987,11 @@ not recommended except in exceptional circumstances since it creates a
 busy-dependency. If the copy is a network copy, the system will be disturbed 
 by network disruptions.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -1002,15 +1002,15 @@ by network disruptions.
 
 #### force_ipv4
 
-**Description**: The `force_ipv4` menu option policy can determine whether to use ipv4 on an ipv6 enabled network.
+**Description:** The `force_ipv4` menu option policy can determine whether to use ipv4 on an ipv6 enabled network.
 
 IPv6 should be harmless to most users unless you have a partially or mis-configured setup.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -1021,18 +1021,18 @@ IPv6 should be harmless to most users unless you have a partially or mis-configu
 
 #### portnumber
 
-**Description**: Setting `portnumber` determines the port number to connect to 
+**Description:** Setting `portnumber` determines the port number to connect to 
 on a server host.
 
 The standard or registered port number is tcp/5308. CFEngine does not 
 presently use its registered udp port with the same number, but this could 
 change in the future.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `1024,99999`
+**Allowed input range:** `1024,99999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -1043,17 +1043,17 @@ change in the future.
 
 #### preserve
 
-**Description**: Setting the `preserve` menu option policy determines whether 
+**Description:** Setting the `preserve` menu option policy determines whether 
 to preserve file permissions on copied files.
 
 This ensures that the destination file (promiser) gets the same Unix mode as 
 the source. This also applies to remote copies.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -1066,7 +1066,7 @@ the source. This also applies to remote copies.
 
 #### purge
 
-**Description**: The `purge` menu option policy instructs on whether to purge 
+**Description:** The `purge` menu option policy instructs on whether to purge 
 files on client that do not match files on server when a `depth_search` is 
 used.
 
@@ -1078,11 +1078,11 @@ Great care should be exercised when using this feature.
 Note that purging will also delete backup files generated during the file 
 copying if `copy_backup` is set to true.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -1093,15 +1093,15 @@ copying if `copy_backup` is set to true.
 
 #### stealth
 
-**Description**: Setting the `stealth` menu option policy determines whether 
+**Description:** Setting the `stealth` menu option policy determines whether 
 to preserve time stamps on copied files. This preserves file access and 
 modification times on the promiser files. 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -1112,14 +1112,14 @@ modification times on the promiser files.
 
 #### timeout
 
-**Description**: The integer set in `timeout` is the value for the connection 
+**Description:** The integer set in `timeout` is the value for the connection 
 timeout, in seconds.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `1,3600`
+**Allowed input range:** `1,3600`
 
-**Example**:
+**Example:**
 
 ```cf3
      body runagent control
@@ -1130,7 +1130,7 @@ timeout, in seconds.
 
 #### trustkey
 
-**Description**: The `trustkey` menu option policy determines whether to trust 
+**Description:** The `trustkey` menu option policy determines whether to trust 
 public keys from a remote server, if previously unknown.
 
 If the server's public key has not already been trusted, `trustkey` provides 
@@ -1148,11 +1148,11 @@ As soon as a public key has been exchanged, the trust option has no effect. A
 machine that has been trusted remains trusted until its key is manually 
 revoked by a system administrator. Keys are stored in `WORKDIR/ppkeys`.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -1163,16 +1163,16 @@ revoked by a system administrator. Keys are stored in `WORKDIR/ppkeys`.
 
 #### type_check
 
-**Description**: The `type_check` menu option policy compares file types 
+**Description:** The `type_check` menu option policy compares file types 
 before copying.
 
 File types at source and destination should normally match in order for 
 updates to overwrite them. This option allows this checking to be switched 
 off.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -1183,17 +1183,17 @@ off.
 
 #### verify
 
-**Description**: The `verify` menu option policy instructs whether to verify 
+**Description:** The `verify` menu option policy instructs whether to verify 
 transferred file by hashing after copy.
 
 **Warning**: This is a highly resource intensive option, and is not 
 recommended for large file transfers.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body copy_from example
@@ -1204,7 +1204,7 @@ recommended for large file transfers.
 
 ### create
 
-**Description**: true/false whether to create non-existing file
+**Description:** true/false whether to create non-existing file
 
 Directories are created by using the `/.` to signify a directory type.
 Note that, if no permissions are specified, mode 600 is chosen for a
@@ -1215,11 +1215,11 @@ Note that technically, `/.` is a regular expression. However, it is used
 as a special case meaning "directory". See **filenames and regular
 expressions** for a more complete discussion.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
 files:
@@ -1241,11 +1241,11 @@ comparison or linking operations).
 
 ### delete
 
-**Type**: `body delete`
+**Type:** `body delete`
 
 #### dirlinks
 
-**Description**: Menu option policy for dealing with symbolic links to
+**Description:** Menu option policy for dealing with symbolic links to
 directories during deletion
 
 Links to directories are normally removed just like any other link or
@@ -1258,9 +1258,9 @@ values `delete` and `tidy` are synonymous, and instruct CFEngine to
 remove directory links.
 
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     delete
@@ -1268,7 +1268,7 @@ remove directory links.
     keep
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body delete example
@@ -1285,13 +1285,13 @@ are **not** deleted.
 
 #### rmdirs
 
-**Description**: true/false whether to delete empty directories during
+**Description:** true/false whether to delete empty directories during
 recursive deletion
 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      body delete example
@@ -1344,23 +1344,23 @@ present. If there is no `delete` body then files (and directories) are
 
 ### depth_search
 
-**Type**: `body depth_search`
+**Type:** `body depth_search`
 
 #### depth
 
-**Description**: Maximum depth level for search
+**Description:** Maximum depth level for search
 
 When searching recursively from a directory, the parent directory is
 only the anchor point and is not part of the search. To alter the
 parent, a separate non-recursive promise should be made.   
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
 Note that the value inf may be used for an unlimited value.
 
-**Example**:
+**Example:**
 
 ```cf3
      body depth_search example
@@ -1371,17 +1371,17 @@ Note that the value inf may be used for an unlimited value.
 
 #### exclude_dirs
 
-**Description**: List of regexes of directory names NOT to include in depth
+**Description:** List of regexes of directory names NOT to include in depth
 search
 
 Directory names are treated specially when searching recursively through
 a file system.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body depth_search
@@ -1393,7 +1393,7 @@ a file system.
 
 #### include_basedir
 
-**Description**: true/false include the start/root dir of the search
+**Description:** true/false include the start/root dir of the search
 results
 
 When checking files recursively (with `depth_search`) the promiser is a
@@ -1403,9 +1403,9 @@ the edge of the search. If true, the promiser directory will also
 promise the same attributes as the files inside it.   
 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      body depth_search example
@@ -1416,16 +1416,16 @@ promise the same attributes as the files inside it.
 
 #### include_dirs
 
-**Description**: List of regexes of directory names to include in depth
+**Description:** List of regexes of directory names to include in depth
 search
 
 This is the complement of `exclude_dirs`.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body depth_search example
@@ -1436,16 +1436,16 @@ This is the complement of `exclude_dirs`.
 
 #### rmdeadlinks
 
-**Description**: true/false remove links that point to nowhere
+**Description:** true/false remove links that point to nowhere
 
 A value of true determines that links pointing to files that do not
 exist should be deleted; or kept if set to false.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body depth_search example
@@ -1456,17 +1456,17 @@ exist should be deleted; or kept if set to false.
 
 #### traverse_links
 
-**Description**: true/false traverse symbolic links to directories
+**Description:** true/false traverse symbolic links to directories
 
 If this is true, `cf-agent` will treat symbolic links to directories as
 if they were directories. Normally this is considered a potentially
 dangerous assumption and links are not traversed.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body depth_search example
@@ -1477,14 +1477,14 @@ dangerous assumption and links are not traversed.
 
 #### xdev
 
-**Description**: true/false exclude directories that are on different
+**Description:** true/false exclude directories that are on different
 devices
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body depth_search example
@@ -1495,15 +1495,15 @@ devices
 
 ### edit_defaults
 
-**Type**: `body edit_defaults`
+**Type:** `body edit_defaults`
 
 #### edit_backup
 
-**Description**: Menu option for backup policy on edit changes
+**Description:** Menu option for backup policy on edit changes
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     true
@@ -1514,7 +1514,7 @@ devices
 
 **Default value:** true
 
-**Example**:
+**Example:**
 
 ```cf3
      body edit_defaults example
@@ -1525,17 +1525,17 @@ devices
 
 #### empty_file_before_editing
 
-**Description**: Baseline memory model of file to zero/empty before
+**Description:** Baseline memory model of file to zero/empty before
 commencing promised edits.
 
 Emptying a file before reconstructing its contents according to a fixed
 recipe allows an ordered procedure to be convergent.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body edit_defaults example
@@ -1546,12 +1546,12 @@ recipe allows an ordered procedure to be convergent.
 
 #### inherit
 
-**Description**: If true this causes the sub-bundle to inherit the private
+**Description:** If true this causes the sub-bundle to inherit the private
 classes of its parent
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      bundle agent name
@@ -1570,9 +1570,9 @@ classes of its parent
 
 **History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
-**Default value**: false
+**Default value:** false
 
-**Notes**:
+**Notes:**
 The `inherit` constraint can be added to the CFEngine code in two
 places: for `edit_defaults` and in `methods` promises. If set to true,
 it causes the child-bundle named in the promise to inherit only the
@@ -1582,7 +1582,7 @@ reference using its bundle name. For example, `$(bundle.variable)`.
 
 #### max_file_size
 
-**Description**: Do not edit files bigger than this number of bytes
+**Description:** Do not edit files bigger than this number of bytes
 
 `max_file_size` is a local, per-file sanity check to make sure the file
 editing is sensible. If this is set to zero, the check is disabled and
@@ -1590,11 +1590,11 @@ any size may be edited. The default value of `max_file_size` is
 determined by the global control body setting whose default value is
 `100k`.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body edit_defaults example
@@ -1605,7 +1605,7 @@ determined by the global control body setting whose default value is
 
 #### recognize_join
 
-**Description**: Join together lines that end with a backslash, up to 4kB
+**Description:** Join together lines that end with a backslash, up to 4kB
 limit
 
 If set to true, this option allows CFEngine to process line based files
@@ -1617,11 +1617,11 @@ and will not be restored. Restoration of the backslashes is not possible
 in a meaningful and convergent fashion.   
 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      files:
@@ -1642,7 +1642,7 @@ in a meaningful and convergent fashion.
 
 #### rotate
 
-**Description**: How many backups to store if 'rotate' `edit_backup`
+**Description:** How many backups to store if 'rotate' `edit_backup`
 strategy is selected. Defaults to 1
 
 Used for log rotation. If the file is named foo and the rotate attribute
@@ -1662,11 +1662,11 @@ will be renamed foo.4, but the old version of the file foo.4 will be
 deleted (that is, it "falls off the end" of the rotation).
 
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99`
+**Allowed input range:** `0,99`
 
-**Example**:
+**Example:**
 
 ```cf3
      body rename example
@@ -1677,11 +1677,11 @@ deleted (that is, it "falls off the end" of the rotation).
 
 ### edit_line
 
-**Type**: [`bundle edit_line`][bundle edit_line]
+**Type:** [`bundle edit_line`][bundle edit_line]
 
 ### edit_template
 
-**Description**: The name of a special CFEngine template file to expand
+**Description:** The name of a special CFEngine template file to expand
 
 The template format uses inline tags to mark regions and classes. Each
 line represents an `insert_lines` promise, unless the promises are
@@ -1706,11 +1706,11 @@ If a class-context modified is used:
 then the lines that follow are only inserted if the context matches the
 agent's current context. This allows conditional insertion.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
     #This is a template file /templates/input.tmpl
@@ -1771,23 +1771,23 @@ For example:
 
 ### edit_xml
 
-**Type**: [`bundle edit_xml`][bundle edit_xml]
+**Type:** [`bundle edit_xml`][bundle edit_xml]
 
 ### file_select
 
-**Type**: `body file_select`
+**Type:** `body file_select`
 
 #### leaf_name
 
-**Description**: List of regexes that match an acceptable name
+**Description:** List of regexes that match an acceptable name
 
 This pattern matches only the node name of the file, not its path.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select example
@@ -1799,16 +1799,16 @@ This pattern matches only the node name of the file, not its path.
 
 #### path_name
 
-**Description**: List of pathnames to match acceptable target
+**Description:** List of pathnames to match acceptable target
 
 Path name and leaf name can be conveniently tested for separately by use
 of appropriate regular expressions.   
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select example
@@ -1822,17 +1822,17 @@ of appropriate regular expressions.
 
 #### search_mode
 
-**Description**: A list of mode masks for acceptable file permissions
+**Description:** A list of mode masks for acceptable file permissions
 
 The mode may be specified in symbolic or numerical form with + and -
 constraints. Concatenation `ug+s` implies `u` OR `g`, and `u+s,g+s`
 implies `u` AND `g`.   
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `[0-7augorwxst,+-]+`
+**Allowed input range:** `[0-7augorwxst,+-]+`
 
-**Example**:
+**Example:**
 
 ```cf3
      bundle agent testbundle
@@ -1861,13 +1861,13 @@ implies `u` AND `g`.
 
 #### search_size
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,inf`
+**Allowed input range:** `0,inf`
 
-**Description**: Integer range of file sizes
+**Description:** Integer range of file sizes
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select example
@@ -1879,17 +1879,17 @@ implies `u` AND `g`.
 
 #### search_owners
 
-**Description**: List of acceptable user names or ids for the file, or
+**Description:** List of acceptable user names or ids for the file, or
 regexes to match
 
 A list of [anchored][anchored] regular expressions any of which must match the entire 
 userid.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select example
@@ -1899,21 +1899,21 @@ userid.
      }
 ```
 
-**Notes**:
+**Notes:**
 Windows does not have user ids, only names.
 
 #### search_groups
 
-**Description**: List of acceptable group names or ids for the file, or
+**Description:** List of acceptable group names or ids for the file, or
 regexes to match
 
 A list of [anchored][anchored] regular expressions, any of which must match the entire group.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select example
@@ -1923,22 +1923,22 @@ A list of [anchored][anchored] regular expressions, any of which must match the 
      }
 ```
 
-**Notes**:
+**Notes:**
 On Windows, files do not have group associations.   
 
 #### search_bsdflags
 
-**Description**: String of flags for bsd file system flags expected set
+**Description:** String of flags for bsd file system flags expected set
 
 Extra BSD file system flags (these have no effect on non-BSD versions of
 CFEngine). See the manual page for `chflags` for more details.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**:
+**Allowed input range:**
 `[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+`
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select xyz
@@ -1950,17 +1950,17 @@ CFEngine). See the manual page for `chflags` for more details.
 
 #### ctime
 
-**Description**: Range of change times (ctime) for acceptable files
+**Description:** Range of change times (ctime) for acceptable files
 
 The file's change time refers to both modification of content and
 attributes, such as permissions. On Windows, `ctime` refers to creation
 time.   
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,2147483647`
+**Allowed input range:** `0,2147483647`
 
-**Example**:
+**Example:**
 
 ```cf3
      body files_select example
@@ -1972,16 +1972,16 @@ time.
 
 #### mtime
 
-**Description**: Range of modification times (mtime) for acceptable files
+**Description:** Range of modification times (mtime) for acceptable files
 
 The file's modification time refers to both modification of content but
 not other attributes, such as permissions.   
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,2147483647`
+**Allowed input range:** `0,2147483647`
 
-**Example**:
+**Example:**
 
 ```cf3
      body files_select example
@@ -1994,16 +1994,16 @@ not other attributes, such as permissions.
 
 #### atime
 
-**Description**: Range of access times (atime) for acceptable files
+**Description:** Range of access times (atime) for acceptable files
 
 A range of times during which a file was accessed can be specified in a
 `file_select` body.
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,2147483647`
+**Allowed input range:** `0,2147483647`
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select used_recently
@@ -2024,7 +2024,7 @@ A range of times during which a file was accessed can be specified in a
 
 #### exec_regex
 
-**Description**: Matches file if this regular expression matches any full
+**Description:** Matches file if this regular expression matches any full
 line returned by the command
 
 The regular expression must be used in conjunction with the
@@ -2032,11 +2032,11 @@ The regular expression must be used in conjunction with the
 status 0 and its output must match the regular expression. The entire
 output must be matched.   
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select example
@@ -2049,18 +2049,18 @@ output must be matched.
 
 #### exec_program
 
-**Description**: Execute this command on each file and match if the exit
+**Description:** Execute this command on each file and match if the exit
 status is zero
 
 This is part of the customizable file search criteria. If the
 user-defined program returns exit status 0, the file is considered
 matched.   
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select example
@@ -2072,15 +2072,15 @@ matched.
 
 #### file_types
 
-**Description**: List of acceptable file types from menu choices
+**Description:** List of acceptable file types from menu choices
 
 File types vary in details between operating systems. The main POSIX
 types are provided here as menu options, with reg being a synonym for
 plain. In both cases this means not one of the "special" file types.   
 
-**Type**: (option list)
+**Type:** (option list)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```cf3
     plain
@@ -2094,7 +2094,7 @@ plain. In both cases this means not one of the "special" file types.
     block
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select filter
@@ -2107,16 +2107,16 @@ plain. In both cases this means not one of the "special" file types.
 
 #### issymlinkto
 
-**Description**: List of regular expressions to match file objects
+**Description:** List of regular expressions to match file objects
 
 If the file is a symbolic link that points to files matched by one of these 
 expressions, the file will be selected.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select example
@@ -2125,12 +2125,12 @@ expressions, the file will be selected.
      }
 ```
 
-**Notes**:
+**Notes:**
 Windows does not support symbolic links, so this attribute is not applicable on that platform.
 
 #### file_result
 
-**Description**: Logical expression combining classes defined by file
+**Description:** Logical expression combining classes defined by file
 search criteria
 
 The syntax is the same as for a class expression, since the file selection
@@ -2139,12 +2139,12 @@ classes are a classification of the abstract host-search. That is, you
 may specify a boolean expression involving any of the file-matching
 components. 
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**:
+**Allowed input range:**
 `[!*(leaf_name|path_name|file_types|mode|size|owner|group|atime|ctime|mtime|issymlinkto|exec_regex|exec_program|bsdflags)[|.]*]*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body file_select year_or_less
@@ -2170,11 +2170,11 @@ modification time is not between 1 day ago and now"; that is, it is older than
 
 ### link_from
 
-**Type**: `body link_from`
+**Type:** `body link_from`
 
 #### copy_patterns
 
-**Description**: A set of patterns that should be copied and synchronized
+**Description:** A set of patterns that should be copied and synchronized
 instead of linked
 
 During the linking of files, it is sometimes useful to buffer changes
@@ -2183,11 +2183,11 @@ system. This list of patterns matches files that arise during a linking
 policy. A positive match means that the file should be copied and
 updated by modification time.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body link_from example
@@ -2198,17 +2198,17 @@ updated by modification time.
 
 #### link_children
 
-**Description**: true/false whether to link all directory's children to
+**Description:** true/false whether to link all directory's children to
 source originals
 
 If the promiser is a directory, instead of copying the children, link
 them to the source.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body link_from example
@@ -2219,7 +2219,7 @@ them to the source.
 
 #### link_type
 
-**Description**: The type of link used to alias the file
+**Description:** The type of link used to alias the file
 
 This determines what kind of link should be used to link files. Users
 are advised to be wary of 'hard links' (see Unix manual pages for the
@@ -2233,9 +2233,9 @@ equivalent . When verifying a link, choosing 'relative' means that the
 link *must* be relative to the source, so relative and absolute links
 are mutually exclusive.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     symlink
@@ -2246,7 +2246,7 @@ are mutually exclusive.
 
 **Default value:** symlink
 
-**Example**:
+**Example:**
 
 ```cf3
      body link_from example
@@ -2256,20 +2256,20 @@ are mutually exclusive.
      }
 ```
 
-**Notes**:
+**Notes:**
 On Windows, hard links are the only supported type.
 
 #### source
 
-**Description**: The source file to which the link should point
+**Description:** The source file to which the link should point
 
 For remote copies this refers to the file name on the remote server.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.+`
+**Allowed input range:** `.+`
 
-**Example**:
+**Example:**
 
 ```cf3
      body link_from example
@@ -2281,7 +2281,7 @@ For remote copies this refers to the file name on the remote server.
 
 #### when_linking_children
 
-**Description**: Policy for overriding existing files when linking
+**Description:** Policy for overriding existing files when linking
 directories of children
 
 The options refer to what happens if the directory already exists, and
@@ -2292,16 +2292,16 @@ with a link, or simply omit the automatic linkage for files that already
 exist. The latter case can be used to make a copy of one directory with
 certain fields overridden.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     override_file
     if_no_such_file
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body link_from example
@@ -2312,16 +2312,16 @@ certain fields overridden.
 
 #### when_no_source
 
-**Description**: Behavior when the source file to link to does not exist
+**Description:** Behavior when the source file to link to does not exist
 
 This describes how CFEngine should respond to an attempt to create a
 link to a file that does not exist. The options are to force the
 creation to a file that does not (yet) exist, delete any existing link,
 or do nothing.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     force
@@ -2331,7 +2331,7 @@ or do nothing.
 
 **Default value:** `nop`
 
-**Example**:
+**Example:**
 
 ```cf3
      body link_from example
@@ -2342,7 +2342,7 @@ or do nothing.
 
 ### move_obstructions
 
-**Description**: true/false whether to move obstructions to file-object
+**Description:** true/false whether to move obstructions to file-object
 creation
 
 If we have promised to make file X a link, but it already exists as a
@@ -2356,11 +2356,11 @@ Note that symbolic links for directories are treated as directories, not
 links. This behavior can be discussed, but the aim is to err on the
 side of caution.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     files:
@@ -2372,14 +2372,14 @@ side of caution.
         depth_search => recurse("inf");
 ```
 
-**Notes**:
+**Notes:**
 Some operating systems (Solaris) use symbolic links in path names.
 Copying to a directory could then result in renaming of the important
 link, if the behavior is different.
 
 ### pathtype
 
-**Description**: Menu option for interpreting promiser file object
+**Description:** Menu option for interpreting promiser file object
 
 By default, CFEngine makes an educated guess as to whether the promise
 pathname involves a regular expression or not. This guesswork is needed
@@ -2391,9 +2391,9 @@ matches. This can consume significant resources, and so the guess option
 will always try to optimize this. Guesswork is, however, imperfect, so
 you have the option to declare your intention.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     literal
@@ -2410,9 +2410,9 @@ matching, so that each link in the path chain is matched separately.
 Thus it it meaningless to have a `/` in a regular expression, as the
 comparison will never see this character.
 
-**Default value**: `guess`
+**Default value:** `guess`
 
-**Example**:
+**Example:**
 
 ```cf3
 files:
@@ -2435,7 +2435,7 @@ In these examples, at least one case implies an iteration over all
 files/directories matching the regular expression, while the last case
 means a single literal object with a name composed of dots and stars.
 
-**Notes**:  
+**Notes:**  
 On Windows paths using `regex` must use the forward slash (`/`) as path
 separator, since the backward slash has a special meaning in a regular
 expression. Literal paths may also use backslash (`\`) as a path
@@ -2443,18 +2443,18 @@ separator.
 
 ### perms
 
-**Type**: `body perms`
+**Type:** `body perms`
 
 #### bsdflags
 
-**Description**: List of menu options for BSD file system flags to set
+**Description:** List of menu options for BSD file system flags to set
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**:
+**Allowed input range:**
 `[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+`
 
-**Example**:
+**Example:**
 
 ```cf3
      body perms example
@@ -2464,14 +2464,14 @@ separator.
      }
 ```
 
-**Notes**:
+**Notes:**
 The BSD Unices (FreeBSD, OpenBSD, NetBSD) and MacOSX have additional
 file system flags which can be set. Refer to the BSD `chflags`
 documentation for this.
 
 #### groups
 
-**Description**: List of acceptable groups of group ids, first is change
+**Description:** List of acceptable groups of group ids, first is change
 target
 
 The first named group in the list is the default that will be configured
@@ -2479,11 +2479,11 @@ if the file does not match an element of the list. The reserved word
 none may be used to match files that are not owned by a registered
 group.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `[a-zA-Z0-9_$.-]+`
+**Allowed input range:** `[a-zA-Z0-9_$.-]+`
 
-**Example**:
+**Example:**
 
 ```cf3
      body perms example
@@ -2492,21 +2492,21 @@ group.
      }
 ```
 
-**Notes**:
+**Notes:**
 On Windows, files do not have file groups associated with them,
 and thus this attribute is ignored. ACLs may be used in place for this.   
 
 #### mode
 
-**Description**: File permissions
+**Description:** File permissions
 
 The mode string may be symbolic or numerical, like `chmod`.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `[0-7augorwxst,+-]+`
+**Allowed input range:** `[0-7augorwxst,+-]+`
 
-**Example**:
+**Example:**
 
 ```cf3
      body perms example
@@ -2515,12 +2515,12 @@ The mode string may be symbolic or numerical, like `chmod`.
      }
 ```
 
-**Notes**:
+**Notes:**
 This is ignored on Windows, as the permission model uses ACLs.
 
 #### owners
 
-**Description**: List of acceptable owners or user ids, first is change
+**Description:** List of acceptable owners or user ids, first is change
 target
 
 The first user is the reference value that CFEngine will set the file to
@@ -2528,11 +2528,11 @@ if none of the list items matches the true state of the file. The
 reserved word none may be used to match files that are not owned by a
 registered user.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: `[a-zA-Z0-9_$.-]+`
+**Allowed input range:** `[a-zA-Z0-9_$.-]+`
 
-**Example**:
+**Example:**
 
 ```cf3
      body perms example
@@ -2541,7 +2541,7 @@ registered user.
      }
 ```
 
-**Notes**:
+**Notes:**
 On Windows, users can only take ownership of files, never give it. Thus,
 the first user in the list should be the user running the CFEngine
 process (usually Administrator). Additionally, some groups may be owners
@@ -2549,16 +2549,16 @@ on Windows (such as the Administrators group).
 
 #### rxdirs
 
-**Description**: true/false add execute flag for directories if read flag
+**Description:** true/false add execute flag for directories if read flag
 is set
 
 Default behavior is to set the x flag on directories automatically if
 the r flag is specified when specifying multiple files in a single
 promise.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      body perms rxdirs
@@ -2567,26 +2567,26 @@ promise.
      }
 ```
 
-**Notes**:
+**Notes:**
 This is ignored on Windows, as the permission model uses ACLs.
 
 ### rename
 
-**Type**: `body rename`
+**Type:** `body rename`
 
 #### disable
 
-**Description**: true/false automatically rename and remove permissions
+**Description:** true/false automatically rename and remove permissions
 
 Disabling a file means making it unusable. For executables this means
 preventing execution, for an information file it means making the file
 unreadable.   
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body rename example
@@ -2598,16 +2598,16 @@ unreadable.
 
 #### disable_mode
 
-**Description**: The permissions to set when a file is disabled
+**Description:** The permissions to set when a file is disabled
 
 To disable an executable it is not enough to rename it, you should also
 remove the executable flag.   
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `[0-7augorwxst,+-]+`
+**Allowed input range:** `[0-7augorwxst,+-]+`
 
-**Example**:
+**Example:**
 
 ```cf3
      body rename example
@@ -2618,17 +2618,17 @@ remove the executable flag.
 
 #### disable_suffix
 
-**Description**: The suffix to add to files when disabling
+**Description:** The suffix to add to files when disabling
 
 To disable files in a particular manner, use this string suffix.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Default value**: `.cfdisabled`
+**Default value:** `.cfdisabled`
 
-**Example**:
+**Example:**
 
 ```cf3
      body rename example
@@ -2640,13 +2640,13 @@ To disable files in a particular manner, use this string suffix.
 
 #### newname
 
-**Description**: The desired name for the current file
+**Description:** The desired name for the current file
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body rename example(s)
@@ -2657,7 +2657,7 @@ To disable files in a particular manner, use this string suffix.
 
 #### rotate
 
-**Description**: Maximum number of file rotations to keep
+**Description:** Maximum number of file rotations to keep
 
 Used for log rotation. If the file is named `foo` and the rotate attribute
 is set to 4, as above, then initially `foo` is copied to `foo.1` and the old
@@ -2673,11 +2673,11 @@ executed as guarded by time-based or file-size-based classes), the files
 are copied/zeroed or rotated as above until there are rotate numbered
 files plus the one "main" file.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99`
+**Allowed input range:** `0,99`
 
-**Example**:
+**Example:**
 
 ```cf3
      body rename example
@@ -2692,7 +2692,7 @@ of the rotation).
 
 ### repository
 
-**Description**: Name of a repository for versioning
+**Description:** Name of a repository for versioning
 
 A local repository for this object, overrides the default.
 
@@ -2702,11 +2702,11 @@ name of the file. So, for example, `/usr/local/etc/postfix.conf` would
 ordinarily be stored in an alternative repository as
 `_usr_local_etc_postfix.conf.cfsaved`.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
     files:
@@ -2719,11 +2719,11 @@ ordinarily be stored in an alternative repository as
 
 ### touch
 
-**Description**: true/false whether to touch time stamps on file
+**Description:** true/false whether to touch time stamps on file
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
     files:
@@ -2735,7 +2735,7 @@ ordinarily be stored in an alternative repository as
 
 ### transformer
 
-**Description**: Command (with full path) used to transform current file
+**Description:** Command (with full path) used to transform current file
 (no shell wrapper used)
 
 A command to execute, usually for the promised file to transform it to
@@ -2771,11 +2771,11 @@ transformer-command in a very flexible way. See the `kept_returncodes`,
 Finally, you should note that the command is not run in a shell. This
 means that you cannot perform file redirection or create pipelines.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 These examples show both types of promises.
 

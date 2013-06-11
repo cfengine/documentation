@@ -11,7 +11,7 @@ tags: [reference, functions, getfields]
 
 **Return type**: `int`
 
-**Description**: Fill `arrayl_lval` with fields in the lines from file `filename` that match `regex`, split on `split`.
+**Description:** Fill `arrayl_lval` with fields in the lines from file `filename` that match `regex`, split on `split`.
 
 The function returns the number of lines matched. This function is most
 useful when you want only the first matching line (e.g., to mimic the
@@ -39,7 +39,7 @@ the file into items
 
 The base name of the array that returns the values.
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example
@@ -59,7 +59,7 @@ reports:
 }
 ```
 
-**Notes**:
+**Notes:**
 This function matches lines (using a regular expression) in the named
 file, and splits the *first* matched line into fields (using a second
 regular expression), placing these into a named array whose elements are

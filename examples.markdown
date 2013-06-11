@@ -86,7 +86,7 @@ in the inputs section of the master policy.
 The example policy will now be executed every five minutes along with the rest
 of your main policy.
 
-**Notes**: You may have to fill the example with data before it will work.
+**Notes:** You may have to fill the example with data before it will work.
 For example, the LDAP query in `active_directory.cf` needs a domain name.
 In the variable declaration, replace "cftesting" with your domain name:
 

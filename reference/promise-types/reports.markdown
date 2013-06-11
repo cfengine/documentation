@@ -42,17 +42,17 @@ Messages outputted from report promises are prefixed with the letter R to distin
 
 ### friend_pattern
 
-**Description**: Regular expression to keep selected hosts from the friends
+**Description:** Regular expression to keep selected hosts from the friends
 report list
 
 This regular expression should match hosts we want to exclude from
 friend reports.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
 reports:
@@ -67,43 +67,43 @@ reports:
 
 ### intermittency
 
-**Description**: Real number threshold [0,1] of intermittency about current
+**Description:** Real number threshold [0,1] of intermittency about current
 peers, report above
 
-**Type**: `real`
+**Type:** `real`
 
-**Allowed input range**: `0,1`
+**Allowed input range:** `0,1`
 
 **Default value:** `intermittency => "0"`
 
 
 ### printfile
 
-**Description**: Outputs the content of a file to standard output
+**Description:** Outputs the content of a file to standard output
 
-**Type**: `body printfile`
+**Type:** `body printfile`
 
 #### file_to_print
 
-**Description**: Path name to the file that is to be sent to standard
+**Description:** Path name to the file that is to be sent to standard
 output
 
 Include part of a file in a report.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
 #### number_of_lines
 
-**Description**: Integer maximum number of lines to print from selected
+**Description:** Integer maximum number of lines to print from selected
 file
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:  
+**Example:**  
 
 ```cf3
      bundle agent example
@@ -124,17 +124,17 @@ file
 
 ### report_to_file
 
-**Description**: The path and filename to which output should be appended
+**Description:** The path and filename to which output should be appended
 
 Append the output of the report to the named file instead of standard output. 
 If the file cannot be opened for writing then the report defaults to the 
 standard output.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     bundle agent test
@@ -151,17 +151,17 @@ standard output.
 
 ### bundle_return_value_index
 
-**Description**: The promiser is to be interpreted as a literal value that
+**Description:** The promiser is to be interpreted as a literal value that
 the caller can accept as a result for this bundle; in other words, a
 return value with array index defined by this attribute.
 
 Return values are limited to scalars.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
+**Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     body common control

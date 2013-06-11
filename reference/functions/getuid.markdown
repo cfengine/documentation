@@ -11,7 +11,7 @@ tags: [reference, functions, getuid]
 
 **Return type**: `int`
 
-**Description**: Return the integer user id of the named user on this host
+**Description:** Return the integer user id of the named user on this host
 
 If the named user is not registered the variable will not be defined.
 
@@ -19,7 +19,7 @@ If the named user is not registered the variable will not be defined.
 
 * `username` : User name in text, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example
@@ -35,6 +35,6 @@ reports:
     "Users uid is $(uid)";
 }
 ```
-**Notes**:
+**Notes:**
 On Windows, which does not support user ids, the variable will not 
 be defined.

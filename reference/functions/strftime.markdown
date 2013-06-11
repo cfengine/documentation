@@ -11,7 +11,7 @@ tags: [reference, functions, strftime]
 
 **Return type**: `string`
 
-**Description**: Interprets a time and date format string at a particular 
+**Description:** Interprets a time and date format string at a particular 
 point in GMT or local time using Unix epoch time.
 
 **Arguments**:
@@ -29,7 +29,7 @@ are specialized for printing components of the date and time according to the sy
 
 * `time` : Unix epoch time in the range `\d+`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example
@@ -47,7 +47,7 @@ are specialized for printing components of the date and time according to the sy
           "time $(time); GMT now $(now); GMT then $(then)";
     }
 ```
-**Notes**: Note that `strftime` is a standard C function and you should
+**Notes:** Note that `strftime` is a standard C function and you should
 consult its reference to be sure of the specifiers it allows.  The below
 is from the documentation of the standard `strftime` implementation
 in the glibc manual at

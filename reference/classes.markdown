@@ -117,7 +117,7 @@ to change the behavior of CFEngine without having to edit the policy.
 
 ### persistent\_disable\_*DAEMON*
 
-**Description**: Disable a CFEngine Enterprise daemon component persistently.
+**Description:** Disable a CFEngine Enterprise daemon component persistently.
 
 `DAEMON` can be one of `cf_execd`, `cf_monitord` or `cf_serverd`.
 
@@ -125,7 +125,7 @@ This will stop the AGENT from starting automatically.
 
 ### clear_persistent\_disable\_*DAEMON*
 
-**Description**: Re-enable a previously disabled CFEngine Enterprise daemon 
+**Description:** Re-enable a previously disabled CFEngine Enterprise daemon 
 component.
 
 `DAEMON` can be one of `cf_execd`, `cf_monitord` or `cf_serverd`.

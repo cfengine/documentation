@@ -11,11 +11,11 @@ tags: [reference, functions, and]
 
 **Return type**: `string`
 
-**Description**: Returns whether all arguments evaluate to true.
+**Description:** Returns whether all arguments evaluate to true.
 
 **Arguments**: A list of classes and class expressions
 
-**Example**:
+**Example:**
 
 ```cf3
     commands:
@@ -23,6 +23,6 @@ tags: [reference, functions, and]
         ifvarclass => and(not(fileexists("/etc/config/$(config)")), "generating_configs");
 ```
 
-**Notes**:  
+**Notes:**  
    
 **History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)

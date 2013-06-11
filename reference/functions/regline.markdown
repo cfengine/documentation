@@ -11,7 +11,7 @@ tags: [reference, functions, regline]
 
 **Return type**: `class`
 
-**Description**: Returns whether the regular expression `regex` matches a line 
+**Description:** Returns whether the regular expression `regex` matches a line 
 in file `filename`.
 
 Note that `regex` must match an entire line of the file in order to give a true result.
@@ -21,7 +21,7 @@ Note that `regex` must match an entire line of the file in order to give a true 
 * `regex` : Regular expression, in the range `.*`
 * `filename` : Filename to search, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example

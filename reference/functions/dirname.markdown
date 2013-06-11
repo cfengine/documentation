@@ -11,7 +11,7 @@ tags: [reference, functions, dirname]
 
 **Return type**: `string`
 
-**Description**: Return the parent directory name for given `path`.
+**Description:** Return the parent directory name for given `path`.
 
 This function returns the directory name for `path`. If `path` is a 
 directory, then the name of its parent directory is returned.
@@ -20,16 +20,16 @@ directory, then the name of its parent directory is returned.
 
 * `path` : File path, in the range `.*`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     vars:
       "apache_dir" string => dirname("/etc/apache2/httpd.conf");
 ```
 
-**Notes**:
+**Notes:**
 
 **History**: Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
-**See also**: [`lastnode()`][lastnode], [`filestat()`][filestat], 
+**See also:** [`lastnode()`][lastnode], [`filestat()`][filestat], 
 [`splitstring()`][splitstring].

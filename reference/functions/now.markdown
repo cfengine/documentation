@@ -11,9 +11,9 @@ tags: [reference, functions, now]
 
 **Return type**: `int`
 
-**Description**: Return the current time in system representation.
+**Description:** Return the current time in system representation.
 
-**Example**:
+**Example:**
 
 ```cf3
     body file_select zero_age

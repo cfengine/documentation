@@ -11,7 +11,7 @@ tags: [reference, functions, format]
 
 **Return type**: `string`
 
-**Description**: Applies sprintf-style formatting to a given `string`.
+**Description:** Applies sprintf-style formatting to a given `string`.
 
 This function will format numbers (`o`, `x`, `d` and `f`) or strings (`s`) but 
 not potentially dangerous things like individual characters or pointer 
@@ -21,7 +21,7 @@ This function will fail if it doesn't have enough arguments; if any
 format *specifier* contains the *modifiers* `hLqjzt`; or if any format
 *specifier* is not one of `doxfs`.
 
-**Example**:  
+**Example:**  
 
 ```cf3
     bundle agent run

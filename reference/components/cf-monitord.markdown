@@ -137,7 +137,7 @@ to developing the integrated monitoring capabilities of CFEngine.
 
 ### forgetrate
 
-**Description**: Decimal fraction [0,1] weighting of new values over
+**Description:** Decimal fraction [0,1] weighting of new values over
 old in 2d-average computation
 
 Configurable settings for the machine-learning algorithm that
@@ -145,13 +145,13 @@ tracks system behavior. This is only for expert users. This
 parameter effectively determines (together with the monitoring
 rate) how quickly CFEngine forgets its previous history.
 
-**Type**: `real`
+**Type:** `real`
 
-**Allowed input range**: `0,1`
+**Allowed input range:** `0,1`
 
 **Default value:** 0.6
 
-**Example**:
+**Example:**
 
 ```cf3
     body monitor control
@@ -170,11 +170,11 @@ CFEngine to learn the conformally transformed distributions of
 fluctuations about the mean.
 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** true
 
-**Example**:
+**Example:**
 
 ```cf3
     body monitor control
@@ -185,11 +185,11 @@ fluctuations about the mean.
 
 ### monitorfacility
 
-**Description**: Menu option for syslog facility
+**Description:** Menu option for syslog facility
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:
+**Allowed input range:**
 
     LOG_USER
     LOG_DAEMON
@@ -204,7 +204,7 @@ fluctuations about the mean.
 
 **Default value:** `LOG_USER`
 
-**Example**:
+**Example:**
 
     body monitor control
     {
@@ -213,11 +213,11 @@ fluctuations about the mean.
 
 ### tcpdump
 
-**Description**: true/false use tcpdump if found
+**Description:** true/false use tcpdump if found
 
 Interface with TCP stream if possible.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
@@ -228,16 +228,16 @@ Interface with TCP stream if possible.
 
 ### tcpdumpcommand
 
-**Description**: Path to the tcpdump command on this system
+**Description:** Path to the tcpdump command on this system
 
 If this is defined, the monitor will try to interface with the TCP
 stream and monitor generic package categories for anomalies.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
     body monitor control

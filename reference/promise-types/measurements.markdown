@@ -87,22 +87,22 @@ specify what to do with the result afterwards.
 
 ### stream_type
 
-**Description**: The datatype being collected.
+**Description:** The datatype being collected.
 
 CFEngine treats all input using a stream abstraction. The preferred interface 
 is files, since they can be read without incurring the cost of a process. 
 However pipes from executed commands may also be invoked.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:
+**Allowed input range:**
 
 ```cf3
      pipe
      file
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
 stream_type => "pipe";
@@ -110,13 +110,13 @@ stream_type => "pipe";
 
 ### data_type
 
-**Description**: The datatype being collected.
+**Description:** The datatype being collected.
 
 When CFEngine observes data, such as the attached partitions in the example above, the datatype determines how that data will be handled. Integer and real values, counters etc., are recorded as time-series if the history type is 'weekly', or as single values otherwise. If multiple items are matched by an observation (e.g. several lines in a file match the given regular expression), then these can be made into a list by choosing `slist`, else the first matching item will be selected.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     counter
@@ -126,7 +126,7 @@ When CFEngine observes data, such as the attached partitions in the example abov
     slist
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
   "/bin/df"
@@ -145,12 +145,12 @@ When CFEngine observes data, such as the attached partitions in the example abov
 
 ### history_type
 
-**Description**: Whether the data can be seen as a time-series or just an
+**Description:** Whether the data can be seen as a time-series or just an
 isolated value
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 * `scalar`
 
@@ -172,7 +172,7 @@ The measured value is logged as an infinite time-series in
 A standard CFEngine two-dimensional time average (over a weekly period)
 is retained.
 
-**Example**:
+**Example:**
 
 ```cf3
  "/proc/meminfo"
@@ -187,16 +187,16 @@ is retained.
 
 ### units
 
-**Description**: The engineering dimensions of this value or a note about
+**Description:** The engineering dimensions of this value or a note about
 its intent used in plots
 
 This is an arbitrary string used in documentation only.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
    "/var/cfengine/state/cf_rootprocs"
@@ -213,22 +213,22 @@ This is an arbitrary string used in documentation only.
 
 ### match_value
 
-**Type**: `body match_value`
+**Type:** `body match_value`
 
 #### select_line_matching
 
-**Description**: Regular expression for matching line location
+**Description:** Regular expression for matching line location
 
 The expression is [anchored][anchored], meaning it must match a whole line, and not
 a fragment within a line.
 
 This attribute is mutually exclusive of `select_line_number`.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      # Editing
@@ -248,15 +248,15 @@ This attribute is mutually exclusive of `select_line_number`.
 
 #### select_line_number
 
-**Description**: Read from the n-th line of the output (fixed format)
+**Description:** Read from the n-th line of the output (fixed format)
 
 This is mutually exclusive of `select_line_matching`.   
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body match_value find_line
@@ -265,23 +265,23 @@ This is mutually exclusive of `select_line_matching`.
      }
 ```
 
-**Notes**:
+**Notes:**
 
 
 #### extraction_regex
 
-**Description**: Regular expression that should contain a single
+**Description:** Regular expression that should contain a single
 back-reference for extracting a value.
 
 A single parenthesized back-reference should be given to lift the value to be 
 measured out of the text stream. The regular expression is [unanchored][unanchored], meaning 
 it may match a partial string
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body match_value free_memory
@@ -293,7 +293,7 @@ it may match a partial string
 
 #### track_growing_file
 
-**Description**: If true, CFEngine remembers the position to which is last
+**Description:** If true, CFEngine remembers the position to which is last
 read when opening the file, and resets to the start if the file has
 since been truncated
 
@@ -306,9 +306,9 @@ log file redundantly.
 This makes a log pattern promise equivalent to something like tail -f
 logfile | grep pattern in Unix parlance.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Example**:
+**Example:**
 
 ```cf3
      bundle monitor watch
@@ -346,16 +346,16 @@ logfile | grep pattern in Unix parlance.
 
 #### select_multiline_policy
 
-**Description**: Regular expression for matching line location
+**Description:** Regular expression for matching line location
 
 This option governs how CFEngine handles multiple matching lines in the
 input stream. It can average or sum values if they are integer or real,
 or use first or last representative samples. If non-numerical data types
 are used only the first match is used.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     average
@@ -364,7 +364,7 @@ are used only the first match is used.
     last
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
      body match_value myvalue(xxx)

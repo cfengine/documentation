@@ -11,7 +11,7 @@ tags: [reference, functions, sublist]
 
 **Return type**: `slist`
 
-**Description**: Returns list of up to `max_elements` of `list`, obtained from head or tail depending on `head_or_tail`.
+**Description:** Returns list of up to `max_elements` of `list`, obtained from head or tail depending on `head_or_tail`.
 
 **Arguments**:
 
@@ -22,7 +22,7 @@ end. in the range `head`, `tail`
 * `max_elements` : Maximum number of elements to return in the range 
 `0,999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test
@@ -58,5 +58,5 @@ end. in the range `head`, `tail`
     }
 ```
 
-**Notes**:  
+**Notes:**  
 

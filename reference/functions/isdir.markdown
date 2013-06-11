@@ -11,7 +11,7 @@ tags: [reference, functions, isdir]
 
 **Return type**: `class`
 
-**Description**: Returns whether the named object `filename` is a directory.
+**Description:** Returns whether the named object `filename` is a directory.
 
 The CFEngine process must have access to `filename` in order for this to work.
 
@@ -19,7 +19,7 @@ The CFEngine process must have access to `filename` in order for this to work.
 
 * `filename` : File object name, in the range `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

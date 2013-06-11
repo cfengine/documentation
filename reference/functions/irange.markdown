@@ -11,7 +11,7 @@ tags: [reference, functions, irange]
 
 **Return type**: `irange[int,int]`
 
-**Description**: Define a range of integer values for CFEngine internal use.
+**Description:** Define a range of integer values for CFEngine internal use.
 
 Used for any scalar attribute which requires an integer range. You can
 generally interchangeably say "1,10" or irange("1","10"). However, if
@@ -23,7 +23,7 @@ also use the functions `ago`, `now`, `accumulated`, etc.
 * `arg1` : Integer, in the range `-99999999999,9999999999`
 * `arg2` : Integer, in the range `-99999999999,9999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
     irange("1","100");

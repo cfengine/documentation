@@ -11,12 +11,12 @@ tags: [reference, functions, rrange]
 
 **Return type**: `rrange [real,real]``
 
-**Description**: Define a range of real numbers for CFEngine internal use.
+**Description:** Define a range of real numbers for CFEngine internal use.
 
 **Arguments**:
 
 * `arg1` : Real number, in the range `-9.99999E100,9.99999E100`
 * `arg2` : Real number, in the range `-9.99999E100,9.99999E100`
 
-**Notes**:
+**Notes:**
 This is not yet used.

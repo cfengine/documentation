@@ -13,7 +13,7 @@ tags: [reference, functions, regldap]
 
 **Return type**: `class`
 
-**Description**: Returns whether the regular expression `regex` matches a 
+**Description:** Returns whether the regular expression `regex` matches a 
 value item in the LDAP search.
 
 This function retrieves a single field from all matching LDAP records
@@ -55,7 +55,7 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-**Example**:
+**Example:**
 
 ```cf3
 classes:

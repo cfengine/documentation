@@ -126,21 +126,21 @@ these two issues are related, although the promises themselves are not.
 
 ### process_count
 
-**Type**: `body process_count`
+**Type:** `body process_count`
 
 #### in_range_define
 
-**Description**: List of classes to define if the matches are in range
+**Description:** List of classes to define if the matches are in range
 
 Classes are defined if the processes that are found in the process table
 satisfy the promised process count, in other words if the promise about
 the number of processes matching the other criteria is kept.   
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_count example
@@ -151,18 +151,18 @@ the number of processes matching the other criteria is kept.
 
 #### match_range
 
-**Description**: Integer range for acceptable number of matches for this
+**Description:** Integer range for acceptable number of matches for this
 process
 
 This is a numerical range for the number of occurrences of the process
 in the process table. As long as it falls within the specified limits,
 the promise is considered kept.   
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_count example
@@ -173,16 +173,16 @@ the promise is considered kept.
 
 #### out_of_range_define
 
-**Description**: List of classes to define if the matches are out of range
+**Description:** List of classes to define if the matches are out of range
 
 Classes to activate remedial promises conditional on this promise
 failure to be kept.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_count example(s)
@@ -193,11 +193,11 @@ failure to be kept.
 
 ### process_select
 
-**Type**: `body process_select`
+**Type:** `body process_select`
 
 #### command
 
-**Description**: Regular expression matching the command/cmd field of a
+**Description:** Regular expression matching the command/cmd field of a
 process
 
 This expression should match the entire `COMMAND` field of the process
@@ -205,11 +205,11 @@ table, not just a fragment. This field is usually the last field on the
 line, so it thus starts with the first non-space character and ends with
 the end of line.   
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -223,13 +223,13 @@ the end of line.
 
 #### pid
 
-**Description**: Range of integers matching the process id of a process
+**Description:** Range of integers matching the process id of a process
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -241,14 +241,14 @@ the end of line.
 
 #### pgid
 
-**Description**: Range of integers matching the parent group id of a
+**Description:** Range of integers matching the parent group id of a
 process
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -260,14 +260,14 @@ process
 
 #### ppid
 
-**Description**: Range of integers matching the parent process id of a
+**Description:** Range of integers matching the parent process id of a
 process
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -279,14 +279,14 @@ process
 
 #### priority
 
-**Description**: Range of integers matching the priority field (PRI/NI) of
+**Description:** Range of integers matching the priority field (PRI/NI) of
 a process
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `-20,+20`
+**Allowed input range:** `-20,+20`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -297,16 +297,16 @@ a process
 
 #### process_owner
 
-**Description**: List of regexes matching the user of a process
+**Description:** List of regexes matching the user of a process
 
 The regular expressions should match a legal user name on the system. The
 regex is [anchored][anchored], meaning it must match the entire name.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -317,19 +317,19 @@ regex is [anchored][anchored], meaning it must match the entire name.
 
 #### process_result
 
-**Description**: Boolean class expression returning the logical combination
+**Description:** Boolean class expression returning the logical combination
 of classes set by a process selection test
 
 A logical combination of the process selection classifiers. The syntax
 is the same as that for class expressions. There should be no spaces in
 the expressions.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**:
+**Allowed input range:**
 `[(process_owner|pid|ppid||pgid|rsize|vsize|status|command|ttime|stime|tty|priority|threads)[|!.]*]*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select proc_finder(p)
@@ -345,14 +345,14 @@ the expressions.
 
 #### rsize
 
-**Description**: Range of integers matching the resident memory size of a
+**Description:** Range of integers matching the resident memory size of a
 process, in kilobytes
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select
@@ -364,16 +364,16 @@ process, in kilobytes
 
 #### status
 
-**Description**: Regular expression matching the status field of a process
+**Description:** Regular expression matching the status field of a process
 
 For instance, characters in the set `NRSsl+..`. Windows processes do not
 have status fields.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -384,17 +384,17 @@ have status fields.
 
 #### stime_range
 
-**Description**: Range of integers matching the start time of a process
+**Description:** Range of integers matching the start time of a process
 
 The calculation of time from process table entries is sensitive to
 Daylight Savings Time (Summer/Winter Time) so calculations could be an
 hour off. This is for now a bug to be fixed.
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,2147483647`
+**Allowed input range:** `0,2147483647`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -405,16 +405,16 @@ hour off. This is for now a bug to be fixed.
 
 #### ttime_range
 
-**Description**: Range of integers matching the total elapsed time of a
+**Description:** Range of integers matching the total elapsed time of a
 process.
 
 This is total accumulated time for a process.
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,2147483647`
+**Allowed input range:** `0,2147483647`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -425,16 +425,16 @@ This is total accumulated time for a process.
 
 #### tty
 
-**Description**: Regular expression matching the tty field of a process
+**Description:** Regular expression matching the tty field of a process
 
 Windows processes are not regarded as attached to any terminal, so they
 all have tty '?'.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -445,14 +445,14 @@ all have tty '?'.
 
 #### threads
 
-**Description**: Range of integers matching the threads (NLWP) field of a
+**Description:** Range of integers matching the threads (NLWP) field of a
 process
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -463,18 +463,18 @@ process
 
 #### vsize
 
-**Description**: Range of integers matching the virtual memory size of a
+**Description:** Range of integers matching the virtual memory size of a
 process, in kilobytes.
 
 On Windows, the virtual memory size is the amount of memory that cannot
 be shared with other processes. In Task Manager, this is called Commit
 Size (Windows 2008), or VM Size (Windows XP).
 
-**Type**: `irange[int,int]`
+**Type:** `irange[int,int]`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body process_select example
@@ -485,16 +485,16 @@ Size (Windows 2008), or VM Size (Windows XP).
 
 ### process_stop
 
-**Description**: A command used to stop a running process
+**Description:** A command used to stop a running process
 
 As an alternative to sending a termination or kill signal to a process,
 one may call a 'stop script' to perform a graceful shutdown.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
     processes:
@@ -507,7 +507,7 @@ one may call a 'stop script' to perform a graceful shutdown.
 
 ### restart_class
 
-**Description**: A class to be defined globally if the process is not
+**Description:** A class to be defined globally if the process is not
 running, so that a `command:` rule can be referred to restart the process
 
 This is a signal to restart a process that should be running, if it is
@@ -522,11 +522,11 @@ Therefore, it may be useful to specify an `action` body that sets
 set by `restart_class`. See the `commands` promise type for more
 information.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
+**Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 processes:
@@ -544,15 +544,15 @@ commands:
 
 ### signals
 
-**Description**: A list of menu options representing signals to be sent to
+**Description:** A list of menu options representing signals to be sent to
 a process.
 
 Signals are presented as an ordered list to the process. On Windows,
 only the kill signal is supported, which terminates the process.
 
-**Type**: (option list)
+**Type:** (option list)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```cf3
        hup
@@ -572,7 +572,7 @@ only the kill signal is supported, which terminates the process.
        segv
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
     processes:

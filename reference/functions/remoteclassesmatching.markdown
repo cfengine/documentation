@@ -13,7 +13,7 @@ tags: [reference, functions, remoteclassesmatching]
 
 **Return type**: `class`
 
-**Description**: Read persistent classes matching regular expression `regex`
+**Description:** Read persistent classes matching regular expression `regex`
 from a remote CFEngine server `server` and add them into local context with 
 `prefix`.
 
@@ -46,13 +46,13 @@ A string to be added to the returned classes. If the server defines a
 persistent class `alpha`, then this would generate a private class in the 
 current bundle called `prefix_alpha`.
 
-**Example**:
+**Example:**
 
 ```cf3
    "succeeded" expression => remoteclassesmatching("regex","server","yes","myprefix");
 ```
 
-**Notes**: Note that this function assumes that you have already performed a
+**Notes:** Note that this function assumes that you have already performed a
 successful key exchange between systems, (e.g. using either a remote
 copy or `cf-runagent` connection). It contains no mechanism for trust
 establishment and will fail if there is no trust relationship

@@ -11,7 +11,7 @@ tags: [reference, functions, translatepath]
 
 **Return type**: `string`
 
-**Description**: Translate path separators from Unix style to the host's 
+**Description:** Translate path separators from Unix style to the host's 
 native style and returns the result.
 
 Takes a string argument with slashes as path separators and translate
@@ -23,7 +23,7 @@ translatepath("a/b/c") would yield "a/b/c" on Unix platforms, but
 
 * `path` : Unix style path, in the range `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test
@@ -41,7 +41,7 @@ bundle agent test
 }
 ```
 
-**Notes**: Be careful when using this function in combination with regular
+**Notes:** Be careful when using this function in combination with regular
 expressions, since backslash is also used as escape character in
 regex's. For example, in the regex `dir/.abc`, the dot represents the
 regular expression "any character", while in the regex `dir\.abc`, the

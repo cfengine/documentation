@@ -11,7 +11,7 @@ tags: [reference, functions, splitstring]
 
 **Return type**: `slist`
 
-**Description**: Splits `string` into at most `maxent` substrings wherever 
+**Description:** Splits `string` into at most `maxent` substrings wherever 
 `regex` occurs, and  returns the list with those strings.
 
 If the maximum number of substrings is insufficient to accommodate all 
@@ -24,7 +24,7 @@ rest of the un-split string.
 * `regex` : [Unanchored][unanchored] regular expression to split on, in the range `.*`
 * `maxent` : Maximum number of substrings, in the range `0,99999999999`   
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test

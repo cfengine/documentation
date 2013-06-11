@@ -11,9 +11,9 @@ tags: [reference, functions, concat]
 
 **Return type**: `string`
 
-**Description**: Concatenates all arguments into a string.
+**Description:** Concatenates all arguments into a string.
 
-**Example**:  
+**Example:**  
 
 ```cf3
     commands:

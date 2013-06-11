@@ -11,7 +11,7 @@ tags: [reference, functions, isvariable]
 
 **Return type**: `class`
 
-**Description**: Returns whether a variable named `var` is defined.
+**Description:** Returns whether a variable named `var` is defined.
 
 The variable need only exist. This says nothing about its value. Use
 `regcmp` to check variable values.
@@ -21,7 +21,7 @@ The variable need only exist. This says nothing about its value. Use
 * `var` : Variable identifier, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

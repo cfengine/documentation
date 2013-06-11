@@ -11,7 +11,7 @@ tags: [reference, functions, execresult]
 
 **Return type**: `string`
 
-**Description**: Execute `command` and return output as `string`.
+**Description:** Execute `command` and return output as `string`.
 
 If the command is not found, the result will be the empty string.
 
@@ -25,7 +25,7 @@ necessary in order to combine commands with pipes etc, but remember that each
 command requires a new process that reads in files beyond CFEngine's control. 
 Thus using a shell is both a performance hog and a potential security issue.
 
-**Example**:
+**Example:**
 
 ```cf3
 body common control
@@ -49,7 +49,7 @@ reports:
 }
 ```
 
-**Notes**: you should never use this function to execute commands that make
+**Notes:** you should never use this function to execute commands that make
 changes to the system, or perform lengthy computations. Such an
 operation is beyond CFEngine's ability to guarantee convergence, and on
 multiple passes and during syntax verification these function calls are

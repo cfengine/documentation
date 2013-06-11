@@ -11,7 +11,7 @@ tags: [reference, functions, hubknowledge]
 
 **Prototype**: `hubknowledge(id)`
 
-**Description**: Read global knowledge from the CFEngine Database host by 
+**Description:** Read global knowledge from the CFEngine Database host by 
 `id`.
 
 This function is only available in CFEngine Enterprise. It is intended for use 
@@ -40,7 +40,7 @@ bundle with a handle that matches the requested object.
 
 * `id` : identifier, in the range `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     vars:

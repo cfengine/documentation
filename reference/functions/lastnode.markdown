@@ -11,7 +11,7 @@ tags: [reference, functions, lastnode]
 
 **Return type**: `string`
 
-**Description**: Returns the part of `string` after the last `separator`.
+**Description:** Returns the part of `string` after the last `separator`.
 
 This function returns the final node in a chain, given a regular
 expression to split on. This is mainly useful for finding leaf-names of
@@ -22,7 +22,7 @@ files, from a fully qualified path name.
 * `string` : Input string, in the range `.*`
 * `separator` : Link separator, e.g. `/` or `:`, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent yes
@@ -46,5 +46,5 @@ reports:
 }
 ```
 
-**See also**: [`filestat()`][filestat], [`dirname()`][dirname],
+**See also:** [`filestat()`][filestat], [`dirname()`][dirname],
 [`splitstring()`][splitstring].

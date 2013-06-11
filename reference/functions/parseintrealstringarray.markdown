@@ -13,7 +13,7 @@ tags: [reference, functions, parseintarray, parserealarray, parsestringarray]
 
 **Return type**: `int`
 
-**Description**: Parses up to `maxentries` values from the first `maxbytes` 
+**Description:** Parses up to `maxentries` values from the first `maxbytes` 
 bytes in string `input` and populates `array`. Returns the dimension.
 
 These functions mirror the exact behavior of their 
@@ -32,7 +32,7 @@ policies can be kept inline.
 `0,99999999999`
 * `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test(f) 

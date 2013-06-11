@@ -11,14 +11,14 @@ tags: [reference, functions, isplain]
 
 **Return type**: `class`
 
-**Description**: Returns whether the named object `filename` is a 
+**Description:** Returns whether the named object `filename` is a 
 plain/regular file.
 
 **Arguments**:
 
 * `arg1` : File object name, in the range `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

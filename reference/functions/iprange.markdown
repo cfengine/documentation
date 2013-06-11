@@ -11,7 +11,7 @@ tags: [reference, functions, iprange]
 
 **Return type**: `class`
 
-**Description**: Returns whether the current host lies in the range of IP 
+**Description:** Returns whether the current host lies in the range of IP 
 addresses specified.
 
 Pattern matching based on IP addresses.
@@ -20,7 +20,7 @@ Pattern matching based on IP addresses.
 
 * `range` : IP address range syntax, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

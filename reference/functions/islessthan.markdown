@@ -11,7 +11,7 @@ tags: [reference, functions, islessthan]
 
 **Return type**: `class`
 
-**Description**: Returns whether `value1` is less than `value2`.
+**Description:** Returns whether `value1` is less than `value2`.
 
 The comparison is made numerically if possible. If the values are
 strings, the result is the inverse to that of comparing with strcmp().
@@ -21,7 +21,7 @@ strings, the result is the inverse to that of comparing with strcmp().
 * `value1` : Smaller string or value, in the range `.*`
 * `value2` : Larger string or value, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test
@@ -43,4 +43,4 @@ reports:
 }
 ```
 
-**See also**: [`isgreaterthan()`][isgreaterthan].
+**See also:** [`isgreaterthan()`][isgreaterthan].

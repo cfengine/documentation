@@ -11,7 +11,7 @@ tags: [reference, functions, userexists]
 
 **Return type**: `class`
 
-**Description**: Return whether `user` name or numerical id exists on this 
+**Description:** Return whether `user` name or numerical id exists on this 
 host.
 
 Checks whether the user is in the password database for the current host. The
@@ -21,7 +21,7 @@ argument must be a user name or user id.
 
 * `user` : User name or identifier, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example

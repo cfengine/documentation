@@ -11,7 +11,7 @@ tags: [reference, functions, fileexists]
 
 **Return type**: `class`
 
-**Description**: Returns whether the file `filename` can be accessed.
+**Description:** Returns whether the file `filename` can be accessed.
 
 The file must exist, and the user must have access permissions to the file for 
 this function to return true.
@@ -20,7 +20,7 @@ this function to return true.
 
 * `filename` : File object name, in the range `"?(/.*)`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     body common control

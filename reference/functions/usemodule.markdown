@@ -11,7 +11,7 @@ tags: [reference, functions, usemodule]
 
 **Return type**: `class`
 
-**Description**: Execute CFEngine module script `name` with `args` and return 
+**Description:** Execute CFEngine module script `name` with `args` and return 
 whether successful.
 
 **Arguments**:
@@ -23,7 +23,7 @@ be in the registered modules directory, WORKDIR/modules.
 
 * `args` : Argument string for the module, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test

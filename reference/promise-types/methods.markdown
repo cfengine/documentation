@@ -90,18 +90,18 @@ contain the variable name of the method if the variable is a list.
 
 ### inherit
 
-**Description**: If true this causes the sub-bundle to inherit the private
+**Description:** If true this causes the sub-bundle to inherit the private
 classes of its parent
 
 Inheriting the variables is unnecessary as the child can always access the 
 parent's variables through a qualified reference using its bundle name. For 
 example: `$(bundle.variable)`.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
-**Default value**: false
+**Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent name
@@ -123,20 +123,20 @@ example: `$(bundle.variable)`.
 
 ### usebundle
 
-**Type**: `bundle agent`
+**Type:** `bundle agent`
 
 ### useresult
 
-**Description**: Specify the name of a local variable to contain any
+**Description:** Specify the name of a local variable to contain any
 result/return value from the child
 
 Return values are limited to scalars.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+
+**Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test

@@ -11,7 +11,7 @@ tags: [reference, functions, grep]
 
 **Return type**: `slist`
 
-**Description**: Returns the sub-list if items  in `list` matching the regular expression `regex`.
+**Description:** Returns the sub-list if items  in `list` matching the regular expression `regex`.
 
 **Arguments**:
 
@@ -22,7 +22,7 @@ The regex is [anchored][anchored].
 * `list` : list identifier, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test

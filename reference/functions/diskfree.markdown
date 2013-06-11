@@ -20,7 +20,7 @@ If `path` is not found, this function returns 0.
 
 * `path` : File system directory, in the range `"?(/.*)`
 
-**Example**:  
+**Example:**  
 
 ```cf3
     bundle agent example

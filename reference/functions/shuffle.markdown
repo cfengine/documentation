@@ -11,7 +11,7 @@ tags: [reference, functions, shuffle]
 
 **Return type**: `slist`
 
-**Description**: Return `list` shuffled with `seed`.
+**Description:** Return `list` shuffled with `seed`.
 
 The same seed will produce the same shuffle every time. For a random shuffle, 
 provide a random seed with the `randomint` function.
@@ -22,7 +22,7 @@ provide a random seed with the `randomint` function.
 `[a-zA-Z0-9_$(){}\[\].:]+`
 * `seed` : Shuffle seed in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test
@@ -48,4 +48,4 @@ Output:
     shuffled by zz = 'c,b,a'
 ```
 
-**See also**: [`sort()`][sort].
+**See also:** [`sort()`][sort].

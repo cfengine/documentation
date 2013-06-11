@@ -11,7 +11,7 @@ tags: [reference, functions, countlinesmatching]
 
 **Return type**: `int`
 
-**Description**: Count the number of lines in file `filename` matching 
+**Description:** Count the number of lines in file `filename` matching 
 `regex`.
 
 This function matches lines in the named file, using a regular expression that should match the whole line, and returns the number of lines matched.
@@ -27,7 +27,7 @@ A regular expression matching zero or more lines. The regular expression is
 
 The name of the file to be examined.
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example

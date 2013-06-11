@@ -11,7 +11,7 @@ tags: [reference, functions, isnewerthan]
 
 **Return type**: `class`
 
-**Description**: Returns whether the file `newer` is newer (modified later) 
+**Description:** Returns whether the file `newer` is newer (modified later) 
 than the file `older`.
 
 This function compares the modification time (mtime) of the files, referring 
@@ -22,7 +22,7 @@ to changes of content only.
 * `arg1` : Newer file name, in the range `"?(/.*)`
 * `arg2` : Older file name, in the range `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example

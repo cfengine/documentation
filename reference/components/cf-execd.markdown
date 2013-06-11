@@ -79,7 +79,7 @@ times and output capture to `WORKDIR/outputs` and relay via email.
 
 ### agent_expireafter
 
-**Description**: Maximum agent runtime (in minutes)
+**Description:** Maximum agent runtime (in minutes)
 
 Sets a maximum time on any run of the command in `exec_command`. If
 no data is received from the pipe opened to the process created
@@ -92,13 +92,13 @@ run of `cf-agent` that you want to leave alone. Alternatively, you
 can make your jobs output something to STDOUT at least as often as
 this threshold. This will reset the timer.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,10080`
+**Allowed input range:** `0,10080`
 
 **Default value:** 10080
 
-**Example**:
+**Example:**
 
 ```cf3
     body executor control
@@ -107,7 +107,7 @@ this threshold. This will reset the timer.
     }
 ```
 
-**Notes**:  
+**Notes:**  
 The setting will effectively allow you to set a threshold on the
 number of simultaneous agents that are running. For example, if you
 set it to `120` and you are using a 5-minute agent schedule, a
@@ -115,11 +115,11 @@ maximum of 120 / 5 = 24 agents should be enforced.
 
 ### executorfacility
 
-**Description**: Menu option for syslog facility level
+**Description:** Menu option for syslog facility level
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:
+**Allowed input range:**
 
     LOG_USER
     LOG_DAEMON
@@ -136,7 +136,7 @@ See the syslog manual pages.
 
 **Default value:** `LOG_USER`
 
-**Example**:
+**Example:**
 
 ```cf3
     body executor control
@@ -147,29 +147,29 @@ See the syslog manual pages.
 
 ### exec_command
 
-**Description**: The full path and command to the executable run by
+**Description:** The full path and command to the executable run by
 default (overriding `builtin`)
 
 The command is run in a shell encapsulation so pipes and shell
 symbols may be used if desired.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
     exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
 
 ### mailfrom
 
-**Description**: Email-address cfengine mail appears to come from
+**Description:** Email-address cfengine mail appears to come from
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*@.*`
+**Allowed input range:** `.*@.*`
 
-**Example**:
+**Example:**
 
 ```cf3
     body executor control
@@ -180,20 +180,20 @@ symbols may be used if desired.
 
 ### mailmaxlines
 
-**Description**: Maximum number of lines of output to send by email
+**Description:** Maximum number of lines of output to send by email
 
 This limit prevents anomalously large outputs from clogging up a system 
 administrator's mailbox. The output is truncated in the email report, but the 
 complete original transcript is stored in `WORKDIR/outputs/*` where it can be 
 viewed on demand. A reference to the appropriate file is given.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,1000`
+**Allowed input range:** `0,1000`
 
 **Default value:** 30
 
-**Example**:
+**Example:**
 
 ```cf3
     body executor control
@@ -204,15 +204,15 @@ viewed on demand. A reference to the appropriate file is given.
 
 ### mailto
 
-**Description**: Email-address cfengine mail is sent to
+**Description:** Email-address cfengine mail is sent to
 
 The address to whom email is sent if an smtp host is configured.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*@.*`
+**Allowed input range:** `.*@.*`
 
-**Example**:
+**Example:**
 
 ```cf3
     body executor control
@@ -223,7 +223,7 @@ The address to whom email is sent if an smtp host is configured.
 
 ### schedule
 
-**Description**: The class schedule used by cf-execd for activating
+**Description:** The class schedule used by cf-execd for activating
 cf-agent
 
 The list should contain class expressions comprised of classes
@@ -237,16 +237,16 @@ and may be deferred by promise caching and the value of
 `ifelapsed`. Note also that the effectiveness of the `splayclass`
 function may be affected by changing the `schedule`.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Default value**:
+**Default value:**
 
     schedule => { "Min00", "Min05", "Min10", "Min15", "Min20", "Min25",
               "Min30", "Min35", "Min40", "Min45", "Min50", "Min55" };
 
-**Example**:
+**Example:**
 
 ```cf3
     body executor control
@@ -257,18 +257,18 @@ function may be affected by changing the `schedule`.
 
 ### smtpserver
 
-**Description**: Name or IP of a willing smtp server for sending
+**Description:** Name or IP of a willing smtp server for sending
 email
 
 This should point to a standard port 25 server without encryption. If you are 
 running secured or encrypted email then you should run a mail relay on 
 localhost and point this to localhost.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
   body executor control
@@ -279,7 +279,7 @@ localhost and point this to localhost.
 
 ### splaytime
 
-**Description**: Time in minutes to splay this host based on its name
+**Description:** Time in minutes to splay this host based on its name
 hash
 
 Whenever any class listed in the `schedule` attribute is present,
@@ -295,15 +295,15 @@ time between 1-5 minutes for up a few thousand hosts. The `splaytime`
 should not be set to a value larger than the `cf-execd` scheduling
 interval, else multiple clients might contend for data.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
 **Default value:** 0
 
 The CFEngine default policy sets `splaytime` to 1.
 
-**Example**:
+**Example:**
 
 ```cf3
   body executor control
@@ -312,5 +312,5 @@ The CFEngine default policy sets `splaytime` to 1.
   }
 ```
 
-**See also**: The [`splayclass()`][splayclass] function for a task-specific 
+**See also:** The [`splayclass()`][splayclass] function for a task-specific 
 means for setting splay times.

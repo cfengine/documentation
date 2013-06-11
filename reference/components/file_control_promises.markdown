@@ -28,14 +28,14 @@ outside of body and bundle definitions.
 
 ### namespace
 
-**Description**: The namespace string identifies a private namespace 
+**Description:** The namespace string identifies a private namespace 
 to switch to in order to protect the current file from duplicate definitions.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `[a-zA-Z0-9_$(){}\[\].:]+`
+**Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     body file control
@@ -44,7 +44,7 @@ to switch to in order to protect the current file from duplicate definitions.
     }
 ```
 
-**Notes**:
+**Notes:**
 
 **History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 

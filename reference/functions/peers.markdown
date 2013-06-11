@@ -11,7 +11,7 @@ tags: [reference, functions, peers]
 
 **Return type**: `slist`
 
-**Description**: Returns a list of peers from the partition to which
+**Description:** Returns a list of peers from the partition to which
 the current host belongs, excluding the current host.
 
 This function returns a list of hostnames that may be considered peers
@@ -44,7 +44,7 @@ A number between 2 and 64 which represents the number of peers in a
 peer-group. An arbitrary limit of 64 is set on groups to avoid nonsensical 
 promises.
 
-**Example**:
+**Example:**
 
 Example file:
 

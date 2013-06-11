@@ -49,20 +49,20 @@ pattern will match.
 
 ### replace_with
 
-**Type**: `body replace_with`
+**Type:** `body replace_with`
 
 #### occurrences
 
-**Description**: Defines which occurrences should be replaced.
+**Description:** Defines which occurrences should be replaced.
 
 Using "first" is generally unwise, as it will change a different
 matching string each time the promise is executed, and may not "catch
 up" with whatever external action is altering the text the promise
 applies to.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 * `all`
 
@@ -74,7 +74,7 @@ Replace only the first occurrence. Note: this is non-convergent.
 
 **Default value:** all
 
-**Example**:
+**Example:**
 
 ```cf3
      body replace_with example
@@ -85,13 +85,13 @@ Replace only the first occurrence. Note: this is non-convergent.
 
 #### replace_value
 
-**Description**: Value used to replace regular expression matches in search
+**Description:** Value used to replace regular expression matches in search
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body replace_with example(s)

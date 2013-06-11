@@ -20,7 +20,7 @@ The following attributes are available in all `edit_xml` promise types.
 
 ### build_xpath
 
-**Description**: Builds an XPath within the XML file
+**Description:** Builds an XPath within the XML file
 
 Please note that when `build_xpath` is defined as an attribute within
 an `edit_xml` promise body, the tree described by the specified XPath
@@ -28,17 +28,17 @@ will be verified and built BEFORE other `edit_xml` promises within same
 promise body. Therefore, the file will not be empty during the execution
 of such promises.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
 ### select_xpath
 
-**Description**: Select the XPath node in the XML file to edit
+**Description:** Select the XPath node in the XML file to edit
 
 Edits to the XML document take place within the selected node. This
 attribute is not used when inserting XML content into an empty file.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)

@@ -11,7 +11,7 @@ tags: [reference, functions, ifelse]
 
 **Return type**: `string`
 
-**Description**: Evaluate each pair of arguments up to the last one as a (`class`, `value`) tuple, returning `value` if `class` is set.
+**Description:** Evaluate each pair of arguments up to the last one as a (`class`, `value`) tuple, returning `value` if `class` is set.
 
 If none are set, returns the last argument.
 
@@ -61,7 +61,7 @@ affect the default case?).  Here's the alternative with `ifelse`:
                              "z");
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

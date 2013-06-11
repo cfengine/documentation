@@ -11,13 +11,13 @@ tags: [reference, functions, hostinnetgroup]
 
 **Return type**: `class`
 
-**Description**: True if the current host is in the named `netgroup`.
+**Description:** True if the current host is in the named `netgroup`.
 
 **Arguments**:
 
 * `netgroup` : Netgroup name, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
     classes:

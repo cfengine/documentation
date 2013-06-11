@@ -13,7 +13,7 @@ tags: [reference, functions, ldaparray]
 
 **Return type**: `class`
 
-**Description**: Fills `array` with the entire LDAP record, and returns 
+**Description:** Fills `array` with the entire LDAP record, and returns 
 whether there was a match for the search.
 
 This function retrieves an entire record with all elements and populates
@@ -53,7 +53,7 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-**Example**:
+**Example:**
 
 ```cf3
 classes:

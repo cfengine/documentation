@@ -13,7 +13,7 @@ tags: [reference, functions, readintarray, readrealarray, readstringarray]
 
 **Return type**: `int`
 
-**Description**: Populates `array` with up to `maxentries` values, parsed from 
+**Description:** Populates `array` with up to `maxentries` values, parsed from 
 the first `maxbytes` bytes in file `filename`.
 
 Reads a two dimensional array from a file. One dimension is separated by the 
@@ -38,7 +38,7 @@ lines matched.
 `0,99999999999`
 * `maxbytes` : Maximum bytes to read, in the range `0,99999999999`   
 
-**Example**:
+**Example:**
 
 ```cf3
     readintarray("array_name","/tmp/array","#[^\n]*",":",10,4000);

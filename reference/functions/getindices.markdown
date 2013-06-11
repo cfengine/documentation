@@ -11,7 +11,7 @@ tags: [reference, functions, getindices]
 
 **Return type**: `slist`
 
-**Description**: Returns a list of keys in `array`.
+**Description:** Returns a list of keys in `array`.
 
 Make sure you specify the correct scope when supplying the name of the
 variable.
@@ -21,7 +21,7 @@ variable.
 * `array` : array identifier, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

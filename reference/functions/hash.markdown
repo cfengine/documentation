@@ -11,7 +11,7 @@ tags: [reference, functions, hash]
 
 **Return type**: `string`
 
-**Description**: Return the hash of `input` using the hash `algorithm`.
+**Description:** Return the hash of `input` using the hash `algorithm`.
 
 Hash functions are extremely sensitive to input. You should not expect
 to get the same answer from this function as you would from every other
@@ -29,7 +29,7 @@ handled.
   * sha384
   * crypt   
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

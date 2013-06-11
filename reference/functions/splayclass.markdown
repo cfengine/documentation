@@ -11,7 +11,7 @@ tags: [reference, functions, splayclass]
 
 **Return type**: `class`
 
-**Description**: Returns whether `input`'s time-slot has arrived, 
+**Description:** Returns whether `input`'s time-slot has arrived, 
 according to a `policy`.
 
 The function returns true if the system clock lies within a scheduled 
@@ -45,7 +45,7 @@ executor `schedule` control variable, you may prevent the `splayclass` from
 ever being defined (that is, if the hashed 5-minute interval that is selected 
 by the `splayclass` is a time when you have told CFEngine *not* to run).
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent example

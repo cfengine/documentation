@@ -11,7 +11,7 @@ tags: [reference, functions, peerleaders]
 
 **Return type**: `slist`
 
-**Description**: Returns a list of peer leaders from the named partitioning.
+**Description:** Returns a list of peer leaders from the named partitioning.
 
 Peers are defined according to a list of hosts, provided in `filename`. This 
 file should contain a list (one per line), possibly with comments matching 
@@ -39,7 +39,7 @@ A number between 2 and 64 which represents the number of peers in a
 peer-group. An arbitrary limit of 64 is set on groups to avoid nonsensical 
 promises.
 
-**Example**:
+**Example:**
 
 Example file:
 

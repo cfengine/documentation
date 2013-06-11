@@ -11,14 +11,14 @@ tags: [reference, functions, getusers]
 
 **Return type**: `slist`
 
-**Description**: Returns a list of all users defined, except those names in `exclude_names` and uids in `exclude_ids`
+**Description:** Returns a list of all users defined, except those names in `exclude_names` and uids in `exclude_ids`
 
 **Arguments**:
 
 * `exclude_names` : Comma separated list of User names, in the range `.*`
 * `exclude_ids` : Comma separated list of UserID numbers, in the range `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
     vars:
@@ -31,7 +31,7 @@ tags: [reference, functions, getusers]
       "Found user $(allusers)";
 ```
 
-**Notes**:
+**Notes:**
 This function is currently only available on Unix-like systems.
 
 **History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010).

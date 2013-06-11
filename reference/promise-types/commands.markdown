@@ -69,14 +69,14 @@ name of the executable file. For example:
 
 ### args
 
-**Description**: Allows to separate the arguments to the command from the 
+**Description:** Allows to separate the arguments to the command from the 
 command itself.
 
 Sometimes it is convenient to separate command and arguments. The final arguments are the concatenation with one space.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
 ```cf3
 commands:
@@ -94,14 +94,14 @@ So in the example above the command would be:
 
 ### contain
 
-**Description**: Allows running the command in a 'sandbox'.
+**Description:** Allows running the command in a 'sandbox'.
 
 Command containment allows you to make a `sandbox' around a command, to run it 
 as a non-privileged user inside an isolated directory tree.
 
-**Type**: `body contain`
+**Type:** `body contain`
 
-**Example**:
+**Example:**
 
 ```cf3
     body contain example
@@ -118,7 +118,7 @@ as a non-privileged user inside an isolated directory tree.
 
 #### useshell
 
-**Description**: Specifies which shell to use when executing the command.
+**Description:** Specifies which shell to use when executing the command.
 
 The default is to *not* use a shell when executing commands. Use of a
 shell has both resource and security consequences. A shell consumes an
@@ -131,9 +131,9 @@ CFEngine Enterprise, the command is run in the `cmd` Command Prompt if this
 attribute is set to `useshell`, or in the PowerShell if the attribute is set 
 to `powershell`.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     useshell
@@ -146,7 +146,7 @@ For compatibility, the boolean values are also supported, and map to
 
 **Default value:** `noshell`
   
-**Example**:
+**Example:**
 
 ```cf3
      body contain example
@@ -157,14 +157,14 @@ For compatibility, the boolean values are also supported, and map to
 
 #### umask
 
-**Description**: Sets the internal umask for the process.
+**Description:** Sets the internal umask for the process.
 
 Default value for the mask is 077. On Windows, umask is not supported and is 
 thus ignored by Windows versions of CFEngine. 
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     0
@@ -178,7 +178,7 @@ thus ignored by Windows versions of CFEngine.
     072
 ```
 
-**Example**: 
+**Example:** 
 
 ```cf3
      body contain example
@@ -189,7 +189,7 @@ thus ignored by Windows versions of CFEngine.
 
 #### exec_owner
 
-**Description**: Specifies the user under which the command executes.
+**Description:** Specifies the user under which the command executes.
 
 This is part of the restriction of privilege for child processes when
 running `cf-agent` as the root user, or a user with privileges.
@@ -199,11 +199,11 @@ under. Keeping this in CFEngine policies could be a security hazard.
 Therefore, this option is not yet implemented on Windows versions of
 CFEngine. 
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body contain example
@@ -214,18 +214,18 @@ CFEngine.
 
 #### exec_group
 
-**Description**: Associates the command with a group.
+**Description:** Associates the command with a group.
 
 This is part of the restriction of privilege for child processes when
 running `cf-agent` as the root group, or a group with privileges. It is
 ignored on Windows, as processes do not have any groups associated with
 them. 
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**: 
+**Example:** 
 
 ```cf3
      body contain example
@@ -236,16 +236,16 @@ them.
 
 #### exec_timeout
 
-**Description**: Attempt to time-out after this number of seconds.
+**Description:** Attempt to time-out after this number of seconds.
 
 This cannot be guaranteed as not all commands are willing to be interrupted in 
 case of failure. 
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `1,3600`
+**Allowed input range:** `1,3600`
 
-**Example**:
+**Example:**
 
 ```cf3
      body contain example
@@ -256,17 +256,17 @@ case of failure.
 
 #### chdir
 
-**Description**: Run the command with a working directory.
+**Description:** Run the command with a working directory.
 
 This attribute has the effect of placing the running command into a
 current working directory equal to the parameter given; in other words,
 it works like the cd shell command.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
      body contain example
@@ -278,18 +278,18 @@ it works like the cd shell command.
 
 #### chroot
 
-**Description**: Specify the path that will be the root directory for the 
+**Description:** Specify the path that will be the root directory for the 
 process.
 
 The path of the directory will be experienced as the top-most root directory 
 for the process. In security parlance, this creates a 'sandbox' for the 
 process. Windows does not support this feature.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
      body contain example
@@ -301,7 +301,7 @@ process. Windows does not support this feature.
 
 #### preview
 
-**Description**: This is the preview command when running in dry-run mode 
+**Description:** This is the preview command when running in dry-run mode 
 (with -n).
 
 Previewing shell scripts during a dry-run is a potentially misleading
@@ -310,11 +310,11 @@ system. It is CFEngine best practice to never write change-functionality into
 user-written scripts except as a last resort. CFEngine can apply its safety 
 checks to user defined scripts. 
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body contain example
@@ -325,16 +325,16 @@ checks to user defined scripts.
 
 #### no_output
 
-**Description**: Allows to discard all output from the command.
+**Description:** Allows to discard all output from the command.
 
 Setting this attribute to `true` is equivalent to piping standard output and 
 error to `/dev/null`.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 ```cf3
      body contain example
@@ -345,7 +345,7 @@ error to `/dev/null`.
 
 ### module
 
-**Description**: Set variables and classes based on command output.
+**Description:** Set variables and classes based on command output.
 
 CFEngine `modules` are commands that support a simple protocol in order to set 
 additional variables and classes on execution from user defined code. Modules 
@@ -364,11 +364,11 @@ These variables end up in a context that has the same name as the module.
 Any other lines of output are cited by `cf-agent` as being erroneous, so you 
 should normally make your module completely silent.
 
-**Type**: [`boolean`][boolean]
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
-**Example**:
+**Example:**
 
 Here is an example module written in shell:
 

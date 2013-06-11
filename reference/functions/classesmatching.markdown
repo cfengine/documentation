@@ -11,7 +11,7 @@ tags: [reference, functions, classesmatching]
 
 **Return type**: `slist`
 
-**Description**: Return the list of set classes matching `regex`.
+**Description:** Return the list of set classes matching `regex`.
 
 This function searches for the regular expression in the list of currently set 
 classes (in order hard, then soft, then local to the current bundle).
@@ -23,7 +23,7 @@ classes (in order hard, then soft, then local to the current bundle).
 A regular expression matching zero or more classes in the current list
 of set classes. The regular expression is [unanchored][unanchored].
 
-**Example**:  
+**Example:**  
 
 
 ```cf3

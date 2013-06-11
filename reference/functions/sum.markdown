@@ -11,7 +11,7 @@ tags: [reference, functions, sum]
 
 **Return type**: `real`
 
-**Description**: Return the sum of the reals in `list`.
+**Description:** Return the sum of the reals in `list`.
 
 This function might be used for simple ring computation. Of course, you could 
 easily combine `sum` with `readstringarray` or `readreallist` etc., to collect 
@@ -22,7 +22,7 @@ summary information from a source external to CFEngine.
 * `list` : A list of arbitrary real values, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent test
@@ -46,6 +46,6 @@ generated will be:
 six is 6.000000, zero is 0.000000
 ```
 
-**Notes**:  
+**Notes:**  
    
 **History**: Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

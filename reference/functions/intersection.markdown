@@ -11,7 +11,7 @@ tags: [reference, functions, intersection]
 
 **Return type**: `slist`
 
-**Description**: Returns the unique elements in list1 that are also in list2.
+**Description:** Returns the unique elements in list1 that are also in list2.
 
 **Arguments**:
 
@@ -21,7 +21,7 @@ tags: [reference, functions, intersection]
 * `list2` : The name of the intersected list variable, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
     bundle agent test
@@ -42,4 +42,4 @@ tags: [reference, functions, intersection]
     }
 ```
 
-**See also**: [`difference()`][difference].
+**See also:** [`difference()`][difference].

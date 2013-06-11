@@ -11,7 +11,7 @@ tags: [reference, functions, readstringarrayidx]
 
 **Return type**: `int`
 
-**Description**: Populates the two-dimensional array `array` with up to 
+**Description:** Populates the two-dimensional array `array` with up to 
 `maxentries` fields from the first `maxbytes` bytes of file `filename`.
 
 One dimension is separated by the regex `split`, the other by the the lines in
@@ -37,7 +37,7 @@ mimic the behavior of the *getpwnam(3)* on the file `/etc/passwd`), use
 `0,99999999999`
 * `maxbytes` : Maximum bytes to read, in the range `0,99999999999`   
 
-**Example**:
+**Example:**
 
 ```cf3
     vars:

@@ -11,7 +11,7 @@ tags: [reference, functions, peerleader]
 
 **Return type**: `string`
 
-**Description**: Returns the assigned peer-leader of the partition to which the current host belongs.
+**Description:** Returns the assigned peer-leader of the partition to which the current host belongs.
 
 This function returns the name of a host that may be considered the
 leader of a group of peers of the current host. Peers are defined
@@ -43,7 +43,7 @@ A number between 2 and 64 which represents the number of peers in a
 peer-group. An arbitrary limit of 64 is set on groups to avoid nonsensical 
 promises.
 
-**Example**:
+**Example:**
 
 Example file:
 

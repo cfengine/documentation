@@ -11,13 +11,13 @@ tags: [reference, functions, isexecutable]
 
 **Return type**: `class`
 
-**Description**: Returns whether the named object `filename` has execution rights for the current user.
+**Description:** Returns whether the named object `filename` has execution rights for the current user.
 
 **Arguments**:
 
 * `filename` : File object name, in the range `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
 classes:

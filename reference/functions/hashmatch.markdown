@@ -11,7 +11,7 @@ tags: [reference, functions, hashmatch]
 
 **Return type**: `class`
 
-**Description**: Compute the hash of file `filename` using the hash `algorithm` and test if it matches `hash`.
+**Description:** Compute the hash of file `filename` using the hash `algorithm` and test if it matches `hash`.
 
 This function may be used to determine whether a system has a particular
 version of a binary file (e.g. software patch).
@@ -29,7 +29,7 @@ version of a binary file (e.g. software patch).
 * `hash` : ASCII representation of hash for comparison, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent example

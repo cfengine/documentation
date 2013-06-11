@@ -13,7 +13,7 @@ tags: [reference, functions, ldapvalue]
 
 **Return type**: `string`
 
-**Description**: Returns the first matching named value from ldap.
+**Description:** Returns the first matching named value from ldap.
 
 This function retrieves a single field from a single LDAP record
 identified by the search parameters. The first matching value it taken.
@@ -51,7 +51,7 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-**Example**:
+**Example:**
 
 ```cf3
 vars:

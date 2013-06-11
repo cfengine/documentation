@@ -51,18 +51,18 @@ CFEngine currently provides a convergent interface to *libvirt*.
 
 ### environment_host
 
-**Description**: `environment_host` is a class indicating which 
+**Description:** `environment_host` is a class indicating which 
 physical node will execute this guest machine
 
 The promise will only apply to the machine with this class set. Thus,
 CFEngine must be running locally on the hypervisor for the promise to
 take effect.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `[a-zA-Z0-9_]+`
+**Allowed input range:** `[a-zA-Z0-9_]+`
 
-**Example**:
+**Example:**
 
 ```cf3
 guest_environments:
@@ -85,21 +85,21 @@ This attribute is required.
 
 ### environment_interface
 
-**Type**: `body environment_interface`
+**Type:** `body environment_interface`
 
 #### env_addresses
 
-**Description**: `env_addresses` is the IP addresses of the environment's 
+**Description:** `env_addresses` is the IP addresses of the environment's 
 network interfaces
 
 The IP addresses of the virtual machine can be overridden here at run
 time.
 
-**Type**: `slist`
+**Type:** `slist`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body environment_interface vnet(primary)
@@ -120,16 +120,16 @@ time.
 
 #### env_name
 
-**Description**: `env_name` is the hostname of the virtual environment.
+**Description:** `env_name` is the hostname of the virtual environment.
 
 The 'hostname' of a virtual guest may or may not be the same as the
 identifier used as 'promiser' by the virtualization manager.   
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
      body environment_interface vnet(primary)
@@ -147,13 +147,13 @@ identifier used as 'promiser' by the virtualization manager.
 
 #### env_network
 
-**Description**: The hostname of the virtual network
+**Description:** The hostname of the virtual network
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: (arbitrary string)
+**Allowed input range:** (arbitrary string)
 
-**Example**:
+**Example:**
 
 ```cf3
     body environment_interface vnet(primary)
@@ -171,21 +171,21 @@ identifier used as 'promiser' by the virtualization manager.
 
 ### environment_resources
 
-**Type**: `body enviornment_resources`
+**Type:** `body enviornment_resources`
 
 #### env_cpus
 
-**Description**: `env_cpus` represents the number of virtual CPUs 
+**Description:** `env_cpus` represents the number of virtual CPUs 
 in the environment.
 
 The maximum number of cores or processors in the physical environment
 will set a natural limit on this value.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body environment_resources my_environment
@@ -196,22 +196,22 @@ will set a natural limit on this value.
      }
 ```
 
-**Notes**:
+**Notes:**
 This attribute conflicts with `env_spec`.   
 
 #### env_memory
 
-**Description**: `env_memory` represents the amount of primary storage 
+**Description:** `env_memory` represents the amount of primary storage 
 (RAM) in the virtual environment (in KB).
 
 The maximum amount of memory in the physical environment will set a
 natural limit on this value.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body environment_resources my_environment
@@ -222,21 +222,21 @@ natural limit on this value.
      }
 ```
 
-**Notes**:
+**Notes:**
 This attribute conflicts with `env_spec`.   
 
 #### env_disk
 
-**Description**: `env_disk` represents the amount of secondary storage 
+**Description:** `env_disk` represents the amount of secondary storage 
 (DISK) in the virtual environment (in KB).
 
 This parameter is currently unsupported, for future extension.
 
-**Type**: `int`
+**Type:** `int`
 
-**Allowed input range**: `0,99999999999`
+**Allowed input range:** `0,99999999999`
 
-**Example**:
+**Example:**
 
 ```cf3
      body environment_resources my_environment
@@ -247,42 +247,42 @@ This parameter is currently unsupported, for future extension.
      }
 ```
 
-**Notes**:
+**Notes:**
 This parameter is currently unsupported, for future extension.
 
 This attribute conflicts with `env_spec`.   
 
 #### env_baseline
 
-**Description**: The `env_baseline` string represents a path to an 
+**Description:** The `env_baseline` string represents a path to an 
 image with which to baseline the virtual environment.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `"?(/.*)`
+**Allowed input range:** `"?(/.*)`
 
-**Example**:
+**Example:**
 
 ```cf3
      env_baseline => "/path/to/image";
 ```
 
-**Notes**:
+**Notes:**
 This function is for future development.   
 
 #### env_spec
 
-**Description**: A `env_spec` string contains a technology specific 
+**Description:** A `env_spec` string contains a technology specific 
 set of promises for the virtual instance.
 
 This is the preferred way to specify the resources of an environment on 
 creation; in other words, when `environment_state` is create.
 
-**Type**: `string`
+**Type:** `string`
 
-**Allowed input range**: `.*`
+**Allowed input range:** `.*`
 
-**Example**:
+**Example:**
 
 ```cf3
      body environment_resources virt_xml(host)
@@ -317,7 +317,7 @@ creation; in other words, when `environment_state` is create.
      }
 ```
 
-**Notes**:  
+**Notes:**  
 
 This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
@@ -325,12 +325,12 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 ### environment_state
 
-**Description**: The `environment_state` defines the desired dynamic state
+**Description:** The `environment_state` defines the desired dynamic state
  of the specified environment.
  
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 * `create`
 
@@ -353,7 +353,7 @@ is running, it is suspended; otherwise it is ignored.
 
 The guest machine is shut down, but not deallocated.
 
-**Example**:
+**Example:**
 
 ```cf3
 guest_environments:
@@ -371,14 +371,14 @@ guest_environments:
 
 ### environment_type
 
-**Description**: `environment_type` defines the virtual environment type.
+**Description:** `environment_type` defines the virtual environment type.
 
 The currently supported types are those supported by *libvirt*. More
 will be added in the future.
 
-**Type**: (menu option)
+**Type:** (menu option)
 
-**Allowed input range**:   
+**Allowed input range:**   
 
 ```
     xen
@@ -395,7 +395,7 @@ will be added in the future.
     eucalyptus
 ```
 
-**Example**:
+**Example:**
 
 ```cf3
 bundle agent my_vm_cloud

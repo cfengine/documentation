@@ -13,7 +13,7 @@ tags: [reference, functions, ldaplist]
 
 **Return type**: `slist`
 
-**Description**: Returns a list with all named values from multiple ldap records.
+**Description:** Returns a list with all named values from multiple ldap records.
 
 This function retrieves a single field from all matching LDAP records
 identified by the search parameters.
@@ -51,7 +51,7 @@ Menu option indicating the encryption and authentication settings for
 communication with the LDAP server. These features might be subject to
 machine and server capabilities.
 
-**Example**:
+**Example:**
 
 ```cf3
 vars:
