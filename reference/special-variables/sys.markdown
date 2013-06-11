@@ -255,6 +255,37 @@ local variables can be iterated.
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
+### sys.interface_flags
+
+Contains a space separated list of the flags of the named interface. e.g.
+
+```cf3
+    reports:
+      cfengine::
+        "eth0 flags: $(sys.interface_flags[eth0])";
+```
+
+Outputs:
+
+    R: eth0 flags: up broadcast running multicast
+
+
+The following device flags are supported: 
+
+* up
+* broadcast
+* debug
+* loopback
+* pointopoint
+* notrailers
+* running
+* noarp
+* promisc
+* allmulti
+* multicast
+
+**History:** Was introduced in 3.5.0 (2013)
+
 ### sys.ip_addresses
 
 Displays a system list of IP addresses currently in use by the system.
