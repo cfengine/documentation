@@ -281,11 +281,11 @@ during agent execution.
 
 **Notes:**
 
-This functionality is retained only for CFEngine 2 compatibility as more 
-convenient facilities exist in CFEngine 3 language to achieve similar 
-results.
+This functionality is retained only for CFEngine 2 compatibility. As of
+CFEngine 3.5, the [`classesmatching()`][classesmatching] function provides
+a more convenient way to retrieve a list of set classes at execution time.
 
-**History:** Was introduced in 3.2.0, Enterprise 2.1.0 (2011)
+**History:** Was introduced in 3.2.4, Enterprise 2.1.4 (2011)
 
 ### alwaysvalidate
 
