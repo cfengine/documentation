@@ -46,6 +46,5 @@ reports:
 }
 ```
 
-**Notes**:
-
-See also: `filestat`, dirname`, `splitstring`.
+**See also**: [`filestat()`][filestat], [`dirname()`][dirname],
+[`splitstring()`][splitstring].

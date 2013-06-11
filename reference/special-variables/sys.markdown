@@ -37,7 +37,7 @@ The date of the system in canonical form, i.e. in the form of a class.
     # cdate = Sun_Dec__7_10_39_53_2008_
 ```
 
-### sys.cf\_promises
+### sys.cf_promises
 
 A variable containing the path to the CFEngine syntax analyzer
 `cf-promises` on the platform you are using.
@@ -48,7 +48,7 @@ A variable containing the path to the CFEngine syntax analyzer
       "syntax_ok" expression => returnszero("$(sys.cf_promises)");
 ```
 
-### sys.cf\_version
+### sys.cf_version
 
 The variable gives the version of the running CFEngine Community
 Edition.
@@ -72,9 +72,9 @@ This variable contains the name of the hard-class category for this host
 
 A variable containing the number of CPU cores detected. On systems which
 provide virtual cores, it is set to the total number of virtual, not
-physical, cores. In addition, on a single-core system the class "1\_cpu"
-is set, and on multi-core systems the class "*n*\_cpus" is set, where
-"*n*" is the number of cores identified.
+physical, cores. In addition, on a single-core system the class `1_cpu`
+is set, and on multi-core systems the class *n*`_cpus` is set, where
+*n* is the number of cores identified.
 
 ```cf3
     reports:
@@ -102,7 +102,7 @@ The date of the system as a text string.
     # date = Sun Dec  7 10:39:53 2008
 ```
 
-### sys.doc\_root
+### sys.doc_root
 
 **History**: Was introduced in 3.1.0, Enterprise 2.0.
 
@@ -121,7 +121,7 @@ general there is no way to discover this value automatically. The
  
 ```
 
-### sys.enterprise\_version
+### sys.enterprise_version
 
 **History**: Was introduced in 3.5.0, Enterprise 3.0.0
 
@@ -180,14 +180,14 @@ The location of the system filesystem (mount) table.
     # fstab = /etc/fstab
 ```
 
-### sys.hardware\_addresses
+### sys.hardware_addresses
 
 **History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
 This is a list variable containing a list of all known MAC addresses for
 system interfaces.
 
-### sys.hardware\_mac[interface\_name]
+### sys.hardware_mac[interface_name]
 
 **History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
@@ -289,10 +289,10 @@ All four octets of the IPv4 address of the first system interface.
 If your system has a single ethernet interface, `$(sys.ipv4)` will contain 
 your IPv4 address. However, if your system has multiple interfaces, then 
 `$(sys.ipv4)` will simply be the IPv4 address of the first interface in the 
-list that has an assigned address, Use `$(sys.ipv4[interface\_name])` for 
+list that has an assigned address, Use `$(sys.ipv4[interface_name])` for 
 details on obtaining the IPv4 addresses of all interfaces on a system.
 
-### sys.ipv4[interface\_name]
+### sys.ipv4[interface_name]
 
 The full IPv4 address of the system interface named as the associative
 array index, e.g. `$(ipv4[le0])` or `$(ipv4[xr1])`.
@@ -319,21 +319,21 @@ The list of interfaces may be acquired with `getindices("sys.ipv4")` (or
 from any of the other associative arrays). Only those interfaces which
 are marked as "up" and have an IP address will be listed.
 
-### sys.ipv4\_1[interface\_name]
+### sys.ipv4_1[interface_name]
 
 
 The first octet of the IPv4 address of the system interface named as the
 associative array index, e.g. `$(ipv4_1[le0])` or `$(ipv4_1[xr1])`.
 
-### sys.ipv4\_2[interface\_name]
+### sys.ipv4_2[interface_name]
 
 The first two octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_2[le0])` or `$(ipv4_2[xr1])`.
 
-### sys.ipv4\_3[interface\_name]
+### sys.ipv4_3[interface_name]
 
 The first three octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_3[le0])` or `$(ipv4_3[xr1])`.
 
-### sys.license\_owner
+### sys.license_owner
 
 **History**: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
 
@@ -345,7 +345,7 @@ The first three octets of the IPv4 address of the system interface named as the 
       "This version of CFEngine is licensed to $(sys.license_owner)";
 ```
 
-### sys.licenses\_granted
+### sys.licenses_granted
 
 **History**: Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)
 
@@ -357,7 +357,7 @@ The first three octets of the IPv4 address of the system interface named as the 
       "There are $(sys.licenses_granted) licenses granted for use";
 ```
 
-### sys.long\_arch
+### sys.long_arch
 
 The long architecture name for this system kernel. This name is
 sometimes quite unwieldy but can be useful for logging purposes.
@@ -375,7 +375,7 @@ The name of the system email spool directory.
 ```
 
 <!---
-### sys.nova\_version
+### sys.nova_version
 
 The variable gives the version of the running CFEngine Enterprise Edition.
 
@@ -400,7 +400,7 @@ Another name for the operating system.
     # ostype = linux_x86_64
 ```
 
-### sys.policy\_hub
+### sys.policy_hub
 
 Hostname of the machine acting as the policy server. This value is set
 during bootstrap. In case bootstrap was not performed, it is set to
@@ -433,7 +433,8 @@ The location of the system resolver file.
 
 ### sys.uqhost
 
-The unqualified name of the current host. See also `sys.fqhost`.
+The unqualified name of the current host. See also
+[`sys.fqhost`][Variable context sys#sys.fqhost].
 
 ```cf3
     # uqhost = myhost

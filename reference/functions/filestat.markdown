@@ -16,8 +16,6 @@ tags: [reference, functions, filestat]
 If the file object does not exist, the function call fails and the
 variable does not expand.
 
-See also: `lastnode`, dirname`, `splitstring`.
-
 **Arguments**:
 
 * `filename` : File object name, in the range `"?(/.*)`
@@ -61,3 +59,6 @@ See also: `lastnode`, dirname`, `splitstring`.
 The list of fields may be extended as needed.
 
 **History**: Was introduced in version 3.5.0,Enterprise 3.1 (2013)
+
+**See also**: [`lastnode()`][lastnode], [`dirname()`][dirname], 
+[`splitstring()`][splitstring].

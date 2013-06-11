@@ -70,6 +70,4 @@ Output:
     sorted '1,a,b' = '1,a,b'
 ```
 
-**Notes**:  
-
-See also `shuffle`.
+**See also**: [`shuffle()`][shuffle].

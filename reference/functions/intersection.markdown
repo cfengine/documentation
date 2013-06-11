@@ -42,6 +42,4 @@ tags: [reference, functions, intersection]
     }
 ```
 
-**Notes**:  
-
-See also `difference`.
+**See also**: [`difference()`][difference].

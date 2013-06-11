@@ -312,5 +312,5 @@ The CFEngine default policy sets `splaytime` to 1.
   }
 ```
 
-**See also:** The [`splayclass()`][splayclass] function for a task-specific 
+**See also**: The [`splayclass()`][splayclass] function for a task-specific 
 means for setting splay times.

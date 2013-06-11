@@ -48,6 +48,4 @@ Output:
     shuffled by zz = 'c,b,a'
 ```
 
-**Notes**:  
-
-See also `sort`.
+**See also**: [`sort()`][sort].

@@ -51,6 +51,4 @@ bundle agent example
 }
 ```
 
-**Notes**:  
-   
-See also `filter`, `every`, and `some`.
+**See also**: [`filter()`][filter], [`every()`][every], and [`some()`][some].

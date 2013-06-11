@@ -42,6 +42,4 @@ bundle agent test
 }
 ```
 
-**Notes**:  
-
-See also `nth`.
+**See also**: [`nth()`][nth].

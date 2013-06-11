@@ -293,8 +293,8 @@ in `include_start_delimiter`).
 
 **Description**: Regular expression matching start of edit region
 
-See also `select_end`. These delimiters mark out the region of a file to
-be edited.
+See also [`select_end`][bundle edit_line#select_end]. These delimiters mark 
+out the region of a file to be edited.
 
 **Type**: `string`
 
@@ -314,8 +314,8 @@ be edited.
 
 **Description**: Regular expression matches end of edit region from start
 
-See also `select_start`. These delimiters mark out the region of a file
-to be edited.
+See also [`select_start`][bundle edit_line#select_start]. These delimiters 
+mark out the region of a file to be edited.
 
 **Type**: `string`
 

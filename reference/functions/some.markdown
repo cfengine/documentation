@@ -51,7 +51,4 @@ expression.
     }
 ```
 
-**Notes**:  
-
-See also `filter`, `every`, and `none`.
-
+**See also**: [`filter()`][filter], [`every()`][every], and [`none()`][none].

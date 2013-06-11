@@ -17,8 +17,6 @@ This is a generic filtering function that returns a list of up to `max_return`
 elements in `list` that match the filtering rules specified in `filter`, 
 `is_regex` and `invert`.
 
-See also `grep`, `every`, `some`, and `none`.
-
 **Arguments**:
 
 * filter : [Anchored][anchored] regular expression or static string to find, in the range `.*`
@@ -68,3 +66,5 @@ Invert filter.
     }
 ```
 
+**See also**: [`grep()`][grep], [`every()`][every], [`some()`][some], and 
+[`none()`][none].

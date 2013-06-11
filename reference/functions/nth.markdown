@@ -48,6 +48,4 @@ bundle agent test
 }
 ```
 
-**Notes**:  
-
-See also `length`.
+**See also**: [`length()`][length].

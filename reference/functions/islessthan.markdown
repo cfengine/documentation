@@ -43,6 +43,4 @@ reports:
 }
 ```
 
-**Notes**:
-
-See also `isgreaterthan`.
+**See also**: [`isgreaterthan()`][isgreaterthan].

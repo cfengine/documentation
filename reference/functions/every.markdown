@@ -55,7 +55,4 @@ bundle agent test
 }
 ```
 
-**Notes**:  
-   
-See also `filter`, `some`, and `none`.
-
+**See also**: [`filter()`][filter], [`some()`][some], and [`none()`][none].
