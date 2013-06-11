@@ -113,8 +113,8 @@ If a client's identity matches an entry in this list it is granted
 to permission to send data to the server port. Clients who are not
 in this list may not connect or send data to the server.
 
-See also the warning about regular expressions in
-`allowallconnects`.
+See also the warning about regular expressions in 
+[`allowallconnects`][cf-serverd#allowallconnects].
 
 **Type**: `slist`
 
@@ -368,8 +368,8 @@ anything, this list is unnecessary unless you have already granted
 access to some set of hosts using a generic pattern, to which you
 intend to make an exception.
 
-See also the warning about regular expressions in
-`allowallconnects`.
+See also the warning about regular expressions in 
+[`allowallconnects`][cf-serverd#allowallconnects].
 
 **Type**: `slist`
 
@@ -604,7 +604,8 @@ binding and cannot verify
 Server side decision to ignore requirements of DNS identity
 confirmation.
 
-See also the warning about regular expressions in `allowallconnects`.
+See also the warning about regular expressions in 
+[`allowallconnects`][cf-serverd#allowallconnects].
 
 **Type**: `slist`
 
@@ -627,7 +628,8 @@ If connecting hosts' public keys have not already been trusted, this allows us
 to accept the keys on trust. Normally this should be an empty list except in 
 controlled circumstances.
 
-See also the warning about regular expressions in `allowallconnects`.
+See also the warning about regular expressions in 
+[`allowallconnects`][cf-serverd#allowallconnects].
 
 **Type**: `slist`
 

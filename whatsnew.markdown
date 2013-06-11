@@ -79,33 +79,33 @@ significantly and offer completely new functionality.
 
 * set operation functions that test for set membership and find
     intersections/differences:
-    * [`every`][every]
-    * [`none`][none]
-    * [`some`][some]
-    * [`intersection`][intersection]
-    * [`difference`][difference]
+    * [`every()`][every]
+    * [`none()`][none]
+    * [`some()`][some]
+    * [`intersection()`][intersection]
+    * [`difference()`][difference]
 * list functions  to look up a specific element, find the list length, extract 
   a portion of the list, reduce it to unique element, sort it, and filter it
-    * [`nth`][nth]
-    * [`length`][length]
-    * [`sublist`][sublist]
-    * [`unique`][unique]
-    * [`sort`][sort]
-    * [`shuffle`][shuffle]
-    * [`filter`][filter]
+    * [`nth()`][nth]
+    * [`length()`][length]
+    * [`sublist()`][sublist]
+    * [`unique()`][unique]
+    * [`sort()`][sort]
+    * [`shuffle()`][shuffle]
+    * [`filter()`][filter]
 * function that returns a list of all the classes that match a regular
   expression
-    * [`classesmatching`][classesmatching]
+    * [`classesmatching()`][classesmatching]
 * function that converts date/time values into a formatted string
-    * [`strftime`][strftime]
+    * [`strftime()`][strftime]
 * function for building a string from data, using sprintf semantics
-    * [`format`][format]
+    * [`format()`][format]
 * function for making logical decisions in a function call based on classes
-    * [`ifelse`][ifelse]
+    * [`ifelse()`][ifelse]
 * mapping function for arrays
-    * [`maparray`][maparray]
+    * [`maparray()`][maparray]
 * function for getting detailed file information
-    * [`filestat`][filestat]
+    * [`filestat()`][filestat]
 
 ### Improved out-of-the-box installation
 
@@ -178,7 +178,7 @@ categorizations to your own account.
 ## Microsoft Windows specific improvements
 
 * Windows PowerShell support in [`commands` promises][commands],
-  [`execresult`][execresult] and [`returnszero`][returnszero]
+  [`execresult()`][execresult] and [`returnszero()`][returnszero]
 * Improved ACL handling on Windows
    * Note the [syntax changes][files#acl_default] in the
      [ChangeLog][New in CFEngine#changelog]

@@ -936,7 +936,7 @@ absolute path. Windows only supports hard links.
      }
 ```
 
-**See Also**: `link_type`.   
+**See Also**: [link_type][files#link_type].
 
 #### link_type
 

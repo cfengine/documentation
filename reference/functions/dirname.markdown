@@ -31,4 +31,5 @@ directory, then the name of its parent directory is returned.
 
 **History**: Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
-See also: `lastnode`, `filestat`, `splitstring`.
+**See also**: [`lastnode()`][lastnode], [`filestat()`][filestat], 
+[`splitstring()`][splitstring].

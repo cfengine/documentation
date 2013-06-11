@@ -22,7 +22,7 @@ tags: [reference, functions, difference]
 * `list2` : The name of the subtracted list variable, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-See also `intersection`.
+See also [`intersection()`][intersection].
 
 **Example**:
 
