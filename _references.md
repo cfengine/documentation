@@ -11,6 +11,7 @@
 [github documentation]: https://github.com/cfengine/documentation "Documentation repository on GitHub"
 [github design-center]: https://github.com/cfengine/design-center "Design-Center repository on GitHub"
 [evaluate cfengine]: https://cfengine.com/evaluate-enterprise "Evaluate CFEngine"
+[cfengine getting started]: https://cfengine.com/enterprise-getting-started "Get started in 10 minutes"
 [boolean]: manuals-language-concepts-promises.html#promise-attributes
 [anchored]: manuals-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
 [unanchored]: manuals-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
