@@ -9,7 +9,7 @@ tags: [reference, bundle agent, bundle edit_line, files promises, file editing, 
 
 This promise is part of the line-editing model. It inserts lines into
 the file at a specified location. The location is determined by
-body-attributes. The promise object referred to can be a literal line of
+body-attributes. The promise object referred to can be a literal line or
 a file-reference from which to read lines.
 
 ```cf3
