@@ -7,18 +7,18 @@ alias: manuals-architecture-networking.html
 tags: [manuals, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 
-By starting `cf-serverd`, you set up a line of communication between hosts. 
-This daemon authenticates requests from the network and processes them 
+Starting [`cf-serverd`][cf-serverd], sets up a line of communication between 
+hosts. This daemon authenticates requests from the network and processes them 
 according to rules specified in the server control body and server bundles 
 containing access promises. The server can allow the network to access files, 
 or to execute CFEngine.
 
-The only contact `cf-agent` makes to the server is via remote copy requests.
-It does not and cannot grant any access to a system from the network. It is
-only able request access to files on the remote server.
+The only contact [`cf-agent`][cf-agent] makes to the server is via remote copy 
+requests. It does not and cannot grant any access to a system from the 
+network. It is only able request access to files on the remote server.
 
-Lastly, `cf-runagent` can be used to run `cf-agent` on a number of remote 
-hosts.
+Lastly, [`cf-runagent`][cf-runagent] can be used to run `cf-agent` on a number 
+of remote hosts.
 
 Unlike other approaches to automation, CFEngine does not rely on SSH key 
 authentication and configuring trust, the communication between hosts is very 
@@ -34,11 +34,11 @@ fault tolerant and opportunistic.
 
 ## Server Connection
 
-In order to connect to the CFEngine server you need
+In order to connect to the CFEngine server you need:
 
 * A public-private key pair
 
-To create a key pair, run `cf-key`.
+To create a key pair, run [`cf-key`][cf-key].
 
 * An IP (v4 or v6) address.
 
@@ -57,8 +57,8 @@ use that key as a sufficient identifier for the computer.
 
 * Permission to access something
 
-Your host name or IP address must be mentioned in an access promise inside a 
-server bundle, made by the file that you are trying to access.
+Your host name or IP address must be mentioned in an [`access` promise][access]
+inside a server bundle, made by the file that you are trying to access.
 
 If all of the above criteria are met, connection will be established and data 
 will be transferred between client and server. The client can only send short 
@@ -67,7 +67,24 @@ variety of forms, usually files, but sometimes console output.
 
 ### Bootstrapping
 
-**TODO: some words about how the above criteria are met by bootstrapping would be useful...**
+Bootstrapping establishes a connection between host and policy server, and
+executes the policy that starts the CFEngine daemon processes 
+[`cf-execd`][cf-execd], [`cf-serverd`][cf-serverd] and 
+[`cf-monitord`][cf-monitord]. The host that other hosts are bootstrapped to
+automatically assumes the role of policy server.
+
+You should bootstrap the policy server first to itself:
+
+    $ /var/cfengine/bin/cf-agent --bootstrap [public IP of localhost]
+
+Then execute the same step on all hosts that should pull policy from that
+server. CFEngine will create keys if there are none present, and exchange 
+those to establish trust.
+
+CFEngine will output diagnostic information upon bootstrap. In case of error, 
+investigate the [`access` promises][access] the server is making. Note that 
+by default, CFEngine's server daemon `cf-serverd` trust incoming connections 
+from hosts within the same subnet.
 
 ## Key exchange
 
@@ -86,7 +103,8 @@ accepted, it will never be replaced with a new key, thus no more trust is
 offered or required.
 
 Once you have arranged for the right to connect to the server, you must decide 
-which hosts will have access to which files. This is done with `access` rules.
+which hosts will have access to which files. This is done with [`access` 
+promises][access].
 
 ```cf3
     bundle server access_rules()
@@ -101,8 +119,8 @@ which hosts will have access to which files. This is done with `access` rules.
     }
 ```
 
-On the client side, i.e. `cf-runagent` and `cf-agent`, there are
-three issues:
+On the client side, i.e. [`cf-runagent`][cf-runagent] and 
+[`cf-agent`][cf-agent], there are three issues:
 
 1.  Choosing which server to connect to.
 2.  Trusting the identity of any previously unknown servers, i.e.
@@ -151,7 +169,10 @@ because you have left open a hole for them to exploit. That is why it is
 recommended to return the system to the default state of zero trust 
 immediately after key transfer, by commenting out the trust options.
 
-It is possible, though somewhat laborious, to transfer the keys out of band, by copying /var/cfengine/ppkeys/localhost.pub to `/var/cfengine/ppkeys/user-aaa.bbb.ccc.mmm` (assuming IPv4) on another host. e.g.
+It is possible, though somewhat laborious, to transfer the keys out of band, 
+by copying `/var/cfengine/ppkeys/localhost.pub` to 
+`/var/cfengine/ppkeys/user-aaa.bbb.ccc.mmm` (assuming IPv4) on another host. 
+e.g.
 
          localhost.pub -> root-128.39.74.71.pub
 
@@ -213,8 +234,8 @@ There is a simple checklist for curing this problem:
 Always remember that you can run CFEngine in verbose or debugging modes to see 
 how the authentication takes place:
 
-    cf-agent -v
-    cf-serverd -v
+    $ cf-agent -v
+    $ cf-serverd -v
 
 `cf-agent` reports that access is denied regardless of the nature
 of the error, to avoid giving away information which might be used
