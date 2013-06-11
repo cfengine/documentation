@@ -66,6 +66,8 @@ This variable contains the name of the hard-class category for this host
     # class = linux
 ```
 
+**See also**: [`sys.os`][context sys#sys.os]
+
 ### sys.cpus
 
 **History**: Was introduced in 3.3.0, Enterprise 2.2.0 (2012)
@@ -163,6 +165,8 @@ CFEngine.
 
 These two variables are synonyms for each other.
 
+**See also**: [`sys.ostype`][context sys#sys.ostype]
+
 ### sys.fqhost
 
 The fully qualified name of the host. In order to compute this value
@@ -171,6 +175,8 @@ properly, the domain name must be defined.
 ```cf3
     # fqhost = host.example.org
 ```
+
+**See also**: [`sys.uqhost`][context sys#sys.uqhost]
 
 ### sys.fstab
 
@@ -366,6 +372,8 @@ sometimes quite unwieldy but can be useful for logging purposes.
     # long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200
 ```
 
+**See also**: [`sys.ostype`][context sys#sys.ostype]
+
 ### sys.maildir
 
 The name of the system email spool directory.
@@ -392,6 +400,8 @@ The name of the operating system according to the kernel.
     # os = linux
 ```
 
+**See also**: [`sys.ostype`][context sys#sys.ostype]
+
 ### sys.ostype
 
 Another name for the operating system.
@@ -399,6 +409,8 @@ Another name for the operating system.
 ```cf3
     # ostype = linux_x86_64
 ```
+
+**See also**: [`sys.class`][context sys#sys.class]
 
 ### sys.policy_hub
 
@@ -433,12 +445,13 @@ The location of the system resolver file.
 
 ### sys.uqhost
 
-The unqualified name of the current host. See also
-[`sys.fqhost`][context sys#sys.fqhost].
+The unqualified name of the current host.
 
 ```cf3
     # uqhost = myhost
 ```
+
+**See also**: [`sys.fqhost`][context sys#sys.fqhost]
 
 ### sys.version
 
