@@ -106,6 +106,6 @@ the service methods.
 
 ### this.this
 
-From version 3.3.0 on, this variables is reserved. It is used by
+From version 3.3.0 on, this variable is reserved. It is used by
 functions like `maplist()` to represent the current object in a
 transformation map.
