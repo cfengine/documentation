@@ -185,7 +185,12 @@ header {
      float: right;
      height: 118px;
      line-height: 118px;
+     width: 385px;
  }
+ #top_version_wrapper {
+     display: inline-block
+ }
+
 
  #top_form select {
     width: 143px;
@@ -210,6 +215,7 @@ header {
      margin-left: 15px;
      width: 204px;
      text-align: left;
+     line-height: 20px;
  }
  #top_search_searchpage {
      background: url('../media/images/sprites.png') 587px -2974px no-repeat #f6f6f6;
@@ -268,7 +274,10 @@ article p {
 .gsc-resultsHeader td,
 .gsc-twiddleRegionCell,
 .gsc-configLabelCell,
-.gsc-above-wrapper-area
+.gsc-above-wrapper-area,
+.gsc-table-result,
+.gsc-table-result th,
+.gsc-table-result td 
 {
     border: none !important
 }

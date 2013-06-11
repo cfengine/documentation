@@ -4,11 +4,13 @@
             <a href="{{site.baseurl}}"><img src="media/images/logo.png" width="245" height="54" alt=""></a>
         </div>
         <div id="top_form">
-            <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                <option value="{{site.baseurl}}" selected>Version 3.5</option>
-                <option value="https://cfengine.com/manuals">Version 3.0</option>
-                <option value="https://cfengine.com/manuals/cf2-Reference/">Version 2.0</option>
-            </select>
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="{{site.baseurl}}" selected>Version 3.5</option>
+                    <option value="https://cfengine.com/manuals">Version 3.0</option>
+                    <option value="https://cfengine.com/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
             <div class="top_search_form">
                 <form id="cse-search-box" action="search.html">
                     <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
