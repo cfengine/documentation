@@ -75,10 +75,9 @@ We have found that the following steps are a good way to learn CFEngine:
   to stay in touch with what's happening in CFEngine and the Configuration 
   Management industry
 * Start contributing to
-  <a href="https://github.com/cfengine/design-center" target="_blank">Design  
-  Center</a>, <a href="https://github.com/cfengine/documentation" 
-  target="_blank">Documentation</a> and the
-  <a href="https://github.com/cfengine/core" target="_blank">Code</a>
+  <a href="https://github.com/cfengine/design-center" target="_blank">Design Center</a>,
+  <a href="https://github.com/cfengine/documentation" target="_blank">Documentation</a>
+  and the <a href="https://github.com/cfengine/core" target="_blank">Code</a>
 
 ## 3rd party Tutorials, Examples and Documentation
 
