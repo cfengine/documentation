@@ -239,6 +239,8 @@ title is the name of the function.
     
     Additional information, spanning as many paragraphs as necessary, but mind
     the style guide.
+    
+    **See also:** [`related_function()`][related_function]
 
 ### Promise Attributes
 
@@ -284,6 +286,8 @@ If the promise attribute has a body type, then skip the rest, and see next secti
     
     Additional information, spanning as many paragraphs as necessary, but mind
     the style guide.
+    
+    **See also:** [`attribute`][thispage#attribute]
 
 ### Bodies
 
@@ -313,6 +317,8 @@ Start explaining each attribute in the body then using level4-headings:
     **Example**:
     
     **Notes**:
+    
+    **See also**:
 
 The sections follow the style for promise attributes, see above. Examples
 should be a code snippet at this point, no need for a complete piece of
@@ -325,6 +331,8 @@ Special Variables are documented within the page of their context.
     ### context.variable
     
     Explanation.
+    
+    **See also**: [other variable][context#variable]
 
 ## Publishing
 
