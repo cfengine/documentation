@@ -1,6 +1,7 @@
 # CFEngine Documentation
 
-This repository hold the content for the technical CFEngine documentation in
+This repository holds the sources for the technical
+[CFEngine documentation](https://cfengine.com/docs) in
 markdown files. If you have a texteditor, know how to write markdown and
 English and would like to contribute to the CFEngine documentation, then we'd
 like to invite you to collaborate here!
