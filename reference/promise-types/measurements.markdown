@@ -375,4 +375,4 @@ are used only the first match is used.
      } 
 ```
 
-**History**: Was introduced in 3.4.0 (2012)
+**History:** Was introduced in 3.4.0 (2012)

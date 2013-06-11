@@ -808,7 +808,7 @@ In the above example, if the promise was already kept and nothing was done,
 cancel (undefine) any of the listed classes so that they are no longer 
 defined.
 
-**History**: This attribute was introduced in CFEngine version 3.0.4 (2010)   
+**History:** This attribute was introduced in CFEngine version 3.0.4 (2010)   
 
 #### cancel_repaired
 
@@ -834,7 +834,7 @@ In the above example, if the promise was repaired and changes were made to
 the system, cancel (undefine) any of the listed classes so that they are 
 no longer defined.
 
-**History**: This attribute was introduced in CFEngine version 3.0.4 (2010)   
+**History:** This attribute was introduced in CFEngine version 3.0.4 (2010)   
 
 #### cancel_notkept
 
@@ -861,7 +861,7 @@ In the above example, if the promise was not kept but nothing could be done,
 cancel (undefine) any of the listed classes so that they are no longer 
 defined.
 
-**History**: This attribute was introduced in CFEngine version 3.0.4 (2010)   
+**History:** This attribute was introduced in CFEngine version 3.0.4 (2010)   
 
 #### kept_returncodes
 
@@ -913,7 +913,7 @@ command-related promise has been kept. This can in turn be used to define
 classes using the `promise_kept` attribute, or merely alter the total 
 compliance statistics.
 
-**History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
+**History:** Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
 #### repaired_returncodes
 
@@ -964,7 +964,7 @@ In the above example, a list of integer return codes indicating that a
 command-related promise has been repaired. This can in turn be used to 
 define classes using the `promise_repaired` attribute, or merely alter the total compliance statistics.
 
-**History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
+**History:** Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
 #### failed_returncodes
 
@@ -1032,7 +1032,7 @@ that a command-related promise has failed. This can in turn be used to
 define classes using the `promise_repaired` attribute, or merely alter 
 the total compliance statistics.
 
-**History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
+**History:** Was introduced in version 3.1.3, Nova 2.0.2 (2010)   
 
 #### persist_time
 
@@ -1267,4 +1267,4 @@ files:
     meta => { "owner=John",  "version=2.0" };
 ```
 
-**History**: Was introduced in 3.3.0, Nova 2.2.0 (2012)
+**History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)

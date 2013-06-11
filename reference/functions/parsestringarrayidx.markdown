@@ -58,4 +58,4 @@ reads data from a variable instead of a file. By making data readable from a var
     }
 ```
 
-**History**: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
+**History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)

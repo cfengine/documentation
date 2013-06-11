@@ -23,4 +23,4 @@ tags: [reference, data functions, functions, or]
 
 **Notes:**  
 
-**History**: Was introduced in 3.2.0, Nova 2.1.0 (2011)
+**History:** Was introduced in 3.2.0, Nova 2.1.0 (2011)

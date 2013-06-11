@@ -42,4 +42,4 @@ cfengine_3::
 }
 ```
 
-**History**: Was introduced in version 3.1.3, Nova 2.0.2 (2010)
+**History:** Was introduced in version 3.1.3, Nova 2.0.2 (2010)

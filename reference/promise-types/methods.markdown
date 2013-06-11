@@ -119,7 +119,7 @@ example: `$(bundle.variable)`.
     }
 ```
 
-**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History:** Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 ### usebundle
 
@@ -163,4 +163,4 @@ Return values are limited to scalars.
     }
 ```
 
-**History**: Was introduced in 3.4.0 (2012)
+**History:** Was introduced in 3.4.0 (2012)

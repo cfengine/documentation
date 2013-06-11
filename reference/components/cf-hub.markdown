@@ -84,7 +84,7 @@ The data aggregator of CFEngine Enterprise.
 
 For integration with the Zenoss monitoring software.
 
-**History**: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
+**History:** Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
 
 ### exclude_hosts
 
@@ -111,7 +111,7 @@ currently not supported.
 
 **Notes:**
 
-**History**: Was introduced in 3.3.0, Enterprise 2.1.1 (2011)
+**History:** Was introduced in 3.3.0, Enterprise 2.1.1 (2011)
 
 ### hub_schedule
 
@@ -129,7 +129,7 @@ collation
     hub_schedule => { "Min00", "Min30", "(Evening|Night).Min45_50" };
     }
 
-**History**: Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
+**History:** Was introduced in version 3.1.0b1, Enterprise 2.0.0b1 (2010)
 
 
 ### port

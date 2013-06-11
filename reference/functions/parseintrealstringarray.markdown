@@ -61,4 +61,4 @@ policies can be kept inline.
     }
 ```
 
-**History**: Was introduced in version 3.1.5a1, Nova 2.1.0 (2011)
+**History:** Was introduced in version 3.1.5a1, Nova 2.1.0 (2011)

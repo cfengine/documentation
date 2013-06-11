@@ -54,5 +54,5 @@ the entire string
     }
 ```
 
-**History**: This function was introduced in CFEngine version 3.0.4
+**History:** This function was introduced in CFEngine version 3.0.4
 (2010)

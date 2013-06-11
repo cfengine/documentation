@@ -483,7 +483,7 @@ architecture.
      }
 ```
 
-**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History:** Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 #### package_list_arch_regex
 
@@ -989,7 +989,7 @@ record.
 
 **Default value:** true
 
-**History**: Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
+**History:** Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
 (2012)
 
 #### package_version_less_command
@@ -1029,7 +1029,7 @@ v2, and v2 is not less than v1).
      }
 ```
 
-**History**: Was introduced in 3.4.0 (2012)
+**History:** Was introduced in 3.4.0 (2012)
 
 #### package_version_equal_command
 
@@ -1068,7 +1068,7 @@ v2, and v2 is not less than v1).
 
 **Notes:**  
    
-**History**: Was introduced in 3.4.0 (2012)
+**History:** Was introduced in 3.4.0 (2012)
 
 
 ### package_policy

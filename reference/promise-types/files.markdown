@@ -431,7 +431,7 @@ the directory.
      }
 ```
 
-**History**: Was introduced in 3.5. Replaces the now deprecated 
+**History:** Was introduced in 3.5. Replaces the now deprecated 
 acl_directory_inherit.
 
 
@@ -1062,7 +1062,7 @@ the source. This also applies to remote copies.
      }
 ```
 
-**History**: Version 3.1.0b3,Nova 2.0.0b1 (2010)   
+**History:** Version 3.1.0b3,Nova 2.0.0b1 (2010)   
 
 #### purge
 
@@ -1568,7 +1568,7 @@ classes of its parent
      }
 ```
 
-**History**: Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
+**History:** Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
 **Default value:** false
 
@@ -1767,7 +1767,7 @@ For example:
     [%CFEngine END %]
 ```
 
-**History**: Was introduced in 3.3.0, Nova 2.2.0 (2012)
+**History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
 ### edit_xml
 

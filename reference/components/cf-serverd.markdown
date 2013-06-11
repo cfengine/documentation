@@ -310,7 +310,7 @@ The full configuration would look something like this
         }
 ```
 
-**History**: Was introduced in Enterprise 3.0.0 (2012)
+**History:** Was introduced in Enterprise 3.0.0 (2012)
 
 ### collect_window
 
@@ -327,7 +327,7 @@ open to a hub to attempt a report transfer before it is closed
 
 **Default value:** 10.
 
-**History**: Was introduced in Enterprise 3.0.0 (2012)
+**History:** Was introduced in Enterprise 3.0.0 (2012)
 
 ### denybadclocks
 
@@ -451,7 +451,7 @@ cache
     }
 ```
 
-**History**: Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010)
+**History:** Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010)
 
 
 ### logallconnections
@@ -674,5 +674,5 @@ not be affected. Changing this setting requires a restart of
     }
 ```
 
-**History**: Was introduced in 3.4.0, Enterprise 3.0 (2012)
+**History:** Was introduced in 3.4.0, Enterprise 3.0 (2012)
 

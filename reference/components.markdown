@@ -148,7 +148,7 @@ business goals in promises.
     }
 ```
 
-**History**: Was introduced in version 3.1.5, Nova 2.1.0 (2011)
+**History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
 
 ### ignore_missing_bundles
@@ -401,7 +401,7 @@ Each string is expected to be a class.
     }
 ```
 
-**History**: Was introduced in version 3.2.0, Nova 2.1.0 (2011)
+**History:** Was introduced in version 3.2.0, Nova 2.1.0 (2011)
 
 
 ### syslog_host

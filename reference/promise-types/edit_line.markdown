@@ -235,7 +235,7 @@ section header. If however `include_start_delimiter` is false, the
 unaffected by any `delete_lines` promises. See the next section on
 `include_start_delimiter` for further details.
 
-**History**: This attribute was introduced in CFEngine version 3.0.5
+**History:** This attribute was introduced in CFEngine version 3.0.5
 (2010)   
 
 #### include_end_delimiter
@@ -286,7 +286,7 @@ with them. Note that sections can be bounded at both the start and end
 (as in the example above) or just at the start (as in the sample shown
 in `include_start_delimiter`).
 
-**History**: This attribute was introduced in CFEngine version 3.0.5
+**History:** This attribute was introduced in CFEngine version 3.0.5
 (2010)   
 
 #### select_start

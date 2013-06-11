@@ -485,5 +485,5 @@ insert_lines:
 }
 ```
 
-**History**: This attribute was introduced in CFEngine version 3.0.5
+**History:** This attribute was introduced in CFEngine version 3.0.5
 (2010)

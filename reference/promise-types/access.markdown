@@ -366,7 +366,7 @@ body report_data_select
 }
 ```
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 #### classes_include
 
@@ -393,7 +393,7 @@ body report_data_select
 }
 ```
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 #### classes_exclude
 
@@ -420,7 +420,7 @@ body report_data_select
 
 **Notes:**
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 #### variables_include
 
@@ -446,7 +446,7 @@ body report_data_select
 }
 ```
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 
 #### variables_exclude
@@ -475,7 +475,7 @@ body report_data_select
 If this attribute is used in conjunction with `variables_include`, it will 
 exclude entries from the subset selected by the include expression.
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 #### promise_notkept_log_include
 
@@ -503,7 +503,7 @@ body report_data_select
 }
 ```
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 #### promise_notkept_log_exclude
 
@@ -533,7 +533,7 @@ body report_data_select
 `promise_notkept_log_include` attribute, it will exclude entries 
 from the subset selected by the include expression.
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 #### promise_repaired_log_include
 
@@ -559,7 +559,7 @@ body report_data_select
 }
 ```
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 #### promise_repaired_log_exclude
 
@@ -588,7 +588,7 @@ body report_data_select
 If this attribute is used in conjunction with `promise_repaired_log_include`, 
 it will exclude entries from the subset selected by the include expression.
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 
 #### monitoring_include
@@ -615,7 +615,7 @@ body report_data_select
 }
 ```
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0
 
 #### monitoring_exclude
 
@@ -645,4 +645,4 @@ body report_data_select
 If this attribute is used in conjunction with `monitoring_include` it will 
 exclude entries from the subset selected by the include expression.
 
-**History**: Introduced in Enterprise 3.5.0
+**History:** Introduced in Enterprise 3.5.0

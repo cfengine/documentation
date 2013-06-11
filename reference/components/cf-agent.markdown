@@ -285,7 +285,7 @@ This functionality is retained only for CFEngine 2 compatibility as more
 convenient facilities exist in CFEngine 3 language to achieve similar 
 results.
 
-**History**: Was introduced in 3.2.0, Enterprise 2.1.0 (2011)
+**History:** Was introduced in 3.2.0, Enterprise 2.1.0 (2011)
 
 ### alwaysvalidate
 
@@ -315,7 +315,7 @@ version 3.1.2 core, this only happens if the configuration file has
 changed to save CPU cycles. When this attribute is set, `cf-agent`
 will force a revalidation of the input.
 
-**History**: Was introduced in version 3.1.2,Enterprise 2.0.1 (2010)
+**History:** Was introduced in version 3.1.2,Enterprise 2.0.1 (2010)
 
 
 ### auditing
@@ -944,7 +944,7 @@ reserved word, but as long as there are no bundles with the name 'none' this
 has the effect of *never* reloading the process table. This keeps improves the 
 efficiency of the agent.
 
-**History**: Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
+**History:** Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
 
 ### secureinput
 

@@ -313,7 +313,7 @@ running `cf-runagent` in parallel mode.
     }
 ```
 
-**History**: Was introduced in version 3.2.0, Enterprise 2.1.0 (2011)
+**History:** Was introduced in version 3.2.0, Enterprise 2.1.0 (2011)
 
 ### timeout
 
