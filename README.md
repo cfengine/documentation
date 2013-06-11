@@ -2,7 +2,8 @@
 
 This repository holds the sources for the technical
 [CFEngine documentation](https://cfengine.com/docs) in
-markdown files. If you have a texteditor, know how to write markdown and
+markdown files. If you have a texteditor, know how to write
+[markdown](http://daringfireball.net/projects/markdown/syntax) and
 English and would like to contribute to the CFEngine documentation, then we'd
 like to invite you to collaborate here!
 
@@ -267,6 +268,7 @@ page. Level-3 headers are used to start a new attribute:
 If the promise attribute has a body type, then skip the rest, and see next section.
 
     **Allowed input range:** `value range` or
+
     ```cf3
         List
         of
@@ -343,11 +345,11 @@ Special Variables are documented within the page of their context.
 ## Publishing
 
 Jekyll is used to generate the HTML pages. The toolchain is available at
-https://github.com/cfengine/documentation-generator After you compile pages,
+https://github.com/cfengine/documentation-generator. After you compile pages,
 Jekyll will place all files into the _site folder, without subdirectories.
 
 Commits in this repository trigger the documentation generator to run, which
-then updates the contents of http://cfengine.com/tmp_docs/
+then updates the contents of http://cfengine.com/docs/
 
 ## License
 
