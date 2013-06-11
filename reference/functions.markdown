@@ -44,13 +44,18 @@ the function evaluates to false, then the class remains unchanged.
     }
 ```
 
-<!-- **TODO: fix links, make proper markdown tables** -->
-
 There are a large number of functions built into CFEngine, and finding
-the right one to use can be a daunting task. The following tables are
-designed to make it easier for you to find the function you need, based
-on the value or type that the function returns or processes as inputs.
+the right one to use can be a daunting task. The following pages are
+might make it easier for you to find the function you need.
 
+* [File access][files functions] functions
+* [I/O][io functions] functions
+* Functions for [Data Processing and Manipulation][data functions]
+* Functions related to [Communication and Networking][comm functions]
+* [System][system functions] functions
+* [Utility][utility functions] functions
+
+<!-- **TODO: fix links, make proper markdown tables** 
 ## Functions listed by return value
 
 ### Functions That Return Class
@@ -508,4 +513,4 @@ The following functions all do date or time computation
 </tr>
 </tbody>
 </table>
-
+-->
