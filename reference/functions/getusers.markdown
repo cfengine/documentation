@@ -4,12 +4,12 @@ title: getusers
 categories: [Reference, Functions, getusers]
 published: true
 alias: reference-functions-getusers.html
-tags: [reference, functions, getusers]
+tags: [reference, system functions, functions, getusers]
 ---
 
-**Prototype**: `getusers(exclude_names, exclude_ids)`
+**Prototype:** `getusers(exclude_names, exclude_ids)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns a list of all users defined, except those names in `exclude_names` and uids in `exclude_ids`
 

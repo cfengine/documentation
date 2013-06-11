@@ -4,12 +4,12 @@ title: countclassesmatching
 categories: [Reference, Functions, countclassesmatching]
 published: true
 alias: reference-functions-countclassesmatching.html
-tags: [reference, functions, countclassesmatching]
+tags: [reference, utility functions, functions, countclassesmatching]
 ---
 
-**Prototype**: `countclassesmatching(regex)`
+**Prototype:** `countclassesmatching(regex)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Count the number of defined classes matching `regex`.
 

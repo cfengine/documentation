@@ -4,14 +4,14 @@ title: "read[int|real|string]array"
 categories: [Reference, Functions, read*array]
 published: true
 alias: reference-functions-readintrealstringarray.html
-tags: [reference, functions, readintarray, readrealarray, readstringarray]
+tags: [reference, io functions, functions, readintarray, readrealarray, readstringarray]
 ---
 
-**Prototype**: `readintarray(array, filename, comment, split, maxentries, maxbytes)`<br>
-**Prototype**: `readrealarray(array, filename, comment, split, maxentries, maxbytes)`<br>
-**Prototype**: `readstringarray(array, filename, comment, split, maxentries, maxbytes)`
+**Prototype:** `readintarray(array, filename, comment, split, maxentries, maxbytes)`<br>
+**Prototype:** `readrealarray(array, filename, comment, split, maxentries, maxbytes)`<br>
+**Prototype:** `readstringarray(array, filename, comment, split, maxentries, maxbytes)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Populates `array` with up to `maxentries` values, parsed from 
 the first `maxbytes` bytes in file `filename`.

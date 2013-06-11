@@ -4,12 +4,12 @@ title: fileexists
 categories: [Reference, Functions, fileexists]
 published: true
 alias: reference-functions-fileexists.html
-tags: [reference, functions, fileexists]
+tags: [reference, files functions, functions, fileexists]
 ---
 
-**Prototype**: `fileexists(filename)`
+**Prototype:** `fileexists(filename)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the file `filename` can be accessed.
 

@@ -4,12 +4,12 @@ title: join
 categories: [Reference, Functions, join]
 published: true
 alias: reference-functions-join.html
-tags: [reference, functions, join]
+tags: [reference, data functions, functions, join]
 ---
 
-**Prototype**: `join(glue, list)`
+**Prototype:** `join(glue, list)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Join the items of `list` into a string, using the conjunction in `glue`.
 

@@ -4,12 +4,12 @@ title: isexecutable
 categories: [Reference, Functions, isexecutable]
 published: true
 alias: reference-functions-isexecutable.html
-tags: [reference, functions, isexecutable]
+tags: [reference, files functions, functions, isexecutable]
 ---
 
-**Prototype**: `isexecutable(filaname)`
+**Prototype:** `isexecutable(filaname)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the named object `filename` has execution rights for the current user.
 

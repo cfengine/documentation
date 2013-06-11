@@ -4,12 +4,12 @@ title: iprange
 categories: [Reference, Functions, iprange]
 published: true
 alias: reference-functions-iprange.html
-tags: [reference, functions, iprange]
+tags: [reference, communication functions, functions, iprange]
 ---
 
-**Prototype**: `iprange(range)`
+**Prototype:** `iprange(range)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the current host lies in the range of IP 
 addresses specified.

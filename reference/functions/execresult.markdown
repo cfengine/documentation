@@ -4,12 +4,12 @@ title: execresult
 categories: [Reference, Functions, execresult]
 published: true
 alias: reference-functions-execresult.html
-tags: [reference, functions, execresult]
+tags: [reference, utility functions, functions, execresult]
 ---
 
-**Prototype**: `execresult(command, shell)` 
+**Prototype:** `execresult(command, shell)` 
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Execute `command` and return output as `string`.
 

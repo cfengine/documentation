@@ -4,12 +4,12 @@ title: isplain
 categories: [Reference, Functions, isplain]
 published: true
 alias: reference-functions-isplain.html
-tags: [reference, functions, isplain]
+tags: [reference, files functions, functions, isplain]
 ---
 
-**Prototype**: `isplain(filename)`
+**Prototype:** `isplain(filename)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the named object `filename` is a 
 plain/regular file.

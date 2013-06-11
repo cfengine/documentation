@@ -4,12 +4,12 @@ title: groupexists
 categories: [Reference, Functions, groupexists]
 published: true
 alias: reference-functions-groupexists.html
-tags: [reference, functions, groupexists]
+tags: [reference, system functions, functions, groupexists]
 ---
 
-**Prototype**: `groupexists(group)`
+**Prototype:** `groupexists(group)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether a group `group` exists on this host.
 

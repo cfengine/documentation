@@ -4,12 +4,12 @@ title: classify
 categories: [Reference, Functions, classify]
 published: true
 alias: reference-functions-classify.html
-tags: [reference, functions, classify]
+tags: [reference, data functions, functions, classify]
 ---
 
-**Prototype**: `classify(text)`
+**Prototype:** `classify(text)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the canonicalization of `text` is a currently 
 set class.

@@ -4,12 +4,12 @@ title: countlinesmatching
 categories: [Reference, Functions, countlinesmatching]
 published: true
 alias: reference-functions-countlinesmatching.html
-tags: [reference, functions, countlinesmatching]
+tags: [reference, io functions, functions, countlinesmatching]
 ---
 
-**Prototype**: `countlinesmatching(regex, filename)`
+**Prototype:** `countlinesmatching(regex, filename)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Count the number of lines in file `filename` matching 
 `regex`.

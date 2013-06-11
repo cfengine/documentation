@@ -4,12 +4,12 @@ title: unique
 categories: [Reference, Functions, unique]
 published: true
 alias: reference-functions-unique.html
-tags: [reference, functions, unique]
+tags: [reference, data functions, functions, unique]
 ---
 
-**Prototype**: `unique(list)`
+**Prototype:** `unique(list)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns list of unique elements from `list`.
 

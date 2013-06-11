@@ -4,12 +4,12 @@ title: grep
 categories: [Reference, Functions, grep]
 published: true
 alias: reference-functions-grep.html
-tags: [reference, functions, grep]
+tags: [reference, data functions, functions, grep]
 ---
 
-**Prototype**: `grep(regex, list)`
+**Prototype:** `grep(regex, list)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns the sub-list if items  in `list` matching the regular expression `regex`.
 

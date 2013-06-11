@@ -4,12 +4,12 @@ title: reglist
 categories: [Reference, Functions, reglist]
 published: true
 alias: reference-functions-reglist.html
-tags: [reference, functions, reglist]
+tags: [reference, data functions, functions, reglist]
 ---
 
-**Prototype**: `reglist(list, regex)`
+**Prototype:** `reglist(list, regex)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the regular expression `regex` matches any item in `list`.
 

@@ -4,12 +4,12 @@ title: peerleader
 categories: [Reference, Functions, peerleader]
 published: true
 alias: reference-functions-peerleader.html
-tags: [reference, functions, peerleader]
+tags: [reference, communication functions, functions, peerleader]
 ---
 
-**Prototype**: `peerleader(filename, regex, groupsize)`
+**Prototype:** `peerleader(filename, regex, groupsize)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns the assigned peer-leader of the partition to which the current host belongs.
 

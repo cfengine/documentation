@@ -4,12 +4,12 @@ title: readfile
 categories: [Reference, Functions, readfile]
 published: true
 alias: reference-functions-readfile.html
-tags: [reference, functions, readfile]
+tags: [reference, io functions, functions, readfile]
 ---
 
-**Prototype**: `readfile(filename, maxbytes)`
+**Prototype:** `readfile(filename, maxbytes)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns the first `maxbytes` bytes from file `filename`.
 

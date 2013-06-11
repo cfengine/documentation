@@ -4,12 +4,12 @@ title: randomint
 categories: [Reference, Functions, randomint]
 published: true
 alias: reference-functions-randomint.html
-tags: [reference, functions, randomint]
+tags: [reference, data functions, functions, randomint]
 ---
 
-**Prototype**: `randomint(lower, upper)`
+**Prototype:** `randomint(lower, upper)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Returns a random integer between `lower` and `upper`.
 

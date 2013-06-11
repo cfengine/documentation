@@ -4,12 +4,12 @@ title: ago
 categories: [Reference, Functions, ago]
 published: true
 alias: reference-functions-ago.html
-tags: [reference, functions, ago]
+tags: [reference, data functions, functions, ago]
 ---
 
-**Prototype**: `ago(years, months, days, hours, minutes, seconds)`
+**Prototype:** `ago(years, months, days, hours, minutes, seconds)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Convert a time relative to now to an integer system representation.
 

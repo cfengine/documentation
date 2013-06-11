@@ -4,12 +4,12 @@ title: "on"
 categories: [Reference, Functions, "on"]
 published: true
 alias: reference-functions-on.html
-tags: [reference, functions, "on"]
+tags: [reference, data functions, functions, "on"]
 ---
 
-**Prototype**: `on(years, months, days, hours, minutes, seconds)`
+**Prototype:** `on(years, months, days, hours, minutes, seconds)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Returns the specified date/time in integer system representation.
 

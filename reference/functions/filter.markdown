@@ -4,12 +4,12 @@ title: filter
 categories: [Reference, Functions, filter]
 published: true
 alias: reference-functions-filter.html
-tags: [reference, functions, filter]
+tags: [reference, data functions, functions, filter]
 ---
 
-**Prototype**: `filter(filter, list, is_regex, invert, max_return)`
+**Prototype:** `filter(filter, list, is_regex, invert, max_return)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Transforms a list into a subset thereof.
 

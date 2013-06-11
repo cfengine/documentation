@@ -4,12 +4,12 @@ title: length
 categories: [Reference, Functions, length]
 published: true
 alias: reference-functions-length.html
-tags: [reference, functions, length]
+tags: [reference, data functions, functions, length]
 ---
 
-**Prototype**: `length(list)`
+**Prototype:** `length(list)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Returns the length of `list`.
 

@@ -4,12 +4,12 @@ title: maparray
 categories: [Reference, Functions, maparray]
 published: true
 alias: reference-functions-maparray.html
-tags: [reference, functions, maparray]
+tags: [reference, data functions, functions, maparray]
 ---
 
-**Prototype**: `maparray(pattern, array)`
+**Prototype:** `maparray(pattern, array)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns a list with each array element modified by a pattern.
 

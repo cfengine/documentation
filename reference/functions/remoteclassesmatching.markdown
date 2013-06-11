@@ -4,14 +4,14 @@ title: remoteclassesmatching
 categories: [Reference, Functions, remoteclassesmatching]
 published: true
 alias: reference-functions-remoteclassesmatching.html
-tags: [reference, functions, remoteclassesmatching]
+tags: [reference, communication functions, functions, remoteclassesmatching]
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: `remoteclassesmatching(regex, server, encrypt, prefix)`
+**Prototype:** `remoteclassesmatching(regex, server, encrypt, prefix)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Read persistent classes matching regular expression `regex`
 from a remote CFEngine server `server` and add them into local context with 

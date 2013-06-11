@@ -4,12 +4,12 @@ title: regextract
 categories: [Reference, Functions, regextract]
 published: true
 alias: reference-functions-regextract.html
-tags: [reference, functions, regextract]
+tags: [reference, data functions, functions, regextract]
 ---
 
-**Prototype**: `regextract(regex, string, backref)`
+**Prototype:** `regextract(regex, string, backref)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether `regex` matches the `string`, and fills the array `backref` with back-references.
 

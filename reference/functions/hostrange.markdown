@@ -4,12 +4,12 @@ title: hostrange
 categories: [Reference, Functions, hostrange]
 published: true
 alias: reference-functions-hostrange.html
-tags: [reference, functions, hostrange]
+tags: [reference, communication functions, functions, hostrange]
 ---
 
-**Prototype**: `hostrange(prefix, range)`
+**Prototype:** `hostrange(prefix, range)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the current host lies in the `range` of 
 enumerated hostnames specified with `prefix`.

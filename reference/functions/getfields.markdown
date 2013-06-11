@@ -4,12 +4,12 @@ title: getfields
 categories: [Reference, Functions, getfields]
 published: true
 alias: reference-functions-getfields.html
-tags: [reference, functions, getfields]
+tags: [reference, data functions, functions, getfields]
 ---
 
-**Prototype**: `getfields(regex, filename, split, array_lval)`
+**Prototype:** `getfields(regex, filename, split, array_lval)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Fill `arrayl_lval` with fields in the lines from file `filename` that match `regex`, split on `split`.
 

@@ -4,12 +4,12 @@ title: getenv
 categories: [Reference, Functions, getenv]
 published: true
 alias: reference-functions-getenv.html
-tags: [reference, functions, getenv]
+tags: [reference, system functions, functions, getenv]
 ---
 
-**Prototype**: `getenv(variable, maxlength)`
+**Prototype:** `getenv(variable, maxlength)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Return the environment variable `variable`, truncated at 
 `maxlength` characters

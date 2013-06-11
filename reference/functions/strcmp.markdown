@@ -4,12 +4,12 @@ title: strcmp
 categories: [Reference, Functions, strcmp]
 published: true
 alias: reference-functions-strcmp.html
-tags: [reference, functions, strcmp]
+tags: [reference, data functions, functions, strcmp]
 ---
 
-**Prototype**: `strcmp(string1, string2)`
+**Prototype:** `strcmp(string1, string2)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the two strings `string1` and `string2` match 
 exactly.

@@ -4,12 +4,12 @@ title: concat
 categories: [Reference, Functions, concat]
 published: true
 alias: reference-functions-concat.html
-tags: [reference, functions, concat]
+tags: [reference, data functions, functions, concat]
 ---
 
-**Prototype**: `concat(...)`
+**Prototype:** `concat(...)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Concatenates all arguments into a string.
 

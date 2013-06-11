@@ -4,12 +4,12 @@ title: changedbefore
 categories: [Reference, Functions, changedbefore]
 published: true
 alias: reference-functions-changedbefore.html
-tags: [reference, functions, changedbefore]
+tags: [reference, files functions, functions, changedbefore]
 ---
 
-**Prototype**: `changedbefore(newer, older)`
+**Prototype:** `changedbefore(newer, older)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Compares the `ctime` fields of two files.
 

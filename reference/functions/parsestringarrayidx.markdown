@@ -4,12 +4,12 @@ title: parsestringarrayidx
 categories: [Reference, Functions, parsestringarrayidx]
 published: true
 alias: reference-functions-parsestringarrayidx.html
-tags: [reference, functions, parsestringarrayidx]
+tags: [reference, io functions, functions, parsestringarrayidx]
 ---
 
-**Prototype**: `parsestringarrayidx(array, input, comment, split, maxentries, maxbytes)`
+**Prototype:** `parsestringarrayidx(array, input, comment, split, maxentries, maxbytes)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Populates the two-dimensional array `array` with up to 
 `maxentries` fields from the first `maxbytes` bytes of the string `input`.

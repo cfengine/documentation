@@ -4,12 +4,12 @@ title: peers
 categories: [Reference, Functions, peers]
 published: true
 alias: reference-functions-peers.html
-tags: [reference, functions, peers]
+tags: [reference, communication functions, functions, peers]
 ---
 
-**Prototype**: `peers(filname, regex, groupsize)`
+**Prototype:** `peers(filname, regex, groupsize)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns a list of peers from the partition to which
 the current host belongs, excluding the current host.

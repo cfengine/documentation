@@ -4,12 +4,12 @@ title: every
 categories: [Reference, Functions, every]
 published: true
 alias: reference-functions-every.html
-tags: [reference, functions, every]
+tags: [reference, data functions, functions, every]
 ---
 
-**Prototype**: `every(regex, list)`
+**Prototype:** `every(regex, list)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether every element in the variable `list` matches
 `regex`.

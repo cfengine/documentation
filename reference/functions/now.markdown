@@ -4,12 +4,12 @@ title: now
 categories: [Reference, Functions, now]
 published: true
 alias: reference-functions-now.html
-tags: [reference, functions, now]
+tags: [reference, system functions, functions, now]
 ---
 
-**Prototype**: `now()`
+**Prototype:** `now()`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Return the current time in system representation.
 

@@ -4,12 +4,12 @@ title: selectservers
 categories: [Reference, Functions, selectservers]
 published: true
 alias: reference-functions-selectservers.html
-tags: [reference, functions, selectservers]
+tags: [reference, communication functions, functions, selectservers]
 ---
 
-**Prototype**: `selectservers(hostlist, port, query, regex,maxbytes, array)`
+**Prototype:** `selectservers(hostlist, port, query, regex,maxbytes, array)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Returns the number of tcp servers from `hostlist` which 
 respond correctly to a query send to `port`, and populates array with their 

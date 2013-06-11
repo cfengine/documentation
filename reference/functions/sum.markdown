@@ -4,12 +4,12 @@ title: sum
 categories: [Reference, Functions, sum]
 published: true
 alias: reference-functions-sum.html
-tags: [reference, functions, sum]
+tags: [reference, data functions, functions, sum]
 ---
 
-**Prototype**: `sum(list)`
+**Prototype:** `sum(list)`
 
-**Return type**: `real`
+**Return type:** `real`
 
 **Description:** Return the sum of the reals in `list`.
 

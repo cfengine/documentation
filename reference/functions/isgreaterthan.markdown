@@ -4,12 +4,12 @@ title: isgreaterthan
 categories: [Reference, Functions, isgreaterthan]
 published: true
 alias: reference-functions-isgreaterthan.html
-tags: [reference, functions, isgreaterthan]
+tags: [reference, data functions, functions, isgreaterthan]
 ---
 
-**Prototype**: `isgreaterthan(value1, value2)`
+**Prototype:** `isgreaterthan(value1, value2)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether `value1` is greater than `value2`.
 

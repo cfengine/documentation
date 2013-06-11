@@ -4,12 +4,12 @@ title: regcmp
 categories: [Reference, Functions, regcmp]
 published: true
 alias: reference-functions-regcmp.html
-tags: [reference, functions, regcmp]
+tags: [reference, data functions, functions, regcmp]
 ---
 
-**Prototype**: `regcmp(regex, string)`
+**Prototype:** `regcmp(regex, string)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the regular expression `regex` matches the 
 `string.`

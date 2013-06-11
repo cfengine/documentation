@@ -4,12 +4,12 @@ title: regline
 categories: [Reference, Functions, regline]
 published: true
 alias: reference-functions-regline.html
-tags: [reference, functions, regline]
+tags: [reference, io functions, functions, regline]
 ---
 
-**Prototype**: `regline(regex, filename)`
+**Prototype:** `regline(regex, filename)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the regular expression `regex` matches a line 
 in file `filename`.

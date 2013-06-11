@@ -4,12 +4,12 @@ title: getuid
 categories: [Reference, Functions, getuid]
 published: true
 alias: reference-functions-getuid.html
-tags: [reference, functions, getuid]
+tags: [reference, system functions, functions, getuid]
 ---
 
-**Prototype**: `getuid(username)`
+**Prototype:** `getuid(username)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Return the integer user id of the named user on this host
 

@@ -4,12 +4,12 @@ title: peerleaders
 categories: [Reference, Functions, peerleaders]
 published: true
 alias: reference-functions-peerleaders.html
-tags: [reference, functions, peerleaders]
+tags: [reference, communication functions, functions, peerleaders]
 ---
 
-**Prototype**: `peerleaders(filename, regex, groupsize)`
+**Prototype:** `peerleaders(filename, regex, groupsize)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns a list of peer leaders from the named partitioning.
 

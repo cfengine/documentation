@@ -4,12 +4,12 @@ title: splitstring
 categories: [Reference, Functions, splitstring]
 published: true
 alias: reference-functions-splitstring.html
-tags: [reference, functions, splitstring]
+tags: [reference, data functions, functions, splitstring]
 ---
 
-**Prototype**: `splitstring(string, regex, maxent)`
+**Prototype:** `splitstring(string, regex, maxent)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Splits `string` into at most `maxent` substrings wherever 
 `regex` occurs, and  returns the list with those strings.

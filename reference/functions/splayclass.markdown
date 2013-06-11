@@ -4,12 +4,12 @@ title: splayclass
 categories: [Reference, Functions, splayclass]
 published: true
 alias: reference-functions-splayclass.html
-tags: [reference, functions, splayclass]
+tags: [reference, utility functions, functions, splayclass]
 ---
 
-**Prototype**: `splayclass(input, policy)`
+**Prototype:** `splayclass(input, policy)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether `input`'s time-slot has arrived, 
 according to a `policy`.

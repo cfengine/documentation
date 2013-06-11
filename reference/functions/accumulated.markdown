@@ -4,12 +4,12 @@ title: accumulated
 categories: [Reference, Functions, accumulated]
 published: true
 alias: reference-functions-accumulated.html
-tags: [reference, functions, accumulated]
+tags: [reference, data functions, functions, accumulated]
 ---
 
-**Prototype**: `accumulated(years, months, days, hours, minutes, seconds)`
+**Prototype:** `accumulated(years, months, days, hours, minutes, seconds)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Convert an accumulated amount of time into a system representation.
 

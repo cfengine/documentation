@@ -4,12 +4,12 @@ title: laterthan
 categories: [Reference, Functions, laterthan]
 published: true
 alias: reference-functions-laterthan.html
-tags: [reference, functions, laterthan]
+tags: [reference, files functions, functions, laterthan]
 ---
 
-**Prototype**: `laterthan(years, months, days, hours, minutes, seconds)`
+**Prototype:** `laterthan(years, months, days, hours, minutes, seconds)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the current time is later than the given 
 date and time.

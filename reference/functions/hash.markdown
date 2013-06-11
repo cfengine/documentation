@@ -4,12 +4,12 @@ title: hash
 categories: [Reference, Functions, hash]
 published: true
 alias: reference-functions-hash.html
-tags: [reference, functions, hash]
+tags: [reference, data functions, functions, hash]
 ---
 
-**Prototype**: `hash(input, algorithm)`
+**Prototype:** `hash(input, algorithm)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Return the hash of `input` using the hash `algorithm`.
 

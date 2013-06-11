@@ -4,14 +4,14 @@ title: ldaplist
 categories: [Reference, Functions, ldaplist]
 published: true
 alias: reference-functions-ldaplist.html
-tags: [reference, functions, ldaplist]
+tags: [reference, communication functions, functions, ldaplist]
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: `ldaplist(uri, dn, filter, record, scope, security)`
+**Prototype:** `ldaplist(uri, dn, filter, record, scope, security)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns a list with all named values from multiple ldap records.
 

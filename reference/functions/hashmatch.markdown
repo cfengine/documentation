@@ -4,12 +4,12 @@ title: hashmatch
 categories: [Reference, Functions, hashmatch]
 published: true
 alias: reference-functions-hashmatch.html
-tags: [reference, functions, hashmatch]
+tags: [reference, data functions, functions, hashmatch]
 ---
 
-**Prototype**: `hashmatch(filename, algorthm, hash)`
+**Prototype:** `hashmatch(filename, algorthm, hash)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Compute the hash of file `filename` using the hash `algorithm` and test if it matches `hash`.
 

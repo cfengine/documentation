@@ -4,14 +4,14 @@ title: "parse[int|real|string]array"
 categories: [Reference, Functions, parse*array]
 published: true
 alias: reference-functions-parseintrealstringarray.html
-tags: [reference, functions, parseintarray, parserealarray, parsestringarray]
+tags: [reference, io functions, functions, parseintarray, parserealarray, parsestringarray]
 ---
 
-**Prototype**: `parseintarray(array, input, comment, split, maxentries, maxbytes)`<br>
-**Prototype**: `parserealarray(array, input, comment, split, maxentries, maxbytes)`<br>
-**Prototype**: `parsestringarray(array, input, comment, split, maxentries, maxbytes)`<br>
+**Prototype:** `parseintarray(array, input, comment, split, maxentries, maxbytes)`<br>
+**Prototype:** `parserealarray(array, input, comment, split, maxentries, maxbytes)`<br>
+**Prototype:** `parsestringarray(array, input, comment, split, maxentries, maxbytes)`<br>
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Parses up to `maxentries` values from the first `maxbytes` 
 bytes in string `input` and populates `array`. Returns the dimension.

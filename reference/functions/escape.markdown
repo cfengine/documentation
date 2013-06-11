@@ -4,12 +4,12 @@ title: escape
 categories: [Reference, Functions, escape]
 published: true
 alias: reference-functions-escape.html
-tags: [reference, functions, escape]
+tags: [reference, data functions, functions, escape]
 ---
 
-**Prototype**: `escape(text)`
+**Prototype:** `escape(text)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Escape regular expression characters in `text`.
 

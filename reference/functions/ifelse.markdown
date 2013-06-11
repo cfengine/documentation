@@ -4,12 +4,12 @@ title: ifelse
 categories: [Reference, Functions, ifelse]
 published: true
 alias: reference-functions-ifelse.html
-tags: [reference, functions, ifelse]
+tags: [reference, data functions, functions, ifelse]
 ---
 
-**Prototype**: `ifelse(...)`
+**Prototype:** `ifelse(...)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Evaluate each pair of arguments up to the last one as a (`class`, `value`) tuple, returning `value` if `class` is set.
 

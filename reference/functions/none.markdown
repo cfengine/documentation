@@ -4,12 +4,12 @@ title: none
 categories: [Reference, Functions, none]
 published: true
 alias: reference-functions-none.html
-tags: [reference, functions, none]
+tags: [reference, data functions, functions, none]
 ---
 
-**Prototype**: `none(regex, list)`
+**Prototype:** `none(regex, list)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether no element in `list` matches the regular 
 expression `regex`.

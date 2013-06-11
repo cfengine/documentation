@@ -4,12 +4,12 @@ title: lastnode
 categories: [Reference, Functions, lastnode]
 published: true
 alias: reference-functions-lastnode.html
-tags: [reference, functions, lastnode]
+tags: [reference, data functions, functions, lastnode]
 ---
 
-**Prototype**: `lastnode(string, separator)`
+**Prototype:** `lastnode(string, separator)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns the part of `string` after the last `separator`.
 

@@ -4,12 +4,12 @@ title: translatepath
 categories: [Reference, Functions, translatepath]
 published: true
 alias: reference-functions-translatepath.html
-tags: [reference, functions, translatepath]
+tags: [reference, files functions, functions, translatepath]
 ---
 
-**Prototype**: `translatepath(path)`
+**Prototype:** `translatepath(path)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Translate path separators from Unix style to the host's 
 native style and returns the result.

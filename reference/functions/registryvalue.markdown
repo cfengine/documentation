@@ -4,12 +4,12 @@ title: registryvalue
 categories: [Reference, Functions, registryvalue]
 published: true
 alias: reference-functions-registryvalue.html
-tags: [reference, functions, registryvalue]
+tags: [reference, system functions, functions, registryvalue]
 ---
 
-**Prototype**: `registryvalue(key, valueid)`
+**Prototype:** `registryvalue(key, valueid)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns the value of `valueid` in the Windows registry key 
 `key`.

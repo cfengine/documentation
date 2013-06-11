@@ -4,12 +4,12 @@ title: getvalues
 categories: [Reference, Functions, getvalues]
 published: true
 alias: reference-functions-getvalues.html
-tags: [reference, functions, getvalues]
+tags: [reference, data functions, functions, getvalues]
 ---
 
-**Prototype**: `getvalues(array)`
+**Prototype:** `getvalues(array)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns the list of values in `array`.
 

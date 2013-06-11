@@ -4,12 +4,12 @@ title: sort
 categories: [Reference, Functions, sort]
 published: true
 alias: reference-functions-sort.html
-tags: [reference, functions, sort]
+tags: [reference, data functions, functions, sort]
 ---
 
-**Prototype**: `sort(list, mode)`
+**Prototype:** `sort(list, mode)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns `list` sorted according to `mode`.
 

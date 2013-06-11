@@ -4,12 +4,12 @@ title: isnewerthan
 categories: [Reference, Functions, isnewerthan]
 published: true
 alias: reference-functions-isnewerthan.html
-tags: [reference, functions, isnewerthan]
+tags: [reference, files functions, functions, isnewerthan]
 ---
 
-**Prototype**: `isnewerthan(newer, older)`
+**Prototype:** `isnewerthan(newer, older)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the file `newer` is newer (modified later) 
 than the file `older`.

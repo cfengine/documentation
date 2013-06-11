@@ -4,12 +4,12 @@ title: ip2host
 categories: [Reference, Functions, ip2host]
 published: true
 alias: reference-functions-ip2host.html
-tags: [reference, functions, ip2host]
+tags: [reference, communication functions, functions, ip2host]
 ---
 
-**Prototype**: `ip2host(ip)`
+**Prototype:** `ip2host(ip)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns the primary name-service host name for the IP address 
 `ip`.

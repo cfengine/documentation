@@ -4,12 +4,12 @@ title: some
 categories: [Reference, Functions, some]
 published: true
 alias: reference-functions-some.html
-tags: [reference, functions, some]
+tags: [reference, data functions, functions, some]
 ---
 
-**Prototype**: `some(regex, list)`
+**Prototype:** `some(regex, list)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Return whether any element of the list matches the regular 
 expression.

@@ -4,12 +4,12 @@ title: and
 categories: [Reference, Functions, and]
 published: true
 alias: reference-functions-and.html
-tags: [reference, functions, and]
+tags: [reference, data functions, functions, and]
 ---
 
-**Prototype**: `and(...)`
+**Prototype:** `and(...)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns whether all arguments evaluate to true.
 

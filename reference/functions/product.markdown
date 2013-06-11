@@ -4,12 +4,12 @@ title: product
 categories: [Reference, Functions, product]
 published: true
 alias: reference-functions-product.html
-tags: [reference, functions, product]
+tags: [reference, data functions, functions, product]
 ---
 
-**Prototype**: `product(list)`
+**Prototype:** `product(list)`
 
-**Return type**: `real`
+**Return type:** `real`
 
 **Description:** Returns the product of the reals in `list`.
 

@@ -4,14 +4,14 @@ title: regldap
 categories: [Reference, Functions, regldap]
 published: true
 alias: reference-functions-regldap.html
-tags: [reference, functions, regldap]
+tags: [reference, communication functions, functions, regldap]
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: `regldap(uri, dn, filter, record, scope, regex, security)`
+**Prototype:** `regldap(uri, dn, filter, record, scope, regex, security)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the regular expression `regex` matches a 
 value item in the LDAP search.

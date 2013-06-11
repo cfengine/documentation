@@ -4,12 +4,12 @@ title: hostinnetgroup
 categories: [Reference, Functions, hostinnetgroup]
 published: true
 alias: reference-functions-hostinnetgroup.html
-tags: [reference, functions, hostinnetgroup]
+tags: [reference, system functions, functions, hostinnetgroup]
 ---
 
-**Prototype**: `hostinnetgroup(netgroup)`
+**Prototype:** `hostinnetgroup(netgroup)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** True if the current host is in the named `netgroup`.
 

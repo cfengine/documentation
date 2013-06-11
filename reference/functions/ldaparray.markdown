@@ -4,14 +4,14 @@ title: ldaparray
 categories: [Reference, Functions, ldaparray]
 published: true
 alias: reference-functions-ldaparray.html
-tags: [reference, functions, ldaparray]
+tags: [reference, communication functions, functions, ldaparray]
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: `ldaparray(array, uri, dn, filter, scope, security)`
+**Prototype:** `ldaparray(array, uri, dn, filter, scope, security)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Fills `array` with the entire LDAP record, and returns 
 whether there was a match for the search.

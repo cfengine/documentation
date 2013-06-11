@@ -4,12 +4,12 @@ title: canonify
 categories: [Reference, Functions, canonify]
 published: true
 alias: reference-functions-canonify.html
-tags: [reference, functions, canonify]
+tags: [reference, data functions, functions, canonify]
 ---
 
-**Prototype**: `canonify(text)`
+**Prototype:** `canonify(text)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Convert an arbitrary string `text` into a legal class name.
 

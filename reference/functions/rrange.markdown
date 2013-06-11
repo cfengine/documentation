@@ -4,12 +4,12 @@ title: rrange
 categories: [Reference, Functions, rrange]
 published: false
 alias: reference-functions-rrange.html
-tags: [reference, functions, rrange]
+tags: [reference, data functions, functions, rrange]
 ---
 
-**Prototype**: `rrange(arg1, arg2)`
+**Prototype:** `rrange(arg1, arg2)`
 
-**Return type**: `rrange [real,real]``
+**Return type:** `rrange [real,real]``
 
 **Description:** Define a range of real numbers for CFEngine internal use.
 

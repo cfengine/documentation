@@ -4,12 +4,12 @@ title: diskfree
 categories: [Reference, Functions, diskfree]
 published: true
 alias: reference-functions-diskfree.html
-tags: [reference, functions, diskfree]
+tags: [reference, files functions, functions, diskfree]
 ---
 
-**Prototype**: `diskfree(path)`
+**Prototype:** `diskfree(path)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Descriptions**: Return the free space (in KB) available on the current
 partition of `path`.

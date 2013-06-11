@@ -4,12 +4,12 @@ title: getindices
 categories: [Reference, Functions, getindices]
 published: true
 alias: reference-functions-getindices.html
-tags: [reference, functions, getindices]
+tags: [reference, data functions, functions, getindices]
 ---
 
-**Prototype**: `getindices(array)`
+**Prototype:** `getindices(array)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns a list of keys in `array`.
 

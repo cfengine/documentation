@@ -4,12 +4,12 @@ title: dirname
 categories: [Reference, Functions, dirname]
 published: true
 alias: reference-functions-dirname.html
-tags: [reference, functions, dirname]
+tags: [reference, files functions, functions, dirname]
 ---
 
-**Prototype**: `dirname(path)`
+**Prototype:** `dirname(path)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Return the parent directory name for given `path`.
 

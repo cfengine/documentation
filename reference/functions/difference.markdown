@@ -4,12 +4,12 @@ title: difference
 categories: [Reference, Functions, difference]
 published: true
 alias: reference-functions-difference.html
-tags: [reference, functions, difference]
+tags: [reference, data functions, functions, difference]
 ---
 
-**Prototype**: `difference(list1, list2)`
+**Prototype:** `difference(list1, list2)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns the unique elements in `list1` that are not in 
 `list2`.

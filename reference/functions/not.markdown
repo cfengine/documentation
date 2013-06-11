@@ -4,12 +4,12 @@ title: not
 categories: [Reference, Functions, not]
 published: true
 alias: reference-functions-not.html
-tags: [reference, functions, not]
+tags: [reference, data functions, functions, not]
 ---
 
-**Prototype**: `not(expression)`
+**Prototype:** `not(expression)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Calculate whether `expression` is false
 

@@ -4,12 +4,12 @@ title: or
 categories: [Reference, Functions, or]
 published: true
 alias: reference-functions-or.html
-tags: [reference, functions, or]
+tags: [reference, data functions, functions, or]
 ---
 
-**Prototype**: `or(...)`
+**Prototype:** `or(...)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Calculate whether any argument evaluates to true
 

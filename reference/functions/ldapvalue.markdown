@@ -4,14 +4,14 @@ title: ldapvalue
 categories: [Reference, Functions, ldapvalue]
 published: true
 alias: reference-functions-ldapvalue.html
-tags: [reference, functions, ldapvalue]
+tags: [reference, communication functions, functions, ldapvalue]
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: `ldapvalue(uri, dn, filter, record, scope, security)`
+**Prototype:** `ldapvalue(uri, dn, filter, record, scope, security)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns the first matching named value from ldap.
 

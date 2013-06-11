@@ -4,12 +4,12 @@ title: readtcp
 categories: [Reference, Functions, readtcp]
 published: true
 alias: reference-functions-readtcp.html
-tags: [reference, functions, readtcp]
+tags: [reference, communication functions, functions, readtcp]
 ---
 
-**Prototype**: `readtcp(hostnameip, port, sendstring, maxbytes)`
+**Prototype:** `readtcp(hostnameip, port, sendstring, maxbytes)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Connects to tcp `port` of `hostnameip`, sends `sendstring`,
 reads at most `maxbytes` from the response and returns those.

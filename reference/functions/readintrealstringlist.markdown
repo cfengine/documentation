@@ -4,14 +4,14 @@ title: read[int|real|string]list
 categories: [Reference, Functions, read*list]
 published: true
 alias: reference-functions-readintrealstringlist.html
-tags: [reference, functions, readintlist, readreallist, readstringlist]
+tags: [reference, io functions, functions, readintlist, readreallist, readstringlist]
 ---
 
-**Prototype**: `readintlist(filename, comment, split, maxentries, maxbytes)`<br>
-**Prototype**: `readreallist(filename, comment, split, maxentries, maxbytes)`<br>
-**Prototype**: `readstringlist(filename, comment, split, maxentries, maxbytes)`
+**Prototype:** `readintlist(filename, comment, split, maxentries, maxbytes)`<br>
+**Prototype:** `readreallist(filename, comment, split, maxentries, maxbytes)`<br>
+**Prototype:** `readstringlist(filename, comment, split, maxentries, maxbytes)`
 
-**Return type**: `ilist`, `rlist` or `slist`
+**Return type:** `ilist`, `rlist` or `slist`
 
 **Description:** Splits the file `filename` into separated 
 values and returns the list.

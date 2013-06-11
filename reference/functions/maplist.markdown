@@ -4,12 +4,12 @@ title: maplist
 categories: [Reference, Functions, maplist]
 published: true
 alias: reference-functions-maplist.html
-tags: [reference, functions, maplist]
+tags: [reference, data functions, functions, maplist]
 ---
 
-**Prototype**: `maplist(pattern, list)`
+**Prototype:** `maplist(pattern, list)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Return a list with each element in `list` modified by a 
 pattern.

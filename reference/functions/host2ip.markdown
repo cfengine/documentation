@@ -4,12 +4,12 @@ title: host2ip
 categories: [Reference, Functions, host2ip]
 published: true
 alias: reference-functions-host2ip.html
-tags: [reference, functions, host2ip]
+tags: [reference, communication functions, functions, host2ip]
 ---
 
-**Prototype**: `host2ip(hostname)`
+**Prototype:** `host2ip(hostname)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns the primary name-service IP address for the named host `hostname`.
 

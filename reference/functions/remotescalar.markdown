@@ -4,14 +4,14 @@ title: remotescalar
 categories: [Reference, Functions, remotescalar]
 published: true
 alias: reference-functions-remotescalar.html
-tags: [reference, functions, remotescalar]
+tags: [reference, communication functions, functions, remotescalar]
 ---
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype**: `remotescalar(id, server, encrypt)`
+**Prototype:** `remotescalar(id, server, encrypt)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns a scalar value from a remote CFEngine server.
 

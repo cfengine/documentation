@@ -4,12 +4,12 @@ title: classmatch
 categories: [Reference, Functions, classmatch]
 published: true
 alias: reference-functions-classmatch.html
-tags: [reference, functions, classmatch]
+tags: [reference, utility functions, functions, classmatch]
 ---
 
-**Prototype**: `classmatch(regex)`
+**Prototype:** `classmatch(regex)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Tests whether `regex` matches any currently set class.
 

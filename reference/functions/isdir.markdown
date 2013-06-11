@@ -4,12 +4,12 @@ title: isdir
 categories: [Reference, Functions, isdir]
 published: true
 alias: reference-functions-isdir.html
-tags: [reference, functions, isdir]
+tags: [reference, files functions, functions, isdir]
 ---
 
-**Prototype**: `isdir(filename)`
+**Prototype:** `isdir(filename)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the named object `filename` is a directory.
 

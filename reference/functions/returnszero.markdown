@@ -4,12 +4,12 @@ title: returnszero
 categories: [Reference, Functions, returnszero]
 published: true
 alias: reference-functions-returnszero.html
-tags: [reference, functions, returnszero]
+tags: [reference, utility functions, functions, returnszero]
 ---
 
-**Prototype**: `returnszero(command, shell)`
+**Prototype:** `returnszero(command, shell)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Runs `command` and returns whether it has returned with exit 
 status zero.

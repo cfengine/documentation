@@ -4,12 +4,12 @@ title: format
 categories: [Reference, Functions, format]
 published: true
 alias: reference-functions-format.html
-tags: [reference, functions, format]
+tags: [reference, data functions, functions, format]
 ---
 
-**Prototype**: `format(string, ...)`
+**Prototype:** `format(string, ...)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Applies sprintf-style formatting to a given `string`.
 

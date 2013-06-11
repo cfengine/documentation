@@ -4,12 +4,12 @@ title: lsdir
 categories: [Reference, Functions, lsdir]
 published: true
 alias: reference-functions-lsdir.html
-tags: [reference, functions, lsdir]
+tags: [reference, files functions, functions, lsdir]
 ---
 
-**Prototype**: `lsdir(path, regex, include_base)`
+**Prototype:** `lsdir(path, regex, include_base)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 
 **Description:** Returns a list of files in the directory `path` matching the regular expression `regex`.

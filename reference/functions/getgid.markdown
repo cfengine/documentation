@@ -4,12 +4,12 @@ title: getgid
 categories: [Reference, Functions, getgid]
 published: true
 alias: reference-functions-getgid.html
-tags: [reference, functions, getgid]
+tags: [reference, data functions, functions, getgid]
 ---
 
-**Prototype**: `getgid(groupname)`
+**Prototype:** `getgid(groupname)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Return the integer group id of the group `groupname` on this 
 host.

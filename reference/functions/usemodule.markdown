@@ -4,12 +4,12 @@ title: usemodule
 categories: [Reference, Functions, usemodule]
 published: true
 alias: reference-functions-usemodule.html
-tags: [reference, functions, usemodule]
+tags: [reference, utility functions, functions, usemodule]
 ---
 
-**Prototype**: `usemodule(name, args)`
+**Prototype:** `usemodule(name, args)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Execute CFEngine module script `name` with `args` and return 
 whether successful.

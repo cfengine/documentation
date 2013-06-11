@@ -4,12 +4,12 @@ title: islink
 categories: [Reference, Functions, islink]
 published: true
 alias: reference-functions-islink.html
-tags: [reference, functions, islink]
+tags: [reference, files functions, functions, islink]
 ---
 
-**Prototype**: `islink(filename)`
+**Prototype:** `islink(filename)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether the named object `filename` is a symbolic 
 link.

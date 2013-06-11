@@ -4,12 +4,12 @@ title: intersection
 categories: [Reference, Functions, intersection]
 published: true
 alias: reference-functions-intersection.html
-tags: [reference, functions, intersection]
+tags: [reference, data functions, functions, intersection]
 ---
 
-**Prototype**: `intersection(list1, list2)`
+**Prototype:** `intersection(list1, list2)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns the unique elements in list1 that are also in list2.
 

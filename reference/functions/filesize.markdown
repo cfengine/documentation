@@ -4,12 +4,12 @@ title: filesize
 categories: [Reference, Functions, filesize]
 published: true
 alias: reference-functions-filesize.html
-tags: [reference, functions, filesize]
+tags: [reference, files functions, functions, filesize]
 ---
 
-**Prototype**: `filesize(filename)`
+**Prototype:** `filesize(filename)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Returns the size of the file `filename` in bytes.
 

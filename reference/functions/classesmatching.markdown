@@ -4,12 +4,12 @@ title: classesmatching
 categories: [Reference, Functions, classesmatching]
 published: true
 alias: reference-functions-classesmatching.html
-tags: [reference, functions, classesmatching]
+tags: [reference, utility functions, functions, classesmatching]
 ---
 
-**Prototype**: `classesmatching(regex)`
+**Prototype:** `classesmatching(regex)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Return the list of set classes matching `regex`.
 

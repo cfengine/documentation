@@ -4,12 +4,12 @@ title: accessedbefore
 categories: [Reference, Functions, accessedbefore]
 published: true
 alias: reference-functions-accessedbefore.html
-tags: [reference, functions, accessedbefore]
+tags: [reference, files functions, functions, accessedbefore]
 ---
 
-**Prototype**: `accessedbefore(newer, older)`
+**Prototype:** `accessedbefore(newer, older)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Compares the `atime` fields of two files.
 

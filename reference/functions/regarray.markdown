@@ -4,12 +4,12 @@ title: regarray
 categories: [Reference, Functions, regarray]
 published: true
 alias: reference-functions-regarray.html
-tags: [reference, functions, regarray]
+tags: [reference, data functions, functions, regarray]
 ---
 
-**Prototype**: `regarray(array, regex)`
+**Prototype:** `regarray(array, regex)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether `array` contains elements matching the
 regular expression `regex`.

@@ -4,12 +4,12 @@ title: shuffle
 categories: [Reference, Functions, shuffle]
 published: true
 alias: reference-functions-shuffle.html
-tags: [reference, functions, shuffle]
+tags: [reference, data functions, functions, shuffle]
 ---
 
-**Prototype**: `shuffle(list, seed)`
+**Prototype:** `shuffle(list, seed)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Return `list` shuffled with `seed`.
 

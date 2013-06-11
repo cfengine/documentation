@@ -4,12 +4,12 @@ title: irange
 categories: [Reference, Functions, irange]
 published: true
 alias: reference-functions-irange.html
-tags: [reference, functions, irange]
+tags: [reference, data functions, functions, irange]
 ---
 
-**Prototype**: `irange(arg1, arg2)`
+**Prototype:** `irange(arg1, arg2)`
 
-**Return type**: `irange[int,int]`
+**Return type:** `irange[int,int]`
 
 **Description:** Define a range of integer values for CFEngine internal use.
 

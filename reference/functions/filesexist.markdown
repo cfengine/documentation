@@ -4,12 +4,12 @@ title: filesexist
 categories: [Reference, Functions, filesexist]
 published: true
 alias: reference-functions-filesexist.html
-tags: [reference, functions, filesexist]
+tags: [reference, files functions, functions, filesexist]
 ---
 
-**Prototype**: `filesexist(list)`
+**Prototype:** `filesexist(list)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether all the files in `list` can be accessed.
 

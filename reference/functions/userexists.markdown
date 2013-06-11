@@ -4,12 +4,12 @@ title: userexists
 categories: [Reference, Functions, userexists]
 published: true
 alias: reference-functions-userexists.html
-tags: [reference, functions, userexists]
+tags: [reference, system functions, functions, userexists]
 ---
 
-**Prototype**: `userexists(user)`
+**Prototype:** `userexists(user)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Return whether `user` name or numerical id exists on this 
 host.

@@ -4,12 +4,12 @@ title: sublist
 categories: [Reference, Functions, sublist]
 published: true
 alias: reference-functions-sublist.html
-tags: [reference, functions, sublist]
+tags: [reference, data functions, functions, sublist]
 ---
 
-**Prototype**: `sublist(list, head_or_tail, max_elements)`
+**Prototype:** `sublist(list, head_or_tail, max_elements)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns list of up to `max_elements` of `list`, obtained from head or tail depending on `head_or_tail`.
 

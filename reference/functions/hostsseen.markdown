@@ -4,12 +4,12 @@ title: hostsseen
 categories: [Reference, Functions, hostsseen]
 published: true
 alias: reference-functions-hostsseen.html
-tags: [reference, functions, hostsseen]
+tags: [reference, communication functions, functions, hostsseen]
 ---
 
-**Prototype**: `hostsseen(horizon, seen, field)`
+**Prototype:** `hostsseen(horizon, seen, field)`
 
-**Return type**: `slist`
+**Return type:** `slist`
 
 **Description:** Returns a list with the information `field` of hosts that were seen or not seen within the last `horizon` hours.
 

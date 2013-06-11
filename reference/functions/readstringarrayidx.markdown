@@ -4,12 +4,12 @@ title: readstringarrayidx
 categories: [Reference, Functions, readstringarrayidx]
 published: true
 alias: reference-functions-readstringarrayidx.html
-tags: [reference, functions, readstringarrayidx]
+tags: [reference, io functions, functions, readstringarrayidx]
 ---
 
-**Prototype**: `readstringarrayidx(array, filename, comment, split, maxentries, maxbytes)`
+**Prototype:** `readstringarrayidx(array, filename, comment, split, maxentries, maxbytes)`
 
-**Return type**: `int`
+**Return type:** `int`
 
 **Description:** Populates the two-dimensional array `array` with up to 
 `maxentries` fields from the first `maxbytes` bytes of file `filename`.

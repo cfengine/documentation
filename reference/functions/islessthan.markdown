@@ -4,12 +4,12 @@ title: islessthan
 categories: [Reference, Functions, islessthan]
 published: true
 alias: reference-functions-islessthan.html
-tags: [reference, functions, islessthan]
+tags: [reference, data functions, functions, islessthan]
 ---
 
-**Prototype**: `islessthan(value1, value2)`
+**Prototype:** `islessthan(value1, value2)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether `value1` is less than `value2`.
 

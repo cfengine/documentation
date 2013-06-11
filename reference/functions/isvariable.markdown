@@ -4,12 +4,12 @@ title: isvariable
 categories: [Reference, Functions, isvariable]
 published: true
 alias: reference-functions-isvariable.html
-tags: [reference, functions, isvariable]
+tags: [reference, utility functions, functions, isvariable]
 ---
 
-**Prototype**: `isvariable(var)`
+**Prototype:** `isvariable(var)`
 
-**Return type**: `class`
+**Return type:** `class`
 
 **Description:** Returns whether a variable named `var` is defined.
 

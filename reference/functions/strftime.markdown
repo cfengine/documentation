@@ -4,12 +4,12 @@ title: strftime
 categories: [Reference, Functions, strftime]
 published: true
 alias: reference-functions-strftime.html
-tags: [reference, functions, strftime]
+tags: [reference, data functions, functions, strftime]
 ---
 
-**Prototype**: `strftime(mode, template, time)`
+**Prototype:** `strftime(mode, template, time)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Interprets a time and date format string at a particular 
 point in GMT or local time using Unix epoch time.

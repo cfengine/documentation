@@ -4,12 +4,12 @@ title: nth
 categories: [Reference, Functions, nth]
 published: true
 alias: reference-functions-nth.html
-tags: [reference, functions, nth]
+tags: [reference, data functions, functions, nth]
 ---
 
-**Prototype**: `nth(list, position)`
+**Prototype:** `nth(list, position)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns the element of `list` at zero-based `position`.
 

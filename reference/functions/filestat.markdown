@@ -4,12 +4,12 @@ title: filestat
 categories: [Reference, Functions, filestat]
 published: true
 alias: reference-functions-filestat.html
-tags: [reference, functions, filestat]
+tags: [reference, files functions, functions, filestat]
 ---
 
-**Prototype**: `filestat(filename, field)`
+**Prototype:** `filestat(filename, field)`
 
-**Return type**: `string`
+**Return type:** `string`
 
 **Description:** Returns the requested file field.
 
