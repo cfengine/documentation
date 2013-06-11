@@ -42,7 +42,9 @@ according to so-called `normal ordering` (essentially deletion first, followed
 by creation). The actual sequence continues for up to three iterations of the 
 following, converging towards a final state:
 
+    meta
     vars
+    defaults
     classes
     files
     packages
@@ -58,7 +60,9 @@ following, converging towards a final state:
 Within [`edit_line` bundles in files promises][bundle edit_line],
 the normal ordering is:
 
+    meta
     vars
+    defaults
     classes
     delete_lines
     field_edits
