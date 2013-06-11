@@ -58,7 +58,7 @@ We have found that the following steps are a good way to learn CFEngine:
   [vim](https://github.com/neilhwatson/vim_cf3) or
   [emacs](https://github.com/cfengine/core/blob/master/contrib/cfengine.el).
 * <a href="http://cf-learn.info" target="_blank">Get the book!</a>
-* Study the [tutorials and examples][examples].
+* Study the [tutorials and examples][CFEngine examples].
 * Read the documentation about the [Design][Design],
   the [CFEngine Components][The CFEngine Components].
   and [Language Concepts][Language Concepts]
