@@ -989,8 +989,7 @@ record.
 
 **Default value:** true
 
-**History:** Was introduced in 3.4.0b1.70bd7ea, Nova 2.3.0.a1.3167b00
-(2012)
+**History:** Was introduced in 3.4.0, Nova 2.3.0 (2012)
 
 #### package_version_less_command
 
