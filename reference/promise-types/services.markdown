@@ -317,7 +317,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 ```cf3
      body service_method example
      {
-       type => "windows";
+       service_type => "windows";
      }
 ```
 
