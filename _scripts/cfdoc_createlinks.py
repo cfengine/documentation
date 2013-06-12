@@ -85,6 +85,8 @@ else:
 		os.chdir(CFDOC_DIRNAME)
 		configpath = os.path.dirname(CFDOC_LINKFILE) + "/_config.yml"
 		if os.path.exists(configpath):
+			revision = ""
+			branch = "master"
 			git = os.popen("git rev-list -1 --abbrev-commit HEAD")
 			while True:
 				line = git.readline().rstrip()
@@ -96,13 +98,15 @@ else:
 			while True:
 				line = git.readline().rstrip()
 				if line == '': break
-				if line.find('*') == 0:
+				if line.find('*') == 0 and line.find('(') == -1:
 					branch = line.split(' ')[1].rstrip()
 
 			print "cfdoc_createlinkes: Updating " + configpath + " with " + branch + " at " + revision
 			config = open(configpath, "a")
-			config.write("git-branch: \"" + branch + "\"\n")
-			config.write("git-revision: \"" + revision + "\"\n")
+			if branch != '':
+				config.write("git-branch: \"" + branch + "\"\n")
+			if revision != '':
+				config.write("git-revision: \"" + revision + "\"\n")
 			config.close()
 	except:
 		print "cfdoc_createlinks: Exception when setting revision"
