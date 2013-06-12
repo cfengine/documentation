@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Design Center
+title: Design Center - an advanced walkthrough
 categories: [Manuals, Design Center]
 published: true
 alias: manuals-design-center-advanced.html
 ---
 
-## Design Center - and advanced walkthrough
+## Design Center - an advanced walkthrough
 
 This walkthrough will show how a Design Center sketch can be found,
 installed, configured, and executed as policy.

@@ -357,12 +357,10 @@ managing all the backend framework, and cf-sketch offers an "expert"
 mode in addition to the interactive mode described in this
 tutorial. Once you are familiar with the basic concepts and want to
 learn more about how things work internally, you can take a look at
-the [advanced walkthrough](design-center-advanced.html).
+the [advanced walkthrough][Design Center - an advanced walkthrough].
 
 You may also want to look at the
-[Design Center API reference guide](reference-design-center-api.html).
+[Design Center API reference guide][The Design Center API].
 
 Once you are ready to start writing Design Center sketches, you need
-to look at the
-[Sketch Structure](reference-design-center-sketch-structure.html)
-documentation.
+to look at the [Sketch Structure][Sketch Structure] documentation.
