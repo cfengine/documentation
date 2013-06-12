@@ -197,12 +197,16 @@ CFEngine will attempt to kill and restart its attempt to keep a promise.
 **Description:** The message to be written to the log when a promise 
 verification leads to a repair.
 
-The `log_string` works together with `log_repair`, `log_kept` etc, to define 
-a string for logging to one of the named files depending on promise outcome, 
-or to standard output if the log file is stipulated as `stdout`. Log strings 
-on standard output are denoted by an `L:` prefix.
+The `log_string` works together with
+[`log_kept`][Promise Types and Attributes#log_kept],
+[`log_repaired`][Promise Types and Attributes#log_repaired], and 
+[`log_failed`][Promise Types and Attributes#log_failed] to define a string for 
+logging to one of the named files depending on promise outcome, or to standard 
+output if the log file is stipulated as `stdout`. Log strings on standard 
+output are denoted by an `L:` prefix.
 
-Note that `log_string` does not interact with `log_level`, which is about 
+Note that `log_string` does not interact with
+[`log_level`][[Promise Types and Attributes#log_level]], which is about 
 regular system output messages.
 
 **Type:** `string`
@@ -227,123 +231,24 @@ regular system output messages.
     }
 ```
 
-**Hint**: The promise handle `$(this.handle)` can be a useful referent in a 
-log message, indicating the origin of the message. In CFEngine Enterprise, 
-every promise has a default handle, which is based on the filename 
-and line number (specifying your own handle will probably be more mnemonic).
-
-#### log_level
-
-**Description:** Describes the reporting level sent to syslog.
-
-Use this as an alternative to auditing if you wish to use the syslog mechanism 
-to centralize or manage messaging from CFEngine. A backup of these messages 
-will still be kept in `WORKDIR/outputs` if you are using `cf-execd`.
-
-On the native Windows version of CFEngine Enterprise, using verbose 
-will include a message when the promise is kept or repaired in the event 
-log.   
-
-**Type:** (menu option)
-
-**Allowed input range:**   
-
-```
-    inform
-    verbose
-    error
-    log
-```
-
-**Example:**
-
-```cf3
-     body action example
-     {
-     log_level => "inform";
-     }
-```
+**Hint**: The promise handle [`$(this.handle)`][this#this.handle] can be a 
+useful referent in a log message, indicating the origin of the message. In 
+[CFEngine Enterprise][Enterprise Reporting], every promise has a default 
+handle, which is based on the filename and line number (specifying your own 
+handle will probably be more mnemonic).
 
 #### log_kept
-
-**Description:** The name of a file to which `log_string` will be saved
-for kept promises.
-
-If this option is specified together with `log_string`, the current 
-promise will log promise-kept status using the log string to this named
-file. If these log names are absent, the default logging destination 
-for the log string is syslog, but only for non-kept promises. Only the 
-`log_string` is affected by this setting. Other messages destined for 
-logging are sent to syslog.
-
-**Type:** `string`
-
-**Allowed input range:** `stdout|udp_syslog|("?[a-zA-Z]:\\.*)|(/.*)`
-
-This string should be the full path to a text file which will contain 
-the log, or one of the following special values:
-
-* `stdout`
-
-Send the log message to the standard output, prefixed with an L: to indicate 
-a log message.   
-
-* `udp_syslog`
-
-Attempt to connect to the `syslog_server` defined in body common control and 
-log the message there, assuming the server is configured to receive the 
-request.
-
-**Example:**
-
-```cf3
-     body action logme(x)
-     {
-     log_kept => "/tmp/private_keptlog.log";
-     log_failed => "/tmp/private_faillog.log";
-     log_repaired => "/tmp/private_replog.log";
-     log_string => "$(sys.date) $(x) promise status";
-     }
-```
-
-It is intended that named file logs should be different for the three cases: 
-promise kept, promise not kept and promise repaired.
-
-
-#### log_priority
-
-**Type:** (menu option)
-
-**Allowed input range:**   
-
-```
-    emergency
-    alert
-    critical
-    error
-    warning
-    notice
-    info
-    debug
-```
-
-**Description:** The `log_priority` menu option policy is the priority level 
-of the log message, as interpreted by a syslog server. It determines the 
-importance of messages from CFEngine.   
-
-**Example:**
-
-```cf3
-     body action low_priority
-     {
-     log_priority => "info";
-     }
-```
-
 #### log_repaired
+#### log_failed
 
-**Description:** The name of a file to which `log_string` will be saved for 
-repaired promises.
+**Description:** The names of files to which `log_string` will be saved
+for kept, repaired and failed promises.
+
+When used together with
+[`log_string`][Promise Types and Attributes#log_string], the current 
+promise will log its status using the log string to the respective file.
+
+If these log names are absent, the default logging destination for the log string is syslog, but only for non-kept promises. Only the `log_string` is affected by this setting. Other messages destined for logging are sent to syslog.
 
 **Type:** `string`
 
@@ -399,65 +304,67 @@ request.
 It is intended that named file logs should be different for the three cases: 
 promise kept, promise not kept and promise repaired.
 
-#### log_failed
+#### log_level
 
-**Description:** The name of a file to which `log_string` will be saved for 
-failed promises.
+**Description:** Describes the reporting level sent to syslog.
 
-If this option is specified together with `log_string`, the current promise 
-will log promise not kept status using the log string to this named file. If 
-these log names are absent, the default logging destination for the log string 
-is syslog, but only for non-kept promises. Only the `log_string` is affected 
-by this setting. Other messages destined for logging are sent to syslog.
+Use this as an alternative to auditing if you wish to use the syslog mechanism 
+to centralize or manage messaging from CFEngine. A backup of these messages 
+will still be kept in `WORKDIR/outputs` if you are using `cf-execd`.
 
-**Type:** `string`
+On the native Windows version of CFEngine Enterprise, using verbose 
+will include a message when the promise is kept or repaired in the event 
+log.   
 
-**Allowed input range:** `stdout|udp_syslog|("?[a-zA-Z]:\\.*)|(/.*)`
+**Type:** (menu option)
 
-This string should be the full path to a text file which will contain 
-the log, or one of the following special values:
+**Allowed input range:**   
 
-* `stdout`
-
-Send the log message to the standard output, prefixed with an L: to indicate 
-a log message.   
-
-* `udp_syslog`
-
-Attempt to connect to the `syslog_server` defined in body common control and 
-log the message there, assuming the server is configured to receive the 
-request.
+```
+    inform
+    verbose
+    error
+    log
+```
 
 **Example:**
 
 ```cf3
-     bundle agent test
+     body action example
      {
-     vars:
-     
-       "software" slist => { "/root/xyz", "/tmp/xyz" };
-     
-     files:
-     
-       "$(software)"
-     
-         create => "true",
-          action => logme("$(software)");
-     
-     }
-     
-     
-     body action logme(x)
-     {
-     log_kept => "/tmp/private_keptlog.log";
-     log_failed => "/tmp/private_faillog.log";
-     log_repaired => "/tmp/private_replog.log";
-     log_string => "$(sys.date) $(x) promise status";
+     log_level => "inform";
      }
 ```
 
-It is intended that named file logs should be different for the three cases: 
-promise kept, promise not kept and promise repaired.
+#### log_priority
+
+**Type:** (menu option)
+
+**Allowed input range:**   
+
+```
+    emergency
+    alert
+    critical
+    error
+    warning
+    notice
+    info
+    debug
+```
+
+**Description:** The `log_priority` menu option policy is the priority level 
+of the log message, as interpreted by a syslog server. It determines the 
+importance of messages from CFEngine.   
+
+**Example:**
+
+```cf3
+     body action low_priority
+     {
+     log_priority => "info";
+     }
+```
 
 #### value_kept
 
@@ -553,8 +460,6 @@ will be recorded in the audit database.
 
 #### background
 
-**Type:** [`boolean`][boolean]
-
 **Description:** A true/false switch for parallelizing the promise repair.
 
 If possible, perform the verification of the current promise in the 
@@ -567,6 +472,8 @@ the next promise. This is particular for the Windows platform because there
 is no way that a program can start itself in the background here; in other 
 words, fork off a child process. However, file operations can not be 
 performed in the background on Windows.   
+
+**Type:** [`boolean`][boolean]
 
 **Default value:** false
 
