@@ -79,7 +79,10 @@ if CFDOC_LINKFILE == None or CFDOC_DIRNAME == None:
 	exit(1)
 else:
 	
+	cwd = os.getcwd()
+
 	try:
+		os.chdir(CFDOC_DIRNAME)
 		configpath = os.path.dirname(CFDOC_LINKFILE) + "/_config.yml"
 		if os.path.exists(configpath):
 			git = os.popen("git rev-list -1 --abbrev-commit HEAD")
@@ -103,6 +106,9 @@ else:
 			config.close()
 	except:
 		print "cfdoc_createlinks: Exception when setting revision"
+		print "cfdoc_createlinks: cwd = " + os.getcwd()
+
+	os.chdir(cwd)
 
 	linkresolver.createLinkFile(CFDOC_DIRNAME,CFDOC_LINKFILE,"")
 	exit(0)
