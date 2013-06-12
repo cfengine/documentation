@@ -3,7 +3,6 @@ layout: default
 title: Design Center
 categories: [Manuals, Design Center]
 published: true
-sorting: 50
 alias: manuals-design-center.html
 ---
 
@@ -28,9 +27,12 @@ command-line tools.
 To follow this tutorial, you will need:
 
 - A Unix-like system
+- Git
 - Perl (most Unix systems come with Perl preinstalled)
-- CFEngine Community 3.4.0 or newer, or CFEngine Enterprise 3.0.0 or
-  newer.
+- CFEngine Community 3.5.0 or newer, or CFEngine Enterprise 3.5.0 or
+  newer. Many of the components will work with CFEngine Community
+  3.4.0 or later (Enterprise 3.0.0 or later), but you need 3.5.0 to
+  have access to the full range of features and sketches.
 - Optional but recommended: the `Term::ReadLine::Gnu` Perl module. On
   many systems it is available in the standard package repositories
   (for example, on Ubuntu Linux you can install it using `apt-get
@@ -93,538 +95,266 @@ There are some other concepts that will make your use of the Design
 Center even more powerful, but these are enough to get us started and
 to be able to go through this tutorial.
 
-## A Walk Through the CFEngine Design Center
+## A Walkthrough of the CFEngine Design Center
 
-### Checkout Design Center
+We will now go through the basic steps needed to get started using the
+Design Center.
 
-You can browse the source for examples, tools, sketches (generic
-reusable policy), or read through the Design Center wiki by browsing
-https://github.com/cfengine/design-center
+### Checkout the Design Center repository
 
-After you have explored and you are ready to go, change to a directory
-that will not be cleaned up automatically (don't use `/tmp` for
-example; here we used `~/source`) and run:
+The Design Center is an open source project and is hosted on
+GitHub. You can access the repository at
+https://github.com/cfengine/design-center.
 
-    git clone git@github.com:cfengine/design-center.git
-    
-or, if the Git native protocol is blocked at your site:
+The best way to get the Design Center at the moment is to check out
+its git repository. For this tutorial, we assume you will check it out
+under your `$HOME/source/` directory (you can use any location you
+want, just replace it throughout the following instructions):
 
+    mkdir $HOME/source
+    cd $HOME/source
     git clone https://github.com/cfengine/design-center.git
 
-You should end up with a directory called `design-center`.  We'll call
-this directory the *CHECKOUT* directory and refer to it as
-`$(CHECKOUT)` from here on.  In the examples that follow, *CHECKOUT*
-is `~/source/design-center` (the tilde `~` refers to the current
-user's home directory).
+You should end up with a directory called `design-center`.  We will
+call this directory the *CHECKOUT* directory and refer to it as
+`$CHECKOUT` from here on.  In the examples that follow, *CHECKOUT* is
+`$HOME/source/design-center`. You can save some typing by typing
 
-You can save some typing by saying
-
-    export CHECKOUT=~/source/design-center
+    export CHECKOUT=$HOME/source/design-center
     
 at the prompt.  From that point on, all command-line interaction can
 use `$CHECKOUT` and it will expand to the installation directory.
 
-### Prepare config.json
+### Running cf-sketch
 
-To interact with Design Center, you need to tell its API where things
-were installed.  Copy the `config.json` file to your CFEngine personal
-directory:
+You can run cf-sketch in interactive mode directly from its directory
+under `$CHECKOUT`:
 
-    mkdir ~/.cfagent
-    cp $CHECKOUT/tools/cf-sketch/config.json ~/.cfagent/dc-api-config.json
+    cd $CHECKOUT/tools/cf-sketch
+    ./cf-sketch.pl
+    Welcome to cf-sketch version 3.5.0b1.
+    CFEngine AS, 2013.
 
-(Note that there's also a `config-root.json` intended for privileged
-(root) usage.  It sets things up under `/var/cfengine` but still
-expects the checkout under `~/source/design-center`.)
+    Enter any command to cf-sketch, use 'help' for help, or 'quit' or '^D' to quit.
 
-Now if you look at this file, you'll see that it has some JSON data:
+    cf-sketch> _
 
-```json
-{
- log: "STDERR",
- log_level: 4,
- repolist: [ "~/.cfagent/inputs/sketches" ],
- recognized_sources: [ "~/source/design-center/sketches" ],
- runfile: { location: "~/.cfagent/inputs/api-runfile.cf", standalone: true, relocate_path: "sketches", filter_inputs: [] },
- vardata: "~/.cfagent/vardata.conf",
-}
-```
-
-You can change any setting you want but it's probably safer to leave
-them all at the default.
-
-The paths you see are all relative to your home directory.  The `log`
-can be set to a file.  The `log_level` can be lowered to 1 if you want
-less noise (here we'll work with it at 4).
-
-`vardata` is where the Design Center API stores all the configuration.
-
-`runfile` describes where the Design Center API will save an
-executable policy with all the sketches you have installed and
-activated.
-
-The `repolist` is where sketches will be *installed*.
-
-The `recognized_sources` is where sketches will be *found*.  It can be
-a URL such as
-`https://github.com/cfengine/design-center/blob/master/sketches/cfsketches.json`.
-
-You can save some typing by saying
-
-    export DCJ=~/.cfagent/dc-api-config.json    
-
-at the prompt.  From that point on, all command-line interaction can
-use `$DCJ` and it will expand to the filename above.
-
-From this point on, we'll refer to this command
-
-    $CHECKOUT/tools/cf-sketch/cf-dc-api.pl
-
-as `$CFAPI` for brevity.
-
-You can save some typing by saying
-
-    export CFAPI=$CHECKOUT/tools/cf-sketch/cf-dc-api.pl
-    
-at the prompt.  From that point on, all command-line interaction can
-use `$CFAPI` and it will expand to the command above.
+By default, `cf-sketch` gives you an interactive prompt where you can
+type the commands you want to execute. Try typing `help` at the prompt
+to see the descriptions of all the available commands. You can run
+commands non-interactively by passing them as arguments to the
+`cf-sketch.pl` script from the command line.
 
 ### Search for sketches
 
-Time to search for sketches!!!  This section will explain many details
-that the later sections in the walkthrough will skip for brevity.
+The first step is to find some sketches to install on your system. The
+search command will, without any parameters, give you a list of all
+the available sketches:
 
-#### Search for sketches with the Design Center API
+    cf-sketch> search
+    
+    The following sketches are available:
+    
+    Applications::Memcached Sketch for installing, configuring, and starting memcached.
+    ...
+    Yale::stdlib Yale standard library
 
-This is what all the other Design Center tools use.  You don't need to
-know this protocol or know that it's used.
+This is useful for exploration, but might be too much information. You
+can also provide a regular expression to search for a particular set
+of sketches:
 
-	echo '{ dc_api_version: "0.0.1", request: {search: true } }' | $CFAPI $DCJ
+    cf-sketch> search system
+    
+    The following sketches match your query:
+    
+    System::Logrotate Sets defaults and user permissions in the sudoers file
+    System::Routes Sets defaults and user permissions in the sudoers file
+    System::Sudoers Sets defaults and user permissions in the sudoers file
+    System::Syslog Configures syslog
+    System::access Manage access.conf values
+    System::config_resolver Configure DNS resolver
+    System::cron Manage crontab and /etc/cron.d contents
+    System::etc_hosts Manage /etc/hosts
+    System::motd Configure the Message of the Day
+    System::set_hostname Set system hostname. Domain name is also set on Mac, Red Hat and and Gentoo derived distributions (but not Debian).
+    System::sysctl Manage sysctl values
+    System::tzconfig Manage system timezone configuration
 
-If you get errors here, you may be missing Perl modules or the
-CFEngine agent.  Look at the Design Center wiki for possible solutions
-to your problem, at https://github.com/cfengine/design-center/wiki
+We can get additional information for a sketch, including details
+about its parameters, using the `info` command:
 
-Output:
+cf-sketch> info -v System::motd
 
-```
-DCAPI::log3(DCAPI.pm:173): Successfully loaded vardata file /home/tzz/.cfagent/vardata.conf
-DCAPI::log(DCAPI.pm:376): Searching location ~/source/design-center/sketches for terms true
-DCAPI::Sketch::matches(Repo.pm:118): sketch Applications::Memcached matched terms true
-...
-DCAPI::Sketch::matches(Repo.pm:118): sketch Webserver::Install matched terms true
-```
+The following sketches match your query:
 
-All of the above is debugging output.  With `log` set to a file name,
-the output will go to that file.  With `log_level` set to 1, only the
-essential errors will be shown.  Now for the actual API response:
-
-```json
-{
-  "api_ok":
-  {
-    "warnings":[],"success":true,"errors":[],"error_tags":{},
-    "data":
-    {
-        "search":
-        {
-            "/home/tzz/source/design-center/sketches":
-            {
-              "System::config_resolver":"System::config_resolver", ... ,"System::set_hostname":"System::set_hostname"
-            }
-        }
-    },
-    "log":[],"tags":{}
-  }
-}
-```
-
-The response says (with many sketch names omitted for brevity): here, these are all my sketches.
-
-Again, this is not what you would use daily.
-
-#### Search for sketches with `cf-sketch` in expert mode
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --expert --cfpath=/var/cfengine/bin --apiconfig $DCJ --search | sort
-
-Output:
-
-```
-Applications::Memcached Sketch for installing, configuring, and starting memcached.
-...
-Yale::stdlib Yale standard library
-```
-
-You piped the command above through the standard `sort` command to
-sort the results.  You can omit the `sort`.
-
-#### Search for sketches with `cf-sketch` in interactive mode
-
-Run
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --apiconfig $DCJ
-
-You'll see this prompt, or something like it:
-
-```
-Welcome to cf-sketch version 3.5.0b1.
-CFEngine AS, 2013.
-
-Enter any command to cf-sketch, use 'help' for help, or 'quit' or '^D' to quit.
-
-cf-sketch> 
-
-```
-
-Now enter the `search` command:
-
-```
-cf-sketch> search
-
-The following sketches are available:
-
-Applications::Memcached Sketch for installing, configuring, and starting memcached.
-...
-Yale::stdlib Yale standard library
-
-cf-sketch> 
-```
-
-Obviously that's easiest but you may want the expert or direct API
-interaction for specific purposes.  We'll show all three along the
-way, don't worry.
+    Sketch System::motd
+    Description: Configure the Message of the Day
+    Authors: Ben Heilman <bheilman@enova.com>
+    Version: 1.00
+    License: MIT
+    Tags: cfdc
+    Installed: No
+    Parameters:
+      For bundle entry
+        motd: string
+        motd_path: string
+        prepend_command: string
+        dynamic_path: string
+        symlink_path: string
 
 ### Install a sketch
 
-#### Install a sketch with the Design Center API
+The first step in using a sketch is to install it. Let us now install
+the `System::motd` sketch:
 
-    echo '{ dc_api_version: "0.0.1", request: {install: {sketch:"System::motd", force:true} } }' | $CFAPI $DCJ
+    cf-sketch> install System::motd
     
-The `force` parameter tells the Design Center API to overwrite the
-sketch even if it's installed already.
+    Sketch System::motd installed under /home/vagrant/.cfagent/inputs/sketches.
+    Sketch README.md installed under System::motd.
+    Sketch main.cf installed under System::motd.
+    Sketch params/debian_squeeze.json installed under System::motd.
+    Sketch params/debian_wheezy.json installed under System::motd.
+    Sketch params/example.json installed under System::motd.
+    Sketch params/simple.json installed under System::motd.
+    Sketch test.cf installed under System::motd.
 
-Output:
+You can verify that the sketch has been installed using the `list`
+command:
 
-```
-    DCAPI::log3(DCAPI.pm:173): Successfully loaded vardata file /home/tzz/.cfagent/vardata.conf
-    ...
-    DCAPI::log(DCAPI.pm:576): Installing sketch: {"source":["~/source/design-center/sketches"],"target":"~/.cfagent/inputs/sketches","sketch":"System::motd","force":true}
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/README.md to /home/tzz/.cfagent/inputs/sketches/system/motd/README.md
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/main.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/main.cf
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_squeeze.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_squeeze.json
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/debian_wheezy.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_wheezy.json
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/example.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/example.json
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/params/simple.json to /home/tzz/.cfagent/inputs/sketches/system/motd/params/simple.json
-    DCAPI::log4(Repo.pm:179): Installing sketch System::motd: copying /home/tzz/source/design-center/sketches/system/motd/test.cf to /home/tzz/.cfagent/inputs/sketches/system/motd/test.cf
-```
+    cf-sketch> list
+    
+    The following sketches are installed:
+    
+    CFEngine::dclib Design Center standard library
+    CFEngine::stdlib The portions of the CFEngine standard library (also known as COPBL) that are compatible with 3.4.0 releases
+    System::motd Configure the Message of the Day
 
-After lots of fireworks (again, remember to drop down to `log_level` 1 or 0 if you want to skip all these messages) the sketch is installed!
-
-Finally the API returns:
-
-```json
-{
-  "api_ok":
-  {
-    "warnings":[],"success":true,"errors":[],"error_tags":{},
-    "data":
-    {
-        "install":
-        {
-          "System::motd":
-          {
-            "test.cf":"/home/tzz/.cfagent/inputs/sketches/system/motd/test.cf",
-            "params/debian_squeeze.json":"/home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_squeeze.json",
-            "README.md":"/home/tzz/.cfagent/inputs/sketches/system/motd/README.md",
-            "params/example.json":"/home/tzz/.cfagent/inputs/sketches/system/motd/params/example.json",
-            "params/debian_wheezy.json":"/home/tzz/.cfagent/inputs/sketches/system/motd/params/debian_wheezy.json",
-            "main.cf":"/home/tzz/.cfagent/inputs/sketches/system/motd/main.cf",
-            "params/simple.json":"/home/tzz/.cfagent/inputs/sketches/system/motd/params/simple.json"
-          },
-          "~/.cfagent/inputs/sketches":{"System::motd":1}
-        },
-        "inventory_save":1
-    },
-    "log":[],"tags":{"System::motd":1,"installation":8}
-  }
-}
-```
-
-The above output says that `System::motd` was installed in
-`/home/tzz/.cfagent/inputs/sketches/system/motd/` (because my
-`config.json` says so), and that the sketch inventory was saved
-afterwards.
-
-#### Install a sketch with `cf-sketch` in expert mode
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --expert --cfpath=/var/cfengine/bin --install System::motd --apiconfig $DCJ
-
-Output:
-
-    Sketch System::motd is already in target repo; you must uninstall it first
-
-OK, so we need to force it...
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --expert --cfpath=/var/cfengine/bin --install System::motd --apiconfig $DCJ --force
-
-Output: nothing!  In expert mode, when everything is OK, nothing is
-printed.  Only the command return code will tell you if everything
-went well.
-
-OK, so we need to make it verbose...
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --expert --cfpath=/var/cfengine/bin --install System::motd --apiconfig $DCJ --force --verbose
-
-Output:
-
-```
-... lots of verbose output, including the API interaction, omitted ...
-OK: Got successful result: ... the API result is here, omitted for brevity
-```
-
-The `cf-sketch` expert mode is a thin layer over the API for testing
-and unattended work, so the above verbose output is not really meant
-for everyday use.
-
-#### Install a sketch with `cf-sketch` in interactive mode
-
-Run
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --apiconfig $DCJ
-
-Now enter the `uninstall System::motd` and `install System::motd`
-commands, because just installing an already-installed sketch won't do
-anything interesting:
-
-```
-cf-sketch> uninstall System::motd
-
-Deactivated System::motd.
-Sketch 'System::motd' was uninstalled.
-
-cf-sketch> install System::motd
-
-Sketch System::motd installed under /home/tzz/.cfagent/inputs/sketches.
-
-cf-sketch> 
-```
-
-Oh, and if you miss all that verbose output, you can still use
-`--verbose` with the interactive `cf-sketch` call and see all that
-wonderful output.
+Note that the `CFEngine::dclib` and `CFEngine::stdlib` were
+automatically installed as dependencies of the `System::motd` sketch.
 
 ### Activate a sketch
 
-#### Activate a sketch with the Design Center API
+Before we can activate the `System::motd` sketch, and according to the
+basic concepts described before, we need to have two elements: a
+parameter set and an environment.
 
-We are going to define a run environment, which will tell the Design
-Center API that we want an activated sketch, not in test mode, and
-with verbose output:
+First we define the parameter set that contains the values that will
+be used by the sketch:
 
-	echo '{ dc_api_version: "0.0.1", request: {define_environment: { walkthrough: { activated: true, test: false, verbose: true } } } }' | $CFAPI $DCJ
+    cf-sketch> define params System::motd
+    
+    Please enter a name for the new parameter set (default: System::motd-entry-000): motd_params
+    Querying configuration for parameter set 'motd_params' for bundle 'entry'.
+    Please enter parameter motd (Message of the Day (aka motd)).
+      (enter STOP to cancel)
+    motd : Hello there!
+    Please enter parameter motd_path (Location of the primary, often only, MotD file).
+      (enter STOP to cancel)
+    motd_path [/etc/motd]: /etc/motd
+    Please enter parameter prepend_command (Command output to prepend to MotD).
+      (enter STOP to cancel)
+    prepend_command [/bin/uname -snrvm]: /bin/uname -snrvm
+    Please enter parameter dynamic_path (Location of the dynamic part of the MotD file).
+      (enter STOP to cancel)
+    dynamic_path :
+    Please enter parameter symlink_path (Location of the symlink to the motd file).
+      (enter STOP to cancel)
+    symlink_path :
+    Defining parameter set 'motd_params' with the entered data.
+    Parameter set motd_params successfully defined.
 
-Then we will define the parameters for the `System::motd` sketch:
+We can confirm that the parameter set has been properly defined using
+the `list` command:
 
-    echo '{ dc_api_version: "0.0.1", request: {define: { "motd_params": { "System::motd": { "motd": "\\n ! System is under the control of CFEngine, local changes may by overwritten.\\n", "prepend_command": null } } } } }' | $CFAPI $DCJ
+    cf-sketch> list -v params
+    
+    The following parameter sets are defined:
+    
+    motd_params: Sketch System::motd
+      [System::motd][dynamic_path]:
+      [System::motd][motd]: Hello there!
+      [System::motd][motd_path]: /etc/motd
+      [System::motd][prepend_command]: /bin/uname -snrvm
+      [System::motd][symlink_path]:
 
-and finally, use the run environment and the parameters to activate the sketch:
+We also need to define an environment. For now we will define an
+environment that is always active:
 
-	echo '{ dc_api_version: "0.0.1", request: {activate: { "System::motd": { environment: "walkthrough", params: [ "motd_params" ] } } } }' | $CFAPI $DCJ
+    cf-sketch> define environment -n walkthrough any
+    
+    Environment 'walkthrough' successfully defined.
 
-Output (omitting log lines and reformatted):
+The `list` command can be used to verify that the environment was
+defined:
 
-    {"api_ok":{"warnings":[],"success":true,"errors":[],"error_tags":{},
-               "data":{"define_environment":{"walkthrough":1}},
-               "log":[],"tags":{"walkthrough":1}}}
+    cf-sketch> list -v env walk
+    
+    The following environments match your query:
+    
+    walkthrough
+      [activated]: any
+      [test]: !any
+      [verbose]: !any
 
-    {"api_ok":{"warnings":[],"success":true,"errors":[],"error_tags":{},
-               "data":{"define":{"motd_params":1}},
-               "log":[],"tags":{"motd_params":1}}}
+Note that the `test` and `verbose` fields are optional and default to
+`!any`, which is equivalent to "never" in CFEnfgine terms.
 
-    {"api_ok":{"warnings":[],"success":true,"errors":[],"error_tags":{},
-               "data":{"activate":{"System::motd":{"params":["motd_params"],"environment":"walkthrough"}}},
-               "log":[],"tags":{"System::motd":1}}}
+Now, finally, we can activate the sketch by tying together the sketch
+name, parameter set and environment:
 
-This tells us that the API has recorded that we want the sketch
-`System::motd` to run with the run environment `walkthrough` and the
-parameters `motd_params`.
+    cf-sketch> activate System::motd motd_params walkthrough
+    
+    Using generated activation ID 'System::motd-1'.
+    Using existing parameter definition 'motd_params'.
+    Using existing environment 'walkthrough'.
+    Activating sketch System::motd with parameters motd_params.
 
-#### Activate a sketch with `cf-sketch` in expert mode
+We can verify that the activation has been created:
 
-We'll try the `simple.json` parameters that come with `System::motd`.
-You can look at that file, it's the same as the `motd_params` above.
+    cf-sketch> list activations
+    
+    The following activations are defined:
+    
+    Activation ID System::motd-1
+      Sketch: System::motd
+      Parameter sets: [ motd_params ]
+      Environment:  'walkthrough'
 
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --expert --apiconfig $DCJ --activate System::motd=$CHECKOUT/sketches/system/motd/params/simple.json --verbose --activated
-
-Output:
-
-    ...
-    DCAPI::log(DCAPI.pm:1061): Activations for sketch System::motd are now [{"params":["motd_params"],"environment":"walkthrough"},{"params":["parameter definition from /home/tzz/source/design-center/sketches/system/motd/params/simple.json"],"environment":"cf_sketch_testing","target":"/home/tzz/.cfagent/inputs/sketches"}]
-
-This says we now have two activations!  One from the API call above
-and one we just created.  Let's undo the activations:
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --expert --apiconfig $DCJ --deactivate-all
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --expert --apiconfig $DCJ --activate System::motd=$CHECKOUT/sketches/system/motd/params/simple.json  --verbose --activated
-
-Output:
-
-    ...
-    DCAPI::log(DCAPI.pm:1403): Deactivating all activations: {"System::motd":[{"params":["motd_params"],"environment":"walkthrough"},{"params":["parameter definition from /home/tzz/source/design-center/sketches/system/motd/params/simple.json"],"environment":"cf_sketch_testing","target":"/home/tzz/.cfagent/inputs/sketches"}]}
-    ...
-    OK: Got successful result: {"success":true,"warnings":[],"errors":[],"error_tags":{},"log":[],"data":{"activate":{"System::motd":{"environment":"cf_sketch_testing","params":["parameter definition from /home/tzz/source/design-center/sketches/system/motd/params/simple.json"],"target":"/home/tzz/.cfagent/inputs/sketches"}}},"tags":{"System::motd":1}}
-
-Looks like it worked!  The `cf_sketch_testing` environment is created
-by `cf-sketch` on the fly and will include the same things as the
-`walkthrough` run environment.  The `--activated` and `--verbose`
-flags turn on the environment `activated` and `verbose` flags.
-There's also a `--test` flag, but we won't use it here.
-
-#### Activate a sketch with `cf-sketch` in interactive mode
-
-Run
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl
-
-Then:
-
-```
-cf-sketch> define params System::motd
-
-Please enter a name for the new parameter set (default: System::motd-entry-000): motd_params
-Querying configuration for parameter set 'motd_params' for bundle 'entry'.
-
-Please enter parameter motd (Message of the Day (aka motd), ).
-motd : Hello there!
-
-Please enter parameter motd_path (Location of the primary, often only, MotD file, ).
-motd_path [/etc/motd]: /etc/motd
-
-Please enter parameter prepend_command (Command output to prepend to MotD, ).
-prepend_command [/bin/uname -snrvm]: /bin/uname -snrvm
-
-Please enter parameter dynamic_path (Location of the dynamic part of the MotD file, ).
-dynamic_path : null
-
-Please enter parameter symlink_path (Location of the symlink to the motd file, ).
-symlink_path : null
-
-Defining parameter set 'motd_params' with the entered data.
-Parameter set motd_params successfully defined.
-
-cf-sketch> activate System::motd motd_params walkthrough
-Using existing parameter definition 'motd_params'.
-Using existing environment 'walkthrough'.
-Activating sketch System::motd with parameters motd_params.
-...
-DCAPI::log(DCAPI.pm:1061): Activations for sketch System::motd are now [{"params":["parameter definition from /home/tzz/source/design-center/sketches/system/motd/params/simple.json"],"environment":"cf_sketch_testing","target":"/home/tzz/.cfagent/inputs/sketches"},{"params":["motd_params"],"environment":"walkthrough","target":"/home/tzz/.cfagent/inputs/sketches","identifier":"System::motd-1"}]
-
-cf-sketch> 
-```
-
-As you can see the expert and interactive modes have completely
-different usage patterns.
+This means that when the sketches are deployed, the `System::motd`
+sketch will be executed with the values defined in the
+`motd_params` parameter set, and on the hosts that satisfy the
+conditions defined in the `walkthrough` environment (which includes
+all machines for now).
 
 ### Generate and execute the runfile
 
-#### Generate and execute the runfile with the Design Center API
+So far all the definitions of parameters, environments and activations
+are known only to the `cf-sketch` tool. We need to deploy these
+changes, which creates the appropriate CFEngine policy files for
+executing the activated sketches. We have two commands for this:
 
-Generating the runfile is easy:
+The `run` command allows us to quickly test the execution of the
+sketches on the local host. It generates a standalone runfile that
+encodes all the necessary information for the activated sketches, and
+then executes it using `cf-agent`:
 
-	echo '{ dc_api_version: "0.0.1", request: {regenerate: { } } }' | $CFAPI $DCJ
+    cf-sketch> run
+    
+    Runfile /var/cfengine/inputs/api-runfile-standalone.cf successfully generated.
+    Now executing the runfile with: /var/cfengine/bin/cf-agent  -f /var/cfengine/inputs/api-runfile-standalone.cf
 
-Output:
+The `deploy` command generates a non-standalone runfile that is meant
+to be loaded and executed from your main `promises.cf` file:
 
-    DCAPI::log(DCAPI.pm:249): Saving runfile /home/tzz/.cfagent/inputs/api-runfile.cf
-    {"api_ok":{"warnings":[],"success":true,"errors":[],"error_tags":{},"data":{},"log":[],"tags":{}}}
+    cf-sketch> deploy
+    
+    Runfile /var/cfengine/inputs/api-runfile.cf successfully generated.
 
-Note there is no user control over the location of the runfile, it's
-entirely defined in the API's `config.json` file.  This is by design.
+## More information
 
-Time to run the policy!!!  We know the name of the runfile, let's go!
-
-    cf-agent -KI -f ~/.cfagent/inputs/api-runfile.cf
-
-We are not in test mode, so we'll get errors if we run as a non-privileged user.
-
-```
-2013-06-04T20:12:04-0400     info: This agent is not bootstrapped
-2013-06-04T20:12:04-0400     info: Running full policy integrity checks
-2013-06-04T20:12:04-0400    error: Unable to open destination file '/etc/motd.cf-after-edit' for writing. (fopen: Permission denied)
-2013-06-04T20:12:04-0400    error: /cfsketch_run/methods/'___001_System_motd_entry'/cfdc_motd:entry/files/'$(main_path)': Unable to save file '/etc/motd' after editing
-2013-06-04T20:12:04-0400    error: chmod failed on '/etc/motd'. (chmod: Operation not permitted)
-2013-06-04T20:12:04-0400   notice: R: cfdc_motd:entry: System::motd license = MIT
-2013-06-04T20:12:04-0400   notice: R: cfdc_motd:entry: System::motd dependencies = CFEngine::dclib, CFEngine::stdlib
-2013-06-04T20:12:04-0400   notice: R: cfdc_motd:entry: System::motd version 1.00 by Ben Heilman <bheilman@enova.com> starting up...
-2013-06-04T20:12:04-0400   notice: R: cfdc_motd:entry: imported environment 'cf_sketch_testing' var 'activated' with value '1'
-2013-06-04T20:12:04-0400   notice: R: cfdc_motd:entry: imported environment 'cf_sketch_testing' var 'test' with value ''
-2013-06-04T20:12:04-0400   notice: R: cfdc_motd:entry: imported environment 'cf_sketch_testing' var 'verbose' with value '1'
-2013-06-04T20:12:04-0400   notice: R: cfdc_motd:entry: imported environment 'cf_sketch_testing' class 'activated' because 'default:runenv_cf_sketch_testing_activated' was defined
-2013-06-04T20:12:04-0400   notice: R: cfdc_motd:entry: imported environment 'cf_sketch_testing' class 'verbose' because 'default:runenv_cf_sketch_testing_verbose' was defined
-2013-06-04T20:12:04-0400   notice: R: cfdc_motd:entry: running in verbose mode
-```
-
-That's it!
-
-#### Generate and execute the runfile with `cf-sketch` in expert mode
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl --expert --apiconfig $DCJ --generate
-
-Output:
-
-    ...
-    DCAPI::log(DCAPI.pm:249): Saving runfile /home/tzz/.cfagent/inputs/api-runfile.cf
-
-Run the runfile!  Do it!!!
-
-    cf-agent -KI -f ~/.cfagent/inputs/api-runfile.cf
-
-The output will be the same as in the previous section.
-
-#### Generate and execute the runfile with `cf-sketch` in interactive mode
-
-Run
-
-    $CHECKOUT/tools/cf-sketch/cf-sketch.pl
-
-You'll see:
-
-```
-cf-sketch> generate
-
-...
-DCAPI::log(DCAPI.pm:249): Saving runfile /home/tzz/.cfagent/inputs/api-runfile.cf
-Runfile /home/tzz/.cfagent/inputs/api-runfile.cf successfully generated.
-```
-
-There you go.  Run it.  Do it.
-
-    cf-agent -KI -f ~/.cfagent/inputs/api-runfile.cf
-
-The output will be the same as in the previous section.
-
-<!--
-## An Easy Overview
-TODO
-
-## Concepts
-TODO
-
-## Tools
-TODO
-
-### cf-sketch: interactive
-
-### cf-sketch: expert mode
-
-### Design Center GUI (CFEngine Enterprise only)
-
-## The API
-TODO
-
-## Writing Sketches
-TODO
-
-## The Design Center Architecture
-TODO
--->
+The Design Center framework provides an API that takes care of
+managing all the backend framework, and cf-sketch offers an "expert"
+mode in addition to the interactive mode described in this
+tutorial. Once you are familiar with the basic concepts and want to
+learn more about how things work internally, you can take a look at
+the [advanced walkthrough][design-center-advanced].
