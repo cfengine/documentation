@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Design Center - an advanced walkthrough
-categories: [Manuals, Design Center]
+title: Advanced Walkthrough
+categories: [Manuals, Design Center, Advanced Walkthrough]
 published: true
+sorting: 35
 alias: manuals-design-center-advanced.html
+tags: [design center, walkthrough, cf-sketch, sketches]
 ---
-
-## Design Center - an advanced walkthrough
 
 This walkthrough will show how a Design Center sketch can be found,
 installed, configured, and executed as policy.
@@ -57,7 +57,7 @@ expects the checkout under `~/source/design-center`.)
 
 Now if you look at this file, you'll see that it has some JSON data:
 
-```json
+```
 {
  log: "STDERR",
  log_level: 4,
@@ -137,7 +137,7 @@ All of the above is debugging output.  With `log` set to a file name,
 the output will go to that file.  With `log_level` set to 1, only the
 essential errors will be shown.  Now for the actual API response:
 
-```json
+```
 {
   "api_ok":
   {
@@ -239,7 +239,7 @@ After lots of fireworks (again, remember to drop down to `log_level` 1 or 0 if y
 
 Finally the API returns:
 
-```json
+```
 {
   "api_ok":
   {

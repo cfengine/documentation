@@ -3,10 +3,10 @@ layout: default
 title: Design Center
 categories: [Manuals, Design Center]
 published: true
+sorting: 50
 alias: manuals-design-center.html
+tags: [design center, walkthrough, cf-sketch, sketches]
 ---
-
-# Design Center - an introduction and walkthrough
 
 The CFEngine Design Center is a repository of pre-made components
 called *sketches* that allow you to use the full power of CFEngine
