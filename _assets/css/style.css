@@ -12,8 +12,30 @@ body {
     padding-bottom: 4em
 }
 
-footer {
-    padding: 30px 0;
+footer .license_info {
+    margin: 30px 0;
+    background: url('../media/images/nav_bg.png') repeat-x;
+    height: 53px;
+    line-height: 53px;
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+    font-size: 0.8em
+}
+
+footer .license_info a {
+    color: #fff;
+}
+
+footer .license_info img {
+    vertical-align: middle;
+    margin-right: 20px
+}
+
+.compilation_info {
+    padding-bottom: 20px;
+    font-size: 0.9em;
+    text-align: center;
 }
 
 .wrapper {
@@ -281,7 +303,7 @@ article p {
 .gsc-above-wrapper-area,
 .gsc-table-result,
 .gsc-table-result th,
-.gsc-table-result td 
+.gsc-table-result td
 {
     border: none !important
 }
