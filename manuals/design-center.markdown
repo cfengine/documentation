@@ -183,10 +183,10 @@ of sketches:
 We can get additional information for a sketch, including details
 about its parameters, using the `info` command:
 
-cf-sketch> info -v System::motd
-
-The following sketches match your query:
-
+    cf-sketch> info -v System::motd
+    
+    The following sketches match your query:
+    
     Sketch System::motd
     Description: Configure the Message of the Day
     Authors: Ben Heilman <bheilman@enova.com>
@@ -357,12 +357,12 @@ managing all the backend framework, and cf-sketch offers an "expert"
 mode in addition to the interactive mode described in this
 tutorial. Once you are familiar with the basic concepts and want to
 learn more about how things work internally, you can take a look at
-the [advanced walkthrough][design-center-advanced].
+the [advanced walkthrough](design-center-advanced.html).
 
 You may also want to look at the
-[Design Center API reference guide][reference-design-center-api].
+[Design Center API reference guide](reference-design-center-api.html).
 
 Once you are ready to start writing Design Center sketches, you need
 to look at the
-[Sketch Structure][reference-design-center-sketch-structure]
+[Sketch Structure](reference-design-center-sketch-structure.html)
 documentation.
