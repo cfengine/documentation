@@ -1,5 +1,4 @@
 _cache/*
-_site/*
 /nbproject/private/
 /pages/*
 *.pyc
