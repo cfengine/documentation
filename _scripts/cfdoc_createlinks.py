@@ -77,7 +77,32 @@ if CFDOC_LINKFILE == None or CFDOC_DIRNAME == None:
 	print '> export CFDOC_DIRNAME'
 	print '> /path/to/this/script/cfdoc_createlinks.py'
 	exit(1)
-else:	
+else:
+	
+	try:
+		configpath = os.path.dirname(CFDOC_LINKFILE) + "/_config.yml"
+		if os.path.exists(configpath):
+			git = os.popen("git rev-list -1 --abbrev-commit HEAD")
+			while True:
+				line = git.readline().rstrip()
+				if line == '': break
+				revision = line
+			git.close()
+
+			git = os.popen("git branch --no-color")
+			while True:
+				line = git.readline().rstrip()
+				if line == '': break
+				if line.find('*') == 0:
+					branch = line.split(' ')[1].rstrip()
+
+			print "cfdoc_createlinkes: Updating " + configpath + " with " + branch + " at " + revision
+			config = open(configpath, "a")
+			config.write("git-branch: \"" + branch + "\"\n")
+			config.write("git-revision: \"" + revision + "\"\n")
+			config.close()
+	except:
+		print "cfdoc_createlinks: Exception when setting revision"
 
 	linkresolver.createLinkFile(CFDOC_DIRNAME,CFDOC_LINKFILE,"")
 	exit(0)
