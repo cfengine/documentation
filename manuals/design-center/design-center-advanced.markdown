@@ -222,6 +222,7 @@ The `force` parameter tells the Design Center API to overwrite the
 sketch even if it's installed already.
 
 Output:
+
 ```
 DCAPI::log3(DCAPI.pm:173): Successfully loaded vardata file /home/tzz/.cfagent/vardata.conf
 ...
@@ -519,27 +520,3 @@ There you go.  Run it.  Do it.
     cf-agent -KI -f ~/.cfagent/inputs/api-runfile.cf
 
 The output will be the same as in the previous section.
-
-## An Easy Overview
-TODO
-
-## Concepts
-TODO
-
-## Tools
-TODO
-
-### cf-sketch: interactive
-
-### cf-sketch: expert mode
-
-### Design Center GUI (CFEngine Enterprise only)
-
-## The API
-TODO
-
-## Writing Sketches
-TODO
-
-## The Design Center Architecture
-TODO
