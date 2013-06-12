@@ -23,8 +23,31 @@ module Jekyll
               data[k]['childrens'] = sortNavBySortingKey(arr['childrens'], true)
           end
       end
-
-      return data.sort_by { |i, v| v['sorting'] }
+      
+      
+begin
+    data.sort_by { |i, v| v['sorting'] }
+    return data
+rescue
+        puts "-----------------------------------------------"
+        puts "ERROR: INDEX PAGE FOR THE CATEGORY IS MISSING. Check the first level section and find item without 'own_url' field"
+        puts JSON.pretty_generate(data)
+        puts "-----------------------------------------------"      
+        return nil
+ensure
+    
+end      
+      
+=begin
+      if (data != nil  && !data.empty? && data.has_key?('own_url'))
+        return data.sort_by { |i, v| v['sorting'] }
+      else
+        puts "-----------------------------------------------"
+        puts "ERROR: INDEX PAGE FOR THE CATEGORY IS MISSING"
+        puts JSON.pretty_generate(data)
+        puts "-----------------------------------------------"        
+      end    
+=end
     end
 
           
@@ -44,7 +67,7 @@ module Jekyll
       published_pages.each do |p|
         if p.data['categories'] !=nil
           key = p.data['categories'].last
-          breadcrumbs[key] ||={}
+          breadcrumbs[key] ||= {}
           breadcrumbs[key]['title'] = p.data['title']
           breadcrumbs[key]['alias'] = p.data['alias']
         end
@@ -126,6 +149,7 @@ module Jekyll
 
 
  def buildLeftNavigation(navHash, parentSection='')
+   if (navHash != nil && !navHash.empty?)
        navHash.each do |k, arr|
 
         # create unique key
@@ -167,7 +191,7 @@ module Jekyll
           end
         end
        end
-
+    end
 
      def getRawPagesArray(hash)
         result = {}

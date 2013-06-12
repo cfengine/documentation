@@ -1,3 +1,4 @@
+# downloaded from here: http://www.kinnetica.com/downloads/jekyll_sitemap_generator.zip
 # Sitemap.xml Generator is a Jekyll plugin that generates a sitemap.xml file by
 # traversing all of the available posts and pages.
 #
@@ -76,14 +77,26 @@ module Jekyll
   class Page
     attr_accessor :name
 
-
-
     def full_path_to_source
       File.join(@base, @dir, @name)
     end
 
+#CFEngine_ added to create proper path, because all pages in our case stored into one folder
+
+    def CFE_location_on_server(page)
+      if (page.data['alias'] != nil)
+        pAlias = "/" + page.data['alias']
+        location = "#{MY_URL}/#{CFENGINE_MANUALS_VERSION}#{pAlias}" #fix for CFEngine path
+        location.gsub(/index.html$/, "")
+      else
+        puts "--------------------------------------------------------"
+        puts "ERROR: ALIAS FOR THE PAGE: " +  page.name + " is not set"  
+        puts "--------------------------------------------------------"
+      end    
+    end
+
     def location_on_server
-      location = "#{MY_URL}/#{CFENGINE_MANUALS_VERSION}#{url}" #fix for CFEngine path
+      location = "#{MY_URL}#{@dir}#{url}" 
       location.gsub(/index.html$/, "")
     end
   end
@@ -165,6 +178,7 @@ module Jekyll
       site.pages.each do |page|
         if !excluded?(page.name)
           path = page.full_path_to_source
+          
           if File.exists?(path)
             url = fill_url(site, page)
             urlset.add_element(url)
@@ -218,8 +232,7 @@ module Jekyll
     # Returns the location of the page or post
     def fill_location(page_or_post)
       loc = REXML::Element.new "loc"
-      loc.text = page_or_post.location_on_server
-puts loc.text
+      loc.text = page_or_post.CFE_location_on_server(page_or_post)
       loc
     end
 
