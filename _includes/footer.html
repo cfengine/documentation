@@ -6,7 +6,11 @@
            This work is licensed under a <a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
         </div>
     </div>
-<div class="compilation_info">Updated: {{site.time | date_to_long_string}}.</div>
+<div class="compilation_info">Updated: {{site.time | date_to_long_string}} 
+{{% if site.git-repository != nil %}
+from <a href="http://{{site.git-repository}}/blob/{{site.git-branch}}">[markdown source]{{% if site.git-revision != nil %} revision {{site.git-revision}}{% endif %}</a>
+{% endif %}.
+</div>
 </footer>
 {% javascript_asset_tag footer %}
 - _assets/js/google_analytics_search.js

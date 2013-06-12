@@ -3,6 +3,7 @@ safe: false
 #include: ./pages/
 plugins: ./_plugins/
 baseurl: /docs/3.5/
+git-repository: github.com/cfengine/documentation
 #source:      ./pages/
 #destination:
 #layouts:     ./_layouts/
