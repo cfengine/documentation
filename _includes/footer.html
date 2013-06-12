@@ -7,8 +7,8 @@
         </div>
     </div>
 <div class="compilation_info">Updated: {{site.time | date_to_long_string}} 
-{{% if site.git-repository != nil %}
-from <a href="http://{{site.git-repository}}/blob/{{site.git-branch}}">[markdown source]{{% if site.git-revision != nil %} revision {{site.git-revision}}{% endif %}</a>
+{% if site.git-repository != nil %}
+from <a href="http://{{site.git-repository}}{% if site.git-branch != nil %}/blob/{{site.git-branch}}{% endif %}">[markdown source]{% if site.git-revision != nil %} revision {{site.git-revision}}{% endif %}</a>
 {% endif %}.
 </div>
 </footer>
