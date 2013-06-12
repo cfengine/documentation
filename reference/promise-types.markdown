@@ -551,7 +551,7 @@ The identifier forms a partial identity for optional performance scanning of pro
 
 #### scope
 
-**Description:** Scope of the contexts set by this body.
+**Description:** Scope of the class set by this body.
 
 **Type:** (menu option)
 
@@ -575,6 +575,8 @@ The identifier forms a partial identity for optional performance scanning of pro
 ```
 
 **History:** This attribute was introduced in CFEngine 3.5
+
+**See also:** [`scope` in `classes` promises][classes#scope]
 
 #### promise_repaired
 

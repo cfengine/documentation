@@ -245,6 +245,30 @@ Knowing that something is not the case is not the same as not knowing whether
 something is the case. That a class is not set could mean either. See the note
 on [Negative Knowledge][classes and decisions].
 
+### scope
+
+**Description:** Scope of the class set by this promise.
+
+**Type:** (menu option)
+
+**Allowed input range:**
+
+```
+    namespace
+    bundle
+```
+
+**Default value:** namespace
+
+**Example:**
+
+```cf3
+    classes:
+      "bundle_context"
+          scope => "bundle";
+```
+
+**See also:** [`scope` in `body classes`][Promise Types and Attributes#scope]
 
 ### select_class
 
