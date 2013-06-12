@@ -3,7 +3,7 @@ layout: default
 title: Version Control
 categories: [Manuals, Writing Policy, Version Control]
 published: true
-sorting: 30
+sorting: 20
 alias: manuals-writing-policy-version-control.html
 tags: [manuals, writing policy, version control, git, subversion]
 ---

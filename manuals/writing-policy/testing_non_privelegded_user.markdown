@@ -3,6 +3,7 @@ layout: default
 title: Testing Policies
 categories: [Manuals, Writing Policy, Testing Policies]
 published: true
+sorting: 50
 alias: manuals-writing-policy-testing-policies.html
 tags: [manuals, systems, configuration management, automation, testing, work directory]
 ---

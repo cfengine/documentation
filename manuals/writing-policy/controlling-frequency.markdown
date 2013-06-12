@@ -3,6 +3,7 @@ layout: default
 title: Controlling Frequency
 categories: [Manuals, Writing Policy, Controlling Frequency]
 published: true
+sorting: 30
 alias: manuals-writing-policy-controlling-frequency.html
 tags: [manuals, systems, configuration management, automation, control, frequency, performance]
 ---

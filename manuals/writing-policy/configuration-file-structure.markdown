@@ -3,6 +3,7 @@ layout: default
 title: Default Configuration File Structure
 categories: [Manuals, Writing Policy, Configuration File Structure]
 published: true
+sorting: 40
 alias: manuals-writing-policy-configuration-file-structure.html
 tags: [manuals, systems, configuration management, automation, policy, failsafe, update, file system]
 ---
