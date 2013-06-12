@@ -358,3 +358,11 @@ mode in addition to the interactive mode described in this
 tutorial. Once you are familiar with the basic concepts and want to
 learn more about how things work internally, you can take a look at
 the [advanced walkthrough][design-center-advanced].
+
+You may also want to look at the
+[Design Center API reference guide][reference-design-center-api].
+
+Once you are ready to start writing Design Center sketches, you need
+to look at the
+[Sketch Structure][reference-design-center-sketch-structure]
+documentation.
