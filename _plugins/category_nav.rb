@@ -25,29 +25,18 @@ module Jekyll
       end
       
       
-begin
-    data.sort_by { |i, v| v['sorting'] }
-    return data
-rescue
-        puts "-----------------------------------------------"
-        puts "ERROR: INDEX PAGE FOR THE CATEGORY IS MISSING. Check the first level section and find item without 'own_url' field"
-        puts JSON.pretty_generate(data)
-        puts "-----------------------------------------------"      
-        return nil
-ensure
-    
-end      
-      
-=begin
-      if (data != nil  && !data.empty? && data.has_key?('own_url'))
-        return data.sort_by { |i, v| v['sorting'] }
-      else
-        puts "-----------------------------------------------"
-        puts "ERROR: INDEX PAGE FOR THE CATEGORY IS MISSING"
-        puts JSON.pretty_generate(data)
-        puts "-----------------------------------------------"        
-      end    
-=end
+      begin
+          return data.sort_by { |i, v| v['sorting'] }
+          
+          rescue
+                  puts "-----------------------------------------------"
+                  puts "ERROR: INDEX PAGE FOR THE CATEGORY IS MISSING. Check the first level section and find item without 'own_url' field"
+                  puts JSON.pretty_generate(data)
+                  puts "-----------------------------------------------"      
+                  return nil
+          ensure
+      end      
+  
     end
 
           
