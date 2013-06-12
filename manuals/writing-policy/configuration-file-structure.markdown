@@ -7,11 +7,11 @@ alias: manuals-writing-policy-configuration-file-structure.html
 tags: [manuals, systems, configuration management, automation, policy, failsafe, update, file system]
 ---
 
-
+<!---
 **TODO: include some extracts, or link to github**
 **TODO: Documentation for default policy layout/structure including 
 cf_promises_validated and update mechanism**
-
+-->
 
 The following configuration files are part of the default CFEngine 
 installation in `/var/cfengine/inputs`, and have special roles.
