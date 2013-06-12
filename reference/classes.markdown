@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Classes 
+title: Hard and Soft Classes
 categories: [Reference, Classes]
 published: true
 sorting: 40
