@@ -8,6 +8,7 @@ alias: getting-started-supported-platforms.html
 tags: [getting started, platforms, versions, support]
 ---
 
+<!--- TODO: switch for release, remove above from stable branches
 This pre-release of CFEngine Enterprise 3.5 has been rudimentarily tested and 
 released on the following platforms:
 
@@ -28,8 +29,7 @@ released on the following platforms:
 |Ubuntu        | 10.4     | x86-64, i386    |                                |
 |Solaris       | 10       | x86-64, sparc   |                                |
 
-<!--- TODO: switch for release, remove from above from stable branches
-
+-->
 
 CFEngine works on a wide range of platforms, and the CFEngine team strives to 
 provide support for the platforms most frequently used by our users. We have 
@@ -145,5 +145,3 @@ suppliers, disclaims all warranties and conditions, either express or implied,
 including, but not limited to, implied warranties of merchantability, fitness 
 for a particular purpose, title and non-infringement with regard to the 
 Licensed Software.
-
--->

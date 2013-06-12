@@ -9,9 +9,10 @@ tags: [getting started, known issues]
 ---
 
 <!--- 
-TODO: move down when no longer a pre-release -->
 
 * This is a pre-release, features are not complete and not fully tested
+
+TODO: move down when no longer a pre-release -->
 
 ### Comma in promiser/promisee declaration generates Syntax Error
 
