@@ -14,6 +14,8 @@ CFE_OUTPUT: true
 
 #CFE_DIR - output folder if CFE_OUTPUT turned on
 CFE_DIR: _site
+#to create correct links in sitemap
+CFE_manuals_version: 3.5
 
 paginate: 500
 

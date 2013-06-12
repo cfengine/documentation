@@ -58,6 +58,9 @@ module Jekyll
   CHANGE_FREQUENCY_CUSTOM_VARIABLE_NAME = "change_frequency"
   PRIORITY_CUSTOM_VARIABLE_NAME = "priority"
 
+
+  CFENGINE_MANUALS_VERSION = Jekyll.configuration({})['CFE_manuals_version'].to_s
+
   class Post
     attr_accessor :name
 
@@ -73,12 +76,14 @@ module Jekyll
   class Page
     attr_accessor :name
 
+
+
     def full_path_to_source
       File.join(@base, @dir, @name)
     end
 
     def location_on_server
-      location = "#{MY_URL}#{@dir}#{url}"
+      location = "#{MY_URL}/#{CFENGINE_MANUALS_VERSION}#{url}" #fix for CFEngine path
       location.gsub(/index.html$/, "")
     end
   end
@@ -214,7 +219,7 @@ module Jekyll
     def fill_location(page_or_post)
       loc = REXML::Element.new "loc"
       loc.text = page_or_post.location_on_server
-
+puts loc.text
       loc
     end
 
