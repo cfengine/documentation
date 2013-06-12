@@ -89,9 +89,14 @@ running the following command on a host will show whether or not it is the hub
 
     $ /var/cfengine/bin/cf-promises -v
 
-If the host is currently a hub, the am_policy_hub class should
-be set.
+If the host is currently a hub, the `am_policy_hub` class should be set.
 
+#### Community Default Policy
+
+The CFEngine package includes a default policy in 
+`/var/cfengine/share/CoreBase`. To start with the default policy, copy the 
+content of this directory into `/var/cfengine/masterfiles` on the policy 
+server.
 
 ### Enterprise Edition
 
@@ -154,6 +159,13 @@ connect to the hub IP-address through your web browser (http and port 80).
 To be able to use the [Mission Portals'][Mission Portal] Design Center 
 front-end, continue with 
 [integrating Mission Portal with git][Integrating Mission Portal with git].
+
+#### Enterprise Default Policy
+
+The CFEngine package includes a default policy in 
+`/var/cfengine/share/NovaBase`. To start with the default policy, copy the 
+content of this directory into `/var/cfengine/masterfiles` on the policy 
+server.
 
 ## Automatic Bootstrapping
 
