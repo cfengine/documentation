@@ -21,11 +21,11 @@
 # THE SOFTWARE.
 
 import os
+import cfdoc_environment as environment
+
 from os import listdir
 from os.path import isfile, join
 from string import ascii_letters, digits
-
-CFDOC_DIRNAME=os.environ.get('CFDOC_DIRNAME')
 
 def processDirectory(cur_name,cur_dir):
 	if os.path.isdir(cur_name) == True:
@@ -41,7 +41,7 @@ def addLinkToSource(file_name,cur_dir):
 	lines = in_file.readlines()
 	in_file.close()
 	
-	source_file = file_name[CFDOC_DIRNAME.__len__():]
+	source_file = file_name[environment.CFDOC_DIRNAME.__len__():]
 	html_file = ""
 	
 	for line in lines:
@@ -50,10 +50,11 @@ def addLinkToSource(file_name,cur_dir):
 			html_file = html_file[1].rstrip()
 			break
 	
-	print html_file
 	if not html_file:
 		return
 	
+	html_file = environment.CFDOC_CONFIG['CFE_DIR'] + "/" + html_file
+	print html_file
 	try:
 		out_file = open(html_file, "r")
 		lines = out_file.readlines()
