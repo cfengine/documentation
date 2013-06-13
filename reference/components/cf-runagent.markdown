@@ -7,70 +7,67 @@ alias: reference-components-cfrunagent.html
 tags: [Components, cf-runagent]
 ---
 
-Remote run agent - used to execute `cf-agent` on a remote machine. 
-`cf-runagent` does not keep any promises, but instead is used to ask another 
-machine to do so.
-
-The run agent connects to a list of running instances of the 
-[`cf-serverd`][cf-serverd] service. The agent allows 
-a user to forego the usual scheduling interval for the agent and activate 
-[`cf-agent`][cf-agent] on a remote host. 
-Additionally, a user can send additional classes to be defined on the remote 
-host. Two kinds of classes may be sent: classes to decide on which hosts the 
-agent will be started, and classes that the user requests the agent should 
-define on execution. The latter type is regulated by `cf-serverd`'s role based 
-access control.
+`cf-runagent` connects to a list of running instances of `cf-serverd`. It allows foregoing the usual `cf-execd` schedule to activate cf-agent. Additionally, a user may send classes to be defined on the remote host. Two kinds of classes may be sent: classes to decide on which hosts `cf-agent` will be started, and classes that the user requests `cf-agent` should define on execution. The latter type is regulated by `cf-serverd`'s role based access control.
 
 ## Command reference
 
-    '--help'
-       (-h) - Print the help message
-    '--background'
-       (-b value) - Parallelize connections (50 by default)
-    '--debug'
-       (-d value) - Set debugging level 0,1,2,3
-    '--verbose'
-       (-v) - Output verbose information about the behavior of the agent
-    '--dry-run'
-       (-n) - All talk and no action mode - make no changes, only
-        inform of promises not kept
-    '--version'
-       (-V) - Output the version of the software
-    '--file'
-       (-f value) - Specify an alternative input file than the default
-    '--define-class'
-       (-D value) - Define a list of comma separated classes to be
-        sent to a remote agent
-    '--select-class'
-       (-s value) - Define a list of comma separated classes to be
-        used to select remote agents by constraint
-    '--inform'
-       (-I) - Print basic information about changes made to the
-        system, i.e. promises repaired
-    '--remote-options'
-       (-o value) - Pass options `value` to the `cf-agent` on the remote 
-        server
-    '--diagnostic'
-       (-x) - Activate internal diagnostics (developers only)
-    '--hail'
-       -H value - Hail the following comma-separated lists of hosts,
-         overriding default list
-    '--interactive'
-       (-i) - Enable interactive mode for key trust
-    '--timeout'
-       (-t value) - Connection timeout, seconds
-    '--legacy-output'
-       (-l) - Use legacy output format
+    --help, -h
+        Print the help message
 
-Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
+    --background, -b
+        Parallelize connections (50 by default)
+
+    --debug, -d
+        Enable debugging output
+
+    --verbose, -v
+        Output verbose information about the behaviour of the agent
+
+    --dry-run, -n
+        All talk and no action mode - make no changes, only inform of promises not kept
+
+    --version, -V
+        Output the version of the software
+
+    --file, -f
+        Specify an alternative input file than the default
+
+    --define-class, -D
+        Define a list of comma separated classes to be sent to a remote agent
+
+    --select-class, -s
+        Define a list of comma separated classes to be used to select remote agents by constraint
+
+    --inform, -I
+        Print basic information about changes made to the system, i.e. promises repaired
+
+    --remote-options, -o
+        Pass options to a remote server process
+
+    --hail, -H
+        Hail the following comma-separated lists of hosts, overriding default list
+
+    --interactive, -i
+        Enable interactive mode for key trust
+
+    --timeout, -t
+        Connection timeout, seconds
+
+    --legacy-output, -l
+        Use legacy output format
+
+    --color, -C
+        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
+
+
 
 ## Control Promises
 
-Settings describing the details of the fixed behavioral promises made by 
-`cf-runagent`. The most important parameter here is the list of hosts that the 
-agent will poll for connections. This is easily read in from a file list, 
-however when doing so always have a stable input source that does not depend 
-on the network (including a database or directory service) in any way: 
+Settings describing the details of the fixed behavioral promises made by
+`cf-runagent`. The most important parameter here is the list of hosts that the
+agent will poll for connections. This is easily read in from a file list,
+however when doing so always have a stable input source that does not depend
+on the network (including a database or directory service) in any way:
 introducing such dependencies makes configuration brittle.
 
 ```cf3
@@ -78,7 +75,7 @@ introducing such dependencies makes configuration brittle.
      {
          # default port is 5308
          hosts => { "127.0.0.1:5308", "eternity.iu.hio.no:80", "slogans.iu.hio.no" };
-     
+
          #output_to_file => "true";
      }
 
@@ -104,7 +101,7 @@ port 5308 is assumed.
     {
     network1::
       hosts => { "host1.example.org", "host2", "host3" };
-    
+
     network2::
       hosts => { "host1.example.com", "host2", "host3" };
     }
@@ -127,12 +124,12 @@ port 5308 is assumed.
     {
     port => "5308";
     }
-    
+
     body server control
     {
     specialhost::
      port => "5308";
-    
+
     !specialhost::
      port => "5308";
     }

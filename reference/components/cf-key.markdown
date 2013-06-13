@@ -7,27 +7,39 @@ alias: reference-components-cfkey.html
 tags: [Components, cf-key]
 ---
 
-Key generation tool - run once on every host to create public/private key 
-pairs for secure communication. `cf-key` does not keep any promises.
+The CFEngine key generator makes key pairs for remote authentication.
 
 ## Command reference
 
-    '--help'
-       (-h) - Print the help message
-    '--debug'
-       (-d value) - Set debugging level 0,1,2,3
-    '--verbose'
-       (-v) - Output verbose information about the behavior of the agent
-    '--version'
-       (-V) - Output the version of the software
-    '--output-file'
-       (-f value) - Specify an alternative output file than the default 
-       (localhost.*)
-    '--show-hosts'
-       (-s) - Show lastseen hostnames and IP addresses
-    '--remove-keys'
-       (-r value) - Remove keys for specified hostname/IP from lastseen 
-       database 
-    '--install-license'
-       (-l value) - Install license without boostrapping (CFEngine Enterprise 
-       only)
+    --help, -h
+        Print the help message
+
+    --debug, -d
+        Enable debugging output
+
+    --verbose, -v
+        Output verbose information about the behaviour of the agent
+
+    --version, -V
+        Output the version of the software
+
+    --output-file, -f
+        Specify an alternative output file than the default (localhost)
+
+    --show-hosts, -s
+        Show lastseen hostnames and IP addresses
+
+    --remove-keys, -r
+        Remove keys for specified hostname/IP
+
+    --install-license, -l
+        Install license without boostrapping (CFEngine Enterprise only)
+
+    --print-digest, -p
+        Print digest of the specified public key
+
+    --trust-key, -t
+        Make cf-serverd/cf-agent trust the specified public key
+
+    --color, -C
+        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'

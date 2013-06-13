@@ -7,51 +7,59 @@ alias: reference-components-cfmonitord.html
 tags: [Components, cf-monitord]
 ---
 
-Passive monitoring agent - responsible for collecting information about the 
-status of your system, which can be reported upon or used to enforce promises 
-or influence when promises are enforced.
+`cf-monitord` is the monitoring daemon for CFEngine. It samples probes defined in policy code and attempts to learn the normal system state based on current and past observations. Current estimates are made available as special variables (e.g. $(mon.av_cpu)) to cf-agent, which may use them to inform policy decisions.
 
-`cf-monitord` keeps the promises made in `common`and `monitor` bundles, and is 
+`cf-monitord` keeps the promises made in `common`and `monitor` bundles, and is
 affected by  `common` and `monitor` control bodies.
 
 ## Command reference
 
-    '--help'
-       (-h) - Print the help message
-    '--debug'
-       (-d value) - Set debugging level 0,1,2,3
-    '--verbose'
-       (-v) - Output verbose information about the behavior of the agent
-    '--dry-run'
-       (-n) - All talk and no action mode - make no changes, only
-        inform of promises not kept
-    '--version'
-       (-V) - Output the version of the software
-    '--no-lock'
-       (-K) - Ignore system lock
-    '--file'
-       (-f value) - Specify an alternative input file than the default
-    '--inform'
-       (-I) - Print basic information about changes made to the
-        system, i.e. promises repaired
-    '--diagnostic'
-       (-x) - Activate internal diagnostics (developers only)
-    '--no-fork'
-       (-F) - Run process in foreground, not as a daemon
-    '--histograms'
-       (-H) - Store informatino about histograms / distributions
-    '--tcpdump'
-       (-T) - Interface with tcpdump if available to collect data about 
-       network
-    '--legacy-output'
-       (-l) - Use legacy output format
+    --help, -h
+        Print the help message
 
-Debug levels: 1=parsing, 2=running, 3=summary,
+    --debug, -d
+        Enable debugging output
+
+    --verbose, -v
+        Output verbose information about the behaviour of the agent
+
+    --dry-run, -n
+        All talk and no action mode - make no changes, only inform of promises not kept
+
+    --version, -V
+        Output the version of the software
+
+    --no-lock, -K
+        Ignore system lock
+
+    --file, -f
+        Specify an alternative input file than the default
+
+    --inform, -I
+        Print basic information about changes made to the system, i.e. promises repaired
+
+    --diagnostic, -x
+        Activate internal diagnostics (developers only)
+
+    --no-fork, -F
+        Run process in foreground, not as a daemon
+
+    --histograms, -H
+        Ignored for backward compatibility
+
+    --tcpdump, -T
+        Interface with tcpdump if available to collect data about network
+
+    --legacy-output, -l
+        Use legacy output format
+
+    --color, -C
+        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
 
 ## Standard measurements:
 
-The `cf-monitord` service monitors a number of variables as standard on Unix 
-and Windows systems. Windows is fundamentally different from Unix and 
+The `cf-monitord` service monitors a number of variables as standard on Unix
+and Windows systems. Windows is fundamentally different from Unix and
 currently has less support for out-of-the-box probes.
 
 1.  users: Users logged in
@@ -123,7 +131,7 @@ most users. This configurability potential, however, will be a key
 to developing the integrated monitoring capabilities of CFEngine.
 
 
-```cf3         
+```cf3
     body monitor control
     {
         #version => "1.2.3.4";
