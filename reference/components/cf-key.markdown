@@ -7,7 +7,8 @@ alias: reference-components-cfkey.html
 tags: [Components, cf-key]
 ---
 
-The CFEngine key generator makes key pairs for remote authentication.
+The CFEngine key generator makes key pairs for [remote 
+authentication][Networking].
 
 ## Command reference
 

@@ -7,7 +7,12 @@ alias: reference-components-cfhub.html
 tags: [reference, components, cf-hub, enterprise]
 ---
 
-`cf-hub` connects to `cf-serverd` instances to collect data about a host managed by CFEngine. `cf-agent` and `cf-monitord` both store data at host in local databases. `cf-hub` connects to a `cf-serverd` instance running at a host and collect the data into its own central database. `cf-hub` automatically schedules data collection from hosts that have registered a connection with a collocated `cf-serverd`
+`cf-hub` connects to [`cf-serverd`][cf-serverd] instances to collect data 
+about a host managed by CFEngine. `cf-agent` and [`cf-monitord`][cf-monitord] 
+both store data at host in local databases. `cf-hub` connects to a 
+`cf-serverd` instance running at a host and collect the data into its own 
+central database. `cf-hub` automatically schedules data collection from hosts 
+that have registered a connection with a collocated `cf-serverd`
 
 `cf-hub` keeps the promises made in `common`, and is affected by
 `common` and `hub` control bodies.
