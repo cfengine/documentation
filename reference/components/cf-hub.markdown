@@ -7,52 +7,64 @@ alias: reference-components-cfhub.html
 tags: [reference, components, cf-hub, enterprise]
 ---
 
-The data aggregator of CFEngine Enterprise.
+`cf-hub` connects to `cf-serverd` instances to collect data about a host managed by CFEngine. `cf-agent` and `cf-monitord` both store data at host in local databases. `cf-hub` connects to a `cf-serverd` instance running at a host and collect the data into its own central database. `cf-hub` automatically schedules data collection from hosts that have registered a connection with a collocated `cf-serverd`
 
 `cf-hub` keeps the promises made in `common`, and is affected by
 `common` and `hub` control bodies.
 
 ## Command reference
 
-    '--cache'
-       (-a) - Rebuild database caches used for efficient query handling (e.g. 
-       compliance graphs)
-    '--continuous'
-       (-c) - Continuous update mode of operation
-    '--debug'
-       (-d value) - Set debugging level 0,1,2,3
-    '--no-fork'
-       (-F) - Run as a foreground processes (do not fork)
-    '--file'
-       (-f value) - Specify an alternative input file than the default
-    '--help'
-       (-h) - Print the help message
-    '--index'
-       (-i) - Reindex all collections in the CFEngine report database
-    '--no-lock'
-       (-K) - Ignore locking constraints during execution 
-       (ifelapsed/expireafter) if "too soon" to run
-    '--logging'
-       (-l) - Enable logging of report collection and maintenance to hub_log 
-       in the working directory
-    '--maintain'
-       (-m) - Start database maintenance process. By default, entries older 
-       than 7 days (1 year for longterm reports) are purged.
-    '--dry-run'
-       (-n) - All talk and no action mode - make no changes, only inform of 
-       promises not kept
-    '--splay_updates'
-       (-s) - Splay/load balance full-updates, overriding bootstrap times, 
-       assuming a default 5 minute update schedule.
-    '--query'
-       (-q) - Collect reports from remote host. Value is 'full' or 'delta'.
-       -H option is required.
-    '--query-host'
-       (-H) - Remote hosts to gather reports from (for -q)
-    '--version'
-       (-V) - Output the version of the software
-    '--verbose'
-       (-v) - Output verbose information about the behavior of the agent
+    --cache, -a
+        Rebuild database caches used for efficient query handling (e.g. compliance graphs)
+
+    --continuous, -c
+        Continuous update mode of operation
+
+    --debug, -d
+        Set debugging level 0,1,2,3.
+
+    --no-fork, -F
+        Run as a foreground processes (do not fork)
+
+    --file, -f
+        Specify an alternative input file than the default
+
+    --help, -h
+        Print the help message
+
+    --index, -i
+        Reindex all collections in the CFEngine report database
+
+    --no-lock, -K
+        Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
+
+    --logging, -l
+        Enable logging of report collection and maintenance to hub_log in the working directory
+
+    --maintain, -m
+        Start database maintenance process. By default, entries older than 7 days (1 year for longterm reports) are purged.
+
+    --dry-run, -n
+        All talk and no action mode - make no changes, only inform of promises not kept
+
+    --splay_updates, -s
+        Splay/load balance full-updates, overriding bootstrap times, assuming a default 5 minute update schedule.
+
+    --query, -q
+        Collect reports from remote host. Value is 'full' or 'delta'. -H option is required.
+
+    --query-host, -H
+        Remote hosts to gather reports from (for -q)
+
+    --version, -V
+        Output the version of the software
+
+    --verbose, -v
+        Output verbose information about the behaviour of the agent
+
+    --color, -C
+        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
+
 
 ## Control Promises
 
@@ -76,7 +88,7 @@ The data aggregator of CFEngine Enterprise.
     body hub control
     {
     am_policy_hub::
-    
+
       export_zenoss => "/var/www/reports/summary.z";
     }
 
@@ -91,7 +103,7 @@ For integration with the Zenoss monitoring software.
 **Description:** A list of IP addresses of hosts to exclude from
 report collection
 
-This list of IP addresses will not be queried for reports by `cf-hub`, even 
+This list of IP addresses will not be queried for reports by `cf-hub`, even
 though they are in the last-seen database.
 
 The lists may contain network addresses in CIDR notation or regular
@@ -149,12 +161,12 @@ collation
     {
     port => "5308";
     }
-    
+
     body server control
     {
     specialhost::
      port => "5308";
-    
+
     !specialhost::
      port => "5308";
     }
@@ -162,10 +174,9 @@ collation
 
 **Notes:**
 
-The standard or registered port number is tcp/5308. CFEngine does not 
-presently use its registered udp port with the same number, but this could 
+The standard or registered port number is tcp/5308. CFEngine does not
+presently use its registered udp port with the same number, but this could
 change in the future.
 
-Changing the standard port number is not recommended practice. You should not 
+Changing the standard port number is not recommended practice. You should not
 do it without a good reason.
-

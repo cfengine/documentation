@@ -7,62 +7,64 @@ alias: reference-components-cfexecd.html
 tags: [Components, cf-execd]
 ---
 
-Scheduler - responsible for running `cf-agent` on a regular (and 
-user-configurable) basis. It collects the output of the agent and can email it 
-to a specified address. It can splay the start time of executions across
-the network and work as a class-based clock for scheduling.
+`cf-execd` is the scheduling daemon for cf-agent. It runs cf-agent locally according to a schedule specified in policy code (executor control body). After a cf-agent run is completed, cf-execd gathers output from cf-agent, and may be configured to email the output to a specified address. It may also be configured to splay (randomize) the execution schedule to prevent synchronized cf-agent runs across a network.
 
 `cf-execd` keeps the promises made in `common` bundles, and is affected by
 `common` and `executor` control bodies.
 
 ## Command reference
 
-    '--help'
-       (-h) - Print the help message
-    '--debug'
-       (-d value) - Set debugging level 0,1,2,3
-    '--verbose'
-       (-v) - Output verbose information about the behavior of the
-        agent
-    '--dry-run'
-       (-n) - All talk and no action mode - make no changes, only
-        inform of promises not kept
-    '--version'
-       (-V) - Output the version of the software
-    '--file'
-       (-f value) - Specify an alternative input file than the default
-    '--define'
-       (-D value) - Define a list of comma separated classes to be
-        defined at the start of execution
-    '--negate'
-       (-N value) - Define a list of comma separated classes to be
-        undefined at the start of execution
-    '--no-lock'
-       (-K) - Ignore locking constraints during execution
-        (ifelapsed/expireafter) if "too soon" to run
-    '--inform'
-       (-I) - Print basic information about changes made to the
-        system, i.e. promises repaired
-    '--diagnostic'
-       (-x) - Activate internal diagnostics (developers only)
-    '--no-fork'
-       (-F) - Run as a foreground processes (do not fork)
-    '--once'
-       (-O) - Run once and then exit
-    '--no-winsrv'
-       (-W) - Do not run as a service on windows - use this when
-        running from a command shell (CFEngine Enterprise only)
-    '--ld-library-path'
-       (-L value) - Set the internal value of LD\_LIBRARY\_PATH for
-        child processes
-    '--legacy-output'
-       (-l) - Use legacy output format
+    --help, -h
+        Print the help message
 
-Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
+    --debug, -d
+        Enable debugging output
+
+    --verbose, -v
+        Output verbose information about the behaviour of the agent
+
+    --dry-run, -n
+        All talk and no action mode - make no changes, only inform of promises not kept
+
+    --version, -V
+        Output the version of the software
+
+    --file, -f
+        Specify an alternative input file than the default
+
+    --define, -D
+        Define a list of comma separated classes to be defined at the start of execution
+
+    --negate, -N
+        Define a list of comma separated classes to be undefined at the start of execution
+
+    --no-lock, -K
+        Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
+
+    --inform, -I
+        Print basic information about changes made to the system, i.e. promises repaired
+
+    --no-fork, -F
+        Run as a foreground processes (do not fork)
+
+    --once, -O
+        Run once and then exit (implies no-fork)
+
+    --no-winsrv, -W
+        Do not run as a service on windows - use this when running from a command shell (CFEngine Nova only)
+
+    --ld-library-path, -L
+        Set the internal value of LD_LIBRARY_PATH for child processes
+
+    --legacy-output, -l
+        Use legacy output format
+
+    --color, -C
+        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
 
 ## Control Promises
 
-These body settings determine the behavior of `cf-execd`,including scheduling 
+These body settings determine the behavior of `cf-execd`,including scheduling
 times and output capture to `WORKDIR/outputs` and relay via email.
 
 ```cf3
@@ -107,7 +109,7 @@ this threshold. This will reset the timer.
     }
 ```
 
-**Notes:**  
+**Notes:**
 The setting will effectively allow you to set a threshold on the
 number of simultaneous agents that are running. For example, if you
 set it to `120` and you are using a 5-minute agent schedule, a
@@ -182,9 +184,9 @@ symbols may be used if desired.
 
 **Description:** Maximum number of lines of output to send by email
 
-This limit prevents anomalously large outputs from clogging up a system 
-administrator's mailbox. The output is truncated in the email report, but the 
-complete original transcript is stored in `WORKDIR/outputs/*` where it can be 
+This limit prevents anomalously large outputs from clogging up a system
+administrator's mailbox. The output is truncated in the email report, but the
+complete original transcript is stored in `WORKDIR/outputs/*` where it can be
 viewed on demand. A reference to the appropriate file is given.
 
 **Type:** `int`
@@ -260,8 +262,8 @@ function may be affected by changing the `schedule`.
 **Description:** Name or IP of a willing smtp server for sending
 email
 
-This should point to a standard port 25 server without encryption. If you are 
-running secured or encrypted email then you should run a mail relay on 
+This should point to a standard port 25 server without encryption. If you are
+running secured or encrypted email then you should run a mail relay on
 localhost and point this to localhost.
 
 **Type:** `string`
@@ -312,5 +314,5 @@ The CFEngine default policy sets `splaytime` to 1.
   }
 ```
 
-**See also:** The [`splayclass()`][splayclass] function for a task-specific 
+**See also:** The [`splayclass()`][splayclass] function for a task-specific
 means for setting splay times.

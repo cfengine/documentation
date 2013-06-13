@@ -7,55 +7,60 @@ alias: reference-components-cfserver.html
 tags: [Components, cf-serverd]
 ---
 
-Server - used to distribute policy and/or data files to clients requesting 
-them and used to respond to requests from `cf-runagent`.
+`cf-serverd` is a socket listening daemon providing two services: it acts as a file server for remote file copying and it allows an authorized `cf-runagent` to start a `cf-agent` run. `cf-agent` typically connects to a `cf-serverd` instance to request updated policy code, but may also request additional files for download. `cf-serverd`  employs role based access control (defined in policy code) to authorize requests.
 
-`cf-serverd` keeps the promises made in `common` and `server` bundles, and is  
+`cf-serverd` keeps the promises made in `common` and `server` bundles, and is
 affected by `common` and `server` control bodies.
 
 ## Command reference
 
-    '--help'
-       (-h) - Print the help message
-    '--debug'
-       (-d value) - Set debugging level 0,1,2,3
-    '--verbose'
-       (-v) - Output verbose information about the behavior of the
-        agent
-    '--version'
-       (-V) - Output the version of the software
-    '--file'
-       (-f value) - Specify an alternative input file than the default
-    '--define'
-       (-D value) - Define a list of comma separated classes to be
-        defined at the start of execution
-    '--negate'
-       (-N value) - Define a list of comma separated classes to be
-        undefined at the start of execution
-    '--no-lock'
-       (-K) - Ignore locking constraints during execution
-        (ifelapsed/expireafter) if "too soon" to run
-    '--inform'
-       (-I) - Print basic information about changes made to the
-        system, i.e. promises repaired
-    '--diagnostic'
-       (-x) - Activate internal diagnostics (developers only)
-    '--no-fork'
-       (-F) - Run as a foreground processes (do not fork)
-    '--ld-library-path'
-       (-L value) - Set the internal value of LD\_LIBRARY\_PATH for
-        child processes
-    '--legacy-output'
-       (-l) - Use legacy output format
+    --help, -h
+        Print the help message
 
-Debug levels: 1=parsing, 2=running, 3=summary, 4=expression eval
+    --debug, -d
+        Enable debugging output
 
+    --verbose, -v
+        Output verbose information about the behaviour of the agent
+
+    --version, -V
+        Output the version of the software
+
+    --file, -f
+        Specify an alternative input file than the default
+
+    --define, -D
+        Define a list of comma separated classes to be defined at the start of execution
+
+    --negate, -N
+        Define a list of comma separated classes to be undefined at the start of execution
+
+    --no-lock, -K
+        Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
+
+    --inform, -I
+        Print basic information about changes made to the system, i.e. promises repaired
+
+    --no-fork, -F
+        Run as a foreground processes (do not fork)
+
+    --ld-library-path, -L
+        Set the internal value of LD_LIBRARY_PATH for child processes
+
+    --generate-avahi-conf, -A
+        Generates avahi configuration file to enable policy server to be discovered in the network
+
+    --legacy-output, -l
+        Use legacy output format
+
+    --color, -C
+        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
 
 ## Control Promises
 
-Settings describing the details of the fixed behavioral promises made by 
-`cf-serverd`. Server controls are mainly about determining access policy for 
-the connection protocol: i.e. access to the server itself. Access to specific 
+Settings describing the details of the fixed behavioral promises made by
+`cf-serverd`. Server controls are mainly about determining access policy for
+the connection protocol: i.e. access to the server itself. Access to specific
 files must be granted in addition.
 
 ```cf3
@@ -95,12 +100,12 @@ will potentially match more than one hostname (e.g.,
 **Examples**:
 
 ```cf3
-    allowallconnects      => { 
-         "127.0.0.1", 
-         "::1", 
-         "200\.1\.10\..*", 
-         "host\.domain\.tld", 
-         "host[0-9]+\.domain\.com" 
+    allowallconnects      => {
+         "127.0.0.1",
+         "::1",
+         "200\.1\.10\..*",
+         "host\.domain\.tld",
+         "host[0-9]+\.domain\.com"
          };
 ```
 
@@ -113,7 +118,7 @@ If a client's identity matches an entry in this list it is granted
 to permission to send data to the server port. Clients who are not
 in this list may not connect or send data to the server.
 
-See also the warning about regular expressions in 
+See also the warning about regular expressions in
 [`allowallconnects`][cf-serverd#allowallconnects].
 
 **Type:** `slist`
@@ -123,12 +128,12 @@ See also the warning about regular expressions in
 **Examples**:
 
 ```cf3
-    allowconnects => { 
-         "127.0.0.1", 
-         "::1", 
-         "200\.1\.10\..*", 
-         "host\.domain\.tld", 
-         "host[0-9]+\.domain\.com" 
+    allowconnects => {
+         "127.0.0.1",
+         "::1",
+         "200\.1\.10\..*",
+         "host\.domain\.tld",
+         "host[0-9]+\.domain\.com"
          };
 ```
 
@@ -153,7 +158,7 @@ correspond to system identities on the server-side system.
 
 ### auditing
 
-**Deprecated:** This menu option policy is deprecated, does 
+**Deprecated:** This menu option policy is deprecated, does
 nothing and is kept for backward compatibility.
 
 **Type:** [`boolean`][boolean]
@@ -190,7 +195,7 @@ shell command at your own risk.
 
 
 ```cf3
-    body server control    
+    body server control
     {
     cfruncommand => "/var/cfengine/bin/cf-agent";
     }
@@ -258,36 +263,36 @@ The full configuration would look something like this
         #########################################################
         # Server config
         #########################################################
-        
-        body server control 
+
+        body server control
         {
         allowconnects         => { "10.10.10" , "::1" };
         allowallconnects      => { "10.10.10" , "::1" };
         trustkeysfrom         => { "10.10.10" , "::1" };
-        
+
         call_collect_interval => "5";
         }
-        
+
         #########################################################
-        
+
         bundle server access_rules()
-        
+
         {
         access:
-        
+
           policy_hub::
-        
+
            "collect_calls"
                resource_type => "query",
                      admit   => { "10.10.10" }; # the apparent NAT address of the satellite
-        
+
           satellite_hosts::
-         
+
             "delta"
                      comment => "Grant access to cfengine hub to collect report deltas",
                resource_type => "query",
                      admit   => { "policy_hub" };
-        
+
             "full"
                     comment => "Grant access to cfengine hub to collect full report dump",
               resource_type => "query",
@@ -353,7 +358,7 @@ anything, this list is unnecessary unless you have already granted
 access to some set of hosts using a generic pattern, to which you
 intend to make an exception.
 
-See also the warning about regular expressions in 
+See also the warning about regular expressions in
 [`allowallconnects`][cf-serverd#allowallconnects].
 
 **Type:** `slist`
@@ -497,15 +502,15 @@ descriptors which can limit this.
 **Example:**
 
 ```cf3
-    # client side 
-    
+    # client side
+
     body agent control
     {
     maxconnections => "1000";
     }
-    
+
     # server side
-    
+
     body server control
     {
     maxconnections => "1000";
@@ -529,12 +534,12 @@ descriptors which can limit this.
     {
     port => "5308";
     }
-    
+
     body server control
     {
     specialhost::
      port => "5308";
-    
+
     !specialhost::
      port => "5308";
     }
@@ -589,7 +594,7 @@ binding and cannot verify
 Server side decision to ignore requirements of DNS identity
 confirmation.
 
-See also the warning about regular expressions in 
+See also the warning about regular expressions in
 [`allowallconnects`][cf-serverd#allowallconnects].
 
 **Type:** `slist`
@@ -609,11 +614,11 @@ See also the warning about regular expressions in
 
 **Description:** List of IPs from whom we accept public keys on trust
 
-If connecting hosts' public keys have not already been trusted, this allows us 
-to accept the keys on trust. Normally this should be an empty list except in 
+If connecting hosts' public keys have not already been trusted, this allows us
+to accept the keys on trust. Normally this should be an empty list except in
 controlled circumstances.
 
-See also the warning about regular expressions in 
+See also the warning about regular expressions in
 [`allowallconnects`][cf-serverd#allowallconnects].
 
 **Type:** `slist`
@@ -650,14 +655,13 @@ not be affected. Changing this setting requires a restart of
 ```cf3
     body server control
     {
-     
+
       listening_host_context::
         listen => "true";
-    
+
       !listening_host_context::
         listen => "false";
     }
 ```
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0 (2012)
-
