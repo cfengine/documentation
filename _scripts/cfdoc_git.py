@@ -22,40 +22,47 @@
 
 import os
 
-REVISION = ""
-BRANCH = "master"
+def createData(config):
+	configpath = config["config_path"]
+	if not os.path.exists(configpath):
+		print "cfdoc_git: \"_config.yml\" not found in " + configpath
+		return
 
-def createData(docdir, linkfile):
 	cwd = os.getcwd()
-
+	os.chdir(config["markdown_directory"])
 	try:
-		os.chdir(docdir)
-		configpath = os.path.dirname(linkfile) + "/_config.yml"
-		if os.path.exists(configpath):
-			git = os.popen("git rev-list -1 HEAD")
-			while True:
-				line = git.readline().rstrip()
-				if line == '': break
-				REVISION = line
-			git.close()
-
-			git = os.popen("git branch --no-color")
-			while True:
-				line = git.readline().rstrip()
-				if line == '': break
-				if line.find('*') == 0 and line.find('(') == -1:
-					BRANCH = line.split(' ')[1].rstrip()
-
-			print "cfdoc_git: Updating " + configpath + " with " + BRANCH + " at " + REVISION
-			config = open(configpath, "a")
-			if BRANCH != '':
-				config.write("git-branch: \"" + BRANCH + "\"\n")
-			if REVISION != '':
-				config.write("git-revision: \"" + REVISION + "\"\n")
-			config.close()
+		git = os.popen("git rev-list -1 HEAD")
+		while True:
+			line = git.readline().rstrip()
+			if line == '': break
+			config["revision"] = line
+		git.close()
 	except:
-		print "cfdoc_git: Exception when setting revision"
+		print "cfdoc_git: Exception when reading revision"
 		print "cfdoc_git: cwd = " + os.getcwd()
+	
+	try:
+		git = os.popen("git branch --no-color")
+		while True:
+			line = git.readline().rstrip()
+			if line == '': break
+			if line.find('*') == 0 and line.find('(') == -1:
+				config["branch"] = line.split(' ')[1].rstrip()
+	except:
+		print "cfdoc_git: Exception when reading current branch"
+
+	print "cfdoc_git: Updating " + configpath
+	print "           branch   = \'" + config["branch"] + "\'"
+	print "           revision = \'" + config["revision"] + "\'"
+	try:
+		config_file = open(configpath, "a")
+		if config["branch"] != '':
+			config_file.write("git-branch: \"" + config["branch"] + "\"\n")
+		if config["revision"] != '':
+			config_file.write("git-revision: \"" + config["revision"] + "\"\n")
+		config_file.close()
+	except:
+		print "cfdoc_git: Exception when updating " + configpath
 
 	os.chdir(cwd)
 

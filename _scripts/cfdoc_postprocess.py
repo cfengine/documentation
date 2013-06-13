@@ -25,10 +25,7 @@
 import cfdoc_environment as environment
 import cfdoc_sourcelinks as sourcelinks
 
-if environment.validate():
-	print environment.CFDOC_LINKFILE
-	print environment.CFDOC_DIRNAME
-	
-	sourcelinks.processDirectory(environment.CFDOC_DIRNAME, "")
+config = environment.validate()
+sourcelinks.run(config)
 
-	exit(0)
+exit(0)

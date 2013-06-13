@@ -22,13 +22,12 @@
 
 import os
 
-CFDOC_LINKFILE = os.environ.get('CFDOC_LINKFILE')
-CFDOC_DIRNAME = os.environ.get('CFDOC_DIRNAME')
-CFDOC_PROJECTDIR = ""
-CFDOC_CONFIG = {}
-
 def validate():
-	if CFDOC_LINKFILE == None or CFDOC_DIRNAME == None:
+	config = {}
+	config["reference_path"] = os.environ.get('CFDOC_LINKFILE')
+	config["markdown_directory"] = os.environ.get('CFDOC_DIRNAME')
+
+	if config["reference_path"] == None or config["markdown_directory"] == None:
 	
 		print 'Please set environment variables and retry. Example:'
 		print '> CFDOC_LINKFILE="/path/to/link/file"'
@@ -37,9 +36,10 @@ def validate():
 		print '> export CFDOC_DIRNAME'
 		print '> /path/to/this/script/cfdoc_createlinks.py'
 		exit(1)
-
-	CFDOC_PROJECTDIR = os.path.dirname(CFDOC_LINKFILE)
-	with open(CFDOC_PROJECTDIR + "/_config.yml", 'r') as config_file:
+	
+	config["project_directory"] = os.path.dirname(config["reference_path"])
+	config["config_path"] = config["project_directory"] + "/_config.yml"
+	with open(config["config_path"], 'r') as config_file:
 		lines = config_file.readlines()
 		for line in lines:
 			comment = line.find('#')
@@ -53,11 +53,10 @@ def validate():
 			key = assign[0].lstrip().rstrip()
 			value = assign[1].lstrip().rstrip()
 			
-			CFDOC_CONFIG[key] = value
+			config[key] = value
 	
 	print 'cfdoc_environment: cwd              = ' + os.getcwd()
-	print '                   CFDOC_PROJECTDIR = ' + CFDOC_PROJECTDIR
-	print '                   CFDOC_DIRNAME    = ' + CFDOC_DIRNAME
-	print '                   CFE_DIR          = ' + CFDOC_CONFIG['CFE_DIR']
+	print '                   config           = '
+	print config
 		
-	return True
+	return config

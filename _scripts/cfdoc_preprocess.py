@@ -26,10 +26,7 @@ import cfdoc_environment as environment
 import cfdoc_linkresolver as linkresolver
 import cfdoc_git as git
 
-if environment.validate():
-	print environment.CFDOC_LINKFILE
-	print environment.CFDOC_DIRNAME
-
-	git.createData(environment.CFDOC_DIRNAME, environment.CFDOC_LINKFILE)
-	linkresolver.processDirectory(environment.CFDOC_DIRNAME,environment.CFDOC_LINKFILE,"")
-	exit(0)
+config = environment.validate()
+git.createData(config)
+linkresolver.processDirectory(config["markdown_directory"],config["reference_path"],"")
+exit(0)

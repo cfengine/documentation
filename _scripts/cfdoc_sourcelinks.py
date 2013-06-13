@@ -21,27 +21,28 @@
 # THE SOFTWARE.
 
 import os
-import cfdoc_environment as environment
 
 from os import listdir
 from os.path import isfile, join
 from string import ascii_letters, digits
 
-def processDirectory(cur_name,cur_dir):
+def run(config):
+	processDirectory(config["markdown_directory"], "", config)
+
+def processDirectory(cur_name,cur_dir, config):
 	if os.path.isdir(cur_name) == True:
 		markdownfiles = os.listdir(cur_name)
 		for file_name in markdownfiles:
 			if os.path.isdir(cur_name+"/"+file_name) == True:
-				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name)
+				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, config)
 			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
-				addLinkToSource(cur_name+"/"+file_name,cur_dir)
+				addLinkToSource(cur_name+"/"+file_name,config)
 
-def addLinkToSource(file_name,cur_dir):
+def addLinkToSource(file_name,config):
 	in_file = open(file_name,"r")
 	lines = in_file.readlines()
 	in_file.close()
-	
-	source_file = file_name[environment.CFDOC_DIRNAME.__len__():]
+	source_file = file_name[config["markdown_directory"].__len__():]
 	html_file = ""
 	
 	for line in lines:
@@ -53,8 +54,7 @@ def addLinkToSource(file_name,cur_dir):
 	if not html_file:
 		return
 	
-	html_file = environment.CFDOC_CONFIG['CFE_DIR'] + "/" + html_file
-	print html_file
+	html_file = config['CFE_DIR'] + "/" + html_file
 	try:
 		out_file = open(html_file, "r")
 		lines = out_file.readlines()
