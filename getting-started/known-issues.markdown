@@ -14,6 +14,13 @@ tags: [getting started, known issues]
 
 TODO: move down when no longer a pre-release -->
 
+CFEngine defects are managed in our [bug tracker][bug tracker]. Please report
+bugs or unexpected behavior there, following the documented guideline for new
+bug reports.
+
+The items below highlight issues that require additional awareness when starting
+with CFEngine or when upgrading from a previous version.
+
 ### Comma in promiser/promisee declaration generates Syntax Error
 
 The policy file parser is stricter in CFEngine 3.5.0 . The parser is now fully 
