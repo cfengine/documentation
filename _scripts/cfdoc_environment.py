@@ -24,6 +24,8 @@ import os
 
 CFDOC_LINKFILE = os.environ.get('CFDOC_LINKFILE')
 CFDOC_DIRNAME = os.environ.get('CFDOC_DIRNAME')
+CFDOC_PROJECTDIR = ""
+CFDOC_CONFIG = {}
 
 def validate():
 	if CFDOC_LINKFILE == None or CFDOC_DIRNAME == None:
@@ -35,4 +37,27 @@ def validate():
 		print '> export CFDOC_DIRNAME'
 		print '> /path/to/this/script/cfdoc_createlinks.py'
 		exit(1)
+
+	CFDOC_PROJECTDIR = os.path.dirname(CFDOC_LINKFILE)
+	with open(CFDOC_PROJECTDIR + "/_config.yml", 'r') as config_file:
+		lines = config_file.readlines()
+		for line in lines:
+			comment = line.find('#')
+			if comment != -1:
+				line = line[:comment]
+			assign = line.split(':')
+			if assign.__len__() != 2:
+				continue
+			if assign[1] == '' or assign[1] == '\n':
+				continue
+			key = assign[0].lstrip().rstrip()
+			value = assign[1].lstrip().rstrip()
+			
+			CFDOC_CONFIG[key] = value
+	
+	print 'cfdoc_environment: cwd              = ' + os.getcwd()
+	print '                   CFDOC_PROJECTDIR = ' + CFDOC_PROJECTDIR
+	print '                   CFDOC_DIRNAME    = ' + CFDOC_DIRNAME
+	print '                   CFE_DIR          = ' + CFDOC_CONFIG['CFE_DIR']
+		
 	return True
