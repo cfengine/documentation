@@ -25,12 +25,12 @@ from os import listdir
 from os.path import isfile, join
 from string import ascii_letters, digits
 
-def createLinkFile(cur_name,output_file,cur_dir):
+def processDirectory(cur_name,output_file,cur_dir):
 	if os.path.isdir(cur_name) == True:
 		markdownfiles = os.listdir(cur_name)	
 		for file_name in markdownfiles:
 			if os.path.isdir(cur_name+"/"+file_name) == True:
-				createLinkFile(cur_name+"/"+file_name,output_file,cur_dir+"/"+file_name)
+				processDirectory(cur_name+"/"+file_name,output_file,cur_dir+"/"+file_name)
 			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
 				addToLinkFile(cur_name+"/"+file_name,output_file,cur_dir)
 

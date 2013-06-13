@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 # The MIT License (MIT)
 #
 # Copyright (c) 2013 CFEngine AS
@@ -56,25 +54,15 @@ def addLinkToSource(file_name,cur_dir):
 	if not html_file:
 		return
 	
-	out_file = open(html_file, "r")
-	lines = out_file.readlines()
-	out_file.close()
+	try:
+		out_file = open(html_file, "r")
+		lines = out_file.readlines()
+		out_file.close()
 	
-	out_file = open(html_file, "w")
-	for line in lines:
-		line = line.replace("\">markdown source</a>]", source_file + "\">markdown source</a>]")
-		out_file.write(line)
-	out_file.close()
-
-
-if CFDOC_DIRNAME == None:
-	
-	print 'Please set environment variables and retry. Example:'
-	print '> export CFDOC_DIRNAME="/path/to/doc/dir"'
-	print '> /path/to/this/script/cfdoc_sourcelinks.py'
-	exit(1)
-else:
-	
-	processDirectory(CFDOC_DIRNAME,"")
-	exit(0)
-
+		out_file = open(html_file, "w")
+		for line in lines:
+			line = line.replace("\">markdown source</a>]", source_file + "\">markdown source</a>]")
+			out_file.write(line)
+		out_file.close()
+	except:
+		print "cfdoc_sourcelinks: Error processing " + html_file
