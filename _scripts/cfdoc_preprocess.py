@@ -27,6 +27,15 @@ import cfdoc_linkresolver as linkresolver
 import cfdoc_git as git
 
 config = environment.validate()
-git.createData(config)
-linkresolver.processDirectory(config["markdown_directory"],config["reference_path"],"")
+try:
+	git.createData(config)
+except:
+	print "cfdoc_preprocess: Fatal error generating git tags"
+	exit(1)
+
+try:
+	linkresolver.processDirectory(config["markdown_directory"],config["reference_path"],"")
+except:
+	print "cfdoc_preprocess: Fatal error generating link map"
+	exit(2)
 exit(0)
