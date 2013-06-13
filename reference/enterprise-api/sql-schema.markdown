@@ -228,7 +228,7 @@ Diagnostics of the MongoDB database. For detailed documentation, see the
 
 ### DatabaseServerStatus
 
-| ReportRoundTimeStamp | Host  | Version | Uptime | GlobalLockTotalTime | GlobalLockTime | GlobalLockQuereTotal| GlobalLockQuereReaders| GlobalLockQuereWriters| MemoryResident| MemoryVirtual| MemoryMapped| BackgroundFlushCount| BackgroundFlushTotalTime| BackgroundFlushAverageTime| BackgroundFlushLastTime|
+| ReportRoundTimeStamp | Host  | Version | Uptime | GlobalLockTotalTime | GlobalLockTime | GlobalLockQueueTotal| GlobalLockQueueReaders| GlobalLockQueueWriters| MemoryResident| MemoryVirtual| MemoryMapped| BackgroundFlushCount| BackgroundFlushTotalTime| BackgroundFlushAverageTime| BackgroundFlushLastTime|
 |----------------------|-------|---------|--------|---------------------|----------------|---------------------|-----------------------|-----------------------|---------------|--------------|-------------|---------------------|-------------------------|---------------------------|------------------------|
 | 1359378564 | ubuntu | 2.2.2 | 1590.0 | 0.0 | 0.0 | 0 | 0 | 0 | 84 | 358 | 240 | 26 | 1287 | 0 | 0 |
 | 1359378624 | ubuntu | 2.2.2 | 1650.0 | 0.0 | 0.0 | 0 | 0 | 0 | 86 | 358 | 240 | 27 | 1333 | 0 | 46 |
