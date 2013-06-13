@@ -3,3 +3,5 @@ _site/*
 /nbproject/private/
 /pages/*
 *.pyc
+.DS_Store
+
