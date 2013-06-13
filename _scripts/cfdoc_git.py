@@ -41,16 +41,18 @@ def createData(config):
 		print "cfdoc_git: Exception when reading revision"
 		print "cfdoc_git: cwd = " + os.getcwd()
 	
+	branch = "master"
 	try:
 		git = os.popen("git branch --no-color")
 		while True:
 			line = git.readline().rstrip()
 			if line == '': break
 			if line.find('*') == 0 and line.find('(') == -1:
-				config["branch"] = line.split(' ')[1].rstrip()
+				branch = line.split(' ')[1].rstrip()
 	except:
 		print "cfdoc_git: Exception when reading current branch"
 
+	config["branch"] = branch
 	print "cfdoc_git: Updating " + configpath
 	print "           branch   = \'" + config["branch"] + "\'"
 	print "           revision = \'" + config["revision"] + "\'"
