@@ -283,7 +283,7 @@ localhost and point this to localhost.
   {
       smtpserver => "smtp.example.org";
   }
-```cf3
+```
 
 ### splaytime
 
