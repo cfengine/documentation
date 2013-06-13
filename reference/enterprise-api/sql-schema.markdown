@@ -264,19 +264,19 @@ Performance is measured in time the operation took, in millisecond. Data sizes a
 
 ### HubReportingPerformance
 
-| ReportRoundTimeStamp | ReportsCollected | TotalCollectionPerformance | AverageCollectionPerformanceByHost | LowestCollectionPerformanceByHost | LowestCollectionPerformanceHostKey | AverageDataSizeByHost | LargestDataSizeByHost | LargestDataSizeHostKey | SampleAnalyzePerformance |
-|----------------------|------------------|----------------------------|------------------------------------|-----------------------------------|------------------------------------|-----------------------|-----------------------|------------------------|--------------------------|
-| 1361959894 | 1 | 3685 | 456 | 456 | 12377 | 359 | 359 | 12377 | 1 |
-| 1361959894 |0 | 2085 | 0 | 0 | none | 0 | 0 | none | 1 |
+| ReportRoundTimeStamp | ReportsCollected | TotalCollectionPerformance | AverageCollectionPerformanceByHost | LowestCollectionPerformanceByHost | LowestCollectionPerformanceHostKey | AverageDataSizeByHost | LargestDataSizeByHost | LargestDataSizeHostKey | SampleAnalyzePerformance | ReportType |
+|----------------------|------------------|----------------------------|------------------------------------|-----------------------------------|------------------------------------|-----------------------|-----------------------|------------------------|--------------------------|------------|
+| 1361959894 | 1 | 3685 | 456 | 456 | 12377 | 359 | 359 | 12377 | 1 | delta |
+| 1361959894 |0 | 2085 | 0 | 0 | none | 0 | 0 | none | 1 | full |
 
 ### HubConnectionErrors
 
-| ReportRoundTimeStamp | HostKey | Status |
-|----------------------|---------|--------|
-| 1361969437 | 12377 | ServerNoReply |
-| 1361969737 | 12377	| ServerAuthenticationError |
-| 1361969137 | 12377	| InvalidData |
-| 1361959894 | 12377	| Unknown |
+| ReportRoundTimeStamp | HostKey | Status | ReportType |
+|----------------------|---------|--------|------------|
+| 1361969437 | 12377 | ServerNoReply | delta |
+| 1361969737 | 12377	| ServerAuthenticationError | full |
+| 1361969137 | 12377	| InvalidData | delta |
+| 1361959894 | 12377	| Unknown | delta |
 
 ### HubMaintenancePerformance
 
