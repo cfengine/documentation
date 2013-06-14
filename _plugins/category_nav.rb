@@ -51,21 +51,6 @@ module Jekyll
 
       #puts JSON.pretty_generate(published_pages)
 
-      #create breadcrumbs array
-      breadcrumbs = {}
-      published_pages.each do |p|
-        if p.data['categories'] !=nil
-          key = p.data['categories'].last
-          breadcrumbs[key] ||= {}
-          breadcrumbs[key]['title'] = p.data['title']
-          breadcrumbs[key]['alias'] = p.data['alias']
-        end
-      end
-      site.config["breadcrumbsAll"] = breadcrumbs
-
-      #puts JSON.pretty_generate(breadcrumbs)
-
-
       # Create an array which consists of pages, placed by categories and levels
       nav_pages    = {}
       pages_levels = {}
@@ -120,24 +105,26 @@ module Jekyll
 
         end
       end
-#
+
       #puts JSON.pretty_generate(nav_pages)
       
       nav_pages = sortNavBySortingKey(nav_pages, true)
  
       $leftNavigation = {}
+      $breadcrumbsNavigation = {}
 
-      buildLeftNavigation(nav_pages)
+      buildNavigation(nav_pages)
 
 
-    #puts JSON.pretty_generate($leftNavigation)
+      #puts JSON.pretty_generate($breadcrumbsNavigation)
 
     site.config["leftNavigation"] = $leftNavigation;
+    site.config["breadcrumbsNavigation"] = $breadcrumbsNavigation;
 
     end #/fnc
 
 
- def buildLeftNavigation(navHash, parentSection='')
+ def buildNavigation(navHash, parentSection='')
    if (navHash != nil && !navHash.empty?)
        navHash.each do |k, arr|
 
@@ -148,8 +135,20 @@ module Jekyll
           itemKey = k
         end
 
+        #puts JSON.pretty_generate(navHash)
 
-        $leftNavigation[itemKey] ||={}
+        $leftNavigation[itemKey] ||= {}
+        
+        if (arr.has_key?('own_url') && !arr['own_url'].empty?)
+          $breadcrumbsNavigation[itemKey] ||= {}
+          $breadcrumbsNavigation[itemKey]['title'] = arr['own_url']['title']
+          $breadcrumbsNavigation[itemKey]['alias'] = arr['own_url']['alias']
+        else
+          puts "--------------------------------------------------------"
+          puts "WARNING: Page: " +  k + ". Full path: " + itemKey + " doesn't have right meta tags"  
+          puts "--------------------------------------------------------"
+        end
+
 
         #check if page has childrens and create level 1 and level2 pages if it has, and recursively call for childrens
           if (arr.has_key?('childrens') && !arr['childrens'].empty?)
@@ -161,7 +160,7 @@ module Jekyll
 
                 $leftNavigation[itemKey]['level2'] = buildSingleLevelNav(arr['childrens'], nil)
 
-                buildLeftNavigation(arr['childrens'], itemKey)
+                buildNavigation(arr['childrens'], itemKey)
 
           else
             # if page doesn't have childrens => level 1 for it would be parent section or current section if there are no pages "above"
