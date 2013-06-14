@@ -193,7 +193,7 @@
     background: #333333;
     border-radius: 5px;
     padding: 15px;
-    width: 200px;
+    width: 250px;
     right: 0;
     top: 37px;
     display: none;
@@ -230,11 +230,11 @@
     text-decoration: underline;
 }
 
-#jumpto_list .link_H3 {
+#jumpto_list .link_h3 {
     margin-left: 1em;
 }
 
-#jumpto_list .link_H4 {
+#jumpto_list .link_h4 {
     margin-left: 2em;
 }
 

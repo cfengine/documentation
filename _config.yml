@@ -10,7 +10,7 @@ git-repository: github.com/cfengine/documentation
 #permalink: /:title.html
 
 #CFEngine addon
-# CFE_OUTPUT turn on special rules for output
+# CFE_OUTPUT turn on special rules for output, see step2.txt about jekyll core hack (https://github.com/cfengine/documentation-generator/blob/master/_setup/step2.txt)
 CFE_OUTPUT: true
 
 #CFE_DIR - output folder if CFE_OUTPUT turned on
@@ -24,8 +24,6 @@ pygments: true
 markdown: redcarpet2
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "tables"]
-#markdown:  rdiscount
-#pandoc:  true
 asset_pipeline:
   bundle: true            # Default = true
   compress: true          # Default = true

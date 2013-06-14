@@ -1,20 +1,27 @@
 <div id="breadcrumbs_wrapper">
     <div id="breadcrumbs">
         <ul>
-            {% for item in page.categories %}
+            {% assign breadcrumbKey = '' %}              
+                {% for category in page.categories %}
+        
+                {% if breadcrumbKey == '' %}
+                    {% assign breadcrumbKey = category %}
+                {% else %}
+                    {% assign breadcrumbKey = breadcrumbKey | append: '_' | append: category %}
+                {% endif %}
+        
+                {% if site.breadcrumbsNavigation[breadcrumbKey] != nil %}
 
-                {% if site.breadcrumbsAll[item] != nil %}
-
-                    {% if site.breadcrumbsAll[item].alias != page.alias %}
+                    {% if site.breadcrumbsNavigation[breadcrumbKey].alias != page.alias %}
                         <li>
-                            <a href="{{ site.breadcrumbsAll[item].alias }}">{{ site.breadcrumbsAll[item].title }}</a>
+                            <a href="{{ site.breadcrumbsNavigation[breadcrumbKey].alias }}">{{ site.breadcrumbsNavigation[breadcrumbKey].title }}</a>
                         </li>
                         <li>
                             <i class="arrow">&nbsp;</i>
                         </li>
                     {% else %}
                         <li>
-                            <span>{{ site.breadcrumbsAll[item].title }}</span>
+                            <span>{{ site.breadcrumbsNavigation[breadcrumbKey].title }}</span>
                         </li>
                     {% endif %}
 

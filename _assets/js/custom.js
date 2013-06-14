@@ -31,7 +31,7 @@ var ToC_start =
         el      = $(this);
         title   = el.text();
         link    = "#" + el.attr("id");
-        elClass = "link_" + el.prop("tagName")
+        elClass = "link_" + el.prop("tagName").toLowerCase()
         url     = window.location.pathname;
 
 
