@@ -78,12 +78,12 @@ def processFile(markdown, config):
 					if example_line.find("#[%-]") == 0:
 						example_idx += 1
 						break
-					new_markdown_lines += example_line
-					
+					new_markdown_lines += "    " + example_line
+				
 				# terminate code block
 				if new_markdown_lines[-1] != '\n': new_markdown_lines += '\n'
 				new_markdown_lines += '```\n'
-				
+			
 				# end of example or rest is skipped?
 				if (len(example_lines[example_idx:]) == 0):
 					new_markdown_lines.append("\n")
@@ -116,7 +116,7 @@ def readExample(example):
 	skip_block = True
 	for line in lines:
 		if skip_block == False:
-			markdown_lines.append("    " + line)
+			markdown_lines.append(line)
 		if line.find("#[%+]") == 0:
 			skip_block = False
 		elif line.find("#[%-]") == 0:
