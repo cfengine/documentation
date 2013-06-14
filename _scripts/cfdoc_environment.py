@@ -26,6 +26,7 @@ def validate():
 	config = {}
 	config["reference_path"] = os.environ.get('CFDOC_LINKFILE')
 	config["markdown_directory"] = os.environ.get('CFDOC_DIRNAME')
+	config["example_directory"] = os.environ.get('CFDOC_EXAMPLEPATH')
 
 	if config["reference_path"] == None or config["markdown_directory"] == None:
 	

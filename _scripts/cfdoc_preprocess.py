@@ -24,6 +24,7 @@
 
 import cfdoc_environment as environment
 import cfdoc_linkresolver as linkresolver
+import cfdoc_extractexamples as extractexamples
 import cfdoc_git as git
 
 config = environment.validate()
@@ -38,4 +39,12 @@ try:
 except:
 	print "cfdoc_preprocess: Fatal error generating link map"
 	exit(2)
+
+try:
+	if (config["example_directory"] != ""):
+		extractexamples.run(config)
+except:
+	print "cfdoc_preprocess: Fatal error extracting example code"
+	exit(3)
+
 exit(0)
