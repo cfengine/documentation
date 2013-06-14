@@ -25,8 +25,16 @@ import os
 def validate():
 	config = {}
 	config["reference_path"] = os.environ.get('CFDOC_LINKFILE')
+	if not os.path.exists(config["reference_path"]):
+		print "Path in 'CFDOC_LINKFILE' not found: " + config["reference_path"]
+	
 	config["markdown_directory"] = os.environ.get('CFDOC_DIRNAME')
+	if not os.path.exists(config["markdown_directory"]):
+		print "Path in 'CFDOC_DIRNAME' not found: " + config["markdown_directory"]
+
 	config["example_directory"] = os.environ.get('CFDOC_EXAMPLEPATH')
+	if not os.path.exists(config["example_directory"]):
+		print "Path in 'CFDOC_EXAMPLEPATH' not found: " + config["example_directory"]
 
 	if config["reference_path"] == None or config["markdown_directory"] == None:
 	
