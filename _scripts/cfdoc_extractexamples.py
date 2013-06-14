@@ -55,9 +55,13 @@ def processFile(markdown, config):
 	new_markdown_lines = []
 	example_lines = []
 	example_idx = 0
+	in_pre = False
 	for line in markdown_lines:
 		keepline = True
-		if line.find("[%") == 0:
+		# skip markdown codeblocks
+		if line[:3] == '```':
+			in_pre = not in_pre
+		if not in_pre and line.find("[%") == 0:
 			# out of previous example source, read next
 			if (example_idx == len(example_lines)):
 				example = line[2:line.find("%]")]
@@ -92,7 +96,6 @@ def processFile(markdown, config):
 			
 	if write_changes == True:
 		new_markdown_filename = markdown_dir + "/new_" + markdown_name
-		print "Generating file " + new_markdown_filename
 		new_markdown_file = open(new_markdown_filename, 'w')
 		for line in new_markdown_lines:
 			new_markdown_file.write(line)
@@ -105,6 +108,7 @@ def readExample(example):
 	try:
 		example_file = open(example, 'r')
 	except:
+		print "cfdoc_extractexamples: File not found or can't open " + example
 		return markdown_lines
 		
 	lines = example_file.readlines()	
@@ -112,7 +116,7 @@ def readExample(example):
 	skip_block = True
 	for line in lines:
 		if skip_block == False:
-			markdown_lines.append(line)
+			markdown_lines.append("    " + line)
 		if line.find("#[%+]") == 0:
 			skip_block = False
 		elif line.find("#[%-]") == 0:
