@@ -14,42 +14,7 @@ for example when validating input to a bundle. The following policy uses a list 
 regular expressions for classes, or class expressions that [`cf-agent`][cf-agent] will watch out for.
 If any of these classes becomes defined, it will cause the current bundle to be aborted.
 
-```cf3
-
-body common control
-{
-bundlesequence  => { "example"  };
-}
-
-body agent control
-{
-abortbundleclasses => { "invalid" };      # Abort bundle execution if this class is set
-}
-
-###########################################
-
-bundle agent example
-{
-vars:
-
-  #"userlist" slist => { "mark", "john" };           # contains all valid entries
-  "userlist" slist => { "mark", "john", "thomas" };  # contains one invalid entry
-
-classes:
-
-  "invalid" not => regcmp("[a-z][a-z][a-z][a-z]","$(userlist)"); # The class 'invalid' is set if the user name does not
-                                                                 # contain exactly four un-capitalized letters (bundle
-                                                                 # execution will be aborted if set)
-
-reports:
-
-  !invalid::
-
-    "User name $(userlist) is valid at 4 letters";
-}
-```
-
-This policy can be found in `/var/cfengine/share/doc/examples/unit_abort.cf`.
+[%abort.cf%]
 
 This is how the policy runs when the userlist is valid:
 
