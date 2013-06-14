@@ -2553,8 +2553,7 @@ on Windows (such as the Administrators group).
 is set
 
 Default behavior is to set the x flag on directories automatically if
-the r flag is specified when specifying multiple files in a single
-promise.
+the r flag is specified.
 
 **Type:** [`boolean`][boolean]
 
