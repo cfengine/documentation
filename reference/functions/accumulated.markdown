@@ -20,7 +20,7 @@ encouraged to keep your usage of `accumulated` sensible and readable;
 for example, accumulated(0,0,0,48,0,0) or accumulated(0,0,0,0,90,0).
 
 
-**ARGUMENTS**:
+**Arguments:**
 
 * `years`, in the range `0,1000`
 

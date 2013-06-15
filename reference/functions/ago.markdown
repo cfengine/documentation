@@ -19,7 +19,7 @@ hours ago". However, you are strongly encouraged to keep your usage of
 `ago` sensible and readable, e.g., ago(0,0,120,0,0,0) or
 ago(0,0,0,72,0,0).
 
-**ARGUMENTS**:
+**Arguments:**
 
 * `years`, in the range `0,1000`
 
