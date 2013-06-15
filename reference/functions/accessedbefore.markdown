@@ -7,18 +7,11 @@ alias: reference-functions-accessedbefore.html
 tags: [reference, files functions, functions, accessedbefore]
 ---
 
-**Prototype:** `accessedbefore(newer, older)`
-
-**Return type:** `class`
-
 **Description:** Compares the `atime` fields of two files.
 
 Return true if `newer` was accessed before `older`.
 
-**Arguments**:
-
-* `newer` : Newer filename, in the range `"?(/.*)`
-* `older` : Older filename, in the range `"?(/.*)`
+[%CFENGINE_FUNCTION_PROTOTYPE(newer,older)%]
 
 **Example:**  
 

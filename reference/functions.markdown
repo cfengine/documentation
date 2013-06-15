@@ -55,6 +55,10 @@ might make it easier for you to find the function you need.
 * [System][system functions] functions
 * [Utility][utility functions] functions
 
+## List of all functions
+
+[%CFENGINE_FUNCTION_TABLE%]
+
 <!-- **TODO: fix links, make proper markdown tables** 
 ## Functions listed by return value
 
