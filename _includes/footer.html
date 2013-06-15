@@ -2,14 +2,14 @@
 <footer>
     <div class="license_info">
         <div class="wrapper">
-           <a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
-           This work is licensed under a <a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
         </div>
     </div>
 <div class="compilation_info">Updated: {{site.time | date_to_long_string}}
 {% if site.git-repository != nil %}
- from [<a href="http://{{site.git-repository}}{% if site.git-branch != nil %}/blob/{{site.git-branch}}{% endif %}">markdown source</a>]
-{% if site.git-revision != nil %} revision <a href="http://{{site.git-repository}}/commit/{{site.git-revision}}">{{site.git-revision}}</a>
+ from [<a target="_blank" href="http://{{site.git-repository}}{% if site.git-branch != nil %}/blob/{{site.git-branch}}{% endif %}">markdown source</a>]
+{% if site.git-revision != nil %} revision <a href="http://{{site.git-repository}}/commit/{{site.git-revision}}" target="_blank">{{site.git-revision}}</a>
 {% endif %}
 {% endif %}.
 </div>
