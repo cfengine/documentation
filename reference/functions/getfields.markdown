@@ -42,21 +42,16 @@ The base name of the array that returns the values.
 **Example:**
 
 ```cf3
-bundle agent example
+  bundle agent example
+  {     
+    vars:
 
-{     
-vars:
+      "no" int => getfields("mark:.*","/etc/passwd",":","userdata");
 
-  "no" int => getfields("mark:.*","/etc/passwd",":","userdata");
-
-reports:
-
-  cfengine_3::
-
-    "Found $(no) lines matching";
-    "Mark's homedir = $(userdata[6])";
-
-}
+    reports:
+        "Found $(no) lines matching";
+        "Mark's homedir = $(userdata[6])";
+  }
 ```
 
 **Notes:**

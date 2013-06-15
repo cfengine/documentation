@@ -132,8 +132,7 @@ the resulting expansion is a legal class expression.
           "france"  or => { @(french_cities) };
     
       reports:
-        any::
-          "It's $(sys.date) here";
+        "It's $(sys.date) here";
     
         Morning.italy::
           "Good morning from Italy",
@@ -146,10 +145,9 @@ the resulting expansion is a legal class expression.
         france::
           "Hello from France",
             ifvarclass => "$(all_cities)";
-    
-        any::
-          "Hello from $(all_cities)",
-            ifvarclass => "$(all_cities)";
+
+        "Hello from $(all_cities)",
+          ifvarclass => "$(all_cities)";
     }
 ```
 

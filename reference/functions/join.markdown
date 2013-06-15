@@ -34,9 +34,6 @@ vars:
   "scalar" string => join("->","mylist");
 
 reports:
-
- linux::
-
   "Concatenated $(scalar)";
 }
 ```

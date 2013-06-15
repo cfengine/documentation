@@ -29,8 +29,6 @@ If `path` is not found, this function returns 0.
         "free" int => diskfree("/tmp"); 
 
       reports:
-        cfengine_3::
-
-          "Freedisk $(free)";
+        "Freedisk $(free)";
     }
 ```

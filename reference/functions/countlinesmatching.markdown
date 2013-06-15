@@ -37,9 +37,6 @@ The name of the file to be examined.
         "no" int => countlinesmatching("m.*","/etc/passwd");
 
       reports:
-
-        cfengine_3::
-
-          "Found $(no) lines matching";
+        "Found $(no) lines matching";
     }
 ```

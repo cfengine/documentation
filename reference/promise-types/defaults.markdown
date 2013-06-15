@@ -42,8 +42,6 @@ this you will need to match the `$(abc)` form of the variables.
 
     reports:
 
-       !nothing::
-
        "a = '$(a)', b = '$(b)', c = '$(c)' d = '$(d)'";
     }
 ```
@@ -64,8 +62,6 @@ methods:
 
 reports:
 
- !xyz::
-
    "The default value of X is $(X)";
    "The default value of Y is $(Y)";
 }
@@ -85,8 +81,6 @@ defaults:
   "no_return" string => "no such file";
 
 reports:
-
-  !xyz::
 
      "The value of a is $(a)";
      "The value of b is $(b)";

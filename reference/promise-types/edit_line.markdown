@@ -71,9 +71,6 @@ bundle edit_line inner_bundle
      select_region => MySection("New section");
 
   reports:
-
-    someclass::
-
       "This is file $(edit.filename)";
   }
 

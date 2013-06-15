@@ -36,7 +36,6 @@ vars:
 
 
 reports:
-cfengine_3::
   "local4 is $(local4)";
   "local6 is $(local6)";
 }

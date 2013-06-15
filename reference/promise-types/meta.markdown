@@ -23,8 +23,6 @@ CFEngine Enterprise variable reports.
 
     reports:
 
-     cfengine_3::
-
       "Not a local variable: $(bundle_version)";
       "Meta data (variable): $(example_meta.bundle_version)";
 

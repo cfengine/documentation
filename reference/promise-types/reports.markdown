@@ -26,8 +26,6 @@ Messages outputted from report promises are prefixed with the letter R to distin
     {
     reports:
 
-      linux::
-
        "/etc/passwd except $(const.n)"
 
         # printfile => pr("/etc/passwd","5");
@@ -56,12 +54,8 @@ friend reports.
 
 ```cf3
 reports:
-
-  linux::
-
    "Friend status report"
-
-          lastseen => "0",
+           lastseen => "0",
      friend_pattern => "host1|host2|.*\.domain\.tld";
 ```
 
@@ -109,7 +103,6 @@ file
      bundle agent example
      {
      reports:
-       linux::
          "$(sys.date) - current message of the day:"
             printfile => "motd";
      }
@@ -140,9 +133,6 @@ standard output.
     bundle agent test
     {
     reports:
-
-      linux::
-
        "$(sys.date),This is a report from $(sys.host)"
 
            report_to_file => "/tmp/test_log";
@@ -178,9 +168,6 @@ Return values are limited to scalars.
 
 
     reports:
-
-      cfengine_3::
-
         "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\""; 
     
     }
@@ -188,9 +175,6 @@ Return values are limited to scalars.
     bundle agent child
     {
     reports:
-
-     cfengine_3::
-
        # Map these indices into the useresult namespace
 
        "this is a return value"  

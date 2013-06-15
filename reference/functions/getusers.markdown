@@ -25,9 +25,6 @@ tags: [reference, system functions, functions, getusers]
       "allusers" slist => getusers("zenoss,mysql,at","12,0");
 
     reports:
-
-     linux::
-
       "Found user $(allusers)";
 ```
 

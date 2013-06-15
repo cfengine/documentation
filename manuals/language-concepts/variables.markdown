@@ -235,19 +235,15 @@ were executed it would print out two messages, one for each key.
 ```cf3
     bundle agent array
     {
-        vars:
+      vars:
 
-            "v[index_1]" string => "value_1";
-            "v[index_2]" string => "value_2";
+          "v[index_1]" string => "value_1";
+          "v[index_2]" string => "value_2";
 
-            "parameter_name" slist => getindices("v");
-        
-        reports:
-
-            Yr2013::
-
-                "Found index: $(parameter_name)";
-
+          "parameter_name" slist => getindices("v");
+      
+      reports:
+          "Found index: $(parameter_name)";
     }
 ```
 

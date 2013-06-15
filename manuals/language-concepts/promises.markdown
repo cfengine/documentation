@@ -113,7 +113,7 @@ Some promise types can have implicit behavior. For example, the following
 promise simply prints out a log message "hello world".
 
 ```cf3
-     reports:     
+   reports:     
      "hello world";
 ```
 
@@ -121,7 +121,7 @@ The same promise could be implemented using the `commands` type, invoking the
 echo command:
 
 ````cf3
-     commands:     
+   commands:     
      "/bin/echo hello world";
 ````
 

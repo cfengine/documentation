@@ -24,20 +24,16 @@ variable.
 **Example:**
 
 ```cf3
-bundle agent example
-{
-vars:
+    bundle agent example
+    {
+    vars:
 
-  "v[index_1]" string => "value_1";
-  "v[index_2]" string => "value_2";
+      "v[index_1]" string => "value_1";
+      "v[index_2]" string => "value_2";
 
-  "parameter_name" slist => getindices("v");
+      "parameter_name" slist => getindices("v");
 
-reports:
-
-  Yr2008::
-
-   "Found index: $(parameter_name)";
-
-}
+    reports:
+       "Found index: $(parameter_name)";
+    }
 ```

@@ -53,7 +53,6 @@ reads data from a variable instead of a file. By making data readable from a var
      "keys" slist => getindices("items");
 
     reports:
-      cfengine_3::
         "$(keys)";
     }
 ```

@@ -884,8 +884,8 @@ in the range from 0 to 255.
         classes => example;
      
      reports:
-     wasrepaired::
-       "The command-promise got repaired!";
+       wasrepaired::
+         "The command-promise got repaired!";
      }
      
      body classes example
@@ -946,14 +946,14 @@ in the range from 0 to 255.
        transformer => "/bin/grep -q lkajfo999999 $(this.promiser)";
      
      reports:
-     wasfailed::
-       "The files-promise failed!";
+       hasfailed::
+         "The files-promise failed!";
      }
      
      body classes example
      {
      failed_returncodes => { "1" };
-     repair_failed => { "wasfailed" };
+     repair_failed => { "hasfailed" };
      }
      
      body copy_from copy(file)
@@ -1065,9 +1065,6 @@ Handles in other namespaces may be referred to by namespace:handle.
     bundle agent one
     {
     reports:
-
-     cfengine_3::
-
        "two"
          depends_on => { "handle_one" };
 

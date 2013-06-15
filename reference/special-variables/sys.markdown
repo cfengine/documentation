@@ -79,8 +79,7 @@ is set, and on multi-core systems the class *n*`_cpus` is set, where
 ```cf3
     reports:
 
-     cfengine_3::
-       "Number of CPUS = $(sys.cpus)";
+     "Number of CPUS = $(sys.cpus)";
      8_cpus::
        "This system has 8 processors.";
 ```
@@ -139,7 +138,7 @@ Edition.
 ```cf3
     reports:
 
-     nova::
+     enterprise::
 
       "License expires $(sys.expires)";
 ```
@@ -199,9 +198,6 @@ This contains the MAC address of the named interface. For example:
 
 ```cf3
     reports:
-
-      linux::
-
         "Tell me $(harware_mac[eth0])";
 ```
 
@@ -245,8 +241,6 @@ local variables can be iterated.
 
     reports:
 
-      cfengine::
-
         "Addresses: $(i1)";
         "Interfaces: $(i2)";
         "Addresses of the interfaces: $(sys.ipv4[$(i2)])";
@@ -261,7 +255,6 @@ Contains a space separated list of the flags of the named interface. e.g.
 
 ```cf3
     reports:
-      cfengine::
         "eth0 flags: $(sys.interface_flags[eth0])";
 ```
 
@@ -306,8 +299,6 @@ local variables can be iterated.
      "i2" slist => { @(sys.interfaces)} ;
 
     reports:
-
-      cfengine::
 
         "Addresses: $(i1)";
         "Interfaces: $(i2)";
@@ -375,7 +366,7 @@ The first three octets of the IPv4 address of the system interface named as the 
 ```cf3
     reports:
 
-     nova::
+     enterprise::
 
       "This version of CFEngine is licensed to $(sys.license_owner)";
 ```
@@ -387,7 +378,7 @@ The first three octets of the IPv4 address of the system interface named as the 
 ```cf3
     reports:
 
-     nova::
+     enterprise::
 
       "There are $(sys.licenses_granted) licenses granted for use";
 ```

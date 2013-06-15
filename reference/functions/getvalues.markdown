@@ -36,9 +36,6 @@ vars:
   "values" slist => getvalues("v");
 
 reports:
-
-  Yr2008::
-
    "Found values: $(values)";
 
 }

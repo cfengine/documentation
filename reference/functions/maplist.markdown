@@ -35,7 +35,6 @@ vars:
   "newlist" slist => maplist("Element ($(this))","oldlist");
 
 reports:
- linux::
   "Transform: $(newlist)";
 }
 ```

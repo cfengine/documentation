@@ -40,7 +40,6 @@ bundle agent run
       "map" slist => maparray("yes $(this.k) $(this.v)", "todo");
 
   reports:
-    cfengine::
       "Hello $(map)";
 }
 

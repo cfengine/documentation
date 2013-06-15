@@ -34,7 +34,6 @@ bundle agent test
       "zero" real => sum("adds_to_zero");
 
   reports:
-    cfengine_3::
       "six is $(six), zero is $(zero)";
 }
 ```
