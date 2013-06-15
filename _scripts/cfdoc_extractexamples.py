@@ -41,6 +41,11 @@ def processDirectory(cur_name,cur_dir, config):
 			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
 				processFile(cur_name+"/"+file_name, config)
 
+def terminateBlock(lines):
+	if lines[-1] != '\n': lines += '\n'
+	lines += '```\n'
+	
+
 def processFile(markdown, config):
 	example_dir = config["example_directory"]
 
@@ -56,6 +61,8 @@ def processFile(markdown, config):
 	example_lines = []
 	example_idx = 0
 	in_pre = False
+	terminate_block = False
+	begin_block = True
 	for line in markdown_lines:
 		keepline = True
 		# skip markdown codeblocks
@@ -71,27 +78,33 @@ def processFile(markdown, config):
 			if len(example_lines) > example_idx:
 				keepline = False
 				write_changes = True
-				new_markdown_lines += '```cf3\n'
+				if begin_block:
+					new_markdown_lines += '```cf3\n'
 				while len(example_lines) > example_idx:
 					example_line = example_lines[example_idx]
 					example_idx += 1
 					if example_line.find("#[%-]") == 0:
 						example_idx += 1
+						terminate_block = True
+						begin_block = False
 						break
 					new_markdown_lines += "    " + example_line
 				
-				# terminate code block
-				if new_markdown_lines[-1] != '\n': new_markdown_lines += '\n'
-				new_markdown_lines += '```\n'
-			
 				# end of example or rest is skipped?
 				if (len(example_lines[example_idx:]) == 0):
+					terminateBlock(new_markdown_lines)
+					terminate_block = False
 					new_markdown_lines.append("\n")
 					new_markdown_lines.append("This policy can be found in ")
 					new_markdown_lines.append("`/var/cfengine/share/doc/examples/" + example + "`")
 					new_markdown_lines.append("\n")
 					
 		if keepline == True:
+			# terminate code block
+			if terminate_block:
+				terminateBlock(new_markdown_lines)
+				terminate_block = False
+				begin_block = True
 			new_markdown_lines += line
 			
 	if write_changes == True:
