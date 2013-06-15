@@ -90,9 +90,9 @@ def processFile(markdown, config):
 def generateFunctionTable(syntax_map):
 	lines = []
 	functions = syntax_map["functions"]
-	ordered_functions = collections.OrderedDict(sorted(functions.items()))
+	ordered_functions = sorted(functions)
 	for function in ordered_functions:
-		returnType = ordered_functions[function]["returnType"]
+		returnType = functions[function]["returnType"]
 		if returnType == "context": returnType = "class"
 		line = "* `" + returnType + "` "
 		line += "[`" + function + "`][" + function + "]"
