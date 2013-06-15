@@ -8,20 +8,19 @@ alias: getting-started-installation.html
 tags: [getting started, installation]
 ---
 
-<!--- TODO: move up when no longer a pre-release
-
-**IMPORTANT NOTE:** *This is a pre-release of 3.5, intended for testing and 
+**IMPORTANT NOTE:** *This is a pre-release of CFEngine, intended for testing and 
 showcase only. This version is not supported, not covered by service level 
 agreements (SLAs) and not intended for production environments. Do not upgrade 
 or use in conjunction with other versions at this point.
 
+<!--- TODO: move up when no longer a pre-release
 -->
 
 ## Requirements
 
 CFEngine recommends to have 256 MB available memory on the clients. For 
 machines under CFEngine’s management (clients), a full installation of 
-CFEngine 3.5 requires about 25 MB of disk storage. Otherwise disk usage 
+CFEngine 3.6 requires about 25 MB of disk storage. Otherwise disk usage 
 depends on your specific policies, especially those that concern reporting.
 
 Verify that the machine’s network connection is working and that port 5308 
@@ -78,9 +77,9 @@ instructions further down.
 
 The Community Edition is in packages with these naming patterns:
 
-* RPM Package: `cfengine-community-3.5.0XXXX.x86_64.rpm`
+* RPM Package: `cfengine-community-3.6.0XXXX.x86_64.rpm`
 
-* Debian Package: `cfengine-community_3.5.0XXX_amd64.deb`
+* Debian Package: `cfengine-community_3.6.0XXX_amd64.deb`
 
 Install the package first on the policy server, then on the clients. Upon 
 installation on two or more hosts, the role of policy server is adopted by the 
@@ -101,27 +100,27 @@ server.
 
 ### Enterprise Edition
 
-CFEngine 3.5 Enterprise is provided in two packages (one hub and one client 
+CFEngine 3.6 Enterprise is provided in two packages (one hub and one client 
 package) with the following names:
 
 **Hub**: Only 64bit packages
 
-* RPM Package: `cfengine-nova-hub-3.5.0XXXX.x86_64.rpm`
+* RPM Package: `cfengine-nova-hub-3.6.0XXXX.x86_64.rpm`
 
-* Debian Package: `cfengine-nova-hub_3.5.0XXXX_amd64.deb`
+* Debian Package: `cfengine-nova-hub_3.6.0XXXX_amd64.deb`
 
 **Client**: Both 64bit and 32bit
 
-* RPM Package: `cfengine-nova-3.5.0-XXXX.i386.rpm` or 
-`cfengine-nova-3.5.0-XXXX.x86_64.rpm`
+* RPM Package: `cfengine-nova-3.6.0-XXXX.i386.rpm` or 
+`cfengine-nova-3.6.0-XXXX.x86_64.rpm`
 
-* Debian Package: `cfengine-nova_3.5.0XXXX_i386.deb` or 
-`cfengine-nova_3.5.0XXXX_amd64.deb`
+* Debian Package: `cfengine-nova_3.6.0XXXX_i386.deb` or 
+`cfengine-nova_3.6.0XXXX_amd64.deb`
 
 
 Follow these steps to install CFEngine:
 
-1. Copy the CFEngine 3.5 Enterprise packages to their respective systems
+1. Copy the CFEngine 3.6 Enterprise packages to their respective systems
 
 I.e hub package to the host that will be the CFEngine policy server, and 
 the client packages to each of the other hosts.
@@ -133,8 +132,8 @@ the client packages to each of the other hosts.
     [Debian/Ubuntu]      $ dpkg -i <hub package>.deb
 ```
 
-   - (Skip for CFEngine 3.5 Free Enterprise): Send the hub's public key (`/var/cfengine/ppkeys/localhost.pub`) to CFEngine support to obtain a license
-   - (Skip for CFEngine 3.5 Free Enterprise): Copy the obtained license file to `/var/cfengine/masterfiles/license.dat`
+   - (Skip for CFEngine 3.6 Free Enterprise): Send the hub's public key (`/var/cfengine/ppkeys/localhost.pub`) to CFEngine support to obtain a license
+   - (Skip for CFEngine 3.6 Free Enterprise): Copy the obtained license file to `/var/cfengine/masterfiles/license.dat`
 
 3. On the hosts: Unpack the `cfengine-nova` package:
 
@@ -194,7 +193,7 @@ server is visible run the following command (requires `avahi-utils`):
 
 The sample output should look like this:
 
-    eth0 IPv4 CFEngine Community 3.5.0 Policy Server on policy_hub_debian7  _cfenginehub._tcp    local
+    eth0 IPv4 CFEngine Community 3.6.0 Policy Server on policy_hub_debian7  _cfenginehub._tcp    local
 
 Once the hub is configured as an Avahi service, you can auto-bootstrap clients 
 to it.

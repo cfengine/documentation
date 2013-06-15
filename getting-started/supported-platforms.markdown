@@ -8,9 +8,8 @@ alias: getting-started-supported-platforms.html
 tags: [getting started, platforms, versions, support]
 ---
 
-<!--- TODO: switch for release, remove above from stable branches
-This pre-release of CFEngine Enterprise 3.5 has been rudimentarily tested and 
-released on the following platforms:
+This pre-release of CFEngine has been rudimentarily tested on the
+following platforms:
 
 ## Hub
 
@@ -29,7 +28,9 @@ released on the following platforms:
 |Ubuntu        | 10.4     | x86-64, i386    |                                |
 |Solaris       | 10       | x86-64, sparc   |                                |
 
--->
+<!--- TODO: switch for release, remove above from stable branches
+
+
 
 CFEngine works on a wide range of platforms, and the CFEngine team strives to 
 provide support for the platforms most frequently used by our users. We have 
@@ -135,6 +136,7 @@ from hosts running the following versions of CFEngine:
 Some data will not be available from older hosts, and the policy you serve 
 needs to take into account hosts with different versions.
 
+-->
 
 ## General Legal Disclaimer
 
