@@ -35,9 +35,6 @@ collect summary information from a source external to CFEngine.
       "sum"  real => sum("series");
 
     reports:
-
-      cfengine_3::
-
         "Product result: $(prod) > $(sum)";
     }
 ```

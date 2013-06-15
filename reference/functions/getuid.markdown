@@ -22,18 +22,15 @@ If the named user is not registered the variable will not be defined.
 **Example:**
 
 ```cf3
-bundle agent example
-{
-vars:
+    bundle agent example
+    {
+    vars:
 
-  "uid" int => getuid("mark");
+      "uid" int => getuid("mark");
 
-reports:
-
-  Yr2008::
-
-    "Users uid is $(uid)";
-}
+    reports:
+      "Users uid is $(uid)";
+    }
 ```
 **Notes:**
 On Windows, which does not support user ids, the variable will not 

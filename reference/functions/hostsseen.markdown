@@ -38,10 +38,6 @@ vars:
   "myhosts" slist => { hostsseen("inf","lastseen","address") };
 
 reports:
-
-  cfengine_3::
-
-    "Found client/peer: $(myhosts)";
-
+  "Found client/peer: $(myhosts)";
 }
 ```

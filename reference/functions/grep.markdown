@@ -34,10 +34,6 @@ vars:
   "empty_list" slist => grep("ive","mylist");
 
 reports:
-
- linux::
-
   "Item: $(sublist)";
-
 }
 ```

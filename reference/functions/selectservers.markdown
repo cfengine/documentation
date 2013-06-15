@@ -61,8 +61,6 @@ satisfactory).
       "has_favicon" expression => isgreaterthan("$(has_favicon)","0");
 
     reports:
-
-      cfengine_3::
         "Number of active servers $(up_servers)";
 
       someone_alive::

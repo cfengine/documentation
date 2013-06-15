@@ -29,8 +29,7 @@ over all items in the list.
             "array[cf-execd]" string => "The executor, not executionist";
 
         reports:
-            cfengine_3::
-                "$(component) is $(array[$(component)])";
+            "$(component) is $(array[$(component)])";
     }
 ```
 
@@ -100,8 +99,6 @@ CFEngine can iterate across multiple lists simultaneously.
                            "loadavg"
                            };
     reports:
-
-      cfengine_3::
         "mon.$(stats)_$(monvars) is $(mon.$(stats)_$(monvars))";
     }
 ```

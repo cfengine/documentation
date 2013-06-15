@@ -37,8 +37,6 @@ vars:
 
 reports:
 
- linux::
-
   "split1: $(split1)";  # will list "one", "two", and "three"
   "split2: $(split2)";  # will list "one" and "two:three"
   "split3: $(split3)";  # will list "alpha:" and ":beta"

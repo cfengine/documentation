@@ -72,8 +72,6 @@ Example file:
 
     reports:
 
-     linux::
-
        "mypeer $(mygroup)";
        "myleader $(myleader)";
        "another leader $(all_leaders)";

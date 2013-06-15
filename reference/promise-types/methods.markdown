@@ -49,8 +49,6 @@ inline.
 
       reports:
 
-       linux::
-
         "Finished doing stuff for $(user)";
     }
 ```

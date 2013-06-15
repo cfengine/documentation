@@ -28,13 +28,10 @@ string.
     bundle agent reg
     {
     vars:
-
-      "value" string => registryvalue("HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine","value3");
+      windows::
+        "value" string => registryvalue("HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine","value3");
 
     reports:
-
-      windows::
-
        "Value extracted: $(value)";
 
     }

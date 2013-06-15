@@ -40,9 +40,6 @@ vars:
   "md5" string => hash("CFEngine is not cryptic","md5");
 
 reports:
-
-  Yr2008::
-
     "Hashed to: $(md5)";
 }
 ```

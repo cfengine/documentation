@@ -56,7 +56,6 @@ policies can be kept inline.
        "keys" slist => getindices("items");
 
       reports:
-        cfengine_3::
           "$(keys)";
     }
 ```

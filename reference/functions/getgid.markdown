@@ -24,18 +24,15 @@ will not be defined.
 **Example:**
 
 ```cf3
-bundle agent example
-{     
-vars:
+    bundle agent example
+    {     
+    vars:
 
-  "gid" int => getgid("users");
+      "gid" int => getgid("users");
 
-reports:
-
-  Yr2008::
-
-    "Users gid is $(gid)";
-}
+    reports:
+      "Users gid is $(gid)";
+    }
 ```
 
 **Notes:**
