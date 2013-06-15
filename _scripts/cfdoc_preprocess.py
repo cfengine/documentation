@@ -41,7 +41,7 @@ except:
 	exit(1)
 
 try:
-	linkresolver.processDirectory(config["markdown_directory"],config["reference_path"],"")
+	linkresolver.run(config)
 except:
 	print "cfdoc_preprocess: Fatal error generating link map"
 	sys.stdout.write("       Exception: ")

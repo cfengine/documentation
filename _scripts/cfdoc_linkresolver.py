@@ -21,20 +21,28 @@
 # THE SOFTWARE.
 
 import os
+import sys
 from os import listdir
 from os.path import isfile, join
 from string import ascii_letters, digits
 
-def processDirectory(cur_name,output_file,cur_dir):
+def run(config):
+	processDirectory(config["markdown_directory"], "", config, "addToLinkFile")
+	processDirectory(config["markdown_directory"], "", config, "applyLinkMap")
+
+def processDirectory(cur_name, cur_dir, config, function):
 	if os.path.isdir(cur_name) == True:
 		markdownfiles = os.listdir(cur_name)	
 		for file_name in markdownfiles:
-			if os.path.isdir(cur_name+"/"+file_name) == True:
-				processDirectory(cur_name+"/"+file_name,output_file,cur_dir+"/"+file_name)
+			if os.path.isdir(cur_name+"/"+file_name) == True and file_name[0] != '.':
+				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, config, function)
 			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
-				addToLinkFile(cur_name+"/"+file_name,output_file,cur_dir)
+				getattr(sys.modules[__name__], function)(cur_name+"/"+file_name, config)
 
-def addToLinkFile(file_name,output_file,cur_dir):
+def addToLinkFile(file_name, config):
+	linkMap = config.get("link_map", dict())
+
+	output_file = config["reference_path"]
 	
 	in_file = open(file_name,"r")
 	lines = in_file.readlines()
@@ -46,9 +54,14 @@ def addToLinkFile(file_name,output_file,cur_dir):
 	current_title = ""
 	header_list = []
 	
+	in_pre = False
 	for line in lines:
+		if line.find("```") == 0:
+			in_pre = not in_pre
+		if in_pre:
+			continue
 		if line.find("title:") == 0:
-			current_title = line.split('title: ')					
+			current_title = line.split('title: ')
 			current_title = current_title[1].rstrip().rstrip('\"')
 			current_title = current_title.lstrip().lstrip('\"')
 		elif line.find("alias:") == 0:
@@ -62,6 +75,9 @@ def addToLinkFile(file_name,output_file,cur_dir):
 
 	if current_file_label != "" and current_file_name != "":
 		output_string = '['+current_file_label+']: '+current_file_name+' \"'+current_title+'\"'
+		# keep dictionary reasonably short by including at most two-word headers
+		if current_file_label.count(" ") < 2:
+			linkMap["`" + current_file_label + "`"] = "[" + current_file_label + "]"
 		out_file.write(output_string+"\n")
 		for header in header_list:
 			if header == "":
@@ -78,7 +94,63 @@ def addToLinkFile(file_name,output_file,cur_dir):
 			anchor = anchor.replace("\"", "")
 			anchor = anchor.replace("--", "-")
 			anchor = anchor.lstrip("-").rstrip("-")
-			output_string = '['+current_file_label+ '#' + header + ']: '
+			label = current_file_label+ '#' + header
+			if header.count(" ") < 2:
+				linkMap["`" + header+ "`"] = "[" + label + "]"
+			output_string = '['+ label + ']: '
 			output_string += current_file_name + '#' + anchor + ' '
 			output_string += '\"'+current_title + ' - ' + header + '\"'
 			out_file.write(output_string+"\n")
+	
+	config["link_map"] = linkMap
+
+def applyLinkMap(file_name, config):
+	markdown_file = open(file_name,"r")
+	markdown_lines = markdown_file.readlines()
+	markdown_file.close()
+	
+	link_map = config["link_map"]
+	
+	print "cfdoc_linkresolver: Processing " + file_name
+		
+	new_lines = []
+	write_changes = False
+	in_pre = False
+	for markdown_line in markdown_lines:
+		new_line = ""
+		# we ignore everything in code blocks
+		if markdown_line[:4] == "    ":
+			new_lines.append(markdown_line)
+			continue
+		if markdown_line.find('```') == 0:
+			in_pre = not in_pre
+		
+		if not in_pre:
+			for (key, value) in link_map.iteritems():
+				key_len = len(key)
+				in_link = False
+				bracket_depth = 0
+				index = -1
+				i = 0
+				# ignore existing links, ie everything in brackets
+				while i < len(markdown_line):
+					if markdown_line[i] == '[': bracket_depth += 1
+					elif markdown_line[i] == ']': bracket_depth -= 1
+					elif bracket_depth == 0 and markdown_line[i:i+key_len] == key:
+						index = i
+						break
+					i += 1
+				if index != -1:
+					write_changes = True
+					new_line += markdown_line[:index]
+					new_line += "[" + key + "]" + value
+					markdown_line = markdown_line[index + len(key):]
+		new_line += markdown_line
+		new_lines.append(new_line)
+			
+	if write_changes:
+		markdown_file = open(file_name + ".new", "w")
+		for new_line in new_lines:
+			markdown_file.write(new_line)
+		markdown_file.close()
+		os.rename(file_name + ".new", file_name)
