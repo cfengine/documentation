@@ -68,10 +68,10 @@ def processFile(markdown, config):
 		# skip markdown codeblocks
 		if line[:3] == '```':
 			in_pre = not in_pre
-		if not in_pre and line.find("[%") == 0:
+		if not in_pre and line.find("[%include(") == 0:
 			# out of previous example source, read next
 			if (example_idx == len(example_lines)):
-				example = line[2:line.find("%]")]
+				example = line[line.find("(")+1:line.find(")%]")]
 				example_lines = readExample(example_dir + "/" + example)
 			
 			# write example until next stop marker [%-]

@@ -68,7 +68,6 @@ def processFile(markdown, config, syntax_map):
 		if len(new_lines) > 0:
 			keepline = False
 			write_changes = True
-			print "Injecting Function Table"
 			for new_line in new_lines:
 				new_markdown_lines += new_line
 		
@@ -88,7 +87,7 @@ def generateFunctionTable(syntax_map):
 	functions = syntax_map["functions"]
 	ordered_functions = collections.OrderedDict(sorted(functions.items()))
 	for function in ordered_functions:
-		returnType = functions[function]["returnType"]
+		returnType = ordered_functions[function]["returnType"]
 		if returnType == "context": returnType = "class"
 		line = "* `" + returnType + "` "
 		line += "[`" + function + "`][" + function + "]"
