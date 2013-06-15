@@ -21,20 +21,22 @@
 # THE SOFTWARE.
 
 import os
+import sys
 import json
 import cfdoc_environment as environment
 import collections
 
-def processDirectory(cur_name,cur_dir, config, syntax_map):
+def processDirectory(cur_name,cur_dir, config):
 	if os.path.isdir(cur_name) == True:
 		markdownfiles = os.listdir(cur_name)	
 		for file_name in markdownfiles:
 			if os.path.isdir(cur_name+"/"+file_name) == True:
-				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, config, syntax_map)
+				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, config)
 			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
-				processFile(cur_name+"/"+file_name, config, syntax_map)
+				processFile(cur_name+"/"+file_name, config)
 
-def processFile(markdown, config, syntax_map):
+def processFile(markdown, config):
+	syntax_map = config["syntax_map"]
 	markdown_dir = os.path.dirname(markdown)
 	markdown_name = os.path.basename(markdown)
 
@@ -63,8 +65,11 @@ def processFile(markdown, config, syntax_map):
 					function += markdown_line[markdown_line.find('('):markdown_line.find('%]')]
 					new_lines = generateFunctionPrototype(function, syntax_map)
 			except:
-				print "cfdoc_syntaxmap.py: Exception in " + markdown + ", line "
-				print markdown_line_number
+				print "cfdoc_syntaxmap.py: Exception in " + markdown + ", line %d" % markdown_line_number 
+				sys.stdout.write("         Exception : ")
+				print sys.exc_info()
+				print syntax_map.keys()
+
 		if len(new_lines) > 0:
 			keepline = False
 			write_changes = True
@@ -124,7 +129,4 @@ def generateFunctionPrototype(function, syntax_map):
 	return lines
 
 def run(config):
-	syntax_file = open(config["project_directory"] + "/_site/syntax_map.json", 'r')
-	syntax_map = json.load(syntax_file)
-	processDirectory(config["markdown_directory"], "", config, syntax_map)
-
+	processDirectory(config["markdown_directory"], "", config)

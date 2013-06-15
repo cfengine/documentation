@@ -27,18 +27,25 @@ import cfdoc_linkresolver as linkresolver
 import cfdoc_extractexamples as extractexamples
 import cfdoc_syntaxmap as syntaxmap
 import cfdoc_git as git
+import sys
 
 config = environment.validate()
+
 try:
 	git.createData(config)
 except:
 	print "cfdoc_preprocess: Fatal error generating git tags"
+	sys.stdout.write("       Exception: ")
+	print sys.exc_info()
+
 	exit(1)
 
 try:
 	linkresolver.processDirectory(config["markdown_directory"],config["reference_path"],"")
 except:
 	print "cfdoc_preprocess: Fatal error generating link map"
+	sys.stdout.write("       Exception: ")
+	print sys.exc_info()
 	exit(2)
 
 try:
@@ -46,12 +53,16 @@ try:
 		extractexamples.run(config)
 except:
 	print "cfdoc_preprocess: Fatal error extracting example code"
+	sys.stdout.write("       Exception: ")
+	print sys.exc_info()
 	exit(3)
 
 try:
 	syntaxmap.run(config)
 except:
 	print "cfdoc_syntaxmap: Fatal error generating syntax maps"
+	sys.stdout.write("      Exception: ")
+	print sys.exc_info()
 	exit(4)
 
 exit(0)

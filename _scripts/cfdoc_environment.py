@@ -21,6 +21,7 @@
 # THE SOFTWARE.
 
 import os
+import json
 
 def validate():
 	config = {}
@@ -48,6 +49,7 @@ def validate():
 	
 	config["project_directory"] = os.path.dirname(config["reference_path"])
 	config["config_path"] = config["project_directory"] + "/_config.yml"
+
 	with open(config["config_path"], 'r') as config_file:
 		lines = config_file.readlines()
 		for line in lines:
@@ -63,9 +65,12 @@ def validate():
 			value = assign[1].lstrip().rstrip()
 			
 			config[key] = value
-	
+			
 	print 'cfdoc_environment: cwd              = ' + os.getcwd()
 	print '                   config           = '
 	print config
 		
+	config["syntax_path"] = config["project_directory"] + "/_site/syntax_map.json"
+	config["syntax_map"] = json.load(open(config["syntax_path"], 'r'))
+	
 	return config
