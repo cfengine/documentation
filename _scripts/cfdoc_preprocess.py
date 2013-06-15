@@ -25,6 +25,7 @@
 import cfdoc_environment as environment
 import cfdoc_linkresolver as linkresolver
 import cfdoc_extractexamples as extractexamples
+import cfdoc_syntaxmap as syntaxmap
 import cfdoc_git as git
 
 config = environment.validate()
@@ -46,5 +47,11 @@ try:
 except:
 	print "cfdoc_preprocess: Fatal error extracting example code"
 	exit(3)
+
+#try:
+syntaxmap.run(config)
+#except:
+#print "cfdoc_syntaxmap: Fatal error generating syntax maps"
+#exit(4)
 
 exit(0)
