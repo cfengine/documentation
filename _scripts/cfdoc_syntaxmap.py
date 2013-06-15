@@ -87,15 +87,76 @@ def processFile(markdown, config):
 		new_markdown_file.close()
 		os.rename(new_markdown_filename,markdown)
 
+def addToDict(dictionary, key, function):
+	values = dictionary.get(key)
+	if values == None: values = list()
+	values.append(function)
+	dictionary [key] = values
+
+def functionLink(function):
+	link = "[`" + function + "`][" + function + "]"
+	return link
+
+def dictToTable(dictionary):
+	lines = list()
+	row = 0
+	index = 0
+	while True:
+		columns = 0
+		line = "| "
+		for key in dictionary.keys():
+			if row == 0:
+				line += "`" + key + "`"
+				columns =- 1
+			elif row == 1:
+				line += "------------"
+				columns =- 1
+			else:
+				functionlist = dictionary[key]
+				if index < len(functionlist):
+					line += functionLink(functionlist[index])
+					columns += 1
+			line += " | "
+		line += "\n"
+		row += 1
+		if columns == 0:
+			break
+		elif columns > 0:
+			index += 1
+		lines.append(line)
+	lines.append("\n")
+	return lines
+
 def generateFunctionTable(syntax_map):
 	lines = []
 	functions = syntax_map["functions"]
 	ordered_functions = sorted(functions)
+	
+	categoryDict = dict()
+	returnTypeDict = dict()
+	functionlist = list()
+	
+	for function in ordered_functions:
+		category = functions[function]["category"]
+		addToDict(categoryDict, category, function)
+		
+		returnType = functions[function]["returnType"]
+		if returnType == "context": returnType = "class"
+		elif returnType in ["ilist","slist","rlist"]: returnType = "(i,r,s)list"
+		elif returnType in ["irange","rrange"]: returnType = "(i,r)range"
+		addToDict(returnTypeDict, returnType, function)
+		
+	lines.append("### Functions by Category\n\n")
+	lines += dictToTable(categoryDict)
+	
+	lines.append("### Functions by Return Type\n\n")
+	lines += dictToTable(returnTypeDict)
+	
 	for function in ordered_functions:
 		returnType = functions[function]["returnType"]
 		if returnType == "context": returnType = "class"
 		line = "* `" + returnType + "` "
-		line += "[`" + function + "`][" + function + "]"
+		line += functionLink(function)
 		line += '\n'
 		lines.append(line)
 	return lines
