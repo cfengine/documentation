@@ -126,25 +126,35 @@ def applyLinkMap(file_name, config):
 			in_pre = not in_pre
 		
 		if not in_pre:
-			for (key, value) in link_map.iteritems():
-				key_len = len(key)
-				in_link = False
+			while True:
+				value = ""
 				bracket_depth = 0
 				index = -1
+				candidate_start = -1
 				i = 0
 				# ignore existing links, ie everything in brackets
 				while i < len(markdown_line):
 					if markdown_line[i] == '[': bracket_depth += 1
 					elif markdown_line[i] == ']': bracket_depth -= 1
-					elif bracket_depth == 0 and markdown_line[i:i+key_len] == key:
-						index = i
-						break
+					elif bracket_depth == 0:
+						if markdown_line[i] == '`':
+							if candidate_start == -1:
+								candidate_start = i
+							else:
+								candidate = markdown_line[candidate_start:i+1]
+								value = link_map.get(candidate)
+								if not value == None:
+									index = candidate_start
+									break
+								candidate_start = -1
 					i += 1
 				if index != -1:
 					write_changes = True
 					new_line += markdown_line[:index]
-					new_line += "[" + key + "]" + value
-					markdown_line = markdown_line[index + len(key):]
+					new_line += "[" + candidate + "]" + value
+					markdown_line = markdown_line[index + len(candidate):]
+				else:
+					break
 		new_line += markdown_line
 		new_lines.append(new_line)
 			
