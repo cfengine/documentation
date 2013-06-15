@@ -16,7 +16,7 @@ tags: [reference, data functions, functions, hashmatch]
 This function may be used to determine whether a system has a particular
 version of a binary file (e.g. software patch).
 
-**ARGUMENTS**:
+**Arguments:**
 
 * `filename` : Filename to hash, in the range `"?(/.*)`
 * `algorithm` : Hash or digest algorithm, one of
