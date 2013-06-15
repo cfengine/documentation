@@ -45,20 +45,26 @@ def processFile(markdown, config, syntax_map):
 	write_changes = False
 	new_markdown_lines = []
 	in_pre = False
+	markdown_line_number = 0
 	for markdown_line in markdown_lines:
 		keepline = True
+		markdown_line_number += 1
 		# skip markdown codeblocks
 		if markdown_line[:3] == '```':
 			in_pre = not in_pre
 		
 		new_lines = []
 		if not in_pre:
-			if markdown_line.find("[%CFENGINE_FUNCTION_TABLE%]") == 0:
-				new_lines = generateFunctionTable(syntax_map)
-			elif markdown_line.find('[%CFENGINE_FUNCTION_PROTOTYPE(') == 0:
-				function = markdown_name[:markdown_name.find('.')]
-				function += markdown_line[markdown_line.find('('):markdown_line.find('%]')]
-				new_lines = generateFunctionPrototype(function, syntax_map)
+			try:
+				if markdown_line.find("[%CFENGINE_FUNCTION_TABLE%]") == 0:
+					new_lines = generateFunctionTable(syntax_map)
+				elif markdown_line.find('[%CFENGINE_FUNCTION_PROTOTYPE(') == 0:
+					function = markdown_name[:markdown_name.find('.')]
+					function += markdown_line[markdown_line.find('('):markdown_line.find('%]')]
+					new_lines = generateFunctionPrototype(function, syntax_map)
+			except:
+				print "cfdoc_syntaxmap.py: Exception in " + markdown + ", line "
+				print markdown_line_number
 		if len(new_lines) > 0:
 			keepline = False
 			write_changes = True
