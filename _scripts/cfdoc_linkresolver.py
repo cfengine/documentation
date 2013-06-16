@@ -62,10 +62,14 @@ def addToLinkFile(file_name, config):
 	
 	in_pre = False
 	for line in lines:
-		if line.find("```") == 0:
+		# ignore code blocks
+		if line.find("    ") == 0:
+			continue
+		elif line.find("```") == 0:
 			in_pre = not in_pre
 		if in_pre:
 			continue
+
 		if line.find("title:") == 0:
 			current_title = line.split('title: ')
 			current_title = current_title[1].rstrip().rstrip('\"')
@@ -101,7 +105,8 @@ def addToLinkFile(file_name, config):
 			anchor = anchor.replace("--", "-")
 			anchor = anchor.lstrip("-").rstrip("-")
 			label = current_file_label+ '#' + header
-			if header.count(" ") < 2:
+			# prefer top-level anchors
+			if header.count(" ") < 2 and not ("`" + header+ "`") in linkMap:
 				linkMap["`" + header+ "`"] = "[" + label + "]"
 			output_string = '['+ label + ']: '
 			output_string += current_file_name + '#' + anchor + ' '
@@ -122,6 +127,7 @@ def applyLinkMap(file_name, config):
 	new_lines = []
 	write_changes = False
 	in_pre = False
+	current_section = ""
 	for markdown_line in markdown_lines:
 		new_line = ""
 		# we ignore everything in code blocks
@@ -130,7 +136,16 @@ def applyLinkMap(file_name, config):
 			continue
 		if markdown_line.find('```') == 0:
 			in_pre = not in_pre
-		
+			
+		# don't link to the current section
+		if markdown_line.find("title:") == 0:
+			current_section = markdown_line.split('title: ')
+			current_section = current_section[1].rstrip().rstrip('\"')
+			current_section = current_section.lstrip().lstrip('\"')
+			current_section = "`" + current_section + "`"
+		elif markdown_line.find("#") == 0:
+			current_section = "`" + markdown_line.lstrip('#').rstrip().lstrip() + "`"
+					
 		if not in_pre:
 			while True:
 				value = ""
@@ -149,7 +164,7 @@ def applyLinkMap(file_name, config):
 							else:
 								candidate = markdown_line[candidate_start:i+1]
 								value = link_map.get(candidate)
-								if not value == None:
+								if not value == None and candidate != current_section:
 									index = candidate_start
 									break
 								candidate_start = -1
