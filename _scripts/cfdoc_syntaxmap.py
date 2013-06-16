@@ -29,10 +29,10 @@ import collections
 def run(config):
 	markdown_files = config["markdown_files"]
 	for file in markdown_files:
+		config["context_current_file"] = file
 		processFile(file, config)
 
 def processFile(markdown, config):
-	syntax_map = config["syntax_map"]
 	markdown_dir = os.path.dirname(markdown)
 	markdown_name = os.path.basename(markdown)
 
@@ -45,34 +45,55 @@ def processFile(markdown, config):
 	in_pre = False
 	markdown_line_number = 0
 	for markdown_line in markdown_lines:
-		keepline = True
 		markdown_line_number += 1
+		config["context_current_line"] = markdown_line
+		config["context_current_line_number"] = markdown_line_number
 		# skip markdown codeblocks
 		if markdown_line[:3] == '```':
 			in_pre = not in_pre
-		
+		if in_pre or markdown_line[:4] == "    ":
+			new_markdown_lines.append(markdown_line)
+			continue
+			
+		marker = "[%CFEngine_"
+		marker_index = markdown_line.find(marker)
+		if marker_index == -1:
+			new_markdown_lines.append(markdown_line)
+			continue
+			
 		new_lines = []
-		if not in_pre:
+		call = markdown_line[marker_index + len(marker):markdown_line.find("%]")]
+		function = call[:call.find('(')]
+		parameters = call[len(function) + 1:call.find(')')]
+		parameters = parameters.replace(" ", "")
+		parameters = parameters.split(",")
+		
+		try:
+			functor = getattr(sys.modules[__name__], function)
+		except:
+			functor = None
+		if (functor):
 			try:
-				if markdown_line.find("[%CFENGINE_FUNCTION_TABLE%]") == 0:
-					new_lines = generateFunctionTable(syntax_map)
-				elif markdown_line.find('[%CFENGINE_FUNCTION_PROTOTYPE(') == 0:
-					function = markdown_name[:markdown_name.find('.')]
-					function += markdown_line[markdown_line.find('('):markdown_line.find('%]')]
-					new_lines = generateFunctionPrototype(function, syntax_map)
+				new_lines = functor(parameters, config)
 			except:
-				print "cfdoc_syntaxmap.py: Exception in " + markdown + ", line %d" % markdown_line_number 
-				sys.stdout.write("         Exception : ")
+				sys.stdout.write("cfdoc_syntaxmap: Exception calling ")
+				print functor
+				sys.stdout.write("                 in " + config["context_current_file"])
+				sys.stdout.write("(%d): " % config["context_current_line_number"])
+				sys.stdout.write('`%s`' % config["context_current_line"])
+				sys.stdout.write("     Exception : ")
 				print sys.exc_info()
-				print syntax_map.keys()
-
+		else:
+			print "cfdoc_syntaxmap: Unknown function `" + function + "`"
+			print "                 in " + markdown + "(%d)" % markdown_line_number
+			print "                 " + markdown_line
+			new_lines += "<!-- " + markdown_line + "-->"
+			
 		if len(new_lines) > 0:
-			keepline = False
 			write_changes = True
 			for new_line in new_lines:
 				new_markdown_lines += new_line
-		
-		if keepline == True:
+		else:
 			new_markdown_lines += markdown_line
 			
 	if write_changes == True:
@@ -123,7 +144,8 @@ def dictToTable(dictionary):
 	lines.append("\n")
 	return lines
 
-def generateFunctionTable(syntax_map):
+def function_table(parameters, config):
+	syntax_map = config["syntax_map"]
 	lines = []
 	functions = syntax_map["functions"]
 	ordered_functions = sorted(functions)
@@ -157,8 +179,13 @@ def generateFunctionTable(syntax_map):
 		lines.append(line)
 	return lines
 
-def generateFunctionPrototype(function, syntax_map):
-	parameter_names = function[function.find('(')+1:-1].split(',')
+def function_prototype(parameters, config):
+	syntax_map = config["syntax_map"]
+	function = config["context_current_file"]
+	function = function[function.rfind("/")+1:function.rfind('.')+1]
+	print "generating function for " + function
+
+	parameter_names = parameters
 	function = function[:function.find('(')]
 
 	returnType = syntax_map["functions"][function]["returnType"]
