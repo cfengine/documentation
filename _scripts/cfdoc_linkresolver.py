@@ -28,11 +28,23 @@ from string import ascii_letters, digits
 
 def run(config):
 	markdown_files =  config["markdown_files"]
+	readLinkFile(config)
 	for file in markdown_files:
 		addToLinkFile(file, config)
 	for file in markdown_files:
 		applyLinkMap(file, config)
 
+def readLinkFile(config):
+	output_file = config["reference_path"]
+	link_map = config.get("link_map", dict())
+	
+	link_file = open(output_file, 'r')
+	link_lines = link_file.readlines()
+	for line in link_lines:
+		label = line[line.find('[') + 1:line.find(']')]
+		link_map["`" + label + "`"] = "[" + label + "]"
+	config["link_map"] = link_map
+		
 def addToLinkFile(file_name, config):
 	linkMap = config.get("link_map", dict())
 
