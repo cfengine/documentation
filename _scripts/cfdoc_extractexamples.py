@@ -30,22 +30,14 @@
 import os
 
 def run(config):
-	processDirectory(config["markdown_directory"], "", config)
-
-def processDirectory(cur_name,cur_dir, config):
-	if os.path.isdir(cur_name) == True:
-		markdownfiles = os.listdir(cur_name)	
-		for file_name in markdownfiles:
-			if os.path.isdir(cur_name+"/"+file_name) == True:
-				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, config)
-			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
-				processFile(cur_name+"/"+file_name, config)
+	markdown_files = config["markdown_files"]
+	for file in markdown_files:
+		processFile(file, config)
 
 def terminateBlock(lines):
 	if lines[-1] != '\n': lines += '\n'
 	lines += '```\n'
 	
-
 def processFile(markdown, config):
 	example_dir = config["example_directory"]
 

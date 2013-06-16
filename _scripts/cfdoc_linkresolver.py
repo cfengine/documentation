@@ -27,17 +27,11 @@ from os.path import isfile, join
 from string import ascii_letters, digits
 
 def run(config):
-	processDirectory(config["markdown_directory"], "", config, "addToLinkFile")
-	processDirectory(config["markdown_directory"], "", config, "applyLinkMap")
-
-def processDirectory(cur_name, cur_dir, config, function):
-	if os.path.isdir(cur_name) == True:
-		markdownfiles = os.listdir(cur_name)	
-		for file_name in markdownfiles:
-			if os.path.isdir(cur_name+"/"+file_name) == True and file_name[0] != '.':
-				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, config, function)
-			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
-				getattr(sys.modules[__name__], function)(cur_name+"/"+file_name, config)
+	markdown_files =  config["markdown_files"]
+	for file in markdown_files:
+		addToLinkFile(file, config)
+	for file in markdown_files:
+		applyLinkMap(file, config)
 
 def addToLinkFile(file_name, config):
 	linkMap = config.get("link_map", dict())

@@ -27,16 +27,9 @@ from os.path import isfile, join
 from string import ascii_letters, digits
 
 def run(config):
-	processDirectory(config["markdown_directory"], "", config)
-
-def processDirectory(cur_name,cur_dir, config):
-	if os.path.isdir(cur_name) == True:
-		markdownfiles = os.listdir(cur_name)
-		for file_name in markdownfiles:
-			if os.path.isdir(cur_name+"/"+file_name) == True:
-				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, config)
-			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
-				addLinkToSource(cur_name+"/"+file_name,config)
+	markdown_files = config["markdown_files"]
+	for file in markdown_files:
+		addLinkToSource(file, config)
 
 def addLinkToSource(file_name,config):
 	in_file = open(file_name,"r")

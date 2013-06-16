@@ -73,4 +73,17 @@ def validate():
 	config["syntax_path"] = config["project_directory"] + "/_site/syntax_map.json"
 	config["syntax_map"] = json.load(open(config["syntax_path"], 'r'))
 	
+	markdown_files = []
+	scanDirectory(config["markdown_directory"], "", ".markdown", markdown_files)
+	config["markdown_files"] = markdown_files
+	
 	return config
+
+def scanDirectory(cur_name, cur_dir, ext, file_list):
+	if os.path.isdir(cur_name) == True:
+		markdownfiles = os.listdir(cur_name)
+		for file_name in markdownfiles:
+			if os.path.isdir(cur_name+"/"+file_name) == True and file_name[0] != '.':
+				scanDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, ext, file_list)
+			elif os.path.isdir(file_name) == False and file_name[-len(ext):] == ext:
+				file_list.append(cur_name + "/" + file_name)

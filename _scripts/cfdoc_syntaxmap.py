@@ -26,14 +26,10 @@ import json
 import cfdoc_environment as environment
 import collections
 
-def processDirectory(cur_name,cur_dir, config):
-	if os.path.isdir(cur_name) == True:
-		markdownfiles = os.listdir(cur_name)	
-		for file_name in markdownfiles:
-			if os.path.isdir(cur_name+"/"+file_name) == True:
-				processDirectory(cur_name+"/"+file_name,cur_dir+"/"+file_name, config)
-			elif os.path.isdir(file_name) == False and ".markdown" in file_name:
-				processFile(cur_name+"/"+file_name, config)
+def run(config):
+	markdown_files = config["markdown_files"]
+	for file in markdown_files:
+		processFile(file, config)
 
 def processFile(markdown, config):
 	syntax_map = config["syntax_map"]
@@ -188,6 +184,3 @@ def generateFunctionPrototype(function, syntax_map):
 		lines += argument
 	lines += "\n"
 	return lines
-
-def run(config):
-	processDirectory(config["markdown_directory"], "", config)
