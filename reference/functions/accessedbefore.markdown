@@ -7,11 +7,13 @@ alias: reference-functions-accessedbefore.html
 tags: [reference, files functions, functions, accessedbefore]
 ---
 
+[%CFEngine_function_prototype(newer,older)%]
+
 **Description:** Compares the `atime` fields of two files.
 
 Return true if `newer` was accessed before `older`.
 
-[%CFENGINE_FUNCTION_PROTOTYPE(newer,older)%]
+[%CFEngine_function_attributes(newer, older)%]
 
 **Example:**  
 

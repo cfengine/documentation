@@ -57,7 +57,7 @@ might make it easier for you to find the function you need.
 
 ## List of all functions
 
-[%CFENGINE_FUNCTION_TABLE%]
+[%CFEngine_function_table()%]
 
 <!-- **TODO: fix links, make proper markdown tables** 
 ## Functions listed by return value
