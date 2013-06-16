@@ -39,8 +39,6 @@ def terminateBlock(lines):
 	lines += '```\n'
 	
 def processFile(markdown, config):
-	example_dir = config["example_directory"]
-
 	markdown_file = open(markdown, 'r')
 	markdown_lines = markdown_file.readlines()
 	markdown_file.close()
@@ -60,11 +58,14 @@ def processFile(markdown, config):
 		# skip markdown codeblocks
 		if line[:3] == '```':
 			in_pre = not in_pre
-		if not in_pre and line.find("[%include(") == 0:
+		if not in_pre and line.find("[%CFEngine_include(") == 0:
 			# out of previous example source, read next
 			if (example_idx == len(example_lines)):
-				example = line[line.find("(")+1:line.find(")%]")]
-				example_lines = readExample(example_dir + "/" + example)
+				parameters = line[line.find("(")+1:line.find(")%]")]
+				parameters = parameters.replace(" ", "")
+				parameters = parameters.split(",")
+				example = parameters[0]
+				example_lines = include(parameters, config)
 			
 			# write example until next stop marker [%-]
 			if len(example_lines) > example_idx:
@@ -107,8 +108,10 @@ def processFile(markdown, config):
 		new_markdown_file.close()
 		os.rename(new_markdown_filename,markdown)
 			
-def readExample(example):
+def include(parameters, config):
 	markdown_lines = []
+	example_dir = config["example_directory"]
+	example = example_dir + "/" + parameters[0]
 	
 	try:
 		example_file = open(example, 'r')
@@ -117,7 +120,6 @@ def readExample(example):
 		return markdown_lines
 		
 	lines = example_file.readlines()	
-	print "Injecting " + example
 	skip_block = True
 	for line in lines:
 		if skip_block == False:
