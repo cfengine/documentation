@@ -28,9 +28,14 @@ syntax.
 ### Promise Types
 
 The `promise_type` defines what kind of object is making the promise. The type 
-dictates how CFEngine interprets the promise body. These promise types are straightforward: The `files` promise type deals with file permissions and file content, and the `packages` promise type allows you to work with packaging systems such as rpm and apt.
+dictates how CFEngine interprets the promise body. These promise types are 
+straightforward: The `files` promise type deals with file permissions and file 
+content, and the `packages` promise type allows you to work with packaging 
+systems such as rpm and apt.
 
-Some promise types are common to all CFEngine components, while others can only be executed by one of them. `cf-serverd` cannot keep `packages` promises, and `cf-agent` cannot keep `access` promises. See the
+Some promise types are common to all CFEngine components, while others can 
+only be executed by one of them. `cf-serverd` cannot keep `packages` promises, 
+and `cf-agent` cannot keep `access` promises. See the
 [Promise Type reference][Promise Types and Attributes] for a comprehensive 
 list of promise types.
 
