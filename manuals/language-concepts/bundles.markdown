@@ -41,7 +41,9 @@ and `cf-monitord` has bundles declared as
     }
 ```
 
-A number of promises can be made in any kind of bundle since they are of a generic input/output nature. These are `vars`, `classes`, `defaults`, `meta` and `reports` promises.
+A number of promises can be made in any kind of bundle since they are of a 
+generic input/output nature. These are `vars`, `classes`, `defaults`, `meta` 
+and `reports` promises.
 
 Bundles of type `common` may only contain the promise types that are common to 
 all bodies. Their main function is to define cross-component global 
