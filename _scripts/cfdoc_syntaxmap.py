@@ -67,6 +67,8 @@ def processFile(markdown, config):
 		parameters = call[len(function) + 1:call.find(')')]
 		parameters = parameters.replace(" ", "")
 		parameters = parameters.split(",")
+		if len(parameters) == 1 and parameters[0] == "":
+			parameters = None
 		
 		try:
 			functor = getattr(sys.modules[__name__], function)
@@ -181,33 +183,45 @@ def function_table(parameters, config):
 
 def function_prototype(parameters, config):
 	syntax_map = config["syntax_map"]
+	# assume that basename of file = function
 	function = config["context_current_file"]
 	function = function[function.rfind("/")+1:function.rfind('.')+1]
-	print "generating function for " + function
+	function = function[:function.find('(')]
+
+	prototype = function + "("
+	for parameter in parameters:
+		prototype += parameter + ", "
+	if prototype[-2:] == ", ":
+		prototype = prototype[:len(prototype)-2]
+	prototype += ")"
+	
+	lines = []
+	lines = "**Prototype:** `" + prototype + "`\n"
+	return lines
+
+def function_attributes(parameters, config):
+	syntax_map = config["syntax_map"]
+	# assume that basename of file = function
+	function = config["context_current_file"]
+	function = function[function.rfind("/")+1:function.rfind('.')+1]
 
 	parameter_names = parameters
 	function = function[:function.find('(')]
 
 	returnType = syntax_map["functions"][function]["returnType"]
 	parameters = syntax_map["functions"][function]["parameters"]
-	prototype = function + "("
 	arguments = []
 	arg_idx = 0
 	for parameter in parameters:
 		arguments += "* `" + parameter_names[arg_idx] + "`: `"
 		arguments += parameter["type"] + "`, in the range: `"
 		arguments += parameter["range"] + "`\n"
-		prototype += parameter_names[arg_idx] + ", "
 		arg_idx += 1
-	if prototype[-2:] == ", ":
-		prototype = prototype[:len(prototype)-2]
-	prototype += ")"
 	
 	lines = []
-	lines = "**Prototype:** `" + prototype + "`\n\n"
 	lines += "**Return type:** `" + returnType + "`\n\n"
 	lines += "**Arguments:** \n\n"
 	for argument in arguments:
 		lines += argument
-	lines += "\n"
+	return lines
 	return lines
