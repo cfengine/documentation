@@ -234,6 +234,7 @@ def generateTreeLine(keyword, config):
 	return "* " + keyword + "\n"
 
 def generateTree(tree, excludes, depth, config):
+	skip_leaves = ["attributes"]
 	lines = []
 	try:
 		keys = tree.keys()
@@ -241,11 +242,24 @@ def generateTree(tree, excludes, depth, config):
 			if key in excludes:
 				continue
 			subtree = tree.get(key)
-			line = " " * depth * 4
-			line += generateTreeLine(key, config)
-			lines.append(line)
+			# skip some branches, but not the tree
+			if not key in skip_leaves:
+				line = " " * depth * 4
+				line += generateTreeLine(key, config)
+				lines.append(line)
+			else:
+				depth -= 1
 			if subtree:
 				lines += generateTree(subtree, excludes, depth + 1, config)
+				type = subtree.get("type")
+				try:
+					if type and (type == "body"):
+						syntax_map = config["syntax_map"]
+						bodyTree = syntax_map["bodyTypes"]
+						bodyTree = bodyTree.get(key)
+						lines += generateTree(bodyTree, excludes, depth + 1, config)
+				except:
+					continue
 		return lines
 	except:
 		line = " " * depth * 4
