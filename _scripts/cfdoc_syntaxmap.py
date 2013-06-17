@@ -224,4 +224,40 @@ def function_attributes(parameters, config):
 	for argument in arguments:
 		lines += argument
 	return lines
+
+def generateTreeLine(keyword, config):
+	link_map = config.get("link_map")
+	label = "`" + keyword + "`"
+	link = link_map.get(label)
+	if link:
+		return "* [" + label + "]" + link + "\n"
+	return "* " + keyword + "\n"
+
+def generateTree(tree, excludes, depth, config):
+	lines = []
+	try:
+		keys = tree.keys()
+		for key in keys:
+			if key in excludes:
+				continue
+			subtree = tree.get(key)
+			line = " " * depth * 4
+			line += generateTreeLine(key, config)
+			lines.append(line)
+			if subtree:
+				lines += generateTree(subtree, excludes, depth + 1, config)
+		return lines
+	except:
+		line = " " * depth * 4
+		line += generateTreeLine(tree, config)
+		lines.append(line)
+		return lines
+
+def syntax_map(parameters, config):
+	syntax_map = config["syntax_map"]
+	if parameters != None:
+		syntax_map = syntax_map[parameters[0]]
+		parameters = parameters[1:]
+	
+	lines = generateTree(syntax_map, parameters, 0, config)
 	return lines
