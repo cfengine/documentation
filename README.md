@@ -209,8 +209,6 @@ title is the name of the function.
 
     **Prototype:** `function(named, parameters)`
     
-    **Return type:** `datatype`
-
     **Description:** Returns something based on `named` and `parameters`.
 
     The first line of the  description is a single line of text, summarizing
@@ -220,6 +218,8 @@ title is the name of the function.
     Longer explanation on what it does and why it is useful then afterwards.
 
     Over multiple paragraphs if necessary.
+
+    **Return type:** `datatype`
 
     **Arguments:**
     
