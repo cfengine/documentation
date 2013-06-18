@@ -50,3 +50,9 @@ There is a policy-level workaround for this one, add the following to `body serv
 ```cf3
 bindtointerface => "0.0.0.0";
 ```
+
+### In CFEngine Enterprise Design Center GUI all activations of packages::installed sketch initially report failure
+
+Package verrification is always run before package add which causes packages
+to be reported as nonexistant for the first run.
+
