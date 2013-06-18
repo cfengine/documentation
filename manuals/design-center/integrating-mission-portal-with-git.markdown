@@ -200,7 +200,8 @@ Save the following in `update/update_from_repository.cf`.
 
         body contain u_no_output
         {
-        no_output => "true";
+          no_output => "true";
+          chdir => "/var/cfengine/masterfiles";
         }
 ```
 
