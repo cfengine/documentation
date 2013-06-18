@@ -49,8 +49,6 @@ with little background in programming. Here is the simplest `Hello world' progra
 
 We have found that the following steps are a good way to learn CFEngine:
 
-<!-- * **TODO: Continue with From Zero to Hero** -->
-
 * Complete Step 2 of the getting started guide: Deploy your first policy on
    [VirtualBox](https://cfengine.com/enterprise-getting-started-2) or 
      [KVM](https://cfengine.com/cfengine-enterprise-getting-started-using-kvm-step-2)
