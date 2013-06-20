@@ -85,3 +85,5 @@ We have found that the following steps are a good way to learn CFEngine:
   target="_blank">CFEngine 3 Beginning Examples</a> by Vertical Sysadmin
 * <a href="http://watson-wilson.ca/2011/05/cfengine-3-cookbook-begins.html" 
   target="_blank">CFEngine 3 Tutorial</a> by Neil Watson
+* <a href="http://cfengine.com/policy_wizard/" 
+  target="_blank">CFEngine 3 Policy Wizard</a> by Joe Netzel
