@@ -51,4 +51,14 @@ There is a policy-level workaround for this one, add the following to `body serv
 bindtointerface => "0.0.0.0";
 ```
 
+### cf-execd sends out emails on every execution
+
+The inclusion of the timestamp in the new log output format causes this
+behavior. This will be resolved in the next release.
+
+Current workaround options include disabling email by commenting out `mailto` and
+`smtpserver` in `body executor control` or by running `cf-agent` from cron.
+
+https://cfengine.com/dev/issues/3011
+
 
