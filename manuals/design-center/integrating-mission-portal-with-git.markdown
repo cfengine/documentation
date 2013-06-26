@@ -61,8 +61,8 @@ the git service.
 
            git@gitserver $ mkdir masterfiles.git
            git@gitserver $ cd masterfiles.git/
-           git@gitserver $ $ git init --bare
-                             Initialized empty Git repository in /home/git/masterfiles.git/
+           git@gitserver $ git init --bare
+                           Initialized empty Git repository in /home/git/masterfiles.git/
 
 ## Initializing the git repository
 
@@ -179,7 +179,7 @@ but no actions will be taken by CFEngine on the end hosts, nor will any
 reports come back, until the policy from git is copied into
 `/var/cfengine/masterfiles` on your policy server.
 
-The following steps show how to configure ´cf-agent´ on the policy server to
+The following steps show how to configure `cf-agent` on the policy server to
 pull from git every time it runs (by default every 5 minutes).
 
 1. On a working copy of your git repository, add the promise to update from git.
