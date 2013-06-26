@@ -14,8 +14,8 @@ for example when validating input to a bundle. The following policy uses a list 
 regular expressions for classes, or class expressions that [`cf-agent`][cf-agent] will watch out for.
 If any of these classes becomes defined, it will cause the current bundle to be aborted.
 
-[%CFEngine_include(abort.cf,1)%]
-[%CFEngine_include(abort.cf,2)%]
+[%CFEngine_include(abort.cf)%]
+[%CFEngine_include(abort.cf)%]
 
 This is how the policy runs when the userlist is valid:
 
