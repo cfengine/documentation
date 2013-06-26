@@ -1046,8 +1046,9 @@ change in the future.
 **Description:** Setting the `preserve` menu option policy determines whether 
 to preserve file permissions on copied files.
 
-This ensures that the destination file (promiser) gets the same Unix mode as 
-the source. This also applies to remote copies.
+This ensures that the destination file (promiser) gets the same file permissions as
+the source. For local copies, all attributes are preserved, including ACLs and SELinux
+security contexts. For remote copies, only Unix mode is preserved.
 
 **Type:** [`boolean`][boolean]
 
