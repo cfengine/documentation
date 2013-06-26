@@ -25,31 +25,30 @@ import json
 
 def validate():
 	config = {}
-	config["reference_path"] = os.environ.get('CFDOC_LINKFILE')
-	if not os.path.exists(config["reference_path"]):
-		print "Path in 'CFDOC_LINKFILE' not found: " + config["reference_path"]
-	
-	config["markdown_directory"] = os.environ.get('CFDOC_DIRNAME')
-	if not os.path.exists(config["markdown_directory"]):
-		print "Path in 'CFDOC_DIRNAME' not found: " + config["markdown_directory"]
-
-	config["example_directory"] = os.environ.get('CFDOC_EXAMPLEPATH')
-	if not os.path.exists(config["example_directory"]):
-		print "Path in 'CFDOC_EXAMPLEPATH' not found: " + config["example_directory"]
-
-	if config["reference_path"] == None or config["markdown_directory"] == None:
-	
-		print 'Please set environment variables and retry. Example:'
-		print '> CFDOC_LINKFILE="/path/to/link/file"'
-		print '> export CFDOC_LINKFILE'
-		print '> CFDOC_DIRNAME="/path/to/doc/dir"'
-		print '> export CFDOC_DIRNAME'
-		print '> /path/to/this/script/cfdoc_createlinks.py'
+	config["WORKDIR"] = os.environ.get('WRKDIR')
+	if config["WORKDIR"] == None:
+		print 'Please set environment variable `WRKDIR` and retry.'
 		exit(1)
-	
-	config["project_directory"] = os.path.dirname(config["reference_path"])
-	config["config_path"] = config["project_directory"] + "/_config.yml"
 
+	if not os.path.exists(config["WORKDIR"]):
+		print "Directory WORKDIR not found: " + config["WORKDIR"]
+		exit(2)
+		
+	config["project_directory"] = config["WORKDIR"] + "/documentation-generator"
+	if not os.path.exists(config["project_directory"]):
+		print "Directory 'documentation-generator' not found in WORKDIR"
+	
+	config["markdown_directory"] = config["WORKDIR"] + "/documentation"
+	if not os.path.exists(config["markdown_directory"]):
+		print "Directory 'documentation' not found in WORKDIR"
+
+	config["example_directory"] = config["WORKDIR"] + "/core/examples"
+	if not os.path.exists(config["example_directory"]):
+		print "Directory 'core/examples' not found in WORKDIR"
+		
+	config["reference_path"] = config["project_directory"] + "/_references.md"
+	config["config_path"] = config["project_directory"] + "/_config.yml"
+	
 	with open(config["config_path"], 'r') as config_file:
 		lines = config_file.readlines()
 		for line in lines:
