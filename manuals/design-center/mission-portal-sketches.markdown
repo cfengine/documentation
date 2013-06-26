@@ -83,7 +83,7 @@ We will create a sketch that just echoes what the user inputs in the GUI.
 
 2. Fill `main.cf` with the following.
 
-```cf3
+    ```cf3
         body file control
         {
               namespace => "myskeches_echo";
@@ -106,7 +106,7 @@ We will create a sketch that just echoes what the user inputs in the GUI.
                   comment => "Print to console for testing",
                   handle => "$(activation_id)_echo";
         }
-```
+    ```
 
 3. Fill `sketch.json` with the following.
 
@@ -136,7 +136,7 @@ We will create a sketch that just echoes what the user inputs in the GUI.
             },
             namespace: "myskeches_echo",
             interface: [ "main.cf" ]
-    }
+        }
 
 3. Regenerate the description of the sketches.
 
