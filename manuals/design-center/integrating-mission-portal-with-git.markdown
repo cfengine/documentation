@@ -185,7 +185,7 @@ pull from git every time it runs (by default every 5 minutes).
 1. On a working copy of your git repository, add the promise to update from git.
 Save the following in `update/update_from_repository.cf`.
 
-```cf3
+    ```cf3
         bundle agent update_from_repository
         {
         commands:
@@ -204,7 +204,7 @@ Save the following in `update/update_from_repository.cf`.
           no_output => "true";
           chdir => "/var/cfengine/masterfiles";
         }
-```
+    ```
 
 2. Include the file into the failsafe policy, change the following in `failsafe/failsafe.cf`.
 
