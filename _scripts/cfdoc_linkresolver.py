@@ -134,7 +134,7 @@ def applyLinkMap(file_name, config):
 		if markdown_line[:4] == "    ":
 			new_lines.append(markdown_line)
 			continue
-		if markdown_line.find('```') == 0:
+		if markdown_line.lstrip()[:3] == '```':
 			in_pre = not in_pre
 			
 		# don't link to the current section

@@ -56,7 +56,7 @@ def processFile(markdown, config):
 	for line in markdown_lines:
 		keepline = True
 		# skip markdown codeblocks
-		if line[:3] == '```':
+		if line.lstrip()[:3] == '```':
 			in_pre = not in_pre
 		if not in_pre and line.find("[%CFEngine_include(") == 0:
 			# out of previous example source, read next

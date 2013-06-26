@@ -49,11 +49,11 @@ def processFile(markdown, config):
 		config["context_current_line"] = markdown_line
 		config["context_current_line_number"] = markdown_line_number
 		# skip markdown codeblocks
-		if markdown_line[:3] == '```':
-			in_pre = not in_pre
 		if in_pre or markdown_line[:4] == "    ":
 			new_markdown_lines.append(markdown_line)
 			continue
+		if markdown_line.lstrip()[:3] == '```':
+			in_pre = not in_pre
 			
 		marker = "[%CFEngine_"
 		marker_index = markdown_line.find(marker)
