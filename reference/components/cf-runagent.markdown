@@ -85,7 +85,7 @@ introducing such dependencies makes configuration brittle.
 
          #output_to_file => "true";
      }
-
+```
 
 ### hosts
 
