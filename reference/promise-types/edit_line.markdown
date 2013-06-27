@@ -191,6 +191,13 @@ update         => "yes";
 
 **Type:** `body select_region`
 
+**Description:** Restrict edit_line promise to specific section
+
+Restrict edits to a specific region of a file based on [select_start][bundle
+edit_line#select_start] and [select_end][bundle edit_line#select_end] regular
+expressions. If the beginning and ending regular expressions match more than
+one region only the first region will be selected for editing.
+
 #### include_start_delimiter
 
 **Description:** Whether to include the section delimiter
