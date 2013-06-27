@@ -106,6 +106,7 @@ an alias for the expression with a single name.
 **Allowed input range:** `.*`
 
 **Example:**
+
 ```cf3
      body agent control
     
@@ -198,6 +199,7 @@ the control section are hard-classes.
 **Allowed input range:** `.*`
 
 **Example:**
+
 ```cf3
 
     any::
@@ -231,6 +233,7 @@ rather than a security measure.
 **Allowed input range:** `.*`
 
 **Example:**
+
 ```cf3
      agentaccess => { "mark", "root", "sudo" };
 ```
@@ -258,6 +261,7 @@ rather than a security measure.
 syslog facility level.
 
 **Example:**
+
 ```cf3
     agentfacility => "LOG_USER";
 ```
@@ -280,6 +284,7 @@ during agent execution.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -304,6 +309,7 @@ executing, or only after updates.
 **Type:** [`boolean`][boolean]
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -336,6 +342,7 @@ nothing and is kept for backward compatibility.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -362,6 +369,7 @@ strings can be padded out to the same length.
 **Default value:** space (ASC=32)
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -386,6 +394,7 @@ be given as the argument, not the device name.
 **Allowed input range:** `.*`
 
 **Example:**
+
 ```cf3
     bindtointerface => "192.168.1.1";
 ```
@@ -404,6 +413,7 @@ etc) this is a common setting.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -425,6 +435,7 @@ of the agent.
 **Allowed input range:** `.*`
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -449,6 +460,7 @@ class.
 **Default value:** 10 mins
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -473,6 +485,7 @@ default policy for comparing source and image in copy transactions.
        binary
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -500,6 +513,7 @@ repository.
 **Default value:** in situ
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -528,6 +542,7 @@ depends on system behavior.
 **Default value:** 10 seconds
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -548,6 +563,7 @@ the system, and will only report what it needs to do.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -571,6 +587,7 @@ and may be overridden on a per-promise basis with `max_file_size`.
 **Default value:** `100k`
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -597,6 +614,7 @@ overridden on a per-promise basis with `max_file_size`.
 **Default value:** 100000
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -617,6 +635,7 @@ The values of environment variables are inherited by child commands.
 **Allowed input range:** `[A-Za-z0-9_]+=.*`
 
 **Example:**
+
 ```cf3
     body common control
     {
@@ -660,6 +679,7 @@ kill and restart its attempt to keep a promise.
 **Default value:** 1 min
 
 **Example:**
+
 ```cf3
     body action example
     {
@@ -685,6 +705,7 @@ for lazy-evaluation of overlapping file-copy promises.
 **Allowed input range:** (arbitrary string)
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -711,6 +732,7 @@ automatically.
 **Allowed input range:** (arbitrary string)
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -734,6 +756,7 @@ addresses.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body server control
     {
@@ -761,6 +784,7 @@ another which is not tied to a specific time.
 **Default value:** 1
 
 **Example:**
+
 ```cf3
     #local
     
@@ -791,6 +815,7 @@ It is equivalent to (and when present, overrides) the command line option
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -827,6 +852,7 @@ diminishing returns.
 **Default value:** 1 concurrent agent promise
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -847,6 +873,7 @@ number of outgoing connections to `cf-serverd`.
 **Default value:** 30 remote queries
 
 **Example:**
+
 ```cf3
     # client side 
     
@@ -875,6 +902,7 @@ file system table.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -894,6 +922,7 @@ This test is applied in all recursive/depth searches.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -913,6 +942,7 @@ canonize pathnames in the file repository.
 **Default value:** `_`
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -939,6 +969,7 @@ at the start of every scheduled bundle.
 **Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+`
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -967,6 +998,7 @@ owned by a privileged user.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -986,6 +1018,7 @@ number of files a mounted filesystem is expected to have.
 **Default value:** 2 files
 
 **Example:**
+
 ```cf3
     body agent control 
     {
@@ -1005,6 +1038,7 @@ number of bytes a mounted filesystem is expected to have.
 **Default value:** 1000 bytes
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -1029,6 +1063,7 @@ credentials.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -1049,6 +1084,7 @@ it will warn about them.
 **Allowed input range:** (arbitrary string)
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -1066,6 +1102,7 @@ switch on output to syslog at the inform level.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -1088,6 +1125,7 @@ repaired, sum value notkept.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -1106,6 +1144,7 @@ machine must comply with.
 **Allowed input range:** (arbitrary string)
 
 **Example:**
+
 ```cf3
     body agent control
     {
@@ -1128,6 +1167,7 @@ promise.
 **Default value:** false
 
 **Example:**
+
 ```cf3
     body agent control
     {
