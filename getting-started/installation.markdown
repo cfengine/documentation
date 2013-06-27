@@ -39,8 +39,8 @@ depends on your specific policies, especially those that concern reporting.
   following two commands: /`etc/init.d/iptables stop` and `chkconfig iptables
   off`
 
-CFEngine bundles all critical dependencies into the distribution package;
-therefore, additional software is not required.
+CFEngine bundles all critical dependencies into the package; therefore,
+additional software is not required.
 
 ****
 
@@ -57,8 +57,8 @@ The Community Edition is packaged using the following naming convention:
 1. Install the package **first** on the Policy Server, and then on each Host:
 
 ```
-    [RedHat/CentOS/SUSE] $ rpm -i <hub package>.rpm
-    [Debian/Ubuntu]      $ dpkg -i <hub package>.deb
+    [RedHat/CentOS/SUSE] $ rpm -i <package>.rpm
+    [Debian/Ubuntu]      $ dpkg -i <package>.deb
 ```
 
 2. Run the bootstrap command, **first** on the Policy Server, and then on each
@@ -112,7 +112,7 @@ pages.
 5. Set the file descriptor limit and user process limit to 4k+ (see etc/limits
 and ulimit)
 
-### Distribution
+### Packages
 
 CFEngine Enterprise is provided in two packages; one is for the Policy
 Server and the other is for each Host (Client). These packages contain the
@@ -179,7 +179,7 @@ $ /var/cfengine/bin/cf-serverd -A
 This generates the configuration file for Avahi in `/etc/avahi/services` and 
 restarts the Avahi daemon in order to register the new service.
 
-From this point on, the Policy Server will be discovered as an Avahi service.
+From this point on, the Policy Server will be discovered with the Avahi service.
 To verify that the server is visible, run the following command (requires
 `avahi-utils`):
 
@@ -194,7 +194,7 @@ The sample output looks like this:
     _cfenginehub._tcp local
 ``` 
 
-Once the Policy Server is configured as an Avahi service, you can
+Once the Policy Server is configured with the Avahi service, you can
 auto-bootstrap Hosts to it.
 
 ``` 
