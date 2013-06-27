@@ -1090,7 +1090,7 @@ it will warn about them.
     {
     suspiciousnames => { ".mo", "lrk3", "rootkit" };
     }
-
+```
 
 ### syslog
 
