@@ -37,7 +37,6 @@ except:
 	print "cfdoc_preprocess: Fatal error generating git tags"
 	sys.stdout.write("       Exception: ")
 	print sys.exc_info()
-
 	exit(1)
 
 try:
@@ -58,9 +57,11 @@ except:
 try:
 	syntaxmap.run(config)
 except:
-	print "cfdoc_syntaxmap: Fatal error generating syntax maps"
+	print "cfdoc_syntaxmap: Error generating documentation from syntax maps"
 	sys.stdout.write("      Exception: ")
 	print sys.exc_info()
-	exit(255)
+
+# Final step: generate links to known targets
+linkresolver.apply(config)
 
 exit(0)

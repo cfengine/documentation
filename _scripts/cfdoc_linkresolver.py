@@ -31,6 +31,9 @@ def run(config):
 	readLinkFile(config)
 	for file in markdown_files:
 		parseMarkdownForAnchors(file, config)
+
+def apply(config):
+	markdown_files =  config["markdown_files"]
 	for file in markdown_files:
 		applyLinkMap(file, config)
 
