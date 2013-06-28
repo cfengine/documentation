@@ -66,6 +66,7 @@ def processFile(markdown, config):
 				parameters = parameters.split(",")
 				example = parameters[0]
 				example_lines = include(parameters, config)
+				example_idx = 0
 			
 			# write example until next stop marker [%-]
 			if len(example_lines) > example_idx:
@@ -91,6 +92,7 @@ def processFile(markdown, config):
 					new_markdown_lines.append("This policy can be found in ")
 					new_markdown_lines.append("`/var/cfengine/share/doc/examples/" + example + "`")
 					new_markdown_lines.append("\n")
+					example_idx = len(example_lines)
 					
 		if keepline == True:
 			# terminate code block
