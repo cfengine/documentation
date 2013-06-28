@@ -293,7 +293,7 @@ def resolveAttribute(attributes, argument):
 	for attribute in attributes:
 		rval = attribute["rval"]
 		lval = attribute["lval"]
-		lval_link = "[`" + lval + "`][" + lval + "]"
+		lval_link = "`" + lval + "`"
 		attribute_type = rval["type"]
 		
 		if attribute_type == "string":
@@ -305,7 +305,7 @@ def resolveAttribute(attributes, argument):
 				attribute_line += ", used as rval of attribute " + lval_link
 		elif attribute_type == "functionCall":
 			function_name = rval["name"]
-			function_name_link = "[`" + function_name + "()`][" + function_name + "]"
+			function_name_link = "`" + function_name + "()`"
 			for function_argument in rval["arguments"]:
 				function_argument_type = function_argument.get("type")
 				function_argument_value = function_argument.get("value")
@@ -363,7 +363,7 @@ def library_include(parameters, config):
 				prototype = namespace + ":" + prototype
 				
 			markdown_lines.append("#### " + prototype + "\n")
-			linkresolver.addLinkToMap("`" + prototype + "()`", prototype, html_name + "#" + prototype, config)
+			linkresolver.addLinkToMap("`" + prototype + "()`", "[" + prototype + "]", html_name + "#" + prototype, config)
 			markdown_lines.append("\n")
 			
 			arguments = element["arguments"]
@@ -382,7 +382,7 @@ def library_include(parameters, config):
 						for context in promise_type["contexts"]:
 							for promise in context["promises"]:
 								if promise["promiser"].find("(" + argument + ")") != -1:
-									promise_type_link = "[`" + promise_type["name"] + "`][" + promise_type["name"] + "]"
+									promise_type_link = "`" + promise_type["name"] + "`"
 									argument_line += ", used as promiser of type " + promise_type_link
 								else:
 									argument_line += resolveAttribute(promise["attributes"], argument)
