@@ -47,7 +47,7 @@ with little background in programming. Here is the simplest `Hello world' progra
 We have found that the following steps are a good way to learn CFEngine:
 
 * Complete the Getting Started Guide: [Set up CFEngine Enterprise](https://cfengine.com/cfengine-enterprise-getting-started-using-vagrant) and 
-     [Deploy your first CFEngine Policy](https://cfengine.com/cfengine-enterprise-getting-started-using-vagrant-step-2)
+     [Deploy your first CFEngine Policy](https://cfengine.com/cfengine-enterprise-getting-started-using-vagrant-step-2).
 * Download syntax highlighters for
   [vim](https://github.com/neilhwatson/vim_cf3) or
   [emacs](https://github.com/cfengine/core/blob/master/contrib/cfengine.el).
