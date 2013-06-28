@@ -275,3 +275,138 @@ def syntax_map(parameters, config):
 	
 	lines = generateTree(syntax_map, parameters, 0, config)
 	return lines
+
+def resolveAttribute(attributes, argument):
+	attribute_line = ""
+	
+	for attribute in attributes:
+		rval = attribute["rval"]
+		lval = attribute["lval"]
+		lval_link = "[`" + lval + "`][" + lval + "]"
+		attribute_type = rval["type"]
+		
+		if attribute_type == "string":
+			value = rval.get("value")
+			if value == None:
+				continue
+			if value.find("(" + argument + ")") != -1:
+				attribute_line += ": " + attribute_type
+				attribute_line += ", used as rval of attribute " + lval_link
+		elif attribute_type == "functionCall":
+			function_name = rval["name"]
+			function_name_link = "[`" + function_name + "()`][" + function_name + "]"
+			for function_argument in rval["arguments"]:
+				function_argument_type = function_argument.get("type")
+				function_argument_value = function_argument.get("value")
+				if function_argument_value == None:
+					continue
+				if function_argument_value.find("(" + argument + ")") != -1:
+					attribute_line += ": " + function_argument_type
+					attribute_line += ", used as a parameter to function " + function_name_link
+					attribute_line += " setting promise attribute " + lval_link
+				
+	return attribute_line
+
+def library_include(parameters, config):
+	markdown_lines = []
+	
+	policy_filename = parameters[0] + ".json"
+	policy_json = config.get(policy_filename)
+	if policy_json == None:
+		policy_path = config["project_directory"] + "/_site/" + policy_filename
+		if not os.path.exists(policy_path):
+			print "cfdoc_syntaxmap:library_include: File does not exist: " + policy_path
+			return markdown_lines
+		
+		policy_json = json.load(open(policy_path, 'r'))
+		config[policy_filename] = policy_json
+		
+	# for all bundles and bodies...
+	for key in policy_json.keys():
+		markdown_lines += "## " + key + "\n\n"
+		element_list = policy_json[key]
+		
+		current_type = None
+		for element in element_list:
+			namespace = element["namespace"]
+			if namespace == "default":
+				namespace = None
+			name = element["name"]
+			element_type = element.get("bundleType")
+			if element_type == None:
+				element_type = element.get("bodyType")
+			if element_type == None:
+				print "cfdoc_syntaxmap:library_include: element without type: " + name
+				continue
+				
+			# start a new block for changed types
+			# Assumes that bundles and bodies are grouped by type in library.cf
+			if element_type != current_type:
+				current_type = element_type
+				markdown_lines.append("### " + current_type + " " + key + "\n")
+				markdown_lines.append("\n")
+		
+			prototype = name
+			if namespace:
+				prototype = namespace + ":" + prototype
+				
+			markdown_lines.append("#### " + prototype + "\n")
+			markdown_lines.append("\n")
+		
+			arguments = element["arguments"]
+			argument_idx = 0
+			argument_lines = []
+			while argument_idx < len(arguments):
+				if argument_idx == 0:
+					prototype += "("
+					argument_lines.append("**Arguments:**\n\n")
+				argument = arguments[argument_idx]
+				prototype += argument
+				argument_line = "* `" + argument + "`"
+				# find out where the argument is being used
+				if key == "bundles":
+					for promise_type in element["promiseTypes"]:
+						for context in promise_type["contexts"]:
+							for promise in context["promises"]:
+								if promise["promiser"].find("(" + argument + ")") != -1:
+									promise_type_link = "[`" + promise_type["name"] + "`][" + promise_type["name"] + "]"
+									argument_line += ", used as promiser of type " + promise_type_link
+								else:
+									argument_line += resolveAttribute(promise["attributes"], argument)
+								if context["name"] != "any":
+									argument_line += " in context `" + context["name"] + "`"
+				elif key == "bodies":
+					for context in element["contexts"]:
+						argument_line += resolveAttribute(context["attributes"], argument)
+				argument_line += "\n"
+					
+				argument_lines.append(argument_line)
+				argument_idx += 1
+				if argument_idx == len(arguments):
+					prototype += ")"
+				else:
+					prototype += ", "
+					
+			markdown_lines.append("**Prototype:** `" + prototype + "`\n")
+			markdown_lines.append("\n")
+			markdown_lines.append(argument_lines)
+			markdown_lines.append("\n")
+			
+			try:
+				source_path = config["project_directory"] + "/" + element["sourcePath"]
+				source_file = open(source_path, 'r')
+				source_code = source_file.read()
+				offset = element["offset"] - 243231
+				offsetEnd = element["offsetEnd"] - 243231
+				
+				markdown_lines.append("\n```cf3\n")
+				markdown_lines.append(source_code[offset:offsetEnd])
+				markdown_lines.append("\n```\n")
+				markdown_lines.append("\n")
+			except:
+				print "cfdoc_syntaxmap:library_include: could not include code from " + name
+		
+	if len(markdown_lines) == 0:
+		print "cfdoc_syntaxmap:library_include: Failure to include " + parameters[0]
+		
+	return 	markdown_lines
