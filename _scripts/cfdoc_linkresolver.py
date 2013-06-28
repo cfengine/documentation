@@ -122,8 +122,6 @@ def applyLinkMap(file_name, config):
 	
 	link_map = config["link_map"]
 	
-	print "cfdoc_linkresolver: Processing " + file_name
-		
 	new_lines = []
 	write_changes = False
 	in_pre = False
