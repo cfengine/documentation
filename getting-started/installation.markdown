@@ -48,9 +48,9 @@ additional software is not required.
 
 The Community Edition is packaged using the following naming convention:
 
-* RPM Package: `cfengine-community-3.6.0.x86_64.rpm`
+* RPM Package: `cfengine-community-3.6.0-1.x86_64.rpm`
 
-* Debian Package: `cfengine-community_3.6.0_amd64.deb`
+* Debian Package: `cfengine-community_3.6.0-1_amd64.deb`
 
 ### Installation 
 
@@ -120,17 +120,17 @@ following naming convention:
 
 **Policy Server**: Only 64bit packages
 
-* RPM Package: `cfengine-nova-hub-3.6.0.x86_64.rpm`
+* RPM Package: `cfengine-nova-hub-3.6.0-1.x86_64.rpm`
 
-* Debian Package: `cfengine-nova-hub_3.6.0_amd64.deb`
+* Debian Package: `cfengine-nova-hub_3.6.0-1_amd64.deb`
 
 **Hosts**: Both 64bit and 32bit
 
-* RPM Package: `cfengine-nova-3.6.0.i386.rpm` or
-  `cfengine-nova-3.6.0-XXXX.x86_64.rpm`
+* RPM Package: `cfengine-nova-3.6.0-1.i386.rpm` or
+  `cfengine-nova-3.6.0-1.x86_64.rpm`
 
-* Debian Package: `cfengine-nova_3.6.0_i386.deb` or
-  `cfengine-nova_3.6.0XXXX_amd64.deb`
+* Debian Package: `cfengine-nova_3.6.0-1_i386.deb` or
+  `cfengine-nova_3.6.0-1_amd64.deb`
 
 ### Installation
 
