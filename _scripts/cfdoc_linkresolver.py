@@ -30,7 +30,7 @@ def run(config):
 	markdown_files =  config["markdown_files"]
 	readLinkFile(config)
 	for file in markdown_files:
-		addToLinkFile(file, config)
+		parseMarkdownForAnchors(file, config)
 	for file in markdown_files:
 		applyLinkMap(file, config)
 
@@ -44,16 +44,32 @@ def readLinkFile(config):
 		label = line[line.find('[') + 1:line.find(']')]
 		link_map["`" + label + "`"] = "[" + label + "]"
 	config["link_map"] = link_map
-		
-def addToLinkFile(file_name, config):
-	linkMap = config.get("link_map", dict())
 
+def addLinkToMap(keyword, anchor, html, config):
+	link_map = config.get("link_map", dict())
+
+	# don't overwrite
+	if link_map.get(keyword) != None:
+		return
+		
+	link_map[keyword] = anchor
+	
 	output_file = config["reference_path"]
+	out_file = open(output_file, "a")
+	output_string = '[' + anchor + ']: ' + html
+	out_file.write(output_string+"\n")
+	out_file.close()
+	
+	config["link_map"] = link_map
+
+def parseMarkdownForAnchors(file_name, config):
+	linkMap = config.get("link_map", dict())
 	
 	in_file = open(file_name,"r")
 	lines = in_file.readlines()
 	in_file.close()
-
+	
+	output_file = config["reference_path"]
 	out_file = open(output_file, "a")
 	current_file_name = ""
 	current_file_label = ""

@@ -24,6 +24,7 @@ import os
 import sys
 import json
 import cfdoc_environment as environment
+import cfdoc_linkresolver as linkresolver
 import collections
 
 def run(config):
@@ -46,6 +47,16 @@ def processFile(markdown, config):
 	markdown_line_number = 0
 	for markdown_line in markdown_lines:
 		markdown_line_number += 1
+		if markdown_line.find("title:") == 0:
+			current_title = markdown_line.split('title: ')
+			current_title = current_title[1].rstrip().rstrip('\"')
+			current_title = current_title.lstrip().lstrip('\"')
+			config["context_current_title"] = current_title
+		elif markdown_line.find("alias:") == 0:
+			current_html = markdown_line.split('alias: ')
+			current_html = current_html[1].rstrip()
+			config["context_current_html"] = current_html
+			
 		config["context_current_line"] = markdown_line
 		config["context_current_line_number"] = markdown_line_number
 		# skip markdown codeblocks
@@ -312,6 +323,7 @@ def library_include(parameters, config):
 	
 	policy_filename = parameters[0] + ".json"
 	policy_json = config.get(policy_filename)
+	html_name = config.get("context_current_html")
 	if policy_json == None:
 		policy_path = config["project_directory"] + "/_site/" + policy_filename
 		if not os.path.exists(policy_path):
@@ -351,8 +363,9 @@ def library_include(parameters, config):
 				prototype = namespace + ":" + prototype
 				
 			markdown_lines.append("#### " + prototype + "\n")
+			linkresolver.addLinkToMap("`" + prototype + "()`", prototype, html_name + "#" + prototype, config)
 			markdown_lines.append("\n")
-		
+			
 			arguments = element["arguments"]
 			argument_idx = 0
 			argument_lines = []
