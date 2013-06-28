@@ -52,10 +52,9 @@ try:
 	if (config["example_directory"] != ""):
 		extractexamples.run(config)
 except:
-	print "cfdoc_preprocess: Fatal error extracting example code"
+	print "cfdoc_preprocess: Failure extracting example code"
 	sys.stdout.write("       Exception: ")
 	print sys.exc_info()
-	exit(3)
 
 try:
 	syntaxmap.run(config)
@@ -63,6 +62,6 @@ except:
 	print "cfdoc_syntaxmap: Fatal error generating syntax maps"
 	sys.stdout.write("      Exception: ")
 	print sys.exc_info()
-	exit(4)
+	exit(255)
 
 exit(0)
