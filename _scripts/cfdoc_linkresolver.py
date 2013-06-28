@@ -55,7 +55,7 @@ def addLinkToMap(keyword, anchor, html, config):
 	if link_map.get(keyword) != None:
 		return
 		
-	link_map[keyword] = anchor
+	link_map[keyword] = "[" + anchor + "]"
 	
 	output_file = config["reference_path"]
 	out_file = open(output_file, "a")
