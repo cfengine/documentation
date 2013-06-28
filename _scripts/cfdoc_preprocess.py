@@ -49,8 +49,7 @@ except:
 	exit(2)
 
 try:
-	if (config["example_directory"] != ""):
-		extractexamples.run(config)
+	extractexamples.run(config)
 except:
 	print "cfdoc_preprocess: Failure extracting example code"
 	sys.stdout.write("       Exception: ")

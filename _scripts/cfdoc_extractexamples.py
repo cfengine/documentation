@@ -111,17 +111,23 @@ def processFile(markdown, config):
 		os.rename(new_markdown_filename,markdown)
 			
 def include(parameters, config):
-	markdown_lines = []
-	example_dir = config["example_directory"]
-	example = example_dir + "/" + parameters[0]
-	
-	try:
-		example_file = open(example, 'r')
-	except:
-		print "cfdoc_extractexamples: File not found or can't open " + example
-		return markdown_lines
+	lines = []
+	example_directories = config["example_directories"]
+	for example_directory in example_directories:
+		example = example_directory + "/" + parameters[0]
+		if os.path.exists(example):
+			example_file = open(example, 'r')
+			lines = example_file.readlines()
 		
-	lines = example_file.readlines()	
+	if len(lines) == 0:
+		print "cfdoc_extractexamples: File not found or can't open: " + parameters[0]
+		print "                       searching :"
+		for dir in example_directories:
+			print "                                  " + dir
+		return lines
+	
+		
+	markdown_lines = []
 	skip_block = True
 	for line in lines:
 		if skip_block == False:
