@@ -407,8 +407,8 @@ def library_include(parameters, config):
 				source_path = config["project_directory"] + "/" + element["sourcePath"]
 				source_file = open(source_path, 'r')
 				source_code = source_file.read()
-				offset = element["offset"] - 243231
-				offsetEnd = element["offsetEnd"] - 243231
+				offset = element["offset"]
+				offsetEnd = element["offsetEnd"]
 				
 				markdown_lines.append("\n```cf3\n")
 				markdown_lines.append(source_code[offset:offsetEnd])
