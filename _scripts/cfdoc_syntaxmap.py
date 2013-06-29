@@ -386,8 +386,6 @@ def library_include(parameters, config):
 									argument_line += ", used as promiser of type " + promise_type_link
 								else:
 									argument_line += resolveAttribute(promise["attributes"], argument)
-								if context["name"] != "any":
-									argument_line += " in context `" + context["name"] + "`"
 				elif key == "bodies":
 					for context in element["contexts"]:
 						argument_line += resolveAttribute(context["attributes"], argument)
