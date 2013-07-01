@@ -7,15 +7,6 @@ sorting: 20
 alias: whats-new.html
 ---
 
-<!--- TODO: move up when no longer a pre-release
-
-**IMPORTANT NOTE:** *This is a pre-release of 3.5, intended for testing and 
-showcase only. This version is not supported, not covered by service level 
-agreements (SLAs) and not intended for production environments. Do not upgrade 
-or use in conjunction with other versions at this point.
-
--->
-
 CFEngine 3.5 is the latest version of CFEngine 3. It enables Infrastructure
 Engineers to automate IT systems easier, faster and at a greater
 scale than ever before. CFEngine 3.5 allows you to manage very large and 
