@@ -9,11 +9,8 @@ tags: [getting started]
 ---
 
 Don't have CFEngine yet? Start using
-[CFEngine Enterprise in 10 minute][evaluate cfengine] 
-with the ready-made
-[VirtualBox](https://cfengine.com/enterprise-getting-started) or
-[KVM](https://cfengine.com/cfengine-enterprise-getting-started-using-kvm) 
-image.
+[CFEngine Enterprise in 15 minutes](https://cfengine.com/evaluate-enterprise) 
+with ready-made VirtualBox VMs.
 
 ****
 
@@ -49,11 +46,8 @@ with little background in programming. Here is the simplest `Hello world' progra
 
 We have found that the following steps are a good way to learn CFEngine:
 
-<!-- * **TODO: Continue with From Zero to Hero** -->
-
-* Complete Step 2 of the getting started guide: Deploy your first policy on
-   [VirtualBox](https://cfengine.com/enterprise-getting-started-2) or 
-     [KVM](https://cfengine.com/cfengine-enterprise-getting-started-using-kvm-step-2)
+* Complete the Getting Started Guide: [Set up CFEngine Enterprise](https://cfengine.com/cfengine-enterprise-getting-started-using-vagrant) and 
+     [Deploy your first CFEngine Policy](https://cfengine.com/cfengine-enterprise-getting-started-using-vagrant-step-2).
 * Download syntax highlighters for
   [vim](https://github.com/neilhwatson/vim_cf3) or
   [emacs](https://github.com/cfengine/core/blob/master/contrib/cfengine.el).
@@ -87,3 +81,5 @@ We have found that the following steps are a good way to learn CFEngine:
   target="_blank">CFEngine 3 Beginning Examples</a> by Vertical Sysadmin
 * <a href="http://watson-wilson.ca/2011/05/cfengine-3-cookbook-begins.html" 
   target="_blank">CFEngine 3 Tutorial</a> by Neil Watson
+* <a href="http://cfengine.com/policy_wizard/" 
+  target="_blank">CFEngine 3 Policy Wizard</a> by Joe Netzel
