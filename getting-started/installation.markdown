@@ -14,7 +14,7 @@ CFEngine recommends the following:
 
 **Host(s) Memory** 
 
-256 MB available memory in order to run the CFEngine agent software (cf_agent)
+256 MB available memory in order to run the CFEngine agent software (cf-agent).
 
 **Disk Storage** 
 
@@ -231,9 +231,9 @@ file. Copy the obtained license file to
 When bootstrapping is complete, CFEngine is up and running on your system.
 
 The Mission Portal is immediately accessible. Connect to the Policy Server
-through your web browser at http://<IP address of your Policy Server>.
+through your web browser at http://`<IP address of your Policy Server>`.
 
-To be able to use the [Mission Portals'][Mission Portal] Design Center
+To be able to use the [Mission Portal's][Mission Portal] Design Center
 front-end, continue with [integrating Mission Portal with git][Integrating
 Mission Portal with git].
 
