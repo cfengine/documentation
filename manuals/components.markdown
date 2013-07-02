@@ -135,13 +135,6 @@ Their file extensions will vary based on which library is used to
 implement them: either Tokyo Cabinet (`.tcdb`) or Quick Database Manager
 (`.qdbm`).
 
-* `cf_Audit.tcdb`
-
-A compressed database of auditing information. This file grows very
-large is auditing is switched on. By default, only minor information
-about CFEngine runs are recorded. This file should be archived and
-deleted regularly to avoid choking the system.   
-
 * `cf_lastseen.tcdb`
 
 A database of hosts that last contacted this host, or were contacted by
