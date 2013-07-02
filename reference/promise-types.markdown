@@ -197,16 +197,13 @@ CFEngine will attempt to kill and restart its attempt to keep a promise.
 **Description:** The message to be written to the log when a promise 
 verification leads to a repair.
 
-The `log_string` works together with
-[`log_kept`][Promise Types and Attributes#log_kept],
-[`log_repaired`][Promise Types and Attributes#log_repaired], and 
-[`log_failed`][Promise Types and Attributes#log_failed] to define a string for 
-logging to one of the named files depending on promise outcome, or to standard 
-output if the log file is stipulated as `stdout`. Log strings on standard 
-output are denoted by an `L:` prefix.
+The `log_string` works together with `log_kept`, `log_repaired`, and 
+`log_failed` to define a string for logging to one of the named files 
+depending on promise outcome, or to standard output if the log file is 
+stipulated as `stdout`. Log strings on standard output are denoted by an `L:` 
+prefix.
 
-Note that `log_string` does not interact with
-[`log_level`][[Promise Types and Attributes#log_level]], which is about 
+Note that `log_string` does not interact with `log_level`, which is about 
 regular system output messages.
 
 **Type:** `string`
@@ -244,11 +241,13 @@ handle will probably be more mnemonic).
 **Description:** The names of files to which `log_string` will be saved
 for kept, repaired and failed promises.
 
-When used together with
-[`log_string`][Promise Types and Attributes#log_string], the current 
-promise will log its status using the log string to the respective file.
+When used together with `log_string`, the current promise will log its status 
+using the log string to the respective file.
 
-If these log names are absent, the default logging destination for the log string is syslog, but only for non-kept promises. Only the `log_string` is affected by this setting. Other messages destined for logging are sent to syslog.
+If these log names are absent, the default logging destination for the log 
+string is syslog, but only for non-kept promises. Only the `log_string` is 
+affected by this setting. Other messages destined for logging are sent to 
+syslog.
 
 **Type:** `string`
 
