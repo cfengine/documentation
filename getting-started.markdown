@@ -9,7 +9,7 @@ tags: [getting started]
 ---
 
 Don't have CFEngine yet? Start using
-[CFEngine Enterprise in 15 minutes](https://cfengine.com/evaluate-enterprise) 
+[CFEngine Enterprise in 15 minutes][evaluate cfengine]
 with ready-made VirtualBox VMs.
 
 ****
