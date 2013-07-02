@@ -40,9 +40,9 @@ additional software is not required.
 
 The Community Edition is packaged using the following naming convention:
 
-* RPM Package: `cfengine-community-3.6.0-1.x86_64.rpm`
+* RPM Package: `cfengine-community-3.5.0-1.x86_64.rpm`
 
-* Debian Package: `cfengine-community_3.6.0-1_amd64.deb`
+* Debian Package: `cfengine-community_3.5.0-1_amd64.deb`
 
 ### Installation 
 
@@ -112,17 +112,17 @@ following naming convention:
 
 **Policy Server**: Only 64bit packages
 
-* RPM Package: `cfengine-nova-hub-3.6.0-1.x86_64.rpm`
+* RPM Package: `cfengine-nova-hub-3.5.0-1.x86_64.rpm`
 
-* Debian Package: `cfengine-nova-hub_3.6.0-1_amd64.deb`
+* Debian Package: `cfengine-nova-hub_3.5.0-1_amd64.deb`
 
 **Hosts**: Both 64bit and 32bit
 
-* RPM Package: `cfengine-nova-3.6.0-1.i386.rpm` or
-  `cfengine-nova-3.6.0-1.x86_64.rpm`
+* RPM Package: `cfengine-nova-3.5.0-1.i386.rpm` or
+  `cfengine-nova-3.5.0-1.x86_64.rpm`
 
-* Debian Package: `cfengine-nova_3.6.0-1_i386.deb` or
-  `cfengine-nova_3.6.0-1_amd64.deb`
+* Debian Package: `cfengine-nova_3.5.0-1_i386.deb` or
+  `cfengine-nova_3.5.0-1_amd64.deb`
 
 ### Installation
 
@@ -183,7 +183,7 @@ To verify that the server is visible, run the following command (requires
 The sample output looks like this:
 
 ``` 
-    eth0 IPv4 CFEngine Community 3.6.0 Policy Server on policy_hub_debian7
+    eth0 IPv4 CFEngine Community 3.5.0 Policy Server on policy_hub_debian7
     _cfenginehub._tcp local
 ```
 
