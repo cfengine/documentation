@@ -183,13 +183,6 @@ def function_table(parameters, config):
 	lines.append("### Functions by Return Type\n\n")
 	lines += dictToTable(returnTypeDict)
 	
-	for function in ordered_functions:
-		returnType = functions[function]["returnType"]
-		if returnType == "context": returnType = "class"
-		line = "* `" + returnType + "` "
-		line += functionLink(function)
-		line += '\n'
-		lines.append(line)
 	return lines
 
 def function_prototype(parameters, config):
