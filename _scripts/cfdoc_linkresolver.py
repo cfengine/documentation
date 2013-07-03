@@ -52,7 +52,7 @@ def addLinkToMap(keyword, anchor, html, config):
 	link_map = config.get("link_map", dict())
 
 	# don't overwrite
-	if link_map.get(keyword) != None:
+	if keyword in link_map:
 		return
 		
 	link_map[keyword] = "[" + anchor + "]"

@@ -356,7 +356,10 @@ def library_include(parameters, config):
 				prototype = namespace + ":" + prototype
 				
 			markdown_lines.append("#### " + prototype + "\n")
-			linkresolver.addLinkToMap("`" + prototype + "()`", prototype, html_name + "#" + prototype, config)
+			link_target = prototype + "()"
+			if not namespace:
+				link_target = parameters[0] + ":" + link_target
+			linkresolver.addLinkToMap("`" + prototype + "()`", link_target, html_name + "#" + prototype, config)
 			markdown_lines.append("\n")
 			
 			arguments = element["arguments"]
