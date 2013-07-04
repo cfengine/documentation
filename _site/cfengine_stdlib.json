@@ -4,6 +4,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 245263,
           "offsetEnd": 245442,
+          "sourceLine": 54,
           "namespace": "default",
           "name": "insert_lines",
           "bundleType": "edit_line",
@@ -47,6 +48,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 245509,
           "offsetEnd": 245825,
+          "sourceLine": 64,
           "namespace": "default",
           "name": "insert_file",
           "bundleType": "edit_line",
@@ -99,6 +101,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 245904,
           "offsetEnd": 246290,
+          "sourceLine": 78,
           "namespace": "default",
           "name": "comment_lines_matching",
           "bundleType": "edit_line",
@@ -158,6 +161,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 246371,
           "offsetEnd": 246900,
+          "sourceLine": 94,
           "namespace": "default",
           "name": "uncomment_lines_matching",
           "bundleType": "edit_line",
@@ -211,6 +215,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 246981,
           "offsetEnd": 247413,
+          "sourceLine": 109,
           "namespace": "default",
           "name": "comment_lines_containing",
           "bundleType": "edit_line",
@@ -270,6 +275,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 247496,
           "offsetEnd": 248009,
+          "sourceLine": 125,
           "namespace": "default",
           "name": "uncomment_lines_containing",
           "bundleType": "edit_line",
@@ -323,6 +329,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 248079,
           "offsetEnd": 248288,
+          "sourceLine": 137,
           "namespace": "default",
           "name": "delete_lines_matching",
           "bundleType": "edit_line",
@@ -366,6 +373,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 248356,
           "offsetEnd": 248578,
+          "sourceLine": 148,
           "namespace": "default",
           "name": "warn_lines_matching",
           "bundleType": "edit_line",
@@ -418,6 +426,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 248642,
           "offsetEnd": 248863,
+          "sourceLine": 160,
           "namespace": "default",
           "name": "append_if_no_line",
           "bundleType": "edit_line",
@@ -461,6 +470,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 248929,
           "offsetEnd": 249148,
+          "sourceLine": 171,
           "namespace": "default",
           "name": "append_if_no_lines",
           "bundleType": "edit_line",
@@ -504,6 +514,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 249217,
           "offsetEnd": 250070,
+          "sourceLine": 189,
           "namespace": "default",
           "name": "replace_line_end",
           "bundleType": "edit_line",
@@ -575,6 +586,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 250141,
           "offsetEnd": 251437,
+          "sourceLine": 210,
           "namespace": "default",
           "name": "append_to_line_end",
           "bundleType": "edit_line",
@@ -646,6 +658,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 251506,
           "offsetEnd": 252036,
+          "sourceLine": 223,
           "namespace": "default",
           "name": "regex_replace",
           "bundleType": "edit_line",
@@ -705,6 +718,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 252101,
           "offsetEnd": 252879,
+          "sourceLine": 238,
           "namespace": "default",
           "name": "resolvconf",
           "bundleType": "edit_line",
@@ -811,6 +825,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 252965,
           "offsetEnd": 258747,
+          "sourceLine": 284,
           "namespace": "default",
           "name": "manage_variable_values_ini",
           "bundleType": "edit_line",
@@ -1192,6 +1207,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 258830,
           "offsetEnd": 264133,
+          "sourceLine": 359,
           "namespace": "default",
           "name": "set_variable_values_ini",
           "bundleType": "edit_line",
@@ -1528,6 +1544,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 264190,
           "offsetEnd": 266660,
+          "sourceLine": 397,
           "namespace": "default",
           "name": "set_quoted_values",
           "bundleType": "edit_line",
@@ -1744,6 +1761,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 266724,
           "offsetEnd": 268949,
+          "sourceLine": 450,
           "namespace": "default",
           "name": "set_variable_values",
           "bundleType": "edit_line",
@@ -1948,6 +1966,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 269005,
           "offsetEnd": 270764,
+          "sourceLine": 486,
           "namespace": "default",
           "name": "set_config_values",
           "bundleType": "edit_line",
@@ -2109,6 +2128,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 270833,
           "offsetEnd": 272857,
+          "sourceLine": 516,
           "namespace": "default",
           "name": "set_config_values_matching",
           "bundleType": "edit_line",
@@ -2297,6 +2317,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 272925,
           "offsetEnd": 275221,
+          "sourceLine": 545,
           "namespace": "default",
           "name": "maintain_key_values",
           "bundleType": "edit_line",
@@ -2540,6 +2561,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 275287,
           "offsetEnd": 276136,
+          "sourceLine": 581,
           "namespace": "default",
           "name": "append_users_starting",
           "bundleType": "edit_line",
@@ -2673,6 +2695,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 276203,
           "offsetEnd": 277038,
+          "sourceLine": 606,
           "namespace": "default",
           "name": "append_groups_starting",
           "bundleType": "edit_line",
@@ -2806,6 +2829,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 277110,
           "offsetEnd": 277692,
+          "sourceLine": 632,
           "namespace": "default",
           "name": "set_colon_field",
           "bundleType": "edit_line",
@@ -2878,6 +2902,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 277764,
           "offsetEnd": 278270,
+          "sourceLine": 648,
           "namespace": "default",
           "name": "set_user_field",
           "bundleType": "edit_line",
@@ -2950,6 +2975,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 278351,
           "offsetEnd": 278982,
+          "sourceLine": 664,
           "namespace": "default",
           "name": "append_user_field",
           "bundleType": "edit_line",
@@ -3057,6 +3083,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 279053,
           "offsetEnd": 279543,
+          "sourceLine": 684,
           "namespace": "default",
           "name": "expand_template",
           "bundleType": "edit_line",
@@ -3118,6 +3145,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 279607,
           "offsetEnd": 280795,
+          "sourceLine": 702,
           "namespace": "default",
           "name": "replace_or_add",
           "bundleType": "edit_line",
@@ -3280,6 +3308,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 280862,
           "offsetEnd": 282492,
+          "sourceLine": 726,
           "namespace": "default",
           "name": "cronjob",
           "bundleType": "agent",
@@ -3527,6 +3556,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 299580,
           "offsetEnd": 300050,
+          "sourceLine": 1243,
           "namespace": "default",
           "name": "rm_rf",
           "bundleType": "agent",
@@ -3653,6 +3683,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 318629,
           "offsetEnd": 319529,
+          "sourceLine": 1777,
           "namespace": "default",
           "name": "debian_knowledge",
           "bundleType": "common",
@@ -3758,6 +3789,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 364034,
           "offsetEnd": 364540,
+          "sourceLine": 2355,
           "namespace": "default",
           "name": "create_solaris_admin_file",
           "bundleType": "edit_line",
@@ -3799,6 +3831,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 392498,
           "offsetEnd": 457477,
+          "sourceLine": 2806,
           "namespace": "default",
           "name": "standard_services",
           "bundleType": "agent",
@@ -11781,6 +11814,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 461223,
           "offsetEnd": 481669,
+          "sourceLine": 3555,
           "namespace": "default",
           "name": "paths",
           "bundleType": "common",
@@ -14849,6 +14883,7 @@
           "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 481708,
           "offsetEnd": 482419,
+          "sourceLine": 3783,
           "namespace": "default",
           "name": "fileinfo",
           "bundleType": "agent",
@@ -14951,8 +14986,10 @@
       ],
       "bodies": [
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 282819,
           "offsetEnd": 283231,
+          "sourceLine": 764,
           "namespace": "default",
           "name": "quoted_var",
           "bodyType": "edit_field",
@@ -15034,8 +15071,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 283299,
           "offsetEnd": 283772,
+          "sourceLine": 777,
           "namespace": "default",
           "name": "col",
           "bodyType": "edit_field",
@@ -15119,8 +15158,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 283841,
           "offsetEnd": 284315,
+          "sourceLine": 790,
           "namespace": "default",
           "name": "line",
           "bodyType": "edit_field",
@@ -15204,8 +15245,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 284367,
           "offsetEnd": 284473,
+          "sourceLine": 803,
           "namespace": "default",
           "name": "value",
           "bodyType": "replace_with",
@@ -15241,8 +15284,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 284533,
           "offsetEnd": 284667,
+          "sourceLine": 811,
           "namespace": "default",
           "name": "INI_section",
           "bodyType": "select_region",
@@ -15278,8 +15323,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 284979,
           "offsetEnd": 285170,
+          "sourceLine": 821,
           "namespace": "default",
           "name": "std_defs",
           "bodyType": "edit_defaults",
@@ -15313,8 +15360,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 285221,
           "offsetEnd": 285407,
+          "sourceLine": 830,
           "namespace": "default",
           "name": "empty",
           "bodyType": "edit_defaults",
@@ -15348,8 +15397,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 285462,
           "offsetEnd": 285524,
+          "sourceLine": 839,
           "namespace": "default",
           "name": "no_backup",
           "bodyType": "edit_defaults",
@@ -15374,8 +15425,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 285586,
           "offsetEnd": 285793,
+          "sourceLine": 846,
           "namespace": "default",
           "name": "backup_timestamp",
           "bodyType": "edit_defaults",
@@ -15409,8 +15462,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 286082,
           "offsetEnd": 286144,
+          "sourceLine": 857,
           "namespace": "default",
           "name": "start",
           "bodyType": "location",
@@ -15435,8 +15490,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 286190,
           "offsetEnd": 286322,
+          "sourceLine": 864,
           "namespace": "default",
           "name": "after",
           "bodyType": "location",
@@ -15472,8 +15529,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 286369,
           "offsetEnd": 286504,
+          "sourceLine": 872,
           "namespace": "default",
           "name": "before",
           "bodyType": "location",
@@ -15509,8 +15568,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 286821,
           "offsetEnd": 286951,
+          "sourceLine": 885,
           "namespace": "default",
           "name": "comment",
           "bodyType": "replace_with",
@@ -15546,8 +15607,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 287004,
           "offsetEnd": 287123,
+          "sourceLine": 893,
           "namespace": "default",
           "name": "uncomment",
           "bodyType": "replace_with",
@@ -15581,8 +15644,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 287660,
           "offsetEnd": 287765,
+          "sourceLine": 907,
           "namespace": "default",
           "name": "if_elapsed",
           "bodyType": "action",
@@ -15618,8 +15683,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 287811,
           "offsetEnd": 287943,
+          "sourceLine": 915,
           "namespace": "default",
           "name": "if_elapsed_day",
           "bodyType": "action",
@@ -15653,8 +15720,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 287997,
           "offsetEnd": 288228,
+          "sourceLine": 923,
           "namespace": "default",
           "name": "measure_performance",
           "bodyType": "action",
@@ -15699,8 +15768,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 288269,
           "offsetEnd": 288370,
+          "sourceLine": 932,
           "namespace": "default",
           "name": "warn_only",
           "bodyType": "action",
@@ -15734,8 +15805,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 288420,
           "offsetEnd": 288601,
+          "sourceLine": 940,
           "namespace": "default",
           "name": "bg",
           "bodyType": "action",
@@ -15781,8 +15854,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 288641,
           "offsetEnd": 288717,
+          "sourceLine": 949,
           "namespace": "default",
           "name": "ifwin_bg",
           "bodyType": "action",
@@ -15813,8 +15888,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 288758,
           "offsetEnd": 288808,
+          "sourceLine": 957,
           "namespace": "default",
           "name": "immediate",
           "bodyType": "action",
@@ -15839,8 +15916,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 288849,
           "offsetEnd": 288913,
+          "sourceLine": 964,
           "namespace": "default",
           "name": "policy",
           "bodyType": "action",
@@ -15867,8 +15946,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 289046,
           "offsetEnd": 289209,
+          "sourceLine": 973,
           "namespace": "default",
           "name": "log_repaired",
           "bodyType": "action",
@@ -15905,8 +15986,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 289254,
           "offsetEnd": 289318,
+          "sourceLine": 981,
           "namespace": "default",
           "name": "log_verbose",
           "bodyType": "action",
@@ -15931,8 +16014,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 289604,
           "offsetEnd": 289657,
+          "sourceLine": 990,
           "namespace": "default",
           "name": "silent",
           "bodyType": "contain",
@@ -15957,8 +16042,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 289700,
           "offsetEnd": 289748,
+          "sourceLine": 997,
           "namespace": "default",
           "name": "in_dir",
           "bodyType": "contain",
@@ -15985,8 +16072,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 289797,
           "offsetEnd": 289898,
+          "sourceLine": 1004,
           "namespace": "default",
           "name": "in_dir_shell",
           "bodyType": "contain",
@@ -16022,8 +16111,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 289948,
           "offsetEnd": 290044,
+          "sourceLine": 1012,
           "namespace": "default",
           "name": "silent_in_dir",
           "bodyType": "contain",
@@ -16059,8 +16150,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 290086,
           "offsetEnd": 290147,
+          "sourceLine": 1020,
           "namespace": "default",
           "name": "in_shell",
           "bodyType": "contain",
@@ -16085,8 +16178,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 290192,
           "offsetEnd": 290256,
+          "sourceLine": 1027,
           "namespace": "default",
           "name": "in_shell_bg",
           "bodyType": "contain",
@@ -16111,8 +16206,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 290309,
           "offsetEnd": 290422,
+          "sourceLine": 1034,
           "namespace": "default",
           "name": "in_shell_and_silent",
           "bodyType": "contain",
@@ -16146,8 +16243,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 290484,
           "offsetEnd": 290643,
+          "sourceLine": 1042,
           "namespace": "default",
           "name": "in_dir_shell_and_silent",
           "bodyType": "contain",
@@ -16192,8 +16291,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 290686,
           "offsetEnd": 290789,
+          "sourceLine": 1051,
           "namespace": "default",
           "name": "setuid",
           "bodyType": "contain",
@@ -16229,8 +16330,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 290835,
           "offsetEnd": 290943,
+          "sourceLine": 1059,
           "namespace": "default",
           "name": "setuid_sh",
           "bodyType": "contain",
@@ -16266,8 +16369,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 291002,
           "offsetEnd": 291182,
+          "sourceLine": 1067,
           "namespace": "default",
           "name": "setuidgid_sh",
           "bodyType": "contain",
@@ -16313,8 +16418,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 291236,
           "offsetEnd": 291438,
+          "sourceLine": 1076,
           "namespace": "default",
           "name": "jail",
           "bodyType": "contain",
@@ -16370,8 +16477,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 291496,
           "offsetEnd": 292747,
+          "sourceLine": 1097,
           "namespace": "default",
           "name": "setuid_umask",
           "bodyType": "contain",
@@ -16408,8 +16517,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 293043,
           "offsetEnd": 293126,
+          "sourceLine": 1109,
           "namespace": "default",
           "name": "if_repaired",
           "bodyType": "classes",
@@ -16441,8 +16552,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 293175,
           "offsetEnd": 293526,
+          "sourceLine": 1117,
           "namespace": "default",
           "name": "if_else",
           "bodyType": "classes",
@@ -16531,8 +16644,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 293579,
           "offsetEnd": 293929,
+          "sourceLine": 1131,
           "namespace": "default",
           "name": "cf2_if_else",
           "bodyType": "classes",
@@ -16607,8 +16722,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 293976,
           "offsetEnd": 294178,
+          "sourceLine": 1141,
           "namespace": "default",
           "name": "if_notkept",
           "bodyType": "classes",
@@ -16668,8 +16785,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 294220,
           "offsetEnd": 294352,
+          "sourceLine": 1150,
           "namespace": "default",
           "name": "if_ok",
           "bodyType": "classes",
@@ -16715,8 +16834,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 294401,
           "offsetEnd": 294536,
+          "sourceLine": 1158,
           "namespace": "default",
           "name": "if_ok_cancel",
           "bodyType": "classes",
@@ -16762,8 +16883,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 294589,
           "offsetEnd": 294756,
+          "sourceLine": 1166,
           "namespace": "default",
           "name": "cmd_repair",
           "bodyType": "classes",
@@ -16810,8 +16933,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 294802,
           "offsetEnd": 296098,
+          "sourceLine": 1173,
           "namespace": "default",
           "name": "classes_generic",
           "bodyType": "classes",
@@ -16987,8 +17112,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 296158,
           "offsetEnd": 297513,
+          "sourceLine": 1183,
           "namespace": "default",
           "name": "scoped_classes_generic",
           "bodyType": "classes",
@@ -17174,8 +17301,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 297832,
           "offsetEnd": 297961,
+          "sourceLine": 1197,
           "namespace": "default",
           "name": "state_repaired",
           "bodyType": "classes",
@@ -17216,8 +17345,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 298007,
           "offsetEnd": 298368,
+          "sourceLine": 1211,
           "namespace": "default",
           "name": "enumerate",
           "bodyType": "classes",
@@ -17272,8 +17403,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 298411,
           "offsetEnd": 298862,
+          "sourceLine": 1223,
           "namespace": "default",
           "name": "always",
           "bodyType": "classes",
@@ -17361,8 +17494,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 300360,
           "offsetEnd": 300641,
+          "sourceLine": 1262,
           "namespace": "default",
           "name": "secure_cp",
           "bodyType": "copy_from",
@@ -17431,8 +17566,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 300701,
           "offsetEnd": 300890,
+          "sourceLine": 1273,
           "namespace": "default",
           "name": "remote_cp",
           "bodyType": "copy_from",
@@ -17483,8 +17620,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 300951,
           "offsetEnd": 301143,
+          "sourceLine": 1282,
           "namespace": "default",
           "name": "remote_dcp",
           "bodyType": "copy_from",
@@ -17535,8 +17674,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 301195,
           "offsetEnd": 301266,
+          "sourceLine": 1291,
           "namespace": "default",
           "name": "local_cp",
           "bodyType": "copy_from",
@@ -17563,8 +17704,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 301319,
           "offsetEnd": 301440,
+          "sourceLine": 1298,
           "namespace": "default",
           "name": "local_dcp",
           "bodyType": "copy_from",
@@ -17600,8 +17743,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 301492,
           "offsetEnd": 301608,
+          "sourceLine": 1306,
           "namespace": "default",
           "name": "perms_cp",
           "bodyType": "copy_from",
@@ -17637,8 +17782,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 301661,
           "offsetEnd": 301895,
+          "sourceLine": 1313,
           "namespace": "default",
           "name": "backup_local_cp",
           "bodyType": "copy_from",
@@ -17674,8 +17821,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 302090,
           "offsetEnd": 302209,
+          "sourceLine": 1323,
           "namespace": "default",
           "name": "seed_cp",
           "bodyType": "copy_from",
@@ -17711,8 +17860,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 302267,
           "offsetEnd": 302544,
+          "sourceLine": 1331,
           "namespace": "default",
           "name": "sync_cp",
           "bodyType": "copy_from",
@@ -17781,8 +17932,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 302600,
           "offsetEnd": 302722,
+          "sourceLine": 1342,
           "namespace": "default",
           "name": "no_backup_cp",
           "bodyType": "copy_from",
@@ -17818,8 +17971,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 302779,
           "offsetEnd": 302951,
+          "sourceLine": 1350,
           "namespace": "default",
           "name": "no_backup_dcp",
           "bodyType": "copy_from",
@@ -17864,8 +18019,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 303015,
           "offsetEnd": 303255,
+          "sourceLine": 1359,
           "namespace": "default",
           "name": "no_backup_rcp",
           "bodyType": "copy_from",
@@ -17925,8 +18082,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 303550,
           "offsetEnd": 303698,
+          "sourceLine": 1371,
           "namespace": "default",
           "name": "ln_s",
           "bodyType": "link_from",
@@ -17971,8 +18130,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 303756,
           "offsetEnd": 304125,
+          "sourceLine": 1380,
           "namespace": "default",
           "name": "linkchildren",
           "bodyType": "link_from",
@@ -18035,8 +18196,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 304404,
           "offsetEnd": 304458,
+          "sourceLine": 1393,
           "namespace": "default",
           "name": "m",
           "bodyType": "perms",
@@ -18063,8 +18226,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 304501,
           "offsetEnd": 304610,
+          "sourceLine": 1400,
           "namespace": "default",
           "name": "mo",
           "bodyType": "perms",
@@ -18106,8 +18271,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 304660,
           "offsetEnd": 304827,
+          "sourceLine": 1408,
           "namespace": "default",
           "name": "mog",
           "bodyType": "perms",
@@ -18164,8 +18331,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 304864,
           "offsetEnd": 304963,
+          "sourceLine": 1417,
           "namespace": "default",
           "name": "og",
           "bodyType": "perms",
@@ -18212,8 +18381,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 305004,
           "offsetEnd": 305070,
+          "sourceLine": 1425,
           "namespace": "default",
           "name": "owner",
           "bodyType": "perms",
@@ -18245,8 +18416,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 305399,
           "offsetEnd": 305852,
+          "sourceLine": 1436,
           "namespace": "default",
           "name": "access_generic",
           "bodyType": "acl",
@@ -18319,8 +18492,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 305887,
           "offsetEnd": 306037,
+          "sourceLine": 1450,
           "namespace": "default",
           "name": "ntfs",
           "bodyType": "acl",
@@ -18370,8 +18545,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 306069,
           "offsetEnd": 306485,
+          "sourceLine": 1461,
           "namespace": "default",
           "name": "strict",
           "bodyType": "acl",
@@ -18438,8 +18615,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 306795,
           "offsetEnd": 306878,
+          "sourceLine": 1476,
           "namespace": "default",
           "name": "recurse",
           "bodyType": "depth_search",
@@ -18475,8 +18654,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 306944,
           "offsetEnd": 307062,
+          "sourceLine": 1484,
           "namespace": "default",
           "name": "recurse_ignore",
           "bodyType": "depth_search",
@@ -18518,8 +18699,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 307118,
           "offsetEnd": 307189,
+          "sourceLine": 1492,
           "namespace": "default",
           "name": "include_base",
           "bodyType": "depth_search",
@@ -18544,8 +18727,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 307248,
           "offsetEnd": 307400,
+          "sourceLine": 1497,
           "namespace": "default",
           "name": "recurse_with_base",
           "bodyType": "depth_search",
@@ -18590,8 +18775,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 307680,
           "offsetEnd": 307773,
+          "sourceLine": 1509,
           "namespace": "default",
           "name": "tidy",
           "bodyType": "delete",
@@ -18625,8 +18812,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 308056,
           "offsetEnd": 308106,
+          "sourceLine": 1519,
           "namespace": "default",
           "name": "disable",
           "bodyType": "rename",
@@ -18651,8 +18840,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 308151,
           "offsetEnd": 308213,
+          "sourceLine": 1526,
           "namespace": "default",
           "name": "rotate",
           "bodyType": "rename",
@@ -18679,8 +18870,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 308253,
           "offsetEnd": 308310,
+          "sourceLine": 1533,
           "namespace": "default",
           "name": "to",
           "bodyType": "rename",
@@ -18707,8 +18900,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 308625,
           "offsetEnd": 308877,
+          "sourceLine": 1542,
           "namespace": "default",
           "name": "name_age",
           "bodyType": "file_select",
@@ -18795,8 +18990,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 308933,
           "offsetEnd": 309101,
+          "sourceLine": 1551,
           "namespace": "default",
           "name": "days_old",
           "bodyType": "file_select",
@@ -18868,8 +19065,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 309162,
           "offsetEnd": 309315,
+          "sourceLine": 1559,
           "namespace": "default",
           "name": "size_range",
           "bodyType": "file_select",
@@ -18916,8 +19115,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 309370,
           "offsetEnd": 309501,
+          "sourceLine": 1567,
           "namespace": "default",
           "name": "exclude",
           "bodyType": "file_select",
@@ -18958,8 +19159,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 309548,
           "offsetEnd": 309671,
+          "sourceLine": 1575,
           "namespace": "default",
           "name": "plain",
           "bodyType": "file_select",
@@ -18998,8 +19201,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 309711,
           "offsetEnd": 309829,
+          "sourceLine": 1581,
           "namespace": "default",
           "name": "dirs",
           "bodyType": "file_select",
@@ -19038,8 +19243,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 309885,
           "offsetEnd": 310013,
+          "sourceLine": 1589,
           "namespace": "default",
           "name": "by_name",
           "bodyType": "file_select",
@@ -19080,8 +19287,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 310069,
           "offsetEnd": 310199,
+          "sourceLine": 1597,
           "namespace": "default",
           "name": "ex_list",
           "bodyType": "file_select",
@@ -19122,8 +19331,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 310244,
           "offsetEnd": 310353,
+          "sourceLine": 1605,
           "namespace": "default",
           "name": "all",
           "bodyType": "file_select",
@@ -19162,8 +19373,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 310451,
           "offsetEnd": 310967,
+          "sourceLine": 1615,
           "namespace": "default",
           "name": "older_than",
           "bodyType": "file_select",
@@ -19240,8 +19453,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 311044,
           "offsetEnd": 311713,
+          "sourceLine": 1626,
           "namespace": "default",
           "name": "filetype_older_than",
           "bodyType": "file_select",
@@ -19328,8 +19543,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 311792,
           "offsetEnd": 312300,
+          "sourceLine": 1637,
           "namespace": "default",
           "name": "filetypes_older_than",
           "bodyType": "file_select",
@@ -19416,8 +19633,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 312597,
           "offsetEnd": 312858,
+          "sourceLine": 1651,
           "namespace": "default",
           "name": "detect_all_change",
           "bodyType": "changes",
@@ -19460,8 +19679,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 312921,
           "offsetEnd": 313553,
+          "sourceLine": 1666,
           "namespace": "default",
           "name": "detect_all_change_using",
           "bodyType": "changes",
@@ -19506,8 +19727,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 313601,
           "offsetEnd": 313841,
+          "sourceLine": 1678,
           "namespace": "default",
           "name": "detect_content",
           "bodyType": "changes",
@@ -19550,8 +19773,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 313901,
           "offsetEnd": 314548,
+          "sourceLine": 1693,
           "namespace": "default",
           "name": "detect_content_using",
           "bodyType": "changes",
@@ -19596,8 +19821,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 314590,
           "offsetEnd": 314858,
+          "sourceLine": 1703,
           "namespace": "default",
           "name": "noupdate",
           "bodyType": "changes",
@@ -19640,8 +19867,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 314896,
           "offsetEnd": 315199,
+          "sourceLine": 1713,
           "namespace": "default",
           "name": "diff",
           "bodyType": "changes",
@@ -19693,8 +19922,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 315244,
           "offsetEnd": 315546,
+          "sourceLine": 1724,
           "namespace": "default",
           "name": "all_changes",
           "bodyType": "changes",
@@ -19746,8 +19977,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 315593,
           "offsetEnd": 315822,
+          "sourceLine": 1734,
           "namespace": "default",
           "name": "diff_noupdate",
           "bodyType": "changes",
@@ -19799,8 +20032,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 316170,
           "offsetEnd": 318577,
+          "sourceLine": 1747,
           "namespace": "default",
           "name": "zypper",
           "bodyType": "package_method",
@@ -19978,8 +20213,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 319574,
           "offsetEnd": 323969,
+          "sourceLine": 1787,
           "namespace": "default",
           "name": "apt",
           "bodyType": "package_method",
@@ -20252,8 +20489,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 324544,
           "offsetEnd": 327832,
+          "sourceLine": 1833,
           "namespace": "default",
           "name": "apt_get",
           "bodyType": "package_method",
@@ -20440,8 +20679,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 327898,
           "offsetEnd": 331371,
+          "sourceLine": 1864,
           "namespace": "default",
           "name": "apt_get_release",
           "bodyType": "package_method",
@@ -20630,8 +20871,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 331437,
           "offsetEnd": 334291,
+          "sourceLine": 1897,
           "namespace": "default",
           "name": "dpkg_version",
           "bodyType": "package_method",
@@ -20869,8 +21112,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 334356,
           "offsetEnd": 336197,
+          "sourceLine": 1937,
           "namespace": "default",
           "name": "rpm_version",
           "bodyType": "package_method",
@@ -21037,8 +21282,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 336260,
           "offsetEnd": 337925,
+          "sourceLine": 1967,
           "namespace": "default",
           "name": "windows_feature",
           "bodyType": "package_method",
@@ -21135,8 +21382,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 337991,
           "offsetEnd": 339430,
+          "sourceLine": 1987,
           "namespace": "default",
           "name": "msi_implicit",
           "bodyType": "package_method",
@@ -21258,8 +21507,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 339496,
           "offsetEnd": 340631,
+          "sourceLine": 2010,
           "namespace": "default",
           "name": "msi_explicit",
           "bodyType": "package_method",
@@ -21354,8 +21605,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 340682,
           "offsetEnd": 342790,
+          "sourceLine": 2027,
           "namespace": "default",
           "name": "yum",
           "bodyType": "package_method",
@@ -21542,8 +21795,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 342845,
           "offsetEnd": 345256,
+          "sourceLine": 2065,
           "namespace": "default",
           "name": "yum_rpm",
           "bodyType": "package_method",
@@ -21730,8 +21985,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 345331,
           "offsetEnd": 348160,
+          "sourceLine": 2101,
           "namespace": "default",
           "name": "yum_rpm_enable_repo",
           "bodyType": "package_method",
@@ -21920,8 +22177,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 348217,
           "offsetEnd": 352409,
+          "sourceLine": 2161,
           "namespace": "default",
           "name": "yum_group",
           "bodyType": "package_method",
@@ -22072,8 +22331,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 352476,
           "offsetEnd": 356211,
+          "sourceLine": 2206,
           "namespace": "default",
           "name": "rpm_filebased",
           "bodyType": "package_method",
@@ -22213,8 +22474,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 358108,
           "offsetEnd": 359765,
+          "sourceLine": 2269,
           "namespace": "default",
           "name": "ips",
           "bodyType": "package_method",
@@ -22347,8 +22610,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 359918,
           "offsetEnd": 361015,
+          "sourceLine": 2293,
           "namespace": "default",
           "name": "smartos",
           "bodyType": "package_method",
@@ -22454,8 +22719,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 361140,
           "offsetEnd": 362169,
+          "sourceLine": 2313,
           "namespace": "default",
           "name": "opencsw",
           "bodyType": "package_method",
@@ -22561,8 +22828,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 362602,
           "offsetEnd": 363799,
+          "sourceLine": 2335,
           "namespace": "default",
           "name": "solaris",
           "bodyType": "package_method",
@@ -22672,8 +22941,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 364595,
           "offsetEnd": 365652,
+          "sourceLine": 2380,
           "namespace": "default",
           "name": "freebsd",
           "bodyType": "package_method",
@@ -22779,8 +23050,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 365712,
           "offsetEnd": 369970,
+          "sourceLine": 2404,
           "namespace": "default",
           "name": "freebsd_portmaster",
           "bodyType": "package_method",
@@ -23152,8 +23425,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 370029,
           "offsetEnd": 370761,
+          "sourceLine": 2492,
           "namespace": "default",
           "name": "alpinelinux",
           "bodyType": "package_method",
@@ -23250,8 +23525,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 370815,
           "offsetEnd": 372705,
+          "sourceLine": 2507,
           "namespace": "default",
           "name": "emerge",
           "bodyType": "package_method",
@@ -23393,8 +23670,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 372759,
           "offsetEnd": 373873,
+          "sourceLine": 2530,
           "namespace": "default",
           "name": "pacman",
           "bodyType": "package_method",
@@ -23500,8 +23779,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 374060,
           "offsetEnd": 389057,
+          "sourceLine": 2553,
           "namespace": "default",
           "name": "generic",
           "bodyType": "package_method",
@@ -24542,8 +24823,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 389379,
           "offsetEnd": 389613,
+          "sourceLine": 2709,
           "namespace": "default",
           "name": "min_free_space",
           "bodyType": "volume",
@@ -24597,8 +24880,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 389661,
           "offsetEnd": 389883,
+          "sourceLine": 2719,
           "namespace": "default",
           "name": "nfs",
           "bodyType": "mount",
@@ -24653,8 +24938,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 389939,
           "offsetEnd": 390227,
+          "sourceLine": 2730,
           "namespace": "default",
           "name": "nfs_p",
           "bodyType": "mount",
@@ -24724,8 +25011,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 390264,
           "offsetEnd": 390398,
+          "sourceLine": 2741,
           "namespace": "default",
           "name": "unmount",
           "bodyType": "mount",
@@ -24768,8 +25057,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 390726,
           "offsetEnd": 390844,
+          "sourceLine": 2752,
           "namespace": "default",
           "name": "exclude_procs",
           "bodyType": "process_select",
@@ -24805,8 +25096,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 390910,
           "offsetEnd": 391092,
+          "sourceLine": 2760,
           "namespace": "default",
           "name": "days_older_than",
           "bodyType": "process_select",
@@ -24878,8 +25171,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 391151,
           "offsetEnd": 391285,
+          "sourceLine": 2769,
           "namespace": "default",
           "name": "any_count",
           "bodyType": "process_count",
@@ -24920,8 +25215,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 391360,
           "offsetEnd": 391587,
+          "sourceLine": 2777,
           "namespace": "default",
           "name": "check_range",
           "bodyType": "process_count",
@@ -24974,8 +25271,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 391908,
           "offsetEnd": 392193,
+          "sourceLine": 2787,
           "namespace": "default",
           "name": "bootstart",
           "bodyType": "service_method",
@@ -25025,8 +25324,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 392251,
           "offsetEnd": 392432,
+          "sourceLine": 2797,
           "namespace": "default",
           "name": "force_deps",
           "bodyType": "service_method",
@@ -25067,8 +25368,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 457825,
           "offsetEnd": 458187,
+          "sourceLine": 3450,
           "namespace": "default",
           "name": "local_mysql",
           "bodyType": "database_server",
@@ -25132,8 +25435,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 458273,
           "offsetEnd": 458652,
+          "sourceLine": 3461,
           "namespace": "default",
           "name": "local_postgresql",
           "bodyType": "database_server",
@@ -25197,8 +25502,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 459043,
           "offsetEnd": 459844,
+          "sourceLine": 3474,
           "namespace": "default",
           "name": "kvm",
           "bodyType": "environment_resources",
@@ -25229,8 +25536,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 460147,
           "offsetEnd": 460295,
+          "sourceLine": 3513,
           "namespace": "default",
           "name": "scan_log",
           "bodyType": "match_value",
@@ -25266,8 +25575,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 460361,
           "offsetEnd": 460521,
+          "sourceLine": 3521,
           "namespace": "default",
           "name": "scan_changing_file",
           "bodyType": "match_value",
@@ -25303,8 +25614,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 460582,
           "offsetEnd": 460745,
+          "sourceLine": 3529,
           "namespace": "default",
           "name": "single_value",
           "bodyType": "match_value",
@@ -25340,8 +25653,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 460830,
           "offsetEnd": 461039,
+          "sourceLine": 3537,
           "namespace": "default",
           "name": "line_match_value",
           "bodyType": "match_value",
@@ -25378,8 +25693,10 @@
           ]
         },
         {
+          "sourcePath": "../core/masterfiles/libraries/cfengine_stdlib.cf",
           "offset": 461085,
           "offsetEnd": 461187,
+          "sourceLine": 3545,
           "namespace": "default",
           "name": "sample_rate",
           "bodyType": "action",
