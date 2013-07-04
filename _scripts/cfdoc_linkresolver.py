@@ -66,14 +66,10 @@ def addLinkToMap(keyword, anchor, html, config):
 	config["link_map"] = link_map
 
 def parseMarkdownForAnchors(file_name, config):
-	linkMap = config.get("link_map", dict())
-	
 	in_file = open(file_name,"r")
 	lines = in_file.readlines()
 	in_file.close()
 	
-	output_file = config["reference_path"]
-	out_file = open(output_file, "a")
 	current_file_name = ""
 	current_file_label = ""
 	current_title = ""
@@ -103,11 +99,8 @@ def parseMarkdownForAnchors(file_name, config):
 	current_file_label = current_title
 
 	if current_file_label != "" and current_file_name != "":
-		output_string = '['+current_file_label+']: '+current_file_name+' \"'+current_title+'\"'
-		# keep dictionary reasonably short by including at most two-word headers
-		if current_file_label.count(" ") < 2:
-			linkMap["`" + current_file_label + "`"] = "[" + current_file_label + "]"
-		out_file.write(output_string+"\n")
+		addLinkToMap("`" + current_file_label + "`", current_file_label, current_file_name + ' \"' + current_title + '\"', config)
+		# keep dictionary reasonably short by including at most three-word headers
 		for header in header_list:
 			if header == "":
 				continue
@@ -125,15 +118,8 @@ def parseMarkdownForAnchors(file_name, config):
 			anchor = anchor.lstrip("-").rstrip("-")
 			label = current_file_label+ '#' + header
 			# prefer top-level anchors
-			if header.count(" ") < 2 and not ("`" + header+ "`") in linkMap:
-				linkMap["`" + header+ "`"] = "[" + label + "]"
-			output_string = '['+ label + ']: '
-			output_string += current_file_name + '#' + anchor + ' '
-			output_string += '\"'+current_title + ' - ' + header + '\"'
-			out_file.write(output_string+"\n")
+			addLinkToMap("`" + header + "`", label, current_file_name + '#' + anchor + ' \"' + current_title + ' - ' + header + '\"', config)
 	
-	config["link_map"] = linkMap
-
 def applyLinkMap(file_name, config):
 	markdown_file = open(file_name,"r")
 	markdown_lines = markdown_file.readlines()
