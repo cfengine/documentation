@@ -229,13 +229,10 @@ def function_attributes(parameters, config):
 		lines += argument
 	return lines
 
-def generateTreeLine(keyword, config):
-	link_map = config.get("link_map")
-	label = "`" + keyword + "`"
-	link = link_map.get(label)
-	if link:
-		return "* [" + label + "]" + link + "\n"
-	return "* " + keyword + "\n"
+def generateTreeLine(keyword, depth):
+	line = " " * depth * 4
+	line += "* `" + keyword + "`\n"
+	return line
 
 def generateTree(tree, excludes, depth, config):
 	skip_leaves = ["attributes"]
@@ -248,9 +245,7 @@ def generateTree(tree, excludes, depth, config):
 			subtree = tree.get(key)
 			# skip some branches, but not the tree
 			if not key in skip_leaves:
-				line = " " * depth * 4
-				line += generateTreeLine(key, config)
-				lines.append(line)
+				lines.append(generateTreeLine(key, depth))
 			else:
 				depth -= 1
 			if subtree:
@@ -266,9 +261,7 @@ def generateTree(tree, excludes, depth, config):
 					continue
 		return lines
 	except:
-		line = " " * depth * 4
-		line += generateTreeLine(tree, config)
-		lines.append(line)
+		lines.append(generateTreeLine(tree, depth))
 		return lines
 
 def syntax_map(parameters, config):
