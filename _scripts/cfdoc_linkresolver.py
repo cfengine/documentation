@@ -134,15 +134,16 @@ def applyLinkMap(file_name, config):
 	new_lines = []
 	write_changes = False
 	in_pre = False
+	previous_empty = True
 	current_section = ""
 	for markdown_line in markdown_lines:
-		new_line = ""
 		# we ignore everything in code blocks
-		if markdown_line[:4] == "    ":
-			new_lines.append(markdown_line)
-			continue
-		if markdown_line.lstrip()[:3] == '```':
-			in_pre = not in_pre
+		if previous_empty or in_pre:
+			if markdown_line.lstrip()[:3] == '```':
+				in_pre = not in_pre
+			if markdown_line[:4] == "    ":
+				new_lines.append(markdown_line)
+				continue
 			
 		# don't link to the current section
 		if markdown_line.find("title:") == 0:
@@ -153,6 +154,7 @@ def applyLinkMap(file_name, config):
 		elif markdown_line.find("#") == 0:
 			current_section = "`" + markdown_line.lstrip('#').rstrip().lstrip() + "`"
 					
+		new_line = ""
 		if not in_pre:
 			while True:
 				value = ""
@@ -185,7 +187,8 @@ def applyLinkMap(file_name, config):
 					break
 		new_line += markdown_line
 		new_lines.append(new_line)
-			
+		previous_empty = markdown_line.lstrip() == "\n"
+		
 	if write_changes:
 		markdown_file = open(file_name + ".new", "w")
 		for new_line in new_lines:
