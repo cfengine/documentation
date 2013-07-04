@@ -123,10 +123,6 @@ def addToDict(dictionary, key, function):
 	values.append(function)
 	dictionary [key] = values
 
-def functionLink(function):
-	link = "[`" + function + "`][" + function + "]"
-	return link
-
 def dictToTable(dictionary):
 	lines = list()
 	row = 0
@@ -144,7 +140,7 @@ def dictToTable(dictionary):
 			else:
 				functionlist = dictionary[key]
 				if index < len(functionlist):
-					line += functionLink(functionlist[index])
+					line += "`" + functionlist[index] + "()`"
 					columns += 1
 			line += " | "
 		line += "\n"

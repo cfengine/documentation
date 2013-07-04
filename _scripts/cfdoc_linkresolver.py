@@ -99,7 +99,11 @@ def parseMarkdownForAnchors(file_name, config):
 	current_file_label = current_title
 
 	if current_file_label != "" and current_file_name != "":
-		addLinkToMap("`" + current_file_label + "`", current_file_label, current_file_name + ' \"' + current_title + '\"', config)
+		keyword = current_file_label
+		# generate auto-link to functions via `function()`
+		if current_file_name.find("reference-functions-") == 0:
+			keyword += "()"
+		addLinkToMap("`" + keyword + "`", current_file_label, current_file_name + ' \"' + current_title + '\"', config)
 		# keep dictionary reasonably short by including at most three-word headers
 		for header in header_list:
 			if header == "":
