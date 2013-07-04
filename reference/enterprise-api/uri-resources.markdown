@@ -181,12 +181,13 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI]
 -   `sortColumn` *(string)* Column on which to sort results. This is
     applied to the result of the SQL query and can be considered post
     processing. The Mission Portal uses this to sort cached reports.
--   `sortDescending` *(bool)* Apply post-sorting descendingly.
+-   `sortDescending` *(boolean)* Apply post-sorting in descending order.
 -   `skip` *(integer)* Number of results to skip for the processed
     query. The Mission Portal uses this for pagination on cached
     results.
 -   `limit` *(integer)* Limit the number of results in the processed
     query.
+-   `disableCache` *(boolean)* Don't use cached data
 
 
 ### /api/query/async
