@@ -394,16 +394,47 @@ def library_include(parameters, config):
 			try:
 				source_path = config["project_directory"] + "/" + element["sourcePath"]
 				source_file = open(source_path, 'r')
-				source_code = source_file.read()
-				offset = element["offset"]
-				offsetEnd = element["offsetEnd"]
-				
-				markdown_lines.append("\n```cf3\n")
-				markdown_lines.append(source_code[offset:offsetEnd])
-				markdown_lines.append("\n```\n")
-				markdown_lines.append("\n")
+				sourceLine = element["sourceLine"]
+				sourceLines = source_file.readlines()
 			except:
 				print "cfdoc_syntaxmap:library_include: could not include code from " + name
+			
+			if len(sourceLines):
+				# search up to include bundle/body declaration and comments in between
+				headerLines = list()
+				header_line = sourceLine - 1
+				while header_line:
+					line = sourceLines[header_line].lstrip()
+					header_line -= 1
+					headerLines.insert(0, line) # aka prepend
+					if key == "bundles" and line.find("bundle ") == 0:
+						break
+					if key == "bodies" and line.find("bodies ") == 0:
+						break
+					#### TODO: remove when bugs in line numbers are fixed
+					if len(headerLines) > 10:
+						break
+				
+				# print comments as plain text -> documentation
+				if len(headerLines):
+					markdown_lines.append("**Description:** ")
+					for headerLine in headerLines:
+						if headerLine.find("# ") == 0:
+							markdown_lines.append(headerLine[2:])
+
+				markdown_lines.append("\n```cf3\n")
+				if len(headerLines):
+					markdown_lines.append(headerLines[0])
+					markdown_lines.append("{\n")
+				while sourceLine < len(sourceLines):
+					line = sourceLines[sourceLine]
+					markdown_lines.append(line)
+					# super-naive parser...
+					if line.find("}") == 0:
+						break
+					sourceLine += 1
+				markdown_lines.append("\n```\n")
+			markdown_lines.append("\n")
 		
 	if len(markdown_lines) == 0:
 		print "cfdoc_syntaxmap:library_include: Failure to include " + parameters[0]
