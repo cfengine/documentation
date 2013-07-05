@@ -50,12 +50,44 @@ A variable containing the path to the CFEngine syntax analyzer
 
 ### sys.cf_version
 
-The variable gives the version of the running CFEngine Community
-Edition.
+The variable gives the version of the running CFEngine Core.
 
 ```cf3
-    # cf_version = 3.0.5 
+    # cf_version = 3.0.5
 ```
+
+### sys.cf_version_major
+
+The variable gives the major version of the running CFEngine Core.
+
+```cf3
+    # cf_version = 3.0.5
+    # cf_version_major = 3
+```
+
+**History:** Was introduced in 3.5.1, Enterprise 3.5.1.
+
+### sys.cf_version_minor
+
+The variable gives the minor version of the running CFEngine Core.
+
+```cf3
+    # cf_version = 3.0.5
+    # cf_version_minor = 0
+```
+
+**History:** Was introduced in 3.5.1, Enterprise 3.5.1.
+
+### sys.cf_version_patch
+
+The variable gives the patch version of the running CFEngine Core.
+
+```cf3
+    # cf_version = 3.0.5
+    # cf_version_patch = 5
+```
+
+**History:** Was introduced in 3.5.1, Enterprise 3.5.1.
 
 ### sys.class
 
