@@ -7,9 +7,7 @@ alias: reference-functions-accumulated.html
 tags: [reference, data functions, functions, accumulated]
 ---
 
-**Prototype:** `accumulated(years, months, days, hours, minutes, seconds)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]
 
 **Description:** Convert an accumulated amount of time into a system representation.
 

@@ -7,9 +7,7 @@ alias: reference-functions-ago.html
 tags: [reference, data functions, functions, ago]
 ---
 
-**Prototype:** `ago(years, months, days, hours, minutes, seconds)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]
 
 **Description:** Convert a time relative to now to an integer system representation.
 

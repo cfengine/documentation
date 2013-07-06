@@ -7,9 +7,7 @@ alias: reference-functions-changedbefore.html
 tags: [reference, files functions, functions, changedbefore]
 ---
 
-**Prototype:** `changedbefore(newer, older)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(newer,older)%]
 
 **Description:** Compares the `ctime` fields of two files.
 
@@ -19,10 +17,7 @@ Change times include both file permissions and file contents.
 Comparisons like this are normally used for updating files (like the
 'make' command).
 
-**Arguments**:
- 
-* `newer` : Newer filename, in the range `"?(/.*)`
-* `older` : Older filename, in the range `"?(/.*)`
+[%CFEngine_function_attributes(newer, older)%]
 
 **Example:**  
 

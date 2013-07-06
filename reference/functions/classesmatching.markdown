@@ -7,21 +7,15 @@ alias: reference-functions-classesmatching.html
 tags: [reference, utility functions, functions, classesmatching]
 ---
 
-**Prototype:** `classesmatching(regex)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(regex)%]
 
 **Description:** Return the list of set classes matching `regex`.
 
-This function searches for the regular expression in the list of currently set 
-classes (in order hard, then soft, then local to the current bundle).
+This function searches for the [unanchored][unanchored] regular expression in 
+the list of currently set classes (in order hard, then soft, then local to the 
+current bundle).
 
-**Arguments**:
-
-* `regex` : Regular expression, in the range `.*`
-
-A regular expression matching zero or more classes in the current list
-of set classes. The regular expression is [unanchored][unanchored].
+[%CFEngine_function_attributes(regex)%]
 
 **Example:**  
 

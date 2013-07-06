@@ -7,9 +7,7 @@ alias: reference-functions-and.html
 tags: [reference, data functions, functions, and]
 ---
 
-**Prototype:** `and(...)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(...)%]
 
 **Description:** Returns whether all arguments evaluate to true.
 
