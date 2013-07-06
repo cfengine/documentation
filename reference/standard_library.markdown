@@ -8,52 +8,62 @@ alias: reference-standard-library.html
 tags: [reference, standard library]
 ---
 
-The standard library...
+The standard library is a lingua franca of standard nuts'n'bolts definitions 
+that you can use to build up solutions within CFEngine. It is an interface 
+layer that brings industry-wide standardization of CFEngine configuration 
+scripting and hides the technical details.
 
-# Bundles
+You import the CFEngine Standard Library into your CFEngine policy like this:
 
-[%CFEngine_library_include(lib/3.6/bundles)%]
+```cf3
+body common control
+{
+    inputs => { "cfengine_stdlib.cf" };
+}
+```
 
-# Commands
-
-[%CFEngine_library_include(lib/3.6/commands)%]
-
-# Common
+## Common Bodies
 
 [%CFEngine_library_include(lib/3.6/common)%]
 
-# Databases
+[%CFEngine_library_include(lib/3.6/bundles)%]
+
+## Commands
+
+[%CFEngine_library_include(lib/3.6/commands)%]
+
+## Databases
 
 [%CFEngine_library_include(lib/3.6/databases)%]
 
-# Files
+## Files
 
 [%CFEngine_library_include(lib/3.6/files)%]
 
-# Guest Environments
+## Guest Environments
 
 [%CFEngine_library_include(lib/3.6/guest_environments)%]
 
-# Monitor
+## Monitor
 
 [%CFEngine_library_include(lib/3.6/monitor)%]
 
-# Packages
+## Packages
 
 [%CFEngine_library_include(lib/3.6/packages)%]
 
-# Paths
+## Paths
 
 [%CFEngine_library_include(lib/3.6/paths)%]
 
-# Processes
+## Processes
 
 [%CFEngine_library_include(lib/3.6/processes)%]
 
-# Services
+## Services
 
 [%CFEngine_library_include(lib/3.6/services)%]
 
-# Storage
+## Storage
 
 [%CFEngine_library_include(lib/3.6/storage)%]
