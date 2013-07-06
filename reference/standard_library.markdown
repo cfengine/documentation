@@ -38,6 +38,10 @@ The standard library...
 
 [%CFEngine_library_include(lib/3.6/monitor)%]
 
+# Packages
+
+[%CFEngine_library_include(lib/3.6/packages)%]
+
 # Paths
 
 [%CFEngine_library_include(lib/3.6/paths)%]
