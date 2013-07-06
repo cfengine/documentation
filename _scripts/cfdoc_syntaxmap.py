@@ -320,7 +320,6 @@ def library_include(parameters, config):
 		
 	# for all bundles and bodies...
 	for key in policy_json.keys():
-		markdown_lines += "## " + key + "\n\n"
 		element_list = policy_json[key]
 		
 		current_type = None
@@ -340,14 +339,14 @@ def library_include(parameters, config):
 			# Assumes that bundles and bodies are grouped by type in library.cf
 			if element_type != current_type:
 				current_type = element_type
-				markdown_lines.append("### " + current_type + " " + key + "\n")
+				markdown_lines.append("## " + current_type + " " + key + "\n")
 				markdown_lines.append("\n")
 		
 			prototype = name
 			if namespace:
 				prototype = namespace + ":" + prototype
 				
-			markdown_lines.append("#### " + prototype + "\n")
+			markdown_lines.append("### " + prototype + "\n")
 			link_target = prototype + "()"
 			if not namespace:
 				link_target = parameters[0] + ":" + link_target
