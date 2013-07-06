@@ -1,0 +1,3074 @@
+{
+      "bundles": [
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/paths.cf",
+          "offset": 28207,
+          "offsetEnd": 48653,
+          "sourceLine": 54,
+          "namespace": "default",
+          "name": "paths",
+          "bundleType": "common",
+          "arguments": [],
+          "promiseTypes": [
+            {
+              "offset": 28586,
+              "offsetEnd": 47942,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "offset": -1,
+                  "offsetEnd": 28841,
+                  "promises": [
+                    {
+                      "offset": 28796,
+                      "offsetEnd": 28841,
+                      "promiser": "path[getfacl]",
+                      "attributes": [
+                        {
+                          "offset": 28813,
+                          "offsetEnd": 28841,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/getfacl"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "aix",
+                  "offset": -1,
+                  "offsetEnd": 31038,
+                  "promises": [
+                    {
+                      "offset": 28918,
+                      "offsetEnd": 28959,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "offset": 28935,
+                          "offsetEnd": 28959,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29014,
+                      "offsetEnd": 29054,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "offset": 29031,
+                          "offsetEnd": 29054,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29106,
+                      "offsetEnd": 29143,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "offset": 29123,
+                          "offsetEnd": 29143,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29201,
+                      "offsetEnd": 29244,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "offset": 29218,
+                          "offsetEnd": 29244,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29312,
+                      "offsetEnd": 29365,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "offset": 29329,
+                          "offsetEnd": 29365,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/crontabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29421,
+                      "offsetEnd": 29462,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "offset": 29438,
+                          "offsetEnd": 29462,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29517,
+                      "offsetEnd": 29557,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "offset": 29534,
+                          "offsetEnd": 29557,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29612,
+                      "offsetEnd": 29652,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "offset": 29629,
+                          "offsetEnd": 29652,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29709,
+                      "offsetEnd": 29751,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "offset": 29726,
+                          "offsetEnd": 29751,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29807,
+                      "offsetEnd": 29848,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "offset": 29824,
+                          "offsetEnd": 29848,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 29905,
+                      "offsetEnd": 29947,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "offset": 29922,
+                          "offsetEnd": 29947,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30005,
+                      "offsetEnd": 30048,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "offset": 30022,
+                          "offsetEnd": 30048,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30105,
+                      "offsetEnd": 30147,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "offset": 30122,
+                          "offsetEnd": 30147,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30204,
+                      "offsetEnd": 30246,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "offset": 30221,
+                          "offsetEnd": 30246,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30301,
+                      "offsetEnd": 30341,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "offset": 30318,
+                          "offsetEnd": 30341,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30401,
+                      "offsetEnd": 30446,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "offset": 30418,
+                          "offsetEnd": 30446,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30503,
+                      "offsetEnd": 30545,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "offset": 30520,
+                          "offsetEnd": 30545,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30602,
+                      "offsetEnd": 30644,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "offset": 30619,
+                          "offsetEnd": 30644,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30703,
+                      "offsetEnd": 30747,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "offset": 30720,
+                          "offsetEnd": 30747,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30803,
+                      "offsetEnd": 30844,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "offset": 30820,
+                          "offsetEnd": 30844,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30901,
+                      "offsetEnd": 30943,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "offset": 30918,
+                          "offsetEnd": 30943,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 30998,
+                      "offsetEnd": 31038,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "offset": 31015,
+                          "offsetEnd": 31038,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "freebsd|netbsd",
+                  "offset": -1,
+                  "offsetEnd": 33213,
+                  "promises": [
+                    {
+                      "offset": 31137,
+                      "offsetEnd": 31178,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "offset": 31154,
+                          "offsetEnd": 31178,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 31233,
+                      "offsetEnd": 31273,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "offset": 31250,
+                          "offsetEnd": 31273,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 31325,
+                      "offsetEnd": 31362,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "offset": 31342,
+                          "offsetEnd": 31362,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 31420,
+                      "offsetEnd": 31463,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "offset": 31437,
+                          "offsetEnd": 31463,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 31521,
+                      "offsetEnd": 31564,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "offset": 31538,
+                          "offsetEnd": 31564,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/cron/tabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 31620,
+                      "offsetEnd": 31661,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "offset": 31637,
+                          "offsetEnd": 31661,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 31716,
+                      "offsetEnd": 31756,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "offset": 31733,
+                          "offsetEnd": 31756,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 31807,
+                      "offsetEnd": 31843,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "offset": 31824,
+                          "offsetEnd": 31843,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 31900,
+                      "offsetEnd": 31942,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "offset": 31917,
+                          "offsetEnd": 31942,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 31998,
+                      "offsetEnd": 32039,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "offset": 32015,
+                          "offsetEnd": 32039,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32092,
+                      "offsetEnd": 32130,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "offset": 32109,
+                          "offsetEnd": 32130,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32188,
+                      "offsetEnd": 32231,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "offset": 32205,
+                          "offsetEnd": 32231,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32288,
+                      "offsetEnd": 32330,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "offset": 32305,
+                          "offsetEnd": 32330,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32387,
+                      "offsetEnd": 32429,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "offset": 32404,
+                          "offsetEnd": 32429,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32480,
+                      "offsetEnd": 32516,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "offset": 32497,
+                          "offsetEnd": 32516,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32576,
+                      "offsetEnd": 32621,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "offset": 32593,
+                          "offsetEnd": 32621,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32678,
+                      "offsetEnd": 32720,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "offset": 32695,
+                          "offsetEnd": 32720,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32777,
+                      "offsetEnd": 32819,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "offset": 32794,
+                          "offsetEnd": 32819,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32878,
+                      "offsetEnd": 32922,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "offset": 32895,
+                          "offsetEnd": 32922,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 32978,
+                      "offsetEnd": 33019,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "offset": 32995,
+                          "offsetEnd": 33019,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 33076,
+                      "offsetEnd": 33118,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "offset": 33093,
+                          "offsetEnd": 33118,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 33173,
+                      "offsetEnd": 33213,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "offset": 33190,
+                          "offsetEnd": 33213,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "openbsd",
+                  "offset": -1,
+                  "offsetEnd": 35368,
+                  "promises": [
+                    {
+                      "offset": 33298,
+                      "offsetEnd": 33339,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "offset": 33315,
+                          "offsetEnd": 33339,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 33394,
+                      "offsetEnd": 33434,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "offset": 33411,
+                          "offsetEnd": 33434,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 33486,
+                      "offsetEnd": 33523,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "offset": 33503,
+                          "offsetEnd": 33523,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 33577,
+                      "offsetEnd": 33616,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "offset": 33594,
+                          "offsetEnd": 33616,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 33674,
+                      "offsetEnd": 33717,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "offset": 33691,
+                          "offsetEnd": 33717,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/cron/tabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 33773,
+                      "offsetEnd": 33814,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "offset": 33790,
+                          "offsetEnd": 33814,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 33869,
+                      "offsetEnd": 33909,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "offset": 33886,
+                          "offsetEnd": 33909,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 33960,
+                      "offsetEnd": 33996,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "offset": 33977,
+                          "offsetEnd": 33996,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34053,
+                      "offsetEnd": 34095,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "offset": 34070,
+                          "offsetEnd": 34095,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34152,
+                      "offsetEnd": 34194,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "offset": 34169,
+                          "offsetEnd": 34194,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34247,
+                      "offsetEnd": 34285,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "offset": 34264,
+                          "offsetEnd": 34285,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34343,
+                      "offsetEnd": 34386,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "offset": 34360,
+                          "offsetEnd": 34386,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34443,
+                      "offsetEnd": 34485,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "offset": 34460,
+                          "offsetEnd": 34485,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34542,
+                      "offsetEnd": 34584,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "offset": 34559,
+                          "offsetEnd": 34584,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34635,
+                      "offsetEnd": 34671,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "offset": 34652,
+                          "offsetEnd": 34671,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34731,
+                      "offsetEnd": 34776,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "offset": 34748,
+                          "offsetEnd": 34776,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34833,
+                      "offsetEnd": 34875,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "offset": 34850,
+                          "offsetEnd": 34875,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 34932,
+                      "offsetEnd": 34974,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "offset": 34949,
+                          "offsetEnd": 34974,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 35033,
+                      "offsetEnd": 35077,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "offset": 35050,
+                          "offsetEnd": 35077,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 35133,
+                      "offsetEnd": 35174,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "offset": 35150,
+                          "offsetEnd": 35174,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 35231,
+                      "offsetEnd": 35273,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "offset": 35248,
+                          "offsetEnd": 35273,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 35328,
+                      "offsetEnd": 35368,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "offset": 35345,
+                          "offsetEnd": 35368,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "solaris",
+                  "offset": -1,
+                  "offsetEnd": 37802,
+                  "promises": [
+                    {
+                      "offset": 35453,
+                      "offsetEnd": 35494,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "offset": 35470,
+                          "offsetEnd": 35494,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 35549,
+                      "offsetEnd": 35589,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "offset": 35566,
+                          "offsetEnd": 35589,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 35645,
+                      "offsetEnd": 35686,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "offset": 35662,
+                          "offsetEnd": 35686,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 35744,
+                      "offsetEnd": 35787,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "offset": 35761,
+                          "offsetEnd": 35787,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 35855,
+                      "offsetEnd": 35908,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "offset": 35872,
+                          "offsetEnd": 35908,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/crontabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 35964,
+                      "offsetEnd": 36005,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "offset": 35981,
+                          "offsetEnd": 36005,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36060,
+                      "offsetEnd": 36100,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "offset": 36077,
+                          "offsetEnd": 36100,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36155,
+                      "offsetEnd": 36195,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "offset": 36172,
+                          "offsetEnd": 36195,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36252,
+                      "offsetEnd": 36294,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "offset": 36269,
+                          "offsetEnd": 36294,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36351,
+                      "offsetEnd": 36393,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "offset": 36368,
+                          "offsetEnd": 36393,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36450,
+                      "offsetEnd": 36492,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "offset": 36467,
+                          "offsetEnd": 36492,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36550,
+                      "offsetEnd": 36593,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "offset": 36567,
+                          "offsetEnd": 36593,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36650,
+                      "offsetEnd": 36692,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "offset": 36667,
+                          "offsetEnd": 36692,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36749,
+                      "offsetEnd": 36791,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "offset": 36766,
+                          "offsetEnd": 36791,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36846,
+                      "offsetEnd": 36886,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "offset": 36863,
+                          "offsetEnd": 36886,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 36946,
+                      "offsetEnd": 36991,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "offset": 36963,
+                          "offsetEnd": 36991,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 37048,
+                      "offsetEnd": 37090,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "offset": 37065,
+                          "offsetEnd": 37090,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 37147,
+                      "offsetEnd": 37189,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "offset": 37164,
+                          "offsetEnd": 37189,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 37248,
+                      "offsetEnd": 37292,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "offset": 37265,
+                          "offsetEnd": 37292,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 37348,
+                      "offsetEnd": 37389,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "offset": 37365,
+                          "offsetEnd": 37389,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 37446,
+                      "offsetEnd": 37488,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "offset": 37463,
+                          "offsetEnd": 37488,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 37543,
+                      "offsetEnd": 37583,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "offset": 37560,
+                          "offsetEnd": 37583,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 37655,
+                      "offsetEnd": 37697,
+                      "promiser": "path[svcs]",
+                      "attributes": [
+                        {
+                          "offset": 37672,
+                          "offsetEnd": 37697,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/svcs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 37757,
+                      "offsetEnd": 37802,
+                      "promiser": "path[svcadm]",
+                      "attributes": [
+                        {
+                          "offset": 37774,
+                          "offsetEnd": 37802,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/svcadm"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "redhat",
+                  "offset": -1,
+                  "offsetEnd": 42283,
+                  "promises": [
+                    {
+                      "offset": 37886,
+                      "offsetEnd": 37928,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "offset": 37908,
+                          "offsetEnd": 37928,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 37988,
+                      "offsetEnd": 38033,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "offset": 38010,
+                          "offsetEnd": 38033,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 38090,
+                      "offsetEnd": 38132,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "offset": 38112,
+                          "offsetEnd": 38132,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 38195,
+                      "offsetEnd": 38243,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "offset": 38217,
+                          "offsetEnd": 38243,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 38311,
+                      "offsetEnd": 38364,
+                      "promiser": "path[createrepo]",
+                      "attributes": [
+                        {
+                          "offset": 38333,
+                          "offsetEnd": 38364,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/createrepo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 38429,
+                      "offsetEnd": 38479,
+                      "promiser": "path[crontab]",
+                      "attributes": [
+                        {
+                          "offset": 38451,
+                          "offsetEnd": 38479,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 38543,
+                      "offsetEnd": 38592,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "offset": 38565,
+                          "offsetEnd": 38592,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 38649,
+                      "offsetEnd": 38691,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "offset": 38671,
+                          "offsetEnd": 38691,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 38751,
+                      "offsetEnd": 38796,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "offset": 38773,
+                          "offsetEnd": 38796,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 38852,
+                      "offsetEnd": 38893,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "offset": 38874,
+                          "offsetEnd": 38893,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 38955,
+                      "offsetEnd": 39002,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "offset": 38977,
+                          "offsetEnd": 39002,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 39063,
+                      "offsetEnd": 39109,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "offset": 39085,
+                          "offsetEnd": 39109,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 39173,
+                      "offsetEnd": 39222,
+                      "promiser": "path[domainname]",
+                      "attributes": [
+                        {
+                          "offset": 39195,
+                          "offsetEnd": 39222,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/domainname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 39280,
+                      "offsetEnd": 39323,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "offset": 39302,
+                          "offsetEnd": 39323,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 39382,
+                      "offsetEnd": 39426,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "offset": 39404,
+                          "offsetEnd": 39426,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 39488,
+                      "offsetEnd": 39535,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "offset": 39510,
+                          "offsetEnd": 39535,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 39593,
+                      "offsetEnd": 39636,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "offset": 39615,
+                          "offsetEnd": 39636,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 39698,
+                      "offsetEnd": 39745,
+                      "promiser": "path[hostname]",
+                      "attributes": [
+                        {
+                          "offset": 39720,
+                          "offsetEnd": 39745,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/hostname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 39804,
+                      "offsetEnd": 39848,
+                      "promiser": "path[init]",
+                      "attributes": [
+                        {
+                          "offset": 39826,
+                          "offsetEnd": 39848,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/init"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 39911,
+                      "offsetEnd": 39959,
+                      "promiser": "path[iptables]",
+                      "attributes": [
+                        {
+                          "offset": 39933,
+                          "offsetEnd": 39959,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/iptables"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40027,
+                      "offsetEnd": 40080,
+                      "promiser": "path[iptables_save]",
+                      "attributes": [
+                        {
+                          "offset": 40049,
+                          "offsetEnd": 40080,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/iptables-save"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40136,
+                      "offsetEnd": 40177,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "offset": 40158,
+                          "offsetEnd": 40177,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40238,
+                      "offsetEnd": 40284,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "offset": 40260,
+                          "offsetEnd": 40284,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40346,
+                      "offsetEnd": 40393,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "offset": 40368,
+                          "offsetEnd": 40393,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40455,
+                      "offsetEnd": 40502,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "offset": 40477,
+                          "offsetEnd": 40502,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40566,
+                      "offsetEnd": 40615,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "offset": 40588,
+                          "offsetEnd": 40615,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40672,
+                      "offsetEnd": 40714,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "offset": 40694,
+                          "offsetEnd": 40714,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40772,
+                      "offsetEnd": 40815,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "offset": 40794,
+                          "offsetEnd": 40815,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40876,
+                      "offsetEnd": 40922,
+                      "promiser": "path[sysctl]",
+                      "attributes": [
+                        {
+                          "offset": 40898,
+                          "offsetEnd": 40922,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/sysctl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 40984,
+                      "offsetEnd": 41031,
+                      "promiser": "path[test]",
+                      "attributes": [
+                        {
+                          "offset": 41006,
+                          "offsetEnd": 41031,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/test"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 41091,
+                      "offsetEnd": 41136,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "offset": 41113,
+                          "offsetEnd": 41136,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 41212,
+                      "offsetEnd": 41257,
+                      "promiser": "path[chkconfig]",
+                      "attributes": [
+                        {
+                          "offset": 41230,
+                          "offsetEnd": 41257,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/chkconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 41320,
+                      "offsetEnd": 41368,
+                      "promiser": "path[groupadd]",
+                      "attributes": [
+                        {
+                          "offset": 41338,
+                          "offsetEnd": 41368,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupadd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 41431,
+                      "offsetEnd": 41479,
+                      "promiser": "path[groupdel]",
+                      "attributes": [
+                        {
+                          "offset": 41449,
+                          "offsetEnd": 41479,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupdel"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 41538,
+                      "offsetEnd": 41582,
+                      "promiser": "path[ifconfig]",
+                      "attributes": [
+                        {
+                          "offset": 41556,
+                          "offsetEnd": 41582,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ifconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 41635,
+                      "offsetEnd": 41673,
+                      "promiser": "path[ip]",
+                      "attributes": [
+                        {
+                          "offset": 41653,
+                          "offsetEnd": 41673,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ip"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 41726,
+                      "offsetEnd": 41764,
+                      "promiser": "path[rpm]",
+                      "attributes": [
+                        {
+                          "offset": 41744,
+                          "offsetEnd": 41764,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/rpm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 41822,
+                      "offsetEnd": 41865,
+                      "promiser": "path[service]",
+                      "attributes": [
+                        {
+                          "offset": 41840,
+                          "offsetEnd": 41865,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 41923,
+                      "offsetEnd": 41966,
+                      "promiser": "path[svc]",
+                      "attributes": [
+                        {
+                          "offset": 41941,
+                          "offsetEnd": 41966,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 42028,
+                      "offsetEnd": 42075,
+                      "promiser": "path[useradd]",
+                      "attributes": [
+                        {
+                          "offset": 42046,
+                          "offsetEnd": 42075,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/useradd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 42137,
+                      "offsetEnd": 42184,
+                      "promiser": "path[userdel]",
+                      "attributes": [
+                        {
+                          "offset": 42155,
+                          "offsetEnd": 42184,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/userdel"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 42241,
+                      "offsetEnd": 42283,
+                      "promiser": "path[yum]",
+                      "attributes": [
+                        {
+                          "offset": 42259,
+                          "offsetEnd": 42283,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/yum"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "debian",
+                  "offset": -1,
+                  "offsetEnd": 47709,
+                  "promises": [
+                    {
+                      "offset": 42371,
+                      "offsetEnd": 42417,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "offset": 42393,
+                          "offsetEnd": 42417,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 42477,
+                      "offsetEnd": 42522,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "offset": 42499,
+                          "offsetEnd": 42522,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 42579,
+                      "offsetEnd": 42621,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "offset": 42601,
+                          "offsetEnd": 42621,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 42685,
+                      "offsetEnd": 42734,
+                      "promiser": "path[chkconfig]",
+                      "attributes": [
+                        {
+                          "offset": 42707,
+                          "offsetEnd": 42734,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/chkconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 42797,
+                      "offsetEnd": 42845,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "offset": 42819,
+                          "offsetEnd": 42845,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 42913,
+                      "offsetEnd": 42966,
+                      "promiser": "path[createrepo]",
+                      "attributes": [
+                        {
+                          "offset": 42935,
+                          "offsetEnd": 42966,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/createrepo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 43031,
+                      "offsetEnd": 43081,
+                      "promiser": "path[crontab]",
+                      "attributes": [
+                        {
+                          "offset": 43053,
+                          "offsetEnd": 43081,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 43154,
+                      "offsetEnd": 43212,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "offset": 43176,
+                          "offsetEnd": 43212,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/crontabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 43273,
+                      "offsetEnd": 43319,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "offset": 43295,
+                          "offsetEnd": 43319,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 43379,
+                      "offsetEnd": 43424,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "offset": 43401,
+                          "offsetEnd": 43424,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 43480,
+                      "offsetEnd": 43521,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "offset": 43502,
+                          "offsetEnd": 43521,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 43583,
+                      "offsetEnd": 43630,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "offset": 43605,
+                          "offsetEnd": 43630,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 43691,
+                      "offsetEnd": 43737,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "offset": 43713,
+                          "offsetEnd": 43737,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 43805,
+                      "offsetEnd": 43858,
+                      "promiser": "path[dmidecode]",
+                      "attributes": [
+                        {
+                          "offset": 43827,
+                          "offsetEnd": 43858,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dmidecode"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 43922,
+                      "offsetEnd": 43971,
+                      "promiser": "path[domainname]",
+                      "attributes": [
+                        {
+                          "offset": 43944,
+                          "offsetEnd": 43971,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/domainname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44029,
+                      "offsetEnd": 44072,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "offset": 44051,
+                          "offsetEnd": 44072,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44131,
+                      "offsetEnd": 44175,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "offset": 44153,
+                          "offsetEnd": 44175,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44237,
+                      "offsetEnd": 44284,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "offset": 44259,
+                          "offsetEnd": 44284,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44342,
+                      "offsetEnd": 44385,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "offset": 44364,
+                          "offsetEnd": 44385,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44447,
+                      "offsetEnd": 44494,
+                      "promiser": "path[hostname]",
+                      "attributes": [
+                        {
+                          "offset": 44469,
+                          "offsetEnd": 44494,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/hostname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44550,
+                      "offsetEnd": 44591,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "offset": 44572,
+                          "offsetEnd": 44591,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44650,
+                      "offsetEnd": 44694,
+                      "promiser": "path[init]",
+                      "attributes": [
+                        {
+                          "offset": 44672,
+                          "offsetEnd": 44694,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/init"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44757,
+                      "offsetEnd": 44805,
+                      "promiser": "path[iptables]",
+                      "attributes": [
+                        {
+                          "offset": 44779,
+                          "offsetEnd": 44805,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/iptables"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44873,
+                      "offsetEnd": 44926,
+                      "promiser": "path[iptables_save]",
+                      "attributes": [
+                        {
+                          "offset": 44895,
+                          "offsetEnd": 44926,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/iptables-save"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 44987,
+                      "offsetEnd": 45033,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "offset": 45009,
+                          "offsetEnd": 45033,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 45091,
+                      "offsetEnd": 45134,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "offset": 45113,
+                          "offsetEnd": 45134,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 45196,
+                      "offsetEnd": 45243,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "offset": 45218,
+                          "offsetEnd": 45243,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 45307,
+                      "offsetEnd": 45356,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "offset": 45329,
+                          "offsetEnd": 45356,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 45413,
+                      "offsetEnd": 45455,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "offset": 45435,
+                          "offsetEnd": 45455,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 45517,
+                      "offsetEnd": 45564,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "offset": 45539,
+                          "offsetEnd": 45564,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 45625,
+                      "offsetEnd": 45671,
+                      "promiser": "path[sysctl]",
+                      "attributes": [
+                        {
+                          "offset": 45647,
+                          "offsetEnd": 45671,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/sysctl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 45733,
+                      "offsetEnd": 45780,
+                      "promiser": "path[test]",
+                      "attributes": [
+                        {
+                          "offset": 45755,
+                          "offsetEnd": 45780,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/test"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 45840,
+                      "offsetEnd": 45885,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "offset": 45862,
+                          "offsetEnd": 45885,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 45974,
+                      "offsetEnd": 46032,
+                      "promiser": "path[apt_cache]",
+                      "attributes": [
+                        {
+                          "offset": 46002,
+                          "offsetEnd": 46032,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/apt-cache"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 46106,
+                      "offsetEnd": 46165,
+                      "promiser": "path[apt_config]",
+                      "attributes": [
+                        {
+                          "offset": 46134,
+                          "offsetEnd": 46165,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/apt-config"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 46236,
+                      "offsetEnd": 46292,
+                      "promiser": "path[apt_get]",
+                      "attributes": [
+                        {
+                          "offset": 46264,
+                          "offsetEnd": 46292,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/apt-get"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 46363,
+                      "offsetEnd": 46419,
+                      "promiser": "path[apt_key]",
+                      "attributes": [
+                        {
+                          "offset": 46391,
+                          "offsetEnd": 46419,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/apt-key"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 46491,
+                      "offsetEnd": 46548,
+                      "promiser": "path[aptitude]",
+                      "attributes": [
+                        {
+                          "offset": 46519,
+                          "offsetEnd": 46548,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/aptitude"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 46616,
+                      "offsetEnd": 46669,
+                      "promiser": "path[dpkg]",
+                      "attributes": [
+                        {
+                          "offset": 46644,
+                          "offsetEnd": 46669,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dpkg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 46742,
+                      "offsetEnd": 46800,
+                      "promiser": "path[groupadd]",
+                      "attributes": [
+                        {
+                          "offset": 46770,
+                          "offsetEnd": 46800,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupadd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 46869,
+                      "offsetEnd": 46923,
+                      "promiser": "path[ifconfig]",
+                      "attributes": [
+                        {
+                          "offset": 46897,
+                          "offsetEnd": 46923,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ifconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 46986,
+                      "offsetEnd": 47034,
+                      "promiser": "path[ip]",
+                      "attributes": [
+                        {
+                          "offset": 47014,
+                          "offsetEnd": 47034,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ip"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 47106,
+                      "offsetEnd": 47163,
+                      "promiser": "path[service]",
+                      "attributes": [
+                        {
+                          "offset": 47134,
+                          "offsetEnd": 47163,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 47235,
+                      "offsetEnd": 47292,
+                      "promiser": "path[svc]",
+                      "attributes": [
+                        {
+                          "offset": 47263,
+                          "offsetEnd": 47292,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 47375,
+                      "offsetEnd": 47443,
+                      "promiser": "path[update_alternatives]",
+                      "attributes": [
+                        {
+                          "offset": 47403,
+                          "offsetEnd": 47443,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/update-alternatives"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 47519,
+                      "offsetEnd": 47580,
+                      "promiser": "path[update_rc_d]",
+                      "attributes": [
+                        {
+                          "offset": 47547,
+                          "offsetEnd": 47580,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/update-rc.d"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 47652,
+                      "offsetEnd": 47709,
+                      "promiser": "path[useradd]",
+                      "attributes": [
+                        {
+                          "offset": 47680,
+                          "offsetEnd": 47709,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/useradd"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "any",
+                  "offset": -1,
+                  "offsetEnd": 47942,
+                  "promises": [
+                    {
+                      "offset": 47788,
+                      "offsetEnd": 47831,
+                      "promiser": "all_paths",
+                      "attributes": [
+                        {
+                          "offset": 47813,
+                          "offsetEnd": 47831,
+                          "lval": "slist",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "getindices",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "path"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 47894,
+                      "offsetEnd": 47942,
+                      "promiser": "$(all_paths)",
+                      "attributes": [
+                        {
+                          "offset": 47909,
+                          "offsetEnd": 47942,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(path[$(all_paths)])"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "offset": 47957,
+              "offsetEnd": 48649,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "offset": -1,
+                  "offsetEnd": 48649,
+                  "promises": [
+                    {
+                      "offset": 48005,
+                      "offsetEnd": 48269,
+                      "promiser": "_stdlib_has_path_$(all_paths)",
+                      "attributes": [
+                        {
+                          "offset": 48104,
+                          "offsetEnd": 48130,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "isvariable",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(all_paths)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "offset": 48207,
+                          "offsetEnd": 48269,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "It\\'s useful to know if a given path is defined"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 48314,
+                      "offsetEnd": 48649,
+                      "promiser": "_stdlib_path_exists_$(all_paths)",
+                      "attributes": [
+                        {
+                          "offset": 48425,
+                          "offsetEnd": 48460,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(path[$(all_paths)])"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "offset": 48562,
+                          "offsetEnd": 48649,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "It\\'s useful to know if $(all_paths) exists on the filesystem as defined"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "bodies": []
+    }

@@ -1,0 +1,239 @@
+{
+      "bundles": [],
+      "bodies": [
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
+          "offset": 9258,
+          "offsetEnd": 9492,
+          "sourceLine": 55,
+          "namespace": "default",
+          "name": "min_free_space",
+          "bodyType": "volume",
+          "arguments": [
+            "free"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 9488,
+              "attributes": [
+                {
+                  "offset": 9308,
+                  "offsetEnd": 9333,
+                  "lval": "check_foreign",
+                  "rval": {
+                    "type": "string",
+                    "value": "false"
+                  }
+                },
+                {
+                  "offset": 9363,
+                  "offsetEnd": 9390,
+                  "lval": "freespace",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(free)"
+                  }
+                },
+                {
+                  "offset": 9418,
+                  "offsetEnd": 9443,
+                  "lval": "sensible_size",
+                  "rval": {
+                    "type": "string",
+                    "value": "10000"
+                  }
+                },
+                {
+                  "offset": 9467,
+                  "offsetEnd": 9488,
+                  "lval": "sensible_count",
+                  "rval": {
+                    "type": "string",
+                    "value": "2"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
+          "offset": 9540,
+          "offsetEnd": 9762,
+          "sourceLine": 65,
+          "namespace": "default",
+          "name": "nfs",
+          "bodyType": "mount",
+          "arguments": [
+            "server",
+            "source"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 9758,
+              "attributes": [
+                {
+                  "offset": 9582,
+                  "offsetEnd": 9601,
+                  "lval": "mount_type",
+                  "rval": {
+                    "type": "string",
+                    "value": "nfs"
+                  }
+                },
+                {
+                  "offset": 9631,
+                  "offsetEnd": 9658,
+                  "lval": "mount_source",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(source)"
+                  }
+                },
+                {
+                  "offset": 9688,
+                  "offsetEnd": 9715,
+                  "lval": "mount_server",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(server)"
+                  }
+                },
+                {
+                  "offset": 9738,
+                  "offsetEnd": 9758,
+                  "lval": "edit_fstab",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
+          "offset": 9818,
+          "offsetEnd": 10106,
+          "sourceLine": 76,
+          "namespace": "default",
+          "name": "nfs_p",
+          "bodyType": "mount",
+          "arguments": [
+            "server",
+            "source",
+            "perm"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 10102,
+              "attributes": [
+                {
+                  "offset": 9867,
+                  "offsetEnd": 9886,
+                  "lval": "mount_type",
+                  "rval": {
+                    "type": "string",
+                    "value": "nfs"
+                  }
+                },
+                {
+                  "offset": 9916,
+                  "offsetEnd": 9943,
+                  "lval": "mount_source",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(source)"
+                  }
+                },
+                {
+                  "offset": 9973,
+                  "offsetEnd": 10000,
+                  "lval": "mount_server",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(server)"
+                  }
+                },
+                {
+                  "offset": 10031,
+                  "offsetEnd": 10059,
+                  "lval": "mount_options",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(perm)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 10082,
+                  "offsetEnd": 10102,
+                  "lval": "edit_fstab",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
+          "offset": 10143,
+          "offsetEnd": 10277,
+          "sourceLine": 87,
+          "namespace": "default",
+          "name": "unmount",
+          "bodyType": "mount",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 10273,
+              "attributes": [
+                {
+                  "offset": 10174,
+                  "offsetEnd": 10193,
+                  "lval": "mount_type",
+                  "rval": {
+                    "type": "string",
+                    "value": "nfs"
+                  }
+                },
+                {
+                  "offset": 10216,
+                  "offsetEnd": 10236,
+                  "lval": "edit_fstab",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                },
+                {
+                  "offset": 10256,
+                  "offsetEnd": 10273,
+                  "lval": "unmount",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }

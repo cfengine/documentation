@@ -1,0 +1,219 @@
+{
+      "bundles": [],
+      "bodies": [
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "offset": 9132,
+          "offsetEnd": 9250,
+          "sourceLine": 55,
+          "namespace": "default",
+          "name": "exclude_procs",
+          "bodyType": "process_select",
+          "arguments": [
+            "x"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 9246,
+              "attributes": [
+                {
+                  "offset": 9170,
+                  "offsetEnd": 9187,
+                  "lval": "command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(x)"
+                  }
+                },
+                {
+                  "offset": 9218,
+                  "offsetEnd": 9246,
+                  "lval": "process_result",
+                  "rval": {
+                    "type": "string",
+                    "value": "!command"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "offset": 9316,
+          "offsetEnd": 9498,
+          "sourceLine": 63,
+          "namespace": "default",
+          "name": "days_older_than",
+          "bodyType": "process_select",
+          "arguments": [
+            "d"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 9494,
+              "attributes": [
+                {
+                  "offset": 9437,
+                  "offsetEnd": 9441,
+                  "lval": "stime_range",
+                  "rval": {
+                    "type": "functionCall",
+                    "name": "irange",
+                    "arguments": [
+                      {
+                        "type": "functionCall",
+                        "name": "ago",
+                        "arguments": [
+                          {
+                            "type": "string",
+                            "value": "0"
+                          },
+                          {
+                            "type": "string",
+                            "value": "0"
+                          },
+                          {
+                            "type": "string",
+                            "value": "$(d)"
+                          },
+                          {
+                            "type": "string",
+                            "value": "0"
+                          },
+                          {
+                            "type": "string",
+                            "value": "0"
+                          },
+                          {
+                            "type": "string",
+                            "value": "0"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "value": "now"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 9469,
+                  "offsetEnd": 9494,
+                  "lval": "process_result",
+                  "rval": {
+                    "type": "string",
+                    "value": "stime"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "offset": 9557,
+          "offsetEnd": 9691,
+          "sourceLine": 72,
+          "namespace": "default",
+          "name": "any_count",
+          "bodyType": "process_count",
+          "arguments": [
+            "cl"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 9687,
+              "attributes": [
+                {
+                  "offset": 9596,
+                  "offsetEnd": 9616,
+                  "lval": "match_range",
+                  "rval": {
+                    "type": "string",
+                    "value": "0,0"
+                  }
+                },
+                {
+                  "offset": 9653,
+                  "offsetEnd": 9687,
+                  "lval": "out_of_range_define",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(cl)"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "offset": 9766,
+          "offsetEnd": 9993,
+          "sourceLine": 80,
+          "namespace": "default",
+          "name": "check_range",
+          "bodyType": "process_count",
+          "arguments": [
+            "name",
+            "lower",
+            "upper"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 9989,
+              "attributes": [
+                {
+                  "offset": 9859,
+                  "offsetEnd": 9888,
+                  "lval": "match_range",
+                  "rval": {
+                    "type": "functionCall",
+                    "name": "irange",
+                    "arguments": [
+                      {
+                        "type": "string",
+                        "value": "$(lower)"
+                      },
+                      {
+                        "type": "string",
+                        "value": "$(upper)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 9940,
+                  "offsetEnd": 9989,
+                  "lval": "out_of_range_define",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(name)_out_of_range"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }

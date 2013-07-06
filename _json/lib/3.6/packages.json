@@ -1,0 +1,4945 @@
+{
+      "bundles": [
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 83602,
+          "offsetEnd": 84502,
+          "sourceLine": 86,
+          "namespace": "default",
+          "name": "debian_knowledge",
+          "bundleType": "common",
+          "arguments": [],
+          "promiseTypes": [
+            {
+              "offset": 83631,
+              "offsetEnd": 84498,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "offset": -1,
+                  "offsetEnd": 84498,
+                  "promises": [
+                    {
+                      "offset": 83763,
+                      "offsetEnd": 83876,
+                      "promiser": "apt_prefix",
+                      "attributes": [
+                        {
+                          "offset": 83776,
+                          "offsetEnd": 83876,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/env DEBIAN_FRONTEND=noninteractive LC_ALL=C PATH=/bin:/sbin/:/usr/bin:/usr/sbin"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 83948,
+                      "offsetEnd": 84005,
+                      "promiser": "call_dpkg",
+                      "attributes": [
+                        {
+                          "offset": 83960,
+                          "offsetEnd": 84005,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(apt_prefix) $(paths.path[dpkg])"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 84083,
+                      "offsetEnd": 84146,
+                      "promiser": "call_apt_get",
+                      "attributes": [
+                        {
+                          "offset": 84098,
+                          "offsetEnd": 84146,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(apt_prefix) $(paths.path[apt_get])"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 84226,
+                      "offsetEnd": 84291,
+                      "promiser": "call_aptitude",
+                      "attributes": [
+                        {
+                          "offset": 84242,
+                          "offsetEnd": 84291,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(apt_prefix) $(paths.path[aptitude])"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 84402,
+                      "offsetEnd": 84498,
+                      "promiser": "dpkg_options",
+                      "attributes": [
+                        {
+                          "offset": 84417,
+                          "offsetEnd": 84498,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "-o Dpkg::Options::=--force-confold -o Dpkg::Options::=--force-confdef"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 128950,
+          "offsetEnd": 129456,
+          "sourceLine": 663,
+          "namespace": "default",
+          "name": "create_solaris_admin_file",
+          "bundleType": "edit_line",
+          "arguments": [],
+          "promiseTypes": [
+            {
+              "offset": 128992,
+              "offsetEnd": 129452,
+              "name": "insert_lines",
+              "contexts": [
+                {
+                  "name": "any",
+                  "offset": -1,
+                  "offsetEnd": 129452,
+                  "promises": [
+                    {
+                      "offset": 129017,
+                      "offsetEnd": 129452,
+                      "promiser": "mail=\ninstance=unique\npartial=nocheck\nrunlevel=nocheck\nidepend=nocheck\nrdepend=nocheck\nspace=nocheck\nsetuid=nocheck\nconflict=nocheck\naction=nocheck\nnetworktimeout=60\nnetworkretries=3\nauthentication=quit\nkeystore=/var/sadm/security\nproxy=\nbasedir=default",
+                      "attributes": [
+                        {
+                          "offset": 129369,
+                          "offsetEnd": 129452,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Insert contents of Solaris admin file (automatically install packages)"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "bodies": [
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 81143,
+          "offsetEnd": 83550,
+          "sourceLine": 56,
+          "namespace": "default",
+          "name": "zypper",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 83546,
+              "attributes": [
+                {
+                  "offset": 81180,
+                  "offsetEnd": 81205,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 81321,
+                  "offsetEnd": 81433,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -qa --queryformat \\\"i | repos | %{name} | %{version}-%{release} | %{arch}\\n\\\""
+                  }
+                },
+                {
+                  "offset": 81609,
+                  "offsetEnd": 81670,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper list-updates"
+                  }
+                },
+                {
+                  "offset": 81711,
+                  "offsetEnd": 81749,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 81808,
+                  "offsetEnd": 81863,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper patches"
+                  }
+                },
+                {
+                  "offset": 81898,
+                  "offsetEnd": 81930,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "i.*"
+                  }
+                },
+                {
+                  "offset": 81992,
+                  "offsetEnd": 82051,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 82120,
+                  "offsetEnd": 82186,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 82262,
+                  "offsetEnd": 82335,
+                  "lval": "package_list_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|[^|]+\\|[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 82406,
+                  "offsetEnd": 82473,
+                  "lval": "package_patch_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*Installed.*|.*Not Applicable.*"
+                  }
+                },
+                {
+                  "offset": 82529,
+                  "offsetEnd": 82582,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 82645,
+                  "offsetEnd": 82705,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 82745,
+                  "offsetEnd": 82781,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 82850,
+                  "offsetEnd": 82916,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive install"
+                  }
+                },
+                {
+                  "offset": 83006,
+                  "offsetEnd": 83093,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive remove --force-resolution"
+                  }
+                },
+                {
+                  "offset": 83164,
+                  "offsetEnd": 83232,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive update"
+                  }
+                },
+                {
+                  "offset": 83320,
+                  "offsetEnd": 83387,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive patch$"
+                  }
+                },
+                {
+                  "offset": 83477,
+                  "offsetEnd": 83546,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive verify$"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 84547,
+          "offsetEnd": 88942,
+          "sourceLine": 96,
+          "namespace": "default",
+          "name": "apt",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 85375,
+              "attributes": [
+                {
+                  "offset": 84580,
+                  "offsetEnd": 84605,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 84666,
+                  "offsetEnd": 84724,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) -l"
+                  }
+                },
+                {
+                  "offset": 84774,
+                  "offsetEnd": 84821,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 84880,
+                  "offsetEnd": 84936,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+[^\\s]+\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 85024,
+                  "offsetEnd": 85057,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i.*"
+                  }
+                },
+                {
+                  "offset": 85148,
+                  "offsetEnd": 85184,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 85337,
+                  "offsetEnd": 85375,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "have_aptitude",
+              "offset": 85393,
+              "offsetEnd": 87216,
+              "attributes": [
+                {
+                  "offset": 85528,
+                  "offsetEnd": 85640,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_aptitude) $(debian_knowledge.dpkg_options) --assume-yes install"
+                  }
+                },
+                {
+                  "offset": 85706,
+                  "offsetEnd": 85763,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/aptitude update"
+                  }
+                },
+                {
+                  "offset": 85889,
+                  "offsetEnd": 86006,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_aptitude) $(debian_knowledge.dpkg_options) --assume-yes -q remove"
+                  }
+                },
+                {
+                  "offset": 86131,
+                  "offsetEnd": 86247,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_aptitude) $(debian_knowledge.dpkg_options) --assume-yes install"
+                  }
+                },
+                {
+                  "offset": 86371,
+                  "offsetEnd": 86486,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_aptitude) $(debian_knowledge.dpkg_options) --assume-yes install"
+                  }
+                },
+                {
+                  "offset": 86546,
+                  "offsetEnd": 86597,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/aptitude show"
+                  }
+                },
+                {
+                  "offset": 86687,
+                  "offsetEnd": 86768,
+                  "lval": "package_noverify_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(State: not installed|E: Unable to locate package .*)"
+                  }
+                },
+                {
+                  "offset": 86874,
+                  "offsetEnd": 86970,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/aptitude --assume-yes --simulate --verbose full-upgrade"
+                  }
+                },
+                {
+                  "offset": 87027,
+                  "offsetEnd": 87075,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+(\\S+)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 87150,
+                  "offsetEnd": 87216,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+\\S+\\s+\\[?\\(?([^\\],\\s]+).*"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "!have_aptitude",
+              "offset": 87235,
+              "offsetEnd": 88937,
+              "attributes": [
+                {
+                  "offset": 87363,
+                  "offsetEnd": 87467,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes install"
+                  }
+                },
+                {
+                  "offset": 87548,
+                  "offsetEnd": 87620,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) update"
+                  }
+                },
+                {
+                  "offset": 87738,
+                  "offsetEnd": 87847,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes -q remove"
+                  }
+                },
+                {
+                  "offset": 87964,
+                  "offsetEnd": 88072,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes install"
+                  }
+                },
+                {
+                  "offset": 88188,
+                  "offsetEnd": 88295,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes install"
+                  }
+                },
+                {
+                  "offset": 88364,
+                  "offsetEnd": 88424,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) -s"
+                  }
+                },
+                {
+                  "offset": 88467,
+                  "offsetEnd": 88501,
+                  "lval": "package_noverify_returncode",
+                  "rval": {
+                    "type": "string",
+                    "value": "1"
+                  }
+                },
+                {
+                  "offset": 88601,
+                  "offsetEnd": 88691,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) --just-print dist-upgrade"
+                  }
+                },
+                {
+                  "offset": 88748,
+                  "offsetEnd": 88796,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+(\\S+)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 88871,
+                  "offsetEnd": 88937,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+\\S+\\s+\\[?\\(?([^\\],\\s]+).*"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 89517,
+          "offsetEnd": 92805,
+          "sourceLine": 142,
+          "namespace": "default",
+          "name": "apt_get",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 92800,
+              "attributes": [
+                {
+                  "offset": 89566,
+                  "offsetEnd": 89591,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 89664,
+                  "offsetEnd": 89722,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) -l"
+                  }
+                },
+                {
+                  "offset": 89784,
+                  "offsetEnd": 89831,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 89902,
+                  "offsetEnd": 89958,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+[^\\s]+\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 90058,
+                  "offsetEnd": 90091,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i.*"
+                  }
+                },
+                {
+                  "offset": 90194,
+                  "offsetEnd": 90230,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 90407,
+                  "offsetEnd": 90445,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 90670,
+                  "offsetEnd": 90774,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes install"
+                  }
+                },
+                {
+                  "offset": 90861,
+                  "offsetEnd": 90933,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) update"
+                  }
+                },
+                {
+                  "offset": 91057,
+                  "offsetEnd": 91166,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes -q remove"
+                  }
+                },
+                {
+                  "offset": 91289,
+                  "offsetEnd": 91397,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes install"
+                  }
+                },
+                {
+                  "offset": 91519,
+                  "offsetEnd": 91626,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes install"
+                  }
+                },
+                {
+                  "offset": 91701,
+                  "offsetEnd": 91761,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) -s"
+                  }
+                },
+                {
+                  "offset": 91810,
+                  "offsetEnd": 91844,
+                  "lval": "package_noverify_returncode",
+                  "rval": {
+                    "type": "string",
+                    "value": "1"
+                  }
+                },
+                {
+                  "offset": 91950,
+                  "offsetEnd": 92040,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) --just-print dist-upgrade"
+                  }
+                },
+                {
+                  "offset": 92103,
+                  "offsetEnd": 92151,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+(\\S+)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 92232,
+                  "offsetEnd": 92298,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+\\S+\\s+\\[?\\(?([^\\],\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 92492,
+                  "offsetEnd": 92589,
+                  "lval": "package_version_less_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) --compare-versions $(v1) lt $(v2)"
+                  }
+                },
+                {
+                  "offset": 92702,
+                  "offsetEnd": 92800,
+                  "lval": "package_version_equal_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) --compare-versions $(v1) eq $(v2)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 92871,
+          "offsetEnd": 96344,
+          "sourceLine": 173,
+          "namespace": "default",
+          "name": "apt_get_release",
+          "bodyType": "package_method",
+          "arguments": [
+            "release"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 96339,
+              "attributes": [
+                {
+                  "offset": 92937,
+                  "offsetEnd": 92962,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 93035,
+                  "offsetEnd": 93093,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) -l"
+                  }
+                },
+                {
+                  "offset": 93155,
+                  "offsetEnd": 93202,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 93273,
+                  "offsetEnd": 93329,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+[^\\s]+\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 93429,
+                  "offsetEnd": 93462,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i.*"
+                  }
+                },
+                {
+                  "offset": 93565,
+                  "offsetEnd": 93601,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 93778,
+                  "offsetEnd": 93816,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 94069,
+                  "offsetEnd": 94201,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes --target-release $(release) install"
+                  }
+                },
+                {
+                  "offset": 94288,
+                  "offsetEnd": 94360,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) update"
+                  }
+                },
+                {
+                  "offset": 94484,
+                  "offsetEnd": 94593,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes -q remove"
+                  }
+                },
+                {
+                  "offset": 94744,
+                  "offsetEnd": 94880,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes --target-release $(release) install"
+                  }
+                },
+                {
+                  "offset": 95030,
+                  "offsetEnd": 95165,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes --target-release $(release) install"
+                  }
+                },
+                {
+                  "offset": 95240,
+                  "offsetEnd": 95300,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) -s"
+                  }
+                },
+                {
+                  "offset": 95349,
+                  "offsetEnd": 95383,
+                  "lval": "package_noverify_returncode",
+                  "rval": {
+                    "type": "string",
+                    "value": "1"
+                  }
+                },
+                {
+                  "offset": 95489,
+                  "offsetEnd": 95579,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) --just-print dist-upgrade"
+                  }
+                },
+                {
+                  "offset": 95642,
+                  "offsetEnd": 95690,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+(\\S+)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 95771,
+                  "offsetEnd": 95837,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+\\S+\\s+\\[?\\(?([^\\],\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 96031,
+                  "offsetEnd": 96128,
+                  "lval": "package_version_less_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) --compare-versions $(v1) lt $(v2)"
+                  }
+                },
+                {
+                  "offset": 96241,
+                  "offsetEnd": 96339,
+                  "lval": "package_version_equal_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) --compare-versions $(v1) eq $(v2)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 96410,
+          "offsetEnd": 99264,
+          "sourceLine": 206,
+          "namespace": "default",
+          "name": "dpkg_version",
+          "bodyType": "package_method",
+          "arguments": [
+            "repo"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 97427,
+              "attributes": [
+                {
+                  "offset": 96464,
+                  "offsetEnd": 96495,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 96556,
+                  "offsetEnd": 96614,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) -l"
+                  }
+                },
+                {
+                  "offset": 96801,
+                  "offsetEnd": 96873,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) update"
+                  }
+                },
+                {
+                  "offset": 96914,
+                  "offsetEnd": 96952,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 97003,
+                  "offsetEnd": 97050,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 97109,
+                  "offsetEnd": 97165,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+[^\\s]+\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 97254,
+                  "offsetEnd": 97287,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i.*"
+                  }
+                },
+                {
+                  "offset": 97385,
+                  "offsetEnd": 97427,
+                  "lval": "package_file_repositories",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(repo)"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "debian.x86_64",
+              "offset": 97445,
+              "offsetEnd": 97582,
+              "attributes": [
+                {
+                  "offset": 97525,
+                  "offsetEnd": 97582,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)_$(version)_amd64.deb"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "debian.i686",
+              "offset": 97598,
+              "offsetEnd": 97731,
+              "attributes": [
+                {
+                  "offset": 97675,
+                  "offsetEnd": 97731,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)_$(version)_i386.deb"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "have_aptitude",
+              "offset": 97749,
+              "offsetEnd": 98210,
+              "attributes": [
+                {
+                  "offset": 97868,
+                  "offsetEnd": 97964,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/aptitude --assume-yes --simulate --verbose full-upgrade"
+                  }
+                },
+                {
+                  "offset": 98021,
+                  "offsetEnd": 98069,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+(\\S+)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 98144,
+                  "offsetEnd": 98210,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+\\S+\\s+\\[?\\(?([^\\],\\s]+).*"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "!have_aptitude",
+              "offset": 98228,
+              "offsetEnd": 98678,
+              "attributes": [
+                {
+                  "offset": 98342,
+                  "offsetEnd": 98432,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) --just-print dist-upgrade"
+                  }
+                },
+                {
+                  "offset": 98489,
+                  "offsetEnd": 98537,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+(\\S+)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 98612,
+                  "offsetEnd": 98678,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+\\S+\\s+\\[?\\(?([^\\],\\s]+).*"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "debian",
+              "offset": 98689,
+              "offsetEnd": 99260,
+              "attributes": [
+                {
+                  "offset": 98769,
+                  "offsetEnd": 98833,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) --install"
+                  }
+                },
+                {
+                  "offset": 98907,
+                  "offsetEnd": 98972,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) --purge"
+                  }
+                },
+                {
+                  "offset": 99049,
+                  "offsetEnd": 99117,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) --install"
+                  }
+                },
+                {
+                  "offset": 99193,
+                  "offsetEnd": 99260,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) --install"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 99329,
+          "offsetEnd": 101170,
+          "sourceLine": 246,
+          "namespace": "default",
+          "name": "rpm_version",
+          "bodyType": "package_method",
+          "arguments": [
+            "repo"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 101166,
+              "attributes": [
+                {
+                  "offset": 99382,
+                  "offsetEnd": 99413,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 99529,
+                  "offsetEnd": 99641,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -qa --queryformat \\\"i | repos | %{name} | %{version}-%{release} | %{arch}\\n\\\""
+                  }
+                },
+                {
+                  "offset": 99822,
+                  "offsetEnd": 99888,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 99929,
+                  "offsetEnd": 99967,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 100031,
+                  "offsetEnd": 100091,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|\\s+([^\\s|]+).*"
+                  }
+                },
+                {
+                  "offset": 100161,
+                  "offsetEnd": 100228,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|[^|]+\\|\\s+([^\\s|]+).*"
+                  }
+                },
+                {
+                  "offset": 100304,
+                  "offsetEnd": 100377,
+                  "lval": "package_list_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|[^|]+\\|[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 100413,
+                  "offsetEnd": 100445,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "i.*"
+                  }
+                },
+                {
+                  "offset": 100491,
+                  "offsetEnd": 100533,
+                  "lval": "package_file_repositories",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(repo)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 100596,
+                  "offsetEnd": 100655,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)-$(version).$(arch).rpm"
+                  }
+                },
+                {
+                  "offset": 100698,
+                  "offsetEnd": 100737,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -ivh "
+                  }
+                },
+                {
+                  "offset": 100782,
+                  "offsetEnd": 100824,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -Uvh "
+                  }
+                },
+                {
+                  "offset": 100868,
+                  "offsetEnd": 100909,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -Uvh "
+                  }
+                },
+                {
+                  "offset": 100960,
+                  "offsetEnd": 101008,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -e --nodeps"
+                  }
+                },
+                {
+                  "offset": 101050,
+                  "offsetEnd": 101089,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -V"
+                  }
+                },
+                {
+                  "offset": 101129,
+                  "offsetEnd": 101166,
+                  "lval": "package_noverify_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*[^\\s].*"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 101233,
+          "offsetEnd": 102898,
+          "sourceLine": 276,
+          "namespace": "default",
+          "name": "windows_feature",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 102894,
+              "attributes": [
+                {
+                  "offset": 101284,
+                  "offsetEnd": 101315,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 101357,
+                  "offsetEnd": 101395,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 101436,
+                  "offsetEnd": 101474,
+                  "lval": "package_delete_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 101509,
+                  "offsetEnd": 101540,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 101576,
+                  "offsetEnd": 101609,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(.*)"
+                  }
+                },
+                {
+                  "offset": 101727,
+                  "offsetEnd": 101763,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(.*)"
+                  }
+                },
+                {
+                  "offset": 101998,
+                  "offsetEnd": 102150,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \\\"Import-Module ServerManager; Add-WindowsFeature -Name\\\""
+                  }
+                },
+                {
+                  "offset": 102324,
+                  "offsetEnd": 102495,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \\\"Import-Module ServerManager; Remove-WindowsFeature -confirm:$false -Name\\\""
+                  }
+                },
+                {
+                  "offset": 102696,
+                  "offsetEnd": 102894,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \\\"Import-Module ServerManager; Get-WindowsFeature | where {$_.installed -eq $True} |foreach {$_.Name}\\\""
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 102964,
+          "offsetEnd": 104403,
+          "sourceLine": 296,
+          "namespace": "default",
+          "name": "msi_implicit",
+          "bodyType": "package_method",
+          "arguments": [
+            "repo"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 104399,
+              "attributes": [
+                {
+                  "offset": 103272,
+                  "offsetEnd": 103303,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 103348,
+                  "offsetEnd": 103390,
+                  "lval": "package_file_repositories",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(repo)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 103425,
+                  "offsetEnd": 103456,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 103519,
+                  "offsetEnd": 103578,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)-$(version)-$(arch).msi"
+                  }
+                },
+                {
+                  "offset": 103654,
+                  "offsetEnd": 103727,
+                  "lval": "package_delete_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(firstrepo)$(name)-$(version)-$(arch).msi"
+                  }
+                },
+                {
+                  "offset": 103771,
+                  "offsetEnd": 103811,
+                  "lval": "package_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^(\\S+)-(\\d+\\.?)+"
+                  }
+                },
+                {
+                  "offset": 103857,
+                  "offsetEnd": 103900,
+                  "lval": "package_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\S+-((\\d+\\.?)+)"
+                  }
+                },
+                {
+                  "offset": 103948,
+                  "offsetEnd": 103993,
+                  "lval": "package_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\S+-[\\d\\.]+-(.*).msi"
+                  }
+                },
+                {
+                  "offset": 104061,
+                  "offsetEnd": 104125,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\\"$(sys.winsysdir)\\msiexec.exe\\\" /qn /i"
+                  }
+                },
+                {
+                  "offset": 104195,
+                  "offsetEnd": 104262,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\\"$(sys.winsysdir)\\msiexec.exe\\\" /qn /i"
+                  }
+                },
+                {
+                  "offset": 104332,
+                  "offsetEnd": 104399,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\\"$(sys.winsysdir)\\msiexec.exe\\\" /qn /x"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 104469,
+          "offsetEnd": 105604,
+          "sourceLine": 319,
+          "namespace": "default",
+          "name": "msi_explicit",
+          "bodyType": "package_method",
+          "arguments": [
+            "repo"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 105600,
+              "attributes": [
+                {
+                  "offset": 104739,
+                  "offsetEnd": 104770,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 104815,
+                  "offsetEnd": 104857,
+                  "lval": "package_file_repositories",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(repo)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 104892,
+                  "offsetEnd": 104923,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 104986,
+                  "offsetEnd": 105045,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)-$(version)-$(arch).msi"
+                  }
+                },
+                {
+                  "offset": 105121,
+                  "offsetEnd": 105194,
+                  "lval": "package_delete_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(firstrepo)$(name)-$(version)-$(arch).msi"
+                  }
+                },
+                {
+                  "offset": 105262,
+                  "offsetEnd": 105326,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\\"$(sys.winsysdir)\\msiexec.exe\\\" /qn /i"
+                  }
+                },
+                {
+                  "offset": 105396,
+                  "offsetEnd": 105463,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\\"$(sys.winsysdir)\\msiexec.exe\\\" /qn /i"
+                  }
+                },
+                {
+                  "offset": 105533,
+                  "offsetEnd": 105600,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\\"$(sys.winsysdir)\\msiexec.exe\\\" /qn /x"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 105655,
+          "offsetEnd": 107763,
+          "sourceLine": 336,
+          "namespace": "default",
+          "name": "yum",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 107759,
+              "attributes": [
+                {
+                  "offset": 105688,
+                  "offsetEnd": 105713,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 105777,
+                  "offsetEnd": 105838,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet list installed"
+                  }
+                },
+                {
+                  "offset": 105906,
+                  "offsetEnd": 105971,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 106110,
+                  "offsetEnd": 106151,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^.]+).*"
+                  }
+                },
+                {
+                  "offset": 106204,
+                  "offsetEnd": 106254,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 106306,
+                  "offsetEnd": 106355,
+                  "lval": "package_list_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^.]+\\.([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 106408,
+                  "offsetEnd": 106457,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*(installed|\\s+@).*"
+                  }
+                },
+                {
+                  "offset": 106515,
+                  "offsetEnd": 106570,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)-$(version).$(arch)"
+                  }
+                },
+                {
+                  "offset": 106751,
+                  "offsetEnd": 106817,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 106858,
+                  "offsetEnd": 106896,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 106940,
+                  "offsetEnd": 106980,
+                  "lval": "package_patch_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\s.*"
+                  }
+                },
+                {
+                  "offset": 107025,
+                  "offsetEnd": 107067,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^.]+).*"
+                  }
+                },
+                {
+                  "offset": 107121,
+                  "offsetEnd": 107172,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 107225,
+                  "offsetEnd": 107275,
+                  "lval": "package_patch_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^.]+\\.([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 107327,
+                  "offsetEnd": 107375,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y install"
+                  }
+                },
+                {
+                  "offset": 107428,
+                  "offsetEnd": 107478,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y update"
+                  }
+                },
+                {
+                  "offset": 107530,
+                  "offsetEnd": 107579,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y update"
+                  }
+                },
+                {
+                  "offset": 107630,
+                  "offsetEnd": 107678,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -e --nodeps"
+                  }
+                },
+                {
+                  "offset": 107720,
+                  "offsetEnd": 107759,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -V"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 107818,
+          "offsetEnd": 110229,
+          "sourceLine": 374,
+          "namespace": "default",
+          "name": "yum_rpm",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 110225,
+              "attributes": [
+                {
+                  "offset": 108152,
+                  "offsetEnd": 108177,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 108269,
+                  "offsetEnd": 108354,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -qa --qf \\'%{name}.%{arch} %{version}-%{release}\\n\\'"
+                  }
+                },
+                {
+                  "offset": 108426,
+                  "offsetEnd": 108491,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 108540,
+                  "offsetEnd": 108581,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^.]+).*"
+                  }
+                },
+                {
+                  "offset": 108638,
+                  "offsetEnd": 108688,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 108744,
+                  "offsetEnd": 108793,
+                  "lval": "package_list_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^.]+\\.([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 108832,
+                  "offsetEnd": 108863,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 108925,
+                  "offsetEnd": 108980,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)-$(version).$(arch)"
+                  }
+                },
+                {
+                  "offset": 109169,
+                  "offsetEnd": 109235,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 109280,
+                  "offsetEnd": 109318,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 109366,
+                  "offsetEnd": 109406,
+                  "lval": "package_patch_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\s.*"
+                  }
+                },
+                {
+                  "offset": 109455,
+                  "offsetEnd": 109497,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^.]+).*"
+                  }
+                },
+                {
+                  "offset": 109555,
+                  "offsetEnd": 109606,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 109663,
+                  "offsetEnd": 109713,
+                  "lval": "package_patch_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^.]+\\.([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 109772,
+                  "offsetEnd": 109823,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y install"
+                  }
+                },
+                {
+                  "offset": 109880,
+                  "offsetEnd": 109930,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y update"
+                  }
+                },
+                {
+                  "offset": 109987,
+                  "offsetEnd": 110037,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y update"
+                  }
+                },
+                {
+                  "offset": 110092,
+                  "offsetEnd": 110140,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -e --nodeps"
+                  }
+                },
+                {
+                  "offset": 110186,
+                  "offsetEnd": 110225,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -V"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 110304,
+          "offsetEnd": 113133,
+          "sourceLine": 410,
+          "namespace": "default",
+          "name": "yum_rpm_enable_repo",
+          "bodyType": "package_method",
+          "arguments": [
+            "repoid"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 113129,
+              "attributes": [
+                {
+                  "offset": 110952,
+                  "offsetEnd": 110977,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 111069,
+                  "offsetEnd": 111154,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -qa --qf \\'%{name} %{version}-%{release} %{arch}\\n\\'"
+                  }
+                },
+                {
+                  "offset": 111226,
+                  "offsetEnd": 111291,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 111350,
+                  "offsetEnd": 111401,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^(\\S+?)\\s\\S+?\\s\\S+$"
+                  }
+                },
+                {
+                  "offset": 111459,
+                  "offsetEnd": 111510,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\S+?\\s(\\S+?)\\s\\S+$"
+                  }
+                },
+                {
+                  "offset": 111568,
+                  "offsetEnd": 111619,
+                  "lval": "package_list_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\S+?\\s\\S+?\\s(\\S+)$"
+                  }
+                },
+                {
+                  "offset": 111658,
+                  "offsetEnd": 111689,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 111732,
+                  "offsetEnd": 111768,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 111957,
+                  "offsetEnd": 112023,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 112068,
+                  "offsetEnd": 112106,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 112154,
+                  "offsetEnd": 112194,
+                  "lval": "package_patch_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\s.*"
+                  }
+                },
+                {
+                  "offset": 112243,
+                  "offsetEnd": 112285,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^.]+).*"
+                  }
+                },
+                {
+                  "offset": 112343,
+                  "offsetEnd": 112394,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 112451,
+                  "offsetEnd": 112501,
+                  "lval": "package_patch_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^.]+\\.([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 112583,
+                  "offsetEnd": 112657,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --enablerepo=$(repoid) -y install"
+                  }
+                },
+                {
+                  "offset": 112737,
+                  "offsetEnd": 112810,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --enablerepo=$(repoid) -y update"
+                  }
+                },
+                {
+                  "offset": 112866,
+                  "offsetEnd": 112915,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y update"
+                  }
+                },
+                {
+                  "offset": 112983,
+                  "offsetEnd": 113044,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -e --nodeps --allmatches"
+                  }
+                },
+                {
+                  "offset": 113090,
+                  "offsetEnd": 113129,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -V"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 113190,
+          "offsetEnd": 117325,
+          "sourceLine": 470,
+          "namespace": "default",
+          "name": "yum_group",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 117321,
+              "attributes": [
+                {
+                  "offset": 114785,
+                  "offsetEnd": 114851,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum groupinstall -y"
+                  }
+                },
+                {
+                  "offset": 114900,
+                  "offsetEnd": 114942,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 115014,
+                  "offsetEnd": 115079,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum groupremove -y"
+                  }
+                },
+                {
+                  "offset": 115131,
+                  "offsetEnd": 115176,
+                  "lval": "package_delete_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 115225,
+                  "offsetEnd": 115267,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^i.*"
+                  }
+                },
+                {
+                  "offset": 115497,
+                  "offsetEnd": 115989,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum grouplist -v|awk \\'$0 ~ /^Done$/ {next} {sub(/.*\\(/, \\\"\\\");sub(/\\).*/, \\\"\\\")} /Available/ {h=\\\"a\\\";next} /Installed/ {h=\\\"i\\\";next} h==\\\"i\\\" || h==\\\"a\\\" {print h\\\" \\\"$0\\\" 1\\\"}\\'"
+                  }
+                },
+                {
+                  "offset": 116049,
+                  "offsetEnd": 116101,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "a|i ([^\\s]+) 1"
+                  }
+                },
+                {
+                  "offset": 116179,
+                  "offsetEnd": 116250,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 116298,
+                  "offsetEnd": 116339,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 116387,
+                  "offsetEnd": 116428,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(1)"
+                  }
+                },
+                {
+                  "offset": 116480,
+                  "offsetEnd": 116525,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 116574,
+                  "offsetEnd": 116616,
+                  "lval": "package_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(.*)"
+                  }
+                },
+                {
+                  "offset": 116662,
+                  "offsetEnd": 116701,
+                  "lval": "package_noverify_returncode",
+                  "rval": {
+                    "type": "string",
+                    "value": "0"
+                  }
+                },
+                {
+                  "offset": 116770,
+                  "offsetEnd": 116832,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum groupupdate"
+                  }
+                },
+                {
+                  "offset": 117123,
+                  "offsetEnd": 117321,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum grouplist -v|awk \\'$0 ~ /^Done$/ {next} {sub(/.*\\(/, \\\"\\\");sub(/\\).*/, \\\"\\\")} /Available/ {h=\\\"a\\\";next} /Installed/ {h=\\\"i\\\";next} h==\\\"i\\\"|grep -qx"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 117392,
+          "offsetEnd": 121127,
+          "sourceLine": 514,
+          "namespace": "default",
+          "name": "rpm_filebased",
+          "bodyType": "package_method",
+          "arguments": [
+            "path"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 121123,
+              "attributes": [
+                {
+                  "offset": 118423,
+                  "offsetEnd": 118465,
+                  "lval": "package_file_repositories",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(path)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 118617,
+                  "offsetEnd": 118656,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -ihv "
+                  }
+                },
+                {
+                  "offset": 119381,
+                  "offsetEnd": 119440,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)-$(version).$(arch).rpm"
+                  }
+                },
+                {
+                  "offset": 120052,
+                  "offsetEnd": 120118,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 120163,
+                  "offsetEnd": 120201,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 120337,
+                  "offsetEnd": 120362,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 120454,
+                  "offsetEnd": 120539,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -qa --qf \\'%{name} %{version}-%{release} %{arch}\\n\\'"
+                  }
+                },
+                {
+                  "offset": 120595,
+                  "offsetEnd": 120643,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^(\\S+?)\\s\\S+?\\s\\S+$"
+                  }
+                },
+                {
+                  "offset": 120701,
+                  "offsetEnd": 120752,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\S+?\\s(\\S+?)\\s\\S+$"
+                  }
+                },
+                {
+                  "offset": 120807,
+                  "offsetEnd": 120855,
+                  "lval": "package_list_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\S+?\\s\\S+?\\s(\\S+)$"
+                  }
+                },
+                {
+                  "offset": 120894,
+                  "offsetEnd": 120925,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 120986,
+                  "offsetEnd": 121038,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -e --allmatches"
+                  }
+                },
+                {
+                  "offset": 121084,
+                  "offsetEnd": 121123,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -V"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 123024,
+          "offsetEnd": 124681,
+          "sourceLine": 577,
+          "namespace": "default",
+          "name": "ips",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 124677,
+              "attributes": [
+                {
+                  "offset": 123061,
+                  "offsetEnd": 123086,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 123152,
+                  "offsetEnd": 123211,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pkg list -v --no-refresh"
+                  }
+                },
+                {
+                  "offset": 123277,
+                  "offsetEnd": 123336,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "pkg://.+?(?<=/)([^\\s]+)@.*$"
+                  }
+                },
+                {
+                  "offset": 123393,
+                  "offsetEnd": 123443,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]+@([^\\s]+):.*"
+                  }
+                },
+                {
+                  "offset": 123515,
+                  "offsetEnd": 123551,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*(i..)"
+                  }
+                },
+                {
+                  "offset": 123763,
+                  "offsetEnd": 123823,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pkg refresh --full"
+                  }
+                },
+                {
+                  "offset": 123868,
+                  "offsetEnd": 123906,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 123969,
+                  "offsetEnd": 124024,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pkg install --accept "
+                  }
+                },
+                {
+                  "offset": 124081,
+                  "offsetEnd": 124131,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pkg uninstall"
+                  }
+                },
+                {
+                  "offset": 124196,
+                  "offsetEnd": 124254,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pkg install --accept"
+                  }
+                },
+                {
+                  "offset": 124318,
+                  "offsetEnd": 124375,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pkg install --accept"
+                  }
+                },
+                {
+                  "offset": 124447,
+                  "offsetEnd": 124512,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pkg list -a -v --no-refresh"
+                  }
+                },
+                {
+                  "offset": 124598,
+                  "offsetEnd": 124677,
+                  "lval": "package_noverify_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(.*---|pkg list: no packages matching .* installed)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 124834,
+          "offsetEnd": 125931,
+          "sourceLine": 601,
+          "namespace": "default",
+          "name": "smartos",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 125927,
+              "attributes": [
+                {
+                  "offset": 124875,
+                  "offsetEnd": 124900,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 124958,
+                  "offsetEnd": 125009,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/local/bin/pkgin list"
+                  }
+                },
+                {
+                  "offset": 125062,
+                  "offsetEnd": 125108,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(.*)\\-[0-9]+.*"
+                  }
+                },
+                {
+                  "offset": 125166,
+                  "offsetEnd": 125217,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*\\-([0-9][^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 125285,
+                  "offsetEnd": 125316,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 125416,
+                  "offsetEnd": 125479,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/local/bin/pkgin -y update"
+                  }
+                },
+                {
+                  "offset": 125524,
+                  "offsetEnd": 125562,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 125626,
+                  "offsetEnd": 125682,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/local/bin/pkgin -y install"
+                  }
+                },
+                {
+                  "offset": 125748,
+                  "offsetEnd": 125806,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/local/bin/pkgin -y remove"
+                  }
+                },
+                {
+                  "offset": 125870,
+                  "offsetEnd": 125927,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/local/bin/pkgin upgrade"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 126056,
+          "offsetEnd": 127085,
+          "sourceLine": 621,
+          "namespace": "default",
+          "name": "opencsw",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 127081,
+              "attributes": [
+                {
+                  "offset": 126097,
+                  "offsetEnd": 126122,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 126178,
+                  "offsetEnd": 126227,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/csw/bin/pkgutil -c"
+                  }
+                },
+                {
+                  "offset": 126278,
+                  "offsetEnd": 126322,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "CSW(.*?)\\s.*"
+                  }
+                },
+                {
+                  "offset": 126374,
+                  "offsetEnd": 126419,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*?\\s+(.*),.*"
+                  }
+                },
+                {
+                  "offset": 126487,
+                  "offsetEnd": 126518,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 126611,
+                  "offsetEnd": 126667,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/csw/bin/pkgutil -U"
+                  }
+                },
+                {
+                  "offset": 126712,
+                  "offsetEnd": 126750,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 126807,
+                  "offsetEnd": 126856,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/csw/bin/pkgutil -yi"
+                  }
+                },
+                {
+                  "offset": 126916,
+                  "offsetEnd": 126968,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/csw/bin/pkgutil -yr"
+                  }
+                },
+                {
+                  "offset": 127028,
+                  "offsetEnd": 127081,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/opt/csw/bin/pkgutil -yu"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 127518,
+          "offsetEnd": 128715,
+          "sourceLine": 643,
+          "namespace": "default",
+          "name": "solaris",
+          "bodyType": "package_method",
+          "arguments": [
+            "pkgname",
+            "spoolfile",
+            "adminfile"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 128711,
+              "attributes": [
+                {
+                  "offset": 127593,
+                  "offsetEnd": 127624,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 127672,
+                  "offsetEnd": 127717,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pkginfo -l"
+                  }
+                },
+                {
+                  "offset": 127775,
+                  "offsetEnd": 127830,
+                  "lval": "package_multiline_start",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\s*PKGINST:\\s+[^\\s]+.*"
+                  }
+                },
+                {
+                  "offset": 127889,
+                  "offsetEnd": 127945,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\s*PKGINST:\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 128004,
+                  "offsetEnd": 128060,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\s*VERSION:\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 128114,
+                  "offsetEnd": 128165,
+                  "lval": "package_list_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\s*ARCH:\\s+([^\\s]+)"
+                  }
+                },
+                {
+                  "offset": 128246,
+                  "offsetEnd": 128324,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\s*STATUS:\\s*(completely|partially)\\s+installed.*"
+                  }
+                },
+                {
+                  "offset": 128363,
+                  "offsetEnd": 128399,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 128488,
+                  "offsetEnd": 128574,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/sbin/pkgadd -n -a /tmp/$(adminfile) -d /tmp/$(spoolfile)"
+                  }
+                },
+                {
+                  "offset": 128644,
+                  "offsetEnd": 128711,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/sbin/pkgrm -n -a /tmp/$(adminfile)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 129511,
+          "offsetEnd": 130568,
+          "sourceLine": 688,
+          "namespace": "default",
+          "name": "freebsd",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 130564,
+              "attributes": [
+                {
+                  "offset": 129556,
+                  "offsetEnd": 129587,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 129688,
+                  "offsetEnd": 129732,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/sbin/pkg_info"
+                  }
+                },
+                {
+                  "offset": 129877,
+                  "offsetEnd": 129920,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^\\s]+)-.*"
+                  }
+                },
+                {
+                  "offset": 129974,
+                  "offsetEnd": 130023,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]+-([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 130067,
+                  "offsetEnd": 130105,
+                  "lval": "package_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^\\s]+)-.*"
+                  }
+                },
+                {
+                  "offset": 130154,
+                  "offsetEnd": 130198,
+                  "lval": "package_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]+-([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 130235,
+                  "offsetEnd": 130266,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 130319,
+                  "offsetEnd": 130366,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)-$(version)"
+                  }
+                },
+                {
+                  "offset": 130418,
+                  "offsetEnd": 130463,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/sbin/pkg_add -r"
+                  }
+                },
+                {
+                  "offset": 130516,
+                  "offsetEnd": 130564,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/sbin/pkg_delete"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 130628,
+          "offsetEnd": 134886,
+          "sourceLine": 712,
+          "namespace": "default",
+          "name": "freebsd_portmaster",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 134882,
+              "attributes": [
+                {
+                  "offset": 130684,
+                  "offsetEnd": 130715,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 130765,
+                  "offsetEnd": 130809,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/sbin/pkg_info"
+                  }
+                },
+                {
+                  "offset": 130858,
+                  "offsetEnd": 130901,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^\\s]+)-.*"
+                  }
+                },
+                {
+                  "offset": 130955,
+                  "offsetEnd": 131004,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]+-([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 131041,
+                  "offsetEnd": 131072,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 131114,
+                  "offsetEnd": 131150,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 131204,
+                  "offsetEnd": 131253,
+                  "lval": "package_delete_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)-$(version)"
+                  }
+                },
+                {
+                  "offset": 131288,
+                  "offsetEnd": 134440,
+                  "lval": "package_file_repositories",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/accessibility/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/port/arabic/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/archivers/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/astro/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/audio/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/benchmarks/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/biology/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/cad/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/chinese/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/comms/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/converters/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/databases/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/deskutils/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/devel/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/dns/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/editors/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/emulators/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/finance/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/french/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/ftp/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/games/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/german/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/graphics/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/hebrew/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/hungarian/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/irc/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/japanese/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/java/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/korean/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/lang/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/mail/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/math/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/mbone/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/misc/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/multimedia/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/net/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/net-im/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/net-mgmt/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/net-p2p/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/news/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/packages/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/palm/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/polish/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/ports-mgmt/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/portuguese/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/print/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/russian/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/science/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/security/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/shells/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/sysutils/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/textproc/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/ukrainian/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/vietnamese/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/www/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/x11/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/x11-clocks/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/x11-drivers/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/x11-fm/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/x11-fonts/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/x11-servers/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/x11-themes/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/x11-toolkits/"
+                      },
+                      {
+                        "type": "string",
+                        "value": "/usr/ports/x11-wm/"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "offset": 134516,
+                  "offsetEnd": 134586,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/local/sbin/portmaster -D -G --no-confirm"
+                  }
+                },
+                {
+                  "offset": 134664,
+                  "offsetEnd": 134737,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/local/sbin/portmaster -D -G --no-confirm"
+                  }
+                },
+                {
+                  "offset": 134812,
+                  "offsetEnd": 134882,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/local/sbin/portmaster --no-confirm -e"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 134945,
+          "offsetEnd": 135677,
+          "sourceLine": 800,
+          "namespace": "default",
+          "name": "alpinelinux",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 135673,
+              "attributes": [
+                {
+                  "offset": 134988,
+                  "offsetEnd": 135013,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 135061,
+                  "offsetEnd": 135104,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/sbin/apk info -v"
+                  }
+                },
+                {
+                  "offset": 135152,
+                  "offsetEnd": 135195,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^\\s]+)-.*"
+                  }
+                },
+                {
+                  "offset": 135249,
+                  "offsetEnd": 135298,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]+-([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 135332,
+                  "offsetEnd": 135361,
+                  "lval": "package_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 135397,
+                  "offsetEnd": 135428,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 135469,
+                  "offsetEnd": 135505,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 135548,
+                  "offsetEnd": 135586,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/sbin/apk add"
+                  }
+                },
+                {
+                  "offset": 135632,
+                  "offsetEnd": 135673,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/sbin/apk del"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 135731,
+          "offsetEnd": 137621,
+          "sourceLine": 815,
+          "namespace": "default",
+          "name": "emerge",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 137617,
+              "attributes": [
+                {
+                  "offset": 135775,
+                  "offsetEnd": 135806,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 135889,
+                  "offsetEnd": 135967,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/sh -c \\'/bin/ls -d /var/db/pkg/*/* | cut -c 13-\\'"
+                  }
+                },
+                {
+                  "offset": 136017,
+                  "offsetEnd": 136062,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*/([^\\s]+)-\\d.*"
+                  }
+                },
+                {
+                  "offset": 136115,
+                  "offsetEnd": 136163,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*/[^\\s]+-(\\d.*)"
+                  }
+                },
+                {
+                  "offset": 136253,
+                  "offsetEnd": 136284,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 136379,
+                  "offsetEnd": 136415,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 136502,
+                  "offsetEnd": 136544,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/true"
+                  }
+                },
+                {
+                  "offset": 136840,
+                  "offsetEnd": 136878,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 136989,
+                  "offsetEnd": 137046,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge -q --quiet-build"
+                  }
+                },
+                {
+                  "offset": 137105,
+                  "offsetEnd": 137159,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge --depclean"
+                  }
+                },
+                {
+                  "offset": 137216,
+                  "offsetEnd": 137268,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge --update"
+                  }
+                },
+                {
+                  "offset": 137324,
+                  "offsetEnd": 137375,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge --update"
+                  }
+                },
+                {
+                  "offset": 137426,
+                  "offsetEnd": 137472,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge -s"
+                  }
+                },
+                {
+                  "offset": 137547,
+                  "offsetEnd": 137617,
+                  "lval": "package_noverify_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*(Not Installed|Applications found : 0).*"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 137675,
+          "offsetEnd": 138789,
+          "sourceLine": 838,
+          "namespace": "default",
+          "name": "pacman",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 138785,
+              "attributes": [
+                {
+                  "offset": 137712,
+                  "offsetEnd": 137737,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 137785,
+                  "offsetEnd": 137829,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pacman -Q"
+                  }
+                },
+                {
+                  "offset": 137982,
+                  "offsetEnd": 138020,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 138065,
+                  "offsetEnd": 138106,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(.*)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 138150,
+                  "offsetEnd": 138191,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*\\s+(.*)"
+                  }
+                },
+                {
+                  "offset": 138225,
+                  "offsetEnd": 138256,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 138296,
+                  "offsetEnd": 138332,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 138415,
+                  "offsetEnd": 138495,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pacman -S --noconfirm --noprogressbar --needed"
+                  }
+                },
+                {
+                  "offset": 138557,
+                  "offsetEnd": 138616,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pacman -Rs --noconfirm"
+                  }
+                },
+                {
+                  "offset": 138702,
+                  "offsetEnd": 138785,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pacman -S --noconfirm --noprogressbar --needed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/packages.cf",
+          "offset": 138976,
+          "offsetEnd": 153973,
+          "sourceLine": 861,
+          "namespace": "default",
+          "name": "generic",
+          "bodyType": "package_method",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": -1,
+              "attributes": []
+            },
+            {
+              "name": "SuSE",
+              "offset": 138993,
+              "offsetEnd": 141421,
+              "attributes": [
+                {
+                  "offset": 139028,
+                  "offsetEnd": 139053,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 139170,
+                  "offsetEnd": 139282,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -qa --queryformat \\\"i | repos | %{name} | %{version}-%{release} | %{arch}\\n\\\""
+                  }
+                },
+                {
+                  "offset": 139461,
+                  "offsetEnd": 139522,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper list-updates"
+                  }
+                },
+                {
+                  "offset": 139563,
+                  "offsetEnd": 139599,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "0"
+                  }
+                },
+                {
+                  "offset": 139659,
+                  "offsetEnd": 139714,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper patches"
+                  }
+                },
+                {
+                  "offset": 139751,
+                  "offsetEnd": 139783,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "i.*"
+                  }
+                },
+                {
+                  "offset": 139847,
+                  "offsetEnd": 139906,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 139977,
+                  "offsetEnd": 140043,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 140121,
+                  "offsetEnd": 140194,
+                  "lval": "package_list_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|[^|]+\\|[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 140266,
+                  "offsetEnd": 140333,
+                  "lval": "package_patch_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*Installed.*|.*Not Applicable.*"
+                  }
+                },
+                {
+                  "offset": 140391,
+                  "offsetEnd": 140444,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 140509,
+                  "offsetEnd": 140569,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^|]+\\|[^|]+\\|\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 140610,
+                  "offsetEnd": 140646,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 140717,
+                  "offsetEnd": 140783,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive install"
+                  }
+                },
+                {
+                  "offset": 140875,
+                  "offsetEnd": 140962,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive remove --force-resolution"
+                  }
+                },
+                {
+                  "offset": 141035,
+                  "offsetEnd": 141103,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive update"
+                  }
+                },
+                {
+                  "offset": 141193,
+                  "offsetEnd": 141260,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive patch$"
+                  }
+                },
+                {
+                  "offset": 141352,
+                  "offsetEnd": 141421,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/zypper --non-interactive verify$"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "redhat",
+              "offset": 141432,
+              "offsetEnd": 143486,
+              "attributes": [
+                {
+                  "offset": 141469,
+                  "offsetEnd": 141494,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 141584,
+                  "offsetEnd": 141669,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -qa --qf \\'%{name} %{version}-%{release} %{arch}\\n\\'"
+                  }
+                },
+                {
+                  "offset": 141739,
+                  "offsetEnd": 141804,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 141860,
+                  "offsetEnd": 141911,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^(\\S+?)\\s\\S+?\\s\\S+$"
+                  }
+                },
+                {
+                  "offset": 141967,
+                  "offsetEnd": 142018,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\S+?\\s(\\S+?)\\s\\S+$"
+                  }
+                },
+                {
+                  "offset": 142074,
+                  "offsetEnd": 142125,
+                  "lval": "package_list_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\S+?\\s\\S+?\\s(\\S+)$"
+                  }
+                },
+                {
+                  "offset": 142161,
+                  "offsetEnd": 142192,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 142233,
+                  "offsetEnd": 142269,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 142340,
+                  "offsetEnd": 142406,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum --quiet check-update"
+                  }
+                },
+                {
+                  "offset": 142493,
+                  "offsetEnd": 142529,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "0"
+                  }
+                },
+                {
+                  "offset": 142620,
+                  "offsetEnd": 142660,
+                  "lval": "package_patch_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^\\s.*"
+                  }
+                },
+                {
+                  "offset": 142707,
+                  "offsetEnd": 142749,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^.]+).*"
+                  }
+                },
+                {
+                  "offset": 142805,
+                  "offsetEnd": 142856,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 142911,
+                  "offsetEnd": 142961,
+                  "lval": "package_patch_arch_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^.]+\\.([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 143017,
+                  "offsetEnd": 143068,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y install"
+                  }
+                },
+                {
+                  "offset": 143123,
+                  "offsetEnd": 143173,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y update"
+                  }
+                },
+                {
+                  "offset": 143227,
+                  "offsetEnd": 143276,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/yum -y update"
+                  }
+                },
+                {
+                  "offset": 143342,
+                  "offsetEnd": 143403,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -e --nodeps --allmatches"
+                  }
+                },
+                {
+                  "offset": 143447,
+                  "offsetEnd": 143486,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/rpm -V"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "debian",
+              "offset": 145058,
+              "offsetEnd": 145801,
+              "attributes": [
+                {
+                  "offset": 145095,
+                  "offsetEnd": 145120,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 145183,
+                  "offsetEnd": 145241,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) -l"
+                  }
+                },
+                {
+                  "offset": 145293,
+                  "offsetEnd": 145340,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 145401,
+                  "offsetEnd": 145457,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i\\s+[^\\s]+\\s+([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 145547,
+                  "offsetEnd": 145580,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".i.*"
+                  }
+                },
+                {
+                  "offset": 145673,
+                  "offsetEnd": 145709,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 145763,
+                  "offsetEnd": 145801,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "debian.have_aptitude",
+              "offset": 145837,
+              "offsetEnd": 147661,
+              "attributes": [
+                {
+                  "offset": 145979,
+                  "offsetEnd": 146091,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_aptitude) $(debian_knowledge.dpkg_options) --assume-yes install"
+                  }
+                },
+                {
+                  "offset": 146157,
+                  "offsetEnd": 146214,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/aptitude update"
+                  }
+                },
+                {
+                  "offset": 146337,
+                  "offsetEnd": 146451,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_aptitude) $(debian_knowledge.dpkg_options) --assume-yes remove"
+                  }
+                },
+                {
+                  "offset": 146576,
+                  "offsetEnd": 146692,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_aptitude) $(debian_knowledge.dpkg_options) --assume-yes install"
+                  }
+                },
+                {
+                  "offset": 146816,
+                  "offsetEnd": 146931,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_aptitude) $(debian_knowledge.dpkg_options) --assume-yes install"
+                  }
+                },
+                {
+                  "offset": 146991,
+                  "offsetEnd": 147042,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/aptitude show"
+                  }
+                },
+                {
+                  "offset": 147132,
+                  "offsetEnd": 147213,
+                  "lval": "package_noverify_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(State: not installed|E: Unable to locate package .*)"
+                  }
+                },
+                {
+                  "offset": 147319,
+                  "offsetEnd": 147415,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/aptitude --assume-yes --simulate --verbose full-upgrade"
+                  }
+                },
+                {
+                  "offset": 147472,
+                  "offsetEnd": 147520,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+(\\S+)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 147595,
+                  "offsetEnd": 147661,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+\\S+\\s+\\[?\\(?([^\\],\\s]+).*"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "debian.!have_aptitude",
+              "offset": 147687,
+              "offsetEnd": 149390,
+              "attributes": [
+                {
+                  "offset": 147822,
+                  "offsetEnd": 147926,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes install"
+                  }
+                },
+                {
+                  "offset": 148007,
+                  "offsetEnd": 148079,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) update"
+                  }
+                },
+                {
+                  "offset": 148194,
+                  "offsetEnd": 148300,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes remove"
+                  }
+                },
+                {
+                  "offset": 148417,
+                  "offsetEnd": 148525,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes install"
+                  }
+                },
+                {
+                  "offset": 148641,
+                  "offsetEnd": 148748,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) $(debian_knowledge.dpkg_options) --yes install"
+                  }
+                },
+                {
+                  "offset": 148817,
+                  "offsetEnd": 148877,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_dpkg) -s"
+                  }
+                },
+                {
+                  "offset": 148920,
+                  "offsetEnd": 148954,
+                  "lval": "package_noverify_returncode",
+                  "rval": {
+                    "type": "string",
+                    "value": "1"
+                  }
+                },
+                {
+                  "offset": 149054,
+                  "offsetEnd": 149144,
+                  "lval": "package_patch_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(debian_knowledge.call_apt_get) --just-print dist-upgrade"
+                  }
+                },
+                {
+                  "offset": 149201,
+                  "offsetEnd": 149249,
+                  "lval": "package_patch_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+(\\S+)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 149324,
+                  "offsetEnd": 149390,
+                  "lval": "package_patch_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "^Inst\\s+\\S+\\s+\\[?\\(?([^\\],\\s]+).*"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "freebsd",
+              "offset": 149402,
+              "offsetEnd": 150300,
+              "attributes": [
+                {
+                  "offset": 149446,
+                  "offsetEnd": 149477,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 149526,
+                  "offsetEnd": 149570,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/sbin/pkg_info"
+                  }
+                },
+                {
+                  "offset": 149618,
+                  "offsetEnd": 149661,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^\\s]+)-.*"
+                  }
+                },
+                {
+                  "offset": 149715,
+                  "offsetEnd": 149764,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]+-([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 149807,
+                  "offsetEnd": 149845,
+                  "lval": "package_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^\\s]+)-.*"
+                  }
+                },
+                {
+                  "offset": 149894,
+                  "offsetEnd": 149938,
+                  "lval": "package_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]+-([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 149974,
+                  "offsetEnd": 150005,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 150057,
+                  "offsetEnd": 150104,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)-$(version)"
+                  }
+                },
+                {
+                  "offset": 150154,
+                  "offsetEnd": 150199,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/sbin/pkg_add -r"
+                  }
+                },
+                {
+                  "offset": 150252,
+                  "offsetEnd": 150300,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/sbin/pkg_delete"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "alpinelinux",
+              "offset": 150316,
+              "offsetEnd": 151043,
+              "attributes": [
+                {
+                  "offset": 150358,
+                  "offsetEnd": 150383,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 150431,
+                  "offsetEnd": 150474,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/sbin/apk info -v"
+                  }
+                },
+                {
+                  "offset": 150522,
+                  "offsetEnd": 150565,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "([^\\s]+)-.*"
+                  }
+                },
+                {
+                  "offset": 150619,
+                  "offsetEnd": 150668,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "[^\\s]+-([^\\s]+).*"
+                  }
+                },
+                {
+                  "offset": 150702,
+                  "offsetEnd": 150731,
+                  "lval": "package_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 150767,
+                  "offsetEnd": 150798,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 150839,
+                  "offsetEnd": 150875,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 150918,
+                  "offsetEnd": 150956,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/sbin/apk add"
+                  }
+                },
+                {
+                  "offset": 151002,
+                  "offsetEnd": 151043,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/sbin/apk del"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "gentoo",
+              "offset": 151054,
+              "offsetEnd": 152939,
+              "attributes": [
+                {
+                  "offset": 151097,
+                  "offsetEnd": 151128,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "individual"
+                  }
+                },
+                {
+                  "offset": 151211,
+                  "offsetEnd": 151289,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/sh -c \\'/bin/ls -d /var/db/pkg/*/* | cut -c 13-\\'"
+                  }
+                },
+                {
+                  "offset": 151339,
+                  "offsetEnd": 151384,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*/([^\\s]+)-\\d.*"
+                  }
+                },
+                {
+                  "offset": 151437,
+                  "offsetEnd": 151485,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*/[^\\s]+-(\\d.*)"
+                  }
+                },
+                {
+                  "offset": 151575,
+                  "offsetEnd": 151606,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 151701,
+                  "offsetEnd": 151737,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 151824,
+                  "offsetEnd": 151866,
+                  "lval": "package_list_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/bin/true"
+                  }
+                },
+                {
+                  "offset": 152162,
+                  "offsetEnd": 152200,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 152311,
+                  "offsetEnd": 152368,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge -q --quiet-build"
+                  }
+                },
+                {
+                  "offset": 152427,
+                  "offsetEnd": 152481,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge --depclean"
+                  }
+                },
+                {
+                  "offset": 152538,
+                  "offsetEnd": 152590,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge --update"
+                  }
+                },
+                {
+                  "offset": 152646,
+                  "offsetEnd": 152697,
+                  "lval": "package_patch_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge --update"
+                  }
+                },
+                {
+                  "offset": 152748,
+                  "offsetEnd": 152794,
+                  "lval": "package_verify_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/emerge -s"
+                  }
+                },
+                {
+                  "offset": 152869,
+                  "offsetEnd": 152939,
+                  "lval": "package_noverify_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*(Not Installed|Applications found : 0).*"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "archlinux",
+              "offset": 152953,
+              "offsetEnd": 153969,
+              "attributes": [
+                {
+                  "offset": 152993,
+                  "offsetEnd": 153018,
+                  "lval": "package_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "bulk"
+                  }
+                },
+                {
+                  "offset": 153067,
+                  "offsetEnd": 153111,
+                  "lval": "package_list_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pacman -Q"
+                  }
+                },
+                {
+                  "offset": 153157,
+                  "offsetEnd": 153198,
+                  "lval": "package_list_name_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": "(.*)\\s+.*"
+                  }
+                },
+                {
+                  "offset": 153244,
+                  "offsetEnd": 153285,
+                  "lval": "package_list_version_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*\\s+(.*)"
+                  }
+                },
+                {
+                  "offset": 153321,
+                  "offsetEnd": 153352,
+                  "lval": "package_installed_regex",
+                  "rval": {
+                    "type": "string",
+                    "value": ".*"
+                  }
+                },
+                {
+                  "offset": 153393,
+                  "offsetEnd": 153429,
+                  "lval": "package_name_convention",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(name)"
+                  }
+                },
+                {
+                  "offset": 153472,
+                  "offsetEnd": 153510,
+                  "lval": "package_list_update_ifelapsed",
+                  "rval": {
+                    "type": "string",
+                    "value": "240"
+                  }
+                },
+                {
+                  "offset": 153595,
+                  "offsetEnd": 153675,
+                  "lval": "package_add_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pacman -S --noconfirm --noprogressbar --needed"
+                  }
+                },
+                {
+                  "offset": 153739,
+                  "offsetEnd": 153798,
+                  "lval": "package_delete_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pacman -Rs --noconfirm"
+                  }
+                },
+                {
+                  "offset": 153886,
+                  "offsetEnd": 153969,
+                  "lval": "package_update_command",
+                  "rval": {
+                    "type": "string",
+                    "value": "/usr/bin/pacman -S --noconfirm --noprogressbar --needed"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }

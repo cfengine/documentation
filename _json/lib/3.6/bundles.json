@@ -1,0 +1,484 @@
+{
+      "bundles": [
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
+          "offset": 11260,
+          "offsetEnd": 12890,
+          "sourceLine": 60,
+          "namespace": "default",
+          "name": "cronjob",
+          "bundleType": "agent",
+          "arguments": [
+            "commands",
+            "user",
+            "hours",
+            "mins"
+          ],
+          "promiseTypes": [
+            {
+              "offset": 11533,
+              "offsetEnd": 12037,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "SuSE",
+                  "offset": -1,
+                  "offsetEnd": 11647,
+                  "promises": [
+                    {
+                      "offset": 11605,
+                      "offsetEnd": 11647,
+                      "promiser": "crontab",
+                      "attributes": [
+                        {
+                          "offset": 11615,
+                          "offsetEnd": 11647,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/tabs"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "redhat|fedora",
+                  "offset": -1,
+                  "offsetEnd": 11765,
+                  "promises": [
+                    {
+                      "offset": 11728,
+                      "offsetEnd": 11765,
+                      "promiser": "crontab",
+                      "attributes": [
+                        {
+                          "offset": 11738,
+                          "offsetEnd": 11765,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "freebsd",
+                  "offset": -1,
+                  "offsetEnd": 11869,
+                  "promises": [
+                    {
+                      "offset": 11833,
+                      "offsetEnd": 11869,
+                      "promiser": "crontab",
+                      "attributes": [
+                        {
+                          "offset": 11843,
+                          "offsetEnd": 11869,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/cron/tabs"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "!(SuSE|redhat|fedora|freebsd)",
+                  "offset": -1,
+                  "offsetEnd": 12037,
+                  "promises": [
+                    {
+                      "offset": 11991,
+                      "offsetEnd": 12037,
+                      "promiser": "crontab",
+                      "attributes": [
+                        {
+                          "offset": 12001,
+                          "offsetEnd": 12037,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/crontabs"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "offset": 12046,
+              "offsetEnd": 12608,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "!windows",
+                  "offset": -1,
+                  "offsetEnd": 12608,
+                  "promises": [
+                    {
+                      "offset": 12099,
+                      "offsetEnd": 12608,
+                      "promiser": "$(crontab)/$(user)",
+                      "attributes": [
+                        {
+                          "offset": 12193,
+                          "offsetEnd": 12256,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "A user\\'s regular batch jobs are added to this file"
+                          }
+                        },
+                        {
+                          "offset": 12285,
+                          "offsetEnd": 12301,
+                          "lval": "create",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "offset": 12389,
+                          "offsetEnd": 12444,
+                          "lval": "edit_line",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "append_if_no_line",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(mins) $(hours) * * * $(commands)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "offset": 12496,
+                          "offsetEnd": 12515,
+                          "lval": "perms",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "mo",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "600"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(user)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "offset": 12578,
+                          "offsetEnd": 12608,
+                          "lval": "classes",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "if_repaired",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "changed_crontab"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "offset": 12621,
+              "offsetEnd": 12885,
+              "name": "processes",
+              "contexts": [
+                {
+                  "name": "changed_crontab",
+                  "offset": -1,
+                  "offsetEnd": 12885,
+                  "promises": [
+                    {
+                      "offset": 12680,
+                      "offsetEnd": 12885,
+                      "promiser": "cron",
+                      "attributes": [
+                        {
+                          "offset": 12765,
+                          "offsetEnd": 12824,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Most crons need to be huped after file changes"
+                          }
+                        },
+                        {
+                          "offset": 12865,
+                          "offsetEnd": 12885,
+                          "lval": "signals",
+                          "rval": {
+                            "type": "list",
+                            "value": [
+                              {
+                                "type": "string",
+                                "value": "hup"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
+          "offset": 13123,
+          "offsetEnd": 13593,
+          "sourceLine": 94,
+          "namespace": "default",
+          "name": "rm_rf",
+          "bundleType": "agent",
+          "arguments": [
+            "name"
+          ],
+          "promiseTypes": [
+            {
+              "offset": 13150,
+              "offsetEnd": 13244,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "offset": -1,
+                  "offsetEnd": 13244,
+                  "promises": [
+                    {
+                      "offset": 13208,
+                      "offsetEnd": 13244,
+                      "promiser": "isdir",
+                      "attributes": [
+                        {
+                          "offset": 13230,
+                          "offsetEnd": 13244,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "isdir",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(name)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "offset": 13256,
+              "offsetEnd": 13590,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "isdir",
+                  "offset": -1,
+                  "offsetEnd": 13501,
+                  "promises": [
+                    {
+                      "offset": 13307,
+                      "offsetEnd": 13501,
+                      "promiser": "$(name)",
+                      "attributes": [
+                        {
+                          "offset": 13363,
+                          "offsetEnd": 13367,
+                          "lval": "file_select",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "all"
+                          }
+                        },
+                        {
+                          "offset": 13453,
+                          "offsetEnd": 13457,
+                          "lval": "depth_search",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "recurse_with_base",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "999"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "offset": 13496,
+                          "offsetEnd": 13501,
+                          "lval": "delete",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "tidy"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "!isdir",
+                  "offset": -1,
+                  "offsetEnd": 13590,
+                  "promises": [
+                    {
+                      "offset": 13565,
+                      "offsetEnd": 13590,
+                      "promiser": "$(name)",
+                      "attributes": [
+                        {
+                          "offset": 13585,
+                          "offsetEnd": 13590,
+                          "lval": "delete",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "tidy"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
+          "offset": 13632,
+          "offsetEnd": 14343,
+          "sourceLine": 109,
+          "namespace": "default",
+          "name": "fileinfo",
+          "bundleType": "agent",
+          "arguments": [
+            "f"
+          ],
+          "promiseTypes": [
+            {
+              "offset": 13656,
+              "offsetEnd": 14129,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "offset": -1,
+                  "offsetEnd": 14129,
+                  "promises": [
+                    {
+                      "offset": 13835,
+                      "offsetEnd": 13995,
+                      "promiser": "fields",
+                      "attributes": [
+                        {
+                          "offset": 13991,
+                          "offsetEnd": 13995,
+                          "lval": "slist",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "splitstring",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname"
+                              },
+                              {
+                                "type": "string",
+                                "value": ","
+                              },
+                              {
+                                "type": "string",
+                                "value": "999"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "offset": 14070,
+                      "offsetEnd": 14129,
+                      "promiser": "stat[$(f)][$(fields)]",
+                      "attributes": [
+                        {
+                          "offset": 14104,
+                          "offsetEnd": 14129,
+                          "lval": "string",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "filestat",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(f)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(fields)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "offset": 14144,
+              "offsetEnd": 0,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "verbose_mode",
+                  "offset": -1,
+                  "offsetEnd": -1,
+                  "promises": [
+                    {
+                      "offset": 14271,
+                      "offsetEnd": -1,
+                      "promiser": "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "bodies": []
+    }

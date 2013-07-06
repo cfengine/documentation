@@ -1,0 +1,139 @@
+{
+      "bundles": [],
+      "bodies": [
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/databases.cf",
+          "offset": 9136,
+          "offsetEnd": 9498,
+          "sourceLine": 55,
+          "namespace": "default",
+          "name": "local_mysql",
+          "bodyType": "database_server",
+          "arguments": [
+            "username",
+            "password"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 9494,
+              "attributes": [
+                {
+                  "offset": 9204,
+                  "offsetEnd": 9236,
+                  "lval": "db_server_owner",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(username)"
+                  }
+                },
+                {
+                  "offset": 9274,
+                  "offsetEnd": 9309,
+                  "lval": "db_server_password",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(password)"
+                  }
+                },
+                {
+                  "offset": 9341,
+                  "offsetEnd": 9370,
+                  "lval": "db_server_host",
+                  "rval": {
+                    "type": "string",
+                    "value": "localhost"
+                  }
+                },
+                {
+                  "offset": 9398,
+                  "offsetEnd": 9423,
+                  "lval": "db_server_type",
+                  "rval": {
+                    "type": "string",
+                    "value": "mysql"
+                  }
+                },
+                {
+                  "offset": 9460,
+                  "offsetEnd": 9494,
+                  "lval": "db_server_connection_db",
+                  "rval": {
+                    "type": "string",
+                    "value": "mysql"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/databases.cf",
+          "offset": 9584,
+          "offsetEnd": 9963,
+          "sourceLine": 66,
+          "namespace": "default",
+          "name": "local_postgresql",
+          "bodyType": "database_server",
+          "arguments": [
+            "username",
+            "password"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "offset": -1,
+              "offsetEnd": 9959,
+              "attributes": [
+                {
+                  "offset": 9657,
+                  "offsetEnd": 9689,
+                  "lval": "db_server_owner",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(username)"
+                  }
+                },
+                {
+                  "offset": 9727,
+                  "offsetEnd": 9762,
+                  "lval": "db_server_password",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(password)"
+                  }
+                },
+                {
+                  "offset": 9794,
+                  "offsetEnd": 9823,
+                  "lval": "db_server_host",
+                  "rval": {
+                    "type": "string",
+                    "value": "localhost"
+                  }
+                },
+                {
+                  "offset": 9854,
+                  "offsetEnd": 9882,
+                  "lval": "db_server_type",
+                  "rval": {
+                    "type": "string",
+                    "value": "postgres"
+                  }
+                },
+                {
+                  "offset": 9922,
+                  "offsetEnd": 9959,
+                  "lval": "db_server_connection_db",
+                  "rval": {
+                    "type": "string",
+                    "value": "postgres"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
