@@ -8,4 +8,11 @@ alias: reference-standard-library.html
 tags: [reference, standard library]
 ---
 
-[%CFEngine_library_include(cfengine_stdlib)%]
+# Bundles
+
+[%CFEngine_library_include(lib/3.6/bundles)%]
+
+# Files
+
+[%CFEngine_library_include(lib/3.6/files)%]
+
