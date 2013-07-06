@@ -197,9 +197,15 @@ def function_prototype(parameters, config):
 	if prototype[-2:] == ", ":
 		prototype = prototype[:len(prototype)-2]
 	prototype += ")"
-	
+
+	returnType = syntax_map["functions"][function]["returnType"]
+	if returnType == "context":
+		returnType == "boolean"
+
 	lines = []
-	lines = "**Prototype:** `" + prototype + "`\n"
+	lines = "**Prototype:** `" + prototype + "`\n\n"
+	lines += "**Return type:** `" + returnType + "`\n\n"
+
 	return lines
 
 def function_attributes(parameters, config):
@@ -211,7 +217,6 @@ def function_attributes(parameters, config):
 	parameter_names = parameters
 	function = function[:function.find('(')]
 
-	returnType = syntax_map["functions"][function]["returnType"]
 	parameters = syntax_map["functions"][function]["parameters"]
 	arguments = []
 	arg_idx = 0
@@ -222,7 +227,6 @@ def function_attributes(parameters, config):
 		arg_idx += 1
 	
 	lines = []
-	lines += "**Return type:** `" + returnType + "`\n\n"
 	lines += "**Arguments:** \n\n"
 	for argument in arguments:
 		lines += argument
