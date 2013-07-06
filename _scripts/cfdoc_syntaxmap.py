@@ -287,7 +287,7 @@ def resolveAttribute(attributes, argument):
 				continue
 			if value.find("(" + argument + ")") != -1:
 				attribute_line += ": " + attribute_type
-				attribute_line += ", used as rval of attribute " + lval_link
+				attribute_line += ", used in the value of attribute " + lval_link
 		elif attribute_type == "functionCall":
 			function_name = rval["name"]
 			function_name_link = "`" + function_name + "()`"
@@ -298,9 +298,10 @@ def resolveAttribute(attributes, argument):
 					continue
 				if function_argument_value.find("(" + argument + ")") != -1:
 					attribute_line += ": " + function_argument_type
-					attribute_line += ", used as a parameter to function " + function_name_link
-					attribute_line += " setting promise attribute " + lval_link
-				
+					attribute_line += ", used to set promise attribute " + lval_link
+		if attribute_line != "":
+			break
+
 	return attribute_line
 
 def library_include(parameters, config):
@@ -339,14 +340,14 @@ def library_include(parameters, config):
 			# Assumes that bundles and bodies are grouped by type in library.cf
 			if element_type != current_type:
 				current_type = element_type
-				markdown_lines.append("## " + current_type + " " + key + "\n")
+				markdown_lines.append("### " + current_type + " " + key + "\n")
 				markdown_lines.append("\n")
 		
 			prototype = name
 			if namespace:
 				prototype = namespace + ":" + prototype
 				
-			markdown_lines.append("### " + prototype + "\n")
+			markdown_lines.append("#### " + prototype + "\n")
 			link_target = prototype + "()"
 			if not namespace:
 				link_target = parameters[0] + ":" + link_target
@@ -366,13 +367,16 @@ def library_include(parameters, config):
 				# find out where the argument is being used
 				if key == "bundles":
 					for promise_type in element["promiseTypes"]:
+						promise_type_link = "`" + promise_type["name"] + "`"
 						for context in promise_type["contexts"]:
 							for promise in context["promises"]:
-								if promise["promiser"].find("(" + argument + ")") != -1:
-									promise_type_link = "`" + promise_type["name"] + "`"
+								promiser = promise["promiser"]
+								if promiser.find("(" + argument + ")") != -1:
 									argument_line += ", used as promiser of type " + promise_type_link
 								else:
 									argument_line += resolveAttribute(promise["attributes"], argument)
+									if len(argument_line):
+										argument_line += " of " + promise_type_link + " promiser *" + promiser + "*"
 				elif key == "bodies":
 					for context in element["contexts"]:
 						argument_line += resolveAttribute(context["attributes"], argument)
@@ -409,9 +413,6 @@ def library_include(parameters, config):
 					if key == "bundles" and line.find("bundle ") == 0:
 						break
 					if key == "bodies" and line.find("body ") == 0:
-						break
-					#### TODO: remove when bugs in line numbers are fixed
-					if len(headerLines) > 10:
 						break
 				
 				# print comments as plain text -> documentation
