@@ -310,7 +310,7 @@ def library_include(parameters, config):
 	policy_json = config.get(policy_filename)
 	html_name = config.get("context_current_html")
 	if policy_json == None:
-		policy_path = config["project_directory"] + "/_site/" + policy_filename
+		policy_path = config["project_directory"] + "/_json/" + policy_filename
 		if not os.path.exists(policy_path):
 			print "cfdoc_syntaxmap:library_include: File does not exist: " + policy_path
 			return markdown_lines
@@ -421,7 +421,8 @@ def library_include(parameters, config):
 					for headerLine in headerLines:
 						if headerLine.find("# ") == 0:
 							markdown_lines.append(headerLine[2:])
-
+					markdown_lines.append("\n")
+					
 				markdown_lines.append("\n```cf3\n")
 				if len(headerLines):
 					markdown_lines.append(headerLines[0])
