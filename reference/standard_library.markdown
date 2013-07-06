@@ -8,11 +8,52 @@ alias: reference-standard-library.html
 tags: [reference, standard library]
 ---
 
+The standard library...
+
 # Bundles
 
 [%CFEngine_library_include(lib/3.6/bundles)%]
+
+# Commands
+
+[%CFEngine_library_include(lib/3.6/commands)%]
+
+# Common
+
+[%CFEngine_library_include(lib/3.6/common)%]
+
+# Databases
+
+[%CFEngine_library_include(lib/3.6/databases)%]
 
 # Files
 
 [%CFEngine_library_include(lib/3.6/files)%]
 
+# Guest Environments
+
+[%CFEngine_library_include(lib/3.6/guest_environments)%]
+
+# Monitor
+
+[%CFEngine_library_include(lib/3.6/monitor)%]
+
+# Packages
+
+[%CFEngine_library_include(lib/3.6/packages)%]
+
+# Paths
+
+[%CFEngine_library_include(lib/3.6/paths)%]
+
+# Processes
+
+[%CFEngine_library_include(lib/3.6/processes)%]
+
+# Services
+
+[%CFEngine_library_include(lib/3.6/services)%]
+
+# Storage
+
+[%CFEngine_library_include(lib/3.6/storage)%]
