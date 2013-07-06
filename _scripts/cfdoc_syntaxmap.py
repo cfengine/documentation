@@ -409,7 +409,7 @@ def library_include(parameters, config):
 					headerLines.insert(0, line) # aka prepend
 					if key == "bundles" and line.find("bundle ") == 0:
 						break
-					if key == "bodies" and line.find("bodies ") == 0:
+					if key == "bodies" and line.find("body ") == 0:
 						break
 					#### TODO: remove when bugs in line numbers are fixed
 					if len(headerLines) > 10:
