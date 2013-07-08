@@ -37,11 +37,7 @@ of all the defined classes in a list, inside CFEngine policy itself.
 
 * Operating System Classes
     * Operating System Architecture - `ultrix, sun4`, etc.
-    * **See also:** [`sys.arch`][sys#sys.arch]
-    * **See also:** [`sys.class`][sys#sys.class]
-    * **See also:** [`sys.flavor`][sys#sys.flavor]
-    * **See also:** [`sys.os`][sys#sys.os]
-    * **See also:** [`sys.ostype`][sys#sys.ostype]
+    * **See also:** `sys.arch`, `sys.class`, `sys.flavor`, `sys.os`, `sys.ostype`.
 * Network Classes
     * Unqualified Name of Host. CFEngine truncates it at the first dot. 
       Note: `www.sales.company.com` and `www.research.company.com` have the
@@ -49,16 +45,7 @@ of all the defined classes in a list, inside CFEngine policy itself.
     * The IP address octets of any active interface (in the form
     `ipv4_192_0_0_1`, `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`)
     * User-defined Group of Hosts
-    * **See also:** [`sys.sys.domain`][sys#sys.domain]
-    * **See also:** [`sys.sys.hardware_addresses`][sys#sys.hardware_addresses]
-    * **See also:** [`sys.sys.host`][sys#sys.host]
-    * **See also:** [`sys.sys.interface`][sys#sys.interface]
-    * **See also:** [`sys.sys.interfaces`][sys#sys.interfaces]
-    * **See also:** [`sys.sys.interface_flags`][sys#sys.interface_flags]
-    * **See also:** [`sys.ipv4`][sys#sys.ipv4]
-    * **See also:** [`sys.sys.ip_addresses`][sys#sys.ip_addresses]
-    * **See also:** [`sys.fqhost`][sys#sys.fqhost]
-    * **See also:** [`sys.uqhost`][sys#sys.uqhost]
+    * **See also:** `sys.domain`, `sys.hardware_addresses`, `sys.sys.host`, `sys.interface`, `sys.interfaces`, `sys.interface_flags`, `sys.ipv4`, `sys.ip_addresses`, `sys.fqhost`, `sys.uqhost`.
 * Time Classes
     * Day of the Week - `Monday, Tuesday, Wednesday,...`
     * Hour of the Day in Current Time Zone - `Hr00, Hr01,... Hr23`
@@ -72,16 +59,14 @@ of all the defined classes in a list, inside CFEngine policy itself.
     * Year - `Yr1997, Yr2004`
     * Period of the Day - `Night, Morning, Afternoon, Evening` (six hour blocks starting at 00:00 hours).
     * Lifecycle Index - `Lcycle_0, Lcycle_1, Lcycle_2` (the year number modulo 3, used in long term resource memory).
-    * **See also:** [`sys.cdate`][sys#sys.cdate]
-    * **See also:** [`sys.date`][sys#sys.date]
+    * **See also:** `sys.cdate`, `sys.date`.
 
 -   The unqualified name of a particular host (e.g., `www`). If
     your system returns a fully qualified domain name for your host
     (e.g., `www.iu.hio.no`), CFEngine will also define a hard class for
     the fully qualified name, as well as the partially-qualified
     component names `iu.hio.no`, `hio.no`, and `no`.
-    * **See also:** [`sys.fqhost`][sys#sys.fqhost]
-    * **See also:** [`sys.uqhost`][sys#sys.uqhost]
+    * **See also:** `sys.fqhost`, `sys.uqhost`.
 -   An arbitrary user-defined string (as specified in the `-D`
     command line option, or defined in a `classes` promise or body,
     `restart_class` in a `processes` promise, etc).
