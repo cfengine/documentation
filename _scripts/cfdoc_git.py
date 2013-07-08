@@ -30,6 +30,7 @@ def createData(config):
 
 	cwd = os.getcwd()
 	os.chdir(config["markdown_directory"])
+	config["branch"] = "master"
 	try:
 		git = os.popen("git rev-list -1 HEAD")
 		while True:
@@ -55,12 +56,11 @@ def createData(config):
 	config["branch"] = branch
 	print "cfdoc_git: Updating " + configpath
 	print "           branch   = \'" + config["branch"] + "\'"
-	print "           revision = \'" + config["revision"] + "\'"
+	print "           revision = \'" + config.get("revision", "NOT FOUND!") + "\'"
 	try:
 		config_file = open(configpath, "a")
-		if config["branch"] != '':
-			config_file.write("git-branch: \"" + config["branch"] + "\"\n")
-		if config["revision"] != '':
+		config_file.write("git-branch: \"" + config.get("branch", "master") + "\"\n")
+		if "revision" in config:
 			config_file.write("git-revision: \"" + config["revision"] + "\"\n")
 		config_file.close()
 	except:
