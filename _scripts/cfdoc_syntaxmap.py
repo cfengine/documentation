@@ -200,7 +200,7 @@ def function_prototype(parameters, config):
 
 	returnType = syntax_map["functions"][function]["returnType"]
 	if returnType == "context":
-		returnType == "boolean"
+		returnType = "boolean"
 
 	lines = []
 	lines = "**Prototype:** `" + prototype + "`\n\n"
@@ -221,8 +221,15 @@ def function_attributes(parameters, config):
 	arguments = []
 	arg_idx = 0
 	for parameter in parameters:
-		arguments += "* `" + parameter_names[arg_idx] + "`: `"
-		arguments += parameter["type"] + "`, in the range: `"
+		parameter_name = parameter_names[arg_idx]
+		parameter_type = parameter["type"]
+		if parameter_name == "regex":
+			parameter_type = "regular expression"
+		else:
+			parameter_type = "`" + parameter_type + "`"
+
+		arguments += "* `" + parameter_name  + "`: "
+		arguments += parameter_type + ", in the range: `"
 		arguments += parameter["range"] + "`\n"
 		arg_idx += 1
 	
