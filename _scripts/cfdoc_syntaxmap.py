@@ -373,6 +373,85 @@ def library_include(parameters, config):
 			linkresolver.addLinkToMap("`" + prototype + "()`", link_target, html_name + "#" + prototype, config)
 			markdown_lines.append("\n")
 			
+			code_lines = []
+			documentation_lines = []
+			documentation_dict = dict()
+			
+			try:
+				source_path = config["project_directory"] + "/" + element["sourcePath"]
+				source_file = open(source_path, 'r')
+				sourceLine = element["sourceLine"]
+				sourceLines = source_file.readlines()
+			except:
+				print "cfdoc_syntaxmap:library_include: could not include code from " + name
+			
+			if len(sourceLines):
+				# search up to include bundle/body declaration and comments in between
+				headerLines = list()
+				header_line = sourceLine - 1
+				while header_line:
+					line = sourceLines[header_line].lstrip()
+					header_line -= 1
+					headerLines.insert(0, line) # aka prepend
+					if key == "bundles" and line.find("bundle ") == 0:
+						break
+					if key == "bodies" and line.find("body ") == 0:
+						break
+				
+				# scan comments for doxygen-style documentation
+				if len(headerLines):
+					current_tag = None
+					current_param = None
+					current_line = ""
+					for headerLine in headerLines:
+						if headerLine.find("#") != 0:
+							continue
+							
+						headerLine = headerLine[1:].lstrip().rstrip()
+						if headerLine.find("@") == 0:
+							current_param = None
+							headerLine = headerLine[1:]
+							current_tag = headerLine[:headerLine.find(" ")]
+							headerLine = headerLine[len(current_tag) + 1:]
+							documentation_dict[current_tag] = ""
+							
+						if current_tag == None:
+							continue
+						
+						if current_tag == "param":
+							if current_param == None:
+								current_param = headerLine[:headerLine.find(" ")]
+								headerLine = headerLine[len(current_param) + 1:]
+								documentation_dict["param_" + current_param] = headerLine + "\n"
+							else:
+								documentation_dict["param_" + current_param] += headerLine + "\n"
+						else:
+							documentation_dict[current_tag] += headerLine + "\n"
+							
+					brief = documentation_dict.get("brief", "")
+					if len(brief):
+						documentation_lines.append("**Description:** ")
+						documentation_lines.append(brief)
+						documentation_lines.append("\n")
+					return_doc = documentation_dict.get("return", "")
+					if len(return_doc):
+						documentation_lines.append("**Return value:** ")
+						documentation_lines.append(return_doc)
+						documentation_lines.append("\n")
+				
+				code_lines.append("\n```cf3\n")
+				if len(headerLines):
+					code_lines.append(headerLines[0])
+					code_lines.append("{\n")
+				while sourceLine < len(sourceLines):
+					line = sourceLines[sourceLine]
+					code_lines.append(line)
+					# super-naive parser...
+					if line.find("}") == 0:
+						break
+					sourceLine += 1
+				code_lines.append("\n```\n")
+
 			arguments = element["arguments"]
 			argument_idx = 0
 			argument_lines = []
@@ -383,8 +462,13 @@ def library_include(parameters, config):
 				argument = arguments[argument_idx]
 				prototype += argument
 				argument_line = "* `" + argument + "`"
+				
+				# if we have already found documentation for this, use it
+				param_line = documentation_dict.get("param_" + argument)
+				if param_line != None:
+					argument_line += ": " + param_line
 				# find out where the argument is being used
-				if key == "bundles":
+				elif key == "bundles":
 					for promise_type in element["promiseTypes"]:
 						promise_type_link = "`" + promise_type["name"] + "`"
 						for context in promise_type["contexts"]:
@@ -410,50 +494,15 @@ def library_include(parameters, config):
 					
 			markdown_lines.append("**Prototype:** `" + prototype + "`\n")
 			markdown_lines.append("\n")
-			markdown_lines.append(argument_lines)
-			markdown_lines.append("\n")
-			
-			try:
-				source_path = config["project_directory"] + "/" + element["sourcePath"]
-				source_file = open(source_path, 'r')
-				sourceLine = element["sourceLine"]
-				sourceLines = source_file.readlines()
-			except:
-				print "cfdoc_syntaxmap:library_include: could not include code from " + name
-			
-			if len(sourceLines):
-				# search up to include bundle/body declaration and comments in between
-				headerLines = list()
-				header_line = sourceLine - 1
-				while header_line:
-					line = sourceLines[header_line].lstrip()
-					header_line -= 1
-					headerLines.insert(0, line) # aka prepend
-					if key == "bundles" and line.find("bundle ") == 0:
-						break
-					if key == "bodies" and line.find("body ") == 0:
-						break
-				
-				# print comments as plain text -> documentation
-				if len(headerLines):
-					markdown_lines.append("**Description:** ")
-					for headerLine in headerLines:
-						if headerLine.find("# ") == 0:
-							markdown_lines.append(headerLine[2:])
-					markdown_lines.append("\n")
-					
-				markdown_lines.append("\n```cf3\n")
-				if len(headerLines):
-					markdown_lines.append(headerLines[0])
-					markdown_lines.append("{\n")
-				while sourceLine < len(sourceLines):
-					line = sourceLines[sourceLine]
-					markdown_lines.append(line)
-					# super-naive parser...
-					if line.find("}") == 0:
-						break
-					sourceLine += 1
-				markdown_lines.append("\n```\n")
+			if len(documentation_lines):
+				markdown_lines.append(documentation_lines)
+				markdown_lines.append("\n")
+			if len(argument_lines):
+				markdown_lines.append(argument_lines)
+				markdown_lines.append("\n")
+			if len(code_lines):
+				markdown_lines.append(code_lines)
+				markdown_lines.append("\n")
 			markdown_lines.append("\n")
 		
 	if len(markdown_lines) == 0:
