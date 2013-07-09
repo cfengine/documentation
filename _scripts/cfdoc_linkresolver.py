@@ -51,12 +51,14 @@ def readLinkFile(config):
 def addLinkToMap(keyword, anchor, html, config):
 	link_map = config.get("link_map", dict())
 
-	# don't overwrite
-	if keyword in link_map:
-		return
-		
-	link_map[keyword] = "[" + anchor + "]"
+	# don't overwrite top level title with sub-header
+	current_anchor = link_map.get(keyword)
+	if current_anchor != None:
+		if current_anchor.find("#") == -1:
+			return
 	
+	link_map[keyword] = "[" + anchor + "]"
+
 	output_file = config["reference_path"]
 	out_file = open(output_file, "a")
 	output_string = '[' + anchor + ']: ' + html
