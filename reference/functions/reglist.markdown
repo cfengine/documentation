@@ -7,9 +7,7 @@ alias: reference-functions-reglist.html
 tags: [reference, data functions, functions, reglist]
 ---
 
-**Prototype:** `reglist(list, regex)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(list, regex)%]
 
 **Description:** Returns whether the regular expression `regex` matches any item in `list`.
 

@@ -7,9 +7,7 @@ alias: reference-functions-shuffle.html
 tags: [reference, data functions, functions, shuffle]
 ---
 
-**Prototype:** `shuffle(list, seed)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(list, seed)%]
 
 **Description:** Return `list` shuffled with `seed`.
 

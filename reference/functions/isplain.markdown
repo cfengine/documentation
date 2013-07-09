@@ -7,9 +7,7 @@ alias: reference-functions-isplain.html
 tags: [reference, files functions, functions, isplain]
 ---
 
-**Prototype:** `isplain(filename)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(filename)%]
 
 **Description:** Returns whether the named object `filename` is a 
 plain/regular file.

@@ -7,9 +7,7 @@ alias: reference-functions-filter.html
 tags: [reference, data functions, functions, filter]
 ---
 
-**Prototype:** `filter(filter, list, is_regex, invert, max_return)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(filter, list, is_regex, invert, max_return)%]
 
 **Description:** Transforms a list into a subset thereof.
 

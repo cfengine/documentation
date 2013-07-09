@@ -9,9 +9,7 @@ tags: [reference, communication functions, functions, remotescalar]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype:** `remotescalar(id, server, encrypt)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(id, server, encrypt)%]
 
 **Description:** Returns a scalar value from a remote CFEngine server.
 

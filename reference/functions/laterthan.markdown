@@ -7,9 +7,7 @@ alias: reference-functions-laterthan.html
 tags: [reference, files functions, functions, laterthan]
 ---
 
-**Prototype:** `laterthan(years, months, days, hours, minutes, seconds)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]
 
 **Description:** Returns whether the current time is later than the given 
 date and time.

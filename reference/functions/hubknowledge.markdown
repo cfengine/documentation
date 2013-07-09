@@ -9,7 +9,7 @@ tags: [reference, communication functions, functions, hubknowledge]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype:** `hubknowledge(id)`
+[%CFEngine_function_prototype(id)%]
 
 **Description:** Read global knowledge from the CFEngine Database host by 
 `id`.
@@ -33,8 +33,6 @@ persistent scalar variable (such as is used to count distributed processes in
 CFEngine Enterprise) then this will be returned preferentially. If no such 
 variable is found, then the server will look for a literal string in a server 
 bundle with a handle that matches the requested object.
-
-**Return type:** `string`
 
 **Arguments**:
 

@@ -7,9 +7,7 @@ alias: reference-functions-regline.html
 tags: [reference, io functions, functions, regline]
 ---
 
-**Prototype:** `regline(regex, filename)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(regex, filename)%]
 
 **Description:** Returns whether the regular expression `regex` matches a line 
 in file `filename`.

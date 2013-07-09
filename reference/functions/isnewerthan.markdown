@@ -7,9 +7,7 @@ alias: reference-functions-isnewerthan.html
 tags: [reference, files functions, functions, isnewerthan]
 ---
 
-**Prototype:** `isnewerthan(newer, older)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(newer, older)%]
 
 **Description:** Returns whether the file `newer` is newer (modified later) 
 than the file `older`.

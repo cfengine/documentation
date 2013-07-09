@@ -7,9 +7,7 @@ alias: reference-functions-format.html
 tags: [reference, data functions, functions, format]
 ---
 
-**Prototype:** `format(string, ...)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(string, ...)%]
 
 **Description:** Applies sprintf-style formatting to a given `string`.
 

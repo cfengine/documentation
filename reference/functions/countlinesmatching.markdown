@@ -7,25 +7,16 @@ alias: reference-functions-countlinesmatching.html
 tags: [reference, io functions, functions, countlinesmatching]
 ---
 
-**Prototype:** `countlinesmatching(regex, filename)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(regex, filename)%]
 
 **Description:** Count the number of lines in file `filename` matching 
 `regex`.
 
-This function matches lines in the named file, using a regular expression that should match the whole line, and returns the number of lines matched.
+This function matches lines in the named file, using an [anchored][anchored] 
+regular expression that should match the whole line, and returns the number of 
+lines matched.
 
-**Arguments**:
-
-* `regex`, in the range `.*`
-
-A regular expression matching zero or more lines. The regular expression is 
-[anchored][anchored],
-
-* *filename*, in the range `"?(/.*)`
-
-The name of the file to be examined.
+[%CFEngine_function_attributes(regex, filename)%]
 
 **Example:**
 

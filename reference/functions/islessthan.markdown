@@ -7,9 +7,7 @@ alias: reference-functions-islessthan.html
 tags: [reference, data functions, functions, islessthan]
 ---
 
-**Prototype:** `islessthan(value1, value2)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(value1, value2)%]
 
 **Description:** Returns whether `value1` is less than `value2`.
 

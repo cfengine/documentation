@@ -7,9 +7,7 @@ alias: reference-functions-peerleader.html
 tags: [reference, communication functions, functions, peerleader]
 ---
 
-**Prototype:** `peerleader(filename, regex, groupsize)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(filename, regex, groupsize)%]
 
 **Description:** Returns the assigned peer-leader of the partition to which the current host belongs.
 

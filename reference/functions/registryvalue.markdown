@@ -7,9 +7,7 @@ alias: reference-functions-registryvalue.html
 tags: [reference, system functions, functions, registryvalue]
 ---
 
-**Prototype:** `registryvalue(key, valueid)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(key, valueid)%]
 
 **Description:** Returns the value of `valueid` in the Windows registry key 
 `key`.

@@ -7,9 +7,7 @@ alias: reference-functions-irange.html
 tags: [reference, data functions, functions, irange]
 ---
 
-**Prototype:** `irange(arg1, arg2)`
-
-**Return type:** `irange[int,int]`
+[%CFEngine_function_prototype(arg1, arg2)%]
 
 **Description:** Define a range of integer values for CFEngine internal use.
 

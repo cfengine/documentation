@@ -7,9 +7,7 @@ alias: reference-functions-rrange.html
 tags: [reference, data functions, functions, rrange]
 ---
 
-**Prototype:** `rrange(arg1, arg2)`
-
-**Return type:** `rrange [real,real]``
+[%CFEngine_function_prototype(arg1, arg2)%]
 
 **Description:** Define a range of real numbers for CFEngine internal use.
 

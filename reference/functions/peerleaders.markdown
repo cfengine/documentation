@@ -7,9 +7,7 @@ alias: reference-functions-peerleaders.html
 tags: [reference, communication functions, functions, peerleaders]
 ---
 
-**Prototype:** `peerleaders(filename, regex, groupsize)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(filename, regex, groupsize)%]
 
 **Description:** Returns a list of peer leaders from the named partitioning.
 

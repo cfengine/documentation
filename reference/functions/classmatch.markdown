@@ -7,23 +7,14 @@ alias: reference-functions-classmatch.html
 tags: [reference, utility functions, functions, classmatch]
 ---
 
-**Prototype:** `classmatch(regex)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(regex)%]
 
 **Description:** Tests whether `regex` matches any currently set class.
 
-Returns true if the regular expression matches any currently defined class, 
-otherwise returns false.
+Returns true if the [anchored][anchored] regular expression matches any 
+currently defined class, otherwise returns false.
 
-**Arguments**:
-
-* `regex` : Regular expression, in the range `.*`
-
-A regular expression matched against the current list of set classes. The 
-regular expression must match a complete class for the expression to be true 
-(i.e. the regex is 
-[anchored][anchored]).
+[%CFEngine_function_attributes(text)%]
 
 **Example:**
 

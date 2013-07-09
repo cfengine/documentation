@@ -7,9 +7,7 @@ alias: reference-functions-sort.html
 tags: [reference, data functions, functions, sort]
 ---
 
-**Prototype:** `sort(list, mode)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(list, mode)%]
 
 **Description:** Returns `list` sorted according to `mode`.
 

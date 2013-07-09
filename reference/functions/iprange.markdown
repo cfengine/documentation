@@ -7,9 +7,7 @@ alias: reference-functions-iprange.html
 tags: [reference, communication functions, functions, iprange]
 ---
 
-**Prototype:** `iprange(range)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(range)%]
 
 **Description:** Returns whether the current host lies in the range of IP 
 addresses specified.

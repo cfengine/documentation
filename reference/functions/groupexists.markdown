@@ -7,17 +7,13 @@ alias: reference-functions-groupexists.html
 tags: [reference, system functions, functions, groupexists]
 ---
 
-**Prototype:** `groupexists(group)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(group)%]
 
 **Description:** Returns whether a group `group` exists on this host.
 
 The group may be specified by name or identifier.
 
-**Arguments**:
-
-* `group` : Group name or identifier, in the range `.*`
+[%CFEngine_function_attributes(group)%]
 
 **Example:**
 

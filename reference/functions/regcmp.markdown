@@ -7,9 +7,7 @@ alias: reference-functions-regcmp.html
 tags: [reference, data functions, functions, regcmp]
 ---
 
-**Prototype:** `regcmp(regex, string)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(regex, string)%]
 
 **Description:** Returns whether the regular expression `regex` matches the 
 `string.`

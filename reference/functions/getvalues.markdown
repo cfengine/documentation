@@ -7,9 +7,7 @@ alias: reference-functions-getvalues.html
 tags: [reference, data functions, functions, getvalues]
 ---
 
-**Prototype:** `getvalues(array)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(array)%]
 
 **Description:** Returns the list of values in `array`.
 
@@ -19,9 +17,7 @@ into a single list to make the return value a list.
 Make sure you specify the correct scope when supplying the name of the
 variable.
 
-**Arguments**:
-
-* `array` : array identifier, in the range `[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(array)%]
 
 **Example:**
 

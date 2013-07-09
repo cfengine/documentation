@@ -7,9 +7,7 @@ alias: reference-functions-hostrange.html
 tags: [reference, communication functions, functions, hostrange]
 ---
 
-**Prototype:** `hostrange(prefix, range)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(prefix, range)%]
 
 **Description:** Returns whether the current host lies in the `range` of 
 enumerated hostnames specified with `prefix`.

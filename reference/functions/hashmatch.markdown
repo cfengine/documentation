@@ -7,9 +7,7 @@ alias: reference-functions-hashmatch.html
 tags: [reference, data functions, functions, hashmatch]
 ---
 
-**Prototype:** `hashmatch(filename, algorthm, hash)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(filename, algorithm, hash)%]
 
 **Description:** Compute the hash of file `filename` using the hash `algorithm` and test if it matches `hash`.
 

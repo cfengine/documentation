@@ -7,9 +7,7 @@ alias: reference-functions-peers.html
 tags: [reference, communication functions, functions, peers]
 ---
 
-**Prototype:** `peers(filname, regex, groupsize)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(filename, regex, groupsize)%]
 
 **Description:** Returns a list of peers from the partition to which
 the current host belongs, excluding the current host.

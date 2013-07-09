@@ -7,9 +7,7 @@ alias: reference-functions-regarray.html
 tags: [reference, data functions, functions, regarray]
 ---
 
-**Prototype:** `regarray(array, regex)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(array, regex)%]
 
 **Description:** Returns whether `array` contains elements matching the
 regular expression `regex`.

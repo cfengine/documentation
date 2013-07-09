@@ -7,9 +7,7 @@ alias: reference-functions-isgreaterthan.html
 tags: [reference, data functions, functions, isgreaterthan]
 ---
 
-**Prototype:** `isgreaterthan(value1, value2)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(value1, value2)%]
 
 **Description:** Returns whether `value1` is greater than `value2`.
 

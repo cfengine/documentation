@@ -7,9 +7,7 @@ alias: reference-functions-or.html
 tags: [reference, data functions, functions, or]
 ---
 
-**Prototype:** `or(...)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(...)%]
 
 **Description:** Calculate whether any argument evaluates to true
 

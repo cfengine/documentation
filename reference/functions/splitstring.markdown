@@ -7,9 +7,7 @@ alias: reference-functions-splitstring.html
 tags: [reference, data functions, functions, splitstring]
 ---
 
-**Prototype:** `splitstring(string, regex, maxent)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(string, regex, maxent)%]
 
 **Description:** Splits `string` into at most `maxent` substrings wherever 
 `regex` occurs, and  returns the list with those strings.

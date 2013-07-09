@@ -9,9 +9,7 @@ tags: [reference, communication functions, functions, regldap]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype:** `regldap(uri, dn, filter, record, scope, regex, security)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(uri, dn, filter, record, scope, regex, security)%]
 
 **Description:** Returns whether the regular expression `regex` matches a 
 value item in the LDAP search.

@@ -7,9 +7,7 @@ alias: reference-functions-now.html
 tags: [reference, system functions, functions, now]
 ---
 
-**Prototype:** `now()`
-
-**Return type:** `int`
+[%CFEngine_function_prototype()%]
 
 **Description:** Return the current time in system representation.
 

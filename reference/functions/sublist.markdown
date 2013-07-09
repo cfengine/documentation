@@ -7,9 +7,7 @@ alias: reference-functions-sublist.html
 tags: [reference, data functions, functions, sublist]
 ---
 
-**Prototype:** `sublist(list, head_or_tail, max_elements)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(list, head_or_tail, max_elements)%]
 
 **Description:** Returns list of up to `max_elements` of `list`, obtained from head or tail depending on `head_or_tail`.
 

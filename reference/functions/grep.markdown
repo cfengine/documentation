@@ -7,20 +7,12 @@ alias: reference-functions-grep.html
 tags: [reference, data functions, functions, grep]
 ---
 
-**Prototype:** `grep(regex, list)`
+[%CFEngine_function_prototype(regex, list)%]
 
-**Return type:** `slist`
+**Description:** Returns the sub-list if items  in `list` matching the 
+[anchored][anchored] regular expression `regex`.
 
-**Description:** Returns the sub-list if items  in `list` matching the regular expression `regex`.
-
-**Arguments**:
-
-* `regex` : Regular expression, in the range `.*`
-
-The regex is [anchored][anchored].
-
-* `list` : list identifier, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(regex, list)%]
 
 **Example:**
 

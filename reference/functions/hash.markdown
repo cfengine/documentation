@@ -7,9 +7,7 @@ alias: reference-functions-hash.html
 tags: [reference, data functions, functions, hash]
 ---
 
-**Prototype:** `hash(input, algorithm)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(input, algorithm)%]
 
 **Description:** Return the hash of `input` using the hash `algorithm`.
 

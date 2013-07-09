@@ -7,18 +7,14 @@ alias: reference-functions-classify.html
 tags: [reference, data functions, functions, classify]
 ---
 
-**Prototype:** `classify(text)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(text)%]
 
 **Description:** Returns whether the canonicalization of `text` is a currently 
 set class.
 
 This is useful for transforming variables into classes.
 
-**Arguments**:
-
-* `text` : Input string, in the range `.*`
+[%CFEngine_function_attributes(text)%]
 
 **Example:**  
 

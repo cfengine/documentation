@@ -7,9 +7,7 @@ alias: reference-functions-maplist.html
 tags: [reference, data functions, functions, maplist]
 ---
 
-**Prototype:** `maplist(pattern, list)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(pattern, list)%]
 
 **Description:** Return a list with each element in `list` modified by a 
 pattern.

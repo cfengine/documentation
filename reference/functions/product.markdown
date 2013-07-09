@@ -7,9 +7,7 @@ alias: reference-functions-product.html
 tags: [reference, data functions, functions, product]
 ---
 
-**Prototype:** `product(list)`
-
-**Return type:** `real`
+[%CFEngine_function_prototype(list)%]
 
 **Description:** Returns the product of the reals in `list`.
 

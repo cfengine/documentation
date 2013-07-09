@@ -7,9 +7,7 @@ alias: reference-functions-unique.html
 tags: [reference, data functions, functions, unique]
 ---
 
-**Prototype:** `unique(list)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(list)%]
 
 **Description:** Returns list of unique elements from `list`.
 

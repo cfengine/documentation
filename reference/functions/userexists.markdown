@@ -7,9 +7,7 @@ alias: reference-functions-userexists.html
 tags: [reference, system functions, functions, userexists]
 ---
 
-**Prototype:** `userexists(user)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(user)%]
 
 **Description:** Return whether `user` name or numerical id exists on this 
 host.

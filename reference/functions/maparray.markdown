@@ -7,9 +7,7 @@ alias: reference-functions-maparray.html
 tags: [reference, data functions, functions, maparray]
 ---
 
-**Prototype:** `maparray(pattern, array)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(pattern, array)%]
 
 **Description:** Returns a list with each array element modified by a pattern.
 

@@ -7,9 +7,7 @@ alias: reference-functions-concat.html
 tags: [reference, data functions, functions, concat]
 ---
 
-**Prototype:** `concat(...)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(...)%]
 
 **Description:** Concatenates all arguments into a string.
 

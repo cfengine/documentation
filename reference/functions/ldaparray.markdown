@@ -9,9 +9,7 @@ tags: [reference, communication functions, functions, ldaparray]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype:** `ldaparray(array, uri, dn, filter, scope, security)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(array, uri, dn, filter, scope, security)%]
 
 **Description:** Fills `array` with the entire LDAP record, and returns 
 whether there was a match for the search.

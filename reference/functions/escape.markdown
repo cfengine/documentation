@@ -7,9 +7,7 @@ alias: reference-functions-escape.html
 tags: [reference, data functions, functions, escape]
 ---
 
-**Prototype:** `escape(text)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(text)%]
 
 **Description:** Escape regular expression characters in `text`.
 
@@ -18,10 +16,7 @@ expression is required, but the literal string contains special
 characters. The function simply 'escapes' all the regular expression
 characters, so that you do not have to.
 
-
-**Arguments**:
-
-* `text` : IP address or string to escape, in the range `.*`
+[%CFEngine_function_attributes(path)%]
 
 **Example:**  
 

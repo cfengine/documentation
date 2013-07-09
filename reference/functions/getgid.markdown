@@ -7,9 +7,7 @@ alias: reference-functions-getgid.html
 tags: [reference, data functions, functions, getgid]
 ---
 
-**Prototype:** `getgid(groupname)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(groupname)%]
 
 **Description:** Return the integer group id of the group `groupname` on this 
 host.
@@ -17,9 +15,7 @@ host.
 If the named group does not exist, the function will fail and the variable 
 will not be defined. 
 
-**Arguments**:
-
-* `groupname` : Group name as text, in the range `.*`
+[%CFEngine_function_attributes(groupname)%]
 
 **Example:**
 

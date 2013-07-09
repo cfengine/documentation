@@ -7,9 +7,7 @@ alias: reference-functions-getfields.html
 tags: [reference, data functions, functions, getfields]
 ---
 
-**Prototype:** `getfields(regex, filename, split, array_lval)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(regex, filename, split, array_lval)%]
 
 **Description:** Fill `arrayl_lval` with fields in the lines from file `filename` that match `regex`, split on `split`.
 

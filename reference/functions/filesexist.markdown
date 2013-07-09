@@ -7,19 +7,14 @@ alias: reference-functions-filesexist.html
 tags: [reference, files functions, functions, filesexist]
 ---
 
-**Prototype:** `filesexist(list)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(list)%]
 
 **Description:** Returns whether all the files in `list` can be accessed.
 
 All files must exist, and the user must have access permissions to them for 
 this function to return true.
 
-**Arguments**:
-
-* `list` : Reference to a list variable, in the range
-`@[(][a-zA-Z0-9]+[)]`
+[%CFEngine_function_attributes(list)%]
 
 **Example:**
 

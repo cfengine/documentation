@@ -7,16 +7,11 @@ alias: reference-functions-getusers.html
 tags: [reference, system functions, functions, getusers]
 ---
 
-**Prototype:** `getusers(exclude_names, exclude_ids)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(exclude_names, exclude_ids)%]
 
 **Description:** Returns a list of all users defined, except those names in `exclude_names` and uids in `exclude_ids`
 
-**Arguments**:
-
-* `exclude_names` : Comma separated list of User names, in the range `.*`
-* `exclude_ids` : Comma separated list of UserID numbers, in the range `.*`
+[%CFEngine_function_attributes(exclude_names, exclude_ids)%]
 
 **Example:**
 

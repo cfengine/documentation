@@ -7,23 +7,15 @@ alias: reference-functions-countclassesmatching.html
 tags: [reference, utility functions, functions, countclassesmatching]
 ---
 
-**Prototype:** `countclassesmatching(regex)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(regex)%]
 
 **Description:** Count the number of defined classes matching `regex`.
 
-This function matches classes, using a regular expression that should
-match the whole line. The function returns the number of classes matched.
+This function matches classes, using an [anchored][anchored] regular 
+expression that should match the whole line. The function returns the number 
+of classes matched.
 
-**Arguments**:
-
-* `regex` : Regular expression, in the range `.*`
-
-A regular expression matching zero or more classes in the current list
-of set classes. The regular expression is 
-[anchored][anchored], meaning it must match a complete 
-class.
+[%CFEngine_function_attributes(regex)%]
 
 **Example:**  
 

@@ -7,9 +7,7 @@ alias: reference-functions-none.html
 tags: [reference, data functions, functions, none]
 ---
 
-**Prototype:** `none(regex, list)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(regex, list)%]
 
 **Description:** Returns whether no element in `list` matches the regular 
 expression `regex`.

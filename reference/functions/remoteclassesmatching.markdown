@@ -9,9 +9,7 @@ tags: [reference, communication functions, functions, remoteclassesmatching]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype:** `remoteclassesmatching(regex, server, encrypt, prefix)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(regex, server, encrypt, prefix)%]
 
 **Description:** Read persistent classes matching regular expression `regex`
 from a remote CFEngine server `server` and add them into local context with 

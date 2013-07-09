@@ -7,9 +7,7 @@ alias: reference-functions-join.html
 tags: [reference, data functions, functions, join]
 ---
 
-**Prototype:** `join(glue, list)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(glue, list)%]
 
 **Description:** Join the items of `list` into a string, using the conjunction in `glue`.
 

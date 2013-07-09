@@ -7,9 +7,7 @@ alias: reference-functions-parsestringarrayidx.html
 tags: [reference, io functions, functions, parsestringarrayidx]
 ---
 
-**Prototype:** `parsestringarrayidx(array, input, comment, split, maxentries, maxbytes)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(array, input, comment, split, maxentries, maxbytes)%]
 
 **Description:** Populates the two-dimensional array `array` with up to 
 `maxentries` fields from the first `maxbytes` bytes of the string `input`.

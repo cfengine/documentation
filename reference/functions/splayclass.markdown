@@ -7,9 +7,7 @@ alias: reference-functions-splayclass.html
 tags: [reference, utility functions, functions, splayclass]
 ---
 
-**Prototype:** `splayclass(input, policy)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(input, policy)%]
 
 **Description:** Returns whether `input`'s time-slot has arrived, 
 according to a `policy`.

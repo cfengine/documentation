@@ -7,9 +7,7 @@ alias: reference-functions-sum.html
 tags: [reference, data functions, functions, sum]
 ---
 
-**Prototype:** `sum(list)`
-
-**Return type:** `real`
+[%CFEngine_function_prototype(list)%]
 
 **Description:** Return the sum of the reals in `list`.
 

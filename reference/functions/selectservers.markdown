@@ -7,9 +7,7 @@ alias: reference-functions-selectservers.html
 tags: [reference, communication functions, functions, selectservers]
 ---
 
-**Prototype:** `selectservers(hostlist, port, query, regex,maxbytes, array)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(hostlist, port, query, regex,maxbytes, array)%]
 
 **Description:** Returns the number of tcp servers from `hostlist` which 
 respond correctly to a query send to `port`, and populates array with their 

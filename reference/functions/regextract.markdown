@@ -7,9 +7,7 @@ alias: reference-functions-regextract.html
 tags: [reference, data functions, functions, regextract]
 ---
 
-**Prototype:** `regextract(regex, string, backref)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(regex, string, backref)%]
 
 **Description:** Returns whether `regex` matches the `string`, and fills the array `backref` with back-references.
 

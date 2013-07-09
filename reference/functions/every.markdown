@@ -7,18 +7,14 @@ alias: reference-functions-every.html
 tags: [reference, data functions, functions, every]
 ---
 
-**Prototype:** `every(regex, list)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(regex, list)%]
 
 **Description:** Returns whether every element in the variable `list` matches
-`regex`.
+the [unanchored][unanchored] `regex`.
 
 **Arguments**:
 
 * `regex` : Regular expression to find, in the range `.*`
-
-The regular expression is [unanchored][unanchored].
 
 * `list` : The name of the list variable to check, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`

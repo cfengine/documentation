@@ -7,18 +7,14 @@ alias: reference-functions-fileexists.html
 tags: [reference, files functions, functions, fileexists]
 ---
 
-**Prototype:** `fileexists(filename)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(filename)%]
 
 **Description:** Returns whether the file `filename` can be accessed.
 
 The file must exist, and the user must have access permissions to the file for 
 this function to return true.
 
-**Arguments**:
-
-* `filename` : File object name, in the range `"?(/.*)`
+[%CFEngine_function_attributes(filename)%]
 
 **Example:**  
 

@@ -7,9 +7,7 @@ alias: reference-functions-readstringarrayidx.html
 tags: [reference, io functions, functions, readstringarrayidx]
 ---
 
-**Prototype:** `readstringarrayidx(array, filename, comment, split, maxentries, maxbytes)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(array, filename, comment, split, maxentries, maxbytes)%]
 
 **Description:** Populates the two-dimensional array `array` with up to 
 `maxentries` fields from the first `maxbytes` bytes of file `filename`.

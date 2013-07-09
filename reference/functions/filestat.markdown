@@ -7,37 +7,14 @@ alias: reference-functions-filestat.html
 tags: [reference, files functions, functions, filestat]
 ---
 
-**Prototype:** `filestat(filename, field)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(filename, field)%]
 
 **Description:** Returns the requested file field.
 
 If the file object does not exist, the function call fails and the
 variable does not expand.
 
-**Arguments**:
-
-* `filename` : File object name, in the range `"?(/.*)`
-* `field` : Name of field to retrieve, in the range
-    * `size`
-    * `gid`
-    * `uid`
-    * `ino`
-    * `nlink`
-    * `ctime`
-    * `atime`
-    * `mtime`
-    * `mode`
-    * `modeoct`
-    * `permstr`
-    * `permoct`
-    * `type`
-    * `devno`
-    * `dev_minor`
-    * `dev_major`
-    * `basename`
-    * `dirname`
+[%CFEngine_function_attributes(filename, field)%]
 
 **Example:**
 

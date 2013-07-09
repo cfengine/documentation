@@ -7,9 +7,7 @@ alias: reference-functions-strftime.html
 tags: [reference, data functions, functions, strftime]
 ---
 
-**Prototype:** `strftime(mode, template, time)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(mode, template, time)%]
 
 **Description:** Interprets a time and date format string at a particular 
 point in GMT or local time using Unix epoch time.

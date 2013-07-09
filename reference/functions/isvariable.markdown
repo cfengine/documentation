@@ -7,9 +7,7 @@ alias: reference-functions-isvariable.html
 tags: [reference, utility functions, functions, isvariable]
 ---
 
-**Prototype:** `isvariable(var)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(var)%]
 
 **Description:** Returns whether a variable named `var` is defined.
 

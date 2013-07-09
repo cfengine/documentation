@@ -7,9 +7,7 @@ alias: reference-functions-length.html
 tags: [reference, data functions, functions, length]
 ---
 
-**Prototype:** `length(list)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(list)%]
 
 **Description:** Returns the length of `list`.
 

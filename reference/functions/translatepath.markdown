@@ -7,9 +7,7 @@ alias: reference-functions-translatepath.html
 tags: [reference, files functions, functions, translatepath]
 ---
 
-**Prototype:** `translatepath(path)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(path)%]
 
 **Description:** Translate path separators from Unix style to the host's 
 native style and returns the result.

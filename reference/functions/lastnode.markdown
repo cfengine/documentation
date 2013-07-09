@@ -7,9 +7,7 @@ alias: reference-functions-lastnode.html
 tags: [reference, data functions, functions, lastnode]
 ---
 
-**Prototype:** `lastnode(string, separator)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(string, separator)%]
 
 **Description:** Returns the part of `string` after the last `separator`.
 

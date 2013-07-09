@@ -7,9 +7,7 @@ alias: reference-functions-nth.html
 tags: [reference, data functions, functions, nth]
 ---
 
-**Prototype:** `nth(list, position)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(list, position)%]
 
 **Description:** Returns the element of `list` at zero-based `position`.
 

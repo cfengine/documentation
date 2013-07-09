@@ -7,19 +7,14 @@ alias: reference-functions-getindices.html
 tags: [reference, data functions, functions, getindices]
 ---
 
-**Prototype:** `getindices(array)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(array)%]
 
 **Description:** Returns a list of keys in `array`.
 
 Make sure you specify the correct scope when supplying the name of the
 variable.
 
-**Arguments**:
-
-* `array` : array identifier, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(array)%]
 
 **Example:**
 

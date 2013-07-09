@@ -7,9 +7,7 @@ alias: reference-functions-hostsseen.html
 tags: [reference, communication functions, functions, hostsseen]
 ---
 
-**Prototype:** `hostsseen(horizon, seen, field)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(horizon, seen, field)%]
 
 **Description:** Returns a list with the information `field` of hosts that were seen or not seen within the last `horizon` hours.
 

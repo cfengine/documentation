@@ -7,9 +7,7 @@ alias: reference-functions-readfile.html
 tags: [reference, io functions, functions, readfile]
 ---
 
-**Prototype:** `readfile(filename, maxbytes)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(filename, maxbytes)%]
 
 **Description:** Returns the first `maxbytes` bytes from file `filename`.
 

@@ -7,18 +7,14 @@ alias: reference-functions-diskfree.html
 tags: [reference, files functions, functions, diskfree]
 ---
 
-**Prototype:** `diskfree(path)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(path)%]
 
 **Descriptions**: Return the free space (in KB) available on the current
 partition of `path`.
 
 If `path` is not found, this function returns 0.
 
-**Arguments**:  
-
-* `path` : File system directory, in the range `"?(/.*)`
+[%CFEngine_function_attributes(path)%]
 
 **Example:**  
 

@@ -7,10 +7,7 @@ alias: reference-functions-lsdir.html
 tags: [reference, files functions, functions, lsdir]
 ---
 
-**Prototype:** `lsdir(path, regex, include_base)`
-
-**Return type:** `slist`
-
+[%CFEngine_function_prototype(path, regex, include_base)%]
 
 **Description:** Returns a list of files in the directory `path` matching the regular expression `regex`.
 

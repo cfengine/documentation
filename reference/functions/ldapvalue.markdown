@@ -9,9 +9,7 @@ tags: [reference, communication functions, functions, ldapvalue]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype:** `ldapvalue(uri, dn, filter, record, scope, security)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(uri, dn, filter, record, scope, security)%]
 
 **Description:** Returns the first matching named value from ldap.
 

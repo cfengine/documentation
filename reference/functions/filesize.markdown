@@ -7,18 +7,14 @@ alias: reference-functions-filesize.html
 tags: [reference, files functions, functions, filesize]
 ---
 
-**Prototype:** `filesize(filename)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(filename)%]
 
 **Description:** Returns the size of the file `filename` in bytes.
 
 If the file object does not exist, the function call fails and the
 variable does not expand.
 
-**Arguments**:
-
-* `filename` : File object name, in the range `"?(/.*)`
+[%CFEngine_function_attributes(filename)%]
 
 **Example:**  
 

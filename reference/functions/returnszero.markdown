@@ -7,9 +7,7 @@ alias: reference-functions-returnszero.html
 tags: [reference, utility functions, functions, returnszero]
 ---
 
-**Prototype:** `returnszero(command, shell)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(command, shell)%]
 
 **Description:** Runs `command` and returns whether it has returned with exit 
 status zero.
@@ -20,7 +18,7 @@ rather than the output of the command.
 **Arguments**:
 
 * `command` : Fully qualified command path, in the range `"?(/.*)`
-* `shelll` : Shell encapsulation option, in the range `useshell`,`noshell`
+* `shell` : Shell encapsulation option, in the range `useshell`,`noshell`
 
 **Example:**
 

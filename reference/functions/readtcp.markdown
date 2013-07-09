@@ -7,9 +7,7 @@ alias: reference-functions-readtcp.html
 tags: [reference, communication functions, functions, readtcp]
 ---
 
-**Prototype:** `readtcp(hostnameip, port, sendstring, maxbytes)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(hostnameip, port, sendstring, maxbytes)%]
 
 **Description:** Connects to tcp `port` of `hostnameip`, sends `sendstring`,
 reads at most `maxbytes` from the response and returns those.

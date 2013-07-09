@@ -7,17 +7,13 @@ alias: reference-functions-getuid.html
 tags: [reference, system functions, functions, getuid]
 ---
 
-**Prototype:** `getuid(username)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(username)%]
 
 **Description:** Return the integer user id of the named user on this host
 
 If the named user is not registered the variable will not be defined.
 
-**Arguments**:
-
-* `username` : User name in text, in the range `.*`
+[%CFEngine_function_attributes(username)%]
 
 **Example:**
 

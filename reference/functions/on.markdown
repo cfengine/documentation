@@ -7,9 +7,7 @@ alias: reference-functions-on.html
 tags: [reference, data functions, functions, "on"]
 ---
 
-**Prototype:** `on(years, months, days, hours, minutes, seconds)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]
 
 **Description:** Returns the specified date/time in integer system representation.
 

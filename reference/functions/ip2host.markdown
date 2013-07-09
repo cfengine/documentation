@@ -7,9 +7,7 @@ alias: reference-functions-ip2host.html
 tags: [reference, communication functions, functions, ip2host]
 ---
 
-**Prototype:** `ip2host(ip)`
-
-**Return type:** `string`
+[%CFEngine_function_prototype(ip)%]
 
 **Description:** Returns the primary name-service host name for the IP address 
 `ip`.

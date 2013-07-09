@@ -7,9 +7,7 @@ alias: reference-functions-randomint.html
 tags: [reference, data functions, functions, randomint]
 ---
 
-**Prototype:** `randomint(lower, upper)`
-
-**Return type:** `int`
+[%CFEngine_function_prototype(lower, upper)%]
 
 **Description:** Returns a random integer between `lower` and `upper`.
 

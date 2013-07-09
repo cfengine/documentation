@@ -7,9 +7,7 @@ alias: reference-functions-some.html
 tags: [reference, data functions, functions, some]
 ---
 
-**Prototype:** `some(regex, list)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(regex, list)%]
 
 **Description:** Return whether any element of the list matches the regular 
 expression.

@@ -7,9 +7,7 @@ alias: reference-functions-usemodule.html
 tags: [reference, utility functions, functions, usemodule]
 ---
 
-**Prototype:** `usemodule(name, args)`
-
-**Return type:** `class`
+[%CFEngine_function_prototype(name, args)%]
 
 **Description:** Execute CFEngine module script `name` with `args` and return 
 whether successful.

@@ -7,23 +7,19 @@ alias: reference-functions-execresult.html
 tags: [reference, utility functions, functions, execresult]
 ---
 
-**Prototype:** `execresult(command, shell)` 
-
-**Return type:** `string`
+[%CFEngine_function_prototype(command, shell)%]
 
 **Description:** Execute `command` and return output as `string`.
 
 If the command is not found, the result will be the empty string.
 
-**Arguments**:
+The `shell` argument decides whether a shell will be used to encapsulate the 
+command. This is necessary in order to combine commands with pipes etc, but 
+remember that each command requires a new process that reads in files beyond 
+CFEngine's control. Thus using a shell is both a performance hog and a 
+potential security issue.
 
-* `command` : Fully qualified command path, in the range `"?(/.*)`
-* `shell` : Shell encapsulation option, in the range `useshell`,`noshell`
-
-Decides whether a shell will be used to encapsulate the command. This is 
-necessary in order to combine commands with pipes etc, but remember that each 
-command requires a new process that reads in files beyond CFEngine's control. 
-Thus using a shell is both a performance hog and a potential security issue.
+[%CFEngine_function_attributes(command, shell)%]
 
 **Example:**
 

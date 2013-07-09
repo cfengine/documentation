@@ -9,9 +9,7 @@ tags: [reference, communication functions, functions, ldaplist]
 
 **This function is only available in CFEngine Enterprise.**
 
-**Prototype:** `ldaplist(uri, dn, filter, record, scope, security)`
-
-**Return type:** `slist`
+[%CFEngine_function_prototype(uri, dn, filter, record, scope, security)%]
 
 **Description:** Returns a list with all named values from multiple ldap records.
 
