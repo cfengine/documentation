@@ -224,14 +224,21 @@ def function_attributes(parameters, config):
 	for parameter in parameters:
 		parameter_name = parameter_names[arg_idx]
 		parameter_type = parameter["type"]
+		option_arg = parameter_type == "option"
 		if parameter_name == "regex":
 			parameter_type = "regular expression"
 		else:
 			parameter_type = "`" + parameter_type + "`"
 
 		arguments += "* `" + parameter_name  + "`: "
-		arguments += parameter_type + ", in the range: `"
-		arguments += parameter["range"] + "`\n"
+		if option_arg:
+			arguments += "one of\n"
+			options = parameter["range"].split(',')
+			for option in options:
+				arguments += "    * `" + option + "`\n"
+		else:
+			arguments += parameter_type + ", in the range: `"
+			arguments += parameter["range"] + "`\n"
 		arg_idx += 1
 	
 	lines = []
