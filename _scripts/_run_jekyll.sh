@@ -1,8 +1,4 @@
 #!/bin/bash
-. `dirname "$0"`/functions
-
-export WRKDIR=$WORKDIR
-
 DIFF=$(sudo diff /home/vagrant/syntax_map.json $WRKDIR/documentation-generator/_site/syntax_map.json)
 
 if [ ! -z "$DIFF" ]; then
