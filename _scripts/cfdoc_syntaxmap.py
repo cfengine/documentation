@@ -192,10 +192,11 @@ def function_prototype(parameters, config):
 	function = function[:function.find('(')]
 
 	prototype = function + "("
-	for parameter in parameters:
-		prototype += parameter + ", "
-	if prototype[-2:] == ", ":
-		prototype = prototype[:len(prototype)-2]
+	if parameters != None:
+		for parameter in parameters:
+			prototype += parameter + ", "
+		if prototype[-2:] == ", ":
+			prototype = prototype[:len(prototype)-2]
 	prototype += ")"
 
 	returnType = syntax_map["functions"][function]["returnType"]
