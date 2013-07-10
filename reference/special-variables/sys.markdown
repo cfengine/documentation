@@ -511,6 +511,8 @@ is most commonly used in the /etc/shadow file.
    Corresponds to Monday, November 12, 2012.
 ```
 
+**History:** Introduced in CFEngine 3.6
+
 ### sys.systime
 
 A variable containing the result of the time() system call, which is the
@@ -523,6 +525,8 @@ seconds. See also `$(sys.sysday)`.
    Corresponds to Mon Nov 12 21:15:00 2012 UTC.
 ```
 
+**History:** Introduced in CFEngine 3.6
+
 ### sys.uptime
 
 A variable containing the number of minutes which the system has been
@@ -534,6 +538,8 @@ online.  (Not implemented on the Windows platform.)
    Equivalent uptime command output:
     16:24:52 up 48 days, 10:15,  1 user,  load average: 0.00, 0.00, 0.00
 ```
+
+**History:** Introduced in CFEngine 3.6
 
 ### sys.uqhost
 
