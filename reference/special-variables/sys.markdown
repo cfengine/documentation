@@ -497,6 +497,44 @@ The location of the system resolver file.
     # resolv = /etc/resolv.conf
 ```
 
+### sys.sysday
+
+A variable containing the time since the UNIX Epoch (00:00:00 UTC, January 1,
+1970), measured in days. It is equivalent to `$(sys.systime)` divided by the
+number of seconds in a day, expressed as an integer. No time zone conversion
+is performed, the direct result of the time() system call is used. This value
+is most commonly used in the /etc/shadow file.
+
+```cf3
+   # sysday = 15656
+
+   Corresponds to Monday, November 12, 2012.
+```
+
+### sys.systime
+
+A variable containing the result of the time() system call, which is the
+time since the UNIX Epoch (00:00:00 UTC, January 1, 1970), measured in
+seconds. See also `$(sys.sysday)`.
+
+```cf3
+   # systime = 1352754900
+
+   Corresponds to Mon Nov 12 21:15:00 2012 UTC.
+```
+
+### sys.uptime
+
+A variable containing the number of minutes which the system has been
+online.  (Not implemented on the Windows platform.)
+
+```cf3
+   # uptime = 69735
+
+   Equivalent uptime command output:
+    16:24:52 up 48 days, 10:15,  1 user,  load average: 0.00, 0.00, 0.00
+```
+
 ### sys.uqhost
 
 The unqualified name of the current host.
