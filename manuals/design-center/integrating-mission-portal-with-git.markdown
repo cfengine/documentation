@@ -206,19 +206,29 @@ Save the following in `update/update_from_repository.cf`.
         }
     ```
 
-2. Include the file into the failsafe policy, change the following in `failsafe/failsafe.cf`.
+2. Include the file into the update policy, change the following in `update.cf`.
 
-        ...
-        "cfe_internal_update_policy",
-        "cfe_internal_update_processes",
-        ...
-
-        ...
-        "cfe_internal_update_policy",
-        "update_from_repository",
-        "cfe_internal_update_processes",
-        ...
-
+    ```
+    diff --git a/update.cf b/update.cf
+    index 9c6c298..ab5cc1f 100755
+    --- a/update.cf
+    +++ b/update.cf
+    @@ -14,6 +14,7 @@ body common control
+     
+      bundlesequence => { 
+                         "cfe_internal_update_bins", 
+    +                    "update_from_repository",
+                         "cfe_internal_update_policy",
+                         "cfe_internal_update_processes", 
+                        };
+    @@ -23,6 +24,7 @@ body common control
+      inputs => { 
+                 "update/update_bins.cf", 
+                 "update/update_policy.cf", 
+    +            "update/update_from_repository.cf", 
+                 "update/update_processes.cf",
+                };
+    ```
 
 3. Commit the two above changes to the git service.
 
