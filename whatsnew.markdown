@@ -14,7 +14,7 @@ complex IT infrastructure installations when agility, scalability, security
 and stability are critical.
 
 CFEngine 3.5 is compatible with all previous versions of CFEngine 3. Don't 
-have CFEngine yet? [**Get started with CFEngine Enterprise in 10 minutes**][cfengine getting started]!
+have CFEngine yet? [**Get started with CFEngine Enterprise in 15 minutes**][evaluate cfengine]!
 
 ## Easier to Use
 
