@@ -48,20 +48,30 @@ the git service.
          git@gitserver $ mkdir ~/.ssh
          git@gitserver $ chmod 700 ~/.ssh
 
-3. Use workstation's SSH key to authenticate with git.
+3. Generate a passphraseless ssh key to be used by Misson Portal.
+         
+         user@workstation $ /usr/bin/ssh-keygen -C 'Mission Portal' -N '' -f mission_portal_id_rsa
 
-         user@workstation $ scp ~/.ssh/id_rsa.pub root@gitserver:/home/git/.ssh/authorized_keys
+   Note: This key is only intended for use by Mission Portal. 
 
-4. Test that you can log in as the git user.
+4. Authorize the Mission Portal's key for the git user.
 
-        user@workstation $ ssh git@gitserver
+         user@workstation $ scp mission_portal_id_rsa.pub root@gitserver:/home/git/.ssh/authorized_keys
+
+   Once the authorization is tested successfully you should move the keypair
+   to a secure storage location.  You may want to authorize additional keys
+   for users to interface with the repository directly. Only the Mission
+   Portal key needs to be passphraseless.
+
+5. Test that you can log in as the git user.
+
+        user@workstation $ ssh -i mission_portal_id_rsa git@gitserver
            git@gitserver $
 
-5. Create the masterfiles repository.
 
-           git@gitserver $ mkdir masterfiles.git
-           git@gitserver $ cd masterfiles.git/
-           git@gitserver $ git init --bare
+6. Create the masterfiles repository.
+
+           git@gitserver $ git init --bare masterfiles.git
                            Initialized empty Git repository in /home/git/masterfiles.git/
 
 ## Initializing the git repository
