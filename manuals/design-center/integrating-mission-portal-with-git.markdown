@@ -56,7 +56,7 @@ the git service.
 
 4. Authorize the Mission Portal's key for the git user.
 
-         user@workstation $ cat mission_portal_id_rsa.pub | ssh root@gitserver "umask 066; cat >> /home/git/.ssh/authorized_keys; chown git:git /home/git/.ssh/authorized_keys"
+         user@workstation $ cat mission_portal_id_rsa.pub | ssh root@gitserver "umask 077; cat >> /home/git/.ssh/authorized_keys; chown git:git /home/git/.ssh/authorized_keys"
 
    Once the authorization is tested successfully you should move the keypair
    to a secure storage location.  You may want to authorize additional keys
