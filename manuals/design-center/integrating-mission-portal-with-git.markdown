@@ -61,7 +61,9 @@ the git service.
    Once the authorization is tested successfully you should move the keypair
    to a secure storage location.  You may want to authorize additional keys
    for users to interface with the repository directly. Only the Mission
-   Portal key needs to be passphraseless.
+   Portal key needs to be passphraseless. Your git server may have additional
+   features like the ability to make a specific key read only. See your git
+   providers documentation for more information.
 
 5. Test that you can log in as the git user.
 
