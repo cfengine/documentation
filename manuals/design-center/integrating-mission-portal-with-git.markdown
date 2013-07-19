@@ -48,20 +48,33 @@ the git service.
          git@gitserver $ mkdir ~/.ssh
          git@gitserver $ chmod 700 ~/.ssh
 
-3. Use workstation's SSH key to authenticate with git.
 
-         user@workstation $ scp ~/.ssh/id_rsa.pub root@gitserver:/home/git/.ssh/authorized_keys
+3. Generate a passphraseless ssh key to be used by Misson Portal.
+         
+         user@workstation $ /usr/bin/ssh-keygen -C 'Mission Portal' -N '' -f mission_portal_id_rsa
 
-4. Test that you can log in as the git user.
+   Note: This key is only intended for use by Mission Portal. 
 
-        user@workstation $ ssh git@gitserver
+4. Authorize the Mission Portal's key for the git user.
+
+         user@workstation $ cat mission_portal_id_rsa.pub | ssh root@gitserver "umask 077; cat >> /home/git/.ssh/authorized_keys; chown git:git /home/git/.ssh/authorized_keys"
+
+   Once the authorization is tested successfully you should move the keypair
+   to a secure storage location.  You may want to authorize additional keys
+   for users to interface with the repository directly. Only the Mission
+   Portal key needs to be passphraseless. Your git server may have additional
+   features like the ability to make a specific key read only. See your git
+   providers documentation for more information.
+
+5. Test that you can log in as the git user.
+
+        user@workstation $ ssh -i mission_portal_id_rsa git@gitserver
            git@gitserver $
 
-5. Create the masterfiles repository.
 
-           git@gitserver $ mkdir masterfiles.git
-           git@gitserver $ cd masterfiles.git/
-           git@gitserver $ git init --bare
+6. Create the masterfiles repository.
+
+           git@gitserver $ git init --bare masterfiles.git
                            Initialized empty Git repository in /home/git/masterfiles.git/
 
 ## Initializing the git repository
@@ -206,19 +219,29 @@ Save the following in `update/update_from_repository.cf`.
         }
     ```
 
-2. Include the file into the failsafe policy, change the following in `failsafe/failsafe.cf`.
+2. Include the file into the update policy, change the following in `update.cf`.
 
-        ...
-        "cfe_internal_update_policy",
-        "cfe_internal_update_processes",
-        ...
-
-        ...
-        "cfe_internal_update_policy",
-        "update_from_repository",
-        "cfe_internal_update_processes",
-        ...
-
+    ```
+    diff --git a/update.cf b/update.cf
+    index 9c6c298..ab5cc1f 100755
+    --- a/update.cf
+    +++ b/update.cf
+    @@ -14,6 +14,7 @@ body common control
+     
+      bundlesequence => { 
+                         "cfe_internal_update_bins", 
+    +                    "update_from_repository",
+                         "cfe_internal_update_policy",
+                         "cfe_internal_update_processes", 
+                        };
+    @@ -23,6 +24,7 @@ body common control
+      inputs => { 
+                 "update/update_bins.cf", 
+                 "update/update_policy.cf", 
+    +            "update/update_from_repository.cf", 
+                 "update/update_processes.cf",
+                };
+    ```
 
 3. Commit the two above changes to the git service.
 
