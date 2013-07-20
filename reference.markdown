@@ -5,7 +5,6 @@ categories: [Reference]
 published: true
 sorting: 40
 alias: reference.html
-tags: [Reference]
 ---
 
 The reference documentation explains the available promise and bundle types, 

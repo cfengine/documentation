@@ -5,7 +5,6 @@ categories: [Manuals]
 published: true
 sorting: 30
 alias: manuals.html
-tags: [manuals, hello world]
 ---
 
 At its core, CFEngine is a simple framework which supplies a rich standard 
