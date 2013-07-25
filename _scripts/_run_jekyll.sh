@@ -1,9 +1,9 @@
 #!/bin/bash
-DIFF=$(sudo diff /home/vagrant/syntax_map.json $WRKDIR/documentation-generator/_site/syntax_map.json)
+DIFF=$(sudo diff /home/vagrant/syntax_map.json $WRKDIR/documentation-generator/_json/syntax_map.json)
 
 if [ ! -z "$DIFF" ]; then
-   cp /home/vagrant/syntax_map.json $WRKDIR/documentation-generator/_site/
-   cp /home/vagrant/syntax_map.json /home/vagrant/documentation-generator/_site/
+   cp /home/vagrant/syntax_map.json $WRKDIR/documentation-generator/_json/
+   cp /home/vagrant/syntax_map.json /home/vagrant/documentation-generator/_json/
    cd /home/vagrant/documentation-generator
    git commit -a -m "autocommit syntax map changed `date +%F-%T`"
    git push -f

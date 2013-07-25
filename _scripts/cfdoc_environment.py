@@ -69,7 +69,7 @@ def validate():
 	print '                   config           = '
 	print config
 		
-	config["syntax_path"] = config["project_directory"] + "/_site/syntax_map.json"
+	config["syntax_path"] = config["project_directory"] + "/_json/syntax_map.json"
 	config["syntax_map"] = json.load(open(config["syntax_path"], 'r'))
 	
 	markdown_files = []
