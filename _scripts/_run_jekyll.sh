@@ -7,7 +7,7 @@ if [ ! -z "$DIFF" ]; then
    cd /home/vagrant/documentation-generator
    git commit -a -m "autocommit syntax map changed `date +%F-%T`"
    git push -f
-   /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:master -h sudhirpandey:autocheckSyntaxMap
+   /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:master -h cfengine-autobuild:autocheckSyntaxMap
    cd ..
 fi
 
