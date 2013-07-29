@@ -130,13 +130,7 @@ Instead of
 ```
 
 In either case, no changes will be made to the disk, but the messages
-given by `cf-agent` will differ.
-
-**All** promises with `action_policy` set to `warn` are considered not
-kept.  The intended meaning is that CFEngine found something
-noncompliant but was not allowed to fix it. So it stayed noncompliant
-after the run. This is the same state as if CFEngine was unable to fix
-it for other reasons (permissions, etc.).
+given by `cf-agent` will differ.   
 
 #### ifelapsed
 
