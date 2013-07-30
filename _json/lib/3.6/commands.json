@@ -3,9 +3,7 @@
       "bodies": [
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 12268,
-          "offsetEnd": 12321,
-          "sourceLine": 56,
+          "line": 55,
           "namespace": "default",
           "name": "silent",
           "bodyType": "contain",
@@ -13,12 +11,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 12317,
               "attributes": [
                 {
-                  "offset": 12298,
-                  "offsetEnd": 12317,
+                  "line": 57,
                   "lval": "no_output",
                   "rval": {
                     "type": "string",
@@ -31,9 +26,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 12364,
-          "offsetEnd": 12412,
-          "sourceLine": 63,
+          "line": 62,
           "namespace": "default",
           "name": "in_dir",
           "bodyType": "contain",
@@ -43,12 +36,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 12408,
               "attributes": [
                 {
-                  "offset": 12393,
-                  "offsetEnd": 12408,
+                  "line": 64,
                   "lval": "chdir",
                   "rval": {
                     "type": "string",
@@ -61,9 +51,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 12461,
-          "offsetEnd": 12666,
-          "sourceLine": 70,
+          "line": 69,
           "namespace": "default",
           "name": "in_dir_shell",
           "bodyType": "contain",
@@ -73,12 +61,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 12606,
               "attributes": [
                 {
-                  "offset": 12496,
-                  "offsetEnd": 12511,
+                  "line": 71,
                   "lval": "chdir",
                   "rval": {
                     "type": "string",
@@ -86,8 +71,7 @@
                   }
                 },
                 {
-                  "offset": 12588,
-                  "offsetEnd": 12606,
+                  "line": 72,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -100,9 +84,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 12716,
-          "offsetEnd": 12812,
-          "sourceLine": 78,
+          "line": 77,
           "namespace": "default",
           "name": "silent_in_dir",
           "bodyType": "contain",
@@ -112,12 +94,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 12808,
               "attributes": [
                 {
-                  "offset": 12752,
-                  "offsetEnd": 12767,
+                  "line": 79,
                   "lval": "chdir",
                   "rval": {
                     "type": "string",
@@ -125,8 +104,7 @@
                   }
                 },
                 {
-                  "offset": 12789,
-                  "offsetEnd": 12808,
+                  "line": 80,
                   "lval": "no_output",
                   "rval": {
                     "type": "string",
@@ -139,9 +117,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 12854,
-          "offsetEnd": 13019,
-          "sourceLine": 86,
+          "line": 85,
           "namespace": "default",
           "name": "in_shell",
           "bodyType": "contain",
@@ -149,12 +125,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 12959,
               "attributes": [
                 {
-                  "offset": 12941,
-                  "offsetEnd": 12959,
+                  "line": 87,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -167,9 +140,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 13064,
-          "offsetEnd": 13232,
-          "sourceLine": 93,
+          "line": 92,
           "namespace": "default",
           "name": "in_shell_bg",
           "bodyType": "contain",
@@ -177,12 +148,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 13172,
               "attributes": [
                 {
-                  "offset": 13154,
-                  "offsetEnd": 13172,
+                  "line": 94,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -195,9 +163,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 13285,
-          "offsetEnd": 13502,
-          "sourceLine": 100,
+          "line": 99,
           "namespace": "default",
           "name": "in_shell_and_silent",
           "bodyType": "contain",
@@ -205,12 +171,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 13498,
               "attributes": [
                 {
-                  "offset": 13383,
-                  "offsetEnd": 13401,
+                  "line": 101,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -218,8 +181,7 @@
                   }
                 },
                 {
-                  "offset": 13479,
-                  "offsetEnd": 13498,
+                  "line": 102,
                   "lval": "no_output",
                   "rval": {
                     "type": "string",
@@ -232,9 +194,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 13564,
-          "offsetEnd": 13827,
-          "sourceLine": 108,
+          "line": 107,
           "namespace": "default",
           "name": "in_dir_shell_and_silent",
           "bodyType": "contain",
@@ -244,12 +204,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 13823,
               "attributes": [
                 {
-                  "offset": 13671,
-                  "offsetEnd": 13689,
+                  "line": 109,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -257,8 +214,7 @@
                   }
                 },
                 {
-                  "offset": 13767,
-                  "offsetEnd": 13786,
+                  "line": 110,
                   "lval": "no_output",
                   "rval": {
                     "type": "string",
@@ -266,8 +222,7 @@
                   }
                 },
                 {
-                  "offset": 13806,
-                  "offsetEnd": 13823,
+                  "line": 111,
                   "lval": "chdir",
                   "rval": {
                     "type": "string",
@@ -280,9 +235,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 13870,
-          "offsetEnd": 14079,
-          "sourceLine": 117,
+          "line": 116,
           "namespace": "default",
           "name": "setuid",
           "bodyType": "contain",
@@ -292,12 +245,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 14020,
               "attributes": [
                 {
-                  "offset": 13904,
-                  "offsetEnd": 13924,
+                  "line": 118,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -305,8 +255,7 @@
                   }
                 },
                 {
-                  "offset": 14001,
-                  "offsetEnd": 14020,
+                  "line": 119,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -319,9 +268,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 14125,
-          "offsetEnd": 14337,
-          "sourceLine": 125,
+          "line": 124,
           "namespace": "default",
           "name": "setuid_sh",
           "bodyType": "contain",
@@ -331,12 +278,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 14277,
               "attributes": [
                 {
-                  "offset": 14162,
-                  "offsetEnd": 14182,
+                  "line": 126,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -344,8 +288,7 @@
                   }
                 },
                 {
-                  "offset": 14259,
-                  "offsetEnd": 14277,
+                  "line": 127,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -358,9 +301,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 14396,
-          "offsetEnd": 14680,
-          "sourceLine": 133,
+          "line": 132,
           "namespace": "default",
           "name": "setuidgid_sh",
           "bodyType": "contain",
@@ -371,12 +312,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 14620,
               "attributes": [
                 {
-                  "offset": 14450,
-                  "offsetEnd": 14474,
+                  "line": 134,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -384,8 +322,7 @@
                   }
                 },
                 {
-                  "offset": 14501,
-                  "offsetEnd": 14525,
+                  "line": 135,
                   "lval": "exec_group",
                   "rval": {
                     "type": "string",
@@ -393,8 +330,7 @@
                   }
                 },
                 {
-                  "offset": 14602,
-                  "offsetEnd": 14620,
+                  "line": 136,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -407,9 +343,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 14734,
-          "offsetEnd": 15040,
-          "sourceLine": 142,
+          "line": 141,
           "namespace": "default",
           "name": "jail",
           "bodyType": "contain",
@@ -421,12 +355,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 15036,
               "attributes": [
                 {
-                  "offset": 14783,
-                  "offsetEnd": 14807,
+                  "line": 143,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -434,8 +365,7 @@
                   }
                 },
                 {
-                  "offset": 14884,
-                  "offsetEnd": 14902,
+                  "line": 144,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -443,8 +373,7 @@
                   }
                 },
                 {
-                  "offset": 14978,
-                  "offsetEnd": 14995,
+                  "line": 145,
                   "lval": "chdir",
                   "rval": {
                     "type": "string",
@@ -452,8 +381,7 @@
                   }
                 },
                 {
-                  "offset": 15017,
-                  "offsetEnd": 15036,
+                  "line": 146,
                   "lval": "chroot",
                   "rval": {
                     "type": "string",
@@ -466,9 +394,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
-          "offset": 15098,
-          "offsetEnd": 16349,
-          "sourceLine": 163,
+          "line": 151,
           "namespace": "default",
           "name": "setuid_umask",
           "bodyType": "contain",
@@ -479,12 +405,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 16345,
               "attributes": [
                 {
-                  "offset": 16282,
-                  "offsetEnd": 16304,
+                  "line": 164,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -492,8 +415,7 @@
                   }
                 },
                 {
-                  "offset": 16326,
-                  "offsetEnd": 16345,
+                  "line": 165,
                   "lval": "umask",
                   "rval": {
                     "type": "string",

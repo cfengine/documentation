@@ -3,9 +3,7 @@
       "bodies": [
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 16598,
-          "offsetEnd": 16703,
-          "sourceLine": 59,
+          "line": 58,
           "namespace": "default",
           "name": "if_elapsed",
           "bodyType": "action",
@@ -15,12 +13,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 16699,
               "attributes": [
                 {
-                  "offset": 16635,
-                  "offsetEnd": 16654,
+                  "line": 60,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -28,8 +23,7 @@
                   }
                 },
                 {
-                  "offset": 16678,
-                  "offsetEnd": 16699,
+                  "line": 61,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -42,9 +36,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 16749,
-          "offsetEnd": 16881,
-          "sourceLine": 67,
+          "line": 66,
           "namespace": "default",
           "name": "if_elapsed_day",
           "bodyType": "action",
@@ -52,12 +44,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 16877,
               "attributes": [
                 {
-                  "offset": 16800,
-                  "offsetEnd": 16819,
+                  "line": 68,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -65,8 +54,7 @@
                   }
                 },
                 {
-                  "offset": 16856,
-                  "offsetEnd": 16877,
+                  "line": 69,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -79,9 +67,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 16935,
-          "offsetEnd": 17166,
-          "sourceLine": 75,
+          "line": 74,
           "namespace": "default",
           "name": "measure_performance",
           "bodyType": "action",
@@ -91,12 +77,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 17162,
               "attributes": [
                 {
-                  "offset": 17019,
-                  "offsetEnd": 17076,
+                  "line": 76,
                   "lval": "measurement_class",
                   "rval": {
                     "type": "string",
@@ -104,8 +87,7 @@
                   }
                 },
                 {
-                  "offset": 17098,
-                  "offsetEnd": 17117,
+                  "line": 77,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -113,8 +95,7 @@
                   }
                 },
                 {
-                  "offset": 17141,
-                  "offsetEnd": 17162,
+                  "line": 78,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -127,9 +108,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 17207,
-          "offsetEnd": 17308,
-          "sourceLine": 84,
+          "line": 83,
           "namespace": "default",
           "name": "warn_only",
           "bodyType": "action",
@@ -137,12 +116,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 17304,
               "attributes": [
                 {
-                  "offset": 17244,
-                  "offsetEnd": 17267,
+                  "line": 85,
                   "lval": "action_policy",
                   "rval": {
                     "type": "string",
@@ -150,8 +126,7 @@
                   }
                 },
                 {
-                  "offset": 17287,
-                  "offsetEnd": 17304,
+                  "line": 86,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -164,9 +139,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 17358,
-          "offsetEnd": 17539,
-          "sourceLine": 92,
+          "line": 91,
           "namespace": "default",
           "name": "bg",
           "bodyType": "action",
@@ -177,12 +150,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 17535,
               "attributes": [
                 {
-                  "offset": 17408,
-                  "offsetEnd": 17435,
+                  "line": 93,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -190,8 +160,7 @@
                   }
                 },
                 {
-                  "offset": 17464,
-                  "offsetEnd": 17490,
+                  "line": 94,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -199,8 +168,7 @@
                   }
                 },
                 {
-                  "offset": 17514,
-                  "offsetEnd": 17535,
+                  "line": 95,
                   "lval": "background",
                   "rval": {
                     "type": "string",
@@ -213,9 +181,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 17579,
-          "offsetEnd": 17655,
-          "sourceLine": 101,
+          "line": 100,
           "namespace": "default",
           "name": "ifwin_bg",
           "bodyType": "action",
@@ -223,18 +189,13 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": -1,
               "attributes": []
             },
             {
               "name": "windows",
-              "offset": 17600,
-              "offsetEnd": 17651,
               "attributes": [
                 {
-                  "offset": 17631,
-                  "offsetEnd": 17651,
+                  "line": 103,
                   "lval": "background",
                   "rval": {
                     "type": "string",
@@ -247,9 +208,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 17696,
-          "offsetEnd": 17746,
-          "sourceLine": 109,
+          "line": 108,
           "namespace": "default",
           "name": "immediate",
           "bodyType": "action",
@@ -257,12 +216,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 17742,
               "attributes": [
                 {
-                  "offset": 17726,
-                  "offsetEnd": 17742,
+                  "line": 110,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -275,9 +231,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 17787,
-          "offsetEnd": 17851,
-          "sourceLine": 116,
+          "line": 115,
           "namespace": "default",
           "name": "policy",
           "bodyType": "action",
@@ -287,12 +241,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 17847,
               "attributes": [
                 {
-                  "offset": 17824,
-                  "offsetEnd": 17847,
+                  "line": 117,
                   "lval": "action_policy",
                   "rval": {
                     "type": "string",
@@ -305,9 +256,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 17984,
-          "offsetEnd": 18147,
-          "sourceLine": 125,
+          "line": 124,
           "namespace": "default",
           "name": "log_repaired",
           "bodyType": "action",
@@ -318,12 +267,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 18143,
               "attributes": [
                 {
-                  "offset": 18053,
-                  "offsetEnd": 18092,
+                  "line": 126,
                   "lval": "log_string",
                   "rval": {
                     "type": "string",
@@ -331,8 +277,7 @@
                   }
                 },
                 {
-                  "offset": 18119,
-                  "offsetEnd": 18143,
+                  "line": 127,
                   "lval": "log_repaired",
                   "rval": {
                     "type": "string",
@@ -345,9 +290,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 18192,
-          "offsetEnd": 18256,
-          "sourceLine": 133,
+          "line": 132,
           "namespace": "default",
           "name": "log_verbose",
           "bodyType": "action",
@@ -355,12 +298,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 18252,
               "attributes": [
                 {
-                  "offset": 18230,
-                  "offsetEnd": 18252,
+                  "line": 134,
                   "lval": "log_level",
                   "rval": {
                     "type": "string",
@@ -373,9 +313,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 18302,
-          "offsetEnd": 18404,
-          "sourceLine": 140,
+          "line": 139,
           "namespace": "default",
           "name": "sample_rate",
           "bodyType": "action",
@@ -385,12 +323,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 18400,
               "attributes": [
                 {
-                  "offset": 18340,
-                  "offsetEnd": 18359,
+                  "line": 141,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -398,8 +333,7 @@
                   }
                 },
                 {
-                  "offset": 18381,
-                  "offsetEnd": 18400,
+                  "line": 142,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -412,9 +346,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 18699,
-          "offsetEnd": 18782,
-          "sourceLine": 151,
+          "line": 150,
           "namespace": "default",
           "name": "if_repaired",
           "bodyType": "classes",
@@ -424,12 +356,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 18778,
               "attributes": [
                 {
-                  "offset": 18748,
-                  "offsetEnd": 18778,
+                  "line": 152,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -447,9 +376,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 18831,
-          "offsetEnd": 19182,
-          "sourceLine": 159,
+          "line": 157,
           "namespace": "default",
           "name": "if_else",
           "bodyType": "classes",
@@ -460,12 +387,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 19178,
               "attributes": [
                 {
-                  "offset": 18884,
-                  "offsetEnd": 18916,
+                  "line": 160,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -478,8 +402,7 @@
                   }
                 },
                 {
-                  "offset": 18951,
-                  "offsetEnd": 18983,
+                  "line": 161,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -492,8 +415,7 @@
                   }
                 },
                 {
-                  "offset": 19017,
-                  "offsetEnd": 19048,
+                  "line": 162,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -506,8 +428,7 @@
                   }
                 },
                 {
-                  "offset": 19082,
-                  "offsetEnd": 19113,
+                  "line": 163,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -520,8 +441,7 @@
                   }
                 },
                 {
-                  "offset": 19147,
-                  "offsetEnd": 19178,
+                  "line": 164,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -539,9 +459,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 19235,
-          "offsetEnd": 19585,
-          "sourceLine": 173,
+          "line": 169,
           "namespace": "default",
           "name": "cf2_if_else",
           "bodyType": "classes",
@@ -552,12 +470,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 19581,
               "attributes": [
                 {
-                  "offset": 19354,
-                  "offsetEnd": 19386,
+                  "line": 174,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -570,8 +485,7 @@
                   }
                 },
                 {
-                  "offset": 19420,
-                  "offsetEnd": 19451,
+                  "line": 175,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -584,8 +498,7 @@
                   }
                 },
                 {
-                  "offset": 19485,
-                  "offsetEnd": 19516,
+                  "line": 176,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -598,8 +511,7 @@
                   }
                 },
                 {
-                  "offset": 19550,
-                  "offsetEnd": 19581,
+                  "line": 177,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -617,9 +529,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 19632,
-          "offsetEnd": 19834,
-          "sourceLine": 183,
+          "line": 182,
           "namespace": "default",
           "name": "if_notkept",
           "bodyType": "classes",
@@ -629,12 +539,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 19830,
               "attributes": [
                 {
-                  "offset": 19679,
-                  "offsetEnd": 19708,
+                  "line": 184,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -647,8 +554,7 @@
                   }
                 },
                 {
-                  "offset": 19740,
-                  "offsetEnd": 19769,
+                  "line": 185,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -661,8 +567,7 @@
                   }
                 },
                 {
-                  "offset": 19801,
-                  "offsetEnd": 19830,
+                  "line": 186,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -680,9 +585,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 19876,
-          "offsetEnd": 20008,
-          "sourceLine": 192,
+          "line": 191,
           "namespace": "default",
           "name": "if_ok",
           "bodyType": "classes",
@@ -692,12 +595,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 20004,
               "attributes": [
                 {
-                  "offset": 19919,
-                  "offsetEnd": 19949,
+                  "line": 193,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -710,8 +610,7 @@
                   }
                 },
                 {
-                  "offset": 19978,
-                  "offsetEnd": 20004,
+                  "line": 194,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -729,9 +628,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 20057,
-          "offsetEnd": 20192,
-          "sourceLine": 200,
+          "line": 199,
           "namespace": "default",
           "name": "if_ok_cancel",
           "bodyType": "classes",
@@ -741,12 +638,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 20188,
               "attributes": [
                 {
-                  "offset": 20106,
-                  "offsetEnd": 20135,
+                  "line": 201,
                   "lval": "cancel_repaired",
                   "rval": {
                     "type": "list",
@@ -759,8 +653,7 @@
                   }
                 },
                 {
-                  "offset": 20163,
-                  "offsetEnd": 20188,
+                  "line": 202,
                   "lval": "cancel_kept",
                   "rval": {
                     "type": "list",
@@ -778,9 +671,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 20245,
-          "offsetEnd": 20412,
-          "sourceLine": 208,
+          "line": 207,
           "namespace": "default",
           "name": "cmd_repair",
           "bodyType": "classes",
@@ -791,12 +682,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 20408,
               "attributes": [
                 {
-                  "offset": 20306,
-                  "offsetEnd": 20343,
+                  "line": 209,
                   "lval": "repaired_returncodes",
                   "rval": {
                     "type": "list",
@@ -809,8 +697,7 @@
                   }
                 },
                 {
-                  "offset": 20377,
-                  "offsetEnd": 20408,
+                  "line": 210,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -828,9 +715,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 20458,
-          "offsetEnd": 21754,
-          "sourceLine": 215,
+          "line": 213,
           "namespace": "default",
           "name": "classes_generic",
           "bodyType": "classes",
@@ -840,12 +725,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 21750,
               "attributes": [
                 {
-                  "offset": 20675,
-                  "offsetEnd": 20766,
+                  "line": 216,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -870,8 +752,7 @@
                   }
                 },
                 {
-                  "offset": 20898,
-                  "offsetEnd": 21023,
+                  "line": 217,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -904,8 +785,7 @@
                   }
                 },
                 {
-                  "offset": 21155,
-                  "offsetEnd": 21280,
+                  "line": 218,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -938,8 +818,7 @@
                   }
                 },
                 {
-                  "offset": 21415,
-                  "offsetEnd": 21543,
+                  "line": 219,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -972,8 +851,7 @@
                   }
                 },
                 {
-                  "offset": 21650,
-                  "offsetEnd": 21750,
+                  "line": 220,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1007,9 +885,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 21814,
-          "offsetEnd": 23169,
-          "sourceLine": 225,
+          "line": 223,
           "namespace": "default",
           "name": "scoped_classes_generic",
           "bodyType": "classes",
@@ -1020,12 +896,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 23165,
               "attributes": [
                 {
-                  "offset": 21973,
-                  "offsetEnd": 21992,
+                  "line": 226,
                   "lval": "scope",
                   "rval": {
                     "type": "string",
@@ -1033,8 +906,7 @@
                   }
                 },
                 {
-                  "offset": 22090,
-                  "offsetEnd": 22181,
+                  "line": 227,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1059,8 +931,7 @@
                   }
                 },
                 {
-                  "offset": 22313,
-                  "offsetEnd": 22438,
+                  "line": 228,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -1093,8 +964,7 @@
                   }
                 },
                 {
-                  "offset": 22570,
-                  "offsetEnd": 22695,
+                  "line": 229,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -1127,8 +997,7 @@
                   }
                 },
                 {
-                  "offset": 22830,
-                  "offsetEnd": 22958,
+                  "line": 230,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -1161,8 +1030,7 @@
                   }
                 },
                 {
-                  "offset": 23065,
-                  "offsetEnd": 23165,
+                  "line": 231,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1196,9 +1064,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 23488,
-          "offsetEnd": 23617,
-          "sourceLine": 239,
+          "line": 238,
           "namespace": "default",
           "name": "state_repaired",
           "bodyType": "classes",
@@ -1208,12 +1074,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 23613,
               "attributes": [
                 {
-                  "offset": 23540,
-                  "offsetEnd": 23570,
+                  "line": 240,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1226,8 +1089,7 @@
                   }
                 },
                 {
-                  "offset": 23593,
-                  "offsetEnd": 23613,
+                  "line": 241,
                   "lval": "persist_time",
                   "rval": {
                     "type": "string",
@@ -1240,9 +1102,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 23663,
-          "offsetEnd": 24024,
-          "sourceLine": 253,
+          "line": 246,
           "namespace": "default",
           "name": "enumerate",
           "bodyType": "classes",
@@ -1252,12 +1112,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 24020,
               "attributes": [
                 {
-                  "offset": 23880,
-                  "offsetEnd": 23914,
+                  "line": 254,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1270,8 +1127,7 @@
                   }
                 },
                 {
-                  "offset": 23947,
-                  "offsetEnd": 23977,
+                  "line": 255,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1284,8 +1140,7 @@
                   }
                 },
                 {
-                  "offset": 24000,
-                  "offsetEnd": 24020,
+                  "line": 256,
                   "lval": "persist_time",
                   "rval": {
                     "type": "string",
@@ -1298,9 +1153,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
-          "offset": 24067,
-          "offsetEnd": 24518,
-          "sourceLine": 265,
+          "line": 261,
           "namespace": "default",
           "name": "always",
           "bodyType": "classes",
@@ -1310,12 +1163,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 24514,
               "attributes": [
                 {
-                  "offset": 24240,
-                  "offsetEnd": 24270,
+                  "line": 266,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1328,8 +1178,7 @@
                   }
                 },
                 {
-                  "offset": 24303,
-                  "offsetEnd": 24329,
+                  "line": 267,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1342,8 +1191,7 @@
                   }
                 },
                 {
-                  "offset": 24363,
-                  "offsetEnd": 24390,
+                  "line": 268,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -1356,8 +1204,7 @@
                   }
                 },
                 {
-                  "offset": 24424,
-                  "offsetEnd": 24451,
+                  "line": 269,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -1370,8 +1217,7 @@
                   }
                 },
                 {
-                  "offset": 24486,
-                  "offsetEnd": 24514,
+                  "line": 270,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",

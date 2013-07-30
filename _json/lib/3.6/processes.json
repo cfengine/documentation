@@ -3,9 +3,7 @@
       "bodies": [
         {
           "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
-          "offset": 9132,
-          "offsetEnd": 9250,
-          "sourceLine": 55,
+          "line": 54,
           "namespace": "default",
           "name": "exclude_procs",
           "bodyType": "process_select",
@@ -15,12 +13,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9246,
               "attributes": [
                 {
-                  "offset": 9170,
-                  "offsetEnd": 9187,
+                  "line": 56,
                   "lval": "command",
                   "rval": {
                     "type": "string",
@@ -28,8 +23,7 @@
                   }
                 },
                 {
-                  "offset": 9218,
-                  "offsetEnd": 9246,
+                  "line": 57,
                   "lval": "process_result",
                   "rval": {
                     "type": "string",
@@ -42,9 +36,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
-          "offset": 9316,
-          "offsetEnd": 9498,
-          "sourceLine": 63,
+          "line": 62,
           "namespace": "default",
           "name": "days_older_than",
           "bodyType": "process_select",
@@ -54,12 +46,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9494,
               "attributes": [
                 {
-                  "offset": 9437,
-                  "offsetEnd": 9441,
+                  "line": 64,
                   "lval": "stime_range",
                   "rval": {
                     "type": "functionCall",
@@ -103,8 +92,7 @@
                   }
                 },
                 {
-                  "offset": 9469,
-                  "offsetEnd": 9494,
+                  "line": 65,
                   "lval": "process_result",
                   "rval": {
                     "type": "string",
@@ -117,9 +105,61 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
-          "offset": 9557,
-          "offsetEnd": 9691,
-          "sourceLine": 72,
+          "line": 70,
+          "namespace": "default",
+          "name": "by_owner",
+          "bodyType": "process_select",
+          "arguments": [
+            "u"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 74,
+                  "lval": "process_owner",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(u)"
+                      },
+                      {
+                        "type": "functionCall",
+                        "name": "canonify",
+                        "arguments": [
+                          {
+                            "type": "functionCall",
+                            "name": "getuid",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(u)"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 75,
+                  "lval": "process_result",
+                  "rval": {
+                    "type": "string",
+                    "value": "process_owner"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "line": 80,
           "namespace": "default",
           "name": "any_count",
           "bodyType": "process_count",
@@ -129,12 +169,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9687,
               "attributes": [
                 {
-                  "offset": 9596,
-                  "offsetEnd": 9616,
+                  "line": 83,
                   "lval": "match_range",
                   "rval": {
                     "type": "string",
@@ -142,8 +179,7 @@
                   }
                 },
                 {
-                  "offset": 9653,
-                  "offsetEnd": 9687,
+                  "line": 84,
                   "lval": "out_of_range_define",
                   "rval": {
                     "type": "list",
@@ -161,9 +197,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
-          "offset": 9766,
-          "offsetEnd": 9993,
-          "sourceLine": 80,
+          "line": 89,
           "namespace": "default",
           "name": "check_range",
           "bodyType": "process_count",
@@ -175,12 +209,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9989,
               "attributes": [
                 {
-                  "offset": 9859,
-                  "offsetEnd": 9888,
+                  "line": 91,
                   "lval": "match_range",
                   "rval": {
                     "type": "functionCall",
@@ -198,8 +229,7 @@
                   }
                 },
                 {
-                  "offset": 9940,
-                  "offsetEnd": 9989,
+                  "line": 92,
                   "lval": "out_of_range_define",
                   "rval": {
                     "type": "list",

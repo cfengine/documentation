@@ -2,32 +2,25 @@
       "bundles": [
         {
           "sourcePath": "../core/masterfiles/lib/3.6/paths.cf",
-          "offset": 28207,
-          "offsetEnd": 48653,
-          "sourceLine": 54,
+          "line": 50,
           "namespace": "default",
           "name": "paths",
           "bundleType": "common",
           "arguments": [],
           "promiseTypes": [
             {
-              "offset": 28586,
-              "offsetEnd": 47942,
+              "line": 55,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
-                  "offset": -1,
-                  "offsetEnd": 28841,
                   "promises": [
                     {
-                      "offset": 28796,
-                      "offsetEnd": 28841,
+                      "line": 62,
                       "promiser": "path[getfacl]",
                       "attributes": [
                         {
-                          "offset": 28813,
-                          "offsetEnd": 28841,
+                          "line": 62,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -40,17 +33,13 @@
                 },
                 {
                   "name": "aix",
-                  "offset": -1,
-                  "offsetEnd": 31038,
                   "promises": [
                     {
-                      "offset": 28918,
-                      "offsetEnd": 28959,
+                      "line": 66,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "offset": 28935,
-                          "offsetEnd": 28959,
+                          "line": 66,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -60,13 +49,11 @@
                       ]
                     },
                     {
-                      "offset": 29014,
-                      "offsetEnd": 29054,
+                      "line": 67,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "offset": 29031,
-                          "offsetEnd": 29054,
+                          "line": 67,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -76,13 +63,11 @@
                       ]
                     },
                     {
-                      "offset": 29106,
-                      "offsetEnd": 29143,
+                      "line": 68,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "offset": 29123,
-                          "offsetEnd": 29143,
+                          "line": 68,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -92,13 +77,11 @@
                       ]
                     },
                     {
-                      "offset": 29201,
-                      "offsetEnd": 29244,
+                      "line": 69,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "offset": 29218,
-                          "offsetEnd": 29244,
+                          "line": 69,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -108,13 +91,11 @@
                       ]
                     },
                     {
-                      "offset": 29312,
-                      "offsetEnd": 29365,
+                      "line": 70,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "offset": 29329,
-                          "offsetEnd": 29365,
+                          "line": 70,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -124,13 +105,11 @@
                       ]
                     },
                     {
-                      "offset": 29421,
-                      "offsetEnd": 29462,
+                      "line": 71,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "offset": 29438,
-                          "offsetEnd": 29462,
+                          "line": 71,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -140,13 +119,11 @@
                       ]
                     },
                     {
-                      "offset": 29517,
-                      "offsetEnd": 29557,
+                      "line": 72,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "offset": 29534,
-                          "offsetEnd": 29557,
+                          "line": 72,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -156,13 +133,11 @@
                       ]
                     },
                     {
-                      "offset": 29612,
-                      "offsetEnd": 29652,
+                      "line": 73,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "offset": 29629,
-                          "offsetEnd": 29652,
+                          "line": 73,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -172,13 +147,11 @@
                       ]
                     },
                     {
-                      "offset": 29709,
-                      "offsetEnd": 29751,
+                      "line": 74,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "offset": 29726,
-                          "offsetEnd": 29751,
+                          "line": 74,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -188,13 +161,11 @@
                       ]
                     },
                     {
-                      "offset": 29807,
-                      "offsetEnd": 29848,
+                      "line": 75,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "offset": 29824,
-                          "offsetEnd": 29848,
+                          "line": 75,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -204,13 +175,11 @@
                       ]
                     },
                     {
-                      "offset": 29905,
-                      "offsetEnd": 29947,
+                      "line": 76,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "offset": 29922,
-                          "offsetEnd": 29947,
+                          "line": 76,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -220,13 +189,11 @@
                       ]
                     },
                     {
-                      "offset": 30005,
-                      "offsetEnd": 30048,
+                      "line": 77,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "offset": 30022,
-                          "offsetEnd": 30048,
+                          "line": 77,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -236,13 +203,11 @@
                       ]
                     },
                     {
-                      "offset": 30105,
-                      "offsetEnd": 30147,
+                      "line": 78,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "offset": 30122,
-                          "offsetEnd": 30147,
+                          "line": 78,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -252,13 +217,11 @@
                       ]
                     },
                     {
-                      "offset": 30204,
-                      "offsetEnd": 30246,
+                      "line": 79,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "offset": 30221,
-                          "offsetEnd": 30246,
+                          "line": 79,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -268,13 +231,11 @@
                       ]
                     },
                     {
-                      "offset": 30301,
-                      "offsetEnd": 30341,
+                      "line": 80,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "offset": 30318,
-                          "offsetEnd": 30341,
+                          "line": 80,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -284,13 +245,11 @@
                       ]
                     },
                     {
-                      "offset": 30401,
-                      "offsetEnd": 30446,
+                      "line": 81,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "offset": 30418,
-                          "offsetEnd": 30446,
+                          "line": 81,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -300,13 +259,11 @@
                       ]
                     },
                     {
-                      "offset": 30503,
-                      "offsetEnd": 30545,
+                      "line": 82,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "offset": 30520,
-                          "offsetEnd": 30545,
+                          "line": 82,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -316,13 +273,11 @@
                       ]
                     },
                     {
-                      "offset": 30602,
-                      "offsetEnd": 30644,
+                      "line": 83,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "offset": 30619,
-                          "offsetEnd": 30644,
+                          "line": 83,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -332,13 +287,11 @@
                       ]
                     },
                     {
-                      "offset": 30703,
-                      "offsetEnd": 30747,
+                      "line": 84,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "offset": 30720,
-                          "offsetEnd": 30747,
+                          "line": 84,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -348,13 +301,11 @@
                       ]
                     },
                     {
-                      "offset": 30803,
-                      "offsetEnd": 30844,
+                      "line": 85,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "offset": 30820,
-                          "offsetEnd": 30844,
+                          "line": 85,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -364,13 +315,11 @@
                       ]
                     },
                     {
-                      "offset": 30901,
-                      "offsetEnd": 30943,
+                      "line": 86,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "offset": 30918,
-                          "offsetEnd": 30943,
+                          "line": 86,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -380,13 +329,11 @@
                       ]
                     },
                     {
-                      "offset": 30998,
-                      "offsetEnd": 31038,
+                      "line": 87,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "offset": 31015,
-                          "offsetEnd": 31038,
+                          "line": 87,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -399,17 +346,13 @@
                 },
                 {
                   "name": "freebsd|netbsd",
-                  "offset": -1,
-                  "offsetEnd": 33213,
                   "promises": [
                     {
-                      "offset": 31137,
-                      "offsetEnd": 31178,
+                      "line": 91,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "offset": 31154,
-                          "offsetEnd": 31178,
+                          "line": 91,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -419,13 +362,11 @@
                       ]
                     },
                     {
-                      "offset": 31233,
-                      "offsetEnd": 31273,
+                      "line": 92,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "offset": 31250,
-                          "offsetEnd": 31273,
+                          "line": 92,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -435,13 +376,11 @@
                       ]
                     },
                     {
-                      "offset": 31325,
-                      "offsetEnd": 31362,
+                      "line": 93,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "offset": 31342,
-                          "offsetEnd": 31362,
+                          "line": 93,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -451,13 +390,11 @@
                       ]
                     },
                     {
-                      "offset": 31420,
-                      "offsetEnd": 31463,
+                      "line": 94,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "offset": 31437,
-                          "offsetEnd": 31463,
+                          "line": 94,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -467,13 +404,11 @@
                       ]
                     },
                     {
-                      "offset": 31521,
-                      "offsetEnd": 31564,
+                      "line": 95,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "offset": 31538,
-                          "offsetEnd": 31564,
+                          "line": 95,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -483,13 +418,11 @@
                       ]
                     },
                     {
-                      "offset": 31620,
-                      "offsetEnd": 31661,
+                      "line": 96,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "offset": 31637,
-                          "offsetEnd": 31661,
+                          "line": 96,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -499,13 +432,11 @@
                       ]
                     },
                     {
-                      "offset": 31716,
-                      "offsetEnd": 31756,
+                      "line": 97,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "offset": 31733,
-                          "offsetEnd": 31756,
+                          "line": 97,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -515,13 +446,11 @@
                       ]
                     },
                     {
-                      "offset": 31807,
-                      "offsetEnd": 31843,
+                      "line": 98,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "offset": 31824,
-                          "offsetEnd": 31843,
+                          "line": 98,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -531,13 +460,11 @@
                       ]
                     },
                     {
-                      "offset": 31900,
-                      "offsetEnd": 31942,
+                      "line": 99,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "offset": 31917,
-                          "offsetEnd": 31942,
+                          "line": 99,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -547,13 +474,11 @@
                       ]
                     },
                     {
-                      "offset": 31998,
-                      "offsetEnd": 32039,
+                      "line": 100,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "offset": 32015,
-                          "offsetEnd": 32039,
+                          "line": 100,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -563,13 +488,11 @@
                       ]
                     },
                     {
-                      "offset": 32092,
-                      "offsetEnd": 32130,
+                      "line": 101,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "offset": 32109,
-                          "offsetEnd": 32130,
+                          "line": 101,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -579,13 +502,11 @@
                       ]
                     },
                     {
-                      "offset": 32188,
-                      "offsetEnd": 32231,
+                      "line": 102,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "offset": 32205,
-                          "offsetEnd": 32231,
+                          "line": 102,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -595,13 +516,11 @@
                       ]
                     },
                     {
-                      "offset": 32288,
-                      "offsetEnd": 32330,
+                      "line": 103,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "offset": 32305,
-                          "offsetEnd": 32330,
+                          "line": 103,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -611,13 +530,11 @@
                       ]
                     },
                     {
-                      "offset": 32387,
-                      "offsetEnd": 32429,
+                      "line": 104,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "offset": 32404,
-                          "offsetEnd": 32429,
+                          "line": 104,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -627,13 +544,11 @@
                       ]
                     },
                     {
-                      "offset": 32480,
-                      "offsetEnd": 32516,
+                      "line": 105,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "offset": 32497,
-                          "offsetEnd": 32516,
+                          "line": 105,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -643,13 +558,11 @@
                       ]
                     },
                     {
-                      "offset": 32576,
-                      "offsetEnd": 32621,
+                      "line": 106,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "offset": 32593,
-                          "offsetEnd": 32621,
+                          "line": 106,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -659,13 +572,11 @@
                       ]
                     },
                     {
-                      "offset": 32678,
-                      "offsetEnd": 32720,
+                      "line": 107,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "offset": 32695,
-                          "offsetEnd": 32720,
+                          "line": 107,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -675,13 +586,11 @@
                       ]
                     },
                     {
-                      "offset": 32777,
-                      "offsetEnd": 32819,
+                      "line": 108,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "offset": 32794,
-                          "offsetEnd": 32819,
+                          "line": 108,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -691,13 +600,11 @@
                       ]
                     },
                     {
-                      "offset": 32878,
-                      "offsetEnd": 32922,
+                      "line": 109,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "offset": 32895,
-                          "offsetEnd": 32922,
+                          "line": 109,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -707,13 +614,11 @@
                       ]
                     },
                     {
-                      "offset": 32978,
-                      "offsetEnd": 33019,
+                      "line": 110,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "offset": 32995,
-                          "offsetEnd": 33019,
+                          "line": 110,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -723,13 +628,11 @@
                       ]
                     },
                     {
-                      "offset": 33076,
-                      "offsetEnd": 33118,
+                      "line": 111,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "offset": 33093,
-                          "offsetEnd": 33118,
+                          "line": 111,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -739,13 +642,11 @@
                       ]
                     },
                     {
-                      "offset": 33173,
-                      "offsetEnd": 33213,
+                      "line": 112,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "offset": 33190,
-                          "offsetEnd": 33213,
+                          "line": 112,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -758,17 +659,13 @@
                 },
                 {
                   "name": "openbsd",
-                  "offset": -1,
-                  "offsetEnd": 35368,
                   "promises": [
                     {
-                      "offset": 33298,
-                      "offsetEnd": 33339,
+                      "line": 116,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "offset": 33315,
-                          "offsetEnd": 33339,
+                          "line": 116,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -778,13 +675,11 @@
                       ]
                     },
                     {
-                      "offset": 33394,
-                      "offsetEnd": 33434,
+                      "line": 117,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "offset": 33411,
-                          "offsetEnd": 33434,
+                          "line": 117,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -794,13 +689,11 @@
                       ]
                     },
                     {
-                      "offset": 33486,
-                      "offsetEnd": 33523,
+                      "line": 118,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "offset": 33503,
-                          "offsetEnd": 33523,
+                          "line": 118,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -810,13 +703,11 @@
                       ]
                     },
                     {
-                      "offset": 33577,
-                      "offsetEnd": 33616,
+                      "line": 119,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "offset": 33594,
-                          "offsetEnd": 33616,
+                          "line": 119,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -826,13 +717,11 @@
                       ]
                     },
                     {
-                      "offset": 33674,
-                      "offsetEnd": 33717,
+                      "line": 120,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "offset": 33691,
-                          "offsetEnd": 33717,
+                          "line": 120,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -842,13 +731,11 @@
                       ]
                     },
                     {
-                      "offset": 33773,
-                      "offsetEnd": 33814,
+                      "line": 121,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "offset": 33790,
-                          "offsetEnd": 33814,
+                          "line": 121,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -858,13 +745,11 @@
                       ]
                     },
                     {
-                      "offset": 33869,
-                      "offsetEnd": 33909,
+                      "line": 122,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "offset": 33886,
-                          "offsetEnd": 33909,
+                          "line": 122,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -874,13 +759,11 @@
                       ]
                     },
                     {
-                      "offset": 33960,
-                      "offsetEnd": 33996,
+                      "line": 123,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "offset": 33977,
-                          "offsetEnd": 33996,
+                          "line": 123,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -890,13 +773,11 @@
                       ]
                     },
                     {
-                      "offset": 34053,
-                      "offsetEnd": 34095,
+                      "line": 124,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "offset": 34070,
-                          "offsetEnd": 34095,
+                          "line": 124,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -906,13 +787,11 @@
                       ]
                     },
                     {
-                      "offset": 34152,
-                      "offsetEnd": 34194,
+                      "line": 125,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "offset": 34169,
-                          "offsetEnd": 34194,
+                          "line": 125,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -922,13 +801,11 @@
                       ]
                     },
                     {
-                      "offset": 34247,
-                      "offsetEnd": 34285,
+                      "line": 126,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "offset": 34264,
-                          "offsetEnd": 34285,
+                          "line": 126,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -938,13 +815,11 @@
                       ]
                     },
                     {
-                      "offset": 34343,
-                      "offsetEnd": 34386,
+                      "line": 127,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "offset": 34360,
-                          "offsetEnd": 34386,
+                          "line": 127,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -954,13 +829,11 @@
                       ]
                     },
                     {
-                      "offset": 34443,
-                      "offsetEnd": 34485,
+                      "line": 128,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "offset": 34460,
-                          "offsetEnd": 34485,
+                          "line": 128,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -970,13 +843,11 @@
                       ]
                     },
                     {
-                      "offset": 34542,
-                      "offsetEnd": 34584,
+                      "line": 129,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "offset": 34559,
-                          "offsetEnd": 34584,
+                          "line": 129,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -986,13 +857,11 @@
                       ]
                     },
                     {
-                      "offset": 34635,
-                      "offsetEnd": 34671,
+                      "line": 130,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "offset": 34652,
-                          "offsetEnd": 34671,
+                          "line": 130,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1002,13 +871,11 @@
                       ]
                     },
                     {
-                      "offset": 34731,
-                      "offsetEnd": 34776,
+                      "line": 131,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "offset": 34748,
-                          "offsetEnd": 34776,
+                          "line": 131,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1018,13 +885,11 @@
                       ]
                     },
                     {
-                      "offset": 34833,
-                      "offsetEnd": 34875,
+                      "line": 132,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "offset": 34850,
-                          "offsetEnd": 34875,
+                          "line": 132,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1034,13 +899,11 @@
                       ]
                     },
                     {
-                      "offset": 34932,
-                      "offsetEnd": 34974,
+                      "line": 133,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "offset": 34949,
-                          "offsetEnd": 34974,
+                          "line": 133,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1050,13 +913,11 @@
                       ]
                     },
                     {
-                      "offset": 35033,
-                      "offsetEnd": 35077,
+                      "line": 134,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "offset": 35050,
-                          "offsetEnd": 35077,
+                          "line": 134,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1066,13 +927,11 @@
                       ]
                     },
                     {
-                      "offset": 35133,
-                      "offsetEnd": 35174,
+                      "line": 135,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "offset": 35150,
-                          "offsetEnd": 35174,
+                          "line": 135,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1082,13 +941,11 @@
                       ]
                     },
                     {
-                      "offset": 35231,
-                      "offsetEnd": 35273,
+                      "line": 136,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "offset": 35248,
-                          "offsetEnd": 35273,
+                          "line": 136,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1098,13 +955,11 @@
                       ]
                     },
                     {
-                      "offset": 35328,
-                      "offsetEnd": 35368,
+                      "line": 137,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "offset": 35345,
-                          "offsetEnd": 35368,
+                          "line": 137,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1117,17 +972,13 @@
                 },
                 {
                   "name": "solaris",
-                  "offset": -1,
-                  "offsetEnd": 37802,
                   "promises": [
                     {
-                      "offset": 35453,
-                      "offsetEnd": 35494,
+                      "line": 141,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "offset": 35470,
-                          "offsetEnd": 35494,
+                          "line": 141,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1137,13 +988,11 @@
                       ]
                     },
                     {
-                      "offset": 35549,
-                      "offsetEnd": 35589,
+                      "line": 142,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "offset": 35566,
-                          "offsetEnd": 35589,
+                          "line": 142,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1153,13 +1002,11 @@
                       ]
                     },
                     {
-                      "offset": 35645,
-                      "offsetEnd": 35686,
+                      "line": 143,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "offset": 35662,
-                          "offsetEnd": 35686,
+                          "line": 143,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1169,13 +1016,11 @@
                       ]
                     },
                     {
-                      "offset": 35744,
-                      "offsetEnd": 35787,
+                      "line": 144,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "offset": 35761,
-                          "offsetEnd": 35787,
+                          "line": 144,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1185,13 +1030,11 @@
                       ]
                     },
                     {
-                      "offset": 35855,
-                      "offsetEnd": 35908,
+                      "line": 145,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "offset": 35872,
-                          "offsetEnd": 35908,
+                          "line": 145,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1201,13 +1044,11 @@
                       ]
                     },
                     {
-                      "offset": 35964,
-                      "offsetEnd": 36005,
+                      "line": 146,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "offset": 35981,
-                          "offsetEnd": 36005,
+                          "line": 146,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1217,13 +1058,11 @@
                       ]
                     },
                     {
-                      "offset": 36060,
-                      "offsetEnd": 36100,
+                      "line": 147,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "offset": 36077,
-                          "offsetEnd": 36100,
+                          "line": 147,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1233,13 +1072,11 @@
                       ]
                     },
                     {
-                      "offset": 36155,
-                      "offsetEnd": 36195,
+                      "line": 148,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "offset": 36172,
-                          "offsetEnd": 36195,
+                          "line": 148,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1249,13 +1086,11 @@
                       ]
                     },
                     {
-                      "offset": 36252,
-                      "offsetEnd": 36294,
+                      "line": 149,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "offset": 36269,
-                          "offsetEnd": 36294,
+                          "line": 149,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1265,13 +1100,11 @@
                       ]
                     },
                     {
-                      "offset": 36351,
-                      "offsetEnd": 36393,
+                      "line": 150,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "offset": 36368,
-                          "offsetEnd": 36393,
+                          "line": 150,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1281,13 +1114,11 @@
                       ]
                     },
                     {
-                      "offset": 36450,
-                      "offsetEnd": 36492,
+                      "line": 151,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "offset": 36467,
-                          "offsetEnd": 36492,
+                          "line": 151,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1297,13 +1128,11 @@
                       ]
                     },
                     {
-                      "offset": 36550,
-                      "offsetEnd": 36593,
+                      "line": 152,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "offset": 36567,
-                          "offsetEnd": 36593,
+                          "line": 152,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1313,13 +1142,11 @@
                       ]
                     },
                     {
-                      "offset": 36650,
-                      "offsetEnd": 36692,
+                      "line": 153,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "offset": 36667,
-                          "offsetEnd": 36692,
+                          "line": 153,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1329,13 +1156,11 @@
                       ]
                     },
                     {
-                      "offset": 36749,
-                      "offsetEnd": 36791,
+                      "line": 154,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "offset": 36766,
-                          "offsetEnd": 36791,
+                          "line": 154,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1345,13 +1170,11 @@
                       ]
                     },
                     {
-                      "offset": 36846,
-                      "offsetEnd": 36886,
+                      "line": 155,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "offset": 36863,
-                          "offsetEnd": 36886,
+                          "line": 155,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1361,13 +1184,11 @@
                       ]
                     },
                     {
-                      "offset": 36946,
-                      "offsetEnd": 36991,
+                      "line": 156,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "offset": 36963,
-                          "offsetEnd": 36991,
+                          "line": 156,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1377,13 +1198,11 @@
                       ]
                     },
                     {
-                      "offset": 37048,
-                      "offsetEnd": 37090,
+                      "line": 157,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "offset": 37065,
-                          "offsetEnd": 37090,
+                          "line": 157,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1393,13 +1212,11 @@
                       ]
                     },
                     {
-                      "offset": 37147,
-                      "offsetEnd": 37189,
+                      "line": 158,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "offset": 37164,
-                          "offsetEnd": 37189,
+                          "line": 158,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1409,13 +1226,11 @@
                       ]
                     },
                     {
-                      "offset": 37248,
-                      "offsetEnd": 37292,
+                      "line": 159,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "offset": 37265,
-                          "offsetEnd": 37292,
+                          "line": 159,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1425,13 +1240,11 @@
                       ]
                     },
                     {
-                      "offset": 37348,
-                      "offsetEnd": 37389,
+                      "line": 160,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "offset": 37365,
-                          "offsetEnd": 37389,
+                          "line": 160,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1441,13 +1254,11 @@
                       ]
                     },
                     {
-                      "offset": 37446,
-                      "offsetEnd": 37488,
+                      "line": 161,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "offset": 37463,
-                          "offsetEnd": 37488,
+                          "line": 161,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1457,13 +1268,11 @@
                       ]
                     },
                     {
-                      "offset": 37543,
-                      "offsetEnd": 37583,
+                      "line": 162,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "offset": 37560,
-                          "offsetEnd": 37583,
+                          "line": 162,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1473,13 +1282,11 @@
                       ]
                     },
                     {
-                      "offset": 37655,
-                      "offsetEnd": 37697,
+                      "line": 164,
                       "promiser": "path[svcs]",
                       "attributes": [
                         {
-                          "offset": 37672,
-                          "offsetEnd": 37697,
+                          "line": 164,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1489,13 +1296,11 @@
                       ]
                     },
                     {
-                      "offset": 37757,
-                      "offsetEnd": 37802,
+                      "line": 165,
                       "promiser": "path[svcadm]",
                       "attributes": [
                         {
-                          "offset": 37774,
-                          "offsetEnd": 37802,
+                          "line": 165,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1508,17 +1313,13 @@
                 },
                 {
                   "name": "redhat",
-                  "offset": -1,
-                  "offsetEnd": 42283,
                   "promises": [
                     {
-                      "offset": 37886,
-                      "offsetEnd": 37928,
+                      "line": 169,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "offset": 37908,
-                          "offsetEnd": 37928,
+                          "line": 169,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1528,13 +1329,11 @@
                       ]
                     },
                     {
-                      "offset": 37988,
-                      "offsetEnd": 38033,
+                      "line": 170,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "offset": 38010,
-                          "offsetEnd": 38033,
+                          "line": 170,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1544,13 +1343,11 @@
                       ]
                     },
                     {
-                      "offset": 38090,
-                      "offsetEnd": 38132,
+                      "line": 171,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "offset": 38112,
-                          "offsetEnd": 38132,
+                          "line": 171,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1560,13 +1357,11 @@
                       ]
                     },
                     {
-                      "offset": 38195,
-                      "offsetEnd": 38243,
+                      "line": 172,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "offset": 38217,
-                          "offsetEnd": 38243,
+                          "line": 172,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1576,13 +1371,11 @@
                       ]
                     },
                     {
-                      "offset": 38311,
-                      "offsetEnd": 38364,
+                      "line": 173,
                       "promiser": "path[createrepo]",
                       "attributes": [
                         {
-                          "offset": 38333,
-                          "offsetEnd": 38364,
+                          "line": 173,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1592,13 +1385,11 @@
                       ]
                     },
                     {
-                      "offset": 38429,
-                      "offsetEnd": 38479,
+                      "line": 174,
                       "promiser": "path[crontab]",
                       "attributes": [
                         {
-                          "offset": 38451,
-                          "offsetEnd": 38479,
+                          "line": 174,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1608,13 +1399,11 @@
                       ]
                     },
                     {
-                      "offset": 38543,
-                      "offsetEnd": 38592,
+                      "line": 175,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "offset": 38565,
-                          "offsetEnd": 38592,
+                          "line": 175,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1624,13 +1413,11 @@
                       ]
                     },
                     {
-                      "offset": 38649,
-                      "offsetEnd": 38691,
+                      "line": 176,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "offset": 38671,
-                          "offsetEnd": 38691,
+                          "line": 176,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1640,13 +1427,11 @@
                       ]
                     },
                     {
-                      "offset": 38751,
-                      "offsetEnd": 38796,
+                      "line": 177,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "offset": 38773,
-                          "offsetEnd": 38796,
+                          "line": 177,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1656,13 +1441,11 @@
                       ]
                     },
                     {
-                      "offset": 38852,
-                      "offsetEnd": 38893,
+                      "line": 178,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "offset": 38874,
-                          "offsetEnd": 38893,
+                          "line": 178,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1672,13 +1455,11 @@
                       ]
                     },
                     {
-                      "offset": 38955,
-                      "offsetEnd": 39002,
+                      "line": 179,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "offset": 38977,
-                          "offsetEnd": 39002,
+                          "line": 179,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1688,13 +1469,11 @@
                       ]
                     },
                     {
-                      "offset": 39063,
-                      "offsetEnd": 39109,
+                      "line": 180,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "offset": 39085,
-                          "offsetEnd": 39109,
+                          "line": 180,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1704,13 +1483,11 @@
                       ]
                     },
                     {
-                      "offset": 39173,
-                      "offsetEnd": 39222,
+                      "line": 181,
                       "promiser": "path[domainname]",
                       "attributes": [
                         {
-                          "offset": 39195,
-                          "offsetEnd": 39222,
+                          "line": 181,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1720,13 +1497,11 @@
                       ]
                     },
                     {
-                      "offset": 39280,
-                      "offsetEnd": 39323,
+                      "line": 182,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "offset": 39302,
-                          "offsetEnd": 39323,
+                          "line": 182,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1736,13 +1511,11 @@
                       ]
                     },
                     {
-                      "offset": 39382,
-                      "offsetEnd": 39426,
+                      "line": 183,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "offset": 39404,
-                          "offsetEnd": 39426,
+                          "line": 183,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1752,13 +1525,11 @@
                       ]
                     },
                     {
-                      "offset": 39488,
-                      "offsetEnd": 39535,
+                      "line": 184,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "offset": 39510,
-                          "offsetEnd": 39535,
+                          "line": 184,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1768,13 +1539,11 @@
                       ]
                     },
                     {
-                      "offset": 39593,
-                      "offsetEnd": 39636,
+                      "line": 185,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "offset": 39615,
-                          "offsetEnd": 39636,
+                          "line": 185,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1784,13 +1553,11 @@
                       ]
                     },
                     {
-                      "offset": 39698,
-                      "offsetEnd": 39745,
+                      "line": 186,
                       "promiser": "path[hostname]",
                       "attributes": [
                         {
-                          "offset": 39720,
-                          "offsetEnd": 39745,
+                          "line": 186,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1800,13 +1567,11 @@
                       ]
                     },
                     {
-                      "offset": 39804,
-                      "offsetEnd": 39848,
+                      "line": 187,
                       "promiser": "path[init]",
                       "attributes": [
                         {
-                          "offset": 39826,
-                          "offsetEnd": 39848,
+                          "line": 187,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1816,13 +1581,11 @@
                       ]
                     },
                     {
-                      "offset": 39911,
-                      "offsetEnd": 39959,
+                      "line": 188,
                       "promiser": "path[iptables]",
                       "attributes": [
                         {
-                          "offset": 39933,
-                          "offsetEnd": 39959,
+                          "line": 188,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1832,13 +1595,11 @@
                       ]
                     },
                     {
-                      "offset": 40027,
-                      "offsetEnd": 40080,
+                      "line": 189,
                       "promiser": "path[iptables_save]",
                       "attributes": [
                         {
-                          "offset": 40049,
-                          "offsetEnd": 40080,
+                          "line": 189,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1848,13 +1609,11 @@
                       ]
                     },
                     {
-                      "offset": 40136,
-                      "offsetEnd": 40177,
+                      "line": 190,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "offset": 40158,
-                          "offsetEnd": 40177,
+                          "line": 190,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1864,13 +1623,11 @@
                       ]
                     },
                     {
-                      "offset": 40238,
-                      "offsetEnd": 40284,
+                      "line": 191,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "offset": 40260,
-                          "offsetEnd": 40284,
+                          "line": 191,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1880,13 +1637,11 @@
                       ]
                     },
                     {
-                      "offset": 40346,
-                      "offsetEnd": 40393,
+                      "line": 192,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "offset": 40368,
-                          "offsetEnd": 40393,
+                          "line": 192,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1896,13 +1651,11 @@
                       ]
                     },
                     {
-                      "offset": 40455,
-                      "offsetEnd": 40502,
+                      "line": 193,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "offset": 40477,
-                          "offsetEnd": 40502,
+                          "line": 193,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1912,13 +1665,11 @@
                       ]
                     },
                     {
-                      "offset": 40566,
-                      "offsetEnd": 40615,
+                      "line": 194,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "offset": 40588,
-                          "offsetEnd": 40615,
+                          "line": 194,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1928,13 +1679,11 @@
                       ]
                     },
                     {
-                      "offset": 40672,
-                      "offsetEnd": 40714,
+                      "line": 195,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "offset": 40694,
-                          "offsetEnd": 40714,
+                          "line": 195,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1944,13 +1693,11 @@
                       ]
                     },
                     {
-                      "offset": 40772,
-                      "offsetEnd": 40815,
+                      "line": 196,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "offset": 40794,
-                          "offsetEnd": 40815,
+                          "line": 196,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1960,13 +1707,11 @@
                       ]
                     },
                     {
-                      "offset": 40876,
-                      "offsetEnd": 40922,
+                      "line": 197,
                       "promiser": "path[sysctl]",
                       "attributes": [
                         {
-                          "offset": 40898,
-                          "offsetEnd": 40922,
+                          "line": 197,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1976,13 +1721,11 @@
                       ]
                     },
                     {
-                      "offset": 40984,
-                      "offsetEnd": 41031,
+                      "line": 198,
                       "promiser": "path[test]",
                       "attributes": [
                         {
-                          "offset": 41006,
-                          "offsetEnd": 41031,
+                          "line": 198,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1992,13 +1735,11 @@
                       ]
                     },
                     {
-                      "offset": 41091,
-                      "offsetEnd": 41136,
+                      "line": 199,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "offset": 41113,
-                          "offsetEnd": 41136,
+                          "line": 199,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2008,13 +1749,11 @@
                       ]
                     },
                     {
-                      "offset": 41212,
-                      "offsetEnd": 41257,
+                      "line": 202,
                       "promiser": "path[chkconfig]",
                       "attributes": [
                         {
-                          "offset": 41230,
-                          "offsetEnd": 41257,
+                          "line": 202,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2024,13 +1763,11 @@
                       ]
                     },
                     {
-                      "offset": 41320,
-                      "offsetEnd": 41368,
+                      "line": 203,
                       "promiser": "path[groupadd]",
                       "attributes": [
                         {
-                          "offset": 41338,
-                          "offsetEnd": 41368,
+                          "line": 203,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2040,13 +1777,11 @@
                       ]
                     },
                     {
-                      "offset": 41431,
-                      "offsetEnd": 41479,
+                      "line": 204,
                       "promiser": "path[groupdel]",
                       "attributes": [
                         {
-                          "offset": 41449,
-                          "offsetEnd": 41479,
+                          "line": 204,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2056,13 +1791,11 @@
                       ]
                     },
                     {
-                      "offset": 41538,
-                      "offsetEnd": 41582,
+                      "line": 205,
                       "promiser": "path[ifconfig]",
                       "attributes": [
                         {
-                          "offset": 41556,
-                          "offsetEnd": 41582,
+                          "line": 205,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2072,13 +1805,11 @@
                       ]
                     },
                     {
-                      "offset": 41635,
-                      "offsetEnd": 41673,
+                      "line": 206,
                       "promiser": "path[ip]",
                       "attributes": [
                         {
-                          "offset": 41653,
-                          "offsetEnd": 41673,
+                          "line": 206,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2088,13 +1819,11 @@
                       ]
                     },
                     {
-                      "offset": 41726,
-                      "offsetEnd": 41764,
+                      "line": 207,
                       "promiser": "path[rpm]",
                       "attributes": [
                         {
-                          "offset": 41744,
-                          "offsetEnd": 41764,
+                          "line": 207,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2104,13 +1833,11 @@
                       ]
                     },
                     {
-                      "offset": 41822,
-                      "offsetEnd": 41865,
+                      "line": 208,
                       "promiser": "path[service]",
                       "attributes": [
                         {
-                          "offset": 41840,
-                          "offsetEnd": 41865,
+                          "line": 208,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2120,13 +1847,11 @@
                       ]
                     },
                     {
-                      "offset": 41923,
-                      "offsetEnd": 41966,
+                      "line": 209,
                       "promiser": "path[svc]",
                       "attributes": [
                         {
-                          "offset": 41941,
-                          "offsetEnd": 41966,
+                          "line": 209,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2136,13 +1861,11 @@
                       ]
                     },
                     {
-                      "offset": 42028,
-                      "offsetEnd": 42075,
+                      "line": 210,
                       "promiser": "path[useradd]",
                       "attributes": [
                         {
-                          "offset": 42046,
-                          "offsetEnd": 42075,
+                          "line": 210,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2152,13 +1875,11 @@
                       ]
                     },
                     {
-                      "offset": 42137,
-                      "offsetEnd": 42184,
+                      "line": 211,
                       "promiser": "path[userdel]",
                       "attributes": [
                         {
-                          "offset": 42155,
-                          "offsetEnd": 42184,
+                          "line": 211,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2168,13 +1889,11 @@
                       ]
                     },
                     {
-                      "offset": 42241,
-                      "offsetEnd": 42283,
+                      "line": 212,
                       "promiser": "path[yum]",
                       "attributes": [
                         {
-                          "offset": 42259,
-                          "offsetEnd": 42283,
+                          "line": 212,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2187,17 +1906,13 @@
                 },
                 {
                   "name": "debian",
-                  "offset": -1,
-                  "offsetEnd": 47709,
                   "promises": [
                     {
-                      "offset": 42371,
-                      "offsetEnd": 42417,
+                      "line": 216,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "offset": 42393,
-                          "offsetEnd": 42417,
+                          "line": 216,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2207,13 +1922,11 @@
                       ]
                     },
                     {
-                      "offset": 42477,
-                      "offsetEnd": 42522,
+                      "line": 217,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "offset": 42499,
-                          "offsetEnd": 42522,
+                          "line": 217,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2223,13 +1936,11 @@
                       ]
                     },
                     {
-                      "offset": 42579,
-                      "offsetEnd": 42621,
+                      "line": 218,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "offset": 42601,
-                          "offsetEnd": 42621,
+                          "line": 218,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2239,13 +1950,11 @@
                       ]
                     },
                     {
-                      "offset": 42685,
-                      "offsetEnd": 42734,
+                      "line": 219,
                       "promiser": "path[chkconfig]",
                       "attributes": [
                         {
-                          "offset": 42707,
-                          "offsetEnd": 42734,
+                          "line": 219,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2255,13 +1964,11 @@
                       ]
                     },
                     {
-                      "offset": 42797,
-                      "offsetEnd": 42845,
+                      "line": 220,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "offset": 42819,
-                          "offsetEnd": 42845,
+                          "line": 220,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2271,13 +1978,11 @@
                       ]
                     },
                     {
-                      "offset": 42913,
-                      "offsetEnd": 42966,
+                      "line": 221,
                       "promiser": "path[createrepo]",
                       "attributes": [
                         {
-                          "offset": 42935,
-                          "offsetEnd": 42966,
+                          "line": 221,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2287,13 +1992,11 @@
                       ]
                     },
                     {
-                      "offset": 43031,
-                      "offsetEnd": 43081,
+                      "line": 222,
                       "promiser": "path[crontab]",
                       "attributes": [
                         {
-                          "offset": 43053,
-                          "offsetEnd": 43081,
+                          "line": 222,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2303,13 +2006,11 @@
                       ]
                     },
                     {
-                      "offset": 43154,
-                      "offsetEnd": 43212,
+                      "line": 223,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "offset": 43176,
-                          "offsetEnd": 43212,
+                          "line": 223,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2319,13 +2020,11 @@
                       ]
                     },
                     {
-                      "offset": 43273,
-                      "offsetEnd": 43319,
+                      "line": 224,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "offset": 43295,
-                          "offsetEnd": 43319,
+                          "line": 224,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2335,13 +2034,11 @@
                       ]
                     },
                     {
-                      "offset": 43379,
-                      "offsetEnd": 43424,
+                      "line": 225,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "offset": 43401,
-                          "offsetEnd": 43424,
+                          "line": 225,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2351,13 +2048,11 @@
                       ]
                     },
                     {
-                      "offset": 43480,
-                      "offsetEnd": 43521,
+                      "line": 226,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "offset": 43502,
-                          "offsetEnd": 43521,
+                          "line": 226,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2367,13 +2062,11 @@
                       ]
                     },
                     {
-                      "offset": 43583,
-                      "offsetEnd": 43630,
+                      "line": 227,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "offset": 43605,
-                          "offsetEnd": 43630,
+                          "line": 227,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2383,13 +2076,11 @@
                       ]
                     },
                     {
-                      "offset": 43691,
-                      "offsetEnd": 43737,
+                      "line": 228,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "offset": 43713,
-                          "offsetEnd": 43737,
+                          "line": 228,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2399,13 +2090,11 @@
                       ]
                     },
                     {
-                      "offset": 43805,
-                      "offsetEnd": 43858,
+                      "line": 229,
                       "promiser": "path[dmidecode]",
                       "attributes": [
                         {
-                          "offset": 43827,
-                          "offsetEnd": 43858,
+                          "line": 229,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2415,13 +2104,11 @@
                       ]
                     },
                     {
-                      "offset": 43922,
-                      "offsetEnd": 43971,
+                      "line": 230,
                       "promiser": "path[domainname]",
                       "attributes": [
                         {
-                          "offset": 43944,
-                          "offsetEnd": 43971,
+                          "line": 230,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2431,13 +2118,11 @@
                       ]
                     },
                     {
-                      "offset": 44029,
-                      "offsetEnd": 44072,
+                      "line": 231,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "offset": 44051,
-                          "offsetEnd": 44072,
+                          "line": 231,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2447,13 +2132,11 @@
                       ]
                     },
                     {
-                      "offset": 44131,
-                      "offsetEnd": 44175,
+                      "line": 232,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "offset": 44153,
-                          "offsetEnd": 44175,
+                          "line": 232,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2463,13 +2146,11 @@
                       ]
                     },
                     {
-                      "offset": 44237,
-                      "offsetEnd": 44284,
+                      "line": 233,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "offset": 44259,
-                          "offsetEnd": 44284,
+                          "line": 233,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2479,13 +2160,11 @@
                       ]
                     },
                     {
-                      "offset": 44342,
-                      "offsetEnd": 44385,
+                      "line": 234,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "offset": 44364,
-                          "offsetEnd": 44385,
+                          "line": 234,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2495,13 +2174,11 @@
                       ]
                     },
                     {
-                      "offset": 44447,
-                      "offsetEnd": 44494,
+                      "line": 235,
                       "promiser": "path[hostname]",
                       "attributes": [
                         {
-                          "offset": 44469,
-                          "offsetEnd": 44494,
+                          "line": 235,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2511,13 +2188,11 @@
                       ]
                     },
                     {
-                      "offset": 44550,
-                      "offsetEnd": 44591,
+                      "line": 236,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "offset": 44572,
-                          "offsetEnd": 44591,
+                          "line": 236,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2527,13 +2202,11 @@
                       ]
                     },
                     {
-                      "offset": 44650,
-                      "offsetEnd": 44694,
+                      "line": 237,
                       "promiser": "path[init]",
                       "attributes": [
                         {
-                          "offset": 44672,
-                          "offsetEnd": 44694,
+                          "line": 237,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2543,13 +2216,11 @@
                       ]
                     },
                     {
-                      "offset": 44757,
-                      "offsetEnd": 44805,
+                      "line": 238,
                       "promiser": "path[iptables]",
                       "attributes": [
                         {
-                          "offset": 44779,
-                          "offsetEnd": 44805,
+                          "line": 238,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2559,13 +2230,11 @@
                       ]
                     },
                     {
-                      "offset": 44873,
-                      "offsetEnd": 44926,
+                      "line": 239,
                       "promiser": "path[iptables_save]",
                       "attributes": [
                         {
-                          "offset": 44895,
-                          "offsetEnd": 44926,
+                          "line": 239,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2575,13 +2244,11 @@
                       ]
                     },
                     {
-                      "offset": 44987,
-                      "offsetEnd": 45033,
+                      "line": 240,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "offset": 45009,
-                          "offsetEnd": 45033,
+                          "line": 240,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2591,13 +2258,11 @@
                       ]
                     },
                     {
-                      "offset": 45091,
-                      "offsetEnd": 45134,
+                      "line": 241,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "offset": 45113,
-                          "offsetEnd": 45134,
+                          "line": 241,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2607,13 +2272,11 @@
                       ]
                     },
                     {
-                      "offset": 45196,
-                      "offsetEnd": 45243,
+                      "line": 242,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "offset": 45218,
-                          "offsetEnd": 45243,
+                          "line": 242,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2623,13 +2286,11 @@
                       ]
                     },
                     {
-                      "offset": 45307,
-                      "offsetEnd": 45356,
+                      "line": 243,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "offset": 45329,
-                          "offsetEnd": 45356,
+                          "line": 243,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2639,13 +2300,11 @@
                       ]
                     },
                     {
-                      "offset": 45413,
-                      "offsetEnd": 45455,
+                      "line": 244,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "offset": 45435,
-                          "offsetEnd": 45455,
+                          "line": 244,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2655,13 +2314,11 @@
                       ]
                     },
                     {
-                      "offset": 45517,
-                      "offsetEnd": 45564,
+                      "line": 245,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "offset": 45539,
-                          "offsetEnd": 45564,
+                          "line": 245,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2671,13 +2328,11 @@
                       ]
                     },
                     {
-                      "offset": 45625,
-                      "offsetEnd": 45671,
+                      "line": 246,
                       "promiser": "path[sysctl]",
                       "attributes": [
                         {
-                          "offset": 45647,
-                          "offsetEnd": 45671,
+                          "line": 246,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2687,13 +2342,11 @@
                       ]
                     },
                     {
-                      "offset": 45733,
-                      "offsetEnd": 45780,
+                      "line": 247,
                       "promiser": "path[test]",
                       "attributes": [
                         {
-                          "offset": 45755,
-                          "offsetEnd": 45780,
+                          "line": 247,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2703,13 +2356,11 @@
                       ]
                     },
                     {
-                      "offset": 45840,
-                      "offsetEnd": 45885,
+                      "line": 248,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "offset": 45862,
-                          "offsetEnd": 45885,
+                          "line": 248,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2719,13 +2370,11 @@
                       ]
                     },
                     {
-                      "offset": 45974,
-                      "offsetEnd": 46032,
+                      "line": 251,
                       "promiser": "path[apt_cache]",
                       "attributes": [
                         {
-                          "offset": 46002,
-                          "offsetEnd": 46032,
+                          "line": 251,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2735,13 +2384,11 @@
                       ]
                     },
                     {
-                      "offset": 46106,
-                      "offsetEnd": 46165,
+                      "line": 252,
                       "promiser": "path[apt_config]",
                       "attributes": [
                         {
-                          "offset": 46134,
-                          "offsetEnd": 46165,
+                          "line": 252,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2751,13 +2398,11 @@
                       ]
                     },
                     {
-                      "offset": 46236,
-                      "offsetEnd": 46292,
+                      "line": 253,
                       "promiser": "path[apt_get]",
                       "attributes": [
                         {
-                          "offset": 46264,
-                          "offsetEnd": 46292,
+                          "line": 253,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2767,13 +2412,11 @@
                       ]
                     },
                     {
-                      "offset": 46363,
-                      "offsetEnd": 46419,
+                      "line": 254,
                       "promiser": "path[apt_key]",
                       "attributes": [
                         {
-                          "offset": 46391,
-                          "offsetEnd": 46419,
+                          "line": 254,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2783,13 +2426,11 @@
                       ]
                     },
                     {
-                      "offset": 46491,
-                      "offsetEnd": 46548,
+                      "line": 255,
                       "promiser": "path[aptitude]",
                       "attributes": [
                         {
-                          "offset": 46519,
-                          "offsetEnd": 46548,
+                          "line": 255,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2799,13 +2440,11 @@
                       ]
                     },
                     {
-                      "offset": 46616,
-                      "offsetEnd": 46669,
+                      "line": 256,
                       "promiser": "path[dpkg]",
                       "attributes": [
                         {
-                          "offset": 46644,
-                          "offsetEnd": 46669,
+                          "line": 256,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2815,13 +2454,11 @@
                       ]
                     },
                     {
-                      "offset": 46742,
-                      "offsetEnd": 46800,
+                      "line": 257,
                       "promiser": "path[groupadd]",
                       "attributes": [
                         {
-                          "offset": 46770,
-                          "offsetEnd": 46800,
+                          "line": 257,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2831,13 +2468,11 @@
                       ]
                     },
                     {
-                      "offset": 46869,
-                      "offsetEnd": 46923,
+                      "line": 258,
                       "promiser": "path[ifconfig]",
                       "attributes": [
                         {
-                          "offset": 46897,
-                          "offsetEnd": 46923,
+                          "line": 258,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2847,13 +2482,11 @@
                       ]
                     },
                     {
-                      "offset": 46986,
-                      "offsetEnd": 47034,
+                      "line": 259,
                       "promiser": "path[ip]",
                       "attributes": [
                         {
-                          "offset": 47014,
-                          "offsetEnd": 47034,
+                          "line": 259,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2863,13 +2496,11 @@
                       ]
                     },
                     {
-                      "offset": 47106,
-                      "offsetEnd": 47163,
+                      "line": 260,
                       "promiser": "path[service]",
                       "attributes": [
                         {
-                          "offset": 47134,
-                          "offsetEnd": 47163,
+                          "line": 260,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2879,13 +2510,11 @@
                       ]
                     },
                     {
-                      "offset": 47235,
-                      "offsetEnd": 47292,
+                      "line": 261,
                       "promiser": "path[svc]",
                       "attributes": [
                         {
-                          "offset": 47263,
-                          "offsetEnd": 47292,
+                          "line": 261,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2895,13 +2524,11 @@
                       ]
                     },
                     {
-                      "offset": 47375,
-                      "offsetEnd": 47443,
+                      "line": 262,
                       "promiser": "path[update_alternatives]",
                       "attributes": [
                         {
-                          "offset": 47403,
-                          "offsetEnd": 47443,
+                          "line": 262,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2911,13 +2538,11 @@
                       ]
                     },
                     {
-                      "offset": 47519,
-                      "offsetEnd": 47580,
+                      "line": 263,
                       "promiser": "path[update_rc_d]",
                       "attributes": [
                         {
-                          "offset": 47547,
-                          "offsetEnd": 47580,
+                          "line": 263,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2927,13 +2552,11 @@
                       ]
                     },
                     {
-                      "offset": 47652,
-                      "offsetEnd": 47709,
+                      "line": 264,
                       "promiser": "path[useradd]",
                       "attributes": [
                         {
-                          "offset": 47680,
-                          "offsetEnd": 47709,
+                          "line": 264,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2946,17 +2569,13 @@
                 },
                 {
                   "name": "any",
-                  "offset": -1,
-                  "offsetEnd": 47942,
                   "promises": [
                     {
-                      "offset": 47788,
-                      "offsetEnd": 47831,
+                      "line": 268,
                       "promiser": "all_paths",
                       "attributes": [
                         {
-                          "offset": 47813,
-                          "offsetEnd": 47831,
+                          "line": 268,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -2972,13 +2591,11 @@
                       ]
                     },
                     {
-                      "offset": 47894,
-                      "offsetEnd": 47942,
+                      "line": 269,
                       "promiser": "$(all_paths)",
                       "attributes": [
                         {
-                          "offset": 47909,
-                          "offsetEnd": 47942,
+                          "line": 269,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2992,23 +2609,18 @@
               ]
             },
             {
-              "offset": 47957,
-              "offsetEnd": 48649,
+              "line": 271,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
-                  "offset": -1,
-                  "offsetEnd": 48649,
                   "promises": [
                     {
-                      "offset": 48005,
-                      "offsetEnd": 48269,
+                      "line": 272,
                       "promiser": "_stdlib_has_path_$(all_paths)",
                       "attributes": [
                         {
-                          "offset": 48104,
-                          "offsetEnd": 48130,
+                          "line": 273,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -3022,8 +2634,7 @@
                           }
                         },
                         {
-                          "offset": 48207,
-                          "offsetEnd": 48269,
+                          "line": 274,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3033,13 +2644,11 @@
                       ]
                     },
                     {
-                      "offset": 48314,
-                      "offsetEnd": 48649,
+                      "line": 276,
                       "promiser": "_stdlib_path_exists_$(all_paths)",
                       "attributes": [
                         {
-                          "offset": 48425,
-                          "offsetEnd": 48460,
+                          "line": 277,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -3053,8 +2662,7 @@
                           }
                         },
                         {
-                          "offset": 48562,
-                          "offsetEnd": 48649,
+                          "line": 278,
                           "lval": "comment",
                           "rval": {
                             "type": "string",

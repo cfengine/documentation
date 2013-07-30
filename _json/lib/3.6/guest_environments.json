@@ -3,9 +3,7 @@
       "bodies": [
         {
           "sourcePath": "../core/masterfiles/lib/3.6/guest_environments.cf",
-          "offset": 9234,
-          "offsetEnd": 10035,
-          "sourceLine": 55,
+          "line": 54,
           "namespace": "default",
           "name": "kvm",
           "bodyType": "environment_resources",
@@ -19,12 +17,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 10031,
               "attributes": [
                 {
-                  "offset": 9294,
-                  "offsetEnd": 10031,
+                  "line": 85,
                   "lval": "env_spec",
                   "rval": {
                     "type": "string",

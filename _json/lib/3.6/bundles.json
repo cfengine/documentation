@@ -2,9 +2,7 @@
       "bundles": [
         {
           "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
-          "offset": 11260,
-          "offsetEnd": 12890,
-          "sourceLine": 60,
+          "line": 54,
           "namespace": "default",
           "name": "cronjob",
           "bundleType": "agent",
@@ -16,23 +14,18 @@
           ],
           "promiseTypes": [
             {
-              "offset": 11533,
-              "offsetEnd": 12037,
+              "line": 61,
               "name": "vars",
               "contexts": [
                 {
                   "name": "SuSE",
-                  "offset": -1,
-                  "offsetEnd": 11647,
                   "promises": [
                     {
-                      "offset": 11605,
-                      "offsetEnd": 11647,
+                      "line": 63,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "offset": 11615,
-                          "offsetEnd": 11647,
+                          "line": 63,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -45,17 +38,13 @@
                 },
                 {
                   "name": "redhat|fedora",
-                  "offset": -1,
-                  "offsetEnd": 11765,
                   "promises": [
                     {
-                      "offset": 11728,
-                      "offsetEnd": 11765,
+                      "line": 65,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "offset": 11738,
-                          "offsetEnd": 11765,
+                          "line": 65,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -68,17 +57,13 @@
                 },
                 {
                   "name": "freebsd",
-                  "offset": -1,
-                  "offsetEnd": 11869,
                   "promises": [
                     {
-                      "offset": 11833,
-                      "offsetEnd": 11869,
+                      "line": 67,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "offset": 11843,
-                          "offsetEnd": 11869,
+                          "line": 67,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -91,17 +76,13 @@
                 },
                 {
                   "name": "!(SuSE|redhat|fedora|freebsd)",
-                  "offset": -1,
-                  "offsetEnd": 12037,
                   "promises": [
                     {
-                      "offset": 11991,
-                      "offsetEnd": 12037,
+                      "line": 69,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "offset": 12001,
-                          "offsetEnd": 12037,
+                          "line": 69,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -115,23 +96,18 @@
               ]
             },
             {
-              "offset": 12046,
-              "offsetEnd": 12608,
+              "line": 71,
               "name": "files",
               "contexts": [
                 {
                   "name": "!windows",
-                  "offset": -1,
-                  "offsetEnd": 12608,
                   "promises": [
                     {
-                      "offset": 12099,
-                      "offsetEnd": 12608,
+                      "line": 74,
                       "promiser": "$(crontab)/$(user)",
                       "attributes": [
                         {
-                          "offset": 12193,
-                          "offsetEnd": 12256,
+                          "line": 76,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -139,8 +115,7 @@
                           }
                         },
                         {
-                          "offset": 12285,
-                          "offsetEnd": 12301,
+                          "line": 77,
                           "lval": "create",
                           "rval": {
                             "type": "string",
@@ -148,8 +123,7 @@
                           }
                         },
                         {
-                          "offset": 12389,
-                          "offsetEnd": 12444,
+                          "line": 78,
                           "lval": "edit_line",
                           "rval": {
                             "type": "functionCall",
@@ -163,8 +137,7 @@
                           }
                         },
                         {
-                          "offset": 12496,
-                          "offsetEnd": 12515,
+                          "line": 79,
                           "lval": "perms",
                           "rval": {
                             "type": "functionCall",
@@ -182,8 +155,7 @@
                           }
                         },
                         {
-                          "offset": 12578,
-                          "offsetEnd": 12608,
+                          "line": 80,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -203,23 +175,18 @@
               ]
             },
             {
-              "offset": 12621,
-              "offsetEnd": 12885,
+              "line": 82,
               "name": "processes",
               "contexts": [
                 {
                   "name": "changed_crontab",
-                  "offset": -1,
-                  "offsetEnd": 12885,
                   "promises": [
                     {
-                      "offset": 12680,
-                      "offsetEnd": 12885,
+                      "line": 85,
                       "promiser": "cron",
                       "attributes": [
                         {
-                          "offset": 12765,
-                          "offsetEnd": 12824,
+                          "line": 86,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -227,8 +194,7 @@
                           }
                         },
                         {
-                          "offset": 12865,
-                          "offsetEnd": 12885,
+                          "line": 87,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -250,9 +216,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
-          "offset": 13123,
-          "offsetEnd": 13593,
-          "sourceLine": 94,
+          "line": 93,
           "namespace": "default",
           "name": "rm_rf",
           "bundleType": "agent",
@@ -261,23 +225,18 @@
           ],
           "promiseTypes": [
             {
-              "offset": 13150,
-              "offsetEnd": 13244,
+              "line": 95,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
-                  "offset": -1,
-                  "offsetEnd": 13244,
                   "promises": [
                     {
-                      "offset": 13208,
-                      "offsetEnd": 13244,
+                      "line": 96,
                       "promiser": "isdir",
                       "attributes": [
                         {
-                          "offset": 13230,
-                          "offsetEnd": 13244,
+                          "line": 96,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -297,23 +256,18 @@
               ]
             },
             {
-              "offset": 13256,
-              "offsetEnd": 13590,
+              "line": 97,
               "name": "files",
               "contexts": [
                 {
                   "name": "isdir",
-                  "offset": -1,
-                  "offsetEnd": 13501,
                   "promises": [
                     {
-                      "offset": 13307,
-                      "offsetEnd": 13501,
+                      "line": 99,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "offset": 13363,
-                          "offsetEnd": 13367,
+                          "line": 100,
                           "lval": "file_select",
                           "rval": {
                             "type": "symbol",
@@ -321,8 +275,7 @@
                           }
                         },
                         {
-                          "offset": 13453,
-                          "offsetEnd": 13457,
+                          "line": 101,
                           "lval": "depth_search",
                           "rval": {
                             "type": "functionCall",
@@ -336,8 +289,7 @@
                           }
                         },
                         {
-                          "offset": 13496,
-                          "offsetEnd": 13501,
+                          "line": 102,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -350,17 +302,13 @@
                 },
                 {
                   "name": "!isdir",
-                  "offset": -1,
-                  "offsetEnd": 13590,
                   "promises": [
                     {
-                      "offset": 13565,
-                      "offsetEnd": 13590,
+                      "line": 105,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "offset": 13585,
-                          "offsetEnd": 13590,
+                          "line": 105,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -377,9 +325,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
-          "offset": 13632,
-          "offsetEnd": 14343,
-          "sourceLine": 109,
+          "line": 108,
           "namespace": "default",
           "name": "fileinfo",
           "bundleType": "agent",
@@ -388,23 +334,18 @@
           ],
           "promiseTypes": [
             {
-              "offset": 13656,
-              "offsetEnd": 14129,
+              "line": 110,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
-                  "offset": -1,
-                  "offsetEnd": 14129,
                   "promises": [
                     {
-                      "offset": 13835,
-                      "offsetEnd": 13995,
+                      "line": 111,
                       "promiser": "fields",
                       "attributes": [
                         {
-                          "offset": 13991,
-                          "offsetEnd": 13995,
+                          "line": 111,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -428,13 +369,11 @@
                       ]
                     },
                     {
-                      "offset": 14070,
-                      "offsetEnd": 14129,
+                      "line": 113,
                       "promiser": "stat[$(f)][$(fields)]",
                       "attributes": [
                         {
-                          "offset": 14104,
-                          "offsetEnd": 14129,
+                          "line": 113,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -458,18 +397,14 @@
               ]
             },
             {
-              "offset": 14144,
-              "offsetEnd": 0,
+              "line": 115,
               "name": "reports",
               "contexts": [
                 {
                   "name": "verbose_mode",
-                  "offset": -1,
-                  "offsetEnd": -1,
                   "promises": [
                     {
-                      "offset": 14271,
-                      "offsetEnd": -1,
+                      "line": 117,
                       "promiser": "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])",
                       "attributes": []
                     }

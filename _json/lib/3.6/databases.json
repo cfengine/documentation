@@ -3,9 +3,7 @@
       "bodies": [
         {
           "sourcePath": "../core/masterfiles/lib/3.6/databases.cf",
-          "offset": 9136,
-          "offsetEnd": 9498,
-          "sourceLine": 55,
+          "line": 54,
           "namespace": "default",
           "name": "local_mysql",
           "bodyType": "database_server",
@@ -16,12 +14,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9494,
               "attributes": [
                 {
-                  "offset": 9204,
-                  "offsetEnd": 9236,
+                  "line": 56,
                   "lval": "db_server_owner",
                   "rval": {
                     "type": "string",
@@ -29,8 +24,7 @@
                   }
                 },
                 {
-                  "offset": 9274,
-                  "offsetEnd": 9309,
+                  "line": 57,
                   "lval": "db_server_password",
                   "rval": {
                     "type": "string",
@@ -38,8 +32,7 @@
                   }
                 },
                 {
-                  "offset": 9341,
-                  "offsetEnd": 9370,
+                  "line": 58,
                   "lval": "db_server_host",
                   "rval": {
                     "type": "string",
@@ -47,8 +40,7 @@
                   }
                 },
                 {
-                  "offset": 9398,
-                  "offsetEnd": 9423,
+                  "line": 59,
                   "lval": "db_server_type",
                   "rval": {
                     "type": "string",
@@ -56,8 +48,7 @@
                   }
                 },
                 {
-                  "offset": 9460,
-                  "offsetEnd": 9494,
+                  "line": 60,
                   "lval": "db_server_connection_db",
                   "rval": {
                     "type": "string",
@@ -70,9 +61,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/databases.cf",
-          "offset": 9584,
-          "offsetEnd": 9963,
-          "sourceLine": 66,
+          "line": 65,
           "namespace": "default",
           "name": "local_postgresql",
           "bodyType": "database_server",
@@ -83,12 +72,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9959,
               "attributes": [
                 {
-                  "offset": 9657,
-                  "offsetEnd": 9689,
+                  "line": 67,
                   "lval": "db_server_owner",
                   "rval": {
                     "type": "string",
@@ -96,8 +82,7 @@
                   }
                 },
                 {
-                  "offset": 9727,
-                  "offsetEnd": 9762,
+                  "line": 68,
                   "lval": "db_server_password",
                   "rval": {
                     "type": "string",
@@ -105,8 +90,7 @@
                   }
                 },
                 {
-                  "offset": 9794,
-                  "offsetEnd": 9823,
+                  "line": 69,
                   "lval": "db_server_host",
                   "rval": {
                     "type": "string",
@@ -114,8 +98,7 @@
                   }
                 },
                 {
-                  "offset": 9854,
-                  "offsetEnd": 9882,
+                  "line": 70,
                   "lval": "db_server_type",
                   "rval": {
                     "type": "string",
@@ -123,8 +106,7 @@
                   }
                 },
                 {
-                  "offset": 9922,
-                  "offsetEnd": 9959,
+                  "line": 71,
                   "lval": "db_server_connection_db",
                   "rval": {
                     "type": "string",

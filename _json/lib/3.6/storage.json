@@ -3,9 +3,7 @@
       "bodies": [
         {
           "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
-          "offset": 9258,
-          "offsetEnd": 9492,
-          "sourceLine": 55,
+          "line": 54,
           "namespace": "default",
           "name": "min_free_space",
           "bodyType": "volume",
@@ -15,12 +13,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9488,
               "attributes": [
                 {
-                  "offset": 9308,
-                  "offsetEnd": 9333,
+                  "line": 56,
                   "lval": "check_foreign",
                   "rval": {
                     "type": "string",
@@ -28,8 +23,7 @@
                   }
                 },
                 {
-                  "offset": 9363,
-                  "offsetEnd": 9390,
+                  "line": 57,
                   "lval": "freespace",
                   "rval": {
                     "type": "string",
@@ -37,8 +31,7 @@
                   }
                 },
                 {
-                  "offset": 9418,
-                  "offsetEnd": 9443,
+                  "line": 58,
                   "lval": "sensible_size",
                   "rval": {
                     "type": "string",
@@ -46,8 +39,7 @@
                   }
                 },
                 {
-                  "offset": 9467,
-                  "offsetEnd": 9488,
+                  "line": 59,
                   "lval": "sensible_count",
                   "rval": {
                     "type": "string",
@@ -60,9 +52,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
-          "offset": 9540,
-          "offsetEnd": 9762,
-          "sourceLine": 65,
+          "line": 64,
           "namespace": "default",
           "name": "nfs",
           "bodyType": "mount",
@@ -73,12 +63,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9758,
               "attributes": [
                 {
-                  "offset": 9582,
-                  "offsetEnd": 9601,
+                  "line": 66,
                   "lval": "mount_type",
                   "rval": {
                     "type": "string",
@@ -86,8 +73,7 @@
                   }
                 },
                 {
-                  "offset": 9631,
-                  "offsetEnd": 9658,
+                  "line": 67,
                   "lval": "mount_source",
                   "rval": {
                     "type": "string",
@@ -95,8 +81,7 @@
                   }
                 },
                 {
-                  "offset": 9688,
-                  "offsetEnd": 9715,
+                  "line": 68,
                   "lval": "mount_server",
                   "rval": {
                     "type": "string",
@@ -104,8 +89,7 @@
                   }
                 },
                 {
-                  "offset": 9738,
-                  "offsetEnd": 9758,
+                  "line": 69,
                   "lval": "edit_fstab",
                   "rval": {
                     "type": "string",
@@ -118,9 +102,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
-          "offset": 9818,
-          "offsetEnd": 10106,
-          "sourceLine": 76,
+          "line": 75,
           "namespace": "default",
           "name": "nfs_p",
           "bodyType": "mount",
@@ -132,12 +114,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 10102,
               "attributes": [
                 {
-                  "offset": 9867,
-                  "offsetEnd": 9886,
+                  "line": 77,
                   "lval": "mount_type",
                   "rval": {
                     "type": "string",
@@ -145,8 +124,7 @@
                   }
                 },
                 {
-                  "offset": 9916,
-                  "offsetEnd": 9943,
+                  "line": 78,
                   "lval": "mount_source",
                   "rval": {
                     "type": "string",
@@ -154,8 +132,7 @@
                   }
                 },
                 {
-                  "offset": 9973,
-                  "offsetEnd": 10000,
+                  "line": 79,
                   "lval": "mount_server",
                   "rval": {
                     "type": "string",
@@ -163,8 +140,7 @@
                   }
                 },
                 {
-                  "offset": 10031,
-                  "offsetEnd": 10059,
+                  "line": 80,
                   "lval": "mount_options",
                   "rval": {
                     "type": "list",
@@ -177,8 +153,7 @@
                   }
                 },
                 {
-                  "offset": 10082,
-                  "offsetEnd": 10102,
+                  "line": 81,
                   "lval": "edit_fstab",
                   "rval": {
                     "type": "string",
@@ -191,9 +166,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
-          "offset": 10143,
-          "offsetEnd": 10277,
-          "sourceLine": 87,
+          "line": 86,
           "namespace": "default",
           "name": "unmount",
           "bodyType": "mount",
@@ -201,12 +174,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 10273,
               "attributes": [
                 {
-                  "offset": 10174,
-                  "offsetEnd": 10193,
+                  "line": 88,
                   "lval": "mount_type",
                   "rval": {
                     "type": "string",
@@ -214,8 +184,7 @@
                   }
                 },
                 {
-                  "offset": 10216,
-                  "offsetEnd": 10236,
+                  "line": 89,
                   "lval": "edit_fstab",
                   "rval": {
                     "type": "string",
@@ -223,8 +192,7 @@
                   }
                 },
                 {
-                  "offset": 10256,
-                  "offsetEnd": 10273,
+                  "line": 90,
                   "lval": "unmount",
                   "rval": {
                     "type": "string",

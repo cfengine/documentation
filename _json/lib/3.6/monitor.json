@@ -3,9 +3,7 @@
       "bodies": [
         {
           "sourcePath": "../core/masterfiles/lib/3.6/monitor.cf",
-          "offset": 9103,
-          "offsetEnd": 9251,
-          "sourceLine": 55,
+          "line": 54,
           "namespace": "default",
           "name": "scan_log",
           "bodyType": "match_value",
@@ -15,12 +13,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9247,
               "attributes": [
                 {
-                  "offset": 9155,
-                  "offsetEnd": 9188,
+                  "line": 56,
                   "lval": "select_line_matching",
                   "rval": {
                     "type": "string",
@@ -28,8 +23,7 @@
                   }
                 },
                 {
-                  "offset": 9219,
-                  "offsetEnd": 9247,
+                  "line": 57,
                   "lval": "track_growing_file",
                   "rval": {
                     "type": "string",
@@ -42,9 +36,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/monitor.cf",
-          "offset": 9317,
-          "offsetEnd": 9477,
-          "sourceLine": 63,
+          "line": 62,
           "namespace": "default",
           "name": "scan_changing_file",
           "bodyType": "match_value",
@@ -54,12 +46,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9473,
               "attributes": [
                 {
-                  "offset": 9379,
-                  "offsetEnd": 9412,
+                  "line": 64,
                   "lval": "select_line_matching",
                   "rval": {
                     "type": "string",
@@ -67,8 +56,7 @@
                   }
                 },
                 {
-                  "offset": 9444,
-                  "offsetEnd": 9473,
+                  "line": 65,
                   "lval": "track_growing_file",
                   "rval": {
                     "type": "string",
@@ -81,9 +69,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/monitor.cf",
-          "offset": 9538,
-          "offsetEnd": 9701,
-          "sourceLine": 71,
+          "line": 70,
           "namespace": "default",
           "name": "single_value",
           "bodyType": "match_value",
@@ -93,12 +79,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9697,
               "attributes": [
                 {
-                  "offset": 9596,
-                  "offsetEnd": 9630,
+                  "line": 72,
                   "lval": "select_line_matching",
                   "rval": {
                     "type": "string",
@@ -106,8 +89,7 @@
                   }
                 },
                 {
-                  "offset": 9665,
-                  "offsetEnd": 9697,
+                  "line": 73,
                   "lval": "extraction_regex",
                   "rval": {
                     "type": "string",
@@ -120,9 +102,7 @@
         },
         {
           "sourcePath": "../core/masterfiles/lib/3.6/monitor.cf",
-          "offset": 9786,
-          "offsetEnd": 9995,
-          "sourceLine": 79,
+          "line": 78,
           "namespace": "default",
           "name": "line_match_value",
           "bodyType": "match_value",
@@ -133,12 +113,9 @@
           "contexts": [
             {
               "name": "any",
-              "offset": -1,
-              "offsetEnd": 9991,
               "attributes": [
                 {
-                  "offset": 9873,
-                  "offsetEnd": 9912,
+                  "line": 80,
                   "lval": "select_line_matching",
                   "rval": {
                     "type": "string",
@@ -146,8 +123,7 @@
                   }
                 },
                 {
-                  "offset": 9953,
-                  "offsetEnd": 9991,
+                  "line": 81,
                   "lval": "extraction_regex",
                   "rval": {
                     "type": "string",
