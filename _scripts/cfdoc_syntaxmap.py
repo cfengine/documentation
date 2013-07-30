@@ -380,7 +380,7 @@ def library_include(parameters, config):
 			try:
 				source_path = config["project_directory"] + "/" + element["sourcePath"]
 				source_file = open(source_path, 'r')
-				sourceLine = element["sourceLine"]
+				sourceLine = element["line"]
 				sourceLines = source_file.readlines()
 			except:
 				print "cfdoc_syntaxmap:library_include: could not include code from " + name
