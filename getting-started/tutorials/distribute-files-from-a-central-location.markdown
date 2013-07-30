@@ -96,7 +96,7 @@ directory on the policy server to a directory on the agent host.
 
 Create `lib/custom/files.cf` with the following content:
 
-    ```cf3
+```cf3
     bundle agent sync_from_policyserver(source_path, dest_path)
     # @brief Sync files from the policy server to the agent
     #
@@ -110,14 +110,14 @@ Create `lib/custom/files.cf` with the following content:
           depth_search => recurse("inf"),
           comment      => "Ensure files from $(sys.policy_hub):$(source_path) exist in $(dest_path)";
     }
-    ```
+```
 
 We recommend organizing in a way that makes the most sense to you and your team
 but we do believe that organizing things by services is one good way.
 
 Create `services/patch.cf` with the following content.
 
-    ```cf3
+```cf3
     # Patching Policy
 
     bundle agent patching
@@ -154,7 +154,7 @@ Create `services/patch.cf` with the following content.
                        them. By convention we use the policy server as the central
                        distribution point.";
     }
-    ```
+```
 
 This policy has 2 bundles in it. We have separated a top level patching
 bundle from a more specific `patch_distribution` bundle. This is an
