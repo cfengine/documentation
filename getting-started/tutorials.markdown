@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Getting Started Tutorials
+title: Tutorials
 sorting: 10
 categories: [Getting Started, Tutorial]
 published: true
