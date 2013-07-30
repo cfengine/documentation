@@ -380,23 +380,31 @@ def library_include(parameters, config):
 			try:
 				source_path = config["project_directory"] + "/" + element["sourcePath"]
 				source_file = open(source_path, 'r')
-				sourceLine = element["line"]
-				sourceLines = source_file.readlines()
+				sourceLine = element["line"] - 1 # zero-based indexing
+				sourceLines = source_file.readlines()[sourceLine:]
 			except:
 				print "cfdoc_syntaxmap:library_include: could not include code from " + name
 			
 			if len(sourceLines):
-				# search up to include bundle/body declaration and comments in between
 				headerLines = list()
-				header_line = sourceLine - 1
-				while header_line:
-					line = sourceLines[header_line].lstrip()
-					header_line -= 1
-					headerLines.insert(0, line) # aka prepend
-					if key == "bundles" and line.find("bundle ") == 0:
-						break
-					if key == "bodies" and line.find("body ") == 0:
-						break
+				code_lines.append("\n```cf3\n")
+				code_lines.append(sourceLines[0])
+				del sourceLines[0]
+				in_code = False
+				
+				for line in sourceLines:
+					if not in_code:
+						line = line.lstrip()
+						if line.find("{") == 0:
+							in_code = True
+						else:
+							headerLines.append(line)
+					if in_code:
+						code_lines.append(line)
+						# super-naive parser...
+						if line.find("}") == 0:
+							break
+				code_lines.append("\n```\n")
 				
 				# scan comments for doxygen-style documentation
 				if len(headerLines):
@@ -439,19 +447,6 @@ def library_include(parameters, config):
 						documentation_lines.append(return_doc)
 						documentation_lines.append("\n")
 				
-				code_lines.append("\n```cf3\n")
-				if len(headerLines):
-					code_lines.append(headerLines[0])
-					code_lines.append("{\n")
-				while sourceLine < len(sourceLines):
-					line = sourceLines[sourceLine]
-					code_lines.append(line)
-					# super-naive parser...
-					if line.find("}") == 0:
-						break
-					sourceLine += 1
-				code_lines.append("\n```\n")
-
 			arguments = element["arguments"]
 			argument_idx = 0
 			argument_lines = []
