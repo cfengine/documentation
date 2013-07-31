@@ -100,6 +100,103 @@ If you install it on a fresh system, they will end up in
         user@workstation $ git commit -m "initial masterfiles"
         user@workstation $ git push origin master
 
+## Pulling from git to the policy server
+
+We have now set up a git repository and allowed users to commit to it from
+the Mission Portal. However, nothing will change on the CFEngine hosts until
+we pull the policy from git into `/var/cfengine/masterfiles` on the policy server.
+This can be done by CFEngine itself every time `cf-agent` runs on the
+policy server, or by utilizing a cron job or similar facilities.
+
+It is not a requirement to set up automatic pull from the git service,
+but no actions will be taken by CFEngine on the end hosts, nor will any
+reports come back, until the policy from git is copied into
+`/var/cfengine/masterfiles` on your policy server.
+
+The following steps show how to configure `cf-agent` on the policy server to
+pull from git every time it runs (by default every 5 minutes).
+
+1. On a working copy of your git repository, add the promise to update from git.
+   Create `update/update_from_repository.cf` with the following content.
+
+    ```cf3
+        bundle agent update_from_repository
+        {
+        commands:
+
+        am_policy_hub::
+
+          "/usr/bin/git fetch --all"
+            contain => u_no_output;
+
+          "/usr/bin/git reset --hard origin/master"   # change to your branch
+            contain => u_no_output;
+        }
+
+        body contain u_no_output
+        {
+          no_output => "true";
+          chdir => "/var/cfengine/masterfiles";
+        }
+    ```
+
+2. Modify `update.cf` to include `update_from_repository.cf` in `inputs` and `update_from_repository` in `bundlesequence` of body common control.
+
+    ```
+    diff --git a/update.cf b/update.cf
+    index 9c6c298..ab5cc1f 100755
+    --- a/update.cf
+    +++ b/update.cf
+    @@ -14,6 +14,7 @@ body common control
+     
+      bundlesequence => { 
+                         "cfe_internal_update_bins", 
+    +                    "update_from_repository",
+                         "cfe_internal_update_policy",
+                         "cfe_internal_update_processes", 
+                        };
+    @@ -23,6 +24,7 @@ body common control
+      inputs => { 
+                 "update/update_bins.cf", 
+                 "update/update_policy.cf", 
+    +            "update/update_from_repository.cf", 
+                 "update/update_processes.cf",
+                };
+    ```
+
+3. Commit the two above changes to the git service.
+
+        user@workstation $ git add update.cf update/update_from_repository.cf
+        user@workstation $ git commit -m "automatically fetch masterfiles from git"
+        user@workstation $ git push origin master         # change to your branch
+
+4. Log in to the policy server as root and make sure CFEngine is not running.
+
+        root@policy_server # /etc/init.d/cfengine3 stop
+        Shutting down cf-execd:                                    [  OK  ]
+        Shutting down cf-serverd:                                  [  OK  ]
+        Shutting down cf-monitord:                                 [  OK  ]
+
+5. Move current masterfiles out of the way.
+
+        root@policy_server # mv /var/cfengine/masterfiles/ /var/cfengine/masterfiles.orig
+
+6. Clone your git repository into /var/cfengine/masterfiles. We assume
+that the git service is running on the policy server here for simplicity.
+Please adjust to use your git remote url, if necessary (you then also need
+to make sure the root user has access to pull updates from git).
+
+        root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
+        Initialized empty Git repository in /var/cfengine/masterfiles/.git/
+
+7. Make sure that the policy has valid syntax. `cf-promises` should not give output.
+
+        root@policy_server # /var/cfengine/bin/cf-promises -f /var/cfengine/masterfiles/update.cf
+
+8. Start CFEngine again.
+
+        root@policy_server # /etc/init.d/cfengine3 start
+
 
 ## Connecting the Mission Portal to the git repository
 
@@ -181,103 +278,6 @@ Mission Portal, you can filter on the author name as well ('bob' in the example 
 4190ca5 My test activation
 ````
 
-
-## Pulling from git to the policy server
-
-We have now set up a git repository and allowed users to commit to it from
-the Mission Portal. However, nothing will change on the CFEngine hosts until
-we pull the policy from git into `/var/cfengine/masterfiles` on the policy server.
-This can be done by CFEngine itself every time `cf-agent` runs on the
-policy server, or by utilizing a cron job or similar facilities.
-
-It is not a requirement to set up automatic pull from the git service,
-but no actions will be taken by CFEngine on the end hosts, nor will any
-reports come back, until the policy from git is copied into
-`/var/cfengine/masterfiles` on your policy server.
-
-The following steps show how to configure `cf-agent` on the policy server to
-pull from git every time it runs (by default every 5 minutes).
-
-1. On a working copy of your git repository, add the promise to update from git.
-Save the following in `update/update_from_repository.cf`.
-
-    ```cf3
-        bundle agent update_from_repository
-        {
-        commands:
-
-        am_policy_hub::
-
-          "/usr/bin/git fetch --all"
-            contain => u_no_output;
-
-          "/usr/bin/git reset --hard origin/master"   # change to your branch
-            contain => u_no_output;
-        }
-
-        body contain u_no_output
-        {
-          no_output => "true";
-          chdir => "/var/cfengine/masterfiles";
-        }
-    ```
-
-2. Include the file into the update policy, change the following in `update.cf`.
-
-    ```
-    diff --git a/update.cf b/update.cf
-    index 9c6c298..ab5cc1f 100755
-    --- a/update.cf
-    +++ b/update.cf
-    @@ -14,6 +14,7 @@ body common control
-     
-      bundlesequence => { 
-                         "cfe_internal_update_bins", 
-    +                    "update_from_repository",
-                         "cfe_internal_update_policy",
-                         "cfe_internal_update_processes", 
-                        };
-    @@ -23,6 +24,7 @@ body common control
-      inputs => { 
-                 "update/update_bins.cf", 
-                 "update/update_policy.cf", 
-    +            "update/update_from_repository.cf", 
-                 "update/update_processes.cf",
-                };
-    ```
-
-3. Commit the two above changes to the git service.
-
-        user@workstation $ git add update.cf update/update_from_repository.cf
-        user@workstation $ git commit -m "automatically fetch masterfiles from git"
-        user@workstation $ git push origin master         # change to your branch
-
-4. Log in to the policy server and make sure CFEngine is not running.
-
-        root@policy_server # /etc/init.d/cfengine3 stop
-        Shutting down cf-execd:                                    [  OK  ]
-        Shutting down cf-serverd:                                  [  OK  ]
-        Shutting down cf-monitord:                                 [  OK  ]
-
-5. Move current masterfiles out of the way.
-
-        root@policy_server # mv /var/cfengine/masterfiles/ /var/cfengine/masterfiles.orig
-
-6. Clone your git repository into /var/cfengine/masterfiles. We assume
-that the git service is running on the policy server here for simplicity.
-Please adjust to use your git remote url, if necessary (you then also need
-to make sure the root user has access to pull updates from git).
-
-        root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
-        Initialized empty Git repository in /var/cfengine/masterfiles/.git/
-
-7. Make sure that the policy has valid syntax. `cf-promises` should not give output.
-
-        root@policy_server # /var/cfengine/bin/cf-promises -f /var/cfengine/masterfiles/update.cf
-
-8. Start CFEngine again.
-
-        root@policy_server # /etc/init.d/cfengine3 start
 
 
 ## End-to-end waiting time
