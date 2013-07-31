@@ -52,13 +52,13 @@ the git service.
          git@gitserver $ mkdir ~/.ssh
          git@gitserver $ chmod 700 ~/.ssh
 
-4. Generate a passphraseless ssh key to be used by Misson Portal.
+4. On your personal workstation generate a passphraseless ssh key to be used by Misson Portal.
          
          user@workstation $ /usr/bin/ssh-keygen -C 'Mission Portal' -N '' -f mission_portal_id_rsa
 
    Note: This key is only intended for use by Mission Portal. 
 
-5. Authorize the Mission Portal's key for the git user.
+5. Authorize the Mission Portal's key for the git user by appending the public key to the git users authorized keys file.
 
          user@workstation $ cat mission_portal_id_rsa.pub | ssh root@gitserver "umask 077; cat >> /home/git/.ssh/authorized_keys; chown git:git /home/git/.ssh/authorized_keys"
 
