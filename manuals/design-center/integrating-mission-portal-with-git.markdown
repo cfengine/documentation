@@ -34,33 +34,35 @@ SSH key to authenticate with the Mission Portal. Please generate a new SSH key i
 you do not want the Mission Portal users to use your private key to push to
 the git service.
 
-1. Install third party repository that provides git. This is only required if git is not available in the default repositories, for example RHEL 5.
+1. As `root` on the git server install third party repository that provides git.
+   This is only required if git is not available in the default repositories,
+   for example RHEL 5.
 
     root@gitserver # wget http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
     root@gitserver # rpm -Uvh epel-releases-5*.rpm
 
-2. Log in to the git server and install the git package.
+2. Install the `git` package.
 
+    root@gitserver # yum install git
 
-        user@workstation $ ssh root@gitserver
-          root@gitserver # yum install git
+3. Create the `git` user and a `.ssh` directory.
 
-3. Create the git user and a .ssh directory.
+    root@gitserver # adduser git
+    root@gitserver # su - git
+    git@gitserver $ mkdir ~/.ssh
+    git@gitserver $ chmod 700 ~/.ssh
 
-        root@gitserver # adduser git
-        root@gitserver # su git
-         git@gitserver $ mkdir ~/.ssh
-         git@gitserver $ chmod 700 ~/.ssh
-
-4. On your personal workstation generate a passphraseless ssh key to be used by Misson Portal.
+4. On your personal workstation generate a passphraseless ssh key to be used by
+   Misson Portal.
          
-         user@workstation $ /usr/bin/ssh-keygen -C 'Mission Portal' -N '' -f mission_portal_id_rsa
+    user@workstation $ /usr/bin/ssh-keygen -C 'Mission Portal' -N '' -f mission_portal_id_rsa
 
    Note: This key is only intended for use by Mission Portal. 
 
-5. Authorize the Mission Portal's key for the git user by appending the public key to the git users authorized keys file.
+5. Authorize the Mission Portal's key for the `git` user by appending the public
+   key to the git users `~/.ssh/authorized_keys` file.
 
-         user@workstation $ cat mission_portal_id_rsa.pub | ssh root@gitserver "umask 077; cat >> /home/git/.ssh/authorized_keys; chown git:git /home/git/.ssh/authorized_keys"
+    user@workstation $ cat mission_portal_id_rsa.pub | ssh root@gitserver "umask 077; cat >> /home/git/.ssh/authorized_keys; chown git:git /home/git/.ssh/authorized_keys"
 
    Once the authorization is tested successfully you should move the keypair
    to a secure storage location.  You may want to authorize additional keys
@@ -69,20 +71,21 @@ the git service.
    features like the ability to make a specific key read only. See your git
    providers documentation for more information.
 
-6. Test that you can log in as the git user.
+6. Test that you can log in as the `git` user using the generated
+   passphraseless ssh key.
 
-        user@workstation $ ssh -i mission_portal_id_rsa git@gitserver
-           git@gitserver $
+    user@workstation $ ssh -i mission_portal_id_rsa git@gitserver
+    git@gitserver $
 
 
-7. Create the masterfiles repository.
+7. As the `git` user on the git server Create the `masterfiles` repository.
 
-           git@gitserver $ git init --bare masterfiles.git
-                           Initialized empty Git repository in /home/git/masterfiles.git/
+    git@gitserver $ git init --bare masterfiles.git
+       Initialized empty Git repository in /home/git/masterfiles.git/
 
 ## Initializing the git repository
 
-1. Make a local clone of the git repository.
+1. On your workstation create a clone of the `masterfiles` repository.
 
         user@workstation $ git clone git@gitserver:masterfiles.git
         Initialized empty Git repository in /home/user/masterfiles/.git/
