@@ -24,8 +24,7 @@ in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise].
 
 We will need a git service with the capability to serve git over a key-based 
 SSH channel. The easiest way to do this is to use a service like 
-[github][github], but it is not hard to set up a local git 
-service either.
+[github][github], but it is not hard to set up a local git service either.
 
 For Red Hat (and derived distributions), we need to do the following steps to 
 set up a local git service. Assume that gitserver is the server that will host 
@@ -35,26 +34,31 @@ SSH key to authenticate with the Mission Portal. Please generate a new SSH key i
 you do not want the Mission Portal users to use your private key to push to
 the git service.
 
-1. Log in to the git server and install the git package.
+1. Install third party repository that provides git. This is only required if git is not available in the default repositories, for example RHEL 5.
+
+    root@gitserver # wget http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+    root@gitserver # rpm -Uvh epel-releases-5*.rpm
+
+2. Log in to the git server and install the git package.
 
 
         user@workstation $ ssh root@gitserver
           root@gitserver # yum install git
 
-2. Create the git user and a .ssh directory.
+3. Create the git user and a .ssh directory.
 
         root@gitserver # adduser git
         root@gitserver # su git
          git@gitserver $ mkdir ~/.ssh
          git@gitserver $ chmod 700 ~/.ssh
 
-3. Generate a passphraseless ssh key to be used by Misson Portal.
+4. Generate a passphraseless ssh key to be used by Misson Portal.
          
          user@workstation $ /usr/bin/ssh-keygen -C 'Mission Portal' -N '' -f mission_portal_id_rsa
 
    Note: This key is only intended for use by Mission Portal. 
 
-4. Authorize the Mission Portal's key for the git user.
+5. Authorize the Mission Portal's key for the git user.
 
          user@workstation $ cat mission_portal_id_rsa.pub | ssh root@gitserver "umask 077; cat >> /home/git/.ssh/authorized_keys; chown git:git /home/git/.ssh/authorized_keys"
 
@@ -65,13 +69,13 @@ the git service.
    features like the ability to make a specific key read only. See your git
    providers documentation for more information.
 
-5. Test that you can log in as the git user.
+6. Test that you can log in as the git user.
 
         user@workstation $ ssh -i mission_portal_id_rsa git@gitserver
            git@gitserver $
 
 
-6. Create the masterfiles repository.
+7. Create the masterfiles repository.
 
            git@gitserver $ git init --bare masterfiles.git
                            Initialized empty Git repository in /home/git/masterfiles.git/
