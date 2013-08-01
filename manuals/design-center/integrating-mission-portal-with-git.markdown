@@ -198,13 +198,18 @@ pull from git every time it runs (by default every 5 minutes).
 
         root@policy_server # mv /var/cfengine/masterfiles/ /var/cfengine/masterfiles.orig
 
-6. Clone your git repository into /var/cfengine/masterfiles. We assume
-that the git service is running on the policy server here for simplicity.
-Please adjust to use your git remote url, if necessary (you then also need
-to make sure the root user has access to pull updates from git).
+6. Clone your git repository into /var/cfengine/masterfiles. 
 
-        root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
-        Initialized empty Git repository in /var/cfengine/masterfiles/.git/
+    * If your git server is remote you must ensure the root user has ssh keys
+      configured to allow passphraseless access to the git repository
+        
+            root@policy_server # git clone git@gitserver:masterfiles.git /var/cfengine/masterfiles
+            Initialized empty Git repository in /var/cfengine/masterfiles/.git/
+
+    * If you are hosting the git repository on the policy server itself you can
+      clone using its full path
+
+            root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
 
 7. Make sure that the policy has valid syntax. `cf-promises` should not give output.
 
