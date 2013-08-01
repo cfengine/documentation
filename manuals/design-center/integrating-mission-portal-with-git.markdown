@@ -36,14 +36,14 @@ the git service.
 
 ## Overview
 
-1. [Set up the git service][Integrating Mission Portal with git#setting-up-the-git-service]
-2. [Initalize the git repository][Integrating Mission Portal with git#initializing-the-git-repository]
-3. [Configure update policy to pull from git repository][Integrating Mission Portal with git#update-masterfiles-from-git-automatically]
-4. [Connect Mission Portal to the git repository][Integrating Mission Portal with git#connecting-the-mission-portal-to-the-git-repository]
-5. [Testing Design Center GUI][Integrating Mission Portal with git#testing-design-center-gui]
-6. [Review change history from git commit log][Integrating Mission Portal with git#review-change-history-from-git-commit-log]
-7. [End-to-end waiting time][[Integrating Mission Portal with git#end-to-end-waiting-time]
-8. [Access control and security][Integrating Mission Portal with git#access-control-and-security]
+1. [Set up the git service][Integrating Mission Portal with git#Set up the git service]
+2. [Initalize the git repository][Integrating Mission Portal with git#Initalize the git repository]
+3. [Configure update policy to pull from git repository][Integrating Mission Portal with git#]
+4. [Connect Mission Portal to the git repository][Integrating Mission Portal with git#Connecting the Mission Portal to the git repository]
+5. [Testing Design Center GUI][Integrating Mission Portal with git#Testing Design Center GUI]
+6. [Review change history from git commit log][Integrating Mission Portal with git#Review change history from git commit log]
+7. [End-to-end waiting time][[Integrating Mission Portal with git#End-to-end waiting time]
+8. [Access control and security][Integrating Mission Portal with git#Access control and security]
 
 ## Setting up the git service
 
