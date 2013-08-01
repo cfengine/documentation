@@ -20,7 +20,7 @@ When following these steps, it might be helpful to look at the diagram
 in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise].
 
 
-## Setting up the git service
+## Requirements
 
 We will need a git service with the capability to serve git over a key-based 
 SSH channel. The easiest way to do this is to use a service like 
@@ -33,6 +33,19 @@ allows key-based authentication. Note that this will use your workstation's
 SSH key to authenticate with the Mission Portal. Please generate a new SSH key if 
 you do not want the Mission Portal users to use your private key to push to
 the git service.
+
+## Overview
+
+1. [Set up the git service][Integrating Mission Portal with git#setting-up-the-git-service]
+2. [Initalize the git repository][Integrating Mission Portal with git#initializing-the-git-repository]
+3. [Configure update policy to pull from git repository][Integrating Mission Portal with git#update-masterfiles-from-git-automatically]
+4. [Connect Mission Portal to the git repository][Integrating Mission Portal with git#connecting-the-mission-portal-to-the-git-repository]
+5. [Testing Design Center GUI][Integrating Mission Portal with git#testing-design-center-gui]
+6. [Review change history from git commit log][Integrating Mission Portal with git#review-change-history-from-git-commit-log]
+7. [End-to-end waiting time][[Integrating Mission Portal with git#end-to-end-waiting-time]
+8. [Access control and security][Integrating Mission Portal with git#access-control-and-security]
+
+## Setting up the git service
 
 1. As `root` on the git server install third party repository that provides git.
    This is only required if git is not available in the default repositories,
@@ -103,7 +116,7 @@ If you install it on a fresh system, they will end up in
         user@workstation $ git commit -m "initial masterfiles"
         user@workstation $ git push origin master
 
-## Pulling from git to the policy server
+## Update masterfiles from git automatically
 
 We have now set up a git repository and allowed users to commit to it from
 the Mission Portal. However, nothing will change on the CFEngine hosts until
@@ -146,6 +159,7 @@ pull from git every time it runs (by default every 5 minutes).
 2. Modify `update.cf` to include `update_from_repository.cf` in `inputs` and `update_from_repository` in `bundlesequence` of body common control.
 
     ```
+    user@workstation $ git diff update.cf
     diff --git a/update.cf b/update.cf
     index 9c6c298..ab5cc1f 100755
     --- a/update.cf
@@ -211,7 +225,7 @@ to make sure the root user has access to pull updates from git).
 ![Mission Portal Version control repository settings](mp-vcs-settings.png)
 
 
-## Testing first commit
+## Testing Design Center GUI
 
 1. Log in to the Mission Portal as an administrator (e.g. the `admin` user).
 2. Click on the `Design Center` app at the left.
@@ -221,7 +235,7 @@ to make sure the root user has access to pull updates from git).
 ![Test activation in Mission Portal](mission-portal-test-activation.png)
 6. Type in "My test activation" into the commit message box and commit.
 
-### See the commit in the log
+## Review change history from git commit log
 
 Our test sketch is now committed to the git repository. Go to a clone of the
 git repository, pull from the git service and see that the commit is there:
@@ -244,7 +258,7 @@ We have now confirmed that the Mission Portal is able to commit to our
 git service, and that author information is kept.
 
 
-## Filtering commits by Mission Portal and users
+### Filtering commits by Mission Portal and users
 
 If the Mission Portal is just one out of several users of your git service, you can easily filter
 which commits came from the Mission Portal, and which users of the Mission Portal authored the commit.
