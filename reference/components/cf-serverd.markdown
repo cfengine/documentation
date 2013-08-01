@@ -186,6 +186,25 @@ be given as the argument, not the device name.
     bindtointerface => "192.168.1.1";
 ```
 
+To bind to all interfaces, including IPV6:
+
+```cf3
+    bindtointerface => "::";
+```
+
+Note that a bug in netstat will not correctly report that cf-serverd is
+listening on both IPV4 and IPV6 interfaces. A test with netcat (nc) will
+confirm.
+
+```cf3
+   # nc -v -4 172.16.100.1 5308
+   Connection to 172.16.100.1 5308 port [tcp/cfengine] succeeded!
+   ^C
+   # nc -v -6 fe80:470:1d:a2f::2 5308
+   Connection to fe80:470:1d:a2f::2 5308 port [tcp/cfengine] succeeded!
+   ^C
+```
+
 ### cfruncommand
 
 **Description:** Path to the cf-agent command or cf-execd wrapper for
