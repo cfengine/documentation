@@ -25,7 +25,7 @@
 import cfdoc_environment as environment
 import cfdoc_linkresolver as linkresolver
 import cfdoc_extractexamples as extractexamples
-import cfdoc_syntaxmap as syntaxmap
+import cfdoc_macros as macros
 import cfdoc_git as git
 import sys
 
@@ -55,9 +55,9 @@ except:
 	print sys.exc_info()
 
 try:
-	syntaxmap.run(config)
+	macros.run(config)
 except:
-	print "cfdoc_syntaxmap: Error generating documentation from syntax maps"
+	print "cfdoc_macros: Error generating documentation from syntax maps"
 	sys.stdout.write("      Exception: ")
 	print sys.exc_info()
 

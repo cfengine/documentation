@@ -92,7 +92,7 @@ def processFile(markdown, config):
 			try:
 				new_lines = functor(parameters, config)
 			except:
-				sys.stdout.write("cfdoc_syntaxmap: Exception calling ")
+				sys.stdout.write("cfdoc_macros: Exception calling ")
 				print functor
 				sys.stdout.write("                 in " + config["context_current_file"])
 				sys.stdout.write("(%d): " % config["context_current_line_number"])
@@ -100,7 +100,7 @@ def processFile(markdown, config):
 				sys.stdout.write("     Exception : ")
 				print sys.exc_info()
 		else:
-			print "cfdoc_syntaxmap: Unknown function `" + function + "`"
+			print "cfdoc_macros: Unknown function `" + function + "`"
 			print "                 in " + markdown + "(%d)" % markdown_line_number
 			print "                 " + markdown_line
 			new_lines += "<!-- " + markdown_line + "-->"
@@ -332,7 +332,7 @@ def library_include(parameters, config):
 	if policy_json == None:
 		policy_path = config["project_directory"] + "/_json/" + policy_filename
 		if not os.path.exists(policy_path):
-			print "cfdoc_syntaxmap:library_include: File does not exist: " + policy_path
+			print "cfdoc_macros:library_include: File does not exist: " + policy_path
 			return markdown_lines
 		
 		policy_json = json.load(open(policy_path, 'r'))
@@ -352,7 +352,7 @@ def library_include(parameters, config):
 			if element_type == None:
 				element_type = element.get("bodyType")
 			if element_type == None:
-				print "cfdoc_syntaxmap:library_include: element without type: " + name
+				print "cfdoc_macros:library_include: element without type: " + name
 				continue
 				
 			# start a new block for changed types
@@ -383,7 +383,7 @@ def library_include(parameters, config):
 				sourceLine = element["line"] - 1 # zero-based indexing
 				sourceLines = source_file.readlines()[sourceLine:]
 			except:
-				print "cfdoc_syntaxmap:library_include: could not include code from " + name
+				print "cfdoc_macros:library_include: could not include code from " + name
 			
 			if len(sourceLines):
 				headerLines = list()
@@ -501,6 +501,6 @@ def library_include(parameters, config):
 			markdown_lines.append("\n")
 		
 	if len(markdown_lines) == 0:
-		print "cfdoc_syntaxmap:library_include: Failure to include " + parameters[0]
+		print "cfdoc_macros:library_include: Failure to include " + parameters[0]
 		
 	return 	markdown_lines
