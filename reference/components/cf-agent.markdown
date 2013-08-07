@@ -66,6 +66,74 @@ affected by `common` and `agent` control bodies.
 
 ****
 
+##Automatic Bootstrapping
+
+Automatic bootstrapping allows the user to connect a CFEngine Host to a Policy
+Server without specifying the IP address manually. It uses the *Avahi* service
+discovery implementation of `zeroconf` to locate the Policy Server, obtain its IP
+address, and then connect to it. To use automatic bootstrap, install the
+following Avahi libraries:
+
+* libavahi-client
+* libavahi-common
+
+To make the CFEngine Server discoverable, it needs to register itself as an 
+Avahi service. Run the following command:
+
+```
+    $ /var/cfengine/bin/cf-serverd -A
+```
+
+This generates the configuration file for Avahi in `/etc/avahi/services` and 
+restarts the Avahi daemon in order to register the new service.
+
+From this point on, the Policy Server will be discovered with the Avahi service.
+To verify that the server is visible, run the following command (requires
+`avahi-utils`):
+
+``` 
+    $ avahi-browse -atr | grep cfenginehub
+```
+
+The sample output looks like this:
+
+``` 
+    eth0 IPv4 CFEngine Community 3.5.0 Policy Server on policy_hub_debian7
+    _cfenginehub._tcp local
+```
+
+Once the Policy Server is configured with the Avahi service, you can
+auto-bootstrap Hosts to it.
+
+``` 
+    $ /var/cfengine/bin/cf-agent -B :avahi
+```
+
+The Hosts require Avahi libraries to be installed in order to use this 
+functionality. By default `cf-agent` looks for libraries in standard install 
+locations. Install locations vary from system to system. If Avahi is 
+installed in a non-standard location (i.e. compiled from source), set the 
+`AVAHI_PATH` environmental variable to specify the path.
+
+``` 
+   $ AVAHI_PATH=/lib/libavahi-client.so.3 /var/cfengine/bin/cf-agent -B
+```
+
+If more than one server is found, or if the server has more than one IP
+address, the list of all available servers is printed and the user is asked to
+manually specify the IP address of the correct server by running the standard
+bootstrap command of cf-agent:
+
+``` 
+   $ /var/cfengine/bin/cf-agent --bootstrap <IP address>
+```
+
+If only one Policy Server is found in the network, `cf-agent` performs the
+bootstrap without further manual user intervention.
+
+**Note:** Automatic bootstrapping support is ONLY for Linux, and it is limited
+only to one subnet.
+
 ## Control Promises
 
 Settings describing the details of the fixed behavioral promises

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tutorials
-sorting: 10
+sorting: 13
 categories: [Getting Started, Tutorial]
 published: true
 alias: getting-started-tutorials.html
