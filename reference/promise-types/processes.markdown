@@ -317,12 +317,13 @@ regex is [anchored][anchored], meaning it must match the entire name.
 
 #### process_result
 
-**Description:** Boolean class expression returning the logical combination
-of classes set by a process selection test
+**Description:** Boolean class expression with the logical combination
+of process selection criteria
 
 A logical combination of the process selection classifiers. The syntax
-is the same as that for class expressions. There should be no spaces in
-the expressions.
+is the same as that for class expressions. If `process_result` is not 
+specified, then all set attributes in the `process_select` body are AND'ed 
+together.
 
 **Type:** `string`
 
@@ -342,6 +343,8 @@ the expressions.
      process_result => "command.(process_owner|vsize).!pid";
      }
 ```
+
+**See also:** `file_result`
 
 #### rsize
 

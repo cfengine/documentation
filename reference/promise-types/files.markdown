@@ -2169,6 +2169,8 @@ shown above, "is owned by mark, has the extension '.pdf' or '.fdf', and whose
 modification time is not between 1 day ago and now"; that is, it is older than 
 1 day.
 
+**See also:** `process_result`
+
 ### link_from
 
 **Type:** `body link_from`
