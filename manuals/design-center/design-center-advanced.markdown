@@ -42,6 +42,11 @@ You can save some typing by saying
 at the prompt.  From that point on, all command-line interaction can
 use `$CHECKOUT` and it will expand to the installation directory.
 
+You also need to make sure [curl](http://curl.haxx.se) is installed on
+your system, since it is used by `cf-sketch` for accessing remote
+files when needed. Curl is readily available as a package in most
+Unix/Linux systems, and even installed by default on many of them.
+
 ### Prepare config.json
 
 To interact with Design Center, you need to tell its API where things
