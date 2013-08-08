@@ -1,22 +1,17 @@
-  {% assign itemKey = '' %}
-  {% for category in page.categories %}
-        {% if itemKey == '' %}
-            {% assign itemKey = category %}
-        {% else %}
-            {% assign itemKey = itemKey | append: '_' | append: category %}
-        {% endif %}
-  {% endfor %}
+{% assign tmp = '' %}
+{% assign pageKey = '' %}
+{% for category in page.categories %}
+          {% if tmp == '' %}
+          {% assign tmp = category %}
+             {% else %}
+         {% assign tmp = tmp | append: '_' | append: category | removeUnvantedChars %}
+           {% endif %}
+           {% assign pageKey = tmp | removeUnvantedChars  %}
+    {% endfor %}
 <div id="left_col">
     <div id="resizable_zone">
         <div id="nav_level1_wrapper" class="level1 scroll-pane">
-            {{ site.leftNavigation[itemKey].level1 }}
+             {{ site.leftNavigation[pageKey] }}
         </div>
     </div>
-    {% if site.leftNavigation[itemKey].level2 != nil %}
-    <div id="nav_show_category">
-        <div class="level2">
-            {{ site.leftNavigation[itemKey].level2 }}
-        </div>
-    </div>
-    {% endif %}
 </div>
