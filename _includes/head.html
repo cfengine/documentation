@@ -11,10 +11,23 @@
         - _assets/css/navigation.css
         - _assets/css/pygments.css
         - _assets/css/hacks.css
+        - _assets/css/print.css
         {% endcss_asset_tag %}
 
         {% javascript_asset_tag global %}
         - _assets/js/font.js
         {% endjavascript_asset_tag %}
-
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "{% if page.title %}{{ page.title }}{% else %}CFEngine documentation{% endif %}";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
     </head>
