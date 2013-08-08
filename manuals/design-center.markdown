@@ -27,8 +27,14 @@ command-line tools.
 To follow this tutorial, you will need:
 
 - A Unix-like system
-- Git
-- Perl (most Unix systems come with Perl preinstalled)
+- The following programs installed (all of these are either included
+  or easily available in the package repositories for most operating system):
+  - [Git](http://git-scm.com/downloads), for checking out the Design
+    Center repository
+  - [Perl](http://www.perl.org/get.html), the Design Center tools are
+    written in Perl
+  - [Curl](http://curl.haxx.se), used by `cf-sketch` to fetch remote
+    files when needed.
 - CFEngine Community 3.5.0 or newer, or CFEngine Enterprise 3.5.0 or
   newer. Many of the components will work with CFEngine Community
   3.4.0 or later (Enterprise 3.0.0 or later), but you need 3.5.0 to
