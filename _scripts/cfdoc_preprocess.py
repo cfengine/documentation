@@ -26,6 +26,7 @@ import cfdoc_environment as environment
 import cfdoc_linkresolver as linkresolver
 import cfdoc_extractexamples as extractexamples
 import cfdoc_macros as macros
+import cfdoc_printsource as printsource
 import cfdoc_git as git
 import sys
 
@@ -58,6 +59,13 @@ try:
 	macros.run(config)
 except:
 	print "cfdoc_macros: Error generating documentation from syntax maps"
+	sys.stdout.write("      Exception: ")
+	print sys.exc_info()
+
+try:
+	printsource.run(config)
+except:
+	print "cfdoc_printsource: Error generating print-pages"
 	sys.stdout.write("      Exception: ")
 	print sys.exc_info()
 
