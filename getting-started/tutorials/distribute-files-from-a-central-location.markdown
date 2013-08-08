@@ -2,7 +2,7 @@
 layout: default
 title: Distributing files from a central location
 sorting: 10
-categories: [Getting Started, Tutorial]
+categories: [Getting Started, Tutorials]
 published: true
 alias: getting-started-tutorials-distributing-files-from-a-central-location.html
 tags: [getting started, tutorial, file distribution]
