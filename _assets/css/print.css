@@ -1,0 +1,61 @@
+@media print {
+    .wrapper {
+        padding: 0 10px;
+    }
+
+    #left_col, #nav_wrapper, header, #TOCbox_wrapper, #pageControls_block {
+        display: none;
+        visibility: hidden;
+    }
+
+    #content_col {
+        margin: 0 0 0 0;
+    }
+
+    footer {
+        font-size: 8px;
+    }
+
+    footer .license_info {
+        margin: 40px 0 0 0;
+        height: 20px;
+        border-top: 1px solid #000;
+        padding-top: 10px
+    }
+
+    footer .license_info,
+    footer .license_info a {
+        background: none;
+        color: #000;
+        line-height: 1;
+    }
+
+    footer .license_banner{
+        display: none;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ") ";
+    }
+
+
+    body:before {
+        content: "CFEngine";
+        width: 100px;
+        background: url('../media/images/logo_100x26.png') no-repeat;
+        height: 26px;
+        position: absolute;
+        top: -55px;
+        left:0px;
+        color: transparent;
+    }
+
+    @page
+    {
+        margin: 3cm 2cm;
+        @bottom-right {
+            font-size: 80%;
+            content: "Page " counter(page) " of " counter(pages);
+        }
+    }
+}

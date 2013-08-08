@@ -114,7 +114,7 @@ code {
     font-family: "Liberation Mono", Consolas, monospace;
     font-weight: bold;
     font-size: small;
-    background: #f5f9fb;
+    background: #ECF0F3;
     color: #444;
 }
 p code {
@@ -210,11 +210,11 @@ header {
  #top_form {
      float: right;
      height: 118px;
-     line-height: 118px;
      width: 385px;
  }
  #top_version_wrapper {
-     display: inline-block
+     display: inline-block;
+     line-height: 118px;
  }
 
 
@@ -243,6 +243,10 @@ header {
      text-align: left;
      line-height: 20px;
  }
+ .top_search_form {
+    float: right;
+    line-height: 118px;
+}
  #top_search_searchpage {
      background: url('../media/images/sprites.png') 587px -2974px no-repeat #f6f6f6;
      border: 2px solid #aac4d0;
@@ -308,10 +312,39 @@ article p {
     border: none !important
 }
 
-.top_search_form {
+
+
+#pageControls_block {
+    width: 70px;
     float: right;
 }
 
+
+#pageControls_block .pdf, #pageControls_block .print {
+    background-image: url("../media/images/btn_pdf_print.png");
+    background-repeat: no-repeat;
+    font-size: 0;
+    display: inline-block;
+    height: 27px;
+    text-decoration: none;
+    vertical-align: top;
+    margin-top: 7px;
+}
+
+#pageControls_block .pdf {
+    background-position: 0 0;
+    width: 26px;
+}
+#pageControls_block .pdf:hover {
+    background-position: -27px 0;
+}
+#pageControls_block .print {
+    background-position: -54px 0;
+    width: 30px;
+}
+#pageControls_block .print:hover {
+    background-position: -85px 0;
+}
 
 @media all and (min-width: 1200px) {
     .wrapper {
@@ -325,7 +358,7 @@ article p {
     #top_nav li a, #top_nav li span {
         padding: 0 1em;
     }
-    #jump_to {
+    #TOCbox {
         margin-top: 35px;
     }
      #left_col {
