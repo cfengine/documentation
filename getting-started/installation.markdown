@@ -26,7 +26,7 @@ CFEngine recommends the following:
 
 **Disk Storage** 
 
-A full installation of CFEngine requires 25 MB. Additional disk usage 
+A full installation of CFEngine requires 25 MB. Additional disk usage
 depends on your specific policies, especially those that concern reporting.
 
 **Network** 
@@ -46,4 +46,4 @@ additional software is not required.
 
 Click here to complete the [Community](getting-started-installation-community.html) installation.
 
-Click here to complete the [Enterprise](getting-started-installation-enterprise.html)installation.
+Click here to complete the [Enterprise](getting-started-installation-enterprise.html) installation.
