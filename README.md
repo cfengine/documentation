@@ -111,13 +111,20 @@ To link to a section within the target page, use:
 
     [Link text][Page Title#Section in Page]
 
-This also applies to links to sections within the current page.
-
-For standard URLs and locations to link to, see the
+This also applies to links to sections within the current page. For standard 
+URLs and locations to link to, see the
 [mapping](https://github.com/cfengine/documentation-generator/blob/master/_references.md).
 
-When linking to CFEngine words, use <pre>`code`</pre> markers in the link 
-text.
+#### Automatic linking
+
+The documentation generator automatically creates links for words in code 
+markers if that word exists as a page or section title.
+
+    **See also:** `attribute_name`
+
+This will automatically link to the section or page with title 
+*attribute_name*. To make explicit links from code words, use 
+<pre>`code`</pre> markers in the link text.
 
     **See also:** [`attribute_name`][page#attributename]
 
