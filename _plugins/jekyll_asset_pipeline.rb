@@ -24,3 +24,15 @@ class CssCompressor < JekyllAssetPipeline::Compressor
     return YUI::CssCompressor.new.compress(@content)
   end
 end
+
+module JekyllAssetPipeline
+  class CssTagTemplate < JekyllAssetPipeline::Template
+    def self.filetype
+      '.css'
+    end
+
+    def html
+        "<link href='/#{@path}/#{@filename}' rel='stylesheet' type='text/css' media='screen,print' />\n"
+    end
+  end
+end

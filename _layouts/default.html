@@ -9,6 +9,7 @@
                 {% if page.tags != nil %}
                 <div id="tags">
                     <ul>
+                        <li><span>Tags:</li>
                         {% for tag in page.tags %}
                         <li>
                             <a href="{{site.baseurl}}tags/{{ tag | cleanString | downcase}}.html">{{ tag }}</a>
@@ -19,12 +20,12 @@
                 </div>
                 {% endif %}
 
-                <h1>{{page.title}}</h1>
+                <h1 id="top">{{page.title}}</h1>
                     {{ content }}
             </article>
         </div>
     </div>
-  
+
     {% include footer.html %}
 
 

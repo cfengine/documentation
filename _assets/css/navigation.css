@@ -148,14 +148,21 @@
             float: left;
             list-style: none;
         }
-
+            #tags li span,
             #tags li a {
                 display: inline-block;
                 color: #555;
-                margin: 0.5em 1em 0 0;
-                padding: 5px 10px;
-                background: #e5e5e5;
                 font-size: 0.8em;
+            }
+
+            #tags li span {
+                padding: 5px 5px 0 0;
+                margin: 0.5em 0 0 0;
+            }
+            #tags li a {
+                padding: 5px 10px;
+                margin: 0.5em 1em 0 0;
+                background: #e5e5e5;
                 text-decoration: none;
             }
 
@@ -164,14 +171,14 @@
             }
 
 
-#jumpto_wrapper {
+#TOCbox_wrapper {
      position: relative;
      float: right;
      display: none;
  }
 
 
-#jump_to {
+#TOCbox {
      background: url('../media/images/sprites.png') right -990px no-repeat #f6f6f6;
      border: 2px solid #aac4d0;
      border-radius: 5px;
@@ -182,13 +189,12 @@
      padding-left: 13px;
      padding-right: 20px;
      margin-left: 15px;
-     width: 110px;
+     width: 150px;
      text-align: left;
      float: right;
-
 }
 
-#jumpto_list {
+#TOCbox_list {
     position: absolute;
     background: #333333;
     border-radius: 5px;
@@ -201,43 +207,63 @@
     overflow: auto;
 }
 
-#jumpto_wrapper:hover #jumpto_list {
+#TOCbox_wrapper:hover #TOCbox_list {
     display: block !important;
     opacity: 0.9
 }
 
-#jumpto_wrapper:hover #jump_to {
+#TOCbox_wrapper:hover #TOCbox {
     color: #fff !important;
     border: 2px solid #000 !important;
     background: url('../media/images/sprites.png') right -990px no-repeat #000 !important;
 }
 
-#jumpto_list ul {
+#TOCbox_list ul {
     margin: 0;
     padding: 0;
 }
 
-#jumpto_list li {
+#TOCbox_list li {
     list-style: none;
     line-height: 1.6;
 }
-#jumpto_list li a {
+#TOCbox_list li a {
     color: #fff;
     font-size: 1em;
     text-decoration: none;
 }
-#jumpto_list li a:hover {
+#TOCbox_list li a:hover {
     text-decoration: underline;
 }
 
-#jumpto_list .link_h3 {
+#TOCbox_list .link_h1 a {
+    color: #F5821F;
+}
+
+#TOCbox_list .link_h1 a:after
+{
+    content: "↑";
+    clear: both;
+}
+
+#TOCbox_list .link_h3 {
     margin-left: 1em;
 }
 
-#jumpto_list .link_h4 {
+#TOCbox_list .link_h4 {
     margin-left: 2em;
 }
+/*on scroll - fix position*/
+.TOCbox_Fixed {
+    position: fixed !important;
+    top:0;
+    right:0;
+    opacity: 0.7;
+}
 
+.TOCbox_Fixed:hover {
+    opacity: 0.8;
+}
 
 #moveTop {
     bottom: 0;
@@ -262,6 +288,16 @@
 }
 #moveTop a span {
     font-size: 1em;
-    padding-top: 1em;
-    display: inline-block
+    margin-top: 1em;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #bbb;
+    width: 25px;
+    height: 25px;
+    opacity: 0.5
+}
+
+#moveTop a:hover span {
+    opacity: 1;
+    background-color: #eee;
 }

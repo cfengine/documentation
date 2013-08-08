@@ -28,3 +28,4 @@ echo "*                  CONSOLE OUTPUT                       *" >> $WRKDIR/outp
 echo "*********************************************************" >> $WRKDIR/output.log
 jekyll
 $WRKDIR/documentation-generator/_scripts/cfdoc_postprocess.py
+$WRKDIR/documentation-generator/_scripts/_create_pdf.sh
