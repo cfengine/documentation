@@ -1,15 +1,16 @@
 <div id="breadcrumbs_wrapper">
     <div id="breadcrumbs">
         <ul>
-            {% assign breadcrumbKey = '' %}              
+            {% assign breadcrumbKey = '' %}
                 {% for category in page.categories %}
-        
+
                 {% if breadcrumbKey == '' %}
-                    {% assign breadcrumbKey = category %}
+                    {% assign breadcrumbKey = category | removeUnvantedChars %}
                 {% else %}
-                    {% assign breadcrumbKey = breadcrumbKey | append: '_' | append: category %}
+                    {% assign tmp = breadcrumbKey | append: '_' | append: category %}
+                    {% assign breadcrumbKey = tmp | removeUnvantedChars %}
                 {% endif %}
-        
+
                 {% if site.breadcrumbsNavigation[breadcrumbKey] != nil %}
 
                     {% if site.breadcrumbsNavigation[breadcrumbKey].alias != page.alias %}
@@ -29,9 +30,14 @@
             {% endfor %}
         </ul>
     </div>
-    <div id="jumpto_wrapper">
-        <span id="jump_to">Jump to</span>
-        <div id="jumpto_list"></div>
+    <div id="TOCbox_wrapper">
+        <span id="TOCbox">Table of contents</span>
+        <div id="TOCbox_list"></div>
+    </div>
+    <div id="pageControls_block">
+        <a href="pdf/{{page.alias | replace:'.html','.pdf'}}" class="pdf">&nbsp;</a>&nbsp;
+        <a onclick="window.print(); return false;" rel="nofollow" href="" class="print">&nbsp;</a>
+        <div class="clear"></div>
     </div>
     <div class="clear"></div>
 </div>
