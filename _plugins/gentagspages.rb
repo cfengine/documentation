@@ -22,25 +22,9 @@ module Jekyll
 
         #puts JSON.pretty_generate(tags)
 
-
-
       tags.each do |tag|
         build_subpages(site, "tag", tag)
       end
-
-
-      # site.categories.each do |category|
-      #  build_subpages(site, "category", category)
-      # end
-
-
-
-#      site.tags.each do |tag|
-#        build_subpages(site, "tag", tag)
-#      end
-
-
-
     end
 
     def build_subpages(site, type, posts)
