@@ -8,8 +8,8 @@ alias: getting-started-upgrade.html
 tags: [getting started, enterprise, upgrade]
 ---
 
-###<center>This upgrade guide assumes that you are upgrading an existing CFEngine installation of one of the following versions:</center>
-###<center>2.2.x or 3.0.x</center>
+###<center data-behavior="exclude-from-toc">This upgrade guide assumes that you are upgrading an existing CFEngine installation of one of the following versions:</center>
+###<center data-behavior="exclude-from-toc">2.2.x or 3.0.x</center>
 
 Upgrading CFEngine Enterprise needs some planning, since there may be 
 dependencies on your existing policies and/or changes in naming 
@@ -18,7 +18,7 @@ manual process. Automatic upgrade of agents is possible through the hub but
 again, needs careful planning and consideration before applying to a large 
 schema.
 
-###<center>Always verify the upgrade in a test environment prior to upgrading production environments!</center>
+###<center data-behavior="exclude-from-toc">Always verify the upgrade in a test environment prior to upgrading production environments!</center>
 
 Before embarking on the upgrade, you should familiarize yourself with the 
 [known issues][known issues] and have a good understanding of the existing configuration of the hub or agents or both. As much as possible is covered in this document, taking into consideration its scope and intended audience. Other more detailed problems, specific to your own setup may not be covered here. It is therefore imperative that any questions or doubts you have are directed towards your support representative.
