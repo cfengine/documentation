@@ -67,6 +67,22 @@ def addLinkToMap(keyword, anchor, html, config):
 	
 	config["link_map"] = link_map
 
+def headerToAnchor(header):
+	anchor = header.lower()
+	anchor = anchor.replace(" ", "-")
+	anchor = anchor.replace(":", "-")
+	anchor = anchor.replace(".", "-")
+	anchor = anchor.replace(",", "-")
+	anchor = anchor.replace("`", "-")
+	anchor = anchor.replace("/", "-")
+	anchor = anchor.replace("$", "-")
+	anchor = anchor.replace("(", "-")
+	anchor = anchor.replace(")", "-")
+	anchor = anchor.replace("\"", "")
+	anchor = anchor.replace("--", "-")
+	anchor = anchor.lstrip("-").rstrip("-")
+	return anchor
+
 def parseMarkdownForAnchors(file_name, config):
 	in_file = open(file_name,"r")
 	lines = in_file.readlines()
@@ -110,18 +126,7 @@ def parseMarkdownForAnchors(file_name, config):
 		for header in header_list:
 			if header == "":
 				continue
-			anchor = header.lower()
-			anchor = anchor.replace(" ", "-")
-			anchor = anchor.replace(":", "-")
-			anchor = anchor.replace(".", "-")
-			anchor = anchor.replace("`", "-")
-			anchor = anchor.replace("/", "-")
-			anchor = anchor.replace("$", "-")
-			anchor = anchor.replace("(", "-")
-			anchor = anchor.replace(")", "-")
-			anchor = anchor.replace("\"", "")
-			anchor = anchor.replace("--", "-")
-			anchor = anchor.lstrip("-").rstrip("-")
+			anchor = headerToAnchor(header)
 			label = current_file_label+ '#' + header
 			# prefer top-level anchors
 			addLinkToMap("`" + header + "`", label, current_file_name + '#' + anchor + ' \"' + current_title + ' - ' + header + '\"', config)
