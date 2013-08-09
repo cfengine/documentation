@@ -20,13 +20,7 @@ Not all Unix TCP read operations respond to signals for interruption, so
 poorly formed requests can block the `cf-agent` process. Always test TCP 
 connections fully before deploying.
 
-**Arguments**:
-
-* `host` : Host name or IP address of server socket, in the range `.*`
-* `port` : Port number to connect to, in the range `0,99999999999`   
-* `sendstring` : Protocol query string, in the range `.*`
-* `maxbytes` : Maximum number of bytes to read in response, in the range 
-`0,99999999999`
+[%CFEngine_function_attributes(host, port, sendstring, maxbytes)%]
 
 **Example:**
 

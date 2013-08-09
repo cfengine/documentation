@@ -11,10 +11,7 @@ tags: [reference, data functions, functions, rrange]
 
 **Description:** Define a range of real numbers for CFEngine internal use.
 
-**Arguments**:
-
-* `arg1` : Real number, in the range `-9.99999E100,9.99999E100`
-* `arg2` : Real number, in the range `-9.99999E100,9.99999E100`
+[%CFEngine_function_attributes(arg1, arg2)%]
 
 **Notes:**
 This is not yet used.

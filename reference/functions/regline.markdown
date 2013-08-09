@@ -9,15 +9,13 @@ tags: [reference, io functions, functions, regline]
 
 [%CFEngine_function_prototype(regex, filename)%]
 
-**Description:** Returns whether the regular expression `regex` matches a line 
-in file `filename`.
+**Description:** Returns whether the [anchored][anchored] regular expression 
+`regex` matches a line in file `filename`.
 
-Note that `regex` must match an entire line of the file in order to give a true result.
+Note that `regex` must match an entire line of the file in order to give a 
+true result.
 
-**Arguments**:
-
-* `regex` : Regular expression, in the range `.*`
-* `filename` : Filename to search, in the range `.*`
+[%CFEngine_function_attributes(regex, filename)%]
 
 **Example:**
 

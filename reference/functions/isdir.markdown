@@ -13,9 +13,7 @@ tags: [reference, files functions, functions, isdir]
 
 The CFEngine process must have access to `filename` in order for this to work.
 
-**Arguments**:
-
-* `filename` : File object name, in the range `"?(/.*)`
+[%CFEngine_function_attributes(filename)%]
 
 **Example:**
 

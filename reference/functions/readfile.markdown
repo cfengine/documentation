@@ -11,10 +11,7 @@ tags: [reference, io functions, functions, readfile]
 
 **Description:** Returns the first `maxbytes` bytes from file `filename`.
 
-**Arguments**:
-
-* `filename` : File name, in the range `"?(/.*)`
-* `maxbytes` : Maximum number of bytes to read, in the range `0,99999999999`
+[%CFEngine_function_attributes(filename, maxbytes)%]
 
 **Example:**
 

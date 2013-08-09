@@ -14,9 +14,7 @@ addresses specified.
 
 Pattern matching based on IP addresses.
 
-**Arguments**:
-
-* `range` : IP address range syntax, in the range `.*`
+[%CFEngine_function_attributes(range)%]
 
 **Example:**
 

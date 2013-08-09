@@ -11,13 +11,7 @@ tags: [reference, data functions, functions, intersection]
 
 **Description:** Returns the unique elements in list1 that are also in list2.
 
-**Arguments**:
-
-* `list1` : The name of the base list variable, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
-
-* `list2` : The name of the intersected list variable, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(list1, list2)%]
 
 **Example:**
 

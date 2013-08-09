@@ -15,10 +15,7 @@ status zero.
 This is the complement of `execresult()`, but it returns a class result
 rather than the output of the command.
 
-**Arguments**:
-
-* `command` : Fully qualified command path, in the range `"?(/.*)`
-* `shell` : Shell encapsulation option, in the range `useshell`,`noshell`
+[%CFEngine_function_attributes(command, shell)%]
 
 **Example:**
 

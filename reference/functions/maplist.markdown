@@ -16,11 +16,7 @@ The `$(this)` variable expands to the currently processed entry from `list`.
 This is essentially like the map() function in Perl, and applies to
 lists.
 
-**Arguments**:
-
-* `pattern` : Pattern based on $(this) as original text, in the range `.*`
-* `list` : The name of the list variable to map, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(pattern, list)%]
 
 **Example:**
 

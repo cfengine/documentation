@@ -14,18 +14,9 @@ tags: [reference, data functions, functions, hashmatch]
 This function may be used to determine whether a system has a particular
 version of a binary file (e.g. software patch).
 
-**Arguments:**
+[%CFEngine_function_attributes(filename, algorithm, hash)%]
 
-* `filename` : Filename to hash, in the range `"?(/.*)`
-* `algorithm` : Hash or digest algorithm, one of
-    * md5
-    * sha1
-    * sha256
-    * sha512
-    * sha384
-    * crypt   
-* `hash` : ASCII representation of hash for comparison, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+`hash` is an ASCII representation of the hash for comparison.
 
 **Example:**
 

@@ -15,10 +15,7 @@ than the file `older`.
 This function compares the modification time (mtime) of the files, referring 
 to changes of content only.
 
-**Arguments**:
-
-* `arg1` : Newer file name, in the range `"?(/.*)`
-* `arg2` : Older file name, in the range `"?(/.*)`
+[%CFEngine_function_attributes(newer, older)%]
 
 **Example:**
 

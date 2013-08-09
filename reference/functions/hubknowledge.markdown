@@ -34,9 +34,7 @@ CFEngine Enterprise) then this will be returned preferentially. If no such
 variable is found, then the server will look for a literal string in a server 
 bundle with a handle that matches the requested object.
 
-**Arguments**:
-
-* `id` : identifier, in the range `[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(id)%]
 
 **Example:**
 

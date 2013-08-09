@@ -12,9 +12,7 @@ tags: [reference, files functions, functions, isplain]
 **Description:** Returns whether the named object `filename` is a 
 plain/regular file.
 
-**Arguments**:
-
-* `arg1` : File object name, in the range `"?(/.*)`
+[%CFEngine_function_attributes(filename)%]
 
 **Example:**
 

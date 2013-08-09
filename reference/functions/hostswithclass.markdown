@@ -18,12 +18,7 @@ hostnames or ip-addresses of hosts that have a given class set. Note that this
 function only works locally on the hub, but allows the hub to construct custom 
 configuration files for (classes of) hosts.
 
-**Arguments**:
-
-* `class` : Class name to look for, in the range `[a-zA-Z0-9_]+`
-* `field` : Type of return value desired, one of
-    * name
-    * address   
+[%CFEngine_function_attributes(class, field)%]
 
 **Example:**
 

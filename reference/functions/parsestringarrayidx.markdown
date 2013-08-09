@@ -15,16 +15,7 @@ tags: [reference, io functions, functions, parsestringarrayidx]
 This function mirrors the exact behavior of `readstringarrayidx()`, but
 reads data from a variable instead of a file. By making data readable from a variable, data driven policies can be kept inline.
 
-**Arguments**:
-
-* `array` : Array identifier to populate, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
-* `input` : A string to parse for input data, in the range `"?(/.*)`
-* `comment` : Regex matching comments, in the range `.*`
-* `split` : Regex to split data, in the range `.*`
-* `maxentries` : Maximum number of entries to read, in the range
-`0,99999999999`
-* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`   
+[%CFEngine_function_attributes(array, input, comment, split, maxentries, maxbytes)%]
 
 **Example:**
 

@@ -16,15 +16,7 @@ within the number of hours specified in `horizon`. The argument `seen` may be
 lastseen or notseen, the latter selecting all hosts not observed to have 
 connected within the specified time.
 
-**Arguments**:
-
-* `horizon` : Horizon since last seen in hours, in the range `0,99999999999`
-* `seen` : Selection criteria, one of
-    * lastseen
-    * notseen   
-* `field` : Type of return value desired, one of
-    * name
-    * address   
+[%CFEngine_function_attributes(horizon, seen, field)%]
 
 **Example:**
 

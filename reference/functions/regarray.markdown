@@ -10,14 +10,9 @@ tags: [reference, data functions, functions, regarray]
 [%CFEngine_function_prototype(array, regex)%]
 
 **Description:** Returns whether `array` contains elements matching the
-regular expression `regex`.
+[anchored][anchored]regular expression `regex`.
 
-* `array` : array identifier, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
-* `regex` : Regular expression, in the range `.*`
-
-A regular expression to match the content. The regular expression is
-anchored, meaning it must match the complete array element.
+[%CFEngine_function_attributes(array, regex)%]
 
 **Example:**
 

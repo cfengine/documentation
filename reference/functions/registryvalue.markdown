@@ -15,10 +15,7 @@ tags: [reference, system functions, functions, registryvalue]
 This function applies only to Windows-based systems. The value is parsed as a 
 string.
 
-**Arguments**:
-
-* `key` : Windows registry key, in the range `.*`
-* `value-id` : Windows registry value-id, in the range `.*`
+[%CFEngine_function_attributes(key, valueid)%]
 
 **Example:**
 

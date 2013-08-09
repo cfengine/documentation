@@ -14,10 +14,7 @@ tags: [reference, utility functions, functions, isvariable]
 The variable need only exist. This says nothing about its value. Use
 `regcmp` to check variable values.
 
-**Arguments**:
-
-* `var` : Variable identifier, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(var)%]
 
 **Example:**
 

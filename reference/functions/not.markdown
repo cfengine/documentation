@@ -11,9 +11,7 @@ tags: [reference, data functions, functions, not]
 
 **Description:** Calculate whether `expression` is false
 
-**Arguments**:
-
-* `expression` : Class expression, in the range `.*`
+[%CFEngine_function_attributes(expression)%]
 
 **Example:**
 

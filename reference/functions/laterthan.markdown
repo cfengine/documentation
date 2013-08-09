@@ -7,21 +7,14 @@ alias: reference-functions-laterthan.html
 tags: [reference, files functions, functions, laterthan]
 ---
 
-[%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]
+[%CFEngine_function_prototype(year, month, day, hour, minute, second)%]
 
 **Description:** Returns whether the current time is later than the given 
 date and time.
 
-The arguments are standard time (See [Function on](#Function-on)).
+The arguments are standard time.
 
-**Arguments**:
-
-* `years` : year in the range `1970,3000`
-* `month` : month, in the range `1,12`
-* `day` : day of month, in the range `1,31`
-* `hour` : hour of day, in the range `0,23`
-* `minute` : minute, in the range `0,59`
-* `second` : second, in the range `0,59`
+[%CFEngine_function_attributes(year, month, day, hour, minute, second)%]
 
 **Example:**
 
@@ -30,3 +23,5 @@ The arguments are standard time (See [Function on](#Function-on)).
 
       "after_deadline" expression => laterthan(2000,1,1,0,0,0);
 ```
+
+**See also:** `on()`

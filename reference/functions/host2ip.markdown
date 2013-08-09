@@ -18,9 +18,7 @@ lookup procedure for a name, so it mimics internal processes and can
 therefore be used not only to cache multiple lookups in the configuration, but 
 to debug the behavior of the resolver.
 
-**Arguments**:
-
-* `hostname` : Host name in ascii, in the range `.*`
+[%CFEngine_function_attributes(hostname)%]
 
 **Example:**
 

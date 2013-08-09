@@ -7,20 +7,13 @@ alias: reference-functions-on.html
 tags: [reference, data functions, functions, "on"]
 ---
 
-[%CFEngine_function_prototype(years, months, days, hours, minutes, seconds)%]
+[%CFEngine_function_prototype(year, month, day, hour, minute, second)%]
 
 **Description:** Returns the specified date/time in integer system representation.
 
 The specified date/time is an absolute date in the local timezone.
 
-**Arguments**:
-
-* `years` : year in the range `1970,3000`
-* `month` : month, in the range `1,12`
-* `day` : day of month, in the range `1,31`
-* `hour` : hour of day, in the range `0,23`
-* `minute` : minute, in the range `0,59`
-* `second` : second, in the range `0,59`
+[%CFEngine_function_attributes(year, month, day, hour, minute, second)%]
 
 **Example:**
 

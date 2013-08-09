@@ -14,10 +14,7 @@ tags: [reference, data functions, functions, islessthan]
 The comparison is made numerically if possible. If the values are
 strings, the result is the inverse to that of comparing with strcmp().
 
-**Arguments**:
-
-* `value1` : Smaller string or value, in the range `.*`
-* `value2` : Larger string or value, in the range `.*`
+[%CFEngine_function_attributes(value1, value2)%]
 
 **Example:**
 

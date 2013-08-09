@@ -14,11 +14,7 @@ tags: [reference, data functions, functions, join]
 Converts a string of type list into a scalar variable using the join
 string in first argument.
 
-**Arguments**:
-
-* `glue` : Join glue-string, in the range `.*`
-* `list` : CFEngine list identifier, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(glue, list)%]
 
 **Example:**
 

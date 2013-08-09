@@ -15,10 +15,7 @@ enumerated hostnames specified with `prefix`.
 This is a pattern matching function for non-regular (enumerated)
 expressions.
 
-**Arguments**:
-
-* `prefix` : Hostname prefix, in the range `.*`
-* `range` : Enumerated range, in the range `.*`
+[%CFEngine_function_attributes(prefix, range)%]
 
 **Example:**
 

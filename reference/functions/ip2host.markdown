@@ -19,9 +19,7 @@ if supported by the resolver library.
 Note that DNS lookups may take time and thus cause CFEngine agents to
 wait for responses, slowing their progress significantly.
 
-**Arguments**:
-
-* `ip` : IP address (IPv4 or IPv6), in the range `.*`
+[%CFEngine_function_attributes(ip)%]
 
 **Example:**
 

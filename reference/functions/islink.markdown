@@ -15,9 +15,7 @@ link.
 The link node must both exist and be a symbolic link. Hard links cannot
 be detected using this function.
 
-**Arguments**:
-
-* `filename` : File object name, in the range `"?(/.*)`
+[%CFEngine_function_attributes(filename)%]
 
 **Example:**
 

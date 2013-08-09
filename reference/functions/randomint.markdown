@@ -17,10 +17,7 @@ the entropy of the md5 algorithm.
 The function will be re-evaluated on each pass if it is not restricted with a
 context class expression as shown in the example.
 
-**Arguments**:
-
-* `lower` : Lower inclusive bound, in the range `-99999999999,9999999999`
-* `upper` : Upper inclusive bound, in the range `-99999999999,9999999999`
+[%CFEngine_function_attributes(lower, upper)%]
 
 **Example:**
 

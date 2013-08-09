@@ -9,26 +9,17 @@ tags: [reference, data functions, functions, regextract]
 
 [%CFEngine_function_prototype(regex, string, backref)%]
 
-**Description:** Returns whether `regex` matches the `string`, and fills the array `backref` with back-references.
+**Description:** Returns whether the [anchored][anchored] `regex` matches the 
+`string`, and fills the array `backref` with back-references.
 
 If there are any back reference matches from the regular expression, then the array will be populated with the values, in the manner:
 
 ```cf3
-    $(identifier[0]) = entire string
-    $(identifier[1]) = back reference 1, etc
+    $(backref[0]) = entire string
+    $(backref[1]) = back reference 1, etc
 ```
 
-**Arguments**:
-
-* `regex` : Regular expression, in the range `.*`
-
-A regular expression containing one or more parenthesized back
-references. The regular expression is [anchored][anchored], meaning it must match
-the entire string
-
-* `string` : Match string, in the range `.*`
-* `backref` : Identifier for back-references, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(regex, string, backref)%]
 
 **Example:**
 

@@ -16,10 +16,7 @@ generally interchangeably say "1,10" or irange("1","10"). However, if
 you want to create a range of dates or times, you must use irange if you
 also use the functions `ago`, `now`, `accumulated`, etc.
 
-**Arguments**:
-
-* `arg1` : Integer, in the range `-99999999999,9999999999`
-* `arg2` : Integer, in the range `-99999999999,9999999999`
+[%CFEngine_function_attributes(arg1, arg2)%]
 
 **Example:**
 

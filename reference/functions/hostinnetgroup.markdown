@@ -11,9 +11,7 @@ tags: [reference, system functions, functions, hostinnetgroup]
 
 **Description:** True if the current host is in the named `netgroup`.
 
-**Arguments**:
-
-* `netgroup` : Netgroup name, in the range `.*`
+[%CFEngine_function_attributes(netgroup)%]
 
 **Example:**
 

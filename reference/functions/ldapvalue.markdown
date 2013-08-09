@@ -16,38 +16,13 @@ tags: [reference, communication functions, functions, ldapvalue]
 This function retrieves a single field from a single LDAP record
 identified by the search parameters. The first matching value it taken.
 
-**Arguments**:
+[%CFEngine_function_attributes(uri, dn, filter, record, scope, security)%]
 
-* `uri` : URI, in the range `.*`
-
-String value of the ldap server. e.g. `"ldap://ldap.cfengine.com.no"`   
-
-* `dn` : Distinguished name, in the range `.*`
-
-Distinguished name, an ldap formatted name built from components, e.g.
-"dc=cfengine,dc=com".   
-
-* `filter` : Filter, in the range `.*`
-
-String filter criterion, in ldap search, e.g. "(sn=User)".   
-
-* `record` : Record name, in the range `.*`
-
-String value with the name of the single record to be retrieved, e.g. `uid`.
-
-* `scope` : Search scope policy, one of
-    * subtree
-    * onelevel
-    * base
-
-* `security` : Security level, one of
-    * none
-    * ssl
-    * sasl
-
-Menu option indicating the encryption and authentication settings for
-communication with the LDAP server. These features might be subject to
-machine and server capabilities.
+`dn` specifies the distinguished name, an ldap formatted name built from 
+components, e.g. "dc=cfengine,dc=com". `filter` is an ldap search, e.g. 
+"(sn=User)", and `record` is the name of the single record to be retrieved, 
+e.g. `uid`. Which `security` values are supported depends on machine and
+server capabilities.
 
 **Example:**
 
