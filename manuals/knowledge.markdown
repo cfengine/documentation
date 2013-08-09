@@ -1,11 +1,13 @@
 ---
-layout: default
+layout: printable
 title: Knowledge Management
 categories: [Manuals, Knowledge Management]
 published: false 
 alias: manuals-knowledge-management.html
 tags: [manuals, knowledge]
 ---
+
+[link](#why-does-knowledge-matter)
 
 Above all, CFEngine promotes a human understanding of complex processes.
 Its promises are easily documentable using comments that the system
