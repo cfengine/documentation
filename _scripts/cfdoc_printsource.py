@@ -21,6 +21,7 @@
 # THE SOFTWARE.
 
 import os
+import cfdoc_linkresolver as linkresolver
 
 class Page:
 	def __init__(self):
@@ -83,16 +84,41 @@ def run(config):
 					child.sorting = sorting
 				count -= 1
 	
-	print_pages(pagetree, 1, None)
+	new_pages = dict()
+	print_pages(pagetree, 1, None, new_pages)
+	for new_page in new_pages.keys():
+		headers = new_pages[new_page]
+		in_file = open(new_page, 'r')
+		lines = in_file.readlines()
+		in_file.close()
+		
+		out_file = open(new_page, 'w')
+		for line in lines:
+			if line.find("[%CFEngine_TOC%]") == 0:
+				out_file.write("# Table of Content\n")
+				out_file.write("\n")
+				for header in headers:
+					level = header.find(' ') - 1
+					if level > 3 or level < 1:
+						continue
+					
+					header = header[level + 2:]
+					entry = " " * ((level - 1) * 4) + "* [" + header + "]"
+					entry += "(#" + linkresolver.headerToAnchor(header) + ")"
+					out_file.write(entry + "\n")
+			else:
+				out_file.write(line)
+		out_file.close()
 
-def print_pages(pages, level, out_file):
+def print_pages(pages, level, out_file, new_pages):
 	sorted_pages = sorted(pages.childlist, key=lambda page: page.sorting)
 	for page in sorted_pages:
 		if page == None:
 			continue
 		if level == 1:
 			out_filename = page.source_filename
-			out_filename = out_filename.replace(".markdown", "-printsource.markdown")
+			out_filename = out_filename.replace(".markdown", "-printable.markdown")
+			new_pages[out_filename] = list()
 			out_file = open(out_filename, "w")
 			out_file.write("---\n")
 			out_file.write("layout: default\n")
@@ -102,15 +128,16 @@ def print_pages(pages, level, out_file):
 			out_file.write("alias: printable-" + page.alias + "\n")
 			out_file.write("---\n")
 			out_file.write("\n")
+			out_file.write("[%CFEngine_TOC%]\n")
+			out_file.write("\n")
 		else:
 			title = "#" * level
 			title += " " + page.title
 			out_file.write(title + "\n")
 		
-		print_page(page.source_filename, out_file, level)
+		new_pages[out_file.name] += print_page(page.source_filename, out_file, level)
 		
-		if len(page.childlist) > 0:
-			print_pages(page, level +1, out_file)
+		print_pages(page, level +1, out_file, new_pages)
 
 def print_page(page_file, out_file, level):
 	in_file = open(page_file, 'r')
@@ -118,16 +145,25 @@ def print_page(page_file, out_file, level):
 	
 	out_file.write("<!--- Begin include: `" + page_file + "` -->\n")
 	
+	headers = list()
 	in_body = True
+	in_code = False
 	for line in lines:
 		if line[:3] == '---':
 			in_body = not in_body
 			continue
+		if line[:3] == '```':
+			in_code = not in_code
+			continue
 		if in_body:
-			if line[0] == '#': # increase indent level for header in page
-				line = '#' * (level - 1) + line
+			if not in_code:
+				if line[0] == '#': # increase indent level for header in page
+					line = '#' * (level - 1) + line
+					if line.find("exclude-from-toc") == -1:
+						headers.append(line.lstrip().rstrip())
 			out_file.write(line)
 
 	out_file.write("\n")
 	out_file.write("<!--- End include: `" + page_file + "` -->\n")	
 	out_file.write("\n")
+	return headers
