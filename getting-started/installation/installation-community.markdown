@@ -2,13 +2,13 @@
 layout: default
 title: Installing Community
 sorting: 15
-categories: [Getting Started, Installation, Community]
+categories: [Getting Started, Installing Community]
 published: true
-alias: getting-started-installation-community.html
+alias: getting-started-installing-community.html
 tags: [getting started, installation, community]
 ---
 
-Please complete the [General Requirements](getting-started-installation.html) if you have not already done so.
+Please complete the [General Requirements][Installation] if you have not already done so.
 
 ## Community Edition
 
@@ -36,5 +36,13 @@ Host:
         /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
     ```
 
+## Next Steps
 
+Learn more about CFEngine by using the following resources:
+
+Read CFEngine [manuals][CFEngine Manuals].
+
+Get [Support][Support and Community] from the CFEngine community.
+
+View additional [tutorials, examples, and documentation][Learning Tools].
 

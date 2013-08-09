@@ -9,8 +9,8 @@ tags: [getting started, installation]
 ---
 
 **IMPORTANT NOTE:** *This is a pre-release of CFEngine, intended for testing
-and showcase only. This version is not supported, not covered by service level
-agreements (SLAs) and not intended for production environments. Do not upgrade
+and showcase only. This version is not supported, not covered by service-level
+agreements (SLAs), and not intended for production environments. Do not upgrade
 or use in conjunction with other versions at this point.
 
 <!--- TODO: move up when no longer a pre-release
@@ -44,6 +44,6 @@ additional software is not required.
 
 ##Specific Requirements
 
-Click here to complete the [Community](getting-started-installation-community.html) installation.
+Click here to complete the [Community][Installing Community] installation.
 
-Click here to complete the [Enterprise](getting-started-installation-enterprise.html) installation.
+Click here to complete the [Enterprise][Installing Enterprise] installation.

@@ -4,7 +4,7 @@ title: Learning Tools
 categories: [Getting Started, Learning Tools]
 published: true
 sorting: 10
-alias: getting-started-supporting-documentation.html
+alias: getting-started-learning-tools.html
 tags: [getting started, learning tools]
 ---
 
@@ -18,10 +18,10 @@ The following tutorials, examples, and documentation are a good way to learn CFE
 * <a href="http://cf-learn.info" target="_blank">Get the book!</a>
 * Study the [tutorials and examples][CFEngine examples].
 * Read the documentation about the [Design][Design],
-  the [CFEngine Components][The CFEngine Components].
+  the [CFEngine Components][The CFEngine Components] 
   and [Language Concepts][Language Concepts]
 * Find out what CFEngine can do for you in the
-  [Promise Type reference][promise types and attributes] documentation
+  [Promise Type reference][promise types and attributes] documentation.
 * Join the [help and support forums][Support and Community] and become part
   of the CFEngine Community.
 * Read [our blog][cfengine blog] and follow us on 
@@ -31,11 +31,13 @@ The following tutorials, examples, and documentation are a good way to learn CFE
   <a href="http://www.linkedin.com/groups?gid=136574&trk=hb_side_g" 
      target="_blank">LinkedIn</a>
   to stay in touch with what's happening in CFEngine and the Configuration 
-  Management industry
+  Management industry.
 * Start contributing to
   <a href="https://github.com/cfengine/design-center" target="_blank">Design Center</a>,
   <a href="https://github.com/cfengine/documentation" target="_blank">Documentation</a>
-  and the <a href="https://github.com/cfengine/core" target="_blank">Code</a>
+  and the <a href="https://github.com/cfengine/core" target="_blank">Code</a>.
+* Review additional CFEngine [code editors](https://cfengine.com/cfengine-code-editors).
+  
 
 #### Third-Party Help
 

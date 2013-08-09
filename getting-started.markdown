@@ -13,13 +13,13 @@ with ready-made VirtualBox VMs.
 
 Download [Community](https://cfengine.com/community).
 
-Install [CFEngine](https://cfengine.com/docs/3.5/getting-started-installation.html).
+Install [CFEngine][Installation].
 
-[Upgrade](https://cfengine.com/docs/3.5/getting-started-upgrade.html) existing CFEngine installations.
+[Upgrade][Upgrade] existing CFEngine installations.
 
 Read CFEngine [manuals][CFEngine Manuals].
 
-Get [Support](https://cfengine.com/docs/3.5/getting-started-support-and-community.html).
+Get [Support][Support and Community].
 
-View additional [tutorials, examples, and documentation](https://cfengine.com/docs/3.5/getting-started/learning-tools.markdown).
+View additional [tutorials, examples, and documentation][Learning Tools].
 
