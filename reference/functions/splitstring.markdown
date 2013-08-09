@@ -12,15 +12,12 @@ tags: [reference, data functions, functions, splitstring]
 **Description:** Splits `string` into at most `maxent` substrings wherever 
 `regex` occurs, and  returns the list with those strings.
 
+The regular expression is [unanchored][unanchored].
 If the maximum number of substrings is insufficient to accommodate all 
 entries,then the final entry in the `slist` that is generated will contain the 
 rest of the un-split string.
 
-**Arguments**:
-
-* `string` : A data string, in the range `.*`
-* `regex` : [Unanchored][unanchored] regular expression to split on, in the range `.*`
-* `maxent` : Maximum number of substrings, in the range `0,99999999999`   
+[%CFEngine_function_attributes(string, regex, maxent)%]
 
 **Example:**
 

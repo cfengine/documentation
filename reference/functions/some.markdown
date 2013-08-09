@@ -9,14 +9,10 @@ tags: [reference, data functions, functions, some]
 
 [%CFEngine_function_prototype(regex, list)%]
 
-**Description:** Return whether any element of the list matches the regular 
-expression.
+**Description:** Return whether any element of `list` matches the 
+[Unanchored][unanchored] regular expression `regex`.
 
-**Arguments**:
-
-* `regex` : [Unanchored][unanchored] regular expression to find, in the range `.*`
-* `list` : The name of the list variable to check, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(regex, list)%]
 
 **Example:**
 

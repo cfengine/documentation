@@ -21,9 +21,7 @@ This function may be used to distribute a task, typically on multiple hosts, in 
 
 The function is similar to the `splaytime` feature in `cf-execd`, except that it allows you to base the decision on any string-criterion on a given host. 
 
-**Arguments**:
-
-* `input` : Input string for classification, in the range `.*`
+[%CFEngine_function_attributes(input, policy)%]
 
 The variation in `input` determines how effectively CFEngine will be able to 
 distribute tasks. CFEngine instances with the same `input` will yield a true 
@@ -31,8 +29,6 @@ result at the same time, and different `input` will yield a true result at
 different times. Thus tasks could be scheduled according to group names for 
 predictability, or according to IP addresses for distribution across the 
 policy interval.
-
-* `policy` : Splay time policy, in the range `daily`, `hourly`
 
 The times at which the `splayclass` will be defined depends on the `policy`. 
 If it is `hourly` then the class will be defined for a 5-minute interval every 

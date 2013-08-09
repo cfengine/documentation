@@ -11,10 +11,7 @@ tags: [reference, data functions, functions, unique]
 
 **Description:** Returns list of unique elements from `list`.
 
-**Arguments**:
-
-* `list` : The name of the list variable, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+[%CFEngine_function_attributes(list)%]
 
 **Example:**
 

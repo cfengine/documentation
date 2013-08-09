@@ -13,11 +13,7 @@ tags: [reference, data functions, functions, sort]
 
 Only lexicographical sorting is supported currently.
 
-**Arguments**:
-
-* `list` : The name of the list variable, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
-* `mode` : Sorting mode, in the range `lex`
+[%CFEngine_function_attributes(regex, mode)%]
 
 **Example:**
 

@@ -12,10 +12,7 @@ tags: [reference, data functions, functions, strcmp]
 **Description:** Returns whether the two strings `string1` and `string2` match 
 exactly.
 
-**Arguments**:
-
-* `string1` : The first string, in the range `.*`
-* `string2` : The second string, in the range `.*`
+[%CFEngine_function_attributes(string1, string2)%]
 
 **Example:**
 
