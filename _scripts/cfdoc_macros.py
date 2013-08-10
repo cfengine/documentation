@@ -323,6 +323,61 @@ def resolveAttribute(attributes, argument):
 
 	return attribute_line
 
+def load_include_file(searchfile, searchpaths):
+	lines = list()
+	for searchpath in searchpaths:
+		filename = searchpath + "/" + searchfile
+		if os.path.exists(filename):
+			in_file = open(filename, 'r')
+			lines = in_file.readlines()
+			break
+	if len(lines) == 0:
+		print "load_include_file: File not found or can't open: " + searchfile
+		print "       searching :"
+		print "                  " + searchpaths
+	return lines
+
+def include_example(parameters, config):
+	lines = load_include_file(parameters[0], config["example_directories"])
+	
+	markdown_lines = []
+	skip_block = False
+	in_documentation = False
+	for line in lines:
+		if skip_block == False:
+			if line.find("#[%-%]") == 0:
+				skip_block = True
+				continue
+			if line.find("#@ ") == 0:
+				line = line[3:]
+				if not in_documentation:
+					markdown_lines.append("```\n\n")
+					in_documentation = True
+			elif in_documentation:
+				markdown_lines.append("\n```cf3\n")
+				in_documentation = False
+			elif line[0] == '#':
+				continue
+			markdown_lines.append(line)
+		if line.find("#[%+%]") == 0:
+			skip_block = False
+	
+	# remove leading and trailing empty lines
+	while markdown_lines[0].lstrip() == "":
+		del markdown_lines[0]
+	while markdown_lines[-1].lstrip() == "":
+		del markdown_lines[-1]
+
+	if len(markdown_lines):
+		markdown_lines.insert(0, "\n```cf3\n")
+		# if example ended with documentation, prune trailing code, else terminate block
+		if markdown_lines[-1] != "\n```cf3\n":
+			markdown_lines.append("```")
+		else:
+			del markdown_lines[-1]
+
+	return markdown_lines
+
 def library_include(parameters, config):
 	markdown_lines = []
 	
