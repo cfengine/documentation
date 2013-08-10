@@ -2,7 +2,7 @@ module Jekyll
 
   module CfeLiquidUtils
     
-    $CfeUtils = Jekyll::CfeUtils.new
+    $CfeUtils = CFE::CfeUtils.new
     
     def removeUnvantedChars(input)
       return $CfeUtils.removeUnvantedChars(input)

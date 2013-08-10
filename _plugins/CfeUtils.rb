@@ -1,4 +1,4 @@
-module Jekyll
+module CFE
   class CfeUtils
     
     #produce proper key for hashes    

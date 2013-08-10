@@ -1,12 +1,13 @@
 module Jekyll
   require "pp"
   require "json"
+  require File.dirname(__FILE__) + "CfeUtils.rb"
 
   class SiteNavigation < Jekyll::Generator
     safe true
     priority :lowest
     
-    $CfeUtils = Jekyll::CfeUtils.new
+    $CfeUtils = CFE::CfeUtils.new
     
     ## sort keys inside hash
     def sort_by_key(data, recursive=false, &block)
