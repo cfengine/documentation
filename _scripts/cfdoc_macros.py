@@ -21,6 +21,7 @@
 # THE SOFTWARE.
 
 import os
+import re
 import sys
 import json
 import cfdoc_environment as environment
@@ -337,8 +338,26 @@ def load_include_file(searchfile, searchpaths):
 		print "                  " + searchpaths
 	return lines
 
+def prune_include_lines(markdown_lines):
+	# remove leading and trailing empty lines
+	while markdown_lines[0].lstrip() == "":
+		del markdown_lines[0]
+	while markdown_lines[-1].lstrip() == "":
+		del markdown_lines[-1]
+
+	if len(markdown_lines):
+		markdown_lines.insert(0, "\n```cf3\n")
+		# if example ended with documentation, prune trailing code, else terminate block
+		if markdown_lines[-1] != "\n```cf3\n":
+			markdown_lines.append("```")
+		else:
+			del markdown_lines[-1]
+	return markdown_lines
+
 def include_example(parameters, config):
 	lines = load_include_file(parameters[0], config["example_directories"])
+	if not len(lines):
+		return ""
 	
 	markdown_lines = []
 	skip_block = False
@@ -361,22 +380,38 @@ def include_example(parameters, config):
 			markdown_lines.append(line)
 		if line.find("#[%+%]") == 0:
 			skip_block = False
+
+	return prune_include_lines(markdown_lines)
+
+def include_snippet(parameters, config):
+	lines = load_include_file(parameters[0], config["example_directories"])
+	if not len(lines):
+		return ""
 	
-	# remove leading and trailing empty lines
-	while markdown_lines[0].lstrip() == "":
-		del markdown_lines[0]
-	while markdown_lines[-1].lstrip() == "":
-		del markdown_lines[-1]
+	begin = re.compile(parameters[1])
+	end = re.compile(parameters[2])
 
-	if len(markdown_lines):
-		markdown_lines.insert(0, "\n```cf3\n")
-		# if example ended with documentation, prune trailing code, else terminate block
-		if markdown_lines[-1] != "\n```cf3\n":
-			markdown_lines.append("```")
-		else:
-			del markdown_lines[-1]
+	markdown_lines = []
+	skip_block = True
+	for line in lines:
+		if skip_block == False:
+			markdown_lines.append(line)
+			if end.match(line) != None:
+				 # if last line a comment, assume end-marker and skip
+				if line[0] == "#":
+					del markdown_lines[-1]
+				break
+		elif begin.match(line) != None:
+			skip_block = False
+			if line[0] != '#':
+				markdown_lines.append(line)
 
-	return markdown_lines
+	if not len(markdown_lines):
+		print "Snippet not found: "
+		print begin.pattern
+		return list()
+		
+	return prune_include_lines(markdown_lines)
 
 def library_include(parameters, config):
 	markdown_lines = []
