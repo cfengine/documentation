@@ -1,7 +1,7 @@
 module Jekyll
   require "pp"
   require "json"
-  require File.dirname(__FILE__) + "CfeUtils.rb"
+  require File.dirname(__FILE__) + "/CfeUtils.rb"
 
   class SiteNavigation < Jekyll::Generator
     safe true
