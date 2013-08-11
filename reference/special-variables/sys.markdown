@@ -184,7 +184,7 @@ The location of the system NFS exports file.
     # exports = /etc/dfs/dfstab
 ```
 
-###s sys.flavor, sys.flavour
+### sys.flavor, sys.flavour
 
 A variable containing an operating system identification string that is
 used to determine the current release of the operating system in a form

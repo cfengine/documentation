@@ -234,6 +234,5 @@ The Mission Portal is immediately accessible. Connect to the Policy Server
 through your web browser at http://`<IP address of your Policy Server>`.
 
 To be able to use the [Mission Portal's][Mission Portal] Design Center
-front-end, continue with [integrating Mission Portal with git][Integrating
-Mission Portal with git].
+front-end, continue with [Integrating Mission Portal with git].
 
