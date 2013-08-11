@@ -346,6 +346,11 @@ article p {
     background-position: -85px 0;
 }
 
+#print_TOC_wrapper {
+    display: none;
+}
+
+
 @media all and (min-width: 1200px) {
     .wrapper {
       padding: 0 5em;
@@ -408,3 +413,7 @@ article p {
         font-size: 1em;
     }
 }
+
+
+
+    

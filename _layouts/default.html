@@ -20,6 +20,12 @@
                 </div>
                 {% endif %}
 
+
+                {% comment %} Additional TOC which is visible only if user print page. Does not apply to PDF {% endcomment %}
+                <div id="print_TOC_wrapper">Table of contents<br>
+                     <div id="print_TOC"></div>
+                </div>
+
                 <h1 id="top">{{page.title}}</h1>
                     {{ content }}
             </article>
