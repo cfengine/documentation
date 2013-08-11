@@ -94,7 +94,10 @@ def run(config):
 		
 		out_file = open(new_page, 'w')
 		for line in lines:
-			if line.find("[%CFEngine_TOC%]") == 0:
+			if line.find("alias:") == 0:
+				alias = line[line.find(':') + 1:].lstrip().rstrip()
+				out_file.write(line)
+			elif line.find("[%CFEngine_TOC%]") == 0:
 				out_file.write("# Table of Content\n")
 				out_file.write("\n")
 				for header in headers:
@@ -103,8 +106,11 @@ def run(config):
 						continue
 					
 					header = header[level + 2:]
-					entry = " " * ((level - 1) * 4) + "* [" + header + "]"
-					entry += "(#" + linkresolver.headerToAnchor(header) + ")"
+					if alias != None:
+						entry = " " * ((level - 1) * 4) + "* [" + header + "]"
+						entry += "("+ alias + "#" + linkresolver.headerToAnchor(header) + ")"
+					else:
+						entry = header
 					out_file.write(entry + "\n")
 			else:
 				out_file.write(line)
@@ -133,7 +139,8 @@ def print_pages(pages, level, out_file, new_pages):
 		else:
 			title = "#" * level
 			title += " " + page.title
-			out_file.write(title + "\n")
+			out_file.write(title + "\n\n")
+			new_pages[out_file.name].append(title)
 		
 		new_pages[out_file.name] += print_page(page.source_filename, out_file, level)
 		
