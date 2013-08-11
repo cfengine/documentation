@@ -38,6 +38,43 @@
         content: " (" attr(href) ") ";
     }
 
+    #breadcrumbs a[href]:after,
+    #tags a[href]:after,
+    #print_TOC_wrapper a[href]:after {
+         content: "";
+    }
+
+    #breadcrumbs i.arrow {
+        background: url('../media/images/single_arrow.png') no-repeat 0 7px;
+    }
+
+    #tags li a {
+        background: none !important;
+        margin: 0 0 0 10px;
+        padding: 0;
+    }
+
+    #tags li span {
+        background: none;
+        margin: 0 0 0 0px;
+        padding: 0;
+    }
+
+    #print_TOC a {
+        text-decoration: none;
+    }
+
+    #print_TOC .link_h1:first-child {
+        display: none;
+    }
+
+    #print_TOC .link_h3 {
+        margin-left: 1em;
+    }
+
+    #print_TOC .link_h4 {
+        margin-left: 2em;
+    }
 
     body:before {
         content: "CFEngine";

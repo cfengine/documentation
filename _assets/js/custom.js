@@ -30,7 +30,7 @@ $(document).ready(function() {
     }
 
 
-var ToC_start =
+    var ToC_start =
         "<nav role='navigation'>" +
              "<ul>";
     var ToC_End =
@@ -60,6 +60,33 @@ var ToC_start =
     if (ToC.length)
     {
         $("#TOCbox_wrapper").show();
-        $("#TOCbox_wrapper #TOCbox_list").append(ToC_start + ToC + ToC_End);
+        var result = ToC_start + ToC + ToC_End;
+        $("#TOCbox_wrapper #TOCbox_list").append(result);
+        $("#print_TOC").append(result);
     }
+
+
+
+    // detect print event, display TOC
+    var beforePrint = function() {
+        $("#print_TOC_wrapper").show();
+    };
+    var afterPrint = function() {
+        $("#print_TOC_wrapper").hide();
+    };
+
+    if (window.matchMedia) {
+        var mediaQueryList = window.matchMedia('print');
+        mediaQueryList.addListener(function(mql) {
+            if (mql.matches) {
+                beforePrint();
+            } else {
+                afterPrint();
+            }
+        });
+    }
+
+    window.onbeforeprint = beforePrint;
+    window.onafterprint = afterPrint;
+
 });
