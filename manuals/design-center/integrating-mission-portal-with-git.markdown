@@ -51,8 +51,10 @@ the git service.
    This is only required if git is not available in the default repositories,
    for example RHEL 5.
 
+
           root@gitserver # wget http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
           root@gitserver # rpm -Uvh epel-releases-5*.rpm
+
 
 2. Install the `git` package.
 
@@ -237,7 +239,7 @@ pull from git every time it runs (by default every 5 minutes).
 3. You should now see a listing of some sketches that are available out of the box.
 4. Click on the `Packages::packages_removed` sketch.
 5. Fill out the fields as shown by the example below, and click `Show Hosts` and `Activate`.
-![Test activation in Mission Portal](mission-portal-test-activation.png)
+ ![Test activation in Mission Portal](mission-portal-test-activation.png)
 6. Type in "My test activation" into the commit message box and commit.
 
 ## Review change history from git commit log
