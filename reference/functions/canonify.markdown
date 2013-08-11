@@ -11,8 +11,7 @@ tags: [reference, data functions, functions, canonify]
 
 **Description:** Convert an arbitrary string `text` into a legal class name.
 
-This function turns arbitrary text into class data (See
-[classify()][classify]).
+This function turns arbitrary text into class data.
 
 [%CFEngine_function_attributes(text)%]
 
@@ -27,3 +26,4 @@ This function turns arbitrary text into class data (See
            ifvarclass => canonify("start_$(component)");
 ```
 
+**See also:** [classify()][classify]).
