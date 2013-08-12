@@ -32,10 +32,10 @@ file.
 The documentation pre-processor will create those automatically.
 
 ```
-`bundles` and `readfile()`
+`classes` and `readfile()`
 ```
 
-`bundles` and `readfile()`
+`classes` and `readfile()`
 
 ### Link to External URL
 
