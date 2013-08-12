@@ -20,7 +20,7 @@ CFEngine users by correcting some of those here!
 The CFEngine documentation is written in regular
 [markdown](http://daringfireball.net/projects/markdown/syntax), with some
 extensions as documented below. Check out the
-[cheatsheet][Markdown Cheatsheet]!
+[cheatsheet](https://cfengine.com/docs/master/markdown-cheatsheet.html)!
 
 To keep the source readable in git and workable with a broad range of tools,
 keep the line length in paragraphs below 78 characters.

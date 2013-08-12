@@ -21,7 +21,7 @@ to make it even simpler. Here's a list of the most commonly used formats.
 
 `[top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Link within documentation]`
 
-[top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Link within documentation]
+[top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Links]
 
 **Note:** For known pages, see the 
 [_references.markdown](https://github.com/cfengine/documentation-generator/blob/master/_references.md)
@@ -32,10 +32,10 @@ file.
 The documentation pre-processor will create those automatically.
 
 ```
-\`bundle\` and \`readfile()\`
+\`bundles\` and \`readfile()\`
 ```
 
-`bundle` and `readfile()`
+`bundles` and `readfile()`
 
 ### Link to External URL
 
