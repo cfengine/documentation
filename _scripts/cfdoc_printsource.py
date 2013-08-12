@@ -100,18 +100,23 @@ def run(config):
 			elif line.find("[%CFEngine_TOC%]") == 0:
 				out_file.write("# Table of Content\n")
 				out_file.write("\n")
+				first = True
 				for header in headers:
 					level = header.find(' ') - 1
 					if level > 3 or level < 1:
 						continue
-					
 					header = header[level + 2:]
+					
+					 # make sure we start with a proper list
+					if first and level > 1:
+						level = 1
 					if alias != None:
 						entry = " " * ((level - 1) * 4) + "* [" + header + "]"
 						entry += "("+ alias + "#" + linkresolver.headerToAnchor(header) + ")"
 					else:
 						entry = header
 					out_file.write(entry + "\n")
+					first = False
 			else:
 				out_file.write(line)
 		out_file.close()
