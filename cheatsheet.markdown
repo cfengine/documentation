@@ -32,7 +32,7 @@ file.
 The documentation pre-processor will create those automatically.
 
 ```
-\`bundles\` and \`readfile()\`
+`bundles` and `readfile()`
 ```
 
 `bundles` and `readfile()`
