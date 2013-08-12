@@ -18,7 +18,9 @@ CFEngine users by correcting some of those here!
 ## Writing Documentation
 
 The CFEngine documentation is written in regular
-[markdown](http://daringfireball.net/projects/markdown/syntax).
+[markdown](http://daringfireball.net/projects/markdown/syntax), with some
+extensions as documented below. Check out the
+[cheatsheet][Markdown Cheatsheet]!
 
 To keep the source readable in git and workable with a broad range of tools,
 keep the line length in paragraphs below 78 characters.
@@ -131,6 +133,95 @@ This will automatically link to the section or page with title
 When the word is a function, mark it as such using `()`:
 
     **See also:** [`classify()`][classify]
+
+### Macros
+
+The documentation generator will pre-process the markdown content
+before passing it to Jekyll for the rendering. The pre-processor
+understands and replaces the macros. Macros all have the form
+
+`[%CFEngine_MACRO(parameters)%]`
+
+and need to be used as a separate line, as the entire line will be
+replaced by the pre-processor.
+
+#### Quoting policy files
+
+* `[%CFEngine_include_example(filename)%]`
+
+Injects the code from `filename` as a CFEngine code block. Comments
+are ignored, unless they start with `#@`, in which case they interrupt
+the code block and are rendered as markdown.
+
+The generator searches for `filename` in the `core/examples`
+subdirectory of WKRDIR.
+
+* `[%CFEngine_include_snippet(filename, begin_rx, end_rx)%]`
+
+Searches `filename` for the first line that matches the regular
+expression `begin_rx`, and injects all lines from there until the
+first line that matches `end_rx`. The injected lines will be in a
+CFEngine code block.
+
+If the line that matches the regular expression is a comment, then
+it is excluded from the quote, otherwise it is included.
+
+#### Documenting Policy Libraries
+
+* `[%CFEngine_library_include(filename)%]`
+
+Parsers the JSON version of the CFEngine policy in `filename` and generates
+documentation from it.
+
+The generator searches for the library in the `_json` subdirectory of
+the documentation generator, and needs to be provided without file
+extension.
+
+The generates documentation parses comments between bundle/body
+prototype declaration and the opening `{` as doxygen syntax, supporting
+the following tags:
+
+    @brief text
+
+Generates the **Description** section.
+
+    @param attr text
+
+Includes `text` in the documentation for attribute `attr` within the 
+**Arguments** section.
+
+    @return text
+
+Generates the **Return value** statement.
+
+The content in `text` is then rendered as standard markdown, and can span
+multiple lines and paragraphs.
+
+#### Documenting CFEngine Syntax Elements
+
+The following macros require the syntax map to be generated via
+via `cf-promises -s` into a file `_json/syntax_map.json` within the
+`_json` subdirectory of the documentation generator.
+
+* `[%CFEngine_function_table()%]`
+
+Renders a table of built-in functions, grouped by function category.
+
+* `[%CFEngine_function_prototype(arg1, ...)%]`
+
+Renders the prototype of the function that has the same name as the
+title of the current page. Parameters `arg1` etc are used for the names
+of the parameters.
+
+* `[%CFEngine_function_attributes(arg1, ...)%]`
+
+Renders a list of attributes for the function that has the same name as the
+title of the current page. `arg1` etc are used for the parameter names.
+
+* `[%CFEngine_syntax_map(subtree, exclude1...)%]`
+
+Renders a nested tree of CFEngine words, starting at `subtree`. Tree
+nodes `exclude1` etc are ignored.
 
 ## Content Style Guide
 
