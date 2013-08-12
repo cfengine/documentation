@@ -20,13 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-# Usage:
-# - Put [%examplefile%] as a placeholder into a markdown source
-# - point environment variable CFDOC_EXAMPLEPATH to the location of the file
-# - put [%+] and [%-] markers into the example file to include/exclude blocks
-#   default is exclude so that license headers are automatically skipped
-# - for each occurance of [%examplefile%], the next code block is injected
-
 import os
 
 def run(config):
@@ -132,9 +125,9 @@ def include(parameters, config):
 	for line in lines:
 		if skip_block == False:
 			markdown_lines.append(line)
-		if line.find("#[%+]") == 0:
+		if line.find("#[%+%]") == 0:
 			skip_block = False
-		elif line.find("#[%-]") == 0:
+		elif line.find("#[%-%]") == 0:
 			skip_block = True
 			
 	return markdown_lines
