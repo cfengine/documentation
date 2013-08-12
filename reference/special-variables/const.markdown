@@ -3,7 +3,7 @@ layout: default
 title: const
 categories: [Reference, Special Variables, const]
 published: true
-alias: reference-special-Variables-context-const.html
+alias: reference-special-variables-context-const.html
 tags: [reference, variables, const, const]
 ---
 
