@@ -324,18 +324,22 @@ def resolveAttribute(attributes, argument):
 
 	return attribute_line
 
-def load_include_file(searchfile, searchpaths):
-	lines = list()
+def find_include_file(searchfile, searchpaths):
 	for searchpath in searchpaths:
 		filename = searchpath + "/" + searchfile
 		if os.path.exists(filename):
-			in_file = open(filename, 'r')
-			lines = in_file.readlines()
-			break
+			return filename
+	return None
+
+def load_include_file(filename):
+	lines = list()
+	in_file = open(filename, 'r')
+	lines = in_file.readlines()
 	if len(lines) == 0:
 		print "load_include_file: File not found or can't open: " + searchfile
 		print "       searching :"
 		print "                  " + searchpaths
+		return None
 	return lines
 
 def prune_include_lines(markdown_lines):
@@ -355,8 +359,9 @@ def prune_include_lines(markdown_lines):
 	return markdown_lines
 
 def include_example(parameters, config):
-	lines = load_include_file(parameters[0], config["example_directories"])
-	if not len(lines):
+	filename = find_include_file(parameters[0], config["example_directories"])
+	lines = load_include_file(filename)
+	if lines == None:
 		return ""
 	
 	markdown_lines = []
@@ -381,11 +386,19 @@ def include_example(parameters, config):
 		if line.find("#[%+%]") == 0:
 			skip_block = False
 
-	return prune_include_lines(markdown_lines)
+	prune_include_lines(markdown_lines)
+	
+	markdown_lines.append("\n")
+	markdown_lines.append("This policy can be found in " )
+	markdown_lines.append("`/var/cfengine/share/doc/examples/" + parameters[0] + "`")
+	markdown_lines.append("\n")
+	
+	return markdown_lines
 
 def include_snippet(parameters, config):
-	lines = load_include_file(parameters[0], config["example_directories"])
-	if not len(lines):
+	filename = find_include_file(parameters[0], config["example_directories"])
+	lines = load_include_file(filename)
+	if lines == None:
 		return ""
 	
 	begin = re.compile(parameters[1])
