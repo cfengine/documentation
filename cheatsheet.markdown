@@ -19,7 +19,7 @@ to make it even simpler. Here's a list of the most commonly used formats.
 
 ### Link within documentation and to known pages
 
-`[top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Link within documentation]`
+`[top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Links]`
 
 [top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Links]
 
