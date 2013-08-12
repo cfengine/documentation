@@ -29,6 +29,16 @@ The variable gives the kernel's short architecture description.
     # arch = x86_64
 ```
 
+### sys.bindir
+
+The name of the directory where CFEngine looks for its binaries..
+
+```cf3
+    # bindir = /var/cfengine/bin
+```
+
+**History:** Introduced in CFEngine 3.6
+
 ### sys.cdate
 
 The date of the system in canonical form, i.e. in the form of a class.
@@ -184,6 +194,16 @@ The location of the system NFS exports file.
     # exports = /etc/dfs/dfstab
 ```
 
+### sys.failsafe
+
+The name of the failsafe policy file.
+
+```cf3
+    # failsafe = /var/cfengine/inputs/failsafe.cf
+```
+
+**History:** Introduced in CFEngine 3.6
+
 ### sys.flavor, sys.flavour
 
 A variable containing an operating system identification string that is
@@ -243,6 +263,16 @@ whether this is qualified or unqualified with a domain name.
 ```cf3
     # host = myhost
 ```
+
+### sys.inputdir
+
+The name of the inputs directory where CFEngine looks for its policy files.
+
+```cf3
+    # inputdir = /var/cfengine/inputs
+```
+
+**History:** Introduced in CFEngine 3.6
 
 ### sys.interface
 
@@ -393,6 +423,26 @@ The first two octets of the IPv4 address of the system interface named as the as
 
 The first three octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_3[le0])` or `$(ipv4_3[xr1])`.
 
+### sys.libdir
+
+The name of the directory where CFEngine looks for its libraries.
+
+```cf3
+    # libdir = /var/cfengine/inputs/lib/3.6
+```
+
+**History:** Introduced in CFEngine 3.6
+
+### sys.local_libdir
+
+The name of the directory where CFEngine looks for its libraries, without any prefixes.
+
+```cf3
+    # local_libdir = lib/3.6
+```
+
+**History:** Introduced in CFEngine 3.6
+
 ### sys.license_owner
 
 ```cf3
@@ -435,6 +485,16 @@ The name of the system email spool directory.
 ```cf3
     # maildir = /var/spool/mail
 ```
+
+### sys.masterdir
+
+The name of the directory on the hub where CFEngine looks for inputs to be validated and copied into `sys.inputdir`.
+
+```cf3
+    # masterdir = /var/cfengine/masterfiles
+```
+
+**History:** Introduced in CFEngine 3.6
 
 <!---
 ### sys.nova_version
@@ -523,6 +583,16 @@ seconds. See also `$(sys.sysday)`.
    # systime = 1352754900
 
    Corresponds to Mon Nov 12 21:15:00 2012 UTC.
+```
+
+**History:** Introduced in CFEngine 3.6
+
+### sys.update
+
+The name of the update policy file.
+
+```cf3
+    # update = /var/cfengine/inputs/update.cf
 ```
 
 **History:** Introduced in CFEngine 3.6
