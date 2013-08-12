@@ -14,10 +14,9 @@ tags: [reference, files functions, functions, filestat]
 If the file object does not exist, the function call fails and the
 variable does not expand.
 
-[%CFEngine_function_attributes(filename, field)%]
-
 **Arguments**:
 
+* `filename` : the file or directory name to inspect
 * `field` : the requested field, with the following allowed values:
     * `size` : size in bytes
     * `gid` : group ID
@@ -39,7 +38,6 @@ variable does not expand.
     * `dirname` : the directory portion of the file name
     * `linktarget` : if the file is a `symlink`, its *final* target.  The target is chased up to 32 levels of recursion.  On Windows, this returns the file name itself.
     * `linktarget_shallow` :  if the file is a `symlink`, its *first* target.  On Windows, this returns the file name itself.
-* `filename` : the file or directory name to inspect
 
 **Example:**
 
