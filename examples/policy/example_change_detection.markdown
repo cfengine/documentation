@@ -11,42 +11,7 @@ reviewed-by: atsaloli
 
 This policy will look for changes recursively in a directory.
 
-```cf3
-
-    body common control 
-    {
-    bundlesequence  => { "example"  };
-    }
-    
-    ########################################################
-    
-    bundle agent example
-    {
-    files:
-    
-      "/etc/example"    # Directory to monitor for changes.
-    
-       changes      => detect_all_change,
-       depth_search => recurse("inf");
-    }
-        
-    #########################################################
-        
-    body changes detect_all_change 
-    {
-    report_changes => "all";
-    update_hashes  => "yes";
-    }
-
-    #########################################################
-    
-    body depth_search recurse(d) 
-    {
-    depth        => "$(d)";
-    }
-```
-
-This policy can be found in `/var/cfengine/share/doc/examples/unit_change_detect.cf`.
+[%CFEngine_include_example(change_detect.cf)%]
 
 Here is an example run.
 
