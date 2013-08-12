@@ -11,9 +11,25 @@ to make it even simpler. Here's a list of the most commonly used formats.
 
 ## Basic Formatting
 
+```
+One
+Paragraph
+
+Two
+Paragraphs
+```
+
+One
+Paragraph
+
+Two
+Paragraphs
+
+
 `**Bold**` **Bold**
 
 `*Italic*` *Italic*
+
 
 ## Links
 
@@ -99,17 +115,17 @@ about it, although it's better to align the `|` properly.
 
 ### Code Blocks
 
-You need to keep an empty line in front of the code block!
-
-    ```
-        $ code block
-        $ without syntax highlighting
-    ```
+Just indent by four spaces:
 
 ```
     $ code block
     $ without syntax highlighting
 ```
+
+    $ code block
+    $ without syntax highlighting
+
+If you want CFEngine syntax highlighting, use
 
     ```cf3
         # CFEngine block
@@ -127,6 +143,19 @@ You need to keep an empty line in front of the code block!
     }
 ```
 
+**Notes:** You need to keep an empty line in front of the code block. And
+to put code into a list item, the code needs to be indented *twice*, ie:
+
+* List item with code
+
+        <code goes here>
+
+```
+* List item with code
+
+        <code goes here>
+```
+
 ### Inline code
 
     This renders as `inline code`.
@@ -136,6 +165,12 @@ This renders as `inline code`.
 *****
 
 ## Headers
+
+### Horizontal bar
+
+`***`
+
+***
 
 `# Level 1`
 
