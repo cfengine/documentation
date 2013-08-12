@@ -194,7 +194,7 @@ def applyLinkMap(file_name, config):
 					break
 		new_line += markdown_line
 		new_lines.append(new_line)
-		previous_empty = markdown_line.lstrip() == "\n"
+		previous_empty = markdown_line.lstrip() == ""
 		
 	if write_changes:
 		markdown_file = open(file_name + ".new", "w")
