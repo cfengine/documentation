@@ -79,6 +79,22 @@ Ordered lists - the numbers you use don't matter.
 1. second
 9. Third
 
+## Tables
+
+Wiki-syntax for tables is supported, and you can be a bit sloppy
+about it, although it's better to align the `|` properly.
+
+```
+| Header | Left aligned | Centered | Right aligned |
+|--------|:-------------|:--------:|--------------:|
+|text    | text | X | 234 |
+```
+
+| Header | Left aligned | Centered | Right aligned |
+|--------|:-------------|:--------:|--------------:|
+|text    | text | X | 234 |
+
+
 ## Code
 
 ### Code Blocks
