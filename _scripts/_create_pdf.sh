@@ -25,12 +25,12 @@ LOCAL_WEBROOT=/var/www/docs/$CUR_BRANCH
 LOCAL_WEBSERVER_URL='http://localhost/docs'
 
 if [ "$LOCAL_WEBROOT" ]; then
- mkdir -p $LOCAL_WEBROOT || true
+ sudo mkdir -p $LOCAL_WEBROOT || true
 fi
 
 # copy _site to the local webroot
-rm -R $LOCAL_WEBROOT/*
-cp -R $DIR/* $LOCAL_WEBROOT/
+sudo rm -R $LOCAL_WEBROOT/*
+sudo cp -R $DIR/* $LOCAL_WEBROOT/
 
 
 #get all files and remove / and .html from filename
