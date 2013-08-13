@@ -2,9 +2,9 @@
 layout: default
 title: Installing Community
 sorting: 15
-categories: [Getting Started, Installing Community]
+categories: [Getting Started, Installation, Installing Community]
 published: true
-alias: getting-started-installing-community.html
+alias: getting-started-installation-installing-community.html
 tags: [getting started, installation, community]
 ---
 

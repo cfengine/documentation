@@ -2,9 +2,9 @@
 layout: default
 title: Installing Enterprise
 sorting: 15
-categories: [Getting Started, Installing Enterprise]
+categories: [Getting Started, Installation, Installing Enterprise]
 published: true
-alias: getting-started-installing-enterprise.html
+alias: getting-started-installation-installing-enterprise.html
 tags: [getting started, installation, enterprise]
 ---
 
