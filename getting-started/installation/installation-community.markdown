@@ -9,13 +9,15 @@ tags: [getting started, installation, community]
 
 Please complete the [General Requirements][Installation] if you have not already done so.
 
+## Packages
+
 The Community Edition is packaged using the following naming convention:
 
 * RPM Package: `cfengine-community-3.6.0-1.x86_64.rpm`
 
 * Debian Package: `cfengine-community_3.6.0-1_amd64.deb`
 
-### Installation 
+## Installation 
 
 1. Install the package **first** on the Policy Server, and then on each Host:
 

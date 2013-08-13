@@ -9,18 +9,18 @@ tags: [getting started, installation, enterprise]
 
 Please complete the [General Requirements](getting-started-installation.html) if you have not already done so.
 
-#### Policy Server Requirements
+## Policy Server Requirements
 
 CFEngine recommends the following:
 
-**Memory** 
+### Memory
 
 A minimum of 2 GB of available memory and a modern 64 bit processor. For a
 large number of Hosts (Clients), we recommend 8 GB of available memory per 500
 hosts that are bootstrapped to your Policy Server. Contact your sales
 representative if you have any questions regarding these numbers.
 
-**Port 80**
+### Port 80
 
 The Policy Server hosts the Mission Portal through Apache, so ensure that port
 80 is open.
@@ -28,7 +28,7 @@ The Policy Server hosts the Mission Portal through Apache, so ensure that port
 **Note:** To avoid potential interference with the installation process, start
 from a blank system (i.e. no Apache Web Server, no MongoDB, etc).
 
-#### MongoDB Requirements
+### MongoDB Requirements
 
 CFEngine uses MongoDB, an open-source, NoSQL database. It stores data that
 is collected from the Hosts.
@@ -47,7 +47,7 @@ pages.
 5. Set the file descriptor limit and user process limit to 4k+ (see etc/limits
 and ulimit)
 
-### Packages
+## Packages
 
 CFEngine Enterprise is provided in two packages; one is for the Policy
 Server and the other is for each Host (Client). These packages contain the
@@ -67,7 +67,7 @@ following naming convention:
 * Debian Package: `cfengine-nova_3.6.0-1_i386.deb` or
   `cfengine-nova_3.6.0-1_amd64.deb`
 
-### Installation
+## Installation
 
 Follow these steps to install CFEngine:
 
@@ -94,14 +94,14 @@ host:
         $ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
     ```
 
-#### Licensed installations
+## Licensed installations
 
 Send the Policy Server's public key (`/var/cfengine/ppkeys/localhost.pub`) to
 CFEngine support to obtain a license. CFEngine will send you a `license.dat`
 file. Copy the obtained license file to
 `/var/cfengine/masterfiles/license.dat`
 
-### Next Steps
+## Next Steps
 
 When bootstrapping is complete, CFEngine is up and running on your system.
 

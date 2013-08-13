@@ -42,6 +42,8 @@ depends on your specific policies, especially those that concern reporting.
 CFEngine bundles all critical dependencies into the package; therefore,
 additional software is not required.
 
+## Specific Requirements
+
 Click here to complete the [Community][Installing Community] installation.
 
 Click here to complete the [Enterprise][Installing Enterprise] installation.
