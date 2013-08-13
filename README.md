@@ -122,7 +122,7 @@ URLs and locations to link to, see the
 The documentation generator automatically creates links for words in code 
 markers if that word exists as a page or section title.
 
-    **See also:** `attribute_name`
+    **See also:** `attribute_name`, `function()`
 
 This will automatically link to the section or page with title 
 *attribute_name*. To make explicit links from code words, use 
