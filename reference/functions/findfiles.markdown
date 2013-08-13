@@ -4,7 +4,7 @@ title: findfiles
 categories: [Reference, Functions, findfiles]
 published: true
 alias: reference-functions-findfiles.html
-tags: [reference, utility functions, functions, findfiles, files, glob]
+tags: [reference, file functions, functions, findfiles, files, glob]
 ---
 
 [%CFEngine_function_prototype(glob1, glob2, ...)%]
@@ -12,8 +12,8 @@ tags: [reference, utility functions, functions, findfiles, files, glob]
 **Description:** Return the list of files that match any of the given glob patterns.
 
 This function searches for the given glob patterns in the local
-filesystem.  Note that glob patterns are not regular expressions.
-They match like Unix shells:
+filesystem, returning files or directories that match.  Note that glob
+patterns are not regular expressions.  They match like Unix shells:
 
 * `*` matches any filename or directory at one level, e.g. `*.cf` will
 match all files in one directory that end in `.cf` but it won't search
