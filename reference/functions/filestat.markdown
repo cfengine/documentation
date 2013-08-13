@@ -9,14 +9,15 @@ tags: [reference, files functions, functions, filestat]
 
 [%CFEngine_function_prototype(filename, field)%]
 
-**Description:** Returns the requested file field.
+**Description:** Returns the requested file field `field` for the file object 
+`filename`.
 
 If the file object does not exist, the function call fails and the
 variable does not expand.
 
 **Arguments**:
 
-* `filename` : the file or directory name to inspect
+* `filename` : the file or directory name to inspect, in the range: "?(/.*)
 * `field` : the requested field, with the following allowed values:
     * `size` : size in bytes
     * `gid` : group ID
@@ -60,5 +61,4 @@ The list of fields may be extended as needed.
 
 **History:** Was introduced in version 3.5.0,Enterprise 3.1 (2013).  `linktarget` and `linktarget_shallow` were added in version 3.6.
 
-**See also:** [`lastnode()`][lastnode], [`dirname()`][dirname], 
-[`splitstring()`][splitstring].
+**See also:** `lastnode()`, `dirname()`, `splitstring()`.
