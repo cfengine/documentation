@@ -21,7 +21,7 @@ if [ ! -z "$LIB_DIFF" ]; then
    git commit -m "Autocommit: libraries changed `date +%F-%T`"
 fi
 
-if [ ! -z "$DIFF"]; then
+if [ ! -z "$DIFF" ]; then
    git push -f
    /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:master -h cfengine-autobuild:autocheckSyntaxMap
 fi
