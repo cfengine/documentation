@@ -16,8 +16,9 @@ fi
 
 cd lib
 LIB_DIFF=$(git diff -- .)
-if [ ! -z "$LIB_DIFF" ]
-   git commit -a -m "Autocommit: libraries changed `date +%F-%T`"
+if [ ! -z "$LIB_DIFF" ]; then
+   git add -A .
+   git commit -m "Autocommit: libraries changed `date +%F-%T`"
 fi
 
 if [ ! -z "$DIFF"]; then
