@@ -13,9 +13,9 @@ with ready-made VirtualBox VMs.
 
 Download [Community](https://cfengine.com/community).
 
-Install [CFEngine][Installation].
+Install [CFEngine][Installing CFEngine].
 
-[Upgrade][Upgrade] existing CFEngine installations.
+[Upgrade][Upgrade Instructions] existing CFEngine installations.
 
 Read CFEngine [manuals][CFEngine Manuals].
 
