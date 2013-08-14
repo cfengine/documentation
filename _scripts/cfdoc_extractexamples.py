@@ -70,7 +70,7 @@ def processFile(markdown, config):
 				while len(example_lines) > example_idx:
 					example_line = example_lines[example_idx]
 					example_idx += 1
-					if example_line.find("#[%-]") == 0:
+					if example_line.find("#[%-%]") == 0:
 						example_idx += 1
 						terminate_block = True
 						begin_block = False
