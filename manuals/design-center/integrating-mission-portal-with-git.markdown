@@ -118,6 +118,14 @@ If you install it on a fresh system, they will end up in
         user@workstation $ git commit -m "initial masterfiles"
         user@workstation $ git push origin master
 
+3. Ensure that cf_promises_validated is not included in your repository.
+
+        user@workstation $ git rm -f cf_promises_validated
+        user@workstation $ echo cf_promises_validated > .gitignore
+        user@workstation $ git add .gitignore
+        user@workstation $ git commit -m "Exclude cf_promises_validated from repository"
+        user@workstation $ git push origin master
+
 ## Update masterfiles from git automatically
 
 We have now set up a git repository and allowed users to commit to it from
