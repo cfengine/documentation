@@ -4,6 +4,10 @@
 ## if content changed, make commits and create pull request
 ## do not update working copies of generator in $WRKDIR
 ## - only once pull request is merged
+cd /home/vagrant/documentation-generator
+git fetch original
+git reset --hard original/master
+git clean -dfx
 cp -r /home/vagrant/_json /home/vagrant/documentation-generator
 cd /home/vagrant/documentation-generator/_json
 DIFF=$(git diff -- .)
