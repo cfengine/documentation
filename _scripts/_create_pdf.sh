@@ -40,9 +40,9 @@ if [ "$DIR2" ]; then
  mkdir -p $DIR2 || true
 fi
 
-# do not create PDF for tags
+# do not create PDF for tags or TODO printable
 for i in $FILENAME; do
-    if [ $i != "tags" ]
+    if [ $i != "tags" ] && [ $i != printable-* ]
     then
         echo '\n' $i '\n'
         weasyprint $LOCAL_WEBSERVER_URL/$CUR_BRANCH/$i.html $DIR2/$i.pdf || true
