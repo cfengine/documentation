@@ -13,9 +13,9 @@ We need to distribute files to hosts from a central location.
 Files are centrally stored on the policy server in `/storage/patches`.
 These patch files should exist on the agent host in `/storage/deploy/patches`.
 
-## Checking out masterfiles from your central repository ##
+## Checking out masterfiles from your central repository
 
-Ensure your working with the lastet version of your masterfiles.
+Ensure your working with the latest version of your masterfiles.
 
 
     git clone url
@@ -100,8 +100,8 @@ Create `lib/custom/files.cf` with the following content:
     bundle agent sync_from_policyserver(source_path, dest_path)
     # @brief Sync files from the policy server to the agent
     #
-    # @source_path  Location on policy server to copy files from
-    # @dest_path Location on agent host to copy files to
+    # @param source_path  Location on policy server to copy files from
+    # @param dest_path Location on agent host to copy files to
     {
       files:
         "$(dest_path)/."
@@ -209,33 +209,35 @@ Now that all of the policy has been edited and is in place check that
 there are no syntax errors by running `cf-promises -f ./promises.cf`
 
 
-## Enterprise Users ##
+## Enterprise Users
+
 Before committing the changes to your repository lets get logged into
 the Mission Portal and setup a Tracker so that you can see the policy as
 it goes out.
 
-Navigate to the hosts app select all hosts and then on the right hand
-side select the events tab. Add a new tracker called Patch Failure with
-report type Promise not Kept and for the watch enter ".*patch.*"
+Navigate to the hosts app, select all hosts and then on the right hand
+side select the events tab. Add a new tracker called *Patch Failure* with
+report type *Promise not Kept* and for the watch enter `.*patch.*`
 (without quotes). This will watch for any promise handle that includes
 the string patch where a promise is not kept. Set the start time to now
-and click start. Lets add another Tracker called Patch repaired. Set the
-report type to Promise Repaired, set the watch and time as before and
+and click start. Lets add another Tracker called *Patch repaired*. Set the
+report type to *Promise Repaired*, set the watch and time as before and
 click start. This tracker will allow you to see how the policy reacts as
 it is activated on your infrastructure.
 
 Now that you have a couple trackers running go ahead and deploy the
 policy changes.
 
-## Commiting Changes ##
-Now that all of our changes are ready lets deploy them to our infrastructire.
+## Committing Changes
+
+Now that all of our changes are ready lets deploy them to our infrastructure.
 
 Always inspect what you expect. `git status` shows the status of your current branch.
 
     git status
 
 
-Insepct the changes contained in each file, and when you are sure add them to gits commit staging area.
+Inspect the changes contained in each file, and when you are sure add them to git's commit staging area.
 
     git diff file
     git add file
