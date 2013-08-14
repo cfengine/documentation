@@ -5007,6 +5007,13 @@
           "type": "string",
           "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
           "visibility": "body"
+        },
+        "inputs": {
+          "attribute": "inputs",
+          "status": "normal",
+          "type": "slist",
+          "range": ".*",
+          "visibility": "body"
         }
       }
     }
@@ -5328,7 +5335,7 @@
         },
         {
           "type": "option",
-          "range": "size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname"
+          "range": "size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname,linktarget,linktarget_shallow"
         }
       ],
       "variadic": false,
@@ -5361,6 +5368,13 @@
       ],
       "variadic": false,
       "category": "data"
+    },
+    "findfiles": {
+      "status": "normal",
+      "returnType": "slist",
+      "parameters": [],
+      "variadic": true,
+      "category": "files"
     },
     "format": {
       "status": "normal",
