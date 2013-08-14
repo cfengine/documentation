@@ -1,10 +1,10 @@
 #!/bin/bash
 
-## /home/vagrant/tmp/_json is updated via MP API test run
+## /home/vagrant/_json is updated via MP API test run.
 ## if content changed, make commits and create pull request
 ## do not update working copies of generator in $WRKDIR
 ## - only once pull request is merged
-cp -r /home/vagrant/tmp/_json /home/vagrant/documentation-generator
+cp -r /home/vagrant/_json /home/vagrant/documentation-generator
 cd /home/vagrant/documentation-generator/_json
 DIFF=$(git diff -- .)
 
