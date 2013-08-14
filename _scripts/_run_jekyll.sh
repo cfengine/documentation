@@ -1,15 +1,31 @@
 #!/bin/bash
-DIFF=$(sudo diff /home/vagrant/syntax_map.json $WRKDIR/documentation-generator/_json/syntax_map.json)
 
-if [ ! -z "$DIFF" ]; then
-   cp /home/vagrant/syntax_map.json $WRKDIR/documentation-generator/_json/
-   cp /home/vagrant/syntax_map.json /home/vagrant/documentation-generator/_json/
-   cd /home/vagrant/documentation-generator
-   git commit -a -m "autocommit syntax map changed `date +%F-%T`"
+## /home/vagrant/tmp/_json is updated via MP API test run
+## if content changed, make commits and create pull request
+## do not update working copies of generator in $WRKDIR
+## - only once pull request is merged
+cp -r /home/vagrant/tmp/_json /home/vagrant/documentation-generator
+cd /home/vagrant/documentation-generator/_json
+DIFF=$(git diff -- .)
+
+SYNTAX_DIFF=$(git diff -- syntax_map.json)
+if [ ! -z "$SYNTAX_DIFF" ]; then
+   git add syntax_map.json
+   git commit -m "Autocommit: syntax map changed `date +%F-%T`"
+fi
+
+cd lib
+LIB_DIFF=$(git diff -- .)
+if [ ! -z "$LIB_DIFF" ]
+   git commit -a -m "Autocommit: libraries changed `date +%F-%T`"
+fi
+
+if [ ! -z "$DIFF"]; then
    git push -f
    /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:master -h cfengine-autobuild:autocheckSyntaxMap
-   cd ..
 fi
+cd ..
+
 
 sed '/^\[.*\[.*\].*\]/d' $WRKDIR/documentation-generator/_references.md > $WRKDIR/documentation-generator/new_references.md
 mv $WRKDIR/documentation-generator/new_references.md $WRKDIR/documentation-generator/_references.md
