@@ -132,7 +132,7 @@ def print_pages(pages, level, out_file, new_pages):
 			new_pages[out_filename] = list()
 			out_file = open(out_filename, "w")
 			out_file.write("---\n")
-			out_file.write("layout: default\n")
+			out_file.write("layout: printable\n")
 			out_file.write("title: \"The Complete " + page.title + "\"\n")
 			out_file.write("published: true\n")
 			out_file.write("alias: printable-" + page.alias + "\n")
