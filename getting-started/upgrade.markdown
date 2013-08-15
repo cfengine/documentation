@@ -155,6 +155,23 @@ Once the edits are done, please make sure your policy is correct by verifying th
       $ /var/cfengine/bin/cf-agent -f /var/cfengine/masterfiles/failsafe.cf -IK
 ````
 
+* Monitoring data is now stored in a new database - migrate existing data
+
+Note: `db-move-monitoring-to-cfmonitor.js` is made available for download with the 3.5.2 packages
+
+Make sure you have 2X the database size (needed for db repair)
+
+```
+      #db size in mb
+      $ /var/cfengine/bin/mongo --quiet cfreport --eval "printjson(db.stats(1024*1024)['fileSize'])";
+````
+
+Run migration script
+
+```
+      $ /var/cfengine/bin/mongo --quiet admin db-move-monitoring-to-cfmonitor.js
+````
+
 * We highly recommend cosmetic re-work of the resulting policy to ensure readability. See our new 3.0.0 framework in `/var/cfengine/share/NovaBase`
 
 * You should keep all control bodies (body agent/executor/server/hub/reporter/monitor/runagent control) and server access_rule() bundle to at least have some suggested attributes
