@@ -173,6 +173,22 @@ Some contents of your current bundle agent update_bins in update.cf might be
 outdated. Please keep it similar to 
 `/var/cfengine/share/NovaBase/failsafe/update_bins.cf` as much as possible.
 
+## Migrate to new database structure
+
+After an upgrade to from a 3.0 or 3.5.x release to 3.5.2, monitoring data
+needs to be migrated to a different data schema.
+
+A script `db-move-monitoring-to-cfmonitor.js` that performs the migration is 
+made available for download together with the 3.5.2 packages. 
+
+1. Make sure you have 2X the database size (needed for db repair)
+
+        #db size in mb
+        $ /var/cfengine/bin/mongo --quiet cfreport --eval "printjson(db.stats(1024*1024)['fileSize'])";
+
+1. Run migration script
+
+        $ /var/cfengine/bin/mongo --quiet admin db-move-monitoring-to-cfmonitor.js
 
 ## Upgrade procedure for the hosts
 
