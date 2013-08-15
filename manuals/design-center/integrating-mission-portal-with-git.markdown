@@ -12,9 +12,14 @@ CFEngine Enterprise 3.5 introduces integration with git repositories for
 managing CFEngine policy. In particular, the Design Center GUI requires access 
 to a git repository in order to manage sketches.
 
-These instructions will cover the setup of a git repository with the initial 
-CFEngine masterfiles together with configuring the CFEngine Mission Portal to 
-use this repository.
+These instructions will cover the setup of a git repository hosted on the
+Policy Server with the initial CFEngine masterfiles together with configuring
+the CFEngine Mission Portal to use this repository. If you already have a git
+service ensure that you have a passphraseless key generated as shown in [Set up
+the git service][Integrating Mission Portal with git#Set up the git service]
+step 4 and proceede to [Connect Mission Portal to the git
+repository][Integrating Mission Portal with git#Connect Mission Portal to the
+git repository].
 
 When following these steps, it might be helpful to look at the diagram
 in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise].
@@ -24,60 +29,63 @@ in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise].
 
 We will need a git service with the capability to serve git over a key-based 
 SSH channel. The easiest way to do this is to use a service like 
-[github][github], but it is not hard to set up a local git service either.
+[github][github].  but it is not hard to set up a local git service either.
 
 For Red Hat (and derived distributions), we need to do the following steps to 
-set up a local git service. Assume that gitserver is the server that will host 
-the git service, and that we already have the ssh service running and it 
-allows key-based authentication. Note that this will use your workstation's 
-SSH key to authenticate with the Mission Portal. Please generate a new SSH key if 
-you do not want the Mission Portal users to use your private key to push to
-the git service.
+set up a local git service.
 
 ## Overview
 
 1. [Set up the git service][Integrating Mission Portal with git#Set up the git service]
 2. [Initalize the git repository][Integrating Mission Portal with git#Initalize the git repository]
-3. [Configure update policy to pull from git repository][Integrating Mission Portal with git#]
-4. [Connect Mission Portal to the git repository][Integrating Mission Portal with git#Connecting the Mission Portal to the git repository]
+3. [Update masterfiles from git][Integrating Mission Portal with git#Update masterfiles from git]
+4. [Connect Mission Portal to the git repository][Integrating Mission Portal with git#Connect Mission Portal to the git repository]
 5. [Testing Design Center GUI][Integrating Mission Portal with git#Testing Design Center GUI]
 6. [Review change history from git commit log][Integrating Mission Portal with git#Review change history from git commit log]
-7. [End-to-end waiting time][[Integrating Mission Portal with git#End-to-end waiting time]
+7. [End to end waiting time][[Integrating Mission Portal with git#End to end waiting time]
 8. [Access control and security][Integrating Mission Portal with git#Access control and security]
 
-## Setting up the git service
+## Set up the git service
 
-1. As `root` on the git server install third party repository that provides git.
+1. As `root` on the policy server install third party repository that provides git.
    This is only required if git is not available in the default repositories,
    for example RHEL 5.
 
 
-          root@gitserver # wget http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
-          root@gitserver # rpm -Uvh epel-releases-5*.rpm
+          root@policyserver # wget http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+          root@policyserver # rpm -Uvh epel-releases-5*.rpm
 
 
 2. Install the `git` package.
 
-          root@gitserver # yum install git
+          root@policyserver # yum install git
 
 3. Create the `git` user and a `.ssh` directory.
 
-          root@gitserver # adduser git
-          root@gitserver # su - git
-          git@gitserver $ mkdir ~/.ssh
-          git@gitserver $ chmod 700 ~/.ssh
+          root@policyserver # adduser git
+          root@policyserver # su - git
+          git@policyserver $ mkdir ~/.ssh
+          git@policyserver $ chmod 700 ~/.ssh
 
-4. On your personal workstation generate a passphraseless ssh key to be used by
-   Misson Portal.
+4. Generate a passphraseless ssh key to be used by Misson Portal.
          
-          user@workstation $ /usr/bin/ssh-keygen -C 'Mission Portal' -N '' -f mission_portal_id_rsa
+          root@policyserver $ /usr/bin/ssh-keygen -C 'Mission Portal' -N '' -f mission_portal_id_rsa
 
    Note: This key is only intended for use by Mission Portal. 
 
 5. Authorize the Mission Portal's key for the `git` user by appending the public
    key to the git users `~/.ssh/authorized_keys` file.
 
-          user@workstation $ cat mission_portal_id_rsa.pub | ssh root@gitserver "umask 077; cat >> /home/git/.ssh/authorized_keys; chown git:git /home/git/.ssh/authorized_keys"
+          root@policyserver $ grep "$(cat mission_portal_id_rsa.pub)" /home/git/.ssh/authorized_keys || \
+          cat mission_portal_id_rsa.pub >> /home/git/.ssh/authorized_keys; \
+          chown git:git /home/git/.ssh/authorized_keys; \
+          chmod 700 /home/git/.ssh/authorized_keys
+
+6. Test that you can log in as the `git` user using the generated
+   passphraseless ssh key.
+
+        root@policyserver $ ssh -i mission_portal_id_rsa git@localhost
+        git@policyserver $
 
    Once the authorization is tested successfully you should move the keypair
    to a secure storage location.  You may want to authorize additional keys
@@ -86,53 +94,42 @@ the git service.
    features like the ability to make a specific key read only. See your git
    providers documentation for more information.
 
-6. Test that you can log in as the `git` user using the generated
-   passphraseless ssh key.
+7. As the `git` user on the policy server Create the `masterfiles` repository.
 
-        user@workstation $ ssh -i mission_portal_id_rsa git@gitserver
-        git@gitserver $
-
-
-7. As the `git` user on the git server Create the `masterfiles` repository.
-
-        git@gitserver $ git init --bare masterfiles.git
+        git@policyserver $ git init --bare masterfiles.git
             Initialized empty Git repository in /home/git/masterfiles.git/
 
-## Initializing the git repository
+## Initialize the git repository
 
-1. On your workstation create a clone of the `masterfiles` repository.
+1. As the git user create a clone of the `masterfiles` repository.
 
-        user@workstation $ git clone git@gitserver:masterfiles.git
-        Initialized empty Git repository in /home/user/masterfiles/.git/
+        git@policyserver $ git clone ~/masterfiles.git ~/masterfiles
+        Initialized empty Git repository in /home/git/masterfiles/.git/
         warning: You appear to have cloned an empty repository.
-        user@workstation $ cd masterfiles
+        git@policyserver $ cd masterfiles
 
 2. Copy and push initial masterfiles.
 
-Get the initial masterfiles from a cfengine-nova-hub package.
-If you install it on a fresh system, they will end up in
-/var/cfengine/masterfiles (copied from /var/cfengine/share/NovaBase).
-
-        user@workstation $ cp -R /path/to/initial/cfengine/enterprise/masterfiles/* .
-        user@workstation $ git add -A
-        user@workstation $ git commit -m "initial masterfiles"
-        user@workstation $ git push origin master
+        git@policyserver $ cp -R /var/cfengine/share/NovaBase/* .
+        git@policyserver $ git add -A
+        git@policyserver $ git commit -m "initial masterfiles"
+        git@policyserver $ git push origin master
 
 3. Ensure that cf_promises_validated is not included in your repository.
 
-        user@workstation $ git rm -f cf_promises_validated
-        user@workstation $ echo cf_promises_validated > .gitignore
-        user@workstation $ git add .gitignore
-        user@workstation $ git commit -m "Exclude cf_promises_validated from repository"
-        user@workstation $ git push origin master
+        git@policyserver $ git rm -f cf_promises_validated
+        git@policyserver $ echo cf_promises_validated > .gitignore
+        git@policyserver $ git add .gitignore
+        git@policyserver $ git commit -m "Exclude cf_promises_validated from repository"
+        git@policyserver $ git push origin master
 
-## Update masterfiles from git automatically
+## Update masterfiles from git
 
-We have now set up a git repository and allowed users to commit to it from
-the Mission Portal. However, nothing will change on the CFEngine hosts until
-we pull the policy from git into `/var/cfengine/masterfiles` on the policy server.
-This can be done by CFEngine itself every time `cf-agent` runs on the
-policy server, or by utilizing a cron job or similar facilities.
+We have now set up a git repository however, nothing will change on the
+CFEngine hosts until we pull the policy from git into
+`/var/cfengine/masterfiles` on the policy server.  This can be done by CFEngine
+itself every time `cf-agent` runs on the policy server, or by utilizing a cron
+job or similar facilities.
 
 It is not a requirement to set up automatic pull from the git service,
 but no actions will be taken by CFEngine on the end hosts, nor will any
@@ -230,11 +227,23 @@ pull from git every time it runs (by default every 5 minutes).
         root@policy_server # /etc/init.d/cfengine3 start
 
 
-## Connecting the Mission Portal to the git repository
+## Connect Mission Portal to the git repository
 
 1. Log in to the Mission Portal as an administrator (e.g. the `admin` user).
 2. Navigate to Settings -> Version control repository.
 3. Input the settings from the git service that you are using or configured.
+   The values for the fields based on the previous instructions for setting up
+   a local git server are as follows:
+
+     * Git server url: `git@localhost:masterfiles.git` 
+     * Git branch: `master`
+     * Committer email `git@localhost.localdomain`
+     * Committer name `CFEngine Mission Portal`
+     * Git private key `mission_portal_id_rsa.pub` As generated in step 5 of
+       [Set up the git service][Integrating Mission Portal with git#Set up the
+       git service] (You will need to copy the private key to your workstation
+       so that it can be accessed via the file selection.
+
 4. Click save settings and make sure it reports success.
 
 ![Mission Portal Version control repository settings](mp-vcs-settings.png)
@@ -312,7 +321,7 @@ Mission Portal, you can filter on the author name as well ('bob' in the example 
 
 
 
-## End-to-end waiting time
+## End to end waiting time
 
 If we set up the CFEngine policy server to pull automatically from git and CFEngine runs
 every 5 minutes everywhere (the default), the maximum time elapsed from committing to git
