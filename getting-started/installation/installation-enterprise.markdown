@@ -7,7 +7,7 @@ alias: getting-started-installation-installing-enterprise.html
 tags: [getting started, installation, enterprise]
 ---
 
-Please complete the [General Requirements](getting-started-installation.html) if you have not already done so.
+Please complete the [General Requirements][Installing CFEngine] if you have not already done so.
 
 ## Policy Server Requirements
 
@@ -109,8 +109,7 @@ The Mission Portal is immediately accessible. Connect to the Policy Server
 through your web browser at http://`<IP address of your Policy Server>`.
 
 To be able to use the [Mission Portal's][Mission Portal] Design Center
-front-end, continue with [integrating Mission Portal with git][Integrating
-Mission Portal with git].
+front-end, continue with [integrating Mission Portal with git] [Integrating Mission Portal with git]. 
 
 Learn more about CFEngine by using the following resources:
 

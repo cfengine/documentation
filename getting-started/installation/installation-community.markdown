@@ -7,7 +7,7 @@ alias: getting-started-installation-installing-community.html
 tags: [getting started, installation, community]
 ---
 
-Please complete the [General Requirements][Installation] if you have not already done so.
+Please complete the [General Requirements][Installing CFEngine] if you have not already done so.
 
 ## Packages
 
