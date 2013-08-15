@@ -22,18 +22,18 @@ CFEngine 3 exists in [two editions](https://cfengine.com/cfengine-comparison):
 
 This documentation is valid for **all versions** of CFEngine except where noted.
 
-##Quick Links
+### Quick Links
 
-[Get Started] [Getting Started] with downloads and installation instructions. 
+[Get Started][Getting Started] with downloads and installation instructions. 
 
-Learn [what's new] [New in CFEngine] in CFEngine 3.5.
+Learn [what's new][New in CFEngine] in CFEngine 3.5.
 
 [Compare](https://cfengine.com/cfengine-comparison) Enterprise and Community.
 
-Read CFEngine [documentation] [CFEngine Manuals].
- 
+Read CFEngine [documentation][CFEngine Manuals].
 
-#### History of CFEngine
+
+### History of CFEngine
 
 CFEngine is a suite of programs for integrated autonomic management
 of either individual or networked computers. It has existed as a
