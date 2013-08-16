@@ -15,11 +15,8 @@ to a git repository in order to manage sketches.
 These instructions will cover the setup of a git repository hosted on the
 Policy Server with the initial CFEngine masterfiles together with configuring
 the CFEngine Mission Portal to use this repository. If you already have a git
-service ensure that you have a passphraseless key generated as shown in [Set up
-the git service][Integrating Mission Portal with git#Set up the git service]
-step 4 and proceede to [Connect Mission Portal to the git
-repository][Integrating Mission Portal with git#Connect Mission Portal to the
-git repository].
+service ensure that you have a passphraseless key generated as shown in [Set up the git service][Integrating Mission Portal with git#Set up the git service]
+step 4 and proceed to [Connect Mission Portal to the git repository][Integrating Mission Portal with git#Connect Mission Portal to the git repository].
 
 When following these steps, it might be helpful to look at the diagram
 in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise].
@@ -29,7 +26,7 @@ in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise].
 
 We will need a git service with the capability to serve git over a key-based 
 SSH channel. The easiest way to do this is to use a service like 
-[github][github].  but it is not hard to set up a local git service either.
+[github][github]. But it is not hard to set up a local git service either.
 
 For Red Hat (and derived distributions), we need to do the following steps to 
 set up a local git service.
@@ -37,12 +34,12 @@ set up a local git service.
 ## Overview
 
 1. [Set up the git service][Integrating Mission Portal with git#Set up the git service]
-2. [Initalize the git repository][Integrating Mission Portal with git#Initalize the git repository]
+2. [Initialize the git repository][Integrating Mission Portal with git#Initialize the git repository]
 3. [Update masterfiles from git][Integrating Mission Portal with git#Update masterfiles from git]
 4. [Connect Mission Portal to the git repository][Integrating Mission Portal with git#Connect Mission Portal to the git repository]
 5. [Testing Design Center GUI][Integrating Mission Portal with git#Testing Design Center GUI]
 6. [Review change history from git commit log][Integrating Mission Portal with git#Review change history from git commit log]
-7. [End to end waiting time][[Integrating Mission Portal with git#End to end waiting time]
+7. [End to end waiting time][Integrating Mission Portal with git#End to end waiting time]
 8. [Access control and security][Integrating Mission Portal with git#Access control and security]
 
 ## Set up the git service
