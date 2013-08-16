@@ -8,8 +8,8 @@ alias: getting-started-upgrade.html
 tags: [getting started, enterprise, upgrade]
 ---
 
-###<center>This upgrade guide assumes that you are upgrading an existing CFEngine installation of one of the following versions:</center>
-###<center>2.2.x or 3.0.x</center>
+###<center data-behavior="exclude-from-toc">This upgrade guide assumes that you are upgrading an existing CFEngine installation of one of the following versions:</center>
+###<center data-behavior="exclude-from-toc">2.2.x or 3.0.x</center>
 
 Upgrading CFEngine Enterprise needs some planning, since there may be 
 dependencies on your existing policies and/or changes in naming 
@@ -18,13 +18,29 @@ manual process. Automatic upgrade of agents is possible through the hub but
 again, needs careful planning and consideration before applying to a large 
 schema.
 
-###<center>Always verify the upgrade in a test environment prior to upgrading production environments!</center>
+###<center data-behavior="exclude-from-toc">Always verify the upgrade in a test environment prior to upgrading production environments!</center>
 
 Before embarking on the upgrade, you should familiarize yourself with the 
 [known issues][known issues] and have a good understanding of the existing configuration of the hub or agents or both. As much as possible is covered in this document, taking into consideration its scope and intended audience. Other more detailed problems, specific to your own setup may not be covered here. It is therefore imperative that any questions or doubts you have are directed towards your support representative.
 
 Please do not hesitate to contact your sales representative, or our support 
 engineers through the [support system][support desk]
+
+As a quick summary for a 3.0 upgrade, the Enterprise 3.0 clients work
+great with a 3.5.1 policy server and report correctly to the 3.5.1
+hub. They work well with most 3.5.1 policy, although you **have** to
+test to be sure you have no incompatible functions or promise
+attributes **before** you push anything out to the clients.
+
+3.5.1 clients **may** work with the 3.0 server but this is not
+supported, recommended, or tested.
+
+Thus, for the upgrade from 3.0 we suggest upgrading the hub's policy
+to what comes with 3.5.1 (especially the update.cf in the top-level
+directory) and testing that with both 3.0 and 3.5.1 clients. Then
+upgrade the policy hub to 3.5.1. Then upgrade the clients in
+increasingly broader *waves* to make sure any issues only affect a
+small subset of the population.
 
 ## Prerequisites
 

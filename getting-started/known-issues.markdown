@@ -56,5 +56,3 @@ Current workaround options include disabling email by commenting out `mailto` an
 `smtpserver` in `body executor control` or by running `cf-agent` from cron.
 
 https://cfengine.com/dev/issues/3011
-
-
