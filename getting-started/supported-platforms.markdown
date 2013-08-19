@@ -112,8 +112,6 @@ from hosts running the following versions of CFEngine:
 Some data will not be available from older hosts, and the policy you serve 
 needs to take into account hosts with different versions.
 
--->
-
 ## General Legal Disclaimer
 
 Please note that CFEngine is offered on an "as is" basis without warranty of 
