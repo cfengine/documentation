@@ -21,16 +21,6 @@ step 4 and proceed to [Connect Mission Portal to the git repository][Integrating
 When following these steps, it might be helpful to look at the diagram
 in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise].
 
-
-## Requirements
-
-We will need a git service with the capability to serve git over a key-based 
-SSH channel. The easiest way to do this is to use a service like 
-[github][github]. But it is not hard to set up a local git service either.
-
-For Red Hat (and derived distributions), we need to do the following steps to 
-set up a local git service.
-
 ## Overview
 
 1. [Set up the git service][Integrating Mission Portal with git#Set up the git service]
@@ -204,16 +194,10 @@ pull from git every time it runs (by default every 5 minutes).
 
 6. Clone your git repository into /var/cfengine/masterfiles. 
 
-    * If your git server is remote you must ensure the root user has ssh keys
-      configured to allow passphraseless access to the git repository
-        
-            root@policy_server # git clone git@gitserver:masterfiles.git /var/cfengine/masterfiles
-            Initialized empty Git repository in /var/cfengine/masterfiles/.git/
+   * If you are hosting the git repository on the policy server itself you can
+     clone using its full path
 
-    * If you are hosting the git repository on the policy server itself you can
-      clone using its full path
-
-            root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
+        root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
 
 7. Make sure that the policy has valid syntax. `cf-promises` should not give output.
 
@@ -232,14 +216,14 @@ pull from git every time it runs (by default every 5 minutes).
    The values for the fields based on the previous instructions for setting up
    a local git server are as follows:
 
-     * Git server url: `git@localhost:masterfiles.git` 
-     * Git branch: `master`
-     * Committer email `git@localhost.localdomain`
-     * Committer name `CFEngine Mission Portal`
-     * Git private key `mission_portal_id_rsa.pub` As generated in step 5 of
-       [Set up the git service][Integrating Mission Portal with git#Set up the
-       git service] (You will need to copy the private key to your workstation
-       so that it can be accessed via the file selection.
+   * Git server url: `git@localhost:masterfiles.git` 
+   * Git branch: `master`
+   * Committer email `git@localhost.localdomain`
+   * Committer name `CFEngine Mission Portal`
+   * Git private key `mission_portal_id_rsa.pub` As generated in step 5 of
+     [Set up the git service][Integrating Mission Portal with git#Set up the
+     git service] (You will need to copy the private key to your workstation
+     so that it can be accessed via the file selection.
 
 4. Click save settings and make sure it reports success.
 
