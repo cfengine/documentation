@@ -40,6 +40,10 @@ body common control
 
 [%CFEngine_library_include(lib/3.6/files)%]
 
+## Feature
+
+[%CFEngine_library_include(lib/3.6/feature)%]
+
 ## Guest Environments
 
 [%CFEngine_library_include(lib/3.6/guest_environments)%]
