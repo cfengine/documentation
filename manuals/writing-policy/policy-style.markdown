@@ -77,6 +77,7 @@ blank line preceding it.
 
 This example illustrates the blank line before the second context class
 expression (solaris) in the files type promise section:
+
 ```cf3
     bundle agent example
     {
@@ -135,6 +136,7 @@ Hash rockets should be aligned within a promise body scope and for grouped
 single line promises.
 
 Example:
+
 ```cf3
     bundle agent example
     {
