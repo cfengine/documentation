@@ -2,14 +2,16 @@
 layout: default
 title: Tutorials
 sorting: 13
-categories: [Getting Started, Tutorial]
+categories: [Examples, Tutorials]
 published: true
-alias: getting-started-tutorials.html
-tags: [getting started, tutorial]
+alias: examples-tutorials.html
+tags: [Examples, Tutorials]
 ---
 
 Familarize yourself with CFEngine by following these tutorials. One of the best
 ways to learn CFEngine is to actually do things with CFEngine.
+
+Hello World
 
 Learn some things about your system.
 
