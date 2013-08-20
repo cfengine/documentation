@@ -56,3 +56,36 @@ Current workaround options include disabling email by commenting out `mailto` an
 `smtpserver` in `body executor control` or by running `cf-agent` from cron.
 
 https://cfengine.com/dev/issues/3011
+
+### Enterprise upgrade using master_software_updates does not work for redhat derivitives
+
+Packages placed in master_software_updates are not detected as being from a
+higher version so upgrade does not happen.
+
+#### Workaround
+
+Modify the promise with handle
+`cfe_internal_update_bins_packages_nova_update_not_windows_pkg_there`
+in `update/update_bins.cf`.
+
+Set package_select to `==` and package_version to the specific version for
+example `3.5.1-1`.
+
+```
+diff --git a/update/update_bins.cf b/update/update_bins.cf 
+index 81afc28..841dbb9 100755 
+--- a/update/update_bins.cf 
++++ b/update/update_bins.cf 
+@@ -162,9 +162,9 @@ bundle agent cfe_internal_update_bins 
+comment => "Update Nova package to a newer version (package is there)", 
+handle => "cfe_internal_update_bins_packages_nova_update_not_windows_pkg_there", 
+package_policy => "update", 
+- package_select => ">=", # picks the newest Nova available 
++ package_select => "==", # picks the newest Nova available 
+package_architectures => { "$(pkgarch)" }, 
+- package_version => "9.9.9", # Install new Nova anyway 
++ package_version => "3.5.1-1", # Install new Nova anyway 
+package_method => u_generic( "$(local_software_dir)" ), 
+ifvarclass => "nova_edition", 
+classes => u_if_else("bin_update_success", "bin_update_fail");
+```
