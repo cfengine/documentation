@@ -194,12 +194,12 @@ The location of the system NFS exports file.
     # exports = /etc/dfs/dfstab
 ```
 
-### sys.failsafe
+### sys.failsafe_policy_path
 
 The name of the failsafe policy file.
 
 ```cf3
-    # failsafe = /var/cfengine/inputs/failsafe.cf
+    # failsafe_policy_path = /var/cfengine/inputs/failsafe.cf
 ```
 
 **History:** Introduced in CFEngine 3.6
@@ -587,12 +587,12 @@ seconds. See also `$(sys.sysday)`.
 
 **History:** Introduced in CFEngine 3.6
 
-### sys.update
+### sys.update_policy_path
 
 The name of the update policy file.
 
 ```cf3
-    # update = /var/cfengine/inputs/update.cf
+    # update_policy_path = /var/cfengine/inputs/update.cf
 ```
 
 **History:** Introduced in CFEngine 3.6
