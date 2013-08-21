@@ -36,13 +36,13 @@ body common control
 
 [%CFEngine_library_include(lib/3.6/databases)%]
 
-## Files
-
-[%CFEngine_library_include(lib/3.6/files)%]
-
 ## Feature
 
 [%CFEngine_library_include(lib/3.6/feature)%]
+
+## Files
+
+[%CFEngine_library_include(lib/3.6/files)%]
 
 ## Guest Environments
 
