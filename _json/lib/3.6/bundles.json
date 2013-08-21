@@ -413,6 +413,151 @@
               ]
             }
           ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
+          "line": 120,
+          "namespace": "default",
+          "name": "logrotate",
+          "bundleType": "agent",
+          "arguments": [
+            "log_files",
+            "max_size",
+            "rotate_levels"
+          ],
+          "promiseTypes": [
+            {
+              "line": 126,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 127,
+                      "promiser": "$(log_files)",
+                      "attributes": [
+                        {
+                          "line": 128,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Rotate file if above specified size"
+                          }
+                        },
+                        {
+                          "line": 129,
+                          "lval": "rename",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "rotate",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(rotate_levels)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 130,
+                          "lval": "file_select",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "bigger_than",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(max_size)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
+          "line": 133,
+          "namespace": "default",
+          "name": "prunedir",
+          "bundleType": "agent",
+          "arguments": [
+            "dir",
+            "max_days"
+          ],
+          "promiseTypes": [
+            {
+              "line": 139,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 140,
+                      "promiser": "$(dir)",
+                      "attributes": [
+                        {
+                          "line": 141,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Delete plain files inside directory older than max_days"
+                          }
+                        },
+                        {
+                          "line": 142,
+                          "lval": "delete",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "tidy"
+                          }
+                        },
+                        {
+                          "line": 143,
+                          "lval": "file_select",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "filetype_older_than",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "plain"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(max_days)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 144,
+                          "lval": "depth_search",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "recurse",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "1"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "bodies": []
