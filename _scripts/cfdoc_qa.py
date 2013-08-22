@@ -31,28 +31,29 @@ def OpenLogFile(config):
 	if write_header:
 		logfile.write("---\n")
 		logfile.write("layout: printable\n")
-		logfile.write("title: Documentation Issues\n")
+		logfile.write("title: \"Documentation Issues\"\n")
 		logfile.write("published: true\n")
 		logfile.write("alias: cfdoc_log.html\n")
 		logfile.write("---\n")
 		logfile.write("\n")
-		logfile.write("Documentation generated at %s GMT\n" % strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+#		logfile.write("Documentation generated at %s GMT\n" % strftime("%Y-%m-%d %H:%M:%S", gmtime()))
 		logfile.write("\n")
 	return logfile
 
 def LogProcessStart(config, string):
 	logfile = OpenLogFile(config)
 	logfile.write("\n")
-	logfile.write("### %s\n" % string)
+	# logfile.write("### %s\n" % string)
 	logfile.write("\n")
+	logfile.close()
 
 def LogMissingDocumentation(config, element, strings, location):
 	logfile = OpenLogFile(config)
 	logfile.write("* `" + element + "`: ")
-	for string in strings:
-		logfile.write("`" + string + "` ")
+#	for string in strings:
+#		logfile.write("`" + string + "` ")
 	logfile.write("\n")
-	if len(location):
-		logfile.write("    * Source location: %s\n" % location)
-	logfile.write("    * Triggered by: %s (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
+#	if len(location):
+#		logfile.write("    * Source location: %s\n" % location)
+#	logfile.write("    * Triggered by: %s (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
 	logfile.close()
