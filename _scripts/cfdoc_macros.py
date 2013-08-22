@@ -159,6 +159,9 @@ def dictToTable(dictionary):
 	return lines
 
 def function_table(parameters, config):
+	qa.LogProcessStart(config, "function_table")
+	link_map = config["link_map"]
+	
 	syntax_map = config["syntax_map"]
 	lines = []
 	functions = syntax_map["functions"]
@@ -169,6 +172,9 @@ def function_table(parameters, config):
 	functionlist = list()
 	
 	for function in ordered_functions:
+		link = function + "()"
+		if not "`" + link + "`" in link_map:
+			qa.LogMissingDocumentation(config, link, ["No documentation"], "")
 		category = functions[function]["category"]
 		addToDict(categoryDict, category, function)
 		
