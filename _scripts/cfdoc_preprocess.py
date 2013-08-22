@@ -29,7 +29,7 @@ import cfdoc_macros as macros
 import cfdoc_printsource as printsource
 import cfdoc_git as git
 import sys
-improt os
+import os
 
 config = environment.validate()
 config["log_file"] = config["markdown_directory"] + "/cfdoc_log.markdown"
