@@ -36,11 +36,12 @@ def LogProcessStart(config, string):
 
 def LogMissingDocumentation(config, element, strings, location):
 	logfile = OpenLogFile(config)
-	logfile.write("* `" + element + "`: ")
+	logfile.write("* `" + element + "`:\n")
+	if len(strings):
+		logfile.write("    * Errors:\n")
 	for string in strings:
-		logfile.write("`" + string + "` ")
-	logfile.write("\n")
+		logfile.write("        * **%s**\n" % string)
 	if len(location):
-		logfile.write("    * Source location: %s\n" % location)
-	logfile.write("    * Triggered by: %s (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
+		logfile.write("    * Source location: `%s`\n" % location)
+	logfile.write("    * Triggered by: `%s` (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
 	logfile.close()
