@@ -26,6 +26,7 @@ import sys
 import json
 import cfdoc_environment as environment
 import cfdoc_linkresolver as linkresolver
+import cfdoc_qa as qa
 import collections
 
 def run(config):
@@ -428,7 +429,6 @@ def include_snippet(parameters, config):
 
 def library_include(parameters, config):
 	markdown_lines = []
-	
 	policy_filename = parameters[0] + ".json"
 	policy_json = config.get(policy_filename)
 	html_name = config.get("context_current_html")
@@ -441,10 +441,12 @@ def library_include(parameters, config):
 		policy_json = json.load(open(policy_path, 'r'))
 		config[policy_filename] = policy_json
 		
+	qa.LogProcessStart(config, "library_include: %s" % policy_filename)
+	
 	# for all bundles and bodies...
 	for key in policy_json.keys():
 		element_list = policy_json[key]
-		
+		errorString = []
 		current_type = None
 		for element in element_list:
 			namespace = element["namespace"]
@@ -482,6 +484,7 @@ def library_include(parameters, config):
 			
 			try:
 				source_path = config["project_directory"] + "/" + element["sourcePath"]
+				source_path = os.path.normpath(source_path)
 				source_file = open(source_path, 'r')
 				sourceLine = element["line"] - 1 # zero-based indexing
 				sourceLines = source_file.readlines()[sourceLine:]
@@ -544,12 +547,18 @@ def library_include(parameters, config):
 						documentation_lines.append("**Description:** ")
 						documentation_lines.append(brief)
 						documentation_lines.append("\n")
+					else:
+						errorString.append("Missing description")
 					return_doc = documentation_dict.get("return", "")
 					if len(return_doc):
 						documentation_lines.append("**Return value:** ")
 						documentation_lines.append(return_doc)
 						documentation_lines.append("\n")
-				
+				else: # no header lines
+					errorString.append("No documentation")
+			else: # no source lines
+				errorString.append("No source code or unable to read source code")
+
 			arguments = element["arguments"]
 			argument_idx = 0
 			argument_lines = []
@@ -563,6 +572,8 @@ def library_include(parameters, config):
 				
 				# if we have already found documentation for this, use it
 				param_line = documentation_dict.get("param_" + argument)
+				if param_line == None:
+					errorString.append("No documentation for parameter %s" % argument)
 				if param_line != None:
 					argument_line += ": " + param_line
 				# find out where the argument is being used
@@ -602,7 +613,11 @@ def library_include(parameters, config):
 				markdown_lines.append(code_lines)
 				markdown_lines.append("\n")
 			markdown_lines.append("\n")
-		
+			if len(errorString):
+				locationString = "in library `" + os.path.relpath(source_path) + "` (%d)" % sourceLine
+				qa.LogMissingDocumentation(config, prototype, errorString, locationString)
+				errorString = []
+
 	if len(markdown_lines) == 0:
 		print "cfdoc_macros:library_include: Failure to include " + parameters[0]
 		
