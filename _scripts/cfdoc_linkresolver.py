@@ -45,7 +45,10 @@ def readLinkFile(config):
 	link_lines = link_file.readlines()
 	for line in link_lines:
 		label = line[line.find('[') + 1:line.find(']')]
-		link_map["`" + label + "`"] = "[" + label + "]"
+		keyword = label
+		if line.find("]: reference-functions-") != -1:
+			keyword += "()"
+		link_map["`" + keyword + "`"] = "[" + label + "]"
 	config["link_map"] = link_map
 
 def addLinkToMap(keyword, anchor, html, config):
