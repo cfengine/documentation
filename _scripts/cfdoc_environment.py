@@ -39,6 +39,7 @@ def validate():
 		print "Directory 'documentation-generator' not found in WORKDIR"
 	
 	config["markdown_directory"] = config["WORKDIR"] + "/documentation"
+	config["log_file"] = config["WORKDIR"] + "/documentation/cfdoc_log.markdown"
 	if not os.path.exists(config["markdown_directory"]):
 		print "Directory 'documentation' not found in WORKDIR"
 
