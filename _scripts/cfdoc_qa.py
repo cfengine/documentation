@@ -52,6 +52,7 @@ def LogMissingDocumentation(config, element, strings, location):
 	for string in strings:
 		logfile.write("`" + string + "` ")
 	logfile.write("\n")
-	logfile.write("    * Source location: %s\n" % location)
+	if len(location):
+		logfile.write("    * Source location: %s\n" % location)
 	logfile.write("    * Triggered by: %s (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
 	logfile.close()
