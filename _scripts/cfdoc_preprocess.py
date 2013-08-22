@@ -29,8 +29,11 @@ import cfdoc_macros as macros
 import cfdoc_printsource as printsource
 import cfdoc_git as git
 import sys
+improt os
 
 config = environment.validate()
+config["log_file"] = config["markdown_directory"] + "/cfdoc_log.markdown"
+os.remove(config["log_file"])
 
 try:
 	git.createData(config)
