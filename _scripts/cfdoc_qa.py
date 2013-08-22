@@ -32,7 +32,7 @@ def OpenLogFile(config):
 		logfile.write("---\n")
 		logfile.write("layout: printable\n")
 		logfile.write("title: Documentation Issues\n")
-		logfile.write("publised: true\n")
+		logfile.write("published: true\n")
 		logfile.write("alias: cfdoc_log.html\n")
 		logfile.write("---\n")
 		logfile.write("\n")
