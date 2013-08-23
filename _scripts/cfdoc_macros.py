@@ -262,6 +262,8 @@ def generateTreeLine(keyword, depth):
 
 def generateTree(tree, excludes, depth, config):
 	skip_leaves = ["attributes"]
+	link_map = config["link_map"]
+
 	lines = []
 	try:
 		keys = tree.keys()
@@ -272,10 +274,15 @@ def generateTree(tree, excludes, depth, config):
 			# skip some branches, but not the tree
 			if not key in skip_leaves:
 				lines.append(generateTreeLine(key, depth))
+				if not "`" + key + "`" in link_map:
+					qa.LogMissingDocumentation(config, config["log_location"] + "/" + key, ["No documentation"], "")
 			else:
 				depth -= 1
 			if subtree:
+				log_location = config["log_location"]
+				config["log_location"] += "/" + key
 				lines += generateTree(subtree, excludes, depth + 1, config)
+				config["log_location"] = log_location
 				type = subtree.get("type")
 				try:
 					if type and (type == "body"):
@@ -288,12 +295,17 @@ def generateTree(tree, excludes, depth, config):
 		return lines
 	except:
 		lines.append(generateTreeLine(tree, depth))
+		if not "`" + tree + "`" in link_map:
+			qa.LogMissingDocumentation(config, config["log_location"] + "/" + tree, ["No documentation"], "")
 		return lines
 
 def syntax_map(parameters, config):
+	qa.LogProcessStart(config, "syntax_map")
 	syntax_map = config["syntax_map"]
+	config["log_location"] = "/"
 	if parameters != None:
 		syntax_map = syntax_map[parameters[0]]
+		config["log_location"] += parameters[0]
 		parameters = parameters[1:]
 	
 	lines = generateTree(syntax_map, parameters, 0, config)
