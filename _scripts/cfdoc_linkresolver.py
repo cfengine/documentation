@@ -95,6 +95,7 @@ def parseMarkdownForAnchors(file_name, config):
 	current_file_label = ""
 	current_title = ""
 	header_list = []
+	keywords = []
 	
 	in_pre = False
 	for line in lines:
@@ -116,10 +117,17 @@ def parseMarkdownForAnchors(file_name, config):
 		elif line.find("#") == 0:
 			current_header = line.lstrip('#').rstrip().lstrip()
 			header_list.append(current_header)
+		elif line.find("keywords:") == 0:
+			keywords = line.split('keywords: ')[1].rstrip().lstrip('[').rstrip(']')
+			keywords = keywords.split(",")
 
 	current_file_label = current_title
 
 	if current_file_label != "" and current_file_name != "":
+		for keyword in keywords:
+			keyword = keyword.lstrip().rstrip()
+			addLinkToMap("`" + keyword + "`", current_file_label, current_file_name + ' \"' + current_title + '\"', config)
+
 		keyword = current_file_label
 		# generate auto-link to functions via `function()`
 		if current_file_name.find("reference-functions-") == 0:
