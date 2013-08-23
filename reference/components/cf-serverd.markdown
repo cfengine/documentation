@@ -5,6 +5,7 @@ categories: [Reference, Components, cf-serverd]
 published: true
 alias: reference-components-cfserver.html
 tags: [Components, cf-serverd]
+keywords: [server]
 ---
 
 `cf-serverd` is a socket listening daemon providing two services: it acts as a 

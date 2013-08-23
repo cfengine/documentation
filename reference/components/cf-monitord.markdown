@@ -5,6 +5,7 @@ categories: [Reference, Components, cf-monitord]
 published: true
 alias: reference-components-cfmonitord.html
 tags: [Components, cf-monitord]
+keywords: [monitor]
 ---
 
 `cf-monitord` is the monitoring daemon for CFEngine. It samples probes defined 

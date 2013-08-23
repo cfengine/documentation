@@ -5,6 +5,7 @@ categories: [Reference, Components, cf-agent]
 published: true
 alias: reference-components-cfagent.html
 tags: [Components, cf-agent]
+keywords: [agent]
 ---
 
 `cf-agent` evaluates policy code and makes changes to the system. Policy 
