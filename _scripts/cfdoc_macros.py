@@ -499,6 +499,7 @@ def library_include(parameters, config):
 			code_lines = []
 			documentation_lines = []
 			documentation_dict = dict()
+			sourceLines = []
 			
 			try:
 				source_path = config["project_directory"] + "/" + element["sourcePath"]
