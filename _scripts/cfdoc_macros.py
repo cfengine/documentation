@@ -500,6 +500,7 @@ def library_include(parameters, config):
 			documentation_lines = []
 			documentation_dict = dict()
 			sourceLines = []
+			sourceLine = -1
 			
 			try:
 				source_path = config["project_directory"] + "/" + element["sourcePath"]
