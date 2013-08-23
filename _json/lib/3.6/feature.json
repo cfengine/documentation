@@ -1,7 +1,7 @@
 {
       "bundles": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/feature.cf",
+          "sourcePath": "../masterfiles/lib/3.6/feature.cf",
           "line": 1,
           "namespace": "default",
           "name": "feature",
@@ -274,7 +274,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/feature.cf",
+          "sourcePath": "../masterfiles/lib/3.6/feature.cf",
           "line": 50,
           "namespace": "default",
           "name": "feature_test",
@@ -471,7 +471,7 @@
       ],
       "bodies": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/feature.cf",
+          "sourcePath": "../masterfiles/lib/3.6/feature.cf",
           "line": 81,
           "namespace": "default",
           "name": "feature_cancel",

@@ -2,7 +2,7 @@
       "bundles": [],
       "bodies": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 58,
           "namespace": "default",
           "name": "if_elapsed",
@@ -35,7 +35,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 66,
           "namespace": "default",
           "name": "if_elapsed_day",
@@ -66,7 +66,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 74,
           "namespace": "default",
           "name": "measure_performance",
@@ -107,7 +107,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 83,
           "namespace": "default",
           "name": "warn_only",
@@ -138,7 +138,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 91,
           "namespace": "default",
           "name": "bg",
@@ -180,7 +180,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 100,
           "namespace": "default",
           "name": "ifwin_bg",
@@ -207,7 +207,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 108,
           "namespace": "default",
           "name": "immediate",
@@ -230,7 +230,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 115,
           "namespace": "default",
           "name": "policy",
@@ -255,7 +255,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 124,
           "namespace": "default",
           "name": "log_repaired",
@@ -289,7 +289,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 132,
           "namespace": "default",
           "name": "log_verbose",
@@ -312,7 +312,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 139,
           "namespace": "default",
           "name": "sample_rate",
@@ -345,7 +345,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 150,
           "namespace": "default",
           "name": "if_repaired",
@@ -375,7 +375,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 157,
           "namespace": "default",
           "name": "if_else",
@@ -458,7 +458,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 169,
           "namespace": "default",
           "name": "cf2_if_else",
@@ -528,7 +528,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 182,
           "namespace": "default",
           "name": "if_notkept",
@@ -584,7 +584,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 191,
           "namespace": "default",
           "name": "if_ok",
@@ -627,7 +627,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 199,
           "namespace": "default",
           "name": "if_ok_cancel",
@@ -670,7 +670,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 207,
           "namespace": "default",
           "name": "cmd_repair",
@@ -714,7 +714,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 213,
           "namespace": "default",
           "name": "classes_generic",
@@ -884,7 +884,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 223,
           "namespace": "default",
           "name": "scoped_classes_generic",
@@ -1063,7 +1063,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 238,
           "namespace": "default",
           "name": "state_repaired",
@@ -1101,7 +1101,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 246,
           "namespace": "default",
           "name": "enumerate",
@@ -1152,7 +1152,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/common.cf",
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
           "line": 261,
           "namespace": "default",
           "name": "always",

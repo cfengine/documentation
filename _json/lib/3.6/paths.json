@@ -1,7 +1,7 @@
 {
       "bundles": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/paths.cf",
+          "sourcePath": "../masterfiles/lib/3.6/paths.cf",
           "line": 50,
           "namespace": "default",
           "name": "paths",

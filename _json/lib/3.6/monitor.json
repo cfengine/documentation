@@ -2,7 +2,7 @@
       "bundles": [],
       "bodies": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/monitor.cf",
+          "sourcePath": "../masterfiles/lib/3.6/monitor.cf",
           "line": 54,
           "namespace": "default",
           "name": "scan_log",
@@ -35,7 +35,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/monitor.cf",
+          "sourcePath": "../masterfiles/lib/3.6/monitor.cf",
           "line": 62,
           "namespace": "default",
           "name": "scan_changing_file",
@@ -68,7 +68,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/monitor.cf",
+          "sourcePath": "../masterfiles/lib/3.6/monitor.cf",
           "line": 70,
           "namespace": "default",
           "name": "single_value",
@@ -101,7 +101,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/monitor.cf",
+          "sourcePath": "../masterfiles/lib/3.6/monitor.cf",
           "line": 78,
           "namespace": "default",
           "name": "line_match_value",

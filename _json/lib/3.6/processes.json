@@ -2,7 +2,7 @@
       "bundles": [],
       "bodies": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "sourcePath": "../masterfiles/lib/3.6/processes.cf",
           "line": 54,
           "namespace": "default",
           "name": "exclude_procs",
@@ -35,7 +35,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "sourcePath": "../masterfiles/lib/3.6/processes.cf",
           "line": 62,
           "namespace": "default",
           "name": "days_older_than",
@@ -104,7 +104,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "sourcePath": "../masterfiles/lib/3.6/processes.cf",
           "line": 70,
           "namespace": "default",
           "name": "by_owner",
@@ -158,7 +158,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "sourcePath": "../masterfiles/lib/3.6/processes.cf",
           "line": 80,
           "namespace": "default",
           "name": "any_count",
@@ -196,7 +196,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/processes.cf",
+          "sourcePath": "../masterfiles/lib/3.6/processes.cf",
           "line": 89,
           "namespace": "default",
           "name": "check_range",

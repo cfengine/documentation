@@ -2,7 +2,7 @@
       "bundles": [],
       "bodies": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 55,
           "namespace": "default",
           "name": "silent",
@@ -25,7 +25,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 62,
           "namespace": "default",
           "name": "in_dir",
@@ -50,7 +50,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 69,
           "namespace": "default",
           "name": "in_dir_shell",
@@ -83,7 +83,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 77,
           "namespace": "default",
           "name": "silent_in_dir",
@@ -116,7 +116,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 85,
           "namespace": "default",
           "name": "in_shell",
@@ -139,7 +139,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 92,
           "namespace": "default",
           "name": "in_shell_bg",
@@ -162,7 +162,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 99,
           "namespace": "default",
           "name": "in_shell_and_silent",
@@ -193,7 +193,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 107,
           "namespace": "default",
           "name": "in_dir_shell_and_silent",
@@ -234,7 +234,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 116,
           "namespace": "default",
           "name": "setuid",
@@ -267,7 +267,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 124,
           "namespace": "default",
           "name": "setuid_sh",
@@ -300,7 +300,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 132,
           "namespace": "default",
           "name": "setuidgid_sh",
@@ -342,7 +342,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 141,
           "namespace": "default",
           "name": "jail",
@@ -393,7 +393,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/commands.cf",
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 151,
           "namespace": "default",
           "name": "setuid_umask",

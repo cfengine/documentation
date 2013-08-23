@@ -1,8 +1,8 @@
 {
       "bundles": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
-          "line": 54,
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 59,
           "namespace": "default",
           "name": "cronjob",
           "bundleType": "agent",
@@ -14,18 +14,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 61,
+              "line": 66,
               "name": "vars",
               "contexts": [
                 {
                   "name": "SuSE",
                   "promises": [
                     {
-                      "line": 63,
+                      "line": 68,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "line": 63,
+                          "line": 68,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -40,11 +40,11 @@
                   "name": "redhat|fedora",
                   "promises": [
                     {
-                      "line": 65,
+                      "line": 70,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "line": 65,
+                          "line": 70,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -59,11 +59,11 @@
                   "name": "freebsd",
                   "promises": [
                     {
-                      "line": 67,
+                      "line": 72,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "line": 67,
+                          "line": 72,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -78,11 +78,11 @@
                   "name": "!(SuSE|redhat|fedora|freebsd)",
                   "promises": [
                     {
-                      "line": 69,
+                      "line": 74,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "line": 69,
+                          "line": 74,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -96,18 +96,18 @@
               ]
             },
             {
-              "line": 71,
+              "line": 76,
               "name": "files",
               "contexts": [
                 {
                   "name": "!windows",
                   "promises": [
                     {
-                      "line": 74,
+                      "line": 79,
                       "promiser": "$(crontab)/$(user)",
                       "attributes": [
                         {
-                          "line": 76,
+                          "line": 81,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -115,7 +115,7 @@
                           }
                         },
                         {
-                          "line": 77,
+                          "line": 82,
                           "lval": "create",
                           "rval": {
                             "type": "string",
@@ -123,7 +123,7 @@
                           }
                         },
                         {
-                          "line": 78,
+                          "line": 83,
                           "lval": "edit_line",
                           "rval": {
                             "type": "functionCall",
@@ -137,7 +137,7 @@
                           }
                         },
                         {
-                          "line": 79,
+                          "line": 84,
                           "lval": "perms",
                           "rval": {
                             "type": "functionCall",
@@ -155,7 +155,7 @@
                           }
                         },
                         {
-                          "line": 80,
+                          "line": 85,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -175,18 +175,18 @@
               ]
             },
             {
-              "line": 82,
+              "line": 87,
               "name": "processes",
               "contexts": [
                 {
                   "name": "changed_crontab",
                   "promises": [
                     {
-                      "line": 85,
+                      "line": 90,
                       "promiser": "cron",
                       "attributes": [
                         {
-                          "line": 86,
+                          "line": 91,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -194,7 +194,7 @@
                           }
                         },
                         {
-                          "line": 87,
+                          "line": 92,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -215,8 +215,8 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
-          "line": 93,
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 98,
           "namespace": "default",
           "name": "rm_rf",
           "bundleType": "agent",
@@ -225,18 +225,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 95,
+              "line": 100,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 96,
+                      "line": 101,
                       "promiser": "isdir",
                       "attributes": [
                         {
-                          "line": 96,
+                          "line": 101,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -256,18 +256,18 @@
               ]
             },
             {
-              "line": 97,
+              "line": 102,
               "name": "files",
               "contexts": [
                 {
                   "name": "isdir",
                   "promises": [
                     {
-                      "line": 99,
+                      "line": 104,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 100,
+                          "line": 105,
                           "lval": "file_select",
                           "rval": {
                             "type": "symbol",
@@ -275,7 +275,7 @@
                           }
                         },
                         {
-                          "line": 101,
+                          "line": 106,
                           "lval": "depth_search",
                           "rval": {
                             "type": "functionCall",
@@ -289,7 +289,7 @@
                           }
                         },
                         {
-                          "line": 102,
+                          "line": 107,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -304,11 +304,11 @@
                   "name": "!isdir",
                   "promises": [
                     {
-                      "line": 105,
+                      "line": 110,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 105,
+                          "line": 110,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -324,8 +324,8 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
-          "line": 108,
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 113,
           "namespace": "default",
           "name": "fileinfo",
           "bundleType": "agent",
@@ -334,18 +334,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 110,
+              "line": 115,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 111,
+                      "line": 116,
                       "promiser": "fields",
                       "attributes": [
                         {
-                          "line": 111,
+                          "line": 116,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -369,11 +369,11 @@
                       ]
                     },
                     {
-                      "line": 113,
+                      "line": 118,
                       "promiser": "stat[$(f)][$(fields)]",
                       "attributes": [
                         {
-                          "line": 113,
+                          "line": 118,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -397,14 +397,14 @@
               ]
             },
             {
-              "line": 115,
+              "line": 120,
               "name": "reports",
               "contexts": [
                 {
                   "name": "verbose_mode",
                   "promises": [
                     {
-                      "line": 117,
+                      "line": 122,
                       "promiser": "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])",
                       "attributes": []
                     }
@@ -415,8 +415,8 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
-          "line": 120,
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 125,
           "namespace": "default",
           "name": "logrotate",
           "bundleType": "agent",
@@ -427,18 +427,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 126,
+              "line": 131,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 127,
+                      "line": 132,
                       "promiser": "$(log_files)",
                       "attributes": [
                         {
-                          "line": 128,
+                          "line": 133,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -446,7 +446,7 @@
                           }
                         },
                         {
-                          "line": 129,
+                          "line": 134,
                           "lval": "rename",
                           "rval": {
                             "type": "functionCall",
@@ -460,7 +460,7 @@
                           }
                         },
                         {
-                          "line": 130,
+                          "line": 135,
                           "lval": "file_select",
                           "rval": {
                             "type": "functionCall",
@@ -482,8 +482,8 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/bundles.cf",
-          "line": 133,
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 138,
           "namespace": "default",
           "name": "prunedir",
           "bundleType": "agent",
@@ -493,18 +493,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 139,
+              "line": 144,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 140,
+                      "line": 145,
                       "promiser": "$(dir)",
                       "attributes": [
                         {
-                          "line": 141,
+                          "line": 146,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -512,7 +512,7 @@
                           }
                         },
                         {
-                          "line": 142,
+                          "line": 147,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -520,7 +520,7 @@
                           }
                         },
                         {
-                          "line": 143,
+                          "line": 148,
                           "lval": "file_select",
                           "rval": {
                             "type": "functionCall",
@@ -538,7 +538,7 @@
                           }
                         },
                         {
-                          "line": 144,
+                          "line": 149,
                           "lval": "depth_search",
                           "rval": {
                             "type": "functionCall",
@@ -560,5 +560,34 @@
           ]
         }
       ],
-      "bodies": []
+      "bodies": [
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 50,
+          "namespace": "default",
+          "name": "control",
+          "bodyType": "file",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 52,
+                  "lval": "inputs",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "files.cf"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }

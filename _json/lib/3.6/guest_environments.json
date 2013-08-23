@@ -2,7 +2,7 @@
       "bundles": [],
       "bodies": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/guest_environments.cf",
+          "sourcePath": "../masterfiles/lib/3.6/guest_environments.cf",
           "line": 54,
           "namespace": "default",
           "name": "kvm",

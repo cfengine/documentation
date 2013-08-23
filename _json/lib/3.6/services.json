@@ -1,7 +1,7 @@
 {
       "bundles": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/services.cf",
+          "sourcePath": "../masterfiles/lib/3.6/services.cf",
           "line": 73,
           "namespace": "default",
           "name": "standard_services",
@@ -7850,7 +7850,7 @@
       ],
       "bodies": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/services.cf",
+          "sourcePath": "../masterfiles/lib/3.6/services.cf",
           "line": 54,
           "namespace": "default",
           "name": "bootstart",
@@ -7894,7 +7894,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/services.cf",
+          "sourcePath": "../masterfiles/lib/3.6/services.cf",
           "line": 64,
           "namespace": "default",
           "name": "force_deps",

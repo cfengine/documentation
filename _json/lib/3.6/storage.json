@@ -2,7 +2,7 @@
       "bundles": [],
       "bodies": [
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
+          "sourcePath": "../masterfiles/lib/3.6/storage.cf",
           "line": 54,
           "namespace": "default",
           "name": "min_free_space",
@@ -51,7 +51,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
+          "sourcePath": "../masterfiles/lib/3.6/storage.cf",
           "line": 64,
           "namespace": "default",
           "name": "nfs",
@@ -101,7 +101,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
+          "sourcePath": "../masterfiles/lib/3.6/storage.cf",
           "line": 75,
           "namespace": "default",
           "name": "nfs_p",
@@ -165,7 +165,7 @@
           ]
         },
         {
-          "sourcePath": "../core/masterfiles/lib/3.6/storage.cf",
+          "sourcePath": "../masterfiles/lib/3.6/storage.cf",
           "line": 86,
           "namespace": "default",
           "name": "unmount",
