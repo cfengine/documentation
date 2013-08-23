@@ -12,7 +12,7 @@ keywords: [monitor]
 in policy code and attempts to learn the normal system state based on current 
 and past observations. Current estimates are made available as [special 
 variables][special variables] (e.g. [`$(mon.av_cpu)`][mon#mon.av_cpu]) to 
-[`cf-agent`][cf-agent], which may use them to inform policy decisions.
+`cf-agent`, which may use them to inform policy decisions.
 
 `cf-monitord` keeps the promises made in `common`and `monitor` bundles, and is
 affected by  `common` and `monitor` control bodies.

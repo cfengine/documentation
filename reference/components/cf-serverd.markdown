@@ -10,7 +10,7 @@ keywords: [server]
 
 `cf-serverd` is a socket listening daemon providing two services: it acts as a 
 file server for remote file copying and it allows an authorized 
-[`cf-runagent`][cf-runagent] to start a [`cf-agent`][cf-agent] run. `cf-agent` 
+`cf-runagent` to start a `cf-agent` run. `cf-agent` 
 typically connects to a `cf-serverd` instance to request updated policy code, 
 but may also request additional files for download. `cf-serverd`  employs 
 [role based access control][roles] (defined in policy code) to authorize 
