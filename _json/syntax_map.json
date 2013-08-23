@@ -485,6 +485,13 @@
           "range": "-9.99999E100,9.99999E100",
           "visibility": "promiseType"
         },
+        "container": {
+          "attribute": "container",
+          "status": "normal",
+          "type": "container",
+          "range": "",
+          "visibility": "promiseType"
+        },
         "policy": {
           "attribute": "policy",
           "status": "normal",
@@ -6161,6 +6168,18 @@
       "variadic": false,
       "category": "io"
     },
+    "parsejson": {
+      "status": "normal",
+      "returnType": "container",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "category": "io"
+    },
     "parserealarray": {
       "status": "normal",
       "returnType": "int",
@@ -6412,6 +6431,22 @@
         {
           "type": "int",
           "range": "0,99999999999"
+        },
+        {
+          "type": "int",
+          "range": "0,99999999999"
+        }
+      ],
+      "variadic": false,
+      "category": "io"
+    },
+    "readjson": {
+      "status": "normal",
+      "returnType": "container",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "\"?(/.*)"
         },
         {
           "type": "int",
