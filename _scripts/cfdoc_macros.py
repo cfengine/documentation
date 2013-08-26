@@ -256,8 +256,51 @@ def function_attributes(parameters, config):
 		lines += argument
 	return lines
 
-def generateTree(tree, excludes, depth, config):
+def document_promise_type(type, type_definition, excludes, config):
 	link_map = config["link_map"]
+
+	lines = []
+
+	type_status = type_definition.get("status", "normal")
+	type_attributes = type_definition.get("attributes")
+	
+	attributes = sorted(type_attributes.keys())
+	for attribute in attributes:
+		if attribute in excludes:
+			continue
+		if not "`" + attribute + "`" in link_map:
+			qa.LogMissingDocumentation(config, type + "/" + attribute, ["No documentation for attribute"], "")
+		attribute_definition = type_attributes.get(attribute)
+		if attribute_definition == None:
+			print "cfdoc_macros: syntax_map - no definition for attribute %s in type %s" % (attribute, type)
+			continue
+		
+		attribute_status = attribute_definition.get("status", "normal")
+		attribute_type = attribute_definition.get("type")
+		attribute_range = attribute_definition.get("range")
+
+		if attribute_type == "body":
+			attribute_type = "body `%s`" % attribute
+			if not "`" + attribute + "`" in link_map:
+				qa.LogMissingDocumentation(config, type + "/" + attribute, ["No documentation for body type"], "")
+		elif attribute_type == "option":
+			attribute_type = "one of `%s`" % attribute_range.replace(",", "`, `")
+			attribute_range = None
+		elif attribute_type == "context":
+			attribute_type = "class"
+		else:
+			attribute_type = "`%s`" % attribute_type
+		
+		line = "* %s: %s" % (attribute, attribute_type)
+		if attribute_range:
+			 line += " in range `%s`" % attribute_range
+		lines.append(line + "\n")
+	lines.append("\n")
+
+	return lines
+
+def document_syntax_map(tree, config):
+	lines = []
 
 	# JSON structure in `tree` is:
 	# * type -> dict
@@ -290,65 +333,40 @@ def generateTree(tree, excludes, depth, config):
 			common_definition = dict()
 			common_definition["status"] = "normal"
 			common_definition["attributes"] = common_attributes
-			tree["common"] = common_definition
-			types.insert(0, "common")
-
-	lines = []
+			lines.append("### [Common Attributes][Promise Types and Attributes#Common Attributes]\n\n")
+			lines.append(document_promise_type("common", common_definition, [], config))
+			
+	excludes = common_attributes.keys()
+	
+	link_map = config["link_map"]
 	for type in types:
-		if type in excludes:
-			continue
-		if not "`" + type + "`" in link_map:
-			qa.LogMissingDocumentation(config, config["log_location"] + "/" + type, ["No documentation for type"], "")
-		lines.append("### `%s`\n\n" % type)
+		link = None
+		if "`body " + type + "`" in link_map:
+			# hack for classes, common and file bodies - see _reference.md
+			link = "body " + type
+		elif "`" + type + "`" in link_map:
+			link = "`" + type + "`"
+			
+		if link:
+			lines.append("### [%s][%s]\n\n" % (type, link))
+		else:
+			lines.append("### %s\n\n" % type)
+			qa.LogMissingDocumentation(config, type, ["No documentation for type"], "")
 		type_definition = tree.get(type)
 		if type_definition == None:
 			print "cfdoc_macros: syntax_map - no definition for type %s" % type
 			continue
-
-		type_status = type_definition.get("status", "normal")
-		type_attributes = type_definition.get("attributes")
-		
-		attributes = sorted(type_attributes.keys())
-		for attribute in attributes:
-			if type != "common" and common_attributes.get(attribute):
-				continue
-			if not "`" + attribute + "`" in link_map:
-				qa.LogMissingDocumentation(config, config["log_location"] + "/" + type + "/" + attribute, ["No documentation for attribute"], "")
-			attribute_definition = type_attributes.get(attribute)
-			if attribute_definition == None:
-				print "cfdoc_macros: syntax_map - no definition for attribute %s in type %s" % (attribute, type)
-				continue
-			
-			attribute_status = attribute_definition.get("status", "normal")
-			attribute_type = attribute_definition.get("type")
-			attribute_range = attribute_definition.get("range")
-
-			if attribute_type == "body":
-				attribute_type = "`body %s`" % attribute
-			elif attribute_type == "option":
-				attribute_type = "one of `%s`" % attribute_range.replace(",", "`, `")
-				attribute_range = None
-			else:
-				attribute_type = "`%s`" % attribute_type
-			
-			line = "* %s: %s" % (attribute, attribute_type)
-			if attribute_range:
-				 line += " in range `%s`" % attribute_range
-			lines.append(line + "\n")
-		lines.append("\n")
-
+		lines.append(document_promise_type(type, type_definition, excludes, config))
+	
 	return lines
 
 def syntax_map(parameters, config):
 	qa.LogProcessStart(config, "syntax_map for %s" % parameters[0])
 	syntax_map = config["syntax_map"]
-	config["log_location"] = "/"
 	if parameters != None:
 		syntax_map = syntax_map[parameters[0]]
-		config["log_location"] += parameters[0]
-		parameters = parameters[1:]
 	
-	lines = generateTree(syntax_map, parameters, 0, config)
+	lines = document_syntax_map(syntax_map, config)
 	return lines
 
 def resolveAttribute(attributes, argument):
