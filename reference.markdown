@@ -14,8 +14,8 @@ page.
 
 ## All Promise Types
 
-[%CFEngine_syntax_map(promiseTypes, status, type, range, visibility, attribute)]
+[%CFEngine_syntax_map(promiseTypes)]
 
 ## All Body Types
 
-[%CFEngine_syntax_map(bodyTypes, status, type, range, visibility, attribute)]
+[%CFEngine_syntax_map(bodyTypes)]
