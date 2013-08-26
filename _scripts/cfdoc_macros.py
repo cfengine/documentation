@@ -280,14 +280,18 @@ def document_promise_type(type, type_definition, excludes, config):
 		attribute_range = attribute_definition.get("range")
 
 		if attribute_type == "body":
-			attribute_type = "body `%s`" % attribute
-			if not "`" + attribute + "`" in link_map:
+			if "`body " + attribute + "`" in link_map:
+				attribute_type = "body [`%s`][body %s]" % (attribute, attribute)
+			elif "`" + attribute + "`" in link_map:
+				attribute_type = "body `%s`" % attribute
+			else:
+				attribute_type = "body `%s`" % attribute
 				qa.LogMissingDocumentation(config, type + "/" + attribute, ["No documentation for body type"], "")
 		elif attribute_type == "option":
 			attribute_type = "one of `%s`" % attribute_range.replace(",", "`, `")
 			attribute_range = None
 		elif attribute_type == "context":
-			attribute_type = "class"
+			attribute_type = "class expression"
 		else:
 			attribute_type = "`%s`" % attribute_type
 		
