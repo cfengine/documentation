@@ -333,7 +333,7 @@ def generateTree(tree, excludes, depth, config):
 			
 			line = "* %s: %s" % (attribute, attribute_type)
 			if attribute_range:
-				 line += " in range %s" % attribute_range
+				 line += " in range `%s`" % attribute_range
 			lines.append(line + "\n")
 		lines.append("\n")
 
