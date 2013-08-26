@@ -256,7 +256,7 @@ def function_attributes(parameters, config):
 		lines += argument
 	return lines
 
-def document_promise_type(type, type_definition, excludes, config):
+def document_type(type, type_definition, excludes, config):
 	link_map = config["link_map"]
 
 	lines = []
@@ -338,7 +338,7 @@ def document_syntax_map(tree, config):
 			common_definition["status"] = "normal"
 			common_definition["attributes"] = common_attributes
 			lines.append("### [Common Attributes][Promise Types and Attributes#Common Attributes]\n\n")
-			lines.append(document_promise_type("common", common_definition, [], config))
+			lines.append(document_type("common", common_definition, [], config))
 			
 	excludes = common_attributes.keys()
 	
@@ -360,7 +360,7 @@ def document_syntax_map(tree, config):
 		if type_definition == None:
 			print "cfdoc_macros: syntax_map - no definition for type %s" % type
 			continue
-		lines.append(document_promise_type(type, type_definition, excludes, config))
+		lines.append(document_type(type, type_definition, excludes, config))
 	
 	return lines
 
