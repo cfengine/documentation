@@ -355,7 +355,7 @@ def document_syntax_map(tree, config):
 			# hack for classes, common and file bodies - see _reference.md
 			link = "body " + type
 		elif "`" + type + "`" in link_map:
-			link = "`" + type + "`"
+			link = type
 			
 		if link:
 			lines.append("### [%s][%s]\n\n" % (type, link))
