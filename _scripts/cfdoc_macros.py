@@ -268,8 +268,6 @@ def document_type(type, type_definition, excludes, config):
 	for attribute in attributes:
 		if attribute in excludes:
 			continue
-		if not "`" + attribute + "`" in link_map:
-			qa.LogMissingDocumentation(config, type + "/" + attribute, ["No documentation for attribute"], "")
 		attribute_definition = type_attributes.get(attribute)
 		if attribute_definition == None:
 			print "cfdoc_macros: syntax_map - no definition for attribute %s in type %s" % (attribute, type)
@@ -278,6 +276,9 @@ def document_type(type, type_definition, excludes, config):
 		attribute_status = attribute_definition.get("status", "normal")
 		attribute_type = attribute_definition.get("type")
 		attribute_range = attribute_definition.get("range")
+
+		if attribute_status == "normal" and (not "`" + attribute + "`" in link_map):
+			qa.LogMissingDocumentation(config, type + "/" + attribute, ["No documentation for attribute"], "")
 
 		if attribute_type == "body":
 			if "`body " + attribute + "`" in link_map:
@@ -295,7 +296,12 @@ def document_type(type, type_definition, excludes, config):
 		else:
 			attribute_type = "`%s`" % attribute_type
 		
-		line = "* %s: %s" % (attribute, attribute_type)
+		if attribute_status == "normal":
+			attribute_status = ""
+		else:
+			attribute_status = "<sup>**%s**</sup>" % attribute_status
+		
+		line = "* `%s`%s: %s" % (attribute, attribute_status, attribute_type)
 		if attribute_range:
 			 line += " in range `%s`" % attribute_range
 		lines.append(line + "\n")
