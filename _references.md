@@ -32,3 +32,6 @@
 [io functions]: tags/io-functions.html
 [comm functions]: tags/communication-functions.html
 [files functions]: tags/files-functions.html
+[body classes]: reference-promise-types.html#classes
+[body common]: reference-components.html#common-control
+[body file]: manuals-language-concepts-namespaces.html
