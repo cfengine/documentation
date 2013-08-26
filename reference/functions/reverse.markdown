@@ -45,5 +45,4 @@ This is a simple function to reverse a list.
     }
 ```
 
-**See also:** [`filter()`][filter], [`grep()`][grep],
-[`every()`][every], [`some()`][some], and [`none()`][none].
+**See also:** `filter()`, `grep()`, `every()`, `some()`, and `none()`.
