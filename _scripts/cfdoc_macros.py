@@ -24,6 +24,7 @@ import os
 import re
 import sys
 import json
+import copy
 import cfdoc_environment as environment
 import cfdoc_linkresolver as linkresolver
 import cfdoc_qa as qa
@@ -255,52 +256,91 @@ def function_attributes(parameters, config):
 		lines += argument
 	return lines
 
-def generateTreeLine(keyword, depth):
-	line = " " * depth * 4
-	line += "* `" + keyword + "`\n"
-	return line
-
 def generateTree(tree, excludes, depth, config):
-	skip_leaves = ["attributes"]
 	link_map = config["link_map"]
 
+	# JSON structure in `tree` is:
+	# * type -> dict
+	#     * status: normal|deprecated
+	#     * attributes -> dict
+	#         * attr_name -> dict
+	#             * attribute: attr_name
+	#             * status: normal|deprecated
+	#             * type: int, string, slist...
+	#             * range: regex
+	#             * visibility: (ignored)
+	
+	# first, collect everything that all types have and call it "common"
+	types = sorted(tree.keys())
+	common_attributes = dict()
+	if not "common" in types:
+		try:
+			common_attributes = copy.deepcopy(tree.get("classes").get("attributes"))
+		except:
+			print "cfdoc_macros: syntax_map - no promise type classes?!"
+		for common_attribute in common_attributes.keys():
+			type_count = 0
+			for type in types:
+				if tree.get(type).get("attributes").get(common_attribute):
+					type_count += 1
+			if type_count != len(types):
+				del common_attributes[common_attribute]
+	
+		if len(common_attributes):
+			common_definition = dict()
+			common_definition["status"] = "normal"
+			common_definition["attributes"] = common_attributes
+			tree["common"] = common_definition
+			types.insert(0, "common")
+
 	lines = []
-	try:
-		keys = tree.keys()
-		for key in keys:
-			if key in excludes:
+	for type in types:
+		if type in excludes:
+			continue
+		if not "`" + type + "`" in link_map:
+			qa.LogMissingDocumentation(config, config["log_location"] + "/" + type, ["No documentation for type"], "")
+		lines.append("### `%s`\n\n" % type)
+		type_definition = tree.get(type)
+		if type_definition == None:
+			print "cfdoc_macros: syntax_map - no definition for type %s" % type
+			continue
+
+		type_status = type_definition.get("status", "normal")
+		type_attributes = type_definition.get("attributes")
+		
+		attributes = sorted(type_attributes.keys())
+		for attribute in attributes:
+			if type != "common" and common_attributes.get(attribute):
 				continue
-			subtree = tree.get(key)
-			# skip some branches, but not the tree
-			if not key in skip_leaves:
-				lines.append(generateTreeLine(key, depth))
-				if not "`" + key + "`" in link_map:
-					qa.LogMissingDocumentation(config, config["log_location"] + "/" + key, ["No documentation"], "")
+			if not "`" + attribute + "`" in link_map:
+				qa.LogMissingDocumentation(config, config["log_location"] + "/" + type + "/" + attribute, ["No documentation for attribute"], "")
+			attribute_definition = type_attributes.get(attribute)
+			if attribute_definition == None:
+				print "cfdoc_macros: syntax_map - no definition for attribute %s in type %s" % (attribute, type)
+				continue
+			
+			attribute_status = attribute_definition.get("status", "normal")
+			attribute_type = attribute_definition.get("type")
+			attribute_range = attribute_definition.get("range")
+
+			if attribute_type == "body":
+				attribute_type = "`body %s`" % attribute
+			elif attribute_type == "option":
+				attribute_type = "one of `%s`" % attribute_range.replace(",", "`, `")
+				attribute_range = None
 			else:
-				depth -= 1
-			if subtree:
-				log_location = config["log_location"]
-				config["log_location"] += "/" + key
-				lines += generateTree(subtree, excludes, depth + 1, config)
-				config["log_location"] = log_location
-				type = subtree.get("type")
-				try:
-					if type and (type == "body"):
-						syntax_map = config["syntax_map"]
-						bodyTree = syntax_map["bodyTypes"]
-						bodyTree = bodyTree.get(key)
-						lines += generateTree(bodyTree, excludes, depth + 1, config)
-				except:
-					continue
-		return lines
-	except:
-		lines.append(generateTreeLine(tree, depth))
-		if not "`" + tree + "`" in link_map:
-			qa.LogMissingDocumentation(config, config["log_location"] + "/" + tree, ["No documentation"], "")
-		return lines
+				attribute_type = "`%s`" % attribute_type
+			
+			line = "* %s: %s" % (attribute, attribute_type)
+			if attribute_range:
+				 line += " in range %s" % attribute_range
+			lines.append(line + "\n")
+		lines.append("\n")
+
+	return lines
 
 def syntax_map(parameters, config):
-	qa.LogProcessStart(config, "syntax_map")
+	qa.LogProcessStart(config, "syntax_map for %s" % parameters[0])
 	syntax_map = config["syntax_map"]
 	config["log_location"] = "/"
 	if parameters != None:
