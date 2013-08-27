@@ -751,7 +751,7 @@ def library_include(parameters, config):
 				markdown_lines.append("\n")
 			markdown_lines.append("\n")
 			if len(errorString):
-				locationString = "in library `" + os.path.relpath(source_path) + "` (%d)" % sourceLine
+				locationString = "`in library `" + os.path.relpath(source_path) + "` (%d)" % sourceLine
 				qa.LogMissingDocumentation(config, prototype, errorString, locationString)
 				errorString = []
 
