@@ -6046,6 +6046,13 @@
       "variadic": false,
       "category": "data"
     },
+    "mergecontainer": {
+      "status": "normal",
+      "returnType": "container",
+      "parameters": [],
+      "variadic": true,
+      "category": "data"
+    },
     "none": {
       "status": "normal",
       "returnType": "context",
