@@ -281,9 +281,9 @@ def document_type(type, type_definition, excludes, config):
 			qa.LogMissingDocumentation(config, type + "/" + attribute, ["No documentation for attribute"], "")
 
 		if attribute_type == "body":
-			if "`body " + attribute + "`" in link_map:
-				attribute_type = "body [`%s`][body %s]" % (attribute, attribute)
-			elif "`" + attribute + "`" in link_map:
+			if ("`body %s`" % attribute) in link_map:
+				attribute_type = "body [`%s`]%s" % (attribute, link_map["`body %s`" % attribute])
+			elif ("`%s`" % attribute) in link_map:
 				attribute_type = "body `%s`" % attribute
 			else:
 				attribute_type = "body `%s`" % attribute
@@ -309,8 +309,9 @@ def document_type(type, type_definition, excludes, config):
 
 	return lines
 
-def document_syntax_map(tree, config):
+def document_syntax_map(tree, branch, config):
 	lines = []
+	tree = tree[branch]
 
 	# JSON structure in `tree` is:
 	# * type -> dict
@@ -351,14 +352,14 @@ def document_syntax_map(tree, config):
 	link_map = config["link_map"]
 	for type in types:
 		link = None
-		if "`body " + type + "`" in link_map:
+		if branch == "bodyTypes" and ("`body " + type + "`") in link_map:
 			# hack for classes, common and file bodies - see _reference.md
-			link = "body " + type
-		elif "`" + type + "`" in link_map:
-			link = type
+			link = link_map.get("`body " + type + "`")
+		else:
+			link = link_map.get("`" + type + "`")
 			
 		if link:
-			lines.append("### [%s][%s]\n\n" % (type, link))
+			lines.append("### [%s]%s\n\n" % (type, link))
 		else:
 			lines.append("### %s\n\n" % type)
 			qa.LogMissingDocumentation(config, type, ["No documentation for type"], "")
@@ -373,10 +374,7 @@ def document_syntax_map(tree, config):
 def syntax_map(parameters, config):
 	qa.LogProcessStart(config, "syntax_map for %s" % parameters[0])
 	syntax_map = config["syntax_map"]
-	if parameters != None:
-		syntax_map = syntax_map[parameters[0]]
-	
-	lines = document_syntax_map(syntax_map, config)
+	lines = document_syntax_map(syntax_map, parameters[0], config)
 	return lines
 
 def resolveAttribute(attributes, argument):
