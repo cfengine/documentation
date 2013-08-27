@@ -46,6 +46,7 @@ def processFile(markdown, config):
 	
 	write_changes = False
 	new_markdown_lines = []
+	
 	in_pre = False
 	previous_empty = True
 	markdown_line_number = 0
@@ -56,10 +57,17 @@ def processFile(markdown, config):
 			current_title = current_title[1].rstrip().rstrip('\"')
 			current_title = current_title.lstrip().lstrip('\"')
 			config["context_current_title"] = current_title
+			config["context_current_header"] = [None, current_title, None, None, None, None, None]
 		elif markdown_line.find("alias:") == 0:
 			current_html = markdown_line.split('alias: ')
 			current_html = current_html[1].rstrip()
 			config["context_current_html"] = current_html
+		elif markdown_line[0] == '#':
+			for header_depth in range(1,6):
+				header_marker = "#" * header_depth + " "
+				if markdown_line.find(header_marker) == 0:
+					config["context_current_header"][header_depth] = markdown_line[header_depth + 1:].rstrip()
+					break
 			
 		config["context_current_line"] = markdown_line
 		config["context_current_line_number"] = markdown_line_number
@@ -122,6 +130,53 @@ def processFile(markdown, config):
 			new_markdown_file.write(line)
 		new_markdown_file.close()
 		os.rename(new_markdown_filename,markdown)
+
+def promise_attribute(parameters, config):
+	lines = []
+
+	header = config["context_current_header"]
+	promise_types = config["syntax_map"]["promiseTypes"]
+	body_types = config["syntax_map"]["bodyTypes"]
+	
+	# assumption: 
+	# header[1] = promise type
+	# header[2] = "Attributes"
+	# header[3] = attribute name
+	# header[4] = body attribute
+	promise_type_def = promise_types[header[1]]
+	attribute_def = promise_type_def["attributes"][header[3]]
+	attribute_type = attribute_def["type"]
+	if attribute_type == "body":
+		if header[4]:
+			body_type_def = body_types[header[3]]
+			attribute_def = body_type_def["attributes"][header[4]]
+			attribute_type = attribute_def["type"]
+		else:
+			lines.append("**Type:** `body %s`\n\n" % header[3])
+			return lines
+	
+	attribute_range = attribute_def["range"]
+	if attribute_type == "option":
+		if attribute_range == "true,false,yes,no,on,off":
+			lines.append("**Type:** `boolean`\n\n")
+		else:
+			attribute_values = attribute_range.split(",")
+			lines.append("**Type:** (menu option)\n\n")
+			lines.append("**Allowed input range:**\n\n")
+			for attribute_value in attribute_values:
+				lines.append("* `%s`\n" % attribute_value)
+			lines.append("\n")
+	else:
+		lines.append("**Type:** `%s`\n\n" % attribute_type)
+		if attribute_range == "":
+			lines.append("**Allowed input range:** (arbitrary string)\n\n")
+		else:
+			lines.append("**Allowed input range:** `%s`\n\n" % attribute_range)
+
+	if parameters:
+		lines.append("**Default value:** %s\n\n" % parameters[0])
+
+	return lines
 
 def addToDict(dictionary, key, function):
 	values = dictionary.get(key)
