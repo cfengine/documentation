@@ -117,6 +117,10 @@ def parseMarkdownForAnchors(file_name, config):
 		elif line.find("#") == 0:
 			current_header = line.lstrip('#').rstrip().lstrip()
 			header_list.append(current_header)
+		elif line.find("layout:") == 0:
+			layout = line.split('layout:')[1].lstrip().rstrip()
+			if layout == "printable":
+				return
 		elif line.find("keywords:") == 0:
 			keywords = line.split('keywords: ')[1].rstrip().lstrip('[').rstrip(']')
 			keywords = keywords.split(",")
