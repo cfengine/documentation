@@ -125,9 +125,7 @@ standard connection tests in the control body.
 The lists may contain network addresses in CIDR notation or regular
 expressions to match the IP address or name of the connecting host.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -148,9 +146,7 @@ Denial is for special exceptions. A better strategy is always to grant
 on a need to know basis. A security policy based on exceptions is a weak
 one.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -185,9 +181,7 @@ files owned by non-privileged users. If `maproot` is true then remote
 A typical case where mapping is important is in making backups of many
 user files.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -218,9 +212,7 @@ client being encrypted.
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
 
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
+[%CFEngine_promise_attribute(false)%]
 
 **Example:**
 
@@ -246,17 +238,7 @@ hashed passwords). In the case of literal data, the promise handle
 serves as the reference identifier for queries. Queries are instigated
 by function calls by any agent.
 
-**Type:** (menu option)
-
-**Allowed input range:**   
-
-```
-    path
-    literal
-    context
-    query
-    variable
-```
+[%CFEngine_promise_attribute()%]
 
 If the resource type is `literal`, CFEngine will grant access to a
 literal data string. This string is defined either by the promiser
@@ -286,8 +268,7 @@ access:
 If the resource type is `context`, the promiser is treated as a regular
 expression to match persistent classes defined on the server host. If
 these are matched by the request from the client, they will be
-transmitted (See [Function
-remoteclassesmatching](#Function-remoteclassesmatching)).
+transmitted (See `remoteclassesmatching()`).
 
 The term `query` may also be used in CFEngine Enterprise to query the server 
 for data from embedded databases. This is currently for internal use only, and 
@@ -353,7 +334,7 @@ If more than one select statement applies to the same host, all of them are appl
 Usage of this body is only allowed in conjunction with using 
 `resource_type => "query"`, as this is the resource type that is being affected.
 
-**Type:** `body report_data_select`
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -379,9 +360,7 @@ be sent back in the report.
 
 If this attribute is not used, the report content is not reduced.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -404,9 +383,7 @@ specified regular expressions on the list.
 If this attribute is used in conjunction with `classes_include` it will 
 exclude entries from the subset selected by the include expression.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -430,9 +407,7 @@ only variables matching specified regular expressions on the list.
 
 If the attribute is not used, the report content is not reduced.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 Regular expressions for this attribute use the form `<scope>.<variable_name>`.
 
@@ -455,11 +430,9 @@ body report_data_select
 content of the variable report collected by Enterprise Hub, to exclude 
 variables matching specified regular expression list.
 
-**Type:** `slist`
+[%CFEngine_promise_attribute()%]
 
-**Allowed input range:** (arbitrary string)
-
-Regular expressions for this attribute use the form <scope>.<variable_name>.
+Regular expressions for this attribute use the form `<scope>.<variable_name>`.
   
 **Example:**
 
@@ -489,9 +462,7 @@ be sent back in the report.
 
 If the attribute is not used, the report content will not be reduced.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -515,9 +486,7 @@ list.
 Only those handles matching regular expression on the list will be excluded 
 from the report.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -545,9 +514,7 @@ Only those handles matching the regular expression on the list will be
 sent back in the report. If attribute is not used, the report content 
 will not be filtered.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -570,9 +537,7 @@ to exclude promise handles matching regular expression on the list.
 Only those handles matching regular expression on the list will be excluded 
 from the report.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -601,9 +566,7 @@ Only object names matching regular expression on the list will be sent
 back in the report. If the attribute is not used, the report content will 
 not be filtered.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -626,9 +589,7 @@ observed objects matching specified regular expressions on the list.
 Only object names matching regular expression list will be excluded from 
 the report.
 
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
