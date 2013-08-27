@@ -195,10 +195,8 @@ def function_table(parameters, config):
 
 def function_prototype(parameters, config):
 	syntax_map = config["syntax_map"]
-	# assume that basename of file = function
-	function = config["context_current_file"]
-	function = function[function.rfind("/")+1:function.rfind('.')+1]
-	function = function[:function.find('(')]
+	# assume that title of file = function
+	function = config["context_current_title"]
 
 	prototype = function + "("
 	if parameters != None:
@@ -220,12 +218,10 @@ def function_prototype(parameters, config):
 
 def function_attributes(parameters, config):
 	syntax_map = config["syntax_map"]
-	# assume that basename of file = function
-	function = config["context_current_file"]
-	function = function[function.rfind("/")+1:function.rfind('.')+1]
+	# assume that title of file = function
+	function = config["context_current_title"]
 
 	parameter_names = parameters
-	function = function[:function.find('(')]
 
 	parameters = syntax_map["functions"][function]["parameters"]
 	arguments = []
