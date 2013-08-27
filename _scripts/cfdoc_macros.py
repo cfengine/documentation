@@ -525,8 +525,10 @@ def include_example(parameters, config):
 	prune_include_lines(markdown_lines)
 	
 	markdown_lines.append("\n")
-	markdown_lines.append("This policy can be found in " )
-	markdown_lines.append("`/var/cfengine/share/doc/examples/" + parameters[0] + "`")
+	markdown_lines.append("This policy can be found in\n" )
+	markdown_lines.append("`/var/cfengine/share/doc/examples/" + parameters[0] + "`\n")
+	markdown_lines.append("and downloaded directly from\n")
+	markdown_lines.append("<a href=\"https://raw.github.com/cfengine/core/master/examples/%s\" target=\"_blank\">github</a>." % parameters[0])
 	markdown_lines.append("\n")
 	
 	return markdown_lines
