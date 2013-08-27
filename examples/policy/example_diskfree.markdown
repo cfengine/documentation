@@ -11,23 +11,7 @@ reviewed-by: atsaloli
 
 Check how much space (in KB) is available on a directory's current partition.
 
-```cf3
-body common control
-{
-bundlesequence  => { "example" };
-}
-
-bundle agent example
-{
-vars:
-
-  "free" int => diskfree("/tmp");
-
-reports:
-
-  "Freedisk $(free)";
-}
-```
+[%CFEngine_include_example(diskfree.cf)%]
 
 Example output:
 
@@ -39,5 +23,3 @@ Filesystem     1K-blocks     Used Available Use% Mounted on
 /dev/sda1      149911836 93602068  48694692  66% /
 # 
 ```
-
-This policy can be found in `/var/cfengine/share/doc/examples/unit_diskfree.cf`.
