@@ -186,6 +186,39 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See [`polic
 
 ***
 
+## Container variables
+
+Containers are obtained with the `readjson` or `parsejson` functions
+or from other functions specifically declared so, or from merging
+other containers.  They can *NOT* be modified, once created.
+
+Note that containers can contain several levels of data structures,
+e.g. list of lists of key-value arrays.
+
+### container
+
+**Description:** A container data structure
+
+**Type:** `container`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**  
+
+```cf3
+    vars:
+
+     "loaded1" container => readjson("myfile.json", 40000);
+     "loaded2" container => parsejson('{"key":"value"}');
+     # proposed merge syntax #1
+     "merged1" container => mergecontainer(@(loaded1), @(loaded2));
+     # proposed merge syntax #2
+     "merged2" container => { @(loaded1), @(loaded2) };
+     
+```
+
+***
+
 ## Attributes
 
 ### policy
@@ -224,6 +257,8 @@ redefined) or they can be constant.
 The policy `constant` indicates that the variable value may not be changed. 
 The policies `free` and `overridable` are synonymous, and indicated that the 
 variable's value may be changed.
+
+Containers can only have policy `constant`.
 
 The policy `ifdefined` applies only to lists and implies that unexpanded or 
 undefined lists are dropped. The default behavior is otherwise to retain this 
