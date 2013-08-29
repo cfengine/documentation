@@ -48,20 +48,23 @@ def readLinkFile(config):
 		keyword = label
 		if line.find("]: reference-functions-") != -1:
 			keyword += "()"
-		link_map["`" + keyword + "`"] = "[" + label + "]"
+		link_map["`" + keyword + "`"] = ["[" + label + "]"]
 	config["link_map"] = link_map
 
 def addLinkToMap(keyword, anchor, html, config):
 	link_map = config.get("link_map", dict())
-
-	# don't overwrite top level title with sub-header
-	current_anchor = link_map.get(keyword)
-	if current_anchor != None:
-		if current_anchor.find("#") == -1:
-			return
 	
-	link_map[keyword] = "[" + anchor + "]"
-
+	anchor = "[%s]" % anchor
+	anchor_list = link_map.get(keyword, list())
+	
+	# prioritize titles over sub-headers
+	if anchor.find("#") != -1:
+		anchor_list.append(anchor)
+	else:
+		anchor_list.insert(0, anchor)
+	
+	link_map[keyword] = anchor_list
+	
 	output_file = config["reference_path"]
 	out_file = open(output_file, "a")
 	output_string = '[' + anchor + ']: ' + html
@@ -207,7 +210,7 @@ def applyLinkMap(file_name, config):
 				if index != -1:
 					write_changes = True
 					new_line += markdown_line[:index]
-					new_line += "[" + candidate + "]" + value
+					new_line += "[" + candidate + "]" + value[0]
 					markdown_line = markdown_line[index + len(candidate):]
 				else:
 					break

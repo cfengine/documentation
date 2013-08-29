@@ -333,7 +333,7 @@ def document_type(type, type_definition, excludes, config):
 
 		if attribute_type == "body":
 			if ("`body %s`" % attribute) in link_map:
-				attribute_type = "body [`%s`]%s" % (attribute, link_map["`body %s`" % attribute])
+				attribute_type = "body [`%s`]%s" % (attribute, link_map["`body %s`" % attribute][0])
 			elif ("`%s`" % attribute) in link_map:
 				attribute_type = "body `%s`" % attribute
 			else:
@@ -410,7 +410,7 @@ def document_syntax_map(tree, branch, config):
 			link = link_map.get("`" + type + "`")
 			
 		if link:
-			lines.append("### [%s]%s\n\n" % (type, link))
+			lines.append("### [%s]%s\n\n" % (type, link[0]))
 		else:
 			lines.append("### %s\n\n" % type)
 			qa.LogMissingDocumentation(config, type, ["No documentation for type"], "")
