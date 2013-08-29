@@ -20,9 +20,9 @@ They can return scalar and list values:
       "list" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
 ```
 
-In addition, functions with return type `class` evaluate to `true` or `false`. 
-The class on the left-hand side is set if the function evaluates to true. If 
-the function evaluates to false, then the class remains unchanged.
+In addition, functions with return type `boolean` evaluate to `true` or 
+`false`. The class on the left-hand side is set if the function evaluates to 
+true. If the function evaluates to false, then the class remains unchanged.
 
 ```cf3
     bundle agent test
@@ -44,10 +44,11 @@ the function evaluates to false, then the class remains unchanged.
     }
 ```
 
-There are a large number of functions built into CFEngine, and finding
-the right one to use can be a daunting task. The following tables are
-might make it easier for you to find the function you need.
+**TODO:** document that the return value of functions that return true/false can be passed into class expressions (clists) or function parameters that expect a string.
 
 ## List of all functions
+
+There are a large number of functions built into CFEngine. The following 
+tables might make it easier for you to find the function you need.
 
 [%CFEngine_function_table()%]
