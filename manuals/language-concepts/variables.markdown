@@ -10,22 +10,26 @@ tags: [manuals, language, syntax, concepts, variables]
 
 Just like [classes][classes and decisions] are defined as 
 promises, variables (or "variable definitions") are also promises. Variables 
-can be defined in any promise 
-[bundle][bundles].
-
-## Datatypes
+can be defined in any promise [bundle][bundles]. This bundle name can be used 
+as a context when using variables outside of the bundle they are defined in.
 
 CFEngine variables have two high-level types: scalars and lists. 
 
 * A scalar is a single value,
 * a list is a collection of scalars.
 
+## Scalar Variables
+
 Each scalar may have one of three types: string, int or real. String scalars 
 are sequences of characters, integers are whole numbers, and reals are float 
 pointing numbers.
 
-List variables can be of type `slist`, `ilist` or `rlist` to hold lists of 
-strings, integers or reals, respectively.
+```cf3
+    vars:
+      "my_scalar" string => "String contents...";
+      "my_int" int    => "1234";
+      "my_real" real   => "567.89";
+```
 
 Integer constants may use suffixes to represent large numbers.  The following 
 suffixes can be used to create integer values for common powers of 1000.
@@ -57,22 +61,6 @@ values into int and real types, and if it cannot it will report an error.
 However, arguments to built-in [functions][Functions] check the 
 defined argument type for consistency.
 
-## Scalar Variables
-
-Scalar variables hold a single value.
-
-```cf3
-    vars:
-      "my_scalar" string => "String contents...";
-      "my_int" int    => "1234";
-      "my_real" real   => "567.89";
-```
-
-Here are a series of variable definitions which set a string, an int, and a 
-real variable. Notice that they are defined in a bundle of type `common` that 
-has the name `examples`. This bundle name can be used as a context when using 
-variables outside of the bundle they are defined in.
-
 ### Scalar Referencing and Expansion
 
 Scalar variables are referenced by `$(my_scalar)` (or `${my_scalar}`) and 
@@ -85,7 +73,10 @@ of the bundle in which it is defined:
 
 ## Lists
 
-List variables hold several values. The are declared as follows:
+List variables can be of type `slist`, `ilist` or `rlist` to hold lists of 
+strings, integers or reals, respectively.
+
+They are declared as follows:
 
 ```cf3
      vars:
@@ -193,8 +184,22 @@ hardening bundle.
                 "Other: $(other)";
     }
 ```
+
 This time, the `hardening` bundle does not take an argument. Instead it 
 converts the `va.tmpdirs` list into a local list variable "x" directly.
+
+## Container Variables
+
+Containers can contain several levels of data structures, e.g. list of
+lists of key-value arrays. They are used to store structured data, such as
+data read from JSON files.
+
+Containers are obtained from functions that return containers, such as
+`readjson()` or `parsejson()`, or from merging existing containers.
+
+They can *NOT* be modified, once created.
+
+**TODO:** More, and examples
 
 ## Associative Arrays
 
