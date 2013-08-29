@@ -104,6 +104,10 @@ Promise attributes have a type and a value. The type can be any of the
   values, created via the [`irange()`][irange] and [`rrange()`][rrange] 
   functions
 
+* `clist` - a list of classes or class expressions. Note that these
+   attributes can take both strings (which are evaluated as class expressions)
+   and functions that return type `class`
+
 * Menu option - one value from a list of values
 
 * [`body` *type*][bodies] - a complex set of 
