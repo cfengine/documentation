@@ -114,6 +114,10 @@ def parseMarkdownForAnchors(file_name, config):
 		elif line.find("alias:") == 0:
 			current_file_name = line.split('alias: ')
 			current_file_name = current_file_name[1].rstrip()
+		elif line.startswith("published:"):
+			published = line[len("published:"):].rstrip().lstrip().lower()
+			if published == "false":
+				return
 		elif line.find("#") == 0:
 			current_header = line.lstrip('#').rstrip().lstrip()
 			header_list.append(current_header)
