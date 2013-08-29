@@ -24,4 +24,4 @@ file `filename` and returns the result as a `container` variable.
          container =>  readjson("/tmp/data.json", 4000);
 ```
 
-**See also:** [`parsejson()`][parsejson] and `container` documentation.
+**See also:** `parsejson()` and `container` documentation.

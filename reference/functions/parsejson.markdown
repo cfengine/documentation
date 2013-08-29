@@ -30,4 +30,4 @@ types of quotes around a string).
 ', 4000);
 ```
 
-**See also:** [`rwadjson()`][readjson] and `container` documentation.
+**See also:** `readjson()` and `container` documentation.

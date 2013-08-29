@@ -13,8 +13,6 @@ value. Variables can be scalars or lists of types `string`, `int` or `real`.
 Arrays are `associative` and use square brackets `[]` to enclose an-arbitrary 
 key.
 
-***
-
 ## Scalar Variables
 
 ### string
@@ -86,8 +84,6 @@ value you assign to it looks like a real number (e.g., 3, 3.1415, .17,
 
 Real numbers are not used in many places in CFEngine, but they are useful for 
 representing probabilities and performance data.
-
-***
 
 ## List variables
 
@@ -184,16 +180,11 @@ number (e.g., 3, 3.1415, .17, 6.02e23, -9.21e-17).
 Some [functions][Functions] return `rlist`s, and an `rlist` may 
 contain the values copied from another `slist`, `rlist`, or `ilist`. See [`policy`](#policy)
 
-***
-
 ## Container variables
 
-Containers are obtained with the `readjson` or `parsejson` functions
-or from other functions specifically declared so, or from merging
-other containers.  They can *NOT* be modified, once created.
-
-Note that containers can contain several levels of data structures,
-e.g. list of lists of key-value arrays.
+Containers are obtained from functions that return containers, such as
+`readjson()` or `parsejson()`, or from merging existing containers.
+They can *NOT* be modified, once created.
 
 ### container
 
