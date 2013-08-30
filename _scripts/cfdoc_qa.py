@@ -36,7 +36,9 @@ def LogProcessStart(config, string):
 
 def LogMissingDocumentation(config, element, strings, location):
 	logfile = OpenLogFile(config)
-	logfile.write("* `" + element + "`:\n")
+	if not element.startswith("`"):
+		element = "`%s`" % element
+	logfile.write("* %s:\n" % element)
 	if len(strings):
 		logfile.write("    * Errors:\n")
 	for string in strings:
