@@ -22,6 +22,7 @@
 
 import os
 import sys
+import cfdoc_qa as qa
 from os import listdir
 from os.path import isfile, join
 from string import ascii_letters, digits
@@ -33,6 +34,7 @@ def run(config):
 		parseMarkdownForAnchors(file, config)
 
 def apply(config):
+	qa.LogProcessStart(config, "Applying Link Map")
 	markdown_files =  config["markdown_files"]
 	for file in markdown_files:
 		applyLinkMap(file, config)
@@ -56,6 +58,8 @@ def addLinkToMap(keyword, anchor, html, config):
 	
 	anchor = "[%s]" % anchor
 	anchor_list = link_map.get(keyword, list())
+	if anchor in anchor_list:
+		return
 	
 	# prioritize titles over sub-headers
 	if anchor.find("#") != -1:
@@ -144,7 +148,6 @@ def parseMarkdownForAnchors(file_name, config):
 		if current_file_name.find("reference-functions-") == 0:
 			keyword += "()"
 		addLinkToMap("`" + keyword + "`", current_file_label, current_file_name + ' \"' + current_title + '\"', config)
-		# keep dictionary reasonably short by including at most three-word headers
 		for header in header_list:
 			if header == "":
 				continue
@@ -158,6 +161,8 @@ def applyLinkMap(file_name, config):
 	markdown_lines = markdown_file.readlines()
 	markdown_file.close()
 	
+	config["context_current_file"] = file_name
+	config["context_current_line_number"] = 0
 	link_map = config["link_map"]
 	
 	new_lines = []
@@ -165,7 +170,9 @@ def applyLinkMap(file_name, config):
 	in_pre = False
 	previous_empty = True
 	current_section = ""
+	current_title = ""
 	for markdown_line in markdown_lines:
+		config["context_current_line_number"] += 1
 		# we ignore everything in code blocks
 		if previous_empty or in_pre:
 			if markdown_line.lstrip()[:3] == '```':
@@ -176,17 +183,17 @@ def applyLinkMap(file_name, config):
 			
 		# don't link to the current section
 		if markdown_line.find("title:") == 0:
-			current_section = markdown_line.split('title: ')
-			current_section = current_section[1].rstrip().rstrip('\"')
-			current_section = current_section.lstrip().lstrip('\"')
-			current_section = "`" + current_section + "`"
+			current_title = markdown_line.split('title: ')[1]
+			current_title = current_title.rstrip().rstrip('\"')
+			current_title = current_title.lstrip().lstrip('\"')
+			current_section = current_title
 		elif markdown_line.find("#") == 0:
-			current_section = "`" + markdown_line.lstrip('#').rstrip().lstrip() + "`"
+			current_section = markdown_line.lstrip('#').rstrip().lstrip()
 					
 		new_line = ""
 		if not in_pre:
 			while True:
-				value = ""
+				anchor = ""
 				bracket_depth = 0
 				index = -1
 				candidate_start = -1
@@ -201,8 +208,14 @@ def applyLinkMap(file_name, config):
 								candidate_start = i
 							else:
 								candidate = markdown_line[candidate_start:i+1]
-								value = link_map.get(candidate)
-								if not value == None and candidate != current_section:
+								values = link_map.get(candidate)
+								if not values == None and candidate != "`%s`" % current_section:
+									anchor = values[0]
+									if len(values) > 1:
+										errors = ["Multiple link targets in section %s#%s" % (current_title, current_section)]
+										for value in values:
+											errors.append("Option: %s" % value)
+										qa.LogMissingDocumentation(config, candidate, errors, file_name)
 									index = candidate_start
 									break
 								candidate_start = -1
@@ -210,7 +223,7 @@ def applyLinkMap(file_name, config):
 				if index != -1:
 					write_changes = True
 					new_line += markdown_line[:index]
-					new_line += "[" + candidate + "]" + value[0]
+					new_line += "[" + candidate + "]" + anchor
 					markdown_line = markdown_line[index + len(candidate):]
 				else:
 					break
