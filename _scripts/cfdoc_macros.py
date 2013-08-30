@@ -327,10 +327,11 @@ def document_type(type, type_definition, excludes, config):
 		attribute_status = attribute_definition.get("status", "normal")
 		attribute_type = attribute_definition.get("type")
 		attribute_range = attribute_definition.get("range")
-
-		if attribute_status == "normal" and (not "`" + attribute + "`" in link_map):
+		attribute_link = "`%s`" % attribute
+		
+		if attribute_status == "normal" and (not attribute_link in link_map):
 			qa.LogMissingDocumentation(config, type + "/" + attribute, ["No documentation for attribute"], "")
-
+			
 		if attribute_type == "body":
 			if ("`body %s`" % attribute) in link_map:
 				attribute_type = "body [`%s`]%s" % (attribute, link_map["`body %s`" % attribute][0])
@@ -352,7 +353,30 @@ def document_type(type, type_definition, excludes, config):
 		else:
 			attribute_status = "<sup>**%s**</sup>" % attribute_status
 		
-		line = "* `%s`%s: %s" % (attribute, attribute_status, attribute_type)
+		if attribute_link in link_map:
+			type_link = link_map.get("`%s`" % type)
+			if not type_link:
+				type_link = link_map.get("`body %s`" % type)
+			if type_link:
+				type_link = type_link[0]
+			anchors = link_map[attribute_link]
+			anchor = anchors[0]
+			# pick the anchor that matches the currently documented type/attribute best
+			if len(anchors) > 1:
+				highscore = 0
+				for a in anchors:
+					score = 0
+					if type in a:
+						score += 1
+					if attribute in a:
+						score += 1
+					if highscore < score:
+						highscore = score
+						anchor = a
+				
+			attribute_link = "[%s]%s" % (attribute_link, anchor)
+		
+		line = "* %s%s: %s" % (attribute_link, attribute_status, attribute_type)
 		if attribute_range:
 			 line += " in range `%s`" % attribute_range
 		lines.append(line + "\n")
