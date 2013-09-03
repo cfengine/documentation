@@ -341,8 +341,12 @@ def document_type(type, type_definition, excludes, config):
 				attribute_type = "body `%s`" % attribute
 				qa.LogMissingDocumentation(config, type + "/" + attribute, ["No documentation for body type"], "")
 		elif attribute_type == "option":
-			attribute_type = "one of `%s`" % attribute_range.replace(",", "`, `")
-			attribute_range = None
+			if attribute_range == "true,false,yes,no,on,off":
+				attribute_type = "`boolean`"
+				attribute_range = None
+			else:
+				attribute_type = "one of `%s`" % attribute_range.replace(",", "`, `")
+				attribute_range = None
 		elif attribute_type == "context":
 			attribute_type = "class expression"
 		else:
