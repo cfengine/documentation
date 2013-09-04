@@ -4,7 +4,7 @@ title: ldapvalue
 categories: [Reference, Functions, ldapvalue]
 published: true
 alias: reference-functions-ldapvalue.html
-tags: [reference, communication functions, functions, ldapvalue]
+tags: [reference, communication functions, functions, ldap]
 ---
 
 **This function is only available in CFEngine Enterprise.**

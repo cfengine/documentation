@@ -4,7 +4,7 @@ title:  Managing Settings
 categories: [Examples, Enterprise API, Managing Settings]
 published: true
 alias: examples-enterprise-api-managing-settings.html
-tags: [examples, enterprise, rest, api, reporting, settings]
+tags: [examples, enterprise, rest, api, reporting, settings, ldap]
 ---
 
 Most of the settings configurable in the API relate to LDAP authentication of 
