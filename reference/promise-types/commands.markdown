@@ -354,12 +354,15 @@ promises. Such a module may be written in any language.
 
 This attribute determines whether or not to expect the CFEngine module protocol. If true, the module protocol is supported for this command:
 
+* lines which begin with a `^` are protocol extensions
+  * `^context=xyz` sets the module context to `xyz` instead of the default
 * lines which begin with a `+` are treated as classes to be defined (like -D)
 * lines which begin with a `-` are treated as classes to be undefined (like -N)
 * lines which begin with `=` are scalar variables to be defined
 * lines which begin with `@` are lists.
 
-These variables end up in a context that has the same name as the module.
+These variables end up in a context that has the same name as the
+module, unless the `^context` extension is used.
 
 Any other lines of output are cited by `cf-agent` as being erroneous, so you 
 should normally make your module completely silent.
