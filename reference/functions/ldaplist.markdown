@@ -4,7 +4,7 @@ title: ldaplist
 categories: [Reference, Functions, ldaplist]
 published: true
 alias: reference-functions-ldaplist.html
-tags: [reference, communication functions, functions, ldaplist]
+tags: [reference, communication functions, functions, ldap]
 ---
 
 **This function is only available in CFEngine Enterprise.**

@@ -4,7 +4,7 @@ title: regldap
 categories: [Reference, Functions, regldap]
 published: true
 alias: reference-functions-regldap.html
-tags: [reference, communication functions, functions, regldap]
+tags: [reference, communication functions, functions, ldap]
 ---
 
 **This function is only available in CFEngine Enterprise.**
