@@ -1682,11 +1682,12 @@ deleted (that is, it "falls off the end" of the rotation).
 
 ### edit_template
 
-**Description:** The name of a special CFEngine template file to expand
+**Description:** The name of a Mustache or native-CFEngine template file to expand
 
-The template format uses inline tags to mark regions and classes. Each
-line represents an `insert_lines` promise, unless the promises are
-grouped into a block using:
+The default native-CFEngine template format (selected when
+`template_method` is `cfengine` or unspecified) uses inline tags to
+mark regions and classes. Each line represents an `insert_lines`
+promise, unless the promises are grouped into a block using:
 
 ```cf3
     [%CFEngine BEGIN %]
@@ -1694,9 +1695,10 @@ grouped into a block using:
     [%CFEngine END %]
 ```
 
-Variables, scalars and list variables are expanded within each promise.
-If lines are grouped into a block, the whole block is repeated when
-lists are expanded (see the Special Topics Guide on editing).
+Variables, scalars and list variables are expanded within each promise
+based on the current scope of the calling promise.  If lines are
+grouped into a block, the whole block is repeated when lists are
+expanded (see the Special Topics Guide on editing).
 
 If a class-context modified is used:
 
@@ -1766,6 +1768,69 @@ For example:
             CustomLog               /var/log/httpd/access.log                      
     /VirtualHost>
     [%CFEngine END %]
+```
+
+The Mustache template format works differently.  When you specify
+`template_method` to be `mustache`, none of the variables or classes
+in the promise's context will come through.  Instead, you pass a
+`container` to the promise's `template_data` attribute.
+
+The full specification for Mustache templates is at http://mustache.github.io/
+
+**Example:**
+
+Save this in `test_mustache.cf`, for example.
+
+```cf3
+body common control
+{
+    bundlesequence => { test_mustache };
+}
+
+bundle agent test_mustache
+{
+  files:
+      "/tmp/myfile.txt"
+      create => "true",
+      edit_template => "$(this.promise_filename).mustache",
+      template_method => "mustache",
+      template_data => parsejson('
+{
+ "x": 100,
+ "boolean": false,
+ "list":
+  [
+   { "k": 789, "v": 0 },
+   { "k": null, "v": true },
+   { "k": -1, "v": -2 }
+  ]
+}');
+}
+```
+
+Simply, the container's top-level keys will be used.  So this template
+(saved in `test_mustache.cf.mustache` if you follow the example):
+
+```mustache
+x is {{x}}
+
+{{#boolean}}The boolean is true{{/boolean}}
+{{^boolean}}The boolean is false{{/boolean}}
+
+{{#list}}{{k}}={{v}}, {{/list}}
+```
+
+Will produce this text in `/tmp/myfile.txt` when you run `cf-agent -f
+./test_mustache.cf`:
+
+
+```
+x is 100
+
+
+The boolean is false
+
+789=0, =true, -1=-2, 
 ```
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)
@@ -2717,6 +2782,53 @@ ordinarily be stored in an alternative repository as
 
        copy_from => source,
        repository => "/var/cfengine/repository";
+```
+
+### template_data
+
+**Description:** The data to be passed to the template (Mustache only)
+
+**Type:** [`container`][container]
+
+**Example:**
+
+```cf3
+    files:
+
+     "/path/file"
+     ...
+     edit_template => "mytemplate.mustache",
+     template_data => parsejson('{"message":"hello"}'),
+     template_method => "mustache";
+```
+
+### template_method
+
+**Description:** The template type.
+
+By default `cfengine` requests the native CFEngine template
+implementation, but you can use `mustache` as well.
+
+**Type:** `string`
+
+**Allowed input range:**
+
+```
+    cfengine
+    mustache
+```
+
+**Default value:** `cfengine`
+
+
+```cf3
+    files:
+
+     "/path/file"
+     ...
+     edit_template => "mytemplate.mustache",
+     template_data => parsejson('{"message":"hello"}'),
+     template_method => "mustache";
 ```
 
 ### touch
