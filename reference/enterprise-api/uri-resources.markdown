@@ -135,7 +135,7 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
 
 ### /api/host
 
-**Supported Operations**: `GET`
+**Supported Operations**: `GET` ,`DELETE`
 
 *Query Parameters*:
 
