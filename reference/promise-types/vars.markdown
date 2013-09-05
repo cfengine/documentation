@@ -186,6 +186,9 @@ Containers are obtained from functions that return containers, such as
 `readjson()` or `parsejson()`, or from merging existing containers.
 They can *NOT* be modified, once created.
 
+Containers can be passed to another bundle with the `@(containername)`
+notation, similarly to the list passing notation.
+
 ### container
 
 **Description:** A container data structure

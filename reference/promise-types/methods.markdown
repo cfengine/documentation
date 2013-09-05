@@ -35,10 +35,13 @@ inline.
       vars:
 
        "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
+       "userinfo" container => parsejson('{ "mark": 10, "jeang":20, "jonhenrik":30, "thomas":40, "eben":-1 }');
 
       methods:
 
        "any" usebundle => subtest("$(userlist)");
+       "amy" usebundle => subtest(@(userlist));
+       "amp" usebundle => subtest_c(@(userinfo));
     }
 
     bundle agent subtest(user)
@@ -51,10 +54,20 @@ inline.
 
         "Finished doing stuff for $(user)";
     }
+
+    bundle agent subtest_c(info)
+    {
+      reports:
+       "user ID of mark is $(info[mark])";
+    }
 ```
 
 Methods offer powerful ways to encapsulate multiple issues pertaining to
 a set of parameters.
+
+Note in the above that a list can be passed as a implicitly iterated
+scalar and as a reference, while a container can only be passed by
+reference.
 
 Because a method is just an encapsulation, there is a subtlety about how
 to interpret a successful method invocation. Before version 3.1.0, a

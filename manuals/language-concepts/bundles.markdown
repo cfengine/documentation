@@ -76,11 +76,13 @@ is an easy way to avoid unnecessary duplication in your promises.
       vars:
           "myfiles"     => "/tmp/world.txt";
           "desired_content" string => "hello";
-    
+          "userinfo" container => parsejson('{ "mark": 10, "jeang":20, "jonhenrik":30, "thomas":40, "eben":-1 }');
+
       methods:
           "Hello World"
             usebundle => ensure_file_has_content("$(myfiles)", "$(desired_content)");
         
+          "report" usebundle => subtest_c(@(userinfo));
     
     }
 
@@ -97,7 +99,17 @@ is an easy way to avoid unnecessary duplication in your promises.
                         the contents of the given parameter for content '$(content)'";
     
     }
+
+    bundle agent subtest_c(info)
+    {
+      reports:
+       "user ID of mark is $(info[mark])";
+    }
 ```
+
+You can pass `slist` and `container` variables to other bundles with
+the `@(var)` notation.  You do NOT need to qualify the variable name
+with the current bundle name.
 
 ### Scope
 
@@ -113,3 +125,8 @@ of the bundle in which it is defined:
 Bundles of type `common` may contain common promises. 
 [Classes][classes and decisions] defined in `common` bundles 
 have global scope.
+
+Note that namespaced bundles work exactly the same way as
+non-namespaced bundles (which are actually in the `default`
+namespace).  You just say `namespace:bundle_name` instead of
+`bundle_name`.
