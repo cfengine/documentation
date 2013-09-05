@@ -922,6 +922,20 @@
           "range": "\"?(/.*)",
           "visibility": "promiseType"
         },
+        "template_method": {
+          "attribute": "template_method",
+          "status": "normal",
+          "type": "option",
+          "range": "cfengine,mustache",
+          "visibility": "promiseType"
+        },
+        "template_data": {
+          "attribute": "template_data",
+          "status": "normal",
+          "type": "container",
+          "range": "",
+          "visibility": "promiseType"
+        },
         "action": {
           "attribute": "action",
           "status": "normal",
@@ -4108,7 +4122,7 @@
         }
       }
     },
-    "volume_method": {
+    "volume": {
       "status": "normal",
       "attributes": {
         "check_foreign": {
@@ -6936,8 +6950,8 @@
           "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
         },
         {
-          "type": "string",
-          "range": "lex"
+          "type": "option",
+          "range": "lex,int,real,IP,ip,MAC,mac"
         }
       ],
       "variadic": false,
