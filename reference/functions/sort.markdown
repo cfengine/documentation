@@ -11,57 +11,131 @@ tags: [reference, data functions, functions, sort]
 
 **Description:** Returns `list` sorted according to `mode`.
 
-Only lexicographical sorting is supported currently.
+Lexicographical, integer, real, IP, and MAC address sorting is
+supported currently.  The example below will show each sorting mode in
+action.
+
+Note IPv6 addresses can not use uppercase hexadecimal characters
+(`A-Z`) but must use lowercase (`a-z`) instead.
 
 [%CFEngine_function_attributes(regex, mode)%]
 
 **Example:**
 
 ```cf3
-    bundle agent test
-    {
-      vars:
-          "a" slist => { "b", "c", "a" };
-          "b" slist => { "100", "9", "10" };
-          "c" slist => { };
-          "d" slist => { "", "a", "", "b" };
-          "e" slist => { "a", "1", "b" };
+body common control
+{
+      bundlesequence => { test };
+}
 
-          "ja" string => join(",", "sa");
-          "jb" string => join(",", "sb");
-          "jc" string => join(",", "sc");
-          "jd" string => join(",", "sd");
-          "je" string => join(",", "se");
+bundle agent test
+{
+  vars:
+      "a" slist => { "b", "c", "a" };
+      "b" slist => { "100", "9", "10", "8.23" };
+      "c" slist => { };
+      "d" slist => { "", "a", "", "b" };
+      "e" slist => { "a", "1", "b" };
 
-          "sa" slist => sort("a", "lex");
-          "sb" slist => sort("b", "lex");
-          "sc" slist => sort("c", "lex");
-          "sd" slist => sort("d", "lex");
-          "se" slist => sort("e", "lex");
+      "ips" slist => { "100.200.100.0", "1.2.3.4", "9.7.5.1", "9", "9.7", "9.7.5", "", "-1", "where are the IP addresses?" };
+      "ipv6" slist => { "FE80:0000:0000:0000:0202:B3FF:FE1E:8329",
+                        "FE80::0202:B3FF:FE1E:8329",
+                        "::1",
+                        # the following should all be parsed as the same address and sorted together
+                        "2001:db8:0:0:1:0:0:1",
+                        "2001:0db8:0:0:1:0:0:1",
+                        "2001:db8::1:0:0:1",
+                        "2001:db8::0:1:0:0:1",
+                        "2001:0db8::1:0:0:1",
+                        "2001:db8:0:0:1::1",
+                        "2001:db8:0000:0:1::1",
+                        "2001:DB8:0:0:1::1", # note uppercase IPv6 addresses are invalid
+                        # examples from https://www.ripe.net/lir-services/new-lir/ipv6_reference_card.pdf
+                        "8000:63bf:3fff:fdd2",
+                        "::ffff:192.0.2.47",
+                        "fdf8:f53b:82e4::53",
+                        "fe80::200:5aee:feaa:20a2",
+                        "2001:0000:4136:e378:",
+                        "8000:63bf:3fff:fdd2",
+                        "2001:0002:6c::430",
+                        "2001:10:240:ab::a",
+                        "2002:cb0a:3cdd:1::1",
+                        "2001:db8:8:4::2",
+                        "ff01:0:0:0:0:0:0:2",
+                        "-1", "where are the IP addresses?" };
 
-          "jsa" string => join(",", "sa");
-          "jsb" string => join(",", "sb");
-          "jsc" string => join(",", "sc");
-          "jsd" string => join(",", "sd");
-          "jse" string => join(",", "se");
+      "macs" slist => { "00:14:BF:F7:23:1D", "0:14:BF:F7:23:1D", ":14:BF:F7:23:1D", "00:014:BF:0F7:23:01D",
+                        "00:14:BF:F7:23:1D", "0:14:BF:F7:23:1D", ":14:BF:F7:23:1D", "00:014:BF:0F7:23:01D",
+                        "01:14:BF:F7:23:1D", "1:14:BF:F7:23:1D",
+                        "01:14:BF:F7:23:2D", "1:14:BF:F7:23:2D",
+                        "-1", "where are the MAC addresses?" };
 
-      reports:
-          "sorted '$(ja)' = '$(jsa)'";
-          "sorted '$(jb)' = '$(jsb)'";
-          "sorted '$(jc)' = '$(jsc)'";
-          "sorted '$(jd)' = '$(jsd)'";
-          "sorted '$(je)' = '$(jse)'";
-    }
+      "ja" string => join(",", "a");
+      "jb" string => join(",", "b");
+      "jc" string => join(",", "c");
+      "jd" string => join(",", "d");
+      "je" string => join(",", "e");
+
+      "jips" string => join(",", "ips");
+      "jipv6" string => join(",", "ipv6");
+      "jmacs" string => join(",", "macs");
+
+      "sa" slist => sort("a", "lex");
+      "sb" slist => sort("b", "lex");
+      "sc" slist => sort("c", "lex");
+      "sd" slist => sort("d", "lex");
+      "se" slist => sort("e", "lex");
+
+      "sb_int" slist => sort("b", "int");
+      "sb_real" slist => sort("b", "real");
+
+      "sips" slist => sort("ips", "ip");
+      "sipv6" slist => sort("ipv6", "ip");
+      "smacs" slist => sort("macs", "mac");
+
+
+      "jsa" string => join(",", "sa");
+      "jsb" string => join(",", "sb");
+      "jsc" string => join(",", "sc");
+      "jsd" string => join(",", "sd");
+      "jse" string => join(",", "se");
+
+      "jsb_int" string => join(",", "sb_int");
+      "jsb_real" string => join(",", "sb_real");
+
+      "jsips" string => join(",", "sips");
+      "jsipv6" string => join(",", "sipv6");
+      "jsmacs" string => join(",", "smacs");
+
+  reports:
+      "sorted lexicographically '$(ja)' => '$(jsa)'";
+      "sorted lexicographically '$(jb)' => '$(jsb)'";
+      "sorted lexicographically '$(jc)' => '$(jsc)'";
+      "sorted lexicographically '$(jd)' => '$(jsd)'";
+      "sorted lexicographically '$(je)' => '$(jse)'";
+
+      "sorted integers '$(jb)' => '$(jsb_int)'";
+      "sorted reals '$(jb)' => '$(jsb_real)'";
+
+      "sorted IPs '$(jips)' => '$(jsips)'";
+      "sorted IPv6s '$(jipv6)' => '$(jsipv6)'";
+      "sorted MACs '$(jmacs)' => '$(jsmacs)'";
+}
 ```
 
 Output:
 
 ```
-    sorted 'a,b,c' = 'a,b,c'
-    sorted '10,100,9' = '10,100,9'
-    sorted '' = ''
-    sorted ',,a,b' = ',,a,b'
-    sorted '1,a,b' = '1,a,b'
+2013-09-05T14:05:04-0400   notice: R: sorted lexicographically 'b,c,a' => 'a,b,c'
+2013-09-05T14:05:04-0400   notice: R: sorted lexicographically '100,9,10,8.23' => '10,100,8.23,9'
+2013-09-05T14:05:04-0400   notice: R: sorted lexicographically '' => ''
+2013-09-05T14:05:04-0400   notice: R: sorted lexicographically ',a,,b' => ',,a,b'
+2013-09-05T14:05:04-0400   notice: R: sorted lexicographically 'a,1,b' => '1,a,b'
+2013-09-05T14:05:04-0400   notice: R: sorted integers '100,9,10,8.23' => '8.23,9,10,100'
+2013-09-05T14:05:04-0400   notice: R: sorted reals '100,9,10,8.23' => '8.23,9,10,100'
+2013-09-05T14:05:04-0400   notice: R: sorted IPs '100.200.100.0,1.2.3.4,9.7.5.1,9,9.7,9.7.5,,-1,where are the IP addresses?' => ',-1,9,9.7,9.7.5,where are the IP addresses?,1.2.3.4,9.7.5.1,100.200.100.0'
+2013-09-05T14:05:04-0400   notice: R: sorted IPv6s 'FE80:0000:0000:0000:0202:B3FF:FE1E:8329,FE80::0202:B3FF:FE1E:8329,::1,2001:db8:0:0:1:0:0:1,2001:0db8:0:0:1:0:0:1,2001:db8::1:0:0:1,2001:db8::0:1:0:0:1,2001:0db8::1:0:0:1,2001:db8:0:0:1::1,2001:db8:0000:0:1::1,2001:DB8:0:0:1::1,8000:63bf:3fff:fdd2,::ffff:192.0.2.47,fdf8:f53b:82e4::53,fe80::200:5aee:feaa:20a2,2001:0000:4136:e378:,8000:63bf:3fff:fdd2,2001:0002:6c::430,2001:10:240:ab::a,2002:cb0a:3cdd:1::1,2001:db8:8:4::2,ff01:0:0:0:0:0:0:2,-1,where are the IP addresses?' => '-1,2001:0000:4136:e378:,2001:DB8:0:0:1::1,8000:63bf:3fff:fdd2,8000:63bf:3fff:fdd2,::ffff:192.0.2.47,FE80:0000:0000:0000:0202:B3FF:FE1E:8329,FE80::0202:B3FF:FE1E:8329,where are the IP addresses?,::1,2001:0002:6c::430,2001:10:240:ab::a,2001:db8:0000:0:1::1,2001:db8:0:0:1::1,2001:0db8::1:0:0:1,2001:db8::0:1:0:0:1,2001:db8::1:0:0:1,2001:0db8:0:0:1:0:0:1,2001:db8:0:0:1:0:0:1,2001:db8:8:4::2,2002:cb0a:3cdd:1::1,fdf8:f53b:82e4::53,fe80::200:5aee:feaa:20a2,ff01:0:0:0:0:0:0:2'
+2013-09-05T14:05:04-0400   notice: R: sorted MACs '00:14:BF:F7:23:1D,0:14:BF:F7:23:1D,:14:BF:F7:23:1D,00:014:BF:0F7:23:01D,00:14:BF:F7:23:1D,0:14:BF:F7:23:1D,:14:BF:F7:23:1D,00:014:BF:0F7:23:01D,01:14:BF:F7:23:1D,1:14:BF:F7:23:1D,01:14:BF:F7:23:2D,1:14:BF:F7:23:2D,-1,where are the MAC addresses?' => '-1,:14:BF:F7:23:1D,:14:BF:F7:23:1D,where are the MAC addresses?,00:014:BF:0F7:23:01D,0:14:BF:F7:23:1D,00:14:BF:F7:23:1D,00:014:BF:0F7:23:01D,0:14:BF:F7:23:1D,00:14:BF:F7:23:1D,1:14:BF:F7:23:1D,01:14:BF:F7:23:1D,1:14:BF:F7:23:2D,01:14:BF:F7:23:2D'
 ```
 
 **See also:** [`shuffle()`][shuffle].
