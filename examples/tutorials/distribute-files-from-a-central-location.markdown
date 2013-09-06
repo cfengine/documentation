@@ -190,7 +190,9 @@ Make the following edits to `promises.cf` under body common control -> inputs:
      
      
 Now that all of the policy has been edited and is in place, check for syntax errors by 
-running `cf-promises -f ./promises.cf`
+running `cf-promises -f ./promises.cf`. This promise is activated from the **service_catalogue**
+bundle.
+
 
 ## Commit Changes
 

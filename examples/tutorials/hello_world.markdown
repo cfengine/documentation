@@ -28,7 +28,7 @@ This tutorial provides instructions for the following:
 
 ## Create hello_world
 
-Policies contain bundles, which are collections of promises. A promise is a declaration of
+Policies contain **bundles**, which are collections of promises. A **promise** is a declaration of
 intent. Bundles allow related promises to be grouped together, as illustrated in the tutorial below.
 
 Create a policy file called __hello_world.cf__ with the following content:
@@ -48,7 +48,7 @@ bundle agent hello_world
 }
 ```
 
-In the policy file above, we have defined an agent bundle named `hello_world`. Agent
+In the policy file above, we have defined an **agent bundle** named `hello_world`. Agent
 bundles are only evaluated by **cf-agent**, the [agent component][cf-agent] of CFEngine.
 
 This bundle [promises][Promises Types and Attributes] to [report][reports] on any [class of
@@ -58,7 +58,7 @@ during an agent run and expand to the fully-qualified hostname and today's date
 respectively.
 
 Take special note of the `comment` attribute that is attached to the report promise.
-Comments are intended to follow the promise and provide insight into the reason
+**Comments** are intended to follow the promise and provide insight into the reason
 a promise is used. When writing comments, it's good practice to answer *why* the promise exists.
 
 Activate the bundle manually by executing the following command:
@@ -72,15 +72,18 @@ the `hello_world.cf` policy, and activate the `hello_world` bundle. See the outp
 # /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
 2013-08-20T14:03:43-0500   notice: R: Hello World! I am thinkpad-w520 and it is Tue Aug 20 14:03:32 2013
 ```
-Note that the full path to the binary is necessary in the above command. CFEngine stores its binaries in /var/cfengine/bin
-on Linux and Unix systems. Your path might vary depending on your platform and the packages your are
-using.
+Note the full path to the binary in the above command. CFEngine stores its binaries in /var/cfengine/bin
+on Linux and Unix systems. Your path might vary depending on your platform and the packages your are using. 
+CFEngine uses /var because it is one of the Unix filesystems that resides locally. 
+Thus, CFEngine can function even if everything else fails 
+(your other filesystems, your network, and even system binaries) and possibly repair problems. 
+
 
 ## Make hello_world stand alone
 
 Instead of specifying the bundlesequence on the command line (as it was above), a [body common
 control][Components and Common Control#Common Control] section can be added to
-the policy file. The common body control refers to those promises that are hard-coded into
+the policy file. The **body common control** refers to those promises that are hard-coded into
 all CFEngine components and therefore affect the behavior of all components. Note that only
  one `body common control` is allowed per agent activation.
 
