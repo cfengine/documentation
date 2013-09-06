@@ -2788,7 +2788,7 @@ ordinarily be stored in an alternative repository as
 
 **Description:** The data to be passed to the template (Mustache only)
 
-**Type:** [`container`][container]
+[%CFEngine_promise_attribute()%]
 
 **Example:**
 
@@ -2809,16 +2809,7 @@ ordinarily be stored in an alternative repository as
 By default `cfengine` requests the native CFEngine template
 implementation, but you can use `mustache` as well.
 
-**Type:** `string`
-
-**Allowed input range:**
-
-```
-    cfengine
-    mustache
-```
-
-**Default value:** `cfengine`
+[%CFEngine_promise_attribute(default)%]
 
 
 ```cf3
