@@ -2809,7 +2809,7 @@ ordinarily be stored in an alternative repository as
 By default `cfengine` requests the native CFEngine template
 implementation, but you can use `mustache` as well.
 
-[%CFEngine_promise_attribute(default)%]
+[%CFEngine_promise_attribute(cfengine)%]
 
 
 ```cf3
