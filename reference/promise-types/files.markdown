@@ -127,7 +127,7 @@ The filename `/dir/ect/ory/.` is a special case used with the `create`
 attribute to indicate the directory named `/dir/ect/ory` and not any of
 the files under it. If you really want to specify a regular expression
 that matches any single-character filename, use `/dir/ect/ory/[\w\W]` as
-your promise regular expression (you can't use `/dir/ect/ory[^/]`, see
+your promise regular expression (you can't use `/dir/ect/ory/[^/]`, see
 below for an explanation.
 
 Depth search refers to a search for file objects that starts from the
