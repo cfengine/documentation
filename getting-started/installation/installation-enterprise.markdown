@@ -96,7 +96,9 @@ host:
 
 ## Licensed installations
 
-Send the Policy Server's public key (`/var/cfengine/ppkeys/localhost.pub`) to
+If you are evaluating CFEngine Enterprise or otherwise using it in an environment with less than 25 agents connecting to a Policy Server, you do not need a license and there is no expiry.
+
+If you are a customer, please send the Policy Server's public key (`/var/cfengine/ppkeys/localhost.pub`) to
 CFEngine support to obtain a license. CFEngine will send you a `license.dat`
 file. Copy the obtained license file to
 `/var/cfengine/masterfiles/license.dat`
