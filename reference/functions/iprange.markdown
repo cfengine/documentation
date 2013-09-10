@@ -36,6 +36,6 @@ reports:
 
   lab_1::
 
-    "Lab 1 sbunet";
+    "Lab 1 subnet";
 }
 ```
