@@ -80,7 +80,7 @@ For our example, add the following information to `controls/cf_serverd.cf`:
   comment => "Hosts need to download patch files from the central location";
 ```
 
-### Create a custom library to synchronize reusable policy
+### Create a custom library for reusable synchronization policy
 
 You might need to frequently synchronize or copy a directory structure from the policy server to
 an agent host. Thus, identifying reusable parts of policy and abstracting them for later 
@@ -196,23 +196,30 @@ bundle.
 
 ## Commit Changes
 
-### Set up a Tracker in the Mission Portal (Enterprise Users Only)
+### Set up trackers in the Mission Portal (Enterprise Users Only)
 
 Before committing the changes to your repository, log in to the Mission Portal
-and set up a Tracker so that you can see the policy as it goes out.
+and set up a Tracker so that you can see the policy as it goes out. To do this, perform the
+following:
 
-Navigate to the **hosts** app, select **all hosts**, and then (on the right-hand
-side) select the **events** tab. Add a new **Tracker** called *Patch Failure*. Set the
-**report type** to *Promise not Kept*. For the **watch**, enter `.patch`
-(without quotes). This will watch for any promise handle that includes
-the string patch where a promise is not kept. Set the **start time** to **now**
-and click **start**. 
+Navigate to the **Hosts** section. Select **All hosts**. Select the **Events** tab, located
+in the right-hand panel. Click **Add new tracker**. 
 
-Add another Tracker called *Patch repaired*. Set the **report type** to *Promise Repaired*, 
-set the **watch** and **time** as before and click **start**. This tracker will allow you 
-to see how the policy reacts as it is activated on your infrastructure.
+![Mission Portal Host Event](hosts-add-new-tracker.png)
 
-### Deploy changes
+
+Name it *Patch Failure*. Set the
+**Report Type** to *Promise not Kept*. Under **Watch**, enter **.patch**.  Set the **Start Time** to **Now**
+and then click **Done** to close the Start Time window. Click **Start** to save the new tracker. 
+This tracker watches for  any promise handle that includes the string patch where a promise is not kept.
+
+![Add New Tracker](add-new-tracker.png)
+
+Add another tracker called *Patch Repaired*. Set the **Report Type** to *Promise Repaired*. 
+Enter the same values as above for **Watch** and **Start Time**. Click **Start** to save the new tracker. 
+This tracker allows you to see how the policy reacts as it is activated on your infrastructure.
+
+### Deploy changes (Enterprise and Community Users)
 
 Always inspect what you expect. `git status` shows the status of your current branch.
 
