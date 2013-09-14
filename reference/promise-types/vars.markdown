@@ -48,7 +48,13 @@ key.
 
      "scalar" int    => "16k";
      "ran"    int    => randomint(4,88);
-     "dim_array" int =>  readstringarray("array_name","/etc/passwd","#[^\n]*",":",10,4000);
+     "dim_array" int =>  readstringarray(
+         "array_name",
+         "/etc/passwd",
+         "#[^\n]*",
+         ":",
+         10,
+         4000);
 ```
 
 **Notes:**  
@@ -114,7 +120,13 @@ comma-separated list of values.
                                       ) 
                         };
 
-     "zzz"    slist  => { readstringlist("/home/mark/tmp/testlist2","#[^\n]*",",",5,4000) };
+     "zzz"    slist  => { readstringlist(
+        "/home/mark/tmp/testlist2",
+        "#[^\n]*",
+        ",",
+        5,
+        4000)
+        };
 ```
 
 **Notes:**
