@@ -26,4 +26,4 @@ This function turns arbitrary text into class data.
            ifvarclass => canonify("start_$(component)");
 ```
 
-**See also:** [classify()][classify]).
+**See also:** [classify()][classify], `canonifyuniquely`.
