@@ -41,7 +41,7 @@ The name of the directory where CFEngine looks for its binaries..
 
 ### sys.cdate
 
-The date of the system in canonical form, i.e. in the form of a class.
+The date of the system in canonical form, i.e. in the form of a class, from when the agent initialized.
 
 ```cf3
     # cdate = Sun_Dec__7_10_39_53_2008_
@@ -139,7 +139,7 @@ directory.
 
 ### sys.date
 
-The date of the system as a text string.
+The date of the system as a text string, from when the agent initialized.
 
 ```cf3
     # date = Sun Dec  7 10:39:53 2008
