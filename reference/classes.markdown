@@ -47,18 +47,19 @@ of all the defined classes in a list, inside CFEngine policy itself.
     * User-defined Group of Hosts
     * **See also:** `sys.domain`, `sys.hardware_addresses`, `sys.sys.host`, `sys.interface`, `sys.interfaces`, `sys.interface_flags`, `sys.ipv4`, `sys.ip_addresses`, `sys.fqhost`, `sys.uqhost`.
 * Time Classes
-    * Day of the Week - `Monday, Tuesday, Wednesday,...`
-    * Hour of the Day in Current Time Zone - `Hr00, Hr01,... Hr23`
-    * Hour of the Day in GMT - `GMT_Hr00, GMT_Hr01, ...GMT_Hr23`.  This is consistent the world over, in case you need virtual simulteneity of change coordination.
-    * Minutes of the Hour - `Min00, Min17,... Min45`
-    * Five Minute Interval of the Hour - `Min00_05, Min05_10,... Min55_00`.  Note the second number indicates *up to* what minute the interval extends and does not include that minute.
-    * Quarter of the Hour - `Q1, Q2, Q3, Q4`
-    * An expression of the current quarter hour - `Hr12_Q3`
-    * Day of the Month - `Day1, Day2,... Day31`
-    * Month - `January, February,... December`
-    * Year - `Yr1997, Yr2004`
-    * Period of the Day - `Night, Morning, Afternoon, Evening` (six hour blocks starting at 00:00 hours).
-    * Lifecycle Index - `Lcycle_0, Lcycle_1, Lcycle_2` (the year number modulo 3, used in long term resource memory).
+    * note ALL of there have a local and a GMT version.  The GMT classes are consistent the world over, in case you need global change coordination.
+    * Day of the Week - `Monday, Tuesday, Wednesday,...GMT_Monday, GMT_Tuesday, GMT_Wednesday,...`
+    * Hour of the Day in Current Time Zone - `Hr00, Hr01,... Hr23` and `Hr0, Hr1,... Hr23`
+    * Hour of the Day in GMT - `GMT_Hr00, GMT_Hr01, ...GMT_Hr23` and `GMT_Hr0, GMT_Hr1, ...GMT_Hr23`.
+    * Minutes of the Hour - `Min00, Min17,... Min45,...` and `GMT_Min00, GMT_Min17,... GMT_Min45,...`
+    * Five Minute Interval of the Hour - `Min00_05, Min05_10,... Min55_00` and `GMT_Min00_05, GMT_Min05_10,... GMT_Min55_00`.  Note the second number indicates *up to* what minute the interval extends and does not include that minute.
+    * Quarter of the Hour - `Q1, Q2, Q3, Q4` and `GMT_Q1, GMT_Q2, GMT_Q3, GMT_Q4`
+    * An expression of the current quarter hour - `Hr12_Q3` and `GMT_Hr12_Q3`
+    * Day of the Month - `Day1, Day2,... Day31` and `GMT_Day1, GMT_Day2,... GMT_Day31`
+    * Month - `January, February,... December` and `GMT_January, GMT_February,... GMT_December`
+    * Year - `Yr1997, Yr2004` and `GMT_Yr1997, GMT_Yr2004`
+    * Period of the Day - `Night, Morning, Afternoon, Evening` and `GMT_Night, GMT_Morning, GMT_Afternoon, GMT_Evening` (six hour blocks starting at 00:00 hours).
+    * Lifecycle Index - `Lcycle_0, Lcycle_1, Lcycle_2` and `GMT_Lcycle_0, GMT_Lcycle_1, GMT_Lcycle_2` (the year number modulo 3, used in long term resource memory).
     * **See also:** `sys.cdate`, `sys.date`.
 
 -   The unqualified name of a particular host (e.g., `www`). If
