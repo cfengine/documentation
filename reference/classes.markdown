@@ -47,7 +47,7 @@ of all the defined classes in a list, inside CFEngine policy itself.
     * User-defined Group of Hosts
     * **See also:** `sys.domain`, `sys.hardware_addresses`, `sys.sys.host`, `sys.interface`, `sys.interfaces`, `sys.interface_flags`, `sys.ipv4`, `sys.ip_addresses`, `sys.fqhost`, `sys.uqhost`.
 * Time Classes
-    * note ALL of there have a local and a GMT version.  The GMT classes are consistent the world over, in case you need global change coordination.
+    * note ALL of these have a local and a GMT version.  The GMT classes are consistent the world over, in case you need global change coordination.
     * Day of the Week - `Monday, Tuesday, Wednesday,...GMT_Monday, GMT_Tuesday, GMT_Wednesday,...`
     * Hour of the Day in Current Time Zone - `Hr00, Hr01,... Hr23` and `Hr0, Hr1,... Hr23`
     * Hour of the Day in GMT - `GMT_Hr00, GMT_Hr01, ...GMT_Hr23` and `GMT_Hr0, GMT_Hr1, ...GMT_Hr23`.
