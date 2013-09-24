@@ -22,7 +22,7 @@ Note IPv6 addresses can not use uppercase hexadecimal characters
 
 **Example:**
 
-[%CFEngine_include_snippet(sort.cf, #\+begin_src cfengine3, *.end_src)%]
+[%CFEngine_include_snippet(sort.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:
 
