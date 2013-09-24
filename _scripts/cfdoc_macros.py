@@ -568,7 +568,10 @@ def include_snippet(parameters, config):
 		return ""
 	
 	begin = re.compile(parameters[1])
-	end = re.compile(parameters[2])
+	if len(parameters) < 3:
+		end = re.compile("a^") # never matches anything
+	else:
+		end = re.compile(parameters[2])
 
 	markdown_lines = []
 	skip_block = True
