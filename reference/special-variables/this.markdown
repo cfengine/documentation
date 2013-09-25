@@ -52,6 +52,11 @@ This variable contains the current namespace name.
 This variable reveals the name of the file in which the current promise
 is defined.
 
+### this.promise_dirname
+
+This variable contains the directory name of the file in which the
+current promise is defined.
+
 ### this.promise_linenumber
 
 This variable reveals the line number in the file at which it is used.
