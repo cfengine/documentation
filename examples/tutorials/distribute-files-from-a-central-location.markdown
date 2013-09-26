@@ -1,100 +1,92 @@
 ---
 layout: default
-title: Distributing files from a central location
+title: Distribute files from a central location
 sorting: 10
 categories: [Examples, Tutorials]
 published: true
-alias: examples-tutorials-distributing-files-from-a-central-location.html
+alias: examples-tutorials-distribute-files-from-a-central-location.html
 tags: [Examples, Tutorials, file distribution]
 ---
 
-We need to distribute files to hosts from a central location.
+CFEngine can manage many machines simply by distributing policies to all its hosts. 
+This tutorial describes how to distribute files to hosts from a central policy server location. 
+For this example, we will distribute software patches.
 
-Files are centrally stored on the policy server in `/storage/patches`.
-These patch files should exist on the agent host in `/storage/deploy/patches`.
+Files are centrally stored on the policy server (hub). In our example, they are stored in `/storage/patches`.
+These patch files must also exist on the agent host (client) in `/storage/deploy/patches`. To do this, 
+perform the following instructions:
 
-## Checking out masterfiles from your central repository
+## Check out masterfiles from your central repository
 
-Ensure your working with the latest version of your masterfiles.
+CFEngine stores the master copy of all policy in the `/var/cfengine/masterfiles` directory. 
+Ensure that you are working with the latest version of your `masterfiles`. 
 
 
     git clone url
 or
+
     git pull origin master
 
 ## Make policy changes
 
+### Define locations
+
 Before files can be copied we must know where files should be copied from and
 where files should be copied to. If these locations are used by multiple
-components defining them in a [common bundle][Manuals Language Concepts Bundles]
-can reduce repetition. Variables and classes defined in common bundles are
+components, then defining them in a [common bundle][Bundles]
+can reduce repetition. Variables and classes that are defined in common bundles are
 accessible by all [CFEngine components][The CFEngine Components]. This is
 especially useful in the case of file copies because the same variable
-definition can be used both by the server when granting access and by the agent
+definition can be used both by the policy server when granting access and by the agent host
 when performing the copy.
 
-The policy framework includes a common bundle called def. In this example we
-will add our path definitions to this existing bundle.
+The policy framework includes a common bundle called **def**. In this example, we
+will add two variables--`dir_patch_store` and `dir_patch_deploy`--to this existing bundle. 
+These variables provide path definitions for storing and deploying patches.
 
-Here is a diff of what you should add to `def.cf` in your `masterfiles`.
+Add the following variable information to the `masterfiles/def.cf` file:
 
-    diff --git a/def.cf b/def.cf
-    index 70f4a34..53befac 100755
-    --- a/def.cf
-    +++ b/def.cf
-    @@ -51,4 +51,14 @@ bundle common def
-                         comment => "Define modules path",
-                          handle => "common_def_vars_dir_modules";
+```
+"dir_patch_store"
+  string => "/storage/patches",
+  comment => "Define patch files source location",
+  handle => "common_def_vars_dir_patch_store";
 
-    +   "dir_patch_store"
-    +     string => "/storage/patches",
-    +     comment => "Define patch files source location",
-    +     handle => "common_def_vars_dir_patch_store";
-    +
-    +   "dir_patch_deploy"
-    +     string => "/storage/deploy/patches",
-    +     comment => "Define patch files deploy location",
-    +     handle => "common_def_vars_dir_patch_deploy";
-    +
-     }
+"dir_patch_deploy"
+  string => "/storage/deploy/patches",
+  comment => "Define patch files deploy location",
+  handle => "common_def_vars_dir_patch_deploy";
 
-You can see that we added two variables `dir_patch_store` and
-`dir_patch_deploy` defining the locations where patches are centrally stored
-and where they are to be deployed to. These common variables can be referenced
-from the rest of the policy by using their fully [qualified names][Variables#scalar-referencing-and-expansion],
+}
+```
+
+These common variables can be referenced from the rest of the policy by using their fully
+ [qualified names][Variables#Scalar-Referencing-and-Expansion], 
 `$(def.dir_patch_store)` and `$(def.dir_patch_deploy)`
 
+### Grant file access
+
 Access must be granted before files can be copied. The right to access a file
-is promised by the server component of CFEngine (cf-serverd) using the `access`
-promise type in `bundle server access_rules`. Bundle server access_rules is
-located in `controls/cf_serverd.cf` in the policy framework.
+is provided by `cf-serverd`, the server component of CFEngine. Enter access information using the `access`
+promise type in the `bundle server access_rules` section. This section is located in 
+`controls/cf_serverd.cf` in the policy framework.
 
-Here is the diff of what should be added to `controls/cf_serverd.cf`.
+For our example, add the following information to `controls/cf_serverd.cf`:
 
-    diff --git a/controls/cf_serverd.cf b/controls/cf_serverd.cf
-    index 8d70a48..7f0223a 100755
-    --- a/controls/cf_serverd.cf
-    +++ b/controls/cf_serverd.cf
-    @@ -102,6 +102,10 @@ bundle server access_rules()
-          report_data_select => default_data_select_policy_hub,
-                       admit => { "$(sys.policy_hub)" };
+```
+"$(def.dir_patch_store)"
+  handle => "server_access_grant_locations_files_patch_store_for_hosts",
+  admit => { ".*$(def.domain)", @(def.acl) },
+  comment => "Hosts need to download patch files from the central location";
+```
 
-    +    "$(def.dir_patch_store)"
-    +      handle => "server_access_grant_locations_files_patch_store_for_hosts",
-    +      admit => { ".*$(def.domain)", @(def.acl) },
-    +      comment => "Hosts need to download patch files from the central location";
+### Create a custom library for reusable synchronization policy
 
-     # Uncomment the promise below to allow cf-runagent to
-     # access cf-agent on Windows machines
+You might need to frequently synchronize or copy a directory structure from the policy server to
+an agent host. Thus, identifying reusable parts of policy and abstracting them for later 
+use is a good idea. This information is stored in a custom library.
 
-Synchronizing or copying a directory structure from the policy server to
-an agent might be a frequently used method. It's a good idea to identify
-reusable parts of policy and abstract them for later use.
-
-Let's create a custom library for our reusable policy to synchronize a
-directory on the policy server to a directory on the agent host.
-
-Create `lib/custom/files.cf` with the following content:
+Create a custom library called `lib/custom/files.cf`. Add the following content:
 
 ```cf3
     bundle agent sync_from_policyserver(source_path, dest_path)
@@ -111,11 +103,15 @@ Create `lib/custom/files.cf` with the following content:
           comment      => "Ensure files from $(sys.policy_hub):$(source_path) exist in $(dest_path)";
     }
 ```
+This reusable policy will be used to synchronize a directory on the policy server to a 
+directory on the agent host.
 
-We recommend organizing in a way that makes the most sense to you and your team
-but we do believe that organizing things by services is one good way.
+### Create a patch policy
 
-Create `services/patch.cf` with the following content.
+Organize in a way that makes the most sense to you and your team. We recommend organizing 
+policy by services.
+
+Create `services/patch.cf` with the following content:
 
 ```cf3
     # Patching Policy
@@ -123,9 +119,9 @@ Create `services/patch.cf` with the following content.
     bundle agent patching
     # @brief Ensure various aspects of patching are handeled
 
-    # We can break down the various parts of patching into seperate bundles. This
-    # allows us to not become overwhelemed by details if there are a bunch of
-    # specifics for in one or more aspect for different classifications of hosts.
+    # We can break down the various parts of patching into separate bundles. This
+    # allows us to become less overwhelmed by details if numerous specifics
+    # exist in one or more aspect for different host classifications.
     {
       methods:
 
@@ -142,8 +138,8 @@ Create `services/patch.cf` with the following content.
         "$(def.dir_patch_deploy)/."
           handle  => "patch_distribution_files_def_dir_patch_deploy_exists",
           create  => "true",
-          comment => "If the destination directory does not exist we have no place
-                      to copy the patches to.";
+          comment => "If the destination directory does not exist, we have no place
+                      to which to copy the patches.";
 
       methods:
 
@@ -156,102 +152,95 @@ Create `services/patch.cf` with the following content.
     }
 ```
 
-This policy has 2 bundles in it. We have separated a top level patching
+The above policy contains two bundles. We have separated a top-level patching
 bundle from a more specific `patch_distribution` bundle. This is an
-illustration of how to use bundles to abstract details. You
-might for example have some hosts that you don’t want full
-synchronization on and might use a different method or might copy from a
-different path. This allows you to move those details away from the top
-level of what is involved in patching. If someone is interested in what
-is involved in patch distribution they can see that bundle for specifics.
+illustration of how to use bundles in order to abstract details. You
+might, for example, have some hosts that you don’t want to fully
+synchronize so you might use a different method or copy from a
+different path. Creating numerous bundles allows you to move those details away from the top
+level of what is involved in patching. If people are interested in what
+is involved in patch distribution, they can view that bundle for specifics.
 
-Now that all the pieces of the policy are in place they need to be integrated
-into the policy so they can be activated. Each policy file that is to be
-included in the policy must be included in `inputs` found in body common
-control. After a policy file has been included in inputs a bundle can be
-activated. Bundles can be activated by adding them to either the
+## Integrate the policy
+
+Now that all the pieces of the policy are in place, they must be integrated
+into the policy so they can be activated. Add each policy file to the `inputs`
+section which is found under `body common control`. Once the policy file is included in 
+inputs, the bundle can be activated. Bundles can be activated by adding them to either the
 `bundlesequence` or they can be called as a `methods` type promise.
 
-Make the following edits to `promises.cf`
+Make the following edits to `promises.cf` under body common control -> inputs:
 
-    diff --git a/promises.cf b/promises.cf
-    index 6578765..b36262c 100755
-    --- a/promises.cf
-    +++ b/promises.cf
-    @@ -52,6 +52,7 @@ body common control
-
-                       # COPBL and custom body/bundle library
+                        # COPBL and custom body/bundle library
                          "libraries/cfengine_stdlib.cf",
-    +                   "lib/custom/files.cf",
+                        "lib/custom/files.cf",
 
                        # Add update files to build Knowledge Map relationship
                          "update/update_bins.cf",
-    @@ -60,6 +61,7 @@ body common control
 
                        # List of services here
                          "services/file_change.cf",
-    +                    "services/patching.cf",
+                         "services/patching.cf",
 
 
-                       # Lessons
-    @@ -95,4 +97,9 @@ bundle agent service_catalogue
-                        handle => "service_catalogue_change_management",
-                     usebundle => change_management;
-
-    +   "Patching"
-    +     handle => "service_catalogue_patching",
-    +     usebundle => patching,
-    +     comment => "A patch a day keeps the hackers away";
-    +
-     }
-
-Now that all of the policy has been edited and is in place check that
-there are no syntax errors by running `cf-promises -f ./promises.cf`
+        "Patching"
+          handle => "service_catalogue_patching",
+          usebundle => patching,
+          comment => "A patch a day keeps the hackers away";
+     
+     
+Now that all of the policy has been edited and is in place, check for syntax errors by 
+running `cf-promises -f ./promises.cf`. This promise is activated from the **service_catalogue**
+bundle.
 
 
-## Enterprise Users
+## Commit Changes
 
-Before committing the changes to your repository lets get logged into
-the Mission Portal and setup a Tracker so that you can see the policy as
-it goes out.
+### Set up trackers in the Mission Portal (Enterprise Users Only)
 
-Navigate to the hosts app, select all hosts and then on the right hand
-side select the events tab. Add a new tracker called *Patch Failure* with
-report type *Promise not Kept* and for the watch enter `.*patch.*`
-(without quotes). This will watch for any promise handle that includes
-the string patch where a promise is not kept. Set the start time to now
-and click start. Lets add another Tracker called *Patch repaired*. Set the
-report type to *Promise Repaired*, set the watch and time as before and
-click start. This tracker will allow you to see how the policy reacts as
-it is activated on your infrastructure.
+Before committing the changes to your repository, log in to the Mission Portal
+and set up a Tracker so that you can see the policy as it goes out. To do this, perform the
+following:
 
-Now that you have a couple trackers running go ahead and deploy the
-policy changes.
+Navigate to the **Hosts** section. Select **All hosts**. Select the **Events** tab, located
+in the right-hand panel. Click **Add new tracker**. 
 
-## Committing Changes
+![Mission Portal Host Event](hosts-add-new-tracker.png)
 
-Now that all of our changes are ready lets deploy them to our infrastructure.
+
+Name it *Patch Failure*. Set the
+**Report Type** to *Promise not Kept*. Under **Watch**, enter **.patch**.  Set the **Start Time** to **Now**
+and then click **Done** to close the Start Time window. Click **Start** to save the new tracker. 
+This tracker watches for  any promise handle that includes the string patch where a promise is not kept.
+
+![Add New Tracker](add-new-tracker.png)
+
+Add another tracker called *Patch Repaired*. Set the **Report Type** to *Promise Repaired*. 
+Enter the same values as above for **Watch** and **Start Time**. Click **Start** to save the new tracker. 
+This tracker allows you to see how the policy reacts as it is activated on your infrastructure.
+
+### Deploy changes (Enterprise and Community Users)
 
 Always inspect what you expect. `git status` shows the status of your current branch.
 
     git status
 
-
-Inspect the changes contained in each file, and when you are sure add them to git's commit staging area.
+Inspect the changes contained in each file. Once satisfied, add them to git's commit staging area.
 
     git diff file
     git add file
 
-Iterate over using git diff, add, and status until all of the changes that you
-expected are listed as Changes to be committed. 
+Iterate over using git **diff**, **add**, and **status** until all of the changes that you
+expected are listed as **Changes to be committed**. Check the status once more before you
+commit the changes.
 
     git status
 
-Commit the changes to your local repository
+Commit the changes to your local repository.
 
     git commit
 
-Push the changes to the central repository so that they can be pulled down to
+Push the changes to the central repository so they can be pulled down to
 your policy server for distribution.
 
     git push origin master
