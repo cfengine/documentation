@@ -44,6 +44,19 @@ terminated immediately after a successful start, check the logs in:
 These should provide details about why the processes refused to start, shut
 down or continue to deny access.
 
+* PHP memory limit setting
+
+If you notice that API calls are not returning any data and see PHP memory error in `/var/cfengine/httpd/logs/error_log`, you might need to increase php's memory limit.
+
+   PHP Fatal error:  Allowed memory size of X bytes exhausted (tried to allocate Y bytes) in ...
+
+**Important**
+For CFEngine Enterprise <= v3.5.2, the default location for `php.ini` is incorrect. Please see *Changing PHP settings*
+
+Then increase `memory_limit` in `/var/cfengine/httpd/php/lib/php.ini` to a value greater than `Y`
+
+Note: The memory requirement depends upon the amount of data requested through the API. For normal cases the default PHP setting (128M) is enough.
+
 * Changing PHP settings
 
 For CFEngine Enterprise <= v3.5.2, the default location for `php.ini` is incorrect. To confirm:
