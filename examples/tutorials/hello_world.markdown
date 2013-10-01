@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Hello World
-sorting: 10
+sorting: 15
 categories: [Examples, Tutorials]
 published: true
 alias: examples-tutorials-hello-world.html
@@ -16,17 +16,17 @@ CFEngine policy files by convention are suffixed with the `.cf` or `.cf3` file
 extensions. Learn more about writing CFEngine policy from the [Policy Style
 Guide][Policy Style Guide].
 
-## Overview
+## Overview <a id="top"></a>
 This tutorial provides instructions for the following:
 
-* Create a hello_world policy file
+* [Create a hello_world policy file](#policy)
 
-* Make hello_world stand alone
+* [Make hello_world stand alone](#standalone)
 
-* Make hello_world.cf an executable script
+* [Make hello_world.cf an executable script](#executable)
 
 
-## Create hello_world
+## Create hello_world <a id="policy"></a>
 
 Policies contain **bundles**, which are collections of promises. A **promise** is a declaration of
 intent. Bundles allow related promises to be grouped together, as illustrated in the tutorial below.
@@ -78,8 +78,9 @@ CFEngine uses /var because it is one of the Unix filesystems that resides locall
 Thus, CFEngine can function even if everything else fails 
 (your other filesystems, your network, and even system binaries) and possibly repair problems. 
 
+[Back to top of page.](#top)
 
-## Make hello_world stand alone
+## Make hello_world stand alone <a id="standalone"></a>
 
 Instead of specifying the bundlesequence on the command line (as it was above), a [body common
 control][Components and Common Control#Common Control] section can be added to
@@ -122,10 +123,13 @@ The output is shown below:
 2013-08-20T14:25:36-0500   notice: R: Hello World! I am thinkpad-w520 and it is Tue Aug 20 14:25:25 2013
 ```
 
+[Back to top of page.](#top)
 
-## Make hello_world an executable script
+## Make hello_world an executable script <a id="executable"></a>
 
 Add a shebang **#!** to `hello_world.cf` in order to invoke CFEngine policy as an executable script:
+
+
 ```
 #!/var/cfengine/bin/cf-agent --no-lock
 ```
@@ -165,3 +169,4 @@ See the output below:
 # ./hello_world.cf
 2013-08-20T14:39:34-0500   notice: R: Hello World! I am thinkpad-w520 and it is Tue Aug 20 14:39:22 2013
 ```
+[Back to top of page.](#top)
