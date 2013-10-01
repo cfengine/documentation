@@ -8,17 +8,24 @@ alias: examples-tutorials.html
 tags: [Examples, Tutorials]
 ---
 
-Familarize yourself with CFEngine by following these tutorials. One of the best
-ways to learn CFEngine is to actually do things with CFEngine.
+Familarize yourself with CFEngine by following these tutorials. 
 
 [Create a standalone policy (Hello World).][Hello World]
 
-Learn some things about your system.
+In this tutorial, you will perform the following:
 
-Install packages with the Design Center user interface.
+* Create a simple hello_world policy file
+* Make hello_world a standalone policy
+* Make hello_world an executable script
 
-Message of the Day
+[Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches] (Enterprise Users Only)
 
-Lock down SSH
+In this tutorial, you will perform the following:
+
+* Configure and deploy a policy using sketches
+* Verify that the policy is generated and the sketch is activated using Reports
+* Create a query to narrow results using Report Builder
 
 [Distribute files from a central location.][Distribute files from a central location]
+
+In this tutorial, you will learn how to distribute files from a central policy server location to all pertinent hosts.
