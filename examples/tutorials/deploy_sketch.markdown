@@ -39,20 +39,25 @@ package repository. (The package in our example below is available in the Centos
 can select any package that is available through your operating system's package repository.)
 
 1. Log in to the Mission Portal. Select **Design Center** from the left sidebar.
+
 2. Select the **Packages::installed** sketch. Use the following values:
 
-   * **Descriptive name:** Enter **Install iSCSI**. This allows you to recognize the activation 
+   - **Descriptive name:** Enter **Install iSCSI**. This allows you to recognize the activation 
    (and its goal) later, as the Design Center uses this name when it commits changes to Git.
-   * **Packages that should be installed:** Fill in the name of the package that must be installed.
+   
+   - **Packages that should be installed:** Fill in the name of the package that must be installed.
    For this example, use **iscsi-initiator-utils**. This is the **parameter set**. 
-   * **Hosts to activate on:** Click **Select category** to display host options. Select **All hosts**
+   
+   - **Hosts to activate on:** Click **Select category** to display host options. Select **All hosts**
    for our example. All host names appear. This is the **environment** in which the sketch
    must be activate.
    
    Here is an example:
    
    ![Sketch Configuration](Sketch.png)
+   
 3. Click **Activate**. This deploys the sketch to all hosts.
+
 4. Enter a description in the **Commit your changes** window that appears. The Design Center
    uses this comment for version control when it commits changes to Git.
    Click **Commit** to complete the change.
@@ -61,9 +66,12 @@ can select any package that is available through your operating system's package
 
 * The policy that is generated when the sketch is activated gets committed to your Git repository. 
 This allows you to keep track of who has made what changes, and when, and why.
+
 * The **policy server** is typically configured to check the Git repository every five minutes to ensure
 that it is running the latest version of available policies. This process can be handled manually as well.
+
 * The **hosts** check with the policy server for updated policy. They also work on default intervals of five minutes.
+
 * The policy server collects information from the agents on the hosts to obtain insight 
    into the progress with executing the sketch. The information it collects is used to update 
    the information in the Design Center.
@@ -91,10 +99,13 @@ will use the **Software installed** Report to verify that the Packages sketch we
 has been deployed.
 
 1. Log in to the Mission Portal. Select **Reports** from the left sidebar.
+
 2. Select the **Software installed** report from the list of reports that appear.
+
 3. Scroll through the **Software installed** report to find the **iscsi-initiator-utils** software. To hasten your search,
    click the **SoftwareName** column in order to alphabetize the results. Another option is to 
    create a query in the Report Builder, which is described below.
+   
 4. The table shows that the **iscsi-initiator-utils** software is installed on both hosts:
 
 ![Sketch Deployment Report](Report.png)
@@ -107,16 +118,22 @@ Use the Report builder to create queries. In our example, we will create a query
 Packages sketch we just activated was deployed and that our software was installed.
 
 1. Log in to the Mission Portal. Select **Reports** from the left sidebar.
+
 2. Click **New report** to open the Report builder.
+
 3. Under **Tables**, select **Hosts** and then **Software**. 
+
 4. Enter the following **Field** values for the Hosts and Software tables:
 
-  * For **Hosts** **Fields**, select **Host name**.
-  * For **Software** **Fields**, select, and in the order shown: **Software name**,
+   - For **Hosts** **Fields**, select **Host name**.
+   
+   - For **Software** **Fields**, select, and in the order shown: **Software name**,
    **Software version**, **Software architecture**. Note that the Mission Portal creates **Fields** in 
-   the order that you select them.   
+   the order that you select them. 
+     
 5. Under **Filters**, click **Add**. Under **Software**, select **Software name**.
    For the **Software name** filter, select equals = and then enter **iscsi-initiator-utils**.
+   
 6. Click **Show Query** to view the SQL query that is generated from your selection.
 
 Your completed query should look similar to this example:
