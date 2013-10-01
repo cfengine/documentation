@@ -7,8 +7,8 @@ published: true
 alias: examples-tutorials-deploy-sketch.html
 tags: [Examples, Tutorials, Sketch]
 ---
-**Note:** This tutorial is for Enterprise users who have access to the Design Center, which
-is located in the Mission Portal. CFEngine must be up and running in order to complete this 
+**Note:** This tutorial is for Enterprise users who have access to the Mission Portal
+application. CFEngine must be up and running in order to complete this 
 tutorial. 
 
 ## Overview <a id="top"></a>
@@ -40,6 +40,7 @@ can select any package that is available through your operating system's package
 
 1. Log in to the Mission Portal. Select **Design Center** from the left sidebar.
 2. Select the **Packages::installed** sketch. Use the following values:
+
    * **Descriptive name:** Enter **Install iSCSI**. This allows you to recognize the activation 
    (and its goal) later, as the Design Center uses this name when it commits changes to Git.
    * **Packages that should be installed:** Fill in the name of the package that must be installed.
@@ -109,10 +110,11 @@ Packages sketch we just activated was deployed and that our software was install
 2. Click **New report** to open the Report builder.
 3. Under **Tables**, select **Hosts** and then **Software**. 
 4. Enter the following **Field** values for the Hosts and Software tables:
+
   * For **Hosts** **Fields**, select **Host name**.
-  * For **Software** **Fields**, select--and in the order shown--**Software name**,
+  * For **Software** **Fields**, select, and in the order shown: **Software name**,
    **Software version**, **Software architecture**. Note that the Mission Portal creates **Fields** in 
-   the order that you select them.
+   the order that you select them.   
 5. Under **Filters**, click **Add**. Under **Software**, select **Software name**.
    For the **Software name** filter, select equals = and then enter **iscsi-initiator-utils**.
 6. Click **Show Query** to view the SQL query that is generated from your selection.
