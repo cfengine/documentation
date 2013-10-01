@@ -42,13 +42,13 @@ can select any package that is available through your operating system's package
 
 2. Select the **Packages::installed** sketch. Use the following values:
 
-   - **Descriptive name:** Enter **Install iSCSI**. This allows you to recognize the activation 
+     - **Descriptive name:** Enter **Install iSCSI**. This allows you to recognize the activation 
    (and its goal) later, as the Design Center uses this name when it commits changes to Git.
    
-   - **Packages that should be installed:** Fill in the name of the package that must be installed.
+     - **Packages that should be installed:** Fill in the name of the package that must be installed.
    For this example, use **iscsi-initiator-utils**. This is the **parameter set**. 
    
-   - **Hosts to activate on:** Click **Select category** to display host options. Select **All hosts**
+     - **Hosts to activate on:** Click **Select category** to display host options. Select **All hosts**
    for our example. All host names appear. This is the **environment** in which the sketch
    must be activate.
    
