@@ -125,16 +125,6 @@ Normal ordering for packages is the following:
 
 ### Promise repair logic
 
-**Identified package matches version constraints**
-
-| Command   | Version match |
-|-----------|---------------|
-| add       | never |
-| delete    | =,>=,<= |
-| reinstall | =,>=,<= |
-| upgrade   | =,>=,<= |
-| patch     | =,>=,<= |
-
 **Identified package matched by name, but not version**
 
 | Command | Dumb manager | Smart manager |
@@ -1127,12 +1117,25 @@ packages:
 
 ### package_select
 
-**Description:** A criterion for first acceptable match relative to
-`package_version`
+**Description:** Selects which comparison operator to use with
+`package_version`.
 
-This selects the operator that compares the promiser to the state of the
-system packages currently installed. If the criterion matches, the
-policy action is scheduled for promise-keeping.
+This selects the operator used to compare available packages. If an
+available package is found to satisfy the version requirement, it may
+be selected for install (if `package_policy` is `add`, `update` or
+`addupdate`). To select the right package, imagine the available package
+being on the left hand side of the operator, and the value in
+`package_version` being on the right.
+
+Note that in the case of deleting a package, you must specify an exact
+version.
+
+If `package_policy` is `update` or `addupdate`, CFEngine will always
+try to keep the most recent package installed that satisfies the version
+requirement. For example, if `package_select` is `<` and
+`package_version` is `3.0.0`, you may still match updates to 2.x.x
+series, like: `2.2.1`, `2.2.2`, `2.3.0`, because they all satisfy the
+version requirement.
 
 
 **Type:** (menu option)
