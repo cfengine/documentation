@@ -183,6 +183,108 @@ update         => "yes";
 }
 ```
 
+### A special note on the scope and lifetime of the select_region
+
+The region selected with select_region exists during the lifetime of the promise.
+This means that once a promise has been started the selected region will be used regardless
+of what the changes are.
+
+There is a down side to this, promise lifetime is shorter than expected. For instance let's
+look at the following code example:
+
+```cf3
+bundle agent init
+{
+vars:
+"states" slist => { "actual", "expected" };
+
+"actual" string =>
+"header
+header
+BEGIN
+One potato
+Two potato
+Three potatoe
+Four
+END
+trailer
+trailer";
+
+"expected" string =>
+"header
+header
+One potato
+Two potato
+Four
+trailer
+trailer";
+
+files:
+"testfile.$(states)"
+create => "true",
+edit_line => init_insert("$(init.$(states))"),
+edit_defaults => init_empty;
+}
+
+bundle edit_line init_insert(str)
+{
+insert_lines:
+"$(str)";
+}
+
+body edit_defaults init_empty
+{
+empty_file_before_editing => "true";
+}
+
+#######################################################
+
+bundle agent test
+{
+vars:
+"tstr" slist => { "BEGIN", "    Three potatoe", "END" };
+
+files:
+"testfile.actual"
+edit_line => test_delete("$(test.tstr)");
+}
+
+bundle edit_line test_delete(str)
+{
+delete_lines:
+"$(str)"
+select_region => test_select;
+}
+
+body select_region test_select
+{
+select_start => "BEGIN";
+select_end => "END";
+include_start_delimiter => "true";
+include_end_delimiter => "true";
+}
+```
+
+The code generates two files testfile.actual and testfile.expected. The idea is that both files will be
+equal after the promise is run, since the transformations applied to testfile.actual will convert it into
+testfile.equal.
+
+However due to the lifetime of promises, this is not true. The attribute select_region lives as long as the
+promise that created it lives and it will be recreated on the next incarnation.
+
+Notice that tstr is a slist that is used as a parameter for edit_line, which uses it to select the strings that
+will be removed. The select_region body specifies that the select_start attribute is "BEGIN", which holds true only
+for the first invocation of the promise because during that iteration it will be removed. Once it is removed
+the select_region body will never be able to match select_start again.
+
+In the previous example, it is easy to think that the select_region will be kept during the whole iteration of the
+slist. This is not true, each element in the slist will trigger its own invocation of the promise, therefore
+select_region will only match the first iteration.
+
+The solution to this problem is simple: if the marker for a region needs to be removed, then it cannot be used as a marker.
+In the example above it is enough to change the markers from "BEGIN" to "header" and from "END" to "trailer" to obtain the
+desired result.
+
 ****
 
 ## Attributes
