@@ -1835,6 +1835,8 @@ The boolean is false
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)
 
+**See also:** `template_method`, `template_data`
+
 ### edit_xml
 
 **Type:** [`bundle edit_xml`][bundle edit_xml]
@@ -2802,6 +2804,8 @@ ordinarily be stored in an alternative repository as
      template_method => "mustache";
 ```
 
+**See also:** `edit_template`, `template_method`
+
 ### template_method
 
 **Description:** The template type.
@@ -2821,6 +2825,8 @@ implementation, but you can use `mustache` as well.
      template_data => parsejson('{"message":"hello"}'),
      template_method => "mustache";
 ```
+
+**See also:** `edit_template`, `template_data`
 
 ### touch
 
