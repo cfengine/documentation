@@ -1811,7 +1811,7 @@ bundle agent test_mustache
 Simply, the container's top-level keys will be used.  So this template
 (saved in `test_mustache.cf.mustache` if you follow the example):
 
-```mustache
+```
 x is {{x}}
 
 {{#boolean}}The boolean is true{{/boolean}}
