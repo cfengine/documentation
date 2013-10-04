@@ -253,8 +253,7 @@ fixed list.
 
 #### select_field
 
-**Description:** Sets the index of the field required 0..n  (default starts 
-from 1). 
+**Description**: Sets the index of the field required, see also `start_fields_from_zero`.
 
 **Type:** `int`
 
