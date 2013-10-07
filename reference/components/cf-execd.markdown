@@ -211,6 +211,26 @@ viewed on demand. A reference to the appropriate file is given.
     }
 ````
 
+### mailsubject
+
+**Description:** The subject in the mail sent by CFEngine.
+
+The subject can contain system variables, like for example IP address or
+architecture.
+
+**Type:** `string`
+
+**Allowed input range:** `.*`
+
+**Example:**
+
+```cf3
+    body executor control
+    {
+        mailsubject => "CFEngine report ($(sys.fqhost))";
+    }
+```
+
 ### mailto
 
 **Description:** Email-address cfengine mail is sent to
