@@ -4800,6 +4800,13 @@
           "type": "option",
           "range": "true,false,yes,no,on,off",
           "visibility": "body"
+        },
+        "allowciphers": {
+          "attribute": "allowciphers",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "body"
         }
       }
     },
@@ -5139,6 +5146,18 @@
       "variadic": false,
       "category": "data"
     },
+    "canonifyuniquely": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "category": "data"
+    },
     "concat": {
       "status": "normal",
       "returnType": "string",
@@ -5273,6 +5292,26 @@
         {
           "type": "string",
           "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "category": "data"
+    },
+    "eval": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "option",
+          "range": "math"
+        },
+        {
+          "type": "option",
+          "range": "infix"
         }
       ],
       "variadic": false,
