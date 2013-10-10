@@ -216,7 +216,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 98,
+          "line": 96,
           "namespace": "default",
           "name": "rm_rf",
           "bundleType": "agent",
@@ -225,18 +225,66 @@
           ],
           "promiseTypes": [
             {
-              "line": 100,
+              "line": 109,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 110,
+                      "promiser": "rm",
+                      "attributes": [
+                        {
+                          "line": 110,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "rm_rf_depth",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(name)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "inf"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 114,
+          "namespace": "default",
+          "name": "rm_rf_depth",
+          "bundleType": "agent",
+          "arguments": [
+            "name",
+            "depth"
+          ],
+          "promiseTypes": [
+            {
+              "line": 128,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 101,
+                      "line": 129,
                       "promiser": "isdir",
                       "attributes": [
                         {
-                          "line": 101,
+                          "line": 129,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -256,18 +304,18 @@
               ]
             },
             {
-              "line": 102,
+              "line": 130,
               "name": "files",
               "contexts": [
                 {
                   "name": "isdir",
                   "promises": [
                     {
-                      "line": 104,
+                      "line": 132,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 105,
+                          "line": 133,
                           "lval": "file_select",
                           "rval": {
                             "type": "symbol",
@@ -275,7 +323,7 @@
                           }
                         },
                         {
-                          "line": 106,
+                          "line": 134,
                           "lval": "depth_search",
                           "rval": {
                             "type": "functionCall",
@@ -283,13 +331,13 @@
                             "arguments": [
                               {
                                 "type": "string",
-                                "value": "999"
+                                "value": "$(depth)"
                               }
                             ]
                           }
                         },
                         {
-                          "line": 107,
+                          "line": 135,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -304,11 +352,11 @@
                   "name": "!isdir",
                   "promises": [
                     {
-                      "line": 110,
+                      "line": 138,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 110,
+                          "line": 138,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -325,7 +373,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 113,
+          "line": 141,
           "namespace": "default",
           "name": "fileinfo",
           "bundleType": "agent",
@@ -334,18 +382,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 115,
+              "line": 143,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 116,
+                      "line": 144,
                       "promiser": "fields",
                       "attributes": [
                         {
-                          "line": 116,
+                          "line": 144,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -369,11 +417,11 @@
                       ]
                     },
                     {
-                      "line": 118,
+                      "line": 146,
                       "promiser": "stat[$(f)][$(fields)]",
                       "attributes": [
                         {
-                          "line": 118,
+                          "line": 146,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -397,14 +445,14 @@
               ]
             },
             {
-              "line": 120,
+              "line": 148,
               "name": "reports",
               "contexts": [
                 {
                   "name": "verbose_mode",
                   "promises": [
                     {
-                      "line": 122,
+                      "line": 150,
                       "promiser": "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])",
                       "attributes": []
                     }
@@ -416,7 +464,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 125,
+          "line": 153,
           "namespace": "default",
           "name": "logrotate",
           "bundleType": "agent",
@@ -427,18 +475,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 131,
+              "line": 159,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 132,
+                      "line": 160,
                       "promiser": "$(log_files)",
                       "attributes": [
                         {
-                          "line": 133,
+                          "line": 161,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -446,7 +494,7 @@
                           }
                         },
                         {
-                          "line": 134,
+                          "line": 162,
                           "lval": "rename",
                           "rval": {
                             "type": "functionCall",
@@ -460,7 +508,7 @@
                           }
                         },
                         {
-                          "line": 135,
+                          "line": 163,
                           "lval": "file_select",
                           "rval": {
                             "type": "functionCall",
@@ -483,7 +531,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 138,
+          "line": 166,
           "namespace": "default",
           "name": "prunedir",
           "bundleType": "agent",
@@ -493,18 +541,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 144,
+              "line": 172,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 145,
+                      "line": 173,
                       "promiser": "$(dir)",
                       "attributes": [
                         {
-                          "line": 146,
+                          "line": 174,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -512,7 +560,7 @@
                           }
                         },
                         {
-                          "line": 147,
+                          "line": 175,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -520,7 +568,7 @@
                           }
                         },
                         {
-                          "line": 148,
+                          "line": 176,
                           "lval": "file_select",
                           "rval": {
                             "type": "functionCall",
@@ -538,7 +586,7 @@
                           }
                         },
                         {
-                          "line": 149,
+                          "line": 177,
                           "lval": "depth_search",
                           "rval": {
                             "type": "functionCall",
