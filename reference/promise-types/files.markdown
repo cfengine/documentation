@@ -1811,6 +1811,7 @@ bundle agent test_mustache
 Simply, the container's top-level keys will be used.  So this template
 (saved in `test_mustache.cf.mustache` if you follow the example):
 
+{% raw %}
 ```
 x is {{x}}
 
@@ -1819,6 +1820,7 @@ x is {{x}}
 
 {{#list}}{{k}}={{v}}, {{/list}}
 ```
+{% endraw %}
 
 Will produce this text in `/tmp/myfile.txt` when you run `cf-agent -f
 ./test_mustache.cf`:
