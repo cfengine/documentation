@@ -1,28 +1,37 @@
 'use strict';
+var is_mobile = true;
 $(document).ready(function() {
+    if ($(window).width() > 800)
+    {
+        is_mobile = false;
+    }
     var scrollPos = 380;
     /*show/hide moveTop link */
     var showMoveTop = false;
-    $("#moveTop a").click(function(e) {
-        $(window).scrollTop($('#nav_wrapper').offset().top);
-        showMoveTop = false;
-        $("#moveTop").hide();
-        e.preventDefault();
-    });
 
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > scrollPos && showMoveTop===false) {
-            $("#moveTop").show();
-            $("#TOCbox_wrapper").addClass('TOCbox_Fixed');
-            showMoveTop = true;
-        } else if($(window).scrollTop() < scrollPos && showMoveTop === true ) {
-            $("#moveTop").hide();
-            $("#TOCbox_wrapper").removeClass('TOCbox_Fixed');
+    if (is_mobile === false)
+    {
+        $("#moveTop a").click(function(e) {
+            $(window).scrollTop($('#nav_wrapper').offset().top);
             showMoveTop = false;
-        }
-    });
+            $("#moveTop").hide();
+            e.preventDefault();
+        });
 
-    if ($(window).scrollTop() > scrollPos)
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > scrollPos && showMoveTop===false) {
+                $("#moveTop").show();
+                $("#TOCbox_wrapper").addClass('TOCbox_Fixed');
+                showMoveTop = true;
+            } else if($(window).scrollTop() < scrollPos && showMoveTop === true ) {
+                $("#moveTop").hide();
+                $("#TOCbox_wrapper").removeClass('TOCbox_Fixed');
+                showMoveTop = false;
+            }
+        });
+    }
+
+    if ($(window).scrollTop() > scrollPos && is_mobile === false)
     {
         $("#moveTop").show();
         $("#TOCbox_wrapper").addClass('TOCbox_Fixed');
@@ -57,15 +66,21 @@ $(document).ready(function() {
             ToC += newLine;
         }
     });
+    
     if (ToC.length)
     {
-        $("#TOCbox_wrapper").show();
+        if  (is_mobile === false)
+        {
+            $("#TOCbox_wrapper").show();
+        }
         var result = ToC_start + ToC + ToC_End;
+
+        $("#TOCbox_wrapper #TOCbox_list").html('');
+        $("#print_TOC").html('');
+
         $("#TOCbox_wrapper #TOCbox_list").append(result);
         $("#print_TOC").append(result);
     }
-
-
 
     // detect print event, display TOC
     var beforePrint = function() {
@@ -89,4 +104,108 @@ $(document).ready(function() {
     window.onbeforeprint = beforePrint;
     window.onafterprint = afterPrint;
 
+    if (is_mobile === true)
+    {
+     // mobile navigation
+        $('#mobile_left_menu').sidr({
+            name: 'leftMenyMobile',
+            side: 'left',
+            source: '#left_col'
+        });
+        $('#mobile_right_menu').sidr({
+            name: 'TOCbox_list_mobile',
+            side: 'right',
+            source: '#TOCbox_list'
+        });
+
+        $('.sidr-inner a, .sidr-inner span').on('click', function(){
+            if ($("#leftMenyMobile").is(":visible") === true)
+            {
+                closeSideMenues('leftMenyMobile');
+            }
+
+            if ($("#TOCbox_list_mobile").is(":visible") === true)
+            {
+                closeSideMenues('TOCbox_list_mobile');
+            }
+        });
+    }
+
+
+
+
+
+ var element = window;//document.getElementById('w');
+ var openedMenues = [];
+
+var closeRight = $('<div id="closeRight" style="z-index:99999"><a href="#closeRight"><--close right</a></div>');
+var closeLeft = $('<div id="closeLeft" style="z-index:999"><a style="z-index:99999" href="#closeLeft">close left--></a></div>');
+
+    Hammer(element).on("swipeleft", function() {
+        if (openedMenues.indexOf('leftMenyMobile') === -1)
+        {
+            if (openedMenues.indexOf('TOCbox_list_mobile') !== -1 || $("#TOCbox_list_mobile").is(":visible") === true)
+            {
+                closeSideMenues('TOCbox_list_mobile');
+            }
+            else
+            {
+                openMenu('leftMenyMobile')
+            }
+        }
+    });
+
+    Hammer(element).on("swiperight", function() {
+        if (openedMenues.indexOf('TOCbox_list_mobile') === -1)
+        {
+            if (openedMenues.indexOf('leftMenyMobile') !== -1 || $("#leftMenyMobile").is(":visible") === true)
+            {
+                closeSideMenues('leftMenyMobile');
+            }
+            else
+            {
+                openMenu('TOCbox_list_mobile');
+            }
+        }
+    });
+
+
+    function openMenu(menuName)
+    {
+        $.sidr('open', menuName);
+        openedMenues.push(menuName);
+        //TODO: refactor
+        if (menuName === 'TOCbox_list_mobile')
+        {
+            if ($("#TOCbox_list_mobile #closeRight").length === 0)
+            {
+                $("#TOCbox_list_mobile").append(closeRight);
+            }
+        }
+
+        if(menuName === 'leftMenyMobile')
+        {
+            if ($("#leftMenyMobile #closeLeft").length === 0)
+            {
+                $("#leftMenyMobile").append(closeLeft);
+            }
+        }
+    }
+
+    function closeSideMenues(menuItem)
+    {
+        var pos = openedMenues.indexOf(menuItem);
+        if (pos !== -1)
+        {
+            openedMenues.splice(pos, 1);
+        }
+        $.sidr('close', menuItem);
+    }
+
+
+    $(".sidr").on("click", "#closeRight a, #closeLeft a", function(event){
+        $.sidr('close', 'leftMenyMobile');
+        $.sidr('close', "TOCbox_list_mobile");
+        openedMenues=[];
+    });
 });

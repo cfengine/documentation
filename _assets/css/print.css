@@ -1,51 +1,56 @@
 @media print {
     .wrapper {
-        padding: 0 10px;
+        padding: 0 10px
     }
 
-    #left_col, #nav_wrapper, header, #TOCbox_wrapper, #pageControls_block {
+    #left_col,
+    #nav_wrapper,
+    header,
+    #TOCbox_wrapper,
+    #pageControls_block,
+    #mobile_naw_wrapper {
         display: none;
         visibility: hidden;
     }
 
     #content_col {
-        margin: 0 0 0 0;
+        margin: 0 0 0 0
     }
 
     footer {
-        font-size: 8px;
+        font-size: 8px
     }
 
-    footer .license_info {
-        margin: 40px 0 0 0;
-        height: 20px;
-        border-top: 1px solid #000;
-        padding-top: 10px
-    }
+        footer .license_banner {
+            display: none
+        }
 
-    footer .license_info,
-    footer .license_info a {
-        background: none;
-        color: #000;
-        line-height: 1;
-    }
+        footer .license_info {
+            border-top: 1px solid #000;
+            height: 20px;
+            margin: 40px 0 0 0;
+            padding-top: 10px;
+        }
 
-    footer .license_banner{
-        display: none;
-    }
+            footer .license_info,
+            footer .license_info a {
+                background: none;
+                color: #000;
+                line-height: 1;
+            }
 
     a[href]:after {
-        content: " (" attr(href) ") ";
+        content: " (" attr(href) ") "
     }
 
     #breadcrumbs a[href]:after,
     #tags a[href]:after,
     #print_TOC_wrapper a[href]:after {
-         content: "";
+        content: ""
     }
 
     #breadcrumbs i.arrow {
-        background: url('../media/images/single_arrow.png') no-repeat 0 7px;
+        background: url('../media/images/single_arrow.png') no-repeat 0 7px
     }
 
     #tags li a {
@@ -61,30 +66,30 @@
     }
 
     #print_TOC a {
-        text-decoration: none;
+        text-decoration: none
     }
 
     #print_TOC .link_h1:first-child {
-        display: none;
+        display: none
     }
 
     #print_TOC .link_h3 {
-        margin-left: 1em;
+        margin-left: 1em
     }
 
     #print_TOC .link_h4 {
-        margin-left: 2em;
+        margin-left: 2em
     }
 
     body:before {
-        content: "CFEngine";
-        width: 100px;
         background: url('../media/images/logo_100x26.png') no-repeat;
+        color: transparent;
+        content: "CFEngine";
         height: 26px;
+        left: 0px;
         position: absolute;
         top: -55px;
-        left:0px;
-        color: transparent;
+        width: 100px;
     }
 
     @page
