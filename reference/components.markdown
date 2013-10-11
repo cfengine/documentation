@@ -348,6 +348,8 @@ promises.
 
 ### host_licenses_paid
 
+**Deprecated: 3.5**
+
 **Description:** The value of `host_licenses_paid` represents the number
 of licenses that you promise to have paid for by setting this value 
 (legally binding for CFEngine Enterprise).
