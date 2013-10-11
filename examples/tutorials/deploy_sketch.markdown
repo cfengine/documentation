@@ -24,11 +24,11 @@ using the appropriate parameters and environments, and deploying them on your in
 
 This tutorial provides instructions for the following:
 
-* [Configure and deploy a policy using sketches in the Design Center](Configure and Deploy a Policy Using Sketches (Enterprise Only)#conf)
+* [Configure and deploy a policy using sketches in the Design Center][Configure and Deploy a Policy Using Sketches (Enterprise Only)#conf]
 
-* [Verify sketch deployment using Reports in the Mission Portal](Configure and Deploy a Policy Using Sketches (Enterprise Only)#verify)
+* [Verify sketch deployment using Reports in the Mission Portal][Configure and Deploy a Policy Using Sketches (Enterprise Only)#verify]
 
-* [Create a query to narrow results using Report Builder in the Mission Portal](Configure and Deploy a Policy Using Sketches (Enterprise Only)#query)
+* [Create a query to narrow results using Report Builder in the Mission Portal][Configure and Deploy a Policy Using Sketches (Enterprise Only)#query]
 
 
 ## Configure and deploy a policy using sketches in the Design Center <a id="conf"></a>
@@ -91,7 +91,7 @@ If the package is removed, it is added within five minutes, and CFEngine creates
 made a _repair_. Thus, the state of the overall system is known and stable and system drift is avoided. 
 This works for 2, 20, 200, 2,000 or 20,000 servers.
 
-[Back to top of page.](Configure and Deploy a Policy Using Sketches (Enterprise Only)#top)
+[Back to top of page.][Configure and Deploy a Policy Using Sketches (Enterprise Only)#top]
 
 ## Verify sketch deployment using Reports in the Mission Portal <a id="verify"></a>
 The Mission Portal contains standard Reports to facilite systems monitoring and management. We
@@ -111,7 +111,7 @@ has been deployed.
 ![Sketch Deployment Report](Report.png)
    
    
-[Back to top of page.](Configure and Deploy a Policy Using Sketches (Enterprise Only)#top)
+[Back to top of page.][Configure and Deploy a Policy Using Sketches (Enterprise Only)#top]
 
 ## Create a query to narrow results using Report Builder in the Mission Portal <a id="query"></a>
 Use the Report builder to create queries. In our example, we will create a query to verify that the
@@ -145,4 +145,4 @@ Click **Run**. The Results reveal that the policy was generated when the sketch 
 
 ![Report Builder Results](Report-builder-results.png)
 
-[Back to top of page.](Configure and Deploy a Policy Using Sketches (Enterprise Only)#top)
+[Back to top of page.][Configure and Deploy a Policy Using Sketches (Enterprise Only)#top]
