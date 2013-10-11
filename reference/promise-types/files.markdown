@@ -1835,7 +1835,7 @@ The boolean is false
 789=0, =true, -1=-2, 
 ```
 
-**History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)
+**History:** Was introduced in 3.3.0, Nova 2.2.0 (2012).  Mustache templates were introduced in 3.6.0.
 
 **See also:** `template_method`, `template_data`
 
