@@ -19,11 +19,11 @@ Guide][Policy Style Guide].
 ## Overview <a id="top"></a>
 This tutorial provides instructions for the following:
 
-* [Create a hello_world policy file](Hello World#policy)
+* [Create a hello_world policy file][Hello World#policy]
 
-* [Make hello_world stand alone](Hello World#standalone)
+* [Make hello_world stand alone][Hello World#standalone]
 
-* [Make hello_world.cf an executable script](Hello World#executable)
+* [Make hello_world.cf an executable script][Hello World#executable]
 
 
 ## Create hello_world <a id="policy"></a>
@@ -78,7 +78,7 @@ CFEngine uses /var because it is one of the Unix filesystems that resides locall
 Thus, CFEngine can function even if everything else fails 
 (your other filesystems, your network, and even system binaries) and possibly repair problems. 
 
-[Back to top of page.](Hello World#top)
+[Back to top of page.][Hello World#top]
 
 ## Make hello_world stand alone <a id="standalone"></a>
 
@@ -123,7 +123,7 @@ The output is shown below:
 2013-08-20T14:25:36-0500   notice: R: Hello World! I am thinkpad-w520 and it is Tue Aug 20 14:25:25 2013
 ```
 
-[Back to top of page.](Hello World#top)
+[Back to top of page.][Hello World#top]
 
 ## Make hello_world an executable script <a id="executable"></a>
 
@@ -170,4 +170,4 @@ See the output below:
 # ./hello_world.cf
 2013-08-20T14:39:34-0500   notice: R: Hello World! I am thinkpad-w520 and it is Tue Aug 20 14:39:22 2013
 ```
-[Back to top of page.](Hello World#top)
+[Back to top of page.][Hello World#top]
