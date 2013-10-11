@@ -74,15 +74,15 @@ Sum non-privileged process.
 
 ### mon.value_diskfree
 
-Free disk on / partition.
+Last checked percentage Free disk on / partition.
 
 ### mon.av_diskfree
 
-Free disk on / partition.
+Average percentage Free disk on / partition.
 
 ### mon.dev_diskfree
 
-Free disk on / partition.
+Standard deviation of percentage Free disk on / partition.
 
 ### mon.value_loadavg
 
