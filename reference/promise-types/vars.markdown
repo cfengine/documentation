@@ -192,20 +192,21 @@ number (e.g., 3, 3.1415, .17, 6.02e23, -9.21e-17).
 Some [functions][Functions] return `rlist`s, and an `rlist` may 
 contain the values copied from another `slist`, `rlist`, or `ilist`. See [`policy`](#policy)
 
-## Container variables
+## Data container variables
 
-Containers are obtained from functions that return containers, such as
-`readjson()` or `parsejson()`, or from merging existing containers.
-They can *NOT* be modified, once created.
+The `data` variables are obtained from functions that return data
+containers, such as `readjson()` or `parsejson()`, or from merging
+existing data containers with `mergedata`.  They can *NOT* be
+modified, once created.
 
-Containers can be passed to another bundle with the `@(containername)`
-notation, similarly to the list passing notation.
+Data containers can be passed to another bundle with the
+`@(varname)` notation, similarly to the list passing notation.
 
-### container
+### data
 
-**Description:** A container data structure
+**Description:** A data container structure
 
-**Type:** `container`
+**Type:** `data`
 
 **Allowed input range:** (arbitrary string)
 
@@ -214,12 +215,9 @@ notation, similarly to the list passing notation.
 ```cf3
     vars:
 
-     "loaded1" container => readjson("myfile.json", 40000);
-     "loaded2" container => parsejson('{"key":"value"}');
-     # proposed merge syntax #1
-     "merged1" container => mergecontainer(@(loaded1), @(loaded2));
-     # proposed merge syntax #2
-     "merged2" container => { @(loaded1), @(loaded2) };
+     "loaded1" data => readjson("myfile.json", 40000);
+     "loaded2" data => parsejson('{"key":"value"}');
+     "merged1" data => mergedata(loaded1, loaded2);
      
 ```
 
@@ -264,7 +262,7 @@ The policy `constant` indicates that the variable value may not be changed.
 The policies `free` and `overridable` are synonymous, and indicated that the 
 variable's value may be changed.
 
-Containers can only have policy `constant`.
+`data` variables (data containers) can only have policy `constant`.
 
 The policy `ifdefined` applies only to lists and implies that unexpanded or 
 undefined lists are dropped. The default behavior is otherwise to retain this 

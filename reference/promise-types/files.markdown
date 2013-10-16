@@ -1773,7 +1773,9 @@ For example:
 The Mustache template format works differently.  When you specify
 `template_method` to be `mustache`, none of the variables or classes
 in the promise's context will come through.  Instead, you pass a
-`container` to the promise's `template_data` attribute.
+`data` variable (a "data container") to the promise's `template_data`
+attribute.  You can use `mergedata`, `readjson`, and `parsejson` to
+generate `data` variables.
 
 The full specification for Mustache templates is at http://mustache.github.io/
 
@@ -1808,7 +1810,7 @@ bundle agent test_mustache
 }
 ```
 
-Simply, the container's top-level keys will be used.  So this template
+Simply, the data container's top-level keys will be used.  So this template
 (saved in `test_mustache.cf.mustache` if you follow the example):
 
 {% raw %}
@@ -1837,7 +1839,7 @@ The boolean is false
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012).  Mustache templates were introduced in 3.6.0.
 
-**See also:** `template_method`, `template_data`
+**See also:** `template_method`, `template_data`, `readjson`, `parsejson`, `mergedata`, `data`
 
 ### edit_xml
 
