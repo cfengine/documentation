@@ -89,7 +89,7 @@ access:
 
   policy_hub::
 
-  "collect call"
+  "collect_calls"
           comment => "Grant access to cfengine client to request the collection of its reports",
     resource_type => "query",
             admit => { "10.1.2.*" };
