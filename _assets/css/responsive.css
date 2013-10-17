@@ -1,0 +1,112 @@
+/*
+    ==========================================================================
+        Media Queries
+    ==========================================================================
+*/
+@media only screen and (min-width: 320px) {
+    #top_form {
+        width: 100%
+    }
+
+    #top_version_wrapper,
+    .top_search_form {
+        display: inline-block;
+        width: 100%;
+    }
+
+        #top_version_wrapper select {
+            width: 100%
+        }
+
+        .top_search_form input {
+            width: 99%
+        }
+
+    /* styles for mobile only */
+
+    #top_version_wrapper,
+    .top_search_form {
+        margin-bottom: 2em
+    }
+
+    #TOCbox,
+    #moveTop {
+        display: none
+    }
+
+    #mobile_naw_wrapper {
+        display: block
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    header {
+        height: auto;
+        margin-top: 2em;
+    }
+
+    #logo {
+        float: left;
+        min-width: 244px;
+        width: 30%;
+    }
+
+    #top_form {
+        float: left;
+        padding-top: 1em;
+        text-align: right;
+        width: 70%;
+    }
+
+        #top_form select {
+            margin-right: 2em;
+            width: 140px;
+        }
+
+        #top_form input,
+        #top_form select {
+            float: right
+        }
+
+    #top_version_wrapper {
+        display: inline-block;
+        width: 140px;
+    }
+
+    .top_search_form {
+        width: 40%
+    }
+
+    #nav_wrapper {
+        background: url("../media/images/nav_bg.png") repeat-x scroll 0 0 transparent;
+        float: left;
+        width: 100%;
+    }
+
+        #nav_wrapper li {
+            background: none;
+            float: left;
+        }
+
+    #left_col {
+        width: 24%
+    }
+
+    #TOCbox,
+    #moveTop {
+        display: block
+    }
+
+        .TOCbox_Fixed,
+        #moveTop a span {
+            top: 0
+        }
+
+        #moveTop a span {
+            margin-top: 1em
+        }
+
+    #mobile_naw_wrapper {
+        display: none
+    }
+}
