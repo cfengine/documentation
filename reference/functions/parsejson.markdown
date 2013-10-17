@@ -10,7 +10,7 @@ tags: [reference, io functions, functions, parsejson, json, container]
 [%CFEngine_function_prototype(string)%]
 
 **Description:** Parses JSON data directly from an inlined string and
-returns the result as a `container` variable.
+returns the result as a `data` variable.
 
 [%CFEngine_function_attributes(string)%]
 
@@ -25,9 +25,9 @@ types of quotes around a string).
 
       "loadthis" 
 
-         container =>  parsejson('
+         data =>  parsejson('
 { "key": "value" }
 ', 4000);
 ```
 
-**See also:** `readjson()`, `mergecontainer()`, and `container` documentation.
+**See also:** `readjson()`, `mergedata()`, and `data` documentation.

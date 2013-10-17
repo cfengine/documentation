@@ -76,7 +76,7 @@ is an easy way to avoid unnecessary duplication in your promises.
       vars:
           "myfiles"     => "/tmp/world.txt";
           "desired_content" string => "hello";
-          "userinfo" container => parsejson('{ "mark": 10, "jeang":20, "jonhenrik":30, "thomas":40, "eben":-1 }');
+          "userinfo" data => parsejson('{ "mark": 10, "jeang":20, "jonhenrik":30, "thomas":40, "eben":-1 }');
 
       methods:
           "Hello World"
@@ -107,7 +107,7 @@ is an easy way to avoid unnecessary duplication in your promises.
     }
 ```
 
-You can pass `slist` and `container` variables to other bundles with
+You can pass `slist` and `data` variables to other bundles with
 the `@(var)` notation.  You do NOT need to qualify the variable name
 with the current bundle name.
 
