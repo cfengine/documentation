@@ -9,9 +9,7 @@
            {% assign pageKey = tmp | removeUnvantedChars  %}
     {% endfor %}
 <div id="left_col">
-    <div id="resizable_zone">
-        <div id="nav_level1_wrapper" class="level1 scroll-pane">
-             {{ site.leftNavigation[pageKey] }}
-        </div>
+    <div id="nav_level1_wrapper" class="level1">
+         {{ site.leftNavigation[pageKey] }}
     </div>
 </div>

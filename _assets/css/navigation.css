@@ -1,105 +1,113 @@
- #nav_wrapper {
-     background: url('../media/images/nav_bg.png') repeat-x;
-     height: 53px;
-     line-height: 53px;
-     overflow: hidden;
- }
 
-    #nav_wrapper ul {
-       height: 53px;
-       margin: 0;
-       padding: 0;
+
+/*main navigation*/
+
+#nav_wrapper ul {
+    margin: 0;
+    padding: 0;
+}
+
+    #nav_wrapper ul li {
+        background: url('../media/images/nav_bg.png') repeat-x;
+        list-style: none;
     }
-        #nav_wrapper ul li {
-            float: left;
-            list-style: none;
-        }
 
-            #nav_wrapper li a,
-            #nav_wrapper li span {
-                padding: 0 2em;
-                color: #fff;
-                font-size: 1.1em;
-                font-family: DINRoundWeb, sans-serif, serif;
-                text-transform: uppercase;
-                display: block;
-                height: 53px;
-            }
+#nav_wrapper li a,
+#nav_wrapper li span {
+    color: #fff;
+    display: block;
+    font-family: DINRoundWeb, sans-serif, serif;
+    font-size: 1.1em;
+    height: 53px;
+    line-height: 53px;
+    padding: 0 2em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
 
-            #nav_wrapper li:first-child a {
-                padding-left: 0 !important;
-            }
+#nav_wrapper a:hover,
+#nav_wrapper a.navselected {
+    background: url('../media/images/sprites.png') 50% -3122px  no-repeat;
+    text-decoration: none;
+}
 
-            #nav_wrapper a {
-                text-decoration: none;
-            }
-
-            #nav_wrapper a:hover, #nav_wrapper a.navselected  {
-                background: url('../media/images/sprites.png') 50% -3122px  no-repeat;
-                text-decoration: none
-            }
-
+/*left and breadcrumbs*/
 
 #breadcrumbs ul,
-#left_col ul {
-  margin: 0 !important;
-  padding: 0 !important;
+#left_col ul,
+.sidr-inner ul {
+    margin: 0 !important;
+    padding: 0 !important;
 }
+
+    #left_col ul li,
+    .sidr-inner ul li {
+        clear: both;
+        font-size: 15px;
+        line-height: 26px;
+        padding-right: 18px;
+        text-align: left;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+        #left_col ul li a,
+        #left_col ul li span,
+        .sidr-inner ul li a,
+        .sidr-inner ul li span {
+            background-color: transparent;
+            background-image: url('../media/images/sprites.png');
+            background-position: 0 4px;
+            background-repeat: no-repeat;
+            color: #156a90;
+            text-decoration: none;
+        }
+
+        #left_col li a:hover,
+        #left_col li span,
+        .sidr-inner ul li a:hover,
+        .sidr-inner ul li span {
+            background-position: 0 -496px
+        }
 
 #breadcrumbs li,
-#left_col li {
-  list-style: none;
+#left_col li,
+.sidr-inner li {
+    list-style: none
 }
 
+#left_col .level1 li a,
+#left_col .level1 li span {
+    font-size: 1.1em;
+    line-height: 1.8;
+    padding-left: 1em;
+}
 
- #left_col ul li {
-    text-align: left;
-    font-size: 15px;
-    text-decoration: none;
-    padding-right: 18px;
-    line-height: 26px;
-    white-space: nowrap;
-    clear: both;
- }
+.sidr-inner .sidr-class-level1 li a,
+.sidr-inner .sidr-class-level1 li span {
+    font-size: 1em;
+    line-height: 1.2;
+    padding-left: 1em;
+}
 
-    #left_col ul li a,
-    #left_col ul li span {
-        text-decoration: none;
-        color: #156a90;
-        background-image: url('../media/images/sprites.png');
-        background-repeat: no-repeat;
-        background-color: transparent;
-        background-position: 0 4px;
-    }
+#left_col .level2 li a,
+#left_col .level2 li span,
+.sidr-inner .level2 li a,
+.sidr-inner .level2 li span {
+    font-size: 0.9em;
+    line-height: 1.3;
+    margin-left: 20px;
+    padding-left: 1em;
+}
 
-    #left_col li a:hover,
-    #left_col li span {
-        background-position:0 -496px;
-    }
-
-    #left_col .level1 li a,
-    #left_col .level1 li span {
-        font-size: 1.1em;
-        line-height: 1.8;
-        padding-left: 1em;
-    }
-
-    #left_col .level2 li a,
-    #left_col .level2 li span{
-        font-size: 0.9em;
-        line-height: 1.3;
-        padding-left: 1em;
-        margin-left: 20px;
-    }
-
-    #left_col li.selected span {
-        color: #F5821F
-    }
-
-
+#left_col li.selected span,
+.sidr-inner li.selected span {
+    color: #F5821F
+}
 
 #breadcrumbs_wrapper {
-    margin: 0 0;
+    margin: 0 0
 }
 
 #breadcrumbs li {
@@ -108,196 +116,280 @@
 }
 
 #breadcrumbs a {
-    text-decoration: none;
-    color: #156a90;
-    padding-bottom: 10px;
     border-bottom: 1px solid #b8d2dd;
-    font-size: 1em
+    color: #156a90;
+    font-size: 1em;
+    padding-bottom: 10px;
+    text-decoration: none;
 }
+
 #breadcrumbs a:hover {
-    border-bottom: none;
+    border-bottom: none
 }
 
 #breadcrumbs span {
+    border-bottom: 1px solid #f5821f;
     color: #222;
     font-size: 1em;
     padding-bottom: 10px;
-    border-bottom: 1px solid #f5821f;
 }
 
 #breadcrumbs i {
-    width: 7px;
-    display: block;
     background: url('../media/images/sprites.png') 0 8px no-repeat transparent;
+    display: block;
+    width: 7px;
 }
-
-
 
 #tags {
     display: block;
-    width: 100%;
     margin: 0 0 2em 0;
+    width: 100%;
 }
+
+    #tags li {
+        float: left;
+        list-style: none;
+    }
+
+        #tags li span,
+        #tags li a {
+            color: #555;
+            display: inline-block;
+            font-size: 0.8em;
+        }
+
+        #tags li a:hover {
+            text-decoration: underline
+        }
+
+        #tags li span {
+            margin: 0.5em 0 0 0;
+            padding: 5px 5px 0 0;
+        }
+
+        #tags li a {
+            background: #e5e5e5;
+            margin: 0.5em 1em 0 0;
+            padding: 5px 10px;
+            text-decoration: none;
+        }
 
     #tags ul {
         margin: 0;
         padding: 0;
     }
 
-        #tags li{
-            float: left;
-            list-style: none;
-        }
-            #tags li span,
-            #tags li a {
-                display: inline-block;
-                color: #555;
-                font-size: 0.8em;
-            }
-
-            #tags li span {
-                padding: 5px 5px 0 0;
-                margin: 0.5em 0 0 0;
-            }
-            #tags li a {
-                padding: 5px 10px;
-                margin: 0.5em 1em 0 0;
-                background: #e5e5e5;
-                text-decoration: none;
-            }
-
-            #tags li a:hover {
-                text-decoration: underline;
-            }
-
-
 #TOCbox_wrapper {
-     position: relative;
-     float: right;
-     display: none;
- }
+    display: none;
+    float: right;
+    position: relative;
+}
 
+    #TOCbox_wrapper #TOCbox:hover {
+        background: url('../media/images/sprites.png') right -990px no-repeat #000 !important;
+        border: 2px solid #000 !important;
+        color: #fff !important;
+    }
+
+        #TOCbox_wrapper #TOCbox:hover #TOCbox_list {
+            display: block !important;
+            opacity: 0.9;
+        }
 
 #TOCbox {
-     background: url('../media/images/sprites.png') right -990px no-repeat #f6f6f6;
-     border: 2px solid #aac4d0;
-     border-radius: 5px;
-     color: #0071a6;
-     font-size: 1em;
-     height: 34px;
-     line-height: 34px;
-     padding-left: 13px;
-     padding-right: 20px;
-     margin-left: 15px;
-     width: 150px;
-     text-align: left;
-     float: right;
+    background: url('../media/images/sprites.png') right -990px no-repeat #f6f6f6;
+    border: 2px solid #aac4d0;
+    border-radius: 5px;
+    color: #0071a6;
+    float: right;
+    font-size: 1em;
+    height: 34px;
+    line-height: 34px;
+    margin-left: 15px;
+    padding-left: 13px;
+    padding-right: 20px;
+    text-align: left;
+    width: 150px;
 }
 
 #TOCbox_list {
-    position: absolute;
     background: #333333;
     border-radius: 5px;
-    padding: 15px;
-    width: 250px;
-    right: 0;
-    top: 37px;
     display: none;
     max-height: 420px;
     overflow: auto;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    top: 37px;
+    width: 250px;
 }
 
-#TOCbox_wrapper:hover #TOCbox_list {
-    display: block !important;
-    opacity: 0.9
-}
+    #TOCbox_list .link_h1 a,
+    #TOCbox_list_mobile .sidr-class-link_h1 a {
+        color: #F5821F
+    }
 
-#TOCbox_wrapper:hover #TOCbox {
-    color: #fff !important;
-    border: 2px solid #000 !important;
-    background: url('../media/images/sprites.png') right -990px no-repeat #000 !important;
-}
+    #TOCbox_list .link_h1 a:after,
+    #TOCbox_list_mobile .sidr-class-link_h1 a:after {
+        clear: both;
+        content: "↑";
+    }
 
-#TOCbox_list ul {
-    margin: 0;
-    padding: 0;
-}
+    #TOCbox_list .link_h3,
+    #TOCbox_list_mobile .sidr-class-link_h3 {
+        margin-left: 1em
+    }
 
-#TOCbox_list li {
-    list-style: none;
-    line-height: 1.6;
-}
-#TOCbox_list li a {
-    color: #fff;
-    font-size: 1em;
-    text-decoration: none;
-}
-#TOCbox_list li a:hover {
-    text-decoration: underline;
-}
+    #TOCbox_list .link_h4,
+    #TOCbox_list_mobile .sidr-class-link_h4 {
+        margin-left: 2em
+    }
 
-#TOCbox_list .link_h1 a {
-    color: #F5821F;
-}
+    #TOCbox_list li,
+    #TOCbox_list_mobile li {
+        line-height: 1.6;
+        list-style: none !important;
+    }
 
-#TOCbox_list .link_h1 a:after
-{
-    content: "↑";
-    clear: both;
-}
+        #TOCbox_list li a,
+        #TOCbox_list_mobile li a {
+            background: none;
+            font-size: 1em;
+            text-decoration: none;
+        }
 
-#TOCbox_list .link_h3 {
-    margin-left: 1em;
-}
+        #TOCbox_list li a:hover,
+        #TOCbox_list_mobile li a:hover {
+            text-decoration: underline
+        }
 
-#TOCbox_list .link_h4 {
-    margin-left: 2em;
-}
+        #TOCbox_list li a {
+            color: #fff
+        }
+
+    #TOCbox_list ul,
+    #TOCbox_list_mobile ul {
+        margin: 0;
+        padding: 0;
+    }
+
 /*on scroll - fix position*/
+
 .TOCbox_Fixed {
-    position: fixed !important;
-    top:0;
-    right:0;
     opacity: 0.7;
+    position: fixed !important;
+    right: 0;
 }
 
 .TOCbox_Fixed:hover {
-    opacity: 0.8;
+    opacity: 0.8
 }
 
 #moveTop {
     bottom: 0;
+    display: none;
     left: 0;
     opacity: 0.3;
     position: fixed;
     top: 0;
     width: 40px;
-    display:none;
 }
 
-#moveTop a {
-    display: block;
-    width: 40px;
+    #moveTop a {
+        display: block;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        width: 40px;
+    }
+
+    #moveTop a:hover {
+        background: #ccc;
+        text-decoration: underline;
+    }
+
+        #moveTop a:hover span {
+            background-color: #eee;
+            opacity: 1;
+        }
+
+    #moveTop a span {
+        background-color: #bbb;
+        border-radius: 50%;
+        display: block;
+        font-size: 1em;
+        height: 25px;
+        margin-left: 7px;
+        margin-top: 1em;
+        opacity: 0.5;
+        position: fixed;
+        width: 25px;
+    }
+
+#mobile_naw_wrapper {
+    background: #036990;
+    bottom: 0;
+    opacity: 0.8;
+    padding: 0.5em 0;
+    position: fixed;
+    width: 100%;
+}
+
+    #mobile_naw_wrapper a {
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    #mobile_naw_wrapper a:hover {
+        background: #000;
+        border: 2px solid #000;
+    }
+
+#mobile_links table {
+    width: 100%
+}
+
+#mobile_links table,
+#mobile_links td {
+    border: none;
+    padding: 0;
+}
+
+#mobile_left {
+    text-align: left
+}
+
+#mobile_center {
+    text-align: center
+}
+
+#mobile_right {
+    text-align: right
+}
+
+#mobile_left_menu,
+#mobile_go_top,
+#mobile_right_menu {
+    background: #F6F6F6;
+    border: 2px solid #AAC4D0;
+    border-radius: 5px 5px 5px 5px;
+    color: #0071A6;
+    font-size: 0.7em;
+    height: 1.2em;
+    line-height: 1.2em;
+    padding: 5px;
     text-align: center;
-    height: 100%;
-    text-decoration: none;
-}
-#moveTop a:hover {
-    background: #ccc;
-    text-decoration: underline;
-}
-#moveTop a span {
-    font-size: 1em;
-    margin-top: 1em;
-    display: inline-block;
-    border-radius: 50%;
-    background-color: #bbb;
-    width: 25px;
-    height: 25px;
-    opacity: 0.5
 }
 
-#moveTop a:hover span {
-    opacity: 1;
-    background-color: #eee;
+#mobile_left_menu {
+    width: 60px
+}
+
+#mobile_go_top {
+    width: 60px
+}
+
+#mobile_right_menu {
+    width: 92px
 }
