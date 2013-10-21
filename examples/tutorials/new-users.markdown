@@ -38,7 +38,7 @@ This document includes the following:
 
 [Add some more useful promises][Up and Running#Add some more useful promises]
 
-[Commands for controlling CFEngine][Up and Running#Add some more useful promises]
+[Commands for controlling CFEngine][Up and Running#Commands for controlling CFEngine]
 
 [CFEngine official resources][Up and Running#CFEngine official resources]
 
@@ -88,7 +88,7 @@ Decide on a RHEL or Debian system that will act as your CFEngine **server**, and
 **IMPORTANT!**
 You will likely see a message that reads:
 
-*Policy is not found in /var/cfengine/inputs, not starting CFEngine*
+_Policy is not found in /var/cfengine/inputs, not starting CFEngine_
 
 This is fine. No worries for the time being.
 
@@ -195,7 +195,7 @@ Configure **/var/cfengine/masterfiles/update.cf**: This file controls what files
 **Tip:** failsafe.cf is a safety mechanism: If **update.cf** somehow becomes damaged, CFEngine agents know to fall back to failsafe.cf. After you fix update.cf, CFEngine then begins working from update.cf again.
 
 
-Two separate sections will be updated in update.cf: **body file_select u_input_files** and **body copy_from u_rcp()**. Take extra care to edit the correct sections, and pay close attention to quotes, commas, brackets, and semicolons. 
+Two separate sections will be updated in update.cf: **body file&#95;select u&#95;input&#95;files** and **body copy&#95;from u&#95;rcp()**. Take extra care to edit the correct sections, and pay close attention to quotes, commas, brackets, and semicolons. 
 
 **update.cf**
 
@@ -522,7 +522,7 @@ insert_lines:                                                  # <17>
 
 **Point by Point:**
 
-<1> The **a01_say_hello** bundle is called by **promises.cf**, by way of the **z01PromiseSetup.cf** file we created. Recall that we specified **a01_say_hello** within the **z01_promise_setup** bundle.
+<1> The **a01&#95;say&#95;hello** bundle is called by **promises.cf**, by way of the **z01PromiseSetup.cf** file we created. Recall that we specified **a01&#95;say&#95;hello** within the **z01&#95;promise&#95;setup** bundle.
 
 <2> CFEngine bundles can have a **methods** section. It is used to call other bundles.
 
@@ -534,7 +534,7 @@ insert_lines:                                                  # <17>
 
 <6> The expanded value of **$(myfile)** is **/tmp/helloFromCfengine.txt**. This is the file we will be editing.
 
-<7> The **edit_line** directive says to call bundle **a01_edit**.
+<7> The ```edit_line``` directive says to call bundle **a01_edit**.
 
 <8> This directive says to empty the file before editing it.
 
@@ -546,17 +546,19 @@ insert_lines:                                                  # <17>
 
 <12> Remember when we set up a mailto address in the **controls/cf_execd.cf** server configuration? The **reports** section utilizes that address to send an email on anything we report about here. (It also logs a message, via syslog.)
 
-<13> We are checking the **make_some_noise** class. If it's set to **true**, we generate the report (which gets emailed and logged). If it's set to **false**, we don't.
+<13> We are checking the **make&#95;some&#95;noise** class. If it's set to **true**, we generate the report (which gets emailed and logged). If it's set to **false**, we don't.
 
-<14> This value is the message we report. The **$(this.promise_filename)** is a special CFEngine variable. The **$(this)** variables are enumerated by a URL at the end of this primer.
+<14> This value is the message we report. The **$(this.promise&#95;filename)** is a special CFEngine variable. The **$(this)** variables are enumerated by a URL at the end of this primer.
 
-<15> Another bundle, this time of type **edit_line**.
+<15> Another bundle, this time of type **edit&#95;line**.
 
 <16> We define a variable, and assign it some text, including a special CFEngine variable called **$(sys.fqhost)**, which contains the system's fully-qualified hostname. The **$(sys)** variables are enumerated by a URL at the end of this primer.
 
-<17> The **edit_line** bundles can have an **insert_lines** section. As you can probably guess, they insert into the file the text we specify.
+<17> The **edit&#95;line** bundles can have an **insert&#95;lines** section. As you can probably guess, they insert into the file the text we specify.
 
 [Back to top of page.][Up and Running#Overview] 
+
+
 
 ## Set up a global classes promise
 
@@ -782,7 +784,7 @@ files:
 
 <2> Notice how we have specified a path under the **inputs** directory? This is because agents use the **/var/cfengine/inputs** directory, NOT **/var/cfengine/masterfiles**!
 
-<3> Here is something new and significant. This is how we are going to manage almost all configuration files in this primer. We create a template within **myTemplates**, and we use the **edit_line** and **expand_template** directive to populate it on agent systems. In this case, **/var/cfengine/inputs/myTemplates/motd.txt** will be created as **/tmp/motd** on agent systems.
+<3> Here is something new and significant. This is how we are going to manage almost all configuration files in this primer. We create a template within **myTemplates**, and we use the **edit&#95;line** and **expand&#95;template** directive to populate it on agent systems. In this case, **/var/cfengine/inputs/myTemplates/motd.txt** will be created as **/tmp/motd** on agent systems.
 
 
 **Remember:** We create CFEngine server promise files within **/var/cfengine/masterfiles**. The CFEngine agents consume those files within **/var/cfengine/inputs**.
@@ -941,9 +943,9 @@ reports:
 
 <3> The **handle** directive is used to identify this part of the promise to later parts of the promise. We can handle flow control this way.
 
-<4> The **depends_on** directive works hand-in-hand with the earlier **handle** directive. It means that this part of the promise will only run if **b23_create_bazdir** has already successfully completed. The convergent nature of CFEngine means this may take several passes of the promise file for it to complete.
+<4> The **depends&#95;on** directive works hand-in-hand with the earlier **handle** directive. It means that this part of the promise will only run if **b23&#95;create&#95;bazdir** has already successfully completed. The convergent nature of CFEngine means this may take several passes of the promise file for it to complete.
 
-<5> Our **edit_line** and **expand_template** combo again. Manage your config files this way. It is reliable and easy to understand from a sysadmin perspective.
+<5> Our **edit&#95;line** and **expand&#95;template** combo again. Manage your config files this way. It is reliable and easy to understand from a sysadmin perspective.
 
 <6> CFEngine bundles can have a **commands** section which can issue commands directly to the system's shell. In CFEngine culture, these are to be used sparingly. But a service restart is a good candidate for appropriate use.
 
@@ -991,7 +993,7 @@ files:
 
 **Point by Point:**
 
-<1> Another nice **classes** example. Here, we are testing whether the agent system is a Debian (of any version) OS, and is also in the **my_mongo_hosts** class we defined in **z02GlobalClasses.cf**. The dot '.' operator means AND in this context.
+<1> Another nice **classes** example. Here, we are testing whether the agent system is a Debian (of any version) OS, and is also in the **my&#95;mongo&#95;hosts** class we defined in **z02GlobalClasses.cf**. The dot '.' operator means AND in this context.
 
 <2> This is a different type of variable naming than we are accustomed to seeing. Suffice it to say, it allows us to add multiple name/value pairs to the **$(group)** variable. It acts like an associative array, or hash.
 
@@ -1002,7 +1004,7 @@ files:
 <5> Insert the group[] entries into **/etc/group**.
 
 
-**Tip:** We specify **b31_run.group**, and not **$(b31_run.group)**. That's not a typo; it's just the way we qualify this type of variable. Try to not think about it too hard (until you are ready to dig deeper into CFEngine).
+**Tip:** We specify **b31&#95;run.group**, and not **$(b31&#95;run.group)**. That's not a typo; it's just the way we qualify this type of variable. Try to not think about it too hard (until you are ready to dig deeper into CFEngine).
 
 
 **Note:** Update **myPromises/z01PromiseSetup.cf** to include this promise.
@@ -1078,7 +1080,7 @@ files:
 
 <5> Insert the shadow[] entries into **/etc/shadow**.
 
-<6> Only run this part of the promise after **b32_create_shadow_entry** has already completed.
+<6> Only run this part of the promise after **b32&#95;create&#95;shadow&#95;entry** has already completed.
 
 <7> Insert pwd[] entries into **/etc/passwd**.
 
@@ -1147,7 +1149,7 @@ reports:
 
 **Point by Point:**
 
-<1> A more advances **classes** test from which to learn. In this case, we logically group '()' two classes together, and utilize the negation '!' operator. So, if the agent is in our defined **my_mongo_hosts** OR in our defined **my_web_hosts** AND it's not a Debian host, it evaluates to true, and we run the **b41_run** bundle.
+<1> A more advances **classes** test from which to learn. In this case, we logically group '()' two classes together, and utilize the negation '!' operator. So, if the agent is in our defined **my&#95;mongo&#95;hosts** OR in our defined **my&#95;web&#95;hosts** AND it's not a Debian host, it evaluates to true, and we run the **b41&#95;run** bundle.
 
 <2> The **fileexists()** function, as you can probably deduce, checks for the presence of a file on the filesystem. There are a number of CFEngine built-in functions which are enumerated in a URL in this primer's appendix.
 
