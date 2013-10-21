@@ -8,7 +8,11 @@ alias: examples-tutorials.html
 tags: [Examples, Tutorials]
 ---
 
-Familarize yourself with CFEngine by following these tutorials. 
+Familarize yourself with CFEngine by following these tutorials.
+
+#### [Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]
+
+This getting-started primer is perfect for new users.  
 
 ### [Create a standalone policy (Hello World).][Hello World]
 
