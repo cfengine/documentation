@@ -24,11 +24,11 @@ This document includes the following:
 
 [Install and configure the CFEngine server][Up and Running#Install and configure the CFEngine server]
 
-[Set up your site's promise management files][Up and Running#Set up your site's promise management files]
+[Set up your promise management files][Up and Running#Set up your promise management files]
 
 [Set up your first promise][Up and Running#Set up your first promise]
 
-[Start your CFEngine server][Up and Running#Start your CFEngine server]
+[Start your CFEngine server][Up and Running#Start your CFEngine Server]
 
 [Install and configure CFEngine agent systems][Up and Running#Install and configure CFEngine agent systems]
 
@@ -38,7 +38,7 @@ This document includes the following:
 
 [Add some more useful promises][Up and Running#Add some more useful promises]
 
-[Commands for controlling CFEngine][Up and Running#Commands for controlling CFEngine]
+[Commands for controlling CFEngine][Up and Running#Add some more useful promises]
 
 [CFEngine official resources][Up and Running#CFEngine official resources]
 
@@ -281,7 +281,7 @@ bundlesequence          => {
 
 [Back to top of page.][Up and Running#Overview] 
 
-## Set up your site's promise management files
+## Set up your promise management files
 
 
 Within the **/var/cfengine/masterfiles/myPromises** directory, create a skeleton promise file, and name it **z01PromiseSetup.cf**. (Doing so will make adding new promises in the future a lot easier.)
@@ -305,7 +305,7 @@ vars:
 ```
 
 
-**The bottom line:** From this point forward, we will edit this file (and not 'promises.cf') to add new promises.
+**The bottom line:** From this point forward, we will edit this file (and not **promises.cf**) to add new promises.
 
 [Back to top of page.][Up and Running#Overview] 
 
@@ -408,7 +408,7 @@ If you see any error output, carefully review the messages for line numbers that
 
 The server is configured and ready to start. We will step through a couple one-time commands to get it going.
 
-```cf3
+```
   # cp -fr /var/cfengine/masterfiles/* /var/cfengine/inputs/
 
   # /etc/init.d/cfengine3 start
@@ -425,7 +425,7 @@ The server is configured and ready to start. We will step through a couple one-t
 
 Assuming you wish for the CFEngine server to manage itself (i.e. by running a CFEngine agent daemon, in addition to the server daemon), also run the following command.
 
-```cf3
+```
   # cf-agent --bootstrap cfmaster.me.local
 ```
 
@@ -714,8 +714,8 @@ packages:                                             # <2>
 Update **/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf** as shown.
 
 **.z01PromiseSetup.cf**
-```cf3
 
+```cf3
 bundle common z01_promise_setup
 {
 vars:

@@ -11,6 +11,8 @@ Download, install, and evaluate
 [CFEngine Enterprise in 15 minutes][evaluate cfengine]
 with ready-made VirtualBox VMs.
 
+[Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]. This getting-started primer is perfect for new users. 
+
 Download [Community](https://cfengine.com/community).
 
 Install [CFEngine][Installing CFEngine].
