@@ -399,7 +399,7 @@ Make sure you don't have any typos up to this point.
 
 ```
   # cf-promises -f /var/cfengine/masterfiles/promises.cf
-  ```
+```
 
 If you see any error output, carefully review the messages for line numbers that are causing the problem. Reread earlier steps in this primer, and try to fix them.
 
@@ -1173,7 +1173,7 @@ So you've just updated your promises, and you want to make them immediately avai
 
 ```
   # cf-promises -f /var/cfengine/masterfiles/promises.cf
-  ```
+```
 
 If there is a syntactical problem with your promises, CFEngine will complain here and point you to a file and line number. Do not proceed until you've fixed any problems.
 
@@ -1181,7 +1181,7 @@ If there is a syntactical problem with your promises, CFEngine will complain her
 
 ```
   # cf-agent -IKf /var/cfengine/masterfiles/update.cf
-  ```
+```
 
 That's that. Now observe one of your agents, or speed things up there too..
 
@@ -1193,7 +1193,7 @@ That's that. Now observe one of your agents, or speed things up there too..
 
 ```
   # cf-agent -IKf /var/cfengine/inputs/update.cf
-  ```
+```
 
 Remember, this is only if you wish to speed things up and not wait for CFEngine to take care of it naturally via its daemon processes. Notice how we are using the **inputs** directory here. Agents care only about **inputs**, not **masterfiles**.
 
@@ -1201,7 +1201,7 @@ Remember, this is only if you wish to speed things up and not wait for CFEngine 
 
 ```
   # cf-agent -IKf /var/cfengine/inputs/promises.cf
-  ```
+```
 
 That's that.
 
@@ -1213,7 +1213,7 @@ That's that.
 
 ```
   # cf-agent -vnb *b21_manage_config*
-  ```
+```
 
 #### Print the percentage of promises currently kept
 
