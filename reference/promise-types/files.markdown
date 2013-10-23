@@ -2589,6 +2589,8 @@ The mode string may be symbolic or numerical, like `chmod`.
      }
 ```
 
+**See also:** `rxdirs`
+
 **Notes:**
 This is ignored on Windows, as the permission model uses ACLs.
 
@@ -2627,7 +2629,7 @@ on Windows (such as the Administrators group).
 is set
 
 Default behavior is to set the x flag on directories automatically if
-the r flag is specified.
+the r flag is specified in `mode`.
 
 **Type:** [`boolean`][boolean]
 
@@ -2639,6 +2641,8 @@ the r flag is specified.
      rxdirs => "false";
      }
 ```
+
+**See also:** `mode`
 
 **Notes:**
 This is ignored on Windows, as the permission model uses ACLs.
