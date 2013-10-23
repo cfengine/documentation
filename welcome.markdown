@@ -24,6 +24,8 @@ This documentation is valid for **all versions** of CFEngine except where noted.
 
 ### Quick Links
 
+[Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]. This getting-started primer is perfect for new users. 
+
 [Get Started][Getting Started] with downloads and installation instructions. 
 
 Learn [what's new][New in CFEngine] in CFEngine 3.5.
