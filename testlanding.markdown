@@ -4,7 +4,7 @@ title: test
 categories: [CFEngine 3.6]
 published: true
 sorting: 1
-alias: index.html
+alias: test-landing.html
 ---
 
 
