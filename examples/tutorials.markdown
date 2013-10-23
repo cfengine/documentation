@@ -10,6 +10,10 @@ tags: [Examples, Tutorials]
 
 Familarize yourself with CFEngine by following these tutorials. 
 
+#### [Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]
+
+This getting-started primer is perfect for new users.  
+
 ### [Create a standalone policy (Hello World).][Hello World]
 
 In this tutorial, you will perform the following:
