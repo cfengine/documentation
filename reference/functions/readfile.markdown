@@ -22,3 +22,9 @@ tags: [reference, io functions, functions, readfile]
         string => readfile( "/home/mark/tmp/testfile" , "33" );
 ```
 
+**Notes:**
+- At the moment, only the first 4096 bytes of the file can be retrieved.
+- To reliably read files located within /proc or /sys directories,
+`maxsize` has to be set to `0`.
+
+**History:** 4096 bytes limit and special `0` value were introduced in 3.6.0
