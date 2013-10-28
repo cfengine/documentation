@@ -239,6 +239,15 @@ In CFEngine Enterprise, a list of promises, with handles and comments, that were
 CFEngine Enterprise uses this directory as a default place for outputting
 reports.
 
+* `state/cf_procs`
+A cache of the process table. This is useful for `measurement` promises about processes.
+
+* `state/cf_rootprocs`
+A cache of the process table of processes owned by the root user. This is useful for `measurement` promises about processes.
+
+* `state/cf_otherprocs`
+A cache of the process table for processes not owned by the root user. This is useful for `measurement` promises about processes.
+
 * `state/file_changes.log`
 
 A time-stamped log of which files have experienced content changes since
