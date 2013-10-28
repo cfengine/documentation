@@ -23,6 +23,9 @@ deep.
 * `[a-z]` matches any letter from `a` to `z`
 * `{x,y,anything}` will match `x` or `y` or `anything`.
 
+This function, used together with the `bundlesmatching` function,
+allows you to do dynamic inputs and a dynamic bundle call chain.
+
 
 **Example:**  
 
@@ -42,3 +45,5 @@ deep.
     }
 
 ```
+
+**See also:** [`bundlesmatching()`][bundlesmatching].
