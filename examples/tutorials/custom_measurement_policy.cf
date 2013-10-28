@@ -1,0 +1,75 @@
+#BEGIN_DEFINE_NEW_MEASUREMENT
+bundle monitor cfengine_components
+# @brief Measure interesting metrics about cfengine components
+{
+  vars:
+
+#@ Different platforms have differnt ps output, and therefore require
+#@ different regular expressions to match process info. If you are measuring a
+#@ process from a different platform reference the process output format used
+#@ in `/var/cfengine/state/cf_procs`.
+
+    linux::
+      "regex_vsz" string => "root\s+[0-9]+\s+[0-9]+\s+[0-9]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*";
+      "regex_rss" string => "root\s+[0-9]+\s+[0-9]+\s+[0-9]+\s+[0-9.]+\s+[0-9.]+\s+[0-9]+\s+[0-20-]+\s+([0-9]+).*";
+
+  measurements:
+    "/var/cfengine/state/cf_procs"
+      handle => "cf_serverd_vsz",
+      comment => "Tracking the memory consumption of a process can help us identify possible memory leaks",
+      stream_type => "file",
+      data_type => "int",
+      history_type => "weekly",
+      units => "kB",
+      match_value => line_match_value(".*cf-serverd.*",
+                                "$(regex_vsz)");
+
+#@ `/var/cfengine/state/cf_procs` is a cached state of the process discoved on
+#@ the host. Using this cache avoids unnecessary resampling.
+#@ handle - uniquely identifying handle, will be used to identify the measurement from mon.* variables. 
+#@ stream_type defines the source of the data as a file (as opposed to pipe for an executed commands output).
+#@ data_type defines the type of value being collected. In this case we are collecting an integer.
+#@ history_type defines how the data can be seen over a time series.
+#@ units is an arbitrary string that describes the values units. It is used to
+#@ to label visualizations and as general documentation of the value.
+#@ match_value defines the details for selecting the the specific value to be
+#@ measured from the source. In this example we are using the `match_value` body
+#@ `line_match_value` from the standard library to extract the virtual memory
+#@ size of the cf-serverd process.  
+
+
+    "/var/cfengine/state/cf_procs"
+      handle => "cf_serverd_rss",
+      comment => "Tracking the memory consumption of a process can help us identify possible memory leaks",
+      stream_type => "file",
+      data_type => "int",
+      history_type => "weekly",
+      units => "kB",
+      match_value => line_match_value(".*cf-serverd.*",
+                                "$(regex_rss)");
+
+}
+#END_DEFINE_NEW_MEASUREMNT
+
+#BEGIN_REPORT_MONITORED_VALUE
+bundle agent report_mon_cfengine_components
+# @brief Report on measured values for cfengine components
+{
+  classes:
+    "cf_serverd_vsz_threshold_crossed" expression => isgreaterthan("$(mon.value_cf_serverd_vsz)", "0");
+
+  reports:
+    "Last mon.cf_serverd_vsz: $(mon.value_cf_serverd_vsz)";
+    "Average mon.cf_serverd_vsz: $(mon.av_cf_serverd_vsz)";
+    "Standard deviation mon.cf_serverd_vsz: $(mon.dev_cf_serverd_vsz)";
+
+#@ Several metrics are available for each value tracked by `cf-monitord`.
+
+    "Last mon.cf_serverd_rss: $(mon.value_cf_serverd_rss)";
+    "Average mon.cf_serverd_rss: $(mon.av_cf_serverd_rss)";
+    "Standard deviation mon.cf_serverd_rss: $(mon.dev_cf_serverd_rss)";
+
+    cf_serverd_vsz_threshold_crossed::
+      "The measured value $(mon.value_cf_serverd_vsz) is greater than 0";
+}
+#END_REPORT_MONITORED_VALUE
