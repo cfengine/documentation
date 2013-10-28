@@ -157,6 +157,15 @@ Example:
     }
 ```
 
+## Naming Conventions
+### Internal variables & classes
+
+Variables and classes that have no centralized reporting value are considered
+"internal". By convention internal variables and classes should be prefix with
+an underscore "_". This convention is used by the policy framework to exclude
+collection of any prefixed variables and classes when polled by the `cf-hub`
+component.
+
 ## Automatic reindentation
 
 You can run `contrib/reindent.pl FILE1.cf FILE2.c FILE3.h` to reindent files,
