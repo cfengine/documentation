@@ -18,18 +18,15 @@ generic interface. The end-result is to either generate a periodic time
 series, like the above mentioned values, or to log the results to 
 custom-defined reports.
 
-```cf3
-    bundle monitor self_watch
-    {
-    measurements:
-```
-
 Promises of type `measurement` are written just like all other promises within 
 a bundle destined for the agent concerned, in this case `monitor`. However, it 
 is not necessary to add them to the `bundlesequence`, because `cf-monitord` 
 executes all bundles of type `monitor`.
 
 ```cf3
+    bundle monitor self_watch
+    {
+    measurements:
       # Follow a special process over time
       # using CFEngine's process cache to avoid resampling
 
@@ -56,6 +53,7 @@ It is important to specify a promise `handle` for measurement promises, as the n
 ```cf3
     bundle monitor watch_diskspace
     {
+     measurements:
       # Discover disk device information
       "/bin/df"
 
