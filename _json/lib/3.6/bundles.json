@@ -628,7 +628,7 @@
                     "value": [
                       {
                         "type": "string",
-                        "value": "files.cf"
+                        "value": "$(sys.local_libdir)/files.cf"
                       }
                     ]
                   }

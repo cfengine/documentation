@@ -2349,14 +2349,14 @@
                       ]
                     },
                     {
-                      "line": 396,
+                      "line": 395,
                       "promiser": "$(default[pattern])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 398,
+                          "line": 397,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2364,7 +2364,7 @@
                           }
                         },
                         {
-                          "line": 399,
+                          "line": 398,
                           "lval": "restart_class",
                           "rval": {
                             "type": "string",
@@ -2372,7 +2372,7 @@
                           }
                         },
                         {
-                          "line": 400,
+                          "line": 399,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -2399,30 +2399,30 @@
                   "name": "stop",
                   "promises": [
                     {
-                      "line": 404,
+                      "line": 403,
                       "promiser": "$(pattern[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 406,
+                          "line": 405,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
                             "value": "Verify that the service does not appear in the process"
+                          }
+                        },
+                        {
+                          "line": 406,
+                          "lval": "process_stop",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(stopcommand[$(service)])"
                           }
                         },
                         {
                           "line": 407,
-                          "lval": "process_stop",
-                          "rval": {
-                            "type": "string",
-                            "value": "$(stopcommand[$(service)])"
-                          }
-                        },
-                        {
-                          "line": 408,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -2439,7 +2439,7 @@
                           }
                         },
                         {
-                          "line": 410,
+                          "line": 409,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -2471,14 +2471,14 @@
                       ]
                     },
                     {
-                      "line": 413,
+                      "line": 411,
                       "promiser": "$(default[pattern])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 415,
+                          "line": 413,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2486,32 +2486,32 @@
                           }
                         },
                         {
-                          "line": 416,
+                          "line": 414,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
                             "value": "$(stopcommand[$(service)])"
+                          }
+                        },
+                        {
+                          "line": 415,
+                          "lval": "signals",
+                          "rval": {
+                            "type": "list",
+                            "value": [
+                              {
+                                "type": "string",
+                                "value": "term"
+                              },
+                              {
+                                "type": "string",
+                                "value": "kill"
+                              }
+                            ]
                           }
                         },
                         {
                           "line": 417,
-                          "lval": "signals",
-                          "rval": {
-                            "type": "list",
-                            "value": [
-                              {
-                                "type": "string",
-                                "value": "term"
-                              },
-                              {
-                                "type": "string",
-                                "value": "kill"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "line": 419,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -2549,14 +2549,14 @@
                       ]
                     },
                     {
-                      "line": 422,
+                      "line": 419,
                       "promiser": "$(pattern[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 424,
+                          "line": 421,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2564,7 +2564,7 @@
                           }
                         },
                         {
-                          "line": 425,
+                          "line": 422,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
@@ -2572,7 +2572,7 @@
                           }
                         },
                         {
-                          "line": 426,
+                          "line": 423,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -2589,7 +2589,7 @@
                           }
                         },
                         {
-                          "line": 430,
+                          "line": 427,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -2641,14 +2641,14 @@
                       ]
                     },
                     {
-                      "line": 433,
+                      "line": 429,
                       "promiser": "$(pattern[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 435,
+                          "line": 431,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2656,32 +2656,32 @@
                           }
                         },
                         {
-                          "line": 436,
+                          "line": 432,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
                             "value": "$(default[prefix][$(inits)])$(baseinit[$(service)]) $(state)"
+                          }
+                        },
+                        {
+                          "line": 433,
+                          "lval": "signals",
+                          "rval": {
+                            "type": "list",
+                            "value": [
+                              {
+                                "type": "string",
+                                "value": "term"
+                              },
+                              {
+                                "type": "string",
+                                "value": "kill"
+                              }
+                            ]
                           }
                         },
                         {
                           "line": 437,
-                          "lval": "signals",
-                          "rval": {
-                            "type": "list",
-                            "value": [
-                              {
-                                "type": "string",
-                                "value": "term"
-                              },
-                              {
-                                "type": "string",
-                                "value": "kill"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "line": 441,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -2739,14 +2739,14 @@
                       ]
                     },
                     {
-                      "line": 444,
+                      "line": 440,
                       "promiser": "$(default[pattern])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 446,
+                          "line": 442,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2754,7 +2754,7 @@
                           }
                         },
                         {
-                          "line": 447,
+                          "line": 443,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
@@ -2762,7 +2762,7 @@
                           }
                         },
                         {
-                          "line": 448,
+                          "line": 444,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -2779,7 +2779,7 @@
                           }
                         },
                         {
-                          "line": 452,
+                          "line": 448,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -2837,14 +2837,14 @@
                       ]
                     },
                     {
-                      "line": 455,
+                      "line": 450,
                       "promiser": "$(default[pattern])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 457,
+                          "line": 452,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2852,7 +2852,7 @@
                           }
                         },
                         {
-                          "line": 458,
+                          "line": 453,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
@@ -2860,7 +2860,7 @@
                           }
                         },
                         {
-                          "line": 459,
+                          "line": 454,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -2877,7 +2877,7 @@
                           }
                         },
                         {
-                          "line": 463,
+                          "line": 458,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -2941,14 +2941,14 @@
                       ]
                     },
                     {
-                      "line": 466,
+                      "line": 461,
                       "promiser": "$(pattern[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 468,
+                          "line": 463,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2956,7 +2956,7 @@
                           }
                         },
                         {
-                          "line": 469,
+                          "line": 464,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
@@ -2964,7 +2964,7 @@
                           }
                         },
                         {
-                          "line": 470,
+                          "line": 465,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -2981,7 +2981,7 @@
                           }
                         },
                         {
-                          "line": 474,
+                          "line": 469,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3039,14 +3039,14 @@
                       ]
                     },
                     {
-                      "line": 477,
+                      "line": 471,
                       "promiser": "$(pattern[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 479,
+                          "line": 473,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3054,7 +3054,7 @@
                           }
                         },
                         {
-                          "line": 480,
+                          "line": 474,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
@@ -3062,7 +3062,7 @@
                           }
                         },
                         {
-                          "line": 481,
+                          "line": 475,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -3079,7 +3079,7 @@
                           }
                         },
                         {
-                          "line": 485,
+                          "line": 479,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3143,14 +3143,14 @@
                       ]
                     },
                     {
-                      "line": 488,
+                      "line": 482,
                       "promiser": "$(default[pattern])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 490,
+                          "line": 484,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3158,7 +3158,7 @@
                           }
                         },
                         {
-                          "line": 491,
+                          "line": 485,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
@@ -3166,7 +3166,7 @@
                           }
                         },
                         {
-                          "line": 492,
+                          "line": 486,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -3183,7 +3183,7 @@
                           }
                         },
                         {
-                          "line": 496,
+                          "line": 490,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3247,14 +3247,14 @@
                       ]
                     },
                     {
-                      "line": 499,
+                      "line": 492,
                       "promiser": "$(default[pattern])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 501,
+                          "line": 494,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3262,7 +3262,7 @@
                           }
                         },
                         {
-                          "line": 502,
+                          "line": 495,
                           "lval": "process_stop",
                           "rval": {
                             "type": "string",
@@ -3270,7 +3270,7 @@
                           }
                         },
                         {
-                          "line": 503,
+                          "line": 496,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -3287,7 +3287,7 @@
                           }
                         },
                         {
-                          "line": 507,
+                          "line": 500,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3361,21 +3361,21 @@
               ]
             },
             {
-              "line": 509,
+              "line": 502,
               "name": "commands",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 511,
+                      "line": 504,
                       "promiser": "$(startcommand[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 512,
+                          "line": 505,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3383,7 +3383,7 @@
                           }
                         },
                         {
-                          "line": 514,
+                          "line": 507,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3415,14 +3415,14 @@
                       ]
                     },
                     {
-                      "line": 516,
+                      "line": 509,
                       "promiser": "$(default[prefix][$(default[init])])$(baseinit[$(service)]) $(state)",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 517,
+                          "line": 510,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3430,7 +3430,7 @@
                           }
                         },
                         {
-                          "line": 521,
+                          "line": 514,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3482,14 +3482,14 @@
                       ]
                     },
                     {
-                      "line": 523,
+                      "line": 516,
                       "promiser": "$(default[prefix][$(inits)])$(baseinit[$(service)]) $(state)",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 524,
+                          "line": 517,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3497,7 +3497,7 @@
                           }
                         },
                         {
-                          "line": 528,
+                          "line": 521,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3555,14 +3555,14 @@
                       ]
                     },
                     {
-                      "line": 530,
+                      "line": 523,
                       "promiser": "$(default[cmd][$(default[init])])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 531,
+                          "line": 524,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3570,7 +3570,7 @@
                           }
                         },
                         {
-                          "line": 535,
+                          "line": 528,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3628,14 +3628,14 @@
                       ]
                     },
                     {
-                      "line": 537,
+                      "line": 530,
                       "promiser": "$(default[cmd][$(inits)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 538,
+                          "line": 531,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3643,7 +3643,7 @@
                           }
                         },
                         {
-                          "line": 542,
+                          "line": 535,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3712,14 +3712,14 @@
                   "name": "restart",
                   "promises": [
                     {
-                      "line": 545,
+                      "line": 538,
                       "promiser": "$(restartcommand[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 546,
+                          "line": 539,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3727,7 +3727,7 @@
                           }
                         },
                         {
-                          "line": 547,
+                          "line": 540,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3749,14 +3749,14 @@
                       ]
                     },
                     {
-                      "line": 550,
+                      "line": 543,
                       "promiser": "$(default[prefix][$(default[init])])$(baseinit[$(service)]) $(state)",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 551,
+                          "line": 544,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3764,7 +3764,7 @@
                           }
                         },
                         {
-                          "line": 554,
+                          "line": 547,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3806,14 +3806,14 @@
                       ]
                     },
                     {
-                      "line": 556,
+                      "line": 549,
                       "promiser": "$(default[prefix][$(inits)])$(baseinit[$(service)]) $(state)",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 557,
+                          "line": 550,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3821,7 +3821,7 @@
                           }
                         },
                         {
-                          "line": 560,
+                          "line": 553,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3869,14 +3869,14 @@
                       ]
                     },
                     {
-                      "line": 562,
+                      "line": 555,
                       "promiser": "$(default[cmd][$(default[init])])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 563,
+                          "line": 556,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3884,7 +3884,7 @@
                           }
                         },
                         {
-                          "line": 566,
+                          "line": 559,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -3932,14 +3932,14 @@
                       ]
                     },
                     {
-                      "line": 568,
+                      "line": 561,
                       "promiser": "$(default[cmd][$(inits)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 569,
+                          "line": 562,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3947,7 +3947,7 @@
                           }
                         },
                         {
-                          "line": 572,
+                          "line": 565,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4006,14 +4006,14 @@
                   "name": "reload",
                   "promises": [
                     {
-                      "line": 575,
+                      "line": 568,
                       "promiser": "$(reloadcommand[$(service)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 576,
+                          "line": 569,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -4021,7 +4021,7 @@
                           }
                         },
                         {
-                          "line": 577,
+                          "line": 570,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4043,14 +4043,14 @@
                       ]
                     },
                     {
-                      "line": 579,
+                      "line": 572,
                       "promiser": "$(default[prefix][$(default[init])])$(baseinit[$(service)]) $(state)",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 580,
+                          "line": 573,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -4058,7 +4058,7 @@
                           }
                         },
                         {
-                          "line": 583,
+                          "line": 576,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4100,14 +4100,14 @@
                       ]
                     },
                     {
-                      "line": 585,
+                      "line": 578,
                       "promiser": "$(default[prefix][$(inits)])$(baseinit[$(service)]) $(state)",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 586,
+                          "line": 579,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -4115,7 +4115,7 @@
                           }
                         },
                         {
-                          "line": 589,
+                          "line": 582,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4163,14 +4163,14 @@
                       ]
                     },
                     {
-                      "line": 591,
+                      "line": 584,
                       "promiser": "$(default[cmd][$(default[init])])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 592,
+                          "line": 585,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -4178,7 +4178,7 @@
                           }
                         },
                         {
-                          "line": 595,
+                          "line": 588,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4226,14 +4226,14 @@
                       ]
                     },
                     {
-                      "line": 597,
+                      "line": 590,
                       "promiser": "$(default[cmd][$(inits)])",
                       "promisee": [
                         "@(stakeholders[$(service)])"
                       ],
                       "attributes": [
                         {
-                          "line": 598,
+                          "line": 591,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -4241,7 +4241,7 @@
                           }
                         },
                         {
-                          "line": 601,
+                          "line": 594,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4299,18 +4299,18 @@
               ]
             },
             {
-              "line": 603,
+              "line": 596,
               "name": "reports",
               "contexts": [
                 {
                   "name": "inform_mode",
                   "promises": [
                     {
-                      "line": 605,
+                      "line": 598,
                       "promiser": "$(this.bundle): Using init system $(inits)",
                       "attributes": [
                         {
-                          "line": 606,
+                          "line": 599,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4332,11 +4332,11 @@
                       ]
                     },
                     {
-                      "line": 608,
+                      "line": 601,
                       "promiser": "$(this.bundle): No init system is set, using $(default[init])",
                       "attributes": [
                         {
-                          "line": 609,
+                          "line": 602,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -4346,11 +4346,11 @@
                       ]
                     },
                     {
-                      "line": 611,
+                      "line": 604,
                       "promiser": "$(this.bundle): The service $(service) needs to be started",
                       "attributes": [
                         {
-                          "line": 612,
+                          "line": 605,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4372,11 +4372,11 @@
                       ]
                     },
                     {
-                      "line": 614,
+                      "line": 607,
                       "promiser": "$(this.bundle): The service pattern is provided: $(pattern[$(service)])",
                       "attributes": [
                         {
-                          "line": 615,
+                          "line": 608,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4398,11 +4398,11 @@
                       ]
                     },
                     {
-                      "line": 617,
+                      "line": 610,
                       "promiser": "$(this.bundle): The default service pattern was used: $(default[pattern])",
                       "attributes": [
                         {
-                          "line": 618,
+                          "line": 611,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4424,11 +4424,11 @@
                       ]
                     },
                     {
-                      "line": 620,
+                      "line": 613,
                       "promiser": "$(this.bundle): The stopcommand is provided: $(stopcommand[$(service)])",
                       "attributes": [
                         {
-                          "line": 621,
+                          "line": 614,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4450,11 +4450,11 @@
                       ]
                     },
                     {
-                      "line": 623,
+                      "line": 616,
                       "promiser": "$(this.bundle): The stopcommand is NOT provided, using default",
                       "attributes": [
                         {
-                          "line": 624,
+                          "line": 617,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4476,11 +4476,11 @@
                       ]
                     },
                     {
-                      "line": 626,
+                      "line": 619,
                       "promiser": "$(this.bundle): The startcommand is provided: $(startcommand[$(service)])",
                       "attributes": [
                         {
-                          "line": 627,
+                          "line": 620,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4502,11 +4502,11 @@
                       ]
                     },
                     {
-                      "line": 629,
+                      "line": 622,
                       "promiser": "$(this.bundle): The startcommand is NOT provided, using default",
                       "attributes": [
                         {
-                          "line": 630,
+                          "line": 623,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4528,11 +4528,11 @@
                       ]
                     },
                     {
-                      "line": 632,
+                      "line": 625,
                       "promiser": "$(this.bundle): The restartcommand is provided: $(restartcommand[$(service)])",
                       "attributes": [
                         {
-                          "line": 633,
+                          "line": 626,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4554,11 +4554,11 @@
                       ]
                     },
                     {
-                      "line": 635,
+                      "line": 628,
                       "promiser": "$(this.bundle): The restartcommand is NOT provided, using default",
                       "attributes": [
                         {
-                          "line": 636,
+                          "line": 629,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4580,11 +4580,11 @@
                       ]
                     },
                     {
-                      "line": 638,
+                      "line": 631,
                       "promiser": "$(this.bundle): The reloadcommand is provided: $(reloadcommand[$(service)])",
                       "attributes": [
                         {
-                          "line": 639,
+                          "line": 632,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4606,11 +4606,11 @@
                       ]
                     },
                     {
-                      "line": 641,
+                      "line": 634,
                       "promiser": "$(this.bundle): The reloadcommand is NOT provided, using default",
                       "attributes": [
                         {
-                          "line": 642,
+                          "line": 635,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4632,11 +4632,11 @@
                       ]
                     },
                     {
-                      "line": 644,
+                      "line": 637,
                       "promiser": "$(this.bundle): The baseinit is provided: $(baseinit[$(service)])",
                       "attributes": [
                         {
-                          "line": 645,
+                          "line": 638,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -4658,11 +4658,11 @@
                       ]
                     },
                     {
-                      "line": 647,
+                      "line": 640,
                       "promiser": "$(this.bundle): The baseinit is NOT provided, using default",
                       "attributes": [
                         {
-                          "line": 648,
+                          "line": 641,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",

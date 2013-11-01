@@ -102,7 +102,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/storage.cf",
-          "line": 75,
+          "line": 74,
           "namespace": "default",
           "name": "nfs_p",
           "bodyType": "mount",
@@ -116,7 +116,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 77,
+                  "line": 76,
                   "lval": "mount_type",
                   "rval": {
                     "type": "string",
@@ -124,7 +124,7 @@
                   }
                 },
                 {
-                  "line": 78,
+                  "line": 77,
                   "lval": "mount_source",
                   "rval": {
                     "type": "string",
@@ -132,7 +132,7 @@
                   }
                 },
                 {
-                  "line": 79,
+                  "line": 78,
                   "lval": "mount_server",
                   "rval": {
                     "type": "string",
@@ -140,7 +140,7 @@
                   }
                 },
                 {
-                  "line": 80,
+                  "line": 79,
                   "lval": "mount_options",
                   "rval": {
                     "type": "list",
@@ -153,7 +153,7 @@
                   }
                 },
                 {
-                  "line": 81,
+                  "line": 80,
                   "lval": "edit_fstab",
                   "rval": {
                     "type": "string",
@@ -166,7 +166,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/storage.cf",
-          "line": 86,
+          "line": 85,
           "namespace": "default",
           "name": "unmount",
           "bodyType": "mount",
@@ -176,7 +176,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 88,
+                  "line": 87,
                   "lval": "mount_type",
                   "rval": {
                     "type": "string",
@@ -184,7 +184,7 @@
                   }
                 },
                 {
-                  "line": 89,
+                  "line": 88,
                   "lval": "edit_fstab",
                   "rval": {
                     "type": "string",
@@ -192,7 +192,7 @@
                   }
                 },
                 {
-                  "line": 90,
+                  "line": 89,
                   "lval": "unmount",
                   "rval": {
                     "type": "string",
