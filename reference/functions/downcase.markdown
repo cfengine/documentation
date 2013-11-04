@@ -9,7 +9,7 @@ tags: [reference, text functions, functions, text, case, downcase]
 
 [%CFEngine_function_prototype(data)%]
 
-**Description:** Returns `data` in uppercase.
+**Description:** Returns `data` in lower case.
 
 [%CFEngine_function_attributes(data)%]
 
