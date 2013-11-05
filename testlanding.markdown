@@ -2,7 +2,7 @@
 layout: default
 title: test
 categories: [CFEngine 3.6]
-published: true
+published: false
 sorting: 1
 alias: test-landing.html
 ---
