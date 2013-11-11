@@ -129,6 +129,8 @@ CFEngine Enterprise.
 These values collected and analyzed by `cf-monitord` are transformed
 into agent variables in the `$(mon.`name`)` context.
 
+Note: There is no way for force a refresh of the monitored data.
+
 ## Control Promises
 
 Settings describing the details of the fixed behavioral promises
