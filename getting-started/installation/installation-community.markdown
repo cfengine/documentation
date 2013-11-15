@@ -17,7 +17,7 @@ The Community Edition is packaged using the following naming convention:
 
 * Debian Package: `cfengine-community_3.5.2-1_amd64.deb`
 
-Community packages can be downloaded from our [community download page][https://cfengine.com/inside/myspace].
+Community packages can be downloaded from our [community download page](https://cfengine.com/inside/myspace).
 
 ## Installation 
 
@@ -29,7 +29,7 @@ Community packages can be downloaded from our [community download page][https://
     ```
 
   Community packages are also available from our [community package
-  repositories][http://cfengine.com/cfengine-linux-distros].
+  repositories](http://cfengine.com/cfengine-linux-distros).
 
 2. Run the bootstrap command, **first** on the Policy Server, and then on each
 Host:
