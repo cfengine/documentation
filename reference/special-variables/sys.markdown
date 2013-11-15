@@ -393,6 +393,10 @@ The first two octets of the IPv4 address of the system interface named as the as
 
 The first three octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_3[le0])` or `$(ipv4_3[xr1])`.
 
+### sys.last_policy_update
+
+Timestamp when last policy change was seen by host
+
 ### sys.license_owner
 
 ```cf3
