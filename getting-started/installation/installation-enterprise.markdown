@@ -67,6 +67,8 @@ following naming convention:
 * Debian Package: `cfengine-nova_3.5.2-1_i386.deb` or
   `cfengine-nova_3.6.0-1_amd64.deb`
 
+Enterprise packages can be downloaded from the [engine room](https://cfengine.com/software).
+
 ## Installation
 
 Follow these steps to install CFEngine:
