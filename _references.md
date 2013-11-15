@@ -37,3 +37,5 @@
 [body common]: reference-components.html#common-control
 [body file]: manuals-language-concepts-namespaces.html
 [vim_cf3]: https://github.com/neilhwatson/vim_cf3
+[community package repositories]: http://cfengine.com/cfengine-linux-distros
+[community download page]: https://cfengine.com/inside/myspace
