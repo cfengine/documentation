@@ -94,6 +94,19 @@ identified file that makes the promise. For example:
       file_result => "mode";
     }
 ```
+### this.promiser_uid
+
+This variable refers to the `uid` of the user running the `cf-agent` program.
+
+**Note:** This variable is reported by the platform dependent `getuid` function,
+and is always an integer.
+
+### this.promiser_gid
+
+This variable refers to the `gid` of the user running the `cf-agent` program.
+
+**Note:** This variable is reported by the platform dependent `getgid` function,
+and is always an integer.
 
 ### this.service_policy
 
