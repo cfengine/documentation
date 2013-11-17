@@ -423,6 +423,14 @@ The first two octets of the IPv4 address of the system interface named as the as
 
 The first three octets of the IPv4 address of the system interface named as the associative array index, e.g. `$(ipv4_3[le0])` or `$(ipv4_3[xr1])`.
 
+### sys.key_digest
+
+The digest of the host's cryptographic public key.
+
+```cf3
+    # sys.key_digest = MD5=bc230448c9bec14b9123443e1608ac07
+```
+
 ### sys.last_policy_update
 
 Timestamp when last policy change was seen by host
