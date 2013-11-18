@@ -17,6 +17,8 @@ The Community Edition is packaged using the following naming convention:
 
 * Debian Package: `cfengine-community_3.6.0-1_amd64.deb`
 
+Community packages can be downloaded from the `community download page`.
+
 ## Installation 
 
 1. Install the package **first** on the Policy Server, and then on each Host:
@@ -25,6 +27,8 @@ The Community Edition is packaged using the following naming convention:
         [RedHat/CentOS/SUSE] $ rpm -i <package>.rpm
         [Debian/Ubuntu]      $ dpkg -i <package>.deb
     ```
+  
+  Community packages are also availale from the `community package repositories`.
 
 2. Run the bootstrap command, **first** on the Policy Server, and then on each
 Host:
