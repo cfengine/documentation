@@ -13,11 +13,15 @@ tags: [getting started, installation, community]
 Select a Community package to download:
 
 32bit:
+
 wget  http://cfengine.com/inside/binarydownload/download/items/1180 -O cfengine-community-3.5.2-1.i386.rpm
+
 wget  http://cfengine.com/inside/binarydownload/download/items/1182 -O cfengine-community_3.5.2-1_i386.deb
 
 64bit:
+
 wget  http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine-community-3.5.2-1.x86_64.rpm
+
 wget  http://cfengine.com/inside/binarydownload/download/items/1183 -O cfengine-community_3.5.2-1_amd64.deb
 
 
@@ -26,21 +30,26 @@ wget  http://cfengine.com/inside/binarydownload/download/items/1183 -O cfengine-
 First, install the package **first** on the Policy Server, and then on each Host:
 
 32bit:
-     ```
+
+```
         [RedHat/CentOS/SUSE] $ rpm -i cfengine-community_3.5.2-1.i386.rpm
         [Debian/Ubuntu]      $ dpkg -i cfengine-community_3.5.2-1_i386.deb
-     ```
+```
+
 64bit:
-     ```
+
+```
         [RedHat/CentOS/SUSE] $ rpm -i cfengine-community-3.5.2-1.x86_64.rpm
         [Debian/Ubuntu]      $ dpkg -i cfengine-community_3.5.2-1_amd64.deb
-     ```  
+```  
 
 Next, run the bootstrap command, **first** on the Policy Server, and then on each Host:
 
-     ```
+```
         /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
-     ```
+```
+
+The installation is complete!
 
 ## Next Steps
 
