@@ -16,34 +16,28 @@ upgrade or use in conjunction with other versions at this point.*
 <!--- TODO: move up when no longer a pre-release
 -->
 
-## General Requirements
+CFEngine comes in two versions: 
+**CFEngine Community**, a free GPL v3 open source edition, and **CFEngine Enterprise**, 
+a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition can be evaluated for free (up to 25 servers).
 
-CFEngine recommends the following:
+The following installations are available:
 
-**Host(s) Memory** 
+### CFEngine Community
 
-256 MB available memory in order to run the CFEngine agent software (cf-agent).
+Install and test the latest [version][Installing Community].
 
-**Disk Storage** 
 
-A full installation of CFEngine requires 25 MB. Additional disk usage
-depends on your specific policies, especially those that concern reporting.
+### CFEngine Enterprise
 
-**Network** 
+#### CFEngine Enterprise (Evaluation: 25 free servers)
 
-* Verify that the machine’s network connection is working and that port 5308
-  (used by CFEngine) is open for both incoming and outgoing connections.
+* Install and test the latest version using our pre-packaged [Vagrant environment][Installing Enterprise Vagrant Environment].
 
-* If iptables are active on your operating system, stop this service or adapt
-  it to allow for communication on the above ports. If applicable, type the
-  following two commands: /`etc/init.d/iptables stop` and `chkconfig iptables
-  off`
+* Install and test the latest version using our [native version][Installing Enterprise Free 25].
 
-CFEngine bundles all critical dependencies into the package; therefore,
-additional software is not required.
+#### CFEngine Enterprise (Production)
 
-## Specific Requirements
+Install CFEngine Enterprise for [production][Installing Enterprise for Production].
 
-Click here to complete the [Community][Installing Community] installation.
 
-Click here to complete the [Enterprise][Installing Enterprise] installation.
+

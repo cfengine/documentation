@@ -1,13 +1,38 @@
 ---
 layout: default
-title: Installing Enterprise
+title: Installing Enterprise for Production
 categories: [Getting Started, Installation, Installing Enterprise]
 published: true
+sorting: 40
 alias: getting-started-installation-installing-enterprise.html
-tags: [getting started, installation, enterprise]
+tags: [getting started, installation, enterprise production]
 ---
 
-Please complete the [General Requirements][Installing CFEngine] if you have not already done so.
+## General Requirements
+
+CFEngine recommends the following:
+
+**Host(s) Memory** 
+
+256 MB available memory in order to run the CFEngine agent software (cf-agent).
+
+**Disk Storage** 
+
+A full installation of CFEngine requires 25 MB. Additional disk usage
+depends on your specific policies, especially those that concern reporting.
+
+**Network** 
+
+* Verify that the machine’s network connection is working and that port 5308
+  (used by CFEngine) is open for both incoming and outgoing connections.
+
+* If iptables are active on your operating system, stop this service or adapt
+  it to allow for communication on the above ports. If applicable, type the
+  following two commands: /`etc/init.d/iptables stop` and `chkconfig iptables
+  off`
+
+CFEngine bundles all critical dependencies into the package; therefore,
+additional software is not required.
 
 ## Policy Server Requirements
 
@@ -98,7 +123,9 @@ host:
 
 ## Licensed installations
 
-If you are evaluating CFEngine Enterprise or otherwise using it in an environment with less than 25 agents connecting to a Policy Server, you do not need a license and there is no expiry.
+If you are evaluating CFEngine Enterprise or otherwise using it in an environment with 
+less than 25 agents connecting to a Policy Server, 
+you do not need a license and there is no expiry.
 
 If you are a customer, please send the Policy Server's public key (`/var/cfengine/ppkeys/localhost.pub`) to
 CFEngine support to obtain a license. CFEngine will send you a `license.dat`
@@ -117,8 +144,12 @@ front-end, continue with [integrating Mission Portal with git] [Integrating Miss
 
 Learn more about CFEngine by using the following resources:
 
-* Read CFEngine [manuals][CFEngine Manuals].
+* Tutorial: [Create a standalone policy (Hello World).][Hello World]
+
+* Tutorial: [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches (Enterprise Only)]
+
+* CFEngine [manuals][CFEngine Manuals].
+
+* Additional [tutorials, examples, and documentation][Learning Tools].
 
 * Get [Support][Support and Community] from the CFEngine community.
-
-* View additional [tutorials, examples, and documentation][Learning Tools].
