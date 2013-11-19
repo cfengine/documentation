@@ -95,6 +95,11 @@ or
     
 to change the behavior of CFEngine without having to edit the policy.
 
+*Note*: Classes, once defined, will stay defined either for as long as the
+bundle is evaluated (for classes with a `bundle` scope) or until the agent
+exits (for classes with a `namespace` scope). See `cancel_kept`,
+`cancel_repaired`, and `cancel_notkept` in classes body.
+
 ### persistent\_disable\_*DAEMON*
 
 **Description:** Disable a CFEngine Enterprise daemon component persistently.
