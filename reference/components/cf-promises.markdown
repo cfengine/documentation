@@ -15,7 +15,15 @@ attempts to expose errors by partially evaluating the policy, resolving as
 many variable and classes promise statements as possible. At no point does 
 `cf-promises` make any changes to the system.
 
+In 3.6.0 and later, `cf-promises` will not evaluate function calls
+either.  This may affect customers who use `execresult` for instance.
+Use the new `--eval-functions yes` command-line option (default is
+`no`) to retain the old behavior from 3.5.x and earlier.
+
 ## Command reference
+
+     --eval-functions, - value -
+        Evaluate functions during syntax checking (may catch more run-time errors). Possible values: 'yes', 'no'. Default is 'no'
 
     --help, -h
         Print the help message
