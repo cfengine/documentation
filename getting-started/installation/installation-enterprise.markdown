@@ -8,6 +8,9 @@ alias: getting-started-installation-installing-enterprise.html
 tags: [getting started, installation, enterprise production]
 ---
 
+These instructions describe how to install the latest version of CFEngine Enterprise in a production environment 
+using pre-compiled rpm and deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
+
 ## General Requirements
 
 CFEngine recommends the following:
@@ -72,72 +75,78 @@ pages.
 5. Set the file descriptor limit and user process limit to 4k+ (see etc/limits
 and ulimit)
 
-## Packages
+## Download Packages
 
 CFEngine Enterprise is provided in two packages; one is for the Policy
-Server (hub) and the other is for each Host (client). These packages contain the
-following naming convention:
-
-**Policy Server**: Only 64bit packages
-
-* RPM Package: `cfengine-nova-hub-3.6.0-1.x86_64.rpm`
-
-* Debian Package: `cfengine-nova-hub_3.6.0-1_amd64.deb`
-
-**Hosts**: Both 64bit and 32bit
-
-* RPM Package: `cfengine-nova-3.6.0-1.i386.rpm` or
-  `cfengine-nova-3.6.0-1.x86_64.rpm`
-
-* Debian Package: `cfengine-nova_3.6.0-1_i386.deb` or
-  `cfengine-nova_3.6.0-1_amd64.deb`
+Server (hub) and the other is for each Host (client). 
 
 **Select a Policy Server (hub) package to download:**
 
+Ubuntu 10.04
+```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-10.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
-
+```
+Ubuntu 12.04
+```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-12.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
-
+```
+RHEL 5.4
+```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-5.4-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
-
+```
+SUSE 11.1
+```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/sles-11.1-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
-
+```
+Debian 6.0
+```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/debian-6.0-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
-
+```
+RHEL 6.0 
+```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-6.0-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
+```
 
+**Select a Host (client) package to download:**
 
-**Select a Host (client package to download:**
-
+Ubuntu/Debian 32-bit:
+```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_i386/cfengine-nova_3.5.2-1_i386.deb
-
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_x86_64/cfengine-nova-3.5.2-1.x86_64.rpm
-
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_i386/cfengine-nova-3.5.2-1.i386.rpm
-
+```
+Ubuntu/Debian 64-bit:
+```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_x86_64/cfengine-nova_3.5.2-1_x86_64.deb
+```
+Redhat/CentOS/SUSE 32-bit:
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_i386/cfengine-nova-3.5.2-1.i386.rpm
+```
+Redhat/CentOS/SUSE 64-bit:
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_x86_64/cfengine-nova-3.5.2-1.x86_64.rpm
+```
 
-## Installation
+## Install Packages
 
-Follow these steps to install CFEngine:
+**Log in as root** and then follow these steps to install CFEngine Enterprise:
 
-1. Install packages
-
-    On the designated Policy Server, install the `cfengine-nova-hub` package:
+1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 
     ```
         [RedHat/CentOS/SUSE] $ rpm -i <hub package>.rpm
         [Debian/Ubuntu]      $ dpkg -i <hub package>.deb
     ```
 
-    On each Host, install the `cfengine-nova` package:
+2. On each Host, install the `cfengine-nova` package:
 
     ```
         [RedHat/CentOS/SUSE] $ rpm -i <agent package>.rpm
         [Debian/Ubuntu]      $ dpkg -i <agent package>.deb
     ```
 
-2. Run the bootstrap command, **first** on the policy server and then on each
+## Bootstrap
+
+Run the bootstrap command, **first** on the policy server and then on each
 host:
 
     ```
