@@ -16,44 +16,46 @@ deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
 Select a Community package to download:
 
 Ubuntu/Debian 32-bit:
-
+```
 $ wget http://cfengine.com/inside/binarydownload/download/items/1182 -O cfengine-community_3.5.2-1_i386.deb
-
+```
 Ubuntu/Debian 64-bit:
-
+```
 $ wget http://cfengine.com/inside/binarydownload/download/items/1183 -O cfengine-community_3.5.2-1_amd64.deb
-
+```
 Redhat/CentOS/SUSE 32-bit:
-
+```
 $ wget http://cfengine.com/inside/binarydownload/download/items/1180 -O cfengine-community-3.5.2-1.i386.rpm 
-
+```
 Redhat/CentOS/SUSE 64-bit:
-
+```
 $ wget http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine-community-3.5.2-1.x86_64.rpm 
+```
 
+## 2. Install Packages
 
-## 2. Installation 
-
-First, install the package **first** on the Policy Server, and then on each Host:
+First, log in as root. Then, install the package **first** on the Policy Server, and then on each Host:
 
 Ubuntu/Debian 32-bit:
-
+```
 $ dpkg -i cfengine-community_3.5.2-1_i386.deb
-
+```
 Ubuntu/Debian 64-bit:
-
+```
 $ dpkg -i cfengine-community_3.5.2-1_amd64.deb
-
+```
 Redhat/CentOS/SUSE 32-bit:
-
+```
 $ rpm -i cfengine-community_3.5.2-1.i386.rpm
-
+```
 Redhat/CentOS/SUSE 64-bit:
-
+```
 $ rpm -i cfengine-community-3.5.2-1.x86_64.rpm
+```
 
+## 3. Bootstrap
 
-Next, run the bootstrap command, **first** on the Policy Server, and then on each Host:
+Run the bootstrap command, **first** on the Policy Server, and then on each Host:
 
 ```
         /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
