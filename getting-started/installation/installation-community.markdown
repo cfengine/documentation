@@ -28,8 +28,14 @@ Run the following script to install CFEngine on your 32- or 64-bit machine:
 $ wget -O- https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-community.sh | sudo bash
 ```
 
-This script discovers your OS, installs CFEngine, and installs a Policy Server. 
-Upon completion, go to [Boostrapping the Policy Server][Installing Community#3. Bootstrap the Policy Server].
+This script discovers your OS and installs CFEngine on your machine. 
+
+1. Install this script on your designated Policy Server machine and on your designated Agent Host machine(s). 
+2. Skip Steps 1, 2, and 4 because the script performs these tasks for you.
+3. Complete Step 3 to [bootstrap the Policy Server to itself][Installing Community#3. Bootstrap the Policy Server].  
+4. Complete Step 5 to [bootstrap the Host Agent(s) to the Policy Server][Installing Community#5. Bootstrap the Host Agent to the Policy Server]. 
+Bootstrapping completes the installation. 
+5. Go to the [Tutorials][Installing Community#Tutorials] section to learn how to use CFEngine.
 <hr>
 
 ## 1. Download Packages 
@@ -63,7 +69,7 @@ $ wget http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine
 
 ## 2. Install CFEngine on a Policy Server 
 
-Install the package **first** on a Policy Server and **then** on a Host Agent machine.  A Policy Server is a CFEngine instance that contains promises (business policy)
+Install the package on a machine designated as a Policy Server.  A Policy Server is a CFEngine instance that contains promises (business policy)
 that get deployed to Host Agents. Host Agents are instances (clients) that retrieve and execute promises.
 
 Choose the right command for your operating system:
@@ -106,7 +112,7 @@ Run the bootstrap command:
 $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
-Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12
+**Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12**
 
 Upon successful completion, a confirmation message appears: "Bootstrap to '192.168.1.12' completed successfully!"
 
@@ -118,7 +124,7 @@ $ /var/cfengine/bin/cf-promises --version
 
 The Policy Server is installed.
 
-## 4. Install CFEngine to the Host Agent
+## 4. Install CFEngine on a Host Agent
 
 As stated earlier, Host Agents are instances that retrieve and execute promises from the Policy Server. Install
 a package on your Host Agent. Use the same package you installed on the Policy Server in Step 2. Note that you must have access 
@@ -134,7 +140,7 @@ the Policy Server. Run the same commands that you ran in Step 3. Note that the P
 $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
-Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12
+**Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12**
 
 The CFEngine installation process is complete.
 
