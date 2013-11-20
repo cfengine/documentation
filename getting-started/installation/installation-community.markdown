@@ -41,7 +41,7 @@ $ wget http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine
 
 ## 2. Install Packages
 
-First, log in as root. Then, install the package **first** on the Policy Server, and then on each Host:
+First, log in as root. Then, install the package **first** on the Policy Server, and then on each Host.
 
 Ubuntu/Debian 32-bit:
 
@@ -67,6 +67,10 @@ Redhat/CentOS/SUSE 64-bit:
 $ rpm -i cfengine-community-3.5.2-1.x86_64.rpm
 ```
 
+**Note:** Your installation is successful if you enter **/var/cfengine/bin/cf-agent --version** and get **CFEngine Core 3.5.2** 
+as a return value.
+
+
 ## 3. Bootstrap
 
 Run the bootstrap command, **first** on the Policy Server, and then on each Host:
@@ -75,7 +79,7 @@ Run the bootstrap command, **first** on the Policy Server, and then on each Host
         /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
-The installation is complete!
+**Note:** Verify that the bootstrap is successful by looking for populated files in */var/cfengine/inputs**.
 
 ## Next Steps
 
