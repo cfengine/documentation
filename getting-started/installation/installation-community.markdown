@@ -30,7 +30,7 @@ $ wget -O- https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-com
 
 This script discovers your OS and installs CFEngine on your machine. 
 
-1. Install this script on your designated Policy Server machine and on your designated Agent Host machine(s). 
+1. Run this script on your designated Policy Server machine and on your designated Host Agent machine(s). 
 2. Skip Steps 1, 2, and 4 because the script performs these tasks for you.
 3. Complete Step 3 to [bootstrap the Policy Server to itself][Installing Community#3. Bootstrap the Policy Server].  
 4. Complete Step 5 to [bootstrap the Host Agent(s) to the Policy Server][Installing Community#5. Bootstrap the Host Agent to the Policy Server]. 
@@ -128,8 +128,7 @@ The Policy Server is installed.
 
 As stated earlier, Host Agents are instances that retrieve and execute promises from the Policy Server. Install
 a package on your Host Agent. Use the same package you installed on the Policy Server in Step 2. Note that you must have access 
-to one more VM or server and it must be on the same network as the Policy Server that you just installed. Note also that you can
-have more than one Host Agent.
+to at least one more VM or server and it must be on the same network as the Policy Server that you just installed. 
 
 ## 5. Bootstrap the Host Agent to the Policy Server
 
@@ -230,9 +229,9 @@ inputs => {
             "mypolicy.cf",
 ...
 ```
-The process is complete. The next time CFEngine runs on the Agent Host (which by default is every 5 minutes), 
+The process is complete. The next time CFEngine runs on the Host Agent (which by default is every 5 minutes), 
 it will pull down the latest policy update and ensure that the **example.txt** file exists (this is the desired 
-state). In fact, any Agent Host that has installed CFEngine will contain the **example.txt** file (because we defined 
+state). In fact, any Host Agent that has installed CFEngine will contain the **example.txt** file (because we defined 
 the cfengine_3:: class above).
 
 ## Recommended Reading
