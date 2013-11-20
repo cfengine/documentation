@@ -59,6 +59,7 @@ and navigate to the Vagrant Project directory (e.g. home/user/vagrant_env) and e
 `$ vagrant up`
  
 Vagrant performs the following processes:
+
 * sets up two VirtualBox VMs 
 * downloads a CentOS image and CFEngine packages 
 * configures the VMs as a CFEngine Policy Server and a Host that are connected on a host-only
@@ -77,7 +78,7 @@ Note: If you want to use more hosts in your evaluation of CFEngine, you can
 At the end of the setup process, you can use your browser
 to log in to the Mission Portal:
 
-'http://localhost:9002'
+`http://localhost:9002`
 
 username: admin
 
