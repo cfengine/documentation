@@ -8,93 +8,232 @@ alias: getting-started-installation-installing-community.html
 tags: [getting started, installation, community]
 ---
 
-These instructions describe how to install the latest version of CFEngine Community using pre-compiled rpm and 
-deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
+These instructions describe how to download and install the latest version of CFEngine Community using pre-compiled rpm and 
+deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE. 
+
+It also provides instructions for the following:
+
+* Install CFEngine on a Policy Server (hub)
+* Bootstrap the Policy Server to itself
+* Install CFEngine on a Host Agent (client)
+* Bootstrap the Host Agent to the Policy Server
+
+_Tutorials, recommended reading. and production environment recommendations appear at the end of this page._
+
+<hr>
+## Quick Setup Installation Script
+Run the following script to install CFEngine on your 32- or 64-bit machine:
+
+```
+$ wget -O- https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-community.sh | sudo bash
+```
+
+This script discovers your OS, installs CFEngine, and installs a Policy Server. 
+Upon completion, go to [Boostrapping the Policy Server][Installing Community#3. Bootstrap the Policy Server].
+<hr>
 
 ## 1. Download Packages 
 
-Select a Community package to download:
+Select the package to download that matches your operating system. 
+This stores the cfengine-community_3.5.2-1_* file onto your machine. 
 
-Ubuntu/Debian 32-bit:
+**Ubuntu/Debian 32-bit:**
 
 ```
 $ wget http://cfengine.com/inside/binarydownload/download/items/1182 -O cfengine-community_3.5.2-1_i386.deb
 ```
 
-Ubuntu/Debian 64-bit:
+**Ubuntu/Debian 64-bit:**
 
 ```
 $ wget http://cfengine.com/inside/binarydownload/download/items/1183 -O cfengine-community_3.5.2-1_amd64.deb
 ```
 
-Redhat/CentOS/SUSE 32-bit:
+**Redhat/CentOS/SUSE 32-bit:**
 
 ```
 $ wget http://cfengine.com/inside/binarydownload/download/items/1180 -O cfengine-community-3.5.2-1.i386.rpm 
 ```
 
-Redhat/CentOS/SUSE 64-bit:
+**Redhat/CentOS/SUSE 64-bit:**
 
 ```
 $ wget http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine-community-3.5.2-1.x86_64.rpm 
 ```
 
-## 2. Install Packages
+## 2. Install CFEngine on a Policy Server 
 
-First, log in as root. Then, install the package **first** on the Policy Server, and then on **each** Host.
+Install the package **first** on a Policy Server and **then** on a Host Agent machine.  A Policy Server is a CFEngine instance that contains promises (business policy)
+that get deployed to Host Agents. Host Agents are instances (clients) that retrieve and execute promises.
 
-Ubuntu/Debian 32-bit:
+Choose the right command for your operating system:
 
-```
-$ dpkg -i cfengine-community_3.5.2-1_i386.deb
-```
-
-Ubuntu/Debian 64-bit:
+**Ubuntu/Debian 32-bit:**
 
 ```
-$ dpkg -i cfengine-community_3.5.2-1_amd64.deb
+$ sudo dpkg -i cfengine-community_3.5.2-1_i386.deb
 ```
 
-Redhat/CentOS/SUSE 32-bit:
+**Ubuntu/Debian 64-bit:**
 
 ```
-$ rpm -i cfengine-community_3.5.2-1.i386.rpm
+$ sudo dpkg -i cfengine-community_3.5.2-1_amd64.deb
 ```
 
-Redhat/CentOS/SUSE 64-bit:
+**Redhat/CentOS/SUSE 32-bit:**
 
 ```
-$ rpm -i cfengine-community-3.5.2-1.x86_64.rpm
+$ sudo rpm -i cfengine-community_3.5.2-1.i386.rpm
 ```
 
-**Note:** Your installation is successful if you enter **/var/cfengine/bin/cf-agent --version** and get **CFEngine Core 3.5.2** 
-as a return value.
-
-
-## 3. Bootstrap
-
-Run the bootstrap command, **first** on the Policy Server, and then on each Host:
+**Redhat/CentOS/SUSE 64-bit:**
 
 ```
-   /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+$ sudo rpm -i cfengine-community-3.5.2-1.x86_64.rpm
 ```
 
-**Note:** The bootstrap is successful if **/var/cfengine/inputs** contains files (that are populated during the 
-bootstrap).
+**Note:** You might get a message like this: "Policy is not found in /var/cfengine/inputs, not starting CFEngine." Do not worry;
+this is taken care of during the bootstrapping process.
 
-## Next Steps
 
-Learn more about CFEngine by using the following resources:
+## 3. Bootstrap the Policy Server 
 
+The Policy Server must be bootstrapped to itself. Find the IP address of your Policy Server (type $ ifconfig).
+
+Run the bootstrap command:
+
+```
+$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```
+
+Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12
+
+Upon successful completion, a confirmation message appears: "Bootstrap to '192.168.1.12' completed successfully!"
+
+Type the following the check what version of CFEngine your are running:
+
+```
+$ /var/cfengine/bin/cf-promises --version
+```
+
+The Policy Server is installed.
+
+## 4. Install CFEngine to the Host Agent
+
+As stated earlier, Host Agents are instances that retrieve and execute promises from the Policy Server. Install
+a package on your Host Agent. Use the same package you installed on the Policy Server in Step 2. Note that you must have access 
+to one more VM or server and it must be on the same network as the Policy Server that you just installed. Note also that you can
+have more than one Host Agent.
+
+## 5. Bootstrap the Host Agent to the Policy Server
+
+The Host Agent(s) must be bootstrapped to the Policy Server in order to establish a connection between the Host Agent and
+the Policy Server. Run the same commands that you ran in Step 3. Note that the Policy Server and Host Agents share the same IP address.
+
+```
+$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```
+
+Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12
+
+The CFEngine installation process is complete.
+
+<hr>
+## Tutorials
+
+### Create a policy ("hello world")
+
+Step 1. Create a file called **hello_world.cf** and add the following content:
+
+```cf3
+body common control
+{
+  bundlesequence => { "test" };
+}
+
+bundle agent test
+{
+  reports:                   # This is a promise type.
+
+    cfefengine_3::           # This means the promise will only
+                             # be kept on a CFEngine_3 system.
+      "Hello World";         # This is a simple promise; it generates a report
+                             # that says "Hello world".
+
+}
+```
+
+Step 2. Run the policy: 
+
+```
+$ sudo /var/cfengine/bin/cf-agent hello_world.cf
+```
+
+The policy displays the following output:
+
+**R: Hello world**  
+
+Find more policy examples [here][Policy].
+
+### Create a distributed policy
+
+Create a policy that ensures (promises) that a file called **example.txt** will always
+exist on the Host Agent.
+
+Step 1. On the Policy Server, create a file called **mypolicy.cf** and add it to the **/var/cfengine/masterfiles**
+directory:
+
+```
+$ sudo <editor> /var/cfengine/masterfiles/mypolicy.cf
+```
+
+Step 2. Add the following lines to the file:
+
+```cf3
+bundle agent example
+{
+files:
+   cfengine_3::      # This is a class context (the promise will only
+                     # be kept on a CFEngine_3 system)
+
+  "/home/vagrant/example.txt"  # Path and name of the file we wish to ensure exists
+       create => "true";       # Make sure the file exists; create if it does not
+}
+```
+
+Step 3. Update **/var/cfengine/masterfiles/promises.cf** to include this new policy. To do so, modify
+the **promises.cf** file to ensure that (1 the **mypolicy.cf** file is being included in the next policy 
+distribution and that (2 **example** is in the bundlesequence.
+
+```
+$ sudo <editor> /var/cfengine/masterfiles/promises.cf
+```
+
+```cf3
+...
+bundlesequence => {
+                 # Common bundles first for best practice
+                    "def",
+                    "example",
+...
+
+inputs => {
+
+         # Global common bundles
+            "def.cf",
+            "mypolicy.cf",
+...
+```
+The process is complete. The next time CFEngine runs on the Agent Host (which by default is every 5 minutes), 
+it will pull down the latest policy update and ensure that the **example.txt** file exists (this is the desired 
+state). In fact, any Agent Host that has installed CFEngine will contain the **example.txt** file (because we defined 
+the cfengine_3:: class above).
+
+## Recommended Reading
+
+* CFEngine [language concepts][Language Concepts]
 * Tutorial: [Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]
 
-* Tutorial: [Create a standalone policy (Hello World).][Hello World]
-
-* CFEngine [manuals][CFEngine Manuals].
-
-* View additional [tutorials, examples, and documentation][Learning Tools].
-
-* Get [Support][Support and Community] from the CFEngine community.
 
 ## Production Environment
 
