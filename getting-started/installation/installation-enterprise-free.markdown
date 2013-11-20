@@ -21,26 +21,37 @@ Server (hub) and the other is for each Host (client).
 **Select a Policy Server (hub) package to download:**
 
 Ubuntu 10.04
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-10.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
 ```
+
 Ubuntu 12.04
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-12.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
 ```
+
 RHEL 5.4
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-5.4-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
 ```
+
 SUSE 11.1
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/sles-11.1-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
 ```
+
 Debian 6.0
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/debian-6.0-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
 ```
+
 RHEL 6.0 
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-6.0-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
 ```
@@ -48,18 +59,25 @@ wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-6.0-x86
 **Select a Host (client) package to download:**
 
 Ubuntu/Debian 32-bit:
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_i386/cfengine-nova_3.5.2-1_i386.deb
 ```
+
 Ubuntu/Debian 64-bit:
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_x86_64/cfengine-nova_3.5.2-1_x86_64.deb
 ```
+
 Redhat/CentOS/SUSE 32-bit:
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_i386/cfengine-nova-3.5.2-1.i386.rpm
 ```
+
 Redhat/CentOS/SUSE 64-bit:
+
 ```
 wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_x86_64/cfengine-nova-3.5.2-1.x86_64.rpm
 ```
@@ -87,9 +105,9 @@ wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm
 Run the bootstrap command, **first** on the policy server and then on each
 host:
 
-    ```
-        $ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
-    ```
+```
+$ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
+```
 
 ## Next Steps
 
