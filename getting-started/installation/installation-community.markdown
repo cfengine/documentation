@@ -41,7 +41,7 @@ $ wget http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine
 
 ## 2. Install Packages
 
-First, log in as root. Then, install the package **first** on the Policy Server, and then on each Host.
+First, log in as root. Then, install the package **first** on the Policy Server, and then on **each** Host.
 
 Ubuntu/Debian 32-bit:
 
@@ -76,10 +76,11 @@ as a return value.
 Run the bootstrap command, **first** on the Policy Server, and then on each Host:
 
 ```
-        /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+   /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 ```
 
-**Note:** Verify that the bootstrap is successful by looking for populated files in */var/cfengine/inputs**.
+**Note:** The bootstrap is successful if **/var/cfengine/inputs** contains files (that are populated during the 
+bootstrap).
 
 ## Next Steps
 
