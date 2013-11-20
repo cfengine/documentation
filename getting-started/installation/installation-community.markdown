@@ -8,40 +8,50 @@ alias: getting-started-installation-installing-community.html
 tags: [getting started, installation, community]
 ---
 
-## Packages
+These instructions describe how to install the latest version of CFEngine Community using pre-compiled rpm and 
+deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
+
+## 1. Download Packages 
 
 Select a Community package to download:
 
-32bit:
+Ubuntu/Debian 32-bit:
 
-wget  http://cfengine.com/inside/binarydownload/download/items/1180 -O cfengine-community-3.5.2-1.i386.rpm
+$ wget http://cfengine.com/inside/binarydownload/download/items/1182 -O cfengine-community_3.5.2-1_i386.deb
 
-wget  http://cfengine.com/inside/binarydownload/download/items/1182 -O cfengine-community_3.5.2-1_i386.deb
+Ubuntu/Debian 64-bit:
 
-64bit:
+$ wget http://cfengine.com/inside/binarydownload/download/items/1183 -O cfengine-community_3.5.2-1_amd64.deb
 
-wget  http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine-community-3.5.2-1.x86_64.rpm
+Redhat/CentOS/SUSE 32-bit:
 
-wget  http://cfengine.com/inside/binarydownload/download/items/1183 -O cfengine-community_3.5.2-1_amd64.deb
+$ wget http://cfengine.com/inside/binarydownload/download/items/1180 -O cfengine-community-3.5.2-1.i386.rpm 
+
+Redhat/CentOS/SUSE 64-bit:
+
+$ wget http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine-community-3.5.2-1.x86_64.rpm 
 
 
-## Installation 
+## 2. Installation 
 
 First, install the package **first** on the Policy Server, and then on each Host:
 
-32bit:
+Ubuntu/Debian 32-bit:
 
-```
-        [RedHat/CentOS/SUSE] $ rpm -i cfengine-community_3.5.2-1.i386.rpm
-        [Debian/Ubuntu]      $ dpkg -i cfengine-community_3.5.2-1_i386.deb
-```
+$ dpkg -i cfengine-community_3.5.2-1_i386.deb
 
-64bit:
+Ubuntu/Debian 64-bit:
 
-```
-        [RedHat/CentOS/SUSE] $ rpm -i cfengine-community-3.5.2-1.x86_64.rpm
-        [Debian/Ubuntu]      $ dpkg -i cfengine-community_3.5.2-1_amd64.deb
-```  
+$ dpkg -i cfengine-community_3.5.2-1_amd64.deb
+
+Redhat/CentOS/SUSE 32-bit:
+
+$ rpm -i cfengine-community_3.5.2-1.i386.rpm
+
+Redhat/CentOS/SUSE 64-bit:
+
+$ rpm -i cfengine-community-3.5.2-1.x86_64.rpm
+
 
 Next, run the bootstrap command, **first** on the Policy Server, and then on each Host:
 
