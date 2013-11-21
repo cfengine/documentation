@@ -18,14 +18,16 @@ Note: You need a minimum of 2 GB of available memory and a modern 64 bit process
 
 ## Installation Overview
 
-* **Install CFEngine Enterprise onto a Policy Server and onto Host machines.** 
+During the course of the instructions outlined in this guide, you will perform the following tasks:
+
+* **Install CFEngine Enterprise onto a Policy Server and onto Hosts.** 
 A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts. 
 Hosts are clients that retrieve and execute promises. 
 * **Bootstrap the Policy Server to itself and then bootstrap each of the Hosts to the Policy Server.** Bootstrapping establishes a trust relationship between the Policy Server 
-and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Host machines throughout your company. 
+and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company. 
 Bootstrapping completes the installation process.
 * **Log in to the Mission Portal.** The Mission Portal is a graphical user interface that allows you to verify the 
-the actual state of all your machines, thus ensuring that your promises are being executed. By using the **Design Center** inside the Mission Portal, you 
+the actual state of all your Hosts, thus ensuring that your promises are being executed. By using the **Design Center** inside the Mission Portal, you 
 can also define new desired states (business policies) for your infrastructure. 
 * **Try out the Tutorials.** Links to three tutorials give you a head start on learning CFEngine.
 
@@ -33,9 +35,11 @@ can also define new desired states (business policies) for your infrastructure.
 ## 1. Download and install Enterprise on a Policy Server
 
 Run the following script on your designated Policy Server (hub) 64-bit machine (32-bit is not supported on the Policy Server):
+
 ```
 $ wget http://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh hub
 ```
+
 This script installs the latest CFEngine Enterprise Policy Server on your machine. 
 
 ## 2. Bootstrap the Policy Server 
@@ -60,10 +64,10 @@ $ /var/cfengine/bin/cf-promises --version
 
 The Policy Server is installed.
 
-## 3. Install Enterprise on a Host
+## 3. Install Enterprise on Hosts
  
-Install Enterprise on your designated Host machine(s) by running the script below. Per the **Free 25** agreement, you can 
-install Enterprise on 25 machines. Note that the Host machine(s) must be 
+Install Enterprise on your designated Host(s) by running the script below. Per the **Free 25** agreement, you can 
+install Enterprise on 25 Hosts. Note that the Hosts must be 
 on the same network as the Policy Server that you just installed in Step 2. 
 
 ```
@@ -88,7 +92,9 @@ The installation process is complete and CFEngine Enterprise is up and running o
 ## 5. Log in to the Mission Portal
 
 The Mission Portal is immediately accessible. Connect to the Policy Server
-through your web browser at http://`<IP address of your Policy Server>`. 
+through your web browser at: 
+
+https://`<IP address of your Policy Server>`
 
 username: admin
 password: admin
