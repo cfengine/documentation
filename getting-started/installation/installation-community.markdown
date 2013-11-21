@@ -3,63 +3,72 @@ layout: default
 title: Installing Community
 categories: [Getting Started, Installation, Installing Community]
 published: true
+sorting: 10
 alias: getting-started-installation-installing-community.html
 tags: [getting started, installation, community]
 ---
 
-Please complete the [General Requirements][Installing CFEngine] if you have not already done so.
+These instructions describe how to download and install the latest version of CFEngine Community using pre-compiled rpm and 
+deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE. 
 
-## Packages
+It also provides instructions for the following:
 
-<<<<<<< HEAD
-The Community Edition is packaged using the following naming convention:
-=======
-* Install CFEngine on a Policy Server (hub) and on a Host (client)
+* **Install CFEngine on a Policy Server (hub) and on a Host (client).**
 A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts. 
 Hosts are clients that retrieve and execute promises.
-* Bootstrap the Policy Server to itself and then bootstrap the Host(s) to the Policy Server.
+* **Bootstrap the Policy Server to itself and then bootstrap the Host(s) to the Policy Server.**
 Bootstrapping establishes a trust relationship between the Policy Server 
 and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company. 
 Bootstrapping completes the installation process.
->>>>>>> dd8938b... Minor tweaks to all docs; added Feedback page to installation docs
 
-* RPM Package: `cfengine-community-3.5.2-1.x86_64.rpm`
+_Tutorials, recommended reading. and production environment recommendations appear at the end of this page._
 
-* Debian Package: `cfengine-community_3.5.2-1_amd64.deb`
+<hr>
+## Quick Setup Installation Script
+Use the following script to install CFEngine on your 32- or 64-bit machine. 
 
-Community packages can be downloaded from our [community download page](https://cfengine.com/inside/myspace).
+```
+$ wget -O- https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-community.sh | sudo bash
+```
 
-## Installation 
+1. Run this script on your designated Policy Server machine **and** on your designated Host machine(s). 
+2. Bootstrap the Policy Server to itself and then bootstrap your Host(s) to the Policy Server by running the following command:
+```
+$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```
+If you require more details on bootstrapping, review Step 3 below. Bootstrapping completes the installation. 
+3. Go to the [Tutorials][Installing Community#Tutorials] section to learn how to use CFEngine.
+<hr>
 
-1. Install the package **first** on the Policy Server, and then on each Host:
+## 1. Download Packages 
 
-    ```
-        [RedHat/CentOS/SUSE] $ rpm -i <package>.rpm
-        [Debian/Ubuntu]      $ dpkg -i <package>.deb
-    ```
+Select the package to download that matches your operating system. 
+This stores the cfengine-community_3.5.2-1_* file onto your machine. 
 
-  Community packages are also available from our [community package
-  repositories](http://cfengine.com/cfengine-linux-distros).
+**Ubuntu/Debian 32-bit:**
 
-2. Run the bootstrap command, **first** on the Policy Server, and then on each
-Host:
+```
+$ wget http://cfengine.com/inside/binarydownload/download/items/1182 -O cfengine-community_3.5.2-1_i386.deb
+```
 
-    ```
-        /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
-    ```
+**Ubuntu/Debian 64-bit:**
 
-## Next Steps
+```
+$ wget http://cfengine.com/inside/binarydownload/download/items/1183 -O cfengine-community_3.5.2-1_amd64.deb
+```
 
-Learn more about CFEngine by using the following resources:
+**Redhat/CentOS/SUSE 32-bit:**
 
-Read CFEngine [manuals][CFEngine Manuals].
+```
+$ wget http://cfengine.com/inside/binarydownload/download/items/1180 -O cfengine-community-3.5.2-1.i386.rpm 
+```
 
-Get [Support][Support and Community] from the CFEngine community.
+**Redhat/CentOS/SUSE 64-bit:**
 
-View additional [tutorials, examples, and documentation][Learning Tools].
+```
+$ wget http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine-community-3.5.2-1.x86_64.rpm 
+```
 
-<<<<<<< HEAD
-=======
 ## 2. Install CFEngine on a Policy Server 
 
 Install the package on a machine designated as a Policy Server.  A Policy Server is a CFEngine instance that contains promises (business policy)
