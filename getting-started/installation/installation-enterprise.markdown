@@ -1,13 +1,41 @@
 ---
 layout: default
-title: Installing Enterprise
+title: Installing Enterprise for Production
 categories: [Getting Started, Installation, Installing Enterprise]
-published: true
+published: 
+sorting: 40
 alias: getting-started-installation-installing-enterprise.html
 tags: [getting started, installation, enterprise]
 ---
 
-Please complete the [General Requirements][Installing CFEngine] if you have not already done so.
+These instructions describe how to install the latest version of CFEngine Enterprise in a production environment 
+using pre-compiled rpm and deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
+
+## General Requirements
+
+CFEngine recommends the following:
+
+**Host(s) Memory** 
+
+256 MB available memory in order to run the CFEngine agent software (cf-agent).
+
+**Disk Storage** 
+
+A full installation of CFEngine requires 25 MB. Additional disk usage
+depends on your specific policies, especially those that concern reporting.
+
+**Network** 
+
+* Verify that the machine’s network connection is working and that port 5308
+  (used by CFEngine) is open for both incoming and outgoing connections.
+
+* If iptables are active on your operating system, stop this service or adapt
+  it to allow for communication on the above ports. If applicable, type the
+  following two commands: /`etc/init.d/iptables stop` and `chkconfig iptables
+  off`
+
+CFEngine bundles all critical dependencies into the package; therefore,
+additional software is not required.
 
 ## Policy Server Requirements
 
@@ -47,58 +75,107 @@ pages.
 5. Set the file descriptor limit and user process limit to 4k+ (see etc/limits
 and ulimit)
 
-## Packages
+## Download Packages
 
 CFEngine Enterprise is provided in two packages; one is for the Policy
-Server and the other is for each Host (Client). These packages contain the
-following naming convention:
+Server (hub) and the other is for each Host (client). 
 
-**Policy Server**: Only 64bit packages
+**Select a Policy Server (hub) package to download:**
 
-* RPM Package: `cfengine-nova-hub-3.5.2-1.x86_64.rpm`
+Ubuntu 10.04
 
-* Debian Package: `cfengine-nova-hub_3.5.2-1_amd64.deb`
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-10.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
+```
 
-**Hosts**: Both 64bit and 32bit
+Ubuntu 12.04
 
-* RPM Package: `cfengine-nova-3.5.2-1.i386.rpm` or
-  `cfengine-nova-3.5.0-1.x86_64.rpm`
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-12.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
+```
 
-* Debian Package: `cfengine-nova_3.5.2-1_i386.deb` or
-  `cfengine-nova_3.6.0-1_amd64.deb`
+RHEL 5.4
 
-Enterprise packages can be downloaded from the [engine room](https://cfengine.com/software).
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-5.4-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
+```
 
-## Installation
+SUSE 11.1
 
-Follow these steps to install CFEngine:
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/sles-11.1-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
+```
 
-1. Install packages
+Debian 6.0
 
-    On the designated Policy Server, install the `cfengine-nova-hub` package:
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/debian-6.0-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
+```
+
+RHEL 6.0 
+
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-6.0-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
+```
+
+**Select a Host (client) package to download:**
+
+Ubuntu/Debian 32-bit:
+
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_i386/cfengine-nova_3.5.2-1_i386.deb
+```
+
+Ubuntu/Debian 64-bit:
+
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_x86_64/cfengine-nova_3.5.2-1_x86_64.deb
+```
+
+Redhat/CentOS/SUSE 32-bit:
+
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_i386/cfengine-nova-3.5.2-1.i386.rpm
+```
+
+Redhat/CentOS/SUSE 64-bit:
+
+```
+wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_x86_64/cfengine-nova-3.5.2-1.x86_64.rpm
+```
+
+## Install Packages
+
+**Log in as root** and then follow these steps to install CFEngine Enterprise:
+
+1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 
     ```
         [RedHat/CentOS/SUSE] $ rpm -i <hub package>.rpm
         [Debian/Ubuntu]      $ dpkg -i <hub package>.deb
     ```
 
-    On each Host, install the `cfengine-nova` package:
+2. On each Host, install the `cfengine-nova` package:
 
     ```
         [RedHat/CentOS/SUSE] $ rpm -i <agent package>.rpm
         [Debian/Ubuntu]      $ dpkg -i <agent package>.deb
     ```
 
-2. Run the bootstrap command, **first** on the policy server and then on each
+## Bootstrap
+
+Run the bootstrap command, **first** on the policy server and then on each
 host:
 
-    ```
-        $ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
-    ```
+```
+$ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
+```
 
 ## Licensed installations
 
-If you are evaluating CFEngine Enterprise or otherwise using it in an environment with less than 25 agents connecting to a Policy Server, you do not need a license and there is no expiry.
+If you are evaluating CFEngine Enterprise or otherwise using it in an environment with 
+less than 25 agents connecting to a Policy Server, 
+you do not need a license and there is no expiry.
 
 If you are a customer, please send the Policy Server's public key (`/var/cfengine/ppkeys/localhost.pub`) to
 CFEngine support to obtain a license. CFEngine will send you a `license.dat`
@@ -117,8 +194,12 @@ front-end, continue with [integrating Mission Portal with git] [Integrating Miss
 
 Learn more about CFEngine by using the following resources:
 
-* Read CFEngine [manuals][CFEngine Manuals].
+* Tutorial: [Create a standalone policy (Hello World).][Hello World]
+
+* Tutorial: [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches (Enterprise Only)]
+
+* CFEngine [manuals][CFEngine Manuals].
+
+* Additional [tutorials, examples, and documentation][Learning Tools].
 
 * Get [Support][Support and Community] from the CFEngine community.
-
-* View additional [tutorials, examples, and documentation][Learning Tools].
