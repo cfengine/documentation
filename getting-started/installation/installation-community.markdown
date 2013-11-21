@@ -15,27 +15,26 @@ It also provides instructions for the following:
 
 * Install CFEngine on a Policy Server (hub)
 * Bootstrap the Policy Server to itself
-* Install CFEngine on a Host Agent (client)
-* Bootstrap the Host Agent to the Policy Server
+* Install CFEngine on a Host (client)
+* Bootstrap the Host to the Policy Server
 
 _Tutorials, recommended reading. and production environment recommendations appear at the end of this page._
 
 <hr>
 ## Quick Setup Installation Script
-Run the following script to install CFEngine on your 32- or 64-bit machine:
+Use the following script to install CFEngine on your 32- or 64-bit machine. 
 
 ```
 $ wget -O- https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-community.sh | sudo bash
 ```
 
-This script discovers your OS and installs CFEngine on your machine. 
-
-1. Run this script on your designated Policy Server machine and on your designated Host Agent machine(s). 
-2. Skip Steps 1, 2, and 4 because the script performs these tasks for you.
-3. Complete Step 3 to [bootstrap the Policy Server to itself][Installing Community#3. Bootstrap the Policy Server].  
-4. Complete Step 5 to [bootstrap the Host Agent(s) to the Policy Server][Installing Community#5. Bootstrap the Host Agent to the Policy Server]. 
-Bootstrapping completes the installation. 
-5. Go to the [Tutorials][Installing Community#Tutorials] section to learn how to use CFEngine.
+1. Run this script on your designated Policy Server machine **and** on your designated Host machine(s). 
+2. Bootstrap the Policy Server to itself and then bootstrap your Host(s) to the Policy Server by running the following command:
+```
+$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```
+If you require more details on bootstrapping, review Step 3 below. Bootstrapping completes the installation. 
+3. Go to the [Tutorials][Installing Community#Tutorials] section to learn how to use CFEngine.
 <hr>
 
 ## 1. Download Packages 
@@ -70,7 +69,7 @@ $ wget http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine
 ## 2. Install CFEngine on a Policy Server 
 
 Install the package on a machine designated as a Policy Server.  A Policy Server is a CFEngine instance that contains promises (business policy)
-that get deployed to Host Agents. Host Agents are instances (clients) that retrieve and execute promises.
+that get deployed to Hosts. Hosts are instances (clients) that retrieve and execute promises.
 
 Choose the right command for your operating system:
 
@@ -124,16 +123,16 @@ $ /var/cfengine/bin/cf-promises --version
 
 The Policy Server is installed.
 
-## 4. Install CFEngine on a Host Agent
+## 4. Install CFEngine on a Host
 
-As stated earlier, Host Agents are instances that retrieve and execute promises from the Policy Server. Install
-a package on your Host Agent. Use the same package you installed on the Policy Server in Step 2. Note that you must have access 
+As stated earlier, Hosts are instances that retrieve and execute promises from the Policy Server. Install
+a package on your Host. Use the same package you installed on the Policy Server in Step 2. Note that you must have access 
 to at least one more VM or server and it must be on the same network as the Policy Server that you just installed. 
 
-## 5. Bootstrap the Host Agent to the Policy Server
+## 5. Bootstrap the Host to the Policy Server
 
-The Host Agent(s) must be bootstrapped to the Policy Server in order to establish a connection between the Host Agent and
-the Policy Server. Run the same commands that you ran in Step 3. Note that the Policy Server and Host Agents share the same IP address.
+The Host(s) must be bootstrapped to the Policy Server in order to establish a connection between the Host and
+the Policy Server. Run the same commands that you ran in Step 3. Note that the Policy Server and Hosts share the same IP address.
 
 ```
 $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
@@ -183,7 +182,7 @@ Find more policy examples [here][Policy].
 ### Create a distributed policy
 
 Create a policy that ensures (promises) that a file called **example.txt** will always
-exist on the Host Agent.
+exist on the Host.
 
 Step 1. On the Policy Server, create a file called **mypolicy.cf** and add it to the **/var/cfengine/masterfiles**
 directory:
@@ -229,9 +228,9 @@ inputs => {
             "mypolicy.cf",
 ...
 ```
-The process is complete. The next time CFEngine runs on the Host Agent (which by default is every 5 minutes), 
+The process is complete. The next time CFEngine runs on the Host (which by default is every 5 minutes), 
 it will pull down the latest policy update and ensure that the **example.txt** file exists (this is the desired 
-state). In fact, any Host Agent that has installed CFEngine will contain the **example.txt** file (because we defined 
+state). In fact, any Host that has installed CFEngine will contain the **example.txt** file (because we defined 
 the cfengine_3:: class above).
 
 ## Recommended Reading
