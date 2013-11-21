@@ -280,4 +280,4 @@ Everyone is a first-time user a some point. We want to make the CFEngine Enterpr
 Before you forget your first-time experience, we would love for you to let us know how we can improve on this process.
 
 <iframe src="https://docs.google.com/forms/d/1wnVR3HQwUNKs5fT0zf_OHjtIQxI_nd00QCFbDZOyXZk/viewform?embedded=true" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
->>>>>>> dd8938b... Minor tweaks to all docs; added Feedback page to installation docs
+
