@@ -8,43 +8,26 @@ alias: getting-started-installation.html
 tags: [getting started, installation]
 ---
 
-## General Requirements
+CFEngine comes in two versions: 
+**CFEngine Community**, a free GPL v3 open source edition, and **CFEngine Enterprise**, 
+a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition can be evaluated for free (up to 25 servers).
 
-CFEngine recommends the following:
+The following installations are available:
 
-**Host(s) Memory** 
+## CFEngine Community
 
-256 MB available memory in order to run the CFEngine agent software (cf-agent).
+Install and test the latest [version of Community][Installing Community]. 
 
-**Disk Storage** 
-
-<<<<<<< HEAD
-A full installation of CFEngine requires 25 MB. Additional disk usage
-depends on your specific policies, especially those that concern reporting.
-=======
-Install and test the latest [version of Community][Installing Community]. In addition to 
+In addition to 
 instructions, the section also includes simple tutorials to get you started, followed by more 
 advanced tutorials to help your learn the CFEngine language and functionality.
->>>>>>> dd8938b... Minor tweaks to all docs; added Feedback page to installation docs
 
-**Network** 
+## CFEngine Enterprise
 
-* Verify that the machine’s network connection is working and that port 5308
-  (used by CFEngine) is open for both incoming and outgoing connections.
-
-<<<<<<< HEAD
-* If iptables are active on your operating system, stop this service or adapt
-  it to allow for communication on the above ports. If applicable, type the
-  following two commands: /`etc/init.d/iptables stop` and `chkconfig iptables
-  off`
-
-CFEngine bundles all critical dependencies into the package; therefore,
-additional software is not required.
-=======
 All installations feature instructions and tutorials. One tutorial teaches you how to use the 
 Mission Portal console; the others help your learn the CFEngine language and functionality. 
 
-Just the installation that best suits your needs.
+Choose the installation that best suits your needs.
 
 #### CFEngine Enterprise (Evaluation: 25 free servers)
 
@@ -55,10 +38,5 @@ Just the installation that best suits your needs.
 #### CFEngine Enterprise (Production)
 
 Install CFEngine Enterprise for [production][Installing Enterprise for Production].
->>>>>>> dd8938b... Minor tweaks to all docs; added Feedback page to installation docs
 
-## Specific Requirements
 
-Click here to complete the [Community][Installing Community] installation.
-
-Click here to complete the [Enterprise][Installing Enterprise] installation.
