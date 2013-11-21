@@ -11,10 +11,12 @@ tags: [getting started, installation, enterprise free]
 These instructions describe how to install the latest version of CFEngine Enterprise 25 Free. This is the full
 version of CFEngine Enterprise, but the number of Hosts (clients) is limited to 25. 
 
-To install this version of CFEngine Enterprise, your machine must be running a recent version of Linux.
-This installation script has been tested on RHEL 5 and 6, SLES 11, CentOS 5 and 6, and Debian 6 and 7.
+Note the following requirements:
 
-Note: You need a minimum of 2 GB of available memory and a modern 64 bit processor.
+* To install this version of CFEngine Enterprise, your machine must be running a recent version of Linux.
+This installation script has been tested on RHEL 5 and 6, SLES 11, CentOS 5 and 6, and Debian 6 and 7.
+* You need a minimum of 2 GB of available memory and a modern 64 bit processor.
+* You need a least two VMs/servers, one for the Policy Server and one for a Host (client). They must be on the same network.
 
 ## Installation Overview
 
@@ -79,7 +81,7 @@ Note that this installation works on 64- and 32-bit machines.
 ## 4. Bootstrap the Host to the Policy Server
 
 All Hosts must be bootstrapped to the Policy Server in order to establish a connection between the Host and
-the Policy Server. Run the same commands that you ran in Step 3. The Policy Server and Hosts share the same IP address.
+the Policy Server. Run the same commands that you ran in Step 3. 
 
 ```
 $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
@@ -131,4 +133,4 @@ through the Mission Portal, this advanced, command-line tutorial shows you how t
 Everyone is a first-time user a some point. We want to make the CFEngine Enterprise installation process easy for all of our new users. 
 Before you forget your first-time experience, we would love for you to let us know how we can improve on this process.
 
-<iframe src="https://docs.google.com/forms/d/1-D5ny2_5HDmPBpRR69aZeC-dVY08VlDouCsdGXBCnyc/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+<iframe src="https://docs.google.com/forms/d/1-D5ny2_5HDmPBpRR69aZeC-dVY08VlDouCsdGXBCnyc/viewform?embedded=true" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>

@@ -13,10 +13,13 @@ deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
 
 It also provides instructions for the following:
 
-* Install CFEngine on a Policy Server (hub)
-* Bootstrap the Policy Server to itself
-* Install CFEngine on a Host (client)
-* Bootstrap the Host to the Policy Server
+* Install CFEngine on a Policy Server (hub) and on a Host (client)
+A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts. 
+Hosts are clients that retrieve and execute promises.
+* Bootstrap the Policy Server to itself and then bootstrap the Host(s) to the Policy Server.
+Bootstrapping establishes a trust relationship between the Policy Server 
+and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company. 
+Bootstrapping completes the installation process.
 
 _Tutorials, recommended reading. and production environment recommendations appear at the end of this page._
 
@@ -115,7 +118,7 @@ $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
 
 Upon successful completion, a confirmation message appears: "Bootstrap to '192.168.1.12' completed successfully!"
 
-Type the following the check what version of CFEngine your are running:
+Type the following to check which version of CFEngine your are running:
 
 ```
 $ /var/cfengine/bin/cf-promises --version
@@ -132,7 +135,7 @@ to at least one more VM or server and it must be on the same network as the Poli
 ## 5. Bootstrap the Host to the Policy Server
 
 The Host(s) must be bootstrapped to the Policy Server in order to establish a connection between the Host and
-the Policy Server. Run the same commands that you ran in Step 3. Note that the Policy Server and Hosts share the same IP address.
+the Policy Server. Run the same commands that you ran in Step 3. 
 
 ```
 $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
@@ -233,10 +236,17 @@ it will pull down the latest policy update and ensure that the **example.txt** f
 state). In fact, any Host that has installed CFEngine will contain the **example.txt** file (because we defined 
 the cfengine_3:: class above).
 
+### Try these advanced tutorials:
+
+* [Create a standalone policy (Hello World).][Hello World] This Hello World tutorial provides more depth into how to create business policy (promises) on the 
+command line. Here, you can get a taste of the CFEngine language as you create standalone and executable scripts.
+* [Distribute files from a central location.][Distribute files from a central location] This advanced, command-line tutorial shows 
+you how to distribute policy files from the Policy Server to all pertinent Hosts. 
+
 ## Recommended Reading
 
 * CFEngine [language concepts][Language Concepts]
-* Tutorial: [Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]
+* Getting Started Tutorial: [Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]
 
 
 ## Production Environment
@@ -261,3 +271,12 @@ depends on your specific policies, especially those that concern reporting.
   it to allow for communication on the above ports. If applicable, type the
   following two commands: /`etc/init.d/iptables stop` and `chkconfig iptables
   off`
+
+<hr>
+
+## Rate your experience
+
+Everyone is a first-time user a some point. We want to make the CFEngine Enterprise installation process easy for all of our new users. 
+Before you forget your first-time experience, we would love for you to let us know how we can improve on this process.
+
+<iframe src="https://docs.google.com/forms/d/1wnVR3HQwUNKs5fT0zf_OHjtIQxI_nd00QCFbDZOyXZk/viewform?embedded=true" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
