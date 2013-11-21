@@ -22,19 +22,21 @@ a licensed edition for enterprises that plan to use the tool in production envir
 
 The following installations are available:
 
-### CFEngine Community
+## CFEngine Community
 
-Install and test the latest [version of Community][Installing Community]. In addition to 
-instructions, the section also includes simple tutorials to get you started, followed by more 
+Install and test the latest [version of Community][Installing Community]. 
+
+In addition to 
+instructions, we include simple tutorials to get you started, followed by more 
 advanced tutorials to help your learn the CFEngine language and functionality.
 
 
-### CFEngine Enterprise
+## CFEngine Enterprise
 
 All installations feature instructions and tutorials. One tutorial teaches you how to use the 
-Mission Portal console; the others help your learn the CFEngine language and functionality. 
+Mission Portal console; the others help you learn the CFEngine language and functionality. 
 
-Just the installation that best suits your needs.
+Choose the installation that best suits your needs.
 
 #### CFEngine Enterprise (Evaluation: 25 free servers)
 

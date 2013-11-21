@@ -11,7 +11,7 @@ tags: [getting started, installation, enterprise free]
 These instructions describe how to install the latest version of CFEngine Enterprise 25 Free. This is the full
 version of CFEngine Enterprise, but the number of Hosts (clients) is limited to 25. 
 
-Note the following requirements:
+**Note the following requirements:**
 
 * To install this version of CFEngine Enterprise, your machine must be running a recent version of Linux.
 This installation script has been tested on RHEL 5 and 6, SLES 11, CentOS 5 and 6, and Debian 6 and 7.

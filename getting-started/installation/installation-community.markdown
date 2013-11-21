@@ -13,10 +13,10 @@ deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
 
 It also provides instructions for the following:
 
-* Install CFEngine on a Policy Server (hub) and on a Host (client)
+* **Install CFEngine on a Policy Server (hub) and on a Host (client).**
 A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts. 
 Hosts are clients that retrieve and execute promises.
-* Bootstrap the Policy Server to itself and then bootstrap the Host(s) to the Policy Server.
+* **Bootstrap the Policy Server to itself and then bootstrap the Host(s) to the Policy Server.**
 Bootstrapping establishes a trust relationship between the Policy Server 
 and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company. 
 Bootstrapping completes the installation process.
