@@ -46,6 +46,7 @@ following, converging towards a final state:
     vars
     defaults
     classes
+    users
     files
     packages
     guest_environments

@@ -18,6 +18,7 @@ the [bundle][bundles] type:
 | [vars][vars] - a variable, representing a value | x      | x     | x      | x       |
 | [defaults][defaults] - a default value for bundle parameters | x      | x     | x      | x       |
 | [classes][classes] - a class, representing a state of the system | x      | x     | x      | x       |
+| [users][users] - add or remove users |        | x     |        |         |
 | [files][files] - configure a file |        | x     |        |         |
 | [packages][packages] - install a package |        | x     |        |         |
 | [guest_environments][guest_environments] |        | x     |        |         |
