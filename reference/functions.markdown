@@ -44,7 +44,15 @@ true. If the function evaluates to false, then the class remains unchanged.
     }
 ```
 
-**TODO:** document that the return value of functions that return true/false can be passed into class expressions (clists) or function parameters that expect a string.
+Underneath, CFEngine functions that return `boolean` will actually
+return a context expression like `any` or `!any` which will then be
+deemed true or false by the CFEngine evaluator.  Note the truth of a
+context expression or the result of a function call may change during
+evaluation, but a class, once defined, will stay defined.
+
+Functions that return a `boolean` can thus sometimes be used in places
+where a string is accepted as well, but this behavior is not clearly
+defined or supported.  Use at your own discretion.
 
 ### Function caching
 
