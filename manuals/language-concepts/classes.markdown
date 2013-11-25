@@ -194,6 +194,9 @@ how to make complex decisions in CFEngine, with readable results. It is like
 defining aliases for class combinations. Such class 'aliases' may be specified 
 in any kind of bundle.
 
+Note that whitespace is *not* allowed between operators, so something like
+`a . b`, though perhaps more readable, will be rejected by the CFEngine parser.
+
 Classes may be combined with the operators listed here in order from highest 
 to lowest precedence:
 
