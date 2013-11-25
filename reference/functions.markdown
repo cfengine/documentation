@@ -46,6 +46,20 @@ true. If the function evaluates to false, then the class remains unchanged.
 
 **TODO:** document that the return value of functions that return true/false can be passed into class expressions (clists) or function parameters that expect a string.
 
+### Function caching
+
+Some functions are expensive, especially `execresult` and
+`returnszero` for shell execution and `ldapvalue` and friends for LDAP
+queries.  CFEngine's evaluation model will evaluate functions multiple
+times, which is a performance concern.
+
+As of 3.6.0, the new `cache_system_functions` body common parameter is
+set to `true` by default and CFEngine's evaluator will use it.
+Although you can override it to `false`, in practice you should almost
+never need to do so.  The effect of having it `true` (the default) is
+that the expensive functions will be run just once and then their
+result will be cached.
+
 ## List of all functions
 
 There are a large number of functions built into CFEngine. The following 
