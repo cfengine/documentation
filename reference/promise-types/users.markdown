@@ -9,18 +9,17 @@ tags: [reference, bundle agent, cf-agent, users, promise types]
 
 User promises are promises made about local users on a host. They
 express which users should be present on a system, and which
-attributes and group memberships they should have.
+attributes and group memberships the users should have.
 
 Every user promise has at least one attribute, `policy`, which
-describes whether the user should be present on the system or not.
-Other attributes are optional, but allow you to specify UID, home
-directory, login shell, group membership, description and password.
+describes whether or not the user should be present on the system.
+Other attributes are optional; they allow you to specify UID, home
+directory, login shell, group membership, description, and password.
 
-It is also possible to associate a bundle with a user promise, which
-will be used when the user is created in order to do house keeping
-tasks in their home directory, like putting default configuration
-files in place, installing encryption keys, storing a login picture,
-etc.
+A bundle can be associated with a user promise, such as 
+when a user is created in order to do housekeeping
+tasks in his/her home directory, like putting default configuration
+files in place, installing encryption keys, and storing a login picture.
 
 **History:** Introduced in CFEngine 3.6.0
 
@@ -46,9 +45,9 @@ etc.
 **Description:** The `description` string sets the description
 associated with a user.
 
-Exactly what this string is used for depends on the operating system,
-but most systems treat it as the full name of the user and will
-display on graphical login terminals.
+The exact use of this string depends on the operating system,
+but most systems treat it as the full name of the user and therefore
+display it on graphical login terminals.
 
 [%CFEngine_promise_attribute()%]
 
@@ -63,11 +62,10 @@ display on graphical login terminals.
 
 ### group_primary
 
-**Description:** The `group_primary` attributes sets which group the
-user should have as his/her primary group.
+**Description:** The `group_primary` attribute sets the user's primary group.
 
-**Note:** On Windows there is no difference between primary and
-secondary groups, and specifying either one will work.
+**Note:** On Windows, no difference exists between primary and
+secondary groups so specifying either one works.
 
 [%CFEngine_promise_attribute()%]
 
@@ -82,11 +80,11 @@ secondary groups, and specifying either one will work.
 
 ### groups_secondary
 
-**Description:** The `groups_secondary` attributes sets which groups
-the user should be a member of, in addition to his/her primary group.
+**Description:** The `groups_secondary` attributes sets the user's
+secondary group membership(s), in addition to his/her primary group.
 
-**Note:** On Windows there is no difference between primary and
-secondary groups, and specifying either one will work.
+**Note:** On Windows, no difference exists between primary and
+secondary groups so specifying either one works.
 
 [%CFEngine_promise_attribute()%]
 
@@ -102,16 +100,16 @@ secondary groups, and specifying either one will work.
 ### home_bundle
 
 **Description:** The `home_bundle` attribute specifies a bundle that
-will be evaluated when the user is created.
+is evaluated when the user is created.
 
-If the user already exists, the bundle will not be evaluated.
+If the user already exists, the bundle is not evaluated.
 
-The name of the promised user will not be passed to the bundle
+The name of the promised user is not passed to the bundle
 directly, but you can specify a bundle with parameters in order to
-pass that in.
+pass it in.
 
-Note that this attribute will not set the home directory in the user
-database. For that you need to use the `home_dir` attribute.
+Note that this attribute does not set the home directory in the user
+database. For that, you must use the `home_dir` attribute.
 
 [%CFEngine_promise_attribute()%]
 
@@ -138,12 +136,12 @@ database. For that you need to use the `home_dir` attribute.
 ```
 
 This example uses implicit looping to create the two users, "jack"
-and "john". Each will have their respective home directory created by
+and "john." Each has his respective home directory that is created by
 the `files` promise.
 
 ### home_bundle_inherit
 
-**Description:** The `home_bundle_inherit` attribute specifies whether
+**Description:** The `home_bundle_inherit` attribute specifies if 
 classes set in the current bundle are inherited by the bundle
 specified in the `home_bundle` attribute.
 
@@ -182,8 +180,8 @@ username starts with "j".
 **Description:** The `home_dir` attribute associates a user with the
 given home directory.
 
-Note that this attribute will not create the directory. For that you
-need to use the `home_bundle` attribute. This just sets the home
+Note that this attribute does not create the directory. For that you
+must use the `home_bundle` attribute. This just sets the home
 directory in the user database.
 
 [%CFEngine_promise_attribute()%]
@@ -202,8 +200,8 @@ directory in the user database.
 **Description:** The `password` attribute specifies a `password` body
 that contains information about a user's password.
 
-**Note:** On Windows there is no difference between primary and
-secondary groups, and specifying either one will work.
+**Note:** On Windows, no difference exists between primary and
+secondary groups so specifying either one works.
 
 **Type:** `body password`
 
@@ -221,19 +219,19 @@ secondary groups, and specifying either one will work.
 
 **Description:** Specifies the format of the given password data.
 
-If the value is "hash" then the `data` attribute is expected to
+If the value is "hash," then the `data` attribute is expected to
 contain a string with a password in hashed format. Note that CFEngine
-does not do any validation that the given hash format is supported by
-the platform. This is up to the system administrator to verify this.
-However, CFEngine will continue to run even in the event of an
+does not validate that the given hash format is supported by
+the platform. The system administrator must verify this.
+However, CFEngine continues to run even in the event of an
 unsupported password format, so it can always be corrected by updating
 the policy.
 
-If the value is "plaintext" then the `data` attribute should contain
+If the value is "plaintext," then the `data` attribute contains
 the password in plain text.
 
-**Note:** On Windows only the "plaintext" password type is supported,
-because of lack of support from the operating system for setting
+**Note:** On Windows, only the "plaintext" password type is supported,
+due to a lack of support from the operating system for setting
 hashed passwords.
 
 [%CFEngine_promise_attribute()%]
@@ -268,20 +266,20 @@ The format of the password data depends on the `format` attribute.
 ### policy
 
 **Description:** The `policy` attribute specifies what state the user
-account should have on the system.
+account has on the system.
 
-If the policy is "present", then the user will be present and active
-on the system. Note that an unset password may still prevent the user
+If the policy is **present**, the user is present and active
+on the system. Note that an unset password might still prevent the user
 from logging in.
 
-If the policy is "locked", the user will exist on system, but be
+If the policy is **locked**, the user exists on the system, but is
 prevented from logging in. Note that only logins via the PAM framework
-will be prevented. This includes normal console logins and SSH logins
+are prevented. This includes normal console logins and SSH logins
 on most systems.
 
-If the policy is "absent", the user will not exist on the system. Note
-that if a user previously existed, his/her files will not
-automatically be removed. You will need a separate `files` promise for
+If the policy is **absent**, the user does not exist on the system. Note
+that if a user previously existed, his/her files are not
+automatically removed. You must create a separate `files` promise for
 this.
 
 [%CFEngine_promise_attribute()%]
@@ -311,11 +309,10 @@ shell.
 
 ### uid
 
-**Description:** The `uid` attribute which UID number the user should
-have.
+**Description:** The `uid` attribute specifies the user's UID number.
 
 Note that if the UID of an existing user is changed, the files owned
-by that user will not automatically change ownership. You need a
+by that user do not automatically change ownership. You must create a 
 separate `files` promise for this.
 
 [%CFEngine_promise_attribute()%]
