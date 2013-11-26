@@ -126,6 +126,31 @@ use global variable lists to do this:
     }
 ```
 
+### cache_system_functions
+
+**Description:** Controls the caching of the results of system
+functions, e.g. `execresult` and `returnszero` for shell execution and
+`ldapvalue` and friends for LDAP queries.  Without this setting,
+CFEngine's evaluation model will evaluate functions multiple times,
+which is a performance concern.  See [`Functions`][Functions].
+
+Although you can override this to `false`, in practice you should
+almost never need to do so.  The effect of having it `true` (the
+default) is that the expensive functions will be run just once and
+then their result will be cached.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** true
+
+**Example:**
+
+```cf3
+    cache_system_functions => "true";
+```
+
+**History:** Was introduced in version 3.6.0.
+
 ### goal_patterns
 
 **Description:** Contains regular expressions that match promisees/topics 
