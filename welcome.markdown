@@ -7,44 +7,66 @@ sorting: 1
 alias: index.html
 ---
 
-CFEngine 3 represents the newest and most carefully researched
-technology available for configuration management. It is both simpler
-and more powerful than previous versions. [Learn more about CFEngine.](https://cfengine.com/what-is-cfengine)
+## Welcome to the CFEngine Documentation site
 
-CFEngine 3 exists in [two editions](https://cfengine.com/cfengine-comparison):
+CFEngine is a configuration management system that enables system administrators to define 
+the desired end states of IT-systems throughout their organizations. The desired state is 
+expressed through policies written using the CFEngine policy language. A **policy** is a 
+collection of **promises**, or declared intentions that you wish to reach based on your business needs. 
+This policy is typically version-controlled like any other software code, and is made available on a server (hub). 
+From there, the policy is automatically pulled down by hosts (clients) that retrieve and execute these promises 
+locally. They ensure the defined state.
 
-- **[Enterprise](https://cfengine.com/enterprise)** for organizations that 
-  demand predictability, control, and orchestration of complex, heterogenous, 
-  and distributed infrastructures.
-- **[Community Edition](https://cfengine.com/community)** - the core
-  of CFEngine for configuration management of servers running Unix-like
-  operating systems.
+CFEngine agents continuously ensure compliance with your desired state. The hub pulls down 
+and collects reports on actual states or failures encountered while implementing the desired 
+state on each and every host. You can read logs or run reports to verify the actual state of your IT-system.
 
-This documentation is valid for **all versions** of CFEngine except where noted.
+Follow this workflow and examine the relevant links as you get started with CFEngine:
 
-### Quick Links
+## Install CFEngine
 
-[Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]. This getting-started primer is perfect for new users. 
+* Choose from Community or Enterprise [versions][Installing CFEngine]
 
-[Get Started][Getting Started] with downloads and installation instructions. 
+## Define your desired state
 
-Learn [what's new][New in CFEngine] in CFEngine 3.5.
+Your system state is defined by **writing policy**.
 
-[Compare](https://cfengine.com/cfengine-comparison) Enterprise and Community.
+* Create a Hello World [policy][Hello World]
+* Learn how to write your own [policy][Writing Policy]
+* View policy [examples][Policy]
 
-Read CFEngine [documentation][CFEngine Manuals].
+Your system state can also be defined through reusable policy templates, called **sketches**. 
 
+* [Enterprise Edition][Design Center]: Learn how to use the Design Center API via the Mission Portal to 
+install, configure, and deploy sketches. View and activate sketches in the Design Center 
+through the Mission Portal.  
+* [Community Edition][Advanced Walkthrough]: Learn how to use the Design Center API (via cf-sketch) to install, 
+configure, and deploy sketches into the Masterfiles directory. 
 
-### History of CFEngine
+**Recommended for Beginners**
 
-CFEngine is a suite of programs for integrated autonomic management
-of either individual or networked computers. It has existed as a
-software suite since 1993.
+* Policy is written in [CFEngine Language][Language Concepts]
+* Learn the policy [workflow][Policy Workflow] 
+* Learn CFEngine [syntax][Syntax, identifiers and names], identifiers, and names 
+* [Promise types and attributes][Promise Types and Attributes] are necessary for writing policy
 
-With CFEngine 3, CFEngine has been changed to be both a more powerful
-tool and a much simpler tool. CFEngine 3's language interface is not
-backwards compatible with the CFEngine 2 configuration language, but it
-interoperates with CFEngine 2 so that it is "run-time compatible".
-This means that you can change over to version 3 slowly, with low
-risk and at your own speed.
+## Verify your actual state (Enterprise Only)
+
+Verify your actual state through **Reports**.
+
+* Learn about the [reporting architecture][Reporting Architecture]
+* Create reports with [SQL Queries][SQL Queries] 
+* Use the Design Center Reports (Documentation is forthcoming)
+
+## References
+
+* [Functions][Functions]
+* Special [variables][Special Variables]
+* Hard and soft [classes][Hard and Soft Classes]
+* [Enterprise API][Enterprise API] reference
+
+**Recommended for Beginners**
+
+* Learn the [components][Components and Common Control] that make up CFEngine
+
 
