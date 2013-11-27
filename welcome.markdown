@@ -37,7 +37,7 @@ Your system state is defined by **writing policy**.
 
 Your system state can also be defined through reusable policy templates, called **sketches**. 
 
-* [Enterprise Edition][Design Center]: Learn how to use the Design Center API via the Mission Portal to 
+* [Enterprise Edition](https://cfengine.com/docs/master/manuals-design-center.html): Learn how to use the Design Center API via the Mission Portal to 
 install, configure, and deploy sketches. View and activate sketches in the Design Center 
 through the Mission Portal.  
 * [Community Edition][Advanced Walkthrough]: Learn how to use the Design Center API (via cf-sketch) to install, 
