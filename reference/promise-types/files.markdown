@@ -1937,7 +1937,7 @@ implies `u` AND `g`.
 
 **Allowed input range:** `0,inf`
 
-**Description:** Integer range of file sizes
+**Description:** Integer range of file sizes in bytes
 
 **Example:**
 
