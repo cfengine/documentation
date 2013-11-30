@@ -64,7 +64,7 @@ Design Center framework:
    the system. The Design Center framework can store several parameter
    sets (each one identified by a name) for the same sketch, and from
    which you can choose to apply according to arbitrary circumstances.
-- *Enviroments* Contain conditions, expressed as
+- *Environments* contain conditions, expressed as
    [CFEngine Class Expressions](https://github.com/cfengine/documentation/blob/master/manuals/language-concepts/classes.markdown),
    that indicate when and where a particular sketch will be executed
    with a particular set of parameters. Environments also contain
@@ -303,7 +303,7 @@ defined:
       [verbose]: !any
 
 Note that the `test` and `verbose` fields are optional and default to
-`!any`, which is equivalent to "never" in CFEnfgine terms.
+`!any`, which is equivalent to "never" in CFEngine terms.
 
 Now, finally, we can activate the sketch by tying together the sketch
 name, parameter set and environment:
