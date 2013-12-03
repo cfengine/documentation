@@ -129,6 +129,25 @@ the same line after the attribute.
           "EL6" or => { "centos_6", "redhat_6" };
     }
 ```
+## Promise Handles
+
+Promise handles uniquely identify a promise within a policy. We reccomend a
+simple naming scheme of
+*bundle_name*_*promise_type*_*class_restriction*_*promiser* to keep handles
+unique and easily identifiable.
+
+```cf3
+bundle agent example
+{
+  commands:
+    dev::
+      "/usr/bin/git"
+        args    => "pull",
+        contain => in_dir("/var/srv/myrepo"),
+        ifvarclass => "redhat",
+        handle  => "example_commands_dev_redhat_git_pull";
+}
+```
 
 ## Hashrockets (=>)
 
