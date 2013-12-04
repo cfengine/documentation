@@ -175,13 +175,13 @@ put them into a separate bundle in a file `classes.cf.`
 
     body common control 
     {
-    peristent_classes::
+    persistent_classes::
       bundlesequence => { "test" };
 
-    !peristent_classes::
+    !persistent_classes::
       bundlesequence => {  "setclasses", "test" };
 
-    !peristent_classes::
+    !persistent_classes::
       inputs => { "classes.cf" };
     }
  
@@ -190,11 +190,11 @@ put them into a separate bundle in a file `classes.cf.`
     {
     reports:
 
-      !my_peristent_class::
-       "no peristent class";
+      !my_persistent_class::
+       "no persistent class";
 
-      my_peristent_class::
-        "peristent class defined";
+      my_persistent_class::
+        "persistent class defined";
     }
 ```
 
@@ -207,11 +207,11 @@ Then create `classes.cf`
     {
     classes:
 
-      "peristent_classes"            # timer flag 
+      "persistent_classes"            # timer flag 
              expression => "any",
             persistence => "480";
 
-      "my_peristent_class" 
+      "my_persistent_class" 
                     or => { ...long list or heavy function... } ,
            persistence => "480";
 
