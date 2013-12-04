@@ -64,7 +64,7 @@ defined argument type for consistency.
 ### Scalar Referencing and Expansion
 
 Scalar variables are referenced by `$(my_scalar)` (or `${my_scalar}`) and 
-expand to the single value they hold at that time. if you refer to a variable 
+expand to the single value they hold at that time. If you refer to a variable 
 by ‘$(unqualified)’, then it is assumed to belong to the current bundle. To 
 access any other (scalar) variable, you must qualify the name, using the name 
 of the bundle in which it is defined:

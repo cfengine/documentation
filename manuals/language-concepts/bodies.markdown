@@ -51,7 +51,7 @@ respectively.
     }
 ```
 
-Like [bundles][bundles], bodies have a *type*. The type of the body has to mach the left-hand side of the promise attribute in which it is used. In this case, `files` promises have an attribute `perms` that can be associated with any body of type `perms`.
+Like [bundles][bundles], bodies have a *type*. The type of the body has to match the left-hand side of the promise attribute in which it is used. In this case, `files` promises have an attribute `perms` that can be associated with any body of type `perms`.
 
 The attributes within the body are then type specific. Bodies of type `perms` consist of the file permissions, the file owner, and the file group, which the instance `system` sets to `644`, `root` and `root`, respectively.
 

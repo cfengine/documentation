@@ -662,7 +662,7 @@ See also the warning about regular expressions in
 
 ### listen
 
-**Description:** true/false enable server deamon to listen on defined
+**Description:** true/false enable server daemon to listen on defined
 port
 
 This attribute allows to disable `cf-serverd` from listening on any

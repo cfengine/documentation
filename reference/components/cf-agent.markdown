@@ -326,7 +326,7 @@ rather than a security measure.
 
 **Default value:** `LOG_USER`
 
-**Description:** The `agentfacility` mentu option policy sets the agent's 
+**Description:** The `agentfacility` menu option policy sets the agent's 
 syslog facility level.
 
 **Example:**
@@ -765,7 +765,7 @@ watched for multiple-source conflicts.
 This list of regular expressions will ensure that files matching
 the patterns of the list are never copied from more than one source
 during a single run of `cf-agent`. This may be considered a
-protection against accidential overlap of copies from diverse
+protection against accidental overlap of copies from diverse
 remote sources, or as a first-come-first-served disambiguation tool
 for lazy-evaluation of overlapping file-copy promises.
 
@@ -1163,7 +1163,7 @@ it will warn about them.
 
 ### syslog
 
-**Description:** The `syslog` menu option policy determines wether to 
+**Description:** The `syslog` menu option policy determines whether to 
 switch on output to syslog at the inform level.
 
 **Type:** [`boolean`][boolean]
