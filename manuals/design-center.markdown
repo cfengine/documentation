@@ -74,7 +74,7 @@ Design Center framework:
    arbitrary ways to fine tune the execution of each sketch on each
    machine.
    
-Sketches, Parameters and Environments, by themselves, do nothing. they
+Sketches, Parameters and Environments, by themselves, do nothing. They
 have to be combined into *Activations*:
 
 An *activation* is a combination of a sketch, a parameter set and an
