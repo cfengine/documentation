@@ -614,14 +614,8 @@ See syslog notes.
 
 ### skipverify
 
-**Description:** List of IPs or hostnames for which we expect no DNS
-binding and cannot verify
-
-Server side decision to ignore requirements of DNS identity
-confirmation.
-
-See also the warning about regular expressions in
-[`allowallconnects`][cf-serverd#allowallconnects].
+**Description:** This option is obsolete, does nothing and is retained
+for backward compatibility.
 
 **Type:** `slist`
 
