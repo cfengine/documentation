@@ -319,10 +319,11 @@ is based on a hash of the hostname. Thus a collection of hosts will
 all execute at different times, and surges in network traffic can
 be avoided.
 
-A rough rule of thumb for scaling of small updates is set the splay
-time between 1-5 minutes for up a few thousand hosts. The `splaytime`
-should not be set to a value larger than the `cf-execd` scheduling
-interval, else multiple clients might contend for data.
+A general rule for scaling of small updates is to set the splay time to
+runinterval-1 minutes for up a few thousand hosts. For example, the default
+schedule executes once every 5 minutes, so the splay time should be set to no
+more than 4 minutes. The `splaytime` should not be set to a value larger than
+the `cf-execd` scheduling interval; otherwise, clients might contend for data.
 
 **Type:** `int`
 
