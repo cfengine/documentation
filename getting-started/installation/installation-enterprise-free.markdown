@@ -19,7 +19,8 @@ This installation script has been tested on RHEL 5 and 6, SLES 11, CentOS 5 and 
 * Plan for approximately 100MB of disk space per host. Due to MongoDB's pre-allocation strategy, always provide an 
 extra 2G to 4G of disk space if you plan to bootstrap more hosts later.
 * You need a least two VMs/servers, one for the Policy Server and one for a Host (client). They must be on the same network.
-The Policy Server needs to run on a dedicated OS with a vanilla installation (no unofficial repositories/packages).
+* The Policy Server needs to run on a dedicated OS with a vanilla installation (i.e. it only has repositories and packages officially
+supported by the OS vendor)
 
 ## Installation Overview
 
