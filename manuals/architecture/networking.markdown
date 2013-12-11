@@ -212,7 +212,7 @@ There is a simple checklist for curing this problem:
 
 1.  Make sure that the domain variable is set in the configuration
     files read by both client and server; alternatively use
-    `skipidentify` and `skipverify` to decouple DNS from the the
+    `skipidentify` to decouple DNS from the the
     authentication.
 2.  Make sure that you have granted access to your client in the
     server body
