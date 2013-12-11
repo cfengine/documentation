@@ -95,6 +95,25 @@ contain the variable name of the method if the variable is a list.
     }
 ```
 
+Please note that method names must be either simple strings or slists.
+They can't be array references, for instance.  As a rule, they can
+only look like `$(name)` where `name` is either a string or an slist.
+They can't be `"$(a)$(b)"`, `$(a[b])`, and so on.
+
+Here's a full example of how you might encode bundle names and
+parameters in a slist, if you need to pack and unpack method calls in
+a portable (e.g. written in a file) format.
+
+[%CFEngine_include_snippet(unpack_method_calls.cf, #\+begin_src cfengine3, .*end_src)%]
+
+Output:
+
+```
+2013-12-11T13:33:31-0500   notice: /run/methods/'call'/unpack/methods/'relay'/call_1: R: call_1: called with parameters a and b
+2013-12-11T13:33:31-0500   notice: /run/methods/'call'/unpack/methods/'relay'/call_2: R: call_2: called with parameters x and y
+2013-12-11T13:33:31-0500   notice: /run/methods/'call'/unpack/methods/'relay'/call_2: R: call_2: called with parameters p and q
+```
+
 ***
 
 ## Attributes
