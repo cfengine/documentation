@@ -39,7 +39,17 @@ additional software is not required.
 
 ## Policy Server Requirements
 
-CFEngine recommends the following:
+### Dedicated OS
+
+The CFEngine Server is only supported when installed on a dedicated,
+vanilla OS (i.e. it only has repositories and packages officially
+supported by the OS vendor). This is because the CFEngine Server uses
+services, e.g. apache, that are configured for CFEngine and may
+conflict with other custom application configurations.
+
+One option, especially for smaller installations, is to run the
+CFEngine Server in a VM. But please consider the performance
+requirements when doing this.
 
 ### Memory
 
