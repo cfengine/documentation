@@ -382,18 +382,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 143,
+              "line": 192,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 144,
+                      "line": 193,
                       "promiser": "fields",
                       "attributes": [
                         {
-                          "line": 144,
+                          "line": 193,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -417,11 +417,11 @@
                       ]
                     },
                     {
-                      "line": 146,
+                      "line": 195,
                       "promiser": "stat[$(f)][$(fields)]",
                       "attributes": [
                         {
-                          "line": 146,
+                          "line": 195,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -445,14 +445,14 @@
               ]
             },
             {
-              "line": 148,
+              "line": 197,
               "name": "reports",
               "contexts": [
                 {
                   "name": "verbose_mode",
                   "promises": [
                     {
-                      "line": 150,
+                      "line": 199,
                       "promiser": "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])",
                       "attributes": []
                     }
@@ -464,7 +464,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 153,
+          "line": 202,
           "namespace": "default",
           "name": "logrotate",
           "bundleType": "agent",
@@ -475,18 +475,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 159,
+              "line": 225,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 160,
+                      "line": 226,
                       "promiser": "$(log_files)",
                       "attributes": [
                         {
-                          "line": 161,
+                          "line": 227,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -494,7 +494,7 @@
                           }
                         },
                         {
-                          "line": 162,
+                          "line": 228,
                           "lval": "rename",
                           "rval": {
                             "type": "functionCall",
@@ -508,7 +508,7 @@
                           }
                         },
                         {
-                          "line": 163,
+                          "line": 229,
                           "lval": "file_select",
                           "rval": {
                             "type": "functionCall",
@@ -531,7 +531,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 166,
+          "line": 232,
           "namespace": "default",
           "name": "prunedir",
           "bundleType": "agent",
@@ -541,18 +541,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 172,
+              "line": 252,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 173,
+                      "line": 253,
                       "promiser": "$(dir)",
                       "attributes": [
                         {
-                          "line": 174,
+                          "line": 254,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -560,7 +560,7 @@
                           }
                         },
                         {
-                          "line": 175,
+                          "line": 255,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -568,7 +568,7 @@
                           }
                         },
                         {
-                          "line": 176,
+                          "line": 256,
                           "lval": "file_select",
                           "rval": {
                             "type": "functionCall",
@@ -586,7 +586,7 @@
                           }
                         },
                         {
-                          "line": 177,
+                          "line": 257,
                           "lval": "depth_search",
                           "rval": {
                             "type": "functionCall",
@@ -597,6 +597,198 @@
                                 "value": "1"
                               }
                             ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 260,
+          "namespace": "default",
+          "name": "url_ping",
+          "bundleType": "agent",
+          "arguments": [
+            "host",
+            "method",
+            "port",
+            "uri"
+          ],
+          "promiseTypes": [
+            {
+              "line": 284,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 285,
+                      "promiser": "url_check",
+                      "attributes": [
+                        {
+                          "line": 288,
+                          "lval": "string",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "readtcp",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(host)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(port)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(method) $(uri) HTTP/1.1$(const.r)$(const.n)Host:$(host)$(const.r)$(const.n)$(const.r)$(const.n)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "20"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 290,
+                      "promiser": "chost",
+                      "attributes": [
+                        {
+                          "line": 290,
+                          "lval": "string",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "canonify",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(host)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 292,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 293,
+                      "promiser": "url_ok_$(chost)",
+                      "attributes": [
+                        {
+                          "line": 294,
+                          "lval": "scope",
+                          "rval": {
+                            "type": "string",
+                            "value": "namespace"
+                          }
+                        },
+                        {
+                          "line": 296,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "regcmp",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "[^\\n]*200 OK.*\\n.*"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(url_check)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 298,
+                      "promiser": "url_not_ok_$(chost)",
+                      "attributes": [
+                        {
+                          "line": 299,
+                          "lval": "scope",
+                          "rval": {
+                            "type": "string",
+                            "value": "namespace"
+                          }
+                        },
+                        {
+                          "line": 301,
+                          "lval": "not",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "regcmp",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "[^\\n]*200 OK.*\\n.*"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(url_check)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 303,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "verbose_mode",
+                  "promises": [
+                    {
+                      "line": 305,
+                      "promiser": "$(this.bundle): $(method) $(host):$(port)/$(uri) got 200 OK",
+                      "attributes": [
+                        {
+                          "line": 306,
+                          "lval": "ifvarclass",
+                          "rval": {
+                            "type": "string",
+                            "value": "url_ok_$(chost)"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 307,
+                      "promiser": "$(this.bundle): $(method) $(host):$(port)/$(uri) did *not* get 200 OK",
+                      "attributes": [
+                        {
+                          "line": 308,
+                          "lval": "ifvarclass",
+                          "rval": {
+                            "type": "string",
+                            "value": "url_not_ok_$(chost)"
                           }
                         }
                       ]
