@@ -154,8 +154,8 @@ def promise_attribute(parameters, config):
 		else:
 			lines.append("**Type:** `body %s`\n\n" % header[3])
 			return lines
-	
-	attribute_range = attribute_def["range"]
+
+	attribute_range = attribute_def.get("range")
 	if attribute_type == "option":
 		if attribute_range == "true,false,yes,no,on,off":
 			lines.append("**Type:** `boolean`\n\n")
@@ -166,6 +166,8 @@ def promise_attribute(parameters, config):
 			for attribute_value in attribute_values:
 				lines.append("* `%s`\n" % attribute_value)
 			lines.append("\n")
+	elif attribute_type == "bundle":
+		lines.append("**Type:** `%s`\n\n" % attribute_type)
 	else:
 		lines.append("**Type:** `%s`\n\n" % attribute_type)
 		if attribute_range == "":
