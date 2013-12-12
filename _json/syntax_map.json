@@ -12,6 +12,7 @@
         "processes",
         "services",
         "storage",
+        "users",
         "classes",
         "defaults",
         "meta",
@@ -2426,6 +2427,126 @@
           "visibility": "global"
         }
       }
+    },
+    "users": {
+      "status": "normal",
+      "attributes": {
+        "policy": {
+          "attribute": "policy",
+          "status": "normal",
+          "type": "option",
+          "range": "present,absent,locked",
+          "visibility": "promiseType"
+        },
+        "uid": {
+          "attribute": "uid",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "promiseType"
+        },
+        "password": {
+          "attribute": "password",
+          "status": "normal",
+          "type": "body",
+          "visibility": "promiseType"
+        },
+        "description": {
+          "attribute": "description",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "group_primary": {
+          "attribute": "group_primary",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "groups_secondary": {
+          "attribute": "groups_secondary",
+          "status": "normal",
+          "type": "slist",
+          "range": ".*",
+          "visibility": "promiseType"
+        },
+        "home_dir": {
+          "attribute": "home_dir",
+          "status": "normal",
+          "type": "string",
+          "range": "\"?(/.*)",
+          "visibility": "promiseType"
+        },
+        "home_bundle": {
+          "attribute": "home_bundle",
+          "status": "normal",
+          "type": "bundle",
+          "visibility": "promiseType"
+        },
+        "home_bundle_inherit": {
+          "attribute": "home_bundle_inherit",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "promiseType"
+        },
+        "shell": {
+          "attribute": "shell",
+          "status": "normal",
+          "type": "string",
+          "range": "\"?(/.*)",
+          "visibility": "promiseType"
+        },
+        "action": {
+          "attribute": "action",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "classes": {
+          "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "comment": {
+          "attribute": "comment",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "depends_on": {
+          "attribute": "depends_on",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        },
+        "handle": {
+          "attribute": "handle",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "ifvarclass": {
+          "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "meta": {
+          "attribute": "meta",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        }
+      }
     }
   },
   "bodyTypes": {
@@ -2681,8 +2802,8 @@
         "umask": {
           "attribute": "umask",
           "status": "normal",
-          "type": "option",
-          "range": "0,77,22,27,72,077,002,022,027,072",
+          "type": "string",
+          "range": "",
           "visibility": "body"
         },
         "exec_owner": {
@@ -4277,6 +4398,25 @@
         }
       }
     },
+    "password": {
+      "status": "normal",
+      "attributes": {
+        "format": {
+          "attribute": "format",
+          "status": "normal",
+          "type": "option",
+          "range": "plaintext,hash",
+          "visibility": "body"
+        },
+        "data": {
+          "attribute": "data",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "body"
+        }
+      }
+    },
     "common": {
       "status": "normal",
       "attributes": {
@@ -4373,6 +4513,13 @@
         },
         "fips_mode": {
           "attribute": "fips_mode",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        },
+        "cache_system_functions": {
+          "attribute": "cache_system_functions",
           "status": "normal",
           "type": "option",
           "range": "true,false,yes,no,on,off",
@@ -4782,7 +4929,7 @@
         },
         "skipverify": {
           "attribute": "skipverify",
-          "status": "normal",
+          "status": "deprecated",
           "type": "slist",
           "range": "",
           "visibility": "body"
@@ -5068,6 +5215,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "accumulated": {
@@ -5100,6 +5248,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "ago": {
@@ -5132,6 +5281,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "and": {
@@ -5139,6 +5289,7 @@
       "returnType": "string",
       "parameters": [],
       "variadic": true,
+      "cached": false,
       "category": "data"
     },
     "bundlesmatching": {
@@ -5151,6 +5302,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "canonify": {
@@ -5163,6 +5315,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "canonifyuniquely": {
@@ -5175,6 +5328,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "concat": {
@@ -5182,6 +5336,7 @@
       "returnType": "string",
       "parameters": [],
       "variadic": true,
+      "cached": false,
       "category": "data"
     },
     "changedbefore": {
@@ -5198,6 +5353,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "classify": {
@@ -5210,6 +5366,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "classmatch": {
@@ -5222,6 +5379,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "utils"
     },
     "classesmatching": {
@@ -5234,6 +5392,7 @@
         }
       ],
       "variadic": true,
+      "cached": false,
       "category": "utils"
     },
     "countclassesmatching": {
@@ -5246,6 +5405,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "utils"
     },
     "countlinesmatching": {
@@ -5262,6 +5422,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "difference": {
@@ -5278,6 +5439,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "dirname": {
@@ -5290,6 +5452,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "diskfree": {
@@ -5302,6 +5465,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "escape": {
@@ -5314,6 +5478,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "eval": {
@@ -5334,6 +5499,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "every": {
@@ -5350,6 +5516,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "execresult": {
@@ -5362,10 +5529,11 @@
         },
         {
           "type": "option",
-          "range": "useshell,noshell,powershell"
+          "range": "noshell,useshell,powershell"
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "utils"
     },
     "fileexists": {
@@ -5378,6 +5546,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "filesexist": {
@@ -5390,6 +5559,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "filesize": {
@@ -5402,6 +5572,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "filestat": {
@@ -5418,6 +5589,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "filter": {
@@ -5446,6 +5618,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "findfiles": {
@@ -5453,6 +5626,7 @@
       "returnType": "slist",
       "parameters": [],
       "variadic": true,
+      "cached": false,
       "category": "files"
     },
     "format": {
@@ -5465,6 +5639,7 @@
         }
       ],
       "variadic": true,
+      "cached": false,
       "category": "data"
     },
     "getenv": {
@@ -5481,6 +5656,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "system"
     },
     "getfields": {
@@ -5505,6 +5681,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "getgid": {
@@ -5517,6 +5694,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "getindices": {
@@ -5529,6 +5707,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "getuid": {
@@ -5541,6 +5720,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "system"
     },
     "getusers": {
@@ -5557,6 +5737,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "system"
     },
     "getvalues": {
@@ -5569,6 +5750,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "grep": {
@@ -5585,6 +5767,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "groupexists": {
@@ -5597,6 +5780,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "system"
     },
     "hash": {
@@ -5613,6 +5797,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "hashmatch": {
@@ -5633,6 +5818,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "host2ip": {
@@ -5645,6 +5831,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "ip2host": {
@@ -5657,6 +5844,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "hostinnetgroup": {
@@ -5669,6 +5857,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "system"
     },
     "hostrange": {
@@ -5685,6 +5874,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "communication"
     },
     "hostsseen": {
@@ -5705,6 +5895,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "communication"
     },
     "hostswithclass": {
@@ -5721,6 +5912,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "communication"
     },
     "hubknowledge": {
@@ -5733,6 +5925,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "ifelse": {
@@ -5740,6 +5933,7 @@
       "returnType": "string",
       "parameters": [],
       "variadic": true,
+      "cached": false,
       "category": "data"
     },
     "intersection": {
@@ -5756,6 +5950,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "iprange": {
@@ -5768,6 +5963,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "communication"
     },
     "irange": {
@@ -5784,6 +5980,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "isdir": {
@@ -5796,6 +5993,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "isexecutable": {
@@ -5808,6 +6006,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "isgreaterthan": {
@@ -5824,6 +6023,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "islessthan": {
@@ -5840,6 +6040,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "islink": {
@@ -5852,6 +6053,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "isnewerthan": {
@@ -5868,6 +6070,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "isplain": {
@@ -5880,6 +6083,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "isvariable": {
@@ -5892,6 +6096,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "utils"
     },
     "join": {
@@ -5908,6 +6113,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "lastnode": {
@@ -5924,6 +6130,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "laterthan": {
@@ -5956,6 +6163,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "ldaparray": {
@@ -5988,6 +6196,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "ldaplist": {
@@ -6020,6 +6229,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "ldapvalue": {
@@ -6052,6 +6262,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "length": {
@@ -6064,6 +6275,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "lsdir": {
@@ -6084,6 +6296,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "maparray": {
@@ -6100,6 +6313,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "maplist": {
@@ -6116,6 +6330,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "mergedata": {
@@ -6123,6 +6338,7 @@
       "returnType": "data",
       "parameters": [],
       "variadic": true,
+      "cached": false,
       "category": "data"
     },
     "none": {
@@ -6139,6 +6355,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "not": {
@@ -6151,6 +6368,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "now": {
@@ -6158,6 +6376,7 @@
       "returnType": "int",
       "parameters": [],
       "variadic": false,
+      "cached": false,
       "category": "system"
     },
     "nth": {
@@ -6174,6 +6393,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "on": {
@@ -6206,6 +6426,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "or": {
@@ -6213,7 +6434,33 @@
       "returnType": "string",
       "parameters": [],
       "variadic": true,
+      "cached": false,
       "category": "data"
+    },
+    "packagesmatching": {
+      "status": "normal",
+      "returnType": "data",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "system"
     },
     "parseintarray": {
       "status": "normal",
@@ -6245,6 +6492,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "parsejson": {
@@ -6257,6 +6505,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "parserealarray": {
@@ -6289,6 +6538,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "parsestringarray": {
@@ -6321,6 +6571,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "parsestringarrayidx": {
@@ -6353,6 +6604,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "peers": {
@@ -6373,6 +6625,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "communication"
     },
     "peerleader": {
@@ -6393,6 +6646,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "communication"
     },
     "peerleaders": {
@@ -6413,6 +6667,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "communication"
     },
     "product": {
@@ -6425,6 +6680,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "randomint": {
@@ -6441,6 +6697,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "readfile": {
@@ -6457,6 +6714,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "readintarray": {
@@ -6489,6 +6747,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "readintlist": {
@@ -6517,6 +6776,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "readjson": {
@@ -6533,6 +6793,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "readrealarray": {
@@ -6565,6 +6826,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "readreallist": {
@@ -6593,6 +6855,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "readstringarray": {
@@ -6625,6 +6888,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "readstringarrayidx": {
@@ -6657,6 +6921,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "readstringlist": {
@@ -6685,6 +6950,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "readtcp": {
@@ -6709,6 +6975,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "regarray": {
@@ -6725,6 +6992,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "regcmp": {
@@ -6741,6 +7009,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "regextract": {
@@ -6761,6 +7030,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "registryvalue": {
@@ -6777,6 +7047,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "system"
     },
     "regline": {
@@ -6793,6 +7064,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "io"
     },
     "reglist": {
@@ -6809,6 +7081,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "regldap": {
@@ -6845,6 +7118,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "remotescalar": {
@@ -6865,6 +7139,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "remoteclassesmatching": {
@@ -6889,6 +7164,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "returnszero": {
@@ -6901,10 +7177,11 @@
         },
         {
           "type": "option",
-          "range": "useshell,noshell,powershell"
+          "range": "noshell,useshell,powershell"
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "utils"
     },
     "rrange": {
@@ -6921,6 +7198,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "reverse": {
@@ -6933,6 +7211,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "selectservers": {
@@ -6965,6 +7244,7 @@
         }
       ],
       "variadic": false,
+      "cached": true,
       "category": "communication"
     },
     "shuffle": {
@@ -6981,6 +7261,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "some": {
@@ -6997,6 +7278,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "sort": {
@@ -7013,6 +7295,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "splayclass": {
@@ -7029,6 +7312,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "utils"
     },
     "splitstring": {
@@ -7049,6 +7333,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "storejson": {
@@ -7061,6 +7346,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "strcmp": {
@@ -7077,6 +7363,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "strftime": {
@@ -7097,6 +7384,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "sublist": {
@@ -7117,6 +7405,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "sum": {
@@ -7129,6 +7418,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "translatepath": {
@@ -7141,6 +7431,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "files"
     },
     "unique": {
@@ -7153,6 +7444,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "data"
     },
     "usemodule": {
@@ -7169,6 +7461,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "utils"
     },
     "userexists": {
@@ -7181,6 +7474,7 @@
         }
       ],
       "variadic": false,
+      "cached": false,
       "category": "system"
     },
     "variablesmatching": {
@@ -7193,7 +7487,94 @@
         }
       ],
       "variadic": true,
+      "cached": false,
       "category": "utils"
+    },
+    "downcase": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "head": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "int",
+          "range": "0,99999999999"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "reversestring": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "strlen": {
+      "status": "normal",
+      "returnType": "int",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "tail": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "int",
+          "range": "0,99999999999"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "upcase": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
     }
   }
 }
