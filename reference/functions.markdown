@@ -56,8 +56,8 @@ defined or supported.  Use at your own discretion.
 
 ### Function caching
 
-Some functions are expensive, especially `execresult` and
-`returnszero` for shell execution and `ldapvalue` and friends for LDAP
+Some functions are expensive, especially `execresult()` and
+`returnszero()` for shell execution and `ldapvalue()` and friends for LDAP
 queries.  CFEngine's evaluation model will evaluate functions multiple
 times, which is a performance concern.
 

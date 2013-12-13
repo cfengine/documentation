@@ -129,8 +129,8 @@ use global variable lists to do this:
 ### cache_system_functions
 
 **Description:** Controls the caching of the results of system
-functions, e.g. `execresult` and `returnszero` for shell execution and
-`ldapvalue` and friends for LDAP queries.  Without this setting,
+functions, e.g. `execresult()` and `returnszero()` for shell execution and
+`ldapvalue()` and friends for LDAP queries.  Without this setting,
 CFEngine's evaluation model will evaluate functions multiple times,
 which is a performance concern.  See [`Functions`][Functions].
 
