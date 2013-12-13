@@ -263,13 +263,17 @@ def function_prototype(parameters, config):
 			prototype = prototype[:len(prototype)-2]
 	prototype += ")"
 
-	returnType = syntax_map["functions"][function]["returnType"]
+	function = syntax_map["functions"][function]
+	returnType = function["returnType"]
+	cached = function["cached"]
 	if returnType == "context":
 		returnType = "boolean"
 
 	lines = []
 	lines = "**Prototype:** `" + prototype + "`\n\n"
 	lines += "**Return type:** `" + returnType + "`\n\n"
+	if cached:
+		lines += "The return value is [cached][Functions#Function caching].\n\n"
 
 	return lines
 
