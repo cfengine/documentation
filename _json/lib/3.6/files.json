@@ -2,7 +2,47 @@
       "bundles": [
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 59,
+          "line": 50,
+          "namespace": "default",
+          "name": "files_common",
+          "bundleType": "common",
+          "arguments": [],
+          "promiseTypes": [
+            {
+              "line": 52,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 53,
+                      "promiser": "inputs",
+                      "attributes": [
+                        {
+                          "line": 53,
+                          "lval": "slist",
+                          "rval": {
+                            "type": "list",
+                            "value": [
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/common.cf"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 65,
           "namespace": "default",
           "name": "insert_lines",
           "bundleType": "edit_line",
@@ -11,18 +51,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 61,
+              "line": 67,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 63,
+                      "line": 69,
                       "promiser": "$(lines)",
                       "attributes": [
                         {
-                          "line": 64,
+                          "line": 70,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -39,7 +79,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 69,
+          "line": 75,
           "namespace": "default",
           "name": "insert_file",
           "bundleType": "edit_line",
@@ -48,18 +88,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 71,
+              "line": 77,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 73,
+                      "line": 79,
                       "promiser": "$(templatefile)",
                       "attributes": [
                         {
-                          "line": 74,
+                          "line": 80,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -67,7 +107,7 @@
                           }
                         },
                         {
-                          "line": 75,
+                          "line": 81,
                           "lval": "insert_type",
                           "rval": {
                             "type": "string",
@@ -84,7 +124,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 80,
+          "line": 86,
           "namespace": "default",
           "name": "comment_lines_matching",
           "bundleType": "edit_line",
@@ -94,18 +134,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 85,
+              "line": 91,
               "name": "replace_patterns",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 87,
+                      "line": 93,
                       "promiser": "^($(regex))$",
                       "attributes": [
                         {
-                          "line": 89,
+                          "line": 95,
                           "lval": "replace_with",
                           "rval": {
                             "type": "functionCall",
@@ -119,7 +159,7 @@
                           }
                         },
                         {
-                          "line": 90,
+                          "line": 96,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -136,7 +176,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 95,
+          "line": 101,
           "namespace": "default",
           "name": "uncomment_lines_matching",
           "bundleType": "edit_line",
@@ -146,18 +186,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 101,
+              "line": 107,
               "name": "replace_patterns",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 103,
+                      "line": 109,
                       "promiser": "^$(comment)\\s?($(regex))$",
                       "attributes": [
                         {
-                          "line": 105,
+                          "line": 111,
                           "lval": "replace_with",
                           "rval": {
                             "type": "symbol",
@@ -165,7 +205,7 @@
                           }
                         },
                         {
-                          "line": 106,
+                          "line": 112,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -182,7 +222,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 111,
+          "line": 117,
           "namespace": "default",
           "name": "comment_lines_containing",
           "bundleType": "edit_line",
@@ -192,18 +232,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 116,
+              "line": 122,
               "name": "replace_patterns",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 118,
+                      "line": 124,
                       "promiser": "^((?!$(comment)).*$(regex).*)$",
                       "attributes": [
                         {
-                          "line": 120,
+                          "line": 126,
                           "lval": "replace_with",
                           "rval": {
                             "type": "functionCall",
@@ -217,7 +257,7 @@
                           }
                         },
                         {
-                          "line": 121,
+                          "line": 127,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -234,7 +274,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 126,
+          "line": 132,
           "namespace": "default",
           "name": "uncomment_lines_containing",
           "bundleType": "edit_line",
@@ -244,18 +284,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 132,
+              "line": 138,
               "name": "replace_patterns",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 134,
+                      "line": 140,
                       "promiser": "^$(comment)\\s?(.*$(regex).*)$",
                       "attributes": [
                         {
-                          "line": 136,
+                          "line": 142,
                           "lval": "replace_with",
                           "rval": {
                             "type": "symbol",
@@ -263,7 +303,7 @@
                           }
                         },
                         {
-                          "line": 137,
+                          "line": 143,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -280,7 +320,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 142,
+          "line": 148,
           "namespace": "default",
           "name": "delete_lines_matching",
           "bundleType": "edit_line",
@@ -289,18 +329,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 144,
+              "line": 150,
               "name": "delete_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 146,
+                      "line": 152,
                       "promiser": "$(regex)",
                       "attributes": [
                         {
-                          "line": 148,
+                          "line": 154,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -317,7 +357,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 153,
+          "line": 159,
           "namespace": "default",
           "name": "warn_lines_matching",
           "bundleType": "edit_line",
@@ -326,18 +366,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 155,
+              "line": 161,
               "name": "delete_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 157,
+                      "line": 163,
                       "promiser": "$(regex)",
                       "attributes": [
                         {
-                          "line": 159,
+                          "line": 165,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -345,7 +385,7 @@
                           }
                         },
                         {
-                          "line": 160,
+                          "line": 166,
                           "lval": "action",
                           "rval": {
                             "type": "symbol",
@@ -362,7 +402,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 165,
+          "line": 171,
           "namespace": "default",
           "name": "append_if_no_line",
           "bundleType": "edit_line",
@@ -371,18 +411,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 167,
+              "line": 173,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 169,
+                      "line": 175,
                       "promiser": "$(str)",
                       "attributes": [
                         {
-                          "line": 171,
+                          "line": 177,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -399,7 +439,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 176,
+          "line": 182,
           "namespace": "default",
           "name": "append_if_no_lines",
           "bundleType": "edit_line",
@@ -408,18 +448,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 178,
+              "line": 184,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 180,
+                      "line": 186,
                       "promiser": "$(list)",
                       "attributes": [
                         {
-                          "line": 182,
+                          "line": 188,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -436,7 +476,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 187,
+          "line": 193,
           "namespace": "default",
           "name": "replace_line_end",
           "bundleType": "edit_line",
@@ -446,18 +486,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 196,
+              "line": 202,
               "name": "field_edits",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 198,
+                      "line": 204,
                       "promiser": "\\s*$(start)\\s.*",
                       "attributes": [
                         {
-                          "line": 199,
+                          "line": 205,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -465,7 +505,7 @@
                           }
                         },
                         {
-                          "line": 200,
+                          "line": 206,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -500,7 +540,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 205,
+          "line": 211,
           "namespace": "default",
           "name": "append_to_line_end",
           "bundleType": "edit_line",
@@ -510,18 +550,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 227,
+              "line": 234,
               "name": "field_edits",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 229,
+                      "line": 236,
                       "promiser": "\\s*$(start)\\s.*",
                       "attributes": [
                         {
-                          "line": 230,
+                          "line": 237,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -529,7 +569,7 @@
                           }
                         },
                         {
-                          "line": 231,
+                          "line": 238,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -564,7 +604,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 236,
+          "line": 243,
           "namespace": "default",
           "name": "regex_replace",
           "bundleType": "edit_line",
@@ -574,18 +614,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 240,
+              "line": 247,
               "name": "replace_patterns",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 242,
+                      "line": 249,
                       "promiser": "$(find)",
                       "attributes": [
                         {
-                          "line": 243,
+                          "line": 250,
                           "lval": "replace_with",
                           "rval": {
                             "type": "functionCall",
@@ -599,7 +639,7 @@
                           }
                         },
                         {
-                          "line": 244,
+                          "line": 251,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -616,7 +656,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 249,
+          "line": 256,
           "namespace": "default",
           "name": "resolvconf",
           "bundleType": "edit_line",
@@ -626,18 +666,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 255,
+              "line": 262,
               "name": "delete_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 257,
+                      "line": 264,
                       "promiser": "search.*",
                       "attributes": [
                         {
-                          "line": 257,
+                          "line": 264,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -647,11 +687,11 @@
                       ]
                     },
                     {
-                      "line": 258,
+                      "line": 265,
                       "promiser": "nameserver.*",
                       "attributes": [
                         {
-                          "line": 258,
+                          "line": 265,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -665,18 +705,18 @@
               ]
             },
             {
-              "line": 260,
+              "line": 267,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 262,
+                      "line": 269,
                       "promiser": "search $(search)",
                       "attributes": [
                         {
-                          "line": 262,
+                          "line": 269,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -686,11 +726,11 @@
                       ]
                     },
                     {
-                      "line": 263,
+                      "line": 270,
                       "promiser": "nameserver $(list)",
                       "attributes": [
                         {
-                          "line": 263,
+                          "line": 270,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -707,7 +747,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 268,
+          "line": 275,
           "namespace": "default",
           "name": "resolvconf_o",
           "bundleType": "edit_line",
@@ -718,18 +758,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 275,
+              "line": 282,
               "name": "delete_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 277,
+                      "line": 284,
                       "promiser": "search.*",
                       "attributes": [
                         {
-                          "line": 277,
+                          "line": 284,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -739,11 +779,11 @@
                       ]
                     },
                     {
-                      "line": 278,
+                      "line": 285,
                       "promiser": "nameserver.*",
                       "attributes": [
                         {
-                          "line": 278,
+                          "line": 285,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -753,11 +793,11 @@
                       ]
                     },
                     {
-                      "line": 279,
+                      "line": 286,
                       "promiser": "options.*",
                       "attributes": [
                         {
-                          "line": 279,
+                          "line": 286,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -771,18 +811,18 @@
               ]
             },
             {
-              "line": 281,
+              "line": 288,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 283,
+                      "line": 290,
                       "promiser": "search $(search)",
                       "attributes": [
                         {
-                          "line": 283,
+                          "line": 290,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -792,11 +832,11 @@
                       ]
                     },
                     {
-                      "line": 284,
+                      "line": 291,
                       "promiser": "nameserver $(list)",
                       "attributes": [
                         {
-                          "line": 284,
+                          "line": 291,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -806,11 +846,11 @@
                       ]
                     },
                     {
-                      "line": 285,
+                      "line": 292,
                       "promiser": "options $(options)",
                       "attributes": [
                         {
-                          "line": 285,
+                          "line": 292,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -827,7 +867,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 290,
+          "line": 297,
           "namespace": "default",
           "name": "manage_variable_values_ini",
           "bundleType": "edit_line",
@@ -837,18 +877,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 323,
+              "line": 330,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 324,
+                      "line": 331,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 324,
+                          "line": 331,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -864,11 +904,11 @@
                       ]
                     },
                     {
-                      "line": 327,
+                      "line": 334,
                       "promiser": "cindex[$(index)]",
                       "attributes": [
                         {
-                          "line": 327,
+                          "line": 334,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -888,18 +928,18 @@
               ]
             },
             {
-              "line": 329,
+              "line": 336,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 330,
+                      "line": 337,
                       "promiser": "edit_$(cindex[$(index)])",
                       "attributes": [
                         {
-                          "line": 330,
+                          "line": 337,
                           "lval": "not",
                           "rval": {
                             "type": "functionCall",
@@ -917,7 +957,7 @@
                           }
                         },
                         {
-                          "line": 331,
+                          "line": 338,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -931,96 +971,16 @@
               ]
             },
             {
-              "line": 333,
+              "line": 340,
               "name": "field_edits",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 336,
+                      "line": 343,
                       "promiser": "#+\\s*$(index)\\s*=.*",
                       "attributes": [
-                        {
-                          "line": 337,
-                          "lval": "select_region",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "INI_section",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "$(sectionName)"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "line": 338,
-                          "lval": "edit_field",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "col",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "="
-                              },
-                              {
-                                "type": "string",
-                                "value": "1"
-                              },
-                              {
-                                "type": "string",
-                                "value": "$(index)"
-                              },
-                              {
-                                "type": "string",
-                                "value": "set"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "line": 339,
-                          "lval": "ifvarclass",
-                          "rval": {
-                            "type": "string",
-                            "value": "edit_$(cindex[$(index)])"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "line": 342,
-                      "promiser": "$(index)\\s*=.*",
-                      "attributes": [
-                        {
-                          "line": 343,
-                          "lval": "edit_field",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "col",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "="
-                              },
-                              {
-                                "type": "string",
-                                "value": "2"
-                              },
-                              {
-                                "type": "string",
-                                "value": "$($(tab)[$(sectionName)][$(index)])"
-                              },
-                              {
-                                "type": "string",
-                                "value": "set"
-                              }
-                            ]
-                          }
-                        },
                         {
                           "line": 344,
                           "lval": "select_region",
@@ -1037,266 +997,6 @@
                         },
                         {
                           "line": 345,
-                          "lval": "classes",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "if_ok",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "manage_variable_values_ini_not_$(cindex[$(index)])"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "line": 346,
-                          "lval": "ifvarclass",
-                          "rval": {
-                            "type": "string",
-                            "value": "edit_$(cindex[$(index)])"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "line": 348,
-              "name": "delete_lines",
-              "contexts": [
-                {
-                  "name": "any",
-                  "promises": [
-                    {
-                      "line": 349,
-                      "promiser": ".*",
-                      "attributes": [
-                        {
-                          "line": 350,
-                          "lval": "select_region",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "INI_section",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "$(sectionName)"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "line": 351,
-                          "lval": "comment",
-                          "rval": {
-                            "type": "string",
-                            "value": "Remove all entries in the region so there are no extra entries"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "line": 353,
-              "name": "insert_lines",
-              "contexts": [
-                {
-                  "name": "any",
-                  "promises": [
-                    {
-                      "line": 354,
-                      "promiser": "[$(sectionName)]",
-                      "attributes": [
-                        {
-                          "line": 355,
-                          "lval": "location",
-                          "rval": {
-                            "type": "symbol",
-                            "value": "start"
-                          }
-                        },
-                        {
-                          "line": 356,
-                          "lval": "comment",
-                          "rval": {
-                            "type": "string",
-                            "value": "Insert lines"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "line": 358,
-                      "promiser": "$(index)=$($(tab)[$(sectionName)][$(index)])",
-                      "attributes": [
-                        {
-                          "line": 359,
-                          "lval": "select_region",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "INI_section",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "$(sectionName)"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "line": 360,
-                          "lval": "ifvarclass",
-                          "rval": {
-                            "type": "string",
-                            "value": "!manage_variable_values_ini_not_$(cindex[$(index)]).edit_$(cindex[$(index)])"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 366,
-          "namespace": "default",
-          "name": "set_variable_values_ini",
-          "bundleType": "edit_line",
-          "arguments": [
-            "tab",
-            "sectionName"
-          ],
-          "promiseTypes": [
-            {
-              "line": 398,
-              "name": "vars",
-              "contexts": [
-                {
-                  "name": "any",
-                  "promises": [
-                    {
-                      "line": 399,
-                      "promiser": "index",
-                      "attributes": [
-                        {
-                          "line": 399,
-                          "lval": "slist",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "getindices",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "$(tab)[$(sectionName)]"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "line": 402,
-                      "promiser": "cindex[$(index)]",
-                      "attributes": [
-                        {
-                          "line": 402,
-                          "lval": "string",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "canonify",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "$(index)"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "line": 404,
-              "name": "classes",
-              "contexts": [
-                {
-                  "name": "any",
-                  "promises": [
-                    {
-                      "line": 405,
-                      "promiser": "edit_$(cindex[$(index)])",
-                      "attributes": [
-                        {
-                          "line": 405,
-                          "lval": "not",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "strcmp",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "$($(tab)[$(sectionName)][$(index)])"
-                              },
-                              {
-                                "type": "string",
-                                "value": "dontchange"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "line": 406,
-                          "lval": "comment",
-                          "rval": {
-                            "type": "string",
-                            "value": "Create conditions to make changes"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "line": 408,
-              "name": "field_edits",
-              "contexts": [
-                {
-                  "name": "any",
-                  "promises": [
-                    {
-                      "line": 411,
-                      "promiser": "#+\\s*$(index)\\s*=.*",
-                      "attributes": [
-                        {
-                          "line": 412,
-                          "lval": "select_region",
-                          "rval": {
-                            "type": "functionCall",
-                            "name": "INI_section",
-                            "arguments": [
-                              {
-                                "type": "string",
-                                "value": "$(sectionName)"
-                              }
-                            ]
-                          }
-                        },
-                        {
-                          "line": 413,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -1322,7 +1022,7 @@
                           }
                         },
                         {
-                          "line": 414,
+                          "line": 346,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -1332,11 +1032,11 @@
                       ]
                     },
                     {
-                      "line": 417,
+                      "line": 349,
                       "promiser": "$(index)\\s*=.*",
                       "attributes": [
                         {
-                          "line": 418,
+                          "line": 350,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -1362,7 +1062,7 @@
                           }
                         },
                         {
-                          "line": 419,
+                          "line": 351,
                           "lval": "select_region",
                           "rval": {
                             "type": "functionCall",
@@ -1376,7 +1076,7 @@
                           }
                         },
                         {
-                          "line": 420,
+                          "line": 352,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -1384,13 +1084,13 @@
                             "arguments": [
                               {
                                 "type": "string",
-                                "value": "set_variable_values_ini_not_$(cindex[$(index)])"
+                                "value": "manage_variable_values_ini_not_$(cindex[$(index)])"
                               }
                             ]
                           }
                         },
                         {
-                          "line": 421,
+                          "line": 353,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -1404,40 +1104,18 @@
               ]
             },
             {
-              "line": 423,
-              "name": "insert_lines",
+              "line": 355,
+              "name": "delete_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 424,
-                      "promiser": "[$(sectionName)]",
+                      "line": 356,
+                      "promiser": ".*",
                       "attributes": [
                         {
-                          "line": 425,
-                          "lval": "location",
-                          "rval": {
-                            "type": "symbol",
-                            "value": "start"
-                          }
-                        },
-                        {
-                          "line": 426,
-                          "lval": "comment",
-                          "rval": {
-                            "type": "string",
-                            "value": "Insert lines"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "line": 428,
-                      "promiser": "$(index)=$($(tab)[$(sectionName)][$(index)])",
-                      "attributes": [
-                        {
-                          "line": 429,
+                          "line": 357,
                           "lval": "select_region",
                           "rval": {
                             "type": "functionCall",
@@ -1451,11 +1129,72 @@
                           }
                         },
                         {
-                          "line": 430,
+                          "line": 358,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Remove all entries in the region so there are no extra entries"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 360,
+              "name": "insert_lines",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 361,
+                      "promiser": "[$(sectionName)]",
+                      "attributes": [
+                        {
+                          "line": 362,
+                          "lval": "location",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "start"
+                          }
+                        },
+                        {
+                          "line": 363,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Insert lines"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 365,
+                      "promiser": "$(index)=$($(tab)[$(sectionName)][$(index)])",
+                      "attributes": [
+                        {
+                          "line": 366,
+                          "lval": "select_region",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "INI_section",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(sectionName)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 367,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
-                            "value": "!set_variable_values_ini_not_$(cindex[$(index)]).edit_$(cindex[$(index)])"
+                            "value": "!manage_variable_values_ini_not_$(cindex[$(index)]).edit_$(cindex[$(index)])"
                           }
                         }
                       ]
@@ -1468,27 +1207,28 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 434,
+          "line": 373,
           "namespace": "default",
-          "name": "set_quoted_values",
+          "name": "set_variable_values_ini",
           "bundleType": "edit_line",
           "arguments": [
-            "v"
+            "tab",
+            "sectionName"
           ],
           "promiseTypes": [
             {
-              "line": 450,
+              "line": 405,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 451,
+                      "line": 406,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 451,
+                          "line": 406,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -1496,7 +1236,7 @@
                             "arguments": [
                               {
                                 "type": "string",
-                                "value": "$(v)"
+                                "value": "$(tab)[$(sectionName)]"
                               }
                             ]
                           }
@@ -1504,11 +1244,11 @@
                       ]
                     },
                     {
-                      "line": 454,
+                      "line": 409,
                       "promiser": "cindex[$(index)]",
                       "attributes": [
                         {
-                          "line": 454,
+                          "line": 409,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -1528,18 +1268,318 @@
               ]
             },
             {
-              "line": 456,
+              "line": 411,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 412,
+                      "promiser": "edit_$(cindex[$(index)])",
+                      "attributes": [
+                        {
+                          "line": 412,
+                          "lval": "not",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "strcmp",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$($(tab)[$(sectionName)][$(index)])"
+                              },
+                              {
+                                "type": "string",
+                                "value": "dontchange"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 413,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Create conditions to make changes"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 415,
               "name": "field_edits",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 458,
+                      "line": 418,
                       "promiser": "#+\\s*$(index)\\s*=.*",
                       "attributes": [
                         {
-                          "line": 459,
+                          "line": 419,
+                          "lval": "select_region",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "INI_section",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(sectionName)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 420,
+                          "lval": "edit_field",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "col",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "="
+                              },
+                              {
+                                "type": "string",
+                                "value": "1"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(index)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "set"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 421,
+                          "lval": "ifvarclass",
+                          "rval": {
+                            "type": "string",
+                            "value": "edit_$(cindex[$(index)])"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 424,
+                      "promiser": "$(index)\\s*=.*",
+                      "attributes": [
+                        {
+                          "line": 425,
+                          "lval": "edit_field",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "col",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "="
+                              },
+                              {
+                                "type": "string",
+                                "value": "2"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$($(tab)[$(sectionName)][$(index)])"
+                              },
+                              {
+                                "type": "string",
+                                "value": "set"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 426,
+                          "lval": "select_region",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "INI_section",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(sectionName)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 427,
+                          "lval": "classes",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "if_ok",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "set_variable_values_ini_not_$(cindex[$(index)])"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 428,
+                          "lval": "ifvarclass",
+                          "rval": {
+                            "type": "string",
+                            "value": "edit_$(cindex[$(index)])"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 430,
+              "name": "insert_lines",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 431,
+                      "promiser": "[$(sectionName)]",
+                      "attributes": [
+                        {
+                          "line": 432,
+                          "lval": "location",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "start"
+                          }
+                        },
+                        {
+                          "line": 433,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Insert lines"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 435,
+                      "promiser": "$(index)=$($(tab)[$(sectionName)][$(index)])",
+                      "attributes": [
+                        {
+                          "line": 436,
+                          "lval": "select_region",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "INI_section",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(sectionName)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 437,
+                          "lval": "ifvarclass",
+                          "rval": {
+                            "type": "string",
+                            "value": "!set_variable_values_ini_not_$(cindex[$(index)]).edit_$(cindex[$(index)])"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 441,
+          "namespace": "default",
+          "name": "set_quoted_values",
+          "bundleType": "edit_line",
+          "arguments": [
+            "v"
+          ],
+          "promiseTypes": [
+            {
+              "line": 457,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 458,
+                      "promiser": "index",
+                      "attributes": [
+                        {
+                          "line": 458,
+                          "lval": "slist",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "getindices",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(v)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 461,
+                      "promiser": "cindex[$(index)]",
+                      "attributes": [
+                        {
+                          "line": 461,
+                          "lval": "string",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "canonify",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(index)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 463,
+              "name": "field_edits",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 465,
+                      "promiser": "#+\\s*$(index)\\s*=.*",
+                      "attributes": [
+                        {
+                          "line": 466,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -1567,11 +1607,11 @@
                       ]
                     },
                     {
-                      "line": 462,
+                      "line": 469,
                       "promiser": "\\s*$(index)\\s*=.*",
                       "attributes": [
                         {
-                          "line": 463,
+                          "line": 470,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -1597,7 +1637,7 @@
                           }
                         },
                         {
-                          "line": 464,
+                          "line": 471,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -1611,7 +1651,7 @@
                           }
                         },
                         {
-                          "line": 465,
+                          "line": 472,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -1625,18 +1665,18 @@
               ]
             },
             {
-              "line": 467,
+              "line": 474,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 468,
+                      "line": 475,
                       "promiser": "$(index)=\"$($(v)[$(index)])\"",
                       "attributes": [
                         {
-                          "line": 469,
+                          "line": 476,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -1644,7 +1684,7 @@
                           }
                         },
                         {
-                          "line": 470,
+                          "line": 477,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -1661,7 +1701,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 475,
+          "line": 482,
           "namespace": "default",
           "name": "set_variable_values",
           "bundleType": "edit_line",
@@ -1670,18 +1710,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 489,
+              "line": 496,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 491,
+                      "line": 498,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 491,
+                          "line": 498,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -1697,11 +1737,11 @@
                       ]
                     },
                     {
-                      "line": 495,
+                      "line": 502,
                       "promiser": "cindex[$(index)]",
                       "attributes": [
                         {
-                          "line": 495,
+                          "line": 502,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -1717,11 +1757,11 @@
                       ]
                     },
                     {
-                      "line": 496,
+                      "line": 503,
                       "promiser": "cv",
                       "attributes": [
                         {
-                          "line": 496,
+                          "line": 503,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -1741,18 +1781,18 @@
               ]
             },
             {
-              "line": 498,
+              "line": 505,
               "name": "field_edits",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 502,
+                      "line": 509,
                       "promiser": "\\s*$(index)\\s*=.*",
                       "attributes": [
                         {
-                          "line": 504,
+                          "line": 511,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -1778,7 +1818,7 @@
                           }
                         },
                         {
-                          "line": 505,
+                          "line": 512,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -1792,7 +1832,7 @@
                           }
                         },
                         {
-                          "line": 506,
+                          "line": 513,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -1806,18 +1846,18 @@
               ]
             },
             {
-              "line": 508,
+              "line": 515,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 510,
+                      "line": 517,
                       "promiser": "$(index)=$($(v)[$(index)])",
                       "attributes": [
                         {
-                          "line": 512,
+                          "line": 519,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -1825,7 +1865,7 @@
                           }
                         },
                         {
-                          "line": 513,
+                          "line": 520,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -1842,7 +1882,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 516,
+          "line": 523,
           "namespace": "default",
           "name": "set_config_values",
           "bundleType": "edit_line",
@@ -1851,18 +1891,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 525,
+              "line": 532,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 526,
+                      "line": 533,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 526,
+                          "line": 533,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -1878,11 +1918,11 @@
                       ]
                     },
                     {
-                      "line": 529,
+                      "line": 536,
                       "promiser": "cindex[$(index)]",
                       "attributes": [
                         {
-                          "line": 529,
+                          "line": 536,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -1902,18 +1942,18 @@
               ]
             },
             {
-              "line": 531,
+              "line": 538,
               "name": "replace_patterns",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 534,
+                      "line": 541,
                       "promiser": "^\\s*($(index)\\s+(?!$($(v)[$(index)])$).*|# ?$(index)\\s+.*)$",
                       "attributes": [
                         {
-                          "line": 535,
+                          "line": 542,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -1921,7 +1961,7 @@
                           }
                         },
                         {
-                          "line": 536,
+                          "line": 543,
                           "lval": "replace_with",
                           "rval": {
                             "type": "functionCall",
@@ -1935,7 +1975,7 @@
                           }
                         },
                         {
-                          "line": 537,
+                          "line": 544,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -1955,18 +1995,18 @@
               ]
             },
             {
-              "line": 539,
+              "line": 546,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 540,
+                      "line": 547,
                       "promiser": "$(index) $($(v)[$(index)])",
                       "attributes": [
                         {
-                          "line": 541,
+                          "line": 548,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -1983,7 +2023,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 545,
+          "line": 552,
           "namespace": "default",
           "name": "set_config_values_matching",
           "bundleType": "edit_line",
@@ -1993,18 +2033,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 555,
+              "line": 562,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 556,
+                      "line": 563,
                       "promiser": "allparams",
                       "attributes": [
                         {
-                          "line": 556,
+                          "line": 563,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -2020,11 +2060,11 @@
                       ]
                     },
                     {
-                      "line": 557,
+                      "line": 564,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 557,
+                          "line": 564,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -2044,11 +2084,11 @@
                       ]
                     },
                     {
-                      "line": 560,
+                      "line": 567,
                       "promiser": "cindex[$(index)]",
                       "attributes": [
                         {
-                          "line": 560,
+                          "line": 567,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -2068,18 +2108,18 @@
               ]
             },
             {
-              "line": 562,
+              "line": 569,
               "name": "replace_patterns",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 565,
+                      "line": 572,
                       "promiser": "^\\s*($(index)\\s+(?!$($(v)[$(index)])).*|# ?$(index)\\s+.*)$",
                       "attributes": [
                         {
-                          "line": 566,
+                          "line": 573,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2087,7 +2127,7 @@
                           }
                         },
                         {
-                          "line": 567,
+                          "line": 574,
                           "lval": "replace_with",
                           "rval": {
                             "type": "functionCall",
@@ -2101,7 +2141,7 @@
                           }
                         },
                         {
-                          "line": 568,
+                          "line": 575,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -2121,18 +2161,18 @@
               ]
             },
             {
-              "line": 570,
+              "line": 577,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 571,
+                      "line": 578,
                       "promiser": "$(index) $($(v)[$(index)])",
                       "attributes": [
                         {
-                          "line": 572,
+                          "line": 579,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -2149,7 +2189,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 578,
+          "line": 585,
           "namespace": "default",
           "name": "maintain_key_values",
           "bundleType": "edit_line",
@@ -2159,18 +2199,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 584,
+              "line": 591,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 585,
+                      "line": 592,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 585,
+                          "line": 592,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -2186,11 +2226,11 @@
                       ]
                     },
                     {
-                      "line": 587,
+                      "line": 594,
                       "promiser": "cindex[$(index)]",
                       "attributes": [
                         {
-                          "line": 587,
+                          "line": 594,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -2206,11 +2246,11 @@
                       ]
                     },
                     {
-                      "line": 589,
+                      "line": 596,
                       "promiser": "keypat[$(index)]",
                       "attributes": [
                         {
-                          "line": 589,
+                          "line": 596,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2220,11 +2260,11 @@
                       ]
                     },
                     {
-                      "line": 592,
+                      "line": 599,
                       "promiser": "ve[$(index)]",
                       "attributes": [
                         {
-                          "line": 592,
+                          "line": 599,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -2244,18 +2284,18 @@
               ]
             },
             {
-              "line": 594,
+              "line": 601,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 595,
+                      "line": 602,
                       "promiser": "$(cindex[$(index)])_key_in_file",
                       "attributes": [
                         {
-                          "line": 596,
+                          "line": 603,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2263,7 +2303,7 @@
                           }
                         },
                         {
-                          "line": 597,
+                          "line": 604,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -2287,18 +2327,18 @@
               ]
             },
             {
-              "line": 599,
+              "line": 606,
               "name": "replace_patterns",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 602,
+                      "line": 609,
                       "promiser": "^($(keypat[$(index)]))(?!$(ve[$(index)])$).*",
                       "attributes": [
                         {
-                          "line": 603,
+                          "line": 610,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2306,7 +2346,7 @@
                           }
                         },
                         {
-                          "line": 604,
+                          "line": 611,
                           "lval": "replace_with",
                           "rval": {
                             "type": "functionCall",
@@ -2326,18 +2366,18 @@
               ]
             },
             {
-              "line": 606,
+              "line": 613,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 607,
+                      "line": 614,
                       "promiser": "$(index)$(sep)$($(v)[$(index)])",
                       "attributes": [
                         {
-                          "line": 608,
+                          "line": 615,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2345,7 +2385,7 @@
                           }
                         },
                         {
-                          "line": 609,
+                          "line": 616,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -2362,7 +2402,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 614,
+          "line": 621,
           "namespace": "default",
           "name": "append_users_starting",
           "bundleType": "edit_line",
@@ -2371,18 +2411,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 620,
+              "line": 627,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 622,
+                      "line": 629,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 622,
+                          "line": 629,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -2402,18 +2442,18 @@
               ]
             },
             {
-              "line": 624,
+              "line": 631,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 626,
+                      "line": 633,
                       "promiser": "add_$(index)",
                       "attributes": [
                         {
-                          "line": 626,
+                          "line": 633,
                           "lval": "not",
                           "rval": {
                             "type": "functionCall",
@@ -2427,7 +2467,7 @@
                           }
                         },
                         {
-                          "line": 627,
+                          "line": 634,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2441,18 +2481,18 @@
               ]
             },
             {
-              "line": 629,
+              "line": 636,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 631,
+                      "line": 638,
                       "promiser": "$($(v)[$(index)])",
                       "attributes": [
                         {
-                          "line": 633,
+                          "line": 640,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2460,7 +2500,7 @@
                           }
                         },
                         {
-                          "line": 634,
+                          "line": 641,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -2477,7 +2517,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 639,
+          "line": 646,
           "namespace": "default",
           "name": "append_groups_starting",
           "bundleType": "edit_line",
@@ -2486,18 +2526,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 645,
+              "line": 652,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 647,
+                      "line": 654,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 647,
+                          "line": 654,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -2517,18 +2557,18 @@
               ]
             },
             {
-              "line": 649,
+              "line": 656,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 651,
+                      "line": 658,
                       "promiser": "add_$(index)",
                       "attributes": [
                         {
-                          "line": 651,
+                          "line": 658,
                           "lval": "not",
                           "rval": {
                             "type": "functionCall",
@@ -2542,7 +2582,7 @@
                           }
                         },
                         {
-                          "line": 652,
+                          "line": 659,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2556,18 +2596,18 @@
               ]
             },
             {
-              "line": 654,
+              "line": 661,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 656,
+                      "line": 663,
                       "promiser": "$($(v)[$(index)])",
                       "attributes": [
                         {
-                          "line": 658,
+                          "line": 665,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2575,7 +2615,7 @@
                           }
                         },
                         {
-                          "line": 659,
+                          "line": 666,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -2592,7 +2632,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 665,
+          "line": 672,
           "namespace": "default",
           "name": "set_colon_field",
           "bundleType": "edit_line",
@@ -2603,18 +2643,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 671,
+              "line": 678,
               "name": "field_edits",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 673,
+                      "line": 680,
                       "promiser": "$(key):.*",
                       "attributes": [
                         {
-                          "line": 675,
+                          "line": 682,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2622,7 +2662,7 @@
                           }
                         },
                         {
-                          "line": 676,
+                          "line": 683,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -2657,7 +2697,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 681,
+          "line": 688,
           "namespace": "default",
           "name": "set_user_field",
           "bundleType": "edit_line",
@@ -2668,18 +2708,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 687,
+              "line": 694,
               "name": "field_edits",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 689,
+                      "line": 696,
                       "promiser": "$(user):.*",
                       "attributes": [
                         {
-                          "line": 691,
+                          "line": 698,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2687,7 +2727,7 @@
                           }
                         },
                         {
-                          "line": 692,
+                          "line": 699,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -2722,7 +2762,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 697,
+          "line": 704,
           "namespace": "default",
           "name": "append_user_field",
           "bundleType": "edit_line",
@@ -2733,18 +2773,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 703,
+              "line": 710,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 705,
+                      "line": 712,
                       "promiser": "val",
                       "attributes": [
                         {
-                          "line": 705,
+                          "line": 712,
                           "lval": "slist",
                           "rval": {
                             "type": "list",
@@ -2763,18 +2803,18 @@
               ]
             },
             {
-              "line": 707,
+              "line": 714,
               "name": "field_edits",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 709,
+                      "line": 716,
                       "promiser": "$(group):.*",
                       "attributes": [
                         {
-                          "line": 711,
+                          "line": 718,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2782,7 +2822,7 @@
                           }
                         },
                         {
-                          "line": 712,
+                          "line": 719,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -2817,7 +2857,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 717,
+          "line": 724,
           "namespace": "default",
           "name": "expand_template",
           "bundleType": "edit_line",
@@ -2826,18 +2866,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 723,
+              "line": 730,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 725,
+                      "line": 732,
                       "promiser": "$(templatefile)",
                       "attributes": [
                         {
-                          "line": 727,
+                          "line": 734,
                           "lval": "insert_type",
                           "rval": {
                             "type": "string",
@@ -2845,7 +2885,7 @@
                           }
                         },
                         {
-                          "line": 728,
+                          "line": 735,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2853,7 +2893,7 @@
                           }
                         },
                         {
-                          "line": 729,
+                          "line": 736,
                           "lval": "expand_scalars",
                           "rval": {
                             "type": "string",
@@ -2870,7 +2910,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 732,
+          "line": 739,
           "namespace": "default",
           "name": "replace_or_add",
           "bundleType": "edit_line",
@@ -2880,18 +2920,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 741,
+              "line": 748,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 742,
+                      "line": 749,
                       "promiser": "cline",
                       "attributes": [
                         {
-                          "line": 742,
+                          "line": 749,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -2907,11 +2947,11 @@
                       ]
                     },
                     {
-                      "line": 743,
+                      "line": 750,
                       "promiser": "eline",
                       "attributes": [
                         {
-                          "line": 743,
+                          "line": 750,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -2931,18 +2971,18 @@
               ]
             },
             {
-              "line": 745,
+              "line": 752,
               "name": "replace_patterns",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 746,
+                      "line": 753,
                       "promiser": "^(?!$(eline)$)$(pattern)$",
                       "attributes": [
                         {
-                          "line": 747,
+                          "line": 754,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -2950,7 +2990,7 @@
                           }
                         },
                         {
-                          "line": 748,
+                          "line": 755,
                           "lval": "replace_with",
                           "rval": {
                             "type": "functionCall",
@@ -2964,7 +3004,7 @@
                           }
                         },
                         {
-                          "line": 749,
+                          "line": 756,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -2984,18 +3024,18 @@
               ]
             },
             {
-              "line": 751,
+              "line": 758,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 752,
+                      "line": 759,
                       "promiser": "$(line)",
                       "attributes": [
                         {
-                          "line": 753,
+                          "line": 760,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -3012,7 +3052,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 756,
+          "line": 763,
           "namespace": "default",
           "name": "fstab_option_editor",
           "bundleType": "edit_line",
@@ -3023,18 +3063,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 773,
+              "line": 781,
               "name": "field_edits",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 774,
+                      "line": 782,
                       "promiser": "(?!#)\\S+\\s+$(mount)\\s.+",
                       "attributes": [
                         {
-                          "line": 775,
+                          "line": 783,
                           "lval": "edit_field",
                           "rval": {
                             "type": "functionCall",
@@ -3063,7 +3103,7 @@
       "bodies": [
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 50,
+          "line": 56,
           "namespace": "default",
           "name": "control",
           "bodyType": "file",
@@ -3073,14 +3113,14 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 52,
+                  "line": 58,
                   "lval": "inputs",
                   "rval": {
                     "type": "list",
                     "value": [
                       {
                         "type": "string",
-                        "value": "$(sys.local_libdir)/common.cf"
+                        "value": "@(files_common.inputs)"
                       }
                     ]
                   }
@@ -3091,67 +3131,9 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 782,
+          "line": 790,
           "namespace": "default",
           "name": "fstab_options",
-          "bodyType": "edit_field",
-          "arguments": [
-            "newval",
-            "method"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 799,
-                  "lval": "field_separator",
-                  "rval": {
-                    "type": "string",
-                    "value": "\\s+"
-                  }
-                },
-                {
-                  "line": 800,
-                  "lval": "select_field",
-                  "rval": {
-                    "type": "string",
-                    "value": "4"
-                  }
-                },
-                {
-                  "line": 801,
-                  "lval": "value_separator",
-                  "rval": {
-                    "type": "string",
-                    "value": ","
-                  }
-                },
-                {
-                  "line": 802,
-                  "lval": "field_value",
-                  "rval": {
-                    "type": "string",
-                    "value": "$(newval)"
-                  }
-                },
-                {
-                  "line": 803,
-                  "lval": "field_operation",
-                  "rval": {
-                    "type": "string",
-                    "value": "$(method)"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 806,
-          "namespace": "default",
-          "name": "quoted_var",
           "bodyType": "edit_field",
           "arguments": [
             "newval",
@@ -3166,7 +3148,7 @@
                   "lval": "field_separator",
                   "rval": {
                     "type": "string",
-                    "value": "\\\""
+                    "value": "\\s+"
                   }
                 },
                 {
@@ -3174,7 +3156,7 @@
                   "lval": "select_field",
                   "rval": {
                     "type": "string",
-                    "value": "2"
+                    "value": "4"
                   }
                 },
                 {
@@ -3182,7 +3164,7 @@
                   "lval": "value_separator",
                   "rval": {
                     "type": "string",
-                    "value": " "
+                    "value": ","
                   }
                 },
                 {
@@ -3200,9 +3182,67 @@
                     "type": "string",
                     "value": "$(method)"
                   }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 815,
+          "namespace": "default",
+          "name": "quoted_var",
+          "bodyType": "edit_field",
+          "arguments": [
+            "newval",
+            "method"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 817,
+                  "lval": "field_separator",
+                  "rval": {
+                    "type": "string",
+                    "value": "\\\""
+                  }
                 },
                 {
-                  "line": 813,
+                  "line": 818,
+                  "lval": "select_field",
+                  "rval": {
+                    "type": "string",
+                    "value": "2"
+                  }
+                },
+                {
+                  "line": 819,
+                  "lval": "value_separator",
+                  "rval": {
+                    "type": "string",
+                    "value": " "
+                  }
+                },
+                {
+                  "line": 820,
+                  "lval": "field_value",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(newval)"
+                  }
+                },
+                {
+                  "line": 821,
+                  "lval": "field_operation",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(method)"
+                  }
+                },
+                {
+                  "line": 822,
                   "lval": "extend_fields",
                   "rval": {
                     "type": "string",
@@ -3210,7 +3250,7 @@
                   }
                 },
                 {
-                  "line": 814,
+                  "line": 823,
                   "lval": "allow_blank_fields",
                   "rval": {
                     "type": "string",
@@ -3223,7 +3263,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 819,
+          "line": 828,
           "namespace": "default",
           "name": "col",
           "bodyType": "edit_field",
@@ -3238,7 +3278,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 821,
+                  "line": 830,
                   "lval": "field_separator",
                   "rval": {
                     "type": "string",
@@ -3246,7 +3286,7 @@
                   }
                 },
                 {
-                  "line": 822,
+                  "line": 831,
                   "lval": "select_field",
                   "rval": {
                     "type": "string",
@@ -3254,7 +3294,7 @@
                   }
                 },
                 {
-                  "line": 823,
+                  "line": 832,
                   "lval": "value_separator",
                   "rval": {
                     "type": "string",
@@ -3262,7 +3302,7 @@
                   }
                 },
                 {
-                  "line": 824,
+                  "line": 833,
                   "lval": "field_value",
                   "rval": {
                     "type": "string",
@@ -3270,7 +3310,7 @@
                   }
                 },
                 {
-                  "line": 825,
+                  "line": 834,
                   "lval": "field_operation",
                   "rval": {
                     "type": "string",
@@ -3278,7 +3318,7 @@
                   }
                 },
                 {
-                  "line": 826,
+                  "line": 835,
                   "lval": "extend_fields",
                   "rval": {
                     "type": "string",
@@ -3286,7 +3326,7 @@
                   }
                 },
                 {
-                  "line": 827,
+                  "line": 836,
                   "lval": "allow_blank_fields",
                   "rval": {
                     "type": "string",
@@ -3299,7 +3339,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 832,
+          "line": 841,
           "namespace": "default",
           "name": "line",
           "bodyType": "edit_field",
@@ -3314,7 +3354,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 834,
+                  "line": 843,
                   "lval": "field_separator",
                   "rval": {
                     "type": "string",
@@ -3322,7 +3362,7 @@
                   }
                 },
                 {
-                  "line": 835,
+                  "line": 844,
                   "lval": "select_field",
                   "rval": {
                     "type": "string",
@@ -3330,7 +3370,7 @@
                   }
                 },
                 {
-                  "line": 836,
+                  "line": 845,
                   "lval": "value_separator",
                   "rval": {
                     "type": "string",
@@ -3338,7 +3378,7 @@
                   }
                 },
                 {
-                  "line": 837,
+                  "line": 846,
                   "lval": "field_value",
                   "rval": {
                     "type": "string",
@@ -3346,7 +3386,7 @@
                   }
                 },
                 {
-                  "line": 838,
+                  "line": 847,
                   "lval": "field_operation",
                   "rval": {
                     "type": "string",
@@ -3354,7 +3394,7 @@
                   }
                 },
                 {
-                  "line": 839,
+                  "line": 848,
                   "lval": "extend_fields",
                   "rval": {
                     "type": "string",
@@ -3362,7 +3402,7 @@
                   }
                 },
                 {
-                  "line": 840,
+                  "line": 849,
                   "lval": "allow_blank_fields",
                   "rval": {
                     "type": "string",
@@ -3375,7 +3415,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 845,
+          "line": 854,
           "namespace": "default",
           "name": "value",
           "bodyType": "replace_with",
@@ -3387,7 +3427,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 847,
+                  "line": 856,
                   "lval": "replace_value",
                   "rval": {
                     "type": "string",
@@ -3395,7 +3435,7 @@
                   }
                 },
                 {
-                  "line": 848,
+                  "line": 857,
                   "lval": "occurrences",
                   "rval": {
                     "type": "string",
@@ -3408,7 +3448,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 853,
+          "line": 862,
           "namespace": "default",
           "name": "INI_section",
           "bodyType": "select_region",
@@ -3420,7 +3460,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 855,
+                  "line": 864,
                   "lval": "select_start",
                   "rval": {
                     "type": "string",
@@ -3428,7 +3468,7 @@
                   }
                 },
                 {
-                  "line": 856,
+                  "line": 865,
                   "lval": "select_end",
                   "rval": {
                     "type": "string",
@@ -3441,40 +3481,9 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 863,
-          "namespace": "default",
-          "name": "std_defs",
-          "bodyType": "edit_defaults",
-          "arguments": [],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 865,
-                  "lval": "empty_file_before_editing",
-                  "rval": {
-                    "type": "string",
-                    "value": "false"
-                  }
-                },
-                {
-                  "line": 866,
-                  "lval": "edit_backup",
-                  "rval": {
-                    "type": "string",
-                    "value": "false"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 872,
           "namespace": "default",
-          "name": "empty",
+          "name": "std_defs",
           "bodyType": "edit_defaults",
           "arguments": [],
           "contexts": [
@@ -3486,7 +3495,7 @@
                   "lval": "empty_file_before_editing",
                   "rval": {
                     "type": "string",
-                    "value": "true"
+                    "value": "false"
                   }
                 },
                 {
@@ -3505,7 +3514,7 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 881,
           "namespace": "default",
-          "name": "no_backup",
+          "name": "empty",
           "bodyType": "edit_defaults",
           "arguments": [],
           "contexts": [
@@ -3514,6 +3523,14 @@
               "attributes": [
                 {
                   "line": 883,
+                  "lval": "empty_file_before_editing",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                },
+                {
+                  "line": 884,
                   "lval": "edit_backup",
                   "rval": {
                     "type": "string",
@@ -3526,7 +3543,30 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 888,
+          "line": 890,
+          "namespace": "default",
+          "name": "no_backup",
+          "bodyType": "edit_defaults",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 892,
+                  "lval": "edit_backup",
+                  "rval": {
+                    "type": "string",
+                    "value": "false"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 897,
           "namespace": "default",
           "name": "backup_timestamp",
           "bodyType": "edit_defaults",
@@ -3536,7 +3576,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 890,
+                  "line": 899,
                   "lval": "empty_file_before_editing",
                   "rval": {
                     "type": "string",
@@ -3544,7 +3584,7 @@
                   }
                 },
                 {
-                  "line": 891,
+                  "line": 900,
                   "lval": "edit_backup",
                   "rval": {
                     "type": "string",
@@ -3557,7 +3597,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 899,
+          "line": 908,
           "namespace": "default",
           "name": "start",
           "bodyType": "location",
@@ -3567,7 +3607,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 901,
+                  "line": 910,
                   "lval": "before_after",
                   "rval": {
                     "type": "string",
@@ -3580,7 +3620,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 906,
+          "line": 915,
           "namespace": "default",
           "name": "after",
           "bodyType": "location",
@@ -3592,7 +3632,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 908,
+                  "line": 917,
                   "lval": "before_after",
                   "rval": {
                     "type": "string",
@@ -3600,7 +3640,7 @@
                   }
                 },
                 {
-                  "line": 909,
+                  "line": 918,
                   "lval": "select_line_matching",
                   "rval": {
                     "type": "string",
@@ -3613,7 +3653,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 914,
+          "line": 923,
           "namespace": "default",
           "name": "before",
           "bodyType": "location",
@@ -3625,7 +3665,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 916,
+                  "line": 925,
                   "lval": "before_after",
                   "rval": {
                     "type": "string",
@@ -3633,7 +3673,7 @@
                   }
                 },
                 {
-                  "line": 917,
+                  "line": 926,
                   "lval": "select_line_matching",
                   "rval": {
                     "type": "string",
@@ -3646,7 +3686,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 926,
+          "line": 935,
           "namespace": "default",
           "name": "comment",
           "bodyType": "replace_with",
@@ -3658,7 +3698,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 928,
+                  "line": 937,
                   "lval": "replace_value",
                   "rval": {
                     "type": "string",
@@ -3666,7 +3706,7 @@
                   }
                 },
                 {
-                  "line": 929,
+                  "line": 938,
                   "lval": "occurrences",
                   "rval": {
                     "type": "string",
@@ -3679,7 +3719,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 934,
+          "line": 943,
           "namespace": "default",
           "name": "uncomment",
           "bodyType": "replace_with",
@@ -3689,7 +3729,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 936,
+                  "line": 945,
                   "lval": "replace_value",
                   "rval": {
                     "type": "string",
@@ -3697,7 +3737,7 @@
                   }
                 },
                 {
-                  "line": 937,
+                  "line": 946,
                   "lval": "occurrences",
                   "rval": {
                     "type": "string",
@@ -3710,7 +3750,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 944,
+          "line": 953,
           "namespace": "default",
           "name": "secure_cp",
           "bodyType": "copy_from",
@@ -3723,7 +3763,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 946,
+                  "line": 955,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -3731,7 +3771,7 @@
                   }
                 },
                 {
-                  "line": 947,
+                  "line": 956,
                   "lval": "servers",
                   "rval": {
                     "type": "list",
@@ -3744,7 +3784,7 @@
                   }
                 },
                 {
-                  "line": 948,
+                  "line": 957,
                   "lval": "compare",
                   "rval": {
                     "type": "string",
@@ -3752,7 +3792,7 @@
                   }
                 },
                 {
-                  "line": 949,
+                  "line": 958,
                   "lval": "encrypt",
                   "rval": {
                     "type": "string",
@@ -3760,7 +3800,7 @@
                   }
                 },
                 {
-                  "line": 950,
+                  "line": 959,
                   "lval": "verify",
                   "rval": {
                     "type": "string",
@@ -3773,56 +3813,9 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 955,
-          "namespace": "default",
-          "name": "remote_cp",
-          "bodyType": "copy_from",
-          "arguments": [
-            "from",
-            "server"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 957,
-                  "lval": "servers",
-                  "rval": {
-                    "type": "list",
-                    "value": [
-                      {
-                        "type": "string",
-                        "value": "$(server)"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "line": 958,
-                  "lval": "source",
-                  "rval": {
-                    "type": "string",
-                    "value": "$(from)"
-                  }
-                },
-                {
-                  "line": 959,
-                  "lval": "compare",
-                  "rval": {
-                    "type": "string",
-                    "value": "mtime"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 964,
           "namespace": "default",
-          "name": "remote_dcp",
+          "name": "remote_cp",
           "bodyType": "copy_from",
           "arguments": [
             "from",
@@ -3858,7 +3851,7 @@
                   "lval": "compare",
                   "rval": {
                     "type": "string",
-                    "value": "digest"
+                    "value": "mtime"
                   }
                 }
               ]
@@ -3869,10 +3862,11 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 973,
           "namespace": "default",
-          "name": "local_cp",
+          "name": "remote_dcp",
           "bodyType": "copy_from",
           "arguments": [
-            "from"
+            "from",
+            "server"
           ],
           "contexts": [
             {
@@ -3880,31 +3874,19 @@
               "attributes": [
                 {
                   "line": 975,
-                  "lval": "source",
+                  "lval": "servers",
                   "rval": {
-                    "type": "string",
-                    "value": "$(from)"
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(server)"
+                      }
+                    ]
                   }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 980,
-          "namespace": "default",
-          "name": "local_dcp",
-          "bodyType": "copy_from",
-          "arguments": [
-            "from"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
+                },
                 {
-                  "line": 982,
+                  "line": 976,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -3912,7 +3894,7 @@
                   }
                 },
                 {
-                  "line": 983,
+                  "line": 977,
                   "lval": "compare",
                   "rval": {
                     "type": "string",
@@ -3925,7 +3907,65 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 988,
+          "line": 982,
+          "namespace": "default",
+          "name": "local_cp",
+          "bodyType": "copy_from",
+          "arguments": [
+            "from"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 984,
+                  "lval": "source",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(from)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 989,
+          "namespace": "default",
+          "name": "local_dcp",
+          "bodyType": "copy_from",
+          "arguments": [
+            "from"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 991,
+                  "lval": "source",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(from)"
+                  }
+                },
+                {
+                  "line": 992,
+                  "lval": "compare",
+                  "rval": {
+                    "type": "string",
+                    "value": "digest"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 997,
           "namespace": "default",
           "name": "perms_cp",
           "bodyType": "copy_from",
@@ -3937,7 +3977,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 990,
+                  "line": 999,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -3945,7 +3985,7 @@
                   }
                 },
                 {
-                  "line": 991,
+                  "line": 1000,
                   "lval": "preserve",
                   "rval": {
                     "type": "string",
@@ -3958,7 +3998,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 994,
+          "line": 1003,
           "namespace": "default",
           "name": "backup_local_cp",
           "bodyType": "copy_from",
@@ -3970,7 +4010,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 997,
+                  "line": 1006,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -3978,7 +4018,7 @@
                   }
                 },
                 {
-                  "line": 998,
+                  "line": 1007,
                   "lval": "copy_backup",
                   "rval": {
                     "type": "string",
@@ -3991,7 +4031,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1005,
+          "line": 1014,
           "namespace": "default",
           "name": "seed_cp",
           "bodyType": "copy_from",
@@ -4003,7 +4043,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1007,
+                  "line": 1016,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -4011,7 +4051,7 @@
                   }
                 },
                 {
-                  "line": 1008,
+                  "line": 1017,
                   "lval": "compare",
                   "rval": {
                     "type": "string",
@@ -4024,7 +4064,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1013,
+          "line": 1022,
           "namespace": "default",
           "name": "sync_cp",
           "bodyType": "copy_from",
@@ -4037,7 +4077,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1015,
+                  "line": 1024,
                   "lval": "servers",
                   "rval": {
                     "type": "list",
@@ -4050,7 +4090,7 @@
                   }
                 },
                 {
-                  "line": 1016,
+                  "line": 1025,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -4058,7 +4098,7 @@
                   }
                 },
                 {
-                  "line": 1017,
+                  "line": 1026,
                   "lval": "purge",
                   "rval": {
                     "type": "string",
@@ -4066,7 +4106,7 @@
                   }
                 },
                 {
-                  "line": 1018,
+                  "line": 1027,
                   "lval": "preserve",
                   "rval": {
                     "type": "string",
@@ -4074,7 +4114,7 @@
                   }
                 },
                 {
-                  "line": 1019,
+                  "line": 1028,
                   "lval": "type_check",
                   "rval": {
                     "type": "string",
@@ -4087,7 +4127,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1024,
+          "line": 1033,
           "namespace": "default",
           "name": "no_backup_cp",
           "bodyType": "copy_from",
@@ -4099,7 +4139,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1026,
+                  "line": 1035,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -4107,7 +4147,7 @@
                   }
                 },
                 {
-                  "line": 1027,
+                  "line": 1036,
                   "lval": "copy_backup",
                   "rval": {
                     "type": "string",
@@ -4120,7 +4160,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1032,
+          "line": 1041,
           "namespace": "default",
           "name": "no_backup_dcp",
           "bodyType": "copy_from",
@@ -4132,7 +4172,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1034,
+                  "line": 1043,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -4140,7 +4180,7 @@
                   }
                 },
                 {
-                  "line": 1035,
+                  "line": 1044,
                   "lval": "copy_backup",
                   "rval": {
                     "type": "string",
@@ -4148,7 +4188,7 @@
                   }
                 },
                 {
-                  "line": 1036,
+                  "line": 1045,
                   "lval": "compare",
                   "rval": {
                     "type": "string",
@@ -4161,7 +4201,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1041,
+          "line": 1050,
           "namespace": "default",
           "name": "no_backup_rcp",
           "bodyType": "copy_from",
@@ -4174,7 +4214,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1043,
+                  "line": 1052,
                   "lval": "servers",
                   "rval": {
                     "type": "list",
@@ -4187,7 +4227,7 @@
                   }
                 },
                 {
-                  "line": 1044,
+                  "line": 1053,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -4195,7 +4235,7 @@
                   }
                 },
                 {
-                  "line": 1045,
+                  "line": 1054,
                   "lval": "compare",
                   "rval": {
                     "type": "string",
@@ -4203,7 +4243,7 @@
                   }
                 },
                 {
-                  "line": 1046,
+                  "line": 1055,
                   "lval": "copy_backup",
                   "rval": {
                     "type": "string",
@@ -4216,7 +4256,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1053,
+          "line": 1062,
           "namespace": "default",
           "name": "ln_s",
           "bodyType": "link_from",
@@ -4228,7 +4268,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1055,
+                  "line": 1064,
                   "lval": "link_type",
                   "rval": {
                     "type": "string",
@@ -4236,7 +4276,7 @@
                   }
                 },
                 {
-                  "line": 1056,
+                  "line": 1065,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -4244,7 +4284,7 @@
                   }
                 },
                 {
-                  "line": 1057,
+                  "line": 1066,
                   "lval": "when_no_source",
                   "rval": {
                     "type": "string",
@@ -4257,7 +4297,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1062,
+          "line": 1071,
           "namespace": "default",
           "name": "linkchildren",
           "bodyType": "link_from",
@@ -4269,7 +4309,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1064,
+                  "line": 1073,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -4277,7 +4317,7 @@
                   }
                 },
                 {
-                  "line": 1065,
+                  "line": 1074,
                   "lval": "link_type",
                   "rval": {
                     "type": "string",
@@ -4285,7 +4325,7 @@
                   }
                 },
                 {
-                  "line": 1066,
+                  "line": 1075,
                   "lval": "when_no_source",
                   "rval": {
                     "type": "string",
@@ -4293,7 +4333,7 @@
                   }
                 },
                 {
-                  "line": 1067,
+                  "line": 1076,
                   "lval": "link_children",
                   "rval": {
                     "type": "string",
@@ -4301,7 +4341,7 @@
                   }
                 },
                 {
-                  "line": 1068,
+                  "line": 1077,
                   "lval": "when_linking_children",
                   "rval": {
                     "type": "string",
@@ -4314,7 +4354,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1075,
+          "line": 1084,
           "namespace": "default",
           "name": "m",
           "bodyType": "perms",
@@ -4326,7 +4366,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1077,
+                  "line": 1086,
                   "lval": "mode",
                   "rval": {
                     "type": "string",
@@ -4339,7 +4379,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1082,
+          "line": 1091,
           "namespace": "default",
           "name": "mo",
           "bodyType": "perms",
@@ -4352,67 +4392,14 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1084,
-                  "lval": "owners",
-                  "rval": {
-                    "type": "list",
-                    "value": [
-                      {
-                        "type": "string",
-                        "value": "$(user)"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "line": 1085,
-                  "lval": "mode",
-                  "rval": {
-                    "type": "string",
-                    "value": "$(mode)"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1090,
-          "namespace": "default",
-          "name": "mog",
-          "bodyType": "perms",
-          "arguments": [
-            "mode",
-            "user",
-            "group"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 1092,
-                  "lval": "owners",
-                  "rval": {
-                    "type": "list",
-                    "value": [
-                      {
-                        "type": "string",
-                        "value": "$(user)"
-                      }
-                    ]
-                  }
-                },
-                {
                   "line": 1093,
-                  "lval": "groups",
+                  "lval": "owners",
                   "rval": {
                     "type": "list",
                     "value": [
                       {
                         "type": "string",
-                        "value": "$(group)"
+                        "value": "$(user)"
                       }
                     ]
                   }
@@ -4433,11 +4420,12 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 1099,
           "namespace": "default",
-          "name": "og",
+          "name": "mog",
           "bodyType": "perms",
           "arguments": [
-            "u",
-            "g"
+            "mode",
+            "user",
+            "group"
           ],
           "contexts": [
             {
@@ -4451,13 +4439,65 @@
                     "value": [
                       {
                         "type": "string",
-                        "value": "$(u)"
+                        "value": "$(user)"
                       }
                     ]
                   }
                 },
                 {
                   "line": 1102,
+                  "lval": "groups",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(group)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 1103,
+                  "lval": "mode",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(mode)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 1108,
+          "namespace": "default",
+          "name": "og",
+          "bodyType": "perms",
+          "arguments": [
+            "u",
+            "g"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 1110,
+                  "lval": "owners",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(u)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 1111,
                   "lval": "groups",
                   "rval": {
                     "type": "list",
@@ -4475,7 +4515,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1107,
+          "line": 1116,
           "namespace": "default",
           "name": "owner",
           "bodyType": "perms",
@@ -4487,7 +4527,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1109,
+                  "line": 1118,
                   "lval": "owners",
                   "rval": {
                     "type": "list",
@@ -4505,7 +4545,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1116,
+          "line": 1125,
           "namespace": "default",
           "name": "access_generic",
           "bodyType": "acl",
@@ -4517,7 +4557,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1120,
+                  "line": 1129,
                   "lval": "acl_method",
                   "rval": {
                     "type": "string",
@@ -4525,7 +4565,7 @@
                   }
                 },
                 {
-                  "line": 1121,
+                  "line": 1130,
                   "lval": "aces",
                   "rval": {
                     "type": "list",
@@ -4543,7 +4583,7 @@
               "name": "windows",
               "attributes": [
                 {
-                  "line": 1124,
+                  "line": 1133,
                   "lval": "acl_type",
                   "rval": {
                     "type": "string",
@@ -4556,7 +4596,7 @@
               "name": "!windows",
               "attributes": [
                 {
-                  "line": 1127,
+                  "line": 1136,
                   "lval": "acl_type",
                   "rval": {
                     "type": "string",
@@ -4569,7 +4609,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1132,
+          "line": 1141,
           "namespace": "default",
           "name": "ntfs",
           "bodyType": "acl",
@@ -4581,7 +4621,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1134,
+                  "line": 1143,
                   "lval": "acl_type",
                   "rval": {
                     "type": "string",
@@ -4589,7 +4629,7 @@
                   }
                 },
                 {
-                  "line": 1135,
+                  "line": 1144,
                   "lval": "acl_method",
                   "rval": {
                     "type": "string",
@@ -4597,7 +4637,7 @@
                   }
                 },
                 {
-                  "line": 1136,
+                  "line": 1145,
                   "lval": "aces",
                   "rval": {
                     "type": "list",
@@ -4615,7 +4655,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1141,
+          "line": 1150,
           "namespace": "default",
           "name": "strict",
           "bodyType": "acl",
@@ -4625,7 +4665,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1145,
+                  "line": 1154,
                   "lval": "acl_method",
                   "rval": {
                     "type": "string",
@@ -4638,7 +4678,7 @@
               "name": "windows",
               "attributes": [
                 {
-                  "line": 1148,
+                  "line": 1157,
                   "lval": "aces",
                   "rval": {
                     "type": "list",
@@ -4656,7 +4696,7 @@
               "name": "!windows",
               "attributes": [
                 {
-                  "line": 1150,
+                  "line": 1159,
                   "lval": "aces",
                   "rval": {
                     "type": "list",
@@ -4674,7 +4714,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1157,
+          "line": 1166,
           "namespace": "default",
           "name": "recurse",
           "bodyType": "depth_search",
@@ -4686,7 +4726,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1160,
+                  "line": 1169,
                   "lval": "depth",
                   "rval": {
                     "type": "string",
@@ -4694,7 +4734,7 @@
                   }
                 },
                 {
-                  "line": 1161,
+                  "line": 1170,
                   "lval": "xdev",
                   "rval": {
                     "type": "string",
@@ -4707,7 +4747,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1166,
+          "line": 1175,
           "namespace": "default",
           "name": "recurse_ignore",
           "bodyType": "depth_search",
@@ -4720,7 +4760,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1168,
+                  "line": 1177,
                   "lval": "depth",
                   "rval": {
                     "type": "string",
@@ -4728,7 +4768,7 @@
                   }
                 },
                 {
-                  "line": 1169,
+                  "line": 1178,
                   "lval": "exclude_dirs",
                   "rval": {
                     "type": "list",
@@ -4746,7 +4786,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1174,
+          "line": 1183,
           "namespace": "default",
           "name": "include_base",
           "bodyType": "depth_search",
@@ -4756,7 +4796,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1176,
+                  "line": 1185,
                   "lval": "include_basedir",
                   "rval": {
                     "type": "string",
@@ -4769,7 +4809,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1179,
+          "line": 1188,
           "namespace": "default",
           "name": "recurse_with_base",
           "bodyType": "depth_search",
@@ -4781,7 +4821,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1181,
+                  "line": 1190,
                   "lval": "depth",
                   "rval": {
                     "type": "string",
@@ -4789,7 +4829,7 @@
                   }
                 },
                 {
-                  "line": 1182,
+                  "line": 1191,
                   "lval": "xdev",
                   "rval": {
                     "type": "string",
@@ -4797,7 +4837,7 @@
                   }
                 },
                 {
-                  "line": 1183,
+                  "line": 1192,
                   "lval": "include_basedir",
                   "rval": {
                     "type": "string",
@@ -4810,7 +4850,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1190,
+          "line": 1199,
           "namespace": "default",
           "name": "tidy",
           "bodyType": "delete",
@@ -4820,7 +4860,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1193,
+                  "line": 1202,
                   "lval": "dirlinks",
                   "rval": {
                     "type": "string",
@@ -4828,7 +4868,7 @@
                   }
                 },
                 {
-                  "line": 1194,
+                  "line": 1203,
                   "lval": "rmdirs",
                   "rval": {
                     "type": "string",
@@ -4841,7 +4881,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1201,
+          "line": 1210,
           "namespace": "default",
           "name": "disable",
           "bodyType": "rename",
@@ -4851,7 +4891,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1203,
+                  "line": 1212,
                   "lval": "disable",
                   "rval": {
                     "type": "string",
@@ -4864,7 +4904,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1208,
+          "line": 1217,
           "namespace": "default",
           "name": "rotate",
           "bodyType": "rename",
@@ -4876,7 +4916,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1210,
+                  "line": 1219,
                   "lval": "rotate",
                   "rval": {
                     "type": "string",
@@ -4889,7 +4929,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1215,
+          "line": 1224,
           "namespace": "default",
           "name": "to",
           "bodyType": "rename",
@@ -4901,7 +4941,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1217,
+                  "line": 1226,
                   "lval": "newname",
                   "rval": {
                     "type": "string",
@@ -4914,7 +4954,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1224,
+          "line": 1233,
           "namespace": "default",
           "name": "name_age",
           "bodyType": "file_select",
@@ -4927,7 +4967,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1226,
+                  "line": 1235,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -4940,7 +4980,7 @@
                   }
                 },
                 {
-                  "line": 1227,
+                  "line": 1236,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -4984,7 +5024,7 @@
                   }
                 },
                 {
-                  "line": 1228,
+                  "line": 1237,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -4997,7 +5037,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1233,
+          "line": 1242,
           "namespace": "default",
           "name": "days_old",
           "bodyType": "file_select",
@@ -5009,7 +5049,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1235,
+                  "line": 1244,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -5053,7 +5093,7 @@
                   }
                 },
                 {
-                  "line": 1236,
+                  "line": 1245,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5066,7 +5106,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1241,
+          "line": 1250,
           "namespace": "default",
           "name": "size_range",
           "bodyType": "file_select",
@@ -5079,7 +5119,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1243,
+                  "line": 1252,
                   "lval": "search_size",
                   "rval": {
                     "type": "functionCall",
@@ -5097,7 +5137,7 @@
                   }
                 },
                 {
-                  "line": 1244,
+                  "line": 1253,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5110,7 +5150,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1249,
+          "line": 1258,
           "namespace": "default",
           "name": "bigger_than",
           "bodyType": "file_select",
@@ -5122,7 +5162,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1251,
+                  "line": 1260,
                   "lval": "search_size",
                   "rval": {
                     "type": "functionCall",
@@ -5140,7 +5180,7 @@
                   }
                 },
                 {
-                  "line": 1252,
+                  "line": 1261,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5153,7 +5193,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1257,
+          "line": 1266,
           "namespace": "default",
           "name": "exclude",
           "bodyType": "file_select",
@@ -5165,7 +5205,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1259,
+                  "line": 1268,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -5178,7 +5218,7 @@
                   }
                 },
                 {
-                  "line": 1260,
+                  "line": 1269,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5191,7 +5231,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1265,
+          "line": 1274,
           "namespace": "default",
           "name": "plain",
           "bodyType": "file_select",
@@ -5201,7 +5241,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1267,
+                  "line": 1276,
                   "lval": "file_types",
                   "rval": {
                     "type": "list",
@@ -5214,7 +5254,7 @@
                   }
                 },
                 {
-                  "line": 1268,
+                  "line": 1277,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5227,7 +5267,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1271,
+          "line": 1280,
           "namespace": "default",
           "name": "dirs",
           "bodyType": "file_select",
@@ -5237,7 +5277,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1273,
+                  "line": 1282,
                   "lval": "file_types",
                   "rval": {
                     "type": "list",
@@ -5250,7 +5290,7 @@
                   }
                 },
                 {
-                  "line": 1274,
+                  "line": 1283,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5263,7 +5303,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1279,
+          "line": 1288,
           "namespace": "default",
           "name": "by_name",
           "bodyType": "file_select",
@@ -5275,7 +5315,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1281,
+                  "line": 1290,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -5288,7 +5328,7 @@
                   }
                 },
                 {
-                  "line": 1282,
+                  "line": 1291,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5301,7 +5341,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1287,
+          "line": 1296,
           "namespace": "default",
           "name": "ex_list",
           "bodyType": "file_select",
@@ -5313,7 +5353,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1289,
+                  "line": 1298,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -5326,7 +5366,7 @@
                   }
                 },
                 {
-                  "line": 1290,
+                  "line": 1299,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5339,7 +5379,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1295,
+          "line": 1304,
           "namespace": "default",
           "name": "all",
           "bodyType": "file_select",
@@ -5349,7 +5389,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1297,
+                  "line": 1306,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -5362,7 +5402,7 @@
                   }
                 },
                 {
-                  "line": 1298,
+                  "line": 1307,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5375,7 +5415,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1303,
+          "line": 1312,
           "namespace": "default",
           "name": "older_than",
           "bodyType": "file_select",
@@ -5392,7 +5432,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1307,
+                  "line": 1316,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -5436,7 +5476,7 @@
                   }
                 },
                 {
-                  "line": 1308,
+                  "line": 1317,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5449,7 +5489,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1313,
+          "line": 1322,
           "namespace": "default",
           "name": "filetype_older_than",
           "bodyType": "file_select",
@@ -5462,7 +5502,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1318,
+                  "line": 1327,
                   "lval": "file_types",
                   "rval": {
                     "type": "list",
@@ -5475,7 +5515,7 @@
                   }
                 },
                 {
-                  "line": 1319,
+                  "line": 1328,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -5519,7 +5559,7 @@
                   }
                 },
                 {
-                  "line": 1320,
+                  "line": 1329,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5532,7 +5572,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1325,
+          "line": 1334,
           "namespace": "default",
           "name": "filetypes_older_than",
           "bodyType": "file_select",
@@ -5545,7 +5585,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1329,
+                  "line": 1338,
                   "lval": "file_types",
                   "rval": {
                     "type": "list",
@@ -5558,7 +5598,7 @@
                   }
                 },
                 {
-                  "line": 1330,
+                  "line": 1339,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -5602,7 +5642,7 @@
                   }
                 },
                 {
-                  "line": 1331,
+                  "line": 1340,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -5615,7 +5655,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1338,
+          "line": 1347,
           "namespace": "default",
           "name": "detect_all_change",
           "bodyType": "changes",
@@ -5625,7 +5665,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1343,
+                  "line": 1352,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -5633,7 +5673,7 @@
                   }
                 },
                 {
-                  "line": 1344,
+                  "line": 1353,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -5641,7 +5681,7 @@
                   }
                 },
                 {
-                  "line": 1345,
+                  "line": 1354,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -5654,7 +5694,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1350,
+          "line": 1359,
           "namespace": "default",
           "name": "detect_all_change_using",
           "bodyType": "changes",
@@ -5666,7 +5706,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1358,
+                  "line": 1367,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -5674,7 +5714,7 @@
                   }
                 },
                 {
-                  "line": 1359,
+                  "line": 1368,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -5682,7 +5722,7 @@
                   }
                 },
                 {
-                  "line": 1360,
+                  "line": 1369,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -5695,7 +5735,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1365,
+          "line": 1374,
           "namespace": "default",
           "name": "detect_content",
           "bodyType": "changes",
@@ -5705,7 +5745,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1370,
+                  "line": 1379,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -5713,7 +5753,7 @@
                   }
                 },
                 {
-                  "line": 1371,
+                  "line": 1380,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -5721,7 +5761,7 @@
                   }
                 },
                 {
-                  "line": 1372,
+                  "line": 1381,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -5734,7 +5774,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1377,
+          "line": 1386,
           "namespace": "default",
           "name": "detect_content_using",
           "bodyType": "changes",
@@ -5746,7 +5786,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1385,
+                  "line": 1394,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -5754,7 +5794,7 @@
                   }
                 },
                 {
-                  "line": 1386,
+                  "line": 1395,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -5762,7 +5802,7 @@
                   }
                 },
                 {
-                  "line": 1387,
+                  "line": 1396,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -5775,7 +5815,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1392,
+          "line": 1401,
           "namespace": "default",
           "name": "noupdate",
           "bodyType": "changes",
@@ -5785,7 +5825,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1395,
+                  "line": 1404,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -5793,7 +5833,7 @@
                   }
                 },
                 {
-                  "line": 1396,
+                  "line": 1405,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -5801,7 +5841,7 @@
                   }
                 },
                 {
-                  "line": 1397,
+                  "line": 1406,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -5814,7 +5854,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1402,
+          "line": 1411,
           "namespace": "default",
           "name": "diff",
           "bodyType": "changes",
@@ -5824,7 +5864,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1405,
+                  "line": 1414,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -5832,7 +5872,7 @@
                   }
                 },
                 {
-                  "line": 1406,
+                  "line": 1415,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -5840,7 +5880,7 @@
                   }
                 },
                 {
-                  "line": 1407,
+                  "line": 1416,
                   "lval": "report_diffs",
                   "rval": {
                     "type": "string",
@@ -5848,7 +5888,7 @@
                   }
                 },
                 {
-                  "line": 1408,
+                  "line": 1417,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -5861,7 +5901,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1413,
+          "line": 1422,
           "namespace": "default",
           "name": "all_changes",
           "bodyType": "changes",
@@ -5871,7 +5911,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1416,
+                  "line": 1425,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -5879,7 +5919,7 @@
                   }
                 },
                 {
-                  "line": 1417,
+                  "line": 1426,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -5887,7 +5927,7 @@
                   }
                 },
                 {
-                  "line": 1418,
+                  "line": 1427,
                   "lval": "report_diffs",
                   "rval": {
                     "type": "string",
@@ -5895,7 +5935,7 @@
                   }
                 },
                 {
-                  "line": 1419,
+                  "line": 1428,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -5908,7 +5948,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1424,
+          "line": 1433,
           "namespace": "default",
           "name": "diff_noupdate",
           "bodyType": "changes",
@@ -5918,7 +5958,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1426,
+                  "line": 1435,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -5926,7 +5966,7 @@
                   }
                 },
                 {
-                  "line": 1427,
+                  "line": 1436,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -5934,7 +5974,7 @@
                   }
                 },
                 {
-                  "line": 1428,
+                  "line": 1437,
                   "lval": "report_diffs",
                   "rval": {
                     "type": "string",
@@ -5942,7 +5982,7 @@
                   }
                 },
                 {
-                  "line": 1429,
+                  "line": 1438,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
