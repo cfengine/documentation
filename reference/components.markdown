@@ -256,6 +256,16 @@ as the file which references them (this is usually
 If no filenames are specified, no other filenames will be included in the 
 compilation process.
 
+Library contents are checked for duplication by path and by hash.  For
+example, if you put `library.cf` twice in your `inputs`, the duplicate
+`library.cf` is noticed because the same path is included twice.  A
+verbose-level message is emitted but otherwise there is no error.
+
+In addition, if you include a file once with path `/x/y/z.cf` and
+again with path `/x/./y/z.cf`, the duplicate file will be rejected
+regardless of any path tricks or symbolic links.  The contents are
+hashed, so the same file can't be included twice.
+
 ### version
 
 **Description:** The `version` string contains the scalar version of the 
