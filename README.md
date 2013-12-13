@@ -171,14 +171,14 @@ it is excluded from the quote, otherwise it is included.
 
 * `[%CFEngine_library_include(filename)%]`
 
-Parsers the JSON version of the CFEngine policy in `filename` and generates
+Parses the JSON version of the CFEngine policy in `filename` and generates
 documentation from it.
 
 The generator searches for the library in the `_json` subdirectory of
-the documentation generator, and needs to be provided without file
+the documentation generator. `filename` needs to be provided without file
 extension.
 
-The generates documentation parses comments between bundle/body
+The generator parses comments between bundle/body
 prototype declaration and the opening `{` as doxygen syntax, supporting
 the following tags:
 
@@ -197,6 +197,11 @@ Generates the **Return value** statement.
 
 The content in `text` is then rendered as standard markdown, and can span
 multiple lines and paragraphs.
+
+    @ignore
+
+The generator will completely ignore this body or bundle; no documentation
+will be emitted.
 
 #### Documenting CFEngine Syntax Elements
 
