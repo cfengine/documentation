@@ -619,6 +619,7 @@ def library_include(parameters, config):
 		errorString = []
 		current_type = None
 		for element in element_list:
+			ignore = False
 			namespace = element["namespace"]
 			if namespace == "default":
 				namespace = None
@@ -632,21 +633,20 @@ def library_include(parameters, config):
 				
 			# start a new block for changed types
 			# Assumes that bundles and bodies are grouped by type in library.cf
+			print_type = False
 			if element_type != current_type:
 				current_type = element_type
-				markdown_lines.append("### " + current_type + " " + key + "\n")
-				markdown_lines.append("\n")
+				print_type = True
 		
 			prototype = name
 			if namespace:
 				prototype = namespace + ":" + prototype
-				
-			markdown_lines.append("#### " + prototype + "\n")
+
+			title = prototype
 			link_target = prototype + "()"
 			if not namespace:
 				link_target = parameters[0] + ":" + link_target
 			linkresolver.addLinkToMap("`" + prototype + "()`", link_target, html_name + "#" + prototype, config)
-			markdown_lines.append("\n")
 			
 			code_lines = []
 			documentation_lines = []
@@ -700,12 +700,18 @@ def library_include(parameters, config):
 						if headerLine.lstrip().find("@") == 0:
 							current_param = None
 							headerLine = headerLine.lstrip()[1:]
-							current_tag = headerLine[:headerLine.find(" ")]
-							headerLine = headerLine[len(current_tag) + 1:]
+							current_tag = headerLine
+							tag_end = headerLine.find(" ")
+							if tag_end != -1:
+								current_tag = current_tag[:tag_end]
+								headerLine = headerLine[tag_end + 1:]
 							documentation_dict[current_tag] = ""
 							
 						if current_tag == None:
 							continue
+						if current_tag == "ignore":
+							ignore = True
+							break
 						
 						if current_tag == "param":
 							if current_param == None:
@@ -716,7 +722,7 @@ def library_include(parameters, config):
 								documentation_dict["param_" + current_param] += headerLine + "\n"
 						else:
 							documentation_dict[current_tag] += headerLine + "\n"
-							
+
 					brief = documentation_dict.get("brief", "")
 					if len(brief):
 						documentation_lines.append("**Description:** ")
@@ -734,6 +740,8 @@ def library_include(parameters, config):
 			else: # no source lines
 				errorString.append("No source code or unable to read source code")
 
+			if ignore:
+				continue
 			arguments = element["arguments"]
 			argument_idx = 0
 			argument_lines = []
@@ -775,7 +783,13 @@ def library_include(parameters, config):
 					prototype += ")"
 				else:
 					prototype += ", "
-					
+			
+			if print_type:
+				markdown_lines.append("### " + current_type + " " + key + "\n")
+				markdown_lines.append("\n")
+			
+			markdown_lines.append("#### " + title + "\n")
+			markdown_lines.append("\n")
 			markdown_lines.append("**Prototype:** `" + prototype + "`\n")
 			markdown_lines.append("\n")
 			if len(documentation_lines):
