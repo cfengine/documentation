@@ -693,10 +693,13 @@ def library_include(parameters, config):
 						if headerLine.find("#") != 0:
 							continue
 							
-						headerLine = headerLine[1:].lstrip().rstrip()
-						if headerLine.find("@") == 0:
-							current_param = None
+						headerLine = headerLine[1:].rstrip()
+						# strip single whitespace, but maintain indentation
+						if headerLine.find(" ") == 0:
 							headerLine = headerLine[1:]
+						if headerLine.lstrip().find("@") == 0:
+							current_param = None
+							headerLine = headerLine.lstrip()[1:]
 							current_tag = headerLine[:headerLine.find(" ")]
 							headerLine = headerLine[len(current_tag) + 1:]
 							documentation_dict[current_tag] = ""
