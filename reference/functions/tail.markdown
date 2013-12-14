@@ -16,11 +16,15 @@ tags: [reference, text functions, functions, text, tail, substring]
 **Example:**
 
 ```cf3
+bundle agent example
+{
     vars:
 
-      "end"
-
-         string =>  tail("abc", "1"); # will contain "c"
+      "end" string =>  tail("abc", "1"); # will contain "c"
+    reports:
+      "end of abc = $(end)";
+    
+}
 ```
 
 **History:** Introduced in CFEngine 3.6

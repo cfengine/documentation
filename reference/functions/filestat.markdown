@@ -43,16 +43,28 @@ variable does not expand.
 **Example:**
 
 ```cf3
-    bundle agent fileinfo(f)
-    {
-      vars:
-          "fields" slist => splitstring("size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname,linktarget,linktarget_shallow", ",", 999);
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-          "stat[$(f)][$(fields)]" string => filestat($(f), $(fields));
+bundle agent example
+{
+  vars:
+      "file" string => "$(sys.resolv)";
+  methods:
+      "fileinfo" usebundle => fileinfo("$(file)");
+}
+bundle agent fileinfo(f)
+{
+  vars:
+      "fields" slist => splitstring("size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname,linktarget,linktarget_shallow", ",", 999);
 
-      reports:
-          "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])";
-    }
+      "stat[$(f)][$(fields)]" string => filestat($(f), $(fields));
+
+  reports:
+      "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])";
+}
 ```
 
 **Notes:**  

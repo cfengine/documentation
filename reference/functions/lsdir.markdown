@@ -19,8 +19,13 @@ relative to the the directory are returned.
 **Example:**
 
 ```cf3
+bundle agent example
+{
     vars:
       "listfiles" slist => lsdir("/etc", "(passwd|shadow).*", "true");
+    reports:
+      "files in list: $(listfiles)";
+}
 ```
 
 **Notes:**  

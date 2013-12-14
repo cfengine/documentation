@@ -16,11 +16,14 @@ tags: [reference, system functions, functions, getusers]
 **Example:**
 
 ```cf3
+bundle agent example
+{
     vars:
       "allusers" slist => getusers("zenoss,mysql,at","12,0");
 
     reports:
       "Found user $(allusers)";
+}
 ```
 
 **Notes:**

@@ -19,9 +19,15 @@ The arguments are standard time.
 **Example:**
 
 ```cf3
+bundle agent example
+{
     classes:
 
       "after_deadline" expression => laterthan(2000,1,1,0,0,0);
+    reports:
+      after_deadline::
+        "deadline has passed";
+}
 ```
 
 **See also:** `on()`

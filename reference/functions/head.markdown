@@ -16,11 +16,15 @@ tags: [reference, text functions, functions, text, head, substring]
 **Example:**
 
 ```cf3
+bundle agent example
+{
     vars:
 
-      "start"
+      "start" string =>  head("abc", "1"); # will contain "a"
+    reports:
+      "start of abc = $(start)";
 
-         string =>  head("abc", "1"); # will contain "a"
+}
 ```
 
 **History:** Introduced in CFEngine 3.6

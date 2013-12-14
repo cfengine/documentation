@@ -16,11 +16,16 @@ tags: [reference, text functions, functions, text, reverse, reversestring]
 **Example:**
 
 ```cf3
+bundle agent example
+{
     vars:
 
       "reversed"
 
          string =>  reversestring("abc"); # will contain "cba"
+    reports:
+      "reversed abs = $(reversed)";
+}
 ```
 
 **History:** Introduced in CFEngine 3.6

@@ -46,7 +46,7 @@ features of PCRE (where `(?ms)` changes the way that ., `^` and `$` behave), e.g
      {
      vars:
      
-       "x" string = "
+       "x" string => "
            NAME: apache2 - Apache 2.2 web server
            CATEGORY: application
            ARCH: all
@@ -62,9 +62,9 @@ features of PCRE (where `(?ms)` changes the way that ., `^` and `$` behave), e.g
      
      classes:
      
-       "pkg_installed" expression = regcmp("(.*\n)*STATUS:\s+completely installed\n(.*\n)*",$(x));
+       "pkg_installed" expression => regcmp("(.*\n)*STATUS:\s+completely installed\n(.*\n)*",$(x));
      
-       "base_is_root" expression = regcmp("(?ms).*^BASEDIR:\s+/$.*", $(x));
+       "base_is_root" expression => regcmp("(?ms).*^BASEDIR:\s+/$.*", $(x));
      
      reports:
      

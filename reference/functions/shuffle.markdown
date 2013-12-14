@@ -34,12 +34,4 @@ provide a random seed with the `randomint` function.
     }
 ```
 
-Output:
-
-```
-    shuffled by xx = 'b,a,c'
-    shuffled by yy = 'a,c,b'
-    shuffled by zz = 'c,b,a'
-```
-
 **See also:** [`sort()`][sort].

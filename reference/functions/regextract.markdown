@@ -14,7 +14,7 @@ tags: [reference, data functions, functions, regextract]
 
 If there are any back reference matches from the regular expression, then the array will be populated with the values, in the manner:
 
-```cf3
+```
     $(backref[0]) = entire string
     $(backref[1]) = back reference 1, etc
 ```

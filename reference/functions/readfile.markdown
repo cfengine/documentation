@@ -16,10 +16,15 @@ tags: [reference, io functions, functions, readfile]
 **Example:**
 
 ```cf3
+bundle agent example
+{
     vars:
 
      "xxx"   
-        string => readfile( "/home/mark/tmp/testfile" , "33" );
+        string => readfile( "/tmp/testfile" , "33" );
+    reports:
+     "content: $(xxx)";
+}
 ```
 
 **Notes:**

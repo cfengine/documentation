@@ -16,11 +16,13 @@ tags: [reference, text functions, functions, text, strlen, substring]
 **Example:**
 
 ```cf3
+bundle agent example
+{
     vars:
-
-      "length"
-
-         int =>  strlen("abc"); # will contain "3"
+      "length" int =>  strlen("abc"); # will contain "3"
+    reports:
+      "length of string abc = $(length}";
+}
 ```
 
 **History:** Introduced in CFEngine 3.6

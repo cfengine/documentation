@@ -33,15 +33,10 @@ This is a simple function to reverse a list.
                           };
 
           "reversed" slist => reverse("test");
-          "test_exact1" slist => reverse("one", "test", "false", "false", 999);
-          "test_exact2" slist => reverse(".", "test", "false", "false", 999);
-          "test_invert" slist => reverse("[0-9]", "test", "true", "true", 999);
-          "test_max2" slist => reverse(".*", "test", "true", "false", 2);
-          "test_max0" slist => reverse(".*", "test", "true", "false", 0);
-          "grep" slist => grep("[0-9]", "test");
 
       reports:
-          "The test list is $(reversed)";
+          "Original list is $(test)";
+          "The reversed list is $(reversed)";
     }
 ```
 

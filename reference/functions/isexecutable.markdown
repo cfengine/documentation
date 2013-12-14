@@ -16,9 +16,15 @@ tags: [reference, files functions, functions, isexecutable]
 **Example:**
 
 ```cf3
+bundle agent example
+{
 classes:
 
   "yes" expression => isexecutable("/bin/ls");
+reports:
+ yes::
+  "/bin/ls is an executable file";
+}
 ```
 
 **History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
