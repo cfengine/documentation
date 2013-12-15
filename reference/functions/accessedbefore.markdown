@@ -37,13 +37,3 @@ Return true if `newer` was accessed before `older`.
           "The secret changes have been accessed after the reference time";
     }
 ```
-
-Example output:
-
-```
-    touch /tmp/reference
-    touch /tmp/secretfile
-
-    /var/cfengine/bin/cf-agent -f ./unit_accessed_before.cf -K
-    R: The secret changes have been accessed after the reference time
-```

@@ -38,12 +38,3 @@ bundle agent run
 }
 
 ```
-
-Output:
-
-```
-Hello yes 1 2
-Hello yes one two
-Hello yes 3999 big
-Hello yes 3999 small
-```

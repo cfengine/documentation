@@ -64,7 +64,3 @@ context class expression as shown in the example.
           "Random Numbers: $(random1), $(random2), $(random3)";
     }
 ```
-
-Example output:
-
-    R: Random Numbers: 32, 56, 37
