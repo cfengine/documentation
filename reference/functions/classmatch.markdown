@@ -28,7 +28,7 @@ currently defined class, otherwise returns false.
     {     
       classes:
 
-        "do_it" and => { classmatch(".*_cfengine_com"), "linux" }; 
+        "do_it" and => { classmatch("cfengine_3.*"), "linux" };
 
       reports:
 
