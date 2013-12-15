@@ -23,7 +23,7 @@ of classes matched.
     bundle agent example
     {
       vars:
-        "num" int => countclassesmatching("entropy.*low");
+        "num" int => countclassesmatching("cf.*");
 
       reports:
         "Found $(num) classes matching";
