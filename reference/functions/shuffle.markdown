@@ -19,27 +19,32 @@ provide a random seed with the `randomint` function.
 **Example:**
 
 ```cf3
-    bundle agent test
-    {
-      vars:
-          "a" slist => { "b", "c", "a" };
-          "shuffles" slist => { "xx", "yy", "zz" };
+body common control
+{
+      bundlesequence => { "test" };
+}
 
-          "sa_$(shuffles)" slist => shuffle("a", $(shuffles));
+bundle agent test
+{
+  vars:
+      "a" slist => { "b", "c", "a" };
+      "shuffles" slist => { "xx", "yy", "zz" };
 
-          "j_$(shuffles)" string => join(",", "sa_$(shuffles)");
+      "sa_$(shuffles)" slist => shuffle("a", $(shuffles));
 
-      reports:
-          "shuffled by $(shuffles) = '$(j_$(shuffles))'";
-    }
+      "j_$(shuffles)" string => join(",", "sa_$(shuffles)");
+
+  reports:
+      "shuffled by $(shuffles) = '$(j_$(shuffles))'";
+}
 ```
 
 Output:
 
 ```
-    shuffled by xx = 'b,a,c'
-    shuffled by yy = 'a,c,b'
-    shuffled by zz = 'c,b,a'
+R: shuffled by xx = 'b,a,c'
+R: shuffled by yy = 'a,c,b'
+R: shuffled by zz = 'c,b,a'
 ```
 
 **See also:** [`sort()`][sort].

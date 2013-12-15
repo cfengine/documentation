@@ -16,11 +16,24 @@ tags: [reference, text functions, functions, text, strlen, substring]
 **Example:**
 
 ```cf3
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-      "length"
+bundle agent example
+{
+  vars:
+      "length" int =>  strlen("abc"); # will contain "3"
+  reports:
+      "length of string abc = $(length}";
+}
+```
 
-         int =>  strlen("abc"); # will contain "3"
+Output:
+
+```
+R: length of string abc = 3
 ```
 
 **History:** Introduced in CFEngine 3.6

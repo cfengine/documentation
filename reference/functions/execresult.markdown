@@ -26,23 +26,29 @@ potential security issue.
 ```cf3
 body common control
 {
-bundlesequence  => { "example" };
+      bundlesequence  => { "example" };
 }
 
 bundle agent example
 
-{     
-vars:
+{
+  vars:
 
-  "my_result" string => execresult("/bin/ls /tmp","noshell");
+      "my_result" string => execresult("/bin/ls /tmp","noshell");
 
-reports:
+  reports:
 
-  linux::
+    linux::
 
-    "Variable is $(my_result)";
+      "Variable is $(my_result)";
 
 }
+```
+
+Output:
+
+```
+R: Variable is accessedbefore.cf
 ```
 
 **Notes:** you should never use this function to execute commands that

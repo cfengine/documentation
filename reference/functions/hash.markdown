@@ -21,15 +21,26 @@ handled.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
 
-{     
-vars:
+{
+  vars:
 
-  "md5" string => hash("CFEngine is not cryptic","md5");
+      "md5" string => hash("CFEngine is not cryptic","md5");
 
-reports:
-    "Hashed to: $(md5)";
+  reports:
+      "Hashed to: $(md5)";
 }
+```
+
+Output:
+
+```
+R: Hashed to: 05cdd545234c55892af49e1530cddc41
 ```
 

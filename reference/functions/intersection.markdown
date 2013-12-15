@@ -16,22 +16,36 @@ tags: [reference, data functions, functions, intersection]
 **Example:**
 
 ```cf3
-    bundle agent test
-    {
-      vars:
-          "a" slist => { 1,2,3,"x" };
-          "b" slist => { "x" };
+body common control
+{
+      bundlesequence => { "test" };
+}
 
-          "listname1" slist => { "a", "b" };
-          "listname2" slist => { "a", "b" };
-          "$(listname1)_str" string => join(",", $(listname1));
+bundle agent test
+{
+  vars:
+      "a" slist => { 1,2,3,"x" };
+      "b" slist => { "x" };
 
-          "int_$(listname1)_$(listname2)" slist => intersection($(listname1), $(listname2));
-          "int_$(listname1)_$(listname2)_str" string => join(",", "int_$(listname1)_$(listname2)");
+      "listname1" slist => { "a", "b" };
+      "listname2" slist => { "a", "b" };
+      "$(listname1)_str" string => join(",", $(listname1));
 
-      reports:
-          "The intersection of list '$($(listname1)_str)' with '$($(listname2)_str)' is '$(int_$(listname1)_$(listname2)_str)'";
-    }
+      "int_$(listname1)_$(listname2)" slist => intersection($(listname1), $(listname2));
+      "int_$(listname1)_$(listname2)_str" string => join(",", "int_$(listname1)_$(listname2)");
+
+  reports:
+      "The intersection of list '$($(listname1)_str)' with '$($(listname2)_str)' is '$(int_$(listname1)_$(listname2)_str)'";
+}
+```
+
+Output:
+
+```
+R: The intersection of list '1,2,3,x' with '1,2,3,x' is '1,2,3,x'
+R: The intersection of list '1,2,3,x' with 'x' is 'x'
+R: The intersection of list 'x' with '1,2,3,x' is 'x'
+R: The intersection of list 'x' with 'x' is 'x'
 ```
 
 **See also:** [`difference()`][difference].

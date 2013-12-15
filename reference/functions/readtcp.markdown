@@ -25,26 +25,37 @@ connections fully before deploying.
 **Example:**
 
 ```cf3
-    bundle agent example
-    {     
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
 
       "my80" string => readtcp("research.iu.hio.no","80","GET /index.php HTTP/1.1$(const.r)$(const.n)Host: research.iu.hio.no$(const.r)$(const.n)$(const.r)$(const.n)",20);
 
-    classes:
+  classes:
 
       "server_ok" expression => regcmp("[^\n]*200 OK.*\n.*","$(my80)");
 
-    reports:
+  reports:
 
-      server_ok::
+    server_ok::
 
-        "Server is alive";
+      "Server is alive";
 
-      !server_ok::
+    !server_ok::
 
-        "Server is not responding - got $(my80)";
-    }
+      "Server is not responding - got $(my80)";
+}
+```
+
+Output:
+
+```
+R: Server is alive
 ```
 
 **Notes:** Note that on some systems the timeout mechanism does not seem to

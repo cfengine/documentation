@@ -20,21 +20,32 @@ argument must be a user name or user id.
 **Example:**
 
 ```cf3
-    bundle agent example
-    {     
-      classes:
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-          "ok" expression => userexists("root");
+bundle agent example
+{
+  classes:
 
-      reports:
+      "ok" expression => userexists("root");
 
-        ok::
+  reports:
 
-          "Root exists";
+    ok::
 
-        !ok::
+      "Root exists";
 
-          "Root does not exist";
-    }
+    !ok::
+
+      "Root does not exist";
+}
+```
+
+Output:
+
+```
+R: Root exists
 ```
 

@@ -43,16 +43,53 @@ variable does not expand.
 **Example:**
 
 ```cf3
-    bundle agent fileinfo(f)
-    {
-      vars:
-          "fields" slist => splitstring("size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname,linktarget,linktarget_shallow", ",", 999);
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-          "stat[$(f)][$(fields)]" string => filestat($(f), $(fields));
+bundle agent example
+{
+  vars:
+      "file" string => "$(sys.resolv)";
+  methods:
+      "fileinfo" usebundle => fileinfo("$(file)");
+}
+bundle agent fileinfo(f)
+{
+  vars:
+      "fields" slist => splitstring("size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname,linktarget,linktarget_shallow", ",", 999);
 
-      reports:
-          "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])";
-    }
+      "stat[$(f)][$(fields)]" string => filestat($(f), $(fields));
+
+  reports:
+      "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])";
+}
+```
+
+Output:
+
+```
+R: fileinfo: file /etc/resolv.conf has size = 45
+R: fileinfo: file /etc/resolv.conf has gid = 0
+R: fileinfo: file /etc/resolv.conf has uid = 0
+R: fileinfo: file /etc/resolv.conf has ino = 2884988
+R: fileinfo: file /etc/resolv.conf has nlink = 1
+R: fileinfo: file /etc/resolv.conf has ctime = 1370031523
+R: fileinfo: file /etc/resolv.conf has atime = 1387021332
+R: fileinfo: file /etc/resolv.conf has mtime = 1370031523
+R: fileinfo: file /etc/resolv.conf has mode = 33188
+R: fileinfo: file /etc/resolv.conf has modeoct = 100644
+R: fileinfo: file /etc/resolv.conf has permstr = -rw-r--r--
+R: fileinfo: file /etc/resolv.conf has permoct = 644
+R: fileinfo: file /etc/resolv.conf has type = regular file
+R: fileinfo: file /etc/resolv.conf has devno = 2049
+R: fileinfo: file /etc/resolv.conf has dev_minor = 1
+R: fileinfo: file /etc/resolv.conf has dev_major = 8
+R: fileinfo: file /etc/resolv.conf has basename = resolv.conf
+R: fileinfo: file /etc/resolv.conf has dirname = /etc
+R: fileinfo: file /etc/resolv.conf has linktarget = /etc/resolv.conf
+R: fileinfo: file /etc/resolv.conf has linktarget_shallow = /etc/resolv.conf
 ```
 
 **Notes:**  

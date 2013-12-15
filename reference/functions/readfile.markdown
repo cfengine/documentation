@@ -16,10 +16,26 @@ tags: [reference, io functions, functions, readfile]
 **Example:**
 
 ```cf3
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-     "xxx"   
-        string => readfile( "/home/mark/tmp/testfile" , "33" );
+bundle agent example
+{
+  vars:
+
+      "xxx"
+      string => readfile( "/tmp/testfile" , "33" );
+  reports:
+      "content: $(xxx)";
+}
+```
+
+Output:
+
+```
+R: content: $(xxx)
 ```
 
 **Notes:**

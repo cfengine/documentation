@@ -20,17 +20,28 @@ be detected using this function.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
-{     
-classes:
+{
+  classes:
 
-  "islink" expression => islink("/tmp/link");
+      "islink" expression => islink("/tmp/link");
 
-reports:
+  reports:
 
-  islink::
+    islink::
 
-    "It's a link.";
+      "It's a link.";
 
 }
+```
+
+Output:
+
+```
+R: It's a link.
 ```

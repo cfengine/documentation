@@ -19,23 +19,34 @@ strings, the result is the inverse to that of comparing with strcmp().
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 {
-classes:
+  classes:
 
-  "ok" expression => islessthan("0","1");
+      "ok" expression => islessthan("0","1");
 
-reports:
+  reports:
 
-  ok::
+    ok::
 
-    "Assertion is true";
+      "Assertion is true";
 
- !ok::
+    !ok::
 
-  "Assertion is false";
+      "Assertion is false";
 
 }
+```
+
+Output:
+
+```
+R: Assertion is true
 ```
 
 **See also:** [`isgreaterthan()`][isgreaterthan].

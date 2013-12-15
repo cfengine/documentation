@@ -21,13 +21,24 @@ lines matched.
 **Example:**
 
 ```cf3
-    bundle agent example
-    {     
-      vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-        "no" int => countlinesmatching("m.*","/etc/passwd");
+bundle agent example
+{
+  vars:
 
-      reports:
-        "Found $(no) lines matching";
-    }
+      "no" int => countlinesmatching("m.*","/etc/passwd");
+
+  reports:
+      "Found $(no) lines matching";
+}
+```
+
+Output:
+
+```
+R: Found 5 lines matching
 ```

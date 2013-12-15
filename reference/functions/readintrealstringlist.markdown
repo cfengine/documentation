@@ -32,17 +32,28 @@ leaving unstripped characters to be split into fields. Using the empty string
 **Example:**
 
 ```cf3
-    bundle agent example
-    {     
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
 
       "integers" ilist => readintlist("/tmp/listofint","#.*","[\n]",10,400);
       "strings" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
       "reals" rlist => readreallist("/tmp/listofreal","#.*","[\n]",10,400);
 
-    reports:
+  reports:
 
-        "List entry: $(mylist)";
+      "List entry: $(mylist)";
 
-    }
+}
+```
+
+Output:
+
+```
+R: List entry: $(mylist)
 ```

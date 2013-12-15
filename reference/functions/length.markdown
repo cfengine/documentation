@@ -16,6 +16,11 @@ tags: [reference, data functions, functions, length]
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 
 {
@@ -26,7 +31,7 @@ bundle agent test
                         "long string",
                         "four", "fix", "six",
                         "one", "two", "three",
-                      };
+      };
 
       "length" int => length("test");
       "test_str" string => join(",", "test");
@@ -35,6 +40,13 @@ bundle agent test
       "The test list is $(test_str)";
       "The test list has $(length) elements";
 }
+```
+
+Output:
+
+```
+R: The test list is 1,2,3,one,two,three,long string,four,fix,six,one,two,three
+R: The test list has 13 elements
 ```
 
 **See also:** [`nth()`][nth].

@@ -20,12 +20,23 @@ of classes matched.
 **Example:**  
 
 ```cf3
-    bundle agent example
-    {
-      vars:
-        "num" int => countclassesmatching("entropy.*low");
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-      reports:
-        "Found $(num) classes matching";
-    }
+bundle agent example
+{
+  vars:
+      "num" int => countclassesmatching("entropy.*low");
+
+  reports:
+      "Found $(num) classes matching";
+}
+```
+
+Output:
+
+```
+R: Found 0 classes matching
 ```

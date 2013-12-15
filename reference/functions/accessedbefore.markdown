@@ -19,23 +19,29 @@ Return true if `newer` was accessed before `older`.
 
 
 ```cf3
-    body common control
-    {
+body common control
+{
       bundlesequence  => { "example" };
-    }
+}
 
-    bundle agent example
-    {     
-      classes:
+bundle agent example
+{
+  classes:
 
-        "do_it" and => { accessedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
+      "do_it" and => { accessedbefore("/tmp/earlier","/tmp/later"), "linux" };
 
-      reports:
+  reports:
 
-        do_it::
+    do_it::
 
-          "The secret changes have been accessed after the reference time";
-    }
+      "The secret changes have been accessed after the reference time";
+}
+```
+
+Output:
+
+```
+R: The secret changes have been accessed after the reference time
 ```
 
 Example output:

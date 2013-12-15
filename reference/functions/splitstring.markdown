@@ -22,19 +22,35 @@ rest of the un-split string.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 {
-vars:
+  vars:
 
-  "split1" slist => splitstring("one:two:three",":","10");
-  "split2" slist => splitstring("one:two:three",":","1");
-  "split3" slist => splitstring("alpha:xyz:beta","xyz","10");
+      "split1" slist => splitstring("one:two:three",":","10");
+      "split2" slist => splitstring("one:two:three",":","1");
+      "split3" slist => splitstring("alpha:xyz:beta","xyz","10");
 
-reports:
+  reports:
 
-  "split1: $(split1)";  # will list "one", "two", and "three"
-  "split2: $(split2)";  # will list "one" and "two:three"
-  "split3: $(split3)";  # will list "alpha:" and ":beta"
+      "split1: $(split1)";  # will list "one", "two", and "three"
+      "split2: $(split2)";  # will list "one" and "two:three"
+      "split3: $(split3)";  # will list "alpha:" and ":beta"
 
 }
+```
+
+Output:
+
+```
+R: split1: one
+R: split1: two
+R: split1: three
+R: split2: one
+R: split3: alpha:
+R: split3: :beta
 ```

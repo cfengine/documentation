@@ -35,29 +35,43 @@ policies can be kept inline.
 **Example:**
 
 ```cf3
-    bundle agent test(f) 
-    {
-      vars:
-         # Define data inline for convenience
-        "table"   string => 
-          "1:2
+body common control
+{
+      bundlesequence => { "test" };
+}
+
+bundle agent test(f)
+{
+  vars:
+      # Define data inline for convenience
+      "table"   string =>
+      "1:2
           3:4
           5:6";
 
-       "dim" int => parseintarray(
-                                "items",
-                        "$(table)",
-                        "\s*#[^\n]*",
-                        ":",
-                        "1000",
-                        "200000"
-                        );
+      "dim" int => parseintarray(
+                                  "items",
+				  "$(table)",
+				  "\s*#[^\n]*",
+				  ":",
+				  "1000",
+				  "200000"
+      );
 
-       "keys" slist => getindices("items");
+      "keys" slist => getindices("items");
 
-      reports:
-          "$(keys)";
-    }
+  reports:
+      "$(keys)";
+}
+```
+
+Output:
+
+```
+R: 1
+R: 0
+R: 3
+R: 5
 ```
 
 **History:** Was introduced in version 3.1.5a1, Nova 2.1.0 (2011)

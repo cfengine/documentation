@@ -20,15 +20,26 @@ will not be defined.
 **Example:**
 
 ```cf3
-    bundle agent example
-    {     
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
 
       "gid" int => getgid("users");
 
-    reports:
+  reports:
       "Users gid is $(gid)";
-    }
+}
+```
+
+Output:
+
+```
+R: Users gid is 100
 ```
 
 **Notes:**

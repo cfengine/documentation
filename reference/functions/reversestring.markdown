@@ -16,11 +16,27 @@ tags: [reference, text functions, functions, text, reverse, reversestring]
 **Example:**
 
 ```cf3
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
 
       "reversed"
 
-         string =>  reversestring("abc"); # will contain "cba"
+      string =>  reversestring("abc"); # will contain "cba"
+  reports:
+      "reversed abs = $(reversed)";
+}
+```
+
+Output:
+
+```
+R: reversed abs = cba
 ```
 
 **History:** Introduced in CFEngine 3.6

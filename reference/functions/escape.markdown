@@ -22,7 +22,14 @@ characters, so that you do not have to.
 
 
 ```cf3
-    bundle server control
+bundle agent example{
+    vars:
+      "ip" string => "10.123.321.250";
+      "escaped" string => escape("$(ip)");
+    reports:
+      "escaped $(ip) = $(escaped)";
+}
+    body server control
     {
       allowconnects => { "127\.0\.0\.1", escape("192.168.2.1") };
     }

@@ -19,16 +19,28 @@ variable.
 **Example:**
 
 ```cf3
-    bundle agent example
-    {
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
 
       "v[index_1]" string => "value_1";
       "v[index_2]" string => "value_2";
 
       "parameter_name" slist => getindices("v");
 
-    reports:
-       "Found index: $(parameter_name)";
-    }
+  reports:
+      "Found index: $(parameter_name)";
+}
+```
+
+Output:
+
+```
+R: Found index: index_2
+R: Found index: index_1
 ```

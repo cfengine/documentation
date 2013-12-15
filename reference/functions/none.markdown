@@ -19,6 +19,11 @@ The regular expression is [unanchored][unanchored].
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
 {
   classes:
@@ -32,7 +37,7 @@ bundle agent example
                         "long string",
                         "four", "fix", "six",
                         "one", "two", "three",
-                      };
+      };
 
   reports:
       "The test list is $(test)";
@@ -45,6 +50,23 @@ bundle agent example
     !none2::
       "none() test 2 passed";
 }
+```
+
+Output:
+
+```
+R: The test list is 1
+R: The test list is 2
+R: The test list is 3
+R: The test list is one
+R: The test list is two
+R: The test list is three
+R: The test list is long string
+R: The test list is four
+R: The test list is fix
+R: The test list is six
+R: none() test 1 passed
+R: none() test 2 passed
 ```
 
 **See also:** [`filter()`][filter], [`every()`][every], and [`some()`][some].

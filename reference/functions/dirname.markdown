@@ -19,8 +19,24 @@ directory, then the name of its parent directory is returned.
 **Example:**  
 
 ```cf3
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
       "apache_dir" string => dirname("/etc/apache2/httpd.conf");
+  reports:
+      "apache conf dir = $(apache_dir)";
+}
+```
+
+Output:
+
+```
+R: apache conf dir = /etc/apache2
 ```
 
 **Notes:**

@@ -16,11 +16,25 @@ tags: [reference, text functions, functions, text, case, upcase]
 **Example:**
 
 ```cf3
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-      "UPCASE"
+bundle agent example
+{
+  vars:
 
-         string =>  upcase("abc"); # will contain "ABC"
+      "upcase" string =>  upcase("abc"); # will contain "ABC"
+  reports:
+      "upcased abc: $(upcase)";
+}
+```
+
+Output:
+
+```
+R: upcased abc: ABC
 ```
 
 **History:** Introduced in CFEngine 3.6

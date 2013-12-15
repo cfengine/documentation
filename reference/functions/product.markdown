@@ -20,18 +20,29 @@ collect summary information from a source external to CFEngine.
 **Example:**
 
 ```cf3
-    bundle agent test
-    {
-    vars:
+body common control
+{
+      bundlesequence => { "test" };
+}
+
+bundle agent test
+{
+  vars:
 
       "series" rlist => { "1.1", "2.2", "3.3", "5.5", "7.7" };
 
       "prod" real => product("series");
       "sum"  real => sum("series");
 
-    reports:
-        "Product result: $(prod) > $(sum)";
-    }
+  reports:
+      "Product result: $(prod) > $(sum)";
+}
+```
+
+Output:
+
+```
+R: Product result: 338.207100 > 19.800000
 ```
 
 **History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

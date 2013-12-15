@@ -16,6 +16,11 @@ tags: [reference, data functions, functions, unique]
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 {
   vars:
@@ -25,7 +30,7 @@ bundle agent test
                         "long string",
                         "four", "fix", "six",
                         "one", "two", "three",
-                      };
+      };
 
       "test_str" string => join(",", "test");
       "test_unique" slist => unique("test");
@@ -35,4 +40,11 @@ bundle agent test
       "The test list is $(test_str)";
       "The unique elements of the test list: $(unique_str)";
 }
+```
+
+Output:
+
+```
+R: The test list is 1,2,3,one,two,three,long string,four,fix,six,one,two,three
+R: The unique elements of the test list: 1,2,3,one,two,three,long string,four,fix,six
 ```

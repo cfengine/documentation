@@ -17,16 +17,34 @@ tags: [reference, data functions, functions, reglist]
 **Example:**
 
 ```cf3
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-     "nameservers" slist => {
-                            "128.39.89.10",
-                            "128.39.74.16",
-                            "192.168.1.103"
-                            };
-    classes:
+bundle agent example
+{
+  vars:
+
+      "nameservers" slist => {
+                               "128.39.89.10",
+                               "128.39.74.16",
+                               "192.168.1.103",
+                               "10.132.51.66"
+      };
+  classes:
 
       "am_name_server" expression => reglist("@(nameservers)",escape("$(sys.ipv4[eth0])"));
+  reports:
+    am_name_server::
+      "This host ($(sys.ipv4[eth0])) is currently set as a nameserver";
+}
+```
+
+Output:
+
+```
+R: This host (10.132.51.66) is currently set as a nameserver
 ```
 
 In the example above, the IP address in `$(sys.ipv4[eth0])` must be `escape`d, 

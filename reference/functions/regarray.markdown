@@ -17,27 +17,38 @@ tags: [reference, data functions, functions, regarray]
 **Example:**
 
 ```cf3
-    bundle agent example
-    {
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
 
       "myarray[0]" string => "bla1";
       "myarray[1]" string => "bla2";
       "myarray[3]" string => "bla";
 
-    classes:
+  classes:
 
       "ok" expression => regarray("myarray","b.*2");
 
-    reports:
+  reports:
 
-     ok::
+    ok::
 
-        "Found in list";
+      "Found in list";
 
-     !ok::
+    !ok::
 
-        "Not found in list";
+      "Not found in list";
 
-    }
+}
+```
+
+Output:
+
+```
+R: Found in list
 ```

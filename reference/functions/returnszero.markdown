@@ -20,19 +20,30 @@ rather than the output of the command.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
-{     
-classes:
+{
+  classes:
 
-  "my_result" expression => returnszero("/usr/local/bin/mycommand","noshell");
+      "my_result" expression => returnszero("/usr/local/bin/mycommand","noshell");
 
-reports:
+  reports:
 
-  !my_result::
+    !my_result::
 
-    "Command failed";
+      "Command failed";
 
 }
+```
+
+Output:
+
+```
+R: Command failed
 ```
 
 **Notes:** you should never use this function to execute commands that

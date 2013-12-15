@@ -20,16 +20,27 @@ string.
 **Example:**
 
 ```cf3
-    bundle agent reg
-    {
-    vars:
-      windows::
-        "value" string => registryvalue("HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine","value3");
+body common control
+{
+      bundlesequence => { "reg" };
+}
 
-    reports:
-       "Value extracted: $(value)";
+bundle agent reg
+{
+  vars:
+    windows::
+      "value" string => registryvalue("HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine","value3");
 
-    }
+  reports:
+      "Value extracted: $(value)";
+
+}
+```
+
+Output:
+
+```
+R: Value extracted: $(value)
 ```
 
 **Notes:** Currently values of type `REG_SZ` (string), `REG_EXPAND_SZ` 

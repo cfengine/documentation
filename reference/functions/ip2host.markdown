@@ -24,17 +24,29 @@ wait for responses, slowing their progress significantly.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "reverse_lookup" };
+}
+
 bundle agent reverse_lookup
 {
-vars:
- "local4" string => ip2host("127.0.0.1");
- "local6" string => ip2host("::1");
+  vars:
+      "local4" string => ip2host("127.0.0.1");
+      "local6" string => ip2host("::1");
 
 
-reports:
-  "local4 is $(local4)";
-  "local6 is $(local6)";
+  reports:
+      "local4 is $(local4)";
+      "local6 is $(local6)";
 }
+```
+
+Output:
+
+```
+R: local4 is localhost
+R: local6 is localhost
 ```
 
 **History:** Was introduced in version 3.1.3, Nova 2.0.2 (2010)

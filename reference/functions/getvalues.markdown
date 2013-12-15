@@ -22,19 +22,31 @@ variable.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
 {
-vars:
+  vars:
 
-  "v[index_1]" string => "value_1";
-  "v[index_2]" string => "value_2";
+      "v[index_1]" string => "value_1";
+      "v[index_2]" string => "value_2";
 
-  "values" slist => getvalues("v");
+      "values" slist => getvalues("v");
 
-reports:
-   "Found values: $(values)";
+  reports:
+      "Found values: $(values)";
 
 }
+```
+
+Output:
+
+```
+R: Found values: value_2
+R: Found values: value_1
 ```
 
 **Notes:**

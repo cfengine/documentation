@@ -19,31 +19,37 @@ this function to return true.
 **Example:**
 
 ```cf3
-    body common control
+body common control
 
-    {
+{
       bundlesequence  => { "example" };
-    }
+}
 
-    bundle agent example
+bundle agent example
 
-    {     
-      vars:
+{
+  vars:
 
-        "mylist" slist => { "/tmp/a", "/tmp/b", "/tmp/c" };
+      "mylist" slist => { "/tmp/a", "/tmp/b", "/tmp/c" };
 
-      classes:
+  classes:
 
-        "exists" expression => filesexist("@(mylist)");
+      "exists" expression => filesexist("@(mylist)");
 
-      reports:
+  reports:
 
-        exists::
+    exists::
 
-          "All files exist";
+      "All files exist";
 
-        !exists::
+    !exists::
 
-          "Not all files exist";
-    }
+      "Not all files exist";
+}
+```
+
+Output:
+
+```
+R: Not all files exist
 ```

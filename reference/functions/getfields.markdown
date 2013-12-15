@@ -40,16 +40,28 @@ The base name of the array that returns the values.
 **Example:**
 
 ```cf3
-  bundle agent example
-  {     
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
 
       "no" int => getfields("mark:.*","/etc/passwd",":","userdata");
 
-    reports:
-        "Found $(no) lines matching";
-        "Mark's homedir = $(userdata[6])";
-  }
+  reports:
+      "Found $(no) lines matching";
+      "Mark's homedir = $(userdata[6])";
+}
+```
+
+Output:
+
+```
+R: Found 1 lines matching
+R: Mark's homedir = /home/mark
 ```
 
 **Notes:**

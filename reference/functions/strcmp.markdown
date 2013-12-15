@@ -17,20 +17,31 @@ exactly.
 **Example:**
 
 ```cf3
-bundle agent example
-{     
-classes:
-
-  "same" expression => strcmp("test","test");
-
-reports:
-
-  same::
-
-    "Strings are equal";
-
- !same::
-
-    "Strings are not equal";
+body common control
+{
+      bundlesequence => { "example" };
 }
+
+bundle agent example
+{
+  classes:
+
+      "same" expression => strcmp("test","test");
+
+  reports:
+
+    same::
+
+      "Strings are equal";
+
+    !same::
+
+      "Strings are not equal";
+}
+```
+
+Output:
+
+```
+R: Strings are equal
 ```

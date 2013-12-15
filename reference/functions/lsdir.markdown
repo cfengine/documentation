@@ -19,8 +19,27 @@ relative to the the directory are returned.
 **Example:**
 
 ```cf3
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
       "listfiles" slist => lsdir("/etc", "(passwd|shadow).*", "true");
+  reports:
+      "files in list: $(listfiles)";
+}
+```
+
+Output:
+
+```
+R: files in list: /etc/shadow-
+R: files in list: /etc/passwd-
+R: files in list: /etc/passwd
+R: files in list: /etc/shadow
 ```
 
 **Notes:**  

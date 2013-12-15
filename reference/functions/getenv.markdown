@@ -22,27 +22,38 @@ variable you are querying.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
 {
-vars:
+  vars:
 
-   "myvar" string => getenv("PATH","20");
+      "myvar" string => getenv("PATH","20");
 
-classes:
+  classes:
 
-  "isdefined" not => strcmp("$(myvar)","");
+      "isdefined" not => strcmp("$(myvar)","");
 
-reports:
+  reports:
 
-  isdefined::
+    isdefined::
 
-   "The path is $(myvar)";
+      "The path is $(myvar)";
 
-  !isdefined::
+    !isdefined::
 
-   "The named variable PATH does not exist";
+      "The named variable PATH does not exist";
 
 }
+```
+
+Output:
+
+```
+R: The path is /usr/local/bin:/usr/
 ```
 
 **Notes:**  

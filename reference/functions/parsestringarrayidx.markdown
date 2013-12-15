@@ -20,30 +20,43 @@ reads data from a variable instead of a file. By making data readable from a var
 **Example:**
 
 ```cf3
-    bundle agent test(f) 
-    {
-    vars:
+body common control
+{
+      bundlesequence => { "test" };
+}
+
+bundle agent test(f)
+{
+  vars:
       # Define data inline for convenience
       "table"   string => "one: a
                            two: b
                          three: c";
 
-    #######################################
+      #######################################
 
-     "dim" int => parsestringarrayidx(
-                      "items",
-                      "$(table)",
-                      "\s*#[^\n]*",
-                      ":",
-                      "1000",
-                      "200000"
-                      );
+      "dim" int => parsestringarrayidx(
+					"items",
+					"$(table)",
+					"\s*#[^\n]*",
+					":",
+					"1000",
+					"200000"
+      );
 
-     "keys" slist => getindices("items");
+      "keys" slist => getindices("items");
 
-    reports:
-        "$(keys)";
-    }
+  reports:
+      "$(keys)";
+}
+```
+
+Output:
+
+```
+R: 1
+R: 0
+R: 2
 ```
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)
