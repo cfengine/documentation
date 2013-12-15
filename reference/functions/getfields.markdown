@@ -49,6 +49,12 @@ The base name of the array that returns the values.
     reports:
         "Found $(no) lines matching";
         "Mark's homedir = $(userdata[6])";
+        "Mark's handle = $(userdata[1])";
+        "Mark's passwd = ... forget it!";
+        "Mark's uid = $(userdata[3])";
+        "Mark's gid = $(userdata[4])";
+        "Mark's name = $(userdata[5])";
+
   }
 ```
 

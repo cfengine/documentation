@@ -21,15 +21,28 @@ lists.
 **Example:**
 
 ```cf3
-bundle agent test
+bundle common g
 {
-vars:
+  vars:
 
-  "oldlist" slist => { "a", "b", "c" };
-  "newlist" slist => maplist("Element ($(this))","oldlist");
+      "otherlist" slist => { "x", "y", "z" };
+}
 
-reports:
-  "Transform: $(newlist)";
+#######################################################
+
+bundle agent example
+
+{
+  vars:
+
+      "oldlist" slist => { "a", "b", "c" };
+
+      "newlist1" slist => maplist("Element ($(this))","@(g.otherlist)");
+      "newlist2" slist => maplist("Element ($(this))",@(oldlist));
+
+  reports:
+      "Transform: $(newlist1)";
+      "Transform: $(newlist2)";
 }
 ```
 

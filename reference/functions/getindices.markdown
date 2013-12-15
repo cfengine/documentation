@@ -19,16 +19,24 @@ variable.
 **Example:**
 
 ```cf3
-    bundle agent example
-    {
-    vars:
+bundle agent example
+{
+  vars:
 
-      "v[index_1]" string => "value_1";
-      "v[index_2]" string => "value_2";
+      "ps[relayhost]"                  string => "[$(mailrelay)]:587";
+      "ps[mydomain]"                   string => "iu.hio.no";
+      "ps[smtp_sasl_auth_enable]"      string => "yes";
+      "ps[smtp_sasl_password_maps]"    string => "hash:/etc/postfix/sasl-passwd";
+      "ps[smtp_sasl_security_options]" string => "";
+      "ps[smtp_use_tls]"               string => "yes";
+      "ps[default_privs]"              string => "mailman";
+      "ps[inet_protocols]"             string => "all";
+      "ps[inet_interfaces]"            string => "127.0.0.1";
 
-      "parameter_name" slist => getindices("v");
+      "parameter_name" slist => getindices("ps");
 
-    reports:
-       "Found index: $(parameter_name)";
-    }
+  reports:
+
+      "Found key $(parameter_name)";
+}
 ```

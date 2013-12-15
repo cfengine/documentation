@@ -23,13 +23,21 @@ handled.
 ```cf3
 bundle agent example
 
-{     
-vars:
+{
+  vars:
 
-  "md5" string => hash("CFEngine is not cryptic","md5");
+      "md5" string => hash("Cfengine is not cryptic","md5");
+      "sha256" string => hash("Cfengine is not cryptic","sha256");
+      "sha384" string => hash("Cfengine is not cryptic","sha384");
+      "sha512" string => hash("Cfengine is not cryptic","sha512");
 
-reports:
-    "Hashed to: $(md5)";
+  reports:
+
+      "Hashed to: md5 $(md5)";
+      "Hashed to: sha256 $(sha256)";
+      "Hashed to: sha384 $(sha384)";
+      "Hashed to: sha512 $(sha512)";
+
 }
 ```
 
