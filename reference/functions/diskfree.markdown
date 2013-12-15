@@ -19,12 +19,23 @@ If `path` is not found, this function returns 0.
 **Example:**  
 
 ```cf3
-    bundle agent example
-    {     
-      vars:
-        "free" int => diskfree("/tmp"); 
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-      reports:
-        "Freedisk $(free)";
-    }
+bundle agent example
+{
+  vars:
+      "free" int => diskfree("/tmp");
+
+  reports:
+      "Freedisk $(free)";
+}
+```
+
+Output:
+
+```
+R: Freedisk 64515680
 ```

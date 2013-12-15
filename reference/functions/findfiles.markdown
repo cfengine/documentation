@@ -31,19 +31,47 @@ allows you to do dynamic inputs and a dynamic bundle call chain.
 
 
 ```cf3
-    body common control
-    {
+body common control
+{
       bundlesequence => { run };
-    }
+}
 
-    bundle agent run
-    {
-      vars:
-          "all_root" slist => findfiles("/*");
-      reports:
-          "All files under root = $(all_root)";
-    }
+bundle agent run
+{
+  vars:
+      "all_root" slist => findfiles("/*");
+  reports:
+      "All files under root = $(all_root)";
+}
 
+```
+
+Output:
+
+```
+R: All files under root = /bin
+R: All files under root = /boot
+R: All files under root = /dev
+R: All files under root = /etc
+R: All files under root = /home
+R: All files under root = /initrd.img
+R: All files under root = /lib
+R: All files under root = /lib64
+R: All files under root = /lost+found
+R: All files under root = /media
+R: All files under root = /mnt
+R: All files under root = /opt
+R: All files under root = /proc
+R: All files under root = /root
+R: All files under root = /run
+R: All files under root = /sbin
+R: All files under root = /selinux
+R: All files under root = /srv
+R: All files under root = /sys
+R: All files under root = /tmp
+R: All files under root = /usr
+R: All files under root = /var
+R: All files under root = /vmlinuz
 ```
 
 **See also:** [`bundlesmatching()`][bundlesmatching].

@@ -17,36 +17,32 @@ tags: [reference, data functions, functions, regcmp]
 **Example:**
 
 ```cf3
-    bundle agent subtest(user)
-    {
-    classes:
+body common control
+{
+      bundlesequence => { "subtest" };
+}
+
+bundle agent subtest(user)
+{
+  classes:
 
       "invalid" not => regcmp("[a-z]{4}","$(user)");
 
-    reports:
+  reports:
 
-     !invalid::
+    !invalid::
 
       "User name $(user) is valid at exactly 4 letters";
 
-     invalid::
+    invalid::
 
       "User name $(user) is invalid";
-    }
-```
+}
+bundle agent example
+{
+  vars:
 
-If the string contains multiple lines, then it is necessary to code these
-explicitly, as regular expressions do not normally match the end of line
-as a regular character (they only match end of string). You can do this
-using either standard regular expression syntax or using the additional
-features of PCRE (where `(?ms)` changes the way that ., `^` and `$` behave), e.g.
-
-```cf3
-     bundle agent example
-     {
-     vars:
-     
-       "x" string => "
+      "x" string => "
            NAME: apache2 - Apache 2.2 web server
            CATEGORY: application
            ARCH: all
@@ -59,21 +55,34 @@ features of PCRE (where `(?ms)` changes the way that ., `^` and `$` behave), e.g
            EMAIL: comand@blastwave.org
            STATUS: completely installed
          ";
-     
-     classes:
-     
-       "pkg_installed" expression => regcmp("(.*\n)*STATUS:\s+completely installed\n(.*\n)*",$(x));
-     
-       "base_is_root" expression => regcmp("(?ms).*^BASEDIR:\s+/$.*", $(x));
-     
-     reports:
-     
-       pkg_installed::
-     
-         "installed";
-     
-       base_is_root::
-     
-         "in root";
-     }
+
+  classes:
+
+      "pkg_installed" expression => regcmp("(.*\n)*STATUS:\s+completely installed\n(.*\n)*",$(x));
+
+      "base_is_root" expression => regcmp("(?ms).*^BASEDIR:\s+/$.*", $(x));
+
+  reports:
+
+    pkg_installed::
+
+      "installed";
+
+    base_is_root::
+
+      "in root";
+}
 ```
+
+Output:
+
+```
+R: User name $(user) is valid at exactly 4 letters
+```
+
+If the string contains multiple lines, then it is necessary to code these
+explicitly, as regular expressions do not normally match the end of line
+as a regular character (they only match end of string). You can do this
+using either standard regular expression syntax or using the additional
+features of PCRE (where `(?ms)` changes the way that ., `^` and `$` behave), e.g.
+

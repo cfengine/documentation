@@ -19,15 +19,26 @@ string in first argument.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 {
-vars:
+  vars:
 
-  "mylist" slist => { "one", "two", "three", "four", "five" };
+      "mylist" slist => { "one", "two", "three", "four", "five" };
 
-  "scalar" string => join("->","mylist");
+      "scalar" string => join("->","mylist");
 
-reports:
-  "Concatenated $(scalar)";
+  reports:
+      "Concatenated $(scalar)";
 }
+```
+
+Output:
+
+```
+R: Concatenated one->two->three->four->five
 ```

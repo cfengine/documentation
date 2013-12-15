@@ -16,15 +16,26 @@ tags: [reference, text functions, functions, text, tail, substring]
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
 {
-    vars:
+  vars:
 
       "end" string =>  tail("abc", "1"); # will contain "c"
-    reports:
+  reports:
       "end of abc = $(end)";
-    
+
 }
+```
+
+Output:
+
+```
+R: end of abc = c
 ```
 
 **History:** Introduced in CFEngine 3.6

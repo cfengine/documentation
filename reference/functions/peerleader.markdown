@@ -33,7 +33,6 @@ promises.
 
 Example file:
 
-```
      one
      two
      three # this is a comment
@@ -50,9 +49,14 @@ Example file:
 ```
 
 ```cf3
-    bundle agent peers
-    {
-    vars:
+body common control
+{
+      bundlesequence => { "peers" };
+}
+
+bundle agent peers
+{
+  vars:
 
       "mygroup" slist => peers("/tmp/hostlist","#.*",4);
 
@@ -60,11 +64,18 @@ Example file:
 
       "all_leaders" slist => peerleaders("/tmp/hostlist","#.*",4);
 
-    reports:
+  reports:
 
-       "mypeer $(mygroup)";
-       "myleader $(myleader)";
-       "another leader $(all_leaders)";
-    }
+      "mypeer $(mygroup)";
+      "myleader $(myleader)";
+      "another leader $(all_leaders)";
+}
 ```
 
+Output:
+
+```
+R: mypeer $(mygroup)
+R: myleader $(myleader)
+R: another leader $(all_leaders)
+```

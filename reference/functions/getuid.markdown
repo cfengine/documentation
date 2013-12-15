@@ -18,15 +18,26 @@ If the named user is not registered the variable will not be defined.
 **Example:**
 
 ```cf3
-    bundle agent example
-    {
-    vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
+
+bundle agent example
+{
+  vars:
 
       "uid" int => getuid("mark");
 
-    reports:
+  reports:
       "Users uid is $(uid)";
-    }
+}
+```
+
+Output:
+
+```
+R: Users uid is 1002
 ```
 **Notes:**
 On Windows, which does not support user ids, the variable will not 

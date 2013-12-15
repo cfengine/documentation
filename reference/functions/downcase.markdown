@@ -16,14 +16,25 @@ tags: [reference, text functions, functions, text, case, downcase]
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
 {
-    vars:
+  vars:
 
       "downcase" string =>  downcase("ABC"); # will contain "abc"
-    reports:
+  reports:
       "downcased ABC = $(downcase)";
 }
+```
+
+Output:
+
+```
+R: downcased ABC = abc
 ```
 
 **History:** Introduced in CFEngine 3.6

@@ -17,15 +17,27 @@ tags: [reference, data functions, functions, grep]
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 {
-vars:
+  vars:
 
-  "mylist" slist => { "One", "Two", "Three", "Four", "Five" };
-  "sublist" slist => grep("T.*","mylist");
-  "empty_list" slist => grep("ive","mylist");
+      "mylist" slist => { "One", "Two", "Three", "Four", "Five" };
+      "sublist" slist => grep("T.*","mylist");
+      "empty_list" slist => grep("ive","mylist");
 
-reports:
-  "Item: $(sublist)";
+  reports:
+      "Item: $(sublist)";
 }
+```
+
+Output:
+
+```
+R: Item: Two
+R: Item: Three
 ```

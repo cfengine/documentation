@@ -25,6 +25,11 @@ function if you need order in the resulting output.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "run" };
+}
+
 bundle agent run
 {
   vars:
@@ -42,8 +47,9 @@ bundle agent run
 Output:
 
 ```
-Hello yes 1 2
-Hello yes one two
-Hello yes 3999 big
-Hello yes 3999 small
+R: Hello yes 1 2
+R: Hello yes one two
+R: Hello yes 3999 big
+R: Hello yes 3999 small
 ```
+

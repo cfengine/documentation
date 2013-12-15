@@ -20,22 +20,33 @@ files, from a fully qualified path name.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "yes" };
+}
+
 bundle agent yes
 {
-vars:
+  vars:
 
-  "path1" string => "/one/two/last1";
-  "path2" string => "one:two:last2";
+      "path1" string => "/one/two/last1";
+      "path2" string => "one:two:last2";
 
-  "last1" string => lastnode("$(path1)","/");
-  "last2" string => lastnode("$(path2)",":");
+      "last1" string => lastnode("$(path1)","/");
+      "last2" string => lastnode("$(path2)",":");
 
-  "last3" string => lastnode("$(path2)","/");
+      "last3" string => lastnode("$(path2)","/");
 
-reports:
-  "Last = $(last1),$(last2),$(last3)";
+  reports:
+      "Last = $(last1),$(last2),$(last3)";
 
 }
+```
+
+Output:
+
+```
+R: Last = last1,last2,one:two:last2
 ```
 
 **See also:** [`filestat()`][filestat], [`dirname()`][dirname],

@@ -19,21 +19,33 @@ This function turns arbitrary text into class data.
 
 
 ```cf3
-bundle agent example
+body common control
 {
-    vars:
-     "component" string => "/var/cfengine/bin/cf-serverd";
-     "canon" string => canonify("$(component)");
-
-    classes:
-     "$(component)_exists" expression => fileexists("$(component)");
-
-    reports:
-     "canonified component == $(canon)";
-     "component exists in $(component)"
-       ifvarclass => canonify("$(component)_exists");
+      bundlesequence => { "example" };
 }
 
+bundle agent example
+{
+  vars:
+      "component" string => "/var/cfengine/bin/cf-serverd";
+      "canon" string => canonify("$(component)");
+
+  classes:
+      "$(component)_exists" expression => fileexists("$(component)");
+
+  reports:
+      "canonified component == $(canon)";
+      "component exists in $(component)"
+      ifvarclass => canonify("$(component)_exists");
+}
+
+```
+
+Output:
+
+```
+R: canonified component == _var_cfengine_bin_cf_serverd
+R: component exists in /var/cfengine/bin/cf-serverd
 ```
 
 **See also:** [classify()][classify], `canonifyuniquely`.

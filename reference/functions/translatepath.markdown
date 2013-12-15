@@ -22,6 +22,11 @@ translatepath("a/b/c") would yield "a/b/c" on Unix platforms, but
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 {
   vars:
@@ -35,6 +40,12 @@ bundle agent test
     !windows::
       "The path has slashes: $(inputs_dir)";
 }
+```
+
+Output:
+
+```
+R: The path has slashes: /home/tero/.cfagent/inputs
 ```
 
 **Notes:** Be careful when using this function in combination with regular

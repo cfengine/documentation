@@ -26,6 +26,11 @@ For a key-value map like `{ a: 100, b: 200 }` you get the value at
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 {
   vars:
@@ -35,7 +40,7 @@ bundle agent test
                         "long string",
                         "four", "fix", "six",
                         "one", "two", "three",
-                      };
+      };
 
       "nth" slist => { 1, 2, 6, 10, 11, 1000 };
 
@@ -47,6 +52,28 @@ bundle agent test
       "element #$(nth) of the test list: $(test[$(nth)])";
       "element #0 of the test list: $(test[0])";
 }
+```
+
+Output:
+
+```
+R: The test list is 1
+R: The test list is 2
+R: The test list is 3
+R: The test list is one
+R: The test list is two
+R: The test list is three
+R: The test list is long string
+R: The test list is four
+R: The test list is fix
+R: The test list is six
+R: element #1 of the test list: 2
+R: element #2 of the test list: 3
+R: element #6 of the test list: long string
+R: element #10 of the test list: one
+R: element #11 of the test list: two
+R: element #1000 of the test list: $(test[1000])
+R: element #0 of the test list: 1
 ```
 
 **See also:** [`length()`][length].

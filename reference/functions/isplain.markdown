@@ -17,17 +17,28 @@ plain/regular file.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
 {
-classes:
+  classes:
 
-  "isplain" expression => isplain("/etc/passwd");
+      "isplain" expression => isplain("/etc/passwd");
 
-reports:
+  reports:
 
-  isplain::
+    isplain::
 
-    "File exists..";
+      "File exists..";
 
 }
+```
+
+Output:
+
+```
+R: File exists..
 ```

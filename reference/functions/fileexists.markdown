@@ -19,22 +19,28 @@ this function to return true.
 **Example:**  
 
 ```cf3
-    body common control
-    {
+body common control
+{
       bundlesequence  => { "example" };
-    }
+}
 
-    bundle agent example
-    {     
-      classes:
+bundle agent example
+{
+  classes:
 
-        "exists" expression => fileexists("/etc/passwd");
+      "exists" expression => fileexists("/etc/passwd");
 
-      reports:
+  reports:
 
-        exists::
+    exists::
 
-          "File exists";
-    }
+      "File exists";
+}
+```
+
+Output:
+
+```
+R: File exists
 ```
 

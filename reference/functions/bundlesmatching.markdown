@@ -56,4 +56,12 @@ bundle agent run_123_456
 }
 ```
 
+Output:
+
+```
+R: bundles = default:run_123_456
+R: bundles = default:mefirst
+R: bundles = default:g
+```
+
 **See also:** [`findfiles()`][findfiles].

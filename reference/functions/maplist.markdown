@@ -21,16 +21,29 @@ lists.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 {
-vars:
+  vars:
 
-  "oldlist" slist => { "a", "b", "c" };
-  "newlist" slist => maplist("Element ($(this))","oldlist");
+      "oldlist" slist => { "a", "b", "c" };
+      "newlist" slist => maplist("Element ($(this))","oldlist");
 
-reports:
-  "Transform: $(newlist)";
+  reports:
+      "Transform: $(newlist)";
 }
+```
+
+Output:
+
+```
+R: Transform: Element (a)
+R: Transform: Element (b)
+R: Transform: Element (c)
 ```
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)

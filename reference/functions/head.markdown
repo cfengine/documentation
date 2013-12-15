@@ -16,15 +16,26 @@ tags: [reference, text functions, functions, text, head, substring]
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
 {
-    vars:
+  vars:
 
       "start" string =>  head("abc", "1"); # will contain "a"
-    reports:
+  reports:
       "start of abc = $(start)";
 
 }
+```
+
+Output:
+
+```
+R: start of abc = a
 ```
 
 **History:** Introduced in CFEngine 3.6

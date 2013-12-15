@@ -21,28 +21,35 @@ The group may be specified by name or identifier.
 body common control
 
 {
-bundlesequence  => { "example" };
+      bundlesequence  => { "example" };
 }
 
 ###########################################################
 
 bundle agent example
 
-{     
-classes:
+{
+  classes:
 
-  "gname" expression => groupexists("users");
-  "gid"   expression => groupexists("100");
+      "gname" expression => groupexists("users");
+      "gid"   expression => groupexists("100");
 
-reports:
+  reports:
 
-  gname::
+    gname::
 
-    "Group exists by name";
+      "Group exists by name";
 
-  gid::
+    gid::
 
-    "Group exists by id";
+      "Group exists by id";
 
 }
+```
+
+Output:
+
+```
+R: Group exists by name
+R: Group exists by id
 ```

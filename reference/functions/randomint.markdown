@@ -25,44 +25,55 @@ context class expression as shown in the example.
 **Example:**
 
 ```cf3
-    bundle agent randomint_example
-    {
-      vars:
-          "low"    string => "4";
-          "high"   string => "60";
+body common control
+{
+      bundlesequence => { "randomint_example" };
+}
 
-          "random"    int => randomint("$(low)", "$(high)"),
-                   policy => "free";
+bundle agent randomint_example
+{
+  vars:
+      "low"    string => "4";
+      "high"   string => "60";
 
-        !classes1::
-          "random1" 
-            string  => "$(random)",
-            handle  => "var_random1",
-            comment => "this should only be set on the first pass";
+      "random"    int => randomint("$(low)", "$(high)"),
+      policy => "free";
 
-        classes1.!classes2::
+    !classes1::
+      "random1"
+      string  => "$(random)",
+      handle  => "var_random1",
+      comment => "this should only be set on the first pass";
 
-          "random2" 
-            string     => "$(random)",
-            handle     => "var_random2",
-            comment    => "this should only be set on the second pass";
+    classes1.!classes2::
 
-        classes2::
+      "random2"
+      string     => "$(random)",
+      handle     => "var_random2",
+      comment    => "this should only be set on the second pass";
 
-          "random3" 
-            string     => "$(random)",
-            handle     => "var_random3",
-            comment    => "this should only be set on the third pass";
+    classes2::
 
-      classes:
-          "classes3" expression => "classes2";
-          "classes2" expression => "classes1";
-          "classes1" expression => "any";
+      "random3"
+      string     => "$(random)",
+      handle     => "var_random3",
+      comment    => "this should only be set on the third pass";
 
-      reports:
-        classes3::
-          "Random Numbers: $(random1), $(random2), $(random3)";
-    }
+  classes:
+      "classes3" expression => "classes2";
+      "classes2" expression => "classes1";
+      "classes1" expression => "any";
+
+  reports:
+    classes3::
+      "Random Numbers: $(random1), $(random2), $(random3)";
+}
+```
+
+Output:
+
+```
+R: Random Numbers: 46, 59, 59
 ```
 
 Example output:

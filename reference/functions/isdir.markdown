@@ -18,17 +18,28 @@ The CFEngine process must have access to `filename` in order for this to work.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
-{     
-classes:
+{
+  classes:
 
-  "isdir" expression => isdir("/etc");
+      "isdir" expression => isdir("/etc");
 
-reports:
+  reports:
 
-  isdir::
+    isdir::
 
-    "Directory exists..";
+      "Directory exists..";
 
 }
+```
+
+Output:
+
+```
+R: Directory exists..
 ```

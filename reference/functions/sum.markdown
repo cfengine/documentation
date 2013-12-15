@@ -20,6 +20,11 @@ summary information from a source external to CFEngine.
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "test" };
+}
+
 bundle agent test
 {
   vars:
@@ -31,6 +36,12 @@ bundle agent test
   reports:
       "six is $(six), zero is $(zero)";
 }
+```
+
+Output:
+
+```
+R: six is 6.000000, zero is 0.000000
 ```
 
 Because `$(six)` and `$(zero)` are both real numbers, the report that is

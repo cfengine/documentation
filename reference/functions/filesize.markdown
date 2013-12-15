@@ -19,17 +19,29 @@ variable does not expand.
 **Example:**  
 
 ```cf3
-    bundle agent example
-    {     
-      vars:
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-        "exists" int => filesize("/etc/passwd");
-        "nexists" int => filesize("/etc/passwdx");
+bundle agent example
+{
+  vars:
 
-      reports:
-        "File size $(exists)";
-        "Does not exist $(nexists)";
-    }
+      "exists" int => filesize("/etc/passwd");
+      "nexists" int => filesize("/etc/passwdx");
+
+  reports:
+      "File size $(exists)";
+      "Does not exist $(nexists)";
+}
+```
+
+Output:
+
+```
+R: File size 1384
+R: Does not exist $(nexists)
 ```
 
 

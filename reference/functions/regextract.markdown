@@ -14,7 +14,6 @@ tags: [reference, data functions, functions, regextract]
 
 If there are any back reference matches from the regular expression, then the array will be populated with the values, in the manner:
 
-```
     $(backref[0]) = entire string
     $(backref[1]) = back reference 1, etc
 ```
@@ -24,24 +23,32 @@ If there are any back reference matches from the regular expression, then the ar
 **Example:**
 
 ```cf3
-    bundle agent example
-    {
-    classes:
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-        # Extract regex backreferences and put them in an array
+bundle agent example
+{
+  classes:
 
-        "ok" expression => regextract(
+      # Extract regex backreferences and put them in an array
+
+      "ok" expression => regextract(
                                      "xx ([^\s]+) ([^\s]+).* xx",
                                      "xx one two three four xx",
                                      "myarray"
-                                     );
-    reports:
+      );
+  reports:
 
-     ok::
+    ok::
 
-       "ok - \"$(myarray[0])\" = xx + \"$(myarray[1])\" + \"$(myarray[2])\" + .. + xx";
-    }
+      "ok - \"$(myarray[0])\" = xx + \"$(myarray[1])\" + \"$(myarray[2])\" + .. + xx";
+}
 ```
 
-**History:** This function was introduced in CFEngine version 3.0.4
-(2010)
+Output:
+
+```
+R: ok - "xx one two three four xx" = xx + "one" + "two" + .. + xx
+```

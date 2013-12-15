@@ -19,21 +19,32 @@ The variable need only exist. This says nothing about its value. Use
 **Example:**
 
 ```cf3
+body common control
+{
+      bundlesequence => { "example" };
+}
+
 bundle agent example
-{     
-vars:
+{
+  vars:
 
-  "bla" string => "xyz..";
+      "bla" string => "xyz..";
 
-classes:
+  classes:
 
-  "exists" expression => isvariable("bla");
+      "exists" expression => isvariable("bla");
 
-reports:
+  reports:
 
-  exists::
+    exists::
 
-    "Variable exists: \"$(bla)\"..";
+      "Variable exists: \"$(bla)\"..";
 
 }
+```
+
+Output:
+
+```
+R: Variable exists: "xyz.."..
 ```

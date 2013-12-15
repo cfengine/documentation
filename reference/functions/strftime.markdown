@@ -24,20 +24,32 @@ are specialized for printing components of the date and time according to the sy
 **Example:**
 
 ```cf3
-    bundle agent example
-    {     
-      vars:
-          "time" int => now();
-          "now" string => strftime("localtime", "%F %T", now());
-          "then" string => strftime("localtime", "%F %T", 0);
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-          "gmt_now" string => strftime("gmtime", "%F %T", now());
-          "gmt_then" string => strftime("gmtime", "%F %T", 0);
+bundle agent example
+{
+  vars:
+      "time" int => now();
+      "now" string => strftime("localtime", "%F %T", now());
+      "then" string => strftime("localtime", "%F %T", 0);
 
-      reports:
-          "time $(time); now $(now); then $(then)";
-          "time $(time); GMT now $(now); GMT then $(then)";
-    }
+      "gmt_now" string => strftime("gmtime", "%F %T", now());
+      "gmt_then" string => strftime("gmtime", "%F %T", 0);
+
+  reports:
+      "time $(time); now $(now); then $(then)";
+      "time $(time); GMT now $(now); GMT then $(then)";
+}
+```
+
+Output:
+
+```
+R: time 1387069300; now 2013-12-15 03:01:40; then 1970-01-01 02:00:00
+R: time 1387069300; GMT now 2013-12-15 03:01:40; GMT then 1970-01-01 02:00:00
 ```
 **Notes:** Note that `strftime` is a standard C function and you should
 consult its reference to be sure of the specifiers it allows.  The below

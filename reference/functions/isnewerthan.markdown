@@ -20,16 +20,27 @@ to changes of content only.
 **Example:**
 
 ```cf3
-    bundle agent example
-    {     
-    classes:
+body common control
+{
+      bundlesequence => { "example" };
+}
 
-      "do_it" and => { isnewerthan("/tmp/later","/tmp/earlier"), "linux" }; 
+bundle agent example
+{
+  classes:
 
-    reports:
+      "do_it" and => { isnewerthan("/tmp/later","/tmp/earlier"), "linux" };
 
-      do_it::
+  reports:
 
-        "The derived file needs updating";
-    }
+    do_it::
+
+      "The derived file needs updating";
+}
+```
+
+Output:
+
+```
+R: The derived file needs updating
 ```
