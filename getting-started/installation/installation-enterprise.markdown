@@ -21,8 +21,8 @@ CFEngine recommends the following:
 
 **Disk Storage** 
 
-A full installation of CFEngine requires 25 MB. Additional disk usage
-depends on your specific policies, especially those that concern reporting.
+Plan for approximately 100MB of disk space per host. Due to MongoDB's pre-allocation 
+strategy, always provide an extra 2G to 4G of disk space if you plan to bootstrap more hosts later.
 
 **Network** 
 
