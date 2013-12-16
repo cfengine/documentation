@@ -25,28 +25,10 @@ For a key-value map like `{ a: 100, b: 200 }` you get the value at
 
 **Example:**
 
-```cf3
-bundle agent test
-{
-  vars:
-      "test" slist => {
-                        1,2,3,
-                        "one", "two", "three",
-                        "long string",
-                        "four", "fix", "six",
-                        "one", "two", "three",
-                      };
+[%CFEngine_include_snippet(nth.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "nth" slist => { 1, 2, 6, 10, 11, 1000 };
+Output:
 
-      "test[$(nth)]" string => nth("test", $(nth));
-      "test[0]" string => nth("test", 0);
-
-  reports:
-      "The test list is $(test)";
-      "element #$(nth) of the test list: $(test[$(nth)])";
-      "element #0 of the test list: $(test[0])";
-}
-```
+[%CFEngine_include_snippet(nth.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`length()`][length].

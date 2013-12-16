@@ -18,25 +18,8 @@ variable.
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-  vars:
+[%CFEngine_include_snippet(getindices.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "ps[relayhost]"                  string => "[$(mailrelay)]:587";
-      "ps[mydomain]"                   string => "iu.hio.no";
-      "ps[smtp_sasl_auth_enable]"      string => "yes";
-      "ps[smtp_sasl_password_maps]"    string => "hash:/etc/postfix/sasl-passwd";
-      "ps[smtp_sasl_security_options]" string => "";
-      "ps[smtp_use_tls]"               string => "yes";
-      "ps[default_privs]"              string => "mailman";
-      "ps[inet_protocols]"             string => "all";
-      "ps[inet_interfaces]"            string => "127.0.0.1";
+Output:
 
-      "parameter_name" slist => getindices("ps");
-
-  reports:
-
-      "Found key $(parameter_name)";
-}
-```
+[%CFEngine_include_snippet(getindices.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

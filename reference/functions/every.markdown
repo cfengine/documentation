@@ -21,34 +21,10 @@ the [unanchored][unanchored] `regex`.
 
 **Example:**
 
-```cf3
-bundle agent test
+[%CFEngine_include_snippet(every.cf, #\+begin_src cfengine3, .*end_src)%]
 
-{
-  classes:
-      "every1" expression => every(".*", "test");
-      "every2" expression => every(".", "test");
+Output:
 
-  vars:
-      "test" slist => {
-                        1,2,3,
-                        "one", "two", "three",
-                        "long string",
-                        "four", "fix", "six",
-                        "one", "two", "three",
-                      };
-
-  reports:
-      "The test list is $(test)";
-    every1::
-      "every() test 1 passed";
-    !every1::
-      "every() test 1 failed";
-    every2::
-      "every() test 2 failed";
-    !every2::
-      "every() test 2 passed";
-}
-```
+[%CFEngine_include_snippet(every.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`filter()`][filter], [`some()`][some], and [`none()`][none].

@@ -16,24 +16,11 @@ tags: [reference, data functions, functions, regcmp]
 
 **Example:**
 
-```cf3
-    bundle agent subtest(user)
-    {
-    classes:
+[%CFEngine_include_snippet(regcmp.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "invalid" not => regcmp("[a-z]{4}","$(user)");
+Output:
 
-    reports:
-
-     !invalid::
-
-      "User name $(user) is valid at exactly 4 letters";
-
-     invalid::
-
-      "User name $(user) is invalid";
-    }
-```
+[%CFEngine_include_snippet(regcmp.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 If the string contains multiple lines, then it is necessary to code these
 explicitly, as regular expressions do not normally match the end of line
@@ -41,39 +28,3 @@ as a regular character (they only match end of string). You can do this
 using either standard regular expression syntax or using the additional
 features of PCRE (where `(?ms)` changes the way that ., `^` and `$` behave), e.g.
 
-```cf3
-     bundle agent example
-     {
-     vars:
-     
-       "x" string => "
-           NAME: apache2 - Apache 2.2 web server
-           CATEGORY: application
-           ARCH: all
-           VERSION: 2.2.3,REV=2006.09.01
-           BASEDIR: /
-           VENDOR: http://httpd.apache.org/ packaged for CSW by Cory Omand
-           PSTAMP: comand@thor-20060901022929
-           INSTDATE: Dec 14 2006 16:05
-           HOTLINE: http://www.blastwave.org/bugtrack/
-           EMAIL: comand@blastwave.org
-           STATUS: completely installed
-         ";
-     
-     classes:
-     
-       "pkg_installed" expression => regcmp("(.*\n)*STATUS:\s+completely installed\n(.*\n)*",$(x));
-     
-       "base_is_root" expression => regcmp("(?ms).*^BASEDIR:\s+/$.*", $(x));
-     
-     reports:
-     
-       pkg_installed::
-     
-         "installed";
-     
-       base_is_root::
-     
-         "in root";
-     }
-```

@@ -19,22 +19,9 @@ argument must be a user name or user id.
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {     
-      classes:
+[%CFEngine_include_snippet(userexists.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "ok" expression => userexists("root");
+Output:
 
-      reports:
-
-        ok::
-
-          "Root exists";
-
-        !ok::
-
-          "Root does not exist";
-    }
-```
+[%CFEngine_include_snippet(userexists.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 

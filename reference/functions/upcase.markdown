@@ -15,16 +15,11 @@ tags: [reference, text functions, functions, text, case, upcase]
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-    vars:
+[%CFEngine_include_snippet(upcase.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "upcase" string =>  upcase("abc"); # will contain "ABC"
-    reports:
-      "upcased abc: $(upcase)";
-}
-```
+Output:
+
+[%CFEngine_include_snippet(upcase.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Introduced in CFEngine 3.6
 

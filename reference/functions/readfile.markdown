@@ -15,17 +15,11 @@ tags: [reference, io functions, functions, readfile]
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-    vars:
+[%CFEngine_include_snippet(readfile.cf, #\+begin_src cfengine3, .*end_src)%]
 
-     "xxx"   
-        string => readfile( "/tmp/testfile" , "33" );
-    reports:
-     "content: $(xxx)";
-}
-```
+Output:
+
+[%CFEngine_include_snippet(readfile.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:**
 - At the moment, only the first 4096 bytes of the file can be retrieved.

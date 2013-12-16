@@ -15,26 +15,10 @@ tags: [reference, data functions, functions, length]
 
 **Example:**
 
-```cf3
-bundle agent test
+[%CFEngine_include_snippet(length.cf, #\+begin_src cfengine3, .*end_src)%]
 
-{
-  vars:
-      "test" slist => {
-                        1,2,3,
-                        "one", "two", "three",
-                        "long string",
-                        "four", "fix", "six",
-                        "one", "two", "three",
-                      };
+Output:
 
-      "length" int => length("test");
-      "test_str" string => join(",", "test");
-
-  reports:
-      "The test list is $(test_str)";
-      "The test list has $(length) elements";
-}
-```
+[%CFEngine_include_snippet(length.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`nth()`][nth].

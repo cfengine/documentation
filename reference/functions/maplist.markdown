@@ -20,30 +20,10 @@ lists.
 
 **Example:**
 
-```cf3
-bundle common g
-{
-  vars:
+[%CFEngine_include_snippet(maplist.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "otherlist" slist => { "x", "y", "z" };
-}
+Output:
 
-#######################################################
-
-bundle agent example
-
-{
-  vars:
-
-      "oldlist" slist => { "a", "b", "c" };
-
-      "newlist1" slist => maplist("Element ($(this))","@(g.otherlist)");
-      "newlist2" slist => maplist("Element ($(this))",@(oldlist));
-
-  reports:
-      "Transform: $(newlist1)";
-      "Transform: $(newlist2)";
-}
-```
+[%CFEngine_include_snippet(maplist.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)

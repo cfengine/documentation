@@ -19,17 +19,11 @@ will not be defined.
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {     
-    vars:
+[%CFEngine_include_snippet(getgid.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "gid" int => getgid("users");
+Output:
 
-    reports:
-      "Users gid is $(gid)";
-    }
-```
+[%CFEngine_include_snippet(getgid.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:**
 On Windows, which does not support group ids, the variable will not be

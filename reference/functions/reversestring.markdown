@@ -15,18 +15,11 @@ tags: [reference, text functions, functions, text, reverse, reversestring]
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-    vars:
+[%CFEngine_include_snippet(reversestring.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "reversed"
+Output:
 
-         string =>  reversestring("abc"); # will contain "cba"
-    reports:
-      "reversed abs = $(reversed)";
-}
-```
+[%CFEngine_include_snippet(reversestring.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Introduced in CFEngine 3.6
 

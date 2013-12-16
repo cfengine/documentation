@@ -18,33 +18,10 @@ The regular expression is [unanchored][unanchored].
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-  classes:
-      "none1" expression => none("jebadiah", "test");
-      "none2" expression => none("2", "test");
+[%CFEngine_include_snippet(none.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  vars:
-      "test" slist => {
-                        1,2,3,
-                        "one", "two", "three",
-                        "long string",
-                        "four", "fix", "six",
-                        "one", "two", "three",
-                      };
+Output:
 
-  reports:
-      "The test list is $(test)";
-    none1::
-      "none() test 1 passed";
-    !none1::
-      "none() test 1 failed";
-    none2::
-      "none() test 2 failed";
-    !none2::
-      "none() test 2 passed";
-}
-```
+[%CFEngine_include_snippet(none.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`filter()`][filter], [`every()`][every], and [`some()`][some].

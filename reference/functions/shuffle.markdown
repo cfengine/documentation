@@ -18,20 +18,10 @@ provide a random seed with the `randomint` function.
 
 **Example:**
 
-```cf3
-    bundle agent test
-    {
-      vars:
-          "a" slist => { "b", "c", "a" };
-          "shuffles" slist => { "xx", "yy", "zz" };
+[%CFEngine_include_snippet(shuffle.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "sa_$(shuffles)" slist => shuffle("a", $(shuffles));
+Output:
 
-          "j_$(shuffles)" string => join(",", "sa_$(shuffles)");
-
-      reports:
-          "shuffled by $(shuffles) = '$(j_$(shuffles))'";
-    }
-```
+[%CFEngine_include_snippet(shuffle.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`sort()`][sort].

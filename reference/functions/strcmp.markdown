@@ -16,21 +16,8 @@ exactly.
 
 **Example:**
 
-```cf3
-bundle agent example
-{     
-classes:
+[%CFEngine_include_snippet(strcmp.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "same" expression => strcmp("test","test");
+Output:
 
-reports:
-
-  same::
-
-    "Strings are equal";
-
- !same::
-
-    "Strings are not equal";
-}
-```
+[%CFEngine_include_snippet(strcmp.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

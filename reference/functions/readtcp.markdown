@@ -24,28 +24,11 @@ connections fully before deploying.
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {     
-    vars:
+[%CFEngine_include_snippet(readtcp.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "my80" string => readtcp("research.iu.hio.no","80","GET /index.php HTTP/1.1$(const.r)$(const.n)Host: research.iu.hio.no$(const.r)$(const.n)$(const.r)$(const.n)",20);
+Output:
 
-    classes:
-
-      "server_ok" expression => regcmp("[^\n]*200 OK.*\n.*","$(my80)");
-
-    reports:
-
-      server_ok::
-
-        "Server is alive";
-
-      !server_ok::
-
-        "Server is not responding - got $(my80)";
-    }
-```
+[%CFEngine_include_snippet(readtcp.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:** Note that on some systems the timeout mechanism does not seem to
 successfully interrupt the waiting system calls so this might hang if you send 

@@ -22,25 +22,11 @@ When any tags are given, only the classes with those tags are returned.
 **Example:**  
 
 
-```cf3
-    body common control
-    {
-      bundlesequence => { run };
-    }
+[%CFEngine_include_snippet(classesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    bundle agent run
-    {
-      vars:
-          "all" slist => classesmatching(".*");
-          "c" slist => classesmatching("cfengine");
-          "c_plus_plus" slist => classesmatching("cfengine", "plus");
-      reports:
-          "All classes = $(all)";
-          "Classes matching 'cfengine' = $(c)";
-          "Classes matching 'cfengine' with the 'plus' tag = $(c_plus_plus)";
-    }
+Output:
 
-```
+[%CFEngine_include_snippet(classesmatching.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 
 **Note**: This function replaces the `allclasses.txt` static file available

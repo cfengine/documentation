@@ -31,18 +31,8 @@ leaving unstripped characters to be split into fields. Using the empty string
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {     
-    vars:
+[%CFEngine_include_snippet(readintrealstringlist.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "integers" ilist => readintlist("/tmp/listofint","#.*","[\n]",10,400);
-      "strings" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
-      "reals" rlist => readreallist("/tmp/listofreal","#.*","[\n]",10,400);
+Output:
 
-    reports:
-
-        "List entry: $(mylist)";
-
-    }
-```
+[%CFEngine_include_snippet(readintrealstringlist.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

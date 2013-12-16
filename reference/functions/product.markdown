@@ -19,19 +19,10 @@ collect summary information from a source external to CFEngine.
 
 **Example:**
 
-```cf3
-    bundle agent test
-    {
-    vars:
+[%CFEngine_include_snippet(product.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "series" rlist => { "1.1", "2.2", "3.3", "5.5", "7.7" };
+Output:
 
-      "prod" real => product("series");
-      "sum"  real => sum("series");
-
-    reports:
-        "Product result: $(prod) > $(sum)";
-    }
-```
+[%CFEngine_include_snippet(product.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

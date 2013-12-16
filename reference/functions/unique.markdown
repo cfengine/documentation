@@ -15,24 +15,8 @@ tags: [reference, data functions, functions, unique]
 
 **Example:**
 
-```cf3
-bundle agent test
-{
-  vars:
-      "test" slist => {
-                        1,2,3,
-                        "one", "two", "three",
-                        "long string",
-                        "four", "fix", "six",
-                        "one", "two", "three",
-                      };
+[%CFEngine_include_snippet(unique.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "test_str" string => join(",", "test");
-      "test_unique" slist => unique("test");
-      "unique_str" string => join(",", "test_unique");
+Output:
 
-  reports:
-      "The test list is $(test_str)";
-      "The unique elements of the test list: $(unique_str)";
-}
-```
+[%CFEngine_include_snippet(unique.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

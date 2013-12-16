@@ -24,43 +24,8 @@ context class expression as shown in the example.
 
 **Example:**
 
-```cf3
-    bundle agent randomint_example
-    {
-      vars:
-          "low"    string => "4";
-          "high"   string => "60";
+[%CFEngine_include_snippet(randomint.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "random"    int => randomint("$(low)", "$(high)"),
-                   policy => "free";
+Output:
 
-        !classes1::
-          "random1" 
-            string  => "$(random)",
-            handle  => "var_random1",
-            comment => "this should only be set on the first pass";
-
-        classes1.!classes2::
-
-          "random2" 
-            string     => "$(random)",
-            handle     => "var_random2",
-            comment    => "this should only be set on the second pass";
-
-        classes2::
-
-          "random3" 
-            string     => "$(random)",
-            handle     => "var_random3",
-            comment    => "this should only be set on the third pass";
-
-      classes:
-          "classes3" expression => "classes2";
-          "classes2" expression => "classes1";
-          "classes1" expression => "any";
-
-      reports:
-        classes3::
-          "Random Numbers: $(random1), $(random2), $(random3)";
-    }
-```
+[%CFEngine_include_snippet(randomint.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

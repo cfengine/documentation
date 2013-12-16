@@ -21,27 +21,10 @@ format *specifier* contains the *modifiers* `hLqjzt`; or if any format
 
 **Example:**  
 
-```cf3
-    bundle agent run
-    {
-      vars:
-          "v" string => "2.5.6";
-          "vlist" slist => splitstring($(v), "\.", 3);
-          "padded" string => format("%04d%04d%04d", nth("vlist", 0), nth("vlist", 1), nth("vlist", 2));
-          "a" string => format("%10.10s", "x");
-          "b" string => format("%-10.10s", "x");
-          "c" string => format("%04d", 1);
-          "d" string => format("%07.2f", 1);
-          "e" string => format("hello %s, my IP is %s", $(sys.policy_hub), $(sys.ipv4));
+[%CFEngine_include_snippet(format.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      reports:
-          "version $(v) => padded $(padded)";
-          "%10.10s on 'x' => '$(a)'";
-          "%-10.10s on 'x' => '$(b)'";
-          "%04d on '1' => '$(c)'";
-          "%07.2f on '1' => '$(d)'";
-          "hello my IP is... => '$(e)'";
-    }
-```
+Output:
+
+[%CFEngine_include_snippet(format.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Note:** the underlying `sprintf` system call may behave differently on some platforms for some formats.  Test carefully.  For example, the format `%08s` will use spaces to fill the string up to 8 characters on libc platforms, but on Darwin (Mac OS X) it will use zeroes.  According to [SUSv4][http://pubs.opengroup.org/onlinepubs/9699919799/functions/sprintf.html] the behavior is undefined for this specific case.

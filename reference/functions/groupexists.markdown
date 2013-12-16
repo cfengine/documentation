@@ -17,32 +17,8 @@ The group may be specified by name or identifier.
 
 **Example:**
 
-```cf3
-body common control
+[%CFEngine_include_snippet(groupexists.cf, #\+begin_src cfengine3, .*end_src)%]
 
-{
-bundlesequence  => { "example" };
-}
+Output:
 
-###########################################################
-
-bundle agent example
-
-{     
-classes:
-
-  "gname" expression => groupexists("users");
-  "gid"   expression => groupexists("100");
-
-reports:
-
-  gname::
-
-    "Group exists by name";
-
-  gid::
-
-    "Group exists by id";
-
-}
-```
+[%CFEngine_include_snippet(groupexists.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

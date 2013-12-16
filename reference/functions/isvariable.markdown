@@ -18,22 +18,8 @@ The variable need only exist. This says nothing about its value. Use
 
 **Example:**
 
-```cf3
-bundle agent example
-{     
-vars:
+[%CFEngine_include_snippet(isvariable.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "bla" string => "xyz..";
+Output:
 
-classes:
-
-  "exists" expression => isvariable("bla");
-
-reports:
-
-  exists::
-
-    "Variable exists: \"$(bla)\"..";
-
-}
-```
+[%CFEngine_include_snippet(isvariable.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

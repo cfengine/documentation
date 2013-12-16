@@ -16,28 +16,8 @@ tags: [reference, data functions, functions, regarray]
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {
-    vars:
+[%CFEngine_include_snippet(regarray.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "myarray[0]" string => "bla1";
-      "myarray[1]" string => "bla2";
-      "myarray[3]" string => "bla";
+Output:
 
-    classes:
-
-      "ok" expression => regarray("myarray","b.*2");
-
-    reports:
-
-     ok::
-
-        "Found in list";
-
-     !ok::
-
-        "Not found in list";
-
-    }
-```
+[%CFEngine_include_snippet(regarray.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

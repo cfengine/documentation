@@ -17,17 +17,11 @@ If the named user is not registered the variable will not be defined.
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {
-    vars:
+[%CFEngine_include_snippet(getuid.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "uid" int => getuid("mark");
+Output:
 
-    reports:
-      "Users uid is $(uid)";
-    }
-```
+[%CFEngine_include_snippet(getuid.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 **Notes:**
 On Windows, which does not support user ids, the variable will not 
 be defined.

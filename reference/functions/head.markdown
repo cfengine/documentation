@@ -15,17 +15,11 @@ tags: [reference, text functions, functions, text, head, substring]
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-    vars:
+[%CFEngine_include_snippet(head.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "start" string =>  head("abc", "1"); # will contain "a"
-    reports:
-      "start of abc = $(start)";
+Output:
 
-}
-```
+[%CFEngine_include_snippet(head.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Introduced in CFEngine 3.6
 

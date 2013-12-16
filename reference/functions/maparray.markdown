@@ -24,17 +24,8 @@ function if you need order in the resulting output.
 
 **Example:**
 
-```cf3
-bundle agent run
-{
-  vars:
-      "todo[1]" string => "2";
-      "todo[one]" string => "two";
-      "todo[3999]" slist => { "big", "small" };
-      "map" slist => maparray("yes $(this.k) $(this.v)", "todo");
+[%CFEngine_include_snippet(maparray.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  reports:
-      "Hello $(map)";
-}
+Output:
 
-```
+[%CFEngine_include_snippet(maparray.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

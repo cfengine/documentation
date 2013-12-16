@@ -30,20 +30,10 @@ allows you to do dynamic inputs and a dynamic bundle call chain.
 **Example:**  
 
 
-```cf3
-    body common control
-    {
-      bundlesequence => { run };
-    }
+[%CFEngine_include_snippet(findfiles.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    bundle agent run
-    {
-      vars:
-          "all_root" slist => findfiles("/*");
-      reports:
-          "All files under root = $(all_root)";
-    }
+Output:
 
-```
+[%CFEngine_include_snippet(findfiles.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`bundlesmatching()`][bundlesmatching].

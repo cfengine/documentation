@@ -16,16 +16,8 @@ tags: [reference, data functions, functions, grep]
 
 **Example:**
 
-```cf3
-bundle agent test
-{
-vars:
+[%CFEngine_include_snippet(grep.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "mylist" slist => { "One", "Two", "Three", "Four", "Five" };
-  "sublist" slist => grep("T.*","mylist");
-  "empty_list" slist => grep("ive","mylist");
+Output:
 
-reports:
-  "Item: $(sublist)";
-}
-```
+[%CFEngine_include_snippet(grep.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

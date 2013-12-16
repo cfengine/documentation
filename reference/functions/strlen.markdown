@@ -15,15 +15,11 @@ tags: [reference, text functions, functions, text, strlen, substring]
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-    vars:
-      "length" int =>  strlen("abc"); # will contain "3"
-    reports:
-      "length of string abc = $(length}";
-}
-```
+[%CFEngine_include_snippet(strlen.cf, #\+begin_src cfengine3, .*end_src)%]
+
+Output:
+
+[%CFEngine_include_snippet(strlen.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Introduced in CFEngine 3.6
 

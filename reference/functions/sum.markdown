@@ -19,19 +19,11 @@ summary information from a source external to CFEngine.
 
 **Example:**
 
-```cf3
-bundle agent test
-{
-  vars:
-      "adds_to_six" ilist => { "1", "2", "3" };
-      "six" real => sum("adds_to_six");
-      "adds_to_zero" rlist => { "1.0", "2", "-3e0" };
-      "zero" real => sum("adds_to_zero");
+[%CFEngine_include_snippet(sum.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  reports:
-      "six is $(six), zero is $(zero)";
-}
-```
+Output:
+
+[%CFEngine_include_snippet(sum.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 Because `$(six)` and `$(zero)` are both real numbers, the report that is
 generated will be:

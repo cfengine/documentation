@@ -21,21 +21,11 @@ translatepath("a/b/c") would yield "a/b/c" on Unix platforms, but
 
 **Example:**
 
-```cf3
-bundle agent test
-{
-  vars:
-      "inputs_dir" string => translatepath("$(sys.workdir)/inputs");
+[%CFEngine_include_snippet(translatepath.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  reports:
+Output:
 
-    windows::
-      "The path has backslashes: $(inputs_dir)";
-
-    !windows::
-      "The path has slashes: $(inputs_dir)";
-}
-```
+[%CFEngine_include_snippet(translatepath.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:** Be careful when using this function in combination with regular
 expressions, since backslash is also used as escape character in

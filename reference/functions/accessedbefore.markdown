@@ -18,22 +18,8 @@ Return true if `newer` was accessed before `older`.
 **Example:**  
 
 
-```cf3
-    body common control
-    {
-      bundlesequence  => { "example" };
-    }
+[%CFEngine_include_snippet(accessedbefore.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    bundle agent example
-    {     
-      classes:
+Output:
 
-        "do_it" and => { accessedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
-
-      reports:
-
-        do_it::
-
-          "The secret changes have been accessed after the reference time";
-    }
-```
+[%CFEngine_include_snippet(accessedbefore.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

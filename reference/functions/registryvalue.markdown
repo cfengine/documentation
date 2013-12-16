@@ -19,18 +19,11 @@ string.
 
 **Example:**
 
-```cf3
-    bundle agent reg
-    {
-    vars:
-      windows::
-        "value" string => registryvalue("HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine","value3");
+[%CFEngine_include_snippet(registryvalue.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    reports:
-       "Value extracted: $(value)";
+Output:
 
-    }
-```
+[%CFEngine_include_snippet(registryvalue.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:** Currently values of type `REG_SZ` (string), `REG_EXPAND_SZ` 
 (expandable string) and `REG_DWORD` (double word) are supported.

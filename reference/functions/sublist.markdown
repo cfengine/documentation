@@ -15,39 +15,11 @@ tags: [reference, data functions, functions, sublist]
 
 **Example:**
 
-```cf3
-    bundle agent test
-    {
-      vars:
-          "test" slist => {
-                            1,2,3,
-                            "one", "two", "three",
-                            "long string",
-                            "four", "fix", "six",
-                          };
+[%CFEngine_include_snippet(sublist.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "test_head9999" slist => sublist("test", "head", 9999);
-          "test_head1" slist => sublist("test", "head", 1);
-          "test_head0" slist => sublist("test", "head", 0);
+Output:
 
-          "test_tail9999" slist => sublist("test", "tail", 9999);
-          "test_tail10" slist => sublist("test", "tail", 10);
-          "test_tail2" slist => sublist("test", "tail", 2);
-          "test_tail1" slist => sublist("test", "tail", 1);
-          "test_tail0" slist => sublist("test", "tail", 0);
-
-      reports:
-          "The test list is $(test)";
-          "This line should not appear: $(test_head0)";
-          "The head(1) of the test list is $(test_head1)";
-          "The head(9999) of the test list is $(test_head9999)";
-          "This line should not appear: $(test_tail0)";
-          "The tail(1) of the test list is $(test_tail1)";
-          "The tail(10) of the test list is $(test_tail10)";
-          "The tail(2) of the test list is $(test_tail2)";
-          "The tail(9999) of the test list is $(test_tail9999)";
-    }
-```
+[%CFEngine_include_snippet(sublist.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:**  
 

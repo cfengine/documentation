@@ -18,19 +18,11 @@ variable does not expand.
 
 **Example:**  
 
-```cf3
-    bundle agent example
-    {     
-      vars:
+[%CFEngine_include_snippet(filesize.cf, #\+begin_src cfengine3, .*end_src)%]
 
-        "exists" int => filesize("/etc/passwd");
-        "nexists" int => filesize("/etc/passwdx");
+Output:
 
-      reports:
-        "File size $(exists)";
-        "Does not exist $(nexists)";
-    }
-```
+[%CFEngine_include_snippet(filesize.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 
 **History:** Was introduced in version 3.1.3,Nova 2.0.2 (2010)

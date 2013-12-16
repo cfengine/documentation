@@ -18,23 +18,9 @@ this function to return true.
 
 **Example:**  
 
-```cf3
-    body common control
-    {
-      bundlesequence  => { "example" };
-    }
+[%CFEngine_include_snippet(fileexists.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    bundle agent example
-    {     
-      classes:
+Output:
 
-        "exists" expression => fileexists("/etc/passwd");
-
-      reports:
-
-        exists::
-
-          "File exists";
-    }
-```
+[%CFEngine_include_snippet(fileexists.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
