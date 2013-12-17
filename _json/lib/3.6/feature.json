@@ -88,7 +88,7 @@
                           "lval": "persistence",
                           "rval": {
                             "type": "string",
-                            "value": "10"
+                            "value": "$(extract_$(on)[1])"
                           }
                         }
                       ]
