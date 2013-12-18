@@ -146,15 +146,15 @@ If you want CFEngine syntax highlighting, use
 **Notes:** You need to keep an empty line in front of the code block. And
 to put code into a list item, the code needs to be indented *twice*, ie:
 
-* List item with code
-
-        <code goes here>
-
 ```
 * List item with code
 
         <code goes here>
 ```
+
+* List item with code
+
+        <code goes here>
 
 ### Inline code
 
