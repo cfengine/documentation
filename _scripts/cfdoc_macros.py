@@ -529,34 +529,11 @@ def prune_include_lines(markdown_lines):
 	return markdown_lines
 
 def include_example(parameters, config):
-	filename = find_include_file(parameters[0], config["example_directories"])
-	lines = load_include_file(filename)
-	if lines == None:
-		return ""
+	parameters.append(".*") # first line starts
 	
-	markdown_lines = []
-	skip_block = False
-	in_documentation = False
-	for line in lines:
-		if skip_block == False:
-			if line.find("#[%-%]") == 0:
-				skip_block = True
-				continue
-			if line.find("#@ ") == 0:
-				line = line[3:]
-				if not in_documentation:
-					markdown_lines.append("```\n\n")
-					in_documentation = True
-			elif in_documentation:
-				markdown_lines.append("\n```cf3\n")
-				in_documentation = False
-			elif line[0] == '#':
-				continue
-			markdown_lines.append(line)
-		if line.find("#[%+%]") == 0:
-			skip_block = False
-
-	prune_include_lines(markdown_lines)
+	markdown_lines = include_snippet(parameters, config)
+	if not len(markdown_lines):
+		return markdown_lines
 	
 	markdown_lines.append("\n")
 	markdown_lines.append("This policy can be found in\n" )
@@ -581,18 +558,27 @@ def include_snippet(parameters, config):
 
 	markdown_lines = []
 	skip_block = True
+	in_documentation = False
 	for line in lines:
 		if skip_block == False:
-			# special treating of output
+			if line.find("#[%-%]") == 0:
+				skip_block = True
+				continue
+			# #@ interrupts code block, interpret documentation in example code
 			if line.find("#@ ") == 0:
 				line = line[3:]
-			markdown_lines.append(line)
+				if not in_documentation:
+					markdown_lines.append("```\n\n")
+					in_documentation = True
+			elif in_documentation:
+				markdown_lines.append("\n```cf3\n")
+				in_documentation = False
+			# ignore other comments, otherwise append
+			if line[0] != '#':
+				markdown_lines.append(line)
 			if end.match(line) != None:
-				 # if last line a comment, assume end-marker and skip
-				if line[0] == "#":
-					del markdown_lines[-1]
 				break
-		elif begin.match(line) != None:
+		elif (begin.match(line) != None) or (line.find("#[%+%]") == 0):
 			skip_block = False
 			if line[0] != '#':
 				markdown_lines.append(line)
