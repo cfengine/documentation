@@ -583,6 +583,9 @@ def include_snippet(parameters, config):
 	skip_block = True
 	for line in lines:
 		if skip_block == False:
+			# special treating of output
+			if line.find("#@ ") == 0:
+				line = line[3:]
 			markdown_lines.append(line)
 			if end.match(line) != None:
 				 # if last line a comment, assume end-marker and skip
