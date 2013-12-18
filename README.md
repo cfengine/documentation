@@ -12,8 +12,8 @@ the time or the knowledge to make a correction directly here, then you can
 report the issue in the regular [CFEngine bug
 tracker](https://cfengine.com/dev/projects/core).  Use the "Documentation"
 category when you create bugs. And of course you can search the bug tracker
-for known issues with the documentation, and maybe help the community of
-CFEngine users by correcting some of those here!
+for known issues with the documentation, and help the community of
+CFEngine users by correcting some of them.
 
 ## Writing Documentation
 
@@ -533,6 +533,10 @@ Jekyll will place all files into the _site folder, without subdirectories.
 
 Commits in this repository trigger the documentation generator to run, which
 then updates the contents of http://cfengine.com/docs/
+
+The documentation generation creates a log file that lists undocumented
+syntax elements, ambiguous link targets and other stuff that can be improved at
+https://cfengine.com/docs/master/cfdoc_log.html
 
 ## License
 
