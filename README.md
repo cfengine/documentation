@@ -152,17 +152,18 @@ that file into the documentation. Contol comments in the file
 and regular expressions passed to the macros can be used to specify
 which sections of the file should be injected.
 
+The injected lines will be in a CFEngine code block. Comment lines
+(ie lines starting with `#`) are omitted, unless they start with
+`#@ `, in which case they interrupt the code block and are rendered
+as markdown. All lines between a lines starting with `#[%-%]` and `#[%+%]`
+are skipped.
+
 The generator searches for `filename` in the `core/examples`
 subdirectory of WKRDIR.
 
 * `[%CFEngine_include_example(filename)%]`
 
-Injects the code from `filename` as a CFEngine code block. Comments
-are ignored, unless they start with `#@`, in which case they interrupt
-the code block and are rendered as markdown.
-
-A block of code following a `#[%-%]` line is omitted, until a line starts
-with `#[%+%]`.
+Injects the code from `filename`.
 
 * `[%CFEngine_include_snippet(filename, begin_rx, end_rx [optional])%]`
 
@@ -171,7 +172,6 @@ expression `begin_rx`, and injects all lines from there until the
 first line that matches `end_rx`. If `end_rx` is omitted, all lines
 until the end of the file will be injected.
 
-The injected lines will be in a CFEngine code block.
 If the line that matches the regular expression is a comment, then
 it is excluded from the quote, otherwise it is included.
 
