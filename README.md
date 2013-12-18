@@ -147,14 +147,22 @@ replaced by the pre-processor.
 
 #### Quoting policy files
 
+The following macros read code from a file and inject the text in
+that file into the documentation. Contol comments in the file
+and regular expressions passed to the macros can be used to specify
+which sections of the file should be injected.
+
+The generator searches for `filename` in the `core/examples`
+subdirectory of WKRDIR.
+
 * `[%CFEngine_include_example(filename)%]`
 
 Injects the code from `filename` as a CFEngine code block. Comments
 are ignored, unless they start with `#@`, in which case they interrupt
 the code block and are rendered as markdown.
 
-The generator searches for `filename` in the `core/examples`
-subdirectory of WKRDIR.
+A block of code following a `#[%-%]` line is omitted, until a line starts
+with `#[%+%]`.
 
 * `[%CFEngine_include_snippet(filename, begin_rx, end_rx [optional])%]`
 
