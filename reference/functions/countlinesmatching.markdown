@@ -20,14 +20,8 @@ lines matched.
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {     
-      vars:
+[%CFEngine_include_snippet(countlinesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
 
-        "no" int => countlinesmatching("m.*","/etc/passwd");
+Output:
 
-      reports:
-        "Found $(no) lines matching";
-    }
-```
+[%CFEngine_include_snippet(countlinesmatching.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

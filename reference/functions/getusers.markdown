@@ -15,13 +15,11 @@ tags: [reference, system functions, functions, getusers]
 
 **Example:**
 
-```cf3
-    vars:
-      "allusers" slist => getusers("zenoss,mysql,at","12,0");
+[%CFEngine_include_snippet(getusers.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    reports:
-      "Found user $(allusers)";
-```
+Output:
+
+[%CFEngine_include_snippet(getusers.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:**
 This function is currently only available on Unix-like systems.

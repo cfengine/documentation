@@ -18,23 +18,9 @@ currently defined class, otherwise returns false.
 
 **Example:**
 
-```cf3
-    body common control
-    {
-      bundlesequence  => { "example" };
-    }
+[%CFEngine_include_snippet(classmatch.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    bundle agent example
-    {     
-      classes:
+Output:
 
-        "do_it" and => { classmatch(".*_cfengine_com"), "linux" }; 
-
-      reports:
-
-        do_it::
-
-          "Host matches pattern";
-    }
-```
+[%CFEngine_include_snippet(classmatch.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 

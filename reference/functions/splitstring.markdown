@@ -21,20 +21,8 @@ rest of the un-split string.
 
 **Example:**
 
-```cf3
-bundle agent test
-{
-vars:
+[%CFEngine_include_snippet(splitstring.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "split1" slist => splitstring("one:two:three",":","10");
-  "split2" slist => splitstring("one:two:three",":","1");
-  "split3" slist => splitstring("alpha:xyz:beta","xyz","10");
+Output:
 
-reports:
-
-  "split1: $(split1)";  # will list "one", "two", and "three"
-  "split2: $(split2)";  # will list "one" and "two:three"
-  "split3: $(split3)";  # will list "alpha:" and ":beta"
-
-}
-```
+[%CFEngine_include_snippet(splitstring.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

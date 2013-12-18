@@ -19,24 +19,11 @@ files, from a fully qualified path name.
 
 **Example:**
 
-```cf3
-bundle agent yes
-{
-vars:
+[%CFEngine_include_snippet(lastnode.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "path1" string => "/one/two/last1";
-  "path2" string => "one:two:last2";
+Output:
 
-  "last1" string => lastnode("$(path1)","/");
-  "last2" string => lastnode("$(path2)",":");
-
-  "last3" string => lastnode("$(path2)","/");
-
-reports:
-  "Last = $(last1),$(last2),$(last3)";
-
-}
-```
+[%CFEngine_include_snippet(lastnode.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`filestat()`][filestat], [`dirname()`][dirname],
 [`splitstring()`][splitstring].

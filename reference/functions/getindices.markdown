@@ -18,17 +18,8 @@ variable.
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {
-    vars:
+[%CFEngine_include_snippet(getindices.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "v[index_1]" string => "value_1";
-      "v[index_2]" string => "value_2";
+Output:
 
-      "parameter_name" slist => getindices("v");
-
-    reports:
-       "Found index: $(parameter_name)";
-    }
-```
+[%CFEngine_include_snippet(getindices.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

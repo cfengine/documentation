@@ -15,13 +15,11 @@ tags: [reference, text functions, functions, text, tail, substring]
 
 **Example:**
 
-```cf3
-    vars:
+[%CFEngine_include_snippet(tail.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "end"
+Output:
 
-         string =>  tail("abc", "1"); # will contain "c"
-```
+[%CFEngine_include_snippet(tail.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Introduced in CFEngine 3.6
 

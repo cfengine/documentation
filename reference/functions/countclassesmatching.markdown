@@ -19,13 +19,8 @@ of classes matched.
 
 **Example:**  
 
-```cf3
-    bundle agent example
-    {
-      vars:
-        "num" int => countclassesmatching("entropy.*low");
+[%CFEngine_include_snippet(countclassesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      reports:
-        "Found $(num) classes matching";
-    }
-```
+Output:
+
+[%CFEngine_include_snippet(countclassesmatching.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

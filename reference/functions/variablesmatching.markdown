@@ -21,24 +21,10 @@ When any tags are given, only the variables with those tags are returned.
 **Example:**  
 
 
-```cf3
-    body common control
-    {
-      bundlesequence => { run };
-    }
+[%CFEngine_include_snippet(variablesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    bundle agent run
-    {
-      vars:
-          "all" slist => variablesmatching(".*");
-          "c" slist => variablesmatching("sys");
-          "c_plus_plus" slist => variablesmatching("sys", "plus");
-      reports:
-          "All classes = $(all)";
-          "Classes matching 'sys' = $(c)";
-          "Classes matching 'sys' with the 'plus' tag = $(c_plus_plus)";
-    }
+Output:
 
-```
+[%CFEngine_include_snippet(variablesmatching.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Introduced in CFEngine 3.6

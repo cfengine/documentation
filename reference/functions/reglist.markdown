@@ -16,18 +16,11 @@ tags: [reference, data functions, functions, reglist]
 
 **Example:**
 
-```cf3
-    vars:
+[%CFEngine_include_snippet(reglist.cf, #\+begin_src cfengine3, .*end_src)%]
 
-     "nameservers" slist => {
-                            "128.39.89.10",
-                            "128.39.74.16",
-                            "192.168.1.103"
-                            };
-    classes:
+Output:
 
-      "am_name_server" expression => reglist("@(nameservers)",escape("$(sys.ipv4[eth0])"));
-```
+[%CFEngine_include_snippet(reglist.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 In the example above, the IP address in `$(sys.ipv4[eth0])` must be `escape`d, 
 so that the (.) characters in the IP address are not interpreted as the 

@@ -18,10 +18,11 @@ relative to the the directory are returned.
 
 **Example:**
 
-```cf3
-    vars:
-      "listfiles" slist => lsdir("/etc", "(passwd|shadow).*", "true");
-```
+[%CFEngine_include_snippet(lsdir.cf, #\+begin_src cfengine3, .*end_src)%]
+
+Output:
+
+[%CFEngine_include_snippet(lsdir.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:**  
    

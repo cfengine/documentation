@@ -19,18 +19,8 @@ be detected using this function.
 
 **Example:**
 
-```cf3
-bundle agent example
-{     
-classes:
+[%CFEngine_include_snippet(islink.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "islink" expression => islink("/tmp/link");
+Output:
 
-reports:
-
-  islink::
-
-    "It's a link.";
-
-}
-```
+[%CFEngine_include_snippet(islink.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

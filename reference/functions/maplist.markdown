@@ -20,17 +20,10 @@ lists.
 
 **Example:**
 
-```cf3
-bundle agent test
-{
-vars:
+[%CFEngine_include_snippet(maplist.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "oldlist" slist => { "a", "b", "c" };
-  "newlist" slist => maplist("Element ($(this))","oldlist");
+Output:
 
-reports:
-  "Transform: $(newlist)";
-}
-```
+[%CFEngine_include_snippet(maplist.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)

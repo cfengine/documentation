@@ -16,23 +16,10 @@ tags: [reference, data functions, functions, difference]
 
 **Example:**
 
-```cf3
-    bundle agent test
-    {
-      vars:
-          "a" slist => { 1,2,3,"x" };
-          "b" slist => { "x" };
+[%CFEngine_include_snippet(difference.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "listname1" slist => { "a", "b" };
-          "listname2" slist => { "a", "b" };
-          "$(listname1)_str" string => join(",", $(listname1));
+Output:
 
-          "diff_$(listname1)_$(listname2)" slist => difference($(listname1), $(listname2));
-          "diff_$(listname1)_$(listname2)_str" string => join(",", "diff_$(listname1)_$(listname2)");
-
-      reports:
-          "The difference of list '$($(listname1)_str)' with '$($(listname2)_str)' is '$(diff_$(listname1)_$(listname2)_str)'";
-}
-```
+[%CFEngine_include_snippet(difference.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`intersection()`][intersection].

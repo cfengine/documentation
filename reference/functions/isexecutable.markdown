@@ -15,10 +15,10 @@ tags: [reference, files functions, functions, isexecutable]
 
 **Example:**
 
-```cf3
-classes:
+[%CFEngine_include_snippet(isexecutable.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "yes" expression => isexecutable("/bin/ls");
-```
+Output:
+
+[%CFEngine_include_snippet(isexecutable.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

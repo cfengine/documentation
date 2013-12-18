@@ -18,32 +18,8 @@ this function to return true.
 
 **Example:**
 
-```cf3
-    body common control
+[%CFEngine_include_snippet(filesexist.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    {
-      bundlesequence  => { "example" };
-    }
+Output:
 
-    bundle agent example
-
-    {     
-      vars:
-
-        "mylist" slist => { "/tmp/a", "/tmp/b", "/tmp/c" };
-
-      classes:
-
-        "exists" expression => filesexist("@(mylist)");
-
-      reports:
-
-        exists::
-
-          "All files exist";
-
-        !exists::
-
-          "Not all files exist";
-    }
-```
+[%CFEngine_include_snippet(filesexist.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

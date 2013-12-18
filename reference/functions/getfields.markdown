@@ -39,18 +39,11 @@ The base name of the array that returns the values.
 
 **Example:**
 
-```cf3
-  bundle agent example
-  {     
-    vars:
+[%CFEngine_include_snippet(getfields.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "no" int => getfields("mark:.*","/etc/passwd",":","userdata");
+Output:
 
-    reports:
-        "Found $(no) lines matching";
-        "Mark's homedir = $(userdata[6])";
-  }
-```
+[%CFEngine_include_snippet(getfields.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:**
 This function matches lines (using a regular expression) in the named

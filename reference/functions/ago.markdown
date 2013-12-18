@@ -47,37 +47,9 @@ Seconds of runtime
 
 **Example:**
 
-```cf3
-    bundle agent testbundle
-    {
-      processes:
+[%CFEngine_include_snippet(ago.cf, #\+begin_src cfengine3, .*end_src)%]
 
-       ".*"
+Output:
 
-          process_count   => anyprocs,
-          process_select  => proc_finder;
-
-      reports:
-
-       any_procs::
-
-         "Found processes out of range";
-    }
-
-
-    body process_select proc_finder
-
-    {
-      # Processes started between 5.5 hours and 20 minutes ago
-      stime_range => irange(ago(0,0,0,5,30,0),ago(0,0,0,0,20,0));
-      process_result => "stime";
-    }
-
-    body process_count anyprocs
-
-    {
-      match_range => "0,0";
-      out_of_range_define => { "any_procs" };
-    }
-```
+[%CFEngine_include_snippet(ago.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 

@@ -42,18 +42,11 @@ variable does not expand.
 
 **Example:**
 
-```cf3
-    bundle agent fileinfo(f)
-    {
-      vars:
-          "fields" slist => splitstring("size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname,linktarget,linktarget_shallow", ",", 999);
+[%CFEngine_include_snippet(filestat.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "stat[$(f)][$(fields)]" string => filestat($(f), $(fields));
+Output:
 
-      reports:
-          "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])";
-    }
-```
+[%CFEngine_include_snippet(filestat.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:**  
    

@@ -20,16 +20,9 @@ handled.
 
 **Example:**
 
-```cf3
-bundle agent example
+[%CFEngine_include_snippet(hash.cf, #\+begin_src cfengine3, .*end_src)%]
 
-{     
-vars:
+Output:
 
-  "md5" string => hash("CFEngine is not cryptic","md5");
-
-reports:
-    "Hashed to: $(md5)";
-}
-```
+[%CFEngine_include_snippet(hash.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 

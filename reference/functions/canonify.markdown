@@ -18,12 +18,10 @@ This function turns arbitrary text into class data.
 **Example:**  
 
 
-```cf3
-    commands:
+[%CFEngine_include_snippet(canonify.cf, #\+begin_src cfengine3, .*end_src)%]
 
-       "/var/cfengine/bin/$(component)"
+Output:
 
-           ifvarclass => canonify("start_$(component)");
-```
+[%CFEngine_include_snippet(canonify.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [classify()][classify], `canonifyuniquely`.

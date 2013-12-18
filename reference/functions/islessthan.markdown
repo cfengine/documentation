@@ -18,24 +18,10 @@ strings, the result is the inverse to that of comparing with strcmp().
 
 **Example:**
 
-```cf3
-bundle agent test
-{
-classes:
+[%CFEngine_include_snippet(islessthan.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "ok" expression => islessthan("0","1");
+Output:
 
-reports:
-
-  ok::
-
-    "Assertion is true";
-
- !ok::
-
-  "Assertion is false";
-
-}
-```
+[%CFEngine_include_snippet(islessthan.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`isgreaterthan()`][isgreaterthan].

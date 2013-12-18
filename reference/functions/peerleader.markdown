@@ -33,7 +33,6 @@ promises.
 
 Example file:
 
-```
      one
      two
      three # this is a comment
@@ -49,22 +48,8 @@ Example file:
      etc
 ```
 
-```cf3
-    bundle agent peers
-    {
-    vars:
+[%CFEngine_include_snippet(peerleader.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "mygroup" slist => peers("/tmp/hostlist","#.*",4);
+Output:
 
-      "myleader" string => peerleader("/tmp/hostlist","#.*",4);
-
-      "all_leaders" slist => peerleaders("/tmp/hostlist","#.*",4);
-
-    reports:
-
-       "mypeer $(mygroup)";
-       "myleader $(myleader)";
-       "another leader $(all_leaders)";
-    }
-```
-
+[%CFEngine_include_snippet(peerleader.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

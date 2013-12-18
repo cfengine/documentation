@@ -19,31 +19,10 @@ reads data from a variable instead of a file. By making data readable from a var
 
 **Example:**
 
-```cf3
-    bundle agent test(f) 
-    {
-    vars:
-      # Define data inline for convenience
-      "table"   string => "one: a
-                           two: b
-                         three: c";
+[%CFEngine_include_snippet(parsestringarrayidx.cf, #\+begin_src cfengine3, .*end_src)%]
 
-    #######################################
+Output:
 
-     "dim" int => parsestringarrayidx(
-                      "items",
-                      "$(table)",
-                      "\s*#[^\n]*",
-                      ":",
-                      "1000",
-                      "200000"
-                      );
-
-     "keys" slist => getindices("items");
-
-    reports:
-        "$(keys)";
-    }
-```
+[%CFEngine_include_snippet(parsestringarrayidx.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)

@@ -15,23 +15,10 @@ tags: [reference, data functions, functions, intersection]
 
 **Example:**
 
-```cf3
-    bundle agent test
-    {
-      vars:
-          "a" slist => { 1,2,3,"x" };
-          "b" slist => { "x" };
+[%CFEngine_include_snippet(intersection.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "listname1" slist => { "a", "b" };
-          "listname2" slist => { "a", "b" };
-          "$(listname1)_str" string => join(",", $(listname1));
+Output:
 
-          "int_$(listname1)_$(listname2)" slist => intersection($(listname1), $(listname2));
-          "int_$(listname1)_$(listname2)_str" string => join(",", "int_$(listname1)_$(listname2)");
-
-      reports:
-          "The intersection of list '$($(listname1)_str)' with '$($(listname2)_str)' is '$(int_$(listname1)_$(listname2)_str)'";
-    }
-```
+[%CFEngine_include_snippet(intersection.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`difference()`][difference].

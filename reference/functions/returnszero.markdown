@@ -19,21 +19,11 @@ rather than the output of the command.
 
 **Example:**
 
-```cf3
-bundle agent example
-{     
-classes:
+[%CFEngine_include_snippet(returnszero.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "my_result" expression => returnszero("/usr/local/bin/mycommand","noshell");
+Output:
 
-reports:
-
-  !my_result::
-
-    "Command failed";
-
-}
-```
+[%CFEngine_include_snippet(returnszero.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:** you should never use this function to execute commands that
 make changes to the system, or perform lengthy computations. Such an

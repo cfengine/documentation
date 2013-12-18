@@ -16,18 +16,8 @@ plain/regular file.
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-classes:
+[%CFEngine_include_snippet(isplain.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "isplain" expression => isplain("/etc/passwd");
+Output:
 
-reports:
-
-  isplain::
-
-    "File exists..";
-
-}
-```
+[%CFEngine_include_snippet(isplain.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

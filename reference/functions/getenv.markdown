@@ -21,29 +21,11 @@ variable you are querying.
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-vars:
+[%CFEngine_include_snippet(getenv.cf, #\+begin_src cfengine3, .*end_src)%]
 
-   "myvar" string => getenv("PATH","20");
+Output:
 
-classes:
-
-  "isdefined" not => strcmp("$(myvar)","");
-
-reports:
-
-  isdefined::
-
-   "The path is $(myvar)";
-
-  !isdefined::
-
-   "The named variable PATH does not exist";
-
-}
-```
+[%CFEngine_include_snippet(getenv.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:**  
 

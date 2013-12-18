@@ -26,34 +26,10 @@ accidental or intentional running of unwanted bundles.
 **Example:**
 
 
-```cf3
-body common control
-{
-      bundlesequence => { mefirst };
-}
+[%CFEngine_include_snippet(bundlesmatching.cf, #\+begin_src cfengine3, .*end_src)%]
 
-bundle common g
-{
-  vars:
-      "todo" slist => bundlesmatching("default:run.*");
-}
+Output:
 
-bundle agent mefirst
-{
-  methods:
-      # note this is a dynamic bundle sequence!
-      "" usebundle => $(g.todo);
-}
-
-bundle agent run_123_456
-{
-  vars:
-      "bundles" slist => bundlesmatching(".*");
-      "no_bundles" slist => bundlesmatching("891");
-  reports:
-      "bundles = $(bundles)";
-      "no bundles = $(no_bundles)";
-}
-```
+[%CFEngine_include_snippet(bundlesmatching.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`findfiles()`][findfiles].

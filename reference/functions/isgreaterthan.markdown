@@ -18,22 +18,8 @@ strings, the result is identical to that of comparing with strcmp().
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-classes:
+[%CFEngine_include_snippet(isgreaterthan.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "ok" expression => isgreaterthan("1","0");
+Output:
 
-reports:
-
-  ok::
-
-    "Assertion is true";
-
- !ok::
-
-  "Assertion is false";
-
-}
-```
+[%CFEngine_include_snippet(isgreaterthan.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

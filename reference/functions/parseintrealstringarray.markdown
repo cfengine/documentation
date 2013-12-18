@@ -34,30 +34,10 @@ policies can be kept inline.
 
 **Example:**
 
-```cf3
-    bundle agent test(f) 
-    {
-      vars:
-         # Define data inline for convenience
-        "table"   string => 
-          "1:2
-          3:4
-          5:6";
+[%CFEngine_include_snippet(parseintrealstringarray.cf, #\+begin_src cfengine3, .*end_src)%]
 
-       "dim" int => parseintarray(
-                                "items",
-                        "$(table)",
-                        "\s*#[^\n]*",
-                        ":",
-                        "1000",
-                        "200000"
-                        );
+Output:
 
-       "keys" slist => getindices("items");
-
-      reports:
-          "$(keys)";
-    }
-```
+[%CFEngine_include_snippet(parseintrealstringarray.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **History:** Was introduced in version 3.1.5a1, Nova 2.1.0 (2011)

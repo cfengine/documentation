@@ -17,18 +17,8 @@ The CFEngine process must have access to `filename` in order for this to work.
 
 **Example:**
 
-```cf3
-bundle agent example
-{     
-classes:
+[%CFEngine_include_snippet(isdir.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "isdir" expression => isdir("/etc");
+Output:
 
-reports:
-
-  isdir::
-
-    "Directory exists..";
-
-}
-```
+[%CFEngine_include_snippet(isdir.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

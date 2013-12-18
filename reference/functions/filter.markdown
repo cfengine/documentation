@@ -33,36 +33,11 @@ Invert filter.
 **Example:**  
 
 
-```cf3
-    bundle agent test
-    {
-      vars:
-          "test" slist => {
-                            1,2,3,
-                            "one", "two", "three",
-                            "long string",
-                            "one", "two", "three",
-                          };
+[%CFEngine_include_snippet(filter.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "test_grep" slist => filter("[0-9]", "test", "true", "false", 999);
-          "test_exact1" slist => filter("one", "test", "false", "false", 999);
-          "test_exact2" slist => filter(".", "test", "false", "false", 999);
-          "test_invert" slist => filter("[0-9]", "test", "true", "true", 999);
-          "test_max2" slist => filter(".*", "test", "true", "false", 2);
-          "test_max0" slist => filter(".*", "test", "true", "false", 0);
-          "grep" slist => grep("[0-9]", "test");
+Output:
 
-      reports:
-          "The test list is $(test)";
-          "The grepped list is $(grep)";
-          "The filter-grepped list is $(test_grep)";
-          "The filter-exact list, looking for 'one' is $(test_exact1)";
-          "This line should not appear: $(test_exact2)";
-          "The filter-invert list, looking for non-digits, is $(test_invert)";
-          "The filter-bound list, matching at most 2 items, is $(test_max2)";
-          "This line should not appear: $(test_max0)";
-    }
-```
+[%CFEngine_include_snippet(filter.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** [`grep()`][grep], [`every()`][every], [`some()`][some], and 
 [`none()`][none].

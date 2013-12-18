@@ -23,22 +23,11 @@ are specialized for printing components of the date and time according to the sy
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {     
-      vars:
-          "time" int => now();
-          "now" string => strftime("localtime", "%F %T", now());
-          "then" string => strftime("localtime", "%F %T", 0);
+[%CFEngine_include_snippet(strftime.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "gmt_now" string => strftime("gmtime", "%F %T", now());
-          "gmt_then" string => strftime("gmtime", "%F %T", 0);
+Output:
 
-      reports:
-          "time $(time); now $(now); then $(then)";
-          "time $(time); GMT now $(now); GMT then $(then)";
-    }
-```
+[%CFEngine_include_snippet(strftime.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 **Notes:** Note that `strftime` is a standard C function and you should
 consult its reference to be sure of the specifiers it allows.  The below
 is from the documentation of the standard `strftime` implementation

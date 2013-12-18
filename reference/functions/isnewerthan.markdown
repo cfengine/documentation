@@ -19,17 +19,8 @@ to changes of content only.
 
 **Example:**
 
-```cf3
-    bundle agent example
-    {     
-    classes:
+[%CFEngine_include_snippet(isnewerthan.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "do_it" and => { isnewerthan("/tmp/later","/tmp/earlier"), "linux" }; 
+Output:
 
-    reports:
-
-      do_it::
-
-        "The derived file needs updating";
-    }
-```
+[%CFEngine_include_snippet(isnewerthan.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

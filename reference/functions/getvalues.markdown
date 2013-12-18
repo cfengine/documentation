@@ -21,20 +21,10 @@ variable.
 
 **Example:**
 
-```cf3
-bundle agent example
-{
-vars:
+[%CFEngine_include_snippet(getvalues.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "v[index_1]" string => "value_1";
-  "v[index_2]" string => "value_2";
+Output:
 
-  "values" slist => getvalues("v");
-
-reports:
-   "Found values: $(values)";
-
-}
-```
+[%CFEngine_include_snippet(getvalues.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:**

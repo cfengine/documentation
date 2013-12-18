@@ -18,16 +18,8 @@ string in first argument.
 
 **Example:**
 
-```cf3
-bundle agent test
-{
-vars:
+[%CFEngine_include_snippet(join.cf, #\+begin_src cfengine3, .*end_src)%]
 
-  "mylist" slist => { "one", "two", "three", "four", "five" };
+Output:
 
-  "scalar" string => join("->","mylist");
-
-reports:
-  "Concatenated $(scalar)";
-}
-```
+[%CFEngine_include_snippet(join.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]

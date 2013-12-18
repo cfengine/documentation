@@ -21,28 +21,10 @@ This is a simple function to reverse a list.
 **Example:**  
 
 
-```cf3
-    bundle agent test
-    {
-      vars:
-          "test" slist => {
-                            1,2,3,
-                            "one", "two", "three",
-                            "long string",
-                            "one", "two", "three",
-                          };
+[%CFEngine_include_snippet(reverse.cf, #\+begin_src cfengine3, .*end_src)%]
 
-          "reversed" slist => reverse("test");
-          "test_exact1" slist => reverse("one", "test", "false", "false", 999);
-          "test_exact2" slist => reverse(".", "test", "false", "false", 999);
-          "test_invert" slist => reverse("[0-9]", "test", "true", "true", 999);
-          "test_max2" slist => reverse(".*", "test", "true", "false", 2);
-          "test_max0" slist => reverse(".*", "test", "true", "false", 0);
-          "grep" slist => grep("[0-9]", "test");
+Output:
 
-      reports:
-          "The test list is $(reversed)";
-    }
-```
+[%CFEngine_include_snippet(reverse.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **See also:** `filter()`, `grep()`, `every()`, `some()`, and `none()`.

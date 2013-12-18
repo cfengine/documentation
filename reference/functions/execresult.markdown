@@ -23,27 +23,11 @@ potential security issue.
 
 **Example:**
 
-```cf3
-body common control
-{
-bundlesequence  => { "example" };
-}
+[%CFEngine_include_snippet(execresult.cf, #\+begin_src cfengine3, .*end_src)%]
 
-bundle agent example
+Output:
 
-{     
-vars:
-
-  "my_result" string => execresult("/bin/ls /tmp","noshell");
-
-reports:
-
-  linux::
-
-    "Variable is $(my_result)";
-
-}
-```
+[%CFEngine_include_snippet(execresult.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
 
 **Notes:** you should never use this function to execute commands that
 make changes to the system, or perform lengthy computations. Such an
