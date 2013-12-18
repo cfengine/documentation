@@ -22,4 +22,4 @@ The variable need only exist. This says nothing about its value. Use
 
 Output:
 
-[%CFEngine_include_snippet(isvariable.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(isvariable.cf, #\+begin_src\s+example_output\s*, .*end_src)%]

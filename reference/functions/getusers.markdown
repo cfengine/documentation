@@ -19,7 +19,7 @@ tags: [reference, system functions, functions, getusers]
 
 Output:
 
-[%CFEngine_include_snippet(getusers.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(getusers.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **Notes:**
 This function is currently only available on Unix-like systems.

@@ -34,6 +34,6 @@ allows you to do dynamic inputs and a dynamic bundle call chain.
 
 Output:
 
-[%CFEngine_include_snippet(findfiles.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(findfiles.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** [`bundlesmatching()`][bundlesmatching].

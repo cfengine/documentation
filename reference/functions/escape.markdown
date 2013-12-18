@@ -25,7 +25,7 @@ characters, so that you do not have to.
 
 Output:
 
-[%CFEngine_include_snippet(escape.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(escape.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 In this example, the string "192.168.2.1" is "escaped" to be equivalent to 
 "192\\.168\\.2\\.1", because without the backslashes, the regular expression 

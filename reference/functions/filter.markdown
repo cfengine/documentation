@@ -37,7 +37,7 @@ Invert filter.
 
 Output:
 
-[%CFEngine_include_snippet(filter.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(filter.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** [`grep()`][grep], [`every()`][every], [`some()`][some], and 
 [`none()`][none].

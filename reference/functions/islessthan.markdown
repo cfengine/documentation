@@ -22,6 +22,6 @@ strings, the result is the inverse to that of comparing with strcmp().
 
 Output:
 
-[%CFEngine_include_snippet(islessthan.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(islessthan.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** [`isgreaterthan()`][isgreaterthan].

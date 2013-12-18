@@ -24,6 +24,6 @@ lists.
 
 Output:
 
-[%CFEngine_include_snippet(maplist.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(maplist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)

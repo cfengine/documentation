@@ -20,7 +20,7 @@ tags: [reference, data functions, functions, regcmp]
 
 Output:
 
-[%CFEngine_include_snippet(regcmp.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(regcmp.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 If the string contains multiple lines, then it is necessary to code these
 explicitly, as regular expressions do not normally match the end of line

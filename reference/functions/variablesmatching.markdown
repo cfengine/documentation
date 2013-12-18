@@ -25,6 +25,6 @@ When any tags are given, only the variables with those tags are returned.
 
 Output:
 
-[%CFEngine_include_snippet(variablesmatching.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(variablesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:** Introduced in CFEngine 3.6

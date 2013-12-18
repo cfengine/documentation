@@ -21,4 +21,4 @@ The group may be specified by name or identifier.
 
 Output:
 
-[%CFEngine_include_snippet(groupexists.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(groupexists.cf, #\+begin_src\s+example_output\s*, .*end_src)%]

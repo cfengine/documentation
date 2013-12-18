@@ -23,6 +23,6 @@ reads data from a variable instead of a file. By making data readable from a var
 
 Output:
 
-[%CFEngine_include_snippet(parsestringarrayidx.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(parsestringarrayidx.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)

@@ -27,7 +27,7 @@ are specialized for printing components of the date and time according to the sy
 
 Output:
 
-[%CFEngine_include_snippet(strftime.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(strftime.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 **Notes:** Note that `strftime` is a standard C function and you should
 consult its reference to be sure of the specifiers it allows.  The below
 is from the documentation of the standard `strftime` implementation

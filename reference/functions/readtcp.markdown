@@ -28,7 +28,7 @@ connections fully before deploying.
 
 Output:
 
-[%CFEngine_include_snippet(readtcp.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(readtcp.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **Notes:** Note that on some systems the timeout mechanism does not seem to
 successfully interrupt the waiting system calls so this might hang if you send 

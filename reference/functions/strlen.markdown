@@ -19,7 +19,7 @@ tags: [reference, text functions, functions, text, strlen, substring]
 
 Output:
 
-[%CFEngine_include_snippet(strlen.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(strlen.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:** Introduced in CFEngine 3.6
 

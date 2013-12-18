@@ -25,6 +25,6 @@ the [unanchored][unanchored] `regex`.
 
 Output:
 
-[%CFEngine_include_snippet(every.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(every.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** [`filter()`][filter], [`some()`][some], and [`none()`][none].

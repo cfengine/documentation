@@ -29,6 +29,6 @@ For a key-value map like `{ a: 100, b: 200 }` you get the value at
 
 Output:
 
-[%CFEngine_include_snippet(nth.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(nth.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** [`length()`][length].

@@ -26,4 +26,4 @@ If there are any back reference matches from the regular expression, then the ar
 
 Output:
 
-[%CFEngine_include_snippet(regextract.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(regextract.cf, #\+begin_src\s+example_output\s*, .*end_src)%]

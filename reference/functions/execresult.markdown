@@ -27,7 +27,7 @@ potential security issue.
 
 Output:
 
-[%CFEngine_include_snippet(execresult.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(execresult.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **Notes:** you should never use this function to execute commands that
 make changes to the system, or perform lengthy computations. Such an

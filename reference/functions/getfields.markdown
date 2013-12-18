@@ -43,7 +43,7 @@ The base name of the array that returns the values.
 
 Output:
 
-[%CFEngine_include_snippet(getfields.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(getfields.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **Notes:**
 This function matches lines (using a regular expression) in the named

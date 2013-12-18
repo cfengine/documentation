@@ -30,6 +30,6 @@ accidental or intentional running of unwanted bundles.
 
 Output:
 
-[%CFEngine_include_snippet(bundlesmatching.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(bundlesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** [`findfiles()`][findfiles].

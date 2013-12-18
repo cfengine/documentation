@@ -23,4 +23,4 @@ be detected using this function.
 
 Output:
 
-[%CFEngine_include_snippet(islink.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(islink.cf, #\+begin_src\s+example_output\s*, .*end_src)%]

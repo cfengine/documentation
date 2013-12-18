@@ -23,6 +23,6 @@ collect summary information from a source external to CFEngine.
 
 Output:
 
-[%CFEngine_include_snippet(product.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(product.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

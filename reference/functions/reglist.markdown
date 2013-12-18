@@ -20,7 +20,7 @@ tags: [reference, data functions, functions, reglist]
 
 Output:
 
-[%CFEngine_include_snippet(reglist.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(reglist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 In the example above, the IP address in `$(sys.ipv4[eth0])` must be `escape`d, 
 so that the (.) characters in the IP address are not interpreted as the 

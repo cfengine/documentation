@@ -21,4 +21,4 @@ The CFEngine process must have access to `filename` in order for this to work.
 
 Output:
 
-[%CFEngine_include_snippet(isdir.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(isdir.cf, #\+begin_src\s+example_output\s*, .*end_src)%]

@@ -23,7 +23,7 @@ files, from a fully qualified path name.
 
 Output:
 
-[%CFEngine_include_snippet(lastnode.cf, #\+begin_src\s+example_output\s*[ ,.0-9]+, .*end_src)%]
+[%CFEngine_include_snippet(lastnode.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
 **See also:** [`filestat()`][filestat], [`dirname()`][dirname],
 [`splitstring()`][splitstring].
