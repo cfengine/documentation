@@ -9,18 +9,13 @@ tags: [getting started, installation]
 ---
 
 CFEngine comes in two versions: 
-**CFEngine Community**, a free GPL v3 open source edition, and **CFEngine Enterprise**, 
+
+* **CFEngine Enterprise**, 
 a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition can be evaluated for free (up to 25 servers).
 
+* **CFEngine Community**, a free GPL v3 open source edition.
+
 The following installations are available:
-
-## CFEngine Community
-
-Install and test the latest [version of Community][Installing Community]. 
-
-In addition to 
-instructions, the section also includes simple tutorials to get you started, followed by more 
-advanced tutorials to help your learn the CFEngine language and functionality.
 
 ## CFEngine Enterprise
 
@@ -35,8 +30,16 @@ Choose the installation that best suits your needs.
 
 * Install and test the latest version using our [native version][Installing Enterprise 25 Free].
 
+
 #### CFEngine Enterprise (Production)
 
 Install CFEngine Enterprise for [production][Installing Enterprise for Production].
 
+## CFEngine Community
+
+Install and test the latest [version of Community][Installing Community]. 
+
+In addition to 
+instructions, the section also includes simple tutorials to get you started, followed by more 
+advanced tutorials to help your learn the CFEngine language and functionality.
 
