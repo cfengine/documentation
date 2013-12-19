@@ -17,8 +17,10 @@ upgrade or use in conjunction with other versions at this point.*
 -->
 
 CFEngine comes in two versions: 
+
 * **CFEngine Enterprise**, 
 a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition can be evaluated for free (up to 25 servers).
+
 * **CFEngine Community**, a free GPL v3 open source edition.
 
 The following installations are available:
