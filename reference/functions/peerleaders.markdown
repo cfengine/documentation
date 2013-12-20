@@ -26,40 +26,14 @@ promises.
 
 **Example:**
 
-Example file:
+Prepare:
 
-```cf3
-     one
-     two
-     three # this is a comment
-     four
-     five
-     six
-     seven
-     eight
-     nine
-     ten
-     eleven
-     twelve
-     etc
-```
+[%CFEngine_include_snippet(peerleaders.cf, #\+begin_src prep, .*end_src)%]
 
-```cf3
-    bundle agent peers
-    {
-    vars:
+Run:
 
-      "mygroup" slist => peers("/tmp/hostlist","#.*",4);
+[%CFEngine_include_snippet(peerleaders.cf, #\+begin_src cfengine3, .*end_src)%]
 
-      "myleader" string => peerleader("/tmp/hostlist","#.*",4);
+Output:
 
-      "all_leaders" slist => peerleaders("/tmp/hostlist","#.*",4);
-
-    reports:
-
-       "mypeer $(mygroup)";
-       "myleader $(myleader)";
-       "another leader $(all_leaders)";
-
-    }
-```
+[%CFEngine_include_snippet(peerleaders.cf, #\+begin_src\s+example_output\s*, .*end_src)%]

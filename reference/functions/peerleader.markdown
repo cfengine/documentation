@@ -31,22 +31,11 @@ promises.
 
 **Example:**
 
-Example file:
+Prepare:
 
-     one
-     two
-     three # this is a comment
-     four
-     five
-     six
-     seven
-     eight
-     nine
-     ten
-     eleven
-     twelve
-     etc
-```
+[%CFEngine_include_snippet(peerleader.cf, #\+begin_src prep, .*end_src)%]
+
+Run:
 
 [%CFEngine_include_snippet(peerleader.cf, #\+begin_src cfengine3, .*end_src)%]
 

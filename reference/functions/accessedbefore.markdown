@@ -17,6 +17,11 @@ Return true if `newer` was accessed before `older`.
 
 **Example:**  
 
+Prepare:
+
+[%CFEngine_include_snippet(accessedbefore.cf, #\+begin_src prep, .*end_src)%]
+
+Run:
 
 [%CFEngine_include_snippet(accessedbefore.cf, #\+begin_src cfengine3, .*end_src)%]
 

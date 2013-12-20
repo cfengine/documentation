@@ -42,6 +42,12 @@ variable does not expand.
 
 **Example:**
 
+Prepare:
+
+[%CFEngine_include_snippet(filestat.cf, #\+begin_src prep, .*end_src)%]
+
+Run:
+
 [%CFEngine_include_snippet(filestat.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:
@@ -50,7 +56,7 @@ Output:
 
 **Notes:**  
    
-The list of fields may be extended as needed.
+The list of fields may be extended as needed by CFEngine.
 
 **History:** Was introduced in version 3.5.0,Enterprise 3.1 (2013).  `linktarget` and `linktarget_shallow` were added in version 3.6.
 

@@ -15,6 +15,12 @@ tags: [reference, io functions, functions, readfile]
 
 **Example:**
 
+Prepare:
+
+[%CFEngine_include_snippet(readfile.cf, #\+begin_src prep, .*end_src)%]
+
+Run:
+
 [%CFEngine_include_snippet(readfile.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:

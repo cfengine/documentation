@@ -18,11 +18,16 @@ variable does not expand.
 
 **Example:**  
 
+Prepare:
+
+[%CFEngine_include_snippet(filesize.cf, #\+begin_src prep, .*end_src)%]
+
+Run:
+
 [%CFEngine_include_snippet(filesize.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:
 
 [%CFEngine_include_snippet(filesize.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-
 
 **History:** Was introduced in version 3.1.3,Nova 2.0.2 (2010)
