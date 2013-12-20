@@ -22,7 +22,7 @@ To see all of the classes defined on a particular host, run
 as a privileged user. Note that some of the classes are set only if a trusted 
 link can be established with 
 [`cf-monitord`][cf-monitord], i.e. if both are 
-running  with privilege, and the `/var/cfengine/state/env_data` file is 
+running with privilege, and the `/var/cfengine/state/env_data` file is 
 secure.
 
 You can use
@@ -35,8 +35,20 @@ of all the defined classes in a list, inside CFEngine policy itself.
 
 ## Hard Classes
 
-* Operating System Classes
-    * Operating System Architecture - `ultrix, sun4`, etc.
+* CFEngine-specific classes
+    * `any`: this class is always set
+    * `am_policy_hub`, `policy_server`: set when a host is the policy hub
+    * `bootstrap_mode`: set when bootstrapping a host
+    * `inform_mode`, `verbose_mode`, `debug_mode`: log verbosity levels in order of noisiness
+    * `opt_dry_run`: set when the `--dry-run` option is given
+    * `failsafe_fallback`: set when the base policy is invalid and the built-in `failsafe.cf` (see `bootstrap.c`) is invoked
+    * (`community`, `community_edition`) and (`enterprise`, `enterprise_edition`): the two different CFEngine products, Community and Enterprise, can be distinguished by these mutually exclusive sets of hard classes
+* Operating System Classes (note that the presence of these classes doesn't imply platform support)
+    * Operating System Architecture -  `arista`, `big_ip`, `debian`, `eos`, `fedora`, `Mandrake`, `Mandriva`, `oracle`, `redhat`, `slackware`, `smartmachine`, `smartos`, `solarisx86`, `sun4`, `SuSE`, `ubuntu`, `ultrix`, the always-favorite `unknown_ostype`, etc.
+    * VM or hypervisor specific: `VMware`, `virt_guest_vz`, `virt_host_vz`, `virt_host_vz_vzps`, `xen`, `xen_dom0`, `xen_domu_hv`, `xen_domu_pv`, `oraclevmserver`, etc.
+    * On Solaris-10 systems, the zone name (in the form `zone_global, zone_foo, zone_baz`).
+    * Windows-specific: `DomainController`, `Win2000`, `WinServer`, `WinServer2003`, `WinServer2008`, `WinVista`, `WinWorkstation`, `WinXP`
+    * `have_aptitude`, `powershell`: based on the detected capabilities of the platform or the compiled-in options
     * **See also:** `sys.arch`, `sys.class`, `sys.flavor`, `sys.os`, `sys.ostype`.
 * Network Classes
     * Unqualified Name of Host. CFEngine truncates it at the first dot. 
@@ -45,6 +57,7 @@ of all the defined classes in a list, inside CFEngine policy itself.
     * The IP address octets of any active interface (in the form
     `ipv4_192_0_0_1`, `ipv4_192_0_0`, `ipv4_192_0`, `ipv4_192`)
     * User-defined Group of Hosts
+    * `mac_unknown`: set when the MAC address can't be found
     * **See also:** `sys.domain`, `sys.hardware_addresses`, `sys.sys.host`, `sys.interface`, `sys.interfaces`, `sys.interface_flags`, `sys.ipv4`, `sys.ip_addresses`, `sys.fqhost`, `sys.uqhost`.
 * Time Classes
     * note ALL of these have a local and a GMT version.  The GMT classes are consistent the world over, in case you need global change coordination.
@@ -80,8 +93,6 @@ of all the defined classes in a list, inside CFEngine policy itself.
     `net_iface_xl0`, `net_iface_vr0`).
 -   System status and entropy information reported by
     `cf-monitord`.
--   On Solaris-10 systems, the zone name (in the form
-    `zone_global, zone_foo, zone_baz`).
 
 ## Soft Classes
 
