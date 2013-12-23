@@ -3,7 +3,7 @@ layout: default
 title: Installing Community
 categories: [Getting Started, Installation, Installing Community]
 published: true
-sorting: 10
+sorting: 50
 alias: getting-started-installation-installing-community.html
 tags: [getting started, installation, community]
 ---
