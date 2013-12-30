@@ -156,6 +156,7 @@ def parseMarkdownForAnchors(file_name, config):
 			addLinkToMap("`" + header + "`", label, current_file_name + '#' + anchor + ' \"' + current_title + ' - ' + header + '\"', config)
 	
 def applyLinkMap(file_name, config):
+	qa.LogProcessStart(config, "applyLinkMap() filename=" + file_name)
 	markdown_file = open(file_name,"r")
 	markdown_lines = markdown_file.readlines()
 	markdown_file.close()
