@@ -176,7 +176,7 @@ fully-qualified name of the array (cflearn_password_expiration:password_expirati
 contains the namespace, the bundle name, and the array name.
 
 <5>  We must add the `default:` namespace to all the standard library components we
-use and—-in this case--also to the `backup_timestamp` body and the `set_user_field()` bundle.
+use and, in this case, also to the `backup_timestamp` body and the `set_user_field()` bundle.
 
 <6>  Finally, and to complement the limitation of functionality of the sketch to Linux
 systems, we have added a `reports:` promise that prints a warning on non-Linux systems to let 
