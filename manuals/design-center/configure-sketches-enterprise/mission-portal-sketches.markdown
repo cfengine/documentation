@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sketches Available in the Mission Portal
-categories: [Learning CFEngine, Design Center, Configure]
+categories: [Manuals, Using Design Center Sketches to Deploy Policy, Configure the Design Center App (Enterprise), Sketches Available in the Mission Portal]
 published: true
 sorting: 30
 alias: mission-portal-design-center-sketches-available.html
