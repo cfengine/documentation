@@ -221,6 +221,7 @@ def applyLinkMap(file_name, config):
 								candidate_start = -1
 					i += 1
 				if index != -1:
+					   qa.LogProcessStart(config, "applyLinkMap() candidate=" + candidate)
 					write_changes = True
 					new_line += markdown_line[:index]
 					new_line += "[" + candidate + "]" + anchor
@@ -237,3 +238,4 @@ def applyLinkMap(file_name, config):
 			markdown_file.write(new_line)
 		markdown_file.close()
 		os.rename(file_name + ".new", file_name)
+		qa.LogProcessStart(config, "applyLinkMap() finish")
