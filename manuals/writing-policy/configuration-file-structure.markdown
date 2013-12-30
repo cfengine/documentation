@@ -41,7 +41,7 @@ of your system (that is, if CFEngine cannot successfully execute this set of
 promises, it has no mechanism for distributing new policy files).
 
 By default, the policy defined in update.cf is executed from two sets of 
-promise bodies. The “usual” one (defined in the `bundlesequence` in 
+promise bodies. The "usual" one (defined in the `bundlesequence` in 
 `promises.cf`) and another in the backup/failsafe `bundlesequence` (defined in 
 `failsafe.cf`).
 
