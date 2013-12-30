@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Controlling Access to the Design Center UI
-categories: [Learning CFEngine, Design Center, Configure]
+categories: [Manuals, Using Design Center Sketches to Deploy Policy, Configure the Design Center App (Enterprise), Controlling Access to the Design Center UI]
 published: true
 sorting: 20
 alias: mission-portal-design-center-access-control.html

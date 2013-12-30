@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Deploy your first Policy (Enterprise)
-categories: [Learning CFEngine, Design Center, Deploy]
+categories: [Manuals, Using Design Center Sketches to Deploy Policy, Deploy your first Policy (Enterprise)]
 published: true
 sorting: 10
 alias: design-center-deploy-sketch.html
