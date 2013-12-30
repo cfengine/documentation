@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Write a new Sketch (Enterprise and Community)
-categories: [Learning CFEngine, Design Center, Write]
+categories: [Manuals, Design Center, Write]
 published: true
 sorting: 40
 alias: design-center-write-sketch.html

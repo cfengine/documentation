@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Configure the Design Center App (Enterprise)
-categories: [Learning CFEngine, Design Center, Configure]
+categories: [Manuals, Design Center, Sketches Enterprise]
 published: true
 sorting: 20
 alias: configure-sketches-enterprise.html

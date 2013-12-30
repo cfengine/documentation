@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Advanced Walkthrough
-categories: [Learning CFEngine, Design Center, Configure]
+categories: [Manuals, Design Center, Sketches Community,  Advanced Walkthrough]
 published: true
 sorting: 10
-alias: manuals-design-center-advanced.html
+alias: manuals-design-center-advanced-walkthrough.html
 tags: [design center, walkthrough, cf-sketch, sketches]
 ---
 
