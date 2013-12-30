@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Using Design Center Sketches to Deploy Policy
-categories: [Manuals, Using Design Center Sketches to Deploy Policy]
+categories: [Manuals, Design Center]
 published: true
 sorting: 50
 alias: manuals-design-center.html
