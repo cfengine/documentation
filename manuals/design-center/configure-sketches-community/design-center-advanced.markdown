@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Advanced Walkthrough
-categories: [Manuals, Using Design Center Sketches to Deploy Policy, Configure and Deploy Sketches on the Command Line (Community), Advanced Walkthrough]
+categories: [Manuals, Design Center, Sketches Community, Advanced Walkthrough]
 published: true
 sorting: 10
 alias: manuals-design-center-advanced.html

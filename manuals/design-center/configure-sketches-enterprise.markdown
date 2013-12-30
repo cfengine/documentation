@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Configure the Design Center App (Enterprise)
-categories: [Manuals, Using Design Center Sketches to Deploy Policy, Configure the Design Center App (Enterprise)]
+categories: [Manuals, Design Center, Enterprise Sketches]
 published: true
 sorting: 20
 alias: configure-sketches-enterprise.html
