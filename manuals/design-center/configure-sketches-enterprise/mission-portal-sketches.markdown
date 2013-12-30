@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sketches Available in the Mission Portal
-categories: [Learning CFEngine, Design Center, Configure]
+categories: [Manuals, Design Center, Sketches Enterprise, Sketches Available]
 published: true
 sorting: 30
 alias: mission-portal-design-center-sketches-available.html

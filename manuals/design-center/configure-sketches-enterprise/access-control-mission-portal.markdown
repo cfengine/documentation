@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Controlling Access to the Design Center UI
-categories: [Learning CFEngine, Design Center, Configure]
+categories: [Manuals, Design Center, Sketches Enterprise, Access Controll]
 published: true
 sorting: 20
 alias: mission-portal-design-center-access-control.html

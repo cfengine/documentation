@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Integrating Mission Portal with git
-categories: [Learning CFEngine, Design Center, Configure]
+categories: [Manuals, Design Center, Sketches Enterprise, Integrating With Mission Portal]
 published: true
 sorting: 10
 alias: manuals-design-center-integrating-mission-portal-with-git.html

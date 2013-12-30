@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Configure and Deploy Sketches on the Command Line (Community)
-categories: [Learning CFEngine, Design Center, Configures]
+categories: [Manuals, Design Center, Sketches Community]
 published: true
 sorting: 30
 alias: configure-sketches-community.html

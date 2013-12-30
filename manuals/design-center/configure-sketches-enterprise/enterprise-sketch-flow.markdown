@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sketch Flow in CFEngine Enterprise
-categories: [Learning CFEngine, Design Center, Configure]
+categories: [Manuals, Design Center, Sketches Enterprise, Sketch Flow]
 published: true
 sorting: 40
 alias: manuals-design-center-enterprise-sketch-flow.html
