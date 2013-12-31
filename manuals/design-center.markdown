@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using Design Center Sketches to Deploy Policy
+title: Design Center Sketches
 categories: [Manuals, Design Center]
 published: true
 sorting: 50
@@ -8,7 +8,7 @@ alias: manuals-design-center.html
 tags: [design center, cf-sketch, sketches, deploy policy]
 ---
 
-## The Design Center Defined
+## Use Design Center Sketches to Deploy Policy
 
 The CFEngine Design Center is a collection of **sketches** which are reusable, configurable 
 policies. Think of sketches as templates that are written in CFEngine policy language; you can 
@@ -19,9 +19,9 @@ The Design Center also contains tools that help you to manipulate and
 manage sketches: 
 
 * **Enterprise users** manage and deploy sketches in the Design Center app that is located on 
-the Mission Portal console. [Deploy your first policy in the Design Center][Deploy your first Policy (Enterprise)].
+the Mission Portal console. [Deploy your first policy in the Design Center][Deploy your first Policy].
 
-* **Community users** manage and deploy sketches on the [command line][Configure and Deploy Sketches on the Command Line (Community)] by using the `cf-sketch` 
+* **Community users** manage and deploy sketches on the [command line][Command Line Sketches] by using the `cf-sketch` 
 tool.
 
 ## The Design Center Sketch Workflow
@@ -31,7 +31,7 @@ A sketch is installed, configured, and deployed, as shown in the diagram below:
 ![Sketch Workflow](DCsketchworkflow.png)
 
 1. Install a sketch on a Host from a repository. At this point, the sketch is merely 
-a template that cannot really do anything because it doesn’t contain parameters.
+a template that cannot do anything because it doesn’t contain parameters.
 
 2. Configure the sketch by providing parameters. Now, you can create sketch 
 configurations.  One sketch can have multiple configurations with different parameter sets 
@@ -59,16 +59,16 @@ sketches can change, just as the behavior of regular CFEngine policy can change.
 The following topics are included in the Design Center section. **Select topics that 
 are specific to your edition of CFEngine: Enterprise or Community.**
  
-* [Deploy your first Policy (Enterprise)][Deploy your first Policy (Enterprise)] This Enterprise-specific tutorial illustrates how 
+* [Deploy your first Policy (Enterprise)][Deploy your first Policy] This Enterprise-specific tutorial illustrates how 
 to use a sketch to configure and deploy a simple policy by using the Design Center app on 
 the Mission Portal console.
-* [Configure the Design Center App (Enterprise)][Configure the Design Center App (Enterprise)] This section is for Enterprise users who plan to 
+* [Configure the Design Center App (Enterprise)][Configure the Design Center App] This section is for Enterprise users who plan to 
 manage sketches and possibly write new ones. It also includes advanced topics that provide a 
 better look at managing Enterprise sketches in the Design Center app and understanding 
 the overall sketch flow.
-* [Configure Sketches on the Command Line (Community)][Configure and Deploy Sketches on the Command Line (Community)] This section is for Community users 
+* [Configure Sketches on the Command Line (Community)][Command Line Sketches] This section is for Community users 
 who plan to install, configure, and deploy sketches.
-* [Write a new Sketch (Enterprise and Community)][Write a new Sketch (Enterprise and Community)] This is an advanced section for both Enterprise 
+* [Write a new Sketch (Enterprise and Community)][Write a new Sketch] This is an advanced section for both Enterprise 
 and Community users who plan to write new sketches.
 
 ### Terminology

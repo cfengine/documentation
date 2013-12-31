@@ -10,18 +10,18 @@ tags: [design center, walkthrough, cf-sketch, sketches]
 
 This walkthrough illustrates how a Design Center sketch can be found,
 installed, configured, and executed as policy. Many items are already discussed at
-[Configure and Deploy Sketches on the Command Line][Configure and Deploy Sketches on the Command Line (Community)]. 
+[Command Line Sketches][Command Line Sketches]. 
 This Walkthrough provides a more advanced look at sketches in that it describes internal and backend processes. 
 
 ## Before you Begin
 
 Make certain you have installed all necessary software and have checked out the Design Center repository:
 
-[Complete the software requirements][Configure and Deploy Sketches on the Command Line (Community)#Requirements]
+[Complete the software requirements][Command Line Sketches#Requirements]
  
-[Review the basics concepts of sketches][Configure and Deploy Sketches on the Command Line (Community)#Basic Concepts]
+[Review the basics concepts of sketches][Command Line Sketches#Basic Concepts]
 
-[Check out the Design Center repository][Configure and Deploy Sketches on the Command Line (Community)#Step 1. Check out the Design Center repository]
+[Check out the Design Center repository][Command Line Sketches#Step 1. Check out the Design Center repository]
 
 ## Overview
 

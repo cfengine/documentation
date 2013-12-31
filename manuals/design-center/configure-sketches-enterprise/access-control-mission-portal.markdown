@@ -50,8 +50,7 @@ for a large amount of directories, this will have a performance impact across th
 
 To get complete control over what users do, changes can be reviewed before 
 they are copied to `/var/cfengine/masterfiles` on the policy server. Refer 
-to [Integrating Mission Portal with git][Integrating Mission Portal with 
-git] for more information.
+to [Integrating Mission Portal with git][Integrating Mission Portal with git] for more information.
 
 
 ## Audit log
