@@ -8,9 +8,9 @@ alias: configure-sketches-enterprise.html
 tags: [sketch, design center]
 ---
 
-This section is for Enterprise users who plan to manage Design Center sketches. 
+### Enterprise Users can Manage Design Center Sketches 
 
-### Getting Started Topics 
+## Getting Started Topics 
 
 [Integrating the Mission Portal with git][Integrating Mission Portal with git]  The Design 
 Center app requires access to a git repository in order to manage sketches. This section 
@@ -24,7 +24,7 @@ Center app. It describes how to allow or limit a Mission Portal user's ability t
 to the git repository and make changes to the hosts. All Mission Portal changes that users 
 make through the Design Center app can be viewed in the git commit log.
 
-### Advanced Topics
+## Advanced Topics
 
 [Sketches Available in the Mission Portal][Sketches Available in the Mission Portal]  
 At some point, new sketches must be added to the Design Center app. This section shows 
@@ -35,7 +35,7 @@ describes how to add or remove sketches from the app.
 This section provides a detailed look at the file structure and services that make up the 
 Design Center app.
 
-### Further Reading
+## Further Reading
 
 The following topics are not included in this section but are equally necessary for 
 understanding and managing Design Center sketches:
