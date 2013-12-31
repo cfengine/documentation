@@ -1,12 +1,14 @@
 ---
 layout: default
-title: Configure and Deploy Sketches on the Command Line (Community)
+title: Command Line Sketches
 categories: [Manuals, Design Center, Sketches Community]
 published: true
 sorting: 30
 alias: configure-sketches-community.html
 tags: [design center, cf-sketch, sketches]
 ---
+
+### Community Users can Configure and Deploy Sketches on the Command Line
 
 The CFEngine Design Center is a repository of pre-made components
 called **sketches** that allow you to use the full power of CFEngine
@@ -26,23 +28,23 @@ command-line tools. The overview is as follows:
 
 **Before you Begin**
 
-[Requirements][Configure and Deploy Sketches on the Command Line (Community)#Requirements]
+[Requirements][Command Line Sketches#Requirements]
 
-[Basic Concepts][Configure and Deploy Sketches on the Command Line (Community)#Basic Concepts]
+[Basic Concepts][Command Line Sketches#Basic Concepts]
 
 **Instructions**
 
-[Step 1. Check out the Design Center repository][Configure and Deploy Sketches on the Command Line (Community)#Step 1. Check out the Design Center repository]
+[Step 1. Check out the Design Center repository][Command Line Sketches#Step 1. Check out the Design Center repository]
 
-[Step 2. Run cf-sketch][Configure and Deploy Sketches on the Command Line (Community)#Step 2. Run cf-sketch]
+[Step 2. Run cf-sketch][Command Line Sketches#Step 2. Run cf-sketch]
 
-[Step 3. Search for sketches][Configure and Deploy Sketches on the Command Line (Community)#Step 3. Search for sketches]
+[Step 3. Search for sketches][Command Line Sketches#Step 3. Search for sketches]
 
-[Step 4. Install a sketch][Configure and Deploy Sketches on the Command Line (Community)#Step 4. Install a sketch]
+[Step 4. Install a sketch][Command Line Sketches#Step 4. Install a sketch]
 
-[Step 5. Activate a sketch][Configure and Deploy Sketches on the Command Line (Community)#Step 5. Activate a sketch]  Define the parameter set and environment, and run the activate command.
+[Step 5. Activate a sketch][Command Line Sketches#Step 5. Activate a sketch]  Define the parameter set and environment, and run the activate command.
 
-[Step 6. Deploy the sketch][Configure and Deploy Sketches on the Command Line (Community)#Step 6. Deploy the sketch: Generate and execute the runfile]  Generate and execute the runfile.
+[Step 6. Deploy the sketch][Command Line Sketches#Step 6. Deploy the sketch: Generate and execute the runfile]  Generate and execute the runfile.
 
 Additional resources are included at the end of this page.
 
@@ -397,5 +399,5 @@ the [advanced discussion][Advanced Walkthrough] on configuring sketches.
 
 * Visit the [Design Center API][The Design Center API] for reference.
 
-* Once you are ready to start [writing Design Center sketches][Write a new Sketch (Enterprise and Community)], refer to the 
+* Once you are ready to start [writing Design Center sketches][Write a new Sketch], refer to the 
 [sketch structure][Sketch Structure] documentation.

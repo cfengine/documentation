@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploy your first Policy (Enterprise)
+title: Deploy your first Policy
 categories: [Manuals, Design Center, Deploy Policy]
 published: true
 sorting: 10

@@ -16,7 +16,7 @@ These instructions describe how to set up a git repository that is hosted on the
 Policy Server with the initial CFEngine `masterfiles` and how to configure
 the CFEngine Mission Portal to use this repository. If you already have a git
 service, ensure that you have a passphraseless key generated as shown in step 4 of [Set up the git service][Integrating Mission Portal with git#Set up the git service] 
-and proceed to [Connect Mission Portal to the git repository][Integrating Mission Portal with git#Connect Mission Portal to the git repository].
+and proceed to [Connect the Mission Portal to the git repository][Integrating Mission Portal with git#Connect the Mission Portal to the git repository].
 
 As you follow these steps, refer to the diagram
 in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise]. It provides 
@@ -27,7 +27,7 @@ a detailed look at the file structure and services that make up the Design Cente
 1. [Set up the git service][Integrating Mission Portal with git#Set up the git service] 
 2. [Initialize the git repository][Integrating Mission Portal with git#Initialize the git repository]
 3. [Update masterfiles from git][Integrating Mission Portal with git#Update masterfiles from git]
-4. [Connect Mission Portal to the git repository][Integrating Mission Portal with git#Connect the Mission Portal to the git repository]
+4. [Connect the Mission Portal to the git repository][Integrating Mission Portal with git#Connect the Mission Portal to the git repository]
 5. [Test the Design Center app][Integrating Mission Portal with git#Test the Design Center app]
 6. [End to end waiting time][Integrating Mission Portal with git#End to end wait time]
 7. [Access control and security][Integrating Mission Portal with git#Access control and security]
