@@ -7,17 +7,36 @@ sorting: 10
 alias: getting-started.html
 ---
 
-Install and evaluate the latest version of CFEngine Enterprise using our pre-packaged [Vagrant environment][Installing Enterprise Vagrant Environment].
+A positive experience with CFEngine software means that you are able to install it, try it out, 
+and learn it. We provide that experience here:
 
-Download and install [CFEngine Community edition][Installing Community].
+### Install It
 
-[Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]. This getting-started primer is perfect for new users. 
+[Install CFEngine][Installing CFEngine] Read about our various editions and install the 
+CFEngine edition that’s best for your organization. CFEngine features an Enterprise version for 
+production environments and a Community (open-source) edition. We offer two ways to install 
+and evaluate Enterprise before you purchase it.
 
-Read CFEngine [manuals][CFEngine Manuals].
+### Try It
 
-[Upgrade][Upgrade Instructions] existing CFEngine installations.
+*We learn best by doing.* -- Aristotle (paraphrased)
 
-Get [Support][Support and Community].
+[Tutorials][Tutorials]  Walk through the tutorials to get a better feel for the power and 
+value of CFEngine. 
 
-View additional [tutorials, examples, and documentation][Learning Tools].
+**Examples** Once you understand how CFEngine works, refer to our policy examples 
+to save time as you begin to define the desired end states of your organization’s IT 
+systems. Find these examples on our [website][Policy] and in our github [repository][CFEngine Examples].
 
+
+### Learn It
+
+[Learning Resources][Learning Tools] In addition to the documentation that's provided on 
+our [website][CFEngine Manuals], we provide guides, demos, and other resources from our CFEngine 
+staff and our special CFEngine contributors. 
+
+
+### Use our Help
+
+[Find Answers][Support and Community] We provide a number of ways to connect you to CFEngine 
+experts if you need more help. Contact us!
