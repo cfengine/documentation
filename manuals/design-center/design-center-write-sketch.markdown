@@ -8,7 +8,9 @@ alias: design-center-write-sketch.html
 tags: [design center, write sketches]
 ---
 
-### Overview
+### Enterprise and Community Users can Write Sketches from the Command Line
+
+## Overview
 
 This page describes how to create a Design Center sketch by converting an existing policy 
 into a sketch and by using the **sketchify** tool in `cf-sketch` to complete the process. 
@@ -37,6 +39,7 @@ Used with permission. It has been reformatted and edited for website consistency
 This is an advanced topic; we assume that you know how to write policy and you are familiar 
 with the [Design Center API][The Design Center API] and Design Center sketch [management][Configure the Design Center App].
 
+## Instructions
 
 ### Step 1. Select a policy to convert into a sketch
 The foundation of any Design Center sketch should be a working piece of CFEngine

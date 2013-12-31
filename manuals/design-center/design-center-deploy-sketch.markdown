@@ -8,6 +8,8 @@ alias: design-center-deploy-sketch.html
 tags: [design center, sketches]
 ---
 
+### Enterprise Users can Deploy Policies through the Design Center App
+
 **Note:** This tutorial walks you 
 through using a sketch to generate a policy. You must be an Enterprise user who has access 
 to the CFEngine Mission Portal console. CFEngine must be up and running in order to complete 
