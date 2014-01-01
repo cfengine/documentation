@@ -57,35 +57,212 @@ Current workaround options include disabling email by commenting out `mailto` an
 
 https://cfengine.com/dev/issues/3011
 
-### Enterprise upgrade using master_software_updates does not work for redhat derivitives
+### Enterprise upgrade using master_software_updates does not work
 
-Packages placed in master_software_updates are not detected as being from a
-higher version so upgrade does not happen.
+The behavior of packages promises on 3.5.x is slightly different from
+3.0.x leading to the bundled policy in `update/update_bins.cf`  not working.
+**This means that dropping the latest packages into the appropriate directory
+will not work.**
 
-#### Workaround
+The workaround is to patch the policy to be more specific regarding the
+CFEngine version number. (`package_select => "=="` and `package_version =>
+"3.5.3-1"`)
 
-Modify the promise with handle
-`cfe_internal_update_bins_packages_nova_update_not_windows_pkg_there`
-in `update/update_bins.cf`.
+#### Linux Clients 
+`update/update_bins.cf`:
+```cf3
+ !am_policy_hub.linux::
 
-Set package_select to `==` and package_version to the specific version for
-example `3.5.1-1`.
+   "$(novapkg)"
+                    comment => "Update Nova package to a newer version (package is there)",
+                     handle => "cfe_internal_update_bins_packages_nova_update_not_windows_pkg_there",
+             package_policy => "update",
+             package_select => "==",
+      package_architectures => { "$(pkgarch)" },
+            package_version => "3.5.3-1",
+             package_method => u_generic( "$(local_software_dir)" ),
+                 ifvarclass => "nova_edition",
+                    classes => u_if_else("bin_update_success", "bin_update_fail");
+```
+
+Diff of the changes required for linux clients:
+```DiffLexer
+diff --git a/update/update_bins.cf b/update/update_bins.cf
+index b9747b8..8162826 100755
+--- a/update/update_bins.cf
++++ b/update/update_bins.cf
+@@ -156,15 +156,15 @@ bundle agent cfe_internal_update_bins
+                  ifvarclass => "nova_edition",
+                     classes => u_if_else("bin_update_success", "bin_update_fail");
+
+-  !am_policy_hub.!windows::
++  !am_policy_hub.linux::
+
+    "$(novapkg)"
+                     comment => "Update Nova package to a newer version (package is there)",
+                      handle => "cfe_internal_update_bins_packages_nova_update_not_windows_pkg_there",
+              package_policy => "update",
+-             package_select => ">=",            # picks the newest Nova available
++             package_select => "==",            # picks the newest Nova available
+       package_architectures => { "$(pkgarch)" },
+-            package_version => "9.9.9",         # Install new Nova anyway
++            package_version => "3.5.3-1",         # Install new Nova anyway
+              package_method => u_generic( "$(local_software_dir)" ),
+                  ifvarclass => "nova_edition",
+                     classes => u_if_else("bin_update_success", "bin_update_fail");
+```
+
+Windows uses a slightly different version format from Linux. You may obtain the
+information by running appwiz.cpl (Add or Remove Programs) and select
+cfengine-nova. (3.5.0.65534)
+
+#### Windows Clients
+
+`update/update_bins.cf`:
+```cf3
+  !am_policy_hub.windows::
+
+   "$(novapkg)"
+                    comment => "Update Nova package to a newer version (package is there)",
+                     handle => "cfe_internal_update_bins_packages_nova_update_windows_only_pkg_there",
+             package_policy => "update",
+             package_select => "==",
+      package_architectures => { "$(pkgarch)" },
+            package_version => "3.5.3.0",
+             package_method => u_generic( "$(local_software_dir)" ),
+                 ifvarclass => "nova_edition",
+                    classes => u_if_else("bin_update_success", "bin_update_fail");
+```
+
+```DiffLexer
+diff --git a/update/update_bins.cf b/update/update_bins.cf
+index b9747b8..625416c 100755
+--- a/update/update_bins.cf
++++ b/update/update_bins.cf
+@@ -175,9 +175,9 @@ bundle agent cfe_internal_update_bins
+                     comment => "Update Nova package to a newer version (package is there)",
+                      handle => "cfe_internal_update_bins_packages_nova_update_windows_only_pkg_there",
+              package_policy => "update",
+-             package_select => ">=",            # picks the newest Nova available
++             package_select => "==",            # picks the newest Nova available
+       package_architectures => { "$(pkgarch)" },
+-            package_version => "9.9.9.9",       # Install new Nova anyway
++            package_version => "3.5.3.0",       # Install new Nova anyway
+              package_method => u_generic( "$(local_software_dir)" ),
+                  ifvarclass => "nova_edition",
+                     classes => u_if_else("bin_update_success", "bin_update_fail");
+```
+
+#### Solaris Clients
+**This is very important**
+The `package_update_command` attribute is missing in `update/update_bins.cf`.
+Add this line manually under Solaris package_method() section and let it roll
+out before doing the Solaris upgrade. Otherwise your Solaris clients will be
+left alone without CFEngine running on the hosts!
+
+`update/update_bins.cf`:
+```cf3
+solarisx86|solaris::
+
+ package_changes => "individual";
+ package_list_command => "/usr/bin/pkginfo -l";
+ package_list_update_command => "/usr/bin/true";
+ package_list_update_ifelapsed => "1440";  # cachine once a day
+
+ package_multiline_start    => "\s*PKGINST:\s+[^\s]+";
+ package_list_name_regex    => "\s*PKGINST:\s+([^\s]+)";
+ package_list_version_regex => "\s*VERSION:\s+([^\s]+)";
+ package_list_arch_regex    => "\s*ARCH:\s+([^\s]+)";
+
+ package_file_repositories  => { "$(repo)" };
+
+ package_installed_regex    => "\s*STATUS:\s*(completely|partially)\s+installed.*";
+ package_name_convention    => "$(name)-$(version)-$(arch).pkg";
+ package_delete_convention  => "$(name)";
+
+ # Cfengine appends path to package and package name below, respectively
+ package_add_command        => "/bin/sh $(repo)/add_scr $(repo)/admin_file";
+ package_update_command     => "/bin/sh $(repo)/upg_scr $(repo)/admin_file";
+ package_delete_command     => "/usr/sbin/pkgrm -n -a $(repo)/admin_file";
+```
+
+```DiffLexer
+diff --git a/update/update_bins.cf b/update/update_bins.cf
+index b9747b8..33535b8 100755
+--- a/update/update_bins.cf
++++ b/update/update_bins.cf
+@@ -403,6 +403,7 @@ solarisx86|solaris::
+
+  # Cfengine appends path to package and package name below, respectively
+  package_add_command        => "/bin/sh $(repo)/add_scr $(repo)/admin_file";
++ package_update_command     => "/bin/sh $(repo)/upg_scr $(repo)/admin_file";
+  package_delete_command     => "/usr/sbin/pkgrm -n -a $(repo)/admin_file";
+
+ aix::
+```
+
+On Solaris, a wrapper script and admin file are needed to automatically
+silently upgrade CFEngine. The files are located in
+`/var/cfengine/share/solaris_admin_files` on the policy server. You must have
+those files along with PKG package in the directory. For example:
 
 ```
-diff --git a/update/update_bins.cf b/update/update_bins.cf 
-index 81afc28..841dbb9 100755 
---- a/update/update_bins.cf 
-+++ b/update/update_bins.cf 
-@@ -162,9 +162,9 @@ bundle agent cfe_internal_update_bins 
-comment => "Update Nova package to a newer version (package is there)", 
-handle => "cfe_internal_update_bins_packages_nova_update_not_windows_pkg_there", 
-package_policy => "update", 
-- package_select => ">=", # picks the newest Nova available 
-+ package_select => "==", # picks the newest Nova available 
-package_architectures => { "$(pkgarch)" }, 
-- package_version => "9.9.9", # Install new Nova anyway 
-+ package_version => "3.5.1-1", # Install new Nova anyway 
-package_method => u_generic( "$(local_software_dir)" ), 
-ifvarclass => "nova_edition", 
-classes => u_if_else("bin_update_success", "bin_update_fail");
+$ cp /var/cfengine/share/solaris_admin_files/sol_9_and_10/* /var/cfengine/master_software_updates/sunos_5.10_sun4u
+$ ls -l /var/cfengine/master_software_updates/sunos_5.10_sun4u/
+total 26468
+-rwxr-xr-x 1 root root       36 Dec  6 16:34 add_scr
+-rwxr-xr-x 1 root root      257 Dec  6 16:34 admin_file
+-rw-r--r-- 1 root root 27090944 Dec  5 15:58 CFEcfengine-nova-3.5.3-sparc.pkg
+-rwxr-xr-x 1 root root      125 Dec  6 16:34 upg_scr
 ```
+
+Adjust the `package_select` and `package_version` attributes; (Version number on Solaris is
+only major release number (3.5.3), not hypen and revision number. (-1))
+
+`update/update_bins.cf`:
+```cf3
+  !am_policy_hub.solaris::
+
+   "$(novapkg)"
+                    comment => "Update Nova package to a newer version (package is there)",
+                     handle => "cfe_internal_update_bins_packages_nova_update_windows_only_pkg_there",
+             package_policy => "update",
+             package_select => "==",
+      package_architectures => { "$(pkgarch)" },
+            package_version => "3.5.3",
+             package_method => u_generic( "$(local_software_dir)" ),
+                 ifvarclass => "nova_edition",
+                    classes => u_if_else("bin_update_success", "bin_update_fail");
+```
+
+```DiffLexer
+diff --git a/update/update_bins.cf b/update/update_bins.cf
+index b9747b8..b26df4b 100755
+--- a/update/update_bins.cf
++++ b/update/update_bins.cf
+@@ -182,6 +182,18 @@ bundle agent cfe_internal_update_bins
+                  ifvarclass => "nova_edition",
+                     classes => u_if_else("bin_update_success", "bin_update_fail");
+
++  !am_policy_hub.solaris::
++
++   "$(novapkg)"
++                    comment => "Update Nova package to a newer version (package is there)",
++                     handle => "cfe_internal_update_bins_packages_nova_update_windows_only_pkg_there",
++             package_policy => "update",
++             package_select => "==",
++      package_architectures => { "$(pkgarch)" },
++            package_version => "3.5.3",
++             package_method => u_generic( "$(local_software_dir)" ),
++                 ifvarclass => "nova_edition",
++                    classes => u_if_else("bin_update_success", "bin_update_fail");
+ #
+
+  files:
+```
+
+
+
+If the client packages are copied but don't get installed, please verify that
+the package_name matches `package_name_convention` in `body package_method u_generic`.
+
