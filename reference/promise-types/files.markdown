@@ -1030,7 +1030,7 @@ change in the future.
 
 **Type:** `int`
 
-**Allowed input range:** `1024,99999`
+**Allowed input range:** `1,65535`
 
 **Example:**
 

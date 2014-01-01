@@ -549,7 +549,7 @@ descriptors which can limit this.
 
 **Type:** `int`
 
-**Allowed input range:** `1024,99999`
+**Allowed input range:** `1,65535`
 
 **Default value:** 5308
 
