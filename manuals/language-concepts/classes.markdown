@@ -18,8 +18,9 @@ system. The list of set classes classifies the environment at time of
 execution.
 
 Classes are either `set` or `not set`, depending on context. Classes fall into 
-hard classes that are discovered by CFEngine, and soft classes that are 
-user-defined.
+**hard** classes that are discovered by CFEngine, and **soft** classes that are 
+user-defined. Refer to [Hard and Soft Classes][Hard and Soft Classes] in the **Reference** 
+section for more information.
 
 In [CFEngine Enterprise][Enterprise Reporting], the list of set classes is 
 reported to the CFEngine Database Server, and can be used there for reporting, 
