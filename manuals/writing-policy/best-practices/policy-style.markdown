@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Policy Style Guide
-categories: [Manuals, Writing Policy, Policy Style Guide]
+categories: [Manuals, Writing Policy, Best Practices]
 published: true
 sorting: 10
 alias: manuals-writing-policy-policy-style-guide.html
