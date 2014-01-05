@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Policy Framework
-categories: [Manuals, Writing Policy, Policy Framework]
+categories: [Manuals, Writing Policy, Policy Concepts]
 published: true
 sorting: 20
-alias: policy-framework.html
+alias: manuals-writing-policy-policy-framework.html
 tags: [manuals, masterfiles, policy, framework]
 ---
 
