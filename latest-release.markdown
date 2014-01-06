@@ -19,10 +19,10 @@ Learn about the newest features in CFEngine 3.6
 * [Known Issues][Known Issues]  
 View any issues of which we are currently aware and investigating. 
 
-* [Supported Platforms][Supported Platforms]  
+* [Supported Platforms and Versions][Supported Platforms and Versions]  
 These are the support platforms for the current release.
 
-* [Upgrade][Upgrade]  
+* [Upgrade Instructions][Upgrade Instructions]  
 Learn how to upgrade from your most recent version of CFEngine.
 
 
