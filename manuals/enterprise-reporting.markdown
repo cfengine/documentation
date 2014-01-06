@@ -27,4 +27,4 @@ This data can be mined using SQL queries, and then be used for inventory
 management, compliance reporting, system diagnostics, capacity planning etc.
 
 Access to the data is provided through the [Enterprise API][Enterprise API] 
-and the [Mission Portal][Mission Portal] web front-end.
+and the Mission Portal web front-end.
