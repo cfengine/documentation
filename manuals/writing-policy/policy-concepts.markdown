@@ -10,12 +10,14 @@ tags: [manuals, style, policy, concepts]
 
 Learn the concepts that make up CFEngine:
 
-Language Concepts
+* [Policy Framework][Policy Framework]
+The policy framework for CFEngine is located in the /var/cfengine/masterfiles directory on 
+the Policy Server. This page describes its contents.
 
-Policy Framework
 
-Syntax, identifiers, names
 
+<!-- Add Language Concepts -->
+<!-- Syntax, identifiers, names -->
 
 
  
