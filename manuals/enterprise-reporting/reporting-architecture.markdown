@@ -52,9 +52,8 @@ the database to provide access to the data via SQL queries.
 ### Apache
 
 REST over HTTP is provided by the
-[Apache http server](http://httpd.apache.org) which also hosts the
-[Mission Portal][Mission Portal]. The`httpd` process is started through 
-CFEngine policy, and listens on port 80.
+[Apache http server](http://httpd.apache.org) which also hosts the Mission Portal. 
+The`httpd` process is started through CFEngine policy, and listens on port 80.
 
 Apache is part of the CFEngine Enterprise installation in 
 `/var/cfengine/httpd`. A user `apache` is created with privileges to run 
