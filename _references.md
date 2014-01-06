@@ -40,3 +40,5 @@
 [community package repositories]: http://cfengine.com/cfengine-linux-distros
 [community download page]: https://cfengine.com/inside/myspace
 [enterprise software download page]: https://cfengine.com/software
+[design center-reference]: reference-design-center.html "Design Center Reference"
+[design center-using]: manuals-design-center.html "Using the Design Center"
