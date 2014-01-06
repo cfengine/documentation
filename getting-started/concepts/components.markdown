@@ -1,7 +1,7 @@
 ---
 layout: default
 title: The CFEngine Components
-categories: [Manuals, CFEngine Components]
+categories: [Getting Started, Concepts, CFEngine Components]
 published: true
 sorting: 30
 alias: manuals-components.html

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Architecture
-categories: [Manuals, Architecture]
+categories: [Getting Started, Concepts, Architecture]
 published: true
 sorting: 20
 alias: manuals-architecture.html
@@ -20,3 +20,10 @@ requires you to have more infrastructure, and a potentially more
 complicated configuration.
 
 But no matter the scale, the essence of any CFEngine deployment is the same.
+
+* [Networking][Networking]
+
+* [Policy Workflow][Policy Workflow]
+
+* [Distributed Discovery][Distributed Discovery]
+
