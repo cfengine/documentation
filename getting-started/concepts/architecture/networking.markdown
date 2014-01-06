@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Networking
-categories: [Manuals, Architecture, Networking]
+categories: [Getting Started, Concepts]
 published: true
 sorting: 10
 alias: manuals-architecture-networking.html

@@ -3,7 +3,7 @@ layout: default
 title: Learning Tools 
 categories: [Getting Started, Learning Tools]
 published: true
-sorting: 15
+sorting: 40
 alias: getting-started-learning-tools.html
 tags: [getting started, learning tools]
 ---
