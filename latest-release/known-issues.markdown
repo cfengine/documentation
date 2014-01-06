@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Known Issues
-sorting: 50
-categories: [Getting Started, Known Issues]
+sorting: 30
+categories: [Latest Release, Known Issues]
 published: true
 alias: getting-started-known-issues.html
 tags: [getting started, known issues]
@@ -10,7 +10,7 @@ tags: [getting started, known issues]
 
 
 
-* This is a pre-release, features are not complete and not fully tested
+* This is a pre-release, features are not complete and not fully tested.
 
 <!--- TODO: move up when no longer a pre-release
 -->

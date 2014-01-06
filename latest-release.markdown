@@ -1,0 +1,28 @@
+---
+layout: default
+title: Latest Release
+categories: [Latest Release]
+published: true
+sorting: 60
+alias: latest-release.html
+---
+
+**IMPORTANT NOTE:** This is a pre-release of CFEngine 3.6. 
+
+<!--- TODO: move up when no longer a pre-release
+-->
+
+
+* [New in CFEngine][New in CFEngine]  
+Learn about the newest features in CFEngine 3.6
+
+* [Known Issues][Known Issues]  
+View any issues of which we are currently aware and investigating. 
+
+* [Supported Platforms][Supported Platforms]  
+These are the support platforms for the current release.
+
+* [Upgrade][Upgrade]  
+Learn how to upgrade from your most recent version of CFEngine.
+
+

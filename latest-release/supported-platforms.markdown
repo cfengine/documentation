@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Supported Platforms and Versions
-sorting: 30
-categories: [Getting Started, Supported Platforms]
+sorting: 40
+categories: [Latest Release, Supported Platforms]
 published: true
 alias: getting-started-supported-platforms.html
 tags: [getting started, platforms, versions, support]
