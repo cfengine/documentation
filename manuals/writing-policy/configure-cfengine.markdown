@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Policy Concepts
+title: Configure CFEngine
 categories: [Manuals, Writing Policy, Configure CFEngine]
 published: true
 sorting: 30
@@ -8,14 +8,15 @@ alias: manuals-writing-policy-configure-cfengine.html
 tags: [manuals, style, policy, concepts]
 ---
 
-Configure CFEngine:
+Additional options for configuring CFEngine policy are as follows:
 
-Controlling Frequency
+* [Controlling Frequency]
+Learn how to control frequency settings for verifying CFEngine policy.
 
-Version Control
+* [Version Control]
+Learn how CFEngine backs up policy.
 
-Filenames and Paths
 
-
+<!-- Add Filenames and Paths -->
 
  
