@@ -1,16 +1,14 @@
 ---
 layout: default
 title: New in CFEngine
-categories: [What's New]
+categories: [Latest Release, New in CFEngine]
 published: true
-sorting: 20
+sorting: 10
 alias: whats-new.html
 ---
 
-**IMPORTANT NOTE:** *This is a pre-release of CFEngine, intended for testing and 
-showcase only. This version is not supported, not covered by service level 
-agreements (SLAs) and not intended for production environments. Do not upgrade 
-or use in conjunction with other versions at this point.
+**IMPORTANT NOTE:** This is a pre-release of CFEngine, intended for testing and 
+showcase only. Updated 3.6 features will appear closer to release time.
 
 <!--- TODO: move up when no longer a pre-release
 -->

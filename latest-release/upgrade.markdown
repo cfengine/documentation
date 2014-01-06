@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Upgrade Instructions
-sorting: 25
-categories: [Getting Started, Upgrade]
+sorting: 50
+categories: [Latest Release, Upgrade]
 published: true
 alias: getting-started-upgrade.html
 tags: [getting started, enterprise, upgrade]
