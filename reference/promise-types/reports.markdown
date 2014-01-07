@@ -187,12 +187,31 @@ Return values are limited to scalars.
 ```
 
 
-### showstate
-
-**Deprecated:** This attribute is kept for source compatibility,
-and has no effect.
-
 ### lastseen
+
+**Description**: Integer time threshold in hours since current peers were
+last seen, report absence
+
+After this time has passed, CFEngine will begin to warn about the host
+being overdue. After the `lastseenexpireafter` expiry time, hosts will be
+purged from this host's database.
+
+**Type**: `int`
+
+**Allowed input range**: `0,99999999999`
+
+**Default value**: `lastseen => 168 # one week`
+
+**Example**:
+
+```cf3
+    reports:
+      "Comment"
+
+        lastseen => "10";
+```
+
+### showstate
 
 **Deprecated:** This attribute is kept for source compatibility,
 and has no effect.
