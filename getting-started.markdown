@@ -10,14 +10,14 @@ alias: getting-started.html
 A positive experience with CFEngine software means that you are able to install it, try it out, 
 and learn it. We provide that experience here:
 
-### Install It
+## Install It
 
 [Install CFEngine][Installing CFEngine] Read about our various editions and install the 
 CFEngine edition thatâ€™s best for your organization. CFEngine features an Enterprise version for 
 production environments and a Community (open-source) edition. We offer two ways to install 
 and evaluate Enterprise before you purchase it.
 
-### Try It
+## Try It
 
 *We learn best by doing.* -- Aristotle (paraphrased)
 
@@ -29,14 +29,17 @@ to save time as you begin to define the desired end states of your organizationâ
 systems. Find these examples on our [website][Policy] and in our github [repository][CFEngine Examples].
 
 
-### Learn It
+## Learn It
+
+[Concepts][Concepts] Learn the concepts of CFEngine such as its architecture and components. 
+Also learn about promise theory and the phases of managing systems with CFEngine. 
 
 [Learning Resources][Learning Tools] In addition to the documentation that's provided on 
 our [website][CFEngine Manuals], we provide guides, demos, and other resources from our CFEngine 
 staff and our special CFEngine contributors. 
 
 
-### Use our Help
+## Use our Help
 
 [Find Answers][Support and Community] We provide a number of ways to connect you to CFEngine 
 experts if you need more help. Contact us!
