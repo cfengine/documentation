@@ -40,7 +40,9 @@ This tutorial uses VirtualBox to create virtual machines on your computer,
 to which Vagrant deploys CFEngine. VirtualBox can be downloaded from
 virtualbox.org (use version
 [4.2.18](http://download.virtualbox.org/virtualbox/4.2.18/)). After downloading
-VirtualBox, install it on your computer.
+VirtualBox, install it on your computer. 
+
+**Note:** To avoid problems, disable other virtualization environments you are running.
 
 ## Start CFEngine Enterprise 
 
