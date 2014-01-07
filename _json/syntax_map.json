@@ -3162,7 +3162,7 @@
           "attribute": "portnumber",
           "status": "normal",
           "type": "int",
-          "range": "1024,99999",
+          "range": "1,65535",
           "visibility": "body"
         },
         "preserve": {
@@ -4777,7 +4777,7 @@
         },
         "track_value": {
           "attribute": "track_value",
-          "status": "normal",
+          "status": "deprecated",
           "type": "option",
           "range": "true,false,yes,no,on,off",
           "visibility": "body"
@@ -4917,7 +4917,7 @@
           "attribute": "port",
           "status": "normal",
           "type": "int",
-          "range": "1024,99999",
+          "range": "1,65535",
           "visibility": "body"
         },
         "serverfacility": {
@@ -5011,7 +5011,7 @@
           "attribute": "port",
           "status": "normal",
           "type": "int",
-          "range": "1024,99999",
+          "range": "1,65535",
           "visibility": "body"
         },
         "force_ipv4": {
@@ -5175,7 +5175,7 @@
           "attribute": "port",
           "status": "normal",
           "type": "int",
-          "range": "1024,99999",
+          "range": "1,65535",
           "visibility": "body"
         }
       }
@@ -6265,19 +6265,6 @@
       "cached": true,
       "category": "communication"
     },
-    "length": {
-      "status": "normal",
-      "returnType": "int",
-      "parameters": [
-        {
-          "type": "string",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
-        }
-      ],
-      "variadic": false,
-      "cached": false,
-      "category": "data"
-    },
     "lsdir": {
       "status": "normal",
       "returnType": "slist",
@@ -6298,6 +6285,23 @@
       "variadic": false,
       "cached": false,
       "category": "files"
+    },
+    "makerule": {
+      "status": "normal",
+      "returnType": "context",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "\"?(/.*)"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
     },
     "maparray": {
       "status": "normal",
@@ -7570,6 +7574,79 @@
         {
           "type": "string",
           "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "length": {
+      "status": "normal",
+      "returnType": "int",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "max": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
+        },
+        {
+          "type": "option",
+          "range": "lex,int,real,IP,ip,MAC,mac"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "mean": {
+      "status": "normal",
+      "returnType": "real",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "min": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
+        },
+        {
+          "type": "option",
+          "range": "lex,int,real,IP,ip,MAC,mac"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
+    "variance": {
+      "status": "normal",
+      "returnType": "real",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
         }
       ],
       "variadic": false,
