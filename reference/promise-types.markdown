@@ -368,72 +368,18 @@ importance of messages from CFEngine.
 
 #### value_kept
 
-**Description:** The value attributed to keeping this promise.
-
-If nothing is specified, the default value is +1.0. However, nothing is logged 
-unless the agent control body sets `track_value` to "true".
-
-**Type:** `real`
-
-**Allowed input range:** `-9.99999E100,9.99999E100`
-
-**Example:**
-
-```cf3
-     body action mydef
-     {
-     value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
-     value_repaired => "2.5";   # fixing this promise is worth 2.5 dollars per hour
-     value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
-     ifelapsed       => "60";   # one hour
-     }
-```
+**Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.
 
 #### value_repaired
 
-**Description:** The value attributed to repairing a promise.
-
-If nothing is specified, the default value is 0.5. However, nothing is logged unless the agent control body set `track_value` to "true".
-
-**Type:** `real`
-
-**Allowed input range:** `-9.99999E100,9.99999E100`
-
-**Example:**
-
-```cf3
-     body action mydef
-     {
-     value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
-     value_repaired => "2.5";   # fixing this promise is worth 2.5 dollars per hour
-     value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
-     ifelapsed       => "60";   # one hour
-     }
-```
+**Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.
 
 #### value_notkept
 
-**Description:** The (possibly negative) value attributed to not keeping a 
-promise.
-
-If nothing is specified, the default value is -1.0. However, nothing is logged 
-unless the agent control body sets `track_value` to "true".
-  
-**Type:** `real`
-
-**Allowed input range:** `-9.99999E100,9.99999E100`
-
-**Example:**
-
-```cf3
-     body action mydef
-     {
-     value_kept     => "4.5";   # this promise is worth 4.5 dollars per hour
-     value_repaired => "2.5";   # fixing this promise is worth 2.5 dollars per hour
-     value_notkept  => "-10.0"; # not keeping this promise costs is 10 dollars per hour
-     ifelapsed       => "60";   # one hour
-     }
-```
+**Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.
 
 #### audit
 
