@@ -213,6 +213,15 @@ reports into one with the introduction of a new field(column): PromiseStatus
 | 12332 | Installed | SuSEfirewall2 | 4330| default |
 | 12332 | Available | MozillaFirefox | 4195| default |
 
+### Refreshing the package lists
+
+If you need to do Enterprise reporting on installed software but don't
+use CFEngine to manage packages otherwise, you need to refresh the
+package list for a specific package method.
+
+Specify a nonexistent package like `cfe-no-such-package` with a
+package action of `add`.  That will cause the package manager to
+generate a package list, which will then be reported in the `Software` table..
 
 ## Database Diagnostics
 
