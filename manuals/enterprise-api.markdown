@@ -1,16 +1,16 @@
 ---
 layout: default
 title: Enterprise API
-categories: [Manuals, Enterprise Reporting, API]
+categories: [Manuals, Enterprise API]
 published: true
-sorting: 20
+sorting: 100
 alias: manuals-enterprise-api.html
 tags: [manuals, enterprise, REST, API, reporting]
 ---
 
-The CFEngine Enterprise API allows HTTP clients to interact with the CFEngine 
-Database Server of a CFEngine Enterprise installation. With the Enterprise 
-API, you can:
+The CFEngine Enterprise API allows HTTP clients to interact with the Policy server (hub) 
+of a CFEngine Enterprise installation. With the Enterprise API, you can do the following:
+
 
 - [Check installation status][Checking Status]
 - [Manage users, roles][Managing Users and Roles] and
@@ -30,3 +30,6 @@ API involves using SQL. With the simplicity of REST, the flexibility of
 SQL and the scalability through Multi-Site queries, users can craft custom 
 reports about systems of arbitrary scale, mining a wealth of data residing 
 on globally distributed CFEngine Database Servers.
+
+Refer to the [Enterprise API Reference][Enterprise API Reference] section for the SQL schema 
+and URI resources. 
