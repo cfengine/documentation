@@ -261,8 +261,18 @@ index b9747b8..b26df4b 100755
   files:
 ```
 
-
-
 If the client packages are copied but don't get installed, please verify that
-the package_name matches `package_name_convention` in `body package_method u_generic`.
+the package_name matches `package_name_convention` in `body package_method
+u_generic`.
 
+### Installing cfengine-nova installs cfengine-nova-hub instead when packages are in yum repository
+
+When a host attempts to install cfengine-nova from a private yum package
+repository and that host also has the cfengine-nova-hub package available from
+a repository source, the cfengine-nova-hub package gets installed instead.
+
+https://cfengine.com/dev/issues/2956
+
+#### Workaround
+
+Remove cfengine-nova-hub from the yum repository and install the hub using rpm.
