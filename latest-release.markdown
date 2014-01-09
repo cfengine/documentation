@@ -17,7 +17,7 @@ alias: latest-release.html
 Learn about the newest features in CFEngine 3.6
 
 * [Known Issues][Known Issues]  
-View any issues of which we are currently aware and investigating. 
+View any issues of which we are currently aware and investigating. View possible workarounds.
 
 * [Supported Platforms and Versions][Supported Platforms and Versions]  
 These are the support platforms for the current release.
