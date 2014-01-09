@@ -1,8 +1,9 @@
 ---
 layout: default
 title:  Managing Settings
-categories: [Examples, Enterprise API, Managing Settings]
+categories: [Manuals, Enterprise API, Managing Settings]
 published: true
+sorting: 30
 alias: examples-enterprise-api-managing-settings.html
 tags: [examples, enterprise, rest, api, reporting, settings, ldap]
 ---

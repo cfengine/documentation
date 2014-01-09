@@ -1,9 +1,9 @@
 ---
 layout: default
 title:  API Porting Guide
-categories: [Manuals, Enterprise Reporting, Porting Guide]
+categories: [Manuals, Enterprise API, Porting Guide]
 published: true
-sorting: 80
+sorting: 90
 alias: manuals-enterprise-reporting-porting-guide.html
 tags: [manuals, enterprise, rest, api, reporting, porting]
 ---
