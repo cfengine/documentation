@@ -1181,27 +1181,8 @@ switch on output to syslog at the inform level.
 
 ### track_value
 
-**Description:** The `track_value` menu option policy determines whether 
-to switch on tracking of promise valuation.
-
-If true, CFEngine generates a log in `WORKDIR/state/cf_value.log` of the 
-estimated 'business value' of the system automation as a running log, 
-`value_kept`, etc. The format of the file is date, sum value kept, sum value 
-repaired, sum value notkept.
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-    body agent control
-    {
-    track_value => "true";
-    }
-```
-
+**Deprecated:** This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.
 
 ### timezone
 
