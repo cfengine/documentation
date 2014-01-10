@@ -42,6 +42,8 @@ virtualbox.org (use version
 [4.2.18](http://download.virtualbox.org/virtualbox/4.2.18/)). After downloading
 VirtualBox, install it on your computer.
 
+**Note:** To avoid problems, disable other virtual environments you are running.
+
 ## Start CFEngine Enterprise 
 
 Step 1. Download our ready-made Vagrant project (use the
