@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  URI Resources
-categories: [Reference, Enterprise API, URI Resources]
+categories: [Reference, Enterprise API Reference, URI Resources]
 published: true
 alias: reference-enterprise-api-uri-resources.html
 tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
