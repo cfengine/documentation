@@ -1,7 +1,7 @@
 ---
 layout: default
-title:  Enterprise  API Reference
-categories: [Reference, Enterprise API]
+title:  Enterprise API Reference
+categories: [Reference, Enterprise API Reference]
 published: true
 sorting: 70
 alias: reference-enterprise-api.html
