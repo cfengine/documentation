@@ -13,15 +13,11 @@ version of CFEngine Enterprise, but the number of Hosts (clients) is limited to 
 
 Note the following requirements:
 
-* To install this version of CFEngine Enterprise, your machine must be running a recent version of Linux.
+* To install this version of CFEngine Enterprise, your machine must be running a recent version of Linux. 
 This installation script has been tested on RHEL 5 and 6, SLES 11, CentOS 5 and 6, and Debian 6 and 7.
 * You need a minimum of 2 GB of available memory and a modern 64 bit processor.
-<<<<<<< HEAD
-* Plan for approximately 100MB of disk space per host. Due to MongoDB's pre-allocation strategy, always provide an extra 2G to 4G of disk space if you plan to bootstrap more hosts later. 
-=======
 * Plan for approximately 100MB of disk space per host. Due to MongoDB's pre-allocation strategy, always provide an
 extra 2G to 4G of disk space if you plan to bootstrap more hosts later.
->>>>>>> 5985386... Add note about quickinstall script internet access requirement.
 * You need a least two VMs/servers, one for the Policy Server and one for a Host (client). They must be on the same network.
 
 ## Installation Overview
