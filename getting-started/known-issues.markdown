@@ -60,8 +60,8 @@ https://cfengine.com/dev/issues/3011
 ### Enterprise upgrade using master_software_updates does not work
 
 The behavior of packages promises on 3.5.x is slightly different from
-3.0.x leading to the bundled policy in `update/update_bins.cf`  not working.
-**This means that dropping the latest packages into the appropriate directory
+3.0.x. This has caused the bundled policy in `update/update_bins.cf` to not work.
+**Dropping the latest packages into the appropriate directory
 will not work.**
 
 The workaround is to patch the policy to be more specific regarding the
@@ -70,6 +70,7 @@ CFEngine version number. (`package_select => "=="` and `package_version =>
 
 #### Linux Clients 
 `update/update_bins.cf`:
+
 ```cf3
  !am_policy_hub.linux::
 
@@ -86,6 +87,7 @@ CFEngine version number. (`package_select => "=="` and `package_version =>
 ```
 
 Diff of the changes required for linux clients:
+
 ```DiffLexer
 diff --git a/update/update_bins.cf b/update/update_bins.cf
 index b9747b8..8162826 100755
@@ -119,6 +121,7 @@ cfengine-nova. (3.5.0.65534)
 #### Windows Clients
 
 `update/update_bins.cf`:
+
 ```cf3
   !am_policy_hub.windows::
 
@@ -155,12 +158,14 @@ index b9747b8..625416c 100755
 
 #### Solaris Clients
 **This is very important**
+
 The `package_update_command` attribute is missing in `update/update_bins.cf`.
 Add this line manually under Solaris package_method() section and let it roll
-out before doing the Solaris upgrade. Otherwise your Solaris clients will be
+out before doing the Solaris upgrade. Otherwise, your Solaris clients will be
 left alone without CFEngine running on the hosts!
 
 `update/update_bins.cf`:
+
 ```cf3
 solarisx86|solaris::
 
@@ -220,6 +225,7 @@ Adjust the `package_select` and `package_version` attributes; (Version number on
 only major release number (3.5.3), not hypen and revision number. (-1))
 
 `update/update_bins.cf`:
+
 ```cf3
   !am_policy_hub.solaris::
 
