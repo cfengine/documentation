@@ -588,8 +588,7 @@ def include_snippet(parameters, config):
 				markdown_lines.append(line)
 
 	if not len(markdown_lines):
-		print "Snippet not found: "
-		print begin.pattern
+		raise Exception("Snippet not found: %s" % begin.pattern)
 		return list()
 		
 	return prune_include_lines(markdown_lines)
