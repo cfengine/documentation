@@ -47,7 +47,7 @@ bindtointerface => "0.0.0.0";
 
 ### cf-execd sends out emails on every execution
 
-**This problem is solved as of CFEngine 3.5.1**
+**This problem is solved as of CFEngine 3.5.1.**
 
 The inclusion of the timestamp in the new log output format causes this
 behavior. This will be resolved in the next release.
