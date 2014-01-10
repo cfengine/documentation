@@ -47,7 +47,7 @@ bindtointerface => "0.0.0.0";
 
 ### cf-execd sends out emails on every execution
 
-**This problem is solved as of CFEngine 3.5.1**
+**This problem is solved as of CFEngine 3.5.1.**
 
 The inclusion of the timestamp in the new log output format causes this
 behavior. This will be resolved in the next release.
@@ -86,9 +86,9 @@ CFEngine version number. (`package_select => "=="` and `package_version =>
                     classes => u_if_else("bin_update_success", "bin_update_fail");
 ```
 
-Diff of the changes required for linux clients:
+Diff of the changes required for Linux clients:
 
-```DiffLexer
+```
 diff --git a/update/update_bins.cf b/update/update_bins.cf
 index b9747b8..8162826 100755
 --- a/update/update_bins.cf
@@ -137,7 +137,9 @@ cfengine-nova. (3.5.0.65534)
                     classes => u_if_else("bin_update_success", "bin_update_fail");
 ```
 
-```DiffLexer
+Diff of the changes required for Windows clients:
+
+```
 diff --git a/update/update_bins.cf b/update/update_bins.cf
 index b9747b8..625416c 100755
 --- a/update/update_bins.cf
@@ -157,7 +159,7 @@ index b9747b8..625416c 100755
 ```
 
 #### Solaris Clients
-**This is very important**
+**This is very important:**
 
 The `package_update_command` attribute is missing in `update/update_bins.cf`.
 Add this line manually under Solaris package_method() section and let it roll
@@ -191,7 +193,9 @@ solarisx86|solaris::
  package_delete_command     => "/usr/sbin/pkgrm -n -a $(repo)/admin_file";
 ```
 
-```DiffLexer
+Diff of the changes required for Solaris clients:
+
+```
 diff --git a/update/update_bins.cf b/update/update_bins.cf
 index b9747b8..33535b8 100755
 --- a/update/update_bins.cf
@@ -240,8 +244,9 @@ only major release number (3.5.3), not hypen and revision number. (-1))
                  ifvarclass => "nova_edition",
                     classes => u_if_else("bin_update_success", "bin_update_fail");
 ```
+Diff of the changes required:
 
-```DiffLexer
+```
 diff --git a/update/update_bins.cf b/update/update_bins.cf
 index b9747b8..b26df4b 100755
 --- a/update/update_bins.cf
@@ -271,7 +276,8 @@ If the client packages are copied but don't get installed, please verify that
 the package_name matches `package_name_convention` in `body package_method
 u_generic`.
 
-### Installing cfengine-nova installs cfengine-nova-hub instead when packages are in yum repository
+### Installing cfengine-nova installs cfengine-nova-hub instead when packages are in the 
+yum repository
 
 When a host attempts to install cfengine-nova from a private yum package
 repository and that host also has the cfengine-nova-hub package available from
