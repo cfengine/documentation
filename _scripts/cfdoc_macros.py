@@ -520,10 +520,12 @@ def prune_include_lines(markdown_lines):
 		del markdown_lines[-1]
 
 	if len(markdown_lines):
-		markdown_lines.insert(0, "\n```cf3\n")
+		# unless included example starts with an explicit code block, start a CFEngine-brushed block
+		if (markdown_lines[0].find("```") != 0):
+			markdown_lines.insert(0, "\n```cf3\n")
 		# if example ended with documentation, prune trailing code, else terminate block
 		if markdown_lines[-1] != "\n```cf3\n":
-			markdown_lines.append("```")
+			markdown_lines.append("```\n")
 		else:
 			del markdown_lines[-1]
 	return markdown_lines
@@ -568,7 +570,9 @@ def include_snippet(parameters, config):
 			if line.find("#@ ") == 0:
 				line = line[3:]
 				if not in_documentation:
-					markdown_lines.append("```\n\n")
+					# terminate open code block, if any
+					if len(markdown_lines):
+						markdown_lines.append("```\n\n")
 					in_documentation = True
 			elif in_documentation:
 				markdown_lines.append("\n```cf3\n")
