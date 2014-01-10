@@ -127,6 +127,8 @@ for services promises.
 
 ## Attributes
 
+[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+
 ### service_policy
 
 **Description:** Policy for CFEngine service status.

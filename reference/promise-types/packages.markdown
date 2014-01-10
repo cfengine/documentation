@@ -220,6 +220,8 @@ library for supported operating systems.
 
 ## Attributes
 
+[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+
 ### package_architectures
 
 **Description:** Select the architecture for package selection

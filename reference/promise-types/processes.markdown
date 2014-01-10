@@ -124,6 +124,8 @@ these two issues are related, although the promises themselves are not.
 
 ## Attributes
 
+[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+
 ### process_count
 
 **Type:** `body process_count`

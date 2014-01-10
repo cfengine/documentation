@@ -52,6 +52,8 @@ Storage promises refer to disks and filesystem properties.
 
 ## Attributes
 
+[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+
 ### mount
 
 **Type:** `body mount`

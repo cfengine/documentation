@@ -67,6 +67,8 @@ name of the executable file. For example:
 
 ## Attributes
 
+[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+
 ### args
 
 **Description:** Allows to separate the arguments to the command from the 

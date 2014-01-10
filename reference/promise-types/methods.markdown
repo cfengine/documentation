@@ -118,6 +118,8 @@ Output:
 
 ## Attributes
 
+[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+
 ### inherit
 
 **Description:** If true this causes the sub-bundle to inherit the private

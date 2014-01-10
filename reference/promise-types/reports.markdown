@@ -38,6 +38,8 @@ Messages outputted from report promises are prefixed with the letter R to distin
 
 ## Attributes
 
+[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+
 ### friend_pattern
 
 **Description:** Regular expression to keep selected hosts from the friends

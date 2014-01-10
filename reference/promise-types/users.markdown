@@ -40,6 +40,8 @@ files in place, installing encryption keys, and storing a login picture.
 
 ## Attributes
 
+[%CFEngine_include_markdown(common-attributes-include.markdown)%]
+
 ### description
 
 **Description:** The `description` string sets the description
