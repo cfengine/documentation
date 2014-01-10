@@ -530,6 +530,22 @@ def prune_include_lines(markdown_lines):
 			del markdown_lines[-1]
 	return markdown_lines
 
+def include_markdown(parameters, config):
+	# included markdown files are searched in the directory of the including markdown file and up
+	filename = None
+	searchdir = config["context_current_file"]
+	while filename == None:
+		print "searching %s in %s" % (parameters[0], searchdir)
+		searchdir = searchdir[0:searchdir.rfind('/')]
+		if not len(searchdir):
+			raise Exception("Include file not found: %s" % parameters[0])
+		filename = find_include_file(parameters[0], ["%s" % searchdir])
+	lines = load_include_file(filename)
+	
+	if not len(lines):
+		raise Exception("Include file empty: %s" % parameters[0])
+	return lines	
+
 def include_example(parameters, config):
 	parameters.append(".*") # first line starts
 	
