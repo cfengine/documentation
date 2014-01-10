@@ -9,7 +9,7 @@ tags: [getting started, known issues]
 ---
 
 CFEngine defects are managed in our [bug tracker][bug tracker]. Please report
-bugs or unexpected behavior there, following the documented guideline for new
+bugs or unexpected behavior there. Follow the documented guidelines for new
 bug reports.
 
 The items below highlight issues that require additional awareness when starting
@@ -17,7 +17,7 @@ with CFEngine or when upgrading from a previous version.
 
 ### Comma in promiser/promisee declaration generates Syntax Error
 
-The policy file parser is stricter in CFEngine 3.5.0 . The parser is now fully 
+The policy file parser is stricter in CFEngine 3.5.0. The parser is now fully 
 compliant with the CFEngine [language syntax reference][Language Concepts].
 The main difference you will encounter is that promiser/promisee no longer 
 allows a comma at the end of the line. This will cause your existing policies 
@@ -39,7 +39,7 @@ of the appropriate promiser/promisee line.
 
 ### On Windows platforms, cf-serverd listens only to IPv6 interface
 
-There is a policy-level workaround for this one, add the following to `body server control` in `masterfiles/controls/cf-serverd.cf`:
+The policy-level workaround is to add the following to `body server control` in `masterfiles/controls/cf-serverd.cf`:
 
 ```cf3
 bindtointerface => "0.0.0.0";
@@ -115,7 +115,7 @@ index b9747b8..8162826 100755
 ```
 
 Windows uses a slightly different version format from Linux. You may obtain the
-information by running appwiz.cpl (Add or Remove Programs) and select
+information by running `appwiz.cpl` from **Add or Remove Programs** and then selecting
 cfengine-nova. (3.5.0.65534)
 
 #### Windows Clients
@@ -162,9 +162,9 @@ index b9747b8..625416c 100755
 **This is very important:**
 
 The `package_update_command` attribute is missing in `update/update_bins.cf`.
-Add this line manually under Solaris package_method() section and let it roll
-out before doing the Solaris upgrade. Otherwise, your Solaris clients will be
-left alone without CFEngine running on the hosts!
+Add this line manually under the Solaris package_method() section and let it roll
+out before you do the Solaris upgrade. Otherwise, your Solaris clients will be
+left without CFEngine running on the hosts!
 
 `update/update_bins.cf`:
 
@@ -212,8 +212,8 @@ index b9747b8..33535b8 100755
 
 On Solaris, a wrapper script and admin file are needed to automatically
 silently upgrade CFEngine. The files are located in
-`/var/cfengine/share/solaris_admin_files` on the policy server. You must have
-those files along with PKG package in the directory. For example:
+`/var/cfengine/share/solaris_admin_files` on the policy server. Those files and the 
+PKG package must be included in the directory. For example:
 
 ```
 $ cp /var/cfengine/share/solaris_admin_files/sol_9_and_10/* /var/cfengine/master_software_updates/sunos_5.10_sun4u
@@ -272,12 +272,11 @@ index b9747b8..b26df4b 100755
   files:
 ```
 
-If the client packages are copied but don't get installed, please verify that
+If the client packages are copied but do not get installed, please verify that
 the package_name matches `package_name_convention` in `body package_method
 u_generic`.
 
-### Installing cfengine-nova installs cfengine-nova-hub instead when packages are in the 
-yum repository
+### Installing cfengine-nova installs cfengine-nova-hub instead when packages are in the yum repository
 
 When a host attempts to install cfengine-nova from a private yum package
 repository and that host also has the cfengine-nova-hub package available from
