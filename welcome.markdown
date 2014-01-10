@@ -63,7 +63,7 @@ Verify your actual state through **Reports**.
 * [Functions][Functions]
 * Special [variables][Special Variables]
 * Hard and soft [classes][Hard and Soft Classes]
-* [Enterprise API][Enterprise API] reference
+* [Enterprise API Reference][Enterprise API Reference]
 
 **Recommended for Beginners**
 
