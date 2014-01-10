@@ -42,7 +42,7 @@ can also define new desired states (business policies) for your infrastructure.
 
 ## 1. Download and install Enterprise on a Policy Server
 
-Please Note: Internet access is required from the host if you wish to use the quick install script.
+Note: Internet access is required from the host if you wish to use the quick install script.
 
 Run the following script on your designated Policy Server (hub) 64-bit machine (32-bit is not supported on the Policy Server):
 
@@ -106,16 +106,12 @@ through your web browser at:
 
 http://`<IP address of your Policy Server>`
 
-username: admin
+username: admin  
 password: admin
 
-<<<<<<< HEAD
-The Mission Portal runs TCP port 80 by default. (Click [here] (https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP) to configure the Mission Portal to use HTTPS instead of HTTP.) During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Simply refresh the web page and login again if necessary.
-=======
 The Mission Portal runs TCP port 80 by default. (Click [here] (https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP)
 to configure the Mission Portal to use HTTPS instead of HTTP.) During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Simply refresh the web page
 and login again if necessary.
->>>>>>> 5985386... Add note about quickinstall script internet access requirement.
 
 Note: If you are running Enterprise with Vagrant, you must add the
 correct port: http://localhost:<port> in your browser.  The <port> is the port-forwarder

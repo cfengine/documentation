@@ -26,7 +26,7 @@ _Tutorials, recommended reading. and production environment recommendations appe
 <hr>
 ## Quick Setup Installation Script
 
-Please Note: Internet access is required from the host if you wish to use the quick install script.
+Note: Internet access is required from the host if you wish to use the quick install script.
 
 Use the following script to install CFEngine on your 32- or 64-bit machine.
 
@@ -283,7 +283,4 @@ Everyone is a first-time user a some point. We want to make the CFEngine Enterpr
 Before you forget your first-time experience, we would love for you to let us know how we can improve on this process.
 
 <iframe src="https://docs.google.com/forms/d/1wnVR3HQwUNKs5fT0zf_OHjtIQxI_nd00QCFbDZOyXZk/viewform?embedded=true" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-<<<<<<< HEAD
 
-=======
->>>>>>> 5985386... Add note about quickinstall script internet access requirement.
