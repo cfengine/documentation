@@ -1,14 +1,15 @@
-### action [(common attribute)][Promise Types and Attributes#action]
+### Common Attributes
 
-### classes [(common attribute)][Promise Types and Attributes#classes]
+#### [action][Promise Types and Attributes#action] [common attribute]
 
-### comment [(common attribute)][Promise Types and Attributes#comment]
+#### [classes][Promise Types and Attributes#classes] [common attribute]
 
-### depends_on [(common attribute)][Promise Types and Attributes#depends_on]
+#### [comment][Promise Types and Attributes#comment] [common attribute]
 
-### handle [(common attribute)][Promise Types and Attributes#hande]
+####  [depends_on][Promise Types and Attributes#depends_on] [common attribute]
 
-### ifvarclass [(common attribute)][Promise Types and Attributes#ifvarclass]
+#### [handle][Promise Types and Attributes#handle] [common attribute]
 
-### meta [(common attribute)][Promise Types and Attributes#meta]
+#### [ifvarclass][Promise Types and Attributes#ifvarclass] [common attribute]
 
+#### [meta][Promise Types and Attributes#meta] [common attribute]
