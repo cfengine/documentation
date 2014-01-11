@@ -535,7 +535,6 @@ def include_markdown(parameters, config):
 	filename = None
 	searchdir = config["context_current_file"]
 	while filename == None:
-		print "searching %s in %s" % (parameters[0], searchdir)
 		searchdir = searchdir[0:searchdir.rfind('/')]
 		if not len(searchdir):
 			raise Exception("Include file not found: %s" % parameters[0])
