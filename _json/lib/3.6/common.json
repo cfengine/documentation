@@ -15,7 +15,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 60,
+                  "line": 62,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -23,7 +23,7 @@
                   }
                 },
                 {
-                  "line": 61,
+                  "line": 63,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -36,7 +36,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 66,
+          "line": 68,
           "namespace": "default",
           "name": "if_elapsed_day",
           "bodyType": "action",
@@ -46,7 +46,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 68,
+                  "line": 71,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -54,7 +54,7 @@
                   }
                 },
                 {
-                  "line": 69,
+                  "line": 72,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -67,7 +67,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 74,
+          "line": 77,
           "namespace": "default",
           "name": "measure_performance",
           "bodyType": "action",
@@ -79,7 +79,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 76,
+                  "line": 84,
                   "lval": "measurement_class",
                   "rval": {
                     "type": "string",
@@ -87,7 +87,7 @@
                   }
                 },
                 {
-                  "line": 77,
+                  "line": 85,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -95,7 +95,7 @@
                   }
                 },
                 {
-                  "line": 78,
+                  "line": 86,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -108,7 +108,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 83,
+          "line": 91,
           "namespace": "default",
           "name": "warn_only",
           "bodyType": "action",
@@ -118,7 +118,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 85,
+                  "line": 96,
                   "lval": "action_policy",
                   "rval": {
                     "type": "string",
@@ -126,7 +126,7 @@
                   }
                 },
                 {
-                  "line": 86,
+                  "line": 97,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -139,7 +139,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 91,
+          "line": 102,
           "namespace": "default",
           "name": "bg",
           "bodyType": "action",
@@ -152,7 +152,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 93,
+                  "line": 107,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -160,7 +160,7 @@
                   }
                 },
                 {
-                  "line": 94,
+                  "line": 108,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -168,7 +168,7 @@
                   }
                 },
                 {
-                  "line": 95,
+                  "line": 109,
                   "lval": "background",
                   "rval": {
                     "type": "string",
@@ -181,7 +181,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 100,
+          "line": 114,
           "namespace": "default",
           "name": "ifwin_bg",
           "bodyType": "action",
@@ -195,7 +195,7 @@
               "name": "windows",
               "attributes": [
                 {
-                  "line": 103,
+                  "line": 118,
                   "lval": "background",
                   "rval": {
                     "type": "string",
@@ -208,7 +208,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 108,
+          "line": 123,
           "namespace": "default",
           "name": "immediate",
           "bodyType": "action",
@@ -218,7 +218,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 110,
+                  "line": 126,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -231,7 +231,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 115,
+          "line": 131,
           "namespace": "default",
           "name": "policy",
           "bodyType": "action",
@@ -243,7 +243,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 117,
+                  "line": 135,
                   "lval": "action_policy",
                   "rval": {
                     "type": "string",
@@ -256,7 +256,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 124,
+          "line": 140,
           "namespace": "default",
           "name": "log_repaired",
           "bodyType": "action",
@@ -269,7 +269,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 126,
+                  "line": 145,
                   "lval": "log_string",
                   "rval": {
                     "type": "string",
@@ -277,7 +277,7 @@
                   }
                 },
                 {
-                  "line": 127,
+                  "line": 146,
                   "lval": "log_repaired",
                   "rval": {
                     "type": "string",
@@ -290,7 +290,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 132,
+          "line": 151,
           "namespace": "default",
           "name": "log_verbose",
           "bodyType": "action",
@@ -300,7 +300,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 134,
+                  "line": 154,
                   "lval": "log_level",
                   "rval": {
                     "type": "string",
@@ -313,7 +313,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 139,
+          "line": 159,
           "namespace": "default",
           "name": "sample_rate",
           "bodyType": "action",
@@ -325,7 +325,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 141,
+                  "line": 163,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -333,7 +333,7 @@
                   }
                 },
                 {
-                  "line": 142,
+                  "line": 164,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -346,7 +346,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 149,
+          "line": 171,
           "namespace": "default",
           "name": "if_repaired",
           "bodyType": "classes",
@@ -358,7 +358,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 151,
+                  "line": 175,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -376,7 +376,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 156,
+          "line": 180,
           "namespace": "default",
           "name": "if_else",
           "bodyType": "classes",
@@ -389,7 +389,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 159,
+                  "line": 185,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -402,7 +402,7 @@
                   }
                 },
                 {
-                  "line": 160,
+                  "line": 186,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -415,7 +415,7 @@
                   }
                 },
                 {
-                  "line": 161,
+                  "line": 187,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -428,7 +428,7 @@
                   }
                 },
                 {
-                  "line": 162,
+                  "line": 188,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -441,7 +441,7 @@
                   }
                 },
                 {
-                  "line": 163,
+                  "line": 189,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -459,7 +459,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 168,
+          "line": 194,
           "namespace": "default",
           "name": "cf2_if_else",
           "bodyType": "classes",
@@ -472,7 +472,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 173,
+                  "line": 199,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -485,7 +485,7 @@
                   }
                 },
                 {
-                  "line": 174,
+                  "line": 200,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -498,7 +498,7 @@
                   }
                 },
                 {
-                  "line": 175,
+                  "line": 201,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -511,7 +511,7 @@
                   }
                 },
                 {
-                  "line": 176,
+                  "line": 202,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -529,7 +529,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 181,
+          "line": 207,
           "namespace": "default",
           "name": "if_notkept",
           "bodyType": "classes",
@@ -541,7 +541,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 183,
+                  "line": 211,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -554,7 +554,7 @@
                   }
                 },
                 {
-                  "line": 184,
+                  "line": 212,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -567,7 +567,7 @@
                   }
                 },
                 {
-                  "line": 185,
+                  "line": 213,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -585,7 +585,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 190,
+          "line": 218,
           "namespace": "default",
           "name": "if_ok",
           "bodyType": "classes",
@@ -597,7 +597,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 192,
+                  "line": 222,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -610,7 +610,7 @@
                   }
                 },
                 {
-                  "line": 193,
+                  "line": 223,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -628,7 +628,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 198,
+          "line": 228,
           "namespace": "default",
           "name": "if_ok_cancel",
           "bodyType": "classes",
@@ -640,7 +640,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 200,
+                  "line": 232,
                   "lval": "cancel_repaired",
                   "rval": {
                     "type": "list",
@@ -653,7 +653,7 @@
                   }
                 },
                 {
-                  "line": 201,
+                  "line": 233,
                   "lval": "cancel_kept",
                   "rval": {
                     "type": "list",
@@ -671,7 +671,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 206,
+          "line": 238,
           "namespace": "default",
           "name": "cmd_repair",
           "bodyType": "classes",
@@ -684,7 +684,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 208,
+                  "line": 246,
                   "lval": "repaired_returncodes",
                   "rval": {
                     "type": "list",
@@ -697,7 +697,7 @@
                   }
                 },
                 {
-                  "line": 209,
+                  "line": 247,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -715,7 +715,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 212,
+          "line": 250,
           "namespace": "default",
           "name": "classes_generic",
           "bodyType": "classes",
@@ -727,7 +727,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 215,
+                  "line": 254,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -752,7 +752,7 @@
                   }
                 },
                 {
-                  "line": 216,
+                  "line": 255,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -785,7 +785,7 @@
                   }
                 },
                 {
-                  "line": 217,
+                  "line": 256,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -818,7 +818,7 @@
                   }
                 },
                 {
-                  "line": 218,
+                  "line": 257,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -851,7 +851,7 @@
                   }
                 },
                 {
-                  "line": 219,
+                  "line": 258,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -885,7 +885,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 222,
+          "line": 261,
           "namespace": "default",
           "name": "scoped_classes_generic",
           "bodyType": "classes",
@@ -898,7 +898,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 225,
+                  "line": 268,
                   "lval": "scope",
                   "rval": {
                     "type": "string",
@@ -906,7 +906,7 @@
                   }
                 },
                 {
-                  "line": 226,
+                  "line": 269,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -931,7 +931,7 @@
                   }
                 },
                 {
-                  "line": 227,
+                  "line": 270,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -964,7 +964,7 @@
                   }
                 },
                 {
-                  "line": 228,
+                  "line": 271,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -997,7 +997,7 @@
                   }
                 },
                 {
-                  "line": 229,
+                  "line": 272,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -1030,7 +1030,7 @@
                   }
                 },
                 {
-                  "line": 230,
+                  "line": 273,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1064,7 +1064,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 237,
+          "line": 280,
           "namespace": "default",
           "name": "state_repaired",
           "bodyType": "classes",
@@ -1076,7 +1076,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 239,
+                  "line": 284,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1089,7 +1089,7 @@
                   }
                 },
                 {
-                  "line": 240,
+                  "line": 285,
                   "lval": "persist_time",
                   "rval": {
                     "type": "string",
@@ -1102,7 +1102,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 245,
+          "line": 290,
           "namespace": "default",
           "name": "enumerate",
           "bodyType": "classes",
@@ -1114,7 +1114,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 253,
+                  "line": 296,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1127,7 +1127,7 @@
                   }
                 },
                 {
-                  "line": 254,
+                  "line": 297,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1140,7 +1140,7 @@
                   }
                 },
                 {
-                  "line": 255,
+                  "line": 298,
                   "lval": "persist_time",
                   "rval": {
                     "type": "string",
@@ -1153,7 +1153,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 260,
+          "line": 303,
           "namespace": "default",
           "name": "always",
           "bodyType": "classes",
@@ -1165,7 +1165,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 265,
+                  "line": 307,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1178,7 +1178,7 @@
                   }
                 },
                 {
-                  "line": 266,
+                  "line": 308,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1191,7 +1191,7 @@
                   }
                 },
                 {
-                  "line": 267,
+                  "line": 309,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -1204,7 +1204,7 @@
                   }
                 },
                 {
-                  "line": 268,
+                  "line": 310,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -1217,7 +1217,7 @@
                   }
                 },
                 {
-                  "line": 269,
+                  "line": 311,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
