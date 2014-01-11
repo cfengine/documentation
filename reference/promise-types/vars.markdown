@@ -9,7 +9,8 @@ tags: [reference, bundle common, vars, promises]
 
 [Variables][variables] in CFEngine are defined 
 as promises that an identifier of a certain type represents a particular 
-value. Variables can be scalars or lists of types `string`, `int` or `real`. 
+value. Variables can be scalars or lists of types `string`, `int`, `real`
+or `data`.
 
 The allowed characters in variable names are alphanumeric (both upper and lower case)
 and undercore. `Associative` arrays using the string type and square brackets `[]` to 
