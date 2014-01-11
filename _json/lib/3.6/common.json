@@ -325,7 +325,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 163,
+                  "line": 164,
                   "lval": "ifelapsed",
                   "rval": {
                     "type": "string",
@@ -333,7 +333,7 @@
                   }
                 },
                 {
-                  "line": 164,
+                  "line": 165,
                   "lval": "expireafter",
                   "rval": {
                     "type": "string",
@@ -346,7 +346,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 171,
+          "line": 172,
           "namespace": "default",
           "name": "if_repaired",
           "bodyType": "classes",
@@ -358,7 +358,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 175,
+                  "line": 176,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -376,7 +376,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 180,
+          "line": 181,
           "namespace": "default",
           "name": "if_else",
           "bodyType": "classes",
@@ -389,21 +389,8 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 185,
-                  "lval": "promise_kept",
-                  "rval": {
-                    "type": "list",
-                    "value": [
-                      {
-                        "type": "string",
-                        "value": "$(yes)"
-                      }
-                    ]
-                  }
-                },
-                {
                   "line": 186,
-                  "lval": "promise_repaired",
+                  "lval": "promise_kept",
                   "rval": {
                     "type": "list",
                     "value": [
@@ -416,63 +403,6 @@
                 },
                 {
                   "line": 187,
-                  "lval": "repair_failed",
-                  "rval": {
-                    "type": "list",
-                    "value": [
-                      {
-                        "type": "string",
-                        "value": "$(no)"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "line": 188,
-                  "lval": "repair_denied",
-                  "rval": {
-                    "type": "list",
-                    "value": [
-                      {
-                        "type": "string",
-                        "value": "$(no)"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "line": 189,
-                  "lval": "repair_timeout",
-                  "rval": {
-                    "type": "list",
-                    "value": [
-                      {
-                        "type": "string",
-                        "value": "$(no)"
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 194,
-          "namespace": "default",
-          "name": "cf2_if_else",
-          "bodyType": "classes",
-          "arguments": [
-            "yes",
-            "no"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 199,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -485,7 +415,7 @@
                   }
                 },
                 {
-                  "line": 200,
+                  "line": 188,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -498,7 +428,7 @@
                   }
                 },
                 {
-                  "line": 201,
+                  "line": 189,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -511,7 +441,7 @@
                   }
                 },
                 {
-                  "line": 202,
+                  "line": 190,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -529,7 +459,77 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 207,
+          "line": 195,
+          "namespace": "default",
+          "name": "cf2_if_else",
+          "bodyType": "classes",
+          "arguments": [
+            "yes",
+            "no"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 204,
+                  "lval": "promise_repaired",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(yes)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 205,
+                  "lval": "repair_failed",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(no)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 206,
+                  "lval": "repair_denied",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(no)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 207,
+                  "lval": "repair_timeout",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "$(no)"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
+          "line": 212,
           "namespace": "default",
           "name": "if_notkept",
           "bodyType": "classes",
@@ -541,7 +541,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 211,
+                  "line": 216,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -554,7 +554,7 @@
                   }
                 },
                 {
-                  "line": 212,
+                  "line": 217,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -567,7 +567,7 @@
                   }
                 },
                 {
-                  "line": 213,
+                  "line": 218,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -585,7 +585,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 218,
+          "line": 223,
           "namespace": "default",
           "name": "if_ok",
           "bodyType": "classes",
@@ -597,7 +597,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 222,
+                  "line": 227,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -610,7 +610,7 @@
                   }
                 },
                 {
-                  "line": 223,
+                  "line": 228,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -628,7 +628,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 228,
+          "line": 233,
           "namespace": "default",
           "name": "if_ok_cancel",
           "bodyType": "classes",
@@ -640,7 +640,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 232,
+                  "line": 237,
                   "lval": "cancel_repaired",
                   "rval": {
                     "type": "list",
@@ -653,7 +653,7 @@
                   }
                 },
                 {
-                  "line": 233,
+                  "line": 238,
                   "lval": "cancel_kept",
                   "rval": {
                     "type": "list",
@@ -671,7 +671,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 238,
+          "line": 243,
           "namespace": "default",
           "name": "cmd_repair",
           "bodyType": "classes",
@@ -684,7 +684,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 246,
+                  "line": 251,
                   "lval": "repaired_returncodes",
                   "rval": {
                     "type": "list",
@@ -697,7 +697,7 @@
                   }
                 },
                 {
-                  "line": 247,
+                  "line": 252,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -715,7 +715,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 250,
+          "line": 255,
           "namespace": "default",
           "name": "classes_generic",
           "bodyType": "classes",
@@ -727,7 +727,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 254,
+                  "line": 259,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -752,7 +752,7 @@
                   }
                 },
                 {
-                  "line": 255,
+                  "line": 260,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -785,7 +785,7 @@
                   }
                 },
                 {
-                  "line": 256,
+                  "line": 261,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -818,7 +818,7 @@
                   }
                 },
                 {
-                  "line": 257,
+                  "line": 262,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -851,7 +851,7 @@
                   }
                 },
                 {
-                  "line": 258,
+                  "line": 263,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -885,7 +885,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 261,
+          "line": 266,
           "namespace": "default",
           "name": "scoped_classes_generic",
           "bodyType": "classes",
@@ -898,7 +898,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 268,
+                  "line": 273,
                   "lval": "scope",
                   "rval": {
                     "type": "string",
@@ -906,7 +906,7 @@
                   }
                 },
                 {
-                  "line": 269,
+                  "line": 274,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -931,7 +931,7 @@
                   }
                 },
                 {
-                  "line": 270,
+                  "line": 275,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -964,7 +964,7 @@
                   }
                 },
                 {
-                  "line": 271,
+                  "line": 276,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -997,7 +997,7 @@
                   }
                 },
                 {
-                  "line": 272,
+                  "line": 277,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -1030,7 +1030,7 @@
                   }
                 },
                 {
-                  "line": 273,
+                  "line": 278,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1064,7 +1064,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 280,
+          "line": 285,
           "namespace": "default",
           "name": "state_repaired",
           "bodyType": "classes",
@@ -1076,7 +1076,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 284,
+                  "line": 289,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1089,7 +1089,7 @@
                   }
                 },
                 {
-                  "line": 285,
+                  "line": 290,
                   "lval": "persist_time",
                   "rval": {
                     "type": "string",
@@ -1102,7 +1102,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 290,
+          "line": 295,
           "namespace": "default",
           "name": "enumerate",
           "bodyType": "classes",
@@ -1114,7 +1114,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 296,
+                  "line": 301,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1127,7 +1127,7 @@
                   }
                 },
                 {
-                  "line": 297,
+                  "line": 302,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1140,7 +1140,7 @@
                   }
                 },
                 {
-                  "line": 298,
+                  "line": 303,
                   "lval": "persist_time",
                   "rval": {
                     "type": "string",
@@ -1153,7 +1153,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 303,
+          "line": 308,
           "namespace": "default",
           "name": "always",
           "bodyType": "classes",
@@ -1165,7 +1165,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 307,
+                  "line": 312,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1178,7 +1178,7 @@
                   }
                 },
                 {
-                  "line": 308,
+                  "line": 313,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1191,7 +1191,7 @@
                   }
                 },
                 {
-                  "line": 309,
+                  "line": 314,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -1204,7 +1204,7 @@
                   }
                 },
                 {
-                  "line": 310,
+                  "line": 315,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -1217,7 +1217,7 @@
                   }
                 },
                 {
-                  "line": 311,
+                  "line": 316,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
