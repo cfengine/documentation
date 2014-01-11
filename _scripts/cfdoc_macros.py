@@ -779,14 +779,16 @@ def library_include(parameters, config):
 								promiser = promise["promiser"]
 								if promiser.find("(" + argument + ")") != -1:
 									argument_line += ", used as promiser of type " + promise_type_link
+									argument_line += "\n"
 								else:
 									argument_line += resolveAttribute(promise["attributes"], argument)
 									if len(argument_line):
 										argument_line += " of " + promise_type_link + " promiser *" + promiser + "*"
+					argument_line += "\n"
 				elif key == "bodies":
 					for context in element["contexts"]:
 						argument_line += resolveAttribute(context["attributes"], argument)
-				argument_line += "\n"
+					argument_line += "\n"
 					
 				argument_lines.append(argument_line)
 				argument_idx += 1
