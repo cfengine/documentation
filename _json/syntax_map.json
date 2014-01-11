@@ -6383,6 +6383,19 @@
       "cached": false,
       "category": "system"
     },
+    "datatype": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
     "nth": {
       "status": "normal",
       "returnType": "string",
