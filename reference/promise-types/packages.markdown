@@ -215,7 +215,7 @@ policy is for individual or bulk installation.
 ### Default package method
 
 As of core 3.3.0, if no `package_method` is defined, CFEngine will look
-for a method called generic. Such a method is defined in the standard
+for a method called `generic`. Such a method is defined in the standard
 library for supported operating systems.
 
 ## Attributes
