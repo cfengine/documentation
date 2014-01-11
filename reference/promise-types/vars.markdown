@@ -10,8 +10,10 @@ tags: [reference, bundle common, vars, promises]
 [Variables][variables] in CFEngine are defined 
 as promises that an identifier of a certain type represents a particular 
 value. Variables can be scalars or lists of types `string`, `int` or `real`. 
-Arrays are `associative` and use square brackets `[]` to enclose an-arbitrary 
-key.
+
+The allowed characters in variable names are alphanumeric (both upper and lower case)
+and undercore. `Associative` arrays using the string type and square brackets `[]` to 
+enclose an-arbitrary key are being deprecated in favor of the `data` variable type.
 
 ## Scalar Variables
 

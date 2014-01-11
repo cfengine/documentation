@@ -205,6 +205,10 @@ They can *NOT* be modified, once created.
 
 ## Associative Arrays
 
+Note that associative arrays are being deprecated in favor of the `data`
+variable type. It is recommended to use the `data` variable type instead
+whenever possible to ensure future compatibility of your CFEngine policy.
+
 Associative array variables are written with `[` and `]` brackets that enclose 
 an arbitrary key. These keys are associated with values
 
