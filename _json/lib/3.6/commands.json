@@ -13,7 +13,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 56,
+                  "line": 57,
                   "lval": "no_output",
                   "rval": {
                     "type": "string",
@@ -26,177 +26,9 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 61,
+          "line": 62,
           "namespace": "default",
           "name": "in_dir",
-          "bodyType": "contain",
-          "arguments": [
-            "s"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 63,
-                  "lval": "chdir",
-                  "rval": {
-                    "type": "string",
-                    "value": "$(s)"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 68,
-          "namespace": "default",
-          "name": "in_dir_shell",
-          "bodyType": "contain",
-          "arguments": [
-            "s"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 70,
-                  "lval": "chdir",
-                  "rval": {
-                    "type": "string",
-                    "value": "$(s)"
-                  }
-                },
-                {
-                  "line": 71,
-                  "lval": "useshell",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 76,
-          "namespace": "default",
-          "name": "silent_in_dir",
-          "bodyType": "contain",
-          "arguments": [
-            "s"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 78,
-                  "lval": "chdir",
-                  "rval": {
-                    "type": "string",
-                    "value": "$(s)"
-                  }
-                },
-                {
-                  "line": 79,
-                  "lval": "no_output",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 84,
-          "namespace": "default",
-          "name": "in_shell",
-          "bodyType": "contain",
-          "arguments": [],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 86,
-                  "lval": "useshell",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 91,
-          "namespace": "default",
-          "name": "in_shell_bg",
-          "bodyType": "contain",
-          "arguments": [],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 93,
-                  "lval": "useshell",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 98,
-          "namespace": "default",
-          "name": "in_shell_and_silent",
-          "bodyType": "contain",
-          "arguments": [],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 100,
-                  "lval": "useshell",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
-                  }
-                },
-                {
-                  "line": 101,
-                  "lval": "no_output",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 106,
-          "namespace": "default",
-          "name": "in_dir_shell_and_silent",
           "bodyType": "contain",
           "arguments": [
             "dir"
@@ -206,23 +38,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 108,
-                  "lval": "useshell",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
-                  }
-                },
-                {
-                  "line": 109,
-                  "lval": "no_output",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
-                  }
-                },
-                {
-                  "line": 110,
+                  "line": 73,
                   "lval": "chdir",
                   "rval": {
                     "type": "string",
@@ -235,60 +51,27 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 115,
+          "line": 78,
           "namespace": "default",
-          "name": "setuid",
+          "name": "in_dir_shell",
           "bodyType": "contain",
           "arguments": [
-            "x"
+            "dir"
           ],
           "contexts": [
             {
               "name": "any",
               "attributes": [
                 {
-                  "line": 117,
-                  "lval": "exec_owner",
+                  "line": 89,
+                  "lval": "chdir",
                   "rval": {
                     "type": "string",
-                    "value": "$(x)"
+                    "value": "$(dir)"
                   }
                 },
                 {
-                  "line": 118,
-                  "lval": "useshell",
-                  "rval": {
-                    "type": "string",
-                    "value": "false"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 123,
-          "namespace": "default",
-          "name": "setuid_sh",
-          "bodyType": "contain",
-          "arguments": [
-            "x"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 125,
-                  "lval": "exec_owner",
-                  "rval": {
-                    "type": "string",
-                    "value": "$(x)"
-                  }
-                },
-                {
-                  "line": 126,
+                  "line": 90,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -301,7 +84,216 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 131,
+          "line": 95,
+          "namespace": "default",
+          "name": "silent_in_dir",
+          "bodyType": "contain",
+          "arguments": [
+            "dir"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 104,
+                  "lval": "chdir",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(dir)"
+                  }
+                },
+                {
+                  "line": 105,
+                  "lval": "no_output",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
+          "line": 110,
+          "namespace": "default",
+          "name": "in_shell",
+          "bodyType": "contain",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 119,
+                  "lval": "useshell",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
+          "line": 124,
+          "namespace": "default",
+          "name": "in_shell_bg",
+          "bodyType": "contain",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 130,
+                  "lval": "useshell",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
+          "line": 135,
+          "namespace": "default",
+          "name": "in_shell_and_silent",
+          "bodyType": "contain",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 146,
+                  "lval": "useshell",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                },
+                {
+                  "line": 147,
+                  "lval": "no_output",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
+          "line": 152,
+          "namespace": "default",
+          "name": "in_dir_shell_and_silent",
+          "bodyType": "contain",
+          "arguments": [
+            "dir"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 164,
+                  "lval": "useshell",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                },
+                {
+                  "line": 165,
+                  "lval": "no_output",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                },
+                {
+                  "line": 166,
+                  "lval": "chdir",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(dir)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
+          "line": 171,
+          "namespace": "default",
+          "name": "setuid",
+          "bodyType": "contain",
+          "arguments": [
+            "owner"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 184,
+                  "lval": "exec_owner",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(owner)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
+          "line": 189,
+          "namespace": "default",
+          "name": "setuid_sh",
+          "bodyType": "contain",
+          "arguments": [
+            "owner"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 201,
+                  "lval": "exec_owner",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(owner)"
+                  }
+                },
+                {
+                  "line": 202,
+                  "lval": "useshell",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
+          "line": 207,
           "namespace": "default",
           "name": "setuidgid_sh",
           "bodyType": "contain",
@@ -314,7 +306,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 133,
+                  "line": 212,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -322,7 +314,7 @@
                   }
                 },
                 {
-                  "line": 134,
+                  "line": 213,
                   "lval": "exec_group",
                   "rval": {
                     "type": "string",
@@ -330,7 +322,7 @@
                   }
                 },
                 {
-                  "line": 135,
+                  "line": 214,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -343,13 +335,13 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 140,
+          "line": 219,
           "namespace": "default",
           "name": "jail",
           "bodyType": "contain",
           "arguments": [
             "owner",
-            "root",
+            "jail_root",
             "dir"
           ],
           "contexts": [
@@ -357,7 +349,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 142,
+                  "line": 225,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -365,7 +357,7 @@
                   }
                 },
                 {
-                  "line": 143,
+                  "line": 226,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -373,7 +365,7 @@
                   }
                 },
                 {
-                  "line": 144,
+                  "line": 227,
                   "lval": "chdir",
                   "rval": {
                     "type": "string",
@@ -381,11 +373,11 @@
                   }
                 },
                 {
-                  "line": 145,
+                  "line": 228,
                   "lval": "chroot",
                   "rval": {
                     "type": "string",
-                    "value": "$(root)"
+                    "value": "$(jail_root)"
                   }
                 }
               ]
@@ -394,12 +386,12 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 150,
+          "line": 233,
           "namespace": "default",
           "name": "setuid_umask",
           "bodyType": "contain",
           "arguments": [
-            "uid",
+            "owner",
             "umask"
           ],
           "contexts": [
@@ -407,15 +399,15 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 163,
+                  "line": 255,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
-                    "value": "$(uid)"
+                    "value": "$(owner)"
                   }
                 },
                 {
-                  "line": 164,
+                  "line": 256,
                   "lval": "umask",
                   "rval": {
                     "type": "string",

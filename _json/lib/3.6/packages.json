@@ -197,7 +197,7 @@
                           "lval": "string",
                           "rval": {
                             "type": "string",
-                            "value": ".i\\s+([^\\s:]+).*"
+                            "value": "^.i\\s+([^\\s:]+).*"
                           }
                         }
                       ]
@@ -211,7 +211,7 @@
                           "lval": "string",
                           "rval": {
                             "type": "string",
-                            "value": ".i\\s+[^\\s]+\\s+([^\\s]+).*"
+                            "value": "^.i\\s+[^\\s]+\\s+([^\\s]+).*"
                           }
                         }
                       ]
@@ -1538,7 +1538,7 @@
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
-                    "value": "$(name)"
+                    "value": "$(name)=$(version)"
                   }
                 },
                 {
