@@ -812,6 +812,8 @@ def library_include(parameters, config):
 				markdown_lines.append(argument_lines)
 				markdown_lines.append("\n")
 			if len(code_lines):
+				markdown_lines.append("**Implementation:**\n")
+				markdown_lines.append("\n")
 				markdown_lines.append(code_lines)
 				markdown_lines.append("\n")
 			markdown_lines.append("\n")
