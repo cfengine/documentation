@@ -35,7 +35,7 @@ body file control
 
 ## Feature
 
-To use these bodies, add
+To use these bundles, add
 
 ```cf3
 body file control
@@ -50,7 +50,7 @@ to your policy.
 
 ## Paths
 
-To use these bodies, add
+To use these bundles, add
 
 ```cf3
 body file control
