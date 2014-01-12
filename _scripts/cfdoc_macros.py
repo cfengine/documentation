@@ -627,9 +627,9 @@ def library_include(parameters, config):
 	# for all bundles and bodies...
 	for key in policy_json.keys():
 		element_list = policy_json[key]
-		errorString = []
 		current_type = None
 		for element in element_list:
+			errorString = []
 			ignore = False
 			namespace = element["namespace"]
 			if namespace == "default":
@@ -734,15 +734,15 @@ def library_include(parameters, config):
 						else:
 							documentation_dict[current_tag] += headerLine + "\n"
 
-					brief = documentation_dict.get("brief", "")
-					if len(brief):
+					brief = documentation_dict.get("brief", None)
+					if brief:
 						documentation_lines.append("**Description:** ")
 						documentation_lines.append(brief)
 						documentation_lines.append("\n")
 					else:
 						errorString.append("Missing description")
-					return_doc = documentation_dict.get("return", "")
-					if len(return_doc):
+					return_doc = documentation_dict.get("return", None)
+					if return_doc:
 						documentation_lines.append("**Return value:** ")
 						documentation_lines.append(return_doc)
 						documentation_lines.append("\n")
