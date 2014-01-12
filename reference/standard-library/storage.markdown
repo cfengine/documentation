@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Storage and Bodies
+title: Storage Bundles and Bodies
 categories: [Reference, Standard Library, Storage]
 published: true
 sorting: 100
