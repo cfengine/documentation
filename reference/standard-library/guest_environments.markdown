@@ -8,4 +8,7 @@ alias: reference-standard-library-guest_environments.html
 tags: [reference, standard library]
 ---
 
+See the documentation of [`guest_environments` promises][guest_environments] for a
+comprehensive reference on the body types and attributes used here.
+
 [%CFEngine_library_include(lib/3.6/guest_environments)%]
