@@ -8,12 +8,12 @@ alias: reference-standard-library.html
 tags: [reference, standard library]
 ---
 
-The standard library is a lingua franca of standard nuts'n'bolts definitions 
-that you can use to build up solutions within CFEngine. It is an interface 
+The standard library contains commonly-used promise bundles and bodies. It provides definitions 
+that you can use to build up solutions within CFEngine. The standard library is an interface 
 layer that brings industry-wide standardization of CFEngine configuration 
 scripting and hides the technical details.
 
-You import elements of the CFEngine Standard Library into your CFEngine policy like this:
+To import elements of the CFEngine Standard Library into your CFEngine policy, enter the following: 
 
 ```cf3
 body file control
@@ -24,7 +24,7 @@ body file control
 
 **TODO**
 
-To import the entire standard library, use:
+To import the entire CFEngine Standard Library, enter the following:
 
 ```cf3
 body file control
@@ -35,7 +35,7 @@ body file control
 
 ## Feature
 
-To use these bundles, add
+To use these bundles, add the following to your policy:
 
 ```cf3
 body file control
@@ -44,13 +44,12 @@ body file control
 }
 ```
 
-to your policy.
 
 [%CFEngine_library_include(lib/3.6/feature)%]
 
 ## Paths
 
-To use these bundles, add
+To use these bundles, add the following to your policy:
 
 ```cf3
 body file control
@@ -59,7 +58,6 @@ body file control
 }
 ```
 
-to your policy.
 
 [%CFEngine_library_include(lib/3.6/paths)%]
 
