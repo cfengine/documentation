@@ -8,10 +8,10 @@ alias: reference-standard-library-commands.html
 tags: [reference, standard library]
 ---
 
-See the documentation of [`commands` promises][commands] for a
+See the [`commands` promises][commands] documentation for a
 comprehensive reference on the body types and attributes used here.
 
-To use these bodies, add
+To use these bodies, add the following to your policy:
 
 ```cf3
 body file control
@@ -20,7 +20,6 @@ body file control
 }
 ```
 
-to your policy.
 
 [%CFEngine_library_include(lib/3.6/commands)%]
 

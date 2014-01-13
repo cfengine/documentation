@@ -8,11 +8,11 @@ alias: reference-standard-library-files.html
 tags: [reference, standard library]
 ---
 
-See the documentation of [`files` promises][files] and
-[`edit_line` bundles][edit_line] for a comprehensive reference on
-the bundles, body types and attributes used here.
+See the [`files` promises][files] and [`edit_line` bundles][bundle edit_line] 
+documentation for a comprehensive reference on
+the bundles, body types, and attributes used here.
 
-To use these bodies and bundles, add
+To use these bodies and bundles, add the following to your policy:
 
 ```cf3
 body file control
@@ -21,6 +21,5 @@ body file control
 }
 ```
 
-to your policy.
 
 [%CFEngine_library_include(lib/3.6/files)%]
