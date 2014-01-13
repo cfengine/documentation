@@ -156,7 +156,7 @@ def parseMarkdownForAnchors(file_name, config):
 			addLinkToMap("`" + header + "`", label, current_file_name + '#' + anchor + ' \"' + current_title + ' - ' + header + '\"', config)
 	
 def applyLinkMap(file_name, config):
-	qa.LogProcessStart(config, "applyLinkMap() filename=" + file_name)
+	# print("applyLinkMap() filename = %s" % file_name)
 	markdown_file = open(file_name,"r")
 	markdown_lines = markdown_file.readlines()
 	markdown_file.close()
@@ -221,8 +221,8 @@ def applyLinkMap(file_name, config):
 								candidate_start = -1
 					i += 1
 				if index != -1:
-					qa.LogProcessStart(config, "applyLinkMap() candidate=" + candidate)
-					qa.LogProcessStart(config, "applyLinkMap() markdownline=" + markdown_line)
+					# print("applyLinkMap() candidate = %s" % candidate)
+					# print("applyLinkMap() markdownline = %s" % markdown_line)
 					write_changes = True
 					new_line += markdown_line[:index]
 					new_line += "[" + candidate + "]" + anchor
@@ -239,4 +239,3 @@ def applyLinkMap(file_name, config):
 			markdown_file.write(new_line)
 		markdown_file.close()
 		os.rename(file_name + ".new", file_name)
-		qa.LogProcessStart(config, "applyLinkMap() finish")
