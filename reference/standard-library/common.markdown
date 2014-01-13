@@ -8,10 +8,10 @@ alias: reference-standard-library-common.html
 tags: [reference, standard library]
 ---
 
-See the documentation of the [common promise attributes][Promise Types and Attributes]
-for a comprehensive reference on the body types and attributes used here.
+See the [common promise attributes][Promise Types and Attributes#Common Attributes] 
+documentation for a comprehensive reference on the body types and attributes used here.
 
-To use these bodies, add
+To use these bodies, add the following to your policy:
 
 ```cf3
 body file control
@@ -20,7 +20,6 @@ body file control
 }
 ```
 
-to your policy.
 
 
 
@@ -35,7 +34,7 @@ methods:
     usebundle => library_bundle(parameters)
 ```
 
-To use these bundles, add
+To use these bundles, add the following to your policy:
 
 ```cf3
 body file control
@@ -44,7 +43,6 @@ body file control
 }
 ```
 
-to your policy.
 
 
 

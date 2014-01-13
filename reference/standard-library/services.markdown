@@ -8,10 +8,10 @@ alias: reference-standard-library-services.html
 tags: [reference, standard library]
 ---
 
-See the documentation of [`services` promises][services] for a
+See the [`services` promises][services] documentation for a
 comprehensive reference on the body types and attributes used here.
 
-To use these bodies and bundles, add
+To use these bodies and bundles, add the following to your policy:
 
 ```cf3
 body file control
@@ -20,7 +20,6 @@ body file control
 }
 ```
 
-to your policy.
 
 
 [%CFEngine_library_include(lib/3.6/services)%]
