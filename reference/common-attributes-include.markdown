@@ -1,19 +1,20 @@
 ### Common Attributes
 
 Common attributes are available to all promise types. Full details for common
-attributes can be found in the [Common Attributes Section][Promise Types and
-Attributes#Common Attributes] of the [Promise Types and Attributes] page.
+attributes can be found in the [Common Attributes Section][Promise Types and 
+Attributes#Common Attributes] of the [Promise Types and Attributes] page. The common 
+attributes are as follows:
 
-#### [action][Promise Types and Attributes#action] [common attribute]
+#### [action][Promise Types and Attributes#action]
 
-#### [classes][Promise Types and Attributes#classes] [common attribute]
+#### [classes][Promise Types and Attributes#classes] 
 
-#### [comment][Promise Types and Attributes#comment] [common attribute]
+#### [comment][Promise Types and Attributes#comment] 
 
-####  [depends_on][Promise Types and Attributes#depends_on] [common attribute]
+####  [depends_on][Promise Types and Attributes#depends_on] 
 
-#### [handle][Promise Types and Attributes#handle] [common attribute]
+#### [handle][Promise Types and Attributes#handle] 
 
-#### [ifvarclass][Promise Types and Attributes#ifvarclass] [common attribute]
+#### [ifvarclass][Promise Types and Attributes#ifvarclass] 
 
-#### [meta][Promise Types and Attributes#meta] [common attribute]
+#### [meta][Promise Types and Attributes#meta] 
