@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine Manuals 
+title: Learning CFEngine 
 categories: [Manuals]
 published: true
 sorting: 30

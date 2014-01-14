@@ -208,7 +208,7 @@ Learn more about CFEngine by using the following resources:
 
 * Tutorial: [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches (Enterprise Only)]
 
-* CFEngine [manuals][CFEngine Manuals].
+* CFEngine [manuals][Learning CFEngine].
 
 * Additional [tutorials, examples, and documentation][Learning Tools].
 

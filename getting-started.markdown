@@ -35,7 +35,7 @@ systems. Find these examples on our [website][Policy] and in our github [reposit
 Also learn about promise theory and the phases of managing systems with CFEngine. 
 
 [Learning Resources][Learning Tools] In addition to the documentation that's provided on 
-our [website][CFEngine Manuals], we provide guides, demos, and other resources from our CFEngine 
+our [website][Learning CFEngine], we provide guides, demos, and other resources from our CFEngine 
 staff and our special CFEngine contributors. 
 
 
