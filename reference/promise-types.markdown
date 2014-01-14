@@ -231,7 +231,7 @@ regular system output messages.
 
 **Hint**: The promise handle [`$(this.handle)`][this#this.handle] can be a 
 useful referent in a log message, indicating the origin of the message. In 
-[CFEngine Enterprise][Enterprise Reporting], every promise has a default 
+[CFEngine Enterprise][Enterprise Report API], every promise has a default 
 handle, which is based on the filename and line number (specifying your own 
 handle will probably be more mnemonic).
 

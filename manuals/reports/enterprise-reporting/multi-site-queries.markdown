@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Multi-Site Queries
-categories: [Manuals, Reports, Enterprise Reports API, Multi-Site Queries]
+categories: [Manuals, Reports, Enterprise Report API, Multi-Site Queries]
 published: true
 sorting: 40
 alias: manuals-enterprise-reporting-multi-site-queries.html
