@@ -126,8 +126,8 @@ Log data for incoming and outgoing connections.
 
 On hosts, CFEngine writes numerous logs and records to its private workspace. 
 
-[CFEngine Enterprise][Enterprise Reporting] provides solutions 
-for centralization and network-wide reporting at arbitrary scale.
+[CFEngine Enterprise][Enterprise Report API] provides solutions 
+for centralization and network-wide reporting at an arbitrary scale.
 
 ### Embedded Databases
 
