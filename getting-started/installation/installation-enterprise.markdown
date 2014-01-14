@@ -210,6 +210,6 @@ Learn more about CFEngine by using the following resources:
 
 * CFEngine [manuals][Learning CFEngine].
 
-* Additional [tutorials, examples, and documentation][Learning Tools].
+* Additional [tutorials, examples, and documentation][Learning Resources].
 
 * Get [Support][Support and Community] from the CFEngine community.

@@ -34,7 +34,7 @@ systems. Find these examples on our [website][Policy] and in our github [reposit
 [Concepts][Concepts] Learn the concepts of CFEngine such as its architecture and components. 
 Also learn about promise theory and the phases of managing systems with CFEngine. 
 
-[Learning Resources][Learning Tools] In addition to the documentation that's provided on 
+[Learning Resources][Learning Resources] In addition to the documentation that's provided on 
 our [website][Learning CFEngine], we provide guides, demos, and other resources from our CFEngine 
 staff and our special CFEngine contributors. 
 

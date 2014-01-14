@@ -131,7 +131,7 @@ through the Mission Portal, this advanced, command-line tutorial shows you how t
 ## Recommended Reading
 
 * CFEngine [manuals][Learning CFEngine].
-* Additional [tutorials, examples, and documentation][Learning Tools].
+* Additional [tutorials, examples, and documentation][Learning Resources].
 
 <hr>
 

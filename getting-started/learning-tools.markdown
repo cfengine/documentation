@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Learning Tools 
+title: Learning Resources 
 categories: [Getting Started, Learning Tools]
 published: true
 sorting: 40
