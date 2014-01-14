@@ -1,16 +1,15 @@
 ---
 layout: default
 title:  SQL Queries
-categories: [Manuals, Enterprise Reporting, SQL Queries]
+categories: [Manuals, Reports, Enterprise Reports API, SQL Queries]
 published: true
 sorting: 30
 alias: manuals-enterprise-reporting-sql-queries.html
 tags: [manuals, enterprise, rest, api, reporting, sql, queries]
 ---
 
-The standard way of creating reports in CFEngine Enterprise 3.0 is with SQL 
-queries. See the chapter on SQL queries for an explanation. The API has a few 
-ways of creating a report.
+Through the API, you can can create reports in CFEngine Enterprise with SQL 
+queries. The API can creating the following report queries:
 
 -   Synchronous query, where we issue a query and wait for the table to
     be sent back with the response.
