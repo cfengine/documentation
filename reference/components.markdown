@@ -334,24 +334,13 @@ string is also prefixed messages in the event log.
 
 ### domain
 
-**Description:** The `domain` string specifies the domain name for this host.
+**Description:** This option is obsolete and does nothing.
 
-There is no standard, universal or reliable way of determining the
-DNS domain name of a host, so it can be set explicitly to simplify
-discovery and name-lookup.
+It is retained for backward compatibility.
 
 **Type:** `string`
 
 **Allowed input range:** `.*`
-
-**Example:**
-
-```cf3
-    body common control
-    {
-    domain => "example.org";
-    }
-```
 
 ### require_comments
 
