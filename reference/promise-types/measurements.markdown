@@ -7,7 +7,7 @@ alias: reference-promise-types-measurements.html
 tags: [reference, bundle monitor, measurements, monitoring, promise types]
 ---
 
-**These features are available only in CFEngine Enterprise.**
+**This is an Enterprise-only feature.**
 
 By default,CFEngine's monitoring component `cf-monitord` records performance data about the system. These include process counts, service traffic, load average and CPU utilization and temperature when available.
 

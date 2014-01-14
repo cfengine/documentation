@@ -7,6 +7,7 @@ sorting: 60
 alias: reference-standard-library-monitor.html
 tags: [reference, standard library]
 ---
+**This is an Enterprise-only feature.**
 
 See the [`measurements` promises][measurements] documentation for a
 comprehensive reference on the body types and attributes used here.
