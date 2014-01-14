@@ -3,7 +3,7 @@ layout: default
 title: Reports
 categories: [Manuals, Reports]
 published: true
-sorting: 60
+sorting: 70
 alias: manuals-reports.html
 ---
 
@@ -30,13 +30,13 @@ every 5 minutes from all bootstrapped hosts, and includes information about:
 * software information
 * file changes
 
-This data can be mined using SQL queries, and then be used for inventory 
-management, compliance reporting, system diagnostics, capacity planning etc.
+This data can be mined using SQL queries, and then be used for such issues as inventory 
+management, compliance reporting, system diagnostics, and capacity planning.
 
 Access to the data is provided through two ways:
 
-* the Mission Portal 
-* the Enterprise Report API and console.
+* the Mission Portal console
+* the Enterprise Report API.
 
 
 ### Command-Line Reporting
@@ -47,7 +47,7 @@ Basic output to file or logs can be customized on a per-promise basis.
 Users can design their own log and report formats, but data processing and extraction from
 CFEngine's embedded databases must be scripted by the user.
 
-Note: 
+**Note:**
 
 If you have regular reporting needs, we recommend using our commercially-supported version
 of CFEngine, Enterprise. It will save considerable time and resources in
