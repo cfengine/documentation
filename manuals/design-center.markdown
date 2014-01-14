@@ -3,7 +3,7 @@ layout: default
 title: Design Center Sketches
 categories: [Manuals, Design Center]
 published: true
-sorting: 50
+sorting: 60
 alias: manuals-design-center.html
 tags: [design center, cf-sketch, sketches, deploy policy]
 ---
