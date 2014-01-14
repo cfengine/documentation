@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Multi-Site Queries
-categories: [Manuals, Enterprise Reporting, Multi-Site Queries]
+categories: [Manuals, Reports, Enterprise Reports API, Multi-Site Queries]
 published: true
 sorting: 40
 alias: manuals-enterprise-reporting-multi-site-queries.html
@@ -220,7 +220,7 @@ Use:
 
 #### Error in status query
 
-Always check the syslog in the corresponding  CFEngine Database Server if the error output at the 
+Always check the syslog in the corresponding CFEngine Database Server if the error output at the 
 multi-site client is not sufficient. The ip address for the machine where the 
 error occurred is prefixed with every error message. There are --inform(-i) 
 and --debug(-d) options available that provide detail about the individual 
