@@ -7,9 +7,26 @@ sorting: 60
 alias: manuals-reports-command-line.html
 ---
 
-### Command-line reporting is available to Enterprise and Community users.
+#### Command-line reporting is available to Enterprise and Community users.
 
-## CFEngine output levels
+### Overview
+
+The following report topics are included:
+
+[CFEngine output levels][Command-Line Reports#CFEngine output levels]
+
+[Creating custom reports][Command-Line Reports#Creating custom reports]
+
+[Including data in reports][Command-Line Reports#Including data in reports]
+
+[Creating custom logs][Command-Line Reports#Creating custom logs]
+
+[Redirecting output to logs][Command-Line Reports#Redirecting output to logs]
+
+[Change detection: tripwires][Command-Line Reports#Change detection: tripwires]
+
+
+### CFEngine output levels
 
 CFEngine's default behavior is to report to the console (known as standard output). It's
 default behavior is to report nothing except errors that are judged to be of a critical
@@ -33,7 +50,7 @@ being made by the agent:
 # cf-agent --verbose
 ```
 
-## Creating custom reports 
+### Creating custom reports 
 
 CFEngine allows you to use `reports` promises to make reports of your own. A simple 
 example of this is shown below.
@@ -130,7 +147,7 @@ the following output:
 The mechanism shown above can clearly be used to create a wide variety of report formats, 
 but it requires a lot of coding and maintenance by the user.    
 
-## Including data in reports
+### Including data in reports
 
 CFEngine generates information internally that you might want to use in reports. 
 For example, the agent `cf-agent` interfaces with the local light-weight monitoring agent 
@@ -246,7 +263,7 @@ R: bin:x:1:1:bin:/bin:/bin/bash
 R: daemon:x:2:2:Daemon:/sbin:/bin/bash
 ```
 
-## Creating custom logs
+### Creating custom logs
 
 Logs can be attached to any promise. In this example, an executed shell command logs a 
 message to the standard output. CFEngine recognizes thestdoutfilename for Standard Output, 
@@ -315,7 +332,7 @@ Sun Dec  6 11:58:16 2009 /tmp/xyz promise status
 Sun Dec  6 11:58:43 2009 /tmp/xyz promise status
 ```
 
-## Redirecting output to logs
+### Redirecting output to logs
 
 CFEngine interfaces with the system logging tools in different ways. `Syslog` is the 
 default log for Unix-like systems, while the `event logger` is the default on Windows. 
@@ -345,7 +362,7 @@ log_level => "inform";
 }
 ```
 
-## Change detection: tripwires
+### Change detection: tripwires
 
 Doing a change detection scan is a convergent process, but it can still detect changes 
 and present the data in a compressed format that is often more convenient than a full-scale 
