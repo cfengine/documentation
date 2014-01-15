@@ -9,29 +9,29 @@ tags: [manuals, enterprise, rest, api, reporting, sql, queries]
 ---
 
 Through the API, you can can create reports in CFEngine Enterprise with SQL 
-queries. The API can creating the following report queries:
+queries. The API can create the following report queries:
 
--   Synchronous query, where we issue a query and wait for the table to
+-   Synchronous query: Issue a query and wait for the table to
     be sent back with the response.
--   Asynchronous query, where we get a response immediately with an id
-    that we can later query to download the report.
--   Subscribed query, where we specify a query to be run on a schedule
+-   Asynchronous query: A query is issued and an immediate response with an id is sent
+    so that we can check the query later to download the report.
+-   Subscribed query: Specify a query to be run on a schedule
     and have the result emailed to someone.
 
 ## Synchronous Queries
 
-Issuing a synchronous query is the most straight forward way of running
+Issuing a synchronous query is the most straightforward way of running
 an SQL query. We simply issue the query and wait for a result to come
 back.
 
-**Request**(lines split and indented for presentability)
+**Request:**
 
     curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d
     {
       "query": "SELECT ..."
     }
 
-**Response**
+**Response:**
 
     {
       "meta": {
@@ -58,25 +58,25 @@ back.
 
 ## Asynchronous Queries
 
-Because some queries may take some time to compute, it is possible to
+Because some queries can take some time to compute, you can 
 fire off a query and check the status of it later. This is useful for
 dumping a lot of data into CSV files for example. The sequence consists
-of three steps.
+of three steps:
 
-1.  Issue the asynchronous query and get a job id
-2.  Check status of processing using the id
-3.  When the query is completed, get a download link using the id
+1.  Issue the asynchronous query and get a job id.
+2.  Check the processing status using the id.
+3.  When the query is completed, get a download link using the id.
 
-### Issuing The Query
+### Issuing the query
 
-**Request**
+**Request:**
 
     curl -k --user admin:admin https://test.cfengine.com/api/query/async -X POST -d
     {
       "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \"ubuntu\""
     }
 
-**Response**(lines split and indented for presentability)
+**Response:**
 
     {
       "meta": {
@@ -93,13 +93,13 @@ of three steps.
       ]
     ]
 
-### Checking Status
+### Checking the status
 
-**Request**
+**Request:**
 
     curl -k --user admin:admin https://test.cfengine.com/api/query/async/:id
 
-**Response**
+**Response:**
 
     {
       "meta": {
@@ -115,17 +115,17 @@ of three steps.
         ]
     }
 
-### Getting The Completed Report
+### Getting the completed report
 
 This is the same API call as checking the status. Eventually, the
-**percentageComplete** field will reach 100 and there will be a link to
-the completed report available for downloading.
+**percentageComplete** field will reach 100 and a link to
+the completed report will be available for downloading.
 
-**Request**
+**Request:**
 
     curl -k --user admin:admin https://test.cfengine.com/api/query/async/:id
 
-**Response**
+**Response:**
 
     {
       "meta": {
@@ -146,9 +146,9 @@ the completed report available for downloading.
 ## Subscribed Queries
 
 Subscribed queries happen in the context of a user. Any user can create
-a query on a schedule and have it email to someone.
+a query on a schedule and have it emailed to someone.
 
-**Request** (lines split and indented for presentability)
+**Request:** 
 
     curl -k --user admin:admin https://test.cfengine.com/api/user/name/
        subscription/query/file-changes-report -X PUT -d
@@ -161,7 +161,7 @@ a query on a schedule and have it email to someone.
       "outputTypes": [ "pdf" ]
     }
 
-**Response**
+**Response:**
 
     204 No Content
 
