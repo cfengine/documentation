@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Create files and directories
-categories: [Examples, Policy, Create files and directories]
+categories: [Examples, Promise Patterns, Create files and directories]
 published: true
 alias: examples-policy-create-files-and-directories.html
 tags: [Examples, Policy, create, files and directories]

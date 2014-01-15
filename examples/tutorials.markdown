@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tutorials
-sorting: 13
+sorting: 10
 categories: [Examples, Tutorials]
 published: true
 alias: examples-tutorials.html

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Set up name resolution with DNS
-categories: [Examples, Policy, Set up name resolution with DNS]
+categories: [Examples, Promise Patterns, Set up name resolution with DNS]
 published: true
 alias: examples-policy-setup-name-resolution-dns.html
 tags: [Examples, Policy, dns, file editing, files]

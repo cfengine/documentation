@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ensure a service is enabled and running
-categories: [Examples, Policy, Ensure a service is enabled and running]
+categories: [Examples, Promise Patterns, Ensure a service is enabled and running]
 published: true
 alias: examples-policy-ensure-service-is-enabled-and-running.html
 tags: [Examples, Policy, ntp, file editing]

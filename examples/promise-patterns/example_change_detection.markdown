@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Change detection
-categories: [Examples, Policy, Change detection]
+categories: [Examples, Promise Patterns, Change detection]
 published: true
 alias: examples-policy-change-detection.html
 tags: [Examples, Policy, change detection]
