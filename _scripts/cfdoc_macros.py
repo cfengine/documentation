@@ -798,7 +798,16 @@ def library_include(parameters, config):
 					prototype += ", "
 			
 			if print_type:
-				markdown_lines.append("### " + current_type + " " + key + "\n")
+				link_map = config["link_map"]
+				if ("`body %s`" % current_type) in link_map:
+					printable_type = "[%s][`body %s`] bodies" % (current_type, current_type)
+				elif ("`%s`" % current_type) in link_map:
+					printable_type = "`%s` %s" % (current_type, key)
+				elif key == "bundles":
+					printable_type = "%s [bundles][bundles]" % current_type
+				else:
+					printable_type = current_type
+				markdown_lines.append("### %s\n" % printable_type)
 				markdown_lines.append("\n")
 			
 			markdown_lines.append("#### " + title + "\n")
