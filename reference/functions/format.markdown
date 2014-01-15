@@ -15,9 +15,13 @@ This function will format numbers (`o`, `x`, `d` and `f`) or strings (`s`) but
 not potentially dangerous things like individual characters or pointer 
 offsets.
 
+The `%S` specifier is special and non-standard.  When you use it on a
+slist or a data container, the data will be packed into a one-line
+string you can put in a log message, for instance.
+
 This function will fail if it doesn't have enough arguments; if any
 format *specifier* contains the *modifiers* `hLqjzt`; or if any format
-*specifier* is not one of `doxfs`.
+*specifier* is not one of `doxfsS`.
 
 **Example:**  
 
