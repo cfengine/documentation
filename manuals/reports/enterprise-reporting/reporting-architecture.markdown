@@ -19,7 +19,8 @@ located in `/var/cfengine/bin`. It is a daemon process that runs in the
 background, and is started by `cf-agent` through the `failsafe` policy.
 
 `cf-hub` wakes up every 5 minutes and connects to the `cf-serverd` of each 
-host to download new data. Delta reports include new data in the last interval and a subset of variable information. A download of the complete set of data is performed every 6 hours.
+host to download new data. Delta reports include new data in the last interval and a 
+subset of variable information. A download of the complete set of data is performed every 6 hours.
 
 Report collection from any host can be triggered manually by running the following:
 
