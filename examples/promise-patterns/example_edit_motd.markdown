@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Customize Message of the Day
-categories: [Examples, Policy, Customize Message of the Day]
+categories: [Examples, Promise Patterns, Customize Message of the Day]
 published: true
 alias: examples-policy-customize-message-of-the-day.html
 tags: [Examples, Policy, motd, file editing, files]

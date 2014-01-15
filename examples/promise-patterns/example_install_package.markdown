@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Install packages
-categories: [Examples, Policy, Install packages]
+categories: [Examples, Promise Patterns, Install packages]
 published: true
 alias: examples-policy-install-package.html
 tags: [Examples, Policy, packages]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Check filesystem space
-categories: [Examples, Policy, Check filesystem space]
+categories: [Examples, Promise Patterns, Check filesystem space]
 published: true
 alias: examples-policy-check-filesystem-space.html
 tags: [Examples, Policy, check, filesystem]

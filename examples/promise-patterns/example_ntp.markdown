@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Set up time management through NTP
-categories: [Examples, Policy, Set up time management through NTP]
+categories: [Examples, Promise Patterns, Set up time management through NTP]
 published: true
 alias: examples-policy-setup-time-management-through-ntp.html
 tags: [Examples, Policy, ntp, file editing]

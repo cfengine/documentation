@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Restart a Process
-categories: [Examples, Policy, Restart a Process]
+categories: [Examples, Promise Patterns, Restart a Process]
 published: true
 alias: examples-policy-restart-a-process.html
 tags: [Examples, Policy, process, restart]

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Copy single files
-categories: [Examples, Policy, Copy single files]
+categories: [Examples, Promise Patterns, Copy single files]
 published: true
 alias: examples-policy-copy-single-files.html
 tags: [Examples, Policy, copy files]
