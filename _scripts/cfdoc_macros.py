@@ -801,9 +801,10 @@ def library_include(parameters, config):
 				link_map = config["link_map"]
 				if ("`body %s`" % current_type) in link_map:
 					printable_type = "[%s]%s bodies" % (current_type, link_map["`body %s`" % current_type][0])
+				elif ("`bundle %s`" % current_type) in link_map:
+					printable_type = "[%s]%s bundles" % (current_type, link_map["`bundle %s`" % current_type][0])
 				elif ("`%s`" % current_type) in link_map:
 					printable_type = "[%s]%s %s" % (current_type, link_map["`%s`" % current_type][0], key)
-					print printable_type
 				elif key == "bundles":
 					printable_type = "%s [bundles][bundles]" % current_type
 				else:
