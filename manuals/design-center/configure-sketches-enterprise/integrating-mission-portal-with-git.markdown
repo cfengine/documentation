@@ -148,31 +148,31 @@ pull from git every time it runs (by default every 5 minutes).
         }
     ```
 
-2. Modify the `update.cf` file: Add `update_from_repository.cf` to `inputs` and 
+2. Modify the `update.cf` file: Add `update_from_repository.cf` to `inputs` and
 add `update_from_repository` to `bundlesequence` in the body common control.
 
-    ```
-    user@workstation $ git diff update.cf
-    diff --git a/update.cf b/update.cf
-    index 9c6c298..ab5cc1f 100755
-    --- a/update.cf
-    +++ b/update.cf
-    @@ -14,6 +14,7 @@ body common control
-     
-      bundlesequence => { 
-                         "cfe_internal_update_bins", 
-    +                    "update_from_repository",
-                         "cfe_internal_update_policy",
-                         "cfe_internal_update_processes", 
-                        };
-    @@ -23,6 +24,7 @@ body common control
-      inputs => { 
-                 "update/update_bins.cf", 
-                 "update/update_policy.cf", 
-    +            "update/update_from_repository.cf", 
-                 "update/update_processes.cf",
-                };
-    ```
+```diff
+user@workstation $ git diff update.cf
+diff --git a/update.cf b/update.cf
+index 9c6c298..ab5cc1f 100755
+--- a/update.cf
++++ b/update.cf
+@@ -14,6 +14,7 @@ body common control
+
+  bundlesequence => {
+                     "cfe_internal_update_bins",
++                    "update_from_repository",
+                     "cfe_internal_update_policy",
+                     "cfe_internal_update_processes",
+                    };
+@@ -23,6 +24,7 @@ body common control
+  inputs => {
+             "update/update_bins.cf",
+             "update/update_policy.cf",
++            "update/update_from_repository.cf",
+             "update/update_processes.cf",
+            };
+```
 
 3. Commit the two above changes to the git service.
 
@@ -314,5 +314,5 @@ until reports are collected is **15 minutes**:
 ## Access control and security
 
 Go to [Controlling Access to the Design Center UI][Controlling Access to the Design Center UI]
-to learn how to allow or limit the Mission Portal user's ability 
+to learn how to allow or limit the Mission Portal user's ability
 to commit to the git repository and make changes to the hosts.
