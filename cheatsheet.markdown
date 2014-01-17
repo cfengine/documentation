@@ -143,6 +143,95 @@ If you want CFEngine syntax highlighting, use
     }
 ```
 
+Other frequently used syntax highlighers are:
+
+* bash
+
+		```bash
+		root@policy_server # /etc/init.d/cfengine3 stop
+		```
+
+```bash
+	root@policy_server # /etc/init.d/cfengine3 stop
+```
+
+* postgresql
+
+		```postgresql
+	    SELECT
+	         FileChanges.FileName,
+	         Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
+	         COUNT(1) AS ChangeCount
+	      FROM
+	         FileChanges JOIN Contexts
+	      WHERE 
+	         Contexts.ContextName='ubuntu'
+	      GROUP BY
+	         FileChanges.FileName
+	      ORDER BY
+	         ChangeCount DESC
+		```
+
+```postgresql
+SELECT
+     FileChanges.FileName,
+     Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
+     COUNT(1) AS ChangeCount
+  FROM
+     FileChanges JOIN Contexts
+  WHERE 
+     Contexts.ContextName='ubuntu'
+  GROUP BY
+     FileChanges.FileName
+  ORDER BY
+     ChangeCount DESC
+```
+
+* diff
+
+		```diff
+		diff --git a/README.md b/README.md
+		index 92555a2..b49c0bb 100644
+		--- a/README.md
+		+++ b/README.md
+		@@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
+ 
+		 * follow the [Policy Style Guide](manuals/policy-style.markdown)
+		   in examples and code snippets
+		-* always run it through Pygments plus the appropriate lexer (only cf3
+		-  supported for now)
+		+* always run it through Pygments plus the appropriate lexer
+		+
+		+Most important are the `cf3` lexer, as well as `bash`, `console`,
+		+`diff`, `shell-session` and `postgresql`. But Jekyll supports
+		+[many more lexers](http://pygments.org/docs/lexers/)
+		+
+		 * avoid custom color schemes and hand-coded HTML
+		 * document the example after the example code
+		```
+
+```diff
+diff --git a/README.md b/README.md
+index 92555a2..b49c0bb 100644
+--- a/README.md
++++ b/README.md
+@@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
+
+ * follow the [Policy Style Guide](manuals/policy-style.markdown)
+   in examples and code snippets
+-* always run it through Pygments plus the appropriate lexer (only cf3
+-  supported for now)
++* always run it through Pygments plus the appropriate lexer
++
++Most important are the `cf3` lexer, as well as `bash`, `console`,
++`diff`, `shell-session` and `postgresql`. But Jekyll supports
++[many more lexers](http://pygments.org/docs/lexers/)
++
+ * avoid custom color schemes and hand-coded HTML
+ * document the example after the example code
+```
+
+
 **Notes:** You need to keep an empty line in front of the code block. And
 to put code into a list item, the code needs to be indented *twice*, ie:
 
