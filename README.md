@@ -380,7 +380,7 @@ As a general note, avoiding abbreviations provides better readability.
 * always run it through Pygments plus the appropriate lexer
 
 Most important are the `cf3` lexer, as well as `bash`, `console`,
-`diff`, `shell-session` and `postgresql`. But Jekyll supports
+`diff`, `shell-session` and `sql`. But Jekyll supports
 [many more lexers](http://pygments.org/docs/lexers/)
 
 * avoid custom color schemes and hand-coded HTML
