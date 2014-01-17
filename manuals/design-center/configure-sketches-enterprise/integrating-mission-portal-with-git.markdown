@@ -151,8 +151,9 @@ pull from git every time it runs (by default every 5 minutes).
 2. Modify the `update.cf` file: Add `update_from_repository.cf` to `inputs` and
 add `update_from_repository` to `bundlesequence` in the body common control.
 
+`user@workstation $ git diff update.cf`:
+
 ```diff
-user@workstation $ git diff update.cf
 diff --git a/update.cf b/update.cf
 index 9c6c298..ab5cc1f 100755
 --- a/update.cf
