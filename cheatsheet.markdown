@@ -155,9 +155,9 @@ Other frequently used syntax highlighers are:
 	root@policy_server # /etc/init.d/cfengine3 stop
 ```
 
-* postgresql
+* sql
 
-		```postgresql
+		```sql
 	    SELECT
 	         FileChanges.FileName,
 	         Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
@@ -172,7 +172,7 @@ Other frequently used syntax highlighers are:
 	         ChangeCount DESC
 		```
 
-```postgresql
+```sql
 SELECT
      FileChanges.FileName,
      Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
