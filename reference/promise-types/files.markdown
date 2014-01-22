@@ -1779,6 +1779,12 @@ in the promise's context will come through.  Instead, you pass a
 attribute.  You can use `mergedata`, `readjson`, and `parsejson` to
 generate `data` variables.
 
+If you don't specify a `template_data` container with Mustache
+templates, the output of the function `datastate` is used instead, so
+you can then use `classes.x` as a boolean trigger based on class `x`
+and `vars.bundlename.y` to get the value of variable `y` in bundle
+`bundlename`.
+
 The full specification for Mustache templates is at http://mustache.github.io/
 
 **Example:**
@@ -2814,7 +2820,11 @@ ordinarily be stored in an alternative repository as
      template_method => "mustache";
 ```
 
-**See also:** `edit_template`, `template_method`
+If this is omitted, the result of the `datastate` function call is
+used instead.  See `edit_template` for how you can use the data state
+in Mustache.
+
+**See also:** `edit_template`, `template_method`, `datastate`
 
 ### template_method
 
@@ -2836,7 +2846,7 @@ implementation, but you can use `mustache` as well.
      template_method => "mustache";
 ```
 
-**See also:** `edit_template`, `template_data`
+**See also:** `edit_template`, `template_data`, `datastate`
 
 ### touch
 
