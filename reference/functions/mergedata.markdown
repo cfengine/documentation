@@ -9,23 +9,34 @@ tags: [reference, data functions, functions, json, merge, mergedata, container]
 
 [%CFEngine_function_prototype(one, two, etc)%]
 
-**Description:** Returns the merger of any named data containers.
+**Description:** Returns the merger of any named data containers or lists.
+
+The returned data container will have the keys from each of the named
+data containers.
+
+If all data containers are JSON arrays, they are merged into a single
+array, as you'd expect from merging two arrays.
+
+If any of the data containers are JSON objects, all the containers are
+treated as JSON objects (for arrays, the key is the element's offset).
+
+If any list (slist, ilist, or rlist) is named, it's first converted to
+a JSON array, then merged as above.
+
+`mergedata` is thus a convenient way, together with `getindices` and
+`getvalues`, to bridge the gap between data container and the
+traditional list data types in CFEngine.
 
 [%CFEngine_function_attributes()%]
 
 **Example:**
 
-```cf3
-    bundle agent test
-    {
-      vars:
-          "x" data => parsejson('{ "a": [1,2,3], "b": [] }')
-          "y" data => parsejson('{ "b": [4,5,6] }')
-          "merged" data => mergedata("x", "y");
-    }
-```
+**Example:**
 
-After the `mergedata` call, the `merged` data container will have the
-`a` key from `x` and the `b` key from `y`.
+[%CFEngine_include_snippet(mergedata.cf, #\+begin_src cfengine3, .*end_src)%]
 
-**See also:** `readjson()`, `parsejson()`, and `data` documentation.
+Output:
+
+[%CFEngine_include_snippet(mergedata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**See also:** `getindices`, `getvalues`, `readjson()`, `parsejson()`, and `data` documentation.
