@@ -31,8 +31,6 @@ traditional list data types in CFEngine.
 
 **Example:**
 
-**Example:**
-
 [%CFEngine_include_snippet(mergedata.cf, #\+begin_src cfengine3, .*end_src)%]
 
 Output:
