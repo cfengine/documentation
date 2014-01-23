@@ -1776,11 +1776,11 @@ The Mustache template format works differently.  When you specify
 `template_method` to be `mustache`, none of the variables or classes
 in the promise's context will come through.  Instead, you pass a
 `data` variable (a "data container") to the promise's `template_data`
-attribute.  You can use `mergedata`, `readjson`, and `parsejson` to
+attribute.  You can use `mergedata()`, `readjson()`, and `parsejson()` to
 generate `data` variables.
 
 If you don't specify a `template_data` container with Mustache
-templates, the output of the function `datastate` is used instead, so
+templates, the output of the function `datastate()` is used instead, so
 you can then use `classes.x` as a boolean trigger based on class `x`
 and `vars.bundlename.y` to get the value of variable `y` in bundle
 `bundlename`.
@@ -1847,7 +1847,7 @@ The boolean is false
 
 **Example:**
 
-This is an example using the `datastate` capability mentioned earlier.
+This is an example using the `datastate()` capability mentioned earlier.
 Save this in `test_datastate_mustache.cf`, for example.
 
 ```cf3
@@ -1906,7 +1906,7 @@ holder.s = Hello!
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012).  Mustache templates were introduced in 3.6.0.
 
-**See also:** `template_method`, `template_data`, `readjson`, `parsejson`, `mergedata`, `data`
+**See also:** `template_method`, `template_data`, `readjson()`, `parsejson()`, `mergedata()`, `data`
 
 ### edit_xml
 
