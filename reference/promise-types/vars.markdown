@@ -14,7 +14,7 @@ or `data`.
 
 The allowed characters in variable names are alphanumeric (both upper and lower case)
 and undercore. `Associative` arrays using the string type and square brackets `[]` to 
-enclose an-arbitrary key are being deprecated in favor of the `data` variable type.
+enclose an arbitrary key are being deprecated in favor of the `data` variable type.
 
 ## Scalar Variables
 
