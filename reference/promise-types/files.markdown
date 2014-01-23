@@ -1845,6 +1845,65 @@ The boolean is false
 789=0, =true, -1=-2, 
 ```
 
+**Example:**
+
+This is an example using the `datastate` capability mentioned earlier.
+Save this in `test_datastate_mustache.cf`, for example.
+
+```cf3
+body common control
+{
+      bundlesequence => { holder, test_datastate_mustache };
+}
+
+bundle common holder
+{
+  classes:
+      "holderclass" expression => "any"; # will be global
+
+  vars:
+      "s" string => "Hello!";
+      "d" data => parsejson('[4,5,6]');
+      "list" slist => { "element1", "element2" };
+}
+
+bundle agent test_datastate_mustache
+{
+  files:
+      "/tmp/myfile.txt"
+      create => "true",
+      edit_template => "$(this.promise_filename).mustache",
+      template_method => "mustache";
+}
+```
+
+Then this template
+(saved in `test_datastate_mustache.cf.mustache` if you follow the example):
+
+{% raw %}
+```
+{{#classes.holderclass}}The holderclass is defined{{/classes.holderclass}}
+{{^classes.holderclass}}The holderclass is not defined{{/classes.holderclass}}
+
+{{#vars.holder.list}}element = {{.}}, {{/vars.holder.list}}
+
+holder.s = {{vars.holder.s}}
+```
+{% endraw %}
+
+Will produce this text in `/tmp/myfile.txt` when you run `cf-agent -f
+./test_mustache.cf`:
+
+```
+The holderclass is defined
+
+
+element = element1, element = element2, 
+
+holder.s = Hello!
+```
+
+
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012).  Mustache templates were introduced in 3.6.0.
 
 **See also:** `template_method`, `template_data`, `readjson`, `parsejson`, `mergedata`, `data`
