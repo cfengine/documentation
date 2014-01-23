@@ -126,7 +126,7 @@ markers if that word exists as a page or section title.
 
 This will automatically link to the section or page with title 
 *attribute_name*. To make explicit links from code words, use 
-<pre>`code`</pre> markers in the link text.
+`code` markers in the link text.
 
     **See also:** [`attribute_name`][page#attributename]
 
