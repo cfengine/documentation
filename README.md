@@ -211,9 +211,11 @@ multiple lines and paragraphs.
 The generator will completely ignore this body or bundle; no documentation
 will be emitted.
 
+All comments before the first doxygen-style tag will be ignored.
+
 #### Documenting CFEngine Syntax Elements
 
-The following macros require the syntax map to be generated via
+The following macros require the syntax map to be generated
 via `cf-promises -s` into a file `_json/syntax_map.json` within the
 `_json` subdirectory of the documentation generator.
 
