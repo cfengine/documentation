@@ -115,6 +115,9 @@ about it, although it's better to align the `|` properly.
 
 ### Code Blocks
 
+Syntax highlighting is provided by pygments. Find all available lexers [here](http://pygments.org/docs/lexers/).
+
+#### Simple Code Blocks
 Just indent by four spaces:
 
 ```
@@ -125,11 +128,12 @@ Just indent by four spaces:
     $ code block
     $ without syntax highlighting
 
+#### CFEngine Code Blocks
 If you want CFEngine syntax highlighting, use
 
     ```cf3
         # CFEngine block
-    
+
         bundle agent example()
         {
         }
@@ -143,9 +147,9 @@ If you want CFEngine syntax highlighting, use
     }
 ```
 
-Other frequently used syntax highlighers are:
+Other frequently used syntax highlighers shown below.
 
-* bash
+#### Bash Script Code Blocks
 
 		```bash
 		#!/bin/bash
@@ -165,20 +169,27 @@ do
 done
 ```
 
-* shell session
+#### Console/Shell Session Code Blocks
 
-		```shell-session
+        ```console
 		root@policy_server # /etc/init.d/cfengine3 stop
-		```
+        ```
+
+```console
+	root@policy_server # /etc/init.d/cfengine3 stop
+```
+
+        ```shell-session
+		root@policy_server # /etc/init.d/cfengine3 stop
+        ```
+        * Pygments 1.6
 
 ```shell-session
 	root@policy_server # /etc/init.d/cfengine3 stop
 ```
 
 
-
-
-* sql
+#### SQL Code Blocks
 
 		```sql
 	    SELECT
@@ -187,7 +198,7 @@ done
 	         COUNT(1) AS ChangeCount
 	      FROM
 	         FileChanges JOIN Contexts
-	      WHERE 
+	      WHERE
 	         Contexts.ContextName='ubuntu'
 	      GROUP BY
 	         FileChanges.FileName
@@ -202,7 +213,7 @@ SELECT
      COUNT(1) AS ChangeCount
   FROM
      FileChanges JOIN Contexts
-  WHERE 
+  WHERE
      Contexts.ContextName='ubuntu'
   GROUP BY
      FileChanges.FileName
@@ -210,7 +221,7 @@ SELECT
      ChangeCount DESC
 ```
 
-* diff
+#### Diff Code Blocks
 
 		```diff
 		diff --git a/README.md b/README.md
@@ -218,7 +229,7 @@ SELECT
 		--- a/README.md
 		+++ b/README.md
 		@@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
- 
+
 		 * follow the [Policy Style Guide](manuals/policy-style.markdown)
 		   in examples and code snippets
 		-* always run it through Pygments plus the appropriate lexer (only cf3
