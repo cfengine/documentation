@@ -23,8 +23,8 @@ treated as JSON objects (for arrays, the key is the element's offset).
 If any list (slist, ilist, or rlist) is named, it's first converted to
 a JSON array, then merged as above.
 
-`mergedata` is thus a convenient way, together with `getindices` and
-`getvalues`, to bridge the gap between data container and the
+`mergedata()` is thus a convenient way, together with `getindices()` and
+`getvalues()`, to bridge the gap between data container and the
 traditional list data types in CFEngine.
 
 [%CFEngine_function_attributes()%]
@@ -37,4 +37,4 @@ Output:
 
 [%CFEngine_include_snippet(mergedata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** `getindices`, `getvalues`, `readjson()`, `parsejson()`, and `data` documentation.
+**See also:** `getindices()`, `getvalues()`, `readjson()`, `parsejson()`, and `data` documentation.

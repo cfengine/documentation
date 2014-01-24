@@ -24,4 +24,4 @@ Output:
 
 [%CFEngine_include_snippet(canonify.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [classify()][classify], `canonifyuniquely`.
+**See also:** [classify()][classify], `canonifyuniquely()`.

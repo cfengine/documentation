@@ -26,4 +26,4 @@ Output:
 
 **Notes:**
 
-**See also:** `getclassmetatags`
+**See also:** `getclassmetatags()`

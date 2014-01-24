@@ -23,4 +23,4 @@ Output:
 
 **Notes:**
 
-**See also:** `getvariablemetatags`
+**See also:** `getvariablemetatags()`
