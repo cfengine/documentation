@@ -148,12 +148,35 @@ Other frequently used syntax highlighers are:
 * bash
 
 		```bash
-		root@policy_server # /etc/init.d/cfengine3 stop
+		#!/bin/bash
+        echo hi
+        for i in `seq 1 10`;
+        do
+          echo $i
+        done
 		```
 
 ```bash
+#!/bin/bash
+echo hi
+for i in `seq 1 10`;
+do
+  echo $i
+done
+```
+
+* shell session
+
+		```shell-session
+		root@policy_server # /etc/init.d/cfengine3 stop
+		```
+
+```shell-session
 	root@policy_server # /etc/init.d/cfengine3 stop
 ```
+
+
+
 
 * sql
 
