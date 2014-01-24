@@ -363,6 +363,7 @@ This attribute determines whether or not to expect the CFEngine module protocol.
 * lines which begin with a `+` are treated as classes to be defined (like -D)
 * lines which begin with a `-` are treated as classes to be undefined (like -N)
 * lines which begin with `=` are scalar variables to be defined
+* lines which begin with `=` and include `[]` are array variables to be defined
 * lines which begin with `@` are lists.
 
 These variables end up in a context that has the same name as the
@@ -382,10 +383,11 @@ should normally make your module completely silent.
 
 Here is an example module written in shell:
 
-```cf3
+```sh
      #!/bin/sh
      /bin/echo "@mylist= { \"one\", \"two\", \"three\" }"
      /bin/echo "=myscalar= scalar val"
+     /bin/echo "=myarray[key]= array key val"
      /bin/echo "+module_class"
 ```
 
