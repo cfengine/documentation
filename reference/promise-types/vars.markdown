@@ -113,6 +113,7 @@ comma-separated list of values.
     vars:
 
      "xxx"    slist  => {  "literal1",  "literal2" };
+     "xxx1"   slist  => {  "1", @(xxx) }; # interpolated in order
      "yyy"    slist  => { 
                         readstringlist(
                                       "/home/mark/tmp/testlist",
@@ -154,6 +155,8 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
       "variable_id"
 
            ilist => { "10", "11", "12" };
+
+      "xxx1" ilist  => {  "1", @(variable_id) }; # interpolated in order
 ```
 
 **Notes:**  
@@ -182,6 +185,8 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See
     vars:
 
       "varid" rlist => { "0.1", "0.2", "0.3" };
+
+      "xxx1" rlist  => {  "1.3", @(varid) }; # interpolated in order
 ```
 
 **Notes:**  
@@ -199,7 +204,7 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See [`polic
 
 The `data` variables are obtained from functions that return data
 containers, such as `readjson()` or `parsejson()`, or from merging
-existing data containers with `mergedata`.  They can *NOT* be
+existing data containers with `mergedata()`.  They can *NOT* be
 modified, once created.
 
 Data containers can be passed to another bundle with the
@@ -262,7 +267,7 @@ redefined) or they can be constant.
 **Notes:**  
 
 The policy `constant` indicates that the variable value may not be changed. 
-The policies `free` and `overridable` are synonymous, and indicated that the 
+The policies `free` and `overridable` are synonymous and indicate that the 
 variable's value may be changed.
 
 `data` variables (data containers) can only have policy `constant`.
@@ -278,5 +283,6 @@ example:
     "list" slist => { "@(one)", @(two) },
           policy => "ifdefined";
 ```
+
 This results in `@(list)` being the same as `@(one)`, and the reference to 
 `@(two)` disappears. This is useful for combining lists.
