@@ -96,17 +96,31 @@ identified file that makes the promise. For example:
 ```
 ### this.promiser_uid
 
-This variable refers to the `uid` of the user running the `cf-agent` program.
+This variable refers to the `uid` (user ID) of the user running the `cf-agent` program.
 
 **Note:** This variable is reported by the platform dependent `getuid` function,
 and is always an integer.
 
 ### this.promiser_gid
 
-This variable refers to the `gid` of the user running the `cf-agent` program.
+This variable refers to the `gid` (group ID) of the user running the `cf-agent` program.
 
 **Note:** This variable is reported by the platform dependent `getgid` function,
 and is always an integer.
+
+### this.promiser_pid
+
+This variable refers to the `pid` (process ID) of the `cf-agent` program.
+
+**Note:** This variable is reported by the platform dependent `getpid` function,
+and is always an integer.
+
+### this.promiser_ppid
+
+This variable refers to the `ppid` (parent process ID) of the `cf-agent` program.
+
+**Note:** This variable is reported by the platform dependent `getpid` function,
+and is always an integer.  On the Windows platform it's always 0.
 
 ### this.service_policy
 
