@@ -56,17 +56,23 @@ defined or supported.  Use at your own discretion.
 
 ### Function caching
 
-Some functions are expensive, especially `execresult()` and
-`returnszero()` for shell execution and `ldapvalue()` and friends for LDAP
-queries.  CFEngine's evaluation model will evaluate functions multiple
-times, which is a performance concern.
+During convergence, CFEngine's evaluation model will evaluate
+functions multiple times, which can be a performance concern.
+
+Some _system_ functions are particularly expensive:
+
+* `execresult()` and`returnszero()` for shell execution
+* `regldap()`, `ldapvalue()`, `ldaparray()`, and `ldaplist()` for LDAP queries
+* `host2ip()` and `ip2host()` for DNS queries
+* `readtcp()` for TCP interactions
+* `hubknowledge()`, `selectservers()`, `remoteclassesmatching()`, and `remotescalar()` for hub queries
 
 As of 3.6.0, the new `cache_system_functions` body common parameter is
 set to `true` by default and CFEngine's evaluator will use it.
 Although you can override it to `false`, in practice you should almost
 never need to do so.  The effect of having it `true` (the default) is
-that the expensive functions will be run just once and then their
-result will be cached.
+that the expensive _system_ functions will be run just once and then
+their result will be cached.
 
 ## List of all functions
 
