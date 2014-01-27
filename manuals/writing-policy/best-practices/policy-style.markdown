@@ -185,6 +185,23 @@ an underscore "_". This convention is used by the policy framework to exclude
 collection of any prefixed variables and classes when polled by the `cf-hub`
 component.
 
+## Deprecating Bundles
+As your policy library changes over time you may want to deprecate various
+bundles in favor of newer implimentations. To indicate that a bundle is
+deprecated we reccomend the following style.
+
+```cf3
+bundle agent old
+{
+  meta:
+    "tags" slist => {
+                      "deprecated=3.6.0",
+                      "deprecation-reason=More feature rich implimentation",
+                      "replaced-by=newbundle",
+                    };
+}
+```
+
 ## Automatic reindentation
 
 You can run `contrib/reindent.pl FILE1.cf FILE2.c FILE3.h` to reindent files,
