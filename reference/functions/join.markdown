@@ -11,8 +11,8 @@ tags: [reference, data functions, functions, join]
 
 **Description:** Join the items of `list` into a string, using the conjunction in `glue`.
 
-Converts a string of type list into a scalar variable using the join
-string in first argument.
+Converts a list or data container into a scalar variable using the
+join string in first argument.
 
 [%CFEngine_function_attributes(glue, list)%]
 

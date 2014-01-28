@@ -12,6 +12,8 @@ tags: [reference, data functions, functions, none]
 **Description:** Returns whether no element in `list` matches the regular 
 expression `regex`.
 
+`list` can be a data container or a regular list.
+
 [%CFEngine_function_attributes(regex, list)%]
 
 The regular expression is [unanchored][unanchored].

@@ -11,6 +11,8 @@ tags: [reference, data functions, functions, max]
 
 **Description:** Return the maximum of the items in `list` according to `sortmode` (same sort modes as in `sort()`, which see).
 
+`list` can be a data container or a regular list.
+
 [%CFEngine_function_attributes(list, sortmode)%]
 
 **Example:**

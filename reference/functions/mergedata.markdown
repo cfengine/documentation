@@ -23,9 +23,12 @@ treated as JSON objects (for arrays, the key is the element's offset).
 If any list (slist, ilist, or rlist) is named, it's first converted to
 a JSON array, then merged as above.
 
+If any CFEngine "classic" array (`array[key]`) is named, it's first
+converted to a JSON object, then merged as above.
+
 `mergedata()` is thus a convenient way, together with `getindices()` and
 `getvalues()`, to bridge the gap between data container and the
-traditional list data types in CFEngine.
+traditional list and array data types in CFEngine.
 
 [%CFEngine_function_attributes()%]
 
