@@ -11,6 +11,8 @@ tags: [reference, data functions, functions, mean]
 
 **Description:** Return the mean of the numbers in `list`.
 
+`list` can be a data container or a regular list.
+
 [%CFEngine_function_attributes(list)%]
 
 **Example:**

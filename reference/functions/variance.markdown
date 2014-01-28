@@ -11,6 +11,8 @@ tags: [reference, data functions, functions, variance]
 
 **Description:** Return the variance of the numbers in `list`.
 
+`list` can be a data container or a regular list.
+
 [%CFEngine_function_attributes(list)%]
 
 Use the `eval()` function to easily get the standard deviation (square root of the variance).

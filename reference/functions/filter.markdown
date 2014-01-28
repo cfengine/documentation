@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, filter]
 
 [%CFEngine_function_prototype(filter, list, is_regex, invert, max_return)%]
 
-**Description:** Transforms a list into a subset thereof.
+**Description:** Transforms a list or data container into a list subset thereof.
 
 This is a generic filtering function that returns a list of up to `max_return` 
 elements in `list` that match the filtering rules specified in `filter`, 
@@ -18,7 +18,7 @@ elements in `list` that match the filtering rules specified in `filter`,
 **Arguments**:
 
 * filter : [Anchored][anchored] regular expression or static string to find, in the range `.*`
-* list : The name of the list variable to check, in the range
+* list : The name of the list variable or data container to check, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 * is_regex_ : Boolean
 

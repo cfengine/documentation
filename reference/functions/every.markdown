@@ -17,7 +17,8 @@ the [unanchored][unanchored] `regex`.
 * `regex` : Regular expression to find, in the range `.*`
 
 * `list` : The name of the list variable to check, in the range
-`[a-zA-Z0-9_$(){}\[\].:]+`
+`[a-zA-Z0-9_$(){}\[\].:]+`.  It can be a data container or a regular
+list.
 
 **Example:**
 
