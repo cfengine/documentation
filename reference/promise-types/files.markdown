@@ -2879,11 +2879,11 @@ ordinarily be stored in an alternative repository as
      template_method => "mustache";
 ```
 
-If this is omitted, the result of the `datastate` function call is
+If this is omitted, the result of the `datastate()` function call is
 used instead.  See `edit_template` for how you can use the data state
 in Mustache.
 
-**See also:** `edit_template`, `template_method`, `datastate`
+**See also:** `edit_template`, `template_method`, `datastate()`
 
 ### template_method
 
@@ -2905,7 +2905,7 @@ implementation, but you can use `mustache` as well.
      template_method => "mustache";
 ```
 
-**See also:** `edit_template`, `template_data`, `datastate`
+**See also:** `edit_template`, `template_data`, `datastate()`
 
 ### touch
 
