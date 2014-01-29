@@ -17,7 +17,7 @@ default policy.
 
 To see all of the classes defined on a particular host, run
 
-    $ cf-promises -v
+    $ cf-promises --show-classes
 
 as a privileged user. Note that some of the classes are set only if a trusted 
 link can be established with 
