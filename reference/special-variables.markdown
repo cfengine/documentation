@@ -11,6 +11,12 @@ tags: [reference, variables]
 Variables are promises that can be defined in any promise bundle. Users can create their 
 own [variables][Variables]. 
 
+To see all of the variables defined on a particular host, run
+
+    $ cf-promises --show-vars
+
+as a privileged user.
+
 CFEngine includes the following **special variables**:
 
 * [const][const]  
