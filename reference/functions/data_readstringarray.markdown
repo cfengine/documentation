@@ -1,10 +1,10 @@
 ---
 layout: default
-title: data_readstringarrayidx
-categories: [Reference, Functions, data_readstringarrayidx]
+title: data_readstringarray
+categories: [Reference, Functions, data_readstringarray]
 published: true
-alias: reference-functions-data_readstringarrayidx.html
-tags: [reference, io functions, functions, data_readstringarrayidx]
+alias: reference-functions-data_readstringarray.html
+tags: [reference, io functions, functions, data_readstringarray]
 ---
 
 [%CFEngine_function_prototype(filename, comment, split, maxentries, maxbytes)%]
