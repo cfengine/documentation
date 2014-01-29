@@ -152,6 +152,11 @@ already exist, they will be added again as a coherent block. Thus if you
 suspect that some stray / conflicting lines might be present they should
 be cleaned up with `delete_lines` first.
 
+* `preserve_all_lines`
+
+Disables idempotency during the insertion of a block of text so that
+multiple identical lines may be inserted.
+
 * `file_preserve_block`
 
 Interpret the string as a filename, and assume `preserve_block` semantics. 
