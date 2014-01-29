@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, min]
 
 [%CFEngine_function_prototype(list, sortmode)%]
 
-**Description:** Return the minimum of the items in `list` according to `sortmode` (same sort modes as in `sort()`, which see).
+**Description:** Return the minimum of the items in `list` according to `sortmode` (same sort modes as in `sort()`).
 
 `list` can be a data container or a regular list.
 
