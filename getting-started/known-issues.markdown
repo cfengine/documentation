@@ -287,3 +287,8 @@ https://cfengine.com/dev/issues/2956
 #### Workaround
 
 Remove cfengine-nova-hub from the yum repository and install the hub using rpm.
+
+### Installing cfengine-nova-hub removes system apache
+
+The cfengine-nova-hub package removes apache if it is already installed on the system. In addition it removes `/var/www`.
+

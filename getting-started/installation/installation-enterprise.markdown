@@ -41,6 +41,11 @@ additional software is not required.
 
 CFEngine recommends the following:
 
+### Dedicated server
+
+CFEngine enterprise expectes to be installed on to a fresh system and not be
+co-located with any other webserver or database server.
+
 ### Memory
 
 A minimum of 2 GB of available memory and a modern 64 bit processor. For a
