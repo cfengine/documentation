@@ -292,6 +292,13 @@
           "range": "",
           "visibility": "promiseType"
         },
+        "data": {
+          "attribute": "data",
+          "status": "normal",
+          "type": "data",
+          "range": "",
+          "visibility": "promiseType"
+        },
         "action": {
           "attribute": "action",
           "status": "normal",
@@ -1071,7 +1078,7 @@
           "attribute": "insert_type",
           "status": "normal",
           "type": "option",
-          "range": "literal,string,file,file_preserve_block,preserve_block",
+          "range": "literal,string,file,file_preserve_block,preserve_block,preserve_all_lines",
           "visibility": "promiseType"
         },
         "insert_select": {
@@ -2207,6 +2214,48 @@
           "range": "",
           "visibility": "promiseType"
         },
+        "admit_ips": {
+          "attribute": "admit_ips",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "deny_ips": {
+          "attribute": "deny_ips",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "admit_hostnames": {
+          "attribute": "admit_hostnames",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "deny_hostnames": {
+          "attribute": "deny_hostnames",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "admit_keys": {
+          "attribute": "admit_keys",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "deny_keys": {
+          "attribute": "deny_keys",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "promiseType"
+        },
         "maproot": {
           "attribute": "maproot",
           "status": "normal",
@@ -2232,6 +2281,13 @@
           "attribute": "report_data_select",
           "status": "normal",
           "type": "body",
+          "visibility": "promiseType"
+        },
+        "shortcut": {
+          "attribute": "shortcut",
+          "status": "normal",
+          "type": "string",
+          "range": "",
           "visibility": "promiseType"
         },
         "action": {
@@ -2633,27 +2689,6 @@
           "status": "normal",
           "type": "string",
           "range": "stdout|udp_syslog|(\"?[a-zA-Z]:\\\\.*)|(/.*)",
-          "visibility": "body"
-        },
-        "value_kept": {
-          "attribute": "value_kept",
-          "status": "normal",
-          "type": "real",
-          "range": "-9.99999E100,9.99999E100",
-          "visibility": "body"
-        },
-        "value_repaired": {
-          "attribute": "value_repaired",
-          "status": "normal",
-          "type": "real",
-          "range": "-9.99999E100,9.99999E100",
-          "visibility": "body"
-        },
-        "value_notkept": {
-          "attribute": "value_notkept",
-          "status": "normal",
-          "type": "real",
-          "range": "-9.99999E100,9.99999E100",
           "visibility": "body"
         },
         "audit": {
@@ -4775,13 +4810,6 @@
           "range": "",
           "visibility": "body"
         },
-        "track_value": {
-          "attribute": "track_value",
-          "status": "deprecated",
-          "type": "option",
-          "range": "true,false,yes,no,on,off",
-          "visibility": "body"
-        },
         "timezone": {
           "attribute": "timezone",
           "status": "normal",
@@ -5301,7 +5329,7 @@
           "range": ".*"
         }
       ],
-      "variadic": false,
+      "variadic": true,
       "cached": false,
       "category": "data"
     },
@@ -5424,6 +5452,14 @@
       "variadic": false,
       "cached": false,
       "category": "io"
+    },
+    "datastate": {
+      "status": "normal",
+      "returnType": "data",
+      "parameters": [],
+      "variadic": false,
+      "cached": false,
+      "category": "utils"
     },
     "difference": {
       "status": "normal",
@@ -5642,6 +5678,19 @@
       "cached": false,
       "category": "data"
     },
+    "getclassmetatags": {
+      "status": "normal",
+      "returnType": "slist",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "utils"
+    },
     "getenv": {
       "status": "normal",
       "returnType": "string",
@@ -5752,6 +5801,19 @@
       "variadic": false,
       "cached": false,
       "category": "data"
+    },
+    "getvariablemetatags": {
+      "status": "normal",
+      "returnType": "slist",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "utils"
     },
     "grep": {
       "status": "normal",
@@ -6405,8 +6467,8 @@
           "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
         },
         {
-          "type": "int",
-          "range": "0,99999999999"
+          "type": "string",
+          "range": ".*"
         }
       ],
       "variadic": false,
@@ -6489,7 +6551,7 @@
         },
         {
           "type": "string",
-          "range": "\"?(/.*)"
+          "range": ".*"
         },
         {
           "type": "string",
@@ -6535,7 +6597,7 @@
         },
         {
           "type": "string",
-          "range": "\"?(/.*)"
+          "range": ".*"
         },
         {
           "type": "string",
@@ -6568,7 +6630,7 @@
         },
         {
           "type": "string",
-          "range": "\"?(/.*)"
+          "range": ".*"
         },
         {
           "type": "string",
@@ -6601,7 +6663,7 @@
         },
         {
           "type": "string",
-          "range": "\"?(/.*)"
+          "range": ".*"
         },
         {
           "type": "string",
@@ -7190,7 +7252,7 @@
       "parameters": [
         {
           "type": "string",
-          "range": "\"?(/.*)"
+          "range": ".+"
         },
         {
           "type": "option",
@@ -7507,7 +7569,7 @@
       "cached": false,
       "category": "utils"
     },
-    "downcase": {
+    "string_downcase": {
       "status": "normal",
       "returnType": "string",
       "parameters": [
@@ -7520,7 +7582,7 @@
       "cached": false,
       "category": "data"
     },
-    "head": {
+    "string_head": {
       "status": "normal",
       "returnType": "string",
       "parameters": [
@@ -7537,7 +7599,7 @@
       "cached": false,
       "category": "data"
     },
-    "reversestring": {
+    "string_reverse": {
       "status": "normal",
       "returnType": "string",
       "parameters": [
@@ -7550,7 +7612,7 @@
       "cached": false,
       "category": "data"
     },
-    "strlen": {
+    "string_length": {
       "status": "normal",
       "returnType": "int",
       "parameters": [
@@ -7563,7 +7625,7 @@
       "cached": false,
       "category": "data"
     },
-    "tail": {
+    "string_tail": {
       "status": "normal",
       "returnType": "string",
       "parameters": [
@@ -7580,7 +7642,7 @@
       "cached": false,
       "category": "data"
     },
-    "upcase": {
+    "string_upcase": {
       "status": "normal",
       "returnType": "string",
       "parameters": [
@@ -7665,6 +7727,64 @@
       "variadic": false,
       "cached": false,
       "category": "data"
+    },
+    "data_readstringarray": {
+      "status": "normal",
+      "returnType": "data",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "\"?(/.*)"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "int",
+          "range": "0,99999999999"
+        },
+        {
+          "type": "int",
+          "range": "0,99999999999"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "io"
+    },
+    "data_readstringarrayidx": {
+      "status": "normal",
+      "returnType": "data",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "\"?(/.*)"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "int",
+          "range": "0,99999999999"
+        },
+        {
+          "type": "int",
+          "range": "0,99999999999"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "io"
     }
   }
 }
