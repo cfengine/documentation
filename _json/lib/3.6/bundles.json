@@ -651,6 +651,253 @@
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
           "line": 283,
           "namespace": "default",
+          "name": "tcdb_fix",
+          "bundleType": "agent",
+          "arguments": [],
+          "promiseTypes": [
+            {
+              "line": 300,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "linux",
+                  "promises": [
+                    {
+                      "line": 303,
+                      "promiser": "db",
+                      "attributes": [
+                        {
+                          "line": 303,
+                          "lval": "slist",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "splitstring",
+                            "arguments": [
+                              {
+                                "type": "functionCall",
+                                "name": "execresult",
+                                "arguments": [
+                                  {
+                                    "type": "string",
+                                    "value": "/usr/bin/find $(sys.workdir) -name \\'*.tcdb\\' 2>/dev/null"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "value": "useshell"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "string",
+                                "value": "\\n"
+                              },
+                              {
+                                "type": "string",
+                                "value": "1000"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 306,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 309,
+                      "promiser": "hourly_class",
+                      "attributes": [
+                        {
+                          "line": 309,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "splayclass",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(sys.host)$(sys.ipv4)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "hourly"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "hourly_class.linux",
+                  "promises": [
+                    {
+                      "line": 312,
+                      "promiser": "detected_invalid_record_$(db)",
+                      "attributes": [
+                        {
+                          "line": 312,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "returnszero",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "/var/cfengine/bin/tchmgr optimize $(db) 2>&1 | grep -q \\'invalid record header\\'"
+                              },
+                              {
+                                "type": "string",
+                                "value": "useshell"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 315,
+              "name": "commands",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 317,
+                      "promiser": "$(paths.rm)",
+                      "attributes": [
+                        {
+                          "line": 318,
+                          "lval": "args",
+                          "rval": {
+                            "type": "string",
+                            "value": "-f $(db)"
+                          }
+                        },
+                        {
+                          "line": 319,
+                          "lval": "ifvarclass",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "canonify",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "detected_invalid_record_$(db)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 320,
+                          "lval": "classes",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "scoped_classes_generic",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "bundle"
+                              },
+                              {
+                                "type": "string",
+                                "value": "absent_$(db)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 321,
+                          "lval": "handle",
+                          "rval": {
+                            "type": "string",
+                            "value": "fix_tcdb_commands_detected_invalid_record_rm_$(db)"
+                          }
+                        },
+                        {
+                          "line": 322,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "Invalid record headers indicate that the database corruption is beyond repair. It will be automatically re-created."
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 325,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 327,
+                      "promiser": "$(this.bundle) $(sys.fqhost): Detected invalid record header in $(db) - tried to repair",
+                      "attributes": [
+                        {
+                          "line": 328,
+                          "lval": "ifvarclass",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "canonify",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "detected_invalid_record_$(db)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 330,
+                      "promiser": "$(this.bundle) $(sys.fqhost): Repair failed, removed corrupt database: $(db)",
+                      "attributes": [
+                        {
+                          "line": 331,
+                          "lval": "ifvarclass",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "canonify",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "absent_$(db)_repaired"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 334,
+          "namespace": "default",
           "name": "url_ping",
           "bundleType": "agent",
           "arguments": [
@@ -661,18 +908,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 308,
+              "line": 359,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 309,
+                      "line": 360,
                       "promiser": "url_check",
                       "attributes": [
                         {
-                          "line": 312,
+                          "line": 363,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -700,11 +947,11 @@
                       ]
                     },
                     {
-                      "line": 314,
+                      "line": 365,
                       "promiser": "chost",
                       "attributes": [
                         {
-                          "line": 314,
+                          "line": 365,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -724,18 +971,18 @@
               ]
             },
             {
-              "line": 316,
+              "line": 367,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 317,
+                      "line": 368,
                       "promiser": "url_ok_$(chost)",
                       "attributes": [
                         {
-                          "line": 318,
+                          "line": 369,
                           "lval": "scope",
                           "rval": {
                             "type": "string",
@@ -743,7 +990,7 @@
                           }
                         },
                         {
-                          "line": 320,
+                          "line": 371,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -763,11 +1010,11 @@
                       ]
                     },
                     {
-                      "line": 322,
+                      "line": 373,
                       "promiser": "url_not_ok_$(chost)",
                       "attributes": [
                         {
-                          "line": 323,
+                          "line": 374,
                           "lval": "scope",
                           "rval": {
                             "type": "string",
@@ -775,7 +1022,7 @@
                           }
                         },
                         {
-                          "line": 325,
+                          "line": 376,
                           "lval": "not",
                           "rval": {
                             "type": "functionCall",
@@ -799,18 +1046,18 @@
               ]
             },
             {
-              "line": 327,
+              "line": 378,
               "name": "reports",
               "contexts": [
                 {
                   "name": "verbose_mode",
                   "promises": [
                     {
-                      "line": 329,
+                      "line": 380,
                       "promiser": "$(this.bundle): $(method) $(host):$(port)/$(uri) got 200 OK",
                       "attributes": [
                         {
-                          "line": 330,
+                          "line": 381,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -820,11 +1067,11 @@
                       ]
                     },
                     {
-                      "line": 331,
+                      "line": 382,
                       "promiser": "$(this.bundle): $(method) $(host):$(port)/$(uri) did *not* get 200 OK",
                       "attributes": [
                         {
-                          "line": 332,
+                          "line": 383,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",

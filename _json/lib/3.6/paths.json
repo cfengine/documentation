@@ -56,20 +56,6 @@
                           }
                         }
                       ]
-                    },
-                    {
-                      "line": 81,
-                      "promiser": "path[logger]",
-                      "attributes": [
-                        {
-                          "line": 81,
-                          "lval": "string",
-                          "rval": {
-                            "type": "string",
-                            "value": "/usr/bin/logger"
-                          }
-                        }
-                      ]
                     }
                   ]
                 },
@@ -77,11 +63,11 @@
                   "name": "aix",
                   "promises": [
                     {
-                      "line": 85,
+                      "line": 84,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "line": 85,
+                          "line": 84,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -91,11 +77,11 @@
                       ]
                     },
                     {
-                      "line": 86,
+                      "line": 85,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "line": 86,
+                          "line": 85,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -105,11 +91,11 @@
                       ]
                     },
                     {
-                      "line": 87,
+                      "line": 86,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "line": 87,
+                          "line": 86,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -119,11 +105,11 @@
                       ]
                     },
                     {
-                      "line": 88,
+                      "line": 87,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "line": 88,
+                          "line": 87,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -133,11 +119,11 @@
                       ]
                     },
                     {
-                      "line": 89,
+                      "line": 88,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "line": 89,
+                          "line": 88,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -147,11 +133,11 @@
                       ]
                     },
                     {
-                      "line": 90,
+                      "line": 89,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "line": 90,
+                          "line": 89,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -161,11 +147,11 @@
                       ]
                     },
                     {
-                      "line": 91,
+                      "line": 90,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "line": 91,
+                          "line": 90,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -175,11 +161,11 @@
                       ]
                     },
                     {
-                      "line": 92,
+                      "line": 91,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "line": 92,
+                          "line": 91,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -189,11 +175,11 @@
                       ]
                     },
                     {
-                      "line": 93,
+                      "line": 92,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "line": 93,
+                          "line": 92,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -203,11 +189,11 @@
                       ]
                     },
                     {
-                      "line": 94,
+                      "line": 93,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "line": 94,
+                          "line": 93,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -217,11 +203,11 @@
                       ]
                     },
                     {
-                      "line": 95,
+                      "line": 94,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "line": 95,
+                          "line": 94,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -231,11 +217,11 @@
                       ]
                     },
                     {
-                      "line": 96,
+                      "line": 95,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "line": 96,
+                          "line": 95,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -245,11 +231,11 @@
                       ]
                     },
                     {
-                      "line": 97,
+                      "line": 96,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "line": 97,
+                          "line": 96,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -259,11 +245,11 @@
                       ]
                     },
                     {
-                      "line": 98,
+                      "line": 97,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "line": 98,
+                          "line": 97,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -273,11 +259,11 @@
                       ]
                     },
                     {
-                      "line": 99,
+                      "line": 98,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "line": 99,
+                          "line": 98,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -287,11 +273,11 @@
                       ]
                     },
                     {
-                      "line": 100,
+                      "line": 99,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "line": 100,
+                          "line": 99,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -301,11 +287,11 @@
                       ]
                     },
                     {
-                      "line": 101,
+                      "line": 100,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "line": 101,
+                          "line": 100,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -315,11 +301,11 @@
                       ]
                     },
                     {
-                      "line": 102,
+                      "line": 101,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "line": 102,
+                          "line": 101,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -329,11 +315,11 @@
                       ]
                     },
                     {
-                      "line": 103,
+                      "line": 102,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "line": 103,
+                          "line": 102,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -343,11 +329,11 @@
                       ]
                     },
                     {
-                      "line": 104,
+                      "line": 103,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "line": 104,
+                          "line": 103,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -357,11 +343,11 @@
                       ]
                     },
                     {
-                      "line": 105,
+                      "line": 104,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "line": 105,
+                          "line": 104,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -371,11 +357,11 @@
                       ]
                     },
                     {
-                      "line": 106,
+                      "line": 105,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "line": 106,
+                          "line": 105,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -390,11 +376,11 @@
                   "name": "archlinux",
                   "promises": [
                     {
-                      "line": 110,
+                      "line": 109,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "line": 110,
+                          "line": 109,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -404,11 +390,11 @@
                       ]
                     },
                     {
-                      "line": 111,
+                      "line": 110,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "line": 111,
+                          "line": 110,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -418,11 +404,11 @@
                       ]
                     },
                     {
-                      "line": 112,
+                      "line": 111,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "line": 112,
+                          "line": 111,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -432,11 +418,11 @@
                       ]
                     },
                     {
-                      "line": 113,
+                      "line": 112,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "line": 113,
+                          "line": 112,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -446,11 +432,11 @@
                       ]
                     },
                     {
-                      "line": 114,
+                      "line": 113,
                       "promiser": "path[crontab]",
                       "attributes": [
                         {
-                          "line": 114,
+                          "line": 113,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -460,11 +446,11 @@
                       ]
                     },
                     {
-                      "line": 115,
+                      "line": 114,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "line": 115,
+                          "line": 114,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -474,11 +460,11 @@
                       ]
                     },
                     {
-                      "line": 116,
+                      "line": 115,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "line": 116,
+                          "line": 115,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -488,11 +474,11 @@
                       ]
                     },
                     {
-                      "line": 117,
+                      "line": 116,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "line": 117,
+                          "line": 116,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -502,11 +488,11 @@
                       ]
                     },
                     {
-                      "line": 118,
+                      "line": 117,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "line": 118,
+                          "line": 117,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -516,11 +502,11 @@
                       ]
                     },
                     {
-                      "line": 119,
+                      "line": 118,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "line": 119,
+                          "line": 118,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -530,11 +516,11 @@
                       ]
                     },
                     {
-                      "line": 120,
+                      "line": 119,
                       "promiser": "path[dmidecode]",
                       "attributes": [
                         {
-                          "line": 120,
+                          "line": 119,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -544,11 +530,11 @@
                       ]
                     },
                     {
-                      "line": 121,
+                      "line": 120,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "line": 121,
+                          "line": 120,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -558,11 +544,11 @@
                       ]
                     },
                     {
-                      "line": 122,
+                      "line": 121,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "line": 122,
+                          "line": 121,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -572,11 +558,11 @@
                       ]
                     },
                     {
-                      "line": 123,
+                      "line": 122,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "line": 123,
+                          "line": 122,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -586,11 +572,11 @@
                       ]
                     },
                     {
-                      "line": 124,
+                      "line": 123,
                       "promiser": "path[free]",
                       "attributes": [
                         {
-                          "line": 124,
+                          "line": 123,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -600,11 +586,11 @@
                       ]
                     },
                     {
-                      "line": 125,
+                      "line": 124,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "line": 125,
+                          "line": 124,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -614,11 +600,11 @@
                       ]
                     },
                     {
-                      "line": 126,
+                      "line": 125,
                       "promiser": "path[hostname]",
                       "attributes": [
                         {
-                          "line": 126,
+                          "line": 125,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -628,11 +614,11 @@
                       ]
                     },
                     {
-                      "line": 127,
+                      "line": 126,
                       "promiser": "path[init]",
                       "attributes": [
                         {
-                          "line": 127,
+                          "line": 126,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -642,11 +628,11 @@
                       ]
                     },
                     {
-                      "line": 128,
+                      "line": 127,
                       "promiser": "path[iptables]",
                       "attributes": [
                         {
-                          "line": 128,
+                          "line": 127,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -656,11 +642,11 @@
                       ]
                     },
                     {
-                      "line": 129,
+                      "line": 128,
                       "promiser": "path[iptables_save]",
                       "attributes": [
                         {
-                          "line": 129,
+                          "line": 128,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -670,11 +656,11 @@
                       ]
                     },
                     {
-                      "line": 130,
+                      "line": 129,
                       "promiser": "path[iptables_restore]",
                       "attributes": [
                         {
-                          "line": 130,
+                          "line": 129,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -684,11 +670,11 @@
                       ]
                     },
                     {
-                      "line": 131,
+                      "line": 130,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "line": 131,
+                          "line": 130,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -698,11 +684,11 @@
                       ]
                     },
                     {
-                      "line": 132,
+                      "line": 131,
                       "promiser": "path[lsof]",
                       "attributes": [
                         {
-                          "line": 132,
+                          "line": 131,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -712,11 +698,11 @@
                       ]
                     },
                     {
-                      "line": 133,
+                      "line": 132,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "line": 133,
+                          "line": 132,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -726,11 +712,11 @@
                       ]
                     },
                     {
-                      "line": 134,
+                      "line": 133,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "line": 134,
+                          "line": 133,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -740,11 +726,11 @@
                       ]
                     },
                     {
-                      "line": 135,
+                      "line": 134,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "line": 135,
+                          "line": 134,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -754,11 +740,11 @@
                       ]
                     },
                     {
-                      "line": 136,
+                      "line": 135,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "line": 136,
+                          "line": 135,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -768,11 +754,11 @@
                       ]
                     },
                     {
-                      "line": 137,
+                      "line": 136,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "line": 137,
+                          "line": 136,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -782,11 +768,11 @@
                       ]
                     },
                     {
-                      "line": 138,
+                      "line": 137,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "line": 138,
+                          "line": 137,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -796,11 +782,11 @@
                       ]
                     },
                     {
-                      "line": 139,
+                      "line": 138,
                       "promiser": "path[test]",
                       "attributes": [
                         {
-                          "line": 139,
+                          "line": 138,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -810,11 +796,11 @@
                       ]
                     },
                     {
-                      "line": 140,
+                      "line": 139,
                       "promiser": "path[top]",
                       "attributes": [
                         {
-                          "line": 140,
+                          "line": 139,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -824,11 +810,11 @@
                       ]
                     },
                     {
-                      "line": 141,
+                      "line": 140,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "line": 141,
+                          "line": 140,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -838,11 +824,11 @@
                       ]
                     },
                     {
-                      "line": 143,
+                      "line": 142,
                       "promiser": "path[pacman]",
                       "attributes": [
                         {
-                          "line": 143,
+                          "line": 142,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -852,11 +838,11 @@
                       ]
                     },
                     {
-                      "line": 144,
+                      "line": 143,
                       "promiser": "path[yaourt]",
                       "attributes": [
                         {
-                          "line": 144,
+                          "line": 143,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -866,11 +852,11 @@
                       ]
                     },
                     {
-                      "line": 145,
+                      "line": 144,
                       "promiser": "path[useradd]",
                       "attributes": [
                         {
-                          "line": 145,
+                          "line": 144,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -880,11 +866,11 @@
                       ]
                     },
                     {
-                      "line": 146,
+                      "line": 145,
                       "promiser": "path[groupadd]",
                       "attributes": [
                         {
-                          "line": 146,
+                          "line": 145,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -894,11 +880,11 @@
                       ]
                     },
                     {
-                      "line": 147,
+                      "line": 146,
                       "promiser": "path[ip]",
                       "attributes": [
                         {
-                          "line": 147,
+                          "line": 146,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -908,11 +894,11 @@
                       ]
                     },
                     {
-                      "line": 148,
+                      "line": 147,
                       "promiser": "path[ifconfig]",
                       "attributes": [
                         {
-                          "line": 148,
+                          "line": 147,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -922,11 +908,11 @@
                       ]
                     },
                     {
-                      "line": 149,
+                      "line": 148,
                       "promiser": "path[journalctl]",
                       "attributes": [
                         {
-                          "line": 149,
+                          "line": 148,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -936,11 +922,11 @@
                       ]
                     },
                     {
-                      "line": 150,
+                      "line": 149,
                       "promiser": "path[systemctl]",
                       "attributes": [
                         {
-                          "line": 150,
+                          "line": 149,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -950,11 +936,11 @@
                       ]
                     },
                     {
-                      "line": 151,
+                      "line": 150,
                       "promiser": "path[netctl]",
                       "attributes": [
                         {
-                          "line": 151,
+                          "line": 150,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -969,11 +955,11 @@
                   "name": "freebsd|netbsd",
                   "promises": [
                     {
-                      "line": 155,
+                      "line": 154,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "line": 155,
+                          "line": 154,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -983,11 +969,11 @@
                       ]
                     },
                     {
-                      "line": 156,
+                      "line": 155,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "line": 156,
+                          "line": 155,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -997,11 +983,11 @@
                       ]
                     },
                     {
-                      "line": 157,
+                      "line": 156,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "line": 157,
+                          "line": 156,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1011,11 +997,11 @@
                       ]
                     },
                     {
-                      "line": 158,
+                      "line": 157,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "line": 158,
+                          "line": 157,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1025,11 +1011,11 @@
                       ]
                     },
                     {
-                      "line": 159,
+                      "line": 158,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "line": 159,
+                          "line": 158,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1039,11 +1025,11 @@
                       ]
                     },
                     {
-                      "line": 160,
+                      "line": 159,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "line": 160,
+                          "line": 159,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1053,11 +1039,11 @@
                       ]
                     },
                     {
-                      "line": 161,
+                      "line": 160,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "line": 161,
+                          "line": 160,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1067,11 +1053,11 @@
                       ]
                     },
                     {
-                      "line": 162,
+                      "line": 161,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "line": 162,
+                          "line": 161,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1081,11 +1067,11 @@
                       ]
                     },
                     {
-                      "line": 163,
+                      "line": 162,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "line": 163,
+                          "line": 162,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1095,11 +1081,11 @@
                       ]
                     },
                     {
-                      "line": 164,
+                      "line": 163,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "line": 164,
+                          "line": 163,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1109,11 +1095,11 @@
                       ]
                     },
                     {
-                      "line": 165,
+                      "line": 164,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "line": 165,
+                          "line": 164,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1123,11 +1109,11 @@
                       ]
                     },
                     {
-                      "line": 166,
+                      "line": 165,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "line": 166,
+                          "line": 165,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1137,11 +1123,11 @@
                       ]
                     },
                     {
-                      "line": 167,
+                      "line": 166,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "line": 167,
+                          "line": 166,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1151,11 +1137,11 @@
                       ]
                     },
                     {
-                      "line": 168,
+                      "line": 167,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "line": 168,
+                          "line": 167,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1165,11 +1151,11 @@
                       ]
                     },
                     {
-                      "line": 169,
+                      "line": 168,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "line": 169,
+                          "line": 168,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1179,11 +1165,11 @@
                       ]
                     },
                     {
-                      "line": 170,
+                      "line": 169,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "line": 170,
+                          "line": 169,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1193,11 +1179,11 @@
                       ]
                     },
                     {
-                      "line": 171,
+                      "line": 170,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "line": 171,
+                          "line": 170,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1207,11 +1193,11 @@
                       ]
                     },
                     {
-                      "line": 172,
+                      "line": 171,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "line": 172,
+                          "line": 171,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1221,11 +1207,11 @@
                       ]
                     },
                     {
-                      "line": 173,
+                      "line": 172,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "line": 173,
+                          "line": 172,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1235,11 +1221,11 @@
                       ]
                     },
                     {
-                      "line": 174,
+                      "line": 173,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "line": 174,
+                          "line": 173,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1249,11 +1235,11 @@
                       ]
                     },
                     {
-                      "line": 175,
+                      "line": 174,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "line": 175,
+                          "line": 174,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1263,15 +1249,29 @@
                       ]
                     },
                     {
-                      "line": 176,
+                      "line": 175,
                       "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 175,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 176,
+                      "promiser": "path[realpath]",
                       "attributes": [
                         {
                           "line": 176,
                           "lval": "string",
                           "rval": {
                             "type": "string",
-                            "value": "/usr/bin/tr"
+                            "value": "/bin/realpath"
                           }
                         }
                       ]
@@ -1652,10 +1652,24 @@
                     },
                     {
                       "line": 209,
-                      "promiser": "path[crontabs]",
+                      "promiser": "path[crontab]",
                       "attributes": [
                         {
                           "line": 209,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 210,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 210,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1665,11 +1679,11 @@
                       ]
                     },
                     {
-                      "line": 210,
+                      "line": 211,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "line": 210,
+                          "line": 211,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1679,11 +1693,11 @@
                       ]
                     },
                     {
-                      "line": 211,
+                      "line": 212,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "line": 211,
+                          "line": 212,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1693,11 +1707,11 @@
                       ]
                     },
                     {
-                      "line": 212,
+                      "line": 213,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "line": 212,
+                          "line": 213,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1707,11 +1721,11 @@
                       ]
                     },
                     {
-                      "line": 213,
+                      "line": 214,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "line": 213,
+                          "line": 214,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1721,11 +1735,11 @@
                       ]
                     },
                     {
-                      "line": 214,
+                      "line": 215,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "line": 214,
+                          "line": 215,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1735,11 +1749,11 @@
                       ]
                     },
                     {
-                      "line": 215,
+                      "line": 216,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "line": 215,
+                          "line": 216,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1749,11 +1763,11 @@
                       ]
                     },
                     {
-                      "line": 216,
+                      "line": 217,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "line": 216,
+                          "line": 217,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1763,11 +1777,11 @@
                       ]
                     },
                     {
-                      "line": 217,
+                      "line": 218,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "line": 217,
+                          "line": 218,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1777,11 +1791,11 @@
                       ]
                     },
                     {
-                      "line": 218,
+                      "line": 219,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "line": 218,
+                          "line": 219,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1791,11 +1805,11 @@
                       ]
                     },
                     {
-                      "line": 219,
+                      "line": 220,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "line": 219,
+                          "line": 220,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1805,11 +1819,11 @@
                       ]
                     },
                     {
-                      "line": 220,
+                      "line": 221,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "line": 220,
+                          "line": 221,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1819,11 +1833,11 @@
                       ]
                     },
                     {
-                      "line": 221,
+                      "line": 222,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "line": 221,
+                          "line": 222,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1833,11 +1847,11 @@
                       ]
                     },
                     {
-                      "line": 222,
+                      "line": 223,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "line": 222,
+                          "line": 223,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1847,11 +1861,11 @@
                       ]
                     },
                     {
-                      "line": 223,
+                      "line": 224,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "line": 223,
+                          "line": 224,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1861,11 +1875,11 @@
                       ]
                     },
                     {
-                      "line": 224,
+                      "line": 225,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "line": 224,
+                          "line": 225,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1875,11 +1889,11 @@
                       ]
                     },
                     {
-                      "line": 225,
+                      "line": 226,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "line": 225,
+                          "line": 226,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1889,11 +1903,11 @@
                       ]
                     },
                     {
-                      "line": 226,
+                      "line": 227,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "line": 226,
+                          "line": 227,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1903,11 +1917,11 @@
                       ]
                     },
                     {
-                      "line": 228,
+                      "line": 229,
                       "promiser": "path[svcs]",
                       "attributes": [
                         {
-                          "line": 228,
+                          "line": 229,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1917,15 +1931,169 @@
                       ]
                     },
                     {
-                      "line": 229,
+                      "line": 230,
                       "promiser": "path[svcadm]",
                       "attributes": [
                         {
-                          "line": 229,
+                          "line": 230,
                           "lval": "string",
                           "rval": {
                             "type": "string",
                             "value": "/usr/sbin/svcadm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 231,
+                      "promiser": "path[svccfg]",
+                      "attributes": [
+                        {
+                          "line": 231,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/svccfg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 232,
+                      "promiser": "path[netadm]",
+                      "attributes": [
+                        {
+                          "line": 232,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/netadm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 233,
+                      "promiser": "path[dladm]",
+                      "attributes": [
+                        {
+                          "line": 233,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dladm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 234,
+                      "promiser": "path[ipadm]",
+                      "attributes": [
+                        {
+                          "line": 234,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/ipadm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 235,
+                      "promiser": "path[logger]",
+                      "attributes": [
+                        {
+                          "line": 235,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/logger"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 236,
+                      "promiser": "path[pkg]",
+                      "attributes": [
+                        {
+                          "line": 236,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/pkg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 237,
+                      "promiser": "path[pkginfo]",
+                      "attributes": [
+                        {
+                          "line": 237,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/pkginfo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 238,
+                      "promiser": "path[pkgadd]",
+                      "attributes": [
+                        {
+                          "line": 238,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/pkgadd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 239,
+                      "promiser": "path[pkgrm]",
+                      "attributes": [
+                        {
+                          "line": 239,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/pkgrm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 240,
+                      "promiser": "path[zoneadm]",
+                      "attributes": [
+                        {
+                          "line": 240,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/zoneadm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 241,
+                      "promiser": "path[zonecfg]",
+                      "attributes": [
+                        {
+                          "line": 241,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/zonecfg"
                           }
                         }
                       ]
@@ -1936,11 +2104,11 @@
                   "name": "redhat",
                   "promises": [
                     {
-                      "line": 233,
+                      "line": 245,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "line": 233,
+                          "line": 245,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1950,11 +2118,11 @@
                       ]
                     },
                     {
-                      "line": 234,
+                      "line": 246,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "line": 234,
+                          "line": 246,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1964,11 +2132,11 @@
                       ]
                     },
                     {
-                      "line": 235,
+                      "line": 247,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "line": 235,
+                          "line": 247,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1978,11 +2146,11 @@
                       ]
                     },
                     {
-                      "line": 236,
+                      "line": 248,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "line": 236,
+                          "line": 248,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -1992,11 +2160,11 @@
                       ]
                     },
                     {
-                      "line": 237,
+                      "line": 249,
                       "promiser": "path[createrepo]",
                       "attributes": [
                         {
-                          "line": 237,
+                          "line": 249,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2006,11 +2174,11 @@
                       ]
                     },
                     {
-                      "line": 238,
+                      "line": 250,
                       "promiser": "path[crontab]",
                       "attributes": [
                         {
-                          "line": 238,
+                          "line": 250,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2020,11 +2188,11 @@
                       ]
                     },
                     {
-                      "line": 239,
+                      "line": 251,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "line": 239,
+                          "line": 251,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2034,11 +2202,11 @@
                       ]
                     },
                     {
-                      "line": 240,
+                      "line": 252,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "line": 240,
+                          "line": 252,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2048,11 +2216,11 @@
                       ]
                     },
                     {
-                      "line": 241,
+                      "line": 253,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "line": 241,
+                          "line": 253,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2062,11 +2230,11 @@
                       ]
                     },
                     {
-                      "line": 242,
+                      "line": 254,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "line": 242,
+                          "line": 254,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2076,11 +2244,11 @@
                       ]
                     },
                     {
-                      "line": 243,
+                      "line": 255,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "line": 243,
+                          "line": 255,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2090,11 +2258,11 @@
                       ]
                     },
                     {
-                      "line": 244,
+                      "line": 256,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "line": 244,
+                          "line": 256,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2104,11 +2272,11 @@
                       ]
                     },
                     {
-                      "line": 245,
+                      "line": 257,
                       "promiser": "path[domainname]",
                       "attributes": [
                         {
-                          "line": 245,
+                          "line": 257,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2118,11 +2286,11 @@
                       ]
                     },
                     {
-                      "line": 246,
+                      "line": 258,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "line": 246,
+                          "line": 258,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2132,11 +2300,11 @@
                       ]
                     },
                     {
-                      "line": 247,
+                      "line": 259,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "line": 247,
+                          "line": 259,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2146,11 +2314,11 @@
                       ]
                     },
                     {
-                      "line": 248,
+                      "line": 260,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "line": 248,
+                          "line": 260,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2160,11 +2328,11 @@
                       ]
                     },
                     {
-                      "line": 249,
+                      "line": 261,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "line": 249,
+                          "line": 261,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2174,11 +2342,11 @@
                       ]
                     },
                     {
-                      "line": 250,
+                      "line": 262,
                       "promiser": "path[hostname]",
                       "attributes": [
                         {
-                          "line": 250,
+                          "line": 262,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2188,11 +2356,11 @@
                       ]
                     },
                     {
-                      "line": 251,
+                      "line": 263,
                       "promiser": "path[init]",
                       "attributes": [
                         {
-                          "line": 251,
+                          "line": 263,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2202,11 +2370,11 @@
                       ]
                     },
                     {
-                      "line": 252,
+                      "line": 264,
                       "promiser": "path[iptables]",
                       "attributes": [
                         {
-                          "line": 252,
+                          "line": 264,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2216,11 +2384,11 @@
                       ]
                     },
                     {
-                      "line": 253,
+                      "line": 265,
                       "promiser": "path[iptables_save]",
                       "attributes": [
                         {
-                          "line": 253,
+                          "line": 265,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2230,11 +2398,11 @@
                       ]
                     },
                     {
-                      "line": 254,
+                      "line": 266,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "line": 254,
+                          "line": 266,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2244,11 +2412,11 @@
                       ]
                     },
                     {
-                      "line": 255,
+                      "line": 267,
                       "promiser": "path[lsof]",
                       "attributes": [
                         {
-                          "line": 255,
+                          "line": 267,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2258,11 +2426,11 @@
                       ]
                     },
                     {
-                      "line": 256,
+                      "line": 268,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "line": 256,
+                          "line": 268,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2272,11 +2440,25 @@
                       ]
                     },
                     {
-                      "line": 257,
+                      "line": 269,
+                      "promiser": "path[nologin]",
+                      "attributes": [
+                        {
+                          "line": 269,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/nologin"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 270,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "line": 257,
+                          "line": 270,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2286,11 +2468,11 @@
                       ]
                     },
                     {
-                      "line": 258,
+                      "line": 271,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "line": 258,
+                          "line": 271,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2300,11 +2482,11 @@
                       ]
                     },
                     {
-                      "line": 259,
+                      "line": 272,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "line": 259,
+                          "line": 272,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2314,11 +2496,11 @@
                       ]
                     },
                     {
-                      "line": 260,
+                      "line": 273,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "line": 260,
+                          "line": 273,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2328,11 +2510,11 @@
                       ]
                     },
                     {
-                      "line": 261,
+                      "line": 274,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "line": 261,
+                          "line": 274,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2342,11 +2524,11 @@
                       ]
                     },
                     {
-                      "line": 262,
+                      "line": 275,
                       "promiser": "path[test]",
                       "attributes": [
                         {
-                          "line": 262,
+                          "line": 275,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2356,11 +2538,11 @@
                       ]
                     },
                     {
-                      "line": 263,
+                      "line": 276,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "line": 263,
+                          "line": 276,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2370,11 +2552,25 @@
                       ]
                     },
                     {
-                      "line": 266,
+                      "line": 277,
+                      "promiser": "path[realpath]",
+                      "attributes": [
+                        {
+                          "line": 277,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/realpath"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 280,
                       "promiser": "path[chkconfig]",
                       "attributes": [
                         {
-                          "line": 266,
+                          "line": 280,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2384,11 +2580,11 @@
                       ]
                     },
                     {
-                      "line": 267,
+                      "line": 281,
                       "promiser": "path[groupadd]",
                       "attributes": [
                         {
-                          "line": 267,
+                          "line": 281,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2398,11 +2594,11 @@
                       ]
                     },
                     {
-                      "line": 268,
+                      "line": 282,
                       "promiser": "path[groupdel]",
                       "attributes": [
                         {
-                          "line": 268,
+                          "line": 282,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2412,11 +2608,11 @@
                       ]
                     },
                     {
-                      "line": 269,
+                      "line": 283,
                       "promiser": "path[ifconfig]",
                       "attributes": [
                         {
-                          "line": 269,
+                          "line": 283,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2426,11 +2622,11 @@
                       ]
                     },
                     {
-                      "line": 270,
+                      "line": 284,
                       "promiser": "path[ip]",
                       "attributes": [
                         {
-                          "line": 270,
+                          "line": 284,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2440,11 +2636,11 @@
                       ]
                     },
                     {
-                      "line": 271,
+                      "line": 285,
                       "promiser": "path[rpm]",
                       "attributes": [
                         {
-                          "line": 271,
+                          "line": 285,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2454,11 +2650,11 @@
                       ]
                     },
                     {
-                      "line": 272,
+                      "line": 286,
                       "promiser": "path[service]",
                       "attributes": [
                         {
-                          "line": 272,
+                          "line": 286,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2468,11 +2664,11 @@
                       ]
                     },
                     {
-                      "line": 273,
+                      "line": 287,
                       "promiser": "path[svc]",
                       "attributes": [
                         {
-                          "line": 273,
+                          "line": 287,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2482,11 +2678,11 @@
                       ]
                     },
                     {
-                      "line": 274,
+                      "line": 288,
                       "promiser": "path[useradd]",
                       "attributes": [
                         {
-                          "line": 274,
+                          "line": 288,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2496,11 +2692,11 @@
                       ]
                     },
                     {
-                      "line": 275,
+                      "line": 289,
                       "promiser": "path[userdel]",
                       "attributes": [
                         {
-                          "line": 275,
+                          "line": 289,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2510,11 +2706,11 @@
                       ]
                     },
                     {
-                      "line": 276,
+                      "line": 290,
                       "promiser": "path[yum]",
                       "attributes": [
                         {
-                          "line": 276,
+                          "line": 290,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2529,11 +2725,11 @@
                   "name": "darwin",
                   "promises": [
                     {
-                      "line": 279,
+                      "line": 293,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "line": 279,
+                          "line": 293,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2543,11 +2739,11 @@
                       ]
                     },
                     {
-                      "line": 280,
+                      "line": 294,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "line": 280,
+                          "line": 294,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2557,11 +2753,11 @@
                       ]
                     },
                     {
-                      "line": 281,
+                      "line": 295,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "line": 281,
+                          "line": 295,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2571,11 +2767,11 @@
                       ]
                     },
                     {
-                      "line": 282,
+                      "line": 296,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "line": 282,
+                          "line": 296,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2585,11 +2781,11 @@
                       ]
                     },
                     {
-                      "line": 283,
+                      "line": 297,
                       "promiser": "path[createrepo]",
                       "attributes": [
                         {
-                          "line": 283,
+                          "line": 297,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2599,11 +2795,11 @@
                       ]
                     },
                     {
-                      "line": 284,
+                      "line": 298,
                       "promiser": "path[crontab]",
                       "attributes": [
                         {
-                          "line": 284,
+                          "line": 298,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2613,11 +2809,11 @@
                       ]
                     },
                     {
-                      "line": 285,
+                      "line": 299,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "line": 285,
+                          "line": 299,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2627,11 +2823,11 @@
                       ]
                     },
                     {
-                      "line": 286,
+                      "line": 300,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "line": 286,
+                          "line": 300,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2641,11 +2837,11 @@
                       ]
                     },
                     {
-                      "line": 287,
+                      "line": 301,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "line": 287,
+                          "line": 301,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2655,11 +2851,11 @@
                       ]
                     },
                     {
-                      "line": 288,
+                      "line": 302,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "line": 288,
+                          "line": 302,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2669,11 +2865,11 @@
                       ]
                     },
                     {
-                      "line": 289,
+                      "line": 303,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "line": 289,
+                          "line": 303,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2683,11 +2879,11 @@
                       ]
                     },
                     {
-                      "line": 290,
+                      "line": 304,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "line": 290,
+                          "line": 304,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2697,11 +2893,11 @@
                       ]
                     },
                     {
-                      "line": 291,
+                      "line": 305,
                       "promiser": "path[domainname]",
                       "attributes": [
                         {
-                          "line": 291,
+                          "line": 305,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2711,11 +2907,11 @@
                       ]
                     },
                     {
-                      "line": 292,
+                      "line": 306,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "line": 292,
+                          "line": 306,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2725,11 +2921,11 @@
                       ]
                     },
                     {
-                      "line": 293,
+                      "line": 307,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "line": 293,
+                          "line": 307,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2739,11 +2935,11 @@
                       ]
                     },
                     {
-                      "line": 294,
+                      "line": 308,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "line": 294,
+                          "line": 308,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2753,11 +2949,11 @@
                       ]
                     },
                     {
-                      "line": 295,
+                      "line": 309,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "line": 295,
+                          "line": 309,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2767,11 +2963,11 @@
                       ]
                     },
                     {
-                      "line": 296,
+                      "line": 310,
                       "promiser": "path[hostname]",
                       "attributes": [
                         {
-                          "line": 296,
+                          "line": 310,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2781,11 +2977,11 @@
                       ]
                     },
                     {
-                      "line": 297,
+                      "line": 311,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "line": 297,
+                          "line": 311,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2795,11 +2991,11 @@
                       ]
                     },
                     {
-                      "line": 298,
+                      "line": 312,
                       "promiser": "path[lsof]",
                       "attributes": [
                         {
-                          "line": 298,
+                          "line": 312,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2809,11 +3005,11 @@
                       ]
                     },
                     {
-                      "line": 299,
+                      "line": 313,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "line": 299,
+                          "line": 313,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2823,11 +3019,11 @@
                       ]
                     },
                     {
-                      "line": 300,
+                      "line": 314,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "line": 300,
+                          "line": 314,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2837,11 +3033,11 @@
                       ]
                     },
                     {
-                      "line": 301,
+                      "line": 315,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "line": 301,
+                          "line": 315,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2851,11 +3047,11 @@
                       ]
                     },
                     {
-                      "line": 302,
+                      "line": 316,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "line": 302,
+                          "line": 316,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2865,11 +3061,11 @@
                       ]
                     },
                     {
-                      "line": 303,
+                      "line": 317,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "line": 303,
+                          "line": 317,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2879,11 +3075,11 @@
                       ]
                     },
                     {
-                      "line": 304,
+                      "line": 318,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "line": 304,
+                          "line": 318,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2893,11 +3089,11 @@
                       ]
                     },
                     {
-                      "line": 305,
+                      "line": 319,
                       "promiser": "path[test]",
                       "attributes": [
                         {
-                          "line": 305,
+                          "line": 319,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2907,11 +3103,11 @@
                       ]
                     },
                     {
-                      "line": 306,
+                      "line": 320,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "line": 306,
+                          "line": 320,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2921,11 +3117,11 @@
                       ]
                     },
                     {
-                      "line": 309,
+                      "line": 323,
                       "promiser": "path[brew]",
                       "attributes": [
                         {
-                          "line": 309,
+                          "line": 323,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2935,11 +3131,11 @@
                       ]
                     },
                     {
-                      "line": 310,
+                      "line": 324,
                       "promiser": "path[sudo]",
                       "attributes": [
                         {
-                          "line": 310,
+                          "line": 324,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2954,11 +3150,11 @@
                   "name": "debian",
                   "promises": [
                     {
-                      "line": 314,
+                      "line": 328,
                       "promiser": "path[awk]",
                       "attributes": [
                         {
-                          "line": 314,
+                          "line": 328,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2968,11 +3164,11 @@
                       ]
                     },
                     {
-                      "line": 315,
+                      "line": 329,
                       "promiser": "path[bc]",
                       "attributes": [
                         {
-                          "line": 315,
+                          "line": 329,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2982,11 +3178,11 @@
                       ]
                     },
                     {
-                      "line": 316,
+                      "line": 330,
                       "promiser": "path[cat]",
                       "attributes": [
                         {
-                          "line": 316,
+                          "line": 330,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -2996,11 +3192,11 @@
                       ]
                     },
                     {
-                      "line": 317,
+                      "line": 331,
                       "promiser": "path[chkconfig]",
                       "attributes": [
                         {
-                          "line": 317,
+                          "line": 331,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3010,11 +3206,11 @@
                       ]
                     },
                     {
-                      "line": 318,
+                      "line": 332,
                       "promiser": "path[cksum]",
                       "attributes": [
                         {
-                          "line": 318,
+                          "line": 332,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3024,11 +3220,11 @@
                       ]
                     },
                     {
-                      "line": 319,
+                      "line": 333,
                       "promiser": "path[createrepo]",
                       "attributes": [
                         {
-                          "line": 319,
+                          "line": 333,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3038,11 +3234,11 @@
                       ]
                     },
                     {
-                      "line": 320,
+                      "line": 334,
                       "promiser": "path[crontab]",
                       "attributes": [
                         {
-                          "line": 320,
+                          "line": 334,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3052,11 +3248,11 @@
                       ]
                     },
                     {
-                      "line": 321,
+                      "line": 335,
                       "promiser": "path[crontabs]",
                       "attributes": [
                         {
-                          "line": 321,
+                          "line": 335,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3066,11 +3262,11 @@
                       ]
                     },
                     {
-                      "line": 322,
+                      "line": 336,
                       "promiser": "path[cut]",
                       "attributes": [
                         {
-                          "line": 322,
+                          "line": 336,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3080,11 +3276,11 @@
                       ]
                     },
                     {
-                      "line": 323,
+                      "line": 337,
                       "promiser": "path[dc]",
                       "attributes": [
                         {
-                          "line": 323,
+                          "line": 337,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3094,11 +3290,11 @@
                       ]
                     },
                     {
-                      "line": 324,
+                      "line": 338,
                       "promiser": "path[df]",
                       "attributes": [
                         {
-                          "line": 324,
+                          "line": 338,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3108,11 +3304,11 @@
                       ]
                     },
                     {
-                      "line": 325,
+                      "line": 339,
                       "promiser": "path[diff]",
                       "attributes": [
                         {
-                          "line": 325,
+                          "line": 339,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3122,11 +3318,11 @@
                       ]
                     },
                     {
-                      "line": 326,
+                      "line": 340,
                       "promiser": "path[dig]",
                       "attributes": [
                         {
-                          "line": 326,
+                          "line": 340,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3136,11 +3332,11 @@
                       ]
                     },
                     {
-                      "line": 327,
+                      "line": 341,
                       "promiser": "path[dmidecode]",
                       "attributes": [
                         {
-                          "line": 327,
+                          "line": 341,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3150,11 +3346,11 @@
                       ]
                     },
                     {
-                      "line": 328,
+                      "line": 342,
                       "promiser": "path[domainname]",
                       "attributes": [
                         {
-                          "line": 328,
+                          "line": 342,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3164,11 +3360,11 @@
                       ]
                     },
                     {
-                      "line": 329,
+                      "line": 343,
                       "promiser": "path[echo]",
                       "attributes": [
                         {
-                          "line": 329,
+                          "line": 343,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3178,11 +3374,11 @@
                       ]
                     },
                     {
-                      "line": 330,
+                      "line": 344,
                       "promiser": "path[egrep]",
                       "attributes": [
                         {
-                          "line": 330,
+                          "line": 344,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3192,11 +3388,11 @@
                       ]
                     },
                     {
-                      "line": 331,
+                      "line": 345,
                       "promiser": "path[find]",
                       "attributes": [
                         {
-                          "line": 331,
+                          "line": 345,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3206,11 +3402,11 @@
                       ]
                     },
                     {
-                      "line": 332,
+                      "line": 346,
                       "promiser": "path[grep]",
                       "attributes": [
                         {
-                          "line": 332,
+                          "line": 346,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3220,11 +3416,11 @@
                       ]
                     },
                     {
-                      "line": 333,
+                      "line": 347,
                       "promiser": "path[hostname]",
                       "attributes": [
                         {
-                          "line": 333,
+                          "line": 347,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3234,11 +3430,11 @@
                       ]
                     },
                     {
-                      "line": 334,
+                      "line": 348,
                       "promiser": "path[init]",
                       "attributes": [
                         {
-                          "line": 334,
+                          "line": 348,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3248,11 +3444,11 @@
                       ]
                     },
                     {
-                      "line": 335,
+                      "line": 349,
                       "promiser": "path[iptables]",
                       "attributes": [
                         {
-                          "line": 335,
+                          "line": 349,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3262,11 +3458,11 @@
                       ]
                     },
                     {
-                      "line": 336,
+                      "line": 350,
                       "promiser": "path[iptables_save]",
                       "attributes": [
                         {
-                          "line": 336,
+                          "line": 350,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3276,11 +3472,11 @@
                       ]
                     },
                     {
-                      "line": 337,
+                      "line": 351,
                       "promiser": "path[ls]",
                       "attributes": [
                         {
-                          "line": 337,
+                          "line": 351,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3290,11 +3486,11 @@
                       ]
                     },
                     {
-                      "line": 338,
+                      "line": 352,
                       "promiser": "path[lsof]",
                       "attributes": [
                         {
-                          "line": 338,
+                          "line": 352,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3304,11 +3500,11 @@
                       ]
                     },
                     {
-                      "line": 339,
+                      "line": 353,
                       "promiser": "path[netstat]",
                       "attributes": [
                         {
-                          "line": 339,
+                          "line": 353,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3318,11 +3514,25 @@
                       ]
                     },
                     {
-                      "line": 340,
+                      "line": 354,
+                      "promiser": "path[nologin]",
+                      "attributes": [
+                        {
+                          "line": 354,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/nologin"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 355,
                       "promiser": "path[ping]",
                       "attributes": [
                         {
-                          "line": 340,
+                          "line": 355,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3332,11 +3542,11 @@
                       ]
                     },
                     {
-                      "line": 341,
+                      "line": 356,
                       "promiser": "path[perl]",
                       "attributes": [
                         {
-                          "line": 341,
+                          "line": 356,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3346,11 +3556,11 @@
                       ]
                     },
                     {
-                      "line": 342,
+                      "line": 357,
                       "promiser": "path[printf]",
                       "attributes": [
                         {
-                          "line": 342,
+                          "line": 357,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3360,11 +3570,11 @@
                       ]
                     },
                     {
-                      "line": 343,
+                      "line": 358,
                       "promiser": "path[sed]",
                       "attributes": [
                         {
-                          "line": 343,
+                          "line": 358,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3374,11 +3584,11 @@
                       ]
                     },
                     {
-                      "line": 344,
+                      "line": 359,
                       "promiser": "path[sort]",
                       "attributes": [
                         {
-                          "line": 344,
+                          "line": 359,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3388,11 +3598,11 @@
                       ]
                     },
                     {
-                      "line": 345,
+                      "line": 360,
                       "promiser": "path[test]",
                       "attributes": [
                         {
-                          "line": 345,
+                          "line": 360,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3402,11 +3612,11 @@
                       ]
                     },
                     {
-                      "line": 346,
+                      "line": 361,
                       "promiser": "path[tr]",
                       "attributes": [
                         {
-                          "line": 346,
+                          "line": 361,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3416,11 +3626,25 @@
                       ]
                     },
                     {
-                      "line": 349,
+                      "line": 362,
+                      "promiser": "path[realpath]",
+                      "attributes": [
+                        {
+                          "line": 362,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/realpath"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 365,
                       "promiser": "path[apt_cache]",
                       "attributes": [
                         {
-                          "line": 349,
+                          "line": 365,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3430,11 +3654,11 @@
                       ]
                     },
                     {
-                      "line": 350,
+                      "line": 366,
                       "promiser": "path[apt_config]",
                       "attributes": [
                         {
-                          "line": 350,
+                          "line": 366,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3444,11 +3668,11 @@
                       ]
                     },
                     {
-                      "line": 351,
+                      "line": 367,
                       "promiser": "path[apt_get]",
                       "attributes": [
                         {
-                          "line": 351,
+                          "line": 367,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3458,11 +3682,11 @@
                       ]
                     },
                     {
-                      "line": 352,
+                      "line": 368,
                       "promiser": "path[apt_key]",
                       "attributes": [
                         {
-                          "line": 352,
+                          "line": 368,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3472,11 +3696,11 @@
                       ]
                     },
                     {
-                      "line": 353,
+                      "line": 369,
                       "promiser": "path[aptitude]",
                       "attributes": [
                         {
-                          "line": 353,
+                          "line": 369,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3486,11 +3710,11 @@
                       ]
                     },
                     {
-                      "line": 354,
+                      "line": 370,
                       "promiser": "path[dpkg]",
                       "attributes": [
                         {
-                          "line": 354,
+                          "line": 370,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3500,11 +3724,11 @@
                       ]
                     },
                     {
-                      "line": 355,
+                      "line": 371,
                       "promiser": "path[groupadd]",
                       "attributes": [
                         {
-                          "line": 355,
+                          "line": 371,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3514,11 +3738,11 @@
                       ]
                     },
                     {
-                      "line": 356,
+                      "line": 372,
                       "promiser": "path[ifconfig]",
                       "attributes": [
                         {
-                          "line": 356,
+                          "line": 372,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3528,11 +3752,11 @@
                       ]
                     },
                     {
-                      "line": 357,
+                      "line": 373,
                       "promiser": "path[ip]",
                       "attributes": [
                         {
-                          "line": 357,
+                          "line": 373,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3542,11 +3766,11 @@
                       ]
                     },
                     {
-                      "line": 358,
+                      "line": 374,
                       "promiser": "path[service]",
                       "attributes": [
                         {
-                          "line": 358,
+                          "line": 374,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3556,11 +3780,11 @@
                       ]
                     },
                     {
-                      "line": 359,
+                      "line": 375,
                       "promiser": "path[svc]",
                       "attributes": [
                         {
-                          "line": 359,
+                          "line": 375,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3570,11 +3794,11 @@
                       ]
                     },
                     {
-                      "line": 360,
+                      "line": 376,
                       "promiser": "path[update_alternatives]",
                       "attributes": [
                         {
-                          "line": 360,
+                          "line": 376,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3584,11 +3808,11 @@
                       ]
                     },
                     {
-                      "line": 361,
+                      "line": 377,
                       "promiser": "path[update_rc_d]",
                       "attributes": [
                         {
-                          "line": 361,
+                          "line": 377,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3598,11 +3822,11 @@
                       ]
                     },
                     {
-                      "line": 362,
+                      "line": 378,
                       "promiser": "path[useradd]",
                       "attributes": [
                         {
-                          "line": 362,
+                          "line": 378,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3617,11 +3841,11 @@
                   "name": "archlinux||darwin",
                   "promises": [
                     {
-                      "line": 366,
+                      "line": 382,
                       "promiser": "path[sysctl]",
                       "attributes": [
                         {
-                          "line": 366,
+                          "line": 382,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3636,11 +3860,11 @@
                   "name": "!(archlinux||darwin)",
                   "promises": [
                     {
-                      "line": 370,
+                      "line": 386,
                       "promiser": "path[sysctl]",
                       "attributes": [
                         {
-                          "line": 370,
+                          "line": 386,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3652,14 +3876,696 @@
                   ]
                 },
                 {
+                  "name": "!(SuSE||SUSE||suse)",
+                  "promises": [
+                    {
+                      "line": 389,
+                      "promiser": "path[logger]",
+                      "attributes": [
+                        {
+                          "line": 389,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/logger"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "SuSE||SUSE||suse",
+                  "promises": [
+                    {
+                      "line": 393,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 393,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 394,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 394,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 395,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 395,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 396,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 396,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 397,
+                      "promiser": "path[createrepo]",
+                      "attributes": [
+                        {
+                          "line": 397,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/createrepo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 398,
+                      "promiser": "path[crontab]",
+                      "attributes": [
+                        {
+                          "line": 398,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 399,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 399,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/tabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 400,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 400,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 401,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 401,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 402,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 402,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 403,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 403,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 404,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 404,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 405,
+                      "promiser": "path[dmidecode]",
+                      "attributes": [
+                        {
+                          "line": 405,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dmidecode"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 406,
+                      "promiser": "path[domainname]",
+                      "attributes": [
+                        {
+                          "line": 406,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/domainname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 407,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 407,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 408,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 408,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 409,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 409,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 410,
+                      "promiser": "path[free]",
+                      "attributes": [
+                        {
+                          "line": 410,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/free"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 411,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 411,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 412,
+                      "promiser": "path[hostname]",
+                      "attributes": [
+                        {
+                          "line": 412,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/hostname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 413,
+                      "promiser": "path[init]",
+                      "attributes": [
+                        {
+                          "line": 413,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/init"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 414,
+                      "promiser": "path[iptables]",
+                      "attributes": [
+                        {
+                          "line": 414,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/iptables"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 415,
+                      "promiser": "path[iptables_save]",
+                      "attributes": [
+                        {
+                          "line": 415,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/iptables-save"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 416,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 416,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 417,
+                      "promiser": "path[lsof]",
+                      "attributes": [
+                        {
+                          "line": 417,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/lsof"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 418,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 418,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 419,
+                      "promiser": "path[nologin]",
+                      "attributes": [
+                        {
+                          "line": 419,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/nologin"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 420,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 420,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 421,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 421,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 422,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 422,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 423,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 423,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 424,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 424,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 425,
+                      "promiser": "path[test]",
+                      "attributes": [
+                        {
+                          "line": 425,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/test"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 426,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 426,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 427,
+                      "promiser": "path[logger]",
+                      "attributes": [
+                        {
+                          "line": 427,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/logger"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 430,
+                      "promiser": "path[chkconfig]",
+                      "attributes": [
+                        {
+                          "line": 430,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/chkconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 431,
+                      "promiser": "path[groupadd]",
+                      "attributes": [
+                        {
+                          "line": 431,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupadd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 432,
+                      "promiser": "path[groupdel]",
+                      "attributes": [
+                        {
+                          "line": 432,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupdel"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 433,
+                      "promiser": "path[groupmod]",
+                      "attributes": [
+                        {
+                          "line": 433,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupmod"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 434,
+                      "promiser": "path[ifconfig]",
+                      "attributes": [
+                        {
+                          "line": 434,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ifconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 435,
+                      "promiser": "path[ip]",
+                      "attributes": [
+                        {
+                          "line": 435,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ip"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 436,
+                      "promiser": "path[rpm]",
+                      "attributes": [
+                        {
+                          "line": 436,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/rpm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 437,
+                      "promiser": "path[service]",
+                      "attributes": [
+                        {
+                          "line": 437,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 438,
+                      "promiser": "path[useradd]",
+                      "attributes": [
+                        {
+                          "line": 438,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/useradd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 439,
+                      "promiser": "path[userdel]",
+                      "attributes": [
+                        {
+                          "line": 439,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/userdel"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 440,
+                      "promiser": "path[usermod]",
+                      "attributes": [
+                        {
+                          "line": 440,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/usermod"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 441,
+                      "promiser": "path[zypper]",
+                      "attributes": [
+                        {
+                          "line": 441,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/zypper"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 373,
+                      "line": 444,
                       "promiser": "all_paths",
                       "attributes": [
                         {
-                          "line": 373,
+                          "line": 444,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -3675,11 +4581,11 @@
                       ]
                     },
                     {
-                      "line": 374,
+                      "line": 445,
                       "promiser": "$(all_paths)",
                       "attributes": [
                         {
-                          "line": 374,
+                          "line": 445,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -3693,18 +4599,18 @@
               ]
             },
             {
-              "line": 376,
+              "line": 447,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 377,
+                      "line": 448,
                       "promiser": "_stdlib_has_path_$(all_paths)",
                       "attributes": [
                         {
-                          "line": 378,
+                          "line": 449,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -3718,7 +4624,7 @@
                           }
                         },
                         {
-                          "line": 379,
+                          "line": 450,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -3728,11 +4634,11 @@
                       ]
                     },
                     {
-                      "line": 381,
+                      "line": 452,
                       "promiser": "_stdlib_path_exists_$(all_paths)",
                       "attributes": [
                         {
-                          "line": 382,
+                          "line": 453,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -3746,7 +4652,7 @@
                           }
                         },
                         {
-                          "line": 383,
+                          "line": 454,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
