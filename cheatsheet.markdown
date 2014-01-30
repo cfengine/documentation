@@ -169,7 +169,7 @@ do
 done
 ```
 
-#### Console/Shell Session Code Blocks
+#### Console Blocks
 
         ```console
 		root@policy_server # /etc/init.d/cfengine3 stop
@@ -178,16 +178,6 @@ done
 ```console
 	root@policy_server # /etc/init.d/cfengine3 stop
 ```
-
-        ```shell-session
-		root@policy_server # /etc/init.d/cfengine3 stop
-        ```
-        * Pygments 1.6
-
-```shell-session
-	root@policy_server # /etc/init.d/cfengine3 stop
-```
-
 
 #### SQL Code Blocks
 
