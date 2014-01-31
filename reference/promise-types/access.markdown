@@ -137,6 +137,11 @@ access:
     admit   => { "127.0.0.1", "192.168.0.1/24", ".*\.domain\.tld"  };
 ```
 
+**Notes:**
+
+`admit` will be deprecated in CFEngine 3.7 in favor of `admit_ips`,
+`admit_hostnames`, and `admit_keys`.
+
 ### deny
 
 **Description:** The `deny` slist contains host names or IP addresses 
