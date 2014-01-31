@@ -13,8 +13,9 @@ tags: [reference, data functions, functions, splitstring]
 `regex` occurs, and  returns the list with those strings.
 
 The regular expression is [unanchored][unanchored].
-If the maximum number of substrings is insufficient to accommodate all 
-entries,then the final entry in the `slist` that is generated will contain the 
+
+If the maximum number of substrings is insufficient to accommodate all
+the entries, the final entry in the generated `slist` will contain the
 rest of the un-split string.
 
 [%CFEngine_function_attributes(string, regex, maxent)%]
@@ -26,3 +27,7 @@ rest of the un-split string.
 Output:
 
 [%CFEngine_include_snippet(splitstring.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**History:** Deprecated in CFEngine 3.6 in favor of `string_split`
+
+**See also:** `string_split()`
