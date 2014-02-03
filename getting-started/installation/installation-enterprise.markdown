@@ -158,6 +158,7 @@ wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm
 
 **Log in as root** and then follow these steps to install CFEngine Enterprise:
 
+
 1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 
     ```
@@ -171,6 +172,8 @@ wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm
         [RedHat/CentOS/SUSE] $ rpm -i <agent package>.rpm
         [Debian/Ubuntu]      $ dpkg -i <agent package>.deb
     ```
+
+Note: Install actions logged to `/var/logs/cfengine-install.log`.
 
 ## Bootstrap
 

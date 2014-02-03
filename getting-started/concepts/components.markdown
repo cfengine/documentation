@@ -265,6 +265,10 @@ This file contains a list of currently discovered classes and variable
 values that characterize the anomaly alert environment. They are altered
 by the monitor daemon.   
 
+* `/var/logs/cfengine-install.log`
+
+This file contains logs related to the CFEngine package installation.
+
 ### Process Information
 
 The CFEngine components keep their current process identifier number in
