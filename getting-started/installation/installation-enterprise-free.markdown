@@ -48,6 +48,9 @@ $ wget http://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterpri
 
 This script installs the latest CFEngine Enterprise Policy Server on your machine.
 
+**Note:** CFEngine enterprise expectes to be installed on to a fresh system and
+not be co-located with any other webserver or database server.
+
 ## 2. Bootstrap the Policy Server
 
 The Policy Server must be bootstrapped to itself. Find the IP address of your Policy Server (type $ ifconfig).
