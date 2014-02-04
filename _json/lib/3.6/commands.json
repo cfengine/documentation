@@ -417,6 +417,49 @@
               ]
             }
           ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
+          "line": 273,
+          "namespace": "default",
+          "name": "setuid_gid_umask",
+          "bodyType": "contain",
+          "arguments": [
+            "uid",
+            "gid",
+            "umask"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 298,
+                  "lval": "exec_owner",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(uid)"
+                  }
+                },
+                {
+                  "line": 299,
+                  "lval": "exec_group",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(uid)"
+                  }
+                },
+                {
+                  "line": 300,
+                  "lval": "umask",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(umask)"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }

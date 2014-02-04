@@ -7395,7 +7395,7 @@
       "category": "utils"
     },
     "splitstring": {
-      "status": "normal",
+      "status": "deprecated",
       "returnType": "slist",
       "parameters": [
         {
@@ -7568,6 +7568,27 @@
       "variadic": true,
       "cached": false,
       "category": "utils"
+    },
+    "string_split": {
+      "status": "normal",
+      "returnType": "slist",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "int",
+          "range": "0,99999999999"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
     },
     "string_downcase": {
       "status": "normal",
