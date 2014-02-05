@@ -15,7 +15,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 56,
+                  "line": 59,
                   "lval": "command",
                   "rval": {
                     "type": "string",
@@ -23,7 +23,7 @@
                   }
                 },
                 {
-                  "line": 57,
+                  "line": 60,
                   "lval": "process_result",
                   "rval": {
                     "type": "string",
@@ -36,7 +36,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/processes.cf",
-          "line": 62,
+          "line": 65,
           "namespace": "default",
           "name": "days_older_than",
           "bodyType": "process_select",
@@ -48,7 +48,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 64,
+                  "line": 69,
                   "lval": "stime_range",
                   "rval": {
                     "type": "functionCall",
@@ -92,7 +92,7 @@
                   }
                 },
                 {
-                  "line": 65,
+                  "line": 70,
                   "lval": "process_result",
                   "rval": {
                     "type": "string",
@@ -105,7 +105,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/processes.cf",
-          "line": 70,
+          "line": 75,
           "namespace": "default",
           "name": "by_owner",
           "bodyType": "process_select",
@@ -117,7 +117,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 74,
+                  "line": 82,
                   "lval": "process_owner",
                   "rval": {
                     "type": "list",
@@ -146,7 +146,7 @@
                   }
                 },
                 {
-                  "line": 75,
+                  "line": 83,
                   "lval": "process_result",
                   "rval": {
                     "type": "string",
@@ -159,7 +159,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/processes.cf",
-          "line": 80,
+          "line": 88,
           "namespace": "default",
           "name": "any_count",
           "bodyType": "process_count",
@@ -171,7 +171,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 83,
+                  "line": 92,
                   "lval": "match_range",
                   "rval": {
                     "type": "string",
@@ -179,7 +179,7 @@
                   }
                 },
                 {
-                  "line": 84,
+                  "line": 93,
                   "lval": "out_of_range_define",
                   "rval": {
                     "type": "list",
@@ -197,7 +197,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/processes.cf",
-          "line": 89,
+          "line": 98,
           "namespace": "default",
           "name": "check_range",
           "bodyType": "process_count",
@@ -211,7 +211,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 91,
+                  "line": 105,
                   "lval": "match_range",
                   "rval": {
                     "type": "functionCall",
@@ -229,7 +229,7 @@
                   }
                 },
                 {
-                  "line": 92,
+                  "line": 106,
                   "lval": "out_of_range_define",
                   "rval": {
                     "type": "list",

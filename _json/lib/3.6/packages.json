@@ -672,25 +672,25 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1167,
+          "line": 1173,
           "namespace": "default",
           "name": "create_solaris_admin_file",
           "bundleType": "edit_line",
           "arguments": [],
           "promiseTypes": [
             {
-              "line": 1172,
+              "line": 1178,
               "name": "insert_lines",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 1189,
+                      "line": 1195,
                       "promiser": "mail=\ninstance=unique\npartial=nocheck\nrunlevel=nocheck\nidepend=nocheck\nrdepend=nocheck\nspace=nocheck\nsetuid=nocheck\nconflict=nocheck\naction=nocheck\nnetworktimeout=60\nnetworkretries=3\nauthentication=quit\nkeystore=/var/sadm/security\nproxy=\nbasedir=default",
                       "attributes": [
                         {
-                          "line": 1190,
+                          "line": 1196,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -707,7 +707,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1643,
+          "line": 1649,
           "namespace": "default",
           "name": "cfe_package_ensure_absent",
           "bundleType": "agent",
@@ -716,18 +716,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 1658,
+              "line": 1664,
               "name": "methods",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 1659,
+                      "line": 1665,
                       "promiser": "ensure",
                       "attributes": [
                         {
-                          "line": 1659,
+                          "line": 1665,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -754,7 +754,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1662,
+          "line": 1668,
           "namespace": "default",
           "name": "cfe_package_ensure_present",
           "bundleType": "agent",
@@ -763,18 +763,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 1677,
+              "line": 1683,
               "name": "methods",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 1678,
+                      "line": 1684,
                       "promiser": "ensure",
                       "attributes": [
                         {
-                          "line": 1678,
+                          "line": 1684,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -801,7 +801,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1681,
+          "line": 1687,
           "namespace": "default",
           "name": "cfe_package_ensure_upgrade",
           "bundleType": "agent",
@@ -810,18 +810,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 1696,
+              "line": 1702,
               "name": "methods",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 1697,
+                      "line": 1703,
                       "promiser": "ensure",
                       "attributes": [
                         {
-                          "line": 1697,
+                          "line": 1703,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -848,7 +848,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1700,
+          "line": 1706,
           "namespace": "default",
           "name": "cfe_package_ensure",
           "bundleType": "agent",
@@ -858,18 +858,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 1721,
+              "line": 1727,
               "name": "packages",
               "contexts": [
                 {
                   "name": "debian",
                   "promises": [
                     {
-                      "line": 1725,
+                      "line": 1731,
                       "promiser": "$(package_name)",
                       "attributes": [
                         {
-                          "line": 1727,
+                          "line": 1733,
                           "lval": "package_method",
                           "rval": {
                             "type": "symbol",
@@ -877,7 +877,7 @@
                           }
                         },
                         {
-                          "line": 1726,
+                          "line": 1732,
                           "lval": "package_policy",
                           "rval": {
                             "type": "string",
@@ -892,11 +892,11 @@
                   "name": "redhat",
                   "promises": [
                     {
-                      "line": 1732,
+                      "line": 1738,
                       "promiser": "$(package_name)",
                       "attributes": [
                         {
-                          "line": 1734,
+                          "line": 1740,
                           "lval": "package_method",
                           "rval": {
                             "type": "symbol",
@@ -904,7 +904,7 @@
                           }
                         },
                         {
-                          "line": 1733,
+                          "line": 1739,
                           "lval": "package_policy",
                           "rval": {
                             "type": "string",
@@ -919,11 +919,11 @@
                   "name": "!debian.!redhat",
                   "promises": [
                     {
-                      "line": 1738,
+                      "line": 1744,
                       "promiser": "$(package_name)",
                       "attributes": [
                         {
-                          "line": 1740,
+                          "line": 1746,
                           "lval": "package_method",
                           "rval": {
                             "type": "symbol",
@@ -931,7 +931,7 @@
                           }
                         },
                         {
-                          "line": 1739,
+                          "line": 1745,
                           "lval": "package_policy",
                           "rval": {
                             "type": "string",
@@ -948,7 +948,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1743,
+          "line": 1749,
           "namespace": "default",
           "name": "cfe_package_named_ensure_present",
           "bundleType": "agent",
@@ -960,18 +960,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 1766,
+              "line": 1772,
               "name": "methods",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 1767,
+                      "line": 1773,
                       "promiser": "ensure",
                       "attributes": [
                         {
-                          "line": 1767,
+                          "line": 1773,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -1010,7 +1010,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1770,
+          "line": 1776,
           "namespace": "default",
           "name": "cfe_package_named_ensure_upgrade",
           "bundleType": "agent",
@@ -1022,18 +1022,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 1799,
+              "line": 1805,
               "name": "methods",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 1800,
+                      "line": 1806,
                       "promiser": "ensure",
                       "attributes": [
                         {
-                          "line": 1800,
+                          "line": 1806,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -1072,7 +1072,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1803,
+          "line": 1809,
           "namespace": "default",
           "name": "cfe_package_ensure_named",
           "bundleType": "agent",
@@ -1085,18 +1085,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 1830,
+              "line": 1836,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 1831,
+                      "line": 1837,
                       "promiser": "filebased",
                       "attributes": [
                         {
-                          "line": 1831,
+                          "line": 1837,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -1116,18 +1116,18 @@
               ]
             },
             {
-              "line": 1833,
+              "line": 1839,
               "name": "vars",
               "contexts": [
                 {
                   "name": "filebased",
                   "promises": [
                     {
-                      "line": 1835,
+                      "line": 1841,
                       "promiser": "package_basename",
                       "attributes": [
                         {
-                          "line": 1835,
+                          "line": 1841,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -1147,11 +1147,11 @@
                       ]
                     },
                     {
-                      "line": 1836,
+                      "line": 1842,
                       "promiser": "dir",
                       "attributes": [
                         {
-                          "line": 1836,
+                          "line": 1842,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -1171,18 +1171,18 @@
               ]
             },
             {
-              "line": 1838,
+              "line": 1844,
               "name": "packages",
               "contexts": [
                 {
                   "name": "debian.!filebased",
                   "promises": [
                     {
-                      "line": 1842,
+                      "line": 1848,
                       "promiser": "$(package_name)",
                       "attributes": [
                         {
-                          "line": 1847,
+                          "line": 1853,
                           "lval": "package_method",
                           "rval": {
                             "type": "symbol",
@@ -1190,7 +1190,7 @@
                           }
                         },
                         {
-                          "line": 1843,
+                          "line": 1849,
                           "lval": "package_policy",
                           "rval": {
                             "type": "string",
@@ -1198,7 +1198,7 @@
                           }
                         },
                         {
-                          "line": 1844,
+                          "line": 1850,
                           "lval": "package_select",
                           "rval": {
                             "type": "string",
@@ -1206,7 +1206,7 @@
                           }
                         },
                         {
-                          "line": 1845,
+                          "line": 1851,
                           "lval": "package_version",
                           "rval": {
                             "type": "string",
@@ -1214,7 +1214,7 @@
                           }
                         },
                         {
-                          "line": 1846,
+                          "line": 1852,
                           "lval": "package_architectures",
                           "rval": {
                             "type": "list",
@@ -1234,11 +1234,11 @@
                   "name": "debian.filebased",
                   "promises": [
                     {
-                      "line": 1852,
+                      "line": 1858,
                       "promiser": "$(package_basename)",
                       "attributes": [
                         {
-                          "line": 1857,
+                          "line": 1863,
                           "lval": "package_method",
                           "rval": {
                             "type": "functionCall",
@@ -1252,7 +1252,7 @@
                           }
                         },
                         {
-                          "line": 1853,
+                          "line": 1859,
                           "lval": "package_policy",
                           "rval": {
                             "type": "string",
@@ -1260,7 +1260,7 @@
                           }
                         },
                         {
-                          "line": 1854,
+                          "line": 1860,
                           "lval": "package_select",
                           "rval": {
                             "type": "string",
@@ -1268,7 +1268,7 @@
                           }
                         },
                         {
-                          "line": 1855,
+                          "line": 1861,
                           "lval": "package_version",
                           "rval": {
                             "type": "string",
@@ -1276,7 +1276,7 @@
                           }
                         },
                         {
-                          "line": 1856,
+                          "line": 1862,
                           "lval": "package_architectures",
                           "rval": {
                             "type": "list",
@@ -1296,11 +1296,11 @@
                   "name": "redhat.!filebased",
                   "promises": [
                     {
-                      "line": 1861,
+                      "line": 1867,
                       "promiser": "$(package_name)",
                       "attributes": [
                         {
-                          "line": 1866,
+                          "line": 1872,
                           "lval": "package_method",
                           "rval": {
                             "type": "symbol",
@@ -1308,7 +1308,7 @@
                           }
                         },
                         {
-                          "line": 1862,
+                          "line": 1868,
                           "lval": "package_policy",
                           "rval": {
                             "type": "string",
@@ -1316,7 +1316,7 @@
                           }
                         },
                         {
-                          "line": 1863,
+                          "line": 1869,
                           "lval": "package_select",
                           "rval": {
                             "type": "string",
@@ -1324,7 +1324,7 @@
                           }
                         },
                         {
-                          "line": 1864,
+                          "line": 1870,
                           "lval": "package_version",
                           "rval": {
                             "type": "string",
@@ -1332,7 +1332,7 @@
                           }
                         },
                         {
-                          "line": 1865,
+                          "line": 1871,
                           "lval": "package_architectures",
                           "rval": {
                             "type": "list",
@@ -1352,11 +1352,11 @@
                   "name": "redhat.filebased",
                   "promises": [
                     {
-                      "line": 1870,
+                      "line": 1876,
                       "promiser": "$(package_basename)",
                       "attributes": [
                         {
-                          "line": 1875,
+                          "line": 1881,
                           "lval": "package_method",
                           "rval": {
                             "type": "functionCall",
@@ -1370,7 +1370,7 @@
                           }
                         },
                         {
-                          "line": 1871,
+                          "line": 1877,
                           "lval": "package_policy",
                           "rval": {
                             "type": "string",
@@ -1378,7 +1378,7 @@
                           }
                         },
                         {
-                          "line": 1872,
+                          "line": 1878,
                           "lval": "package_select",
                           "rval": {
                             "type": "string",
@@ -1386,7 +1386,7 @@
                           }
                         },
                         {
-                          "line": 1873,
+                          "line": 1879,
                           "lval": "package_version",
                           "rval": {
                             "type": "string",
@@ -1394,7 +1394,7 @@
                           }
                         },
                         {
-                          "line": 1874,
+                          "line": 1880,
                           "lval": "package_architectures",
                           "rval": {
                             "type": "list",
@@ -1414,11 +1414,11 @@
                   "name": "!filebased.!debian.!redhat",
                   "promises": [
                     {
-                      "line": 1879,
+                      "line": 1885,
                       "promiser": "$(package_name)",
                       "attributes": [
                         {
-                          "line": 1881,
+                          "line": 1887,
                           "lval": "package_method",
                           "rval": {
                             "type": "symbol",
@@ -1426,7 +1426,7 @@
                           }
                         },
                         {
-                          "line": 1880,
+                          "line": 1886,
                           "lval": "package_policy",
                           "rval": {
                             "type": "string",
@@ -1440,14 +1440,14 @@
               ]
             },
             {
-              "line": 1883,
+              "line": 1889,
               "name": "reports",
               "contexts": [
                 {
                   "name": "(inform_mode||verbose_mode).filebased.!debian.!redhat",
                   "promises": [
                     {
-                      "line": 1885,
+                      "line": 1891,
                       "promiser": "$(this.bundle): sorry, can't do file-based installs on $(sys.os)",
                       "attributes": []
                     }
@@ -3195,7 +3195,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 682,
+                  "line": 683,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -3203,7 +3203,7 @@
                   }
                 },
                 {
-                  "line": 683,
+                  "line": 684,
                   "lval": "package_file_repositories",
                   "rval": {
                     "type": "list",
@@ -3216,7 +3216,7 @@
                   }
                 },
                 {
-                  "line": 685,
+                  "line": 686,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -3224,7 +3224,7 @@
                   }
                 },
                 {
-                  "line": 687,
+                  "line": 688,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -3232,7 +3232,7 @@
                   }
                 },
                 {
-                  "line": 688,
+                  "line": 689,
                   "lval": "package_delete_convention",
                   "rval": {
                     "type": "string",
@@ -3240,7 +3240,7 @@
                   }
                 },
                 {
-                  "line": 690,
+                  "line": 691,
                   "lval": "package_name_regex",
                   "rval": {
                     "type": "string",
@@ -3248,7 +3248,7 @@
                   }
                 },
                 {
-                  "line": 691,
+                  "line": 692,
                   "lval": "package_version_regex",
                   "rval": {
                     "type": "string",
@@ -3256,7 +3256,7 @@
                   }
                 },
                 {
-                  "line": 692,
+                  "line": 693,
                   "lval": "package_arch_regex",
                   "rval": {
                     "type": "string",
@@ -3264,7 +3264,7 @@
                   }
                 },
                 {
-                  "line": 694,
+                  "line": 695,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -3272,7 +3272,7 @@
                   }
                 },
                 {
-                  "line": 695,
+                  "line": 696,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -3280,7 +3280,7 @@
                   }
                 },
                 {
-                  "line": 696,
+                  "line": 697,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -3293,7 +3293,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 701,
+          "line": 702,
           "namespace": "default",
           "name": "msi_explicit",
           "bodyType": "package_method",
@@ -3305,7 +3305,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 709,
+                  "line": 711,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -3313,7 +3313,7 @@
                   }
                 },
                 {
-                  "line": 710,
+                  "line": 712,
                   "lval": "package_file_repositories",
                   "rval": {
                     "type": "list",
@@ -3326,7 +3326,7 @@
                   }
                 },
                 {
-                  "line": 712,
+                  "line": 714,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -3334,7 +3334,7 @@
                   }
                 },
                 {
-                  "line": 714,
+                  "line": 716,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -3342,7 +3342,7 @@
                   }
                 },
                 {
-                  "line": 715,
+                  "line": 717,
                   "lval": "package_delete_convention",
                   "rval": {
                     "type": "string",
@@ -3350,7 +3350,7 @@
                   }
                 },
                 {
-                  "line": 717,
+                  "line": 719,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -3358,7 +3358,7 @@
                   }
                 },
                 {
-                  "line": 718,
+                  "line": 720,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -3366,7 +3366,7 @@
                   }
                 },
                 {
-                  "line": 719,
+                  "line": 721,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -3379,7 +3379,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 724,
+          "line": 726,
           "namespace": "default",
           "name": "yum",
           "bodyType": "package_method",
@@ -3389,7 +3389,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 746,
+                  "line": 748,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -3397,7 +3397,7 @@
                   }
                 },
                 {
-                  "line": 747,
+                  "line": 749,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -3405,7 +3405,7 @@
                   }
                 },
                 {
-                  "line": 748,
+                  "line": 750,
                   "lval": "package_patch_list_command",
                   "rval": {
                     "type": "string",
@@ -3413,7 +3413,7 @@
                   }
                 },
                 {
-                  "line": 750,
+                  "line": 752,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -3421,7 +3421,7 @@
                   }
                 },
                 {
-                  "line": 751,
+                  "line": 753,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -3429,7 +3429,7 @@
                   }
                 },
                 {
-                  "line": 752,
+                  "line": 754,
                   "lval": "package_list_arch_regex",
                   "rval": {
                     "type": "string",
@@ -3437,7 +3437,7 @@
                   }
                 },
                 {
-                  "line": 754,
+                  "line": 756,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -3445,7 +3445,7 @@
                   }
                 },
                 {
-                  "line": 755,
+                  "line": 757,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -3453,7 +3453,7 @@
                   }
                 },
                 {
-                  "line": 758,
+                  "line": 760,
                   "lval": "package_delete_convention",
                   "rval": {
                     "type": "string",
@@ -3461,7 +3461,7 @@
                   }
                 },
                 {
-                  "line": 761,
+                  "line": 763,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -3469,7 +3469,7 @@
                   }
                 },
                 {
-                  "line": 762,
+                  "line": 764,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -3477,7 +3477,7 @@
                   }
                 },
                 {
-                  "line": 764,
+                  "line": 766,
                   "lval": "package_patch_name_regex",
                   "rval": {
                     "type": "string",
@@ -3485,7 +3485,7 @@
                   }
                 },
                 {
-                  "line": 765,
+                  "line": 767,
                   "lval": "package_patch_version_regex",
                   "rval": {
                     "type": "string",
@@ -3493,7 +3493,7 @@
                   }
                 },
                 {
-                  "line": 766,
+                  "line": 768,
                   "lval": "package_patch_arch_regex",
                   "rval": {
                     "type": "string",
@@ -3501,7 +3501,7 @@
                   }
                 },
                 {
-                  "line": 768,
+                  "line": 770,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -3509,7 +3509,7 @@
                   }
                 },
                 {
-                  "line": 769,
+                  "line": 771,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -3517,7 +3517,7 @@
                   }
                 },
                 {
-                  "line": 770,
+                  "line": 772,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -3525,7 +3525,7 @@
                   }
                 },
                 {
-                  "line": 771,
+                  "line": 773,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -3533,7 +3533,7 @@
                   }
                 },
                 {
-                  "line": 772,
+                  "line": 774,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -3546,7 +3546,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 777,
+          "line": 779,
           "namespace": "default",
           "name": "yum_rpm",
           "bodyType": "package_method",
@@ -3556,7 +3556,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 799,
+                  "line": 801,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -3564,7 +3564,7 @@
                   }
                 },
                 {
-                  "line": 800,
+                  "line": 802,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -3572,7 +3572,7 @@
                   }
                 },
                 {
-                  "line": 801,
+                  "line": 803,
                   "lval": "package_patch_list_command",
                   "rval": {
                     "type": "string",
@@ -3580,7 +3580,7 @@
                   }
                 },
                 {
-                  "line": 803,
+                  "line": 805,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -3588,7 +3588,7 @@
                   }
                 },
                 {
-                  "line": 804,
+                  "line": 806,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -3596,7 +3596,7 @@
                   }
                 },
                 {
-                  "line": 805,
+                  "line": 807,
                   "lval": "package_list_arch_regex",
                   "rval": {
                     "type": "string",
@@ -3604,7 +3604,7 @@
                   }
                 },
                 {
-                  "line": 807,
+                  "line": 809,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -3612,7 +3612,7 @@
                   }
                 },
                 {
-                  "line": 808,
+                  "line": 810,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -3620,7 +3620,7 @@
                   }
                 },
                 {
-                  "line": 811,
+                  "line": 813,
                   "lval": "package_delete_convention",
                   "rval": {
                     "type": "string",
@@ -3628,7 +3628,7 @@
                   }
                 },
                 {
-                  "line": 814,
+                  "line": 816,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -3636,7 +3636,7 @@
                   }
                 },
                 {
-                  "line": 815,
+                  "line": 817,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -3644,7 +3644,7 @@
                   }
                 },
                 {
-                  "line": 817,
+                  "line": 819,
                   "lval": "package_patch_name_regex",
                   "rval": {
                     "type": "string",
@@ -3652,7 +3652,7 @@
                   }
                 },
                 {
-                  "line": 818,
+                  "line": 820,
                   "lval": "package_patch_version_regex",
                   "rval": {
                     "type": "string",
@@ -3660,7 +3660,7 @@
                   }
                 },
                 {
-                  "line": 819,
+                  "line": 821,
                   "lval": "package_patch_arch_regex",
                   "rval": {
                     "type": "string",
@@ -3668,7 +3668,7 @@
                   }
                 },
                 {
-                  "line": 821,
+                  "line": 823,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -3676,7 +3676,7 @@
                   }
                 },
                 {
-                  "line": 822,
+                  "line": 824,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -3684,7 +3684,7 @@
                   }
                 },
                 {
-                  "line": 823,
+                  "line": 825,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -3692,7 +3692,7 @@
                   }
                 },
                 {
-                  "line": 824,
+                  "line": 826,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -3700,7 +3700,7 @@
                   }
                 },
                 {
-                  "line": 825,
+                  "line": 827,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -3713,7 +3713,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 831,
+          "line": 833,
           "namespace": "default",
           "name": "yum_rpm_noupdate",
           "bodyType": "package_method",
@@ -3723,7 +3723,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 858,
+                  "line": 860,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -3731,7 +3731,7 @@
                   }
                 },
                 {
-                  "line": 859,
+                  "line": 861,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -3739,7 +3739,7 @@
                   }
                 },
                 {
-                  "line": 860,
+                  "line": 862,
                   "lval": "package_patch_list_command",
                   "rval": {
                     "type": "string",
@@ -3747,7 +3747,7 @@
                   }
                 },
                 {
-                  "line": 862,
+                  "line": 864,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -3755,7 +3755,7 @@
                   }
                 },
                 {
-                  "line": 863,
+                  "line": 865,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -3763,7 +3763,7 @@
                   }
                 },
                 {
-                  "line": 864,
+                  "line": 866,
                   "lval": "package_list_arch_regex",
                   "rval": {
                     "type": "string",
@@ -3771,7 +3771,7 @@
                   }
                 },
                 {
-                  "line": 866,
+                  "line": 868,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -3779,7 +3779,7 @@
                   }
                 },
                 {
-                  "line": 867,
+                  "line": 869,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -3787,7 +3787,7 @@
                   }
                 },
                 {
-                  "line": 870,
+                  "line": 872,
                   "lval": "package_delete_convention",
                   "rval": {
                     "type": "string",
@@ -3795,7 +3795,7 @@
                   }
                 },
                 {
-                  "line": 872,
+                  "line": 874,
                   "lval": "package_patch_name_regex",
                   "rval": {
                     "type": "string",
@@ -3803,7 +3803,7 @@
                   }
                 },
                 {
-                  "line": 873,
+                  "line": 875,
                   "lval": "package_patch_version_regex",
                   "rval": {
                     "type": "string",
@@ -3811,7 +3811,7 @@
                   }
                 },
                 {
-                  "line": 874,
+                  "line": 876,
                   "lval": "package_patch_arch_regex",
                   "rval": {
                     "type": "string",
@@ -3819,7 +3819,7 @@
                   }
                 },
                 {
-                  "line": 876,
+                  "line": 878,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -3827,7 +3827,7 @@
                   }
                 },
                 {
-                  "line": 877,
+                  "line": 879,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -3835,7 +3835,7 @@
                   }
                 },
                 {
-                  "line": 878,
+                  "line": 880,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -3843,7 +3843,7 @@
                   }
                 },
                 {
-                  "line": 879,
+                  "line": 881,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -3851,7 +3851,7 @@
                   }
                 },
                 {
-                  "line": 880,
+                  "line": 882,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -3864,7 +3864,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 885,
+          "line": 887,
           "namespace": "default",
           "name": "yum_rpm_enable_repo",
           "bodyType": "package_method",
@@ -3876,7 +3876,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 905,
+                  "line": 907,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -3884,7 +3884,7 @@
                   }
                 },
                 {
-                  "line": 906,
+                  "line": 908,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -3892,7 +3892,7 @@
                   }
                 },
                 {
-                  "line": 907,
+                  "line": 909,
                   "lval": "package_patch_list_command",
                   "rval": {
                     "type": "string",
@@ -3900,7 +3900,7 @@
                   }
                 },
                 {
-                  "line": 909,
+                  "line": 911,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -3908,7 +3908,7 @@
                   }
                 },
                 {
-                  "line": 910,
+                  "line": 912,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -3916,7 +3916,7 @@
                   }
                 },
                 {
-                  "line": 911,
+                  "line": 913,
                   "lval": "package_list_arch_regex",
                   "rval": {
                     "type": "string",
@@ -3924,7 +3924,7 @@
                   }
                 },
                 {
-                  "line": 913,
+                  "line": 915,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -3932,7 +3932,7 @@
                   }
                 },
                 {
-                  "line": 914,
+                  "line": 916,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -3940,7 +3940,7 @@
                   }
                 },
                 {
-                  "line": 917,
+                  "line": 919,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -3948,7 +3948,7 @@
                   }
                 },
                 {
-                  "line": 918,
+                  "line": 920,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -3956,7 +3956,7 @@
                   }
                 },
                 {
-                  "line": 920,
+                  "line": 922,
                   "lval": "package_patch_name_regex",
                   "rval": {
                     "type": "string",
@@ -3964,7 +3964,7 @@
                   }
                 },
                 {
-                  "line": 921,
+                  "line": 923,
                   "lval": "package_patch_version_regex",
                   "rval": {
                     "type": "string",
@@ -3972,7 +3972,7 @@
                   }
                 },
                 {
-                  "line": 922,
+                  "line": 924,
                   "lval": "package_patch_arch_regex",
                   "rval": {
                     "type": "string",
@@ -3980,7 +3980,7 @@
                   }
                 },
                 {
-                  "line": 924,
+                  "line": 926,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -3988,7 +3988,7 @@
                   }
                 },
                 {
-                  "line": 925,
+                  "line": 927,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -3996,7 +3996,7 @@
                   }
                 },
                 {
-                  "line": 926,
+                  "line": 928,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -4004,7 +4004,7 @@
                   }
                 },
                 {
-                  "line": 927,
+                  "line": 929,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -4012,7 +4012,7 @@
                   }
                 },
                 {
-                  "line": 928,
+                  "line": 930,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -4025,7 +4025,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 933,
+          "line": 935,
           "namespace": "default",
           "name": "yum_group",
           "bodyType": "package_method",
@@ -4035,7 +4035,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 974,
+                  "line": 976,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -4043,7 +4043,7 @@
                   }
                 },
                 {
-                  "line": 975,
+                  "line": 977,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -4051,7 +4051,7 @@
                   }
                 },
                 {
-                  "line": 976,
+                  "line": 978,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -4059,7 +4059,7 @@
                   }
                 },
                 {
-                  "line": 977,
+                  "line": 979,
                   "lval": "package_delete_convention",
                   "rval": {
                     "type": "string",
@@ -4067,7 +4067,7 @@
                   }
                 },
                 {
-                  "line": 978,
+                  "line": 980,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -4075,7 +4075,7 @@
                   }
                 },
                 {
-                  "line": 982,
+                  "line": 984,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -4083,7 +4083,7 @@
                   }
                 },
                 {
-                  "line": 984,
+                  "line": 986,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -4091,7 +4091,7 @@
                   }
                 },
                 {
-                  "line": 985,
+                  "line": 987,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -4099,7 +4099,7 @@
                   }
                 },
                 {
-                  "line": 986,
+                  "line": 988,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -4107,7 +4107,7 @@
                   }
                 },
                 {
-                  "line": 987,
+                  "line": 989,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -4115,7 +4115,7 @@
                   }
                 },
                 {
-                  "line": 988,
+                  "line": 990,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -4123,7 +4123,7 @@
                   }
                 },
                 {
-                  "line": 989,
+                  "line": 991,
                   "lval": "package_name_regex",
                   "rval": {
                     "type": "string",
@@ -4131,7 +4131,7 @@
                   }
                 },
                 {
-                  "line": 990,
+                  "line": 992,
                   "lval": "package_noverify_returncode",
                   "rval": {
                     "type": "string",
@@ -4139,7 +4139,7 @@
                   }
                 },
                 {
-                  "line": 991,
+                  "line": 993,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -4147,7 +4147,7 @@
                   }
                 },
                 {
-                  "line": 994,
+                  "line": 996,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -4160,7 +4160,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 999,
+          "line": 1001,
           "namespace": "default",
           "name": "rpm_filebased",
           "bodyType": "package_method",
@@ -4172,7 +4172,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1018,
+                  "line": 1020,
                   "lval": "package_file_repositories",
                   "rval": {
                     "type": "list",
@@ -4185,7 +4185,7 @@
                   }
                 },
                 {
-                  "line": 1021,
+                  "line": 1023,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -4193,7 +4193,7 @@
                   }
                 },
                 {
-                  "line": 1027,
+                  "line": 1029,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -4201,7 +4201,7 @@
                   }
                 },
                 {
-                  "line": 1033,
+                  "line": 1035,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -4209,7 +4209,7 @@
                   }
                 },
                 {
-                  "line": 1034,
+                  "line": 1036,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -4217,7 +4217,7 @@
                   }
                 },
                 {
-                  "line": 1037,
+                  "line": 1039,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -4225,7 +4225,7 @@
                   }
                 },
                 {
-                  "line": 1038,
+                  "line": 1040,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -4233,7 +4233,7 @@
                   }
                 },
                 {
-                  "line": 1040,
+                  "line": 1042,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -4241,7 +4241,7 @@
                   }
                 },
                 {
-                  "line": 1041,
+                  "line": 1043,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -4249,7 +4249,7 @@
                   }
                 },
                 {
-                  "line": 1042,
+                  "line": 1044,
                   "lval": "package_list_arch_regex",
                   "rval": {
                     "type": "string",
@@ -4257,7 +4257,7 @@
                   }
                 },
                 {
-                  "line": 1044,
+                  "line": 1046,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -4265,7 +4265,7 @@
                   }
                 },
                 {
-                  "line": 1046,
+                  "line": 1048,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -4273,7 +4273,7 @@
                   }
                 },
                 {
-                  "line": 1047,
+                  "line": 1049,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -4286,7 +4286,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1052,
+          "line": 1054,
           "namespace": "default",
           "name": "ips",
           "bodyType": "package_method",
@@ -4296,7 +4296,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1085,
+                  "line": 1087,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -4304,7 +4304,7 @@
                   }
                 },
                 {
-                  "line": 1086,
+                  "line": 1088,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -4312,7 +4312,7 @@
                   }
                 },
                 {
-                  "line": 1087,
+                  "line": 1089,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -4320,7 +4320,7 @@
                   }
                 },
                 {
-                  "line": 1088,
+                  "line": 1090,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -4328,7 +4328,7 @@
                   }
                 },
                 {
-                  "line": 1089,
+                  "line": 1091,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -4336,7 +4336,7 @@
                   }
                 },
                 {
-                  "line": 1092,
+                  "line": 1094,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -4344,7 +4344,7 @@
                   }
                 },
                 {
-                  "line": 1093,
+                  "line": 1095,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -4352,7 +4352,7 @@
                   }
                 },
                 {
-                  "line": 1095,
+                  "line": 1097,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -4360,7 +4360,7 @@
                   }
                 },
                 {
-                  "line": 1096,
+                  "line": 1098,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -4368,7 +4368,7 @@
                   }
                 },
                 {
-                  "line": 1097,
+                  "line": 1099,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -4376,7 +4376,7 @@
                   }
                 },
                 {
-                  "line": 1098,
+                  "line": 1100,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -4384,7 +4384,7 @@
                   }
                 },
                 {
-                  "line": 1099,
+                  "line": 1101,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -4392,7 +4392,7 @@
                   }
                 },
                 {
-                  "line": 1100,
+                  "line": 1102,
                   "lval": "package_noverify_regex",
                   "rval": {
                     "type": "string",
@@ -4405,7 +4405,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1105,
+          "line": 1107,
           "namespace": "default",
           "name": "smartos",
           "bodyType": "package_method",
@@ -4415,7 +4415,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1109,
+                  "line": 1111,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -4423,7 +4423,7 @@
                   }
                 },
                 {
-                  "line": 1110,
+                  "line": 1112,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -4431,7 +4431,7 @@
                   }
                 },
                 {
-                  "line": 1111,
+                  "line": 1113,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -4439,7 +4439,7 @@
                   }
                 },
                 {
-                  "line": 1112,
+                  "line": 1114,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -4447,7 +4447,7 @@
                   }
                 },
                 {
-                  "line": 1114,
+                  "line": 1116,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -4455,7 +4455,7 @@
                   }
                 },
                 {
-                  "line": 1116,
+                  "line": 1118,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -4463,7 +4463,7 @@
                   }
                 },
                 {
-                  "line": 1117,
+                  "line": 1119,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -4471,7 +4471,7 @@
                   }
                 },
                 {
-                  "line": 1119,
+                  "line": 1121,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -4479,7 +4479,7 @@
                   }
                 },
                 {
-                  "line": 1121,
+                  "line": 1123,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -4487,7 +4487,7 @@
                   }
                 },
                 {
-                  "line": 1122,
+                  "line": 1124,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -4500,7 +4500,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1125,
+          "line": 1127,
           "namespace": "default",
           "name": "opencsw",
           "bodyType": "package_method",
@@ -4510,7 +4510,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1129,
+                  "line": 1131,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -4518,7 +4518,7 @@
                   }
                 },
                 {
-                  "line": 1130,
+                  "line": 1132,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -4526,7 +4526,7 @@
                   }
                 },
                 {
-                  "line": 1131,
+                  "line": 1133,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -4534,7 +4534,7 @@
                   }
                 },
                 {
-                  "line": 1132,
+                  "line": 1134,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -4542,7 +4542,7 @@
                   }
                 },
                 {
-                  "line": 1134,
+                  "line": 1136,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -4550,7 +4550,7 @@
                   }
                 },
                 {
-                  "line": 1136,
+                  "line": 1138,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -4558,7 +4558,7 @@
                   }
                 },
                 {
-                  "line": 1137,
+                  "line": 1139,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -4566,7 +4566,7 @@
                   }
                 },
                 {
-                  "line": 1139,
+                  "line": 1141,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -4574,7 +4574,7 @@
                   }
                 },
                 {
-                  "line": 1141,
+                  "line": 1143,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -4582,7 +4582,7 @@
                   }
                 },
                 {
-                  "line": 1142,
+                  "line": 1144,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -4595,7 +4595,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1145,
+          "line": 1147,
           "namespace": "default",
           "name": "solaris",
           "bodyType": "package_method",
@@ -4609,7 +4609,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1153,
+                  "line": 1159,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -4617,7 +4617,7 @@
                   }
                 },
                 {
-                  "line": 1154,
+                  "line": 1160,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -4625,7 +4625,7 @@
                   }
                 },
                 {
-                  "line": 1155,
+                  "line": 1161,
                   "lval": "package_multiline_start",
                   "rval": {
                     "type": "string",
@@ -4633,7 +4633,7 @@
                   }
                 },
                 {
-                  "line": 1156,
+                  "line": 1162,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -4641,7 +4641,7 @@
                   }
                 },
                 {
-                  "line": 1157,
+                  "line": 1163,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -4649,7 +4649,7 @@
                   }
                 },
                 {
-                  "line": 1158,
+                  "line": 1164,
                   "lval": "package_list_arch_regex",
                   "rval": {
                     "type": "string",
@@ -4657,7 +4657,7 @@
                   }
                 },
                 {
-                  "line": 1159,
+                  "line": 1165,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -4665,7 +4665,7 @@
                   }
                 },
                 {
-                  "line": 1160,
+                  "line": 1166,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -4673,7 +4673,7 @@
                   }
                 },
                 {
-                  "line": 1161,
+                  "line": 1167,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -4681,7 +4681,7 @@
                   }
                 },
                 {
-                  "line": 1162,
+                  "line": 1168,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -4694,7 +4694,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1195,
+          "line": 1201,
           "namespace": "default",
           "name": "freebsd",
           "bodyType": "package_method",
@@ -4704,7 +4704,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1220,
+                  "line": 1226,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -4712,7 +4712,7 @@
                   }
                 },
                 {
-                  "line": 1223,
+                  "line": 1229,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -4720,7 +4720,7 @@
                   }
                 },
                 {
-                  "line": 1227,
+                  "line": 1233,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -4728,7 +4728,7 @@
                   }
                 },
                 {
-                  "line": 1228,
+                  "line": 1234,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -4736,7 +4736,7 @@
                   }
                 },
                 {
-                  "line": 1230,
+                  "line": 1236,
                   "lval": "package_name_regex",
                   "rval": {
                     "type": "string",
@@ -4744,7 +4744,7 @@
                   }
                 },
                 {
-                  "line": 1231,
+                  "line": 1237,
                   "lval": "package_version_regex",
                   "rval": {
                     "type": "string",
@@ -4752,7 +4752,7 @@
                   }
                 },
                 {
-                  "line": 1233,
+                  "line": 1239,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -4760,7 +4760,7 @@
                   }
                 },
                 {
-                  "line": 1235,
+                  "line": 1241,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -4768,7 +4768,7 @@
                   }
                 },
                 {
-                  "line": 1237,
+                  "line": 1243,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -4776,7 +4776,7 @@
                   }
                 },
                 {
-                  "line": 1238,
+                  "line": 1244,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -4789,7 +4789,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1241,
+          "line": 1247,
           "namespace": "default",
           "name": "freebsd_portmaster",
           "bodyType": "package_method",
@@ -4799,7 +4799,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1264,
+                  "line": 1270,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -4807,7 +4807,7 @@
                   }
                 },
                 {
-                  "line": 1266,
+                  "line": 1272,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -4815,7 +4815,7 @@
                   }
                 },
                 {
-                  "line": 1268,
+                  "line": 1274,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -4823,7 +4823,7 @@
                   }
                 },
                 {
-                  "line": 1269,
+                  "line": 1275,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -4831,7 +4831,7 @@
                   }
                 },
                 {
-                  "line": 1271,
+                  "line": 1277,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -4839,7 +4839,7 @@
                   }
                 },
                 {
-                  "line": 1273,
+                  "line": 1279,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -4847,7 +4847,7 @@
                   }
                 },
                 {
-                  "line": 1274,
+                  "line": 1280,
                   "lval": "package_delete_convention",
                   "rval": {
                     "type": "string",
@@ -4855,7 +4855,7 @@
                   }
                 },
                 {
-                  "line": 1341,
+                  "line": 1347,
                   "lval": "package_file_repositories",
                   "rval": {
                     "type": "list",
@@ -5120,7 +5120,7 @@
                   }
                 },
                 {
-                  "line": 1343,
+                  "line": 1349,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -5128,7 +5128,7 @@
                   }
                 },
                 {
-                  "line": 1344,
+                  "line": 1350,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -5136,7 +5136,7 @@
                   }
                 },
                 {
-                  "line": 1345,
+                  "line": 1351,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -5149,7 +5149,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1350,
+          "line": 1356,
           "namespace": "default",
           "name": "alpinelinux",
           "bodyType": "package_method",
@@ -5159,7 +5159,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1366,
+                  "line": 1372,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -5167,7 +5167,7 @@
                   }
                 },
                 {
-                  "line": 1367,
+                  "line": 1373,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -5175,7 +5175,7 @@
                   }
                 },
                 {
-                  "line": 1368,
+                  "line": 1374,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -5183,7 +5183,7 @@
                   }
                 },
                 {
-                  "line": 1369,
+                  "line": 1375,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -5191,7 +5191,7 @@
                   }
                 },
                 {
-                  "line": 1370,
+                  "line": 1376,
                   "lval": "package_name_regex",
                   "rval": {
                     "type": "string",
@@ -5199,7 +5199,7 @@
                   }
                 },
                 {
-                  "line": 1371,
+                  "line": 1377,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -5207,7 +5207,7 @@
                   }
                 },
                 {
-                  "line": 1372,
+                  "line": 1378,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -5215,7 +5215,7 @@
                   }
                 },
                 {
-                  "line": 1373,
+                  "line": 1379,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -5223,7 +5223,7 @@
                   }
                 },
                 {
-                  "line": 1374,
+                  "line": 1380,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -5236,7 +5236,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1379,
+          "line": 1385,
           "namespace": "default",
           "name": "emerge",
           "bodyType": "package_method",
@@ -5246,7 +5246,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1396,
+                  "line": 1402,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -5254,7 +5254,7 @@
                   }
                 },
                 {
-                  "line": 1397,
+                  "line": 1403,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -5262,7 +5262,7 @@
                   }
                 },
                 {
-                  "line": 1398,
+                  "line": 1404,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -5270,7 +5270,7 @@
                   }
                 },
                 {
-                  "line": 1399,
+                  "line": 1405,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -5278,7 +5278,7 @@
                   }
                 },
                 {
-                  "line": 1400,
+                  "line": 1406,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -5286,7 +5286,7 @@
                   }
                 },
                 {
-                  "line": 1401,
+                  "line": 1407,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -5294,7 +5294,7 @@
                   }
                 },
                 {
-                  "line": 1402,
+                  "line": 1408,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -5302,7 +5302,7 @@
                   }
                 },
                 {
-                  "line": 1404,
+                  "line": 1410,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -5310,7 +5310,7 @@
                   }
                 },
                 {
-                  "line": 1406,
+                  "line": 1412,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -5318,7 +5318,7 @@
                   }
                 },
                 {
-                  "line": 1407,
+                  "line": 1413,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -5326,7 +5326,7 @@
                   }
                 },
                 {
-                  "line": 1408,
+                  "line": 1414,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -5334,7 +5334,7 @@
                   }
                 },
                 {
-                  "line": 1409,
+                  "line": 1415,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -5342,7 +5342,7 @@
                   }
                 },
                 {
-                  "line": 1410,
+                  "line": 1416,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -5350,7 +5350,7 @@
                   }
                 },
                 {
-                  "line": 1411,
+                  "line": 1417,
                   "lval": "package_noverify_regex",
                   "rval": {
                     "type": "string",
@@ -5363,7 +5363,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1416,
+          "line": 1422,
           "namespace": "default",
           "name": "pacman",
           "bodyType": "package_method",
@@ -5373,7 +5373,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1420,
+                  "line": 1426,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -5381,7 +5381,7 @@
                   }
                 },
                 {
-                  "line": 1422,
+                  "line": 1428,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -5389,7 +5389,7 @@
                   }
                 },
                 {
-                  "line": 1423,
+                  "line": 1429,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -5397,7 +5397,7 @@
                   }
                 },
                 {
-                  "line": 1424,
+                  "line": 1430,
                   "lval": "package_noverify_regex",
                   "rval": {
                     "type": "string",
@@ -5405,7 +5405,7 @@
                   }
                 },
                 {
-                  "line": 1427,
+                  "line": 1433,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -5413,7 +5413,7 @@
                   }
                 },
                 {
-                  "line": 1429,
+                  "line": 1435,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -5421,7 +5421,7 @@
                   }
                 },
                 {
-                  "line": 1430,
+                  "line": 1436,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -5429,7 +5429,7 @@
                   }
                 },
                 {
-                  "line": 1431,
+                  "line": 1437,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -5437,7 +5437,7 @@
                   }
                 },
                 {
-                  "line": 1433,
+                  "line": 1439,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -5445,7 +5445,7 @@
                   }
                 },
                 {
-                  "line": 1434,
+                  "line": 1440,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -5453,7 +5453,7 @@
                   }
                 },
                 {
-                  "line": 1435,
+                  "line": 1441,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -5461,7 +5461,7 @@
                   }
                 },
                 {
-                  "line": 1436,
+                  "line": 1442,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -5474,7 +5474,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1439,
+          "line": 1445,
           "namespace": "default",
           "name": "zypper",
           "bodyType": "package_method",
@@ -5484,7 +5484,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1453,
+                  "line": 1459,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -5492,7 +5492,7 @@
                   }
                 },
                 {
-                  "line": 1455,
+                  "line": 1461,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -5500,7 +5500,7 @@
                   }
                 },
                 {
-                  "line": 1458,
+                  "line": 1464,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -5508,7 +5508,7 @@
                   }
                 },
                 {
-                  "line": 1459,
+                  "line": 1465,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -5516,7 +5516,7 @@
                   }
                 },
                 {
-                  "line": 1461,
+                  "line": 1467,
                   "lval": "package_patch_list_command",
                   "rval": {
                     "type": "string",
@@ -5524,7 +5524,7 @@
                   }
                 },
                 {
-                  "line": 1462,
+                  "line": 1468,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -5532,7 +5532,7 @@
                   }
                 },
                 {
-                  "line": 1463,
+                  "line": 1469,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -5540,7 +5540,7 @@
                   }
                 },
                 {
-                  "line": 1464,
+                  "line": 1470,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -5548,7 +5548,7 @@
                   }
                 },
                 {
-                  "line": 1465,
+                  "line": 1471,
                   "lval": "package_list_arch_regex",
                   "rval": {
                     "type": "string",
@@ -5556,7 +5556,7 @@
                   }
                 },
                 {
-                  "line": 1467,
+                  "line": 1473,
                   "lval": "package_patch_installed_regex",
                   "rval": {
                     "type": "string",
@@ -5564,7 +5564,7 @@
                   }
                 },
                 {
-                  "line": 1468,
+                  "line": 1474,
                   "lval": "package_patch_name_regex",
                   "rval": {
                     "type": "string",
@@ -5572,7 +5572,7 @@
                   }
                 },
                 {
-                  "line": 1469,
+                  "line": 1475,
                   "lval": "package_patch_version_regex",
                   "rval": {
                     "type": "string",
@@ -5580,7 +5580,7 @@
                   }
                 },
                 {
-                  "line": 1471,
+                  "line": 1477,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -5588,7 +5588,7 @@
                   }
                 },
                 {
-                  "line": 1472,
+                  "line": 1478,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -5596,7 +5596,7 @@
                   }
                 },
                 {
-                  "line": 1473,
+                  "line": 1479,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -5604,7 +5604,7 @@
                   }
                 },
                 {
-                  "line": 1474,
+                  "line": 1480,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -5612,7 +5612,7 @@
                   }
                 },
                 {
-                  "line": 1475,
+                  "line": 1481,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -5620,7 +5620,7 @@
                   }
                 },
                 {
-                  "line": 1476,
+                  "line": 1482,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -5633,7 +5633,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/packages.cf",
-          "line": 1479,
+          "line": 1485,
           "namespace": "default",
           "name": "generic",
           "bodyType": "package_method",
@@ -5647,7 +5647,7 @@
               "name": "SuSE",
               "attributes": [
                 {
-                  "line": 1497,
+                  "line": 1503,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -5655,7 +5655,7 @@
                   }
                 },
                 {
-                  "line": 1498,
+                  "line": 1504,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -5663,7 +5663,7 @@
                   }
                 },
                 {
-                  "line": 1500,
+                  "line": 1506,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -5671,7 +5671,7 @@
                   }
                 },
                 {
-                  "line": 1501,
+                  "line": 1507,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -5679,7 +5679,7 @@
                   }
                 },
                 {
-                  "line": 1502,
+                  "line": 1508,
                   "lval": "package_patch_list_command",
                   "rval": {
                     "type": "string",
@@ -5687,7 +5687,7 @@
                   }
                 },
                 {
-                  "line": 1503,
+                  "line": 1509,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -5695,7 +5695,7 @@
                   }
                 },
                 {
-                  "line": 1504,
+                  "line": 1510,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -5703,7 +5703,7 @@
                   }
                 },
                 {
-                  "line": 1505,
+                  "line": 1511,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -5711,7 +5711,7 @@
                   }
                 },
                 {
-                  "line": 1506,
+                  "line": 1512,
                   "lval": "package_list_arch_regex",
                   "rval": {
                     "type": "string",
@@ -5719,7 +5719,7 @@
                   }
                 },
                 {
-                  "line": 1507,
+                  "line": 1513,
                   "lval": "package_patch_installed_regex",
                   "rval": {
                     "type": "string",
@@ -5727,7 +5727,7 @@
                   }
                 },
                 {
-                  "line": 1508,
+                  "line": 1514,
                   "lval": "package_patch_name_regex",
                   "rval": {
                     "type": "string",
@@ -5735,7 +5735,7 @@
                   }
                 },
                 {
-                  "line": 1509,
+                  "line": 1515,
                   "lval": "package_patch_version_regex",
                   "rval": {
                     "type": "string",
@@ -5743,7 +5743,7 @@
                   }
                 },
                 {
-                  "line": 1510,
+                  "line": 1516,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -5751,7 +5751,7 @@
                   }
                 },
                 {
-                  "line": 1511,
+                  "line": 1517,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -5759,7 +5759,7 @@
                   }
                 },
                 {
-                  "line": 1512,
+                  "line": 1518,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -5767,7 +5767,7 @@
                   }
                 },
                 {
-                  "line": 1513,
+                  "line": 1519,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -5775,7 +5775,7 @@
                   }
                 },
                 {
-                  "line": 1514,
+                  "line": 1520,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -5783,7 +5783,7 @@
                   }
                 },
                 {
-                  "line": 1515,
+                  "line": 1521,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -5796,7 +5796,7 @@
               "name": "redhat",
               "attributes": [
                 {
-                  "line": 1518,
+                  "line": 1524,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -5804,7 +5804,7 @@
                   }
                 },
                 {
-                  "line": 1519,
+                  "line": 1525,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -5812,7 +5812,7 @@
                   }
                 },
                 {
-                  "line": 1520,
+                  "line": 1526,
                   "lval": "package_patch_list_command",
                   "rval": {
                     "type": "string",
@@ -5820,7 +5820,7 @@
                   }
                 },
                 {
-                  "line": 1522,
+                  "line": 1528,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -5828,7 +5828,7 @@
                   }
                 },
                 {
-                  "line": 1523,
+                  "line": 1529,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -5836,7 +5836,7 @@
                   }
                 },
                 {
-                  "line": 1524,
+                  "line": 1530,
                   "lval": "package_list_arch_regex",
                   "rval": {
                     "type": "string",
@@ -5844,7 +5844,7 @@
                   }
                 },
                 {
-                  "line": 1526,
+                  "line": 1532,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -5852,7 +5852,7 @@
                   }
                 },
                 {
-                  "line": 1527,
+                  "line": 1533,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -5860,7 +5860,7 @@
                   }
                 },
                 {
-                  "line": 1530,
+                  "line": 1536,
                   "lval": "package_delete_convention",
                   "rval": {
                     "type": "string",
@@ -5868,7 +5868,7 @@
                   }
                 },
                 {
-                  "line": 1533,
+                  "line": 1539,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -5876,7 +5876,7 @@
                   }
                 },
                 {
-                  "line": 1534,
+                  "line": 1540,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -5884,7 +5884,7 @@
                   }
                 },
                 {
-                  "line": 1536,
+                  "line": 1542,
                   "lval": "package_patch_name_regex",
                   "rval": {
                     "type": "string",
@@ -5892,7 +5892,7 @@
                   }
                 },
                 {
-                  "line": 1537,
+                  "line": 1543,
                   "lval": "package_patch_version_regex",
                   "rval": {
                     "type": "string",
@@ -5900,7 +5900,7 @@
                   }
                 },
                 {
-                  "line": 1538,
+                  "line": 1544,
                   "lval": "package_patch_arch_regex",
                   "rval": {
                     "type": "string",
@@ -5908,7 +5908,7 @@
                   }
                 },
                 {
-                  "line": 1540,
+                  "line": 1546,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -5916,7 +5916,7 @@
                   }
                 },
                 {
-                  "line": 1541,
+                  "line": 1547,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -5924,7 +5924,7 @@
                   }
                 },
                 {
-                  "line": 1542,
+                  "line": 1548,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -5932,7 +5932,7 @@
                   }
                 },
                 {
-                  "line": 1543,
+                  "line": 1549,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -5940,7 +5940,7 @@
                   }
                 },
                 {
-                  "line": 1544,
+                  "line": 1550,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -5953,7 +5953,7 @@
               "name": "debian",
               "attributes": [
                 {
-                  "line": 1547,
+                  "line": 1553,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -5961,7 +5961,7 @@
                   }
                 },
                 {
-                  "line": 1548,
+                  "line": 1554,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -5969,7 +5969,7 @@
                   }
                 },
                 {
-                  "line": 1549,
+                  "line": 1555,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -5977,7 +5977,7 @@
                   }
                 },
                 {
-                  "line": 1550,
+                  "line": 1556,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -5985,7 +5985,7 @@
                   }
                 },
                 {
-                  "line": 1551,
+                  "line": 1557,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -5993,7 +5993,7 @@
                   }
                 },
                 {
-                  "line": 1552,
+                  "line": 1558,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -6001,7 +6001,7 @@
                   }
                 },
                 {
-                  "line": 1553,
+                  "line": 1559,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -6009,7 +6009,7 @@
                   }
                 },
                 {
-                  "line": 1556,
+                  "line": 1562,
                   "lval": "package_version_less_command",
                   "rval": {
                     "type": "string",
@@ -6017,7 +6017,7 @@
                   }
                 },
                 {
-                  "line": 1557,
+                  "line": 1563,
                   "lval": "package_version_equal_command",
                   "rval": {
                     "type": "string",
@@ -6030,7 +6030,7 @@
               "name": "debian.have_aptitude",
               "attributes": [
                 {
-                  "line": 1560,
+                  "line": 1566,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -6038,7 +6038,7 @@
                   }
                 },
                 {
-                  "line": 1561,
+                  "line": 1567,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -6046,7 +6046,7 @@
                   }
                 },
                 {
-                  "line": 1562,
+                  "line": 1568,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -6054,7 +6054,7 @@
                   }
                 },
                 {
-                  "line": 1563,
+                  "line": 1569,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -6062,7 +6062,7 @@
                   }
                 },
                 {
-                  "line": 1564,
+                  "line": 1570,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -6070,7 +6070,7 @@
                   }
                 },
                 {
-                  "line": 1565,
+                  "line": 1571,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -6078,7 +6078,7 @@
                   }
                 },
                 {
-                  "line": 1566,
+                  "line": 1572,
                   "lval": "package_noverify_regex",
                   "rval": {
                     "type": "string",
@@ -6086,7 +6086,7 @@
                   }
                 },
                 {
-                  "line": 1568,
+                  "line": 1574,
                   "lval": "package_patch_list_command",
                   "rval": {
                     "type": "string",
@@ -6094,7 +6094,7 @@
                   }
                 },
                 {
-                  "line": 1569,
+                  "line": 1575,
                   "lval": "package_patch_name_regex",
                   "rval": {
                     "type": "string",
@@ -6102,7 +6102,7 @@
                   }
                 },
                 {
-                  "line": 1570,
+                  "line": 1576,
                   "lval": "package_patch_version_regex",
                   "rval": {
                     "type": "string",
@@ -6115,7 +6115,7 @@
               "name": "debian.!have_aptitude",
               "attributes": [
                 {
-                  "line": 1573,
+                  "line": 1579,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -6123,7 +6123,7 @@
                   }
                 },
                 {
-                  "line": 1574,
+                  "line": 1580,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -6131,7 +6131,7 @@
                   }
                 },
                 {
-                  "line": 1575,
+                  "line": 1581,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -6139,7 +6139,7 @@
                   }
                 },
                 {
-                  "line": 1576,
+                  "line": 1582,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -6147,7 +6147,7 @@
                   }
                 },
                 {
-                  "line": 1577,
+                  "line": 1583,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -6155,7 +6155,7 @@
                   }
                 },
                 {
-                  "line": 1578,
+                  "line": 1584,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -6163,7 +6163,7 @@
                   }
                 },
                 {
-                  "line": 1579,
+                  "line": 1585,
                   "lval": "package_noverify_returncode",
                   "rval": {
                     "type": "string",
@@ -6171,7 +6171,7 @@
                   }
                 },
                 {
-                  "line": 1581,
+                  "line": 1587,
                   "lval": "package_patch_list_command",
                   "rval": {
                     "type": "string",
@@ -6179,7 +6179,7 @@
                   }
                 },
                 {
-                  "line": 1582,
+                  "line": 1588,
                   "lval": "package_patch_name_regex",
                   "rval": {
                     "type": "string",
@@ -6187,7 +6187,7 @@
                   }
                 },
                 {
-                  "line": 1583,
+                  "line": 1589,
                   "lval": "package_patch_version_regex",
                   "rval": {
                     "type": "string",
@@ -6200,7 +6200,7 @@
               "name": "freebsd",
               "attributes": [
                 {
-                  "line": 1586,
+                  "line": 1592,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -6208,7 +6208,7 @@
                   }
                 },
                 {
-                  "line": 1587,
+                  "line": 1593,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -6216,7 +6216,7 @@
                   }
                 },
                 {
-                  "line": 1588,
+                  "line": 1594,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -6224,7 +6224,7 @@
                   }
                 },
                 {
-                  "line": 1589,
+                  "line": 1595,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -6232,7 +6232,7 @@
                   }
                 },
                 {
-                  "line": 1590,
+                  "line": 1596,
                   "lval": "package_name_regex",
                   "rval": {
                     "type": "string",
@@ -6240,7 +6240,7 @@
                   }
                 },
                 {
-                  "line": 1591,
+                  "line": 1597,
                   "lval": "package_version_regex",
                   "rval": {
                     "type": "string",
@@ -6248,7 +6248,7 @@
                   }
                 },
                 {
-                  "line": 1592,
+                  "line": 1598,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -6256,7 +6256,7 @@
                   }
                 },
                 {
-                  "line": 1593,
+                  "line": 1599,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -6264,7 +6264,7 @@
                   }
                 },
                 {
-                  "line": 1594,
+                  "line": 1600,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -6272,7 +6272,7 @@
                   }
                 },
                 {
-                  "line": 1595,
+                  "line": 1601,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -6285,7 +6285,7 @@
               "name": "alpinelinux",
               "attributes": [
                 {
-                  "line": 1598,
+                  "line": 1604,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -6293,7 +6293,7 @@
                   }
                 },
                 {
-                  "line": 1599,
+                  "line": 1605,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -6301,7 +6301,7 @@
                   }
                 },
                 {
-                  "line": 1600,
+                  "line": 1606,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -6309,7 +6309,7 @@
                   }
                 },
                 {
-                  "line": 1601,
+                  "line": 1607,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -6317,7 +6317,7 @@
                   }
                 },
                 {
-                  "line": 1602,
+                  "line": 1608,
                   "lval": "package_name_regex",
                   "rval": {
                     "type": "string",
@@ -6325,7 +6325,7 @@
                   }
                 },
                 {
-                  "line": 1603,
+                  "line": 1609,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -6333,7 +6333,7 @@
                   }
                 },
                 {
-                  "line": 1604,
+                  "line": 1610,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -6341,7 +6341,7 @@
                   }
                 },
                 {
-                  "line": 1605,
+                  "line": 1611,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -6349,7 +6349,7 @@
                   }
                 },
                 {
-                  "line": 1606,
+                  "line": 1612,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -6362,7 +6362,7 @@
               "name": "gentoo",
               "attributes": [
                 {
-                  "line": 1609,
+                  "line": 1615,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -6370,7 +6370,7 @@
                   }
                 },
                 {
-                  "line": 1610,
+                  "line": 1616,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -6378,7 +6378,7 @@
                   }
                 },
                 {
-                  "line": 1611,
+                  "line": 1617,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -6386,7 +6386,7 @@
                   }
                 },
                 {
-                  "line": 1612,
+                  "line": 1618,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -6394,7 +6394,7 @@
                   }
                 },
                 {
-                  "line": 1613,
+                  "line": 1619,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -6402,7 +6402,7 @@
                   }
                 },
                 {
-                  "line": 1614,
+                  "line": 1620,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -6410,7 +6410,7 @@
                   }
                 },
                 {
-                  "line": 1615,
+                  "line": 1621,
                   "lval": "package_list_update_command",
                   "rval": {
                     "type": "string",
@@ -6418,7 +6418,7 @@
                   }
                 },
                 {
-                  "line": 1617,
+                  "line": 1623,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -6426,7 +6426,7 @@
                   }
                 },
                 {
-                  "line": 1619,
+                  "line": 1625,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -6434,7 +6434,7 @@
                   }
                 },
                 {
-                  "line": 1620,
+                  "line": 1626,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -6442,7 +6442,7 @@
                   }
                 },
                 {
-                  "line": 1621,
+                  "line": 1627,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
@@ -6450,7 +6450,7 @@
                   }
                 },
                 {
-                  "line": 1622,
+                  "line": 1628,
                   "lval": "package_patch_command",
                   "rval": {
                     "type": "string",
@@ -6458,7 +6458,7 @@
                   }
                 },
                 {
-                  "line": 1623,
+                  "line": 1629,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -6466,7 +6466,7 @@
                   }
                 },
                 {
-                  "line": 1624,
+                  "line": 1630,
                   "lval": "package_noverify_regex",
                   "rval": {
                     "type": "string",
@@ -6479,7 +6479,7 @@
               "name": "archlinux",
               "attributes": [
                 {
-                  "line": 1627,
+                  "line": 1633,
                   "lval": "package_changes",
                   "rval": {
                     "type": "string",
@@ -6487,7 +6487,7 @@
                   }
                 },
                 {
-                  "line": 1628,
+                  "line": 1634,
                   "lval": "package_list_command",
                   "rval": {
                     "type": "string",
@@ -6495,7 +6495,7 @@
                   }
                 },
                 {
-                  "line": 1629,
+                  "line": 1635,
                   "lval": "package_verify_command",
                   "rval": {
                     "type": "string",
@@ -6503,7 +6503,7 @@
                   }
                 },
                 {
-                  "line": 1630,
+                  "line": 1636,
                   "lval": "package_noverify_regex",
                   "rval": {
                     "type": "string",
@@ -6511,7 +6511,7 @@
                   }
                 },
                 {
-                  "line": 1631,
+                  "line": 1637,
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
@@ -6519,7 +6519,7 @@
                   }
                 },
                 {
-                  "line": 1632,
+                  "line": 1638,
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
@@ -6527,7 +6527,7 @@
                   }
                 },
                 {
-                  "line": 1633,
+                  "line": 1639,
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
@@ -6535,7 +6535,7 @@
                   }
                 },
                 {
-                  "line": 1634,
+                  "line": 1640,
                   "lval": "package_name_convention",
                   "rval": {
                     "type": "string",
@@ -6543,7 +6543,7 @@
                   }
                 },
                 {
-                  "line": 1635,
+                  "line": 1641,
                   "lval": "package_list_update_ifelapsed",
                   "rval": {
                     "type": "string",
@@ -6551,7 +6551,7 @@
                   }
                 },
                 {
-                  "line": 1636,
+                  "line": 1642,
                   "lval": "package_add_command",
                   "rval": {
                     "type": "string",
@@ -6559,7 +6559,7 @@
                   }
                 },
                 {
-                  "line": 1637,
+                  "line": 1643,
                   "lval": "package_delete_command",
                   "rval": {
                     "type": "string",
@@ -6567,7 +6567,7 @@
                   }
                 },
                 {
-                  "line": 1638,
+                  "line": 1644,
                   "lval": "package_update_command",
                   "rval": {
                     "type": "string",
