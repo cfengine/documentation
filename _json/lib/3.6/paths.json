@@ -4614,14 +4614,71 @@
                   ]
                 },
                 {
+                  "name": "linux|solaris",
+                  "promises": [
+                    {
+                      "line": 449,
+                      "promiser": "path[shadow]",
+                      "attributes": [
+                        {
+                          "line": 449,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/shadow"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "freebsd|openbsd|netbsd|darwin",
+                  "promises": [
+                    {
+                      "line": 453,
+                      "promiser": "path[shadow]",
+                      "attributes": [
+                        {
+                          "line": 453,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/master.passwd"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "aix",
+                  "promises": [
+                    {
+                      "line": 457,
+                      "promiser": "path[shadow]",
+                      "attributes": [
+                        {
+                          "line": 457,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/security/passwd"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 448,
+                      "line": 460,
                       "promiser": "all_paths",
                       "attributes": [
                         {
-                          "line": 448,
+                          "line": 460,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -4637,11 +4694,11 @@
                       ]
                     },
                     {
-                      "line": 449,
+                      "line": 461,
                       "promiser": "$(all_paths)",
                       "attributes": [
                         {
-                          "line": 449,
+                          "line": 461,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -4655,18 +4712,18 @@
               ]
             },
             {
-              "line": 451,
+              "line": 463,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 452,
+                      "line": 464,
                       "promiser": "_stdlib_has_path_$(all_paths)",
                       "attributes": [
                         {
-                          "line": 453,
+                          "line": 465,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -4680,7 +4737,7 @@
                           }
                         },
                         {
-                          "line": 454,
+                          "line": 466,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -4690,11 +4747,11 @@
                       ]
                     },
                     {
-                      "line": 456,
+                      "line": 468,
                       "promiser": "_stdlib_path_exists_$(all_paths)",
                       "attributes": [
                         {
-                          "line": 457,
+                          "line": 469,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -4708,7 +4765,7 @@
                           }
                         },
                         {
-                          "line": 458,
+                          "line": 470,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
