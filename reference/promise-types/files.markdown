@@ -1125,7 +1125,7 @@ timeout, in seconds.
 **Example:**
 
 ```cf3
-     body runagent control
+     body copy_from example
      {
      timeout => "10";
      }
