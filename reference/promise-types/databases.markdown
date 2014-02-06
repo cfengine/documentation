@@ -28,12 +28,13 @@ There are three kinds of database supported by CFEngine:
 
 * *LDAP - The Lightweight Directory Access Protocol*
 
-A hierarchical network database primarily for reading simple schema.   
+A hierarchical network database primarily for reading simple schema
+(Only CFEngine Enterprise).
 
 * *SQL - Structured Query Language*
 
 A number of relational databases (currently supported: MySQL, Postgres)
-for reading and writing complex data.   
+for reading and writing complex data.
 
 * *Registry - Microsoft Registry*
 
