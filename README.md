@@ -134,6 +134,17 @@ When the word is a function, mark it as such using `()`:
 
     **See also:** [`classify()`][classify]
 
+Section titles of the form
+
+    ### section title
+
+are included in that automatic linking. To exclude a section header
+from that automatic linking, use the form
+
+    ### section title, no linking ###
+
+which is otherwise equivalent for the markdown renderer.
+
 ### Macros
 
 The documentation generator will pre-process the markdown content
