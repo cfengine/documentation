@@ -221,7 +221,7 @@ secondary groups so specifying either one works.
 
 **Description:** Specifies the format of the given password data.
 
-If the value is "hash," then the `data` attribute is expected to
+If the value is "hash," then the [`data`][users#data] attribute is expected to
 contain a string with a password in hashed format. Note that CFEngine
 does not validate that the given hash format is supported by
 the platform. The system administrator must verify this.
@@ -229,7 +229,7 @@ However, CFEngine continues to run even in the event of an
 unsupported password format, so it can always be corrected by updating
 the policy.
 
-If the value is "plaintext," then the `data` attribute contains
+If the value is "plaintext," then the [`data`][users#data] attribute contains
 the password in plain text.
 
 **Note:** On Windows, only the "plaintext" password type is supported,
