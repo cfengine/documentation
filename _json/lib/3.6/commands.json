@@ -420,9 +420,9 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 273,
+          "line": 274,
           "namespace": "default",
-          "name": "setuid_gid_umask",
+          "name": "dc_setuid_gid_umask",
           "bodyType": "contain",
           "arguments": [
             "uid",
@@ -434,7 +434,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 298,
+                  "line": 299,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -442,7 +442,7 @@
                   }
                 },
                 {
-                  "line": 299,
+                  "line": 300,
                   "lval": "exec_group",
                   "rval": {
                     "type": "string",
@@ -450,7 +450,7 @@
                   }
                 },
                 {
-                  "line": 300,
+                  "line": 301,
                   "lval": "umask",
                   "rval": {
                     "type": "string",
