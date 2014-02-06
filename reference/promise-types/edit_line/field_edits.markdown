@@ -46,7 +46,7 @@ removing data from addressable fields.
 The promise in this example assumes a parameterizable model for editing the 
 fields of such files.
 
-```
+```cf3
     bundle edit_line SetUserParam(user,field,val)
     {
       field_edits:
