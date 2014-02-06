@@ -247,7 +247,8 @@ hashed passwords.
           data => "CFEngine";
     }
 ```
-#### data
+
+#### data ####
 
 **Description:** Specifies the password data.
 
