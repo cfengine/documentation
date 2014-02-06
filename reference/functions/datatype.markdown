@@ -2,7 +2,7 @@
 layout: default
 title: datatype
 categories: [Reference, Functions, datatype]
-published: true
+published: false
 alias: reference-functions-datatype.html
 tags: [reference, data functions, functions, json, datatype, evaluation, vars, classes, container]
 ---
