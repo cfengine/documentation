@@ -66,7 +66,7 @@ def processFile(markdown, config):
 			for header_depth in range(1,6):
 				header_marker = "#" * header_depth + " "
 				if markdown_line.find(header_marker) == 0:
-					config["context_current_header"][header_depth] = markdown_line[header_depth + 1:].rstrip()
+					config["context_current_header"][header_depth] = markdown_line[header_depth + 1:].rstrip().rstrip("#").rstrip()
 					break
 			
 		config["context_current_line"] = markdown_line
