@@ -660,7 +660,7 @@ def library_include(parameters, config):
 			link_target = prototype + "()"
 			if not namespace:
 				link_target = parameters[0] + ":" + link_target
-			linkresolver.addLinkToMap("`" + prototype + "()`", link_target, html_name + "#" + prototype, config)
+			linkresolver.addLinkToMap(prototype + "()", link_target, html_name + "#" + prototype, config)
 			
 			code_lines = []
 			documentation_lines = []

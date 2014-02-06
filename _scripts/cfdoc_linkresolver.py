@@ -55,19 +55,26 @@ def readLinkFile(config):
 
 def addLinkToMap(keyword, anchor, html, config):
 	link_map = config.get("link_map", dict())
+
+	autolink = keyword[-1] != "#"
+	if not autolink:
+		keyword = keyword.rstrip("#").rstrip()
+		anchor = anchor.rstrip("#").rstrip()
+		html = html.rstrip("#").rstrip()
 	
 	anchor = "[%s]" % anchor
-	anchor_list = link_map.get(keyword, list())
+	anchor_list = link_map.get("`%s`" % keyword, list())
 	if anchor in anchor_list:
 		return
-	
-	# prioritize titles over sub-headers
-	if anchor.find("#") != -1:
-		anchor_list.append(anchor)
-	else:
-		anchor_list.insert(0, anchor)
-	
-	link_map[keyword] = anchor_list
+
+	if autolink:
+		# prioritize titles over sub-headers
+		if anchor.find("#") != -1:
+			anchor_list.append(anchor)
+		else:
+			anchor_list.insert(0, anchor)
+		
+		link_map["`%s`" % keyword] = anchor_list
 	
 	output_file = config["reference_path"]
 	out_file = open(output_file, "a")
@@ -77,7 +84,10 @@ def addLinkToMap(keyword, anchor, html, config):
 	config["link_map"] = link_map
 
 def headerToAnchor(header):
+	# remove trailing hashes, allowed in markdown and
+	# interpreted by us to not include the header in the link map
 	anchor = header.lower()
+	anchor = anchor.rstrip("#").rstrip()
 	anchor = anchor.replace(" ", "-")
 	anchor = anchor.replace(":", "-")
 	anchor = anchor.replace(".", "-")
@@ -140,20 +150,20 @@ def parseMarkdownForAnchors(file_name, config):
 	if current_file_label != "" and current_file_name != "":
 		for keyword in keywords:
 			keyword = keyword.lstrip().rstrip()
-			addLinkToMap("`" + keyword + "`", current_file_label, current_file_name + ' \"' + current_title + '\"', config)
+			addLinkToMap(keyword, current_file_label, current_file_name + ' \"' + current_title + '\"', config)
 
 		keyword = current_file_label
 		# generate auto-link to functions via `function()`
 		if current_file_name.find("reference-functions-") == 0:
 			keyword += "()"
-		addLinkToMap("`" + keyword + "`", current_file_label, current_file_name + ' \"' + current_title + '\"', config)
+		addLinkToMap(keyword, current_file_label, current_file_name + ' \"' + current_title + '\"', config)
 		for header in header_list:
 			if header == "":
 				continue
 			anchor = headerToAnchor(header)
 			label = current_file_label+ '#' + header
 			# prefer top-level anchors
-			addLinkToMap("`" + header + "`", label, current_file_name + '#' + anchor + ' \"' + current_title + ' - ' + header + '\"', config)
+			addLinkToMap(header, label, current_file_name + '#' + anchor + ' \"' + current_title + ' - ' + header + '\"', config)
 	
 def applyLinkMap(file_name, config):
 	# print("applyLinkMap() filename = %s" % file_name)
