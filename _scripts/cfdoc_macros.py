@@ -285,6 +285,10 @@ def function_attributes(parameters, config):
 	parameter_names = parameters
 
 	parameters = syntax_map["functions"][function]["parameters"]
+	lines = []
+	if not len(parameters):
+		return lines
+
 	arguments = []
 	arg_idx = 0
 	for parameter in parameters:
@@ -307,7 +311,6 @@ def function_attributes(parameters, config):
 			arguments += parameter["range"] + "`\n"
 		arg_idx += 1
 	
-	lines = []
 	lines += "**Arguments:** \n\n"
 	for argument in arguments:
 		lines += argument
