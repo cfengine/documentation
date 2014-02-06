@@ -1085,6 +1085,473 @@
               ]
             }
           ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 386,
+          "namespace": "default",
+          "name": "git_init",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path"
+          ],
+          "promiseTypes": [
+            {
+              "line": 409,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 410,
+                      "promiser": "ok_norepo",
+                      "attributes": [
+                        {
+                          "line": 410,
+                          "lval": "not",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 412,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_norepo",
+                  "promises": [
+                    {
+                      "line": 414,
+                      "promiser": "git_init",
+                      "attributes": [
+                        {
+                          "line": 414,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "init"
+                              },
+                              {
+                                "type": "string",
+                                "value": ""
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 417,
+          "namespace": "default",
+          "name": "git_add",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "file"
+          ],
+          "promiseTypes": [
+            {
+              "line": 437,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 438,
+                      "promiser": "ok_repo",
+                      "attributes": [
+                        {
+                          "line": 438,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 440,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_repo",
+                  "promises": [
+                    {
+                      "line": 442,
+                      "promiser": "git_add",
+                      "attributes": [
+                        {
+                          "line": 442,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "add"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(file)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 445,
+          "namespace": "default",
+          "name": "git_checkout",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "branch"
+          ],
+          "promiseTypes": [
+            {
+              "line": 465,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 466,
+                      "promiser": "ok_repo",
+                      "attributes": [
+                        {
+                          "line": 466,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 468,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_repo",
+                  "promises": [
+                    {
+                      "line": 470,
+                      "promiser": "git_checkout",
+                      "attributes": [
+                        {
+                          "line": 470,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "checkout"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(branch)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 473,
+          "namespace": "default",
+          "name": "git_checkout_new_branch",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "new_branch"
+          ],
+          "promiseTypes": [
+            {
+              "line": 498,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 499,
+                      "promiser": "ok_repo",
+                      "attributes": [
+                        {
+                          "line": 499,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 501,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_repo",
+                  "promises": [
+                    {
+                      "line": 503,
+                      "promiser": "git_checkout",
+                      "attributes": [
+                        {
+                          "line": 503,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "checkout -b"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(branch)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 506,
+          "namespace": "default",
+          "name": "git_commit",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "message"
+          ],
+          "promiseTypes": [
+            {
+              "line": 526,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 527,
+                      "promiser": "ok_repo",
+                      "attributes": [
+                        {
+                          "line": 527,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 529,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_repo",
+                  "promises": [
+                    {
+                      "line": 531,
+                      "promiser": "git_commit",
+                      "attributes": [
+                        {
+                          "line": 531,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "commit"
+                              },
+                              {
+                                "type": "string",
+                                "value": "-m \\\"$(message)\\\""
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 534,
+          "namespace": "default",
+          "name": "git",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "subcmd",
+            "args"
+          ],
+          "promiseTypes": [
+            {
+              "line": 555,
+              "name": "commands",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 556,
+                      "promiser": "$(paths.path[git])",
+                      "attributes": [
+                        {
+                          "line": 557,
+                          "lval": "args",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(subcmd) $(args)"
+                          }
+                        },
+                        {
+                          "line": 558,
+                          "lval": "contain",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "in_dir",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "bodies": [
