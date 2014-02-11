@@ -43,8 +43,9 @@ Any host can be a policy server in Community installations of CFEngine.
 | RedHat          | 4, 5, 6      | x86-64, x386       |
 | SLES            | 10, 11       | x86-64, x386       |
 | Solaris         | 9            | SPARC              |
-| Solaris         | 10           | x86-64, UltraSparc |
+| Solaris         | 10, 11       | x86-64, UltraSparc |
 | Ubuntu          | 10.4, 12.4   | x86-64, x386       |
+| Windows         | 2008         | x386               |
 | Windows         | 2008, 2012   | x86-64             |
 
 ## Hub/Host compatibility
