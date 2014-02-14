@@ -213,6 +213,31 @@ reports into one with the introduction of a new field(column): PromiseStatus
 | 12332 | Installed | SuSEfirewall2 | 4330| default |
 | 12332 | Available | MozillaFirefox | 4195| default |
 
+### Refreshing the package lists
+
+If you need to do Enterprise reporting on installed software but don't
+use CFEngine to manage packages otherwise, you need to refresh the
+package list for a specific package method.  This is already
+implemented in the masterfiles, under `inventory/any.cf` with special
+handling for Debian and Red Hat systems to avoid network traffic at
+the time of the refresh.  If you want to do it yourself, you can force
+it like this (the package `cfe_internal_non_existing_package` has some
+internal handling to avoid warnings):
+
+```cf3
+  packages:
+      "cfe_internal_non_existing_package"
+      package_policy => "add",
+      package_method => generic;
+}
+```
+
+That will cause the package manager to generate a package list, which
+will then be reported in the `Software` table.  You can't use an
+existent package there, it has to be a bad package to force the
+package manager inventory to be refreshed.
+
+**See also:** `packages`.
 
 ## Database Diagnostics
 
