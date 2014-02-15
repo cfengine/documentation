@@ -13,10 +13,12 @@ promises, variables (or "variable definitions") are also promises. Variables
 can be defined in any promise [bundle][bundles]. This bundle name can be used 
 as a context when using variables outside of the bundle they are defined in.
 
-CFEngine variables have two high-level types: scalars and lists. 
+CFEngine variables have three high-level types: scalars, lists, and
+data containers.
 
 * A scalar is a single value,
 * a list is a collection of scalars.
+* a data container is a lot like a JSON document, it can be a key-value map or an array or anything else allowed by the JSON standard with unlimited nesting.
 
 ## Scalar Variables
 
@@ -71,10 +73,30 @@ of the bundle in which it is defined:
 
     $(bundle_name.qualified)
 
+### Scalar Size Limitations
+
+At the moment, up to 4095 bytes can fit into a scalar variable.  This
+limitation may be removed in the future.
+
+If you try to expand strings in a variable or string context that add
+up to more that 4095 bytes, you will notice this limitation as well.
+The functions `eval()` to do math, `string_head()` and `string_tail()`
+to extract a certain number of characters from either end of a string,
+and `string_length()` to find a string's length may be helpful.
+
+See `readfile()` for more detail on reading values from a file.
+
+See `data_readstringarray()` and `data_readstringarrayidx()` for a way
+to read large files' contents into a data container without going
+through scalar variables or arrays.
+
 ## Lists
 
 List variables can be of type `slist`, `ilist` or `rlist` to hold lists of 
 strings, integers or reals, respectively.
+
+Every element of a list is subject to the same size limitations as a
+regular scalar.
 
 They are declared as follows:
 
@@ -101,7 +123,7 @@ The declaration order does not matter – CFEngine will understand the
 dependency, and execute the promise to assign the variable ‘@(shortlist)’ 
 before the promise to assign the variable ‘@(longlist)’.
 
-Using the @ symbol in a string scalar will not result in list substitution.  
+Using the @ symbol in a string scalar will not result in list substitution.
 For example, the string value "My list is @(mylist)" will not expand this 
 reference.
 
@@ -109,6 +131,9 @@ Using the scalar reference to a local list variable, will cause CFEngine to
 iterate over the values in the list. E.g. suppose we have local list variable 
 ‘@(list)’, then the scalar ‘$(list)’ implies an iteration over every value of 
 the list.
+
+In some function calls, `listname` instead of `@(listname)` is
+expected.  See the specific function's documentation to be sure.
 
 ### Mapping Global and Local Lists
 
@@ -201,6 +226,9 @@ containers.
 
 They can *NOT* be modified, once created.
 
+Data containers do not have the size limitations of regular scalar
+variables.
+
 **TODO:** More, and examples
 
 ## Associative Arrays
@@ -208,6 +236,9 @@ They can *NOT* be modified, once created.
 Note that associative arrays are being deprecated in favor of the `data`
 variable type. It is recommended to use the `data` variable type instead
 whenever possible to ensure future compatibility of your CFEngine policy.
+
+Every value in an associative array is subject to the same size
+limitations as a regular scalar.
 
 Associative array variables are written with `[` and `]` brackets that enclose 
 an arbitrary key. These keys are associated with values
