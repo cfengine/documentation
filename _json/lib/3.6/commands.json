@@ -422,7 +422,7 @@
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 274,
           "namespace": "default",
-          "name": "dc_setuid_gid_umask",
+          "name": "_dc_setuid_gid_umask",
           "bodyType": "contain",
           "arguments": [
             "uid",

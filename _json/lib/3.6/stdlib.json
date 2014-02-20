@@ -1,0 +1,138 @@
+{
+      "bundles": [
+        {
+          "sourcePath": "../masterfiles/lib/3.6/stdlib.cf",
+          "line": 50,
+          "namespace": "default",
+          "name": "stdlib_common",
+          "bundleType": "common",
+          "arguments": [],
+          "promiseTypes": [
+            {
+              "line": 53,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 54,
+                      "promiser": "inputs",
+                      "attributes": [
+                        {
+                          "line": 68,
+                          "lval": "slist",
+                          "rval": {
+                            "type": "list",
+                            "value": [
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/paths.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/common.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/commands.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/packages.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/files.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/services.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/processes.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/storage.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/databases.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/users.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/monitor.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/guest_environments.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/bundles.cf"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 70,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "verbose_mode",
+                  "promises": [
+                    {
+                      "line": 72,
+                      "promiser": "$(this.bundle): adding COPBL stdlib inputs='$(inputs)'",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "bodies": [
+        {
+          "sourcePath": "../masterfiles/lib/3.6/stdlib.cf",
+          "line": 75,
+          "namespace": "default",
+          "name": "control",
+          "bodyType": "file",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 78,
+                  "lval": "inputs",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "@(stdlib_common.inputs)"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }

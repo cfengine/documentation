@@ -404,7 +404,7 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 186,
           "namespace": "default",
-          "name": "dc_prepend_if_no_line",
+          "name": "_dc_prepend_if_no_line",
           "bundleType": "edit_line",
           "arguments": [
             "string"
@@ -1555,7 +1555,7 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 458,
           "namespace": "default",
-          "name": "dc_insert_ini_section",
+          "name": "_dc_insert_ini_section",
           "bundleType": "edit_line",
           "arguments": [
             "name",
@@ -3980,7 +3980,7 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 1032,
           "namespace": "default",
-          "name": "dc_converge",
+          "name": "_dc_converge",
           "bundleType": "edit_line",
           "arguments": [
             "marker",
@@ -5565,7 +5565,99 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1512,
+          "line": 1508,
+          "namespace": "default",
+          "name": "system_owned",
+          "bodyType": "perms",
+          "arguments": [
+            "mode"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 1519,
+                  "lval": "mode",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(mode)"
+                  }
+                },
+                {
+                  "line": 1520,
+                  "lval": "owners",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "root"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "freebsd|openbsd|netbsd|darwin",
+              "attributes": [
+                {
+                  "line": 1523,
+                  "lval": "groups",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "wheel"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "linux",
+              "attributes": [
+                {
+                  "line": 1526,
+                  "lval": "groups",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "root"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "solaris",
+              "attributes": [
+                {
+                  "line": 1529,
+                  "lval": "groups",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "sys"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 1536,
           "namespace": "default",
           "name": "access_generic",
           "bodyType": "acl",
@@ -5577,7 +5669,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1520,
+                  "line": 1544,
                   "lval": "acl_method",
                   "rval": {
                     "type": "string",
@@ -5585,7 +5677,7 @@
                   }
                 },
                 {
-                  "line": 1521,
+                  "line": 1545,
                   "lval": "aces",
                   "rval": {
                     "type": "list",
@@ -5603,7 +5695,7 @@
               "name": "windows",
               "attributes": [
                 {
-                  "line": 1524,
+                  "line": 1548,
                   "lval": "acl_type",
                   "rval": {
                     "type": "string",
@@ -5616,7 +5708,7 @@
               "name": "!windows",
               "attributes": [
                 {
-                  "line": 1527,
+                  "line": 1551,
                   "lval": "acl_type",
                   "rval": {
                     "type": "string",
@@ -5629,7 +5721,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1532,
+          "line": 1556,
           "namespace": "default",
           "name": "ntfs",
           "bodyType": "acl",
@@ -5641,7 +5733,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1540,
+                  "line": 1564,
                   "lval": "acl_type",
                   "rval": {
                     "type": "string",
@@ -5649,7 +5741,7 @@
                   }
                 },
                 {
-                  "line": 1541,
+                  "line": 1565,
                   "lval": "acl_method",
                   "rval": {
                     "type": "string",
@@ -5657,7 +5749,7 @@
                   }
                 },
                 {
-                  "line": 1542,
+                  "line": 1566,
                   "lval": "aces",
                   "rval": {
                     "type": "list",
@@ -5675,7 +5767,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1547,
+          "line": 1571,
           "namespace": "default",
           "name": "strict",
           "bodyType": "acl",
@@ -5685,7 +5777,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1554,
+                  "line": 1578,
                   "lval": "acl_method",
                   "rval": {
                     "type": "string",
@@ -5698,7 +5790,7 @@
               "name": "windows",
               "attributes": [
                 {
-                  "line": 1557,
+                  "line": 1581,
                   "lval": "aces",
                   "rval": {
                     "type": "list",
@@ -5716,7 +5808,7 @@
               "name": "!windows",
               "attributes": [
                 {
-                  "line": 1559,
+                  "line": 1583,
                   "lval": "aces",
                   "rval": {
                     "type": "list",
@@ -5734,7 +5826,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1566,
+          "line": 1590,
           "namespace": "default",
           "name": "recurse",
           "bodyType": "depth_search",
@@ -5746,7 +5838,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1572,
+                  "line": 1596,
                   "lval": "depth",
                   "rval": {
                     "type": "string",
@@ -5754,7 +5846,7 @@
                   }
                 },
                 {
-                  "line": 1573,
+                  "line": 1597,
                   "lval": "xdev",
                   "rval": {
                     "type": "string",
@@ -5767,7 +5859,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1578,
+          "line": 1602,
           "namespace": "default",
           "name": "recurse_ignore",
           "bodyType": "depth_search",
@@ -5780,7 +5872,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1585,
+                  "line": 1609,
                   "lval": "depth",
                   "rval": {
                     "type": "string",
@@ -5788,7 +5880,7 @@
                   }
                 },
                 {
-                  "line": 1586,
+                  "line": 1610,
                   "lval": "exclude_dirs",
                   "rval": {
                     "type": "list",
@@ -5806,7 +5898,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1591,
+          "line": 1615,
           "namespace": "default",
           "name": "include_base",
           "bodyType": "depth_search",
@@ -5816,7 +5908,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1595,
+                  "line": 1619,
                   "lval": "include_basedir",
                   "rval": {
                     "type": "string",
@@ -5829,7 +5921,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1598,
+          "line": 1622,
           "namespace": "default",
           "name": "recurse_with_base",
           "bodyType": "depth_search",
@@ -5841,7 +5933,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1605,
+                  "line": 1629,
                   "lval": "depth",
                   "rval": {
                     "type": "string",
@@ -5849,7 +5941,7 @@
                   }
                 },
                 {
-                  "line": 1606,
+                  "line": 1630,
                   "lval": "xdev",
                   "rval": {
                     "type": "string",
@@ -5857,7 +5949,7 @@
                   }
                 },
                 {
-                  "line": 1607,
+                  "line": 1631,
                   "lval": "include_basedir",
                   "rval": {
                     "type": "string",
@@ -5870,7 +5962,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1614,
+          "line": 1638,
           "namespace": "default",
           "name": "tidy",
           "bodyType": "delete",
@@ -5880,7 +5972,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1618,
+                  "line": 1642,
                   "lval": "dirlinks",
                   "rval": {
                     "type": "string",
@@ -5888,7 +5980,7 @@
                   }
                 },
                 {
-                  "line": 1619,
+                  "line": 1643,
                   "lval": "rmdirs",
                   "rval": {
                     "type": "string",
@@ -5901,7 +5993,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1626,
+          "line": 1650,
           "namespace": "default",
           "name": "disable",
           "bodyType": "rename",
@@ -5911,7 +6003,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1629,
+                  "line": 1653,
                   "lval": "disable",
                   "rval": {
                     "type": "string",
@@ -5924,7 +6016,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1634,
+          "line": 1658,
           "namespace": "default",
           "name": "rotate",
           "bodyType": "rename",
@@ -5936,7 +6028,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1638,
+                  "line": 1662,
                   "lval": "rotate",
                   "rval": {
                     "type": "string",
@@ -5949,7 +6041,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1643,
+          "line": 1667,
           "namespace": "default",
           "name": "to",
           "bodyType": "rename",
@@ -5961,7 +6053,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1647,
+                  "line": 1671,
                   "lval": "newname",
                   "rval": {
                     "type": "string",
@@ -5974,7 +6066,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1654,
+          "line": 1678,
           "namespace": "default",
           "name": "name_age",
           "bodyType": "file_select",
@@ -5987,7 +6079,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1659,
+                  "line": 1683,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -6000,7 +6092,7 @@
                   }
                 },
                 {
-                  "line": 1660,
+                  "line": 1684,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -6044,7 +6136,7 @@
                   }
                 },
                 {
-                  "line": 1661,
+                  "line": 1685,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6057,7 +6149,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1666,
+          "line": 1690,
           "namespace": "default",
           "name": "days_old",
           "bodyType": "file_select",
@@ -6069,7 +6161,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1670,
+                  "line": 1694,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -6113,7 +6205,7 @@
                   }
                 },
                 {
-                  "line": 1671,
+                  "line": 1695,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6126,7 +6218,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1676,
+          "line": 1700,
           "namespace": "default",
           "name": "size_range",
           "bodyType": "file_select",
@@ -6139,7 +6231,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1681,
+                  "line": 1705,
                   "lval": "search_size",
                   "rval": {
                     "type": "functionCall",
@@ -6157,7 +6249,7 @@
                   }
                 },
                 {
-                  "line": 1682,
+                  "line": 1706,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6170,7 +6262,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1687,
+          "line": 1711,
           "namespace": "default",
           "name": "bigger_than",
           "bodyType": "file_select",
@@ -6182,7 +6274,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1691,
+                  "line": 1715,
                   "lval": "search_size",
                   "rval": {
                     "type": "functionCall",
@@ -6200,7 +6292,7 @@
                   }
                 },
                 {
-                  "line": 1692,
+                  "line": 1716,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6213,7 +6305,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1697,
+          "line": 1721,
           "namespace": "default",
           "name": "exclude",
           "bodyType": "file_select",
@@ -6225,7 +6317,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1701,
+                  "line": 1725,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -6238,7 +6330,7 @@
                   }
                 },
                 {
-                  "line": 1702,
+                  "line": 1726,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6251,7 +6343,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1707,
+          "line": 1731,
           "namespace": "default",
           "name": "plain",
           "bodyType": "file_select",
@@ -6261,7 +6353,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1710,
+                  "line": 1734,
                   "lval": "file_types",
                   "rval": {
                     "type": "list",
@@ -6274,7 +6366,7 @@
                   }
                 },
                 {
-                  "line": 1711,
+                  "line": 1735,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6287,7 +6379,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1714,
+          "line": 1738,
           "namespace": "default",
           "name": "dirs",
           "bodyType": "file_select",
@@ -6297,7 +6389,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1717,
+                  "line": 1741,
                   "lval": "file_types",
                   "rval": {
                     "type": "list",
@@ -6310,7 +6402,7 @@
                   }
                 },
                 {
-                  "line": 1718,
+                  "line": 1742,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6323,7 +6415,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1723,
+          "line": 1747,
           "namespace": "default",
           "name": "by_name",
           "bodyType": "file_select",
@@ -6335,7 +6427,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1727,
+                  "line": 1751,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -6348,7 +6440,7 @@
                   }
                 },
                 {
-                  "line": 1728,
+                  "line": 1752,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6361,7 +6453,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1733,
+          "line": 1757,
           "namespace": "default",
           "name": "ex_list",
           "bodyType": "file_select",
@@ -6373,7 +6465,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1737,
+                  "line": 1761,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -6386,7 +6478,7 @@
                   }
                 },
                 {
-                  "line": 1738,
+                  "line": 1762,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6399,7 +6491,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1743,
+          "line": 1767,
           "namespace": "default",
           "name": "all",
           "bodyType": "file_select",
@@ -6409,7 +6501,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1746,
+                  "line": 1770,
                   "lval": "leaf_name",
                   "rval": {
                     "type": "list",
@@ -6422,7 +6514,7 @@
                   }
                 },
                 {
-                  "line": 1747,
+                  "line": 1771,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6435,7 +6527,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1752,
+          "line": 1776,
           "namespace": "default",
           "name": "older_than",
           "bodyType": "file_select",
@@ -6452,7 +6544,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1764,
+                  "line": 1788,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -6496,7 +6588,7 @@
                   }
                 },
                 {
-                  "line": 1765,
+                  "line": 1789,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6509,7 +6601,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1770,
+          "line": 1794,
           "namespace": "default",
           "name": "filetype_older_than",
           "bodyType": "file_select",
@@ -6522,7 +6614,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1779,
+                  "line": 1803,
                   "lval": "file_types",
                   "rval": {
                     "type": "list",
@@ -6535,7 +6627,7 @@
                   }
                 },
                 {
-                  "line": 1780,
+                  "line": 1804,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -6579,7 +6671,7 @@
                   }
                 },
                 {
-                  "line": 1781,
+                  "line": 1805,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6592,7 +6684,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1786,
+          "line": 1810,
           "namespace": "default",
           "name": "filetypes_older_than",
           "bodyType": "file_select",
@@ -6605,7 +6697,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1796,
+                  "line": 1820,
                   "lval": "file_types",
                   "rval": {
                     "type": "list",
@@ -6618,7 +6710,7 @@
                   }
                 },
                 {
-                  "line": 1797,
+                  "line": 1821,
                   "lval": "mtime",
                   "rval": {
                     "type": "functionCall",
@@ -6662,7 +6754,7 @@
                   }
                 },
                 {
-                  "line": 1798,
+                  "line": 1822,
                   "lval": "file_result",
                   "rval": {
                     "type": "string",
@@ -6675,7 +6767,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1805,
+          "line": 1829,
           "namespace": "default",
           "name": "detect_all_change",
           "bodyType": "changes",
@@ -6685,7 +6777,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1811,
+                  "line": 1835,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -6693,7 +6785,7 @@
                   }
                 },
                 {
-                  "line": 1812,
+                  "line": 1836,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -6701,7 +6793,7 @@
                   }
                 },
                 {
-                  "line": 1813,
+                  "line": 1837,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -6714,7 +6806,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1818,
+          "line": 1842,
           "namespace": "default",
           "name": "detect_all_change_using",
           "bodyType": "changes",
@@ -6726,7 +6818,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1826,
+                  "line": 1850,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -6734,7 +6826,7 @@
                   }
                 },
                 {
-                  "line": 1827,
+                  "line": 1851,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -6742,7 +6834,7 @@
                   }
                 },
                 {
-                  "line": 1828,
+                  "line": 1852,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -6755,89 +6847,9 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1833,
+          "line": 1857,
           "namespace": "default",
           "name": "detect_content",
-          "bodyType": "changes",
-          "arguments": [],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 1838,
-                  "lval": "hash",
-                  "rval": {
-                    "type": "string",
-                    "value": "md5"
-                  }
-                },
-                {
-                  "line": 1839,
-                  "lval": "report_changes",
-                  "rval": {
-                    "type": "string",
-                    "value": "content"
-                  }
-                },
-                {
-                  "line": 1840,
-                  "lval": "update_hashes",
-                  "rval": {
-                    "type": "string",
-                    "value": "yes"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1845,
-          "namespace": "default",
-          "name": "detect_content_using",
-          "bodyType": "changes",
-          "arguments": [
-            "hash"
-          ],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 1852,
-                  "lval": "hash",
-                  "rval": {
-                    "type": "string",
-                    "value": "$(hash)"
-                  }
-                },
-                {
-                  "line": 1853,
-                  "lval": "report_changes",
-                  "rval": {
-                    "type": "string",
-                    "value": "content"
-                  }
-                },
-                {
-                  "line": 1854,
-                  "lval": "update_hashes",
-                  "rval": {
-                    "type": "string",
-                    "value": "yes"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1859,
-          "namespace": "default",
-          "name": "noupdate",
           "bodyType": "changes",
           "arguments": [],
           "contexts": [
@@ -6849,7 +6861,7 @@
                   "lval": "hash",
                   "rval": {
                     "type": "string",
-                    "value": "sha256"
+                    "value": "md5"
                   }
                 },
                 {
@@ -6865,7 +6877,7 @@
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
-                    "value": "no"
+                    "value": "yes"
                   }
                 }
               ]
@@ -6876,23 +6888,25 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 1869,
           "namespace": "default",
-          "name": "diff",
+          "name": "detect_content_using",
           "bodyType": "changes",
-          "arguments": [],
+          "arguments": [
+            "hash"
+          ],
           "contexts": [
             {
               "name": "any",
               "attributes": [
                 {
-                  "line": 1873,
+                  "line": 1876,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
-                    "value": "sha256"
+                    "value": "$(hash)"
                   }
                 },
                 {
-                  "line": 1874,
+                  "line": 1877,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
@@ -6900,15 +6914,7 @@
                   }
                 },
                 {
-                  "line": 1875,
-                  "lval": "report_diffs",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
-                  }
-                },
-                {
-                  "line": 1876,
+                  "line": 1878,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
@@ -6921,9 +6927,9 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1881,
+          "line": 1883,
           "namespace": "default",
-          "name": "all_changes",
+          "name": "noupdate",
           "bodyType": "changes",
           "arguments": [],
           "contexts": [
@@ -6931,7 +6937,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 1885,
+                  "line": 1886,
                   "lval": "hash",
                   "rval": {
                     "type": "string",
@@ -6939,19 +6945,11 @@
                   }
                 },
                 {
-                  "line": 1886,
+                  "line": 1887,
                   "lval": "report_changes",
                   "rval": {
                     "type": "string",
-                    "value": "all"
-                  }
-                },
-                {
-                  "line": 1887,
-                  "lval": "report_diffs",
-                  "rval": {
-                    "type": "string",
-                    "value": "true"
+                    "value": "content"
                   }
                 },
                 {
@@ -6959,7 +6957,7 @@
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
-                    "value": "yes"
+                    "value": "no"
                   }
                 }
               ]
@@ -6970,7 +6968,7 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 1893,
           "namespace": "default",
-          "name": "diff_noupdate",
+          "name": "diff",
           "bodyType": "changes",
           "arguments": [],
           "contexts": [
@@ -7003,6 +7001,100 @@
                 },
                 {
                   "line": 1900,
+                  "lval": "update_hashes",
+                  "rval": {
+                    "type": "string",
+                    "value": "yes"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 1905,
+          "namespace": "default",
+          "name": "all_changes",
+          "bodyType": "changes",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 1909,
+                  "lval": "hash",
+                  "rval": {
+                    "type": "string",
+                    "value": "sha256"
+                  }
+                },
+                {
+                  "line": 1910,
+                  "lval": "report_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "all"
+                  }
+                },
+                {
+                  "line": 1911,
+                  "lval": "report_diffs",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                },
+                {
+                  "line": 1912,
+                  "lval": "update_hashes",
+                  "rval": {
+                    "type": "string",
+                    "value": "yes"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 1917,
+          "namespace": "default",
+          "name": "diff_noupdate",
+          "bodyType": "changes",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 1921,
+                  "lval": "hash",
+                  "rval": {
+                    "type": "string",
+                    "value": "sha256"
+                  }
+                },
+                {
+                  "line": 1922,
+                  "lval": "report_changes",
+                  "rval": {
+                    "type": "string",
+                    "value": "content"
+                  }
+                },
+                {
+                  "line": 1923,
+                  "lval": "report_diffs",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                },
+                {
+                  "line": 1924,
                   "lval": "update_hashes",
                   "rval": {
                     "type": "string",
