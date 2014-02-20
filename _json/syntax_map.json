@@ -5855,7 +5855,7 @@
         },
         {
           "type": "option",
-          "range": "md5,sha1,sha256,sha512,sha384,crypt"
+          "range": "md5,sha1,sha256,sha384,sha512"
         }
       ],
       "variadic": false,
@@ -5872,7 +5872,7 @@
         },
         {
           "type": "option",
-          "range": "md5,sha1,crypt,cf_sha224,cf_sha256,cf_sha384,cf_sha512"
+          "range": "md5,sha1,sha256,sha384,sha512"
         },
         {
           "type": "string",
