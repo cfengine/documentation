@@ -258,14 +258,14 @@ on [Negative Knowledge][classes and decisions].
     bundle
 ```
 
-**Default value:** namespace
+**Default value:** bundle
 
 **Example:**
 
 ```cf3
     classes:
       "bundle_context"
-          scope => "bundle";
+          scope => "namespace";
 ```
 
 **See also:** [`scope` in `body classes`][Promise Types and Attributes#scope]
