@@ -258,14 +258,19 @@ on [Negative Knowledge][classes and decisions].
     bundle
 ```
 
-**Default value:** bundle
+**Default value:** `bundle` in agent bundles, `namespace` in common bundles
 
 **Example:**
 
 ```cf3
     classes:
-      "bundle_context"
+      "namespace_context"
           scope => "namespace";
+
+      "bundle_or_namespace_context"; # without an explicit scope, depends on bundle type
+
+      "bundle_context"
+          scope => "bundle";
 ```
 
 **See also:** [`scope` in `body classes`][Promise Types and Attributes#scope]
