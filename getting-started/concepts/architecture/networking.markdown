@@ -210,11 +210,7 @@ information which might be useful to them.
 
 There is a simple checklist for curing this problem:
 
-1.  Make sure that the domain variable is set in the configuration
-    files read by both client and server; alternatively use
-    `skipidentify` to decouple DNS from the the
-    authentication.
-2.  Make sure that you have granted access to your client in the
+1.  Make sure that you have granted access to your client in the
     server body
 
 ```cf3                  
@@ -226,9 +222,9 @@ There is a simple checklist for curing this problem:
     }
 ```                  
 
-3.  Make sure you have created valid keys for the hosts using
+2.  Make sure you have created valid keys for the hosts using
     `cf-key`.
-4.  If you are using secure copy, make sure that you have created a
+3.  If you are using secure copy, make sure that you have created a
     key file and that you have distributed and installed it to all
     participating hosts in your cluster.
 

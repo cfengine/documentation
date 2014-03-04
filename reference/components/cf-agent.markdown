@@ -1118,27 +1118,13 @@ number of bytes a mounted filesystem is expected to have.
 
 ### skipidentify
 
-**Description:** The `skipidentify` menu option policy determines whether 
-to send an IP/name during server connection because address resolution is 
-broken.
+**Description:** This option is obsolete and doing nothing.
 
-Hosts that are not registered in DNS cannot supply reasonable
-credentials for a secondary confirmation of their identity to a
-CFEngine server. This causes the agent to ignore its missing DNS
-credentials.
+This option is retained for backward compatibility.
 
 **Type:** [`boolean`][boolean]
 
 **Default value:** false
-
-**Example:**
-
-```cf3
-    body agent control
-    {
-    skipidentify => "true";
-    }
-```
 
 ### suspiciousnames
 
