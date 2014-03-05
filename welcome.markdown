@@ -7,19 +7,25 @@ sorting: 1
 alias: index.html
 ---
 
+# Introduction
+
 ## What is CFEngine?
 
-CFEngine is an automated configuration management system framework that manages IT infrastructure throughout its lifecycle. CFEngine can help build entire systems of interconnected devices, maintain that system over time, check its state at any given moment, ensure compliance with a desired end state, and propagate real-time modifications or updates to any of the system's component machines.
+CFEngine is a configuration management system that provides a framework for automated management of IT infrastructure throughout its lifecycle.
+
+CFEngine can define and configure an entire system consisting of interconnected devices, users, applications and services; help maintain that system over time; check its state at any given moment; ensure compliance with a desired end state; and propagate real-time modifications or updates to any of the system's component pieces.
 
 ## How CFEngine Works
 
-CFEngine brings the actual state of a system into compliance with a model of the desired state of the system. 
+CFEngine brings the actual state of a system into compliance with a model that defines the desired state of the system. 
 
-The model is represented in one or more policies that have been written using CFEngine’s knowledge-oriented declarative language. The policy language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
+The model is represented in one or more policies that have been written using CFEngine policy language. The policy language is declarative and has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
 
 Policies for the desired state are deployed to all of the system’s server hosts via pull requests, and afterwards further disseminated to each client host within the system. Every host machine within the system will then interpret and execute each of the instructions it has been given in a predetermined order. 
 
 CFEngine monitors all of these activities in real-time, and should the system’s current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
+
+# Documentation
 
 ## Getting Started
 
@@ -34,6 +40,7 @@ CFEngine monitors all of these activities in real-time, and should the system’
 	* [Loops][Loops]
 	* [Pattern Matching and Referencing][Pattern Matching and Referencing]
 	* [Namespaces][namespaces]
+* [How to Write Policy][Writing Policy]
 * [More Getting Started][Getting Started]
 
 ### Recommended for Beginners
@@ -41,12 +48,10 @@ CFEngine monitors all of these activities in real-time, and should the system’
 * ["Hello World" policy][Hello World]
 * [Policy Language Examples][Policy]
 
-
 ### More About Policy Language
 
-* [How to Write Policy][Writing Policy]
 * [Policy Workflow][Policy Workflow] 
-* [CFEngine syntax, identifiers, and names][Syntax, identifiers and names] 
+* [Syntax, identifiers, and names][Syntax, identifiers and names] 
 * [Promise types and attributes][Promise Types and Attributes]
 
 ### Design Center
