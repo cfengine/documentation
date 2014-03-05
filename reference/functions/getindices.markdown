@@ -7,14 +7,15 @@ alias: reference-functions-getindices.html
 tags: [reference, data functions, functions, getindices]
 ---
 
-[%CFEngine_function_prototype(array)%]
+[%CFEngine_function_prototype(varref)%]
 
-**Description:** Returns a list of keys in `array`.
+**Description:** Returns the list of keys in `varref` which can be
+the name of an array or container.
 
 Make sure you specify the correct scope when supplying the name of the
 variable.
 
-[%CFEngine_function_attributes(array)%]
+[%CFEngine_function_attributes(varref)%]
 
 **Example:**
 
