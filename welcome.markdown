@@ -7,66 +7,71 @@ sorting: 1
 alias: index.html
 ---
 
-## Welcome to the CFEngine Documentation site
+## What is CFEngine?
 
-CFEngine is a configuration management system that enables system administrators to define 
-the desired end states of IT-systems throughout their organizations. The desired state is 
-expressed through policies written using the CFEngine policy language. A **policy** is a 
-collection of **promises**, or declared intentions that you wish to reach based on your business needs. 
-This policy is typically version-controlled like any other software code, and is made available on a server (hub). 
-From there, the policy is automatically pulled down by hosts (clients) that retrieve and execute these promises 
-locally. They ensure the defined state.
+CFEngine is an automated configuration management system framework that manages IT infrastructure throughout its lifecycle. CFEngine can help build entire systems of interconnected devices, maintain that system over time, check its state at any given moment, ensure compliance with a desired end state, and propagate real-time modifications or updates to any of the system's component machines.
 
-CFEngine agents continuously ensure compliance with your desired state. The hub pulls down 
-and collects reports on actual states or failures encountered while implementing the desired 
-state on each and every host. You can read logs or run reports to verify the actual state of your IT-system.
+## How CFEngine Works
 
-Follow this workflow and examine the relevant links as you get started with CFEngine:
+CFEngine brings the actual state of a system into compliance with a model of the desired state of the system. 
 
-## Install CFEngine
+The model is represented in one or more policies that have been written using CFEngine’s knowledge-oriented declarative language. The policy language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
 
-* Choose from Community or Enterprise [versions][Installing CFEngine]
+Policies for the desired state are deployed to all of the system’s server hosts via pull requests, and afterwards further disseminated to each client host within the system. Every host machine within the system will then interpret and execute each of the instructions it has been given in a predetermined order. 
 
-## Define your desired state
+CFEngine monitors all of these activities in real-time, and should the system’s current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
 
-Your system state is defined by **writing policy**.
+## Getting Started
 
-* Create a Hello World [policy][Hello World]
-* Learn how to write your own [policy][Writing Policy]
-* View policy [examples][Policy]
+* [How to Install CFEngine][Installing CFEngine]
+* [CFEngine Policy Language Concepts][Language Concepts]
+	* [Promises][promises]
+	* [Bundles][bundles]
+	* [Bodies][bodies]
+	* [Classes and Decisions][classes and decisions]
+	* [Variables][variables]
+	* [Normal Ordering][Normal Ordering]
+	* [Loops][Loops]
+	* [Pattern Matching and Referencing][Pattern Matching and Referencing]
+	* [Namespaces][namespaces]
+* [More Getting Started][Getting Started]
 
-Your system state can also be defined through reusable policy templates, called **sketches**. 
+### Recommended for Beginners
 
-* [Enterprise Edition](https://cfengine.com/docs/master/manuals-design-center.html): Learn how to use the Design Center API via the Mission Portal to 
-install, configure, and deploy sketches. View and activate sketches in the Design Center 
-through the Mission Portal.  
-* [Community Edition][Advanced Walkthrough]: Learn how to use the Design Center API (via cf-sketch) to install, 
-configure, and deploy sketches into the Masterfiles directory. 
+* ["Hello World" policy][Hello World]
+* [Policy Language Examples][Policy]
 
-**Recommended for Beginners**
 
-* Policy is written in [CFEngine Language][Language Concepts]
-* Learn the policy [workflow][Policy Workflow] 
-* Learn CFEngine [syntax][Syntax, identifiers and names], identifiers, and names 
-* [Promise types and attributes][Promise Types and Attributes] are necessary for writing policy
+### More About Policy Language
 
-## Verify your actual state (Enterprise Only)
+* [How to Write Policy][Writing Policy]
+* [Policy Workflow][Policy Workflow] 
+* [CFEngine syntax, identifiers, and names][Syntax, identifiers and names] 
+* [Promise types and attributes][Promise Types and Attributes]
 
-Verify your actual state through **Reports**.
+### Design Center
+ 
+* [Design Center API](https://cfengine.com/docs/master/manuals-design-center.html)
+* [Design Center Advanced Walkthrough][Advanced Walkthrough]
 
-* Learn about the [reporting architecture][Reporting Architecture]
-* Create reports with [SQL Queries][SQL Queries] 
-* Use the Design Center Reports (Documentation is forthcoming)
+## Enterprise Edition Documentation
 
-## References
-
-* [Functions][Functions]
-* Special [variables][Special Variables]
-* Hard and soft [classes][Hard and Soft Classes]
+* [Reporting Architecture][Reporting Architecture]
+* [Creating Reports with SQL Queries][SQL Queries] 
 * [Enterprise API Reference][Enterprise API Reference]
 
-**Recommended for Beginners**
+## Reference Documentation
 
-* Learn the [components][Components and Common Control] that make up CFEngine
+* [Functions][Functions]
+* [Special Variables][Special Variables]
+* [Hard and Soft Classes][Hard and Soft Classes]
+* [Components and Common Control][components]
+
+
+
+
+
+
+
 
 
