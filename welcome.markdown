@@ -57,11 +57,22 @@ What next:
 
 # Documentation #
 
+## About CFEngine ##
+
+* [Design of CFEngine][Design]
+* [The CFEngine Components][The CFEngine Components]
+* Phases of CFEngine System Management
+	* Build
+	* Deploy
+	* Manage
+	* Audit 
+
 ## Getting Started ##
 
 * [How to Install CFEngine][Installing CFEngine]
-* [The CFEngine Components][The CFEngine Components]
+* [Get CFEngine Up and Running Quickly][Up and Running]
 * [Tutorials][Tutorials]
+* [More Getting Started][Getting Started]
 
 ### Policy Language ###
 
@@ -88,34 +99,11 @@ What next:
 * [Syntax, Identifiers, and Names][Syntax, identifiers and names] 
 * [Promise Types and Attributes][Promise Types and Attributes]
 
-### CFEngine Versions ###
-
-#### Community Edition ####
-
-Built upon well-established theory and high-quality engineering practices, CFEngine has enjoyed an outstanding security record over its 20-year history. 
-
-CFEngine Community is licensed under the Gnu General Public License GPL, version 3 and available as a free-of charge download or in source form.
-
-#### Enterprise Edition ####
-
-CFEngine Enterprise contains the following additional features:
-
-* Graphical User Interface for Design Center 
-* Design Center sketches with integrated monitoring and reporting
-* Delegation of System Administrator Tasks 
-* Version Control for Sketches 
-* Increased scalability 	
-* Configurable Data Feeds
-* Federation and SQL Reporting 
-
 ### Design Center ###
  
 * [Design Center][Design Center]
-* [Design Center Advanced Walkthrough][Advanced Walkthrough]
-
-### More Getting Started Information ###
-* [More Getting Started][Getting Started]
-* [Get CFEngine Up and Running Quickly][Up and Running]
+* [Advanced Walkthrough][Advanced Walkthrough]
+* [Sketches][Sketch Structure]
 
 ## CFEngine Reference Documentation ##
 
@@ -126,7 +114,25 @@ CFEngine Enterprise contains the following additional features:
 * [Special Variables][Special Variables]
 * [Syntax, identifiers and names][Syntax, identifiers and names]
 
-## Enterprise Edition Documentation ##
+## CFEngine Versions ##
+
+### Community Edition ###
+
+Built upon well-established theory and high-quality engineering practices, CFEngine has enjoyed an outstanding security record over its 20-year history. 
+
+CFEngine Community is licensed under the Gnu General Public License GPL, version 3 and available as a free-of charge download or in source form.
+
+### Enterprise Edition ###
+
+CFEngine Enterprise contains the following additional features:
+
+* Graphical User Interface for Design Center 
+* Design Center sketches with integrated monitoring and reporting
+* Delegation of System Administrator Tasks 
+* Version Control for Sketches 
+* Increased scalability 	
+* Configurable Data Feeds
+* Federation and SQL Reporting
 
 ### Reporting ###
 * [Reporting Architecture][Reporting Architecture]
