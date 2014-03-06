@@ -36,6 +36,11 @@ CFEngine:
 * Ensures compliance with a desired system state. 
 * Propagates real-time modifications or updates across the system.
 
+What next:
+* Back to the [introduction](#introduction).
+* Find out [how CFEngine works](#how-cfengine-works)
+* See other [documentation](#documentation).
+
 ## How CFEngine Works ##
 
 CFEngine ensures that the actual state of a system is in compliance with the predefined model of desired state for the system. If it is not in compliance CFEngine will bring it into compliance.
@@ -45,6 +50,10 @@ That model is represented by one or more policies that have been written using t
 Those policies are distributed across all of the system’s policy distribution servers via pull requests, and then further disseminated to each end host within the system. Every host will then interpret and execute each of the instructions it has been given in a predetermined order. 
 
 CFEngine continually monitors all of the hosts in real-time, and should the system’s current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
+
+What next:
+* Back to the [introduction](#introduction).
+* See other [documentation](#documentation).
 
 # Documentation #
 
