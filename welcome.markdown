@@ -77,11 +77,12 @@ What next:
 ### Components ###
 
 * [The CFEngine Components][The CFEngine Components]
-	* [cf-agent][cf-agent]
-	* [cf-serverd][cf-serverd]
-	* [cf-execd][cf-execd]
-	* [cf-promises][cf-promises]
-	* [cf-runagent][cf-runagent]
+	* Core Components:
+		* [cf-agent][cf-agent]
+		* [cf-serverd][cf-serverd]
+		* [cf-execd][cf-execd]
+		* [cf-promises][cf-promises]
+		* [cf-runagent][cf-runagent]
 
 ### Policy Language ###
 
