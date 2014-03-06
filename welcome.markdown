@@ -10,9 +10,10 @@ alias: index.html
 # Introduction
 
 * Learn [about CFEngine](#what-is-cfengine) and [how CFEngine works](#how-cfengine-works).
+* See an [overview of the documentation](#documentation).
 * [Get started](#getting-started) with CFEngine.
 * Know more about CFEngine Community Edition and CFEngine Enterprise Edition.
-* Read about [policy language](#policy-language).
+* Read [about policy language](#policy-language) and see [some examples of policy language](#policy-language-by-way-of-example).
 * Find out more about the [Design Center](#design-center).
 * Search the [reference documentation](#reference-documentation).
   
