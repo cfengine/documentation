@@ -13,7 +13,7 @@ alias: index.html
 * See an [overview of the documentation](#documentation).
 * [Get started](#getting-started) with CFEngine.
 * Read [about policy language](#policy-language) and see [some examples of policy language](#policy-language-by-way-of-example).
-* Find out more about the [Design Center](#design-center).
+* Find out more about the [Design Center and sketches](#design-center-and-sketches).
 * Search the [reference documentation](#reference-documentation).
 * Discover [CFEngine Community Edition](#community-edition) and [CFEngine Enterprise Edition](#enterprise-edition).
 
@@ -38,7 +38,7 @@ CFEngine:
 * Propagates real-time modifications or updates across the system.
 
 What next:
-* Back to the [introduction](#introduction).
+* Back to the [overview](#overview).
 * Find out [how CFEngine works](#how-cfengine-works)
 * See other [documentation](#documentation).
 
@@ -53,7 +53,7 @@ Those policies are distributed across all of the system’s policy distribution 
 CFEngine continually monitors all of the hosts in real-time, and should the system’s current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
 
 What next:
-* Back to the [introduction](#introduction).
+* Back to the [overview](#overview).
 * See other [documentation](#documentation).
 
 # Documentation #
@@ -109,7 +109,7 @@ What next:
 * [Syntax, Identifiers, and Names][Syntax, identifiers and names] 
 * [Promise Types and Attributes][Promise Types and Attributes]
 
-#### Design Center ####
+#### Design Center and Sketches ####
  
 * [Design Center][Design Center]
 * [Advanced Walkthrough][Advanced Walkthrough]
