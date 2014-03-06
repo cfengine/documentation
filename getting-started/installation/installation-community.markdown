@@ -275,6 +275,8 @@ depends on your specific policies, especially those that concern reporting.
   following two commands: /`etc/init.d/iptables stop` and `chkconfig iptables
   off`
 
+
+<!--
 <hr>
 
 ## Rate your experience
@@ -284,3 +286,4 @@ Before you forget your first-time experience, we would love for you to let us kn
 
 <iframe src="https://docs.google.com/forms/d/1wnVR3HQwUNKs5fT0zf_OHjtIQxI_nd00QCFbDZOyXZk/viewform?embedded=true" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 
+-->
