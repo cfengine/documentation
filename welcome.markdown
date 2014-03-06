@@ -9,7 +9,7 @@ alias: index.html
 
 # Overview
 
-* Learn [about CFEngine](#what-is-cfengine) and [how CFEngine works](#how-cfengine-works).
+* Get [introduced](#introduction) to CFEngine, learn [about CFEngine](#what-is-cfengine) and [how CFEngine works](#how-cfengine-works).
 * See an [overview of the documentation](#documentation).
 * [Get started](#getting-started) with CFEngine.
 * Read [about policy language](#policy-language) and see [some examples of policy language](#policy-language-by-way-of-example).
@@ -106,6 +106,7 @@ What next:
 #### More About Policy Language ####
 
 * [Policy Workflow][Policy Workflow] 
+* [Policy Style Guide][Policy Style Guide]
 * [Syntax, Identifiers, and Names][Syntax, identifiers and names] 
 * [Promise Types and Attributes][Promise Types and Attributes]
 
