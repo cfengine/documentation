@@ -22,6 +22,8 @@ alias: index.html
 
 CFEngine is a configuration management system that provides a framework for automated management of IT infrastructure throughout its life cycle.
 
+CFEngine is decentralized and highly scalable. It is powered by autonomous agents that can continuously monitor, self-repair, and update an entire IT system every five minutes, with negligible impact on system resources or performance.
+
 CFEngine:
 
 * Defines the configuration of an entire IT system that consists of interconnected:
@@ -31,8 +33,8 @@ CFEngine:
 	* Services 
 * Helps maintain that system over time. 
 * Checks the system state at any given moment. 
-* Ensure compliance with a desired system state. 
-* Propagate real-time modifications or updates across the system.
+* Ensures compliance with a desired system state. 
+* Propagates real-time modifications or updates across the system.
 
 ## How CFEngine Works ##
 
@@ -49,8 +51,8 @@ CFEngine continually monitors all of the hosts in real-time, and should the syst
 ## Getting Started ##
 
 * [How to Install CFEngine][Installing CFEngine]
-* [Tutorials][Tutorials]
 * [The CFEngine Components][The CFEngine Components]
+* [Tutorials][Tutorials]
 
 ### Policy Language ###
 
