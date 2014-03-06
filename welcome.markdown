@@ -12,7 +12,7 @@ alias: index.html
 * Learn [about CFEngine](#what-is-cfengine) and [how CFEngine works](#how-cfengine-works).
 * See an [overview of the documentation](#documentation).
 * [Get started](#getting-started) with CFEngine.
-* Know more about CFEngine Community Edition and CFEngine Enterprise Edition.
+* Know more about [CFEngine Community Edition](#community-edition) and [CFEngine Enterprise Edition](#enterprise-edition).
 * Read [about policy language](#policy-language) and see [some examples of policy language](#policy-language-by-way-of-example).
 * Find out more about the [Design Center](#design-center).
 * Search the [reference documentation](#reference-documentation).
@@ -22,11 +22,11 @@ alias: index.html
 
 CFEngine is a configuration management system that provides a framework for automated management of IT infrastructure throughout its life cycle.
 
-CFEngine is decentralized and highly scalable. It is powered by autonomous agents that can continuously monitor, self-repair, and update an entire IT system every five minutes, with negligible impact on system resources or performance.
+CFEngine is decentralized and highly scalable. It is powered by autonomous agents that can continuously monitor, self-repair, and update or restore an entire IT system every five minutes, with negligible impact on system resources or performance.
 
 CFEngine:
 
-* Defines the configuration of an entire IT system that consists of interconnected:
+* Defines the configuration of an entire IT system consisting of interconnected:
 	* Devices
 	* Users
 	* Applications
@@ -78,6 +78,26 @@ CFEngine continually monitors all of the hosts in real-time, and should the syst
 * [Policy Workflow][Policy Workflow] 
 * [Syntax, Identifiers, and Names][Syntax, identifiers and names] 
 * [Promise Types and Attributes][Promise Types and Attributes]
+
+### CFEngine Versions ###
+
+#### Community Edition ####
+
+Built upon well-established theory and high-quality engineering practices, CFEngine has enjoyed an outstanding security record over its 20-year history. 
+
+CFEngine Community is licensed under the Gnu General Public License GPL, version 3 and available as a free-of charge download or in source form.
+
+#### Enterprise Edition ####
+
+CFEngine Enterprise contains the following additional features:
+
+* Graphical User Interface for Design Center 
+* Design Center sketches with integrated monitoring and reporting
+* Delegation of System Administrator Tasks 
+* Version Control for Sketches 
+* Increased scalability 	
+* Configurable Data Feeds
+* Federation and SQL Reporting 
 
 ### Design Center ###
  
