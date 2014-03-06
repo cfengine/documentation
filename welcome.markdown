@@ -7,16 +7,17 @@ sorting: 1
 alias: index.html
 ---
 
-# Introduction
+# Overview
 
 * Learn [about CFEngine](#what-is-cfengine) and [how CFEngine works](#how-cfengine-works).
 * See an [overview of the documentation](#documentation).
 * [Get started](#getting-started) with CFEngine.
-* Know more about [CFEngine Community Edition](#community-edition) and [CFEngine Enterprise Edition](#enterprise-edition).
 * Read [about policy language](#policy-language) and see [some examples of policy language](#policy-language-by-way-of-example).
 * Find out more about the [Design Center](#design-center).
 * Search the [reference documentation](#reference-documentation).
-  
+* Discover [CFEngine Community Edition](#community-edition) and [CFEngine Enterprise Edition](#enterprise-edition).
+
+# Introduction  
 
 ## What is CFEngine? ##
 
@@ -60,7 +61,6 @@ What next:
 ## About CFEngine ##
 
 * [Design of CFEngine][Design]
-* [The CFEngine Components][The CFEngine Components]
 * Phases of CFEngine System Management
 	* Build
 	* Deploy
@@ -73,6 +73,15 @@ What next:
 * [Get CFEngine Up and Running Quickly][Up and Running]
 * [Tutorials][Tutorials]
 * [More Getting Started][Getting Started]
+
+### Components ###
+
+* [The CFEngine Components][The CFEngine Components]
+	* [cf-agent][cf-agent]
+	* [cf-serverd][cf-serverd]
+	* [cf-execd][cf-execd]
+	* [cf-promises][cf-promises]
+	* [cf-runagent][cf-runagent]
 
 ### Policy Language ###
 
@@ -99,7 +108,7 @@ What next:
 * [Syntax, Identifiers, and Names][Syntax, identifiers and names] 
 * [Promise Types and Attributes][Promise Types and Attributes]
 
-### Design Center ###
+#### Design Center ####
  
 * [Design Center][Design Center]
 * [Advanced Walkthrough][Advanced Walkthrough]
@@ -114,15 +123,15 @@ What next:
 * [Special Variables][Special Variables]
 * [Syntax, identifiers and names][Syntax, identifiers and names]
 
-## CFEngine Versions ##
+# CFEngine Versions #
 
-### Community Edition ###
+## Community Edition ##
 
 Built upon well-established theory and high-quality engineering practices, CFEngine has enjoyed an outstanding security record over its 20-year history. 
 
 CFEngine Community is licensed under the Gnu General Public License GPL, version 3 and available as a free-of charge download or in source form.
 
-### Enterprise Edition ###
+## Enterprise Edition ##
 
 CFEngine Enterprise contains the following additional features:
 
