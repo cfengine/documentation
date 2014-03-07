@@ -20,7 +20,7 @@ balanced XML subtree.
     {
     delete_tree:
 
-      "Host name=\"cfe_host\">/Host>"
+      "<Host name=\"cfe_host\"></Host>"
         select_xpath => "/Server/Service/Engine";
     }
 ```
