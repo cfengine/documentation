@@ -19,7 +19,7 @@ referred to is a literal string representation of a balanced XML tree.
     {
     insert_tree:
 
-      "Host name=\"cfe_host\">Alias>cfe_alias/Alias>/Host>"
+      "<Host name=\"cfe_host\"><Alias>cfe_alias</Alias></Host>"
         select_xpath => "/Server/Service/Engine";
     }
 ```
