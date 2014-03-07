@@ -15,7 +15,7 @@ To see all of the variables defined on a particular host, run
 
     $ cf-promises --show-vars
 
-as a privileged user.
+as a privileged user.  See `Classes` for an explanation of the tags.
 
 CFEngine includes the following **special variables**:
 

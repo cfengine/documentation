@@ -28,10 +28,44 @@ secure.
 You can use
 https://github.com/cfengine/design-center/tree/master/tools/hcgrep to
 obtain this list in a format suitable for other tools like `grep` (one
-class per line).
+class per line), but all the information it offers should be available
+with `cf-promises --show-classes`.
 
-You can also use the built-in `classesmatching` function to get a list
-of all the defined classes in a list, inside CFEngine policy itself.
+You can also use the built-in `classesmatching()` function to get a
+list of all the defined classes in a list, inside CFEngine policy
+itself.  `classesmatching()` is especially useful because it also lets
+you specify tag regular expressions.
+
+## Tags
+
+Classes and variables have tags that describe their provenance (who
+created them) and purpose (why were they created).
+
+While you can provide your own tags for soft classes in policy with
+the `meta` attribute, there are some tags applied to hard classes and
+other special cases.  This list may change in future versions of
+CFEngine.
+
+* `source=agent`: this hard class or variable was created by the agent in the C code.  This tag is useful when you need to find classes or variables that don't match the other sources below.  e.g. `linux`.
+* `source=environment`: this hard class or variable was created by the agent in the C code.  It reflects something about the environment like a command-line option, e.g. `-d` sets `debug_mode`, `-v` sets `verbose_mode`, and `-I` sets `inform_mode`.  Another useful option, `-n`, sets `opt_dry_run`.
+* `source=bootstrap`: this hard class or variable was created by the agent in the C code based on bootstrap parameters.  e.g. `policy_server` is set based on the IP address or host name you provided when you ran `cf-agent -B host-or-ip`.
+* `source=module`: this class or variable was created through the module protocol.
+* `source=persistent`: this persistent class was loaded from storage.
+* `source=body`: this variable was created by a body with side effects.
+* `source=function`: this class or variable was created by a function as a side effect, e.g. see the classes that `selectservers()` sets or the variables that `regextract()` sets.  These classes or variables will also have a `function=FUNCTIONNAME` tag.
+* `source=promise`: this soft class was created from policy.
+* `inventory`: related to the system inventory, e.g. the network interfaces
+  * `attribute_name=none`: has no visual attribute name
+  * `attribute_name=X`: has visual attribute name `X`
+* `monitoring`: related to the monitoring (`cf-monitord` usually).
+* `time_based`: based on the system date, e.g. `Afternoon`
+* `derived-from=varname`: for a class, this tells you it was derived from a variable name, e.g. if the special variable `sys.fqhost` is `xyz`, the resulting class `xyz` will have the tag `derived-from=sys.fqhost`.
+* `cfe_internal`: internal utility classes and variables
+
+Enterprise only:
+
+* `source=ldap`: this soft class or variable was created from an LDAP lookup.
+* `source=observation`: this class or variable came from a `measurements` system observation and will also have the `monitoring` tag.
 
 ## Hard Classes
 
