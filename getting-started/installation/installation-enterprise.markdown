@@ -37,6 +37,17 @@ strategy, always provide an extra 2G to 4G of disk space if you plan to bootstra
 CFEngine bundles all critical dependencies into the package; therefore,
 additional software is not required.
 
+**Requirements for VIOS**
+
+CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.
+This means that CFEngine Enterprise has been technically verified by IBM
+to be installed in and manage VIOS environments.
+
+During testing, CFEngine Enterprise was seen to use up to 2% of the VIOS CPU
+during `cf-agent` runs with the default CFEngine policy. The resource
+utilization may vary depending on the policy CFEngine is running.
+The VIOS should be configured with Shared Processors in Uncapped mode.
+
 ## Policy Server Requirements
 
 ### Dedicated OS
