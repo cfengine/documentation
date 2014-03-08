@@ -89,6 +89,10 @@ In general, platforms in this category can only be supported as hosts.
 * SmartOS
 * SLES on Mainframe 390
 
+CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.
+This means that CFEngine Enterprise has been technically verified by IBM
+to be installed in and manage VIOS environments.
+
 Note that availability of the current version of CFEngine on these platforms 
 does not imply availability of future versions of CFEngine.
 
