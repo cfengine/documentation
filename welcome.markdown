@@ -61,16 +61,17 @@ What next:
 ## About CFEngine ##
 
 * [Design of CFEngine][Design]
-* Phases of CFEngine System Management
-	* Build
-	* Deploy
-	* Manage
-	* Audit 
+* Overview of System Management with CFEngine
+	* [Build][Build]
+	* [Deploy][Deploy]
+	* [Manage][Manage]
+	* [Audit][Audit]  
 
 ## Getting Started ##
 
 * [How to Install CFEngine][Installing CFEngine]
 * [Get CFEngine Up and Running Quickly][Up and Running]
+* [Upgrade Instructions][Upgrade Instructions]
 * [Tutorials][Tutorials]
 * [More Getting Started][Getting Started]
 
@@ -116,6 +117,12 @@ What next:
 * [Advanced Walkthrough][Advanced Walkthrough]
 * [Sketches][Sketch Structure]
 
+### Reporting ###
+
+* [Reporting][Reports]
+* [Reporting Architecture][Reporting Architecture]
+* [Creating Reports with SQL Queries][SQL Queries] 
+
 ## CFEngine Reference Documentation ##
 
 * [Components and Common Control][Components and Common Control]
@@ -124,33 +131,17 @@ What next:
 * [Hard and Soft Classes][Hard and Soft Classes]
 * [Special Variables][Special Variables]
 * [Syntax, identifiers and names][Syntax, identifiers and names]
-
-# CFEngine Versions #
-
-## Community Edition ##
-
-Built upon well-established theory and high-quality engineering practices, CFEngine has enjoyed an outstanding security record over its 20-year history. 
-
-CFEngine Community is licensed under the Gnu General Public License GPL, version 3 and available as a free-of charge download or in source form.
-
-## Enterprise Edition ##
-
-CFEngine Enterprise contains the following additional features:
-
-* Graphical User Interface for Design Center 
-* Design Center sketches with integrated monitoring and reporting
-* Delegation of System Administrator Tasks 
-* Version Control for Sketches 
-* Increased scalability 	
-* Configurable Data Feeds
-* Federation and SQL Reporting
-
-### Reporting ###
-* [Reporting Architecture][Reporting Architecture]
-* [Creating Reports with SQL Queries][SQL Queries] 
-
-### APIs ###
 * [Enterprise API Reference Documentation][Enterprise API Reference]
+
+# CFEngine Release #
+
+* [Latest Release][Latest Release]
+* [New in CFEngine][New in CFEngine]
+* [Known Issues][Known Issues]
+* [Supported Platforms and Versions][Supported Platforms and Versions]
+
+
+
 
 
 
