@@ -37,6 +37,16 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 
 ### Configure the Security Group ###
 
+* NETWORK & SECURITY > Security Groups
+* Remembering the **Security group name** from earlier, click on the appropriate line item in the list.
+* Below the list of security group names will display details for the current security group.
+* Click the **Inbound** tab.
+* Select **HTTP** from the **Create a new rule** list.
+* Click the **+Add Rule** button.
+* Select **Custom TCP rule** and enter **5308** in the **Port range** text entry.
+* Click the **+Add Rule** button.
+* Click **Apply Rule Changes**.
+
 ## Accessing AWS VMs via SSH on Windows Using PuTTY and PuTTYgen ##
 
 ### Get PuTTY and PuTTYgen ###
@@ -90,6 +100,8 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 * Select the second virtual machine entry in the **Saved Sessions** list.
 * Click **Load** and then **Open**.
 * Both virtual machines should now be accessed in two different PuTTY application windows.
+
+### Configure RHEL Firewall ###
 
 ## Setup CFEngine ##
 
