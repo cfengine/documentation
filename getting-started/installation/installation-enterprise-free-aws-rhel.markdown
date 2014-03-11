@@ -103,6 +103,15 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 
 ### Configure RHEL Firewall ###
 
+* sudo yum install system-config-firewall
+* sudo system-config-firewall
+* Allow Trusted Services WWW (AKA HTTPD, port 80)
+* Forward > Add
+* Port '**5308**' and Protocol '**tcp**'. 
+* **OK**
+* **Close**
+* **OK**
+
 ## Setup CFEngine ##
 
 **Note the following requirements:**
