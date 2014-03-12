@@ -20,12 +20,16 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 * Under **Create Instance** click on **Launch Instance**.
 * On the line **Red Hat Enterprise Linux 64 Bit - Free tier eligible** press the **Select** button.
 * On the **Choose Instance Type** screen ensure the **Micro Instances** tab on the left is selected.
+
+#### Configure Instance Details ####
 * Press **Next: Configure Instance Details**. 
 * On the **Configure Instance Details** screen change the **Number of instances** to 2.
 * Leave **Network** as the default.
 * **Subnet** can be **No preference**.
 * Ensure **Public IP** is checked.
 * Leave all else at their default values.
+
+#### Review and Launch ####
 * Click **Review and Launch**.
 * Make a note of **Security group name** on the **Review Instance Launch** screen.
 * Click **Launch**.
@@ -35,9 +39,9 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 * After the **.pem** file is saved click the **Launch Instance** button.
 * On the **Launch Status** screen click the **View Instances** button.
 
-### Configure the Security Group ###
+## Configure the Security Group ##
 
-* NETWORK & SECURITY > Security Groups
+* On the left hand side of the AWS console click **NETWORK & SECURITY > Security Groups**
 * Remembering the **Security group name** from earlier, click on the appropriate line item in the list.
 * Below the list of security group names will display details for the current security group.
 * Click the **Inbound** tab.
