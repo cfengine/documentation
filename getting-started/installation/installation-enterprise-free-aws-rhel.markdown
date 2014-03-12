@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installing Enterprise 25 Free with AWS and RHEL Using Micro Instances
+title: Installing Enterprise 25 Free with AWS™ and RHEL Using Micro Instances
 categories: [Getting Started, Installation, Installing Enterprise Free 25, AWS, RHEL]
 published: true
 sorting: 20
@@ -8,15 +8,16 @@ alias: getting-started-installation-installing-enterprise-free-aws-rhel.html
 tags: [getting started, installation, enterprise free, aws, rhel]
 ---
 
-These instructions describe how to install the latest version of CFEngine Enterprise 25 Free with AWS and RHEL using Micro Instances. 
+These instructions describe how to install the latest version of CFEngine Enterprise 25 Free with Amazon Web Services™ (AWS™) and Red Hat® 
+Enterprise Linux® (RHEL) using Micro Instances. 
 
 This is the full version of CFEngine Enterprise, but the number of Hosts (clients) is limited to 25.
 
-## Initial Configuration in AWS ##
+## Initial Configuration in AWS™ ##
 
-### Configure 2 RHEL Virtual Machine Instances in AWS ###
+### Configure 2 RHEL Virtual Machine Instances in AWS™ ###
 
-* Login to AWS.
+* Login to AWS™.
 * Under **Create Instance** click on **Launch Instance**.
 * On the line **Red Hat Enterprise Linux 64 Bit - Free tier eligible** press the **Select** button.
 * On the **Choose Instance Type** screen ensure the **Micro Instances** tab on the left is selected.
@@ -41,7 +42,7 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 
 ## Configure the Security Group ##
 
-* On the left hand side of the AWS console click **NETWORK & SECURITY > Security Groups**
+* On the left hand side of the AWS™ console click **NETWORK & SECURITY > Security Groups**
 * Remembering the **Security group name** from earlier, click on the appropriate line item in the list.
 * Below the list of security group names will display details for the current security group.
 * Click the **Inbound** tab.
@@ -51,7 +52,7 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 * Click the **+Add Rule** button.
 * Click **Apply Rule Changes**.
 
-## Accessing AWS VMs via SSH on Windows Using PuTTY and PuTTYgen ##
+## Accessing AWS™ VMs via SSH on Windows Using PuTTY and PuTTYgen ##
 
 ### Get PuTTY and PuTTYgen ###
 
@@ -77,7 +78,7 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 
 ### Configure PuTTY ###
 
-* In the AWS Console, navigate to **INSTANCES > Instances**.
+* In the AWS™ Console, navigate to **INSTANCES > Instances**.
 * Make a note of the 2 different **Public DNS** entries for the virtual machines that were setup earlier (e.g. ec2-xxx-xxx-xxx-xxx.us-west-1.compute.amazonaws.com, where the x's represent numbers).
 * Launch PuTTY by either:
 	* Double clicking **putty.exe** from the download location, if downloaded directly.
@@ -109,22 +110,37 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 
 ### Configure RHEL Firewall ###
 
-* On the command line enter **sudo yum install system-config-firewall**
-* When **system-config-firewall** is installed, next enter **sudo system-config-firewall**
+#### Install the Firewall ####
+
+* Ensure you are logged into both virtual machines. 
+* In both enter **sudo yum install system-config-firewall** to install.
+* Hit '**y**' if prompted.
+
+#### Configure the Firewall on the Policy Server (AKA hub) ####
 
 The following is only necessary for one of the two virtual machines:
 
+* When **system-config-firewall** is installed, next enter **sudo system-config-firewall**
 * In the **Firewall Configuration** screen use the **Tab** key to go to **Customize**.
 * Hit the **Enter** key.
+
+##### Open Port 80 (HTTPD) #####
 * On the **Trusted Services** screen, scroll down to **WWW (HTTPD)**, AKA port 80.
 * Hit the **Space Bar** to toggle the **WWW** entry (i.e. ensure it is on, showing an asterisk beside the name).
+
+##### Open Port 5308 (CFEngine) #####
 * Hit the **Tab** key again until **Forward** is highlighted, then hit **Enter**.
 * Hit the **Tab** key until **Add** is highlighted, then hit **Enter**.
 * Enter '**5308**' in the **Port** section.
 * Hit the **Tab** key and enter '**tcp**' in the **Protocol** section. 
 * Hit the **Tab** key until **OK** is highlighted, and hit **Enter**.
+
+##### Wrapping Up Firewall Configuration #####
+
 * Hit the **Tab** key until **Close** is highlighted, and hit **Enter**.
 * Hit the **Tab** key or **arrow** keys until **OK** is highlighted, and hit **Enter**.
+
+##### Disabling Firewall on a Host (Warning: Only Do This If Absolutely Necessary) #####
 
 For the other virtual machine you may need to do the following if you see an error when bootstrapping this virtual machine in later steps:
 
@@ -215,7 +231,7 @@ through your web browser at:
 
 http://`<External IP address of your Policy Server>`
 
-Note: The External IP address is available in the AWS console.
+Note: The External IP address is available in the AWS™ console.
 
 username: admin
 password: admin
