@@ -206,9 +206,7 @@ The Policy Server is installed.
 
 ## 3. Install Enterprise on Hosts
 
-Install Enterprise on your designated Host (the second of the two virtual machines, without the configured firewall) by running the script below. Per the **Free 25** agreement, you can
-install Enterprise on 25 Hosts. Note that the Hosts must be
-on the same network as the Policy Server that you just installed in Step 2.
+Install Enterprise on your designated Host (the second of the two virtual machines, without the configured firewall) by running the script below. Per the **Free 25** agreement, you can install Enterprise on 25 Hosts. Note that the Hosts must be on the same network as the Policy Server that you just installed in Step 2.
 
 ```
 wget http://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh client
@@ -267,11 +265,3 @@ through the Mission Portal, this advanced, command-line tutorial shows you how t
 * CFEngine [manuals][Learning CFEngine].
 * Additional [tutorials, examples, and documentation][Learning Resources].
 
-<hr>
-
-## Rate your experience
-
-Everyone is a first-time user a some point. We want to make the CFEngine Enterprise installation process easy for all of our new users.
-Before you forget your first-time experience, we would love for you to let us know how we can improve on this process.
-
-<iframe src="https://docs.google.com/forms/d/1-D5ny2_5HDmPBpRR69aZeC-dVY08VlDouCsdGXBCnyc/viewform?embedded=true" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
