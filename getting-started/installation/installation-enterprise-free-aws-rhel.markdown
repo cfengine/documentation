@@ -8,8 +8,7 @@ alias: getting-started-installation-installing-enterprise-free-aws-rhel.html
 tags: [getting started, installation, enterprise free, aws, rhel]
 ---
 
-These instructions describe how to install the latest version of CFEngine Enterprise 25 Free with Amazon Web Services™ (AWS™) and Red Hat® 
-Enterprise Linux® (RHEL) using Micro Instances. 
+These instructions describe how to install the latest version of CFEngine Enterprise 25 Free with Amazon Web Services™ (AWS™) and Red Hat® Enterprise Linux® (RHEL) using Micro Instances. 
 
 The tutorial will cover the following steps:
 
