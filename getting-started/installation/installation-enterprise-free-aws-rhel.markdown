@@ -11,6 +11,14 @@ tags: [getting started, installation, enterprise free, aws, rhel]
 These instructions describe how to install the latest version of CFEngine Enterprise 25 Free with Amazon Web Services™ (AWS™) and Red Hat® 
 Enterprise Linux® (RHEL) using Micro Instances. 
 
+The tutorial will cover the following steps:
+
+1. Initial Configuration of the Virtual Machines.
+2. Configure the Security Group.
+3. Configure SSH Access to the Virtual Machines Using PuTTY (for Windows machines).
+4. Configuration of the Firewall on the Policy Server.
+5. Install CFEngine on the Policy Server and Host Virtual Machines. 
+
 This is the full version of CFEngine Enterprise, but the number of Hosts (clients) is limited to 25.
 
 ## Initial Configuration in AWS™ ##
@@ -166,8 +174,6 @@ can also define new desired states (business policies) for your infrastructure.
 
 
 ## 1. Download and install Enterprise on a Policy Server
-
-Please Note: Internet access is required from the host if you wish to use the quick install script.
 
 Run the following script on your designated Policy Server (hub), the virtual machine with the configured firewall from earlier steps:
 
