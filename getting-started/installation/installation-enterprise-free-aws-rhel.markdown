@@ -94,7 +94,9 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 ### Login to Virtual Machines Using PuTTY ###
 
 * If one of the two virtual machines is configured and its details loaded in the PuTTY interface, click the **Open** button.
+	* Note: It may be necessary to redo the steps from selecting **Connection > SSH > Auth** through selecting the **.ppk** private key file. In other words, when configuring the connection the private key file may not be persistently saved.
 * Wait a moment, and select **Yes** if prompted.
+	* This prompt will generally only be necessary when trying to login for the very first time 
 * Once the first virtual machine is logged into, right click the top of PuTTY's application window (e.g. the part of the window decoration displaying the virtual machine name).
 * In the contextual menu that then shows click **New Session**.
 * Select the second virtual machine entry in the **Saved Sessions** list.
@@ -103,29 +105,31 @@ This is the full version of CFEngine Enterprise, but the number of Hosts (client
 
 ### Configure RHEL Firewall ###
 
-* sudo yum install system-config-firewall
-* sudo system-config-firewall
-* Allow Trusted Services WWW (AKA HTTPD, port 80)
-* Forward > Add
-* Port '**5308**' and Protocol '**tcp**'. 
-* **OK**
-* **Close**
-* **OK**
+* On the command line enter **sudo yum install system-config-firewall**
+* When **system-config-firewall** is installed, next enter **sudo system-config-firewall**
 
-## Setup CFEngine ##
+The following is only necessary for one of the two virtual machines:
 
-**Note the following requirements:**
+* In the **Firewall Configuration** screen use the **Tab** key to go to **Customize**.
+* Hit the **Enter** key.
+* On the **Trusted Services** screen, scroll down to **WWW (HTTPD)**, AKA port 80.
+* Hit the **Space Bar** to toggle the **WWW** entry (i.e. ensure it is on, showing an asterisk beside the name).
+* Hit the **Tab** key again until **Forward** is highlighted, then hit **Enter**.
+* Hit the **Tab** key until **Add** is highlighted, then hit **Enter**.
+* Enter '**5308**' in the **Port** section.
+* Hit the **Tab** key and enter '**tcp**' in the **Protocol** section. 
+* Hit the **Tab** key until **OK** is highlighted, and hit **Enter**.
+* Hit the **Tab** key until **Close** is highlighted, and hit **Enter**.
+* Hit the **Tab** key or **arrow** keys until **OK** is highlighted, and hit **Enter**.
 
-* To install this version of CFEngine Enterprise, your machine must be running a recent version of Linux.
-This installation script has been tested on RHEL 5 and 6, SLES 11, CentOS 5 and 6, and Debian 6 and 7.
-* You need a minimum of 2 GB of available memory and a modern 64 bit processor.
-* Plan for approximately 100MB of disk space per host. Due to MongoDB's pre-allocation strategy, always provide an
-extra 2G to 4G of disk space if you plan to bootstrap more hosts later.
-* You need a least two VMs/servers, one for the Policy Server and one for a Host (client). They must be on the same network.
-* The Policy Server needs to run on a dedicated OS with a vanilla installation (i.e. it only has repositories and packages officially
-supported by the OS vendor)
+For the other virtual machine you may need to do the following if you see an error when bootstrapping this virtual machine in later steps:
 
-## Installation Overview
+* In the **Firewall Configuration** screen use the **Tab** key to go to **Firewall**.
+* Turn off the firewall by toggling the entry with the **Space** bar.
+
+Note: Turning off the firewall in a production environment is considered unsafe.
+
+## CFEngine Installation Overview
 
 During the course of the instructions outlined in this guide, you will perform the following tasks:
 
@@ -145,7 +149,7 @@ can also define new desired states (business policies) for your infrastructure.
 
 Please Note: Internet access is required from the host if you wish to use the quick install script.
 
-Run the following script on your designated Policy Server (hub) 64-bit machine (32-bit is not supported on the Policy Server):
+Run the following script on your designated Policy Server (hub), the virtual machine with the configured firewall from earlier steps:
 
 ```
 $ wget http://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh hub
@@ -177,7 +181,7 @@ The Policy Server is installed.
 
 ## 3. Install Enterprise on Hosts
 
-Install Enterprise on your designated Host(s) by running the script below. Per the **Free 25** agreement, you can
+Install Enterprise on your designated Host (the second of the two virtual machines, without the configured firewall) by running the script below. Per the **Free 25** agreement, you can
 install Enterprise on 25 Hosts. Note that the Hosts must be
 on the same network as the Policy Server that you just installed in Step 2.
 
@@ -185,7 +189,7 @@ on the same network as the Policy Server that you just installed in Step 2.
 wget http://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh  && sudo bash ./quick-install-cfengine-enterprise.sh client
 ```
 
-Note that this installation works on 64- and 32-bit machines.
+Note that this installation works on 64- and 32-bit machines (but in this tutorial only 64-bit machines are being used).
 
 ## 4. Bootstrap the Host to the Policy Server
 
@@ -205,7 +209,9 @@ The installation process is complete and CFEngine Enterprise is up and running o
 The Mission Portal is immediately accessible. Connect to the Policy Server
 through your web browser at:
 
-http://`<IP address of your Policy Server>`
+http://`<External IP address of your Policy Server>`
+
+Note: The External IP address is available in the AWS console.
 
 username: admin
 password: admin
