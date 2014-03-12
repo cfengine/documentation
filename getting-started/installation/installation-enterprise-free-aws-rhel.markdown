@@ -243,12 +243,6 @@ The Mission Portal runs TCP port 80 by default. (Click [here] (https://cfengine.
 to configure the Mission Portal to use HTTPS instead of HTTP.) During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Simply refresh the web page
 and login again if necessary.
 
-Note: If you are running Enterprise with Vagrant, you must add the
-correct port: http://localhost:<port> in your browser.  The <port> is the port-forwarder
-number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_port", guest: 80, host: 8080; the port will be 8080).
-
-<hr>
-
 ## Tutorials
 
 * [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches (Enterprise Only)] This tutorial
