@@ -4330,56 +4330,56 @@
       "attributes": {
         "classes_include": {
           "attribute": "classes_include",
-          "status": "normal",
+          "status": "deprecated",
           "type": "slist",
           "range": ".*",
           "visibility": "body"
         },
         "classes_exclude": {
           "attribute": "classes_exclude",
-          "status": "normal",
+          "status": "deprecated",
           "type": "slist",
           "range": ".*",
           "visibility": "body"
         },
         "variables_include": {
           "attribute": "variables_include",
-          "status": "normal",
+          "status": "deprecated",
           "type": "slist",
           "range": ".*",
           "visibility": "body"
         },
         "variables_exclude": {
           "attribute": "variables_exclude",
-          "status": "normal",
+          "status": "deprecated",
           "type": "slist",
           "range": ".*",
           "visibility": "body"
         },
         "promise_notkept_log_include": {
           "attribute": "promise_notkept_log_include",
-          "status": "normal",
+          "status": "deprecated",
           "type": "slist",
           "range": ".*",
           "visibility": "body"
         },
         "promise_notkept_log_exclude": {
           "attribute": "promise_notkept_log_exclude",
-          "status": "normal",
+          "status": "deprecated",
           "type": "slist",
           "range": ".*",
           "visibility": "body"
         },
         "promise_repaired_log_include": {
           "attribute": "promise_repaired_log_include",
-          "status": "normal",
+          "status": "deprecated",
           "type": "slist",
           "range": ".*",
           "visibility": "body"
         },
         "promise_repaired_log_exclude": {
           "attribute": "promise_repaired_log_exclude",
-          "status": "normal",
+          "status": "deprecated",
           "type": "slist",
           "range": ".*",
           "visibility": "body"
@@ -4393,6 +4393,34 @@
         },
         "monitoring_exclude": {
           "attribute": "monitoring_exclude",
+          "status": "normal",
+          "type": "slist",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "metatags_include": {
+          "attribute": "metatags_include",
+          "status": "normal",
+          "type": "slist",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "metatags_exclude": {
+          "attribute": "metatags_exclude",
+          "status": "normal",
+          "type": "slist",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "promise_handle_include": {
+          "attribute": "promise_handle_include",
+          "status": "normal",
+          "type": "slist",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "promise_handle_exclude": {
+          "attribute": "promise_handle_exclude",
           "status": "normal",
           "type": "slist",
           "range": ".*",
