@@ -48,6 +48,10 @@ Any host can be a policy server in Community installations of CFEngine.
 | Windows         | 2008         | x386               |
 | Windows         | 2008, 2012   | x86-64             |
 
+CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.
+This means that CFEngine Enterprise has been technically verified by IBM
+to be installed in and manage VIOS environments.
+
 ## Hub/Host compatibility
 
 We strongly recommend to install identical versions on all hosts and servers 
