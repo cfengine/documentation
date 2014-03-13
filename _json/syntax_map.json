@@ -4570,8 +4570,8 @@
         "protocol_version": {
           "attribute": "protocol_version",
           "status": "normal",
-          "type": "string",
-          "range": "1,classic,2,latest",
+          "type": "option",
+          "range": "0,undefined,1,classic,2,latest",
           "visibility": "body"
         }
       }
