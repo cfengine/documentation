@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Installing Enterprise 25 Free with AWS™ and RHEL Using Micro Instances
-categories: [Getting Started, Installation, Installing Enterprise Free 25, AWS, RHEL]
+title: Installing with AWS and RHEL
+categories: [Getting Started, Installation, Installing Enterprise, AWS, RHEL]
 published: true
 sorting: 20
-alias: getting-started-installation-installing-enterprise-free-aws-rhel.html
+alias: getting-started-installation-installing-aws-rhel.html
 tags: [getting started, installation, enterprise free, aws, rhel]
 ---
 
@@ -242,6 +242,10 @@ password: admin
 The Mission Portal runs TCP port 80 by default. (Click [here] (https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP)
 to configure the Mission Portal to use HTTPS instead of HTTP.) During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Simply refresh the web page
 and login again if necessary.
+
+## 6. What Next? ##
+
+
 
 ## Tutorials
 
