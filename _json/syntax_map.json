@@ -3106,7 +3106,7 @@
           "attribute": "servers",
           "status": "normal",
           "type": "slist",
-          "range": "[A-Za-z0-9_.:-]+",
+          "range": "[A-Za-z0-9_.:-\\[\\]]+",
           "visibility": "body"
         },
         "collapse_destination_dir": {
@@ -3196,8 +3196,8 @@
         "portnumber": {
           "attribute": "portnumber",
           "status": "normal",
-          "type": "int",
-          "range": "1,65535",
+          "type": "string",
+          "range": "",
           "visibility": "body"
         },
         "preserve": {
@@ -3247,6 +3247,13 @@
           "status": "normal",
           "type": "option",
           "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        },
+        "protocol_version": {
+          "attribute": "protocol_version",
+          "status": "normal",
+          "type": "option",
+          "range": "0,undefined,1,classic,2,latest",
           "visibility": "body"
         }
       }
@@ -4559,6 +4566,13 @@
           "type": "option",
           "range": "true,false,yes,no,on,off",
           "visibility": "body"
+        },
+        "protocol_version": {
+          "attribute": "protocol_version",
+          "status": "normal",
+          "type": "string",
+          "range": "1,classic,2,latest",
+          "visibility": "body"
         }
       }
     },
@@ -4980,6 +4994,13 @@
           "attribute": "allowciphers",
           "status": "normal",
           "type": "string",
+          "range": "",
+          "visibility": "body"
+        },
+        "allowlegacyconnects": {
+          "attribute": "allowlegacyconnects",
+          "status": "normal",
+          "type": "slist",
           "range": "",
           "visibility": "body"
         }
@@ -7028,8 +7049,8 @@
           "range": ".*"
         },
         {
-          "type": "int",
-          "range": "0,99999999999"
+          "type": "string",
+          "range": ".*"
         },
         {
           "type": "string",
@@ -7289,8 +7310,8 @@
           "range": "@[(][a-zA-Z0-9]+[)]"
         },
         {
-          "type": "int",
-          "range": "0,99999999999"
+          "type": "string",
+          "range": ".*"
         },
         {
           "type": "string",
