@@ -129,4 +129,4 @@ have global scope.
 Note that namespaced bundles work exactly the same way as
 non-namespaced bundles (which are actually in the `default`
 namespace).  You just say `namespace:bundle_name` instead of
-`bundle_name`.
+`bundle_name`.  See [Namespaces] for more details.
