@@ -14,13 +14,28 @@ The policy server makes important files available to client machines.
 
 ## How Does it Work ##
 
-The policy server itself only makes the files available on the network. It is up to the clients for which the server is responsible to pull the files themselves. The server will not do this on their behalf.
+The policy server itself only makes the files available on the network. It is up to the clients for which the server is responsible to pull the files themselves. The server will not do this on behalf of its clients.
 
 ## Basic Policy Server Configuration ##
 
 ### def.cf ###
 
+(**1**) Find the following line:
+```
+"domain"  string    => "your.domain.here",
+```
+(**2**) Change **your.domain.here** to your domain name, e.g. **example.com**.
+
 ### controls/cf_execd.cf ###
+
+(**1**) Find the following line:
+```
+mailto                => "some-admin-list@me.local";
+```
+(**2**) Change **some-admin-list@me.local** to your email address.
+
+Note: On some systems this modification should hopefully work without needing to make any additional changes elsewhere. However, any emails sent from the system might also end up flagged as spam and sent directly to a user's junk mailbox.
+
 
 ### Configuring a Promise in promises.cf ###
 
