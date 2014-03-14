@@ -7,12 +7,14 @@ alias: reference-functions-bundlesmatching.html
 tags: [reference, utility functions, functions, bundlesmatching]
 ---
 
-[%CFEngine_function_prototype(regex, tag1, tag2, ...)%]
+[%CFEngine_function_prototype(name, tag1, tag2, ...)%]
 
-**Description:** Return the list of defined bundles matching `regex` and any tags given.
+**Description:** Return the list of defined bundles matching `name` and any
+tags given. Both bundlename and tags are regular expressions. `name` is
+required, tags are optional.
 
-This function searches for the [unanchored][unanchored] regular expression in 
-the list of currently defined bundles.
+This function searches for the the given [unanchored][unanchored] `name` and
+`tag1, `tag2`,... regular expression in the list of currently defined bundles.
 
 Every bundle is prefixed with the namespace, usually `default:`.
 
@@ -25,7 +27,7 @@ to do dynamic inputs and a dynamic bundle call chain.  The dynamic
 chain is constrained by an explicit regular expression to avoid
 accidental or intentional running of unwanted bundles.
 
-[%CFEngine_function_attributes(regex, tag1, tag2, ...)%]
+[%CFEngine_function_attributes(name, tag1, tag2, ...)%]
 
 **Example:**
 

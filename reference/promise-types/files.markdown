@@ -971,7 +971,7 @@ source, so relative and absolute links are mutually exclusive.
 **Example:**  
    
 ```cf3
-     body link_from example
+     body copy_from example
      {
      link_type => "symlink";
      source => "/tmp/source";
