@@ -14,7 +14,7 @@ The policy server makes important files available to client machines.
 
 ## How Does it Work ##
 
-The policy server itself only makes the files available on the network. It is up to the clients for which the server is responsible to pull the files themselves. The server will not do this on behalf of its clients.
+The policy server itself only makes important files available on the network. It is up to the clients for which the server is responsible to pull the files themselves. The server will not do this on behalf of its clients.
 
 ### Basic Policy Server Setup ###
 
