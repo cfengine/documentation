@@ -1,0 +1,76 @@
+---
+layout: default
+title: Make a Promise
+sorting: 100
+categories: [Getting Started, Make a Promise]
+published: true
+alias: getting-started-make-a-promise.html
+tags: [getting started, make a promise]
+---
+
+Central to CFEngine's effectiveness in system administration is an intuitive tool called a **promise**, which defines the intent and expectation of how some part of an overall system should behave. 
+
+CFEngine is a system that emphasizes the promises a client makes to the overall CFEngine network. Combining promises with patterns to describe where and when promises should apply is what CFEngine is all about.
+
+This document describes in brief what a promise is and what a promise does. There are other resources for finding out additional details about **promises** in the See Also section at the end of this document.
+
+## What Are Promises ##
+
+A promise is the documentation or definition of an intention to act or behave in some manner. They are the rules which CFEngine clients are responsible for implementing. 
+
+### The Value of a Promise ###
+
+When you make a promise it is an effort to improve trust, which is an economic time-saver. If you have trust then there is less need to verify, which in turn saves time and money.
+
+When individual components are empowered with clear guidance, independent decision making power, and the trust that they will fulfil their duties, then systems that are complex and scalable, yet still manageable, become possible. 
+
+### Anatomy of a Promise ###
+
+```cf3
+bundle agent hello_world
+{
+  reports:
+
+    any::
+
+      "Hello World!"
+        comment => "This is a simple promise saying hello to the world.";
+
+}
+```
+
+## How Promises Work ##
+
+Everything in CFEngine can be thought of as a promise to be kept by different resources in the system. In a system that delivers a web site with Apache httpd, an important promise may be to make sure that httpd is installed, running, and accessible on port 80. 
+
+In the simple **hello_world** example shown above, the **promise** is that the **Hello World** message will be sent to the log, which will then trigger other events that will be described below. 
+
+### Making a Promise ###
+
+Making a CFEngine **promise** will generally follow these simple steps:
+
+1. Open a text editor.
+2. Create the **promise** (see **Defining the Promise**).
+3. Save file on **policy server** under **/var/cfengine/masterfiles**.
+4. Let CFEngine know about the **promise** on the **policy server**, generally in the file **/var/cfengine/masterfiles/promises.cf**, or a file elsewhere but referred to in **promises.cf**.
+
+### Defining the Promise ###
+
+1. Create a bundle. (optional?)
+2. Insert the promise type.
+3. Add a class expression (optional, defaults to **Any**).
+3. Identify a promiser.
+4. Give attributes required values.
+
+### Observing the Promise in Action ###
+
+1. Policy server copies **promise** to its own **/var/cfengine/inputs** directory.
+2. Hosts pull their own copy of the same **promise** into its own **/var/cfengine/inputs** directory.
+3. The **promise** is executed.
+4. Any problems are logged?
+
+## See Also ##
+* [Promises][Promises]
+
+
+
