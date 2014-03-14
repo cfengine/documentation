@@ -16,9 +16,34 @@ The policy server makes important files available to client machines.
 
 The policy server itself only makes the files available on the network. It is up to the clients for which the server is responsible to pull the files themselves. The server will not do this on behalf of its clients.
 
-## Basic Policy Server Configuration ##
+### Basic Policy Server Setup ###
 
-### def.cf ###
+There are two essential things that need to be taken care of when setting up a simple policy server:
+
+1. Bootstrapping
+2. Configuration
+
+#### 1. Bootstrap the Policy Server ####
+
+The Policy Server must be bootstrapped to itself. 
+
+(**1**) Find the IP address of your Policy Server:
+
+``` 
+$ ifconfig
+```
+
+(**2**) Run the bootstrap command:
+
+```
+$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+```
+
+Note: The bootstrap command must also be run on any client attaching itself to this server, using the ip address of the policy server (i.e. exactly the same as the command run on the policy server itself).
+
+#### 2. Basic Policy Server Configuration ####
+
+##### def.cf #####
 
 (**1**) Find the following line:
 ```
@@ -26,7 +51,7 @@ The policy server itself only makes the files available on the network. It is up
 ```
 (**2**) Change **your.domain.here** to your domain name, e.g. **example.com**.
 
-### controls/cf_execd.cf ###
+##### controls/cf_execd.cf #####
 
 (**1**) Find the following line:
 ```
@@ -37,7 +62,7 @@ mailto                => "some-admin-list@me.local";
 Note: On some systems this modification should hopefully work without needing to make any additional changes elsewhere. However, any emails sent from the system might also end up flagged as spam and sent directly to a user's junk mailbox.
 
 
-### Configuring a Promise in promises.cf ###
+##### Configuring a Promise in promises.cf #####
 
 Assuming there is a promise called "**hello_world**" defined in a file located at **/var/cfengine/masterfiles/hello_world.cf**:
 
@@ -53,7 +78,7 @@ Assuming there is a promise called "**hello_world**" defined in a file located a
 "hello_world.cf",
 ```
 
-### Alternative Configuration Approach for promises.cf ###
+##### Alternative Configuration Approach for promises.cf #####
 
 
 
