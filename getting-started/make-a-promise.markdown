@@ -105,6 +105,14 @@ bundle agent hello_world
 
 #### Manually Executing the Promise ####
 
+(**1**) Assuming the promise file is located at **/var/cfengine/masterfiles/hello_world.cf**, on the command line type the following: 
+
+```# /var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/hello_world.cf --bundlesequence hello_world```
+
+(**2**) The output should show something similar to the following:
+
+```2013-08-20T14:03:43-0500   notice: R: Hello World!```
+
 
 #### Registering the Promise ####
 
