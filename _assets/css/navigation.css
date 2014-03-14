@@ -16,8 +16,9 @@
 #nav_wrapper li span {
     color: #fff;
     display: block;
-    font-family: DINRoundWeb, sans-serif, serif;
+    font-family: ff-din-round-web, sans-serif, serif;
     font-size: 1.1em;
+    font-weight: 300;
     height: 53px;
     line-height: 53px;
     padding: 0 2em;
