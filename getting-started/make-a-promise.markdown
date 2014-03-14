@@ -109,17 +109,33 @@ bundle agent hello_world
 
 ```# /var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/hello_world.cf --bundlesequence hello_world```
 
-(**2**) The output should show something similar to the following:
+(**2**) The output will include something similar to the following:
 
-```2013-08-20T14:03:43-0500   notice: R: Hello World!```
+```notice: R: Hello World!```
 
 
 #### Registering the Promise ####
 
-1. Policy server copies **promise** to its own **/var/cfengine/inputs** directory.
-2. Hosts pull their own copy of the same **promise** into its own **/var/cfengine/inputs** directory.
+Registering the promise with CFEngine consists of some simple steps:
+
+(**1**) On the policy server, open the file **/var/cfengine/masterfiles/promises.cf** in a text editor.
+(**2**) At the end of the **bundlesequence** section add the following line:
+
+```
+"hello_world",
+```
+(**3**) At the end of the **inputs** section add the following line:
+
+```
+"hello_world.cf",
+```
+
+With the above information CFEngine will then do the following:
+
+1. The policy server copies the **hello_world promise** defined in **promises.cf** to its own **/var/cfengine/inputs** directory.
+2. Hosts pull their own copy of the same **hello_world promise** into its own **/var/cfengine/inputs** directory.
 3. The **promise** is executed.
-4. Any problems are logged?
+4. In the **hello_world** example an adminstrator, defined in the file **controls/cf_execd.cf**, will be emailed the message "**Hello World!**". 
 
 ## See Also ##
 * [Promises][Promises]
