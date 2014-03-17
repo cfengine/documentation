@@ -9,7 +9,8 @@ alias: getting-started-overviews.html
 
 Read these overviews to get a good understanding of CFEngine fundamentals.
 
-* [Security Overview][Security Overview]
 * [Promises Overview][Promises Overview]
+* [System Overview][System Overview]
+* [Security Overview][Security Overview]
 
 
