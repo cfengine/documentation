@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Configure CFEngine Policy Server
+title: Policy Server Overview
 sorting: 100
-categories: [Getting Started, Policy Server]
+categories: [Getting Started, Overviews, System Overview, Policy Server Overview]
 published: true
-alias: getting-started-policy-server.html
-tags: [getting started, policy server]
+alias: getting-started-overviews-policy-server.html
+tags: [getting started, overviews, system overview, policy server overview]
 ---
 
 ## What is the Policy Server 
