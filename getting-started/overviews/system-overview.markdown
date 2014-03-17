@@ -1,7 +1,7 @@
 ---
 layout: default
 title: System Overview
-sorting: 100
+sorting: 10
 categories: [Getting Started, Overviews, System Overview]
 published: true
 alias: getting-started-overviews-system.html
@@ -27,6 +27,7 @@ All machines, whether they are policy servers or hosts, will have these three im
 [/var/cfengine/bin/cf-monitord](#cf-monitord)
 
 #### Other Applications ####
+
 [/var/cfengine/bin/cf-agent](#cf-agent)
 [/var/cfengine/bin/cf-key](#cf-key)
 [/var/cfengine/bin/cf-promises](#cf-promises)
