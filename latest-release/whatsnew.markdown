@@ -95,7 +95,11 @@ of TLS for full encryption of all network traffic.
 
 CFEngine 3.6 introduces a new networking protocol, which uses TLS for authentication.
 After the authentication, all dialog is encrypted within the established TLS session.
-The `cf-serverd` is still able to speak the legacy protocol with old agents.
+
+To ease with the upgrade process, `cf-serverd` is still able to speak the legacy
+protocol with old agents, and new agents can speak the legacy protocol with old servers.
+CFEngine operators should turn off support for the legacy protocol as soon as all hosts
+are running 3.6 to benefit from the full encryption and future improvements.
 
 ## ChangeLog
 
