@@ -17,6 +17,8 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
 -   `apiVersion` *(string)* API version string.
 -   `enterpriseVersion` *(string)* Version of the CFEngine Enterprise
     build.
+-   `uiVersion` *(string)* The internal build number of the Enterprise UI
+    (since 3.6)
 -   `coreVersion` *(string)* The version of CFEngine Core (Community)
     the Enterprise version was built against.
 -   `databaseHostname` *(string)* Hostname (or IP) of the database the
