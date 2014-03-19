@@ -45,4 +45,9 @@ variable (e.g. `999999999`), a warning will also be printed.
 more bytes are read than will fit in a string, the string is
 truncated to the maximum.
 
+* On Windows, the file will be read in text mode, which means that
+CRLF line endings will be converted to LF line endings in the
+resulting variable. This can make the variable length shorter than the
+size of the file being read.
+
 **History:** Warnings about the size limit and the special `0` value were introduced in 3.6.0
