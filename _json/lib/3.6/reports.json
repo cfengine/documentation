@@ -1,5 +1,270 @@
 {
-      "bundles": [],
+      "bundles": [
+        {
+          "sourcePath": "../masterfiles/lib/3.6/reports.cf",
+          "line": 30,
+          "namespace": "default",
+          "name": "cfe_internal_hub_maintain",
+          "bundleType": "agent",
+          "arguments": [],
+          "promiseTypes": [
+            {
+              "line": 40,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 41,
+                      "promiser": "report_settings",
+                      "attributes": [
+                        {
+                          "line": 84,
+                          "lval": "data",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "parsejson",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "[\n                                            { \n                                                \\\"report\\\": \\\"contexts\\\",\n                                                \\\"table\\\": \\\"__ContextsLog\\\",\n                                                \\\"history_length_days\\\": 7,\n                                                \\\"time_key\\\": \\\"ChangeTimeStamp\\\"\n                                            },\n                                            { \n                                                \\\"report\\\": \\\"variables\\\",\n                                                \\\"table\\\": \\\"__VariablesLog\\\",\n                                                \\\"history_length_days\\\": 7,\n                                                \\\"time_key\\\": \\\"ChangeTimeStamp\\\"\n                                            },\n                                            { \n                                                \\\"report\\\": \\\"software\\\",\n                                                \\\"table\\\": \\\"__SoftwareLog\\\",\n                                                \\\"history_length_days\\\": 28,\n                                                \\\"time_key\\\": \\\"ChangeTimeStamp\\\"\n                                            },\n                                            { \n                                                \\\"report\\\": \\\"software_updates\\\",\n                                                \\\"table\\\": \\\"__SoftwareUpdatesLog\\\",\n                                                \\\"history_length_days\\\": 28,\n                                                \\\"time_key\\\": \\\"ChangeTimeStamp\\\"\n                                            },\n                                            { \n                                                \\\"report\\\": \\\"filechanges\\\",\n                                                \\\"table\\\": \\\"__FileChangesLog\\\",\n                                                \\\"history_length_days\\\": 365,\n                                                \\\"time_key\\\": \\\"ChangeTimeStamp\\\"\n                                            }"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 86,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "Hr00.Min00_05",
+                  "promises": [
+                    {
+                      "line": 88,
+                      "promiser": "Remove old report history",
+                      "attributes": [
+                        {
+                          "line": 89,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "cfe_internal_database_cleanup_reports",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "@(report_settings)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 90,
+                          "lval": "action",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "if_elapsed",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "5"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 92,
+                      "promiser": "Remove cf-consumer history",
+                      "attributes": [
+                        {
+                          "line": 93,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "cfe_internal_database_cleanup_consumer_status",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "50000"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 94,
+                          "lval": "action",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "if_elapsed",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "5"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/reports.cf",
+          "line": 97,
+          "namespace": "default",
+          "name": "cfe_internal_database_cleanup_reports",
+          "bundleType": "agent",
+          "arguments": [
+            "settings"
+          ],
+          "promiseTypes": [
+            {
+              "line": 99,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 100,
+                      "promiser": "index",
+                      "attributes": [
+                        {
+                          "line": 100,
+                          "lval": "slist",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "getindices",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "settings"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 102,
+                      "promiser": "remove_query_$(settings[$(index)][report])",
+                      "attributes": [
+                        {
+                          "line": 107,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "DELETE FROM $(settings[$(index)][table]) AS T\n                            USING (SELECT HostKey, \n                                          (LastAgentLocalExecutionTimestamp - INTERVAL \\'$(settings[$(index)][history_length_days]) day\\') AS purge_time \n                                   FROM __agentstatus) AS A\n                            WHERE T.HostKey = A.HostKey AND T.$(settings[$(index)][time_key]) <= A.purge_time;"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 110,
+              "name": "commands",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 111,
+                      "promiser": "$(sys.workdir)/bin/psql cfdb -c \"$(remove_query_$(settings[$(index)][report]))\"",
+                      "attributes": [
+                        {
+                          "line": 112,
+                          "lval": "handle",
+                          "rval": {
+                            "type": "string",
+                            "value": "cf_database_maintain_report_$(settings[$(index)][report])"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/reports.cf",
+          "line": 115,
+          "namespace": "default",
+          "name": "cfe_internal_database_cleanup_consumer_status",
+          "bundleType": "agent",
+          "arguments": [
+            "row_count"
+          ],
+          "promiseTypes": [
+            {
+              "line": 119,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 120,
+                      "promiser": "remove_query",
+                      "attributes": [
+                        {
+                          "line": 121,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "DELETE FROM status WHERE ts IN (SELECT ts FROM status ORDER BY ts DESC OFFSET $(row_count));"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 123,
+              "name": "commands",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 124,
+                      "promiser": "$(sys.workdir)/bin/psql cfdb -c \"$(remove_query)\"",
+                      "attributes": [
+                        {
+                          "line": 125,
+                          "lval": "handle",
+                          "rval": {
+                            "type": "string",
+                            "value": "cf_database_maintain_consumer_status"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "bodies": [
         {
           "sourcePath": "../masterfiles/lib/3.6/reports.cf",
