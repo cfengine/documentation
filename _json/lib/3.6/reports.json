@@ -13,7 +13,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 8,
+                  "line": 7,
                   "lval": "metatags_include",
                   "rval": {
                     "type": "list",
@@ -24,13 +24,13 @@
                       },
                       {
                         "type": "string",
-                        "value": "monitoring"
+                        "value": "report"
                       }
                     ]
                   }
                 },
                 {
-                  "line": 9,
+                  "line": 8,
                   "lval": "metatags_exclude",
                   "rval": {
                     "type": "list",
@@ -43,7 +43,7 @@
                   }
                 },
                 {
-                  "line": 17,
+                  "line": 16,
                   "lval": "monitoring_include",
                   "rval": {
                     "type": "list",
@@ -89,7 +89,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/reports.cf",
-          "line": 20,
+          "line": 19,
           "namespace": "default",
           "name": "default_data_select_policy_hub",
           "bodyType": "report_data_select",
@@ -99,7 +99,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 27,
+                  "line": 25,
                   "lval": "metatags_include",
                   "rval": {
                     "type": "list",
@@ -110,13 +110,13 @@
                       },
                       {
                         "type": "string",
-                        "value": "monitoring"
+                        "value": "report"
                       }
                     ]
                   }
                 },
                 {
-                  "line": 28,
+                  "line": 26,
                   "lval": "metatags_exclude",
                   "rval": {
                     "type": "list",
