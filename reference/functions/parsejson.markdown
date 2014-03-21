@@ -7,12 +7,13 @@ alias: reference-functions-parsejson.html
 tags: [reference, io functions, functions, parsejson, json, container]
 ---
 
-[%CFEngine_function_prototype(string)%]
+[%CFEngine_function_prototype(json_data, maxbytes)%]
 
 **Description:** Parses JSON data directly from an inlined string and
-returns the result as a `data` variable.
+returns the result as a `data` variable.  You can specify a maximum
+number of bytes with `maxbytes`.
 
-[%CFEngine_function_attributes(string)%]
+[%CFEngine_function_attributes(json_data, maxbytes)%]
 
 Please note that because JSON uses double quotes, it's usually most
 convenient to use single quotes for the string (CFEngine allows both
