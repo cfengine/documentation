@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, getfields]
 
 [%CFEngine_function_prototype(regex, filename, split, array_lval)%]
 
-**Description:** Fill `arrayl_lval` with fields in the lines from file `filename` that match `regex`, split on `split`.
+**Description:** Fill `array_lval` with fields in the lines from file `filename` that match `regex`, split on `split`.
 
 The function returns the number of lines matched. This function is most
 useful when you want only the first matching line (e.g., to mimic the
