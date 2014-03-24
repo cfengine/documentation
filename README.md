@@ -10,9 +10,7 @@ Make sure your machine has everything according to jekyll requirements: https://
 
 You also need:
 + java - for closure compiler
-+ python-pygments for the code hightlghting
-Make sure you added cfengine3 lexer from Diego Zamboni. 
-Instructions and code - http://zzamboni.org/blog/cfengine3-lexer-for-pygments/
++ python-pygments 1.5 or later for the code highlighting
 
 Gems:
 + jekyll-asset-pipeline
