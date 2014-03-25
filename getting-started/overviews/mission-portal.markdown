@@ -19,6 +19,8 @@ Mission Portal's GUI environment also allows infrastructure engineers to make qu
 ## See Also ##
 * [Sketches Available in the Mission Portal][Sketches Available in the Mission Portal]
 * [Sketch Flow in CFEngine Enterprise][Sketch Flow in CFEngine Enterprise]
+* [Integrating Mission Portal with git][Integrating Mission Portal with git]
+* [Controlling Access to the Design Center UI][Controlling Access to the Design Center UI]
 
 
 
