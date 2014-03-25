@@ -5,7 +5,7 @@ sorting: 100
 categories: [Getting Started, Overviews, Mission Portal Overview]
 published: true
 alias: getting-started-overviews-mission-portal.html
-tags: [getting started, overviews, mission portal overview]
+tags: [getting started, overviews, mission portal]
 ---
 
 Infrastructure Engineering with the CFEngine Mission Portal
