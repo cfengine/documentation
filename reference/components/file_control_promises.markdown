@@ -26,6 +26,18 @@ This directive can be given multiple times within any file,
 outside of body and bundle definitions.
 
 
+### inputs
+
+**Description:** The `inputs` slist contains additional filenames to parse for promises.
+
+The filenames specified are all assumed to be relative to the directory
+of the file which references them.
+
+**See also:** [`inputs`][Components and Common Control#inputs] in
+[`body common control`][Components and Common Control]
+
+**History:** Was introduced in CFEngine 3.6.0
+
 ### namespace
 
 **Description:** The namespace string identifies a private namespace 
