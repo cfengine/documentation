@@ -9,6 +9,7 @@ git fetch original
 git reset --hard original/master
 git clean -dfx
 cp -r /home/vagrant/_json /home/vagrant/documentation-generator
+cp -r /home/vagrant/doc_help /home/vagrant/documentation-generator/_generated
 cd /home/vagrant/documentation-generator/_json
 DIFF=$(git diff -- .)
 
@@ -25,11 +26,18 @@ if [ ! -z "$LIB_DIFF" ]; then
    git commit -m "Autocommit: libraries changed `date +%F-%T`"
 fi
 
+cd /home/vagrant/documentation-generator/_generated/doc_help
+HELP_DIFF=$(git diff -- .)
+if [ ! -z "$HELP_DIFF" ]; then
+   git add -A .
+   git commit -m "Autocommit: help text changed `date +%F-%T`"
+fi
+
 if [ ! -z "$DIFF" ]; then
    git push -f
    /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:master -h cfengine-autobuild:autocheckSyntaxMap
 fi
-cd ..
+cd /home/vagrant/documentation-generator
 
 
 sed '/^\[.*\[.*\].*\]/d' $WRKDIR/documentation-generator/_references.md > $WRKDIR/documentation-generator/new_references.md
