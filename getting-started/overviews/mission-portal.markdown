@@ -10,7 +10,7 @@ tags: [getting started, overviews, mission portal]
 
 Infrastructure Engineering with the CFEngine Mission Portal
 
-When engineering IT infrastructure, and especially once the scale of a system grows to become quite large, it becomes much more of a challenge to recognize what the system consists of, what is happening at any given moment (or over time), and recognizing any changes that might be occurring on the system.
+When engineering IT infrastructure, and especially once the scale of a system grows to become quite large, it is much more of a challenge to recognize what the system consists of, what is happening at any given moment in time (or over time), and recognizing changes in state.
 
 To meet this challenge, the CFEngine Mission Portal provides tools to collect, organize, store, and deliver data from every host to a primary server and then make that data available for high level reports or alerts and notifications.
 
