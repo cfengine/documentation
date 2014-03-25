@@ -26,7 +26,7 @@ if [ ! -z "$LIB_DIFF" ]; then
    git commit -m "Autocommit: libraries changed `date +%F-%T`"
 fi
 
-cd /home/vagrant/documentation-generator/_generated/doc_help
+cd /home/vagrant/documentation-generator/_generated
 HELP_DIFF=$(git diff -- .)
 if [ ! -z "$HELP_DIFF" ]; then
    git add -A .
