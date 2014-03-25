@@ -251,6 +251,8 @@ as the file which references them (this is usually
     }
 ```
 
+**See also:** [`inputs`][file control#inputs] in `body file control`
+
 **Notes:**
 
 If no filenames are specified, no other filenames will be included in the 
