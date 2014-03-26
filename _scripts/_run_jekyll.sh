@@ -10,7 +10,7 @@ git reset --hard original/master
 git clean -dfx
 cp -r /home/vagrant/_json /home/vagrant/documentation-generator
 cp /home/vagrant/doc_help/* /home/vagrant/documentation-generator/_generated
-cd /home/vagrant/documentation-generator/_json
+cd /home/vagrant/documentation-generator
 DIFF=$(git diff -- .)
 
 SYNTAX_DIFF=$(git diff -- syntax_map.json)
