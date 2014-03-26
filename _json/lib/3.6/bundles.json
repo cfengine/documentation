@@ -1938,22 +1938,23 @@
           "name": "cmerge",
           "bundleType": "agent",
           "arguments": [
+            "name",
             "varlist"
           ],
           "promiseTypes": [
             {
-              "line": 673,
+              "line": 677,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 674,
-                      "promiser": "all",
+                      "line": 678,
+                      "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 674,
+                          "line": 678,
                           "lval": "data",
                           "rval": {
                             "type": "functionCall",
@@ -1967,7 +1968,7 @@
                           }
                         },
                         {
-                          "line": 674,
+                          "line": 678,
                           "lval": "policy",
                           "rval": {
                             "type": "string",
@@ -1977,11 +1978,11 @@
                       ]
                     },
                     {
-                      "line": 675,
-                      "promiser": "all",
+                      "line": 679,
+                      "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 675,
+                          "line": 679,
                           "lval": "data",
                           "rval": {
                             "type": "functionCall",
@@ -1989,7 +1990,7 @@
                             "arguments": [
                               {
                                 "type": "string",
-                                "value": "all"
+                                "value": "$(name)"
                               },
                               {
                                 "type": "string",
@@ -1999,7 +2000,7 @@
                           }
                         },
                         {
-                          "line": 675,
+                          "line": 679,
                           "lval": "policy",
                           "rval": {
                             "type": "string",
@@ -2009,11 +2010,11 @@
                       ]
                     },
                     {
-                      "line": 676,
-                      "promiser": "all_str",
+                      "line": 680,
+                      "promiser": "$(name)_str",
                       "attributes": [
                         {
-                          "line": 676,
+                          "line": 680,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -2025,13 +2026,13 @@
                               },
                               {
                                 "type": "string",
-                                "value": "all"
+                                "value": "$(name)"
                               }
                             ]
                           }
                         },
                         {
-                          "line": 676,
+                          "line": 680,
                           "lval": "policy",
                           "rval": {
                             "type": "string",
