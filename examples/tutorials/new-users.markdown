@@ -65,11 +65,11 @@ For a more detailed overview:
 
 #### Useful Terms
 
-* **promise:** One or more descriptions (written by you, the sysadmin) of a system state you wish to get to.
-* **bundle:** A collection of promises, usually contained within a single file.
-* **convergent:** Describes a promise that may be executed in a several-step, sequential fashion. CFEngine may make several passes at completing a single promise, performing a few of the steps each pass.
-* **agent:** A CFEngine instance that a) retrieves its promises from a **server** over TCP; b) validates and executes those promises, configuring itself to the desired state.
-* **server:** A CFEngine instance that a) contains promises that get deployed to agents; and b) listens on a TCP socket for agent connections. A **server** is also known as a **policy hub** (for the purposes of this primer).
+* `promise`: One or more descriptions (written by you, the sysadmin) of a system state you wish to get to.
+* `bundle`: A collection of promises, usually contained within a single file.
+* `convergent`: Describes a promise that may be executed in a several-step, sequential fashion. CFEngine may make several passes at completing a single promise, performing a few of the steps each pass.
+* `agent`: A CFEngine instance that a) retrieves its promises from a `server` over TCP; b) validates and executes those promises, configuring itself to the desired state.
+* `server`: A CFEngine instance that a) contains promises that get deployed to agents; and b) listens on a TCP socket for agent connections. A `server` is also known as a `policy hub` (for the purposes of this primer).
 
 [Back to top of page.][Up and Running#Overview] 
 
@@ -80,9 +80,9 @@ For a more detailed overview:
 
 Download the latest CFEngine 3.5 Community Edition packages from: http://cfengine.com/community
 
-Decide on a RHEL or Debian system that will act as your CFEngine **server**, and install the package using **rpm(8)**, **dpkg(1)**, or whatever method you prefer.
+Decide on a RHEL or Debian system that will act as your CFEngine `server`, and install the package using `rpm(8)`, `dpkg(1)`, or whatever method you prefer.
 
-**Note**: The same package is used for both **server** and **agent** installs.
+**Note**: The same package is used for both `server` and `agent` installs.
 
 
 **IMPORTANT!**
@@ -96,7 +96,7 @@ This is fine. No worries for the time being.
 ### Set up master directories
 
 
-Navigate to **/var/cfengine/masterfiles**. This directory is where your CFEngine server keeps everything it will be sharing with agents. In other words, the changes we make here will ultimately be made on the agents as well.
+Navigate to `/var/cfengine/masterfiles`. This directory is where your CFEngine server keeps everything it will be sharing with agents. In other words, the changes we make here will ultimately be made on the agents as well.
 
 ```
 cd /var/cfengine/masterfiles
@@ -113,8 +113,8 @@ mkdir myTemplates
 
 Here is (for the purposes of this primer) how the propagation of promise changes happen from the CFEngine server to the CFEngine agent:
 
-* You make a change within **/var/cfengine/masterfiles** or its subdirectories
-* Agent systems connect to the server, and copy **/var/cfengine/masterfiles** into their local **/var/cfengine/inputs** directory
+* You make a change within `/var/cfengine/masterfiles` or its subdirectories
+* Agent systems connect to the server, and copy `/var/cfengine/masterfiles` into their local `/var/cfengine/inputs` directory
 
 
 ### Customize your server configuration
@@ -122,16 +122,16 @@ Here is (for the purposes of this primer) how the propagation of promise changes
 
 #### def.cf
 
-Configure **/var/cfengine/masterfiles/def.cf**: This contains two variables of interest: **domain** and **acl**. 
+Configure `/var/cfengine/masterfiles/def.cf`: This contains two variables of interest: `domain` and `acl`. 
 
-These variables allow us to manage access control, so what we specify here determines which agents have access. Set **domain** to your organization's domain; when an agent attempts to connect to the server, the server does a reverse DNS lookup. For the connection to proceed, the agent's domain should match what you specify here.
+These variables allow us to manage access control, so what we specify here determines which agents have access. Set `domain` to your organization's domain; when an agent attempts to connect to the server, the server does a reverse DNS lookup. For the connection to proceed, the agent's domain should match what you specify here.
 
-**Tip**: If your agent hostnames are **web.me.local** and **mongo.me.local**, then you should set **domain** to **me.local**.
+**Tip**: If your agent hostnames are `web.me.local` and `mongo.me.local`, then you should set `domain` to `me.local`.
 
 
-Set **acl** to a comma-separated, quoted (see the example below) list of subnets your agents will be connecting from. Same idea: for the connection to proceed, the agent must be on one of those subnets.
+Set `acl` to a comma-separated, quoted (see the example below) list of subnets your agents will be connecting from. Same idea: for the connection to proceed, the agent must be on one of those subnets.
 
-**def.cf**
+`def.cf`
 
 ```cf3
 # This is just a snippet from def.cf. Search for and
@@ -154,15 +154,15 @@ vars:
 #### controls/cf_execd.cf
 
 
-Configure **/var/cfengine/masterfiles/controls/cf_execd.cf**: This tells the CFEngine server what email address to notify about certain events and about reports designed by you, the sysadmin.
+Configure `/var/cfengine/masterfiles/controls/cf_execd.cf`: This tells the CFEngine server what email address to notify about certain events and about reports designed by you, the sysadmin.
 
-Set **mailto** to an email address that you will read and monitor. Set **mailfrom** as shown below. Set **smtpserver** as appropriate for your environment.
+Set `mailto` to an email address that you will read and monitor. Set `mailfrom` as shown below. Set `smtpserver` as appropriate for your environment.
 
 
 **Tip:** Most RHEL and Debian servers have an SMTP service listening on localhost by default. If your agent systems do not, consult with your mail administrator about what to specify here.
 
 
-**controls/cf_execd.cf**
+`controls/cf_execd.cf`
 
 ```cf3
 # This is just a snippet from controls/cf_execd.cf. Search for and
@@ -185,19 +185,19 @@ body executor control
 #### update.cf
 
 
-Configure **/var/cfengine/masterfiles/update.cf**: This file controls what files the agents receive from the server. Before changing it, create your **failsafe.cf** from it:
+Configure `/var/cfengine/masterfiles/update.cf`: This file controls what files the agents receive from the server. Before changing it, create your `failsafe.cf` from it:
 
 ```
   # cd /var/cfengine/masterfiles
   # cp update.cf failsafe.cf
 ```
 
-**Tip:** failsafe.cf is a safety mechanism: If **update.cf** somehow becomes damaged, CFEngine agents know to fall back to failsafe.cf. After you fix update.cf, CFEngine then begins working from update.cf again.
+**Tip:** failsafe.cf is a safety mechanism: If `update.cf` somehow becomes damaged, CFEngine agents know to fall back to failsafe.cf. After you fix update.cf, CFEngine then begins working from update.cf again.
 
 
-Two separate sections will be updated in update.cf: **body file&#95;select u&#95;input&#95;files** and **body copy&#95;from u&#95;rcp()**. Take extra care to edit the correct sections, and pay close attention to quotes, commas, brackets, and semicolons. 
+Two separate sections will be updated in update.cf: `body file&#95;select u&#95;input&#95;files` and `body copy&#95;from u&#95;rcp()`. Take extra care to edit the correct sections, and pay close attention to quotes, commas, brackets, and semicolons. 
 
-**update.cf**
+`update.cf`
 
 ```cf3
 # This is just a snippet from update.cf. Search for and
@@ -231,13 +231,13 @@ purge                   => "true" ;
 
 #### promises.cf
 
-Configure **/var/cfengine/masterfiles/promises.cf**: This file drives the agent promise execution. In other words, the agent reads this file to figure out what instructions you have for it.
+Configure `/var/cfengine/masterfiles/promises.cf`: This file drives the agent promise execution. In other words, the agent reads this file to figure out what instructions you have for it.
 
-Under **body common control**, add the lines that follow to **bundlesequence**. Take care to add the lines just before the closing bracket.
+Under `body common control`, add the lines that follow to `bundlesequence`. Take care to add the lines just before the closing bracket.
 
 Add the lines that follow to inputs. (Same caveat about respecting the closing bracket.)
 
-**promises.cf**
+`promises.cf`
 
 ```cf3
 
@@ -284,9 +284,9 @@ bundlesequence          => {
 ## Set up your promise management files
 
 
-Within the **/var/cfengine/masterfiles/myPromises** directory, create a skeleton promise file, and name it **z01PromiseSetup.cf**. (Doing so will make adding new promises in the future a lot easier.)
+Within the `/var/cfengine/masterfiles/myPromises` directory, create a skeleton promise file, and name it `z01PromiseSetup.cf`. (Doing so will make adding new promises in the future a lot easier.)
 
-**myPromises/z01PromiseSetup.cf**
+`myPromises/z01PromiseSetup.cf`
 
 ```cf3
 bundle common z01_promise_setup
@@ -305,7 +305,7 @@ vars:
 ```
 
 
-**The bottom line:** From this point forward, we will edit this file (and not **promises.cf**) to add new promises.
+**The bottom line:** From this point forward, we will edit this file (and not `promises.cf`) to add new promises.
 
 [Back to top of page.][Up and Running#Overview] 
 
@@ -315,7 +315,7 @@ vars:
 ### Create a "hello world" promise file
 
 
-Within the **/var/cfengine/masterfiles/myPromises** directory, create a file called **a01SayHello.cf**, with the following contents:
+Within the `/var/cfengine/masterfiles/myPromises` directory, create a file called `a01SayHello.cf`, with the following contents:
 
 #### a01SayHello.cf
 
@@ -369,7 +369,7 @@ insert_lines:
 ### Make CFEngine aware of the new promise
 
 
-Now edit **/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf** as follows.
+Now edit `/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf` as follows.
 
 ```cf3
 bundle common z01_promise_setup
@@ -429,7 +429,7 @@ Assuming you wish for the CFEngine server to manage itself (i.e. by running a CF
   # cf-agent --bootstrap cfmaster.me.local
 ```
 
-(Of course, replace **cfmaster.me.local** with your CFEngine server hostname. You are bootstrapping the server to itself.)
+(Of course, replace `cfmaster.me.local` with your CFEngine server hostname. You are bootstrapping the server to itself.)
 
 
 You now have both a CFEngine server and a CFEngine agent running on your server system.
@@ -447,22 +447,22 @@ You now have both a CFEngine server and a CFEngine agent running on your server 
 
 Download the latest CFEngine 3.5 Community Edition packages from: http://cfengine.com/community
 
-On each of your agent systems (the systems you want managed by CFEngine), install the appropriate RHEL or Debian package using **rpm(8)**, **dpkg(1)**, or whatever method you prefer.
+On each of your agent systems (the systems you want managed by CFEngine), install the appropriate RHEL or Debian package using `rpm(8)`, `dpkg(1)`, or whatever method you prefer.
 
 
-**Note:** The same package is used for both **server** and **agent** installs. Use the same CFEngine version on the agents that you installed on the server.
+**Note:** The same package is used for both `server` and `agent` installs. Use the same CFEngine version on the agents that you installed on the server.
 
 
 #### Start the agent
  
 
-Getting the agent started is easy! We've already done most of the work on the server. The agent will get everything it needs from the server's **masterfiles**, and keep them locally in **/var/cfengine/inputs**. Run the following on the agent system:
+Getting the agent started is easy! We've already done most of the work on the server. The agent will get everything it needs from the server's `masterfiles`, and keep them locally in `/var/cfengine/inputs`. Run the following on the agent system:
 
 ```
   # cf-agent --bootstrap cfmaster.me.local
 ```
 
-(Of course, replace **cfmaster.me.local** with your CFEngine *server* hostname.)
+(Of course, replace `cfmaster.me.local` with your CFEngine `server` hostname.)
 
 That's it! Your agent will soon begin executing the promises it receives from the server.
 
@@ -473,7 +473,7 @@ That's it! Your agent will soon begin executing the promises it receives from th
 
 Before continuing with further promise examples, let's back up a step and walk through notable lines in our first promise.
 
-**a01SayHello.cf**
+`a01SayHello.cf`
 
 ```cf3
 bundle agent a01_say_hello                                     # <1>
@@ -522,39 +522,39 @@ insert_lines:                                                  # <17>
 
 **Point by Point:**
 
-<1> The **a01&#95;say&#95;hello** bundle is called by **promises.cf**, by way of the **z01PromiseSetup.cf** file we created. Recall that we specified **a01&#95;say&#95;hello** within the **z01&#95;promise&#95;setup** bundle.
+<1> The `a01&#95;say&#95;hello` bundle is called by `promises.cf`, by way of the `z01PromiseSetup.cf` file we created. Recall that we specified `a01&#95;say&#95;hello` within the `z01&#95;promise&#95;setup` bundle.
 
-<2> CFEngine bundles can have a **methods** section. It is used to call other bundles.
+<2> CFEngine bundles can have a `methods` section. It is used to call other bundles.
 
-<3> Here we call the **a01_run** bundle, which is defined a few lines below.
+<3> Here we call the `a01_run` bundle, which is defined a few lines below.
 
-<4> CFEngine bundles can have a **vars** section. It defines variables of type **string** or **slist** (roughly, string type and array type, respectively).
+<4> CFEngine bundles can have a `vars` section. It defines variables of type `string` or `slist` (roughly, string type and array type, respectively).
 
-<5> CFEngine bundles can have a **files** section for specifying files and describing how they must be changed.
+<5> CFEngine bundles can have a `files` section for specifying files and describing how they must be changed.
 
-<6> The expanded value of **$(myfile)** is **/tmp/helloFromCfengine.txt**. This is the file we will be editing.
+<6> The expanded value of `$(myfile)` is `/tmp/helloFromCfengine.txt`. This is the file we will be editing.
 
-<7> The ```edit_line``` directive says to call bundle **a01_edit**.
+<7> The ```edit_line``` directive says to call bundle `a01_edit`.
 
 <8> This directive says to empty the file before editing it.
 
-<9> The **perms** directive sets the file (m)ode to 644, the file (o)wner to root, and the file (g)roup owner to root.
+<9> The `perms` directive sets the file (m)ode to 644, the file (o)wner to root, and the file (g)roup owner to root.
 
 <10> This directive says to create the file if it does not already exist.
 
-<11> This directive says to set a **class** called **make_some_noise** to the value true, _if_ CFEngine discovers that the file is not in the state it expected and therefore needs to edit it (either its content or its permissions). We will get to more examples of **classes** later, and they are further enumerated by URL references at the end of this primer.
+<11> This directive says to set a `class` called `make_some_noise` to the value true, _if_ CFEngine discovers that the file is not in the state it expected and therefore needs to edit it (either its content or its permissions). We will get to more examples of `classes` later, and they are further enumerated by URL references at the end of this primer.
 
-<12> Remember when we set up a mailto address in the **controls/cf_execd.cf** server configuration? The **reports** section utilizes that address to send an email on anything we report about here. (It also logs a message, via syslog.)
+<12> Remember when we set up a mailto address in the `controls/cf_execd.cf` server configuration? The `reports` section utilizes that address to send an email on anything we report about here. (It also logs a message, via syslog.)
 
-<13> We are checking the **make&#95;some&#95;noise** class. If it's set to **true**, we generate the report (which gets emailed and logged). If it's set to **false**, we don't.
+<13> We are checking the `make&#95;some&#95;noise` class. If it's set to `true`, we generate the report (which gets emailed and logged). If it's set to `false`, we don't.
 
-<14> This value is the message we report. The **$(this.promise&#95;filename)** is a special CFEngine variable. The **$(this)** variables are enumerated by a URL at the end of this primer.
+<14> This value is the message we report. The `$(this.promise&#95;filename)` is a special CFEngine variable. The `$(this)` variables are enumerated by a URL at the end of this primer.
 
-<15> Another bundle, this time of type **edit&#95;line**.
+<15> Another bundle, this time of type `edit&#95;line`.
 
-<16> We define a variable, and assign it some text, including a special CFEngine variable called **$(sys.fqhost)**, which contains the system's fully-qualified hostname. The **$(sys)** variables are enumerated by a URL at the end of this primer.
+<16> We define a variable, and assign it some text, including a special CFEngine variable called `$(sys.fqhost)`, which contains the system's fully-qualified hostname. The `$(sys)` variables are enumerated by a URL at the end of this primer.
 
-<17> The **edit&#95;line** bundles can have an **insert&#95;lines** section. As you can probably guess, they insert into the file the text we specify.
+<17> The `edit&#95;line` bundles can have an `insert&#95;lines` section. As you can probably guess, they insert into the file the text we specify.
 
 [Back to top of page.][Up and Running#Overview] 
 
@@ -563,12 +563,12 @@ insert_lines:                                                  # <17>
 ## Set up a global classes promise
 
 
-To add flexibility to our promise files, we are going to set up a promise that provides **global** classes to our CFEngine environment. That means we can group hosts together arbitrarily, as needed.
+To add flexibility to our promise files, we are going to set up a promise that provides `global` classes to our CFEngine environment. That means we can group hosts together arbitrarily, as needed.
 
-Within **/var/cfengine/masterfiles/myPromises**, create the **z02GlobalClasses.cf** file.
+Within `/var/cfengine/masterfiles/myPromises`, create the `z02GlobalClasses.cf` file.
 
 
-**.z02GlobalClasses.cf**
+`.z02GlobalClasses.cf`
 
 ```cf3
 bundle common z02_global_classes
@@ -601,9 +601,9 @@ classes:
 #### Make CFEngine aware of the new promise
 
 
-Update **/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf** as shown.
+Update `/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf` as shown.
 
-**.z01PromiseSetup.cf**
+`.z01PromiseSetup.cf`
 
 ```cf3
 bundle common z01_promise_setup
@@ -630,19 +630,19 @@ vars:
 
 Let's get serious now. You are probably loosely, incompletely familiar with the anatomy of a promise file at this point. If you think the way I do, you're ready for a lot more examples to pore over and learn from.
 
-Read through the promise files in this section, and then create them as they're labeled here, all within **var/cfengine/masterfiles/myPromises** on your CFEngine server.
+Read through the promise files in this section, and then create them as they're labeled here, all within `var/cfengine/masterfiles/myPromises` on your CFEngine server.
 
 
-**Tip:** Leave the **/var/cfengine/masterfiles** directory alone on agent systems. Only the server uses **masterfiles**. Agents read and execute promises from **/var/cfengine/inputs**.
+**Tip:** Leave the `/var/cfengine/masterfiles` directory alone on agent systems. Only the server uses `masterfiles`. Agents read and execute promises from `/var/cfengine/inputs`.
 
 
 
 #### Install packages, based on OS
 
 
-As always, create the new promise file in **/var/cfengine/masterfiles/myPromises**.
+As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
 
-**.b01BaselinePackages.cf**
+`.b01BaselinePackages.cf`
 
 ```cf3
 bundle agent b01_baseline_packages
@@ -698,24 +698,24 @@ packages:                                             # <2>
 
 **Point by Point:**
 
-<1> Our next taste of CFEngine **classes**, and checking for true or false value. In this case, we are testing: Is this a RHEL 6 system, or a Debian 6 system, or a Debian 7 system? (The pipe '|' operator means OR in this context.) If it's one of those operating systems, we call the **b01_run** bundle.
+<1> Our next taste of CFEngine `classes`, and checking for true or false value. In this case, we are testing: Is this a RHEL 6 system, or a Debian 6 system, or a Debian 7 system? (The pipe '|' operator means OR in this context.) If it's one of those operating systems, we call the `b01_run` bundle.
 
-<2> CFEngine bundles can have a **packages** section for managing packages.
+<2> CFEngine bundles can have a `packages` section for managing packages.
 
-<3> Another **class** test. This time, we are testing: Is this a RHEL system (of any major/minor version)? If so, we install the packages defined in **$(desired_packages)**.
+<3> Another `class` test. This time, we are testing: Is this a RHEL system (of any major/minor version)? If so, we install the packages defined in `$(desired_packages)`.
 
 <4> This directive chooses a suitable package installation method for us. Don't worry about it until you are ready to dig deeper into CFEngine.
 
-<5> Another **class** test. Is this a Debian system (of any major/minor version)? If so, install the packages.
+<5> Another `class` test. Is this a Debian system (of any major/minor version)? If so, install the packages.
 
-<6> This directive says to use **apt(8)**.
+<6> This directive says to use `apt(8)`.
 
 
 #### Make CFEngine aware of the new promise
 
-Update **/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf** as shown.
+Update `/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf` as shown.
 
-**.z01PromiseSetup.cf**
+`.z01PromiseSetup.cf`
 
 ```cf3
 bundle common z01_promise_setup
@@ -740,9 +740,9 @@ vars:
 #### Manage a config file, based on a template
 
 
-Before creating this next promise in **/var/cfengine/masterfiles/myPromises**, create a **/var/cfengine/masterfiles/myTemplates/motd.txt** file, with the text **Hey, this is a template** inside.
+Before creating this next promise in `/var/cfengine/masterfiles/myPromises`, create a `/var/cfengine/masterfiles/myTemplates/motd.txt` file, with the text `Hey, this is a template` inside.
 
-**.b21ManageConfig.cf**
+`.b21ManageConfig.cf`
 
 ```cf3
 bundle agent b21_manage_config
@@ -780,21 +780,21 @@ files:
 
 **Point by Point:**
 
-<1> This test utilizes the **my_mongo_hosts** class, which we defined earlier in **z02GlobalClasses.cf**.
+<1> This test utilizes the `my_mongo_hosts` class, which we defined earlier in `z02GlobalClasses.cf`.
 
-<2> Notice how we have specified a path under the **inputs** directory? This is because agents use the **/var/cfengine/inputs** directory, NOT **/var/cfengine/masterfiles**!
+<2> Notice how we have specified a path under the `inputs` directory? This is because agents use the `/var/cfengine/inputs` directory, NOT `/var/cfengine/masterfiles`!
 
-<3> Here is something new and significant. This is how we are going to manage almost all configuration files in this primer. We create a template within **myTemplates**, and we use the **edit&#95;line** and **expand&#95;template** directive to populate it on agent systems. In this case, **/var/cfengine/inputs/myTemplates/motd.txt** will be created as **/tmp/motd** on agent systems.
+<3> Here is something new and significant. This is how we are going to manage almost all configuration files in this primer. We create a template within `myTemplates`, and we use the `edit&#95;line` and `expand&#95;template` directive to populate it on agent systems. In this case, `/var/cfengine/inputs/myTemplates/motd.txt` will be created as `/tmp/motd` on agent systems.
 
 
-**Remember:** We create CFEngine server promise files within **/var/cfengine/masterfiles**. The CFEngine agents consume those files within **/var/cfengine/inputs**.
+**Remember:** We create CFEngine server promise files within `/var/cfengine/masterfiles`. The CFEngine agents consume those files within `/var/cfengine/inputs`.
 
 #### Make CFEngine aware of the new promise
 
 
-Update **/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf** as shown.
+Update `/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf` as shown.
 
-**.z01PromiseSetup.cf**
+`.z01PromiseSetup.cf`
 
 ```cf3
 bundle common z01_promise_setup
@@ -819,20 +819,20 @@ vars:
 ```
 
 
-You understand how we're using **z01PromiseSetup.cf** now, right? For every promise we want to make CFEngine aware of, we need to:
+You understand how we're using `z01PromiseSetup.cf` now, right? For every promise we want to make CFEngine aware of, we need to:
 
-* Add the bundle name to the **bundles** slist.
-* Add the promise file name to the **promise_files** slist.
+* Add the bundle name to the `bundles` slist.
+* Add the promise file name to the `promise_files` slist.
 
 
 #### Manage a config file, on a per-host basis
 
 
-Before creating this next promise in **/var/cfengine/masterfiles/myPromises**, create a **/var/cfengine/masterfiles/myTemplates/motd.HOSTNAME.txt** file, with the text **Hey, this is a per-host template** inside.
+Before creating this next promise in `/var/cfengine/masterfiles/myPromises`, create a `/var/cfengine/masterfiles/myTemplates/motd.HOSTNAME.txt` file, with the text `Hey, this is a per-host template` inside.
 
-Replace **HOSTNAME** in the file path with your agent's unqualified hostname. (So **pluto.me.local** has an unqualified hostname of **pluto**.)
+Replace `HOSTNAME` in the file path with your agent's unqualified hostname. (So `pluto.me.local` has an unqualified hostname of `pluto`.)
 
-**.b22ManageConfigByHostname.cf**
+`.b22ManageConfigByHostname.cf`
 
 
 ```cf3
@@ -871,18 +871,18 @@ files:
 
 **Point by Point:**
 
-<1> Another special CFEngine variable example. The **$(sys.uqhost)** variable expands to the agent's unqualified hostname. This is a good strategy for customizing configurations on a per-host basis. For instance, the **iris.me.local** host (unqualified name **iris**) would look for the file **/var/cfengine/inputs/myTemplates/motd.iris.txt**.
+<1> Another special CFEngine variable example. The `$(sys.uqhost)` variable expands to the agent's unqualified hostname. This is a good strategy for customizing configurations on a per-host basis. For instance, the `iris.me.local` host (unqualified name `iris`) would look for the file `/var/cfengine/inputs/myTemplates/motd.iris.txt`.
 
-**Note:** Update **myPromises/z01PromiseSetup.cf** to include this promise.
+**Note:** Update `myPromises/z01PromiseSetup.cf` to include this promise.
 
 
 #### Manage a config file, and restart a service
 
 
-As always, create the new promise file in **/var/cfengine/masterfiles/myPromises**.
+As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
 
 
-**.b23ManageConfigAndServiceRestart.cf**
+`.b23ManageConfigAndServiceRestart.cf`
 
 ```cf3
 bundle agent b23_manage_config_and_restart_service
@@ -937,27 +937,27 @@ reports:
 
 **Point by Point:**
 
-<1> The config file template. Again, notice that it's looking in the **inputs** directory, because that is where agents look!
+<1> The config file template. Again, notice that it's looking in the `inputs` directory, because that is where agents look!
 
 <2> Directories need a dot (.) at the end. They just do.
 
-<3> The **handle** directive is used to identify this part of the promise to later parts of the promise. We can handle flow control this way.
+<3> The `handle` directive is used to identify this part of the promise to later parts of the promise. We can handle flow control this way.
 
-<4> The **depends&#95;on** directive works hand-in-hand with the earlier **handle** directive. It means that this part of the promise will only run if **b23&#95;create&#95;bazdir** has already successfully completed. The convergent nature of CFEngine means this may take several passes of the promise file for it to complete.
+<4> The `depends&#95;on` directive works hand-in-hand with the earlier `handle` directive. It means that this part of the promise will only run if `b23&#95;create&#95;bazdir` has already successfully completed. The convergent nature of CFEngine means this may take several passes of the promise file for it to complete.
 
-<5> Our **edit&#95;line** and **expand&#95;template** combo again. Manage your config files this way. It is reliable and easy to understand from a sysadmin perspective.
+<5> Our `edit&#95;line` and `expand&#95;template` combo again. Manage your config files this way. It is reliable and easy to understand from a sysadmin perspective.
 
-<6> CFEngine bundles can have a **commands** section which can issue commands directly to the system's shell. In CFEngine culture, these are to be used sparingly. But a service restart is a good candidate for appropriate use.
+<6> CFEngine bundles can have a `commands` section which can issue commands directly to the system's shell. In CFEngine culture, these are to be used sparingly. But a service restart is a good candidate for appropriate use.
 
 
-**Note:** Update **myPromises/z01PromiseSetup.cf** to include this promise.
+**Note:** Update `myPromises/z01PromiseSetup.cf` to include this promise.
 
 #### Add a group to /etc/group
 
 
-As always, create the new promise file in **/var/cfengine/masterfiles/myPromises**.
+As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
 
-**.b31AddGroup.cf**
+`.b31AddGroup.cf`
 
 ```cf3
 bundle agent b31_add_group
@@ -993,28 +993,28 @@ files:
 
 **Point by Point:**
 
-<1> Another nice **classes** example. Here, we are testing whether the agent system is a Debian (of any version) OS, and is also in the **my&#95;mongo&#95;hosts** class we defined in **z02GlobalClasses.cf**. The dot '.' operator means AND in this context.
+<1> Another nice `classes` example. Here, we are testing whether the agent system is a Debian (of any version) OS, and is also in the `my&#95;mongo&#95;hosts` class we defined in `z02GlobalClasses.cf`. The dot '.' operator means AND in this context.
 
-<2> This is a different type of variable naming than we are accustomed to seeing. Suffice it to say, it allows us to add multiple name/value pairs to the **$(group)** variable. It acts like an associative array, or hash.
+<2> This is a different type of variable naming than we are accustomed to seeing. Suffice it to say, it allows us to add multiple name/value pairs to the `$(group)` variable. It acts like an associative array, or hash.
 
-<3> This string of text is formatted exactly the way we want it to appear in **/etc/group**.
+<3> This string of text is formatted exactly the way we want it to appear in `/etc/group`.
 
-<4> Another string of text we want to appear in **/etc/group**.
+<4> Another string of text we want to appear in `/etc/group`.
 
-<5> Insert the group[] entries into **/etc/group**.
-
-
-**Tip:** We specify **b31&#95;run.group**, and not **$(b31&#95;run.group)**. That's not a typo; it's just the way we qualify this type of variable. Try to not think about it too hard (until you are ready to dig deeper into CFEngine).
+<5> Insert the group[] entries into `/etc/group`.
 
 
-**Note:** Update **myPromises/z01PromiseSetup.cf** to include this promise.
+**Tip:** We specify `b31&#95;run.group`, and not `$(b31&#95;run.group)`. That's not a typo; it's just the way we qualify this type of variable. Try to not think about it too hard (until you are ready to dig deeper into CFEngine).
+
+
+**Note:** Update `myPromises/z01PromiseSetup.cf` to include this promise.
 
 
 #### Add a shell user
 
-As always, create the new promise file in **/var/cfengine/masterfiles/myPromises**.
+As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
 
-**.b32AddShellUser.cf**
+`.b32AddShellUser.cf`
 
 ```cf3
 bundle agent b32_add_shell_user
@@ -1070,31 +1070,31 @@ files:
 
 **Point by Point:**
 
-<1> Another classes example. This is testing the unqualified hostname, and evaluating to true if hostname is **iris** or **nyx** or **pluto**.
+<1> Another classes example. This is testing the unqualified hostname, and evaluating to true if hostname is `iris` or `nyx` or `pluto`.
 
-<2> A string that's formatted exactly the way we want it to appear in **/etc/passwd**.
+<2> A string that's formatted exactly the way we want it to appear in `/etc/passwd`.
 
-<3> A string that's formatted the way we want it to appear in **/etc/shadow**. (The salted password digest has been truncated for the sake of brevity!)
+<3> A string that's formatted the way we want it to appear in `/etc/shadow`. (The salted password digest has been truncated for the sake of brevity!)
 
 <4> Another handle example. It will allow this part of the promise to be identified by later promise parts that run.
 
-<5> Insert the shadow[] entries into **/etc/shadow**.
+<5> Insert the shadow[] entries into `/etc/shadow`.
 
-<6> Only run this part of the promise after **b32&#95;create&#95;shadow&#95;entry** has already completed.
+<6> Only run this part of the promise after `b32&#95;create&#95;shadow&#95;entry` has already completed.
 
-<7> Insert pwd[] entries into **/etc/passwd**.
+<7> Insert pwd[] entries into `/etc/passwd`.
 
 
-**Note:** Update **myPromises/z01PromiseSetup.cf** to include this promise.
+**Note:** Update `myPromises/z01PromiseSetup.cf` to include this promise.
 
 
 
 #### Report on existence of files and users
 
 
-As always, create the new promise file in **/var/cfengine/masterfiles/myPromises**.
+As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
 
-**.b41ReportOnExistence.cf**
+`.b41ReportOnExistence.cf`
 
 ```cf3
 bundle agent b41_report_on_existence
@@ -1149,15 +1149,15 @@ reports:
 
 **Point by Point:**
 
-<1> A more advances **classes** test from which to learn. In this case, we logically group '()' two classes together, and utilize the negation '!' operator. So, if the agent is in our defined **my&#95;mongo&#95;hosts** OR in our defined **my&#95;web&#95;hosts** AND it's not a Debian host, it evaluates to true, and we run the **b41&#95;run** bundle.
+<1> A more advances `classes` test from which to learn. In this case, we logically group '()' two classes together, and utilize the negation '!' operator. So, if the agent is in our defined `my&#95;mongo&#95;hosts` OR in our defined `my&#95;web&#95;hosts` AND it's not a Debian host, it evaluates to true, and we run the `b41&#95;run` bundle.
 
-<2> The **fileexists()** function, as you can probably deduce, checks for the presence of a file on the filesystem. There are a number of CFEngine built-in functions which are enumerated in a URL in this primer's appendix.
+<2> The `fileexists()` function, as you can probably deduce, checks for the presence of a file on the filesystem. There are a number of CFEngine built-in functions which are enumerated in a URL in this primer's appendix.
 
 <3> Another function. This one tests for the existence of a shell user.
 
-<4> Another example of using a negation operator on a class. If **dir_test01** is false, then we run this report.
+<4> Another example of using a negation operator on a class. If `dir_test01` is false, then we run this report.
 
-**Note:** Update **myPromises/z01PromiseSetup.cf** to include this promise.
+**Note:** Update `myPromises/z01PromiseSetup.cf` to include this promise.
 
 [Back to top of page.][Up and Running#Overview] 
 
@@ -1195,7 +1195,7 @@ That's that. Now observe one of your agents, or speed things up there too..
   # cf-agent -IKf /var/cfengine/inputs/update.cf
 ```
 
-Remember, this is only if you wish to speed things up and not wait for CFEngine to take care of it naturally via its daemon processes. Notice how we are using the **inputs** directory here. Agents care only about **inputs**, not **masterfiles**.
+Remember, this is only if you wish to speed things up and not wait for CFEngine to take care of it naturally via its daemon processes. Notice how we are using the `inputs` directory here. Agents care only about `inputs`, not `masterfiles`.
 
 #### Immediately execute promises
 
