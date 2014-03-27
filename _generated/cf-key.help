@@ -8,6 +8,7 @@ Options:
   --output-file , -f value - Specify an alternative output file than the default (localhost)
   --show-hosts  , -s       - Show lastseen hostnames and IP addresses
   --remove-keys , -r value - Remove keys for specified hostname/IP
+  --force-removal, -x       - Force removal of keys (USE AT YOUR OWN RISK)
   --install-license, -l value - Install license without boostrapping (CFEngine Enterprise only)
   --print-digest, -p value - Print digest of the specified public key
   --trust-key   , -t value - Make cf-serverd/cf-agent trust the specified public key
