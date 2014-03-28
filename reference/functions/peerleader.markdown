@@ -26,8 +26,7 @@ list.
 
 [%CFEngine_function_attributes(filename, regex, groupsize)%]
 
-An arbitrary limit of 64 is set for `groupsize` to avoid nonsensical 
-promises.
+`groupsize` must be between 2 and 64 to avoid nonsensical promises.
 
 **Example:**
 
