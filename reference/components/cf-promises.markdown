@@ -20,6 +20,10 @@ either.  This may affect customers who use `execresult` for instance.
 Use the new `--eval-functions yes` command-line option (default is
 `no`) to retain the old behavior from 3.5.x and earlier.
 
+`cf-agent` calls `cf-promises` to validate the policy before running
+it.  In that case `--eval-functions` is not specified, so functions
+are not evaluated prematurely (as you would expect).
+
 ## Command reference
 
      --eval-functions, - value -
