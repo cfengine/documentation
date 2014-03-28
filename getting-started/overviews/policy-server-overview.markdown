@@ -2,10 +2,10 @@
 layout: default
 title: Policy Server Overview
 sorting: 100
-categories: [Getting Started, Overviews, System Overview, Policy Server Overview]
+categories: [Getting Started, Overviews, Policy Server Overview]
 published: true
 alias: getting-started-overviews-policy-server.html
-tags: [getting started, overviews, system overview, policy server overview]
+tags: [getting started, overviews, system overview, policy server]
 ---
 
 ## What is the Policy Server 
