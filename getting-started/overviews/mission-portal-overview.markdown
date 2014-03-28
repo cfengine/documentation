@@ -8,7 +8,7 @@ alias: getting-started-overviews-mission-portal.html
 tags: [getting started, overviews, mission portal]
 ---
 
-Infrastructure Engineering with the CFEngine Mission Portal
+## Infrastructure Engineering with the CFEngine Mission Portal
 
 When engineering IT infrastructure, and especially once the scale of a system grows to become quite large, it is much more of a challenge to recognize what the system consists of, what is happening at any given moment in time (or over time), and recognizing changes in state.
 
