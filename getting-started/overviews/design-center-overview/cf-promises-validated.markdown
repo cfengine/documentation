@@ -2,10 +2,10 @@
 layout: default
 title: cf_promises_validated
 sorting: 100
-categories: [Getting Started, Overviews, System Overview, Default Files, cf_promises_validated]
+categories: [Getting Started, Overviews, Design Center Overview, cf_promises_validated]
 published: true
-alias: getting-started-overviews-default-files-cf-promises-validated.html
-tags: [getting started, overviews, system overview, files, default files, file structure, cf_promises_validated]
+alias: getting-started-overviews-design-center-cf-promises-validated.html
+tags: [getting started, overviews, design center overview, file structure, cf_promises_validated]
 ---
 
 Several components of CFEngine reading policy (e.g. cf-agent, cf-execd, cf-serverd, etc.) require verification from cf-promises that syntax of policies is correct before touching the policy themselves. To illustrate this, if `cf-promises` runs every 5 minutes then there will be 12 checks occurring every hour, 24 hours a day, 7 days a week -- a total of 2016 possible validation checks. Each of those individual validation sessions can take some number of seconds to perform depending on the system, scale, circumstances and configuration.
