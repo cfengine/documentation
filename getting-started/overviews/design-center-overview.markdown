@@ -8,7 +8,3 @@ alias: getting-started-overviews-design-center.html
 tags: [getting started, overviews, design center]
 ---
 
-
-## Files ##
-
-[cf_promises_validated][cf_promises_validated]
