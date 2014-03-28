@@ -1892,7 +1892,7 @@ holder.s = {{vars.holder.s}}
 {% endraw %}
 
 Will produce this text in `/tmp/myfile.txt` when you run `cf-agent -f
-./test_mustache.cf`:
+./test_datastate_mustache.cf`:
 
 ```
 The holderclass is defined
