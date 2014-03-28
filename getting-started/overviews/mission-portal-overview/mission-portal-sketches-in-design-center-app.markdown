@@ -31,4 +31,5 @@ Note: `Sketches` can be activated multiple times with varying configuration and 
 ### See Also ###
 
 * [Design Center Sketches Guide][Design Center Sketches]
+* [Write a new Sketch][Write a new Sketch]
 
