@@ -16,6 +16,12 @@ To meet this challenge, the CFEngine Mission Portal provides tools to collect, o
 
 Mission Portal's GUI environment also allows infrastructure engineers to make quick and easy modification of any machine or group of machines within their domain using classifications of hosts and a template mechanism called sketches.
 
+* [Alerts and Notifications in the Mission Portal Dashboard][Alerts and Notifications in the Mission Portal Dashboard]
+* [Viewing Hosts in Mission Portal][Viewing Hosts in Mission Portal]
+* [Using Sketches in Mission Portal's Design Center GUI][Using Sketches in Mission Portal's Design Center GUI]
+* [Mission Portal Reports][Mission Portal Reports]
+* [Host Monitoring in Mission Portal][Host Monitoring in Mission Portal]
+
 ## See Also ##
 * [Sketches Available in the Mission Portal][Sketches Available in the Mission Portal]
 * [Sketch Flow in CFEngine Enterprise][Sketch Flow in CFEngine Enterprise]
