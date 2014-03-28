@@ -25,15 +25,15 @@ Mission Portal's GUI environment also allows infrastructure engineers to make qu
 
 CFEngine allows for arbitrary categorization of hosts based on specified criteria. If you are writing your own policy, you are able to set classes on hosts which can be used in the Mission Portal. If you are not, you can still use pre-defined groups that CFEngine discovers automatically in your environment.
 
-CFEngine's Mission Portal comes with a pre-defined host categorization based on operating systems used in your environment. The same categorization is used for the menu on the left of the Hosts App, the data-filtering inside the Reports App, and for the activation of sketches in the Design Center App.
+CFEngine's Mission Portal comes with a pre-defined host categorization based on operating systems used in your environment. The same categorization is used for the menu on the left of the [Hosts App][Viewing Hosts in Mission Portal], the data-filtering inside the [Reports App][Mission Portal Reports], and for the activation of sketches in the [Design Center App][Using Sketches in Mission Portal's Design Center App].
 
-You can also define your own categories and sub-categories. As part of the menu inside the Hosts App, you will find the option to add a new categorization. Here you can group your hosts in whichever way you need by combining different classes. You can then share your custom categorization within your team and organization (this needs special access rights).
+You can also define your own categories and sub-categories. As part of the menu inside the [Hosts App][Viewing Hosts in Mission Portal], you will find the option to add a new categorization. Here you can group your hosts in whichever way you need by combining different classes. You can then share your custom categorization within your team and organization (this needs special access rights).
 
 ### Mission Portal Topics ###
 
 * [Alerts and Notifications in the Mission Portal Dashboard][Alerts and Notifications in the Mission Portal Dashboard]
 * [Viewing Hosts in Mission Portal][Viewing Hosts in Mission Portal]
-* [Using Sketches in Mission Portal's Design Center GUI][Using Sketches in Mission Portal's Design Center GUI]
+* [Using Sketches in Mission Portal's Design Center App][Using Sketches in Mission Portal's Design Center App]
 * [Mission Portal Reports][Mission Portal Reports]
 * [Host Monitoring in Mission Portal][Host Monitoring in Mission Portal]
 
