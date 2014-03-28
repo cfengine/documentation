@@ -26,5 +26,9 @@ You also need to define the hosts you want to activate your configured sketch on
 When you're done configuring your `sketch` you need to activate it. This will trigger a commit to your configured git repository, and transform your configured sketch into CFEngine `policy`. You will then be able to follow-up on the state of your activation (`In Progress`, `OK`, and `Failed`), and report on potential issues.
 
 Note: `Sketches` can be activated multiple times with varying configuration and on different sets of hosts. The `Design Center App` indicates which sketches have been activated in your environment.
----
+
+
+### See Also ###
+
+* [Design Center Sketches Guide][Design Center Sketches]
 
