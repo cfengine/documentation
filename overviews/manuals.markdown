@@ -1,10 +1,11 @@
 ---
 layout: default
 title: Learning CFEngine 
-categories: [Manuals]
+categories: [Overviews, Manuals]
 published: true
 sorting: 30
-alias: manuals.html
+alias: overviews,manuals.html
+tags: [overviews, manuals]
 ---
 
 At its core, CFEngine is a simple framework which supplies a rich standard 

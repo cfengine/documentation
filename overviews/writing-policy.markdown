@@ -1,10 +1,11 @@
 ---
 layout: default
 title: Writing Policy
-categories: [Manuals, Writing Policy]
+categories: [Overviews, Writing Policy]
 published: true
 sorting: 50
-alias: manuals-writing-policy.html
+alias: overviews-writing-policy.html
+tags: [overviews, writing policy, policy]
 ---
 
 CFEngine offers a number of layers of abstraction. The most fundamental atom 

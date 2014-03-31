@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Enterprise API
-categories: [Manuals, Enterprise API]
+categories: [Overviews, Enterprise API]
 published: true
 sorting: 100
-alias: manuals-enterprise-api.html
-tags: [manuals, enterprise, REST, API, reporting]
+alias: overviews-enterprise-api.html
+tags: [overviews, enterprise, REST, API, reporting]
 ---
 
 The CFEngine Enterprise API allows HTTP clients to interact with the Policy server (hub) 

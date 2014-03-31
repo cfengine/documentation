@@ -5,6 +5,7 @@ categories: [Overviews, Concepts]
 published: true
 sorting: 30
 alias: overviews-concepts.html
+tags: [overviews, concepts]
 ---
 
 Read these concepts to get started understanding how CFEngine works.

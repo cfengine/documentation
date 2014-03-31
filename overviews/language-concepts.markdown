@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Language Concepts
-categories: [Manuals, Language Concepts]
+categories: [Overviews, Language Concepts]
 published: true
 sorting: 40
-alias: manuals-language-concepts.html
-tags: [manuals, language, syntax, concepts, promises]
+alias: overviews-language-concepts.html
+tags: [overviews, language, syntax, concepts, promises]
 ---
 
 There is only one grammatical form for statements in the language:

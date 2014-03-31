@@ -1,10 +1,11 @@
 ---
 layout: default
 title: Reports
-categories: [Manuals, Reports]
+categories: [Overviews, Reports]
 published: true
 sorting: 70
-alias: manuals-reports.html
+alias: overviews-reports.html
+tags: [overviews, reports, reporting]
 ---
 
 No promises made in CFEngine imply automatic aggregation of data to a central location. In

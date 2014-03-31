@@ -1,10 +1,10 @@
 ---
 layout: printable
 title: Knowledge Management
-categories: [Manuals, Knowledge Management]
+categories: [Overviews, Knowledge Management]
 published: false 
-alias: manuals-knowledge-management.html
-tags: [manuals, knowledge]
+alias: overviews-knowledge-management.html
+tags: [overviews, knowledge]
 ---
 
 [link](#why-does-knowledge-matter)
