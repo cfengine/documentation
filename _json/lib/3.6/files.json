@@ -5775,7 +5775,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 1579,
+          "line": 1575,
           "namespace": "default",
           "name": "test_aware_mog",
           "bodyType": "perms",
