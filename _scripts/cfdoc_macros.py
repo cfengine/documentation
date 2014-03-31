@@ -138,22 +138,40 @@ def promise_attribute(parameters, config):
 	promise_types = config["syntax_map"]["promiseTypes"]
 	body_types = config["syntax_map"]["bodyTypes"]
 	
-	# assumption: 
-	# header[1] = promise type
-	# header[2] = "Attributes"
-	# header[3] = attribute name
-	# header[4] = body attribute
-	promise_type_def = promise_types[header[1]]
-	attribute_def = promise_type_def["attributes"][header[3]]
-	attribute_type = attribute_def["type"]
-	if attribute_type == "body":
-		if header[4]:
-			body_type_def = body_types[header[3]]
-			attribute_def = body_type_def["attributes"][header[4]]
-			attribute_type = attribute_def["type"]
-		else:
-			lines.append("**Type:** `body %s`\n\n" % header[3])
-			return lines
+	if header[2] == "Attributes":
+		# assumption for promise type definition
+		# header[1] = promise type
+		# header[2] = "Attributes"
+		# header[3] = attribute name
+		# header[4] = body attribute
+		promise_type_def = promise_types[header[1]]
+		attribute_def = promise_type_def["attributes"][header[3]]
+		attribute_type = attribute_def["type"]
+		if attribute_type == "body":
+			if header[4]:
+				body_type_def = body_types[header[3]]
+				attribute_def = body_type_def["attributes"][header[4]]
+				attribute_type = attribute_def["type"]
+			else:
+				lines.append("**Type:** `body %s`\n\n" % header[3])
+				return lines
+	elif header[2] == "Control Promises":
+		# assume body control promise
+		# header[1] = component name (cf-*)
+		# header[2] = "Control Promises"
+		# header[3] = body attribute
+		# cut off the cf- prefix and 'd'; this will leave the executor
+		component_name = header[1][3:]
+		if component_name[-1] == 'd':
+			component_name = component_name[:-1]
+		if component_name == "exec" # ugl-hack
+			component_name == "executor"
+		body_type_def = body_types[component_name]
+		attribute_def = body_type_def["attributes"][header[3]]
+		attribute_type = attribute_def["type"]
+	else:
+		print "Error: Document structure does not support promise_attribute macro!"
+		return lines;
 
 	attribute_range = attribute_def.get("range")
 	if attribute_type == "option":
