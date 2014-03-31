@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Checking Status
-categories: [Manuals, Enterprise API, Checking Status]
+categories: [Examples, Enterprise API Examples, Checking Status]
 published: true
 sorting: 20
 alias: examples-enterprise-api-checking-status.html

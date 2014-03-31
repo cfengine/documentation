@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Managing Settings
-categories: [Manuals, Enterprise API, Managing Settings]
+categories: [Examples, Enterprise API Examples, Managing Settings]
 published: true
 sorting: 30
 alias: examples-enterprise-api-managing-settings.html

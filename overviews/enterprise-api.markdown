@@ -9,17 +9,7 @@ tags: [overviews, enterprise, REST, API, reporting]
 ---
 
 The CFEngine Enterprise API allows HTTP clients to interact with the Policy server (hub) 
-of a CFEngine Enterprise installation. With the Enterprise API, you can do the following:
-
-
-- [Check installation status][Checking Status]
-- [Manage users, roles][Managing Users and Roles] and
-  [settings][Managing Settings]
-- [Browse host information][Browsing Host Information]
-- [Issue flexible SQL queries][SQL Queries] against data collected from hosts 
-  by the CFEngine Server
-- [Schedule reports][SQL Queries#Subscribed Queries] for email and later 
-  download
+of a CFEngine Enterprise installation. 
 
 In CFEngine Enterprise 3.5 and later, [Multi-Site Query][Multi-Site Queries] 
 support allows centralized collection of data from multiple CFEngine 
@@ -33,3 +23,12 @@ on globally distributed CFEngine Database Servers.
 
 Refer to the [Enterprise API Reference][Enterprise API Reference] section for the SQL schema 
 and URI resources. 
+
+See also the [Enterprise API Examples][Enterprise API Examples]:
+
+* [Check installation status][Checking Status]
+* [Manage users, roles][Managing Users and Roles]
+* [Managing Settings][Managing Settings]
+* [Browse host information][Browsing Host Information]
+* [Issue flexible SQL queries][SQL Queries] against data collected from hosts by the CFEngine Server
+* [Schedule reports][SQL Queries#Subscribed Queries] for email and later download

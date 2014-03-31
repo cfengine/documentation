@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  SQL Query Examples
-categories: [Manuals, Enterprise API, SQL Queries]
+categories: [Examples, Enterprise API Examples, SQL Queries]
 published: true
 alias: examples-enterprise-reporting-sql-queries.html
 tags: [examples, enterprise, rest, api, reporting, sql, queries]
