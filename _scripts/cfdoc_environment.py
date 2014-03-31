@@ -45,6 +45,7 @@ def validate():
 	config["example_directories"] = []
 	config["example_directories"].append(config["WORKDIR"] + "/core/examples")
 	config["example_directories"].append(config["WORKDIR"] + "/core/masterfiles/libraries")
+	config["example_directories"].append(config["WORKDIR"] + "/documentation-generator/_generated")
 		
 	config["reference_path"] = config["project_directory"] + "/_references.md"
 	config["config_path"] = config["project_directory"] + "/_config.yml"
