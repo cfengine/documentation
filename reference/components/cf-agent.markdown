@@ -20,54 +20,9 @@ affected by `common` and `agent` control bodies.
 
 ## Command reference
 
-    --bootstrap, -B
-        Bootstrap CFEngine to the given policy server IP, hostname or :avahi (automatic detection)
+[%CFEngine_include_snippet(cf-agent.help, [\s]*--[a-z], ^$)%]
 
-    --bundlesequence, -b
-        Set or override bundlesequence from command line
-
-    --debug, -d
-        Enable debugging output
-
-    --define, -D
-        Define a list of comma separated classes to be defined at the start of execution
-
-    --self-diagnostics, -x
-        Run checks to diagnose a CFEngine agent installation
-
-    --dry-run, -n
-        All talk and no action mode - make no changes, only inform of promises not kept
-
-    --file, -f
-        Specify an alternative input file than the default
-
-    --help, -h
-        Print the help message
-
-    --inform, -I
-        Print basic information about changes made to the system, i.e. promises repaired
-
-    --negate, -N
-        Define a list of comma separated classes to be undefined at the start of execution
-
-    --no-lock, -K
-        Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
-
-    --verbose, -v
-        Output verbose information about the behaviour of the agent
-
-    --version, -V
-        Output the version of the software
-
-    --legacy-output, -l
-        Use legacy output format
-
-    --color, -C
-        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
-
-****
-
-##Automatic Bootstrapping
+## Automatic Bootstrapping
 
 Automatic bootstrapping allows the user to connect a CFEngine Host to a Policy
 Server without specifying the IP address manually. It uses the *Avahi* service

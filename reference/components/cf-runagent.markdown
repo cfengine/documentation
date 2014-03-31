@@ -18,55 +18,7 @@ which hosts `cf-agent` will be started, and classes that the user requests
 
 ## Command reference
 
-    --help, -h
-        Print the help message
-
-    --background, -b
-        Parallelize connections (50 by default)
-
-    --debug, -d
-        Enable debugging output
-
-    --verbose, -v
-        Output verbose information about the behaviour of the agent
-
-    --dry-run, -n
-        All talk and no action mode - make no changes, only inform of promises not kept
-
-    --version, -V
-        Output the version of the software
-
-    --file, -f
-        Specify an alternative input file than the default
-
-    --define-class, -D
-        Define a list of comma separated classes to be sent to a remote agent
-
-    --select-class, -s
-        Define a list of comma separated classes to be used to select remote agents by constraint
-
-    --inform, -I
-        Print basic information about changes made to the system, i.e. promises repaired
-
-    --remote-options, -o
-        Pass options to a remote server process
-
-    --hail, -H
-        Hail the following comma-separated lists of hosts, overriding default list
-
-    --interactive, -i
-        Enable interactive mode for key trust
-
-    --timeout, -t
-        Connection timeout, seconds
-
-    --legacy-output, -l
-        Use legacy output format
-
-    --color, -C
-        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
-
-
+[%CFEngine_include_snippet(cf-runagent.help, [\s]*--[a-z], ^$)%]
 
 ## Control Promises
 

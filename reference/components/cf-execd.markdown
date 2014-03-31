@@ -21,53 +21,7 @@ network.
 
 ## Command reference
 
-    --help, -h
-        Print the help message
-
-    --debug, -d
-        Enable debugging output
-
-    --verbose, -v
-        Output verbose information about the behaviour of the agent
-
-    --dry-run, -n
-        All talk and no action mode - make no changes, only inform of promises not kept
-
-    --version, -V
-        Output the version of the software
-
-    --file, -f
-        Specify an alternative input file than the default
-
-    --define, -D
-        Define a list of comma separated classes to be defined at the start of execution
-
-    --negate, -N
-        Define a list of comma separated classes to be undefined at the start of execution
-
-    --no-lock, -K
-        Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
-
-    --inform, -I
-        Print basic information about changes made to the system, i.e. promises repaired
-
-    --no-fork, -F
-        Run as a foreground processes (do not fork)
-
-    --once, -O
-        Run once and then exit (implies no-fork)
-
-    --no-winsrv, -W
-        Do not run as a service on windows - use this when running from a command shell (CFEngine Nova only)
-
-    --ld-library-path, -L
-        Set the internal value of LD_LIBRARY_PATH for child processes
-
-    --legacy-output, -l
-        Use legacy output format
-
-    --color, -C
-        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
+[%CFEngine_include_snippet(cf-execd.help, [\s]*--[a-z], ^$)%]
 
 ## Control Promises
 

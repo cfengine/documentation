@@ -20,57 +20,7 @@ that have registered a connection with a collocated `cf-serverd`
 
 ## Command reference
 
-    --cache, -a
-        Rebuild database caches used for efficient query handling (e.g. compliance graphs)
-
-    --continuous, -c
-        Continuous update mode of operation
-
-    --debug, -d
-        Set debugging level 0,1,2,3.
-
-    --no-fork, -F
-        Run as a foreground processes (do not fork)
-
-    --file, -f
-        Specify an alternative input file than the default
-
-    --help, -h
-        Print the help message
-
-    --index, -i
-        Reindex all collections in the CFEngine report database
-
-    --no-lock, -K
-        Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
-
-    --logging, -l
-        Enable logging of report collection and maintenance to hub_log in the working directory
-
-    --maintain, -m
-        Start database maintenance process. By default, entries older than 7 days (1 year for longterm reports) are purged.
-
-    --dry-run, -n
-        All talk and no action mode - make no changes, only inform of promises not kept
-
-    --splay_updates, -s
-        Splay/load balance full-updates, overriding bootstrap times, assuming a default 5 minute update schedule.
-
-    --query, -q
-        Collect reports from remote host. Value is 'full' or 'delta'. -H option is required.
-
-    --query-host, -H
-        Remote hosts to gather reports from (for -q)
-
-    --version, -V
-        Output the version of the software
-
-    --verbose, -v
-        Output verbose information about the behaviour of the agent
-
-    --color, -C
-        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
-
+[%CFEngine_include_snippet(cf-hub.help, [\s]*--[a-z], ^$)%]
 
 ## Control Promises
 

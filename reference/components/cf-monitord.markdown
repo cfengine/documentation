@@ -20,47 +20,7 @@ affected by  `common` and `monitor` control bodies.
 
 ## Command reference
 
-    --help, -h
-        Print the help message
-
-    --debug, -d
-        Enable debugging output
-
-    --verbose, -v
-        Output verbose information about the behaviour of the agent
-
-    --dry-run, -n
-        All talk and no action mode - make no changes, only inform of promises not kept
-
-    --version, -V
-        Output the version of the software
-
-    --no-lock, -K
-        Ignore system lock
-
-    --file, -f
-        Specify an alternative input file than the default
-
-    --inform, -I
-        Print basic information about changes made to the system, i.e. promises repaired
-
-    --diagnostic, -x
-        Activate internal diagnostics (developers only)
-
-    --no-fork, -F
-        Run process in foreground, not as a daemon
-
-    --histograms, -H
-        Ignored for backward compatibility
-
-    --tcpdump, -T
-        Interface with tcpdump if available to collect data about network
-
-    --legacy-output, -l
-        Use legacy output format
-
-    --color, -C
-        Enable colorized output. Possible values: 'always', 'auto', 'never'. Default is 'never'
+[%CFEngine_include_snippet(cf-monitord.help, [\s]*--[a-z], ^$)%]
 
 ## Standard measurements:
 
