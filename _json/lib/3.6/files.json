@@ -4260,6 +4260,148 @@
               ]
             }
           ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2030,
+          "namespace": "default",
+          "name": "cfe_mustache_makefile",
+          "bundleType": "agent",
+          "arguments": [
+            "mustache_file",
+            "json_file",
+            "target_file"
+          ],
+          "promiseTypes": [
+            {
+              "line": 2043,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 2044,
+                      "promiser": "$(target_file)",
+                      "attributes": [
+                        {
+                          "line": 2045,
+                          "lval": "create",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "line": 2046,
+                          "lval": "edit_template",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(mustache_file)"
+                          }
+                        },
+                        {
+                          "line": 2047,
+                          "lval": "template_data",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "readjson",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(json_file)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "100k"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 2048,
+                          "lval": "template_method",
+                          "rval": {
+                            "type": "string",
+                            "value": "mustache"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2051,
+          "namespace": "default",
+          "name": "cfe_mustache_makefile_string",
+          "bundleType": "agent",
+          "arguments": [
+            "mustache_file",
+            "json_string",
+            "target_file"
+          ],
+          "promiseTypes": [
+            {
+              "line": 2064,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 2065,
+                      "promiser": "$(target_file)",
+                      "attributes": [
+                        {
+                          "line": 2066,
+                          "lval": "create",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "line": 2067,
+                          "lval": "edit_template",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(mustache_file)"
+                          }
+                        },
+                        {
+                          "line": 2068,
+                          "lval": "template_data",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "parsejson",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(json_string)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 2069,
+                          "lval": "template_method",
+                          "rval": {
+                            "type": "string",
+                            "value": "mustache"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "bodies": [

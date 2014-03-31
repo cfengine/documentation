@@ -7223,7 +7223,7 @@
         }
       ],
       "variadic": false,
-      "cached": true,
+      "cached": false,
       "category": "communication"
     },
     "returnszero": {
