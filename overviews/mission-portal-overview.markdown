@@ -2,10 +2,10 @@
 layout: default
 title: Mission Portal Overview
 sorting: 100
-categories: [Getting Started, Overviews, Mission Portal Overview]
+categories: [Overviews, Mission Portal Overview]
 published: true
-alias: getting-started-overviews-mission-portal.html
-tags: [getting started, overviews, mission portal]
+alias: overviews-mission-portal.html
+tags: [overviews, mission portal]
 ---
 
 * [Infrastructure Engineering with the CFEngine Mission Portal](#infrastructure-engineering-with-the-cfengine-mission-portal)

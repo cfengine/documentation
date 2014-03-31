@@ -2,10 +2,10 @@
 layout: default
 title: Using Sketches in Mission Portal's Design Center App
 sorting: 100
-categories: [Getting Started, Overviews, Mission Portal Overview, Using Sketches in Mission Portal's Design Center App]
+categories: [Overviews, Mission Portal Overview, Using Sketches in Mission Portal's Design Center App]
 published: true
-alias: getting-started-overviews-mission-portal-design-center-app-sketches.html
-tags: [getting started, overviews, mission portal, sketches, design center, design center app]
+alias: overviews-mission-portal-design-center-app-sketches.html
+tags: [overviews, mission portal, sketches, design center, design center app]
 
 ## Design Center App ##
 

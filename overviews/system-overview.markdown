@@ -2,10 +2,10 @@
 layout: default
 title: System Overview
 sorting: 10
-categories: [Getting Started, Overviews, System Overview]
+categories: [Overviews, System Overview]
 published: true
-alias: getting-started-overviews-system.html
-tags: [getting started, overviews, system overview]
+alias: overviews-system.html
+tags: [overviews, system overview]
 ---
 
 ## What Does a CFEngine System Look Like? 

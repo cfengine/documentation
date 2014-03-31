@@ -1,11 +1,11 @@
 ---
 layout: default
-title: CFEngine Glossary
+title: Glossary
 sorting: 10
-categories: [Getting Started, Glossary]
+categories: [Overviews, Glossary]
 published: true
-alias: getting-started-glossary.html
-tags: [getting started, glossary]
+alias: overviews-glossary.html
+tags: [overviews, glossary]
 ---
 
 [Policy][#policy]

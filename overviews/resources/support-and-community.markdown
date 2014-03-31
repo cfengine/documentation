@@ -2,10 +2,10 @@
 layout: default
 title: Support and Community
 sorting: 50
-categories: [Getting Started, Support and Community]
+categories: [Overviews, Support and Community]
 published: true
-alias: getting-started-support-and-community.html
-tags: [getting started, support, community, bugs, help]
+alias: overviews-support-and-community.html
+tags: [overviews, support, community, bugs, help]
 ---
 
 Use the following resources to contact us:

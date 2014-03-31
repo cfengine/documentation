@@ -2,10 +2,10 @@
 layout: default
 title: SQLite Database Schema
 sorting: 100
-categories: [Getting Started, Overviews, Mission Portal Overview, SQLite Database Schema]
+categories: [GOverviews, Mission Portal Overview, SQLite Database Schema]
 published: true
-alias: getting-started-overviews-mission-portal-database-schema.html
-tags: [getting started, overviews, mission portal, reports, reporting, database schema]
+alias: overviews-mission-portal-database-schema.html
+tags: [overviews, mission portal, reports, reporting, database schema]
 ---
 
 ## hosts ##

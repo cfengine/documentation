@@ -2,10 +2,10 @@
 layout: default
 title: Security Overview
 sorting: 100
-categories: [Getting Started, Overviews, Security Overview]
+categories: [Overviews, Security Overview]
 published: true
-alias: getting-started-overviews-security.html
-tags: [getting started, overviews, security overview]
+alias: overviews-security.html
+tags: [overviews, security overview]
 ---
 
 

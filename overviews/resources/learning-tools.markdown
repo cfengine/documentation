@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Learning Resources 
-categories: [Getting Started, Learning Tools]
+title: Learning Tools 
+categories: [Overviews, Learning Tools]
 published: true
 sorting: 40
-alias: getting-started-learning-tools.html
-tags: [getting started, learning tools]
+alias: overviews-learning-tools.html
+tags: [overviews, learning tools]
 ---
 
 We invite you to learn more about CFEngine and contribute!

@@ -2,10 +2,10 @@
 layout: default
 title: Promises Overview
 sorting: 100
-categories: [Getting Started, Overviews, Promises Overview]
+categories: [Overviews, Promises Overview]
 published: true
-alias: getting-started-overviews-promises.html
-tags: [getting started, overviews, promises overview]
+alias: overviews-promises.html
+tags: [overviews, promises overview]
 ---
 
 Central to CFEngine's effectiveness in system administration is an intuitive tool called a **promise**, which defines the intent and expectation of how some part of an overall system should behave. 
