@@ -515,17 +515,21 @@ def load_include_file(filename):
 		return None
 	return lines
 
-def prune_include_lines(markdown_lines):
+def prune_include_lines(markdown_lines, filename):
 	# remove leading and trailing empty lines
 	while markdown_lines[0].lstrip() == "":
 		del markdown_lines[0]
 	while markdown_lines[-1].lstrip() == "":
 		del markdown_lines[-1]
 
+	brush = "cf3"
+	if filename[-3:] != ".cf":
+		brush = ""
+
 	if len(markdown_lines):
-		# unless included example starts with an explicit code block, start a CFEngine-brushed block
+		# unless included example starts with an explicit code block, start a (CFEngine-brushed) block
 		if (markdown_lines[0].find("```") != 0):
-			markdown_lines.insert(0, "\n```cf3\n")
+			markdown_lines.insert(0, "\n```%s\n" % brush)
 		# if example ended with documentation, prune trailing code, else terminate block
 		if markdown_lines[-1] != "\n```cf3\n":
 			markdown_lines.append("```\n")
@@ -593,7 +597,10 @@ def include_snippet(parameters, config):
 						markdown_lines.append("```\n\n")
 					in_documentation = True
 			elif in_documentation:
-				markdown_lines.append("\n```cf3\n")
+				markdown_lines.append("\n```")
+				if filename[-3:] == '.cf':
+					markdown_lines.append("cf3")
+				markdown_lines.append("\n")
 				in_documentation = False
 			# ignore other comments, otherwise append
 			if line[0] != '#':
@@ -609,7 +616,7 @@ def include_snippet(parameters, config):
 		raise Exception("Snippet not found: %s" % begin.pattern)
 		return list()
 		
-	return prune_include_lines(markdown_lines)
+	return prune_include_lines(markdown_lines, filename)
 
 def library_include(parameters, config):
 	markdown_lines = []
