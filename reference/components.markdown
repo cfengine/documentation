@@ -151,6 +151,52 @@ then their result will be cached.
 
 **History:** Was introduced in version 3.6.0.
 
+### domain
+
+**Description:** The `domain` string specifies the domain name for this host.
+
+There is no standard, universal or reliable way of determining the
+DNS domain name of a host, so it can be set explicitly to simplify
+discovery and name-lookup.
+
+**Type:** `string`
+
+**Allowed input range:** `.*`
+
+**Example:**
+
+```cf3
+    body common control
+    {
+    domain => "example.org";
+    }
+```
+
+### fips_mode
+
+**Description:** The `fips_mode` menu option policy determines whether 
+to activate full FIPS mode restrictions.
+
+In CFEngine Enterprise, this value may be set to avoid the use of old 
+deprecated algorithms that are no longer FIPS 140-2 compliant. If not set, 
+there is some degree of compatibility with older versions and algorithms. 
+During an upgrade, setting this parameter can cause a lot of recomputation of 
+checksums etc. Government bodies starting with CFEngine Enterprise 2.0 or  
+higher should set this to 'true' from the start.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3
+    body common control
+    {
+    fips_mode => "true";
+    }
+```
+
 ### goal_patterns
 
 **Description:** Contains regular expressions that match promisees/topics 
@@ -175,6 +221,34 @@ business goals in promises.
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
+### host_licenses_paid
+
+**Deprecated: 3.5**
+
+**Description:** The value of `host_licenses_paid` represents the number
+of licenses that you promise to have paid for by setting this value 
+(legally binding for CFEngine Enterprise).
+
+Licensees of CFEngine Enterprise have to make a promise in acceptance of 
+contract terms by setting this value to the number of licenses they have paid 
+for. This is tallied with the number of licenses granted. This declaration 
+should be placed in all separate configuration files, e.g. failsafe.cf, 
+promises.cf.
+
+**Type:** `int`
+
+**Allowed input range:** `0,99999999999`
+
+**Default value:** 25
+
+**Example:**
+
+```cf3
+    body common control
+    {
+    host_licenses_paid => "1000";
+    }
+```
 
 ### ignore_missing_bundles
 
@@ -268,30 +342,6 @@ again with path `/x/./y/z.cf`, the duplicate file will be rejected
 regardless of any path tricks or symbolic links.  The contents are
 hashed, so the same file can't be included twice.
 
-### version
-
-**Description:** The `version` string contains the scalar version of the 
-configuration. 
-
-It is is used in error messages and reports.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
-This string should not contain the colon ':' character, as this has
-a special meaning in the context of knowledge management. This
-restriction might be lifted later.
-
-**Example:**
-
-```cf3
-    body common control
-    {
-    version => "1.2.3";
-    }
-```
-
 ### lastseenexpireafter
 
 **Description:** The value of `lastseenexpireafter` is the number of minutes 
@@ -334,26 +384,7 @@ after which last-seen entries are purged.
 On native Windows versions of CFEngine (Enterprise), this
 string is also prefixed messages in the event log.
 
-### domain
 
-**Description:** The `domain` string specifies the domain name for this host.
-
-There is no standard, universal or reliable way of determining the
-DNS domain name of a host, so it can be set explicitly to simplify
-discovery and name-lookup.
-
-**Type:** `string`
-
-**Allowed input range:** `.*`
-
-**Example:**
-
-```cf3
-    body common control
-    {
-    domain => "example.org";
-    }
-```
 
 ### require_comments
 
@@ -382,35 +413,6 @@ promises.
     }
 ```
 
-
-### host_licenses_paid
-
-**Deprecated: 3.5**
-
-**Description:** The value of `host_licenses_paid` represents the number
-of licenses that you promise to have paid for by setting this value 
-(legally binding for CFEngine Enterprise).
-
-Licensees of CFEngine Enterprise have to make a promise in acceptance of 
-contract terms by setting this value to the number of licenses they have paid 
-for. This is tallied with the number of licenses granted. This declaration 
-should be placed in all separate configuration files, e.g. failsafe.cf, 
-promises.cf.
-
-**Type:** `int`
-
-**Allowed input range:** `0,99999999999`
-
-**Default value:** 25
-
-**Example:**
-
-```cf3
-    body common control
-    {
-    host_licenses_paid => "1000";
-    }
-```
 
 ### site_classes
 
@@ -489,27 +491,26 @@ components may promise to send data.
     }
 ```
 
-### fips_mode
+### version
 
-**Description:** The `fips_mode` menu option policy determines whether 
-to activate full FIPS mode restrictions.
+**Description:** The `version` string contains the scalar version of the 
+configuration. 
 
-In CFEngine Enterprise, this value may be set to avoid the use of old 
-deprecated algorithms that are no longer FIPS 140-2 compliant. If not set, 
-there is some degree of compatibility with older versions and algorithms. 
-During an upgrade, setting this parameter can cause a lot of recomputation of 
-checksums etc. Government bodies starting with CFEngine Enterprise 2.0 or  
-higher should set this to 'true' from the start.
+It is is used in error messages and reports.
 
-**Type:** [`boolean`][boolean]
+**Type:** `string`
 
-**Default value:** false
+**Allowed input range:** (arbitrary string)
+
+This string should not contain the colon ':' character, as this has
+a special meaning in the context of knowledge management. This
+restriction might be lifted later.
 
 **Example:**
 
 ```cf3
     body common control
     {
-    fips_mode => "true";
+    version => "1.2.3";
     }
 ```
