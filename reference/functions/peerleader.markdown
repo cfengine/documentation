@@ -9,20 +9,32 @@ tags: [reference, communication functions, functions, peerleader]
 
 [%CFEngine_function_prototype(filename, regex, groupsize)%]
 
-**Description:** Returns the assigned peer-leader of the partition to which the current host belongs.
+**Description:** Returns the current hosts's partition's peer leader.
 
-This function returns the name of a host that may be considered the
-leader of a group of peers of the current host. Peers are defined
-according to a list of hosts, provided as a file in `filename`.
-This file should contain a list (one per line), possibly with comments 
-matching the [unanchored][unanchored] regular expression `regex`, of fully 
-qualified host names. CFEngine breaks this list up into non-overlapping groups 
-of up to `groupsize`, each of which has a leader that is the first host in the 
+So given `groupsize` 3 and the file
+
+```
+a
+b
+c
+# this is a comment d
+e
+```
+
+The peer leader of host `b` will be host `a`.
+
+Given a list of host names in `filename`, one per line, and excluding
+comment lines starting with the [unanchored][unanchored] regular
+expression `regex`, CFEngine partitions the host list into groups of
+up to `groupsize`. Each group's peer leader is the first host in the
 group.
 
-The current host should belong to this file if it is expected to interact with 
-the others. The function returns nothing if the host does not belong to the 
-list.
+The current host (unqualified or fully qualified) should belong to
+this file if it is expected to interact with the others. The function
+fails otherwise.
+
+If the current host name (fully qualified or unqualified) is the peer
+leader, the string `localhost` is used instead of the host name.
 
 [%CFEngine_function_attributes(filename, regex, groupsize)%]
 
