@@ -231,95 +231,6 @@ access:
 ```
 
 
-### resource_type
-
-**Description:** The `resource_type` is the type of object being granted 
-access.
-
-By default, access to resources granted by the server are files.
-However, sometimes it is useful to cache `literal` strings, hints and
-data on the server for easy access (e.g. the contents of variables or
-hashed passwords). In the case of literal data, the promise handle
-serves as the reference identifier for queries. Queries are instigated
-by function calls by any agent.
-
-[%CFEngine_promise_attribute()%]
-
-If the resource type is `literal`, CFEngine will grant access to a
-literal data string. This string is defined either by the promiser
-itself, but the name of the variable is the identifier given by the
-promise handle of the access promise, since the promiser string might be
-complex.
-
-If the resource type is `variable` then the promiser is the name of a
-persistent scalar variable defined on the server-host. Currently
-persistent scalars are only used internally by Enterprise CFEngine to
-hold enumerated classes for orchestration purposes.
-
-If you want to send the value of a policy defined variable in the server
-host (which for some reason is not available directly through policy on
-the client, e.g. because they have different policies), then you could
-use the following construction:
-
-```cf3
-access:
-
-  "$(variable_name)"
-
-         handle => "variable_name",
-  resource_type => "literal";
-```
-
-If the resource type is `context`, the promiser is treated as a regular
-expression to match persistent classes defined on the server host. If
-these are matched by the request from the client, they will be
-transmitted (See `remoteclassesmatching()`).
-
-The term `query` may also be used in CFEngine Enterprise to query the server 
-for data from embedded databases. This is currently for internal use only, and 
-is used to grant access to report 'menus'. If the promiser of a query request 
-is called `collect_calls`, this grants access to server peering collect-call 
-tunneling.
-
-**Example:**
-
-```cf3
-bundle server access_rules()
-{
-access:
-
-  "value of my test_scalar, can expand variables here - $(sys.host)"
-    handle => "test_scalar",
-    comment => "Grant access to contents of test_scalar VAR",
-    resource_type => "literal",
-    admit => { "127.0.0.1" };
-
-  "XYZ"
-    resource_type => "variable",
-    handle => "XYZ",
-    admit => { "127.0.0.1" };
-
-
-  # On the policy hub
-
-  "collect_calls"
-     resource_type => "query",
-           admit   => { "127.0.0.1" };
-
-  # On the isolated client in the field
-
-
- "delta"
-    comment => "Grant access to cfengine hub to collect report deltas",
-    resource_type => "query",
-          admit   => { "127.0.0.1"  };
-  "full"
-          comment => "Grant access to cfengine hub to collect full report dump",
-    resource_type => "query",
-          admit   => { "127.0.0.1"  };
-}
-```
-
 ### report_data_select
 
 **This body is only available in CFEngine Enterprise.**
@@ -612,3 +523,93 @@ If this attribute is used in conjunction with `monitoring_include` it will
 exclude entries from the subset selected by the include expression.
 
 **History:** Introduced in Enterprise 3.5.0
+
+### resource_type
+
+**Description:** The `resource_type` is the type of object being granted 
+access.
+
+By default, access to resources granted by the server are files.
+However, sometimes it is useful to cache `literal` strings, hints and
+data on the server for easy access (e.g. the contents of variables or
+hashed passwords). In the case of literal data, the promise handle
+serves as the reference identifier for queries. Queries are instigated
+by function calls by any agent.
+
+[%CFEngine_promise_attribute()%]
+
+If the resource type is `literal`, CFEngine will grant access to a
+literal data string. This string is defined either by the promiser
+itself, but the name of the variable is the identifier given by the
+promise handle of the access promise, since the promiser string might be
+complex.
+
+If the resource type is `variable` then the promiser is the name of a
+persistent scalar variable defined on the server-host. Currently
+persistent scalars are only used internally by Enterprise CFEngine to
+hold enumerated classes for orchestration purposes.
+
+If you want to send the value of a policy defined variable in the server
+host (which for some reason is not available directly through policy on
+the client, e.g. because they have different policies), then you could
+use the following construction:
+
+```cf3
+access:
+
+  "$(variable_name)"
+
+         handle => "variable_name",
+  resource_type => "literal";
+```
+
+If the resource type is `context`, the promiser is treated as a regular
+expression to match persistent classes defined on the server host. If
+these are matched by the request from the client, they will be
+transmitted (See `remoteclassesmatching()`).
+
+The term `query` may also be used in CFEngine Enterprise to query the server 
+for data from embedded databases. This is currently for internal use only, and 
+is used to grant access to report 'menus'. If the promiser of a query request 
+is called `collect_calls`, this grants access to server peering collect-call 
+tunneling.
+
+**Example:**
+
+```cf3
+bundle server access_rules()
+{
+access:
+
+  "value of my test_scalar, can expand variables here - $(sys.host)"
+    handle => "test_scalar",
+    comment => "Grant access to contents of test_scalar VAR",
+    resource_type => "literal",
+    admit => { "127.0.0.1" };
+
+  "XYZ"
+    resource_type => "variable",
+    handle => "XYZ",
+    admit => { "127.0.0.1" };
+
+
+  # On the policy hub
+
+  "collect_calls"
+     resource_type => "query",
+           admit   => { "127.0.0.1" };
+
+  # On the isolated client in the field
+
+
+ "delta"
+    comment => "Grant access to cfengine hub to collect report deltas",
+    resource_type => "query",
+          admit   => { "127.0.0.1"  };
+  "full"
+          comment => "Grant access to cfengine hub to collect full report dump",
+    resource_type => "query",
+          admit   => { "127.0.0.1"  };
+}
+```
+
