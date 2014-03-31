@@ -2,10 +2,10 @@
 layout: default
 title: Upgrade Instructions
 sorting: 50
-categories: [Latest Release, Upgrade]
+categories: [Overviews,Resources,Latest Release, Upgrade]
 published: true
-alias: getting-started-upgrade.html
-tags: [getting started, enterprise, upgrade]
+alias: overviews-resources-latest-release-upgrade.html
+tags: [overviews, releases, latest release, 3.6.0, platforms, versions, upgrade]
 ---
 
 **Note:** This upgrade guide assumes that you are upgrading an existing CFEngine installation 

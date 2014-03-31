@@ -2,10 +2,10 @@
 layout: default
 title: Known Issues
 sorting: 30
-categories: [Latest Release, Known Issues]
+categories: [Overviews,Resources,Latest Release, Known Issues]
 published: true
-alias: getting-started-known-issues.html
-tags: [getting started, known issues]
+alias: overviews-resources-latest-release-known-issues.html
+tags: [overviews, releases, latest release, 3.6.0, platforms, versions, known issues]
 ---
 
 

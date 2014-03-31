@@ -1,10 +1,11 @@
 ---
 layout: default
 title: Latest Release
-categories: [Latest Release]
+categories: [Overviews,Resources,Latest Release]
 published: true
 sorting: 60
-alias: latest-release.html
+alias: overviews-resources-latest-release.html
+tags: [overviews, releases, latest release, 3.6.0, platforms, versions]
 ---
 
 **IMPORTANT NOTE:** This is a pre-release of CFEngine 3.6. 

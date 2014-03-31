@@ -1,10 +1,11 @@
 ---
 layout: default
 title: New in CFEngine
-categories: [Latest Release, New in CFEngine]
+categories: [Overviews,Resources,Latest Release, New in CFEngine]
 published: true
 sorting: 10
-alias: whats-new.html
+alias: overviews-resources-latest-release-whats-new.html
+tags: [overviews, releases, latest release, 3.6.0, platforms, versions, what's new]
 ---
 
 **IMPORTANT NOTE:** This is a pre-release of CFEngine, intended for testing and 

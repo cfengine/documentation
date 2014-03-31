@@ -2,10 +2,10 @@
 layout: default
 title: Supported Platforms and Versions
 sorting: 40
-categories: [Latest Release, Supported Platforms]
+categories: [Overviews,Resources,Latest Release,Supported Platforms]
 published: true
-alias: getting-started-supported-platforms.html
-tags: [getting started, platforms, versions, support]
+alias: overviews-resources-latest-release-supported-platforms.html
+tags: [overviews, releases, latest release, 3.6.0, platforms, versions, support]
 ---
 
 This pre-release of CFEngine has been rudimentarily tested on the
