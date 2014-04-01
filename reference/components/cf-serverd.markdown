@@ -128,6 +128,16 @@ Absence of this attribute means that connections from all hosts are accepted.
 
 **See also:** `protocol_version`
 
+### allowciphers
+
+**Description:** List of ciphers the server accepts.
+
+For a list of possible ciphers, see man page for "openssl ciphers".
+
+[%CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA)%]
+
+**See also:** `protocol_version`
+
 **History:** Introduced in CFEngine 3.6.0
 
 ### allowusers
