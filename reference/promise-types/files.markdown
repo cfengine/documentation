@@ -1067,6 +1067,20 @@ security contexts. For remote copies, only Unix mode is preserved.
 
 **History:** Version 3.1.0b3,Nova 2.0.0b1 (2010)   
 
+#### protocol_version
+
+**Description:** Defines the protocol to use for the outgoing connection in this
+copy operation.
+
+[%CFEngine_promise_attribute(classic)%]
+
+**Note:** The value here will override the setting from [`body common control`][body common].
+
+**See also:** [`protocol_version`][Components and Common Control#protocol_version] in
+[`body common`][body common], `allowlegacyconnects`
+
+**History:** Introduced in CFEngine 3.6.0
+
 #### purge
 
 **Description:** The `purge` menu option policy instructs on whether to purge 
