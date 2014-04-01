@@ -1,29 +1,29 @@
 ---
 layout: default
 title: CFEngine Files, Directories and Logs
-categories: [Getting Started, Concepts, CFEngine Files, Directories and Logs]
+categories: [Overviews, System Overview, Directories and Logs]
 published: true
 sorting: 30
 alias: overview-system-files-directories-logs.html
 tags: [overviews, system overview, files, directories, logs]
 ---
 
-[Directories in /var/cfengine]
-	[Directories for Policy Files]
-	[Directories for Output]
-	[Other Directories in /var/cfengine]
-[Log Files in /var/cfengine]
-[Database Files in /var/cfengine]
-[Process (AKA PID) Files in /var/cfengine]
-[Sockets in /var/cfengine]
-[Datafiles in /var/cfengine]	
-[Binary Files in /var/cfengine]
-[CFEngine Agents and Daemons in /var/cfengine/bin]
-[git in /var/cfengine/bin]
-[Misc. in /var/cfengine/bin]
-[MongoDB in /var/cfengine/bin]
-[Postgres in /var/cfengine/bin]
-[Redis in /var/cfengine/bin]
+[Directories in /var/cfengine](#)
+	[Directories for Policy Files](#)
+	[Directories for Output](#)
+	[Other Directories in /var/cfengine](#)
+[Log Files in /var/cfengine](#)
+[Database Files in /var/cfengine](#)
+[Process (AKA PID) Files in /var/cfengine](#)
+[Sockets in /var/cfengine](#)
+[Datafiles in /var/cfengine](#)
+[Binary Files in /var/cfengine](#)
+[CFEngine Agents and Daemons in /var/cfengine/bin](#)
+[git in /var/cfengine/bin](#)
+[Misc. in /var/cfengine/bin](#)
+[MongoDB in /var/cfengine/bin](#)
+[Postgres in /var/cfengine/bin](#)
+[Redis in /var/cfengine/bin](#)
 	
 ## Sub-Directories in /var/cfengine ##
 
