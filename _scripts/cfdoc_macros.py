@@ -164,8 +164,8 @@ def promise_attribute(parameters, config):
 		component_name = header[1][3:]
 		if component_name[-1] == 'd':
 			component_name = component_name[:-1]
-		if component_name == "exec" # ugl-hack
-			component_name == "executor"
+		if component_name == "exec": # ugl-hack
+			component_name = "executor"
 		body_type_def = body_types[component_name]
 		attribute_def = body_type_def["attributes"][header[3]]
 		attribute_type = attribute_def["type"]
