@@ -235,294 +235,170 @@ access:
 
 **This body is only available in CFEngine Enterprise.**
 
-**Description:** The `report_data_select` body restricts access to data 
-for the specified query types reported to the CFEngine Enterprise Database.
+**Description:** The `report_data_select` body restricts which data is included
+for "query" resources, and allows filtering of data reported to the CFEngine Enterprise Database.
 
-This body template allows users to control the content of reports collected 
-by the Enterprise Database Server, and allows users to strip unwanted data 
-(e.g. temporary variables from reporting).
+Use this body template to control the content of reports collected by the 
+CFEngine Enterprise server, and to strip unwanted data (e.g. temporary variables)
+from reporting.
 
-Report content can be differentiated between hosts that are controlled
-by the class expression on access promiser.
-
-If more than one select statement applies to the same host, all of them are applied.
+By default, no filtering is applied. If more than one select statement applies
+to the same host, all of them are applied.
 
 Usage of this body is only allowed in conjunction with using 
-`resource_type => "query"`, as this is the resource type that is being affected.
+[`resource_type => "query"`](#resource_type), as this is the resource type that is being affected.
 
 [%CFEngine_promise_attribute()%]
 
 **Example:**
 
 ```cf3
-
-body report_data_select
+body report_data_select report_data
 {
-    variables_include => { "sys..*" };
-    monitoring_exclude => { ".*" };
+    metatags_include => { "inventory", "compliance" };
+    promise_handle_exclude => { "_.*" };
+    monitoring_exclude => { "mem_.*swap" };
 }
 ```
 
 **History:** Introduced in Enterprise 3.5.0
 
-#### classes_include
+#### metatags_exclude
 
-**Description:** The `classes_include` attribute is used to filter content 
-of the class report collected by Enterprise Hub, to include classes matching 
-specified regular expressions on the list.
+**Description:** List of [anchored][anchored] regular expressions matching metatags
+to exclude from reporting.
 
-Only classes matching the specified regular expressions on the list will 
-be sent back in the report. 
+Classes and variables with metatags matching any entry of that list will not be reported
+to the CFEngine Enterprise server.
 
-If this attribute is not used, the report content is not reduced.
+This list overrides the list in `metatags_include`.
 
 [%CFEngine_promise_attribute()%]
 
-**Example:**
+**See also:** `metatags_include`, `promise_handle_exclude`, `monitoring_exclude`
 
-```cf3
+**History:** Introduced in CFEngine 3.6.0
 
-body report_data_select
-{
-    classes_include => { "report_only_my_classes_.*" };
-}
-```
+#### metatags_include
 
-**History:** Introduced in Enterprise 3.5.0
+**Description:** List of [anchored][anchored] regular expressions matching metatags
+to include in reporting.
 
-#### classes_exclude
+Classes and variables with metatags matching any entry of that list will be reported
+to the CFENgine Enterprise server.
 
-**Description:** The `classes_exclude` attribute is used to filter content 
-of the class report collected by Enterprise Hub, to exclude classes matching 
-specified regular expressions on the list.
-
-If this attribute is used in conjunction with `classes_include` it will 
-exclude entries from the subset selected by the include expression.
+The list in `metatags_exclude` overrides this list.
 
 [%CFEngine_promise_attribute()%]
 
-**Example:**
+**See also:** `metatags_exclude`, `promise_handle_include`, `monitoring_include`
 
-```cf3
+**History:** Introduced in CFEngine 3.6.0
 
-body report_data_select
-{
-    classes_exclude => { "my_tmp_class.*" };
-}
-```
+#### promise_handle_exclude
 
-**Notes:**
+**Description:** List of [anchored][anchored] regular expressions matching promise handles
+to exclude from reporting.
 
-**History:** Introduced in Enterprise 3.5.0
+Information about promises with handles that match any entry in that list will not be reported
+to the CFEngine Enterprise server.
 
-#### variables_include
-
-**Description:** The `variables_include` attribute is used to filter 
-content of the variables report collected by Enterprise Hub, to contain 
-only variables matching specified regular expressions on the list.
-
-If the attribute is not used, the report content is not reduced.
+This list overrides the list in `promise_handle_include`.
 
 [%CFEngine_promise_attribute()%]
 
-Regular expressions for this attribute use the form `<scope>.<variable_name>`.
+**See also:** `promise_handle_include`, `metatags_exclude`, `monitoring_exclude`
 
-**Example:**
+**History:** Introduced in CFEngine 3.6.0
 
-```cf3
+#### promise_handle_include
 
-body report_data_select
-{
-    variables_include => { "my_bundle.my_variable_prefix_.*" };
-}
-```
+**Description:** List of [anchored][anchored] regular expressions matching promise handles
+to include in reporting.
 
-**History:** Introduced in Enterprise 3.5.0
+Information about promises with handles that match any entry in that list will be reported
+to the CFEngine Enterprise server.
 
-
-#### variables_exclude
-
-**Description:** The `variables_exclude` attribute is used to filter 
-content of the variable report collected by Enterprise Hub, to exclude 
-variables matching specified regular expression list.
+The list in `promise_handle_exclude` overrides this list.
 
 [%CFEngine_promise_attribute()%]
 
-Regular expressions for this attribute use the form `<scope>.<variable_name>`.
-  
-**Example:**
+**See also:** `promise_handle_exclude`, `metatags_include`, `monitoring_include`
 
-```cf3
-
-body report_data_select
-{
-    variables_exclude => { "my_bundle.tmp_var_test.*" };
-}
-```
-
-**Notes:**
-If this attribute is used in conjunction with `variables_include`, it will 
-exclude entries from the subset selected by the include expression.
-
-**History:** Introduced in Enterprise 3.5.0
-
-#### promise_notkept_log_include
-
-**Description:** The `promise_notkept_log_include` attribute is used to 
-filter content of the not kept log report collected by Enterprise Hub, 
-to contain promise handles matching specified regular expressions on 
-the list.
-
-Only those handles matching the regular expressions on the list will 
-be sent back in the report.
-
-If the attribute is not used, the report content will not be reduced.
-
-[%CFEngine_promise_attribute()%]
-
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    promise_notkept_log_include => { "my_none_important_promises_.*" };
-}
-```
-
-**History:** Introduced in Enterprise 3.5.0
-
-#### promise_notkept_log_exclude
-
-**Description:** The `promise_notkept_log_exclude` attribute is used to 
-filter content of the not kept log report collected by Enterprise Hub, 
-to exclude promise handles matching specified regular expressions on the 
-list.
-
-Only those handles matching regular expression on the list will be excluded 
-from the report.
-
-[%CFEngine_promise_attribute()%]
-
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    promise_notkept_log_exclude => { "my_tmp_promise_handle.*" };
-}
-```
-
-**Notes:** If this attribute is used in conjunction with the 
-`promise_notkept_log_include` attribute, it will exclude entries 
-from the subset selected by the include expression.
-
-**History:** Introduced in Enterprise 3.5.0
-
-#### promise_repaired_log_include
-
-**Description:** The `promise_repaired_log_include` attribute is used to 
-filter content of the repaired log report collected by Enterprise Hub, 
-to include regular expressions matched on the list.
-
-Only those handles matching the regular expression on the list will be 
-sent back in the report. If attribute is not used, the report content 
-will not be filtered.
-
-[%CFEngine_promise_attribute()%]
-
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    promise_repaired_log_include => { "my_none_important_promises_.*" };
-}
-```
-
-**History:** Introduced in Enterprise 3.5.0
-
-#### promise_repaired_log_exclude
-
-**Description:** The `promise_repaired_log_exclude` attribute is used to 
-filter content of the repaired log report collected by Enterprise Hub, 
-to exclude promise handles matching regular expression on the list.
-
-Only those handles matching regular expression on the list will be excluded 
-from the report.
-
-[%CFEngine_promise_attribute()%]
-
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    promise_repaired_log_exclude => { "my_tmp_promise_handle.*" };
-}
-```
-
-**Notes:**
-If this attribute is used in conjunction with `promise_repaired_log_include`, 
-it will exclude entries from the subset selected by the include expression.
-
-**History:** Introduced in Enterprise 3.5.0
-
+**History:** Introduced in CFEngine 3.6.0
 
 #### monitoring_include
 
-**Description:** The `monitoring_include` attribute is used to filter 
-content of the monitoring report collected by Enterprise Hub, to contain 
-only observed objects matching regular expressions on the list.
+**Description:** List of [anchored][anchored] regular expressions matching monitoring objects
+to include in reporting.
 
-Only object names matching regular expression on the list will be sent 
-back in the report. If the attribute is not used, the report content will 
-not be filtered.
+Monitoring objects with names matching any entry in that list will be reported
+to the CFEngine Enterprise server.
+
+The list in `monitoring_exclude` overrides this list.
 
 [%CFEngine_promise_attribute()%]
 
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    monitoring_include => { "mem_.*" };
-}
-```
+**See also:** `monitoring_exclude`, `promise_handle_include`, `metatags_include`
 
 **History:** Introduced in Enterprise 3.5.0
 
 #### monitoring_exclude
 
-**Description:** The `monitoring_exclude` attribute is used to filter 
-content of the monitoring report collected by Enterprise Hub, to exclude 
-observed objects matching specified regular expressions on the list.
+**Description:** List of [anchored][anchored] regular expressions matching monitoring objects
+to exclude from reporting.
 
-Only object names matching regular expression list will be excluded from 
-the report.
+Monitoring objects with names matching any entry in that list will not be reported
+to the CFEngine Enterprise server.
+
+This list overrides the list in `monitoring_include`.
 
 [%CFEngine_promise_attribute()%]
 
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    monitoring_exclude => { "mem_swap", "mem_freeswap" };
-}
-```
-
-**Notes:**
-
-If this attribute is used in conjunction with `monitoring_include` it will 
-exclude entries from the subset selected by the include expression.
+**See also:** `monitoring_include`, `promise_handle_exclude`, `metatags_exclude`
 
 **History:** Introduced in Enterprise 3.5.0
+
+
+#### classes_include
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### classes_exclude
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### variables_include
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### variables_exclude
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### promise_notkept_log_include
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### promise_notkept_log_exclude
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### promise_repaired_log_include
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### promise_repaired_log_exclude
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
 
 ### resource_type
 
