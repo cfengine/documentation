@@ -7,10 +7,27 @@ sorting: 30
 alias: overview-system-files-directories-logs.html
 tags: [overviews, system overview, files, directories, logs]
 ---
+
+[Directories in /var/cfengine]
+	[Directories for Policy Files]
+	[Directories for Output]
+	[Other Directories in /var/cfengine]
+[Log Files in /var/cfengine]
+[Database Files in /var/cfengine]
+[Process (AKA PID) Files in /var/cfengine]
+[Sockets in /var/cfengine]
+[Datafiles in /var/cfengine]	
+[Binary Files in /var/cfengine]
+[CFEngine Agents and Daemons in /var/cfengine/bin]
+[git in /var/cfengine/bin]
+[Misc. in /var/cfengine/bin]
+[MongoDB in /var/cfengine/bin]
+[Postgres in /var/cfengine/bin]
+[Redis in /var/cfengine/bin]
 	
 ## Sub-Directories in /var/cfengine ##
 
-### Sub-Directories for Policy Files
+### Directories for Policy Files
 
 * `/modules`
 
@@ -148,21 +165,21 @@ The CFEngine components keep their current process identifier number in
 * `cf-monitord.pid`
 * `cf-serverd.pid`
 
-## Socket in /var/cfengine ##
+## Sockets in /var/cfengine ##
 
 * `cf-hub-local`
 
-## Datafile in /var/cfengine ##
+## Datafiles in /var/cfengine ##
 
 * `policy_server.dat`
 
 IP address of the policy server?
 
-## App? in /var/cfengine ##
+## Binary Files in /var/cfengine ##
 
 * `randseed`
 
-## Agents and Daemons ##
+## CFEngine Agents and Daemons in /var/cfengine/bin ##
 
 * `bin/cf-agent`
 * `bin/cf-consumer`
@@ -175,7 +192,7 @@ IP address of the policy server?
 * `bin/cf-serverd`
 * `bin/cf-twin`
 
-#### git ####
+## git in /var/cfengine/bin ##
 
 * `bin/git`
 * `bin/git-cvsserver`
@@ -185,7 +202,7 @@ IP address of the policy server?
 * `bin/git-upload-archive`
 * `bin/git-upload-pack`
 
-#### Misc. ####
+## Misc. in /var/cfengine/bin ##
 
 * `bin/curl`
 * `bin/lmdump`
@@ -194,7 +211,7 @@ IP address of the policy server?
 * `bin/rsync`
 * `bin/runalerts.sh`
 
-#### MongoDB ####
+## MongoDB in /var/cfengine/bin ##
 
 * `bin/bsondump`
 * `bin/mdb_copy`
@@ -213,7 +230,7 @@ IP address of the policy server?
 * `bin/mongostat`
 * `bin/mongotop`
 
-#### Postgres ####
+## Postgres in /var/cfengine/bin ##
 
 * `bin/clusterdb`
 * `bin/createdb`
@@ -239,7 +256,7 @@ IP address of the policy server?
 * `bin/reindexdb`
 * `bin/vacuumdb`
 
-#### Redis ####
+## Redis in /var/cfengine/bin ##
 
 * `bin/redis-benchmark`
 * `bin/redis-check-aof`
