@@ -7,54 +7,53 @@ alias: reference-promise-types-access.html
 tags: [reference, bundle server, cf-serverd, access, server, promise types, acl, trust, encryption]
 ---
 
-Access promises are conditional promises made by the server about file
-objects. The promise has two consequences. For file copy requests, the
-file becomes transferable to the remote client according to the
-conditions specified in the server promise; in other words, if the
-connection encryption requirements are met, and if the client has been
-granted appropriate privileges with `maproot` (like its NFS counterpart)
-to be able to see file objects not owned by the server process owner.
+Access promises are conditional promises made by resources living on the server.
 
-The promise has two mutally exclusive attributes admit and deny. Use of
-admit is preferred as mistakes and omissions can easily be made when
-excluding from a group.
-
-When access is granted to a directory, the promise is automatically
-given about all of its contents and sub-directories. The access promise
-allows overlapping promises to be made, and these are kept on a
-first-come-first-served basis. Thus file objects (promisers) should be
-listed in order of most-specific file first. In this way, specific
-promises will override less specific ones.
+The promiser is the name of the resource affected and is interpreted to be a path, unless a
+different `resource_type` is specified. Access is then granted to hosts listed in `admit_ips`,
+`admit_keys` and `admit_hostnames`, or denied using the counterparts `deny_ips`, `deny_keys`
+and `deny_hostnames`. Use of admit to grant on a "need to know" basis is preferred, as mistakes
+and omissions can easily be made when excluding from a group. A security policy based on
+exceptions is a weak one.
 
 ```cf3
-      access:
-     
-         "/path/file_object"
-     
-           admit   = { "hostname", "ipv4_address", "ipv6_address"  };
-     
-```
-
-  
-
-**Example:**
-
-```cf3
-body server control 
-{
-allowconnects         => { "127.0.0.1" , "::1" };
-allowallconnects      => { "127.0.0.1" , "::1" };
-trustkeysfrom         => { "127.0.0.1" , "::1" };
-}
-
 bundle server access_rules()
 {
 access:
 
   "/source/directory"
-          comment => "Access to file transfer",
-          admit   => { "127.0.0.1" };
+    comment => "Access to file transfer",
+    admit_ips   => { "192.168.0.1/24" };
+}
+```
 
+For file copy requests, the file becomes transferable to the remote client according to the
+conditions specified in the access promise. Use `ifencrypted` to grant access only if the
+transfer is encrypted, and control with `maproot` (like its NFS counterpart) which hosts
+can see file objects not owned by the server process owner. When access is granted to a
+directory, the promise is automatically given about all of its contents and sub-directories.
+
+File resources are specified using an absolute filepath, but can set a `shortcut` through
+which clients can access the resource without detailed knowledge of the filesystem
+layout on the server. Specifically in access promises about files, a special variable
+context `connection` is available with variables `ip`, `key` and `hostname`, containing
+information about the connection through which access is attempted.
+
+```cf3
+   "/var/cfengine/cmdb/$(connection.key).json" 
+      shortcut   => "me.json",
+      admit_keys => { "$(connection.key)" };
+```
+
+In this example, requesting the file "me.json" will transfer the file specific to
+the requesting host. Note that the usage of the `$(connection.*)` variables is strictly
+limited to literal strings within the promiser and admit/deny lists; they can not be
+passed to functions or stored in other variables.
+
+With CFEngine Enteprise, access can be granted to additional query data for reporting
+and orchestration.
+
+```cf3
   # Grant orchestration communication
 
   "did.*"
@@ -105,12 +104,84 @@ body report_data_select report_filter
 
 ```
 
-Entries may be literal addresses of IPv4 or IPv6, or any name registered
-in the POSIX `gethostbyname` service.
+The access promise allows overlapping promises to be made, and these are kept on a
+first-come-first-served basis. Thus file objects (promisers) should be
+listed in order of most-specific file first. In this way, specific
+promises will override less specific ones.
 
 ****
 
 ## Attributes
+
+
+### admit_hostnames
+
+**Description:** A list of hostnames to grant access to the object.
+
+[%CFEngine_promise_attribute()%]
+
+**Note:** The host trying to access the object is identified using a reverse
+DNS lookup on the connecting IP. This introduces latency for *every* incoming
+connection. Leaving `admit_hostnames` empty and specifying only numeric addresses
+in `admit` will avoid this.
+
+**See also:** `deny_hostnames`, `admit_ips`, `admit_keys`
+
+**History:** Introduced in CFEngine 3.6.0
+
+### admit_ips
+
+**Description:** A list of IP addresses to grant access to the object.
+
+Subnets are specified using CIDR notation.
+
+[%CFEngine_promise_attribute()%]
+
+**See also:** `deny_ips`, `admit_hostnames`, `admit_keys`
+
+**History:** Introduced in CFEngine 3.6.0
+
+### admit_keys
+
+**Description:** A list of RSA host keys to grant access to the object.
+
+[%CFEngine_promise_attribute()%]
+
+**See also:** `deny_keys`, `admit_hostnames`, `admit_ips`
+
+**History:** Introduced in CFEngine 3.6.0
+
+### deny_hostnames
+
+**Description:** A list of hostnames to deny access to the object.
+
+This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
+
+[%CFEngine_promise_attribute()%]
+
+**History:** Introduced in CFEngine 3.6.0
+
+### deny_ips
+
+**Description:** A list of IP addresses to deny access to the object.
+
+Subnets are specified using CIDR notation.
+
+This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
+
+[%CFEngine_promise_attribute()%]
+
+**History:** Introduced in CFEngine 3.6.0
+
+### deny_keys
+
+**Description:** A list of RSA host keys to deny access to the object.
+
+This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
+
+[%CFEngine_promise_attribute()%]
+
+**History:** Introduced in CFEngine 3.6.0
 
 ### admit
 
@@ -141,6 +212,7 @@ access:
 
 `admit` will be deprecated in CFEngine 3.7 in favor of `admit_ips`,
 `admit_hostnames`, and `admit_keys`.
+
 
 ### deny
 
@@ -613,3 +685,19 @@ access:
 }
 ```
 
+### shortcut
+
+**Description:** For file promisers, the server will give access to the file under
+its shortcut name.
+
+[%CFEngine_promise_attribute()%]
+
+**Example:**
+
+```cf3
+  "/var/cfengine/cmdb/$(connection.key).json" 
+    shortcut   => "me.json",
+    admit_keys => { "$(connection.key)" };
+```
+
+**History:** Introduced in CFEngine 3.6.0
