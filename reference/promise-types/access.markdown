@@ -236,14 +236,16 @@ access:
 **This body is only available in CFEngine Enterprise.**
 
 **Description:** The `report_data_select` body restricts which data is included
-for "query" resources, and allows filtering of data reported to the CFEngine Enterprise Database.
+for "query" resources, and allows filtering of data reported to the CFEngine Enterprise server.
 
 Use this body template to control the content of reports collected by the 
 CFEngine Enterprise server, and to strip unwanted data (e.g. temporary variables)
 from reporting.
 
-By default, no filtering is applied. If more than one select statement applies
-to the same host, all of them are applied.
+By default, no filtering is applied. If include and exclude rules are combined, then the
+exclude statement is applied to the subset from the include statement.
+
+If more than one report_data_select body applies to the same host, all of them are applied.
 
 Usage of this body is only allowed in conjunction with using 
 [`resource_type => "query"`](#resource_type), as this is the resource type that is being affected.
@@ -271,7 +273,7 @@ to exclude from reporting.
 Classes and variables with metatags matching any entry of that list will not be reported
 to the CFEngine Enterprise server.
 
-This list overrides the list in `metatags_include`.
+When combined with `metatags_include`, this list is applied to the selected subset.
 
 [%CFEngine_promise_attribute()%]
 
@@ -287,7 +289,7 @@ to include in reporting.
 Classes and variables with metatags matching any entry of that list will be reported
 to the CFENgine Enterprise server.
 
-The list in `metatags_exclude` overrides this list.
+When combined with `metatags_exclude`, the exclude list is applied to the subset from this list.
 
 [%CFEngine_promise_attribute()%]
 
@@ -303,7 +305,7 @@ to exclude from reporting.
 Information about promises with handles that match any entry in that list will not be reported
 to the CFEngine Enterprise server.
 
-This list overrides the list in `promise_handle_include`.
+When combined with `promise_handle_include`, this list is applied to the selected subset.
 
 [%CFEngine_promise_attribute()%]
 
@@ -319,7 +321,7 @@ to include in reporting.
 Information about promises with handles that match any entry in that list will be reported
 to the CFEngine Enterprise server.
 
-The list in `promise_handle_exclude` overrides this list.
+When combined with `promise_handle_exclude`, the exclude list is applied to the subset from this list.
 
 [%CFEngine_promise_attribute()%]
 
@@ -335,7 +337,7 @@ to include in reporting.
 Monitoring objects with names matching any entry in that list will be reported
 to the CFEngine Enterprise server.
 
-The list in `monitoring_exclude` overrides this list.
+When combined with `monitoring_exclude`, the exclude list is applied to the subset from this list.
 
 [%CFEngine_promise_attribute()%]
 
@@ -351,7 +353,7 @@ to exclude from reporting.
 Monitoring objects with names matching any entry in that list will not be reported
 to the CFEngine Enterprise server.
 
-This list overrides the list in `monitoring_include`.
+When combined with `monitoring_include`, this list is applied to the selected subset.
 
 [%CFEngine_promise_attribute()%]
 
