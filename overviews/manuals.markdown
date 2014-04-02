@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Learning CFEngine 
-categories: [Overviews, Manuals]
+categories: [Manuals]
 published: true
 sorting: 30
-alias: overviews,manuals.html
+alias: overviews-manuals.html
 tags: [overviews, manuals]
 ---
 
