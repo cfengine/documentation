@@ -6680,7 +6680,7 @@
         },
         {
           "type": "int",
-          "range": "0,99999999999"
+          "range": "2,64"
         }
       ],
       "variadic": false,
@@ -6722,7 +6722,7 @@
         },
         {
           "type": "int",
-          "range": "0,99999999999"
+          "range": "2,64"
         }
       ],
       "variadic": false,
