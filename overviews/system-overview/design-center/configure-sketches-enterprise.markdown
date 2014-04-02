@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Configure the Design Center App
+title: Enterprise Sketches
 categories: [MOverviews, System Overview, Design Center, Enterprise Sketches]
 published: true
 sorting: 20

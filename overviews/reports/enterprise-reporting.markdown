@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Enterprise Report API
-categories: [Overviews, Reports, Enterprise Report API]
+categories: [Overviews, Reports, Enterprise Reporting]
 published: true
 sorting: 20
 alias: manuals-enterprise-reporting.html
