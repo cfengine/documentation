@@ -6,6 +6,7 @@ categories: [Overviews, Mission Portal Overview, Using Sketches in Mission Porta
 published: true
 alias: overviews-mission-portal-design-center-app-sketches.html
 tags: [overviews, mission portal, sketches, design center, design center app]
+---
 
 ## Design Center App ##
 
