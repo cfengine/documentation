@@ -243,6 +243,9 @@ access:
 Only regular expressions or exact matches are allowed in this list, 
 as non-specific matches are too greedy for denial.
 
+`deny` will be deprecated in CFEngine 3.7 in favor of `deny_ips`,
+`deny_hostnames`, and `deny_keys`.
+
 ### maproot
 
 **Description:** The `maproot` slist contains host names or IP addresses 
@@ -267,7 +270,7 @@ access:
 
  "/home"
 
-       admit => { "backup_host.example.org" },
+     admit_hostnames => { "backup_host.example.org" },
  ifencrypted => "true",
 
      # Backup needs to have access to all users
@@ -298,7 +301,7 @@ access:
 
    "/path/file"
 
-    admit     => { ".*\.example\.org" },
+    admit_hostnames => { ".*\.example\.org" },
     ifencrypted => "true";
 ```
 
