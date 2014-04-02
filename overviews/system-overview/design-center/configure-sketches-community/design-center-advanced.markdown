@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Advanced Walkthrough
-categories: [Manuals, Design Center, Sketches Community, Advanced Walkthrough]
+categories: [Overviews, System Overview, Design Center, Sketches Community, Advanced Walkthrough]
 published: true
 sorting: 10
 alias: manuals-design-center-advanced.html
