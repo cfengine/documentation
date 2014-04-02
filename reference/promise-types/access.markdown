@@ -60,50 +60,49 @@ reporting and orchestration.
   "did.*"
           comment => "Access to class context (enterprise)",
     resource_type => "context",
-            admit => { "127.0.0.1" };
+        admit_ips => { "127.0.0.1" };
 
 
   "value of my test_scalar, can expand variables here - $(sys.host)"
           comment => "Grant access to the string in quotes, by name test_scalar",
            handle => "test_scalar",
     resource_type => "literal",
-            admit => { "127.0.0.1" };
+        admit_ips => { "127.0.0.1" };
 
   "XYZ"
           comment => "Grant access to contents of persistent scalar variable XYZ",
     resource_type => "variable",
-            admit => { "127.0.0.1" };
+        admit_ips => { "127.0.0.1" };
 
   # Client grants access to CFEngine hub access
 
   "delta"
                comment => "Grant access to cfengine hub to collect report deltas",
          resource_type => "query",
-    report_data_select => report_filter,
-                 admit => { "127.0.0.1"  };
+    report_data_select => default_data_select_host,
+                 admit_ips => { "127.0.0.1"  };
   "full"
                comment => "Grant access to cfengine hub to collect full report dump",
          resource_type => "query",
-    report_data_select => report_filter,
-                 admit => { "127.0.0.1"  };
+    report_data_select => default_data_select_host,
+             admit_ips => { "127.0.0.1"  };
 
   policy_hub::
 
   "collect_calls"
           comment => "Grant access to cfengine client to request the collection of its reports",
     resource_type => "query",
-            admit => { "10.1.2.*" };
+        admit_ips => { "10.1.2.*" };
 
 
-}
-
-body report_data_select report_filter
-{
-    variables_include => { "sys..*", "mon..*" };
-    variables_exclude => { "sys.host" };
 }
 
 ```
+
+Using the built-in `report_data_select` body `default_data_select_host`:
+
+[%CFEngine_include_snippet(lib/3.6/reports.cf, .+default_data_select_host, \})%]
+
 
 The access promise allows overlapping promises to be made, and these are kept on a
 first-come-first-served basis. Thus file objects (promisers) should be
@@ -336,6 +335,14 @@ body report_data_select report_data
 }
 ```
 
+**Example:**
+
+Here are the built-in `report_data_select` bodies `default_data_select_host` and `default_data_select_hub`:
+
+[%CFEngine_include_snippet(lib/3.6/reports.cf, .+default_data_select_host, \})%]
+
+[%CFEngine_include_snippet(lib/3.6/reports.cf, .+default_data_select_policy_hub, \})%]
+
 **History:** Introduced in Enterprise 3.5.0
 
 #### metatags_exclude
@@ -536,19 +543,19 @@ access:
     handle => "test_scalar",
     comment => "Grant access to contents of test_scalar VAR",
     resource_type => "literal",
-    admit => { "127.0.0.1" };
+    admit_ips => { "127.0.0.1" };
 
   "XYZ"
     resource_type => "variable",
     handle => "XYZ",
-    admit => { "127.0.0.1" };
+    admit_ips => { "127.0.0.1" };
 
 
   # On the policy hub
 
   "collect_calls"
      resource_type => "query",
-           admit   => { "127.0.0.1" };
+     admit_ips => { "127.0.0.1" };
 
   # On the isolated client in the field
 
@@ -556,11 +563,12 @@ access:
  "delta"
     comment => "Grant access to cfengine hub to collect report deltas",
     resource_type => "query",
-          admit   => { "127.0.0.1"  };
-  "full"
+    admit_ips   => { "127.0.0.1"  };
+
+ "full"
           comment => "Grant access to cfengine hub to collect full report dump",
     resource_type => "query",
-          admit   => { "127.0.0.1"  };
+        admit_ips => { "127.0.0.1"  };
 }
 ```
 
