@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Design
-categories: [Getting Started, Concepts, Design]
+categories: [Overviews, System Overview, Design]
 published: true
 sorting: 10
 alias: manuals-design.html

@@ -2,7 +2,7 @@
 layout: default
 title: Support and Community
 sorting: 50
-categories: [Overviews, Support and Community]
+categories: [Overviews, Learning Resources,Support and Community]
 published: true
 alias: overviews-support-and-community.html
 tags: [overviews, support, community, bugs, help]

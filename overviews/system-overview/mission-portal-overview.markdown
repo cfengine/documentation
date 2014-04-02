@@ -2,7 +2,7 @@
 layout: default
 title: Mission Portal Overview
 sorting: 100
-categories: [Overviews, Mission Portal Overview]
+categories: [Overviews, System Overview, Mission Portal Overview]
 published: true
 alias: overviews-mission-portal.html
 tags: [overviews, mission portal]

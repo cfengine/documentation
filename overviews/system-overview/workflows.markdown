@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Policy Workflow
-categories: [Getting Started, Concepts, Architecture]
+categories: [Overviews, System Overview, Architecture]
 published: true
 sorting: 20
 alias: manuals-architecture-policy-workflow.html

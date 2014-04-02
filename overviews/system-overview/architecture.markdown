@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Architecture
-categories: [Getting Started, Concepts, Architecture]
+categories: [Overviews, System Overview, Architecture]
 published: true
 sorting: 20
 alias: manuals-architecture.html

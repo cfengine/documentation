@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Command Line Sketches
-categories: [Manuals, Design Center, Sketches Community]
+categories: [Overviews, System Overview, Design Center, Sketches Community]
 published: true
 sorting: 30
 alias: configure-sketches-community.html

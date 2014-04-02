@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Monitoring and Reporting
-categories: [Manuals, Reports, Monitoring and Reporting]
+categories: [Overviews, Reports, Monitoring and Reporting]
 published: true
 sorting: 10
 alias: manuals-reports-monitoring.html

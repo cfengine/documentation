@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Distributed Discovery
-categories: [Getting Started, Concepts, Architecture]
+categories: [Overviews, System Overview, Architecture]
 published: true
 sorting: 30
 alias: manuals-architecture-distributed-discovery.html
