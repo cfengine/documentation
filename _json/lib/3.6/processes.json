@@ -1,5 +1,76 @@
 {
-      "bundles": [],
+      "bundles": [
+        {
+          "sourcePath": "../masterfiles/lib/3.6/processes.cf",
+          "line": 109,
+          "namespace": "default",
+          "name": "cfe_process_kill",
+          "bundleType": "agent",
+          "arguments": [
+            "name"
+          ],
+          "promiseTypes": [
+            {
+              "line": 120,
+              "name": "processes",
+              "contexts": [
+                {
+                  "name": "!windows",
+                  "promises": [
+                    {
+                      "line": 123,
+                      "promiser": "$(name)",
+                      "attributes": [
+                        {
+                          "line": 123,
+                          "lval": "signals",
+                          "rval": {
+                            "type": "list",
+                            "value": [
+                              {
+                                "type": "string",
+                                "value": "term"
+                              },
+                              {
+                                "type": "string",
+                                "value": "kill"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "windows",
+                  "promises": [
+                    {
+                      "line": 126,
+                      "promiser": "$(name)",
+                      "attributes": [
+                        {
+                          "line": 126,
+                          "lval": "signals",
+                          "rval": {
+                            "type": "list",
+                            "value": [
+                              {
+                                "type": "string",
+                                "value": "kill"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "bodies": [
         {
           "sourcePath": "../masterfiles/lib/3.6/processes.cf",
