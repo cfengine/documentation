@@ -4402,6 +4402,490 @@
               ]
             }
           ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2072,
+          "namespace": "default",
+          "name": "cfe_tidy",
+          "bundleType": "agent",
+          "arguments": [
+            "file"
+          ],
+          "promiseTypes": [
+            {
+              "line": 2083,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 2084,
+                      "promiser": "$(file)",
+                      "attributes": [
+                        {
+                          "line": 2084,
+                          "lval": "delete",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "tidy"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 2086,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "inform_mode",
+                  "promises": [
+                    {
+                      "line": 2088,
+                      "promiser": "$(this.bundle): deleting $(file) with delete => tidy",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2091,
+          "namespace": "default",
+          "name": "cfe_syncdir",
+          "bundleType": "agent",
+          "arguments": [
+            "from",
+            "to"
+          ],
+          "promiseTypes": [
+            {
+              "line": 2103,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 2104,
+                      "promiser": "$(to)/.",
+                      "attributes": [
+                        {
+                          "line": 2105,
+                          "lval": "create",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "line": 2106,
+                          "lval": "depth_search",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "recurse",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "inf"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 2107,
+                          "lval": "copy_from",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "copydir_sync",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(from)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 2109,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "inform_mode",
+                  "promises": [
+                    {
+                      "line": 2111,
+                      "promiser": "$(this.bundle): copying directory $(from) to $(to)",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2114,
+          "namespace": "default",
+          "name": "cfe_copyfile",
+          "bundleType": "agent",
+          "arguments": [
+            "from",
+            "to"
+          ],
+          "promiseTypes": [
+            {
+              "line": 2126,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 2127,
+                      "promiser": "$(to)",
+                      "attributes": [
+                        {
+                          "line": 2128,
+                          "lval": "create",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "line": 2129,
+                          "lval": "copy_from",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "copydir_sync",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(from)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 2131,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "inform_mode",
+                  "promises": [
+                    {
+                      "line": 2133,
+                      "promiser": "$(this.bundle): copying file $(from) to $(to)",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2147,
+          "namespace": "default",
+          "name": "cfe_makefile",
+          "bundleType": "agent",
+          "arguments": [
+            "file",
+            "str"
+          ],
+          "promiseTypes": [
+            {
+              "line": 2160,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 2161,
+                      "promiser": "$(file)",
+                      "attributes": [
+                        {
+                          "line": 2162,
+                          "lval": "create",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "line": 2163,
+                          "lval": "edit_line",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "insert_lines",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(str)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 2164,
+                          "lval": "edit_defaults",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "empty"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 2166,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "inform_mode",
+                  "promises": [
+                    {
+                      "line": 2168,
+                      "promiser": "$(this.bundle): creating $(file) with contents '$(str)'",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2171,
+          "namespace": "default",
+          "name": "cfe_emptyfile",
+          "bundleType": "agent",
+          "arguments": [
+            "file"
+          ],
+          "promiseTypes": [
+            {
+              "line": 2182,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 2183,
+                      "promiser": "$(file)",
+                      "attributes": [
+                        {
+                          "line": 2184,
+                          "lval": "create",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "line": 2185,
+                          "lval": "edit_defaults",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "empty"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 2187,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "inform_mode",
+                  "promises": [
+                    {
+                      "line": 2189,
+                      "promiser": "$(this.bundle): creating empty $(file) with 0 size",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2192,
+          "namespace": "default",
+          "name": "cfe_hardlinkfile",
+          "bundleType": "agent",
+          "arguments": [
+            "target",
+            "link"
+          ],
+          "promiseTypes": [
+            {
+              "line": 2204,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 2205,
+                      "promiser": "$(link)",
+                      "attributes": [
+                        {
+                          "line": 2206,
+                          "lval": "move_obstructions",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "line": 2207,
+                          "lval": "link_from",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "cfe_link",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(target)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "hardlink"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 2209,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "inform_mode",
+                  "promises": [
+                    {
+                      "line": 2211,
+                      "promiser": "$(this.bundle): $(link) will be a hard link to $(target)",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2214,
+          "namespace": "default",
+          "name": "cfe_linkfile",
+          "bundleType": "agent",
+          "arguments": [
+            "target",
+            "link"
+          ],
+          "promiseTypes": [
+            {
+              "line": 2226,
+              "name": "files",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 2227,
+                      "promiser": "$(link)",
+                      "attributes": [
+                        {
+                          "line": 2228,
+                          "lval": "move_obstructions",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "line": 2229,
+                          "lval": "link_from",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "cfe_link",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(target)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "symlink"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 2231,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "inform_mode",
+                  "promises": [
+                    {
+                      "line": 2233,
+                      "promiser": "$(this.bundle): $(link) will be a symlink to $(target)",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "bodies": [
@@ -7472,6 +7956,97 @@
                   "rval": {
                     "type": "string",
                     "value": "no"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2136,
+          "namespace": "default",
+          "name": "copydir_sync",
+          "bodyType": "copy_from",
+          "arguments": [
+            "f"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 2140,
+                  "lval": "source",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(f)"
+                  }
+                },
+                {
+                  "line": 2141,
+                  "lval": "purge",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                },
+                {
+                  "line": 2142,
+                  "lval": "preserve",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                },
+                {
+                  "line": 2143,
+                  "lval": "type_check",
+                  "rval": {
+                    "type": "string",
+                    "value": "false"
+                  }
+                },
+                {
+                  "line": 2144,
+                  "lval": "compare",
+                  "rval": {
+                    "type": "string",
+                    "value": "digest"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/files.cf",
+          "line": 2236,
+          "namespace": "default",
+          "name": "cfe_link",
+          "bodyType": "link_from",
+          "arguments": [
+            "source",
+            "type"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 2241,
+                  "lval": "source",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(source)"
+                  }
+                },
+                {
+                  "line": 2242,
+                  "lval": "link_type",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(type)"
                   }
                 }
               ]
