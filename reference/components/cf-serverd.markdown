@@ -109,7 +109,7 @@ See also the warning about regular expressions in
 **Description:** List of hosts from which the server accepts connections
 that are not using the latest protocol.
 
-Set this attribute to the empty list to not allow any incoming connections
+Set this attribute to an empty list to not allow any incoming connections
 using legacy protocol versions:
 
 ```cf3
