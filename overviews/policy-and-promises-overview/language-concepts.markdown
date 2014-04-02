@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Language Concepts
-categories: [Overviews, Language Concepts]
+categories: [Overviews, Policy and Promises Overview, Language Concepts]
 published: true
 sorting: 40
 alias: overviews-language-concepts.html

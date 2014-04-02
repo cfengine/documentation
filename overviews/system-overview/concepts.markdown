@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Concepts
-categories: [Overviews, Concepts]
+categories: [Overviews, System Overview, Concepts]
 published: true
 sorting: 30
 alias: overviews-concepts.html

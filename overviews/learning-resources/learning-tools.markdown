@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Learning Tools 
-categories: [Overviews, Learning Tools]
+categories: [Overviews, Learning Resources, Learning Tools]
 published: true
 sorting: 40
 alias: overviews-learning-tools.html

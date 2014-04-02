@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Command-Line Reports
-categories: [Manuals, Reports, Command-Line Reports]
+categories: [Overviews, Reports, Command-Line Reports]
 published: true
 sorting: 60
 alias: manuals-reports-command-line.html

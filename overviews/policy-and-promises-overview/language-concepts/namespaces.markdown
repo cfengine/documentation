@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Namespaces
-categories: [Manuals, Language Concepts, Namespaces]
+categories: [Overviews,Policy and Promises Overview, Language Concepts, Namespaces]
 published: true
 sorting: 90
 alias: manuals-language-concepts-namespaces.html

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Classes and Decisions
-categories: [Manuals, Language Concepts, Classes]
+categories: [Overviews,Policy and Promises Overview, Language Concepts, Classes]
 published: true
 sorting: 40
 alias: manuals-language-concepts-classes.html

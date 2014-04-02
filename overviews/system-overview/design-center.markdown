@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Design Center Overview
-categories: [Overviews, Design Center Overview]
+categories: [Overviews, System Overview, Design Center Overview]
 published: true
 sorting: 60
 alias: overviews-design-center.html
