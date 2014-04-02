@@ -9,7 +9,7 @@ tags: [reference, communication functions, functions, peers]
 
 [%CFEngine_function_prototype(filename, regex, groupsize)%]
 
-**Description:** Returns the current hosts's partition peers (excluding it).
+**Description:** Returns the current host's partition peers (excluding it).
 
 So given `groupsize` 3 and the file
 

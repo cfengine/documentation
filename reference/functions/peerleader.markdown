@@ -9,7 +9,7 @@ tags: [reference, communication functions, functions, peerleader]
 
 [%CFEngine_function_prototype(filename, regex, groupsize)%]
 
-**Description:** Returns the current hosts's partition's peer leader.
+**Description:** Returns the current host's partition peer leader.
 
 So given `groupsize` 3 and the file
 
