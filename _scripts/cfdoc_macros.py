@@ -590,7 +590,7 @@ def include_example(parameters, config):
 	return markdown_lines
 
 def include_snippet(parameters, config):
-	filename = find_include_file(parameters[0], config["example_directories"])
+	filename = find_include_file(parameters[0], config["include_directories"])
 	lines = load_include_file(filename)
 	if lines == None:
 		return ""

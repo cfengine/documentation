@@ -42,11 +42,12 @@ def validate():
 	if not os.path.exists(config["markdown_directory"]):
 		print "Directory 'documentation' not found in WORKDIR"
 
-	config["example_directories"] = []
-	config["example_directories"].append(config["WORKDIR"] + "/core/examples")
-	config["example_directories"].append(config["WORKDIR"] + "/core/masterfiles/libraries")
-	config["example_directories"].append(config["WORKDIR"] + "/documentation-generator/_generated")
-		
+	config["include_directories"] = []
+	config["include_directories"].append(config["WORKDIR"] + "/core/examples")
+	config["include_directories"].append(config["WORKDIR"] + "/documentation-generator/_generated")
+	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/_generated")
+	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/lib")
+
 	config["reference_path"] = config["project_directory"] + "/_references.md"
 	config["config_path"] = config["project_directory"] + "/_config.yml"
 	

@@ -105,17 +105,17 @@ def processFile(markdown, config):
 			
 def include(parameters, config):
 	lines = []
-	example_directories = config["example_directories"]
-	for example_directory in example_directories:
-		example = example_directory + "/" + parameters[0]
-		if os.path.exists(example):
-			example_file = open(example, 'r')
-			lines = example_file.readlines()
+	include_directories = config["include_directories"]
+	for include_directory in include_directories:
+		include_file = iclude_directory + "/" + parameters[0]
+		if os.path.exists(include_file):
+			file = open(include_file, 'r')
+			lines = file.readlines()
 		
 	if len(lines) == 0:
 		print "cfdoc_extractexamples: File not found or can't open: " + parameters[0]
 		print "                       searching :"
-		for dir in example_directories:
+		for dir in include_directories:
 			print "                                  " + dir
 		return lines
 	
