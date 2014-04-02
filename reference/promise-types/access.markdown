@@ -13,8 +13,7 @@ The promiser is the name of the resource affected and is interpreted to be a pat
 different `resource_type` is specified. Access is then granted to hosts listed in `admit_ips`,
 `admit_keys` and `admit_hostnames`, or denied using the counterparts `deny_ips`, `deny_keys`
 and `deny_hostnames`. Use of admit to grant on a "need to know" basis is preferred, as mistakes
-and omissions can easily be made when excluding from a group. A security policy based on
-exceptions is a weak one.
+and omissions can easily be made when excluding from a group.
 
 ```cf3
 bundle server access_rules()
@@ -31,13 +30,13 @@ For file copy requests, the file becomes transferable to the remote client accor
 conditions specified in the access promise. Use `ifencrypted` to grant access only if the
 transfer is encrypted, and control with `maproot` (like its NFS counterpart) which hosts
 can see file objects not owned by the server process owner. When access is granted to a
-directory, the promise is automatically given about all of its contents and sub-directories.
+directory, the promise is automatically made about all of its contents and sub-directories.
 
 File resources are specified using an absolute filepath, but can set a `shortcut` through
-which clients can access the resource without detailed knowledge of the filesystem
-layout on the server. Specifically in access promises about files, a special variable
-context `connection` is available with variables `ip`, `key` and `hostname`, containing
-information about the connection through which access is attempted.
+which clients can access the resource using a logical name, without having any detailed
+knowledge of the filesystem layout on the server. Specifically in access promises about
+files, a special variable context `connection` is available with variables `ip`, `key`
+and `hostname`, containing information about the connection through which access is attempted.
 
 ```cf3
    "/var/cfengine/cmdb/$(connection.key).json" 
@@ -45,13 +44,15 @@ information about the connection through which access is attempted.
       admit_keys => { "$(connection.key)" };
 ```
 
-In this example, requesting the file "me.json" will transfer the file specific to
-the requesting host. Note that the usage of the `$(connection.*)` variables is strictly
-limited to literal strings within the promiser and admit/deny lists; they can not be
+In this example, requesting the file `me.json` will transfer the file stored on the
+server under the name `/var/cfengine/cmdb/SHA=....json` to the requesting host,
+where it will be received as `me.json`.
+Note that the usage of the `$(connection.*)` variables is strictly
+limited to literal strings within the promiser and admit/deny lists; they cannot be
 passed to functions or stored in other variables.
 
-With CFEngine Enteprise, access can be granted to additional query data for reporting
-and orchestration.
+With CFEngine Enteprise, access promises can be made about additional query data for
+reporting and orchestration.
 
 ```cf3
   # Grant orchestration communication
@@ -116,7 +117,7 @@ promises will override less specific ones.
 
 ### admit_hostnames
 
-**Description:** A list of hostnames to grant access to the object.
+**Description:** A list of hostnames that should have access to the object.
 
 [%CFEngine_promise_attribute()%]
 
@@ -131,7 +132,7 @@ in `admit` will avoid this.
 
 ### admit_ips
 
-**Description:** A list of IP addresses to grant access to the object.
+**Description:** A list of IP addresses that should have access to the object.
 
 Subnets are specified using CIDR notation.
 
@@ -143,7 +144,7 @@ Subnets are specified using CIDR notation.
 
 ### admit_keys
 
-**Description:** A list of RSA host keys to grant access to the object.
+**Description:** A list of RSA keys of hosts that should have access to the object.
 
 [%CFEngine_promise_attribute()%]
 
@@ -153,7 +154,7 @@ Subnets are specified using CIDR notation.
 
 ### deny_hostnames
 
-**Description:** A list of hostnames to deny access to the object.
+**Description:** A list of hostnames that should be denied access to the object.
 
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
@@ -163,7 +164,7 @@ This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
 ### deny_ips
 
-**Description:** A list of IP addresses to deny access to the object.
+**Description:** A list of IP addresses that should be denied access to the object.
 
 Subnets are specified using CIDR notation.
 
@@ -175,7 +176,7 @@ This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
 ### deny_keys
 
-**Description:** A list of RSA host keys to deny access to the object.
+**Description:** A list of RSA keys of hosts that should be denied access to the object.
 
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
@@ -699,5 +700,9 @@ its shortcut name.
     shortcut   => "me.json",
     admit_keys => { "$(connection.key)" };
 ```
+
+In this example, requesting the file `me.json` will transfer the file stored on the
+server under the name `/var/cfengine/cmdb/SHA=....json` to the requesting host,
+where it will be received as `me.json`.
 
 **History:** Introduced in CFEngine 3.6.0
