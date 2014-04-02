@@ -107,7 +107,7 @@ def include(parameters, config):
 	lines = []
 	include_directories = config["include_directories"]
 	for include_directory in include_directories:
-		include_file = iclude_directory + "/" + parameters[0]
+		include_file = include_directory + "/" + parameters[0]
 		if os.path.exists(include_file):
 			file = open(include_file, 'r')
 			lines = file.readlines()
