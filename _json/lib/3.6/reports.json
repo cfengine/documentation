@@ -9,18 +9,18 @@
           "arguments": [],
           "promiseTypes": [
             {
-              "line": 40,
+              "line": 41,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 41,
+                      "line": 42,
                       "promiser": "report_settings",
                       "attributes": [
                         {
-                          "line": 84,
+                          "line": 85,
                           "lval": "data",
                           "rval": {
                             "type": "functionCall",
@@ -40,18 +40,18 @@
               ]
             },
             {
-              "line": 86,
+              "line": 87,
               "name": "methods",
               "contexts": [
                 {
                   "name": "Hr00.Min00_05",
                   "promises": [
                     {
-                      "line": 88,
+                      "line": 89,
                       "promiser": "Remove old report history",
                       "attributes": [
                         {
-                          "line": 89,
+                          "line": 90,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -65,7 +65,7 @@
                           }
                         },
                         {
-                          "line": 90,
+                          "line": 91,
                           "lval": "action",
                           "rval": {
                             "type": "functionCall",
@@ -81,11 +81,11 @@
                       ]
                     },
                     {
-                      "line": 92,
+                      "line": 93,
                       "promiser": "Remove cf-consumer history",
                       "attributes": [
                         {
-                          "line": 93,
+                          "line": 94,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -99,7 +99,7 @@
                           }
                         },
                         {
-                          "line": 94,
+                          "line": 95,
                           "lval": "action",
                           "rval": {
                             "type": "functionCall",
@@ -122,7 +122,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/reports.cf",
-          "line": 97,
+          "line": 98,
           "namespace": "default",
           "name": "cfe_internal_database_cleanup_reports",
           "bundleType": "agent",
@@ -131,18 +131,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 99,
+              "line": 101,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 100,
+                      "line": 102,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 100,
+                          "line": 102,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -158,11 +158,11 @@
                       ]
                     },
                     {
-                      "line": 102,
+                      "line": 104,
                       "promiser": "remove_query_$(settings[$(index)][report])",
                       "attributes": [
                         {
-                          "line": 107,
+                          "line": 109,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -176,18 +176,18 @@
               ]
             },
             {
-              "line": 110,
+              "line": 112,
               "name": "commands",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 111,
+                      "line": 113,
                       "promiser": "$(sys.workdir)/bin/psql cfdb -c \"$(remove_query_$(settings[$(index)][report]))\"",
                       "attributes": [
                         {
-                          "line": 112,
+                          "line": 114,
                           "lval": "handle",
                           "rval": {
                             "type": "string",
@@ -204,7 +204,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/reports.cf",
-          "line": 115,
+          "line": 117,
           "namespace": "default",
           "name": "cfe_internal_database_cleanup_consumer_status",
           "bundleType": "agent",
@@ -213,18 +213,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 119,
+              "line": 122,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 120,
+                      "line": 123,
                       "promiser": "remove_query",
                       "attributes": [
                         {
-                          "line": 121,
+                          "line": 124,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -238,18 +238,18 @@
               ]
             },
             {
-              "line": 123,
+              "line": 126,
               "name": "commands",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 124,
+                      "line": 127,
                       "promiser": "$(sys.workdir)/bin/psql cfdb -c \"$(remove_query)\"",
                       "attributes": [
                         {
-                          "line": 125,
+                          "line": 128,
                           "lval": "handle",
                           "rval": {
                             "type": "string",
