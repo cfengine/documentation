@@ -82,11 +82,12 @@ except:
 linkresolver.apply(config)
 
 # create printable sources from completely pre-processed markdown
-try:
-	printsource.run(config)
-except:
-	print "cfdoc_printsource: Error generating print-pages"
-	sys.stdout.write("      Exception: ")
-	print sys.exc_info()
+if False:
+	try:
+		printsource.run(config)
+	except:
+		print "cfdoc_printsource: Error generating print-pages"
+		sys.stdout.write("      Exception: ")
+		print sys.exc_info()
 
 exit(0)
