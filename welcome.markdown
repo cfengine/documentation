@@ -17,8 +17,9 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
 * [Get started][Getting Started] with CFEngine.
 * See an [overview of the documentation](#documentation).
 * Read [about policy language](#policy-language) and see [some examples of policy language](#policy-language-by-way-of-example).
+* Learn about [reporting](#reporting) with CFEngine.
 * Find out more about the [Design Center and sketches](#design-center-and-sketches).
-* Search the [reference documentation](#reference-documentation).
+* Search the [reference documentation](#cfengine-reference-documentation).
 * Discover[CFEngine Enterprise Edition][CFEngine Enterprise Guide].
 * Check [release information](#cfengine-release)
 
