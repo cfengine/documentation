@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Loops
-categories: [Manuals, Language Concepts, Loops]
+categories: [Overviews, Policy and Promises Overview, Language Concepts, Loops]
 published: true
 sorting: 70
 alias: manuals-language-concepts-loops.html
