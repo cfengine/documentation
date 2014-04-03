@@ -2,7 +2,7 @@
 layout: default
 title: Template
 sorting: 15
-categories: [Examples, Tutorials]
+categories: [Examples, Tutorials, Template]
 published: false
 alias: examples-tutorials-template.html
 tags: [Examples, Tutorials, Template]
