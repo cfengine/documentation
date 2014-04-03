@@ -6521,6 +6521,31 @@
       "cached": false,
       "category": "system"
     },
+    "packageupdatesmatching": {
+      "status": "normal",
+      "returnType": "data",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": ".*"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "system"
+    },
     "parseintarray": {
       "status": "normal",
       "returnType": "int",
