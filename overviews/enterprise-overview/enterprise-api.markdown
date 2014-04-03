@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Enterprise API
-categories: [Overviews, Enterprise Overviews, Enterprise API]
+categories: [Overviews, Enterprise Overview, Enterprise API]
 published: true
 sorting: 1
 alias: overviews-enterprise-api.html
