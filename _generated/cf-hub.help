@@ -8,7 +8,6 @@ Options:
   --help        , -h       - Print the help message
   --no-lock     , -K       - Ignore locking constraints during execution (ifelapsed/expireafter) if "too soon" to run
   --logging     , -l       - Enable logging of report collection and maintenance to hub_log in the working directory
-  --maintain    , -m       - Start database maintenance process. By default, entries older than 7 days (1 year for longterm reports) are purged.
   --dry-run     , -n       - All talk and no action mode - make no changes, only inform of promises not kept
   --splay_updates, -s       - Splay/load balance full-updates, overriding bootstrap times, assuming a default 5 minute update schedule.
   --query       , -q value - Collect reports from remote host. Value is 'full' or 'delta'. -H option is required.
