@@ -3,7 +3,7 @@ layout: default
 title: Enterprise API
 categories: [Overviews, Enterprise Overview, Enterprise API]
 published: true
-sorting: 1
+sorting: 2 
 alias: overviews-enterprise-api.html
 tags: [overviews, enterprise, REST, API, reporting]
 ---
