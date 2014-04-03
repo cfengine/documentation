@@ -1,7 +1,7 @@
 ---
 layout: default
 title: System Overview
-sorting: 10
+sorting: 1
 categories: [Overviews, System Overview]
 published: true
 alias: overviews-system.html

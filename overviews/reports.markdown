@@ -3,7 +3,7 @@ layout: default
 title: Reports
 categories: [Overviews, Reports]
 published: true
-sorting: 70
+sorting: 3 
 alias: overviews-reports.html
 tags: [overviews, reports, reporting]
 ---
