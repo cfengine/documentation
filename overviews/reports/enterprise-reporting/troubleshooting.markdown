@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Troubleshooting
-categories: [Overviews, Enterprise Reporting, Troubleshooting]
+categories: [Overviews, Reports, Enterprise Reporting, Troubleshooting]
 published: true
 sorting: 100
 alias: manuals-enterprise-reporting-troubleshooting.html
