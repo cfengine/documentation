@@ -20,6 +20,7 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
 * Find out more about the [Design Center and sketches](#design-center-and-sketches).
 * Search the [reference documentation](#reference-documentation).
 * Discover[CFEngine Enterprise Edition][CFEngine Enterprise Guide].
+* Check [release information](#cfengine-release)
 
 # Documentation #
 
