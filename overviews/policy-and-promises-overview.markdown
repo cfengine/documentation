@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Promises Overview
+title: Policy and Promises Overview
 sorting: 100
-categories: [Overviews, Promises Overview]
+categories: [Overviews, Policy and Promises Overview]
 published: true
 alias: overviews-promises.html
 tags: [overviews, promises overview]
