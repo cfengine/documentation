@@ -159,6 +159,8 @@ This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
 [%CFEngine_promise_attribute()%]
 
+**See also:** `admit_hostnames`, `deny_ips`, `deny_keys`
+
 **History:** Introduced in CFEngine 3.6.0
 
 ### deny_ips
@@ -171,6 +173,8 @@ This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
 [%CFEngine_promise_attribute()%]
 
+**See also:** `admit_ips`, `deny_hostnames`, `deny_keys`
+
 **History:** Introduced in CFEngine 3.6.0
 
 ### deny_keys
@@ -180,6 +184,8 @@ This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
 [%CFEngine_promise_attribute()%]
+
+**See also:** `admit_keys`, `deny_hostnames`, `deny_ips`
 
 **History:** Introduced in CFEngine 3.6.0
 
@@ -311,7 +317,8 @@ access:
 **This body is only available in CFEngine Enterprise.**
 
 **Description:** The `report_data_select` body restricts which data is included
-for "query" resources, and allows filtering of data reported to the CFEngine Enterprise server.
+for [query][resource_type] resources, and allows filtering of data reported to the
+CFEngine Enterprise server.
 
 Use this body template to control the content of reports collected by the 
 CFEngine Enterprise server, and to strip unwanted data (e.g. temporary variables)
@@ -320,10 +327,10 @@ from reporting.
 By default, no filtering is applied. If include and exclude rules are combined, then the
 exclude statement is applied to the subset from the include statement.
 
-If more than one report_data_select body applies to the same host, all of them are applied.
+If more than one `report_data_select` body applies to the same host, all of them are applied.
 
 Usage of this body is only allowed in conjunction with using 
-[`resource_type => "query"`](#resource_type), as this is the resource type that is being affected.
+[`resource_type => "query"`][access#resource_type], as this is the resource type that is being affected.
 
 [%CFEngine_promise_attribute()%]
 
