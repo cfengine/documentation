@@ -543,16 +543,16 @@ def prune_include_lines(markdown_lines, filename):
 	while markdown_lines[-1].lstrip() == "":
 		del markdown_lines[-1]
 
-	brush = "cf3"
-	if filename[-3:] != ".cf":
-		brush = ""
+	brush = ""
+	if filename[-3:] == ".cf":
+		brush = "cf3"
 
 	if len(markdown_lines):
 		# unless included example starts with an explicit code block, start a (CFEngine-brushed) block
 		if (markdown_lines[0].find("```") != 0):
 			markdown_lines.insert(0, "\n```%s\n" % brush)
 		# if example ended with documentation, prune trailing code, else terminate block
-		if markdown_lines[-1] != "\n```cf3\n":
+		if markdown_lines[-1] != ("\n```%s\n" % brush):
 			markdown_lines.append("```\n")
 		else:
 			del markdown_lines[-1]
@@ -594,6 +594,10 @@ def include_snippet(parameters, config):
 	lines = load_include_file(filename)
 	if lines == None:
 		return ""
+
+	brush = ""
+	if filename[-3:] == '.cf':
+		brush = "cf3"
 	
 	begin = re.compile(parameters[1])
 	if len(parameters) < 3:
@@ -618,10 +622,7 @@ def include_snippet(parameters, config):
 						markdown_lines.append("```\n\n")
 					in_documentation = True
 			elif in_documentation:
-				markdown_lines.append("\n```")
-				if filename[-3:] == '.cf':
-					markdown_lines.append("cf3")
-				markdown_lines.append("\n")
+				markdown_lines.append("\n```%s\n" % brush)
 				in_documentation = False
 			# ignore other comments, otherwise append
 			if line[0] != '#':
