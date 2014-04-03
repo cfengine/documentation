@@ -20,7 +20,7 @@
                       "promiser": "inputs",
                       "attributes": [
                         {
-                          "line": 69,
+                          "line": 70,
                           "lval": "slist",
                           "rval": {
                             "type": "list",
@@ -80,6 +80,10 @@
                               {
                                 "type": "string",
                                 "value": "$(this.promise_dirname)/reports.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/cfe_internal.cf"
                               }
                             ]
                           }
@@ -91,14 +95,14 @@
               ]
             },
             {
-              "line": 71,
+              "line": 72,
               "name": "reports",
               "contexts": [
                 {
                   "name": "verbose_mode",
                   "promises": [
                     {
-                      "line": 73,
+                      "line": 74,
                       "promiser": "$(this.bundle): adding COPBL stdlib inputs='$(inputs)'",
                       "attributes": []
                     }
@@ -112,7 +116,7 @@
       "bodies": [
         {
           "sourcePath": "../masterfiles/lib/3.6/stdlib.cf",
-          "line": 76,
+          "line": 77,
           "namespace": "default",
           "name": "control",
           "bodyType": "file",
@@ -122,7 +126,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 79,
+                  "line": 80,
                   "lval": "inputs",
                   "rval": {
                     "type": "list",
