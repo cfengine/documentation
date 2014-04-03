@@ -3106,7 +3106,7 @@
           "attribute": "servers",
           "status": "normal",
           "type": "slist",
-          "range": "[A-Za-z0-9_.:-\\[\\]]+",
+          "range": "[A-Za-z0-9_.:\\-\\[\\]]+",
           "visibility": "body"
         },
         "collapse_destination_dir": {

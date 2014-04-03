@@ -4505,7 +4505,7 @@
                           "lval": "copy_from",
                           "rval": {
                             "type": "functionCall",
-                            "name": "copydir_sync",
+                            "name": "cfe_copyfrom_sync",
                             "arguments": [
                               {
                                 "type": "string",
@@ -4573,7 +4573,7 @@
                           "lval": "copy_from",
                           "rval": {
                             "type": "functionCall",
-                            "name": "copydir_sync",
+                            "name": "cfe_copyfrom_sync",
                             "arguments": [
                               {
                                 "type": "string",
@@ -4778,7 +4778,7 @@
                           "lval": "link_from",
                           "rval": {
                             "type": "functionCall",
-                            "name": "cfe_link",
+                            "name": "cfe_linkfrom",
                             "arguments": [
                               {
                                 "type": "string",
@@ -4850,7 +4850,7 @@
                           "lval": "link_from",
                           "rval": {
                             "type": "functionCall",
-                            "name": "cfe_link",
+                            "name": "cfe_linkfrom",
                             "arguments": [
                               {
                                 "type": "string",
@@ -7966,7 +7966,7 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 2136,
           "namespace": "default",
-          "name": "copydir_sync",
+          "name": "cfe_copyfrom_sync",
           "bodyType": "copy_from",
           "arguments": [
             "f"
@@ -8023,7 +8023,7 @@
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
           "line": 2236,
           "namespace": "default",
-          "name": "cfe_link",
+          "name": "cfe_linkfrom",
           "bodyType": "link_from",
           "arguments": [
             "source",
