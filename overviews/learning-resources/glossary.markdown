@@ -18,7 +18,7 @@ tags: [overviews, leanring resources, glossary]
 * [Classes][Glossary#classes]
 * [CMDB][Glossary#cmdb]
 * [Commands][Glossary#commands]
-* [Common Control 
+* [Common Control][Glossary#common-control] 
 * [Components][Glossary#components]
 * [Datatypes][Glossary#datatypes]
 * [Decisions][Glossary#decisions]
