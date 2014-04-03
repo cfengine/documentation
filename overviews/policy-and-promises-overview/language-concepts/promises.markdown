@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Promises
-categories: [Manuals, Language Concepts, Promises]
+categories: [Overviews,Policy and Promises Overview, Language Concepts, Promises]
 published: true
 sorting: 10
 alias: manuals-language-concepts-promises.html

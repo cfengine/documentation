@@ -104,6 +104,42 @@ See also the warning about regular expressions in
          };
 ```
 
+### allowlegacyconnects
+
+**Description:** List of hosts from which the server accepts connections
+that are not using the latest protocol.
+
+Set this attribute to an empty list to not allow any incoming connections
+using legacy protocol versions:
+
+```cf3
+    allowlegacyconnects => { }
+```
+
+To define subnets or address ranges, use CIDR notation:
+
+```cf3
+    allowlegacyconnects =>  { "192.168.1.0/24", "192.168.2.123" }
+```
+
+Absence of this attribute means that connections from all hosts are accepted.
+
+[%CFEngine_promise_attribute()%]
+
+**See also:** `protocol_version`
+
+### allowciphers
+
+**Description:** List of ciphers the server accepts.
+
+For a list of possible ciphers, see man page for "openssl ciphers".
+
+[%CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA)%]
+
+**See also:** `protocol_version`
+
+**History:** Introduced in CFEngine 3.6.0
+
 ### allowusers
 
 **Description:** List of usernames who may execute requests from this

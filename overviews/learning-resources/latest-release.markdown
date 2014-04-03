@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Latest Release
-categories: [Overviews,Resources,Latest Release]
+categories: [Overviews,Learning Resources,Latest Release]
 published: true
 sorting: 60
 alias: overviews-resources-latest-release.html

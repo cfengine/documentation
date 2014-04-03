@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Deploy your first Policy
-categories: [Manuals, Design Center, Deploy Policy]
+categories: [Overviews, System Overview, Design Center, Deploy Policy]
 published: true
 sorting: 10
 alias: design-center-deploy-sketch.html

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Normal Ordering
-categories: [Manuals, Language Concepts, Normal Ordering]
+categories: [Overviews,Policy and Promises Overview, Language Concepts, Normal Ordering]
 published: true
 sorting: 60
 alias: manuals-language-concepts-normal-ordering.html

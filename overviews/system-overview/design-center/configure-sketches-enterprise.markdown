@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Configure the Design Center App
-categories: [Manuals, Design Center, Enterprise Sketches]
+title: Enterprise Sketches
+categories: [Overviews, System Overview, Design Center, Enterprise Sketches]
 published: true
 sorting: 20
 alias: configure-sketches-enterprise.html

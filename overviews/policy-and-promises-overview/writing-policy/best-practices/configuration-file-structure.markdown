@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Default Configuration File Structure
-categories: [Manuals, Writing Policy, Best Practices, Configuration File Structure]
+categories: [Overviews, Policy and Promises Overview, Writing Policy, Best Practices, Configuration File Structure]
 published: true
 sorting: 40
 alias: manuals-writing-policy-configuration-file-structure.html

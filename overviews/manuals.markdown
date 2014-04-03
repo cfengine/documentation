@@ -4,7 +4,7 @@ title: Learning CFEngine
 categories: [Overviews, Manuals]
 published: true
 sorting: 30
-alias: overviews,manuals.html
+alias: overviews-manuals.html
 tags: [overviews, manuals]
 ---
 

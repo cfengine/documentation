@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sketches Available in the Mission Portal
-categories: [Manuals, Design Center, Enterprise Sketches, Sketches Available in the Mission Portal]
+categories: [Overviews, System Overview, Design Center, Enterprise Sketches, Sketches Available in the Mission Portal]
 published: true
 sorting: 30
 alias: mission-portal-design-center-sketches-available.html

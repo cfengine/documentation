@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Variables
-categories: [Manuals, Language Concepts, Variables]
+categories: [Overviews,Policy and Promises Overview, Language Concepts, Variables]
 published: true
 sorting: 50
 alias: manuals-language-concepts-variables.html

@@ -2,7 +2,7 @@
 layout: default
 title: Configure and Deploy a Policy Using Sketches (Enterprise Only) 
 sorting: 16
-categories: [Examples, Tutorials]
+categories: [Examples, Tutorials, Sketches]
 published: true
 alias: examples-tutorials-deploy-sketch.html
 tags: [Examples, Tutorials, Sketch]

@@ -2,7 +2,7 @@
 layout: default
 title: Hello World
 sorting: 15
-categories: [Examples, Tutorials]
+categories: [Examples, Tutorials, Hello World]
 published: true
 alias: examples-tutorials-hello-world.html
 tags: [Examples, Tutorials, hello-world, stand-alone]

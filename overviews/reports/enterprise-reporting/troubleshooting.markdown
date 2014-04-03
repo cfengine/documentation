@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Troubleshooting
-categories: [Manuals, Enterprise API, Troubleshooting]
+categories: [Overviews, Reports, Enterprise Reporting, Troubleshooting]
 published: true
 sorting: 100
 alias: manuals-enterprise-reporting-troubleshooting.html

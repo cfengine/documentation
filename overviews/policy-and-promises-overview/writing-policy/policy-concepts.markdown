@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Policy Concepts
-categories: [Manuals, Writing Policy, Policy Concepts]
+categories: [Overviews, Policy and Promises Overview, Writing Policy, Policy Concepts]
 published: true
 sorting: 20
 alias: manuals-writing-policy-policy-concepts.html

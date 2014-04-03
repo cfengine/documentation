@@ -2,7 +2,7 @@
 layout: default
 title: Up and Running
 sorting: 13
-categories: [Examples, Tutorials]
+categories: [Overviews, Learning Resources, Tutorials]
 published: true
 alias: new-users.html
 tags: [Examples, Tutorials, Community]

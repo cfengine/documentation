@@ -2,7 +2,7 @@
 layout: default
 title: Distribute files from a central location
 sorting: 10
-categories: [Examples, Tutorials]
+categories: [Examples, Tutorials, File Distribution]
 published: true
 alias: examples-tutorials-distribute-files-from-a-central-location.html
 tags: [Examples, Tutorials, file distribution]

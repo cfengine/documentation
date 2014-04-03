@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Reporting Architecture
-categories: [Manuals, Reports, Enterprise Report API, Architecture]
+categories: [Overviews, Reports, Enterprise Reporting, Architecture]
 published: true
 sorting: 10
 alias: manuals-enterprise-reporting-architecture.html
