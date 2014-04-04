@@ -32,6 +32,22 @@ def run(config):
 	for file in markdown_files:
 		processMetaData(file, config)
 
+	# validate that the category tree is consistent, ie that there is an
+	# index page for every subdirectory. Otherwise, Jekyll bails out
+	category_tree = config["category_tree"]
+	for node in category_tree:
+		branch = category_tree.get(node)
+		if branch == None: # orphan
+			print "Orphan in the category tree! Check path to '%s / %s'" % (branch, node)
+			exit(1)
+		last_branch = branch.split("/")[-1]
+		if last_branch == "":
+			continue
+		parent_branch = category_tree.get(last_branch)
+		if parent_branch == None: # gaps
+			print "ERROR: Missing index file '%s.markdown'" % (branch)
+			exit(2)
+
 # parse meta data lines, remove existing header for later reconstruction
 def parseHeader(lines):
 	header = {}
@@ -58,6 +74,10 @@ def parseHeader(lines):
 	return header;
 
 def processMetaData(file_path, config):
+	category_tree = config.get("category_tree")
+	if category_tree == None:
+		category_tree = {}
+
 	in_file = open(file_path,"r")
 	lines = in_file.readlines()
 	in_file.close()
@@ -79,6 +99,10 @@ def processMetaData(file_path, config):
 	if len(rel_file_path):
 		categories = rel_file_path.split("/")
 	categories.append(file_name)
+	if len(categories) > 1:
+		category_tree[categories[-1]] = rel_file_path # store each leaf with its path
+	else:
+		category_tree[file_name] = ""
 	categories = ["\"%s\"" % c for c in categories] # quote all entires to avoid ruby keywords
 	if len(categories) == 1:
 		category = categories[0]
@@ -109,3 +133,5 @@ def processMetaData(file_path, config):
 		out_file.write(line)
 
 	out_file.close()
+	config["category_tree"] = category_tree
+
