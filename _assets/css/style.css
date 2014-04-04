@@ -205,7 +205,7 @@ th {
     padding: 0.1em 1em;
 }
 
-a {
+a:link {
 	color: ##008cbc;
 }
 
