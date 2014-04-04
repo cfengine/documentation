@@ -12,6 +12,10 @@
 [github design-center]: https://github.com/cfengine/design-center "Design-Center repository on GitHub"
 [evaluate cfengine]: https://cfengine.com/evaluate-enterprise "Evaluate CFEngine"
 [cfengine getting started]: https://cfengine.com/enterprise-getting-started "Get started in 10 minutes"
+[vim_cf3]: https://github.com/neilhwatson/vim_cf3 "CFEngine 3 vim integration"
+[community package repositories]: http://cfengine.com/cfengine-linux-distros "Community package repositories"
+[community download page]: https://cfengine.com/inside/myspace "Community package download page"
+[enterprise software download page]: https://cfengine.com/software "Enterprise download page"
 [boolean]: manuals-language-concepts-promises.html#promise-attributes
 [clist]: manuals-language-concepts-promises.html#promise-attributes
 [anchored]: manuals-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
@@ -36,9 +40,3 @@
 [body classes]: reference-promise-types.html#classes
 [body common]: reference-components.html#common-control
 [body file]: manuals-language-concepts-namespaces.html
-[vim_cf3]: https://github.com/neilhwatson/vim_cf3
-[community package repositories]: http://cfengine.com/cfengine-linux-distros
-[community download page]: https://cfengine.com/inside/myspace
-[enterprise software download page]: https://cfengine.com/software
-[design center-reference]: reference-design-center.html "Design Center Reference"
-[design center-using]: manuals-design-center.html "Using the Design Center"
