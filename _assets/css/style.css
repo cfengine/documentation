@@ -205,6 +205,10 @@ th {
     padding: 0.1em 1em;
 }
 
+a {
+	color: ##008cbc;
+}
+
 #left_col {
     float: left;
     padding-top: 29px;
