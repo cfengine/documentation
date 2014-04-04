@@ -13,13 +13,15 @@ cp /home/vagrant/doc_help/* /home/vagrant/documentation-generator/_generated
 cd /home/vagrant/documentation-generator
 DIFF=$(git diff -- .)
 
+cd _json
 SYNTAX_DIFF=$(git diff -- syntax_map.json)
 if [ ! -z "$SYNTAX_DIFF" ]; then
    git add syntax_map.json
    git commit -m "Autocommit: syntax map changed `date +%F-%T`"
 fi
+cd ..
 
-cd lib
+cd _json/lib
 LIB_DIFF=$(git diff -- .)
 if [ ! -z "$LIB_DIFF" ]; then
    git add -A -- .
