@@ -12,8 +12,10 @@ Access promises are conditional promises made by resources living on the server.
 The promiser is the name of the resource affected and is interpreted to be a path, unless a
 different `resource_type` is specified. Access is then granted to hosts listed in `admit_ips`,
 `admit_keys` and `admit_hostnames`, or denied using the counterparts `deny_ips`, `deny_keys`
-and `deny_hostnames`. Use of admit to grant on a "need to know" basis is preferred, as mistakes
-and omissions can easily be made when excluding from a group.
+and `deny_hostnames`.
+
+You layer the access policy by denying all access and then allowing it
+only to selected clients, then denying to an even more restricted set.
 
 ```cf3
 bundle server access_rules()
@@ -28,9 +30,14 @@ access:
 
 For file copy requests, the file becomes transferable to the remote client according to the
 conditions specified in the access promise. Use `ifencrypted` to grant access only if the
-transfer is encrypted, and control with `maproot` (like its NFS counterpart) which hosts
-can see file objects not owned by the server process owner. When access is granted to a
-directory, the promise is automatically made about all of its contents and sub-directories.
+transfer is encrypted in the "classic" CFEngine protocol (the TLS protocol is always encrypted).
+
+When access is granted to a directory, the promise is automatically
+made about all of its contents and sub-directories.
+
+Use the `maproot` attribute (like its NFS counterpart) to control
+which hosts can see file objects not owned by the server process
+owner.
 
 File resources are specified using an absolute filepath, but can set a `shortcut` through
 which clients can access the resource using a logical name, without having any detailed
@@ -116,14 +123,30 @@ promises will override less specific ones.
 
 ### admit_hostnames
 
-**Description:** A list of hostnames that should have access to the object.
+**Description:** A list of hostnames or domains that should have access to the object.
 
 [%CFEngine_promise_attribute()%]
 
-**Note:** The host trying to access the object is identified using a reverse
-DNS lookup on the connecting IP. This introduces latency for *every* incoming
-connection. Leaving `admit_hostnames` empty and specifying only numeric addresses
-in `admit` will avoid this.
+**Note:** The host trying to access the object is identified using a
+reverse DNS lookup on the connecting IP. This introduces latency for
+*every* incoming connection. If possible, avoid this penalty by
+leaving `admit_hostnames` empty and only specifying numeric addresses
+and subnets in `admit_ips`.
+
+To admit an entire domain, start the string with a dot `.`.  This
+includes every hostname ending with the domain, but not a machine
+named after the domain itself.
+
+For example, here we'll admit the entire domain `.cfengine.com` and
+the host `www.cfengine3.com`.  A machine named `cfengine.com` would be
+refused access because it's not in the `cfengine.com` domain.
+
+```cf3
+access:
+
+   "/path/file"
+   admit_hostname => { ".cfengine.com", "www.cfengine3.com" };
+```
 
 **See also:** `deny_hostnames`, `admit_ips`, `admit_keys`
 
@@ -133,7 +156,15 @@ in `admit` will avoid this.
 
 **Description:** A list of IP addresses that should have access to the object.
 
-Subnets are specified using CIDR notation.
+Subnets are specified using CIDR notation.  For example, here we'll
+admit one host, then a subnet, then everyone:
+
+```cf3
+access:
+
+   "/path/file"
+   admit_ips => {"192.168.0.1", "192.168.0.0/24", "0.0.0.0/0"};
+```
 
 [%CFEngine_promise_attribute()%]
 
@@ -144,6 +175,25 @@ Subnets are specified using CIDR notation.
 ### admit_keys
 
 **Description:** A list of RSA keys of hosts that should have access to the object.
+
+For example, here we'll admit the fictitious SHA key `abcdef`:
+
+```cf3
+access:
+
+   "/path/file"
+   admit_keys => {"SHA=abcdef"};
+```
+
+In Community, MD5 keys are used, so similarly we can admit the
+fictitious MD5 key `abcdef`:
+
+```cf3
+access:
+
+   "/path/file"
+   admit_keys => {"MD5=abcdef"};
+```
 
 [%CFEngine_promise_attribute()%]
 
@@ -156,6 +206,22 @@ Subnets are specified using CIDR notation.
 **Description:** A list of hostnames that should be denied access to the object.
 
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
+
+To deny an entire domain, start the string with a dot `.`.  This
+includes every hostname ending with the domain, but not a machine
+named after the domain itself.
+
+For example, here we'll deny the entire domain `.cfengine.com` and the
+host `www.cfengine3.com`.  A machine named `cfengine.com` would be
+allowed access (unless it's denied by other promises) because it's not
+in the `cfengine.com` domain.
+
+```cf3
+access:
+
+   "/path/file"
+   deny_hostname => { ".cfengine.com", "www.cfengine3.com" };
+```
 
 [%CFEngine_promise_attribute()%]
 
@@ -171,6 +237,15 @@ Subnets are specified using CIDR notation.
 
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
+For example, here we'll deny one host, then a subnet, then everyone:
+
+```cf3
+access:
+
+   "/path/file"
+   deny_ips => {"192.168.0.1", "192.168.0.0/24", "0.0.0.0/0"};
+```
+
 [%CFEngine_promise_attribute()%]
 
 **See also:** `admit_ips`, `deny_hostnames`, `deny_keys`
@@ -184,6 +259,25 @@ This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
 
 [%CFEngine_promise_attribute()%]
+
+For example, here we'll deny the fictitious SHA key `abcdef`:
+
+```cf3
+access:
+
+   "/path/file"
+   deny_keys => {"SHA=abcdef"};
+```
+
+In Community, MD5 keys are used, so similarly we can deny the
+fictitious MD5 key `abcdef`:
+
+```cf3
+access:
+
+   "/path/file"
+   deny_keys => {"MD5=abcdef"};
+```
 
 **See also:** `admit_keys`, `deny_hostnames`, `deny_ips`
 
@@ -294,6 +388,9 @@ connecting user does not own the file on the server.
 **Description:** The `ifencrypted` menu option determines whether the 
 current file access promise is conditional on the connection from the 
 client being encrypted.
+
+This option has no effect with the TLS CFEngine protocol, where
+encryption is always enabled.
 
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
