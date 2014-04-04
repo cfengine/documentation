@@ -2,7 +2,7 @@
 layout: default
 title: SQLite Database Schema
 sorting: 100
-categories: [Overviews, System Overview, Mission Portal Overview, SQLite Database Schema]
+categories: [Overviews, System Overview, Enterprise Overview, Mission Portal Overview, SQLite Database Schema]
 published: true
 alias: overviews-mission-portal-database-schema.html
 tags: [overviews, mission portal, reports, reporting, database schema]

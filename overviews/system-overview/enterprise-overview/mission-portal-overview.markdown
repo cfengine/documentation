@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Mission Portal Overview
-sorting: 100
-categories: [Overviews, System Overview, Mission Portal Overview]
+sorting: 1
+categories: [Overviews, System Overview, Enterprise Overview, Mission Portal Overview]
 published: true
-alias: overviews-mission-portal.html
+alias: overviews-system-enterprise-mission-portal.html
 tags: [overviews, mission portal]
 ---
 
