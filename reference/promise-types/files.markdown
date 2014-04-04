@@ -434,6 +434,13 @@ the directory.
 **History:** Was introduced in 3.5. Replaces the now deprecated 
 acl_directory_inherit.
 
+#### acl_inherit
+
+**Description:** Defines whether the object inherits its ACL from its parent.
+
+[%CFEngine_promise_attribute()%]
+
+**Notes:** This attribute has an effect only on Windows.
 
 #### acl_method
 
