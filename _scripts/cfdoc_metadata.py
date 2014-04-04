@@ -85,9 +85,12 @@ def processMetaData(file_path, config):
 		category = ", ".join(categories)
 
 	if len(rel_file_path):
-		alias = "%s-%s" % (rel_file_path.replace("/", "-"), file_name)
+		alias = "%s-%s" % (rel_file_path, file_name)
 	else:
 		alias = file_name
+	
+	alias = alias.replace("_", "-").replace("/", "-").lower()
+	category = category.replace("_", "-").replace("/", "-").lower()
 
 	out_file = open(file_path, "w")
 	in_header = False
