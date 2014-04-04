@@ -1,9 +1,7 @@
 ---
 layout: default
 title: reports
-categories: [Reference, Promise Types, reports]
 published: true
-alias: reference-promise-types-reports.html
 tags: [reference, bundle common, reports, promises]
 ---
 

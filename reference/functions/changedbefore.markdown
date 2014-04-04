@@ -1,9 +1,7 @@
 ---
 layout: default
 title: changedbefore
-categories: [Reference, Functions, changedbefore]
 published: true
-alias: reference-functions-changedbefore.html
 tags: [reference, files functions, functions, changedbefore]
 ---
 

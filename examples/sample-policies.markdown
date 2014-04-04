@@ -2,9 +2,7 @@
 layout: default
 title:  Sample Policies
 sorting: 40
-categories: [Examples, Sample Policies]
 published: true
-alias: sample-policies.html
 tags: [examples, policy]
 ---
 

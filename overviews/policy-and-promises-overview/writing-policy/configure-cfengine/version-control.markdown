@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Version Control
-categories: [Overviews, Policy and Promises Overview, Writing Policy, Configure CFEngine, Version Control]
 published: true
 sorting: 40
-alias: manuals-writing-policy-version-control.html
 tags: [manuals, writing policy, version control, git, subversion]
 ---
 

@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Policy Style Guide
-categories: [Overviews, Policy and Promises Overview, Writing Policy, Best Practices, Policy Style Guide]
 published: true
 sorting: 10
-alias: manuals-writing-policy-policy-style-guide.html
 tags: [manuals, style, policy]
 ---
 

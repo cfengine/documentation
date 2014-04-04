@@ -1,9 +1,7 @@
 ---
 layout: default
 title: measurements
-categories: [Reference, Promise Types, measurements]
 published: true
-alias: reference-promise-types-measurements.html
 tags: [reference, bundle monitor, measurements, monitoring, promise types]
 ---
 

@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Networking
-categories: [Overviews, System Overview, CFEngine Architecture and Design, Networking]
 published: true
 sorting: 10
-alias: overviews-architecture-networking.html
 tags: [overviews, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 

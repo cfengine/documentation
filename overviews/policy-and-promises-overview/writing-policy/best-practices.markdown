@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Best Practices
-categories: [Overviews, Policy and Promises Overview, Writing Policy, Best Practices]
 published: true
 sorting: 15
-alias: manuals-writing-policy-best-practices.html
 tags: [manuals, style, policy]
 ---
 

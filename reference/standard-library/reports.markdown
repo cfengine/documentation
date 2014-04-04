@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Reports Bundles and Bodies
-categories: [Reference, Standard Library, reports]
 published: true
 sorting: 100
-alias: reference-standard-library-reports.html
 tags: [reference, standard library]
 ---
 

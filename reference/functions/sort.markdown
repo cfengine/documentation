@@ -1,9 +1,7 @@
 ---
 layout: default
 title: sort
-categories: [Reference, Functions, sort]
 published: true
-alias: reference-functions-sort.html
 tags: [reference, data functions, functions, sort]
 ---
 

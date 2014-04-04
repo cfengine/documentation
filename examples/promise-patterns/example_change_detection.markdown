@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Change detection
-categories: [Examples, Promise Patterns, Change detection]
 published: true
-alias: examples-policy-change-detection.html
 tags: [Examples, Policy, change detection]
 reviewed: 2013-06-08
 reviewed-by: atsaloli

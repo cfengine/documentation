@@ -1,9 +1,7 @@
 ---
 layout: default
 title: roles
-categories: [Reference, Promise Types, roles]
 published: true
-alias: reference-promise-types-roles.html
 tags: [reference, bundle server, cf-serverd, cf-runagent, access control, users, roles, server, promise types]
 ---
 

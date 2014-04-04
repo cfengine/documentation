@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Getting Started 
-categories: [Getting Started]
 published: true
 sorting: 10
-alias: getting-started.html
 ---
 
 A positive experience with CFEngine software means that you are able to install it, try it out, 

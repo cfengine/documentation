@@ -1,9 +1,7 @@
 ---
 layout: default
 title: difference
-categories: [Reference, Functions, difference]
 published: true
-alias: reference-functions-difference.html
 tags: [reference, data functions, functions, difference]
 ---
 

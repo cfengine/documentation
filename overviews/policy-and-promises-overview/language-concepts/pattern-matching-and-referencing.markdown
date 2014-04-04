@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Pattern Matching and Referencing
-categories: [Overviews,Policy and Promises Overview, Language Concepts, Pattern Matching and Referencing]
 published: true
 sorting: 80
-alias: manuals-language-concepts-pattern-matching-and-referencing.html
 tags: [manuals, language, syntax, concepts, pattern, regexp, matching]
 ---
 

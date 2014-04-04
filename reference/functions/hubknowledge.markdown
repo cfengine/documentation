@@ -1,9 +1,7 @@
 ---
 layout: default
 title: hubknowledge
-categories: [Reference, Functions, hubknowledge]
 published: true
-alias: reference-functions-hubknowledge.html
 tags: [reference, communication functions, functions, hubknowledge]
 ---
 

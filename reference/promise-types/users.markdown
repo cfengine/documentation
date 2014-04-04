@@ -1,9 +1,7 @@
 ---
 layout: default
 title: users
-categories: [Reference, Promise Types, users]
 published: true
-alias: reference-promise-types-users.html
 tags: [reference, bundle agent, cf-agent, users, promise types]
 ---
 

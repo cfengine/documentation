@@ -1,9 +1,7 @@
 ---
 layout: default
 title: shuffle
-categories: [Reference, Functions, shuffle]
 published: true
-alias: reference-functions-shuffle.html
 tags: [reference, data functions, functions, shuffle]
 ---
 

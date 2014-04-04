@@ -1,9 +1,7 @@
 ---
 layout: default
 title: string_tail
-categories: [Reference, Functions, string_tail]
 published: true
-alias: reference-functions-string_tail.html
 tags: [reference, text functions, functions, text, string_tail, tail, substring]
 ---
 

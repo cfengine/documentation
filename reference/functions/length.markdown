@@ -1,9 +1,7 @@
 ---
 layout: default
 title: length
-categories: [Reference, Functions, length]
 published: true
-alias: reference-functions-length.html
 tags: [reference, data functions, functions, length]
 ---
 

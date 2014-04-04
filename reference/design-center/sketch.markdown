@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Sketch Structure
-categories: [Reference, Design Center, Sketch Structure]
 published: true
-alias: reference-design-center-sketch-structure.html
 tags: [sketch, structure, reference, design center]
 ---
 

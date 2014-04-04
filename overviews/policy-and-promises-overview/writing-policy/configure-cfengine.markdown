@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Configure CFEngine
-categories: [Overviews, Policy and Promises Overview, Writing Policy, Configure CFEngine]
 published: true
 sorting: 30
-alias: manuals-writing-policy-configure-cfengine.html
 tags: [manuals, style, policy, concepts]
 ---
 

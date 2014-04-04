@@ -1,9 +1,7 @@
 ---
 layout: default
 title: laterthan
-categories: [Reference, Functions, laterthan]
 published: true
-alias: reference-functions-laterthan.html
 tags: [reference, files functions, functions, laterthan]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: filesize
-categories: [Reference, Functions, filesize]
 published: true
-alias: reference-functions-filesize.html
 tags: [reference, files functions, functions, filesize]
 ---
 

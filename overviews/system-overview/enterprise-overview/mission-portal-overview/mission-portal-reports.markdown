@@ -2,9 +2,7 @@
 layout: default
 title: Mission Portal Reports
 sorting: 100
-categories: [Overviews, System Overview, Enterprise Overview, Mission Portal Overview, Mission Portal Reports]
 published: true
-alias: overviews-mission-portal-reports.html
 tags: [overviews, mission portal, reports, reporting]
 ---
 

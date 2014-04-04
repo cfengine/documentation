@@ -1,9 +1,7 @@
 ---
 layout: default
 title: edit
-categories: [Reference, Special Variables, edit]
 published: true
-alias: reference-special-variables-context-edit.html
 tags: [reference, variables, edit, edit_line, files promises]
 ---
 

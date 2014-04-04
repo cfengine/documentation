@@ -1,9 +1,7 @@
 ---
 layout: default
 title: packagesmatching
-categories: [Reference, Functions, packagesmatching]
 published: true
-alias: reference-functions-packagesmatching.html
 tags: [reference, utility functions, functions, packages, inventory, packagesmatching]
 ---
 

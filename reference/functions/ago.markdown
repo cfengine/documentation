@@ -1,9 +1,7 @@
 ---
 layout: default
 title: ago
-categories: [Reference, Functions, ago]
 published: true
-alias: reference-functions-ago.html
 tags: [reference, data functions, functions, ago]
 ---
 

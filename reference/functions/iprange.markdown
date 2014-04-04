@@ -1,9 +1,7 @@
 ---
 layout: default
 title: iprange
-categories: [Reference, Functions, iprange]
 published: true
-alias: reference-functions-iprange.html
 tags: [reference, communication functions, functions, iprange]
 ---
 

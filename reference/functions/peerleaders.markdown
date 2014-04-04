@@ -1,9 +1,7 @@
 ---
 layout: default
 title: peerleaders
-categories: [Reference, Functions, peerleaders]
 published: true
-alias: reference-functions-peerleaders.html
 tags: [reference, communication functions, functions, peerleaders]
 ---
 

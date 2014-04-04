@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Introduction
-categories: [Overviews, Introduction]
 published: true
 sorting: 1
-alias: introduction.html
 ---
 
 CFEngine is a configuration management system that provides a framework for automated management of IT infrastructure throughout its life cycle.

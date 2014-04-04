@@ -1,9 +1,7 @@
 ---
 layout: default
 title: mergedata
-categories: [Reference, Functions, mergedata]
 published: true
-alias: reference-functions-mergedata.html
 tags: [reference, data functions, functions, json, merge, mergedata, container]
 ---
 

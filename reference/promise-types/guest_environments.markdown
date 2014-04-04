@@ -1,9 +1,7 @@
 ---
 layout: default
 title: guest_environments
-categories: [Reference, Promise Types, guest_environments]
 published: true
-alias: reference-promise-types-guest_environments.html
 tags: [reference, bundle agent, guest_environments, promises, promise types, virtual machines, agent, promises, libvirt, KVM, VMWare]
 ---
 

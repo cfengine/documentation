@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Services Bundles and Bodies
-categories: [Reference, Standard Library, Services]
 published: true
 sorting: 90
-alias: reference-standard-library-services.html
 tags: [reference, standard library]
 ---
 

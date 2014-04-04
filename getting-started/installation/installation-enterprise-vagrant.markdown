@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Installing Enterprise Vagrant Environment
-categories: [Getting Started, Installation, Installing Enterprise Vagrant Environment]
 published: true
 sorting: 30
-alias: getting-started-installation-installing-enterprise-vagrant.html
 tags: [getting started, installation, enterprise, vagrant]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: reverse
-categories: [Reference, Functions, reverse]
 published: true
-alias: reference-functions-reverse.html
 tags: [reference, data functions, functions, reverse]
 ---
 

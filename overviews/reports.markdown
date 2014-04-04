@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Reports
-categories: [Overviews, Reports]
 published: true
 sorting: 3 
-alias: overviews-reports.html
 tags: [overviews, reports, reporting]
 ---
 

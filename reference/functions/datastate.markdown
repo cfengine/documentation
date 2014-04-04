@@ -1,9 +1,7 @@
 ---
 layout: default
 title: datastate
-categories: [Reference, Functions, datastate]
 published: true
-alias: reference-functions-datastate.html
 tags: [reference, data functions, functions, json, datastate, evaluation, vars, classes, container]
 ---
 

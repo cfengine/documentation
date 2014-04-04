@@ -1,10 +1,8 @@
 ---
 layout: default
 title: CFEngine Directory Structure
-categories: [Overviews, System Overview, CFEngine Directory Structure]
 published: true
 sorting: 30
-alias: overviews-system-directory-structure.html
 tags: [overviews, system, system overview, directory structure]
 ---
 

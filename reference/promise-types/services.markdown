@@ -1,9 +1,7 @@
 ---
 layout: default
 title: services
-categories: [Reference, Promise Types,services]
 published: true
-alias: reference-promise-types-services.html
 tags: [reference, bundle agent, services, processes, services promises, promise types]
 ---
 

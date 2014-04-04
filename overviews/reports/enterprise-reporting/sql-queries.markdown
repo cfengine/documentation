@@ -1,10 +1,8 @@
 ---
 layout: default
 title:  SQL Queries
-categories: [Overviews, Reports, Enterprise Reporting, SQL Queries]
 published: true
 sorting: 30
-alias: manuals-enterprise-reporting-sql-queries.html
 tags: [manuals, enterprise, rest, api, reporting, sql, queries]
 ---
 

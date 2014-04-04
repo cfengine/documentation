@@ -1,9 +1,7 @@
 ---
 layout: default
 title: storejson
-categories: [Reference, Functions, storejson]
 published: true
-alias: reference-functions-storejson.html
 tags: [reference, io functions, functions, storejson, json, container]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: makerule
-categories: [Reference, Functions, makerule]
 published: true
-alias: reference-functions-makerule.html
 tags: [reference, files functions, functions, makerule]
 ---
 

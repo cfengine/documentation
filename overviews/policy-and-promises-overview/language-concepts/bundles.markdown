@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Bundles
-categories: [Overviews,Policy and Promises Overview, Language Concepts, Bundles]
 published: true
 sorting: 20
-alias: manuals-language-concepts-bundles.html
 tags: [language, concepts, syntax, body, bundle]
 ---
 

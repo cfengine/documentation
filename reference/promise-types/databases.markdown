@@ -1,9 +1,7 @@
 ---
 layout: default
 title: databases
-categories: [Reference, Promise Types, databases]
 published: true
-alias: reference-promise-types-databases.html
 tags: [Reference, bundle agent, databases, promises, promise types]
 ---
 

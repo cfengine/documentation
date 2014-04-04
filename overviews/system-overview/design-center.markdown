@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Design Center Overview
-categories: [Overviews, System Overview, Design Center]
 published: true
 sorting: 60
-alias: overviews-system-design-center.html
 tags: [design center, cf-sketch, sketches, deploy policy]
 ---
 

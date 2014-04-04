@@ -1,9 +1,7 @@
 ---
 layout: default
 title: storage
-categories: [Reference, Promise Types, storage]
 published: true
-alias: reference-promise-types-storage.html
 tags: [reference, bundle agent, storage, storage promises, mount, filesystem, disks]
 ---
 

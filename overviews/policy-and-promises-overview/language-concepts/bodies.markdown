@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Bodies
-categories: [Overviews,Policy and Promises Overview, Language Concepts, Bodies]
 published: true
 sorting: 30
-alias: manuals-language-concepts-bodies.html
 tags: [language, concepts, syntax, body]
 ---
 

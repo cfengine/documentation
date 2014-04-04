@@ -1,9 +1,7 @@
 ---
 layout: default
 title: dirname
-categories: [Reference, Functions, dirname]
 published: true
-alias: reference-functions-dirname.html
 tags: [reference, files functions, functions, dirname]
 ---
 

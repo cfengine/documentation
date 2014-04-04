@@ -1,9 +1,7 @@
 ---
 layout: default
 title: selectservers
-categories: [Reference, Functions, selectservers]
 published: true
-alias: reference-functions-selectservers.html
 tags: [reference, communication functions, functions, selectservers]
 ---
 

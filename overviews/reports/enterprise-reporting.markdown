@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Enterprise Reporting
-categories: [Overviews, Reports, Enterprise Reporting]
 published: true
 sorting: 20
-alias: manuals-enterprise-reporting.html
 tags: [manuals, enterprise, reporting]
 ---
 

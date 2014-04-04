@@ -1,9 +1,7 @@
 ---
 layout: default
 title: string_split
-categories: [Reference, Functions, string_split]
 published: true
-alias: reference-functions-string_split.html
 tags: [reference, data functions, functions, string_split]
 ---
 

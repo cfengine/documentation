@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Writing Policy
-categories: [Overviews, Policy and Promises Overview, Writing Policy]
 published: true
 sorting: 50
-alias: overviews-writing-policy.html
 tags: [overviews, writing policy, policy]
 ---
 

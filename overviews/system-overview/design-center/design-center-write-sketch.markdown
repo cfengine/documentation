@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Write a new Sketch
-categories: [Overviews, System Overview, Design Center, Write Sketch]
 published: true
 sorting: 40
-alias: design-center-write-sketch.html
 tags: [design center, write sketches]
 ---
 

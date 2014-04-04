@@ -1,9 +1,7 @@
 ---
 layout: default
 title: sys
-categories: [Reference, Special Variables, sys]
 published: true
-alias: reference-special-variables-context-sys.html
 tags: [reference, variables, sys, discovery, system, inventory]
 ---
 

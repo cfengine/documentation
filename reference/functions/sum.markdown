@@ -1,9 +1,7 @@
 ---
 layout: default
 title: sum
-categories: [Reference, Functions, sum]
 published: true
-alias: reference-functions-sum.html
 tags: [reference, data functions, functions, sum]
 ---
 

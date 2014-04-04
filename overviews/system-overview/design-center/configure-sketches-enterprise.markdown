@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Enterprise Sketches
-categories: [Overviews, System Overview, Design Center, Enterprise Sketches]
 published: true
 sorting: 20
-alias: configure-sketches-enterprise.html
 tags: [sketch, design center]
 ---
 

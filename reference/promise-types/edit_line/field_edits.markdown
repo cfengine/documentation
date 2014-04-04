@@ -1,9 +1,7 @@
 ---
 layout: default
 title: field_edits
-categories: [Reference, Promise Types, files, edit_line, field_edits]
 published: true
-alias: reference-promise-types-files-edit_line-field_edits.html
 tags: [reference, bundle agent, bundle edit_line, files promises, file editing, field_edits]
 ---
 

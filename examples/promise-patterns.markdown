@@ -2,9 +2,7 @@
 layout: default
 title:  Common Promise Patterns
 sorting: 20
-categories: [Examples, Promise Patterns]
 published: true
-alias: examples-policy.html
 tags: [examples, policy]
 ---
 

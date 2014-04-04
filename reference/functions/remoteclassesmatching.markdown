@@ -1,9 +1,7 @@
 ---
 layout: default
 title: remoteclassesmatching
-categories: [Reference, Functions, remoteclassesmatching]
 published: true
-alias: reference-functions-remoteclassesmatching.html
 tags: [reference, communication functions, functions, remoteclassesmatching]
 ---
 

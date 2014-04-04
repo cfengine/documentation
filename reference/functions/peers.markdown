@@ -1,9 +1,7 @@
 ---
 layout: default
 title: peers
-categories: [Reference, Functions, peers]
 published: true
-alias: reference-functions-peers.html
 tags: [reference, communication functions, functions, peers]
 ---
 

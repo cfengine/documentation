@@ -1,9 +1,7 @@
 ---
 layout: default
 title: accumulated
-categories: [Reference, Functions, accumulated]
 published: true
-alias: reference-functions-accumulated.html
 tags: [reference, data functions, functions, accumulated]
 ---
 

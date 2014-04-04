@@ -1,9 +1,7 @@
 ---
 layout: default
 title: hostsseen
-categories: [Reference, Functions, hostsseen]
 published: true
-alias: reference-functions-hostsseen.html
 tags: [reference, communication functions, functions, hostsseen]
 ---
 

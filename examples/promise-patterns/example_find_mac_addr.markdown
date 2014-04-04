@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Find the MAC address
-categories: [Examples, Promise Patterns, Find the MAC address]
 published: true
-alias: examples-policy-find-the-mac-address.html
 tags: [Examples, Policy, MAC address]
 reviewed: 2013-06-08
 reviewed-by: atsaloli

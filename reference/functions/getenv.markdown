@@ -1,9 +1,7 @@
 ---
 layout: default
 title: getenv
-categories: [Reference, Functions, getenv]
 published: true
-alias: reference-functions-getenv.html
 tags: [reference, system functions, functions, getenv]
 ---
 

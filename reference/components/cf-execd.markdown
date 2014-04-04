@@ -1,9 +1,7 @@
 ---
 layout: default
 title: cf-execd
-categories: [Reference, Components, cf-execd]
 published: true
-alias: reference-components-cfexecd.html
 tags: [Components, cf-execd]
 keywords: [executor]
 ---

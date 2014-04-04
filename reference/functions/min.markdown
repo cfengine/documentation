@@ -1,9 +1,7 @@
 ---
 layout: default
 title: min
-categories: [Reference, Functions, min]
 published: true
-alias: reference-functions-min.html
 tags: [reference, data functions, functions, min]
 ---
 

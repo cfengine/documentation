@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Learning CFEngine 
-categories: [Overviews, Learning Resources, Learning CFEngine]
 published: true
 sorting: 30
-alias: overviews-learning-resources-cfengine.html
 tags: [overviews, learning resources]
 ---
 

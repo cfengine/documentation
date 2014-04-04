@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Classes and Decisions
-categories: [Overviews,Policy and Promises Overview, Language Concepts, Classes]
 published: true
 sorting: 40
-alias: manuals-language-concepts-classes.html
 tags: [manuals, language, syntax, concepts, classes, decisions]
 ---
 

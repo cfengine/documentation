@@ -1,9 +1,7 @@
 ---
 layout: default
 title: join
-categories: [Reference, Functions, join]
 published: true
-alias: reference-functions-join.html
 tags: [reference, data functions, functions, join]
 ---
 

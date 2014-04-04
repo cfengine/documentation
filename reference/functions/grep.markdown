@@ -1,9 +1,7 @@
 ---
 layout: default
 title: grep
-categories: [Reference, Functions, grep]
 published: true
-alias: reference-functions-grep.html
 tags: [reference, data functions, functions, grep]
 ---
 

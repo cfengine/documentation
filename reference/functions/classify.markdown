@@ -1,9 +1,7 @@
 ---
 layout: default
 title: classify
-categories: [Reference, Functions, classify]
 published: true
-alias: reference-functions-classify.html
 tags: [reference, data functions, functions, classify]
 ---
 

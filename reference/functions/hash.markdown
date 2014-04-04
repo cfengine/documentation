@@ -1,9 +1,7 @@
 ---
 layout: default
 title: hash
-categories: [Reference, Functions, hash]
 published: true
-alias: reference-functions-hash.html
 tags: [reference, data functions, functions, hash]
 ---
 

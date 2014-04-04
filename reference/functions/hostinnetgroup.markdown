@@ -1,9 +1,7 @@
 ---
 layout: default
 title: hostinnetgroup
-categories: [Reference, Functions, hostinnetgroup]
 published: true
-alias: reference-functions-hostinnetgroup.html
 tags: [reference, system functions, functions, hostinnetgroup]
 ---
 

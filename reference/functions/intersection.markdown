@@ -1,9 +1,7 @@
 ---
 layout: default
 title: intersection
-categories: [Reference, Functions, intersection]
 published: true
-alias: reference-functions-intersection.html
 tags: [reference, data functions, functions, intersection]
 ---
 

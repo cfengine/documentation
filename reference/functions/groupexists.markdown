@@ -1,9 +1,7 @@
 ---
 layout: default
 title: groupexists
-categories: [Reference, Functions, groupexists]
 published: true
-alias: reference-functions-groupexists.html
 tags: [reference, system functions, functions, groupexists]
 ---
 

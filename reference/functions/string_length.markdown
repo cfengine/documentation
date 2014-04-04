@@ -1,9 +1,7 @@
 ---
 layout: default
 title: string_length
-categories: [Reference, Functions, string_length]
 published: true
-alias: reference-functions-string_length.html
 tags: [reference, text functions, functions, text, string_length, length, strlen, substring]
 ---
 

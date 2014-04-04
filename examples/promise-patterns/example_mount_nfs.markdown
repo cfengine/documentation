@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Mount NFS filesystem
-categories: [Examples, Promise Patterns, Mount NFS filesystem]
 published: true
-alias: examples-policy-mount-nfs-filesystem.html
 tags: [Examples, Policy, mount, nfs, filesystem]
 reviewed: 2013-06-08
 reviewed-by: atsaloli

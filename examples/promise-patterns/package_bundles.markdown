@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Managing Software
-categories: [Examples, Promise Patterns, Managing Software]
 published: true
-alias: examples-policy-package-bundles.html
 tags: [Examples, Policy, Packages]
 ---
 

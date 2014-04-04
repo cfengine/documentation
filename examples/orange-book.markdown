@@ -2,9 +2,7 @@
 layout: default
 title: Orange Book
 sorting: 30
-categories: [Examples, Orange Book]
 published: true
-alias: examples-orange-book.html
 tags: [Examples, Orange]
 ---
 

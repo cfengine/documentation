@@ -1,9 +1,7 @@
 ---
 layout: default
 title: cf-hub
-categories: [Reference, Components, cf-hub]
 published: true
-alias: reference-components-cfhub.html
 tags: [reference, components, cf-hub, enterprise]
 keywords: [hub]
 ---

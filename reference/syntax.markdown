@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Syntax, identifiers and names
-categories: [Reference, Syntax]
 published: true
 sorting: 90
-alias: reference-syntax.html
 tags: [reference, syntax]
 ---
 

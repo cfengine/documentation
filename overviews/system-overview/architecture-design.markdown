@@ -1,10 +1,8 @@
 ---
 layout: default
 title: CFEngine Architecture and Design
-categories: [Overviews, System Overview, CFEngine Architecture and Design]
 published: true
 sorting: 10
-alias: manuals-design.html
 tags: [overviews, system, configuration management, automation, architecture, design, promises]
 ---
 

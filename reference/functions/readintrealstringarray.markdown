@@ -1,9 +1,7 @@
 ---
 layout: default
 title: "read[int|real|string]array"
-categories: [Reference, Functions, read*array]
 published: true
-alias: reference-functions-readintrealstringarray.html
 tags: [reference, io functions, functions, readintarray, readrealarray, readstringarray]
 ---
 

@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Testing Policies
-categories: [Overviews, Policy and Promises Overview, Writing Policy, Best Practices, Testing Policies]
 published: true
 sorting: 50
-alias: manuals-writing-policy-testing-policies.html
 tags: [manuals, systems, configuration management, automation, testing, work directory]
 ---
 

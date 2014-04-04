@@ -1,9 +1,7 @@
 ---
 layout: default
 title: ldaparray
-categories: [Reference, Functions, ldaparray]
 published: true
-alias: reference-functions-ldaparray.html
 tags: [reference, communication functions, functions, ldap]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: canonifyuniquely
-categories: [Reference, Functions, canonifyuniquely]
 published: true
-alias: reference-functions-canonifyuniquely.html
 tags: [reference, data functions, functions, canonify, canonifyuniquely, hash]
 ---
 

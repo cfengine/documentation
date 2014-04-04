@@ -1,9 +1,7 @@
 ---
 layout: default
 title: variablesmatching
-categories: [Reference, Functions, variablesmatching]
 published: true
-alias: reference-functions-variablesmatching.html
 tags: [reference, utility functions, functions, variablesmatching]
 ---
 

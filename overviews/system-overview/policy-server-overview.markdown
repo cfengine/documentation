@@ -2,9 +2,7 @@
 layout: default
 title: Policy Server Overview
 sorting: 100
-categories: [Overviews, System Overview, Policy Server Overview]
 published: true
-alias: overviews-policy-server.html
 tags: [overviews, system overview, policy server]
 ---
 

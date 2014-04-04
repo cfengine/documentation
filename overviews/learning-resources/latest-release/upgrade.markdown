@@ -2,9 +2,7 @@
 layout: default
 title: Upgrade Instructions
 sorting: 50
-categories: [Overviews,Learning Resources,Latest Release, Upgrade]
 published: true
-alias: overviews-resources-latest-release-upgrade.html
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions, upgrade]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: getuid
-categories: [Reference, Functions, getuid]
 published: true
-alias: reference-functions-getuid.html
 tags: [reference, system functions, functions, getuid]
 ---
 

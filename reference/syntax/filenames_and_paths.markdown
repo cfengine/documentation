@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Filenames and Paths
-categories: [Reference, Syntax, Filenames and Paths]
 published: true
-alias: reference-syntax-filenames-and-paths.html
 tags: [reference, syntax, directory, paths, filesystem]
 ---
 

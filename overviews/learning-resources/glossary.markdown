@@ -2,9 +2,7 @@
 layout: default
 title: Glossary
 sorting: 10
-categories: [Overviews, Learning Resources, Glossary]
 published: true
-alias: overviews-learning-resources-glossary.html
 tags: [overviews, leanring resources, glossary]
 ---
 

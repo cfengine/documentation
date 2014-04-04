@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Controlling Frequency
-categories: [Overviews, Policy and Promises Overview, Writing Policy, Configure CFEngine, Controlling Frequency]
 published: true
 sorting: 20
-alias: manuals-writing-policy-controlling-frequency.html
 tags: [manuals, systems, configuration management, automation, control, frequency, performance]
 ---
 

@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Bundles Best Practices
-categories: [Overviews, Policy and Promises Overview, Writing Policy, Best Practices, Bundles Best Practices]
 published: true
 sorting: 20
-alias: manuals-writing-policy-bundles-best-practices.html
 tags: [manuals, bundles, policy, best practices]
 ---
 

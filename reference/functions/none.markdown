@@ -1,9 +1,7 @@
 ---
 layout: default
 title: none
-categories: [Reference, Functions, none]
 published: true
-alias: reference-functions-none.html
 tags: [reference, data functions, functions, none]
 ---
 

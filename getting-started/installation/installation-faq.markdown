@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Installation FAQ
-categories: [Getting Started, Installation, Installation FAQ]
 published: true
 sorting: 50
-alias: getting-started-installation-installation-faq.html
 tags: [getting started, installation, enterprise, faq]
 ---
 

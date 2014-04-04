@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Aborting execution 
-categories: [Examples, Promise Patterns, Aborting execution]
 published: true
-alias: examples-policy-aborting-execution.html
 tags: [Examples, Policy, aborting execution]
 reviewed: 2013-05-30
 reviewed-by: atsaloli

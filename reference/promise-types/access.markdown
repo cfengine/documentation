@@ -1,9 +1,7 @@
 ---
 layout: default
 title: access
-categories: [Reference, Promise Types, access]
 published: true
-alias: reference-promise-types-access.html
 tags: [reference, bundle server, cf-serverd, access, server, promise types, acl, trust, encryption]
 ---
 

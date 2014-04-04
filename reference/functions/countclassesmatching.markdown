@@ -1,9 +1,7 @@
 ---
 layout: default
 title: countclassesmatching
-categories: [Reference, Functions, countclassesmatching]
 published: true
-alias: reference-functions-countclassesmatching.html
 tags: [reference, utility functions, functions, countclassesmatching]
 ---
 

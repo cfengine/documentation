@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Distributed Discovery
-categories: [Overviews, System Overview, CFEngine Architecture and Design, Distributed Discovery]
 published: true
 sorting: 30
-alias: overviews-architecture-distributed-discovery.html
 tags: [overviews, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 

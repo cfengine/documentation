@@ -1,9 +1,7 @@
 ---
 layout: default
 title: and
-categories: [Reference, Functions, and]
 published: true
-alias: reference-functions-and.html
 tags: [reference, data functions, functions, and]
 ---
 

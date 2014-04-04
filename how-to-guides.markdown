@@ -1,10 +1,8 @@
 ---
 layout: default
 title: How to Guides 
-categories: [How to Guides]
 published: true
 sorting: 10
-alias: how-to-guides.html
 ---
 
 | Document | Basic | Intermediate | Advanced | System Administration | Policy & Promise Writing | Management |

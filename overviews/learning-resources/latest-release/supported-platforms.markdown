@@ -2,9 +2,7 @@
 layout: default
 title: Supported Platforms and Versions
 sorting: 40
-categories: [Overviews,Learning Resources,Latest Release,Supported Platforms]
 published: true
-alias: overviews-resources-latest-release-supported-platforms.html
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions, support]
 ---
 

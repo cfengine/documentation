@@ -1,9 +1,7 @@
 ---
 layout: default
 title: "parse[int|real|string]array"
-categories: [Reference, Functions, parse*array]
 published: true
-alias: reference-functions-parseintrealstringarray.html
 tags: [reference, io functions, functions, parseintarray, parserealarray, parsestringarray]
 ---
 

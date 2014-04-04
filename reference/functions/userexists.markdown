@@ -1,9 +1,7 @@
 ---
 layout: default
 title: userexists
-categories: [Reference, Functions, userexists]
 published: true
-alias: reference-functions-userexists.html
 tags: [reference, system functions, functions, userexists]
 ---
 

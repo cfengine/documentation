@@ -1,9 +1,7 @@
 ---
 layout: default
 title: remotescalar
-categories: [Reference, Functions, remotescalar]
 published: true
-alias: reference-functions-remotescalar.html
 tags: [reference, communication functions, functions, remotescalar]
 ---
 

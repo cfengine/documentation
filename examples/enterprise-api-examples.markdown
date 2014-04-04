@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Enterprise API Examples
-categories: [Examples, Enterprise API Examples]
 published: true
 sorting: 100
-alias: examples-enterprise-api-examples.html
 tags: [examples, enterprise, REST, API, reporting]
 ---
 

@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Policy Workflow
-categories: [Overviews, System Overview, CFEngine Architecture and Design, Policy Workflow]
 published: true
 sorting: 20
-alias: overviews-architecture-policy-workflow.html
 tags: [overviews, systems, configuration management, automation, workflow]
 ---
 

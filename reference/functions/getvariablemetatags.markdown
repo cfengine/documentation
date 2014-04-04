@@ -1,9 +1,7 @@
 ---
 layout: default
 title: getvariablemetatags
-categories: [Reference, Functions, getvariablemetatags]
 published: true
-alias: reference-functions-getvariablemetatags.html
 tags: [reference, data functions, functions, getvariablemetatags, meta, tags]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: splayclass
-categories: [Reference, Functions, splayclass]
 published: true
-alias: reference-functions-splayclass.html
 tags: [reference, utility functions, functions, splayclass]
 ---
 

@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Browsing Host Information
-categories: [Examples, Enterprise API Examples, Browsing Host Information]
 published: true
 sorting: 50
-alias: examples-enterprise-api-browsing-host-information.html
 tags: [examples, enterprise, rest, api, reporting, hosts]
 ---
 

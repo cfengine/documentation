@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Users Bundles and Bodies
-categories: [Reference, Standard Library, users]
 published: true
 sorting: 85
-alias: reference-standard-library-users.html
 tags: [reference, standard library]
 ---
 

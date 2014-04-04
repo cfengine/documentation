@@ -1,9 +1,7 @@
 ---
 layout: default
 title: isplain
-categories: [Reference, Functions, isplain]
 published: true
-alias: reference-functions-isplain.html
 tags: [reference, files functions, functions, isplain]
 ---
 

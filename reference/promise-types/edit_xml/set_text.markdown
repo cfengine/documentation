@@ -1,9 +1,7 @@
 ---
 layout: default
 title: set_text
-categories: [Reference, Promise Types, files, edit_xml, set_text]
 published: true
-alias: reference-promise-types-files-edit_xml-set_text.html
 tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing, set_text]
 ---
 

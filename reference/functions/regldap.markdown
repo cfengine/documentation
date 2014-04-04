@@ -1,9 +1,7 @@
 ---
 layout: default
 title: regldap
-categories: [Reference, Functions, regldap]
 published: true
-alias: reference-functions-regldap.html
 tags: [reference, communication functions, functions, ldap]
 ---
 

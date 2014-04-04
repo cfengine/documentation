@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Troubleshooting
-categories: [Overviews, Reports, Enterprise Reporting, Troubleshooting]
 published: true
 sorting: 100
-alias: manuals-enterprise-reporting-troubleshooting.html
 tags: [manuals, enterprise, reporting, troubleshooting, cf-hub, mongo, apache]
 ---
 

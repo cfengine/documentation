@@ -1,9 +1,7 @@
 ---
 layout: default
 title: files
-categories: [Reference, Promise Types,files]
 published: true
-alias: reference-promise-types-files.html
 tags: [reference, bundle agent, files, promises, files promises, promise types]
 ---
 

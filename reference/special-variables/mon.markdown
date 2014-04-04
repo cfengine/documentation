@@ -1,9 +1,7 @@
 ---
 layout: default
 title: mon
-categories: [Reference, Special Variables, mon]
 published: true
-alias: reference-special-variables-context-mon.html
 tags: [reference, variables, mon, cf-monitord, monitoring]
 ---
 

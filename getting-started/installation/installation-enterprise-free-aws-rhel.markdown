@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Installing with AWS and RHEL
-categories: [Getting Started, Installation, Installing with AWS and RHEL]
 published: true
 sorting: 10
-alias: getting-started-installation-installing-aws-rhel.html
 tags: [getting started, installation, enterprise free, aws, rhel]
 ---
 

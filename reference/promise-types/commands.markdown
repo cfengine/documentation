@@ -1,9 +1,7 @@
 ---
 layout: default
 title: commands
-categories: [Reference, Promise Types, commands]
 published: true
-alias: reference-promise-types-commands.html
 tags: [reference, bundle agent, commands, promises, promise types]
 ---
 

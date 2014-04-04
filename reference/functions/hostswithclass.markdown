@@ -1,9 +1,7 @@
 ---
 layout: default
 title: hostswithclass
-categories: [Reference, Functions, hostswithclass]
 published: true
-alias: reference-functions-hostswithclass.html
 tags: [reference, communication functions, functions, hostswithclass]
 ---
 

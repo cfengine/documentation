@@ -1,9 +1,7 @@
 ---
 layout: default
 title: delete_attribute
-categories: [Reference, Promise Types, files, edit_xml, delete_attribute]
 published: true
-alias: reference-promise-types-files-edit_xml-delete_attribute.html
 tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing, delete_attribute]
 ---
 

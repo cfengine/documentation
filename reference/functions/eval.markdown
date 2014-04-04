@@ -1,9 +1,7 @@
 ---
 layout: default
 title: eval
-categories: [Reference, Functions, eval]
 published: true
-alias: reference-functions-eval.html
 tags: [reference, data functions, functions, eval]
 ---
 

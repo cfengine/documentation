@@ -1,9 +1,7 @@
 ---
 layout: default
 title: getvalues
-categories: [Reference, Functions, getvalues]
 published: true
-alias: reference-functions-getvalues.html
 tags: [reference, data functions, functions, getvalues]
 ---
 

@@ -2,9 +2,7 @@
 layout: default
 title: Policy and Promises Overview
 sorting: 2 
-categories: [Overviews, Policy and Promises Overview]
 published: true
-alias: overviews-promises.html
 tags: [overviews, promises overview]
 ---
 

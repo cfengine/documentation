@@ -2,9 +2,7 @@
 layout: default
 title: Host Monitoring in Mission Portal
 sorting: 100
-categories: [Overviews, System Overview, Enterprise Overview, Mission Portal Overview, Host Monitoring in Mission Portal]
 published: true
-alias: overviews-mission-portal-host-monitoring.html
 tags: [overviews, mission portal, hosts, monitoring, host monitoring]
 ---
 
