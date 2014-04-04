@@ -2,7 +2,7 @@
 layout: default
 title: cf_promises_validated
 sorting: 100
-categories: [Overviews, System Overview, Directory Structure, cf_promises_validated]
+categories: [Overviews, System Overview, CFEngine Directory Structure, cf_promises_validated]
 published: true
 alias: overviews-system-cf-promises-validated.html
 tags: [overviews, system overview, file structure, cf_promises_validated]
