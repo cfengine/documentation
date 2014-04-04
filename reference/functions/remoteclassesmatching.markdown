@@ -35,3 +35,5 @@ successful key exchange between systems, (e.g. using either a remote
 copy or `cf-runagent` connection). It contains no mechanism for trust
 establishment and will fail if there is no trust relationship
 pre-established.
+
+**See also:** `hubknowledge()`, `remotescalar()`, `hostswithclass()`
