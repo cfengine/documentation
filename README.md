@@ -39,26 +39,21 @@ content can cause merge conflicts that are hard to resolve.
 
 ### Structure
 
-Pages are organized hierarchically in category/subcategory relationships.
-Those are defined by the `categories` META data (in YAML) in the markdown
-file:
+Pages are organized hierarchically in category/subcategory relationships,
+corresponding to the organization of the .markdown files in the repository.
 
-    categories: [Path, Of, Categories, Page]
+The content of the file
 
-This creates the navigation structure on the left hand side of the published
-documentation. The HTML files are all created into the same directory, so the
-alias META has to specify a unique filename.
+    documentation/path/of/categories.markdown
 
-    alias: path-of-categories-page.html
+will generate a HTML page
 
-To make it easier to locate files in the repository, the markdown sources are
-organized in a directory structure that corresponds with the categorization,
-for example:
+    docs.cfengine.com/version/path-of-categories.html
 
-    documentation/path/of/categories/page.markdown
+with equivalent location in the left-hand navigation tree.
 
-Filenames are lower-case. Markdown-files in each subdirectory can be created
-as well with content providing an overview for that category.
+The documentation generation inserts a link to the source markdown in the
+footer of each page.
 
 ### META tags
 
@@ -66,7 +61,7 @@ Additional META tags you should set are:
 
     layout: default
 
-Leave this as default.
+Leave this as `default`.
 
     title: "The Title"
 
@@ -75,7 +70,8 @@ keywords (like "on").
 
     published: true|false
 
-Pages that set this tag to `false` will not be published.
+Pages that set this tag to `false` will not be part of the navigation structure.
+The HTML content will however be generated.
 
     tags: [list, of, tags with space, all lowercase]
 
