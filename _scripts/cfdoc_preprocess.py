@@ -23,8 +23,8 @@
 # THE SOFTWARE.
 
 import cfdoc_environment as environment
+import cfdoc_metadata as metadata
 import cfdoc_linkresolver as linkresolver
-import cfdoc_extractexamples as extractexamples
 import cfdoc_macros as macros
 import cfdoc_printsource as printsource
 import cfdoc_git as git
@@ -57,12 +57,20 @@ except:
 	exit(1)
 
 try:
+	metadata.run(config)
+except:
+	print "cfdoc_preprocess: Fatal error setting meta data"
+	sys.stdout.write("       Exception: ")
+	print sys.exc_info()
+	exit(2)
+
+try:
 	linkresolver.run(config)
 except:
 	print "cfdoc_preprocess: Fatal error generating link map"
 	sys.stdout.write("       Exception: ")
 	print sys.exc_info()
-	exit(2)
+	exit(3)
 
 try:
 	macros.run(config)
