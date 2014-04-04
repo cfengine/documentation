@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Policy Workflow
-categories: [Overviews, System Overview, Architecture]
+categories: [Overviews, System Overview, CFEngine Architecture and Design, Policy Workflow]
 published: true
 sorting: 20
-alias: manuals-architecture-policy-workflow.html
-tags: [manuals, systems, configuration management, automation, workflow]
+alias: overviews-architecture-policy-workflow.html
+tags: [overviews, systems, configuration management, automation, workflow]
 ---
 
 CFEngine does not make absolute choices for you, like other tools.  Almost 

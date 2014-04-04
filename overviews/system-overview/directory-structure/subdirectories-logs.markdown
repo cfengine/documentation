@@ -1,10 +1,10 @@
 ---
 layout: default
-title: CFEngine Files, Directories and Logs
-categories: [Overviews, System Overview, Directories and Logs]
+title: Sub-Directories and Logs
+categories: [Overviews, System Overview, Sub-Directories and Logs]
 published: true
 sorting: 30
-alias: overview-system-files-directories-logs.html
+alias: overview-system-subdirectories-logs.html
 tags: [overviews, system overview, files, directories, logs]
 ---
 
