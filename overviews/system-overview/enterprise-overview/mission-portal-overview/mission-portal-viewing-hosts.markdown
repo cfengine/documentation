@@ -2,7 +2,7 @@
 layout: default
 title: Viewing Hosts in Mission Portal
 sorting: 100
-categories: [Overviews, System Overview, Mission Portal Overview, Viewing Hosts in Mission Portal]
+categories: [Overviews, System Overview, Enterprise Overview, Mission Portal Overview, Viewing Hosts in Mission Portal]
 published: true
 alias: overviews-mission-portal-viewing-hosts.html
 tags: [overviews, mission portal, hosts]
