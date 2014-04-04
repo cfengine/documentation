@@ -209,6 +209,11 @@ a:link {
 	color: #008cbc;
 }
 
+a:link {color: #008cbc;text-decoration:none;}      
+a:visited {color: #008cbc;text-decoration:none;}  
+a:hover {color: #008cbc;text-decoration:underline;}  
+a:active {color: #008cbc;text-decoration:none;} 
+
 #left_col {
     float: left;
     padding-top: 29px;
