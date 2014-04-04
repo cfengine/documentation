@@ -345,7 +345,8 @@ body report_data_select report_data
 
 **Example:**
 
-Here are the built-in `report_data_select` bodies `default_data_select_host()` and `default_data_select_hub()`:
+Here are the built-in `report_data_select` bodies `default_data_select_host()` and 
+`default_data_select_policy_hub()`:
 
 [%CFEngine_include_snippet(lib/3.6/reports.cf, .+default_data_select_host, \})%]
 
