@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: printable
 title: Markdown Cheatsheet
 published: true
 sorting: 1
