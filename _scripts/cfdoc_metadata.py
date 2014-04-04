@@ -31,6 +31,7 @@ def run(config):
 	markdown_files =  config["markdown_files"]
 	for file in markdown_files:
 		processMetaData(file, config)
+	exit(0)
 
 # parse meta data lines, remove existing header for later reconstruction
 def parseHeader(lines):
@@ -79,6 +80,7 @@ def processMetaData(file_path, config):
 	if len(rel_file_path):
 		categories = rel_file_path.split("/")
 	categories.append(file_name)
+	categories = ["\"%s\"" % c for c in categories] # quote all entires to avoid ruby keywords
 	if len(categories) == 1:
 		category = categories[0]
 	else:
@@ -89,8 +91,7 @@ def processMetaData(file_path, config):
 	else:
 		alias = file_name
 	
-	alias = alias.replace("_", "-").replace("/", "-").lower()
-	category = category.replace("_", "-").replace("/", "-").lower()
+	alias = alias.replace("/", "-").lower()
 
 	out_file = open(file_path, "w")
 	in_header = False
@@ -98,12 +99,11 @@ def processMetaData(file_path, config):
 		if line.find("---") == 0:
 			in_header = not in_header
 			if not in_header: # write new tags before header is terminated
-				if not "categories" in header:
-					out_file.write("categories: [%s]\n" % category)
+				out_file.write("categories: [%s]\n" % category)
 				out_file.write("alias: %s.html\n" % alias)
 		if in_header: # skip hard-coded duplicates
-			#if line.find("categories:") == 0:
-			#	continue
+			if line.find("categories:") == 0:
+				continue
 			if line.find("alias:") == 0:
 				continue
 			
