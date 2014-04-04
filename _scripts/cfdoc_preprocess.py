@@ -65,13 +65,6 @@ except:
 	exit(2)
 
 try:
-	extractexamples.run(config)
-except:
-	print "cfdoc_preprocess: Failure extracting example code"
-	sys.stdout.write("       Exception: ")
-	print sys.exc_info()
-
-try:
 	macros.run(config)
 except:
 	print "cfdoc_macros: Error generating documentation from syntax maps"
