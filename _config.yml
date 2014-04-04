@@ -30,9 +30,3 @@ asset_pipeline:
   output_path: assets     # Default = assets
   display_path: docs/master/assets       # Default = nil
   gzip: false             # Default = false
-git-branch: "master"
-git-revision: "ce058bd90f0d6cba74d44f574cca7b71f1df79a8"
-git-branch: "master"
-git-revision: "ce058bd90f0d6cba74d44f574cca7b71f1df79a8"
-git-branch: "master"
-git-revision: "ce058bd90f0d6cba74d44f574cca7b71f1df79a8"
