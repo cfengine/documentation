@@ -1,12 +1,25 @@
 ---
 layout: default
-title: Design
-categories: [Overviews, System Overview, Design]
+title: CFEngine Architecture and Design
+categories: [Overviews, System Overview, CFEngine Architecture and Design]
 published: true
 sorting: 10
 alias: manuals-design.html
-tags: [manuals, systems, configuration management, automation, design, promises]
+tags: [overviews, system, configuration management, automation, architecture, design, promises]
 ---
+
+CFEngine operates autonomously in a network, under your guidance. While 
+CFEngine supports anything from 1 servers to 100,000+ servers, the essence of 
+any CFEngine deployment is the same.
+
+CFEngine supports networks of any size, from a handful of nodes to
+hundreds of thousands of computers. It is built to scale. If your site
+is very large (thousands or of servers) you should spend some time
+discussing your requirements with the CFEngine experts. They will know
+how to tune promises and configurations to your environment as scale
+requires you to have more infrastructure, and a potentially more
+complicated configuration. But no matter the scale, the essence of any 
+CFEngine deployment is the same.
 
 CFEngine was designed to enable scalable configuration management in
 any kind of environment, with an emphasis on supporting large, Unix-like 
@@ -126,3 +139,5 @@ always moving forward (because like it or not, time only goes in one
 direction). All of the desired-state changes are managed locally by each 
 individual host, and continuously repaired to ensure on-going compliance 
 with policy.
+
+See Also: [Networking][Networking], [Policy Workflow][Policy Workflow], [Distributed Discovery][Distributed Discovery]

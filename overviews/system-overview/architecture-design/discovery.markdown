@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Distributed Discovery
-categories: [Overviews, System Overview, Architecture]
+categories: [Overviews, System Overview, CFEngine Architecture and Design, Distributed Discovery]
 published: true
 sorting: 30
-alias: manuals-architecture-distributed-discovery.html
-tags: [manuals, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
+alias: overviews-architecture-distributed-discovery.html
+tags: [overviews, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 
 CFEngine's philosophy and modus operandi is to make machines as self-reliant 

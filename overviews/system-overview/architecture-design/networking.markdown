@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Networking
-categories: [Overviews, System Overview, Architecture]
+categories: [Overviews, System Overview, CFEngine Architecture and Design, Networking]
 published: true
 sorting: 10
-alias: manuals-architecture-networking.html
-tags: [manuals, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
+alias: overviews-architecture-networking.html
+tags: [overviews, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 
 Starting [`cf-serverd`][cf-serverd], sets up a line of communication between 
