@@ -81,12 +81,12 @@ and Community users who plan to write new sketches.
 
 ### Terminology
 
-* **Design Center**  Refers to the collection of sketches and the tools that allow you to 
+* `Design Center`  Refers to the collection of sketches and the tools that allow you to 
 manipulate and manage them.
-* **Design Center app (UI)** Refers to the Design Center user interface app that is 
+* `Design Center app (UI)` Refers to the Design Center user interface app that is 
 located on the Mission Portal console for CFEngine Enterprise users.
-* **Design Center in GitHub** Refers to the [CFEngine github][github design-center] repository of sketches, tools, 
+* `Design Center in GitHub` Refers to the [CFEngine github][github design-center] repository of sketches, tools, 
 and policy examples.
-* **Design Center API** Refers to the [API][The Design Center API] which performs all operations related to 
+* `Design Center API` Refers to the [API][The Design Center API] which performs all operations related to 
 sketches, parameter sets, environments, validations, and deployment. 
 

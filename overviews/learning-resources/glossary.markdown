@@ -20,8 +20,9 @@ tags: [overviews, leanring resources, glossary]
 * [Components][Glossary#components]
 * [Datatypes][Glossary#datatypes]
 * [Decisions][Glossary#decisions]
-* [Design Center API][Glossary#design-center-api]
 * [Design Center][Glossary#design-center]
+* [Design Center API][Glossary#design-center-api]
+* [Design Center App][Glossary#design-center-app]
 * [Directories][Glossary#directories]
 * [Distribution][Glossary#distribution]
 * [Enterprise API][Glossary#enterprise-api]
@@ -99,8 +100,24 @@ Daemons include cf-execd, cf-monitord, and cf-serverd
 
 #### Datatypes ####
 #### Decisions ####
-#### Design Center API ####
+
 #### Design Center ####
+
+The collection of sketches and the tools that allow you to manipulate and manage them.
+
+See Also: [Design Center Overview][Design Center Overview],
+[Design Center in CFEngine Enterprise][Design Center in CFEngine Enterprise]
+
+#### Design Center API ####
+
+Performs all operations related to sketches, parameter sets, environments, validations, and deployment. 
+
+See also: [The Design Center API][The Design Center API]
+
+#### Design Center App #### 
+
+The Design Center user interface app that is located on the Mission Portal console for CFEngine Enterprise users.
+
 #### Directories ####
 #### Distribution ####
 #### Enterprise API ####
