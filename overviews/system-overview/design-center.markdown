@@ -16,6 +16,12 @@ categories according to their functionality. Sketches are managed (installed,
 configured, enabled and uninstalled) through a specialized tool called 
 cf-sketch.
 
+[Use Design Center Sketches to Deploy Policy](#use-design-center-sketches-to-deploy-policy)
+[The Design Center Sketch Workflow](#the-design-center-sketch-workflow)
+[Value of Sketches to Users](#value-of-sketches-to-users)
+[Design Center Terminology](#design-center-terminology)
+[See Also](#see-also)
+
 ## Use Design Center Sketches to Deploy Policy
 
 The CFEngine Design Center is a collection of `sketches` which are reusable, configurable 
@@ -47,7 +53,7 @@ that will get applied under different conditions.
 
 3. Deploy the sketch. This makes the sketch visible to CFEngine, so it can begin to execute.
 
-### Value of Sketches to Users
+## Value of Sketches to Users
 
 Sketches provide a time-value in many ways:
 
@@ -62,11 +68,19 @@ conditions (classes). Every time CFEngine runs, it chooses which sketch(es) to e
 which parameter sets based on those conditions. As conditions change, the execution of 
 sketches can change, just as the behavior of regular CFEngine policy can change.
 
-## Learn more about Design Center Sketches
+## Design Center Terminology
 
-The following topics are included in the Design Center section. **Select topics that 
-are specific to your edition of CFEngine: Enterprise or Community.**
+* `Design Center`  Refers to the collection of sketches and the tools that allow you to 
+manipulate and manage them.
+* `Design Center app (UI)` Refers to the Design Center user interface app that is 
+located on the Mission Portal console for CFEngine Enterprise users.
+* `Design Center in GitHub` Refers to the [CFEngine github][github design-center] repository of sketches, tools, 
+and policy examples.
+* `Design Center API` Refers to the [API][The Design Center API] which performs all operations related to 
+sketches, parameter sets, environments, validations, and deployment. 
  
+## See Also ##
+
 * [Deploy your first Policy (Enterprise)][Deploy your first Policy] This Enterprise-specific tutorial illustrates how 
 to use a sketch to configure and deploy a simple policy by using the Design Center app on 
 the Mission Portal console.
@@ -79,14 +93,5 @@ who plan to install, configure, and deploy sketches.
 * [Write a new Sketch (Enterprise and Community)][Write a new Sketch] This is an advanced section for both Enterprise 
 and Community users who plan to write new sketches.
 
-### Terminology
 
-* `Design Center`  Refers to the collection of sketches and the tools that allow you to 
-manipulate and manage them.
-* `Design Center app (UI)` Refers to the Design Center user interface app that is 
-located on the Mission Portal console for CFEngine Enterprise users.
-* `Design Center in GitHub` Refers to the [CFEngine github][github design-center] repository of sketches, tools, 
-and policy examples.
-* `Design Center API` Refers to the [API][The Design Center API] which performs all operations related to 
-sketches, parameter sets, environments, validations, and deployment. 
 
