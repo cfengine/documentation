@@ -6,9 +6,19 @@ sorting: 60
 tags: [design center, cf-sketch, sketches, deploy policy]
 ---
 
+The Design Center is a public repository for customizable CFEngine design 
+patterns and code. [Sketches][Sketch Structure] are ready-to-use components 
+(e.g. collections of bundles, support files, etc.) that can be directly 
+imported and used in CFEngine policies. Most sketches are specialized for 
+achieving specific tasks, or for maintaining a specific piece of software, 
+however their scope and capabilities can be varied. They are organized in 
+categories according to their functionality. Sketches are managed (installed, 
+configured, enabled and uninstalled) through a specialized tool called 
+cf-sketch.
+
 ## Use Design Center Sketches to Deploy Policy
 
-The CFEngine Design Center is a collection of **sketches** which are reusable, configurable 
+The CFEngine Design Center is a collection of `sketches` which are reusable, configurable 
 policies. Think of sketches as templates that are written in CFEngine policy language; you can 
 use these templates to configure and deploy CFEngine policy without mastering the 
 CFEngine language. 
@@ -16,10 +26,10 @@ CFEngine language.
 The Design Center also contains tools that help you to manipulate and 
 manage sketches: 
 
-* **Enterprise users** manage and deploy sketches in the Design Center app that is located on 
+* Enterprise users manage and deploy sketches in the Design Center app that is located on 
 the Mission Portal console. [Deploy your first policy in the Design Center][Deploy your first Policy].
 
-* **Community users** manage and deploy sketches on the [command line][Command Line Sketches] by using the `cf-sketch` 
+* Community users manage and deploy sketches on the [command line][Command Line Sketches] by using the `cf-sketch` 
 tool.
 
 ## The Design Center Sketch Workflow
