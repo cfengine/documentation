@@ -10,7 +10,7 @@ The CFEngine Enterprise `Mission Portal` provides System Administrators with det
 
 ### Federation and SQL Reporting ###
 
-CFEngine Enterprise has the abulity to create federated structures, in which parts of organizations can have their own configuration policies, while at the same time the central IT organization may impose some policies that are more global in nature. 
+CFEngine Enterprise has the ability to create federated structures, in which parts of organizations can have their own configuration policies, while at the same time the central IT organization may impose some policies that are more global in nature. 
 
 ### Monitoring and reporting ###
 
