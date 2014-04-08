@@ -1,14 +1,3 @@
-* [CFEngine Enterprise Features](#cfengine-enterprise-features)
-	* [Increased scalability](#increased-scalability)
-	* [Configurable Data Feeds](#configurable-data-feeds)
-	* [Federation and SQL Reporting](#federation-and-sql-reporting)
-
-* [Design Center Beta](#design-center-beta)
-	* [Graphical User Interface for Design Center](#graphical-user-interface-for-design-center)
-	* [Design Center sketches with integrated monitoring and reporting](#design-center-sketches-with-integrated-monitoring-and-reporting)
-	* [Version Control for Sketches](#version-control-for-sketches)
-	* [Delegation of System Administrator Tasks](#delegation-of-system-administrator-tasks)
-
 ## CFEngine Enterprise Features ##
 
 ### Increased scalability ###
