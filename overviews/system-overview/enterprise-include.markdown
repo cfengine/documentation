@@ -1,3 +1,14 @@
+* [CFEngine Enterprise Features][#cfengine-enterprise-features]
+	* [Increased scalability][#increased-scalability]
+	* [Configurable Data Feeds][#configurable-data-feeds]
+	* [Federation and SQL Reporting][#federation-and-sql-reporting]
+
+* [Design Center Beta][#design-center-beta]
+	* [Graphical User Interface for Design Center][#graphical-user-interface-for-design-center]
+	* [Design Center sketches with integrated monitoring and reporting][#design-center-sketches-with-integrated-monitoring-and-reporting]
+	* [Version Control for Sketches][#version-control-for-sketches]
+	* [Delegation of System Administrator Tasks][#delegation-of-system-administrator-tasks]
+
 ## CFEngine Enterprise Features ##
 
 ### Increased scalability ###
@@ -12,7 +23,7 @@ The ‘Mission Portal’ of CFEngine Enterprise provides System Administrators w
 
 CFEngine Enterprise is very flexible in creating federated structures, in which parts of organizations can have their own configuration policies, while the central IT organization may impose some policies that are more global in nature. New in CFEngine Enterprise 3.5 is that it now supports federated reporting as well. With a single SQL-query information from distributed policy servers can be retrieved and offer a holistic view of all infrastructure across all parts of the organization - all under RBAC control.
 
-## Design Center Beta ## 
+## Design Center Beta ##
 
 ### Graphical User Interface for Design Center ###
 
