@@ -295,18 +295,19 @@
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
           "line": 219,
           "namespace": "default",
-          "name": "setuidgid_sh",
+          "name": "setuidgid_dir",
           "bodyType": "contain",
           "arguments": [
             "owner",
-            "group"
+            "group",
+            "dir"
           ],
           "contexts": [
             {
               "name": "any",
               "attributes": [
                 {
-                  "line": 224,
+                  "line": 225,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -314,7 +315,7 @@
                   }
                 },
                 {
-                  "line": 225,
+                  "line": 226,
                   "lval": "exec_group",
                   "rval": {
                     "type": "string",
@@ -322,11 +323,11 @@
                   }
                 },
                 {
-                  "line": 226,
-                  "lval": "useshell",
+                  "line": 227,
+                  "lval": "chdir",
                   "rval": {
                     "type": "string",
-                    "value": "true"
+                    "value": "$(dir)"
                   }
                 }
               ]
@@ -335,14 +336,13 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 231,
+          "line": 232,
           "namespace": "default",
-          "name": "jail",
+          "name": "setuidgid_sh",
           "bodyType": "contain",
           "arguments": [
             "owner",
-            "jail_root",
-            "dir"
+            "group"
           ],
           "contexts": [
             {
@@ -358,6 +358,49 @@
                 },
                 {
                   "line": 238,
+                  "lval": "exec_group",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(group)"
+                  }
+                },
+                {
+                  "line": 239,
+                  "lval": "useshell",
+                  "rval": {
+                    "type": "string",
+                    "value": "true"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/commands.cf",
+          "line": 244,
+          "namespace": "default",
+          "name": "jail",
+          "bodyType": "contain",
+          "arguments": [
+            "owner",
+            "jail_root",
+            "dir"
+          ],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 250,
+                  "lval": "exec_owner",
+                  "rval": {
+                    "type": "string",
+                    "value": "$(owner)"
+                  }
+                },
+                {
+                  "line": 251,
                   "lval": "useshell",
                   "rval": {
                     "type": "string",
@@ -365,7 +408,7 @@
                   }
                 },
                 {
-                  "line": 239,
+                  "line": 252,
                   "lval": "chdir",
                   "rval": {
                     "type": "string",
@@ -373,7 +416,7 @@
                   }
                 },
                 {
-                  "line": 240,
+                  "line": 253,
                   "lval": "chroot",
                   "rval": {
                     "type": "string",
@@ -386,7 +429,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 245,
+          "line": 258,
           "namespace": "default",
           "name": "setuid_umask",
           "bodyType": "contain",
@@ -399,7 +442,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 269,
+                  "line": 282,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -407,7 +450,7 @@
                   }
                 },
                 {
-                  "line": 270,
+                  "line": 283,
                   "lval": "umask",
                   "rval": {
                     "type": "string",
@@ -420,7 +463,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/commands.cf",
-          "line": 273,
+          "line": 286,
           "namespace": "default",
           "name": "setuid_gid_umask",
           "bodyType": "contain",
@@ -434,7 +477,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 298,
+                  "line": 311,
                   "lval": "exec_owner",
                   "rval": {
                     "type": "string",
@@ -442,7 +485,7 @@
                   }
                 },
                 {
-                  "line": 299,
+                  "line": 312,
                   "lval": "exec_group",
                   "rval": {
                     "type": "string",
@@ -450,7 +493,7 @@
                   }
                 },
                 {
-                  "line": 300,
+                  "line": 313,
                   "lval": "umask",
                   "rval": {
                     "type": "string",
