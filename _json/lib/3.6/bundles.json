@@ -20,11 +20,15 @@
                       "promiser": "inputs",
                       "attributes": [
                         {
-                          "line": 55,
+                          "line": 56,
                           "lval": "slist",
                           "rval": {
                             "type": "list",
                             "value": [
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/paths.cf"
+                              },
                               {
                                 "type": "string",
                                 "value": "$(this.promise_dirname)/files.cf"
@@ -46,7 +50,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 68,
+          "line": 69,
           "namespace": "default",
           "name": "cronjob",
           "bundleType": "agent",
@@ -58,18 +62,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 85,
+              "line": 86,
               "name": "vars",
               "contexts": [
                 {
                   "name": "SuSE",
                   "promises": [
                     {
-                      "line": 87,
+                      "line": 88,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "line": 87,
+                          "line": 88,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -84,11 +88,11 @@
                   "name": "redhat|fedora",
                   "promises": [
                     {
-                      "line": 89,
+                      "line": 90,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "line": 89,
+                          "line": 90,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -103,11 +107,11 @@
                   "name": "freebsd",
                   "promises": [
                     {
-                      "line": 91,
+                      "line": 92,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "line": 91,
+                          "line": 92,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -122,11 +126,11 @@
                   "name": "!(SuSE|redhat|fedora|freebsd)",
                   "promises": [
                     {
-                      "line": 93,
+                      "line": 94,
                       "promiser": "crontab",
                       "attributes": [
                         {
-                          "line": 93,
+                          "line": 94,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -140,18 +144,18 @@
               ]
             },
             {
-              "line": 95,
+              "line": 96,
               "name": "files",
               "contexts": [
                 {
                   "name": "!windows",
                   "promises": [
                     {
-                      "line": 98,
+                      "line": 99,
                       "promiser": "$(crontab)/$(user)",
                       "attributes": [
                         {
-                          "line": 100,
+                          "line": 101,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -159,7 +163,7 @@
                           }
                         },
                         {
-                          "line": 101,
+                          "line": 102,
                           "lval": "create",
                           "rval": {
                             "type": "string",
@@ -167,7 +171,7 @@
                           }
                         },
                         {
-                          "line": 102,
+                          "line": 103,
                           "lval": "edit_line",
                           "rval": {
                             "type": "functionCall",
@@ -181,7 +185,7 @@
                           }
                         },
                         {
-                          "line": 103,
+                          "line": 104,
                           "lval": "perms",
                           "rval": {
                             "type": "functionCall",
@@ -199,7 +203,7 @@
                           }
                         },
                         {
-                          "line": 104,
+                          "line": 105,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -219,18 +223,18 @@
               ]
             },
             {
-              "line": 106,
+              "line": 107,
               "name": "processes",
               "contexts": [
                 {
                   "name": "changed_crontab",
                   "promises": [
                     {
-                      "line": 109,
+                      "line": 110,
                       "promiser": "cron",
                       "attributes": [
                         {
-                          "line": 110,
+                          "line": 111,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -238,7 +242,7 @@
                           }
                         },
                         {
-                          "line": 111,
+                          "line": 112,
                           "lval": "signals",
                           "rval": {
                             "type": "list",
@@ -260,7 +264,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 115,
+          "line": 116,
           "namespace": "default",
           "name": "rm_rf",
           "bundleType": "agent",
@@ -269,18 +273,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 129,
+              "line": 130,
               "name": "methods",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 130,
+                      "line": 131,
                       "promiser": "rm",
                       "attributes": [
                         {
-                          "line": 130,
+                          "line": 131,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -307,7 +311,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 134,
+          "line": 135,
           "namespace": "default",
           "name": "rm_rf_depth",
           "bundleType": "agent",
@@ -317,18 +321,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 149,
+              "line": 150,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 150,
+                      "line": 151,
                       "promiser": "isdir",
                       "attributes": [
                         {
-                          "line": 150,
+                          "line": 151,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -348,18 +352,18 @@
               ]
             },
             {
-              "line": 151,
+              "line": 152,
               "name": "files",
               "contexts": [
                 {
                   "name": "isdir",
                   "promises": [
                     {
-                      "line": 153,
+                      "line": 154,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 154,
+                          "line": 155,
                           "lval": "file_select",
                           "rval": {
                             "type": "symbol",
@@ -367,7 +371,7 @@
                           }
                         },
                         {
-                          "line": 155,
+                          "line": 156,
                           "lval": "depth_search",
                           "rval": {
                             "type": "functionCall",
@@ -381,7 +385,7 @@
                           }
                         },
                         {
-                          "line": 156,
+                          "line": 157,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -396,11 +400,11 @@
                   "name": "!isdir",
                   "promises": [
                     {
-                      "line": 159,
+                      "line": 160,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 159,
+                          "line": 160,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -417,7 +421,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 162,
+          "line": 163,
           "namespace": "default",
           "name": "fileinfo",
           "bundleType": "agent",
@@ -426,18 +430,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 214,
+              "line": 215,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 215,
+                      "line": 216,
                       "promiser": "fields",
                       "attributes": [
                         {
-                          "line": 215,
+                          "line": 216,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -461,11 +465,11 @@
                       ]
                     },
                     {
-                      "line": 217,
+                      "line": 218,
                       "promiser": "stat[$(f)][$(fields)]",
                       "attributes": [
                         {
-                          "line": 217,
+                          "line": 218,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -489,14 +493,14 @@
               ]
             },
             {
-              "line": 219,
+              "line": 220,
               "name": "reports",
               "contexts": [
                 {
                   "name": "verbose_mode",
                   "promises": [
                     {
-                      "line": 221,
+                      "line": 222,
                       "promiser": "$(this.bundle): file $(f) has $(fields) = $(stat[$(f)][$(fields)])",
                       "attributes": []
                     }
@@ -508,7 +512,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 224,
+          "line": 225,
           "namespace": "default",
           "name": "logrotate",
           "bundleType": "agent",
@@ -519,18 +523,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 248,
+              "line": 249,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 249,
+                      "line": 250,
                       "promiser": "$(log_files)",
                       "attributes": [
                         {
-                          "line": 250,
+                          "line": 251,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -538,7 +542,7 @@
                           }
                         },
                         {
-                          "line": 251,
+                          "line": 252,
                           "lval": "rename",
                           "rval": {
                             "type": "functionCall",
@@ -552,7 +556,7 @@
                           }
                         },
                         {
-                          "line": 252,
+                          "line": 253,
                           "lval": "file_select",
                           "rval": {
                             "type": "functionCall",
@@ -575,7 +579,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 255,
+          "line": 256,
           "namespace": "default",
           "name": "probabilistic_usebundle",
           "bundleType": "agent",
@@ -585,18 +589,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 277,
+              "line": 278,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 278,
+                      "line": 279,
                       "promiser": "fifty_fifty",
                       "attributes": [
                         {
-                          "line": 279,
+                          "line": 280,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -614,7 +618,7 @@
                           }
                         },
                         {
-                          "line": 281,
+                          "line": 282,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -624,11 +628,11 @@
                       ]
                     },
                     {
-                      "line": 282,
+                      "line": 283,
                       "promiser": "not_fifty_fifty",
                       "attributes": [
                         {
-                          "line": 282,
+                          "line": 283,
                           "lval": "expression",
                           "rval": {
                             "type": "string",
@@ -638,11 +642,11 @@
                       ]
                     },
                     {
-                      "line": 283,
+                      "line": 284,
                       "promiser": "have_remainder",
                       "attributes": [
                         {
-                          "line": 283,
+                          "line": 284,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -663,11 +667,11 @@
                   "name": "fifty_fifty.have_remainder",
                   "promises": [
                     {
-                      "line": 286,
+                      "line": 287,
                       "promiser": "activate_bundle",
                       "attributes": [
                         {
-                          "line": 287,
+                          "line": 288,
                           "lval": "dist",
                           "rval": {
                             "type": "list",
@@ -691,11 +695,11 @@
                   "name": "not_fifty_fifty.have_remainder",
                   "promises": [
                     {
-                      "line": 290,
+                      "line": 291,
                       "promiser": "activate_bundle",
                       "attributes": [
                         {
-                          "line": 291,
+                          "line": 292,
                           "lval": "dist",
                           "rval": {
                             "type": "list",
@@ -718,18 +722,18 @@
               ]
             },
             {
-              "line": 293,
+              "line": 294,
               "name": "vars",
               "contexts": [
                 {
                   "name": "fifty_fifty",
                   "promises": [
                     {
-                      "line": 295,
+                      "line": 296,
                       "promiser": "remainder",
                       "attributes": [
                         {
-                          "line": 296,
+                          "line": 297,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -768,11 +772,11 @@
                   "name": "not_fifty_fifty",
                   "promises": [
                     {
-                      "line": 299,
+                      "line": 300,
                       "promiser": "remainder",
                       "attributes": [
                         {
-                          "line": 300,
+                          "line": 301,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -810,18 +814,18 @@
               ]
             },
             {
-              "line": 302,
+              "line": 303,
               "name": "methods",
               "contexts": [
                 {
                   "name": "fifty_fifty",
                   "promises": [
                     {
-                      "line": 304,
+                      "line": 305,
                       "promiser": "Activate bundle probabilistically",
                       "attributes": [
                         {
-                          "line": 305,
+                          "line": 306,
                           "lval": "handle",
                           "rval": {
                             "type": "string",
@@ -829,7 +833,7 @@
                           }
                         },
                         {
-                          "line": 306,
+                          "line": 307,
                           "lval": "usebundle",
                           "rval": {
                             "type": "string",
@@ -837,7 +841,7 @@
                           }
                         },
                         {
-                          "line": 307,
+                          "line": 308,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -845,7 +849,7 @@
                           }
                         },
                         {
-                          "line": 308,
+                          "line": 309,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -860,11 +864,11 @@
                   "name": "not_fifty_fifty",
                   "promises": [
                     {
-                      "line": 311,
+                      "line": 312,
                       "promiser": "Activate bundle probabilistically",
                       "attributes": [
                         {
-                          "line": 312,
+                          "line": 313,
                           "lval": "handle",
                           "rval": {
                             "type": "string",
@@ -872,7 +876,7 @@
                           }
                         },
                         {
-                          "line": 313,
+                          "line": 314,
                           "lval": "usebundle",
                           "rval": {
                             "type": "string",
@@ -880,7 +884,7 @@
                           }
                         },
                         {
-                          "line": 314,
+                          "line": 315,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -888,7 +892,7 @@
                           }
                         },
                         {
-                          "line": 315,
+                          "line": 316,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -902,23 +906,23 @@
               ]
             },
             {
-              "line": 318,
+              "line": 319,
               "name": "reports",
               "contexts": [
                 {
                   "name": "DEBUG.fifty_fifty",
                   "promises": [
                     {
-                      "line": 320,
+                      "line": 321,
                       "promiser": "$(this.bundle) Special case for 50/50",
                       "attributes": []
                     },
                     {
-                      "line": 322,
+                      "line": 323,
                       "promiser": "$(this.bundle) activate_bundle_$(probability)000",
                       "attributes": [
                         {
-                          "line": 323,
+                          "line": 324,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -928,11 +932,11 @@
                       ]
                     },
                     {
-                      "line": 325,
+                      "line": 326,
                       "promiser": "$(this.bundle) activate_bundle_$(probability)001",
                       "attributes": [
                         {
-                          "line": 326,
+                          "line": 327,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -949,7 +953,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 329,
+          "line": 330,
           "namespace": "default",
           "name": "prunedir",
           "bundleType": "agent",
@@ -959,18 +963,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 350,
+              "line": 351,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 351,
+                      "line": 352,
                       "promiser": "$(dir)",
                       "attributes": [
                         {
-                          "line": 352,
+                          "line": 353,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -978,7 +982,7 @@
                           }
                         },
                         {
-                          "line": 353,
+                          "line": 354,
                           "lval": "delete",
                           "rval": {
                             "type": "symbol",
@@ -986,7 +990,7 @@
                           }
                         },
                         {
-                          "line": 354,
+                          "line": 355,
                           "lval": "file_select",
                           "rval": {
                             "type": "functionCall",
@@ -1004,7 +1008,7 @@
                           }
                         },
                         {
-                          "line": 355,
+                          "line": 356,
                           "lval": "depth_search",
                           "rval": {
                             "type": "functionCall",
@@ -1027,25 +1031,25 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 358,
+          "line": 359,
           "namespace": "default",
           "name": "tcdb_fix",
           "bundleType": "agent",
           "arguments": [],
           "promiseTypes": [
             {
-              "line": 375,
+              "line": 376,
               "name": "vars",
               "contexts": [
                 {
                   "name": "linux",
                   "promises": [
                     {
-                      "line": 378,
+                      "line": 379,
                       "promiser": "db",
                       "attributes": [
                         {
-                          "line": 378,
+                          "line": 379,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -1083,18 +1087,18 @@
               ]
             },
             {
-              "line": 381,
+              "line": 382,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 384,
+                      "line": 385,
                       "promiser": "hourly_class",
                       "attributes": [
                         {
-                          "line": 384,
+                          "line": 385,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -1119,11 +1123,11 @@
                   "name": "hourly_class.linux",
                   "promises": [
                     {
-                      "line": 387,
+                      "line": 388,
                       "promiser": "detected_invalid_record_$(db)",
                       "attributes": [
                         {
-                          "line": 387,
+                          "line": 388,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -1147,18 +1151,18 @@
               ]
             },
             {
-              "line": 390,
+              "line": 391,
               "name": "commands",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 392,
+                      "line": 393,
                       "promiser": "$(paths.rm)",
                       "attributes": [
                         {
-                          "line": 393,
+                          "line": 394,
                           "lval": "args",
                           "rval": {
                             "type": "string",
@@ -1166,7 +1170,7 @@
                           }
                         },
                         {
-                          "line": 394,
+                          "line": 395,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -1180,7 +1184,7 @@
                           }
                         },
                         {
-                          "line": 395,
+                          "line": 396,
                           "lval": "classes",
                           "rval": {
                             "type": "functionCall",
@@ -1198,7 +1202,7 @@
                           }
                         },
                         {
-                          "line": 396,
+                          "line": 397,
                           "lval": "handle",
                           "rval": {
                             "type": "string",
@@ -1206,7 +1210,7 @@
                           }
                         },
                         {
-                          "line": 397,
+                          "line": 398,
                           "lval": "comment",
                           "rval": {
                             "type": "string",
@@ -1220,18 +1224,18 @@
               ]
             },
             {
-              "line": 400,
+              "line": 401,
               "name": "reports",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 402,
+                      "line": 403,
                       "promiser": "$(this.bundle) $(sys.fqhost): Detected invalid record header in $(db) - tried to repair",
                       "attributes": [
                         {
-                          "line": 403,
+                          "line": 404,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -1247,11 +1251,11 @@
                       ]
                     },
                     {
-                      "line": 405,
+                      "line": 406,
                       "promiser": "$(this.bundle) $(sys.fqhost): Repair failed, removed corrupt database: $(db)",
                       "attributes": [
                         {
-                          "line": 406,
+                          "line": 407,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "functionCall",
@@ -1274,7 +1278,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 409,
+          "line": 410,
           "namespace": "default",
           "name": "url_ping",
           "bundleType": "agent",
@@ -1286,18 +1290,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 434,
+              "line": 435,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 435,
+                      "line": 436,
                       "promiser": "url_check",
                       "attributes": [
                         {
-                          "line": 438,
+                          "line": 439,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -1325,11 +1329,11 @@
                       ]
                     },
                     {
-                      "line": 440,
+                      "line": 441,
                       "promiser": "chost",
                       "attributes": [
                         {
-                          "line": 440,
+                          "line": 441,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -1349,18 +1353,18 @@
               ]
             },
             {
-              "line": 442,
+              "line": 443,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 443,
+                      "line": 444,
                       "promiser": "url_ok_$(chost)",
                       "attributes": [
                         {
-                          "line": 444,
+                          "line": 445,
                           "lval": "scope",
                           "rval": {
                             "type": "string",
@@ -1368,7 +1372,7 @@
                           }
                         },
                         {
-                          "line": 446,
+                          "line": 447,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -1388,11 +1392,11 @@
                       ]
                     },
                     {
-                      "line": 448,
+                      "line": 449,
                       "promiser": "url_not_ok_$(chost)",
                       "attributes": [
                         {
-                          "line": 449,
+                          "line": 450,
                           "lval": "scope",
                           "rval": {
                             "type": "string",
@@ -1400,7 +1404,7 @@
                           }
                         },
                         {
-                          "line": 451,
+                          "line": 452,
                           "lval": "not",
                           "rval": {
                             "type": "functionCall",
@@ -1424,18 +1428,18 @@
               ]
             },
             {
-              "line": 453,
+              "line": 454,
               "name": "reports",
               "contexts": [
                 {
                   "name": "verbose_mode",
                   "promises": [
                     {
-                      "line": 455,
+                      "line": 456,
                       "promiser": "$(this.bundle): $(method) $(host):$(port)/$(uri) got 200 OK",
                       "attributes": [
                         {
-                          "line": 456,
+                          "line": 457,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -1445,11 +1449,11 @@
                       ]
                     },
                     {
-                      "line": 457,
+                      "line": 458,
                       "promiser": "$(this.bundle): $(method) $(host):$(port)/$(uri) did *not* get 200 OK",
                       "attributes": [
                         {
-                          "line": 458,
+                          "line": 459,
                           "lval": "ifvarclass",
                           "rval": {
                             "type": "string",
@@ -1466,7 +1470,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 461,
+          "line": 462,
           "namespace": "default",
           "name": "git_init",
           "bundleType": "agent",
@@ -1475,18 +1479,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 484,
+              "line": 485,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 485,
+                      "line": 486,
                       "promiser": "ok_norepo",
                       "attributes": [
                         {
-                          "line": 485,
+                          "line": 486,
                           "lval": "not",
                           "rval": {
                             "type": "functionCall",
@@ -1506,18 +1510,18 @@
               ]
             },
             {
-              "line": 487,
+              "line": 488,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_norepo",
                   "promises": [
                     {
-                      "line": 489,
+                      "line": 490,
                       "promiser": "git_init",
                       "attributes": [
                         {
-                          "line": 489,
+                          "line": 490,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -1548,7 +1552,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 492,
+          "line": 493,
           "namespace": "default",
           "name": "git_add",
           "bundleType": "agent",
@@ -1558,18 +1562,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 512,
+              "line": 513,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 513,
+                      "line": 514,
                       "promiser": "ok_repo",
                       "attributes": [
                         {
-                          "line": 513,
+                          "line": 514,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -1589,18 +1593,18 @@
               ]
             },
             {
-              "line": 515,
+              "line": 516,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_repo",
                   "promises": [
                     {
-                      "line": 517,
+                      "line": 518,
                       "promiser": "git_add",
                       "attributes": [
                         {
-                          "line": 517,
+                          "line": 518,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -1631,7 +1635,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 520,
+          "line": 521,
           "namespace": "default",
           "name": "git_checkout",
           "bundleType": "agent",
@@ -1641,18 +1645,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 540,
+              "line": 541,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 541,
+                      "line": 542,
                       "promiser": "ok_repo",
                       "attributes": [
                         {
-                          "line": 541,
+                          "line": 542,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -1672,18 +1676,18 @@
               ]
             },
             {
-              "line": 543,
+              "line": 544,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_repo",
                   "promises": [
                     {
-                      "line": 545,
+                      "line": 546,
                       "promiser": "git_checkout",
                       "attributes": [
                         {
-                          "line": 545,
+                          "line": 546,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -1714,7 +1718,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 548,
+          "line": 549,
           "namespace": "default",
           "name": "git_checkout_new_branch",
           "bundleType": "agent",
@@ -1724,18 +1728,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 573,
+              "line": 574,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 574,
+                      "line": 575,
                       "promiser": "ok_repo",
                       "attributes": [
                         {
-                          "line": 574,
+                          "line": 575,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -1755,18 +1759,18 @@
               ]
             },
             {
-              "line": 576,
+              "line": 577,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_repo",
                   "promises": [
                     {
-                      "line": 578,
+                      "line": 579,
                       "promiser": "git_checkout",
                       "attributes": [
                         {
-                          "line": 578,
+                          "line": 579,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -1797,7 +1801,257 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 581,
+          "line": 582,
+          "namespace": "default",
+          "name": "git_clean",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path"
+          ],
+          "promiseTypes": [
+            {
+              "line": 595,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 596,
+                      "promiser": "",
+                      "attributes": [
+                        {
+                          "line": 596,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "clean"
+                              },
+                              {
+                                "type": "string",
+                                "value": " --force -d"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 599,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "To have a clean clone we must remove any untracked files and\n                  directories. These should have all been stashed, but in case\n                  of error we go ahead and clean anyway."
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 602,
+          "namespace": "default",
+          "name": "git_stash",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "stash_name"
+          ],
+          "promiseTypes": [
+            {
+              "line": 616,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 617,
+                      "promiser": "",
+                      "attributes": [
+                        {
+                          "line": 617,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "stash"
+                              },
+                              {
+                                "type": "string",
+                                "value": "save --quiet --include-untracked \\\"$(stash_name)\\\""
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 623,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "So that we don\\'t lose any trail of what happend and so that\n                    we don\\'t accidentally delete something important we stash any\n                    changes.\n  Note:\n                      1. This promise will fail if user.email is not set\n                      2. We are respecting ignored files."
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 626,
+          "namespace": "default",
+          "name": "git_stash_and_clean",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path"
+          ],
+          "promiseTypes": [
+            {
+              "line": 639,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 640,
+                      "promiser": "stash",
+                      "attributes": [
+                        {
+                          "line": 640,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "CFEngine AUTOSTASH: $(sys.date)"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 642,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 643,
+                      "promiser": "",
+                      "attributes": [
+                        {
+                          "line": 643,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git_stash",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(stash)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 644,
+                          "lval": "classes",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "scoped_classes_generic",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "bundle"
+                              },
+                              {
+                                "type": "string",
+                                "value": "git_stash"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "git_stash_ok",
+                  "promises": [
+                    {
+                      "line": 647,
+                      "promiser": "",
+                      "attributes": [
+                        {
+                          "line": 647,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git_clean",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 649,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "git_stash_not_ok",
+                  "promises": [
+                    {
+                      "line": 651,
+                      "promiser": "$(this.bundle):: Warning: Not saving changes or cleaning. Git stash failed. Perhaps 'user.email' or 'user.name' is not set.",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
+          "line": 654,
           "namespace": "default",
           "name": "git_commit",
           "bundleType": "agent",
@@ -1807,18 +2061,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 601,
+              "line": 674,
               "name": "classes",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 602,
+                      "line": 675,
                       "promiser": "ok_repo",
                       "attributes": [
                         {
-                          "line": 602,
+                          "line": 675,
                           "lval": "expression",
                           "rval": {
                             "type": "functionCall",
@@ -1838,18 +2092,18 @@
               ]
             },
             {
-              "line": 604,
+              "line": 677,
               "name": "methods",
               "contexts": [
                 {
                   "name": "ok_repo",
                   "promises": [
                     {
-                      "line": 606,
+                      "line": 679,
                       "promiser": "git_commit",
                       "attributes": [
                         {
-                          "line": 606,
+                          "line": 679,
                           "lval": "usebundle",
                           "rval": {
                             "type": "functionCall",
@@ -1880,7 +2134,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 609,
+          "line": 682,
           "namespace": "default",
           "name": "git",
           "bundleType": "agent",
@@ -1891,18 +2145,166 @@
           ],
           "promiseTypes": [
             {
-              "line": 630,
-              "name": "commands",
+              "line": 707,
+              "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 631,
-                      "promiser": "$(paths.path[git])",
+                      "line": 708,
+                      "promiser": "oneliner",
                       "attributes": [
                         {
-                          "line": 632,
+                          "line": 708,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(paths.path[git])"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 710,
+                      "promiser": "repo_uid",
+                      "attributes": [
+                        {
+                          "line": 711,
+                          "lval": "string",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "filestat",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "uid"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 713,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "So that we don\\'t mess up permissions, we will just execute\n                    all commands as the current owner of .git"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 715,
+                      "promiser": "repo_gid",
+                      "attributes": [
+                        {
+                          "line": 716,
+                          "lval": "string",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "filestat",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "gid"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 718,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "So that we don\\'t mess up permissions, we will just execute\n                    all commands as the current group of .git"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 720,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 721,
+                      "promiser": "am_root",
+                      "attributes": [
+                        {
+                          "line": 721,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "strcmp",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(this.promiser_uid)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "0"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 722,
+                      "promiser": "need_to_drop",
+                      "attributes": [
+                        {
+                          "line": 722,
+                          "lval": "not",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "strcmp",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(this.promiser_uid)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(repo_uid)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 724,
+              "name": "commands",
+              "contexts": [
+                {
+                  "name": "am_root.need_to_drop",
+                  "promises": [
+                    {
+                      "line": 726,
+                      "promiser": "$(oneliner)",
+                      "attributes": [
+                        {
+                          "line": 727,
                           "lval": "args",
                           "rval": {
                             "type": "string",
@@ -1910,7 +2312,48 @@
                           }
                         },
                         {
-                          "line": 633,
+                          "line": 728,
+                          "lval": "contain",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "setuidgid_dir",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_uid)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(repo_gid)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "!am_root|!need_to_drop",
+                  "promises": [
+                    {
+                      "line": 731,
+                      "promiser": "$(oneliner)",
+                      "attributes": [
+                        {
+                          "line": 732,
+                          "lval": "args",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(subcmd) $(args)"
+                          }
+                        },
+                        {
+                          "line": 733,
                           "lval": "contain",
                           "rval": {
                             "type": "functionCall",
@@ -1928,12 +2371,38 @@
                   ]
                 }
               ]
+            },
+            {
+              "line": 735,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "inform_mode.am_root.need_to_drop",
+                  "promises": [
+                    {
+                      "line": 737,
+                      "promiser": "$(this.bundle): with dropped privileges to uid '$(repo_uid)' and gid '$(repo_gid)', in directory '$(repo_path)', running Git command '$(oneliner) $(subcmd) $(args)'",
+                      "attributes": []
+                    }
+                  ]
+                },
+                {
+                  "name": "inform_mode.(!am_root|!need_to_drop)",
+                  "promises": [
+                    {
+                      "line": 740,
+                      "promiser": "$(this.bundle): with current privileges, in directory '$(repo_path)', running Git command '$(oneliner) $(subcmd) $(args)'",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 636,
+          "line": 743,
           "namespace": "default",
           "name": "cmerge",
           "bundleType": "agent",
@@ -1943,18 +2412,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 677,
+              "line": 784,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 678,
+                      "line": 785,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 678,
+                          "line": 785,
                           "lval": "data",
                           "rval": {
                             "type": "functionCall",
@@ -1968,7 +2437,7 @@
                           }
                         },
                         {
-                          "line": 678,
+                          "line": 785,
                           "lval": "policy",
                           "rval": {
                             "type": "string",
@@ -1978,11 +2447,11 @@
                       ]
                     },
                     {
-                      "line": 679,
+                      "line": 786,
                       "promiser": "$(name)",
                       "attributes": [
                         {
-                          "line": 679,
+                          "line": 786,
                           "lval": "data",
                           "rval": {
                             "type": "functionCall",
@@ -2000,7 +2469,7 @@
                           }
                         },
                         {
-                          "line": 679,
+                          "line": 786,
                           "lval": "policy",
                           "rval": {
                             "type": "string",
@@ -2010,11 +2479,11 @@
                       ]
                     },
                     {
-                      "line": 680,
+                      "line": 787,
                       "promiser": "$(name)_str",
                       "attributes": [
                         {
-                          "line": 680,
+                          "line": 787,
                           "lval": "string",
                           "rval": {
                             "type": "functionCall",
@@ -2032,7 +2501,7 @@
                           }
                         },
                         {
-                          "line": 680,
+                          "line": 787,
                           "lval": "policy",
                           "rval": {
                             "type": "string",
@@ -2051,7 +2520,7 @@
       "bodies": [
         {
           "sourcePath": "../masterfiles/lib/3.6/bundles.cf",
-          "line": 58,
+          "line": 59,
           "namespace": "default",
           "name": "control",
           "bodyType": "file",
@@ -2061,7 +2530,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 61,
+                  "line": 62,
                   "lval": "inputs",
                   "rval": {
                     "type": "list",
