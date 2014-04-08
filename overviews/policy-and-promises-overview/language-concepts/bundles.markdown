@@ -43,6 +43,8 @@ A number of promises can be made in any kind of bundle since they are of a
 generic input/output nature. These are `vars`, `classes`, `defaults`, `meta` 
 and `reports` promises.
 
+### Common Bundles
+
 Bundles of type `common` may only contain the promise types that are common to 
 all bodies. Their main function is to define cross-component global 
 definitions.
@@ -63,6 +65,17 @@ definitions.
 Common bundles are observed by every agent, whereas the agent 
 specific bundle types are ignored by components other than the intended 
 recipient.
+
+#### Rules for evaluation of common bundles
+
+These are the specific evaluation differences between common and agent bundles:
+
+* common bundles are automatically evaluated even if they are not in the bundlesequence, as long as they have no parameters
+* auto-evaluated common bundles (not in the bundlesequence explicitly) don't evaluate their `reports` promises, so their reports won't be printed.
+* when common bundles define a class, it's global (`scope` is `namespace`) by default; the classes in agent bundles are local (`scope` is `bundle`) by default.
+* common bundles can only contain `meta`, `default`, `vars`, `classes`, and `reports` promises
+
+### Bundle Parameters
 
 Bundles can be parameterized, allowing for code re-use. If you need to do the 
 same thing over and over again with slight variations, using a promise bundle 
