@@ -27,7 +27,7 @@ CFEngine Enterprise is very flexible in creating federated structures, in which 
 
 ### Graphical User Interface for Design Center ###
 
-Configure and deploy infrastructure policies using "Sketches", by first filling in the details, selecting the hosts that need to be impacted, then tracking the progress of the deployment via the Mission Portal user interface.  
+Deploy infrastructure policy "Sketches" using a form-based approach to configure properties, selecting the hosts that need to be impacted, and then tracking the progress of the deployment via the Mission Portal user interface.  
 
 ### Design Center sketches with integrated monitoring and reporting ###
 
