@@ -4,7 +4,7 @@
           "sourcePath": "../masterfiles/lib/3.6/processes.cf",
           "line": 109,
           "namespace": "default",
-          "name": "cfe_process_kill",
+          "name": "process_kill",
           "bundleType": "agent",
           "arguments": [
             "name"
