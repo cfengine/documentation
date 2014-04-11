@@ -71,7 +71,6 @@ tags: [Examples]
     unit_registry_cache.cf
     unit_registry.cf
 
-Next: ACL file example, Previous: Low level, Up: Low level
 3.1 Aborting execution
 
 
@@ -128,7 +127,6 @@ reports:
   "User name $(user) is invalid";
 }
 
-Next: ACL generic example, Previous: Aborting execution, Up: Low level
 3.2 ACL file example
 
 
@@ -184,7 +182,6 @@ body depth_search include_base
 include_basedir => "true";
 }
 
-Next: ACL secret example, Previous: ACL file example, Up: Low level
 3.3 ACL generic example
 
 
@@ -226,7 +223,6 @@ body depth_search include_base
 include_basedir => "true";
 }
 
-Next: Active directory example, Previous: ACL generic example, Up: Low level
 3.4 ACL secret example
 
 body common control
@@ -269,7 +265,6 @@ body depth_search include_base
 include_basedir => "true";
 }
 
-Next: Active list users directory example, Previous: ACL secret example, Up: Low level
 3.5 Active directory example
 
 #########################################################################
@@ -339,7 +334,6 @@ dummy.gotuser::
 
 }
 
-Next: Active directory show users example, Previous: Active directory example, Up: Low level
 3.6 Active list users directory example
 
 # List users from Active Directory through LDAP
@@ -364,7 +358,6 @@ Yr2010::
   "Username: \"$(userlist)\"";
 }
 
-Next: Add lines to a file, Previous: Active list users directory example, Up: Low level
 3.7 Active directory show users example
 
 # List users from Active Directory through LDAP
@@ -393,7 +386,6 @@ gotdata::
   "Did not get user data";
 }
 
-Next: Add users to passwd and group, Previous: Active directory show users example, Up: Low level
 3.8 Add lines to a file
 
 There are numerous approaches to adding lines to a file. Often the order of a configuration file is unimportant, we just need to ensure settings within it. A simple way of adding lines is show below.
@@ -461,7 +453,6 @@ files:
 
 }
 
-Next: Add software packages to the system, Previous: Add lines to a file, Up: Low level
 3.9 Add users to passwd and group
 
 Add lines to the password file, and users to group if they are not already there.
@@ -498,7 +489,6 @@ files:
 
 }
 
-Next: Add variable definitions to a file, Previous: Add users to passwd and group, Up: Low level
 3.10 Add software packages to the system
 
 #
@@ -545,7 +535,6 @@ packages:
 
 Note you can also arrange to hide all the differences between package managers on an OS basis, but since some OSs have multiple managers, this might not be 100 percent correct.
 
-Next: Application baseline, Previous: Add software packages to the system, Up: Low level
 3.11 Add variable definitions to a file e.g. /etc/system
 
 body common control
@@ -622,7 +611,6 @@ files:
     BSD flags
     Change directory for command
 
-Next: Array example, Previous: Add variable definitions to a file, Up: Low level
 3.12 Application baseline
 
 #########################################################################
@@ -684,7 +672,6 @@ windows.!is_correct::
  "Adobe Reader is not correctly deployed - got \"$(value1)\", \"$(value2)\", \"$(value3)\"";
 }
 
-Next: Back references in filenames, Previous: Application baseline, Up: Low level
 3.13 Array example
 
 
@@ -716,7 +703,6 @@ reports:
    "Global $(g.array[1]) and $(localarray[2])";
 }
 
-Next: BSD flags, Previous: Array example, Up: Low level
 3.14 Backreferences in filenames
 
 ######################################################################
@@ -784,7 +770,6 @@ bundle edit_line myedit(parameter)
   
   }
 
-Next: Change directory for command, Previous: Back references in filenames, Up: Low level
 3.15 BSD flags
 
 
@@ -812,7 +797,6 @@ body perms setbsd
 bsdflags => { "+uappnd","+uchg", "+uunlnk", "-nodump" };
 }
 
-Next: Check file or directory permissions, Previous: BSD flags, Up: Low level
 3.16 Change directory for command
 
 
@@ -840,7 +824,6 @@ commands:
        contain => cd("/tmp");
 }
 
-Next: Class match example, Previous: Change directory for command, Up: Low level
 3.17 Check file or directory permissions
 
 bundle agent check_perms
@@ -892,7 +875,6 @@ files:
     Commands example
     Commenting lines in a file
 
-Next: Client-server example, Previous: Check file or directory permissions, Up: Low level
 3.18 Class match example
 
 
@@ -920,7 +902,6 @@ reports:
 
 }
 
-Next: Commands example, Previous: Class match example, Up: Low level
 3.19 Client-server example
 
 ########################################################
@@ -1066,7 +1047,6 @@ access:
 
 
 
-Next: Commenting lines in a file, Previous: Client-server example, Up: Low level
 3.20 Commands example
 
 
@@ -1094,7 +1074,6 @@ commands:
 }
 
 
-Next: Copy files, Previous: Commands example, Up: Low level
 3.21 Commenting lines in a file
 
 ######################################################################
@@ -1311,7 +1290,6 @@ replace_value => "$(match.1)";
 occurrences => "all";
 }
 
-Next: Copy and flatten directory, Previous: Commenting lines in a file, Up: Low level
 3.22 Copy files
 
 files:
@@ -1336,7 +1314,6 @@ files:
 
     Copy and flatten directory 
 
-Next: Copy then edit, Previous: Copy files, Up: Low level
 3.23 Copy and flatten directory
 
 ########################################################
@@ -1478,7 +1455,6 @@ access:
     admit   => { "127.0.0.1" };
 }
 
-Next: Creating files and directories, Previous: Copy and flatten directory, Up: Low level
 3.24 Copy then edit a file convergently
 
 To convergently chain a copy followed by edit, you need a staging file. First you copy to the staging file. Then you edit the final file and insert the staging file into it as part of the editing. This is convergent with respect to both stages of the process.
@@ -1523,7 +1499,6 @@ replace_patterns:
     Deleting lines from a file
     Deleting lines exception
 
-Next: Database creation, Previous: Copy then edit, Up: Low level
 3.25 Creating files and directories
 
 ########################################################
@@ -1575,7 +1550,6 @@ mode  => "0640";
 #########################################################
 
 
-Next: Deleting lines from a file, Previous: Creating files and directories, Up: Low level
 3.26 Database creation
 
 body common control
@@ -1660,7 +1634,6 @@ body contain as_user(x)
 exec_owner => "$(x)";
 }
 
-Next: Deleting lines exception, Previous: Database creation, Up: Low level
 3.27 Deleting lines from a file
 
 
@@ -1740,7 +1713,6 @@ body location end
 before_after => "after";
 }
 
-Next: Editing files, Previous: Deleting lines from a file, Up: Low level
 3.28 Deleting lines exception
 
 ########################################################
@@ -1807,7 +1779,6 @@ bundle edit_line MarkNRoot
 
   }
 
-Next: Editing tabular files, Previous: Deleting lines exception, Up: Low level
 3.29 Editing files
 
 This is a huge topic. See also See Add lines to a file, See Editing tabular files, etc. Editing a file can be complex or simple, depending on needs.
@@ -1850,7 +1821,6 @@ files:
       edit_line => comment_lines_matching("@(testbundle.patterns)","#");
 }
 
-Next: Environment (virtual), Previous: Editing files, Up: Low level
 3.30 Editing tabular files
 
 ######################################################################
@@ -1984,7 +1954,6 @@ extend_fields => "true";
     Method validation
     Mount NFS filesystem
 
-Next: Environment variables, Previous: Editing tabular files, Up: Low level
 3.31 Environments (virtual)
 
 #######################################################
@@ -2055,7 +2024,6 @@ host2::
 
 }
 
-Next: Execresult example, Previous: Environment (virtual), Up: Low level
 3.32 Environment variables
 
 #######################################################
@@ -2101,7 +2069,6 @@ body environment_resources virt_xml
 env_spec_file => "/srv/xen/centos5-libvirt-create.xml";
 }
 
-Next: Inserting lines in a file, Previous: Environment variables, Up: Low level
 3.33 Execresult example
 
 
@@ -2129,7 +2096,6 @@ reports:
 
 }
 
-Next: Get a list of users, Previous: Execresult example, Up: Low level
 3.34 Inserting lines in a file
 
 
@@ -2342,7 +2308,6 @@ body edit_defaults empty
 empty_file_before_editing => "true";
 }
 
-Next: Global classes, Previous: Inserting lines in a file, Up: Low level
 3.35 Get a list of users
 
 #######################################################
@@ -2384,7 +2349,6 @@ reports:
 
 }
 
-Next: Hello world, Previous: Get a list of users, Up: Low level
 3.36 Global classes
 
 
@@ -2435,7 +2399,6 @@ reports:
 
 #################################
 
-Next: LDAP interactions, Previous: Global classes, Up: Low level
 3.37 Hello world
 
 # Hard promises
@@ -2458,7 +2421,6 @@ reports:
    "Hello world!";
 }
 
-Next: Linking files, Previous: Hello world, Up: Low level
 3.38 LDAP interactions
 
 
@@ -2529,7 +2491,6 @@ reports:
 
 }
 
-Next: Listing files-pattern in a directory, Previous: LDAP interactions, Up: Low level
 3.39 Linking files
 
 ######################################################################
@@ -2679,7 +2640,6 @@ body action tell_me
 report_level => "inform";
 }
 
-Next: Locate and transform files, Previous: Linking files, Up: Low level
 3.40 Listing files-pattern in a directory
 
 
@@ -2708,7 +2668,6 @@ reports:
 }
 
 
-Next: Logging, Previous: Listing files-pattern in a directory, Up: Low level
 3.41 Locate and transform files
 
 #######################################################
@@ -2768,7 +2727,6 @@ body depth_search recurse(d)
 depth => "$(d)";
 }
 
-Next: Measurements, Previous: Locate and transform files, Up: Low level
 3.42 Logging
 
 
@@ -2828,7 +2786,6 @@ log_level => "inform";
 }
 
 
-Next: Methods, Previous: Logging, Up: Low level
 3.43 Measurements
 
 #cop measurements,example
@@ -2995,7 +2952,6 @@ select_line_matching => "/.*";
 extraction_regex => "(.*)";
 }
 
-Next: Method validation, Previous: Measurements, Up: Low level
 3.44 Methods
 
 
@@ -3039,7 +2995,6 @@ reports:
   "Finished doing stuff for $(user)";
 }
 
-Next: Mount NFS filesystem, Previous: Methods, Up: Low level
 3.45 Method validation
 
 
@@ -3096,7 +3051,6 @@ reports:
   "User name $(user) is invalid";
 }
 
-Next: Ordering promises, Previous: Method validation, Up: Low level
 3.46 Mount NFS filesystem
 
 
@@ -3144,7 +3098,6 @@ edit_fstab => "true";
 unmount => "true";
 }
 
-Next: Process management, Previous: Mount NFS filesystem, Up: Low level
 3.47 Ordering promises
 
 This counts to five by default. If we change ‘/bin/echo one’ to ‘/bin/echox one’, then the command will fail, causing us to skip five and go to six instead.
@@ -3229,7 +3182,6 @@ persist_time => "0";
     Selecting a region in a file
     Service management (windows)
 
-Next: Read from a TCP socket, Previous: Ordering promises, Up: Low level
 3.48 Process management
 
 body common control
@@ -3509,7 +3461,6 @@ match_range => "1,10"; # or irange("1","10");
 out_of_range_define => { "$(s)_out_of_control" };
 }
 
-Next: Resolver management, Previous: Process management, Up: Low level
 3.49 Read from a TCP socket
 
 
@@ -3546,7 +3497,6 @@ reports:
 }
 
 
-Next: Search and replace text, Previous: Read from a TCP socket, Up: Low level
 3.50 Resolver management
 
 #######################################################
@@ -3658,7 +3608,6 @@ max_file_size => "100000";
 }
 
 
-Next: Selecting a region in a file, Previous: Resolver management, Up: Low level
 3.51 Search and replace text
 
 ######################################################################
@@ -3750,7 +3699,6 @@ select_start => "\[$(x)\]";
 select_end => "\[.*\]";
 }
 
-Next: Service management (windows), Previous: Search and replace text, Up: Low level
 3.52 Selecting a region in a file
 
 
@@ -3821,7 +3769,6 @@ body select_region ToEnd(x)
 select_start => "$(x)";
 }
 
-Next: Set up a PXE boot server, Previous: Selecting a region in a file, Up: Low level
 3.53 Service management (windows)
 
 body common control
@@ -3850,7 +3797,6 @@ services:
        comment => "Disable services that create security issues";
 }
 
-Next: Tidying garbage files, Previous: Service management (windows), Up: Low level
 3.54 Set up a PXE boot server
 
 Use CFEngine to set up a PXE boot server.
@@ -4515,7 +4461,6 @@ body file_select input_files
 #######################################################
 
 
-Next: Software distribution, Previous: Set up a PXE boot server, Up: Low level
 3.55 Tidying garbage files
 
 Emulating the `tidy' feature of CFEngine 2.
@@ -4598,7 +4543,6 @@ file_result => "mtime";
     Software distribution
     Trigger classes
 
-Next: Trigger classes, Previous: Tidying garbage files, Up: Low level
 3.56 Software distribution
 
 #########################################################################
@@ -4819,7 +4763,6 @@ reports::
    "Failed to remove one or more packages";
 }
 
-Next: Unmount NFS filesystem, Previous: Software distribution, Up: Low level
 3.57 Trigger classes
 
 
@@ -4914,7 +4857,6 @@ body classes trigger(x)
 promise_repaired => { "$(x)" };
 }
 
-Next: Web server modules, Previous: Trigger classes, Up: Low level
 3.58 Unmount NFS filesystem
 
 #####################################################################
@@ -4956,7 +4898,6 @@ edit_fstab => "true";
 unmount => "true";
 }
 
-Next: Warn if matching line in file, Previous: Unmount NFS filesystem, Up: Low level
 3.59 Web server modules
 
 The problem of editing the correct modules into the list of standard modules for the Apache web server. This example is based on the standard configuration deployment of SuSE Linux. Simply provide the list of modules you want and another list that you don't want.
@@ -5070,7 +5011,6 @@ field_edits:
     unit_registry_cache.cf
     unit_registry.cf
 
-Next: Windows registry, Previous: Web server modules, Up: Low level
 3.60 Warn if matching line in file
 
 ########################################################
@@ -5123,7 +5063,6 @@ body action WarnOnly
 action_policy => "warn";
 }
 
-Next: unit_registry_cache.cf, Previous: Warn if matching line in file, Up: Low level
 3.61 Windows registry
 
 
@@ -5144,10 +5083,7 @@ reports:
 
    "Value extracted: $(value)";
 
-}
-
-Next: unit_registry.cf, Previous: Windows registry, Up: Low level
-3.62 unit_registry_cache.cf
+}3.62 unit_registry_cache.cf
 
 body common control
 {

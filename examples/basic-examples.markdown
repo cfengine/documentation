@@ -22,11 +22,11 @@ tags: [Examples]
     Mount a filesystem
     Software and patch installation
 
-Next: Create files and directories, Previous: Introduction, Up: Introduction
 1.1 Begin - Get Started
 
 To get started with CFEngine, you can imagine the following template for entering examples. This part of the code is common to all the examples.
 
+```cf3
 body common control
 {
 bundlesequence => { "main" };
@@ -40,8 +40,11 @@ bundle agent main
 
 }
 
+```
+
 Then you enter the cases as below. The general pattern of the syntax is like this (colors in html version: red, CFEngine word; blue, user-defined word):
 
+```cf3
 # The general pattern
 
 bundle component name(parameters)
@@ -59,6 +62,8 @@ what_type:
     attribute_2 => body_or_value2;
 }
 
+```
+
     Create files and directories
     Copy single files
     Copy directory trees
@@ -73,11 +78,11 @@ what_type:
     Mount a filesystem
     Software and patch installation
 
-Next: Copy single files, Previous: Begin - Get started, Up: Introduction
 1.2 Create files and directories
 
 Create files and directories and set permissions.
 
+```cf3
 ########################################################
 
 #
@@ -125,13 +130,13 @@ mode  => "0640";
 }
 
 #########################################################
+```
 
-
-Next: Copy directory trees, Previous: Create files and directories, Up: Introduction
 1.3 Copy single files
 
 Copy single files, locally (local_cp) or from a remote site (secure_cp). The Community Open Promise-Body Library (COPBL; cfengine_stdlib.cf) should be included in the /var/cfengine/inputs/ directory and input as below.
 
+```cf3
 body common control
 {
 bundlesequence  => { "mycopy" };
@@ -150,13 +155,13 @@ files:
 
     copy_from => secure_cp("$(sys.workdir)/bin/file","serverhost");
 }
+```
 
-
-Next: Editing password or group files, Previous: Copy single files, Up: Introduction
 1.4 Copy directory trees
 
 Copy directory trees, locally (local_cp) or from a remote site (secure_cp). (depth_search => recurse("")) defines the number of sublevels to include, ("inf") gets entire tree.
 
+```cf3
 body common control
 {
 bundlesequence  => { "my_recursive_copy" };
@@ -178,14 +183,13 @@ files:
    depth_search => recurse("inf");
 
 }
+```
 
-
-Next: Editing password or group files custom, Previous: Copy directory trees, Up: Introduction
 1.5 Editing password or group files
 
 To change the password of a system, we need to edit a file. A file is a complex object – once open there is a new world of possible promises to make about its contents. CFEngine has bundles of promises that are specially for editing.
 
-
+```cf3
 body common control
 {
 bundlesequence => { "edit_passwd" };
@@ -210,13 +214,13 @@ files:
         append_user_field("root","4","@(main.userset)");
 
 }
+```
 
-Next: Disabling and rotating files, Previous: Editing password or group files, Up: Introduction
 1.6 Editing password or group files custom
 
 In this example the bundles from the Community Open Promise-Body Library are included directly in the policy instead of being input as a separate file.
 
-
+```cf3
 body common control
 {
 bundlesequence => { "addpasswd" };
@@ -290,12 +294,13 @@ insert_lines:
       ifvarclass => "add_$(index)";
 
 }
+```
 
-Next: Hashing for change detection - tripwire, Previous: Editing password or group files custom, Up: Introduction
 1.7 Disabling and rotating files
 
 Use the following simple steps to disable and rotate files. See the Community Open Promise-Body Library if you wish more details on what disable and rotate does.
 
+```cf3
 body common control
 {
 bundlesequence  => { "my_disable" };
@@ -314,13 +319,13 @@ files:
       rename => rotate("4");
 
 }
+```
 
-
-Next: Command or script execution, Previous: Disabling and rotating files, Up: Introduction
 1.8 Hashing for change detection (tripwire)
 
 Change detection is a powerful and easy way to monitor your environment, increase awareness and harden your system against security breaches.
 
+```cf3
 ########################################################
 
 #
@@ -370,13 +375,13 @@ body depth_search recurse(d)
 {
 depth        => "$(d)";
 }
+```
 
-Next: Kill process, Previous: Hashing for change detection - tripwire, Up: Introduction
 1.9 Command or script execution
 
 Execute a command, for instance to start a MySQL service. Note that simple shell commands like rm or mkdir cannot be managed by CFEngine, so none of the protections that CFEngine offers can be applied to the process. Moreover, this starts a new process, adding to the burden on the system. See CFEngine 3 Best Practices http://cfengine.com/manuals/cf3-bestpractice.html for more information on how to best write policies.
 
-
+```cf3
 body common control
 {
 bundlesequence  => { "my_commands" };
@@ -399,11 +404,11 @@ commands:
       contain => setuid("mysql");
 
 }
+```
 
-
-Next: Restart process, Previous: Command or script execution, Up: Introduction
 1.10 Kill process
 
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -420,12 +425,13 @@ processes:
    signals => { "term", "kill" };
 
 }
+```
 
-Next: Check filesystem space, Previous: Kill process, Up: Introduction
 1.11 Restart process
 
 A basic pattern for restarting processes:
 
+```cf3
 body common control
 {
 bundlesequence => { "process_restart" };
@@ -448,9 +454,11 @@ commands:
    "/usr/bin/daemon";
 
 }
+```
 
 This can be made more sophisticated to handle generic lists:
 
+```cf3
 body common control
 {
 bundlesequence => { "process_restart" };
@@ -479,13 +487,13 @@ commands:
        ifvarclass => canonify("start_$(component)");
 
 }
+```
 
 Why? Separating this into two parts gives a high level of control and conistency to CFEngine. There are many options for command execution, like the ability to run commands in a sandbox or as `setuid'. These should not be reproduced in processes.
 
-Next: Mount a filesystem, Previous: Restart process, Up: Introduction
 1.12 Check filesystem space
 
-
+```cf3
 body common control
 
 {
@@ -509,11 +517,11 @@ reports:
     "Freedisk $(free)";
 
 }
+```
 
-Next: Software and patch installation, Previous: Check filesystem space, Up: Introduction
 1.13 Mount a filesystem
 
-
+```cf3
 #
 
 # cfengine 3
@@ -557,12 +565,14 @@ mount_server => "$(server)";
 edit_fstab => "true";
 unmount => "true";
 }
+```
 
-Previous: Mount a filesystem, Up: Introduction
+
 1.14 Software and patch installation
 
 Example for Debian:
 
+```cf3
 # to see list of packages type "apt-cache pkgnames"
 
 # to see list of installed packages type "dpkg --get-selections"
@@ -653,9 +663,11 @@ package_update_command =>  "/usr/bin/apt-get --yes dist-upgrade";
 #package_verify_command => "/bin/rpm -V";
 
 }
+```
 
 Examples MSI for Windows, by name:
 
+```cf3
 #
 
 # MSI package managment using file name
@@ -719,9 +731,11 @@ body package_method msi_fmatch
  package_delete_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /x";
 
  }
+```
 
 Windows MSI by version:
 
+```cf3
 #
 
 # MSI package managment using version criteria
@@ -773,10 +787,11 @@ body package_method msi_vmatch
  package_update_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /i";
  package_delete_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /x";
 }
+```
 
 Examples for solaris are more complex:
 
-
+```cf3
 #
 
 # Package managment
@@ -817,10 +832,11 @@ packages:
      package_method => solaris("$(package_names)", "$(solaris_packages[$(package_names)])", "$(admin_file)");
 
 }
+```
 
 Examples for yum based systems:
 
-
+```cf3
 #
 
 # Package managment
@@ -858,10 +874,11 @@ packages:
      package_method => yum;
 
 }
+```
 
 SuSE Linux's package manager zypper is the most powerful alternative:
 
-
+```cf3
 #
 
 # Package managment
@@ -899,3 +916,4 @@ packages:
      package_method => zypper;
 
 }
+```

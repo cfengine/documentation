@@ -37,7 +37,6 @@ tags: [Examples]
     Set up a web server
     Templating
 
-Next: All hosts the same, Previous: High level, Up: High level
 2.1 Centralized Management
 
 These examples show a simple setup for starting with a central approach to management of servers. Centralization of management is a simple approach suitable for small environments with few requirements. It is useful for clusters where systems are all alike.
@@ -46,7 +45,6 @@ These examples show a simple setup for starting with a central approach to manag
     Variation in hosts
     Updating from a central hub
 
-Next: Variation in hosts, Previous: Centralized Management, Up: High level
 2.2 All hosts the same
 
 This shows the simplest approach in which all hosts are the same. It is too simple for most environments, but it serves as a starting point. Compare it to the next section that includes variation.
@@ -134,7 +132,6 @@ access:
      admit   => { "127.0.0.1", "10.20.30" };
 }
 
-Next: Updating from a central hub, Previous: All hosts the same, Up: High level
 2.3 Variation in hosts
 
 body common control
@@ -236,7 +233,6 @@ access:
      admit   => { "127.0.0.1", "10.20.30" };
 }
 
-Next: Change detection, Previous: Variation in hosts, Up: High level
 2.4 Updating from a central hub
 
 The configuration bundled with the CFEngine source code contains an example of centralized updating of policy that covers more subtleties than this example, and handles fault tolerance. Here is the main idea behind it. For simplicity, we assume that all hosts are on network 10.20.30.* and that the central policy server/hub is 10.20.30.123.
@@ -291,7 +287,6 @@ access:
 }
 
 
-Next: Garbage collection, Previous: Updating from a central hub, Up: High level
 2.5 Change detection
 
 body common control
@@ -317,7 +312,6 @@ files:
        action       => background;
 }
 
-Next: Distribute root passwords, Previous: Change detection, Up: High level
 2.6 Garbage collection
 
 body common control
@@ -395,14 +389,7 @@ files:
 
     comment => "Prevent the zypper log from choking the disk",
     rename => rotate("0"),
-    action => if_elapsed("10000");
-
-}
-
-
-Next: Distribute ssh keys, Previous: Garbage collection, Up: High level
-2.7 Distribute root passwords
-
+   
 ######################################################################
 #
 
@@ -513,7 +500,6 @@ access:
 
 }
 
-Next: Laptop support configuration, Previous: Distribute root passwords, Up: High level
 2.8 Distribute ssh keys
 
 # Assume that we have collected all users' public keys into a single source area
@@ -608,7 +594,6 @@ insert_lines:
          insert_type => "file";
 }
 
-Next: Find MAC address, Previous: Distribute ssh keys, Up: High level
 2.9 Laptop support configuration
 
 Laptops do not need a lot of confguration support. IP addresses are set by DHCP and conditions are changeable. But you want to set your DNS search domains to familiar settings in spite of local DHCP configuration, and another useful trick is to keep a regular backup of disk changes on the local disk. This won't help against disk destruction, but it is a huge advantage when your user accidentally deletes files while travelling or offline.
@@ -754,7 +739,6 @@ files:
 
 }
 
-Next: Log rotation, Previous: Laptop support configuration, Up: High level
 2.10 Find the MAC address
 
 Finding the ethernet address can be hard, but on Linux it is straightforward.
@@ -817,7 +801,6 @@ ok::
 
 }
 
-Next: Manage a system file, Previous: Find MAC address, Up: High level
 2.11 Log rotation
 
 body common control
@@ -848,7 +831,6 @@ body rename rotate(level)
 rotate => "$(level)";
 }
 
-Next: Simple template, Previous: Log rotation, Up: High level
 2.12 Manage a system file
 
     Simple template
@@ -856,7 +838,6 @@ Next: Simple template, Previous: Log rotation, Up: High level
     Macro template
     Custom editing
 
-Next: Simple versioned template, Previous: Manage a system file, Up: High level
 2.13 Simple template
 
 bundle agent hand_edited_config_file
@@ -903,7 +884,6 @@ files:
         action => if_elapsed("60");
 }
 
-Next: Macro template, Previous: Simple template, Up: High level
 2.14 Simple versioned template
 
 The simplest approach to managing a file is to maintain a master copy by hand, keeping it in a version controlled repository (e.g. svn), and installing this version on the end machine.
@@ -936,7 +916,6 @@ commands:
 
 }
 
-Next: Custom editing, Previous: Simple versioned template, Up: High level
 2.15 Macro template
 
 The next simplest approach to file management is to add variables to the template that will be expanded into local values at the end system, e.g. using variables like ‘$(sys.host)’ for the name of the host within the body of the versioned template.
@@ -993,7 +972,6 @@ The macro template file may contain variables, as below, that get expanded by CF
      
      $(definitions.more_hosts)
 
-Next: Manage a system process, Previous: Macro template, Up: High level
 2.16 Custom editing
 
 If you do not control the starting state of the file, because it is distributed by an operating system vendor for instance, then editing the final state is the best approach. That way, you will get changes that are made by the vendor, and will ensure your own modifications are kept even when updates arrive.
@@ -1053,14 +1031,12 @@ files:
      edit_line => set_variable_values("testsetvar.v");
 }
 
-Next: Ensure running, Previous: Custom editing, Up: High level
 2.17 Manage a system process
 
     Ensure running
     Ensure not running
     Prune processes
 
-Next: Ensure not running, Previous: Manage a system process, Up: High level
 2.18 Ensure running
 
 The simplest example might look like this:
@@ -1106,7 +1082,6 @@ commands:
 
 }
 
-Next: Prune processes, Previous: Ensure running, Up: High level
 2.19 Ensure not running
 
 bundle agent restart_process
@@ -1124,7 +1099,6 @@ processes:
 ;
 }
 
-Next: Manage users, Previous: Ensure not running, Up: High level
 2.20 Prune processes
 
 This example kills processes owned by a particular user that have exceeded 100000 bytes of resident memory.
@@ -1159,7 +1133,6 @@ rsize => irange("100000","900000");
 process_result => "rsize.process_owner";
 }
 
-Next: Add users, Previous: Prune processes, Up: High level
 2.21 Manage users
 
 There are many approaches to managing users. You can edit system files like /etc/passwd directly, or you can use commands on some systems like ‘useradd’ or ‘adduser’. In all cases it is desirable to make this a data-driven process.
@@ -1167,7 +1140,6 @@ There are many approaches to managing users. You can edit system files like /etc
     Add users
     Remove users
 
-Next: Remove users, Previous: Manage users, Up: High level
 2.22 Add users
 
 A simple approach which adds new users to the password file, and to a group called ‘users’ in the group file. Is shown below. This example does not edit the shadow file. A simple pattern that can be modified for use is shown below.
@@ -1261,10 +1233,8 @@ files:
       perms => mog("755","$(users)","users");
 }
 
-Next: Postfix mail configuration, Previous: Add users, Up: High level
 2.23 Remove users
 
-Next: Set up HPC clusters, Previous: Remove users, Up: High level
 2.24 Postfix mail configuration
 
 #######################################################
@@ -1360,7 +1330,6 @@ bundle edit_line AppendIfNSL(parameter)
     "$(parameter)"; # This is default
   }
 
-Next: Set up name resolution, Previous: Postfix mail configuration, Up: High level
 2.25 Set up HPC clusters
 
 HPC cluster machines are usually all identical, so the CFEngine configuration is very simple. HPC clients value CPU and memory resources, so we can shut down unnecessary services to save CPU. We can also change the scheduling rate of CFEngine to run less frequently, and save a little:
@@ -1442,7 +1411,6 @@ bundle agent disable_xinetd(name)
    
 }
 
-Next: Set up sudo, Previous: Set up HPC clusters, Up: High level
 2.26 Set up name resolution
 
 There are many ways to do name resolution setup1 We write a reusable bundle using the editing features.
@@ -1578,7 +1546,6 @@ insert_lines:
 
 }
 
-Next: Set up a web server, Previous: Set up name resolution, Up: High level
 2.27 Set up sudo
 
 Setting up sudo is straightforward, and is best managed by copying trusted files from a repository.
@@ -1600,10 +1567,7 @@ files:
        perms => mog("440","root","root"),
    copy_from => secure_cp("$(masterfiles)/sudoers","$(policy_server)");
 
-}
-
-Next: Templating, Previous: Set up sudo, Up: High level
-2.28 Set up a web server
+}2.28 Set up a web server
 
 Adapt this template to your operating system by adding multiple classes. Each web server runs something like the present module, which is entered into the bundlesequence like this:
 
