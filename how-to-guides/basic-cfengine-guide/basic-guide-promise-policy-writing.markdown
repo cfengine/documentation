@@ -1,6 +1,6 @@
 ---
 layout: default
-title: [Write Promises and Policy]
+title: Write Promises and Policy
 published: true
 sorting: 1
 ---
