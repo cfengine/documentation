@@ -7,22 +7,22 @@ tags: [Examples]
 ---
 
 
-    [Basic Example][CFEngine Basic Examples#Basic Example]
-    [Create files and directories][CFEngine Basic Examples#Create files and directories]
-    [Copy single files][CFEngine Basic Examples#Copy single files]
-    [Copy directory trees][CFEngine Basic Examples#Copy directory trees]
-    [Editing password or group files][CFEngine Basic Examples#Editing password or group files]
-    [Editing password or group files custom][CFEngine Basic Examples#Editing password or group files custom]
-    [Disabling and rotating files][CFEngine Basic Examples#Disabling and rotating files]
-    [Hashing for change detection - tripwire][CFEngine Basic Examples#Hashing for change detection - tripwire]
-    [Command or script execution][CFEngine Basic Examples#Command or script execution]
-    [Kill process][CFEngine Basic Examples#Kill process]
-    [Restart process][CFEngine Basic Examples#Restart process]
-    [Check filesystem space][CFEngine Basic Examples#Check filesystem space]
-    [Mount a filesystem][CFEngine Basic Examples#Mount a filesystem]
-    [Software and patch installation][CFEngine Basic Examples#Software and patch installation]
+    [Basic Example][CFEngine Basic Examples#basic-example]
+    [Create files and directories][CFEngine Basic Examples#create-files-and-directories]
+    [Copy single files][CFEngine Basic Examples#copy-single-files]
+    [Copy directory trees][CFEngine Basic Examples#copy-directory-trees]
+    [Editing password or group files][CFEngine Basic Examples#editing-password-or-group-files]
+    [Editing password or group files custom][CFEngine Basic Examples#editing-password-or-group-files-custom]
+    [Disabling and rotating files][CFEngine Basic Examples#disabling-and-rotating-files]
+    [Hashing for change detection - tripwire][CFEngine Basic Examples#hashing-for-change-detection-tripwire]
+    [Command or script execution][CFEngine Basic Examples#command-or-script-execution]
+    [Kill process][CFEngine Basic Examples#kill-process]
+    [Restart process][CFEngine Basic Examples#restart-process]
+    [Check filesystem space][CFEngine Basic Examples#check-filesystem-space]
+    [Mount a filesystem][CFEngine Basic Examples#mount-a-filesystem]
+    [Software and patch installation][CFEngine Basic Examples#software-and-patch-installation]
 
-1.1 ## Basic Example ##
+## Basic Example ##
 
 To get started with CFEngine, you can imagine the following template for entering examples. This part of the code is common to all the examples.
 
@@ -64,7 +64,7 @@ what_type:
 
 ```
 
-1.2 ## Create files and directories
+## Create files and directories ##
 
 Create files and directories and set permissions.
 
@@ -118,7 +118,7 @@ mode  => "0640";
 #########################################################
 ```
 
-1.3 ## Copy single files
+## Copy single files ##
 
 Copy single files, locally (local_cp) or from a remote site (secure_cp). The Community Open Promise-Body Library (COPBL; cfengine_stdlib.cf) should be included in the /var/cfengine/inputs/ directory and input as below.
 
@@ -143,7 +143,7 @@ files:
 }
 ```
 
-1.4 ## Copy directory trees
+## Copy directory trees ##
 
 Copy directory trees, locally (local_cp) or from a remote site (secure_cp). (depth_search => recurse("")) defines the number of sublevels to include, ("inf") gets entire tree.
 
@@ -171,7 +171,7 @@ files:
 }
 ```
 
-1.5 ## Editing password or group files
+## Editing password or group files ##
 
 To change the password of a system, we need to edit a file. A file is a complex object – once open there is a new world of possible promises to make about its contents. CFEngine has bundles of promises that are specially for editing.
 
@@ -202,7 +202,7 @@ files:
 }
 ```
 
-1.6 ## Editing password or group files custom
+## Editing password or group files custom ##
 
 In this example the bundles from the Community Open Promise-Body Library are included directly in the policy instead of being input as a separate file.
 
@@ -282,7 +282,7 @@ insert_lines:
 }
 ```
 
-1.7 ## Disabling and rotating files
+## Disabling and rotating files ##
 
 Use the following simple steps to disable and rotate files. See the Community Open Promise-Body Library if you wish more details on what disable and rotate does.
 
@@ -307,7 +307,7 @@ files:
 }
 ```
 
-1.8 ## Hashing for change detection (tripwire)
+## Hashing for change detection (tripwire) ##
 
 Change detection is a powerful and easy way to monitor your environment, increase awareness and harden your system against security breaches.
 
@@ -363,7 +363,7 @@ depth        => "$(d)";
 }
 ```
 
-1.9 ## Command or script execution
+## Command or script execution ##
 
 Execute a command, for instance to start a MySQL service. Note that simple shell commands like rm or mkdir cannot be managed by CFEngine, so none of the protections that CFEngine offers can be applied to the process. Moreover, this starts a new process, adding to the burden on the system. See CFEngine 3 Best Practices http://cfengine.com/manuals/cf3-bestpractice.html for more information on how to best write policies.
 
@@ -392,7 +392,7 @@ commands:
 }
 ```
 
-1.10 ## Kill process
+## Kill process ##
 
 ```cf3
 body common control
@@ -413,7 +413,7 @@ processes:
 }
 ```
 
-1.11 ## Restart process
+## Restart process ##
 
 A basic pattern for restarting processes:
 
@@ -477,7 +477,7 @@ commands:
 
 Why? Separating this into two parts gives a high level of control and conistency to CFEngine. There are many options for command execution, like the ability to run commands in a sandbox or as `setuid'. These should not be reproduced in processes.
 
-1.12 ## Check filesystem space
+## Check filesystem space ##
 
 ```cf3
 body common control
@@ -505,7 +505,7 @@ reports:
 }
 ```
 
-1.13 ## Mount a filesystem
+## Mount a filesystem ##
 
 ```cf3
 #
@@ -554,7 +554,7 @@ unmount => "true";
 ```
 
 
-1.14 ## Software and patch installation
+## Software and patch installation ##
 
 Example for Debian:
 
