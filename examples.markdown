@@ -7,14 +7,14 @@ tags: [Examples]
 ---
 
 
-* [Basic Examples][Basic Examples] includes:
+* [Basic Examples][CFEngine Basic Examples] includes:
 
 	* Files and Directories
 	* Passwords
 	* Processes
 	* Installing software
 
-* [Intermediate Examples][Intermediate Examples] includes:
+* [Intermediate Examples][CFEngine Intermediate Examples] includes:
 
 	* System Adminstration
 	* Access and Security
@@ -24,7 +24,7 @@ tags: [Examples]
 	* Users
 	* Templating
 
-* [Advanced Examples][Intermediate Examples] includes:
+* [Advanced Examples][CFEngine Intermediate Examples] includes:
 	* ACL
 	* Editing Files
 	* Software Packages
