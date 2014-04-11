@@ -7,20 +7,20 @@ tags: [Examples]
 ---
 
 
-    [Basic Example](CFEngine Basic Examples#basic-example)
-    [Create files and directories](CFEngine Basic Examples#create-files-and-directories)
-    [Copy single files](CFEngine Basic Examples#copy-single-files)
-    [Copy directory trees](CFEngine Basic Examples#copy-directory-trees)
-    [Editing password or group files](CFEngine Basic Examples#editing-password-or-group-files)
-    [Editing password or group files custom](CFEngine Basic Examples#editing-password-or-group-files-custom)
-    [Disabling and rotating files](CFEngine Basic Examples#disabling-and-rotating-files)
-    [Hashing for change detection - tripwire](CFEngine Basic Examples#hashing-for-change-detection-tripwire)
-    [Command or script execution](CFEngine Basic Examples#command-or-script-execution)
-    [Kill process](CFEngine Basic Examples#kill-process)
-    [Restart process](CFEngine Basic Examples#restart-process)
-    [Check filesystem space](CFEngine Basic Examples#check-filesystem-space)
-    [Mount a filesystem](CFEngine Basic Examples#mount-a-filesystem)
-    [Software and patch installation](CFEngine Basic Examples#software-and-patch-installation)
+* [Basic Example][CFEngine Basic Examples#Basic Example]
+* [Create files and directories][CFEngine Basic Examples#Create files and directories]
+* [Copy single files][CFEngine Basic Examples#Copy single files]
+* [Copy directory trees][CFEngine Basic Examples#Copy directory trees]
+* [Editing password or group files][CFEngine Basic Examples#Editing password or group files]
+* [Editing password or group files custom][CFEngine Basic Examples#Editing password or group files custom]
+* [Disabling and rotating files][CFEngine Basic Examples#Disabling and rotating files]
+* [Hashing for change detection - tripwire][CFEngine Basic Examples#Hashing for change detection - tripwire]
+* [Command or script execution][CFEngine Basic Examples#Command or script execution]
+* [Kill process][CFEngine Basic Examples#Kill process]
+* [Restart process][CFEngine Basic Examples#Restart process]
+* [Check filesystem space][CFEngine Basic Examples#Check filesystem space]
+* [Mount a filesystem][CFEngine Basic Examples#Mount a filesystem]
+* [Software and patch installation][CFEngine Basic Examples#Software and patch installation]
 
 ## Basic Example ##
 
