@@ -5,5 +5,5 @@ published: true
 sorting: 1
 ---
 
-Step 1: [Install, Bootstrap and Configure CFEngine][Install, Bootstrap and Configure CFEngine]
-Step 2: [Write Promises and Policy][Write Promises and Policy]
+1. First Step: [Install, Bootstrap and Configure CFEngine][Install, Bootstrap and Configure CFEngine]
+2. Second Step: [Write Promises and Policy][Write Promises and Policy]
