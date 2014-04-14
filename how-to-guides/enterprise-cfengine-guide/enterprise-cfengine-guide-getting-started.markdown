@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Getting Started With CFEngine Enterprise
-categories: [How to Guides,CFEngine Enterprise Guide, Getting Started]
 published: true
 sorting: 10
-alias: how-to-guides-cfengine-enterprise-getting-started.html
 ---
 
 * [Installation](#installation)
