@@ -506,8 +506,10 @@ files:
 }
 ```
 
-```cf3
+
 ## Add software packages to the system
+
+```cf3
 
 #
 # Package managment
@@ -554,8 +556,10 @@ packages:
 
 Note you can also arrange to hide all the differences between package managers on an OS basis, but since some OSs have multiple managers, this might not be 100 percent correct.
 
-```cf3
+
 ## Add variable definitions to a file e.g. /etc/system
+
+```cf3
 
 body common control
 {
@@ -729,8 +733,10 @@ reports:
 }
 ```
 
-```cf3
+
 ## Backreferences in filenames
+
+```cf3
 
 ######################################################################
 
@@ -906,8 +912,10 @@ files:
     Commands example
     Commenting lines in a file
 
-```cf3
+
 ## Class match example
+
+```cf3
 
 body common control
 
@@ -934,8 +942,10 @@ reports:
 }
 ```
 
-```cf3
+
 ## Client-server example
+
+```cf3
 
 ########################################################
 
@@ -1542,8 +1552,10 @@ replace_patterns:
     Deleting lines from a file
     Deleting lines exception
 
-```cf3
+
 ## Creating files and directories
+
+```cf3
 
 ########################################################
 
