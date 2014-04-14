@@ -1,9 +1,7 @@
 ---
 layout: default
 title: every
-categories: [Reference, Functions, every]
 published: true
-alias: reference-functions-every.html
 tags: [reference, data functions, functions, every]
 ---
 

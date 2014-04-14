@@ -1,9 +1,7 @@
 ---
 layout: default
 title: maplist
-categories: [Reference, Functions, maplist]
 published: true
-alias: reference-functions-maplist.html
 tags: [reference, data functions, functions, maplist]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: strcmp
-categories: [Reference, Functions, strcmp]
 published: true
-alias: reference-functions-strcmp.html
 tags: [reference, data functions, functions, strcmp]
 ---
 

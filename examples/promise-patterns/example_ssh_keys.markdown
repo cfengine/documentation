@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Distribute ssh keys
-categories: [Examples, Promise Patterns, Distribute ssh keys]
 published: true
-alias: examples-policy-distribute-ssh-keys.html
 tags: [Examples, Policy, ssh, distribution]
 reviewed: 2013-06-08
 reviewed-by: atsaloli

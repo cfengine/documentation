@@ -1,9 +1,7 @@
 ---
 layout: default
 title: ldaplist
-categories: [Reference, Functions, ldaplist]
 published: true
-alias: reference-functions-ldaplist.html
 tags: [reference, communication functions, functions, ldap]
 ---
 

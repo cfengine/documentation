@@ -1,9 +1,7 @@
 ---
 layout: default
 title: rrange
-categories: [Reference, Functions, rrange]
 published: true
-alias: reference-functions-rrange.html
 tags: [reference, data functions, functions, rrange]
 ---
 

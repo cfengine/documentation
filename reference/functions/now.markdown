@@ -1,9 +1,7 @@
 ---
 layout: default
 title: now
-categories: [Reference, Functions, now]
 published: true
-alias: reference-functions-now.html
 tags: [reference, system functions, functions, now]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: registryvalue
-categories: [Reference, Functions, registryvalue]
 published: true
-alias: reference-functions-registryvalue.html
 tags: [reference, system functions, functions, registryvalue]
 ---
 

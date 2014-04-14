@@ -1,28 +1,39 @@
 ---
 layout: default
 title: peerleaders
-categories: [Reference, Functions, peerleaders]
 published: true
-alias: reference-functions-peerleaders.html
 tags: [reference, communication functions, functions, peerleaders]
 ---
 
 [%CFEngine_function_prototype(filename, regex, groupsize)%]
 
-**Description:** Returns a list of peer leaders from the named partitioning.
+**Description:** Returns a list of partition peer leaders from a file of host names.
 
-Peers are defined according to a list of hosts, provided in `filename`. This 
-file should contain a list (one per line), possibly with comments matching the
-[unanchored][unanchored] regular expression `regex`, of fully qualified host 
-names. CFEngine breaks up this list into non-overlapping groups of up to 
-`groupsize`, each of which has a leader that is the first host in the group.
+Given a list of host names in `filename`, one per line, and excluding
+comment lines starting with the [unanchored][unanchored] regular
+expression `regex`, CFEngine partitions the host list into groups of
+up to `groupsize`. Each group's peer leader is the first host in the
+group.
 
-The current host does not need to belong to this file.
+So given `groupsize` 2 and the file
+
+```
+a
+b
+c
+# this is a comment d
+e
+```
+
+The peer leaders will be `a` and `c`.
+
+The current host name does not need to belong to this file.  If it's
+found (fully qualified or unqualified), the string `localhost` is used
+instead of the host name.
 
 [%CFEngine_function_attributes(filename, regex, groupsize)%]
 
-An arbitrary limit of 64 is set for `groupsize` to avoid nonsensical 
-promises.
+`groupsize` must be between 2 and 64 to avoid nonsensical promises.
 
 **Example:**
 

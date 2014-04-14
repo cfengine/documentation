@@ -1,9 +1,7 @@
 ---
 layout: default
 title: some
-categories: [Reference, Functions, some]
 published: true
-alias: reference-functions-some.html
 tags: [reference, data functions, functions, some]
 ---
 

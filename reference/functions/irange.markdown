@@ -1,9 +1,7 @@
 ---
 layout: default
 title: irange
-categories: [Reference, Functions, irange]
 published: true
-alias: reference-functions-irange.html
 tags: [reference, data functions, functions, irange]
 ---
 

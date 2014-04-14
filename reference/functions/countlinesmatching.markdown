@@ -1,9 +1,7 @@
 ---
 layout: default
 title: countlinesmatching
-categories: [Reference, Functions, countlinesmatching]
 published: true
-alias: reference-functions-countlinesmatching.html
 tags: [reference, io functions, functions, countlinesmatching]
 ---
 

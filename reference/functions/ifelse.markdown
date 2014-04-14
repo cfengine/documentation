@@ -1,9 +1,7 @@
 ---
 layout: default
 title: ifelse
-categories: [Reference, Functions, ifelse]
 published: true
-alias: reference-functions-ifelse.html
 tags: [reference, data functions, functions, ifelse]
 ---
 

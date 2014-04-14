@@ -1,9 +1,7 @@
 ---
 layout: default
 title: cf-promises
-categories: [Reference, Components, cf-promises]
 published: true
-alias: reference-components-cfpromises.html
 tags: [Components, cf-promises]
 ---
 

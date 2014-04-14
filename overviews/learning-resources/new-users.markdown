@@ -2,9 +2,7 @@
 layout: default
 title: Up and Running
 sorting: 13
-categories: [Examples, Tutorials]
 published: true
-alias: new-users.html
 tags: [Examples, Tutorials, Community]
 ---
 
@@ -1233,29 +1231,6 @@ The percentage of currently-kept promises gives us the percentage of promises th
 
 ***
 
-## CFEngine official resources
-
-
-### Special variables
-
-
-* $(sys): https://cfengine.com/docs/3.5/reference-special-variables-context-sys.html
-* $(this): https://cfengine.com/docs/3.5/reference-special-variables-context-this.html
-
-
-### Classes, functions, and files
-
-* Hard and soft classes: https://cfengine.com/docs/3.5/reference-classes.html
-* Date and time classes: https://cfengine.com/archive/manuals/st-schedule
-* Functions: https://cfengine.com/docs/3.5/tags/functions.html
-* Files: https://cfengine.com/docs/3.5/reference-promise-types-files.html
-
-
-### Community
-
-* CFEngine Google Group: https://groups.google.com/forum/#!forum/help-cfengine
-
-***
 
 License
 --------

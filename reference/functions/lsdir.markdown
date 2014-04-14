@@ -1,9 +1,7 @@
 ---
 layout: default
 title: lsdir
-categories: [Reference, Functions, lsdir]
 published: true
-alias: reference-functions-lsdir.html
 tags: [reference, files functions, functions, lsdir]
 ---
 

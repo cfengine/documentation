@@ -1,9 +1,7 @@
 ---
 layout: default
 title: string_downcase
-categories: [Reference, Functions, string_downcase]
 published: true
-alias: reference-functions-string_downcase.html
 tags: [reference, text functions, functions, text, case, downcase, string_downcase]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: "on"
-categories: [Reference, Functions, "on"]
 published: true
-alias: reference-functions-on.html
 tags: [reference, data functions, functions, "on"]
 ---
 

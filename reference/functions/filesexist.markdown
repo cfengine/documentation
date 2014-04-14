@@ -1,9 +1,7 @@
 ---
 layout: default
 title: filesexist
-categories: [Reference, Functions, filesexist]
 published: true
-alias: reference-functions-filesexist.html
 tags: [reference, files functions, functions, filesexist]
 ---
 

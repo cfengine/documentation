@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Updating from a central policy server
-categories: [Examples, Promise Patterns, Updating from a central policy server]
 published: true
-alias: examples-policy-updating-from-a-central-policy-server.html
 tags: [Examples, Policy, updating, policy server]
 reviewed: 2013-06-09
 reviewed-by: atsaloli

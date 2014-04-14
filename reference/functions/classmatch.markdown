@@ -1,9 +1,7 @@
 ---
 layout: default
 title: classmatch
-categories: [Reference, Functions, classmatch]
 published: true
-alias: reference-functions-classmatch.html
 tags: [reference, utility functions, functions, classmatch]
 ---
 

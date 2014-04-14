@@ -1,10 +1,8 @@
 ---
 layout: default
 title:  Managing Users and Roles
-categories: [Examples, Enterprise API Examples, Managing Users and Roles]
 published: true
 sorting: 40
-alias: examples-enterprise-api-managing-users-and-roles.html
 tags: [examples, enterprise, rest, api, reporting, users, roles]
 ---
 

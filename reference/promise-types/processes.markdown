@@ -1,9 +1,7 @@
 ---
 layout: default
 title: processes
-categories: [Reference, Promise Types, processes]
 published: true
-alias: reference-promise-types-processes.html
 tags: [reference, bundle agent, promise types, processes, processes promises, promise types]
 ---
 

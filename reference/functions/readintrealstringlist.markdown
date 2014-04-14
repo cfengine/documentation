@@ -1,9 +1,7 @@
 ---
 layout: default
 title: read[int|real|string]list
-categories: [Reference, Functions, read*list]
 published: true
-alias: reference-functions-readintrealstringlist.html
 tags: [reference, io functions, functions, readintlist, readreallist, readstringlist]
 ---
 

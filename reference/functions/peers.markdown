@@ -1,33 +1,39 @@
 ---
 layout: default
 title: peers
-categories: [Reference, Functions, peers]
 published: true
-alias: reference-functions-peers.html
 tags: [reference, communication functions, functions, peers]
 ---
 
 [%CFEngine_function_prototype(filename, regex, groupsize)%]
 
-**Description:** Returns a list of peers from the partition to which
-the current host belongs, excluding the current host.
+**Description:** Returns the current host's partition peers (excluding it).
 
-This function returns a list of hostnames that may be considered peers
-of the current host. Peers are defined according to a list of hosts,
-provided in `filename`. This file should contain a list (one per line), 
-possible with comments matching the [unanchored][unanchored] regular 
-expression `regex`, of fully qualified host names. 
-CFEngine breaks this list up into non-overlapping groups of up to `groupsize`, 
-each of which has a leader that is the first host in the group.
+So given `groupsize` 3 and the file
 
-The current host should belong to this file if it is expected to interact with 
-the others. The function returns nothing if the current host does not belong 
-to the list.
+```
+a
+b
+c
+# this is a comment d
+e
+```
+
+The peers of host `b` will be `a` and `c`.
+
+Given a list of host names in `filename`, one per line, and excluding
+comment lines starting with the [unanchored][unanchored] regular
+expression `regex`, CFEngine partitions the host list into groups of
+up to `groupsize`. Each group's peer leader is the first host in the
+group.
+
+The current host (unqualified or fully qualified) should belong to
+this file if it is expected to interact with the others. The function
+returns an empty list otherwise.
 
 [%CFEngine_function_attributes(filename, regex, groupsize)%]
 
-An arbitrary limit of 64 is set for `groupsize` to avoid nonsensical 
-promises.
+`groupsize` must be between 2 and 64 to avoid nonsensical promises.
 
 **Example:**
 

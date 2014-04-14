@@ -1,9 +1,7 @@
 ---
 layout: default
 title: classes
-categories: [Reference, Promise Types, classes]
 published: true
-alias: reference-promise-types-classes.html
 tags: [bundle common, classes, promises]
 ---
 

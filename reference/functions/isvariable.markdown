@@ -1,9 +1,7 @@
 ---
 layout: default
 title: isvariable
-categories: [Reference, Functions, isvariable]
 published: true
-alias: reference-functions-isvariable.html
 tags: [reference, utility functions, functions, isvariable]
 ---
 

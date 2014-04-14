@@ -1,9 +1,7 @@
 ---
 layout: default
 title: hashmatch
-categories: [Reference, Functions, hashmatch]
 published: true
-alias: reference-functions-hashmatch.html
 tags: [reference, data functions, functions, hashmatch]
 ---
 

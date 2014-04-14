@@ -1,9 +1,7 @@
 ---
 layout: default
 title: methods
-categories: [Reference, Promise Types,methods]
 published: true
-alias: reference-promise-types-methods.html
 tags: [reference, bundle agent, methods, promises, promise types]
 ---
 

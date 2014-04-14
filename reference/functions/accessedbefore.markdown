@@ -1,9 +1,7 @@
 ---
 layout: default
 title: accessedbefore
-categories: [Reference, Functions, accessedbefore]
 published: true
-alias: reference-functions-accessedbefore.html
 tags: [reference, files functions, functions, accessedbefore]
 ---
 

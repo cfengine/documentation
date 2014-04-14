@@ -1,9 +1,7 @@
 ---
 layout: default
 title: filestat
-categories: [Reference, Functions, filestat]
 published: true
-alias: reference-functions-filestat.html
 tags: [reference, files functions, functions, filestat]
 ---
 

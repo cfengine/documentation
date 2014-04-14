@@ -1,9 +1,7 @@
 ---
 layout: default
 title: hostrange
-categories: [Reference, Functions, hostrange]
 published: true
-alias: reference-functions-hostrange.html
 tags: [reference, communication functions, functions, hostrange]
 ---
 

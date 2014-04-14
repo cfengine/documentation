@@ -1,9 +1,7 @@
 ---
 layout: default
 title: replace_patterns
-categories: [Reference, Promise Types, files, edit_line, replace_patterns]
 published: true
-alias: reference-promise-types-files-edit_line-replace_patterns.html
 tags: [reference, bundle agent, bundle edit_line, files promises, file editing]
 ---
 

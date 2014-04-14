@@ -1,9 +1,7 @@
 ---
 layout: default
 title: escape
-categories: [Reference, Functions, escape]
 published: true
-alias: reference-functions-escape.html
 tags: [reference, data functions, functions, escape]
 ---
 

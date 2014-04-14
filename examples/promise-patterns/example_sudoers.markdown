@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Set up sudo
-categories: [Examples, Promise Patterns, Set up sudo]
 published: true
-alias: examples-policy-setup-sudo.html
 tags: [Examples, Policy, sudo, file editing]
 reviewed: 2013-06-08
 reviewed-by: atsaloli

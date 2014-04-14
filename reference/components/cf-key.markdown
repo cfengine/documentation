@@ -1,9 +1,7 @@
 ---
 layout: default
 title: cf-key
-categories: [Reference, Components, cf-key]
 published: true
-alias: reference-components-cfkey.html
 tags: [Components, cf-key]
 ---
 

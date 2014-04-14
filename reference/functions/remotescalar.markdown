@@ -1,9 +1,7 @@
 ---
 layout: default
 title: remotescalar
-categories: [Reference, Functions, remotescalar]
 published: true
-alias: reference-functions-remotescalar.html
 tags: [reference, communication functions, functions, remotescalar]
 ---
 
@@ -11,20 +9,19 @@ tags: [reference, communication functions, functions, remotescalar]
 
 [%CFEngine_function_prototype(id, server, encrypt)%]
 
-**Description:** Returns a scalar value from a remote CFEngine server.
+**Description:** Returns a scalar value identified by `id` from a remote CFEngine
+`server`. Communication is encrytped depending on `encrypt`. 
 
-This function asks for an identifier. It is up to the server to interpret what 
-this means and to return a value of its choosing. If the identifier matches a 
-persistent scalar variable then this will be returned preferentially. If no 
-such variable is found, then the server will look for a literal string in a 
-server bundle with a handle that matches the requested object.
+If the identifier matches a persistent scalar variable then this will be returned
+preferentially. If no such variable is found, then the server will look for a
+literal string in a server bundle with a handle that matches the requested object.
 
 The remote system's `cf-serverd` must accept the query for the requested
 variable from the host that is requesting it. Access must be granted by making 
 an `access` promise with `resource_type` set to `literal`.
 
-CFEngine caches the value of this variable, so that, if the network is
-unavailable, the last known value will be used. Hence use of this
+CFEngine stores the value of this function on the calling host, so that, if the
+network is unavailable, the last known value will be used. Hence use of this
 function is fault tolerant. Care should be taken in attempting to access
 remote variables that are not available, as the repeated connections
 needed to resolve the absence of a value can lead to undesirable
@@ -58,3 +55,5 @@ successful key exchange between systems, (e.g. using either a remote
 copy or `cf-runagent` connection). It contains no mechanism for trust
 establishment and will fail if there is no trust relationship
 established in advance.
+
+**See also:** `hubknowledge()`, `remoteclassesmatching()`, `hostswithclass()`

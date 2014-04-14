@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Command-Line Reports
-categories: [Manuals, Reports, Command-Line Reports]
 published: true
 sorting: 60
-alias: manuals-reports-command-line.html
 ---
 
 #### Command-line reporting is available to Enterprise and Community users.

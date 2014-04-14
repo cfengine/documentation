@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Advanced Walkthrough
-categories: [Manuals, Design Center, Sketches Community, Advanced Walkthrough]
 published: true
 sorting: 10
-alias: manuals-design-center-advanced.html
 tags: [design center, walkthrough, cf-sketch, sketches]
 ---
 

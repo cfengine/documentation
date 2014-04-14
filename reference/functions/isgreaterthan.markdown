@@ -1,9 +1,7 @@
 ---
 layout: default
 title: isgreaterthan
-categories: [Reference, Functions, isgreaterthan]
 published: true
-alias: reference-functions-isgreaterthan.html
 tags: [reference, data functions, functions, isgreaterthan]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: sublist
-categories: [Reference, Functions, sublist]
 published: true
-alias: reference-functions-sublist.html
 tags: [reference, data functions, functions, sublist]
 ---
 

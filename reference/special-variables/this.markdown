@@ -1,9 +1,7 @@
 ---
 layout: default
 title: this
-categories: [Reference, Special Variables, this]
 published: true
-alias: reference-special-variables-context-this.html
 tags: [reference, variables, this, this]
 ---
 

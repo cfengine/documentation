@@ -1,9 +1,7 @@
 ---
 layout: default
 title: file control
-categories: [Reference, Components, file control]
 published: true
-alias: reference-components-file-control.html
 tags: [body, bodies, components, common, namespace, promises, bundlesequence]
 ---
 

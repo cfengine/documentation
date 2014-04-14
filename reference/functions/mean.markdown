@@ -1,9 +1,7 @@
 ---
 layout: default
 title: mean
-categories: [Reference, Functions, mean]
 published: true
-alias: reference-functions-mean.html
 tags: [reference, data functions, functions, mean]
 ---
 

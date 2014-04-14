@@ -1,9 +1,7 @@
 ---
 layout: default
 title: string_head
-categories: [Reference, Functions, string_head]
 published: true
-alias: reference-functions-string_head.html
 tags: [reference, text functions, functions, text, head, string_head, substring]
 ---
 

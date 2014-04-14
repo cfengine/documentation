@@ -1,9 +1,7 @@
 ---
 layout: default
 title: canonify
-categories: [Reference, Functions, canonify]
 published: true
-alias: reference-functions-canonify.html
 tags: [reference, data functions, functions, canonify]
 ---
 

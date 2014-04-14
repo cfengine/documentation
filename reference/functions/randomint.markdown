@@ -1,9 +1,7 @@
 ---
 layout: default
 title: randomint
-categories: [Reference, Functions, randomint]
 published: true
-alias: reference-functions-randomint.html
 tags: [reference, data functions, functions, randomint]
 ---
 

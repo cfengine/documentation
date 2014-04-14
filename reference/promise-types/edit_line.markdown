@@ -1,9 +1,7 @@
 ---
 layout: default
 title: bundle edit_line
-categories: [Reference, Promise Types, files, edit_line]
 published: true
-alias: reference-promise-types-files-edit_line.html
 tags: [reference, bundle agent, bundle edit_line, files promises, file editing]
 ---
 

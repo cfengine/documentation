@@ -1,9 +1,7 @@
 ---
 layout: default
 title: nth
-categories: [Reference, Functions, nth]
 published: true
-alias: reference-functions-nth.html
 tags: [reference, data functions, functions, nth]
 ---
 

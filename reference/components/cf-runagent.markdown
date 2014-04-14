@@ -1,9 +1,7 @@
 ---
 layout: default
 title: cf-runagent
-categories: [Reference, Components, cf-runagent]
 published: true
-alias: reference-components-cfrunagent.html
 tags: [Components, cf-runagent]
 keywords: [runagent]
 ---

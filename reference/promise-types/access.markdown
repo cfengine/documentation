@@ -1,116 +1,285 @@
 ---
 layout: default
 title: access
-categories: [Reference, Promise Types, access]
 published: true
-alias: reference-promise-types-access.html
 tags: [reference, bundle server, cf-serverd, access, server, promise types, acl, trust, encryption]
 ---
 
-Access promises are conditional promises made by the server about file
-objects. The promise has two consequences. For file copy requests, the
-file becomes transferable to the remote client according to the
-conditions specified in the server promise; in other words, if the
-connection encryption requirements are met, and if the client has been
-granted appropriate privileges with `maproot` (like its NFS counterpart)
-to be able to see file objects not owned by the server process owner.
+Access promises are conditional promises made by resources living on the server.
 
-The promise has two mutally exclusive attributes admit and deny. Use of
-admit is preferred as mistakes and omissions can easily be made when
-excluding from a group.
+The promiser is the name of the resource affected and is interpreted to be a path, unless a
+different `resource_type` is specified. Access is then granted to hosts listed in `admit_ips`,
+`admit_keys` and `admit_hostnames`, or denied using the counterparts `deny_ips`, `deny_keys`
+and `deny_hostnames`.
 
-When access is granted to a directory, the promise is automatically
-given about all of its contents and sub-directories. The access promise
-allows overlapping promises to be made, and these are kept on a
-first-come-first-served basis. Thus file objects (promisers) should be
-listed in order of most-specific file first. In this way, specific
-promises will override less specific ones.
+You layer the access policy by denying all access and then allowing it
+only to selected clients, then denying to an even more restricted set.
 
 ```cf3
-      access:
-     
-         "/path/file_object"
-     
-           admit   = { "hostname", "ipv4_address", "ipv6_address"  };
-     
-```
-
-  
-
-**Example:**
-
-```cf3
-body server control 
-{
-allowconnects         => { "127.0.0.1" , "::1" };
-allowallconnects      => { "127.0.0.1" , "::1" };
-trustkeysfrom         => { "127.0.0.1" , "::1" };
-}
-
 bundle server access_rules()
 {
 access:
 
   "/source/directory"
-          comment => "Access to file transfer",
-          admit   => { "127.0.0.1" };
+    comment => "Access to file transfer",
+    admit_ips   => { "192.168.0.1/24" };
+}
+```
 
+For file copy requests, the file becomes transferable to the remote client according to the
+conditions specified in the access promise. Use `ifencrypted` to grant access only if the
+transfer is encrypted in the "classic" CFEngine protocol (the TLS protocol is always encrypted).
+
+When access is granted to a directory, the promise is automatically
+made about all of its contents and sub-directories.
+
+Use the `maproot` attribute (like its NFS counterpart) to control
+which hosts can see file objects not owned by the server process
+owner.
+
+File resources are specified using an absolute filepath, but can set a `shortcut` through
+which clients can access the resource using a logical name, without having any detailed
+knowledge of the filesystem layout on the server. Specifically in access promises about
+files, a special variable context `connection` is available with variables `ip`, `key`
+and `hostname`, containing information about the connection through which access is attempted.
+
+```cf3
+   "/var/cfengine/cmdb/$(connection.key).json" 
+      shortcut   => "me.json",
+      admit_keys => { "$(connection.key)" };
+```
+
+In this example, requesting the file `me.json` will transfer the file stored on the
+server under the name `/var/cfengine/cmdb/SHA=....json` to the requesting host,
+where it will be received as `me.json`.
+Note that the usage of the `$(connection.*)` variables is strictly
+limited to literal strings within the promiser and admit/deny lists; they cannot be
+passed to functions or stored in other variables.
+
+With CFEngine Enteprise, access promises can be made about additional query data for
+reporting and orchestration.
+
+```cf3
   # Grant orchestration communication
 
   "did.*"
           comment => "Access to class context (enterprise)",
     resource_type => "context",
-            admit => { "127.0.0.1" };
+        admit_ips => { "127.0.0.1" };
 
 
   "value of my test_scalar, can expand variables here - $(sys.host)"
           comment => "Grant access to the string in quotes, by name test_scalar",
            handle => "test_scalar",
     resource_type => "literal",
-            admit => { "127.0.0.1" };
+        admit_ips => { "127.0.0.1" };
 
   "XYZ"
           comment => "Grant access to contents of persistent scalar variable XYZ",
     resource_type => "variable",
-            admit => { "127.0.0.1" };
+        admit_ips => { "127.0.0.1" };
 
   # Client grants access to CFEngine hub access
 
   "delta"
                comment => "Grant access to cfengine hub to collect report deltas",
          resource_type => "query",
-    report_data_select => report_filter,
-                 admit => { "127.0.0.1"  };
+    report_data_select => default_data_select_host,
+                 admit_ips => { "127.0.0.1"  };
   "full"
                comment => "Grant access to cfengine hub to collect full report dump",
          resource_type => "query",
-    report_data_select => report_filter,
-                 admit => { "127.0.0.1"  };
+    report_data_select => default_data_select_host,
+             admit_ips => { "127.0.0.1"  };
 
   policy_hub::
 
   "collect_calls"
           comment => "Grant access to cfengine client to request the collection of its reports",
     resource_type => "query",
-            admit => { "10.1.2.*" };
+        admit_ips => { "10.1.2.*" };
 
 
-}
-
-body report_data_select report_filter
-{
-    variables_include => { "sys..*", "mon..*" };
-    variables_exclude => { "sys.host" };
 }
 
 ```
 
-Entries may be literal addresses of IPv4 or IPv6, or any name registered
-in the POSIX `gethostbyname` service.
+Using the built-in `report_data_select` body `default_data_select_host`:
+
+[%CFEngine_include_snippet(lib/3.6/reports.cf, .+default_data_select_host, \})%]
+
+
+The access promise allows overlapping promises to be made, and these are kept on a
+first-come-first-served basis. Thus file objects (promisers) should be
+listed in order of most-specific file first. In this way, specific
+promises will override less specific ones.
 
 ****
 
 ## Attributes
+
+
+### admit_hostnames
+
+**Description:** A list of hostnames or domains that should have access to the object.
+
+[%CFEngine_promise_attribute()%]
+
+**Note:** The host trying to access the object is identified using a
+reverse DNS lookup on the connecting IP. This introduces latency for
+*every* incoming connection. If possible, avoid this penalty by
+leaving `admit_hostnames` empty and only specifying numeric addresses
+and subnets in `admit_ips`.
+
+To admit an entire domain, start the string with a dot `.`.  This
+includes every hostname ending with the domain, but not a machine
+named after the domain itself.
+
+For example, here we'll admit the entire domain `.cfengine.com` and
+the host `www.cfengine3.com`.  A machine named `cfengine.com` would be
+refused access because it's not in the `cfengine.com` domain.
+
+```cf3
+access:
+
+   "/path/file"
+   admit_hostname => { ".cfengine.com", "www.cfengine3.com" };
+```
+
+**See also:** `deny_hostnames`, `admit_ips`, `admit_keys`
+
+**History:** Introduced in CFEngine 3.6.0
+
+### admit_ips
+
+**Description:** A list of IP addresses that should have access to the object.
+
+Subnets are specified using CIDR notation.  For example, here we'll
+admit one host, then a subnet, then everyone:
+
+```cf3
+access:
+
+   "/path/file"
+   admit_ips => {"192.168.0.1", "192.168.0.0/24", "0.0.0.0/0"};
+```
+
+[%CFEngine_promise_attribute()%]
+
+**See also:** `deny_ips`, `admit_hostnames`, `admit_keys`
+
+**History:** Introduced in CFEngine 3.6.0
+
+### admit_keys
+
+**Description:** A list of RSA keys of hosts that should have access to the object.
+
+For example, here we'll admit the fictitious SHA key `abcdef`:
+
+```cf3
+access:
+
+   "/path/file"
+   admit_keys => {"SHA=abcdef"};
+```
+
+In Community, MD5 keys are used, so similarly we can admit the
+fictitious MD5 key `abcdef`:
+
+```cf3
+access:
+
+   "/path/file"
+   admit_keys => {"MD5=abcdef"};
+```
+
+[%CFEngine_promise_attribute()%]
+
+**See also:** `deny_keys`, `admit_hostnames`, `admit_ips`
+
+**History:** Introduced in CFEngine 3.6.0
+
+### deny_hostnames
+
+**Description:** A list of hostnames that should be denied access to the object.
+
+This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
+
+To deny an entire domain, start the string with a dot `.`.  This
+includes every hostname ending with the domain, but not a machine
+named after the domain itself.
+
+For example, here we'll deny the entire domain `.cfengine.com` and the
+host `www.cfengine3.com`.  A machine named `cfengine.com` would be
+allowed access (unless it's denied by other promises) because it's not
+in the `cfengine.com` domain.
+
+```cf3
+access:
+
+   "/path/file"
+   deny_hostname => { ".cfengine.com", "www.cfengine3.com" };
+```
+
+[%CFEngine_promise_attribute()%]
+
+**See also:** `admit_hostnames`, `deny_ips`, `deny_keys`
+
+**History:** Introduced in CFEngine 3.6.0
+
+### deny_ips
+
+**Description:** A list of IP addresses that should be denied access to the object.
+
+Subnets are specified using CIDR notation.
+
+This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
+
+For example, here we'll deny one host, then a subnet, then everyone:
+
+```cf3
+access:
+
+   "/path/file"
+   deny_ips => {"192.168.0.1", "192.168.0.0/24", "0.0.0.0/0"};
+```
+
+[%CFEngine_promise_attribute()%]
+
+**See also:** `admit_ips`, `deny_hostnames`, `deny_keys`
+
+**History:** Introduced in CFEngine 3.6.0
+
+### deny_keys
+
+**Description:** A list of RSA keys of hosts that should be denied access to the object.
+
+This overrides the grants in `admit_hostnames`, `admit_ips` and `admit_keys`.
+
+[%CFEngine_promise_attribute()%]
+
+For example, here we'll deny the fictitious SHA key `abcdef`:
+
+```cf3
+access:
+
+   "/path/file"
+   deny_keys => {"SHA=abcdef"};
+```
+
+In Community, MD5 keys are used, so similarly we can deny the
+fictitious MD5 key `abcdef`:
+
+```cf3
+access:
+
+   "/path/file"
+   deny_keys => {"MD5=abcdef"};
+```
+
+**See also:** `admit_keys`, `deny_hostnames`, `deny_ips`
+
+**History:** Introduced in CFEngine 3.6.0
 
 ### admit
 
@@ -142,6 +311,7 @@ access:
 `admit` will be deprecated in CFEngine 3.7 in favor of `admit_ips`,
 `admit_hostnames`, and `admit_keys`.
 
+
 ### deny
 
 **Description:** The `deny` slist contains host names or IP addresses 
@@ -171,6 +341,9 @@ access:
 Only regular expressions or exact matches are allowed in this list, 
 as non-specific matches are too greedy for denial.
 
+`deny` will be deprecated in CFEngine 3.7 in favor of `deny_ips`,
+`deny_hostnames`, and `deny_keys`.
+
 ### maproot
 
 **Description:** The `maproot` slist contains host names or IP addresses 
@@ -195,7 +368,7 @@ access:
 
  "/home"
 
-       admit => { "backup_host.example.org" },
+     admit_hostnames => { "backup_host.example.org" },
  ifencrypted => "true",
 
      # Backup needs to have access to all users
@@ -214,6 +387,9 @@ connecting user does not own the file on the server.
 current file access promise is conditional on the connection from the 
 client being encrypted.
 
+This option has no effect with the TLS CFEngine protocol, where
+encryption is always enabled.
+
 If this flag is true a client cannot access the file object unless its
 connection is encrypted.
 
@@ -226,7 +402,7 @@ access:
 
    "/path/file"
 
-    admit     => { ".*\.example\.org" },
+    admit_hostnames => { ".*\.example\.org" },
     ifencrypted => "true";
 ```
 
@@ -235,294 +411,182 @@ access:
 
 **This body is only available in CFEngine Enterprise.**
 
-**Description:** The `report_data_select` body restricts access to data 
-for the specified query types reported to the CFEngine Enterprise Database.
+**Description:** The `report_data_select` body restricts which data is included
+for [query][resource_type] resources, and allows filtering of data reported to the
+CFEngine Enterprise server.
 
-This body template allows users to control the content of reports collected 
-by the Enterprise Database Server, and allows users to strip unwanted data 
-(e.g. temporary variables from reporting).
+Use this body template to control the content of reports collected by the 
+CFEngine Enterprise server, and to strip unwanted data (e.g. temporary variables)
+from reporting.
 
-Report content can be differentiated between hosts that are controlled
-by the class expression on access promiser.
+By default, no filtering is applied. If include and exclude rules are combined, then the
+exclude statement is applied to the subset from the include statement.
 
-If more than one select statement applies to the same host, all of them are applied.
+If more than one `report_data_select` body applies to the same host, all of them are applied.
 
 Usage of this body is only allowed in conjunction with using 
-`resource_type => "query"`, as this is the resource type that is being affected.
+[`resource_type => "query"`][access#resource_type], as this is the resource type that is being affected.
 
 [%CFEngine_promise_attribute()%]
 
 **Example:**
 
 ```cf3
-
-body report_data_select
+body report_data_select report_data
 {
-    variables_include => { "sys..*" };
-    monitoring_exclude => { ".*" };
+    metatags_include => { "inventory", "compliance" };
+    promise_handle_exclude => { "_.*" };
+    monitoring_exclude => { "mem_.*swap" };
 }
 ```
-
-**History:** Introduced in Enterprise 3.5.0
-
-#### classes_include
-
-**Description:** The `classes_include` attribute is used to filter content 
-of the class report collected by Enterprise Hub, to include classes matching 
-specified regular expressions on the list.
-
-Only classes matching the specified regular expressions on the list will 
-be sent back in the report. 
-
-If this attribute is not used, the report content is not reduced.
-
-[%CFEngine_promise_attribute()%]
 
 **Example:**
 
-```cf3
+Here are the built-in `report_data_select` bodies `default_data_select_host()` and 
+`default_data_select_policy_hub()`:
 
-body report_data_select
-{
-    classes_include => { "report_only_my_classes_.*" };
-}
-```
+[%CFEngine_include_snippet(lib/3.6/reports.cf, .+default_data_select_host, \})%]
+
+[%CFEngine_include_snippet(lib/3.6/reports.cf, .+default_data_select_policy_hub, \})%]
 
 **History:** Introduced in Enterprise 3.5.0
 
-#### classes_exclude
+#### metatags_exclude
 
-**Description:** The `classes_exclude` attribute is used to filter content 
-of the class report collected by Enterprise Hub, to exclude classes matching 
-specified regular expressions on the list.
+**Description:** List of [anchored][anchored] regular expressions matching metatags
+to exclude from reporting.
 
-If this attribute is used in conjunction with `classes_include` it will 
-exclude entries from the subset selected by the include expression.
+Classes and variables with metatags matching any entry of that list will not be reported
+to the CFEngine Enterprise server.
+
+When combined with `metatags_include`, this list is applied to the selected subset.
 
 [%CFEngine_promise_attribute()%]
 
-**Example:**
+**See also:** `metatags_include`, `promise_handle_exclude`, `monitoring_exclude`
 
-```cf3
+**History:** Introduced in CFEngine 3.6.0
 
-body report_data_select
-{
-    classes_exclude => { "my_tmp_class.*" };
-}
-```
+#### metatags_include
 
-**Notes:**
+**Description:** List of [anchored][anchored] regular expressions matching metatags
+to include in reporting.
 
-**History:** Introduced in Enterprise 3.5.0
+Classes and variables with metatags matching any entry of that list will be reported
+to the CFENgine Enterprise server.
 
-#### variables_include
-
-**Description:** The `variables_include` attribute is used to filter 
-content of the variables report collected by Enterprise Hub, to contain 
-only variables matching specified regular expressions on the list.
-
-If the attribute is not used, the report content is not reduced.
+When combined with `metatags_exclude`, the exclude list is applied to the subset from this list.
 
 [%CFEngine_promise_attribute()%]
 
-Regular expressions for this attribute use the form `<scope>.<variable_name>`.
+**See also:** `metatags_exclude`, `promise_handle_include`, `monitoring_include`
 
-**Example:**
+**History:** Introduced in CFEngine 3.6.0
 
-```cf3
+#### promise_handle_exclude
 
-body report_data_select
-{
-    variables_include => { "my_bundle.my_variable_prefix_.*" };
-}
-```
+**Description:** List of [anchored][anchored] regular expressions matching promise handles
+to exclude from reporting.
 
-**History:** Introduced in Enterprise 3.5.0
+Information about promises with handles that match any entry in that list will not be reported
+to the CFEngine Enterprise server.
 
-
-#### variables_exclude
-
-**Description:** The `variables_exclude` attribute is used to filter 
-content of the variable report collected by Enterprise Hub, to exclude 
-variables matching specified regular expression list.
+When combined with `promise_handle_include`, this list is applied to the selected subset.
 
 [%CFEngine_promise_attribute()%]
 
-Regular expressions for this attribute use the form `<scope>.<variable_name>`.
-  
-**Example:**
+**See also:** `promise_handle_include`, `metatags_exclude`, `monitoring_exclude`
 
-```cf3
+**History:** Introduced in CFEngine 3.6.0
 
-body report_data_select
-{
-    variables_exclude => { "my_bundle.tmp_var_test.*" };
-}
-```
+#### promise_handle_include
 
-**Notes:**
-If this attribute is used in conjunction with `variables_include`, it will 
-exclude entries from the subset selected by the include expression.
+**Description:** List of [anchored][anchored] regular expressions matching promise handles
+to include in reporting.
 
-**History:** Introduced in Enterprise 3.5.0
+Information about promises with handles that match any entry in that list will be reported
+to the CFEngine Enterprise server.
 
-#### promise_notkept_log_include
-
-**Description:** The `promise_notkept_log_include` attribute is used to 
-filter content of the not kept log report collected by Enterprise Hub, 
-to contain promise handles matching specified regular expressions on 
-the list.
-
-Only those handles matching the regular expressions on the list will 
-be sent back in the report.
-
-If the attribute is not used, the report content will not be reduced.
+When combined with `promise_handle_exclude`, the exclude list is applied to the subset from this list.
 
 [%CFEngine_promise_attribute()%]
 
-**Example:**
+**See also:** `promise_handle_exclude`, `metatags_include`, `monitoring_include`
 
-```cf3
-
-body report_data_select
-{
-    promise_notkept_log_include => { "my_none_important_promises_.*" };
-}
-```
-
-**History:** Introduced in Enterprise 3.5.0
-
-#### promise_notkept_log_exclude
-
-**Description:** The `promise_notkept_log_exclude` attribute is used to 
-filter content of the not kept log report collected by Enterprise Hub, 
-to exclude promise handles matching specified regular expressions on the 
-list.
-
-Only those handles matching regular expression on the list will be excluded 
-from the report.
-
-[%CFEngine_promise_attribute()%]
-
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    promise_notkept_log_exclude => { "my_tmp_promise_handle.*" };
-}
-```
-
-**Notes:** If this attribute is used in conjunction with the 
-`promise_notkept_log_include` attribute, it will exclude entries 
-from the subset selected by the include expression.
-
-**History:** Introduced in Enterprise 3.5.0
-
-#### promise_repaired_log_include
-
-**Description:** The `promise_repaired_log_include` attribute is used to 
-filter content of the repaired log report collected by Enterprise Hub, 
-to include regular expressions matched on the list.
-
-Only those handles matching the regular expression on the list will be 
-sent back in the report. If attribute is not used, the report content 
-will not be filtered.
-
-[%CFEngine_promise_attribute()%]
-
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    promise_repaired_log_include => { "my_none_important_promises_.*" };
-}
-```
-
-**History:** Introduced in Enterprise 3.5.0
-
-#### promise_repaired_log_exclude
-
-**Description:** The `promise_repaired_log_exclude` attribute is used to 
-filter content of the repaired log report collected by Enterprise Hub, 
-to exclude promise handles matching regular expression on the list.
-
-Only those handles matching regular expression on the list will be excluded 
-from the report.
-
-[%CFEngine_promise_attribute()%]
-
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    promise_repaired_log_exclude => { "my_tmp_promise_handle.*" };
-}
-```
-
-**Notes:**
-If this attribute is used in conjunction with `promise_repaired_log_include`, 
-it will exclude entries from the subset selected by the include expression.
-
-**History:** Introduced in Enterprise 3.5.0
-
+**History:** Introduced in CFEngine 3.6.0
 
 #### monitoring_include
 
-**Description:** The `monitoring_include` attribute is used to filter 
-content of the monitoring report collected by Enterprise Hub, to contain 
-only observed objects matching regular expressions on the list.
+**Description:** List of [anchored][anchored] regular expressions matching monitoring objects
+to include in reporting.
 
-Only object names matching regular expression on the list will be sent 
-back in the report. If the attribute is not used, the report content will 
-not be filtered.
+Monitoring objects with names matching any entry in that list will be reported
+to the CFEngine Enterprise server.
+
+When combined with `monitoring_exclude`, the exclude list is applied to the subset from this list.
 
 [%CFEngine_promise_attribute()%]
 
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    monitoring_include => { "mem_.*" };
-}
-```
+**See also:** `monitoring_exclude`, `promise_handle_include`, `metatags_include`
 
 **History:** Introduced in Enterprise 3.5.0
 
 #### monitoring_exclude
 
-**Description:** The `monitoring_exclude` attribute is used to filter 
-content of the monitoring report collected by Enterprise Hub, to exclude 
-observed objects matching specified regular expressions on the list.
+**Description:** List of [anchored][anchored] regular expressions matching monitoring objects
+to exclude from reporting.
 
-Only object names matching regular expression list will be excluded from 
-the report.
+Monitoring objects with names matching any entry in that list will not be reported
+to the CFEngine Enterprise server.
+
+When combined with `monitoring_include`, this list is applied to the selected subset.
 
 [%CFEngine_promise_attribute()%]
 
-**Example:**
-
-```cf3
-
-body report_data_select
-{
-    monitoring_exclude => { "mem_swap", "mem_freeswap" };
-}
-```
-
-**Notes:**
-
-If this attribute is used in conjunction with `monitoring_include` it will 
-exclude entries from the subset selected by the include expression.
+**See also:** `monitoring_include`, `promise_handle_exclude`, `metatags_exclude`
 
 **History:** Introduced in Enterprise 3.5.0
+
+
+#### classes_include
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### classes_exclude
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### variables_include
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### variables_exclude
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### promise_notkept_log_include
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### promise_notkept_log_exclude
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### promise_repaired_log_include
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
+
+#### promise_repaired_log_exclude
+
+**Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
+action and is kept for backwards compatibility.
 
 ### resource_type
 
@@ -585,19 +649,19 @@ access:
     handle => "test_scalar",
     comment => "Grant access to contents of test_scalar VAR",
     resource_type => "literal",
-    admit => { "127.0.0.1" };
+    admit_ips => { "127.0.0.1" };
 
   "XYZ"
     resource_type => "variable",
     handle => "XYZ",
-    admit => { "127.0.0.1" };
+    admit_ips => { "127.0.0.1" };
 
 
   # On the policy hub
 
   "collect_calls"
      resource_type => "query",
-           admit   => { "127.0.0.1" };
+     admit_ips => { "127.0.0.1" };
 
   # On the isolated client in the field
 
@@ -605,11 +669,32 @@ access:
  "delta"
     comment => "Grant access to cfengine hub to collect report deltas",
     resource_type => "query",
-          admit   => { "127.0.0.1"  };
-  "full"
+    admit_ips   => { "127.0.0.1"  };
+
+ "full"
           comment => "Grant access to cfengine hub to collect full report dump",
     resource_type => "query",
-          admit   => { "127.0.0.1"  };
+        admit_ips => { "127.0.0.1"  };
 }
 ```
 
+### shortcut
+
+**Description:** For file promisers, the server will give access to the file under
+its shortcut name.
+
+[%CFEngine_promise_attribute()%]
+
+**Example:**
+
+```cf3
+  "/var/cfengine/cmdb/$(connection.key).json" 
+    shortcut   => "me.json",
+    admit_keys => { "$(connection.key)" };
+```
+
+In this example, requesting the file `me.json` will transfer the file stored on the
+server under the name `/var/cfengine/cmdb/SHA=....json` to the requesting host,
+where it will be received as `me.json`.
+
+**History:** Introduced in CFEngine 3.6.0

@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Command Line Sketches
-categories: [Manuals, Design Center, Sketches Community]
 published: true
 sorting: 30
-alias: configure-sketches-community.html
 tags: [design center, cf-sketch, sketches]
 ---
 

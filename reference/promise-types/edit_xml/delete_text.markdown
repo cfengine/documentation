@@ -1,9 +1,7 @@
 ---
 layout: default
 title: delete_text
-categories: [Reference, Promise Types, files, edit_xml, delete_text]
 published: true
-alias: reference-promise-types-files-edit_xml-delete_text.html
 tags: [reference, bundle agent, bundle edit_xml, xml, files promises, file editing, delete_text]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: readfile
-categories: [Reference, Functions, readfile]
 published: true
-alias: reference-functions-readfile.html
 tags: [reference, io functions, functions, readfile]
 ---
 

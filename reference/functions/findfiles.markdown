@@ -1,9 +1,7 @@
 ---
 layout: default
 title: findfiles
-categories: [Reference, Functions, findfiles]
 published: true
-alias: reference-functions-findfiles.html
 tags: [reference, file functions, functions, findfiles, files, glob]
 ---
 

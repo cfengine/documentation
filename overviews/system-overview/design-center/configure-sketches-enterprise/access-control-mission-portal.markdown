@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Controlling Access to the Design Center UI
-categories: [Manuals, Design Center, Enterprise Sketches, Controlling Access to the Design Center UI]
 published: true
 sorting: 20
-alias: mission-portal-design-center-access-control.html
 tags: [access, security, role, user, sketch, design center, git, mission portal, enterprise, version control]
 ---
 

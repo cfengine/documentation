@@ -1,9 +1,7 @@
 ---
 layout: default
 title: diskfree
-categories: [Reference, Functions, diskfree]
 published: true
-alias: reference-functions-diskfree.html
 tags: [reference, files functions, functions, diskfree]
 ---
 

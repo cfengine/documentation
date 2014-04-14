@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Reporting Architecture
-categories: [Manuals, Reports, Enterprise Report API, Architecture]
 published: true
 sorting: 10
-alias: manuals-enterprise-reporting-architecture.html
 tags: [manuals, enterprise, reporting, architecture, cf-hub]
 ---
 

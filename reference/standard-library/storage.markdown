@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Storage Bundles and Bodies
-categories: [Reference, Standard Library, Storage]
 published: true
-sorting: 100
-alias: reference-standard-library-storage.html
+sorting: 95
 tags: [reference, standard library]
 ---
 

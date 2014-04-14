@@ -1,9 +1,7 @@
 ---
 layout: default
 title: parsejson
-categories: [Reference, Functions, parsejson]
 published: true
-alias: reference-functions-parsejson.html
 tags: [reference, io functions, functions, parsejson, json, container]
 ---
 

@@ -1,16 +1,37 @@
 ---
 layout: default
 title: CFEngine Examples 
-categories: [Examples]
 published: true
 sorting: 50
-alias: examples.html
 tags: [Examples]
 ---
 
-## Try It!
 
-View the various tutorials and examples to help you learn and understand CFEngine.
+* [Basic Examples][CFEngine Basic Examples] includes:
+
+	* Files and Directories
+	* Passwords
+	* Processes
+	* Installing software
+
+* [Intermediate Examples][CFEngine Intermediate Examples] includes:
+
+	* System Adminstration
+	* Access and Security
+	* Hardware Info
+	* Logs
+	* Processes and Services
+	* Users
+	* Templating
+
+* [Advanced Examples][CFEngine Intermediate Examples] includes:
+	* ACL
+	* Editing Files
+	* Software Packages
+	* LDAP, Users and Groups
+	* Databases
+	* Networking
+	* Registry
 
 * [Tutorials][Tutorials]  
 This section provides examples and explanations of common tasks.

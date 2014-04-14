@@ -1,9 +1,7 @@
 ---
 layout: default
 title: strftime
-categories: [Reference, Functions, strftime]
 published: true
-alias: reference-functions-strftime.html
 tags: [reference, data functions, functions, strftime]
 ---
 

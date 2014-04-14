@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Basic CFEngine Guide
-categories: [How to Guides, Basic CFEngine Guide]
 published: true
-sorting: 10
-alias: how-to-guides-basic-cfengine.html
+sorting: 1
 ---
+
+1. First Step: [Install, Bootstrap and Configure CFEngine][Install, Bootstrap and Configure CFEngine]
+2. Second Step: [Write Promises and Policy][Write Promises and Policy]

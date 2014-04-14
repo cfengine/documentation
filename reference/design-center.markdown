@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Design Center
-categories: [Reference, Design Center]
 published: true
 sorting: 60
-alias: reference-design-center.html
 tags: [reference, design center, sketch, cf-sketch, api]
 ---
 
@@ -16,4 +14,9 @@ achieving specific tasks, or for maintaining a specific piece of software,
 however their scope and capabilities can be varied. They are organized in 
 categories according to their functionality. Sketches are managed (installed, 
 configured, enabled and uninstalled) through a specialized tool called 
-cf-sketch.
+`cf-sketch`.
+
+See Also: [Design Center Overview][Design Center Overview],
+[Design Center in CFEngine Enterprise][Design Center in CFEngine Enterprise]
+
+

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: parsestringarrayidx
-categories: [Reference, Functions, parsestringarrayidx]
 published: true
-alias: reference-functions-parsestringarrayidx.html
 tags: [reference, io functions, functions, parsestringarrayidx]
 ---
 

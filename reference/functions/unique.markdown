@@ -1,9 +1,7 @@
 ---
 layout: default
 title: unique
-categories: [Reference, Functions, unique]
 published: true
-alias: reference-functions-unique.html
 tags: [reference, data functions, functions, unique]
 ---
 

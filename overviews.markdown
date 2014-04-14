@@ -1,17 +1,18 @@
 ---
 layout: default
 title: Overviews
-categories: [Getting Started, Overviews]
 published: true
 sorting: 30
-alias: getting-started-overviews.html
 ---
 
 Read these overviews to get a good understanding of CFEngine fundamentals.
 
-* [Promises Overview][Promises Overview]
+* [Introduction][Introduction]
 * [System Overview][System Overview]
 	* [Policy Server Overview][Policy Server Overview]
-* [Security Overview][Security Overview]
-
+	* [Security Overview][Security Overview]
+* [Enterprise Overview][Enterprise Overview]
+* [Policy and Promises Overview][Policy and Promises Overview]
+* [Reports][Reports]
+* [CFEngine Learning Resources][Learning Resources]
 

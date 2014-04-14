@@ -1,9 +1,7 @@
 ---
 layout: default
 title: match
-categories: [Reference, Special Variables, match]
 published: true
-alias: reference-special-variables-context-match.html
 tags: [reference, variables, match, strings, file editing, files promises, edit_line]
 ---
 

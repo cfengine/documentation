@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Aborting execution 
-categories: [Examples, Promise Patterns, Aborting execution]
 published: true
-alias: examples-policy-aborting-execution.html
 tags: [Examples, Policy, aborting execution]
 reviewed: 2013-05-30
 reviewed-by: atsaloli
@@ -14,8 +12,7 @@ for example when validating input to a bundle. The following policy uses a list 
 regular expressions for classes, or class expressions that [`cf-agent`][cf-agent] will watch out for.
 If any of these classes becomes defined, it will cause the current bundle to be aborted.
 
-[%CFEngine_include(abort.cf)%]
-[%CFEngine_include(abort.cf)%]
+[%CFEngine_include_example(abort.cf)%]
 
 This is how the policy runs when the userlist is valid:
 

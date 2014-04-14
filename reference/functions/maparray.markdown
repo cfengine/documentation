@@ -1,9 +1,7 @@
 ---
 layout: default
 title: maparray
-categories: [Reference, Functions, maparray]
 published: true
-alias: reference-functions-maparray.html
 tags: [reference, data functions, functions, maparray]
 ---
 

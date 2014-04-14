@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Common Bodies and Bundles
-categories: [Reference, Standard Library, common]
 published: true
 sorting: 10
-alias: reference-standard-library-common.html
 tags: [reference, standard library]
 ---
 

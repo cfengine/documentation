@@ -1,10 +1,8 @@
 ---
 layout: default
-title: Enterprise Report API
-categories: [Manuals, Reports, Enterprise Report API]
+title: Enterprise Reporting
 published: true
 sorting: 20
-alias: manuals-enterprise-reporting.html
 tags: [manuals, enterprise, reporting]
 ---
 

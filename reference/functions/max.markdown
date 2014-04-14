@@ -1,9 +1,7 @@
 ---
 layout: default
 title: max
-categories: [Reference, Functions, max]
 published: true
-alias: reference-functions-max.html
 tags: [reference, data functions, functions, max]
 ---
 

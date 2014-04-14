@@ -1,10 +1,8 @@
 ---
 layout: default
 title:  Enterprise API Reference
-categories: [Reference, Enterprise API Reference]
 published: true
 sorting: 70
-alias: reference-enterprise-api.html
 tags: [reference, enterprise, REST, API, reporting, sql]
 ---
 

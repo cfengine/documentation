@@ -1,9 +1,7 @@
 ---
 layout: default
 title: regline
-categories: [Reference, Functions, regline]
 published: true
-alias: reference-functions-regline.html
 tags: [reference, io functions, functions, regline]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: data_readstringarray
-categories: [Reference, Functions, data_readstringarray]
 published: true
-alias: reference-functions-data_readstringarray.html
 tags: [reference, io functions, functions, data_readstringarray]
 ---
 

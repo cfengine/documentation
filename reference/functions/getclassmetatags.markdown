@@ -1,9 +1,7 @@
 ---
 layout: default
 title: getclassmetatags
-categories: [Reference, Functions, getclassmetatags]
 published: true
-alias: reference-functions-getclassmetatags.html
 tags: [reference, data functions, functions, getclassmetatags, meta, tags]
 ---
 

@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Monitor Bundles and Bodies
-categories: [Reference, Standard Library, Monitor]
 published: true
 sorting: 60
-alias: reference-standard-library-monitor.html
 tags: [reference, standard library]
 ---
 **This is an Enterprise-only feature.**

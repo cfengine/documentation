@@ -1,9 +1,7 @@
 ---
 layout: default
 title: getfields
-categories: [Reference, Functions, getfields]
 published: true
-alias: reference-functions-getfields.html
 tags: [reference, data functions, functions, getfields]
 ---
 

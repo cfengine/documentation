@@ -1,9 +1,7 @@
 ---
 layout: default
 title: filter
-categories: [Reference, Functions, filter]
 published: true
-alias: reference-functions-filter.html
 tags: [reference, data functions, functions, filter]
 ---
 

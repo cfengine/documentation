@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Installing Enterprise 25 Free
-categories: [Getting Started, Installation, Installing Enterprise Free 25]
 published: true
 sorting: 20
-alias: getting-started-installation-installing-enterprise-free.html
 tags: [getting started, installation, enterprise free]
 ---
 

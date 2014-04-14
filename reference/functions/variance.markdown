@@ -1,9 +1,7 @@
 ---
 layout: default
 title: variance
-categories: [Reference, Functions, variance]
 published: true
-alias: reference-functions-variance.html
 tags: [reference, data functions, functions, variance]
 ---
 

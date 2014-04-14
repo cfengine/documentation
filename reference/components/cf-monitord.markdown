@@ -1,9 +1,7 @@
 ---
 layout: default
 title: cf-monitord
-categories: [Reference, Components, cf-monitord]
 published: true
-alias: reference-components-cfmonitord.html
 tags: [Components, cf-monitord]
 keywords: [monitor]
 ---

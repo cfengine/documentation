@@ -1,9 +1,7 @@
 ---
 layout: default
 title: string_reverse
-categories: [Reference, Functions, string_reverse]
 published: true
-alias: reference-functions-string_reverse.html
 tags: [reference, text functions, functions, text, reverse, string_reverse]
 ---
 

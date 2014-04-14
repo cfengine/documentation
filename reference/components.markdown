@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Components and Common Control
-categories: [Reference, Components]
 published: true
 sorting: 10
-alias: reference-components.html
 tags: [Reference, Components]
 ---
 
@@ -384,7 +382,19 @@ after which last-seen entries are purged.
 On native Windows versions of CFEngine (Enterprise), this
 string is also prefixed messages in the event log.
 
+### protocol_version
 
+**Description:** Defines the protocol to use for all outgoing connections.
+
+[%CFEngine_promise_attribute(classic)%]
+
+**Note:** If `protocol_version` is specified in a [`body copy_from`][files#copy_from],
+then the value there will override this setting.
+
+**See also:** [`protocol_version`][files#protocol_version] in
+[`body copy_from`][files#copy_from], `allowlegacyconnects`
+
+**History:** Introduced in CFEngine 3.6.0
 
 ### require_comments
 

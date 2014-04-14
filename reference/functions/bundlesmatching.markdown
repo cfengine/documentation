@@ -1,9 +1,7 @@
 ---
 layout: default
 title: bundlesmatching
-categories: [Reference, Functions, bundlesmatching]
 published: true
-alias: reference-functions-bundlesmatching.html
 tags: [reference, utility functions, functions, bundlesmatching]
 ---
 

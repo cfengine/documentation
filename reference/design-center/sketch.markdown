@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Sketch Structure
-categories: [Reference, Design Center, Sketch Structure]
 published: true
-alias: reference-design-center-sketch-structure.html
 tags: [sketch, structure, reference, design center]
 ---
 
@@ -125,3 +123,25 @@ It may also be beneficial to include extra promises for reporting purposes and
 prefix their handle with `activation_id`. For example, a promise that will 
 become not kept if a web service goes down will be helpful to detect 
 noncompliance in a sketch that upgrades that web service.
+
+## Upgrading sketches
+
+There are three ways to upgrade a Design Center sketch repository.
+
+### Upgrade a Design Center sketch repository from the Github master branch of Design Center
+
+`cf-sketch --expert --install-all --repolist=/var/cfengine/design-center/sketches`
+
+The `installsource` is omitted but defaults to the Github master branch, so the above is equivalent to:
+
+`cf-sketch --expert --install-all --repolist=/var/cfengine/design-center/sketches --installsource=https://raw.github.com/cfengine/design-center/master/sketches/cfsketches.json`
+
+### Upgrade a Design Center sketch repository from the Github 3.6.x branch of Design Center
+
+`cf-sketch --expert --install-all --repolist=/var/cfengine/design-center/sketches --installsource=https://raw.github.com/cfengine/design-center/3.6.x/sketches/cfsketches.json`
+
+### Upgrade a Design Center sketch repository from your own sketch repository
+
+You would do this if you maintain sketches for your own organization.
+
+`cf-sketch --expert --install-all --repolist=/var/cfengine/design-center/sketches --installsource=/myrepo/sketches/cfsketches.json`

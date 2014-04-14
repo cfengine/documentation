@@ -1,9 +1,7 @@
 ---
 layout: default
 title: product
-categories: [Reference, Functions, product]
 published: true
-alias: reference-functions-product.html
 tags: [reference, data functions, functions, product]
 ---
 

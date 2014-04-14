@@ -1,9 +1,7 @@
 ---
 layout: default
 title: lastnode
-categories: [Reference, Functions, lastnode]
 published: true
-alias: reference-functions-lastnode.html
 tags: [reference, data functions, functions, lastnode]
 ---
 

@@ -1,10 +1,8 @@
 ---
 layout: default
 title: Latest Release
-categories: [Overviews,Resources,Latest Release]
 published: true
 sorting: 60
-alias: overviews-resources-latest-release.html
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions]
 ---
 

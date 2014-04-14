@@ -1,9 +1,7 @@
 ---
 layout: default
 title: files
-categories: [Reference, Promise Types,files]
 published: true
-alias: reference-promise-types-files.html
 tags: [reference, bundle agent, files, promises, files promises, promise types]
 ---
 
@@ -436,6 +434,13 @@ the directory.
 **History:** Was introduced in 3.5. Replaces the now deprecated 
 acl_directory_inherit.
 
+#### acl_inherit
+
+**Description:** Defines whether the object inherits its ACL from its parent.
+
+[%CFEngine_promise_attribute()%]
+
+**Notes:** This attribute has an effect only on Windows.
 
 #### acl_method
 
@@ -1066,6 +1071,20 @@ security contexts. For remote copies, only Unix mode is preserved.
 ```
 
 **History:** Version 3.1.0b3,Nova 2.0.0b1 (2010)   
+
+#### protocol_version
+
+**Description:** Defines the protocol to use for the outgoing connection in this
+copy operation.
+
+[%CFEngine_promise_attribute(classic)%]
+
+**Note:** The value here will override the setting from [`body common control`][body common].
+
+**See also:** [`protocol_version`][Components and Common Control#protocol_version] in
+[`body common`][body common], `allowlegacyconnects`
+
+**History:** Introduced in CFEngine 3.6.0
 
 #### purge
 

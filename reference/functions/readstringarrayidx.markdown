@@ -1,9 +1,7 @@
 ---
 layout: default
 title: readstringarrayidx
-categories: [Reference, Functions, readstringarrayidx]
 published: true
-alias: reference-functions-readstringarrayidx.html
 tags: [reference, io functions, functions, readstringarrayidx]
 ---
 

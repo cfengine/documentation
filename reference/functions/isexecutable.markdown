@@ -1,9 +1,7 @@
 ---
 layout: default
 title: isexecutable
-categories: [Reference, Functions, isexecutable]
 published: true
-alias: reference-functions-isexecutable.html
 tags: [reference, files functions, functions, isexecutable]
 ---
 

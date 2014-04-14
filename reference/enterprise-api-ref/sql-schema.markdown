@@ -1,9 +1,7 @@
 ---
 layout: default
 title: SQL Schema
-categories: [Reference, Enterprise API Reference, SQL Schema]
 published: true
-alias: reference-enterprise-api-sql-schema.html
 tags: [reference, enterprise, REST, API, reporting, sql, schema]
 ---
 

@@ -1,9 +1,7 @@
 ---
 layout: default
 title: string_upcase
-categories: [Reference, Functions, string_upcase]
 published: true
-alias: reference-functions-string_upcase.html
 tags: [reference, text functions, functions, text, case, upcase, string_upcase]
 ---
 
