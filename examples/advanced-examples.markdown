@@ -30,14 +30,14 @@ tags: [Examples]
 * [Commenting lines in a file][CFEngine Advanced Examples#Commenting lines in a file]
 * [Copy files][CFEngine Advanced Examples#Copy files]
 * [Copy and flatten directory][CFEngine Advanced Examples#Copy and flatten directory]
-* [Copy then edit][CFEngine Advanced Examples#Copy then edit]
+* [Copy then edit a file convergently][CFEngine Advanced Examples#Copy then edit a file convergently]
 * [Creating files and directories][CFEngine Advanced Examples#Creating files and directories]
 * [Database creation][CFEngine Advanced Examples#Database creation]
 * [Deleting lines from a file][CFEngine Advanced Examples#Deleting lines from a file]
 * [Deleting lines exception][CFEngine Advanced Examples#Deleting lines exception]
 * [Editing files][CFEngine Advanced Examples#Editing files]
 * [Editing tabular files][CFEngine Advanced Examples#Editing tabular files]
-* [Environment (virtual)][CFEngine Advanced Examples#Environment (virtual)]
+* [Environments (virtual)][CFEngine Advanced Examples#Environments (virtual)]
 * [Environment variables][CFEngine Advanced Examples#Environment variables]
 * [Execresult example][CFEngine Advanced Examples#Execresult example]
 * [Inserting lines in a file][CFEngine Advanced Examples#Inserting lines in a file]
@@ -557,7 +557,7 @@ packages:
 Note you can also arrange to hide all the differences between package managers on an OS basis, but since some OSs have multiple managers, this might not be 100 percent correct.
 
 
-## Add variable definitions to a file e.g. /etc/system
+## Add variable definitions to a file
 
 ```cf3
 
@@ -734,7 +734,7 @@ reports:
 ```
 
 
-## Backreferences in filenames
+## Back references in filenames
 
 ```cf3
 
@@ -2002,7 +2002,7 @@ extend_fields => "true";
 }
 ```
 
-    Environment (virtual)
+    Environments (virtual)
     Environment variables
     Execresult example
     Inserting lines in a file
