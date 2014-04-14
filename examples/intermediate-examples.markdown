@@ -400,7 +400,17 @@ files:
 
     comment => "Prevent the zypper log from choking the disk",
     rename => rotate("0"),
-   
+    action => if_elapsed("10000");
+
+}	
+	
+```	
+	
+	
+## Distribute root passwords	
+  
+```cf3
+  
 ######################################################################
 #
 
@@ -510,9 +520,11 @@ access:
     ifencrypted => "true";
 
 }
+```
 
 ## Distribute ssh keys
 
+```cf3
 # Assume that we have collected all users' public keys into a single source area
 # on the server. First copy the ones we need to localhost, and then edit them into
 
@@ -755,7 +767,7 @@ files:
 
 ```
 
-## Find the MAC address
+## Find MAC address
 
 Finding the ethernet address can be hard, but on Linux it is straightforward.
 
@@ -817,9 +829,11 @@ ok::
   "MAC address is $(mac[1])";
 
 }
+```
 
 ## Log rotation
 
+```cf3
 body common control
    {
    bundlesequence  => { "testbundle" };
@@ -1275,11 +1289,16 @@ files:
      create => "true",
       perms => mog("755","$(users)","users");
 }
+```
 
 ### Remove users
 
+```cf3
+```
+
 ## Postfix mail configuration
 
+```cf3
 #######################################################
 #
 
