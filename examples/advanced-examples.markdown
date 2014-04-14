@@ -4969,7 +4969,7 @@ mount_server => "$(server)";
 edit_fstab => "true";
 unmount => "true";
 }
-```cf3
+```
 
 ## Web server modules
 
@@ -5079,7 +5079,7 @@ field_edits:
 
 
 }
-```cf3
+```
 
     Warn if matching line in file
     Windows registry
