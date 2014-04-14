@@ -504,7 +504,9 @@ files:
        edit_line => append_user_field("users","4","@(addpasswd.users)");
 
 }
+```
 
+```cf3
 ## Add software packages to the system
 
 #
@@ -725,7 +727,9 @@ reports:
 
    "Global $(g.array[1]) and $(localarray[2])";
 }
+```
 
+```cf3
 ## Backreferences in filenames
 
 ######################################################################
@@ -928,7 +932,9 @@ reports:
     "Host matches pattern";
 
 }
+```
 
+```cf3
 ## Client-server example
 
 ########################################################
@@ -1342,9 +1348,14 @@ files:
     action => immediate,
     classes => on_change("reload");
 
+```
+
+
     Copy and flatten directory 
 
 ## Copy and flatten directory
+
+```cf3
 
 ########################################################
 
@@ -1859,9 +1870,12 @@ files:
 
       edit_line => comment_lines_matching("@(testbundle.patterns)","#");
 }
+```
+
 
 ## Editing tabular files
 
+```cf3
 ######################################################################
 
 #
@@ -1993,8 +2007,10 @@ extend_fields => "true";
     Method validation
     Mount NFS filesystem
 
-```cf3
+
 ## Environments (virtual)
+
+```cf3
 
 #######################################################
 
@@ -2063,9 +2079,11 @@ host2::
   env_network => "default_vnet2";
 
 }
+```
 
 ## Environment variables
 
+```cf3
 #######################################################
 
 #
@@ -2108,10 +2126,11 @@ body environment_resources virt_xml
 {
 env_spec_file => "/srv/xen/centos5-libvirt-create.xml";
 }
+```
 
 ## Execresult example
 
-
+```cf3
 body common control
 
 {
@@ -2352,6 +2371,7 @@ empty_file_before_editing => "true";
 
 ## Get a list of users
 
+```cf3
 #######################################################
 
 #
@@ -2390,10 +2410,11 @@ reports:
   "Found user $(allusers)";
 
 }
+```
 
 ## Global classes
 
-
+```cf3
 body common control
 {
 bundlesequence => { "g","tryclasses_1", "tryclasses_2" };
@@ -3239,9 +3260,10 @@ persist_time => "0";
     Selecting a region in a file
     Service management (windows)
 
-```cf3	
+
 ## Process management
 
+```cf3	
 body common control
 {
 bundlesequence => { "test" };
