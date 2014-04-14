@@ -6,38 +6,37 @@ sorting: 2
 tags: [Examples]
 ---
 
+* [Centralized Management][CFEngine Intermediate Examples#Centralized Management]
+* [All hosts the same][CFEngine Intermediate Examples#All hosts the same]
+* [Variation in hosts][CFEngine Intermediate Examples#Variation in hosts]
+* [Updating from a central hub][CFEngine Intermediate Examples#Updating from a central hub]
+* [Change detection][CFEngine Intermediate Examples#Change detection]
+* [Garbage collection][CFEngine Intermediate Examples#Garbage collection]
+* [Distribute root passwords][CFEngine Intermediate Examples#Distribute root passwords]
+* [Distribute ssh keys][CFEngine Intermediate Examples#Distribute ssh keys]
+* [Laptop support configuration][CFEngine Intermediate Examples#Laptop support configuration]
+* [Find MAC address][CFEngine Intermediate Examples#Find MAC address]
+* [Log rotation][CFEngine Intermediate Examples#Log rotation]
+* [Manage a system file][CFEngine Intermediate Examples#Manage a system file]
+* [Simple template][CFEngine Intermediate Examples#Simple template]
+* [Simple versioned template][CFEngine Intermediate Examples#Simple versioned template]
+* [Macro template][CFEngine Intermediate Examples#Macro template]
+* [Custom editing][CFEngine Intermediate Examples#Custom editing]
+* [Manage a system process][CFEngine Intermediate Examples#Manage a system process]
+* [Ensure running][CFEngine Intermediate Examples#Ensure running]
+* [Ensure not running][CFEngine Intermediate Examples#Ensure not running]
+* [Prune processes][CFEngine Intermediate Examples#Prune processes]
+* [Manage users][CFEngine Intermediate Examples#Manage users]
+* [Add users][CFEngine Intermediate Examples#Add users]
+* [Remove users][CFEngine Intermediate Examples#Remove users]
+* [Postfix mail configuration][CFEngine Intermediate Examples#Postfix mail configuration]
+* [Set up HPC clusters][CFEngine Intermediate Examples#Set up HPC clusters]
+* [Set up name resolution][CFEngine Intermediate Examples#Set up name resolution]
+* [Set up sudo][CFEngine Intermediate Examples#Set up sudo]
+* [Set up a web server][CFEngine Intermediate Examples#Set up a web server]
+* [Templating][CFEngine Intermediate Examples#Templating]
 
-    Centralized Management
-    All hosts the same
-    Variation in hosts
-    Updating from a central hub
-    Change detection
-    Garbage collection
-    Distribute root passwords
-    Distribute ssh keys
-    Laptop support configuration
-    Find MAC address
-    Log rotation
-    Manage a system file
-    Simple template
-    Simple versioned template
-    Macro template
-    Custom editing
-    Manage a system process
-    Ensure running
-    Ensure not running
-    Prune processes
-    Manage users
-    Add users
-    Remove users
-    Postfix mail configuration
-    Set up HPC clusters
-    Set up name resolution
-    Set up sudo
-    Set up a web server
-    Templating
-
-2.1 Centralized Management
+## Centralized Management
 
 These examples show a simple setup for starting with a central approach to management of servers. Centralization of management is a simple approach suitable for small environments with few requirements. It is useful for clusters where systems are all alike.
 
@@ -45,10 +44,11 @@ These examples show a simple setup for starting with a central approach to manag
     Variation in hosts
     Updating from a central hub
 
-2.2 All hosts the same
+### All hosts the same
 
 This shows the simplest approach in which all hosts are the same. It is too simple for most environments, but it serves as a starting point. Compare it to the next section that includes variation.
 
+```cf3
 body common control
    {
    bundlesequence  => { "central" };
@@ -132,8 +132,11 @@ access:
      admit   => { "127.0.0.1", "10.20.30" };
 }
 
-2.3 Variation in hosts
+```
 
+### Variation in hosts
+
+```cf3
 body common control
    {
    bundlesequence  => { "central" };
@@ -233,10 +236,13 @@ access:
      admit   => { "127.0.0.1", "10.20.30" };
 }
 
-2.4 Updating from a central hub
+```
+
+### Updating from a central hub
 
 The configuration bundled with the CFEngine source code contains an example of centralized updating of policy that covers more subtleties than this example, and handles fault tolerance. Here is the main idea behind it. For simplicity, we assume that all hosts are on network 10.20.30.* and that the central policy server/hub is 10.20.30.123.
 
+```cf3
 bundle agent update
 {
 vars:
@@ -286,9 +292,12 @@ access:
     admit   => { "127.0.0.1", "10.20.30" };
 }
 
+```
 
-2.5 Change detection
 
+## Change detection
+
+```cf3
 body common control
 
 {
@@ -311,9 +320,11 @@ files:
        depth_search => recurse("inf"),
        action       => background;
 }
+```
 
-2.6 Garbage collection
+## Garbage collection
 
+```cf3
 body common control
 {
 bundlesequence => { "garbage_collection" };
@@ -500,7 +511,7 @@ access:
 
 }
 
-2.8 Distribute ssh keys
+## Distribute ssh keys
 
 # Assume that we have collected all users' public keys into a single source area
 # on the server. First copy the ones we need to localhost, and then edit them into
@@ -594,10 +605,13 @@ insert_lines:
          insert_type => "file";
 }
 
-2.9 Laptop support configuration
+```
+
+## Laptop support configuration
 
 Laptops do not need a lot of confguration support. IP addresses are set by DHCP and conditions are changeable. But you want to set your DNS search domains to familiar settings in spite of local DHCP configuration, and another useful trick is to keep a regular backup of disk changes on the local disk. This won't help against disk destruction, but it is a huge advantage when your user accidentally deletes files while travelling or offline.
 
+```cf3
 #######################################################
 #
 
@@ -739,10 +753,13 @@ files:
 
 }
 
-2.10 Find the MAC address
+```
+
+## Find the MAC address
 
 Finding the ethernet address can be hard, but on Linux it is straightforward.
 
+```cf3
 bundle agent test
 {
 vars:
@@ -801,7 +818,7 @@ ok::
 
 }
 
-2.11 Log rotation
+## Log rotation
 
 body common control
    {
@@ -830,16 +847,18 @@ body rename rotate(level)
 {
 rotate => "$(level)";
 }
+```
 
-2.12 Manage a system file
+## Manage a system file
 
     Simple template
     Simple versioned template
     Macro template
     Custom editing
 
-2.13 Simple template
+### Simple template
 
+```cf3
 bundle agent hand_edited_config_file
 {
 vars:
@@ -883,13 +902,15 @@ files:
          perms => mo("$(mode)","root"),
         action => if_elapsed("60");
 }
+```
 
-2.14 Simple versioned template
+### Simple versioned template
 
 The simplest approach to managing a file is to maintain a master copy by hand, keeping it in a version controlled repository (e.g. svn), and installing this version on the end machine.
 
 We'll assume that you have a version control repository that is located on some independent server, and has been checked out manually once (with authentication) in /mysite/masterfiles.
 
+```cf3
 bundle agent hand_edited_config_file
 {
 vars:
@@ -915,11 +936,13 @@ commands:
      ifvarclass => canonify("$(policy_server)");
 
 }
+```
 
-2.15 Macro template
+### Macro template
 
 The next simplest approach to file management is to add variables to the template that will be expanded into local values at the end system, e.g. using variables like ‘$(sys.host)’ for the name of the host within the body of the versioned template.
 
+```cf3
 bundle agent hand_edited_template
 {
 vars:
@@ -948,9 +971,11 @@ commands:
      ifvarclass => canonify("$(policy_server)");
 
 }
+```
 
 The macro template file may contain variables, as below, that get expanded by CFEngine.
 
+```cf3
      # Syntax:
      #
      # IP-Address  Full-Qualified-Hostname  Short-Hostname
@@ -971,11 +996,13 @@ The macro template file may contain variables, as below, that get expanded by CF
      # Add below this line
      
      $(definitions.more_hosts)
+```	 
 
-2.16 Custom editing
+### Custom editing
 
 If you do not control the starting state of the file, because it is distributed by an operating system vendor for instance, then editing the final state is the best approach. That way, you will get changes that are made by the vendor, and will ensure your own modifications are kept even when updates arrive.
 
+```cf3
 bundle agent modifying_managed_file
 {
 vars:
@@ -994,9 +1021,11 @@ files:
 
 
 }
+```
 
 Another example shows how to set the values of variables using a data-driven approach and methods from the standard library.
 
+```cf3
 #######################################################
 #
 
@@ -1030,17 +1059,19 @@ files:
 
      edit_line => set_variable_values("testsetvar.v");
 }
+```
 
-2.17 Manage a system process
+## Manage a system process
 
     Ensure running
     Ensure not running
     Prune processes
 
-2.18 Ensure running
+### Ensure running
 
 The simplest example might look like this:
 
+```cf3
 bundle agent restart_process
 {
 processes:
@@ -1057,9 +1088,11 @@ commands:
      "/etc/init.d/apache2 restart";
 
 }
+```
 
 This example shows how the CFEngine components could be started using a pattern.
 
+```cf3
 bundle agent CFEngine_processes
 {
 vars:
@@ -1081,9 +1114,11 @@ commands:
        ifvarclass => canonify("start_$(components)");
 
 }
+```
 
-2.19 Ensure not running
+### Ensure not running
 
+```cf3
 bundle agent restart_process
 {
 vars:
@@ -1098,11 +1133,13 @@ processes:
       signals => { "term", "kill" };
 ;
 }
+```
 
-2.20 Prune processes
+### Prune processes
 
 This example kills processes owned by a particular user that have exceeded 100000 bytes of resident memory.
 
+```cf3
 body common control
 {
 bundlesequence  => { "testbundle"  };
@@ -1132,20 +1169,22 @@ process_owner => { "$(o)" };
 rsize => irange("100000","900000");
 process_result => "rsize.process_owner";
 }
+```
 
-2.21 Manage users
+## Manage users
 
 There are many approaches to managing users. You can edit system files like /etc/passwd directly, or you can use commands on some systems like ‘useradd’ or ‘adduser’. In all cases it is desirable to make this a data-driven process.
 
     Add users
     Remove users
 
-2.22 Add users
+### Add users
 
 A simple approach which adds new users to the password file, and to a group called ‘users’ in the group file. Is shown below. This example does not edit the shadow file. A simple pattern that can be modified for use is shown below.
 
 Note that, although this is a simple minded approach, it is the most efficient of the approaches shown here as all operations can be carried out in a single operation for each file.
 
+```cf3
 bundle agent addusers
 {
 vars:
@@ -1177,9 +1216,11 @@ files:
      create => "true",
       perms => mog("755","$(users)","users");
 }
+```
 
 A second approach is to use the shell commands supplied by some operating systems; this assumes that suitable defaults have been set up manually. Also the result is not repairable in a simple convergent manner. The command needs to edit multiple files for each user, and is quite inefficient.
 
+```cf3
 bundle agent addusers
 {
 vars:
@@ -1190,9 +1231,11 @@ commands:
 
    "/usr/sbin/useradd $(users)";
 }
+```
 
 An alternative approach is to use a method to wrap around the handling of a user. Although this looks nice, it is less efficient than the first method because it must edit the files multiple times.
 
+```cf3
 bundle agent addusers
 {
 vars:
@@ -1233,9 +1276,9 @@ files:
       perms => mog("755","$(users)","users");
 }
 
-2.23 Remove users
+### Remove users
 
-2.24 Postfix mail configuration
+## Postfix mail configuration
 
 #######################################################
 #
@@ -1329,11 +1372,13 @@ bundle edit_line AppendIfNSL(parameter)
 
     "$(parameter)"; # This is default
   }
+```
 
-2.25 Set up HPC clusters
+## Set up HPC clusters
 
 HPC cluster machines are usually all identical, so the CFEngine configuration is very simple. HPC clients value CPU and memory resources, so we can shut down unnecessary services to save CPU. We can also change the scheduling rate of CFEngine to run less frequently, and save a little:
 
+```cf3
 #######################################################
 
 
@@ -1410,13 +1455,15 @@ bundle agent disable_xinetd(name)
       "disable $(name) service.";
    
 }
+```
 
-2.26 Set up name resolution
+## Set up name resolution
 
 There are many ways to do name resolution setup1 We write a reusable bundle using the editing features.
 
 A simple and straightforward approach is to maintain a separate modular bundle for this task. This avoids too many levels of abstraction and keeps all the information in one place. We implement this as a simple editing promise for the /etc/resolv.conf file.
 
+```cf3
 bundle agent system_files
 
 {
@@ -1471,9 +1518,11 @@ insert_lines:
   "nameserver 212.112.166.18";
   "nameserver 212.112.166.22";
 }
+```
 
 A second approach is to try to conceal the operational details behind a veil of abstraction.
 
+```cf3
 bundle agent system_files
 {
 vars:
@@ -1507,9 +1556,11 @@ insert_lines:
   "search $(search)";
   "nameserver $(names)";
 }
+```
 
 DNS is not the only name service, of course. Unix has its older /etc/hosts file which can also be managed using file editing. We simply append this to the system_files bundle.
 
+```cf3
 bundle agent system_files
 {
 
@@ -1545,11 +1596,13 @@ insert_lines:
  "$(i)     $(names[$(i)])";
 
 }
+```
 
-2.27 Set up sudo
+## Set up sudo
 
 Setting up sudo is straightforward, and is best managed by copying trusted files from a repository.
 
+```cf3
 bundle agent system_files
 {
 vars:
@@ -1567,10 +1620,14 @@ files:
        perms => mog("440","root","root"),
    copy_from => secure_cp("$(masterfiles)/sudoers","$(policy_server)");
 
-}2.28 Set up a web server
+}
+```
+
+## Set up a web server
 
 Adapt this template to your operating system by adding multiple classes. Each web server runs something like the present module, which is entered into the bundlesequence like this:
 
+```cf3
 #####################################################
 #
 
@@ -1736,9 +1793,10 @@ field_edits:
 
 
 }
+```
 
-Previous: Set up a web server, Up: High level
-2.29 Templating
+
+## Templating
 
 With CFEngine you have a choice between editing `deltas' into files or distributing more-or-less finished templates. Which method you should choose depends should be made by whatever is easiest.
 
@@ -1747,6 +1805,7 @@ With CFEngine you have a choice between editing `deltas' into files or distribut
 
 Example template:
 
+```cf3
 #
 # System file X
 
@@ -1757,10 +1816,12 @@ MYVARIABLE = something or other
 HOSTNAME = $(sys.host)           # CFEngine fills this in
 
 # ...
+```
 
 
 To copy and expand this template, you can use a pattern like this:
 
+```cf3
 bundle agent test
 {
 methods:
@@ -1769,9 +1830,11 @@ methods:
  "any" usebundle => get_template("/etc/hosts","644");
 
 }
+```
 
 The the following driving code (based on `copy then edit') can be placed in a library, after configuring to your environmental locations:
 
+```cf3
 bundle agent get_template(final_destination,mode)
 {
 vars:
@@ -1801,3 +1864,4 @@ files:
         action => if_elapsed("60");
 
 }
+```
