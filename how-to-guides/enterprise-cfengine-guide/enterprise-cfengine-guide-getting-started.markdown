@@ -2,7 +2,7 @@
 layout: default
 title: Getting Started With CFEngine Enterprise
 published: true
-sorting: 10
+sorting: 1
 ---
 
 * [Installation](#installation)
