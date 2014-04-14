@@ -54,7 +54,7 @@ Making a CFEngine **promise** will generally follow these simple steps:
 
 ### Steps to Create a Promise ###
 
-(**1**) Create a bundle.
+1. Create a bundle.
 
 ```cf3
 bundle agent hello_world
@@ -63,7 +63,7 @@ bundle agent hello_world
 }
 ```
 
-(**2**) Insert the promise type **reports**.
+2. Insert the promise type **reports**.
 
 ```cf3
 bundle agent hello_world
@@ -73,7 +73,7 @@ bundle agent hello_world
 }
 ```
 
-(**3**) Add a class expression (optional). The class expression defaults to '**any**', but in this example it is explicitly declared.
+3. Add a class expression (optional). The class expression defaults to '**any**', but in this example it is explicitly declared.
 
 ```cf3
 bundle agent hello_world
@@ -85,7 +85,7 @@ bundle agent hello_world
 }
 ```
 
-(**4**) Give attributes required values. In this case only our simple "**Hello World!**" message string.
+4. Give attributes required values. In this case only our simple "**Hello World!**" message string.
 
 ```cf3
 bundle agent hello_world
@@ -103,11 +103,11 @@ bundle agent hello_world
 
 #### Manually Executing the Promise ####
 
-(**1**) Assuming the promise file is located at **/var/cfengine/masterfiles/hello_world.cf**, on the command line type the following: 
+1. Assuming the promise file is located at **/var/cfengine/masterfiles/hello_world.cf**, on the command line type the following: 
 
 ```# /var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/hello_world.cf --bundlesequence hello_world```
 
-(**2**) The output will include something similar to the following:
+1. The output will include something similar to the following:
 
 ```notice: R: Hello World!```
 
@@ -116,13 +116,13 @@ bundle agent hello_world
 
 Registering the promise with CFEngine consists of some simple steps:
 
-(**1**) On the policy server, open the file **/var/cfengine/masterfiles/promises.cf** in a text editor.
-(**2**) At the end of the **bundlesequence** section add the following line:
+1. On the policy server, open the file **/var/cfengine/masterfiles/promises.cf** in a text editor.
+2.  At the end of the **bundlesequence** section add the following line:
 
 ```
 "hello_world",
 ```
-(**3**) At the end of the **inputs** section add the following line:
+3.  At the end of the **inputs** section add the following line:
 
 ```
 "hello_world.cf",
