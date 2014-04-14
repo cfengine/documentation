@@ -7,73 +7,73 @@ tags: [Examples]
 ---
 
 
-    Aborting execution
-    ACL file example
-    ACL generic example
-    ACL secret example
-    Active directory example
-    Active list users directory example
-    Active directory show users example
-    Add lines to a file
-    Add users to passwd and group
-    Add software packages to the system
-    Add variable definitions to a file
-    Application baseline
-    Array example
-    Back references in filenames
-    BSD flags
-    Change directory for command
-    Check file or directory permissions
-    Class match example
-    Client-server example
-    Commands example
-    Commenting lines in a file
-    Copy files
-    Copy and flatten directory
-    Copy then edit
-    Creating files and directories
-    Database creation
-    Deleting lines from a file
-    Deleting lines exception
-    Editing files
-    Editing tabular files
-    Environment (virtual)
-    Environment variables
-    Execresult example
-    Inserting lines in a file
-    Get a list of users
-    Global classes
-    Hello world
-    LDAP interactions
-    Linking files
-    Listing files-pattern in a directory
-    Locate and transform files
-    Logging
-    Measurements
-    Methods
-    Method validation
-    Mount NFS filesystem
-    Ordering promises
-    Process management
-    Read from a TCP socket
-    Resolver management
-    Search and replace text
-    Selecting a region in a file
-    Service management (windows)
-    Set up a PXE boot server
-    Tidying garbage files
-    Software distribution
-    Trigger classes
-    Unmount NFS filesystem
-    Web server modules
-    Warn if matching line in file
-    Windows registry
-    unit_registry_cache.cf
-    unit_registry.cf
+[Aborting execution][CFEngine Advanced Examples#Aborting execution]
+[ACL file example][CFEngine Advanced Examples#ACL file example]
+[ACL generic example][CFEngine Advanced Examples#ACL generic example]
+[ACL secret example][CFEngine Advanced Examples#ACL secret example]
+[Active directory example][CFEngine Advanced Examples#Active directory example]
+[Active list users directory example][CFEngine Advanced Examples#Active list users directory example]
+[Active directory show users example][CFEngine Advanced Examples#Active directory show users example]
+[Add lines to a file][CFEngine Advanced Examples#Add lines to a file]
+[Add users to passwd and group][CFEngine Advanced Examples#Add users to passwd and group]
+[Add software packages to the system][CFEngine Advanced Examples#Add software packages to the system]
+[Add variable definitions to a file][CFEngine Advanced Examples#Add variable definitions to a file]
+[Application baseline][CFEngine Advanced Examples#Application baseline]
+[Array example][CFEngine Advanced Examples#Array example]
+[Back references in filenames][CFEngine Advanced Examples#Back references in filenames]
+[BSD flags][CFEngine Advanced Examples#BSD flags]
+[Change directory for command][CFEngine Advanced Examples#Change directory for command]
+[Check file or directory permissions][CFEngine Advanced Examples#Check file or directory permissions]
+[Class match example][CFEngine Advanced Examples#Class match example]
+[Client-server example][CFEngine Advanced Examples#Client-server example]
+[Commands example][CFEngine Advanced Examples#Commands example]
+[Commenting lines in a file][CFEngine Advanced Examples#Commenting lines in a file]
+[Copy files][CFEngine Advanced Examples#Copy files]
+[Copy and flatten directory][CFEngine Advanced Examples#Copy and flatten directory]
+[Copy then edit][CFEngine Advanced Examples#Copy then edit]
+[Creating files and directories][CFEngine Advanced Examples#Creating files and directories]
+[Database creation][CFEngine Advanced Examples#Database creation]
+[Deleting lines from a file][CFEngine Advanced Examples#Deleting lines from a file]
+[Deleting lines exception][CFEngine Advanced Examples#Deleting lines exception]
+[Editing files][CFEngine Advanced Examples#Editing files]
+[Editing tabular files][CFEngine Advanced Examples#Editing tabular files]
+[Environment (virtual)][CFEngine Advanced Examples#Environment (virtual)]
+[Environment variables][CFEngine Advanced Examples#Environment variables]
+[Execresult example][CFEngine Advanced Examples#Execresult example]
+[Inserting lines in a file][CFEngine Advanced Examples#Inserting lines in a file]
+[Get a list of users][CFEngine Advanced Examples#Get a list of users]
+[Global classes][CFEngine Advanced Examples#Global classes]
+[Hello world][CFEngine Advanced Examples#Hello world]
+[LDAP interactions][CFEngine Advanced Examples#LDAP interactions]
+[Linking files][CFEngine Advanced Examples#Linking files]
+[Listing files-pattern in a directory][CFEngine Advanced Examples#Listing files-pattern in a directory]
+[Locate and transform files][CFEngine Advanced Examples#Locate and transform files]
+[Logging][CFEngine Advanced Examples#Logging]
+[Measurements][CFEngine Advanced Examples#Measurements]
+[Methods][CFEngine Advanced Examples#Methods]
+[Method validation][CFEngine Advanced Examples#Method validation]
+[Mount NFS filesystem][CFEngine Advanced Examples#Mount NFS filesystem]
+[Ordering promises][CFEngine Advanced Examples#Ordering promises]
+[Process management][CFEngine Advanced Examples#Process management]
+[Read from a TCP socket][CFEngine Advanced Examples#Read from a TCP socket]
+[Resolver management][CFEngine Advanced Examples#Resolver management]
+[Search and replace text][CFEngine Advanced Examples#Search and replace text]
+[Selecting a region in a file][CFEngine Advanced Examples#Selecting a region in a file]
+[Service management (windows)][CFEngine Advanced Examples#Service management (windows)]
+[Set up a PXE boot server][CFEngine Advanced Examples#Set up a PXE boot server]
+[Tidying garbage files][CFEngine Advanced Examples#Tidying garbage files]
+[Software distribution][CFEngine Advanced Examples#Software distribution]
+[Trigger classes][CFEngine Advanced Examples#Trigger classes]
+[Unmount NFS filesystem][CFEngine Advanced Examples#Unmount NFS filesystem]
+[Web server modules][CFEngine Advanced Examples#Web server modules]
+[Warn if matching line in file][CFEngine Advanced Examples#Warn if matching line in file]
+[Windows registry][CFEngine Advanced Examples#Windows registry]
+[unit_registry_cache.cf][CFEngine Advanced Examples#unit_registry_cache.cf]
+[unit_registry.cf][CFEngine Advanced Examples#unit_registry.cf]
 
-3.1 Aborting execution
+## Aborting execution
 
-
+```cf3
 body common control
 
 {
@@ -126,10 +126,11 @@ reports:
 
   "User name $(user) is invalid";
 }
+```
 
-3.2 ACL file example
+## ACL file example
 
-
+```cf3
 body common control
 {
 bundlesequence => { "acls" };
@@ -181,10 +182,11 @@ body depth_search include_base
 {
 include_basedir => "true";
 }
+```
 
-3.3 ACL generic example
+## ACL generic example
 
-
+```cf3
 body common control
 {
 bundlesequence => { "acls" };
@@ -222,9 +224,11 @@ body depth_search include_base
 {
 include_basedir => "true";
 }
+```
 
-3.4 ACL secret example
+## ACL secret example
 
+```cf3
 body common control
 {
 bundlesequence => { "acls" };
@@ -264,9 +268,11 @@ body depth_search include_base
 {
 include_basedir => "true";
 }
+```
 
-3.5 Active directory example
+## Active directory example
 
+```cf3
 #########################################################################
 
 #   active_directory.cf - Extract Data From Windows Domain Controllers
@@ -333,9 +339,11 @@ dummy.gotuser::
   "Got user data; $(userinfo[name]) has logged on $(userinfo[logonCount]) times";
 
 }
+```
 
-3.6 Active list users directory example
+## Active list users directory example
 
+```cf3
 # List users from Active Directory through LDAP
 
 # Note: Anonymous LDAP binding must be allowed, and the Anonymous user
@@ -357,9 +365,11 @@ reports:
 Yr2010::
   "Username: \"$(userlist)\"";
 }
+```
 
-3.7 Active directory show users example
+## Active directory show users example
 
+```cf3
 # List users from Active Directory through LDAP
 
 # Note: Anonymous LDAP binding must be allowed, and the Anonymous user
@@ -385,11 +395,13 @@ gotdata::
 !gotdata::
   "Did not get user data";
 }
+```
 
-3.8 Add lines to a file
+## Add lines to a file
 
 There are numerous approaches to adding lines to a file. Often the order of a configuration file is unimportant, we just need to ensure settings within it. A simple way of adding lines is show below.
 
+```cf3
 body common control
 
 {
@@ -422,9 +434,11 @@ files:
          edit_line => append_if_no_line("$(insert.lines)");
 
 }
+```
 
 Also you could write this using a list variable:
 
+```cf3
 body common control
 
 {
@@ -452,11 +466,13 @@ files:
          edit_line => append_if_no_line("@(insert.lines)");
 
 }
+```
 
-3.9 Add users to passwd and group
+## Add users to passwd and group
 
 Add lines to the password file, and users to group if they are not already there.
 
+```cf3
 body common control
 {
 bundlesequence => { "addpasswd" };
@@ -489,7 +505,7 @@ files:
 
 }
 
-3.10 Add software packages to the system
+## Add software packages to the system
 
 #
 # Package managment
@@ -532,10 +548,12 @@ packages:
      package_method => yum;
 
 }
+```
 
 Note you can also arrange to hide all the differences between package managers on an OS basis, but since some OSs have multiple managers, this might not be 100 percent correct.
 
-3.11 Add variable definitions to a file e.g. /etc/system
+```cf3
+## Add variable definitions to a file e.g. /etc/system
 
 body common control
 {
@@ -566,6 +584,7 @@ files:
      edit_line => set_variable_values("setvars.rhs");
 
 }
+```
 
 Results in:
 
@@ -575,6 +594,7 @@ lhs3=And everywhere that Mary went
 
 An example of this would be to add variables to /etc/sysctl.conf on Linux:
 
+```cf3
 body common control
 {
 bundlesequence => { "setvars" };
@@ -610,9 +630,11 @@ files:
     Back references in filenames
     BSD flags
     Change directory for command
+```
 
-3.12 Application baseline
+## Application baseline
 
+```cf3
 #########################################################################
 
 #
@@ -671,10 +693,11 @@ windows::
 windows.!is_correct::
  "Adobe Reader is not correctly deployed - got \"$(value1)\", \"$(value2)\", \"$(value3)\"";
 }
+```
 
-3.13 Array example
+## Array example
 
-
+```cf3
 body common control
 {
 bundlesequence => { "array" };
@@ -703,7 +726,7 @@ reports:
    "Global $(g.array[1]) and $(localarray[2])";
 }
 
-3.14 Backreferences in filenames
+## Backreferences in filenames
 
 ######################################################################
 
@@ -769,10 +792,11 @@ bundle edit_line myedit(parameter)
      "$(edit_variable)";
   
   }
+```
 
-3.15 BSD flags
+## BSD flags
 
-
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -796,11 +820,11 @@ body perms setbsd
 {
 bsdflags => { "+uappnd","+uchg", "+uunlnk", "-nodump" };
 }
+```
 
-3.16 Change directory for command
+## Change directory for command
 
-
-
+```cf3
 body common control
 
 {
@@ -823,9 +847,11 @@ commands:
    "/bin/pwd"
        contain => cd("/tmp");
 }
+```
 
-3.17 Check file or directory permissions
+## Check file or directory permissions
 
+```cf3
 bundle agent check_perms
 {
 vars:
@@ -869,14 +895,15 @@ files:
     "$(ftp)/dev"        perms => mog("555","root","other");
     "$(ftp)/usr"        perms => mog("555","root","other");
 }
+```
 
     Class match example
     Client-server example
     Commands example
     Commenting lines in a file
 
-3.18 Class match example
-
+```cf3
+## Class match example
 
 body common control
 
@@ -902,7 +929,7 @@ reports:
 
 }
 
-3.19 Client-server example
+## Client-server example
 
 ########################################################
 
@@ -1044,12 +1071,12 @@ access:
 
     admit   => { "127.0.0.1" };
 }
+```
 
 
+## Commands example
 
-3.20 Commands example
-
-
+```cf3
 body common control
 {
 bundlesequence  => { "my_commands" };
@@ -1072,10 +1099,11 @@ commands:
       contain => setuid("mysql");
 
 }
+```
 
+## Commenting lines in a file
 
-3.21 Commenting lines in a file
-
+```cf3
 ######################################################################
 
 #
@@ -1289,9 +1317,11 @@ body replace_with uncomment
 replace_value => "$(match.1)";
 occurrences => "all";
 }
+```
 
-3.22 Copy files
+## Copy files
 
+```cf3
 files:
 
   "/var/cfengine/inputs" 
@@ -1314,7 +1344,7 @@ files:
 
     Copy and flatten directory 
 
-3.23 Copy and flatten directory
+## Copy and flatten directory
 
 ########################################################
 
@@ -1454,11 +1484,13 @@ access:
 
     admit   => { "127.0.0.1" };
 }
+```
 
-3.24 Copy then edit a file convergently
+## Copy then edit a file convergently
 
 To convergently chain a copy followed by edit, you need a staging file. First you copy to the staging file. Then you edit the final file and insert the staging file into it as part of the editing. This is convergent with respect to both stages of the process.
 
+```cf3
 bundle agent master
 {
 files:
@@ -1492,14 +1524,15 @@ replace_patterns:
 
           replace_with => With("replacestring");
 }
-
+```
 
     Creating files and directories
     Database creation
     Deleting lines from a file
     Deleting lines exception
 
-3.25 Creating files and directories
+```cf3
+## Creating files and directories
 
 ########################################################
 
@@ -1548,10 +1581,12 @@ mode  => "0640";
 }
 
 #########################################################
+```
 
 
-3.26 Database creation
+## Database creation
 
+```cf3
 body common control
 {
 bundlesequence => { "dummy" };
@@ -1633,11 +1668,11 @@ body contain as_user(x)
 {
 exec_owner => "$(x)";
 }
+```
 
-3.27 Deleting lines from a file
+## Deleting lines from a file
 
-
-
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -1712,9 +1747,11 @@ body location end
 
 before_after => "after";
 }
+```
 
-3.28 Deleting lines exception
+## Deleting lines exception
 
+```cf3
 ########################################################
 
 #
@@ -1778,13 +1815,15 @@ bundle edit_line MarkNRoot
        "mark.*|root.*" not_matching => "true";
 
   }
+```
 
-3.29 Editing files
+## Editing files
 
 This is a huge topic. See also See Add lines to a file, See Editing tabular files, etc. Editing a file can be complex or simple, depending on needs.
 
 Here is an example of how to comment out lines matching a number of patterns:
 
+```cf3
 ######################################################################
 #
 
@@ -1821,7 +1860,7 @@ files:
       edit_line => comment_lines_matching("@(testbundle.patterns)","#");
 }
 
-3.30 Editing tabular files
+## Editing tabular files
 
 ######################################################################
 
@@ -1935,7 +1974,7 @@ field_value     => "$(newval)";
 field_operation => "$(method)";
 extend_fields => "true";
 }
-
+```
 
     Environment (virtual)
     Environment variables
@@ -1954,7 +1993,8 @@ extend_fields => "true";
     Method validation
     Mount NFS filesystem
 
-3.31 Environments (virtual)
+```cf3
+## Environments (virtual)
 
 #######################################################
 
@@ -2024,7 +2064,7 @@ host2::
 
 }
 
-3.32 Environment variables
+## Environment variables
 
 #######################################################
 
@@ -2069,7 +2109,7 @@ body environment_resources virt_xml
 env_spec_file => "/srv/xen/centos5-libvirt-create.xml";
 }
 
-3.33 Execresult example
+## Execresult example
 
 
 body common control
@@ -2095,10 +2135,11 @@ reports:
     "Variable is $(my_result)";
 
 }
+```
 
-3.34 Inserting lines in a file
+## Inserting lines in a file
 
-
+```cf3
 #######################################################
 
 #
@@ -2307,8 +2348,9 @@ body edit_defaults empty
 {
 empty_file_before_editing => "true";
 }
+```
 
-3.35 Get a list of users
+## Get a list of users
 
 #######################################################
 
@@ -2349,7 +2391,7 @@ reports:
 
 }
 
-3.36 Global classes
+## Global classes
 
 
 body common control
@@ -2398,9 +2440,11 @@ reports:
 
 
 #################################
+```
 
-3.37 Hello world
+## Hello world
 
+```cf3
 # Hard promises
 
 
@@ -2420,10 +2464,11 @@ reports:
 
    "Hello world!";
 }
+```
 
-3.38 LDAP interactions
+## LDAP interactions
 
-
+```cf3
 #
 
 
@@ -2490,9 +2535,11 @@ reports:
 "Different bundle ...$(ldap.myarray[uid]),$(ldap.myarray[gecos]),
 
 }
+```
 
-3.39 Linking files
+## Linking files
 
+```cf3
 ######################################################################
 
 #
@@ -2639,10 +2686,11 @@ body action tell_me
 {
 report_level => "inform";
 }
+```
 
-3.40 Listing files-pattern in a directory
+## Listing files-pattern in a directory
 
-
+```cf3
 body common control
 
 {
@@ -2666,10 +2714,11 @@ reports:
     "ls: $(ls)";
 
 }
+```
 
+## Locate and transform files
 
-3.41 Locate and transform files
-
+```cf3
 #######################################################
 
 #
@@ -2726,10 +2775,11 @@ body depth_search recurse(d)
 {
 depth => "$(d)";
 }
+```
 
-3.42 Logging
+## Logging
 
-
+```cf3
 body common control
 {
 bundlesequence => { "test" };
@@ -2784,10 +2834,11 @@ body action log
 {
 log_level => "inform";
 }
+```
 
+## Measurements
 
-3.43 Measurements
-
+```cf3
 #cop measurements,example
 
 
@@ -2951,10 +3002,11 @@ body match_value file_system
 select_line_matching => "/.*";
 extraction_regex => "(.*)";
 }
+```
 
-3.44 Methods
+## Methods
 
-
+```cf3
 body common control
 
 {
@@ -2994,10 +3046,11 @@ reports:
 
   "Finished doing stuff for $(user)";
 }
+```
 
-3.45 Method validation
+## Method validation
 
-
+```cf3
 body common control
 
 {
@@ -3050,10 +3103,11 @@ reports:
 
   "User name $(user) is invalid";
 }
+```
 
-3.46 Mount NFS filesystem
+## Mount NFS filesystem
 
-
+```cf3
 #
 
 # cfengine 3
@@ -3097,8 +3151,9 @@ mount_server => "$(server)";
 edit_fstab => "true";
 unmount => "true";
 }
+```
 
-3.47 Ordering promises
+## Ordering promises
 
 This counts to five by default. If we change ‘/bin/echo one’ to ‘/bin/echox one’, then the command will fail, causing us to skip five and go to six instead.
 
@@ -3106,6 +3161,7 @@ This shows how dependencies can be chained in spite of the order of promises in 
 
 Normally the order of promises in a bundle is followed, within each promise type, and the types are ordered according to normal ordering.
 
+```cf3
 ##################################################################
 
 #
@@ -3174,6 +3230,7 @@ promise_repaired => { "$(if)" };
 repair_failed => { "$(else)" };
 persist_time => "0";
 }
+```
 
     Process management
     Read from a TCP socket
@@ -3182,7 +3239,8 @@ persist_time => "0";
     Selecting a region in a file
     Service management (windows)
 
-3.48 Process management
+```cf3	
+## Process management
 
 body common control
 {
@@ -3460,11 +3518,11 @@ body process_count up(s)
 match_range => "1,10"; # or irange("1","10");
 out_of_range_define => { "$(s)_out_of_control" };
 }
+```
 
-3.49 Read from a TCP socket
+## Read from a TCP socket
 
-
-
+```cf3
 body common control
 
 {
@@ -3495,10 +3553,11 @@ reports:
 
     "Server is not responding - got $(my80)";
 }
+```
 
+## Resolver management
 
-3.50 Resolver management
-
+```cf3
 #######################################################
 
 #
@@ -3606,10 +3665,11 @@ empty_file_before_editing => "false";
 edit_backup => "false";
 max_file_size => "100000";
 }
+```
 
+## Search and replace text
 
-3.51 Search and replace text
-
+```cf3
 ######################################################################
 
 #
@@ -3698,10 +3758,11 @@ body select_region MySection(x)
 select_start => "\[$(x)\]";
 select_end => "\[.*\]";
 }
+```
 
-3.52 Selecting a region in a file
+## Selecting a region in a file
 
-
+```cf3
 body common control
 
 {
@@ -3768,9 +3829,11 @@ body select_region ToEnd(x)
 {
 select_start => "$(x)";
 }
+```
 
-3.53 Service management (windows)
+## Service management (windows)
 
+```cf3
 body common control
 
 {
@@ -3796,11 +3859,13 @@ services:
        service_policy => "disable",
        comment => "Disable services that create security issues";
 }
+```
 
-3.54 Set up a PXE boot server
+## Set up a PXE boot server
 
 Use CFEngine to set up a PXE boot server.
 
+```cf3
 body common control
 {
  bundlesequence => { "pxe" };
@@ -4459,12 +4524,14 @@ body file_select input_files
 }
 
 #######################################################
+```
 
 
-3.55 Tidying garbage files
+## Tidying garbage files
 
 Emulating the `tidy' feature of CFEngine 2.
 
+```cf3
 #######################################################
 #
 
@@ -4542,9 +4609,11 @@ file_result => "mtime";
 
     Software distribution
     Trigger classes
+```
+	
+## Software distribution
 
-3.56 Software distribution
-
+```cf3
 #########################################################################
 
 #
@@ -4762,10 +4831,11 @@ reports::
  remove_fail::
    "Failed to remove one or more packages";
 }
+```
 
-3.57 Trigger classes
+## Trigger classes
 
-
+```cf3
 #######################################################
 
 #
@@ -4856,9 +4926,11 @@ body classes trigger(x)
 {
 promise_repaired => { "$(x)" };
 }
+```
 
-3.58 Unmount NFS filesystem
+## Unmount NFS filesystem
 
+```cf3
 #####################################################################
 # Mount NFS
 
@@ -4897,11 +4969,13 @@ mount_server => "$(server)";
 edit_fstab => "true";
 unmount => "true";
 }
+```cf3
 
-3.59 Web server modules
+## Web server modules
 
 The problem of editing the correct modules into the list of standard modules for the Apache web server. This example is based on the standard configuration deployment of SuSE Linux. Simply provide the list of modules you want and another list that you don't want.
 
+```cf3
 #######################################################
 #
 
@@ -5005,14 +5079,16 @@ field_edits:
 
 
 }
+```cf3
 
     Warn if matching line in file
     Windows registry
     unit_registry_cache.cf
     unit_registry.cf
 
-3.60 Warn if matching line in file
+## Warn if matching line in file
 
+```cf3
 ########################################################
 
 #
@@ -5062,10 +5138,11 @@ body action WarnOnly
 {
 action_policy => "warn";
 }
+```
 
-3.61 Windows registry
+## Windows registry
 
-
+```cf3
 body common control
 {
 bundlesequence => { "reg" };
@@ -5083,8 +5160,12 @@ reports:
 
    "Value extracted: $(value)";
 
-}3.62 unit_registry_cache.cf
+}
+```
 
+## unit_registry_cache.cf
+
+```cf3
 body common control
 {
  bundlesequence => {
@@ -5122,13 +5203,11 @@ bundle agent registry_restore
         database_type      => "ms_registry",
         comment => "Make sure Adobe products have correct registry settings";
 }
+```
 
-Previous: unit_registry_cache.cf, Up: Low level
-3.63 unit_registry.cf
+## unit_registry.cf
 
-
-
-
+```cf3
 body common control
 {
  
@@ -5190,3 +5269,4 @@ databases:
    database_type      => "ms_registry";
 
 }
+```
