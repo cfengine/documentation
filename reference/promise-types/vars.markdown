@@ -208,6 +208,20 @@ modified, once created.
 Data containers can be passed to another bundle with the
 `@(varname)` notation, similarly to the list passing notation.
 
+Iterating through a data container is only guaranteed to respect list
+order (e.g. `[1,3,20]` will be iterated in that order). Key order for
+maps, as per the JSON standard, is not guaranteed. Similarly, calling
+`getindices()` on a data container will give the list order of indices
+0, 1, 2, ... but will not give the keys of a map in any particular
+order.  Here's an example of iterating in list order:
+
+[%CFEngine_include_snippet(container_iteration.cf, #\+begin_src cfengine3, .*end_src)%]
+
+Output:
+
+[%CFEngine_include_snippet(container_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+
 ### data
 
 **Description:** A data container structure
