@@ -18,6 +18,9 @@ containers) they are skipped.  The special values `true`, `false`, and
 `null` are serialized to their string representations.  Numerical
 values are serialized to their string representations.
 
+You can specify a path inside the container. For example, below you'll
+look at the values of `d[k]`, not at the top level of `d`.
+
 Make sure you specify the correct scope when supplying the name of the
 variable.
 
