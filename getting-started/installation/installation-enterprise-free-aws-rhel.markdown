@@ -6,7 +6,7 @@ sorting: 10
 tags: [getting started, installation, enterprise free, aws, rhel]
 ---
 
-This guide describes how to install CFEngine on two Red Hat® Enterprise Linux® (RHEL) virtual machines (VMs) using Amazon Web Services™ (AWS) and SSH. At the time of writing, under certain conditions, setting up an AWS account and using micro-instances is free.
+This guide describes how to install CFEngine on two Red Hat® Enterprise Linux® (RHEL) virtual machines using Amazon Web Services™ (AWS) and SSH. At the time of writing, under certain conditions, setting up an AWS account and using micro-instances is free.
 
 One of the two machines will be a `policy server` (see [Policy Server Overview][Policy Server Overview]), while the other will be a `host` (see [Host Overview][Host Overview]).
 
@@ -60,7 +60,7 @@ This tutorial will cover the following steps:
 * Click the `+Add Rule` button.
 * Click `Apply Rule Changes`.
 
-## Accessing AWS VMs via SSH on Windows Using PuTTY and PuTTYgen ##
+## Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen ##
 
 ### Get PuTTY and PuTTYgen ###
 
@@ -96,7 +96,7 @@ File name input box.
 The Puttygen popup window. Click `Yes`, to proceed without a passphrase. You can also protect your private key with a passphrase that you enter into `Key Passprhase` and `Confirm Key Passphrase`.
 
 * Finally, navigate to a good location on disk to save the key file, enter a name for the private key, ensure PuTTY Private Key Files (*.ppk) type is selected, and then click the Save button.
-* You can now close the Puttygen application. Youwill call up the .ppk file when you configure the VMs using PuTTY.
+* You can now close the Puttygen application. You will call up the .ppk file when you configure the virtual machines using PuTTY.
 
 ### Configure PuTTY ###
 
@@ -115,7 +115,7 @@ The Putty interface, with `Session` selected on the left-side navigation tree.
 
 * Now, we will configure the Putty application, which we will use to set up the two AWS virtual machines.
  * The first step is to create a Host Name for the first VM.
-  * The Host Name consists mainly of the public DNS entry that was created for one of the two VMs in AWS. But the DNS is preceded by a user name, `ec2-user`, followed by the `@` symbol, which is then followed by the DNS entry.
+  * The Host Name consists mainly of the public DNS entry that was created for one of the two virtual machines in AWS. But the DNS is preceded by a user name, `ec2-user`, followed by the `@` symbol, which is then followed by the DNS entry.
 
 ![Setting up the PuTTY configuration](Installing-CFE-on-AWS-4.png)
 
