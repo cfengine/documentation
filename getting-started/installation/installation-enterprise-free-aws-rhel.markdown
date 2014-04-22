@@ -157,7 +157,7 @@ The PuTTY interface with the two virtual machines saved. We can now proceed to c
 
 The PuTTY command-line window, which we will use to configure the virtual machines with CFEngine.
 
-## Install and Configure the Firewall ## 
+## Install and Configure the Firewall ##
 
 ### Install the Firewall ###
 
