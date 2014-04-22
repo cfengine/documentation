@@ -80,7 +80,7 @@ and http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe respectively.
   * Press the `Windows` key + `R` key and then type `puttygen` in the field named `Open`. Then press the `Enter` key or click `OK`.
   * Alternatively, double click puttygen.exe under `C:\Program Files (x86)\PuTTY` (when using Windows 64 bit) or `C:\Program Files\PuTTY` (when using Windows 32 bit).
 
-![The Puttygen Interface](img/Installing-CFE-on-AWS-1.png)
+![The Puttygen Interface](Installing-CFE-on-AWS-1.png)
 
 The Puttygen Interface. You will load the .pem file that you created in AWS.
 
@@ -91,7 +91,7 @@ File name input box.
 * When the key has been loaded click the Save private key button.
 * When prompted with a warning about saving without a passphrase, click yes.
 
-![The Puttygen popup window](img/Installing-CFE-on-AWS-2.png)
+![The Puttygen popup window](Installing-CFE-on-AWS-2.png)
 
 The Puttygen popup window. Click `Yes`, to proceed without a passphrase. You can also protect your private key with a passphrase that you enter into `Key Passprhase` and `Confirm Key Passphrase`.
 
@@ -109,7 +109,7 @@ The Puttygen popup window. Click `Yes`, to proceed without a passphrase. You can
   * Alternatively, double click `putty.exe` under `C:\Program Files (x86)\PuTTY` (when using Windows 64 bit) or `C:\Program Files\PuTTY` (when using Windows 32 bit).
  * On the PuTTY interface, select `Category > Session` on the left side navigation tree:
 
-![The Puttygen Interface](img/Installing-CFE-on-AWS-3.png)
+![The Puttygen Interface](Installing-CFE-on-AWS-3.png)
 
 The Putty interface, with `Session` selected on the left-side navigation tree.
 
@@ -117,7 +117,7 @@ The Putty interface, with `Session` selected on the left-side navigation tree.
  * The first step is to create a Host Name for the first VM.
   * The Host Name consists mainly of the public DNS entry that was created for one of the two virtual machines in AWS. But the DNS is preceded by a user name, `ec2-user`, followed by the `@` symbol, which is then followed by the DNS entry.
 
-![Setting up the PuTTY configuration](img/Installing-CFE-on-AWS-4.png)
+![Setting up the PuTTY configuration](Installing-CFE-on-AWS-4.png)
 
 Setting up the PuTTY configuration with the Host Name, and a Saved Sessions Name.
 
@@ -130,7 +130,7 @@ Once we have entered our Host Name and our Saved Sessions name, we take the foll
  * Click the `Browse` button to select the `Private key for authentication`.
  * In the `Select private key file` window, navigate to the .ppk private key file created earlier, and double-click on it to enter it into PuTTY. Your PuTTY screen should look like this:
 
-![Setting up the PuTTY configuration](img/Installing-CFE-on-AWS-5.png)
+![Setting up the PuTTY configuration](Installing-CFE-on-AWS-5.png)
 
 Note that `Auth` has been selected on left-side tree, in order to bring up this screen.
 
@@ -140,7 +140,7 @@ Note that `Auth` has been selected on left-side tree, in order to bring up this 
  * Wait a moment, and select `Yes` if prompted.
  * This prompt will generally only be necessary when trying to login for the very first time.
 
-![The PuTTY interface with the two virtual machines saved](img/Installing-CFE-on-AWS-6.png)
+![The PuTTY interface with the two virtual machines saved](Installing-CFE-on-AWS-6.png)
 
 The PuTTY interface with the two virtual machines saved. We can now proceed to configure those virtual machines with CFEngine.
 
@@ -153,7 +153,7 @@ The PuTTY interface with the two virtual machines saved. We can now proceed to c
 * Click Load and then Open.
 * Both virtual machines should now be accessed in two different PuTTY command-line windows. Below is an example of what the command-line window will look like.
 
-![The PuTTY command-line window](img/Installing-CFE-on-AWS-7.png)
+![The PuTTY command-line window](Installing-CFE-on-AWS-7.png)
 
 The PuTTY command-line window, which we will use to configure the virtual machines with CFEngine.
 
@@ -173,7 +173,7 @@ The following steps are only necessary for one of the two virtual machines, the 
 * In the `Firewall Configuration` screen use the `Tab` key to go to Customize.
 * Hit the `Enter` key. Below is the `Firewall Configuration` window that comes up:
 
-![The firewall Configuration window](img/Installing-CFE-on-AWS-8.png)
+![The firewall Configuration window](Installing-CFE-on-AWS-8.png)
 
 #### Open Port 80 (HTTPD) ####
 
@@ -188,7 +188,7 @@ The following steps are only necessary for one of the two virtual machines, the 
 * Hit the `Tab` key and enter `tcp` in the `Protocol` section.
 * Hit the `Tab` key until OK is highlighted, and hit `Enter`.
 
-![Configuring a forward](img/Installing-CFE-on-AWS-9.png)
+![Configuring a forward](Installing-CFE-on-AWS-9.png)
 
 The `Port and Protocol` are entered in the blue boxes, with entries of `5308` and `tcp` respectively.
 Then the `Tab` key is used to highlight the `OK` button, and the user presses `Enter`.
@@ -233,7 +233,7 @@ This script installs the latest CFEngine Enterprise Policy Server on your server
 
 Example: `$ sudo /var/cfengine/bin/cf-agent --bootstrap 172.31.3.25`
 
-![Bootstrap the policy server](img/Installing-CFE-on-AWS-10.png)
+![Bootstrap the policy server](Installing-CFE-on-AWS-10.png)
 
 Upon successful completion, a confirmation message appears: "Bootstrap to '172.31.3.25' completed successfully!"
 
@@ -253,7 +253,7 @@ Upon successful completion, a confirmation message appears: "Bootstrap to '172.3
 
 Note: The installation will work on 64-bit and 32-bit client machines (the host requires a 64-bit machine).
 
-![Bootstrap the policy server](img/Installing-CFE-on-AWS-11.png)
+![Bootstrap the policy server](Installing-CFE-on-AWS-11.png)
 
 The client software (host), has been installed on the second virtual machine.
 
