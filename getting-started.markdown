@@ -10,6 +10,8 @@ and learn it. We provide that experience here:
 
 ## Install It
 
+[%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
+
 [Install CFEngine][Installing CFEngine] Read about our various editions and install the 
 CFEngine edition that’s best for your organization. CFEngine features an Enterprise version for 
 production environments and a Community (open-source) edition. We offer two ways to install 
