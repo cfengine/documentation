@@ -12,3 +12,5 @@ sorting: 1
 3. Third Step: [Configure the Hub][Configure the Hub]
 4. Fourth Step: [Bootstrap the Hosts][Bootstrap the Hosts]
 5. Second Step: [Write Promises and Policy][Write Promises and Policy]
+
+See also: [FAQ][FAQ]
