@@ -16,7 +16,25 @@ Git allows contributors to a project to work independently in their own copy (ak
 
 GitHub (https://github.com) is an online service for hosting Git project repositories. It helps provide organizations the infrastructure and tools to setup then manage repositories and users that they would otherwise need to do themselves. In general it contains many features and improvements to a normal git workflow.
 
-### Learning Git ###
+### Downloading and Installing Git on Windows ###
+
+1. Go to the Git website at http://git-scm.com/
+2. Go to the download section. At the time of writing this was http://git-scm.com/downloads.
+3. Select the appropriate platform. In this case select Windows.
+4. Wait for the install application to download.
+5. Launch the downloaded installer application.
+6. If you see a security warning select `Run`, and for `User Account Control` select `Yes`.
+7. Follow the instructions in the installer. It is safe to accept all the default values.
+
+### Launching Git Bash ###
+
+1. Using Windows Explorer, open a directory where you wish to store CFEngine related Git repositories (e.g. D:\Projects\CFEngine).
+2. Right click to bring up the contextual menu.
+3. Select `Git Bash`
+![Contextual Menu With Git Bash](Doctools-ReadMe-Git-Bash.png)
+4. A `Command Prompt` style window will open. This is where you will enter Git commands.
+
+### Using Git ###
 
 Git is a very powerful and robust command line tool at its heart. While it has a great number of commands, some of which are similar to one another, for the beginner there are generally only a few simple ones they need to learn to get started -- and a few more complicated ones to get themselves out of trouble!
 
