@@ -5171,13 +5171,6 @@
     "hub": {
       "status": "normal",
       "attributes": {
-        "export_zenoss": {
-          "attribute": "export_zenoss",
-          "status": "normal",
-          "type": "string",
-          "range": ".+",
-          "visibility": "body"
-        },
         "exclude_hosts": {
           "attribute": "exclude_hosts",
           "status": "normal",

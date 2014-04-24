@@ -242,6 +242,14 @@
                       "attributes": [
                         {
                           "line": 154,
+                          "lval": "contain",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "in_shell_and_silent"
+                          }
+                        },
+                        {
+                          "line": 155,
                           "lval": "handle",
                           "rval": {
                             "type": "string",
@@ -258,7 +266,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/cfe_internal.cf",
-          "line": 157,
+          "line": 158,
           "namespace": "default",
           "name": "cfe_internal_database_cleanup_consumer_status",
           "bundleType": "agent",
@@ -267,18 +275,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 162,
+              "line": 163,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 163,
+                      "line": 164,
                       "promiser": "remove_query",
                       "attributes": [
                         {
-                          "line": 164,
+                          "line": 165,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -292,18 +300,26 @@
               ]
             },
             {
-              "line": 166,
+              "line": 167,
               "name": "commands",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 167,
+                      "line": 168,
                       "promiser": "$(sys.bindir)/psql cfdb -c \"$(remove_query)\"",
                       "attributes": [
                         {
-                          "line": 168,
+                          "line": 169,
+                          "lval": "contain",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "in_shell_and_silent"
+                          }
+                        },
+                        {
+                          "line": 170,
                           "lval": "handle",
                           "rval": {
                             "type": "string",
@@ -320,7 +336,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/cfe_internal.cf",
-          "line": 171,
+          "line": 173,
           "namespace": "default",
           "name": "cfe_internal_database_cleanup_diagnostics",
           "bundleType": "agent",
@@ -329,18 +345,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 173,
+              "line": 175,
               "name": "vars",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 174,
+                      "line": 176,
                       "promiser": "index",
                       "attributes": [
                         {
-                          "line": 174,
+                          "line": 176,
                           "lval": "slist",
                           "rval": {
                             "type": "functionCall",
@@ -356,11 +372,11 @@
                       ]
                     },
                     {
-                      "line": 176,
+                      "line": 178,
                       "promiser": "remove_query_$(settings[$(index)][report])",
                       "attributes": [
                         {
-                          "line": 177,
+                          "line": 179,
                           "lval": "string",
                           "rval": {
                             "type": "string",
@@ -374,18 +390,26 @@
               ]
             },
             {
-              "line": 179,
+              "line": 181,
               "name": "commands",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 180,
+                      "line": 182,
                       "promiser": "$(sys.bindir)/psql cfdb -c \"$(remove_query_$(settings[$(index)][report]))\"",
                       "attributes": [
                         {
-                          "line": 181,
+                          "line": 183,
+                          "lval": "contain",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "in_shell_and_silent"
+                          }
+                        },
+                        {
+                          "line": 184,
                           "lval": "handle",
                           "rval": {
                             "type": "string",

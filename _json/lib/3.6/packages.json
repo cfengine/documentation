@@ -275,7 +275,7 @@
                           "lval": "string",
                           "rval": {
                             "type": "string",
-                            "value": "^Inst\\s+(\\S+)\\s+.*"
+                            "value": "^Inst\\s+\\S+\\s+\\[\\S+\\]\\s+\\((\\S+)\\s+.*"
                           }
                         }
                       ]
