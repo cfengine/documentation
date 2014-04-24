@@ -16,8 +16,11 @@ production environments and a Community (open-source) edition. The Enterprise
 version also has an option where you can install it for free on up to 25 hosts.
 Certain conditions apply.
 
-See also: [Enterprise Overview][Enterprise Overview] for a more detailed understanding
-of the Enterprise version.
+See also: 
+
+* [Supported Platforms and Versions][Supported Platforms and Versions]
+* [Enterprise Overview][Enterprise Overview]
+* [Upgrade Instructions][Upgrade Instructions]
 
 ## Get It
 
@@ -27,7 +30,6 @@ of the Enterprise version.
 ## Install It
 
 [%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
-
 
 See [Install CFEngine][Installing CFEngine] for a more detailed guide on how to get 
 CFEngine up and running for various environments.
