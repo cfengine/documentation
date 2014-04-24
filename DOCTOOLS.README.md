@@ -69,6 +69,7 @@ This will clone the repository from the URL indicated into a sub-directory calle
 2. `> cd documentation`
 3. `> git remote add upstream https://github.com/cfengine/documentation.git`
 
+Note: If working with a clone that you do not have rights to push to then you will need to add a remote for it and push changes to there first.
 
 ### Git (and Related) Resources ###
 
