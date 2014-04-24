@@ -16,8 +16,11 @@ production environments and a Community (open-source) edition. The Enterprise
 version also has an option where you can install it for free on up to 25 hosts.
 Certain conditions apply.
 
-See also: [Enterprise Overview][Enterprise Overview] for a more detailed understanding
-of the Enterprise version.
+See also: 
+
+* [Supported Platforms and Versions][Supported Platforms and Versions]
+* [Enterprise Overview][Enterprise Overview]
+* [Upgrade Instructions][Upgrade Instructions]
 
 ## Get It
 
