@@ -17,11 +17,6 @@ CFEngine comes in two editions:
 
 * CFEngine Community, a free GPL v3 open source edition.
 
-## CFEngine Enterprise
-
-All installations feature instructions and tutorials. One tutorial teaches you how to use the 
-Mission Portal console; the others help you learn the CFEngine language and functionality. 
-
 Choose the installation that best suits your needs.
 
 See also: 
