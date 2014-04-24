@@ -9,12 +9,20 @@ Once you have chosen a version that best suits your needs you can download, inst
 bootstrap, and configure CFEngine. Afterwords, begin writing policy that
 reflects the needs of your organization.
 
-## Choose a Version
+## Choose a CFEngine Version
 
-CFEngine comes in several editions, including an Enterprise version for 
-production environments and a Community (open-source) edition. The Enterprise
-version also has an option where you can install it for free on up to 25 hosts.
-Certain conditions apply.
+CFEngine comes in two editions:
+
+* CFEngine Enterprise is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers).
+
+* CFEngine Community, a free GPL v3 open source edition.
+
+## CFEngine Enterprise
+
+All installations feature instructions and tutorials. One tutorial teaches you how to use the 
+Mission Portal console; the others help you learn the CFEngine language and functionality. 
+
+Choose the installation that best suits your needs.
 
 See also: 
 
