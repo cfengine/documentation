@@ -21,8 +21,8 @@ of the Enterprise version.
 
 ## Get It
 
-[Get the Enterprise Edition][https://cfengine.com/evaluate-enterprise]
-[Get the Community Edition][https://cfengine.com/inside/myspace]
+* [Get the Enterprise Edition](https://cfengine.com/evaluate-enterprise)
+* [Get the Community Edition](https://cfengine.com/inside/myspace)
 
 ## Install It
 
