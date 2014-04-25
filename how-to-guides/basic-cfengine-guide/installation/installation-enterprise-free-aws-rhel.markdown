@@ -54,11 +54,11 @@ This tutorial will cover the following steps:
 * Remembering the `Security group` name from earlier, click on the appropriate line item in the list.
 * Below the list of security group names will display details for the current security group.
 * Click the `Inbound` tab.
-* Select `HTTP` from the `Create a new rule` list.
-* Click the `+Add Rule` button.
-* Select `Custom TCP rule` and enter `5308` in the `Port range` text entry.
-* Click the `+Add Rule` button.
-* Click `Apply Rule Changes`.
+* Click "Edit" button. A popup window will appear with "SSH" rule already present. 
+* Click the `+Add Rule` button. Select `HTTP` from the drop-down list. 
+* Select `Custom TCP rule` and enter `5308` in the `Port range` text entry. Select "Custom IP" from the drop-down menu in the "Source" column.
+* Copy the "Group ID" from the line containing your "Group Name" and copy the "Group ID" into the text entry in the last column. Click "Save."
+* Click the "Edit" button again. On the "Custom TCP" Rule, select "Anywhere" from the "Source" drop-down list. Click "Save."
 
 ## Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen ##
 
