@@ -200,9 +200,6 @@ directory in the user database.
 **Description:** The `password` attribute specifies a `password` body
 that contains information about a user's password.
 
-**Note:** On Windows, no difference exists between primary and
-secondary groups so specifying either one works.
-
 **Type:** `body password`
 
 **Example:**
