@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Write Promises and Policy
+title: How to Write Promises and Policy
 published: true
 sorting: 1
 ---
@@ -15,10 +15,32 @@ In the simple `hello_world` example shown above, the `promise` is that the `Hell
 
 Making a CFEngine `promise` will generally follow these simple steps:
 
-1. Open a text editor and create a new file (e.g. `hello_world.cf`).
-2. Create the `promise` in the file (see Defining the Promise).
+1. Using a text editor, create a new file (e.g. `hello_world.cf`).
+2. Create a `bundle` and `promise` in the file (see Defining the Promise).
 3. Save the file on `policy server` somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
 4. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
+
+## Setting Up a Workflow and Toolchain for Authoring Promises
+
+There are several ways to approach authoring promises and ensuring they are copied into and then deployed properly from the `masterfiles` directory:
+
+1. Create or modify files directly in the `masterfiles` directory.
+2. Copy new or modified files into the `masterfiles` directory (e.g. local file copy using `cp`, `scp` over `ssh`).
+3. Utilize a version control system (e.g. Git) to push/pull changes or add new files to the `masterfiles` directory.
+
+### Authoring on a Workstation and Pushing to the Hub Using Git + GitHub
+
+#### General Summary ####
+
+1. The "masterfiles" directory contains the promises and other related files (this is true in all situations).
+2. Replace the out of the box setup with an initialized Git repository and remote to a clone hosted on GitHub.
+3. Add a promise to `masterfiles` that tells CFEngine to check that Git repository for changes, and if there are any to merge them into Masterfiles.
+4. When an author wants to create a new promise, or modify an existing one, they clone the same repository on GitHub so that they have a local copy on their own computer.
+5. The author will make their edits or additions in their local version of the `masterfiles` repository.
+6. After the author is done making their changes commit them using `git commit`.
+6. After the changes are commited they are then pushed back to the remote repository on GitHub.
+7. As described in point #3 CFEngine will pull any new changes (sometime within a five minute time interval).
+8. Those changes will first exist in `masterfiles`, and then afterwards will be deployed to hosts as appropriate.
 
 ### Steps to Create a Promise ###
 
@@ -67,9 +89,9 @@ bundle agent hello_world
 }
 ```
 
-### Observing the Promise in Action ###
+### Promises in Action ###
 
-#### Manually Executing the Promise ####
+#### Manually Executing a Promise ####
 
 1. Assuming the promise file is located at `/var/cfengine/masterfiles/hello_world.cf`, on the command line type the following: 
 
@@ -80,7 +102,7 @@ bundle agent hello_world
 ```notice: R: Hello World!```
 
 
-#### Registering the Promise ####
+#### Registering a Promise in `promises.cf` ####
 
 Registering the promise with CFEngine consists of some simple steps:
 
