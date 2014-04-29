@@ -1,24 +1,26 @@
 ---
 layout: default
-title: How to Write Promises and Policy
+title: How to Write and Use Promises and Policy
 published: true
 sorting: 1
 ---
 
 ## How Promises Work ##
 
-Everything in CFEngine can be thought of as a promise to be kept by different resources in the system. In a system that delivers a web site with Apache httpd, an important promise may be to make sure that httpd is installed, running, and accessible on port 80. 
+Everything in CFEngine can be thought of as a promise to be kept by different resources in the system. In a system that delivers a web site with Apache httpd, an important promise may be to make sure that `httpd` is installed, running, and accessible on port 80. 
 
 In the simple `hello_world` example shown above, the `promise` is that the `Hello World` message will be sent to the log, which will then trigger other events that will be described below. 
 
-### Summary for Making a Promise ###
+### Summary for Writing, Deploying and Using Promises ###
 
-Making a CFEngine `promise` will generally follow these simple steps:
+Writing, deploying, and using CFEngine `promises` will generally follow these simple steps:
 
 1. Using a text editor, create a new file (e.g. `hello_world.cf`).
 2. Create a `bundle` and `promise` in the file (see Defining the Promise).
 3. Save the file on `policy server` somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
-4. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
+4a. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
+4b. Alternatively, it is also possible to call promises manually, using `cf-agent`.
+5. Verify the `promise` was deployed and successfully run.
 
 ## Setting Up a Workflow and Toolchain for Authoring Promises
 
@@ -33,16 +35,24 @@ There are several ways to approach authoring promises and ensuring they are copi
 #### General Summary ####
 
 1. The "masterfiles" directory contains the promises and other related files (this is true in all situations).
-2. Replace the out of the box setup with an initialized Git repository and remote to a clone hosted on GitHub.
-3. Add a promise to `masterfiles` that tells CFEngine to check that Git repository for changes, and if there are any to merge them into Masterfiles.
+2. Replace the out of the box setup with an initialized `git` repository and remote to a clone hosted on GitHub.
+3. Add a promise to `masterfiles` that tells CFEngine to check that `git` repository for changes, and if there are any to merge them into `masterfiles`.
 4. When an author wants to create a new promise, or modify an existing one, they clone the same repository on GitHub so that they have a local copy on their own computer.
 5. The author will make their edits or additions in their local version of the `masterfiles` repository.
 6. After the author is done making their changes commit them using `git commit`.
 6. After the changes are commited they are then pushed back to the remote repository on GitHub.
-7. As described in point #3 CFEngine will pull any new changes (sometime within a five minute time interval).
-8. Those changes will first exist in `masterfiles`, and then afterwards will be deployed to hosts as appropriate.
+7. As described in step3, CFEngine will pull any new changes that were pushed to GitHub (sometime within a five minute time interval).
+8. Those changes will first exist in `masterfiles`, and then afterwards will be deployed to CFEngine hosts that are bootstrapped to the hub.
 
-### Steps to Create a Promise ###
+#### Create a Repository on GitHub for Masterfiles ####
+
+#### Initialize Git Repository in Masterfiles on the Hub ####
+
+#### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub ####
+
+#### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
+
+#### Test the Workflow With a `Hello World` Promise ####
 
 1. Create a bundle.
 
