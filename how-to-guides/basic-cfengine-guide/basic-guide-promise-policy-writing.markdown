@@ -1,15 +1,13 @@
 ---
 layout: default
-title: How to Write and Use Promises and Policy
+title: How to Write and Deploy Promises
 published: true
 sorting: 1
 ---
 
 ## How Promises Work ##
 
-Everything in CFEngine can be thought of as a promise to be kept by different resources in the system. In a system that delivers a web site with Apache httpd, an important promise may be to make sure that `httpd` is installed, running, and accessible on port 80. 
-
-In the simple `hello_world` example shown above, the `promise` is that the `Hello World` message will be sent to the log, which will then trigger other events that will be described below. 
+Everything in CFEngine can be thought of as a promise to be kept by different resources in the system. In a system that delivers a web site using Apache, an important promise may be to make sure that the `httpd` package is installed, running, and accessible on port 80. 
 
 ### Summary for Writing, Deploying and Using Promises ###
 
@@ -53,6 +51,8 @@ There are several ways to approach authoring promises and ensuring they are copi
 #### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
 
 #### Test the Workflow With a `Hello World` Promise ####
+
+In the simple `hello_world` example shown below, the `promise` is that the `Hello World` message will be sent to the log. 
 
 1. Create a bundle.
 
