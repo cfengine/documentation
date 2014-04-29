@@ -2,7 +2,7 @@
 layout: default
 title: How to Write and Deploy Promises
 published: true
-sorting: 1
+sorting: 2
 ---
 
 ## How Promises Work ##
@@ -44,13 +44,52 @@ There are several ways to approach authoring promises and ensuring they are copi
 
 #### Create a Repository on GitHub for Masterfiles ####
 
+1a. In the GitHub web interface, click on the `New repository` button.
+1b. Or from the `+` drop down menu on the top right hand side of the screen select `New repository`.
+2. Fill in a value in the `Repository name` text entry (e.g. cfengine-masterfiles).
+3. Select `private` for the type of privacy desired (`public` is also possible, but is not recomended in most situations).
+4. Optionally, check the `Initialize this repository with a README` box. (not required)
+
 #### Initialize Git Repository in Masterfiles on the Hub ####
+
+1. `> cd /var/cfengine/masterfiles`
+2. `> git init`
+3. `> git commit -m "First commit"`
+4. `> git remote add origin https://github.com/GitUserName/cfengine-masterfiles.git`
+5. `> git push -u origin master``
+
+Using the above steps on a private repository will fail with a 403 error. There are several approaches to deal with this:
+
+1. Generate a key pair and add it to GitHub
+	* As root, type `ssh-keygen -t rsa`.
+	* Hit enter when prompted to `Enter file in which to save the key (/root/.ssh/id_rsa):`.
+	* Hit enter again when prompted to `Enter passphrase (empty for no passphrase):`.
+	* Type `ssh-agent bash` and then the enter key.
+	* Type `ssh-add /root/.ssh/id_dsa`.
+	* Type `exit` to leave `ssh-agent bash`.
+	* To test, type `ssh -T git@github.com`.
+	* Open the generated key file (e.g. `vi /root/.ssh/id_rsa.pub`).
+	* Copy the contents of the file to the clipboard (e.g. Ctrl+Shift+C).
+	* In the GitHub web interface, click the user account settings button (the icon with the two tools in the top right hand corner).
+	* On the next screen, on the left hand side, click `SSH keys`.
+	* Click `Add SSH key` on the next screen.
+	* Provide a `Title` for the label (e.g. CFEngine).
+	* Paste the key contents from the clipboard into the `Key` textarea.
+	* Click `Add key`.
+	* If prompted to do so, provide your GitHub password, and then click the `Confirm` button.
+	* Change back to the `masterfiles` directory, if not already there (e.g. `> cd /var/cfengine/masterfiles`).
+	* Add or edit a remote to GitHub (e.g. `> git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git`).
+
+	
+
+2. Change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
+
 
 #### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub ####
 
 #### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
 
-#### Test the Workflow With a `Hello World` Promise ####
+#### Test the Workflow With a "Hello World" Promise ####
 
 In the simple `hello_world` example shown below, the `promise` is that the `Hello World` message will be sent to the log. 
 
