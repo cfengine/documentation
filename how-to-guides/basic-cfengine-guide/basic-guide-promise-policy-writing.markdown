@@ -200,15 +200,10 @@ bundle agent hello_world
 Registering the promise with CFEngine consists of some simple steps:
 
 1. On the policy server, open the file `/var/cfengine/masterfiles/promises.cf` in a text editor.
-2.  At the end of the `bundlesequence` section add the following line:
-```
-"hello_world",
-```
-3.  At the end of the `inputs` section add the following line:
-```
-"hello_world.cf",
-```
+2.  At the end of the `bundlesequence` section add the following line: `"hello_world",`.
+3.  At the end of the `inputs` section add the following line: `"hello_world.cf",`.
 4. `/var/cfengine/masterfiles/promises.cf` should then look like something like this (where `...` represents existing text in the file, omitted for clarity):
+
 ```cf3
 body common control
 
