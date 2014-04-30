@@ -94,6 +94,7 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 
 1. Create a new file in `/var/cfengine/masterfiles with a unique filename` (e.g. `vcs_update.cf`)
 2. Add the following text to the `vcs_update.cf` file:
+
 ```cf3
 bundle agent vcs_update
     {
@@ -108,8 +109,10 @@ body contain masterfiles_contain
       chdir => "/var/cfengine/masterfiles";
     }
 ```
+
 3. Save the file.
 4. Add bundle and file information to `/var/cfengine/masterfiles/promises.cf`. Example (where `...` represents existing text in the file, omitted for clarity:
+
 ```cf3
 body common control
 
@@ -127,6 +130,7 @@ body common control
                   "vcs_update.cf",
       };
 ```
+
 5. Save the file.
 
 #### Test the Workflow With a "Hello World" Promise ####
