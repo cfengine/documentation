@@ -61,22 +61,22 @@ There are several ways to approach authoring promises and ensuring they are copi
 Using the above steps on a private repository will fail with a 403 error. There are different approaches to deal with this:
 
 A. Generate a key pair and add it to GitHub
-	1. As root, type `ssh-keygen -t rsa`.
-	2. Hit enter when prompted to `Enter file in which to save the key (/root/.ssh/id_rsa):`.
-	3. Hit enter again when prompted to `Enter passphrase (empty for no passphrase):`.
-	4. Type `ssh-agent bash` and then the enter key.
-	5. Type `ssh-add /root/.ssh/id_dsa`.
-	6. Type `exit` to leave `ssh-agent bash`.
-	7. To test, type `ssh -T git@github.com`.
-	8. Open the generated key file (e.g. `vi /root/.ssh/id_rsa.pub`).
-	9. Copy the contents of the file to the clipboard (e.g. Ctrl+Shift+C).
-	10. In the GitHub web interface, click the user account settings button (the icon with the two tools in the top right hand corner).
-	11. On the next screen, on the left hand side, click `SSH keys`.
-	12. Click `Add SSH key` on the next screen.
-	13. Provide a `Title` for the label (e.g. CFEngine).
-	14. Paste the key contents from the clipboard into the `Key` textarea.
-	15. Click `Add key`.
-	16. If prompted to do so, provide your GitHub password, and then click the `Confirm` button.	
+1. As root, type `ssh-keygen -t rsa`.
+2. Hit enter when prompted to `Enter file in which to save the key (/root/.ssh/id_rsa):`.
+3. Hit enter again when prompted to `Enter passphrase (empty for no passphrase):`.
+4. Type `ssh-agent bash` and then the enter key.
+5. Type `ssh-add /root/.ssh/id_dsa`.
+6. Type `exit` to leave `ssh-agent bash`.
+7. To test, type `ssh -T git@github.com`.
+8. Open the generated key file (e.g. `vi /root/.ssh/id_rsa.pub`).
+9. Copy the contents of the file to the clipboard (e.g. Ctrl+Shift+C).
+10. In the GitHub web interface, click the user account settings button (the icon with the two tools in the top right hand corner).
+11. On the next screen, on the left hand side, click `SSH keys`.
+12. Click `Add SSH key` on the next screen.
+13. Provide a `Title` for the label (e.g. CFEngine).
+14. Paste the key contents from the clipboard into the `Key` textarea.
+15. Click `Add key`.
+16. If prompted to do so, provide your GitHub password, and then click the `Confirm` button.	
 
 B. Change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
 
