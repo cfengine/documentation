@@ -58,34 +58,36 @@ There are several ways to approach authoring promises and ensuring they are copi
 4. `> git remote add origin https://github.com/GitUserName/cfengine-masterfiles.git`
 5. `> git push -u origin master``
 
-Using the above steps on a private repository will fail with a 403 error. There are several approaches to deal with this:
+Using the above steps on a private repository will fail with a 403 error. There are different approaches to deal with this:
 
-1. Generate a key pair and add it to GitHub
-	* As root, type `ssh-keygen -t rsa`.
-	* Hit enter when prompted to `Enter file in which to save the key (/root/.ssh/id_rsa):`.
-	* Hit enter again when prompted to `Enter passphrase (empty for no passphrase):`.
-	* Type `ssh-agent bash` and then the enter key.
-	* Type `ssh-add /root/.ssh/id_dsa`.
-	* Type `exit` to leave `ssh-agent bash`.
-	* To test, type `ssh -T git@github.com`.
-	* Open the generated key file (e.g. `vi /root/.ssh/id_rsa.pub`).
-	* Copy the contents of the file to the clipboard (e.g. Ctrl+Shift+C).
-	* In the GitHub web interface, click the user account settings button (the icon with the two tools in the top right hand corner).
-	* On the next screen, on the left hand side, click `SSH keys`.
-	* Click `Add SSH key` on the next screen.
-	* Provide a `Title` for the label (e.g. CFEngine).
-	* Paste the key contents from the clipboard into the `Key` textarea.
-	* Click `Add key`.
-	* If prompted to do so, provide your GitHub password, and then click the `Confirm` button.
-	* Change back to the `masterfiles` directory, if not already there (e.g. `> cd /var/cfengine/masterfiles`).
-	* Add or edit a remote to GitHub (e.g. `> git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git`).
+A. Generate a key pair and add it to GitHub
+	1. As root, type `ssh-keygen -t rsa`.
+	2. Hit enter when prompted to `Enter file in which to save the key (/root/.ssh/id_rsa):`.
+	3. Hit enter again when prompted to `Enter passphrase (empty for no passphrase):`.
+	4. Type `ssh-agent bash` and then the enter key.
+	5. Type `ssh-add /root/.ssh/id_dsa`.
+	6. Type `exit` to leave `ssh-agent bash`.
+	7. To test, type `ssh -T git@github.com`.
+	8. Open the generated key file (e.g. `vi /root/.ssh/id_rsa.pub`).
+	9. Copy the contents of the file to the clipboard (e.g. Ctrl+Shift+C).
+	10. In the GitHub web interface, click the user account settings button (the icon with the two tools in the top right hand corner).
+	11. On the next screen, on the left hand side, click `SSH keys`.
+	12. Click `Add SSH key` on the next screen.
+	13. Provide a `Title` for the label (e.g. CFEngine).
+	14. Paste the key contents from the clipboard into the `Key` textarea.
+	15. Click `Add key`.
+	16. If prompted to do so, provide your GitHub password, and then click the `Confirm` button.	
 
-	
-
-2. Change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
-
+B. Change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
 
 #### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub ####
+
+	1. Change back to the `masterfiles` directory, if not already there:
+		* `> cd /var/cfengine/masterfiles`
+	2. Create the remote using the following pattern: 
+		* `> git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git`.
+	3. Verify the remote was registered properly by typing `git remote -v` and pressing enter.
+		* You will see the remote definition in a list alongside any other previously defined remote enteries.
 
 #### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
 
