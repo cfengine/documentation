@@ -82,14 +82,51 @@ B. Change the remote url to `https://GitUserName@password:github.com/GitUserName
 
 #### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub ####
 
-	1. Change back to the `masterfiles` directory, if not already there:
-		* `> cd /var/cfengine/masterfiles`
-	2. Create the remote using the following pattern: 
-		* `> git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git`.
-	3. Verify the remote was registered properly by typing `git remote -v` and pressing enter.
-		* You will see the remote definition in a list alongside any other previously defined remote enteries.
+1. Change back to the `masterfiles` directory, if not already there:
+	* `> cd /var/cfengine/masterfiles`
+2. Create the remote using the following pattern: 
+	* `> git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git`.
+3. Verify the remote was registered properly by typing `git remote -v` and pressing enter.
+	* You will see the remote definition in a list alongside any other previously defined remote enteries.
 
 #### Add a Promise that Pulls Changes to Masterfiles on the Hub from Masterfiles on GitHub ####
+
+1. Create a new file in `/var/cfengine/masterfiles with a unique filename` (e.g. `vcs_update.cf`)
+2. Add the following text to the `vcs_update.cf` file:
+```cf3
+bundle agent vcs_update
+    {
+    commands:
+      "/usr/bin/git"
+        args => "pull --ff-only upstream master",
+        contain => masterfiles_contain;
+    }
+
+body contain masterfiles_contain
+    {
+      chdir => "/var/cfengine/masterfiles";
+    }
+```
+3. Save the file.
+4. Add bundle and file information to `/var/cfengine/masterfiles/promises.cf`. Example (where `...` represents existing text in the file, omitted for clarity:
+```cf3
+body common control
+
+{
+
+      bundlesequence => {
+						...
+                        vcs_update,
+
+      };
+
+      inputs => {
+                 ...
+				 
+                  "vcs_update.cf",
+      };
+```
+5. Save the file.
 
 #### Test the Workflow With a "Hello World" Promise ####
 
