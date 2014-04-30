@@ -2,17 +2,19 @@
 layout: default
 title: Overviews
 published: true
-sorting: 30
+sorting: 2
 ---
 
 ## Understand CFEngine Fundamentals ##
 
 * [Introduction][Introduction]
+* [Policy and Promises Overview][Policy and Promises Overview]
+	* [Language Concepts][Language Concepts]
+	* [Writing Policy][Writing Policy]
 * [System Overview][System Overview]
 	* [Policy Server Overview][Policy Server Overview]
 	* [Security Overview][Security Overview]
 * [Enterprise Overview][Enterprise Overview]
-* [Policy and Promises Overview][Policy and Promises Overview]
 * [Reports][Reports]
 * [CFEngine Learning Resources][Learning Resources]
 
