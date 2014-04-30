@@ -60,7 +60,8 @@ There are several ways to approach authoring promises and ensuring they are copi
 
 Using the above steps on a private repository will fail with a 403 error. There are different approaches to deal with this:
 
-* Generate a key pair and add it to GitHub
+A) Generate a key pair and add it to GitHub
+
 1. As root, type `ssh-keygen -t rsa`.
 2. Hit enter when prompted to `Enter file in which to save the key (/root/.ssh/id_rsa):`.
 3. Hit enter again when prompted to `Enter passphrase (empty for no passphrase):`.
@@ -78,7 +79,7 @@ Using the above steps on a private repository will fail with a 403 error. There 
 15. Click `Add key`.
 16. If prompted to do so, provide your GitHub password, and then click the `Confirm` button.	
 
-* Or, change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
+B) Or, change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
 
 #### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub ####
 
@@ -93,6 +94,7 @@ Using the above steps on a private repository will fail with a 403 error. There 
 
 1. Create a new file in `/var/cfengine/masterfiles with a unique filename` (e.g. `vcs_update.cf`)
 2. Add the following text to the `vcs_update.cf` file:
+
 ```cf3
 bundle agent vcs_update
     {
@@ -107,8 +109,10 @@ body contain masterfiles_contain
       chdir => "/var/cfengine/masterfiles";
     }
 ```
+
 3. Save the file.
 4. Add bundle and file information to `/var/cfengine/masterfiles/promises.cf`. Example (where `...` represents existing text in the file, omitted for clarity:
+
 ```cf3
 body common control
 
@@ -126,6 +130,7 @@ body common control
                   "vcs_update.cf",
       };
 ```
+
 5. Save the file.
 
 #### Test the Workflow With a "Hello World" Promise ####
