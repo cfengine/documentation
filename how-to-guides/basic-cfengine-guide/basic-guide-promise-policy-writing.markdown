@@ -14,11 +14,11 @@ Everything in CFEngine can be thought of as a promise to be kept by different re
 Writing, deploying, and using CFEngine `promises` will generally follow these simple steps:
 
 1. Using a text editor, create a new file (e.g. `hello_world.cf`).
-2. Create a `bundle` and `promise` in the file (see Defining the Promise).
-3. Save the file on `policy server` somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
+2. Create a bundle of `promises` in the file (see Defining the Promise).
+3. Save the file on the `policy server` somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
 4a. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
-4b. Alternatively, it is also possible to call promises manually, using `cf-agent`.
-5. Verify the `promise` was deployed and successfully run.
+4b. Alternatively, it is also possible to call a bundle manually, using `cf-agent`.
+5. Verify the `policy file` was deployed and successfully run.
 
 ## Setting Up a Workflow and Toolchain for Authoring Promises
 
