@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine Guide for Policy Developers 
+title: CFEngine for Policy Developers 
 published: true
 sorting: 5
 ---
