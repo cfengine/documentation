@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine Enterprise Mission Portal Reporting Guide
+title: Reporting in Mission Portal
 published: true
 sorting: 2
 ---
