@@ -10,8 +10,6 @@ sorting: 10
 | Document | Basic | Intermediate | Advanced | System Administration | Policy & Promise Writing | Management |
 |----------------|:------:|:-----:|:------:|:--------|:-----:|:------:|:--------:|
 |[Basic CFEngine Guide][Basic CFEngine Guide]|X|||X|X||
-|[Intermediate CFEngine Guide][Intermediate CFEngine Guide]||X||X|X||
-|[Advanced CFEngine Guide][Advanced CFEngine Guide]|||X|X|X|X|
 |[CFEngine Enterprise Guide][CFEngine Enterprise Guide]||X|X|X|X|X|
 
 ## Basic Guide ##
