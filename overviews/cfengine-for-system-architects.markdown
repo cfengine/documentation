@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine Guide for System Architects 
+title: CFEngine for System Architects 
 published: true
 sorting: 7
 ---

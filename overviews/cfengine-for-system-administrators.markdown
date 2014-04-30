@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine Guide for System Administrators 
+title: CFEngine for System Administrators 
 published: true
 sorting: 6
 ---
