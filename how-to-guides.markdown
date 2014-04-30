@@ -14,5 +14,10 @@ sorting: 10
 |[Advanced CFEngine Guide][Advanced CFEngine Guide]|||X|X|X|X|
 |[CFEngine Enterprise Guide][CFEngine Enterprise Guide]||X|X|X|X|X|
 
+## Basic Guide ##
+* [Installing CFEngine][Installing CFEngine]
+* [How to Write and Deploy Promises][How to Write and Deploy Promises]
+* [FAQ][FAQ]
+
 
 
