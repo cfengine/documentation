@@ -2,7 +2,7 @@
 layout: default
 title: FAQ
 published: true
-sorting: 1
+sorting: 3
 tags: [getting started, installation, enterprise, faq]
 ---
 
