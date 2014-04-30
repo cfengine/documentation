@@ -66,7 +66,7 @@ A) Generate a key pair and add it to GitHub
 2. Hit enter when prompted to `Enter file in which to save the key (/root/.ssh/id_rsa):`.
 3. Hit enter again when prompted to `Enter passphrase (empty for no passphrase):`.
 4. Type `ssh-agent bash` and then the enter key.
-5. Type `ssh-add /root/.ssh/id_dsa`.
+5. Type `ssh-add /root/.ssh/id_rsa`.
 6. Type `exit` to leave `ssh-agent bash`.
 7. To test, type `ssh -T git@github.com`.
 8. Open the generated key file (e.g. `vi /root/.ssh/id_rsa.pub`).
@@ -190,9 +190,7 @@ bundle agent hello_world
 
 ```# /var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/hello_world.cf --bundlesequence hello_world```
 
-1. The output will include something similar to the following:
-
-```notice: R: Hello World!```
+2. The output will include something similar to the following: `notice: R: Hello World!`.
 
 
 #### Registering a Promise in `promises.cf` ####
@@ -200,15 +198,10 @@ bundle agent hello_world
 Registering the promise with CFEngine consists of some simple steps:
 
 1. On the policy server, open the file `/var/cfengine/masterfiles/promises.cf` in a text editor.
-2.  At the end of the `bundlesequence` section add the following line:
-```
-"hello_world",
-```
-3.  At the end of the `inputs` section add the following line:
-```
-"hello_world.cf",
-```
+2.  At the end of the `bundlesequence` section add the following line: `"hello_world",`.
+3.  At the end of the `inputs` section add the following line: `"hello_world.cf",`.
 4. `/var/cfengine/masterfiles/promises.cf` should then look like something like this (where `...` represents existing text in the file, omitted for clarity):
+
 ```cf3
 body common control
 
