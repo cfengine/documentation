@@ -60,7 +60,8 @@ There are several ways to approach authoring promises and ensuring they are copi
 
 Using the above steps on a private repository will fail with a 403 error. There are different approaches to deal with this:
 
-* Generate a key pair and add it to GitHub
+A) Generate a key pair and add it to GitHub
+
 1. As root, type `ssh-keygen -t rsa`.
 2. Hit enter when prompted to `Enter file in which to save the key (/root/.ssh/id_rsa):`.
 3. Hit enter again when prompted to `Enter passphrase (empty for no passphrase):`.
@@ -78,7 +79,7 @@ Using the above steps on a private repository will fail with a 403 error. There 
 15. Click `Add key`.
 16. If prompted to do so, provide your GitHub password, and then click the `Confirm` button.	
 
-* Or, change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
+B) Or, change the remote url to `https://GitUserName@password:github.com/GitUserName/cfengine-masterfiles.git`. This is not safe in a production environment and should only be used for basic testing purposes (if at all).
 
 #### Create a Remote in Masterfiles on the Hub to Masterfiles on GitHub ####
 
