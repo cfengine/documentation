@@ -205,10 +205,33 @@ Registering the promise with CFEngine consists of some simple steps:
 ```
 "hello_world",
 ```
+
 3.  At the end of the `inputs` section add the following line:
 
 ```
 "hello_world.cf",
+```
+
+4. `/var/cfengine/masterfiles/promises.cf` should then look like something like this (where `...` represents existing text in the file, omitted for clarity:
+
+```cf3
+body common control
+
+{
+
+      bundlesequence => {
+						...
+                        vcs_update,
+						hello_world,
+
+      };
+
+      inputs => {
+                 ...
+				 
+                  "vcs_update.cf",
+				  "hello_world.cf",
+      };
 ```
 
 With the above information CFEngine will then do the following:
