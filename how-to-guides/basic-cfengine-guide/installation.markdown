@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Installing CFEngine
-sorting: 10
+sorting: 1
 published: true
 tags: [getting started, installation]
 ---

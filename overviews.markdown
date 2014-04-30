@@ -2,21 +2,23 @@
 layout: default
 title: Overviews
 published: true
-sorting: 30
+sorting: 2
 ---
 
-## Overviews to Help Understand CFEngine fundamentals ##
+## Understand CFEngine Fundamentals ##
 
 * [Introduction][Introduction]
+* [Policy and Promises Overview][Policy and Promises Overview]
+	* [Language Concepts][Language Concepts]
+	* [Writing Policy][Writing Policy]
 * [System Overview][System Overview]
 	* [Policy Server Overview][Policy Server Overview]
 	* [Security Overview][Security Overview]
 * [Enterprise Overview][Enterprise Overview]
-* [Policy and Promises Overview][Policy and Promises Overview]
 * [Reports][Reports]
 * [CFEngine Learning Resources][Learning Resources]
 
-## Overviews Describing CFEngine for Various Roles Within an Organization ##
+## CFEngine for Various Roles Within an Organization ##
 
 | Document |  System Administration | Policy & Promise Writing | Management |
 |----------------:|:------:|:-----:|:------:|:--------:|:-----:|:------:|:--------:|
@@ -25,7 +27,7 @@ sorting: 30
 |[CFEngine for System Architects][CFEngine for System Architects]|X||X|
 |[CFEngine for Managers][CFEngine for Managers]|X||X|
 
-## Overviews Describing CFEngine for Various Industries ##
+## CFEngine for Various Industries ##
 
 * [CFEngine for the Banking and Financial Services Sector][CFEngine for the Banking and Financial Services Sector]
 
