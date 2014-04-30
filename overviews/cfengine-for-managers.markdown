@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine Guide for Managers 
+title: CFEngine for Managers 
 published: true
 sorting: 8
 ---
