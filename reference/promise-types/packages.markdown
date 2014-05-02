@@ -5,6 +5,12 @@ published: true
 tags: [reference, bundle agent, packages, packages promises, promise types]
 ---
 
+NOTE: CFEngine 3.6 introduces bundles `package_absent`, `package_present`,
+`package_latest`, `package_specific_present`, `package_specific_absent`, and
+`package_specific_latest` that provide a higher-level abstraction for
+working with packages. This is the recommended way to make promises about
+packages. The bundles can be found in the file packages.cf in masterfiles.
+
 CFEngine supports a generic approach to integration with native
 operating support for packaging. Package promises allow CFEngine to make
 promises regarding the state of software packages *conditionally*, given
