@@ -39,6 +39,12 @@ bundle agent hello_world
 
 See Also: [Write Promises and Policy][Write Promises and Policy]
 
+### Informing CFEngine about Policies and Promises ###
+
+[%CFEngine_include_markdown(include-informing-cfengine-about-promises.markdown)%]
+
+See Also: [Write Promises and Policy][Write Promises and Policy]
+
 ## Promises Available in CFEngine ##
 
 ### meta - information about promise bundles ###
