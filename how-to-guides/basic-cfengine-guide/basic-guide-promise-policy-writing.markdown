@@ -44,15 +44,17 @@ There are several ways to approach authoring promises and ensuring they are copi
 
 #### Create a Repository on GitHub for Masterfiles ####
 
-1a. In the GitHub web interface, click on the `New repository` button.
-1b. Or from the `+` drop down menu on the top right hand side of the screen select `New repository`.
+1a. If you are working from your local GitHub repository in Windows, first open the repository by clicking on the arrow. This will take you to the next screen.
+1b. In the top right click on "Tools and Options" and select "View on GitHub" from the drop-down menu. This will launch the GitHub web browser.
+1c. In the GitHub browser interface, click on "+" sign and select `New Repository` from the drop-down menu.
 2. Fill in a value in the `Repository name` text entry (e.g. cfengine-masterfiles).
 3. Select `private` for the type of privacy desired (`public` is also possible, but is not recomended in most situations).
 4. Optionally, check the `Initialize this repository with a README` box. (not required)
 
 #### Initialize Git Repository in Masterfiles on the Hub ####
 
-1. `> cd /var/cfengine/masterfiles`
+1a. `> sudo su
+1b. `> cd /var/cfengine/masterfiles`
 2. `> git init`
 3. `> git commit -m "First commit"`
 4. `> git remote add origin https://github.com/GitUserName/cfengine-masterfiles.git`
