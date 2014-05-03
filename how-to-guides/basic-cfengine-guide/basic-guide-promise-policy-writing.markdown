@@ -51,14 +51,14 @@ Method One: Create Masterfiles Repository Using GitHub Web Interface
 1a. In the GitHub web interface, click on the `New repository` button.
 1b. Or from the `+` drop down menu on the top right hand side of the screen select `New repository`.
 2. Fill in a value in the `Repository name` text entry (e.g. cfengine-masterfiles).
-3. Select `private` for the type of privacy desired (`public` is also possible, but is not recomended in most situations).
+3. Select `private` for the type of privacy desired (`public` is also possible, but is not recommended in most situations).
 4. Optionally, check the `Initialize this repository with a README` box. (not required):""
 
 Method Two: Create Masterfiles Repository Using the GitHub Application
 
 1. Open the GitHub app and click on the "+ Create" sign to create a new repository.
 2. Fill in a value in the `Repository name` text entry (e.g. cfengine-masterfiles).
-3. Select `private` for the type of privacy desired (`public` is also possible, but is not recomended in most situations).
+3. Select `private` for the type of privacy desired (`public` is also possible, but is not recommended in most situations).
 4. Select one of your "Accounts" where you want the new repository to be created.
 5. Click on the "Create" button at the bottom of the screen. A new repository will be created in your local GitHub folder.
 
