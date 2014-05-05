@@ -125,6 +125,54 @@ commands:
 Why? Separating this into two parts gives a high level of control and conistency to CFEngine. There are many options for command execution, like the ability to run commands in a sandbox or as `setuid'. These should not be reproduced in processes.
 
 ## Mount a filesystem ##
+
+```cf3
+#
+
+# cfengine 3
+
+#
+
+# cf-agent -f ./cftest.cf -K
+
+#
+
+
+body common control
+
+{
+bundlesequence => { "mounts" };
+}
+
+#
+
+
+bundle agent mounts
+
+{
+storage:
+
+  "/mnt" mount  => nfs("slogans.iu.hio.no","/home");
+
+}
+
+######################################################################
+
+
+body mount nfs(server,source)
+
+{
+mount_type => "nfs";
+mount_source => "$(source)";
+mount_server => "$(server)";
+#mount_options => { "rw" };
+
+edit_fstab => "true";
+unmount => "true";
+}
+```
+
+
 ## Manage a system process ##
 ## Ensure running ##
 ## Ensure not running ##
