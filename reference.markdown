@@ -2,7 +2,7 @@
 layout: default
 title: CFEngine Reference 
 published: true
-sorting: 40
+sorting: 6
 ---
 
 The reference documentation explains the available promise and bundle types, 

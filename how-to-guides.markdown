@@ -2,7 +2,7 @@
 layout: default
 title: How to Guides 
 published: true
-sorting: 10
+sorting: 3
 ---
 
 ## Instructional Guides Based on Degree of Difficulty and Subject ##

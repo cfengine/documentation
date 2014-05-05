@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CFEngine Examples 
+title: Examples and Tutorials
 published: true
-sorting: 50
+sorting: 5
 tags: [Examples]
 ---
 
