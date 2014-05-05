@@ -31,3 +31,23 @@ tags: [Examples][System Administration]
 * Set up sudo
 * Set up time management through NTP
 * Set up name resolution with DNS
+
+## Centralized Management ##
+## All hosts the same ##
+## Variation in hosts ##
+## Updating from a central hub ##
+## Laptop support configuration ##
+## Process management ##
+## Kill process ##
+## Restart process ##
+## Mount a filesystem ##
+## Manage a system process ##
+## Ensure running ##
+## Ensure not running ##
+## Prune processes ##
+## Set up HPC clusters ##
+## Set up name resolution ##
+## Set up sudo ##
+## Environments (virtual) ##
+## Environment variables ##
+## Tidying garbage files ##
