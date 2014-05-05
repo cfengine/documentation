@@ -13,3 +13,11 @@ tags: [Examples][Commands][Scripts]
 * [Methods][Commands, Scripts, and Execution#Methods]
 * [Method validation][Commands, Scripts, and Execution#Method validation]
 * [Trigger classes][Commands, Scripts, and Execution#Trigger classes]
+
+## Command or script execution ##
+## Change directory for command ##
+## Commands example ##
+## Execresult example ##
+## Methods ##
+## Method validation ##
+## Trigger classes ##

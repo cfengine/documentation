@@ -13,3 +13,10 @@ tags: [Examples][System Information]
 * [Global classes][System Information#Global classes]
 * [Logging][System Information#Logging]
 * Check filesystem space
+
+## Change detection ##
+## Hashing for change detection (tripwire) ##
+## Check filesystem space ##
+## Class match example ##
+## Global classes ##
+## Logging ##

@@ -17,3 +17,12 @@ tags: [Examples][Software Administration]
 * Ensure a service is enabled and running
 * Managing Software
 * Install packages
+
+## Software and patch installation ##
+## Postfix mail configuration ##
+## Set up a web server ##
+## Add software packages to the system ##
+## Application baseline ##
+## Service management (windows) ##
+## Software distribution ##
+## Web server modules ##
