@@ -10,3 +10,6 @@ tags: [Examples][CFEngine Administration]
 * [Aborting execution][Software Administration and Execution#Aborting execution]
 * Aborting execution
 * Updating from a central policy server
+
+## Ordering promises ##
+## Aborting execution ##

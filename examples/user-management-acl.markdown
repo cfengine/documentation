@@ -18,3 +18,16 @@ tags: [Examples][User Management][ACL]
 * [Active directory show users example][User Management and ACL#Active directory show users example]
 * [Get a list of users][User Management and ACL#Get a list of users]
 * [LDAP interactions][User Management and ACL#LDAP interactions]
+
+## Manage users ##
+## Add users ##
+## Remove users ##
+## Add users to passwd and group ##
+## ACL file example ##
+## ACL generic example ##
+## ACL secret example ##
+## Active directory example ##
+## Active list users directory example ##
+## Active directory show users example ##
+## Get a list of users ##
+## LDAP interactions ##

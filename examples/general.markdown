@@ -51,3 +51,7 @@ what_type:
 }
 
 ```
+
+## Hello world ##
+
+## Array example ##
