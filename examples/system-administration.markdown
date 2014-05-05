@@ -38,8 +38,92 @@ tags: [Examples][System Administration]
 ## Updating from a central hub ##
 ## Laptop support configuration ##
 ## Process management ##
+
 ## Kill process ##
+
+```cf3
+body common control
+{
+bundlesequence => { "test" };
+}
+
+
+
+bundle agent test
+{
+processes:
+
+ "sleep"
+
+   signals => { "term", "kill" };
+
+}
+```
+
 ## Restart process ##
+
+A basic pattern for restarting processes:
+
+```cf3
+body common control
+{
+bundlesequence => { "process_restart" };
+}
+
+#########################################################
+
+
+bundle agent process_restart
+{
+processes:
+
+  "/usr/bin/daemon" 
+        restart_class => "launch";
+
+commands:
+
+  launch::
+
+   "/usr/bin/daemon";
+
+}
+```
+
+This can be made more sophisticated to handle generic lists:
+
+```cf3
+body common control
+{
+bundlesequence => { "process_restart" };
+}
+
+#########################################################
+
+
+bundle agent process_restart
+{
+vars:
+
+  "component" slist => {
+                       "cf-monitord", 
+                       "cf-serverd", 
+                       "cf-execd" 
+                       };
+processes:
+
+  "$(component)" 
+        restart_class => canonify("start_$(component)");
+
+commands:
+
+   "/var/cfengine/bin/$(component)"
+       ifvarclass => canonify("start_$(component)");
+
+}
+```
+
+Why? Separating this into two parts gives a high level of control and conistency to CFEngine. There are many options for command execution, like the ability to run commands in a sandbox or as `setuid'. These should not be reproduced in processes.
+
 ## Mount a filesystem ##
 ## Manage a system process ##
 ## Ensure running ##

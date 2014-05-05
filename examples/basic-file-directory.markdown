@@ -143,6 +143,30 @@ files:
 ```
 
 ## Disabling and rotating files ##
+
+Use the following simple steps to disable and rotate files. See the Community Open Promise-Body Library if you wish more details on what disable and rotate does.
+
+```cf3
+body common control
+{
+bundlesequence  => { "my_disable" };
+inputs => { "cfengine_stdlib.cf" };
+}
+
+bundle agent my_disable
+{
+
+files:
+
+  "/home/mark/tmp/test_create"
+      rename => disable;
+ 
+ "/home/mark/tmp/rotate_my_log"
+      rename => rotate("4");
+
+}
+```
+
 ## Add lines to a file ##
 ## Check file or directory permissions ##
 ## Commenting lines in a file ##
