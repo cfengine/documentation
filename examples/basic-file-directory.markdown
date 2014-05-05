@@ -168,6 +168,76 @@ files:
 ```
 
 ## Add lines to a file ##
+
+There are numerous approaches to adding lines to a file. Often the order of a configuration file is unimportant, we just need to ensure settings within it. A simple way of adding lines is show below.
+
+```cf3
+body common control
+
+{
+any::
+
+  bundlesequence  => { "insert" };   
+}
+
+#######################################################
+
+
+bundle agent insert
+
+{
+vars:
+
+  "lines" string => 
+                "
+                One potato
+                Two potato
+                Three potatoe
+                Four
+                ";
+ 
+files:
+
+  "/tmp/test_insert"
+
+            create => "true",
+         edit_line => append_if_no_line("$(insert.lines)");
+
+}
+```
+
+Also you could write this using a list variable:
+
+```cf3
+body common control
+
+{
+any::
+
+  bundlesequence  => { "insert" };   
+}
+
+#######################################################
+
+
+bundle agent insert
+
+{
+vars:
+
+  "lines" slist => { "One potato", "Two potato",
+                "Three potatoe", "Four" };
+ 
+files:
+
+  "/tmp/test_insert"
+
+            create => "true",
+         edit_line => append_if_no_line("@(insert.lines)");
+
+}
+```
+
 ## Check file or directory permissions ##
 ## Commenting lines in a file ##
 ## Copy files ##
