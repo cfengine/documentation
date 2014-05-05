@@ -371,6 +371,54 @@ packages:
 ## Postfix mail configuration ##
 ## Set up a web server ##
 ## Add software packages to the system ##
+
+```cf3
+
+#
+# Package managment
+
+#
+
+
+body common control
+{
+bundlesequence => { "packages" };
+}
+
+#############################################
+
+
+bundle agent packages
+{
+vars:
+
+ "match_package" slist => { 
+                          "apache2", 
+                          "apache2-mod_php5",
+                          "apache2-prefork",
+                          "php5" 
+                          };
+packages:
+
+ solaris::
+
+  "$(match_package)"
+
+     package_policy => "add",
+     package_method => solaris;
+
+ redhat|SuSE::
+
+  "$(match_package)"
+
+     package_policy => "add",
+     package_method => yum;
+
+}
+```
+
+Note you can also arrange to hide all the differences between package managers on an OS basis, but since some OSs have multiple managers, this might not be 100 percent correct.
+
 ## Application baseline ##
 ## Service management (windows) ##
 ## Software distribution ##
