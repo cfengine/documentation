@@ -44,7 +44,7 @@ There are several ways to approach authoring promises and ensuring they are copi
 
 #### Create a Repository on GitHub for Masterfiles ####
 
-There are two methods possible with GitHub, one is to use the web interface at GitHub.com, the second is to use the Git GUI.
+There are two methods possible with GitHub: one is to use the web interface at GitHub.com; the second is to use the GitHub application.
 
 Method One: Create Masterfiles Repository Using GitHub Web Interface 
 
