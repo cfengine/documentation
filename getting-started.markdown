@@ -2,7 +2,7 @@
 layout: default
 title: Getting Started 
 published: true
-sorting: 10
+sorting: 2
 ---
 
 Once you have chosen a version that best suits your needs you can download, install,
