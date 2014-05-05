@@ -14,8 +14,8 @@ Everything in CFEngine can be thought of as a promise to be kept by different re
 Writing, deploying, and using CFEngine `promises` will generally follow these simple steps:
 
 1. Using a text editor, create a new file (e.g. `hello_world.cf`).
-2. Create a bundle of `promises` in the file (see Defining the Promise).
-3. Save the file on the `policy server` somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
+2. Create a bundle and promise in the file (see [Test the Workflow With a "Hello World" Promise](#test-the-workflow-with-a-hello-world)).
+3. Save the file on the policy server somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
 4a. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
 4b. Alternatively, it is also possible to call a bundle manually, using `cf-agent`.
 5. Verify the `policy file` was deployed and successfully run.
@@ -44,11 +44,24 @@ There are several ways to approach authoring promises and ensuring they are copi
 
 #### Create a Repository on GitHub for Masterfiles ####
 
+There are two methods possible with GitHub, one is to use the web interface at GitHub.com, the second is to use the Git GUI.
+
+Method One: Create Masterfiles Repository Using GitHub Web Interface 
+
 1a. In the GitHub web interface, click on the `New repository` button.
 1b. Or from the `+` drop down menu on the top right hand side of the screen select `New repository`.
 2. Fill in a value in the `Repository name` text entry (e.g. cfengine-masterfiles).
-3. Select `private` for the type of privacy desired (`public` is also possible, but is not recomended in most situations).
-4. Optionally, check the `Initialize this repository with a README` box. (not required)
+3. Select `private` for the type of privacy desired (`public` is also possible, but is not recommended in most situations).
+4. Optionally, check the `Initialize this repository with a README` box. (not required):""
+
+Method Two: Create Masterfiles Repository Using the GitHub Application
+
+1. Open the GitHub app and click on the "+ Create" sign to create a new repository.
+2. Fill in a value in the `Repository name` text entry (e.g. cfengine-masterfiles).
+3. Select `private` for the type of privacy desired (`public` is also possible, but is not recommended in most situations).
+4. Select one of your "Accounts" where you want the new repository to be created.
+5. Click on the "Create" button at the bottom of the screen. A new repository will be created in your local GitHub folder.
+
 
 #### Initialize Git Repository in Masterfiles on the Hub ####
 
