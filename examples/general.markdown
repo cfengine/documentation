@@ -55,3 +55,33 @@ what_type:
 ## Hello world ##
 
 ## Array example ##
+
+```cf3
+body common control
+{
+bundlesequence => { "array" };
+}
+
+
+bundle common g
+{
+vars:
+
+  "array[1]" string => "one"; 
+  "array[2]" string => "two"; 
+}
+
+bundle agent array
+{
+vars:
+
+  "localarray[1]" string => "one"; 
+  "localarray[2]" string => "two"; 
+
+reports:
+
+ linux::
+
+   "Global $(g.array[1]) and $(localarray[2])";
+}
+```

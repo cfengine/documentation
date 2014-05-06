@@ -99,6 +99,34 @@ reports:
 }
 ```
 
-## Class match example ##
+## Class match example
+
+```cf3
+
+body common control
+
+{
+bundlesequence  => { "example" };
+}
+
+###########################################################
+
+
+bundle agent example
+
+{     
+classes:
+
+  "do_it" and => { classmatch(".*_3"), "linux" }; 
+
+reports:
+
+  do_it::
+
+    "Host matches pattern";
+
+}
+```
+
 ## Global classes ##
 ## Logging ##
