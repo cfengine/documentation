@@ -13,6 +13,8 @@ the name of an array or container.
 Make sure you specify the correct scope when supplying the name of the
 variable.
 
+Note the order of the list which getindices returns is not guarenteed to be in any specific order.
+
 [%CFEngine_function_attributes(varref)%]
 
 **Example:**
