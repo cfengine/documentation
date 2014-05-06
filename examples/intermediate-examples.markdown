@@ -1,10 +1,3 @@
----
-layout: default
-title: CFEngine Intermediate Examples 
-published: true
-sorting: 2
-tags: [Examples]
----
 
 * [Centralized Management][CFEngine Intermediate Examples#Centralized Management]
 * [All hosts the same][CFEngine Intermediate Examples#All hosts the same]

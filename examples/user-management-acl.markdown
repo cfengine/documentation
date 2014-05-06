@@ -19,9 +19,117 @@ tags: [Examples,User Management,ACL]
 * [Get a list of users][User Management and ACL#Get a list of users]
 * [LDAP interactions][User Management and ACL#LDAP interactions]
 
-## Manage users ##
-## Add users ##
-## Remove users ##
+## Manage users
+
+There are many approaches to managing users. You can edit system files like /etc/passwd directly, or you can use commands on some systems like ‘useradd’ or ‘adduser’. In all cases it is desirable to make this a data-driven process.
+
+    Add users
+    Remove users
+
+### Add users
+
+A simple approach which adds new users to the password file, and to a group called ‘users’ in the group file. Is shown below. This example does not edit the shadow file. A simple pattern that can be modified for use is shown below.
+
+Note that, although this is a simple minded approach, it is the most efficient of the approaches shown here as all operations can be carried out in a single operation for each file.
+
+```cf3
+bundle agent addusers
+{
+vars:
+
+  # Add some users
+
+
+  "pw[mark]" string => "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";
+  "pw[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
+  "pw[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
+
+  "users" slist => getindices("pw");
+
+files:
+
+  "/etc/passwd"
+     edit_line => append_users_starting("addusers.pw");
+
+#  "/etc/shadow"
+
+#     edit_line => append_users_starting("$(users):defaultpasswd:::::::");
+
+
+  "/etc/group"
+       edit_line => append_user_field("users","4","@(addusers.users)");
+
+  "/home/$(users)/."
+
+     create => "true",
+      perms => mog("755","$(users)","users");
+}
+```
+
+A second approach is to use the shell commands supplied by some operating systems; this assumes that suitable defaults have been set up manually. Also the result is not repairable in a simple convergent manner. The command needs to edit multiple files for each user, and is quite inefficient.
+
+```cf3
+bundle agent addusers
+{
+vars:
+
+  "users" slist => { "mark", "fred", "jane" };
+
+commands:
+
+   "/usr/sbin/useradd $(users)";
+}
+```
+
+An alternative approach is to use a method to wrap around the handling of a user. Although this looks nice, it is less efficient than the first method because it must edit the files multiple times.
+
+```cf3
+bundle agent addusers
+{
+vars:
+
+  # Add some users
+
+
+  "pw[mark]" string => "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";
+  "pw[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
+  "pw[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
+
+  "users" slist => getindices("pw");
+
+methods:
+
+  "any" usebundle => user_add("$(users)","$(pw[$(users)])");
+
+}
+
+bundle agent user_add(x,pw)
+{
+files:
+
+  "/etc/passwd"
+     edit_line => append_users_starting("addusers.pw");
+
+#  "/etc/shadow"
+
+#     edit_line => append_users_starting("$(users):defaultpasswd:::::::");
+
+
+  "/etc/group"
+       edit_line => append_user_field("users","4","@(addusers.users)");
+
+  "/home/$(users)/."
+
+     create => "true",
+      perms => mog("755","$(users)","users");
+}
+```
+
+### Remove users
+
+```cf3
+```
+
 ## Add users to passwd and group ##
 
 Add lines to the password file, and users to group if they are not already there.

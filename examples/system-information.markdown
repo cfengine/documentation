@@ -14,7 +14,33 @@ tags: [Examples,System Information]
 * [Logging][System Information#Logging]
 * Check filesystem space
 
-## Change detection ##
+## Change detection
+
+```cf3
+body common control
+
+{
+bundlesequence  => { "testbundle"  };
+
+inputs => { "cfengine_stdlib.cf" };
+}
+
+########################################################
+
+
+bundle agent testbundle
+
+{
+files:
+
+  "/usr" 
+
+       changes      => detect_all_change,
+       depth_search => recurse("inf"),
+       action       => background;
+}
+```
+
 ## Hashing for change detection (tripwire) ##
 
 Change detection is a powerful and easy way to monitor your environment, increase awareness and harden your system against security breaches.
