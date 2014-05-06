@@ -43,6 +43,7 @@ See Also: [Write Promises and Policy][Write Promises and Policy]
 
 [%CFEngine_include_markdown(include-informing-cfengine-about-policy-promises.markdown)%]
 
+
 See Also: [Write Promises and Policy][Write Promises and Policy]
 
 ## Promises Available in CFEngine ##
