@@ -11,8 +11,8 @@ tags: [Examples]
 * [Read from a TCP socket][Network Examples#Read from a TCP socket]
 * [Set up a PXE boot server][Network Examples#Set up a PXE boot server]
 * [Resolver management][Network Examples#Resolver management]
-* [Mount NFS filesystem][Basic File and Directory Examples#Mount NFS filesystem]
-* [Unmount NFS filesystem][Basic File and Directory Examples#Unmount NFS filesystem]
+* [Mount NFS filesystem][Network Examples#Mount NFS filesystem]
+* [Unmount NFS filesystem][Network Examples#Unmount NFS filesystem]
 * Find the MAC address
 * Mount NFS filesystem
 
