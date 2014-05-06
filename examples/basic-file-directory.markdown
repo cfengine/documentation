@@ -1711,6 +1711,220 @@ bsdflags => { "+uappnd","+uchg", "+uunlnk", "-nodump" };
 }
 ```
 
-## Search and replace text ##
-## Selecting a region in a file ##
-## Warn if matching line in file ##
+## Search and replace text
+
+```cf3
+######################################################################
+
+#
+
+# File editing
+
+#
+
+# Normal ordering:
+
+# - delete
+
+# - replace | colum_edit
+
+# - insert
+
+# 
+
+######################################################################
+
+
+
+body common control
+
+{
+version => "1.2.3";
+bundlesequence  => { "testbundle"  };
+}
+
+########################################################
+
+
+bundle agent testbundle
+
+{
+
+files:
+
+  "/tmp/replacestring"
+
+       create    => "true",
+       edit_line => myedit("second");
+}
+
+########################################################
+
+
+bundle edit_line myedit(parameter)
+  {
+  vars:
+
+   "edit_variable" string => "private edit variable is $(parameter)"; 
+
+  
+  replace_patterns:
+
+  # replace shell comments with C comments
+
+
+   "puppet"
+
+      replace_with => With("cfengine 3");
+
+  }
+
+########################################
+
+# Bodies
+
+########################################
+
+
+body replace_with With(x)
+
+{
+replace_value => "$(x)";
+occurrences => "first";
+}
+
+########################################
+
+
+body select_region MySection(x)
+
+{
+select_start => "\[$(x)\]";
+select_end => "\[.*\]";
+}
+```
+
+## Selecting a region in a file
+
+```cf3
+body common control
+
+{
+version => "1.2.3";
+bundlesequence  => { "testbundle"  };
+}
+
+########################################################
+
+
+bundle agent testbundle
+
+{
+
+files:
+
+  "/tmp/testfile"
+
+       create    => "true",
+       edit_line => myedit("second");
+}
+
+########################################################
+
+
+bundle edit_line myedit(parameter)
+  {
+  vars:
+
+   "edit_variable" string => "private edit variable is $(parameter)"; 
+
+  
+  replace_patterns:
+
+  # comment out lines after start
+
+
+   "([^#].*)"
+
+      replace_with => comment,
+     select_region => ToEnd("Start.*");
+
+  }
+
+########################################
+
+# Bodies
+
+########################################
+
+
+body replace_with comment
+
+{
+replace_value => "# $(match.1)"; # backreference 0
+occurrences => "all";  # first, last all
+}
+
+########################################################
+
+
+body select_region ToEnd(x)
+
+{
+select_start => "$(x)";
+}
+```
+
+## Warn if matching line in file
+
+```cf3
+########################################################
+
+#
+
+# Warn if line matched
+
+#
+
+########################################################
+
+
+body common control
+
+{
+bundlesequence  => { "testbundle" };
+}
+
+########################################################
+
+
+bundle agent testbundle
+
+{
+files:
+
+  "/var/cfengine/inputs/.*"
+
+       edit_line => DeleteLinesMatching(".*cfenvd.*"),
+       action => WarnOnly;
+}
+
+########################################################
+
+
+bundle edit_line DeleteLinesMatching(regex)
+  {
+  delete_lines:
+
+    "$(regex)" action => WarnOnly;
+
+  }
+
+########################################################
+
+
+body action WarnOnly
+{
+action_policy => "warn";
+}
+```
