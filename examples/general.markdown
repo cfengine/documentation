@@ -52,7 +52,29 @@ what_type:
 
 ```
 
-## Hello world ##
+## Hello world
+
+```cf3
+# Hard promises
+
+
+body common control
+{
+bundlesequence => { "hello" };
+}
+
+# soft promises
+
+
+bundle agent hello
+{
+reports:
+
+ linux::
+
+   "Hello world!";
+}
+```
 
 ## Array example ##
 

@@ -3,7 +3,7 @@ layout: default
 title: System File Examples
 published: true
 sorting: 13
-tags: [Examples][System Administration][System Files]
+tags: [Examples,System Administration,System Files]
 ---
 
 * [Editing password or group files][System Files#Editing password or group files]
