@@ -6,7 +6,7 @@ sorting: 8
 tags: [Examples,Databases]
 ---
 
-* [Database creation][Database#Database creation]
+* [Database creation][Database Examples#Database creation]
 
 ## Database creation
 

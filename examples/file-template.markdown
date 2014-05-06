@@ -6,7 +6,7 @@ sorting: 7
 tags: [Examples]
 ---
 
-* [Templating][File Templates#Templating]
+* [Templating][File Templates Examples#Templating]
 
 ## Templating
 
