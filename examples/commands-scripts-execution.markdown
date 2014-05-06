@@ -43,7 +43,33 @@ commands:
 }
 ```
 
-## Change directory for command ##
+## Change directory for command
+
+```cf3
+body common control
+
+{
+bundlesequence  => { "example" };
+}
+
+###########################################################
+
+
+body contain cd(dir)
+{
+chdir => "${dir}";
+useshell => "true";
+}
+
+bundle agent example
+{
+commands:
+
+   "/bin/pwd"
+       contain => cd("/tmp");
+}
+```
+
 ## Commands example ##
 ## Execresult example ##
 ## Methods ##
