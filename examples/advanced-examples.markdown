@@ -1,10 +1,3 @@
----
-layout: default
-title: CFEngine Advanced Examples 
-published: true
-sorting: 3
-tags: [Examples]
----
 
 
 * [Aborting execution][CFEngine Advanced Examples#Aborting execution]

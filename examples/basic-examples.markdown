@@ -1,10 +1,3 @@
----
-layout: default
-title: CFEngine Basic Examples
-published: true
-sorting: 1
-tags: [Examples]
----
 
 
 * [Basic Example][CFEngine Basic Examples#Basic Example]
