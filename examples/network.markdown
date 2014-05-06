@@ -167,5 +167,53 @@ access:
 ## Read from a TCP socket ##
 ## Set up a PXE boot server ##
 ## Resolver management ##
-## Mount NFS filesystem ##
+
+## Mount NFS filesystem
+
+```cf3
+#
+
+# cfengine 3
+
+#
+
+# cf-agent -f ./cftest.cf -K
+
+#
+
+
+body common control
+
+{
+bundlesequence => { "mounts" };
+}
+
+#
+
+
+bundle agent mounts
+
+{
+storage:
+
+  "/mnt" mount  => nfs("slogans.iu.hio.no","/home");
+
+}
+
+######################################################################
+
+
+body mount nfs(server,source)
+
+{
+mount_type => "nfs";
+mount_source => "$(source)";
+mount_server => "$(server)";
+#mount_options => { "rw" };
+
+edit_fstab => "true";
+unmount => "true";
+}
+```
+
 ## Unmount NFS filesystem ##

@@ -3,7 +3,7 @@ layout: default
 title: Commands, Scripts, and Execution Examples 
 published: true
 sorting: 5
-tags: [Examples][Commands][Scripts]
+tags: [Examples,Commands,Scripts]
 ---
 
 * [Command or script execution][Commands, Scripts, and Execution#Command or script execution]
@@ -71,7 +71,161 @@ commands:
 ```
 
 ## Commands example ##
-## Execresult example ##
-## Methods ##
-## Method validation ##
+
+## Commands example
+
+```cf3
+body common control
+{
+bundlesequence  => { "my_commands" };
+inputs => { "cfengine_stdlib.cf" };
+}
+
+
+bundle agent my_commands
+{
+commands:
+
+ Sunday.Hr04.Min05_10.myhost::
+
+  "/usr/bin/update_db";
+
+ any::
+
+  "/etc/mysql/start"
+
+      contain => setuid("mysql");
+
+}
+```
+
+## Execresult example
+
+```cf3
+body common control
+
+{
+bundlesequence  => { "example" };
+}
+
+###########################################################
+
+
+bundle agent example
+
+{     
+vars:
+
+  "my_result" string => execresult("/bin/ls /tmp","noshell");
+
+reports:
+
+  linux::
+
+    "Variable is $(my_result)";
+
+}
+```
+
+## Methods
+
+```cf3
+body common control
+
+{
+bundlesequence  => { "testbundle"  };
+
+version => "1.2.3";
+}
+
+###########################################
+
+
+bundle agent testbundle
+{
+vars:
+
+ "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
+
+methods:
+
+ "any" usebundle => subtest("$(userlist)");
+
+}
+
+###########################################
+
+
+bundle agent subtest(user)
+
+{
+commands:
+
+ "/bin/echo Fix $(user)";
+
+reports:
+
+ linux::
+
+  "Finished doing stuff for $(user)";
+}
+```
+
+## Method validation
+
+```cf3
+body common control
+
+{
+bundlesequence  => { "testbundle"  };
+
+version => "1.2.3";
+}
+
+###########################################
+
+
+body agent control
+
+{
+abortbundleclasses => { "invalid" };
+}
+
+###########################################
+
+
+bundle agent testbundle
+{
+vars:
+
+ "userlist" slist => { "xyz", "mark", "jeang", "jonhenrik", "thomas", "eben" };
+
+methods:
+
+ "any" usebundle => subtest("$(userlist)");
+
+}
+
+###########################################
+
+
+bundle agent subtest(user)
+
+{
+classes:
+
+  "invalid" not => regcmp("[a-z][a-z][a-z][a-z]","$(user)");
+
+reports:
+
+ !invalid::
+
+  "User name $(user) is valid at 4 letters";
+
+ invalid::
+
+  "User name $(user) is invalid";
+}
+```
+
 ## Trigger classes ##
