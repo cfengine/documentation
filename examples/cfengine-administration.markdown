@@ -6,8 +6,8 @@ sorting: 2
 tags: [Examples,CFEngine Administration]
 ---
 
-* [Ordering promises][Basic Examples#Ordering promises]
-* [Aborting execution][Software Administration and Execution#Aborting execution]
+* [Ordering promises][CFEngine Administration Examples#Ordering promises]
+* [Aborting execution][CFEngine Administration Examples#Aborting execution]
 * Aborting execution
 * Updating from a central policy server
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: General Examples 
+title: General Examples
 published: true
 sorting: 1
 tags: [Examples]
