@@ -3,7 +3,7 @@ layout: default
 title: System Information Examples
 published: true
 sorting: 11
-tags: [Examples][System Information]
+tags: [Examples,System Information]
 ---
 
 * [Change detection][System Information#Change detection]
@@ -128,5 +128,160 @@ reports:
 }
 ```
 
-## Global classes ##
-## Logging ##
+## Global classes
+
+```cf3
+body common control
+{
+bundlesequence => { "g","tryclasses_1", "tryclasses_2" };
+
+}
+
+#################################
+
+
+bundle common g
+{
+classes:
+
+  "one" expression => "any";
+
+  "client_network" expression => iprange("128.39.89.0/24");
+}
+
+#################################
+
+
+bundle agent tryclasses_1
+{
+classes:
+
+  "two" expression => "any";
+}
+
+#################################
+
+
+bundle agent tryclasses_2
+{
+classes:
+
+  "three" expression => "any";
+
+reports:
+
+  one.three.!two::
+
+    "Success";
+}
+
+
+###### Global classes
+
+```cf3
+body common control
+{
+bundlesequence => { "g","tryclasses_1", "tryclasses_2" };
+
+}
+
+#################################
+
+
+bundle common g
+{
+classes:
+
+  "one" expression => "any";
+
+  "client_network" expression => iprange("128.39.89.0/24");
+}
+
+#################################
+
+
+bundle agent tryclasses_1
+{
+classes:
+
+  "two" expression => "any";
+}
+
+#################################
+
+
+bundle agent tryclasses_2
+{
+classes:
+
+  "three" expression => "any";
+
+reports:
+
+  one.three.!two::
+
+    "Success";
+}
+
+
+#################################
+```
+
+## Logging
+
+```cf3
+body common control
+{
+bundlesequence => { "test" };
+}
+
+bundle agent test
+{
+vars:
+
+  "software" slist => { "/root/xyz", "/tmp/xyz" };
+
+files:
+
+  "$(software)"
+
+    create => "true",
+     action => logme("$(software)");
+
+}
+
+#
+
+
+body action logme(x)
+{
+log_kept => "/tmp/private_keptlog.log";
+log_failed => "/tmp/private_faillog.log";
+log_repaired => "/tmp/private_replog.log";
+log_string => "$(sys.date) $(x) promise status";
+}
+
+
+body common control
+{
+bundlesequence => { "one" };
+}
+
+
+
+bundle agent one
+{
+files:
+
+  "/tmp/xyz"
+
+       create => "true",
+       action => log;
+
+}
+
+body action log
+{
+log_level => "inform";
+}
+```

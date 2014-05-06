@@ -3,7 +3,7 @@ layout: default
 title: System Security Examples 
 published: true
 sorting: 10
-tags: [Examples][System Security]
+tags: [Examples,System Security]
 ---
 
 * [Distribute root passwords][System Security#Distribute root passwords]

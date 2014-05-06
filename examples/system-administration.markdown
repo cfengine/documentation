@@ -3,7 +3,7 @@ layout: default
 title: System Administration Examples 
 published: true
 sorting: 12
-tags: [Examples][System Administration]
+tags: [Examples,System Administration]
 ---
 
 * [Centralized Management][System Administration#Centralized Management]
@@ -180,6 +180,125 @@ unmount => "true";
 ## Set up HPC clusters ##
 ## Set up name resolution ##
 ## Set up sudo ##
-## Environments (virtual) ##
-## Environment variables ##
+
+## Environments (virtual)
+
+```cf3
+
+#######################################################
+
+#
+
+# Virtual environments
+
+#
+
+#######################################################
+
+
+body common control
+
+{
+bundlesequence  => { "my_vm_cloud" };   
+}
+
+#######################################################
+
+
+bundle agent my_vm_cloud
+
+{
+vars:
+
+  "vms[atlas]" slist => { "guest1", "guest2", "guest3" };
+
+environments:
+
+ scope||any::  # These should probably be in class "any" to ensure uniqueness
+
+   "$(vms[$(sys.host)])"
+
+       environment_resources => virt_xml("$(xmlfile[$(this.promiser)])"),
+       environment_interface => vnet("eth0,192.168.1.100/24"),
+       environment_type      => "test",
+       environment_host      => "atlas";
+
+      # default environment_state => "create" on host, and "suspended elsewhere"
+
+}
+
+#######################################################
+
+
+body environment_resources virt_xml(specfile)
+{
+env_spec_file => "$(specfile)";
+}
+
+#######################################################
+
+
+body environment_interface vnet(primary)
+{
+env_name      => "$(this.promiser)";
+env_addresses => { "$(primary)" };
+
+host1::
+
+  env_network => "default_vnet1";
+
+host2::
+
+  env_network => "default_vnet2";
+
+}
+```
+
+## Environment variables
+
+```cf3
+#######################################################
+
+#
+
+# Virtual environments
+
+#
+
+#######################################################
+
+
+body common control
+
+{
+bundlesequence  => { "my_vm_cloud" };   
+}
+
+#######################################################
+
+
+bundle agent my_vm_cloud
+
+{
+environments:
+
+   "centos5"
+
+       environment_resources => virt_xml,
+       environment_type      => "xen",
+       environment_host      => "ursa-minor";
+
+      # default environment_state => "create" on host, and "suspended elsewhere"
+
+}
+
+#######################################################
+
+
+body environment_resources virt_xml
+{
+env_spec_file => "/srv/xen/centos5-libvirt-create.xml";
+}
+```
+
 ## Tidying garbage files ##

@@ -3,7 +3,7 @@ layout: default
 title: Software Administration Examples 
 published: true
 sorting: 4
-tags: [Examples][Software Administration]
+tags: [Examples,Software Administration]
 ---
 
 * [Software and patch installation][Software Administration and Execution#Software and patch installation]
