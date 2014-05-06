@@ -6,16 +6,16 @@ sorting: 13
 tags: [Examples,System Administration,System Files]
 ---
 
-* [Editing password or group files][System Files#Editing password or group files]
-* [Editing password or group files custom][System Files#Editing password or group files custom]
-* [Log rotation][System Files#Log rotation]
-* [Garbage collection][System Files#Garbage collection]
-* [Manage a system file][System Files#Manage a system file]
-* [Templating][System Files#Templating]
-* [Simple template][System Files#Simple template]
-* [Simple versioned template][System Files#Simple versioned template]
-* [Macro template][System Files#Macro template]
-* [Custom editing][System Files#Custom editing]
+* [Editing password or group files][System Files Examples#Editing password or group files]
+* [Editing password or group files custom][System Files Examples#Editing password or group files custom]
+* [Log rotation][System Files Examples#Log rotation]
+* [Garbage collection][System Files Examples#Garbage collection]
+* [Manage a system file][System Files Examples#Manage a system file]
+* [Templating][System Files Examples#Templating]
+* [Simple template][System Files Examples#Simple template]
+* [Simple versioned template][System Files Examples#Simple versioned template]
+* [Macro template][System Files Examples#Macro template]
+* [Custom editing][System Files Examples#Custom editing]
 
 ## Editing password or group files ##
 

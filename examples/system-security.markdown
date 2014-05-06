@@ -6,8 +6,8 @@ sorting: 10
 tags: [Examples,System Security]
 ---
 
-* [Distribute root passwords][System Security#Distribute root passwords]
-* [Distribute ssh keys][System Security#Distribute ssh keys]
+* [Distribute root passwords][System Security Examples#Distribute root passwords]
+* [Distribute ssh keys][System Security Examples#Distribute ssh keys]
 * Distribute ssh keys
 
 ## Distribute root passwords	

@@ -6,12 +6,12 @@ sorting: 11
 tags: [Examples,System Information]
 ---
 
-* [Change detection][System Information#Change detection]
-* [Hashing for change detection (tripwire)][System Information#Hashing for change detection (tripwire)]
-* [Check filesystem space][System Information#Check filesystem space]
-* [Class match example][System Information#Class match example]
-* [Global classes][System Information#Global classes]
-* [Logging][System Information#Logging]
+* [Change detection][System Information Examples#Change detection]
+* [Hashing for change detection (tripwire)][System Information Examples#Hashing for change detection (tripwire)]
+* [Check filesystem space][System Information Examples#Check filesystem space]
+* [Class match example][System Information Examples#Class match example]
+* [Global classes][System Information Examples#Global classes]
+* [Logging][System Information Examples#Logging]
 * Check filesystem space
 
 ## Change detection
