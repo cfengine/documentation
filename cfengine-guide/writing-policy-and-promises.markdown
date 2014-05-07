@@ -1,6 +1,6 @@
 ---
 layout: default
-title: How to Write and Deploy Promises
+title: Writing Policy and Promises
 published: true
 sorting: 2
 ---
