@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CFEngine Guide 
+title: Guide 
 published: true
-sorting: 3
+sorting: 4
 ---
 
 [%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
@@ -13,6 +13,7 @@ sorting: 3
 * [CFEngine Enterprise Guide][CFEngine Enterprise Guide]
    * [Getting Started With CFEngine Enterprise][Getting Started With CFEngine Enterprise]
    * [Reporting in Mission Portal][Getting Started With CFEngine Enterprise]
+* [CFEngine Cookbook][CFEngine Cookbook]: Advanced and Intermediate Tips, Tricks, and Tutorials   
 
 
 
