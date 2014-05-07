@@ -11,8 +11,8 @@ sorting: 3
 * [Writing Policy and Promises][Writing Policy and Promises]
 * [FAQ][FAQ]	
 * [CFEngine Enterprise Guide][CFEngine Enterprise Guide]
-	*[Getting Started With CFEngine Enterprise][Getting Started With CFEngine Enterprise]
-	*[Reporting in Mission Portal][Getting Started With CFEngine Enterprise]
+   *[Getting Started With CFEngine Enterprise][Getting Started With CFEngine Enterprise]
+   *[Reporting in Mission Portal][Getting Started With CFEngine Enterprise]
 
 
 
