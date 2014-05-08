@@ -2,7 +2,7 @@
 layout: default
 title: Version Control and Configuration Policy
 published: true
-sorting: 2
+sorting: 4
 ---
 
 ## Introduction
