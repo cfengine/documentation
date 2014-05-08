@@ -5,8 +5,6 @@ published: true
 sorting: 4
 ---
 
-[%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
-
 * [Installing CFEngine][Installing CFEngine]
 * [Writing Policy and Promises][Writing Policy and Promises]
 * [FAQ][FAQ]	
