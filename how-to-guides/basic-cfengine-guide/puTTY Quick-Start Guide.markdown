@@ -9,10 +9,10 @@ a client computer to a CFEngine server, which is called a _hub_.
 Many of the tutorials to follow will refer to using PuTTY, especially if the client computer 
 is using the Windows or Unix operating system—including Linux.
 
-The important thing about PuTTY is that it is a secure way to connect a client to a server, 
+The important thing about PuTTY is that it is a _secure_ way to connect a client to a server, 
 using the  SSH network protocol.
 
-What is SSH? It is short for “Secure Shell,” which means it creates a secure channel over an 
+What is SSH? It is short for “Secure Shell,” which means it creates a _secure channel_ over an 
 insecure network—like the internet, for example.
 
 How does SSH do this? By encrypting the communications between the client and the server, using 
@@ -24,5 +24,6 @@ securely. This is true whether the CFEngine system is run on a cloud platform, l
 and many others—or on a private network.
 
 That is where PuTTY comes into the picture. The PuTTY software consists of two separate programs: 
-PuTTYgen, which is used to generate the encryption key pair—and PuTTY, which is a command-line interface.
+PuTTYgen, which is used to generate the encryption key pair—and PuTTY, which is a command-line interface, 
+which is used to access the CFEngine server.
 
