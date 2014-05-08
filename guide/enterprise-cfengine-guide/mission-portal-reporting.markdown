@@ -2,7 +2,7 @@
 layout: default
 title: Reporting in Mission Portal
 published: true
-sorting: 2
+sorting: 3
 ---
 
 ## Define a New Single Table Report ##
