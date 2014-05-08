@@ -14,6 +14,8 @@ upgrade or use in conjunction with other versions at this point.*
 <!--- TODO: move up when no longer a pre-release
 -->
 
+[%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
+
 ## CFEngine Enterprise Installation Guides
 
 ### CFEngine Enterprise Evaluation (25 Free Servers)
