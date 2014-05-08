@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Overviews
+title: Overview
 published: true
 sorting: 3
 ---
