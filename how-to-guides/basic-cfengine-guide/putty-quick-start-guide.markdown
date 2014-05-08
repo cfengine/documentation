@@ -1,4 +1,13 @@
-Quick-Start Guide to PuTTY
+---
+title: Quick-Start Guide to Using PuTTY
+layout: default
+published: true
+sorting: 2
+tags: [how-to-guides, quick-start guides, putty]
+---
+
+
+Quick-Start Guide to Using PuTTY
 
 
 This guide is designed for the novice user of CFEngine software. 
