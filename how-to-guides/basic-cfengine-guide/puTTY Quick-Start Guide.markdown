@@ -30,7 +30,8 @@ which is used to access the CFEngine server, or _hub_.
 PuTTYgen is used only when setting up a new client machine on the CFEngine hub. The hub will already 
 have a key-pair file, and PuTTYgen will download this file, by clicking on the _Load_ button.
 
-![The Puttygen Interface](Installing-CFE-on-AWS-3.png)
+![The Puttygen Interface](Puttygen Interface.png)
+
 
 
 
