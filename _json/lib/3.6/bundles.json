@@ -66,7 +66,7 @@
               "name": "vars",
               "contexts": [
                 {
-                  "name": "SuSE",
+                  "name": "suse",
                   "promises": [
                     {
                       "line": 88,
@@ -123,7 +123,7 @@
                   ]
                 },
                 {
-                  "name": "!(SuSE|redhat|fedora|freebsd)",
+                  "name": "!(suse|redhat|fedora|freebsd)",
                   "promises": [
                     {
                       "line": 94,
