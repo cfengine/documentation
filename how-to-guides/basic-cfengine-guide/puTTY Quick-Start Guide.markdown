@@ -24,6 +24,9 @@ securely. This is true whether the CFEngine system is run on a cloud platform, l
 and many others—or on a private network.
 
 That is where PuTTY comes into the picture. The PuTTY software consists of two separate programs: 
-PuTTYgen, which is used to generate the encryption key pair—and PuTTY, which is a command-line interface, 
-which is used to access the CFEngine server.
+PuTTYgen, which is used to generate the encryption key pair—and PuTTY, a command-line interface, 
+which is used to access the CFEngine server, or _hub_.
+
+PuTTYgen is used only when setting up a new client machine on the CFEngine hub. The hub will already 
+have a key-pair file, and PuTTYgen will download this file. 
 
