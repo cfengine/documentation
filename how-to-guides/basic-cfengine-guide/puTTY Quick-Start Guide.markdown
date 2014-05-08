@@ -28,5 +28,11 @@ PuTTYgen, which is used to generate the encryption key pair—and PuTTY, a comma
 which is used to access the CFEngine server, or _hub_.
 
 PuTTYgen is used only when setting up a new client machine on the CFEngine hub. The hub will already 
-have a key-pair file, and PuTTYgen will download this file. 
+have a key-pair file, and PuTTYgen will download this file, by clicking on the _Load_ button.
+
+<center>
+<img src="C:\Users\mig\Pictures\CFE\AWS Images\Puttygen Interface">
+<center>
+
+
 
