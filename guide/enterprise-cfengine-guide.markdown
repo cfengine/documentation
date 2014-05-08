@@ -5,15 +5,14 @@ published: true
 sorting: 4
 ---
 
+* [Getting Started With CFEngine Enterprise][Getting Started With CFEngine Enterprise]
+
 * [Deploy your first Policy (Enterprise)][Deploy your first Policy] 
 
-This Enterprise-specific tutorial illustrates how 
-to use a sketch to configure and deploy a simple policy by using the Design Center app on 
-the Mission Portal console.
+How to use a sketch to configure and deploy a simple policy by using the Design Center app in the Mission Portal console.
 
-* [Configure the Design Center App (Enterprise)][Configure the Design Center App] 
+* [Version Control and Configuration Policy][Version Control and Configuration Policy]
 
-This section is for Enterprise users who plan to 
-manage sketches and possibly write new ones. It also includes advanced topics that provide a 
-better look at managing Enterprise sketches in the Design Center app and understanding 
-the overall sketch flow.
+CFEngine users can easily version their policies.
+
+* [Reporting in Mission Portal][Reporting in Mission Portal] 
