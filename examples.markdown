@@ -8,7 +8,7 @@ tags: [Examples]
 
 * [General Examples][General Examples]
 * [CFEngine Administration Examples][CFEngine Administration Examples]
-* [Timing, Counting and Measuring Examples][Timing, Counting and Measuring Examples]
+* [Measuring Examples][Measuring Examples]
 * [Software Administration Examples][Software Administration Examples]
 * [Commands, Scripts, and Execution Examples][Commands, Scripts, and Execution Examples]
 * [File and Directory Examples][File and Directory Examples]
