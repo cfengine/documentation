@@ -298,3 +298,9 @@ example:
 
 This results in `@(list)` being the same as `@(one)`, and the reference to 
 `@(two)` disappears. This is useful for combining lists.
+
+The `policy` attribute gets checked at the moment the variable is assigned -
+i.e. in the second assignment when the same variable is assigned multiple
+times. The `policy` attribute for that assignment is the one used when
+deciding whether to warn you or not. That's why in practice, you need to
+specify the attribute in all declarations of the variable.
