@@ -13,22 +13,14 @@ reflects the needs of your organization.
 
 CFEngine comes in two editions:
 
-* CFEngine Enterprise is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers).
+* [CFEngine Enterprise][[Enterprise Overview] is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers). [Get the Enterprise Edition](https://cfengine.com/evaluate-enterprise)
 
-* CFEngine Community, a free GPL v3 open source edition.
-
-Choose the installation that best suits your needs.
+* CFEngine Community, a free GPL v3 open source edition. [Get the Community Edition](https://cfengine.com/inside/myspace)
 
 See also: 
 
 * [Supported Platforms and Versions][Supported Platforms and Versions]
-* [Enterprise Overview][Enterprise Overview]
 * [Upgrade Instructions][Upgrade Instructions]
-
-## Get It
-
-* [Get the Enterprise Edition](https://cfengine.com/evaluate-enterprise)
-* [Get the Community Edition](https://cfengine.com/inside/myspace)
 
 ## Install It
 
