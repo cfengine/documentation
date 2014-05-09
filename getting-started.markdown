@@ -39,20 +39,15 @@ CFEngine up and running for various environments.
 
 ## Try It
 
-Walk through the tutorials and how to guides to get a better 
+Walk through the examples, tutorials and how to guides to get a better 
 feel for the power and value of CFEngine:
 
-* [CFEngine Examples][CFEngine Examples]
-* [How to Guides][How to Guides]   
-
-Once you understand how CFEngine works, refer to our policy examples 
-to save time as you begin to define the desired end states of your organization’s IT 
-systems. Find these examples on our [website][Policy] and in our github [repository][CFEngine Examples].
-
+* [Policy Examples and Tutorials][Examples and Tutorials]
+* [The CFEngine Guide][Guide]   
 
 ## Learn It
 
-[Concepts][Concepts] Learn the concepts of CFEngine such as its architecture and components. 
+Take a look at an [Overview of CFEngine][Overview] such as its architecture and components. 
 Also learn about promise theory and the phases of managing systems with CFEngine. 
 
 [Learning Resources][Learning Resources] In addition to the documentation that's provided on 
