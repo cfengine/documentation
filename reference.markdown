@@ -20,7 +20,7 @@ page.
 * [Syntax, identifiers and names][Syntax, identifiers and names]
 * [Standard Library][Standard Library]
 
-See Also: [All Promise Types][All Promise Types], [All Body Types][All Body Types]
+See Also: [All Promise Types][CFEngine Reference#All Promise Types], [All Body Types][CFEngine Reference#All Body Types]
 
 ## All Promise Types
 
