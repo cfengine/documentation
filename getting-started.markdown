@@ -39,7 +39,7 @@ feel for the power and value of CFEngine:
 * [Policy Examples and Tutorials][Examples and Tutorials]
 * [The CFEngine Guide][Guide]   
 
-## Learn It
+## Learn More
 
 Take a look at an [Overview of CFEngine][Overview] such as its architecture and components. 
 Also learn about promise theory and the phases of managing systems with CFEngine. 
