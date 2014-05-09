@@ -15,10 +15,10 @@ page.
 * [Functions][Functions]
 * [Hard and Soft Classes][Hard and Soft Classes]
 * [Special Variables][Special Variables]
-* [Design Center][Design Center]
 * [Enterprise API Reference][Enterprise API Reference]
 * [Syntax, identifiers and names][Syntax, identifiers and names]
 * [Standard Library][Standard Library]
+* [Design Center][Design Center]
 
 See Also: [All Promise Types][CFEngine Reference#All Promise Types], [All Body Types][CFEngine Reference#All Body Types]
 
