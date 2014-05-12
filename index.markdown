@@ -11,7 +11,7 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
 
 <div class="highlight">
 <p>
-<div class="cf3" style="background: #f5f9fb; border: 1px solid #e8eff1; display: block; font-weight: normal; margin: 2em 0; overflow: auto; padding: 2% 2% 2% 1%; width: 96%;">
+<div class="cf3" style="background: #f5f9fb; border: 1px solid #e8eff1; display: block; font-weight: normal; margin: 2em 0; overflow: auto; padding: 2% 2% 2% 1%; width: 96%;font-family: Liberation Mono,Consolas,monospace;font-size: small;">
 <span class="k">body common control<span class="k"> <br/>   
 <span class="p">{</span><br/>    
 <span class="kr">bundlesequence <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">"cfengine_documentation"</span> }<span class="p">;</span><br/>    
