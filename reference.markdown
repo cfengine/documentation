@@ -19,7 +19,8 @@ page.
 * [Syntax, identifiers and names][Syntax, identifiers and names]
 * [Standard Library][Standard Library]
 * [Design Center][Design Center]
+* [All Promise and Body Types][All Promise and Body Types]
 
-See Also: [All Promise Types][All Types#All Promise Types], [All Body Types][All Types#All Body Types]
+See Also: [All Promise Types][All Promise and Body Types#All Promise Types], [All Body Types][All Promise and Body Types#All Body Types]
 
 
