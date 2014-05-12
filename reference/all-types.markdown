@@ -1,13 +1,13 @@
 ---
 layout: default
-title: All Types
+title: All Promise and Body Types
 published: true
 sorting: 110
 tags: [reference]
 ---
 
-* [All Promise Types][All Types#All Promise Types]
-* [All Body Types][All Types#All Body Types]
+* [All Promise Types][All Promise and Body Types#All Promise Types]
+* [All Body Types][All Promise and Body Types#All Body Types]
 
 ## All Promise Types
 
