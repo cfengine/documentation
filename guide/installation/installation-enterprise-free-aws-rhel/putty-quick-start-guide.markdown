@@ -15,7 +15,7 @@ This guide is intended for the novice user of CFEngine software.
 It describes how to start using a free, open-source program called PuTTY, to securely connect
 a client computer to a CFEngine server, which is called a _hub_. 
 
-Many of the tutorials to follow will refer to using PuTTY, especially if the client computer 
+Many of the tutorials to follow will refer to using PuTTY, if the client computer 
 is using the Windows or Unix operating system—including Linux.
 
 The important thing about PuTTY is that it is a _secure_ way to connect a client to a server, 
@@ -32,7 +32,7 @@ Since CFEngine is a client-server enterprise software system, it is essential to
 securely. This is true whether the CFEngine system is run on a cloud platform, like Amazon Web Services 
 and many others—or on a private network.
 
-That is where PuTTY comes into the picture, since it uses  SSHo protocol for connecting a client to a server. 
+That is where PuTTY comes into the picture, since it uses  SSH protocol for connecting a client to a server. 
 
 The PuTTY software consists of two separate programs: 
 
@@ -43,22 +43,20 @@ a _host_ in CFEngine terminology.
 PuTTYgen is used only when setting up a new client machine on the CFEngine hub. The CFEngine _hub_ will already 
 have an encrypted _key-pair_ that was created when setting up the _hub_. (See the tutorial, "Installing CFEngine on RHEL Using AWS")
 
-First, PuTTYgen will download this _key-pair_ file, by clicking on the _Load_ button, as shown below. 
-
-![The PuTTYgen Interface](puttygen-interface.png)
-
-The following steps describe how to get the client machine, up and running using PuTTYgen. There are two distinct 
+The following steps describe how to get the client machine, up and running using PuTTYgen and PuTTY. There are two distinct 
 steps to this process: 
 
-Step 1. is to use PuTTYgen to create an encrypted _key-pair_ in file format (_.ppk_) that PuTTY works with.
+Step 1. Use PuTTYgen to create an encrypted _key-pair_ in the file format (_.ppk_) that PuTTY works with.
 It is important to note that the _key-pair_ on the _hub_ will probably be in a file format that is different from the PuTTYgen
-file format. For example on Amazon Web Services (AWS) and many other cloud computing services, the format will be
+file format. For example on Amazon Web Services (AWS) and many other cloud computing services, the _key-pair_ file format will be
 in _.pem_.
 
-Step 2. is to configure the PuTTY application in order to securely access the CFEngine _hub_.
+Step 2. Configure the PuTTY application in order to securely access the CFEngine _hub_.
 
-Step 1. consists of the following sequence: First, PuTTYgen will be used to download the _key-pair_ 
+Step 1. consists of the following sequence: First, open PuTTYgen, download the _key-pair_ 
 and save it on the user's hard disk in the _.ppk_ file format. 
+
+![The PuTTYgen Interface](puttygen-interface.png)
 
 a. Click _Load_. The following _Load private key_ window will pop up:
 
