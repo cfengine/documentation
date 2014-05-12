@@ -20,12 +20,6 @@ page.
 * [Standard Library][Standard Library]
 * [Design Center][Design Center]
 
-See Also: [All Promise Types][CFEngine Reference#All Promise Types], [All Body Types][CFEngine Reference#All Body Types]
+See Also: [All Promise Types][All Types#All Promise Types], [All Body Types][All Types#All Body Types]
 
-## All Promise Types
 
-[%CFEngine_syntax_map(promiseTypes)]
-
-## All Body Types
-
-[%CFEngine_syntax_map(bodyTypes)]
