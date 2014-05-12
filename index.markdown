@@ -20,13 +20,66 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
 <span style="font-weight: normal;" class="p">{</span><br/>     
 <span style="font-weight: normal;" class="kr">vars: </span><br/>   
 <br/>  
-  <span style="font-weight: normal;" class="p">"</span><span style="font-weight: normal;" class="nv">links[1]</span><span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string</span> <span style="font-weight: normal;" class="o">=&gt;</span> <span style="font-weight: normal;" class="s" style="font-weight: normal;">"Get an <a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-introduction.html">Introduction to CFEngine</a>, an <a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview.html">Overview of CFEngine</a> and a <a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide.html">Guide to How CFEngine Works</a>.";</span> <br/>  
-  <span style="font-weight: normal;" class="p">"</span><span style="font-weight: normal;" class="nv">links[2]</span><span style="font-weight: normal;" class="p">"</span> <span style="font-weight: normal;" class="kt">string</span> <span style="font-weight: normal;" class="o">=&gt;</span> <span style="font-weight: normal;" class="s">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="getting-started.html">Get started</a> with CFEngine."; </span> <br/>  
-  <span style="font-weight: normal;" class="p">"</span><span style="font-weight: normal;" class="nv">links[3]</span><span style="font-weight: normal;" class="p">"</span> <span style="font-weight: normal;" class="kt">string</span> <span style="font-weight: normal;" class="o">=&gt;</span> <span style="font-weight: normal;" class="s">"Read about <a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide-writing-policy-and-promises.html">Policy Language</a> and see some <a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="examples.html">Examples of Policy Language</a>.";</span> <br/>   
-  <span style="font-weight: normal;" class="p">"</span><span style="font-weight: normal;" class="nv">links[4]</span><span style="font-weight: normal;" class="p">"</span> <span style="font-weight: normal;" class="kt">string</span> <span style="font-weight: normal;" class="o">=&gt;</span> <span style="font-weight: normal;" class="s">"Search the <a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="reference.html">Reference Documentation</a>.";</span> <br/>  
-  <span style="font-weight: normal;" class="p">"</span><span style="font-weight: normal;" class="nv">links[5]</span><span style="font-weight: normal;" class="p">"</span> <span style="font-weight: normal;" class="kt">string</span> <span style="font-weight: normal;" class="o">=&gt;</span> <span style="font-weight: normal;" class="s">"Discover <a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-system-overview-enterprise-overview.html">CFEngine Enterprise Edition</a>.";</span> <br/>  
-  <span style="font-weight: normal;" class="p">"</span><span style="font-weight: normal;" class="nv">links[6]</span><span style="font-weight: normal;" class="p">"</span> <span style="font-weight: normal;" class="kt">string</span> <span style="font-weight: normal;" class="o">=&gt;</span> <span style="font-weight: normal;" class="s">"Learn about <a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-system-overview-enterprise-overview-enterprise-mission-portal-overview-mission-portal-reports.html">Reporting in the CFEngine Misssion Portal</a>."; </span> <br/>  
-  <span style="font-weight: normal;" class="p">"</span><span style="font-weight: normal;" class="nv">links[7]</span><span style="font-weight: normal;" class="p">"</span> <span style="font-weight: normal;" class="kt">string</span> <span style="font-weight: normal;" class="o">=&gt;</span> <span style="font-weight: normal;" class="s">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-learning-resources-latest-release.html">Check release information</a>";</span><br/>   
+   <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[1]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-introduction.html">Introduction to CFEngine</a>.";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[2]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview.html">Overview of CFEngine</a>.";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[3]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide.html">Guide to How CFEngine Works </a>.";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[4]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="getting-started.html">Get Started with CFEngine</a>.";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[5]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide-writing-policy-and-promises.html">Read about Policy Language</a>.";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[6]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="examples.html">See Some Examples of Policy Language </a>.";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[7]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="reference.html">Search the Reference Documentation</a>.";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[8]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-system-overview-enterprise-overview.html">Discover CFEngine Enterprise Edition</a>.";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[9]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-system-overview-enterprise-overview-enterprise-mission-portal-overview-mission-portal-reports.html">Learn about Reporting in the CFEngine Misssion Portal </a>.";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[10]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-learning-resources-latest-release.html">Check release information</a>.";</span> <br/>
+   
 <span style="font-weight: normal;" class="p">}</span> <br/>    
 </div>
 </div>
