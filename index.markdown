@@ -17,7 +17,7 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
   
 <span class="k">bundle agent<span class="k"> <span class="nf">cfengine_documentation</span>   
 <span class="p">{</span>   
-vars:  
+<span class="kr">vars: </span> 
   
   <span class="s">"links[1]"</span>   <span class="kr">string</span> <span class="o">=&gt;</span> <span class="s">"Get an [Introduction to CFEngine][Introduction], an [Overview of CFEngine][Overview] and a [Guide to How CFEngine Works][Guide].";</span>  
   <span class="s">"links[2]"</span>   <span class="kr">string</span> <span class="o">=&gt;</span> <span class="s">"[Get started][Get Started] with CFEngine."; </span> 
