@@ -26,6 +26,9 @@
 <nav id="nav_wrapper">
     <div class="wrapper">
         <ul>
+		    <li>
+                <a href="{{site.baseurl}}index.html" {% if  page.categories[0] == 'CFEngine Documentation' %} class="navselected" {% endif %}>CFEngine Documentation</a>
+            </li>
             <li>
                 <a href="{{site.baseurl}}getting-started.html" {% if  page.categories[0] == 'Getting Started' %} class="navselected" {% endif %}>Getting Started</a>
             </li>
