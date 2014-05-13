@@ -118,10 +118,10 @@ def parseMarkdownForAnchors(file_name, config):
 		# ignore code blocks
 		if line.find("    ") == 0:
 			continue
-		elif line.find("```") == 0:
-			in_pre = not in_pre
-		if in_pre:
-			continue
+		#elif line.find("```") == 0:
+			#in_pre = not in_pre
+		#if in_pre:
+			#continue
 
 		if line.find("title:") == 0:
 			current_title = line.split('title: ')
