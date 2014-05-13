@@ -177,6 +177,7 @@ code div {
     overflow: auto;
     padding: 2% 2% 2% 1%;
     width: 96%;
+	white-space: pre;
 }	
 
 img {
