@@ -168,7 +168,7 @@ pre {
         width: 96%;
     }
 	
-pre div {
+code div {
     background: #f5f9fb;
     border: 1px solid #e8eff1;
     display: block;
