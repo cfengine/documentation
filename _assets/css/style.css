@@ -167,6 +167,17 @@ pre {
         padding: 2% 2% 2% 1%;
         width: 96%;
     }
+	
+pre div {
+    background: #f5f9fb;
+    border: 1px solid #e8eff1;
+    display: block;
+    font-weight: normal;
+    margin: 2em 0;
+    overflow: auto;
+    padding: 2% 2% 2% 1%;
+    width: 96%;
+}	
 
 img {
     max-height: 100%;
