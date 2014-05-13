@@ -177,7 +177,17 @@ code div {
     overflow: auto;
     padding: 2% 2% 2% 1%;
     width: 96%;
-	white-space: pre;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px inset;
+    -moz-box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px inset;
+    -o-box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px inset;
+    border-radius: 3px;
+    font-weight: normal;
+
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
 }	
 
 img {
