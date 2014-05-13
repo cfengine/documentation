@@ -84,18 +84,15 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
 </div>
 </div>
 
-<pre>
-	<div>
-		* [Guide][Guide]
-	</div>
-</pre>
 <code>
 	<div>
-		* [Guide2][Guide]
+		[Guide2][Guide]{
+			[Guide3][Guide]
+		}
 	</div>
 </code>
 
-* [Overview][Overview]
+
 
 
 
