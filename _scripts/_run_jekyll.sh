@@ -58,5 +58,17 @@ echo "*********************************************************" >> $WRKDIR/outp
 echo "*                  CONSOLE OUTPUT                       *" >> $WRKDIR/output.log
 echo "*********************************************************" >> $WRKDIR/output.log
 jekyll
+if [ "$?" -gt "0" ]; then
+   exit 1;
+fi
+
 $WRKDIR/documentation-generator/_scripts/cfdoc_postprocess.py
+if [ "$?" -gt "0" ]; then
+   exit 2;
+fi
+
 #$WRKDIR/documentation-generator/_scripts/_create_pdf.sh
+if [ "$?" -gt "0" ]; then
+   exit 3;
+fi
+
