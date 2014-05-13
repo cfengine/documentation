@@ -84,19 +84,11 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
 </div>
 </div>
 
-<code>
-	<div>
-		[Guide2][Guide]{
-			[Guide3][Guide]
-		}
-	</div>
-</code>
-
 ```cf3
 body common control
 {
 bundlesequence => { "main" };
-inputs => { "cfengine_stdlib.cf" };
+inputs => { "[Guide3][Guide]" };
 }
 
 
