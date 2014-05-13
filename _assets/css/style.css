@@ -137,6 +137,7 @@ code {
     font-family: "Liberation Mono", Consolas, monospace;
     font-size: small;
     font-weight: bold;
+	white-space: pre;
 }
 
 p code {
