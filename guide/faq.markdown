@@ -7,6 +7,7 @@ tags: [getting started, installation, enterprise, faq]
 ---
 
 * [Enterprise Installation](#enterprise-installation)
+* [Enterprise Scalability](#enterprise-scalability)
 
 ### Enterprise Installation ###
 
@@ -21,3 +22,5 @@ Starting with CFEngine 3.6.0 there will be a system user called ```cfpostgres```
 #### Do I need experience with PostgreSQL? ####
 
 PostgreSQL is highly configurable, and you should have some in-house expertise to properly configure your database installation. 
+
+### Enterprise Scalability ###
