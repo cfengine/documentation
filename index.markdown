@@ -36,7 +36,7 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
  <span style="font-weight: normal;" class="nv">links[3]</span>
  <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
  <span style="font-weight: normal;" class="o">=&gt; </span>
- <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide.html">Guide to How CFEngine Works </a>";</span> <br/>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide.html">Guide to How CFEngine Works</a>";</span> <br/>
  
   <span style="font-weight: normal;" class="p">"</span>
  <span style="font-weight: normal;" class="nv">links[4]</span>
@@ -54,7 +54,7 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
  <span style="font-weight: normal;" class="nv">links[6]</span>
  <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
  <span style="font-weight: normal;" class="o">=&gt; </span>
- <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="examples.html">See Some Examples of Policy Language </a>";</span> <br/>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="examples.html">See Some Examples of Policy Language</a>";</span> <br/>
  
   <span style="font-weight: normal;" class="p">"</span>
  <span style="font-weight: normal;" class="nv">links[7]</span>
@@ -72,13 +72,13 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
  <span style="font-weight: normal;" class="nv">links[9]</span>
  <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
  <span style="font-weight: normal;" class="o">=&gt; </span>
- <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-system-overview-enterprise-overview-enterprise-mission-portal-overview-mission-portal-reports.html">Learn about Reporting in the CFEngine Misssion Portal </a>";</span> <br/>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-system-overview-enterprise-overview-enterprise-mission-portal-overview-mission-portal-reports.html">Learn about Reporting in the CFEngine Misssion Portal</a>";</span> <br/>
  
   <span style="font-weight: normal;" class="p">"</span>
  <span style="font-weight: normal;" class="nv">links[10]</span>
  <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
  <span style="font-weight: normal;" class="o">=&gt; </span>
- <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-learning-resources-latest-release.html">Check release information</a>";</span> <br/>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="overview-learning-resources-latest-release.html">Check Release Information</a>";</span> <br/>
    
 <span style="font-weight: normal;" class="p">}</span> <br/>    
 </div>
