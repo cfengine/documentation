@@ -567,6 +567,16 @@ The location of the system resolver file.
     # resolv = /etc/resolv.conf
 ```
 
+### sys.statedir
+
+The name of the state directory where CFEngine looks for its embedded database files.
+
+```cf3
+    # statedir = /var/cfengine/state
+```
+
+**History:** Introduced in CFEngine 3.7
+
 ### sys.sysday
 
 A variable containing the time since the UNIX Epoch (00:00:00 UTC, January 1,
