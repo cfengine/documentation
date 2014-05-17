@@ -21,6 +21,15 @@ CFEngine:
 * Ensures compliance with a desired system state. 
 * Propagates real-time modifications or updates across the system.
 
+## Summary ##
+
+CFEngine is a distributed system consisting of several component applications and written policies.
+
+There are basically two categories of machines in a CFEngine environment: policy servers and hubs. Policy servers are responsible for making policy files available to each of the hubs that have registered with it (a.k.a. bootstrapped), including itself. Hubs on the other hand are responsible for ensuring they continuously pull in the latest policies, or changes to policies, from the server. They are additionally responsible for ensuring they remain fully compliant with the instructions contained within the policy files, at all times.
+
+The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.
+
+
 ## How CFEngine Works ##
 
 CFEngine ensures that the actual state of a system is in compliance with the predefined model of desired state for the system. If it is not in compliance CFEngine will bring it into compliance.
