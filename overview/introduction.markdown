@@ -23,7 +23,7 @@ CFEngine:
 
 ## Summary ##
 
-CFEngine is a distributed system consisting of several component applications and written policies.
+CFEngine is a distributed system for managing and monitoring computers across an IT network. Each machine in the network each running a series of component applications that manage and interpret textual files called policies.
 
 There are basically two categories of machines in a CFEngine environment: policy servers and hubs. Policy servers are responsible for making policy files available to each of the hubs that have registered with it (a.k.a. bootstrapped), including itself. Hubs on the other hand are responsible for ensuring they continuously pull in the latest policies, or changes to policies, from the server. They are additionally responsible for ensuring they remain fully compliant with the instructions contained within the policy files, at all times.
 
