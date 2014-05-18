@@ -30,11 +30,11 @@ There are basically two categories of machines in a CFEngine environment: policy
 The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.
 
 
-## How CFEngine Works ##
+## More About Policy Language and Compliance ##
 
 CFEngine ensures that the actual state of a system is in compliance with the predefined model of desired state for the system. If it is not in compliance CFEngine will bring it into compliance.
 
-That model is represented by one or more policies that have been written using the declarative CFEngine policy language. The policy language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
+That model is represented by one or more policies that have been written using the declarative CFEngine policy language. Policy Language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
 
 Those policies are distributed across all of the system’s policy distribution servers via pull requests, and then further disseminated to each end host within the system. Every host will then interpret and execute each of the instructions it has been given in a predetermined order. 
 
