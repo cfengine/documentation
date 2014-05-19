@@ -7,8 +7,8 @@ tags: [sketch, structure, reference, design center]
 
 All Design Center sketches consists of at least two files:
 
-* sketch.json
-* main.cf
+* `sketch.json`
+* `main.cf`
 
 There might be additional supporting files for testing and additional CFEngine 
 policy files (*.cf) for more advanced sketches.
@@ -16,7 +16,7 @@ policy files (*.cf) for more advanced sketches.
 ## sketch.json
 
 This file contains metadata about the sketch and declares the interface to the 
-sketch. A minimal sketch.json file contains the following attributes:
+sketch. A minimal sketch.json file looks like this:
 
 ````
 {
@@ -34,7 +34,7 @@ sketch. A minimal sketch.json file contains the following attributes:
         "license": "MIT",
         "tags": [ "cfdc", "enterprise_compatible" ],
         "authors": [ "user@example.com" ],
-        "depends": { "CFEngine::stdlib": { "version": 105 }, "CFEngine::dclib": { }, "cfengine": { "version": "3.4.0" }, "os": [ { "ubuntu" : "Ubuntu", "gentoo" : "Gentoo" } ] }
+        "depends": { "Other::Dependency::Sketch": { }, "cfengine": { "version": "3.6.0" }, "os": [ { "ubuntu" : "Ubuntu", "gentoo" : "Gentoo" } ] }
     },
 
     api:
@@ -60,11 +60,11 @@ For a sketch to work well with the CFEngine Enterprise Design Center graphical
 user interface (GUI), all of the above attributes must be specified. Some 
 additional requirements are noted below.
 
-The depends.os attribute is checked when a user is activating a sketch, to
+The `depends.os` attribute is checked when a user is activating a sketch, to
 warn on cases where a user attempts to activate a sketch on an operating system
 the sketch does not (yet) support. It is therefore useful to make sure that
-all the operating systems listed in depends.os is working well with the sketch.
-Each element has the format { "os_class" : "OS friendly name" }. "OS friendly
+all the operating systems listed in `depends.os` is working well with the sketch.
+Each element has the format `{ "os_class" : "OS friendly name" }`. "OS friendly
 name" is displayed in the GUI.
 
 The `enterprise_compatible` tag must be set, otherwise it will not show up as 
@@ -77,52 +77,8 @@ All items in api.bundlename:
 future)
 * `validation` must be a validation that has been defined in the API (living 
 either in `constdata.conf` or `vardata.conf`)
-* the referenced validation must only use `minimum_value`, `maximum_value`, or 
-`valid_regex`
-
-
-## main.cf
-
-This is the CFEngine policy that "implements" the sketch.
-
-```cf3
-body file control
-{
-      namespace => "cfdc_sketch_name_namespace";
-}
-
-bundle agent installed(runenv, metadata, mystring, mylist)
-{
-  vars:
-      "vars" slist => { "@(default:$(runenv).env_vars)" };
-      "$(vars)" string => "$(default:$(runenv).$(vars))";
-
-      "activation_id" string => canonify("$(this.bundle)_$($(metadata)[activation][identifier])_$($(metadata)[activation][timestamp])");
-
-  reports:
-      "mystring contents: $(mystring)"
-         handle => "$(activation_id)_report_mystring";
-
-      "mylist contents: $(mylist)"
-         handle => "$(activation_id)_report_mylist";
-}
-```
-
-### CFEngine Enterprise Compatibility
-
-In order to map a sketch activation to reports (so that sketch activation and 
-compliance can be detected), CFEngine Enterprise requires the `activation_id` 
-above to be defined. This `activation_id` must be prefixed the handle in at 
-least one promise in the sketch order to detect that the sketch has been run.
-
-It is also important that promises that are used to measure compliance (like 
-package installations and file edits) have this handle prefix. Otherwise, the 
-reporting will not detect sketch failure when these promises are not kept.
-
-It may also be beneficial to include extra promises for reporting purposes and 
-prefix their handle with `activation_id`. For example, a promise that will 
-become not kept if a web service goes down will be helpful to detect 
-noncompliance in a sketch that upgrades that web service.
+* the referenced validation can use `minimum_value`, `maximum_value`, or 
+`valid_regex`.  Other choices are available in Enterprise 3.6.0.
 
 ## Upgrading sketches
 
@@ -130,18 +86,18 @@ There are three ways to upgrade a Design Center sketch repository.
 
 ### Upgrade a Design Center sketch repository from the Github master branch of Design Center
 
-`cf-sketch --expert --install-all --repolist=/var/cfengine/design-center/sketches`
+`cf-sketch --install-all --inputs=/var/cfengine/design-center`
 
 The `installsource` is omitted but defaults to the Github master branch, so the above is equivalent to:
 
-`cf-sketch --expert --install-all --repolist=/var/cfengine/design-center/sketches --installsource=https://raw.github.com/cfengine/design-center/master/sketches/cfsketches.json`
+`cf-sketch --install-all --inputs=/var/cfengine/design-center --installsource=https://raw.githubusercontent.com/cfengine/design-center/master/sketches/cfsketches.json`
 
 ### Upgrade a Design Center sketch repository from the Github 3.6.x branch of Design Center
 
-`cf-sketch --expert --install-all --repolist=/var/cfengine/design-center/sketches --installsource=https://raw.github.com/cfengine/design-center/3.6.x/sketches/cfsketches.json`
+`cf-sketch --install-all --inputs=/var/cfengine/design-center --installsource=https://raw.githubusercontent.com/cfengine/design-center/3.6.x/sketches/cfsketches.json`
 
 ### Upgrade a Design Center sketch repository from your own sketch repository
 
 You would do this if you maintain sketches for your own organization.
 
-`cf-sketch --expert --install-all --repolist=/var/cfengine/design-center/sketches --installsource=/myrepo/sketches/cfsketches.json`
+`cf-sketch --install-all --inputs=/var/cfengine/design-center --installsource=/myrepo/sketches/cfsketches.json`

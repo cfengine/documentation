@@ -292,4 +292,3 @@ through the Mission Portal, this advanced, command-line tutorial shows you how t
 
 * CFEngine [manuals][Learning CFEngine].
 * Additional [tutorials, examples, and documentation][Learning Resources].
-
