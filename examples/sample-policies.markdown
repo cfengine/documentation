@@ -86,9 +86,6 @@ For example, the LDAP query in `active_directory.cf` needs a domain name.
 In the variable declaration, replace "cftesting" with your domain name:
 
 ```cf3
-    vars:
-        # NOTE: Edit this to your domain, e.g. "corp"
-       "domain_name" string => "cftesting";
+[%CFEngine_include_example(integrating_the_example_into_your_main_policy.cf)%]
 ```
-
 
