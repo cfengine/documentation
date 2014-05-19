@@ -160,7 +160,8 @@ specified in the `home_bundle` attribute.
          "$(user)"
             policy => "present",
             home_dir => "/home/$(user)",
-            home_bundle => setup_home_dir("$(user)");
+            home_bundle => setup_home_dir("$(user)"),
+            home_bundle_inherit => "true";
    }
 
    bundle agent setup_home_dir(user)
