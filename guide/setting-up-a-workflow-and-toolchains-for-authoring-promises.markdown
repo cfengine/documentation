@@ -1,12 +1,10 @@
 ---
 layout: default
-title: Writing Policy and Promises
+title: Setting Up a Workflow and Toolchains for Authoring Promises
 published: true
-sorting: 3
+sorting: 4
 ---
 
-
-## Setting Up a Workflow and Toolchain for Authoring Promises
 
 There are several ways to approach authoring promises and ensuring they are copied into and then deployed properly from the `masterfiles` directory:
 
