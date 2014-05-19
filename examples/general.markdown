@@ -15,95 +15,20 @@ tags: [Examples]
 To get started with CFEngine, you can imagine the following template for entering examples. This part of the code is common to all the examples.
 
 ```cf3
-body common control
-{
-bundlesequence => { "main" };
-inputs => { "cfengine_stdlib.cf" };
-}
-
-
-bundle agent main
-{
-# example
-
-}
-
+[%CFEngine_include_example(basic_example.cf)%]
 ```
-
 Then you enter the cases as below. The general pattern of the syntax is like this (colors in html version: red, CFEngine word; blue, user-defined word):
 
 ```cf3
-# The general pattern
-
-bundle component name(parameters)
-{ 
-what_type:
- where_when::
-
-  # Traditional comment
-
-
-  "promiser" -> { "promisee1", "promisee2" },
-        comment => "The intention ...",
-         handle => "unique_id_label",
-    attribute_1 => body_or_value1,
-    attribute_2 => body_or_value2;
-}
-
+[%CFEngine_include_example(basic_example_1.cf)%]
 ```
-
 ## Hello world
 
 ```cf3
-# Hard promises
-
-
-body common control
-{
-bundlesequence => { "hello" };
-}
-
-# soft promises
-
-
-bundle agent hello
-{
-reports:
-
- linux::
-
-   "Hello world!";
-}
+[%CFEngine_include_example(hello_world.cf)%]
 ```
-
 ## Array example ##
 
 ```cf3
-body common control
-{
-bundlesequence => { "array" };
-}
-
-
-bundle common g
-{
-vars:
-
-  "array[1]" string => "one"; 
-  "array[2]" string => "two"; 
-}
-
-bundle agent array
-{
-vars:
-
-  "localarray[1]" string => "one"; 
-  "localarray[2]" string => "two"; 
-
-reports:
-
- linux::
-
-   "Global $(g.array[1]) and $(localarray[2])";
-}
+[%CFEngine_include_example(array_example.cf)%]
 ```

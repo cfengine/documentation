@@ -1,0 +1,93 @@
+# Assume that we have collected all users' public keys into a single source area
+# on the server. First copy the ones we need to localhost, and then edit them into
+
+# the the user's local keyring.
+
+
+  # vars:
+
+  #
+
+  #  "users" slist => { "user1", "user2", ...};
+
+  #
+
+  # methods:
+
+  #
+
+  #  "any" usebundle => allow_ssh_login_from_authorized_keys(@(users),"sourcehost");
+
+  #
+
+
+########################################################################
+
+
+bundle agent allow_ssh_rootlogin_from_authorized_keys(user,sourcehost)
+{
+vars:
+
+  "local_cache"       string => "/var/cfengine/ssh_cache"; 
+  "authorized_source" string => "/master/CFEngine/ssh_keys";
+
+files:
+
+   "$(local_cache)/$(user).pub"
+
+         comment => "Copy public keys from a an authorized cache into a cache on localhost",
+           perms => mo("600","root"),
+       copy_from => remote_cp("$(authorized_source)/$(user).pub","$(sourcehost)"),
+          action => if_elapsed("60");
+
+   "/root/.ssh/authorized_keys" 
+
+         comment => "Edit the authorized keys into the user's personal keyring",
+       edit_line => insert_file_if_no_line_matching("$(user)","$(local_cache)/$(user).pub"),
+          action => if_elapsed("60");
+}
+
+########################################################################
+
+
+bundle agent allow_ssh_login_from_authorized_keys(user,sourcehost)
+{
+vars:
+
+  "local_cache"       string => "/var/cfengine/ssh_cache"; 
+  "authorized_source" string => "/master/CFEngine/ssh_keys";
+
+files:
+
+   "$(local_cache)/$(user).pub"
+
+         comment => "Copy public keys from a an authorized cache into a cache on localhost",
+           perms => mo("600","root"),
+       copy_from => remote_cp("$(authorized_source)/$(user).pub","$(sourcehost)"),
+          action => if_elapsed("60");
+
+   "/home/$(user)/.ssh/authorized_keys" 
+
+         comment => "Edit the authorized keys into the user's personal keyring",
+       edit_line => insert_file_if_no_line_matching("$(user)","$(local_cache)/$(user).pub"),
+          action => if_elapsed("60");
+}
+
+########################################################################
+
+
+bundle edit_line insert_file_if_no_line_matching(user,file)
+{
+classes:
+
+  "have_user" expression => regline("$(user).*","$(this.promiser)");
+
+insert_lines:
+
+  !have_user::
+
+    "$(file)" 
+         insert_type => "file";
+}
+
+```
