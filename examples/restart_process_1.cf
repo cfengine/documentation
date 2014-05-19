@@ -1,0 +1,52 @@
+body common control
+{
+bundlesequence => { "process_restart" };
+}
+
+#########################################################
+
+
+bundle agent process_restart
+{
+processes:
+
+  "/usr/bin/daemon" 
+        restart_class => "launch";
+
+commands:
+
+  launch::
+
+   "/usr/bin/daemon";
+
+}
+```
+body common control
+{
+bundlesequence => { "process_restart" };
+}
+
+#########################################################
+
+
+bundle agent process_restart
+{
+vars:
+
+  "component" slist => {
+                       "cf-monitord", 
+                       "cf-serverd", 
+                       "cf-execd" 
+                       };
+processes:
+
+  "$(component)" 
+        restart_class => canonify("start_$(component)");
+
+commands:
+
+   "/var/cfengine/bin/$(component)"
+       ifvarclass => canonify("start_$(component)");
+
+}
+```

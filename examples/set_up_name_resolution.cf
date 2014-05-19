@@ -1,0 +1,55 @@
+bundle agent system_files
+
+{
+files:
+
+  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+
+     comment       => "Add lines to the resolver configuration",
+     create        => "true",
+     edit_line     => resolver,
+     edit_defaults => std_edits;
+
+   # ...other system files ...
+
+
+}
+
+#######################################################
+
+
+bundle edit_line resolver
+
+{
+delete_lines:
+
+  # delete any old name servers or junk we no longer need
+
+
+  "search.*";
+  "nameserver 80.65.58.31";
+  "nameserver 80.65.58.32";
+  "nameserver 82.103.128.146";
+  "nameserver 78.24.145.4";
+  "nameserver 78.24.145.5";
+  "nameserver 128.39.89.10";
+
+insert_lines:
+
+  "search mydomain.tld" location => start;
+
+ special_net::
+
+  "nameserver 128.39.89.8";
+  "nameserver 128.39.74.66";
+
+ !special_net::
+
+  "nameserver 128.38.34.12";
+
+ any::
+
+  "nameserver 212.112.166.18";
+  "nameserver 212.112.166.22";
+}
+```

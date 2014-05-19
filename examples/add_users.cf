@@ -1,0 +1,32 @@
+bundle agent addusers
+{
+vars:
+
+  # Add some users
+
+
+  "pw[mark]" string => "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";
+  "pw[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
+  "pw[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
+
+  "users" slist => getindices("pw");
+
+files:
+
+  "/etc/passwd"
+     edit_line => append_users_starting("addusers.pw");
+
+#  "/etc/shadow"
+
+#     edit_line => append_users_starting("$(users):defaultpasswd:::::::");
+
+
+  "/etc/group"
+       edit_line => append_user_field("users","4","@(addusers.users)");
+
+  "/home/$(users)/."
+
+     create => "true",
+      perms => mog("755","$(users)","users");
+}
+```

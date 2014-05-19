@@ -1,0 +1,14 @@
+body common control
+{
+bundlesequence => { "main" };
+inputs => { "cfengine_stdlib.cf" };
+}
+
+
+bundle agent main
+{
+# example
+
+}
+
+```
