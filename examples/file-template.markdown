@@ -18,62 +18,16 @@ With CFEngine you have a choice between editing `deltas' into files or distribut
 Example template:
 
 ```cf3
-#
-# System file X
-
-#
-
-
-MYVARIABLE = something or other
-HOSTNAME = $(sys.host)           # CFEngine fills this in
-
-# ...
+[%CFEngine_include_example(templating.cf)%]
 ```
-
 
 To copy and expand this template, you can use a pattern like this:
 
 ```cf3
-bundle agent test
-{
-methods:
-
- "any" usebundle => get_template("/etc/sudoers","400");
- "any" usebundle => get_template("/etc/hosts","644");
-
-}
+[%CFEngine_include_example(templating_1.cf)%]
 ```
-
 The the following driving code (based on `copy then edit') can be placed in a library, after configuring to your environmental locations:
 
 ```cf3
-bundle agent get_template(final_destination,mode)
-{
-vars:
-
- # This needs to ne preconfigured to your site
-
-
- "masterfiles"   string => "/home/mark/tmp";
- "this_template" string => lastnode("$(final_destination)","/");
-
-files:
-
-  "$(final_destination).staging"
-
-       comment => "Get template and expand variables for this host",
-         perms => mo("400","root"),
-     copy_from => remote_cp("$(masterfiles)/templates/$(this_template)","$(policy_server)"),
-        action => if_elapsed("60");
-
-  "$(final_destination)"
-
-       comment => "Expand the template",
-        create => "true",
-     edit_line => expand_template("$(final_destination).staging"),
- edit_defaults => empty,
-         perms => mo("$(mode)","root"),
-        action => if_elapsed("60");
-
-}
+[%CFEngine_include_example(templating_1.cf)%]
 ```
