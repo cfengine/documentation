@@ -1,0 +1,166 @@
+#####################################################
+#
+
+# Apache webserver module
+
+# 
+
+#####################################################
+
+
+bundle agent web_server(state)
+{
+vars:
+
+  "document_root" string => "/";
+
+ ####################################################
+
+ # Site specific configuration - put it in this file
+
+ ####################################################
+
+
+  "site_http_conf" string => "/home/mark/CFEngine-inputs/httpd.conf";
+
+ ####################################################
+
+ # Software base
+
+ ####################################################
+
+
+  "match_package" slist => { 
+                           "apache2", 
+                           "apache2-mod_php5",
+                           "apache2-prefork",
+                           "php5" 
+                           };
+
+ #########################################################
+
+
+processes:
+
+  web_ok.on::
+
+   "apache2"
+ 
+     restart_class => "start_apache";
+
+  off::
+
+   "apache2"
+
+     process_stop => "/etc/init.d/apache2 stop";
+
+
+ #########################################################
+
+
+commands:
+
+ start_apache::
+
+   "/etc/init.d/apache2 start"; # or startssl
+
+ #########################################################
+
+
+packages:
+
+  "$(match_package)"
+
+     package_policy => "add",
+     package_method => zypper,
+     classes => if_ok("software_ok");
+
+ #########################################################
+
+
+files:
+
+ software_ok::
+
+  "/etc/sysconfig/apache2" 
+
+     edit_line => fixapache,
+     classes => if_ok("web_ok");
+
+ #########################################################
+
+
+reports:
+
+ !software_ok.on::
+
+    "The web server software could not be installed";
+ 
+ #########################################################
+
+
+classes:
+
+  "on"  expression => strcmp("$(state)","on");
+  "off" expression => strcmp("$(state)","off");
+}
+
+#######################################################
+
+# For the library
+
+#######################################################
+
+
+bundle edit_line fixapache
+
+{
+vars:
+
+ "add_modules"     slist => { 
+                            "ssl", 
+                            "php5" 
+                            };
+
+ "del_modules"     slist => { 
+                            "php3",
+                            "php4",
+                            "jk"
+                            };
+
+insert_lines:
+
+ "APACHE_CONF_INCLUDE_FILES=\"$(web_server.site_http_conf)\"";
+
+field_edits:
+
+ #####################################################################
+
+ # APACHE_MODULES="actions alias ssl php5 dav_svn authz_default jk" etc..
+
+ #####################################################################
+
+
+   "APACHE_MODULES=.*"
+
+      # Insert module "columns" between the quoted RHS 
+
+      # using space separators
+
+
+      edit_field => quotedvar("$(add_modules)","append");
+
+   "APACHE_MODULES=.*"
+
+      # Delete module "columns" between the quoted RHS 
+
+      # using space separators
+
+
+      edit_field => quotedvar("$(del_modules)","delete");
+
+   # if this line already exists, edit it  
+
+
+}
+```
