@@ -5,6 +5,36 @@ published: true
 sorting: 3
 ---
 
+## Ensure the report collection is working
+
+* the reporting bundle must be in `promises.cf`. For example, the
+following defines the attribute `Role` which is set to
+`database_server`. You need to add it to the top-level
+`bundlesequence` or in a bundle that it calls.
+
+```
+bundle agent myreport
+{
+  vars:
+      "myrole"
+      string => "database_server",
+      meta => { "inventory", "attribute_name=Role" };
+}
+```
+
+* the hub must be able to collect the reports from the client. TCP
+port 5308 must be open and, because 3.6.0 uses TLS, should not be
+proxied or otherwise intercepted. Note that bootstrapping and other
+standalone client operations go from the client to the server, so the
+ability to bootstrap and copy policies from the server doesn't
+necessarily mean the reverse connection will work.
+
+* ensure that `inventory` and `report` variables and classes are not
+filtered by `controls/cf_serverd.cf` in your infrastructure. The
+standard configuration from the stock CFEngine packages should work.
+
+* test with `???`
+
 ## Define a New Single Table Report ##
 
 1. In `Mission Portal` select the `Report` application icon on the left hand side of the screen.
