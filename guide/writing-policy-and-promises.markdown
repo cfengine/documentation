@@ -66,7 +66,7 @@ bundle agent hello_world
 
     any::
 
-      "Hello World!"
+      "Hello World!";
 
 }
 ```
