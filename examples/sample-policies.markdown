@@ -25,7 +25,7 @@ doing the following on your policy server:
 2. Delete the `body common control` section in
     `/var/cfengine/masterfiles/example_file.cf`:
 
-  ```cf3
+  
       body common control
       {
         bundlesequence  => { "testbundle" };
@@ -35,7 +35,7 @@ doing the following on your policy server:
 3. Insert the example's bundle name in the `bundlesequence` section
     of the main policy file `/var/cfengine/masterfiles/promises.cf`:
 
-  ```cf3
+  
       bundlesequence => {
           ...
           "testbundle",
@@ -46,7 +46,7 @@ doing the following on your policy server:
 4. Insert the policy file name in the `inputs` section of the main policy file
     `/var/cfengine/masterfiles/promises.cf`:
 
-  ```cf3
+  
       inputs => {
            ...
            "example_file.cf",
@@ -70,7 +70,7 @@ doing the following on your policy server:
 6. You must remove the inputs section from the example, which 
    includes the external library:
 
-  ```cf3
+  
       inputs => {
         "libraries/cfengine_stdlib.cf"
       };
@@ -85,7 +85,6 @@ doing the following on your policy server:
 For example, the LDAP query in `active_directory.cf` needs a domain name.
 In the variable declaration, replace "cftesting" with your domain name:
 
-```cf3
+
 [%CFEngine_include_example(integrating_the_example_into_your_main_policy.cf)%]
-```
 

@@ -12,11 +12,9 @@ tags: [Examples,System Security]
 
 ## Distribute root passwords	
   
-```cf3
+
 [%CFEngine_include_example(distribute_root_passwords.cf)%]
-```
+
 ## Distribute ssh keys
 
-```cf3
 [%CFEngine_include_example(distribute_ssh_keys.cf)%]
-```

@@ -12,16 +12,14 @@ tags: [Examples,Windows Registry]
 
 ## Windows registry
 
-```cf3
+
 [%CFEngine_include_example(windows_registry.cf)%]
-```
+
 ## unit_registry_cache.cf
 
-```cf3
+
 [%CFEngine_include_example(unit_registry_cache.cf.cf)%]
-```
+
 ## unit_registry.cf
 
-```cf3
 [%CFEngine_include_example(unit_registry.cf.cf)%]
-```

@@ -39,72 +39,72 @@ tags: [Examples,Files,Directories]
 
 Create files and directories and set permissions.
 
-```cf3
+
 [%CFEngine_include_example(create_files_and_directories.cf)%]
-```
+
 ## Copy single files ##
 
 Copy single files, locally (local_cp) or from a remote site (secure_cp). The Community Open Promise-Body Library (COPBL; cfengine_stdlib.cf) should be included in the /var/cfengine/inputs/ directory and input as below.
 
-```cf3
+
 [%CFEngine_include_example(copy_single_files.cf)%]
-```
+
 ## Copy directory trees ##
 
 Copy directory trees, locally (local_cp) or from a remote site (secure_cp). (depth_search => recurse("")) defines the number of sublevels to include, ("inf") gets entire tree.
 
-```cf3
+
 [%CFEngine_include_example(copy_directory_trees.cf)%]
-```
+
 ## Disabling and rotating files ##
 
 Use the following simple steps to disable and rotate files. See the Community Open Promise-Body Library if you wish more details on what disable and rotate does.
 
-```cf3
+
 [%CFEngine_include_example(disabling_and_rotating_files.cf)%]
-```
+
 ## Add lines to a file ##
 
 There are numerous approaches to adding lines to a file. Often the order of a configuration file is unimportant, we just need to ensure settings within it. A simple way of adding lines is show below.
 
-```cf3
+
 [%CFEngine_include_example(add_lines_to_a_file.cf)%]
-```
+
 Also you could write this using a list variable:
 
-```cf3
+
 [%CFEngine_include_example(add_lines_to_a_file_1.cf)%]
-```
+
 ## Check file or directory permissions
 
-```cf3
+
 [%CFEngine_include_example(check_file_or_directory_permissions.cf)%]
-```
+
 ## Commenting lines in a file
 
-```cf3
+
 [%CFEngine_include_example(commenting_lines_in_a_file.cf)%]
-```
+
 ## Copy files
 
-```cf3
+
 [%CFEngine_include_example(copy_files.cf)%]
-```
+
 
     Copy and flatten directory 
 
 ## Copy and flatten directory
 
-```cf3
+
 [%CFEngine_include_example(copy_and_flatten_directory.cf)%]
-```
+
 ## Copy then edit a file convergently
 
 To convergently chain a copy followed by edit, you need a staging file. First you copy to the staging file. Then you edit the final file and insert the staging file into it as part of the editing. This is convergent with respect to both stages of the process.
 
-```cf3
+
 [%CFEngine_include_example(copy_then_edit_a_file_convergently.cf)%]
-```
+
     Creating files and directories
     Database creation
     Deleting lines from a file
@@ -113,49 +113,49 @@ To convergently chain a copy followed by edit, you need a staging file. First yo
 
 ## Creating files and directories
 
-```cf3
+
 [%CFEngine_include_example(creating_files_and_directories.cf)%]
-```
+
 ## Deleting lines from a file
 
-```cf3
+
 [%CFEngine_include_example(deleting_lines_from_a_file.cf)%]
-```
+
 ## Deleting lines exception
 
-```cf3
+
 [%CFEngine_include_example(deleting_lines_exception.cf)%]
-```
+
 ## Editing files
 
 This is a huge topic. See also See Add lines to a file, See Editing tabular files, etc. Editing a file can be complex or simple, depending on needs.
 
 Here is an example of how to comment out lines matching a number of patterns:
 
-```cf3
+
 [%CFEngine_include_example(editing_files.cf)%]
-```
+
 
 ## Editing tabular files
 
-```cf3
+
 [%CFEngine_include_example(editing_tabular_files.cf)%]
-```
+
 ## Inserting lines in a file
 
-```cf3
+
 [%CFEngine_include_example(inserting_lines_in_a_file.cf)%]
-```
+
 ## Back references in filenames
 
-```cf3
+
 [%CFEngine_include_example(back_references_in_filenames.cf)%]
-```
+
 ## Add variable definitions to a file
 
-```cf3
+
 [%CFEngine_include_example(add_variable_definitions_to_a_file.cf)%]
-```
+
 Results in:
 
 lhs1= Mary had a little pig
@@ -164,41 +164,39 @@ lhs3=And everywhere that Mary went
 
 An example of this would be to add variables to /etc/sysctl.conf on Linux:
 
-```cf3
+
 [%CFEngine_include_example(add_variable_definitions_to_a_file_1.cf)%]
-```
+
 ## Linking files
 
-```cf3
+
 [%CFEngine_include_example(linking_files.cf)%]
-```
+
 ## Listing files-pattern in a directory
 
-```cf3
+
 [%CFEngine_include_example(listing_files-pattern_in_a_directory.cf)%]
-```
+
 ## Locate and transform files
 
-```cf3
+
 [%CFEngine_include_example(locate_and_transform_files.cf)%]
-```
+
 ## BSD flags ##
 
-```cf3
+
 [%CFEngine_include_example(bsd_flags.cf)%]
-```
+
 ## Search and replace text
 
-```cf3
+
 [%CFEngine_include_example(search_and_replace_text.cf)%]
-```
+
 ## Selecting a region in a file
 
-```cf3
+
 [%CFEngine_include_example(selecting_a_region_in_a_file.cf)%]
-```
+
 ## Warn if matching line in file
 
-```cf3
 [%CFEngine_include_example(warn_if_matching_line_in_file.cf)%]
-```
