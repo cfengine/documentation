@@ -10,4 +10,4 @@ tags: [Examples, Timing, Counting, Measuring]
 
 ## Measurements
 
-[%CFEngine_include_snippet(measurements.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(measurements.cf)%]

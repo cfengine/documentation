@@ -23,69 +23,69 @@ tags: [Examples,Software Administration]
 Example for Debian:
 
 
-[%CFEngine_include_snippet(software_and_patch_installation.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(software_and_patch_installation.cf)%]
 
 Examples MSI for Windows, by name:
 
 
-[%CFEngine_include_snippet(software_and_patch_installation_1.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(software_and_patch_installation_1.cf)%]
 
 Windows MSI by version:
 
 
-[%CFEngine_include_snippet(software_and_patch_installation_1.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(software_and_patch_installation_1.cf)%]
 
 Examples for solaris are more complex:
 
 
-[%CFEngine_include_snippet(software_and_patch_installation_1_2.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(software_and_patch_installation_1_2.cf)%]
 
 Examples for yum based systems:
 
 
-[%CFEngine_include_snippet(software_and_patch_installation_1_2.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(software_and_patch_installation_1_2.cf)%]
 
 SuSE Linux's package manager zypper is the most powerful alternative:
 
 
-[%CFEngine_include_snippet(software_and_patch_installation_1_2_3.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(software_and_patch_installation_1_2_3.cf)%]
 
 ## Postfix mail configuration
 
 
-[%CFEngine_include_snippet(postfix_mail_configuration.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(postfix_mail_configuration.cf)%]
 
 ## Set up a web server
 
 Adapt this template to your operating system by adding multiple classes. Each web server runs something like the present module, which is entered into the bundlesequence like this:
 
 
-[%CFEngine_include_snippet(set_up_a_web_server.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(set_up_a_web_server.cf)%]
 
 ## Add software packages to the system ##
 
 
-[%CFEngine_include_snippet(add_software_packages_to_the_system.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(add_software_packages_to_the_system.cf)%]
 
 Note you can also arrange to hide all the differences between package managers on an OS basis, but since some OSs have multiple managers, this might not be 100 percent correct.
 
 ## Application baseline
 
 
-[%CFEngine_include_snippet(application_baseline.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(application_baseline.cf)%]
 
 ## Service management (windows)
 
 
-[%CFEngine_include_snippet(service_management_(windows).cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(service_management_(windows).cf)%]
 
 ## Software distribution
 
 
-[%CFEngine_include_snippet(software_distribution.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(software_distribution.cf)%]
 
 ## Web server modules
 
 The problem of editing the correct modules into the list of standard modules for the Apache web server. This example is based on the standard configuration deployment of SuSE Linux. Simply provide the list of modules you want and another list that you don't want.
 
-[%CFEngine_include_snippet(web_server_modules.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(web_server_modules.cf)%]
