@@ -86,5 +86,5 @@ For example, the LDAP query in `active_directory.cf` needs a domain name.
 In the variable declaration, replace "cftesting" with your domain name:
 
 
-[%CFEngine_include_example(integrating_the_example_into_your_main_policy.cf)%]
+[%CFEngine_include_markdown(integrating_the_example_into_your_main_policy.cf)%]
 
