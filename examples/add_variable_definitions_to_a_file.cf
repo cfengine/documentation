@@ -1,0 +1,31 @@
+
+body common control
+{
+bundlesequence => { "setvars" };
+inputs => { "cf_std_library.cf" };
+}
+
+
+bundle agent setvars
+{
+vars:
+
+  # want to set these values by the names of their array keys
+
+
+  "rhs[lhs1]" string => " Mary had a little pig";
+  "rhs[lhs2]" string => "Whose Fleece was white as snow";
+  "rhs[lhs3]" string => "And everywhere that Mary went";
+
+  # oops, now change pig -> lamb
+
+
+files:
+
+  "/tmp/system"
+
+        create => "true",
+     edit_line => set_variable_values("setvars.rhs");
+
+}
+```

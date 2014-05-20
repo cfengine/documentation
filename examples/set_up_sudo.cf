@@ -1,0 +1,19 @@
+bundle agent system_files
+{
+vars:
+
+ "masterfiles" string => "/subversion_projects/masterfiles";
+
+# ...
+
+
+files:
+
+   "/etc/sudoers"
+
+     comment => "Make sure the sudo configuration is secure and up to date",
+       perms => mog("440","root","root"),
+   copy_from => secure_cp("$(masterfiles)/sudoers","$(policy_server)");
+
+}
+```
