@@ -19,35 +19,35 @@ tags: [Examples,Commands,Scripts]
 Execute a command, for instance to start a MySQL service. Note that simple shell commands like rm or mkdir cannot be managed by CFEngine, so none of the protections that CFEngine offers can be applied to the process. Moreover, this starts a new process, adding to the burden on the system. See CFEngine 3 Best Practices http://cfengine.com/manuals/cf3-bestpractice.html for more information on how to best write policies.
 
 
-[%CFEngine_include_markdown(command_or_script_execution.cf)%]
+[%CFEngine_include_example(command_or_script_execution.cf)%]
 
 ## Change directory for command
 
 
-[%CFEngine_include_markdown(change_directory_for_command.cf)%]
+[%CFEngine_include_example(change_directory_for_command.cf)%]
 
 ## Commands example ##
 
 ## Commands example
 
 
-[%CFEngine_include_markdown(commands_example.cf)%]
+[%CFEngine_include_example(commands_example.cf)%]
 
 ## Execresult example
 
 
-[%CFEngine_include_markdown(execresult_example.cf)%]
+[%CFEngine_include_example(execresult_example.cf)%]
 
 ## Methods
 
 
-[%CFEngine_include_markdown(methods.cf)%]
+[%CFEngine_include_example(methods.cf)%]
 
 ## Method validation
 
 
-[%CFEngine_include_markdown(method_validation.cf)%]
+[%CFEngine_include_example(method_validation.cf)%]
 
 ## Trigger classes
 
-[%CFEngine_include_markdown(trigger_classes.cf)%]
+[%CFEngine_include_example(trigger_classes.cf)%]
