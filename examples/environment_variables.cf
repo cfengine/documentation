@@ -40,4 +40,3 @@ body environment_resources virt_xml
 {
 env_spec_file => "/srv/xen/centos5-libvirt-create.xml";
 }
-```

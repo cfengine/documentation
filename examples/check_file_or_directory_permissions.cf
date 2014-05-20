@@ -41,4 +41,3 @@ files:
     "$(ftp)/dev"        perms => mog("555","root","other");
     "$(ftp)/usr"        perms => mog("555","root","other");
 }
-```

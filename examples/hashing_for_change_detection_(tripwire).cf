@@ -47,4 +47,3 @@ body depth_search recurse(d)
 {
 depth        => "$(d)";
 }
-```

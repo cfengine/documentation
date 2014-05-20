@@ -105,4 +105,3 @@ empty_file_before_editing => "false";
 edit_backup => "false";
 max_file_size => "100000";
 }
-```

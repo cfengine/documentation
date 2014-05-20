@@ -25,4 +25,3 @@ body rename rotate(level)
 {
 rotate => "$(level)";
 }
-```

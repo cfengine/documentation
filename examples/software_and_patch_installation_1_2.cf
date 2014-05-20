@@ -283,4 +283,3 @@ packages:
      package_method => yum;
 
 }
-```

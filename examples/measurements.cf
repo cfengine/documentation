@@ -161,4 +161,3 @@ body match_value file_system
 select_line_matching => "/.*";
 extraction_regex => "(.*)";
 }
-```

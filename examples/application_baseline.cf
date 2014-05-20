@@ -56,4 +56,3 @@ windows::
 windows.!is_correct::
  "Adobe Reader is not correctly deployed - got \"$(value1)\", \"$(value2)\", \"$(value3)\"";
 }
-```

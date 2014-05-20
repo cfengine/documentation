@@ -90,4 +90,3 @@ bundle edit_line AppendIfNSL(parameter)
 
     "$(parameter)"; # This is default
   }
-```
