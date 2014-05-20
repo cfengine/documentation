@@ -1,0 +1,19 @@
+bundle agent modifying_managed_file
+{
+vars:
+
+  "data"   slist => { "10.1.2.3 sirius", "10.1.2.4 ursa-minor", "10.1.2.5 orion"};
+
+files:
+
+   "/etc/hosts"
+
+        comment => "Append a list of lines to the end of a file if they don't exist",
+          perms => m("644"),
+        create => "true",
+     edit_line => append_if_no_lines("modifying_managed_file.data"),
+        action => if_elapsed("60");
+
+
+}
+```
