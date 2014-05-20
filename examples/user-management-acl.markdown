@@ -33,65 +33,65 @@ A simple approach which adds new users to the password file, and to a group call
 Note that, although this is a simple minded approach, it is the most efficient of the approaches shown here as all operations can be carried out in a single operation for each file.
 
 
-[%CFEngine_include_example(add_users.cf)%]
+[%CFEngine_include_markdown(add_users.cf)%]
 
 A second approach is to use the shell commands supplied by some operating systems; this assumes that suitable defaults have been set up manually. Also the result is not repairable in a simple convergent manner. The command needs to edit multiple files for each user, and is quite inefficient.
 
 
-[%CFEngine_include_example(add_users_1.cf)%]
+[%CFEngine_include_markdown(add_users_1.cf)%]
 
 An alternative approach is to use a method to wrap around the handling of a user. Although this looks nice, it is less efficient than the first method because it must edit the files multiple times.
 
 
-[%CFEngine_include_example(add_users_1.cf)%]
+[%CFEngine_include_markdown(add_users_1.cf)%]
 
 ### Remove users
 
 
-[%CFEngine_include_example(remove_users.cf)%]
+[%CFEngine_include_markdown(remove_users.cf)%]
 
 ## Add users to passwd and group ##
 
 Add lines to the password file, and users to group if they are not already there.
 
 
-[%CFEngine_include_example(add_users_to_passwd_and_group.cf)%]
+[%CFEngine_include_markdown(add_users_to_passwd_and_group.cf)%]
 
 ## ACL file example
 
 
-[%CFEngine_include_example(acl_file_example.cf)%]
+[%CFEngine_include_markdown(acl_file_example.cf)%]
 
 ## ACL generic example
 
 
-[%CFEngine_include_example(acl_generic_example.cf)%]
+[%CFEngine_include_markdown(acl_generic_example.cf)%]
 
 ## ACL secret example
 
 
-[%CFEngine_include_example(acl_secret_example.cf)%]
+[%CFEngine_include_markdown(acl_secret_example.cf)%]
 
 ## Active directory example
 
 
-[%CFEngine_include_example(active_directory_example.cf)%]
+[%CFEngine_include_markdown(active_directory_example.cf)%]
 
 ## Active list users directory example
 
 
-[%CFEngine_include_example(active_list_users_directory_example.cf)%]
+[%CFEngine_include_markdown(active_list_users_directory_example.cf)%]
 
 ## Active directory show users example
 
 
-[%CFEngine_include_example(active_directory_show_users_example.cf)%]
+[%CFEngine_include_markdown(active_directory_show_users_example.cf)%]
 
 ## Get a list of users
 
 
-[%CFEngine_include_example(get_a_list_of_users.cf)%]
+[%CFEngine_include_markdown(get_a_list_of_users.cf)%]
 
 ## LDAP interactions
 
-[%CFEngine_include_example(ldap_interactions.cf)%]
+[%CFEngine_include_markdown(ldap_interactions.cf)%]

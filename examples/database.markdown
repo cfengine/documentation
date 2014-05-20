@@ -10,4 +10,4 @@ tags: [Examples,Databases]
 
 ## Database creation
 
-[%CFEngine_include_example(database_creation.cf)%]
+[%CFEngine_include_markdown(database_creation.cf)%]

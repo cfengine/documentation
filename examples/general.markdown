@@ -15,18 +15,18 @@ tags: [Examples]
 To get started with CFEngine, you can imagine the following template for entering examples. This part of the code is common to all the examples.
 
 
-[%CFEngine_include_example(basic_example.cf)%]
+[%CFEngine_include_markdown(basic_example.cf)%]
 
 Then you enter the cases as below. The general pattern of the syntax is like this (colors in html version: red, CFEngine word; blue, user-defined word):
 
 
-[%CFEngine_include_example(basic_example_1.cf)%]
+[%CFEngine_include_markdown(basic_example_1.cf)%]
 
 ## Hello world
 
 
-[%CFEngine_include_example(hello_world.cf)%]
+[%CFEngine_include_markdown(hello_world.cf)%]
 
 ## Array example ##
 
-[%CFEngine_include_example(array_example.cf)%]
+[%CFEngine_include_markdown(array_example.cf)%]
