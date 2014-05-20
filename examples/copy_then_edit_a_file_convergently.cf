@@ -31,4 +31,3 @@ replace_patterns:
 
           replace_with => With("replacestring");
 }
-```

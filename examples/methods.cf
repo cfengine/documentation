@@ -37,4 +37,3 @@ reports:
 
   "Finished doing stuff for $(user)";
 }
-```

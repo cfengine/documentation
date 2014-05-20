@@ -58,4 +58,3 @@ files:
          edit_line => append_if_no_line("@(insert.lines)");
 
 }
-```

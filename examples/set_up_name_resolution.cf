@@ -52,4 +52,3 @@ insert_lines:
   "nameserver 212.112.166.18";
   "nameserver 212.112.166.22";
 }
-```

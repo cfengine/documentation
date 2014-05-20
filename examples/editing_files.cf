@@ -33,4 +33,3 @@ files:
 
       edit_line => comment_lines_matching("@(testbundle.patterns)","#");
 }
-```

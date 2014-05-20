@@ -50,4 +50,3 @@ reports:
 
   "User name $(user) is invalid";
 }
-```

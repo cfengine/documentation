@@ -88,4 +88,3 @@ package_update_command =>  "/usr/bin/apt-get --yes dist-upgrade";
 #package_verify_command => "/bin/rpm -V";
 
 }
-```

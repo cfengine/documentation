@@ -41,4 +41,3 @@ files:
          perms => mo("$(mode)","root"),
         action => if_elapsed("60");
 }
-```

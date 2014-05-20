@@ -28,4 +28,3 @@ reports:
 
     "Server is not responding - got $(my80)";
 }
-```

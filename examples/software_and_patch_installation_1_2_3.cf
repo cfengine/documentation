@@ -321,4 +321,3 @@ packages:
      package_method => zypper;
 
 }
-```

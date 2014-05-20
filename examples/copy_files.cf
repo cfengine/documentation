@@ -18,4 +18,3 @@ files:
     action => immediate,
     classes => on_change("reload");
 
-```

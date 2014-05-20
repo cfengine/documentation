@@ -19,4 +19,3 @@ files:
    depth_search => recurse("inf");
 
 }
-```

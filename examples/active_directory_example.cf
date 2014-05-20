@@ -64,4 +64,3 @@ dummy.gotuser::
   "Got user data; $(userinfo[name]) has logged on $(userinfo[logonCount]) times";
 
 }
-```

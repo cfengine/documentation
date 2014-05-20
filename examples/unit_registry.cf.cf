@@ -59,4 +59,3 @@ databases:
    database_type      => "ms_registry";
 
 }
-```

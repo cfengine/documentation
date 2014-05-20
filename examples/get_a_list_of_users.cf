@@ -36,4 +36,3 @@ reports:
   "Found user $(allusers)";
 
 }
-```

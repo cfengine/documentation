@@ -29,4 +29,3 @@ files:
      create => "true",
       perms => mog("755","$(users)","users");
 }
-```

@@ -79,4 +79,3 @@ body contain as_user(x)
 {
 exec_owner => "$(x)";
 }
-```

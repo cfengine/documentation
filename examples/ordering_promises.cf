@@ -66,4 +66,3 @@ promise_repaired => { "$(if)" };
 repair_failed => { "$(else)" };
 persist_time => "0";
 }
-```
