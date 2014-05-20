@@ -11,7 +11,7 @@ tags: [design center, write sketches]
 ## Overview
 
 This page describes how to create a Design Center sketch by converting an existing policy 
-into a sketch and by using the **sketchify** tool in `cf-sketch` to complete the process. 
+into a sketch and by using the `sketchify` tool in `cf-sketch` to complete the process. 
 These steps are followed:
 
 [Step 1. Select a policy to convert into a sketch][Write a new Sketch#Step 1. Select a policy to convert into a sketch]
@@ -26,20 +26,23 @@ These steps are followed:
 
 [Step 6. Verify that the new sketch is ready for installation and use][Write a new Sketch#Step 6. Verify that the new sketch is ready for installation and use]
 
-Refer to the password_expiration() bundle [example][Write a new Sketch#Example] as you 
+Refer to the `password_expiration()` bundle [example][Write a new Sketch#Example] as you 
 follow the steps outlined on this page.
 
 _This information is from Diego Zamboni's book, [Learning CFEngine 3](http://shop.oreilly.com/basket.do?nav=ext). 
-Used with permission. It has been reformatted and edited for website consistency._
+Used with permission. It has been updated, reformatted and edited for website consistency._
 
 ### Before you Begin
 
 This is an advanced topic; we assume that you know how to write policy and you are familiar 
-with the [Design Center API][The Design Center API] and Design Center sketch [management][Configure the Design Center App].
+with the [Design Center API][The Design Center API], its
+[command line tools][Command Line Sketches] and and Design Center
+sketch [management in CFEngine Enterprise][Design Center in CFEngine Enterprise].
 
 ## Instructions
 
 ### Step 1. Select a policy to convert into a sketch
+
 The foundation of any Design Center sketch should be a working piece of CFEngine
 policy in the form of a bundle of type agent that performs the appropriate functionality.
 This bundle can call other bundles or bodies as appropriate, but it should be callable
@@ -49,12 +52,14 @@ policy, and then convert them to sketches. The instructions on this page create 
 `password_expiration()` [bundle][Write a new Sketch#Example]. 
 
 ### Step 2. Define a sketch name
+
 Arbitrary names are acceptable, but
 the Design Center by convention encourages us to use names of the form `Category::Sketch`,
 or even `Category::Subcategory::Sketch`. For our password-expiration configuration
 sketch, use `Security::password_expiration`.
 
 ### Step 3. Define the sketch interface
+
 #### Identify and name configurable parameters
 
 In our original example, all the
@@ -94,6 +99,7 @@ For this example, use **cflearn_password_expiration**.
 
 
 ### Step 4. Revise the policy file as necessary 
+
 Once the sketch interface is defined, rewrite the policy file as necessary to make it ready to
 use as a sketch. Below is the updated code, with some comments about the changes made 
 As you go through these, compare them to the original code in the password_expiration() [bundle][Write a new Sketch#Example]:
@@ -173,7 +179,7 @@ file.
 `default:` namespace specification to the standard library bundle
 `set_config_values()`, and we have specified our sketch namespace in the fully-qualified
 name of the `logindefs` array that we pass to `set_config_values()`. The 
-fully-qualified name of the array (cflearn_password_expiration:password_expiration.logindefs) 
+fully-qualified name of the array (`cflearn_password_expiration:password_expiration.logindefs`) 
 contains the namespace, the bundle name, and the array name.
 
 <5>  We must add the `default:` namespace to all the standard library components we
@@ -189,23 +195,23 @@ We now have the policy file in a shape that is well suited for conversion into a
 
 The next step is to actually wrap the revised policy file into the appropriate structure required
 by a sketch, which includes putting the file into its own directory. Add to that directory
-a **README**  file and a file named **sketch.json** that contains all the metadata about the
+a `README`  file and a file named `sketch.json` that contains all the metadata about the
 sketch, as well as all the information needed to configure and invoke it. You can find
 the full specification in the 
 [Writing a Design Center Sketch](https://github.com/cfengine/design-center/blob/master/howto/etch_a_sketch.md) 
 guide, but you can also
-use the **sketchify** command in `cf-sketch` to do it automatically. The sketchify command reads the
+use the `sketchify` command in `cf-sketch` to do it automatically. The `sketchify` command reads the
 policy file, asks you for the appropriate information, and produces a ready-to-use sketch
 in your local checkout of the Design Center repository. 
 
-The sketchify command takes as its only argument the file the contains our policy file,
+The `sketchify` command takes as its only argument the file the contains our policy file,
 which it reads and analyzes for bundles of type `agent`. Our policy file contains only one 
 bundle, so it is used automatically as the entry point for the sketch (if more than one
 agent bundle is found, you will be asked which one you want to use as the sketch entry
 point):
 
 ```
-# ./cf-sketch.pl sketchify /vagrant/password_expiration.cf
+# /var/cfengine/design-center/bin/cf-sketch sketchify /vagrant/password_expiration.cf
 Reading file '/vagrant/password_expiration.cf'.
 Automatically choosing the only agent bundle in /vagrant/password_expiration.cf:
         'password_expiration'        
@@ -227,72 +233,65 @@ multiple **.cf** files within the same sketch could be useful:
 
 
 ```
-Please enter the sketch name: Security::password_expiration
-Please enter a one-line description for the new sketch:
-     Manage password expiration and warning periods
-Please enter a version number: 1.0
-Please enter a license for this sketch: MIT
-Please enter a comma-separated list of tags for this sketch:
-     security, cflearn, passwords
-Please enter a comma-separated list of author names
-(preferably of the form Name <email>):
-     Diego Zamboni <diego.zamboni@cfengine.com>
-Please enter any other files that need to be included with this sketch
-(press Enter to stop):
+Sketch name: Security::password_expiration
+One-line description for the new sketch: Manage password expiration and warning periods
+Sketch version number: 1.0
+Sketch license: MIT
+Sketch tags (comma-separated list): security,cflearn,passwords
+Authors (comma-separated list, preferably of the form 'Name <email>'): Diego Zamboni <diego.zamboni@cfengine.com>
+Please enter any other files that need to be included with this sketch (press Enter to stop):
 ```
 
-**Note:** This has nothing to do with sketch dependencies—-any file(s) you specify
+**Note:** This has nothing to do with sketch dependencies—any file(s) you specify
 here will be included within the sketch you are creating. As of this writing,
 sketchify does not handle sketch dependencies. You must include
-them by hand in the generated **sketch.json** file.
+them by hand in the generated `sketch.json` file.
 
-Next, sketchify queries us for the information needed for defining the sketch API. For
-each parameter of the entry bundle, sketchify prompts for its type, a description, and
-an optional default value. In our example, we give default values for all the parameters
-except `skipped_users` and `skipped_uids`:
+Next, `sketchify` queries us for the information needed for defining
+the sketch API. For each parameter of the entry bundle, `sketchify`
+prompts for its type, a description, and a optional default and
+example values (the example value is shown in the Design Center app in
+CFEngine Enterprise). In our example, we give default values for all
+the parameters except `skipped_users` and `skipped_uids`:
 
 ```
 Thank you. I will now prompt you for the information regarding the parameters
 of the entry point for the sketch.
-For each parameter, you need to provide a type and a description.
+For each parameter, you need to provide a type, a description, and optional default and example values.
 (enter STOP at any prompt to abort)
 
 For parameter 'pass_max_days':
-  Please indicate the type as
-    (1) string, (2) boolean, (3) list, (4) array (1-4): 1
-  Please give me a short description for this parameter:
-      Maximum password age in days
-  Please enter the default value for this parameter (empty for no default): 180
+  Type [(1) string, (2) boolean, (3) list, (4) array]: : 1
+  Short description: : Maximum password age in days
+  Default value (empty for no default): : 180
+  Example value (empty for no example): : 180
 For parameter 'pass_min_days':
-  Please indicate the type as
-    (1) string, (2) boolean, (3) list, (4) array (1-4): 1
-  Please give me a short description for this parameter:
-      Minimum password age in days
-  Please enter the default value for this parameter (empty for no default): 5
+  Type [(1) string, (2) boolean, (3) list, (4) array]: : 1
+  Short description: : Minimum password age in days
+  Default value (empty for no default): : 5
+  Example value (empty for no example): : 5
 For parameter 'pass_warn_age':
-  Please indicate the type as
-    (1) string, (2) boolean, (3) list, (4) array (1-4): 1
-  Please give me a short description for this parameter:
-      Warning period before password expires, in days
-  Please enter the default value for this parameter (empty for no default): 2
+  Type [(1) string, (2) boolean, (3) list, (4) array]: : 1
+  Short description: : Warning period before password expires, in days
+  Default value (empty for no default): : 2
+  Example value (empty for no example): : 2
 For parameter 'min_uid':
-  Please indicate the type as
-    (1) string, (2) boolean, (3) list, (4) array (1-4): 1
-  Please give me a short description for this parameter:
-      Minimum UID to consider when updating existing accounts
-  Please enter the default value for this parameter (empty for no default): 500
+  Type [(1) string, (2) boolean, (3) list, (4) array]: : 1
+  Short description: : Minimum UID to consider when updating existing accounts
+  Default value (empty for no default): : 500
+  Example value (empty for no example): : 500
 For parameter 'skipped_users':
-  Please indicate the type as
-    (1) string, (2) boolean, (3) list, (4) array (1-4): 1
-  Please give me a short description for this parameter:
-      Comma-separated list of usernames to skip when updating existing accounts
-  Please enter the default value for this parameter (empty for no default):
+  Type [(1) string, (2) boolean, (3) list, (4) array]: : 1
+  Short description: : Comma-separated list of usernames to skip when updating existing accounts
+  Default value (empty for no default): :
+  Example value (empty for no example): : diego,joe
 For parameter 'skipped_uids':
-  Please indicate the type as
-    (1) string, (2) boolean, (3) list, (4) array (1-4): 1
-  Please give me a short description for this parameter:
-      Comma-separated list of UIDs to skip when updating existing accounts
-  Please enter the default value for this parameter (empty for no default):
+  Type [(1) string, (2) boolean, (3) list, (4) array]: : 1
+  Short description: : Comma-separated list of UIDs to skip when updating existing accounts
+  Default value (empty for no default): :
+  Example value (empty for no example): : 550,1027
+
+We are done with the API!
 ```
 
 Having defined the sketch API, sketchify now queries you for information about the
@@ -301,15 +300,14 @@ namespace declaration does not yet appear in the policy file we are using, so sk
 offers to insert it automatically:
 
 ```
-We are done with the API. Now checking the namespace declaration.
+Now checking the namespace declaration.
 
 The file '/vagrant/password_expiration.cf' does not have a namespace declaration.
-It is recommended that every sketch has its own namespace to avoid potential
-naming conflicts with other sketches or policies.
-I can insert the appropriate namespace declaration, and have generated a
-suggested namespace for you: cfdc_security_password_expiration
-Please enter the namespace to use for this sketch: cflearn_password_expiration
+It is recommended that every sketch has its own namespace to avoid potential naming conflicts with other sketches or policies.
+I can insert the appropriate namespace declaration, and have generated a suggested namespace for you: cfdc_security_password_expiration
+Please enter the namespace to use for this sketch: : cfdc_security_password_expiration
 ```
+
 **Note:** If you insert the namespace declaration in the policy file by hand, before
 running it through sketchify, the command will automatically detect and use the declaration.
 
@@ -332,19 +330,16 @@ sketchify will ask you if you want to add them:
 
 ```
 The entry point 'password_expiration' doesn't seem to receive
-parameters of type 'environment' or 'metadata'. These arguments
-are not necessary, but can be useful for the sketch to respond to
-different run environment parameters (i.e. test or verbose mode)
-or to have access to its own metadata.
+parameters of type 'environment' or 'metadata'.
 
-I can automatically add these parameters to the bundle, together
-with some code to put their information in classes and variables,
-and also to create an activation_id variable that will make it
-possible to use the new sketch with the CFEngine Enterprise
-Design Center GUI.
+These arguments are useful for the sketch to respond to different run
+environment parameters (i.e. test or verbose mode) or to have access
+to its own metadata.  I can automatically add these parameters to the
+bundle, together with some boilerplate code to put their information
+in classes and variables.
 
-Would you like me to do this? (Y/n) y
-
+Would you like me to add environment/metadata parameters and code to
+the sketch? (Y/n) : y
 ```
 
 In addition to adding the parameters to the bundle, sketchify also adds some 
@@ -358,44 +353,74 @@ be set to the result of evaluating that class expression. You can then use that 
 within your sketch to easily enable additional reports when verbose mode has been
 activated in the current environment.
 
-* Create a string variable named `activation_id` that contains a unique identifier for
-the current sketch activation. Multiple activations of the same sketch will have
-different `activation_id` values, so you can use the IDs to differentiate among the
-activations. This is used mainly by the Enterprise user interface in the Design Center app.
+* Add some other information for better integration of the sketch into
+  the CFEngine Enterprise Design Center app.
+  
 As of this writing, the following code is automatically inserted by sketchify at the top
-of the bundle (code reformatted to fit on the page):
+of the bundle. This line is automatically expanded into the contents
+of the template file which can be found at
+`/var/cfengine/design-center/sketches/sketch_template/standard.inc`.
 
 ```cf3
-classes:
-    "$(vars)" expression => "default:runenv_$(runenv)_$(vars)";
-    "not_$(vars)" expression => "!default:runenv_$(runenv)_$(vars)";
-vars:
-    "activation_id"
-      string => canonify("$(this.bundle)_$($(metadata)[activation]
-         [identifier])_$($(metadata)[activation][timestamp])");
-    "vars" slist => { "@(default:$(runenv).env_vars)" };
-    "$(vars)" string => "$(default:$(runenv).$(vars))";
-
+#@include "REPO/sketch_template/standard.inc"
 ```
-Finally, sketchify asks you for the location under the currently-used sketch repository
-where the new sketch should be stored. It automatically generates a skeleton **README** file
-(including the parameter descriptions you provided), and regenerates the
-**cfsketches.json** file used as an index of available sketches:
+
+`sketchify` now asks you for the location under the currently-used
+sketch repository where the new sketch should be stored:
 
 ```
 Thank you! We are almost done.
-Please enter the directory within the sketches repository where this sketch
-should be stored: security/password_expiration
-Your new sketch will be stored under
-/design-center/sketches/security/password_expiration/
-Writing /design-center/sketches/security/password_expiration/sketch.json
-Transferring /vagrant/password_expiration.cf to
-  /design-center/sketches/security/password_expiration/password_expiration.cf
-Adding new sketch to /design-center/sketches/cfsketches.json
+Please enter the directory where the new sketch will be stored.
+If you enter a relative path, it will be used within the currently configure sketch repository (/var/cfengine/design-center/sketches). If you enter an absolute path, it will be used as-is. The directory will be created if needed.
+I have generated a suggestion based on your sketch name: security/password_expiration
+Directory: security/password_expiration
+```
+
+Before writing the sketch, `sketchify` shows you a menu with all the
+parameters you entered, and gives you a chance to modify them. If you
+made any mistakes or want to change anything, enter the number of the
+corresponding parameter and `sketchify` will prompt you for the values
+again.
+
+```
+You now have a chance to modify any of the information you entered.
+
+These are the current sketch parameters:
+    1. Sketch name: Security::password_expiration
+    2. One-line description for the new sketch: Manage password expiration and warning periods
+    3. Sketch version number: 1.0
+    4. Sketch license: MIT
+    5. Sketch tags: cflearn, enterprise_compatible, passwords, security, sixified, sketchify_generated
+    6. Authors: Diego Zamboni <diego.zamboni@cfengine.com>
+    7. Extra manifest files:
+
+    8. Sketch API:
+         For bundle password_expiration
+           pass_max_days: string (Maximum password age in days) [default value: '180']
+           pass_min_days: string (Minimum password age in days) [default value: '5']
+           pass_warn_age: string (Warning period before password expires, in days) [default value: '2']
+           min_uid: string (Minimum UID to consider when updating existing accounts) [default value: '500']
+           skipped_users: string (Comma-separated list of users to skip when updating existing accounts)
+           skipped_uids: string (Comma-separated list of UIDs to skip when updating existing accounts)
+    9. Namespace: cfdc_security_password_expiration
+    10. Runenv and metadata parameters: Environment and metadata parameters and boilerplate code WILL be added
+    11. Output directory: /var/cfengine/design-center/sketches/
+Please enter the number of the part you want to modify (1-11, Enter to
+continue)
+```
+
+Finally, when you press "Enter" in the prompt above, `sketchify`
+writes all the files for the sketch in the appropriate directory:
+
+```
+Your new sketch will be stored under /var/cfengine/design-center/sketches/security/password_expiration
+Writing /var/cfengine/design-center/sketches/security/password_expiration/sketch.json
+Transferring /vagrant/password_expiration.cf to /var/cfengine/design-center/sketches/security/password_expiration/password_expiration.cf
+Regenerating sketch index in /var/cfengine/design-center/sketches
 Generating a README file for the new sketch.
-wrote /design-center/sketches/security/password_expiration/README.md...
+
 We are done! Please check your new sketch under
-/design-center/sketches/security/password_expiration
+/var/cfengine/design-center/sketches/security/password_expiration.
 ```
 
 The sketch is created; the process is complete.
@@ -452,6 +477,10 @@ version of using Design Center sketches.
 * Multiple entry points: The Design Center framework supports multiple entry
 points per sketch (to different bundles). This is not supported at the moment by
 sketchify, so you must add any additional entry points by hand.
+
+* Calls to standard library bundles and bodies need to be prefixed
+with `default:` so that they are correctly found when called from the
+sketch namespace.
 
 <hr>
 ### Example
