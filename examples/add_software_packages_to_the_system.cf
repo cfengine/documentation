@@ -1,0 +1,43 @@
+
+#
+# Package managment
+
+#
+
+
+body common control
+{
+bundlesequence => { "packages" };
+}
+
+#############################################
+
+
+bundle agent packages
+{
+vars:
+
+ "match_package" slist => { 
+                          "apache2", 
+                          "apache2-mod_php5",
+                          "apache2-prefork",
+                          "php5" 
+                          };
+packages:
+
+ solaris::
+
+  "$(match_package)"
+
+     package_policy => "add",
+     package_method => solaris;
+
+ redhat|SuSE::
+
+  "$(match_package)"
+
+     package_policy => "add",
+     package_method => yum;
+
+}
+```
