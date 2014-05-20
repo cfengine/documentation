@@ -45,55 +45,55 @@ These examples show a simple setup for starting with a central approach to manag
 This shows the simplest approach in which all hosts are the same. It is too simple for most environments, but it serves as a starting point. Compare it to the next section that includes variation.
 
 
-[%CFEngine_include_snippet(all_hosts_the_same.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(all_hosts_the_same.cf, [\s]*--[a-z], ^$)%]
 
 ### Variation in hosts
 
 
-[%CFEngine_include_snippet(variation_in_hosts.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(variation_in_hosts.cf, [\s]*--[a-z], ^$)%]
 
 ### Updating from a central hub
 
 The configuration bundled with the CFEngine source code contains an example of centralized updating of policy that covers more subtleties than this example, and handles fault tolerance. Here is the main idea behind it. For simplicity, we assume that all hosts are on network 10.20.30.* and that the central policy server/hub is 10.20.30.123.
 
 
-[%CFEngine_include_snippet(updating_from_a_central_hub.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(updating_from_a_central_hub.cf, [\s]*--[a-z], ^$)%]
 
 ## Laptop support configuration
 
 Laptops do not need a lot of confguration support. IP addresses are set by DHCP and conditions are changeable. But you want to set your DNS search domains to familiar settings in spite of local DHCP configuration, and another useful trick is to keep a regular backup of disk changes on the local disk. This won't help against disk destruction, but it is a huge advantage when your user accidentally deletes files while travelling or offline.
 
 
-[%CFEngine_include_snippet(laptop_support_configuration.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(laptop_support_configuration.cf, [\s]*--[a-z], ^$)%]
 
 ## Process management
 
 	
-[%CFEngine_include_snippet(process_management.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(process_management.cf, [\s]*--[a-z], ^$)%]
 
 ## Kill process ##
 
 
-[%CFEngine_include_snippet(kill_process.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(kill_process.cf, [\s]*--[a-z], ^$)%]
 
 ## Restart process ##
 
 A basic pattern for restarting processes:
 
 
-[%CFEngine_include_snippet(restart_process.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(restart_process.cf, [\s]*--[a-z], ^$)%]
 
 This can be made more sophisticated to handle generic lists:
 
 
-[%CFEngine_include_snippet(restart_process_1.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(restart_process_1.cf, [\s]*--[a-z], ^$)%]
 
 Why? Separating this into two parts gives a high level of control and conistency to CFEngine. There are many options for command execution, like the ability to run commands in a sandbox or as `setuid'. These should not be reproduced in processes.
 
 ## Mount a filesystem ##
 
 
-[%CFEngine_include_snippet(mount_a_filesystem.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(mount_a_filesystem.cf, [\s]*--[a-z], ^$)%]
 
 
 ## Manage a system process
@@ -107,31 +107,31 @@ Why? Separating this into two parts gives a high level of control and conistency
 The simplest example might look like this:
 
 
-[%CFEngine_include_snippet(ensure_running.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(ensure_running.cf, [\s]*--[a-z], ^$)%]
 
 This example shows how the CFEngine components could be started using a pattern.
 
 
-[%CFEngine_include_snippet(ensure_running_1.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(ensure_running_1.cf, [\s]*--[a-z], ^$)%]
 
 ### Ensure not running
 
 
-[%CFEngine_include_snippet(ensure_not_running.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(ensure_not_running.cf, [\s]*--[a-z], ^$)%]
 
 ### Prune processes
 
 This example kills processes owned by a particular user that have exceeded 100000 bytes of resident memory.
 
 
-[%CFEngine_include_snippet(prune_processes.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(prune_processes.cf, [\s]*--[a-z], ^$)%]
 
 ## Set up HPC clusters
 
 HPC cluster machines are usually all identical, so the CFEngine configuration is very simple. HPC clients value CPU and memory resources, so we can shut down unnecessary services to save CPU. We can also change the scheduling rate of CFEngine to run less frequently, and save a little:
 
 
-[%CFEngine_include_snippet(set_up_hpc_clusters.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(set_up_hpc_clusters.cf, [\s]*--[a-z], ^$)%]
 
 ## Set up name resolution
 
@@ -140,37 +140,37 @@ There are many ways to do name resolution setup1 We write a reusable bundle usin
 A simple and straightforward approach is to maintain a separate modular bundle for this task. This avoids too many levels of abstraction and keeps all the information in one place. We implement this as a simple editing promise for the /etc/resolv.conf file.
 
 
-[%CFEngine_include_snippet(set_up_name_resolution.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(set_up_name_resolution.cf, [\s]*--[a-z], ^$)%]
 
 A second approach is to try to conceal the operational details behind a veil of abstraction.
 
 
-[%CFEngine_include_snippet(set_up_name_resolution_1.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(set_up_name_resolution_1.cf, [\s]*--[a-z], ^$)%]
 
 DNS is not the only name service, of course. Unix has its older /etc/hosts file which can also be managed using file editing. We simply append this to the system_files bundle.
 
 
-[%CFEngine_include_snippet(set_up_name_resolution_1.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(set_up_name_resolution_1.cf, [\s]*--[a-z], ^$)%]
 
 ## Set up sudo
 
 Setting up sudo is straightforward, and is best managed by copying trusted files from a repository.
 
 
-[%CFEngine_include_snippet(set_up_sudo.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(set_up_sudo.cf, [\s]*--[a-z], ^$)%]
 
 ## Environments (virtual)
 
 
-[%CFEngine_include_snippet(environments_(virtual).cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(environments_(virtual).cf, [\s]*--[a-z], ^$)%]
 
 ## Environment variables
 
 
-[%CFEngine_include_snippet(environment_variables.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(environment_variables.cf, [\s]*--[a-z], ^$)%]
 
 ## Tidying garbage files
 
 Emulating the `tidy' feature of CFEngine 2.
 
-[%CFEngine_include_snippet(tidying_garbage_files.cf), [\s]*--[a-z], ^$)%]
+[%CFEngine_include_snippet(tidying_garbage_files.cf, [\s]*--[a-z], ^$)%]
