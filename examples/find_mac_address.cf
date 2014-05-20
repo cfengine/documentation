@@ -55,4 +55,3 @@ ok::
   "MAC address is $(mac[1])";
 
 }
-```

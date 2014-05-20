@@ -23,4 +23,3 @@ commands:
      ifvarclass => canonify("$(policy_server)");
 
 }
-```

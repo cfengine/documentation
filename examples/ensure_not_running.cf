@@ -12,4 +12,3 @@ processes:
       signals => { "term", "kill" };
 ;
 }
-```

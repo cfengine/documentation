@@ -23,4 +23,3 @@ services:
        service_policy => "disable",
        comment => "Disable services that create security issues";
 }
-```

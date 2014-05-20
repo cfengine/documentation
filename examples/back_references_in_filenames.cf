@@ -63,4 +63,3 @@ bundle edit_line myedit(parameter)
      "$(edit_variable)";
   
   }
-```

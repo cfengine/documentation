@@ -215,4 +215,3 @@ reports::
  remove_fail::
    "Failed to remove one or more packages";
 }
-```

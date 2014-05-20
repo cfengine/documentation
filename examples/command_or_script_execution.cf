@@ -20,4 +20,3 @@ commands:
       contain => setuid("mysql");
 
 }
-```

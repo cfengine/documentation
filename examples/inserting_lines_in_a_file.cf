@@ -206,4 +206,3 @@ body edit_defaults empty
 {
 empty_file_before_editing => "true";
 }
-```

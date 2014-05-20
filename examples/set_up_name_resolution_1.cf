@@ -122,4 +122,3 @@ insert_lines:
  "$(i)     $(names[$(i)])";
 
 }
-```

@@ -86,4 +86,3 @@ body select_region MySection(x)
 select_start => "\[$(x)\]";
 select_end => "\[.*\]";
 }
-```

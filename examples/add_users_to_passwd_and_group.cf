@@ -29,4 +29,3 @@ files:
        edit_line => append_user_field("users","4","@(addpasswd.users)");
 
 }
-```

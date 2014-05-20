@@ -47,4 +47,3 @@ commands:
      # Add below this line
      
      $(definitions.more_hosts)
-```	 

@@ -50,4 +50,3 @@ files:
 
      edit_line => set_variable_values("testsetvar.v");
 }
-```

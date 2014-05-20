@@ -16,4 +16,3 @@ files:
    copy_from => secure_cp("$(masterfiles)/sudoers","$(policy_server)");
 
 }
-```

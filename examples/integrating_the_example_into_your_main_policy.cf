@@ -1,4 +1,3 @@
     vars:
         # NOTE: Edit this to your domain, e.g. "corp"
        "domain_name" string => "cftesting";
-```

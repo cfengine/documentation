@@ -28,4 +28,3 @@ files:
      edit_line => set_variable_values("setvars.rhs");
 
 }
-```

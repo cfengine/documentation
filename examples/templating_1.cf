@@ -47,4 +47,3 @@ files:
         action => if_elapsed("60");
 
 }
-```
