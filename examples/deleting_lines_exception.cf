@@ -61,4 +61,3 @@ bundle edit_line MarkNRoot
        "mark.*|root.*" not_matching => "true";
 
   }
-```

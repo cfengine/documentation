@@ -20,4 +20,3 @@ files:
        depth_search => recurse("inf"),
        action       => background;
 }
-```

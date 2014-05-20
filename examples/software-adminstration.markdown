@@ -22,72 +22,70 @@ tags: [Examples,Software Administration]
 
 Example for Debian:
 
-```cf3
+
 [%CFEngine_include_example(software_and_patch_installation.cf)%]
-```
+
 Examples MSI for Windows, by name:
 
-```cf3
+
 [%CFEngine_include_example(software_and_patch_installation_1.cf)%]
-```
+
 Windows MSI by version:
 
-```cf3
+
 [%CFEngine_include_example(software_and_patch_installation_1.cf)%]
-```
+
 Examples for solaris are more complex:
 
-```cf3
+
 [%CFEngine_include_example(software_and_patch_installation_1_2.cf)%]
-```
+
 Examples for yum based systems:
 
-```cf3
+
 [%CFEngine_include_example(software_and_patch_installation_1_2.cf)%]
-```
+
 SuSE Linux's package manager zypper is the most powerful alternative:
 
-```cf3
+
 [%CFEngine_include_example(software_and_patch_installation_1_2_3.cf)%]
-```
+
 ## Postfix mail configuration
 
-```cf3
+
 [%CFEngine_include_example(postfix_mail_configuration.cf)%]
-```
+
 ## Set up a web server
 
 Adapt this template to your operating system by adding multiple classes. Each web server runs something like the present module, which is entered into the bundlesequence like this:
 
-```cf3
+
 [%CFEngine_include_example(set_up_a_web_server.cf)%]
-```
+
 ## Add software packages to the system ##
 
-```cf3
+
 [%CFEngine_include_example(add_software_packages_to_the_system.cf)%]
-```
+
 Note you can also arrange to hide all the differences between package managers on an OS basis, but since some OSs have multiple managers, this might not be 100 percent correct.
 
 ## Application baseline
 
-```cf3
+
 [%CFEngine_include_example(application_baseline.cf)%]
-```
+
 ## Service management (windows)
 
-```cf3
+
 [%CFEngine_include_example(service_management_(windows).cf)%]
-```
+
 ## Software distribution
 
-```cf3
+
 [%CFEngine_include_example(software_distribution.cf)%]
-```
+
 ## Web server modules
 
 The problem of editing the correct modules into the list of standard modules for the Apache web server. This example is based on the standard configuration deployment of SuSE Linux. Simply provide the list of modules you want and another list that you don't want.
 
-```cf3
 [%CFEngine_include_example(web_server_modules.cf)%]
-```

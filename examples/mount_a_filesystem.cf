@@ -41,4 +41,3 @@ mount_server => "$(server)";
 edit_fstab => "true";
 unmount => "true";
 }
-```

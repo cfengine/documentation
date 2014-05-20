@@ -16,4 +16,3 @@ reports:
    "Value extracted: $(value)";
 
 }
-```

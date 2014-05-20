@@ -66,4 +66,3 @@ host2::
   env_network => "default_vnet2";
 
 }
-```

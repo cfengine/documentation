@@ -144,4 +144,3 @@ body action tell_me
 {
 report_level => "inform";
 }
-```

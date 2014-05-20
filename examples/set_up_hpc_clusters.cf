@@ -74,4 +74,3 @@ bundle agent disable_xinetd(name)
       "disable $(name) service.";
    
 }
-```

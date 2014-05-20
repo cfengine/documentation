@@ -47,4 +47,3 @@ body action WarnOnly
 {
 action_policy => "warn";
 }
-```

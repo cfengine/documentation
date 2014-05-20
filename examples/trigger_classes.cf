@@ -88,4 +88,3 @@ body classes trigger(x)
 {
 promise_repaired => { "$(x)" };
 }
-```

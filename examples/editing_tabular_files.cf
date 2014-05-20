@@ -110,4 +110,3 @@ field_value     => "$(newval)";
 field_operation => "$(method)";
 extend_fields => "true";
 }
-```

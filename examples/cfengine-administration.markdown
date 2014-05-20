@@ -19,11 +19,9 @@ This shows how dependencies can be chained in spite of the order of promises in 
 
 Normally the order of promises in a bundle is followed, within each promise type, and the types are ordered according to normal ordering.
 
-```cf3
+
 [%CFEngine_include_example(ordering_promises.cf)%]
-```
+
 ## Aborting execution ##
 
-```cf3
 [%CFEngine_include_example(aborting_execution.cf)%]
-```

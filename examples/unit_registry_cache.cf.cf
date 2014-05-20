@@ -35,4 +35,3 @@ bundle agent registry_restore
         database_type      => "ms_registry",
         comment => "Make sure Adobe products have correct registry settings";
 }
-```

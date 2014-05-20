@@ -64,4 +64,3 @@ reports:
 "Different bundle ...$(ldap.myarray[uid]),$(ldap.myarray[gecos]),
 
 }
-```
