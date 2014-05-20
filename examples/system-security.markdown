@@ -13,8 +13,8 @@ tags: [Examples,System Security]
 ## Distribute root passwords	
   
 
-[%CFEngine_include_example(distribute_root_passwords.cf)%]
+[%CFEngine_include_snippet(distribute_root_passwords.cf), [\s]*--[a-z], ^$)%]
 
 ## Distribute ssh keys
 
-[%CFEngine_include_example(distribute_ssh_keys.cf)%]
+[%CFEngine_include_snippet(distribute_ssh_keys.cf), [\s]*--[a-z], ^$)%]
