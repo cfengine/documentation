@@ -18,14 +18,14 @@ With CFEngine you have a choice between editing `deltas' into files or distribut
 Example template:
 
 
-[%CFEngine_include_example(templating.cf)%]
+[%CFEngine_include_snippet(templating.cf, [\s]*--[a-z], ^$)%]
 
 
 To copy and expand this template, you can use a pattern like this:
 
 
-[%CFEngine_include_example(templating_1.cf)%]
+[%CFEngine_include_snippet(templating_1.cf, [\s]*--[a-z], ^$)%]
 
 The the following driving code (based on `copy then edit') can be placed in a library, after configuring to your environmental locations:
 
-[%CFEngine_include_example(templating_1.cf)%]
+[%CFEngine_include_snippet(templating_1.cf, [\s]*--[a-z], ^$)%]
