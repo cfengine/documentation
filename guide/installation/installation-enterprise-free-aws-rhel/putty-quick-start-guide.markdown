@@ -80,7 +80,7 @@ bundle agent testing
 
     any::
 
-      "testing!"
+      "testing!";
 
 }
 ```
