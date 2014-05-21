@@ -155,6 +155,10 @@ be cleaned up with `delete_lines` first.
 Disables idempotency during the insertion of a block of text so that
 multiple identical lines may be inserted.
 
+This means that the text will be inserted to the file even if it is already
+present. To avoid that the file grows, use this together with
+`empty_file_before_editing`.
+
 * `file_preserve_block`
 
 Interpret the string as a filename, and assume `preserve_block` semantics. 
