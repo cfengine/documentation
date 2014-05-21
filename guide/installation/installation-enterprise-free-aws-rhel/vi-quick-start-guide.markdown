@@ -53,3 +53,7 @@ You can also save and exit with one command, “:wq”
 It is important to remember that there are two basic operation modes in vi: the _command mode_, with which the user opens, saves and 
 exits from files, and the _insert_ mode with which the user inserts text—either by typing it in, or by copying and pasting—and can 
 then edit any part of the text in the file.
+
+open file using `vi filename`
+
+
