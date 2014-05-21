@@ -2,7 +2,7 @@
 layout: default
 title: Policy Cookbook
 published: true
-sorting: 3
+sorting: 4
 ---
 
 The Policy Cookbook contains step by step tutorials on a wide variety of intermediate and advanced topics.

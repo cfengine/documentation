@@ -1,6 +1,6 @@
 ---
 layout: default
-title: JSON support in CFEngine
+title: JSON Support in CFEngine
 published: true
 sorting: 2
 tags: [cookbook, json]
