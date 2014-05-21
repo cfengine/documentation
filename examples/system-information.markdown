@@ -17,31 +17,31 @@ tags: [Examples,System Information]
 ## Change detection
 
 
-[%CFEngine_include_snippet(change_detection.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(change_detection.cf)%]
 
 ## Hashing for change detection (tripwire) ##
 
 Change detection is a powerful and easy way to monitor your environment, increase awareness and harden your system against security breaches.
 
 
-[%CFEngine_include_snippet(hashing_for_change_detection_(tripwire).cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(hashing_for_change_detection_(tripwire).cf)%]
 
 ## Check filesystem space ##
 
 
-[%CFEngine_include_snippet(check_filesystem_space.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(check_filesystem_space.cf)%]
 
 ## Class match example
 
 
-[%CFEngine_include_snippet(class_match_example.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(class_match_example.cf)%]
 
 ## Global classes
 
 
 
-[%CFEngine_include_snippet(global_classes.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(global_classes.cf)%]
 
 ## Logging
 
-[%CFEngine_include_snippet(logging.cf, [\s]*--[a-z], ^$)%]
+[%CFEngine_include_example(logging.cf)%]
