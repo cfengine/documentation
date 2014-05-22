@@ -232,17 +232,17 @@ pull from git every time it runs (by default every 5 minutes).
     * If your git server is remote you must ensure the root user has ssh keys
       configured to allow passphraseless access to the git repository
 
-    ```console
-    root@policy_server # git clone git@gitserver:masterfiles.git /var/cfengine/masterfiles
-    Initialized empty Git repository in /var/cfengine/masterfiles/.git/
-    ```
+     ```console
+     root@policy_server # git clone git@gitserver:masterfiles.git /var/cfengine/masterfiles
+     Initialized empty Git repository in /var/cfengine/masterfiles/.git/
+     ```
 
     * If you are hosting the git repository on the policy server itself you can
       clone using its full path
 
-    ```console
-    root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
-    ```
+     ```console
+     root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
+     ```
 
 7. Make sure that the policy has valid syntax. `cf-promises` should not give output.
 
