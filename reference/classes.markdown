@@ -7,32 +7,39 @@ tags: [reference, hard classes, soft classes, classes]
 ---
 
 [Classes][classes and decisions] fall into **hard**
-(discovered) and **soft** (defined) types. This reference documents the hard 
-classes that might be set by CFEngine, and soft classes used by CFEngine's 
+(discovered) and **soft** (defined) types. This reference documents the hard
+classes that might be set by CFEngine, and soft classes used by CFEngine's
 default policy.
 
 ## Listing Classes
 
-To see all of the classes defined on a particular host, run
+To see `hard classes` and `soft classes` defined in common bundles on a
+particular host, run `cf-promises --show-classes` as a privileged user.
 
-    $ cf-promises --show-classes
+Example:
+```console
+[root@hub masterfiles]# cf-promises --show-classes
+Class name                                                   Meta tags                               
+10_0_2_15                                                    inventory,attribute_name=none,source=agent,hardclass
+127_0_0_1                                                    inventory,attribute_name=none,source=agent,hardclass
+192_168_33_2                                                 inventory,attribute_name=none,source=agent,hardclass
+1_cpu                                                        source=agent,derived-from=sys.cpus,hardclass
+64_bit                                                       source=agent,hardclass                  
+Afternoon                                                    time_based,source=agent,hardclass       
+Day22                                                        time_based,source=agent,hardclass       
+...
+```
 
-as a privileged user. Note that some of the classes are set only if a trusted 
-link can be established with 
-[`cf-monitord`][cf-monitord], i.e. if both are 
-running with privilege, and the `/var/cfengine/state/env_data` file is 
-secure.
-
-You can use
-https://github.com/cfengine/design-center/tree/master/tools/hcgrep to
-obtain this list in a format suitable for other tools like `grep` (one
-class per line), but all the information it offers should be available
-with `cf-promises --show-classes`.
+Note that some of the classes are set only if a trusted link can be established
+with [`cf-monitord`][cf-monitord], i.e. if both are running with privilege, and
+the `/var/cfengine/state/env_data` file is secure.
 
 You can also use the built-in `classesmatching()` function to get a
 list of all the defined classes in a list, inside CFEngine policy
 itself.  `classesmatching()` is especially useful because it also lets
 you specify tag regular expressions.
+
+**See also**: The `--show-vars` option.
 
 ## Tags
 
@@ -53,8 +60,8 @@ CFEngine.
 * `source=function`: this class or variable was created by a function as a side effect, e.g. see the classes that `selectservers()` sets or the variables that `regextract()` sets.  These classes or variables will also have a `function=FUNCTIONNAME` tag.
 * `source=promise`: this soft class was created from policy.
 * `inventory`: related to the system inventory, e.g. the network interfaces
-  * `attribute_name=none`: has no visual attribute name
-  * `attribute_name=X`: has visual attribute name `X`
+  * `attribute_name=none`: has no visual attribute name (ignored by Mission Portal)
+  * `attribute_name=X`: has visual attribute name `X` (used by Mission Portal)
 * `monitoring`: related to the monitoring (`cf-monitord` usually).
 * `time_based`: based on the system date, e.g. `Afternoon`
 * `derived-from=varname`: for a class, this tells you it was derived from a variable name, e.g. if the special variable `sys.fqhost` is `xyz`, the resulting class `xyz` will have the tag `derived-from=sys.fqhost`.
@@ -128,15 +135,51 @@ Enterprise only:
 
 ## Soft Classes
 
-The following classes can be set via 
+Soft classes can be set by using the `-D` or `--define` options wihtout having
+to edit the policy. Multiple classes can be defined by seperating them with
+commas (no spaces).
 
-    $ cf-agent -Dclass
+```console
+$ cf-agent -Dclass
+```
 
 or
 
-    $ cf-runagent -Dclass
-    
-to change the behavior of CFEngine without having to edit the policy.
+```console
+$ cf-agent --define class1,class2,class3
+```
+
+This can be expecially useful when requesting a remote host to run its policy
+by using `cf-runagent` to activate policy that is normally dormant.
+
+```console
+$ cf-runagent -Demergency_evacuation -H remoteclient
+```
+
+If you're using dynamic inputs this can be useful in combination with
+`cf-promises` to ensure that various input combinations syntax is validated
+correctly. Many people will have this run by pre-commit hooks or as part of a
+continuous build system like [Jenkins](http://jenkins-ci.org/) or
+[Bamboo](https://www.atlassian.com/software/bamboo).
+
+```console
+$ cf-promises -f ./promises.cf -D prod
+$ cf-promises -f ./promises.cf -D dev
+./promises.cf:10:12: error: syntax error
+   "global1" expression => "any";
+           ^
+./promises.cf:10:12: error: Check previous line, Expected ';', got '"global1"'
+   "global1" expression => "any";
+           ^
+./promises.cf:10:23: error: Expected promiser string, got 'expression'
+   "global1" expression => "any";
+                      ^
+./promises.cf:10:26: error: Expected ';', got '=>'
+   "global1" expression => "any";
+                         ^
+2014-05-22T13:46:05+0000    error: There are syntax errors in policy files
+```
+
 
 *Note*: Classes, once defined, will stay defined either for as long as the
 bundle is evaluated (for classes with a `bundle` scope) or until the agent
@@ -153,7 +196,7 @@ This will stop the AGENT from starting automatically.
 
 ### clear_persistent\_disable\_*DAEMON*
 
-**Description:** Re-enable a previously disabled CFEngine Enterprise daemon 
+**Description:** Re-enable a previously disabled CFEngine Enterprise daemon
 component.
 
 `DAEMON` can be one of `cf_execd`, `cf_monitord` or `cf_serverd`.
