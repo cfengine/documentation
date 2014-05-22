@@ -34,10 +34,11 @@ Used with permission. It has been updated, reformatted and edited for website co
 
 ### Before you Begin
 
-This is an advanced topic; we assume that you know how to write policy and you are familiar 
-with the [Design Center API][The Design Center API], its
-[command line tools][Command Line Sketches] and and Design Center
-sketch [management in CFEngine Enterprise][Design Center in CFEngine Enterprise].
+This is an advanced topic; we assume that you know how to write
+CFEngine policy, and that you are familiar with the Design Center
+[command line tools][Command Line Sketches] and, if you are an
+Enterprise use, with the
+[Design Center app in CFEngine Enterprise][Design Center in CFEngine Enterprise].
 
 ## Instructions
 
@@ -204,7 +205,7 @@ use the `sketchify` command in `cf-sketch` to do it automatically. The `sketchif
 policy file, asks you for the appropriate information, and produces a ready-to-use sketch
 in your local checkout of the Design Center repository. 
 
-The `sketchify` command takes as its only argument the file the contains our policy file,
+The `sketchify` command takes as its only argument the file that contains our policy file,
 which it reads and analyzes for bundles of type `agent`. Our policy file contains only one 
 bundle, so it is used automatically as the entry point for the sketch (if more than one
 agent bundle is found, you will be asked which one you want to use as the sketch entry
