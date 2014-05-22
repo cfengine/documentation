@@ -304,3 +304,27 @@ i.e. in the second assignment when the same variable is assigned multiple
 times. The `policy` attribute for that assignment is the one used when
 deciding whether to warn you or not. That's why in practice, you need to
 specify the attribute in all declarations of the variable.
+
+For example:
+```cf3
+example_com::
+  "domain"
+     string => "example.com",
+    comment => "Define a global domain for hosts in the example.com domain",
+     policy => "free";
+
+# The promise above will be overridden by one of the ones below on hosts
+# within the matching subdomain
+
+one_example_com::
+  "domain"
+     string => "one.example.com",
+    comment => "Define a global domain for hosts in the one.example.com domain",
+     policy => "free";
+
+two_example_com::
+  "domain"
+     string => "two.example.com",
+    comment => "Define a global domain for hosts in the two.example.com domain",
+     policy => "free";
+```
