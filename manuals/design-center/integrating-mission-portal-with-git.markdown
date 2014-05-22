@@ -229,16 +229,16 @@ pull from git every time it runs (by default every 5 minutes).
 
 6. Clone your git repository into /var/cfengine/masterfiles.
 
-    * If your git server is remote you must ensure the root user has ssh keys
-      configured to allow passphraseless access to the git repository
+   * If your git server is remote you must ensure the root user has ssh keys
+     configured to allow passphraseless access to the git repository
 
      ```console
      root@policy_server # git clone git@gitserver:masterfiles.git /var/cfengine/masterfiles
      Initialized empty Git repository in /var/cfengine/masterfiles/.git/
      ```
 
-    * If you are hosting the git repository on the policy server itself you can
-      clone using its full path
+   * If you are hosting the git repository on the policy server itself you can
+     clone using its full path
 
      ```console
      root@policy_server # git clone /home/git/masterfiles.git /var/cfengine/masterfiles
