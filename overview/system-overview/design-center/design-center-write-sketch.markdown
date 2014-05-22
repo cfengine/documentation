@@ -37,7 +37,7 @@ Used with permission. It has been updated, reformatted and edited for website co
 This is an advanced topic; we assume that you know how to write
 CFEngine policy, and that you are familiar with the Design Center
 [command line tools][Command Line Sketches] and, if you are an
-Enterprise use, with the
+Enterprise user, with the
 [Design Center app in CFEngine Enterprise][Design Center in CFEngine Enterprise].
 
 ## Instructions
