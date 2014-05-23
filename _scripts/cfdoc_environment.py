@@ -43,6 +43,7 @@ def validate():
 		print "Directory 'documentation' not found in WORKDIR"
 
 	config["include_directories"] = []
+	config["include_directories"].append(config["WORKDIR"]
 	config["include_directories"].append(config["WORKDIR"] + "/core/examples")
 	config["include_directories"].append(config["WORKDIR"] + "/documentation/examples")
 	config["include_directories"].append(config["WORKDIR"] + "/documentation-generator/_generated")
