@@ -17,10 +17,24 @@ To get started with CFEngine, you can imagine the following template for enterin
 
 [%CFEngine_include_snippet(basic_example.cf, .* )%]
 
-Then you enter the cases as below. The general pattern of the syntax is like this (colors in html version: red, CFEngine word; blue, user-defined word):
+# The general pattern
+
+The general pattern of the syntax is like this (colors in html version: red, CFEngine word; blue, user-defined word):
+
+bundle component name(parameters)
+{ 
+what_type:
+ where_when::
+
+  # Traditional comment
 
 
-[%CFEngine_include_snippet(basic_example_1.cf, .* )%]
+  "promiser" -> { "promisee1", "promisee2" },
+        comment => "The intention ...",
+         handle => "unique_id_label",
+    attribute_1 => body_or_value1,
+    attribute_2 => body_or_value2;
+}
 
 ## Hello world
 
