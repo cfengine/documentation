@@ -12,12 +12,18 @@ attributes and group memberships the users should have.
 Every user promise has at least one attribute, `policy`, which
 describes whether or not the user should be present on the system.
 Other attributes are optional; they allow you to specify UID, home
-directory, login shell, group membership, description, and password.
+directory, login shell, group membership, description, and password. Platform
+native tools are used to create/modify/delete users (C api on Windows, and
+`useradd` `usermod` `userdel` on *nix}).
 
-A bundle can be associated with a user promise, such as 
-when a user is created in order to do housekeeping
-tasks in his/her home directory, like putting default configuration
-files in place, installing encryption keys, and storing a login picture.
+A bundle can be associated with a user promise, such as when a user is created
+in order to do housekeeping tasks in his/her home directory, like putting
+default configuration files in place, installing encryption keys, and storing
+a login picture.
+
+**Note:** This promise type does not create or delete groups (not even a users
+primary group). The groups the user is promised to be in need to be managed
+seperately.
 
 **History:** Introduced in CFEngine 3.6.0
 
