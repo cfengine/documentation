@@ -455,6 +455,16 @@ The name of the directory where CFEngine looks for its libraries, without any pr
 
 **History:** Introduced in CFEngine 3.6
 
+### sys.logdir
+
+The name of the directory where CFEngine log files are saved
+
+```cf3
+    # logdir = /var/cfengine/
+```
+
+**History:** Introduced in CFEngine 3.6
+
 ### sys.license_owner
 
 ```cf3
@@ -537,6 +547,16 @@ Another name for the operating system.
 ```
 
 **See also:** [`sys.class`][sys#sys.class]
+
+### sys.piddir
+
+The name of the directory where CFEngine saves the daemon pid files.
+
+```cf3
+    # piddir = /var/cfengine/
+```
+
+**History:** Introduced in CFEngine 3.6
 
 ### sys.policy_hub
 
