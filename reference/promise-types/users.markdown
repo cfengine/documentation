@@ -14,7 +14,7 @@ describes whether or not the user should be present on the system.
 Other attributes are optional; they allow you to specify UID, home
 directory, login shell, group membership, description, and password. Platform
 native tools are used to create/modify/delete users (C api on Windows, and
-`useradd` `usermod` `userdel` on *nix}).
+`useradd` `usermod` `userdel` on Unix, Linux and similar platforms).
 
 A bundle can be associated with a user promise, such as when a user is created
 in order to do housekeeping tasks in his/her home directory, like putting
@@ -121,25 +121,9 @@ database. For that, you must use the `home_dir` attribute.
 
 **Example:**
 
-```cf3
-   bundle agent main
-   {
-      vars:
-         "users" slist => { "jack", "john" };
-      users:
-         "$(users)"
-            policy => "present",
-            home_dir => "/home/$(users)",
-            home_bundle => setup_home_dir("$(users)");
-   }
+[%CFEngine_include_snippet("users_type.cf", "### Users main BEGIN ###", "### Users main END ###")%]
 
-   bundle agent setup_home_dir(user)
-   {
-      files:
-         "/home/$(user)/."
-            create => "true";
-   }
-```
+[%CFEngine_include_snippet("users_type.cf", "### Home Bundle BEGIN ###", "### Home Bundle END ###")%]
 
 This example uses implicit looping to create the two users, "jack"
 and "john." Each has his respective home directory that is created by
@@ -147,9 +131,9 @@ the `files` promise.
 
 ### home_bundle_inherit
 
-**Description:** The `home_bundle_inherit` attribute specifies if 
-classes set in the current bundle are inherited by the bundle
-specified in the `home_bundle` attribute.
+**Description:** The `home_bundle_inherit` attribute specifies if classes set
+in the current bundle are inherited by the bundle specified in the
+`home_bundle` attribute.
 
 [%CFEngine_promise_attribute()%]
 
