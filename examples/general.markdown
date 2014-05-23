@@ -47,31 +47,3 @@ what_type:
 
 [%CFEngine_include_snippet(array_example.cf, .* )%]
 
-## Test ##
-
-1. Here is a test.
-2. Please ignore it.
-	* Does this do anything
-	* Or this
-3. We can try something else
-	4. Like this
-	
-		```cf3
-		bundle component name(parameters)
-		{ 
-		what_type:
-		 where_when::
-
-		  # Traditional comment
-
-
-		  "promiser" -> { "promisee1", "promisee2" },
-				comment => "The intention ...",
-				 handle => "unique_id_label",
-			attribute_1 => body_or_value1,
-			attribute_2 => body_or_value2;
-		}
-		```
-
-	5. It might have worked
-6. Or not

@@ -95,6 +95,23 @@ Ordered lists - the numbers you use don't matter.
 1. second
 9. Third
 
+### Code Blocks and Lists
+
+If you want to include a code block within a list, put two tabs (8 spaces) in front of the entire block.
+
+1. First
+
+		```cf3
+			# CFEngine block
+
+			bundle agent example()
+			{
+			}
+		```
+
+2. Second
+3. Third
+
 ## Tables
 
 Wiki-syntax for tables is supported, and you can be a bit sloppy
