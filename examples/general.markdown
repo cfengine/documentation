@@ -56,22 +56,22 @@ what_type:
 3. We can try something else
 	4. Like this
 	
-```cf3
-bundle component name(parameters)
-{ 
-what_type:
- where_when::
+		```cf3
+		bundle component name(parameters)
+		{ 
+		what_type:
+		 where_when::
 
-  # Traditional comment
+		  # Traditional comment
 
 
-  "promiser" -> { "promisee1", "promisee2" },
-        comment => "The intention ...",
-         handle => "unique_id_label",
-    attribute_1 => body_or_value1,
-    attribute_2 => body_or_value2;
-}
-```
+		  "promiser" -> { "promisee1", "promisee2" },
+				comment => "The intention ...",
+				 handle => "unique_id_label",
+			attribute_1 => body_or_value1,
+			attribute_2 => body_or_value2;
+		}
+		```
 
 	5. It might have worked
 6. Or not
