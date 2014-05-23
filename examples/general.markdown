@@ -55,6 +55,7 @@ what_type:
 	* Or this
 3. We can try something else
 	4. Like this
+	
 ```cf3
 bundle component name(parameters)
 { 
@@ -71,5 +72,6 @@ what_type:
     attribute_2 => body_or_value2;
 }
 ```
+
 	5. It might have worked
 6. Or not
