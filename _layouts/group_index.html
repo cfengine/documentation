@@ -6,8 +6,9 @@
 {% endif %}
 
 {% if paginator.posts != nil %}
+{% assign sortedByTitle = paginator.posts | sortPostsByTitle %}
 <ul>
-{% for post in paginator.posts %}
+{% for post in sortedByTitle %}
   <!-- Print post entry short stuff -->
   <li><a href="{{site.baseurl}}{{ post.alias }}">{{ post.title }}</a></li>
 {% endfor %}
