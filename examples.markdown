@@ -7,21 +7,8 @@ tags: [Examples]
 ---
 
 * [Policy Example Snippets][Policy Example Snippets]
-	* [General Examples][General Examples]
-	* [CFEngine Administration Examples][CFEngine Administration Examples]
-	* [Measuring Examples][Measuring Examples]
-	* [Software Administration Examples][Software Administration Examples]
-	* [Commands, Scripts, and Execution Examples][Commands, Scripts, and Execution Examples]
-	* [File and Directory Examples][File and Directory Examples]
-	* [File Template Examples][File Template Examples]
-	* [Database Examples][Database Examples]
-	* [Network Examples][Network Examples]
-	* [System Security Examples][System Security Examples]
-	* [System Information Examples][System Information Examples]
-	* [System Administration Examples][System Administration Examples]
-	* [System File Examples][System File Examples]
-	* [Windows Registry Examples][Windows Registry Examples]
-	* [User Management and ACL Examples][User Management and ACL Examples]
+
+This section is divided into topical areas, and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
 
 * [Tutorials][Tutorials]  
 This section provides examples and explanations of common tasks.
@@ -30,9 +17,6 @@ This section provides examples and explanations of common tasks.
 This section includes examples to use as you write policy for your system environment. 
 The examples here are generic so that you can complete them based on your organization's 
 requirements. 
-
-* [Orange Book][Orange Book]  
-Visit our Special Topics section to take your learning farther than simple examples.
 
 * [Sample Policies][Sample Policies]  
 CFEngine ships with sample policies. Learn how to copy them to your masterfiles directory 
