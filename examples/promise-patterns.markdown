@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Common Promise Patterns
-sorting: 20
+sorting: 2
 published: true
 tags: [examples, policy]
 ---

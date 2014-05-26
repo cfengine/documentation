@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tutorials
-sorting: 10
+sorting: 5
 published: true
 tags: [Examples, Tutorials]
 ---

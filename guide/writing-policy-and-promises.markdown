@@ -16,13 +16,11 @@ Writing, deploying, and using CFEngine `promises` will generally follow these si
 1. Using a text editor, create a new file (e.g. `hello_world.cf`).
 2. Create a bundle and promise in the file (see [Test the Workflow With a "Hello World" Promise](#test-the-workflow-with-a-hello-world)).
 3. Save the file on the policy server somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
-4a. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
-4b. Alternatively, it is also possible to call a bundle manually, using `cf-agent`.
+4. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
+		* Optional: it is also possible to call a bundle manually, using `cf-agent`.
 5. Verify the `policy file` was deployed and successfully run.
 
-
-
-#### Test the Workflow With a "Hello World" Promise ####
+#### Example: "Hello World" Promise ####
 
 In the simple `hello_world` example shown below, the `promise` is that the `Hello World` message will be sent to the log. 
 
@@ -119,4 +117,5 @@ With the above information CFEngine will then do the following:
 4. In the `hello_world` example an adminstrator, defined in the file `controls/cf_execd.cf`, will be emailed the message `Hello World!`. 
 
 ## See Also ##
+* [Authoring Policy Tools & Workflow][Authoring Policy Tools & Workflow]
 * [Promises][Promises]
