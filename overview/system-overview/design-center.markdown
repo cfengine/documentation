@@ -14,17 +14,17 @@ achieving specific tasks, or for maintaining a specific piece of software,
 however their scope and capabilities can be varied. They are organized in 
 categories according to their functionality. Sketches are managed (installed, 
 configured, enabled and uninstalled) through a specialized tool called 
-cf-sketch.
+`cf-sketch`.
 
-[Use Design Center Sketches to Deploy Policy](#use-design-center-sketches-to-deploy-policy)
-[The Design Center Sketch Workflow](#the-design-center-sketch-workflow)
-[Value of Sketches to Users](#value-of-sketches-to-users)
-[Design Center Terminology](#design-center-terminology)
-[See Also](#see-also)
+* [Use Design Center Sketches to Deploy Policy](#use-design-center-sketches-to-deploy-policy)
+* [The Design Center Sketch Workflow](#the-design-center-sketch-workflow)
+* [Value of Sketches to Users](#value-of-sketches-to-users)
+* [Design Center Terminology](#design-center-terminology)
+* [See Also](#see-also)
 
 ## Use Design Center Sketches to Deploy Policy
 
-The CFEngine Design Center is a collection of `sketches` which are reusable, configurable 
+The CFEngine Design Center is a collection of *sketches* which are reusable, configurable 
 policies. Think of sketches as templates that are written in CFEngine policy language; you can 
 use these templates to configure and deploy CFEngine policy without mastering the 
 CFEngine language. 

@@ -5,13 +5,13 @@ published: true
 tags: [reference, bundle common, vars, promises]
 ---
 
-[Variables][variables] in CFEngine are defined 
-as promises that an identifier of a certain type represents a particular 
+[Variables][variables] in CFEngine are defined
+as promises that an identifier of a certain type represents a particular
 value. Variables can be scalars or lists of types `string`, `int`, `real`
 or `data`.
 
 The allowed characters in variable names are alphanumeric (both upper and lower case)
-and undercore. `Associative` arrays using the string type and square brackets `[]` to 
+and undercore. `Associative` arrays using the string type and square brackets `[]` to
 enclose an arbitrary key are being deprecated in favor of the `data` variable type.
 
 ## Scalar Variables
@@ -24,7 +24,7 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
 
 **Allowed input range:** (arbitrary string)
 
-**Example:**  
+**Example:**
 
 
 ```cf3
@@ -42,7 +42,7 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
 
 **Allowed input range:** `-99999999999,9999999999`
 
-**Example:**  
+**Example:**
 
 ```cf3
     vars:
@@ -58,11 +58,11 @@ enclose an arbitrary key are being deprecated in favor of the `data` variable ty
          4000);
 ```
 
-**Notes:**  
+**Notes:**
 
-Int variables are strings that are expected to be used as integer numbers. The 
-typing in CFEngine is dynamic, so the variable types are interchangeable. 
-However, when you declare a variable to be type `int`, CFEngine verifies that 
+Int variables are strings that are expected to be used as integer numbers. The
+typing in CFEngine is dynamic, so the variable types are interchangeable.
+However, when you declare a variable to be type `int`, CFEngine verifies that
 the value you assign to it looks like an integer (e.g., 3, -17, 16K).
 
 ### real
@@ -73,28 +73,28 @@ the value you assign to it looks like an integer (e.g., 3, -17, 16K).
 
 **Allowed input range:** `-9.99999E100,9.99999E100`
 
-**Example:**  
+**Example:**
 
 ```cf3
     vars:
-   
+
      "scalar" real   => "0.5";
 ```
 
-**Notes:**  
+**Notes:**
 
-Real variables are strings that are expected to be used as real numbers. The 
-typing in CFEngine is dynamic, so the variable types are interchangeable, but 
-when you declare a variable to be type `real`, CFEngine verifies that the 
-value you assign to it looks like a real number (e.g., 3, 3.1415, .17, 
+Real variables are strings that are expected to be used as real numbers. The
+typing in CFEngine is dynamic, so the variable types are interchangeable, but
+when you declare a variable to be type `real`, CFEngine verifies that the
+value you assign to it looks like a real number (e.g., 3, 3.1415, .17,
 6.02e23, -9.21e-17).
 
-Real numbers are not used in many places in CFEngine, but they are useful for 
+Real numbers are not used in many places in CFEngine, but they are useful for
 representing probabilities and performance data.
 
 ## List variables
 
-Lists are specified using curly brackets `{}` that enclose a 
+Lists are specified using curly brackets `{}` that enclose a
 comma-separated list of values.
 
 ### slist
@@ -105,21 +105,21 @@ comma-separated list of values.
 
 **Allowed input range:** (arbitrary string)
 
-**Example:**  
+**Example:**
 
 ```cf3
     vars:
 
      "xxx"    slist  => {  "literal1",  "literal2" };
      "xxx1"   slist  => {  "1", @(xxx) }; # interpolated in order
-     "yyy"    slist  => { 
+     "yyy"    slist  => {
                         readstringlist(
                                       "/home/mark/tmp/testlist",
                                       "#[a-zA-Z0-9 ]*",
                                       "[^a-zA-Z0-9]",
                                       15,
                                       4000
-                                      ) 
+                                      )
                         };
 
      "zzz"    slist  => { readstringlist(
@@ -133,8 +133,8 @@ comma-separated list of values.
 
 **Notes:**
 
-Some [functions][Functions] return `slist`s, and an `slist` 
-may contain the values copied from another `slist`, `rlist`, or `ilist`. See 
+Some [functions][Functions] return `slist`s, and an `slist`
+may contain the values copied from another `slist`, `rlist`, or `ilist`. See
 [`policy`](#policy).
 
 ### ilist
@@ -145,7 +145,7 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 **Allowed input range:** `-99999999999,9999999999`
 
-**Example:**  
+**Example:**
 
 ```cf3
     vars:
@@ -157,7 +157,7 @@ may contain the values copied from another `slist`, `rlist`, or `ilist`. See
       "xxx1" ilist  => {  "1", @(variable_id) }; # interpolated in order
 ```
 
-**Notes:**  
+**Notes:**
 
 Integer lists are lists of strings that are expected to be treated as
 integers. The typing in CFEngine is dynamic, so the variable types are
@@ -165,8 +165,8 @@ interchangeable, but when you declare a variable to be type `ilist`,
 CFEngine verifies that each value you assign to it looks like an integer
 (e.g., 3, -17, 16K).
 
-Some [functions][Functions] return `ilist`s, and an `ilist` may 
-contain the values copied from another `slist`, `rlist`, or `ilist`. See 
+Some [functions][Functions] return `ilist`s, and an `ilist` may
+contain the values copied from another `slist`, `rlist`, or `ilist`. See
 [`policy`](#policy)
 
 ### rlist
@@ -177,7 +177,7 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See
 
 **Allowed input range:** `-9.99999E100,9.99999E100`
 
-**Example:**  
+**Example:**
 
 ```cf3
     vars:
@@ -187,15 +187,15 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See
       "xxx1" rlist  => {  "1.3", @(varid) }; # interpolated in order
 ```
 
-**Notes:**  
-   
+**Notes:**
+
 Real lists are lists of strings that are expected to be used as real
 numbers. The typing in CFEngine is dynamic, so the variable types are
 interchangeable, but when you declare a variable to be type `rlist`,
 CFEngine verifies that each value you assign to it looks like a real
 number (e.g., 3, 3.1415, .17, 6.02e23, -9.21e-17).
 
-Some [functions][Functions] return `rlist`s, and an `rlist` may 
+Some [functions][Functions] return `rlist`s, and an `rlist` may
 contain the values copied from another `slist`, `rlist`, or `ilist`. See [`policy`](#policy)
 
 ## Data container variables
@@ -230,7 +230,7 @@ Output:
 
 **Allowed input range:** (arbitrary string)
 
-**Example:**  
+**Example:**
 
 ```cf3
     vars:
@@ -238,7 +238,7 @@ Output:
      "loaded1" data => readjson("myfile.json", 40000);
      "loaded2" data => parsejson('{"key":"value"}');
      "merged1" data => mergedata(loaded1, loaded2);
-     
+
 ```
 
 ***
@@ -254,7 +254,7 @@ redefined) or they can be constant.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     free
@@ -263,11 +263,11 @@ redefined) or they can be constant.
     ifdefined
 ```
 
-**Default value:**  
+**Default value:**
 
 `policy = constant`
 
-**Example:**  
+**Example:**
 
 ```cf3
     vars:
@@ -276,17 +276,17 @@ redefined) or they can be constant.
               policy => "constant";
 ```
 
-**Notes:**  
+**Notes:**
 
-The policy `constant` indicates that the variable value may not be changed. 
-The policies `free` and `overridable` are synonymous and indicate that the 
+The policy `constant` indicates that the variable value may not be changed.
+The policies `free` and `overridable` are synonymous and indicate that the
 variable's value may be changed.
 
 `data` variables (data containers) can only have policy `constant`.
 
-The policy `ifdefined` applies only to lists and implies that unexpanded or 
-undefined lists are dropped. The default behavior is otherwise to retain this 
-value as an indicator of the failure to quench the variable reference, for 
+The policy `ifdefined` applies only to lists and implies that unexpanded or
+undefined lists are dropped. The default behavior is otherwise to retain this
+value as an indicator of the failure to quench the variable reference, for
 example:
 
 ```cf3
@@ -296,5 +296,35 @@ example:
           policy => "ifdefined";
 ```
 
-This results in `@(list)` being the same as `@(one)`, and the reference to 
+This results in `@(list)` being the same as `@(one)`, and the reference to
 `@(two)` disappears. This is useful for combining lists.
+
+The `policy` attribute gets checked at the moment the variable is assigned -
+i.e. in the second assignment when the same variable is assigned multiple
+times. The `policy` attribute for that assignment is the one used when
+deciding whether to warn you or not. That's why in practice, you need to
+specify the attribute in all declarations of the variable.
+
+For example:
+```cf3
+example_com::
+  "domain"
+     string => "example.com",
+    comment => "Define a global domain for hosts in the example.com domain",
+     policy => "free";
+
+# The promise above will be overridden by one of the ones below on hosts
+# within the matching subdomain
+
+one_example_com::
+  "domain"
+     string => "one.example.com",
+    comment => "Define a global domain for hosts in the one.example.com domain",
+     policy => "free";
+
+two_example_com::
+  "domain"
+     string => "two.example.com",
+    comment => "Define a global domain for hosts in the two.example.com domain",
+     policy => "free";
+```
