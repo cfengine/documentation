@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Policy Example Snippets
+title: Example Snippets
 sorting: 1
 published: true
 tags: [examples, policy, example snippets]

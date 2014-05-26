@@ -6,7 +6,7 @@ sorting: 5
 tags: [Examples]
 ---
 
-* [Policy Example Snippets][Policy Example Snippets]
+* [Example Snippets][Example Snippets]
 
 This section is divided into topical areas, and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
 
