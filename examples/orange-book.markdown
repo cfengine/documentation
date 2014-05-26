@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Orange Book
-sorting: 30
+sorting: 7
 published: true
 tags: [Examples, Orange]
 ---

@@ -2,7 +2,7 @@
 layout: default
 title: Enterprise API Examples
 published: true
-sorting: 100
+sorting: 6
 tags: [examples, enterprise, REST, API, reporting]
 ---
 
