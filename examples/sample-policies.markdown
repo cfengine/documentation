@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Sample Policies
-sorting: 40
+sorting: 3
 published: true
 tags: [examples, policy]
 ---
