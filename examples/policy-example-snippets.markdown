@@ -3,7 +3,7 @@ layout: default
 title: Policy Example Snippets
 sorting: 1
 published: true
-tags: [Examples, Policy, Example Snippets]
+tags: [examples, policy, example snippets]
 ---
 
 * [General Examples][General Examples]

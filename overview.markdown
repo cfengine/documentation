@@ -17,13 +17,6 @@ sorting: 3
 * [Enterprise Overview][Enterprise Overview]
 * [Reports][Reports]
 
-
-## CFEngine for Various Roles Within an Organization ##
-
-* [CFEngine for Policy Developers][CFEngine for Policy Developers]
-* [CFEngine for System Administrators][CFEngine for System Administrators]
-* [CFEngine for System Architects][CFEngine for System Architects]
-
 ## Resources ##
 
 * [CFEngine Learning Resources][Learning Resources]
