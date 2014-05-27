@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Using Sketches in Mission Portal's Design Center App
+title: Sketches and the Design Center App
 sorting: 100
 published: true
 tags: [overviews, mission portal, sketches, design center, design center app]
