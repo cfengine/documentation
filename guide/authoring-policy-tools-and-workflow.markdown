@@ -2,7 +2,7 @@
 layout: default
 title: Authoring Policy Tools & Workflow 
 published: true
-sorting: 3
+sorting: 4
 ---
 
 There are several ways to approach authoring promises and ensuring they are copied into and then deployed properly from the `masterfiles` directory:

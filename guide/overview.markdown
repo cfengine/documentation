@@ -2,7 +2,7 @@
 layout: default
 title: Overview
 published: true
-sorting: 3
+sorting: 1
 ---
 
 ## Understand CFEngine Fundamentals ##

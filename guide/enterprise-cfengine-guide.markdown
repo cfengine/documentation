@@ -2,7 +2,7 @@
 layout: default
 title: CFEngine Enterprise Guide 
 published: true
-sorting: 4
+sorting: 5
 ---
 
 * [Getting Started With CFEngine Enterprise][Getting Started With CFEngine Enterprise]
