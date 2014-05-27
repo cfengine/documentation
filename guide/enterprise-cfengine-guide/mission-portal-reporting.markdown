@@ -2,7 +2,7 @@
 layout: default
 title: Reporting in Mission Portal
 published: true
-sorting: 3
+sorting: 4
 ---
 
 ## Ensure the report collection is working

@@ -2,7 +2,7 @@
 layout: default
 title: Enterprise Overview
 published: true
-sorting: 5 
+sorting: 1 
 tags: [overviews, enterprise]
 ---
 
