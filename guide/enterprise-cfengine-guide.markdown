@@ -5,8 +5,6 @@ published: true
 sorting: 5
 ---
 
-* [Reporting in Mission Portal][Reporting in Mission Portal]
-
 * [Enterprise Overview][Enterprise Overview]
 * [Getting Started With CFEngine Enterprise][Getting Started With CFEngine Enterprise]
 * [Mission Portal Overview][Mission Portal Overview]
