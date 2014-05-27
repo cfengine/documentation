@@ -2,7 +2,7 @@
 layout: default
 title: Writing Policy
 published: true
-sorting: 50
+sorting: 2
 tags: [overviews, writing policy, policy]
 ---
 
