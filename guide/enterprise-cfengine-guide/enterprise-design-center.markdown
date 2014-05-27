@@ -2,7 +2,7 @@
 layout: default
 title: Design Center in CFEngine Enterprise 
 published: true
-sorting: 1
+sorting: 5
 ---
 
 ## CFEngine, Design Center and Version Control Systems ##
