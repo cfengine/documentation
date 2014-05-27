@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Alerts and Notifications in the Mission Portal Dashboard
+title: Alerts and Notifications
 sorting: 100
 published: true
 tags: [overviews, mission portal, dashboard, alerts, notifications]
