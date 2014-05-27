@@ -9,6 +9,12 @@ tags: [overviews, mission portal]
 * [Infrastructure Engineering with the CFEngine Mission Portal](#infrastructure-engineering-with-the-cfengine-mission-portal)
 * [Categorization of Hosts](#categorization-of-hosts)
 * [Mission Portal Topics](#mission-portal-topics)
+* [Mission Portal Reports][Mission Portal Reports]
+* [SQLite Database Schema][SQLite Database Schema]
+* [Alerts and Notifications][Alerts and Notifications]
+* [Viewing Hosts in Mission Portal][Viewing Hosts in Mission Portal]
+* [Host Monitoring in Mission Portal][Host Monitoring in Mission Portal]
+* [Sketches and the Design Center App][Sketches and the Design Center App]
 * [See Also](#see-also)
 
 ## Infrastructure Engineering with the CFEngine Mission Portal
