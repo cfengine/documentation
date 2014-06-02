@@ -19,8 +19,7 @@ CFEngine recommends the following:
 
 **Disk Storage** 
 
-Plan for approximately 100MB of disk space per host. Due to MongoDB's pre-allocation 
-strategy, always provide an extra 2G to 4G of disk space if you plan to bootstrap more hosts later.
+Plan for approximately 100MB of disk space per host. Provide an extra 2G to 4G of disk space if you plan to bootstrap more hosts later.
 
 **Network** 
 
