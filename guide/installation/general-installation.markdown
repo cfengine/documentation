@@ -12,13 +12,14 @@ tags: [guide, installation, install]
 
 Check the [Pre-Installation Checklist][Pre-Installation Checklist] and [Supported Platforms][Supported Platforms] for requirements and other information that is useful for the installation procedure.
 
-## Install Packages
+## Install Packages ##
 
 CFEngine Enterprise is provided in two packages; one is for the Policy
 Server (hub) and the other is for each Host (client). 
 
-**Log in as root** and then follow these steps to install CFEngine Enterprise:
+Note: See [Installing Community][Installing Community] for the community version of CFEngine)
 
+**Log in as root** and then follow these steps to install CFEngine Enterprise:
 
 1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 
@@ -36,7 +37,7 @@ Server (hub) and the other is for each Host (client).
 
 Note: Install actions logged to `/var/logs/cfengine-install.log`.
 
-## Bootstrap
+## Bootstrap ##
 
 Run the bootstrap command, **first** on the policy server and then on each
 host:
