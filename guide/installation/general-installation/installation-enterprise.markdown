@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Installing Enterprise for Production
-published: true
+published: false
 sorting: 40
 tags: [getting started, installation, enterprise production]
 ---
@@ -68,101 +68,23 @@ representative if you have any questions regarding these numbers.
 
 ### Port 80
 
-The Policy Server hosts the Mission Portal through Apache, so ensure that port
-80 is open.
+
 
 **Note:** To avoid potential interference with the installation process, start
-from a blank system (i.e. no Apache Web Server, no MongoDB, etc).
+from a blank system (i.e. no Apache Web Server, etc.).
 
-### MongoDB Requirements
 
-CFEngine uses MongoDB, an open-source, NoSQL database. It stores data that
-is collected from the Hosts.
 
-CFEngine recommends the following configurations:
 
-1. Filesystem type:
-   - ext4 (a 2.6.23 kernel is required for efficient filesystem preallocation)
-   - xfs (a 2.6.25 kernel is required for efficient filesystem preallocation)
-2. Memory: Approximately 8 GB per 500 hosts
-3. Turn off NUMA if you are running MongoDB on NUMA. Refer to
-http://www.mongodb.org/display/DOCS/NUMA for more information.
-4. Do not use large VM pages with Linux. Refer to
-http://linuxgazette.net/155/krishnakumar.html for more information on large
-pages.
-5. Set the file descriptor limit and user process limit to 4k+ (see etc/limits
-and ulimit)
 
 ## Download Packages
 
-CFEngine Enterprise is provided in two packages; one is for the Policy
-Server (hub) and the other is for each Host (client). 
-
-**Select a Policy Server (hub) package to download:**
-
-Ubuntu 10.04
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-10.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
-```
-
-Ubuntu 12.04
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-12.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
-```
-
-RHEL 5.4
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-5.4-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
-```
-
-SUSE 11.1
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/sles-11.1-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
-```
-
-Debian 6.0
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/debian-6.0-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
-```
-
-RHEL 6.0 
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-6.0-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
-```
-
-**Select a Host (client) package to download:**
-
-Ubuntu/Debian 32-bit:
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_i386/cfengine-nova_3.5.2-1_i386.deb
-```
-
-Ubuntu/Debian 64-bit:
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_x86_64/cfengine-nova_3.5.2-1_x86_64.deb
-```
-
-Redhat/CentOS/SUSE 32-bit:
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_i386/cfengine-nova-3.5.2-1.i386.rpm
-```
-
-Redhat/CentOS/SUSE 64-bit:
-
-```
-wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_x86_64/cfengine-nova-3.5.2-1.x86_64.rpm
-```
+[Download CFEngine](http://cfengine.com/product/free-download)
 
 ## Install Packages
+
+CFEngine Enterprise is provided in two packages; one is for the Policy
+Server (hub) and the other is for each Host (client). 
 
 **Log in as root** and then follow these steps to install CFEngine Enterprise:
 
