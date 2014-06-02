@@ -6,27 +6,52 @@ published: true
 tags: [overviews, system overview]
 ---
 
-## What Does a CFEngine System Look Like? 
+## CFEngine Policy Servers and Hosts ## 
 
-### Server vs. Client Host ###
+There are basically two categories of machines in a CFEngine environment: policy servers and their client hosts. Policy servers are responsible for making policy files available to each of the client hosts that have registered with it (a.k.a. bootstrapped), including itself. Hosts on the other hand are responsible for ensuring they continuously pull in the latest policies, or changes to policies, from the policy server. They are additionally responsible for ensuring they remain fully compliant with the instructions contained within the policy files, at all times.
+
+The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.
 
 See Also: [Policy Server Overview][Policy Server Overview]
-
-### Files ###
-
-[cf_promises_validated][cf_promises_validated]
 
 ### The CFEngine Applications and Daemons ###
 
 CFEngine consists of a number of applications that help manage policies and machines within the overall system.
 
+* [Daemons][System Overview#Daemons]
+* [Other Applications][System Overview#Other Applications]
+
 #### Daemons ####
 
 All machines, whether they are policy servers or hosts, will have these three important daemons running at all times:
 
-[/var/cfengine/bin/cf-execd](#cf-execd)
-[/var/cfengine/bin/cf-serverd](#cf-serverd)
-[/var/cfengine/bin/cf-monitord](#cf-monitord)
+* [/var/cfengine/bin/cf-execd][System Overview#cf-execd]
+* [/var/cfengine/bin/cf-serverd][System Overview#cf-serverd]
+* [/var/cfengine/bin/cf-monitord][System Overview#cf-monitord]
+
+##### cf-execd #####
+
+cf-execd is the scheduling daemon for cf-agent. It runs cf-agent locally according to a schedule specified in policy code (executor control body). After a cf-agent run is completed, cf-execd gathers output from cf-agent, and may be configured to email the output to a specified address. It may also be configured to splay (randomize) the execution schedule to prevent synchronized cf-agent runs across a network.
+
+cf-execd keeps the promises made in common bundles, and is affected by common and executor control bodies.
+
+See also: [cf-execd][cf-execd] reference documentation.
+
+##### cf-serverd #####
+
+cf-serverd is a socket listening daemon providing two services: it acts as a file server for remote file copying and it allows an authorized cf-runagent to start a cf-agent run. cf-agent typically connects to a cf-serverd instance to request updated policy code, but may also request additional files for download. cf-serverd employs role based access control (defined in policy code) to authorize requests.
+
+cf-serverd keeps the promises made in common and server bundles, and is affected by common and server control bodies.
+
+See also: [cf-serverd][cf-serverd] reference documentation.
+
+##### cf-monitord #####
+
+cf-monitord is the monitoring daemon for CFEngine. It samples probes defined in policy using measurements type promises and attempts to learn the normal system state based on current and past observations. Current estimates are made available as special variables (e.g. $(mon.av_cpu)) to cf-agent, which may use them to inform policy decisions.
+
+cf-monitord keeps the promises made in commonand monitor bundles, and is affected by common and monitor control bodies.
+
+See also: [cf-monitord][cf-monitord] reference documentation.
 
 #### Other Applications ####
 
@@ -41,31 +66,6 @@ All machines, whether they are policy servers or hosts, will have these three im
 [/var/cfengine/bin/getfacl](#getfacl) 
 [/var/cfengine/bin/mdb_copy](#mdb_copy)
 [/var/cfengine/bin/rpmvercmp](#rpmvercmp)
-
-#### cf-execd ####
-
-cf-execd is the scheduling daemon for cf-agent. It runs cf-agent locally according to a schedule specified in policy code (executor control body). After a cf-agent run is completed, cf-execd gathers output from cf-agent, and may be configured to email the output to a specified address. It may also be configured to splay (randomize) the execution schedule to prevent synchronized cf-agent runs across a network.
-
-cf-execd keeps the promises made in common bundles, and is affected by common and executor control bodies.
-
-See also: [cf-execd][cf-execd] reference documentation.
-
-#### cf-serverd ####
-
-cf-serverd is a socket listening daemon providing two services: it acts as a file server for remote file copying and it allows an authorized cf-runagent to start a cf-agent run. cf-agent typically connects to a cf-serverd instance to request updated policy code, but may also request additional files for download. cf-serverd employs role based access control (defined in policy code) to authorize requests.
-
-cf-serverd keeps the promises made in common and server bundles, and is affected by common and server control bodies.
-
-See also: [cf-serverd][cf-serverd] reference documentation.
-
-#### cf-monitord ####
-
-cf-monitord is the monitoring daemon for CFEngine. It samples probes defined in policy using measurements type promises and attempts to learn the normal system state based on current and past observations. Current estimates are made available as special variables (e.g. $(mon.av_cpu)) to cf-agent, which may use them to inform policy decisions.
-
-cf-monitord keeps the promises made in commonand monitor bundles, and is affected by common and monitor control bodies.
-
-See also: [cf-monitord][cf-monitord] reference documentation.
-
 
 #### cf-agent ####
 

@@ -8,7 +8,7 @@ tags: [getting started, installation, enterprise free, aws, rhel]
 
 This guide describes how to install CFEngine on two Red Hat® Enterprise Linux® (RHEL) virtual machines using Amazon Web Services™ (AWS) and SSH. At the time of writing, under certain conditions, setting up an AWS account and using micro-instances is free.
 
-One of the two machines will be a `policy server` (see [Policy Server Overview][Policy Server Overview]), while the other will be a `host` (see [Host Overview][Host Overview]).
+One of the two machines will be a `policy server` (see [Policy Server Overview][Policy Server Overview]), while the other will be a `host`.
 
 Although these instructions walk through the steps needed to install CFEngine Enterprise on two machines, up to 25 machines can be set up using the same procedure and scripts. 
 
