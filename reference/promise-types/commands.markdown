@@ -357,7 +357,7 @@ This attribute determines whether or not to expect the CFEngine module protocol.
 
 * lines which begin with a `^` are protocol extensions
   * `^context=xyz` sets the module context to `xyz` instead of the default
-  * `^tags=a,b,c` sets the class and variable tags for any following definitions to `a`, `b`, and `c`
+  * `^meta=a,b,c` sets the class and variable tags for any following definitions to `a`, `b`, and `c`
 * lines which begin with a `+` are treated as classes to be defined (like -D)
 * lines which begin with a `-` are treated as classes to be undefined (like -N)
 * lines which begin with `=` are scalar variables to be defined

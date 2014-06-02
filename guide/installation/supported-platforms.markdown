@@ -2,8 +2,8 @@
 layout: default
 title: Supported Platforms
 published: true
-sorting: 5
-tags: [overviews, supported platforms, Linux, Windows, Unix]
+sorting: 2
+tags: [guide, installation, supported platforms, Linux, Windows, Unix]
 ---
 
 CFEngine supports several platforms, including POSIX operating systems such as Unix and Linux, as well as Microsoft Windows.
