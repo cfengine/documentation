@@ -14,7 +14,7 @@ the list of currently installed packages.
 
 The return is a data container with a list of package descriptions, looking like this:
 
-```json
+```
 [
   {
     "name": "bfoobar",
