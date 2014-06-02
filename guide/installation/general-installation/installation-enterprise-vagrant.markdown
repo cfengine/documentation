@@ -18,11 +18,7 @@ CFEngine.
 
 Note: VirtualBox requires that your computer support hardware virtualization in order to make use of the CentOS 64-bit virtual machines mentioned above. This is sometimes turned on or off in BIOS settings, but not all processors and motherboards necessarily support hardware virtualization. 
 
-If your system lacks this support you will need to choose another computer to take advantage of the 64-bit virtual machines or install CFEngine using a different approach. See the following for other ways of installing CFEngine:
-
-* Install and test the latest version using our [native version][Installing Enterprise 25 Free].
-* Install CFEngine Enterprise for [production][Installing Enterprise for Production].
-* Install and test the latest [version of Community][Installing Community]. 
+If your system lacks this support you will need to choose another computer to take advantage of the 64-bit virtual machines or [install CFEngine using a different approach][General Installation#More Detailed Installation Guides].
 
 ## Overview
 
