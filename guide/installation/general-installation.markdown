@@ -46,10 +46,7 @@ host:
 $ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
 ```
 
-## Next Steps ##
-
-* Learn about [Writing Policy and Promises][Writing Policy and Promises]
-
+## More Detailed Installation Guides ##
 
 Although most install procedures follow the same general workflow, there are several ways of installing CFEngine depending on your environment and which version of CFEngine you are using.
 
@@ -59,4 +56,10 @@ Although most install procedures follow the same general workflow, there are sev
 	* This is especially useful for people running Windows on their workstation or laptop.
 * Install and test the latest version using our pre-packaged [Vagrant environment][Installing Enterprise Vagrant Environment]
 * [Installing CFEngine Community Edition][Installing Community]
+
+## Next Steps ##
+
+* Learn about [Writing Policy and Promises][Writing Policy and Promises]
+
+
 
