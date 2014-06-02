@@ -1,7 +1,7 @@
 ---
 layout: default
 title: System Overview
-sorting: 2
+sorting: 3
 published: true
 tags: [overviews, system overview]
 ---
