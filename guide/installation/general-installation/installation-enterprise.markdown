@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Installing Enterprise for Production
-published: false
+published: true
 sorting: 40
 tags: [getting started, installation, enterprise production]
 ---
