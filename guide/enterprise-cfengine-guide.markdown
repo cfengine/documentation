@@ -2,7 +2,7 @@
 layout: default
 title: CFEngine Enterprise Guide 
 published: true
-sorting: 5
+sorting: 7
 ---
 
 * [Enterprise Overview][Enterprise Overview]
