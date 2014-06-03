@@ -2,7 +2,7 @@
 layout: default
 title: Writing Policy and Promises
 published: true
-sorting: 3
+sorting: 6
 ---
 
 ## How Promises Work ##
