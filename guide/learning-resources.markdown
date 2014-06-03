@@ -8,7 +8,6 @@ tags: [overviews, learning]
 
 Use the following links to learn more about CFEngine:
 
-* [Glossary][Glossary]
 * [Up and Running][Up and Running]
 * [Learning CFEngine][Learning CFEngine]
 * [Learning Tools][Learning Tools]

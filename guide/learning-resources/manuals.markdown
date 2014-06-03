@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Learning CFEngine 
-published: true
+published: false
 sorting: 30
 tags: [overviews, learning resources]
 ---
