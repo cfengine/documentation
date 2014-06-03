@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine 3.6
+title: CFEngine 3.6 Manual
 published: true
 sorting: 1
 ---
