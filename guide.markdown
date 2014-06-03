@@ -24,6 +24,7 @@ For many users, CFEngine is simply a configuration tool – i.e. software for de
 * [Introduction][Introduction]
 * [Getting Started][Getting Started]
 * [System Overview][System Overview]
+	* [Latest Release][Latest Release]
 * [Installing CFEngine][Installing CFEngine]
 * [Configure CFEngine][Configure CFEngine]
 * [Writing Policy and Promises][Writing Policy and Promises]
@@ -41,7 +42,7 @@ For many users, CFEngine is simply a configuration tool – i.e. software for de
 * [Reports][Reports]
 * [Glossary][Glossary]
 * [FAQ][FAQ]
-* [Learning Resources][Learning Resources]
+* [Additional Resources][Additional Resources]
 
 
 
