@@ -2,7 +2,7 @@
 layout: default
 title: Configure CFEngine
 published: true
-sorting: 30
+sorting: 5
 tags: [manuals, style, policy, concepts]
 ---
 
