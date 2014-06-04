@@ -2,7 +2,7 @@
 layout: default
 title: CFEngine Architecture and Design
 published: true
-sorting: 10
+sorting: 2
 tags: [overviews, system, configuration management, automation, architecture, design, promises]
 ---
 

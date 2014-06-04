@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Security Overview
-sorting: 100
-published: true
+sorting: 7
+published: false
 tags: [overviews, security overview]
 ---
 
