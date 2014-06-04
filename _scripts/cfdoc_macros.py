@@ -523,8 +523,6 @@ def find_include_file(searchfile, searchpaths):
 		filename = searchpath + "/" + searchfile
 		if os.path.exists(filename):
 			return filename
-	print "find_include_file: File not found: %s" % searchfile
-	print "     searching: %s" % searchpaths
 	return None
 
 def load_include_file(filename):
@@ -559,8 +557,9 @@ def prune_include_lines(markdown_lines, filename):
 	return markdown_lines
 
 def include_markdown(parameters, config):
-	# included markdown files are searched in the directory of the including markdown file and up
-	filename = None
+	# in addition to the include search path, included markdown files are searched
+	# in the directory of the including markdown file and up
+	filename = find_include_file(parameters[0], config["include_directories"])
 	searchdir = config["context_current_file"]
 	while filename == None:
 		searchdir = searchdir[0:searchdir.rfind('/')]
