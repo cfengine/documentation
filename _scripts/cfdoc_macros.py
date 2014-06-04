@@ -523,6 +523,8 @@ def find_include_file(searchfile, searchpaths):
 		filename = searchpath + "/" + searchfile
 		if os.path.exists(filename):
 			return filename
+	print "find_include_file: File not found: %s" % searchfile
+	print "     searching: %s" % searchpaths
 	return None
 
 def load_include_file(filename):
@@ -530,9 +532,7 @@ def load_include_file(filename):
 	in_file = open(filename, 'r')
 	lines = in_file.readlines()
 	if len(lines) == 0:
-		print "load_include_file: File not found or can't open: " + searchfile
-		print "       searching :"
-		print "                  " + searchpaths
+		print "load_include_file: Failed to load text from: " + filename
 		return None
 	return lines
 
@@ -591,6 +591,9 @@ def include_example(parameters, config):
 
 def include_snippet(parameters, config):
 	filename = find_include_file(parameters[0], config["include_directories"])
+	if filename == None:
+		print "File '%s' not found in search-path %s" % (parameters[0], config["include_directories"])
+		return ""
 	lines = load_include_file(filename)
 	if lines == None:
 		return ""
@@ -598,7 +601,7 @@ def include_snippet(parameters, config):
 	brush = ""
 	if filename[-3:] == '.cf':
 		brush = "cf3"
-	
+
 	begin = re.compile(parameters[1])
 	if len(parameters) < 3:
 		end = re.compile("a^") # never matches anything
