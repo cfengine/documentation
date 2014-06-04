@@ -2,15 +2,9 @@
 layout: default
 title: Latest Release
 published: true
-sorting: 60
+sorting: 1
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions]
 ---
-
-**IMPORTANT NOTE:** This is a pre-release of CFEngine 3.6. 
-
-<!--- TODO: move up when no longer a pre-release
--->
-
 
 * [New in CFEngine][New in CFEngine]  
 Learn about the newest features in CFEngine 3.6

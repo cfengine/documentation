@@ -2,7 +2,7 @@
 layout: default
 title: The CFEngine Components
 published: true
-sorting: 30
+sorting: 3
 tags: [manuals, systems, configuration management, automation, components, cf-agent, directory]
 ---
 
