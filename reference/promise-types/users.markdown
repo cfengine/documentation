@@ -121,9 +121,9 @@ database. For that, you must use the `home_dir` attribute.
 
 **Example:**
 
-[%CFEngine_include_snippet("users_type.cf", "### Users main BEGIN ###", "### Users main END ###")%]
+[%CFEngine_include_snippet(users_type.cf, ### Users main BEGIN ###, ### Users main END ###)%]
 
-[%CFEngine_include_snippet("users_type.cf", "### Home Bundle BEGIN ###", "### Home Bundle END ###")%]
+[%CFEngine_include_snippet(users_type.cf, ### Home Bundle BEGIN ###, ### Home Bundle END ###)%]
 
 This example uses implicit looping to create the two users, "jack"
 and "john." Each has his respective home directory that is created by
