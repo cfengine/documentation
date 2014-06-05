@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Mission Portal Overview
-sorting: 3
+sorting: 4
 published: true
 tags: [overviews, mission portal]
 ---

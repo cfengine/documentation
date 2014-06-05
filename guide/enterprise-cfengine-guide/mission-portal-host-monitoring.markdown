@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Host Monitoring in Mission Portal
-sorting: 100
+sorting: 8
 published: true
 tags: [overviews, mission portal, hosts, monitoring, host monitoring]
 ---
