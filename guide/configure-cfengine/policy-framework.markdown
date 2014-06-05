@@ -26,4 +26,4 @@ especially the cf-serverd ACL settings. If you are not sure of the
 terms used below or what it all means, come back after you've learned
 about writing policy and the CFEngine syntax.
 
-[%CFEngine_include_markdown(masterfiles/README.md, .+Setting Up, .+Unexpected Behavior)%]
+[%CFEngine_include_markdown(masterfiles/README.md, .+Setting Up, .+Contributing)%]
