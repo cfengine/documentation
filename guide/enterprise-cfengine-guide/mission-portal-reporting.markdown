@@ -2,7 +2,7 @@
 layout: default
 title: Reporting in Mission Portal
 published: true
-sorting: 4
+sorting: 5
 ---
 
 ## Reports App ##

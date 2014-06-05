@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Viewing Hosts in Mission Portal
-sorting: 100
+sorting: 9
 published: true
 tags: [overviews, mission portal, hosts]
 ---

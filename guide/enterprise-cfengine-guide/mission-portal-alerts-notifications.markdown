@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Alerts and Notifications
-sorting: 100
+sorting: 10
 published: true
 tags: [overviews, mission portal, dashboard, alerts, notifications]
 ---
