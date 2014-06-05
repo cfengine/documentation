@@ -221,6 +221,18 @@ Output:
 
 [%CFEngine_include_snippet(container_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
+Often you need to iterate through the keys of a container, and the
+value is a key-value property map for that key. The example here shows
+how you can pass the "animals" container and an "animal" key inside it
+to a bundle, which can then report and use the data from the key-value
+property map.
+
+[%CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src cfengine3, .*end_src)%]
+
+Output:
+
+[%CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
 
 ### data
 
