@@ -530,7 +530,7 @@ def load_include_file(filename):
 	in_file = open(filename, 'r')
 	lines = in_file.readlines()
 	if len(lines) == 0:
-		print "load_include_file: Failed to load text from: " + filename
+		print "load_include_file: Failed to load text from: '%s'" % filename
 		return None
 	return lines
 
@@ -564,12 +564,12 @@ def include_markdown(parameters, config):
 	while filename == None:
 		searchdir = searchdir[0:searchdir.rfind('/')]
 		if not len(searchdir):
-			raise Exception("Include file not found: %s" % parameters[0])
+			raise Exception("Include file not found: '%s'" % parameters[0])
 		filename = find_include_file(parameters[0], ["%s" % searchdir])
 	lines = load_include_file(filename)
 	
 	if not len(lines):
-		raise Exception("Include file empty: %s" % parameters[0])
+		raise Exception("Include file empty: '%s'" % parameters[0])
 	return lines	
 
 def include_example(parameters, config):
