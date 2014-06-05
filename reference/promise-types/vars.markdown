@@ -318,6 +318,7 @@ deciding whether to warn you or not. That's why in practice, you need to
 specify the attribute in all declarations of the variable.
 
 For example:
+
 ```cf3
 example_com::
   "domain"
