@@ -208,6 +208,13 @@ modified, once created.
 Data containers can be passed to another bundle with the
 `@(varname)` notation, similarly to the list passing notation.
 
+Some useful tips for using data containers:
+
+* they act like "classic" CFEngine arrays in many ways
+* `getindices()` and `getvalues()` work on any level, e.g. `getvalues("container[x][y]")`
+* in reports, you have to reference a part of the container that can be expressed as a string.  So for instance if you have the container `c` with data `{ "x": { "y": 50 }, "z": [ 1,2,3] }` we have two top-level keys, `x` and `z`.  If you report on `$(c[x])` you will not get data, since there is no string there.  But if you ask for `$(c[x][y])` you'll get `50`, and if you ask for `$(c[z])` you'll get implicit iteration on `1,2,3` (just like a slist in a "classic" CFEngine array).
+* read the examples below carefully to see some useful ways to access data container contents
+
 Iterating through a data container is only guaranteed to respect list
 order (e.g. `[1,3,20]` will be iterated in that order). Key order for
 maps, as per the JSON standard, is not guaranteed. Similarly, calling
@@ -232,7 +239,6 @@ property map.
 Output:
 
 [%CFEngine_include_snippet(container_key_iteration.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-
 
 ### data
 
