@@ -89,7 +89,7 @@ def processFile(markdown, config):
 		new_lines = []
 		call = markdown_line[marker_index + len(marker):markdown_line.find("%]")]
 		function = call[:call.find('(')]
-		parameters = call[len(function) + 1:call.find(')')]
+		parameters = call[len(function) + 1:call.rfind(')')]
 		parameters = parameters.split(",")
 		parameters = [p.lstrip().rstrip() for p in parameters]
 		if len(parameters) == 1 and parameters[0] == "":
