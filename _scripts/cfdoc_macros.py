@@ -570,7 +570,29 @@ def include_markdown(parameters, config):
 	
 	if not len(lines):
 		raise Exception("Include file empty: '%s'" % parameters[0])
-	return lines	
+
+	if len(parameters) < 2:
+		begin = re.compile(".*")
+	else:
+		begin = re.compile(parameters[1])
+	if len(parameters) < 3:
+		end = re.compile("a^") # never matches anything
+	else:
+		end = re.compile(parameters[2])
+
+	markdown_lines = []
+
+	skip_block = True
+	for line in lines:
+		if skip_block == False:
+			if (end.match(line)):
+				break
+			markdown_lines.append(line)
+		elif (begin.match(line) != None):
+			skip_block = False
+			markdown_lines.append(line)
+
+	return markdown_lines
 
 def include_example(parameters, config):
 	parameters.append(".*") # first line starts
