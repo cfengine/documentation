@@ -175,12 +175,19 @@ Injects the code from `filename`.
 * `[%CFEngine_include_snippet(filename, begin_rx, end_rx [optional])%]`
 
 Searches `filename` for the first line that matches the regular
-expression `begin_rx`, and injects all lines from there until the
-first line that matches `end_rx`. If `end_rx` is omitted, all lines
-until the end of the file will be injected.
+expression `begin_rx`, and injects all lines as a code block from
+there until the first line that matches `end_rx`. If `end_rx` is
+omitted, all lines until the end of the file will be injected.
 
 If the line that matches the regular expression is a comment, then
 it is excluded from the quote, otherwise it is included.
+
+* `[%CFEngine_include_markdown(filename, begin_rx, end_rx [optional])%]`
+
+Searches `filename` for the first line that matches the regular
+expression `begin_rx`, and injects all lines **verbatim** from there
+until the first line that matches `end_rx`. If `end_rx` is omitted,
+all lines until the end of the file will be injected.
 
 #### Documenting Policy Libraries
 
