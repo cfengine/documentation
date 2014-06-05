@@ -154,9 +154,19 @@ There are two steps:
     * `README.md`, which you could cut from the manifest or auto-generate, is just a README file
     * `main.cf` which you just saw above
     * plus `sketch.json` as shown above
-* regenerate the sketch index for `/my/repo` and install your sketch into `/var/cfengine/design-center/sketches` (the "live" repository of sketches)
+* regenerate the sketch index for `/my/repo` and install your sketch into `/var/cfengine/design-center/sketches` (the "live" repository of sketches).  Run the following commands:
 
-See [Maintaining your own sketch repository][Maintaining your own sketch repository] for the exact commands to run.
+```
+cp -rp /var/cfengine/share/*Base/sketches/sketch_template /my/repo/sketches/
+/var/cfengine/design-center/bin/cf-sketch --make_cfsketches --inputs /my/repo --is=/my/repo/sketches/cfsketches.json
+/var/cfengine/design-center/bin/cf-sketch --make_readme --is=/my/repo/sketches/cfsketches.json
+/var/cfengine/design-center/bin/cf-sketch --install-all --is=/my/repo/sketches/cfsketches.json --inputs=/var/cfengine/design-center
+```
+
+See
+[Maintaining your own sketch repository][Maintaining your own sketch repository]
+for these exact commands to run, with a longer explanation for each
+one.
 
 ## You're Done!
 
