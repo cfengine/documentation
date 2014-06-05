@@ -6,7 +6,7 @@ published: true
 tags: [overviews, system overview]
 ---
 
-## CFEngine Policy Servers and Hosts ## 
+## CFEngine Policy Servers and Hosts ##
 
 There are basically two categories of machines in a CFEngine environment: policy servers and their client hosts. Policy servers are responsible for making policy files available to each of the client hosts that have registered with it (a.k.a. bootstrapped), including itself. Hosts on the other hand are responsible for ensuring they continuously pull in the latest policies, or changes to policies, from the policy server. They are additionally responsible for ensuring they remain fully compliant with the instructions contained within the policy files, at all times.
 
