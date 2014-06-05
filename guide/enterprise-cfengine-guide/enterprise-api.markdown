@@ -2,7 +2,7 @@
 layout: default
 title: Enterprise API Overview
 published: true
-sorting: 6 
+sorting: 3 
 tags: [overviews, enterprise, REST, API, reporting]
 ---
 

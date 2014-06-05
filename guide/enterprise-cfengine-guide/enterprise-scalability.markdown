@@ -2,7 +2,7 @@
 layout: default
 title: Enterprise Scalability
 published: true
-sorting: 8
+sorting: 11
 ---
 
 When running CFEngine Enterprise in a large-scale IT environment, where the number of hosts runs into the thousands, certain issues arise that require different approaches compared with smaller installations.
