@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installing and Configuring CFEngine
+title: Installation and Configuration
 sorting: 4
 published: true
 tags: [getting started, installation]
