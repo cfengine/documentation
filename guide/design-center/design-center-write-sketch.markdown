@@ -20,7 +20,7 @@ Mission Portal, and passing them down to the agent bundle.
 The bundle we will wrap with a sketch is a simple use of the `users`
 promise type:
 
-```cfengine
+```cf3
 bundle agent ensure_users(users, group, homedir, shell)
 {
   users:
