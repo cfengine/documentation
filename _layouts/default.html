@@ -12,7 +12,7 @@
                         <li><span>Tags:</li>
                         {% for tag in page.tags %}
                         <li>
-                            <a href="{{site.baseurl}}tags/{{ tag | cleanString | downcase}}.html">{{ tag }}</a>
+                            <a href="tags/{{ tag | cleanString | downcase}}.html">{{ tag }}</a>
                         </li>
                         {% endfor %}
                     </ul>
