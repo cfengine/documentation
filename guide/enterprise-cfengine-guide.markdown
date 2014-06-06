@@ -15,6 +15,8 @@ sorting: 7
 * [Viewing Hosts in Mission Portal][Viewing Hosts in Mission Portal]
 * [Alerts and Notifications][Alerts and Notifications]
 * [Enterprise Scalability][Enterprise Scalability]
+* [Enterprise Reporting][Enterprise Reporting]
+* [Enterprise Sketches][Enterprise Sketches]
 
 
 
