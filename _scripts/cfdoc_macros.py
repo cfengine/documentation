@@ -173,7 +173,7 @@ def promise_attribute(parameters, config):
 		attribute_def = body_type_def["attributes"][header[3]]
 		attribute_type = attribute_def["type"]
 	else:
-		print "Error: Document structure does not support promise_attribute macro!"
+		qa.Log(config, "Error: Document structure does not support promise_attribute macro!")
 		return lines;
 
 	attribute_range = attribute_def.get("range")
@@ -351,7 +351,7 @@ def document_type(type, type_definition, excludes, config):
 			continue
 		attribute_definition = type_attributes.get(attribute)
 		if attribute_definition == None:
-			print "cfdoc_macros: syntax_map - no definition for attribute %s in type %s" % (attribute, type)
+			qa.Log(config, "cfdoc_macros: syntax_map - no definition for attribute %s in type %s" % (attribute, type))
 			continue
 		
 		attribute_status = attribute_definition.get("status", "normal")
@@ -440,7 +440,7 @@ def document_syntax_map(tree, branch, config):
 		try:
 			common_attributes = copy.deepcopy(tree.get("classes").get("attributes"))
 		except:
-			print "cfdoc_macros: syntax_map - no promise type classes?!"
+			qa.Log(config, "cfdoc_macros: syntax_map - no promise type classes?!")
 		for common_attribute in common_attributes.keys():
 			type_count = 0
 			for type in types:
@@ -474,7 +474,7 @@ def document_syntax_map(tree, branch, config):
 			qa.LogMissingDocumentation(config, type, ["No documentation for type"], "")
 		type_definition = tree.get(type)
 		if type_definition == None:
-			print "cfdoc_macros: syntax_map - no definition for type %s" % type
+			qa.Log(config, "cfdoc_macros: syntax_map - no definition for type %s" % type)
 			continue
 		lines.append(document_type(type, type_definition, excludes, config))
 	
@@ -613,7 +613,7 @@ def include_example(parameters, config):
 def include_snippet(parameters, config):
 	filename = find_include_file(parameters[0], config["include_directories"])
 	if filename == None:
-		print "File '%s' not found in search-path %s" % (parameters[0], config["include_directories"])
+		qa.Log(config, "File '%s' not found in search-path %s" % (parameters[0], config["include_directories"]))
 		return ""
 	lines = load_include_file(filename)
 	if lines == None:
@@ -669,17 +669,18 @@ def library_include(parameters, config):
 	policy_filename = parameters[0] + ".json"
 	policy_json = config.get(policy_filename)
 	html_name = config.get("context_current_html")
+
+	qa.LogProcessStart(config, "library_include: %s" % policy_filename)
+
 	if policy_json == None:
 		policy_path = config["project_directory"] + "/_json/" + policy_filename
 		if not os.path.exists(policy_path):
-			print "cfdoc_macros:library_include: File does not exist: " + policy_path
+			qa.Log(config, "File does not exist: " + policy_path)
 			return markdown_lines
 		
 		policy_json = json.load(open(policy_path, 'r'))
 		config[policy_filename] = policy_json
 		
-	qa.LogProcessStart(config, "library_include: %s" % policy_filename)
-	
 	# for all bundles and bodies...
 	for key in policy_json.keys():
 		element_list = policy_json[key]
@@ -695,7 +696,7 @@ def library_include(parameters, config):
 			if element_type == None:
 				element_type = element.get("bodyType")
 			if element_type == None:
-				print "cfdoc_macros:library_include: element without type: " + name
+				qa.Log(config, "element without type: " + name)
 				continue
 				
 			# start a new block for changed types
@@ -728,7 +729,7 @@ def library_include(parameters, config):
 				sourceLine = element["line"] - 1 # zero-based indexing
 				sourceLines = source_file.readlines()[sourceLine:]
 			except:
-				print "cfdoc_macros:library_include: could not include code from " + name
+				qa.Log(config, "could not include code from " + name)
 			
 			if len(sourceLines):
 				headerLines = list()
@@ -890,6 +891,6 @@ def library_include(parameters, config):
 				errorString = []
 
 	if len(markdown_lines) == 0:
-		print "cfdoc_macros:library_include: Failure to include " + parameters[0]
+		qa.Log(config, "Failure to include " + parameters[0])
 		
 	return 	markdown_lines

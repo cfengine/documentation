@@ -46,6 +46,8 @@ logfile.write("---\n")
 logfile.write("\n")
 logfile.write("Documentation generated at %s GMT\n" % strftime("%Y-%m-%d %H:%M:%S", gmtime()))
 logfile.write("\n")
+logfile.write("# Logging\n")
+logfile.write("\n")
 logfile.close()
 
 try:

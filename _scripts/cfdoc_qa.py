@@ -47,3 +47,24 @@ def LogMissingDocumentation(config, element, strings, location):
 		logfile.write("    * Source location: `%s`\n" % location)
 	logfile.write("    * Triggered by: `%s` (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
 	logfile.close()
+
+def Log(config, string):
+	# Prepend the error string as a general error without context of current process
+	logfile = open(config["log_file"], 'r')
+	original = logfile.readlines()
+	logfile.close()
+
+	logfile = open(config["log_file"], 'w')
+	line_offset = 0
+	for line in original:
+		logfile.write(line)
+		line_offset += 1
+		if line == "# Logging\n":
+			break
+			break
+
+	logfile.write("\n* %s\n" % string)
+	logfile.write("    * Triggered by: `%s` (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
+
+	logfile.writelines(original[line_offset:])
+	logfile.close()
