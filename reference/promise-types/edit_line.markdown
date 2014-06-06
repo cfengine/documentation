@@ -21,87 +21,60 @@ external attributes.
 A typical file editing stanza has the elements in the following example:
 
 ```cf3
-######################################################################
-#
-# File editing
-#
-######################################################################
-
 body common control
-
 {
-version => "1.2.3";
-bundlesequence  => { "outerbundle"  };
+  version => "1.2.3";
+  bundlesequence  => { "outerbundle"  };
 }
 
-########################################################
-
 bundle agent outerbundle
-
 {
 files:
 
   "/home/mark/tmp/cf3_test"
-
        create    => "true",     # Like autocreate in cf2
        edit_line => inner_bundle;
 }
 
-########################################################
-
 bundle edit_line inner_bundle
-  {
+{
   vars:
 
-   "who" string => "SysAdmin John"; # private variable in bundle
+    "who" string => "SysAdmin John"; # private variable in bundle
 
   insert_lines:
     "/* This file is maintained by CFEngine (see $(who) for details) */",
     location => first_line;
   
   replace_patterns:
-
    # replace shell comments with C comments
 
    "#(.*)"
-
       replace_with => C_comment,
      select_region => MySection("New section");
 
   reports:
       "This is file $(edit.filename)";
-  }
-
-########################################
-# Bodies for the library ...
-########################################
+}
 
 body replace_with C_comment
-
 {
-replace_value => "/* $(match.1) */"; # backreference
-occurrences => "all";          # first, last all
+  replace_value => "/* $(match.1) */"; # backreference
+  occurrences => "all";          # first, last all
 }
-
-########################################################
 
 body select_region MySection(x)
-
 {
-select_start => "\[$(x)\]";
-select_end => "\[.*\]";
+  select_start => "\[$(x)\]";
+  select_end => "\[.*\]";
 }
-
-########################################################
 
 body location first_line
-
 {
-before_after => "before";
-first_last => "first";
-select_line_matching => ".*";
+  before_after => "before";
+  first_last => "first";
+  select_line_matching => ".*";
 }
-
 ```
 
 There are several things to notice:
@@ -174,14 +147,11 @@ files:
        action       => background;
 }
 
-#########################################################
-
 body changes lay_a_tripwire
-
 {
-hash           => "md5";
-report_changes => "content";
-update         => "yes";
+  hash           => "md5";
+  report_changes => "content";
+  update         => "yes";
 }
 ```
 
