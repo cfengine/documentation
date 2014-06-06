@@ -105,7 +105,7 @@ useful. Simply take an existing `sketch.json` file such as the one below and mod
 
 Now `main.cf` will start with the original bundle, but we'll modify it.
 
-```cfengine
+```cf3
 body file control
 {
       namespace => "cfdc_users";
