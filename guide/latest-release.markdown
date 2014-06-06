@@ -2,7 +2,7 @@
 layout: default
 title: Latest Release
 published: true
-sorting: 1
+sorting: 2
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions]
 ---
 
