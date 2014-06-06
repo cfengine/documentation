@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reports
+title: Reporting
 published: true
 sorting: 8 
 tags: [overviews, reports, reporting]
@@ -34,9 +34,10 @@ management, compliance reporting, system diagnostics, and capacity planning.
 
 Access to the data is provided through two ways:
 
-* the Mission Portal console
-* the Enterprise Report API.
+* The [Mission Portal console][Reporting in Mission Portal]
+* The [Enterprise Report API][Enterprise API Overview].
 
+See Also: [Enterprise Reporting][Enterprise Reporting]
 
 ### Command-Line Reporting
 
