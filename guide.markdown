@@ -9,7 +9,7 @@ CFEngine is a configuration management system that provides a framework for auto
 
 CFEngine is decentralized and highly scalable. It is powered by autonomous agents that can continuously monitor, self-repair, and update or restore an entire IT system every five minutes, with negligible impact on system resources or performance.
 
-For many users, CFEngine is simply a configuration tool – i.e. software for deploying and patching systems according to a policy. Policy is described using promises. Every statement in CFEngine 3 is a promise to be kept at some time or location. More than this, however, CFEngine is not like other automation tools that "roll out" an image of some software once and hope for the best. Every promise that you make in CFEngine is continuously verified and maintained. It is not a one-off operation, but a process that can repairing itself should anything deviate from the policy.
+See Also: [Introduction and System Overview][Introduction and System Overview]
 
 ## CFEngine Features ##
 
@@ -21,12 +21,11 @@ For many users, CFEngine is simply a configuration tool – i.e. software for de
 
 ## CFEngine Guide ##
 
-* [Introduction][Introduction]
+* [Introduction and System Overview][Introduction and System Overview]
+* [Latest Release][Latest Release]
 * [Getting Started][Getting Started]
-* [System Overview][System Overview]
-	* [Latest Release][Latest Release]
-* [Installing CFEngine][Installing CFEngine]
-* [Configure CFEngine][Configure CFEngine]
+* [Installing and Configuring CFEngine][Installing and Configuring CFEngine]
+* [Policy Server Overview][Policy Server Overview]
 * [Writing Policy and Promises][Writing Policy and Promises]
 	* [About Policies and Promises][About Policies and Promises]
 	* [Writing Policy][Writing Policy]
@@ -40,6 +39,7 @@ For many users, CFEngine is simply a configuration tool – i.e. software for de
    * [Reporting in Mission Portal][Getting Started With CFEngine Enterprise]
    * [Enterprise Scalability][Enterprise Scalability]
 * [Reports][Reports]
+* [Design Center Overview][Design Center Overview]
 * [Glossary][Glossary]
 * [FAQ][FAQ]
 * [Additional Resources][Additional Resources]
