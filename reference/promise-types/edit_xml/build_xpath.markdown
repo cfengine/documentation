@@ -20,7 +20,7 @@ XPath.
     bundle edit_xml example
     {
     build_xpath:
-       "/Server/Service/Engine/Host[ @name=\"cfe_host\" | Alias = cfe_alias ]";
+       "/Server/Service/Engine/Host";
     }
 ```
 
@@ -30,3 +30,8 @@ XPath. The supported syntax used in building an XPath is currently
 limited to a simple and compact format, as shown in the above example.
 The XPath must begin with '/', as it is verified and built using an
 absolute path, from the root node of the document.
+
+The resulting document can then be further modified using `insert_tree`,
+`set_text`, `set_attribute` etc promises. Using predicate statements to set
+attributes or text values directly via build_xpath can lead to non-convergent
+behavior, and is discouraged.
