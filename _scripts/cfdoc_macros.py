@@ -138,7 +138,7 @@ def promise_attribute(parameters, config):
 	promise_types = config["syntax_map"]["promiseTypes"]
 	body_types = config["syntax_map"]["bodyTypes"]
 	
-	if header[2] == "Attributes":
+	if header[2].find("Attributes") != -1:
 		# assumption for promise type definition
 		# header[1] = promise type
 		# header[2] = "Attributes"
