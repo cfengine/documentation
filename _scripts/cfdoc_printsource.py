@@ -135,7 +135,7 @@ def print_pages(pages, level, out_file, new_pages):
 			out_file.write("layout: printable\n")
 			out_file.write("title: \"The Complete " + page.title + "\"\n")
 			out_file.write("published: true\n")
-			out_file.write("alias: printable-" + page.alias + "\n")
+			out_file.write("alias: %s-printable.html\n" % page.alias[:page.alias.rfind('.')])
 			out_file.write("---\n")
 			out_file.write("\n")
 			out_file.write("[%CFEngine_TOC%]\n")
