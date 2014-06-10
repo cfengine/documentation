@@ -121,7 +121,7 @@ control][file control#inputs].
 body common control
 {
         bundlesequence => { "file_remover" };
-        inputs => { "$(sys.inputdir)/lib/$(sys.cf_version_major).$(sys.cf_version_minor)/stdlib.cf" };
+        inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 ```
 
@@ -133,7 +133,7 @@ are typically relative to the policy file itself.
 bundle file_remover_control
 {
   vars:
-    "inputs" slist => { "$(this.promise_dir)/lib/3.6/stdlib.cf" };
+    "inputs" slist => { "$(this.promise_dir)/$(sys.local_libdir)/stdlib.cf" };
 }
 body file control
 {
