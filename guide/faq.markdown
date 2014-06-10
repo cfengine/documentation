@@ -49,6 +49,18 @@ installation.
 PostgreSQL is highly configurable, and you should have some in-house expertise
 to properly configure your database installation.
 
+#### What are the requirements for installing CFEngine Enterprise? ####
+
+##### General Information ##### 
+
+* [Requirements for CFEngine][Pre-Installation Checklist#Requirements for CFEngine]
+* [Supported Platforms and Versions][Supported Platforms and Versions]
+
+##### Users and Permissions #####
+
+* CFEngine Enterprise makes an attempt to create the users cfapache and cfpostgres, as well as group cfapache when installing 3.6.0. The server must allow creation of these users and groups.
+
+
 ### Enterprise Scalability ###
 
 See: [Enterprise Scalability][Enterprise Scalability]
