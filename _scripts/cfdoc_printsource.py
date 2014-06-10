@@ -165,6 +165,7 @@ def print_page(page_file, out_file, level):
 			continue
 		if line[:3] == '```':
 			in_code = not in_code
+			out_file.write(line)
 			continue
 		if in_body:
 			if not in_code:
