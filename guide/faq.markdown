@@ -6,8 +6,22 @@ sorting: 9
 tags: [getting started, installation, enterprise, faq]
 ---
 
-* [Enterprise Installation](#enterprise-installation)
-* [Enterprise Scalability](#enterprise-scalability)
+* [Enterprise Installation][FAQ#Enterprise Installation and Configuration]
+	* [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise?]
+	* [Can I use an existing PostgreSQL installation?][FAQ#Can I use an existing PostgreSQL installation?]
+	* [What is the system user for the CFEngine dedicated PostgreSQL database?][FAQ#What is the system user for the CFEngine dedicated PostgreSQL database?]
+	* [Do I need experience with PostgreSQL?][FAQ#Do I need experience with PostgreSQL?]
+* [Enterprise Scalability][FAQ#Enterprise Scalability]
+* [Policy Distribution][FAQ#Policy Distribution]
+	* [I have added new files in masterfiles but my remote clients are not getting updates.][FAQ#I have added new files in masterfiles but my remote clients are not getting updates.]
+	* [I have updated some non policy files and changes are not distributed to clients.][FAQ#I have updated some non policy files and changes are not distributed to clients.]
+* [Manual Execution][Manual Execution]
+	* [How do I run a standalone policy file?][FAQ#How do I run a standalone policy file?]
+	* [How do I run a specific bundle?][FAQ#How do I run a specific bundle?]
+	* [How do I define a class for a single run?][FAQ#How do I define a class for a single run?]
+* [Agent Email Reports][FAQ#Agent Email Reports]
+	* [How do I set the email where agent reports are sent?][FAQ#How do I set the email where agent reports are sent?]
+	* [How do I disable agent email output?][FAQ#How do I disable agent email output?]
 
 ### Enterprise Installation and Configuration ###
 
@@ -37,16 +51,18 @@ to properly configure your database installation.
 
 ### Enterprise Scalability ###
 
+See: [Enterprise Scalability][Enterprise Scalability]
+
 ### Policy Distribution ###
 
-#### I  have added new files in masterfiles but my remote clients are not getting updates. ####
+#### I have added new files in masterfiles but my remote clients are not getting updates. ####
 
 Check that the files you expect to be distributed have matching `leaf_name` pattern.
 
 In CFEngine 3.6 masterfiles policy framework this is defined as
 `input_name_patterns` in the `update_def` bundle.
 
-#### I have updated some non policy files (for example templates) and changes are not distributed to clients. ###
+#### I have updated some non policy files and changes are not distributed to clients. ###
 
 `cf_promises_validated` gates client updates. This file is only updated on the
 policy server when new policy is validated. Edits to non policy files do not
