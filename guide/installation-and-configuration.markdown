@@ -14,9 +14,11 @@ See [General Installation][General Installation] for more a more detailed guide 
 
 See also: [Pre-Installation Checklist][Pre-Installation Checklist], [Supported Platforms][Supported Platforms]
 
-## Configuration ##
+## Setup & Configuration ##
 
 Additional options for configuring CFEngine policy are as follows:
+
+* [Policy Server Setup][Policy Server Setup]
 
 * [Controlling Frequency]
 Learn how to control frequency settings for verifying CFEngine policy.

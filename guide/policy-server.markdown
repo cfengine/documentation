@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Policy Server Overview
+title: The Policy Server
 sorting: 5
 published: true
-tags: [overviews, system overview, policy server]
+tags: [guide, policy server]
 ---
 
 ## What is the Policy Server? 
@@ -12,52 +12,13 @@ The policy server makes important files available to client machines.
 
 The policy server itself only makes important files available on the network. It is up to the clients for which the server is responsible to pull the files themselves. The server will not do this on behalf of its clients.
 
-### Basic Policy Server Setup ###
+### Installation and Configuration ###
 
-There are two essential things that need to be taken care of when setting up a simple policy server:
+* [General Installation][General Installation]
+* [Policy Server Setup][Policy Server Setup]
+* [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise?]
 
-1. Bootstrapping
-2. Configuration
-
-#### 1. Bootstrap the Policy Server ####
-
-The Policy Server must be bootstrapped to itself. 
-
-1. Find the IP address of your Policy Server:
-
-		
-		$ ifconfig
-		
-
-2. Run the bootstrap command:
-
-		
-		$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
-		
-
-Note: The bootstrap command must also be run on any client attaching itself to this server, using the ip address of the policy server (i.e. exactly the same as the command run on the policy server itself).
-
-#### 2. Basic Policy Server Configuration ####
-
-##### def.cf #####
-
-1. Find the following line:
-		
-		"domain"  string    => "your.domain.here",
-		
-2. Change **your.domain.here** to your domain name, e.g. **example.com**.
-
-##### controls/cf_execd.cf #####
-
-1. Find the following line:
-		
-		mailto => "some-admin-list@me.local";
-		
-2. Change **some-admin-list@me.local** to your email address.
-
-Note: On some systems this modification should hopefully work without needing to make any additional changes elsewhere. However, any emails sent from the system might also end up flagged as spam and sent directly to a user's junk mailbox.
-
-##### Configuring a Promise in promises.cf #####
+### Adding Promises to promises.cf ###
 
 Assuming there is a promise called "**hello_world**" defined in a file located at **/var/cfengine/masterfiles/hello_world.cf**:
 
@@ -112,3 +73,6 @@ Bundles and promises can be included in files outside of **promises.cf**.
 		
 
 Note: It can take up to 10 minutes for these changes to propogate across the entire system.
+
+
+

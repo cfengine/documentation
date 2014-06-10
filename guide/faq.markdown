@@ -9,7 +9,15 @@ tags: [getting started, installation, enterprise, faq]
 * [Enterprise Installation](#enterprise-installation)
 * [Enterprise Scalability](#enterprise-scalability)
 
-### Enterprise Installation ###
+### Enterprise Installation and Configuration ###
+
+#### What steps should I take after installing CFEngine Enterprise? ####
+
+There are general steps to be taken outlined in [Policy Server Setup][Policy Server Setup]. 
+
+In addition to this, Enterprise 3.6.0 uses the local mail relay, and it is assumed that the server where CFEngine Enterprise is installed on has proper mail setup. 
+
+The default FROM email for all emails sent from the Mission Portal is currently admin@organization.com. This can be changed on the CFE Server in /var/cfengine/httpd/htdocs/application/config/appsettings.php:$config['appemail'].
 
 #### Can I use an existing PostgreSQL installation? ####
 
