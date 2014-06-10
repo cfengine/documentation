@@ -58,7 +58,7 @@ Many users create a top level templates directory for global
 template distribution. We made it easy by creating a `templates/` directory 
 that's always copied for you.
 
-### cfe_internal ### 
+### cfe_internal ###
 
 The `cfe_internal/` directory contains policies that manage how CFEngine
 runs, much of this is in relation to the Enterprise version.
@@ -118,44 +118,44 @@ which is included in the reference manual. Of special note: the
 `standard_services` has been improved to make it more dynamic, and now has
 support for systemd, sysvinitd, sysvservice, and chkconfig. New convenianence
 bundles and bodies for common patterns have been added including
-[dir_sync][Files Bundles and Bodies#dir_sync]
-[file_copy][Files Bundles and Bodies#file_copy]
-[file_empty][Files Bundles and Bodies#file_empty]
-[file_hardlink][Files Bundles and Bodies#file_hardlink]
-[file_link][Files Bundles and Bodies#file_link]
-[file_make][Files Bundles and Bodies#file_make]
-[file_mustache_jsonstring][Files Bundles and Bodies#file_mustache_jsonstring]
-[file_mustache][Files Bundles and Bodies#file_mustache]
-[file_tidy][Files Bundles and Bodies#file_tidy]
-[converge]Files Bundles and Bodies#converge]
-[fstab_option_editor][Files Bundles and Bodies#fstab_option_editor]
-[insert_ini_section][Files Bundles and Bodies#insert_ini_section]
-[prepend_if_no_line][Files Bundles and Bodies#prepend_if_no_line]
-[resolvconf_o][Files Bundles and Bodies#resolvconf_o]
-[set_line_based][Files Bundles and Bodies#set_line_based]
-[fstab_options][Files Bundles and Bodies#fstab_options]
-[bigger_than][Files Bundles and Bodies#bigger_than]
-[linkfrom][Files Bundles and Bodies#linkfrom]
-[package_absent][Packages Bundles and Bodies#package_absent]
-[package_latest][Packages Bundles and Bodies#package_latest]
-[package_present][Packages Bundles and Bodies#package_present]
-[package_specific_absent][Packages Bundles and Bodies#package_specific_absent]
-[package_specific_latest][Packages Bundles and Bodies#package_specific_latest]
-[package_specific][Packages Bundles and Bodies#package_specific]
-[package_specific_present][Packages Bundles and Bodies#package_specific_present]
-[brew][Packages Bundles and Bodies#brew]
-[npm][Packages Bundles and Bodies#npm]
-[pip][Packages Bundles and Bodies#pip]
-[process_kill][Process Bundles and Bodies#process_kill]
-[by_owner][Processes Bundles and Bodies#by_owner]
-[logrotate][Common Bodies and Bundles#logrotate]
-[prunedir][Common Bodies and Bundles#prunedir]
-[cmerge][Common Bodies and Bundles#cmerge]
-[rm_rf_depth][Common Bodies and Bundles#rm_rf_depth]
-[url_ping][Common Bodies and Bundles#url_ping]
-[setuidgid_dir][Commands Bundles and Bodies#setuidgid_dir]
-[setuid_gid_umask][Commands Bundles and Bodies#setuid_gid_umask]
-[system_owned][Files Bundles and Bodies#system_owned]
+* [dir_sync][Files Bundles and Bodies#dir_sync]
+* [file_copy][Files Bundles and Bodies#file_copy]
+* [file_empty][Files Bundles and Bodies#file_empty]
+* [file_hardlink][Files Bundles and Bodies#file_hardlink]
+* [file_link][Files Bundles and Bodies#file_link]
+* [file_make][Files Bundles and Bodies#file_make]
+* [file_mustache_jsonstring][Files Bundles and Bodies#file_mustache_jsonstring]
+* [file_mustache][Files Bundles and Bodies#file_mustache]
+* [file_tidy][Files Bundles and Bodies#file_tidy]
+* [converge]Files Bundles and Bodies#converge]
+* [fstab_option_editor][Files Bundles and Bodies#fstab_option_editor]
+* [insert_ini_section][Files Bundles and Bodies#insert_ini_section]
+* [prepend_if_no_line][Files Bundles and Bodies#prepend_if_no_line]
+* [resolvconf_o][Files Bundles and Bodies#resolvconf_o]
+* [set_line_based][Files Bundles and Bodies#set_line_based]
+* [fstab_options][Files Bundles and Bodies#fstab_options]
+* [bigger_than][Files Bundles and Bodies#bigger_than]
+* [linkfrom][Files Bundles and Bodies#linkfrom]
+* [package_absent][Packages Bundles and Bodies#package_absent]
+* [package_latest][Packages Bundles and Bodies#package_latest]
+* [package_present][Packages Bundles and Bodies#package_present]
+* [package_specific_absent][Packages Bundles and Bodies#package_specific_absent]
+* [package_specific_latest][Packages Bundles and Bodies#package_specific_latest]
+* [package_specific][Packages Bundles and Bodies#package_specific]
+* [package_specific_present][Packages Bundles and Bodies#package_specific_present]
+* [brew][Packages Bundles and Bodies#brew]
+* [npm][Packages Bundles and Bodies#npm]
+* [pip][Packages Bundles and Bodies#pip]
+* [process_kill][Process Bundles and Bodies#process_kill]
+* [by_owner][Processes Bundles and Bodies#by_owner]
+* [logrotate][Common Bodies and Bundles#logrotate]
+* [prunedir][Common Bodies and Bundles#prunedir]
+* [cmerge][Common Bodies and Bundles#cmerge]
+* [rm_rf_depth][Common Bodies and Bundles#rm_rf_depth]
+* [url_ping][Common Bodies and Bundles#url_ping]
+* [setuidgid_dir][Commands Bundles and Bodies#setuidgid_dir]
+* [setuid_gid_umask][Commands Bundles and Bodies#setuid_gid_umask]
+* [system_owned][Files Bundles and Bodies#system_owned]
 
 ## update.cf ##
 
@@ -183,7 +183,9 @@ to watch our for when upgrading.
 
 ## Upgrade Gotchas ##
 
-### Array Keys are not iterated in the decalred order any more ###
+### General ###
+
+#### Array Keys are not iterated in the decalred order any more ####
 
 The order of results returned by getindices function is not necessarily
 returned in the order defined.
@@ -220,7 +222,7 @@ If the resulting list order is important please consider the `sort`() and
 `reverse`() functions.
 
 
-### Function Caching ###
+#### Function Caching ####
 
 3.6.0 introduces function
 caching(https://docs.cfengine.com/docs/master/reference-functions.html#function-caching)
@@ -234,7 +236,7 @@ after an action has been taken consider guarding the function call to only be
 evaluated after a pre-conditional promise using conventional class guards,
 or the `ifvarclass` and `depends_on` attributes.
 
-### Files considered by update.cf have moved and changed ###
+#### Files considered by update.cf have moved and changed ####
 
 Previously `body file_select u_input_files` controlled which files were
 considered when performing a policy update. That list of extensions has moved
@@ -242,9 +244,9 @@ to `update_def.input_name_patterns`. '*.conf', and '*.mustache' files have
 been added to the default list.
 FAQ: https://docs.cfengine.com/docs/master/guide-faq.html#i-have-added-new-files-in-masterfiles-but-my-remote-clients-are-not-getting-updates
 
-## Enterprise Users ##
+### Enterprise Users ###
 
-### Options controlling which variables to report have moved and changed ###
+#### Options controlling which variables to report have moved and changed ####
 
 In 3.6 we begin using tags to identify which variables and classes to report
 on. `report_data_select` has moved from `controls/cf_serverd.cf` to
@@ -265,7 +267,7 @@ any questions please contact support.
 * `promise_repaired_log_include`
 * `promise_repaired_log_exclude`
 
-### Host licenses paid deprecated ###
+#### Host licenses paid deprecated ####
 
 This option was deprecated in CFEngine 3.5 and is no longer valid syntax.
 
