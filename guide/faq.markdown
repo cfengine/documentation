@@ -11,6 +11,7 @@ tags: [getting started, installation, enterprise, faq]
 	* [Can I use an existing PostgreSQL installation?][FAQ#Can I use an existing PostgreSQL installation?]
 	* [What is the system user for the CFEngine dedicated PostgreSQL database?][FAQ#What is the system user for the CFEngine dedicated PostgreSQL database?]
 	* [Do I need experience with PostgreSQL?][FAQ#Do I need experience with PostgreSQL?]
+	* [What are the requirements for installing CFEngine Enterprise?][FAQ#What are the requirements for installing CFEngine Enterprise?]
 * [Enterprise Scalability][FAQ#Enterprise Scalability]
 * [Policy Distribution][FAQ#Policy Distribution]
 	* [I have added new files in masterfiles but my remote clients are not getting updates.][FAQ#I have added new files in masterfiles but my remote clients are not getting updates.]
@@ -51,7 +52,7 @@ to properly configure your database installation.
 
 #### What are the requirements for installing CFEngine Enterprise? ####
 
-##### General Information ##### 
+##### General Information #####
 
 * [Requirements for CFEngine][Pre-Installation Checklist#Requirements for CFEngine]
 * [Supported Platforms and Versions][Supported Platforms and Versions]
