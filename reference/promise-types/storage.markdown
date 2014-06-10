@@ -48,7 +48,7 @@ Storage promises refer to disks and filesystem properties.
 
 ***
 
-## Attributes
+## Attributes ##
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 

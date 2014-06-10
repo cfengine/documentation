@@ -34,7 +34,7 @@ Messages outputted from report promises are prefixed with the letter R to distin
 
 ****
 
-## Attributes
+## Attributes ##
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 

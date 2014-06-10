@@ -24,7 +24,7 @@ Note: The term class and context are sometimes used interchangeably.
 
 ***
 
-## Attributes
+## Attributes ##
 
 ### and
 

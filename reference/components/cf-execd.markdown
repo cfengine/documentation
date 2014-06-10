@@ -17,7 +17,7 @@ network.
 `cf-execd` keeps the promises made in `common` bundles, and is affected by
 `common` and `executor` control bodies.
 
-## Command reference
+## Command reference ##
 
 [%CFEngine_include_snippet(cf-execd.help, [\s]*--[a-z], ^$)%]
 

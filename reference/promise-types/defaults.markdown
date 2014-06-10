@@ -89,7 +89,7 @@ reports:
 
 ***
 
-## Attributes
+## Attributes ##
 
 ### if_match_regex
 

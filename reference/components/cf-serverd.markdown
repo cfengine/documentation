@@ -17,7 +17,7 @@ requests.
 `cf-serverd` keeps the promises made in `common` and `server` bundles, and is
 affected by `common` and `server` control bodies.
 
-## Command reference
+## Command reference ##
 
 [%CFEngine_include_snippet(cf-serverd.help, [\s]*--[a-z], ^$)%]
 

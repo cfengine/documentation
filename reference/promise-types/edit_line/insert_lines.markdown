@@ -74,7 +74,7 @@ Or:
 
 ****
 
-## Attributes
+## Attributes ##
 
 ### expand_scalars
 

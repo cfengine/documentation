@@ -116,7 +116,7 @@ promises will override less specific ones.
 
 ****
 
-## Attributes
+## Attributes ##
 
 
 ### admit_hostnames
