@@ -100,6 +100,21 @@ informational output like successful repairs.
 cf-agent -KIf ./my_standalone_policy.cf
 ```
 
+#### Why do I get Undefined body when I try to run my policy ###
+
+`cf-promises -f ./large-files.cf`:
+```
+./large-files.cf:14:0: error: Undefined body tidyfiles with type delete
+./large-files.cf:16:0: error: Undefined body recurse with type depth_search
+```
+
+The above errors indicate that the `tidyfile` and `recurse` bodies are not able
+to be found by CFEngine. This is because they are not found in the file or in
+one of the files it includes. Either define the body within the same policy
+file or include the file that defines the body using inputs in either [body
+common control][Components and Common Control#inputs] or [body file
+control][file control#inputs].
+
 #### How do I run a specific bundle ####
 
 A specific bundle can be activated by passing the `-b` or `--bundlesequence`
