@@ -179,5 +179,6 @@ def print_page(page_file, out_file, level):
 
 	out_file.write("\n")
 	out_file.write("<!--- End include: `" + page_file + "` -->\n")	
+	out_file.write("\n--------\n\n")
 	out_file.write("\n")
 	return headers
