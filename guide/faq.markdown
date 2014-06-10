@@ -104,16 +104,42 @@ cf-agent -KIf ./my_standalone_policy.cf
 
 `cf-promises -f ./large-files.cf`:
 ```
-./large-files.cf:14:0: error: Undefined body tidyfiles with type delete
+./large-files.cf:14:0: error: Undefined body tidy with type delete
 ./large-files.cf:16:0: error: Undefined body recurse with type depth_search
 ```
 
-The above errors indicate that the `tidyfile` and `recurse` bodies are not able
+The above errors indicate that the `tidy` and `recurse` bodies are not able
 to be found by CFEngine. This is because they are not found in the file or in
 one of the files it includes. Either define the body within the same policy
 file or include the file that defines the body using inputs in either [body
 common control][Components and Common Control#inputs] or [body file
 control][file control#inputs].
+
+**Example: Add stdlib via body common control**
+
+```cf3
+body common control
+{
+        bundlesequence => { "file_remover" };
+        inputs => { "$(sys.inputdir)/lib/$(sys.cf_version_major).$(sys.cf_version_minor)/stdlib.cf" };
+}
+```
+
+**Example: Add stdlib via body file control**
+Body file control allows you to build modular policy. Body file control inputs
+are typically relative to the policy file itself.
+
+```cf3
+bundle file_remover_control
+{
+  vars:
+    "inputs" slist => { "$(this.promise_dir)/lib/3.6/stdlib.cf" };
+}
+body file control
+{
+  inputs => { @(file_remover_control.inputs) };
+}
+```
 
 #### How do I run a specific bundle ####
 
