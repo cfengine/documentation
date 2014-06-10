@@ -117,7 +117,8 @@ our documentation system to provide a rendered version of the standard library
 which is included in the reference manual. Of special note: the
 `standard_services` has been improved to make it more dynamic, and now has
 support for systemd, sysvinitd, sysvservice, and chkconfig. New convenianence
-bundles and bodies for common patterns have been added including
+bundles and bodies for common patterns have been added including:
+
 * [dir_sync][Files Bundles and Bodies#dir_sync]
 * [file_copy][Files Bundles and Bodies#file_copy]
 * [file_empty][Files Bundles and Bodies#file_empty]
