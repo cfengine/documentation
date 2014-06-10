@@ -12,6 +12,12 @@ The policy server makes important files available to client machines.
 
 The policy server itself only makes important files available on the network. It is up to the clients for which the server is responsible to pull the files themselves. The server will not do this on behalf of its clients.
 
+### Installation and Configuration ###
+
+* [General Installation][General Installation]
+* [Policy Server Setup][Policy Server Setup]
+* [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise?]
+
 ### Adding Promises to promises.cf ###
 
 Assuming there is a promise called "**hello_world**" defined in a file located at **/var/cfengine/masterfiles/hello_world.cf**:
@@ -68,5 +74,5 @@ Bundles and promises can be included in files outside of **promises.cf**.
 
 Note: It can take up to 10 minutes for these changes to propogate across the entire system.
 
-See Also: [Policy Server Setup][Policy Server Setup]
+
 
