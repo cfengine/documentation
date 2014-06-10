@@ -169,12 +169,10 @@ def print_page(page_file, out_file, level):
 			continue
 		if in_body:
 			if not in_code:
-				if line[0] == '#': # increase indent level for header in page
-					line = '#' * (level - 1) + line
+				if line[0] == '#': # increase indent level for header in page, up to 4 more levels
+					line = '#' * max(level - 1, 4) + line
 					if (line.find("exclude-from-toc") == -1 and line.rstrip()[-1] != '#'):
 						headers.append(line.lstrip().rstrip())
-					else:
-						print "Excluding %s from TOC for printable page" % line
 			out_file.write(line)
 
 	out_file.write("\n")
