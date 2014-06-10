@@ -28,27 +28,12 @@ import cfdoc_linkresolver as linkresolver
 import cfdoc_macros as macros
 import cfdoc_printsource as printsource
 import cfdoc_git as git
+import cfdoc_qa as qa
 import sys
 import os
-from time import gmtime, strftime
 
 config = environment.validate()
-config["log_file"] = config["markdown_directory"] + "/cfdoc_log.markdown"
-if os.path.exists(config["log_file"]):
-	os.remove(config["log_file"])
-logfile = open(config["log_file"], "w")
-logfile.write("---\n")
-logfile.write("layout: printable\n")
-logfile.write("title: \"Documentation Issues\"\n")
-logfile.write("published: true\n")
-logfile.write("alias: cfdoc_log.html\n")
-logfile.write("---\n")
-logfile.write("\n")
-logfile.write("Documentation generated at %s GMT\n" % strftime("%Y-%m-%d %H:%M:%S", gmtime()))
-logfile.write("\n")
-logfile.write("# Logging\n")
-logfile.write("\n")
-logfile.close()
+qa.initialize(config)
 
 try:
 	git.createData(config)

@@ -22,6 +22,26 @@
 
 import os
 import sys
+from time import gmtime, strftime
+
+def initialize(config):
+	config["log_file"] = config["output_directory"] + "/cfdoc_log.markdown"
+	if os.path.exists(config["log_file"]):
+		os.remove(config["log_file"])
+	logfile = open(config["log_file"], "w")
+	logfile.write("---\n")
+	logfile.write("layout: printable\n")
+	logfile.write("title: \"Documentation Issues\"\n")
+	logfile.write("published: true\n")
+	logfile.write("alias: cfdoc_log.html\n")
+	logfile.write("---\n")
+	logfile.write("\n")
+	logfile.write("Documentation generated at %s GMT\n" % strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+	logfile.write("\n")
+	logfile.write("# Logging\n")
+	logfile.write("\n")
+	logfile.close()
+
 
 def OpenLogFile(config):
 	logfile = open(config["log_file"], "a")
