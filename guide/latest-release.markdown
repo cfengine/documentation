@@ -18,4 +18,8 @@ These are the support platforms for the current release.
 * [Upgrade Instructions][Upgrade Instructions]  
 Learn how to upgrade from your most recent version of CFEngine.
 
+* [Policy Framework Updates][Policy Framework Updates]
+
+3.6 introduces significant changes to the masterfiles policy framework. Read more about these changes.
+
 
