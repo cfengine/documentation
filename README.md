@@ -393,11 +393,11 @@ As a general note, avoiding abbreviations provides better readability.
 
 * follow the [Policy Style Guide](manuals/policy-style.markdown)
   in examples and code snippets
-* always run it through Pygments plus the appropriate lexer
+* use the appropriate lexer for syntax highlighting via Pygments
 
-Most important are the `cf3` lexer, as well as `bash`, `console`,
-`diff`, `shell-session` and `sql`. But Jekyll supports
-[many more lexers](http://pygments.org/docs/lexers/)
+  Most important are the `cf3` lexer, as well as `bash`, `console`,
+  `diff`, `shell-session` and `sql`. But Jekyll supports
+  [many more lexers](http://pygments.org/docs/lexers/)
 
 * avoid custom color schemes and hand-coded HTML
 * document the example after the example code
@@ -405,24 +405,122 @@ Most important are the `cf3` lexer, as well as `bash`, `console`,
 The structure of the technical documentation about CFEngine attributes, 
 functions etc is as follows:
 
+### Promise Attributes
+
+Promise attributes are documented within the respective promise types's reference
+page. Level-3 headers are used to start a new attribute (if the promise attribute
+requires a body template, then see next section).
+
+    ----
+    title: promise-type
+    ----
+    
+    ...
+
+    ### Promise Attribute
+
+    **Description:** One line summary.
+
+    Longer explanation on what it does and why it is useful,
+    over multiple paragraphs if necessary.
+
+    [%CFEngine_promise_attribute(default value)%]
+
+    More information about special input values.
+
+    **Example:**
+
+    ```f3
+        Some code with 
+        cf3 markers
+        for syntax highlighting
+    ```
+
+    If the example requires explanation, do it here. Consider using
+    CFEngine comments within the code directly to explain. Preferably,
+    use the `include_snippet` macro (see above) to inject code from an external
+    .cf file that is known to run and produce the expected output.
+
+    **Notes:**
+    
+    Additional information, spanning as many paragraphs as necessary, but mind
+    the style guide.
+    
+    **See also:** `related_attribute`, [`attribute`][other_page#attribute]
+
+### Bodies
+
+For promise attributes with a body type, you can start with an example of that
+body type, with the most relevant attributes set to self-explanatory values.
+
+    ### attribute
+    
+    **Description:** One line summary.
+    
+    Longer explanation on what this body template is used for,
+    over multiple paragraphs if necessary.
+    
+    [%CFEngine_promise_attribute()%]
+    
+    **Example:**
+
+    ```cf3
+    body promise_attribute example
+    {
+       attribute1 => "value1";
+       attribute2 => "value2";
+    }
+    ```
+
+Start explaining each attribute in the body then using level4-headings,
+following the style for promise attributes as explained above. Examples
+should be a code snippet at this point, no need for a complete piece of
+runnable code.
+
 ### Functions
 
 No header necessary - there is one function per page, and the page's
 title is the name of the function.
 
-    **Prototype:** `function(named, parameters)`
+    [%CFEngine_function_prototype(parameter1, parameters2, ...)%]
     
-    **Description:** Returns something based on `named` and `parameters`.
-
-    The first line of the  description is a single line of text, summarizing
-    what the function does and references the most important parameters by
-    name.
-
+    **Description:** Returns something based on `parameter1` and `parameter2`.
+    
     Longer explanation on what it does and why it is useful then afterwards.
+    
+    Summarize what the function does and reference the most important parameters by
+    name, typical use cases etc.
 
     Over multiple paragraphs if necessary.
 
-    **Return type:** `datatype`
+    [%CFEngine_function_attributes(parameter1, parameter2)%]
+
+    Explain important attribute values, correlations and limitations.
+
+    **Example:**
+
+    ```cf3
+        Some code with 
+        cf3 markers
+        for syntax highlighting
+    ```
+
+    If the example requires explanation, do it here. Consider using
+    CFEngine comments within the code directly to explain, and the `include_snippet`
+    macro to inject code from an external .cf file that is known to work.
+
+    **Notes:**
+    
+    Additional information, spanning as many paragraphs as necessary, but mind
+    the style guide.
+    
+    **See also:** `related_function()`, `related_attribute`
+
+
+**Note:** The `function_attributes` macro will generate a simple enumeration of all attributes,
+with the types and allowed in put range coming from the syntax map, and the names as
+provided. If you want to explain each attribute directly after it being listed, don't
+use the macro, and list the attributes explicitly:
 
     **Arguments:**
     
@@ -434,106 +532,6 @@ title is the name of the function.
     
     This argument does that.
 
-    **Example:**
-
-    ```cf3
-        Some code with 
-        cf3 markers
-        for syntax highlighting
-    ```
-
-    If the example requires explanation, do it here. Consider using
-    CFEngine comments within the code directly to explain.
-
-    **Notes:**
-    
-    Additional information, spanning as many paragraphs as necessary, but mind
-    the style guide.
-    
-    **See also:** [`related_function()`][related_function]
-
-### Promise Attributes
-
-Promise attributes are documented within the respective promise types's reference
-page. Level-3 headers are used to start a new attribute:
-
-    ### Promise Attribute
-
-    **Description:** One line summary.
-
-    Longer explanation on what it does and why it is useful,
-    over multiple paragraphs if necessary.
-
-    Specifics about "input range" in the notes.
-
-    **Type:** `datatype`, (menu option) or `body promise_attribute`
-
-If the promise attribute has a body type, then skip the rest, and see next section.
-
-    **Allowed input range:** `value range` or
-
-    ```cf3
-        List
-        of
-        menu
-        options
-    ```
-    In case of menu option types, make sure you explain what each value does.
-
-    **Default value:** `value` (if applicable)
-
-    **Example:**
-
-    ```f3
-        Some code with 
-        cf3 markers
-        for syntax highlighting
-    ```
-
-    If the example requires explanation, do it here. Consider using
-    CFEngine comments within the code directly to explain.
-
-    **Notes:**
-    
-    Additional information, spanning as many paragraphs as necessary, but mind
-    the style guide.
-    
-    **See also:** [`attribute`][thispage#attribute]
-
-### Bodies
-
-For promise attributes with a body type, you can start with an example of that
-body type, with the most relevant attributes set to self-explanatory values.
-
-    ```cf3
-    body promise_attribute example
-    {
-       attribute1 => "value1";
-       attribute2 => "value2";
-    }
-    ```
-
-Start explaining each attribute in the body then using level4-headings:
-
-    #### attribute1
-    
-    **Description:**
-    
-    **Type:** `datatype`
-    
-    **Allowed input range:**
-    
-    **Default value:**
-    
-    **Example:**
-    
-    **Notes:**
-    
-    **See also:**
-
-The sections follow the style for promise attributes, see above. Examples
-should be a code snippet at this point, no need for a complete piece of
-runnable code.
 
 ### Special Variables
 
@@ -543,7 +541,7 @@ Special Variables are documented within the page of their context.
     
     Explanation.
     
-    **See also:** [other variable][context#variable]
+    **See also:** `other_variable`
 
 ## Publishing
 
