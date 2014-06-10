@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Policy Server Overview
-sorting: 5
+title: Policy Server Setup
+sorting: 4
 published: true
 tags: [overviews, system overview, policy server]
 ---
