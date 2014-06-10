@@ -46,6 +46,10 @@ host:
 $ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
 ```
 
+## Post-Installation Configuration ##
+
+* [Policy Server Setup][Policy Server Setup]
+
 ## More Detailed Installation Guides ##
 
 Although most install procedures follow the same general workflow, there are several ways of installing CFEngine depending on your environment and which version of CFEngine you are using.

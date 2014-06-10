@@ -42,7 +42,7 @@ feel for the power and value of CFEngine:
 
 Take a look at an [The CFEngine Guide][Guide] to learn more about CFEngine's architecture and components, as well as how to write policy that can help manage IT systems. 
 
-Check out [Additional Resources][Additional Resources] and the [learning section of the CFEngine website](http://http://cfengine.com/learn), for more guides, demos, and other resources from our CFEngine staff and our special CFEngine contributors. 
+Check out [Additional Resources][Additional Resources] and the [learning section of the CFEngine website](cfengine.com/learn), for more guides, demos, and other resources from our CFEngine staff and our special CFEngine contributors. 
 
 
 ## Use our Help
