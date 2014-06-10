@@ -23,26 +23,28 @@ policy framework. For us it makes maintanence easier, and for the community
 and customers it ensures that improvements that come into the framework are
 easily accessible from either product.
 
-* Whats new in the 3.6 masterfiles policy framework?
-	* README.md
-	* Directories
-		* templates
-		* cfe_internal 
-		* inventory
-		* sketches
-		* update
-	* Features defined in def.cf
-	* The Standard Library
-	* update.cf
-* Upgrade Gotchas
-	* General
-		* Array Keys are not iterated in the decalred order any more.
-		* Function Caching
-		* Files considered by update.cf have moved and changed
-	* Enterprise Users
-		* Options controlling which variables to report have moved and changed
-		* Host licenses paid deprecated
+* [What is new in the 3.6 masterfiles policy framework][Policy Framework Updates#What is new in the 3.6 masterfiles policy framework]
+	* [README.md][Policy Framework Updates#README.md]
+	* [Directories][Policy Framework Updates#Directories]
+		* [templates][Policy Framework Updates#templates]
+		* [cfe_internal][Policy Framework Updates#cfe_internal]
+		* [inventory][Policy Framework Updates#inventory]
+		* [sketches][Policy Framework Updates#sketches]
+		* [update][Policy Framework Updates#update]
+	* [Features defined in def.cf][Policy Framework Updates#Features defined in def.cf]
+	* [The Standard Library][Policy Framework Updates#The Standard Library]
+	* [update.cf][Policy Framework Updates#update.cf]
+* [Upgrade Gotchas][Policy Framework Updates#Upgrade Gotchas]
+	* [General][Policy Framework Updates#General]
+		* [Array Keys are not iterated in the decalred order any more][Policy Framework Updates#Array Keys are not iterated in the decalred order any more]
+		* [Function Caching][Policy Framework Updates#Function Caching]
+		* [Files considered by update.cf have moved and changed][Policy Framework Updates#Files considered by update.cf have moved and changed]
+	* [Enterprise Users][Policy Framework Updates#Enterprise Users]
+		* [Options controlling which variables to report have moved and changed][Policy Framework Updates#Options controlling which variables to report have moved and changed]
+		* [Host licenses paid deprecated][Policy Framework Updates#Host licenses paid deprecated]
 
+## What is new in the 3.6 masterfiles policy framework ##
+		
 ### README.md ###
 
 That's right. We finally added some documentation inside of
@@ -181,7 +183,7 @@ to watch our for when upgrading.
 
 ## Upgrade Gotchas ##
 
-### Array Keys are not iterated in the decalred order any more. ###
+### Array Keys are not iterated in the decalred order any more ###
 
 The order of results returned by getindices function is not necessarily
 returned in the order defined.
