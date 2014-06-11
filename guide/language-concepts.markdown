@@ -58,5 +58,94 @@ This documentation about the language concepts introduces in addition
   and
 * [**namespaces**][namespaces]
 
-See the reference documentation for more information about
-[Syntax, identifiers and names][Syntax, identifiers and names].
+## Syntax, identifiers and names
+
+The CFEngine 3 language has a few simple rules:
+
+* CFEngine built-in words, names of variables, bundles, body templates and classes may only contain the usual alphanumeric and underscore characters (`a-zA-Z0-9_`)
+* All other 'literal' data must be quoted.
+* Declarations of promise bundles in the form:
+
+        bundle agent-type identifier
+        {
+        ...
+        }
+
+    where `agent-type` is the CFEngine component responsible for maintaining the promise.
+
+* Declarations of promise body-parts in the form:
+
+        body constraint_type template_identifier
+        {
+        ...
+        }
+
+    matching and expanding on a reference inside a promise of the form `constraint_type => template_identifier`
+
+* attribute expressions in the body of a promise take the form
+
+        left-hand-side (CFEngine_word) => right-hand-side (user defined data).
+
+    This can take several forms:
+
+        cfengine_word => user_defined_template(parameters)
+                      user_defined_template
+                      builtin_function()
+                      "quoted literal scalar"
+                      { list }
+
+    In each of these cases, the right hand side is a user choice.
+
+	CFEngine uses many `constraint expressions' as part of the body of a promise. These take the form: left-hand-side (cfengine word) ‘=>’ right-hand-side (user defined data). This can take several forms:
+
+	    cfengine_word => user_defined_template(parameters)
+	        user_defined_template
+	        builtin_function()
+	        "quoted literal scalar"
+	        { list }
+
+	In each of these cases, the right hand side is a user choice.
+
+## Filenames and Paths
+
+Filenames in Unix-like operating systems use the forward slash '/'
+character for their directory separator. All references to file
+locations must be absolute pathnames in CFEngine, i.e. they must
+begin with a complete specification of which directory they are in.
+For example:
+
+    /etc/passwd
+    /var/cfengine/masterfiles/distfile
+
+The only place where it makes sense to refer to a file without a
+complete directory specification is when searching through
+directories for different kinds of file, e.g. in pattern matching
+
+    leaf_name => { "tmp_.*", "output_file", "core" };
+
+Here, one can write core without a path, because one is looking for
+any file of that name in a number of directories.
+
+The Windows operating systems traditionally use a different
+filename convention. The following are all valid absolute file
+names under Windows:
+
+    c:\winnt
+    "c:\spaced name"
+    c:/winnt
+    /var/cfengine/inputs
+    //fileserver/share2/dir
+
+The 'drive' name "C:" in Windows refers to a partition or device.
+Unlike Unix, Windows does not integrate these seamlessly into a
+single file-tree. This is not a valid absolute filename:
+
+    \var\cfengine\inputs
+
+Paths beginning with a backslash are assumed to be win32 paths.
+They must begin with a drive letter or double-slash server name.
+
+Note in recent versions of Cygwin you can decide to use the
+`/cygdrive` to specify a path to windows file E.g
+/cygdrive/c/myfile means c:\\myfile or you can do it straight away
+in CFEngine as `c:\myfile`.
