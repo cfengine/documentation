@@ -62,7 +62,7 @@ This tutorial will cover the following steps:
 
 ## Accessing the Virtual Machines Using SSH ##
 
-See: [Quick-Start Guide to Using PuTTY][Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen#Quick-Start Guide to Using PuTTY]
+See: [Quick-Start Guide to Using PuTTY][Quick-Start Guide to Using PuTTY#Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen]
 
 ## Install and Configure the Firewall ##
 

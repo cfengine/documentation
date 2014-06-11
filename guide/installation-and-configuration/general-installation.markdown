@@ -10,7 +10,7 @@ tags: [guide, installation, install]
 
 ## Before Installation ##
 
-Check the [Pre-Installation Checklist][Pre-Installation Checklist] and [Supported Platforms][Supported Platforms] for requirements and other information that is useful for the installation procedure.
+Check the [Pre-Installation Checklist][Pre-Installation Checklist] and [Supported Platforms and Versions][Supported Platforms and Versions] for requirements and other information that is useful for the installation procedure.
 
 ## Install Packages ##
 
