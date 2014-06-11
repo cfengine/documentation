@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Supported Platforms and Versions
-sorting: 1
+sorting: 20
 published: true
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions, support]
 ---

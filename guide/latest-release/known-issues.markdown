@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Known Issues
-sorting: 30
+sorting: 50
 published: true
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions, known issues]
 ---

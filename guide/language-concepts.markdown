@@ -2,7 +2,7 @@
 layout: default
 title: Language Concepts
 published: true
-sorting: 3
+sorting: 40
 tags: [overviews, language, syntax, concepts, promises]
 ---
 

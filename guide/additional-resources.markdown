@@ -2,7 +2,7 @@
 layout: default
 title: Additional Resources 
 published: true
-sorting: 10
+sorting: 110
 tags: [overviews, learning]
 ---
 

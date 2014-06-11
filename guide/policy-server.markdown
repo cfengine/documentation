@@ -1,7 +1,7 @@
 ---
 layout: default
 title: The Policy Server
-sorting: 5
+sorting: 50
 published: true
 tags: [guide, policy server]
 ---

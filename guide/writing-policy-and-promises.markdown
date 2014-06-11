@@ -2,7 +2,7 @@
 layout: default
 title: Writing Policy and Promises
 published: true
-sorting: 6
+sorting: 60
 ---
 
 * [About Policies and Promises][Writing Policy and Promises#About Policies and Promises]

@@ -2,7 +2,7 @@
 layout: default
 title: Policy Framework Updates
 published: true
-sorting: 3
+sorting: 40
 tags: [releases, latest release, 3.6.0, platforms, versions, what's new]
 ---
 

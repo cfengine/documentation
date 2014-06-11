@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Installation and Configuration
-sorting: 4
+sorting: 30
 published: true
 tags: [getting started, installation]
 ---
