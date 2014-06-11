@@ -5,10 +5,52 @@ published: true
 sorting: 6
 ---
 
+* [About Policies and Promises][Writing Policy and Promises#About Policies and Promises]
+	* [What Are Promises][Writing Policy and Promises#What Are Promises]
+	* [The Value of a Promise][Writing Policy and Promises#The Value of a Promise]
+	* [Anatomy of a Promise][Writing Policy and Promises#Anatomy of a Promise]
 * [Policy Workflow][Writing Policy and Promises#Policy Workflow]
 * [How Promises Work][Writing Policy and Promises#How Promises Work]
 	* [Summary for Writing, Deploying and Using Promises][Writing Policy and Promises#Summary for Writing, Deploying and Using Promises]
 * [Executing Policy][Writing Policy and Promises#Executing Policy]
+* [Layers of Abstraction in Policy][Layers of Abstraction in Policy]
+* [Promises Available in CFEngine][Promises Available in CFEngine]
+* [Authoring Policy Tools & Workflow][Authoring Policy Tools & Workflow]
+* [Best Practices][Best Practices]
+* [Policy Concepts][Policy Concepts]
+
+## About Policies and Promises ##
+
+Central to CFEngine's effectiveness in system administration is an intuitive tool called a `promise`, which defines the intent and expectation of how some part of an overall system should behave. 
+
+CFEngine is a system that emphasizes the promises a client makes to the overall CFEngine network. Combining promises with patterns to describe where and when promises should apply is what CFEngine is all about.
+
+This document describes in brief what a promise is and what a promise does. There are other resources for finding out additional details about `promises` in the See Also section at the end of this document.
+
+### What Are Promises ###
+
+A promise is the documentation or definition of an intention to act or behave in some manner. They are the rules which CFEngine clients are responsible for implementing. 
+
+### The Value of a Promise ###
+
+When you make a promise it is an effort to improve trust, which is an economic time-saver. If you have trust then there is less need to verify, which in turn saves time and money.
+
+When individual components are empowered with clear guidance, independent decision making power, and the trust that they will fulfil their duties, then systems that are complex and scalable, yet still manageable, become possible. 
+
+### Anatomy of a Promise ###
+
+```cf3
+bundle agent hello_world
+{
+  reports:
+
+    any::
+
+      "Hello World!"
+        comment => "This is a simple promise saying hello to the world.";
+
+}
+```
 
 ## Policy Workflow ##
 
