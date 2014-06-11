@@ -33,7 +33,7 @@ import sys
 import os
 
 config = environment.validate()
-qa.initialize(config)
+qa.initialize(config, True)
 
 try:
 	git.createData(config)
