@@ -13,7 +13,7 @@ body common control
 {
  any::
 
-  bundlesequence  => { "testbundle" };   
+  bundlesequence  => { "testbundle" };
 }
 
 ############################################
@@ -24,9 +24,9 @@ bundle agent testbundle
 {
 files:
 
-  "/tmp/test" 
+  "/tmp/test"
 
-    delete => tidyfiles,
+    delete => tidy,
     file_select => zero_age,
     depth_search => recurse("inf");
 }
@@ -49,29 +49,19 @@ body delete tidy
 
 {
 dirlinks => "delete";
-rmdirs   => "false"; 
+rmdirs   => "false";
 }
 
 #########################################################
 
 
 body file_select zero_age
-
 #
-
-# we can build old "include", "exclude", and "ignore" 
-
+# we can build old "include", "exclude", and "ignore"
 # from these as standard patterns - these bodies can
-
 # form a library of standard patterns
-
 #
-
-
 {
-mtime     => irange(ago(1,0,0,0,0,0),now);  
+mtime     => irange(ago(1,0,0,0,0,0),now);
 file_result => "mtime"; 
 }
-
-    Software distribution
-    Trigger classes

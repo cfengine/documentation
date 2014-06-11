@@ -264,7 +264,7 @@ Depth search is not allowed with `edit_line` promises.
 
 ***
 
-## Attributes
+## Attributes ##
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 

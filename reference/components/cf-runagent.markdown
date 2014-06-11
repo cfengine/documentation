@@ -14,7 +14,7 @@ which hosts `cf-agent` will be started, and classes that the user requests
 `cf-agent` should define on execution. The latter type is regulated by 
 `cf-serverd`'s [role based access control][roles].
 
-## Command reference
+## Command reference ##
 
 [%CFEngine_include_snippet(cf-runagent.help, [\s]*--[a-z], ^$)%]
 

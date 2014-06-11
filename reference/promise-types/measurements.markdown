@@ -79,7 +79,7 @@ specify what to do with the result afterwards.
 
 ***
 
-## Attributes
+## Attributes ##
 
 ### stream_type
 
