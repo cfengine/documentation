@@ -14,7 +14,7 @@ Everything in CFEngine can be thought of as a promise to be kept by different re
 Writing, deploying, and using CFEngine `promises` will generally follow these simple steps:
 
 1. Using a text editor, create a new file (e.g. `hello_world.cf`).
-2. Create a bundle and promise in the file (see [Test the Workflow With a "Hello World" Promise][Writing Policy and Promises#Test the Workflow With a "Hello World" Promise]).
+2. Create a bundle and promise in the file (see [Example: "Hello World" Promise][Writing Policy and Promises#Example: "Hello World" Promise]).
 3. Save the file on the policy server somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
 4. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
 		* Optional: it is also possible to call a bundle manually, using `cf-agent`.
@@ -26,48 +26,48 @@ In the simple `hello_world` example shown below, the `promise` is that the `Hell
 
 1. Create a bundle.
 
-```cf3
-bundle agent hello_world
-{
+		```cf3
+		bundle agent hello_world
+		{
 
-}
-```
+		}
+		```
 
 2. Insert the promise type `reports`.
 
-```cf3
-bundle agent hello_world
-{
-  reports:
+		```cf3
+		bundle agent hello_world
+		{
+		  reports:
 
-}
-```
+		}
+		```
 
 3. Add a class expression (optional). The class expression defaults to `any`, but in this example it is explicitly declared.
 
-```cf3
-bundle agent hello_world
-{
-  reports:
+		```cf3
+		bundle agent hello_world
+		{
+		  reports:
 
-    any::
+			any::
 
-}
-```
+		}
+		```
 
 4. Give attributes required values. In this case only our simple `Hello World!` message string.
 
-```cf3
-bundle agent hello_world
-{
-  reports:
+		```cf3
+		bundle agent hello_world
+		{
+		  reports:
 
-    any::
+			any::
 
-      "Hello World!";
+			  "Hello World!";
 
-}
-```
+		}
+		```
 
 ### Promises in Action ###
 
@@ -75,7 +75,7 @@ bundle agent hello_world
 
 1. Assuming the promise file is located at `/var/cfengine/masterfiles/hello_world.cf`, on the command line type the following: 
 
-```# /var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/hello_world.cf --bundlesequence hello_world```
+		```# /var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/hello_world.cf --bundlesequence hello_world```
 
 2. The output will include something similar to the following: `notice: R: Hello World!`.
 
@@ -89,25 +89,25 @@ Registering the promise with CFEngine consists of some simple steps:
 3.  At the end of the `inputs` section add the following line: `"hello_world.cf",`.
 4. `/var/cfengine/masterfiles/promises.cf` should then look like something like this (where `...` represents existing text in the file, omitted for clarity):
 
-```cf3
-body common control
+		```cf3
+		body common control
 
-{
+		{
 
-      bundlesequence => {
-						...
-                        vcs_update,
-						hello_world,
+			  bundlesequence => {
+								...
+								vcs_update,
+								hello_world,
 
-      };
+			  };
 
-      inputs => {
-                 ...
-				 
-                  "vcs_update.cf",
-				  "hello_world.cf",
-      };
-```
+			  inputs => {
+						 ...
+						 
+						  "vcs_update.cf",
+						  "hello_world.cf",
+			  };
+		```
 
 With the above information CFEngine will then do the following:
 
