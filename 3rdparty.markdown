@@ -1,13 +1,26 @@
 ---
 layout: default
-title: 3rd Party Libraries used in CFEngine
+title: Legal and Licenses
 published: false
-sorting: 100
+sorting: 999
 ---
+
+## General Legal Disclaimer
+
+Please note that CFEngine is offered on an "as is" basis without warranty of 
+any kind, and that our products are not error or bug free. To the maximum 
+extent permitted by applicable law, CFEngine on behalf of itself and its 
+suppliers, disclaims all warranties and conditions, either express or implied, 
+including, but not limited to, implied warranties of merchantability, fitness 
+for a particular purpose, title and non-infringement with regard to the 
+Licensed Software.
+
+
+## 3rd Party Licenses and Libraries
 
 CFEngine includes the following 3rd party libraries and components:
 
-## Community
+### Community
 
 * [libacl](http://savannah.nongnu.org/projects/acl) under the [LGPL](http://git.savannah.gnu.org/cgit/acl.git/tree/include/acl.h)
 * [libattr](http://savannah.nongnu.org/projects/attr) under the [LGPL](http://git.savannah.gnu.org/cgit/attr.git/tree/include/libattr.h)
@@ -24,7 +37,7 @@ CFEngine includes the following 3rd party libraries and components:
 * [Zlib](http://www.zlib.net) under the [zlib license](http://www.zlib.net/zlib_license.html)
 * [rsync](http://rsync.samba.org) under the [GPLv3](http://rsync.samba.org/GPL.html)
 
-## Enterprise
+### Enterprise
 
 * [Angular.js](https://angularjs.org) through [MIT Licence](https://github.com/angular/angular.js/blob/master/LICENSE)
 * [Apache](http://httpd.apache.org) under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
