@@ -20,7 +20,7 @@ In this tutorial, you will perform the following:
 
 Using JSON from CFEngine is easy. Try it out and see for yourself!
 
-### [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches (Enterprise Only)] (Enterprise Users Only)
+### [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches] (Enterprise Users Only)
 
 In this tutorial, you will perform the following:
 
