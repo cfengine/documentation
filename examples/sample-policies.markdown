@@ -25,34 +25,34 @@ doing the following on your policy server:
 2. Delete the `body common control` section in
     `/var/cfengine/masterfiles/example_file.cf`:
 
-```cf3  
-      body common control
-      {
-        bundlesequence  => { "testbundle" };
-      }
-```
+		```cf3  
+			  body common control
+			  {
+				bundlesequence  => { "testbundle" };
+			  }
+		```
 
 3. Insert the example's bundle name in the `bundlesequence` section
     of the main policy file `/var/cfengine/masterfiles/promises.cf`:
 
-```cf3  
-      bundlesequence => {
-          ...
-          "testbundle",
-          ...
-      };
-```
+		```cf3  
+			  bundlesequence => {
+				  ...
+				  "testbundle",
+				  ...
+			  };
+		```
 
 4. Insert the policy file name in the `inputs` section of the main policy file
     `/var/cfengine/masterfiles/promises.cf`:
 
-```cf3  
-      inputs => {
-           ...
-           "example_file.cf",
-           ...
-      };
-```
+		```cf3  
+			  inputs => {
+				   ...
+				   "example_file.cf",
+				   ...
+			  };
+		```
 
 5. *CONDITIONAL* If the example contains a control body section
    (e.g. `body agent control`):
@@ -70,11 +70,11 @@ doing the following on your policy server:
 6. You must remove the inputs section from the example, which 
    includes the external library:
 
-```cf3  
-      inputs => {
-        "libraries/cfengine_stdlib.cf"
-      };
-```
+		```cf3  
+			  inputs => {
+				"libraries/cfengine_stdlib.cf"
+			  };
+		```
   This is necessary, since `cfengine_stdlib.cf` is already included
   in the inputs section of the master policy.
 
