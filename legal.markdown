@@ -34,7 +34,6 @@ CFEngine includes the following 3rd party libraries and components:
 * [QDBM](http://sourceforge.net/projects/qdbm/) under the [GNU Library or Lesser General Public License 2.0 (LGPLv2)](http://www.opensource.org/licenses/lgpl-license.html)
 * [TokyoCabinet](http://fallabs.com/tokyocabinet/) under the [GNU Lesser General Public License](http://www.opensource.org/licenses/lgpl-license.html)
 * [Zlib](http://www.zlib.net) under the [zlib license](http://www.zlib.net/zlib_license.html)
-* [rsync](http://rsync.samba.org) under the [GPLv3](http://rsync.samba.org/GPL.html)
 
 ### Enterprise
 
@@ -45,7 +44,7 @@ CFEngine includes the following 3rd party libraries and components:
 * [Disphelper](http://disphelper.sourceforge.net) (only Windows) under the [BSD](http://opensource.org/licenses/bsd-license.php)
 * [Font Awesome](http://fontawesome.io) by Dave Gandy - http://fontawesome.io/license/
 * [git](http://git-scm.com) under the [GNU General Public License, version 2 (GPLv2)](http://opensource.org/licenses/GPL-2.0)
-* [Glyphicons](http://glyphicons.com/license/) under Creative Commons Attribution 3.0 Unported (CC BY 3.0)
+* [Glyphicons](http://glyphicons.com/license/) under [Creative Commons Attribution 3.0 Unported (CC BY 3.0)](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US)
 * [libcurl](http://curl.haxx.se) under the [MIT/X derivative license](http://curl.haxx.se/docs/copyright.html)
 * [mod_ssl](http://www.modssl.org) under a BSD style license
 * [OpenLDAP and liblber](http://www.openldap.org) under the [OpenLDAP Public License](http://www.openldap.org/software/release/license.html)
@@ -54,4 +53,5 @@ CFEngine includes the following 3rd party libraries and components:
 * [Piwik.js](http://piwik.org) under the [Simplified BSD license](http://piwik.org/free-software/bsd/)
 * [PostgreSQL, libecpg and libecpg_compat](http://www.postgresql.org) under the [PostgreSQL License](http://opensource.org/licenses/postgresql)
 * [redis](http://redis.io) under the [three clause BSD license](http://redis.io/topics/license)
+* [rsync](http://rsync.samba.org) under the [GPLv3](http://rsync.samba.org/GPL.html)
 * [Twitter Bootstrap Framework](http://getbootstrap.com) under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
