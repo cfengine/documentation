@@ -13,10 +13,10 @@ sorting: 6
 * [How Promises Work][Writing Policy and Promises#How Promises Work]
 	* [Summary for Writing, Deploying and Using Promises][Writing Policy and Promises#Summary for Writing, Deploying and Using Promises]
 * [Executing Policy][Writing Policy and Promises#Executing Policy]
+* [Best Practices][Writing Policy and Promises#Best Practices]
 * [Layers of Abstraction in Policy][Layers of Abstraction in Policy]
 * [Promises Available in CFEngine][Promises Available in CFEngine]
 * [Authoring Policy Tools & Workflow][Authoring Policy Tools & Workflow]
-* [Best Practices][Best Practices]
 * [Policy Concepts][Policy Concepts]
 
 ## About Policies and Promises ##
@@ -206,6 +206,16 @@ With the above information CFEngine will then do the following:
 3. The `promise` is executed.
 4. In the `hello_world` example an adminstrator, defined in the file `controls/cf_execd.cf`, will be emailed the message `Hello World!`. 
 
+## Best Practices ##
+
+* [Policy Style Guide][Policy Style Guide] This covers punctuation, whitespace, and other styles to remember when writing policy.
+
+* [Bundles Best Practices][Bundles Best Practices] Refer to this page as you decide when to make a bundle and when to use classes and/or variables in them.
+
+* [Default Configuration File Structure][Default Configuration File Structure] Learn the roles of these special files: promise.cf, update.cf, and failsafe.cf.
+
+* [Testing Policies][Testing Policies] This page describes how to locally test CFEngine and play with configuration files.
+
+
 ## See Also ##
-* [Authoring Policy Tools & Workflow][Authoring Policy Tools & Workflow]
 * [Promises][Promises]
