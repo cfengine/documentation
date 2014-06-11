@@ -102,7 +102,5 @@ are running 3.6 to benefit from the full encryption and future improvements.
 
 ## ChangeLog
 
-For a complete list of changes in the CFEngine, see the `ChangeLog` and 
-`ChangeLog.Enterprise` files in `/var/cfengine/share/doc`. The Core change log
-is also available 
-[online](https://github.com/cfengine/core/blob/master/ChangeLog).
+For a complete history of changes in CFEngine, see the `ChangeLog` and 
+`Enterprise ChangeLog`.
