@@ -15,7 +15,6 @@ including, but not limited to, implied warranties of merchantability, fitness
 for a particular purpose, title and non-infringement with regard to the 
 Licensed Software.
 
-
 ## 3rd Party Licenses and Libraries
 
 CFEngine includes the following 3rd party libraries and components:
@@ -26,7 +25,7 @@ CFEngine includes the following 3rd party libraries and components:
 * [libattr](http://savannah.nongnu.org/projects/attr) under the [LGPL](http://git.savannah.gnu.org/cgit/attr.git/tree/include/libattr.h)
 * [libcrypto](http://www.openssl.org/docs/crypto/crypto.html) under the [LGPL](http://api.libssh.org/master/libcrypto_8h_source.html)
 * [libexpat](http://sourceforge.net/projects/expat/) under the [MIT License](http://opensource.org/licenses/mit-license.html)
-* [libmcrypt](http://mcrypt.sourceforge.net) under the [GPLv2](****)
+* [libmcrypt](http://mcrypt.sourceforge.net) under the [LGPLv2](http://www.opensource.org/licenses/lgpl-license.html)
 * [libvirt](http://libvirt.org/FAQ.html) under the [LGPL version 2.1](http://www.opensource.org/licenses/lgpl-license.html)
 * [libxml2](http://xmlsoft.org/FAQ.html) under the [MIT license](http://opensource.org/licenses/mit-license.html)
 * [LMDB](http://symas.com/mdb/) unde the [OpenLDAP Public License](http://www.openldap.org/software/release/license.html)
@@ -47,7 +46,7 @@ CFEngine includes the following 3rd party libraries and components:
 * [Font Awesome](http://fontawesome.io) by Dave Gandy - http://fontawesome.io/license/
 * [git](http://git-scm.com) under the [GNU General Public License, version 2 (GPLv2)](http://opensource.org/licenses/GPL-2.0)
 * [Glyphicons](http://glyphicons.com/license/) under Creative Commons Attribution 3.0 Unported (CC BY 3.0)
-* [libcurl]() under the...
+* [libcurl](http://curl.haxx.se) under the [MIT/X derivative license](http://curl.haxx.se/docs/copyright.html)
 * [mod_ssl](http://www.modssl.org) under a BSD style license
 * [OpenLDAP and liblber](http://www.openldap.org) under the [OpenLDAP Public License](http://www.openldap.org/software/release/license.html)
 * [PHP](http://php.net) under the [PHP license version 3.01](http://www.php.net/license/3_01.txt)
