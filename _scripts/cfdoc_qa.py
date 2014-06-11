@@ -24,12 +24,8 @@ import os
 import sys
 from time import gmtime, strftime
 
-def initialize(config, wipe):
+def initialize(config):
 	config["log_file"] = config["markdown_directory"] + "/cfdoc_log.markdown"
-	
-	if not wipe:
-		return
-
 	if os.path.exists(config["log_file"]):
 		os.remove(config["log_file"])
 	logfile = open(config["log_file"], "w")

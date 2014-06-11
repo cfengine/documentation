@@ -24,10 +24,8 @@
 
 import cfdoc_environment as environment
 import cfdoc_sourcelinks as sourcelinks
-import cfdoc_qa as qa
 
 config = environment.validate()
-qa.initialize(config, False)
 sourcelinks.run(config)
 
 exit(0)

@@ -21,7 +21,6 @@
 # THE SOFTWARE.
 
 import os
-import cfdoc_qa as qa
 
 from os import listdir
 from os.path import isfile, join
@@ -58,7 +57,7 @@ def addLinkToSource(file_name,config):
 		for line in lines:
 			line = line.replace("\">markdown source</a>]", source_file + "\">markdown source</a>]")
 			if line.find("][") != -1:
-				qa.Log(config, "Unresolved link in '%s', line '%s'" % (filename, line))
+				print "Unresolved link in '%s', line '%s'\n" % (filename, line)
 			out_file.write(line)
 		out_file.close()
 	except:
