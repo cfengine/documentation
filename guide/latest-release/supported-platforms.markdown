@@ -6,6 +6,12 @@ published: true
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions, support]
 ---
 
+* [Supported Platforms][Supported Platforms and Versions#Supported Platforms]
+* [Platform Notes][Supported Platforms and Versions#Platform Notes]
+	* [Microsoft Windows][Supported Platforms and Versions#Microsoft Windows]
+
+## Supported Platforms ##
+
 This pre-release of CFEngine has been rudimentarily tested on the
 following platforms:
 
@@ -83,4 +89,8 @@ CFEngine supports several platforms, including POSIX operating systems such as U
 
 While the latest versions of several popular operating systems are generally tested and supported, it is important to check the information specific to your platform to ensure a good understanding of specific approaches to take when deploying CFEngine.
 
-See Also: [CFEngine for Windows][CFEngine for Windows]
+### Microsoft Windows ###
+
+CFEngine supports Microsoft Windows machines as client hosts, but with some functional differences compared with POSIX platforms, such as Unix and Linux. At the same time, CFEngine also does not currently support Windows policy servers. 
+
+This however does not need to become a limitation to those who wish to deploy CFEngine in a Windows only IT environment. It is quite easy to setup a virtual machine running a popular flavor of Linux with minimal effort and under certain conditions no or low cost. See the instructions for deploying [CFEngine from Windows to an Amazon Web Services virtual machine running Red Hat Enterprise Linux][Installing CFEngine on RHEL Using AWS] for an example.
