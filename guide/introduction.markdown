@@ -31,7 +31,7 @@ There are basically two categories of machines in a CFEngine environment: policy
 
 The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.
 
-See Also: [Policy Server Overview][Policy Server Overview]
+See Also: [The Policy Server][The Policy Server], [Policy Server Setup][Policy Server Setup]
 
 ## CFEngine Component Applications and Daemons ##
 
@@ -50,16 +50,16 @@ All CFEngine software components exist in `/var/cfengine/bin`.
 
 ![Components overview](components-overview.png)
 
-* [Daemons][System Overview#Daemons]
-* [Other Applications][System Overview#Other Applications]
+* [Daemons][Introduction and System Overview#Daemons]
+* [Other Applications][Introduction and System Overview#Other Applications]
 
 ### Daemons ###
 
 All machines, whether they are policy servers or hosts, will have these three important daemons running at all times:
 
-* [/var/cfengine/bin/cf-execd][System Overview#cf-execd]
-* [/var/cfengine/bin/cf-serverd][System Overview#cf-serverd]
-* [/var/cfengine/bin/cf-monitord][System Overview#cf-monitord]
+* [/var/cfengine/bin/cf-execd][Introduction and System Overview#cf-execd]
+* [/var/cfengine/bin/cf-serverd][Introduction and System Overview#cf-serverd]
+* [/var/cfengine/bin/cf-monitord][Introduction and System Overview#cf-monitord]
 
 ##### cf-execd #####
 
@@ -100,17 +100,17 @@ See also: [cf-monitord][cf-monitord] reference documentation.
 
 ### Other Component Applications ###
 
-[/var/cfengine/bin/cf-agent](#cf-agent)
-[/var/cfengine/bin/cf-key](#cf-key)
-[/var/cfengine/bin/cf-promises](#cf-promises)
-[/var/cfengine/bin/cf-runagent](#cf-runagent)
-[/var/cfengine/bin/cf-upgrade](#cf-upgrade)
-[/var/cfengine/bin/cf-twin](#cf-twin)
-[/var/cfengine/bin/lmdump](#lmdump)
-[/var/cfengine/bin/mdb_stat](#mdb_stat)
-[/var/cfengine/bin/getfacl](#getfacl) 
-[/var/cfengine/bin/mdb_copy](#mdb_copy)
-[/var/cfengine/bin/rpmvercmp](#rpmvercmp)
+* [/var/cfengine/bin/cf-agent][Introduction and System Overview#cf-agent]
+* [/var/cfengine/bin/cf-key][Introduction and System Overview#cf-key]
+* [/var/cfengine/bin/cf-promises][Introduction and System Overview#cf-promises]
+* [/var/cfengine/bin/cf-runagent][Introduction and System Overview#cf-runagent]
+* [/var/cfengine/bin/cf-upgrade][Introduction and System Overview#cf-upgrade]
+* [/var/cfengine/bin/cf-twin][Introduction and System Overview#cf-twin]
+* [/var/cfengine/bin/lmdump][Introduction and System Overview#lmdump]
+* [/var/cfengine/bin/mdb_stat][Introduction and System Overview#mdb_stat]
+* [/var/cfengine/bin/getfacl][Introduction and System Overview#getfacl] 
+* [/var/cfengine/bin/mdb_copy][Introduction and System Overview#mdb_copy]
+* [/var/cfengine/bin/rpmvercmp][Introduction and System Overview#rpmvercmp]
 
 #### cf-agent ####
 
