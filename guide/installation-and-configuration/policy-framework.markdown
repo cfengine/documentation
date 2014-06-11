@@ -2,7 +2,7 @@
 layout: default
 title: Policy Framework
 published: true
-sorting: 40
+sorting: 50
 tags: [manuals, writing policy, policy framework, masterfiles, def.cf, update.cf]
 ---
 
@@ -11,14 +11,9 @@ the files live in `/var/cfengine/masterfiles` on the policy server (on
 the clients, and note the policy server is typically also a client,
 they are cached in `/var/cfengine/inputs`).
 
-In the default Enterprise installation, the masterfiles are populated
+In the default installation, the masterfiles are populated
 automatically on the policy server and you can even auto-deploy them
-from a version control system. See
-[Version Control and Configuration Policy][Version Control and Configuration Policy].
-
-In the default Community installation, the same masterfiles are
-available but there is no out-of-the-box integration with version
-control.  See [Version Control][Version Control].
+from a [version control system][Version Control].
 
 You should configure the masterfiles as described below. Leaving them
 at their default settings may expose your masterfiles or worse,

@@ -2,7 +2,7 @@
 layout: default
 title: Controlling Frequency
 published: true
-sorting: 20
+sorting: 40
 tags: [manuals, systems, configuration management, automation, control, frequency, performance]
 ---
 

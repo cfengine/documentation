@@ -10,7 +10,7 @@ tags: [getting started, installation]
 
 [%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
 
-See [General Installation][General Installation] for more a more detailed guide for how to install CFEngine, and links to installation guides for various versions of CFEngine and different configurations.
+See [General Installation][General Installation] for a more detailed guide for how to install CFEngine, and links to installation guides for various versions of CFEngine and different configurations.
 
 See also: [Pre-Installation Checklist][Pre-Installation Checklist], [Supported Platforms and Versions][Supported Platforms and Versions] 
 
@@ -28,10 +28,3 @@ Learn how to put your CFEngine policies under version control.
 
 * [Policy Framework]
 Learn what options are available out of the box in CFEngine to configure its masterfiles operation.
-
-
-
-
-
-
-

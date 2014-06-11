@@ -2,7 +2,7 @@
 layout: default
 title: Version Control
 published: true
-sorting: 40
+sorting: 60
 tags: [manuals, writing policy, version control, git, subversion]
 ---
 
@@ -16,13 +16,6 @@ CFEngine is VCS agnostic.
 When `/var/cfengine/masterfiles` is backed by VCS, it may be useful to have an 
 agent policy that periodically checks the VCS server for the latest version 
 fetches any updates.
-
-Note that this is done in CFEngine Enterprise out of the box.
-See
-[Version Control and Configuration Policy][Version Control and Configuration Policy]
-
-These instructions may work for you with CFEngine Community but you
-should review them carefully.  They are not intended for production use.
 
 After installing CFEngine on the policy server, before bootstrapping the agent 
 to itself, we create a git clone of our masterfiles.

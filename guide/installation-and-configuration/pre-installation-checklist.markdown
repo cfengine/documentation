@@ -2,7 +2,7 @@
 layout: default
 title: Pre-Installation Checklist
 published: true
-sorting: 1
+sorting: 10
 tags: [guide, installation]
 ---
 

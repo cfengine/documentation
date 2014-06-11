@@ -2,7 +2,7 @@
 layout: default
 title: General Installation
 published: true
-sorting: 3
+sorting: 20
 tags: [guide, installation, install]
 ---
 
@@ -39,16 +39,50 @@ Note: Install actions logged to `/var/logs/cfengine-install.log`.
 
 ## Bootstrap ##
 
-Run the bootstrap command, **first** on the policy server and then on each
-host:
+Run the bootstrap command, **first** on the policy server:
 
-```
-$ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
-```
+1. Find the IP address of your Policy Server:
+
+		
+	    $ ifconfig
+		
+
+2. Run the bootstrap command:
+
+		
+        $ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>
+		
+
+The bootstrap command must then be run on any client attaching itself to this server, using the ip address of the policy server (i.e. exactly the same as the command run on the policy server itself).
 
 ## Post-Installation Configuration ##
 
-* [Policy Server Setup][Policy Server Setup]
+### def.cf ###
+
+1. Find the following line:
+		
+		"domain"  string    => "your.domain.here",
+		
+2. Change **your.domain.here** to your domain name, e.g. **example.com**.
+
+### controls/cf_execd.cf ###
+
+1. Find the following line:
+		
+		mailto => "some-admin-list@me.local";
+		
+2. Change **some-admin-list@me.local** to your email address.
+
+Note: On some systems this modification should hopefully work without needing to make any additional changes elsewhere. However, any emails sent from the system might also end up flagged as spam and sent directly to a user's junk mailbox.
+
+### Server IP Address and Hostname ###
+
+Edit /etc/hosts and add an entry for the IP address and hostname of the server.
+
+### CFEngine Enterprise Post-Installation Setup ###
+
+See: [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise?]
+
 
 ## More Detailed Installation Guides ##
 
@@ -64,6 +98,4 @@ Although most install procedures follow the same general workflow, there are sev
 ## Next Steps ##
 
 * Learn about [Writing Policy and Promises][Writing Policy and Promises]
-
-
 
