@@ -5,6 +5,7 @@
 [help-cfengine]: https://groups.google.com/forum/?hl=en&fromgroups#!forum/help-cfengine "Help Forum"
 [bug tracker]: http://bug.cfengine.com/ "Bug Tracker"
 [cfengine blog]: http://cfengine.com/blog "CFEngine - Blog"
+[learning center]: http://cfengine.com/learn "CFEngine Learning Center"
 [contact us]: https://cfengine.com/contactUs "CFEngine - Contact Us"
 [github]: https://github.com "GitHub"
 [github core]: https://github.com/cfengine/core "Core repository on GitHub"
