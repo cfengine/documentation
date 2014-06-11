@@ -34,7 +34,6 @@ CFEngine includes the following 3rd party libraries and components:
 * [QDBM](http://sourceforge.net/projects/qdbm/) under the [GNU Library or Lesser General Public License 2.0 (LGPLv2)](http://www.opensource.org/licenses/lgpl-license.html)
 * [TokyoCabinet](http://fallabs.com/tokyocabinet/) under the [GNU Lesser General Public License](http://www.opensource.org/licenses/lgpl-license.html)
 * [Zlib](http://www.zlib.net) under the [zlib license](http://www.zlib.net/zlib_license.html)
-* [rsync](http://rsync.samba.org) under the [GPLv3](http://rsync.samba.org/GPL.html)
 
 ### Enterprise
 
@@ -54,4 +53,5 @@ CFEngine includes the following 3rd party libraries and components:
 * [Piwik.js](http://piwik.org) under the [Simplified BSD license](http://piwik.org/free-software/bsd/)
 * [PostgreSQL, libecpg and libecpg_compat](http://www.postgresql.org) under the [PostgreSQL License](http://opensource.org/licenses/postgresql)
 * [redis](http://redis.io) under the [three clause BSD license](http://redis.io/topics/license)
+* [rsync](http://rsync.samba.org) under the [GPLv3](http://rsync.samba.org/GPL.html)
 * [Twitter Bootstrap Framework](http://getbootstrap.com) under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
