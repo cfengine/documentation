@@ -8,10 +8,6 @@ tags: [Examples, Tutorials]
 
 Familarize yourself with CFEngine by following these tutorials.
 
-#### [Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]
-
-This getting-started primer is perfect for new users.  
-
 ### [Create a standalone policy (Hello World).][Hello World]
 
 In this tutorial, you will perform the following:
@@ -19,6 +15,10 @@ In this tutorial, you will perform the following:
 * Create a simple hello_world policy file
 * Make hello_world a standalone policy
 * Make hello_world an executable script
+
+#### [JSON Support in CFEngine][JSON Support in CFEngine]
+
+Using JSON from CFEngine is easy. Try it out and see for yourself!
 
 ### [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches (Enterprise Only)] (Enterprise Users Only)
 
