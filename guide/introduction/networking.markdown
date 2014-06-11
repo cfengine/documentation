@@ -2,11 +2,11 @@
 layout: default
 title: Networking
 published: true
-sorting: 10
+sorting: 30
 tags: [overviews, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 
-Starting [`cf-serverd`][cf-serverd], sets up a line of communication between 
+Starting [`cf-serverd`][cf-serverd] sets up a line of communication between 
 hosts. This daemon authenticates requests from the network and processes them 
 according to rules specified in the server control body and server bundles 
 containing access promises. The server can allow the network to access files, 
@@ -27,7 +27,7 @@ portions of your network stop working, individual host in the CFEngine system
 understand how to keep on running and delivering promises.
 
 If the network is not working, CFEngine agents skip new promises and continue 
-with what they already have. CFEngine was specifically designed be resilient 
+with what they already have. CFEngine was specifically designed to be resilient 
 against connectivity issues network failure may be in question. CFEngine is
 fault tolerant and opportunistic.
 
@@ -82,7 +82,7 @@ those to establish trust.
 
 CFEngine will output diagnostic information upon bootstrap. In case of error, 
 investigate the [`access` promises][access] the server is making. Note that 
-by default, CFEngine's server daemon `cf-serverd` trust incoming connections 
+by default, CFEngine's server daemon `cf-serverd` trusts incoming connections 
 from hosts within the same subnet.
 
 ## Key exchange

@@ -2,7 +2,7 @@
 layout: default
 title: CFEngine Directory Structure
 published: true
-sorting: 4
+sorting: 20
 tags: [guide, system, system overview, directory structure, directories, files]
 ---
 
