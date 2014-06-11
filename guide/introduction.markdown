@@ -51,7 +51,7 @@ All CFEngine software components exist in `/var/cfengine/bin`.
 ![Components overview](components-overview.png)
 
 * [Daemons][Introduction and System Overview#Daemons]
-* [Other Applications][Introduction and System Overview#Other Applications]
+* [Other Applications][Introduction and System Overview#Other Component Applications]
 
 ### Daemons ###
 
