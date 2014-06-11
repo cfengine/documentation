@@ -5,6 +5,54 @@ published: true
 sorting: 6
 ---
 
+* [Policy Workflow][Writing Policy and Promises#Policy Workflow]
+* [How Promises Work][Writing Policy and Promises#How Promises Work]
+	* [Summary for Writing, Deploying and Using Promises][Writing Policy and Promises#Summary for Writing, Deploying and Using Promises]
+* [Executing Policy][Writing Policy and Promises#Executing Policy]
+
+## Policy Workflow ##
+
+CFEngine does not make absolute choices for you, like other tools.  Almost
+everything about its behavior is matter of policy and can be changed.
+
+In order to keep operations as simple as possible, CFEngine maintains a
+private [working directory][The CFEngine Components#The Working Directory]
+on each machine, referred to in documentation as `WORKDIR` and in policy by
+the variable [$(sys.workdir)][sys#sys-workdir] By default, this is located at
+`/var/cfengine` or `C:\var\CFEngine`. It contains everything CFEngine needs to
+run.
+
+The figure below shows how decisions flow through the parts of a system.
+
+![Policy decision and distribution flowchart](policy-decision-flow.png)
+
+* It makes sense to have a single point of coordination. Decisions are
+  therefore usually made in a single location (the Policy Definition Point).
+  The history of decisions and changes can be tracked by a version control
+  system of your choice (e.g. git, Subversion, CVS etc.).
+
+* Decisions are made by editing CFEngine's policy file `promises.cf` (or one
+  of its included sub-files). This process is carried out off-line.
+
+* Once decisions have been formalized and coded, this new policy is copied
+  to a decision distribution point, [$(sys.masterdir)][sys#sys-masterdir] which
+  defaults to `/var/cfengine/masterfiles` on all policy distribution servers.
+
+* Every client machine contacts the policy server and downloads these updates.
+  The policy server can be replicated if the number of clients is very large,
+  but we shall assume here that there is only one policy server.
+
+Once a client machine has a copy of the policy, it extracts only those promise
+proposals that are relevant to it, and implements any changes without human
+assistance. This is how CFEngine manages change.
+
+CFEngine tries to minimize dependencies by decoupling processes. By following
+this pull-based architecture, CFEngine will tolerate network outages and will
+recover from deployment errors easily. By placing the burden of responsibility
+for decision at the top, and for implementation at the bottom, we avoid
+needless fragility and keep two independent quality assurance processes apart.
+
+
 ## How Promises Work ##
 
 Everything in CFEngine can be thought of as a promise to be kept by different resources in the system. In a system that delivers a web site using Apache, an important promise may be to make sure that the `httpd` package is installed, running, and accessible on port 80. 
@@ -69,9 +117,9 @@ In the simple `hello_world` example shown below, the `promise` is that the `Hell
 		}
 		```
 
-### Promises in Action ###
+### Executing Policy ###
 
-#### Manually Executing a Promise ####
+#### Manually Executing a Bundle ####
 
 1. Assuming the promise file is located at `/var/cfengine/masterfiles/hello_world.cf`, on the command line type the following: 
 
@@ -80,7 +128,7 @@ In the simple `hello_world` example shown below, the `promise` is that the `Hell
 2. The output will include something similar to the following: `notice: R: Hello World!`.
 
 
-#### Registering a Promise in `promises.cf` ####
+#### Registering Policy in `promises.cf` ####
 
 Registering the promise with CFEngine consists of some simple steps:
 
