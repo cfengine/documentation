@@ -6,8 +6,8 @@ published: true
 tags: [mission portal, hosts]
 ---
 
-* [Monitoring App][Monitoring App]
-* [Host App][Host App]
+* [Monitoring App][Host Info in Mission Portal#Monitoring App]
+* [Host App][Host Info in Mission Portal#Host App]
 
 ## Monitoring App ##
 
