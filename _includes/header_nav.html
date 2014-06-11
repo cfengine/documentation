@@ -26,11 +26,8 @@
 <nav id="nav_wrapper">
     <div class="wrapper">
         <ul>
-		    <li>
-                <a href="index.html" {% if  page.categories[0] == 'Home' %} class="navselected" {% endif %}>Home</a>
-            </li>
             <li>
-                <a href="guide-getting-started.html" {% if  page.categories[0] == 'Get Started' %} class="navselected" {% endif %}>Get Started</a>
+                <a href="index.html" {% if  page.categories[0] == 'Home' %} class="navselected" {% endif %}>Home</a>
             </li>
             <li>
                 <a href="guide.html" {% if page.categories[0] == "Guide" %} class="navselected" {% endif %}>Guide</a>
@@ -41,13 +38,12 @@
             <li>
                 <a href="examples.html" {% if page.categories[0] == 'Examples' %} class="navselected" {% endif %}>Examples</a>
             </li>
-			<li>
+            <li>
                 <a href="reference.html" {% if page.categories[0] == 'Reference' %} class="navselected" {% endif %}>Reference</a>
             </li>
-			<li>
+            <li>
                 <a href="http://www.cfengine.com/product/free-download/" {% if page.categories[0] == 'Download' %} class="navselected" {% endif %}>Download</a>
             </li>
-			
         </ul>
     </div>
 </nav>
