@@ -57,6 +57,10 @@ The bootstrap command must then be run on any client attaching itself to this se
 
 ## Post-Installation Configuration ##
 
+CFEngine itself is configured through policy as well (see [Components and Common Control][] for
+details), and the following changes to the default policy will configure `cf-serverd` and `cf-execd`
+for your environment.
+
 ### def.cf ###
 
 1. Find the following line:
@@ -77,7 +81,7 @@ Note: On some systems this modification should hopefully work without needing to
 
 ### Server IP Address and Hostname ###
 
-Edit /etc/hosts and add an entry for the IP address and hostname of the server.
+Edit `/etc/hosts` and add an entry for the IP address and hostname of the server.
 
 ### CFEngine Enterprise Post-Installation Setup ###
 

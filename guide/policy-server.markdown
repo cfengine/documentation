@@ -15,7 +15,6 @@ The policy server itself only makes important files available on the network. It
 ### Installation and Configuration ###
 
 * [General Installation][General Installation]
-* [Policy Server Setup][Policy Server Setup]
 * [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise?]
 
 ### Adding Promises to promises.cf ###

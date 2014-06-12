@@ -18,8 +18,6 @@ See also: [Pre-Installation Checklist][Pre-Installation Checklist], [Supported P
 
 Additional options for configuring CFEngine policy are as follows:
 
-* [Policy Server Setup][Policy Server Setup]
-
 * [Controlling Frequency]
 Learn how to control frequency settings for verifying CFEngine policy.
 
