@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Enterprise API Overview
+title: Enterprise API
 published: true
-sorting: 3 
+sorting: 80 
 tags: [overviews, enterprise, REST, API, reporting]
 ---
 
 The CFEngine Enterprise API allows HTTP clients to interact with the Policy server (hub) 
 of a CFEngine Enterprise installation. 
 
-![Enterprise API Overview](enterprise-api-architecture-overview.png)
+![Enterprise API Overview](img/enterprise-api-architecture-overview.png)
 
 In CFEngine Enterprise 3.5 and later, [Multi-Site Query][Multi-Site Queries] 
 support allows centralized collection of data from multiple CFEngine 
