@@ -101,5 +101,5 @@ Although most install procedures follow the same general workflow, there are sev
 
 ## Next Steps ##
 
-* Learn about [Writing Policy and Promises][Writing Policy and Promises]
+* Learn about [Writing and Serving Policy][Writing and Serving Policy]
 

@@ -23,7 +23,7 @@ Those policies are distributed across all hosts within the system via download f
 
 CFEngine continually monitors all of the hosts in real-time, and should the system’s current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
 
-See Also: [Language Concepts][], [Writing Policy and Promises][]
+See Also: [Language Concepts][], [Writing and Serving Policy][]
 
 ## CFEngine Policy Servers and Hosts ##
 
