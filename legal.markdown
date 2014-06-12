@@ -48,7 +48,7 @@ CFEngine includes the following 3rd party libraries and components:
 * [Font Awesome](http://fontawesome.io) by Dave Gandy - http://fontawesome.io/license/
 * [git](http://git-scm.com) under the [GNU General Public License, version 2 (GPLv2)](http://opensource.org/licenses/GPL-2.0)
 * [Glyphicons](http://glyphicons.com/license/) under [Creative Commons Attribution 3.0 Unported (CC BY 3.0)](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US)
-<!--- * [HighCharts](http://shop.highsoft.com/highcharts.html) under the OEM license from HighSoft -->
+* [HighCharts](http://www.highcharts.com/) under the OEM license by HighSoft
 * [jQuery](https://jquery.org) under the [MIT license](http://en.wikipedia.org/wiki/MIT_License)
 * [libcurl](http://curl.haxx.se) under the [MIT/X derivative license](http://curl.haxx.se/docs/copyright.html)
 * [libmcrypt](http://mcrypt.sourceforge.net) under the [LGPLv2](http://www.opensource.org/licenses/lgpl-license.html)
