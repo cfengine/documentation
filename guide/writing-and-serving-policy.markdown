@@ -2,7 +2,7 @@
 layout: default
 title: Writing and Serving Policy
 published: true
-sorting: 60
+sorting: 40
 ---
 
 * [About Policies and Promises][Writing and Serving Policy#About Policies and Promises]
