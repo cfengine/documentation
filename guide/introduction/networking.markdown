@@ -6,27 +6,30 @@ sorting: 30
 tags: [overviews, troubleshooting, connectivity, network, server, access, remote, keys, encryption, security]
 ---
 
-Starting [`cf-serverd`][cf-serverd] sets up a line of communication between 
+Starting `cf-serverd` sets up a line of communication between 
 hosts. This daemon authenticates requests from the network and processes them 
-according to rules specified in the server control body and server bundles 
-containing access promises. The server can allow the network to access files, 
-or to execute CFEngine.
+according to rules specified in the
+[`server control`][cf-serverd#Control Promises] body and server bundles 
+containing `access` promises.
 
-The only contact [`cf-agent`][cf-agent] makes to the server is via remote copy 
-requests. It does not and cannot grant any access to a system from the 
-network. It is only able request access to files on the remote server.
+The server can allow the network to access files or to execute CFEngine:
 
-Lastly, [`cf-runagent`][cf-runagent] can be used to run `cf-agent` on a number 
-of remote hosts.
+* The only contact [`cf-agent`][cf-agent] makes to the server is via remote copy 
+  requests. It does not and cannot grant any access to a system from the 
+  network. It is only able to request access to files on the remote server.
+
+* [`cf-runagent`][cf-runagent] can be used to run `cf-agent` on a number 
+  of remote hosts.
 
 Unlike other approaches to automation, CFEngine does not rely on SSH key 
 authentication and configuring trust, the communication between hosts is very 
 structured and also able to react to availability issues. This means that you 
-don't have to arrange risk login credentials to get CFEngine to work. If large 
-portions of your network stop working, individual host in the CFEngine system
-understand how to keep on running and delivering promises.
+don't have to arrange login credentials to get CFEngine to work. If large 
+portions of your network stop working, then CFEngine on each individual host
+understands how to keep on running and delivering promises.
 
-If the network is not working, CFEngine agents skip new promises and continue 
+In particular, if the network is not working,
+CFEngine agents skip downloading new promises and continue 
 with what they already have. CFEngine was specifically designed to be resilient 
 against connectivity issues network failure may be in question. CFEngine is
 fault tolerant and opportunistic.
@@ -35,29 +38,24 @@ fault tolerant and opportunistic.
 
 In order to connect to the CFEngine server you need:
 
-* A public-private key pair
-
-To create a key pair, run [`cf-key`][cf-key].
-
-* An IP (v4 or v6) address.
-
-You must be online with a configured network address. 
-
-* Permission to connect to the server
-
-The server control body must grant access to your computer and public key by 
-name or IP address, by listing it in one of the lists (see below).
-
-* Mutual trust
-
-Your public key must be trusted by the server, and you must trust the server's 
-public key. By mutually trusting each others' keys, client and server agree to 
-use that key as a sufficient identifier for the computer. 
-
-* Permission to access something
-
-Your host name or IP address must be mentioned in an [`access` promise][access]
-inside a server bundle, made by the file that you are trying to access.
+* **A public-private key pair**. It is automatically generated during package
+  installation or during bootstrap. To manually create a key pair,
+  run [`cf-key`][cf-key].
+* **Network connectivity** with an IPv4 or IPv6 address.
+* **Permission to connect** to the server.
+  The [`server control`][cf-serverd#Control Promises] body must grant access
+  to your computer and public key by name or IP address, by listing it in
+  the appropriate access lists (see below).
+* **Mutual key trust**.
+  Your public key must be trusted by the server, and you must trust the server's 
+  public key. The first part is established by having the
+  [`trustkeysfrom`][cf-serverd#trustkeysfrom] setting open on the server for the first
+  connection of the agent. It should be closed later to avoid trusting new agents.
+  The second part is established by bootstrapping the agent to the hub, or by
+  executing a `copy_from` files promise using ```trustkey=>"true"```.
+* **Permission to access something**.
+  Your host name or IP address must be mentioned in an `access` promise
+  inside a server bundle, made by the file that you are trying to access.
 
 If all of the above criteria are met, connection will be established and data 
 will be transferred between client and server. The client can only send short 
