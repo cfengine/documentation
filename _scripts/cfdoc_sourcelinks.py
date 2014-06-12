@@ -57,7 +57,7 @@ def addLinkToSource(file_name,config):
 		for line in lines:
 			line = line.replace("\">markdown source</a>]", source_file + "\">markdown source</a>]")
 			if line.find("][") != -1:
-				print "Unresolved link in '%s', line '%s'\n" % (filename, line)
+				print "Unresolved link in '%s', line '%s'\n" % (file_name, line)
 			out_file.write(line)
 		out_file.close()
 	except:
