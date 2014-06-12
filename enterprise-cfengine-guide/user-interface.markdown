@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine Enterprise User Interface
+title: User Interface
 sorting: 20
 published: true
 tags: [cfengine enterprise, user interface, mission portal]
