@@ -5,8 +5,8 @@ published: true
 sorting: 10
 ---
 
-* [Installation][Getting Started With CFEngine Enterprise#Installation]
-* [Post-Install Configuration][Getting Started With CFEngine Enterprise#Post-Install Configuration]
+* [Installation][Install and Get Started#Installation]
+* [Post-Install Configuration][Install and Get Started#Post-Install Configuration]
 	
 ## Installation ##
 
