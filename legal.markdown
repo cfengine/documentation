@@ -41,12 +41,14 @@ CFEngine includes the following 3rd party libraries and components:
 * [Angular.js](https://angularjs.org) through [MIT Licence](https://github.com/angular/angular.js/blob/master/LICENSE)
 * [Apache](http://httpd.apache.org) under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 * [APR and APR-util](https://apr.apache.org) under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+* [Chosen](http://harvesthq.github.io/chosen/) under the [MIT License](https://github.com/harvesthq/chosen/blob/master/LICENSE.md)
 * [CodeIgniter](http://codeigniter.com/) under the [CodeIgniter License Agreement](http://ellislab.com/codeigniter/user-guide/license.html)
 * [Disphelper](http://disphelper.sourceforge.net) (only Windows) under the [BSD](http://opensource.org/licenses/bsd-license.php)
+* [Flot](http://www.flotcharts.org/) under a [permissive license](https://github.com/flot/flot/blob/master/LICENSE.txt)
 * [Font Awesome](http://fontawesome.io) by Dave Gandy - http://fontawesome.io/license/
 * [git](http://git-scm.com) under the [GNU General Public License, version 2 (GPLv2)](http://opensource.org/licenses/GPL-2.0)
 * [Glyphicons](http://glyphicons.com/license/) under [Creative Commons Attribution 3.0 Unported (CC BY 3.0)](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US)
-<!-- * [HighCharts](http://shop.highsoft.com/highcharts.html) under the OEM license from HighSoft -->
+<!--- * [HighCharts](http://shop.highsoft.com/highcharts.html) under the OEM license from HighSoft -->
 * [jQuery](https://jquery.org) under the [MIT license](http://en.wikipedia.org/wiki/MIT_License)
 * [libcurl](http://curl.haxx.se) under the [MIT/X derivative license](http://curl.haxx.se/docs/copyright.html)
 * [libmcrypt](http://mcrypt.sourceforge.net) under the [LGPLv2](http://www.opensource.org/licenses/lgpl-license.html)
@@ -54,7 +56,7 @@ CFEngine includes the following 3rd party libraries and components:
 * [OpenLDAP and liblber](http://www.openldap.org) under the [OpenLDAP Public License](http://www.openldap.org/software/release/license.html)
 * [PHP](http://php.net) under the [PHP license version 3.01](http://www.php.net/license/3_01.txt)
 * [php-apc](http://pecl.php.net/package/APC) under the [PHP License](http://www.php.net/license/3_01.txt)
-* [Piwik.js](http://piwik.org) under the [Simplified BSD license](http://piwik.org/free-software/bsd/)
+<!--- * [Piwik.js](http://piwik.org) under the [Simplified BSD license](http://piwik.org/free-software/bsd/) -->
 * [PostgreSQL, libecpg and libecpg_compat](http://www.postgresql.org) under the [PostgreSQL License](http://opensource.org/licenses/postgresql)
 * [redis](http://redis.io) under the [three clause BSD license](http://redis.io/topics/license)
 * [rsync](http://rsync.samba.org) under the [GPLv3](http://rsync.samba.org/GPL.html)
