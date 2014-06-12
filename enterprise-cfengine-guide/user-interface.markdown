@@ -12,11 +12,11 @@ To meet this challenge, the CFEngine Enterprise's User Interface (also known as 
 
 CFEngine Enterprise's User Interface also allows infrastructure engineers to make quick and easy modification of any machine or group of machines within their domain using classifications of hosts and a template mechanism called sketches.
 
-* [Hosts, Health and Settings][CFEngine Enterprise User Interface#Hosts, Health and Settings]
-* [Alerts and Notifications][CFEngine Enterprise User Interface#Alerts and Notifications]
-* [Reporting][CFEngine Enterprise User Interface#Reporting]
-* [Monitoring][CFEngine Enterprise User Interface#Monitoring]
-* [Design Center][CFEngine Enterprise User Interface#Design Center]
+* [Hosts, Health and Settings][User Interface#Hosts, Health and Settings]
+* [Alerts and Notifications][User Interface#Alerts and Notifications]
+* [Reporting][User Interface#Reporting]
+* [Monitoring][User Interface#Monitoring]
+* [Design Center][User Interface#Design Center]
 
 ## Hosts, Health and Settings ##
 
