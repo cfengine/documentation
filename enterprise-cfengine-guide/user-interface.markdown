@@ -20,7 +20,7 @@ CFEngine Enterprise's User Interface also allows infrastructure engineers to mak
 
 ## Hosts, Health and Settings ##
 
-Find out more: [Hosts][], [Health and Settings][]
+Find out more: [Hosts, Health and Settings][]
 
 ## Alerts and Notifications ##
 
