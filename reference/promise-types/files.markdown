@@ -272,6 +272,22 @@ Depth search is not allowed with `edit_line` promises.
 
 **Type:** `body acl`
 
+Please note that until https://dev.cfengine.com/issues/4862 is fixed
+(as of 3.6.0 it's not), you need to specify a `perms` body or only the
+base directory will be considered. As a workaround, use the following
+`perms` body if you are not specifying one already, as suggested in
+that ticket:
+
+```cf3
+body perms null_perms_body {
+    ## Workaround for https://dev.cfengine.com/issues/4862
+    ## Bug #4862: Recursive ACLs not working by default only with perms
+    ##
+    ## Dummy perms body is used as otherwise ACLs are not applied recursively
+    rxdirs => "true";
+}
+```
+
 #### aces
 
 **Description:**
