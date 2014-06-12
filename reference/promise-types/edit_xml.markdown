@@ -10,6 +10,12 @@ documents represent data that is complex and can be structured in
 various ways. The XML based editing offers a powerful environment for
 editing hierarchical and structured XML datasets.
 
+XML editing promises are made in a `bundle edit_xml`, which is then
+used in the `edit_xml` attribute of a `files` promise. The promiser of
+the `files` promise needs to be the XML document that is being edited.
+Within an `edit_xml` bundle, various promise types are available to create
+new or manipulate existing XML documents.
+
 ***
 
 <!-- Use any suitable promise type for lookups in promise_attribute

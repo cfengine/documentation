@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Upgrade Instructions
-sorting: 50
-published: true
+sorting: 30
+published: false
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions, upgrade]
 ---
 

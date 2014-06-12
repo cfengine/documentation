@@ -1,19 +1,19 @@
 ---
 layout: default
-title: Writing Policy and Promises
+title: Writing and Serving Policy
 published: true
-sorting: 6
+sorting: 40
 ---
 
-* [About Policies and Promises][Writing Policy and Promises#About Policies and Promises]
-	* [What Are Promises][Writing Policy and Promises#What Are Promises]
-	* [The Value of a Promise][Writing Policy and Promises#The Value of a Promise]
-	* [Anatomy of a Promise][Writing Policy and Promises#Anatomy of a Promise]
-* [Policy Workflow][Writing Policy and Promises#Policy Workflow]
-* [How Promises Work][Writing Policy and Promises#How Promises Work]
-	* [Summary for Writing, Deploying and Using Promises][Writing Policy and Promises#Summary for Writing, Deploying and Using Promises]
-* [Executing Policy][Writing Policy and Promises#Executing Policy]
-* [Best Practices][Writing Policy and Promises#Best Practices]
+* [About Policies and Promises][Writing and Serving Policy#About Policies and Promises]
+	* [What Are Promises][Writing and Serving Policy#What Are Promises]
+	* [The Value of a Promise][Writing and Serving Policy#The Value of a Promise]
+	* [Anatomy of a Promise][Writing and Serving Policy#Anatomy of a Promise]
+* [Policy Workflow][Writing and Serving Policy#Policy Workflow]
+* [How Promises Work][Writing and Serving Policy#How Promises Work]
+	* [Summary for Writing, Deploying and Using Promises][Writing and Serving Policy#Summary for Writing, Deploying and Using Promises]
+* [Executing Policy][Writing and Serving Policy#Executing Policy]
+* [Best Practices][Writing and Serving Policy#Best Practices]
 * [Layers of Abstraction in Policy][Layers of Abstraction in Policy]
 * [Promises Available in CFEngine][Promises Available in CFEngine]
 * [Authoring Policy Tools & Workflow][Authoring Policy Tools & Workflow]
@@ -60,7 +60,7 @@ everything about its behavior is matter of policy and can be changed.
 In order to keep operations as simple as possible, CFEngine maintains a
 private [working directory][The CFEngine Components#The Working Directory]
 on each machine, referred to in documentation as `WORKDIR` and in policy by
-the variable [$(sys.workdir)][sys#sys-workdir] By default, this is located at
+the variable [$(sys.workdir)][sys#sys.workdir] By default, this is located at
 `/var/cfengine` or `C:\var\CFEngine`. It contains everything CFEngine needs to
 run.
 
@@ -104,7 +104,7 @@ Everything in CFEngine can be thought of as a promise to be kept by different re
 Writing, deploying, and using CFEngine `promises` will generally follow these simple steps:
 
 1. Using a text editor, create a new file (e.g. `hello_world.cf`).
-2. Create a bundle and promise in the file (see [Example: "Hello World" Promise][Writing Policy and Promises#Example: "Hello World" Promise]).
+2. Create a bundle and promise in the file (see [Example: "Hello World" Promise][Writing and Serving Policy#Example: "Hello World" Promise]).
 3. Save the file on the policy server somewhere under `/var/cfengine/masterfiles` (can be under a sub-directory).
 4. Let CFEngine know about the `promise` on the `policy server`, generally in the file `/var/cfengine/masterfiles/promises.cf`, or a file elsewhere but referred to in `promises.cf`.
 		* Optional: it is also possible to call a bundle manually, using `cf-agent`.

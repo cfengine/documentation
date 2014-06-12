@@ -105,6 +105,10 @@ To link to pages within the documentation, use the syntax:
 
     [Link text][Page Title]
 
+If `Link text` is the title of the target page, you can also use this shorthand:
+
+    [Page Title][]
+
 To link to a section within the target page, use:
 
     [Link text][Page Title#Section in Page]

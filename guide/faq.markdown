@@ -2,7 +2,7 @@
 layout: default
 title: FAQ
 published: true
-sorting: 9
+sorting: 90
 tags: [getting started, installation, enterprise, faq]
 ---
 
@@ -28,7 +28,7 @@ tags: [getting started, installation, enterprise, faq]
 
 #### What steps should I take after installing CFEngine Enterprise ####
 
-There are general steps to be taken outlined in [Policy Server Setup][Policy Server Setup]. 
+There are general steps to be taken outlined in [Post-Installation Configuration][General Installation#Post-Installation Configuration]. 
 
 In addition to this, Enterprise 3.6.0 uses the local mail relay, and it is assumed that the server where CFEngine Enterprise is installed on has proper mail setup. 
 

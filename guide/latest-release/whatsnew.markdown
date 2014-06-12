@@ -100,7 +100,7 @@ protocol with old agents, and new agents can speak the legacy protocol with old 
 CFEngine operators should turn off support for the legacy protocol as soon as all hosts
 are running 3.6 to benefit from the full encryption and future improvements.
 
-## ChangeLog
+## Change History
 
 For a complete history of changes in CFEngine, see the `ChangeLog` and 
 `Enterprise ChangeLog`.

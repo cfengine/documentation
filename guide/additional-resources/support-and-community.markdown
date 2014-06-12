@@ -27,7 +27,7 @@ have downloaded the free version of CFEngine 3 Enterprise.
 
 Sometimes the best help is already written. 
 
-* Visit our [learning resources][Learning Resources] for guides, demos, training videos, and tools.
+* Visit our [learning resources][learning center] for guides, demos, training videos, and tools.
 
 ### Social Media
 

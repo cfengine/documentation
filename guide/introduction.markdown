@@ -2,10 +2,10 @@
 layout: default
 title: Introduction and System Overview
 published: true
-sorting: 1
+sorting: 10
 ---
 
-CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves (see [Installation and Configuration][Installation and Configuration]), will each be running a set of CFEngine component applications that manage and interpret textual files called policies. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or `bundles`, of what are known in the CFEngine world as [Promises][Promises]. `Promises` are at the heart of Promise Theory, which is in turn what CFEngine is all about.
+CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see [Installation and Configuration][Installation and Configuration]), will each be running a set of CFEngine component applications that manage and interpret textual files called policies. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or `bundles`, of what are known in the CFEngine world as [Promises][Promises]. `Promises` are at the heart of Promise Theory, which is in turn what CFEngine is all about.
 
 * [Policy Language and Compliance][Introduction and System Overview#Policy Language and Compliance]
 * [CFEngine Policy Servers and Hosts][Introduction and System Overview#CFEngine Policy Servers and Hosts]
@@ -17,13 +17,13 @@ For many users, CFEngine is simply a configuration tool – i.e. software for de
 
 CFEngine ensures that the actual state of a system is in compliance with the predefined model of desired state for the system. If it is not in compliance CFEngine will bring it into compliance.
 
-That model is represented by one or more policies that have been written using the declarative CFEngine policy language. Policy Language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
+That model is represented by one or more policies that have been written using the declarative CFEngine policy language. The policy language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.
 
-Those policies are distributed across all of the system’s policy distribution servers via pull requests, and then further disseminated to each end host within the system. Every host will then interpret and execute each of the instructions it has been given in a predetermined order. 
+Those policies are distributed across all hosts within the system via download from the policy server. Every host will then interpret and execute each of the instructions it has been given in a predetermined order.
 
 CFEngine continually monitors all of the hosts in real-time, and should the system’s current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.
 
-See Also: [Writing Policy and Promises][Writing Policy and Promises]
+See Also: [Language Concepts][], [Writing and Serving Policy][]
 
 ## CFEngine Policy Servers and Hosts ##
 
@@ -31,7 +31,7 @@ There are basically two categories of machines in a CFEngine environment: policy
 
 The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.
 
-See Also: [The Policy Server][The Policy Server], [Policy Server Setup][Policy Server Setup]
+See Also: [Writing and Serving Policy][]
 
 ## CFEngine Component Applications and Daemons ##
 
@@ -42,8 +42,8 @@ responsible for providing the infrastructure of CFEngine.
 
 These components form the basis of automation with CFEngine. They are 
 independent software agents running on the various systems that make up your 
-infrastructure. They communicate with one  another as shown in the following 
-figure, using a protocol that allows each  host to distribute promises, act 
+infrastructure. They communicate with one another as shown in the following 
+figure, using a protocol that allows each host to distribute promises, act 
 upon them, and report status to a central server.
 
 All CFEngine software components exist in `/var/cfengine/bin`.
@@ -61,7 +61,7 @@ All machines, whether they are policy servers or hosts, will have these three im
 * [/var/cfengine/bin/cf-serverd][Introduction and System Overview#cf-serverd]
 * [/var/cfengine/bin/cf-monitord][Introduction and System Overview#cf-monitord]
 
-##### cf-execd #####
+#### cf-execd ####
 
 `cf-execd` is the scheduling daemon for `cf-agent`, similar to cron. It executes and collects the output of `cf-agent` and
 e-mails any output to the configured e-mail address.
@@ -72,7 +72,7 @@ e-mails any output to the configured e-mail address.
 
 See also: [cf-execd][cf-execd] reference documentation.
 
-##### cf-serverd #####
+#### cf-serverd ####
 
 `cf-serverd` is a socket listening daemon providing two services: it acts as a file server for remote file copying and it allows an authorized `cf-runagent` to start a `cf-agent` run. `cf-agent` typically connects to a `cf-serverd` instance to request updated policy code, but may also request additional files for download. `cf-serverd` employs role based access control (defined in policy code) to authorize requests.
 
@@ -90,7 +90,7 @@ containing [access promises][access].
 
 See also: [cf-serverd][cf-serverd] reference documentation.
 
-##### cf-monitord #####
+#### cf-monitord ####
 
 `cf-monitord` is the monitoring daemon for CFEngine. It samples probes defined in policy using measurements type promises and attempts to learn the normal system state based on current and past observations. Current estimates are made available as special variables (e.g. $(mon.av_cpu)) to `cf-agent`, which may use them to inform policy decisions.
 
@@ -104,17 +104,14 @@ See also: [cf-monitord][cf-monitord] reference documentation.
 * [/var/cfengine/bin/cf-key][Introduction and System Overview#cf-key]
 * [/var/cfengine/bin/cf-promises][Introduction and System Overview#cf-promises]
 * [/var/cfengine/bin/cf-runagent][Introduction and System Overview#cf-runagent]
+
+<!-- Not relevant in 3.6
 * [/var/cfengine/bin/cf-upgrade][Introduction and System Overview#cf-upgrade]
-* [/var/cfengine/bin/cf-twin][Introduction and System Overview#cf-twin]
-* [/var/cfengine/bin/lmdump][Introduction and System Overview#lmdump]
-* [/var/cfengine/bin/mdb_stat][Introduction and System Overview#mdb_stat]
-* [/var/cfengine/bin/getfacl][Introduction and System Overview#getfacl] 
-* [/var/cfengine/bin/mdb_copy][Introduction and System Overview#mdb_copy]
-* [/var/cfengine/bin/rpmvercmp][Introduction and System Overview#rpmvercmp]
+-->
 
 #### cf-agent ####
 
-`cf-agent` evaluates policy code and makes changes to the system. Policy bundles are evaluated in the order of the provided bundlesequence (this is normally specified in the common control body). For each bundle, cf-agent groups promise statements according to their type. Promise types are then evaluated in a preset order to ensure fast system convergence to policy.
+`cf-agent` evaluates policy code and makes changes to the system. Policy bundles are evaluated in the order of the provided `bundlesequence` (this is normally specified in the common control body). For each bundle, cf-agent groups promise statements according to their type. Promise types are then evaluated in a preset order to ensure fast system convergence to policy.
 
 `cf-agent` keeps the promises made in `common` and `agent` bundles, and is affected by `common` and `agent` control bodies.
 
@@ -124,26 +121,26 @@ manipulates system resources.
 
 `cf-agent`'s only contact with the network is via remote copy requests. It 
 does not and cannot grant any access to a system from the network. It is only 
-able request access to files from the server component.
+able to request access to files from the server component.
 
-See also: [cf-agent][cf-agent] reference documentation.
+See also: `cf-agent` reference documentation.
  
 #### cf-key ####
 
 The CFEngine key generator makes key pairs for remote authentication.
 
-See also: [cf-key][cf-key] reference documentation.
+See also: `cf-key` reference documentation.
     
 #### cf-promises ####
 
-`cf-promises` is CFEngine's promise verifier and compiler. It is used to run a "pre-check" of 
-policy code before attempting to execute.
+`cf-promises` is CFEngine's promise verifier. It is used to run a "pre-check" of 
+policy code before `cf-agent` attempts to execute.
 
 `cf-promises` operates by first parsing policy code checking for syntax errors. Second, it validates the integrity of policy consisting of multiple files. Third, it checks for semantic errors, e.g. specific attribute set rules. Finally, `cf-promises` attempts to expose errors by partially evaluating the policy, resolving as many variable and classes promise statements as possible. At no point does `cf-promises` make any changes to the system.
 
 In 3.6.0 and later, `cf-promises` will not evaluate function calls either. This may affect customers who use execresult for instance. Use the new --eval-functions yes command-line option (default is no) to retain the old behavior from 3.5.x and earlier.
 
-See also: [cf-promises][cf-promises] reference documentation.
+See also: `cf-promises` reference documentation.
  
 #### cf-runagent ####
 
@@ -158,18 +155,4 @@ Control (RBAC) to certain parts of the existing policy.
 
 `cf-runagent` connects to a list of running instances of `cf-serverd`. It allows foregoing the usual `cf-execd` schedule to activate `cf-agent`. Additionally, a user may send classes to be defined on the remote host. Two kinds of classes may be sent: classes to decide on which hosts `cf-agent` will be started, and classes that the user requests `cf-agent` should define on execution. The latter type is regulated by `cf-serverd`'s role based access control.
 
-See also: [cf-runagent][cf-runagent] reference documentation.
-
-#### cf-upgrade ####
- 
-#### cf-twin ####
-
-#### lmdump ####
-  
-#### mdb_stat ####
-    
-#### getfacl ####
-    
-#### mdb_copy ####
- 
-#### rpmvercmp ####
+See also: `cf-runagent` reference documentation.

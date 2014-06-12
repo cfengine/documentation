@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Glossary
-sorting: 10
+sorting: 100
 published: true
 tags: [overviews, leanring resources, glossary]
 ---
