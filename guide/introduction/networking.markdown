@@ -34,13 +34,13 @@ with what they already have. CFEngine was specifically designed to be resilient
 against connectivity issues network failure may be in question. CFEngine is
 fault tolerant and opportunistic.
 
-## Server Connection
+## Connecting to server
 
 In order to connect to the CFEngine server you need:
 
 * **A public-private key pair**. It is automatically generated during package
   installation or during bootstrap. To manually create a key pair,
-  run [`cf-key`][cf-key].
+  run `cf-key`.
 * **Network connectivity** with an IPv4 or IPv6 address.
 * **Permission to connect** to the server.
   The [`server control`][cf-serverd#Control Promises] body must grant access
@@ -62,26 +62,28 @@ will be transferred between client and server. The client can only send short
 requests, following the CFEngine protocol. The server can return data in a 
 variety of forms, usually files, but sometimes console output.
 
-### Bootstrapping
+## Bootstrapping
 
-Bootstrapping establishes a connection between host and policy server, and
-executes the policy that starts the CFEngine daemon processes 
-[`cf-execd`][cf-execd], [`cf-serverd`][cf-serverd] and 
-[`cf-monitord`][cf-monitord]. The host that other hosts are bootstrapped to
+Bootstrapping executes the policy (```failsafe.cf```) that connects to 
+the server and establishes trust to the server's key, and that starts the 
+CFEngine daemon processes cf-execd`, `cf-serverd` and `cf-monitord`.
+The host that other hosts are bootstrapped to
 automatically assumes the role of policy server.
 
 You should bootstrap the policy server first to itself:
 
     $ /var/cfengine/bin/cf-agent --bootstrap [public IP of localhost]
 
-Then execute the same step on all hosts that should pull policy from that
-server. CFEngine will create keys if there are none present, and exchange 
+Then execute the same step (using the exact same IP) 
+on all hosts that should pull policy from that server. 
+CFEngine will create keys if there are none present, and exchange 
 those to establish trust.
 
 CFEngine will output diagnostic information upon bootstrap. In case of error, 
-investigate the [`access` promises][access] the server is making. Note that 
+investigate the `access` promises the server is making (run `cf-serverd` in
+verbose mode on the policy hub for more informative messages). Note that 
 by default, CFEngine's server daemon `cf-serverd` trusts incoming connections 
-from hosts within the same subnet.
+from hosts within the same ```/16``` subnet.
 
 ## Key exchange
 
@@ -92,16 +94,13 @@ though you might introduce your own if you go for an overly centralized
 architecture).
 
 Key exchange is handled automatically by CFEngine and all you need to do is to 
-decide which keys to trust. The server `cf-serverd` blocks the acceptance of 
-unknown keys by default. In order to accept such a new key, the IP address of 
-the presumed client must be listed in the `trustkeysfrom` stanza of a `server` 
-bundle (these bundles can be placed in any file). Once a key has been 
-accepted, it will never be replaced with a new key, thus no more trust is 
-offered or required.
+decide which keys to trust. The server (`cf-serverd`) trusts new keys only
+from addresses in `trustkeysfrom`. Once a key has been 
+accepted you should close down `trustkeysfrom` list. Then, even if a malicious peer
+is spoofing an allowed IP address, its unknown key will be denied.
 
 Once you have arranged for the right to connect to the server, you must decide 
-which hosts will have access to which files. This is done with [`access` 
-promises][access].
+which hosts will have access to which files. This is done with `access` promises.
 
 ```cf3
     bundle server access_rules()
@@ -116,18 +115,15 @@ promises][access].
     }
 ```
 
-On the client side, i.e. [`cf-runagent`][cf-runagent] and 
-[`cf-agent`][cf-agent], there are three issues:
+On the client side, i.e. `cf-runagent and `cf-agent, there are three issues:
 
 1.  Choosing which server to connect to.
-2.  Trusting the identity of any previously unknown servers, i.e.
-    trusting the server's public key to be its and no one else's. (The
-    issues here are the same as for the server.)
+2.  Trusting the key of any previously unknown servers
 3.  Choosing whether data transfers should be encrypted (with
-    `encrypt`).
+    `encrypt`) - not applicable if you are using new `protocol_version`.
 
 There are two ways of managing trust of server keys by a client. One is an 
-automated option, setting the option `trustkey` in a `copy_from` stanza, e.g.
+automated option, setting the option `trustkey` in a `copy_from` files promise, e.g.
 
 ```cf3
     body copy_from example
