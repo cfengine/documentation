@@ -31,7 +31,7 @@ There are basically two categories of machines in a CFEngine environment: policy
 
 The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.
 
-See Also: [The Policy Server][]
+See Also: [Writing and Serving Policy][]
 
 ## CFEngine Component Applications and Daemons ##
 
