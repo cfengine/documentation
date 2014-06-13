@@ -13,7 +13,7 @@ tags: [Examples]
 Note: CFEngine also includes a small set of examples by default, which can be 
 found in `/var/cfengine/share/doc/examples`.
 
-* Enterprise API Examples
+* [Enterprise API Examples][Enterprise API Examples]
 * [Tutorials][Tutorials]
 * Design Center examples in the CFEngine [GitHub repository](https://github.com/cfengine/design-center/tree/master/examples).
 
