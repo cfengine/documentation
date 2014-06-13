@@ -213,8 +213,11 @@ def applyLinkMap(file_name, config):
 					if markdown_line[i] == '[': bracket_depth += 1
 					elif markdown_line[i] == ']': bracket_depth -= 1
 					elif bracket_depth == 0:
+						# single backtick creates link; triple backticks don't
 						if markdown_line[i] == '`':
-							if candidate_start == -1:
+							if markdown_line[i:i+3] == '```':
+								i += 2
+							elif candidate_start == -1:
 								candidate_start = i
 							else:
 								candidate = markdown_line[candidate_start:i+1]
