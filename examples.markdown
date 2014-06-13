@@ -15,6 +15,9 @@ This section is divided into topical areas, and includes many examples of policy
 Note: CFEngine also includes a small set of examples by default, which can be 
 found in `/var/cfengine/share/doc/examples`.
 
+* [Tutorials][Tutorials]
+* Design Center examples in the CFEngine [GitHub repository](https://github.com/cfengine/design-center/tree/master/examples).
+
 See Also: 
 
 * [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
@@ -23,11 +26,7 @@ See Also:
 	* [Make the Example Stand Alone][Examples and Tutorials#Make the Example Stand Alone]
 	* [Make the Example an Executable Script][Examples and Tutorials#Make the Example an Executable Script]
 	* [Integrating the Example into your Main Policy][Examples and Tutorials#Integrating the Example into your Main Policy]
-* [Tutorials][Tutorials]
 
-This section provides examples and explanations of common tasks.
-
-* Design Center examples in the CFEngine [GitHub repository](https://github.com/cfengine/design-center/tree/master/examples).
 
 ## Tutorial for Running Examples ##
 
