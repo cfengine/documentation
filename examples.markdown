@@ -40,9 +40,9 @@ In this tutorial, you will perform the following:
 ### "Hello World" Policy Example ###
 
 Policies contain **bundles**, which are collections of promises. A **promise** is a declaration of
-intent. Bundles allow related promises to be grouped together, as illustrated in the tutorial below.
+intent. Bundles allow related promises to be grouped together, as illustrated in the steps that follow.
 
-In this tutorial you will login to your policy server via the SSH protocol, use the vi command line editor to create a policy file named hello_world.cf, and create a bundle that calls a promise to display some text.
+Following these steps, you will login to your policy server via the SSH protocol, use the vi command line editor to create a policy file named hello_world.cf, and create a bundle that calls a promise to display some text.
 
 1. Log into a running server machine using ssh (PuTTY may be used if using Windows). 
 2. Type ```sudo su``` for super user (enter your password if prompted).
