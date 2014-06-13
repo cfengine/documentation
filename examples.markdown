@@ -50,17 +50,17 @@ Following these steps, you will login to your policy server via the SSH protocol
 4. Create the file with the command: ```vi hello_world.cf ```
 5. In the vi editor, enter ```i``` for "Insert" and enter the following content (ie. copy and paste from a text editor):
 
-		```cf3
-		bundle agent hello_world
-		{
-		  reports:
+	```cf3
+	bundle agent hello_world
+	{
+	  reports:
 
-			any::
-			  
-			  "Hello World!"
+		any::
+		  
+		  "Hello World!"
 
-		}
-		```
+	}
+	```
 
 6. Exit the "Insert" mode by pressing the "esc" button. This will return to the command prompt.
 7. Save the changes to the file by typing ```:w``` then "Enter". 
