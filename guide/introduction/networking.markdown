@@ -64,7 +64,9 @@ variety of forms, usually files, but sometimes console output.
 
 ## Bootstrapping
 
-Bootstrapping executes the policy (```failsafe.cf```) that connects to 
+[Bootstrap][Bootstrap] is the manual first run of cf-agent that establishes
+communication with the policy server.
+Bootstrapping executes the policy (`failsafe.cf`) that connects to 
 the server and establishes trust to the server's key, and that starts the 
 CFEngine daemon processes cf-execd`, `cf-serverd` and `cf-monitord`.
 The host that other hosts are bootstrapped to
@@ -103,19 +105,16 @@ Once you have arranged for the right to connect to the server, you must decide
 which hosts will have access to which files. This is done with `access` promises.
 
 ```cf3
-    bundle server access_rules()
-    
-    {
-    access:
-    
-      "/path/file"
-    
-        admit   => { "127.0.0.1", "127.0.0.2", "127.0.0.3" },
-        deny    => { "192\..*" };
-    }
+bundle server access_rules()
+{
+  access:
+    "/path/file"
+      admit   => { "127.0.0.1", "127.0.0.2", "127.0.0.3" },
+      deny    => { "192.168.0.0/8" };
+}
 ```
 
-On the client side, i.e. `cf-runagent and `cf-agent, there are three issues:
+On the client side, i.e. `cf-runagent` and `cf-agent`, there are three issues:
 
 1.  Choosing which server to connect to.
 2.  Trusting the key of any previously unknown servers
@@ -126,11 +125,11 @@ There are two ways of managing trust of server keys by a client. One is an
 automated option, setting the option `trustkey` in a `copy_from` files promise, e.g.
 
 ```cf3
-    body copy_from example
-    {
-      # .. other settings ..
-      trustkey => "true";
-    }
+body copy_from example
+{
+  # .. other settings ..
+  trustkey => "true";
+}
 ```
 
 Another way is to run `cf-runagent` in interactive mode. When you run 
@@ -151,7 +150,7 @@ never seen the other side before.
 All security is based on a moment of trust that is granted by a user at some 
 point in time – and is assumed thereafter (once given, hard to rescind). 
 Cryptographic key methods only remove the need for a repeat of the trust 
-decision. After the first exchange, trust is no longer needed, because they 
+decision. After the first exchange, trust is no longer needed, because the 
 keys allow identity to be actually verified.
 
 Even if you leave the trust options switched on, you are not blindly trusting 
@@ -159,8 +158,9 @@ the hosts you know about. The only potential insecurity lies in any new keys
 that you have not thought about. If you use wildcards or IP prefixes in the 
 trust rules, then other hosts might be able to spoof their way in on trust 
 because you have left open a hole for them to exploit. That is why it is 
-recommended to return the system to the default state of zero trust 
-immediately after key transfer, by commenting out the trust options.
+recommended to set the system to the state of zero trust
+immediately after key transfer, by commenting or emptying out the trust options
+(`trustkeysfrom` on the server).
 
 It is possible, though somewhat laborious, to transfer the keys out of band, 
 by copying `/var/cfengine/ppkeys/localhost.pub` to 
@@ -182,9 +182,9 @@ users must be added to the server configuration file.
 
 ## Encryption
 
-CFEngine provides encryption for keeping file contents private during transfer. It is assumed that users will use this judiciously. There is nothing to be gained by encrypting the transfer of public files – overt use of encryption just contributes to global warming, burning unnecessary CPU cycles without offering any security.
+CFEngine provides encryption for keeping file contents private during transfer. If `protocol_version` is set to "classic" or "1" then file transfers must be explicitly encrypted by setting ```encrypt=>"true"``` in a `copy_from` body of a `files` promise. For newer protocol_version, all transfers are encrypted.
 
-The main role for encryption in configuration management is for authentication. CFEngine always uses encryption during authentication, so none of the encryption settings affect the security of authentication.
+However, the main role of encryption in configuration management is for authentication. Secrets should not be transferred through policy, encrypted or not. Policy files should be considered public, and any leakage should not reveal secret information.
 
 
 ## Troubleshooting
@@ -202,36 +202,15 @@ information which might be useful to them.
 
 There is a simple checklist for curing this problem:
 
-1.  Make sure that the domain variable is set in the configuration
-    files read by both client and server; alternatively use
-    `skipidentify` to decouple DNS from the the
-    authentication.
-2.  Make sure that you have granted access to your client in the
-    server body
-
-```cf3                  
-    body server control
-    {
-        allowconnects         => { "127.0.0.1" , "::1" ...etc };
-        allowallconnects      => { "127.0.0.1" , "::1" ...etc };
-        trustkeysfrom         => { "127.0.0.1" , "::1" ...etc };
-    }
-```                  
-
-3.  Make sure you have created valid keys for the hosts using
-    `cf-key`.
-4.  If you are using secure copy, make sure that you have created a
-    key file and that you have distributed and installed it to all
-    participating hosts in your cluster.
-
-Always remember that you can run CFEngine in verbose or debugging modes to see 
-how the authentication takes place:
-
-    $ cf-agent -v
+1. Make sure that you have granted access to the client's address in the
+   [`server control`][cf-serverd#Control Promises] body.
+2. Make sure the connecting client is granted access to the requested resources
+   (files usually) in the ```access_rules``` promise bundle.
+3. See the verbose log of the server for the exact error message, since the
+   client always gets the "Unspecified server refusal" reply from the server.
+   To run the server in verbose, kill cf-serverd on the policy hub and run:
     $ cf-serverd -v
-
-`cf-agent` reports that access is denied regardless of the nature
-of the error, to avoid giving away information which might be used
-by an attacker. To find out the real reason for a denial, use
-verbose ‘-v’ or even debugging mode ‘-d2’.
-
+   and then manually run ```cf-agent``` on the client.
+4. In the unlikely case that you still get no indication of the denial, try
+   increasing the agent run verbosity. ```cf-agent -I``` for info-level messages
+   or even ```cf-agent -v``` for verbose.
