@@ -35,12 +35,13 @@ Paragraphs
 
 ### Link within documentation and to known pages
 
-`[top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Links]`
+`[top of the page][Markdown Cheatsheet] to the [Markdown Cheatsheet][] and [inside page][Markdown Cheatsheet#Links]`
 
-[top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Links]
+<!--- Cheating here - this page is not published, so included from link map -->
+[top of the page](markdown-cheatsheet.html) to the [Markdown Cheatsheet](markdown-cheatsheet.html) and [inside page](markdown-cheatsheet.html#Links)
 
 **Note:** For known pages, see the 
-[_references.markdown](https://github.com/cfengine/documentation-generator/blob/master/_references.md)
+[_references.md](https://github.com/cfengine/documentation-generator/blob/master/_references.md)
 file.
 
 ### Link to CFEngine keyword
@@ -95,23 +96,6 @@ Ordered lists - the numbers you use don't matter.
 1. second
 9. Third
 
-### Code Blocks and Lists
-
-If you want to include a code block within a list, put two tabs (8 spaces) in front of the entire block.
-
-1. First
-
-		```cf3
-			# CFEngine block
-
-			bundle agent example()
-			{
-			}
-		```
-
-2. Second
-3. Third
-
 ## Tables
 
 Wiki-syntax for tables is supported, and you can be a bit sloppy
@@ -130,11 +114,20 @@ about it, although it's better to align the `|` properly.
 
 ## Code
 
+### Inline code
+
+    This renders as `inline code`.
+
+This renders as `inline code`.
+
+    This also renders as ```inline code```.
+
+This also renders as ```inline code```.
+
 ### Code Blocks
 
-Syntax highlighting is provided by pygments. Find all available lexers [here](http://pygments.org/docs/lexers/).
+Code blocks are either indendented by four spaces:
 
-#### Simple Code Blocks
 Just indent by four spaces:
 
 ```
@@ -145,24 +138,41 @@ Just indent by four spaces:
     $ code block
     $ without syntax highlighting
 
+or use three backticks:
+
+    ```
+    some more code 
+    in a block
+    ```
+
+```
+some more code
+in a block
+```
+
+To turn on syntax highlighting, specify the brush directly after the opening three
+backticks. Syntax highlighting is provided by pygments. Find all available lexers [here](http://pygments.org/docs/lexers/).
+
 #### CFEngine Code Blocks
+
 If you want CFEngine syntax highlighting, use
 
     ```cf3
-        # CFEngine block
-
-        bundle agent example()
-        {
-        }
-    ```
-
-```cf3
-    # CFEngine code block
+    # CFEngine block
 
     bundle agent example()
     {
     }
+    ```
+
+```cf3
+# CFEngine code block
+
+bundle agent example()
+{
+}
 ```
+
 
 Other frequently used syntax highlighers shown below.
 
@@ -193,7 +203,7 @@ done
         ```
 
 ```console
-	root@policy_server # /etc/init.d/cfengine3 stop
+root@policy_server # /etc/init.d/cfengine3 stop
 ```
 
 #### SQL Code Blocks
@@ -273,8 +283,9 @@ index 92555a2..b49c0bb 100644
 ```
 
 
-**Notes:** You need to keep an empty line in front of the code block. And
-to put code into a list item, the code needs to be indented *twice*, ie:
+### Code Blocks and Lists
+
+If you want to include a code block within a list, put two tabs (8 spaces) in front of the entire block (4 to make the paragraph part of the list item, and 4 for it a code block):
 
 ```
 * List item with code
@@ -286,11 +297,35 @@ to put code into a list item, the code needs to be indented *twice*, ie:
 
         <code goes here>
 
-### Inline code
 
-    This renders as `inline code`.
+You can also use backticks (and get syntax highlighting) - just make sure the backticks are indented once:
 
-This renders as `inline code`.
+    1. First
+
+    	```cf3
+    	# CFEngine block
+    
+    	bundle agent example()
+    	{
+    	}
+    	```
+
+    2. Second
+    3. Third
+
+1. First
+
+	```cf3
+	# CFEngine block
+    
+	bundle agent example()
+	{
+	}
+	```
+
+2. Second
+3. Third
+
 
 *****
 
