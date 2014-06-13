@@ -1232,34 +1232,6 @@
               ]
             }
           ]
-        },
-        {
-          "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 319,
-          "namespace": "default",
-          "name": "kept_successful_command",
-          "bodyType": "classes",
-          "arguments": [],
-          "contexts": [
-            {
-              "name": "any",
-              "attributes": [
-                {
-                  "line": 322,
-                  "lval": "kept_returncodes",
-                  "rval": {
-                    "type": "list",
-                    "value": [
-                      {
-                        "type": "string",
-                        "value": "0"
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
         }
       ]
     }

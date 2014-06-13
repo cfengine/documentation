@@ -4459,6 +4459,14 @@
                       "attributes": [
                         {
                           "line": 2039,
+                          "lval": "create",
+                          "rval": {
+                            "type": "string",
+                            "value": "true"
+                          }
+                        },
+                        {
+                          "line": 2040,
                           "lval": "copy_from",
                           "rval": {
                             "type": "functionCall",
@@ -4478,14 +4486,14 @@
               ]
             },
             {
-              "line": 2041,
+              "line": 2042,
               "name": "reports",
               "contexts": [
                 {
                   "name": "inform_mode|EXTRA",
                   "promises": [
                     {
-                      "line": 2043,
+                      "line": 2044,
                       "promiser": "$(this.bundle): copying file $(from) to $(to)",
                       "attributes": []
                     }
@@ -4497,7 +4505,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 2057,
+          "line": 2058,
           "namespace": "default",
           "name": "file_make",
           "bundleType": "agent",
@@ -4507,18 +4515,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 2070,
+              "line": 2071,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 2071,
+                      "line": 2072,
                       "promiser": "$(file)",
                       "attributes": [
                         {
-                          "line": 2072,
+                          "line": 2073,
                           "lval": "create",
                           "rval": {
                             "type": "string",
@@ -4526,7 +4534,7 @@
                           }
                         },
                         {
-                          "line": 2073,
+                          "line": 2074,
                           "lval": "edit_line",
                           "rval": {
                             "type": "functionCall",
@@ -4540,7 +4548,7 @@
                           }
                         },
                         {
-                          "line": 2074,
+                          "line": 2075,
                           "lval": "edit_defaults",
                           "rval": {
                             "type": "symbol",
@@ -4554,14 +4562,14 @@
               ]
             },
             {
-              "line": 2076,
+              "line": 2077,
               "name": "reports",
               "contexts": [
                 {
                   "name": "inform_mode|EXTRA",
                   "promises": [
                     {
-                      "line": 2078,
+                      "line": 2079,
                       "promiser": "$(this.bundle): creating $(file) with contents '$(str)'",
                       "attributes": []
                     }
@@ -4573,7 +4581,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 2081,
+          "line": 2082,
           "namespace": "default",
           "name": "file_empty",
           "bundleType": "agent",
@@ -4582,18 +4590,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 2092,
+              "line": 2093,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 2093,
+                      "line": 2094,
                       "promiser": "$(file)",
                       "attributes": [
                         {
-                          "line": 2094,
+                          "line": 2095,
                           "lval": "create",
                           "rval": {
                             "type": "string",
@@ -4601,7 +4609,7 @@
                           }
                         },
                         {
-                          "line": 2095,
+                          "line": 2096,
                           "lval": "edit_defaults",
                           "rval": {
                             "type": "symbol",
@@ -4615,14 +4623,14 @@
               ]
             },
             {
-              "line": 2097,
+              "line": 2098,
               "name": "reports",
               "contexts": [
                 {
                   "name": "inform_mode|EXTRA",
                   "promises": [
                     {
-                      "line": 2099,
+                      "line": 2100,
                       "promiser": "$(this.bundle): creating empty $(file) with 0 size",
                       "attributes": []
                     }
@@ -4634,7 +4642,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 2102,
+          "line": 2103,
           "namespace": "default",
           "name": "file_hardlink",
           "bundleType": "agent",
@@ -4644,18 +4652,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 2114,
+              "line": 2115,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 2115,
+                      "line": 2116,
                       "promiser": "$(link)",
                       "attributes": [
                         {
-                          "line": 2116,
+                          "line": 2117,
                           "lval": "move_obstructions",
                           "rval": {
                             "type": "string",
@@ -4663,7 +4671,7 @@
                           }
                         },
                         {
-                          "line": 2117,
+                          "line": 2118,
                           "lval": "link_from",
                           "rval": {
                             "type": "functionCall",
@@ -4687,14 +4695,14 @@
               ]
             },
             {
-              "line": 2119,
+              "line": 2120,
               "name": "reports",
               "contexts": [
                 {
                   "name": "inform_mode|EXTRA",
                   "promises": [
                     {
-                      "line": 2121,
+                      "line": 2122,
                       "promiser": "$(this.bundle): $(link) will be a hard link to $(target)",
                       "attributes": []
                     }
@@ -4706,7 +4714,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 2124,
+          "line": 2125,
           "namespace": "default",
           "name": "file_link",
           "bundleType": "agent",
@@ -4716,18 +4724,18 @@
           ],
           "promiseTypes": [
             {
-              "line": 2136,
+              "line": 2137,
               "name": "files",
               "contexts": [
                 {
                   "name": "any",
                   "promises": [
                     {
-                      "line": 2137,
+                      "line": 2138,
                       "promiser": "$(link)",
                       "attributes": [
                         {
-                          "line": 2138,
+                          "line": 2139,
                           "lval": "move_obstructions",
                           "rval": {
                             "type": "string",
@@ -4735,7 +4743,7 @@
                           }
                         },
                         {
-                          "line": 2139,
+                          "line": 2140,
                           "lval": "link_from",
                           "rval": {
                             "type": "functionCall",
@@ -4759,14 +4767,14 @@
               ]
             },
             {
-              "line": 2141,
+              "line": 2142,
               "name": "reports",
               "contexts": [
                 {
                   "name": "inform_mode|EXTRA",
                   "promises": [
                     {
-                      "line": 2143,
+                      "line": 2144,
                       "promiser": "$(this.bundle): $(link) will be a symlink to $(target)",
                       "attributes": []
                     }
@@ -7798,7 +7806,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/files.cf",
-          "line": 2046,
+          "line": 2047,
           "namespace": "default",
           "name": "copyfrom_sync",
           "bodyType": "copy_from",
@@ -7810,7 +7818,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 2050,
+                  "line": 2051,
                   "lval": "source",
                   "rval": {
                     "type": "string",
@@ -7818,7 +7826,7 @@
                   }
                 },
                 {
-                  "line": 2051,
+                  "line": 2052,
                   "lval": "purge",
                   "rval": {
                     "type": "string",
@@ -7826,7 +7834,7 @@
                   }
                 },
                 {
-                  "line": 2052,
+                  "line": 2053,
                   "lval": "preserve",
                   "rval": {
                     "type": "string",
@@ -7834,7 +7842,7 @@
                   }
                 },
                 {
-                  "line": 2053,
+                  "line": 2054,
                   "lval": "type_check",
                   "rval": {
                     "type": "string",
@@ -7842,7 +7850,7 @@
                   }
                 },
                 {
-                  "line": 2054,
+                  "line": 2055,
                   "lval": "compare",
                   "rval": {
                     "type": "string",
