@@ -16,6 +16,7 @@ You can narrow the amount of `hosts` to be queried with the help of filters abov
 You are also able to filter on the type of promise: user defined, system defined, or all.
 
 See also:
+
 * [Reporting Architecture][Reporting Architecture]
 * [SQL Queries Using the Enterprise API][SQL Queries Using the Enterprise API]
 * [SQL Schema Diagram][SQL Schema Diagram]
