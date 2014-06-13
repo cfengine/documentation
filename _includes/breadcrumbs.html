@@ -1,4 +1,9 @@
+{% comment %}
+do not show current page item
+do not show breadcrumb for the first level page
+{% endcomment %}
 <div id="breadcrumbs_wrapper">
+{% if page.categories.size > 1 %}
     <div id="breadcrumbs">
         <ul>
             {% assign breadcrumbKey = '' %}
@@ -14,22 +19,20 @@
                 {% if site.breadcrumbsNavigation[breadcrumbKey] != nil %}
 
                     {% if site.breadcrumbsNavigation[breadcrumbKey].alias != page.alias %}
-                        <li>
-                            <a href="{{ site.breadcrumbsNavigation[breadcrumbKey].alias }}">{{ site.breadcrumbsNavigation[breadcrumbKey].title }}</a>
-                        </li>
+                        {% if forloop.first != true %}
                         <li>
                             <i class="arrow">&nbsp;</i>
                         </li>
-                    {% else %}
+                        {% endif %}
                         <li>
-                            <span>{{ site.breadcrumbsNavigation[breadcrumbKey].title }}</span>
+                            <a href="{{ site.breadcrumbsNavigation[breadcrumbKey].alias }}">{{ site.breadcrumbsNavigation[breadcrumbKey].title }}</a>
                         </li>
                     {% endif %}
-
                 {% endif %}
             {% endfor %}
         </ul>
     </div>
+{% endif %}
     <div id="TOCbox_wrapper">
         <span id="TOCbox">Table of contents<div id="TOCbox_list"></div></span>
     </div>
