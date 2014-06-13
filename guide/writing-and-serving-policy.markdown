@@ -65,7 +65,7 @@ Writing, deploying, and using CFEngine `promises` will generally follow these si
 		* Optional: it is also possible to call a bundle manually, using `cf-agent`.
 5. Verify the `policy file` was deployed and successfully run.
 
-See [Tutorial for Running Examples][Examples#Tutorial for Running Examples] for a more detailed step by step tutorial.
+See [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples] for a more detailed step by step tutorial.
 
 ## Policy Workflow ##
 
