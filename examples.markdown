@@ -42,14 +42,13 @@ In this tutorial, you will perform the following:
 Policies contain **bundles**, which are collections of promises. A **promise** is a declaration of
 intent. Bundles allow related promises to be grouped together, as illustrated in the tutorial below.
 
-First, log into a running server machine using a command-line interface of your choice, for example PuTTY, if using Windows. 
-When logged into the _hub_ via SSH protocol, use the vi editor from any shell prompt to create the __hello_world file and insert 
-the content outlined below.
- 
-1. Type ```sudo su``` for super user (enter your password if prompted).
-2. To get to the __masterfiles__ directory, type ```cd /var/cfengine/masterfiles```.
-3. Create the file with the command: ```vi hello_world.cf ```
-4. In the vi editor, enter ```i``` for "Insert" and enter the following content (ie. copy and paste from a text editor):
+In this tutorial you will login to your policy server via the SSH protocol, use the vi command line editor to create a policy file named hello_world.cf, and create a bundle that calls a promise to display some text.
+
+1. Log into a running server machine using ssh (PuTTY may be used if using Windows). 
+2. Type ```sudo su``` for super user (enter your password if prompted).
+3. To get to the __masterfiles__ directory, type ```cd /var/cfengine/masterfiles```.
+4. Create the file with the command: ```vi hello_world.cf ```
+5. In the vi editor, enter ```i``` for "Insert" and enter the following content (ie. copy and paste from a text editor):
 
 ```cf3
 bundle agent hello_world
@@ -63,8 +62,9 @@ bundle agent hello_world
 }
 ```
 
-Now exit the "Insert" mode by pressing the "esc" button. This will return to the command prompt.
-Save the changes to the file by typing ```:w``` then "Enter". Then exit vi by typing ```:q``` then "Enter".
+6. Exit the "Insert" mode by pressing the "esc" button. This will return to the command prompt.
+7. Save the changes to the file by typing ```:w``` then "Enter". 
+8. Exit vi by typing ```:q``` then "Enter".
 
 In the policy file above, we have defined an **agent bundle** named `hello_world`. Agent
 bundles are only evaluated by **cf-agent**, the [agent component][cf-agent] of CFEngine.
