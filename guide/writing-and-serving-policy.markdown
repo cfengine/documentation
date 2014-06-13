@@ -12,7 +12,6 @@ sorting: 40
 * [Policy Workflow][Writing and Serving Policy#Policy Workflow]
 * [How Promises Work][Writing and Serving Policy#How Promises Work]
 	* [Summary for Writing, Deploying and Using Promises][Writing and Serving Policy#Summary for Writing, Deploying and Using Promises]
-* [Executing Policy][Writing and Serving Policy#Executing Policy]
 * [Best Practices][Writing and Serving Policy#Best Practices]
 * [Layers of Abstraction in Policy][Layers of Abstraction in Policy]
 * [Promises Available in CFEngine][Promises Available in CFEngine]
