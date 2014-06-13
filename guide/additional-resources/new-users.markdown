@@ -7,14 +7,14 @@ tags: [Examples, Tutorials, Community]
 ---
 
 
-## Get Up and Running Quickly with CFEngine 3.5 Community Edition
+## Get Up and Running Quickly with CFEngine 3.5 Community Edition ##
 by [Erik Schwartz](http://www.linkedin.com/pub/erik-schwartz/7/257/ba9), CFEngine Contributor
 
 v0.1, 2013-10
 
 *This information is reprinted with Erik's permission and thanks. Content and formatting modifications have been made where necessary.*
 
-## Overview
+## Overview ##
 
 This document includes the following:
 
@@ -41,7 +41,7 @@ This document includes the following:
 [CFEngine official resources][Up and Running#CFEngine official resources]
 
 
-## Preface
+## Preface ##
 
 This document assumes the following:
 
@@ -52,7 +52,7 @@ This document assumes the following:
 **Note:** Perform due diligence with testing and tinkering, and in a proper test environment, before deploying anything to production. This document assumes no responsibility if you use (or misuse) the advice here, and it causes data loss, service problems, or other system mayhem.
 
 
-## CFEngine basics
+## CFEngine basics ##
 CFEngine is a configuration management system. That means, roughly, it's a collection of applications that is used to get your host (or group of hosts) configured to a desired state. You--the sysadmin--describe that state, and CFEngine makes it happen, and in an automated fashion.
 
 For a more detailed overview:
@@ -61,7 +61,7 @@ For a more detailed overview:
 * http://en.wikipedia.org/wiki/CFEngine
 
 
-#### Useful Terms
+### Useful Terms ###
 
 * `promise`: One or more descriptions (written by you, the sysadmin) of a system state you wish to get to.
 * `bundle`: A collection of promises, usually contained within a single file.
@@ -71,10 +71,10 @@ For a more detailed overview:
 
 [Back to top of page.][Up and Running#Overview] 
 
-## Install and configure the CFEngine server
+## Install and configure the CFEngine server ##
 
 
-### Download and install
+### Download and install ###
 
 Download the latest CFEngine 3.5 Community Edition packages from: http://cfengine.com/community
 
@@ -91,7 +91,7 @@ _Policy is not found in /var/cfengine/inputs, not starting CFEngine_
 This is fine. No worries for the time being.
 
 
-### Set up master directories
+### Set up master directories ###
 
 
 Navigate to `/var/cfengine/masterfiles`. This directory is where your CFEngine server keeps everything it will be sharing with agents. In other words, the changes we make here will ultimately be made on the agents as well.
@@ -115,10 +115,10 @@ Here is (for the purposes of this primer) how the propagation of promise changes
 * Agent systems connect to the server, and copy `/var/cfengine/masterfiles` into their local `/var/cfengine/inputs` directory
 
 
-### Customize your server configuration
+### Customize your server configuration ###
 
 
-#### def.cf
+#### def.cf ####
 
 Configure `/var/cfengine/masterfiles/def.cf`: This contains two variables of interest: `domain` and `acl`. 
 
@@ -149,7 +149,7 @@ vars:
 ```
 
 
-#### controls/cf_execd.cf
+#### controls/cf_execd.cf ####
 
 
 Configure `/var/cfengine/masterfiles/controls/cf_execd.cf`: This tells the CFEngine server what email address to notify about certain events and about reports designed by you, the sysadmin.
@@ -180,7 +180,7 @@ body executor control
 ```
 
 
-#### update.cf
+#### update.cf ####
 
 
 Configure `/var/cfengine/masterfiles/update.cf`: This file controls what files the agents receive from the server. Before changing it, create your `failsafe.cf` from it:
@@ -227,7 +227,7 @@ purge                   => "true" ;
 
 ```
 
-#### promises.cf
+#### promises.cf ####
 
 Configure `/var/cfengine/masterfiles/promises.cf`: This file drives the agent promise execution. In other words, the agent reads this file to figure out what instructions you have for it.
 
@@ -279,7 +279,7 @@ bundlesequence          => {
 
 [Back to top of page.][Up and Running#Overview] 
 
-## Set up your promise management files
+## Set up your promise management files ##
 
 
 Within the `/var/cfengine/masterfiles/myPromises` directory, create a skeleton promise file, and name it `z01PromiseSetup.cf`. (Doing so will make adding new promises in the future a lot easier.)
@@ -307,15 +307,15 @@ vars:
 
 [Back to top of page.][Up and Running#Overview] 
 
-## Set up your first promise 
+## Set up your first promise ##
 
 
-### Create a "hello world" promise file
+### Create a "hello world" promise file ###
 
 
 Within the `/var/cfengine/masterfiles/myPromises` directory, create a file called `a01SayHello.cf`, with the following contents:
 
-#### a01SayHello.cf
+#### a01SayHello.cf ####
 
 
 ```cf3
@@ -364,7 +364,7 @@ insert_lines:
 ```
 
 
-### Make CFEngine aware of the new promise
+### Make CFEngine aware of the new promise ###
 
 
 Now edit `/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf` as follows.
@@ -387,10 +387,10 @@ vars:
 
 [Back to top of page.][Up and Running#Overview] 
 
-## Start your CFEngine server
+## Start your CFEngine server ##
 
 
-#### Do a quick syntax check
+### Do a quick syntax check ###
 
 
 Make sure you don't have any typos up to this point.
@@ -402,7 +402,7 @@ Make sure you don't have any typos up to this point.
 If you see any error output, carefully review the messages for line numbers that are causing the problem. Reread earlier steps in this primer, and try to fix them.
 
 
-#### Fire up your newly configured CFEngine server
+### Fire up your newly configured CFEngine server ###
 
 The server is configured and ready to start. We will step through a couple one-time commands to get it going.
 
@@ -419,7 +419,7 @@ The server is configured and ready to start. We will step through a couple one-t
 * CFEngine server listens for TCP connections on port 5308.
 
 
-#### Fire up an agent on the CFEngine server
+### Fire up an agent on the CFEngine server ###
 
 Assuming you wish for the CFEngine server to manage itself (i.e. by running a CFEngine agent daemon, in addition to the server daemon), also run the following command.
 
@@ -437,10 +437,10 @@ You now have both a CFEngine server and a CFEngine agent running on your server 
 
 [Back to top of page.][Up and Running#Overview] 
 
-## Install and configure CFEngine agent systems
+## Install and configure CFEngine agent systems ##
 
 
-#### Download and install
+### Download and install ###
 
 
 Download the latest CFEngine 3.5 Community Edition packages from: http://cfengine.com/community
@@ -451,7 +451,7 @@ On each of your agent systems (the systems you want managed by CFEngine), instal
 **Note:** The same package is used for both `server` and `agent` installs. Use the same CFEngine version on the agents that you installed on the server.
 
 
-#### Start the agent
+### Start the agent ###
  
 
 Getting the agent started is easy! We've already done most of the work on the server. The agent will get everything it needs from the server's `masterfiles`, and keep them locally in `/var/cfengine/inputs`. Run the following on the agent system:
@@ -466,7 +466,7 @@ That's it! Your agent will soon begin executing the promises it receives from th
 
 [Back to top of page.][Up and Running#Overview] 
 
-## Dissect the "hello world" promise
+## Dissect the "hello world" promise ##
 
 
 Before continuing with further promise examples, let's back up a step and walk through notable lines in our first promise.
@@ -558,7 +558,7 @@ insert_lines:                                                  # <17>
 
 
 
-## Set up a global classes promise
+## Set up a global classes promise ##
 
 
 To add flexibility to our promise files, we are going to set up a promise that provides `global` classes to our CFEngine environment. That means we can group hosts together arbitrarily, as needed.
@@ -596,7 +596,7 @@ classes:
 ```
 
 
-#### Make CFEngine aware of the new promise
+### Make CFEngine aware of the new promise ###
 
 
 Update `/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf` as shown.
@@ -623,7 +623,7 @@ vars:
 
 [Back to top of page.][Up and Running#Overview] 
 
-## Add some more useful promises
+## Add some more useful promises ##
 
 
 Let's get serious now. You are probably loosely, incompletely familiar with the anatomy of a promise file at this point. If you think the way I do, you're ready for a lot more examples to pore over and learn from.
@@ -635,7 +635,7 @@ Read through the promise files in this section, and then create them as they're 
 
 
 
-#### Install packages, based on OS
+### Install packages, based on OS ###
 
 
 As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
@@ -709,7 +709,7 @@ packages:                                             # <2>
 <6> This directive says to use `apt(8)`.
 
 
-#### Make CFEngine aware of the new promise
+### Make CFEngine aware of the new promise ###
 
 Update `/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf` as shown.
 
@@ -735,7 +735,7 @@ vars:
 }
 ```
 
-#### Manage a config file, based on a template
+### Manage a config file, based on a template ###
 
 
 Before creating this next promise in `/var/cfengine/masterfiles/myPromises`, create a `/var/cfengine/masterfiles/myTemplates/motd.txt` file, with the text `Hey, this is a template` inside.
@@ -787,7 +787,7 @@ files:
 
 **Remember:** We create CFEngine server promise files within `/var/cfengine/masterfiles`. The CFEngine agents consume those files within `/var/cfengine/inputs`.
 
-#### Make CFEngine aware of the new promise
+### Make CFEngine aware of the new promise ###
 
 
 Update `/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf` as shown.
@@ -823,7 +823,7 @@ You understand how we're using `z01PromiseSetup.cf` now, right? For every promis
 * Add the promise file name to the `promise_files` slist.
 
 
-#### Manage a config file, on a per-host basis
+### Manage a config file, on a per-host basis ###
 
 
 Before creating this next promise in `/var/cfengine/masterfiles/myPromises`, create a `/var/cfengine/masterfiles/myTemplates/motd.HOSTNAME.txt` file, with the text `Hey, this is a per-host template` inside.
@@ -874,7 +874,7 @@ files:
 **Note:** Update `myPromises/z01PromiseSetup.cf` to include this promise.
 
 
-#### Manage a config file, and restart a service
+### Manage a config file, and restart a service ###
 
 
 As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
@@ -950,7 +950,7 @@ reports:
 
 **Note:** Update `myPromises/z01PromiseSetup.cf` to include this promise.
 
-#### Add a group to /etc/group
+### Add a group to /etc/group ###
 
 
 As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
@@ -1008,7 +1008,7 @@ files:
 **Note:** Update `myPromises/z01PromiseSetup.cf` to include this promise.
 
 
-#### Add a shell user
+### Add a shell user ###
 
 As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
 
@@ -1087,7 +1087,7 @@ files:
 
 
 
-#### Report on existence of files and users
+### Report on existence of files and users ###
 
 
 As always, create the new promise file in `/var/cfengine/masterfiles/myPromises`.
@@ -1159,15 +1159,15 @@ reports:
 
 [Back to top of page.][Up and Running#Overview] 
 
-## Commands for controlling CFEngine
+## Commands for controlling CFEngine ##
 
 
-### Useful server commands
+### Useful server commands ###
 
 
 So you've just updated your promises, and you want to make them immediately available to your agents? (In your test environment. Because we test before deploying anywhere important.) You can wait for CFEngine to run through its normal procedures (in which case it can take five, ten, or fifteen minutes before the agents execute the promises, for reasons beyond the scope of this primer). Or you can speed things up a bit.
 
-#### Validate your promise changes
+#### Validate your promise changes ####
 
 ```
   # cf-promises -f /var/cfengine/masterfiles/promises.cf
@@ -1175,7 +1175,7 @@ So you've just updated your promises, and you want to make them immediately avai
 
 If there is a syntactical problem with your promises, CFEngine will complain here and point you to a file and line number. Do not proceed until you've fixed any problems.
 
-#### Update what's available for your agents to pull
+#### Update what's available for your agents to pull ####
 
 ```
   # cf-agent -IKf /var/cfengine/masterfiles/update.cf
@@ -1184,10 +1184,10 @@ If there is a syntactical problem with your promises, CFEngine will complain her
 That's that. Now observe one of your agents, or speed things up there too..
 
 
-### Useful agent commands
+### Useful agent commands ###
 
 
-#### Immediately pull the latest promise updates from the server
+#### Immediately pull the latest promise updates from the server ####
 
 ```
   # cf-agent -IKf /var/cfengine/inputs/update.cf
@@ -1195,7 +1195,7 @@ That's that. Now observe one of your agents, or speed things up there too..
 
 Remember, this is only if you wish to speed things up and not wait for CFEngine to take care of it naturally via its daemon processes. Notice how we are using the `inputs` directory here. Agents care only about `inputs`, not `masterfiles`.
 
-#### Immediately execute promises
+#### Immediately execute promises ####
 
 ```
   # cf-agent -IKf /var/cfengine/inputs/promises.cf
@@ -1204,16 +1204,16 @@ Remember, this is only if you wish to speed things up and not wait for CFEngine 
 That's that.
 
 
-### More useful agent commands
+### More useful agent commands ###
 
 
-#### Query the status of a single promise bundle
+#### Query the status of a single promise bundle ####
 
 ```
   # cf-agent -vnb *b21_manage_config*
 ```
 
-#### Print the percentage of promises currently kept
+#### Print the percentage of promises currently kept ####
 
 ```
   # cf-agent -vn
@@ -1221,7 +1221,7 @@ That's that.
 
 The percentage of currently-kept promises gives us the percentage of promises that have successfully executed, the percentage that will be fixed on the next CFEngine run, and the percentage that were unable to execute. (You may be able to drill down on details by carefully reviewing the output from this command.)
 
-#### Print only promises that are currently unable to execute
+#### Print only promises that are currently unable to execute ####
 
 ```
   # cf-agent -n
