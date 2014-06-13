@@ -40,15 +40,15 @@ following defines the attribute `Role` which is set to
 `database_server`. You need to add it to the top-level
 `bundlesequence` or in a bundle that it calls.
 
-```
-bundle agent myreport
-{
-  vars:
-      "myrole"
-      string => "database_server",
-      meta => { "inventory", "attribute_name=Role" };
-}
-```
+	```cf3
+	bundle agent myreport
+	{
+	  vars:
+		  "myrole"
+		  string => "database_server",
+		  meta => { "inventory", "attribute_name=Role" };
+	}
+	```
 
 * The hub must be able to collect the reports from the client. TCP
 port 5308 must be open and, because 3.6.0 uses TLS, should not be
