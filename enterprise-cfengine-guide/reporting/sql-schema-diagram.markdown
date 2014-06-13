@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  SQL Queries
+title:  SQL Schema Diagram
 published: true
 sorting: 30
 tags: [enterprise, rest, api, reporting, sql, queries]
