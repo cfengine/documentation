@@ -198,7 +198,7 @@ def applyLinkMap(file_name, config):
 			current_title = current_title.lstrip().lstrip('\"')
 			current_section = current_title
 		elif markdown_line.find("#") == 0:
-			current_section = markdown_line.rstrip('#').lstrip('#').rstrip().lstrip()
+			current_section = markdown_line.rstrip().rstrip('#').lstrip('#').rstrip().lstrip()
 					
 		new_line = ""
 		if not in_pre:
