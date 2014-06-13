@@ -74,6 +74,8 @@ bundles are only evaluated by **cf-agent**, the [agent component][cf-agent] of C
 This bundle [promises][Promise Types and Attributes] to [report][reports] on any [class of
 hosts][Classes and Decisions]. 
 
+[Back to top of page.][Examples and Tutorials#Links to Examples]
+
 ### Activate a Bundle Manually ###
 
 Activate the bundle manually by executing the following command at prompt:
@@ -96,7 +98,7 @@ Thus, CFEngine can function even if everything else fails
 
 [Back to top of page.][Examples and Tutorials#Links to Examples]
 
-### Make the Example Stand Alone ### 
+### Make the Example Stand Alone ###
 
 Instead of specifying the bundle sequence on the command line (as it was above), a [body common
 control][Components and Common Control#Common Control] section can be added to
@@ -140,7 +142,7 @@ The output is shown below:
 2013-08-20T14:25:36-0500   notice: R: Hello World!
 ```
 
-[Back to top of page.][Hello World#Overview]
+[Back to top of page.][Examples and Tutorials#Links to Examples]
 
 ### Make the Example an Executable Script ###
 
