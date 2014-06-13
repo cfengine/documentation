@@ -2,7 +2,7 @@
 layout: default
 title: CFEngine Enterprise
 published: true
-sorting: 30
+sorting: 3
 ---
 
 ## CFEngine Enterprise Features ##
@@ -27,7 +27,8 @@ The CFEngine Enterprise Mission Portal contains continual reporting that details
 
 * [Install and Get Started][]
 * [User Interface][]
-* [Hosts, Health and Settings][]
+* [Settings][]
+* [Hosts and Health][]
 * [Alerts and Notifications][]
 * [Reporting][]
 * [Monitoring][]

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Hosts, Health and Settings
+title: Hosts and Health
 sorting: 30
 published: true
 tags: [cfengine enterprise, user interface, mission portal]
