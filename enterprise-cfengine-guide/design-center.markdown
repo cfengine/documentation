@@ -24,7 +24,7 @@ Git repository in `/opt/cfengine/masterfiles.git` but does **not**
 deploy it automatically.  Thus any work you do with Design Center will
 not propagate to your hosts without some help.
 
-Please see [Version Control and Configuration Policy] for detailed
+Please see [Best Practices#Version Control and Configuration Policy] for detailed
 instructions for enabling the Version Control workflow in CFEngine
 Enterprise.
 
@@ -54,5 +54,5 @@ Note: `Sketches` can be activated multiple times with varying configuration and 
 * [Enterprise Sketches][Enterprise Sketches]
 * [Write a new Sketch][Write a new Sketch]
 * [Deploy your first Policy (Enterprise)][Deploy your first Policy]
-* [Version Control and Configuration Policy (Enterprise)][Version Control and Configuration Policy]
+* [Version Control and Configuration Policy (Enterprise)][Best Practices#Version Control and Configuration Policy]
 * [Write a new Sketch (Enterprise and Community)][Write a new Sketch]

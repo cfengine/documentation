@@ -41,7 +41,7 @@ bundle agent setup_home_dir(user, group, homedir)
 ```
 
 If you don't understand what it does, please look at
-[Tutorials][Tutorials] and [Getting Started][Getting Started] to learn
+[Tutorials][Tutorials] and the CFEngine [Guide][] to learn
 more about CFEngine's policy language, syntax, and operation. We will
 not worry about the internals except to apply namespaces and testing
 guards.

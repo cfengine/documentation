@@ -138,7 +138,7 @@ This script installs the latest CFEngine Enterprise Policy Server on your server
 	`$ ifconfig`.
 * Run the bootstrap command: `sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>`
 
-Example: `$ sudo /var/cfengine/bin/cf-agent --bootstrap 172.31.3.25`
+  Example: `$ sudo /var/cfengine/bin/cf-agent --bootstrap 172.31.3.25`
 
 ![Bootstrap the policy server](Installing-CFE-on-AWS-10.png)
 
@@ -171,7 +171,7 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 * All hosts must be bootstrapped to the Policy Server in order to establish a connection between the `Host` and the `Policy Server`. 
 * Run the same commands that you ran in Step 2, `$ sudo /var/cfengine/bin/cfagent bootstrap <IP address of policy server>`.
 
-Example: `$ sudo /var/cfengine/bin/cfagent bootstrap 172.31.3.25`
+  Example: `$ sudo /var/cfengine/bin/cfagent bootstrap 172.31.3.25`
 
 * The installation process is complete and CFEngine Enterprise is up and running on your system. 
 
@@ -186,14 +186,22 @@ Example: `$ sudo /var/cfengine/bin/cfagent bootstrap 172.31.3.25`
 
 ### Tutorials ###
 
-* [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches (Enterprise Only)] This tutorial
-teaches you how to configure and deploy business policy by using the Design Center application in the Mission Portal. Next, it shows you how to verify
-that your business policy is being activated by viewing the Reports in the Mission Portal.
-* [Create a standalone policy (Hello World).][Hello World] Whereas the above tutorial uses pre-defined policy (called sketches) that you can modify in the Mission Portal, this
-tutorial teaches you how to create business policy (promises) on the command line. Here, you
-can get a taste of the CFEngine language as you create standalone and executable scripts.
-* [Distribute files from a central location.][Distribute files from a central location] Whereas the first tutorial in this list teaches you how to deploy business policy
-through the Mission Portal, this advanced, command-line tutorial shows you how to distribute policy files from the Policy Server to all pertinent Hosts.
+* [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches]
+
+  This tutorial
+  teaches you how to configure and deploy business policy by using the Design Center application in the Mission Portal. Next, it shows you how to verify
+  that your business policy is being activated by viewing the Reports in the Mission Portal.
+  
+* [Create a standalone policy (Hello World).][Hello World]
+
+  Whereas the above tutorial uses pre-defined policy (called sketches) that you can modify in the Mission Portal, this
+  tutorial teaches you how to create business policy (promises) on the command line. Here, you
+  can get a taste of the CFEngine language as you create standalone and executable scripts.
+  
+* [Distribute files from a central location.][Distribute files from a central location]
+
+  Whereas the first tutorial in this list teaches you how to deploy business policy
+  through the Mission Portal, this advanced, command-line tutorial shows you how to distribute policy files from the Policy Server to all pertinent Hosts.
 
 ### Recommended Reading ###
 

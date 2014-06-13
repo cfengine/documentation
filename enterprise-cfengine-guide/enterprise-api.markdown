@@ -11,9 +11,11 @@ of a CFEngine Enterprise installation.
 
 ![Enterprise API Overview](enterprise-api-architecture-overview.png)
 
+<!---
 In CFEngine Enterprise 3.5 and later, [Multi-Site Query][Multi-Site Queries] 
 support allows centralized collection of data from multiple CFEngine 
 Enterprise installations and sites.
+-->
 
 The Enterprise API is a REST API, but a central part of interacting with the 
 API involves using SQL. With the simplicity of REST, and the flexibility of 
@@ -29,5 +31,5 @@ See also the [Enterprise API Examples][Enterprise API Examples]:
 * [Manage users, roles][Managing Users and Roles]
 * [Managing Settings][Managing Settings]
 * [Browse host information][Browsing Host Information]
-* [Issue flexible SQL queries][SQL Queries] against data collected from hosts by the CFEngine Server
-* [Schedule reports][SQL Queries#Subscribed Queries] for email and later download
+* [Issue flexible SQL queries][SQL Query Examples] against data collected from hosts by the CFEngine Server
+* [Schedule reports][SQL Query Examples#### Subscribed Query Example: Creating A Subscribed Query] for email and later download

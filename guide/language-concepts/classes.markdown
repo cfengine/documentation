@@ -20,7 +20,7 @@ Classes are either `set` or `not set`, depending on context. Classes fall into
 user-defined. Refer to [Hard and Soft Classes][Hard and Soft Classes] in the **Reference** 
 section for more information.
 
-In [CFEngine Enterprise][Enterprise Report API], the list of set classes is 
+In [CFEngine Enterprise][], the list of set classes is 
 reported to the CFEngine Database Server and can be used there for reporting, 
 grouping of hosts and inventory management.
 

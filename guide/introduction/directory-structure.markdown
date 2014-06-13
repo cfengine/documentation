@@ -118,7 +118,7 @@ client/server network communications.
 
 On hosts, CFEngine writes numerous logs and records to its private workspace. 
 
-[CFEngine Enterprise][Enterprise Report API] provides solutions 
+[CFEngine Enterprise][] provides solutions 
 for centralization and network-wide reporting at an arbitrary scale.
 
 * `cf3.[hostname].runlog`

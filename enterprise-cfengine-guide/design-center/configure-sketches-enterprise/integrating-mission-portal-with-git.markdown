@@ -218,8 +218,8 @@ pull from git every time it runs (by default every 5 minutes).
         Committer email `git@localhost.localdomain`
         Committer name `CFEngine Mission Portal`
         Git private key `mission_portal_id_rsa.pub` as generated in step 5 of 
-        [Set up the git service][Integrating Mission Portal with git#Set up the
-        git service] (You will need to copy the private key to your workstation
+        [Set up the git service][Integrating Mission Portal with git#Set up the git service]
+        (You will need to copy the private key to your workstation
         so that it can be accessed via the file selection.
 
 4. Click save settings and make sure it reports success.
