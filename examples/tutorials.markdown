@@ -8,14 +8,6 @@ tags: [Examples, Tutorials]
 
 Familarize yourself with CFEngine by following these tutorials.
 
-### [Create a standalone policy (Hello World).][Hello World]
-
-In this tutorial, you will perform the following:
-
-* Create a simple hello_world policy file
-* Make hello_world a standalone policy
-* Make hello_world an executable script
-
 #### [JSON Support in CFEngine][JSON Support in CFEngine]
 
 Using JSON from CFEngine is easy. Try it out and see for yourself!

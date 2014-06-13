@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CFEngine Enterprise Guide 
+title: CFEngine Enterprise
 published: true
-sorting: 7
+sorting: 3
 ---
 
 ## CFEngine Enterprise Features ##
