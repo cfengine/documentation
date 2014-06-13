@@ -225,13 +225,13 @@ from the example.
 3. Insert the example's bundle name in the `bundlesequence` section
     of the main policy file `/var/cfengine/masterfiles/promises.cf`:
 
-		```cf3  
-			  bundlesequence => {
-				  ...
-				  "hello_world",
-				  ...
-			  };
-		```
+	```cf3  
+		  bundlesequence => {
+			  ...
+			  "hello_world",
+			  ...
+		  };
+	```
 
 4. Insert the policy file name in the `inputs` section of the main policy file
     `/var/cfengine/masterfiles/promises.cf`:
