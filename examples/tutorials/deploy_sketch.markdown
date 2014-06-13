@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Configure and Deploy a Policy Using Sketches (Enterprise Only) 
+title: Configure and Deploy a Policy Using Sketches 
 sorting: 16
 published: true
 tags: [Examples, Tutorials, Sketch]
