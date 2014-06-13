@@ -8,13 +8,12 @@ tags: [Examples]
 
 ## Links to Examples ##
 
-* [Example Snippets][Example Snippets]
-
-This section is divided into topical areas, and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
+* [Example Snippets][Example Snippets]: This section is divided into topical areas, and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
 
 Note: CFEngine also includes a small set of examples by default, which can be 
 found in `/var/cfengine/share/doc/examples`.
 
+* Enterprise API Examples
 * [Tutorials][Tutorials]
 * Design Center examples in the CFEngine [GitHub repository](https://github.com/cfengine/design-center/tree/master/examples).
 
