@@ -185,7 +185,7 @@ def promise_attribute(parameters, config):
 			lines.append("**Type:** (menu option)\n\n")
 			lines.append("**Allowed input range:**\n\n")
 			for attribute_value in attribute_values:
-				lines.append("* `%s`\n" % attribute_value)
+				lines.append("* ```%s```\n" % attribute_value)
 			lines.append("\n")
 	elif attribute_type == "bundle":
 		lines.append("**Type:** `%s`\n\n" % attribute_type)
@@ -321,12 +321,12 @@ def function_attributes(parameters, config):
 		else:
 			parameter_type = "`" + parameter_type + "`"
 
-		arguments += "* `" + parameter_name  + "`: "
+		arguments += "* ```" + parameter_name  + "```: "
 		if option_arg:
 			arguments += "one of\n"
 			options = parameter["range"].split(',')
 			for option in options:
-				arguments += "    * `" + option + "`\n"
+				arguments += "    * ```" + option + "```\n"
 		else:
 			arguments += parameter_type + ", in the range: `"
 			arguments += parameter["range"] + "`\n"
@@ -819,7 +819,7 @@ def library_include(parameters, config):
 					argument_lines.append("**Arguments:**\n\n")
 				argument = arguments[argument_idx]
 				prototype += argument
-				argument_line = "* `" + argument + "`"
+				argument_line = "* ```" + argument + "```"
 				
 				# if we have already found documentation for this, use it
 				param_line = documentation_dict.get("param_" + argument)
