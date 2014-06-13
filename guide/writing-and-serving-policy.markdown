@@ -115,8 +115,6 @@ needless fragility and keep two independent quality assurance processes apart.
 
 * [Bundles Best Practices][Bundles Best Practices] Refer to this page as you decide when to make a bundle and when to use classes and/or variables in them.
 
-* [Default Configuration File Structure][Default Configuration File Structure] Learn the roles of these special files: promise.cf, update.cf, and failsafe.cf.
-
 * [Testing Policies][Testing Policies] This page describes how to locally test CFEngine and play with configuration files.
 
 
