@@ -162,7 +162,7 @@ is involved in patch distribution, they can view that bundle for specifics.
 ## Integrate the policy
 
 Now that all the pieces of the policy are in place, they must be integrated
-into the policy so they can be activated. Add each policy file to the `inputs`
+into the policy so they can be activated. Add each policy file to the [`inputs`][Components and Common Control#inputs]
 section which is found under `body common control`. Once the policy file is included in 
 inputs, the bundle can be activated. Bundles can be activated by adding them to either the
 `bundlesequence` or they can be called as a `methods` type promise.

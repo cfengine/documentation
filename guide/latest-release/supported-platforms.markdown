@@ -26,7 +26,7 @@ following platforms:
 CFEngine works on a wide range of platforms, and the CFEngine team strives to 
 provide support for the platforms most frequently used by our users.
 
-### CFEngine Enterprise Server
+### CFEngine Enterprise Server ###
 
 | OS              | Versions     | Architectures      |
 |-----------------|--------------|--------------------|
@@ -35,7 +35,7 @@ provide support for the platforms most frequently used by our users.
 | SLES            | 11           | x86-64             |
 | Ubuntu          | 10.4, 12.4   | x86-64             |
 
-### Hosts
+### Hosts ###
 
 Any host can be a policy server in Community installations of CFEngine.
 
@@ -56,7 +56,7 @@ CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www
 This means that CFEngine Enterprise has been technically verified by IBM
 to be installed in and manage VIOS environments.
 
-## Hub/Host compatibility
+## Hub/Host compatibility ##
 
 We strongly recommend to install identical versions on all hosts and servers 
 in your system.
@@ -71,7 +71,7 @@ from hosts running the following versions of CFEngine:
 Some data will not be available from older hosts, and the policy you serve 
 needs to take into account hosts with different versions.
 
-## Additional platforms
+## Additional platforms ##
 
 CFEngine is known to run on a wide range of other platforms. As long as the 
 platform is POSIX compliant and has a C compiler toolchain that fully implements 

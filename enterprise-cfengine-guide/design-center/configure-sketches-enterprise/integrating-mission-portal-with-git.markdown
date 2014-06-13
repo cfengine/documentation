@@ -146,8 +146,7 @@ pull from git every time it runs (by default every 5 minutes).
         }
     ```
 
-2. Modify the `update.cf` file: Add `update_from_repository.cf` to `inputs` and
-add `update_from_repository` to `bundlesequence` in the body common control.
+2. Modify the `update.cf` file: Add `update_from_repository.cf` to [`inputs`][Components and Common Control#inputs] and add `update_from_repository` to `bundlesequence` in the body common control.
 
     `user@workstation $ git diff update.cf`:
 
@@ -235,7 +234,7 @@ add `update_from_repository` to `bundlesequence` in the body common control.
 3. View the listing of some sketches that are available out of the box.
 4. Click the `Packages::packages_removed` sketch.
 5. Fill out the fields as shown by the example below, and click `Show Hosts` and then `Activate`.
- ![Test activation in Mission Portal](mission-portal-test-activation.png)
+   ![Test activation in Mission Portal](mission-portal-test-activation.png)
 6. Type "My test activation" into the commit message box and commit.
 
 ### Review the change history from the git commit log
@@ -275,7 +274,7 @@ under Version Control Repository (we are using 'Mission Portal' in the example b
 
 We can also see the user name of the Mission Portal user by printing the author name.
 
-````
+```console
 $ git log --pretty=format:"%h %an: %s" --committer='Mission Portal'
 0ac4ae0 bob: Setting up dev environment. Ticket #123.
 5ffc4d1 bob: Configuring postgres on test environment. Ticket #124.
@@ -284,19 +283,19 @@ $ git log --pretty=format:"%h %an: %s" --committer='Mission Portal'
 5ffc4d1 tom: print echo example
 dc9518d rachel: Rolling out Apache, Phase 2
 3cfaf93 rachel: Rolling out Apache, Phase 1
-````
+```
 
 #### Show commits by a Mission Portal user
 
 If you are only interested in seeing the commits by a particular user of the
 Mission Portal, you can filter on the author name as well ('bob' in the example below).
 
-````
+```console
  $ git log --pretty=oneline --abbrev-commit --committer='Mission Portal' --author='bob'
 0ac4ae0 Setting up dev environment. Ticket #123.
 5ffc4d1 Configuring postgres on test environment. Ticket #124.
 4190ca5 My test activation
-````
+```
 
 ## End to end wait time
 

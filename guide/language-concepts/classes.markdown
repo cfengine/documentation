@@ -178,7 +178,7 @@ Example Output:
 
 In this example, lists of cities are defined in the `vars` section and these
 lists are combined into a list of all cities. These variable lists are used to
-qualify the greetings and to make the policy more concise. In the `classes`
+qualify the greetings and to make the policy more concise. In the [`classes`][classes]
 section a country class is defined if a class described on the right hand side
 evaluates to true. In the reports section the current time is always reported
 but only agents found to have the `Morning` and `italy` classes defined will

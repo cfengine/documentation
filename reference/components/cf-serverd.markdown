@@ -124,7 +124,7 @@ Absence of this attribute means that connections from all hosts are accepted.
 
 [%CFEngine_promise_attribute()%]
 
-**See also:** `protocol_version`
+**See also:** [`protocol_version`][Components and Common Control#protocol_version]
 
 ### allowciphers
 
@@ -134,7 +134,7 @@ For a list of possible ciphers, see man page for "openssl ciphers".
 
 [%CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA)%]
 
-**See also:** `protocol_version`
+**See also:** [`protocol_version`][Components and Common Control#protocol_version]
 
 **History:** Introduced in CFEngine 3.6.0
 

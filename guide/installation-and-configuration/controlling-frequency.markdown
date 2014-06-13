@@ -27,7 +27,7 @@ time has elapsed. Default time is 1 minute.
 
 The maximum amount (in minutes) of time `cf-agent` should wait for an old 
 instantiation to finish before killing it and starting again. You can think 
-about `expireafter` as a timeout to use when a promise verification may 
+about [`expireafter`][cf-agent#expireafter] as a timeout to use when a promise verification may 
 involve an operation that could wait indefinitely. Default time is 120  
 minutes.
 
@@ -46,7 +46,7 @@ setting is defined in `body agent control`.
 This setting tells CFEngine not to verify promises until 60 minutes have 
 elapsed, ie ensures that the global frequency for all promise verification is 
 one hour. This global setting of one hour could be changed for a specific 
-promise body by setting `ifelapsed` in the promise body.
+promise body by setting [`ifelapsed`][Promise Types and Attributes#ifelapsed] in the promise body.
 
 ```cf3
     body action example

@@ -119,10 +119,10 @@ On the client side, i.e. `cf-runagent` and `cf-agent`, there are three issues:
 1.  Choosing which server to connect to.
 2.  Trusting the key of any previously unknown servers
 3.  Choosing whether data transfers should be encrypted (with
-    `encrypt`) - not applicable if you are using new `protocol_version`.
+    [`encrypt`][files#encrypt]) - not applicable if you are using new [`protocol_version`][Components and Common Control#protocol_version].
 
 There are two ways of managing trust of server keys by a client. One is an 
-automated option, setting the option `trustkey` in a `copy_from` files promise, e.g.
+automated option, setting the option [`trustkey`][files#trustkey] in a `copy_from` files promise, e.g.
 
 ```cf3
 body copy_from example
@@ -182,7 +182,7 @@ users must be added to the server configuration file.
 
 ## Encryption
 
-CFEngine provides encryption for keeping file contents private during transfer. If `protocol_version` is set to `classic` or `1`, then file transfers must be explicitly encrypted by setting `encrypt=>"true"` in a `copy_from` body of a `files` promise. For newer protocol_version, all transfers are encrypted.
+CFEngine provides encryption for keeping file contents private during transfer. If [`protocol_version`][files#protocol_version] is set to `classic` or `1`, then file transfers must be explicitly encrypted by setting `encrypt=>"true"` in a `copy_from` body of a `files` promise. For newer protocol_version, all transfers are encrypted.
 
 However, the main role of encryption in configuration management is for authentication. Secrets should not be transferred through policy, encrypted or not. Policy files should be considered public, and any leakage should not reveal secret information.
 

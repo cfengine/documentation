@@ -38,7 +38,7 @@ The available pieces are:
   * `storage.cf`: see `storage`
   * `users.cf`: see `users`
 * bodies that apply to all promise types
-  * `common.cf`: `action` and `classes` bodies
+  * `common.cf`: `action` and [`classes`][Promise Types and Attributes#classes] bodies
 * utility bundles
   * `bundles.cf`: cron jobs, log rotating, `filestat()` interface, `rm_rf`, Git-related bundles
   * `paths.cf`: standard place to find the path for many common tools and system files

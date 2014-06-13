@@ -10,7 +10,7 @@ The reporting architecture of CFEngine Enterprise consists of software
 components that are included in the hub-package of the CFEngine Enterprise 
 installation.
 
-### cf-hub
+## cf-hub ##
 
 Like all CFEngine components, [`cf-hub`][cf-hub] is 
 located in `/var/cfengine/bin`. It is a daemon process that runs in the 
@@ -27,7 +27,7 @@ Report collection from any host can be triggered manually by running the followi
 Run in verbose mode (-v) to diagnose connectivity issues and trace the data 
 collected.
 
-### Apache
+## Apache ##
 
 REST over HTTP is provided by the
 [Apache http server](http://httpd.apache.org) which also hosts the Mission Portal. 
