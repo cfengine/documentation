@@ -65,7 +65,7 @@ bundle agent hello_world
 }
 ```
 
-Now exit the "Insert" mode by pressing the "esc" button. This will return to the __masterfiles__ command prompt.
+Now exit the "Insert" mode by pressing the "esc" button. This will return to the command prompt.
 Save the changes to the file by typing ```:w``` then "Enter". Then exit vi by typing ```:q``` then "Enter".
 
 In the policy file above, we have defined an **agent bundle** named `hello_world`. Agent
@@ -76,7 +76,7 @@ hosts][Classes and Decisions].
 
 ### Activate a Bundle Manually ###
 
-Activate the bundle manually by executing the following command at __masterfiles__ prompt:
+Activate the bundle manually by executing the following command at prompt:
 ```
 /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
 ```
@@ -104,7 +104,7 @@ the policy file. The **body common control** refers to those promises that are h
 all CFEngine components and therefore affect the behavior of all components. Note that only
  one `body common control` is allowed per agent activation.
 
-Go back into vi by typing "vi" at the __masterfiles__ prompt. Then type ```i``` to insert
+Go back into vi by typing "vi" at the prompt. Then type ```i``` to insert
  __body common control__ to `hello_world.cf`. Place it above __bundle agent hello_world__, as 
 shown in the following example:
 
