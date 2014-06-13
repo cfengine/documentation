@@ -2,7 +2,7 @@
 layout: default
 title: CFEngine Enterprise
 published: true
-sorting: 3
+sorting: 30
 ---
 
 ## CFEngine Enterprise Features ##
