@@ -33,8 +33,6 @@ Users not familiar with SQL syntax can easily create their own custom reports in
 * Limit - Limit the number of entries in your report. This is a recommended practice for testing your query.
 * Show me the query - View and edit the SQL query directly. Please note, that editing the query directly here will invalidate your choices in the query builder interface, and changing your selections there will override your SQL query.
 
-Please note that any queries containing the `PromiseDefinitions` table in combination with any other table in the schema will produce erroneous output without an intermediate join to the `PromiseStatusLast` table. See [SQLite Database Schema][SQLite Database Schema].
-
 ### Ensure the report collection is working ###
 
 * The reporting bundle must be in `promises.cf`. For example, the
