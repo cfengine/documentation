@@ -17,8 +17,8 @@ This function searches for the the given [unanchored][unanchored] `name` and
 Every bundle is prefixed with the namespace, usually `default:`.
 
 When any tags are given, only the bundles with those tags are
-returned.  Bundle tags are set in the `meta` promises in a `tags`
-variable; see the example below.
+returned.  Bundle tags are set a `tags` variable within a [`meta`][meta]
+promise; see the example below.
 
 This function, used together with the `findfiles` function, allows you
 to do dynamic inputs and a dynamic bundle call chain.  The dynamic
