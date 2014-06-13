@@ -253,8 +253,8 @@ from the example.
     };
 	```
 
-This is necessary, since `cfengine_stdlib.cf` is already included
-in the inputs section of the master policy.
+    This is necessary, since `cfengine_stdlib.cf` is already included
+    in the inputs section of the master policy.
 
 6. The example policy will now be executed every five minutes along with the rest
 of your main policy.
