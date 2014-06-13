@@ -17,14 +17,12 @@ found in `/var/cfengine/share/doc/examples`.
 
 See Also: 
 
-	* [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
-		* ["Hello World" Policy Example][Examples and Tutorials#"Hello World" Policy Example]
-		* [Activate a Bundle Manually][Examples and Tutorials#Activate a Bundle Manually]
-		* [Make the Example Stand Alone][Examples and Tutorials#Make the Example Stand Alone]
-		* [Make the Example an Executable Script][Examples and Tutorials#Make the Example an Executable Script]
-		* [Integrating the Example into your Main Policy][Examples and Tutorials#Integrating the Example into your Main Policy]
-	* [Running the Example Policies Included With CFEngine][Examples and Tutorials#Running the Example Policies Included With CFEngine]
-
+* [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
+	* ["Hello World" Policy Example][Examples and Tutorials#"Hello World" Policy Example]
+	* [Activate a Bundle Manually][Examples and Tutorials#Activate a Bundle Manually]
+	* [Make the Example Stand Alone][Examples and Tutorials#Make the Example Stand Alone]
+	* [Make the Example an Executable Script][Examples and Tutorials#Make the Example an Executable Script]
+	* [Integrating the Example into your Main Policy][Examples and Tutorials#Integrating the Example into your Main Policy]
 * [Tutorials][Tutorials]
 
 This section provides examples and explanations of common tasks.
