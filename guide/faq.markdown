@@ -182,9 +182,39 @@ https://github.com/cfengine/masterfiles/blob/master/controls/cf_execd.cf. It
 defaults to `root@$(def.domain)` which is configured in `bundle common def`
 https://github.com/cfengine/masterfiles/blob/master/def.cf.
 
-### How do I disable agent email output ###
+#### How do I disable agent email output? ####
 
 You can simply remove or comment out the settings.
 
 In 3.6.x there is a conveniance class `cfengine_internal_agent_email` avaiable
 in `bundle common def` to switch on/off agent email.
+
+### Mustache Templating ###
+
+#### How can I pass a data variable to template_data? ####
+
+Currently you cannot pass a [data variable][vars#data] directly to
+`template_data`, instead you must use one of the data-producing functions for
+example `mergedata`(), `readjson`(), or `parsejson`(). Please see the
+[Functions by Return Type][Functions#functions-by-return-type] table for a list
+of all data-producing functions.
+
+#### Can I render a Mustache template into a string? ####
+
+Not directly, you could render a file and read that into a string, but you would need to be cautious of CF_BUFFSIZE.
+
+#### How do I render a section only if a given class is defined? ####
+
+In this example 'Enterprise' will only be rendered if the class 'enterprise' is defined.
+```
+Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{vars.sys.cf_version}}
+```
+
+#### How do I iterate over a list? ####
+
+An example using `datastate`():
+```
+{{#vars.mon.listening_tcp4_ports}}
+  * {{.}}
+{{/vars.mon.listening_tcp4_ports}}
+```
