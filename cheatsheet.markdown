@@ -35,12 +35,13 @@ Paragraphs
 
 ### Link within documentation and to known pages
 
-`[top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Links]`
+`[top of the page][Markdown Cheatsheet] to the [Markdown Cheatsheet][] and [inside page][Markdown Cheatsheet#Links]`
 
-[top of the page][Markdown Cheatsheet] and [inside page][Markdown Cheatsheet#Links]
+<!--- Cheating here - this page is not published, so included from link map -->
+[top of the page](markdown-cheatsheet.html) to the [Markdown Cheatsheet](markdown-cheatsheet.html) and [inside page](markdown-cheatsheet.html#Links)
 
 **Note:** For known pages, see the 
-[_references.markdown](https://github.com/cfengine/documentation-generator/blob/master/_references.md)
+[_references.md](https://github.com/cfengine/documentation-generator/blob/master/_references.md)
 file.
 
 ### Link to CFEngine keyword
