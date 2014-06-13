@@ -16,7 +16,7 @@ variables.
 
 When any tags are given, only the variables with those tags matching the given
 [unanchored][unanchored] regular expression are returned. Variable tags are set
-using the `meta` attribute.
+using the [`meta`][Promise Types and Attributes#meta] attribute.
 
 [%CFEngine_function_attributes(regex, tag1, tag2, ...)%]
 
