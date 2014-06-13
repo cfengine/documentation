@@ -21,7 +21,7 @@ See Also: [Introduction and System Overview][Introduction and System Overview]
 
 ## Choose a CFEngine Version
 
-[CFEngine Enterprise][CFEngine Enterprise Guide] is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers). 
+[CFEngine Enterprise][CFEngine Enterprise] is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers). 
 
 * [Get the Enterprise Edition](https://cfengine.com/evaluate-enterprise)
 
@@ -32,7 +32,6 @@ CFEngine Community, a free GPL v3 open source edition.
 See also: 
 
 * [Supported Platforms and Versions][Supported Platforms and Versions]
-* [Upgrade Instructions][Upgrade Instructions]
 
 ## Install It
 
@@ -69,12 +68,6 @@ experts if you need more help. Contact us!
 	* [Language Concepts][]
 	* [Promises Available in CFEngine][]
 	* [Authoring Policy Tools & Workflow][]
-* [CFEngine Enterprise Guide][]
-   * [Getting Started With CFEngine Enterprise][]
-   * [Deploy your First Policy (Enterprise)][Deploy your first Policy]
-   * [Version Control and Configuration Policy][]
-   * [Reporting in Mission Portal][]
-   * [Enterprise Scalability][]
 * [Reports][]
 * [Design Center Overview][]
 * [Glossary][]
