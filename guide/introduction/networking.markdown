@@ -52,7 +52,7 @@ In order to connect to the CFEngine server you need:
   [`trustkeysfrom`][cf-serverd#trustkeysfrom] setting open on the server for the first
   connection of the agent. It should be closed later to avoid trusting new agents.
   The second part is established by bootstrapping the agent to the hub, or by
-  executing a `copy_from` files promise using ```trustkey=>"true"```.
+  executing a `copy_from` files promise using `trustkey=>"true"`.
 * **Permission to access something**.
   Your host name or IP address must be mentioned in an `access` promise
   inside a server bundle, made by the file that you are trying to access.
@@ -85,7 +85,7 @@ CFEngine will output diagnostic information upon bootstrap. In case of error,
 investigate the `access` promises the server is making (run `cf-serverd` in
 verbose mode on the policy hub for more informative messages). Note that 
 by default, CFEngine's server daemon `cf-serverd` trusts incoming connections 
-from hosts within the same ```/16``` subnet.
+from hosts within the same `/16` subnet.
 
 ## Key exchange
 
@@ -182,7 +182,7 @@ users must be added to the server configuration file.
 
 ## Encryption
 
-CFEngine provides encryption for keeping file contents private during transfer. If `protocol_version` is set to "classic" or "1" then file transfers must be explicitly encrypted by setting ```encrypt=>"true"``` in a `copy_from` body of a `files` promise. For newer protocol_version, all transfers are encrypted.
+CFEngine provides encryption for keeping file contents private during transfer. If `protocol_version` is set to `classic` or `1`, then file transfers must be explicitly encrypted by setting `encrypt=>"true"` in a `copy_from` body of a `files` promise. For newer protocol_version, all transfers are encrypted.
 
 However, the main role of encryption in configuration management is for authentication. Secrets should not be transferred through policy, encrypted or not. Policy files should be considered public, and any leakage should not reveal secret information.
 
@@ -205,12 +205,12 @@ There is a simple checklist for curing this problem:
 1. Make sure that you have granted access to the client's address in the
    [`server control`][cf-serverd#Control Promises] body.
 2. Make sure the connecting client is granted access to the requested resources
-   (files usually) in the ```access_rules``` promise bundle.
+   (files usually) in the `access_rules` promise bundle.
 3. See the verbose log of the server for the exact error message, since the
    client always gets the "Unspecified server refusal" reply from the server.
    To run the server in verbose, kill cf-serverd on the policy hub and run:
     $ cf-serverd -v
-   and then manually run ```cf-agent``` on the client.
+   and then manually run `cf-agent` on the client.
 4. In the unlikely case that you still get no indication of the denial, try
-   increasing the agent run verbosity. ```cf-agent -I``` for info-level messages
-   or even ```cf-agent -v``` for verbose.
+   increasing the agent run verbosity. `cf-agent -I` for info-level messages
+   or even `cf-agent -v` for verbose.
