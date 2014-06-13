@@ -2,7 +2,7 @@
 layout: default
 title: Guide 
 published: true
-sorting: 4
+sorting: 20
 ---
 
 CFEngine is a configuration management system that provides a framework for automated management of IT infrastructure.

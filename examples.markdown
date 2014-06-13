@@ -2,7 +2,7 @@
 layout: default
 title: Examples and Tutorials
 published: true
-sorting: 5
+sorting: 40
 tags: [Examples]
 ---
 
@@ -236,24 +236,25 @@ from the example.
 4. Insert the policy file name in the `inputs` section of the main policy file
     `/var/cfengine/masterfiles/promises.cf`:
 
-		```cf3  
-			  inputs => {
-				   ...
-				   "hello_world.cf",
-				   ...
-			  };
-		```
+	```cf3  
+	inputs => {
+	    ...
+		"hello_world.cf",
+        ...
+	};
+	```
 
 5. You must also remove any inputs section from the example that 
    includes the external library:
 
-		```cf3  
-			  inputs => {
-				"libraries/cfengine_stdlib.cf"
-			  };
-		```
-This is necessary, since `cfengine_stdlib.cf` is already included
-in the inputs section of the master policy.
+	```cf3  
+    inputs => {
+	    "libraries/cfengine_stdlib.cf"
+    };
+	```
+
+    This is necessary, since `cfengine_stdlib.cf` is already included
+    in the inputs section of the master policy.
 
 6. The example policy will now be executed every five minutes along with the rest
 of your main policy.
