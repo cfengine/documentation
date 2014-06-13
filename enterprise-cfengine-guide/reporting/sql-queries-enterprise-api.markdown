@@ -1,10 +1,16 @@
 ---
 layout: default
-title:  SQL Queries
+title: SQL Queries Using the Enterprise API
 published: true
-sorting: 30
-tags: [manuals, enterprise, rest, api, reporting, sql, queries]
+sorting: 20
+tags: [manuals, enterprise, reporting]
 ---
+
+The CFEngine Server aggregates information about the environment in a centralized database. 
+Data is collected every 5 minutes from all bootstrapped hosts. This data can be accessed 
+through the Enterprise Report API.
+
+See also: [SQL Schema Diagram][SQL Schema Diagram]
 
 Through the API, you can can create reports in CFEngine Enterprise with SQL 
 queries. The API can create the following report queries:
@@ -16,7 +22,7 @@ queries. The API can create the following report queries:
 -   Subscribed query: Specify a query to be run on a schedule
     and have the result emailed to someone.
 
-## Synchronous Queries
+### Synchronous Queries ###
 
 Issuing a synchronous query is the most straightforward way of running
 an SQL query. We simply issue the query and wait for a result to come
@@ -162,4 +168,6 @@ a query on a schedule and have it emailed to someone.
 **Response:**
 
     204 No Content
+
+
 
