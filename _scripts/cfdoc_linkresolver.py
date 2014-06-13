@@ -198,7 +198,7 @@ def applyLinkMap(file_name, config):
 			current_title = current_title.lstrip().lstrip('\"')
 			current_section = current_title
 		elif markdown_line.find("#") == 0:
-			current_section = markdown_line.lstrip('#').rstrip().lstrip()
+			current_section = markdown_line.rstrip('#').lstrip('#').rstrip().lstrip()
 					
 		new_line = ""
 		if not in_pre:
@@ -225,7 +225,7 @@ def applyLinkMap(file_name, config):
 								if not values == None and candidate != "`%s`" % current_section:
 									anchor = values[0]
 									if len(values) > 1:
-										errors = ["Multiple link targets in section %s#%s" % (current_title, current_section)]
+										errors = ["Multiple link targets in section [%s#%s][%s#%s]" % (current_title, current_section, current_title, current_section)]
 										for value in values:
 											errors.append("Option: %s" % value)
 										qa.LogMissingDocumentation(config, candidate, errors, file_name)
