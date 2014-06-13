@@ -8,14 +8,19 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 CFEngine collects a large amount of data. You can run and schedule pre-defined reports or use the [query builder](#query-builder) for your own custom reports. You can save these queries for later use, and schedule reports for specified times.
 
-If you are familiar with SQL syntax you have the option to input your query into the interface directly. Make sure to take a look at the database schema. Please note: manual entries in the query field at the bottom of the [query builder](#query-builder) will invalidate all field selections and filters above, and vice-versa.
+If you are familiar with SQL syntax you have the option to input your query into the interface directly. Make sure to take a look at the database schema. Please note: manual entries in the query field at the bottom of the [query builder][Reporting#Query Builder] will invalidate all field selections and filters above, and vice-versa.
 Results
 
 You can narrow the amount of `hosts` to be queried with the help of filters above the displayed table. These filters are based on the same categorization you can find in the other apps.
 
 You are also able to filter on the type of promise: user defined, system defined, or all.
 
-#### Query Builder ####
+See also:
+* [Reporting Architecture][Reporting Architecture]
+* [SQL Queries Using the Enterprise API][SQL Queries Using the Enterprise API]
+* [SQL Schema Diagram][SQL Schema Diagram]
+
+## Query Builder ##
 
 Users not familiar with SQL syntax can easily create their own custom reports in this interface.
 
@@ -29,9 +34,9 @@ Users not familiar with SQL syntax can easily create their own custom reports in
 
 Please note that any queries containing the `PromiseDefinitions` table in combination with any other table in the schema will produce erroneous output without an intermediate join to the `PromiseStatusLast` table. See [SQLite Database Schema][SQLite Database Schema].
 
-## Ensure the report collection is working
+### Ensure the report collection is working ###
 
-* the reporting bundle must be in `promises.cf`. For example, the
+* The reporting bundle must be in `promises.cf`. For example, the
 following defines the attribute `Role` which is set to
 `database_server`. You need to add it to the top-level
 `bundlesequence` or in a bundle that it calls.
@@ -46,7 +51,7 @@ bundle agent myreport
 }
 ```
 
-* the hub must be able to collect the reports from the client. TCP
+* The hub must be able to collect the reports from the client. TCP
 port 5308 must be open and, because 3.6.0 uses TLS, should not be
 proxied or otherwise intercepted. Note that bootstrapping and other
 standalone client operations go from the client to the server, so the
