@@ -54,6 +54,13 @@ The documentation pre-processor will create those automatically.
 
 `classes` and `readfile()`
 
+However, the preprocess will not create links if the code word is in triple backticks:
+
+
+    ```classes``` and ```readfile()```
+
+```classes``` and ```readfile()```
+
 ### Link to External URL
 
 `[Markdown Documentation](http://daringfireball.net/projects/markdown/)`
@@ -123,6 +130,8 @@ This renders as `inline code`.
     This also renders as ```inline code```.
 
 This also renders as ```inline code```.
+
+See the note above on implicit linking - single backticks will link, triple backticks won't.
 
 ### Code Blocks
 
