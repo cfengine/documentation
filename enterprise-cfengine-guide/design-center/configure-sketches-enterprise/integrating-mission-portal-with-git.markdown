@@ -213,14 +213,14 @@ pull from git every time it runs (by default every 5 minutes).
    The values for the fields based on the previous instructions for setting up
    a local git server are as follows:
 
-        Git server url: `git@localhost:masterfiles.git` 
-        Git branch: `master`
-        Committer email `git@localhost.localdomain`
-        Committer name `CFEngine Mission Portal`
-        Git private key `mission_portal_id_rsa.pub` as generated in step 5 of 
-        [Set up the git service][Integrating Mission Portal with git#Set up the git service]
-        (You will need to copy the private key to your workstation
-        so that it can be accessed via the file selection.
+   * Git server url: `git@localhost:masterfiles.git` 
+   * Git branch: `master`
+   * Committer email `git@localhost.localdomain`
+   * Committer name `CFEngine Mission Portal`
+   * Git private key `mission_portal_id_rsa.pub` as generated in step 5 of 
+    [Set up the git service][Integrating Mission Portal with git#Set up the git service]
+    (You will need to copy the private key to your workstation
+    so that it can be accessed via the file selection.
 
 4. Click save settings and make sure it reports success.
 

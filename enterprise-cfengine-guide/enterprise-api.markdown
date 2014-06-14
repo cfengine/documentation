@@ -32,4 +32,4 @@ See also the [Enterprise API Examples][Enterprise API Examples]:
 * [Managing Settings][Managing Settings]
 * [Browse host information][Browsing Host Information]
 * [Issue flexible SQL queries][SQL Query Examples] against data collected from hosts by the CFEngine Server
-* [Schedule reports][SQL Query Examples#### Subscribed Query Example: Creating A Subscribed Query] for email and later download
+* [Schedule reports][SQL Query Examples#Subscribed Query Example: Creating A Subscribed Query] for email and later download
