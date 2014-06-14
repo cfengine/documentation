@@ -66,6 +66,14 @@ except:
 	sys.stdout.write("      Exception: ")
 	print sys.exc_info()
 
+try: # update the link map with content added by macros
+	linkresolver.run(config)
+except:
+	print "cfdoc_preprocess: Fatal error updating link map"
+	sys.stdout.write("       Exception: ")
+	print sys.exc_info()
+	exit(4)
+
 # generate links to known targets
 linkresolver.apply(config)
 
