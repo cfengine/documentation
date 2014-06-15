@@ -11,6 +11,12 @@ server. It is common that this directory is backed by a version control system
 (VCS), such as git or subversion. In this document we will focus on git, but 
 CFEngine is VCS agnostic.
 
+Please note that the following applies to CFEngine Community or
+Enterprise, but in Enterprise there are built-in facilities that can
+make the following unnecessary. Please see
+[Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
+for details.
+
 ## Repository synchronization
 
 When `/var/cfengine/masterfiles` is backed by VCS, it may be useful to have an 
