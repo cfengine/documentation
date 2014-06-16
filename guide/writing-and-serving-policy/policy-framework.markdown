@@ -547,12 +547,14 @@ are all enabled by code in `def.cf` as explained above.
 * applies to: LSB systems (most Linux distributions, basically)
 * runs: `lsb_release -a`
 * sample data:
+
 ```
 Distributor ID:	Ubuntu
 Description:	Ubuntu 14.04 LTS
 Release:	14.04
 Codename:	trusty
 ```
+
 * provides:
     * classes `lsb_$(os)`, `lsb_$(os)_$(release)`, `lsb_$(os)_$(codename)`
     * variables: `inventory_lsb.os` (Distributor ID), `inventory_lsb.codename`, `inventory_lsb.release`, `inventory_lsb.flavor`, `inventory_lsb.description`
