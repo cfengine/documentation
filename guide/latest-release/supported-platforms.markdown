@@ -18,6 +18,8 @@ provide support for the platforms most frequently used by our users.
 | SLES 	| 11* 	| x86-64   |
 | Ubuntu 	| 10.04, 12.04 	| x86-64   |
 
+\* These packages will be available at a later date
+
 ## Hosts ##
 
 Any host can be a policy server in Community installations of CFEngine.
@@ -35,7 +37,7 @@ Any host can be a policy server in Community installations of CFEngine.
 | Windows 	| 2008 	| x86-64, i386   |
 | Windows 	| 2008, 2012 	| x86-64   |
 
-* These packages will be available at a later date
+\* These packages will be available at a later date
 
 CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.
 This means that CFEngine Enterprise has been technically verified by IBM
