@@ -253,14 +253,14 @@ LSB is the Linux Standard Base, see https://wiki.linuxfoundation.org/en/LSB
 By default, this class is turned off (and the module is on) if the LSB
 executable `/usr/bin/lsb_release` can be found. This inventory module
 will populate inventory reports and variables for you with LSB
-details. For details, see [LSB][LSB]
+details. For details, see [LSB][The Policy Framework#LSB]
 
 ##### disable_inventory_dmidecode
 
 By default, this class is turned off (and the module is on) if the
 executable `/usr/sbin/dmidecode` can be found. This inventory module
 will populate inventory reports and variables for you. For details,
-see [DMI decoding][DMI decoding]
+see [DMI decoding][The Policy Framework#DMI decoding]
 
 ##### disable_inventory_LLDP
 
@@ -269,7 +269,7 @@ http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol
 
 By default, this class is turned off (and the module is on) if the
 executable `/usr/bin/lldpctl` can be found. This inventory module will
-populate variables for you. For details, see [LLDP][LLDP]
+populate variables for you. For details, see [LLDP][The Policy Framework#LLDP]
 
 ##### disable_inventory_package_refresh
 
@@ -281,27 +281,27 @@ CFEngine Enterprise, the available packages will also be populated.
 
 By default, this class is turned off (and the module is on) if
 `/etc/mtab` exists. This inventory module will populate variables for
-you based on the mounted filesystems. For details, see [mtab][mtab]
+you based on the mounted filesystems. For details, see [mtab][The Policy Framework#mtab]
 
 ##### disable_inventory_fstab
 
 By default, this class is turned off (and the module is on) if
 `$(sys.fstab)` (usually `/etc/fstab` or `/etc/vfstab`) exists. This
 inventory module will populate variables for you based on the defined
-filesystems. For details, see [fstab][fstab]
+filesystems. For details, see [fstab][The Policy Framework#fstab]
 
 ##### disable_inventory_proc
 
 By default, this class is turned off (and the module is on) if `/proc`
 is a directory. This inventory module will populate variables for you
-from some of the contents of `/proc`. For details, see [procfs][procfs]
+from some of the contents of `/proc`. For details, see [procfs][The Policy Framework#procfs]
 
 ##### disable_inventory_cmdb
 
 By default, this class is turned on (and the module is off).
 
 Turn this on (set to `any`) to allow each client to load a `me.json`
-file from the server and load its contents. For details, see [CMDB][CMDB]
+file from the server and load its contents. For details, see [CMDB][The Policy Framework#CMDB]
 
 ### promises.cf
 
