@@ -44,7 +44,7 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 ![New Alerts Condition Type](Alerts.bottom.condition.type.png)
 
-* Each alert also has a property called ```Condition type```:
+* Each alert also has a ```Condition type```:
 	* **Policy** conditions trigger alerts based on CFEngine policy compliance status. They can be set on bundles, promisees, and promises. If nothing is specified, they will trigger alerts for all policy.
 
 	* **Inventory** conditions trigger alerts for inventory attributes. These attributes correspond to the ones found in inventory reports. 
