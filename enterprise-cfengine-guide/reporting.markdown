@@ -6,7 +6,7 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-CFEngine collects a large amount of data. You can run and schedule pre-defined reports or use the [query builder][Reporting#Query Builder] for your own custom reports. You can save these queries for later use, and schedule reports for specified times.
+CFEngine collects a large amount of data. You can run and schedule pre-defined reports or use the [query builder][Reporting UI#Query Builder] for your own custom reports. You can save these queries for later use, and schedule reports for specified times.
 
 If you are familiar with SQL syntax you have the option to input your query into the interface directly. Make sure to take a look at the database schema. Please note: manual entries in the query field at the bottom of the [query builder][Reporting#Query Builder] will invalidate all field selections and filters above, and vice-versa.
 Results

@@ -181,7 +181,7 @@ The policy displays the following output:
 
 **R: Hello world**
 
-Find more policy examples in the [Examples section][Examples].
+Find more policy examples in the [Examples section][Examples and Tutorials].
 
 ### Create a distributed policy
 

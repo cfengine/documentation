@@ -143,4 +143,4 @@ Learn more about CFEngine by using the following resources:
 
 * [CFEngine Guide][Guide]
 
-* [Tutorials and Examples][Examples]
+* [Tutorials and Examples][Examples and Tutorials]
