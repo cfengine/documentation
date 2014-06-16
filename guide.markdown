@@ -70,6 +70,5 @@ experts if you need more help. Contact us!
 	* [Authoring Policy Tools & Workflow][]
 * [Reports][]
 * [Design Center Overview][]
-* [Glossary][]
 * [FAQ][]
 * [Additional Resources][]
