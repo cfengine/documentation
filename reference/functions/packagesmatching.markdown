@@ -58,4 +58,4 @@ bundle agent missing_packages
 
 **History:** Introduced in CFEngine 3.6
 
-**See also:** [`packageupdatessmatching()`][packageupdatessmatching].
+**See also:** `packageupdatesmatching()`.
