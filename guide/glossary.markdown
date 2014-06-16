@@ -2,19 +2,13 @@
 layout: default
 title: Glossary
 sorting: 100
-published: true
-tags: [overviews, learning resources, glossary]
+published: false
+tags: [guide, glossary]
 ---
-
-<!--- All the previous links were wrong here, so I removed that bit.
-In general, I find the value of this page questionable. We are not writing a book - if we
-want people to get from the word that they read (and need explained) to the page that explains the word,
-use a link, or search functionality.
--->
 
 #### Agent ####
 
-A piece of software that runs independently and automatically to carry out a task (think software robot). Inn CFEngine, the agent is called cf-agent and is responsible for making changes to computers. 
+A piece of software that runs independently and automatically to carry out a task (think software robot). In CFEngine, the agent is called cf-agent and is responsible for making changes to computers. 
 
 #### Authentication ####
 #### Body ####
@@ -50,8 +44,7 @@ Daemons include cf-execd, cf-monitord, and cf-serverd
 
 The collection of sketches and the tools that allow you to manipulate and manage them.
 
-See Also: [Design Center Overview][Design Center Overview],
-[Design Center in CFEngine Enterprise][Design Center in CFEngine Enterprise]
+See Also: [Design Center in CFEngine Enterprise][Design Center UI]
 
 #### Design Center API ####
 

@@ -88,7 +88,7 @@ username: admin
 
 password: admin
 
-The installation is complete! [Read on][Configure and Deploy a Policy Using Sketches (Enterprise Only)] to start your 
+The installation is complete! [Read on][Configure and Deploy a Policy Using Sketches] to start your 
 first lesson on how to use CFEngine.
 
 ## Stop CFEngine Enterprise 

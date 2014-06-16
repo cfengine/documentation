@@ -64,7 +64,7 @@ variety of forms, usually files, but sometimes console output.
 
 ## Bootstrapping
 
-Bootstrapping is the manual first run of cf-agent that establishes
+[Bootstrap][General Installation#Bootstrap] is the manual first run of cf-agent that establishes
 communication with the policy server.
 Bootstrapping executes the `failsafe.cf` policy that connects to 
 the server, establishes trust to the server's key, and that starts the 

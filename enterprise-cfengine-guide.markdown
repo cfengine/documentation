@@ -30,7 +30,7 @@ The CFEngine Enterprise Mission Portal contains continual reporting that details
 * [Settings][]
 * [Hosts and Health][]
 * [Alerts and Notifications][]
-* [Reporting][]
+* [Reporting][Reporting UI]
 * [Monitoring][]
 * [Design Center][]
 * [Enterprise API][]

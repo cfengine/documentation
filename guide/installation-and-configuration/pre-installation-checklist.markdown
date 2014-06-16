@@ -36,6 +36,6 @@ See Also: [Quick-Start Guide to Using vi][Quick-Start Guide to Using vi], [Quick
 CFEngine bundles all critical dependencies into the package; therefore,
 additional software is not required.
 	
-See Also: [Supported Platforms][Supported Platforms]	
+See Also: [Supported Platforms and Versions][Supported Platforms and Versions]	
 
 

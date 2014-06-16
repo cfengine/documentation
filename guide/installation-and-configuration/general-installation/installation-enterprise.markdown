@@ -137,12 +137,10 @@ front-end, continue with [integrating Mission Portal with git] [Integrating Miss
 
 Learn more about CFEngine by using the following resources:
 
-* Tutorial: [Create a standalone policy (Hello World).][Hello World]
+* Tutorial: [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
 
-* Tutorial: [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches (Enterprise Only)]
+* Tutorial: [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches]
 
-* CFEngine [manuals][Learning CFEngine].
+* [CFEngine Guide][Guide]
 
-* Additional [tutorials, examples, and documentation][Learning Resources].
-
-* Get [Support][Support and Community] from the CFEngine community.
+* [Tutorials and Examples][Examples]

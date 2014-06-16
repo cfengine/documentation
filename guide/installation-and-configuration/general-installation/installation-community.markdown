@@ -181,7 +181,7 @@ The policy displays the following output:
 
 **R: Hello world**
 
-Find more policy examples [here][Policy].
+Find more policy examples in the [Examples section][Examples].
 
 ### Create a distributed policy
 
@@ -239,16 +239,13 @@ the cfengine_3:: class above).
 
 ### Try these advanced tutorials:
 
-* [Create a standalone policy (Hello World).][Hello World] This Hello World tutorial provides more depth into how to create business policy (promises) on the
-command line. Here, you can get a taste of the CFEngine language as you create standalone and executable scripts.
+* [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
 * [Distribute files from a central location.][Distribute files from a central location] This advanced, command-line tutorial shows
 you how to distribute policy files from the Policy Server to all pertinent Hosts.
 
 ## Recommended Reading
 
 * CFEngine [language concepts][Language Concepts]
-* Getting Started Tutorial: [Get CFEngine Up and Running Quickly: A Primer for New Community Users][Up and Running]
-
 
 ## Production Environment
 

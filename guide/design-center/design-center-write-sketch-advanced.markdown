@@ -14,19 +14,19 @@ This page describes how to create a Design Center sketch by converting an existi
 into a sketch and by using the `sketchify` tool in `cf-sketch` to complete the process. 
 These steps are followed:
 
-[Step 1. Select a policy to convert into a sketch][Write a new Sketch#Step 1. Select a policy to convert into a sketch]
+[Step 1. Select a policy to convert into a sketch][sketchify - Write A New Sketch From An Existing Bundle#Step 1. Select a policy to convert into a sketch]
 
-[Step 2. Define a sketch name][Write a new Sketch#Step 2. Define a sketch name]
+[Step 2. Define a sketch name][sketchify - Write A New Sketch From An Existing Bundle#Step 2. Define a sketch name]
 
-[Step 3. Define the sketch interface][Write a new Sketch#Step 3. Define the sketch interface]
+[Step 3. Define the sketch interface][sketchify - Write A New Sketch From An Existing Bundle#Step 3. Define the sketch interface]
 
-[Step 4. Revise the policy file as necessary][Write a new Sketch#Step 4. Revise the policy file as necessary] 
+[Step 4. Revise the policy file as necessary][sketchify - Write A New Sketch From An Existing Bundle#Step 4. Revise the policy file as necessary] 
 
-[Step 5. Use the sketchify command to wrap the policy file into a sketch structure][Write a new Sketch#Step 5. Use the sketchify command to wrap the policy file into a sketch structure]
+[Step 5. Use the sketchify command to wrap the policy file into a sketch structure][sketchify - Write A New Sketch From An Existing Bundle#Step 5. Use the sketchify command to wrap the policy file into a sketch structure]
 
-[Step 6. Verify that the new sketch is ready for installation and use][Write a new Sketch#Step 6. Verify that the new sketch is ready for installation and use]
+[Step 6. Verify that the new sketch is ready for installation and use][sketchify - Write A New Sketch From An Existing Bundle#Step 6. Verify that the new sketch is ready for installation and use]
 
-Refer to the `password_expiration()` bundle [example][Write a new Sketch#Example] as you 
+Refer to the `password_expiration()` bundle [example][sketchify - Write A New Sketch From An Existing Bundle#Example] as you 
 follow the steps outlined on this page.
 
 _This information is from Diego Zamboni's book, [Learning CFEngine 3](http://shop.oreilly.com/basket.do?nav=ext). 
@@ -38,7 +38,7 @@ This is an advanced topic; we assume that you know how to write
 CFEngine policy, and that you are familiar with the Design Center
 [command line tools][Command Line Sketches] and, if you are an
 Enterprise user, with the
-[Design Center app in CFEngine Enterprise][Design Center in CFEngine Enterprise].
+[Design Center UI][Design Center UI].
 
 ## Instructions
 
@@ -50,7 +50,7 @@ This bundle can call other bundles or bodies as appropriate, but it should be ca
 as a single point of entry. Until you become more familiar with how sketches
 are structured, write your bundles first as regular CFEngine
 policy, and then convert them to sketches. The instructions on this page create a sketch from the 
-`password_expiration()` [bundle][Write a new Sketch#Example]. 
+`password_expiration()` [bundle][sketchify - Write A New Sketch From An Existing Bundle#Example]. 
 
 ### Step 2. Define a sketch name
 
@@ -103,7 +103,7 @@ For this example, use **cflearn_password_expiration**.
 
 Once the sketch interface is defined, rewrite the policy file as necessary to make it ready to
 use as a sketch. Below is the updated code, with some comments about the changes made 
-As you go through these, compare them to the original code in the password_expiration() [bundle][Write a new Sketch#Example]:
+As you go through these, compare them to the original code in the password_expiration() [bundle][sketchify - Write A New Sketch From An Existing Bundle#Example]:
 
 ```cf3
 bundle agent password_expiration(pass_max_days, pass_min_days, pass_warn_age,
