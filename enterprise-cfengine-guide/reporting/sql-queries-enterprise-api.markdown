@@ -6,19 +6,20 @@ sorting: 20
 tags: [manuals, enterprise, reporting]
 ---
 
-The CFEngine Server aggregates information about the environment in a centralized database. 
-Data is collected every 5 minutes from all bootstrapped hosts. This data can be accessed 
-through the Enterprise Report API.
+The CFEngine Enterprise Hub collects information about the
+environment in a centralized database. Data is collected every 5
+minutes from all bootstrapped hosts. This data can be accessed through
+the Enterprise Reporting API.
 
 See also: [SQL Schema Diagram][SQL Schema Diagram]
 
-Through the API, you can can create reports in CFEngine Enterprise with SQL 
+Through the API, you can run CFEngine Enterprise reports with SQL
 queries. The API can create the following report queries:
 
 -   Synchronous query: Issue a query and wait for the table to
     be sent back with the response.
--   Asynchronous query: A query is issued and an immediate response with an id is sent
-    so that we can check the query later to download the report.
+-   Asynchronous query: A query is issued and an immediate response with an ID is sent
+    so that you can check the query later to download the report.
 -   Subscribed query: Specify a query to be run on a schedule
     and have the result emailed to someone.
 
