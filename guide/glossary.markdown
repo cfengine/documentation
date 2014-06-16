@@ -44,8 +44,7 @@ Daemons include cf-execd, cf-monitord, and cf-serverd
 
 The collection of sketches and the tools that allow you to manipulate and manage them.
 
-See Also: [Design Center Overview][Design Center Overview],
-[Design Center in CFEngine Enterprise][Design Center UI]
+See Also: [Design Center in CFEngine Enterprise][Design Center UI]
 
 #### Design Center API ####
 

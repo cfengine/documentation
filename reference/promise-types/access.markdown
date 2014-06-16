@@ -412,7 +412,7 @@ access:
 **This body is only available in CFEngine Enterprise.**
 
 **Description:** The `report_data_select` body restricts which data is included
-for [query][resource_type] resources, and allows filtering of data reported to the
+for [query][access#resource_type] resources, and allows filtering of data reported to the
 CFEngine Enterprise server.
 
 Use this body template to control the content of reports collected by the 
