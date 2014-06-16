@@ -65,7 +65,7 @@ order.
 ##### cfe_internal_dc_workflow
 
 This step implements the auto-deployment of policies. See
-https://docs.cfengine.com/docs/master/guide-enterprise-cfengine-guide-version-control-policy.html
+[Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
 and `cfengine_internal_masterfiles_update` below for details.
 
 ##### cfe_internal_update_policy
@@ -79,7 +79,7 @@ updated in the check step.
 
 Implementation (warning: advanced usage):
 
-[%CFEngine_include_snippet(masterfiles/update/update_policy.cf)%]
+[%CFEngine_include_snippet(masterfiles/update/update_policy.cf, .*)%]
 
 ##### cfe_internal_update_processes
 
@@ -110,7 +110,7 @@ Off by default.
 
 Turn this on (set to `any`) to auto-deploy policies on the policy
 server, it has no effect on clients. See
-https://docs.cfengine.com/docs/master/guide-enterprise-cfengine-guide-version-control-policy.html
+[Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
 for details on how to use it.
 
 **This may result in DATA LOSS.**
@@ -161,7 +161,7 @@ Keep referring to `def.cf` as you read this.
 
 Implementation (warning: advanced usage):
 
-[%CFEngine_include_snippet(masterfiles/def.cf)%]
+[%CFEngine_include_snippet(masterfiles/def.cf, .*)%]
 
 #### How it works
 
@@ -199,7 +199,7 @@ Turn this on (set to `any`) to auto-load files in `services/autorun`
 and run bundles found that are tagged `autorun`. Here's a simple
 example of such a bundle in `services/autorun/hello.cf`:
 
-[%CFEngine_include_snippet(masterfiles/services/autorun/hello.cf)%]
+[%CFEngine_include_snippet(masterfiles/services/autorun/hello.cf, .*)%]
 
 
 ##### cfengine_internal_rotate_logs
@@ -207,7 +207,7 @@ example of such a bundle in `services/autorun/hello.cf`:
 On by default. Rotates CFEngine's own logs. Here is the
 `cfe_internal_log_rotation` bundle implementation:
 
-[%CFEngine_include_snippet(masterfiles/cfe_internal/CFE_cfengine.cf, .+cfe_internal_log_rotation, \})%]
+[%CFEngine_include_snippet(masterfiles/cfe_internal/CFE_cfengine.cf, .*bundle\s+agent\s+cfe_internal_log_rotation, \})%]
 
 ##### cfengine_internal_agent_email
 
@@ -610,7 +610,7 @@ R: inventory_lsb: OS = Ubuntu, codename = trusty, release = 14.04, flavor = Ubun
 * runs `inventory_control.lldpctl_exec` through a Perl filter
 * provides variables: `cfe_autorun_inventory_LLDP.K` for each `K` returned by the LLDB executable
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+cfe_autorun_inventory_LLDP, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_LLDP, \})%]
 
 ### mtab
 
@@ -618,7 +618,7 @@ R: inventory_lsb: OS = Ubuntu, codename = trusty, release = 14.04, flavor = Ubun
 * parses: `/etc/mtab`
 * provides classes: `have_mount_FSTYPE` and `have_mount_FSTYPE_MOUNTPOINT`
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+cfe_autorun_inventory_mtab, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_mtab, \})%]
 
 * sample output (note this is verbose mode with `-v` because there's a lot of output):
 
@@ -637,7 +637,7 @@ R: cfe_autorun_inventory_mtab: we have a tmpfs mount under /run/shm
 * parses: `sys.fstab`
 * provides classes: `have_fs_FSTYPE` `have_fs_MOUNTPOINT` and `have_fs_FSTYPE_MOUNTPOINT`
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+cfe_autorun_inventory_fstab, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_fstab, \})%]
 
 * sample output (note this is verbose mode with `-v` because there's a LOT of output):
 
@@ -656,7 +656,7 @@ R: cfe_autorun_inventory_fstab: we have a auto fstab entry under /mnt/cdrom
 * provides classes: `CLASS` for each CLASS found under the ```classes``` key in the JSON data
 * provides variables: `inventory_cmdb_load.VARNAME` for each VARNAME found under the `vars` key in the JSON data
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+inventory_cmdb_load, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_cmdb_load, \})%]
 
 ### DMI decoding
 
@@ -664,7 +664,7 @@ R: cfe_autorun_inventory_fstab: we have a auto fstab entry under /mnt/cdrom
 * runs: `dmidecode`
 * provides variables: `cfe_autorun_inventory_dmidecode.dmi[K]` for each key K in the `dmidecode` output
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+cfe_autorun_inventory_dmidecode, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_dmidecode, \})%]
 
 * sample output (sudo is needed to access the DMI):
 
@@ -684,28 +684,28 @@ R: cfe_autorun_inventory_dmidecode: Obtained CPU model = 'Intel(R) Core(TM) i7-2
 * lives in: `any.cf`
 * provides variables: `cfe_autorun_inventory_listening_ports.ports` as a copy of `mon.listening_ports`
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+cfe_autorun_inventory_listening_ports, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_listening_ports, \})%]
 
 ### Disk space
 
 * lives in: `any.cf`
 * provides variables: `cfe_autorun_inventory_disk.free` as a copy of `mon.value_diskfree`
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+cfe_autorun_inventory_disk, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_disk, \})%]
 
 ### Available memory
 
 * lives in: `any.cf`
 * provides variables: `cfe_autorun_inventory_memory.free` as a copy of `mon.value_mem_free` and `cfe_autorun_inventory_memory.total` as a copy of `mon.value_mem_total`
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+cfe_autorun_inventory_memory, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_memory, \})%]
 
 ### Load average
 
 * lives in: `any.cf`
 * provides variables: `cfe_autorun_inventory_loadaverage.value` as a copy of `mon.value_loadavg`
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+cfe_autorun_inventory_loadaverage, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_loadaverage, \})%]
 
 ### procfs
 
@@ -714,7 +714,7 @@ R: cfe_autorun_inventory_dmidecode: Obtained CPU model = 'Intel(R) Core(TM) i7-2
 * provides variables: `cfe_autorun_inventory_proc.console_count`, `cfe_autorun_inventory_proc.cpuinfo[K]` for each CPU info key, `cfe_autorun_inventory_proc.paritions[K]` for each partition key
 * provides classes: `_have_console_CONSOLENAME`, `have_module_MODULENAME`
 * implementation:
-[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .+cfe_autorun_inventory_proc, \})%]
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_proc, \})%]
 
 * sample output (note this is verbose mode with `-v` because there's a LOT of output):
 
