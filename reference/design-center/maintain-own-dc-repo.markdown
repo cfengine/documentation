@@ -41,8 +41,8 @@ This will regenerate the `README.md` files for each sketch, which will please yo
 
 ## Install Your Sketches!
 
-See [sketch.markdown][Writing sketches] for more on this command.
-
 ```
 /var/cfengine/design-center/bin/cf-sketch --install-all --is=/my/repo/sketches/cfsketches.json --inputs=/var/cfengine/design-center
 ```
+
+See also: [Package The Sketch][Write a new Sketch#Package The Sketch]

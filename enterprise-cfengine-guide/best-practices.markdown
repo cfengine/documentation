@@ -243,7 +243,7 @@ Moving the PostgreSQL database to another physical hard drive from the other CFE
 
 The way data is processed uses a huge number of random IO operations, with small chunks of data. SSD may give the best performance because it is designed for these types of scenarios.
 
-*Important*: The Postgres data files are by default located in @/var/cfengine/state/pg/@. Before moving the mount point please make sure that all CFEngine processes (including Postgres) are stopped and the existing data files are copied to the new location.
+*Important*: The Postgres data files are by default located in `/var/cfengine/state/pg/`. Before moving the mount point please make sure that all CFEngine processes (including Postgres) are stopped and the existing data files are copied to the new location.
 
 ### Setting the splaytime ###
 
