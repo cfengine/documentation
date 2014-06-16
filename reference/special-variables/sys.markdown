@@ -506,7 +506,7 @@ The name of the system email spool directory.
     # maildir = /var/spool/mail
 ```
 
-### sys.masterdir
+### sys.masterdir ###
 
 The name of the directory on the hub where CFEngine looks for inputs to be validated and copied into `sys.inputdir`.
 
@@ -700,8 +700,7 @@ system directory.
 
 ### sys.workdir
 
-The location of the CFEngine [work 
-directory][The CFEngine Components#The Working Directory] and cache. 
+The location of the CFEngine work directory and cache. 
 For the system privileged user this is normally:
 
 ```cf3

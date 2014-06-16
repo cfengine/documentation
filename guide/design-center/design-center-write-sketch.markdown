@@ -171,7 +171,7 @@ one.
 ## You're Done!
 
 That's all there is to writing a sketch. You should now look at
-[sketchify: Write A New Sketch From An Existing Bundle][sketchify: Write A New Sketch From An Existing Bundle]
+[sketchify - Write A New Sketch From An Existing Bundle][sketchify - Write A New Sketch From An Existing Bundle]
 for a guide to using the `sketchify` tool. See
 [Maintaining your own sketch repository][Maintaining your own sketch repository]
 to find out how to create your own sketch repository and install sketches from it.

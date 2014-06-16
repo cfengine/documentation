@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reporting
+title: Reporting UI
 sorting: 50
 published: true
 tags: [cfengine enterprise, user interface, mission portal]

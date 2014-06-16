@@ -58,7 +58,7 @@ Add and remove columns from the results table in real time, and once you're happ
 
 ![Enterprise API Overview](add_columns.gif)
 
-Find out more: [Reporting][]
+Find out more: [Reporting][Reporting UI]
 
 ## Monitoring ##	
 

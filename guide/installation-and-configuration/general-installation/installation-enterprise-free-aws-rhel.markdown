@@ -8,7 +8,7 @@ tags: [getting started, installation, enterprise free, aws, rhel]
 
 This guide describes how to install CFEngine on two Red Hat® Enterprise Linux® (RHEL) virtual machines using Amazon Web Services™ (AWS) and SSH. At the time of writing, under certain conditions, setting up an AWS account and using micro-instances is free.
 
-One of the two machines will be a `policy server` (see [Policy Server Overview][Policy Server Overview]), while the other will be a `host`.
+One of the two machines will be a `policy server`, while the other will be a `host`.
 
 Although these instructions walk through the steps needed to install CFEngine Enterprise on two machines, up to 25 machines can be set up using the same procedure and scripts. 
 
@@ -62,7 +62,7 @@ This tutorial will cover the following steps:
 
 ## Accessing the Virtual Machines Using SSH ##
 
-See: [Quick-Start Guide to Using PuTTY][Quick-Start Guide to Using PuTTY#Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen]
+See: [Quick-Start Guide to Using PuTTY][Quick-Start Guide to Using PuTTY]
 
 ## Install and Configure the Firewall ##
 
@@ -179,7 +179,7 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 
 * The Mission Portal is immediately accessible. Connect to the Policy Server through your web browser at: http://<External IP address of your Policy Server> (Note: The External IP address is available in the AWS console).
 * The default username for the Mission Portal is `admin`, and the password is also `admin`.
-* The Mission Portal runs TCP port 80 by default. [Configure mission portal to use HTTPS instead of HTTP][Configure Mission Portal to use HTTPS instead of HTTP].
+* The Mission Portal runs TCP port 80 by default. [Configure mission portal to use HTTPS instead of HTTP](https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP).
 * During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Refresh the web page and login again if necessary.
 
 ## What Next? ##
@@ -192,11 +192,7 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
   teaches you how to configure and deploy business policy by using the Design Center application in the Mission Portal. Next, it shows you how to verify
   that your business policy is being activated by viewing the Reports in the Mission Portal.
   
-* [Create a standalone policy (Hello World).][Hello World]
-
-  Whereas the above tutorial uses pre-defined policy (called sketches) that you can modify in the Mission Portal, this
-  tutorial teaches you how to create business policy (promises) on the command line. Here, you
-  can get a taste of the CFEngine language as you create standalone and executable scripts.
+* [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
   
 * [Distribute files from a central location.][Distribute files from a central location]
 
@@ -205,5 +201,5 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 
 ### Recommended Reading ###
 
-* CFEngine [manuals][Learning CFEngine].
-* Additional [tutorials, examples, and documentation][Learning Resources].
+* [CFEngine Guide][Guide]
+* [Tutorials and Examples][Examples]

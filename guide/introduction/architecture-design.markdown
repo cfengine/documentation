@@ -84,7 +84,7 @@ operating systems, network topology or system processes. You describe the
 ideal state of a given system by creating promises and the CFEngine agents
 ensures that the necessary steps are taken to achieve this state. Automation
 in CFEngine is executed through a series of
-[components][The CFEngine Components] that run locally on hosts.
+[components][Introduction and System Overview#CFEngine Component Applications and Daemons] that run locally on hosts.
 
 ## Phases of System Management
 
@@ -138,4 +138,4 @@ direction). All of the desired-state changes are managed locally by each
 individual host, and continuously repaired to ensure on-going compliance 
 with policy.
 
-See Also: [Networking][Networking], [Policy Workflow][Policy Workflow], [Distributed Discovery][Distributed Discovery]
+See Also: [Networking][Networking]

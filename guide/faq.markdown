@@ -64,7 +64,7 @@ to properly configure your database installation.
 
 ### Enterprise Scalability ###
 
-See: [Enterprise Scalability][Enterprise Scalability]
+See: [Enterprise Scalability][Best Practices#Scalability]
 
 ### Policy Distribution ###
 
@@ -159,7 +159,7 @@ with commas (no spaces between).
 cf-agent --bundlesequence bundle1,bundle2
 ```
 
-#### How do I define a class for a single run? ####
+#### How do I define a class for a single run ####
 
 You can use the `--define` or `-D` options of `cf-agent`.
 
@@ -182,7 +182,7 @@ https://github.com/cfengine/masterfiles/blob/master/controls/cf_execd.cf. It
 defaults to `root@$(def.domain)` which is configured in `bundle common def`
 https://github.com/cfengine/masterfiles/blob/master/def.cf.
 
-#### How do I disable agent email output? ####
+#### How do I disable agent email output ####
 
 You can simply remove or comment out the settings.
 
@@ -196,7 +196,7 @@ in `bundle common def` to switch on/off agent email.
 Currently you cannot pass a [data variable][vars#data] directly to
 `template_data`, instead you must use one of the data-producing functions for
 example `mergedata`(), `readjson`(), or `parsejson`(). Please see the
-[Functions by Return Type][Functions#functions-by-return-type] table for a list
+[Functions by Return Type][Functions#Functions by Return Type] table for a list
 of all data-producing functions.
 
 #### Can I render a Mustache template into a string? ####

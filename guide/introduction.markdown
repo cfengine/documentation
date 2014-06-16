@@ -105,10 +105,6 @@ See also: [cf-monitord][cf-monitord] reference documentation.
 * [/var/cfengine/bin/cf-promises][Introduction and System Overview#cf-promises]
 * [/var/cfengine/bin/cf-runagent][Introduction and System Overview#cf-runagent]
 
-<!-- Not relevant in 3.6
-* [/var/cfengine/bin/cf-upgrade][Introduction and System Overview#cf-upgrade]
--->
-
 #### cf-agent ####
 
 `cf-agent` evaluates policy code and makes changes to the system. Policy bundles are evaluated in the order of the provided `bundlesequence` (this is normally specified in the common control body). For each bundle, cf-agent groups promise statements according to their type. Promise types are then evaluated in a preset order to ensure fast system convergence to policy.

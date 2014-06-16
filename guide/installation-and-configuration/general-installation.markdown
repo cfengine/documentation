@@ -90,7 +90,7 @@ Edit `/etc/hosts` and add an entry for the IP address and hostname of the server
 
 ### CFEngine Enterprise Post-Installation Setup ###
 
-See: [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise?]
+See: [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise]
 
 
 ## More Detailed Installation Guides ##
