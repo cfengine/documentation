@@ -2,7 +2,7 @@
 safe: false
 #include: ./pages/
 plugins: ./_plugins/
-baseurl: /docs/master/
+# baseurl: /docs/master/
 git-repository: github.com/cfengine/documentation
 #source:      ./pages/
 #destination:
