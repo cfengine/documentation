@@ -700,9 +700,8 @@ system directory.
 
 ### sys.workdir
 
-The location of the CFEngine [work 
-directory][The CFEngine Components#The Working Directory] and cache. 
-For the system privileged user this is normally:
+The location of the CFEngine [work directory][CFEngine Directory Structure]
+and cache. For the system privileged user this is normally:
 
 ```cf3
     # workdir = /var/cfengine

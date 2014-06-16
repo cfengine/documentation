@@ -16,11 +16,9 @@ page.
 * [Hard and Soft Classes][Hard and Soft Classes]
 * [Special Variables][Special Variables]
 * [Enterprise API Reference][Enterprise API Reference]
-* [Syntax, identifiers and names][Syntax, identifiers and names]
 * [Standard Library][Standard Library]
 * [Design Center][Design Center]
 * [All Promise and Body Types][All Promise and Body Types]
 
 See Also: [All Promise Types][All Promise and Body Types#All Promise Types], [All Body Types][All Promise and Body Types#All Body Types]
-
 
