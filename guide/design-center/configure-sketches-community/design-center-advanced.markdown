@@ -11,6 +11,8 @@ installed, configured, and executed as policy. Many items are already discussed 
 [Command Line Sketches][Command Line Sketches]. 
 This Walkthrough provides a more advanced look at sketches in that it describes internal and backend processes. 
 
+Please note the following instructions will work with CFEngine Enterprise as well, but the Mission Portal **Design Center App** is a better user interface for most of the topics covered here.
+
 ## Before you Begin
 
 Make certain you have installed all necessary software and have checked out the Design Center repository:
@@ -125,7 +127,7 @@ that the later sections in the Walkthrough will skip for brevity.
 This is what all the other Design Center tools use. You do not need to
 know this protocol or know that it is used.
 
-	echo '{ dc_api_version: "0.0.1", request: {search: true } }' | $CFAPI $DCJ
+	echo '{ dc_api_version: "3.6.0", request: {search: true } }' | $CFAPI $DCJ
 
 If you get errors here, you might be missing Perl modules or the
 CFEngine agent. Look at the [Design Center Wiki](https://github.com/cfengine/design-center/wiki) 
@@ -178,7 +180,6 @@ Output:
 ```
 Applications::Memcached Sketch for installing, configuring, and starting memcached.
 ...
-Yale::stdlib Yale standard library
 ```
 
 You piped the command above through the standard `sort` command to
@@ -193,7 +194,7 @@ Run:
 You'll see this prompt, or something like it:
 
 ```
-Welcome to cf-sketch version 3.5.0b1.
+Welcome to cf-sketch version 3.6.0.
 CFEngine AS, 2013.
 
 Enter any command to cf-sketch, use 'help' for help, or 'quit' or '^D' to quit.
@@ -223,7 +224,7 @@ interaction for specific purposes.  All three are shown throughout this Walkthro
 
 #### Install a sketch with the Design Center API
 
-    echo '{ dc_api_version: "0.0.1", request: {install: {sketch:"System::motd", force:true} } }' | $CFAPI $DCJ
+    echo '{ dc_api_version: "3.6.0", request: {install: {sketch:"System::motd", force:true} } }' | $CFAPI $DCJ
     
 The `force` parameter tells the Design Center API to overwrite the
 sketch even if it is installed already.
@@ -345,15 +346,15 @@ We are going to define a run environment, which will tell the Design
 Center API that we want an activated sketch, not in test mode, and
 with verbose output:
 
-	echo '{ dc_api_version: "0.0.1", request: {define_environment: { walkthrough: { activated: true, test: false, verbose: true } } } }' | $CFAPI $DCJ
+	echo '{ dc_api_version: "3.6.0", request: {define_environment: { walkthrough: { activated: true, test: false, verbose: true } } } }' | $CFAPI $DCJ
 
 Then we will define the parameters for the `System::motd` sketch:
 
-    echo '{ dc_api_version: "0.0.1", request: {define: { "motd_params": { "System::motd": { "motd": "\\n ! System is under the control of CFEngine, local changes may by overwritten.\\n", "prepend_command": null } } } } }' | $CFAPI $DCJ
+    echo '{ dc_api_version: "3.6.0", request: {define: { "motd_params": { "System::motd": { "motd": "\\n ! System is under the control of CFEngine, local changes may by overwritten.\\n", "prepend_command": null } } } } }' | $CFAPI $DCJ
 
 and finally, use the run environment and the parameters to activate the sketch:
 
-	echo '{ dc_api_version: "0.0.1", request: {activate: { "System::motd": { environment: "walkthrough", params: [ "motd_params" ] } } } }' | $CFAPI $DCJ
+	echo '{ dc_api_version: "3.6.0", request: {activate: { "System::motd": { environment: "walkthrough", params: [ "motd_params" ] } } } }' | $CFAPI $DCJ
 
 Output (omitting log lines and reformatted):
 
@@ -455,7 +456,7 @@ different usage patterns.
 
 Generating the runfile is easy:
 
-	echo '{ dc_api_version: "0.0.1", request: {regenerate: { } } }' | $CFAPI $DCJ
+	echo '{ dc_api_version: "3.6.0", request: {regenerate: { } } }' | $CFAPI $DCJ
 
 Output:
 

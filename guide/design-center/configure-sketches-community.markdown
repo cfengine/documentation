@@ -14,15 +14,16 @@ without having to learn the CFEngine policy language. Although
 sketches are themselves written in the CFEngine policy language, you
 can make use of them by simply installing them, configuring them using
 the appropriate parameters, and deploying them on your
-infrastructure. For using of the Community edition of CFEngine, this can be easily done 
+infrastructure. For users of the Community edition of CFEngine, this can be easily done 
 using both a command-line interface called `cf-sketch`.
 
+Please note that CFEngine Enterprise comes with the **Design Center App** to make the work below effortless.
 
 ## Overview
 
 This page provides instructions on how a Design Center sketch can be
 found, installed, configured, and executed as policy, using
-command-line tools. The overview is as follows:
+command-line tools with CFEngine community. The overview is as follows:
 
 **Before you Begin**
 
