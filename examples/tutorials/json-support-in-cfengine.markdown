@@ -3,7 +3,7 @@ layout: default
 title: JSON Support in CFEngine
 published: true
 sorting: 2
-tags: [cookbook, json]
+tags: [json]
 ---
 
 ## Introduction

@@ -123,10 +123,7 @@ number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_
   teaches you how to configure and deploy business policy by using the Design Center application in the Mission Portal. Next, it shows you how to verify
   that your business policy is being activated by viewing the Reports in the Mission Portal.
 
-* [Create a standalone policy (Hello World).][Hello World]
-
-  Whereas the above tutorial uses pre-defined policy (called sketches) that you can modify in the Mission Portal, this tutorial teaches you how to create business policy (promises) on the command line. Here, you
-  can get a taste of the CFEngine language as you create standalone and executable scripts.
+* [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
 
 * [Distribute files from a central location.][Distribute files from a central location]
 
@@ -135,8 +132,8 @@ number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_
 
 ## Recommended Reading
 
-* CFEngine [manuals][Learning CFEngine].
-* Additional [tutorials, examples, and documentation][Learning Resources].
+* [CFEngine Guide][Guide]
+* [Tutorials and Examples][Examples]
 
 <hr>
 

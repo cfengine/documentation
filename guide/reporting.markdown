@@ -34,10 +34,8 @@ management, compliance reporting, system diagnostics, and capacity planning.
 
 Access to the data is provided through two ways:
 
-* The [Mission Portal console][Reporting in Mission Portal]
-* The [Enterprise Report API][Enterprise API Overview].
-
-See Also: [Enterprise Reporting][Enterprise Reporting]
+* The [Mission Portal console][Reporting UI]
+* The [Enterprise Report API][Enterprise API].
 
 ### Command-Line Reporting
 

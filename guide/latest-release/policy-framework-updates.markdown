@@ -97,7 +97,7 @@ from 3.5 and 3.6 will reveal many additions
 
   Note: This setting is mirrored from update.cf for [CFEngine Enterprise][] reporting.
   
-* [postgresql_maintenance][The Policy Framework#postgresql_maintenance]: Enables database maintainance for [CFEngine Enterprise][] Policy hubs.
+* postgresql_maintenance: Enables database maintainance for [CFEngine Enterprise][] Policy hubs.
 
 `def.cf` also sees the addition of `bundle common inventory_control` which is
 responsible for controlling the new inventory bundles. Inventory bundles

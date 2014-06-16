@@ -7,7 +7,7 @@ tags: [how-to-guides, quick-start guides, putty, puttygen]
 ---
 
 * [Using PuTTY in Simple Steps][Quick-Start Guide to Using PuTTY#Using PuTTY in Simple Steps]
-* [Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen][Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen#Quick-Start Guide to Using PuTTY]
+* [Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen][Quick-Start Guide to Using PuTTY#Accessing AWS Virtual Machines via SSH on Windows Using PuTTY and PuTTYgen]
 
 ## Using PuTTY in Simple Steps ##
 

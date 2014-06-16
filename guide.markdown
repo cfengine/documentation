@@ -56,7 +56,7 @@ Check out [Additional Resources][Additional Resources] and the [CFEngine Learnin
 
 ## Use our Help
 
-[Find Answers][Support and Community] We provide a number of ways to connect you to CFEngine 
+[Support and Community][Additional Resources#Support and Community] We provide a number of ways to connect you to CFEngine 
 experts if you need more help. Contact us!
 
 ## CFEngine Guide ##

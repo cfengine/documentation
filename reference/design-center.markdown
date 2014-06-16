@@ -12,6 +12,6 @@ API and code structure. For a guide to its functionality, start with
 [Design Center Overview][Design Center Overview].
 
 See Also: [Design Center Overview][Design Center Overview],
-[Design Center in CFEngine Enterprise][Design Center in CFEngine Enterprise]
+[Design Center in CFEngine Enterprise][Design Center UI]
 
 
