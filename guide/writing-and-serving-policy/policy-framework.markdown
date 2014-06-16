@@ -560,6 +560,7 @@ Codename:	trusty
 [%CFEngine_include_snippet(masterfiles/inventory/lsb.cf, .* )%]
 
 * sample output:
+
 ```
 % cf-agent -KI -binventory_control,inventory_lsb
 
