@@ -1116,6 +1116,10 @@ that CFEngine uses.
 It is sometimes convenient to attach meta-data of a more technical nature to
 policy. It may be used for arbitrary key=value strings for example.
 
+Note that the inventory reporting of CFEngine Enterprise 3.6 and later uses the
+meta attributes `inventory` and `attribute_name=`, so these should be considered
+reserved for this purpose.
+
 **Type:** `slist`
 
 **Allowed input range:** (arbitrary string)
