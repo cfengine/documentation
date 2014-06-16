@@ -18,8 +18,8 @@ access:
 **Note:** The usage of the `connection` variables is strictly limited to
 literal strings within the `promiser` and admit/deny lists of `access` promise
 types; they cannot be passed into functions or stored in other variables. These
-variables can only be used with incoming connections that use `protocol_version`
->=2 ( or "latest" ).
+variables can only be used with incoming connections that use
+[`protocol_version`][Components and Common Control#protocol_version] >=2 ( or "latest" ).
 
 ### connection.key
 

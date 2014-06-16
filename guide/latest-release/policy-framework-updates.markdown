@@ -85,18 +85,19 @@ for some time, including various common directories, and simple access control
 list definition to control which remote hosts could connect. Comparing def.cf
 from 3.5 and 3.6 will reveal many additions
 
-* [services_autorun][Policy Framework#services_autorun] provides automatic loading and activation of policy.
-* [cfengine_internal_rotate_logs][Policy Framework#cfengine_internal_rotate_logs] Enables log rotation for CFEngines log files.
-* [cfengine_internal_encrypt_transfers][Policy Framework#cfengine_internal_encrypt_transfers] Enables encryption for policy and
-binary updates done during the update policy. Note: This setting is mirrored from
-update.cf for CFEngine enterprise reporting. This setting is superfluous
-when `protocal_version` is set to 2 or higher which enables TLS encryption for
-communication.
-* [cfengine_internal_purge_policies][Policy Framework#cfengine_internal_purge_policies]: Enables purging of policies that no
-longer exist in masterfiles. Note: This setting is mirrored from update.cf for
-CFEngine enterprise reporting.
-* [postgresql_maintenance][Policy Framework#postgresql_maintenance]: Enables database maintainance for CFEngine
-Enterprise Policy hubs.
+* [services_autorun][The Policy Framework#services_autorun] provides automatic loading and activation of policy.
+* [cfengine_internal_rotate_logs][The Policy Framework#cfengine_internal_rotate_logs] Enables log rotation for CFEngines log files.
+* [cfengine_internal_encrypt_transfers][The Policy Framework#cfengine_internal_encrypt_transfers] Enables encryption for policy and binary updates done during the update policy.
+
+  Note: This setting is mirrored from
+  update.cf for CFEngine enterprise reporting. This setting is superfluous
+  when `protocal_version` is set to 2 or higher which enables TLS encryption for
+  communication.
+* [cfengine_internal_purge_policies][The Policy Framework#cfengine_internal_purge_policies]: Enables purging of policies that no longer exist in masterfiles.
+
+  Note: This setting is mirrored from update.cf for [CFEngine Enterprise][] reporting.
+  
+* [postgresql_maintenance][The Policy Framework#postgresql_maintenance]: Enables database maintainance for [CFEngine Enterprise][] Policy hubs.
 
 `def.cf` also sees the addition of `bundle common inventory_control` which is
 responsible for controlling the new inventory bundles. Inventory bundles
@@ -119,44 +120,44 @@ which is included in the reference manual. Of special note: the
 support for systemd, sysvinitd, sysvservice, and chkconfig. New convenianence
 bundles and bodies for common patterns have been added including:
 
-* [dir_sync][Files Bundles and Bodies#dir_sync]
-* [file_copy][Files Bundles and Bodies#file_copy]
-* [file_empty][Files Bundles and Bodies#file_empty]
-* [file_hardlink][Files Bundles and Bodies#file_hardlink]
-* [file_link][Files Bundles and Bodies#file_link]
-* [file_make][Files Bundles and Bodies#file_make]
-* [file_mustache_jsonstring][Files Bundles and Bodies#file_mustache_jsonstring]
-* [file_mustache][Files Bundles and Bodies#file_mustache]
-* [file_tidy][Files Bundles and Bodies#file_tidy]
-* [converge]Files Bundles and Bodies#converge]
-* [fstab_option_editor][Files Bundles and Bodies#fstab_option_editor]
-* [insert_ini_section][Files Bundles and Bodies#insert_ini_section]
-* [prepend_if_no_line][Files Bundles and Bodies#prepend_if_no_line]
-* [resolvconf_o][Files Bundles and Bodies#resolvconf_o]
-* [set_line_based][Files Bundles and Bodies#set_line_based]
-* [fstab_options][Files Bundles and Bodies#fstab_options]
-* [bigger_than][Files Bundles and Bodies#bigger_than]
-* [linkfrom][Files Bundles and Bodies#linkfrom]
-* [package_absent][Packages Bundles and Bodies#package_absent]
-* [package_latest][Packages Bundles and Bodies#package_latest]
-* [package_present][Packages Bundles and Bodies#package_present]
-* [package_specific_absent][Packages Bundles and Bodies#package_specific_absent]
-* [package_specific_latest][Packages Bundles and Bodies#package_specific_latest]
-* [package_specific][Packages Bundles and Bodies#package_specific]
-* [package_specific_present][Packages Bundles and Bodies#package_specific_present]
-* [brew][Packages Bundles and Bodies#brew]
-* [npm][Packages Bundles and Bodies#npm]
-* [pip][Packages Bundles and Bodies#pip]
-* [process_kill][Process Bundles and Bodies#process_kill]
-* [by_owner][Processes Bundles and Bodies#by_owner]
-* [logrotate][Common Bodies and Bundles#logrotate]
-* [prunedir][Common Bodies and Bundles#prunedir]
-* [cmerge][Common Bodies and Bundles#cmerge]
-* [rm_rf_depth][Common Bodies and Bundles#rm_rf_depth]
-* [url_ping][Common Bodies and Bundles#url_ping]
-* [setuidgid_dir][Commands Bundles and Bodies#setuidgid_dir]
-* [setuid_gid_umask][Commands Bundles and Bodies#setuid_gid_umask]
-* [system_owned][Files Bundles and Bodies#system_owned]
+* `dir_sync()`
+* `file_copy()`
+* `file_empty()`
+* `file_hardlink()`
+* `file_link()`
+* `file_make()`
+* `file_mustache_jsonstring()`
+* `file_mustache()`
+* `file_tidy()`
+* `converge()`
+* `fstab_option_editor()`
+* `insert_ini_section()`
+* `prepend_if_no_line()`
+* `resolvconf_o()`
+* `set_line_based()`
+* `fstab_options()`
+* `bigger_than()`
+* `linkfrom()`
+* `package_absent()`
+* `package_latest()`
+* `package_present()`
+* `package_specific_absent()`
+* `package_specific_latest()`
+* `package_specific()`
+* `package_specific_present()`
+* `brew()`
+* `npm()`
+* `pip()`
+* `process_kill()`
+* `by_owner()`
+* `logrotate()`
+* `prunedir()`
+* `cmerge()`
+* `rm_rf_depth()`
+* `url_ping()`
+* `setuidgid_dir()`
+* `setuid_gid_umask()`
+* `system_owned()`
 
 ## update.cf ##
 

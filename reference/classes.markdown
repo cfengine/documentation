@@ -47,7 +47,7 @@ Classes and variables have tags that describe their provenance (who
 created them) and purpose (why were they created).
 
 While you can provide your own tags for soft classes in policy with
-the `meta` attribute, there are some tags applied to hard classes and
+the [`meta`][Promise Types and Attributes#meta] attribute, there are some tags applied to hard classes and
 other special cases.  This list may change in future versions of
 CFEngine.
 
@@ -122,7 +122,8 @@ Enterprise only:
     component names `iu.hio.no`, `hio.no`, and `no`.
     * **See also:** `sys.fqhost`, `sys.uqhost`.
 -   An arbitrary user-defined string (as specified in the `-D`
-    command line option, or defined in a `classes` promise or body,
+    command line option, or defined in a [`classes` promise][classes] promise or
+    [`classes` body][Promise Types and Attributes#classes],
     `restart_class` in a `processes` promise, etc).
 -   The IP address octets of any active interface (in the form
     `ipv4_192_0_0_1<!-- /@w -->`, `ipv4_192_0_0<!-- /@w -->`,

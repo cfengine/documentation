@@ -24,7 +24,7 @@ Git repository in `/opt/cfengine/masterfiles.git` but does **not**
 deploy it automatically.  Thus any work you do with Design Center will
 not propagate to your hosts without some help.
 
-Please see [Version Control and Configuration Policy] for detailed
+Please see [Best Practices#Version Control and Configuration Policy] for detailed
 instructions for enabling the Version Control workflow in CFEngine
 Enterprise.
 
@@ -44,7 +44,7 @@ You also need to define the hosts you want to activate your configured sketch on
 
 ### Activation ###
 
-When you're done configuring your `sketch` you need to activate it. This will trigger a commit to your configured git repository, and transform your configured sketch into CFEngine `policy`. You will then be able to follow-up on the state of your activation (`In Progress`, `OK`, and `Failed`), and report on potential issues.
+When you're done configuring your sketch you need to activate it. This will trigger a commit to your configured git repository, and transform your configured sketch into CFEngine policy. You will then be able to follow-up on the state of your activation (`In Progress`, `OK`, and `Failed`), and report on potential issues.
 
 Note: `Sketches` can be activated multiple times with varying configuration and on different sets of hosts. The `Design Center App` indicates which sketches have been activated in your environment.
 
@@ -54,5 +54,5 @@ Note: `Sketches` can be activated multiple times with varying configuration and 
 * [Enterprise Sketches][Enterprise Sketches]
 * [Write a new Sketch][Write a new Sketch]
 * [Deploy your first Policy (Enterprise)][Deploy your first Policy]
-* [Version Control and Configuration Policy (Enterprise)][Version Control and Configuration Policy]
+* [Version Control and Configuration Policy (Enterprise)][Best Practices#Version Control and Configuration Policy]
 * [Write a new Sketch (Enterprise and Community)][Write a new Sketch]

@@ -6,7 +6,7 @@ tags: [Components, cf-execd]
 keywords: [executor]
 ---
 
-`cf-execd` is the scheduling daemon for [`cf-agent`][cf-agent]. It runs 
+`cf-execd` is the scheduling daemon for `cf-agent`. It runs 
 `cf-agent` locally according to a schedule specified in policy code (executor 
 control body). After a `cf-agent` run is completed, `cf-execd` gathers output 
 from `cf-agent`, and may be configured to email the output to a specified 
@@ -215,7 +215,7 @@ listed in the list are usually date- and time-based.
 
 The actual execution of `cf-agent` may be delayed by `splaytime`,
 and may be deferred by promise caching and the value of
-`ifelapsed`. Note also that the effectiveness of the `splayclass`
+[`ifelapsed`][cf-agent#ifelapsed]. Note also that the effectiveness of the `splayclass`
 function may be affected by changing the `schedule`.
 
 **Type:** `slist`

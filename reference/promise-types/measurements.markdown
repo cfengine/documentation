@@ -246,7 +246,7 @@ This attribute is mutually exclusive of `select_line_number`.
 
 **Description:** Read from the n-th line of the output (fixed format)
 
-This is mutually exclusive of `select_line_matching`.   
+This is mutually exclusive of [`select_line_matching`][measurements#select_line_matching].   
 
 **Type:** `int`
 

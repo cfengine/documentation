@@ -581,8 +581,8 @@ executed at intervals determined by `package_list_update_ifelapsed`.
 
 #### package_list_update_ifelapsed
 
-**Description:** The `ifelapsed` locking time in between updates of the
-package list
+**Description:** The [`ifelapsed`][Promise Types and Attributes#ifelapsed]
+locking time in between updates of the package list
 
 **Type:** `int`
 

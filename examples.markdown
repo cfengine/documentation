@@ -233,7 +233,7 @@ from the example.
 		  };
 	```
 
-4. Insert the policy file name in the `inputs` section of the main policy file
+4. Insert the policy file name in the [`inputs`][Components and Common Control#inputs] section of the main policy file
     `/var/cfengine/masterfiles/promises.cf`:
 
 	```cf3  

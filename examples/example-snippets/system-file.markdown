@@ -11,11 +11,10 @@ tags: [Examples,System Administration,System Files]
 * [Log rotation][System File Examples#Log rotation]
 * [Garbage collection][System File Examples#Garbage collection]
 * [Manage a system file][System File Examples#Manage a system file]
-* [Templating][System File Examples#Templating]
-* [Simple template][System File Examples#Simple template]
-* [Simple versioned template][System File Examples#Simple versioned template]
-* [Macro template][System File Examples#Macro template]
-* [Custom editing][System File Examples#Custom editing]
+  * [Simple template][System File Examples#Simple template]
+  * [Simple versioned template][System File Examples#Simple versioned template]
+  * [Macro template][System File Examples#Macro template]
+  * [Custom editing][System File Examples#Custom editing]
 
 ## Editing password or group files ##
 

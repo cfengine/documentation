@@ -145,6 +145,13 @@ from that automatic linking, use the form
 
 which is otherwise equivalent for the markdown renderer.
 
+To use keywords in inline code *without* creating an automatic link, use
+triple backticks:
+
+    The ```meta``` parameter to this function...
+
+With single backticks, this would link to the documentation of the `meta` attribute or promise type.
+
 ### Macros
 
 The documentation generator will pre-process the markdown content

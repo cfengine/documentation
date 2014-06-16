@@ -117,14 +117,21 @@ number you use in your **Vagrantfile** (e.g. policyserver.vm.network "forwarded_
 
 ## Tutorials
 
-* [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches (Enterprise Only)] This tutorial
-teaches you how to configure and deploy business policy by using the Design Center application in the Mission Portal. Next, it shows you how to verify
-that your business policy is being activated by viewing the Reports in the Mission Portal.
-* [Create a standalone policy (Hello World).][Hello World] Whereas the above tutorial uses pre-defined policy (called sketches) that you can modify in the Mission Portal, this
-tutorial teaches you how to create business policy (promises) on the command line. Here, you
-can get a taste of the CFEngine language as you create standalone and executable scripts.
-* [Distribute files from a central location.][Distribute files from a central location] Whereas the first tutorial in this list teaches you how to deploy business policy
-through the Mission Portal, this advanced, command-line tutorial shows you how to distribute policy files from the Policy Server to all pertinent Hosts.
+* [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches]
+
+  This tutorial
+  teaches you how to configure and deploy business policy by using the Design Center application in the Mission Portal. Next, it shows you how to verify
+  that your business policy is being activated by viewing the Reports in the Mission Portal.
+
+* [Create a standalone policy (Hello World).][Hello World]
+
+  Whereas the above tutorial uses pre-defined policy (called sketches) that you can modify in the Mission Portal, this tutorial teaches you how to create business policy (promises) on the command line. Here, you
+  can get a taste of the CFEngine language as you create standalone and executable scripts.
+
+* [Distribute files from a central location.][Distribute files from a central location]
+
+  Whereas the first tutorial in this list teaches you how to deploy business policy
+  through the Mission Portal, this advanced, command-line tutorial shows you how to distribute policy files from the Policy Server to all pertinent Hosts.
 
 ## Recommended Reading
 

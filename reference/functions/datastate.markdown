@@ -9,12 +9,12 @@ tags: [reference, data functions, functions, json, datastate, evaluation, vars, 
 
 **Description:** Returns the current evaluation data state.
 
-The returned data container will have the keys `classes` and `vars`.
+The returned data container will have the keys ```classes``` and ```vars```.
 
-Under `classes` you'll find a map with the class name as the key and
+Under ```classes``` you'll find a map with the class name as the key and
 `true` as the value.  Namespaced classes will be prefixed as usual.
 
-Under `vars` you'll find a map with the bundle name as the key
+Under ```vars``` you'll find a map with the bundle name as the key
 (namespaced if necessary).  Under the bundle name you'll find another
 map with the variable name as the key.  The value is converted to a
 data container (JSON format) if necessary.  The example should make it

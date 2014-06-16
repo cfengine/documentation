@@ -20,7 +20,7 @@ Classes are either `set` or `not set`, depending on context. Classes fall into
 user-defined. Refer to [Hard and Soft Classes][Hard and Soft Classes] in the **Reference** 
 section for more information.
 
-In [CFEngine Enterprise][Enterprise Report API], the list of set classes is 
+In [CFEngine Enterprise][], the list of set classes is 
 reported to the CFEngine Database Server and can be used there for reporting, 
 grouping of hosts and inventory management.
 
@@ -178,7 +178,7 @@ Example Output:
 
 In this example, lists of cities are defined in the `vars` section and these
 lists are combined into a list of all cities. These variable lists are used to
-qualify the greetings and to make the policy more concise. In the `classes`
+qualify the greetings and to make the policy more concise. In the [`classes`][classes]
 section a country class is defined if a class described on the right hand side
 evaluates to true. In the reports section the current time is always reported
 but only agents found to have the `Morning` and `italy` classes defined will

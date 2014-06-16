@@ -6,8 +6,8 @@ tags: [reference, components, cf-hub, enterprise]
 keywords: [hub]
 ---
 
-`cf-hub` connects to [`cf-serverd`][cf-serverd] instances to collect data 
-about a host managed by CFEngine. `cf-agent` and [`cf-monitord`][cf-monitord] 
+`cf-hub` connects to `cf-serverd` instances to collect data 
+about a host managed by CFEngine. `cf-agent` and `cf-monitord`
 both store data at host in local databases. `cf-hub` connects to a 
 `cf-serverd` instance running at a host and collect the data into its own 
 central database. `cf-hub` automatically schedules data collection from hosts 
@@ -61,7 +61,7 @@ For integration with the Zenoss monitoring software.
 **Description:** A list of IP addresses of hosts to exclude from
 report collection
 
-This list of IP addresses will not be queried for reports by `cf-hub`, even
+This list of IP addresses will not be queried for reports by ```cf-hub```, even
 though they are in the last-seen database.
 
 The lists may contain network addresses in CIDR notation or regular

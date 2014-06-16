@@ -23,19 +23,19 @@ speed of reports in the Mission Portal and through the Enterprise APIs. The Ente
 Server uses an optimized data collection protocol that reduces the network traffic and
 allows for even greater scalability.
 
-## Improvements for Policy Writers
+## Improvements for Policy Writers ##
 
 For policy writers, CFEngine 3.6 introduces a broad range of improvements and new
 functionality to the policy language, new capabilities for configuration management
 and tighter integration with data from external sources.
 
 
-### User Account Management
+### User Account Management ###
 
 The new `users` promise type allows for management and configuration of local user
 accounts with CFEngine.
 
-### Data Containers for Structured Data
+### Data Containers for Structured Data ###
 
 The new variable type `data` allows handling of structured data within CFEngine policy.
 Structured data can be read from JSON strings and files, which allows integrating of
@@ -43,7 +43,7 @@ CFEngine policies with any external data source that can export to JSON.
 
 A range of new functions allow creating and operating on structured data.
 
-### Tagging with Meta Data
+### Tagging with Meta Data ###
 
 Classes and variables can be tagged with meta data for extended annotation and 
 documentation of knowledge directly in the language. Classes and variables can be
@@ -51,7 +51,7 @@ searched by tags in policy, and CFEngine Enterprise uses tags to identify releva
 information reported by the host. CFEngine sets a number of tags on hard classes and
 special variables by default.
 
-### New and Improved Functions
+### New and Improved Functions ###
 
 CFEngine 3.6 adds a list of new built-in functions:
 
@@ -84,13 +84,13 @@ type:
 * `storejson()` - serialize a data container into a string
 
 
-## Changes to the CFEngine Core
+## Changes to the CFEngine Core ##
 
 A number of changes have been made to the CFEngine core to further improve stability,
 scalability and security; most importantly, the network protocol has been moved on top
 of TLS for full encryption of all network traffic.
 
-### Network Protocol on top of TLS
+### Network Protocol on top of TLS ###
 
 CFEngine 3.6 introduces a new networking protocol, which uses TLS for authentication.
 After the authentication, all dialog is encrypted within the established TLS session.
@@ -100,7 +100,7 @@ protocol with old agents, and new agents can speak the legacy protocol with old 
 CFEngine operators should turn off support for the legacy protocol as soon as all hosts
 are running 3.6 to benefit from the full encryption and future improvements.
 
-## Change History
+## Change History ##
 
 For a complete history of changes in CFEngine, see the `ChangeLog` and 
 `Enterprise ChangeLog`.

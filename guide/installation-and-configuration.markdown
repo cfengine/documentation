@@ -24,5 +24,5 @@ Learn how to control frequency settings for verifying CFEngine policy.
 * [Version Control]
 Learn how to put your CFEngine policies under version control.
 
-* [Policy Framework]
+* [The Policy Framework]
 Learn what options are available out of the box in CFEngine to configure its masterfiles operation.
