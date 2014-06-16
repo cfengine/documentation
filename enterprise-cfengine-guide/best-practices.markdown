@@ -230,7 +230,7 @@ masterfiles using the built-in facilities in CFEngine Enterprise 3.6.0
 * integration happens through shell scripts and `update.cf`, not C
   code or special policies
 
-## Scalability ##  
+## Scalability ##
   
 When running CFEngine Enterprise in a large-scale IT environment, where the number of hosts runs into the thousands, certain issues arise that require different approaches compared with smaller installations.
 
