@@ -889,6 +889,14 @@
                         },
                         {
                           "line": 330,
+                          "lval": "classes",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "kept_successful_command"
+                          }
+                        },
+                        {
+                          "line": 331,
                           "lval": "contain",
                           "rval": {
                             "type": "functionCall",
@@ -917,11 +925,11 @@
                   "name": "!am_root|!need_to_drop",
                   "promises": [
                     {
-                      "line": 333,
+                      "line": 334,
                       "promiser": "$(oneliner)",
                       "attributes": [
                         {
-                          "line": 334,
+                          "line": 335,
                           "lval": "args",
                           "rval": {
                             "type": "string",
@@ -929,7 +937,15 @@
                           }
                         },
                         {
-                          "line": 335,
+                          "line": 336,
+                          "lval": "classes",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "kept_successful_command"
+                          }
+                        },
+                        {
+                          "line": 337,
                           "lval": "contain",
                           "rval": {
                             "type": "functionCall",
@@ -949,14 +965,14 @@
               ]
             },
             {
-              "line": 337,
+              "line": 339,
               "name": "reports",
               "contexts": [
                 {
                   "name": "inform_mode.am_root.need_to_drop",
                   "promises": [
                     {
-                      "line": 339,
+                      "line": 341,
                       "promiser": "$(this.bundle): with dropped privileges to uid '$(repo_uid)' and gid '$(repo_gid)', in directory '$(repo_path)', running Git command '$(oneliner) $(subcmd) $(args)'",
                       "attributes": []
                     }
@@ -966,7 +982,7 @@
                   "name": "inform_mode.(!am_root|!need_to_drop)",
                   "promises": [
                     {
-                      "line": 342,
+                      "line": 344,
                       "promiser": "$(this.bundle): with current privileges, in directory '$(repo_path)', running Git command '$(oneliner) $(subcmd) $(args)'",
                       "attributes": []
                     }

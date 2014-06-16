@@ -898,7 +898,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 273,
+                  "line": 274,
                   "lval": "scope",
                   "rval": {
                     "type": "string",
@@ -906,7 +906,7 @@
                   }
                 },
                 {
-                  "line": 274,
+                  "line": 275,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -931,7 +931,7 @@
                   }
                 },
                 {
-                  "line": 275,
+                  "line": 276,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -964,7 +964,7 @@
                   }
                 },
                 {
-                  "line": 276,
+                  "line": 277,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -997,7 +997,7 @@
                   }
                 },
                 {
-                  "line": 277,
+                  "line": 278,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -1030,7 +1030,7 @@
                   }
                 },
                 {
-                  "line": 278,
+                  "line": 279,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1064,7 +1064,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 285,
+          "line": 286,
           "namespace": "default",
           "name": "state_repaired",
           "bodyType": "classes",
@@ -1076,7 +1076,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 289,
+                  "line": 290,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1089,7 +1089,7 @@
                   }
                 },
                 {
-                  "line": 290,
+                  "line": 291,
                   "lval": "persist_time",
                   "rval": {
                     "type": "string",
@@ -1102,7 +1102,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 295,
+          "line": 296,
           "namespace": "default",
           "name": "enumerate",
           "bodyType": "classes",
@@ -1114,21 +1114,8 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 301,
-                  "lval": "promise_repaired",
-                  "rval": {
-                    "type": "list",
-                    "value": [
-                      {
-                        "type": "string",
-                        "value": "mXC_$(x)"
-                      }
-                    ]
-                  }
-                },
-                {
                   "line": 302,
-                  "lval": "promise_kept",
+                  "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
                     "value": [
@@ -1141,6 +1128,19 @@
                 },
                 {
                   "line": 303,
+                  "lval": "promise_kept",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "mXC_$(x)"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 304,
                   "lval": "persist_time",
                   "rval": {
                     "type": "string",
@@ -1153,7 +1153,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.6/common.cf",
-          "line": 308,
+          "line": 309,
           "namespace": "default",
           "name": "always",
           "bodyType": "classes",
@@ -1165,7 +1165,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 312,
+                  "line": 313,
                   "lval": "promise_repaired",
                   "rval": {
                     "type": "list",
@@ -1178,7 +1178,7 @@
                   }
                 },
                 {
-                  "line": 313,
+                  "line": 314,
                   "lval": "promise_kept",
                   "rval": {
                     "type": "list",
@@ -1191,7 +1191,7 @@
                   }
                 },
                 {
-                  "line": 314,
+                  "line": 315,
                   "lval": "repair_failed",
                   "rval": {
                     "type": "list",
@@ -1204,7 +1204,7 @@
                   }
                 },
                 {
-                  "line": 315,
+                  "line": 316,
                   "lval": "repair_denied",
                   "rval": {
                     "type": "list",
@@ -1217,7 +1217,7 @@
                   }
                 },
                 {
-                  "line": 316,
+                  "line": 317,
                   "lval": "repair_timeout",
                   "rval": {
                     "type": "list",
@@ -1225,6 +1225,34 @@
                       {
                         "type": "string",
                         "value": "$(x)"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.6/common.cf",
+          "line": 320,
+          "namespace": "default",
+          "name": "kept_successful_command",
+          "bodyType": "classes",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 323,
+                  "lval": "kept_returncodes",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "0"
                       }
                     ]
                   }
