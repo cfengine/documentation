@@ -23,6 +23,8 @@ policy framework. For us it makes maintanence easier, and for the community
 and customers it ensures that improvements that come into the framework are
 easily accessible from either product.
 
+Please consult [The Policy Framework] for a map to the policy framework.
+
 * [What is new in the 3.6 masterfiles policy framework][Policy Framework Updates#What is new in the 3.6 masterfiles policy framework]
 	* [README.md][Policy Framework Updates#README.md]
 	* [Directories][Policy Framework Updates#Directories]
@@ -45,11 +47,6 @@ easily accessible from either product.
 
 ## What is new in the 3.6 masterfiles policy framework ##
 		
-### README.md ###
-
-That's right. We finally added some documentation inside of
-masterfiles. This document explains the general layout of the framework.
-
 ## Directories ##
 
 ### templates ###
@@ -106,16 +103,22 @@ and directly from within policy. LSB (Linux Standards Base), Dmidecode, LLDP
 (Link Layer Discovery Protocol), software installed, mounted filesystems
 (mtab), configured filesystems (fstab), and proc are some of the inventory
 policies provided out of the box.
-<LINK REF TO INVENTORY BUNDLES>
-This link should explain inventory stuff, but also give examples of how you
-can use the inventory information from within other policy .
+
+See [The Policy Framework] to understand inventory modules and learn how you
+can use the inventory information from within other policy and from the CFEngine Enterprise Mission Portal.
 
 ## The Standard Library ##
 
 The standard library `lib/3.6/*.cf` has seen many improvements. First and foremost is the addition of doxygen
 style inline documentation. This inline documentation markup is levereged by
 our documentation system to provide a rendered version of the standard library
-which is included in the reference manual. Of special note: the
+which is included in the reference manual.
+
+You only need to include `$(sys.libdir)/stdlib.cf` to get the whole
+standard library. `sys.libdir` resolves to the right path for your
+installation, including the version (3.6, 3.7, etc.)
+
+Of special note: the
 `standard_services` has been improved to make it more dynamic, and now has
 support for systemd, sysvinitd, sysvservice, and chkconfig. New convenianence
 bundles and bodies for common patterns have been added including:
@@ -165,7 +168,7 @@ The `update.cf` policy got broken up from its monolithic form and
 now has additional update policies included inside the `update` directory.
 bundle common update_def was added to provide a common place to enable
 features related to policy updates (much like body common def found in
-def.cf).
+`def.cf`).  Please see [The Policy Framework] for the full details.
 
 * *cfengine_internal_masterfiles_update*: This class enables automatic policy
 deployment on the policy server. This is designed for use with CFEngine
@@ -178,7 +181,7 @@ communication.
 * *cfengine_internal_purge_policies*: Enables purging of policies that no
 longer exist in masterfiles. Note: This setting is mirrored in promises.cf for
 CFEngine enterprise reporting.
-
+* ...and much more!
 
 Now that you have an overview of whats new, lets cover a few things you need
 to watch our for when upgrading.
@@ -224,8 +227,8 @@ R: key3
 R: key2
 ```
 
-If the resulting list order is important please consider the `sort`() and
-`reverse`() functions.
+If the resulting list order is important please consider the `sort()` and
+`reverse()` functions.
 
 
 #### Function Caching ####
@@ -248,7 +251,8 @@ Previously `body file_select u_input_files` controlled which files were
 considered when performing a policy update. That list of extensions has moved
 to `update_def.input_name_patterns`. '*.conf', and '*.mustache' files have
 been added to the default list.
-FAQ: https://docs.cfengine.com/docs/master/guide-faq.html#i-have-added-new-files-in-masterfiles-but-my-remote-clients-are-not-getting-updates
+
+For more information, see the [FAQ][FAQ#i-have-added-new-files-in-masterfiles-but-my-remote-clients-are-not-getting-updates]
 
 ### Enterprise Users ###
 
@@ -261,9 +265,10 @@ report on variables and `namespace` scope classes that are tagged with
 "inventory" or "report" using the new `metatags_include` and
 `metatags_exclude` attributes.
 
-The following attributes have been deprecated in 3.6.0, please tag the
+The following attributes have been deprecated in 3.6.0.  Please tag the
 variables and classes you would like to report on appropriately. If you have
 any questions please contact support.
+
 * `classes_include`
 * `classes_exclude`
 * `variables_include`
