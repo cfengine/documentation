@@ -21,6 +21,7 @@ provide support for the platforms most frequently used by our users.
 ## Hosts ##
 
 Any host can be a policy server in Community installations of CFEngine.
+
 | OS              | Versions     | Architectures      |
 |-----------------|--------------|--------------------|
 | AIX 	| 5.3*, 6*, 7* 	| PowerPC   |
