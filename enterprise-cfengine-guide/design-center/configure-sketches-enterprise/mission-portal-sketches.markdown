@@ -8,7 +8,7 @@ tags: [available, sketch, design center, mission portal, enterprise, repository,
 
 As seen in the [CFEngine Enterprise sketch flow][Sketch Flow in CFEngine Enterprise],
 the contents of `/var/cfengine/design-center/sketches` controls what sketches are 
-available to users of the Design Center app (UI) on the Mission Portal console. This page 
+available to users of the **Design Center App** (UI) on the Mission Portal console. This page 
 explains how to adjust the available sketches and add your own.
 
 **Note:** The Design Center imposes special requirements on sketches for Enterprise compatibility. 
@@ -18,7 +18,7 @@ requirements.
 ## Filter available sketches in the Design Center app
 
 CFEngine Enterprise comes with many sketches that are available out of the box to all users 
-of the Design Center app. You can remove some of them in one of two ways:
+of the **Design Center App**. You can remove some of them in one of two ways:
 
 * Remove the sketch from `/var/cfengine/design-center/sketches`
 * Remove the `enterprise_compatible` tag from the `sketch.json` file that is located in the 
@@ -32,7 +32,7 @@ available sketches for the app (it regenerates
 
 ### Example: Remove the Packages::removed sketch
 
-This example describes how to remove the **Packages::removed** sketch from the Design Center app by 
+This example describes how to remove the **Packages::removed** sketch from the **Design Center App** by 
 removing its `enterprise_compatible` tag.
 
 Prior to our change, the list of available sketches in the app looks like the 
@@ -76,7 +76,7 @@ The sketch is now filtered out from the Design Center, as shown by the following
 In order to add a new sketch, make sure it complies with the 
 Enterprise [specification for sketches][Sketch Structure].
 
-Create a sketch that just echoes what the user inputs in the Design Center app.
+Create a sketch that just echoes what the user inputs in the **Design Center App**.
 
 1. Make the directory for your new sketch:
 
@@ -146,7 +146,7 @@ Create a sketch that just echoes what the user inputs in the Design Center app.
         # make
 
 
-The sketch is now available in the Design Center app, as shown below:
+The sketch is now available in the **Design Center App**, as shown below:
 
 ![New echo sketch available in the Mission Portal](mission-portal-sketch-add-echo.png)
 
