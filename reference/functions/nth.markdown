@@ -30,4 +30,4 @@ Output:
 
 [%CFEngine_include_snippet(nth.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`length()`][length], [`datatype()`][datatype].
+**See also:** [`length()`][length].
