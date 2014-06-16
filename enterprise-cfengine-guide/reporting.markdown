@@ -6,14 +6,13 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-CFEngine collects a large amount of data. You can run and schedule pre-defined reports or use the [query builder][Reporting UI#Query Builder] for your own custom reports. You can save these queries for later use, and schedule reports for specified times.
+CFEngine collects a large amount of data. To inspect it, you can run and schedule pre-defined reports or use the [query builder][Reporting UI#Query Builder] for your own custom reports. You can save these queries for later use, and schedule reports for specified times.
 
-If you are familiar with SQL syntax you have the option to input your query into the interface directly. Make sure to take a look at the database schema. Please note: manual entries in the query field at the bottom of the [query builder][Reporting UI#Query Builder] will invalidate all field selections and filters above, and vice-versa.
-Results
+If you are familiar with SQL syntax, you can input your query into the interface directly. Make sure to take a look at the database schema. Please note: manual entries in the query field at the bottom of the [query builder][Reporting UI#Query Builder] will invalidate all field selections and filters above, and vice-versa.
 
-You can narrow the amount of `hosts` to be queried with the help of filters above the displayed table. These filters are based on the same categorization you can find in the other apps.
+You can query fewer hosts with the help of filters above the displayed table. These filters are based on the same categorization you can find in the other apps.
 
-You are also able to filter on the type of promise: user defined, system defined, or all.
+You can also filter on the type of promise: user defined, system defined, or all.
 
 See also:
 
@@ -27,18 +26,18 @@ Users not familiar with SQL syntax can easily create their own custom reports in
 
 * Tables - Select the data tables you want include in your report first.
 * Fields - Define your table columns based on your selection above.
-* Filters - Filter your results.
-* Group - Group your results.
-* Sort - Sort your results.
-* Limit - Limit the number of entries in your report. This is a recommended practice for testing your query.
+* Filters - Filter your results.  Remember that unless you filter, you may be querying large data sets, so think about what you absolutely need in your report.
+* Group - Group your results.  May be expensive with large data sets.
+* Sort - Sort your results.  May be expensive with large data sets.
+* Limit - Limit the number of entries in your report. This is a recommended practice for testing your query, and even in production it may be helpful if you don't need to see every entry.
 * Show me the query - View and edit the SQL query directly. Please note, that editing the query directly here will invalidate your choices in the query builder interface, and changing your selections there will override your SQL query.
 
 ### Ensure the report collection is working ###
 
-* The reporting bundle must be in `promises.cf`. For example, the
-following defines the attribute `Role` which is set to
+* The reporting bundle must be called from `promises.cf`. For example,
+the following defines the attribute `Role` which is set to
 `database_server`. You need to add it to the top-level
-`bundlesequence` or in a bundle that it calls.
+`bundlesequence` in `promises.cf` or in a bundle that it calls.
 
 	```cf3
 	bundle agent myreport
@@ -50,6 +49,8 @@ following defines the attribute `Role` which is set to
 	}
 	```
 
+* note the `meta` tag `inventory`
+
 * The hub must be able to collect the reports from the client. TCP
 port 5308 must be open and, because 3.6.0 uses TLS, should not be
 proxied or otherwise intercepted. Note that bootstrapping and other
@@ -57,9 +58,10 @@ standalone client operations go from the client to the server, so the
 ability to bootstrap and copy policies from the server doesn't
 necessarily mean the reverse connection will work.
 
-* Ensure that `inventory` and `report` variables and classes are not
-filtered by `controls/cf_serverd.cf` in your infrastructure. The
-standard configuration from the stock CFEngine packages should work.
+* Ensure that variables and classes tagged as `inventory` or `report`
+are not filtered by `controls/cf_serverd.cf` in your infrastructure.
+The standard configuration from the stock CFEngine packages allows
+them and should work.
 
 ## Define a New Single Table Report ##
 
