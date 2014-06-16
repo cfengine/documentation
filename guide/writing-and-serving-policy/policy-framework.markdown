@@ -178,12 +178,12 @@ This is a simple CFEngine policy, so read on for configuring it.
 Set your `domain` to the right value. By default it's used for mail
 and to deduce your file access ACLs.
 
-##### acl
+##### acl #####
 
 The `acl` is crucial. This is used by **every** host, not just the
 policy server. Make sure you only allow hosts you want to allow.
 
-##### trustkeysfrom
+##### trustkeysfrom #####
 
 `trustkeysfrom` tells the policy server from which IPs it should accept
 connections even if the host's key is unknown, trusting it at connect

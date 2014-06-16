@@ -52,7 +52,8 @@ The documentation pre-processor will create those automatically.
 `classes` and `readfile()`
 ```
 
-`classes` and `readfile()`
+<!--- cheat - otherwise we get ambiuous link target warnings -->
+[`classes`][classes] and `readfile()`
 
 However, the preprocess will not create links if the code word is in triple backticks:
 

@@ -17,7 +17,7 @@ and... you're done?
 
 What do you think?  How do you version your own infrastructure?
 
-## Problem statement
+### Problem statement ###
 
 It turns out everyone likes convenience and writing the versioning
 machinery is hard.  So for CFEngine Enterprise 3.6.0 we set out to
@@ -26,7 +26,7 @@ by default.  This allows users to use branches for separate hubs
 (which enables a policy release pipeline) and enables Design Center
 integration.
 
-### Release pipeline
+### Release pipeline ###
 
 A build and release pipeline is how software is typically delivered to
 production through testing stages.  In the case of CFEngine, policies
@@ -34,19 +34,19 @@ are the software.  Users have at least two stages, development and
 production, but typically the sequence has more stages including
 various forms of testing/QA and pre-production.
 
-### Design Center
+## Design Center ##
 
 The CFEngine Design Center is a way to augment your policies (in a way
 that does not conflict or override your own policies) through a GUI,
 using modular testable policies called sketches.  It's like a Perl
 CPAN for CFEngine but with a GUI and awesome sauce mixed in.
 
-## How to enable it
+### How to enable it ###
 
 To enable masterfiles versioning, you have to plan a little bit. These
 are the steps:
 
-### Choose your repository
+#### Choose your repository ###
 
 You have two options: use the default local Git repository which comes
 with CFEngine Enterprise, or use a remote Git repository accessible
@@ -56,7 +56,7 @@ using a remote repository, populated with the contents of the `3.6.x`
 branch of our masterfiles repository at
 https://github.com/cfengine/masterfiles.
 
-#### Using the default local Git repository
+##### Using the default local Git repository ####
 
 The default repository is a local directory on the hub and set up by
 the `cfengine-hub` package.  It's the default in the Mission Portal
@@ -82,7 +82,7 @@ basic information needed by git to manipulate the repository):
 And then make all the changes in the checked-out `masterfiles`
 repository.
     
-#### Using a remote repository
+##### Using a remote repository ####
 
 To use a remote repository, you must enter its address, login
 credentials and the branch you want to use in the Mission Portal VCS
@@ -95,7 +95,7 @@ the built-in local repository.
 
 ![VCS settings screen](settings-vcs.png)
 
-### Make sure your current masterfiles are in the chosen repository
+#### Make sure your current masterfiles are in the chosen repository ###
 
 This is critical.  When you start auto-deploying policy, you **will**
 overwrite your current `/var/cfengine/masterfiles`.  So take the
@@ -112,7 +112,7 @@ commands (assuming you are already in your local repository checkout):
     git commit -m 'Initial masterfiles check in'
     git push
 
-### Enable VCS deployments in the versioned `update.cf`
+#### Enable VCS deployments in the versioned `update.cf` ###
 
 In the file `update.cf` in your versioned masterfiles, change 
 
@@ -151,7 +151,7 @@ branch you configured in the Mission Portal VCS integration panel.
 Please note all the work is done as user `cfapache` except the very
 last step of writing into `/var/cfengine/masterfiles`.
 
-## How it works
+#### How it works ##
 
 The code is fairly simple and can even be modified if you have special
 requirements (e.g. Subversion integration).  But out of the box there
@@ -159,7 +159,7 @@ are three important components. All the scripts below are stored under
 `/var/cfengine/httpd/htdocs/api/dc-scripts/` in your CFEngine
 Enterprise hub.
 
-### `common.sh`
+##### `common.sh` ###
 
 The script `common.sh` is loaded by the deployment script and does two
 things.  First, it redirects all output to
@@ -172,7 +172,7 @@ That file is written out by the Mission Portal VCS integration panel,
 so it's the connection between the Mission Portal GUI and the
 underlying scripts.
 
-### `masterfiles-stage.sh`
+##### `masterfiles-stage.sh` ###
 
 This script is called to deploy the masterfiles from VCS to
 `/var/cfengine/masterfiles`.  It's fairly complicated and does not
@@ -194,20 +194,20 @@ the script exits.
   but in a homogeneous client population this is a wonderful
   guarantee.
 
-### `pre-fetch.sh` and `post-update.sh`
+##### `pre-fetch.sh` and `post-update.sh` ###
 
 These scripts are run by the Mission Portal whenever the user
 configures sketches.  They enable the Mission Portal to check out the
 policies, make changes to them, and then commit and push them back.
 
-## Design Center integration
+### Design Center integration ##
 
 The Design Center integration Just Works when you follow the procedure
 above to enable the VCS integration.  You can then go into the Mission
 Portal, configure any sketch, and voila, in minutes that sketch will
 be activated across your infrastructure.
 
-## Manual policy changes
+### Manual policy changes ###
 
 If you want to make manual changes to your policies, simply make those
 changes in a checkout of your masterfiles repository, commit and push
@@ -215,7 +215,7 @@ the changes. The next time `update.cf` runs, your changes will be
 checked out and in minutes distributed through your entire
 infrastructure.
 
-## Benefits
+### Benefits ###
 
 To conclude, let's summmarize the benefits of versioning your
 masterfiles using the built-in facilities in CFEngine Enterprise 3.6.0
