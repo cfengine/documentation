@@ -869,7 +869,7 @@ def library_include(parameters, config):
 				markdown_lines.append("### %s\n" % printable_type)
 				markdown_lines.append("\n")
 			
-			markdown_lines.append("#### " + title + "\n")
+			markdown_lines.append("#### " + title + " ####\n")
 			markdown_lines.append("\n")
 			markdown_lines.append("**Prototype:** `" + prototype + "`\n")
 			markdown_lines.append("\n")
