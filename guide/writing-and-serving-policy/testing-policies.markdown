@@ -21,7 +21,7 @@ to have this 'known directory' was made to simplify a lot of configuration.
 
 To test CFEngine as an ordinary user, do the following:
 
--   Copy the binaries into the work directory:
+Copy the binaries into the work directory:
 
 ```
     host$ mkdir -p ~/.cfagent/inputs
@@ -39,4 +39,4 @@ following:
 
 This is always the way to start checking a configuration in CFEngine 3. If a 
 configuration does not pass this check/test, you will not be allowed to use 
-it, and `cf-agent` will look for the file failsafe.cf.
+it, and `cf-agent` will look for the file `failsafe.cf`.
