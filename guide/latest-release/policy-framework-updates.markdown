@@ -192,6 +192,7 @@ to watch our for when upgrading.
 The order of results returned by getindices function is not necessarily
 returned in the order defined.
 **Example:**
+
 ```cf3
 bundle agent example
 {
@@ -206,7 +207,9 @@ bundle agent example
     "$(keys)";
 }
 ```
+
 The above policy will produce the following output on 3.5:
+
 ```
 R: key1
 R: key2
@@ -214,6 +217,7 @@ R: key3
 ```
 
 The same policy in 3.6 will produce:
+
 ```
 R: key1
 R: key3
