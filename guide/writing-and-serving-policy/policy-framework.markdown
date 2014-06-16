@@ -14,7 +14,7 @@ they are cached in `/var/cfengine/inputs`).
 The following configuration files are part of the default CFEngine 
 installation in `/var/cfengine/masterfiles`, and have special roles.
 
-## Setting up
+## Setting up ##
 
 First, review `update.cf` and `def.cf`.  Most settings you need to change will live here.
 
@@ -56,7 +56,7 @@ referring to
 `update.cf` as you
 read this.  We are skipping the nonessential ones.
 
-#### How it works
+#### How it works ####
 
 There are 4 stages in `update.cf`. See the `bundlesequence`: after
 loading the configuration from `update_def`, we take these steps in
@@ -92,7 +92,7 @@ This step does a self-update of CFEngine. See the Enterprise
 documentation for details; this functionality is unsupported in
 CFEngine Community.
 
-#### update.cf configuration
+#### update.cf configuration ####
 
 ##### input_name_patterns
 
@@ -163,7 +163,7 @@ Implementation (warning: advanced usage):
 
 [%CFEngine_include_snippet(masterfiles/def.cf, .*)%]
 
-#### How it works
+#### How it works ####
 
 `def.cf` has some crucial settings used by the rest of CFEngine. It's
 expected that users will edit it but won't normally change the rest of
@@ -171,7 +171,7 @@ the masterfiles except in `services` or if they *know* it's necessary.
 
 This is a simple CFEngine policy, so read on for configuring it.
 
-#### def.cf configuration
+#### def.cf configuration ####
 
 ##### domain
 
@@ -236,7 +236,7 @@ Turn this on (set to `any`) to allow the hub to edit sudoers in order
 for the Apache user to run passwordless sudo cf-runagent (part of
 Mission Portal troubleshooting).
 
-#### def.cf inventory control
+#### def.cf inventory control ####
 
 The inventory is a cool new feature in 3.6.0. You can disable pieces
 of it (inventory modules) or the whole thing if you wish.
@@ -305,7 +305,7 @@ file from the server and load its contents. For details, see [CMDB][CMDB]
 
 ### promises.cf
 
-#### How it works
+#### How it works ####
 
 `promises.cf` is your main run file. Keep referring to your
 installation's `promises.cf` as you read this.
@@ -318,9 +318,9 @@ It should contain all of the basic configuration
 settings, including a list of other files to include. In normal
 operation, it must also have a `bundlesequence`.
 
-#### promises.cf configuration
+#### promises.cf configuration ####
 
-##### bundlesequence
+##### bundlesequence #####
 
 The `bundlesequence` acts like the 'genetic makeup' of the
 configuration. Edit the `bundlesequence` to add any bundles you have
@@ -342,7 +342,7 @@ for composing bundles for different classes. This is an advanced topic
 and a risky area (if you get it wrong, your policies will not
 validate) so make sure you test your changes carefully!
 
-##### inputs
+##### inputs #####
 
 In order to find bundles, CFEngine needs to know where to look. This
 list defines what files are needed. Note there are several dynamic
@@ -404,7 +404,7 @@ updating policy to use new features). If you accidentally cause a bad
 `failsafe.cf` policy on those machines will run (and will eventually
 download a working policy, once you fix it on the policy host).
 
-## Further structure
+## Further structure ##
 
 * `cfe_internal`: internal CFEngine policies you shouldn't modify or you will get unexpected behavior
 * `controls`: configuration of components, e.g. the `cf-agent` or `cf-serverd`, beyond what `def.cf` can offer
@@ -447,7 +447,7 @@ CFEngine Enterprise has specific functionality to show and use
 inventory data, but users of the Community Version can use them as
 well locally on each host.
 
-## How It Works
+## How It Works ##
 
 The inventory modules are called in `promises.cf`:
 
@@ -491,7 +491,7 @@ This defines a reported attribute "Ports listening" which contains a
 list of strings representing the listening ports. More on this in a
 second.
 
-## Your Very Own Inventory Module
+## Your Very Own Inventory Module ##
 
 The good news is, writing an inventory module is incredibly easy.
 
@@ -525,7 +525,7 @@ directory, either. The variables and classes can be declared anywhere
 as long as they have the right tags. So you can use the `services`
 directory or whatever else makes sense to you.
 
-## CFEngine Enterprise vs. Community
+## CFEngine Enterprise vs. Community ##
 
 In CFEngine Enterprise, the reported data is aggregated in the hub and
 reported across the whole host population.
@@ -534,14 +534,14 @@ In CFEngine Community, users can use the `classesmatching()` and
 `variablesmatching()` functions to collect all the inventory variables
 and classes and report them in other ways.
 
-## What Modules Are Available?
+## What Modules Are Available? ##
 
 As soon as you use the `promises.cf` provided in the parent directory,
 quite a few inventory modules will be enabled (if appropriate for your
 system). Here's the list of modules and what they provide. Note they
 are all enabled by code in `def.cf` as explained above.
 
-### LSB
+### LSB ###
 
 * lives in: `lsb.cf`
 * applies to: LSB systems (most Linux distributions, basically)
@@ -569,7 +569,7 @@ Codename:	trusty
 R: inventory_lsb: OS = Ubuntu, codename = trusty, release = 14.04, flavor = Ubuntu_14_04, description = Ubuntu 14.04 LTS
 ```
 
-### SUSE
+### SUSE ###
 
 * lives in: `suse.cf`
 * applies to: SUSE Linux
@@ -577,7 +577,7 @@ R: inventory_lsb: OS = Ubuntu, codename = trusty, release = 14.04, flavor = Ubun
 * implementation:
 [%CFEngine_include_snippet(masterfiles/inventory/suse.cf, .* )%]
 
-### Debian
+### Debian ###
 
 * lives in: `debian.cf`
 * applies to: Debian and its derivatives
@@ -587,7 +587,7 @@ R: inventory_lsb: OS = Ubuntu, codename = trusty, release = 14.04, flavor = Ubun
 * implementation:
 [%CFEngine_include_snippet(masterfiles/inventory/debian.cf, .* )%]
 
-### Red Hat
+### Red Hat ###
 
 * lives in: `redhat.cf`
 * applies to: Red Hat and its derivatives
@@ -595,19 +595,19 @@ R: inventory_lsb: OS = Ubuntu, codename = trusty, release = 14.04, flavor = Ubun
 * implementation:
 [%CFEngine_include_snippet(masterfiles/inventory/redhat.cf, .* )%]
 
-### Windows
+### Windows ###
 
 * lives in: `windows.cf`
 
-### Mac OS X
+### Mac OS X ###
 
 * lives in: `macos.cf`
 
-### Generic (unknown OS)
+### Generic (unknown OS) ###
 
 * lives in: `generic.cf` (see `any.cf` for generally applicable inventory modules)
 
-### LLDP
+### LLDP ###
 
 * lives in: `any.cf`
 * runs `inventory_control.lldpctl_exec` through a Perl filter
@@ -615,7 +615,7 @@ R: inventory_lsb: OS = Ubuntu, codename = trusty, release = 14.04, flavor = Ubun
 * implementation:
 [%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_LLDP, \})%]
 
-### mtab
+### mtab ###
 
 * lives in: `any.cf`
 * parses: `/etc/mtab`
@@ -634,7 +634,7 @@ R: cfe_autorun_inventory_mtab: we have a cgroup mount under /sys/fs/cgroup/syste
 R: cfe_autorun_inventory_mtab: we have a tmpfs mount under /run/shm
 ```
 
-### fstab
+### fstab ###
 
 * lives in: `any.cf`
 * parses: `sys.fstab`
@@ -652,7 +652,7 @@ R: cfe_autorun_inventory_fstab: we have a cifs fstab entry under /backups/load
 R: cfe_autorun_inventory_fstab: we have a auto fstab entry under /mnt/cdrom
 ```
 
-### CMDB
+### CMDB ###
 
 * lives in: `any.cf`
 * parses: `me.json` (which is copied from the policy server; see implementation)
@@ -661,7 +661,7 @@ R: cfe_autorun_inventory_fstab: we have a auto fstab entry under /mnt/cdrom
 * implementation:
 [%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_cmdb_load, \})%]
 
-### DMI decoding
+### DMI decoding ###
 
 * lives in: `any.cf`
 * runs: `dmidecode`
@@ -682,35 +682,35 @@ R: cfe_autorun_inventory_dmidecode: Obtained System version = ''
 R: cfe_autorun_inventory_dmidecode: Obtained CPU model = 'Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz'
 ```
 
-### Listening ports
+### Listening ports ###
 
 * lives in: `any.cf`
 * provides variables: `cfe_autorun_inventory_listening_ports.ports` as a copy of `mon.listening_ports`
 * implementation:
 [%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_listening_ports, \})%]
 
-### Disk space
+### Disk space ###
 
 * lives in: `any.cf`
 * provides variables: `cfe_autorun_inventory_disk.free` as a copy of `mon.value_diskfree`
 * implementation:
 [%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_disk, \})%]
 
-### Available memory
+### Available memory ###
 
 * lives in: `any.cf`
 * provides variables: `cfe_autorun_inventory_memory.free` as a copy of `mon.value_mem_free` and `cfe_autorun_inventory_memory.total` as a copy of `mon.value_mem_total`
 * implementation:
 [%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_memory, \})%]
 
-### Load average
+### Load average ###
 
 * lives in: `any.cf`
 * provides variables: `cfe_autorun_inventory_loadaverage.value` as a copy of `mon.value_loadavg`
 * implementation:
 [%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_loadaverage, \})%]
 
-### procfs
+### procfs ###
 
 * lives in: `any.cf`
 * parses: `consoles`, `cpuinfo`, `modules`, `partitions`, `version`
