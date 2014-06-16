@@ -1,0 +1,5008 @@
+{
+      "bundles": [
+        {
+          "sourcePath": "../masterfiles/lib/3.7/paths.cf",
+          "line": 50,
+          "namespace": "default",
+          "name": "paths",
+          "bundleType": "common",
+          "arguments": [],
+          "promiseTypes": [
+            {
+              "line": 71,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "enterprise.(am_policy_hub|policy_server)",
+                  "promises": [
+                    {
+                      "line": 78,
+                      "promiser": "path[git]",
+                      "attributes": [
+                        {
+                          "line": 79,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(sys.workdir)/bin/git"
+                          }
+                        },
+                        {
+                          "line": 80,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "CFEngine Enterprise Hub ships with its own git which is used internally"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "!(enterprise.(am_policy_hub|policy_server))",
+                  "promises": [
+                    {
+                      "line": 83,
+                      "promiser": "path[git]",
+                      "attributes": [
+                        {
+                          "line": 83,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/git"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 86,
+                      "promiser": "path[getfacl]",
+                      "attributes": [
+                        {
+                          "line": 86,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/getfacl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 87,
+                      "promiser": "path[npm]",
+                      "attributes": [
+                        {
+                          "line": 87,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/npm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 88,
+                      "promiser": "path[pip]",
+                      "attributes": [
+                        {
+                          "line": 88,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/pip"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "_have_bin_env",
+                  "promises": [
+                    {
+                      "line": 91,
+                      "promiser": "path[env]",
+                      "attributes": [
+                        {
+                          "line": 91,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/env"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "!_have_bin_env",
+                  "promises": [
+                    {
+                      "line": 93,
+                      "promiser": "path[env]",
+                      "attributes": [
+                        {
+                          "line": 93,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/env"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "_have_bin_systemctl",
+                  "promises": [
+                    {
+                      "line": 96,
+                      "promiser": "path[systemctl]",
+                      "attributes": [
+                        {
+                          "line": 96,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/systemctl"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "!_have_bin_systemctl",
+                  "promises": [
+                    {
+                      "line": 98,
+                      "promiser": "path[systemctl]",
+                      "attributes": [
+                        {
+                          "line": 98,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/systemctl"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "linux",
+                  "promises": [
+                    {
+                      "line": 101,
+                      "promiser": "path[lsattr]",
+                      "attributes": [
+                        {
+                          "line": 101,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/lsattr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 102,
+                      "promiser": "path[tar]",
+                      "attributes": [
+                        {
+                          "line": 102,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/tar"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "aix",
+                  "promises": [
+                    {
+                      "line": 106,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 106,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 107,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 107,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 108,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 108,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 109,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 109,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 110,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 110,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/crontabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 111,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 111,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 112,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 112,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 113,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 113,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 114,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 114,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 115,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 115,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 116,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 116,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 117,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 117,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 118,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 118,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 119,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 119,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 120,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 120,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 121,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 121,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 122,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 122,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 123,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 123,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 124,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 124,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 125,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 125,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 126,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 126,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 127,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 127,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "archlinux",
+                  "promises": [
+                    {
+                      "line": 131,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 131,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 132,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 132,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 133,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 133,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 134,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 134,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 135,
+                      "promiser": "path[crontab]",
+                      "attributes": [
+                        {
+                          "line": 135,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 136,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 136,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 137,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 137,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 138,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 138,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 139,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 139,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 140,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 140,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 141,
+                      "promiser": "path[dmidecode]",
+                      "attributes": [
+                        {
+                          "line": 141,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dmidecode"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 142,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 142,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 143,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 143,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 144,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 144,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 145,
+                      "promiser": "path[free]",
+                      "attributes": [
+                        {
+                          "line": 145,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/free"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 146,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 146,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 147,
+                      "promiser": "path[hostname]",
+                      "attributes": [
+                        {
+                          "line": 147,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/hostname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 148,
+                      "promiser": "path[init]",
+                      "attributes": [
+                        {
+                          "line": 148,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/init"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 149,
+                      "promiser": "path[iptables]",
+                      "attributes": [
+                        {
+                          "line": 149,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/iptables"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 150,
+                      "promiser": "path[iptables_save]",
+                      "attributes": [
+                        {
+                          "line": 150,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/iptables-save"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 151,
+                      "promiser": "path[iptables_restore]",
+                      "attributes": [
+                        {
+                          "line": 151,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/iptables-restore"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 152,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 152,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 153,
+                      "promiser": "path[lsof]",
+                      "attributes": [
+                        {
+                          "line": 153,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/lsof"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 154,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 154,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 155,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 155,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 156,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 156,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 157,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 157,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 158,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 158,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 159,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 159,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 160,
+                      "promiser": "path[test]",
+                      "attributes": [
+                        {
+                          "line": 160,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/test"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 161,
+                      "promiser": "path[top]",
+                      "attributes": [
+                        {
+                          "line": 161,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/top"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 162,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 162,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 164,
+                      "promiser": "path[pacman]",
+                      "attributes": [
+                        {
+                          "line": 164,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/pacman"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 165,
+                      "promiser": "path[yaourt]",
+                      "attributes": [
+                        {
+                          "line": 165,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/yaourt"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 166,
+                      "promiser": "path[useradd]",
+                      "attributes": [
+                        {
+                          "line": 166,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/useradd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 167,
+                      "promiser": "path[groupadd]",
+                      "attributes": [
+                        {
+                          "line": 167,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/groupadd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 168,
+                      "promiser": "path[ip]",
+                      "attributes": [
+                        {
+                          "line": 168,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ip"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 169,
+                      "promiser": "path[ifconfig]",
+                      "attributes": [
+                        {
+                          "line": 169,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ifconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 170,
+                      "promiser": "path[journalctl]",
+                      "attributes": [
+                        {
+                          "line": 170,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/journalctl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 171,
+                      "promiser": "path[netctl]",
+                      "attributes": [
+                        {
+                          "line": 171,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netctl"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "freebsd|netbsd",
+                  "promises": [
+                    {
+                      "line": 175,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 175,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 176,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 176,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 177,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 177,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 178,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 178,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 179,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 179,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/cron/tabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 180,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 180,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 181,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 181,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 182,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 182,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 183,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 183,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 184,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 184,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 185,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 185,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 186,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 186,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 187,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 187,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 188,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 188,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 189,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 189,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 190,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 190,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 191,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 191,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 192,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 192,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 193,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 193,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 194,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 194,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 195,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 195,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 196,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 196,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 197,
+                      "promiser": "path[realpath]",
+                      "attributes": [
+                        {
+                          "line": 197,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/realpath"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "openbsd",
+                  "promises": [
+                    {
+                      "line": 201,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 201,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 202,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 202,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 203,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 203,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 204,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 204,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 205,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 205,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/cron/tabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 206,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 206,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 207,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 207,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 208,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 208,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 209,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 209,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 210,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 210,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 211,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 211,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 212,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 212,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 213,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 213,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 214,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 214,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 215,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 215,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 216,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 216,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 217,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 217,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 218,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 218,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 219,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 219,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 220,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 220,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 221,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 221,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 222,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 222,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "solaris",
+                  "promises": [
+                    {
+                      "line": 226,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 226,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 227,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 227,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 228,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 228,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 229,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 229,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 230,
+                      "promiser": "path[crontab]",
+                      "attributes": [
+                        {
+                          "line": 230,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 231,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 231,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/crontabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 232,
+                      "promiser": "path[curl]",
+                      "attributes": [
+                        {
+                          "line": 232,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/curl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 233,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 233,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 234,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 234,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 235,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 235,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 236,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 236,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 237,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 237,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 238,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 238,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 239,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 239,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 240,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 240,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 241,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 241,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 242,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 242,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 243,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 243,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 244,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 244,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 245,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 245,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 246,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 246,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 247,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 247,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 248,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 248,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 249,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 249,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 250,
+                      "promiser": "path[wget]",
+                      "attributes": [
+                        {
+                          "line": 250,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/wget"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 252,
+                      "promiser": "path[svcs]",
+                      "attributes": [
+                        {
+                          "line": 252,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/svcs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 253,
+                      "promiser": "path[svcadm]",
+                      "attributes": [
+                        {
+                          "line": 253,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/svcadm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 254,
+                      "promiser": "path[svccfg]",
+                      "attributes": [
+                        {
+                          "line": 254,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/svccfg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 255,
+                      "promiser": "path[netadm]",
+                      "attributes": [
+                        {
+                          "line": 255,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/netadm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 256,
+                      "promiser": "path[dladm]",
+                      "attributes": [
+                        {
+                          "line": 256,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dladm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 257,
+                      "promiser": "path[ipadm]",
+                      "attributes": [
+                        {
+                          "line": 257,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/ipadm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 258,
+                      "promiser": "path[pkg]",
+                      "attributes": [
+                        {
+                          "line": 258,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/pkg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 259,
+                      "promiser": "path[pkginfo]",
+                      "attributes": [
+                        {
+                          "line": 259,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/pkginfo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 260,
+                      "promiser": "path[pkgadd]",
+                      "attributes": [
+                        {
+                          "line": 260,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/pkgadd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 261,
+                      "promiser": "path[pkgrm]",
+                      "attributes": [
+                        {
+                          "line": 261,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/pkgrm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 262,
+                      "promiser": "path[zoneadm]",
+                      "attributes": [
+                        {
+                          "line": 262,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/zoneadm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 263,
+                      "promiser": "path[zonecfg]",
+                      "attributes": [
+                        {
+                          "line": 263,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/zonecfg"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "redhat",
+                  "promises": [
+                    {
+                      "line": 267,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 267,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 268,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 268,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 269,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 269,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 270,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 270,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 271,
+                      "promiser": "path[createrepo]",
+                      "attributes": [
+                        {
+                          "line": 271,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/createrepo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 272,
+                      "promiser": "path[crontab]",
+                      "attributes": [
+                        {
+                          "line": 272,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 273,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 273,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 274,
+                      "promiser": "path[curl]",
+                      "attributes": [
+                        {
+                          "line": 274,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/curl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 275,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 275,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 276,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 276,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 277,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 277,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 278,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 278,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 279,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 279,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 280,
+                      "promiser": "path[domainname]",
+                      "attributes": [
+                        {
+                          "line": 280,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/domainname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 281,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 281,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 282,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 282,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 283,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 283,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 284,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 284,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 285,
+                      "promiser": "path[hostname]",
+                      "attributes": [
+                        {
+                          "line": 285,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/hostname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 286,
+                      "promiser": "path[init]",
+                      "attributes": [
+                        {
+                          "line": 286,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/init"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 287,
+                      "promiser": "path[iptables]",
+                      "attributes": [
+                        {
+                          "line": 287,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/iptables"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 288,
+                      "promiser": "path[iptables_save]",
+                      "attributes": [
+                        {
+                          "line": 288,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/iptables-save"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 289,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 289,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 290,
+                      "promiser": "path[lsof]",
+                      "attributes": [
+                        {
+                          "line": 290,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/lsof"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 291,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 291,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 292,
+                      "promiser": "path[nologin]",
+                      "attributes": [
+                        {
+                          "line": 292,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/nologin"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 293,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 293,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 294,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 294,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 295,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 295,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 296,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 296,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 297,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 297,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 298,
+                      "promiser": "path[test]",
+                      "attributes": [
+                        {
+                          "line": 298,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/test"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 299,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 299,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 300,
+                      "promiser": "path[wget]",
+                      "attributes": [
+                        {
+                          "line": 300,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/wget"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 301,
+                      "promiser": "path[realpath]",
+                      "attributes": [
+                        {
+                          "line": 301,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/realpath"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 304,
+                      "promiser": "path[chkconfig]",
+                      "attributes": [
+                        {
+                          "line": 304,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/chkconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 305,
+                      "promiser": "path[groupadd]",
+                      "attributes": [
+                        {
+                          "line": 305,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupadd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 306,
+                      "promiser": "path[groupdel]",
+                      "attributes": [
+                        {
+                          "line": 306,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupdel"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 307,
+                      "promiser": "path[ifconfig]",
+                      "attributes": [
+                        {
+                          "line": 307,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ifconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 308,
+                      "promiser": "path[ip]",
+                      "attributes": [
+                        {
+                          "line": 308,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ip"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 309,
+                      "promiser": "path[rpm]",
+                      "attributes": [
+                        {
+                          "line": 309,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/rpm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 310,
+                      "promiser": "path[service]",
+                      "attributes": [
+                        {
+                          "line": 310,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 311,
+                      "promiser": "path[svc]",
+                      "attributes": [
+                        {
+                          "line": 311,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 312,
+                      "promiser": "path[useradd]",
+                      "attributes": [
+                        {
+                          "line": 312,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/useradd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 313,
+                      "promiser": "path[userdel]",
+                      "attributes": [
+                        {
+                          "line": 313,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/userdel"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 314,
+                      "promiser": "path[yum]",
+                      "attributes": [
+                        {
+                          "line": 314,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/yum"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "darwin",
+                  "promises": [
+                    {
+                      "line": 317,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 317,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 318,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 318,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 319,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 319,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 320,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 320,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 321,
+                      "promiser": "path[createrepo]",
+                      "attributes": [
+                        {
+                          "line": 321,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/createrepo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 322,
+                      "promiser": "path[crontab]",
+                      "attributes": [
+                        {
+                          "line": 322,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 323,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 323,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/lib/cron/tabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 324,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 324,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 325,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 325,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 326,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 326,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 327,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 327,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 328,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 328,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 329,
+                      "promiser": "path[domainname]",
+                      "attributes": [
+                        {
+                          "line": 329,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/domainname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 330,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 330,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 331,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 331,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 332,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 332,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 333,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 333,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 334,
+                      "promiser": "path[hostname]",
+                      "attributes": [
+                        {
+                          "line": 334,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/hostname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 335,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 335,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 336,
+                      "promiser": "path[lsof]",
+                      "attributes": [
+                        {
+                          "line": 336,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/lsof"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 337,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 337,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 338,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 338,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 339,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 339,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 340,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 340,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 341,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 341,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 342,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 342,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 343,
+                      "promiser": "path[test]",
+                      "attributes": [
+                        {
+                          "line": 343,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/test"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 344,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 344,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 347,
+                      "promiser": "path[brew]",
+                      "attributes": [
+                        {
+                          "line": 347,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/local/bin/brew"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 348,
+                      "promiser": "path[sudo]",
+                      "attributes": [
+                        {
+                          "line": 348,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sudo"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "debian",
+                  "promises": [
+                    {
+                      "line": 352,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 352,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 353,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 353,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 354,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 354,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 355,
+                      "promiser": "path[chkconfig]",
+                      "attributes": [
+                        {
+                          "line": 355,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/chkconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 356,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 356,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 357,
+                      "promiser": "path[createrepo]",
+                      "attributes": [
+                        {
+                          "line": 357,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/createrepo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 358,
+                      "promiser": "path[crontab]",
+                      "attributes": [
+                        {
+                          "line": 358,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 359,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 359,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/crontabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 360,
+                      "promiser": "path[curl]",
+                      "attributes": [
+                        {
+                          "line": 360,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/curl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 361,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 361,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 362,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 362,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 363,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 363,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 364,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 364,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 365,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 365,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 366,
+                      "promiser": "path[dmidecode]",
+                      "attributes": [
+                        {
+                          "line": 366,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dmidecode"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 367,
+                      "promiser": "path[domainname]",
+                      "attributes": [
+                        {
+                          "line": 367,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/domainname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 368,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 368,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 369,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 369,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 370,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 370,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 371,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 371,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 372,
+                      "promiser": "path[hostname]",
+                      "attributes": [
+                        {
+                          "line": 372,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/hostname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 373,
+                      "promiser": "path[init]",
+                      "attributes": [
+                        {
+                          "line": 373,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/init"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 374,
+                      "promiser": "path[iptables]",
+                      "attributes": [
+                        {
+                          "line": 374,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/iptables"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 375,
+                      "promiser": "path[iptables_save]",
+                      "attributes": [
+                        {
+                          "line": 375,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/iptables-save"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 376,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 376,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 377,
+                      "promiser": "path[lsof]",
+                      "attributes": [
+                        {
+                          "line": 377,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/lsof"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 378,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 378,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 379,
+                      "promiser": "path[nologin]",
+                      "attributes": [
+                        {
+                          "line": 379,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/nologin"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 380,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 380,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 381,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 381,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 382,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 382,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 383,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 383,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 384,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 384,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 385,
+                      "promiser": "path[test]",
+                      "attributes": [
+                        {
+                          "line": 385,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/test"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 386,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 386,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 387,
+                      "promiser": "path[wget]",
+                      "attributes": [
+                        {
+                          "line": 387,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/wget"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 388,
+                      "promiser": "path[realpath]",
+                      "attributes": [
+                        {
+                          "line": 388,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/realpath"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 391,
+                      "promiser": "path[apt_cache]",
+                      "attributes": [
+                        {
+                          "line": 391,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/apt-cache"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 392,
+                      "promiser": "path[apt_config]",
+                      "attributes": [
+                        {
+                          "line": 392,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/apt-config"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 393,
+                      "promiser": "path[apt_get]",
+                      "attributes": [
+                        {
+                          "line": 393,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/apt-get"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 394,
+                      "promiser": "path[apt_key]",
+                      "attributes": [
+                        {
+                          "line": 394,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/apt-key"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 395,
+                      "promiser": "path[aptitude]",
+                      "attributes": [
+                        {
+                          "line": 395,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/aptitude"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 396,
+                      "promiser": "path[dpkg]",
+                      "attributes": [
+                        {
+                          "line": 396,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dpkg"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 397,
+                      "promiser": "path[groupadd]",
+                      "attributes": [
+                        {
+                          "line": 397,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupadd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 398,
+                      "promiser": "path[ifconfig]",
+                      "attributes": [
+                        {
+                          "line": 398,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ifconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 399,
+                      "promiser": "path[ip]",
+                      "attributes": [
+                        {
+                          "line": 399,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ip"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 400,
+                      "promiser": "path[service]",
+                      "attributes": [
+                        {
+                          "line": 400,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 401,
+                      "promiser": "path[svc]",
+                      "attributes": [
+                        {
+                          "line": 401,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 402,
+                      "promiser": "path[update_alternatives]",
+                      "attributes": [
+                        {
+                          "line": 402,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/update-alternatives"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 403,
+                      "promiser": "path[update_rc_d]",
+                      "attributes": [
+                        {
+                          "line": 403,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/update-rc.d"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 404,
+                      "promiser": "path[useradd]",
+                      "attributes": [
+                        {
+                          "line": 404,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/useradd"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "archlinux||darwin",
+                  "promises": [
+                    {
+                      "line": 408,
+                      "promiser": "path[sysctl]",
+                      "attributes": [
+                        {
+                          "line": 408,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sysctl"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "!(archlinux||darwin)",
+                  "promises": [
+                    {
+                      "line": 412,
+                      "promiser": "path[sysctl]",
+                      "attributes": [
+                        {
+                          "line": 412,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/sysctl"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "!suse",
+                  "promises": [
+                    {
+                      "line": 415,
+                      "promiser": "path[logger]",
+                      "attributes": [
+                        {
+                          "line": 415,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/logger"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "suse",
+                  "promises": [
+                    {
+                      "line": 419,
+                      "promiser": "path[awk]",
+                      "attributes": [
+                        {
+                          "line": 419,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/awk"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 420,
+                      "promiser": "path[bc]",
+                      "attributes": [
+                        {
+                          "line": 420,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/bc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 421,
+                      "promiser": "path[cat]",
+                      "attributes": [
+                        {
+                          "line": 421,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/cat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 422,
+                      "promiser": "path[cksum]",
+                      "attributes": [
+                        {
+                          "line": 422,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cksum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 423,
+                      "promiser": "path[createrepo]",
+                      "attributes": [
+                        {
+                          "line": 423,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/createrepo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 424,
+                      "promiser": "path[crontab]",
+                      "attributes": [
+                        {
+                          "line": 424,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/crontab"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 425,
+                      "promiser": "path[crontabs]",
+                      "attributes": [
+                        {
+                          "line": 425,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/var/spool/cron/tabs"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 426,
+                      "promiser": "path[curl]",
+                      "attributes": [
+                        {
+                          "line": 426,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/curl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 427,
+                      "promiser": "path[cut]",
+                      "attributes": [
+                        {
+                          "line": 427,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/cut"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 428,
+                      "promiser": "path[dc]",
+                      "attributes": [
+                        {
+                          "line": 428,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dc"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 429,
+                      "promiser": "path[df]",
+                      "attributes": [
+                        {
+                          "line": 429,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/df"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 430,
+                      "promiser": "path[diff]",
+                      "attributes": [
+                        {
+                          "line": 430,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/diff"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 431,
+                      "promiser": "path[dig]",
+                      "attributes": [
+                        {
+                          "line": 431,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/dig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 432,
+                      "promiser": "path[dmidecode]",
+                      "attributes": [
+                        {
+                          "line": 432,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/dmidecode"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 433,
+                      "promiser": "path[domainname]",
+                      "attributes": [
+                        {
+                          "line": 433,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/domainname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 434,
+                      "promiser": "path[echo]",
+                      "attributes": [
+                        {
+                          "line": 434,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/echo"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 435,
+                      "promiser": "path[egrep]",
+                      "attributes": [
+                        {
+                          "line": 435,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/egrep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 436,
+                      "promiser": "path[find]",
+                      "attributes": [
+                        {
+                          "line": 436,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/find"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 437,
+                      "promiser": "path[free]",
+                      "attributes": [
+                        {
+                          "line": 437,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/free"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 438,
+                      "promiser": "path[grep]",
+                      "attributes": [
+                        {
+                          "line": 438,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/grep"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 439,
+                      "promiser": "path[hostname]",
+                      "attributes": [
+                        {
+                          "line": 439,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/hostname"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 440,
+                      "promiser": "path[init]",
+                      "attributes": [
+                        {
+                          "line": 440,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/init"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 441,
+                      "promiser": "path[iptables]",
+                      "attributes": [
+                        {
+                          "line": 441,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/iptables"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 442,
+                      "promiser": "path[iptables_save]",
+                      "attributes": [
+                        {
+                          "line": 442,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/iptables-save"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 443,
+                      "promiser": "path[ls]",
+                      "attributes": [
+                        {
+                          "line": 443,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ls"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 444,
+                      "promiser": "path[lsof]",
+                      "attributes": [
+                        {
+                          "line": 444,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/lsof"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 445,
+                      "promiser": "path[netstat]",
+                      "attributes": [
+                        {
+                          "line": 445,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/netstat"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 446,
+                      "promiser": "path[nologin]",
+                      "attributes": [
+                        {
+                          "line": 446,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/nologin"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 447,
+                      "promiser": "path[ping]",
+                      "attributes": [
+                        {
+                          "line": 447,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/ping"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 448,
+                      "promiser": "path[perl]",
+                      "attributes": [
+                        {
+                          "line": 448,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/perl"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 449,
+                      "promiser": "path[printf]",
+                      "attributes": [
+                        {
+                          "line": 449,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/printf"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 450,
+                      "promiser": "path[sed]",
+                      "attributes": [
+                        {
+                          "line": 450,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/sed"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 451,
+                      "promiser": "path[sort]",
+                      "attributes": [
+                        {
+                          "line": 451,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/sort"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 452,
+                      "promiser": "path[test]",
+                      "attributes": [
+                        {
+                          "line": 452,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/test"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 453,
+                      "promiser": "path[tr]",
+                      "attributes": [
+                        {
+                          "line": 453,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/tr"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 454,
+                      "promiser": "path[logger]",
+                      "attributes": [
+                        {
+                          "line": 454,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/logger"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 455,
+                      "promiser": "path[wget]",
+                      "attributes": [
+                        {
+                          "line": 455,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/wget"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 458,
+                      "promiser": "path[chkconfig]",
+                      "attributes": [
+                        {
+                          "line": 458,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/chkconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 459,
+                      "promiser": "path[groupadd]",
+                      "attributes": [
+                        {
+                          "line": 459,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupadd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 460,
+                      "promiser": "path[groupdel]",
+                      "attributes": [
+                        {
+                          "line": 460,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupdel"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 461,
+                      "promiser": "path[groupmod]",
+                      "attributes": [
+                        {
+                          "line": 461,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/groupmod"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 462,
+                      "promiser": "path[ifconfig]",
+                      "attributes": [
+                        {
+                          "line": 462,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ifconfig"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 463,
+                      "promiser": "path[ip]",
+                      "attributes": [
+                        {
+                          "line": 463,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/ip"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 464,
+                      "promiser": "path[rpm]",
+                      "attributes": [
+                        {
+                          "line": 464,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/bin/rpm"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 465,
+                      "promiser": "path[service]",
+                      "attributes": [
+                        {
+                          "line": 465,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/sbin/service"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 466,
+                      "promiser": "path[useradd]",
+                      "attributes": [
+                        {
+                          "line": 466,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/useradd"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 467,
+                      "promiser": "path[userdel]",
+                      "attributes": [
+                        {
+                          "line": 467,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/userdel"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 468,
+                      "promiser": "path[usermod]",
+                      "attributes": [
+                        {
+                          "line": 468,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/sbin/usermod"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 469,
+                      "promiser": "path[zypper]",
+                      "attributes": [
+                        {
+                          "line": 469,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/usr/bin/zypper"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "linux|solaris",
+                  "promises": [
+                    {
+                      "line": 473,
+                      "promiser": "path[shadow]",
+                      "attributes": [
+                        {
+                          "line": 473,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/shadow"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "freebsd|openbsd|netbsd|darwin",
+                  "promises": [
+                    {
+                      "line": 477,
+                      "promiser": "path[shadow]",
+                      "attributes": [
+                        {
+                          "line": 477,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/master.passwd"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "aix",
+                  "promises": [
+                    {
+                      "line": 481,
+                      "promiser": "path[shadow]",
+                      "attributes": [
+                        {
+                          "line": 481,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "/etc/security/passwd"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 485,
+                      "promiser": "all_paths",
+                      "attributes": [
+                        {
+                          "line": 485,
+                          "lval": "slist",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "getindices",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "path"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 486,
+                      "promiser": "$(all_paths)",
+                      "attributes": [
+                        {
+                          "line": 486,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(path[$(all_paths)])"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 488,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 489,
+                      "promiser": "_have_bin_env",
+                      "attributes": [
+                        {
+                          "line": 489,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "/bin/env"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 490,
+                      "promiser": "_have_bin_systemctl",
+                      "attributes": [
+                        {
+                          "line": 490,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "/bin/systemctl"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 492,
+                      "promiser": "_stdlib_has_path_$(all_paths)",
+                      "attributes": [
+                        {
+                          "line": 493,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "isvariable",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(all_paths)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 494,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "It\\'s useful to know if a given path is defined"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 496,
+                      "promiser": "_stdlib_path_exists_$(all_paths)",
+                      "attributes": [
+                        {
+                          "line": 497,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(path[$(all_paths)])"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 498,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "It\\'s useful to know if $(all_paths) exists on the filesystem as defined"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "bodies": []
+    }

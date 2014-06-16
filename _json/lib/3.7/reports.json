@@ -1,0 +1,136 @@
+{
+      "bundles": [],
+      "bodies": [
+        {
+          "sourcePath": "../masterfiles/lib/3.7/reports.cf",
+          "line": 50,
+          "namespace": "default",
+          "name": "default_data_select_host",
+          "bodyType": "report_data_select",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 57,
+                  "lval": "metatags_include",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "inventory"
+                      },
+                      {
+                        "type": "string",
+                        "value": "report"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 58,
+                  "lval": "metatags_exclude",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "noreport"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 66,
+                  "lval": "monitoring_include",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "cpu.*"
+                      },
+                      {
+                        "type": "string",
+                        "value": "mem_total"
+                      },
+                      {
+                        "type": "string",
+                        "value": "mem_free"
+                      },
+                      {
+                        "type": "string",
+                        "value": "mem_cached"
+                      },
+                      {
+                        "type": "string",
+                        "value": "mem_swap"
+                      },
+                      {
+                        "type": "string",
+                        "value": "mem_freeswap"
+                      },
+                      {
+                        "type": "string",
+                        "value": "loadavg"
+                      },
+                      {
+                        "type": "string",
+                        "value": "diskfree"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/reports.cf",
+          "line": 69,
+          "namespace": "default",
+          "name": "default_data_select_policy_hub",
+          "bodyType": "report_data_select",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 76,
+                  "lval": "metatags_include",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "inventory"
+                      },
+                      {
+                        "type": "string",
+                        "value": "report"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "line": 77,
+                  "lval": "metatags_exclude",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "noreport"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }

@@ -1,0 +1,1026 @@
+{
+      "bundles": [
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 50,
+          "namespace": "default",
+          "name": "vcs_common",
+          "bundleType": "common",
+          "arguments": [],
+          "promiseTypes": [
+            {
+              "line": 53,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 54,
+                      "promiser": "inputs",
+                      "attributes": [
+                        {
+                          "line": 55,
+                          "lval": "slist",
+                          "rval": {
+                            "type": "list",
+                            "value": [
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/paths.cf"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(this.promise_dirname)/commands.cf"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 64,
+          "namespace": "default",
+          "name": "git_init",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path"
+          ],
+          "promiseTypes": [
+            {
+              "line": 87,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 88,
+                      "promiser": "ok_norepo",
+                      "attributes": [
+                        {
+                          "line": 88,
+                          "lval": "not",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 90,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_norepo",
+                  "promises": [
+                    {
+                      "line": 92,
+                      "promiser": "git_init",
+                      "attributes": [
+                        {
+                          "line": 92,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "init"
+                              },
+                              {
+                                "type": "string",
+                                "value": ""
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 95,
+          "namespace": "default",
+          "name": "git_add",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "file"
+          ],
+          "promiseTypes": [
+            {
+              "line": 115,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 116,
+                      "promiser": "ok_repo",
+                      "attributes": [
+                        {
+                          "line": 116,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 118,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_repo",
+                  "promises": [
+                    {
+                      "line": 120,
+                      "promiser": "git_add",
+                      "attributes": [
+                        {
+                          "line": 120,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "add"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(file)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 123,
+          "namespace": "default",
+          "name": "git_checkout",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "branch"
+          ],
+          "promiseTypes": [
+            {
+              "line": 143,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 144,
+                      "promiser": "ok_repo",
+                      "attributes": [
+                        {
+                          "line": 144,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 146,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_repo",
+                  "promises": [
+                    {
+                      "line": 148,
+                      "promiser": "git_checkout",
+                      "attributes": [
+                        {
+                          "line": 148,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "checkout"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(branch)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 151,
+          "namespace": "default",
+          "name": "git_checkout_new_branch",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "new_branch"
+          ],
+          "promiseTypes": [
+            {
+              "line": 176,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 177,
+                      "promiser": "ok_repo",
+                      "attributes": [
+                        {
+                          "line": 177,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 179,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_repo",
+                  "promises": [
+                    {
+                      "line": 181,
+                      "promiser": "git_checkout",
+                      "attributes": [
+                        {
+                          "line": 181,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "checkout -b"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(branch)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 184,
+          "namespace": "default",
+          "name": "git_clean",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path"
+          ],
+          "promiseTypes": [
+            {
+              "line": 197,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 198,
+                      "promiser": "",
+                      "attributes": [
+                        {
+                          "line": 198,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "clean"
+                              },
+                              {
+                                "type": "string",
+                                "value": " --force -d"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 201,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "To have a clean clone we must remove any untracked files and\n                  directories. These should have all been stashed, but in case\n                  of error we go ahead and clean anyway."
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 204,
+          "namespace": "default",
+          "name": "git_stash",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "stash_name"
+          ],
+          "promiseTypes": [
+            {
+              "line": 218,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 219,
+                      "promiser": "",
+                      "attributes": [
+                        {
+                          "line": 219,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "stash"
+                              },
+                              {
+                                "type": "string",
+                                "value": "save --quiet --include-untracked \\\"$(stash_name)\\\""
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 225,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "So that we don\\'t lose any trail of what happend and so that\n                    we don\\'t accidentally delete something important we stash any\n                    changes.\n  Note:\n                      1. This promise will fail if user.email is not set\n                      2. We are respecting ignored files."
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 228,
+          "namespace": "default",
+          "name": "git_stash_and_clean",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path"
+          ],
+          "promiseTypes": [
+            {
+              "line": 241,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 242,
+                      "promiser": "stash",
+                      "attributes": [
+                        {
+                          "line": 242,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "CFEngine AUTOSTASH: $(sys.date)"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 244,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 245,
+                      "promiser": "",
+                      "attributes": [
+                        {
+                          "line": 245,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git_stash",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(stash)"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 246,
+                          "lval": "classes",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "scoped_classes_generic",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "bundle"
+                              },
+                              {
+                                "type": "string",
+                                "value": "git_stash"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "git_stash_ok",
+                  "promises": [
+                    {
+                      "line": 249,
+                      "promiser": "",
+                      "attributes": [
+                        {
+                          "line": 249,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git_clean",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 251,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "git_stash_not_ok",
+                  "promises": [
+                    {
+                      "line": 253,
+                      "promiser": "$(this.bundle):: Warning: Not saving changes or cleaning. Git stash failed. Perhaps 'user.email' or 'user.name' is not set.",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 256,
+          "namespace": "default",
+          "name": "git_commit",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "message"
+          ],
+          "promiseTypes": [
+            {
+              "line": 276,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 277,
+                      "promiser": "ok_repo",
+                      "attributes": [
+                        {
+                          "line": 277,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "fileexists",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)/.git"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 279,
+              "name": "methods",
+              "contexts": [
+                {
+                  "name": "ok_repo",
+                  "promises": [
+                    {
+                      "line": 281,
+                      "promiser": "git_commit",
+                      "attributes": [
+                        {
+                          "line": 281,
+                          "lval": "usebundle",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "git",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "commit"
+                              },
+                              {
+                                "type": "string",
+                                "value": "-m \\\"$(message)\\\""
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 284,
+          "namespace": "default",
+          "name": "git",
+          "bundleType": "agent",
+          "arguments": [
+            "repo_path",
+            "subcmd",
+            "args"
+          ],
+          "promiseTypes": [
+            {
+              "line": 309,
+              "name": "vars",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 310,
+                      "promiser": "oneliner",
+                      "attributes": [
+                        {
+                          "line": 310,
+                          "lval": "string",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(paths.path[git])"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 312,
+                      "promiser": "repo_uid",
+                      "attributes": [
+                        {
+                          "line": 313,
+                          "lval": "string",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "filestat",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "uid"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 315,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "So that we don\\'t mess up permissions, we will just execute\n                    all commands as the current owner of .git"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 317,
+                      "promiser": "repo_gid",
+                      "attributes": [
+                        {
+                          "line": 318,
+                          "lval": "string",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "filestat",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "gid"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "line": 320,
+                          "lval": "comment",
+                          "rval": {
+                            "type": "string",
+                            "value": "So that we don\\'t mess up permissions, we will just execute\n                    all commands as the current group of .git"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 322,
+              "name": "classes",
+              "contexts": [
+                {
+                  "name": "any",
+                  "promises": [
+                    {
+                      "line": 323,
+                      "promiser": "am_root",
+                      "attributes": [
+                        {
+                          "line": 323,
+                          "lval": "expression",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "strcmp",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(this.promiser_uid)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "0"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "line": 324,
+                      "promiser": "need_to_drop",
+                      "attributes": [
+                        {
+                          "line": 324,
+                          "lval": "not",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "strcmp",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(this.promiser_uid)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(repo_uid)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 326,
+              "name": "commands",
+              "contexts": [
+                {
+                  "name": "am_root.need_to_drop",
+                  "promises": [
+                    {
+                      "line": 328,
+                      "promiser": "$(oneliner)",
+                      "attributes": [
+                        {
+                          "line": 329,
+                          "lval": "args",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(subcmd) $(args)"
+                          }
+                        },
+                        {
+                          "line": 330,
+                          "lval": "classes",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "kept_successful_command"
+                          }
+                        },
+                        {
+                          "line": 331,
+                          "lval": "contain",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "setuidgid_dir",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_uid)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(repo_gid)"
+                              },
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "!am_root|!need_to_drop",
+                  "promises": [
+                    {
+                      "line": 334,
+                      "promiser": "$(oneliner)",
+                      "attributes": [
+                        {
+                          "line": 335,
+                          "lval": "args",
+                          "rval": {
+                            "type": "string",
+                            "value": "$(subcmd) $(args)"
+                          }
+                        },
+                        {
+                          "line": 336,
+                          "lval": "classes",
+                          "rval": {
+                            "type": "symbol",
+                            "value": "kept_successful_command"
+                          }
+                        },
+                        {
+                          "line": 337,
+                          "lval": "contain",
+                          "rval": {
+                            "type": "functionCall",
+                            "name": "in_dir",
+                            "arguments": [
+                              {
+                                "type": "string",
+                                "value": "$(repo_path)"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 339,
+              "name": "reports",
+              "contexts": [
+                {
+                  "name": "inform_mode.am_root.need_to_drop",
+                  "promises": [
+                    {
+                      "line": 341,
+                      "promiser": "$(this.bundle): with dropped privileges to uid '$(repo_uid)' and gid '$(repo_gid)', in directory '$(repo_path)', running Git command '$(oneliner) $(subcmd) $(args)'",
+                      "attributes": []
+                    }
+                  ]
+                },
+                {
+                  "name": "inform_mode.(!am_root|!need_to_drop)",
+                  "promises": [
+                    {
+                      "line": 344,
+                      "promiser": "$(this.bundle): with current privileges, in directory '$(repo_path)', running Git command '$(oneliner) $(subcmd) $(args)'",
+                      "attributes": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "bodies": [
+        {
+          "sourcePath": "../masterfiles/lib/3.7/vcs.cf",
+          "line": 58,
+          "namespace": "default",
+          "name": "control",
+          "bodyType": "file",
+          "arguments": [],
+          "contexts": [
+            {
+              "name": "any",
+              "attributes": [
+                {
+                  "line": 61,
+                  "lval": "inputs",
+                  "rval": {
+                    "type": "list",
+                    "value": [
+                      {
+                        "type": "string",
+                        "value": "@(vcs_common.inputs)"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
