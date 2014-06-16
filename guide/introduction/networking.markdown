@@ -64,10 +64,10 @@ variety of forms, usually files, but sometimes console output.
 
 ## Bootstrapping
 
-[Bootstrap][Bootstrap] is the manual first run of cf-agent that establishes
+Bootstrapping is the manual first run of cf-agent that establishes
 communication with the policy server.
-Bootstrapping executes the policy (`failsafe.cf`) that connects to 
-the server and establishes trust to the server's key, and that starts the 
+Bootstrapping executes the `failsafe.cf` policy that connects to 
+the server, establishes trust to the server's key, and that starts the 
 CFEngine daemon processes cf-execd`, `cf-serverd` and `cf-monitord`.
 The host that other hosts are bootstrapped to
 automatically assumes the role of policy server.
@@ -86,6 +86,9 @@ investigate the `access` promises the server is making (run `cf-serverd` in
 verbose mode on the policy hub for more informative messages). Note that 
 by default, CFEngine's server daemon `cf-serverd` trusts incoming connections 
 from hosts within the same `/16` subnet.
+
+After a host has been bootstrapped, the text file `policy_server.dat` in
+the CFEngine installation contains the IP address of the policy server.
 
 ## Key exchange
 
