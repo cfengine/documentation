@@ -213,8 +213,8 @@ Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{var
 #### How do I iterate over a list? ####
 
 An example using `datastate`():
-```
-{{#vars.mon.listening_tcp4_ports}}
-  * {{.}}
-{{/vars.mon.listening_tcp4_ports}}
-```
+	```
+	{{#vars.mon.listening_tcp4_ports}}
+	  * {{.}}
+	{{/vars.mon.listening_tcp4_ports}}
+	```
