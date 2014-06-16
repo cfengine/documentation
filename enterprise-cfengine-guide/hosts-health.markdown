@@ -19,7 +19,7 @@ You can look at a specific sub-set of your `hosts` by selecting a category from 
 
 ### Events ###
 
-A `tracker` represents an easy way to monitor specific `promises` or trace the impact of `policy` changes and roll outs at a detailed level. Choose between three types of `tracker`:
+A ```tracker``` represents an easy way to monitor specific ```promises``` or trace the impact of ```policy``` changes and roll outs at a detailed level. Choose between three types of ```tracker```:
 
 * ```Promises``` not kept: Lists unkept ```promises``` as they happen
 * ```Promises``` repaired: List repaired ```promises``` as they happen
