@@ -27,8 +27,8 @@ pointing numbers.
 ```cf3
     vars:
       "my_scalar" string => "String contents...";
-      "my_int" int    => "1234";
-      "my_real" real   => "567.89";
+      "my_int" int       => "1234";
+      "my_real" real     => "567.89";
 ```
 
 Integer constants may use suffixes to represent large numbers.  The following 
@@ -65,7 +65,7 @@ defined argument type for consistency.
 
 Scalar variables are referenced by `$(my_scalar)` (or `${my_scalar}`) and 
 expand to the single value they hold at that time. If you refer to a variable 
-by ‘$(unqualified)’, then it is assumed to belong to the current bundle. To 
+by `$(unqualified)`, then it is assumed to belong to the current bundle. To 
 access any other (scalar) variable, you must qualify the name, using the name 
 of the bundle in which it is defined:
 
@@ -108,7 +108,7 @@ They are declared as follows:
 ### List Substitution and Expansion
 
 An entire list is referenced with the symbol ‘@’ and can be passed in their 
-entirety in any context where a list is expected as ‘@(list)’. For example, 
+entirety in any context where a list is expected as `@(list)`. For example, 
 the following variable definition references a list named "shortlist":
 
 ```cf3
@@ -118,8 +118,8 @@ the following variable definition references a list named "shortlist":
 ```
 
 The declaration order does not matter – CFEngine will understand the 
-dependency, and execute the promise to assign the variable ‘@(shortlist)’ 
-before the promise to assign the variable ‘@(longlist)’.
+dependency, and execute the promise to assign the variable `@(shortlist)`
+before the promise to assign the variable `@(longlist)`.
 
 Using the @ symbol in a string scalar will not result in list substitution.
 For example, the string value "My list is @(mylist)" will not expand this 
@@ -127,7 +127,7 @@ reference.
 
 Using the scalar reference to a local list variable, will cause CFEngine to 
 iterate over the values in the list. E.g. suppose we have local list variable 
-‘@(list)’, then the scalar ‘$(list)’ implies an iteration over every value of 
+`@(list)`, then the scalar `$(list)` implies an iteration over every value of 
 the list.
 
 In some function calls, `listname` instead of `@(listname)` is
@@ -135,8 +135,8 @@ expected.  See the specific function's documentation to be sure.
 
 ### Mapping Global and Local Lists
 
-Only local lists can be expanded directly. Thus ‘$(list)’ can be expanded but 
-not ‘$(context.list)’. Global list references have to be mapped into a local 
+Only local lists can be expanded directly. Thus `$(list)` can be expanded but 
+not `$(context.list)`. Global list references have to be mapped into a local 
 context if you want to use them for iteration.  Instead of doing this in some 
 arbitrary way, with possibility of name collisions, CFEngine requires you to 
 make this mapping explicit. There are two possible approaches.
@@ -177,7 +177,7 @@ the `hardening` bundle via an argument listed in the `bundlesequence`.
 As you can see, the reports section references both the list passed in as an 
 argument `x` and a local list variable defined in `other`.
 
-The alternative is to map the global reference "va.tmpdirs" within the 
+The alternative is to map the global reference `va.tmpdirs` within the 
 hardening bundle.
 
 ```cf3
@@ -209,7 +209,7 @@ hardening bundle.
 ```
 
 This time, the `hardening` bundle does not take an argument. Instead it 
-converts the `va.tmpdirs` list into a local list variable "x" directly.
+converts the `va.tmpdirs` list into a local list variable `x` directly.
 
 ## Data Container Variables
 
