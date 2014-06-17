@@ -33,9 +33,8 @@
 #nav_wrapper li a,
 #nav_wrapper li span {
     font-family: DINRoundOT-Bold;
-    font-size: 15px;
-    color: ;
-    line-height: 15px;
+    font-size: 16px;
+    line-height: 16px;
     text-decoration: none;
     text-transform: uppercase;
 }
