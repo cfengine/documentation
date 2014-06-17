@@ -8,7 +8,7 @@ tags: [Examples]
 
 ## Links to Examples ##
 
-* [Example Snippets][Example Snippets]: This section is divided into topical areas, and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
+* [Example Snippets][Example Snippets]: This section is divided into topical areas and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.
 
 Note: CFEngine also includes a small set of examples by default, which can be 
 found in `/var/cfengine/share/doc/examples`.
@@ -36,6 +36,8 @@ In this tutorial, you will perform the following:
 * Make the example a standalone policy
 * Make the example an executable script
 * Add the example to the main policy file (`promises.cf`)
+
+**Note** if your CFEngine administrator has enabled continuous deployment of the policy from a Version Control System, your changes may be overwritten!
 
 ### "Hello World" Policy Example ###
 
@@ -77,16 +79,25 @@ hosts][Classes and Decisions].
 ### Activate a Bundle Manually ###
 
 Activate the bundle manually by executing the following command at prompt:
+
+```console
+% /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
 ```
-/var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
-```
+
 This command instructs CFEngine to ignore [locks][Controlling Frequency], load
 the `hello_world.cf` policy, and activate the `hello_world` bundle. See the output below:
 
-```
+```console
 # /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
 2013-08-20T14:03:43-0500   notice: R: Hello World!
 ```
+
+As you get familiar with CFEngine, you'll probably start shortening this command to this equivalent:
+
+```console
+/var/cfengine/bin/cf-agent -Kf ./hello_world.cf -b hello_world
+```
+
 
 Note the full path to the binary in the above command. CFEngine stores its binaries in /var/cfengine/bin
 on Linux and Unix systems. Your path might vary depending on your platform and the packages your are using. 
@@ -144,7 +155,7 @@ The output is shown below:
 
 ### Make the Example an Executable Script ###
 
-Add a shebang **#!** to `hello_world.cf` in order to invoke CFEngine policy as an executable script:
+Add the ```#!``` marker ("shebang") to `hello_world.cf` in order to invoke CFEngine policy as an executable script:
 Again type "vi" then "Enter" then ```i``` to insert the following:
 
 ```
