@@ -90,3 +90,17 @@ them and should work.
 10. If the server's mail configuration is working properly, it is possible to email the report by checking the `Send in email` box.
 11. Click `OK` to download or email the `csv` or `pdf` version of the report.
 12. Once the report is generated it will be available for download or will be emailed.
+
+## Inventory Management ##
+
+![Inventory Management](Reports-Inventory-1.png)
+
+![Inventory Management](Reports-Inventory-2.png)
+
+![Inventory Management](Reports-Inventory-3.png)
+
+![Inventory Management](Reports-Inventory-4.png)
+
+![Inventory Management](Reports-Inventory-5.png)
+
+![Inventory Management](Reports-Inventory-6.png)

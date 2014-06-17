@@ -23,6 +23,8 @@ The Mission Portal also allows authorized infrastructure engineers to quickly an
 
 ## Hosts and Health ##
 
+CFEngine collects data on promise compliance, and sorts hosts according to 3 different categories: erroneous, fully compliant, and lacking data.
+
 Find out more: [Hosts and Health][]
 
 
@@ -64,11 +66,13 @@ Find out more: [Reporting][Reporting UI]
 
 Find out more about writing your own inventory modules: [Inventory modules][The Policy Framework#CFEngine 3 inventory modules]
 
-## Monitoring ##	
+## Monitoring ##
 
 Find out more: [Monitoring][]
 
 ## Design Center ##
+
+The Design Center UI allows authorized infrastructure engineers to configure, deploy, and monitor data-driven policy templates known as sketches.
 
 Find out more: [Design Center][]
 
