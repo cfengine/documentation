@@ -10,7 +10,7 @@ sorting: 10
 	
 ## Installation ##
 
-The [General Installation][General Installation] instructions provide the detailed steps for installing CFEngine, and are the same for CFEngine Enterprise addition with the exception of license keys (if applicable), as well as post-installation and configuration.
+The [General Installation][General Installation] instructions provide the detailed steps for installing CFEngine, which are generally the same steps to follow for CFEngine Enterprise, with the exception of license keys (if applicable), and also some aspects of post-installation and configuration.
 
 ### Installing Enterprise Licenses ###
 
