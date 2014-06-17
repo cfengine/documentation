@@ -1,12 +1,13 @@
-Once bundles of promises have been written, CFEngine needs to know about them. The place where this generally happens is in the file `/var/cfengine/masterfiles/promises.cf`, but there may be cases where the information occurs in another file and referenced within `promises.cf`.
+Once bundles of promises have been written, CFEngine needs to know about them.
+
+Promises can live in the file `/var/cfengine/masterfiles/promises.cf` but usually they are in an included file, not at the top level.
 
 #### Anatomy of promises.cf ####
 
-The default anatomy of file `/var/cfengine/masterfiles/promises.cf` looks something like the following (`#` marks comments, while `...` marks omitted text):
+The file `/var/cfengine/masterfiles/promises.cf` looks something like the following (`#` marks comments, while `...` marks omitted text):
 
 ```cf3
 body common control
-
 {
 
       bundlesequence => {
@@ -42,5 +43,3 @@ bundle common stuff
       "$(this.bundle): loading stuff module '$(inputs)'";
 }
 ```
-
-
