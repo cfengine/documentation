@@ -44,6 +44,8 @@ def addLinkToSource(file_name,config):
 			html_file = line.split('alias: ')
 			html_file = html_file[1].rstrip()
 			break
+		if line.find("layout: printable") == 0:
+			return
 	
 	if not html_file:
 		return
