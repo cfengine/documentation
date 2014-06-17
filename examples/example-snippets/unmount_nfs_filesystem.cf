@@ -7,7 +7,7 @@
 body common control
 
 {
-bundlesequence => { "mounts" };
+      bundlesequence => { "mounts" };
 }
 
 #####################################################################
@@ -16,12 +16,12 @@ bundlesequence => { "mounts" };
 bundle agent mounts
 
 {
-storage:
+  storage:
 
-  # Assumes the filesystem has been exported
+      # Assumes the filesystem has been exported
 
 
-  "/mnt" mount  => nfs("server.example.org","/home");
+      "/mnt" mount  => nfs("server.example.org","/home");
 }
 
 ######################################################################
@@ -30,9 +30,9 @@ storage:
 body mount nfs(server,source)
 
 {
-mount_type => "nfs";
-mount_source => "$(source)";
-mount_server => "$(server)";
-edit_fstab => "true";
-unmount => "true";
+      mount_type => "nfs";
+      mount_source => "$(source)";
+      mount_server => "$(server)";
+      edit_fstab => "true";
+      unmount => "true";
 }

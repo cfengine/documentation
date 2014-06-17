@@ -1,7 +1,7 @@
 body common control
-   {
-   bundlesequence  => { "testbundle" };
-   }
+{
+      bundlesequence  => { "testbundle" };
+}
 
 
 ############################################
@@ -10,9 +10,9 @@ body common control
 bundle agent testbundle
 
 {
-files:
+  files:
 
-  "/home/mark/tmp/rotateme"
+      "/home/mark/tmp/rotateme"
 
       rename => rotate("4");
 }
@@ -23,5 +23,5 @@ files:
 body rename rotate(level)
 
 {
-rotate => "$(level)";
+      rotate => "$(level)";
 }

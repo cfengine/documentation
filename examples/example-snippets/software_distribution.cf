@@ -55,32 +55,32 @@
 
 bundle agent check_software
 {
-vars:
+  vars:
 
-# software to install if not installed
+      # software to install if not installed
 
- "include_software" slist => {
-                             "7-zip-4.50-$(sys.arch).msi"
-                             };
+      "include_software" slist => {
+				    "7-zip-4.50-$(sys.arch).msi"
+      };
 
-# this software gets updated if it is installed
+      # this software gets updated if it is installed
 
- "autoupdate_software" slist => { 
-                               "7-zip"
-                               };							 
+      "autoupdate_software" slist => { 
+				       "7-zip"
+      };							 
 
-# software to uninstall if it is installed
+      # software to uninstall if it is installed
 
- "exclude_software" slist => {
-                             "7-zip-4.65-$(sys.arch).msi"
-                             };
+      "exclude_software" slist => {
+				    "7-zip-4.65-$(sys.arch).msi"
+      };
 
-methods:
-#  "any" usebundle => add_software( "@(check_software.include_software)", "$(sys.policy_hub)" );
+  methods:
+      #  "any" usebundle => add_software( "@(check_software.include_software)", "$(sys.policy_hub)" );
 
-#  "any" usebundle => update_software( "@(check_software.autoupdate_software)", "$(sys.policy_hub)" );
+      #  "any" usebundle => update_software( "@(check_software.autoupdate_software)", "$(sys.policy_hub)" );
 
-#  "any" usebundle => remove_software( "@(check_software.exclude_software)", "$(sys.policy_hub)" );
+      #  "any" usebundle => remove_software( "@(check_software.exclude_software)", "$(sys.policy_hub)" );
 
 }
 
@@ -88,130 +88,130 @@ methods:
 
 
 bundle agent add_software(pkg_name,
-{
-vars:
-# dir to install from locally - can also check multiple directories
+      {
+  vars:
+	# dir to install from locally - can also check multiple directories
 
- "local_software_dir" string => "C:\Program Files\Cfengine\software\add";
+	"local_software_dir" string => "C:\Program Files\Cfengine\software\add";
 
- 
-files:
+	
+  files:
 
-  "$(local_software_dir)"
-       copy_from => remote_cp("/var/cfengine/master_software_updates/$(sys.flavour)_$(sys.arch)/add", "$(srv)"),
+	"$(local_software_dir)"
+	copy_from => remote_cp("/var/cfengine/master_software_updates/$(sys.flavour)_$(sys.arch)/add", "$(srv)"),
 
-    depth_search => recurse("1"),
+	depth_search => recurse("1"),
 
-         classes => if_repaired("got_newpkg"),
+        classes => if_repaired("got_newpkg"),
 
-		 comment => "Copy software from remote repository";
-
-
-
-packages:
-
-# When to check if the package is installed ?
-
- got_newpkg|any::
-  "$(pkg_name)"
-    package_policy           => "add",
-
-    package_method           => msi_implicit( "$(local_software_dir)" ),
-
-    classes                  => if_else("add_success", "add_fail" ),
-
-    comment                  => "Install new software, if not already present";
+	comment => "Copy software from remote repository";
 
 
-reports::
- add_fail::
-   "Failed to install one or more packages";
-}
 
-#########################################################################
+  packages:
+
+	# When to check if the package is installed ?
+
+    got_newpkg|any::
+	"$(pkg_name)"
+	package_policy           => "add",
+
+	package_method           => msi_implicit( "$(local_software_dir)" ),
+
+	classes                  => if_else("add_success", "add_fail" ),
+
+	comment                  => "Install new software, if not already present";
+
+
+    reports::
+    add_fail::
+	"Failed to install one or more packages";
+      }
+
+      #########################################################################
 
 
 bundle agent update_software(sw_names,
-{
-vars:
-# dir to install from locally - can also check multiple directories
+      {
+  vars:
+	# dir to install from locally - can also check multiple directories
 
- "local_software_dir" string => "C:\Program Files\Cfengine\software\update";
+	"local_software_dir" string => "C:\Program Files\Cfengine\software\update";
 
- 
-files:
+	
+  files:
 
-  "$(local_software_dir)"
-       copy_from => remote_cp("/var/cfengine/master_software_updates/$(sys.flavour)_$(sys.arch)/update", "$(srv)"),
+	"$(local_software_dir)"
+	copy_from => remote_cp("/var/cfengine/master_software_updates/$(sys.flavour)_$(sys.arch)/update", "$(srv)"),
 
-    depth_search => recurse("1"),
+	depth_search => recurse("1"),
 
-         classes => if_repaired("got_newpkg"),
+        classes => if_repaired("got_newpkg"),
 
-		 comment => "Copy software updates from remote repository";
+	comment => "Copy software updates from remote repository";
 
- 
- 
-packages:
+	
+	
+  packages:
 
-# When to check if the package is updated ?
+	# When to check if the package is updated ?
 
- got_newpkg|any::
-  "$(sw_names)"
-    package_policy           => "update",
+    got_newpkg|any::
+	"$(sw_names)"
+	package_policy           => "update",
 
-    package_select           => ">=",                 # picks the newest update available
+	package_select           => ">=",                 # picks the newest update available
 
-    package_architectures    => { "$(sys.arch)" },    # install 32 or 64 bit package ?
-    package_version          => "1.0",                # at least version 1.0
+	package_architectures    => { "$(sys.arch)" },    # install 32 or 64 bit package ?
+	package_version          => "1.0",                # at least version 1.0
 
-    package_method           => msi_explicit( "$(local_software_dir)" ),
+	package_method           => msi_explicit( "$(local_software_dir)" ),
 
-    classes                  => if_else("update_success", "update_fail");
+	classes                  => if_else("update_success", "update_fail");
 
 
 	
-reports::
- update_fail::
-   "Failed to update one or more packages";
-}
+    reports::
+    update_fail::
+	"Failed to update one or more packages";
+      }
 
-#########################################################################
+      #########################################################################
 
 
 bundle agent remove_software(pkg_name,
-{
-vars:
-# dir to install from locally - can also check multiple directories
+      {
+  vars:
+	# dir to install from locally - can also check multiple directories
 
- "local_software_dir" string => "C:\Program Files\Cfengine\software\remove";
+	"local_software_dir" string => "C:\Program Files\Cfengine\software\remove";
 
- 
-files:
+	
+  files:
 
-  "$(local_software_dir)"
-       copy_from => remote_cp("/var/cfengine/master_software_updates/$(sys.flavour)_$(sys.arch)/remove", "$(srv)"),
+	"$(local_software_dir)"
+	copy_from => remote_cp("/var/cfengine/master_software_updates/$(sys.flavour)_$(sys.arch)/remove", "$(srv)"),
 
-    depth_search => recurse("1"),
+	depth_search => recurse("1"),
 
-         classes => if_repaired("got_newpkg"),
+        classes => if_repaired("got_newpkg"),
 
-         comment => "Copy removable software from remote repository";
-
-
-packages:
-got_newpkg::
-  "$(pkg_name)"
-    package_policy           => "delete",
-
-    package_method           => msi_implicit( "$(local_software_dir)" ),
-
-    classes                  => if_else("remove_success", "remove_fail" ),
-
-    comment                  => "Remove software, if present";
+        comment => "Copy removable software from remote repository";
 
 
-reports::
- remove_fail::
-   "Failed to remove one or more packages";
-}
+  packages:
+    got_newpkg::
+	"$(pkg_name)"
+	package_policy           => "delete",
+
+	package_method           => msi_implicit( "$(local_software_dir)" ),
+
+	classes                  => if_else("remove_success", "remove_fail" ),
+
+	comment                  => "Remove software, if present";
+
+
+    reports::
+    remove_fail::
+	"Failed to remove one or more packages";
+      }

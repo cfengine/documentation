@@ -12,7 +12,7 @@
 body common control
 
 {
-bundlesequence => { "mounts" };
+      bundlesequence => { "mounts" };
 }
 
 #
@@ -21,9 +21,9 @@ bundlesequence => { "mounts" };
 bundle agent mounts
 
 {
-storage:
+  storage:
 
-  "/mnt" mount  => nfs("slogans.iu.hio.no","/home");
+      "/mnt" mount  => nfs("slogans.iu.hio.no","/home");
 
 }
 
@@ -33,11 +33,11 @@ storage:
 body mount nfs(server,source)
 
 {
-mount_type => "nfs";
-mount_source => "$(source)";
-mount_server => "$(server)";
-#mount_options => { "rw" };
+      mount_type => "nfs";
+      mount_source => "$(source)";
+      mount_server => "$(server)";
+      #mount_options => { "rw" };
 
-edit_fstab => "true";
-unmount => "true";
+      edit_fstab => "true";
+      unmount => "true";
 }

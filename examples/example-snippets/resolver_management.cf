@@ -11,21 +11,21 @@
 
 bundle common g # globals
 {
-vars:
+  vars:
 
- "searchlist"  slist => { 
-                        "search iu.hio.no", 
-                        "search cfengine.com" 
-                        };
+      "searchlist"  slist => { 
+                               "search iu.hio.no", 
+                               "search cfengine.com" 
+      };
 
- "nameservers" slist => { 
-                        "128.39.89.10", 
-                        "128.39.74.16",
-                        "192.168.1.103"
-                        };
-classes:
+      "nameservers" slist => { 
+                               "128.39.89.10", 
+                               "128.39.74.16",
+                               "192.168.1.103"
+      };
+  classes:
 
-  "am_name_server" expression => reglist("@(nameservers)","$(sys.ipv4[eth1])");
+      "am_name_server" expression => reglist("@(nameservers)","$(sys.ipv4[eth1])");
 }
 
 #######################################################
@@ -34,14 +34,14 @@ classes:
 body common control
 
 {
-any::
+    any::
 
-  bundlesequence  => {
-                     "g",
-                     resolver(@(g.searchlist),@(g.nameservers))
-                     };   
+      bundlesequence  => {
+			   "g",
+			   resolver(@(g.searchlist),@(g.nameservers))
+      };   
 
-  domain => "iu.hio.no";
+      domain => "iu.hio.no";
 }
 
 #######################################################
@@ -50,19 +50,19 @@ any::
 bundle agent resolver(s,n)
 
 {
-files:
+  files:
 
-  # When passing parameters down, we have to refer to
+      # When passing parameters down, we have to refer to
 
-  # a source context
+      # a source context
 
 
-  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+      "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
 
       create        => "true",
       edit_line     => doresolv("@(this.s)","@(this.n)"),
       edit_defaults => reconstruct;
- # or edit_defaults => modify
+      # or edit_defaults => modify
 
 }
 
@@ -76,13 +76,13 @@ files:
 bundle edit_line doresolv(s,n)
 
 {
-vars:
+  vars:
 
- "line" slist => { @(s), @(n) };
+      "line" slist => { @(s), @(n) };
 
-insert_lines:
+  insert_lines:
 
-  "$(line)";
+      "$(line)";
 
 }
 
@@ -91,9 +91,9 @@ insert_lines:
 
 body edit_defaults reconstruct
 {
-empty_file_before_editing => "true";
-edit_backup => "false";
-max_file_size => "100000";
+      empty_file_before_editing => "true";
+      edit_backup => "false";
+      max_file_size => "100000";
 }
 
 #######################################################
@@ -101,7 +101,7 @@ max_file_size => "100000";
 
 body edit_defaults modify
 {
-empty_file_before_editing => "false";
-edit_backup => "false";
-max_file_size => "100000";
+      empty_file_before_editing => "false";
+      edit_backup => "false";
+      max_file_size => "100000";
 }

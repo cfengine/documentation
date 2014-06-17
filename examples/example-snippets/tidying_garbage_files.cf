@@ -11,9 +11,9 @@
 body common control
 
 {
- any::
+    any::
 
-  bundlesequence  => { "testbundle" };
+      bundlesequence  => { "testbundle" };
 }
 
 ############################################
@@ -22,13 +22,13 @@ body common control
 bundle agent testbundle
 
 {
-files:
+  files:
 
-  "/tmp/test"
+      "/tmp/test"
 
-    delete => tidy,
-    file_select => zero_age,
-    depth_search => recurse("inf");
+      delete => tidy,
+      file_select => zero_age,
+      depth_search => recurse("inf");
 }
 
 #########################################################
@@ -37,9 +37,9 @@ files:
 body depth_search recurse(d)
 
 {
-#include_basedir => "true";
+      #include_basedir => "true";
 
-depth => "$(d)";
+      depth => "$(d)";
 }
 
 #########################################################
@@ -48,8 +48,8 @@ depth => "$(d)";
 body delete tidy
 
 {
-dirlinks => "delete";
-rmdirs   => "false";
+      dirlinks => "delete";
+      rmdirs   => "false";
 }
 
 #########################################################
@@ -62,6 +62,6 @@ body file_select zero_age
 # form a library of standard patterns
 #
 {
-mtime     => irange(ago(1,0,0,0,0,0),now);
-file_result => "mtime"; 
+      mtime     => irange(ago(1,0,0,0,0,0),now);
+      file_result => "mtime"; 
 }

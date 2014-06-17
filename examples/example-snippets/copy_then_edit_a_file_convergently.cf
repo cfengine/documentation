@@ -1,14 +1,14 @@
 bundle agent master
 {
-files:
+  files:
 
-  "$(final_destination)"
+      "$(final_destination)"
 
-         create => "true",
-     edit_line => fix_file("$(staging_file)"),
- edit_defaults => empty,
-         perms => mo("644","root"),
-        action => ifelapsed("60");
+      create => "true",
+      edit_line => fix_file("$(staging_file)"),
+      edit_defaults => empty,
+      perms => mo("644","root"),
+      action => ifelapsed("60");
 }
 
 #
@@ -16,18 +16,18 @@ files:
 
 bundle edit_line fix_file(f)
 {
-insert_lines:
+  insert_lines:
 
-  "$(f)"
- 
-     # insert this into an empty file to reconstruct
+      "$(f)"
+      
+      # insert this into an empty file to reconstruct
 
- 
-     insert_type => "file";
+      
+      insert_type => "file";
 
-replace_patterns:
+  replace_patterns:
 
-    "searchstring"
+      "searchstring"
 
-          replace_with => With("replacestring");
+      replace_with => With("replacestring");
 }

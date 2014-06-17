@@ -1,10 +1,10 @@
 bundle agent hand_edited_config_file
 {
-vars:
+  vars:
 
-  "file_template" string =>
+      "file_template" string =>
 
-"
+      "
 # Syntax:
 
 #
@@ -27,17 +27,17 @@ ff02::3         ipv6-allhosts
 10.0.0.21       host4.domain.tld host4
 ";
 
-##############################################################
+      ##############################################################
 
 
-files:
+  files:
 
-   "/etc/hosts"
+      "/etc/hosts"
 
-       comment => "Define the content of all host files from this master source",
-        create => "true",
-     edit_line => append_if_no_lines("$(file_template)"),
- edit_defaults => empty,
-         perms => mo("$(mode)","root"),
-        action => if_elapsed("60");
+      comment => "Define the content of all host files from this master source",
+      create => "true",
+      edit_line => append_if_no_lines("$(file_template)"),
+      edit_defaults => empty,
+      perms => mo("$(mode)","root"),
+      action => if_elapsed("60");
 }

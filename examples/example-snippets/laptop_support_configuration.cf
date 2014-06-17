@@ -11,18 +11,18 @@
 body common control
 
 {
-bundlesequence  => { 
-                   "update",
-                   "garbage_collection",
-                   "main",
-                   "backup",
-                   };
+      bundlesequence  => { 
+			   "update",
+			   "garbage_collection",
+			   "main",
+			   "backup",
+      };
 
-inputs          => {
-                   "update.cf",
-                   "site.cf",
-                   "library.cf" 
-                   };
+      inputs          => {
+			   "update.cf",
+			   "site.cf",
+			   "library.cf" 
+      };
 }
 
 #######################################################
@@ -30,9 +30,9 @@ inputs          => {
 
 body agent control
 {
-# if default runtime is 5 mins we need this for long jobs
+      # if default runtime is 5 mins we need this for long jobs
 
-ifelapsed => "15";
+      ifelapsed => "15";
 }
 
 #######################################################
@@ -40,7 +40,7 @@ ifelapsed => "15";
 
 body monitor control
 {
-forgetrate => "0.7";
+      forgetrate => "0.7";
 }
 
 #######################################################
@@ -49,15 +49,15 @@ forgetrate => "0.7";
 body executor control
 
 {
-splaytime => "1";
-mailto => "mark@iu.hio.no";
-smtpserver => "localhost";
-mailmaxlines => "30";
+      splaytime => "1";
+      mailto => "mark@iu.hio.no";
+      smtpserver => "localhost";
+      mailmaxlines => "30";
 
-# Instead of a separate update script, now do this
+      # Instead of a separate update script, now do this
 
 
-exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
+      exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
 }
 
 #######################################################
@@ -70,33 +70,33 @@ exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bi
 bundle agent main
 
 {
-vars:
+  vars:
 
-  "component" slist => { "cf-monitord", "cf-serverd" };
+      "component" slist => { "cf-monitord", "cf-serverd" };
 
- # - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-files:
-
-  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
-
-     create        => "true",
-     edit_line     => resolver,
-     edit_defaults => def;
-
-processes:
-
-  "$(component)" restart_class => canonify("start_$(component)");
-
- # - - - - - - - - - - - - - - - - - - - - - - - -
+      # - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-commands:
+  files:
 
-   "$(sys.workdir)/bin/$(component)"
+      "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
 
-       ifvarclass => canonify("start_$(component)");
+      create        => "true",
+      edit_line     => resolver,
+      edit_defaults => def;
+
+  processes:
+
+      "$(component)" restart_class => canonify("start_$(component)");
+
+      # - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+  commands:
+
+      "$(sys.workdir)/bin/$(component)"
+
+      ifvarclass => canonify("start_$(component)");
 }
 
 #######################################################
@@ -108,14 +108,14 @@ commands:
 
 bundle agent backup
 {
-files:
+  files:
 
-  "/home/backup"
+      "/home/backup"
 
-     copy_from => cp("/home/mark"),
-  depth_search => recurse("inf"),
-   file_select => exclude_files,
-        action => longjob;
+      copy_from => cp("/home/mark"),
+      depth_search => recurse("inf"),
+      file_select => exclude_files,
+      action => longjob;
 
 }
 
@@ -128,13 +128,13 @@ files:
 
 bundle agent garbage_collection
 {
-files:
+  files:
 
-  "$(sys.workdir)/outputs" 
+      "$(sys.workdir)/outputs" 
 
-    delete => tidy,
-    file_select => days_old("3"),
-    depth_search => recurse("inf");
+      delete => tidy,
+      file_select => days_old("3"),
+      depth_search => recurse("inf");
 
 
 }

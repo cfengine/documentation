@@ -1,16 +1,16 @@
 bundle agent system_files
 
 {
-files:
+  files:
 
-  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+      "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
 
-     comment       => "Add lines to the resolver configuration",
-     create        => "true",
-     edit_line     => resolver,
-     edit_defaults => std_edits;
+      comment       => "Add lines to the resolver configuration",
+      create        => "true",
+      edit_line     => resolver,
+      edit_defaults => std_edits;
 
-   # ...other system files ...
+      # ...other system files ...
 
 
 }
@@ -21,57 +21,57 @@ files:
 bundle edit_line resolver
 
 {
-delete_lines:
+  delete_lines:
 
-  # delete any old name servers or junk we no longer need
+      # delete any old name servers or junk we no longer need
 
 
-  "search.*";
-  "nameserver 80.65.58.31";
-  "nameserver 80.65.58.32";
-  "nameserver 82.103.128.146";
-  "nameserver 78.24.145.4";
-  "nameserver 78.24.145.5";
-  "nameserver 128.39.89.10";
+      "search.*";
+      "nameserver 80.65.58.31";
+      "nameserver 80.65.58.32";
+      "nameserver 82.103.128.146";
+      "nameserver 78.24.145.4";
+      "nameserver 78.24.145.5";
+      "nameserver 128.39.89.10";
 
-insert_lines:
+  insert_lines:
 
-  "search mydomain.tld" location => start;
+      "search mydomain.tld" location => start;
 
- special_net::
+    special_net::
 
-  "nameserver 128.39.89.8";
-  "nameserver 128.39.74.66";
+      "nameserver 128.39.89.8";
+      "nameserver 128.39.74.66";
 
- !special_net::
+    !special_net::
 
-  "nameserver 128.38.34.12";
+      "nameserver 128.38.34.12";
 
- any::
+    any::
 
-  "nameserver 212.112.166.18";
-  "nameserver 212.112.166.22";
+      "nameserver 212.112.166.18";
+      "nameserver 212.112.166.22";
 }
 ```
 bundle agent system_files
 {
-vars:
+  vars:
 
- "searchlist"  string => "iu.hio.no CFEngine.com";
+      "searchlist"  string => "iu.hio.no CFEngine.com";
 
- "nameservers" slist => { 
-                        "128.39.89.10", 
-                        "128.39.74.16",
-                        "192.168.1.103"
-                        };
-files:
+      "nameservers" slist => { 
+                               "128.39.89.10", 
+                               "128.39.74.16",
+                               "192.168.1.103"
+      };
+  files:
 
-  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+      "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
       create        => "true",
       edit_line     => doresolv("$(s)","@(this.n)"),
       edit_defaults => empty;
 
- # ....
+      # ....
 
 
 }
@@ -82,23 +82,23 @@ files:
 bundle edit_line doresolv(search,names)
 
 {
-insert_lines:
-  "search $(search)";
-  "nameserver $(names)";
+  insert_lines:
+      "search $(search)";
+      "nameserver $(names)";
 }
 ```
 bundle agent system_files
 {
 
-# ...
+      # ...
 
 
-files:
+  files:
 
-   "/etc/hosts"
+      "/etc/hosts"
 
-     comment => "Add hosts to the /etc/hosts file",
-   edit_line => fix_etc_hosts;
+      comment => "Add hosts to the /etc/hosts file",
+      edit_line => fix_etc_hosts;
 }
 
 ###########################################################
@@ -106,19 +106,19 @@ files:
 
 bundle edit_line fix_etc_hosts
 {
-vars:
+  vars:
 
- "names[127.0.0.1]"    string => "localhost localhost.CFEngine.com";
- "names[128.39.89.12]" string => "myhost myhost.CFEngine.com";
- "names[128.39.89.13]" string => "otherhost otherhost.CFEngine.com";
+      "names[127.0.0.1]"    string => "localhost localhost.CFEngine.com";
+      "names[128.39.89.12]" string => "myhost myhost.CFEngine.com";
+      "names[128.39.89.13]" string => "otherhost otherhost.CFEngine.com";
 
- # etc
+      # etc
 
 
- "i" slist => getindices("names");
+      "i" slist => getindices("names");
 
-insert_lines:
+  insert_lines:
 
- "$(i)     $(names[$(i)])";
+      "$(i)     $(names[$(i)])";
 
 }

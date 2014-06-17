@@ -1,7 +1,7 @@
 body common control
 
 {
-bundlesequence  => { "example" };
+      bundlesequence  => { "example" };
 }
 
 ###########################################################
@@ -10,14 +10,14 @@ bundlesequence  => { "example" };
 bundle agent example
 
 {     
-vars:
+  vars:
 
-  "ls" slist => lsdir("/etc","p.*","true");
+      "ls" slist => lsdir("/etc","p.*","true");
 
-reports:
+  reports:
 
-  !sdfkjh::
+    !sdfkjh::
 
-    "ls: $(ls)";
+      "ls: $(ls)";
 
 }

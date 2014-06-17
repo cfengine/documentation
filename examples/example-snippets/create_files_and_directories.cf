@@ -12,7 +12,7 @@
 body common control
 
 {
-bundlesequence  => { "testbundle"  };
+      bundlesequence  => { "testbundle"  };
 }
 
 ########################################################
@@ -21,17 +21,17 @@ bundlesequence  => { "testbundle"  };
 bundle agent testbundle
 
 {
-files:
+  files:
 
-  "/home/mark/tmp/test_plain" 
+      "/home/mark/tmp/test_plain" 
 
-       perms => system,
-       create => "true";
+      perms => system,
+      create => "true";
 
-  "/home/mark/tmp/test_dir/." 
+      "/home/mark/tmp/test_dir/." 
 
-       perms => system,
-       create => "true";
+      perms => system,
+      create => "true";
 
 }
 
@@ -41,7 +41,7 @@ files:
 body perms system
 
 {
-mode  => "0640";
+      mode  => "0640";
 }
 
 #########################################################

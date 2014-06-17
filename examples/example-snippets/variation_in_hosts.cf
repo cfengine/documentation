@@ -1,7 +1,7 @@
 body common control
-   {
-   bundlesequence  => { "central" };
-   }
+{
+      bundlesequence  => { "central" };
+}
 
 
 ############################################
@@ -10,55 +10,55 @@ body common control
 bundle agent central
 
 {
-classes:
+  classes:
 
-  "mygroup_1" or => { "myhost", "host1", "host2", "host3" };
-  "mygroup_2" or => { "host4", "host5", "host6" };
+      "mygroup_1" or => { "myhost", "host1", "host2", "host3" };
+      "mygroup_2" or => { "host4", "host5", "host6" };
 
-vars:
+  vars:
 
-  "policy_server" string => "myhost.domain.tld";
+      "policy_server" string => "myhost.domain.tld";
 
- mygroup_1::
+    mygroup_1::
 
-  "mypackages" slist => { 
-                        "nagios"
-                        "gcc",
-                        "apache2", 
-                        "php5" 
-                        };
+      "mypackages" slist => { 
+                              "nagios"
+                              "gcc",
+                              "apache2", 
+                              "php5" 
+      };
 
- mygroup_2::
+    mygroup_2::
 
-  "mypackages" slist => { 
-                        "apache"
-                        "mysql",
-                        "php5" 
-                        };
-
-
-files:
-
-  # Password management can be very simple if all hosts are identical
+      "mypackages" slist => { 
+                              "apache"
+                              "mysql",
+                              "php5" 
+      };
 
 
-  "/etc/passwd" 
+  files:
 
-    comment   => "Distribute a password file",
-    perms     => mog("644","root","root"),
-    copy_from => secure_cp("/etc/passwd","$(policy_server)");
-
-packages:
-
-  "$(mypackages)"
-
-     package_policy => "add",
-     package_method => generic;
+      # Password management can be very simple if all hosts are identical
 
 
-# Add more promises below ...
+      "/etc/passwd" 
 
-     
+      comment   => "Distribute a password file",
+      perms     => mog("644","root","root"),
+      copy_from => secure_cp("/etc/passwd","$(policy_server)");
+
+  packages:
+
+      "$(mypackages)"
+
+      package_policy => "add",
+      package_method => generic;
+
+
+      # Add more promises below ...
+
+      
 }
 
 
@@ -72,10 +72,10 @@ packages:
 body server control
 
 {
-allowconnects         => { "127.0.0.1" , "::1", "10.20.30" };
-allowallconnects      => { "127.0.0.1" , "::1", "10.20.30" };
-trustkeysfrom         => { "127.0.0.1" , "::1", "10.20.30" };
-# allowusers
+      allowconnects         => { "127.0.0.1" , "::1", "10.20.30" };
+      allowallconnects      => { "127.0.0.1" , "::1", "10.20.30" };
+      trustkeysfrom         => { "127.0.0.1" , "::1", "10.20.30" };
+      # allowusers
 
 }
 
@@ -85,15 +85,15 @@ trustkeysfrom         => { "127.0.0.1" , "::1", "10.20.30" };
 bundle server access_rules()
 
 {
-access:
+  access:
 
- # myhost.domain.tld makes this file available to 10.20.30*
+      # myhost.domain.tld makes this file available to 10.20.30*
 
 
- myhost_domain_tld::  
+    myhost_domain_tld::  
 
-  "/etc/passwd"
+      "/etc/passwd"
 
-     admit   => { "127.0.0.1", "10.20.30" };
+      admit   => { "127.0.0.1", "10.20.30" };
 }
 

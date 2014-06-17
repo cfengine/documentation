@@ -4,21 +4,21 @@
 # the the user's local keyring.
 
 
-  # vars:
+# vars:
 
-  #
+#
 
-  #  "users" slist => { "user1", "user2", ...};
+#  "users" slist => { "user1", "user2", ...};
 
-  #
+#
 
-  # methods:
+# methods:
 
-  #
+#
 
-  #  "any" usebundle => allow_ssh_login_from_authorized_keys(@(users),"sourcehost");
+#  "any" usebundle => allow_ssh_login_from_authorized_keys(@(users),"sourcehost");
 
-  #
+#
 
 
 ########################################################################
@@ -26,25 +26,25 @@
 
 bundle agent allow_ssh_rootlogin_from_authorized_keys(user,sourcehost)
 {
-vars:
+  vars:
 
-  "local_cache"       string => "/var/cfengine/ssh_cache"; 
-  "authorized_source" string => "/master/CFEngine/ssh_keys";
+      "local_cache"       string => "/var/cfengine/ssh_cache"; 
+      "authorized_source" string => "/master/CFEngine/ssh_keys";
 
-files:
+  files:
 
-   "$(local_cache)/$(user).pub"
+      "$(local_cache)/$(user).pub"
 
-         comment => "Copy public keys from a an authorized cache into a cache on localhost",
-           perms => mo("600","root"),
-       copy_from => remote_cp("$(authorized_source)/$(user).pub","$(sourcehost)"),
-          action => if_elapsed("60");
+      comment => "Copy public keys from a an authorized cache into a cache on localhost",
+      perms => mo("600","root"),
+      copy_from => remote_cp("$(authorized_source)/$(user).pub","$(sourcehost)"),
+      action => if_elapsed("60");
 
-   "/root/.ssh/authorized_keys" 
+      "/root/.ssh/authorized_keys" 
 
-         comment => "Edit the authorized keys into the user's personal keyring",
-       edit_line => insert_file_if_no_line_matching("$(user)","$(local_cache)/$(user).pub"),
-          action => if_elapsed("60");
+      comment => "Edit the authorized keys into the user's personal keyring",
+      edit_line => insert_file_if_no_line_matching("$(user)","$(local_cache)/$(user).pub"),
+      action => if_elapsed("60");
 }
 
 ########################################################################
@@ -52,25 +52,25 @@ files:
 
 bundle agent allow_ssh_login_from_authorized_keys(user,sourcehost)
 {
-vars:
+  vars:
 
-  "local_cache"       string => "/var/cfengine/ssh_cache"; 
-  "authorized_source" string => "/master/CFEngine/ssh_keys";
+      "local_cache"       string => "/var/cfengine/ssh_cache"; 
+      "authorized_source" string => "/master/CFEngine/ssh_keys";
 
-files:
+  files:
 
-   "$(local_cache)/$(user).pub"
+      "$(local_cache)/$(user).pub"
 
-         comment => "Copy public keys from a an authorized cache into a cache on localhost",
-           perms => mo("600","root"),
-       copy_from => remote_cp("$(authorized_source)/$(user).pub","$(sourcehost)"),
-          action => if_elapsed("60");
+      comment => "Copy public keys from a an authorized cache into a cache on localhost",
+      perms => mo("600","root"),
+      copy_from => remote_cp("$(authorized_source)/$(user).pub","$(sourcehost)"),
+      action => if_elapsed("60");
 
-   "/home/$(user)/.ssh/authorized_keys" 
+      "/home/$(user)/.ssh/authorized_keys" 
 
-         comment => "Edit the authorized keys into the user's personal keyring",
-       edit_line => insert_file_if_no_line_matching("$(user)","$(local_cache)/$(user).pub"),
-          action => if_elapsed("60");
+      comment => "Edit the authorized keys into the user's personal keyring",
+      edit_line => insert_file_if_no_line_matching("$(user)","$(local_cache)/$(user).pub"),
+      action => if_elapsed("60");
 }
 
 ########################################################################
@@ -78,15 +78,15 @@ files:
 
 bundle edit_line insert_file_if_no_line_matching(user,file)
 {
-classes:
+  classes:
 
-  "have_user" expression => regline("$(user).*","$(this.promiser)");
+      "have_user" expression => regline("$(user).*","$(this.promiser)");
 
-insert_lines:
+  insert_lines:
 
-  !have_user::
+    !have_user::
 
-    "$(file)" 
-         insert_type => "file";
+      "$(file)" 
+      insert_type => "file";
 }
 

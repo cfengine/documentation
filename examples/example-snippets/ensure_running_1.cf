@@ -1,38 +1,38 @@
 bundle agent restart_process
 {
-processes:
+  processes:
 
-  "httpd" 
+      "httpd" 
 
       comment => "Make sure apache web server is running",
       restart_class => "restart_httpd";
 
-commands:
+  commands:
 
- restart_httpd::
+    restart_httpd::
 
-     "/etc/init.d/apache2 restart";
+      "/etc/init.d/apache2 restart";
 
 }
 ```
 bundle agent CFEngine_processes
 {
-vars:
+  vars:
 
-  "components" slist => { "cf-execd", "cf-monitord", "cf-serverd", "cf-hub" };
+      "components" slist => { "cf-execd", "cf-monitord", "cf-serverd", "cf-hub" };
 
-processes:
+  processes:
 
-  "$(components)" 
+      "$(components)" 
 
       comment => "Make sure server parts of CFEngine are running",
       restart_class => canonify("start_$(component)");
 
-commands:
+  commands:
 
-   "$(sys.workdir)/bin/$(component)"
+      "$(sys.workdir)/bin/$(component)"
 
-          comment => "Make sure server parts of CFEngine are running",
-       ifvarclass => canonify("start_$(components)");
+      comment => "Make sure server parts of CFEngine are running",
+      ifvarclass => canonify("start_$(components)");
 
 }

@@ -12,7 +12,7 @@
 body common control
 
 {
-bundlesequence  => { "my_vm_cloud" };   
+      bundlesequence  => { "my_vm_cloud" };   
 }
 
 #######################################################
@@ -21,13 +21,13 @@ bundlesequence  => { "my_vm_cloud" };
 bundle agent my_vm_cloud
 
 {
-environments:
+  environments:
 
-   "centos5"
+      "centos5"
 
-       environment_resources => virt_xml,
-       environment_type      => "xen",
-       environment_host      => "ursa-minor";
+      environment_resources => virt_xml,
+      environment_type      => "xen",
+      environment_host      => "ursa-minor";
 
       # default environment_state => "create" on host, and "suspended elsewhere"
 
@@ -38,5 +38,5 @@ environments:
 
 body environment_resources virt_xml
 {
-env_spec_file => "/srv/xen/centos5-libvirt-create.xml";
+      env_spec_file => "/srv/xen/centos5-libvirt-create.xml";
 }

@@ -1,9 +1,9 @@
 body common control
 
 {
-bundlesequence  => { "testbundle"  };
+      bundlesequence  => { "testbundle"  };
 
-version => "1.2.3";
+      version => "1.2.3";
 }
 
 ###########################################
@@ -11,13 +11,13 @@ version => "1.2.3";
 
 bundle agent testbundle
 {
-vars:
+  vars:
 
- "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
+      "userlist" slist => { "mark", "jeang", "jonhenrik", "thomas", "eben" };
 
-methods:
+  methods:
 
- "any" usebundle => subtest("$(userlist)");
+      "any" usebundle => subtest("$(userlist)");
 
 }
 
@@ -27,13 +27,13 @@ methods:
 bundle agent subtest(user)
 
 {
-commands:
+  commands:
 
- "/bin/echo Fix $(user)";
+      "/bin/echo Fix $(user)";
 
-reports:
+  reports:
 
- linux::
+    linux::
 
-  "Finished doing stuff for $(user)";
+      "Finished doing stuff for $(user)";
 }

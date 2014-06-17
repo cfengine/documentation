@@ -4,15 +4,15 @@
 body executor control
 
 {
-splaytime => "1";
-mailto => "cfengine@example.com";
-smtpserver => "localhost";
-mailmaxlines => "30";
+      splaytime => "1";
+      mailto => "cfengine@example.com";
+      smtpserver => "localhost";
+      mailmaxlines => "30";
 
-# Once per hour, on the hour
+      # Once per hour, on the hour
 
 
-schedule     => { "Min00_05" };
+      schedule     => { "Min00_05" };
 }
 
 #######################################################
@@ -20,36 +20,36 @@ schedule     => { "Min00_05" };
 
 bundle agent services_disable
 {
-vars:
+  vars:
 
-   # list all of xinetd services (case sensitive)
-
-
-   "xinetd_services" slist => {
-                               "imap",
-                               "imaps",
-                               "ipop2",
-                               "ipop3",
-                               "krb5-telnet",
-                               "klogin",
-                               "kshell",
-                               "ktalk",
-                               "ntalk",
-                               "pop3s",
-
-                              };
-methods:
-
-   # perform the actual disable all xinetd services according to the list above
+      # list all of xinetd services (case sensitive)
 
 
-   "any"  usebundle => disable_xinetd("$(xinetd_services)");
+      "xinetd_services" slist => {
+				   "imap",
+				   "imaps",
+				   "ipop2",
+				   "ipop3",
+				   "krb5-telnet",
+				   "klogin",
+				   "kshell",
+				   "ktalk",
+				   "ntalk",
+				   "pop3s",
 
-processes:
+      };
+  methods:
 
-  "$(xinetd_services)"
+      # perform the actual disable all xinetd services according to the list above
 
-           signals => { "kill" };
+
+      "any"  usebundle => disable_xinetd("$(xinetd_services)");
+
+  processes:
+
+      "$(xinetd_services)"
+
+      signals => { "kill" };
 
 }
 
@@ -58,19 +58,19 @@ processes:
 
 bundle agent disable_xinetd(name)
 {
- vars:
-   "status" string => execresult("/sbin/chkconfig --list $(name)", "useshell");
+  vars:
+      "status" string => execresult("/sbin/chkconfig --list $(name)", "useshell");
 
- classes:
-   "on"  expression => regcmp(".*on.*","$(status)");
-   
- commands:
-   on::
+  classes:
+      "on"  expression => regcmp(".*on.*","$(status)");
+      
+  commands:
+    on::
       "/sbin/chkconfig $(name) off",
-        comment => "disable $(name) service";
+      comment => "disable $(name) service";
 
- reports:
-   on::
+  reports:
+    on::
       "disable $(name) service.";
-   
+      
 }

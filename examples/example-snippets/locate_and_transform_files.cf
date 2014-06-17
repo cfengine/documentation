@@ -10,15 +10,15 @@
 
 
 body common control
-   {
-   any::
+{
+    any::
 
       bundlesequence  => { 
-"testbundle"  
-                         };
+			   "testbundle"  
+      };
 
-   version => "1.2.3";
-   }
+      version => "1.2.3";
+}
 
 ############################################
 
@@ -26,13 +26,13 @@ body common control
 bundle agent testbundle
 
 {
-files:
+  files:
 
-  "/home/mark/tmp/testcopy" 
+      "/home/mark/tmp/testcopy" 
 
-    file_select => pdf_files,
-    transformer => "/usr/bin/gzip $(this.promiser)",
-    depth_search => recurse("inf");
+      file_select => pdf_files,
+      transformer => "/usr/bin/gzip $(this.promiser)",
+      depth_search => recurse("inf");
 
 }
 
@@ -42,8 +42,8 @@ files:
 body file_select pdf_files
 
 {
-leaf_name => { ".*.pdf" , ".*.fdf" };
-file_result => "leaf_name";
+      leaf_name => { ".*.pdf" , ".*.fdf" };
+      file_result => "leaf_name";
 }
 
 ############################################
@@ -52,5 +52,5 @@ file_result => "leaf_name";
 body depth_search recurse(d)
 
 {
-depth => "$(d)";
+      depth => "$(d)";
 }

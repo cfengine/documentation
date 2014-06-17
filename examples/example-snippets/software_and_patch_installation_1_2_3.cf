@@ -11,12 +11,12 @@
 
 body common control
 {
-bundlesequence => { "packages" };
+      bundlesequence => { "packages" };
 }
 
 body agent control
 {
-environment => { "DEBIAN_FRONTEND=noninteractive" };
+      environment => { "DEBIAN_FRONTEND=noninteractive" };
 }
 
 #############################################
@@ -24,26 +24,26 @@ environment => { "DEBIAN_FRONTEND=noninteractive" };
 
 bundle agent packages
 {
-vars:
+  vars:
 
- # Test the simplest case -- leave everything to the yum smart manager
+      # Test the simplest case -- leave everything to the yum smart manager
 
 
- "match_package" slist => { 
-                          "apache2" 
-#                          "apache2-mod_php5",
+      "match_package" slist => { 
+				 "apache2" 
+				 #                          "apache2-mod_php5",
 
-#                          "apache2-prefork",
+				 #                          "apache2-prefork",
 
-#                          "php5" 
+				 #                          "php5" 
 
-                          };
-packages:
+      };
+  packages:
 
-  "$(match_package)"
+      "$(match_package)"
 
-     package_policy => "add",
-     package_method => apt;
+      package_policy => "add",
+      package_method => apt;
 
 }
 
@@ -53,39 +53,39 @@ packages:
 body package_method apt
 
 {
-any::
+    any::
 
-# ii  acpi      0.09-3ubuntu1     
-
-
- package_changes => "bulk";
- package_list_command => "/usr/bin/dpkg -l";
-
- package_list_name_regex    => "ii\s+([^\s]+).*";
- package_list_version_regex => "ii\s+[^\s]+\s+([^\s]+).*";
-
-# package_list_arch_regex    => "none";
+      # ii  acpi      0.09-3ubuntu1     
 
 
- package_installed_regex => ".*"; # all reported are installed
+      package_changes => "bulk";
+      package_list_command => "/usr/bin/dpkg -l";
 
- #package_name_convention => "$(name)_$(version)_$(arch)";
+      package_list_name_regex    => "ii\s+([^\s]+).*";
+      package_list_version_regex => "ii\s+[^\s]+\s+([^\s]+).*";
 
- package_name_convention => "$(name)";
-
- # Use these only if not using a separate version/arch string
-
- # package_version_regex => "";
-
- # package_name_regex => "";
-
- # package_arch_regex => "";
+      # package_list_arch_regex    => "none";
 
 
-package_add_command => "/usr/bin/apt-get --yes install";
-package_delete_command => "/usr/bin/apt-get --yes remove";
-package_update_command =>  "/usr/bin/apt-get --yes dist-upgrade";
-#package_verify_command => "/bin/rpm -V";
+      package_installed_regex => ".*"; # all reported are installed
+
+      #package_name_convention => "$(name)_$(version)_$(arch)";
+
+      package_name_convention => "$(name)";
+
+      # Use these only if not using a separate version/arch string
+
+      # package_version_regex => "";
+
+      # package_name_regex => "";
+
+      # package_arch_regex => "";
+
+
+      package_add_command => "/usr/bin/apt-get --yes install";
+      package_delete_command => "/usr/bin/apt-get --yes remove";
+      package_update_command =>  "/usr/bin/apt-get --yes dist-upgrade";
+      #package_verify_command => "/bin/rpm -V";
 
 }
 ```
@@ -98,7 +98,7 @@ package_update_command =>  "/usr/bin/apt-get --yes dist-upgrade";
 
 body common control
 {
-bundlesequence => { "packages" };
+      bundlesequence => { "packages" };
 }
 
 #############################################
@@ -106,18 +106,18 @@ bundlesequence => { "packages" };
 
 bundle agent packages
 {
-vars:
+  vars:
 
- "match_package" slist => { 
-                          "7zip-4.65-x86_64.msi"
-                          };
-packages:
+      "match_package" slist => { 
+				 "7zip-4.65-x86_64.msi"
+      };
+  packages:
 
-  "$(match_package)"
+      "$(match_package)"
 
-     package_policy => "add",
+      package_policy => "add",
 
-     package_method => msi_fmatch;
+      package_method => msi_fmatch;
 
 
 }
@@ -128,30 +128,30 @@ packages:
 body package_method msi_fmatch
 
 {
- package_changes => "individual";
+      package_changes => "individual";
 
- package_file_repositories => { "$(sys.workdir)\software_updates\windows", "s:\su" };
+      package_file_repositories => { "$(sys.workdir)\software_updates\windows", "s:\su" };
 
- package_installed_regex => ".*";
-
-
- package_name_regex    => "^(\S+)-(\d+\.?)+";
-
- package_version_regex => "^\S+-((\d+\.?)+)";
-
- package_arch_regex    => "^\S+-(\d+\.?)+(^.+)";
-
- 
- package_name_convention => "$(name)-$(version)-$(arch).msi";
+      package_installed_regex => ".*";
 
 
- package_add_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /i";
+      package_name_regex    => "^(\S+)-(\d+\.?)+";
 
- package_update_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /i";
+      package_version_regex => "^\S+-((\d+\.?)+)";
 
- package_delete_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /x";
+      package_arch_regex    => "^\S+-(\d+\.?)+(^.+)";
 
- }
+      
+      package_name_convention => "$(name)-$(version)-$(arch).msi";
+
+
+      package_add_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /i";
+
+      package_update_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /i";
+
+      package_delete_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /x";
+
+}
 ```
 #
 
@@ -162,7 +162,7 @@ body package_method msi_fmatch
 
 body common control
 {
-bundlesequence => { "packages" };
+      bundlesequence => { "packages" };
 }
 
 #############################################
@@ -170,20 +170,20 @@ bundlesequence => { "packages" };
 
 bundle agent packages
 {
-vars:
+  vars:
 
- "match_package" slist => { 
-                          "7zip"
-                          };
-packages:
+      "match_package" slist => { 
+				 "7zip"
+      };
+  packages:
 
-  "$(match_package)"
+      "$(match_package)"
 
-     package_policy => "update",
-     package_select => ">=",
-     package_architectures => { "x86_64" },
-     package_version => "3.00",
-     package_method => msi_vmatch;
+      package_policy => "update",
+      package_select => ">=",
+      package_architectures => { "x86_64" },
+      package_version => "3.00",
+      package_method => msi_vmatch;
 
 }
 
@@ -193,16 +193,16 @@ packages:
 body package_method msi_vmatch
 
 {
- package_changes => "individual";
- package_file_repositories => { "$(sys.workdir)\software_updates\windows", "s:\su" };
+      package_changes => "individual";
+      package_file_repositories => { "$(sys.workdir)\software_updates\windows", "s:\su" };
 
- package_installed_regex => ".*";
- 
- package_name_convention => "$(name)-$(version)-$(arch).msi";
+      package_installed_regex => ".*";
+      
+      package_name_convention => "$(name)-$(version)-$(arch).msi";
 
- package_add_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /i";
- package_update_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /i";
- package_delete_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /x";
+      package_add_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /i";
+      package_update_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /i";
+      package_delete_command => "\"$(sys.winsysdir)\msiexec.exe\" /qn /x";
 }
 ```
 #
@@ -214,8 +214,8 @@ body package_method msi_vmatch
 
 body common control
 {
-bundlesequence => { "packages" };
-inputs => { "cfengine_stdlb.cf" };
+      bundlesequence => { "packages" };
+      inputs => { "cfengine_stdlb.cf" };
 }
 
 #############################################
@@ -223,64 +223,26 @@ inputs => { "cfengine_stdlb.cf" };
 
 bundle agent packages
 {
-vars:
+  vars:
 
-  "solaris_packages[SMCzlib]" string => "zlib-1.2.3-sol10-sparc-local";
-  "admin_file"                string => "cfengine_admin_file";
+      "solaris_packages[SMCzlib]" string => "zlib-1.2.3-sol10-sparc-local";
+      "admin_file"                string => "cfengine_admin_file";
 
-  "package_names"              slist => getindices("solaris_packages");
+      "package_names"              slist => getindices("solaris_packages");
 
-files:
+  files:
 
-  "/tmp/$(admin_file)"
-	create => "true",
-	edit_defaults => empty_file,
-	edit_line => create_solaris_admin_file;
+      "/tmp/$(admin_file)"
+      create => "true",
+      edit_defaults => empty_file,
+      edit_line => create_solaris_admin_file;
 
-packages:
+  packages:
 
-  "$(package_names)"
+      "$(package_names)"
 
-     package_policy => "add",
-     package_method => solaris("$(package_names)", "$(solaris_packages[$(package_names)])", "$(admin_file)");
-
-}
-```
-#
-
-# Package managment
-
-#
-
-
-body common control
-{
-bundlesequence => { "packages" };
-inputs => { "cfengine_stdlib.cf" }
-}
-
-#############################################
-
-
-bundle agent packages
-{
-vars:
-
- # Test the simplest case -- leave everything to the yum smart manager
-
-
- "match_package" slist => { 
-                          "apache2", 
-                          "apache2-mod_php5",
-                          "apache2-prefork",
-                          "php5" 
-                          };
-packages:
-
-  "$(match_package)"
-
-     package_policy => "add",
-     package_method => yum;
+      package_policy => "add",
+      package_method => solaris("$(package_names)", "$(solaris_packages[$(package_names)])", "$(admin_file)");
 
 }
 ```
@@ -293,8 +255,8 @@ packages:
 
 body common control
 {
-bundlesequence => { "packages" };
-inputs => { "cfengine_stdlib.cf" }
+      bundlesequence => { "packages" };
+      inputs => { "cfengine_stdlib.cf" }
 }
 
 #############################################
@@ -302,22 +264,60 @@ inputs => { "cfengine_stdlib.cf" }
 
 bundle agent packages
 {
-vars:
+  vars:
 
- # Test the simplest case -- leave everything to the zypper smart manager
+      # Test the simplest case -- leave everything to the yum smart manager
 
 
- "match_package" slist => { 
-                          "apache2", 
-                          "apache2-mod_php5",
-                          "apache2-prefork",
-                          "php5" 
-                          };
-packages:
+      "match_package" slist => { 
+				 "apache2", 
+				 "apache2-mod_php5",
+				 "apache2-prefork",
+				 "php5" 
+      };
+  packages:
 
-  "$(match_package)"
+      "$(match_package)"
 
-     package_policy => "add",
-     package_method => zypper;
+      package_policy => "add",
+      package_method => yum;
+
+}
+```
+#
+
+# Package managment
+
+#
+
+
+body common control
+{
+      bundlesequence => { "packages" };
+      inputs => { "cfengine_stdlib.cf" }
+}
+
+#############################################
+
+
+bundle agent packages
+{
+  vars:
+
+      # Test the simplest case -- leave everything to the zypper smart manager
+
+
+      "match_package" slist => { 
+				 "apache2", 
+				 "apache2-mod_php5",
+				 "apache2-prefork",
+				 "php5" 
+      };
+  packages:
+
+      "$(match_package)"
+
+      package_policy => "add",
+      package_method => zypper;
 
 }

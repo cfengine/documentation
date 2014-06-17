@@ -1,16 +1,16 @@
 body common control
 {
-bundlesequence => { "test" };
+      bundlesequence => { "test" };
 }
 
 
 
 bundle agent test
 {
-processes:
+  processes:
 
- "sleep"
+      "sleep"
 
-   signals => { "term", "kill" };
+      signals => { "term", "kill" };
 
 }

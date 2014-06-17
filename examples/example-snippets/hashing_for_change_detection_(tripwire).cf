@@ -12,7 +12,7 @@
 body common control
 
 {
-bundlesequence  => { "testbundle"  };
+      bundlesequence  => { "testbundle"  };
 }
 
 ########################################################
@@ -21,12 +21,12 @@ bundlesequence  => { "testbundle"  };
 bundle agent testbundle
 
 {
-files:
+  files:
 
-  "/home/mark/tmp/web" -> "me"
+      "/home/mark/tmp/web" -> "me"
 
-   changes      => detect_all_change,
-   depth_search => recurse("inf");
+      changes      => detect_all_change,
+      depth_search => recurse("inf");
 }
 
 #########################################################
@@ -35,8 +35,8 @@ files:
 body changes detect_all_change
 
 {
-report_changes => "all";  
-update_hashes  => "true";
+      report_changes => "all";  
+      update_hashes  => "true";
 }
 
 #########################################################
@@ -45,5 +45,5 @@ update_hashes  => "true";
 body depth_search recurse(d)
 
 {
-depth        => "$(d)";
+      depth        => "$(d)";
 }

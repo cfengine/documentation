@@ -1,7 +1,7 @@
 body common control
 
 {
-bundlesequence  => { "example" };
+      bundlesequence  => { "example" };
 }
 
 ###########################################################
@@ -10,14 +10,14 @@ bundlesequence  => { "example" };
 bundle agent example
 
 {     
-vars:
+  vars:
 
-  "my_result" string => execresult("/bin/ls /tmp","noshell");
+      "my_result" string => execresult("/bin/ls /tmp","noshell");
 
-reports:
+  reports:
 
-  linux::
+    linux::
 
-    "Variable is $(my_result)";
+      "Variable is $(my_result)";
 
 }

@@ -11,9 +11,9 @@
 body common control
 
 {
-version         =>   "1.2.3";
-bundlesequence  => { "testbundle"  };
-inputs          => { "cf_std_library.cf" };
+      version         =>   "1.2.3";
+      bundlesequence  => { "testbundle"  };
+      inputs          => { "cf_std_library.cf" };
 }
 
 ########################################################
@@ -22,14 +22,14 @@ inputs          => { "cf_std_library.cf" };
 bundle agent testbundle
 
 {
-vars:
+  vars:
 
-  "patterns" slist => { "finger.*", "echo.*", "exec.*", "rstat.*", 
-                                               "uucp.*", "talk.*" };
+      "patterns" slist => { "finger.*", "echo.*", "exec.*", "rstat.*", 
+                            "uucp.*", "talk.*" };
 
-files:
+  files:
 
-  "/etc/inetd.conf"
+      "/etc/inetd.conf"
 
       edit_line => comment_lines_matching("@(testbundle.patterns)","#");
 }

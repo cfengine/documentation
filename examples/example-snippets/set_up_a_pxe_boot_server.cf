@@ -1,7 +1,7 @@
 body common control
 {
- bundlesequence => { "pxe" };
- inputs => { "/var/cfengine/inputs/cfengine_stdlib.cf" };
+      bundlesequence => { "pxe" };
+      inputs => { "/var/cfengine/inputs/cfengine_stdlib.cf" };
 }
 
 
@@ -15,40 +15,40 @@ body common control
 
 bundle agent pxe
 {
-vars:
+  vars:
 
-  "software" slist => {
-                      "atftp",
-                      "dhcp-server",
-                      "syslinux",
-                      "apache2"
-                      };
-
-
-   "dirs" slist => {
-                   "/tftpboot",
-                   "/tftpboot/CFEngine/rpm",
-                   "/tftpboot/CFEngine/inputs",
-                   "/tftpboot/pxelinux.cfg",
-                   "/tftpboot/kickstart",
-                   "/srv/www/repos"
-                   };
-
-   "tmp_location"    string => "/tftpboot/CFEngine/inputs";
-
-   # Distros that we can install
+      "software" slist => {
+			    "atftp",
+			    "dhcp-server",
+			    "syslinux",
+			    "apache2"
+      };
 
 
+      "dirs" slist => {
+			"/tftpboot",
+			"/tftpboot/CFEngine/rpm",
+			"/tftpboot/CFEngine/inputs",
+			"/tftpboot/pxelinux.cfg",
+			"/tftpboot/kickstart",
+			"/srv/www/repos"
+      };
 
-   "rh_distros" slist => { "4.7", "5.2" };
-   "centos_distros" slist => { "5.2" }; 
+      "tmp_location"    string => "/tftpboot/CFEngine/inputs";
 
-   # File contents of atftp configuration
+      # Distros that we can install
 
 
 
-   "atftpd_conf" string =>
-       "
+      "rh_distros" slist => { "4.7", "5.2" };
+      "centos_distros" slist => { "5.2" }; 
+
+      # File contents of atftp configuration
+
+
+
+      "atftpd_conf" string =>
+      "
 ###########################################
 
 
@@ -71,12 +71,12 @@ ATFTPD_DIRECTORY=\"/tftpboot\"
 ATFTPD_BIND_ADDRESSES=\"\"
        ";
 
-   # File contents of DHCP configuration
+      # File contents of DHCP configuration
 
 
 
-   "dhcpd" string =>
-       "
+      "dhcpd" string =>
+      "
 ###########################################
 
 
@@ -101,8 +101,8 @@ DHCPD_OTHER_ARGS=\"\"
 DHCPD_BINARY=\"\"
        ";
 
-   "dhcpd_conf" string =>
-       "
+      "dhcpd_conf" string =>
+      "
 ###########################################
 
 
@@ -152,12 +152,12 @@ ddns-update-style none; ddns-updates off;
  }
         ";
 
-   # File contains of Apache2 HTTP configuration
+      # File contains of Apache2 HTTP configuration
 
 
 
-   "httpd_conf" string =>
-        "
+      "httpd_conf" string =>
+      "
 # Repository for RHEL5
 
 
@@ -201,12 +201,12 @@ AllowOverride None
 Alias /CFEngine /tftpboot/CFEngine
         ";
 
-   # File contains of Kickstart for RHEL5 configuration
+      # File contains of Kickstart for RHEL5 configuration
 
 
 
-   "kickstart_rhel5_conf" string =>
-        "
+      "kickstart_rhel5_conf" string =>
+      "
 ###########################################
 
 
@@ -278,12 +278,12 @@ wget -nd -r http://192.168.0.1/CFEngine/inputs/
 /usr/local/sbin/cf-agent
         ";
 
-   # File contains of PXElinux boot menu
+      # File contains of PXElinux boot menu
 
 
 
-   "pxelinux_boot_menu" string =>
-        "
+      "pxelinux_boot_menu" string =>
+      "
 ###########################################
 
 
@@ -306,12 +306,12 @@ boot options:
      rhel4   - install 32 bit i386 RHEL 4.7 AS          (MANUAL)    
      centos5 - install 32 bit i386 CentOS 5.2 (Desktop) (MANUAL)
         ";
-   # File contains of PXElinux default configuration
+      # File contains of PXElinux default configuration
 
 
 
-   "pxelinux_default" string =>
-        "
+      "pxelinux_default" string =>
+      "
 ###########################################
 
 
@@ -363,12 +363,12 @@ label centos5
    append initrd=initrd-CentOS5.2 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/centos/5.2
         ";
 
-   # File contains of specified PXElinux default to be a RHEL5 webserver
+      # File contains of specified PXElinux default to be a RHEL5 webserver
 
 
 
-   "pxelinux_rhel5_webserver" string =>
-        "
+      "pxelinux_rhel5_webserver" string =>
+      "
 ###########################################
 
 
@@ -394,12 +394,12 @@ label rhel5w
    append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 ks=http://192.168.0.1/kickstart/kickstart-RHEL5U2.cfg
         ";
 
-   # File contains of a local repository for RHEL5
+      # File contains of a local repository for RHEL5
 
 
 
-   "rhel5_base_repo" string =>
-        "
+      "rhel5_base_repo" string =>
+      "
 ###########################################
 
 
@@ -436,147 +436,147 @@ name=Cluster Storage
 baseurl=http://192.168.0.1/repos/rhel5/ClusterStorage/
 enable=1
         ";
-#####################################################
+      #####################################################
 
 
 
 
-files:
+  files:
 
- packages_ok::
+    packages_ok::
 
-  # Create files/dirs and edit the new files
-
-
-
-  "/tftpboot/distro/RHEL/$(rh_distros)/."
-       create => "true";
-
-  "/tftpboot/distro/CentOS/$(centos_distros)/."
-       create => "true";
-
-  "$(dirs)/."   
-       create => "true";
-
-  "/tftpboot/pxelinux.cfg/boot.msg"
-       create => "true",
-       perms => mo("644","root"),
-       edit_line => append_if_no_line("$(pxelinux_boot_menu)"),
-       edit_defaults => empty;
-
-  "/tftpboot/pxelinux.cfg/default"
-       create => "true",
-       perms => mo("644","root"),
-       edit_line => append_if_no_line("$(pxelinux_default)"),
-       edit_defaults => empty;
-
-  "/tftpboot/pxelinux.cfg/default.RHEL5.webserver"
-       create => "true",
-       perms => mo("644","root"),
-       edit_line => append_if_no_line("$(pxelinux_rhel5_webserver)"),
-       edit_defaults => empty;
-  
-  "/tftpboot/kickstart/kickstart-RHEL5U2.cfg"
-       create => "true",
-       perms => mo("644","root"),
-       edit_line => append_if_no_line("$(kickstart_rhel5_conf)"),
-       edit_defaults => empty;
-
-  "/srv/www/repos/RHEL5.Base.repo"
-       create => "true",
-       perms => mo("644","root"),
-       edit_line => append_if_no_line("$(rhel5_base_repo)"),
-       edit_defaults => empty;
-
-  # Copy files
+      # Create files/dirs and edit the new files
 
 
 
-  "/tftpboot"
+      "/tftpboot/distro/RHEL/$(rh_distros)/."
+      create => "true";
 
-    copy_from => local_cp("/usr/share/syslinux"),
-    depth_search => recurse("inf"),
-    file_select => pxelinux_files,
-    action => immediate;
+      "/tftpboot/distro/CentOS/$(centos_distros)/."
+      create => "true";
 
-  "$(tmp_location)"
+      "$(dirs)/."   
+      create => "true";
 
-    perms => m("644"),
-    copy_from => local_cp("/var/cfengine/inputs"),
-    depth_search => recurse("inf"),
-    file_select => input_files,
-    action => immediate;
+      "/tftpboot/pxelinux.cfg/boot.msg"
+      create => "true",
+      perms => mo("644","root"),
+      edit_line => append_if_no_line("$(pxelinux_boot_menu)"),
+      edit_defaults => empty;
 
-  # Edit atftp, dhcp and apache2 configurations
+      "/tftpboot/pxelinux.cfg/default"
+      create => "true",
+      perms => mo("644","root"),
+      edit_line => append_if_no_line("$(pxelinux_default)"),
+      edit_defaults => empty;
 
+      "/tftpboot/pxelinux.cfg/default.RHEL5.webserver"
+      create => "true",
+      perms => mo("644","root"),
+      edit_line => append_if_no_line("$(pxelinux_rhel5_webserver)"),
+      edit_defaults => empty;
+      
+      "/tftpboot/kickstart/kickstart-RHEL5U2.cfg"
+      create => "true",
+      perms => mo("644","root"),
+      edit_line => append_if_no_line("$(kickstart_rhel5_conf)"),
+      edit_defaults => empty;
 
+      "/srv/www/repos/RHEL5.Base.repo"
+      create => "true",
+      perms => mo("644","root"),
+      edit_line => append_if_no_line("$(rhel5_base_repo)"),
+      edit_defaults => empty;
 
-  "/etc/sysconfig/atftpd"
-     edit_line => append_if_no_line("$(atftpd_conf)"),
-     edit_defaults => empty,
-     classes => satisfied("atftpd_ready");
-
-  "/etc/sysconfig/dhcpd"
-     edit_line => append_if_no_line("$(dhcpd)"),
-     edit_defaults => empty;
-
-  "/etc/dhcpd.conf"
-     edit_line => append_if_no_line("$(dhcpd_conf)"),
-     edit_defaults => empty,
-     classes => satisfied("dhcpd_ready");
-
-  "/etc/apache2/httpd.conf"
-     edit_line => append_if_no_line("$(httpd_conf)"),
-     edit_defaults => std_defs,
-     classes => satisfied("apache2_ok");
-
-  # Make a static link
-
-
-
-  "/tftpboot/pxelinux.cfg/C0A8000C"
-     link_from => mylink("/tftpboot/pxelinux.cfg/default.RHEL5.webserver");
-
-  # Hash comment some lines for apaches
+      # Copy files
 
 
 
-  apache2_ok::
-  "/etc/apache2/httpd.conf"
-     edit_line => comment_lines_matching_apache2("#"),
-     classes => satisfied("apache2_ready");
+      "/tftpboot"
 
-commands:
+      copy_from => local_cp("/usr/share/syslinux"),
+      depth_search => recurse("inf"),
+      file_select => pxelinux_files,
+      action => immediate;
 
-  # Restart services
+      "$(tmp_location)"
 
+      perms => m("644"),
+      copy_from => local_cp("/var/cfengine/inputs"),
+      depth_search => recurse("inf"),
+      file_select => input_files,
+      action => immediate;
 
-  atftpd_ready::
-  "/etc/init.d/atftpd restart";
-
-  dhcpd_ready::
-  "/etc/init.d/dhcpd restart";
-
-  apache2_ready::
-  "/etc/init.d/apache2 restart";
-
-
-#####################################################
+      # Edit atftp, dhcp and apache2 configurations
 
 
 
-packages:
-  
- ipv4_192_168_0_1::
- # Only the PXE boot server
+      "/etc/sysconfig/atftpd"
+      edit_line => append_if_no_line("$(atftpd_conf)"),
+      edit_defaults => empty,
+      classes => satisfied("atftpd_ready");
+
+      "/etc/sysconfig/dhcpd"
+      edit_line => append_if_no_line("$(dhcpd)"),
+      edit_defaults => empty;
+
+      "/etc/dhcpd.conf"
+      edit_line => append_if_no_line("$(dhcpd_conf)"),
+      edit_defaults => empty,
+      classes => satisfied("dhcpd_ready");
+
+      "/etc/apache2/httpd.conf"
+      edit_line => append_if_no_line("$(httpd_conf)"),
+      edit_defaults => std_defs,
+      classes => satisfied("apache2_ok");
+
+      # Make a static link
 
 
 
- "$(software)"
+      "/tftpboot/pxelinux.cfg/C0A8000C"
+      link_from => mylink("/tftpboot/pxelinux.cfg/default.RHEL5.webserver");
 
-     package_policy => "add",
-     package_method => zypper,
-     classes => satisfied("packages_ok");
+      # Hash comment some lines for apaches
+
+
+
+    apache2_ok::
+      "/etc/apache2/httpd.conf"
+      edit_line => comment_lines_matching_apache2("#"),
+      classes => satisfied("apache2_ready");
+
+  commands:
+
+      # Restart services
+
+
+    atftpd_ready::
+      "/etc/init.d/atftpd restart";
+
+    dhcpd_ready::
+      "/etc/init.d/dhcpd restart";
+
+    apache2_ready::
+      "/etc/init.d/apache2 restart";
+
+
+      #####################################################
+
+
+
+  packages:
+      
+    ipv4_192_168_0_1::
+      # Only the PXE boot server
+
+
+
+      "$(software)"
+
+      package_policy => "add",
+      package_method => zypper,
+      classes => satisfied("packages_ok");
 
 }
 
@@ -593,9 +593,9 @@ packages:
 body file_select pxelinux_files
 
 {
-leaf_name => { "pxelinux.0" };
+      leaf_name => { "pxelinux.0" };
 
-file_result => "leaf_name";
+      file_result => "leaf_name";
 }
 
 #####################################################
@@ -605,8 +605,8 @@ file_result => "leaf_name";
 body copy_from mycopy_local(from,server)
 
 {
-source      => "$(from)";
-compare     => "digest";
+      source      => "$(from)";
+      compare     => "digest";
 }
 
 #########################################################
@@ -615,8 +615,8 @@ compare     => "digest";
 
 body link_from mylink(x)
 {
-source => "$(x)";
-link_type => "symlink";
+      source => "$(x)";
+      link_type => "symlink";
 }
 
 #######################################################
@@ -626,8 +626,8 @@ link_type => "symlink";
 body classes satisfied(new_class)
 
 {
-promise_kept => { "$(new_class)"};
-promise_repaired => { "$(new_class)"};
+      promise_kept => { "$(new_class)"};
+      promise_repaired => { "$(new_class)"};
 }
 
 #######################################################
@@ -635,24 +635,24 @@ promise_repaired => { "$(new_class)"};
 
 
 bundle edit_line comment_lines_matching_apache2(comment)
-  {
-  
+{
+      
   vars:
-   "regex" slist => { "\s.*Options\sNone", "\s.*AllowOverride\sNone", "\s.*Deny\sfrom\sall" };
+      "regex" slist => { "\s.*Options\sNone", "\s.*AllowOverride\sNone", "\s.*Deny\sfrom\sall" };
 
   replace_patterns:
 
-   "^($(regex))$"
+      "^($(regex))$"
       replace_with => comment("$(comment)");
-  }
+}
 
 #######################################################
 
 
 body file_select input_files
 {
- leaf_name => { ".*.cf",".*.dat",".*.txt" };
- file_result => "leaf_name";
+      leaf_name => { ".*.cf",".*.dat",".*.txt" };
+      file_result => "leaf_name";
 }
 
 #######################################################

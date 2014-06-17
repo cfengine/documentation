@@ -1,9 +1,9 @@
 body common control
 
 {
-bundlesequence  => { "testbundle"  };
+      bundlesequence  => { "testbundle"  };
 
-inputs => { "cfengine_stdlib.cf" };
+      inputs => { "cfengine_stdlib.cf" };
 }
 
 ########################################################
@@ -12,11 +12,11 @@ inputs => { "cfengine_stdlib.cf" };
 bundle agent testbundle
 
 {
-files:
+  files:
 
-  "/usr" 
+      "/usr" 
 
-       changes      => detect_all_change,
-       depth_search => recurse("inf"),
-       action       => background;
+      changes      => detect_all_change,
+      depth_search => recurse("inf"),
+      action       => background;
 }

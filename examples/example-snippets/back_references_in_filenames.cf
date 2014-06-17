@@ -14,8 +14,8 @@
 body common control
 
 {
-version => "1.2.3";
-bundlesequence  => { "testbundle"  };
+      version => "1.2.3";
+      bundlesequence  => { "testbundle"  };
 }
 
 ########################################################
@@ -24,26 +24,26 @@ bundlesequence  => { "testbundle"  };
 bundle agent testbundle
 
 {
-files:
+  files:
 
-  # The back reference in a path only applies to the last link
+      # The back reference in a path only applies to the last link
 
-  # of the pathname, so the (tmp) gets ignored
-
-
-  "/tmp/(cf3)_(.*)"
-
-       edit_line => myedit("second $(match.2)");
+      # of the pathname, so the (tmp) gets ignored
 
 
-  # but ...
+      "/tmp/(cf3)_(.*)"
+
+      edit_line => myedit("second $(match.2)");
 
 
-#  "/tmp/cf3_test"
+      # but ...
 
-#       create    => "true",
 
-#       edit_line => myedit("second $(match.1)");
+      #  "/tmp/cf3_test"
+
+      #       create    => "true",
+
+      #       edit_line => myedit("second $(match.1)");
 
 
 
@@ -53,13 +53,13 @@ files:
 
 
 bundle edit_line myedit(parameter)
-  {
+{
   vars:
 
-   "edit_variable" string => "private edit variable is $(parameter)"; 
+      "edit_variable" string => "private edit variable is $(parameter)"; 
 
   insert_lines:
 
-     "$(edit_variable)";
-  
-  }
+      "$(edit_variable)";
+      
+}

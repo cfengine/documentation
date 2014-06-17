@@ -10,19 +10,19 @@
 ########################################################
 
 
- #
+#
 
- # run this as follows:
+# run this as follows:
 
- #
+#
 
- # cf-serverd -f runtest_1.cf [-d2]
+# cf-serverd -f runtest_1.cf [-d2]
 
- # cf-agent   -f runtest_2.cf
+# cf-agent   -f runtest_2.cf
 
- #
+#
 
- # Notice that the same file configures all parts of cfengine
+# Notice that the same file configures all parts of cfengine
 
 
 ########################################################
@@ -31,8 +31,8 @@
 body common control
 
 {
-bundlesequence  => { "testbundle" };
-version => "1.2.3";
+      bundlesequence  => { "testbundle" };
+      version => "1.2.3";
 }
 
 ########################################################
@@ -41,28 +41,28 @@ version => "1.2.3";
 bundle agent testbundle
 
 {
-files:
+  files:
 
-  "/home/mark/tmp/testflatcopy" 
+      "/home/mark/tmp/testflatcopy" 
 
-        comment  => "test copy promise",
-    copy_from    => mycopy("/home/mark/LapTop/words","127.0.0.1"),
-    perms        => system,
-    depth_search => recurse("inf"),
-    classes      => satisfied("copy_ok");
+      comment  => "test copy promise",
+      copy_from    => mycopy("/home/mark/LapTop/words","127.0.0.1"),
+      perms        => system,
+      depth_search => recurse("inf"),
+      classes      => satisfied("copy_ok");
 
 
-  "/home/mark/tmp/testcopy/single_file" 
+      "/home/mark/tmp/testcopy/single_file" 
 
-        comment  => "test copy promise",
-    copy_from    => mycopy("/home/mark/LapTop/Cfengine3/trunk/README","127.0.0.1"),
-    perms        => system;
+      comment  => "test copy promise",
+      copy_from    => mycopy("/home/mark/LapTop/Cfengine3/trunk/README","127.0.0.1"),
+      perms        => system;
 
-reports:
+  reports:
 
-  copy_ok::
+    copy_ok::
 
-    "Files were copied..";
+      "Files were copied..";
 }
 
 #########################################################
@@ -71,7 +71,7 @@ reports:
 body perms system
 
 {
-mode  => "0644";
+      mode  => "0644";
 }
 
 #########################################################
@@ -80,7 +80,7 @@ mode  => "0644";
 body depth_search recurse(d)
 
 {
-depth => "$(d)";
+      depth => "$(d)";
 }
 
 #########################################################
@@ -89,16 +89,16 @@ depth => "$(d)";
 body copy_from mycopy(from,server)
 
 {
-source      => "$(from)";
-servers     => { "$(server)" };
-compare     => "digest";
-verify      => "true";
-copy_backup => "true";                  #/false/timestamp
-purge       => "false";
-type_check  => "true";
-force_ipv4  => "true";
-trustkey => "true";
-collapse_destination_dir => "true";
+      source      => "$(from)";
+      servers     => { "$(server)" };
+      compare     => "digest";
+      verify      => "true";
+      copy_backup => "true";                  #/false/timestamp
+      purge       => "false";
+      type_check  => "true";
+      force_ipv4  => "true";
+      trustkey => "true";
+      collapse_destination_dir => "true";
 }
 
 #########################################################
@@ -106,8 +106,8 @@ collapse_destination_dir => "true";
 
 body classes satisfied(x)
 {
-promise_repaired => { "$(x)" };
-persist_time => "0";
+      promise_repaired => { "$(x)" };
+      persist_time => "0";
 }
 
 #########################################################
@@ -120,9 +120,9 @@ persist_time => "0";
 body server control
 
 {
-allowconnects         => { "127.0.0.1" , "::1" };
-allowallconnects      => { "127.0.0.1" , "::1" };
-trustkeysfrom         => { "127.0.0.1" , "::1" };
+      allowconnects         => { "127.0.0.1" , "::1" };
+      allowallconnects      => { "127.0.0.1" , "::1" };
+      trustkeysfrom         => { "127.0.0.1" , "::1" };
 }
 
 #########################################################
@@ -131,9 +131,9 @@ trustkeysfrom         => { "127.0.0.1" , "::1" };
 bundle server access_rules()
 
 {
-access:
+  access:
 
-  "/home/mark/LapTop"
+      "/home/mark/LapTop"
 
-    admit   => { "127.0.0.1" };
+      admit   => { "127.0.0.1" };
 }
