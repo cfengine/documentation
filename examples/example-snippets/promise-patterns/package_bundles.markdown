@@ -7,7 +7,7 @@ tags: [Examples, Policy, Packages]
 
 # Package Promises Examples
 
-[%CFEngine\_include\_example(package\_bundles.cf)%]
+[%CFEngine_include_example(package_bundles.cf)%]
 
 Package promises allow you to make promises about the state of software
 installed on a host. Seven basic use cases are presented here which
@@ -27,11 +27,11 @@ Here is a simple example of a bundle that installs the zip package for supported
 architectures.
 
 ```cf3
-    bundle agent AddPackage
-    {
-     methods:
-        "ensureZip" usebundle => cfe_package_ensure_present("zip");
-    }
+bundle agent AddPackage
+{
+ methods:
+    "ensureZip" usebundle => cfe_package_ensure_present("zip");
+}
 ```
 
 This code shows how to use the bundles `cfe_package_ensure_present()`
@@ -49,18 +49,18 @@ available or installs it if it's not already installed.
 
 ### Usage
 
-cfe\_package\_ensure\_upgrade(name)
+[`cfe_package_ensure_upgrade(name)`][cfe_package_ensure_upgrade()]
 
 name: string
 
 A simple example follows.
 
 ```cf3
-    bundle agent UpgradePackage
-    {
-     methods:
-        "latestZip" usebundle => cfe_package_ensure_upgrade("zip");
-    }
+bundle agent UpgradePackage
+{
+ methods:
+    "latestZip" usebundle => cfe_package_ensure_upgrade("zip");
+}
 ```
 
 This code shows how to use the bundles `cfe_package_ensure_upgrade()`
@@ -73,16 +73,16 @@ or absent from the target system.
 
 ### Usage
 
-cfe\_package\_ensure\_absent(name)
+[`cfe_package_ensure_absent(name)`][cfe_package_ensure_absent()]
 
 name: string
 
 ```cf3
-    bundle agent RemovePackage
-    {
-     methods:
-        "noZip" usebundle => cfe_package_ensure_absent("zip");
-    }
+bundle agent RemovePackage
+{
+ methods:
+    "noZip" usebundle => cfe_package_ensure_absent("zip");
+}
 ```
 
 This code shows how to use the bundles `cfe_package_ensure_absent()`
@@ -98,8 +98,7 @@ to be selected if it's equal to the supplied version string.
 
 ### Usage
 
-cfe\_package\_named\_ensure\_present(name, selector, version,
-architecture)
+[`cfe_package_named_ensure_present(name, selector, version, architecture)`][cfe_package_named_ensure_present()]
 
 name: string
 
@@ -113,11 +112,11 @@ Let's see how this looks as an example in which version 2.99 of the zip
 package for the Debian amd64 architecture is promised to be installed.
 
 ```cf3
-    bundle agent SpecificPackageFromDebianRepo
-    {
-     methods:
-           "ensureSpecificZip" usebundle => cfe_package_named_ensure_present("zip","==","2.99","amd64");
-    }
+bundle agent SpecificPackageFromDebianRepo
+{
+ methods:
+       "ensureSpecificZip" usebundle => cfe_package_named_ensure_present("zip","==","2.99","amd64");
+}
 ```
 
 This code shows how to use the bundles
@@ -132,7 +131,7 @@ package resides in a local directory as a platform specific package file
 
 ### Usage
 
-cfe\_package\_named\_ensure\_present(path\_to\_package,selector,version,architecture)]
+[`cfe_package_named_ensure_present(path_to_package,selector,version,architecture)`][cfe_package_named_ensure_present()]
 
 name: string
 
@@ -146,17 +145,16 @@ As an example, see the policy snippet below. We wish to install a
 package on a Redhat system from an rpm file.
 
 ```cf3
-    bundle agent SpecificPackageFromRpmFile
-    {
-     methods:
-          "addZipFromRpmFile" usebundle =>   
-             cfe_package_named_ensure_present("/local/repo/zip-3.0-7_x86_64.rpm","==","3.0-7","x86_64");
-    }
+bundle agent SpecificPackageFromRpmFile
+{
+ methods:
+      "addZipFromRpmFile" usebundle =>   
+         cfe_package_named_ensure_present("/local/repo/zip-3.0-7_x86_64.rpm","==","3.0-7","x86_64");
+}
 ```
 
-This code shows how to use the bundles
-`cfe_package_named_ensure_present()` from the [packages][Packages
-Bundles and Bodies] standard library.
+This code shows how to use the bundles `cfe_package_named_ensure_present()` from the
+[packages][Packages Bundles and Bodies] standard library.
 
 ## Ensure Present or Upgrade Named Package for Specific Architecture from File
 
@@ -166,7 +164,7 @@ upgraded if it is older, to the version specified.
 
 ### Usage
 
-cfe\_package\_named\_ensure\_upgrade(path\_to\_package,selector,version,architecture)
+[`cfe_package_named_ensure_upgrade(path_to_package,selector,version,architecture)`][cfe_package_named_ensure_upgrade()]
 
 name: string
 
@@ -174,23 +172,22 @@ selector: ==, =\> or \<=
 
 version: package version string
 
-architecture: amd64, i386, x86\_64
+architecture: amd64, i386, x86_64
 
 For example, the following policy illustrates a debian based upgrade of
 an existing package.
 
 ```cf3
-    bundle agent SpecificPackageUpgradeFromDebianFile
-    {
-     methods:
-            "upgradeZipFromDebFile" usebundle =>
-               cfe_package_named_ensure_upgrade("/local/repo/zip-3.0-7_amd64.deb","==","3.0-7","amd64");
-    }
+bundle agent SpecificPackageUpgradeFromDebianFile
+{
+ methods:
+        "upgradeZipFromDebFile" usebundle =>
+           cfe_package_named_ensure_upgrade("/local/repo/zip-3.0-7_amd64.deb","==","3.0-7","amd64");
+}
 ```
 
-This code shows how to use the bundles
-`cfe_package_named_ensure_upgrade()` from the [packages][Packages
-Bundles and Bodies] standard library.
+This code shows how to use the bundles `cfe_package_named_ensure_upgrade()` from the
+[packages][Packages Bundles and Bodies] standard library.
 
 ## Ensure Present or Upgrade Named Package for Specific Architecture
 
@@ -199,7 +196,7 @@ the specified version and architecture.
 
 ### Usage
 
-cfe\_package\_named\_ensure\_upgrade(name,selector,version,architecture)
+[`cfe_package_named_ensure_upgrade(name,selector,version,architecture)`][cfe_package_named_ensure_upgrade()]
 
 name: string
 
@@ -207,20 +204,19 @@ selector: ==, =\> or \<=
 
 version: package version string
 
-architecture: amd64, i386, x86\_64
+architecture: amd64, i386, x86_64
 
 For example, the following policy upgrades the zip package to the
 specificed version.
 
 ```cf3
-    bundle agent SpecificPackageUpgradeDebian
-    {
-     methods:
-           "upgradeZip" usebundle => 
-              cfe_package_named_ensure_upgrade("zip","==","3.0-7","amd64");
-    }
+bundle agent SpecificPackageUpgradeDebian
+{
+ methods:
+       "upgradeZip" usebundle => 
+          cfe_package_named_ensure_upgrade("zip","==","3.0-7","amd64");
+}
 ```
 
-This code shows how to use the bundles
-`cfe_package_named_ensure_upgrade()` from the [packages][Packages
-Bundles and Bodies] standard library.
+This code shows how to use the bundles `cfe_package_named_ensure_upgrade()` from the
+[packages][Packages Bundles and Bodies] standard library.
