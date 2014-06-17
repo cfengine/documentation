@@ -24,6 +24,22 @@ There is only one grammatical form for statements in the language:
     }
 ```
 
+In addition, CFEngine bodies can be defined and used as attribute values.  Here's a real-life example of a body and its usage.
+
+```cf3
+body edit_defaults no_backup
+{
+      edit_backup => "false";
+}
+
+... and elsewhere, noting the attribute name matches the body type ...
+
+  files:
+    "myfile" edit_defaults => no_backup;
+
+
+```
+
 You can recognize *everything* in CFEngine from just those few concepts.
 
 * [**Promise**][promises]
@@ -39,7 +55,7 @@ A collection of promises.
 * [**Bodies**][bodies]
 
 A part of a promise which details and constrains its nature, possibly in 
-separate and re-usable parts.
+separate and re-usable parts.  Effectively a body is like a promise attribute that has several parameters.
 
 * [**Classes**][classes and decisions]
 
@@ -111,11 +127,12 @@ The CFEngine 3 language has a few simple rules:
 Filenames in Unix-like operating systems use the forward slash '/'
 character for their directory separator. All references to file
 locations must be absolute pathnames in CFEngine, i.e. they must
-begin with a complete specification of which directory they are in.
+begin with a complete specification of which directory they are in or with a variable reference that resolves to that.
 For example:
 
     /etc/passwd
     /var/cfengine/masterfiles/distfile
+    $(sys.masterdir)/distfile # usually the same thing in 3.6.0
 
 The only place where it makes sense to refer to a file without a
 complete directory specification is when searching through
@@ -144,6 +161,10 @@ single file-tree. This is not a valid absolute filename:
 
 Paths beginning with a backslash are assumed to be win32 paths.
 They must begin with a drive letter or double-slash server name.
+
+Note that in many cases, you have `sys.inputdir` and other
+[Special Variables] that work equally well on Windows and non-Windows
+system.
 
 Note in recent versions of Cygwin you can decide to use the
 `/cygdrive` to specify a path to windows file E.g

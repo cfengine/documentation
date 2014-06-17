@@ -33,16 +33,17 @@ effectively cached and may be used to make decisions about configuration.
 
 You can see all of the classes defined on a particular host by running the following command as a privileged user.
 
-    $ cf-promises -v
+    $ cf-promises --show-classes|grep hardclass
 
-These are classes that describe your operating system, the time of day, the 
-week of the year, etc. Time-varying classes will change if you do this a few 
-times over the course of a week.
+These are classes that describe your operating system, the time of
+day, the week of the year, etc. Time-varying classes (tagged with
+`time_based`) will change if you do this a few times over the course
+of a week.
 
 ## Soft Classes
 
 Soft classes are user-defined classes which you can use to implement your own 
-classifications. These classes are defined in bundles, and are evaluated when 
+classifications. These classes are defined in bundles and are evaluated when 
 the bundle is evaluated. They can be based on test functions or on other 
 classes.
 
@@ -280,6 +281,10 @@ These classes are global in scope, but the
 them local to the bundle.
 
 Finally, `restart_class` classes in `processes` are global.
+
+## Canceling classes
+
+You can cancel a class with a `classes` body.  See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
 
 ### Class Scopes: A More Complex Example
 

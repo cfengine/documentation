@@ -12,12 +12,14 @@ any CFEngine deployment is the same.
 
 CFEngine supports networks of any size, from a handful of nodes to
 hundreds of thousands of computers. It is built to scale. If your site
-is very large (thousands or of servers) you should spend some time
-discussing your requirements with the CFEngine experts. They will know
+is very large (many thousands of servers) you should spend some time
+discussing your requirements with CFEngine experts. They will know
 how to tune promises and configurations to your environment as scale
 requires you to have more infrastructure, and a potentially more
-complicated configuration. But no matter the scale, the essence of any 
-CFEngine deployment is the same.
+complicated configuration. No matter the scale, the essence of any 
+CFEngine deployment is the same, but with great power comes great
+responsibility (a.k.a. don't break things before the weekend, on the
+weekend, or in fact on any other day).
 
 CFEngine was designed to enable scalable configuration management in
 any kind of environment, with an emphasis on supporting large, Unix-like 
@@ -26,7 +28,7 @@ systems that are connected via TCP/IP.
 CFEngine doesn't depend on or assume the presence of reliable
 infrastructure. It works opportunistically in any environment, using
 the fewest possible resources, and it has a limited set of software
-dependencies. It can run anywhere, and this lean approach to
+dependencies. It can run anywhere and this lean approach to
 CFEngine's architecture makes it possible to support both traditional
 server-based approaches to configuration as well as more novel
 platforms for configuration including embedded and mobile systems.
@@ -45,20 +47,20 @@ you can't trust you have to verify everything, and that is expensive.
 
 Everything in CFEngine can be thought of as a promise to be kept by different 
 resources in the system. In a system that delivers a web site with Apache 
-`httpd`, an important promise may be to make sure that `httpd` is installed, 
+`httpd`, an important promise may be to make sure that the `httpd` or `apache` package is installed, 
 running, and accessible on port 80. In a system which needs to satisfy mid-day 
 traffic on a busy web site, a promise may be to ensure that there are 200 
 application servers running during normal business hours.
 
 These promises are not top-down directives for a central authority to push 
-through the system. Try running a large organization on top-down authority 
-alone. Try to manage a group of people without empowering and trusting them to 
+through the system. A large organization can't run on top-down authority 
+alone. A group of people can't be managed without empowering and trusting them to 
 make independent decisions.
 
 CFEngine is a system that emphasizes the promises a client makes to the 
 overall CFEngine network. They are the rules which clients are responsible for 
 implementing. We can create large systems of scale because we don't create a 
-bulky centralized authority. There is no single point-of-failure both when 
+bulky centralized authority. There should be no single point-of-failure when 
 managing machines and people.
 
 Combining promises with patterns to describe where and when promises should 

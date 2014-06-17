@@ -19,7 +19,7 @@ to organize patterns, using containers, lists and associative arrays.
 
 ## Menu level
 
-At this high level, a user `selects' from a set of pre-defined `services' (or 
+At this high level, a user `selects` from a set of pre-defined `services` (or 
 bundles in CFEngine parlance). The selection is not made by every host, rather 
 one places hosts into roles that will keep certain promises.
 

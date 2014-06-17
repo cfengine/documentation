@@ -6,11 +6,13 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-When engineering IT infrastructure, and especially once the scale of a system grows to become quite large, it is much more of a challenge to recognize what the system consists of, what is happening at any given moment in time (or over time), and recognizing changes in state.
+The challenge in engineering IT infrastructure, especially as it scales vertically and horizontally, is to recognize the system components, what they do at any given moment in time (or over time), and when and how they change state.
 
-To meet this challenge, the CFEngine Enterprise's User Interface (also known as Mission Portal) provides tools to collect, organize, store, and deliver data from every host to a primary server and then make that data available for high level reports or alerts and notifications.
+CFEngine Enterprise's data collection service, the cf-hub collector, collects, organizes, and stores data from every host.  The data is stored primarily in a PostgreSQL database.
 
-CFEngine Enterprise's User Interface also allows infrastructure engineers to make quick and easy modification of any machine or group of machines within their domain using classifications of hosts and a template mechanism called sketches.
+CFEngine Enterprise's user interface, the Mission Portal makes that data available for high level reports or alerts and notifications.  The reports can be designed in a GUI report builder or directly with SQL statements passed to PostgreSQL.
+
+The Mission Portal also allows authorized infrastructure engineers to quickly and easily modify any group of machines through the Design Center toolchain, which uses a data-driven policy template mechanism called sketches.
 
 * [Hosts and Health][User Interface#Hosts and Health]
 * [Alerts and Notifications][User Interface#Alerts and Notifications]
@@ -26,17 +28,17 @@ Find out more: [Hosts and Health][]
 
 ## Alerts and Notifications ##
 
-The dashboard contains informative widgets that you can customize to create alerts that are important to you. All alert state changes, e.g. from OK to triggered, are logged to the Event log.
+The dashboard contains informative widgets that you can customize to create alerts. All notifications of alert state changes, e.g. from OK to not-OK, are stored in an event log for later inspection and analysis.
 
 ![Enterprise UI Alerts](welcome_2nd_screen.png)
 
 
-Alerts can have three different severities: low, medium and high. These are represented by rings in yellow, orange and red respectively, along with the percentage of hosts alerts have triggered on. Hovering over the widget will show all information in a convenient list.
+Alerts can have three different severity level: low, medium and high. These are represented by yellow, orange and red rings respectively, along with the percentage of hosts alerts have triggered on. Hovering over the widget will show the information as text in a convenient list format.
 
 ![Enterprise UI Alerts](widget_1.gif)
 
 
-You are able to pause alerts during maintenance windows or while working on resolving an underlying issue to avoid unnecessary triggering and notifications.
+You can pause alerts during maintenance windows or while working on resolving an underlying issue to avoid unnecessary triggering and notifications.
 
 ![Enterprise UI Alerts](pause_alerts.gif)
 
@@ -59,6 +61,8 @@ Add and remove columns from the results table in real time, and once you're happ
 ![Enterprise API Overview](add_columns.gif)
 
 Find out more: [Reporting][Reporting UI]
+
+Find out more about writing your own inventory modules: [Inventory modules][The Policy Framework#CFEngine 3 inventory modules]
 
 ## Monitoring ##	
 

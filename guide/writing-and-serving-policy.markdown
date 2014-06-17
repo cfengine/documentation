@@ -19,21 +19,21 @@ sorting: 40
 
 ## About Policies and Promises ##
 
-Central to CFEngine's effectiveness in system administration is an intuitive tool called a `promise`, which defines the intent and expectation of how some part of an overall system should behave. 
+Central to CFEngine's effectiveness in system administration is the concept of a "promise," which defines the intent and expectation of how some part of an overall system should behave.
 
-CFEngine is a system that emphasizes the promises a client makes to the overall CFEngine network. Combining promises with patterns to describe where and when promises should apply is what CFEngine is all about.
+CFEngine emphasizes the promises a client makes to the overall CFEngine network. Combining promises with patterns to describe where and when promises should apply is what CFEngine is all about.
 
-This document describes in brief what a promise is and what a promise does. There are other resources for finding out additional details about `promises` in the See Also section at the end of this document.
+This document describes in brief what a promise is and what a promise does. There are other resources for finding out additional details about "promises" in the See Also section at the end of this document.
 
 ### What Are Promises ###
 
-A promise is the documentation or definition of an intention to act or behave in some manner. They are the rules which CFEngine clients are responsible for implementing. 
+A promise is the documentation or definition of an intention to act or behave in some manner. They are the rules which CFEngine clients are responsible for implementing.
 
 ### The Value of a Promise ###
 
 When you make a promise it is an effort to improve trust, which is an economic time-saver. If you have trust then there is less need to verify, which in turn saves time and money.
 
-When individual components are empowered with clear guidance, independent decision making power, and the trust that they will fulfil their duties, then systems that are complex and scalable, yet still manageable, become possible. 
+When individual components are empowered with clear guidance, independent decision making power, and the trust that they will fulfil their duties, then systems that are complex and scalable, yet still manageable, become possible.
 
 ### Anatomy of a Promise ###
 
@@ -52,7 +52,7 @@ bundle agent hello_world
 
 ## How Promises Work ##
 
-Everything in CFEngine can be thought of as a promise to be kept by different resources in the system. In a system that delivers a web site using Apache, an important promise may be to make sure that the `httpd` package is installed, running, and accessible on port 80. 
+Everything in CFEngine can be thought of as a promise to be kept by different resources in the system. In a system that delivers a web site using Apache, an important promise may be to make sure that the `httpd` or `apache` package is installed, running, and accessible on port 80.
 
 ### Summary for Writing, Deploying and Using Promises ###
 
@@ -70,7 +70,7 @@ See [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running 
 ## Policy Workflow ##
 
 CFEngine does not make absolute choices for you, like other tools.  Almost
-everything about its behavior is matter of policy and can be changed.
+everything about its behavior is a matter of policy and can be changed.
 
 In order to keep operations as simple as possible, CFEngine maintains a
 private working directory on each machine, referred to in documentation as `WORKDIR` and in policy by

@@ -11,6 +11,7 @@ considered suggestions. We invite you to contribute to the growth of this
 guide.
 
 ## Style Summary
+
 * one indent = 2 spaces
 * avoid letting line length surpass 80 characters.
 * vertically align opening and closing curly braces unless on same line
@@ -131,8 +132,8 @@ the same line after the attribute.
 ## Promise Handles
 
 Promise handles uniquely identify a promise within a policy. We suggest a simple naming 
-scheme of bundle_name_promise_type_class_restriction_promiser to keep handles unique and 
-easily identifiable.
+scheme of `bundle_name_promise_type_class_restriction_promiser` to keep handles unique and 
+easily identifiable.  Often it may be easier to omit the handle.
 
 ```cf3
 bundle agent example
@@ -149,7 +150,7 @@ bundle agent example
 
 ## Hashrockets (=>)
 
-Hash rockets should be aligned within a promise body scope and for grouped
+You may align hash rockets within a promise body scope and for grouped
 single line promises.
 
 Example:
@@ -174,14 +175,36 @@ Example:
     }
 ```
 
+You may also simply leave them as they are:
+
+```cf3
+    bundle agent example
+    {
+      files:
+        any::
+          "/var/cfengine/inputs/"
+            copy_from => update_policy( "/var/cfengine/masterfiles","$(policyhost)" ),
+            classes => policy_updated( "policy_updated" ),
+            depth_search => recurse("inf");
+
+          "/var/cfengine/modules"
+            copy_from => update_policy( "/var/cfengine/modules", "$(policyhost" ),
+            classes => policy_updated( "modules_updated" );
+
+      classes:
+          "EL5" or => { "centos_5", "redhat_5" };
+          "EL6" or => { "centos_6", "redhat_6" };
+    }
+```
+
+Which one do you prefer?
+
 ## Naming Conventions
 ### Internal variables & classes
 
 Variables and classes that have no centralized reporting value are considered
-"internal". By convention internal variables and classes should be prefix with
-an underscore "_". This convention is used by the policy framework to exclude
-collection of any prefixed variables and classes when polled by the `cf-hub`
-component.
+"internal". By convention internal variables and classes should be prefixed with
+an underscore "_".
 
 ## Deprecating Bundles
 As your policy library changes over time you may want to deprecate various
@@ -199,7 +222,6 @@ bundle agent old
                     };
 }
 ```
-
 ## Automatic reindentation
 
 You can run `contrib/reindent.pl FILE1.cf FILE2.c FILE3.h` to reindent files,

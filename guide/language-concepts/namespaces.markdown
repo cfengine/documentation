@@ -11,10 +11,12 @@ multiple files to define the bundles and bodies with the same name in
 different namespaces without conflict.  They are key to writing
 reusable policies.
 
+Everything in CFEngine lives in a namespace (it's the `default` namespace if not set).
+
 ### Specifying a namespace
 
 To isolate a file into its own namespace, you add a control promise to the 
-file before the relevant bundles or bodies. All files start off in the 
+file before the relevant bundles or bodies. All bundles and bodies start off in the 
 `default` namespace if you don't explicitly set this. Once set, this applies 
 until the end of the file or the next namespace change.
 
@@ -67,7 +69,7 @@ colon as a namespace prefix:
     $(namespace:bundle.variable)
     $(namespace:bundle_meta.variable)
 
-Note that this means that if you are in a namespace that's not `default`, you *must* qualify classes from `default` fully:
+**Note** that this means that if you are in a namespace that's not `default`, you *must* qualify classes from `default` fully:
 
     default:myclass::
     "do something" ifvarclass => "default:myotherclass";
@@ -90,14 +92,17 @@ prefixed like `mynamespace:mybundle.myvar` from outside your
 namespace, but can use `mybundle.myvar` inside the namespace and
 `myvar` inside `mybundle`.
 
+As a workaround, you could have a helper bundle in another namespace
+to create classes and variables as needed.
+
 ### Exceptions to namespacing rules
 
 Exceptions to the rules above:
 
-* All hard classes can be used as-is, without a namespace
-  specification.  These are classes like `linux`.  They will have the
+* All hard classes can be used as-is from any namespace, without a namespace
+  prefix.  These are classes like `linux`.  They will have the
   tag `hardclass`.
 
 * All special variable contexts, as documented in [Special Variables],
-  are always accessible without a namespace specification.  For
+  are always accessible without a namespace prefix.  For
   example, `this`, `mon`, `sys`, and `const` fall in this category.

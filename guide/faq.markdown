@@ -28,27 +28,31 @@ tags: [getting started, installation, enterprise, faq]
 
 #### What steps should I take after installing CFEngine Enterprise ####
 
-There are general steps to be taken outlined in [Post-Installation Configuration][General Installation#Post-Installation Configuration]. 
+There are general steps to be taken outlined in [Post-Installation Configuration][General Installation#Post-Installation Configuration].
 
-In addition to this, Enterprise 3.6.0 uses the local mail relay, and it is assumed that the server where CFEngine Enterprise is installed on has proper mail setup. 
+In addition to this, Enterprise 3.6.0 uses the local mail relay, and it is assumed that the server where CFEngine Enterprise is installed on has proper mail setup.
 
-The default FROM email for all emails sent from the Mission Portal is currently admin@organization.com. This can be changed on the CFE Server in /var/cfengine/httpd/htdocs/application/config/appsettings.php:$config['appemail'].
+The default FROM email for all emails sent from the Mission Portal is currently admin@organization.com. This can be changed on the CFEngine Hub in `/var/cfengine/httpd/htdocs/application/config/appsettings.php:$config['appemail']`.
 
 #### Can I use an existing PostgreSQL installation ####
 
-Although CFEngine keeps its assumptions about Postgres to a bare minimum,
+No.  Although CFEngine keeps its assumptions about Postgres to a bare minimum,
 CFEngine should use a dedicated PostgreSQL database instance to ensure there is
 no conflict with an existing installation.
 
-#### What is the system user for the CFEngine dedicated PostgreSQL database
+#### Do I need experience with PostgreSQL ####
+
+PostgreSQL is highly configurable and you should have some in-house
+expertise to properly configure your database installation. The
+defaults are well tuned for common cases but you may find
+optimizations depending on your hardware and OS.
+
+#### What is the system user for the CFEngine dedicated PostgreSQL database and Apache server
 
 Starting with CFEngine 3.6.0 there will be a system user called ```cfpostgres``` for running the dedicated CFEngine PostgreSQL database
 installation.
 
-#### Do I need experience with PostgreSQL ####
-
-PostgreSQL is highly configurable, and you should have some in-house expertise
-to properly configure your database installation.
+Similarly there will be a ```cfapache``` system user for the Apache web server.
 
 #### What are the requirements for installing CFEngine Enterprise ####
 
@@ -59,7 +63,7 @@ to properly configure your database installation.
 
 ##### Users and Permissions #####
 
-* CFEngine Enterprise makes an attempt to create the users cfapache and cfpostgres, as well as group cfapache when installing 3.6.0. The server must allow creation of these users and groups.
+* CFEngine Enterprise makes an attempt to create the local users ```cfapache``` and ```cfpostgres```, as well as group ```cfapache``` when installing 3.6.0. The server must allow creation of these users and groups.
 
 
 ### Enterprise Scalability ###
@@ -70,10 +74,10 @@ See: [Enterprise Scalability][Best Practices#Scalability]
 
 #### I have added new files in masterfiles but my remote clients are not getting updates ####
 
-Check that the files you expect to be distributed have matching `leaf_name` pattern.
+Check that the files you expect to be distributed have matching `leaf_name` pattern.  If newly bootstrapped clients get those files but existing clients don't, this is certainly the problem, because bootstrapping and failsafe operation ignore `leaf_name` and copy everything.
 
-In CFEngine 3.6 masterfiles policy framework this is defined as
-`input_name_patterns` in the `update_def` bundle.
+In CFEngine 3.6 masterfiles policy framework this is configurable with
+`input_name_patterns` in the `update_def` bundle in `def.cf`.  See [The Policy Framework][The Policy Framework] for more information.
 
 #### I have updated some non policy files and changes are not distributed to clients ###
 
@@ -83,15 +87,13 @@ trigger an update of `cf_promises_validated`. You can use a seperate promise to
 ensure those files are continually distributed, instead of only on policy
 updates.
 
-For details reference
-[update/update_policy.cf](https://github.com/cfengine/masterfiles/blob/master/update/update_policy.cf).
+For details see [cf_promises_validated][The Policy Framework#cf_promises_validated] and [cfe_internal_update_policy][The Policy Framework#cfe_internal_update_policy]
 
 ### Manual Execution ###
 
 #### How do I run a standalone policy file ####
 
-The `--file` or `-f` option to `cf-agent` specifys the policy file to be used as the
-main entry point. The `-K` or `--no-lock` flag and the `-I` or `--inform`
+The `--file` or `-f` option to `cf-agent` specifys the policy file. The `-K` or `--no-lock` flag and the `-I` or `--inform`
 options are commonly used in combination with the `-f` option to ensure that
 all promises are skipped because of locking and for the agent to produce
 informational output like successful repairs.
@@ -99,6 +101,8 @@ informational output like successful repairs.
 ```console
 cf-agent -KIf ./my_standalone_policy.cf
 ```
+
+A standalone policy file **must** specify a `bundlesequence`.  You can avoid that requirement by using the `-b BUNDLENAME` flag, see below.
 
 #### Why do I get Undefined body when I try to run my policy ###
 
@@ -141,6 +145,11 @@ body file control
 }
 ```
 
+This policy will work correctly whether it's included by another
+policy file or not. Note the `body file` `control` option is new since
+CFEngine 3.6.0, so you should not use if your policy could be seen by
+3.5 or earlier CFEngine clients.
+
 #### How do I run a specific bundle ####
 
 A specific bundle can be activated by passing the `-b` or `--bundlesequence`
@@ -167,11 +176,13 @@ You can use the `--define` or `-D` options of `cf-agent`.
 cf-agent -D my_class
 ```
 
-And if you want to define multiple, simply seperate them with commas (no spaces between).
+And if you want to define multiple, simply separate them with commas (no spaces between).
 
 ```console
 cf-agent --define my_class,my_other_class
 ```
+
+Multiple `-D` flags are not supported, you have to put all the classes in one comma-separated list.
 
 ### Agent Email Reports ###
 
@@ -182,12 +193,16 @@ https://github.com/cfengine/masterfiles/blob/master/controls/cf_execd.cf. It
 defaults to `root@$(def.domain)` which is configured in `bundle common def`
 https://github.com/cfengine/masterfiles/blob/master/def.cf.
 
+For details see [domain][The Policy Framework#domain].
+
 #### How do I disable agent email output ####
 
 You can simply remove or comment out the settings.
 
-In 3.6.x there is a conveniance class `cfengine_internal_agent_email` avaiable
+In 3.6.x there is a convenience class `cfengine_internal_agent_email` avaiable
 in `bundle common def` to switch on/off agent email.
+
+For details see [cfengine_internal_agent_email][The Policy Framework#cfengine_internal_agent_email].
 
 ### Mustache Templating ###
 
@@ -201,18 +216,22 @@ of all data-producing functions.
 
 #### Can I render a Mustache template into a string? ####
 
-Not directly, you could render a file and read that into a string, but you would need to be cautious of CF_BUFFSIZE.
+Not directly, you could render a file and read that into a string, but you would need to be cautious of CF_BUFSIZE.
 
 #### How do I render a section only if a given class is defined? ####
 
-In this example 'Enterprise' will only be rendered if the class 'enterprise' is defined.
+In this Mustache example the word 'Enterprise' will only be rendered if the class 'enterprise' is defined.
+
+This template should not be passed a data container; it uses the `datastate()` of the CFEngine system.  That's where `classes.enterprise` and `vars.sys.cf_version` came from.
+
 ```
 Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{vars.sys.cf_version}}
 ```
 
 #### How do I iterate over a list? ####
 
-An example using `datastate`():
+This template should not be passed a data container; it uses the `datastate()` of the CFEngine system.  That's where `vars.mon.listening_tcp4_ports` came from.
+
 {% raw %}
 ```
 {{#vars.mon.listening_tcp4_ports}}

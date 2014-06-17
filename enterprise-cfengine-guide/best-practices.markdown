@@ -232,21 +232,21 @@ masterfiles using the built-in facilities in CFEngine Enterprise 3.6.0
 
 ## Scalability ##
   
-When running CFEngine Enterprise in a large-scale IT environment, where the number of hosts runs into the thousands, certain issues arise that require different approaches compared with smaller installations.
+When running CFEngine Enterprise in a large-scale IT environment with many thousands of hosts, certain issues arise that require different approaches compared with smaller installations.
 
 With CFEngine 3.6.0, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine. 
 
 
 ### Moving PostgreSQL to Separate Hard Drive ###
 
-Moving the PostgreSQL database to another physical hard drive from the other CFEngine components can improve the stability of large-scale installations, particularly when using a solid-state drive (SSD) for hosting the PostgreSQL database
+Moving the PostgreSQL database to another physical hard drive from the other CFEngine components can improve the stability of large-scale installations, particularly when using a solid-state drive (SSD) for hosting the PostgreSQL database.
 
-The way data is processed uses a huge number of random IO operations, with small chunks of data. SSD may give the best performance because it is designed for these types of scenarios.
+The data access involves a huge number of random IO operations, with small chunks of data. SSD may give the best performance because it is designed for these types of scenarios.
 
-*Important*: The Postgres data files are by default located in `/var/cfengine/state/pg/`. Before moving the mount point please make sure that all CFEngine processes (including Postgres) are stopped and the existing data files are copied to the new location.
+*Important*: The PostgreSQL data files are in `/var/cfengine/state/pg/` by default. Before moving the mount point, please make sure that all CFEngine processes (including PostgreSQL) are stopped and the existing data files are copied to the new location.
 
 ### Setting the splaytime ###
 
-`splaytime` is a value that tells CFEngine hosts what window of time they have to decide when they should communicate with the `policy server`. What this means in practise is that when `splaytime` is set to a value such as 4 that the hosts will not attempt to communicate with the policy server all at the same time during a 4 minute window, which limits the number of concurrent connections at any given moment.
+The `splaytime` tells CFEngine hosts the base interval over which they will communicate with the `policy server`, which they then use to "splay" or hash their own runtimes.
 
-  
+Thus when `splaytime` is set to 4, 1000 hosts will hash their run attempts evenly over 4 minutes, and each minute will see about 250 hosts make a run attempt.  In effect, the hosts will attempt to communicate with the policy server and run their own policies in predictable "waves."  This limits the number of concurrent connections and overall system load at any given moment.
