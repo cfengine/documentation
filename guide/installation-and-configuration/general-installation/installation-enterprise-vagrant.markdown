@@ -105,9 +105,7 @@ password: admin
 **Note:** It may take up to 15 minutes before the hosts register in Mission
 Portal.
 
-That's all there is to it, the install is complete! Move on and explore the environment or skip ahead [Read on][Configure and Deploy a Policy Using
-Sketches (Enterprise Only)] to start your first lesson on how to use CFEngine.
-
+That's all there is to it, the install is complete! Move on and explore the environment.
 ## Exploring the Environemnt
 
 ### Accessing VMs
