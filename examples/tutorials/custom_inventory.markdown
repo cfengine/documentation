@@ -9,18 +9,17 @@ tags: [Examples, Tutorials, Inventory, Enterprise]
 This tutorial will show you how to add custom inventory attributes that can be
 leveraged in policy and reported on in the CFEngine Enterprise Mission Portal.
 For a more detailed overview on how the inventory system works please reference
-[CFEngine 3 inventory modules][The Policy
-Framework#cfengine-3-inventory-modules].
+[CFEngine 3 inventory modules][The Policy Framework#CFEngine 3 inventory modules].
 
 ## Overview ##
+
 This tutorial provides instructions for the following:
 
-* [Choose an attribute][Custom Inventory#choose-an-attribute-to-inventory]
+* [Choose an attribute][Tutorial - Custom Inventory#Choose an attribute to inventory]
 
-* [Create and deploy inventory policy][Custom
-  Inventory#create-and-deploy-inventory-policy]
+* [Create and deploy inventory policy][Tutorial - Custom Inventory#create and deploy inventory policy]
 
-* [Run Reports][Custom Inventory#run-reports]
+* [Run Reports][Tutorial - Custom Inventory#run reports]
 
 ## Choose an attribute to inventory
 
@@ -43,7 +42,6 @@ host001, Development <dev@cfengine.com>
 Enterprise Vagrant Environemt] and files located in the vagrant project
 directory are automatically available to all hosts.
 
-[Back to top of page.][Custom Inventory#Overview]
 
 ## Create and deploy inventory policy
 
@@ -87,14 +85,11 @@ it gets to its final destination as needed.
 This policy will not be activated until it has been included in
 [inputs][Components and Common Control#inputs]. For simplicity we will be
 adding it to [common control][Components and Common Control], but note that
-files can include other files through the use of [inputs in file control][file
-control#inputs].
+files can include other files through the use of [inputs in file control][file control#inputs].
 
-Add 'services/tutorials/inventory/owner.cf' to [inputs][Components and Common
-Control#inputs] and 'tutorials_inventory_owner' to the
-[bundlesequence][Components and Common Control#bundlesequence] in [common
-control][Components and Common Control] found in
-`/var/cfengine/masterfiles/promises.cf` as shown below.
+Add 'services/tutorials/inventory/owner.cf' to [inputs][Components and Common Control#inputs] and 
+'tutorials_inventory_owner' to the [bundlesequence][Components and Common Control#bundlesequence] in
+[common control][Components and Common Control] found in `/var/cfengine/masterfiles/promises.cf` as shown below.
 
 ```cf3
 body common control
@@ -151,7 +146,6 @@ inform output helps me confirm that my hubs owner is discovered from our CSV
 properly.
 
 
-[Back to top of page.][Custom Inventory#Overview]
 
 ## Run Reports
 
@@ -170,5 +164,3 @@ populated as expected.
 
 ![custom inventory report](tutorials_custom_inventory_report.jpg)
 
-
-[Back to top of page.][Custom Inventory#Overview]
