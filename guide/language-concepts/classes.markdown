@@ -284,7 +284,8 @@ Finally, `restart_class` classes in `processes` are global.
 
 ## Canceling classes
 
-You can cancel a class with a `classes` body.  See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
+You can cancel a class with a [`classes`][Promise Types and Attributes#classes] body.
+See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
 
 ### Class Scopes: A More Complex Example
 

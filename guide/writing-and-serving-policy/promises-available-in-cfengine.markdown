@@ -10,7 +10,7 @@ tags: [overviews, promises]
 
 Meta-data promises have no internal function. They are intended to be used to represent arbitrary information about promise bundles. Formally, meta promises are implemented as variables, and the values map to a variable context called bundlename_meta. The values can be used as variables and will appear in CFEngine Enterprise variable reports.
 
-See `meta`.
+See [`meta`][meta].
 
 ### vars - a variable, representing a value ###
 
@@ -34,7 +34,7 @@ Classes promises may be made in any bundle. Classes that are set in common bundl
 
 Note: The term class and context are sometimes used interchangeably.
 
-See `classes`.
+See [`classes`][classes].
 
 ### users - add or remove users ###
 
