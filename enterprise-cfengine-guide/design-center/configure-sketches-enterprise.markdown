@@ -16,7 +16,7 @@ describes how to set up the Git repository and how to connect the Mission Portal
 it. (The **Design Center App** is located on the Mission Portal console.)
 Instructions for testing the **Design Center App** and for reviewing Git commit logs are also included.
 
-[Controlling Access to the Design Center UI][Controlling Access to the Design Center UI]
+[Controlling Access to the Design Center UI][Design Center Access Control]
 This section describes how to give users access rights for making changes to the **Design
 Center App**. It describes how to allow or limit a Mission Portal user's ability to commit
 to the Git repository and make changes to the hosts. All Mission Portal changes that users

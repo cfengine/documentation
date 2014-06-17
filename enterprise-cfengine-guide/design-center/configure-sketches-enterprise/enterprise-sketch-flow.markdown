@@ -26,7 +26,7 @@ The main CFEngine Enterprise graphical interface. It includes the
 The Mission Portal administrator must configure its settings
 with the Git version control repository you selected above. Users are only allowed to use
 the **Design Center App** if they are members of the `cf_vcs` role (see
-[Controlling Access to the Design Center UI][Controlling Access to the Design Center UI].
+[Controlling Access to the Design Center UI][Design Center Access Control].
 
 ### /var/cfengine/masterfiles
 
