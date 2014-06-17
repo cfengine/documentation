@@ -9,6 +9,8 @@ module Jekyll
     
     $CfeUtils = CFE::CfeUtils.new
     
+    CONST_MaxSubLevels = 5   # - maximul alloved sublevels in left navigation
+    
     ## sort keys inside hash
     def sort_by_key(data, recursive=false, &block)
       data.keys.sort(&block).reduce({}) do |seed, key|
@@ -127,26 +129,27 @@ module Jekyll
      # puts JSON.pretty_generate(nav_pages) 
      # puts "-- after sort --"
 
-      
+       
       linksForNavigation = {}
       linksForNavigation = createResultArray(nav_pages)
 
        
+      # puts JSON.pretty_generate(linksForNavigation) 
+      # puts "-- linksForNavigation --"
+       
 
-      # create flatten array for all existin pages in navigation     
-      
-      #puts " result" 
-      #puts JSON.pretty_generate(linksForNavigation) 
-      #puts "-- --"
- 
-
+      # create flatten array for all existing pages in navigation   
       $breadcrumbsNavigation = {}
       $leftNavigation = {}
       buildNavigation(linksForNavigation)  
-   
+      
+  
       
       leftNavHtml = {}
       leftNavHtml = buildLeftNavHTML($leftNavigation)
+
+      # puts JSON.pretty_generate(leftNavHtml) 
+      # puts "-- after leftNavHtml --"
 
 
       # temporal solution for the index page. because we don't know what to show there
@@ -171,30 +174,126 @@ module Jekyll
     #
     # return array with the html navigation list for each pages
     
+    def firstLevelPageNavHTML(pageData, selectedPage)
+      li = ''
+
+            if (pageData.has_key?('childrens') && !pageData['childrens'].empty?)
+                pageData['childrens'].each do |childrenKey, childrenData|
+                  li += '<li><a href="' + childrenData['alias'] +'">' + childrenData['title'] + '</a></li>'
+                end
+           end
+   
+      return li 
+    end
+    
+    
+    def getChainedListWithParents(pageData, pageKey, activeItem = '')
+      li = ''
+      if (pageData.has_key?('parents') &&  !pageData['parents'].nil? && !pageData['parents'].empty?)
+                   # create parent level list for this menu item
+                   pageData['parents'].each do |parentsKey, parentsData|
+                      li += '<li><a href="' + parentsData['alias'] +'">' + parentsData['title'] + '</a>'
+                      
+                          if (pageData['parent_page'] == parentsKey)
+                            li += getUnclesAndChildrens(pageData, pageKey, 2, activeItem)
+                          end
+                      
+                      li += '</li>'
+                   end
+                   
+      else
+            li += getUnclesAndChildrens(pageData, pageKey, 1, activeItem)         
+      end             
+      return li
+    end
+    
+    
+    
+    
+   def getUnclesAndChildrens(pageData, pageKey, startLevel = 1, activeItem)
+      li = ''
+       # parent page is not set, assuming that this is 2 level page, and we need to work only with uncles and childrens
+                      if (pageData.has_key?('uncles') && !pageData['uncles'].empty?)
+                          ## this means that this page is child of parent and we can add new level constructed from uncles
+                            li += '<ul class="level' + startLevel.to_s + '">'
+                                pageData['uncles'].each do |unclesKey, unclesData|
+                                     li += '<li>'
+                                     
+                                         if (unclesKey == activeItem)
+                                            li += '<a class="active" href="' + unclesData['alias'] +'">' + unclesData['title'] + '</a>'
+                                         else
+                                            li += '<a href="' + unclesData['alias'] +'">' + unclesData['title'] + '</a>'
+                                         end 
+                                         
+                                        
+                                         
+                                         
+                                         ## we also should show childrens for this page if any
+                                         if ( unclesKey == pageKey && pageData.has_key?('childrens') && !pageData['childrens'].empty?)
+                                              li += '<ul class="level' + (startLevel+1).to_s + '">'
+                                                  pageData['childrens'].each do |childrenKey, childrenData|
+                                                    li += '<li>'
+                                                    
+                                                    if (childrenKey == activeItem)
+                                                        li += '<a class="active" href="' + childrenData['alias'] +'">' + childrenData['title'] + '</a>'
+                                                    else
+                                                        li += '<a href="' + childrenData['alias'] +'">' + childrenData['title'] + '</a>'
+                                                    end 
+                                                    
+                                                    li += '</li>'                                                  
+                                                  end  
+                                              li += '</ul>'
+                                          end
+                                    li += '</li>'
+                                end
+                            li += '</ul>'         
+                      end
+        return li              
+    end
+    
     
    def buildLeftNavHTML(navigationsArray)
-      result ||= {}
-
-      navigationsArray.each do |pageKey, pageData|
-        li = ''
-
+        result ||= {}
+    
+        navigationsArray.each do |pageKey, pageData|
+          li = ''  
           
-        if (pageData['level'] == 1)
-          li += getLI_forchildrenstHTML(pageData['childrens'], pageKey)
-        elsif(pageData['level'] == 3) 
-          if (pageData.has_key?('parentReference') &&  !pageData['parentReference'].empty?)
-             key = pageData['parentReference']['parentKey']
-             activeLink = pageKey
-             li = get2levelList(pageData['parentReference']['parentKey'], pageData['parentReference']['parentData'][key], activeLink);
-          end 
-        else
-          li = get2levelList(pageKey, pageData, pageKey);
-        end   
+          if (pageData['level'] == 1 )
+              li += firstLevelPageNavHTML(pageData, pageKey)
+          else
+
+            # build navigation for other levels
+            
+            # this is for the last item. we should show all parents chain to it
+              if (pageData.has_key?('parentReference') && !pageData['parentReference'].empty?)
+                      refData ||={}
+                      key     =  pageData['parentReference']['parentKey']
+                      refData = pageData['parentReference']['parentData'][key]
+                      
+                      li += getChainedListWithParents(refData, key, pageKey)     
+              
+            
+              elsif (pageData.has_key?('parents') &&  !pageData['parents'].nil? && !pageData['parents'].empty?)
+                      li += getChainedListWithParents(pageData, pageKey, pageKey)
+                      
+              else
+                      li += getUnclesAndChildrens(pageData, pageKey, 1, pageKey)
+                     
+              end
+            
+              
+          end
+          
+          if (!li.empty?)
+            li = '<ul class="level1">' + li + '</ul>'
+          end
+          result[pageKey] = li
+        end
         
-        result[pageKey] = '<ul>' + li + '</ul>'
-      end  
-      return result
+        return result  
    end
+    
+  
    
    
    # returns 2 level of html list
@@ -203,14 +302,14 @@ module Jekyll
    # pageData array od pages including 2 level
    # activeLink - which link should be set as active. this is equal to the pageKey in all cases except level3
    
-   def get2levelList(pageKey, pageData, activeLink)
+   def getSublevelList(pageKey, pageData, activeLink, level=2)
       if (pageData == nil && pageData.empty?)
-        puts "Empty data"
+        #puts "Empty data"
         return  ''
       end 
        
       if (!pageData.has_key?('uncles')  || pageData['uncles'].empty?)
-        puts "Empty data"
+        #puts "Empty data"
         return  ''
       end   
    
@@ -231,7 +330,8 @@ module Jekyll
         
         # show all childrens if  available
         if (pageData.has_key?('childrens') && !pageData['childrens'].empty?)
-          li_level1 += '<ul class="level2">' + getLI_forchildrenstHTML(pageData['childrens'], activeLink) + '</ul>'
+          #li_level1 += '<ul class="level2">' + getLI_forchildrenstHTML(pageData['childrens'], activeLink) + '</ul>'
+          li_level1 += getSublevelList(uncleKey, pageData['childrens'], activeLink, level+=1);
         end  
       end  
       
@@ -268,14 +368,14 @@ module Jekyll
    
     # This funtion returns array of pages for each page.
     # navHash is array of chaned pages, pageLevel1->pageLeve2... ->pagelevel3
-    # we must have chain for each page, in order to build simple list for left navigation
+    # we must have a chain for each page, in order to build simple list for left navigation
     
     # this function also prepare breadcrumb array
     
    
     def buildNavigation(navHash, parentItemKey = '')
        if (navHash == nil && navHash.empty?)
-        puts "Empty hash "
+        #puts "Empty hash "
         return  
        end  
     
@@ -301,34 +401,41 @@ module Jekyll
          $leftNavigation[itemKey]['childrens'] ||= {}
          
          if (parentItemKey != '')
+             # we need pages which are in the same lavel as current,
+             # best way to do this is to get parent level page children  
+             $leftNavigation[itemKey]['uncles'] ||= {} 
            
-         # we need pages which are in the same lavel as current,
-         # best way to do this is to get parent level page children  
-         $leftNavigation[itemKey]['uncles'] ||= {} 
-          if (!$leftNavigation[parentItemKey].empty?)
-          $leftNavigation[itemKey]['uncles'] = $leftNavigation[parentItemKey]['childrens']
-          end
+            if (!$leftNavigation[parentItemKey].empty?)
+              $leftNavigation[itemKey]['uncles'] = $leftNavigation[parentItemKey]['childrens']
+            end
+            
+            
+            # also for pages with level 2+ we need information about parents
+            $leftNavigation[itemKey]['parents'] ||= {}
+            $leftNavigation[itemKey]['parents'] = $leftNavigation[parentItemKey]['uncles']
+            
+            
          end
-        
-
+         
           
           # current page properties
              $leftNavigation[itemKey]['alias'] = pageData['alias']
              $leftNavigation[itemKey]['title'] = pageData['title']
              $leftNavigation[itemKey]['level'] = pageData['level']
+             $leftNavigation[itemKey]['parent_page'] = parentItemKey
              
              
 
            if (!pageData.empty? && !pageData.has_key?('childrens'))
-            #puts "Empty hash level2. Key=" + itemKey
-            # for the 3-rd level pages we must set their parent reference
-            if (pageData['level'] == 3)
-              $leftNavigation[itemKey]['parentReference'] ||= {}
-              $leftNavigation[itemKey]['parentReference']['parentKey'] = parentItemKey
-              $leftNavigation[itemKey]['parentReference']['parentData'] ||= {}
-              $leftNavigation[itemKey]['parentReference']['parentData'][parentItemKey] = $leftNavigation[parentItemKey]
-            end
-            next  
+            # for the 3-rd and 4-th level pages we must set their parent reference
+              if (pageData['level'] == (CONST_MaxSubLevels - 2) || pageData['level'] == (CONST_MaxSubLevels - 1))
+                $leftNavigation[itemKey]['parentReference'] ||= {}
+                $leftNavigation[itemKey]['parentReference']['parentKey'] = parentItemKey
+                $leftNavigation[itemKey]['parentReference']['parentData'] ||= {}
+                $leftNavigation[itemKey]['parentReference']['parentData'][parentItemKey] = $leftNavigation[parentItemKey]
+              end  
+ 
+              next  
            end  
             
         
@@ -339,6 +446,7 @@ module Jekyll
                $leftNavigation[itemKey]['childrens'][pageKey]['alias'] = pages['alias']
                $leftNavigation[itemKey]['childrens'][pageKey]['title'] = pages['title']
                $leftNavigation[itemKey]['childrens'][pageKey]['level'] = pages['level']
+               $leftNavigation[itemKey]['childrens'][pageKey]['parent_page'] = itemKey
            end 
 
            #recursively call for all 2 level pages
@@ -346,12 +454,19 @@ module Jekyll
        end
     end
     
+
+    
+    
     
     def createResultArray(nav_pages)
       $result = {}
+      
+      if (nav_pages.nil?)
+        return $result
+      end
+      
      nav_pages.each do |k, arr|
   
-        # puts arr
         itemKey = $CfeUtils.removeUnvantedChars(k)
      
         $result[k] ||= {}
@@ -364,48 +479,45 @@ module Jekyll
         
         if (arr['own_url']['level'] == 1)
             if (arr.has_key?('childrens') && !arr['childrens'].empty?)
-              
               $result[k]['childrens'] ||= {}
               
-              
-                arr['childrens'].each do |level1_k, level1_p|
-                  
-                
-                  $result[k]['childrens'][level1_k] ||={}
-                  $result[k]['childrens'][level1_k]['title'] = level1_p['own_url']['title']
-                  $result[k]['childrens'][level1_k]['alias'] = level1_p['own_url']['alias']
-                  $result[k]['childrens'][level1_k]['level'] = level1_p['own_url']['level'];
-                  
-
-                      if (level1_p.has_key?('childrens') && !level1_p['childrens'].empty?)
-                    
-                          $result[k]['childrens'][level1_k] ||= {}
-                    
-                          level1_p['childrens'].each do |level2_k, level2_p|
-                              $result[k]['childrens'][level1_k]['childrens'] ||= {}
-                              $result[k]['childrens'][level1_k]['childrens'][level2_k] ||= {}
-                              $result[k]['childrens'][level1_k]['childrens'][level2_k]['title'] = level2_p['own_url']['title']
-                              $result[k]['childrens'][level1_k]['childrens'][level2_k]['alias'] = level2_p['own_url']['alias']
-                              $result[k]['childrens'][level1_k]['childrens'][level2_k]['level'] = level2_p['own_url']['level']
-
-                          
-                              if (level2_p.has_key?('childrens') && !level2_p['childrens'].empty?)
-                                puts "--------------------------------------------------------"
-                                puts "WARNING: Page: " +  level2_k + " is 3 level page and it has some childrens (sublevels)." 
-                                puts "Please review your document structure. All sublevels after level 3 will be ignored "  
-                                puts "--------------------------------------------------------"
-                              end
-                          end
-                      end  #first level if
-                end  # first level loop
+               createNewLevel(arr, $result[k]['childrens'], $result[k]['level'])
             end ## second if
         end ## first if   
       end  #loop
       
       return $result
+    end # func
+    
+    
+    
+    def createNewLevel(arr, result_array,  currentLevel)
+
+            if (currentLevel == CONST_MaxSubLevels) 
+              puts "--------------------------------------------------------"
+              puts "WARNING: Page: " +  arr['alias'] + " is " + CONST_MaxSubLevels.to_s +  "level page and it has some childrens (sublevels)." 
+              puts "Please review your document structure. All sublevels after level " + (CONST_MaxSubLevels - 1).to_s + " will be ignored "  
+              puts "--------------------------------------------------------"
+            end                
+                
+                if (!arr.has_key?('childrens') || arr['childrens'].empty?)
+                  return
+                end
+          
+                arr['childrens'].each do |level1_k, level1_p|
+                  
+                  result_array[level1_k] ||={}
+                  result_array[level1_k]['title'] = level1_p['own_url']['title']
+                  result_array[level1_k]['alias'] = level1_p['own_url']['alias']
+                  result_array[level1_k]['level'] = level1_p['own_url']['level']
+
+                      if (level1_p.has_key?('childrens') && !level1_p['childrens'].empty?)
+                          result_array[level1_k]['childrens'] ||= {}
+                          createNewLevel(level1_p, result_array[level1_k]['childrens'],   result_array[level1_k]['level'])
+                      end  #first level if
+                end  # first level loop
+              
     end
-    
-    
     
    end #class
 end
