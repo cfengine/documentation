@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Tutorial - Custom Inventory
+title: Custom Inventory
 sorting: 15
 published: true
 tags: [Examples, Tutorials, Inventory, Enterprise]
@@ -10,19 +10,19 @@ This tutorial will show you how to add custom inventory attributes that can be
 leveraged in policy and reported on in the CFEngine Enterprise Mission Portal.
 For a more detailed overview on how the inventory system works please reference
 [CFEngine 3 inventory modules][The Policy
-Framework#cfengine-3-inventory-modules].
+Framework#CFEngine 3 Inventory Modules].
 
 ## Overview ## 
+
 This tutorial provides instructions for the following:
 
-* [Choose an attribute][Custom Inventory#choose-an-attribute-to-inventory]
+* [Choose an attribute][Custom Inventory#Choose an Attribute to Inventory]
 
-* [Create and deploy inventory policy][Custom
-  Inventory#create-and-deploy-inventory-policy]
+* [Create and deploy inventory policy][Custom Inventory#Choose an Attribute to Inventory]
 
-* [Run Reports][Custom Inventory#run-reports]
+* [Run Reports][Custom Inventory#Run Reports]
 
-## Choose an attribute to inventory
+## Choose an Attribute to Inventory ##
 
 Writing inventory policy is incredibly easy. Simply add the `inventory` and
 `attribute_name=` tags to any variable or [namespace scoped
@@ -45,7 +45,7 @@ directory are automatically available to all hosts.
 
 [Back to top of page.][Custom Inventory#Overview]
 
-## Create and deploy inventory policy
+## Create and Deploy Inventory Policy ##
 
 Now that each of your hosts has access to a data source that provides the Owner
 information we will write an inventory policy to report that information.
@@ -150,10 +150,7 @@ specific policy entry (-f) and activating only a specific bundle (-b). The
 inform output helps me confirm that my hubs owner is discovered from our CSV
 properly.
 
-
-[Back to top of page.][Custom Inventory#Overview]
-
-## Run Reports
+## Run Reports ##
 
 Once you have integrated the policy into promises.cf it will be distributed and
 run by all agents. Once the hub has had a chance to collect reports the 'Owner'
@@ -170,5 +167,3 @@ populated as expected.
 
 ![custom inventory report](tutorials_custom_inventory_report.jpg)
 
-
-[Back to top of page.][Custom Inventory#Overview]
