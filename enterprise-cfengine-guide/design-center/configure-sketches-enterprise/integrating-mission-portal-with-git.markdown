@@ -148,6 +148,6 @@ until reports are collected is **15 minutes**:
 
 ## Access control and security
 
-Go to [Controlling Access to the Design Center UI][Controlling Access to the Design Center UI]
+Go to [Controlling Access to the Design Center UI][Design Center Access Control]
 to learn how to allow or limit the Mission Portal user's ability
 to commit to the git repository and make changes to the hosts.
