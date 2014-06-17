@@ -1,4 +1,3 @@
-
 body common control
 {
       bundlesequence => { "setvars" };
@@ -58,4 +57,3 @@ bundle agent setvars
       edit_line => set_variable_values("setvars.rhs");
 
 }
-
