@@ -24,11 +24,6 @@ make through the **Design Center App** can be viewed in the Git commit log.
 
 ## Advanced Topics
 
-[Sketches Available in the Mission Portal][Sketches Available in the Mission Portal]
-Sometimes, new sketches must be added to the **Design Center App**. This section shows
-which directory controls the sketches that are available in the **Design Center App** and it
-describes how to add or remove sketches from the app.
-
 [Sketch Flow in the CFEngine Enterprise][Sketch Flow in CFEngine Enterprise]
 This section provides a detailed look at the file structure and services that make up the
 **Design Center App**.
