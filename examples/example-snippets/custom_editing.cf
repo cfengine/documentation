@@ -13,6 +13,4 @@ bundle agent modifying_managed_file
       create => "true",
       edit_line => append_if_no_lines("modifying_managed_file.data"),
       action => if_elapsed("60");
-
-
 }

@@ -18,42 +18,30 @@ bundle knowledge dummy
   topics:
 }
 
-
 body common control
 {
       bundlesequence => { "databases" };
 }
 
 bundle agent databases
-
 {
       #commands:
-
-
       #  "/usr/bin/createdb cf_topic_maps",
-
-
       #        contain => as_user("mysql");
 
-
   databases:
-
       "knowledge_bank/topics"
 
       database_operation => "create",
       database_type => "sql",
-      database_columns => { 
+      database_columns => {
                             "topic_name,varchar,256",
                             "topic_comment,varchar,1024",
                             "topic_id,varchar,256",
                             "topic_type,varchar,256",
-                            "topic_extra,varchar,26" 
+                            "topic_extra,varchar,26"
       },
-
       database_server => myserver;
-
-
-
 }
 
 ################################################
@@ -67,6 +55,7 @@ body database_server myserver
       db_server_host => "localhost";
       db_server_type => "postgres";
       db_server_connection_db => "postgres";
+
     any::
       db_server_owner => "root";
       db_server_password => "";
