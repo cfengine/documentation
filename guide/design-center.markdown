@@ -51,7 +51,7 @@ tool.
 
 * third-part integrators can use the Design Center API from the
 command line or through the CFEngine Enterprise API. For more information, see [The Design Center API][The Design Center API].
-(??? LINK TO Enterprise DC API depends on https://dev.cfengine.com/issues/6011 ???)
+<!-- (??? LINK TO Enterprise DC API depends on https://dev.cfengine.com/issues/6011 ???) -->
 
 
 ## The Design Center Sketch Workflow

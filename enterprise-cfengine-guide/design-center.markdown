@@ -12,7 +12,7 @@ The Design Center UI allows authorized infrastructure engineers to configure, de
 
 CFEngine experts can write their own sketches to address their exact needs. They can be hosted in a private Design Center repository so that other administrators, developers and line-of-business users can again configure, deploy, and monitor them without detailed CFEngine knowledge.
 
-For more information, see [Write a new Sketch][Write a new Sketch]
+For more information, see [Write a new Sketch][]
 
 ### Version Control for Sketches ###
 
@@ -58,4 +58,4 @@ Note: *Sketches* can be activated multiple times with different configurations a
 * [Write a new Sketch][Write a new Sketch]
 * [Deploy your first Policy (Enterprise)][Deploy your first Policy]
 * [Version Control and Configuration Policy (Enterprise)][Best Practices#Version Control and Configuration Policy]
-* [Write a new Sketch (Enterprise and Community)][Write a new Sketch]
+* [Write a new Sketch][]
