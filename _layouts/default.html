@@ -16,7 +16,10 @@
                         <div class="article">
                             {% if page.title  %}
                             <div class="article_title">
-                                <a class="anchor" href=""><i class="fa fa-link"></i></a><h1 id="top">{{page.title}}</h1>
+                                <h1 id="top">
+                                    <a class="anchor" href=""><i class="fa fa-link"></i></a>
+                                    {{page.title}}
+                                </h1>
                             </div>
                             {% endif %}
                             <div id="TOCbox_wrapper">
