@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installing CFEngine on RHEL Using AWS
+title: Using Amazon Web Services
 published: true
 sorting: 10
 tags: [getting started, installation, enterprise free, aws, rhel]

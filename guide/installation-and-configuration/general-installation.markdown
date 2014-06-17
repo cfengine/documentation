@@ -99,9 +99,9 @@ Although most install procedures follow the same general workflow, there are sev
 
 * [Installing Enterprise for Production][Installing Enterprise for Production]
 * Install and test the latest version using our [native version][Installing Enterprise 25 Free], for free!
-* Installing CFEngine on virtual machine instances using [Amazon Web Services' (AWS) EC2 service][Installing CFEngine on RHEL Using AWS]
+* Installing CFEngine on virtual machine instances using [Amazon Web Services' (AWS) EC2 service][Using Amazon Web Services]
 	* This is especially useful for people running Windows on their workstation or laptop.
-* Install and test the latest version using our pre-packaged [Vagrant environment][Installing Enterprise Vagrant Environment]
+* Install and test the latest version using our pre-packaged [Vagrant environment][Using Vagrant]
 * [Installing CFEngine Community Edition][Installing Community]
 
 ## Next Steps ##
