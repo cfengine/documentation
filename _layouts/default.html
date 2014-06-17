@@ -1,39 +1,49 @@
 {% include head.html %}
 <body>
-    {% include header_nav.html %}
-    <div class="wrapper">
-    {% include left_col.html %}
-        <div id="content_col">
-              {% include breadcrumbs.html %}
-            <article>
-                {% if page.tags != nil %}
-                <div id="tags">
-                    <ul>
-                        <li><span>Tags:</li>
-                        {% for tag in page.tags %}
-                        <li>
-                            <a href="tags/{{ tag | cleanString | downcase}}.html">{{ tag }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                    <div class="clear"></div>
+    <div id="full_container">
+        {% include header_nav.html %}
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            {% include left_col.html %} 
+                <div id="content_col">
+                      {% include breadcrumbs.html %}
+                    <article>
+
+                        {% comment %} Additional TOC which is visible only if user print page. Does not apply to PDF {% endcomment %}
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            {% if page.title  %}
+                            <div class="article_title">
+                                <a class="anchor" href=""><i class="fa fa-link"></i></a><h1 id="top">{{page.title}}</h1>
+                            </div>
+                            {% endif %}
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox">Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            {{ content }}
+                        </div>
+                        {% if page.tags != nil %}
+                        <div id="tags">
+                            <ul>
+                                {% for tag in page.tags %}
+                                <li>
+                                    <a href="tags/{{ tag | cleanString | downcase}}.html">{{ tag }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        {% endif %}
+                    </article>
                 </div>
-                {% endif %}
-
-
-                {% comment %} Additional TOC which is visible only if user print page. Does not apply to PDF {% endcomment %}
-                <div id="print_TOC_wrapper">Table of contents<br>
-                     <div id="print_TOC"></div>
-                </div>
-
-                <h1 id="top">{{page.title}}</h1>
-                    {{ content }}
-            </article>
+            </div>
         </div>
+
+        {% include footer.html %}
+
     </div>
-
-    {% include footer.html %}
-
-
 </body>
 </html>

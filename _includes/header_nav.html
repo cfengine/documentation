@@ -1,50 +1,54 @@
 <header>
     <div class="wrapper">
-        <div id="logo">
-            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="https://docs.cfengine.com/docs/3.6/index.html" selected>Version 3.6</option>
+                       <option value="https://docs.cfengine.com/docs/3.5/index.html">Version 3.5</option>
+                       <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                       <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
         </div>
-        <div id="top_form">
-            <div id="top_version_wrapper">
-                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                    <option value="https://docs.cfengine.com/docs/3.6/index.html" selected>Version 3.6</option>
-                    <option value="https://docs.cfengine.com/docs/3.5/index.html">Version 3.5</option>
-                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
-                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
-                </select>
+        
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/CFEngine_Logo-01.png" alt="CFEngine Homepage"></a>
             </div>
-            <div class="top_search_form">
-                <form id="cse-search-box" action="search.html">
-                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
-                    <input type="hidden" name="ie" value="UTF-8" />
-                    <div class="formbody">
-                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
-                    </div>
-                </form>
-            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" {% if  page.categories[0] == 'index' %} class="navselected" {% endif %}>Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" {% if page.categories[0] == "guide" %} class="navselected" {% endif %}>Guide</a>
+                    </li>
+                    <li>
+                        <a href="{{site.baseurl}}enterprise-cfengine-guide.html" {% if page.categories[0] == "enterprise-cfengine-guide" %} class="navselected" {% endif %}>CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" {% if page.categories[0] == 'examples' %} class="navselected" {% endif %}>Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" {% if page.categories[0] == 'reference' %} class="navselected" {% endif %}>Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </header>
-<nav id="nav_wrapper">
-    <div class="wrapper">
-        <ul>
-            <li>
-                <a href="index.html" {% if  page.categories[0] == 'Home' %} class="navselected" {% endif %}>Home</a>
-            </li>
-            <li>
-                <a href="guide.html" {% if page.categories[0] == "Guide" %} class="navselected" {% endif %}>Guide</a>
-            </li>
-	    <li>
-                <a href="{{site.baseurl}}enterprise-cfengine-guide.html" {% if page.categories[0] == "CFEngine Enterprise" %} class="navselected" {% endif %}>CFEngine Enterprise</a>
-            </li>
-            <li>
-                <a href="examples.html" {% if page.categories[0] == 'Examples' %} class="navselected" {% endif %}>Examples</a>
-            </li>
-            <li>
-                <a href="reference.html" {% if page.categories[0] == 'Reference' %} class="navselected" {% endif %}>Reference</a>
-            </li>
-            <li>
-                <a href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
-            </li>
-        </ul>
-    </div>
-</nav>
