@@ -267,8 +267,8 @@ desired result.
 
 **Description:** Restrict edit_line promise to specific section
 
-Restrict edits to a specific region of a file based on [`select_start`]
-and [`select_end`] regular expressions. If the beginning and ending regular
+Restrict edits to a specific region of a file based on `select_start`
+and `select_end` regular expressions. If the beginning and ending regular
 expressions match more than one region only the first region will be
 selected for editing.
 
