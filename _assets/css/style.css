@@ -360,7 +360,6 @@ article {
     .article_title {
         width: 477px;
         display:inline-block;
-        margin-left: -28px;
     }
     
     .article_title i.fa-link {
@@ -369,8 +368,6 @@ article {
         line-height: 18px;
         visibility: hidden;
         display: inline-block;
-        vertical-align: text-top;
-        margin-right: 10px;
         position:relative;
         top:-3px;
     }
@@ -442,6 +439,10 @@ article {
     
     .article a:hover {
         color:#F5821F;
+    }
+    
+    .article a.anchor {
+        margin-left: -26px;
     }
     
     .article ul {
