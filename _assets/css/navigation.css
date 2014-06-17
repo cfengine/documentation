@@ -147,15 +147,25 @@
     text-transform: none;
 }
 
-#left_col .level3 li:before {
+#left_col ul.level3 {
+    padding: 0 14px !important;
+}
+
+#left_col .level3 li {
     margin-left: 28px;
-    margin-right: 3px;
+}
+
+#left_col .level3 li:before {
+    margin-left: -13px;
+    margin-right: 5px;
     font-family: FontAwesome;
     content: "\f101";
+    color: #4386A5;
 }
 
 #left_col ul.level3 > li a,
 #left_col ul.level3 > li span {
+  display: inline;
   padding: 0;
 }
 
