@@ -3,7 +3,7 @@
 
 body common control
 {
-bundlesequence => { "hello" };
+  bundlesequence => { "hello" };
 }
 
 # soft promises
@@ -11,9 +11,7 @@ bundlesequence => { "hello" };
 
 bundle agent hello
 {
-reports:
-
- linux::
-
-   "Hello world!";
+  reports:
+    linux::
+      "Hello world!";
 }
