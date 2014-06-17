@@ -69,7 +69,7 @@ module Jekyll
       # add some properties to tags category page
       self.data["grouptype"] = type
       self.data["tag"] = val
-      self.data["alias"] = 'tags/'+ val.downcase.gsub(/[^a-z0-9_-]+/i, "-") +'.html';
+      self.data["alias"] = 'tags-'+ val.downcase.gsub(/[^a-z0-9_-]+/i, "-") +'.html';
       self.data["published"] = true
       self.data["layout"] = 'default'
     end
