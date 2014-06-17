@@ -43,7 +43,7 @@ PuTTYgen is used to generate the encryption key pair while PuTTY, a command-line
 a _host_ in CFEngine terminology.
 
 PuTTYgen is used only when setting up a new client machine on the CFEngine hub. The CFEngine _hub_ will already 
-have an encrypted _key-pair_ that was created when setting up the _hub_. (See the tutorial, [Installing CFEngine on RHEL Using AWS][Installing CFEngine on RHEL Using AWS])
+have an encrypted _key-pair_ that was created when setting up the _hub_. (See the tutorial, [Installing CFEngine on RHEL Using AWS][Using Amazon Web Services])
 
 The following steps describe how to get the client machine, up and running using PuTTYgen and PuTTY. There are two distinct 
 steps to this process: 
