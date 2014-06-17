@@ -128,7 +128,9 @@ We ready now ready to install the CFEngine software on both the server and clien
 Run the following script on your designated Policy Server (hub), the virtual machine with the
 configured firewall from earlier steps:
 
-`$ wget http://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh && sudo bash ./quick-install-cfengine-enterprise.sh hub`
+```console
+$ wget http://s3.amazonaws.com/cfengine.package-repos/quickinstall/quick-install-cfengine-enterprise.sh && sudo bash ./quick-install-cfengine-enterprise.sh hub
+```
 
 This script installs the latest CFEngine Enterprise Policy Server on your server machine.
 
@@ -155,8 +157,9 @@ Upon successful completion, a confirmation message appears: "Bootstrap to '172.3
 * Ensure you are logged into the host machine setup earlier.
 * Install CFEngine client version using the following:
 
-`$ wget http://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh && sudo`
-`$ bash ./quick-install-cfengine-enterprise.sh client`
+```console
+$ wget http://s3.amazonaws.com/cfengine.package-repos/quickinstall/quick-install-cfengine-enterprise.sh && sudo bash ./quick-install-cfengine-enterprise.sh agent
+```
 
 Note: The installation will work on 64-bit and 32-bit client machines (the host requires a 64-bit machine).
 
