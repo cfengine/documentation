@@ -1,10 +1,8 @@
 ---
 layout: default
-title: Tutorial: Custom Inventory
+title: Tutorial - Custom Inventory
 sorting: 15
-categories: [Examples, Tutorials, inventory]
 published: true
-alias: examples-tutorials-custom_inventory.html
 tags: [Examples, Tutorials, Inventory, Enterprise]
 ---
 
@@ -14,7 +12,7 @@ For a more detailed overview on how the inventory system works please reference
 [CFEngine 3 inventory modules][The Policy
 Framework#cfengine-3-inventory-modules].
 
-## Overview 
+## Overview ## 
 This tutorial provides instructions for the following:
 
 * [Choose an attribute][Custom Inventory#choose-an-attribute-to-inventory]
