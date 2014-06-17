@@ -10,16 +10,13 @@ sorting: 10
 	
 ## Installation ##
 
-### Installing Enterprise Licenses
+The [General Installation][General Installation] instructions provide the detailed steps for installing CFEngine, and are the same for CFEngine Enterprise addition with the exception of license keys (if applicable), as well as post-installation and configuration.
+
+### Installing Enterprise Licenses ###
 
 Before you begin, you should have your license key, unless you only
 plan to use the free 25 node license. The installation instructions
 will be provided with the key.
-
-### Packages
-
-The CFEngine Enterprise packages are native packages, installed with
-your platform's package manager in the usual ways.
 
 ## Post-Install Configuration ##
 
