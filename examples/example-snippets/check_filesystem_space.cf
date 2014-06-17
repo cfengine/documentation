@@ -1,23 +1,14 @@
 body common control
-
 {
       bundlesequence  => { "example" };
 }
-
 ###########################################################
 
-
 bundle agent example
-
-{     
+{
   vars:
-
-      "free" int => diskfree("/tmp"); 
+      "free" int => diskfree("/tmp");
 
   reports:
-
-    cfengine_3::
-
       "Freedisk $(free)";
-
 }

@@ -1,6 +1,6 @@
   files:
 
-"/var/cfengine/inputs" 
+"/var/cfengine/inputs"
 
 handle => "update_policy",
 perms => m("600"),
@@ -9,7 +9,7 @@ depth_search => recurse("inf"),
 file_select => input_files,
 action => immediate;
 
-"/var/cfengine/bin" 
+"/var/cfengine/bin"
 
 perms => m("700"),
 copy_from => u_scp("/usr/local/sbin","localhost"),
@@ -17,4 +17,3 @@ depth_search => recurse("inf"),
 file_select => cf3_files,
 action => immediate,
 classes => on_change("reload");
-

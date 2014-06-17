@@ -1,7 +1,7 @@
 body common control
 {
       bundlesequence  => { "my_recursive_copy" };
-      inputs => { "cfengine_stdlib.cf" };
+      inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 
 bundle agent my_recursive_copy

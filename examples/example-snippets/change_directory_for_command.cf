@@ -1,11 +1,8 @@
 body common control
-
 {
       bundlesequence  => { "example" };
 }
-
 ###########################################################
-
 
 body contain cd(dir)
 {
@@ -16,7 +13,6 @@ body contain cd(dir)
 bundle agent example
 {
   commands:
-
       "/bin/pwd"
       contain => cd("/tmp");
 }

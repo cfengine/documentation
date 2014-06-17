@@ -2,20 +2,14 @@ body common control
 {
       bundlesequence => { "test" };
 }
-
 bundle agent test
 {
   files:
-
     freebsd::
-
       "/tmp/newfile"
-
       create => "true",
       perms => setbsd;
-
 }
-
 
 body perms setbsd
 {
