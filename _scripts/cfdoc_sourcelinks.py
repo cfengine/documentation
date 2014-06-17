@@ -54,12 +54,15 @@ def addLinkToSource(file_name,config):
 		lines = out_file.readlines()
 		out_file.close()
 		unresolved_link = re.compile("\\s?\\[.+?\\]\\[.*?\\]\\s")
+		unexpanded_macro = re.compile("\\[%CFEngine_.*%\\]")
 	
 		out_file = open(html_file, "w")
 		for line in lines:
 			line = line.replace("\">markdown source</a>]", source_file + "\">markdown source</a>]")
 			if unresolved_link.match(line) != None:
 				print "Unresolved link in '%s', line '%s'\n" % (file_name, line)
+			if unexpanded_macro.match(line) != None:
+				print "Unexpanded macro in '%s', line '%s'\n" % (file_name, line)
 			out_file.write(line)
 		out_file.close()
 	except:
