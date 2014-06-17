@@ -19,7 +19,8 @@ body {
 
 #full_container {
     min-height: 100%;
-    position: relative;
+    width: 100%;
+    position: absolute;
 }
 
 a:link {
@@ -354,7 +355,6 @@ th {
 
 article {
     margin-top: 20px;
-    margin-bottom: 20px;
     font-weight: 300;
 }
     .article_title {
