@@ -13,6 +13,7 @@
 [github design-center]: https://github.com/cfengine/design-center "Design-Center repository on GitHub"
 [evaluate cfengine]: https://cfengine.com/evaluate-enterprise "Evaluate CFEngine"
 [cfengine getting started]: https://cfengine.com/enterprise-getting-started "Get started in 10 minutes"
+[LMDB]: http://symas.com/mdb/ "Symas Lightning Memory-Mapped Database"
 [vim_cf3]: https://github.com/neilhwatson/vim_cf3 "CFEngine 3 vim integration"
 [community package repositories]: http://cfengine.com/cfengine-linux-distros "Community package repositories"
 [community download page]: https://cfengine.com/inside/myspace "Community package download page"
