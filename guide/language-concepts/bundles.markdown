@@ -10,7 +10,7 @@ A bundle is a collection of promises. They allow to group related promises
 together into named building blocks that can be thought of as "subroutines" in 
 the CFEngine promise language. A bundle that groups a number of promises 
 related to configuring a web server or a file system would be named 
-"webserver" or "filesystem", respectively.
+"webserver" or "filesystem," respectively.
 
 Most promise types are specific to a particular kind of interpretation that 
 requires a typed interpreter - the bundle *type*. Bundles belong to the agent 
@@ -124,18 +124,31 @@ with the current bundle name.
 
 ### Scope
 
-Variables and classes defined inside bundles are not directly visible outside 
-those bundles. All [variables][variables] in 
-CFEngine are globally accessible. However, if you refer to a variable by 
-‘$(unqualified)’, then it is assumed to belong to the current bundle. To 
-access any other (scalar) variable, you must qualify the name, using the name 
-of the bundle in which it is defined:
+All [variables][variables] in CFEngine are globally accessible. If you
+refer to a variable by ‘$(unqualified)’, then it is assumed to belong
+to the current bundle. To access any other (scalar) variable, you must
+qualify the name, using the name of the bundle in which it is defined:
 
     $(bundle_name.qualified)
 
-Bundles of type `common` may contain common promises. 
-[Classes][classes and decisions] defined in `common` bundles 
-have global scope.
+The value of the variable depends on evaluation order, which is not
+controllable by the user. Thus you should not assume that you can
+evaluate a bundle twice with different variables and get variables
+from it that correspond to the second evaluation.  In other words, if you have:
+
+```cf3
+bundle agent mybundle(x)
+{
+  vars:
+  "y" string => $(x);
+}
+```
+
+and call `mybundle(1)` and `mybundle(2)`, the variable `y` could be `1` or `2`.
+
+[Classes][classes and decisions] defined inside `agent` bundles are not visible outside 
+those bundles.  [Classes][classes and decisions] defined in `common` bundles 
+have global scope, so they are visible everywhere.
 
 Note that namespaced bundles work exactly the same way as
 non-namespaced bundles (which are actually in the `default`

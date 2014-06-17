@@ -78,6 +78,6 @@ This promise bodies configures the `bundlesequence` to execute on a cf-agent.
     }
 ```
 
-This promise bodies defines the clients allowed to connect to a cf-serverd. 
+This promise body defines the clients allowed to connect to a cf-serverd. 
 For more information, see the reference documentation about the [CFEngine 
 Agents][Components and Common Control]

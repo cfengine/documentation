@@ -30,7 +30,7 @@ The zeroth value is the entire string matched by the total expression. The
 first value is the fragment matched by the first parenthesis, and so on.
 
 Each time CFEngine matches a string, these values are assigned to a special 
-variable context $(match.n). The fragments can be referred to in the remainder 
+variable context `$(match.n)`. The fragments can be referred to in the remainder
 of the promise. There are two places where this makes sense. One is in pattern 
 replacement during file editing, and the other is in searching for files.
 

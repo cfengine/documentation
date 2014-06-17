@@ -105,7 +105,7 @@ have global scope).
 ### When to use variables in common bundles
 
 * For rationality, if the variable does not belong to any particular bundle, because it is 
-used elsewhere. (Qualified variable names such as $(mybundle.myname) are always globally 
+used elsewhere. (Qualified variable names such as `$(mybundle.myname)` are always globally 
 accessible, so this is a cosmetic issue.)
 
 ### When to use variables in local bundles
@@ -113,4 +113,4 @@ accessible, so this is a cosmetic issue.)
 * If they are not needed outside the bundles.
 * If they are used for iteration (without qualified scope).
 * If they are tied to a specific aspect of system maintenance represented by the bundle, so 
-that accessing $(bundle.var) adds clarity.
+that accessing `$(bundle.var)` adds clarity.

@@ -21,9 +21,9 @@ for details.
 
 When `/var/cfengine/masterfiles` is backed by VCS, it may be useful to have an 
 agent policy that periodically checks the VCS server for the latest version 
-fetches any updates.
+fetches any updates.  Again, note that CFEngine Enterprise has this built-in.
 
-After installing CFEngine on the policy server, before bootstrapping the agent 
+After installing CFEngine on the policy server and before bootstrapping the agent 
 to itself, we create a git clone of our masterfiles.
 
     $ git clone git@github.com:upstream/masterfiles.git /var/cfengine/masterfiles/

@@ -20,8 +20,8 @@ compliance management, reporting and business integration, and tools for
 handling the necessary complexity.
 
 In a CFEngine Enterprise installation, the CFEngine Server aggregates 
-information about the environment in a centralized database. Data is collected 
-every 5 minutes from all bootstrapped hosts, and includes information about:
+information about the environment in a centralized database. By default data is collected 
+every 5 minutes from all bootstrapped hosts and includes information about:
 
 * logs about promises kept, not kept and repaired
 * current host contexts and classifications
@@ -29,10 +29,10 @@ every 5 minutes from all bootstrapped hosts, and includes information about:
 * software information
 * file changes
 
-This data can be mined using SQL queries, and then be used for such issues as inventory 
+This data can be mined using SQL queries and then used for inventory 
 management, compliance reporting, system diagnostics, and capacity planning.
 
-Access to the data is provided through two ways:
+Access to the data is provided through:
 
 * The [Mission Portal console][Reporting UI]
 * The [Enterprise Report API][Enterprise API].

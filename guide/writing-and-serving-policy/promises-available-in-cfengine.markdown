@@ -10,6 +10,7 @@ tags: [overviews, promises]
 
 Meta-data promises have no internal function. They are intended to be used to represent arbitrary information about promise bundles. Formally, meta promises are implemented as variables, and the values map to a variable context called bundlename_meta. The values can be used as variables and will appear in CFEngine Enterprise variable reports.
 
+See `meta`.
 
 ### vars - a variable, representing a value ###
 
@@ -17,13 +18,15 @@ Variables in CFEngine are defined as promises that an identifier of a certain ty
 
 The allowed characters in variable names are alphanumeric (both upper and lower case) and undercore. Associative arrays using the string type and square brackets [] to enclose an arbitrary key are being deprecated in favor of the data variable type.
 
+See `vars`.
 
 ### defaults - a default value for bundle parameters ###
 
 Defaults promises are related to variables. If a variable or parameter in a promise bundle is undefined, or its value is defined to be invalid, a default value can be promised instead.
 
-CFEngine does not use Perl semantics: i.e. undefined variables do not map to the empty string, they remain as variables for possible future expansion. Some variables might be defined but still contain unresolved variables. To handle this you will need to match the $(abc) form of the variables.
+CFEngine does not use Perl semantics: i.e. undefined variables do not map to the empty string, they remain as variables for possible future expansion. Some variables might be defined but still contain unresolved variables. To handle this you will need to match the `$(abc)` form of the variables.
 
+See `defaults`.
 
 ### classes - a class, representing a state of the system ###
 
@@ -31,6 +34,7 @@ Classes promises may be made in any bundle. Classes that are set in common bundl
 
 Note: The term class and context are sometimes used interchangeably.
 
+See `classes`.
 
 ### users - add or remove users ###
 
@@ -42,16 +46,19 @@ A bundle can be associated with a user promise, such as when a user is created i
 
 History: Introduced in CFEngine 3.6.0
 
+See `users`.
 
 ### files - configure a file ###
 
 Files promises are an umbrella for attributes of files. Operations fall basically into three categories: create, delete and edit.
 
+See `files`.
 
 ### packages - install a package ###
 
 CFEngine supports a generic approach to integration with native operating support for packaging. Package promises allow CFEngine to make promises regarding the state of software packages conditionally, given the assumption that a native package manager will perform the actual manipulations. Since no agent can make unconditional promises about another, this is the best that can be achieved.
 
+See `packages`.
 
 ### guest_environments ###
 
@@ -59,16 +66,19 @@ Guest environment promises describe enclosed computing environments that can hos
 
 CFEngine currently seeks to add convergence properties to existing interfaces for automatic self-healing of guest environments. The current implementation integrates with libvirt, supporting host virtualization for Xen, KVM, VMWare, etc. Thus CFEngine, running on a virtual host, can maintain the state and deployment of virtual guest machines defined within the libvirt framework. Guest environment promises are not meant to manage what goes on within the virtual guests. For that purpose you should run CFEngine directly on the virtual machine, as if it were any other machine.
 
+See `guest_environments`.
 
 ### methods - take on a whole bundle of other promises ###
 
 Methods are compound promises that refer to whole bundles of promises. Methods may be parameterized. Methods promises are written in a form that is ready for future development. The promiser object is an abstract identifier that refers to a collection (or pattern) of lower level objects that are affected by the promise-bundle. Since the use of these identifiers is for the future, you can simply use any string here for the time being.
 
+See `methods`.
 
 ### processes - start or terminate processes ###
 
 Process promises refer to items in the system process table, i.e., a command in some state of execution (with a Process Control Block). Promiser objects are patterns that are unanchored, meaning that they match line fragments in the system process table.
 
+See `processes`.
 
 ### services - start or stop services ###
 
@@ -82,16 +92,19 @@ The operating system may start a service at boot time, or it can be started by C
 
 CFEngine also allows for the concept of dependencies between services, and can automatically start or stop these, if desired. Parameters can be passed to services that are started by CFEngine.
 
+See `services`.
 
 ### commands - execute a command ###
 
 Commands and processes are separated cleanly. Restarting of processes must be coded as a separate command. This stricter type separation allows for more careful conflict analysis to be carried out.
 
+See `commands`.
 
 ### storage - verify attached storage ###
 
 Storage promises refer to disks and filesystem properties.
 
+See `storage`.
 
 ### databases - configure a database ###
 
@@ -103,6 +116,7 @@ Databases are often centralized entities that have a single point of management.
 
 For example, creating 100 new databases for test purposes is a task for CFEngine; but adding a new item to an important production database is not a recommended task for CFEngine.
 
+See `databases`.
 
 ### access - grant or deny access to file objects ###
 
@@ -112,11 +126,13 @@ The promiser is the name of the resource affected and is interpreted to be a pat
 
 You layer the access policy by denying all access and then allowing it only to selected clients, then denying to an even more restricted set.
 
+See `access`.
 
 ### roles - allow certain users to activate certain classes ###
 
 Roles promises are server-side decisions about which users are allowed to define soft-classes on the server's system during remote invocation of cf-agent. This implements a form of Role Based Access Control (RBAC) for pre-assigned class-promise bindings. The user names cited must be attached to trusted public keys in order to be accepted. The regular expression is anchored, meaning it must match the entire name.
 
+See `roles`.
 
 ### measurements - measure or sample data from the system ###
 
@@ -128,7 +144,10 @@ CFEngine Enterprise extends this in two ways. First it adds a three year trend s
 
 Promises of type measurement are written just like all other promises within a bundle destined for the agent concerned, in this case monitor. However, it is not necessary to add them to the bundlesequence, because cf-monitord executes all bundles of type monitor.
 
+See `measurements`.
 
 ### reports - report a message ###
 
 Reports promises simply print messages. Outputting a message without qualification can be a dangerous operation. In a large installation it could unleash an avalanche of messaging.
+
+See `reports`.

@@ -6,15 +6,17 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
-Deploy infrastructure policy "Sketches" using a form-based approach to configure properties, selecting the hosts that need to be impacted, and then tracking the progress of the deployment via the Mission Portal user interface.  
+The Design Center UI allows authorized infrastructure engineers to configure, deploy, and monitor data-driven policy templates known as *sketches*.  The engineer can target any group of hosts using pre-existing or custom classifications.
 
 ### Delegation of System Administrator Tasks ###
 
-CFEngine experts can create their own Sketches, that match the exact needs of the organization in which they are used. They can be hosted in the Design Center repository, so that other administrators, developers and line-of-business users can use them to perform sophisticated sysadmin tasks without the need for detailed CFEngine knowledge. 
+CFEngine experts can write their own sketches to address their exact needs. They can be hosted in a private Design Center repository so that other administrators, developers and line-of-business users can again configure, deploy, and monitor them without detailed CFEngine knowledge.
+
+For more information, see [Write a new Sketch][]
 
 ### Version Control for Sketches ###
 
-CFEngine Enterprise keeps track of all changes in sketches and sketch-deployments, using Git-integration to track autors, source-code and meta-information about policy deployments.
+CFEngine Enterprise keeps track of sketch deployments, using Git integration to track authors, source-code and meta-information about policy deployments.
 
 ## CFEngine, Design Center and Version Control Systems ##
 
@@ -24,29 +26,30 @@ Git repository in `/opt/cfengine/masterfiles.git` but does **not**
 deploy it automatically.  Thus any work you do with Design Center will
 not propagate to your hosts without some help.
 
-Please see [Best Practices#Version Control and Configuration Policy] for detailed
-instructions for enabling the Version Control workflow in CFEngine
-Enterprise.
+Please see
+[Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
+for detailed instructions for enabling the Version Control workflow in
+CFEngine Enterprise.
 
 ## Sketches in the Design Center App ##
 
-The CFEngine `Design Center` includes a number of templates, so called `sketches`, that let you configure and deploy CFEngine `policies` without requiring detailed knowledge of the CFEngine language. You can select `sketches` from a categorized list, and configure them in the interface.
+The CFEngine Design Center includes a number of data-driven policy templates called *sketches* that let you configure and deploy CFEngine policies without requiring detailed knowledge of the CFEngine language. You can select sketches from a categorized list and configure them in the interface, then apply them to any group of hosts.
 
-Every organization using CFEngine can add their own custom `sketches` which will consequently be shown in the app's list of sketches.
+Every organization using CFEngine can add their own custom *sketches* which will consequently be shown in the app's list of sketches.
 
-Note: The `Design Center App` requires a dedicated git repository. If you have admin rights to the `Mission Portal`, you can configure it in `Settings`.
+Note: The Mission Portal's **Design Center App** requires a dedicated Git repository. If you have admin rights to the Mission Portal, you can configure it in the Settings panel.  Furthemore you have to enable the Git repository integration as explained above.
 
 ### Configuration ###
 
-After selecting a sketch, you need to configure a number of parameters. Start with giving your current configuration a unique name which will make it easier for your to recognize it again later. Then fill in the mandatory fields below. All of them show examples and a descriptive text.
+After selecting a sketch, you need to configure it (*activate it*). First, give your activation parameters a unique name so you can recognize it later. Then fill in the fields below (some will be optional, others mandatory). All of them show examples and a descriptive text.
 
-You also need to define the hosts you want to activate your configured sketch on. You can select host categories of varying size by following the step-by-step selection presented in the drop-down menus. These categories are based on categorizations defined for example in the `Hosts App`.
+You also need to define the hosts you want to target. You can select host categories through the drop-down menus. These categories are based on categorizations defined in the **Hosts App** for example.  You can select individual hosts too.
 
 ### Activation ###
 
-When you're done configuring your sketch you need to activate it. This will trigger a commit to your configured git repository, and transform your configured sketch into CFEngine policy. You will then be able to follow-up on the state of your activation (`In Progress`, `OK`, and `Failed`), and report on potential issues.
+When you're done configuring your sketch you need to activate it. This will require a commit to your configured Git repository that transforms your configuration parameters into CFEngine policy. You will then be able to follow the state of your activation (`In Progress`, `OK`, and `Failed`) and report on any problems.
 
-Note: `Sketches` can be activated multiple times with varying configuration and on different sets of hosts. The `Design Center App` indicates which sketches have been activated in your environment.
+Note: *Sketches* can be activated multiple times with different configurations and sets of hosts. The **Design Center App** will show you each activation, its status, the hosts it targets, and the parameters specified.
 
 
 ### See Also ###
@@ -55,4 +58,4 @@ Note: `Sketches` can be activated multiple times with varying configuration and 
 * [Write a new Sketch][Write a new Sketch]
 * [Deploy your first Policy (Enterprise)][Deploy your first Policy]
 * [Version Control and Configuration Policy (Enterprise)][Best Practices#Version Control and Configuration Policy]
-* [Write a new Sketch (Enterprise and Community)][Write a new Sketch]
+* [Write a new Sketch][]
