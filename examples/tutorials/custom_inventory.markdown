@@ -8,9 +8,8 @@ tags: [Examples, Tutorials, Inventory, Enterprise]
 
 This tutorial will show you how to add custom inventory attributes that can be
 leveraged in policy and reported on in the CFEngine Enterprise Mission Portal.
-For a more detailed overview on how the inventory system works please reference
-[CFEngine 3 inventory modules][The Policy
-Framework#CFEngine 3 Inventory Modules].
+For a more detailed overview on how the inventory system works please reference 
+[CFEngine 3 inventory modules][The Policy Framework#CFEngine 3 Inventory Modules].
 
 ## Overview ## 
 
@@ -43,7 +42,6 @@ host001, Development <dev@cfengine.com>
 Enterprise Vagrant Environemt] and files located in the vagrant project
 directory are automatically available to all hosts.
 
-[Back to top of page.][Custom Inventory#Overview]
 
 ## Create and Deploy Inventory Policy ##
 
@@ -80,21 +78,18 @@ bundle common tutorials_inventory_owner
 ```
 
 **Note:** For the simplicity of this tutorial we assume that
-[masterfiles][sys#sys-masterdir] is not configured for policy updates from a
+[masterfiles][sys#sys.masterdir] is not configured for policy updates from a
 git repository. If it is, please add the policy to your repository and ensure
 it gets to its final destination as needed.
 
 This policy will not be activated until it has been included in
 [inputs][Components and Common Control#inputs]. For simplicity we will be
 adding it to [common control][Components and Common Control], but note that
-files can include other files through the use of [inputs in file control][file
-control#inputs].
+files can include other files through the use of [inputs in file control][file control#inputs].
 
-Add 'services/tutorials/inventory/owner.cf' to [inputs][Components and Common
-Control#inputs] and 'tutorials_inventory_owner' to the
-[bundlesequence][Components and Common Control#bundlesequence] in [common
-control][Components and Common Control] found in
-`/var/cfengine/masterfiles/promises.cf` as shown below.
+Add 'services/tutorials/inventory/owner.cf' to [inputs][Components and Common Control#inputs] and 
+'tutorials_inventory_owner' to the [bundlesequence][Components and Common Control#bundlesequence] in
+[common control][Components and Common Control] found in `/var/cfengine/masterfiles/promises.cf` as shown below.
 
 ```cf3
 body common control
@@ -149,6 +144,7 @@ Here I have run the policy without locks (-K) in inform mode (-I), using a
 specific policy entry (-f) and activating only a specific bundle (-b). The
 inform output helps me confirm that my hubs owner is discovered from our CSV
 properly.
+
 
 ## Run Reports ##
 
