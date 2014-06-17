@@ -561,7 +561,7 @@ depends on system behavior.
 
 **Allowed input range:** `0,99999999999`
 
-**Default value:** 10 seconds
+**Default value:** 30 seconds
 
 **Example:**
 
