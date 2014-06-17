@@ -1,13 +1,10 @@
 body common control
 {
-bundlesequence => { "main" };
-inputs => { "cfengine_stdlib.cf" };
+      bundlesequence => { "main" };
+      inputs => { "$(sys.libdir)/stdlib.cf" };
 }
-
 
 bundle agent main
 {
-# example
-
+      # example
 }
-

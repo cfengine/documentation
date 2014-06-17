@@ -32,10 +32,10 @@ It's simply called `data`.  The documentation with some examples is at https://c
 
 There are many ways to read JSON data; here are a few:
 
-* `readjson()`: read from a JSON file, e.g. `"mydata" data => readjson("/my/file", 100k);`.  See full documentation and examples at https://cfengine.com/docs/master/reference-functions-readjson.html
-* `parsejson()`: read from a JSON string, e.g. `"mydata" data => parsejson('{ "x": "y" }');`.  See full documentation and examples at https://cfengine.com/docs/master/reference-functions-parsejson.html
-* `data_readstringarray()` and `data_readstringarrayidx()`: read text data from a file, split it on a delimiter, and make them into structured data.  See full documentation and examples at https://cfengine.com/docs/master/reference-functions-data_readstringarray.html and https://cfengine.com/docs/master/reference-functions-data_readstringarrayidx.html
-* `mergedata()`: merge data containers, slists, and classic CFEngine arrays, e.g. `"mydata" data => mergedata(container1, slist2, array3);`.  See full documentation and examples at https://cfengine.com/docs/master/reference-functions-mergedata.html
+* `readjson()`: read from a JSON file, e.g. `"mydata" data => readjson("/my/file", 100k);`
+* `parsejson()`: read from a JSON string, e.g. `"mydata" data => parsejson('{ "x": "y" }');`
+* `data_readstringarray()` and `data_readstringarrayidx()`: read text data from a file, split it on a delimiter, and make them into structured data.
+* `mergedata()`: merge data containers, slists, and classic CFEngine arrays, e.g. `"mydata" data => mergedata(container1, slist2, array3);`
 
 `mergedata` in particular is very powerful.  It can convert a slist or a classic CFEngine array to a data container easily: `"mydata" data => mergedata(myslist);`
 
@@ -43,10 +43,10 @@ There are many ways to read JSON data; here are a few:
 
 To access JSON data, you can use:
 
-* the `nth()` function to access an array element, e.g. `"myx" string => nth(container1, 0);`.  See full documentation and examples at https://cfengine.com/docs/master/reference-functions-nth.html
+* the `nth()` function to access an array element, e.g. `"myx" string => nth(container1, 0);`
 * the `nth` function to access a map element, e.g. `"myx" string => nth(container1, "x");`
 * the `a[b]` notation, e.g. `"myx" string => "$(container1[x])";`.  You can nest, e.g. `a[b][c][0][d]`.  This only works if the element is something that can be expanded in a string.  So a number or a string work.  A list of strings or numbers works.  A key-value map under `x` won't work.
-* the `getindices()` and `getvalues()` functions, just like classic CFEngine arrays.  See full documentation and examples at https://cfengine.com/docs/master/reference-functions-getindices.html and https://cfengine.com/docs/master/reference-functions-getvalues.html
+* the `getindices()` and `getvalues()` functions, just like classic CFEngine arrays
 
 ## A full example
 

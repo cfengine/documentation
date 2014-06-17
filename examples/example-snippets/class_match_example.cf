@@ -1,24 +1,15 @@
-
 body common control
-
 {
-bundlesequence  => { "example" };
+      bundlesequence  => { "example" };
 }
-
 ###########################################################
 
-
 bundle agent example
+{
+  classes:
+      "do_it" and => { classmatch(".*_3"), "linux" };
 
-{     
-classes:
-
-  "do_it" and => { classmatch(".*_3"), "linux" }; 
-
-reports:
-
-  do_it::
-
-    "Host matches pattern";
-
+  reports:
+    do_it::
+      "Host matches pattern";
 }

@@ -1,8 +1,6 @@
 #
 # System file X
-
 #
-
 
 MYVARIABLE = something or other
 HOSTNAME = $(sys.host)           # CFEngine fills this in

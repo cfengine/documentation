@@ -1,74 +1,51 @@
 body common control
 {
-bundlesequence => { "test" };
+      bundlesequence => { "test" };
 }
-
-
 
 bundle agent test
 {
-files:
-
-  "/tmp/resolv.conf"  # test on "/tmp/resolv.conf" #
-
-     create        => "true",
-     edit_line     => resolver,
-     edit_defaults => def;
-
+  files:
+      "/tmp/resolv.conf"  # test on "/tmp/resolv.conf" #
+      create        => "true",
+      edit_line     => resolver,
+      edit_defaults => def;
 }
 
-
 #######################################################
-
 # For the library
-
 #######################################################
-
 
 bundle edit_line resolver
-
 {
-vars:
+  vars:
+      "search" slist => { "search iu.hio.no cfengine.com", "nameserver 128.39.89.10" };
 
- "search" slist => { "search iu.hio.no cfengine.com", "nameserver 128.39.89.10" };
+  delete_lines:
+      "search.*";
 
-delete_lines:
-
-  "search.*";
-
-insert_lines:
-
-  "$(search)" location => end;
+  insert_lines:
+      "$(search)" location => end;
 }
-
 #######################################################
-
 
 body edit_defaults def
 {
-empty_file_before_editing => "false";
-edit_backup => "false";
-max_file_size => "100000";
+      empty_file_before_editing => "false";
+      edit_backup => "false";
+      max_file_size => "100000";
 }
-
 ########################################################
-
 
 body location start
-
 {
-# If not line to match, applies to whole text body
-
-before_after => "before";
+      # If not line to match, applies to whole text body
+      before_after => "before";
 }
-
 ########################################################
 
-
 body location end
-
 {
-# If not line to match, applies to whole text body
-
-before_after => "after";
+      # If not line to match, applies to whole text body
+      before_after => "after";
 }

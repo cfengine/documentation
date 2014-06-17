@@ -38,7 +38,7 @@ especially useful in the case of file copies because the same variable
 definition can be used both by the policy server when granting access and by the agent host
 when performing the copy.
 
-The policy framework includes a common bundle called **def**. In this example, we
+The policy framework includes a common bundle called ```def```. In this example, we
 will add two variables--`dir_patch_store` and `dir_patch_deploy`--to this existing bundle. 
 These variables provide path definitions for storing and deploying patches.
 
@@ -109,7 +109,7 @@ directory on the agent host.
 Organize in a way that makes the most sense to you and your team. We recommend organizing 
 policy by services.
 
-Create `services/patch.cf` with the following content:
+Create `services/patching.cf` with the following content:
 
 ```cf3
     # Patching Policy
@@ -167,25 +167,14 @@ section which is found under `body common control`. Once the policy file is incl
 inputs, the bundle can be activated. Bundles can be activated by adding them to either the
 `bundlesequence` or they can be called as a `methods` type promise.
 
-Make the following edits to `promises.cf` under body common control -> inputs:
+Add the following entries to `promises.cf` under `body common control` -> `inputs`:
 
-                        # COPBL and custom body/bundle library
-                         "libraries/cfengine_stdlib.cf",
-                        "lib/custom/files.cf",
+    "lib/custom/files.cf",
+    "services/patching.cf",
 
-                       # Add update files to build Knowledge Map relationship
-                         "update/update_bins.cf",
+and the following to `promises.cf` under `body common control` -> `bundlesequence`:
 
-                       # List of services here
-                         "services/file_change.cf",
-                         "services/patching.cf",
-
-
-        "Patching"
-          handle => "service_catalogue_patching",
-          usebundle => patching,
-          comment => "A patch a day keeps the hackers away";
-     
+    "patching",
      
 Now that all of the policy has been edited and is in place, check for syntax errors by 
 running `cf-promises -f ./promises.cf`. This promise is activated from the **service_catalogue**

@@ -1,22 +1,18 @@
 body common control
-
 {
-bundlesequence  => { "example" };
+      bundlesequence  => { "example" };
 }
-
 ###########################################################
-
 
 body contain cd(dir)
 {
-chdir => "${dir}";
-useshell => "true";
+      chdir => "${dir}";
+      useshell => "true";
 }
 
 bundle agent example
 {
-commands:
-
-   "/bin/pwd"
-       contain => cd("/tmp");
+  commands:
+      "/bin/pwd"
+      contain => cd("/tmp");
 }
