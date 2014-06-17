@@ -2,7 +2,7 @@ bundle agent restart_process
 {
   processes:
 
-      "httpd" 
+      "httpd"
 
       comment => "Make sure apache web server is running",
       restart_class => "restart_httpd";

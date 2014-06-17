@@ -6,9 +6,8 @@ bundle agent restart_process
 
   processes:
 
-      "$(killprocs)" 
+      "$(killprocs)"
 
-      comment => "Make processes are not running",
+      comment => "Ensure processes are not running",
       signals => { "term", "kill" };
-      ;
 }

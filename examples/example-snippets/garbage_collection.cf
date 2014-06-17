@@ -11,19 +11,19 @@ bundle agent garbage_collection
 
     Sunday::
 
-      "$(sys.workdir)/nova_repair.log" 
+      "$(sys.workdir)/nova_repair.log"
 
       comment => "Rotate the promises repaired logs each week",
       rename => rotate("7"),
       action => if_elapsed("10000");
 
-      "$(sys.workdir)/nova_notkept.log" 
+      "$(sys.workdir)/nova_notkept.log"
 
       comment => "Rotate the promises not kept logs each week",
       rename => rotate("7"),
       action => if_elapsed("10000");
 
-      "$(sys.workdir)/promise.log" 
+      "$(sys.workdir)/promise.log"
 
       comment => "Rotate the promises not kept logs each week",
       rename => rotate("7"),
@@ -31,14 +31,14 @@ bundle agent garbage_collection
 
     any::
 
-      "$(sys.workdir)/outputs" 
+      "$(sys.workdir)/outputs"
 
       comment => "Garbage collection of any output files",
       delete => tidy,
       file_select => days_old("3"),
       depth_search => recurse("inf");
 
-      "$(sys.workdir)/" 
+      "$(sys.workdir)/"
 
       comment => "Garbage collection of any output files",
       delete => tidy,
@@ -48,21 +48,21 @@ bundle agent garbage_collection
       # Other resources
 
 
-      "/tmp" 
+      "/tmp"
 
       comment => "Garbage collection of any temporary files",
       delete => tidy,
       file_select => days_old("3"),
       depth_search => recurse("inf");
-      
-      "/var/log/apache2/.*bz" 
+
+      "/var/log/apache2/.*bz"
 
       comment => "Garbage collection of rotated log files",
       delete => tidy,
       file_select => days_old("30"),
       depth_search => recurse("inf");
 
-      "/var/log/apache2/.*gz" 
+      "/var/log/apache2/.*gz"
 
       comment => "Garbage collection of rotated log files",
       delete => tidy,
@@ -75,5 +75,4 @@ bundle agent garbage_collection
       rename => rotate("0"),
       action => if_elapsed("10000");
 
-}	
-
+}

@@ -2,7 +2,7 @@ bundle agent restart_process
 {
   processes:
 
-      "httpd" 
+      "httpd"
 
       comment => "Make sure apache web server is running",
       restart_class => "restart_httpd";
@@ -23,7 +23,7 @@ bundle agent CFEngine_processes
 
   processes:
 
-      "$(components)" 
+      "$(components)"
 
       comment => "Make sure server parts of CFEngine are running",
       restart_class => canonify("start_$(component)");
