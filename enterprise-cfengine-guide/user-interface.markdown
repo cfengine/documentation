@@ -80,5 +80,7 @@ Find out more: [Design Center][]
 
 ## Settings ##
 
+A variety of CFEngine and system properties can be changed in the Settings view.
+
 Find out more: [Settings][]
 
