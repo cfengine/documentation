@@ -18,9 +18,6 @@ bundle agent test
 
 }
 
-#
-
-
 body action logme(x)
 {
       log_kept => "/tmp/private_keptlog.log";
@@ -29,13 +26,10 @@ body action logme(x)
       log_string => "$(sys.date) $(x) promise status";
 }
 
-
 body common control
 {
       bundlesequence => { "one" };
 }
-
-
 
 bundle agent one
 {
