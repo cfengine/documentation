@@ -1157,7 +1157,7 @@ timeout, in seconds.
 
 **Allowed input range:** `1,3600`
 
-** Default Value:** `default_timeout` [cf-agent#default_timeout]
+**Default Value:** `default_timeout`[cf-agent#default_timeout]
 
 **Example:**
 
