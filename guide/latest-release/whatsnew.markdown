@@ -50,7 +50,7 @@ special variables by default.
 
 ### Improved File Templating Engine ###
 
-CFEngine 3.6 introduces support for [`mustache`][template_method] templates, which
+CFEngine 3.6 introduces support for [`mustache`][files#template_method] templates, which
 is tightly integrated with data containers and provides easy and data-driven configuration
 file management.
 
