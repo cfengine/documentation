@@ -19,11 +19,6 @@ do not show breadcrumb for the first level page
                 {% if site.breadcrumbsNavigation[breadcrumbKey] != nil %}
 
                     {% if site.breadcrumbsNavigation[breadcrumbKey].alias != page.alias %}
-                        {% if forloop.first != true %}
-                        <li>
-                            <i class="arrow">&nbsp;</i>
-                        </li>
-                        {% endif %}
                         <li>
                             <a href="{{ site.breadcrumbsNavigation[breadcrumbKey].alias }}">{{ site.breadcrumbsNavigation[breadcrumbKey].title }}</a>
                         </li>
@@ -33,13 +28,7 @@ do not show breadcrumb for the first level page
         </ul>
     </div>
 {% endif %}
-    <div id="TOCbox_wrapper">
-        <span id="TOCbox">Table of contents<div id="TOCbox_list"></div></span>
-    </div>
-    <div id="pageControls_block">
-        <a href="pdf/{{page.alias | replace:'.html','.pdf'}}" class="pdf">&nbsp;</a>&nbsp;
-        <a onclick="window.print(); return false;" rel="nofollow" href="" class="print">&nbsp;</a>
-        <div class="clear"></div>
-    </div>
-    <div class="clear"></div>
+    <a href="" class="float-right">
+        <i class="fa fa-pencil"></i>
+    </a>
 </div>

@@ -21,11 +21,9 @@ $(document).ready(function() {
         $(window).scroll(function() {
             if ($(window).scrollTop() > scrollPos && showMoveTop===false) {
                 $("#moveTop").show();
-                $("#TOCbox_wrapper").addClass('TOCbox_Fixed');
                 showMoveTop = true;
             } else if($(window).scrollTop() < scrollPos && showMoveTop === true ) {
                 $("#moveTop").hide();
-                $("#TOCbox_wrapper").removeClass('TOCbox_Fixed');
                 showMoveTop = false;
             }
         });
@@ -34,12 +32,12 @@ $(document).ready(function() {
     if ($(window).scrollTop() > scrollPos && is_mobile === false)
     {
         $("#moveTop").show();
-        $("#TOCbox_wrapper").addClass('TOCbox_Fixed');
         showMoveTop = true;
     }
 
 
     var ToC_start =
+        "<div class='TOCheader'>Table of Contents</div>" +
         "<nav role='navigation'>" +
              "<ul>";
     var ToC_End =
