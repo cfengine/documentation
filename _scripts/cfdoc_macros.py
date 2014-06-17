@@ -308,6 +308,7 @@ def function_attributes(parameters, config):
 	parameters = syntax_map["functions"][function]["parameters"]
 	lines = []
 	if not len(parameters):
+		lines.append("\n")
 		return lines
 
 	arguments = []
