@@ -2,7 +2,9 @@
 layout: default
 title: Legal and Licenses
 published: false
+categories: [legal]
 sorting: 999
+alias: legal.html
 ---
 
 ## General Legal Disclaimer

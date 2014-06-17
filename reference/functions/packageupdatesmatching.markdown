@@ -35,4 +35,4 @@ The return is a data container with a list of package descriptions, looking like
 
 **History:** Introduced in CFEngine 3.6
 
-**See also:** [`packagesmatching()`][packagesmatching].
+**See also:** `packagesmatching()`.

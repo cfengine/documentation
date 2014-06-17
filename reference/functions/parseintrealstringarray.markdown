@@ -15,7 +15,7 @@ tags: [reference, io functions, functions, parseintarray, parserealarray, parses
 bytes in string `input` and populates `array`. Returns the dimension.
 
 These functions mirror the exact behavior of their 
-`read[int|real|string]array()` counterparts, but read data from a variable 
+[`read[int|real|string]array()`][readstringarray] counterparts, but read data from a variable
 instead of a file. By making data readable from a variable, data driven 
 policies can be kept inline.
 
