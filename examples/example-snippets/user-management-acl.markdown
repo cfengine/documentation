@@ -8,7 +8,6 @@ tags: [Examples,User Management,ACL]
 
 * [Manage users][User Management and ACL Examples#Manage users]
 * [Add users][User Management and ACL Examples#Add users]
-* [Remove users][User Management and ACL Examples#Remove users]
 * [Add users to passwd and group][User Management and ACL Examples#Add users to passwd and group]
 * [ACL file example][User Management and ACL Examples#ACL file example]
 * [ACL generic example][User Management and ACL Examples#ACL generic example]
@@ -44,11 +43,6 @@ An alternative approach is to use a method to wrap around the handling of a user
 
 
 [%CFEngine_include_snippet(add_users_1.cf, .* )%]
-
-### Remove users
-
-
-[%CFEngine_include_snippet(remove_users.cf, .* )%]
 
 ## Add users to passwd and group ##
 
