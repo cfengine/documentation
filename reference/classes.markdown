@@ -17,6 +17,7 @@ To see `hard classes` and `soft classes` defined in common bundles on a
 particular host, run `cf-promises --show-classes` as a privileged user.
 
 Example:
+
 ```console
 [root@hub masterfiles]# cf-promises --show-classes
 Class name                                                   Meta tags                               
