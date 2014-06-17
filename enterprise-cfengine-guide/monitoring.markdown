@@ -6,6 +6,8 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
+Monitoring allows you to get an overview of your hosts over time.
+
 ![Monitoring](Mission-Portal-Monitoring-1.png)
 
 You can filter on the type of `promise`: user defined, system defined, or all.
