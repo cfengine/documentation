@@ -1,8 +1,6 @@
 #
 # System file X
-
 #
-
 
 MYVARIABLE = something or other
 HOSTNAME = $(sys.host)           # CFEngine fills this in
@@ -24,7 +22,6 @@ bundle agent get_template(final_destination,mode)
 
       # This needs to ne preconfigured to your site
 
-
       "masterfiles"   string => "/home/mark/tmp";
       "this_template" string => lastnode("$(final_destination)","/");
 
@@ -37,6 +34,7 @@ bundle agent get_template(final_destination,mode)
       copy_from => remote_cp("$(masterfiles)/templates/$(this_template)","$(policy_server)"),
       action => if_elapsed("60");
 
+
       "$(final_destination)"
 
       comment => "Expand the template",
@@ -45,5 +43,4 @@ bundle agent get_template(final_destination,mode)
       edit_defaults => empty,
       perms => mo("$(mode)","root"),
       action => if_elapsed("60");
-
 }

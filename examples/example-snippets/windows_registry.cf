@@ -10,9 +10,6 @@ bundle agent reg
       "value" string => registryvalue("HKEY_LOCAL_MACHINE\SOFTWARE\Cfengine AS\Cfengine","value3");
 
   reports:
-
     windows::
-
       "Value extracted: $(value)";
-
 }
