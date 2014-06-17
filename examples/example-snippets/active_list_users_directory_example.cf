@@ -1,9 +1,6 @@
 # List users from Active Directory through LDAP
-
 # Note: Anonymous LDAP binding must be allowed, and the Anonymous user
-
 # must have read access to CN=Users
-
 
 bundle agent ldap
 {
@@ -16,6 +13,5 @@ bundle agent ldap
                                     "subtree",
                                     "none");
   reports:
-    Yr2010::
-      "Username: \"$(userlist)\"";
+      'Username: "$(userlist)"';
 }
