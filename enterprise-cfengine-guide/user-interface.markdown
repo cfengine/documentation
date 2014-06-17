@@ -68,6 +68,8 @@ Find out more about writing your own inventory modules: [Inventory modules][The 
 
 ## Monitoring ##
 
+Monitoring allows you to get an overview of your hosts over time.
+
 Find out more: [Monitoring][]
 
 ## Design Center UI ##

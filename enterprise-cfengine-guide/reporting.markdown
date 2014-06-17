@@ -93,14 +93,24 @@ them and should work.
 
 ## Inventory Management ##
 
+Inventory allows you to define the set of hosts to report on.
+
+The main Inventory screen shows the current set of hosts, together with relevant information such as operating system type, kernel and memory size.
+
 ![Inventory Management](Reports-Inventory-1.png)
+
+To begin filtering, one would first select the *Filters* drop down, and then select an attribute to filter on (e.g. OS type = linux)
 
 ![Inventory Management](Reports-Inventory-2.png)
 
-![Inventory Management](Reports-Inventory-3.png)
+After applying the filter, it may be convenient to add the attribute as one of the table columns. 
 
 ![Inventory Management](Reports-Inventory-4.png)
 
+Changing the filter, or adding additional attributes for filtering, is just as easy.
+
 ![Inventory Management](Reports-Inventory-5.png)
+
+We can see here that there are no Windows machines bootstrapped to this hub.
 
 ![Inventory Management](Reports-Inventory-6.png)
