@@ -227,7 +227,7 @@ They can *NOT* be modified, once created.
 Data containers do not have the size limitations of regular scalar
 variables.
 
-**TODO:** More, and examples
+<!--- **TODO:** More, and examples -->
 
 ## Associative Arrays
 

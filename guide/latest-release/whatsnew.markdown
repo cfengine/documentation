@@ -6,10 +6,11 @@ sorting: 10
 tags: [overviews, releases, latest release, 3.6.0, platforms, versions, what's new]
 ---
 
+<!--- TODO: move up when no longer a pre-release
+
 **IMPORTANT NOTE:** This is a pre-release of CFEngine, intended for testing and 
 showcase only.
 
-<!--- TODO: move up when no longer a pre-release
 -->
 
 CFEngine 3.6 is the latest version of CFEngine. The [Enterprise edition][New in CFEngine#CFEngine Enterprise] introduces
