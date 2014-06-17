@@ -212,11 +212,16 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
 -   `href` *(string)* Download link for the finished report.
 -   `error` *(string)* Error if anything went wrong.
 
-+/api/dc/sketch+
+### Enterprise Design Center API
+
+Please see [The Design Center API][] for the Design Center API
+commands that are wrapped by the following Enterprise API commands.
+
+#### /api/dc/sketch
 * **GET**: List of sketches 
-	RESPONSE:
-<pre>
-	{
+
+```
+{
 	"meta": {
 		"page": 1,
 		"count": 69,
@@ -254,12 +259,7 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
             }
 	    }]
 	}
-</pre>
-
-### Enterprise Design Center API
-
-Please see [The Design Center API][] for the Design Center API
-commands that are wrapped by the following Enterprise API commands.
+```
 
 #### /api/dc/sketch/:name
 
