@@ -6,6 +6,8 @@ published: true
 tags: [cfengine enterprise, user interface, mission portal]
 ---
 
+![Monitoring](Mission-Portal-Monitoring-1.png)
+
 You can filter on the type of `promise`: user defined, system defined, or all.
 
 You can display fewer graphs by selecting a sub-set of hosts from the menu on the left.
