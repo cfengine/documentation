@@ -18,7 +18,7 @@ The Mission Portal also allows authorized infrastructure engineers to quickly an
 * [Alerts and Notifications][User Interface#Alerts and Notifications]
 * [Reporting][User Interface#Reporting]
 * [Monitoring][User Interface#Monitoring]
-* [Design Center][User Interface#Design Center]
+* [Design Center UI][User Interface#Design Center UI]
 * [Settings][User Interface#Settings]
 
 ## Hosts and Health ##
@@ -64,13 +64,13 @@ Find out more: [Reporting][Reporting UI]
 
 Find out more about writing your own inventory modules: [Inventory modules][The Policy Framework#CFEngine 3 inventory modules]
 
-## Monitoring ##	
+## Monitoring ##
 
 Find out more: [Monitoring][]
 
-## Design Center ##
+## Design Center UI ##
 
-Find out more: [Design Center][]
+Find out more: [Design Center UI][]
 
 ## Settings ##
 

@@ -22,23 +22,3 @@ CFEngine Enterprise has the ability to create federated structures, in which par
 ### Monitoring and reporting ###
 
 The CFEngine Enterprise Mission Portal contains continual reporting that details compliance with policies, repairs and any failures of hosts to match their desired state.
-
-## Enterprise Topics ##
-
-* [Install and Get Started][]
-* [User Interface][]
-* [Settings][]
-* [Hosts and Health][]
-* [Alerts and Notifications][]
-* [Reporting][Reporting UI]
-* [Monitoring][]
-* [Design Center][]
-* [Enterprise API][]
-* [Best Practices][]
-
-
-
-
-
-
-
