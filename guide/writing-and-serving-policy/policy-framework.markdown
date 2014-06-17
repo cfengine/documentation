@@ -437,7 +437,7 @@ especially the cf-serverd ACL settings. If you are not sure of the
 terms used below or what it all means, come back to this page after
 you've learned about writing policy and the CFEngine syntax.
 
-# CFEngine 3 inventory modules
+## CFEngine 3 Inventory Modules ##
 
 The CFEngine 3 inventory modules are pieces of CFEngine policy that
 are loaded and used by the `promises.cf` mechanism in order to
