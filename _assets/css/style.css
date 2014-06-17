@@ -508,3 +508,7 @@ article {
 #print_TOC_wrapper {
     display: none
 }
+
+#edit_link {
+    display:none;
+}
