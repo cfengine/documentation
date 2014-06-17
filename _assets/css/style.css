@@ -303,7 +303,8 @@ th {
     display:block;
     width:100%;
     clear:both;
-    font-size:10px;
+    font-size:12px;
+    line-height: 14px;
 }
 
 #top_form select {
