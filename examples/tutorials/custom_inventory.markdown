@@ -158,8 +158,7 @@ be collected and made available for reporting.
 
 ![custom inventory attribute](tutorials_custom_inventory_attribute.jpg)
 
-I can see as shown in the following report that my hosts owner information has
-populated as expected.
+You will see the host owner as shown in the following report.
 
 ![custom inventory report](tutorials_custom_inventory_report.jpg)
 
