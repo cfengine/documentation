@@ -1,64 +1,43 @@
 #######################################################
 #
-
 # Postfix
-
 #
-
 #######################################################
-
 
 body common control
-
 {
-    any::
-
-      bundlesequence  => {
-			   postfix
-      };   
+      inputs => { "$(sys.libdir)/stdlib.cf" };
+      bundlesequence  => { postfix };
 }
-
 #######################################################
 
-
 bundle agent postfix
-
 {
   vars:
-
       "prefix"     string => "/etc";
       "smtpserver" string => "localhost";
       "mailrelay"  string => "mailx.example.org";
 
   files:
-
-      "$(prefix)/main.cf"     
+      "$(prefix)/main.cf"
       edit_line => prefix_postfix;
 
-      "$(prefix)/sasl-passwd" 
+      "$(prefix)/sasl-passwd"
       create    => "true",
       perms     => mo("0600","root"),
       edit_line => append_if_no_line("$(smtpserver) _$(sys.fqhost):chmsxrcynz4etfrejizhs22");
 }
 
 #######################################################
-
 # For the library
-
 #######################################################
 
-
 bundle edit_line prefix_postfix
-
 {
       #
-
       # Value have the form NAME = "quoted space separated list"
-
       #
-
   vars:
-
       "ps[relayhost]"                  string => "[$(postfix.mailrelay)]:587";
       "ps[mydomain]"                   string => "iu.hio.no";
       "ps[smtp_sasl_auth_enable]"      string => "yes";
@@ -68,25 +47,18 @@ bundle edit_line prefix_postfix
       "ps[default_privs]"              string => "mailman";
       "ps[inet_protocols]"             string => "all";
       "ps[inet_interfaces]"            string => "127.0.0.1";
-
       "parameter_name" slist => getindices("ps");
 
-  delete_lines: 
-
+  delete_lines:
       "$(parameter_name).*";
 
   insert_lines:
-
       "$(parameter_name) = $(ps[$(parameter_name)])";
-
 }
-
 ########################################################
-
 
 bundle edit_line AppendIfNSL(parameter)
 {
   insert_lines:
-
       "$(parameter)"; # This is default
 }

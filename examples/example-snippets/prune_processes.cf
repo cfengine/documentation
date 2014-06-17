@@ -5,9 +5,7 @@ body common control
 
 ########################################################
 
-
 bundle agent testbundle
-
 {
   processes:
 
@@ -19,11 +17,9 @@ bundle agent testbundle
 
 ########################################################
 
-
 body process_select big_processes(o)
-
 {
-      process_owner => { "$(o)" };
+      process_owner => { $(o) };
       rsize => irange("100000","900000");
       process_result => "rsize.process_owner";
 }

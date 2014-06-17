@@ -1,60 +1,44 @@
 #######################################################
 
-
 body executor control
-
 {
       splaytime => "1";
       mailto => "cfengine@example.com";
       smtpserver => "localhost";
       mailmaxlines => "30";
-
       # Once per hour, on the hour
-
 
       schedule     => { "Min00_05" };
 }
-
 #######################################################
-
 
 bundle agent services_disable
 {
   vars:
-
       # list all of xinetd services (case sensitive)
 
-
       "xinetd_services" slist => {
-				   "imap",
-				   "imaps",
-				   "ipop2",
-				   "ipop3",
-				   "krb5-telnet",
-				   "klogin",
-				   "kshell",
-				   "ktalk",
-				   "ntalk",
-				   "pop3s",
-
+                                   "imap",
+                                   "imaps",
+                                   "ipop2",
+                                   "ipop3",
+                                   "krb5-telnet",
+                                   "klogin",
+                                   "kshell",
+                                   "ktalk",
+                                   "ntalk",
+                                   "pop3s",
       };
   methods:
-
       # perform the actual disable all xinetd services according to the list above
-
 
       "any"  usebundle => disable_xinetd("$(xinetd_services)");
 
   processes:
-
       "$(xinetd_services)"
-
       signals => { "kill" };
-
 }
-
 ###############################################################################
-
 
 bundle agent disable_xinetd(name)
 {
@@ -63,7 +47,7 @@ bundle agent disable_xinetd(name)
 
   classes:
       "on"  expression => regcmp(".*on.*","$(status)");
-      
+
   commands:
     on::
       "/sbin/chkconfig $(name) off",
@@ -72,5 +56,4 @@ bundle agent disable_xinetd(name)
   reports:
     on::
       "disable $(name) service.";
-      
 }

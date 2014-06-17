@@ -10,13 +10,12 @@ bundle agent process_restart
 {
   processes:
 
-      "/usr/bin/daemon" 
+      "/usr/bin/daemon"
       restart_class => "launch";
 
   commands:
 
     launch::
-
       "/usr/bin/daemon";
 
 }
@@ -34,13 +33,13 @@ bundle agent process_restart
   vars:
 
       "component" slist => {
-			     "cf-monitord", 
-			     "cf-serverd", 
-			     "cf-execd" 
+                             "cf-monitord",
+                             "cf-serverd",
+                             "cf-execd"
       };
   processes:
 
-      "$(component)" 
+      "$(component)"
       restart_class => canonify("start_$(component)");
 
   commands:

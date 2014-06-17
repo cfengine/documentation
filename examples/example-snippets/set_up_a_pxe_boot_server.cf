@@ -1,29 +1,22 @@
 body common control
 {
       bundlesequence => { "pxe" };
-      inputs => { "/var/cfengine/inputs/cfengine_stdlib.cf" };
+      inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 
-
 #
-
 # PXE boot server
-
 #
-
-
 
 bundle agent pxe
 {
   vars:
-
       "software" slist => {
-			    "atftp",
-			    "dhcp-server",
-			    "syslinux",
-			    "apache2"
+                            "atftp",
+                            "dhcp-server",
+                            "syslinux",
+                            "apache2"
       };
-
 
       "dirs" slist => {
 			"/tftpboot",
@@ -38,60 +31,33 @@ bundle agent pxe
 
       # Distros that we can install
 
-
-
       "rh_distros" slist => { "4.7", "5.2" };
-      "centos_distros" slist => { "5.2" }; 
+      "centos_distros" slist => { "5.2" };
 
       # File contents of atftp configuration
-
-
 
       "atftpd_conf" string =>
       "
 ###########################################
-
-
 ### This file is protected by CFEngine. ###
-
-
 ### Whatever you do, it will be changed ###
-
-
 ###     back to a promising state.      ###
-
-
 ###########################################
-
-
 
 ATFTPD_OPTIONS=\"--daemon \"
 ATFTPD_USE_INETD=\"no\"
 ATFTPD_DIRECTORY=\"/tftpboot\"
 ATFTPD_BIND_ADDRESSES=\"\"
        ";
-
       # File contents of DHCP configuration
-
-
 
       "dhcpd" string =>
       "
 ###########################################
-
-
 ### This file is protected by CFEngine. ###
-
-
 ### Whatever you do, it will be changed ###
-
-
 ###     back to a promising state.      ###
-
-
 ###########################################
-
-
 
 DHCPD_INTERFACE=\"eth0\"
 DHCPD_RUN_CHROOTED=\"yes\"
@@ -100,24 +66,13 @@ DHCPD_RUN_AS=\"dhcpd\"
 DHCPD_OTHER_ARGS=\"\"
 DHCPD_BINARY=\"\"
        ";
-
       "dhcpd_conf" string =>
       "
 ###########################################
-
-
 ### This file is protected by CFEngine. ###
-
-
 ### Whatever you do, it will be changed ###
-
-
 ###     back to a promising state.      ###
-
-
 ###########################################
-
-
 
 allow booting;
 allow bootp;
@@ -136,7 +91,6 @@ ddns-update-style none; ddns-updates off;
    host node1 {
      # Dummy machine
 
-
      hardware ethernet 00:0F:1F:94:FE:07;
      fixed-address 192.168.0.11;
      option host-name \"node1\";
@@ -144,88 +98,65 @@ ddns-update-style none; ddns-updates off;
    host node2 {
      # Dell Inspiron 1150
 
-
      hardware ethernet 00:0F:1F:0E:70:E7;
      fixed-address 192.168.0.12;
      option host-name \"node2\";
    }
  }
         ";
-
       # File contains of Apache2 HTTP configuration
-
-
 
       "httpd_conf" string =>
       "
 # Repository for RHEL5
 
-
 <Directory /srv/www/repos>
-Options Indexes 
-AllowOverride None 
-</Directory> 
+Options Indexes
+AllowOverride None
+</Directory>
 Alias /repos /srv/www/repos
-
 # PXE boot server
 
-
 <Directory /tftpboot/distro/RHEL/5.2>
-Options Indexes  
-AllowOverride None  
-</Directory>  
+Options Indexes
+AllowOverride None
+</Directory>
 Alias /distro/rhel/5.2 /tftpboot/distro/RHEL/5.2
-
 <Directory /tftpboot/distro/RHEL/4.7>
-Options Indexes   
-AllowOverride None   
-</Directory>   
+Options Indexes
+AllowOverride None
+</Directory>
 Alias /distro/rhel/4.7 /tftpboot/distro/RHEL/4.7
-
 <Directory /tftpboot/distro/CentOS/5.2>
-Options Indexes    
-AllowOverride None    
-</Directory>    
-Alias /distro/centos/5.2 /tftpboot/distro/CentOS/5.2    
-
+Options Indexes
+AllowOverride None
+</Directory>
+Alias /distro/centos/5.2 /tftpboot/distro/CentOS/5.2
 <Directory /tftpboot/kickstart>
-Options Indexes     
-AllowOverride None     
-</Directory>     
+Options Indexes
+AllowOverride None
+</Directory>
 Alias /kickstart /tftpboot/kickstart
-
 <Directory /tftpboot/CFEngine>
-Options Indexes      
-AllowOverride None      
-</Directory>      
+Options Indexes
+AllowOverride None
+</Directory>
 Alias /CFEngine /tftpboot/CFEngine
         ";
-
       # File contains of Kickstart for RHEL5 configuration
-
-
 
       "kickstart_rhel5_conf" string =>
       "
 ###########################################
-
-
 ### This file is protected by CFEngine. ###
-
-
 ### Whatever you do, it will be changed ###
-
-
 ###     back to a promissing state.     ###
-
-
 ###########################################
 
 
-	
-auth  --useshadow  --enablemd5 
+auth  --useshadow  --enablemd5
 bootloader --location=mbr
-clearpart --all --initlabel 
+clearpart --all --initlabel
 graphical
 firewall --disabled
 firstboot --disable
@@ -242,7 +173,6 @@ timezone --isUtc Europe/Oslo
 install
 part swap --bytes-per-inode=4096 --fstype=\"swap\" --recommended
 part / --bytes-per-inode=4096 --fstype=\"ext3\" --grow --size=1
-
 %packages
 @core
 @base
@@ -256,15 +186,12 @@ libselinux-devel
 pcre-devel
 #httpd
 
-
 device-mapper-multipath
 -sysreport
-
 %post
 cd /root
 rpm -i http://192.168.0.1/CFEngine/rpm/CFEngine-3.0.1b1-1.el5.i386.rpm
 #/sbin/chkconfig httpd on
-
 
 cd /etc/yum.repos.d
 wget http://192.168.0.1/repos/RHEL5.Base.repo
@@ -277,147 +204,87 @@ wget -nd -r http://192.168.0.1/CFEngine/inputs/
 /usr/local/sbin/cf-agent -B
 /usr/local/sbin/cf-agent
         ";
-
       # File contains of PXElinux boot menu
-
-
 
       "pxelinux_boot_menu" string =>
       "
 ###########################################
-
-
 ### This file is protected by CFEngine. ###
-
-
 ### Whatever you do, it will be changed ###
-
-
 ###     back to a promissing state.     ###
-
-
 ###########################################
-
-
 
 boot options:
      rhel5   - install 32 bit i386 RHEL 5.2             (MANUAL)
      rhel5w  - install 32 bit i386 RHEL 5.2             (AUTO)
-     rhel4   - install 32 bit i386 RHEL 4.7 AS          (MANUAL)    
+     rhel4   - install 32 bit i386 RHEL 4.7 AS          (MANUAL)
      centos5 - install 32 bit i386 CentOS 5.2 (Desktop) (MANUAL)
         ";
       # File contains of PXElinux default configuration
 
-
-
       "pxelinux_default" string =>
       "
 ###########################################
-
-
 ### This file is protected by CFEngine. ###
-
-
 ### Whatever you do, it will be changed ###
-
-
 ###     back to a promissing state.     ###
-
-
 ###########################################
 
 
-	
 default rhel5
 timeout 300
 prompt 1
 display pxelinux.cfg/boot.msg
 F1 pxelinux.cfg/boot.msg
-
 # install i386 RHEL 5.2
-
 
 label rhel5
    kernel vmlinuz-RHEL5U2
    append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/rhel/5.2
-
 # install i386 RHEL 5.2 using Kickstart
-
 
 label rhel5w
    kernel vmlinuz-RHEL5U2
    append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 ks=http://192.168.0.1/kickstart/kickstart-RHEL5U2.cfg
-
 # install i386 RHEL 4.7
-
 
 label rhel4
    kernel vmlinuz-RHEL4U7
    append initrd=initrd-RHEL4U7 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/rhel/4.7
-
 # install i386 CentOS 5.2
-
 
 label centos5
    kernel vmlinuz-CentOS5.2
    append initrd=initrd-CentOS5.2 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/centos/5.2
         ";
-
       # File contains of specified PXElinux default to be a RHEL5 webserver
-
-
 
       "pxelinux_rhel5_webserver" string =>
       "
 ###########################################
-
-
 ### This file is protected by CFEngine. ###
-
-
 ### Whatever you do, it will be changed ###
-
-
 ###     back to a promissing state.     ###
-
-
 ###########################################
 
-
-
 # install i386 RHEL 5.2 using Kickstart
-
 
 default rhel5w
 label rhel5w
    kernel vmlinuz-RHEL5U2
    append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 ks=http://192.168.0.1/kickstart/kickstart-RHEL5U2.cfg
         ";
-
       # File contains of a local repository for RHEL5
-
-
 
       "rhel5_base_repo" string =>
       "
 ###########################################
-
-
 ### This file is protected by CFEngine. ###
-
-
 ### Whatever you do, it will be changed ###
-
-
 ###     back to a promissing state.     ###
-
-
 ###########################################
 
-
-
 # Local Repository
-
 
 [Server]
 name=Server
@@ -439,15 +306,9 @@ enable=1
       #####################################################
 
 
-
-
   files:
-
     packages_ok::
-
       # Create files/dirs and edit the new files
-
-
 
       "/tftpboot/distro/RHEL/$(rh_distros)/."
       create => "true";
@@ -455,7 +316,7 @@ enable=1
       "/tftpboot/distro/CentOS/$(centos_distros)/."
       create => "true";
 
-      "$(dirs)/."   
+      "$(dirs)/."
       create => "true";
 
       "/tftpboot/pxelinux.cfg/boot.msg"
@@ -475,7 +336,7 @@ enable=1
       perms => mo("644","root"),
       edit_line => append_if_no_line("$(pxelinux_rhel5_webserver)"),
       edit_defaults => empty;
-      
+
       "/tftpboot/kickstart/kickstart-RHEL5U2.cfg"
       create => "true",
       perms => mo("644","root"),
@@ -490,17 +351,13 @@ enable=1
 
       # Copy files
 
-
-
       "/tftpboot"
-
       copy_from => local_cp("/usr/share/syslinux"),
       depth_search => recurse("inf"),
       file_select => pxelinux_files,
       action => immediate;
 
       "$(tmp_location)"
-
       perms => m("644"),
       copy_from => local_cp("/var/cfengine/inputs"),
       depth_search => recurse("inf"),
@@ -508,8 +365,6 @@ enable=1
       action => immediate;
 
       # Edit atftp, dhcp and apache2 configurations
-
-
 
       "/etc/sysconfig/atftpd"
       edit_line => append_if_no_line("$(atftpd_conf)"),
@@ -529,130 +384,86 @@ enable=1
       edit_line => append_if_no_line("$(httpd_conf)"),
       edit_defaults => std_defs,
       classes => satisfied("apache2_ok");
-
       # Make a static link
-
-
 
       "/tftpboot/pxelinux.cfg/C0A8000C"
       link_from => mylink("/tftpboot/pxelinux.cfg/default.RHEL5.webserver");
-
       # Hash comment some lines for apaches
-
-
 
     apache2_ok::
       "/etc/apache2/httpd.conf"
       edit_line => comment_lines_matching_apache2("#"),
       classes => satisfied("apache2_ready");
-
   commands:
-
       # Restart services
-
 
     atftpd_ready::
       "/etc/init.d/atftpd restart";
-
     dhcpd_ready::
       "/etc/init.d/dhcpd restart";
-
     apache2_ready::
       "/etc/init.d/apache2 restart";
 
-
       #####################################################
 
-
-
   packages:
-      
+
     ipv4_192_168_0_1::
       # Only the PXE boot server
 
-
-
       "$(software)"
-
       package_policy => "add",
       package_method => zypper,
       classes => satisfied("packages_ok");
-
 }
-
 #####################################################
-
 
 ########### *** Bodies are here *** #################
 
-
 #####################################################
-
-
 
 body file_select pxelinux_files
-
 {
       leaf_name => { "pxelinux.0" };
-
       file_result => "leaf_name";
 }
-
 #####################################################
 
-
-
 body copy_from mycopy_local(from,server)
-
 {
       source      => "$(from)";
       compare     => "digest";
 }
-
 #########################################################
-
-
 
 body link_from mylink(x)
 {
       source => "$(x)";
       link_type => "symlink";
 }
-
 #######################################################
 
-
-
 body classes satisfied(new_class)
-
 {
       promise_kept => { "$(new_class)"};
       promise_repaired => { "$(new_class)"};
 }
-
 #######################################################
-
-
 
 bundle edit_line comment_lines_matching_apache2(comment)
 {
-      
   vars:
       "regex" slist => { "\s.*Options\sNone", "\s.*AllowOverride\sNone", "\s.*Deny\sfrom\sall" };
 
   replace_patterns:
-
       "^($(regex))$"
       replace_with => comment("$(comment)");
 }
-
 #######################################################
-
 
 body file_select input_files
 {
       leaf_name => { ".*.cf",".*.dat",".*.txt" };
       file_result => "leaf_name";
 }
-
 #######################################################
