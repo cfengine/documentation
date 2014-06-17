@@ -17,7 +17,7 @@ This tutorial provides instructions for the following:
 
 * [Choose an attribute][Custom Inventory#Choose an Attribute to Inventory]
 
-* [Create and deploy inventory policy][Custom Inventory#Choose an Attribute to Inventory]
+* [Create and deploy inventory policy][Custom Inventory#Create and Deploy Inventory Policy]
 
 * [Run Reports][Custom Inventory#Run Reports]
 
