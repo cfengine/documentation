@@ -43,11 +43,12 @@ gathered from `cf-monitord`) is not part of the SQL reports data model.
 
 ## Example: Looking Up Hosts By Hostname
 
-Contexts are powerful, as you can use them to categorize hosts according to a 
-rich set of tags. For example, each host is automatically tagged with a 
-canonicalized version of its hostname and IP-address. So we could lookup the 
-host with hostname `windows2003-2.test.cfengine.com` as follows (lines split 
-and indented for presentability).
+Contexts, also known as classes, are powerful.  You can use them to
+categorize hosts according to a rich set of tags. For example, each
+host is automatically tagged with a canonicalized version of its
+hostname and IP-address. So we could lookup the host with hostname
+`windows2003-2.test.cfengine.com` as follows (lines split and indented
+for presentability).
 
 **Request**
 
