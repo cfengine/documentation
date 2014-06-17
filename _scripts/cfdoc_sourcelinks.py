@@ -53,7 +53,7 @@ def addLinkToSource(file_name,config):
 		out_file = open(html_file, "r")
 		lines = out_file.readlines()
 		out_file.close()
-		unresolved_link = re.compile("\\s?\\[.+?\\]\\[.*?\\]\\s")
+		unresolved_link = re.compile("(^|\\s+)\\[.+?\\]\\[.*?\\]\\s")
 		unexpanded_macro = re.compile("\\[%CFEngine_.*%\\]")
 	
 		out_file = open(html_file, "w")
