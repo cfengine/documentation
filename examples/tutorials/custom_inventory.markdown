@@ -12,7 +12,7 @@ For a more detailed overview on how the inventory system works please reference
 [CFEngine 3 inventory modules][The Policy
 Framework#cfengine-3-inventory-modules].
 
-## Overview ## 
+## Overview ##
 This tutorial provides instructions for the following:
 
 * [Choose an attribute][Custom Inventory#choose-an-attribute-to-inventory]
@@ -80,7 +80,7 @@ bundle common tutorials_inventory_owner
 ```
 
 **Note:** For the simplicity of this tutorial we assume that
-[masterfiles][sys#sys-masterdir] is not configured for policy updates from a
+[masterfiles][sys#sys.masterdir] is not configured for policy updates from a
 git repository. If it is, please add the policy to your repository and ensure
 it gets to its final destination as needed.
 
