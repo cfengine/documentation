@@ -47,9 +47,9 @@ You also need to define the hosts you want to target. You can select host catego
 
 ### Activation ###
 
-When you're done configuring your sketch you need to activate it. This will require a commit to your configured Git repository that transforms your configuration parameters into CFEngine policy. You will then be able to follow the state of your activation (`In Progress`, `OK`, and `Failed`) and report on any problems.
+When you're done configuring your sketch you need to activate it. This will require a commit to your configured Git repository that transforms your configuration parameters into CFEngine policy. You will then be able to follow the state of your activation (*In Progress*, *OK*, and *Failed*) and report on any problems.
 
-Note: *Sketches* can be activated multiple times with different configurations and sets of hosts. The **Design Center App** will show you each activation, its status, the hosts it targets, and the parameters specified.
+Note: *Sketches* can be activated multiple times with different configurations and sets of hosts. The **Design Center UI** will show you each activation, its status, the hosts it targets, and the parameters specified.
 
 
 ### See Also ###
