@@ -534,6 +534,21 @@ In CFEngine Community, users can use the `classesmatching()` and
 `variablesmatching()` functions to collect all the inventory variables
 and classes and report them in other ways.
 
+### Implementation Best Practice for CFEngine Enterprise ###
+
+It is important that inventory variables and classes are continually
+defined. Only inventory variables and classes defined during the last
+reported run are available for use by the inventory reporting interface.
+Some inventory operations can be expensive to rediscover during each
+agent run. To reduce this burden on the executing agents consider
+implementing a sample interval and caching mechanism.
+
+Inventory items that change frequently can create a burden on the
+Enterprise reporting infrastructure. Generally, inventory attributes
+should change infrequently. If you wish to inventory attributes that
+frequently change consider implementing a sample interval and caching
+mechanism.
+
 ## What Modules Are Available? ##
 
 As soon as you use the `promises.cf` provided in the parent directory,
