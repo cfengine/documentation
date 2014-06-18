@@ -31,3 +31,8 @@ You have to specify a ```promise handle``` or ```class``` (or pattern in ```prom
 
 Here you will find extensive information on single hosts that CFEngine detects automatically in your environment. Since this is data gathered per host, you need to select a single host from the menu on the left first.
 
+## Health ##
+
+![Hosts](Mission-Portal-Hosts-1.png)
+
+You can get quick access to the health of hosts, including direct links to reports, from the Health drop down at the top of every Enterprise UI screen. 
