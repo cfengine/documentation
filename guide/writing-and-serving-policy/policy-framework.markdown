@@ -539,15 +539,13 @@ and classes and report them in other ways.
 It is important that inventory variables and classes are continually
 defined. Only inventory variables and classes defined during the last
 reported run are available for use by the inventory reporting interface.
-Some inventory operations can be expensive to rediscover during each
-agent run. To reduce this burden on the executing agents consider
-implementing a sample interval and caching mechanism.
 
 Inventory items that change frequently can create a burden on the
 Enterprise reporting infrastructure. Generally, inventory attributes
-should change infrequently. If you wish to inventory attributes that
-frequently change consider implementing a sample interval and caching
-mechanism.
+should change infrequently.
+
+If you wish to inventory attributes that frequently change or are expensive to
+discover consider implementing a sample interval and caching mechanism.
 
 ## What Modules Are Available? ##
 
