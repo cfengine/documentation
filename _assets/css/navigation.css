@@ -115,7 +115,8 @@
 #left_col .level1 > ul > li span {
     color: #F5821F;
     text-transform: uppercase;
-    line-height: 28px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 .sidr-inner .sidr-class-level1 li a,
@@ -133,9 +134,16 @@
 }
 
 #left_col .level1 > ul > li > ul.level2 > li {
-    line-height: 25px;
+    line-height: 26px;
     font-weight: 500;
     background-color: #f6f6f6;
+}
+
+#left_col .level1 > ul > li > ul.level2 > li:first-child {
+    padding-top: 6px;
+}
+#left_col .level1 > ul > li > ul.level2 > li:last-child {
+    padding-bottom: 6px;
 }
 
 
@@ -144,6 +152,8 @@
 .sidr-inner .level2 li a {
     color: #4386A5;
     text-transform: none;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 #left_col ul.level3 {
