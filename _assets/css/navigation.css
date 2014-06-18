@@ -405,7 +405,7 @@
     display: none;
     right: 20px;
     position: fixed;
-    width: 40px;
+    width: 45px;
     z-index:999999;
 }
 
@@ -413,7 +413,7 @@
         display: block;
         text-align: center;
         text-decoration: none;
-        width: 40px;
+        width: 39px;
         border-radius: 50%;
         border: 3px solid #0c668f;
         color: #0c668f;
@@ -432,7 +432,7 @@
         display: inline-block;
         text-decoration: inherit;
         width: 40px;
-        font-size: 23px;
+        font-size: 22px;
         line-height: 36px;
         text-align: center;
         font-variant: normal;
