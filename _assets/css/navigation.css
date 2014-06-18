@@ -32,7 +32,7 @@
 
 #nav_wrapper li a,
 #nav_wrapper li span {
-    font-family: DINRoundOT-Bold;
+    font-family: 'DINRoundOT-Bold', 'Helvetica Neue', Helvetica, Arial, Tahoma, sans-serif;
     font-size: 16px;
     line-height: 16px;
     text-decoration: none;
