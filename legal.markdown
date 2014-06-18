@@ -57,9 +57,10 @@ CFEngine includes the following 3rd party libraries and components:
 * [OpenLDAP and liblber](http://www.openldap.org) under the [OpenLDAP Public License](http://www.openldap.org/software/release/license.html)
 * [PHP](http://php.net) under the [PHP license version 3.01](http://www.php.net/license/3_01.txt)
 * [php-apc](http://pecl.php.net/package/APC) under the [PHP License](http://www.php.net/license/3_01.txt)
-<!--- * [Piwik.js](http://piwik.org) under the [Simplified BSD license](http://piwik.org/free-software/bsd/) -->
 * [PostgreSQL, libecpg and libecpg_compat](http://www.postgresql.org) under the [PostgreSQL License](http://opensource.org/licenses/postgresql)
 * [redis](http://redis.io) under the [three clause BSD license](http://redis.io/topics/license)
 * [rsync](http://rsync.samba.org) under the [GPLv3](http://rsync.samba.org/GPL.html)
 * [Twitter Bootstrap Framework](http://getbootstrap.com) under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 * [underscore.js](http://underscorejs.org) under the MIT license
+
+<!--- * [Piwik.js](http://piwik.org) under the [Simplified BSD license](http://piwik.org/free-software/bsd/) -->
