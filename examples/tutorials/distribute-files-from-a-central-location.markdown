@@ -167,7 +167,7 @@ section which is found under `body common control`. Once the policy file is incl
 inputs, the bundle can be activated. Bundles can be activated by adding them to either the
 `bundlesequence` or they can be called as a `methods` type promise.
 
-Add the following entries to `promises.cf` under `body common control` -> `inputs`:
+Add the following entries to `promises.cf` under `body common control` -> [`inputs`][Components and Common Control#inputs]:
 
     "lib/custom/files.cf",
     "services/patching.cf",
