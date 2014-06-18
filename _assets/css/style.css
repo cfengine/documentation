@@ -362,7 +362,7 @@ article {
         display:inline-block;
     }
     
-    .article_title i.fa-link {
+    article i.fa-link {
         font-size: 18px;
         color: #4386A5;
         line-height: 18px;
@@ -370,10 +370,11 @@ article {
         display: inline-block;
         position:relative;
         top:-3px;
+        margin-right: 8px;
     }
     
-    .article_title:hover i.fa-link  {
-       visibility: visible;
+    .article_title i.fa-link {
+        margin-right: 0;
     }
 
     article h1,
@@ -384,13 +385,20 @@ article {
     article h6 {
        font-weight: 300;
     }
+    
+    article h1:hover i,
+    article h2:hover i,
+    article h3:hover i,
+    article h4:hover i,
+    article h5:hover i {
+        visibility: visible;
+    }
 
     article h1 {
         color: #f5821f;
         font-size: 32px;
 	line-height: 48px;
 	padding-bottom: 22px;
-        display: inline-block;
     }
 
     article h2 {
