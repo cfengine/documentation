@@ -302,10 +302,16 @@
     cursor: pointer;
 }
 
+#TOCbox:hover,
+.TOCheader:hover {
+    text-decoration: underline;
+}
+
 #TOCbox i.fa {
     font-size: 11px;
     margin-right: 4px;
     vertical-align: middle;
+    line-height: 16px;
 }
 
 .TOCheader {
