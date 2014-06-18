@@ -216,12 +216,12 @@ doing the following on your policy server:
 2. If the example contains a `body common control` section, delete it. That 
 section will look something like this:
 
-		```cf3  
-			  body common control
-			  {
-				bundlesequence  => { "hello_world" };
-			  }
-		```
+	```cf3  
+		  body common control
+		  {
+			bundlesequence  => { "hello_world" };
+		  }
+	```
 		
 You cannot have duplicate control bodies (i.e. two
 agent control bodies, one in the main file and one
