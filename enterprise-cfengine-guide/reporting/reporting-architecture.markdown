@@ -11,7 +11,7 @@ components from the CFEngine Enterprise hub package.
 
 ## cf-hub ##
 
-Like all CFEngine components, [`cf-hub`][cf-hub] is 
+Like all CFEngine components, `cf-hub` is 
 located in `/var/cfengine/bin`. It is a daemon process that runs in the 
 background, and is started by `cf-agent` and from the init scripts.
 
@@ -23,14 +23,12 @@ To collect reports from any host manually, run the following:
 
     $ /var/cfengine/bin/cf-hub -H <host IP>
 
-* Add `-v` to run in verbose mode to diagnose connectivity issues and trace the data 
-collected.
+* Add `-v` to run in verbose mode to diagnose connectivity issues and trace the data collected.
 
-* Delta (differential) reports, the default mode, collect new data in
-the last interval and a subset of variable information. Rebase (full)
-report collect everything. You can choose the full collection by
+* Delta (differential) reporting, the default mode, collects data that has changed since the
+last collection. Rebase (full) reports collect everything. You can choose the full collection by
 adding `-q rebase` (for backwards comapatibility, also available as
-`-q full`)..
+`-q full`).
 
 ## Apache ##
 

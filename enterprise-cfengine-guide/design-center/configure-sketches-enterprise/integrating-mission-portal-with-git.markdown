@@ -67,7 +67,7 @@ repository provider's documentation for more information.
 ## Test the Design Center app
 
 1. Log in to the Mission Portal as an administrator (e.g. the `admin` user).
-2. Click the `Design Center` app at the left.
+2. Select the [Design Center][Design Center UI] at the left.
 3. View the listing of some sketches that are available out of the box.
 4. Click the `Packages::packages_removed` sketch.
 5. Fill out the fields as shown by the example below, and click `Show Hosts` and then `Activate`.
@@ -79,11 +79,11 @@ repository provider's documentation for more information.
 Our test sketch (created above) is now committed to the Git repository. Go to a clone of the
 Git repository, pull, and see that the commit is there:
 
-1. Fetch your latest commit (`origin` and `master` depend on your settings).
+1. Fetch your latest commit (```origin``` and ```master``` depend on your settings).
 
         $ git fetch origin master
 
-2. Rebase, and adjust to the branch you are using (master in this example).
+2. Rebase, and adjust to the branch you are using (```master``` in this example).
 
         $ git rebase origin/master
 
