@@ -1,6 +1,6 @@
 body common control
 {
-bundlesequence => { "process_restart" };
+      bundlesequence => { "process_restart" };
 }
 
 #########################################################
@@ -8,15 +8,14 @@ bundlesequence => { "process_restart" };
 
 bundle agent process_restart
 {
-processes:
+  processes:
 
-  "/usr/bin/daemon" 
-        restart_class => "launch";
+      "/usr/bin/daemon"
+      restart_class => "launch";
 
-commands:
+  commands:
 
-  launch::
-
-   "/usr/bin/daemon";
+    launch::
+      "/usr/bin/daemon";
 
 }

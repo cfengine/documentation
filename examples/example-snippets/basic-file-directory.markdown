@@ -105,16 +105,10 @@ To convergently chain a copy followed by edit, you need a staging file. First yo
 
 [%CFEngine_include_snippet(copy_then_edit_a_file_convergently.cf, .* )%]
 
-    Creating files and directories
     Database creation
     Deleting lines from a file
     Deleting lines exception
 
-
-## Creating files and directories
-
-
-[%CFEngine_include_snippet(creating_files_and_directories.cf, .* )%]
 
 ## Deleting lines from a file
 

@@ -1,30 +1,20 @@
 body common control
-
 {
-bundlesequence  => { "example" };
+      bundlesequence  => { "example" };
 }
-
 ###########################################################
 
-
 bundle agent example
+{
+  vars:
+      "my80" string => readtcp("research.iu.hio.no","80","GET /index.php HTTP/1.1$(const.r)$(const.n)Host: research.iu.hio.no$(const.r)$(const.n)$(const.r)$(const.n)",20);
 
-{     
-vars:
+  classes:
+      "server_ok" expression => regcmp(".*200 OK.*\n.*","$(my80)");
 
-  "my80" string => readtcp("research.iu.hio.no","80","GET /index.php HTTP/1.1$(const.r)$(const.n)Host: research.iu.hio.no$(const.r)$(const.n)$(const.r)$(const.n)",20);
-
-classes:
-
-  "server_ok" expression => regcmp(".*200 OK.*\n.*","$(my80)");
-
-reports:
-
-  server_ok::
-
-    "Server is alive";
-
-  !server_ok::
-
-    "Server is not responding - got $(my80)";
+  reports:
+    server_ok::
+      "Server is alive";
+    !server_ok::
+      "Server is not responding - got $(my80)";
 }

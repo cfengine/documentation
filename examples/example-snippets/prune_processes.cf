@@ -1,29 +1,25 @@
 body common control
 {
-bundlesequence  => { "testbundle"  };
+      bundlesequence  => { "testbundle"  };
 }
 
 ########################################################
-
 
 bundle agent testbundle
-
 {
-processes:
+  processes:
 
- ".*"
+      ".*"
 
-    process_select  => big_processes("mark"),
-            signals => { "term" };
+      process_select  => big_processes("mark"),
+      signals => { "term" };
 }
 
 ########################################################
 
-
 body process_select big_processes(o)
-
 {
-process_owner => { "$(o)" };
-rsize => irange("100000","900000");
-process_result => "rsize.process_owner";
+      process_owner => { $(o) };
+      rsize => irange("100000","900000");
+      process_result => "rsize.process_owner";
 }

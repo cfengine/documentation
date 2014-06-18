@@ -62,9 +62,9 @@ running.
 ## Start the CFEngine Enterprise 3.6 Vagrant Environment
 
 Step 1. Download our ready-made Vagrant project (use the
-[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/enterprise-3.6-vagrant_free25-201406160856.tar.gz)
+[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/enterprise-3.6-vagrant_free25-201406171618.tar.gz)
 or the
-[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/enterprise-3.6-vagrant_free25-201406160856.zip)
+[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/enterprise-3.6-vagrant_free25-201406171618.zip)
 depending on your preference).
 
 Step 2. Save and unpack the file anywhere on your drive; this
@@ -105,9 +105,7 @@ password: admin
 **Note:** It may take up to 15 minutes before the hosts register in Mission
 Portal.
 
-That's all there is to it, the install is complete! Move on and explore the environment or skip ahead [Read on][Configure and Deploy a Policy Using
-Sketches (Enterprise Only)] to start your first lesson on how to use CFEngine.
-
+That's all there is to it, the install is complete! Move on and explore the environment.
 ## Exploring the Environemnt
 
 ### Accessing VMs

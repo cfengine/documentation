@@ -1,37 +1,27 @@
 body common control
 {
-bundlesequence => { "acls" };
+      bundlesequence => { "acls" };
 }
-
 #########################################
-
 
 bundle agent acls
-
 {
-files:
+  files:
+      "/media/flash/acl/test_dir"
 
-  "/media/flash/acl/test_dir"
-   
-    depth_search => include_base,
-    acl => test;
+      depth_search => include_base,
+      acl => test;
 }
-
 #########################################
-
 
 body acl test
-
 {
-acl_type => "generic";
-aces => {"user:bob:rwx", "group:staff:rx", "all:r"};
+      acl_type => "generic";
+      aces => {"user:bob:rwx", "group:staff:rx", "all:r"};
 }
-
 #########################################
 
-
 body depth_search include_base
-
 {
-include_basedir => "true";
+      include_basedir => "true";
 }

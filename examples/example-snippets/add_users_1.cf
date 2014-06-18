@@ -1,82 +1,82 @@
 bundle agent addusers
 {
-vars:
+  vars:
 
-  # Add some users
-
-
-  "pw[mark]" string => "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";
-  "pw[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
-  "pw[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
-
-  "users" slist => getindices("pw");
-
-files:
-
-  "/etc/passwd"
-     edit_line => append_users_starting("addusers.pw");
-
-#  "/etc/shadow"
-
-#     edit_line => append_users_starting("$(users):defaultpasswd:::::::");
+      # Add some users
 
 
-  "/etc/group"
-       edit_line => append_user_field("users","4","@(addusers.users)");
+      "pw[mark]" string => "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";
+      "pw[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
+      "pw[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
 
-  "/home/$(users)/."
+      "users" slist => getindices("pw");
 
-     create => "true",
+  files:
+
+      "/etc/passwd"
+      edit_line => append_users_starting("addusers.pw");
+
+      #  "/etc/shadow"
+
+      #     edit_line => append_users_starting("$(users):defaultpasswd:::::::");
+
+
+      "/etc/group"
+      edit_line => append_user_field("users","4","@(addusers.users)");
+
+      "/home/$(users)/."
+
+      create => "true",
       perms => mog("755","$(users)","users");
 }
 ```
 bundle agent addusers
 {
-vars:
+  vars:
 
-  "users" slist => { "mark", "fred", "jane" };
+      "users" slist => { "mark", "fred", "jane" };
 
-commands:
+  commands:
 
-   "/usr/sbin/useradd $(users)";
+      "/usr/sbin/useradd $(users)";
 }
 ```
 bundle agent addusers
 {
-vars:
+  vars:
 
-  # Add some users
+      # Add some users
 
 
-  "pw[mark]" string => "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";
-  "pw[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
-  "pw[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
+      "pw[mark]" string => "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";
+      "pw[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
+      "pw[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
 
-  "users" slist => getindices("pw");
+      "users" slist => getindices("pw");
 
-methods:
+  methods:
 
-  "any" usebundle => user_add("$(users)","$(pw[$(users)])");
+      "any" usebundle => user_add("$(users)","$(pw[$(users)])");
 
 }
 
 bundle agent user_add(x,pw)
 {
-files:
+  files:
 
-  "/etc/passwd"
-     edit_line => append_users_starting("addusers.pw");
+      "/etc/passwd"
+      edit_line => append_users_starting("addusers.pw");
 
-#  "/etc/shadow"
+      #  "/etc/shadow"
 
-#     edit_line => append_users_starting("$(users):defaultpasswd:::::::");
+      #     edit_line => append_users_starting("$(users):defaultpasswd:::::::");
 
 
-  "/etc/group"
-       edit_line => append_user_field("users","4","@(addusers.users)");
+      "/etc/group"
+      edit_line => append_user_field("users","4","@(addusers.users)");
 
-  "/home/$(users)/."
+      "/home/$(users)/."
 
-     create => "true",
+      create => "true",
       perms => mog("755","$(users)","users");
 }
