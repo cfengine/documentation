@@ -8,11 +8,13 @@ tags: [Examples, Tutorials]
 
 Familarize yourself with CFEngine by following these tutorials.
 
-#### [JSON Support in CFEngine][JSON Support in CFEngine]
+### [JSON Support in CFEngine][JSON Support in CFEngine] ###
 
 Using JSON from CFEngine is easy. Try it out and see for yourself!
 
-### [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches] (Enterprise Users Only)
+### [Configure and deploy a policy using sketches in the Design Center.][Configure and Deploy a Policy Using Sketches] ###
+
+Note: This tutorial is for Enterprise users only
 
 In this tutorial, you will perform the following:
 
