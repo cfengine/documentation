@@ -137,7 +137,7 @@ bundle agent hello_world
 ```
 
 Now press "esc" to exit the "Insert" mode, then type ```:w``` to save the file changes and "Enter".
-Exit vi by typing ```:q``` then "Enter." This will return to the _masterfiles_ prompt.
+Exit vi by typing ```:q``` then "Enter." This will return to the prompt.
 
 Execute the following command:  
 ```
@@ -183,7 +183,7 @@ bundle agent hello_world
 ```
 
 Now exit "Insert" mode by pressing "esc". Save file changes by typing ```:w``` then "Enter" 
-then exit vi by typing ```:q``` then "Enter". This will return to the _masterfiles_ prompt.
+then exit vi by typing ```:q``` then "Enter". This will return to the prompt.
 
 Make the policy file executable, and then run it, by typing the following two commands:
 
