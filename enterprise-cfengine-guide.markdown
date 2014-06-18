@@ -15,7 +15,7 @@ WebScale does not just imply large server deployments. The speed at which change
 
 ## Intelligent Automation of Infrastructure ##
 		
-Automate your infrastructure with self-service capabilities CFEngine Enterprise enables you to take advantage of agile, secure, and scalable infrastructure automation that makes repairs using a policy-based approach. 		
+Automate your infrastructure with self-service capabilities. CFEngine Enterprise enables you to take advantage of agile, secure, and scalable infrastructure automation that makes repairs using a policy-based approach. 		
 
 ## Policy-Based Application Deployment ##
 
@@ -27,7 +27,7 @@ Gain visibility into your infrastructure and applications, and be alerted to iss
 
 ## CFEngine Enterprise Features ##
 
-## User Interface ##
+### User Interface ###
 
 The CFEngine Enterprise Mission Portal provides a central dashboard for real-time monitoring, search, and reporting for immediate visibility into your environment’s actual vs desired state. You can also use Mission Portal to set individual and group alerts and track system events that make you aware of specific infrastructure changes.
 
