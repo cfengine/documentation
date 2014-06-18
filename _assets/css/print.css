@@ -21,7 +21,8 @@
         font-size: 8px
     }
 
-        footer .license_banner {
+        footer .download_info,
+        footer .contact_info {
             display: none
         }
 
@@ -69,9 +70,6 @@
         text-decoration: none
     }
 
-    #print_TOC .link_h1:first-child {
-        display: none
-    }
 
     #print_TOC .link_h3 {
         margin-left: 1em
