@@ -895,3 +895,21 @@ def library_include(parameters, config):
 		qa.Log(config, "Failure to include " + parameters[0])
 		
 	return 	markdown_lines
+
+def redirect(parameters, config):
+	markdown_lines = []
+	target_anchor = parameters[0]
+	html_map = config.get("html_map", dict())
+
+	target_url = html_map.get(target_anchor)
+	if target_url == None:
+		print "Invalid redirect target '%s', redirecting to home" % target_anchor
+		target_url = "index.html"
+	
+	markdown_lines.append("<script type=\"text/javascript\">\n")
+	markdown_lines.append("<!--\n")
+	markdown_lines.append("window.location = \"%s\"\n" % target_url)
+	markdown_lines.append("-->\n")
+	markdown_lines.append("</script>\n\n")
+	
+	return markdown_lines

@@ -42,26 +42,33 @@ def apply(config):
 def readLinkFile(config):
 	output_file = config["reference_path"]
 	link_map = config.get("link_map", dict())
+	html_map = config.get("html_map", dict())
 	
 	link_file = open(output_file, 'r')
 	link_lines = link_file.readlines()
 	for line in link_lines:
 		label = line[line.find('[') + 1:line.find(']')]
+		html = line[line.find("]: ") + 3:].lstrip()
+		html = html[:html.find("\"")].rstrip() # cut off alias
 		keyword = label
 		if line.find("]: reference-functions-") != -1:
 			keyword += "()"
 		link_map["`" + keyword + "`"] = ["[" + label + "]"]
+		html_map[label] = html
 	config["link_map"] = link_map
+	config["html_map"] = html_map
 
 def addLinkToMap(keyword, anchor, html, config):
 	link_map = config.get("link_map", dict())
+	html_map = config.get("html_map", dict())
 
 	autolink = keyword[-1] != "#"
 	if not autolink:
 		keyword = keyword.rstrip("#").rstrip()
 		anchor = anchor.rstrip("#").rstrip()
 		html = html.rstrip("#").rstrip()
-	
+
+	html_map[anchor] = html[:html.find(" \"")]
 	anchor = "[%s]" % anchor
 	anchor_list = link_map.get("`%s`" % keyword, list())
 	if anchor in anchor_list:
@@ -82,6 +89,7 @@ def addLinkToMap(keyword, anchor, html, config):
 	out_file.close()
 	
 	config["link_map"] = link_map
+	config["html_map"] = html_map
 
 def headerToAnchor(header):
 	# remove trailing hashes, allowed in markdown and
@@ -163,7 +171,7 @@ def parseMarkdownForAnchors(file_name, config):
 			anchor = headerToAnchor(header)
 			label = current_file_label+ '#' + header
 			# prefer top-level anchors
-			addLinkToMap(header, label, current_file_name + '#' + anchor + ' \"' + current_title + ' - ' + header + '\"', config)
+			addLinkToMap(header, label, current_file_name + '#' + anchor + ' \"' + current_title + ' - ' + header.rstrip("#") + '\"', config)
 	
 def applyLinkMap(file_name, config):
 	# print("applyLinkMap() filename = %s" % file_name)
