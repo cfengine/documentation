@@ -335,6 +335,14 @@ Renders a table of built-in functions, grouped by function category.
 
 Renders a nested tree of CFEngine words, starting at `subtree`.
 
+#### Other Macros
+
+* `[%CFEngine_redirect(target)]`
+
+Injects javascript that redirects the current page to the HTML page for `target`,
+which needs to be a title or title#section combination as in regular `[text][title#section]`
+links.
+
 ## Content Style Guide
 
 Make sure you follow this style guide to make using CFEngine and the
