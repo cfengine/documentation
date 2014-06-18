@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Managing Software
-published: true
+published: false
 tags: [Examples, Policy, Packages]
 ---
 

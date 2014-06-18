@@ -9,7 +9,7 @@ tags: [getting started, installation, enterprise, faq]
 * [Enterprise Installation][FAQ#Enterprise Installation and Configuration]
 	* [What steps should I take after installing CFEngine Enterprise?][FAQ#What steps should I take after installing CFEngine Enterprise]
 	* [Can I use an existing PostgreSQL installation?][FAQ#Can I use an existing PostgreSQL installation]
-	* [What is the system user for the CFEngine dedicated PostgreSQL database?][FAQ#What is the system user for the CFEngine dedicated PostgreSQL database]
+	* [What is the system user for the CFEngine dedicated PostgreSQL database?][FAQ#What is the system user for the CFEngine dedicated PostgreSQL database and Apache server]
 	* [Do I need experience with PostgreSQL?][FAQ#Do I need experience with PostgreSQL]
 	* [What are the requirements for installing CFEngine Enterprise?][FAQ#What are the requirements for installing CFEngine Enterprise]
 * [Enterprise Scalability][FAQ#Enterprise Scalability]
@@ -47,7 +47,7 @@ expertise to properly configure your database installation. The
 defaults are well tuned for common cases but you may find
 optimizations depending on your hardware and OS.
 
-#### What is the system user for the CFEngine dedicated PostgreSQL database and Apache server
+#### What is the system user for the CFEngine dedicated PostgreSQL database and Apache server ####
 
 Starting with CFEngine 3.6.0 there will be a system user called ```cfpostgres``` for running the dedicated CFEngine PostgreSQL database
 installation.
