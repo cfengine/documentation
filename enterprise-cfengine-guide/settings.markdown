@@ -27,7 +27,7 @@ Settings are accessible from any view of the mission portal, from the drop down 
 
 ![Preferences](Settings-2.png)
 
-User settings and preferences allows the CFEngine Enterprise adminstrator to change various options, including:
+User settings and preferences allows the CFEngine Enterprise administrator to change various options, including:
 
 * User authentication
 * Turn on or off RBAC
