@@ -74,7 +74,7 @@ bundles are only evaluated by **cf-agent**, the [agent component][cf-agent] of C
 This bundle [promises][Promise Types and Attributes] to [report][reports] on any [class of
 hosts][Classes and Decisions]. 
 
-[Back to top of page.][Examples and Tutorials#Links to Examples]
+
 
 ### Activate a Bundle Manually ###
 
@@ -105,7 +105,7 @@ CFEngine uses /var because it is one of the Unix file systems that resides local
 Thus, CFEngine can function even if everything else fails 
 (your other file systems, your network, and even system binaries) and possibly repair problems. 
 
-[Back to top of page.][Examples and Tutorials#Links to Examples]
+
 
 ### Make the Example Stand Alone ###
 
@@ -151,7 +151,7 @@ The output is shown below:
 2013-08-20T14:25:36-0500   notice: R: Hello World!
 ```
 
-[Back to top of page.][Examples and Tutorials#Links to Examples]
+
 
 ### Make the Example an Executable Script ###
 
@@ -204,7 +204,7 @@ See the output below:
 # ./hello_world.cf
 2013-08-20T14:39:34-0500   notice: R: Hello World!
 ```
-[Back to top of page.][Examples and Tutorials#Links to Examples]
+
 
 ### Integrating the Example into your Main Policy ###
 
@@ -276,5 +276,5 @@ In the variable declaration, replace "cftesting" with your domain name:
 
 [%CFEngine_include_snippet(integrating_the_example_into_your_main_policy.cf, .* )%]
 
-[Back to top of page.][Examples and Tutorials#Links to Examples]
+
 
