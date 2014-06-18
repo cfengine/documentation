@@ -31,7 +31,7 @@ repository (called the *upstream*) using the GitHub web interface, make
 changes in your fork and create pull requests so that your changes can be
 merged into the *upstream* repository.
 
-It is in general advisable to make small commit that are submitted through
+It is in general advisable to make small commits that are submitted through
 pull requests frequently. Otherwise any structural changes to documentation
 content can cause merge conflicts that are hard to resolve.
 
@@ -387,6 +387,16 @@ However, the comma can be dropped in the following cases:
 **Periods and spaces**
 
 The period ending a sentence should be followed by 1 space.
+
+### Emphasizing
+
+When referring to technical words, such as CFEngine keywords, filenames or commands,
+use backticks to format that word as code (ie monospaced font). If the word is a
+known word, a link will automatically generated (see above).
+
+When referring to UI elements or interactive functionality, use `*italic*`.
+
+To highlight sections of texts without starting a new header, use `**bold**`.
 
 ### Abbreviations
 
