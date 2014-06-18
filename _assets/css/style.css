@@ -3,6 +3,11 @@ table {border-collapse: collapse; border-spacing: 0}
 .clear {clear:both; height:0; font-size:0; overflow:hidden}
 .invisible {display:none}
 
+@font-face {
+    font-family: 'DINRoundOT-Bold';
+    src: url('../media/fonts/DINRoundOT-Bold.otf') format('opentype');
+}
+
 html,body {
     width:100%;
     height:100%;
@@ -10,7 +15,7 @@ html,body {
 
 body {
     background: #fff;
-    font-family: museo-sans, Gudea, "Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;
+    font-family: museo-sans, "Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif;
     font-size: 1em;
     line-height: 1.6;
     font-weight: 500;
