@@ -15,7 +15,7 @@ WebScale does not just imply large server deployments. The speed at which change
 
 ## Intelligent Automation of Infrastructure ##
 		
-Automate your infrastructure with self-service capabilities CFEngine Enterprise enables you to take advantage of agile, secure, and scalable infrastructure automation that makes repairs using a policy-based approach. 		
+Automate your infrastructure with self-service capabilities. CFEngine Enterprise enables you to take advantage of agile, secure, and scalable infrastructure automation that makes repairs using a policy-based approach. 		
 
 ## Policy-Based Application Deployment ##
 
