@@ -37,7 +37,7 @@ $(document).ready(function() {
 
 
     var ToC_start =
-        "<div class='TOCheader'>Table of Contents</div>" +
+        "<div class='TOCheader'><i class='fa fa-chevron-down'></i>Table of Contents</div>" +
         "<nav role='navigation'>" +
              "<ul>";
     var ToC_End =
@@ -207,3 +207,25 @@ var closeLeft = $('<div id="closeLeft" style="z-index:999"><a style="z-index:999
         openedMenues=[];
     });
 });
+
+$(document).ready(function() {
+    $("#TOCbox_wrapper").click(function() { 
+        $("#TOCbox_list").toggle();
+    });
+
+    $(document).click(function(event) { 
+        if(!$(event.target).closest('#TOCbox_wrapper').length) {
+            if($('#TOCbox_list').is(":visible")) {
+                $('#TOCbox_list').hide();
+            }
+        }
+    });
+    
+    $(".article :header").each(function(){
+        var url = window.location.href;
+        url = url.replace(window.location.hash,'');
+        $(this).prepend('<a class="anchor" href="' + url + '#' + $(this).attr("id") + '"><i class="fa fa-link"></i></a>');
+    });
+    
+});
+

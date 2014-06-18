@@ -294,17 +294,6 @@
     padding-top:4px;
 }
 
-
-    #TOCbox_wrapper #TOCbox:hover #TOCbox_list,
-    #TOCbox_wrapper #TOCbox_list:hover #TOCbox_list{
-        display: block !important;
-    }
-    
-    #TOCbox_wrapper #TOCbox:hover .TOCheader,
-    #TOCbox_wrapper #TOCbox_list:hover .TOCheader{
-    
-    }
-
 #TOCbox, .TOCheader {
     font-weight: 500;
     font-size: 15px;
@@ -313,13 +302,18 @@
     cursor: pointer;
 }
 
+#TOCbox i.fa {
+    font-size: 11px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
 .TOCheader {
     padding: 0 14px 10px;
     border-bottom: 1px solid #A4BFC8;
 }
 
-   #TOCbox_wrapper #TOCbox:hover .TOCheader,
-   #TOCbox_wrapper #TOCbox_list:hover .TOCheader{
+   #TOCbox_wrapper #TOCbox .TOCheader {
        color: #555;
    }
 
