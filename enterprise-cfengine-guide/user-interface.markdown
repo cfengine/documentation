@@ -12,6 +12,8 @@ CFEngine Enterprise's data collection service, the cf-hub collector, collects, o
 
 CFEngine Enterprise's user interface, the Mission Portal makes that data available for high level reports or alerts and notifications.  The reports can be designed in a GUI report builder or directly with SQL statements passed to PostgreSQL.
 
+![Dashboard](Mission-Portal-Dashboard-1.png)
+
 The Mission Portal also allows authorized infrastructure engineers to quickly and easily modify any group of machines through the Design Center toolchain, which uses a data-driven policy template mechanism called sketches.
 
 * [Hosts and Health][User Interface#Hosts and Health]
