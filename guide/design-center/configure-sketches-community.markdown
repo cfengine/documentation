@@ -6,8 +6,6 @@ sorting: 30
 tags: [design center, cf-sketch, sketches]
 ---
 
-### Community Users can Configure and Deploy Sketches on the Command Line
-
 The CFEngine Design Center is a repository of pre-made components
 called **sketches** that allow you to use the full power of CFEngine
 without having to learn the CFEngine policy language. Although
@@ -19,7 +17,7 @@ using both a command-line interface called `cf-sketch`.
 
 Please note that CFEngine Enterprise comes with the **Design Center App** to make the work below effortless.
 
-## Overview
+## Overview ##
 
 This page provides instructions on how a Design Center sketch can be
 found, installed, configured, and executed as policy, using
@@ -47,12 +45,12 @@ command-line tools with CFEngine community. The overview is as follows:
 
 Additional resources are included at the end of this page.
 
-## Before you Begin
+## Before you Begin ##
 
 Complete the software requirements and review the basic concepts of sketches 
 before you begin the instructions:
 
-### Requirements
+### Requirements ###
 
 To follow these instructions, you will need the following:
 
@@ -75,7 +73,7 @@ To follow these instructions, you will need the following:
   install libterm-readline-gnu-perl`). You can also install it using
   the `cpan` utility included with Perl.
 
-### Basic Concepts
+### Basic Concepts ###
 
 The following concepts provide a better understanding of how
 the Design Center works. The Design Center framework contains the following:
@@ -130,9 +128,9 @@ Other concepts exist that can make your use of the Design
 Center even more powerful, but these are enough to get you started and
 to be able to follow these instructions.
 
-## Instructions
+## Instructions ##
 
-### Step 1. Check out the Design Center repository
+### Step 1. Check out the Design Center repository ###
 
 The Design Center is an open source project and is hosted on
 GitHub. Access the repository at
@@ -157,7 +155,7 @@ call this the **CHECKOUT** directory and henceforth refer to it as
 at the prompt.  From that point on, all command-line interaction can
 use `$CHECKOUT` and it will expand to the installation directory.
 
-### Step 2. Run cf-sketch
+### Step 2. Run cf-sketch ###
 
 You can run cf-sketch in interactive mode directly from its directory
 under `$CHECKOUT`:
@@ -177,7 +175,7 @@ to see the descriptions of all the available commands. You can run
 commands non-interactively by passing them as arguments to the
 `cf-sketch.pl` script from the command line.
 
-### Step 3. Search for sketches
+### Step 3. Search for sketches ###
 
 The first step is to find some sketches to install on your system. The
 search command provides, without any parameters, a list of all
@@ -234,7 +232,7 @@ about its parameters:
         dynamic_path: string
         symlink_path: string
 
-### Step 4. Install a sketch
+### Step 4. Install a sketch ###
 
 The first step in using a sketch is to install it. As an example, install
 the `System::motd` sketch:
@@ -263,11 +261,11 @@ Verify that the sketch has been installed using the `list` command:
 Note that the `CFEngine::dclib` and `CFEngine::stdlib` are
 automatically installed as dependencies of the `System::motd` sketch.
 
-### Step 5. Activate a sketch
+### Step 5. Activate a sketch ###
 
 Activating sketches includes adding two elements: a parameter set and an environment.
 
-#### Define the parameter set
+#### Define the parameter set ####
 
 Define the parameter set that contains the values that will
 be used by the `System::motd` sketch:
@@ -308,7 +306,7 @@ the `list` command:
       [System::motd][prepend_command]: /bin/uname -snrvm
       [System::motd][symlink_path]:
 
-#### Define an environment
+#### Define an environment ####
 
 For this example, define an
 environment that is always active:
@@ -332,7 +330,7 @@ defined:
 Note that the `test` and `verbose` fields are optional and default to
 `!any`, which is equivalent to "never" in CFEngine terms.
 
-#### Run the activate command
+#### Run the activate command ####
 
 Activate the sketch by tying together the sketch
 name, parameter set, and environment:
@@ -361,7 +359,7 @@ sketch will be executed with the values defined in the
 conditions defined in the `walkthrough` environment (which includes
 all machines for now).
 
-### Step 6. Deploy the sketch: Generate and execute the runfile
+### Step 6. Deploy the sketch: Generate and execute the runfile ###
 
 So far all the definitions of parameters, environments, and activations
 are known only to the `cf-sketch` tool. You must deploy these
@@ -385,7 +383,7 @@ to be loaded and executed from your main `promises.cf` file:
     
     Runfile /var/cfengine/inputs/api-runfile.cf successfully generated.
 
-## More information
+## More information ##
 
 The Design Center framework provides an API that takes care of
 managing all the backend framework, and cf-sketch offers an "expert"
