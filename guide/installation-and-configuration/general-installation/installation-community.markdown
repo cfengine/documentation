@@ -44,31 +44,32 @@ If you require more details on bootstrapping, review Step 3 below. Bootstrapping
 ## 1. Download Packages
 
 Select the package to download that matches your operating system.
-This stores the cfengine-community_3.5.2-1_* file onto your machine.
+This stores the cfengine-community_3.6.0-1_* file onto your machine.
 
-**Ubuntu/Debian 32-bit:**
-
-```
-$ wget http://cfengine.com/inside/binarydownload/download/items/1182 -O cfengine-community_3.5.2-1_i386.deb
-```
-
-**Ubuntu/Debian 64-bit:**
+**Redhat/CentOS/SUSE 64-bit:**
 
 ```
-$ wget http://cfengine.com/inside/binarydownload/download/items/1183 -O cfengine-community_3.5.2-1_amd64.deb
+$ wget https://s3.amazonaws.com/cfengine.package-repos/community_binaries/cfengine-community-3.6.0-1.x86_64.rpm
 ```
 
 **Redhat/CentOS/SUSE 32-bit:**
 
 ```
-$ wget http://cfengine.com/inside/binarydownload/download/items/1180 -O cfengine-community-3.5.2-1.i386.rpm
+$ wget https://s3.amazonaws.com/cfengine.package-repos/community_binaries/cfengine-community-3.6.0-1.i386.rpm
 ```
 
-**Redhat/CentOS/SUSE 64-bit:**
+**Ubuntu/Debian 64-bit:**
 
 ```
-$ wget http://cfengine.com/inside/binarydownload/download/items/1181 -O cfengine-community-3.5.2-1.x86_64.rpm
+$ wget https://s3.amazonaws.com/cfengine.package-repos/community_binaries/cfengine-community_3.6.0-1_amd64.deb
 ```
+
+**Ubuntu/Debian 32-bit:**
+
+```
+$ wget https://s3.amazonaws.com/cfengine.package-repos/community_binaries/cfengine-community_3.6.0-1_i386.deb
+```
+
 
 ## 2. Install CFEngine on a Policy Server
 
@@ -77,28 +78,28 @@ that get deployed to Hosts. Hosts are instances (clients) that retrieve and exec
 
 Choose the right command for your operating system:
 
-**Ubuntu/Debian 32-bit:**
+**Redhat/CentOS/SUSE 64-bit:**
 
 ```
-$ sudo dpkg -i cfengine-community_3.5.2-1_i386.deb
-```
-
-**Ubuntu/Debian 64-bit:**
-
-```
-$ sudo dpkg -i cfengine-community_3.5.2-1_amd64.deb
+$ sudo rpm -i cfengine-community-3.6.0-1.x86_64.rpm
 ```
 
 **Redhat/CentOS/SUSE 32-bit:**
 
 ```
-$ sudo rpm -i cfengine-community_3.5.2-1.i386.rpm
+$ sudo rpm -i cfengine-community_3.6.0-1.i386.rpm
 ```
 
-**Redhat/CentOS/SUSE 64-bit:**
+**Ubuntu/Debian 64-bit:**
 
 ```
-$ sudo rpm -i cfengine-community-3.5.2-1.x86_64.rpm
+$ sudo dpkg -i cfengine-community_3.6.0-1_amd64.deb
+```
+
+**Ubuntu/Debian 32-bit:**
+
+```
+$ sudo dpkg -i cfengine-community_3.6.0-1_i386.deb
 ```
 
 **Note:** You might get a message like this: "Policy is not found in /var/cfengine/inputs, not starting CFEngine." Do not worry;
