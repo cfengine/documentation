@@ -25,7 +25,14 @@
 import cfdoc_environment as environment
 import cfdoc_sourcelinks as sourcelinks
 
+import sys
+
 config = environment.validate()
-sourcelinks.run(config)
+try:
+	sourcelinks.run(config)
+except:
+	sys.stdout.write("      Exception: ")
+	print sys.exc_info()
+	exit(1)
 
 exit(0)

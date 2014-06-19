@@ -29,8 +29,11 @@ from string import ascii_letters, digits
 
 def run(config):
 	markdown_files = config["markdown_files"]
+	error_count = 0
 	for file in markdown_files:
-		addLinkToSource(file, config)
+		error_count += addLinkToSource(file, config)
+	if error_count:
+		raise Exception("%d errors while processing HTML files" % error_count)
 
 def addLinkToSource(file_name,config):
 	in_file = open(file_name,"r")
@@ -38,34 +41,42 @@ def addLinkToSource(file_name,config):
 	in_file.close()
 	source_file = file_name[config["markdown_directory"].__len__():]
 	html_file = ""
-	
+
 	for line in lines:
 		if line.find("alias:") == 0:
 			html_file = line.split('alias: ')
 			html_file = html_file[1].rstrip()
 			break
 		if line.find("layout: printable") == 0:
-			return
+			return 0
 	
 	if not html_file:
-		return
+		return 0
 	
+	error_count = 0
 	html_file = config['CFE_DIR'] + "/" + html_file
 	try:
-		out_file = open(html_file, "r")
-		lines = out_file.readlines()
-		out_file.close()
+		in_file = open(html_file, "r")
+		lines = in_file.readlines()
+		in_file.close()
 		unresolved_link = re.compile("(^|\\s+|>)\\[.+?\\]\\[.*?\\](\\s|[\\,\\.\\;])")
 		unexpanded_macro = re.compile("\\[%CFEngine_.*%\\]")
-	
-		out_file = open(html_file, "w")
+
+		new_html_file = html_file + ".new"
+		out_file = open(new_html_file, "w")
 		for line in lines:
 			line = line.replace("\">markdown source</a>]", source_file + "\">markdown source</a>]")
 			if unresolved_link.search(line) != None:
-				print "Unresolved link in '%s', line '%s'\n" % (file_name, line)
+				print "Unresolved link in '%s', html-line '%s'\n" % (file_name, line)
+				error_count += 1
 			if unexpanded_macro.search(line) != None:
-				print "Unexpanded macro in '%s', line '%s'\n" % (file_name, line)
+				print "Unexpanded macro in '%s', html-line '%s'\n" % (file_name, line)
+				error_count += 1
 			out_file.write(line)
 		out_file.close()
+		
+		os.rename(new_html_file,html_file)
+		return error_count
 	except:
 		print "cfdoc_sourcelinks: Error processing " + html_file
+		return 1
