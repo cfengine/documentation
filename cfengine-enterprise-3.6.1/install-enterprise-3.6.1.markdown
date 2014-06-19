@@ -1,1 +1,0 @@
----layout: defaulttitle: Enterprise Installation 3.6.1sorting: 10published: falsetags: [cfengine enterprise]---<!-- InstallationGeneral tidy up of what is already thereRefine the general instructionsImprove the use case based pagesEnsure proper cross linking on each page to “see also” and “next steps” content-->
