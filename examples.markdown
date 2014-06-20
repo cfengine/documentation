@@ -59,7 +59,7 @@ Following these steps, you will login to your policy server via the SSH protocol
 
 		any::
 		  
-		  "Hello World!"
+		  "Hello World!";
 
 	}
 	```
@@ -131,7 +131,7 @@ bundle agent hello_world
 
     any::
       
-      "Hello World!"
+      "Hello World!";
 
 }
 ```
@@ -177,7 +177,7 @@ bundle agent hello_world
 
     any::
       
-      "Hello World!"
+      "Hello World!";
 
 }
 ```
