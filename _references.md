@@ -16,13 +16,13 @@
 [LMDB]: http://symas.com/mdb/ "Symas Lightning Memory-Mapped Database"
 [vim_cf3]: https://github.com/neilhwatson/vim_cf3 "CFEngine 3 vim integration"
 [community package repositories]: http://cfengine.com/cfengine-linux-distros "Community package repositories"
-[community download page]: https://cfengine.com/inside/myspace "Community package download page"
-[enterprise software download page]: https://cfengine.com/software "Enterprise download page"
-[boolean]: manuals-language-concepts-promises.html#promise-attributes
-[clist]: manuals-language-concepts-promises.html#promise-attributes
-[anchored]: manuals-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
-[unanchored]: manuals-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
-[datatypes]: manuals-language-concepts-variables.html
+[community download page]: https://cfengine.com/community/download/ "Community package download page"
+[enterprise software download page]: https://cfengine.com/product/free-download/ "Enterprise download page"
+[boolean]: guide-language-concepts-promises.html#promise-attributes
+[clist]: guide-language-concepts-promises.html#promise-attributes
+[anchored]: guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
+[unanchored]: guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions
+[datatypes]: guide-language-concepts-variables.html
 [parseintarray]: reference-functions-parseintrealstringarray.html
 [parserealarray]: reference-functions-parseintrealstringarray.html
 [parsestringarray]: reference-functions-parseintrealstringarray.html
@@ -32,12 +32,12 @@
 [readintlist]: reference-functions-readintrealstringlist.html
 [readreallist]: reference-functions-readintrealstringlist.html
 [readstringlist]: reference-functions-readintrealstringlist.html
-[utility functions]: tags/utility-functions.html
-[data functions]: tags/data-functions.html
-[system functions]: tags/system-functions.html
-[io functions]: tags/io-functions.html
-[comm functions]: tags/communication-functions.html
-[files functions]: tags/files-functions.html
+[utility functions]: tags-utility-functions.html
+[data functions]: tags-data-functions.html
+[system functions]: tags-system-functions.html
+[io functions]: tags-io-functions.html
+[comm functions]: tags-communication-functions.html
+[files functions]: tags-files-functions.html
 [body classes]: reference-promise-types.html#classes
 [body common]: reference-components.html#common-control
-[body file]: manuals-language-concepts-namespaces.html
+[body file]: guide-language-concepts-namespaces.html
