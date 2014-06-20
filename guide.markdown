@@ -23,11 +23,11 @@ See Also: [Introduction and System Overview][Introduction and System Overview]
 
 [CFEngine Enterprise][CFEngine Enterprise] is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers).
 
-* [Get the Enterprise Edition](https://cfengine.com/evaluate-enterprise)
+* [Get the Enterprise Edition][evaluate cfengine]
 
 CFEngine Community, a free GPL v3 open source edition.
 
-* [Get the Community Edition](https://cfengine.com/inside/myspace)
+* [Get the Community Edition][community download page]
 
 See also:
 

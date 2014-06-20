@@ -49,10 +49,6 @@ by Diego Zamboni
 * Download syntax highlighters for
   [vim](https://github.com/neilhwatson/vim_cf3) or
   [emacs](https://github.com/cfengine/core/blob/master/contrib/cfengine.el).
-  
-* CFEngine 3 [Policy Wizard](http://cfengine.com/policy_wizard/) by Joe Netzel. This CFE 
-Policy Wizard helps you learn how to perform basic tasks in CFEngine 3 such as manipulating 
-file permissions, starting and stopping processes, and installing software packages.
 
 ### Sign Up
 
