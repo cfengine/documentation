@@ -32,7 +32,7 @@
                             <ul>
                                 {% for tag in page.tags %}
                                 <li>
-                                    <a href="tags-{{ tag | cleanString | downcase}}.html">{{ tag }}</a>
+                                    <a href="tags-{{ tag | removeUnvantedChars | downcase}}.html">{{ tag }}</a>
                                 </li>
                                 {% endfor %}
                             </ul>
