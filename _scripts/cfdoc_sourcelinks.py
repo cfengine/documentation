@@ -45,7 +45,8 @@ def verifyRegex(regex, tests):
 			exit(-1)
 
 def unresolvedLinkRegex():
-	return re.compile("(^|\\s+|>)\\[.+?\\]\\[.*?\\](\\s|[,\\.;,:]|$)")
+	# should include `:` behind closing bracket, but leads to false positives
+	return re.compile("(^|\\s+|>)\\[.+?\\]\\[.*?\\](\\s|[,\\.;,]|$)")
 
 def verifyLinkRegex(regex):
 	tests = []
@@ -55,7 +56,7 @@ def verifyLinkRegex(regex):
 	tests.append(("text [a][b].", True))
 	tests.append(("text [a][b],", True))
 	tests.append(("text [a][b];", True))
-	tests.append(("text [a][b]:", True))
+	tests.append(("text [a][b]:", False)) # KNOWN ISSUE
 	tests.append(("text [a][]", True)) # shorthand
 	tests.append(("<li>[a][b] ", True)) # bullet list
 	tests.append(("text [a][b]", True)) # missing lineend and eof
