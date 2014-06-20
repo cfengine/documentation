@@ -90,11 +90,7 @@ g. Now close PuTTYgen.
 * To get PuTTY and PuTTYgen, first go to
 http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html and either:
  * Download and install using the PuTTY binaries installer
-  * At the time of writing the exact download url was
-http://the.earth.li/~sgtatham/putty/latest/x86/putty0.63installer.exe
  * Or, download PuTTY and PuTTYgen individually
-  * At the time of writing http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe
-and http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe respectively.
 
 ### Prepare Private Key Using PuTTYgen ###
 * After the binaries have been downloaded and/or installed either:
