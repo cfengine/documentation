@@ -113,8 +113,11 @@ To link to a section within the target page, use:
 
     [Link text][Page Title#Section in Page]
 
-This also applies to links to sections within the current page. For standard 
-URLs and locations to link to, see the
+To links to sections within the current page, you can also skip the page title:
+
+    [Go to section][#Section in Current Page]
+
+For standard URLs and locations to link to, see the
 [mapping](https://github.com/cfengine/documentation-generator/blob/master/_references.md).
 
 #### Automatic linking
