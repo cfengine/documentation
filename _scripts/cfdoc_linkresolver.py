@@ -22,10 +22,8 @@
 
 import os
 import sys
+import re
 import cfdoc_qa as qa
-from os import listdir
-from os.path import isfile, join
-from string import ascii_letters, digits
 
 def run(config):
 	markdown_files =  config["markdown_files"]
@@ -183,6 +181,8 @@ def applyLinkMap(file_name, config):
 	config["context_current_line_number"] = 0
 	link_map = config["link_map"]
 	
+	inside_anchor = re.compile("\\[(.*?)\\]\\[#(.+?)\\]")
+	
 	new_lines = []
 	write_changes = False
 	in_pre = False
@@ -210,6 +210,9 @@ def applyLinkMap(file_name, config):
 					
 		new_line = ""
 		if not in_pre:
+			match = inside_anchor.search(markdown_line)
+			if match != None:
+				markdown_line = inside_anchor.sub("[\\1][%s#\\2]" % current_title, markdown_line)
 			while True:
 				anchor = ""
 				bracket_depth = 0
