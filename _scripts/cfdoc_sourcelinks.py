@@ -23,10 +23,6 @@
 import os
 import re
 
-from os import listdir
-from os.path import isfile, join
-from string import ascii_letters, digits
-
 def run(config):
 	markdown_files = config["markdown_files"]
 	error_count = 0
