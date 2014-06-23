@@ -16,7 +16,6 @@ tags: [Examples,Files,Directories]
 * [Copy files][File and Directory Examples#Copy files]
 * [Copy and flatten directory][File and Directory Examples#Copy and flatten directory]
 * [Copy then edit a file convergently][File and Directory Examples#Copy then edit a file convergently]
-* [Creating files and directories][File and Directory Examples#Creating files and directories]
 * [Deleting lines from a file][File and Directory Examples#Deleting lines from a file]
 * [Deleting lines exception][File and Directory Examples#Deleting lines exception]
 * [Editing files][File and Directory Examples#Editing files]
@@ -31,9 +30,6 @@ tags: [Examples,Files,Directories]
 * [Search and replace text][File and Directory Examples#Search and replace text]
 * [Selecting a region in a file][File and Directory Examples#Selecting a region in a file]
 * [Warn if matching line in file][File and Directory Examples#Warn if matching line in file]
-* Copy single files
-* Create files and directories
-* Change detection
 
 ## Create files and directories ##
 

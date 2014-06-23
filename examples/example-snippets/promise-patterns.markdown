@@ -20,7 +20,6 @@ write policy for your system.
 * [Ensure a service is enabled and running][Ensure a service is enabled and running]
 * [Find the MAC address][Find the MAC address]
 * [Install packages][Install packages]
-* [Managing Software][Managing Software]
 * [Mount NFS filesystem][Mount NFS filesystem]
 * [Restart a Process][Restart a Process]
 * [Set up sudo][Set up sudo]
