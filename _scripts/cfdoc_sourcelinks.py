@@ -46,7 +46,7 @@ def verifyRegex(regex, tests):
 
 def unresolvedLinkRegex():
 	# should include `:` behind closing bracket, but leads to false positives
-	return re.compile("(^|\\s+|>)\\[.+?\\]\\[.*?\\](\\s|[,\\.;,<]|$)")
+	return re.compile("(^|\\s+|>)\\[.+?\\]\\[.*?\\](\\s|[,\\.;,]|$|</li>|</ul>)")
 
 def verifyLinkRegex(regex):
 	tests = []
@@ -68,6 +68,7 @@ def verifyLinkRegex(regex):
 	tests.append(("[][a]\n", False)) # Not markdown
 	tests.append(("[a][b][c]\n", True)) # enumeration - KNOWN ISSUE
 	tests.append(("[a][b]text\n", False)) # Something else
+	tests.append(("[a][b]</span>", False)) # code stuff
 	
 	verifyRegex(regex, tests)
 
