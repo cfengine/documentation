@@ -8,8 +8,6 @@ tags: [Examples,CFEngine Administration]
 
 * [Ordering promises][CFEngine Administration Examples#Ordering promises]
 * [Aborting execution][CFEngine Administration Examples#Aborting execution]
-* Aborting execution
-* Updating from a central policy server
 
 ## Ordering promises
 
