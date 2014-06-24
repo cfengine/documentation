@@ -87,8 +87,6 @@ Also you could write this using a list variable:
 [%CFEngine_include_snippet(copy_files.cf, .* )%]
 
 
-    Copy and flatten directory 
-
 ## Copy and flatten directory
 
 
