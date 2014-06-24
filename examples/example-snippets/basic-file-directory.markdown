@@ -101,11 +101,6 @@ To convergently chain a copy followed by edit, you need a staging file. First yo
 
 [%CFEngine_include_snippet(copy_then_edit_a_file_convergently.cf, .* )%]
 
-    Database creation
-    Deleting lines from a file
-    Deleting lines exception
-
-
 ## Deleting lines from a file
 
 
@@ -148,9 +143,9 @@ Here is an example of how to comment out lines matching a number of patterns:
 
 Results in:
 
-lhs1= Mary had a little pig
-lhs2=Whose Fleece was white as snow
-lhs3=And everywhere that Mary went
+* lhs1= Mary had a little pig
+* lhs2=Whose Fleece was white as snow
+* lhs3=And everywhere that Mary went
 
 An example of this would be to add variables to /etc/sysctl.conf on Linux:
 
