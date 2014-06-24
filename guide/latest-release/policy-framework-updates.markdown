@@ -26,7 +26,6 @@ easily accessible from either product.
 Please consult [The Policy Framework] for a map to the policy framework.
 
 * [What is new in the 3.6 masterfiles policy framework][Policy Framework Updates#What is new in the 3.6 masterfiles policy framework]
-	* [README.md][Policy Framework Updates#README.md]
 	* [Directories][Policy Framework Updates#Directories]
 		* [templates][Policy Framework Updates#templates]
 		* [cfe_internal][Policy Framework Updates#cfe_internal]
