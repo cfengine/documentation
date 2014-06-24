@@ -308,6 +308,9 @@ bundle agent testbundle
       "/home/ichien/test_plain.txt"
       perms => system,
       create => "true";
+
+  reports:
+    "test_plain.txt has been created";
 }
 
 bundle agent test_delete
@@ -317,6 +320,53 @@ bundle agent test_delete
       "/home/ichien/test_plain.txt"
       delete => tidy;
 }
+
+bundle agent do_files_exist
+
+{
+  vars:
+
+      "mylist" slist => { "/home/ichien/test_plain.txt", "/home/ichien/test_plain_2.txt" };
+
+  classes:
+
+      "exists" expression => filesexist("@(mylist)");
+
+  reports:
+
+    exists::
+
+      "test_plain.txt and test_plain_2.txt files exist";
+
+    !exists::
+
+      "test_plain.txt and test_plain_2.txt files do not exist";
+}
+
+
+
+bundle agent do_files_exist_2
+
+{
+  vars:
+
+      "mylist" slist => { "/home/ichien/test_plain.txt", "/home/ichien/test_plain_2.txt" };
+
+  classes:
+
+      "exists" expression => filesexist("@(mylist)");
+
+  reports:
+
+    exists::
+
+      "test_plain.txt and test_plain_2.txt files both exist";
+
+    !exists::
+
+      "test_plain.txt and test_plain_2.txt files do not exist";
+}
+
 
 
 bundle agent list_file_1
@@ -329,8 +379,8 @@ bundle agent list_file_1
       "file_content_1" string => readfile( "/home/ichien/test_plain.txt" , "33" );
       "file_content_2" string => readfile( "/home/ichien/test_plain_2.txt" , "33" );
   reports:
-      "ls1: $(ls1)";
-      "ls2: $(ls2)";
+      #"ls1: $(ls1)";
+      #"ls2: $(ls2)";
 
       "Contents of /home/ichien/test_plain.txt = $(file_content_1)";
       "Contents of /home/ichien/test_plain_2.txt = $(file_content_2)";
@@ -347,8 +397,8 @@ bundle agent list_file_2
       "file_content_2" string => readfile( "/home/ichien/test_plain_2.txt" , "33" );
 
   reports:
-      "ls1: $(ls1)";
-      "ls2: $(ls2)";
+      #"ls1: $(ls1)";
+      #"ls2: $(ls2)";
       "Contents of /home/ichien/test_plain.txt = $(file_content_1)";
       "Contents of /home/ichien/test_plain_2.txt = $(file_content_2)";
 
@@ -370,6 +420,9 @@ bundle agent copy_a_file
 
       "/home/ichien/test_plain_2.txt"
       copy_from => local_cp("/home/ichien/test_plain.txt");
+
+  reports:
+     "test_plain.txt has been copied to test_plain_2.txt";
 }
 
 bundle agent outer_bundle_2
@@ -391,6 +444,9 @@ bundle edit_line inner_bundle_1
   insert_lines:
     "$(msg)";
 
+  reports:
+    "inserted $(msg) into test_plain.txt";
+
 }
 
 bundle edit_line inner_bundle_2
@@ -399,6 +455,9 @@ bundle edit_line inner_bundle_2
 
    "Helloz to World!"
       replace_with => hello_world;
+
+   reports:
+      "Text in test_plain_2.txt has been replaced";
 
 }
 
@@ -416,8 +475,10 @@ body perms system
 
 
 
+
+
 ```
 
 ```console
-/var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence test_delete,testbundle,outer_bundle_1,copy_a_file,list_file_1,outer_bundle_2,list_file_2
+/var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence test_delete,do_files_exist,testbundle,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,outer_bundle_2,list_file_2
 ```
