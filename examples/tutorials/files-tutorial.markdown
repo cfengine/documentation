@@ -289,3 +289,135 @@ body perms system
 ls /home/user/test_plain.txt
 
 rm /home/user/test_plain.txt
+
+## Copy a File and Edit its Text##
+
+```cf3
+
+body common control {
+
+    inputs => {
+       "libraries/cfengine_stdlib.cf",
+    };
+}
+
+bundle agent testbundle
+{
+
+  files:
+      "/home/ichien/test_plain.txt"
+      perms => system,
+      create => "true";
+}
+
+bundle agent test_delete
+{
+
+  files:
+      "/home/ichien/test_plain.txt"
+      delete => tidy;
+}
+
+
+bundle agent list_file_1
+{
+
+  vars:
+      "ls1" slist => lsdir("/home/ichien","test_plain.txt","true");
+      "ls2" slist => lsdir("/home/ichien","test_plain_2.txt","true");
+
+      "file_content_1" string => readfile( "/home/ichien/test_plain.txt" , "33" );
+      "file_content_2" string => readfile( "/home/ichien/test_plain_2.txt" , "33" );
+  reports:
+      "ls1: $(ls1)";
+      "ls2: $(ls2)";
+
+      "Contents of /home/ichien/test_plain.txt = $(file_content_1)";
+      "Contents of /home/ichien/test_plain_2.txt = $(file_content_2)";
+}
+
+
+bundle agent list_file_2
+{
+
+  vars:
+      "ls1" slist => lsdir("/home/ichien","test_plain.txt","true");
+      "ls2" slist => lsdir("/home/ichien","test_plain_2.txt","true");
+      "file_content_1" string => readfile( "/home/ichien/test_plain.txt" , "33" );
+      "file_content_2" string => readfile( "/home/ichien/test_plain_2.txt" , "33" );
+
+  reports:
+      "ls1: $(ls1)";
+      "ls2: $(ls2)";
+      "Contents of /home/ichien/test_plain.txt = $(file_content_1)";
+      "Contents of /home/ichien/test_plain_2.txt = $(file_content_2)";
+
+}
+
+bundle agent outer_bundle_1
+{
+    files:
+
+       "/home/ichien/test_plain.txt"
+       create    => "false",
+       edit_line => inner_bundle_1;
+}
+
+# Copies file
+bundle agent copy_a_file
+{
+  files:
+
+      "/home/ichien/test_plain_2.txt"
+      copy_from => local_cp("/home/ichien/test_plain.txt");
+}
+
+bundle agent outer_bundle_2
+{
+    files:
+
+       "/home/ichien/test_plain_2.txt"
+       create    => "false",
+       edit_line => inner_bundle_2;
+}
+
+
+bundle edit_line inner_bundle_1
+{
+  vars:
+
+    "msg" string => "Helloz to World!";
+
+  insert_lines:
+    "$(msg)";
+
+}
+
+bundle edit_line inner_bundle_2
+{
+   replace_patterns:
+
+   "Helloz to World!"
+      replace_with => hello_world;
+
+}
+
+body replace_with hello_world
+{
+   replace_value => "Hello World";
+   occurrences => "all";
+}
+
+body perms system
+{
+      mode  => "0640";
+}
+
+
+
+
+```
+
+```console
+/var/cfengine/bin/cf-agent --no-lock --file ./file_test.cf --bundlesequence test_delete,testbundle,outer_bundle_1,copy_a_file,list_file_1,outer_bundle_2,list_file_2
+```
