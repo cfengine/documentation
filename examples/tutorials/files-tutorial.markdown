@@ -229,7 +229,7 @@ bundle agent outer_bundle_1
 {
     files:
 
-       "/home/ichien/test_plain.txt"
+       "/home/user/test_plain.txt"
        create    => "false",
        edit_line => inner_bundle_1;
 }
@@ -240,7 +240,7 @@ bundle agent outer_bundle_2
 {
     files:
 
-       "/home/ichien/test_plain.txt"
+       "/home/user/test_plain.txt"
        create    => "false",
        edit_line => inner_bundle_2;
 }
