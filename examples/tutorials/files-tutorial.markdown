@@ -6,9 +6,26 @@ published: false
 tags: [Examples, Tutorials]
 ---
 
+## Prerequisites ##
+
+* Read the short tutorial on [how to make an example stand alone][Examples and Tutorials#Make the Example Stand Alone]
+* Ensure you have read the note at the end of the tutorial about modifying the body common control to the following:
+
+```cf3
+body common control {
+
+    inputs => {
+       "libraries/cfengine_stdlib.cf",
+    };
+}
+```
+
+Note: This change is not necessary for supporting each of the examples in this tutorial. It will be included only in those examples that require it.
+
 ## List Files ##
 
 ```cf3
+
 bundle agent list_file
 {
 
@@ -37,6 +54,7 @@ rm /home/user/test_plain.txt
 ## Create a File ##
 
 ```cf3
+
 bundle agent testbundle
 {
 
