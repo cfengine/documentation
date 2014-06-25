@@ -42,33 +42,33 @@ bundle agent list_file
 }
 ```
 2. Run the following command to ensure there is no existing test file at the location we wish to use for testing this example:
-	```console
-	rm /home/user/test_plain.txt 
-	```
+```console
+rm /home/user/test_plain.txt 
+```
 3. Test to ensure there is no file /home/user/test_plain.txt, using the following command (the expected result is that there should be no file listed at the location /home/user/test_plain.txt): 
-	```console
-	ls /home/user/test_plain.txt
-	``` 
+```console
+ls /home/user/test_plain.txt
+``` 
 5. Run the following command to instruct CFEngine to see if the file exists (the expected result is that no report will be generated (because the file does not exist):
-	```console
-	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
-	```
+```console
+/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
+```
 6. Create a file for testing the example, using the following command:
-	```console
-	touch /home/user/test_plain.txt
-	```
+```console
+touch /home/user/test_plain.txt
+```
 7. Run the following command to instruct CFEngine to search for the file (the expected result is that a report will be generated, because the file exists):
-	```console
-	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
-	```
+```console
+/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
+```
 8. Double check the file exists, using the following command (the expected result is that there will be a file listed at the location /home/user/test_plain.txt):
-	```console
-	ls /home/user/test_plain.txt
-	```
+```console
+ls /home/user/test_plain.txt
+```
 9. Run the following command to remove the file:
-	```console
-	rm /home/user/test_plain.txt
-	```
+```console
+rm /home/user/test_plain.txt
+```
 
 ## Create a File ##
 
