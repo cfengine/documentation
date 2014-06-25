@@ -139,7 +139,12 @@ informational output like successful repairs.
 cf-agent -KIf ./my_standalone_policy.cf
 ```
 
-A standalone policy file **must** specify a `bundlesequence`.  You can avoid that requirement by using the `-b BUNDLENAME` flag, see below.
+In 3.6.1 and later, a standalone policy file **may** choose not to
+specify a `bundlesequence`. In that case, the `bundlesequence`
+defaults to `main` so you'll need a bundle called `main`.
+
+You can avoid that requirement by using the `-b BUNDLENAME` flag which
+specifies an explicit `bundlesequence`, see below.
 
 #### Why do I get Undefined body when I try to run my policy ###
 

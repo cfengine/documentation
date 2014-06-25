@@ -33,7 +33,8 @@ class-variable dependency as much as possible.
 
 CFEngine executes agent promise bundles in the strict order defined by the
 `bundlesequence` (possibly overridden by the `-b` or `--bundlesequence`
-command line option).
+command line option).  The `bundlesequence` defaults to just the `main`
+bundle if it's not specified.
 
 Within a bundle, the promise types are executed in a round-robin fashion
 according to so-called `normal ordering` (essentially deletion first, followed

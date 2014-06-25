@@ -60,10 +60,10 @@ be executed and in what order they will be executed. The list
 refers to the names of bundles (which might be parameterized,
 function-like objects).
 
-There is no default value for `bundlesequence`, and the absence of
-a `bundlesequence` will cause a compilation error. A `bundlesequence`
-may also be specified using the `-b` or `--bundlesequence` command
-line option.
+The default value for `bundlesequence` is `{ "main" }`.
+
+A `bundlesequence` may also be specified using the `-b` or
+`--bundlesequence` command line option.
 
 **Type:** `slist`
 
@@ -125,6 +125,8 @@ use global variable lists to do this:
       "bs" slist => { "main", "basic_stuff" }; 
     }
 ```
+
+**History:** The default to `{ "main" }` was introduced in version 3.6.1, so if you expect your policies to be run by 3.6.0 or older, you'll need an explicit `bundlesequence`.
 
 ### cache_system_functions
 
