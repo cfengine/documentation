@@ -151,7 +151,16 @@ The output is shown below:
 2013-08-20T14:25:36-0500   notice: R: Hello World!
 ```
 
+Note: It may be necessary to add a reference to the standard library within the body common control section, and remove the bundlesequence line. Example:
 
+```cf3
+body common control {
+
+    inputs => {
+       "libraries/cfengine_stdlib.cf",
+    };
+}
+```
 
 ### Make the Example an Executable Script ###
 
