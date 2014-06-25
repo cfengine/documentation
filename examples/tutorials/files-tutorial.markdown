@@ -40,7 +40,7 @@ bundle agent list_file
 	  "ls: $(ls)";
 
 }
-		```
+```
 2. Run the following command to ensure there is no existing test file at the location we wish to use for testing this example:
 	```console
 	rm /home/user/test_plain.txt 
