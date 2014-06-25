@@ -107,7 +107,7 @@ See also: [cf-monitord][cf-monitord] reference documentation.
 
 #### cf-agent ####
 
-`cf-agent` evaluates policy code and makes changes to the system. Policy bundles are evaluated in the order of the provided `bundlesequence` (this is normally specified in the common control body). For each bundle, cf-agent groups promise statements according to their type. Promise types are then evaluated in a preset order to ensure fast system convergence to policy.
+`cf-agent` evaluates policy code and makes changes to the system. Policy bundles are evaluated in the order of the provided `bundlesequence` (this is normally specified in the common control body and defaults to just the `main` bundle if unspecified). For each bundle, cf-agent groups promise statements according to their type. Promise types are then evaluated in a preset order to ensure fast system convergence to policy.
 
 `cf-agent` keeps the promises made in `common` and `agent` bundles, and is affected by `common` and `agent` control bodies.
 
