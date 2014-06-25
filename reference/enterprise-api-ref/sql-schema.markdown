@@ -5,6 +5,8 @@ published: true
 tags: [reference, enterprise, REST, API, reporting, sql, schema]
 ---
 
+<!--
+
 CFEngine allows all standardized SQL `SELECT` constructs to query, with the 
 following additions:
 
@@ -314,3 +316,5 @@ Performance is measured in time the operation took, in millisecond. Data sizes a
 |----------------------|---------|---------|
 | 1361969437 | 12377 | Operation: PurgeTimestampedReports (12377) exited with message: ... |
 | 1361969737 | none | Operation: Remove old entries in hub maintenance performance diagnostics () exited with message: "..." |
+
+-->
