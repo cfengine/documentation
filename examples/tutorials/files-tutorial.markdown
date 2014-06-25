@@ -28,47 +28,62 @@ Note: This change is not necessary for supporting each of the examples in this t
 Note: The following workflow assumes the directory /home/user already exists. If it does not either create the directory or adjust the example to a path of your choosing.
 
 1. Create a file /var/cfengine/masterfiles/file_test.cf that includes the following text:
-```cf3
 
-bundle agent list_file
-{
+	```cf3
 
-  vars:
-	  "ls" slist => lsdir("/home/user","test_plain.txt","true");
+	bundle agent list_file
+	{
 
-  reports:
-	  "ls: $(ls)";
+	  vars:
+		  "ls" slist => lsdir("/home/user","test_plain.txt","true");
 
-}
-```
+	  reports:
+		  "ls: $(ls)";
+
+	}
+	```
+
 2. Run the following command to remove any existing test file at the location we wish to use for testing this example:
-```console
-rm /home/user/test_plain.txt 
-```
+
+	```console
+	rm /home/user/test_plain.txt 
+	```
+
 3. Test to ensure there is no file /home/user/test_plain.txt, using the following command (the expected result is that there should be no file listed at the location /home/user/test_plain.txt): 
-```console
-ls /home/user/test_plain.txt
-``` 
+
+	```console
+	ls /home/user/test_plain.txt
+	```
+
 5. Run the following command to instruct CFEngine to see if the file exists (the expected result is that no report will be generated (because the file does not exist):
-```console
-/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
-```
+
+	```console
+	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
+	```
+
 6. Create a file for testing the example, using the following command:
-```console
-touch /home/user/test_plain.txt
-```
+
+	```console
+	touch /home/user/test_plain.txt
+	```
+
 7. Run the following command to instruct CFEngine to search for the file (the expected result is that a report will be generated, because the file exists):
-```console
-/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
-```
+
+	```console
+	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence list_file
+	```
+
 8. Double check the file exists, using the following command (the expected result is that there will be a file listed at the location /home/user/test_plain.txt):
-```console
-ls /home/user/test_plain.txt
-```
+
+	```console
+	ls /home/user/test_plain.txt
+	```
+
 9. Run the following command to remove the file:
-```console
-rm /home/user/test_plain.txt
-```
+
+	```console
+	rm /home/user/test_plain.txt
+	```
 
 ## Create a File ##
 
