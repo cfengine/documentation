@@ -109,11 +109,12 @@ In this example, the report "Good morning!" is only printed if the class
 `Morning` is set, while the report "Good evening!" is only printed when the 
 class `Evening` is set.
 
-A limitation of this notation is that the class expression needs to be 
-constant. The class predicate `ifvarclass` can be used if variable class 
-expressions are required. It is `AND`ed with the normal class expression, and 
-is evaluated together with the promise. It may contain variables as long as 
-the resulting expansion is a legal class expression.
+A limitation of this notation is that the class expression needs to be
+constant. The class predicate `ifvarclass` (aliased to `if`; `unless`
+is also available) can be used if variable class expressions are
+required. It is `AND`ed with the normal class expression, and is
+evaluated together with the promise. It may contain variables as long
+as the resulting expansion is a legal class expression.
 
 ```cf3
     bundle agent example

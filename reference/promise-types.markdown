@@ -1109,6 +1109,46 @@ Notice that the function `canonify()` is provided to convert a general variable
 input into a string composed only of legal characters, using the same algorithm
 that CFEngine uses.
 
+**History:** Has the `if` alias (and `unless` opposite) since 3.6.1.
+
+### if
+
+**Description:** Describes extended classes ANDed with context. This
+is an exact alias for `ifvarclass`; see its description for details.
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+The generic example has the form:
+
+```cf3
+     promise-type:
+
+       "promiser"
+
+         if = "$(program)_running|($(program)_notfoundHr12)";
+```
+
+A specific example would be:
+
+```cf3
+    bundle agent example
+    {
+    commands:
+
+     any::
+
+        "/bin/echo This is linux"
+
+           if => "linux";
+    }
+```
+
+**History:** Was introduced in 3.6.1.
+
 ### meta
 
 **Description:** User-data associated with policy, e.g. key=value strings.
@@ -1138,3 +1178,42 @@ files:
 ```
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012)
+
+### unless
+
+**Description:** Describes negated extended classes ANDed with
+context. This is exactly like `ifvarclass` but logically inverted; see
+its description for details.
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+The generic example has the form:
+
+```cf3
+     promise-type:
+
+       "promiser"
+
+         unless = "forbidden";
+```
+
+A specific example would be:
+
+```cf3
+    bundle agent example
+    {
+    commands:
+
+     any::
+
+        "/bin/echo This is NOT linux"
+
+           unless => "linux";
+    }
+```
+
+**History:** Was introduced in 3.6.1.
