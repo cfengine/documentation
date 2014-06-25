@@ -28,19 +28,19 @@ Note: This change is not necessary for supporting each of the examples in this t
 Note: The following workflow assumes the directory /home/user already exists. If it does not either create the directory or adjust the example to a path of your choosing.
 
 1. Create a file /var/cfengine/masterfiles/file_test.cf that includes the following text:
-	```cf3
+```cf3
 
-	bundle agent list_file
-	{
+bundle agent list_file
+{
 
-	  vars:
-		  "ls" slist => lsdir("/home/user","test_plain.txt","true");
+  vars:
+	  "ls" slist => lsdir("/home/user","test_plain.txt","true");
 
-	  reports:
-		  "ls: $(ls)";
+  reports:
+	  "ls: $(ls)";
 
-	}
-	```
+}
+		```
 2. Run the following command to ensure there is no existing test file at the location we wish to use for testing this example:
 	```console
 	rm /home/user/test_plain.txt 
