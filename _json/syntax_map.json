@@ -193,6 +193,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -266,6 +280,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -334,6 +362,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -434,6 +476,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -547,6 +603,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -614,6 +684,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -712,6 +796,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -792,6 +890,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -984,6 +1096,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -1050,6 +1176,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -1146,6 +1286,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -1210,6 +1364,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -1269,6 +1437,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -1340,6 +1522,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -1401,6 +1597,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -1472,6 +1682,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -1533,6 +1757,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -1611,6 +1849,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -1672,6 +1924,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -1743,6 +2009,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -1804,6 +2084,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -1876,6 +2170,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -1967,6 +2275,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -2052,6 +2374,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -2124,6 +2460,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -2183,6 +2533,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -2330,6 +2694,20 @@
           "range": "",
           "visibility": "global"
         },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
         "meta": {
           "attribute": "meta",
           "status": "normal",
@@ -2384,6 +2762,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -2470,6 +2862,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -2590,6 +2996,20 @@
         },
         "ifvarclass": {
           "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -5558,6 +5978,23 @@
       "cached": true,
       "category": "utils"
     },
+    "file_hash": {
+      "status": "normal",
+      "returnType": "string",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "\"?(/.*)"
+        },
+        {
+          "type": "option",
+          "range": "md5,sha1,sha256,sha384,sha512"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "files"
+    },
     "fileexists": {
       "status": "normal",
       "returnType": "context",
@@ -6776,6 +7213,19 @@
       "variadic": false,
       "cached": false,
       "category": "data"
+    },
+    "readcsv": {
+      "status": "normal",
+      "returnType": "data",
+      "parameters": [
+        {
+          "type": "string",
+          "range": "\"?(/.*)"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "io"
     },
     "readfile": {
       "status": "normal",
