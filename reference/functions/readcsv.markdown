@@ -5,7 +5,7 @@ published: true
 tags: [reference, io functions, functions, readcsv, CSV, container]
 ---
 
-<!-- [%CFEngine_function_prototype(filename)%] -->
+<!--  %CFEngine_function_attributes(filename)% There was a problem with this macro -->
 
 **Description:** Parses CSV data from the first 1 MB of
 file `filename` and returns the result as a `data` variable.
@@ -20,7 +20,7 @@ The returned data is in the same format as
 `data_readstringarrayidx()`, that is, a data container that holds a
 JSON array of JSON arrays.
 
-<!-- [%CFEngine_function_attributes(filename)%] -->
+<!--  %CFEngine_function_attributes(filename)% There was a problem with this macro -->
 
 **Example:**
 
