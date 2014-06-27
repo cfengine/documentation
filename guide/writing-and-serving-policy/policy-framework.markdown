@@ -241,6 +241,17 @@ Mission Portal troubleshooting).
 The inventory is a cool new feature in 3.6.0. You can disable pieces
 of it (inventory modules) or the whole thing if you wish.
 
+##### inventory_local_users_password_last_change_whitelist
+
+This variable is a whitelist to filter the users for which to inventory  the
+date of last password change. It is primarily relevant for CFEngine Enterprise,
+but it will also control the list of users for which users get the days since
+last password changed variable
+`inventory_local_users_password_last_change.days_since_pw_change[USER]`
+defined.
+
+If this list is empty, no filter will be applied and all local users discovered
+will be considered for inventory.
 ##### disable_inventory
 
 This class is off by default (meaning the inventory is on by default).
@@ -298,10 +309,60 @@ from some of the contents of `/proc`. For details, see [procfs][The Policy Frame
 
 ##### disable_inventory_cmdb
 
-By default, this class is turned on (and the module is off).
+By default, this class is turned off (and the module is off).
 
 Turn this on (set to `any`) to allow each client to load a `me.json`
 file from the server and load its contents. For details, see [CMDB][The Policy Framework#CMDB]
+
+##### disable_inventory_local_users_discover
+
+By default, this class is turned off (and the module is on). This inventory
+discovery module will populate variables based on users discovered locally on
+the system along with their attributes.
+
+To turn this module off enable the general `disable_inventory` class or set
+this class to `!any`. For details, see [Local Users][The Policy Framework#Local-Users]
+
+##### disable_inventory_local_users_discover_report_encrypted_password
+
+By default, this class is turned on (and the module is off).
+
+Turn this on (set to `any`) to report encrypted passwords back to Mission
+Portal for centralized reporting. For details, see [Local Users][The Policy Framework#inventory_local_users_discover]
+
+##### disable_inventory_local_users
+
+By default, this class is turned off (and the module is on). This inventory
+discovery module will populate a variable with the locally discovered users
+based on discovery from `cfe_autorun_inventory_local_users_discover` with
+appropriate inventory tags to populate the Mission Portal inventory interface.
+
+To turn this module off enable the general `disable_inventory` class or set
+this class to `!any`. For details, see [Local Users][The Policy Framework#inventory_local_users]
+
+##### disable_inventory_local_users_locked
+
+By default, this class is turned off (and the module is on). This inventory
+discovery module will populate a variable with the locally discovered users
+that appear to be locked based on discovery from
+`cfe_autorun_inventory_local_users_discover` with appropriate inventory tags to
+populate the Mission Portal inventory interface.
+
+To turn this module off enable the general `disable_inventory` class or set
+this class to `!any`. For details, see [Local Users][The Policy Framework#inventory_local_users_locked]
+
+##### disable_inventory_local_users_password_last_change
+
+By default, this class is turned on (and the module is off). This inventory
+discovery module will populate a variable with the locally discovered users
+that have seemingly valid password hases with the number of days since each
+users password has been changed, and a variable with the absolute date of the
+last password change based on discovery perfromed in
+`cfe_autorun_inventory_local_users_discover` with appropriate inventory tags to
+populate the Mission Portal inventory interface.
+
+To turn this module on with other local user inventory set
+this class to `disable_inventory_local_users`. For details, see [Local Users][The Policy Framework#inventory_local_users_password_last_change]
 
 ### promises.cf
 
@@ -753,3 +814,118 @@ R: cfe_autorun_inventory_proc: we have partitions sda with 468851544 blocks
 
 R: cfe_autorun_inventory_proc: we have kernel version 'Linux version 3.11.0-15-generic (buildd@roseapple) (gcc version 4.8.1 (Ubuntu/Linaro 4.8.1-10ubuntu8) ) #25-Ubuntu SMP Thu Jan 30 17:22:01 UTC 2014'
 ```
+
+### Local Users
+
+**Note:** Currently only linux is supported for local user discovery. Please
+let us know if you are interested in working with us on expanding coverage to
+another platform.
+
+#### inventory_local_users_discover
+
+* lives in: `any.cf`
+
+##### Variables Provided
+
+  * `cfe_autorun_inventory_local_users_discover.all_local_users` - List of all local users discovered
+  * `cfe_autorun_inventory_local_users_discover.date_last_password_change[USER]` - The date of the last password change for USER in epoch format (days since Jan 1, 1970)
+  * `cfe_autorun_inventory_local_users_discover.min_password_age[USER]` - The minimum password age for USER
+  * `cfe_autorun_inventory_local_users_discover.max_password_age[USER]` - The maximum password age for USER
+  * `cfe_autorun_inventory_local_users_discover.password_warning_period[USER]` - The number of days before password expiration to start warning USER
+  * `cfe_autorun_inventory_local_users_discover.password_inactivity_period[USER]` - The number of days after a password has expired during which the password should still be accepted for USER
+  * `cfe_autorun_inventory_local_users_discover.account_expiration_date[USER]` - The date of expiration of the account expressed in epoch format (days since Jan 1, 1970) for USER
+  * `cfe_autorun_inventory_local_users_discover.numeric_user_id[USER]` - The numeric user id for USER
+  * `cfe_autorun_inventory_local_users_discover.numeric_group_id[USER]` - The numeric group id for USER
+  * `cfe_autorun_inventory_local_users_discover.comment[USER]` - Comment for USER aka gecos
+  * `cfe_autorun_inventory_local_users_discover.home_directory[USER]` - The home directory for USER
+  * `cfe_autorun_inventory_local_users_discover.shell[USER]` - The shell for USER
+  * `cfe_autorun_inventory_local_users_discover.encrypted_password[USER]` - The encrypted password for USER
+
+Note: Encrypted passwords are not made available for central reporting by
+default. To enable centralized reporting of local users encrypted passwords
+disable the `disable_inventory_local_users_discovery_report_encrypted_password`
+class found in def.cf.
+
+##### Classes Provided
+
+Where USER is the canonified local user name:
+
+  * `USER_password_locked`
+  * `USER_password_empty`
+  * `USER_password_valid_hash`
+  * `USER_password_invalid_hash`
+
+##### Implementation:
+
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_local_users_discover, \})%]
+
+#### inventory_local_users
+
+* lives in: `any.cf`
+
+##### Variables Provided
+
+These variables are based on discovery performed in
+`cfe_autorun_inventory_local_users_discover`.
+
+* `inventory_local_users.local_users` - A list of all local users.
+
+##### Implementation
+
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_local_users, \})%]
+
+#### inventory_local_users_locked
+
+* lives in: `any.cf`
+
+##### Variables Provided
+
+These variables are based on discovery performed in
+`cfe_autorun_inventory_local_users_discover`.
+
+* `inventory_local_users_locked.locked_users` - A list of users discovered to have locked accounts
+
+##### Implementation
+
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_local_users_locked, \})%]
+
+#### inventory_local_users_password_last_change
+
+* lives in: `any.cf`
+
+##### Variables Provided
+
+These variables are based on discovery performed in
+`cfe_autorun_inventory_local_users_discover`.
+
+* `inventory_local_users_password_last_change.days_since_pw_change[USER]` - The
+  number of days since USER has had a password change
+* `inventory_local_users_password_last_change.pw_change_date[USER]` - The date
+  of the last password change for USER expressed in epoch format (days since
+  Jan 1, 1970) as copied from
+  `cfe_autorun_inventory_local_users_discover.date_last_password_change[USER]`.
+  This variable is tagged in order to populate the inventory report interface.
+
+**Note:** These variables are filtered by
+`inventory_control.inventory_local_users_password_last_change_whitelist`.
+Additonally, for a user to appear in this list the user must have a "valid"
+password hash, i.e. not locked, or empty.
+
+##### Implementation:
+
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_local_users_password_last_change, \})%]
+
+#### inventory_local_users_password_empty
+
+* lives in: `any.cf`
+
+##### Variables Provided
+
+These variables are based on discovery performed in
+`cfe_autorun_inventory_local_users_discover`.
+
+* `inventory_local_users_password_empty.empty_users` - A list of users discovered to have empty password hashes
+
+##### Implementation
+
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_local_users_password_empty, \})%]
