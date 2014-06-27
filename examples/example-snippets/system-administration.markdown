@@ -7,30 +7,24 @@ tags: [Examples,System Administration]
 ---
 
 * [Centralized Management][System Administration Examples#Centralized Management]
-* [All hosts the same][System Administration Examples#All hosts the same]
-* [Variation in hosts][System Administration Examples#Variation in hosts]
-* [Updating from a central hub][System Administration Examples#Updating from a central hub]
+	* [All hosts the same][System Administration Examples#All hosts the same]
+	* [Variation in hosts][System Administration Examples#Variation in hosts]
+	* [Updating from a central hub][System Administration Examples#Updating from a central hub]
 * [Laptop support configuration][System Administration Examples#Laptop support configuration]
 * [Process management][System Administration Examples#Process management]
 * [Kill process][System Administration Examples#Kill process]
 * [Restart process][System Administration Examples#Restart process]
 * [Mount a filesystem][System Administration Examples#Mount a filesystem]
 * [Manage a system process][System Administration Examples#Manage a system process]
-* [Ensure running][System Administration Examples#Ensure running]
-* [Ensure not running][System Administration Examples#Ensure not running]
-* [Prune processes][System Administration Examples#Prune processes]
+	* [Ensure running][System Administration Examples#Ensure running]
+	* [Ensure not running][System Administration Examples#Ensure not running]
+	* [Prune processes][System Administration Examples#Prune processes]
 * [Set up HPC clusters][System Administration Examples#Set up HPC clusters]
 * [Set up name resolution][System Administration Examples#Set up name resolution]
 * [Set up sudo][System Administration Examples#Set up sudo]
 * [Environments (virtual)][System Administration Examples#Environments (virtual)]
 * [Environment variables][System Administration Examples#Environment variables]
 * [Tidying garbage files][System Administration Examples#Tidying garbage files]
-* Customize Message of the Day
-* Ensure a process is not running
-* Restart a Process
-* Set up sudo
-* Set up time management through NTP
-* Set up name resolution with DNS
 
 ## Centralized Management
 
@@ -84,7 +78,6 @@ A basic pattern for restarting processes:
 [%CFEngine_include_snippet(restart_process.cf, .* )%]
 
 This can be made more sophisticated to handle generic lists:
-
 
 [%CFEngine_include_snippet(restart_process_1.cf, .* )%]
 

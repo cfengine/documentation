@@ -1,21 +1,3 @@
-#
-# System file X
-#
-
-MYVARIABLE = something or other
-HOSTNAME = $(sys.host)           # CFEngine fills this in
-
-# ...
-```
-bundle agent test
-{
-  methods:
-
-      "any" usebundle => get_template("/etc/sudoers","400");
-      "any" usebundle => get_template("/etc/hosts","644");
-
-}
-```
 bundle agent get_template(final_destination,mode)
 {
   vars:
