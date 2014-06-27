@@ -292,3 +292,12 @@ Remove cfengine-nova-hub from the yum repository and install the hub using rpm.
 
 The cfengine-nova-hub package removes apache if it is already installed on the system. In addition it removes `/var/www`.
 
+### Directories ending with / are ignored
+
+A directory name ending with `/` is ignored as missing.
+
+https://cfengine.com/dev/issues/3905
+
+#### Workaround
+
+End the directory name with `/.` or nothing.
