@@ -276,3 +276,11 @@ This template should not be passed a data container; it uses the `datastate()` o
 {{/vars.mon.listening_tcp4_ports}}
 ```
 {% endraw %}
+
+### How do I ensure that a local user is locked? ###
+
+To ensure that a local user exists but is locked (for example a service
+account) simply specify `policy => "locked"`.
+
+[%CFEngine_include_snippet(users_type.cf, ### Locked User BEGIN ###, ### Locked User END ###)%]
+
