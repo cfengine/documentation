@@ -19,6 +19,24 @@ tags: [examples, tutorials, file]
 	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist,testbundle,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,stat,outer_bundle_2,list_file_2
 	```
 
+Here is the order in which bundles are called in the command line above (some other support bundles are contained within file_test.cf but are not included here):
+	
+1. global_vars
+2. packages
+3. create_aout_source_file
+4. create_aout
+5. test_delete
+6. do_files_exist
+7. testbundle
+8. outer_bundle_1
+9. copy_a_file
+10. do_files_exist_2
+11. list_file_1
+12. stat
+13. outer_bundle_2
+14. list_file_2
+	
+	
 ## file_test.cf ##
 
 ```cf3
@@ -65,6 +83,36 @@ bundle agent packages
 	  
 }
 
+bundle agent create_aout_source_file
+{
+
+  # This bundle creates the source file that will be compiled in bundle agent create_aout.
+  # See that bunlde's comments for more information.
+  
+  vars:
+  
+    # An slist is used here instead of a straight forward string because it doesn't seem possible to create
+	# line endings using \n when using a string to insert text into a file.
+	
+    "c" slist => {"#include <stdlib.h>","#include <stdio.h>","#include <sys/stat.h>","void main()","{char file1[255];strcpy(file1,\"$(global_vars.file1)\");char file2[255];strcpy(file2,\"$(global_vars.file2)\");struct stat time1;int i = lstat(file1, &time1);struct stat time2;int j = lstat(file2, &time2);if (time1.st_mtime < time2.st_mtime){printf(\"Newer\");}else{if(time1.st_mtim.tv_nsec < time2.st_mtim.tv_nsec){printf(\"Newer\");}else{printf(\"Not newer\");}}}"};
+
+  files:
+      "$(global_vars.workdir)/a.c"
+      perms => system,
+      create => "true",
+      edit_line => Insert("@(c)");
+
+  reports:
+    "a.c has been created";
+	
+}
+
+bundle edit_line Insert(name)
+{
+   insert_lines:
+      "$(name)";
+}
+
 bundle agent create_aout
 {
 
@@ -88,84 +136,6 @@ bundle agent create_aout
 	  "gcc output: $(gccaout)";
 	  "Creating aout using $(compilestring)";
 
-}
-
-bundle agent create_aout_source_file
-{
-
-  vars:
-  
-    "c" slist => {"#include <stdlib.h>","#include <stdio.h>","#include <sys/stat.h>","void main()","{char file1[255];strcpy(file1,\"$(global_vars.file1)\");char file2[255];strcpy(file2,\"$(global_vars.file2)\");struct stat time1;int i = lstat(file1, &time1);struct stat time2;int j = lstat(file2, &time2);if (time1.st_mtime < time2.st_mtime){printf(\"Newer\");}else{if(time1.st_mtim.tv_nsec < time2.st_mtim.tv_nsec){printf(\"Newer\");}else{printf(\"Not newer\");}}}"};
-
-  files:
-      "$(global_vars.workdir)/a.c"
-      perms => system,
-      create => "true",
-      edit_line => Insert("@(c)");
-
-  reports:
-    "a.c has been created";
-	
-}
-
-bundle edit_line Insert(name)
-{
-   insert_lines:
-      "$(name)";
-}
-
-bundle agent stat
-{
-
-  # This bundle uses the binary application stat to compare two files,
-  # determine if the modified times are different, and whether the second file is newer than
-  # the first. 
-  
-  # The difference between this application and using CFEngine's built in support for
-  # getting file stats is that normally the accuracy is only to the second of the modified file time
-  # but in order to better compare two files requires parts of a second as well. The stat command
-  # provides this additional information, but it must be extracted from the middle of a string.
-
-  vars:
-    "file1" string => "$(global_vars.file1)";
-    "file2" string => "$(global_vars.file2)";
-    "aoutexec" string => getenv("AOUT_EXEC",255);
-
-    "aout" string => execresult("$(aoutexec)","noshell");
-
-    "file1_stat" string => execresult("/usr/bin/stat -c \"%y\" $(file1)","noshell");
-    "file1_split1" slist => string_split($(file1_stat)," ",3);
-    "file1_split2" string => nth("file1_split1",1);
-    "file1_split3" slist => string_split($(file1_split2),"\.",3);
-    "file1_split4" string => nth("file1_split3",1);
-
-    "file2_stat" string => execresult("/usr/bin/stat -c \"%y\" $(file2)","noshell");
-    "file2_split1" slist => string_split($(file2_stat)," ",3);
-    "file2_split2" string => nth("file2_split1",1);
-    "file2_split3" slist => string_split($(file2_split2),"\.",3);
-    "file2_split4" string => nth("file2_split3",1);
-
-  commands:
-    #"/bin/sleep 1";
-
-  reports:
-    "$(file1_split4) $(file1_stat)";
-    "$(file2_split4) $(file2_stat)";
-    "Executable output: $(aout)";
-
-}
-
-
-bundle agent testbundle
-{
-
-  files:
-      "$(global_vars.file1)"
-      perms => system,
-      create => "true";
-
-  reports:
-    "$(global_vars.file1) has been created";
 }
 
 bundle agent test_delete
@@ -198,46 +168,19 @@ bundle agent do_files_exist
 	  
 }
 
-bundle agent do_files_exist_2
-
-{
-  vars:
-
-      "mylist" slist => { "$(global_vars.file1)", "$(global_vars.file2)" };
-      "file" string => "$(global_vars.file1)";
-      "file2" string => "$(global_vars.file2)";
-
-      "filestat1" string => filestat("$(global_vars.file1)","mtime");
-      "filestat2" string => filestat("$(global_vars.file2)","mtime");
-
-  classes:
-
-      "exists" expression => filesexist("@(mylist)");
-
-  reports:
-
-    exists::
-
-      "$(global_vars.file1) and $(global_vars.file2) files both exist. $(global_vars.file1) Last Modified Time = $(filestat1). $(global_vars.file2) Last Modified Time = $(filestat2)";
-
-    !exists::
-
-      "$(global_vars.file1) and $(global_vars.file2) files do not exist";
-}
-
-bundle agent list_file_1
+bundle agent testbundle
 {
 
-  vars:
-      "ls1" slist => lsdir("$(global_vars.workdir)","$(global_vars.file1name)","true");
-      "ls2" slist => lsdir("$(global_vars.workdir)","$(global_vars.file2name)","true");
+  files:
+      "$(global_vars.file1)"
+      perms => system,
+      create => "true";
 
-      "file_content_1" string => readfile( "$(global_vars.file1)" , "0" );
-      "file_content_2" string => readfile( "$(global_vars.file2)" , "0" );
   reports:
-      "Contents of $(global_vars.file1) = $(file_content_1). Contents of $(global_vars.file2) = $(file_content_2)";
-
+    "$(global_vars.file1) has been created";
 }
+
+
 
 bundle agent list_file_2
 {
@@ -290,6 +233,88 @@ bundle agent copy_a_file
 
   reports:
      "$(global_vars.file1) has been copied to $(global_vars.file2)";
+}
+
+bundle agent do_files_exist_2
+
+{
+  vars:
+
+      "mylist" slist => { "$(global_vars.file1)", "$(global_vars.file2)" };
+      "file" string => "$(global_vars.file1)";
+      "file2" string => "$(global_vars.file2)";
+
+      "filestat1" string => filestat("$(global_vars.file1)","mtime");
+      "filestat2" string => filestat("$(global_vars.file2)","mtime");
+
+  classes:
+
+      "exists" expression => filesexist("@(mylist)");
+
+  reports:
+
+    exists::
+
+      "$(global_vars.file1) and $(global_vars.file2) files both exist. $(global_vars.file1) Last Modified Time = $(filestat1). $(global_vars.file2) Last Modified Time = $(filestat2)";
+
+    !exists::
+
+      "$(global_vars.file1) and $(global_vars.file2) files do not exist";
+}
+
+bundle agent list_file_1
+{
+
+  vars:
+      "ls1" slist => lsdir("$(global_vars.workdir)","$(global_vars.file1name)","true");
+      "ls2" slist => lsdir("$(global_vars.workdir)","$(global_vars.file2name)","true");
+
+      "file_content_1" string => readfile( "$(global_vars.file1)" , "0" );
+      "file_content_2" string => readfile( "$(global_vars.file2)" , "0" );
+  reports:
+      "Contents of $(global_vars.file1) = $(file_content_1). Contents of $(global_vars.file2) = $(file_content_2)";
+
+}
+
+bundle agent stat
+{
+
+  # This bundle uses the binary application stat to compare two files,
+  # determine if the modified times are different, and whether the second file is newer than
+  # the first. 
+  
+  # The difference between this application and using CFEngine's built in support for
+  # getting file stats is that normally the accuracy is only to the second of the modified file time
+  # but in order to better compare two files requires parts of a second as well. The stat command
+  # provides this additional information, but it must be extracted from the middle of a string.
+
+  vars:
+    "file1" string => "$(global_vars.file1)";
+    "file2" string => "$(global_vars.file2)";
+    "aoutexec" string => getenv("AOUT_EXEC",255);
+
+    "aout" string => execresult("$(aoutexec)","noshell");
+
+    "file1_stat" string => execresult("/usr/bin/stat -c \"%y\" $(file1)","noshell");
+    "file1_split1" slist => string_split($(file1_stat)," ",3);
+    "file1_split2" string => nth("file1_split1",1);
+    "file1_split3" slist => string_split($(file1_split2),"\.",3);
+    "file1_split4" string => nth("file1_split3",1);
+
+    "file2_stat" string => execresult("/usr/bin/stat -c \"%y\" $(file2)","noshell");
+    "file2_split1" slist => string_split($(file2_stat)," ",3);
+    "file2_split2" string => nth("file2_split1",1);
+    "file2_split3" slist => string_split($(file2_split2),"\.",3);
+    "file2_split4" string => nth("file2_split3",1);
+
+  commands:
+    #"/bin/sleep 1";
+
+  reports:
+    "$(file1_split4) $(file1_stat)";
+    "$(file2_split4) $(file2_stat)";
+    "Executable output: $(aout)";
+
 }
 
 bundle agent outer_bundle_2
