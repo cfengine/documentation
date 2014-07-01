@@ -77,7 +77,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 14. **list_file_2**
 
-	Uses filestat and isnewerthan to compare the two test files to see if the second one is newer. Sometimes the modifications
+	Uses `filestat` and `isnewerthan` to compare the two test files to see if the second one is newer. Sometimes the modifications
 	already performed, such as copy and modifying text, happen too quickly and filestat and isnewerthan may both report that the
 	second test file is not newer than the first, while the more accurate stat based checks in the stat bundle (see step 12) will
 	recognize the difference.
