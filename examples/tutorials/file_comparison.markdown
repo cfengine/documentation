@@ -21,61 +21,61 @@ tags: [examples, tutorials, file]
 
 Here is the order in which bundles are called in the command line above (some other support bundles are contained within file_test.cf but are not included here):
 	
-1. global_vars
+1. **global_vars**
 
 	Sets up some global variables that are used frequently by other bundles.
 	
-2. packages
+2. **packages**
 
 	Ensures that the gcc package is installed, for later use by the create_aout bundle.
 	
-3. create_aout_source_file
+3. **create_aout_source_file**
 
 	Creates the c source file that will generate a binary application in create_aout.
 	
-4. create_aout
+4. **create_aout**
 
 	This bundle creates a binary application from the source in  create_aout_source_file that uses the stat library to compare two files, determine if the modified times are different, nd whether the second file is newer than the first.
 	
 	The difference between this application and using CFEngine's built in support for getting file stats is that normally the accuracy is only to the second of the modified file time but in order to better compare two files requires parts of a second as well. The stat library provides the extra support for retrieving the additional information required.	
 	
-5. test_delete
+5. **test_delete**
 
 	Deletes any previous copy of the test files used in the example.
 	
-6. do_files_exist
+6. **do_files_exist**
 
 	Verifies whether the test files exist or not.
 	
-7. testbundle
+7. **testbundle**
 
 	Creates the first test file, as an empty file.
 	
-8. outer_bundle_1
+8. **outer_bundle_1**
 
 	Adds some text to the first test file.
 	
-9. copy_a_file
+9. **copy_a_file**
 
 	Makes a copy of the test file.
 	
-10. do_files_exist_2
+10. **do_files_exist_2**
 
 	Verifies that both test files exist.
 	
-11. list_file_1
+11. **list_file_1**
 
 	Reports the contents of each test file.
 	
-12. stat
+12. **stat**
 
 	Compares the modified time of each test file using the binary application compiled in create_aout to see if it is newer.
 	
-13. outer_bundle_2
+13. **outer_bundle_2**
 
 	Modifies the text in the second file.
 	
-14. list_file_2
+14. **list_file_2**
 
 	Uses filestat and isnewerthan to compare the two test files to see if the second one is newer. Sometimes the modifications
 	already performed, such as copy and modifying text, happen too quickly and filestat and isnewerthan may both report that the
