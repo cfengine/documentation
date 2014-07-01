@@ -261,10 +261,11 @@ If the policy is **present**, the user is present and active
 on the system. Note that an unset password might still prevent the user
 from logging in.
 
-If the policy is **locked**, the user exists on the system, but is
-prevented from logging in. Note that only logins via the PAM framework
-are prevented. This includes normal console logins and SSH logins
-on most systems.
+If the policy is **locked**, and the user does not exist, it is created with
+password authentication disabled. If the user account already exists its
+password digest is prepended with a "!", disabling password authentication.
+Note that only logins via the PAM framework are prevented. This includes normal
+console logins and SSH logins on most systems.
 
 If the policy is **absent**, the user does not exist on the system. Note
 that if a user previously existed, his/her files are not
