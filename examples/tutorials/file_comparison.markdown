@@ -68,7 +68,17 @@ bundle agent packages
 bundle agent create_aout
 {
 
+  # This bundle creates a binary application from the source in  create_aout_source_file
+  # that uses the stat library to compare two files, determine if the modified times are different, 
+  # and whether the second file is newer than the first.
+  
+  # The difference between this application and using CFEngine's built in support for
+  # getting file stats is that normally the accuracy is only to the second of the modified file time
+  # but in order to better compare two files requires parts of a second as well. The stat library
+  # provides the extra support for retrieving the additional information required.
+  
   vars:
+    # Removes any previous binary
     "rmaout" string => execresult("$(global_vars.rmexec) $(global_vars.aoutexec)","noshell");
 	"compilestr" string => "$(global_vars.gccexec) $(global_vars.workdir)/a.c -o $(global_vars.aoutexec)";
     "gccaout" string => execresult("$(compilestr)","noshell");
@@ -106,6 +116,15 @@ bundle edit_line Insert(name)
 
 bundle agent stat
 {
+
+  # This bundle uses the binary application stat to compare two files,
+  # determine if the modified times are different, and whether the second file is newer than
+  # the first. 
+  
+  # The difference between this application and using CFEngine's built in support for
+  # getting file stats is that normally the accuracy is only to the second of the modified file time
+  # but in order to better compare two files requires parts of a second as well. The stat command
+  # provides this additional information, but it must be extracted from the middle of a string.
 
   vars:
     "file1" string => "$(global_vars.file1)";
