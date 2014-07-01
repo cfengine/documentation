@@ -180,7 +180,7 @@ bundle agent create_aout
   reports:
 	  "rm output: $(rmaout)";
 	  "gcc output: $(gccaout)";
-	  "Creating aout using $(compilestring)";
+	  "Creating aout using $(compilestr)";
 
 }
 
