@@ -149,7 +149,7 @@ bundle agent create_aout_source_file
       edit_line => Insert("@(c)");
 
   reports:
-    "a.c has been created";
+    "$(global_vars.workdir)/a.c has been created";
 	
 }
 
