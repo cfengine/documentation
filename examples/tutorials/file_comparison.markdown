@@ -16,7 +16,7 @@ tags: [examples, tutorials, file]
 	export CFE_FILE1="test_plain_1.txt"
 	export CFE_FILE2="test_plain_2.txt"
 
-	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist,testbundle,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,waiting,outer_bundle_2,list_file_2
+	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist,testbundle,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,stat,outer_bundle_2,list_file_2
 	```
 
 ## file_test.cf ##
@@ -104,7 +104,7 @@ bundle edit_line Insert(name)
       "$(name)";
 }
 
-bundle agent waiting
+bundle agent stat
 {
 
   vars:
@@ -295,26 +295,6 @@ bundle edit_line inner_bundle_1
     "inserted $(msg) into $(global_vars.file1)";
 
 }
-
-bundle edit_line a_c_text
-{
-
-  vars:
-  
-    "c" slist => {"#include <stdlib.h>","#include <stdio.h>","#include <sys/stat.h>","void main()","{char* file1;file1 = getenv(\"CFE_FILE1\");char* file2;file2 = getenv(\"CFE_FILE2\");struct stat time1;int i = lstat(file1, &time1);struct stat time2;int j = lstat(file2, &time2);if (time1.st_mtime < time2.st_mtime){printf(\"Newer\");}else{if(time1.st_mtim.tv_nsec < time2.st_mtim.tv_nsec){printf(\"Newer\");}else{printf(\"Not newer\");}}}"};
-	
-	#"c" slist => {"#include <stdlib.h>","#include <stdio.h>","#include <sys/stat.h>","void main()"};
-	
-	
-
-  insert_lines:
-    "@(c)";
-
-  reports:
-    "Inserted text into source code";
-
-}
-
 
 bundle edit_line inner_bundle_2
 {
