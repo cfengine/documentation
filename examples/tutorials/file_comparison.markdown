@@ -8,6 +8,7 @@ tags: [examples, tutorials, file]
 
 1. Add the [policy contents][File Comparison#Full Policy] to /var/cfengine/masterfiles/file_test.cf.
 2. Run the following commands on the command line:
+
 	```console
 	export AOUT_BIN="a.out"
 	export GCC_BIN="/usr/bin/gcc"
