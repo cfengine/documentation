@@ -6,7 +6,7 @@ sorting: 100
 tags: [examples, tutorials, file]
 ---
 
-1. Add the contents found in [file_test.cf][#file_test.cf] to /var/cfengine/masterfiles/file_test.cf.
+1. Add the contents found in [file_test.cf][#Full Policy] to /var/cfengine/masterfiles/file_test.cf.
 2. Run the following commands on the command line:
 	```console
 	export AOUT_BIN="a.out"
@@ -379,7 +379,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	```
 	
 	
-## file_test.cf ##
+## Full Policy ##
 
 ```cf3
 body common control {
