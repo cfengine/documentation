@@ -7,17 +7,17 @@ tags: [examples, tutorials, file]
 ---
 
 1. Add the [policy contents][File Comparison#Full Policy] to /var/cfengine/masterfiles/file_test.cf.
-2. Run the following commands on the command line:
+2. Run the following commands as root on the command line:
 
 	```console
-	export AOUT_BIN="a.out"
-	export GCC_BIN="/usr/bin/gcc"
-	export RM_BIN="/bin/rm"
-	export WORK_DIR=$HOME
-	export CFE_FILE1="test_plain_1.txt"
-	export CFE_FILE2="test_plain_2.txt"
+	# export AOUT_BIN="a.out"
+	# export GCC_BIN="/usr/bin/gcc"
+	# export RM_BIN="/bin/rm"
+	# export WORK_DIR=$HOME
+	# export CFE_FILE1="test_plain_1.txt"
+	# export CFE_FILE2="test_plain_2.txt"
 
-	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist,testbundle,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,stat,outer_bundle_2,list_file_2
+	# /var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist,testbundle,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,stat,outer_bundle_2,list_file_2
 	```
 
 Here is the order in which bundles are called in the command line above (some other support bundles are contained within file_test.cf but are not included here):
