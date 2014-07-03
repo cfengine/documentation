@@ -296,7 +296,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	  vars:
 		"file1" string => "$(global_vars.file1)";
 		"file2" string => "$(global_vars.file2)";
-		"aoutexec" string => getenv("AOUT_EXEC",255);
+		"aoutexec" string => "$(global_vars.aoutexec)";
 
 		"aout" string => execresult("$(aoutexec)","noshell");
 
