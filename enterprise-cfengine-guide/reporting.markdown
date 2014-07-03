@@ -63,6 +63,19 @@ are not filtered by `controls/cf_serverd.cf` in your infrastructure.
 The standard configuration from the stock CFEngine packages allows
 them and should work.
 
+**Note:** The CFEngine report collection model accounts for long periods of
+time when the hub is unable to collect data from remote agents. This model
+preserves data recorded until it can be collected. Data (promise outcomes, etc
+...) recorded by the agent during normal agent runs is stored locally until it
+is collected from by the cf-hub process. At the time of collection the local
+data stored on the client is cleaned up and only the last hours worth of data
+remains client. It is important to understand that the time between hub
+collection and number of clients that are unable to be collected from grows the
+ammount of data to transfer and store in the central database also grows. A
+large number of clinets that have not been collected from that become available
+at once can cause increased load on the hub collector and affect its
+performance until it has been able to collect from all hosts.
+
 ## Define a New Single Table Report ##
 
 1. In *Mission Portal* select the *Report* application icon on the left hand side of the screen.
