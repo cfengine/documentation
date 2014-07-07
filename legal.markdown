@@ -54,6 +54,7 @@ CFEngine includes the following 3rd party libraries and components:
 * [libcurl](http://curl.haxx.se) under the [MIT/X derivative license](http://curl.haxx.se/docs/copyright.html)
 * [libmcrypt](http://mcrypt.sourceforge.net) under the [LGPLv2](http://www.opensource.org/licenses/lgpl-license.html)
 * [mod_ssl](http://www.modssl.org) under a BSD style license
+* [oauth2-server-php](https://github.com/bshaffer/oauth2-server-php) under the [MIT License](https://github.com/bshaffer/oauth2-server-php/blob/develop/LICENSE)
 * [OpenLDAP and liblber](http://www.openldap.org) under the [OpenLDAP Public License](http://www.openldap.org/software/release/license.html)
 * [PHP](http://php.net) under the [PHP license version 3.01](http://www.php.net/license/3_01.txt)
 * [php-apc](http://pecl.php.net/package/APC) under the [PHP License](http://www.php.net/license/3_01.txt)
