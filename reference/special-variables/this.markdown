@@ -63,14 +63,12 @@ It is useful to differentiate otherwise identical reports promises.
 ### this.promiser
 
 The special variable `$(this.promiser)` is used to refer to the current
-value of the promiser itself, in a number of allowed cases, typically
-when searches can take place. Current promise types that define
-`$(this.promiser)` are: `files`, `processes`, `commands`.
+value of the promiser itself.
 
-This variable is useful in `files` promises, for instance when using
-pattern matching or `depth_search` that implicitly match multiple
-objects. In that case, `$(this.promiser)` refers to the currently
-identified file that makes the promise. For example:
+In `files` promises, the variable can only be used in the `transformer`
+attribute, where it is practical when using pattern matching or `depth_search`
+that implicitly match multiple objects. In that case, `$(this.promiser)`
+refers to the currently identified file that makes the promise. For example:
 
 ```cf3
     bundle agent find666
@@ -92,6 +90,7 @@ identified file that makes the promise. For example:
       file_result => "mode";
     }
 ```
+
 ### this.promiser_uid
 
 This variable refers to the `uid` (user ID) of the user running the `cf-agent` program.
