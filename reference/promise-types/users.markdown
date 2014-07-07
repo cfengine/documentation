@@ -272,6 +272,13 @@ that if a user previously existed, his/her files are not
 automatically removed. You must create a separate `files` promise for
 this.
 
+**Note:** When CFEngine locks an account it does two things, it disables
+the login password, and it sets the account expiration date far in the
+past. The expiration date is to prevent key based SSH logins. However,
+on Solaris it is not possible to set the account expiration date in this
+way, hence SSH logins may still work there after an account is locked
+and additional steps may be required.
+
 [%CFEngine_promise_attribute()%]
 
 **Example:**
