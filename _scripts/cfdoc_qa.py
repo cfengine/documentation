@@ -81,10 +81,10 @@ def Log(config, string):
 		line_offset += 1
 		if line == "# Logging\n":
 			break
-			break
 
 	logfile.write("\n* %s\n" % string)
 	logfile.write("    * Triggered by: `%s` (%d)\n" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"]))
+	print "%s (%d): %s" % (os.path.relpath(config["context_current_file"]), config["context_current_line_number"], string)
 
 	logfile.writelines(original[line_offset:])
 	logfile.close()
