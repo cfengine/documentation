@@ -24,7 +24,7 @@ tags: [examples, tutorials, file]
 Here is the order in which bundles are called in the command line above (some other support bundles are contained within file_test.cf but are not included here):
 
 1. [robot][#robot] - demonstrates use of `reports`.
-2. [global_vars][#global_vars] - sets up some globla variables for later use.
+2. [global_vars][#global_vars] - sets up some global variables for later use.
 3. [packages][#packages] - installs packages that will be used later on.
 4. [create_aout_source_file][#create_aout_source_file] - creates a source file.
 5. [create_aout][#create_aout] - compiles the source file.
