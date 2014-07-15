@@ -298,10 +298,60 @@ from some of the contents of `/proc`. For details, see [procfs][The Policy Frame
 
 ##### disable_inventory_cmdb
 
-By default, this class is turned on (and the module is off).
+By default, this class is turned off (and the module is off).
 
 Turn this on (set to `any`) to allow each client to load a `me.json`
 file from the server and load its contents. For details, see [CMDB][The Policy Framework#CMDB]
+
+##### disable_inventory_local_users_discover
+
+By default, this class is turned off (and the module is on). This inventory
+discovery module will populate variables based on users discovered locally on
+the system along with their attributes.
+
+To turn this module off enable the general `disable_inventory` class or set
+this class to `!any`. For details, see [Local Users][The Policy Framework#Local-Users]
+
+##### disable_inventory_local_users_discover_report_encrypted_password
+
+By default, this class is turned on (and the module is off).
+
+Turn this on (set to `any`) to report encrypted passwords back to Mission
+Portal for centralized reporting. For details, see [Local Users][The Policy Framework#inventory_local_users_discover]
+
+##### disable_inventory_local_users
+
+By default, this class is turned off (and the module is on). This inventory
+discovery module will populate a variable with the locally discovered users
+based on discovery from `cfe_autorun_inventory_local_users_discover` with
+appropriate inventory tags to populate the Mission Portal inventory interface.
+
+To turn this module off enable the general `disable_inventory` class or set
+this class to `!any`. For details, see [Local Users][The Policy Framework#inventory_local_users]
+
+##### disable_inventory_local_users_locked
+
+By default, this class is turned off (and the module is on). This inventory
+discovery module will populate a variable with the locally discovered users
+that appear to be locked based on discovery from
+`cfe_autorun_inventory_local_users_discover` with appropriate inventory tags to
+populate the Mission Portal inventory interface.
+
+To turn this module off enable the general `disable_inventory` class or set
+this class to `!any`. For details, see [Local Users][The Policy Framework#inventory_local_users_locked]
+
+##### disable_inventory_local_users_password_last_change
+
+By default, this class is turned off (and the module is on). This inventory
+discovery module will populate a variable with the locally discovered users
+that have seemingly valid password hases with the number of days since each
+users password has been changed, and a variable with the absolute date of the
+last password change based on discovery perfromed in
+`cfe_autorun_inventory_local_users_discover` with appropriate inventory tags to
+populate the Mission Portal inventory interface.
+
+To turn this module off enable the general `disable_inventory` class or set
+this class to `!any`. For details, see [Local Users][The Policy Framework#inventory_local_users_password_last_change]
 
 ### promises.cf
 
@@ -753,3 +803,52 @@ R: cfe_autorun_inventory_proc: we have partitions sda with 468851544 blocks
 
 R: cfe_autorun_inventory_proc: we have kernel version 'Linux version 3.11.0-15-generic (buildd@roseapple) (gcc version 4.8.1 (Ubuntu/Linaro 4.8.1-10ubuntu8) ) #25-Ubuntu SMP Thu Jan 30 17:22:01 UTC 2014'
 ```
+
+### Local Users
+
+#### inventory_local_users_discover
+
+* lives in: `any.cf`
+* provides variables: `cfe_autorun_inventory_local_users_discover.local_users`,
+  `cfe_autorun_inventory_local_users_discover.date_last_password_change[USER]`,
+`cfe_autorun_inventory_local_users_discover.min_password_age[USER]`,
+`cfe_autorun_inventory_local_users_discover.max_password_age[USER]`,
+`cfe_autorun_inventory_local_users_discover.password_warning_period[USER]`,
+`cfe_autorun_inventory_local_users_discover.password_inactivity_period[USER]`,
+`cfe_autorun_inventory_local_users_discover.account_expiration_date[USER]`,
+`cfe_autorun_inventory_local_users_discover.numeric_user_id[USER]`,
+`cfe_autorun_inventory_local_users_discover.numeric_group_id[USER]`,
+`cfe_autorun_inventory_local_users_discover.comment[USER]`,
+`cfe_autorun_inventory_local_users_discover.home_directory[USER]`,
+`cfe_autorun_inventory_local_users_discover.shell[USER]`, and `cfe_autorun_inventory_local_users_discover.encrypted_password[USER]`. Note: Encrypted passwords are not made available for central reporting by default. To enable centralized reporting of local users encruypted passwords disable the `disable_inventory_local_users_discovery_report_encrypted_password` class.
+* provides classes: `USER_password_locked`, `USER_password_empty`, `USER_password_valid_hash`, `USER_password_invalid_hash` where USER is the canonified local user name.
+* implementation:
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+cfe_autorun_inventory_local_users_discover, \})%]
+
+#### inventory_local_users
+
+* lives in: `any.cf`
+* provides variables: `inventory_local_users.local_users` as a copy of `cfe_autorun_inventory_local_users_discover.local_users` but tagged appropriately for integration into the inventory in Mission Portal.
+* implementation:
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_local_users, \})%]
+
+#### inventory_local_users_locked
+
+* lives in: `any.cf`
+* provides variables: `inventory_local_users_locked.locked_users` based on discovery performed in `cfe_autorun_inventory_local_users_discover` but tagged appropriately for integration into the inventory in Mission Portal.
+* implementation:
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_local_users_locked, \})%]
+
+#### inventory_local_users_password_last_change
+
+* lives in: `any.cf`
+* provides variables: `inventory_local_users_password_last_change.days_since_pw_change[USER]`, and `inventory_local_users_password_last_change.pw_change_date[USER]` based on discovery performed in `cfe_autorun_inventory_local_users_discover` but tagged appropriately for integration into the inventory in Mission Portal.
+* implementation:
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_local_users_password_last_change, \})%]
+
+#### inventory_local_users_password_empty
+
+* lives in: `any.cf`
+* provides variables: `inventory_local_users_password_empty.empty_users` based on discovery performed in `cfe_autorun_inventory_local_users_discover` but tagged appropriately for integration into the inventory in Mission Portal.
+* implementation:
+[%CFEngine_include_snippet(masterfiles/inventory/any.cf, .*bundle\s+agent\s+inventory_local_users_password_empty, \})%]
