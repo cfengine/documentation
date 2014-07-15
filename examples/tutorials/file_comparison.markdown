@@ -424,5 +424,5 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## Full Policy ##
 
-[%CFEngine_include_snippet(examples/tutorials/file_compare_test.cf, .* )%]
+[%CFEngine_include_snippet(documentation/examples/tutorials/file_compare_test.cf, .* )%]
 
