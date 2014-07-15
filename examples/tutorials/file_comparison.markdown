@@ -41,7 +41,7 @@ Here is the order in which bundles are called in the command line above (some ot
 
 ## robot ##
 
-	Demonstrates use of `reports`, using an ascii art representation of the CFEngine robot.
+Demonstrates use of `reports`, using an ascii art representation of the CFEngine robot.
 	
 ## global_vars ##
 
