@@ -68,10 +68,10 @@ bundle common global_vars
 
 }
 
-# Ensure package createrepo is installed
-# Create Yum repo
-# Add Hiawatha to repo
-# Emable repo (or enable later)
+# TODO: Ensure package createrepo is installed
+# TODO: Create Yum repo
+# TODO: Add Hiawatha to repo
+# TODO: Enable repo (or enable later)
 
 bundle agent packages
 {
@@ -154,25 +154,25 @@ bundle agent create_aout
 
 }
 
-# Ensure firewall is either off or needed ports are open
-# Create RPM of aout
-# Add RPM to Yum repo
+# TODO: Ensure firewall is either off or needed ports are open
+# TODO: Create RPM of aout
+# TODO: Add RPM to Yum repo
 
-# Create www-data user and group
+# TODO: Create www-data user and group
 
-# Configure php-fpm
-# user and group to www-data
+# TODO: Configure php-fpm
+# TODO: user and group to www-data
 
-# Install aout from Yum repo
-# Install Hiawatha from Yum repo
-# Install php-fpm
-# Configure Hiawatha
-# Server string?
-# Binding -> Port = 8080
-# Hostname = IP address
-# Directory uncomment
+# TODO: Install aout from Yum repo
+# TODO: Install Hiawatha from Yum repo
+# TODO: Install php-fpm
+# TODO: Configure Hiawatha
+# TODO: Server string?
+# TODO: Binding -> Port = 8080
+# TODO: Hostname = IP address
+# TODO: Directory uncomment
 
-# Service start hiawatha and php-fpm
+# TODO: Service start hiawatha and php-fpm
 
 bundle agent test_delete
 {
