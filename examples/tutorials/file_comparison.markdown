@@ -17,7 +17,7 @@ tags: [examples, tutorials, file]
 	export CFE_FILE1="test_plain_1.txt"
 	export CFE_FILE2="test_plain_2.txt"
 
-	/var/cfengine/bin/cf-agent --no-lock --file /var/cfengine/masterfiles/file_test.cf --bundlesequence robot,global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist_1,create_file_1,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,stat,outer_bundle_2,list_file_2
+	/var/cfengine/masterfiles/file_test.cf --bundlesequence robot,global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist_1,create_file_1,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,stat,outer_bundle_2,list_file_2
 
 	```
 
@@ -41,40 +41,40 @@ Here is the order in which bundles are called in the command line above (some ot
 
 ## robot ##
 
-	Demonstrates use of `reports`, using an ascii art representation of the CFEngine robot.
+Demonstrates use of `reports`, using an ascii art representation of the CFEngine robot.
 	
 ## global_vars ##
 
-	Sets up some global variables that are used frequently by other bundles.
+Sets up some global variables that are used frequently by other bundles.
 	
-	```cf3
-	bundle common global_vars
-	{   
-		vars:
+		```cf3
+		bundle common global_vars
+		{   
+			vars:
 
-		  "gccexec" string => getenv("GCC_BIN",255);
-		  "rmexec" string => getenv("RM_BIN",255);
+			  "gccexec" string => getenv("GCC_BIN",255);
+			  "rmexec" string => getenv("RM_BIN",255);
 
-		  "aoutbin" string => getenv("AOUT_BIN",255);
-		  "workdir" string => getenv("WORK_DIR",255);
+			  "aoutbin" string => getenv("AOUT_BIN",255);
+			  "workdir" string => getenv("WORK_DIR",255);
 
-		  "aoutexec" string => "$(workdir)/$(aoutbin)";
+			  "aoutexec" string => "$(workdir)/$(aoutbin)";
 
-		  "file1name" string => getenv("CFE_FILE1",255);
-		  "file2name" string => getenv("CFE_FILE2",255);
+			  "file1name" string => getenv("CFE_FILE1",255);
+			  "file2name" string => getenv("CFE_FILE2",255);
 
-		  "file1" string => "$(workdir)/$(file1name)";
-		  "file2" string => "$(workdir)/$(file2name)";
+			  "file1" string => "$(workdir)/$(file1name)";
+			  "file2" string => "$(workdir)/$(file2name)";
 
-		classes:
-		  "gclass" expression => "any";
+			classes:
+			  "gclass" expression => "any";
 
-	}
-	```
+		}
+		```
 	
 ## packages ##
 
-	Ensures that the gcc package is installed, for later use by the create_aout bundle.
+Ensures that the gcc package is installed, for later use by the create_aout bundle.
 	
 	```cf3
 		bundle agent packages
@@ -101,7 +101,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## create_aout_source_file ##
 
-	Creates the c source file that will generate a binary application in create_aout.
+Creates the c source file that will generate a binary application in create_aout.
 	
 	```cf3
 	bundle agent create_aout_source_file
@@ -132,9 +132,9 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## create_aout ##
 
-	This bundle creates a binary application from the source in  create_aout_source_file that uses the stat library to compare two files, determine if the modified times are different, nd whether the second file is newer than the first.
+This bundle creates a binary application from the source in  create_aout_source_file that uses the stat library to compare two files, determine if the modified times are different, nd whether the second file is newer than the first.
 	
-	The difference between this application and using CFEngine's built in support for getting file stats is that normally the accuracy is only to the second of the modified file time but in order to better compare two files requires parts of a second as well. The stat library provides the extra support for retrieving the additional information required.	
+The difference between this application and using CFEngine's built in support for getting file stats is that normally the accuracy is only to the second of the modified file time but in order to better compare two files requires parts of a second as well. The stat library provides the extra support for retrieving the additional information required.	
 	
 	```cf3
 	bundle agent create_aout
@@ -169,7 +169,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## test_delete ##
 
-	Deletes any previous copy of the test files used in the example.
+Deletes any previous copy of the test files used in the example.
 	
 	```cf3
 	bundle agent test_delete
@@ -183,7 +183,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## do_files_exist_1 ##
 
-	Verifies whether the test files exist or not.
+Verifies whether the test files exist or not.
 	
 	```cf3
 	bundle agent do_files_exist_1
@@ -219,7 +219,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## create_file_1 ##
 
-	Creates the first test file, as an empty file.
+Creates the first test file, as an empty file.
 	
 	```cf3
 	bundle agent create_file_1
@@ -237,7 +237,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## outer_bundle_1 ##
 
-	Adds some text to the first test file.
+Adds some text to the first test file.
 	
 	```cf3
 	bundle agent outer_bundle_1
@@ -252,7 +252,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## copy_a_file ##
 
-	Makes a copy of the test file.
+Makes a copy of the test file.
 	
 	```cf3
 	bundle agent copy_a_file
@@ -269,7 +269,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## do_files_exist_2 ##
 
-	Verifies that both test files exist.
+Verifies that both test files exist.
 	
 	```cf3
 	bundle agent do_files_exist_2
@@ -283,7 +283,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## list_file_1 ##
 
-	Reports the contents of each test file.
+Reports the contents of each test file.
 	
 	```cf3
 	bundle agent list_file_1
@@ -324,7 +324,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## stat ##
 
-	Compares the modified time of each test file using the binary application compiled in create_aout to see if it is newer.
+Compares the modified time of each test file using the binary application compiled in create_aout to see if it is newer.
 	
 	```cf3
 	bundle agent stat
@@ -372,7 +372,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## outer_bundle_2 ##
 
-	Modifies the text in the second file.
+Modifies the text in the second file.
 	
 	```cf3
 	bundle agent outer_bundle_2
@@ -387,10 +387,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## list_file_2 ##
 
-	Uses `filestat` and `isnewerthan` to compare the two test files to see if the second one is newer. Sometimes the modifications
-	already performed, such as copy and modifying text, happen too quickly and filestat and isnewerthan may both report that the
-	second test file is not newer than the first, while the more accurate stat based checks in the stat bundle (see step 12) will
-	recognize the difference.
+Uses `filestat` and `isnewerthan` to compare the two test files to see if the second one is newer. Sometimes the modifications already performed, such as copy and modifying text, happen too quickly and filestat and isnewerthan may both report that the second test file is not newer than the first, while the more accurate stat based checks in the stat bundle (see step 12) will recognize the difference.
 	
 	```cf3
 	bundle agent list_file_2
@@ -424,5 +421,5 @@ Here is the order in which bundles are called in the command line above (some ot
 	
 ## Full Policy ##
 
-[%CFEngine_include_snippet(examples/tutorials/file_compare_test.cf, .* )%]
+[%CFEngine_include_snippet(documentation/examples/tutorials/file_compare_test.cf, .* )%]
 
