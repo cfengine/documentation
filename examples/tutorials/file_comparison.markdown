@@ -47,30 +47,30 @@ Here is the order in which bundles are called in the command line above (some ot
 
 	Sets up some global variables that are used frequently by other bundles.
 	
-	```cf3
-	bundle common global_vars
-	{   
-		vars:
+		```cf3
+		bundle common global_vars
+		{   
+			vars:
 
-		  "gccexec" string => getenv("GCC_BIN",255);
-		  "rmexec" string => getenv("RM_BIN",255);
+			  "gccexec" string => getenv("GCC_BIN",255);
+			  "rmexec" string => getenv("RM_BIN",255);
 
-		  "aoutbin" string => getenv("AOUT_BIN",255);
-		  "workdir" string => getenv("WORK_DIR",255);
+			  "aoutbin" string => getenv("AOUT_BIN",255);
+			  "workdir" string => getenv("WORK_DIR",255);
 
-		  "aoutexec" string => "$(workdir)/$(aoutbin)";
+			  "aoutexec" string => "$(workdir)/$(aoutbin)";
 
-		  "file1name" string => getenv("CFE_FILE1",255);
-		  "file2name" string => getenv("CFE_FILE2",255);
+			  "file1name" string => getenv("CFE_FILE1",255);
+			  "file2name" string => getenv("CFE_FILE2",255);
 
-		  "file1" string => "$(workdir)/$(file1name)";
-		  "file2" string => "$(workdir)/$(file2name)";
+			  "file1" string => "$(workdir)/$(file1name)";
+			  "file2" string => "$(workdir)/$(file2name)";
 
-		classes:
-		  "gclass" expression => "any";
+			classes:
+			  "gclass" expression => "any";
 
-	}
-	```
+		}
+		```
 	
 ## packages ##
 
