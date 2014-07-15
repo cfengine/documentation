@@ -23,27 +23,27 @@ tags: [examples, tutorials, file]
 
 Here is the order in which bundles are called in the command line above (some other support bundles are contained within file_test.cf but are not included here):
 
-1. robot
-2. global_vars
-3. packages
-4. create_aout_source_file
-5. create_aout
-6. test_delete
-7. do_files_exist_1
-8. create_file_1
-9. outer_bundle_1
-10. copy_a_file
-11. do_files_exist_2
-12. list_file_1
-13. stat
-14. outer_bundle_2
-15. list_file_2
+1. [robot][#robot] - demonstrates use of `reports`.
+2. [global_vars][#global_vars] - sets up some globla variables for later use.
+3. [packages][#packages] - installs packages that will be used later on.
+4. [create_aout_source_file][#create_aout_source_file] - creates a source file.
+5. [create_aout][#create_aout] - compiles the source file.
+6. [test_delete][#test_delete] - deletes a file.
+7. [do_files_exist_1][#do_files_exist_1] - checks the existance of files.
+8. [create_file_1][#create_file_1] - creates a file.
+9. [outer_bundle_1][#outer_bundle_1] - adds text to a file.
+10. [copy_a_file][#copy_a_file] - copies the file.
+11. [do_files_exist_2][#do_files_exist_2] - checks the existance of both files.
+12. [list_file_1][#list_file_1] - shows the contents of each file.
+13. [stat][#stat] - uses the stat command and the aout application to compare modified times of both files.
+14. [outer_bundle_2][#outer_bundle_2] - modifies the contents of the second file.
+15. [list_file_2][#list_file_2] - shows the contents of both files and uses CFEngine functionality to compare the modified time for each file.
 
-1. ** robot **
+## robot ##
 
 	Demonstrates use of `reports`, using an ascii art representation of the CFEngine robot.
 	
-2. **global_vars**
+## global_vars ##
 
 	Sets up some global variables that are used frequently by other bundles.
 	
@@ -72,7 +72,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-3. **packages**
+## packages ##
 
 	Ensures that the gcc package is installed, for later use by the create_aout bundle.
 	
@@ -99,7 +99,7 @@ Here is the order in which bundles are called in the command line above (some ot
 		}
 	```
 	
-4. **create_aout_source_file**
+## create_aout_source_file ##
 
 	Creates the c source file that will generate a binary application in create_aout.
 	
@@ -130,7 +130,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-5. **create_aout**
+## create_aout ##
 
 	This bundle creates a binary application from the source in  create_aout_source_file that uses the stat library to compare two files, determine if the modified times are different, nd whether the second file is newer than the first.
 	
@@ -167,7 +167,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-6. **test_delete**
+## test_delete ##
 
 	Deletes any previous copy of the test files used in the example.
 	
@@ -181,7 +181,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-7. **do_files_exist_1**
+## do_files_exist_1 ##
 
 	Verifies whether the test files exist or not.
 	
@@ -217,7 +217,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-8. **create_file_1**
+## create_file_1 ##
 
 	Creates the first test file, as an empty file.
 	
@@ -235,7 +235,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-9. **outer_bundle_1**
+## outer_bundle_1 ##
 
 	Adds some text to the first test file.
 	
@@ -250,7 +250,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-10. **copy_a_file**
+## copy_a_file ##
 
 	Makes a copy of the test file.
 	
@@ -267,7 +267,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-11. **do_files_exist_2**
+## do_files_exist_2 ##
 
 	Verifies that both test files exist.
 	
@@ -281,7 +281,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-12. **list_file_1**
+## list_file_1 ##
 
 	Reports the contents of each test file.
 	
@@ -298,7 +298,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 
-13. **exec_aout**
+## exec_aout ##
 
 	```cf3
 	bundle agent exec_aout
@@ -322,7 +322,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-14. **stat**
+## stat ##
 
 	Compares the modified time of each test file using the binary application compiled in create_aout to see if it is newer.
 	
@@ -370,7 +370,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-14. **outer_bundle_2**
+## outer_bundle_2 ##
 
 	Modifies the text in the second file.
 	
@@ -385,7 +385,7 @@ Here is the order in which bundles are called in the command line above (some ot
 	}
 	```
 	
-15. **list_file_2**
+## list_file_2 ##
 
 	Uses `filestat` and `isnewerthan` to compare the two test files to see if the second one is newer. Sometimes the modifications
 	already performed, such as copy and modifying text, happen too quickly and filestat and isnewerthan may both report that the
