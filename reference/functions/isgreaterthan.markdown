@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, isgreaterthan]
 **Description:** Returns whether `value1` is greater than `value2`.
 
 The comparison is made numerically if possible. If the values are
-strings, the result is identical to that of comparing with strcmp().
+strings, the comparison is lexical (based on C's strcmp()).
 
 [%CFEngine_function_attributes(value1, value2)%]
 
