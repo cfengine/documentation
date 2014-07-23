@@ -126,7 +126,7 @@ use global variable lists to do this:
     }
 ```
 
-**History:** The default to `{ "main" }` was introduced in version 3.6.1, so if you expect your policies to be run by 3.6.0 or older, you'll need an explicit `bundlesequence`.
+**History:** The default to `{ "main" }` was introduced in version 3.7.0, so if you expect your policies to be run by older version, you'll need an explicit `bundlesequence`.
 
 ### cache_system_functions
 
