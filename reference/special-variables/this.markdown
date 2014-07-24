@@ -65,10 +65,19 @@ It is useful to differentiate otherwise identical reports promises.
 The special variable `$(this.promiser)` is used to refer to the current
 value of the promiser itself.
 
-In `files` promises, the variable can only be used in the `transformer`
-attribute, where it is practical when using pattern matching or `depth_search`
-that implicitly match multiple objects. In that case, `$(this.promiser)`
-refers to the currently identified file that makes the promise. For example:
+In `files` promises, where it is practical to use patterns or `depth_search`
+to match multiple objects, the variable refers to the file that is currently
+making the promise. However, the variable can only be used in selected
+attributes:
+
+* `transformer`
+* `edit_template`
+* [`source`][`files#source`] in `copy_from`
+* `exec_program` in `file_select`
+* class names in [`body classes`][Promise Types and Attributes#classes]
+* logging attributes in [`body action`][Promise Types and Attributes#action]
+
+For example:
 
 ```cf3
     bundle agent find666
