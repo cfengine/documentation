@@ -72,7 +72,7 @@ attributes:
 
 * `transformer`
 * `edit_template`
-* [`source`][`files#source`] in `copy_from`
+* [`source`][files#source] in `copy_from`
 * `exec_program` in `file_select`
 * class names in [`body classes`][Promise Types and Attributes#classes]
 * logging attributes in [`body action`][Promise Types and Attributes#action]
