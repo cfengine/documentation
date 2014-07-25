@@ -2,6 +2,7 @@
 layout: default
 title: cf-agent
 published: true
+sorting: 10
 tags: [Components, cf-agent]
 keywords: [agent]
 ---

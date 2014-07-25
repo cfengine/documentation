@@ -2,6 +2,7 @@
 layout: default
 title: cf-execd
 published: true
+sorting: 30
 tags: [Components, cf-execd]
 keywords: [executor]
 ---

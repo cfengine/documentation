@@ -2,6 +2,7 @@
 layout: default
 title: cf-hub
 published: true
+sorting: 80
 tags: [reference, components, cf-hub, enterprise]
 keywords: [hub]
 ---

@@ -2,6 +2,7 @@
 layout: default
 title: cf-runagent
 published: true
+sorting: 70
 tags: [Components, cf-runagent]
 keywords: [runagent]
 ---
