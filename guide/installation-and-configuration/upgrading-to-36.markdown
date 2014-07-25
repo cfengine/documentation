@@ -94,8 +94,6 @@ Our recommendation is to upgrade the policy server first. The rationale being th
 2. Turn on the auto-upgrade policy by setting class `trigger_update` in `update.cf` for a small set of clients, ie change `!any` to an appropriate
     expression
 
-[%CFEngine_include_snippet(update.cf, .*Trigger binary.*, };)]
-
 3. Verify that the selected hosts are upgrading successfully
 
     As an Enterprise user, confirm that the hosts start appearing in Mission Portal after 5-10 minutes. Otherwise, log manually into a set of hosts to confirm the successful upgrade.
