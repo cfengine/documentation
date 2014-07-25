@@ -2,6 +2,7 @@
 layout: default
 title: cf-promises
 published: true
+sorting: 40
 tags: [Components, cf-promises]
 ---
 

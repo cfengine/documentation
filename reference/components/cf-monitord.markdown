@@ -2,6 +2,7 @@
 layout: default
 title: cf-monitord
 published: true
+sorting: 50
 tags: [Components, cf-monitord]
 keywords: [monitor]
 ---
