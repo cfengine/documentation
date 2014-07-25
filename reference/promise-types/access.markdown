@@ -551,42 +551,58 @@ When combined with `monitoring_include`, this list is applied to the selected su
 #### classes_include
 
 **Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility.
+action and is kept for backwards compatibility. Filter data by meta-tags instead.
+
+**See also:** `metatags_include`, `metatags_exclude`
 
 #### classes_exclude
 
 **Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility.
+action and is kept for backwards compatibility. Filter data by meta-tags instead.
+
+**See also:** `metatags_include`, `metatags_exclude`
 
 #### variables_include
 
 **Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility.
+action and is kept for backwards compatibility. Filter data by meta-tags instead.
+
+**See also:** `metatags_include`, `metatags_exclude`
 
 #### variables_exclude
 
 **Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility.
+action and is kept for backwards compatibility. Filter data by meta-tags instead.
+
+**See also:** `metatags_include`, `metatags_exclude`
 
 #### promise_notkept_log_include
 
 **Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility.
+action and is kept for backwards compatibility. Filter data by handle instead.
+
+**See also:** `promise_handle_exclude`
 
 #### promise_notkept_log_exclude
 
 **Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility.
+action and is kept for backwards compatibility. Filter data by handle instead.
+
+**See also:** `promise_handle_exclude`
 
 #### promise_repaired_log_include
 
 **Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility.
+action and is kept for backwards compatibility. Filter data by handle instead.
+
+**See also:** `promise_handle_exclude`
 
 #### promise_repaired_log_exclude
 
 **Deprecated:** This attribute is deprecated as of CFEngine 3.6.0. It performs no
-action and is kept for backwards compatibility.
+action and is kept for backwards compatibility. Filter data by handle instead.
+
+**See also:** `promise_handle_exclude`
 
 ### resource_type
 
