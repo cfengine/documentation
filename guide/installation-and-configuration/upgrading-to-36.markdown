@@ -31,7 +31,7 @@ Our recommendation is to upgrade the policy server first. The rationale being th
 
 5. Optional: Export the data from your existing Enterprise MongoDB
 
-    * download the [`cfmigrate`]() binary
+    * download the [`cfmigrate`](http://s3.amazonaws.com/cfengine.package-repos/tools/cfmigrate) binary
     * this binary will export user/role settings as well as long-living file-changes data from MongoDB
     * no other data will be exported, as it would either way expire after
       one week. If you need continued access to 3.5 compliance data,
