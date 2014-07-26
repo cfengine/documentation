@@ -19,7 +19,7 @@ start working with CFEngine.
 
 ## Requirements
 * 2G disk space
-* 2G memory
+* 1G memory
 * CPU with VT extensions capable of running 64bit guests
 
 Note: VirtualBox requires that your computer support hardware virtualization
@@ -53,7 +53,7 @@ Windows Mac or Linux vagrant install guides.
 This tutorial uses VirtualBox to create virtual machines on your computer, to
 which Vagrant deploys CFEngine. VirtualBox can be downloaded from
 virtualbox.org (use version
-[4.3.12](http://download.virtualbox.org/virtualbox/4.3.12/)). After
+[4.3.14](http://download.virtualbox.org/virtualbox/4.3.14/)). After
 downloading VirtualBox, install it on your computer.
 
 **Note:** To avoid problems, disable other virtualization environments you are
@@ -62,9 +62,9 @@ running.
 ## Start the CFEngine Enterprise 3.6 Vagrant Environment
 
 Step 1. Download our ready-made Vagrant project (use the
-[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/enterprise-3.6-vagrant_free25-201406261114.tar.gz)
+[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/vagrant_quickstart-201407260910.tar.gz)
 or the
-[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/enterprise-3.6-vagrant_free25-201406261114.zip)
+[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/vagrant_quickstart-201407260910.zip)
 depending on your preference).
 
 Step 2. Save and unpack the file anywhere on your drive; this
@@ -127,7 +127,7 @@ Last login: Fri Jun 13 18:58:10 2014 from 10.0.2.2
 #### Accessing via GUI
 
 If you launch the virtualbox GUI you should find the vagrant vms named
-`hub` and `agent_host001`. Additionally, you can uncomment the `v.gui=true`
+`CFEngine Enterprise 3.6.1-1 hub`, and `CFEngine Enterprise 3.6.1-1 agent host001`. Additionally, you can uncomment the `v.gui=true`
 option in the `Vagrantfile` to have the console gui start with the vms.
 **Note:** There are two `v.gui` settings to uncomment; one for the hub, and one
 for the clients.
@@ -206,9 +206,9 @@ simple instructions:
 To remove the VMs entirely, type: `vagrant destroy`
 
 If you are completely done and do not anticipate using them anymore, you can
-also remove the base box `cfengine-3.6-free25-centos-6.5-x86_64` that was
+also remove the base box `centos-6.5-x86_64-cfengine_enterprise-3.6.1-1` that was
 downloaded. You can see it by typing `vagrant box list`. To delete the basebox
-run `vagrant box remove cfengine-3.6-free25-centos-6.5-x86_64 virtualbox`.
+run `vagrant box remove centos-6.5-x86_64-cfengine_enterprise-3.6.1-1 virtualbox`.
 **Note:** Runing `vagrant up` from the vagrant project directory again will
 re-download this basebox.
 
