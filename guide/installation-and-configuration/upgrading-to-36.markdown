@@ -5,7 +5,7 @@ published: true
 sorting: 30
 ---
 
-This guide documents our recommendation on how to upgrade an existing installation of CFEngine 3.6.0 or earlier to CFEngine 3.6.1. Upgrading of hosts and of the Enteprise hub and policy server is covered. If you are using a Community installation, you can skip the Enterprise specific parts on the policy server.
+This guide documents our recommendation on how to upgrade an existing installation of CFEngine 3.x to CFEngine 3.6.1. Upgrading of hosts and of the Enteprise hub and policy server is covered. If you are using a Community installation, you can skip the Enterprise specific parts on the policy server.
 
 Our recommendation is to upgrade the policy server first. The rationale being that this is a dedicated machine with no business-relevant duties, and that the typically mission-critical client machines in your data center can continue to operate based on the policy they have, without connectivity to the policy server.
 
