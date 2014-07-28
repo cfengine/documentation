@@ -3,7 +3,7 @@ layout: default
 title: Policy Framework Updates
 published: true
 sorting: 40
-tags: [releases, latest release, 3.6, platforms, versions, what's new]
+tags: [releases, latest release, "3.6", platforms, versions, what's new]
 ---
 
 ## CFEngine Policy Framework Updates for 3.6 ##
