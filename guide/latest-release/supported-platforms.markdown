@@ -55,6 +55,8 @@ An upgrade path from previous versions will be made available in 3.6.1.
 Some data will not be available from older hosts, and the policy you serve
 needs to take into account hosts with different versions.
 
+-->
+
 ## Additional platforms ##
 
 CFEngine is known to run on a wide range of other platforms. As long as the
@@ -65,4 +67,3 @@ Please [contact our sales team][contact us] for details.
 Note that availability of the current version of CFEngine on these platforms
 does not imply availability of future versions of CFEngine.
 
--->
