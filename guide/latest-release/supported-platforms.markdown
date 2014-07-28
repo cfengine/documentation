@@ -31,11 +31,12 @@ Any host can be a policy server in Community installations of CFEngine.
 | RedHat 	| 4, 5, 6 	| x86-64, i386   |
 | SLES 	| 10, 11 	| x86-64, i386   |
 | Solaris 	| 9 	| SPARC   |
-| Solaris 	| 10, 11 	| x86-64, UltraSparc   |
+| Solaris 	| 10, 11* 	| x86-64, UltraSparc   |
 | Ubuntu 	| 10.4, 12.4 	| x86-64, i386   |
 | Windows 	| 2008 	| x86-64, i386   |
 | Windows 	| 2008, 2012 	| x86-64   |
 
+\* Solaris 11 is currently experimental - see [Known Issues][]
 
 CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.
 This means that CFEngine Enterprise has been technically verified by IBM
