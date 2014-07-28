@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Upgrading to 3.6
-published: false
+published: true
 sorting: 30
 ---
 
