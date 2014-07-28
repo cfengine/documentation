@@ -112,4 +112,5 @@ Our recommendation is to upgrade the policy server first. The rationale being th
     improved control attributes in `access` promises.
 
     See [`protocol_version`][Components and Common Control#protocol_version] in
-    [Components and Common Control][] and `allowlegacyconnects` in `body server control`.
+    [Components and Common Control][] and [`allowlegacyconnects`][cf-serverd#allowlegacyconnects] in
+    [`body server control`][cf-serverd#Control Promises].
