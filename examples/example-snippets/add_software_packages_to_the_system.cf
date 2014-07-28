@@ -31,6 +31,6 @@ bundle agent packages
       package_method => yum_rpm;
 
   methods:
-      # equivalent in 3.6.0, no OS choices
+      # equivalent in 3.6, no OS choices
       "" usebundle => ensure_present($(match_package));
 }

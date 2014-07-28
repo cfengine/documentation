@@ -17,7 +17,7 @@ cp -rp /var/cfengine/share/*Base/sketches/utilities/roles /my/repo/sketches/
 
 ## Copy The Sketch Template
 
-This step is required for 3.6.0 but we hope to eliminate it in 3.6.1.
+<!--- TODO: This step is required for 3.6.0 but we hope to eliminate it in 3.6.1. -->
 
 ```
 cp -rp /var/cfengine/share/*Base/sketches/sketch_template /my/repo/sketches/

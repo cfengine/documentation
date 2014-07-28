@@ -30,7 +30,7 @@ tags: [getting started, installation, enterprise, faq]
 
 There are general steps to be taken outlined in [Post-Installation Configuration][General Installation#Post-Installation Configuration].
 
-In addition to this, Enterprise 3.6.0 uses the local mail relay, and it is assumed that the server where CFEngine Enterprise is installed on has proper mail setup.
+In addition to this, Enterprise 3.6 uses the local mail relay, and it is assumed that the server where CFEngine Enterprise is installed on has proper mail setup.
 
 The default FROM email for all emails sent from the Mission Portal is currently admin@organization.com. This can be changed on the CFEngine Hub in `/var/cfengine/httpd/htdocs/application/config/appsettings.php:$config['appemail']`.
 
@@ -49,7 +49,7 @@ optimizations depending on your hardware and OS.
 
 #### What is the system user for the CFEngine dedicated PostgreSQL database and Apache server ####
 
-Starting with CFEngine 3.6.0 there will be a system user called ```cfpostgres``` for running the dedicated CFEngine PostgreSQL database
+Starting with CFEngine 3.6 there will be a system user called ```cfpostgres``` for running the dedicated CFEngine PostgreSQL database
 installation.
 
 Similarly there will be a ```cfapache``` system user for the Apache web server.
@@ -63,7 +63,7 @@ Similarly there will be a ```cfapache``` system user for the Apache web server.
 
 ##### Users and Permissions #####
 
-* CFEngine Enterprise makes an attempt to create the local users ```cfapache``` and ```cfpostgres```, as well as group ```cfapache``` when installing 3.6.0. The server must allow creation of these users and groups.
+* CFEngine Enterprise makes an attempt to create the local users ```cfapache``` and ```cfpostgres```, as well as group ```cfapache``` when installing 3.6. The server must allow creation of these users and groups.
 
 
 ### Enterprise Scalability ###
@@ -189,7 +189,7 @@ body file control
 
 This policy will work correctly whether it's included by another
 policy file or not. Note the `body file` `control` option is new since
-CFEngine 3.6.0, so you should not use if your policy could be seen by
+CFEngine 3.6, so you should not use if your policy could be seen by
 3.5 or earlier CFEngine clients.
 
 #### How do I run a specific bundle ####

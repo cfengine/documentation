@@ -20,7 +20,7 @@ What do you think?  How do you version your own infrastructure?
 ### Problem statement ###
 
 It turns out everyone likes convenience and writing the versioning
-machinery is hard.  So for CFEngine Enterprise 3.6.0 we set out to
+machinery is hard.  So for CFEngine Enterprise 3.6 we set out to
 provide version control integration with Git out of the box, disabled
 by default.  This allows users to use branches for separate hubs
 (which enables a policy release pipeline) and enables Design Center
@@ -218,7 +218,7 @@ infrastructure.
 ### Benefits ###
 
 To conclude, let's summmarize the benefits of versioning your
-masterfiles using the built-in facilities in CFEngine Enterprise 3.6.0
+masterfiles using the built-in facilities in CFEngine Enterprise 3.6
 
 * easy to use compared to home-grown VCS integration
 * supports Git out of the box and, with some work, can support others
@@ -234,7 +234,7 @@ masterfiles using the built-in facilities in CFEngine Enterprise 3.6.0
   
 When running CFEngine Enterprise in a large-scale IT environment with many thousands of hosts, certain issues arise that require different approaches compared with smaller installations.
 
-With CFEngine 3.6.0, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine. 
+With CFEngine 3.6, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine. 
 
 
 ### Moving PostgreSQL to Separate Hard Drive ###

@@ -78,7 +78,7 @@ future)
 * `validation` must be a validation that has been defined in the API (living 
 either in `constdata.conf` or `vardata.conf`)
 * the referenced validation can use `minimum_value`, `maximum_value`, or 
-`valid_regex`.  Other choices are available in Enterprise 3.6.0.
+`valid_regex`.  Other choices are available in Enterprise 3.6.
 
 ## Upgrading sketches
 

@@ -3,7 +3,7 @@ layout: default
 title: New in CFEngine
 published: true
 sorting: 10
-tags: [overviews, releases, latest release, 3.6.0, platforms, versions, what's new]
+tags: [overviews, releases, latest release, 3.6, platforms, versions, what's new]
 ---
 
 **IMPORTANT NOTE:** This is a pre-release of CFEngine, intended for testing and 

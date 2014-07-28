@@ -3,7 +3,7 @@ layout: default
 title: Latest Release
 published: true
 sorting: 20
-tags: [overviews, releases, latest release, 3.6.0, platforms, versions]
+tags: [overviews, releases, latest release, 3.6, platforms, versions]
 ---
 
 * [New in CFEngine][New in CFEngine]

@@ -3,7 +3,7 @@ layout: default
 title: Supported Platforms and Versions
 sorting: 20
 published: true
-tags: [overviews, releases, latest release, 3.6.0, platforms, versions, support]
+tags: [overviews, releases, latest release, 3.6, platforms, versions, support]
 ---
 
 CFEngine works on a wide range of platforms, and the CFEngine team strives to

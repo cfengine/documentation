@@ -132,7 +132,7 @@ For example:
 
     /etc/passwd
     /var/cfengine/masterfiles/distfile
-    $(sys.masterdir)/distfile # usually the same thing in 3.6.0
+    $(sys.masterdir)/distfile # usually the same thing in 3.6
 
 The only place where it makes sense to refer to a file without a
 complete directory specification is when searching through
