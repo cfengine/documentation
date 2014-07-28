@@ -9,6 +9,11 @@ tags: [overviews, releases, latest release, 3.6.0, platforms, versions, support]
 CFEngine works on a wide range of platforms, and the CFEngine team strives to
 provide support for the platforms most frequently used by our users.
 
+CFEngine builds from the `master` branch are generally not supported. See the
+[documentation for the latest stable release](https://docs.cfengine.com/latest/).
+
+<!-- TODO: comment above paragraph, remote comment from here and update platform list
+
 ## Enterprise Server ##
 
 | Platform     | Versions   | Architecture    |
@@ -60,3 +65,4 @@ Please [contact our sales team][contact us] for details.
 Note that availability of the current version of CFEngine on these platforms
 does not imply availability of future versions of CFEngine.
 
+-->
