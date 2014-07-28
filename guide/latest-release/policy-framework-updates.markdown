@@ -3,10 +3,10 @@ layout: default
 title: Policy Framework Updates
 published: true
 sorting: 40
-tags: [releases, latest release, 3.6.0, platforms, versions, what's new]
+tags: [releases, latest release, 3.6, platforms, versions, what's new]
 ---
 
-## CFEngine Policy Framework Updates for 3.6.0 ##
+## CFEngine Policy Framework Updates for 3.6 ##
 
 If you follow the CFEngine masterfiles policy framework (the masterfiles you
 get out of the box) we encourage you to upgrade the policy framework each time
@@ -232,7 +232,7 @@ If the resulting list order is important please consider the `sort()` and
 
 #### Function Caching ####
 
-3.6.0 introduces function
+3.6 introduces function
 caching(https://docs.cfengine.com/docs/master/reference-functions.html#function-caching)
 to help further improve performance and execution speed.
 
@@ -264,7 +264,7 @@ report on variables and `namespace` scope classes that are tagged with
 "inventory" or "report" using the new `metatags_include` and
 `metatags_exclude` attributes.
 
-The following attributes have been deprecated in 3.6.0.  Please tag the
+The following attributes have been deprecated in 3.6.  Please tag the
 variables and classes you would like to report on appropriately. If you have
 any questions please contact support.
 

@@ -3,7 +3,7 @@ layout: default
 title: Upgrade Instructions
 sorting: 30
 published: false
-tags: [overviews, releases, latest release, 3.6.0, platforms, versions, upgrade]
+tags: [overviews, releases, latest release, 3.6, platforms, versions, upgrade]
 ---
 
 **Note:** This upgrade guide assumes that you are upgrading an existing CFEngine installation 

@@ -3,7 +3,7 @@ layout: default
 title: ChangeLog
 published: true
 sorting: 10
-tags: [latest release, 3.6.0, what's new]
+tags: [latest release, 3.6, what's new]
 ---
 
 For a history of changes in the CFEngine version you have installed, see the `ChangeLog` and 

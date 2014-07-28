@@ -10,7 +10,7 @@ tags: [json]
 
 JSON is a well-known data language. It even has a specification (See http://json.org).
 
-CFEngine 3.6.0 has core support for JSON.  Let's see what it can do.
+CFEngine 3.6 has core support for JSON.  Let's see what it can do.
 
 ## Problem statement
 
@@ -24,7 +24,7 @@ syntax.
 
 ## Data containers
 
-A new data type, the data container, was introduced in 3.6.0.
+A new data type, the data container, was introduced in 3.6.
 
 It's simply called `data`.  The documentation with some examples is at https://cfengine.com/docs/master/reference-promise-types-vars.html#data-container-variables
 

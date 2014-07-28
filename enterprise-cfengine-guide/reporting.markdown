@@ -52,7 +52,7 @@ the following defines the attribute `Role` which is set to
 * note the [`meta`][Promise Types and Attributes#meta] tag `inventory`
 
 * The hub must be able to collect the reports from the client. TCP
-port 5308 must be open and, because 3.6.0 uses TLS, should not be
+port 5308 must be open and, because 3.6 uses TLS, should not be
 proxied or otherwise intercepted. Note that bootstrapping and other
 standalone client operations go from the client to the server, so the
 ability to bootstrap and copy policies from the server doesn't
