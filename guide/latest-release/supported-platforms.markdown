@@ -26,18 +26,19 @@ Any host can be a policy server in Community installations of CFEngine.
 
 | OS              | Versions     | Architectures      |
 |-----------------|--------------|--------------------|
-| AIX 	| 5.3, 6, 7 	| PowerPC   |
+| AIX 	| 5.3*, 6, 7 	| PowerPC   |
 | CentOS 	| 5, 6 	| x86-64, x86   |
 | Debian 	| 6, 7 	| x86-64, x86   |
 | RedHat 	| 4, 5, 6 	| x86-64, x86   |
 | SLES 	| 10, 11 	| x86-64, x86   |
 | Solaris 	| 9 	| SPARC   |
-| Solaris 	| 10, 11* 	| x86-64, UltraSparc   |
+| Solaris 	| 10, 11** 	| x86-64, UltraSparc   |
 | Ubuntu 	| 10.04, 12.04 	| x86-64, x86   |
 | Windows 	| 2008 	| x86-64, x86   |
 | Windows 	| 2008, 2012 	| x86-64   |
 
-\* Solaris 11 is currently experimental - see [Known Issues][]
+\* AIX 5.3 is required to have "5300-05-CSP" or later
+\** Solaris 11 is currently experimental - see [Known Issues][]
 
 CFEngine Enterprise has [Virtual I/O Server (VIOS) Recognized status](http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493) from IBM.
 This means that CFEngine Enterprise has been technically verified by IBM
