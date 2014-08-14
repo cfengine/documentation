@@ -10,10 +10,7 @@ tags: [examples, enterprise, rest, api, reporting, sql, queries]
 **Request**(lines split and indented for presentability)
 
     curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d
-    {
-      "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts 
-         ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \"ubuntu\""
-    }
+    '{ "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts"}'
 
 **Response**
 
@@ -26,8 +23,7 @@ tags: [examples, enterprise, rest, api, reporting, sql, queries]
       },
       "data": [
         {
-          "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON 
-              Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \"ubuntu\"",
+          "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts",
           "header": [
             "HostName",
             "IPAddress"
@@ -75,14 +71,14 @@ link to a PDF version of the report.
 
     curl -k --user admin:admin https://test.cfengine.com/api/user/milton/
        subscription/query/file-changes-report -X PUT -d
-    {
+    '{
       "to": "boss@megaco.com",
       "query": "SELECT Name Count(1) FROM FileChanges GROUP BY Name",
       "schedule": "Monday.Hr23.Min59",
       "title": "A very important file changes report"
       "description": "Text that will be included in email"
       "outputTypes": [ "pdf" ]
-    }
+    }'
 
 **Response**
 
