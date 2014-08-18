@@ -33,7 +33,7 @@ into the standard 3.6.0 inventory policy under
 `masterfiles/inventory/any.cf`, so you have it available out
 of the box in either Community or Enterprise.
 
-```
+```cf3
 bundle agent cfe_autorun_inventory_listening_ports
 # @brief Inventory the listening ports
 #
@@ -58,7 +58,7 @@ promise type (different from the `meta` attribute).
 
 An example is easiest:
 
-```
+```cf3
 bundle agent run_deprecated
 {
   meta:
@@ -135,7 +135,7 @@ port 5308 must be open from the hub to the agents, for instance)
 
 Dynamic bundlesequences are extremely easy.  You simply say
 
-```
+```cf3
 vars:
   "bundles" slist => bundlesmatching("regex", "tag1", "tag2", ...);
 
