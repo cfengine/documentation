@@ -2,8 +2,8 @@
 layout: default
 title: Tags for variables, classes, and bundles
 published: true
-sorting: 2
-tags: [json]
+sorting: 14
+tags: [tags, meta]
 ---
 
 ## Introduction
