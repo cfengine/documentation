@@ -12,24 +12,27 @@ depends on the [bundle][bundles] type:
 
 | Promise Type   | common | agent | server | monitor |
 |----------------|:------:|:-----:|:------:|:--------|
-| [meta][meta] - information about promise bundles | x      | x     | x      | x       |
-| [vars][vars] - a variable, representing a value | x      | x     | x      | x       |
 | [defaults][defaults] - a default value for bundle parameters | x      | x     | x      | x       |
 | [classes][classes] - a class, representing a state of the system | x      | x     | x      | x       |
-| [users][users] - add or remove users |        | x     |        |         |
+| [meta][meta] - information about promise bundles | x      | x     | x      | x       |
+| [reports][reports] - report a message | x      | x     | x      | x       |
+| [vars][vars] - a variable, representing a value | x      | x     | x      | x       |
+| [addresses][addresses] - configure an address binding |        | x     |        |         |
+| [commands][commands] - execute a command |        | x     |        |         |
+| [databases][databases] - configure a database |        | x     |        |         |
 | [files][files] - configure a file |        | x     |        |         |
+| [interfaces][interface] - configure a network interface |        | x     |        |         |
 | [packages][packages] - install a package |        | x     |        |         |
 | [guest_environments][guest_environments] |        | x     |        |         |
 | [methods][methods] - take on a whole bundle of other promises |        | x     |        |         |
 | [processes][processes] - start or terminate processes |        | x     |        |         |
+| [routes][routes] - configure a static route |        | x     |        |         |
 | [services][services] - start or stop services |        | x     |        |         |
-| [commands][commands] - execute a command |        | x     |        |         |
 | [storage][storage] - verify attached storage |        | x     |        |         |
-| [databases][databases] - configure a database |        | x     |        |         |
+| [users][users] - add or remove users |        | x     |        |         |
 | [access][access] - grant or deny access to file objects |        |       | x      |         |
 | [roles][roles] - allow certain users to activate certain classes |        |       | x      |         |
 | [measurements][measurements] - measure or sample data from the system |        |       |        | x       |
-| [reports][reports] - report a message | x      | x     | x      | x       |
 
 See each promise type's reference documentation for detailed lists of available
 attributes.

@@ -43,22 +43,33 @@ gateway_interface => "$(if)";
 ### Attributes ###
 
 ### reachable_through
+
 **Description:** A body assigning a forwarding agent (body)
+
 **Type:** `body reachable_through`
 
 #### gateway_ip
+
 **Allowed input range:** 
+
 **Description:** IP address on gateway to next hop 
+
 **Type:** `IP address` without CIDR netmask
 
 #### gateway_interface
+
 **Allowed input range:** 
+
 **Description:** Interface name of gateway to next hop
+
 **Type:** `string`
 
 #### delete_route
+
 **Allowed input range:**  true/false
+
 **Description:** If this route exists, remove it
+
 **Type:** `boolean`
 
 

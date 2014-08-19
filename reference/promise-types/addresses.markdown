@@ -15,13 +15,21 @@ registration.  This promise type is for mainly specialized usage.
 ### Attributes ###
 
 ### link_address
+
 **Description:** The link level (MAC) address of the promiser
+
 **Type:** `MAC address`
+
 ### delete_link
+
 **Description:** If this link mapping exists, remove it
+
 **Type:** `boolean`
+
 ### interface
+
 **Description:** Interface for neighbour discovery
+
 **Type:** `string`
 
 
