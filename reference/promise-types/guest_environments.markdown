@@ -120,7 +120,7 @@ guest_environments:
 
 #### guest_disk
 **Allowed input range:**
-Amount of secondary storage (DISK) in the virtual environment (MB)
+**Description:** Amount of secondary storage (DISK) in the virtual environment (MB)
 **Type:** `int`
 
 #### guest_image_path
