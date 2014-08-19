@@ -5,7 +5,7 @@ published: true
 tags: [reference, files functions, functions, expandrange]
 ---
 
-[ %CFEngine_function_prototype(target, sources)% ]
+[%CFEngine_function_prototype(target, sources)%]
 
 **Description:** Generates a list based on an ordered list of numbers selected from a
 range of integers, in steps specified by the second argument.
