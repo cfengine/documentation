@@ -27,7 +27,7 @@ depends on the [bundle][bundles] type:
 | [methods][methods] - take on a whole bundle of other promises |        | x     |        |         |
 | [processes][processes] - start or terminate processes |        | x     |        |         |
 | [routes][routes] - configure a static route |        | x     |        |         |
-| [services][services] - start or stop services |        | x     |        |         |
+| [services][services] - manage services or define new abstractions |        | x     |        |         |
 | [storage][storage] - verify attached storage |        | x     |        |         |
 | [users][users] - add or remove users |        | x     |        |         |
 | [access][access] - grant or deny access to file objects |        |       | x      |         |
