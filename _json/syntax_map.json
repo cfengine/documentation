@@ -7,6 +7,9 @@
         "databases",
         "guest_environments",
         "files",
+        "interfaces",
+        "routes",
+        "addresses",
         "methods",
         "packages",
         "processes",
@@ -14,6 +17,7 @@
         "storage",
         "users",
         "classes",
+        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -28,6 +32,7 @@
         "field_edits",
         "replace_patterns",
         "classes",
+        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -46,6 +51,7 @@
         "set_text",
         "insert_text",
         "classes",
+        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -58,6 +64,7 @@
         "access",
         "roles",
         "classes",
+        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -69,6 +76,7 @@
       "promiseTypes": [
         "measurements",
         "classes",
+        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -79,6 +87,7 @@
       "status": "normal",
       "promiseTypes": [
         "classes",
+        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -161,6 +170,147 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "comment": {
+          "attribute": "comment",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "depends_on": {
+          "attribute": "depends_on",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        },
+        "handle": {
+          "attribute": "handle",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "ifvarclass": {
+          "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "meta": {
+          "attribute": "meta",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        }
+      }
+    },
+    "conditions": {
+      "status": "normal",
+      "attributes": {
+        "scope": {
+          "attribute": "scope",
+          "status": "normal",
+          "type": "option",
+          "range": "namespace,bundle",
+          "visibility": "promiseType"
+        },
+        "and": {
+          "attribute": "and",
+          "status": "normal",
+          "type": "clist",
+          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
+          "visibility": "promiseType"
+        },
+        "dist": {
+          "attribute": "dist",
+          "status": "normal",
+          "type": "rlist",
+          "range": "-9.99999E100,9.99999E100",
+          "visibility": "promiseType"
+        },
+        "expression": {
+          "attribute": "expression",
+          "status": "normal",
+          "type": "context",
+          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
+          "visibility": "promiseType"
+        },
+        "or": {
+          "attribute": "or",
+          "status": "normal",
+          "type": "clist",
+          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
+          "visibility": "promiseType"
+        },
+        "persistence": {
+          "attribute": "persistence",
+          "status": "normal",
+          "type": "int",
+          "range": "0,99999999999",
+          "visibility": "promiseType"
+        },
+        "not": {
+          "attribute": "not",
+          "status": "normal",
+          "type": "context",
+          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
+          "visibility": "promiseType"
+        },
+        "select_class": {
+          "attribute": "select_class",
+          "status": "normal",
+          "type": "clist",
+          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
+          "visibility": "promiseType"
+        },
+        "xor": {
+          "attribute": "xor",
+          "status": "normal",
+          "type": "clist",
+          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
+          "visibility": "promiseType"
+        },
+        "action": {
+          "attribute": "action",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "classes": {
+          "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -252,6 +402,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -335,6 +491,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -449,6 +611,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -575,6 +743,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -657,6 +831,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -768,6 +948,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -824,26 +1010,26 @@
       "attributes": {
         "environment_host": {
           "attribute": "environment_host",
-          "status": "normal",
+          "status": "removed",
           "type": "string",
           "range": "[a-zA-Z0-9_]+",
           "visibility": "promiseType"
         },
         "environment_interface": {
           "attribute": "environment_interface",
-          "status": "normal",
+          "status": "removed",
           "type": "body",
           "visibility": "promiseType"
         },
         "environment_resources": {
           "attribute": "environment_resources",
-          "status": "normal",
+          "status": "removed",
           "type": "body",
           "visibility": "promiseType"
         },
         "environment_state": {
           "attribute": "environment_state",
-          "status": "normal",
+          "status": "removed",
           "type": "option",
           "range": "create,delete,running,suspended,down",
           "visibility": "promiseType"
@@ -852,7 +1038,20 @@
           "attribute": "environment_type",
           "status": "normal",
           "type": "option",
-          "range": "xen,kvm,esx,vbox,test,xen_net,kvm_net,esx_net,test_net,zone,ec2,eucalyptus",
+          "range": "lxc,xen,kvm,esx,vbox,test,xen_net,kvm_net,esx_net,test_net,zone,ec2,eucalyptus",
+          "visibility": "promiseType"
+        },
+        "guest_state": {
+          "attribute": "guest_state",
+          "status": "normal",
+          "type": "option",
+          "range": "create,delete,running,suspended,down",
+          "visibility": "promiseType"
+        },
+        "guest_details": {
+          "attribute": "guest_details",
+          "status": "normal",
+          "type": "body",
           "visibility": "promiseType"
         },
         "action": {
@@ -863,6 +1062,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1068,6 +1273,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1149,6 +1360,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1258,6 +1475,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1336,6 +1559,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1410,6 +1639,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1494,6 +1729,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1570,6 +1811,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1654,6 +1901,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1730,6 +1983,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1821,6 +2080,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1897,6 +2162,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1981,6 +2252,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2057,6 +2334,336 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "comment": {
+          "attribute": "comment",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "depends_on": {
+          "attribute": "depends_on",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        },
+        "handle": {
+          "attribute": "handle",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "ifvarclass": {
+          "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "meta": {
+          "attribute": "meta",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        }
+      }
+    },
+    "interfaces": {
+      "status": "normal",
+      "attributes": {
+        "delete": {
+          "attribute": "delete",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "promiseType"
+        },
+        "bridge_interfaces": {
+          "attribute": "bridge_interfaces",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "bond_interfaces": {
+          "attribute": "bond_interfaces",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "tagged_vlans": {
+          "attribute": "tagged_vlans",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "promiseType"
+        },
+        "untagged_vlan": {
+          "attribute": "untagged_vlan",
+          "status": "normal",
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "promiseType"
+        },
+        "ipv4_addresses": {
+          "attribute": "ipv4_addresses",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
+          "visibility": "promiseType"
+        },
+        "ipv6_addresses": {
+          "attribute": "ipv6_addresses",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
+          "visibility": "promiseType"
+        },
+        "link_state": {
+          "attribute": "link_state",
+          "status": "normal",
+          "type": "body",
+          "visibility": "promiseType"
+        },
+        "link_services": {
+          "attribute": "link_services",
+          "status": "normal",
+          "type": "body",
+          "visibility": "promiseType"
+        },
+        "tunnel": {
+          "attribute": "tunnel",
+          "status": "normal",
+          "type": "body",
+          "visibility": "promiseType"
+        },
+        "purge_addresses": {
+          "attribute": "purge_addresses",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "promiseType"
+        },
+        "action": {
+          "attribute": "action",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "classes": {
+          "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "comment": {
+          "attribute": "comment",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "depends_on": {
+          "attribute": "depends_on",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        },
+        "handle": {
+          "attribute": "handle",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "ifvarclass": {
+          "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "meta": {
+          "attribute": "meta",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        }
+      }
+    },
+    "routes": {
+      "status": "normal",
+      "attributes": {
+        "reachable_through": {
+          "attribute": "reachable_through",
+          "status": "normal",
+          "type": "body",
+          "visibility": "promiseType"
+        },
+        "balanced_destinations": {
+          "attribute": "balanced_destinations",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "promiseType"
+        },
+        "action": {
+          "attribute": "action",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "classes": {
+          "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "comment": {
+          "attribute": "comment",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "depends_on": {
+          "attribute": "depends_on",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        },
+        "handle": {
+          "attribute": "handle",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "ifvarclass": {
+          "attribute": "ifvarclass",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "if": {
+          "attribute": "if",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "unless": {
+          "attribute": "unless",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "global"
+        },
+        "meta": {
+          "attribute": "meta",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "global"
+        }
+      }
+    },
+    "addresses": {
+      "status": "normal",
+      "attributes": {
+        "link_address": {
+          "attribute": "link_address",
+          "status": "normal",
+          "type": "string",
+          "range": ".*",
+          "visibility": "promiseType"
+        },
+        "delete_link": {
+          "attribute": "delete_link",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "promiseType"
+        },
+        "interface": {
+          "attribute": "interface",
+          "status": "normal",
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "promiseType"
+        },
+        "action": {
+          "attribute": "action",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "classes": {
+          "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2143,6 +2750,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2247,6 +2860,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2346,6 +2965,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2432,6 +3057,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2506,6 +3137,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2666,6 +3303,12 @@
           "type": "body",
           "visibility": "global"
         },
+        "outcome": {
+          "attribute": "outcome",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2735,6 +3378,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2835,6 +3484,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2969,6 +3624,12 @@
         },
         "classes": {
           "attribute": "classes",
+          "status": "normal",
+          "type": "body",
+          "visibility": "global"
+        },
+        "outcome": {
+          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -3244,6 +3905,109 @@
         }
       }
     },
+    "outcome": {
+      "status": "normal",
+      "attributes": {
+        "scope": {
+          "attribute": "scope",
+          "status": "normal",
+          "type": "option",
+          "range": "namespace,bundle",
+          "visibility": "body"
+        },
+        "promise_repaired": {
+          "attribute": "promise_repaired",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        },
+        "repair_failed": {
+          "attribute": "repair_failed",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        },
+        "repair_denied": {
+          "attribute": "repair_denied",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        },
+        "repair_timeout": {
+          "attribute": "repair_timeout",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        },
+        "promise_kept": {
+          "attribute": "promise_kept",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        },
+        "cancel_kept": {
+          "attribute": "cancel_kept",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        },
+        "cancel_repaired": {
+          "attribute": "cancel_repaired",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        },
+        "cancel_notkept": {
+          "attribute": "cancel_notkept",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        },
+        "kept_returncodes": {
+          "attribute": "kept_returncodes",
+          "status": "normal",
+          "type": "slist",
+          "range": "[-0-9_$(){}\\[\\].]+",
+          "visibility": "body"
+        },
+        "repaired_returncodes": {
+          "attribute": "repaired_returncodes",
+          "status": "normal",
+          "type": "slist",
+          "range": "[-0-9_$(){}\\[\\].]+",
+          "visibility": "body"
+        },
+        "failed_returncodes": {
+          "attribute": "failed_returncodes",
+          "status": "normal",
+          "type": "slist",
+          "range": "[-0-9_$(){}\\[\\].]+",
+          "visibility": "body"
+        },
+        "persist_time": {
+          "attribute": "persist_time",
+          "status": "normal",
+          "type": "int",
+          "range": "0,99999999999",
+          "visibility": "body"
+        },
+        "timer_policy": {
+          "attribute": "timer_policy",
+          "status": "normal",
+          "type": "option",
+          "range": "absolute,reset",
+          "visibility": "body"
+        }
+      }
+    },
     "contain": {
       "status": "normal",
       "attributes": {
@@ -3340,7 +4104,7 @@
           "attribute": "db_server_type",
           "status": "normal",
           "type": "option",
-          "range": "postgres,mysql",
+          "range": "postgres,mysql,sqlite",
           "visibility": "body"
         },
         "db_server_connection_db": {
@@ -3349,28 +4113,9 @@
           "type": "string",
           "range": "",
           "visibility": "body"
-        }
-      }
-    },
-    "environment_interface": {
-      "status": "normal",
-      "attributes": {
-        "env_addresses": {
-          "attribute": "env_addresses",
-          "status": "normal",
-          "type": "slist",
-          "range": "",
-          "visibility": "body"
         },
-        "env_name": {
-          "attribute": "env_name",
-          "status": "normal",
-          "type": "string",
-          "range": "",
-          "visibility": "body"
-        },
-        "env_network": {
-          "attribute": "env_network",
+        "db_embedded_directory_path": {
+          "attribute": "db_embedded_directory_path",
           "status": "normal",
           "type": "string",
           "range": "",
@@ -3378,42 +4123,70 @@
         }
       }
     },
-    "environment_resources": {
+    "guest_details": {
       "status": "normal",
       "attributes": {
-        "env_cpus": {
-          "attribute": "env_cpus",
+        "guest_cpus": {
+          "attribute": "guest_cpus",
           "status": "normal",
           "type": "int",
           "range": "0,99999999999",
           "visibility": "body"
         },
-        "env_memory": {
-          "attribute": "env_memory",
+        "guest_memory": {
+          "attribute": "guest_memory",
           "status": "normal",
           "type": "int",
           "range": "0,99999999999",
           "visibility": "body"
         },
-        "env_disk": {
-          "attribute": "env_disk",
+        "guest_disk": {
+          "attribute": "guest_disk",
           "status": "normal",
           "type": "int",
           "range": "0,99999999999",
           "visibility": "body"
         },
-        "env_baseline": {
-          "attribute": "env_baseline",
+        "guest_image_path": {
+          "attribute": "guest_image_path",
           "status": "normal",
           "type": "string",
           "range": "\"?(/.*)",
           "visibility": "body"
         },
-        "env_spec": {
-          "attribute": "env_spec",
+        "guest_image_name": {
+          "attribute": "guest_image_name",
           "status": "normal",
           "type": "string",
           "range": ".*",
+          "visibility": "body"
+        },
+        "guest_libvirt_xml": {
+          "attribute": "guest_libvirt_xml",
+          "status": "normal",
+          "type": "string",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "guest_addresses": {
+          "attribute": "guest_addresses",
+          "status": "normal",
+          "type": "slist",
+          "range": "",
+          "visibility": "body"
+        },
+        "guest_network": {
+          "attribute": "guest_network",
+          "status": "normal",
+          "type": "string",
+          "range": "",
+          "visibility": "body"
+        },
+        "guest_type": {
+          "attribute": "guest_type",
+          "status": "normal",
+          "type": "option",
+          "range": "lxc,xen,kvm,esx,vbox,test,xen_net,kvm_net,esx_net,test_net,zone,ec2,eucalyptus,docker",
           "visibility": "body"
         }
       }
@@ -4268,6 +5041,271 @@
         }
       }
     },
+    "link_state": {
+      "status": "normal",
+      "attributes": {
+        "bonding": {
+          "attribute": "bonding",
+          "status": "normal",
+          "type": "option",
+          "range": "balance-rr,active-backup,balance-xor,broadcast,802.3ad,balance-tlb,balance-alb",
+          "visibility": "body"
+        },
+        "manager": {
+          "attribute": "manager",
+          "status": "normal",
+          "type": "option",
+          "range": "cfengine,native,nativefirst",
+          "visibility": "body"
+        },
+        "state": {
+          "attribute": "state",
+          "status": "normal",
+          "type": "option",
+          "range": "up,down",
+          "visibility": "body"
+        },
+        "duplex": {
+          "attribute": "duplex",
+          "status": "normal",
+          "type": "option",
+          "range": "half,full",
+          "visibility": "body"
+        },
+        "auto_negotiation": {
+          "attribute": "auto_negotiation",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        },
+        "spanning_tree": {
+          "attribute": "spanning_tree",
+          "status": "normal",
+          "type": "option",
+          "range": "on,off",
+          "visibility": "body"
+        },
+        "mtu": {
+          "attribute": "mtu",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "body"
+        },
+        "speed": {
+          "attribute": "speed",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "body"
+        },
+        "minimum_bond_aggregation": {
+          "attribute": "minimum_bond_aggregation",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "body"
+        }
+      }
+    },
+    "link_services": {
+      "status": "normal",
+      "attributes": {
+        "ospf_hello_interval": {
+          "attribute": "ospf_hello_interval",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "body"
+        },
+        "ospf_priority": {
+          "attribute": "ospf_priority",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "body"
+        },
+        "ospf_link_type": {
+          "attribute": "ospf_link_type",
+          "status": "normal",
+          "type": "option",
+          "range": "broadcast,non-broadcast,point-to-multipoint,point-to-point",
+          "visibility": "body"
+        },
+        "ospf_authentication_digest": {
+          "attribute": "ospf_authentication_digest",
+          "status": "normal",
+          "type": "string",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "ospf_passive_interface": {
+          "attribute": "ospf_passive_interface",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        },
+        "ospf_abr_summarization": {
+          "attribute": "ospf_abr_summarization",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        },
+        "ospf_area_type": {
+          "attribute": "ospf_area_type",
+          "status": "normal",
+          "type": "option",
+          "range": "stub,nssa,normal",
+          "visibility": "body"
+        },
+        "ospf_area": {
+          "attribute": "ospf_area",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "body"
+        },
+        "bgp_session_neighbor": {
+          "attribute": "bgp_session_neighbor",
+          "status": "normal",
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
+          "visibility": "body"
+        },
+        "bgp_peer_as": {
+          "attribute": "bgp_peer_as",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "body"
+        },
+        "bgp_route_reflector": {
+          "attribute": "bgp_route_reflector",
+          "status": "normal",
+          "type": "option",
+          "range": "client,server",
+          "visibility": "body"
+        },
+        "bgp_ttl_security": {
+          "attribute": "bgp_ttl_security",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "body"
+        },
+        "bgp_maximum_paths": {
+          "attribute": "bgp_maximum_paths",
+          "status": "normal",
+          "type": "int",
+          "range": "1,255",
+          "visibility": "body"
+        },
+        "bgp_advertisement_interval": {
+          "attribute": "bgp_advertisement_interval",
+          "status": "normal",
+          "type": "int",
+          "range": "-99999999999,9999999999",
+          "visibility": "body"
+        },
+        "bgp_internal_next_hop_self": {
+          "attribute": "bgp_internal_next_hop_self",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        },
+        "bgp_advertise_families": {
+          "attribute": "bgp_advertise_families",
+          "status": "normal",
+          "type": "olist",
+          "range": "ipv4_unicast,ipv6_unicast",
+          "visibility": "body"
+        },
+        "bgp_external_soft_reconfiguration_inbound": {
+          "attribute": "bgp_external_soft_reconfiguration_inbound",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        },
+        "bgp_ipv6_neighbor_discovery_route_advertisement": {
+          "attribute": "bgp_ipv6_neighbor_discovery_route_advertisement",
+          "status": "normal",
+          "type": "option",
+          "range": "allow,suppress",
+          "visibility": "body"
+        }
+      }
+    },
+    "tunnel": {
+      "status": "normal",
+      "attributes": {
+        "tunnel_id": {
+          "attribute": "tunnel_id",
+          "status": "normal",
+          "type": "int",
+          "range": "0,99999999999",
+          "visibility": "body"
+        },
+        "tunnel_address": {
+          "attribute": "tunnel_address",
+          "status": "normal",
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
+          "visibility": "body"
+        },
+        "tunnel_multicast_group": {
+          "attribute": "tunnel_multicast_group",
+          "status": "normal",
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
+          "visibility": "body"
+        },
+        "tunnel_interface": {
+          "attribute": "tunnel_interface",
+          "status": "normal",
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        },
+        "tunnel_alien_addresses": {
+          "attribute": "tunnel_alien_addresses",
+          "status": "normal",
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "visibility": "body"
+        }
+      }
+    },
+    "reachable_through": {
+      "status": "normal",
+      "attributes": {
+        "gateway_ip": {
+          "attribute": "gateway_ip",
+          "status": "normal",
+          "type": "string",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "gateway_interface": {
+          "attribute": "gateway_interface",
+          "status": "normal",
+          "type": "string",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "delete_route": {
+          "attribute": "delete_route",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        }
+      }
+    },
     "package_method": {
       "status": "normal",
       "attributes": {
@@ -4935,7 +5973,7 @@
           "attribute": "syslog_host",
           "status": "normal",
           "type": "string",
-          "range": "[a-zA-Z0-9_$(){}.:-]+",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
           "visibility": "body"
         },
         "syslog_port": {
@@ -5632,6 +6670,137 @@
           "visibility": "body"
         }
       }
+    },
+    "routing_services": {
+      "status": "normal",
+      "attributes": {
+        "routing_service_log_file": {
+          "attribute": "routing_service_log_file",
+          "status": "normal",
+          "type": "string",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "routing_service_password": {
+          "attribute": "routing_service_password",
+          "status": "normal",
+          "type": "string",
+          "range": ".*",
+          "visibility": "body"
+        },
+        "ospf_log_adjacency_changes": {
+          "attribute": "ospf_log_adjacency_changes",
+          "status": "normal",
+          "type": "option",
+          "range": "normal,detail,none",
+          "visibility": "body"
+        },
+        "ospf_log_timestamp_precision": {
+          "attribute": "ospf_log_timestamp_precision",
+          "status": "normal",
+          "type": "int",
+          "range": "0,6",
+          "visibility": "body"
+        },
+        "ospf_router_id": {
+          "attribute": "ospf_router_id",
+          "status": "normal",
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
+          "visibility": "body"
+        },
+        "ospf_redistribute": {
+          "attribute": "ospf_redistribute",
+          "status": "normal",
+          "type": "olist",
+          "range": "kernel,connected,static,bgp",
+          "visibility": "body"
+        },
+        "ospf_redistribute_metric_type": {
+          "attribute": "ospf_redistribute_metric_type",
+          "status": "normal",
+          "type": "option",
+          "range": "1,2",
+          "visibility": "body"
+        },
+        "ospf_redistribute_kernel_metric": {
+          "attribute": "ospf_redistribute_kernel_metric",
+          "status": "normal",
+          "type": "int",
+          "range": "0,99999999999",
+          "visibility": "body"
+        },
+        "ospf_redistribute_connected_metric": {
+          "attribute": "ospf_redistribute_connected_metric",
+          "status": "normal",
+          "type": "int",
+          "range": "0,99999999999",
+          "visibility": "body"
+        },
+        "ospf_redistribute_static_metric": {
+          "attribute": "ospf_redistribute_static_metric",
+          "status": "normal",
+          "type": "int",
+          "range": "0,99999999999",
+          "visibility": "body"
+        },
+        "ospf_redistribute_bgp_metric": {
+          "attribute": "ospf_redistribute_bgp_metric",
+          "status": "normal",
+          "type": "int",
+          "range": "0,99999999999",
+          "visibility": "body"
+        },
+        "bgp_local_as": {
+          "attribute": "bgp_local_as",
+          "status": "normal",
+          "type": "int",
+          "range": "0,99999999999",
+          "visibility": "body"
+        },
+        "bgp_router_id": {
+          "attribute": "bgp_router_id",
+          "status": "normal",
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
+          "visibility": "body"
+        },
+        "bgp_log_neighbor_changes": {
+          "attribute": "bgp_log_neighbor_changes",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        },
+        "bgp_redistribute": {
+          "attribute": "bgp_redistribute",
+          "status": "normal",
+          "type": "olist",
+          "range": "kernel,connected,static,ospf",
+          "visibility": "body"
+        },
+        "bgp_ipv4_networks": {
+          "attribute": "bgp_ipv4_networks",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
+          "visibility": "body"
+        },
+        "bgp_ipv6_networks": {
+          "attribute": "bgp_ipv6_networks",
+          "status": "normal",
+          "type": "slist",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
+          "visibility": "body"
+        },
+        "bgp_graceful_restart": {
+          "attribute": "bgp_graceful_restart",
+          "status": "normal",
+          "type": "option",
+          "range": "true,false,yes,no,on,off",
+          "visibility": "body"
+        }
+      }
     }
   },
   "functions": {
@@ -5995,6 +7164,23 @@
       "cached": false,
       "category": "files"
     },
+    "expandrange": {
+      "status": "normal",
+      "returnType": "slist",
+      "parameters": [
+        {
+          "type": "string",
+          "range": ".*"
+        },
+        {
+          "type": "string",
+          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+"
+        }
+      ],
+      "variadic": false,
+      "cached": false,
+      "category": "data"
+    },
     "fileexists": {
       "status": "normal",
       "returnType": "context",
@@ -6014,7 +7200,7 @@
       "parameters": [
         {
           "type": "string",
-          "range": "@[(][a-zA-Z0-9]+[)]"
+          "range": "@[(][a-zA-Z0-9_$(){}\\[\\].:]+[)]"
         }
       ],
       "variadic": false,
@@ -6773,7 +7959,7 @@
     },
     "makerule": {
       "status": "normal",
-      "returnType": "context",
+      "returnType": "string",
       "parameters": [
         {
           "type": "string",
@@ -7600,7 +8786,7 @@
       "parameters": [
         {
           "type": "string",
-          "range": "@[(][a-zA-Z0-9]+[)]"
+          "range": "@[(][a-zA-Z0-9_$(){}\\[\\].:]+[)]"
         },
         {
           "type": "string",
@@ -7747,7 +8933,7 @@
       "parameters": [
         {
           "type": "string",
-          "range": "@[(][a-zA-Z0-9]+[)]"
+          "range": "@[(][a-zA-Z0-9_$(){}\\[\\].:]+[)]"
         },
         {
           "type": "string",
