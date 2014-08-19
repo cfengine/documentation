@@ -152,6 +152,10 @@ e.g. `default:mybundle`. The regular expression has to match that. So
 https://cfengine.com/docs/master/reference-functions-bundlesmatching.html
 for another detailed example.
 
+In fact we found this so useful we implemented
+[services autorun][The Policy Framework#services_autorun] in the
+[masterfiles policy framework][The Policy Framework].
+
 There is only one thing to beware. All the bundles have to have the
 same number of arguments (0 in the case shown). Otherwise you will get
 a runtime error and CFEngine will abort. We recommend only using
