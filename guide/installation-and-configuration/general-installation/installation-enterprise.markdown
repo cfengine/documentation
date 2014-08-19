@@ -13,13 +13,10 @@ using pre-compiled rpm and deb packages for Ubuntu, Debian, Redhat, CentOS, and 
 
 CFEngine recommends the following:
 
-**Host(s) Memory** 
+**Host Memory** 
 
 256 MB available memory in order to run the CFEngine agent software (cf-agent).
 
-**Disk Storage** 
-
-Plan for approximately 100MB of disk space per host. Provide an extra 2G to 4G of disk space if you plan to bootstrap more hosts later.
 
 **Network** 
 
@@ -47,10 +44,11 @@ The VIOS should be configured with Shared Processors in Uncapped mode.
 
 ## Policy Server Requirements
 
+
 ### Dedicated OS
 
-The CFEngine Server is only supported when installed on a dedicated,
-vanilla OS (i.e. it only has repositories and packages officially
+The CFEngine Server is only supported when installed on a **dedicated,
+vanilla OS** (i.e. it only has repositories and packages officially
 supported by the OS vendor). This is because the CFEngine Server uses
 services, e.g. apache, that are configured for CFEngine and may
 conflict with other custom application configurations.
@@ -59,22 +57,30 @@ One option, especially for smaller installations, is to run the
 CFEngine Server in a VM. But please consider the performance
 requirements when doing this.
 
+
+### Disk sizing and partitioning
+
+It is recommended that /var/cfengine/state/pg is mounted on a **separate disk**. This will give PostgreSQL, which is very disk I/O intensive, dedicated resources.
+
+Plan for approximately **100MB of disk space per bootstrapped agent**.
+This means that for a server with 5000 hosts, you should have at least 500 GB available on the database partition.
+
+
+### Disk speed
+
+The disk that serves PostgreSQL (/var/cfengine/state/pg) should be able to perform at least **2000 IOPS** (in 16KiB block size). The disk mounted on /var/cfengine should be able to perform at least 500 IOPS. **SSD is recommmended** for the disk that PostgreSQL writes to.
+
+**Note** Your storage IOPS specification may be given in 4KiB block size, in which case you would need to divide it by 4 to get the corresponding 16KiB *theoretical maximum*.
+
+
 ### Memory
 
-A minimum of 2 GB of available memory and a modern 64 bit processor. For a
-large number of Hosts (Clients), we recommend 8 GB of available memory per 500
-hosts that are bootstrapped to your Policy Server. Contact your sales
-representative if you have any questions regarding these numbers.
-
-### Port 80
+Minimum 2GB memory, but not lower than **8MB per bootstrapped agent**. This means that for a server with 5000 hosts, you should have at least 40GB of memory.
 
 
+### CPU
 
-**Note:** To avoid potential interference with the installation process, start
-from a blank system (i.e. no Apache Web Server, etc.).
-
-
-
+A modern 64-bit processor with 4 or more cores.
 
 
 ## Download Packages
