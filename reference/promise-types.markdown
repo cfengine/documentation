@@ -21,7 +21,7 @@ depends on the [bundle][bundles] type:
 | [commands][commands] - execute a command |        | x     |        |         |
 | [databases][databases] - configure a database |        | x     |        |         |
 | [files][files] - configure a file |        | x     |        |         |
-| [interfaces][interface] - configure a network interface |        | x     |        |         |
+| [interfaces][interfaces] - configure a network interface |        | x     |        |         |
 | [packages][packages] - install a package |        | x     |        |         |
 | [guest_environments][guest_environments] |        | x     |        |         |
 | [methods][methods] - take on a whole bundle of other promises |        | x     |        |         |
