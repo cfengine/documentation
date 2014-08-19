@@ -15,7 +15,7 @@ be represented as regular expressions. The list of strings is composed from the 
  in the first argument, and a numerical range in square brackets is replaced by successive numbers
 from the range.
 
-[ %CFEngine_function_attributes(string_template, stepsize)% ]
+[%CFEngine_function_attributes(string_template, stepsize)%]
 
 ```cf3
 vars:
