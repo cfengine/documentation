@@ -71,7 +71,7 @@
                           "lval": "string",
                           "rval": {
                             "type": "string",
-                            "value": "$(paths.sysctl) --no-ask-password --global --system"
+                            "value": "$(paths.systemctl) --no-ask-password --global --system"
                           }
                         }
                       ]

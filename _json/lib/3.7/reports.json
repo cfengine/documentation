@@ -43,42 +43,14 @@
                   }
                 },
                 {
-                  "line": 66,
+                  "line": 59,
                   "lval": "monitoring_include",
                   "rval": {
                     "type": "list",
                     "value": [
                       {
                         "type": "string",
-                        "value": "cpu.*"
-                      },
-                      {
-                        "type": "string",
-                        "value": "mem_total"
-                      },
-                      {
-                        "type": "string",
-                        "value": "mem_free"
-                      },
-                      {
-                        "type": "string",
-                        "value": "mem_cached"
-                      },
-                      {
-                        "type": "string",
-                        "value": "mem_swap"
-                      },
-                      {
-                        "type": "string",
-                        "value": "mem_freeswap"
-                      },
-                      {
-                        "type": "string",
-                        "value": "loadavg"
-                      },
-                      {
-                        "type": "string",
-                        "value": "diskfree"
+                        "value": ""
                       }
                     ]
                   }
@@ -89,7 +61,7 @@
         },
         {
           "sourcePath": "../masterfiles/lib/3.7/reports.cf",
-          "line": 69,
+          "line": 62,
           "namespace": "default",
           "name": "default_data_select_policy_hub",
           "bodyType": "report_data_select",
@@ -99,7 +71,7 @@
               "name": "any",
               "attributes": [
                 {
-                  "line": 76,
+                  "line": 69,
                   "lval": "metatags_include",
                   "rval": {
                     "type": "list",
@@ -116,7 +88,7 @@
                   }
                 },
                 {
-                  "line": 77,
+                  "line": 70,
                   "lval": "metatags_exclude",
                   "rval": {
                     "type": "list",

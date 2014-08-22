@@ -17,7 +17,6 @@
         "storage",
         "users",
         "classes",
-        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -32,7 +31,6 @@
         "field_edits",
         "replace_patterns",
         "classes",
-        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -51,7 +49,6 @@
         "set_text",
         "insert_text",
         "classes",
-        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -64,7 +61,6 @@
         "access",
         "roles",
         "classes",
-        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -76,7 +72,6 @@
       "promiseTypes": [
         "measurements",
         "classes",
-        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -87,7 +82,6 @@
       "status": "normal",
       "promiseTypes": [
         "classes",
-        "conditions",
         "defaults",
         "meta",
         "reports",
@@ -170,147 +164,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "comment": {
-          "attribute": "comment",
-          "status": "normal",
-          "type": "string",
-          "range": "",
-          "visibility": "global"
-        },
-        "depends_on": {
-          "attribute": "depends_on",
-          "status": "normal",
-          "type": "slist",
-          "range": "",
-          "visibility": "global"
-        },
-        "handle": {
-          "attribute": "handle",
-          "status": "normal",
-          "type": "string",
-          "range": "",
-          "visibility": "global"
-        },
-        "ifvarclass": {
-          "attribute": "ifvarclass",
-          "status": "normal",
-          "type": "string",
-          "range": "",
-          "visibility": "global"
-        },
-        "if": {
-          "attribute": "if",
-          "status": "normal",
-          "type": "string",
-          "range": "",
-          "visibility": "global"
-        },
-        "unless": {
-          "attribute": "unless",
-          "status": "normal",
-          "type": "string",
-          "range": "",
-          "visibility": "global"
-        },
-        "meta": {
-          "attribute": "meta",
-          "status": "normal",
-          "type": "slist",
-          "range": "",
-          "visibility": "global"
-        }
-      }
-    },
-    "conditions": {
-      "status": "normal",
-      "attributes": {
-        "scope": {
-          "attribute": "scope",
-          "status": "normal",
-          "type": "option",
-          "range": "namespace,bundle",
-          "visibility": "promiseType"
-        },
-        "and": {
-          "attribute": "and",
-          "status": "normal",
-          "type": "clist",
-          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
-          "visibility": "promiseType"
-        },
-        "dist": {
-          "attribute": "dist",
-          "status": "normal",
-          "type": "rlist",
-          "range": "-9.99999E100,9.99999E100",
-          "visibility": "promiseType"
-        },
-        "expression": {
-          "attribute": "expression",
-          "status": "normal",
-          "type": "context",
-          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
-          "visibility": "promiseType"
-        },
-        "or": {
-          "attribute": "or",
-          "status": "normal",
-          "type": "clist",
-          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
-          "visibility": "promiseType"
-        },
-        "persistence": {
-          "attribute": "persistence",
-          "status": "normal",
-          "type": "int",
-          "range": "0,99999999999",
-          "visibility": "promiseType"
-        },
-        "not": {
-          "attribute": "not",
-          "status": "normal",
-          "type": "context",
-          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
-          "visibility": "promiseType"
-        },
-        "select_class": {
-          "attribute": "select_class",
-          "status": "normal",
-          "type": "clist",
-          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
-          "visibility": "promiseType"
-        },
-        "xor": {
-          "attribute": "xor",
-          "status": "normal",
-          "type": "clist",
-          "range": "[a-zA-Z0-9_!&@@$|.()\\[\\]{}:]+",
-          "visibility": "promiseType"
-        },
-        "action": {
-          "attribute": "action",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "classes": {
-          "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -402,12 +255,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -491,12 +338,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -611,12 +452,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -743,12 +578,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -831,12 +660,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -944,12 +767,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1062,12 +879,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1273,12 +1084,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1360,12 +1165,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1475,12 +1274,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1559,12 +1352,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1639,12 +1426,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1729,12 +1510,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1811,12 +1586,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -1901,12 +1670,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -1983,12 +1746,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2080,12 +1837,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2162,12 +1913,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2252,12 +1997,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2334,12 +2073,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2484,12 +2217,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2565,12 +2292,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2662,12 +2383,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2750,12 +2465,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -2860,12 +2569,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -2965,12 +2668,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -3057,12 +2754,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -3137,12 +2828,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -3303,12 +2988,6 @@
           "type": "body",
           "visibility": "global"
         },
-        "outcome": {
-          "attribute": "outcome",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
         "comment": {
           "attribute": "comment",
           "status": "normal",
@@ -3378,12 +3057,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -3484,12 +3157,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -3624,12 +3291,6 @@
         },
         "classes": {
           "attribute": "classes",
-          "status": "normal",
-          "type": "body",
-          "visibility": "global"
-        },
-        "outcome": {
-          "attribute": "outcome",
           "status": "normal",
           "type": "body",
           "visibility": "global"
@@ -3803,109 +3464,6 @@
       }
     },
     "classes": {
-      "status": "normal",
-      "attributes": {
-        "scope": {
-          "attribute": "scope",
-          "status": "normal",
-          "type": "option",
-          "range": "namespace,bundle",
-          "visibility": "body"
-        },
-        "promise_repaired": {
-          "attribute": "promise_repaired",
-          "status": "normal",
-          "type": "slist",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
-          "visibility": "body"
-        },
-        "repair_failed": {
-          "attribute": "repair_failed",
-          "status": "normal",
-          "type": "slist",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
-          "visibility": "body"
-        },
-        "repair_denied": {
-          "attribute": "repair_denied",
-          "status": "normal",
-          "type": "slist",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
-          "visibility": "body"
-        },
-        "repair_timeout": {
-          "attribute": "repair_timeout",
-          "status": "normal",
-          "type": "slist",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
-          "visibility": "body"
-        },
-        "promise_kept": {
-          "attribute": "promise_kept",
-          "status": "normal",
-          "type": "slist",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
-          "visibility": "body"
-        },
-        "cancel_kept": {
-          "attribute": "cancel_kept",
-          "status": "normal",
-          "type": "slist",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
-          "visibility": "body"
-        },
-        "cancel_repaired": {
-          "attribute": "cancel_repaired",
-          "status": "normal",
-          "type": "slist",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
-          "visibility": "body"
-        },
-        "cancel_notkept": {
-          "attribute": "cancel_notkept",
-          "status": "normal",
-          "type": "slist",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
-          "visibility": "body"
-        },
-        "kept_returncodes": {
-          "attribute": "kept_returncodes",
-          "status": "normal",
-          "type": "slist",
-          "range": "[-0-9_$(){}\\[\\].]+",
-          "visibility": "body"
-        },
-        "repaired_returncodes": {
-          "attribute": "repaired_returncodes",
-          "status": "normal",
-          "type": "slist",
-          "range": "[-0-9_$(){}\\[\\].]+",
-          "visibility": "body"
-        },
-        "failed_returncodes": {
-          "attribute": "failed_returncodes",
-          "status": "normal",
-          "type": "slist",
-          "range": "[-0-9_$(){}\\[\\].]+",
-          "visibility": "body"
-        },
-        "persist_time": {
-          "attribute": "persist_time",
-          "status": "normal",
-          "type": "int",
-          "range": "0,99999999999",
-          "visibility": "body"
-        },
-        "timer_policy": {
-          "attribute": "timer_policy",
-          "status": "normal",
-          "type": "option",
-          "range": "absolute,reset",
-          "visibility": "body"
-        }
-      }
-    },
-    "outcome": {
       "status": "normal",
       "attributes": {
         "scope": {
@@ -5268,7 +4826,7 @@
           "attribute": "tunnel_interface",
           "status": "normal",
           "type": "string",
-          "range": "[a-zA-Z0-9_$(){}\\[\\].:]+",
+          "range": "[a-zA-Z0-9_$(){}/.:-]+",
           "visibility": "body"
         },
         "tunnel_alien_addresses": {

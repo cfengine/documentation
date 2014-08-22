@@ -2253,7 +2253,7 @@
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
-                    "value": "$(pip_list_name_regex)"
+                    "value": "$(pip_knowledge.pip_list_name_regex)"
                   }
                 },
                 {
@@ -2261,7 +2261,7 @@
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
-                    "value": "$(pip_list_version_regex)"
+                    "value": "$(pip_knowledge.pip_list_version_regex)"
                   }
                 },
                 {
@@ -2269,7 +2269,7 @@
                   "lval": "package_installed_regex",
                   "rval": {
                     "type": "string",
-                    "value": "$(pip_installed_regex)"
+                    "value": "$(pip_knowledge.pip_installed_regex)"
                   }
                 },
                 {
@@ -5231,7 +5231,7 @@
                   "lval": "package_list_name_regex",
                   "rval": {
                     "type": "string",
-                    "value": "(.*)\\-[0-9]+.*"
+                    "value": "([^\\s]+)\\-[0-9]+.*\\s"
                   }
                 },
                 {
@@ -5239,7 +5239,7 @@
                   "lval": "package_list_version_regex",
                   "rval": {
                     "type": "string",
-                    "value": ".*\\-([0-9][^\\s]+).*"
+                    "value": "[^\\s]+\\-([0-9][^\\s]+)\\s"
                   }
                 },
                 {
