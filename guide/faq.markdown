@@ -58,7 +58,7 @@ Similarly there will be a ```cfapache``` system user for the Apache web server.
 
 ##### General Information #####
 
-* [Requirements for CFEngine][Pre-Installation Checklist#Requirements for CFEngine]
+* [Pre-Installation Checklist][Pre-Installation Checklist]
 * [Supported Platforms and Versions][Supported Platforms and Versions]
 
 ##### Users and Permissions #####
