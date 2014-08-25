@@ -67,13 +67,14 @@ Note in the above that a list can be passed as a implicitly iterated
 scalar and as a reference, while a `data` variable (a data container)
 can only be passed by reference.
 
-Because a method is just an encapsulation, there is a subtlety about how
-to interpret a successful method invocation. Before version 3.1.0, a
-method was considered repaired if executed (similar to `commands`).
-However, this led to unnecessary logging of executions, even if not
-actual encapsulated promise was kept. In version 3.1.0 this has been
-changed so that a method promise is considered kept if the method is
-expanded. A method promise is thus never considered repaired.
+As of version 3.5.0 a methods promise outcome is tied to the outcomes of its
+promises. For example if you activate a bundle and it has a promise that is
+not_kept, the bundle itself would have an outcome of not_kept. If you activate
+a bundle that has one promise that is repaired, and one promise that is kept,
+the bundle will have an outcome of repaired. A method will only have an outcome
+of kept if all promises inside that bundle are also kept.
+[This acceptance test](https://github.com/cfengine/core/blob/master/tests/acceptance/21_methods/outcomes.cf)
+illustrates the behavior.
 
 Starting from version 3.1.0, methods may be specified using variables.
 Care should be exercised when using this approach. In order to make the
