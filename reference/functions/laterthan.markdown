@@ -10,7 +10,8 @@ tags: [reference, files functions, functions, laterthan]
 **Description:** Returns whether the current time is later than the given 
 date and time.
 
-The arguments are standard time.
+The specified date/time is an absolute date in the local timezone.
+Note that, unlike some other functions, the month argument is 1-based (i.e. 1 corresponds to January).
 
 [%CFEngine_function_attributes(year, month, day, hour, minute, second)%]
 
