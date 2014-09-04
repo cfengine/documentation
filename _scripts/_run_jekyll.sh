@@ -4,13 +4,14 @@
 ## if content changed, make commits and create pull request
 ## do not update working copies of generator in $WRKDIR
 ## - only once pull request is merged
-cd /home/vagrant/documentation-generator
+
+cd $HOME/documentation-generator
 git fetch original
 git reset --hard original/master
 git clean -dfx
-cp -r /home/vagrant/_json /home/vagrant/documentation-generator
-cp /home/vagrant/doc_help/* /home/vagrant/documentation-generator/_generated
-cd /home/vagrant/documentation-generator
+cp -r $HOME/_json $HOME/documentation-generator
+cp $HOME/doc_help/* $HOME/documentation-generator/_generated
+cd $HOME/documentation-generator
 DIFF=$(git diff -- .)
 
 cd _json
@@ -28,7 +29,7 @@ if [ ! -z "$LIB_DIFF" ]; then
    git commit -m "Autocommit: libraries changed `date +%F-%T`"
 fi
 
-cd /home/vagrant/documentation-generator/_generated
+cd $HOME/documentation-generator/_generated
 HELP_DIFF=$(git diff -- .)
 if [ ! -z "$HELP_DIFF" ]; then
    git add -A -- .
@@ -37,9 +38,9 @@ fi
 
 if [ ! -z "$DIFF" ]; then
    git push -f
-   /home/vagrant/bin/hub pull-request "Auto Pull Request" -b cfengine:master -h cfengine-autobuild:autocheckSyntaxMap
+   $HOME/bin/hub pull-request "Auto Pull Request" -b cfengine:master -h cfengine-autobuild:autocheckSyntaxMap
 fi
-cd /home/vagrant/documentation-generator
+cd $HOME/documentation-generator
 
 
 sed '/^\[.*\[.*\].*\]/d' $WRKDIR/documentation-generator/_references.md > $WRKDIR/documentation-generator/new_references.md
