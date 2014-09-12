@@ -65,6 +65,8 @@ It is recommended that /var/cfengine/state/pg is mounted on a **separate disk**.
 Plan for approximately **100MB of disk space per bootstrapped agent**.
 This means that for a server with 5000 hosts, you should have at least 500 GB available on the database partition.
 
+xfs is strongly recommended as the file system type for the file system mounted on /var/cfengine/state/pg. ext4 can be used as an alternative, but ext3 should be avoided.
+
 
 ### Disk speed
 
