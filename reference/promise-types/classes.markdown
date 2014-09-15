@@ -317,8 +317,9 @@ purposes).
 
 **Description:** Combine class sources with XOR
 
-The class on the left-hand side is set if exactly one of the class expressions
-on the right-hand side matches.
+The class on the left-hand side is set if an odd number of class expressions
+on the right-hand side matches. This is most commonly used with two class
+expressions.
 
 **Type:** `clist`
 
@@ -329,5 +330,5 @@ on the right-hand side matches.
 ```cf3
     classes:
 
-     "another_global" xor => { "any", "linux", "solaris"};
+    "order_lunch" xor => { "Friday", "Hr11"}; # we get pizza every Friday
 ```
