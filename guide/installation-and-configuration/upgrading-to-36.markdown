@@ -93,14 +93,14 @@ Our recommendation is to upgrade the Policy Server first. The rationale is that 
 ## Prepare Client upgrade
 
 1. Make client packages available on the Policy Server in `/var/cfengine/master_software_updates`, under the appropriate directories for the OS distributions you use.
-2. Turn on the auto-upgrade policy by setting class `trigger_update` in `update.cf` for a small set of clients, i.e. change `!any` to an appropriate class like an IP network (e.g. `10_10_1|10_10_2`).
+2. Turn on the auto-upgrade policy by setting class `trigger_upgrade` in `update.cf` for a small set of clients, i.e. change `!any` to an appropriate class like an IP network (e.g. `10_10_1|10_10_2`).
 3. Verify that the selected hosts are upgrading successfully.
 
     As an Enterprise user, confirm that the hosts start appearing in Mission Portal after 5-10 minutes. Otherwise, log manually into a set of hosts to confirm the successful upgrade.
 
 ## Complete Client upgrade
 
-1. Widen the group of hosts on which the `trigger_update` class is set.
+1. Widen the group of hosts on which the `trigger_upgrade` class is set.
 2. Continue to verify from `cf-key -s` or in the Enterprise Mission Portal that hosts are upgraded correctly and start reporting in.
 3. Verify that the list of hosts you captured before the upgrade, e.g. in `/root/3.5/hosts` correspond to what you see is now reporting in.
 
