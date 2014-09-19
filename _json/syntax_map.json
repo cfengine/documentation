@@ -521,7 +521,7 @@
           "attribute": "int",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "promiseType"
         },
         "real": {
@@ -542,7 +542,7 @@
           "attribute": "ilist",
           "status": "normal",
           "type": "ilist",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "promiseType"
         },
         "rlist": {
@@ -3226,7 +3226,7 @@
           "attribute": "uid",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "promiseType"
         },
         "password": {
@@ -4648,21 +4648,21 @@
           "attribute": "mtu",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "speed": {
           "attribute": "speed",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "minimum_bond_aggregation": {
           "attribute": "minimum_bond_aggregation",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         }
       }
@@ -4674,14 +4674,14 @@
           "attribute": "ospf_hello_interval",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "ospf_priority": {
           "attribute": "ospf_priority",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "ospf_link_type": {
@@ -4723,7 +4723,7 @@
           "attribute": "ospf_area",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "bgp_session_neighbor": {
@@ -4737,7 +4737,7 @@
           "attribute": "bgp_peer_as",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "bgp_route_reflector": {
@@ -4751,7 +4751,7 @@
           "attribute": "bgp_ttl_security",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "bgp_maximum_paths": {
@@ -4765,7 +4765,7 @@
           "attribute": "bgp_advertisement_interval",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "bgp_internal_next_hop_self": {
@@ -4955,7 +4955,7 @@
           "attribute": "package_list_update_ifelapsed",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "package_list_version_regex": {
@@ -4990,7 +4990,7 @@
           "attribute": "package_noverify_returncode",
           "status": "normal",
           "type": "int",
-          "range": "-99999999999,9999999999",
+          "range": "-99999999999,99999999999",
           "visibility": "body"
         },
         "package_patch_arch_regex": {
@@ -7201,11 +7201,11 @@
       "parameters": [
         {
           "type": "int",
-          "range": "-99999999999,9999999999"
+          "range": "-99999999999,99999999999"
         },
         {
           "type": "int",
-          "range": "-99999999999,9999999999"
+          "range": "-99999999999,99999999999"
         }
       ],
       "variadic": false,
@@ -7368,7 +7368,7 @@
       "parameters": [
         {
           "type": "int",
-          "range": "0,1000"
+          "range": "0,10000"
         },
         {
           "type": "int",
@@ -7639,23 +7639,23 @@
         },
         {
           "type": "int",
-          "range": "1,12"
+          "range": "0,1000"
         },
         {
           "type": "int",
-          "range": "1,31"
+          "range": "0,1000"
         },
         {
           "type": "int",
-          "range": "0,23"
+          "range": "0,1000"
         },
         {
           "type": "int",
-          "range": "0,59"
+          "range": "0,1000"
         },
         {
           "type": "int",
-          "range": "0,59"
+          "range": "0,1000"
         }
       ],
       "variadic": false,
@@ -7947,11 +7947,11 @@
       "parameters": [
         {
           "type": "int",
-          "range": "-99999999999,9999999999"
+          "range": "-99999999999,99999999999"
         },
         {
           "type": "int",
-          "range": "-99999999999,9999999999"
+          "range": "-99999999999,99999999999"
         }
       ],
       "variadic": false,

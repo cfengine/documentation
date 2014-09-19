@@ -1316,7 +1316,7 @@
                           "lval": "package_version",
                           "rval": {
                             "type": "string",
-                            "value": "9999999999"
+                            "value": "999999999"
                           }
                         }
                       ]
@@ -1351,7 +1351,7 @@
                           "lval": "package_version",
                           "rval": {
                             "type": "string",
-                            "value": "9999999999"
+                            "value": "999999999"
                           }
                         }
                       ]
@@ -1386,7 +1386,7 @@
                           "lval": "package_version",
                           "rval": {
                             "type": "string",
-                            "value": "9999999999"
+                            "value": "999999999"
                           }
                         }
                       ]

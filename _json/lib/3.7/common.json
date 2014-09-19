@@ -771,6 +771,10 @@
                       },
                       {
                         "type": "string",
+                        "value": "$(x)_error"
+                      },
+                      {
+                        "type": "string",
                         "value": "$(x)_not_kept"
                       },
                       {
@@ -804,6 +808,10 @@
                       },
                       {
                         "type": "string",
+                        "value": "$(x)_error"
+                      },
+                      {
+                        "type": "string",
                         "value": "$(x)_not_kept"
                       },
                       {
@@ -834,6 +842,10 @@
                       {
                         "type": "string",
                         "value": "$(x)_not_ok"
+                      },
+                      {
+                        "type": "string",
+                        "value": "$(x)_error"
                       },
                       {
                         "type": "string",
@@ -950,6 +962,10 @@
                       },
                       {
                         "type": "string",
+                        "value": "$(x)_error"
+                      },
+                      {
+                        "type": "string",
                         "value": "$(x)_not_kept"
                       },
                       {
@@ -983,6 +999,10 @@
                       },
                       {
                         "type": "string",
+                        "value": "$(x)_error"
+                      },
+                      {
+                        "type": "string",
                         "value": "$(x)_not_kept"
                       },
                       {
@@ -1013,6 +1033,10 @@
                       {
                         "type": "string",
                         "value": "$(x)_not_ok"
+                      },
+                      {
+                        "type": "string",
+                        "value": "$(x)_error"
                       },
                       {
                         "type": "string",
