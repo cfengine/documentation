@@ -30,7 +30,6 @@ The available pieces are:
   * `commands.cf`: see `commands`
   * `databases.cf`: see `databases`
   * `files.cf`: see `files`
-  * `guest_environments.cf`: see `guest_environments`
   * `monitor.cf`: see `monitor`
   * `packages.cf`: see `packages`
   * `processes.cf`: see `processes`
