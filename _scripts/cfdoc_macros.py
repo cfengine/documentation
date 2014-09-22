@@ -674,7 +674,7 @@ def library_include(parameters, config):
 	qa.LogProcessStart(config, "library_include: %s" % policy_filename)
 
 	if policy_json == None:
-		policy_path = config["project_directory"] + "/_json/" + policy_filename
+		policy_path = config["project_directory"] + "/_generated/" + policy_filename
 		if not os.path.exists(policy_path):
 			qa.Log(config, "File does not exist: " + policy_path)
 			return markdown_lines
