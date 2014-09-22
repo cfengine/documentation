@@ -6,7 +6,7 @@ $WRKDIR/core/cf-promises/cf-promises -sjson > $OUTDIR/syntax_map.json
 
 for lib in $LIBDIR/*.cf
 do
-  out="${lib/$LIBDIR/$OUTDIR\/lib}"
+  out="${lib/$LIBDIR/$OUTDIR/lib}"
   out="${out/%.cf/.json}"
   $WRKDIR/core/cf-promises/cf-promises --eval-functions --policy-output-format=json $lib > $out
 done
