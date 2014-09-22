@@ -210,7 +210,7 @@ all lines until the end of the file will be injected.
 Parses the JSON version of the CFEngine policy in `filename` and generates
 documentation from it.
 
-The generator searches for the library in the `_json` subdirectory of
+The generator searches for the library in JSON format in the `_generated` subdirectory of
 the documentation generator. `filename` needs to be provided without file
 extension.
 
@@ -244,8 +244,8 @@ All comments before the first doxygen-style tag will be ignored.
 #### Documenting CFEngine Syntax Elements
 
 The following macros require the syntax map to be generated
-via `cf-promises -s` into a file `_json/syntax_map.json` within the
-`_json` subdirectory of the documentation generator.
+via `cf-promises -s` into a file `syntax_map.json` within the
+`_generated` subdirectory of the documentation generator.
 
 * `[%CFEngine_function_prototype(arg1, arg2, ...)%]`
 
