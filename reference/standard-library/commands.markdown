@@ -19,5 +19,5 @@ body file control
 ```
 
 
-[%CFEngine_library_include(lib/3.6/commands)%]
+[%CFEngine_library_include(lib/3.7/commands)%]
 

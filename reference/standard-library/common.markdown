@@ -44,5 +44,5 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/3.6/bundles)%]
+[%CFEngine_library_include(lib/3.7/bundles)%]
 

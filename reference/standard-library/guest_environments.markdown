@@ -20,4 +20,4 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/3.6/guest_environments)%]
+[%CFEngine_library_include(lib/3.7/guest_environments)%]
