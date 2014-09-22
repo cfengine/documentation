@@ -4,7 +4,7 @@ Jekyll config for CFEngine documentation
 
 1. Installation
 -
-This instalation was tested on ubuntu 10.04 with vagrant, ruby 1.9.3 and Java 7.
+This installation was tested on ubuntu 10.04 with vagrant, ruby 1.9.3 and Java 7.
 Make sure your machine has everything according to jekyll requirements: https://github.com/mojombo/jekyll.
 + you need git installed to checkout documentation.
 
@@ -26,12 +26,12 @@ Gems:
 + pandoc-ruby
 + rdiscount
 
-You can find additional information inside _setup/setup.sh
+You can find additional information inside _setup/start.sh
 
 
 Clean setup
 --
-1. Review and change file _setup/setup.sh acordingly to your environment
+1. Review and change file _setup/start.sh acordingly to your environment
 
 
 Final steps
@@ -70,41 +70,4 @@ NOTE: you must restart server after changes in _config.yml
 -
 
 To configure jekyll open _config.yml. All options described at https://github.com/mojombo/jekyll/wiki/Configuration
-
-
-6. Page meta data
--
-
-```
----
-layout: default
-title: cf-agent
-categories: [Components, cf-agent]
-published: true
-alias: cf-agent.html
-tags: [cf-agent, promises]
-sorting: 19
----
-```
-
-Explanation:
-
-You must use YAML format for metadata
-You must place metadata on the top of the file and divide it with ---  (repeat "-" sign 3 times on new line)
-
-
-*layout*: default - we have only 1 layout for pages now
-
-*title*:  page title - string between <title></title>
-
-*categories*:  where we should place this page, think about this as a breadcrumbs. Last point should be this page
-
-*published*: true or false
-
-*alias*: url (html file name) - use "url safe" names
-
-*tags*: tags relevant to this doc
-
-*sorting*: specify page order in the left menu.
-
 
