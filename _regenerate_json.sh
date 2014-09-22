@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p $WRKDIR/_generated/lib/3.7
+mkdir -p $WRKDIR/documentation-generator/_generated/lib/3.7
 $WRKDIR/core/cf-promises/cf-promises -sjson > $WRKDIR/documentation-generator/_generated/syntax_map.json
 
 for lib in $WRKDIR/masterfiles/lib/3.7/*.cf
