@@ -21,7 +21,6 @@
 # THE SOFTWARE.
 
 import os
-import json
 
 def validate():
 	config = {}
@@ -73,9 +72,6 @@ def validate():
 	print 'cfdoc_environment: cwd              = ' + os.getcwd()
 	print '                   config           = '
 	print config
-		
-	config["syntax_path"] = config["project_directory"] + "/_generated/syntax_map.json"
-	config["syntax_map"] = json.load(open(config["syntax_path"], 'r'))
 	
 	markdown_files = []
 	scanDirectory(config["markdown_directory"], "", ".markdown", markdown_files)
