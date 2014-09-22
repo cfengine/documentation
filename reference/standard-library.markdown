@@ -110,7 +110,7 @@ body file control
 ```
 
 
-[%CFEngine_library_include(lib/3.7/feature)%]
+[%CFEngine_library_include(lib/feature)%]
 
 ## Paths
 
@@ -124,5 +124,5 @@ body file control
 ```
 
 
-[%CFEngine_library_include(lib/3.7/paths)%]
+[%CFEngine_library_include(lib/paths)%]
 

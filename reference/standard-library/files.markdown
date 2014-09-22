@@ -20,4 +20,4 @@ body file control
 ```
 
 
-[%CFEngine_library_include(lib/3.7/files)%]
+[%CFEngine_library_include(lib/files)%]

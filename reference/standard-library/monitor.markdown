@@ -21,5 +21,5 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/3.7/monitor)%]
+[%CFEngine_library_include(lib/monitor)%]
 
