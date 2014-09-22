@@ -730,7 +730,7 @@ def library_include(parameters, config):
 				sourceLine = element["line"] - 1 # zero-based indexing
 				sourceLines = source_file.readlines()[sourceLine:]
 			except:
-				qa.Log(config, "could not include code from " + name)
+				qa.Log(config, "could not include code for element %s - check %s" % (name, source_path))
 			
 			if len(sourceLines):
 				headerLines = list()
