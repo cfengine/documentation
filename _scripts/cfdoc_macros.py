@@ -724,7 +724,7 @@ def library_include(parameters, config):
 			sourceLine = -1
 			
 			try:
-				source_path = config["project_directory"] + "/" + element["sourcePath"]
+				source_path = element["sourcePath"]
 				source_path = os.path.normpath(source_path)
 				source_file = open(source_path, 'r')
 				sourceLine = element["line"] - 1 # zero-based indexing
