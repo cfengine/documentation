@@ -1,5 +1,5 @@
 #!/bin/bash
-$WRKDIR/cf-promises/cf-promises -sjson > _json/syntax_map.json
+$WRKDIR/core/cf-promises/cf-promises -sjson > _json/syntax_map.json
 
 for lib in $WRKDIR/masterfiles/lib/3.7/*.cf
 do
