@@ -145,7 +145,7 @@ using `ifelapsed` is another, which is not tied to a specific time.
 
 **Allowed input range:** `0,99999999999`
 
-**Default value:** control body value
+**Default value:** [control body value][cf-agent#ifelapsed]
 
 **Example:**
 
