@@ -176,7 +176,7 @@ CFEngine will attempt to kill and restart its attempt to keep a promise.
 
 **Allowed input range:** `0,99999999999`
 
-**Default value:** control body value
+**Default value:** [control body value][cf-agent#expireafter]
 
 **Example:**
 
