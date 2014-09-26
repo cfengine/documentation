@@ -369,7 +369,7 @@ in `include_start_delimiter`).
 
 #### select_start
 
-**Description:** Regular expression matching start of edit region
+**Description:** [Anchored][anchored] regular expression matching start of edit region
 
 See also [`select_end`][bundle edit_line#select_end]. These delimiters mark 
 out the region of a file to be edited.
@@ -390,7 +390,7 @@ out the region of a file to be edited.
 
 #### select_end
 
-**Description:** Regular expression matches end of edit region from start
+**Description:** [Anchored][anchored] regular expression matches end of edit region from start
 
 See also [`select_start`][bundle edit_line#select_start]. These delimiters 
 mark out the region of a file to be edited.
