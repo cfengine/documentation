@@ -1,8 +1,8 @@
 ---
 layout: default
-published: false
+published: true
 title: Setting up High Availability
 ---
 
-Blah
+Blah [Blah blah][]
 
