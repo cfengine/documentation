@@ -1,0 +1,125 @@
+---
+layout: default
+title: Custom actions for Alerts
+sorting: 40
+published: true
+tags: [cfengine enterprise, user interface, mission portal]
+---
+
+Once you have become familiar with the [Alerts and Notifications][User Interface#Alerts and Notifications], you might see the need to integrate the alerts with an existing system like Nagios, instead of relying on emails for getting notified.
+
+This is where the Custom actions come in. A Custom action is a way to execute a script on the hub whenever an alert is triggered or cleared, as well as when a reminder happens (if set). The script will receive a set of parameters containing the state of the alert, and can practically do anything with this information. Typically, it is used to integrate with other alerting or monitoring systems like PagerDuty or Nagios.
+
+Any scripting language may be used, as long as the hub has an interpreter for it.
+
+
+## Alert parameters ##
+
+The Custom action script gets called with one parameter: the path to a file wiht a set of KEY=VALUE lines.
+Most of the keys are common for all alerts, but some additional keys are defined based on the alert type, as shown below.
+
+
+### Common keys ###
+
+These keys are present for all alert types.
+
+| Key                         | Description                                                                                           |
+|-----------------------------|-------------------------------------------------------------------------------------------------------|
+| ALERT_ID                    | Unique ID (number).                                                                          |
+| ALERT_NAME                  | Name, as defined in when creating the alert (string).                                                    |
+| ALERT_SEVERITY              | Severity, as selected when creating the alert (string).                                                |
+| ALERT_LAST_CHECK            | Last time alert state was checked (Unix epoch timestamp).                                              |
+| ALERT_LAST_EVENT_TIME       | Last time the alert created an event log entry (Unix epoch timestamp).                                 |
+| ALERT_LAST_STATUS_CHANGE    | Last time alert changed from triggered to cleared or the other way around (Unix epoch timestamp).      |
+| ALERT_STATUS                | Current status, either 'fail' (triggered) or 'success' (cleared).                                      |
+| ALERT_FAILED_HOST           | Number of hosts currently triggered on (number).                                                       |
+| ALERT_TOTAL_HOST            | Nubmer of hosts defined for (number).                                                                  |
+| ALERT_CONDITION_NAME        | Condition name, as defined when creating the alert (string).                                             |
+| ALERT_CONDITION_DESCRIPTION | Condition description, as defined when creating the alert (string).                                      |
+| ALERT_CONDITION_TYPE        | Type, as selected when creating the alert. Can be 'policy', 'inventory', 'softwareupdate' or 'sketch'. |
+
+
+
+### Policy keys ###
+
+In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='policy'.
+
+| Key                                   | Description                                                                                                      |
+|---------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| ALERT_POLICY_CONDITION_FILTERBY       | Policy object to filter by, as selected when creating the alert. Can be 'bundlename', 'promiser' or 'promisees'.  |
+| ALERT_POLICY_CONDITION_FILTERITEMNAME | Name of the policy object to filter by, as defined when creating the alert (string).                              |
+| ALERT_POLICY_CONDITION_PROMISEHANDLE  | Promise handle to filter by, as defined when creating the alert (string).                                         |
+| ALERT_POLICY_CONDITION_PROMISEOUTCOME | Promise outcome to filter by, as selected when creating the alert. Can be either 'KEPT', 'REPAIRED' or 'NOTKEPT'. |
+
+
+### Inventory keys ###
+
+In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='inventory'.
+
+| Key                                                          | Description                                                                                                                                                                                                                                    |
+|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ALERT_INVENTORY_CONDITION_FILTER_$(ATTRIBUTE_NAME)           | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value set when creating is the value (e.g. ALERT_INVENTORY_CONDITION_FILTER_ARCHITECTURE='x86_64').                                      |
+| ALERT_INVENTORY_CONDITION_FILTER_$(ATTRIBUTE_NAME)_CONDITION | The name of the attribute as selected when creating the alert is part of the key (expanded), while the value is the comparison operator selected. Can be 'ILIKE' (matches), 'NOT ILIKE' (doesn't match), '=' (is), '!=' (is not), '<', '>'. |
+| ...                                                          | There will be pairs of key=value for each attribute name defined in the alert.                                                                                                                                                                |
+
+### Software updates keys ###
+
+In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='softwareupdate'.
+
+| Key                                               | Description                                                                                 |
+|---------------------------------------------------|---------------------------------------------------------------------------------------------|
+| ALERT_SOFTWARE_UPDATE_CONDITION_PATCHNAME         | The name of the package, as defined when creating the alert, or empty if undefined (string).         |
+| ALERT_SOFTWARE_UPDATE_CONDITION_PATCHARCHITECTURE | The arechitecture of the package, as defined when creating the alert, or empty if undefined (string). |
+
+
+### Sketch keys ###
+
+In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE='sketch'.
+
+| Key                                    | Description                                                                            |
+|----------------------------------------|----------------------------------------------------------------------------------------|
+| ALERT_SKETCH_CONDITION_SKETCHNAME      | The name of the sketch, e.g. 'Security::file_integrity' (string).                       |
+| ALERT_SKETCH_CONDITION_ACTIVATIONNAME  | The name of the sketch activation, as typed by the user activating the sketch (string). |
+| ALERT_SKETCH_CONDITION_ACTIVATIONHASH  | A unique ID for this sketch activation (string).                                        |
+| ALERT_SKETCH_CONDITION_SKETCHCHECKTYPE | The type, or category, of the sketch, e.g. 'compliance' (string).                               |
+
+
+## Example script: logging policy alert to syslog ##
+
+The following Custom action script will log the status and definition of a policy alert to syslog.
+
+    #!/bin/bash
+
+    source $1
+
+    if [ "$ALERT_CONDITION_TYPE" != "policy" ]; then
+       logger -i "error: CFEngine Custom action script $0 triggered by non-policy alert type"
+       exit 1
+    fi
+
+    logger -i "Policy alert '$ALERT_NAME' $ALERT_STATUS. Now triggered on $ALERT_FAILED_HOST hosts. Defined with $ALERT_POLICY_CONDITION_FILTERBY='$ALERT_POLICY_CONDITION_FILTERITEMNAME', promise handle '$ALERT_POLICY_CONDITION_PROMISEHANDLE' and outcome $ALERT_POLICY_CONDITION_PROMISEOUTCOME"
+
+    exit $?
+
+What gets logged to syslog depends on which alert is associated with the script, but an example log-line is as follows:
+
+    Sep 26 02:00:53 localhost user[18823]: Policy alert 'Web service' fail. Now triggered on 11 hosts. Defined with bundlename='web_service', promise handle '' and outcome NOTKEPT
+
+
+
+## Uploading the script to the Mission Portal ##
+
+Members of the admin role can upload Custom action scripts in the Mission Portal settings.
+
+![Custom action scripts overview](mp-settings-custom-notification.png)
+
+![Adding Custom action syslog script](mp-settings-custom-notification-add.png)
+
+
+## Associating a Custom action with an alert ##
+
+Alerts can have any number of Custom action scripts as well as an email notification associated with them. This can be configured during alert creation. Note that for security reasons, only members of the admin role may assiciate alerts with Custom action scripts.
+
+![Adding Custom action script to alert](create-alert-custom-action-syslog.png)
+
+Several alerts may be associated with the same Custom action script. When the alert changes state from triggered to cleared, or the other way around, the script will run. The script will also run if the alert remains in triggered state and there are reminders set for the alert notifications.
