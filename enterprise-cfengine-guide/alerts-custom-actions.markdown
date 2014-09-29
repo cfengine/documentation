@@ -8,14 +8,14 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 Once you have become familiar with the [Alerts and Notifications][User Interface#Alerts and Notifications], you might see the need to integrate the alerts with an existing system like Nagios, instead of relying on emails for getting notified.
 
-This is where the Custom actions come in. A Custom action is a way to execute a script on the hub whenever an alert is triggered or cleared, as well as when a reminder happens (if set). The script will receive a set of parameters containing the state of the alert, and can practically do anything with this information. Typically, it is used to integrate with other alerting or monitoring systems like PagerDuty or Nagios.
+This is where the Custom actions come in. A Custom action is a way to execute a script on the hub whenever an alert is triggered or cleared, as well as when a reminder happens (if set). The script will receive a set of parameters containing the state of the alert, and can do practically anything with this information. Typically, it is used to integrate with other alerting or monitoring systems like PagerDuty or Nagios.
 
 Any scripting language may be used, as long as the hub has an interpreter for it.
 
 
 ## Alert parameters ##
 
-The Custom action script gets called with one parameter: the path to a file wiht a set of KEY=VALUE lines.
+The Custom action script gets called with one parameter: the path to a file with a set of KEY=VALUE lines.
 Most of the keys are common for all alerts, but some additional keys are defined based on the alert type, as shown below.
 
 
@@ -33,7 +33,7 @@ These keys are present for all alert types.
 | ALERT_LAST_STATUS_CHANGE    | Last time alert changed from triggered to cleared or the other way around (Unix epoch timestamp).      |
 | ALERT_STATUS                | Current status, either 'fail' (triggered) or 'success' (cleared).                                      |
 | ALERT_FAILED_HOST           | Number of hosts currently triggered on (number).                                                       |
-| ALERT_TOTAL_HOST            | Nubmer of hosts defined for (number).                                                                  |
+| ALERT_TOTAL_HOST            | Number of hosts defined for (number).                                                                  |
 | ALERT_CONDITION_NAME        | Condition name, as defined when creating the alert (string).                                             |
 | ALERT_CONDITION_DESCRIPTION | Condition description, as defined when creating the alert (string).                                      |
 | ALERT_CONDITION_TYPE        | Type, as selected when creating the alert. Can be 'policy', 'inventory', 'softwareupdate' or 'sketch'. |
@@ -69,7 +69,7 @@ In addition to the common keys, the following keys are present when ALERT_CONDIT
 | Key                                               | Description                                                                                 |
 |---------------------------------------------------|---------------------------------------------------------------------------------------------|
 | ALERT_SOFTWARE_UPDATE_CONDITION_PATCHNAME         | The name of the package, as defined when creating the alert, or empty if undefined (string).         |
-| ALERT_SOFTWARE_UPDATE_CONDITION_PATCHARCHITECTURE | The arechitecture of the package, as defined when creating the alert, or empty if undefined (string). |
+| ALERT_SOFTWARE_UPDATE_CONDITION_PATCHARCHITECTURE | The architecture of the package, as defined when creating the alert, or empty if undefined (string). |
 
 
 ### Sketch keys ###
@@ -109,17 +109,21 @@ What gets logged to syslog depends on which alert is associated with the script,
 
 ## Uploading the script to the Mission Portal ##
 
-Members of the admin role can upload Custom action scripts in the Mission Portal settings.
+Members of the admin role can manage Custom action scripts in the Mission Portal settings.
 
 ![Custom action scripts overview](mp-settings-custom-notification.png)
+
+A new script can be uploaded, together with a name and description, which will be shown when creating the alerts.
 
 ![Adding Custom action syslog script](mp-settings-custom-notification-add.png)
 
 
 ## Associating a Custom action with an alert ##
 
-Alerts can have any number of Custom action scripts as well as an email notification associated with them. This can be configured during alert creation. Note that for security reasons, only members of the admin role may assiciate alerts with Custom action scripts.
+Alerts can have any number of Custom action scripts as well as an email notification associated with them. This can be configured during alert creation. Note that for security reasons, only members of the admin role may associate alerts with Custom action scripts.
 
 ![Adding Custom action script to alert](create-alert-custom-action-syslog.png)
 
-Several alerts may be associated with the same Custom action script. When the alert changes state from triggered to cleared, or the other way around, the script will run. The script will also run if the alert remains in triggered state and there are reminders set for the alert notifications.
+Conversely, several alerts may be associated with the same Custom action script.
+
+When the alert changes state from triggered to cleared, or the other way around, the script will run. The script will also run if the alert remains in triggered state and there are reminders set for the alert notifications.
