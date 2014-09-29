@@ -59,7 +59,7 @@ functions multiple times, which can be a performance concern.
 
 Some _system_ functions are particularly expensive:
 
-* `execresult()` and`returnszero()` for shell execution
+* `execresult()` and `returnszero()` for shell execution
 * `regldap()`, `ldapvalue()`, `ldaparray()`, and `ldaplist()` for LDAP queries
 * `host2ip()` and `ip2host()` for DNS queries
 * `readtcp()` for TCP interactions
