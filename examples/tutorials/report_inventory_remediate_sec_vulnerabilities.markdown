@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reporting on Inventory and Remediation of Security Vulnerabilities
+title: Reporting and Remediation of Security Vulnerabilities
 sorting: 10
 published: true
 tags: [Examples, Tutorials, Enterprise, Inventory, Dashboard, Alerts]
@@ -116,36 +116,36 @@ Once you have autorun enabled you need only save the policy into
 Within 20 minutes of deploying the policy you should be able to see results in the Inventory Reporting interface.
 
 A new Inventory attribute 'Vulnerable CVE(s)' is available.
-![A new Inventory attribute 'Vulnerable CVE(s)' is available](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_001.jpg)
+![A new Inventory attribute 'Vulnerable CVE(s)' is available](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_001.jpg)
 
 Report showing CVEs that each host is vulnerable to.
 
-![Report showing CVEs that each host is vulnerable to](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_002.jpg)
+![Report showing CVEs that each host is vulnerable to](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_002.jpg)
 
 Chart the Vulnerable CVE(s) and get a visual breakdown.
-![Chart the Vulnerable CVE(s) and get a visual breakdown](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_003.jpg)
-![Chart the Vulnerable CVE(s) and get a visual breakdown - pie](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_004.jpg)
-![Chart the Vulnerable CVE(s) and get a visual breakdown - column](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_005.jpg)
+![Chart the Vulnerable CVE(s) and get a visual breakdown](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_003.jpg)
+![Chart the Vulnerable CVE(s) and get a visual breakdown - pie](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_004.jpg)
+![Chart the Vulnerable CVE(s) and get a visual breakdown - column](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_005.jpg)
 
 ### Build Dashboard Widget with Alerts ###
 
 Let's add alerts for CVE(s) to the dashboard.
-![Let's add alerts for CVE(s) to the dashboard](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_006.jpg)
+![Let's add alerts for CVE(s) to the dashboard](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_006.jpg)
 
 Give the dashboard widget a name.
-![Give the dashboard widget a name](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_007.jpg)
+![Give the dashboard widget a name](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_007.jpg)
 
 Configure an general CVE alert for the dashboard.
-![Configure an general CVE alert for the dashboard](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_008.jpg)
+![Configure an general CVE alert for the dashboard](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_008.jpg)
 
 Add an addional alert for this specific CVE.
-![Add an addional alert for this specific CVE](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_010.jpg)
+![Add an addional alert for this specific CVE](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_010.jpg)
 
-See an the dashboard alert in action.
-![See an the dashboard alert in action - visualization](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_012.jpg)
-![See an the dashboard alert in action - details]report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_013.jpg
-![See an the dashboard alert in action - alert details 1]report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_014.jpg
-![See an the dashboard alert in action - specifc alert details]report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_015.jpg
+See the dashboard alert in action.
+![See an the dashboard alert in action - visualization](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_012.jpg)
+![See an the dashboard alert in action - details](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_013.jpg)
+![See an the dashboard alert in action - alert details 1](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_014.jpg)
+![See an the dashboard alert in action - specifc alert details](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_015.jpg)
 
 ## Remediate Vulnerabilities ##
 
@@ -182,18 +182,18 @@ latest version available.
 Within 20 minutes or so of the policy being deployed you will be able to report on the state of remediation.
 
 See the remediation efforts relfected in the dashboard.
-![See the remediation efforts relfected in the dashboard](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_017.jpg)
+![See the remediation efforts relfected in the dashboard](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_017.jpg)
 
 Drill down into the dashboard and alert details.
-![Drill down into the dashboard and alert details - widget alerts](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_018.jpg)
-![Drill down into the dashboard and alert details - alert detail](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_019.jpg)
+![Drill down into the dashboard and alert details - widget alerts](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_018.jpg)
+![Drill down into the dashboard and alert details - alert detail](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_019.jpg)
 
 Run an Inventory report to see hosts and their CVE status.
-![Run an Inventory report to see hosts and their CVE status](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_020.jpg)
+![Run an Inventory report to see hosts and their CVE status](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_020.jpg)
 
 Chart the Vulnerable CVE(s) and get a visual breakdown.
-![Chart the Vulnerable CVE(s) and get a visual breakdown - pie](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_021.jpg)
-![Chart the Vulnerable CVE(s) and get a visual breakdown - bar](report_inventory_remediate_sec_vulnerabilities/2014-09-29-Selection_022.jpg)
+![Chart the Vulnerable CVE(s) and get a visual breakdown - pie](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_021.jpg)
+![Chart the Vulnerable CVE(s) and get a visual breakdown - bar](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_022.jpg)
 
 ## Summary ##
 
