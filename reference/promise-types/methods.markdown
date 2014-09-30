@@ -19,7 +19,7 @@ the time being.
 
       "any"
 
-         usebundle = method_id("parameter",...);
+         usebundle => method_id("parameter",...);
 
 ```
 
