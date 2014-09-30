@@ -8,7 +8,7 @@ tags: [cfengine enterprise, high availability]
 ## Overview ##
 
 This is tutorial describing installation steps of CFEngine High Availability feature. It is suitable for both upgrading existing CFEngine installations to HA and for installing HA from scratch.
-Before starting HA installation we strongly recommend reading CFEngine High Availability overview Detailed information can be found [here][].
+Before starting installation we strongly recommend reading CFEngine High Availability overview. Detailed information can be found [here][].
 
 ## Installation procedure ##
 
@@ -26,6 +26,7 @@ Please also make sure you are having valid HA licenses for passive hub so that i
 ### Example configuration used in this tutorial ###
 
 In this tutorial we are using following network configuration:
+
 * Two nodes acting as active and passive where active node name is node1 and passive node name is node2.
 * Each node having three NICs so that eth0 is used for heartbeat, eth1 is used for PostgreSQL replication and eth2 is used for MP and bootstrapping clients.
 * IP addresses configured as follows:
@@ -36,17 +37,17 @@ In this tutorial we are using following network configuration:
 
 ## Installing cluster management tools ##
 
-Before you begin you should have corosync (version 1.4.1 or higher) and pacemaker (version 1.1.10-14.el6_5.3 or higher) installed. For your convenience we also recommend having crmsh installed. Detailed instructions how to install and set up all components are accessible [here][http://clusterlabs.org/] and [here][http://corosync.github.io/corosync/].
+Before you begin you should have corosync (version 1.4.1 or higher) and pacemaker (version 1.1.10-14.el6_5.3 or higher) installed. For your convenience we also recommend having crmsh installed. Detailed instructions how to install and set up all components are accessible [here](http://clusterlabs.org/) and [here](http://corosync.github.io/corosync/).
 
 Once pacemaker and corosync are successfully installed  please follow steps below to set up it as needed by CFEngine High Availability.
 
-1. Configure corosync (**active and passive**):
+1. Configure corosync ( **active and passive** ):
 
     ```bash
     echo "START=yes" > /etc/default/corosync
     ```
 
-2. Add pacemaker support (**active and passive**):
+2. Add pacemaker support ( **active and passive** ):
 
     ```bash
     echo "service {
@@ -56,14 +57,14 @@ Once pacemaker and corosync are successfully installed  please follow steps belo
     }" > /etc/corosync/service.d/pacemaker
     ```
 
-3. Create corosync cluster configuration (**active and passive**):
+3. Create corosync cluster configuration ( **active and passive** ):
     1. `cp /etc/corosync/corosync.conf.example /etc/corosync/corosync.conf`
     2. Find line with `bindnetaddr:` and set to network address of interface used for cluster heartbeat (e.g. `bindnetaddr: 192.168.1.0`).
     3. Configure `mcastaddr:` and `mcastport:` if defaults are conflicting with other components placed in your network.
 
-    **NOTE:** If for some reason multicast is not supported by your network configuration (most times you need multicast broadcasting to be explicitly switched on) it is possible to use unicast configuration. For more details please refer [corosync configuration guide][http://corosync.github.io/corosync/].
+    **NOTE:** If for some reason multicast is not supported by your network configuration (most times you need multicast broadcasting to be explicitly switched on) it is possible to use unicast configuration. For more details please refer [corosync configuration guide](http://corosync.github.io/corosync/).
 
-4. Modify content of */usr/lib/ocf/resource.d/heartbeat/pgsql* to contain CFEngine related configuration (**active and passive**):
+4. Modify content of */usr/lib/ocf/resource.d/heartbeat/pgsql* to contain CFEngine related configuration ( **active and passive** ):
 
     ```
     # Defaults
@@ -117,7 +118,7 @@ Once pacemaker and corosync are successfully installed  please follow steps belo
     
     ```
 
-5. Once corosync and pacemaker is running configure pacemaker to be able to manage PostgreSQL and needed shared IP addressees (**master only**):
+5. Once corosync and pacemaker is running configure pacemaker to be able to manage PostgreSQL and needed shared IP addressees ( **master only** ):
 
     ```
     property \
@@ -190,8 +191,9 @@ Once pacemaker and corosync are successfully installed  please follow steps belo
 
 6. Stop pacemaker and then corosync on both active and passive node.
 
-
 **NOTE:** Don't worry if at this point you are seeing some pacemaker or corosync errors.
+
+
 
 ## PostgreSQL configuration ##
 
@@ -240,10 +242,12 @@ Once pacemaker and corosync are successfully installed  please follow steps belo
         ```
 
     **IMPORTANT:** Adding above changes needs PostgreSQL server to be restarted!
+
         ```
         cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data stop -m fast"
         cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start"
         ```
+
 8. Configure PostgreSQL on **passive node**:
    1. Remove PostgreSQL directory running following command `rm -rf /var/cfengine/state/pg/data/*`
    2. Do database backup running `su cfpostgres -c "cd /tmp && /var/cfengine/bin/pg_basebackup -h node1 -U cfpostgres -D /var/cfengine/state/pg/data -X stream -P`
@@ -258,25 +262,19 @@ Once pacemaker and corosync are successfully installed  please follow steps belo
         ```
 
     **NOTE:** change host and application_name to point to host names of active and passive nodes respectively.
+
 9.  Start PostgreSQL on passive hub using following command:
-cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start"
+
+    ```
+    cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start"
+    ```
 
 
 
-To verify PostgreSQL status on passive instance run following command:
-
-```
-echo "select pg_is_in_recovery();" | /var/cfengine/bin/psql cfdb
-```
-
+Verify PostgreSQL status on passive instance running `echo "select pg_is_in_recovery();" | /var/cfengine/bin/psql cfdb`.
 Above should return `t` indicating that slave is working in recovery mode.
 
-To verify if passive DB instance is connected to active run following command on active hub:
-
-```
-echo "select * from pg_stat_replication;" | /var/cfengine/bin/psql cfdb
-```
-
+Verify if passive DB instance is connected to active running following command on active hub `echo "select * from pg_stat_replication;" | /var/cfengine/bin/psql cfdb`.
 Above should return one entry indicating that host *node1* is connected to database in streaming replication mode.
 
 
@@ -320,84 +318,87 @@ Above should return one entry indicating that host *node1* is connected to datab
 5. Start corosync and pacemaker on active node first. Make sure that PostgreSQL is running and managed by corosync/pacemaker.
     Verify the status using following commend `crm_mon -Afr1`
     You should see something similar to one below:
- 
-        ```
-        Last updated: Wed Aug 20 15:54:32 2014
-        Last change: Wed Aug 20 15:54:09 2014 via crm_attribute on node1
-        Stack: classic openais (with plugin)
-        Current DC: node1 - partition WITHOUT quorum
-        Version: 1.1.10-14.el6_5.3-368c726
-        2 Nodes configured, 2 expected votes
-        4 Resources configured
-        
-        Online: [ node1 ]
-        OFFLINE: [ node2 ]
+
+    ```
+    Last updated: Wed Aug 20 15:54:32 2014
+    Last change: Wed Aug 20 15:54:09 2014 via crm_attribute on node1
+    Stack: classic openais (with plugin)
+    Current DC: node1 - partition WITHOUT quorum
+    Version: 1.1.10-14.el6_5.3-368c726
+    2 Nodes configured, 2 expected votes
+    4 Resources configured
     
-        Full list of resources:
-    
-         Master/Slave Set: pgsql-ms [pgsql]
-             Stopped: [ node1 node2 ]
-         Resource Group: ip-group
-             ip-cluster    (ocf::heartbeat:IPaddr2):    Stopped
-             ip-rep    (ocf::heartbeat:IPaddr2):    Stopped
-        
-        Node Attributes:
-        * Node node1:
-            + master-pgsql                        : -INFINITY
-            + pgsql-data-status                   : LATEST
-            + pgsql-status                        : STOP
-        
-        Migration summary:
-        * Node node1:    
-           pgsql: migration-threshold=1 fail-count=2 last-failure='Wed Aug 20 15:54:12 2014'
-    
-        Failed actions:
-            pgsql_monitor_4000 on node1 'not running' (7): call=28, status=complete, last-rc-change='Wed Aug 20 15:54:12 2014', queued=300ms, exec=1ms
-        ```
+    Online: [ node1 ]
+    OFFLINE: [ node2 ]
+
+    Full list of resources:
+
+    Master/Slave Set: pgsql-ms [pgsql]
+        Stopped: [ node1 node2 ]
+    Resource Group: ip-group
+        ip-cluster    (ocf::heartbeat:IPaddr2):    Stopped
+        ip-rep    (ocf::heartbeat:IPaddr2):    Stopped
+
+    Node Attributes:
+    * Node node1:
+        + master-pgsql                        : -INFINITY
+        + pgsql-data-status                   : LATEST
+        + pgsql-status                        : STOP
+
+    Migration summary:
+    * Node node1:
+       pgsql: migration-threshold=1 fail-count=2 last-failure='Wed Aug 20 15:54:12 2014'
+
+    Failed actions:
+        pgsql_monitor_4000 on node1 'not running' (7): call=28, status=complete, last-rc-change='Wed Aug 20 15:54:12 2014', queued=300ms, exec=1ms
+    ```
+
     By default after starting corosync it will stop PostgreSQL as there is no connection with second node. *pgsql-status* should be *STOP* and PostgreSQL should not run.
     If this is the case repair PostgreSQL resource using `crm resource cleanup pgsql`.
     After this run `crm_mon -Afr1` again and wait until *pgsql-status* is reported as *PRI*.
+
 6. Start corosync on SLAVE node.
     After this second node should immediately be reported as passive and you should see output of `crm_mon -Afr1` similar to one below:
 
-        ```
-        Last updated: Wed Aug 20 15:47:47 2014
-        Last change: Wed Aug 20 15:57:56 2014 via crm_attribute on node1
-        Stack: classic openais (with plugin)
-        Current DC: node1 - partition with quorum
-        Version: 1.1.10-14.el6_5.3-368c726
-        2 Nodes configured, 2 expected votes
-        4 Resources configured
+    ```
+    Last updated: Wed Aug 20 15:47:47 2014
+    Last change: Wed Aug 20 15:57:56 2014 via crm_attribute on node1
+    Stack: classic openais (with plugin)
+    Current DC: node1 - partition with quorum
+    Version: 1.1.10-14.el6_5.3-368c726
+    2 Nodes configured, 2 expected votes
+    4 Resources configured
 
-        Online: [ node1 node2 ]
+    Online: [ node1 node2 ]
 
-        Full list of resources:
+    Full list of resources:
     
-         Master/Slave Set: pgsql-ms [pgsql]
-             Masters: [ node1 ]
-             Slaves: [ node2 ]
-         Resource Group: ip-group
-             ip-cluster    (ocf::heartbeat:IPaddr2):    Started node1
-             ip-rep    (ocf::heartbeat:IPaddr2):    Started node1
-    
-        Node Attributes:
-        * Node node1:
-            + master-pgsql                        : 1000
-            + pgsql-data-status                   : LATEST
-            + pgsql-master-baseline               : 0000000006000090
-            + pgsql-status                        : PRI
-        * Node node2:
-            + master-pgsql                        : 1000
-            + pgsql-data-status                   : STREAMING|ASYNC
-            + pgsql-status                        : HS:alone
-            + pgsql-xlog-loc                      : 00000000060000F8
-    
-        Migration summary:
-        * Node node1:
-        * Node node2:
-        ```
+    Master/Slave Set: pgsql-ms [pgsql]
+         Masters: [ node1 ]
+         Slaves: [ node2 ]
+    Resource Group: ip-group
+         ip-cluster    (ocf::heartbeat:IPaddr2):    Started node1
+         ip-rep    (ocf::heartbeat:IPaddr2):    Started node1
 
-    **IMPORTANT:** Please make sure that first node *pgsql-status* is reported as *PRI* and second as *HS:alone* or *HS:async*.
+    Node Attributes:
+    * Node node1:
+        + master-pgsql                        : 1000
+        + pgsql-data-status                   : LATEST
+        + pgsql-master-baseline               : 0000000006000090
+        + pgsql-status                        : PRI
+    * Node node2:
+        + master-pgsql                        : 1000
+        + pgsql-data-status                   : STREAMING|ASYNC
+        + pgsql-status                        : HS:alone
+        + pgsql-xlog-loc                      : 00000000060000F8
+
+    Migration summary:
+    * Node node1:
+    * Node node2:
+    ```
+
+    **IMPORTANT:** Please make sure that *pgsql-status* for the active node is reported as *PRI* and passive as *HS:alone* or *HS:async*.
+
 7. **Enjoy your working CFEngine High Availability setup!**
 
 
