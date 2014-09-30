@@ -22,6 +22,9 @@ identifying the affected hosts you will patch a subset of the hosts and then be
 able to see the impact on your estate. The same methodology can be applied to
 other issues.
 
+**Note:** The included policy does not require CFEngine Enterprise. Only the
+reporting functionality (Mission Portal) requires the Enterprise version.
+
 ## Inventory CVE-2013-6271 ##
 
 Writing inventory policy with CFEngine is just like any other CFEngine policy,
