@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reporting on Inventory and Remediation of Security Vulnerabilities
+title: Reporting and Remediation of Security Vulnerabilities
 sorting: 10
 published: true
 tags: [Examples, Tutorials, Enterprise, Inventory, Dashboard, Alerts]
