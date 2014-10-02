@@ -5,4 +5,64 @@ published: false
 tags: [cfengine enterprise, high availability]
 ---
 
-HA
+# Overview #
+
+Although CFEngine is a distributed system, with decisions made by autonomous agents running on each node, the hub can be viewed as a single point of failure. In order to be able to play both roles hub is responsible for which are policy serving and report collection High Availability feature was introduced in 3.6.2 release.
+Essentailly it is based on well known and broadly used cluster resource management tools - [corosync](http://corosync.github.io/corosync/) and [pacemaker](http://clusterlabs.org/) as well as PostgreSQL streaming replication feature.
+
+
+# Design #
+
+CFEngine High Availability is based on redundancy of all components, most importantly the PostgreSQL database. Active-passive PostgreSQL database configuration is the essential part of High Availability feature. As PostgreSQL supports different replication methods and active-passive configuration schemes it doesn't provide out-of-the-box database failover-failback mechanism. To support later one well known cluster resources management solution based on Linux-HA project has been selected.
+
+Overview of CFEngine High Availability is shown in the diagram below.
+
+![HASetup](ha_3.6.png)
+
+One hub is the active hub, while the other serves the role of a passive hub and is a fully redundant instance of the active one. If the passive determines the active is down, it will be promoted to active and will start serving the Mission Portal, collect reports and serve policy.
+
+### Corosync and pacemaker ###
+
+Corosync and pacemaker are well known and broadly used mechanisms supporting cluster resource management. For CFEngine hub needs those are configured so that are managing PostgreSQL database and one or more IP addresses shared over the nodes in the cluster. In ideal configuration one link managed by corosync/pacemaker is dedicated for PostgreSQL streaming replication and one for accessing Mission Portal so that once failover happens the change of active-passive roles and failover transition is transparent for end user. He can still use the same shared IP address to log in to the Mission Portal or use against API queries.
+
+
+### PostgreSQL ###
+
+For best performance PostgreSQL streaming replication has been selected as database replication mode. It provides capability of shiping WAL files from active server to all standby database servers. This is PostgreSQL 9.0 and above feature allowing continuous recovery and almost immediate visibility of data inserted to primary server by the standby. For more information about PostgreSQL streaming replication please see [this](https://wiki.postgresql.org/wiki/Streaming_Replication).
+
+
+# CFEngine #
+
+In High Availability setup all the clients are aware of existence of more than one hub. Current active hub is selected as a policy server and policy fetching and report collection is done by the active hub. One of the differences comparing to single-hub installation is that instead of having one policy server, clients are having list of hubs where they should connect to to send the reports or fetch policy. Also after bootstrapping to either active or passive hub clients are implicitly redirected to active and trust is established between both active and passive hub so that all clients connected to High Availability installation are capable to communicate with both active and passive hub. This allows transparent transition to passive hub once fail-over is happening as all the clients are having already established trust with passive hub as well.
+
+### Mission Portal ###
+
+Mission Portal in 3.6.2 has gotten a new indicator with the status of the High Availability configuration.
+
+![HAHealth](ha_health_OK.png)
+
+
+
+***
+### HA status degraded ###
+
+Once some malfunction of High Availability setup is discovered user is notified about degraded state of the system.
+
+![HADegraded](ha_degraded_indicator.png)
+
+![HADegradedDetails](ha_degraded_details.png)
+
+
+### Inventory ###
+
+There are also new Mission Portal inventory variables indicating IP address of active hub instance and status of High Availability installation on each of hubs. Looking at inventory reports especially helps do diagnose any problems when High Availability is reported as *degraded*.
+
+![HAInventory](ha_inventory.png)
+
+
+
+##  CFEngine High Availability installation ##
+
+Existing CFEngine Enterprise installations can upgrade their single-node hub to a High Availability system in version 3.6.2. Detailed instruction how to upgrade from single hub to High Availability or how to install CFEngine High Availability from scratch can be found [here][].Fixing HA layout
+
+
