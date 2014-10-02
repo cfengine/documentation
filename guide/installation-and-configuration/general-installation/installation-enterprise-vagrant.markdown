@@ -44,7 +44,7 @@ different approach][General Installation#More Detailed Installation Guides].
 
 This tutorial uses Vagrant to configure your VMs. It is available for Linux,
 Windows and MacOS and can be downloaded from vagrantup.com (this guide has been
-tested with version [1.6.3](http://www.vagrantup.com/download-archive/v1.6.3.html)). After
+tested with version [1.6.5](http://www.vagrantup.com/download-archive/v1.6.5.html)). After
 downloading Vagrant, install it on your computer. You may want to reference the
 Windows Mac or Linux vagrant install guides.
 
@@ -52,8 +52,8 @@ Windows Mac or Linux vagrant install guides.
 
 This tutorial uses VirtualBox to create virtual machines on your computer, to
 which Vagrant deploys CFEngine. VirtualBox can be downloaded from
-virtualbox.org (use version
-[4.3.14](http://download.virtualbox.org/virtualbox/4.3.14/)). After
+virtualbox.org (this guide has been tested with version
+[4.3.16](http://download.virtualbox.org/virtualbox/4.3.16/)). After
 downloading VirtualBox, install it on your computer.
 
 **Note:** To avoid problems, disable other virtualization environments you are
@@ -62,16 +62,16 @@ running.
 ## Start the CFEngine Enterprise 3.6 Vagrant Environment
 
 Step 1. Download our ready-made Vagrant project (use the
-[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/vagrant_quickstart-201407260910.tar.gz)
+[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.2.zip)
 or the
-[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/vagrant_quickstart-201407260910.zip)
+[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.2.zip)
 depending on your preference).
 
 Step 2. Save and unpack the file anywhere on your drive; this
-creates a Vagrant Project directory called **vagrant_env**.
+creates a Vagrant Project directory.
 
 Step 3. Open a terminal and navigate to the Vagrant Project directory (e.g.
-`/home/user/vagrant_env`, or `C:\vagrant_env`) and enter the following command:
+`/home/user/CFEngine_Enterprise_vagrant_quickstart-3.6.2`, or `C:\CFEngine_Enterprise_vagrant_quickstart-3.6.2`) and enter the following command:
 
 ```console
 $ vagrant up
@@ -84,7 +84,7 @@ Vagrant performs the following processes:
 * Provisions, installs and bootstraps the hub
 * Provisions, installs and bootstraps clients
 
-The basebox is ~450MB.
+The basebox is ~500MB.
 
 Note: If you want to use more hosts in this environment, you can
   edit the **Vagrantfile** text file in the directory that you have just created.
