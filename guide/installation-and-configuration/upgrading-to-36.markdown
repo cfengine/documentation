@@ -22,7 +22,7 @@ Our recommendation is to upgrade the Policy Server first. The rationale is that 
 
     CFEngine 3.6 uses LMDB for local databases, whereas older versions of CFEngine typically use TokyoCabinet or QDBM. The classic networking protocol uses the `lastseen` database to verify that the mapping between a peer's IP address and the corresponding hostkey is not changed. Since the 3.6 installation will not have any mappings in the lastseen database, hosts won't trust the IP address of the policy server without that setting.
 3. Optional, Enterprise only: Export the data from your existing Enterprise MongoDB.
-  * Download the [`cfmigrate`](http://s3.amazonaws.com/cfengine.package-repos/tools/cfmigrate) binary.
+  * Download the [`cfmigrate`](http://cfengine.package-repos.s3.amazonaws.com/tools/cfmigrate) binary.
   * This binary will export user/role settings as well as long-living file-changes data from MongoDB.
   * No other data will be exported, as it would either way expire after
     one week. If you need continued access to 3.5 compliance data,
@@ -83,7 +83,7 @@ Our recommendation is to upgrade the Policy Server first. The rationale is that 
     ```console
     cf-agent -f update.cf -IK
     ```
-7. Optional: Import data previously exported from MongoDB using the [`cfmigrate`](http://s3.amazonaws.com/cfengine.package-repos/tools/cfmigrate) binary.
+7. Optional: Import data previously exported from MongoDB using the [`cfmigrate`](http://cfengine.package-repos.s3.amazonaws.com/tools/cfmigrate) binary.
   * Verify that users can log into Mission Portal.
 8. Take the Policy Server online.
   * Verify with `cf-key -s` that connections from all clients have been established within 5-10 minutes.
