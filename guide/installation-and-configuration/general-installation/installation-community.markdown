@@ -49,25 +49,25 @@ This stores the cfengine-community_3.6.1-1_* file onto your machine.
 **Redhat/CentOS/SUSE 64-bit:**
 
 ```
-$ wget https://s3.amazonaws.com/cfengine.package-repos/community_binaries/cfengine-community-3.6.1-1.x86_64.rpm
+$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community-3.6.1-1.x86_64.rpm
 ```
 
 **Redhat/CentOS/SUSE 32-bit:**
 
 ```
-$ wget https://s3.amazonaws.com/cfengine.package-repos/community_binaries/cfengine-community-3.6.1-1.i386.rpm
+$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community-3.6.1-1.i386.rpm
 ```
 
 **Ubuntu/Debian 64-bit:**
 
 ```
-$ wget https://s3.amazonaws.com/cfengine.package-repos/community_binaries/cfengine-community_3.6.1-1_amd64.deb
+$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community_3.6.1-1_amd64.deb
 ```
 
 **Ubuntu/Debian 32-bit:**
 
 ```
-$ wget https://s3.amazonaws.com/cfengine.package-repos/community_binaries/cfengine-community_3.6.1-1_i386.deb
+$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community_3.6.1-1_i386.deb
 ```
 
 
