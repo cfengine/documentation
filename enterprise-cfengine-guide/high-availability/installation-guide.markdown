@@ -1,6 +1,6 @@
 ---
 layout: default
-published: false
+published: true
 title: High Availability Installation Guide
 tags: [cfengine enterprise, high availability]
 ---
@@ -31,11 +31,12 @@ In this tutorial we are using following network configuration:
 * Two nodes acting as active and passive where active node name is node1 and passive node name is node2.
 * Each node having three NICs so that eth0 is used for heartbeat, eth1 is used for PostgreSQL replication and eth2 is used for MP and bootstrapping clients.
 * IP addresses configured as follows:
-    | Node          | eth0 IP      | eth1 IP       | eth2 IP        |
-    |---------------|:-------------|:--------------|:---------------|
-    |node1          | 192.168.0.10 | 192.168.10.10 | 192.168.100.10 |
-    |node2          | 192.168.0.11 | 192.168.10.11 | 192.168.100.11 |
-    |shared cluster | ---          | 192.168.10.13 | 192.168.100.13 |
+
+| Node          | eth0         | eth1          | eth2           |
+|---------------|:-------------|:--------------|:---------------|
+|node1          | 192.168.0.10 | 192.168.10.10 | 192.168.100.10 |
+|node2          | 192.168.0.11 | 192.168.10.11 | 192.168.100.11 |
+|cluster shared | ---          | 192.168.10.13 | 192.168.100.13 |
 
 Detailed network configuration is shown on the picture below:
 
