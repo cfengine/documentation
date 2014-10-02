@@ -48,7 +48,7 @@ bundle agent inventory_CVE_2014_6271
   vars:
     "env" string => "$(paths.env)";
     "bash" string => "/bin/bash";
-    "echo" string => "$(paths.echo)/bin/echo";
+    "echo" string => "$(paths.echo)";
 
     "test_result" string => execresult("$(env) x='() { :;}; $(echo) vulnerable' $(bash) -c 'echo testing CVE-2014-6271'", "useshell");
 
