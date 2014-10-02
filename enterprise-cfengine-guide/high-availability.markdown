@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CFEngine High Availability
-published: false
+published: true
 tags: [cfengine enterprise, high availability]
 ---
 
@@ -63,6 +63,6 @@ There are also new Mission Portal inventory variables indicating IP address of a
 
 ##  CFEngine High Availability installation ##
 
-Existing CFEngine Enterprise installations can upgrade their single-node hub to a High Availability system in version 3.6.2. Detailed instruction how to upgrade from single hub to High Availability or how to install CFEngine High Availability from scratch can be found [here][].Fixing HA layout
+Existing CFEngine Enterprise installations can upgrade their single-node hub to a High Availability system in version 3.6.2. Detailed instruction how to upgrade from single hub to High Availability or how to install CFEngine High Availability from scratch can be found [here][High Availability Installation Guide].
 
 
