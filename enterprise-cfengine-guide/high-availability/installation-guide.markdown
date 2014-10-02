@@ -8,7 +8,7 @@ tags: [cfengine enterprise, high availability]
 ## Overview ##
 
 This is tutorial describing installation steps of CFEngine High Availability feature. It is suitable for both upgrading existing CFEngine installations to HA and for installing HA from scratch.
-Before starting installation we strongly recommend reading CFEngine High Availability overview. Detailed information can be found [here][].
+Before starting installation we strongly recommend reading CFEngine High Availability overview. More detailed information can be found [here][CFEngine High Availability].
 
 ## Installation procedure ##
 
@@ -18,10 +18,11 @@ Please also make sure you are having valid HA licenses for passive hub so that i
 
 ### Hardware configuration and OS pre-configuration steps ###
 
+* CFEngine 3.6.2 hub package for RHEL6 or CentOS6.
 * We recommend selecting dedicated interface used for PostgreSQL replication and optionally one for heartbeat.
 * We recommend having one shared IP address assigned for interface where MP is accessible (optionally) and one where PostgreSQL replication is configured (mandatory).
 * Both active and passive hub machines must be configured so that host names are different.
-* Both hubs must be placed in */etc/hosts* so that each will be accessible using its host-names.
+* Basic hostname resolution works (hub names can be placed in */etc/hosts* or DNS configured).
 
 ### Example configuration used in this tutorial ###
 
@@ -30,16 +31,24 @@ In this tutorial we are using following network configuration:
 * Two nodes acting as active and passive where active node name is node1 and passive node name is node2.
 * Each node having three NICs so that eth0 is used for heartbeat, eth1 is used for PostgreSQL replication and eth2 is used for MP and bootstrapping clients.
 * IP addresses configured as follows:
-    * node1: eth0 192.168.0.10; eth1 192.168.10.10; eth2 192.168.100.10;
-    * node2: eth0 192.168.0.10; eth1 192.168.10.11; eth2 192.168.100.11;
-    * shared cluster IP addresses: PostgreSQL replication 192.168.10.13; MP access 192.168.100.13
+    | Node          | eth0 IP      | eth1 IP       | eth2 IP        |
+    |---------------|:-------------|:--------------|:---------------|
+    |node1          | 192.168.0.10 | 192.168.10.10 | 192.168.100.10 |
+    |node2          | 192.168.0.11 | 192.168.10.11 | 192.168.100.11 |
+    |shared cluster | ---          | 192.168.10.13 | 192.168.100.13 |
+
+Detailed network configuration is shown on the picture below:
+
+![HAGuideNetworkSetup](ha_network_setup.png)
 
 
 ## Installing cluster management tools ##
 
-Before you begin you should have corosync (version 1.4.1 or higher) and pacemaker (version 1.1.10-14.el6_5.3 or higher) installed. For your convenience we also recommend having crmsh installed. Detailed instructions how to install and set up all components are accessible [here](http://clusterlabs.org/) and [here](http://corosync.github.io/corosync/).
+Before you begin you should have corosync (version 1.4.1 or higher) and pacemaker (version 1.1.10-14.el6_5.3 or higher) installed on both nodes. For your convenience we also recommend having crmsh installed. Detailed instructions how to install and set up all components are accessible [here](http://clusterlabs.org/) and [here](http://corosync.github.io/corosync/).
 
-Once pacemaker and corosync are successfully installed  please follow steps below to set up it as needed by CFEngine High Availability.
+Once pacemaker and corosync are successfully installed on both nodes please follow steps below to set up it as needed by CFEngine High Availability.
+
+**IMPORTANT:** please carefully follow the indicators describing if given step should be performed on active, passive or both nodes.
 
 1. Configure corosync ( **active and passive** ):
 
@@ -98,9 +107,11 @@ Once pacemaker and corosync are successfully installed  please follow steps belo
     OCF_RESKEY_stop_escalate_in_slave_default=30
     ```
 
-5. Run corosyn and pacemaker to check if both cluster nodes are seen each other:
+5. Run corosyn and pacemaker to check if both cluster nodes are seen each other ( **active and passive** ):
 
     ```bash
+    /etc/init.d/corosync start
+    /etc/init.d/pacemaker start
     crm_mon -Afr1
     ```
 
@@ -232,7 +243,7 @@ Once pacemaker and corosync are successfully installed  please follow steps belo
 
    3. Modify *pg_hba.conf* configuration file
 
-        ```
+        ```bash
         echo "host replication all 192.168.10.10/32 trust
         host replication all 192.168.10.11/32 trust
         local replication all trust
@@ -240,6 +251,7 @@ Once pacemaker and corosync are successfully installed  please follow steps belo
         host replication all ::1/128 trust
         " >> /var/cfengine/state/pg/data/pg_hba.conf
         ```
+    **IMPORTANT:** Above configuration allows accessing hub with cfpostgres user without any authentication from both cluster nodes. For security reasons we strongly advise to create replication user in PostgreSQL and protect access using password or certificate. What is more we advise using ssl-secured replication instead of described here unencrypted method.
 
     **IMPORTANT:** Adding above changes needs PostgreSQL server to be restarted!
 
