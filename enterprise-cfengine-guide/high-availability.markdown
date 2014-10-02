@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine High Availability
+title: High Availability
 published: true
 tags: [cfengine enterprise, high availability]
 ---
@@ -43,10 +43,7 @@ Mission Portal in 3.6.2 has gotten a new indicator with the status of the High A
 
 
 
-***
-### HA status degraded ###
-
-Once some malfunction of High Availability setup is discovered user is notified about degraded state of the system.
+High Availability status is constantly monitored so that once some malfunction is discovered user is notified about degraded state of the system. Besides simple visualization of High Availability feature user is able to get detailed information what is the reason of degraded state of the installation and when last data from each hub was reported. This gives quite comprehensive knowledge and overview of whole setup.
 
 ![HADegraded](ha_degraded_indicator.png)
 
@@ -63,6 +60,6 @@ There are also new Mission Portal inventory variables indicating IP address of a
 
 ##  CFEngine High Availability installation ##
 
-Existing CFEngine Enterprise installations can upgrade their single-node hub to a High Availability system in version 3.6.2. Detailed instruction how to upgrade from single hub to High Availability or how to install CFEngine High Availability from scratch can be found [here][High Availability Installation Guide].
+Existing CFEngine Enterprise installations can upgrade their single-node hub to a High Availability system in version 3.6.2. Detailed instruction how to upgrade from single hub to High Availability or how to install CFEngine High Availability from scratch can be found [here][Installation Guide].
 
 
