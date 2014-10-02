@@ -29,7 +29,7 @@ Please Note: Internet access is required from the host if you wish to use the qu
 Use the following script to install CFEngine on your 32- or 64-bit machine.
 
 ```
-$ wget -O- https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-community.sh | sudo bash
+$ wget -O- http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-community.sh | sudo bash
 ```
 
 1. Run this script on your designated Policy Server machine **and** on your designated Host machine(s).
