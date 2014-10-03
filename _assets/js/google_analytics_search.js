@@ -1,13 +1,15 @@
 //google search
 (function() {
-    var cx = '003210255674884169375:g5rolpigr2s';
+    
+    var cx = '013522560145330013240:v5wte9vybsa';
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';
     gcse.async = true;
     gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-    '//www.google.com/cse/cse.js?cx=' + cx;
+        '//www.google.com/cse/cse.js?cx=' + cx;
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
+
 })();
 
 //google analytics
