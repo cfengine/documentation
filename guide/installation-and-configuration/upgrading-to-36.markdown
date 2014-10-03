@@ -54,7 +54,7 @@ When the new masterfiles have been created and *cf-promises promises.cf* and *cf
 
 Check the version with */var/cfengine/bin/cf-promises -V*, and if you are runnning Enterprise, the Mission Portal About page.
 
-If everything looks good, you are ready to upgrade the clients, please skip to [Prepare Client upgrade (all versions)][] followed by [Complete Client upgrade (all versions)][].
+If everything looks good, you are ready to upgrade the clients, please skip to Prepare Client upgrade (all versions) followed by Complete Client upgrade (all versions) below.
 
 
 ## Prepare masterfiles and the Policy Server for upgrade (3.5 to 3.6)
