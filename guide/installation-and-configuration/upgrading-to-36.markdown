@@ -60,8 +60,8 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 ## Prepare masterfiles and the Policy Server for upgrade (3.5 to 3.6)
 
 1. Merge your masterfiles with the CFEngine 3.6 policy framework on an infrastructure separate from your existing CFEngine installation.
-  * The 3.6 masterfiles can be found in a clean installation of CFEngine (hub package on Enterprise), under /var/cfengine/masterfiles.
-  * Apply your existing masterfiles on top of the 3.6 masterfiles and save it to a well-known location, e.g. `/root/3.6/masterfiles`.
+  * Identify existing modifications to the masterfiles directory.  If patches from version control are unavailable or require verification, a copy of /var/cfengine/masterfiles from a clean installation of your previous version can help identify changes which will need to be applied to a new 3.6 install.
+  * The 3.6 masterfiles can be found in a clean installation of CFEngine (hub package on Enterprise), under /var/cfengine/masterfiles.  Apply any customizations against a copy of the 3.6 masterfiles in a well-known location, e.g. `/root/3.6/masterfiles`.
   * Use `cf-promises` to verify that the policy runs with 3.6, by running `cf-promises /root/3.6/masterfiles/promises.cf` and `cf-promises /root/3.6/masterfiles/update.cf`.
   * Use `cf-promises` to verify that the policy runs with you previous version of CFEngine (e.g. 3.5), by running the same commands as above on a node with that CFEngine version.
   * The merged masterfiles should now be based on the 3.6 framework, include your policies and work on both the version you are upgrading from and with 3.6.
