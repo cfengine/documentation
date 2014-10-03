@@ -84,6 +84,34 @@ In addition to the common keys, the following keys are present when ALERT_CONDIT
 | ALERT_SKETCH_CONDITION_SKETCHCHECKTYPE | The type, or category, of the sketch, e.g. 'compliance' (string).                               |
 
 
+## Example parameters: policy bundle alert not kept ##
+
+Given an alert that triggers on a policy bundle being not kept (failed), the following is example content of the file being provided as an argument to a Custom action script.
+
+    ALERT_ID='6'
+    ALERT_NAME='Web service'
+    ALERT_SEVERITY='high'
+    ALERT_LAST_CHECK='0'
+    ALERT_LAST_EVENT_TIME='0'
+    ALERT_LAST_STATUS_CHANGE='0'
+    ALERT_STATUS='fail'
+    ALERT_FAILED_HOST='49'
+    ALERT_TOTAL_HOST='275'
+    ALERT_CONDITION_NAME='Web service'
+    ALERT_CONDITION_DESCRIPTION='Ensure web service is running and configured correctly.'
+    ALERT_CONDITION_TYPE='policy'
+    ALERT_POLICY_CONDITION_FILTERBY='bundlename'
+    ALERT_POLICY_CONDITION_FILTERITEMNAME='web_service'
+    ALERT_POLICY_CONDITION_PROMISEOUTCOME='NOTKEPT'
+
+Saving this as a file, e.g. 'alert_parameters_test', can be useful while writing and testing your Custom action script.
+You could then simply test your Custom action script, e.g. 'cfengine_custom_action_ticketing.py', by running
+
+    ./cfengine_custom_action_ticketing alert_parameters_test
+
+When you get this to work as expected on the commmand line, you are ready to upload the script to the Mission Portal, as outlined below.
+
+
 ## Example script: logging policy alert to syslog ##
 
 The following Custom action script will log the status and definition of a policy alert to syslog.
