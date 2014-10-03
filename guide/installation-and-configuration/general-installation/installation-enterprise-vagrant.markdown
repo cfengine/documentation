@@ -62,7 +62,7 @@ running.
 ## Start the CFEngine Enterprise 3.6 Vagrant Environment
 
 Step 1. Download our ready-made Vagrant project (use the
-[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.2.zip)
+[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.2.tar.gz)
 or the
 [zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.2.zip)
 depending on your preference).
