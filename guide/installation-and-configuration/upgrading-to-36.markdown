@@ -5,11 +5,59 @@ published: true
 sorting: 30
 ---
 
-This guide documents our recommendation on how to upgrade an existing installation of CFEngine Community 3.4/3.5 and CFEngine Enterprise 3.0/3.5 to CFEngine 3.6.1.
+This guide documents our recommendation on how to upgrade an existing installation of CFEngine Community 3.4/3.5 and CFEngine Enterprise 3.0/3.5 to CFEngine 3.6.1, as well as upgrades from 3.6.
 
 Our recommendation is to upgrade the Policy Server first. The rationale is that it is normally a dedicated machine with no business-relevant duties, so the risk is lower.
 
-## Prepare masterfiles and the Policy Server for upgrade.
+## Upgrading 3.6.X to 3.6.X+1
+
+If you are doing a minor-minor 3.6 upgrade (e.g. from 3.6.1 to 3.6.2), the upgrade is easier.
+We would however still recommend to perform a masterfiles upgrade (ideally in a test environment first), as there are changes to enable High Availability and client upgrades to the new version.
+
+From 3.6.1 to 3.6.2, the following masterfiles files have changed:
+
+* cfe_internal/CFE_cfengine.cf
+* cfe_internal/CFE_hub_specific.cf
+* cfe_internal/ha/ha.cf
+* cfe_internal/ha/ha_def.cf
+* cfe_internal/ha/ha_info.json
+* cfe_internal/host_info_report.cf
+* controls/cf_serverd.cf
+* def.cf
+* inventory/any.cf
+* inventory/lsb.cf
+* inventory/os.cf
+* lib/3.5/common.cf
+* lib/3.5/packages.cf
+* lib/3.5/paths.cf
+* lib/3.6/cfe_internal.cf
+* lib/3.6/common.cf
+* lib/3.6/files.cf
+* lib/3.6/packages.fc   
+* lib/3.6/paths.cf
+* lib/3.6/reports.cf
+* promises.cf
+* update.cf
+* update/update_bins.cf
+* update/update_policy.cf
+* update/update_processes.cf
+
+Normally these new files did not exist in the preivous version or can be completely replaced by the old ones, the only ones that are likely changed by you are *def.cf* and *promises.cf*.
+For these two files, we would need to do a diff between your version and the new version and integrade the diff instead of replacing the whole file.
+
+When the new masterfiles have been created and *cf-promises promises.cf* and *cf-promises update.cf* succeeds, you are ready to upgrade the Policy Server. That entails to
+
+* stop the CFEngine services
+* upgrade the hub package
+* replace /var/cfengine/masterfiles with your new integrated masterfiles
+* start the CFEngine services
+
+Check the version with */var/cfengine/bin/cf-promises -V*, and if you are runnning Enterprise, the Mission Portal About page.
+
+If everything looks good, you are ready to upgrade the clients, please skip to [Prepare Client upgrade (all versions)][] followed by [Complete Client upgrade (all versions)][].
+
+
+## Prepare masterfiles and the Policy Server for upgrade (3.5 to 3.6)
 
 1. Merge your masterfiles with the CFEngine 3.6 policy framework on an infrastructure separate from your existing CFEngine installation.
   * The 3.6 masterfiles can be found in a clean installation of CFEngine (hub package on Enterprise), under /var/cfengine/masterfiles.
@@ -40,7 +88,7 @@ Our recommendation is to upgrade the Policy Server first. The rationale is that 
   * `cf-key -s > /root/3.5/hosts`
     
 
-## Perform the upgrade of the Policy Server
+## Perform the upgrade of the Policy Server (3.5 to 3.6)
 
 1. Ensure the CFEngine services are still stopped (only on the Policy Server).
   * Verify that the output of `ps -e | grep cf` is empty.
@@ -90,7 +138,7 @@ Our recommendation is to upgrade the Policy Server first. The rationale is that 
   * Select some clients to confirm that they have received the new policy and are running it without error.
 
 
-## Prepare Client upgrade
+## Prepare Client upgrade (all versions)
 
 1. Make client packages available on the Policy Server in `/var/cfengine/master_software_updates`, under the appropriate directories for the OS distributions you use.
 2. Turn on the auto-upgrade policy by setting class `trigger_upgrade` in `update.cf` for a small set of clients, i.e. change `!any` to an appropriate class like an IP network (e.g. `10_10_1|10_10_2`).
@@ -98,13 +146,13 @@ Our recommendation is to upgrade the Policy Server first. The rationale is that 
 
     As an Enterprise user, confirm that the hosts start appearing in Mission Portal after 5-10 minutes. Otherwise, log manually into a set of hosts to confirm the successful upgrade.
 
-## Complete Client upgrade
+## Complete Client upgrade (all versions) ##
 
 1. Widen the group of hosts on which the `trigger_upgrade` class is set.
 2. Continue to verify from `cf-key -s` or in the Enterprise Mission Portal that hosts are upgraded correctly and start reporting in.
 3. Verify that the list of hosts you captured before the upgrade, e.g. in `/root/3.5/hosts` correspond to what you see is now reporting in.
 
-## Finalize
+## Finalize (3.5 to 3.6)
 
 1. Reset the `trustkeysfrom` configuration to the previous value, typically an empty list.
 2. Optional: Switch to the new 3.6 networking protocol to benefit from TLS encryption and 
