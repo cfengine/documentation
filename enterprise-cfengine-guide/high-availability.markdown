@@ -19,11 +19,11 @@ Overview of CFEngine High Availability is shown in the diagram below.
 
 ![HASetup](ha_3.6.png)
 
-One hub is the active hub, while the other serves the role of a passive hub and is a fully redundant instance of the active one. If the passive determines the active is down, it will be promoted to active and will start serving the Mission Portal, collect reports and serve policy.
+One hub is the active hub, while the other serves the role of a passive hub and is a fully redundant instance of the active one. If the passive host determines the active host is down, it will be promoted to active and will start serving the Mission Portal, collect reports and serve policy.
 
 ### Corosync and pacemaker ###
 
-Corosync and pacemaker are well known and broadly used mechanisms supporting cluster resource management. For CFEngine hub needs those are configured so that are managing PostgreSQL database and one or more IP addresses shared over the nodes in the cluster. In ideal configuration one link managed by corosync/pacemaker is dedicated for PostgreSQL streaming replication and one for accessing Mission Portal so that once failover happens the change of active-passive roles and failover transition is transparent for end user. He can still use the same shared IP address to log in to the Mission Portal or use against API queries.
+Corosync and pacemaker are well known and broadly used mechanisms supporting cluster resource management. For CFEngine hub needs those are configured so that are managing PostgreSQL database and one or more IP addresses shared over the nodes in the cluster. In the ideal configuration one link managed by corosync/pacemaker is dedicated for PostgreSQL streaming replication and one for accessing Mission Portal so that once failover happens the change of active-passive roles and failover transition is transparent for end user. He can still use the same shared IP address to log in to the Mission Portal or use against API queries.
 
 
 ### PostgreSQL ###
@@ -33,7 +33,7 @@ For best performance, PostgreSQL streaming replication has been selected as data
 
 # CFEngine #
 
-In High Availability setup all the clients are aware of existence of more than one hub. Current active hub is selected as a policy server and policy fetching and report collection is done by the active hub. One of the differences comparing to single-hub installation is that instead of having one policy server, clients are having list of hubs where they should connect to to send the reports or fetch policy. Also after bootstrapping to either active or passive hub clients are implicitly redirected to active one. After that trust is established between the client and both active and passive hub so that all clients are capable to communicate with both. This allows transparent transition to passive hub once fail-over is happening, as all the clients have already established trust with passive hub as well.
+In a High Availability setup all the clients are aware of existence of more than one hub. Current active hub is selected as a policy server and policy fetching and report collection is done by the active hub. One of the differences comparing to single-hub installation is that instead of having one policy server, clients have a list of hubs where they should fetch policy and initiate report collection if using call collect. Also after bootstrapping to either active or passive hub clients are implicitly redirected to active one. After that trust is established between the client and both active and passive hub so that all clients are capable to communicate with both. This allows transparent transition to passive hub once fail-over is happening, as all the clients have already established trust with passive hub as well.
 
 ### Mission Portal ###
 
@@ -43,7 +43,7 @@ Mission Portal in 3.6.2 has a new indicator whitch shows the status of the High 
 
 
 
-High Availability status is constantly monitored so that once some malfunction is discovered the user is notified about the degraded state of the system. Besides simple visualization of High Availability, the user is able to get detailed information regarding the reason for a degraded state, as well as when data was last reported from each hub. This gives quite comprehensive knowledge and overview of whole setup.
+High Availability status is constantly monitored so that once some malfunction is discovered the user is notified about the degraded state of the system. Besides simple visualization of High Availability, the user is able to get detailed information regarding the reason for a degraded state, as well as when data was last reported from each hub. This gives quite comprehensive knowledge and overview of the whole setup.
 
 ![HADegraded](ha_degraded_indicator.png)
 
@@ -52,7 +52,7 @@ High Availability status is constantly monitored so that once some malfunction i
 
 ### Inventory ###
 
-There are also new Mission Portal inventory variables indicating the IP address of the active hub instance and status of High Availability installation on each of hubs. Looking at inventory reports especially helps to diagnose any problems when High Availability is reported as *degraded*.
+There are also new Mission Portal inventory variables indicating the IP address of the active hub instance and status of High Availability installation on each of hubs. Looking at inventory reports is especially helpful to diagnose any problems when High Availability is reported as *degraded*.
 
 ![HAInventory](ha_inventory.png)
 
