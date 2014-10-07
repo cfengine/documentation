@@ -170,7 +170,6 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
     pgdata="/var/cfengine/state/pg/data/" \
     rep_mode="async" \
     node_list="node1 node2" \                    <<== modify this to point to host-names of MASTER and SLAVE respectivelly
-    restore_command="cp /var/cfengine/state/pg/data/pg_archive/%f %p" \
     primary_conninfo_opt="keepalives_idle=60 keepalives_interval=5 keepalives_count=5" \
     master_ip="192.168.10.13" \                    <<== modify this to point to the shared address of PostgreSQL replication
     restart_on_promote="true" \
@@ -233,14 +232,13 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
         ```bash
         echo "listen_addresses = '*'
         wal_level = hot_standby
-        #synchronous_commit = on
-        archive_mode = on
-        archive_command = 'cp %p /var/cfengine/state/pg/data/pg_archive/%f'
         max_wal_senders=5
         wal_keep_segments = 32
         hot_standby = on
         restart_after_crash = off" >> /var/cfengine/state/pg/data/postgresql.conf
         ```
+
+        **NOTE:** In above configuration *wal_keep_segments* value specifies minimum number of segments (16 megabytes each) retained in PostgreSQL WAL logs directory in case a standby server needs to fetch them for streaming replication. It should be adjusted to number of clients handled by CFEngine hub and available disk space. Having installation with 1000 clients handled by CFEngine hub and assuming passive hub should be able to catch up with active one after 24 hours break, the value should be set close to 250 (4 GB of additional disk space).
 
    3. Modify *pg_hba.conf* configuration file
 
@@ -252,9 +250,10 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
         host replication all ::1/128 trust
         " >> /var/cfengine/state/pg/data/pg_hba.conf
         ```
-    **IMPORTANT:** Above configuration allows accessing hub with cfpostgres user without any authentication from both cluster nodes. For security reasons we strongly advise to create replication user in PostgreSQL and protect access using password or certificate. What is more we advise using ssl-secured replication instead of described here unencrypted method.
 
-    **IMPORTANT:** Adding above changes needs PostgreSQL server to be restarted!
+        **IMPORTANT:** Above configuration allows accessing hub with cfpostgres user without any authentication from both cluster nodes. For security reasons we strongly advise to create replication user in PostgreSQL and protect access using password or certificate. What is more we advise using ssl-secured replication instead of described here unencrypted method.
+
+   4. Adding above changes needs PostgreSQL server to be restarted!
 
         ```
         cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data stop -m fast"
@@ -269,8 +268,6 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
         ```
         echo "standby_mode = 'on'
         primary_conninfo = 'host=node1 port=5432 user=cfpostgres application_name=node2'
-        restore_command = 'cp /var/cfengine/state/pg/data/pg_archive/%f %p'
-        recovery_target_timeline = 'latest'
         " > /var/cfengine/state/pg/data/recovery.conf
         ```
 
