@@ -1709,8 +1709,9 @@ deleted (that is, it "falls off the end" of the rotation).
 **Example:**
 
 ```cf3
-     body rename example
+     body edit_defaults example
      {
+     edit_backup => "rotate";
      rotate => "4";
      }
 ```
