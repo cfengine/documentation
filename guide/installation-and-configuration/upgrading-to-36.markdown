@@ -13,6 +13,7 @@ Our recommendation is to upgrade the Policy Server first. The rationale is that 
 
 If you are doing a minor-minor 3.6 upgrade (e.g. from 3.6.1 to 3.6.2), the upgrade is easier.
 We would however still recommend to perform a masterfiles upgrade (ideally in a test environment first), as there are changes to enable High Availability and client upgrades to the new version.
+The masterfiles are available in the hub package and separately on the [download page](http://cfengine.com/community/download/) (Community and Enterprise editions share masterfiles as of 3.6).
 
 From 3.6.1 to 3.6.2, the following masterfiles files have changed:
 
