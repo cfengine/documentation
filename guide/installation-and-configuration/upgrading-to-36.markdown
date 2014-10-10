@@ -94,31 +94,38 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 1. Ensure the CFEngine services are still stopped (only on the Policy Server).
   * Verify that the output of `ps -e | grep cf` is empty.
 2. Uninstall the previous CFEngine package to start fresh (you may need to adjust the package name based on the CFEngine edition).
-  * ```console
-    rpm -e cfengine-nova-hub # Red Hat based distribution
-    ```
-  * ```console
-    dpkg -p cfengine-nova-hub # Debian based distribution
-    ``` 
-  * ```console
+  * Red Hat based distributions:
+
+    ```console
+    rpm -e cfengine-nova-hub
     rm -rf /var/cfengine
     ```
+  * Debian based distributions:
+
+    ```console
+    dpkg -p cfengine-nova-hub
+    rm -rf /var/cfengine
+    ``` 
 3. Install the new CFEngine Policy Server package (you may need to adjust the package name based on CFEngine edition, version and distribution).
-  * ```console
-    rpm -i cfengine-nova-hub-3.6.1.x86_64.rpm # Red Hat based distribution
+  * Red Hat based distributions:
+
+    ```console
+    rpm -i cfengine-nova-hub-3.6.1.x86_64.rpm
     ```
-  * ```console
-    dpkg --install cfengine-nova-hub_3.6.1-1_amd64.deb # Debian based distribution
+  * Debian based distributions:
+
+    ```console
+    dpkg --install cfengine-nova-hub_3.6.1-1_amd64.deb
     ``` 
 4. Restore ppkeys and any Enterprise license file (default location is /var/cfengine/masterfiles/license.dat) from backup.
-  * ```console
+
+    ```console
     cp /root/3.5/ppkeys/* /var/cfengine/ppkeys/
     ```
 5. Copy the merged masterfiles from the perparation you did above.
-  * ```console
+
+    ```console
     rm -rf /var/cfengine/masterfiles/*
-    ```
-  * ```console
     cp /root/3.6/masterfiles/* /var/cfengine/masterfiles/
     ```
 6. Bootstrap the Policy Server to itself.
@@ -128,12 +135,14 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
     ```
 
     Any  error messages regarding processes can be corrected by running
-    
+
     ```console
     cf-agent -f update.cf -IK
     ```
+
 7. Optional: Import data previously exported from MongoDB using the [`cfmigrate`](http://cfengine.package-repos.s3.amazonaws.com/tools/cfmigrate) binary.
   * Verify that users can log into Mission Portal.
+
 8. Take the Policy Server online.
   * Verify with `cf-key -s` that connections from all clients have been established within 5-10 minutes.
   * Select some clients to confirm that they have received the new policy and are running it without error.
