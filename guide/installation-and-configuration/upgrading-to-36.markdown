@@ -167,8 +167,9 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 ## Finalize (3.5 to 3.6)
 
 1. Reset the `trustkeysfrom` configuration to the previous value, typically an empty list.
-2. Optional: Switch to the new 3.6 networking protocol to benefit from TLS encryption and 
+2. Optional: Switch to the new 3.6 networking protocol to benefit from TLS encryption and
     improved control attributes in `access` promises.
+3. Optional: Recursively purge `*.tcdb` and `*.tcdb.lock` files from `/var/cfengine`
 
     See [`protocol_version`][Components and Common Control#protocol_version] in
     [Components and Common Control][] and [`allowlegacyconnects`][cf-serverd#allowlegacyconnects] in
