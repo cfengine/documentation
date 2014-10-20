@@ -56,7 +56,7 @@ needs to take into account hosts with different versions.
 
 The CFEngine team will continue to support future releases of popular Host platforms, including Red Hat, Debian, Ubuntu, as well as maintaining support for existing platforms important to users.
 
-In particular, Red Hat 7, CentOS 7 and Ubuntu 14 will be supported in Q4 2014.
+In particular, Red Hat 7, CentOS 7 and Ubuntu 14 will be supported soon.
 
 In general, CFEngine is known to run on a wide range of other platforms. As long as the
 platform is POSIX compliant and has a C compiler toolchain that fully implements
