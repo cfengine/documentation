@@ -216,6 +216,8 @@ Then create `classes.cf`
     }
 ```
 
+**History:** Was introduced in CFEngine 3.3.0
+
 ### not
 
 **Description:** Evaluate the negation of string expression in normal form
