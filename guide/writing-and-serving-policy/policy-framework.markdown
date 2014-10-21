@@ -136,6 +136,20 @@ Turn this on (set to `any`) to delete any files in your
 Note it has a duplicate in `def.cf`, see below. If they are not
 synchronized, you will get unexpected behavior.
 
+##### cfengine_internal_disable_cf_promises_validated
+
+Off by default.
+
+Turn this on (set to `any`) to have remote agents **always** scan all of
+masterfiles for changes and update accordingly.
+
+This is not recommended as it both removes a safety mechanism that checks for
+policy to be valid before allowing clients to download updates, and the
+increased load on the hub will affect scalability.
+
+Consider using [time_based][reference-classes], `select_class` or `dist` based
+classes instead of any to retain some of the benefits.
+
 ##### cfengine_internal_preserve_permissions
 
 Off by default.
