@@ -11,6 +11,13 @@ echo "PDF generation started"
 # - LOCAL_WEBROOT       - path to the local webroot
 #
 
+if [ -z "$WRKDIR" ]
+then
+    echo Environment WRKDIR is not set, setting it to current working directory
+    WRKDIR=`pwd`
+    export WRKDIR
+fi
+
 #html source
 DIR=$WRKDIR/documentation-generator/_site
 
