@@ -44,6 +44,14 @@ The VIOS should be configured with Shared Processors in Uncapped mode.
 
 ## Policy Server Requirements
 
+### cfapache and cfpostgres users
+
+The CFEngine Server requires two users: **cfapache** and **cfpostgres**.
+If these users do not exist during installation of the server package, they will be created,
+so if there are constraints on user creation, please ensure that these
+users exists prior to installation.
+
+These users are not required nor created by the agent package.
 
 ### Dedicated OS
 
