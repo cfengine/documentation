@@ -4,6 +4,13 @@ VERSION=$1
 SERVER=$2
 PORT=$3
 
+if [ -z "$WRKDIR" ]
+then
+    echo Environment WRKDIR is not set, setting it to current working directory
+    WRKDIR=`pwd`
+    export WRKDIR
+fi
+
 cd $WRKDIR
 find documentation-generator/pages -name "*.markdown" | xargs rm
 cp `find documentation-generator/pages -name "*.*"` documentation-generator/_site

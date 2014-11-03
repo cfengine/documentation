@@ -1,4 +1,12 @@
 #!/bin/bash
+
+if [ -z "$WRKDIR" ]
+then
+    echo Environment WRKDIR is not set, setting it to current working directory
+    WRKDIR=`pwd`
+    export WRKDIR
+fi
+
 echo "Generating documentation from '$WRKDIR'..."
 
 sed '/^\[.*\[.*\].*\]/d' $WRKDIR/documentation-generator/_references.md > $WRKDIR/documentation-generator/new_references.md

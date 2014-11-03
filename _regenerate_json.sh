@@ -1,4 +1,12 @@
 #!/bin/bash
+
+if [ -z "$WRKDIR" ]
+then
+    echo Environment WRKDIR is not set, setting it to current working directory
+    WRKDIR=`pwd`
+    export WRKDIR
+fi
+
 OUTDIR=$WRKDIR/documentation-generator/_generated
 LIBDIR=$WRKDIR/masterfiles/lib/3.7
 mkdir -p $OUTDIR/lib

@@ -26,8 +26,9 @@ def validate():
 	config = {}
 	config["WORKDIR"] = os.environ.get('WRKDIR')
 	if config["WORKDIR"] == None:
-		print 'Please set environment variable `WRKDIR` and retry.'
-		exit(1)
+		print 'Environment variable WRKDIR is not set, setting it to current working directory'
+		config["WORKDIR"] = os.getcwd()
+		os.environ["WRKDIR"] = os.getcwd()
 
 	if not os.path.exists(config["WORKDIR"]):
 		print "Directory WORKDIR not found: " + config["WORKDIR"]
