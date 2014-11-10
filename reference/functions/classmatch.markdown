@@ -5,14 +5,16 @@ published: true
 tags: [reference, utility functions, functions, classmatch]
 ---
 
-[%CFEngine_function_prototype(regex)%]
+[%CFEngine_function_prototype(regex, tag1, tag2, ...)%]
 
 **Description:** Tests whether `regex` matches any currently set class.
 
 Returns true if the [anchored][anchored] regular expression matches any 
 currently defined class, otherwise returns false.
 
-[%CFEngine_function_attributes(text)%]
+You can optionally restrict the search by tags, which you can list after the regular expression.
+
+[%CFEngine_function_attributes(regex, tag1, tag2, ...)%]
 
 **Example:**
 
