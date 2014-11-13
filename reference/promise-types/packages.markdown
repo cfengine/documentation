@@ -1078,8 +1078,8 @@ Ensure that a package is present (this is the default setting from
 
 Ensure that a package is not present.   
 
-* `reinstall
-`
+* `reinstall`
+
 Delete then add package (warning, non-convergent).   
 
 * `update`
