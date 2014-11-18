@@ -28,21 +28,21 @@ individually and as a whole. All or no settings will be updated for a request.
       },
       "data": [
         {
-          "rbacEnabled": true,
-          "ldapEnabled": false,
-          "ldapActiveDirectoryDomain": "ad.cfengine.com",
-          "ldapBaseDN": "DC=ad,DC=cfengine,DC=com",
-          "ldapEncryption": "plain",
-          "ldapHost": "ldap-server.cfengine.com",
-          "ldapLoginAttribute": "sAMAccountName",
-          "ldapMode": "activeDirectory",
-          "ldapPassword": "password",
           "ldapPort": 389,
           "ldapPortSSL": 636,
-          "ldapUsername": "test",
-          "ldapUsersDirectory": "CN=Users",
+          "hostIdentifier": "default.sys.fqhost",
+          "rbacEnabled": true,
+          "logLevel": "error",
+          "ldapEnabled": true,
+          "ldapUsername": "",
+          "ldapPassword": "",
+          "ldapEncryption": "ssl",
+          "ldapLoginAttribute": "uid",
+          "ldapHost": "ldap.example.com",
+          "ldapBaseDN": "ou=people,dc=example,dc=com",
+          "ldapFilter": "(objectClass=inetOrgPerson)",
           "blueHostHorizon": 900,
-          "logLevel": "error"
+          "sketchActivationAlertTimeout": 60
         }
       ]
     }
@@ -60,40 +60,13 @@ with a return code an a message describing the error.
     curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
     {
       "ldapEnabled": true,
-      "ldapActiveDirectoryDomain": "ad.cfengine.com",
-      "ldapBaseDN": "DC=ad,DC=example,DC=com",
+      "ldapBaseDN": "DC=ldap,DC=example,DC=com",
       "ldapEncryption": "ssl",
-      "ldapHost": "ldap-server.cfengine.com",
-      "ldapLoginAttribute": "sAMAccountName",
-      "ldapMode": "standard",
-      "ldapPassword": "password",
-      "ldapUsername": "test",
-      "ldapUsersDirectory": "ou",
-    }
-
-**Response**
-
-    204 No Content
-
-## Example: Configuring Active Directory
-
-Active Directory is configured in much the same way as OpenLDAP, but the 
-additional field `ldapActiveDirectoryDomain` is required. `ldapMode` is also 
-changed from `standard` to `activeDirectory`.
-
-**Request**
-
-    curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
-    {
-      "ldapEnabled": true,
-      "ldapBaseDN": "DC=example,DC=com",
-      "ldapEncryption": "plain",
-      "ldapHost": "ad-server.cfengine.com",
+      "ldapHost": "ldap.example.com",
       "ldapLoginAttribute": "uid",
-      "ldapMode": "activeDirectory",
+      "ldapFilter": "(objectClass=inetOrgPerson)",
       "ldapPassword": "password",
       "ldapUsername": "test",
-      "ldapUsersDirectory": "CN=Users",
     }
 
 **Response**
