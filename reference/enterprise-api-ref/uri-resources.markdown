@@ -55,17 +55,15 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
 **Fields**:
 
 -   `rbacEnabled` *(boolean)* Whether RBAC is applied to requests.
+-   `hostIdentifier` *(string)* The identfying string for hosts, such as name or IP.
 -   `ldapEnabled` *(boolean)* Whether external authentication is
     activated.
--   `activeDirectoryDomain` *(string)* AD domain to use if AD is
-    enabled in `ldapMode`.
 -   `ldapBaseDN` *(string)* LDAP BaseDN to use for external LDAP
     requests.
+-   `ldapFilter` *(string)* Filter for LDAP objects.
 -   `ldapEncryption` *("plain", "ssl", "tls")* Type of LDAP binding to
     establish to external LDAP server. (Default: "plain").
 -   `ldapHost` *(string)* Hostname of external LDAP server.
--   `ldapMode` *("standard", "activeDirectory")* Type of LDAP server
-    to use. "standard" is effectively OpenLDAP. (Default: "standard").
 -   `ldapLoginAttribute` *(string)* LDAP attribute to use for
     usernames. (default: "uid").
 -   `ldapUsername` *(string)* LDAP username.
@@ -74,7 +72,7 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
     directory in which to look up users, e.g. "ou=people".
 -   `ldapPort` *(integer)* Port for external LDAP connections not
     using SSL. (default 389).
--   `ldapPort` *(integer)* Port for external LDAP connections using
+-   `ldapPortSSL` *(integer)* Port for external LDAP connections using
     SSL. (default 636).
 -   `blueHostHorizon` *(integer)* Time interval (seconds) for when to
     consider a host unreachable. (default 900).
@@ -82,6 +80,8 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
     "notice", "info", "debug")* Syslog filter specifying the severity
     level at which messages produced by the API should be emitted to
     syslog and apache.log. (default: error).
+-   `sketchActivationAlertTimeout` *(integer)* Global timeout in
+    minutes for sketch activation alerts.
 
 
 ### /api/user
