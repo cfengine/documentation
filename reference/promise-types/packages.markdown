@@ -222,6 +222,11 @@ As of core 3.3.0, if no `package_method` is defined, CFEngine will look
 for a method called `generic`. Such a method is defined in the standard
 library for supported operating systems.
 
+### Platform notes
+
+Currently, `packages` promises do not work on HP-UX because CFEngine
+does not come with package bodies for that platform.
+
 ## Attributes ##
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
