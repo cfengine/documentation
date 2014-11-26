@@ -42,6 +42,11 @@ seperately.
 
 ****
 
+### Platform notes
+
+On the HP-UX platform, `users` promises are known to be unreliable, and
+it is recommended not to use them.
+
 ## Attributes ##
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
