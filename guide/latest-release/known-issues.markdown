@@ -17,6 +17,15 @@ with CFEngine or when upgrading from a previous version.
 * the CFEngine protocol versions 1 and 2 are incompatible (the latter is based on TLS).  You must migrate your entire site to 3.6 **or** run a second policy server **or** arrange for an alternate policy distribution method when the policy server is not available.
 
 
+### RHEL / CentOS 7 and systemd ###
+
+* Installing the Community Edition gives the following message, but it should be silent:
+
+    Starting cfengine3 (via systemctl):                        [  OK  ]
+
+* Starting the CFEngine daemons from policy, e.g. bootstrapping, does not make systemd aware that CFEngine is running. Thus, using systemd while removing the rpm, starting, stopping CFEngine is not handled correctly.
+
+
 ### Solaris 11 specific ###
 
 *  Some important system information is missing from the Solaris 11 inventory report, as well as from CFEngine hard classes and system variables. The workaround is to use system tools to obtain the required information and set classes based on this.
