@@ -301,11 +301,11 @@ The full configuration would look something like this
         {
         access:
 
-          policy_hub::
+          policy_server::
 
            "collect_calls"
                resource_type => "query",
-                     admit   => { "10.10.10" }; # the apparent NAT address of the satellite
+                     admit   => { "10.10.10.10" }; # the apparent NAT address of the satellite
 
           satellite_hosts::
 
