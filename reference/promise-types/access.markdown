@@ -92,7 +92,7 @@ reporting and orchestration.
     report_data_select => default_data_select_host,
              admit_ips => { "127.0.0.1"  };
 
-  policy_hub::
+  policy_server::
 
   "collect_calls"
           comment => "Grant access to cfengine client to request the collection of its reports",
