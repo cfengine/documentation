@@ -118,6 +118,12 @@ attributes associated with these objects.
 Executions lead to processes for the duration of their lifetime, so
 these two issues are related, although the promises themselves are not.
 
+### Platform notes
+
+Currently `processes` promises do not work reliably on HP-UX, and it is
+recommended not to use them. The recommended workaround is to use the `ps` and
+`kill` tools directly using [commands promises][commands].
+
 ****
 
 ## Attributes ##

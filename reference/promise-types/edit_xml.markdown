@@ -16,6 +16,10 @@ the `files` promise needs to be the XML document that is being edited.
 Within an `edit_xml` bundle, various promise types are available to create
 new or manipulate existing XML documents.
 
+### Platform notes
+
+`edit_xml` bundles do not work on HP-UX.
+
 ***
 
 <!-- Use any suitable promise type for lookups in promise_attribute

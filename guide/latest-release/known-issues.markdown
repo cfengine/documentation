@@ -49,3 +49,5 @@ with CFEngine or when upgrading from a previous version.
                 * BIOS version
                 * BIOS vendor
 * [User promises][users] do not work reliably on HP-UX. It is recommended not to use them at this time. The workaround is to call the useradd/usermod/userdel tools directly.
+* [Process promises][processes] promises do not work reliably on HP-UX. The recommended workaround is to use the `ps` and `kill` tools directly using [commands promises][commands].
+* [`edit_xml` bundles][bundle edit_xml] do not work on HP-UX.
