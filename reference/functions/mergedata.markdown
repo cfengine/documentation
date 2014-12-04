@@ -38,4 +38,4 @@ Output:
 
 [%CFEngine_include_snippet(mergedata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** `getindices()`, `getvalues()`, `readjson()`, `parsejson()`, and `data` documentation.
+**See also:** `getindices()`, `getvalues()`, `readjson()`, `parsejson()`, `readyaml()`, `parseyaml()`, and `data` documentation.

@@ -1,22 +1,27 @@
 ---
 layout: default
-title: JSON Support in CFEngine
+title: JSON and YAML Support in CFEngine
 published: true
 sorting: 2
-tags: [json]
+tags: [json, yaml]
 ---
 
 ## Introduction
 
 JSON is a well-known data language. It even has a specification (See http://json.org).
 
-CFEngine 3.6 has core support for JSON.  Let's see what it can do.
+YAML is another well-known data language. It has a longer, much more complex specification (See http://yaml.org).
+
+CFEngine has core support for JSON and YAML.  Let's see what it can do.
 
 ## Problem statement
 
 We'd like to read, access, and merge JSON-sourced data structures:
 they should be weakly typed, arbitrarily nested, with consistent
 quoting and syntax.
+
+We'd like to read, access, and merge YAML-sourced data structures just
+like JSON-sourced, to keep policy and internals simple.
 
 In addition, we must not break backward compatibility with CFEngine
 3.5 and older, so we'd like to use the standard CFEngine array `a[b]`
@@ -38,6 +43,17 @@ There are many ways to read JSON data; here are a few:
 * `mergedata()`: merge data containers, slists, and classic CFEngine arrays, e.g. `"mydata" data => mergedata(container1, slist2, array3);`
 
 `mergedata` in particular is very powerful.  It can convert a slist or a classic CFEngine array to a data container easily: `"mydata" data => mergedata(myslist);`
+
+## Reading YAML
+
+There are two ways to read YAML data:
+
+* `readyaml()`: read from a YAML file, e.g. `"mydata" data => readyaml("/my/file.yaml", 100k);`
+* `parseyaml()`: read from a YAML string, e.g. `"mydata" data => parseyaml('- arrayentry1');`
+
+Since these functions return data containers, everything about
+JSON-sourced data structures applies to YAML-sourced data structures
+as well.
 
 ## Accessing JSON
 
@@ -126,4 +142,4 @@ and read the same container from a JSON file.
 
 ## Summary
 
-Using JSON from CFEngine is easy and does not change how you use CFEngine.  Try it out and see for yourself!
+Using JSON and YAML from CFEngine is easy and does not change how you use CFEngine.  Try it out and see for yourself!

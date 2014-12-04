@@ -215,12 +215,12 @@ converts the `va.tmpdirs` list into a local list variable `x` directly.
 
 The `data` containers can contain several levels of data structures,
 e.g. list of lists of key-value arrays. They are used to store
-structured data, such as data read from JSON files.  The variable type
-is `data`.
+structured data, such as data read from JSON or YAML files. The
+variable type is `data`.
 
 Data containers are obtained from functions that return `data` types,
-such as `readjson()` or `parsejson()`, or from merging existing
-containers.
+such as `readjson()` or `parsejson()`, `readyaml()` or `parseyaml()`,
+or from merging existing containers.
 
 They can *NOT* be modified, once created.
 

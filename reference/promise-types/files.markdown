@@ -1814,7 +1814,8 @@ The Mustache template format works differently.  When you specify
 `template_method` to be `mustache`, none of the variables or classes
 in the promise's context will come through.  Instead, you pass a
 `data` variable (a "data container") to the promise's `template_data`
-attribute.  You can use `mergedata()`, `readjson()`, and `parsejson()` to
+attribute. You can use `mergedata()`, the various `data_*` functions,
+`readyaml()`, `parseyaml()`, `readjson()`, and `parsejson()` to
 generate `data` variables.
 
 If you don't specify a `template_data` container with Mustache
@@ -1944,7 +1945,7 @@ holder.s = Hello!
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012).  Mustache templates were introduced in 3.6.0.
 
-**See also:** `template_method`, `template_data`, `readjson()`, `parsejson()`, `mergedata()`, `data`
+**See also:** `template_method`, `template_data`, `readjson()`, `parsejson()`, `readyaml()`, `parseyaml()`, `mergedata()`, `data`
 
 ### edit_xml
 

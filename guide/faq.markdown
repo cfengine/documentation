@@ -256,6 +256,9 @@ example `mergedata`(), `readjson`(), or `parsejson`(). Please see the
 [Functions by Return Type][Functions#Functions by Return Type] table for a list
 of all data-producing functions.
 
+Note you can use `mergedata`() directly on a single data container,
+e.g. `template_data => mergedata(mycontainer)` to satisfy the syntactic quirk above.
+
 #### Can I render a Mustache template into a string? ####
 
 Not directly, you could render a file and read that into a string, but you would need to be cautious of CF_BUFSIZE.
