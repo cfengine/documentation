@@ -27,9 +27,10 @@ Any host can be a policy server in Community installations of CFEngine.
 | OS              | Versions     | Architectures      |
 |-----------------|--------------|--------------------|
 | AIX 	| 5.3*, 6, 7 	| PowerPC   |
-| CentOS 	| 4, 5, 6 	| x86-64, x86   |
+| CentOS 	| 4, 5, 6, 7** 	| x86-64, x86   |
 | Debian 	| 6, 7 	| x86-64, x86   |
-| RedHat 	| 4, 5, 6 	| x86-64, x86   |
+| HP-UX         | 11.23+ | Itanium  |
+| RHEL 	| 4, 5, 6, 7** 	| x86-64, x86   |
 | SLES 	| 10, 11 	| x86-64, x86   |
 | Solaris 	| 9 	| SPARC   |
 | Solaris 	| 10, 11 	| x86-64, UltraSparc   |
@@ -38,6 +39,8 @@ Any host can be a policy server in Community installations of CFEngine.
 | Windows 	| 2008, 2012 	| x86-64   |
 
 \* AIX 5.3 is required to have "5300-05-CSP" or later
+
+\** RHEL 7 and CentOS 7 are experimental, see [Known Issues][]
 
 [Known Issues][] also includes platform-specific notes.
 
@@ -54,7 +57,7 @@ needs to take into account hosts with different versions.
 
 ## Future platform support ##
 
-The CFEngine team will continue to support future releases of popular Host platforms, including Red Hat, Debian, Ubuntu, as well as maintaining support for existing platforms important to users.
+The CFEngine team will continue to support future releases of popular Host platforms, including RHEL, Debian, Ubuntu, as well as maintaining support for existing platforms important to users.
 
 In particular, Red Hat 7, CentOS 7 and Ubuntu 14 will be supported soon.
 
