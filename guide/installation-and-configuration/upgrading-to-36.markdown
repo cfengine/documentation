@@ -9,9 +9,9 @@ This guide documents our recommendation on how to upgrade an existing installati
 
 Our recommendation is to upgrade the Policy Server first. The rationale is that it is normally a dedicated machine with no business-relevant duties, so the risk is lower.
 
-## Upgrading 3.6.X to 3.6.X+1
+## Upgrade masterfiles and Policy Server (3.6.X to 3.6.X+1)
 
-If you are doing a minor-minor 3.6 upgrade (e.g. from 3.6.1 to 3.6.2), the upgrade is easier.
+If you are doing a minor-minor 3.6 upgrade (e.g. from 3.6.2 to 3.6.3), the upgrade is easier.
 We would however still recommend to perform a masterfiles upgrade (ideally in a test environment first), as there are changes to enable High Availability and client upgrades to the new version.
 The masterfiles are available in the hub package and separately on the [download page](http://cfengine.com/community/download/) (Community and Enterprise editions share masterfiles as of 3.6).
 
@@ -42,6 +42,33 @@ From 3.6.1 to 3.6.2, the following masterfiles files have changed:
 * update/update_bins.cf
 * update/update_policy.cf
 * update/update_processes.cf
+
+
+From 3.6.2 to 3.6.3, the following have changed:
+
+* cfe_internal/CFE_cfengine.cf
+* cfe_internal/CFE_hub_specific.cf
+* cfe_internal/ha/ha.cf
+* cfe_internal/ha/ha_def.cf
+* controls/cf_execd.cf
+* controls/cf_serverd.cf
+* def.cf
+* inventory/any.cf
+* lib/3.5/cfe_internal.cf
+* lib/3.5/packages.cf
+* lib/3.5/paths.cf
+* lib/3.6/bundles.cf
+* lib/3.6/cfengine_enterprise_hub_ha.cf
+* lib/3.6/packages.cf
+* lib/3.6/paths.cf
+* lib/3.6/services.cf
+* lib/3.6/stdlib.cf
+* promises.cf
+* update.cf
+* update/update_bins.cf
+* update/update_policy.cf
+* update/update_processes.cf
+
 
 Normally these new files did not exist in the preivous version or can be completely replaced by the old ones, the only ones that are likely changed by you are *def.cf* and *promises.cf*.
 For these two files, we would need to do a diff between your version and the new version and integrade the diff instead of replacing the whole file.
