@@ -53,7 +53,7 @@ Windows Mac or Linux vagrant install guides.
 This tutorial uses VirtualBox to create virtual machines on your computer, to
 which Vagrant deploys CFEngine. VirtualBox can be downloaded from
 virtualbox.org (this guide has been tested with version
-[4.3.16](http://download.virtualbox.org/virtualbox/4.3.16/)). After
+[4.3.20](http://download.virtualbox.org/virtualbox/4.3.20/)). After
 downloading VirtualBox, install it on your computer.
 
 **Note:** To avoid problems, disable other virtualization environments you are
@@ -62,16 +62,16 @@ running.
 ## Start the CFEngine Enterprise 3.6 Vagrant Environment
 
 Step 1. Download our ready-made Vagrant project (use the
-[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.2.tar.gz)
+[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.3.tar.gz)
 or the
-[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.2.zip)
+[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.3.zip)
 depending on your preference).
 
 Step 2. Save and unpack the file anywhere on your drive; this
 creates a Vagrant Project directory.
 
 Step 3. Open a terminal and navigate to the Vagrant Project directory (e.g.
-`/home/user/CFEngine_Enterprise_vagrant_quickstart-3.6.2`, or `C:\CFEngine_Enterprise_vagrant_quickstart-3.6.2`) and enter the following command:
+`/home/user/CFEngine_Enterprise_vagrant_quickstart-3.6.3`, or `C:\CFEngine_Enterprise_vagrant_quickstart-3.6.3`) and enter the following command:
 
 ```console
 $ vagrant up
