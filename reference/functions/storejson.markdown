@@ -20,8 +20,8 @@ tags: [reference, io functions, functions, storejson, json, container]
          data =>  readjson("/tmp/data.json", 4000);
       "andback" 
          string =>  storejson(loadthis);
-  reports:
+   reports:
       "Converted /tmp/data.json to '$(andback)'";
 ```
 
-**See also:** `readjson()` and `data` documentation.
+**See also:** `readjson()`, `readyaml()`, `parsejson()`, `parseyaml()`, and `data` documentation.

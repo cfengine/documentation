@@ -201,8 +201,9 @@ contain the values copied from another `slist`, `rlist`, or `ilist`. See [`polic
 ## Data container variables
 
 The `data` variables are obtained from functions that return data
-containers, such as `readjson()` or `parsejson()`, or from merging
-existing data containers with `mergedata()`.  They can *NOT* be
+containers, such as `readjson()`, `readyaml()`, `parsejson()`, or
+`parseyaml()`, the various `data_*` functions, or from merging
+existing data containers with `mergedata()`. They can *NOT* be
 modified, once created.
 
 Data containers can be passed to another bundle with the
@@ -255,7 +256,9 @@ Output:
 
      "loaded1" data => readjson("myfile.json", 40000);
      "loaded2" data => parsejson('{"key":"value"}');
-     "merged1" data => mergedata(loaded1, loaded2);
+     "loaded3" data => readyaml("myfile.yaml", 40000);
+     "loaded4" data => parseyaml('- key2: value2');
+     "merged1" data => mergedata(loaded1, loaded2, loaded3, loaded4);
 
 ```
 

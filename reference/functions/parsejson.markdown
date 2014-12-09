@@ -21,9 +21,9 @@ types of quotes around a string).
 ```cf3
     vars:
 
-      "loadthis" 
+      "loadthis"
 
          data =>  parsejson('{ "key": "value" }');
 ```
 
-**See also:** `readjson()`, `mergedata()`, and `data` documentation.
+**See also:** `readjson()`, `parseyaml()`, `readyaml()`, `mergedata()`, and `data` documentation.
