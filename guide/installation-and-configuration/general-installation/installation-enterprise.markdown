@@ -118,7 +118,8 @@ Server (hub) and the other is for each Host (client).
         [RedHat/CentOS/SUSE] # rpm -i <agent package>.rpm
         [Debian/Ubuntu]      # dpkg -i <agent package>.deb
         [Solaris]            # pkgadd -d <agent package>.pkg all
-        [AIX]                # installp -a -d <agent package>.bff cfengine-nova
+        [AIX]                # installp -a -d <agent package>.bff cfengine.cfengine-nova
+        [HP-UX]              # swinstall -s <full path to agent package>.depot cfengine-nova
     ```
 
 Note: Install actions logged to `/var/logs/cfengine-install.log`.
