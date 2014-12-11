@@ -254,9 +254,9 @@ Output:
 ```cf3
     vars:
 
-     "loaded1" data => readjson("myfile.json", 40000);
+     "loaded1" data => readjson("/tmp/myfile.json", 40000);
      "loaded2" data => parsejson('{"key":"value"}');
-     "loaded3" data => readyaml("myfile.yaml", 40000);
+     "loaded3" data => readyaml("/tmp/myfile.yaml", 40000);
      "loaded4" data => parseyaml('- key2: value2');
      "merged1" data => mergedata(loaded1, loaded2, loaded3, loaded4);
 
