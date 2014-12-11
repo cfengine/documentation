@@ -253,7 +253,7 @@ Output:
 ```cf3
     vars:
 
-     "loaded1" data => readjson("myfile.json", 40000);
+     "loaded1" data => readjson("/tmp/myfile.json", 40000);
      "loaded2" data => parsejson('{"key":"value"}');
      "merged1" data => mergedata(loaded1, loaded2);
 
