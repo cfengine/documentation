@@ -18,6 +18,8 @@ will return 100 possible values, not 101.
 The function will be re-evaluated on each pass if it is not restricted with a
 context class expression as shown in the example.
 
+**NOTE:** The randomness produced by randomint is not safe for cryptographic usage.
+
 [%CFEngine_function_attributes(lower, upper)%]
 
 **Example:**
