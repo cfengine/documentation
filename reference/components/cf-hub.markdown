@@ -139,3 +139,28 @@ change in the future.
 
 Changing the standard port number is not recommended practice. You should not
 do it without a good reason.
+
+
+### client_history_timeout
+
+**Description:** If the hub can't reach a client for this many (or more) hours, 
+it will not collect the missed reports and it will continue collection 
+from current time. This is done to speed-up report collection 
+and minimize data transfer. The default value is 6 hours.
+
+**Type:** `int`
+
+**Allowed input range:** `1,65535`
+
+**Default value:** 6
+
+**Examples**:
+
+```cf3
+    body hub control
+    {
+    client_history_timeout => 6;
+    }
+```
+
+**History:** Was introduced in version 3.6.4 and is not compatible with older CFEngine versions.
