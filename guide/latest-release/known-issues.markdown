@@ -13,8 +13,23 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
-* `cf-promises --show-classes` and `cf-promises --show-vars` will only show classes and variables found on a first pass through the policy, since `cf-promises` does not evaluate agent promises.
-* the CFEngine protocol versions 1 and 2 are incompatible (the latter is based on TLS).  You must migrate your entire site to 3.6 **or** run a second policy server **or** arrange for an alternate policy distribution method when the policy server is not available.
+
+### Constant variables do not work, variables are always overrideable
+
+https://dev.cfengine.com/issues/1492
+
+### Showing Classes and variables with cf-promsies
+
+`cf-promises --show-classes` and `cf-promises --show-vars` will only show
+classes and variables found on a first pass through the policy, since
+`cf-promises` does not evaluate agent promises.
+
+### Protocol incompatiblity between
+
+The CFEngine protocol versions 1 and 2 are incompatible (the latter is based
+on TLS).  You must migrate your entire site to 3.6 **or** run a second policy
+server **or** arrange for an alternate policy distribution method when the
+policy server is not available.
 
 
 ### RHEL / CentOS 7 and systemd ###
