@@ -1826,6 +1826,10 @@ and `vars.bundlename.y` to get the value of variable `y` in bundle
 
 The full specification for Mustache templates is at http://mustache.github.io/
 
+**CFEngine-specific extension:**
+
+Mustache templates in CFEngine can replace the `@` variable with the current iteration's key.  The example below will show it.
+
 **Example:**
 
 Save this in `test_mustache.cf`, for example.
@@ -1852,7 +1856,13 @@ bundle agent test_mustache
    { "k": 789, "v": 0 },
    { "k": null, "v": true },
    { "k": -1, "v": -2 }
-  ]
+  ],
+ "map":
+  {
+   "789": 0,
+   "-1": -2,
+   "logdir": "/var/log"
+  }
 }');
 }
 ```
@@ -1868,6 +1878,7 @@ x is {{x}}
 {{^boolean}}The boolean is false{{/boolean}}
 
 {{#list}}{{k}}={{v}}, {{/list}}
+{{#map}}{{@}}={{.}}, {{/map}}
 ```
 {% endraw %}
 
@@ -1882,6 +1893,7 @@ x is 100
 The boolean is false
 
 789=0, =true, -1=-2, 
+789=0, -1=-1, logdir=/var/log, 
 ```
 
 **Example:**
