@@ -1828,7 +1828,8 @@ The full specification for Mustache templates is at http://mustache.github.io/
 
 **CFEngine-specific extension:**
 
-Mustache templates in CFEngine can replace the `@` variable with the current iteration's key.  The example below will show it.
+When iterating over an array, Mustache templates in CFEngine can replace the `@`
+variable with the current iteration's key.  The example below will show it.
 
 **Example:**
 
