@@ -1826,10 +1826,25 @@ and `vars.bundlename.y` to get the value of variable `y` in bundle
 
 The full specification for Mustache templates is at http://mustache.github.io/
 
-**CFEngine-specific extension:**
+**CFEngine-specific extensions:**
+
+Mustache templates in CFEngine can replace the `$variable` expression
+with the compact one-line JSON representation of that variable. For
+instance, if `myvar` contains the data `{"x": "y"}`, that's exactly
+what will show up in the output. This is the same as evaluating
+`format("%S", myvar)` into a string and using that string in the
+Mustache template, except there are no string size limitations and
+it's much more efficient.
+
+Furthermore, you can use `%variable` to obtain the full multi-line
+representation of a variable, just like calling `storejson(variable)`
+except there are no string size limitations and it's much more
+efficient.
 
 When iterating over an array, Mustache templates in CFEngine can replace the `@`
 variable with the current iteration's key.  The example below will show it.
+
+The extensions are not in the Mustache standard.
 
 **Example:**
 
