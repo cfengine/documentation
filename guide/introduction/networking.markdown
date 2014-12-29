@@ -68,7 +68,7 @@ variety of forms, usually files, but sometimes console output.
 communication with the policy server.
 Bootstrapping executes the `failsafe.cf` policy that connects to 
 the server, establishes trust to the server's key, and that starts the 
-CFEngine daemon processes cf-execd`, `cf-serverd` and `cf-monitord`.
+CFEngine daemon processes `cf-execd`, `cf-serverd` and `cf-monitord`.
 The host that other hosts are bootstrapped to
 automatically assumes the role of policy server.
 
