@@ -94,8 +94,8 @@ representing probabilities and performance data.
 
 ## List variables
 
-Lists are specified using curly brackets `{}` that enclose a
-comma-separated list of values.
+Lists are specified using curly brackets `{}` that enclose a comma-separated
+list of values. The order of the list is preserved by CFEngine.
 
 ### slist
 
