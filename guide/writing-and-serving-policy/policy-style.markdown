@@ -209,7 +209,7 @@ an underscore "_".
 ## Deprecating Bundles
 As your policy library changes over time you may want to deprecate various
 bundles in favor of newer implimentations. To indicate that a bundle is
-deprecated we reccomend the following style.
+deprecated we recommend the following style.
 
 ```cf3
 bundle agent old
