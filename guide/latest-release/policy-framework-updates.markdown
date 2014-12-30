@@ -10,7 +10,7 @@ tags: [releases, latest release, "3.6", platforms, versions, what's new]
 
 If you follow the CFEngine masterfiles policy framework (the masterfiles you
 get out of the box) we encourage you to upgrade the policy framework each time
-you upgrade CFEngine. We reccomend making as few changes as possible to the
+you upgrade CFEngine. We recommend making as few changes as possible to the
 shipped masterfiles to make these upgrades as painless as possible. Generally
 the best way to accomplish that is to take your custom policy and integrate it
 on top of the new masterfiles.
