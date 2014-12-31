@@ -256,9 +256,9 @@ log message.
 
 * `udp_syslog`
 
-Attempt to connect to the `syslog_server` defined in body common control and
-log the message there, assuming the server is configured to receive the
-request.
+Log messages to [syslog_host][Components and Common Control#syslog_host] as
+defined in body common control over UDP. Please note
+[UDP is unreliable](http://en.wikipedia.org/wiki/Syslog#Limitations).
 
 **Example:**
 
