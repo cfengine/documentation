@@ -14,7 +14,7 @@ tags: [Examples, Tutorials, Enterprise, Inventory, Dashboard, Alerts]
 ## Overview ##
 
 Remediating security vulnerabilities is a common issue. Sometimes you want to
-know the the extent to which your estate is affected by a threat.
+know the extent to which your estate is affected by a threat.
 Identification of affected systems can help you prioritize and plan remediation
 efforts. In this tutorial you will learn how to inventory your estate and build
 alerts to find hosts that are affected by the #shellshock exploit. After

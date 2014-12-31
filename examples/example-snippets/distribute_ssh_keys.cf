@@ -1,6 +1,6 @@
 # Assume that we have collected all users' public keys into a single source area
 # on the server. First copy the ones we need to localhost, and then edit them into
-# the the user's local keyring.
+# the user's local keyring.
 
 # vars:
 #

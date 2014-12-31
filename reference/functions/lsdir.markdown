@@ -10,7 +10,7 @@ tags: [reference, files functions, functions, lsdir]
 **Description:** Returns a list of files in the directory `path` matching the regular expression `regex`.
 
 If `include_base` is true, full paths are returned, otherwise only names 
-relative to the the directory are returned.
+relative to the directory are returned.
 
 [%CFEngine_function_attributes(path, regex, include_base)%]
 
