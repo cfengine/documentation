@@ -10,7 +10,7 @@ tags: [reference, io functions, functions, readstringarrayidx]
 **Description:** Populates the two-dimensional array `array` with up to 
 `maxentries` fields from the first `maxbytes` bytes of file `filename`.
 
-One dimension is separated by the regex `split`, the other by the the lines in
+One dimension is separated by the regex `split`, the other by the lines in
 the file. The array arguments are both integer indexes, allowing for 
 non-identifiers at first field (e.g. duplicates or names with spaces), unlike 
 `readstringarray`.

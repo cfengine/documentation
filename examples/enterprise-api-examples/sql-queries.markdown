@@ -49,7 +49,7 @@ tags: [examples, enterprise, rest, api, reporting, sql, queries]
       ]
     }
 
-The `cached` and `sortDescending` fields here mean that the the
+The `cached` and `sortDescending` fields here mean that the
 result was not retrieved from cache, and that post-processing sorting
 was not applied. It is also possible to specify `skip` and `limit`
 fields that will be applied to the result set after it is returned by
