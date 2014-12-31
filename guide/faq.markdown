@@ -83,7 +83,7 @@ In CFEngine 3.6 masterfiles policy framework this is configurable with
 
 `cf_promises_validated` gates client updates. This file is only updated on the
 policy server when new policy is validated. Edits to non policy files do not
-trigger an update of `cf_promises_validated`. You can use a seperate promise to
+trigger an update of `cf_promises_validated`. You can use a separate promise to
 ensure those files are continually distributed, instead of only on policy
 updates.
 
@@ -203,7 +203,7 @@ common control`.
 cf-agent -b my_bundle
 ```
 
-If you want to activate multiple bundles in a sequence simply seperate them
+If you want to activate multiple bundles in a sequence simply separate them
 with commas (no spaces between).
 
 ```console
