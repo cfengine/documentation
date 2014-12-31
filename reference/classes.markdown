@@ -139,7 +139,7 @@ Enterprise only:
 ## Soft Classes
 
 Soft classes can be set by using the `-D` or `--define` options wihtout having
-to edit the policy. Multiple classes can be defined by seperating them with
+to edit the policy. Multiple classes can be defined by separating them with
 commas (no spaces).
 
 ```console
@@ -152,7 +152,7 @@ or
 $ cf-agent --define class1,class2,class3
 ```
 
-This can be expecially useful when requesting a remote host to run its policy
+This can be especially useful when requesting a remote host to run its policy
 by using `cf-runagent` to activate policy that is normally dormant.
 
 ```console

@@ -141,8 +141,8 @@ Give the dashboard widget a name.
 Configure an general CVE alert for the dashboard.
 ![Configure an general CVE alert for the dashboard](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_008.jpg)
 
-Add an addional alert for this specific CVE.
-![Add an addional alert for this specific CVE](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_010.jpg)
+Add an additional alert for this specific CVE.
+![Add an additional alert for this specific CVE](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_010.jpg)
 
 See the dashboard alert in action.
 ![See an the dashboard alert in action - visualization](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_012.jpg)

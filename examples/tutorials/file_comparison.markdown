@@ -29,11 +29,11 @@ Here is the order in which bundles are called in the command line above (some ot
 4. [create_aout_source_file][#create_aout_source_file] - creates a source file.
 5. [create_aout][#create_aout] - compiles the source file.
 6. [test_delete][#test_delete] - deletes a file.
-7. [do_files_exist_1][#do_files_exist_1] - checks the existance of files.
+7. [do_files_exist_1][#do_files_exist_1] - checks the existence of files.
 8. [create_file_1][#create_file_1] - creates a file.
 9. [outer_bundle_1][#outer_bundle_1] - adds text to a file.
 10. [copy_a_file][#copy_a_file] - copies the file.
-11. [do_files_exist_2][#do_files_exist_2] - checks the existance of both files.
+11. [do_files_exist_2][#do_files_exist_2] - checks the existence of both files.
 12. [list_file_1][#list_file_1] - shows the contents of each file.
 13. [stat][#stat] - uses the stat command and the aout application to compare modified times of both files.
 14. [outer_bundle_2][#outer_bundle_2] - modifies the contents of the second file.

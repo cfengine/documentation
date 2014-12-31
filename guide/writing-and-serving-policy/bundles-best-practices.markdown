@@ -12,7 +12,7 @@ you write policy.
 ### How to choose and name bundles
  
 Use the name of a bundle to represent a meaningful aspect of system
-adminstration, We recommend using a two- or three-part name that
+administration, We recommend using a two- or three-part name that
 explains the context, general subject heading, and special instance.
 Names should be service-oriented in order to guide non-experts to
 understand what they are about. 

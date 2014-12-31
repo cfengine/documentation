@@ -10,7 +10,7 @@ tags: [reference, system functions, functions, now]
 **Description:** Return the time at which this agent run started
 in system representation.
 
-In order to provide an immutable enviroment against which to converge,
+In order to provide an immutable environment against which to converge,
 this value does not change during the execution of an agent.
 
 **Example:**

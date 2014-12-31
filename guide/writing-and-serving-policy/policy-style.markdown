@@ -97,7 +97,7 @@ expression (solaris) in the files type promise section:
 ## Policy Comments
 
 In-line policy comments are useful for debugging and explaining why something
-is done a specific way. We encourage you to document your policy throughly.
+is done a specific way. We encourage you to document your policy thoroughly.
 
 Comments about general body and bundle behavior and parameters should be
 placed after the body or bundle definition, before the opening curly brace and

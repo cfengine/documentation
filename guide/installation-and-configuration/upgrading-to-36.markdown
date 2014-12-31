@@ -80,7 +80,7 @@ When the new masterfiles have been created and *cf-promises promises.cf* and *cf
 * replace /var/cfengine/masterfiles with your new integrated masterfiles
 * start the CFEngine services
 
-Check the version with */var/cfengine/bin/cf-promises -V*, and if you are runnning Enterprise, the Mission Portal About page.
+Check the version with */var/cfengine/bin/cf-promises -V*, and if you are running Enterprise, the Mission Portal About page.
 
 If your clients get promise failures (not kept) similar to "Can't stat file '/var/cfengine/master_software_updates/cf-upgrade/linux.x86_64/cf-upgrade' on '<SERVER-IP>' in files.copy_from promise" you can download and unpack [cf-upgrade.tar.gz](http://cfengine.package-repos.s3.amazonaws.com/tools/cf-upgrade-for-linux.tar.gz) on your Policy Server. This is caused by a known issue where some host packages lacked this utility, which is resolved in recent versions.
 

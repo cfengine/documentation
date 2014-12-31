@@ -71,7 +71,7 @@ is collected from by the cf-hub process. At the time of collection the local
 data stored on the client is cleaned up and only the last hours worth of data
 remains client. It is important to understand that the time between hub
 collection and number of clients that are unable to be collected from grows the
-ammount of data to transfer and store in the central database also grows. A
+amount of data to transfer and store in the central database also grows. A
 large number of clinets that have not been collected from that become available
 at once can cause increased load on the hub collector and affect its
 performance until it has been able to collect from all hosts.

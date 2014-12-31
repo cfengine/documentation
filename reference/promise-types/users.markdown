@@ -23,7 +23,7 @@ a login picture.
 
 **Note:** This promise type does not create or delete groups (not even a users
 primary group). The groups the user is promised to be in need to be managed
-seperately.
+separately.
 
 **History:** Introduced in CFEngine 3.6.0
 

@@ -209,7 +209,7 @@ If you are completely done and do not anticipate using them anymore, you can
 also remove the base box `centos-6.5-x86_64-cfengine_enterprise-3.6.1-1` that was
 downloaded. You can see it by typing `vagrant box list`. To delete the basebox
 run `vagrant box remove centos-6.5-x86_64-cfengine_enterprise-3.6.1-1 virtualbox`.
-**Note:** Runing `vagrant up` from the vagrant project directory again will
+**Note:** Running `vagrant up` from the vagrant project directory again will
 re-download this basebox.
 
 Vagrant and VirtualBox are useful general purpose programs, so you might want
