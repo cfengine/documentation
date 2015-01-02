@@ -13,7 +13,7 @@ showcase only.
 -->
 
 CFEngine 3.6 is the latest version of CFEngine. The [Enterprise edition][New in CFEngine#CFEngine Enterprise] introduces
-numberous improvements to the Mission Portal - a dashboard for getting a quick overview
+numerous improvements to the Mission Portal - a dashboard for getting a quick overview
 of the system status and compliance, alerts and notifications for changes to the
 system, a new user interface for inventory management and a tighter integration with
 Design Center.

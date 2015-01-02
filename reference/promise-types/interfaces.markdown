@@ -59,7 +59,7 @@ end-points, lo0, tun0, br0, eth0.1), etc.
 
 **Allowed input range:**
 
-**Description:** List of labelled (trunk) vlan identifers for this interface
+**Description:** List of labelled (trunk) vlan identifiers for this interface
 
 **Type:** `list of strings/ints`
 

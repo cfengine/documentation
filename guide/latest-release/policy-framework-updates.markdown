@@ -76,7 +76,7 @@ the previously monolithic `update.cf`.
 
 ### Features defined in def.cf ###
 
-`def.cf` has contined various global settings
+`def.cf` has continued various global settings
 for some time, including various common directories, and simple access control
 list definition to control which remote hosts could connect. Comparing def.cf
 from 3.5 and 3.6 will reveal many additions
@@ -87,13 +87,13 @@ from 3.5 and 3.6 will reveal many additions
 
   Note: This setting is mirrored from
   update.cf for CFEngine enterprise reporting. This setting is superfluous
-  when `protocal_version` is set to 2 or higher which enables TLS encryption for
+  when `protocol_version` is set to 2 or higher which enables TLS encryption for
   communication.
 * [cfengine_internal_purge_policies][The Policy Framework#cfengine_internal_purge_policies]: Enables purging of policies that no longer exist in masterfiles.
 
   Note: This setting is mirrored from update.cf for [CFEngine Enterprise][] reporting.
   
-* postgresql_maintenance: Enables database maintainance for [CFEngine Enterprise][] Policy hubs.
+* postgresql_maintenance: Enables database maintenance for [CFEngine Enterprise][] Policy hubs.
 
 `def.cf` also sees the addition of `bundle common inventory_control` which is
 responsible for controlling the new inventory bundles. Inventory bundles
@@ -175,7 +175,7 @@ Enterprise.
 * *cfengine_internal_encrypt_transfers* Enables encryption for policy and
 binary updates done during the update policy. Note: This setting is mirrored
 in def.cf for CFEngine enterprise reporting. This setting is superfluous when
-`protocal_version` is set to 2 or higher which enables TLS encryption for
+`protocol_version` is set to 2 or higher which enables TLS encryption for
 communication.
 * *cfengine_internal_purge_policies*: Enables purging of policies that no
 longer exist in masterfiles. Note: This setting is mirrored in promises.cf for

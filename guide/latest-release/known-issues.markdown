@@ -24,7 +24,7 @@ https://dev.cfengine.com/issues/1492
 classes and variables found on a first pass through the policy, since
 `cf-promises` does not evaluate agent promises.
 
-### Protocol incompatiblity between
+### Protocol incompatibility between
 
 The CFEngine protocol versions 1 and 2 are incompatible (the latter is based
 on TLS).  You must migrate your entire site to 3.6 **or** run a second policy

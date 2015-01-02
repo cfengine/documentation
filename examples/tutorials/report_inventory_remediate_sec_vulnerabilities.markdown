@@ -14,7 +14,7 @@ tags: [Examples, Tutorials, Enterprise, Inventory, Dashboard, Alerts]
 ## Overview ##
 
 Remediating security vulnerabilities is a common issue. Sometimes you want to
-know the the extent to which your estate is affected by a threat.
+know the extent to which your estate is affected by a threat.
 Identification of affected systems can help you prioritize and plan remediation
 efforts. In this tutorial you will learn how to inventory your estate and build
 alerts to find hosts that are affected by the #shellshock exploit. After
@@ -141,8 +141,8 @@ Give the dashboard widget a name.
 Configure an general CVE alert for the dashboard.
 ![Configure an general CVE alert for the dashboard](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_008.jpg)
 
-Add an addional alert for this specific CVE.
-![Add an addional alert for this specific CVE](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_010.jpg)
+Add an additional alert for this specific CVE.
+![Add an additional alert for this specific CVE](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_010.jpg)
 
 See the dashboard alert in action.
 ![See an the dashboard alert in action - visualization](report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_012.jpg)

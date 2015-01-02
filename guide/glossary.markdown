@@ -121,7 +121,7 @@ They are also convergent, meaning they can only nudge the system closer to a ste
 #### Report Collector ####
 #### Reporting ####
 #### Reports ####
-#### Role-Based Acess Control (RBAC) ####
+#### Role-Based Access Control (RBAC) ####
 #### Scope ####
 
 #### Server ####

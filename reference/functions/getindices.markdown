@@ -13,7 +13,7 @@ the name of an array or container.
 Make sure you specify the correct scope when supplying the name of the
 variable.
 
-Note the list which getindices returns is not guarenteed to be in any
+Note the list which getindices returns is not guaranteed to be in any
 specific order.
 
 In the case of a doubly-indexed array (such as parsestringarrayidx and

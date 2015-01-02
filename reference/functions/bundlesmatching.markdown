@@ -11,7 +11,7 @@ tags: [reference, utility functions, functions, bundlesmatching]
 tags given. Both bundlename and tags are regular expressions. `name` is
 required, tags are optional.
 
-This function searches for the the given [unanchored][unanchored] `name` and
+This function searches for the given [unanchored][unanchored] `name` and
 `tag1, `tag2`,... regular expression in the list of currently defined bundles.
 
 Every bundle is prefixed with the namespace, usually `default:`.
