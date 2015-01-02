@@ -66,3 +66,18 @@ policy server is not available.
 * [User promises][users] do not work reliably on HP-UX. It is recommended not to use them at this time. The workaround is to call the useradd/usermod/userdel tools directly.
 * [Process promises][processes] promises do not work reliably on HP-UX. The recommended workaround is to use the `ps` and `kill` tools directly using [commands promises][commands].
 * [`edit_xml` bundles][bundle edit_xml] do not work on HP-UX.
+
+### CFEngine Enterprise Specific
+
+#### Emails sent for alert noticies come from 'admin@orginization.com'.
+There is currently no setting in Mission Portal to configure the sender email
+address. This issue is on the [backlog](https://dev.cfengine.com/issues/6726)
+and will be addressed in a future release.
+
+To change the setting you must edit the from email address in
+`/var/cfengine/httpd/htdocs/application/config/appsettings.php`
+
+```
+// Default FROM email address
+$config['appemail'] = 'admin@organisation.com';
+```
