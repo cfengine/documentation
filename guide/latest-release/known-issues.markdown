@@ -52,7 +52,7 @@ policy server is not available.
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX specific package manager. The workaround is to call the package manager directly using [commands promises][commands].
 * Some important system information is missing from the HP-UX inventory report, as well as from CFEngine hard classes and system variables. The workaround is to use system tools to obtain the required information and set classes based on this.
-        * MAC address
+        * MAC address (fixed in CFEngine 3.6.4)
         * Network interfaces
         * Disk free
         * Memory size
@@ -63,9 +63,9 @@ policy server is not available.
                 * CPU model
                 * BIOS version
                 * BIOS vendor
-* [User promises][users] do not work reliably on HP-UX. It is recommended not to use them at this time. The workaround is to call the useradd/usermod/userdel tools directly.
-* [Process promises][processes] promises do not work reliably on HP-UX. The recommended workaround is to use the `ps` and `kill` tools directly using [commands promises][commands].
-* [`edit_xml` bundles][bundle edit_xml] do not work on HP-UX.
+* [User promises][users] do not work reliably on HP-UX. It is recommended not to use them at this time. The workaround is to call the useradd/usermod/userdel tools directly.  (fixed in CFEngine 3.6.4)
+* [Process promises][processes] depend on the `ps` native tool, which by default truncates lines at 128 columns on HP-UX. It is recommended to edit the file `/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting to 1024 to guarantee that process promises will work smoothly on the platform.
+* [`edit_xml` bundles][bundle edit_xml] do not work on HP-UX. (fixed in CFEngine 3.6.4)
 
 ### CFEngine Enterprise Specific
 
