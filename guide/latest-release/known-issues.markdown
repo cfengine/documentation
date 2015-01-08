@@ -27,9 +27,9 @@ classes and variables found on a first pass through the policy, since
 ### Protocol incompatibility between
 
 The CFEngine protocol versions 1 and 2 are incompatible (the latter is based
-on TLS).  You must migrate your entire site to 3.6 **or** run a second policy
-server **or** arrange for an alternate policy distribution method when the
-policy server is not available.
+on TLS). CFEngine 3.6 supports both protocol versions, but earlier versions
+only support protocol version 1. Protocol version 1 is still the default in
+3.6 but the default will change to 2 in future versions.
 
 
 ### RHEL / CentOS 7 and systemd ###
