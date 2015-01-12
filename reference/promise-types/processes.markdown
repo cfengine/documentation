@@ -120,9 +120,10 @@ these two issues are related, although the promises themselves are not.
 
 ### Platform notes
 
-Currently `processes` promises do not work reliably on HP-UX, and it is
-recommended not to use them. The recommended workaround is to use the `ps` and
-`kill` tools directly using [commands promises][commands].
+Process promises depend on the `ps` native tool, which by default truncates
+lines at 128 columns on HP-UX. It is recommended to edit the file
+`/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting to 1024 to
+guarantee that process promises will work smoothly on that platform.
 
 ****
 
