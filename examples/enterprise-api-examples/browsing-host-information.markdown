@@ -112,8 +112,10 @@ split and indented for presentability).
 
 **Request**
 
-    curl --user admin:admin http://test.cfengine.com/api/host/
-       1c8fafe478e05eec60fe08d2934415c81a51d2075aac27c9936e19012d625cb8 -X DELETE
+```
+curl --user admin:admin http://test.cfengine.com/api/host/\
+SHA=1c8fafe478e05eec60fe08d2934415c81a51d2075aac27c9936e19012d625cb8 -X DELETE
+```
 
 **Response**
 
@@ -121,14 +123,16 @@ split and indented for presentability).
 
 ## Example: Listing Available Vital Signs For A Host
 
-Each host record on the Hub has a set of vital signs collected by 
-`cf-monitord` on the agent. We can view the list of vitals signs from as host 
-as follows (lines split and indented for presentability).
+Each host record on the Hub has a set of vital signs collected by `cf-monitord`
+on the agent. We can view the list of vitals signs from as host as follows
+(lines split and indented for presentability).
 
 **Request**
 
-    curl --user admin:admin http://test.cfengine.com/api/host/
-       4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a/vital
+```
+curl --user admin:admin http://test.cfengine.com/api/host/\
+SHA=4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a/vital
+```
 
 **Response**
 
@@ -176,9 +180,11 @@ presentability).
 
 **Request**
 
-    curl --user admin:admin http://test.cfengine.com/api/host/
-       4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a/
-       vital/mem_free?from=1350994800&to=1350996300
+```
+curl --user admin:admin http://test.cfengine.com/api/host/\
+SHA=4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a/vital/\
+mem_free?from=1350994800&to=1350996300
+```
 
 **Response**
 
