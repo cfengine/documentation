@@ -67,9 +67,7 @@ only support protocol version 1. Protocol version 1 is still the default in
 * [Process promises][processes] depend on the `ps` native tool, which by default truncates lines at 128 columns on HP-UX. It is recommended to edit the file `/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting to 1024 to guarantee that process promises will work smoothly on the platform.
 * [`edit_xml` bundles][bundle edit_xml] do not work on HP-UX. (fixed in CFEngine 3.6.4)
 
-### CFEngine Enterprise Specific
-
-#### Emails sent for alert noticies come from 'admin@orginization.com'.
+### Enterprise emails sent for alert noticies come from 'admin@orginization.com'.
 There is currently no setting in Mission Portal to configure the sender email
 address. This issue is on the [backlog](https://dev.cfengine.com/issues/6726)
 and will be addressed in a future release.
@@ -81,3 +79,10 @@ To change the setting you must edit the from email address in
 // Default FROM email address
 $config['appemail'] = 'admin@organisation.com';
 ```
+
+### Enterprise reports not collected from 3.5
+CFEngine Enterprise 3.6 has a new diff-based report collection mechanism,
+and so a 3.6 hub cannot collect reports from 3.5 or earlier agents.
+
+Currently the 3.5 agents will not show in Mission Portal at all, but
+you will see them by running `cf-key -s` on the hub.
