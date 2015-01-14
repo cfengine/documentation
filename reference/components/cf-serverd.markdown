@@ -236,9 +236,12 @@ value of the parameter in minutes.
 This feature is designed to allow Enterprise report collection from
 hosts that are not directly addressable from a hub data-aggregation
 process. For example, if some of the clients of a policy hub are
-behind a network address translator then the hub is not able to
-open a channel to address them directly. The effect is to place a
-'collect call' with the policy hub.
+behind NAT or firewall then the hub possibly is not able to
+open a connection to port 5308 of the client. The solution is to
+enable `collect_call_interval` on the client's cf-serverd.
+**Note:** also remember to admit the client's IP on the hub's
+`collect_calls` ACL (see `resource_type` in
+bundle server `access_rules`).
 
 If this option is set, the client's `cf-serverd` will "peer" with
 the server daemon on a policy hub. This means that, `cf-serverd` on
@@ -305,7 +308,7 @@ The full configuration would look something like this
 
            "collect_calls"
                resource_type => "query",
-                     admit   => { "10.10.10.10" }; # the apparent NAT address of the satellite
+                     admit   => { "10.10.10.10" };
 
           satellite_hosts::
 
