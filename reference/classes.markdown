@@ -77,7 +77,9 @@ Enterprise only:
 
 * CFEngine-specific classes
     * `any`: this class is always set
-    * `am_policy_hub`, `policy_server`: set when a host is the policy hub
+    * `am_policy_hub`, `policy_server`: set when the file
+      `$(workdir)/state/am_policy_hub` exists. When a host is [bootstrapped][cf-agent], if
+      the agent detects that it is bootstrapping to itself the file is created.
     * `bootstrap_mode`: set when bootstrapping a host
     * `inform_mode`, `verbose_mode`, `debug_mode`: log verbosity levels in order of noisiness
     * `opt_dry_run`: set when the `--dry-run` option is given
