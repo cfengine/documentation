@@ -15,7 +15,16 @@ CFEngine recommends the following:
 
 **Host Memory** 
 
-256 MB available memory in order to run the CFEngine agent software (cf-agent).
+During normal operation the CFEngine processes consume about 30 MB of resident memory (RSS) on hosts
+with the agent only (not acting as Policy Server).
+
+However there might be spikes due to e.g. commands executed from the CFEngine policy so it is generally
+recommended to have at least 256 MB available memory in order to run the CFEngine agent software.
+
+**Host disk**
+
+CFEngine can consume up to 100 MB of the partition mounted where CFEngine is installed
+(usually /var/cfengine or C:\Program Files\Cfengine).
 
 
 **Network** 
@@ -23,10 +32,8 @@ CFEngine recommends the following:
 * Verify that the machine’s network connection is working and that port 5308
   (used by CFEngine) is open for both incoming and outgoing connections.
 
-* If iptables are active on your operating system, stop this service or adapt
-  it to allow for communication on the above ports. If applicable, type the
-  following two commands: /`etc/init.d/iptables stop` and `chkconfig iptables
-  off`
+* If a firewall is active on your operating system, adapt it to
+  it to allow for communication on port 5308 or disable it.
 
 CFEngine bundles all critical dependencies into the package; therefore,
 additional software is not required.
