@@ -69,6 +69,30 @@ From 3.6.2 to 3.6.3, the following have changed:
 * update/update_policy.cf
 * update/update_processes.cf
 
+From 3.6.3 to 3.6.4, the following have changed:
+
+* cfe_internal/CFE_cfengine.cf
+* cfe_internal/CFE_hub_specific.cf
+* cfe_internal/cfengine_processes.cf
+* cfe_internal/host_info_report.cf
+* controls/cf_execd.cf
+* controls/cf_hub.cf
+* def.cf
+* inventory/any.cf
+* lib/3.5/cfe_internal.cf
+* lib/3.5/packages.cf
+* lib/3.5/paths.cf
+* lib/3.6/cfe_internal.cf
+* lib/3.6/files.cf
+* lib/3.6/packages.cf
+* lib/3.6/paths.cf
+* lib/3.6/services.cf
+* promises.cf
+* update.cf
+* update/update_bins.cf
+* update/update_policy.cf
+* update/update_processes.cf
+
 
 Normally these new files did not exist in the preivous version or can be completely replaced by the old ones, the only ones that are likely changed by you are *def.cf* and *promises.cf*.
 For these two files, we would need to do a diff between your version and the new version and integrade the diff instead of replacing the whole file.
