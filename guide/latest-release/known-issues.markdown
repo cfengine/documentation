@@ -41,19 +41,10 @@ only support protocol version 1. Protocol version 1 is still the default in
 * Starting the CFEngine daemons from policy, e.g. bootstrapping, does not make systemd aware that CFEngine is running. Thus, using systemd while removing the rpm, starting, stopping CFEngine is not handled correctly.
 
 
-### Solaris 11 specific ###
-
-*  Some important system information is missing from the Solaris 11 inventory report, as well as from CFEngine hard classes and system variables. The workaround is to use system tools to obtain the required information and set classes based on this.
-        * MAC address
-        * Network interfaces
-
-
 ### HP-UX specific ###
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX specific package manager. The workaround is to call the package manager directly using [commands promises][commands].
 * Some important system information is missing from the HP-UX inventory report, as well as from CFEngine hard classes and system variables. The workaround is to use system tools to obtain the required information and set classes based on this.
-        * MAC address (fixed in CFEngine 3.6.4)
-        * Network interfaces
         * Disk free
         * Memory size
         * Several OS and architecture specific attributes
