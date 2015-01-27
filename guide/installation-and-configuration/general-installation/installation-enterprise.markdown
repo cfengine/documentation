@@ -26,6 +26,9 @@ recommended to have at least 256 MB available memory in order to run the CFEngin
 CFEngine can consume up to 100 MB of the partition mounted where CFEngine is installed
 (usually /var/cfengine or C:\Program Files\Cfengine).
 
+Maximum disk space used by diff reports (contexts, variables, software installed, software patches, 
+lastseen hosts and promise executions) can be set as max_client_history_size variable 
+located in masterfiles/def.cf. 
 
 **Network** 
 
