@@ -42,4 +42,4 @@ like vi will not, by default, have those line endings.
 
 **See also:** `data_readstringarrayidx()`,`data_readstringarray()`, `parsejson()`, `storejson()`, `mergedata()`, and `data` documentation.
 
-**History:** Was introduced in 3.6.1.
+**History:** Was introduced in 3.7.0.
