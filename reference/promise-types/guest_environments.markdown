@@ -138,6 +138,7 @@ guest_environments:
 XML excerpt replaces many of the other options, and is passed raw into the libvirt framework.
 
 **Example:**
+
 ```cf3
 body guest_details kvm_host(host,uuid,kernel,initrd,kickstartcmd,macaddress,memory)
 {
