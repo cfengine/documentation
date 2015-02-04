@@ -344,8 +344,8 @@ hashed, so the same file can't be included twice.
 
 ### lastseenexpireafter
 
-**Description:** The value of `lastseenexpireafter` is the number of minutes 
-after which last-seen entries are purged.
+**Description:** The value of `lastseenexpireafter` is the number of minutes
+after which last-seen entries are purged. It is an **enterprise-only** feature.
 
 **Type:** `int`
 
