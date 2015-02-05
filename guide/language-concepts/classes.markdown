@@ -69,7 +69,7 @@ This example defines a few soft classes local to the `myclasses` bundle.
   `solaris` hard classes. This class will be set if the operating 
   system family is either of these values.
 
-* The `atl_class` soft class is defined as a combination of `linux`, 
+* The `alt_class` soft class is defined as a combination of `linux`, 
   `solaris`, or the presence of a file named `/etc/fstab`. If one of the two 
   hard classes evaluate to true, or if there is a file named `/etc/fstab`, the 
   `alt_class` class will also be set.
