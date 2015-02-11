@@ -23,8 +23,10 @@ recommended to have at least 256 MB available memory in order to run the CFEngin
 
 **Host disk**
 
-CFEngine can consume up to 100 MB of the partition mounted where CFEngine is installed
-(usually /var/cfengine or C:\Program Files\Cfengine).
+On Unix-like systems, CFEngine can consume up to 100 MB of the partition mounted where CFEngine is installed
+(usually /var/cfengine). On Windows systems, CFEngine can consume up to 1GB (usually C:\Program Files\Cfengine).
+The higher disk usage on Windows is due to lack of support for sparse files on this platform, which is
+utilized by a dependency of CFEngine (lmdb) when available.
 
 Maximum disk space used by diff reports (contexts, variables, software installed, software patches, 
 lastseen hosts and promise executions) can be set as max_client_history_size variable 
