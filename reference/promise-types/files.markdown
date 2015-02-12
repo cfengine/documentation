@@ -736,9 +736,12 @@ itself; in other words, a single destination directory.
 **Description:** The menu option policy `compare` is used for comparing source 
 and image file attributes.
 
-The default copy method is `mtime` (modification time), meaning that the 
-source file is copied to the destination (promiser) file, if the source file 
-has been modified more recently than the destination.
+The default copy method is `mtime` (modification time) or `ctime` (change
+time), meaning that the source file is copied to the destination (promiser)
+file, if the source file has been modified (content, permissions, ownership,
+moved to a different file system) more recently than the destination. Note this
+is special behavior when no comparison is specified as generally only a single
+comparison can be used.
 
 **Type:** (menu option)
 
