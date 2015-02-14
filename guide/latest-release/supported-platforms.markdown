@@ -34,7 +34,7 @@ Any host can be a policy server in Community installations of CFEngine.
 | RHEL 	| 4, 5, 6, 7** 	| x86-64, x86   |
 | SLES 	| 10, 11 	| x86-64, x86   |
 | Solaris 	| 9 	| SPARC   |
-| Solaris 	| 10, 11 	| x86-64, UltraSparc   |
+| Solaris 	| 10, 11 	| UltraSparc   |
 | Ubuntu 	| 10.04, 12.04 	| x86-64, x86   |
 | Windows 	| 2008 	| x86-64, x86   |
 | Windows 	| 2008, 2012 	| x86-64   |
