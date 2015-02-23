@@ -652,7 +652,7 @@ The term `query` may also be used in CFEngine Enterprise to query the server
 for data from embedded databases. This is currently for internal use only, and 
 is used to grant access to report 'menus'. If the promiser of a query request 
 is called `collect_calls`, this grants access to server peering collect-call 
-tunneling (see also `collect_call_interval`).
+tunneling (see also `call_collect_interval`).
 
 **Example:**
 
