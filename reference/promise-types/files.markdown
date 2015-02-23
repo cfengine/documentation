@@ -660,6 +660,12 @@ system files, you should keep a single repository for them and use CFEngine to
 synchronize changes from the repository source. Repositories should not be 
 used to attempt to capture random changes of the system.
 
+**Limitations:**
+Diffs will not be reported for files that are larger than 80MB in size.
+Diffs will not be reported if the number of lines between the first and last change exceed 4500.
+Diffs for binary files are not generated. Files are considered binary files if [control character](http://en.wikipedia.org/wiki/Control_character#In_ASCII) 0-32 excluding 9, 10, 13, and 32, or 127 are found in the file.
+
+
 **Type:** [`boolean`][boolean]
 
 **Example:**
