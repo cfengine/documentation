@@ -267,7 +267,7 @@ Depth search is not allowed with `edit_line` promises.
 Platforms that support named sockets (basically all Unix systems, but
 not Windows), may not work correctly when using a `files` promise to
 alter such a socket. This is a known issue, documented in
-[this ticket][https://dev.cfengine.com/issues/6869].
+[this ticket](https://dev.cfengine.com/issues/6869).
 
 ***
 
