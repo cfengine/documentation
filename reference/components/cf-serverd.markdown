@@ -238,7 +238,7 @@ hosts that are not directly addressable from a hub data-aggregation
 process. For example, if some of the clients of a policy hub are
 behind NAT or firewall then the hub possibly is not able to
 open a connection to port 5308 of the client. The solution is to
-enable `collect_call_interval` on the client's cf-serverd.
+enable `call_collect_interval` on the client's cf-serverd.
 **Note:** also remember to admit the client's IP on the hub's
 `collect_calls` ACL (see `resource_type` in
 bundle server `access_rules`).
