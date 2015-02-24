@@ -19,19 +19,67 @@ You can override normal ordering in exceptional circumstances by making a
 promise in a class context and defining that class based on the outcome of
 another promise, or using the `depends_on` promise attribute.
 
-### Agent normal ordering
+## Agent normal ordering
 
 CFEngine tries to keep variable and class promises before starting to consider
-any other kind of promise. In this way, global variable and classes can be set.
+any other kind of promise. In this way, global variables and classes can be set.
 
 If you set variables based on classes that are determined by other variables,
 then you introduce an order dependence to the resolution that might be
 non-unique. **Since CFEngine starts trying to converge values as soon as
 possible, it is best to define variables in bundles before using them**, i.e. as
-early as possible in your configuration. In general it is wise to avoid
-class-variable dependency as much as possible.
+early as possible in your configuration. In order to make sure all global
+variables and classes are available early enough policy pre-evaluation step was
+introduced.
 
-CFEngine executes agent promise bundles in the strict order defined by the
+### Policy evaluation details
+
+Before exact evaluation of promises takes place first command line
+parameters are read and all classes defined using -D parameter are set. Next,
+environment detection is taking place and hard classes are discovered.
+When environment detection step is done all the persistent classes are 
+loaded and policy sanity check is performed using cf-promises.
+
+#### cf-promises policy validation step
+
+In this step policy is validated and classes and variables promises are evaluated. 
+This is having impact mostly on cashing functions as those are evaluated here and 
+then immediately in normal agent policy execution run. Please note that policy 
+validation step is done using separate binary and any classes and variables are 
+not preserved during validation step and normal agent run.
+
+#### Agent pre-evaluation step
+
+In order to support dynamic inputs and make sure all needed classes and
+variables are determined before they are needed in normal evaluation, pre-evaluation 
+step is taking place before exact policy evaluation step.
+
+In pre-evaluation step files are loaded based on ordering in body common 
+control (first) and body file control (after body common control). It means that files
+included in body common control are loaded and parsed before files placed in body
+files control. This is important from common bundles evaluation perspective as
+bundles placed in files included in body common control inputs will be evaluated before
+bundles from file control inputs.
+
+While pre-evaluating policy files first common bundles are evaluated (only classes and variables
+promises) and then agent bundles (variables only). This is caused by the fact that both variables
+and classes placed in common bundles are global whereas classes placed in agent bundles are local
+to bundles where those are defined. This means that for agent bundles 
+during pre-evaluation step dependencies between variables and classes will not be resolved. 
+<!---What is more, promises in common bundles are pre-evaluated up to 3 times
+in order to resolve variables and classes dependencies.-->
+
+After all policy files are parsed one extra step of pre-evaluation is done
+in order to help resolve dependencies between classes and variables placed
+in different bundles. In this step first classes and variables from common
+bundles are resolved (in order in which files containing bundles were parsed) 
+and then variables in agent bundles.
+
+#### Agent evaluation step
+
+After pre-evaluation step is done normal evaluation is taking place.
+
+In this step CFEngine executes agent promise bundles in the strict order defined by the
 `bundlesequence` (possibly overridden by the `-b` or `--bundlesequence`
 command line option).  The `bundlesequence` defaults to just the `main`
 bundle if it's not specified.
@@ -75,7 +123,13 @@ ordering within the bundle itself. The order may be overridden by making a
 promise depend on a class that is set by another promise, or by using the
 `depends_on` attribute in the promise.
 
-### Server normal ordering
+**Note:** All common bundles are evaluated regardless if those are placed 
+in `bundlesequence` or not. Placing common bundles in `bundlesequence` will cause
+variables and classes will be evaluated once again. What is more together with
+classes and variables evaluation reports promises are evaluated when common 
+bundles are placed in `bundlesequence`.
+
+## Server normal ordering
 
 As with the agent, common bundles are executed before any server bundles;
 following this all server bundles are executed (the `bundlesequence` is only
@@ -89,10 +143,10 @@ Within a server bundle, the normal ordering is:
 
     vars
     classes
-    access
     roles
-
-### Monitor normal ordering
+    access
+    
+## Monitor normal ordering
 
 As with the agent, common bundles are executed before any monitor bundles;
 following this all monitor bundles are executed (the `bundlesequence` is only
