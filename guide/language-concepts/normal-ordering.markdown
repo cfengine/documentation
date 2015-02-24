@@ -51,7 +51,7 @@ variables are not preserved during validation step and normal agent run.
 
 In order to support dynamic inputs and make sure all needed classes and
 variables are determined before they are needed in normal evaluation, pre-evaluation 
-takes place immeadiately before policy evaluation.
+takes place immediately before policy evaluation.
 
 In pre-evaluation files are loaded based on ordering in body common 
 control (first) and body file control (after body common control). This means that files
