@@ -80,8 +80,8 @@ After pre-evaluation is complete normal evaluation begins.
 
 In this step CFEngine executes agent promise bundles in the strict order defined by the
 `bundlesequence` (possibly overridden by the `-b` or `--bundlesequence`
-command line option).  The `bundlesequence` defaults to just the `main`
-bundle if it's not specified.
+command line option).  If the bundlesequence is not provided via command line argument
+or is not present in body common control agent will fail to execute policy.
 
 Within a bundle, the promise types are executed in a round-robin fashion
 according to so-called `normal ordering` (essentially deletion first, followed
