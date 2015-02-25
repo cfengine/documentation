@@ -32,6 +32,18 @@ early as possible in your configuration. In order to make sure all global
 variables and classes are available early enough policy pre-evaluation step was
 introduced.
 
+### Policy evaluation overview
+
+CFEngine policy evaluation is done in several steps:
+1. Classes provided as a command line argument (-D option) are read and set.
+1. Environment detection and hard classes discovery is done.
+1. Persistent classes are loaded.
+1. Policy sanity check using cf-promises -c (full-check) is performed.
+1. Pre-evaluation step is taking place.
+1. Exact policy evaluation is done.
+
+For more information regarding each step please see the detailed description below.
+
 ### Policy evaluation details
 
 Before exact evaluation of promises takes place first command line
@@ -44,12 +56,12 @@ loaded and a policy sanity check is performed using cf-promises.
 
 In this step policy is validated and classes and variables promises are evaluated. 
 Note that cached functions are executed here, and then again during the normal agent
-execution. Also policy validation is done using separate binary and any classes and
+execution. Also policy validation is done so that any classes and
 variables are not preserved during validation step and normal agent run.
 
 #### Agent pre-evaluation step
 
-In order to support dynamic inputs and make sure all needed classes and
+In order to support expansion of variables in body common control inputs and make sure all needed classes and
 variables are determined before they are needed in normal evaluation, pre-evaluation 
 takes place immediately before policy evaluation.
 
