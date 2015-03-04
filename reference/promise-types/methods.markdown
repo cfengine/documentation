@@ -36,9 +36,13 @@ inline.
        "userinfo" data => parsejson('{ "mark": 10, "jeang":20, "jonhenrik":30, "thomas":40, "eben":-1 }');
 
       methods:
-
+       # Activate subtest once for each list item
        "any" usebundle => subtest("$(userlist)");
+
+       # Activate subtest once passing the entire list
        "amy" usebundle => subtest(@(userlist));
+
+       # Pass a data type variable aka data container
        "amp" usebundle => subtest_c(@(userinfo));
     }
 
