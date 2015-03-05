@@ -24,7 +24,7 @@ tags: [getting started, installation, enterprise, faq]
 	* [How do I set the email where agent reports are sent?][#How do I set the email where agent reports are sent]
 	* [How do I disable agent email output?][#How do I disable agent email output]
 * [Policy Writing][#Policy Writing]
-  * [How do I pass a data container?][#How do I pass a data container]
+  * [How do I pass a data type variable?][#How do I pass a data type variable]
 
 ### Enterprise Installation and Configuration ###
 
@@ -290,7 +290,7 @@ account) simply specify `policy => "locked"`.
 
 Common questions asked about policy writing.
 
-### How do I pass a data type variables? ###
+### How do I pass a data type variable ###
 
 Data type variables also known as "data containers" are passed using the same
 syntax as passing a list.
