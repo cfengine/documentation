@@ -35,12 +35,14 @@ introduced.
 ### Policy evaluation overview
 
 CFEngine policy evaluation is done in several steps:
+
 1. Classes provided as a command line argument (-D option) are read and set.
 1. Environment detection and hard classes discovery is done.
 1. Persistent classes are loaded.
 1. Policy sanity check using cf-promises -c (full-check) is performed.
 1. Pre-evaluation step is taking place.
 1. Exact policy evaluation is done.
+
 
 For more information regarding each step please see the detailed description below.
 
