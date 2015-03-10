@@ -11,8 +11,6 @@ environment in a centralized database. Data is collected every 5
 minutes from all bootstrapped hosts. This data can be accessed through
 the Enterprise Reporting API.
 
-See also: [SQL Schema Diagram][SQL Schema Diagram]
-
 Through the API, you can run CFEngine Enterprise reports with SQL
 queries. The API can create the following report queries:
 
