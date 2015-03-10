@@ -76,7 +76,7 @@ of three steps:
 
     curl -k --user admin:admin https://test.cfengine.com/api/query/async -X POST -d
     {
-      "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \"ubuntu\""
+      "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = 'ubuntu'"
     }
 
 **Response:**

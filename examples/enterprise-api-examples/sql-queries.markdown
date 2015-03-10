@@ -73,7 +73,7 @@ link to a PDF version of the report.
        subscription/query/file-changes-report -X PUT -d
     '{
       "to": "boss@megaco.com",
-      "query": "SELECT Name Count(1) FROM FileChanges GROUP BY Name",
+      "query": "SELECT FileName, Count(*) FROM FileChangesLog GROUP BY FileName",
       "schedule": "Monday.Hr23.Min59",
       "title": "A very important file changes report"
       "description": "Text that will be included in email"
@@ -105,7 +105,7 @@ Milton can list all his current subscriptions by issuing the following.
         {
           "id": "file-changes-report"
           "to": "boss@megaco.com",
-          "query": "SELECT Name Count(1) FROM FileChanges GROUP BY Name",
+          "query": "SELECT FileName, Count(*) FROM FileChangesLog GROUP BY FileName",
           "title": "A very important file changes report"
           "description": "Text that will be included in email"
           "schedule": "Monday.Hr23.Min59",
