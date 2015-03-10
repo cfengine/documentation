@@ -18,7 +18,6 @@ See also:
 
 * [Reporting Architecture][Reporting Architecture]
 * [SQL Queries Using the Enterprise API][SQL Queries Using the Enterprise API]
-* [SQL Schema Diagram][SQL Schema Diagram]
 
 ## Query Builder ##
 
