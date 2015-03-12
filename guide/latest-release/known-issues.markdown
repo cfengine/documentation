@@ -32,13 +32,10 @@ only support protocol version 1. Protocol version 1 is still the default in
 3.6 but the default will change to 2 in future versions.
 
 
-### RHEL / CentOS 7 and systemd ###
+### RHEL / CentOS 7 ###
 
-* Installing the Community Edition gives the following message, but it should be silent:
-
-    Starting cfengine3 (via systemctl):                        [  OK  ]
-
-* Starting the CFEngine daemons from policy, e.g. bootstrapping, does not make systemd aware that CFEngine is running. Thus, using systemd while removing the rpm, starting, stopping CFEngine is not handled correctly.
+* The CFEngine Enterprise hub does not yet support RHEL / CentOS 7
+* The community package repositories hosted by CFEngine does not have the RHEL/CentOS 7 package. Please download and install the package separately.
 
 
 ### HP-UX specific ###
