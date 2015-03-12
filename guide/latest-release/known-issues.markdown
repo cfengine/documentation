@@ -32,10 +32,11 @@ only support protocol version 1. Protocol version 1 is still the default in
 3.6 but the default will change to 2 in future versions.
 
 
-### RHEL / CentOS 7 ###
+### RHEL 7 / CentOS 7 ###
 
-* The CFEngine Enterprise hub does not yet support RHEL / CentOS 7
-* The community package repositories hosted by CFEngine does not have the RHEL/CentOS 7 package. Please download and install the package separately.
+* The CFEngine Enterprise hub does not yet support RHEL 7 / CentOS 7
+* The community package repositories hosted by CFEngine does not have the RHEL 7 /CentOS 7 package. Please download and install the package separately.
+* If you use the community edition as a Policy Server on RHEL 7 / CentOS 7 you will see "Failed to start the server" when you bootstrap it to itself. This message is harmless and will be removed in future releases.
 
 
 ### HP-UX specific ###
