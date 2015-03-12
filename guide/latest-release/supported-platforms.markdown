@@ -40,7 +40,7 @@ Any host can be a policy server in Community installations of CFEngine.
 
 \* AIX 5.3 is required to have "5300-05-CSP" or later
 
-\** RHEL 7 and CentOS 7 are experimental, see [Known Issues][]
+\** RHEL 7 and CentOS 7 are currently not supported as hubs, see [Known Issues][]
 
 [Known Issues][] also includes platform-specific notes.
 
@@ -58,8 +58,6 @@ needs to take into account hosts with different versions.
 ## Future platform support ##
 
 The CFEngine team will continue to support future releases of popular Host platforms, including RHEL, Debian, Ubuntu, as well as maintaining support for existing platforms important to users.
-
-In particular, Red Hat 7, CentOS 7 and Ubuntu 14 will be supported soon.
 
 In general, CFEngine is known to run on a wide range of other platforms. As long as the
 platform is POSIX compliant and has a C compiler toolchain that fully implements
