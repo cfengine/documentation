@@ -62,16 +62,16 @@ running.
 ## Start the CFEngine Enterprise 3.6 Vagrant Environment
 
 Step 1. Download our ready-made Vagrant project (use the
-[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.4-1.tar.gz)
+[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.5-1.tar.gz)
 or the
-[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.4-1.zip)
+[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.5-1.zip)
 depending on your preference).
 
 Step 2. Save and unpack the file anywhere on your drive; this
 creates a Vagrant Project directory.
 
 Step 3. Open a terminal and navigate to the Vagrant Project directory (e.g.
-`/home/user/CFEngine_Enterprise_vagrant_quickstart-3.6.4-1`, or `C:\CFEngine_Enterprise_vagrant_quickstart-3.6.4-1`) and enter the following command:
+`/home/user/CFEngine_Enterprise_vagrant_quickstart-3.6.5-1`, or `C:\CFEngine_Enterprise_vagrant_quickstart-3.6.5-1`) and enter the following command:
 
 ```console
 $ vagrant up
