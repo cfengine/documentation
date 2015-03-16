@@ -91,7 +91,7 @@ Enterprise only:
     * VM or hypervisor specific: `VMware`, `virt_guest_vz`, `virt_host_vz`, `virt_host_vz_vzps`, `xen`, `xen_dom0`, `xen_domu_hv`, `xen_domu_pv`, `oraclevmserver`, etc.
     * On Solaris-10 systems, the zone name (in the form `zone_global, zone_foo, zone_baz`).
     * Windows-specific: `DomainController`, `Win2000`, `WinServer`, `WinServer2003`, `WinServer2008`, `WinVista`, `WinWorkstation`, `WinXP`
-    * `have_aptitude`, `powershell`: based on the detected capabilities of the platform or the compiled-in options
+    * `have_aptitude`, `powershell`, `systemd`: based on the detected capabilities of the platform or the compiled-in options
     * **See also:** `sys.arch`, `sys.class`, `sys.flavor`, `sys.os`, `sys.ostype`.
 * Network Classes
     * Unqualified Name of Host. CFEngine truncates it at the first dot. 
