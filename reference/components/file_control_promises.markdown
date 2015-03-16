@@ -24,6 +24,7 @@ tags: [body, bodies, components, common, namespace, promises, bundlesequence]
 This directive can be given multiple times within any file,
 outside of body and bundle definitions.
 
+Class based decisions are not allowed inside `file control` bodies.
 
 ### inputs
 
