@@ -11,8 +11,6 @@ environment in a centralized database. Data is collected every 5
 minutes from all bootstrapped hosts. This data can be accessed through
 the Enterprise Reporting API.
 
-See also: [SQL Schema Diagram][SQL Schema Diagram]
-
 Through the API, you can run CFEngine Enterprise reports with SQL
 queries. The API can create the following report queries:
 
@@ -78,7 +76,7 @@ of three steps:
 
     curl -k --user admin:admin https://test.cfengine.com/api/query/async -X POST -d
     {
-      "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \"ubuntu\""
+      "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = 'ubuntu'"
     }
 
 **Response:**
