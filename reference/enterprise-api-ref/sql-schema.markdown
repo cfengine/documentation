@@ -12,7 +12,7 @@ Queries can be used with following database schema.
 
 Hosts table contains basic information about hosts managed by CFEngine.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -29,9 +29,7 @@ Hosts table contains basic information about hosts managed by CFEngine.
 * **FirstReportTimeStamp** *(timestamp)*
     Timestamp when the host reported to the hub for the first time, which indicate when the host was bootstrapped to the hub.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey, 
@@ -42,7 +40,7 @@ SELECT hostkey,
 FROM   hosts; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]--------+-----------------------
@@ -69,7 +67,7 @@ firstreporttimestamp | 2015-03-10 13:40:20+00
 
 Agent status contains information about last cf-agent execution.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -83,9 +81,7 @@ Agent status contains information about last cf-agent execution.
 * **LastAgentExecutionStatus** *(`OK`/`FAIL`)*
     Cf-agent execution status. In case cf-agent will not execute within 3x `AgentExecutionInterval` from last execution, status will be set to `FAIL`. Failure may indicate cf-execd issues, or cf-agent crashes.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey, 
@@ -95,7 +91,7 @@ SELECT hostkey,
 FROM   agentstatus; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]--------------------+-----------------------
@@ -119,7 +115,7 @@ lastagentexecutionstatus         | OK
 
 CFEngine contexts present on hosts at their last reported cf-agent execution.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -134,9 +130,7 @@ CFEngine contexts present on hosts at their last reported cf-agent execution.
     Timestamp since when context is set in its current form. 
     **Note:** If any of context attributes change, the timestamp will be updated.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey, 
@@ -146,7 +140,7 @@ SELECT hostkey,
 FROM   contexts; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]---+-------------------------------------------------------
@@ -170,7 +164,7 @@ changetimestamp | 2015-03-11 09:50:11+00
 
 Variables and their values set on hosts at their last reported cf-agent execution.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -199,9 +193,7 @@ Variables and their values set on hosts at their last reported cf-agent executio
     Timestamp since when variable is set in its current form. 
     **Note:** If any of variable attributes change such as its `VariableValue` or `Bundle`, the timestamp will be updated.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey, 
@@ -215,7 +207,7 @@ SELECT hostkey,
 FROM   variables; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]---+-------------------------------------------------------------
@@ -252,7 +244,7 @@ changetimestamp | 2015-03-11 14:27:12+00
 Software packages installed (according to local package manager) on the hosts.
 More information about CFEngine and package management can be found [here][packages].
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -269,9 +261,7 @@ More information about CFEngine and package management can be found [here][packa
 * **ChangeTimeStamp** *(timestamp)*
     Timestamp when the package was discovered / installed on the host.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey, 
@@ -282,7 +272,7 @@ SELECT hostkey,
 FROM   software; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]--------+-----------------------
@@ -310,7 +300,7 @@ changetimestamp      | 2015-03-12 10:20:18+00
 Patches available for installed packages on the hosts (as reported by local package manager).
 The most up to date patch will be listed.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -330,9 +320,7 @@ The most up to date patch will be listed.
 * **ChangeTimeStamp** *(timestamp)*
     Timestamp when the new patch / version was discovered as available on the host.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -344,7 +332,7 @@ SELECT hostkey,
 FROM   softwareupdates; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]-----+------------------------
@@ -374,7 +362,7 @@ changetimestamp   | 2015-03-12 10:20:18+00
 
 Promises executed on hosts during their last reported cf-agent run.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -422,9 +410,7 @@ Promises executed on hosts during their last reported cf-agent run.
     Timestamp since when the promise is continuously executed by cf-agent in its current configuration and provides the same output.
     **Note:** If any of the promise dynamic attributes change, like promise outcome, log messages or the new policy version will be rolled out. This timestamp will be changed.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -444,11 +430,11 @@ SELECT hostkey,
 FROM   softwareupdates; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]---+---------------------------------------------------------
-hostkey         | SHA=a4dd552d05d3f095b75bd44c5d82efaf637e133d77908c66b...
+hostkey         | SHA=a4dd5...
 policyfile      | /var/cfengine/inputs/inventory/any.cf
 releaseid       | 05c0cc909d6709d816521d6cedbc4508894cc497
 promisehash     | fd6d5e40b734e35d9e8b2ed071dfe390f23148053adaae3dbb936...
@@ -463,7 +449,7 @@ logmessages     | {}
 promisees       | {}
 changetimestamp | 2015-03-12 10:20:18+00
 -[ RECORD 2 ]---+---------------------------------------------------------
-hostkey         | SHA=a4dd552d05d3f095b75bd44c5d82efaf637e133d77908c66b...
+hostkey         | SHA=a4dd5...
 policyfile      | /var/cfengine/inputs/promises.cf
 releaseid       | 05c0cc909d6709d816521d6cedbc4508894cc497
 promisehash     | 925b04453ef86ff2e43228a5ca5d56dc4d69ddf12378d6fdba28b...
@@ -478,7 +464,7 @@ logmessages     | {}
 promisees       | {goal_infosec,goal_compliance}
 changetimestamp | 2015-03-12 10:20:18+00
 -[ RECORD 3 ]---+---------------------------------------------------------
-hostkey         | SHA=3b94defc581ce3aa824d34774949d3166a153faad6058ef94...
+hostkey         | SHA=3b94d...
 policyfile      | /var/cfengine/inputs/lib/3.6/bundles.cf
 releaseid       | 05c0cc909d6709d816521d6cedbc4508894cc497
 promisehash     | 47f64d43f21bc6162b4f21bf385e715535617eebc649b259ebaca...
@@ -498,7 +484,7 @@ changetimestamp | 2015-03-12 14:52:36+00
 
 Information about communication between CFEngine clients.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -519,9 +505,7 @@ Information about communication between CFEngine clients.
 * **LastSeenInterval** *(real)*
     Frequency within which both hosts open connection.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -533,7 +517,7 @@ SELECT hostkey,
 FROM   lastseenhosts; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]-----+-----------------------
@@ -563,7 +547,7 @@ lastseeninterval  | 0
 
 Log of changes detected to files that are set to be [monitored][files#changes] by cf-agent.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -586,9 +570,7 @@ Log of changes detected to files that are set to be [monitored][files#changes] b
 * **ChangeDetails** *(text[])*
     Information about changes detected to the file. Such as file stats information, file diff etc.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -600,7 +582,7 @@ SELECT hostkey,
 FROM   filechangeslog; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]---+------------------------------------------------------------
@@ -630,7 +612,7 @@ changedetails   | {"Modified time: Mon Mar 9 11:37:50 -> Mon Mar 9 11:42:27"}
 
 CFEngine contexts set on hosts by CFEngine over period of time.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -653,9 +635,7 @@ CFEngine contexts set on hosts by CFEngine over period of time.
     List of [meta tags][Tags for variables, classes, and bundles] set for the context.
 
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey, 
@@ -666,7 +646,7 @@ SELECT hostkey,
 FROM   contextslog; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]---+-------------------------------------------------------
@@ -676,14 +656,12 @@ changeoperation | ADD
 contextname     | debian
 metatags        | {inventory,attribute_name=none,source=agent,hardclass}
 -[ RECORD 2 ]---+-------------------------------------------------------
------------------
 hostkey         | SHA=a4dd5...
 changetimestamp | 2015-03-10 14:40:20+00
 changeoperation | ADD
 contextname     | ipv4_192_168
 metatags        | {inventory,attribute_name=none,source=agent,hardclass}
 -[ RECORD 3 ]---+-------------------------------------------------------
------------------
 hostkey         | SHA=a4dd5...
 changetimestamp | 2015-03-10 15:40:20+00
 changeoperation | ADD
@@ -695,7 +673,7 @@ metatags        | {inventory,attribute_name=none,source=agent,hardclass}
 
 CFEngine contexts set on hosts by CFEngine over period of time.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -731,9 +709,7 @@ CFEngine contexts set on hosts by CFEngine over period of time.
 * **MetaTags** *(text[])*
     List of [meta tags][Tags for variables, classes, and bundles] set for the variable.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -748,7 +724,7 @@ SELECT hostkey,
 FROM   variableslog; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]---+-----------------------------------------------------
@@ -787,7 +763,7 @@ metatags        | {monitoring,source=environment}
 Software packages installed / deleted over period of time.
 More information about CFEngine and package management can be found [here][packages].
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -810,9 +786,7 @@ More information about CFEngine and package management can be found [here][packa
 * **SoftwareArchitecture** *(text)*
     Architecture. 
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -824,7 +798,7 @@ SELECT hostkey,
 FROM   softwarelog; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]--------+-----------------------
@@ -854,7 +828,7 @@ softwarearchitecture | default
 
 Patches available for installed packages on the hosts (as reported by local package manager) over period of time.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -881,9 +855,7 @@ Patches available for installed packages on the hosts (as reported by local pack
 * **PatchReportType** *(`INSTALLED`/`AVAILABLE`)*
     Patch status (`INSTALLED` status is specific only to SUSE Linux).
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -896,7 +868,7 @@ SELECT hostkey,
 FROM   softwareupdateslog; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]-----+------------------------
@@ -929,7 +901,7 @@ patchreporttype   | AVAILABLE
 
 Promise status / outcome changes over period of time.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -984,9 +956,7 @@ Promise status / outcome changes over period of time.
 * **Promisees** *(text[])*
     List of [promisees][Promises] defined for the promise.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -1007,7 +977,7 @@ SELECT hostkey,
 FROM   promiseexecutionslog; 
 ```
 
-##### Output:
+**Output:**
 
 ```
 -[ RECORD 1 ]---+--------------------------------------------------
@@ -1064,7 +1034,7 @@ promisees       | {}
 
 Data from internal cf-agent monitoring as also [measurements promises][measurements].
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
@@ -1084,9 +1054,7 @@ Data from internal cf-agent monitoring as also [measurements promises][measureme
 * **CheckTimeStamp** *(timestamp)*
     Measurement time.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -1098,24 +1066,24 @@ SELECT hostkey,
 FROM   benchmarkslog; 
 ```
 
-##### Output:
+**Output:**
 
 ```
--[ RECORD 1 ]-----+-------------------------------------------------------------------------
+-[ RECORD 1 ]-----+--------------------------------------------------------
 hostkey           | SHA=3b94d...
-eventname         | CFEngine Execution (policy filename: '/var/cfengine/inputs/promises.cf')
+eventname         | CFEngine Execution ('/var/cfengine/inputs/promises.cf')
 standarddeviation | 7.659365
 averagevalue      | 3.569665
 lastvalue         | 1.170841
 checktimestamp    | 2015-03-10 14:08:12+00
--[ RECORD 2 ]---=-+-------------------------------------------------------------------------
+-[ RECORD 2 ]---=-+--------------------------------------------------------
 hostkey           | SHA=3b94d...
-eventname         | CFEngine Execution (policy filename: '/var/cfengine/inputs/update.cf')
+eventname         | CFEngine Execution ('/var/cfengine/inputs/update.cf')
 standarddeviation | 0.131094
 averagevalue      | 0.422757
 lastvalue         | 0.370686
 checktimestamp    | 2015-03-10 14:08:11+00
--[ RECORD 3 ]-----+-------------------------------------------------------------------------
+-[ RECORD 3 ]-----+--------------------------------------------------------
 hostkey           | SHA=3b94d...
 eventname         | DBReportCollectAll
 standarddeviation | 0.041025
@@ -1128,7 +1096,7 @@ checktimestamp    | 2015-03-10 14:05:20+00
 
 Networking errors encountered by cf-hub during its operation.
 
-#### Columns:
+**Columns:**
 
 * **HostKey** *(text)*
     Unique identifier of the host that cf-hub was connecting to.
@@ -1142,9 +1110,7 @@ Networking errors encountered by cf-hub during its operation.
 * **QueryType** *(text)*
     Type of query that was intended to be sent by hub during failed connection attempt.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT hostkey,
@@ -1154,20 +1120,20 @@ SELECT hostkey,
 FROM   hubconnectionErrors; 
 ```
 
-##### Output:
+**Output:**
 
 ```
--[ RECORD 1 ]--+------------------------------------------------------------
+-[ RECORD 1 ]--+--------------------------
 hostkey        | SHA=3b94d...
 checktimestamp | 2015-03-13 13:16:10+00
 message        | ServerNoReply
 querytype      | delta
--[ RECORD 2 ]--+------------------------------------------------------------
+-[ RECORD 2 ]--+--------------------------
 hostkey        | SHA=3b94d...
 checktimestamp | 2015-03-13 14:16:10+00
 message        | InvalidData
 querytype      | rebase
--[ RECORD 3 ]--+------------------------------------------------------------
+-[ RECORD 3 ]--+--------------------------
 hostkey        | SHA=3b94d...
 checktimestamp | 2015-03-13 15:16:10+00
 message        | ServerAuthenticationError
@@ -1178,7 +1144,7 @@ querytype      | delta
 
 Diagnostic data generated by hub during its operation. It contains stats such as sizes of reports, processing time per component etc.
 
-#### Columns:
+**Columns:**
 
 * **Name** *(text)*
     Measurement name.
@@ -1195,9 +1161,7 @@ Diagnostic data generated by hub during its operation. It contains stats such as
 * **Units** *(text)*
     Units of measurement.
 
-#### Example output:
-
-##### Query:
+**Example query:**
 
 ```sql
 SELECT name,
@@ -1208,22 +1172,22 @@ SELECT name,
 FROM   diagnostics; 
 ```
 
-##### Output:
+**Output:**
 
 ```
--[ RECORD 1 ]--------------------------------
+-[ RECORD 1 ]-----------------------------
 name      | redis_processing_time_per_host
 details   | rebase
 timestamp | 2015-03-10 13:35:20.866627+00
 value     | 76.000000
 units     | ms
--[ RECORD 2 ]--------------------------------
+-[ RECORD 2 ]-----------------------------
 name      | hub_processing_time_per_host
 details   | rebase
 timestamp | 2015-03-10 13:35:20.871608+00
 value     | 189.000000
 units     | ms
--[ RECORD 3 ]--------------------------------
+-[ RECORD 3 ]-----------------------------
 name      | recivied_data_size_per_host
 details   | rebase
 timestamp | 2015-03-10 13:35:20.878601+00
