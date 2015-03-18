@@ -5,7 +5,7 @@ published: true
 tags: [reference, enterprise, REST, API, reporting, sql, schema]
 ---
 
-CFEngine allows standardized SQL `SELECT` queries to be used with [Query API][URI Resources#api-query].
+CFEngine allows standardized SQL `SELECT` queries to be used with [Query API][URI Resources#/api/query].
 Queries can be used with following database schema.
 
 ### Table: Hosts
@@ -18,7 +18,7 @@ Hosts table contains basic information about hosts managed by CFEngine.
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
 * **HostName** *(text)* 
-    Host name locally detected on the host, configurable as `hostIdentifier` option in [Settings API][URI Resources#api-settings] and Mission Portal settings UI.
+    Host name locally detected on the host, configurable as `hostIdentifier` option in [Settings API][URI Resources#/api/settings] and Mission Portal settings UI.
 
 * **IPAddress** *(text)*
     IP address of the host.
