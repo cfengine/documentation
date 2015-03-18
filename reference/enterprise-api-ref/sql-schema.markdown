@@ -1,7 +1,7 @@
 ---
 layout: default
 title: SQL Schema
-published: false
+published: true
 tags: [reference, enterprise, REST, API, reporting, sql, schema]
 ---
 
