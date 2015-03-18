@@ -106,7 +106,7 @@ password: admin
 Portal.
 
 That's all there is to it, the install is complete! Move on and explore the environment.
-## Exploring the Environemnt
+## Exploring the Environment
 
 ### Accessing VMs
 
