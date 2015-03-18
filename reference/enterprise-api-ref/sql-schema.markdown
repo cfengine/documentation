@@ -1193,3 +1193,4 @@ details   | rebase
 timestamp | 2015-03-10 13:35:20.878601+00
 value     | 40.617188
 units     | kb
+```
