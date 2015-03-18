@@ -16,7 +16,4 @@ API uses SQL. With the simplicity of REST and the flexibility of
 SQL, users can craft custom reports about systems of arbitrary scale, mining
 a wealth of data residing on globally distributed CFEngine Database Servers.
 
-Refer to the [Enterprise API Reference][Enterprise API Reference] section for the [SQL Schema][SQL Schema]
-and [URI Resources][URI Resources].
-
 See also the [Enterprise API Examples][Enterprise API Examples].
