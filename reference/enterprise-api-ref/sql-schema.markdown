@@ -8,6 +8,10 @@ tags: [reference, enterprise, REST, API, reporting, sql, schema]
 CFEngine allows standardized SQL `SELECT` queries to be used with [Query API][URI Resources#/api/query].
 Queries can be used with following database schema.
 
+```
+curl -k --user admin:admin https://hub.cfengine.com/api/query -X POST -d "{ \"query\": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts WHERE hostname = 'hub'\"}"
+```
+
 ### Table: Hosts
 
 Hosts table contains basic information about hosts managed by CFEngine.
@@ -79,7 +83,7 @@ Agent status contains information about last cf-agent execution.
     Timestamp of last cf-agent execution on the host.
 
 * **LastAgentExecutionStatus** *(`OK`/`FAIL`)*
-    Cf-agent execution status. In case cf-agent will not execute within 3x `AgentExecutionInterval` from last execution, status will be set to `FAIL`. Failure may indicate cf-execd issues, or cf-agent crashes.
+    cf-agent execution status. In case cf-agent will not execute within 3x `AgentExecutionInterval` from last execution, status will be set to `FAIL`. Failure may indicate cf-execd issues, or cf-agent crashes.
 
 **Example query:**
 
@@ -371,7 +375,7 @@ Promises executed on hosts during their last reported cf-agent run.
     Path to the file where the promise is located in.
 
 * **ReleaseId** *(text)*
-    Unique identifier of masterfiles version that is executed in the host.
+    Unique identifier of masterfiles version that is executed on the host.
 
 * **PromiseHash** *(text)*
     Unique identifier of a promise. It is a hash of all promise attributes and their values.
