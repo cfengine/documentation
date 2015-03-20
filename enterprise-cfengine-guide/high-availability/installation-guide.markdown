@@ -319,7 +319,7 @@ Above should return one entry indicating that host *node1* is connected to datab
     }" > /var/cfengine/masterfiles/cfe_internal/ha/ha_info.json
     ```
 
-    In file above IP addresses are where hubs are bootstrapped to and sha are hubs keys (found in /var/cfengine/ppkeys directory).
+    The `internal_ip` attribute is the IP address of the hub (the one you used to bootstrapped itself to) and `sha` is the key of the hub. The `sha` key can be found by running `cf-key -s` the respective hub and match that to the respective `internal_ip`.
 
 3. Modify */var/cfengine/masterfiles/def.cf* and enable HA by uncommenting `"enable_cfengine_enterprise_hub_ha" expression => "enterprise_edition";` line (make sure to comment or remove line `"enable_cfengine_enterprise_hub_ha" expression => "!any";`).
 
