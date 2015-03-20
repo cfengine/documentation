@@ -321,7 +321,7 @@ Above should return one entry indicating that host *node1* is connected to datab
 
     In file above IP addresses are where hubs are bootstrapped to and sha are hubs keys (found in /var/cfengine/ppkeys directory).
 
-3. Modify */var/cfengine/masterfiles/cfe_internal/ha/ha_def.cf* and enable HA by uncommenting `"ha_enabled" expression => "enterprise";` line (make sure to comment or remove line `ha_enabled" expression => "!any";`).
+3. Modify */var/cfengine/masterfiles/def.cf* and enable HA by uncommenting `"enable_cfengine_enterprise_hub_ha" expression => "enterprise_edition";` line (make sure to comment or remove line `"enable_cfengine_enterprise_hub_ha" expression => "!any";`).
 
 4. Run *update.cf* to make sure that new policy is copied from *masterfiles* to *inputs* `cf-agent -f update.cf` on active first and then on passive.
 
