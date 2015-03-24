@@ -9,7 +9,7 @@ CFEngine allows standardized SQL `SELECT` queries to be used with [Query API][UR
 Queries can be used with following database schema.
 
 ```
-curl -k --user admin:admin https://hub.cfengine.com/api/query -X POST -d "{ \"query\": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts WHERE hostname = 'hub'\"}"
+curl -k --user admin:admin https://hub.cfengine.com/api/query -X POST -d "{ \"query\": \"SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts WHERE hostname = 'hub'\"}"
 ```
 
 ### Table: Hosts
