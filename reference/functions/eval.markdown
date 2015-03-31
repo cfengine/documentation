@@ -2,16 +2,35 @@
 layout: default
 title: eval
 published: true
-tags: [reference, data functions, functions, eval]
+tags: [reference, data functions, functions, eval, context, class, equality, numbers]
 ---
 
 [%CFEngine_function_prototype(mode, options, expression)%]
 
 **Description:** Returns `expression` evaluated according to `mode`
-and `options`.  Currently only the `math` mode with `infix` option
-is supported for evaluating traditional math expressions.
+and `options`. Currently only the `math` and `class` modes with
+`infix` option are supported for evaluating traditional math
+expressions.
 
-All the math is done with the C `double` type internally.  The results are returned as a string 
+All the math is done with the C `double` type internally.  The results are returned as a string.  When the `mode` is `math` the returned value is a floating-point value formatted to 6 decimal places as a string.
+
+**Example:**
+
+```
+  vars:
+    # returns 20.000000
+    "result" expression => eval("200/10", "math", "infix");
+```
+
+When the `mode` is `class`, the returned string is either false for 0 (`!any`) or true for anything else (`any`) so it can be used in an expression.  The `==` operator (see below) is very convenient for this purpose.  The actual accepted values for false allow a tiny margin around 0, just like `==`.
+
+**Example:**
+
+```
+  classes:
+    # the class will be set
+    "they_are_equal" expression => eval("20 == (200/10)", "class", "infix");
+```
 
 The supported infix mathematical syntax, in order of precedence, is:
 
