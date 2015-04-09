@@ -7,7 +7,7 @@ tags: [cfengine enterprise, hub administration]
 
 # Reset administrative credentials #
 
-To reset the CFEngine admin user run the following sql ad root on your hub
+The default `admin` user can be reset to defaults using the following SQL
 
 cfsettings-setadminpassword.sql:
 
@@ -26,7 +26,9 @@ INSERT INTO "users" ("username", "password", "salt", "name", "email", "external"
        WHERE NOT EXISTS (SELECT 1 FROM users WHERE username='admin');
 ```
 
+To reset the CFEngine admin user run the following sql as root on your hub
+
 ```console
-psql cfsettings < cfsettings-setadminpassword.sql
+root@hub:~# psql cfsettings < cfsettings-setadminpassword.sql
 ```
 
