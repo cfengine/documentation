@@ -1986,6 +1986,120 @@ element = element1, element = element2,
 holder.s = Hello!
 ```
 
+**Example:**
+
+The policy
+
+```cf3
+body common control
+{
+   bundlesequence => { "main", };
+}
+
+bundle agent main
+{
+   vars:
+      solar_system::
+         "home_star" string => "sol";
+         "planets" slist => { "mercury", "venus", "earth" };
+         "a[moon]" string => "luna";
+
+      star::
+         "a[star]" slist => { "rigel", "vega", "polaris" };
+
+      earth::
+         "earth" data => parsejson('
+         [
+            { 
+               "oceans" : [ "atlantic", "pacific", "indian", "arctic" ],
+               "seas" : [ "caribbean", "dead", "black", "coral" ],
+               "position" : "3",
+               "orbit" : "1au",
+            }
+         ]
+         ');
+         
+   files:
+      "/tmp/mytemplate"
+         create          => 'true',
+         template_method => 'mustache',
+         edit_template   => '${sys.workdir}/inputs/mustache.tmp';
+}
+```
+
+The template:
+
+{% raw %}
+```
+This file is edited by CFEngine and is always in place.
+
+{{#classes.solar_system}}
+The star is {{vars.main.home_star}}.
+{{#vars.main.planets}}{{.}} is a planet.
+{{/vars.main.planets}}
+
+But {{vars.main.a[moon]}} is a moon.
+{{/classes.solar_system}}
+
+{{#classes.star}}
+Some stars are:
+{{#vars.main.a[star]}}{{.}}, {{/vars.main.a[star]}}.
+{{/classes.star}}
+
+{{#classes.earth}}
+{{#vars.main.earth}}
+Earth is planet number {{position}}, at an orbit of {{orbit}}.
+Oceans include {{#oceans}} {{.}},{{/oceans}}.
+Seas include {{#seas}} {{.}},{{/seas}}.
+{{/vars.main.earth}}
+{{/classes.earth}}
+```
+{% endraw %}
+
+* ```{{#classes.solar_system}}``` starts the beginning of a class
+block. Unlike CFEngine’s normal code this block must be ended with
+```{{/classes.solar_system}}```.  Everything in-between is evaluated
+when the class solar_system is true.
+
+* Strings take the form of ```{{vars.bundle.name}}``` as seen in
+```{{vars.main.home_star}}``` and ```{{vars.main.a[moon]}}```. It’s
+best to avoid arrays and use JSON data containers instead.
+
+* ```{{#vars.main.planets}}``` starts the iteration of the list
+main.planets.  Everything between that and
+```{{/vars.main.planets}}``` will be duplicated for each element in
+the list. Each element will be printed where ```{{.}}``` is found.
+
+* ```{{#vars.main.earth}}``` tells the agent to begin iterating
+through the JSON data container called earth. From there you can use
+short forms of the JSON data like ```{{position}}``` for the string
+position and ```{{#oceans}} {{.}},{{/oceans}}``` for the list oceans
+and the element position.  Note that unlike classic CFEngine
+templates, _mustache templates will print all duplicate lines_.
+
+The resulting file:
+
+{% raw %}
+```
+This file is edited by CFEngine and is always in place.
+
+The star is sol.
+mercury is a planet.
+venus is a planet.
+earth is a planet.
+
+But luna is a moon.
+
+Some stars are:
+rigel, vega, polaris, .
+
+Earth is planet number 3, at an orbit of 1au.
+Oceans include  atlantic, pacific, indian, arctic,.
+Seas include  caribbean, dead, black, coral,.
+
+```
+{% endraw %}
+
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2012).  Mustache templates were introduced in 3.6.0.
 
