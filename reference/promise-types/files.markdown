@@ -2023,13 +2023,7 @@ bundle agent main
       "/tmp/mytemplate"
          create          => 'true',
          template_method => 'mustache',
-         edit_defaults   => empty,
          edit_template   => '${sys.workdir}/inputs/mustache.tmp';
-}
-
-body edit_defaults empty
-{
-   empty_file_before_editing => 'true';
 }
 ```
 
