@@ -142,6 +142,8 @@ hit a single cf-serverd.
 For more fine-grained control, please use operating system (eg. iptables)
 facilities.
 
+**Note:** Bandwidth limiting is currently not supported on Windows.
+
 **Type:** [`float`][float]
 
 **Default value:** none (no limit)
