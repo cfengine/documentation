@@ -128,6 +128,39 @@ use global variable lists to do this:
 
 **History:** The default to `{ "main" }` was introduced in version 3.7.0, so if you expect your policies to be run by older version, you'll need an explicit `bundlesequence`.
 
+### bwlimit
+
+**Description:** Coarse control of bandwidth any cf-serverd or cf-agent process
+will send *out*. In Bytes/sec.
+
+Bandwidth limit is meant to set an upper bound of traffic coming out of CFEngine
+agents or servers, as a countermeasure against network abuse from them. The limit
+is applied to all interfaces (in total), a single process at a time. It can
+prevent network being flooded by CFEngine traffic when large files or many agents
+hit a single cf-serverd.
+
+For more fine-grained control, please use operating system (eg. iptables)
+facilities.
+
+**Note:** Bandwidth limiting is currently not supported on Windows.
+
+**Type:** [`float`][float]
+
+**Default value:** none (no limit)
+
+**Example:**
+```cf3
+    body common control
+    
+    {
+      bwlimit => "10M"; 
+    }
+```
+
+In this example,  bwlimit is set to 10MBytes/sec = 80Mbit/s meaning that
+CFEngine would only consume up to ~80% of any 100Mbit ethernet interface.
+
+
 ### cache_system_functions
 
 **Description:** Controls the caching of the results of system
