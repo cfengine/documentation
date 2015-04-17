@@ -6,7 +6,7 @@ tags: [reference, bundle agent, guest_environments, promises, promise types, vir
 ---
 
 Guest environment promises describe enclosed computing environments that
-can host physical and virtual machines, Linux containers, Solaris zones, grids, clouds or
+can host physical and virtual machines, Solaris zones, grids, clouds or
 other enclosures, including embedded systems. CFEngine will support the
 convergent maintenance of such inner environments in a fixed location,
 with interfaces to an external environment.
@@ -14,33 +14,34 @@ with interfaces to an external environment.
 CFEngine currently seeks to add convergence properties to existing
 interfaces for automatic self-healing of guest environments. The current
 implementation integrates with *libvirt*, supporting host virtualization
-for Xen, KVM, VMWare, Docker, etc. Thus CFEngine, running on a virtual host, can
+for Xen, KVM, VMWare, etc. Thus CFEngine, running on a virtual host, can
 maintain the state and deployment of virtual guest machines defined
-within a *libvirt* framework, or a Docker framework. Guest environment promises are not meant
+within the *libvirt* framework. Guest environment promises are not meant
 to manage what goes on within the virtual guests. For that purpose you
 should run CFEngine directly on the virtual machine, as if it were any
 other machine.
 
-
+  
 
 ```cf3
- kvm_hosts::
+ site1::
 
   "unique_name1"
 
-       guest_details => kvm_host("$(host)","$(uuid)","$(kernel)","1024000"),
-       guest_state   => "create";
-
-  docker_host::
+       environment_resources => myresources("2GB","512MB"),
+       environment_interface => mymachine("hostname"),
+            environment_type => "xen",
+            environment_state => "running",
+            environment_host => "atlas";
 
   "unique_name2"
-       guest_details => ubuntu_stem_cell,
-       guest_state   => "create";
 
+            environment_type => "xen_network",
+           environment_state => "create",
+            environment_host => "atlas";
 ```
 
-CFEngine currently provides a convergent interface to guests via *libvirt*, Docker, and
-other interfaces.
+CFEngine currently provides a convergent interface to *libvirt*.
 
 ***
 
@@ -48,22 +49,288 @@ other interfaces.
 
 [%CFEngine_include_markdown(common-attributes-include.markdown)%]
 
+### environment_host
 
-### guest_type
+**Description:** `environment_host` is a class indicating which 
+physical node will execute this guest machine
 
-**Allowed input range:** lxc,xen,kvm,esx,vbox,test,xen_net,kvm_net,esx_net,test_net,zone,ec2,eucalyptus,docker
+The promise will only apply to the machine with this class set. Thus,
+CFEngine must be running locally on the hypervisor for the promise to
+take effect.
 
-**Description:** The type of virtual environment being defined.
+**Type:** `string`
+
+**Allowed input range:** `[a-zA-Z0-9_]+`
+
+**Example:**
+
+```cf3
+guest_environments:
+
+ linux::
+
+ "host1"
+                 comment => "Keep this vm suspended",
+   environment_resources => myresources,
+        environment_type => "kvm",
+       environment_state => "suspended",
+        environment_host => "ubuntu";
+```
 
 
-### guest_state
+This attribute is required.
+
+**History:** this feature was introduced in Nova 2.0.0 (2010), Community
+3.3.0 (2012)
+
+### environment_interface
+
+**Type:** `body environment_interface`
+
+#### env_addresses
+
+**Description:** `env_addresses` is the IP addresses of the environment's 
+network interfaces
+
+The IP addresses of the virtual machine can be overridden here at run
+time.
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+```cf3
+     body environment_interface vnet(primary)
+     {
+     env_name      => "$(this.promiser)";
+     env_addresses => { "$(primary)" };
+     
+     host1::
+     
+       env_network => "default_vnet1";
+     
+     host2::
+     
+       env_network => "default_vnet2";
+     
+     }
+```
+
+#### env_name
+
+**Description:** `env_name` is the hostname of the virtual environment.
+
+The 'hostname' of a virtual guest may or may not be the same as the
+identifier used as 'promiser' by the virtualization manager.   
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+```cf3
+     body environment_interface vnet(primary)
+     {
+     env_name      => "$(this.promiser)";
+     env_addresses => { "$(primary)" };
+     
+     host1::
+       env_network => "default_vnet1";
+     
+     host2::
+       env_network => "default_vnet2";
+     }
+```
+
+#### env_network
+
+**Description:** The hostname of the virtual network
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Example:**
+
+```cf3
+    body environment_interface vnet(primary)
+    {
+    env_name      => "$(this.promiser)";
+    env_addresses => { "$(primary)" };
+
+    host1::
+      env_network => "default_vnet1";
+
+    host2::
+      env_network => "default_vnet2";
+    }
+```
+
+### environment_resources
+
+**Type:** `body enviornment_resources`
+
+#### env_cpus
+
+**Description:** `env_cpus` represents the number of virtual CPUs 
+in the environment.
+
+The maximum number of cores or processors in the physical environment
+will set a natural limit on this value.
+
+**Type:** `int`
+
+**Allowed input range:** `0,99999999999`
+
+**Example:**
+
+```cf3
+     body environment_resources my_environment
+     {
+     env_cpus => "2";
+     env_memory => "512"; # in KB
+     env_disk => "1024";  # in MB
+     }
+```
+
+**Notes:**
+This attribute conflicts with `env_spec`.   
+
+#### env_memory
+
+**Description:** `env_memory` represents the amount of primary storage 
+(RAM) in the virtual environment (in KB).
+
+The maximum amount of memory in the physical environment will set a
+natural limit on this value.
+
+**Type:** `int`
+
+**Allowed input range:** `0,99999999999`
+
+**Example:**
+
+```cf3
+     body environment_resources my_environment
+     {
+     env_cpus => "2";
+     env_memory => "512"; # in KB
+     env_disk => "1024";  # in MB
+     }
+```
+
+**Notes:**
+This attribute conflicts with `env_spec`.   
+
+#### env_disk
+
+**Description:** `env_disk` represents the amount of secondary storage 
+(DISK) in the virtual environment (in KB).
+
+This parameter is currently unsupported, for future extension.
+
+**Type:** `int`
+
+**Allowed input range:** `0,99999999999`
+
+**Example:**
+
+```cf3
+     body environment_resources my_environment
+     {
+     env_cpus => "2";
+     env_memory => "512"; # in KB
+     env_disk => "1024";  # in MB
+     }
+```
+
+**Notes:**
+This parameter is currently unsupported, for future extension.
+
+This attribute conflicts with `env_spec`.   
+
+#### env_baseline
+
+**Description:** The `env_baseline` string represents a path to an 
+image with which to baseline the virtual environment.
+
+**Type:** `string`
+
+**Allowed input range:** `"?(/.*)`
+
+**Example:**
+
+```cf3
+     env_baseline => "/path/to/image";
+```
+
+**Notes:**
+This function is for future development.   
+
+#### env_spec
+
+**Description:** A `env_spec` string contains a technology specific 
+set of promises for the virtual instance.
+
+This is the preferred way to specify the resources of an environment on 
+creation; in other words, when `environment_state` is create.
+
+**Type:** `string`
+
+**Allowed input range:** `.*`
+
+**Example:**
+
+```cf3
+     body environment_resources virt_xml(host)
+     {
+     env_spec => 
+     
+     "<domain type='xen'>
+       <name>$(host)/name>
+       <os>
+         <type>linux/type>
+         <kernel>/var/lib/xen/install/vmlinuz-ubuntu10.4-x86_64/kernel>
+         <initrd>/var/lib/xen/install/initrd-vmlinuz-ubuntu10.4-x86_64/initrd>
+         <cmdline> kickstart=http://example.com/myguest.ks /cmdline>
+       </os>
+       <memory>131072/memory>
+       <vcpu>1/vcpu>
+       <devices>
+         <disk type='file'>
+           <source file='/var/lib/xen/images/$(host).img'/>
+           <target dev='sda1'/>
+         </disk>
+         <interface type='bridge'>
+           <source bridge='xenbr0'/>
+           <mac address='aa:00:00:00:00:11'/>
+           <script path='/etc/xen/scripts/vif-bridge'/>
+         </interface>
+         <graphics type='vnc' port='-1'/>
+         <console tty='/dev/pts/5'/>
+       </devices>
+     </domain>
+     ";
+     }
+```
+
+**Notes:**  
+
+This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
+
+**History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)
+
+### environment_state
 
 **Description:** The `environment_state` defines the desired dynamic state
  of the specified environment.
-
+ 
 **Type:** (menu option)
 
-**Allowed input range:**
+**Allowed input range:**   
 
 * `create`
 
@@ -75,12 +342,12 @@ The guest machine is shut down and deallocated, but no files are removed.
 
 * `running`
 
-The guest machine is in a running state, if it previously exists.
+The guest machine is in a running state, if it previously exists.   
 
 * `suspended`
 
 The guest exists in a suspended state or a shutdown state. If the guest
-is running, it is suspended; otherwise it is ignored.
+is running, it is suspended; otherwise it is ignored.   
 
 * `down`
 
@@ -93,108 +360,66 @@ guest_environments:
 
  linux::
 
- "my-kvm1"
+ "bishwa-kvm1"
                  comment => "Keep this vm suspended",
-           guest_details => kvm,
-             guest_state => "suspended";
+   environment_resources => myresources,
+        environment_type => "kvm",
+       environment_state => "suspended",
+        environment_host => "ubuntu";
 
 ```
 
+### environment_type
 
-### guest_details
+**Description:** `environment_type` defines the virtual environment type.
 
-**Type:** `body guest_details`
+The currently supported types are those supported by *libvirt*. More
+will be added in the future.
 
+**Type:** (menu option)
 
+**Allowed input range:**   
 
-#### guest_cpus
-
-**Allowed input range:** 0-9999
-**Description:** Number of virtual CPUs in the environment
-**Type:** `int`
-
-#### guest_memory
-**Allowed input range:** 0-9999
-**Description:**  Amount of primary storage (RAM) in the virtual environment (KB)
-**Type:** `int`
-
-#### guest_disk
-**Allowed input range:**
-**Description:** Amount of secondary storage (DISK) in the virtual environment (MB)
-**Type:** `int`
-
-#### guest_image_path
-**Allowed input range:** CF_ABSPATHRANGE
-**Description:** The path to an image with which to initialize the virtual environment
-**Type:** `string`
-
-#### guest_image_name
-**Description:** The name of the image which forms the initial state of the virtual environment
-**Type:** `string`
-
-#### guest_libvirt_xml
-**Allowed input range:** CF_ANYSTRING
-**Description:** A string containing a libvirt specific set of promises for the virtual instance. This
-XML excerpt replaces many of the other options, and is passed raw into the libvirt framework.
+```
+    xen
+    kvm
+    esx
+    vbox
+    test
+    xen_net
+    kvm_net
+    esx_net
+    test_net
+    zone
+    ec2
+    eucalyptus
+```
 
 **Example:**
 
 ```cf3
-body guest_details kvm_host(host,uuid,kernel,initrd,kickstartcmd,macaddress,memory)
+bundle agent my_vm_cloud
 {
-guest_type => "kvm";
+guest_environments:
 
-guest_libvirt_xml =>
+ scope::
 
- "<domain type='kvm'>
-  <name>$(host)</name>
-  <uuid>$(uuid)</uuid>
-  <memory>$(memory)</memory>
-  <vcpu>1</vcpu>
-  <os>
-    <type arch='x86_64'>hvm</type>
-    <kernel>$(kernel)</kernel>
-    <initrd>$(initrd)</initrd>
-    <cmdline>$(kickstartcmd)</cmdline>
-    <boot dev='hd'/>
-  </os>
-  <features>
-    <acpi/>
-    <apic/>
-    <pae/>
-  </features>
-  <clock offset='utc'/>
-  <on_poweroff>destroy</on_poweroff>
-  <on_reboot>destroy</on_reboot>
-  <on_crash>destroy</on_crash>
-  <devices>
-    <emulator>/usr/bin/kvm</emulator>
-    <disk type='file' device='disk'>
-      <driver name='qemu' type='qcow2'/>
-      <source file='$(diskStorage)/$(host).img'/>
-      <target dev='hda' bus='ide'/>
-      <alias name='ide0-0-0'/>
-      <address type='drive' controller='0' bus='0' unit='0'/>
-    </disk>
-    <interface type='bridge'>
-      <mac address='$(macaddress)'/>
-      <source bridge='vlan1180_br0'/>
-      <model type='virtio'/>
-    </interface>
-    <input type='mouse' bus='ps2'/>
-    <graphics type='vnc' port='5901' autoport='yes'>
-      <listen type='address' address='0.0.0.0'/>
-    </graphics>
-  </devices>
-</domain>
-";
+   "vguest1"
+
+       environment_resources => my_environment_template,
+       environment_interface => vnet("eth0,192.168.1.100/24"),
+       environment_type      => "test",
+       environment_state     => "create",
+       environment_host      => "atlas";
+
+   "vguest2"
+
+       environment_resources => my_environment_template,
+       environment_interface => vnet("eth0,192.168.1.101/24"),
+       environment_type      => "test",
+       environment_state     => "delete",
+       environment_host      => "atlas";
 }
 ```
 
-#### guest_addresses
-**Allowed input range:** ANYSTRING
-**Description:** The IP addresses of the environment's network interfaces (currently unused)
 
-#### guest_network
-**Allowed input range:** any
-**Description:** The hostname of the virtual network (currently unused)

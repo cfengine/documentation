@@ -17,16 +17,13 @@ depends on the [bundle][bundles] type:
 | [meta][meta] - information about promise bundles | x      | x     | x      | x       |
 | [reports][reports] - report a message | x      | x     | x      | x       |
 | [vars][vars] - a variable, representing a value | x      | x     | x      | x       |
-| [addresses][addresses] - configure an address binding |        | x     |        |         |
 | [commands][commands] - execute a command |        | x     |        |         |
 | [databases][databases] - configure a database |        | x     |        |         |
 | [files][files] - configure a file |        | x     |        |         |
-| [interfaces][interfaces] - configure a network interface |        | x     |        |         |
 | [packages][packages] - install a package |        | x     |        |         |
 | [guest_environments][guest_environments] |        | x     |        |         |
 | [methods][methods] - take on a whole bundle of other promises |        | x     |        |         |
 | [processes][processes] - start or terminate processes |        | x     |        |         |
-| [routes][routes] - configure a static route |        | x     |        |         |
 | [services][services] - manage services or define new abstractions |        | x     |        |         |
 | [storage][storage] - verify attached storage |        | x     |        |         |
 | [users][users] - add or remove users |        | x     |        |         |
