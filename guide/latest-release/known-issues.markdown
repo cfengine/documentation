@@ -69,6 +69,15 @@ To change the setting you must edit the from email address in
 $config['appemail'] = 'admin@organisation.com';
 ```
 
+### Enterprise monitoring graphs ###
+
+Monitoring graphs are disabled by default in CFEngine Enterprise 3.6 and later versions.
+To enable them, change monitoring_include in masterfiles/lib/VERSION/reports.cf to e.g. ".*".
+Note that this has a significant impact on the resource consumption of your hub.
+
+Monitoring graphs are not supported on all platforms, currently Aix and Windows do not have this data.
+
+
 ### Enterprise reports not collected from 3.5
 CFEngine Enterprise 3.6 has a new diff-based report collection mechanism,
 and so a 3.6 hub cannot collect reports from 3.5 or earlier agents.
