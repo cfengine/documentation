@@ -6,12 +6,7 @@ tags: [reference, bundle agent, methods, promises, promise types]
 ---
 
 Methods are compound promises that refer to whole bundles of promises.
-Methods may be parameterized. Methods promises are written in a form
-that is ready for future development. The promiser object is an abstract
-identifier that refers to a collection (or pattern) of lower level
-objects that are affected by the promise-bundle. Since the use of these
-identifiers is for the future, you can simply use any string here for
-the time being.
+Methods may be parameterized.
 
 ```cf3
 
@@ -25,7 +20,9 @@ the time being.
 
 Methods are useful for encapsulating repeatedly used configuration issues and 
 iterating over parameters. They are implemented as bundles that are run 
-inline.
+inline. Note that if the bundle you specify requires no parameters you
+may omit the `usebundle` attribute and give the bundle name directly in
+the promiser string.
 
 ```cf3
     bundle agent example
