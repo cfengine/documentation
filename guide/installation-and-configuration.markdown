@@ -12,7 +12,9 @@ tags: [getting started, installation]
 
 See [General Installation][General Installation] for a more detailed guide for how to install CFEngine, and links to installation guides for various versions of CFEngine and different configurations.
 
-See also: [Pre-Installation Checklist][Pre-Installation Checklist], [Supported Platforms and Versions][Supported Platforms and Versions] 
+See [Secure Bootstrap] for a guide on bootstrapping CFEngine in untrusted networks.
+
+See also: [Pre-Installation Checklist][Pre-Installation Checklist], [Supported Platforms and Versions][Supported Platforms and Versions]
 
 ## Setup & Configuration ##
 
