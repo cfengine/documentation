@@ -12,14 +12,14 @@ and running on the policy hub, the machine that distributes the policy
 to all the clients. It also presumes that CFEngine is installed, but not
 yet configured, on a number of clients.
 
-This guide presents a step-by-step procedure to securely bootstrap a
+We present a step-by-step procedure to securely bootstrapping a
 number of servers (referred to as *clients*) to the policy hub, over a
 possibly unsafe network.
 
 
 ## Introduction ##
 
-CFEngine's trust model is based on secure exchange of keys. This
+CFEngine's trust model is based the on secure exchange of keys. This
 exchange of keys between *client* and *hub*, can either happen manually
 or automatically. Usually this step is automated as a dead-simple
 "bootstrap" procedure:
@@ -39,6 +39,10 @@ and vice-versa.
 
 ## Manual Trust Establishment ##
 
+This procedure concerns CFEngine version 3.6 or earlier. While this
+fully manual procedure should always work, from version 3.7 onwards
+there is a simpler semi-automatic procedure for establishing trust.
+
 ### On the policy hub ###
 
 We must change the policy we're distributing to fully locked-down
@@ -50,14 +54,14 @@ of ```cf-agent --bootstrap $HUB_IP```) we take care of the following:
   ```trustkeysfrom => {};```
 
 * Since we will be manually bootstrapping the clients, we need to
-  distribute a proper =failsafe.cf= policy. (**NOTE:**
+  distribute a proper `failsafe.cf` policy. (**NOTE:**
   `failsafe.cf` is a file auto-generated in the `inputs` directory when
   we run ```cf-agent --bootstrap```).
 
   In order to do that, we copy hub's `failsafe.cf` to `masterfiles`:
   ```cp /var/cfengine/inputs/failsafe.cf /var/cfengine/masterfiles/```
 
-  We'll edit that copy in =mastefiles= in the next step.
+  We'll edit that copy in `masterfiles` in the next step.
 
 * All `copy_from` files promises must never connect to an untrusted
   server, which means that the following line should not be found
@@ -66,7 +70,7 @@ of ```cf-agent --bootstrap $HUB_IP```) we take care of the following:
 
   All occurences of `trustkey` in `masterfiles` directory should be
   changed to "false", or be removed (since it defaults to false
-  anyway). **WARNING:** It is certain that `failsafe.cf` that we copied in
+  anyway). It is certain that `failsafe.cf` that we copied in
   the previous step will contain such occurences that should be
   changed. (Those occurences are the reason that automatic bootstrapping
   requires a trusted network).
@@ -94,7 +98,7 @@ We should **not** follow the automatic method, i.e. the
   ```echo $HUB_IP > /var/cfengine/policy_server.dat```
 
 * Manually copy the modified `failsafe.cf` from hub's `masterfiles`
-  directory into client's `inputs` directory. **WARNING:** You should do
+  directory into client's `inputs` directory. You should do
   it in a secure manner, for example using `scp` with properly trusted
   fingerprint of the remote host.
 
