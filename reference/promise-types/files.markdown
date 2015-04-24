@@ -2057,25 +2057,25 @@ Seas include {{#seas}} {{.}},{{/seas}}.
 {% endraw %}
 
 * ```{{#classes.solar_system}}``` starts the beginning of a class
-block. Unlike CFEngine’s normal code this block must be ended with
-```{{/classes.solar_system}}```.  Everything in-between is evaluated
-when the class solar_system is true.
+  block. Unlike CFEngine’s normal code this block must be ended with
+  ```{{/classes.solar_system}}```.  Everything in-between is evaluated
+  when the class solar_system is true.
 
 * Strings take the form of ```{{vars.bundle.name}}``` as seen in
-```{{vars.main.home_star}}``` and ```{{vars.main.a[moon]}}```. It’s
-best to avoid arrays and use JSON data containers instead.
+  ```{{vars.main.home_star}}``` and ```{{vars.main.a[moon]}}```. It’s
+  best to avoid arrays and use JSON data containers instead.
 
 * ```{{#vars.main.planets}}``` starts the iteration of the list
-main.planets.  Everything between that and
-```{{/vars.main.planets}}``` will be duplicated for each element in
-the list. Each element will be printed where ```{{.}}``` is found.
+  main.planets.  Everything between that and
+  ```{{/vars.main.planets}}``` will be duplicated for each element in
+  the list. Each element will be printed where ```{{.}}``` is found.
 
 * ```{{#vars.main.earth}}``` tells the agent to begin iterating
-through the JSON data container called earth. From there you can use
-short forms of the JSON data like ```{{position}}``` for the string
-position and ```{{#oceans}} {{.}},{{/oceans}}``` for the list oceans
-and the element position.  Note that unlike classic CFEngine
-templates, _mustache templates will print all duplicate lines_.
+  through the JSON data container called earth. From there you can use
+  short forms of the JSON data like ```{{position}}``` for the string
+  position and ```{{#oceans}} {{.}},{{/oceans}}``` for the list oceans
+  and the element position.  Note that unlike classic CFEngine
+  templates, _mustache templates will print all duplicate lines_.
 
 The resulting file:
 
