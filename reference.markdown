@@ -20,6 +20,7 @@ page.
 * [Standard Library][Standard Library]
 * [Design Center][Design Center]
 * [All Promise and Body Types][All Promise and Body Types]
+* [Macros][Macros]
 
 See Also: [All Promise Types][All Promise and Body Types#All Promise Types], [All Body Types][All Promise and Body Types#All Body Types]
 
