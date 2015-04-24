@@ -27,7 +27,7 @@ import cfdoc_sourcelinks as sourcelinks
 
 import sys
 
-config = environment.validate()
+config = environment.validate(sys.argv[1])
 try:
 	sourcelinks.run(config)
 except:

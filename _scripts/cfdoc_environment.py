@@ -21,8 +21,9 @@
 # THE SOFTWARE.
 
 import os
+import re
 
-def validate():
+def validate(branch):
 	config = {}
 	config["WORKDIR"] = os.environ.get('WRKDIR')
 	if config["WORKDIR"] == None:
@@ -42,6 +43,12 @@ def validate():
 	if not os.path.exists(config["markdown_directory"]):
 		print "Directory 'documentation' not found in WORKDIR"
 
+	if (branch == "master"):
+		all_versions = [ent for ent in os.listdir(config["WORKDIR"] + "/masterfiles/lib") if (re.match("^[0-9].*", ent))]
+		version = sorted(all_versions)[-1]
+	else:
+		version = branch
+
 	config["include_directories"] = []
 	config["include_directories"].append(config["WORKDIR"])
 	config["include_directories"].append(config["WORKDIR"] + "/core/examples")
@@ -49,6 +56,7 @@ def validate():
 	config["include_directories"].append(config["WORKDIR"] + "/documentation-generator/_generated")
 	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/_generated")
 	config["include_directories"].append(config["WORKDIR"] + "/masterfiles")
+	config["include_directories"].append(config["WORKDIR"] + "/masterfiles/lib/" + version)
 	config["include_directories"].append(config["WORKDIR"] + "/core/tests")
 
 	config["reference_path"] = config["project_directory"] + "/_references.md"

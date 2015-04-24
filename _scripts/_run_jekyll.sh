@@ -29,7 +29,7 @@ if [ "$?" -gt "0" ]; then
    exit 1;
 fi
 
-$WRKDIR/documentation-generator/_scripts/cfdoc_postprocess.py
+$WRKDIR/documentation-generator/_scripts/cfdoc_postprocess.py "$@"
 if [ "$?" -gt "0" ]; then
    exit 2;
 fi

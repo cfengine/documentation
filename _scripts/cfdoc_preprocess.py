@@ -32,7 +32,7 @@ import cfdoc_qa as qa
 import sys
 import os
 
-config = environment.validate()
+config = environment.validate(sys.argv[1])
 qa.initialize(config)
 
 try:
