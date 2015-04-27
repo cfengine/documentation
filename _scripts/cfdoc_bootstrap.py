@@ -26,7 +26,7 @@ import cfdoc_environment as environment
 import cfdoc_git as git
 import sys
 
-config = environment.validate()
+config = environment.validate(sys.argv[1])
 
 try:
 	git.createData(config)
