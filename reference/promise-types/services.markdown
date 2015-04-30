@@ -131,8 +131,11 @@ for services promises.
 
 **Description:** Policy for CFEngine service status.
 
-If set to `start`, CFEngine will keep the service in a running
-state, while `stop` means that the service is kept in a stopped state.
+If set to `start`, CFEngine will keep the service in a running state,
+while `stop` means that the service is kept in a stopped state. Use
+`enable` to enable the service permanently, for instance in systemd
+environments.
+
 `disable` implies `stop`, and ensures that the service can not be started 
 directly, but needs to be enabled somehow first (e.g. by changing file 
 permissions).
@@ -144,6 +147,7 @@ permissions).
 ```
     start
     stop
+    enable
     disable
     restart
     reload
