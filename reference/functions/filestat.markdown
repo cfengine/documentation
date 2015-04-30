@@ -37,6 +37,11 @@ variable does not expand.
     * `dirname` : the directory portion of the file name
     * `linktarget` : if the file is a `symlink`, its *final* target.  The target is chased up to 32 levels of recursion.  On Windows, this returns the file name itself.
     * `linktarget_shallow` :  if the file is a `symlink`, its *first* target.  On Windows, this returns the file name itself.
+    * `xattr` : a string with newline-separated extended attributes and SELinux contexts in `key=value<NEWLINE>key2=value2<NEWLINE>tag1<NEWLINE>tag2` format.
+
+On Mac OS X, you can list and set extended attributes with the `xattr` utility.
+
+On SELinux, the contexts are the same as what you see with `ls -Z`.
 
 **Example:**
 
