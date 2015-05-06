@@ -56,6 +56,24 @@ only support protocol version 1. Protocol version 1 is still the default in
 * [Process promises][processes] depend on the `ps` native tool, which by default truncates lines at 128 columns on HP-UX. It is recommended to edit the file `/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting to 1024 to guarantee that process promises will work smoothly on the platform.
 * [`edit_xml` bundles][bundle edit_xml] do not work on HP-UX. (fixed in CFEngine 3.6.4)
 
+
+### Enterprise Mission Portal is slow and/or /var/cfengine/state/pg consumes a lot of space/iops or CPU utilization is high ###
+
+With ceratin policies, the BenchmarksLog table in the PostgreSQL database is known to grow large with CFEngine versions from 3.6.0 to and including 3.6.5. This issue is resolved in CFEngine 3.6.6 and later versions.
+To test for the problem, run the following commands on the hub:
+
+* /var/cfengine/bin/psql cfdb
+* SELECT nspname || '.' || relname AS "relation", pg_size_pretty(pg_total_relation_size(C.oid)) AS "total_size" FROM pg_class C LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace) WHERE nspname NOT IN ('pg_catalog', 'information_schema') AND C.relkind <> 'i' ORDER BY pg_total_relation_size(C.oid) DESC LIMIT 20;
+
+If the table public.__benchmarkslog is larger than 2-3 GB, you are likely affected by this isse. The table is not used unless you have created custom queries against it yourself. To resolve the issue, please run these commands after a fresh install of any hub prior to version 3.6.6:
+
+* \# /var/cfengine/bin/psql cfdb
+* cfdb=# truncate table __benchmarkslog;
+* cfdb=# create index benchmarks_subselect ON __benchmarkslog (hostkey, eventname) WITH (FILLFACTOR = 70);
+
+If your hub is still slow or BenchmarksLog was not the problem, please contact support.
+
+
 ### Enterprise emails sent for alert noticies come from 'admin@orginization.com'.
 There is currently no setting in Mission Portal to configure the sender email
 address. This issue is on the [backlog](https://dev.cfengine.com/issues/6726)
