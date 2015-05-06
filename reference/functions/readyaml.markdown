@@ -22,4 +22,4 @@ file `filename` and returns the result as a `data` variable.
          data =>  readyaml("/tmp/data.yaml", 4000);
 ```
 
-**See also:** `parsejson()`, `parseyaml()`, `storejson()`, `mergedata()`, and `data` documentation.
+**See also:** `readdata()`, `parsejson()`, `parseyaml()`, `storejson()`, `mergedata()`, and `data` documentation.

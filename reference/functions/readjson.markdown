@@ -22,4 +22,4 @@ file `filename` and returns the result as a `data` variable.
          data =>  readjson("/tmp/data.json", 4000);
 ```
 
-**See also:** `parsejson()`, `storejson()`, `parseyaml()`, `readyaml()`, `mergedata()`, and `data` documentation.
+**See also:** `readdata()`, `parsejson()`, `storejson()`, `parseyaml()`, `readyaml()`, `mergedata()`, and `data` documentation.
