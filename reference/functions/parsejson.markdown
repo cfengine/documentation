@@ -24,6 +24,11 @@ types of quotes around a string).
       "loadthis"
 
          data =>  parsejson('{ "key": "value" }');
+
+      # inline syntax since 3.7
+      "loadthis_inline"
+
+         data =>  '{ "key": "value" }';
 ```
 
-**See also:** `readjson()`, `parseyaml()`, `readyaml()`, `mergedata()`, and `data` documentation.
+**See also:** `readjson()`, `parseyaml()`, `readyaml()`, `mergedata()`, `Inline YAML and JSON data`, and `data` documentation.
