@@ -242,8 +242,8 @@ Data containers can be passed to another bundle with the
 ### Some useful tips for using data containers
 
 * to extract just `container[x]`, use `mergedata("container[x]")`
-* since 3.7, to wrap a container in an array, use `mergedata("[ container ]")`
-* since 3.7, to wrap a container in a map, use `mergedata('{ "mykey": container }')`
+* to wrap a container in an array, use `mergedata("[ container ]")`
+* to wrap a container in a map, use `mergedata('{ "mykey": container }')`
 * they act like "classic" CFEngine arrays in many ways
 * `getindices()` and `getvalues()` work on any level, e.g. `getvalues("container[x][y]")`
 * in reports, you have to reference a part of the container that can be expressed as a string.  So for instance if you have the container `c` with data `{ "x": { "y": 50 }, "z": [ 1,2,3] }` we have two top-level keys, `x` and `z`.  If you report on `$(c[x])` you will not get data, since there is no string there.  But if you ask for `$(c[x][y])` you'll get `50`, and if you ask for `$(c[z])` you'll get implicit iteration on `1,2,3` (just like a slist in a "classic" CFEngine array).
