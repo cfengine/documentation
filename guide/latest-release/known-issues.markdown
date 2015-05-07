@@ -74,6 +74,11 @@ If the table public.__benchmarkslog is larger than 2-3 GB, you are likely affect
 If your hub is still slow or BenchmarksLog was not the problem, please contact support.
 
 
+### Unsupported direct upgrade from CFEngine Enterprise 3.6.0 / 3.6.1 to 3.6.5 ###
+Due to an issue in Enterprise 3.6.5 direct upgrade from 3.6.0 and 3.6.1 may resolve with database schema curruption.
+Upgrade from 3.6.0 / 3.6.1 to 3.6.5 can be done by upgrading first to 3.6.2 / 3.6.3 / 3.6.4 and then to 3.6.5.
+
+
 ### Enterprise emails sent for alert noticies come from 'admin@orginization.com'.
 There is currently no setting in Mission Portal to configure the sender email
 address. This issue is on the [backlog](https://dev.cfengine.com/issues/6726)
