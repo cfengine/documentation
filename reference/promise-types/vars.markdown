@@ -206,11 +206,44 @@ containers, such as `readjson()`, `readyaml()`, `parsejson()`, or
 existing data containers with `mergedata()`. They can *NOT* be
 modified, once created.
 
+### Inline YAML and JSON data
+
+Data containers can be specified inline, without calling functions.
+For example:
+
+```cf3
+    vars:
+      # JSON or YAML can be inlined since CFEngine 3.7
+      "inline1" data => '{"key":"value"}'; # JSON
+      "inline2" data => '---\n- key2: value2'; # YAML requires "---\n" header
+```
+
+Inline YAML data has to begin with the `---\n` preamble. This preamble
+is normally optional but here (for inline YAML) it's required by
+CFEngine.
+
+Inline JSON or YAML data may contain CFEngine variable references.
+They will be expanded at runtime as if they were simply calls to
+`readjson()` or `readyaml()`, which also means that syntax error in
+the JSON or YAML data will only be caught when your policy is actually
+being evaluated.
+
+If the inline JSON or YAML data does **not** contain CFEngine variable
+references, it will be parsed at compile time, which means that
+`cf-promises` will be able to find syntax errors in your JSON or YAML
+data early. Thus it is highly recommended that you try to avoid
+variable references in your inline JSON or YAML data.
+
+### Passing data containers to bundles
+
 Data containers can be passed to another bundle with the
 `@(varname)` notation, similarly to the list passing notation.
 
-Some useful tips for using data containers:
+### Some useful tips for using data containers
 
+* to extract just `container[x]`, use `mergedata("container[x]")`
+* since 3.7, to wrap a container in an array, use `mergedata("[ container ]")`
+* since 3.7, to wrap a container in a map, use `mergedata('{ "mykey": container }')`
 * they act like "classic" CFEngine arrays in many ways
 * `getindices()` and `getvalues()` work on any level, e.g. `getvalues("container[x][y]")`
 * in reports, you have to reference a part of the container that can be expressed as a string.  So for instance if you have the container `c` with data `{ "x": { "y": 50 }, "z": [ 1,2,3] }` we have two top-level keys, `x` and `z`.  If you report on `$(c[x])` you will not get data, since there is no string there.  But if you ask for `$(c[x][y])` you'll get `50`, and if you ask for `$(c[z])` you'll get implicit iteration on `1,2,3` (just like a slist in a "classic" CFEngine array).
@@ -259,6 +292,10 @@ Output:
      "loaded3" data => readyaml("/tmp/myfile.yaml", 40000);
      "loaded4" data => parseyaml('- key2: value2');
      "merged1" data => mergedata(loaded1, loaded2, loaded3, loaded4);
+
+     # JSON or YAML can be inlined since CFEngine 3.7
+     "inline1" data => '{"key":"value"}'; # JSON
+     "inline2" data => '---\n- key2: value2'; # YAML requires "---\n" header
 
 ```
 
