@@ -5,8 +5,9 @@ published: true
 tags: [reference, bundle common, reports, promises]
 ---
 
-Reports promises simply print messages. Outputting a message without qualification can be a dangerous operation. In a large installation
-it could unleash an avalanche of messaging.
+Reports promises simply print messages. Outputting a message without
+qualification can be a dangerous operation. In a large installation it could
+unleash an avalanche of messaging.
 
 ```cf3
     reports:
@@ -16,8 +17,8 @@ it could unleash an avalanche of messaging.
        ...;
 ```
 
-Messages outputted from report promises are prefixed with the letter R to distinguish them from other output, for example from `commands`.
-
+Messages outputted from report promises are prefixed with the letter R to
+distinguish them from other output, for example from `commands`.
 
 ```cf3
     bundle agent report
@@ -30,6 +31,44 @@ Messages outputted from report promises are prefixed with the letter R to distin
 
          showstate => { "otherprocs", "rootprocs" };
     }
+```
+
+Reports do not fundamentaly make changes to the system and report type promise
+outcomes are *always* considerd kept.
+
+```cf3
+bundle agent report
+{
+  vars:
+    "classes" slist => classesmatching("report_.*");
+
+  reports:
+    "HI"
+      classes => scoped_classes_generic("bundle", "report");
+
+    "found class: $(classes)";
+}
+
+body classes scoped_classes_generic(scope, x)
+# Define x prefixed/suffixed with promise outcome
+{
+  scope => "$(scope)";
+  promise_repaired => { "promise_repaired_$(x)", "$(x)_repaired", "$(x)_ok", "$(x)_reached" };
+  repair_failed => { "repair_failed_$(x)", "$(x)_failed", "$(x)_not_ok", "$(x)_not_kept", "$(x)_not_repaired", "$(x)_reached" };
+  repair_denied => { "repair_denied_$(x)", "$(x)_denied", "$(x)_not_ok", "$(x)_not_kept", "$(x)_not_repaired", "$(x)_reached" };
+  repair_timeout => { "repair_timeout_$(x)", "$(x)_timeout", "$(x)_not_ok", "$(x)_not_kept", "$(x)_not_repaired", "$(x)_reached" };
+  promise_kept => { "promise_kept_$(x)", "$(x)_kept", "$(x)_ok", "$(x)_not_repaired", "$(x)_reached" };
+}
+```
+
+```console
+$ cf-agent -KIf ./example_report_outcomes.cf -b report
+2015-05-13T12:48:12-0500     info: Using command line specified bundlesequence
+R: HI
+R: found class: report_ok
+R: found class: report_kept
+R: found class: report_reached
+R: found class: report_not_repaired
 ```
 
 ****
