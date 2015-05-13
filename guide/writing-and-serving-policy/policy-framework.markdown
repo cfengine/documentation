@@ -175,7 +175,7 @@ Keep referring to `def.cf` as you read this.
 
 Implementation (warning: advanced usage):
 
-[%CFEngine_include_snippet(def.cf, .*)%]
+[%CFEngine_include_snippet(masterfiles/controls/3.7/def.cf, .*)%]
 
 #### How it works ####
 
