@@ -23,7 +23,7 @@ reporting is configured in `report_data_select`. `default_data_select_host`
 defines the data to be collected for a non policy hub and
 `default_data_select_policy_hub` defines the data that should be
 collected for a policy hub. Both body definitions can be found in the
-`masterfiles/lib/<VERSION>/reports.cf`. As of CFEngine 3.6.0 a list of regular
+`masterfiles/controls/<VERSION>/reports.cf`. As of CFEngine 3.6.0 a list of regular
 expressions matching promise meta tags for either
 [inclusion][access#metatags_include] or [exclusion][access#metatags_exclude]
 are how you control which variables and classes are collected for central

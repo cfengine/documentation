@@ -79,7 +79,7 @@ updated in the check step.
 
 Implementation (warning: advanced usage):
 
-[%CFEngine_include_snippet(masterfiles/update/update_policy.cf, .*)%]
+[%CFEngine_include_snippet(masterfiles/cfe_internal/update/update_policy.cf, .*)%]
 
 ##### cfe_internal_update_processes
 
@@ -221,7 +221,7 @@ example of such a bundle in `services/autorun/hello.cf`:
 On by default. Rotates CFEngine's own logs. Here is the
 `cfe_internal_log_rotation` bundle implementation:
 
-[%CFEngine_include_snippet(masterfiles/cfe_internal/CFE_cfengine.cf, .*bundle\s+agent\s+cfe_internal_log_rotation, \})%]
+[%CFEngine_include_snippet(masterfiles/cfe_internal/core/log_rotation.cf, .*bundle\s+agent\s+cfe_internal_log_rotation, \})%]
 
 ##### cfengine_internal_agent_email
 
