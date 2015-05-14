@@ -111,3 +111,9 @@ and so a 3.6 hub cannot collect reports from 3.5 or earlier agents.
 
 Currently the 3.5 agents will not show in Mission Portal at all, but
 you will see them by running `cf-key -s` on the hub.
+
+
+### Enterprise software inventory is not out-of-the-box ###
+
+Software inventory is not out-of-the-box for reporing from the hub on Windows platforms.
+In order to add it, please contact support for a custom policy.
