@@ -83,7 +83,7 @@ requirements when doing this.
 It is recommended that /var/cfengine/state/pg is mounted on a **separate disk**. This will give PostgreSQL, which is very disk I/O intensive, dedicated resources.
 
 Plan for approximately **100MB of disk space per bootstrapped agent**.
-This means that for a server with 5000 hosts, you should have at least 500 GB available on the database partition.
+This means that, for a server with 5000 hosts, you should have at least 500 GB available on the database partition.
 
 xfs is strongly recommended as the file system type for the file system mounted on /var/cfengine/state/pg. ext4 can be used as an alternative, but ext3 should be avoided.
 
@@ -97,7 +97,7 @@ The disk that serves PostgreSQL (/var/cfengine/state/pg) should be able to perfo
 
 ### Memory
 
-Minimum 2GB memory, but not lower than **8MB per bootstrapped agent**. This means that for a server with 5000 hosts, you should have at least 40GB of memory.
+Minimum 2GB memory, but not lower than **8MB per bootstrapped agent**. This means that, for a server with 5000 hosts, you should have at least 40GB of memory.
 
 
 ### CPU
