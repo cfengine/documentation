@@ -94,6 +94,14 @@ The disk that serves PostgreSQL (/var/cfengine/state/pg) should be able to perfo
 
 **Note** Your storage IOPS specification may be given in 4KiB block size, in which case you would need to divide it by 4 to get the corresponding 16KiB *theoretical maximum*.
 
+### Open file descriptors
+
+The policy server should ideally be able to accept connections from all clients; i.e. to allow at least as many incoming connections as there are clients.
+The system limit for this is controlled by `ulimit -n`; so the parent process from which you bootstrap should, for a server with 5000 hosts, run `ulimit -n 5000` first.
+You should also add such a `ulimit -n` command to the script that implements `service cfengine3 start` (and `restart`).
+For very large numbers of clients, it may be advantageous to build a custom kernel to allow setting `ulimit -n` high enough.
+You should also amend the value of `maxconnections` set in `cf_serverd.cf` under `/var/cfengine/masterfiles/controls/` to the number of clients, likewise.
+
 
 ### Memory
 
