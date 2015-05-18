@@ -292,8 +292,10 @@ be avoided.
 
 A rough rule of thumb for scaling of small updates is set the splay
 time between 1-5 minutes for up a few thousand hosts. The `splaytime`
-should not be set to a value larger than the `cf-execd` scheduling
+should be set to a value less than the `cf-execd` scheduling
 interval, else multiple clients might contend for data.
+In other words, `splaytime` + `cf-agent` run time should be less
+than the scheduling interval.
 
 **Type**: `int`
 
