@@ -675,7 +675,7 @@ metatags        | {inventory,attribute_name=none,source=agent,hardclass}
 
 ### Table: VariablesLog
 
-CFEngine contexts set on hosts by CFEngine over period of time.
+CFEngine variables set on hosts by CFEngine over period of time.
 
 **Columns:**
 
@@ -683,7 +683,7 @@ CFEngine contexts set on hosts by CFEngine over period of time.
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
 * **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when variable is set in its current form. 
+    Timestamp since when variable is set in its current form.
     **Note:** The statement if true till present time or newer entry claims otherwise.
 
 * **ChangeOperation** *(`ADD`,`CHANGE`,`REMOVE`,`UNTRACKED`)*
