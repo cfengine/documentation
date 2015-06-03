@@ -114,7 +114,8 @@ commands (assuming you are already in your local repository checkout):
 
 #### Enable VCS deployments in the versioned `update.cf` ###
 
-In the file `update.cf` in your versioned masterfiles, change 
+In the file `update_def.cf` under a version-specific subdirectory of
+<code>controls/</code> in your version-controlled masterfiles, change
 
     #"cfengine_internal_masterfiles_update" expression => "enterprise.!(cfengine_3_4|cfengine_3_5)";
     "cfengine_internal_masterfiles_update" expression => "!any";
