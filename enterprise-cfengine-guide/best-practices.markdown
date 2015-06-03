@@ -110,7 +110,7 @@ commands (assuming you are already in your local repository checkout):
     cp -r /var/cfengine/masterfiles/* .
     git add *
     git commit -m 'Initial masterfiles check in'
-    git push
+    git push origin master
 
 #### Enable VCS deployments in the versioned `update.cf` ###
 
@@ -135,7 +135,7 @@ trick:
 
     git add update.cf
     git commit -m 'Enabled auto-policy updates'
-    git push
+    git push origin master
 
 Now you need to do the first-time deployment, whereupon this new
 `update.cf` and the rest of your versioned masterfiles will overwrite
