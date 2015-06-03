@@ -74,9 +74,9 @@ your hub (everything needs to be run as user `cfapache` for the
 permissions to be set correctly. The first two commands setup some
 basic information needed by git to manipulate the repository):
 
-    git config user.email "your@email.address"
-    git config user.name "Your Name"
     su - cfapache
+    git config --global user.email "your@email.address"
+    git config --global user.name "Your Name"
     git clone /opt/cfengine/masterfiles.git
 
 And then make all the changes in the checked-out `masterfiles`
