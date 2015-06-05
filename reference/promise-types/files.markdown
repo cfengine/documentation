@@ -1830,7 +1830,9 @@ If you don't specify a `template_data` container with Mustache
 templates, the output of the function `datastate()` is used instead, so
 you can then use `classes.x` as a boolean trigger based on class `x`
 and `vars.bundlename.y` to get the value of variable `y` in bundle
-`bundlename`.
+`bundlename`. The advantage of specifying `template_data` however, is
+that variable references become shorter, and that you can change the
+data source without changing the Mustache template.
 
 The full specification for Mustache templates is at http://mustache.github.io/
 
