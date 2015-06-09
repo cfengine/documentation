@@ -6,17 +6,32 @@ sorting: 50
 tags: [manuals, writing policy, policy framework, masterfiles, def.cf, update.cf]
 ---
 
-The CFEngine policy framework is called the **masterfiles** because
-the files live in `/var/cfengine/masterfiles` on the policy server (on
-the clients, and note the policy server is typically also a client,
-they are cached in `/var/cfengine/inputs`).
+The CFEngine policy framework is called the **Masterfiles Policy Framework**,
+**MPF**, or simpley **masterfiles** because the files live in
+`/var/cfengine/masterfiles` on the policy server (on the clients, and
+note the policy server is typically also a client, they are cached in
+`/var/cfengine/inputs`).
 
 The following configuration files are part of the default CFEngine 
 installation in `/var/cfengine/masterfiles`, and have special roles.
 
+The Masterfiles Policy Framework is continually updated. You can track
+its development on
+[github](https://github.com/cfengine/masterfiles/). Noteable changes
+to the framework are documented in the changelog.
+
 ## Setting up ##
 
-First, review `update.cf` and `def.cf`.  Most settings you need to change will live here.
+First, review `update_def` and `def`.  Most settings you need to
+change will live here.
+
+As of CFEngine version 3.7 it is allowed (and reccomended) to use
+`def.json` to specify things traditionally set in `update.cf` and
+`def.cf`.
+
+We will cover the policy in the order it is activated, starting with
+the update.cf and its bundlesequence followed by promises.cf and
+its bundlesequence.
 
 ### update.cf
 
@@ -33,10 +48,12 @@ you risk losing control of your system (that is, **if CFEngine cannot
 successfully execute `update.cf`, it has no mechanism for distributing
 new policy files**).
 
-By default, the policy defined in update.cf is executed from two sets of 
-promise bodies. The "usual" one (defined in the `bundlesequence` in 
-`promises.cf`) and another in the backup/failsafe `bundlesequence` (defined in 
-`failsafe.cf`).
+By default, the policy defined in update.cf is executed at the
+beginning of a `cf-execd` scheduled agent run (see `schedule` and
+`exec_command` as defined in `body executor control` in
+`controls/3.7/cf_execd.cf`). When the update policy completes
+(regardless of success or failure) the policy defined in `promises.cf`
+is activated.
 
 This is a standalone policy file. You can actually run it with
 `cf-agent -KI -f ./update.cf` but if you don't understand what that
@@ -52,61 +69,49 @@ have to look at why corrupted policies made it into production.
 
 As is typical for CFEngine, the policy and the configuration are
 mixed. In `update.cf` you'll find some very useful settings. Keep
-referring to
-`update.cf` as you
-read this.  We are skipping the nonessential ones.
+referring to `update.cf` as you read this.  We are skipping the
+nonessential ones.
 
 #### How it works ####
 
-There are 4 stages in `update.cf`. See the `bundlesequence`: after
-loading the configuration from `update_def`, we take these steps in
-order.
+There are multiple stages in `update.cf`. This document covers each
+bundle in the order defined by the bundlesequence.
 
-##### cfe_internal_dc_workflow
+##### update_def (bundle)
 
-This step implements the auto-deployment of policies. See
-[Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
-and `cfengine_internal_masterfiles_update` below for details.
+This bundle is defined in
+`controls/$(sys.cf_version_major).$(sys.cfengine_version_minor)/update_def.cf`.
+`bundle common update_def` defines settings and variables that are
+used throughout the update policy.
+ 
+As of CFEngine version 3.7 it is reccomended that these setting
+changes are specified in `def.json` to ease policy framework updates.
 
-##### cfe_internal_update_policy
+###### input_name_patterns (variable)
 
-This step updates the policy files themselves. Basically it's a check
-step that looks at `$(sys.inputdir)/cf_promises_validated` and
-compares it with the policy server's
-`$(sys.masterdir)/cf_promises_validated`. Then there's the actual
-copy, which happens only if the `cf_promises_validated` file was
-updated in the check step.
+A list of regular expressions defining which files should be considerd
+for copying during update.
 
-Implementation (warning: advanced usage):
-
-[%CFEngine_include_snippet(masterfiles/cfe_internal/update/update_policy.cf, .*)%]
-
-##### cfe_internal_update_processes
-
-This step manages the running processes, ensuring `cf-execd` and
-`cf-serverd` and `cf-monitord` are running and doing some other tasks.
-
-##### cfe_internal_update_bins
-
-This step does a self-update of CFEngine. See the Enterprise
-documentation for details; this functionality is unsupported in
-CFEngine Community.
-
-#### update.cf configuration ####
-
-##### input_name_patterns
-
-Change this variable to add more file extensions to the list copied
-from the policy server.  By default this is a pretty sparse list.
-
-##### masterfiles_perms_mode
+###### masterfiles_perms_mode (variable)
 
 Usually you want to leave this at `0600` meaning the inputs will be
 readable only by their owner.
 
-##### cfengine_internal_masterfiles_update
+###### trigger_upgrade (class)
+
+Off by default
+
+When this class is set, the internal CFEngine upgrade mechanism is
+enabled. Currently this upgrade policy is specific to CFEngine
+Enterprise.
+
+###### cfengine_internal_masterfiles_update (class)
 
 Off by default.
+
+This class enables masterfiles automatic update from a version control
+repository. Currently this policy relies on tooling available in
+CFEngine Enterprise.
 
 Turn this on (set to `any`) to auto-deploy policies on the policy
 server, it has no effect on clients. See
@@ -115,18 +120,28 @@ for details on how to use it.
 
 **This may result in DATA LOSS.**
 
-##### cfengine_internal_encrypt_transfers
+###### cfengine_internal_encrypt_transfers (class)
 
 Off by default.
+
+This class enables encryption during policy updates. If you are
+running CFEngine versions 3.6 with `protocol => "2"` or `protocol =>
+"latest"` this settings is unnecessary as all traffic will be
+encapsulated inside of TLS. CFEngine Version 3.7 uses `protocol =>
+"2"` by default.
 
 Turn this on (set to `any`) to encrypt your policy transfers.
 
 Note it has a duplicate in `def.cf`, see below. If they are not
-synchronized, you will get unexpected behavior.
+synchronized, you may get unexpected behavior.
 
-##### cfengine_internal_purge_policies
+###### cfengine_internal_purge_policies (class)
 
 Off by default.
+
+This class causes the update behavior to change from only copying
+changed files down to performing a synchronization by purging files on
+the client that do not exist on the server.
 
 Turn this on (set to `any`) to delete any files in your
 `$(sys.inputdir)` that are not in the policy server's masterfiles.
@@ -134,9 +149,22 @@ Turn this on (set to `any`) to delete any files in your
 **This may result in DATA LOSS.**
 
 Note it has a duplicate in `def.cf`, see below. If they are not
-synchronized, you will get unexpected behavior.
+synchronized, you may get unexpected behavior.
 
-##### cfengine_internal_disable_cf_promises_validated
+###### cfengine_internal_preserve_permissions (class)
+
+Off by default.
+
+Turn this on (set to `any`) to preserve the permissions of the policy
+server's masterfiles when they are copied.
+
+**This may result in FUNCTIONALITY LOSS if your scripts lose their
+exec bits unexpectedly**
+
+Note it has a duplicate in `def.cf`, see below. If they are not
+synchronized, you may get unexpected behavior.
+
+###### cfengine_internal_disable_cf_promises_validated (class)
 
 Off by default.
 
@@ -150,172 +178,46 @@ increased load on the hub will affect scalability.
 Consider using [time_based][Hard and Soft Classes], `select_class` or `dist` based
 classes instead of any to retain some of the benefits.
 
-##### cfengine_internal_preserve_permissions
+###### enable_cfengine_enterprise_hub_ha (class)
 
 Off by default.
 
-Turn this on (set to `any`) to preserve the permissions of the policy
-server's masterfiles when they are copied.
+This class enables the HA policy for CFEngine Enterprise hubs. This
+class is not set by default.
 
-**This may result in FUNCTIONALITY LOSS if your scripts lose their
-exec bits unexpectedly**
+##### cfe_internal_dc_workflow (bundle)
 
-Note it has a duplicate in `def.cf`, see below. If they are not
-synchronized, you will get unexpected behavior.
+This bundle implements the auto-deployment of policies. See
+[Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
+and `cfengine_internal_masterfiles_update` below for details. This
+policy is currently specific to CFEngine Enterprise.
 
-### def.cf
+##### cfe_internal_update_policy (bundle)
 
-After `update.cf` is configured, you can configure the main `def.cf` policy.
-
-This file is included by the main `promises.cf` and you can run that
-with `cf-agent -KI -f ./promises.cf` but as before, make sure you
-understand what this command does before using it.
-
-Keep referring to `def.cf` as you read this.
+This bundle is defined in `cfe_internal/update/update_policy.cf`.
+It updates the policy files themselves. Basically it's a
+check step that looks at `$(sys.inputdir)/cf_promises_validated` and
+compares it with the policy server's
+`$(sys.masterdir)/cf_promises_validated`. Then there's the actual
+copy, which happens only if the `cf_promises_validated` file was
+updated in the check step. You can bypass this check and perform a
+full scan by running `cf-agent -KIf update.cf -D validated_updates_ready`.
 
 Implementation (warning: advanced usage):
 
-[%CFEngine_include_snippet(masterfiles/controls/3.7/def.cf, .*)%]
+[%CFEngine_include_snippet(masterfiles/cfe_internal/update/update_policy.cf, .*)%]
 
-#### How it works ####
+##### cfe_internal_update_bins (bundle)
 
-`def.cf` has some crucial settings used by the rest of CFEngine. It's
-expected that users will edit it but won't normally change the rest of
-the masterfiles except in `services` or if they *know* it's necessary.
+This step does a self-update of CFEngine. See the Enterprise
+documentation for details; this functionality is unsupported in
+CFEngine Community.
 
-This is a simple CFEngine policy, so read on for configuring it.
+##### cfe_internal_update_processes (bundle)
 
-#### def.cf configuration ####
+This step manages the running processes, ensuring `cf-execd` and
+`cf-serverd` and `cf-monitord` are running and doing some other tasks.
 
-##### domain
-
-Set your `domain` to the right value. By default it's used for mail
-and to deduce your file access ACLs.
-
-##### acl #####
-
-The `acl` is crucial. This is used by **every** host, not just the
-policy server. Make sure you only allow hosts you want to allow.
-
-##### trustkeysfrom #####
-
-`trustkeysfrom` tells the policy server from which IPs it should accept
-connections even if the host's key is unknown, trusting it at connect
-time. This is only useful to be open during for bootstrapping these
-hosts. As the comments say, empty it after your hosts have been
-bootstrapped to avoid unpleasant surprises.
-
-##### services_autorun
-
-Off by default.
-
-Turn this on (set to `any`) to auto-load files in `services/autorun`
-and run bundles found that are tagged `autorun`. Here's a simple
-example of such a bundle in `services/autorun/hello.cf`:
-
-[%CFEngine_include_snippet(masterfiles/services/autorun/hello.cf, .*)%]
-
-
-##### cfengine_internal_rotate_logs
-
-On by default. Rotates CFEngine's own logs. Here is the
-`cfe_internal_log_rotation` bundle implementation:
-
-[%CFEngine_include_snippet(masterfiles/cfe_internal/core/log_rotation.cf, .*bundle\s+agent\s+cfe_internal_log_rotation, \})%]
-
-##### cfengine_internal_agent_email
-
-On by default. Enables agent email output from `cf-execd`.
-
-##### cfengine_internal_encrypt_transfers
-
-Duplicate of the one in `update.cf`. They should be set in unison or
-you will get unexpected behavior.
-
-##### cfengine_internal_purge_policies
-
-Duplicate of the one in `update.cf`. They should be set in unison or
-you will get unexpected behavior.
-
-##### cfengine_internal_preserve_permissions
-
-Duplicate of the one in `update.cf`. They should be set in unison or
-you will get unexpected behavior.
-
-##### cfengine_internal_sudoers_editing_enable
-
-Off by default.  Only used on the CFEngine Enterprise hub.
-
-Turn this on (set to `any`) to allow the hub to edit sudoers in order
-for the Apache user to run passwordless sudo cf-runagent (part of
-Mission Portal troubleshooting).
-
-#### def.cf inventory control ####
-
-The inventory is a cool new feature in 3.6. You can disable pieces
-of it (inventory modules) or the whole thing if you wish.
-
-##### disable_inventory
-
-This class is off by default (meaning the inventory is on by default).
-Here's the master switch to disable all inventory modules.
-
-##### disable_inventory_lsb
-
-LSB is the Linux Standard Base, see https://wiki.linuxfoundation.org/en/LSB
-
-By default, this class is turned off (and the module is on) if the LSB
-executable `/usr/bin/lsb_release` can be found. This inventory module
-will populate inventory reports and variables for you with LSB
-details. For details, see [LSB][The Policy Framework#LSB]
-
-##### disable_inventory_dmidecode
-
-By default, this class is turned off (and the module is on) if the
-executable `/usr/sbin/dmidecode` can be found. This inventory module
-will populate inventory reports and variables for you. For details,
-see [DMI decoding][The Policy Framework#DMI decoding]
-
-##### disable_inventory_LLDP
-
-LLDP is a protocol for Link Layer Discovery. See
-http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol
-
-By default, this class is turned off (and the module is on) if the
-executable `/usr/bin/lldpctl` can be found. This inventory module will
-populate variables for you. For details, see [LLDP][The Policy Framework#LLDP]
-
-##### disable_inventory_package_refresh
-
-By default, this class is turned off (and the module is on). This
-inventory module will populate the installed packages for you. On
-CFEngine Enterprise, the available packages will also be populated.
-
-##### disable_inventory_mtab
-
-By default, this class is turned off (and the module is on) if
-`/etc/mtab` exists. This inventory module will populate variables for
-you based on the mounted filesystems. For details, see [mtab][The Policy Framework#mtab]
-
-##### disable_inventory_fstab
-
-By default, this class is turned off (and the module is on) if
-`$(sys.fstab)` (usually `/etc/fstab` or `/etc/vfstab`) exists. This
-inventory module will populate variables for you based on the defined
-filesystems. For details, see [fstab][The Policy Framework#fstab]
-
-##### disable_inventory_proc
-
-By default, this class is turned off (and the module is on) if `/proc`
-is a directory. This inventory module will populate variables for you
-from some of the contents of `/proc`. For details, see [procfs][The Policy Framework#procfs]
-
-##### disable_inventory_cmdb
-
-By default, this class is turned on (and the module is off).
-
-Turn this on (set to `any`) to allow each client to load a `me.json`
-file from the server and load its contents. For details, see [CMDB][The Policy Framework#CMDB]
 
 ### promises.cf
 
@@ -331,8 +233,6 @@ parameter, read it as "run my `promises.cf`".
 It should contain all of the basic configuration
 settings, including a list of other files to include. In normal
 operation, it must also have a `bundlesequence`.
-
-#### promises.cf configuration ####
 
 ##### bundlesequence #####
 
@@ -355,6 +255,251 @@ from other lists, or you can use methods promises as an alternative
 for composing bundles for different classes. This is an advanced topic
 and a risky area (if you get it wrong, your policies will not
 validate) so make sure you test your changes carefully!
+
+##### inventory_control (bundle)
+
+The inventory policy was added in CFEngine version 3.6. Inventory
+modules are desinged to define classes and variables based on the
+inspected state of the system. These classes and variales can be
+levereged when writing policy, and in CFEngine Enterprise they can be
+reported on from Mission Portal. You can disable pieces of it
+(inventory modules) or the whole thing if you wish.
+
+###### disable_inventory (class)
+
+This class is off by default (meaning the inventory is on by default).
+Here's the master switch to disable all inventory modules.
+
+###### disable_inventory_lsb (class)
+
+LSB is the Linux Standard Base, see https://wiki.linuxfoundation.org/en/LSB
+
+By default, this class is turned off (and the module is on) if the LSB
+executable `/usr/bin/lsb_release` can be found. This inventory module
+will populate inventory reports and variables for you with LSB
+details. For details, see [LSB][The Policy Framework#LSB]
+
+###### disable_inventory_dmidecode (class)
+
+By default, this class is turned off (and the module is on) if the
+executable `/usr/sbin/dmidecode` can be found. This inventory module
+will populate inventory reports and variables for you. For details,
+see [DMI decoding][The Policy Framework#DMI decoding]
+
+###### disable_inventory_LLDP (class)
+
+LLDP is a protocol for Link Layer Discovery. See
+http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol
+
+By default, this class is turned off (and the module is on) if the
+executable `/usr/bin/lldpctl` can be found. This inventory module will
+populate variables for you. For details, see [LLDP][The Policy Framework#LLDP]
+
+###### disable_inventory_package_refresh (class)
+
+By default, this class is turned off (and the module is on). This
+inventory module will populate the installed packages for you. On
+CFEngine Enterprise, the available packages will also be populated.
+
+###### disable_inventory_mtab (class)
+
+By default, this class is turned off (and the module is on) if
+`/etc/mtab` exists. This inventory module will populate variables for
+you based on the mounted filesystems. For details, see [mtab][The Policy Framework#mtab]
+
+###### disable_inventory_fstab (class)
+
+By default, this class is turned off (and the module is on) if
+`$(sys.fstab)` (usually `/etc/fstab` or `/etc/vfstab`) exists. This
+inventory module will populate variables for you based on the defined
+filesystems. For details, see [fstab][The Policy Framework#fstab]
+
+###### disable_inventory_proc (class)
+
+By default, this class is turned off (and the module is on) if `/proc`
+is a directory. This inventory module will populate variables for you
+from some of the contents of `/proc`. For details, see [procfs][The Policy Framework#procfs]
+
+###### disable_inventory_cmdb (class)
+
+By default, this class is turned on (and the module is off).
+
+Turn this on (set to `any`) to allow each client to load a `me.json`
+file from the server and load its contents. For details, see [CMDB][The Policy Framework#CMDB]
+
+##### @(inventory.bundles) (bundle)
+
+This bundle is defined as `bundle common inventory` in `promises.cf`.
+
+Inventory bundles may vary between platform and other classes.
+
+##### def (bundle)
+
+This bundle is defined as `bundle common def` in `controls/3.7/def.cf`
+
+`def` has some crucial settings used by the rest of CFEngine. It's
+expected that users may edit it, but won't normally change the rest of
+masterfiles except in `services` or if they *know* it's
+necessary. This bundle should be configured in conjunction with
+`update_def` as there are some settings that should be kept in sync
+between the two policies.
+
+As of CFEngine version 3.7 it is reccomended that these setting
+changes are specified in `def.json` to ease policy framework updates.
+
+Keep referring to `def.cf` as you read this.
+
+Implementation (warning: advanced usage):
+
+[%CFEngine_include_snippet(masterfiles/controls/3.7/def.cf, .*)%]
+
+###### domain (variable)
+
+Set your `domain` to the right value. By default it's used for mail
+and to deduce your file access ACLs.
+
+###### mailto (variable)
+
+This variable defines the email address that agent run output is sent to.
+
+###### mailfrom (variable)
+
+This variale defines the email address that emails containing agent
+run output come from.
+
+###### smtpserver (variable)
+
+This variale defines the smtp server to use when sending agent emails.
+
+###### acl (variable)
+
+The `acl` is crucial. This is used by **every** host, not just the
+policy server. Make sure you only allow hosts you want to allow.
+
+###### trustkeysfrom (variable)
+
+`trustkeysfrom` tells the policy server from which IPs it should accept
+connections even if the host's key is unknown, trusting it at connect
+time. This is only useful to be open during for bootstrapping these
+hosts. As the comments say, empty it after your hosts have been
+bootstrapped to avoid unpleasant surprises.
+
+###### services_autorun (class)
+
+Off by default.
+
+Turn this on (set to `any`) to auto-load files in `services/autorun`
+and run bundles found that are tagged `autorun`. Here's a simple
+example of such a bundle in `services/autorun/hello.cf`:
+
+[%CFEngine_include_snippet(masterfiles/services/autorun/hello.cf, .*)%]
+
+###### cfengine_internal_rotate_logs (class)
+
+On by default.
+
+Rotates CFEngine's own logs. Here is the `cfe_internal_log_rotation`
+bundle implementation:
+
+[%CFEngine_include_snippet(masterfiles/cfe_internal/core/log_rotation.cf, .*bundle\s+agent\s+cfe_internal_log_rotation, \})%]
+
+###### cfengine_internal_agent_email (class)
+
+On by default.
+
+This class enables agent email output from `cf-execd`.
+
+###### cfengine_internal_encrypt_transfers (class)
+
+Duplicate of the one in `update.cf`. They should be set in unison or
+you may get unexpected behavior.
+
+###### cfengine_internal_purge_policies (class)
+
+Duplicate of the one in `update.cf`. They should be set in unison or
+you may get unexpected behavior.
+
+###### cfengine_internal_preserve_permissions (class)
+
+Duplicate of the one in `update.cf`. They should be set in unison or
+you may get unexpected behavior.
+
+###### cfengine_internal_sudoers_editing_enable (class)
+
+Off by default.  Only used on the CFEngine Enterprise hub.
+
+Turn this on (set to `any`) to allow the hub to edit sudoers in order
+for the Apache user to run passwordless sudo cf-runagent (part of
+Mission Portal troubleshooting).
+
+###### postgresql_mainenance_supported (class)
+
+On by default only for CFEngine Enterprise Hubs.
+
+This class enables maintaince routines for the database used in
+CFEngine Enterprise.
+
+###### postgresql_full_maintenance (class)
+
+On by default only on Sundays at 2am when
+postgresql_maintance_supported is defined.
+
+Set this class accordingly if you want to schedule database
+maintainance operations at a different time.
+
+###### postgresql_vacuum (class)
+
+On by default at 2am when postgresql_maintannce_supported is defined
+except for Sundays.
+
+Set this class accordingly if you want to schedule database
+maintainance operations at a different time.
+
+###### enable_cfengine_enterprise_hub_ha (class)
+
+Off by default.
+
+Set this class when you want to enable the CFEngine Enterprise HA policies.
+
+###### enable_cfe_internal_cleanup_agent_reports (class)
+
+Off by default for core.
+On by default for CFEngine Enteprise clients.
+
+This class enables policy that cleans up report diffs when they exceed
+`def.maxclient_history_size`.
+
+#### @(cfengine_enterprise_hub_ha.classification_bundles) (bundle)
+
+Bundles related to classification for CFEngine Enterprise HA.
+
+#### cfsketch_run (bundle)
+
+This bundle activates sketches deployed by the Design Center tooling.
+
+#### services_autorun (bundle)
+
+This bundle loads policies found in `services/autorun` that are
+tagged for autorun.
+
+See services_autorun
+
+#### @(services_autorun.bundles) (bundle)
+
+This activates bundles found by services_autorun.
+
+#### cfe_internal_management (bundle)
+
+This bundle activates policy related to CFEngine itself. For example
+rotation of logs generated by the agent.
+
+#### main (bundle)
+
+This bundle is defined as `bundle agent main` in `services/main.cf`, it is the main entry into custom policy.
+
+#### @(cfengine_enterprise_hub_ha.management_bundles) (bundle)
+
+These bundles activate policy that manages HA in CFEngine Enterprise.
 
 ##### inputs #####
 
@@ -420,26 +565,67 @@ download a working policy, once you fix it on the policy host).
 
 ## Further structure ##
 
-* `cfe_internal`: internal CFEngine policies you shouldn't modify or you will get unexpected behavior
-* `controls`: configuration of components, e.g. the `cf-agent` or `cf-serverd`, beyond what `def.cf` can offer
+* `cfe_internal`: internal CFEngine policies you shouldn't modify or
+  you will get unexpected behavior
+
+* `controls`: configuration of components, e.g. the `cf-agent` or
+  `cf-serverd`, beyond what `def.cf` can offer. You'll see `3.5`,
+  3.6`, and `3.7` under it. These are the supportd versions for
+  backwards compatibility.
+
 * `def.cf`: defaults you can and should configure, see above
-* `inventory`: inventory modules (loaded before anything else to discover facts about the system) live here; see above
-* `lib`: main library directory.  You'll see `3.5` and `3.6` and `3.7` under it.  These are the supported versions for masterfiles backwards compatibility.
+
+* `inventory`: inventory modules (loaded before anything else to
+  discover facts about the system) live here; see above
+
+* `lib`: main library directory.  You'll see `3.5` and `3.6` and `3.7`
+  under it.  These are the supported versions for masterfiles
+  backwards compatibility.
+
 * `promises.cf`: main policy, you will need to configure this, see above
+
 * `services`: your site's policies go here
+
 * `services_autorun`: see above
-* `sketches`: Design Center installations use this; do not touch or you will get unexpected behavior
-* `update` and `update.cf`: functionality for updating inputs and CFEngine itself, see above.  You shouldn't modify files under `update` or you will get unexpected behavior.
+
+* `sketches`: Design Center installations use this; do not touch or
+  you will get unexpected behavior
+
+* `update` and `update.cf`: functionality for updating inputs and
+  CFEngine itself, see above.  You only modify files under `update` if
+  you know the impact of what you are doing or you may get unexpected
+  behavior.
 
 ## cf_promises_validated
 
-Several CFEngine components that read policy (e.g. `cf-agent`, `cf-execd`, `cf-serverd`) run `cf-promises` to validate the syntax of their input files before actually running the policy. To illustrate this, if `cf-promises` runs every 5 minutes then there will be 12 checks occurring every hour, 24 hours a day, 7 days a week -- a total of 2016 possible validation checks. Each of those individual validation sessions can take some number of seconds to perform depending on the system, scale, circumstances and configuration.
+Several CFEngine components that read policy (e.g. `cf-agent`,
+`cf-execd`, `cf-serverd`) run `cf-promises` to validate the syntax of
+their input files before actually running the policy. To illustrate
+this, if `cf-promises` runs every 5 minutes then there will be 12
+checks occurring every hour, 24 hours a day, 7 days a week -- a total
+of 2016 possible validation checks. Each of those individual
+validation sessions can take some number of seconds to perform
+depending on the system, scale, circumstances and configuration.
 
-Starting with CFEngine 3.1.2, the outcome of every run of `cf-promises` was cached, which lets agents skip the validation of input files that have not changed since the previous run. 
+Starting with CFEngine 3.1.2, the outcome of every run of
+`cf-promises` was cached, which lets agents skip the validation of
+input files that have not changed since the previous run.
 
-Starting with CFEngine 3.6, outcome on both hosts and hubs is stored in the file `$(sys.workdir)/masterfiles/cf_promises_validated` (usually `sys.workdir` is `/var/cfengine`). The file can be created by `cf-agent` after it has successfully verified the policy with `cf-promises`. The file can also be created by a user with `cf-promises -T DIRECTORY` which is useful for validating an entire directory.
+Starting with CFEngine 3.6, outcome on both hosts and hubs is stored
+in the file `$(sys.workdir)/masterfiles/cf_promises_validated`
+(usually `sys.workdir` is `/var/cfengine`). The file can be created by
+`cf-agent` after it has successfully verified the policy with
+`cf-promises`. The file can also be created by a user with
+`cf-promises -T DIRECTORY` which is useful for validating an entire
+directory.
 
-When the hash content of any file under `WORKDIR/inputs` changes, and validates to be syntactically correct, then a timestamp in `cf_promises_validated` is updated. If not, the run of `cf-promises` is skipped and, at the same time, the cf-execd, cf-serverd and cf-monitord daemons will not reload the policy unless `cf_promises_validated` has an updated timestamp, which `cf-agent` will normally take care of.
+When the hash content of any file under `WORKDIR/inputs` changes, and
+validates to be syntactically correct, then a timestamp in
+`cf_promises_validated` is updated. If not, the run of `cf-promises`
+is skipped and, at the same time, the cf-execd, cf-serverd and
+cf-monitord daemons will not reload the policy unless
+`cf_promises_validated` has an updated timestamp, which `cf-agent`
+will normally take care of.
 
 In the default installation, the masterfiles are populated
 automatically on the policy server and you can even auto-deploy them
