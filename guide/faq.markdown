@@ -13,6 +13,7 @@ tags: [getting started, installation, enterprise, faq]
 	* [Do I need experience with PostgreSQL?][#Do I need experience with PostgreSQL]
 	* [What are the requirements for installing CFEngine Enterprise?][#What are the requirements for installing CFEngine Enterprise]
 * [Enterprise Scalability][#Enterprise Scalability]
+    * [ Is it normal to have many cf-hub processes running?][#Is it normal to have many cf-hub processes running]
 * [Policy Distribution][#Policy Distribution]
 	* [I have added new files in masterfiles but my remote clients are not getting updates.][#I have added new files in masterfiles but my remote clients are not getting updates]
 	* [I have updated some non policy files and changes are not distributed to clients.][#I have updated some non policy files and changes are not distributed to clients]
@@ -71,6 +72,10 @@ Similarly there will be a ```cfapache``` system user for the Apache web server.
 ### Enterprise Scalability ###
 
 See: [Enterprise Scalability][Best Practices#Scalability]
+
+#### Is it normal to have many cf-hub processes running
+
+* Yes, it is expected to have ~ 50 cf-hub processes running on your hub
 
 ### Policy Distribution ###
 
