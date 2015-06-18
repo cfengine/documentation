@@ -102,7 +102,7 @@ Minimum 2GB memory, but not lower than **8MB per bootstrapped agent**. This mean
 
 ### CPU
 
-A modern 64-bit processor with 4 or more cores.
+A modern 64-bit processor with 8 or more cores for handling up to 5000 bootstrapped agents.
 
 
 ## Download Packages
