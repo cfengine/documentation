@@ -4,7 +4,7 @@ title: Macros
 categories: [Reference, Macros]
 published: true
 alias: reference-macros.html
-tags: [reference, syntax, if, ifdef, macros]
+tags: [reference, syntax, if, ifdef, macros, minimum_version]
 ---
 
 You can conditionally include policy test using the `@if` macro.
@@ -14,7 +14,7 @@ For example, you could say
 ```cf3
 bundle agent extractor
 {
-@if after_version(3.8)
+@if minimum_version(3.8)
 # the function `new_function_3_8()` was introduced in 3.8
 vars: "container" data => new_function_3_8(...);
 @endif
