@@ -5,7 +5,7 @@ published: true
 tags: [reference, data functions, functions, eval, context, class, equality, numbers]
 ---
 
-[%CFEngine_function_prototype(mode, options, expression)%]
+[%CFEngine_function_prototype(expression, mode, options)%]
 
 **Description:** Returns `expression` evaluated according to `mode`
 and `options`. Currently only the `math` and `class` modes with
