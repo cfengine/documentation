@@ -129,6 +129,30 @@ the same line after the attribute.
     }
 ```
 
+## Policy Reports
+
+It is common and useful to include reports in policy to get detailed
+information about what is going on. During a normal agent run the goal is to
+have 0 output so reports should always be guarded with a class. Carefully
+consider when your policy should generate report output. For policy degbugging
+type information (value of variables, classes that were set or not) the
+following style is reccomended:
+
+
+```cf3
+bundle agent example
+{
+  reports:
+    DEBUG|DEBUG_example::
+      "DEBUG $(this.bundle): Desired Report Output";
+}
+```
+
+Following this style keeps policy debug reports from spamming logs. It avoids
+polluting the `inform_mode` and `verbose_mode` output, and it allows you to get
+debug output for ALL policy or just a select bundle which is incredibly useful
+when debugging a large policy set.
+
 ## Promise Handles
 
 Promise handles uniquely identify a promise within a policy. We suggest a simple naming 
