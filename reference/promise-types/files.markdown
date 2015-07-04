@@ -719,17 +719,15 @@ Diffs for binary files are not generated. Files are considered binary files if [
 
 #### collapse_destination_dir
 
-**Description:** The `collapse_destination_dir` menu option supports the 
-placing of files in subdirectories into the root destination
-directory during copy.
-  
+**Description:** Use `collapse_destination_dir` to flatten the directory hierarchy during copy.  All the files will end up in the root destination directory.
+
 Under normal operations, recursive copies cause CFEngine to track 
 subdirectories of files. So, for instance, if we copy recursively from src to 
-dest, then src/subdir/file will map to dest/subdir/file.
+dest, then `src/subdir/file` will map to `dest/subdir/file`.
 
-By setting this option to true, the promiser destination directory promises to 
+By setting this option to `true`, the promiser destination directory promises to 
 aggregate files searched from all subdirectories into
-itself; in other words, a single destination directory. 
+itself; in other words, a single destination directory. So `src/subdir/file` will map to `dest/file` for any `subdir`.
 
 **Type:** [`boolean`][boolean]
 
