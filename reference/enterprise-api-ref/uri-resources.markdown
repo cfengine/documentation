@@ -220,7 +220,7 @@ commands that are wrapped by the following Enterprise API commands.
 #### /api/dc/sketch
 * **GET**: List of sketches 
 
-```
+```json
 {
 	"meta": {
 		"page": 1,
@@ -265,7 +265,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 * **GET**: info about specific sketch 
 
-```
+```json
 {
     "meta": {
         "page": 1,
@@ -404,7 +404,7 @@ commands that are wrapped by the following Enterprise API commands.
 #### /api/dc/definition
 * **GET**: List of available definitions
 
-```
+```json
 {
     "meta": {
         "page": 1,
@@ -453,7 +453,7 @@ commands that are wrapped by the following Enterprise API commands.
 * **PUT**: Create new definition
 * Request Body:
 
-```
+```json
 	{
 	"sketchName":"test",
 	"params": {
@@ -465,7 +465,7 @@ commands that are wrapped by the following Enterprise API commands.
 #### /api/dc/environment
 * **GET**: List of available environments
 
-```
+```json
 {
     "meta": {
         "page": 1,
@@ -496,26 +496,22 @@ commands that are wrapped by the following Enterprise API commands.
     ]
 }
 ```
-	
+
 #### /api/dc/environment/:environmentName
 * *environmentName*: name of the environment
 * **PUT**: Create new environment
 * Request Body:
 
-```
-	{
+```json
+{
 	"environment": ["cfengine3"]
-	}
+}
 ```
-
-
-
-
 
 #### /api/dc/activation?sketch=<sketchname>&details=1
 *GET*: List of available activations
 
-```
+```json
 {
     "meta": {
         "page": 1,
@@ -587,7 +583,6 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-	
 #### /api/dc/activation/:id/:sketchName?details+	
 * *id*: (identifier of activation)
 * *sketchName*: name of the sketch
@@ -595,7 +590,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 * **GET**: Info about specific activations
 
-```
+```json
 {
     "meta": {
         "page": 1,
@@ -650,10 +645,10 @@ commands that are wrapped by the following Enterprise API commands.
     ]
 }
 ```
-		
+
 * **PUT**: Create new activation
 
-```
+```json
 	Request body:
 	{
              
@@ -676,13 +671,11 @@ commands that are wrapped by the following Enterprise API commands.
 * **POST**: validate the data 
 * Request Body:
 
-```
+```json
 	{
 	"validationData":["asdasd"]
 	}
 ```
-
-
 
 #### /api/dc/workspace
 * **GET**: checks for the workspace and returns the path
@@ -690,7 +683,7 @@ commands that are wrapped by the following Enterprise API commands.
 #### /api/dc/workspace/commit
 * **POST**: Post the commits
 
-```
+```json
 	Request Body:
 	{
 	'message': "some message",
@@ -706,7 +699,7 @@ commands that are wrapped by the following Enterprise API commands.
 * **POST**: Create the settings. Content-Type header should be multipart/form-data
 * **DELETE**: Delete settings
 
-```
+```json
 		Request Body:
 		{
 		 'gitServer':"serverurl",
