@@ -63,6 +63,7 @@ When the new masterfiles have been created and *cf-promises promises.cf* and *cf
 * stop the CFEngine services
 * upgrade the hub package
 * replace /var/cfengine/masterfiles with your new integrated masterfiles
+* replace (or merge with your changes) */var/cfengine/state/pg/data/postgresql.conf* with */var/cfengine/share/postgresql/postgresql.conf.cfengine* to update your database configuration.
 * start the CFEngine services
 
 Check the version with */var/cfengine/bin/cf-promises -V*, and if you are running Enterprise, the Mission Portal About page.
