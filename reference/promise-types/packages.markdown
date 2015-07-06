@@ -11,10 +11,10 @@ of software on a host, whether it should be installed, not installed, or at a
 specific version.
 
 CFEngine 3.6 and older had a different package promise implementation, which is
-now considered obsolete. However, it may still be in use by existing policy
+now considered deprecated. However, it may still be in use by existing policy
 files, and it may cover platforms which the new implementation does not
 currently cover. To read about the old package promise, go to the
-[old package promise section][packages (old)].
+[old package promise section][packages (deprecated)].
 
 The actual communication with the package manager on the system is handled by so
 called package modules, which are specifically written for each type of package
@@ -80,7 +80,7 @@ indirectly affect other architectures.
 **Description:** Options to pass to the underlying package module.
 
 `options` is a catchall attribute in order to pass arbitrary data into the
-package module which is carrying out package operations. It is meant as an
+package module which is carrying out package operations. It is meant as a
 rescue solution when a package module has added functionality which is not
 covered by the package promise API. As such there is no official documentation
 for this attribute, its usage depends on the package module in question.

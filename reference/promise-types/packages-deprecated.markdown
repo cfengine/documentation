@@ -1,9 +1,14 @@
 ---
 layout: default
-title: packages (old)
+title: packages (deprecated)
 published: true
 tags: [reference, bundle agent, packages, packages promises, promise types]
 ---
+
+**NOTE:** This package promise is deprecated and has been superseded by
+[the new package promise][packages]. It is recommended to use the new package
+promise whenever possible. Simply using attributes from the new package promise
+interface will select the new implementation.
 
 NOTE: CFEngine 3.6 introduces bundles `package_absent`, `package_present`,
 `package_latest`, `package_specific_present`, `package_specific_absent`, and
