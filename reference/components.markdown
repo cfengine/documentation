@@ -420,6 +420,47 @@ after which last-seen entries are purged. It is an **enterprise-only** feature.
 On native Windows versions of CFEngine (Enterprise), this
 string is also prefixed messages in the event log.
 
+### package_inventory
+
+**Description:** List of package modules to query for package lists.
+
+Defines the list of [`package modules`][packages] which will be queries for
+package lists, for use in `packagematching`, `packageupdatesmatching` and in
+Enterprise inventory reporting.
+
+**Type:** `slist`
+
+**Allowed input range:** (body names)
+
+**Example:**
+
+```cf3
+body common control
+{
+    package_inventory => "apt_get";
+}
+```
+
+### package_module
+
+**Description:** The default package module to use.
+
+Defines the default package module to use for [package promises][packages], if
+none is specified in the promise.
+
+**Type:** `string`
+
+**Allowed input range:** (body name)
+
+**Example:**
+
+```cf3
+body common control
+{
+    package_module => "apt_get";
+}
+```
+
 ### protocol_version
 
 **Description:** Defines the protocol to use for all outgoing connections.
