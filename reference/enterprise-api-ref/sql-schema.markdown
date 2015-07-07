@@ -8,7 +8,7 @@ tags: [reference, enterprise, REST, API, reporting, sql, schema]
 CFEngine allows standardized SQL `SELECT` queries to be used with [Query API][URI Resources#/api/query].
 Queries can be used with following database schema.
 
-```
+```bash
 curl -k --user admin:admin https://hub.cfengine.com/api/query -X POST -d "{ \"query\": \"SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts WHERE hostname = 'hub'\"}"
 ```
 
