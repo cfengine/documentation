@@ -11,9 +11,9 @@ of software on a host, whether it should be installed, not installed, or at a
 specific version.
 
 CFEngine 3.6 and older had a different package promise implementation, which is
-now considered deprecated. However, it may still be in use by existing policy
-files, and it may cover platforms which the new implementation does not
-currently cover. To read about the old package promise, go to the
+still functional, but considered deprecated. However, it may still be in use by
+existing policy files, and it may cover platforms which the new implementation
+does not currently cover. To read about the old package promise, go to the
 [old package promise section][packages (deprecated)].
 
 The actual communication with the package manager on the system is handled by so
