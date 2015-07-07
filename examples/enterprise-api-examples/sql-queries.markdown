@@ -7,13 +7,15 @@ tags: [examples, enterprise, rest, api, reporting, sql, queries]
 
 ### Synchronous Example: Listing Hostname and IP for Ubuntu Hosts
 
-**Request**(lines split and indented for presentability)
+**Request:**
 
-    curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d
-    '{ "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts"}'
+```bash
+    curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d '{ "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts"}'
+```
 
-**Response**
+**Response:**
 
+```json
     {
       "meta": {
         "page": 1,
@@ -48,6 +50,7 @@ tags: [examples, enterprise, rest, api, reporting, sql, queries]
         }
       ]
     }
+```
 
 The `cached` and `sortDescending` fields here mean that the
 result was not retrieved from cache, and that post-processing sorting
@@ -55,7 +58,6 @@ was not applied. It is also possible to specify `skip` and `limit`
 fields that will be applied to the result set after it is returned by
 the SQL engine. These fields are mainly used by the Mission Portal to
 paginate quickly on already processed queries.
-
 
 ### Subscribed Query Example: Creating A Subscribed Query
 
@@ -67,33 +69,31 @@ creates a new subscription to a report which he names `file-changes-report`,
 which will be sent out every Monday night. His boss will get an email with a 
 link to a PDF version of the report.
 
-**Request** (lines split and indented for presentability)
+**Request:**
 
-    curl -k --user admin:admin https://test.cfengine.com/api/user/milton/
-       subscription/query/file-changes-report -X PUT -d
-    '{
-      "to": "boss@megaco.com",
-      "query": "SELECT FileName, Count(*) FROM FileChangesLog GROUP BY FileName",
-      "schedule": "Monday.Hr23.Min59",
-      "title": "A very important file changes report"
-      "description": "Text that will be included in email"
-      "outputTypes": [ "pdf" ]
-    }'
+```bash
+    curl -k --user admin:admin https://test.cfengine.com/api/user/milton/ subscription/query/file-changes-report -X PUT -d '{"to": "boss@megaco.com", "query": "SELECT FileName, Count(*) FROM FileChangesLog GROUP BY FileName", "schedule": "Monday.Hr23.Min59", "title": "A very important file changes report""description": "Text that will be included in email""outputTypes": [ "pdf" ] }'
+```
 
-**Response**
+**Response:**
 
+```
     204 No Content
+```
 
 ### Subscribed Query Example: Listing Report Subscriptions
 
 Milton can list all his current subscriptions by issuing the following.
 
-**Request**
+**Request:**
 
+```bash
     curl -k --user admin:admin https://test.cfengine.com/api/user/milton/subscription/query
+```
 
-**Response**
+**Response:**
 
+```json
     {
       "meta": {
         "page": 1,
@@ -112,14 +112,18 @@ Milton can list all his current subscriptions by issuing the following.
           "outputTypes": [ "pdf" ]
         }
     ]
+```
 
 ### Subscribed Query Example: Removing A Report Subscription
 
-**Request** (lines split and indented for presentability)
+**Request:**
 
-    curl -k --user admin:admin https://test.cfengine.com/api/user/milton/
-       subscription/query/file-changes-report -X DELETE
+```bash
+    curl -k --user admin:admin https://test.cfengine.com/api/user/milton/subscription/query/file-changes-report -X DELETE
+```
 
-**Response**
+**Response:**
 
+```
     204 No Content
+```
