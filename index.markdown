@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine 3.6 Manual
+title: CFEngine 3.7 Manual
 published: true
 sorting: 1
 ---
@@ -74,26 +74,8 @@ CFEngine is decentralized and highly scalable. It is powered by autonomous agent
  <span style="font-weight: normal;" class="nv">links[9]</span>
  <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
  <span style="font-weight: normal;" class="o">=&gt; </span>
- <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide-latest-release-whatsnew.html">What's New in 3.6</a>";</span> <br/>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide-latest-release-whatsnew.html">What's New in 3.7</a>";</span> <br/>
  
 <span style="font-weight: normal;" class="p">}</span> <br/>    
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -32,13 +32,6 @@ only support protocol version 1. Protocol version 1 is still the default in
 3.6 but the default will change to 2 in future versions.
 
 
-### RHEL 7 / CentOS 7 ###
-
-* The CFEngine Enterprise hub does not yet support RHEL 7 / CentOS 7
-* The community package repositories hosted by CFEngine does not have the RHEL 7 /CentOS 7 package. Please download and install the package separately.
-* If you use the community edition as a Policy Server on RHEL 7 / CentOS 7 you will see "Failed to start the server" when you bootstrap it to itself. This message is harmless and will be removed in future releases.
-
-
 ### HP-UX specific ###
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX specific package manager. The workaround is to call the package manager directly using [commands promises][commands].
@@ -52,9 +45,7 @@ only support protocol version 1. Protocol version 1 is still the default in
                 * CPU model
                 * BIOS version
                 * BIOS vendor
-* [User promises][users] do not work reliably on HP-UX. It is recommended not to use them at this time. The workaround is to call the useradd/usermod/userdel tools directly.  (fixed in CFEngine 3.6.4)
 * [Process promises][processes] depend on the `ps` native tool, which by default truncates lines at 128 columns on HP-UX. It is recommended to edit the file `/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting to 1024 to guarantee that process promises will work smoothly on the platform.
-* [`edit_xml` bundles][bundle edit_xml] do not work on HP-UX. (fixed in CFEngine 3.6.4)
 
 
 ### Enterprise Mission Portal is slow and/or /var/cfengine/state/pg consumes a lot of space/iops or CPU utilization is high ###
@@ -83,7 +74,7 @@ Due to an issue in Enterprise 3.6.5 direct upgrade from 3.6.0 and 3.6.1 may reso
 Upgrade from 3.6.0 / 3.6.1 to 3.6.5 can be done by upgrading first to 3.6.2 / 3.6.3 / 3.6.4 and then to 3.6.5.
 
 
-### Enterprise emails sent for alert noticies come from 'admin@orginization.com'.
+### Enterprise emails sent for alert noticies come from 'admin@organization.com'.
 There is currently no setting in Mission Portal to configure the sender email
 address. This issue is on the [backlog](https://dev.cfengine.com/issues/6726)
 and will be addressed in a future release.
@@ -107,7 +98,7 @@ Monitoring graphs are not supported on all platforms, currently Aix and Windows 
 
 ### Enterprise reports not collected from 3.5
 CFEngine Enterprise 3.6 has a new diff-based report collection mechanism,
-and so a 3.6 hub cannot collect reports from 3.5 or earlier agents.
+and so a 3.7 hub cannot collect reports from 3.5 or earlier agents.
 
 Currently the 3.5 agents will not show in Mission Portal at all, but
 you will see them by running `cf-key -s` on the hub.
