@@ -8,11 +8,12 @@ tags: [reference, enterprise, REST, API, DC, sketch, URI, design center]
 Please see [The Design Center API][] for the Design Center API
 commands that are wrapped by the following Enterprise API commands.
 
-## GET /api/dc/sketch
+### /api/dc/sketch *GET*
 
 List of sketches.
 
 **Example response:**
+
 ```json
 {
     "meta": {
@@ -54,11 +55,12 @@ List of sketches.
     }
 ```
 
-## GET /api/dc/sketch/:sketchName
+### /api/dc/sketch/:sketchName *GET*
 
 Information about specific sketch.
 
 **Example response:**
+
 ```json
 {
     "meta": {
@@ -193,17 +195,18 @@ Information about specific sketch.
 }
 ```
 
-## PUT /api/dc/sketch/:sketchName
+### /api/dc/sketch/:sketchName *PUT*
 
 Install sketch in the system. 
 
 **Example usage:** `Sample API call to Install sketch`
 
-## GET /api/dc/definition
+### /api/dc/definition *GET*
 
 List of available definitions.
 
 **Example response:**
+
 ```json
 {
     "meta": {
@@ -246,11 +249,12 @@ List of available definitions.
 }
 ```
 
-## PUT /api/dc/definition/:definitionName
+### /api/dc/definition/:definitionName *PUT*
 
 Create new definition.
 
 **Example Request Body:**
+
 ```json
 {
     "sketchName":"test",
@@ -262,11 +266,12 @@ Create new definition.
 
 **Example usage:** `Sample API call to Define sketch parameters`
 
-## GET /api/dc/environment
+### /api/dc/environment *GET*
 
 List of available environments
 
 **Example response:**
+
 ```json
 {
     "meta": {
@@ -299,11 +304,12 @@ List of available environments
 }
 ```
 
-## PUT /api/dc/environment/:environmentName
+### /api/dc/environment/:name *PUT*
 
 Create new environment.
 
 **Example Request Body:**
+
 ```json
 {
     "environment": ["cfengine3"]
@@ -312,11 +318,16 @@ Create new environment.
 
 **Example usage:** `Sample API call to Define environment`
 
-## GET /api/dc/activation?sketch=<sketchname>&details=1
+### /api/dc/activation *GET*
 
 List of available activations
 
+**Fields:**
+* **sketch** - name of the sketch
+* **details** - 1 or 0 for details
+
 **Example response:**
+
 ```json
 {
     "meta": {
@@ -389,15 +400,16 @@ List of available activations
 }
 ```
 
-## GET /api/dc/activation/:id/:sketchName?details+
+### /api/dc/activation/:id/:sketchName *GET*
 
 Info about specific activations.
 
 **Fields:**
-* *sketchName*: name of the sketch
-* *Params details*: 1 or 0 for host and other details
+* **sketchName**- name of the sketch
+* **details** - 1 or 0 for host and other details
 
 **Example response:**
+
 ```json
 {
     "meta": {
@@ -454,11 +466,12 @@ Info about specific activations.
 }
 ```
 
-## PUT /api/dc/activation/:id
+### /api/dc/activation/:id *PUT*
 
 Create new activation.
 
 **Example Request Body:**
+
 ```json
 {
      "environmentName":"092b04a40fdd4cb8bfdb685f2c4a0328",
@@ -469,36 +482,38 @@ Create new activation.
 
 **Example usage:** `Sample API call to Activate sketch`
 
-## DELETE /api/dc/activation/:id
+### /api/dc/activation/:id *DELETE*
 
 Delete the activation.
 
-## GET /api/dc/validation
+### /api/dc/validation *GET*
 
 Get list of validations.
     
-## GET /api/dc/validation/:id
+### /api/dc/validation/:id *GET*
 
 Get specific validation.
 
-## POST /api/dc/validate/:validationType
+### /api/dc/validate/:validationType *POST*
 
 **Example Request Body:**
+
 ```json
 {
     "validationData": ["asdasd"]
 }
 ```
 
-## GET /api/dc/workspace
+### /api/dc/workspace *GET*
 
 Checks for the workspace and returns the path.
 
-## POST /api/dc/workspace/commit
+### /api/dc/workspace/commit *POST*
 
 Post the commits.
 
 **Example Request Body:**
+
 ```json
 {
     'message': "some message",
@@ -508,19 +523,20 @@ Post the commits.
 
 **Example usage:** `Sample API call to Commit changes`
 
-## POST /api/dc/workspace/reset
+### /api/dc/workspace/reset *POST*
 
 Resets the user workspace.
 
-## GET /api/dc/workspace/settings
+### /api/dc/workspace/settings *GET*
 
 Returns the settings of the workspace (VCS settings), 404 if not found.
 
-## POST /api/dc/workspace/settings
+### /api/dc/workspace/settings *POST*
 
 Create the settings. Content-Type header should be multipart/form-data.
 
 **Example Request Body:**
+
 ```json
 {
     'gitServer':"serverurl",
@@ -533,6 +549,6 @@ Create the settings. Content-Type header should be multipart/form-data.
 eg: curl -F "gitServer=servername" -F "gitEmail=mail" -F "gitPrivateKey=@/home/user1/Desktop/id_rsa" http://server
 ```
 
-## DELETE /api/dc/workspace/settings
+### /api/dc/workspace/settings *DELETE*
 
 Delete settings.
