@@ -1,234 +1,27 @@
 ---
 layout: default
-title:  URI Resources
+title:  Design Center REST API
 published: true
-tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
+tags: [reference, enterprise, REST, API, DC, sketch, URI, design center]
 ---
-
-### /api
-
-**Supported Operations**: `GET`
-
-**Fields**:
-
--   `apiName` *(string)* Human-friendly API name.
--   `apiVersion` *(string)* API version string.
--   `enterpriseVersion` *(string)* Version of the CFEngine Enterprise
-    build.
--   `uiVersion` *(string)* The internal build number of the Enterprise UI
-    (since 3.6)
--   `coreVersion` *(string)* The version of CFEngine Core (Community)
-    the Enterprise version was built against.
--   `databaseHostname` *(string)* Hostname (or IP) of the database the
-    API is connected to.
--   `databasePort` *(integer)* Port number of the database the API is
-    connected to.
--   `authenticated` *("internal", "external")*, Whether the request
-    was authenticated using the internal users table or an external
-    source.
--   `license.expires` *(integer)* Time when the license expires.
--   `license.installTime` *(integer)* Time when the license was
-    installed.
--   `license.owner` *(string)* The name of the license owner.
--   `license.granted` *(integer)* Host number capacity granted by the
-    license.
--   `license.licenseUsage.lastMeasured` *(integer)* Time when license
-    usage was last updated.
--   `license.licenseUsage.samples` *(integer)* Number of samples
-    collected for license usage.
--   `license.licenseUsage.minObservedLevel` *(integer)* Minimum number
-    of observed host licenses in use.
--   `license.licenseUsage.minObservedLevel` *(integer)* Maximum number
-    of observed host licenses in use.
--   `license.licenseUsage.meanUsage` *(integer)* Average number of
-    observed host licenses in use.
--   `license.licenseUsage.meanCumulativeUtilization` *(integer)* (not
-    sure)
--   `license.licenseUsage.usedToday` *(integer)* Total number of host
-    licenses observed used today.
-
-
-### /api/settings
-
-**Supported Operations**: `GET`, `POST`
-
-**Fields**:
-
--   `rbacEnabled` *(boolean)* Whether RBAC is applied to requests.
--   `hostIdentifier` *(string)* The identfying string for hosts, such as name or IP.
--   `ldapEnabled` *(boolean)* Whether external authentication is
-    activated.
--   `ldapBaseDN` *(string)* LDAP BaseDN to use for external LDAP
-    requests.
--   `ldapFilter` *(string)* Filter for LDAP objects.
--   `ldapEncryption` *("plain", "ssl", "tls")* Type of LDAP binding to
-    establish to external LDAP server. (Default: "plain").
--   `ldapHost` *(string)* Hostname of external LDAP server.
--   `ldapLoginAttribute` *(string)* LDAP attribute to use for
-    usernames. (default: "uid").
--   `ldapUsername` *(string)* LDAP username.
--   `ldapPassword` *(string)* LDAP password.
--   `ldapUsersDirectory` *(string)* Attribute and value to qualify the
-    directory in which to look up users, e.g. "ou=people".
--   `ldapPort` *(integer)* Port for external LDAP connections not
-    using SSL. (default 389).
--   `ldapPortSSL` *(integer)* Port for external LDAP connections using
-    SSL. (default 636).
--   `blueHostHorizon` *(integer)* Time interval (seconds) for when to
-    consider a host unreachable. (default 900).
--   `logLevel` *("emergency", "alert", "critical", "error", "warning",
-    "notice", "info", "debug")* Syslog filter specifying the severity
-    level at which messages produced by the API should be emitted to
-    syslog and apache.log. (default: error).
--   `sketchActivationAlertTimeout` *(integer)* Global timeout in
-    minutes for sketch activation alerts.
-
-
-### /api/user
-
-**Supported Operations**: `GET`  
-
-**Query Parameters**:
-
--   `id` *(regex string)* Regular expression for filtering usernames.
--   `external` *("true", "false")* Returns only internal users (false)
-    or only external (true), or all if not specified.
-
-### /api/user/:id
-
-**Supported Operations**: `GET`, `PUT`, `POST`, `DELETE`
-
-**Fields**:
-
--   `id` *(string)* ID of a user.
--   `password` *(string)* Password of a user. (Never returned from
-    API).
--   `email` *(string)* Email address associated with user.
--   `roles` *(array of strings)* Set of IDs of roles a user is in.
-    (Default: empty)
--   `external` *(boolean)* Whether or not the user was found
-    externally (LDAP).
-
-
-### /api/role
-
-**Supported Operations**: `GET`
-
-
-### /api/role/:id
-
-**Supported Operations**: `GET`, `PUT`, `POST`, `DELETE`
-
-**Fields**:
-
--   `id` *(string)* ID of a role.
--   `description` *(string)* Arbitrary text describing the role
--   `includeContext` *(comma delimited string of regular expression
-    strings)* Includes hosts visible to the users in the role.
--   `excludeContext` *(comma delimited string of regular expression
-    strings)* Excludes bundles visible to the users in the role.
--   `includeBundles` *(comma delimited string of regular expression
-    strings)* Includes bundles visible to the users in the role.
--   `excludeBundles` *(comma delimited string of regular expression
-    strings)* Excludes bundles visible to the users in the role.
-
-
-### /api/host
-
-**Supported Operations**: `GET` ,`DELETE`
-
-*Query Parameters*:
-
--   `include-context` *(comma delimited string of regular expression
-    strings)* Includes hosts having context matching the expression.
--   `exclude-context` *(comma delimited string of regular expression
-    strings)* Excludes hosts having context matching the expression.
-
-
-### /api/host/:host-id
-
--   `id` *(string)* ID of a host.
--   `hostname` *(string)* Hostname of a host.
--   `ip` *(string)* IP address of a host.
-
-#### /api/host/:host-id/vital/:vital-id
-
-**Supported Operations**: `GET`
-
-*Query Parameters*:
-
--   `from` *(integer)* Timestamp marking the start of the interval for
-    which to fetch data. Data is only available going back one week.
--   `to` *(integer)* End of data interval to be fetched.
-
-**Fields**:
-
--   `id` *(string)* ID of vital sign.
--   `description` *(string)* Description of vital sign.
--   `units` *(string)* Measurement unit of vital sign.
--   `timestamp` *(integer)* Timestamp of the last received data point.
--   `values` *(array of [ t, y ], where t is the sample timestamp)*
-    Vital sign data.
-
-### /api/query
-
-**Supported Operations**:  
-`POST`
-
-**Fields**:
-
--   `query` *(string)* SQL query string.
--   `sortColumn` *(string)* Column on which to sort results. This is
-    applied to the result of the SQL query and can be considered post
-    processing. The Mission Portal uses this to sort cached reports.
--   `sortDescending` *(boolean)* Apply post-sorting in descending order.
--   `skip` *(integer)* Number of results to skip for the processed
-    query. The Mission Portal uses this for pagination on cached
-    results.
--   `limit` *(integer)* Limit the number of results in the processed
-    query.
--   `disableCache` *(boolean)* Don't use cached data
-
-
-### /api/query/async
-
-**Supported Operations**: `POST`
-
-**Fields**:
-
--   `query` *(string)* SQL query string.
--   `id` *(string)* ID of the query job.
--   `error` *(string)* Error if anything went wrong.
-
-
-### /api/query/async/:async-query-id
-
-**Supported Operations**: `GET`, `DELETE`
-
-**Fields**:
-
--   `id` *(string)* ID of the query job.
--   `percentageComplete` *(integer)* Processing status for the query.
--   `href` *(string)* Download link for the finished report.
--   `error` *(string)* Error if anything went wrong.
-
-### Enterprise Design Center API
 
 Please see [The Design Center API][] for the Design Center API
 commands that are wrapped by the following Enterprise API commands.
 
-#### /api/dc/sketch
-* **GET**: List of sketches 
+## GET /api/dc/sketch
 
+List of sketches.
+
+**Example response:**
 ```json
 {
-	"meta": {
-		"page": 1,
-		"count": 69,
-		"total": 69,
-		"timestamp": 1383829723
-    	},
-	"data": [
+    "meta": {
+        "page": 1,
+        "count": 69,
+        "total": 69,
+        "timestamp": 1383829723
+        },
+    "data": [
         {
             "Utilities::Staging": {
                 "metadata": {
@@ -257,14 +50,15 @@ commands that are wrapped by the following Enterprise API commands.
                     }
                 }
             }
-	    }]
-	}
+        }]
+    }
 ```
 
-#### /api/dc/sketch/:name
+## GET /api/dc/sketch/:sketchName
 
-* **GET**: info about specific sketch 
+Information about specific sketch.
 
+**Example response:**
 ```json
 {
     "meta": {
@@ -398,12 +192,18 @@ commands that are wrapped by the following Enterprise API commands.
     ]
 }
 ```
-#### /api/dc/sketch/:sketchName
-* **PUT**: install sketch in the system
 
-#### /api/dc/definition
-* **GET**: List of available definitions
+## PUT /api/dc/sketch/:sketchName
 
+Install sketch in the system. 
+
+**Example usage:** `Sample API call to Install sketch`
+
+## GET /api/dc/definition
+
+List of available definitions.
+
+**Example response:**
 ```json
 {
     "meta": {
@@ -446,25 +246,27 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
+## PUT /api/dc/definition/:definitionName
 
+Create new definition.
 
-#### /api/dc/definition/:definitionName
-* *definitionName*: name of the definition 	
-* **PUT**: Create new definition
-* Request Body:
-
+**Example Request Body:**
 ```json
-	{
-	"sketchName":"test",
-	"params": {
-		"hey":"ho"
-		}
-	}
+{
+    "sketchName":"test",
+    "params": {
+        "hey":"ho"
+    }
+}
 ```
 
-#### /api/dc/environment
-* **GET**: List of available environments
+**Example usage:** `Sample API call to Define sketch parameters`
 
+## GET /api/dc/environment
+
+List of available environments
+
+**Example response:**
 ```json
 {
     "meta": {
@@ -497,20 +299,24 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-#### /api/dc/environment/:environmentName
-* *environmentName*: name of the environment
-* **PUT**: Create new environment
-* Request Body:
+## PUT /api/dc/environment/:environmentName
 
+Create new environment.
+
+**Example Request Body:**
 ```json
 {
-	"environment": ["cfengine3"]
+    "environment": ["cfengine3"]
 }
 ```
 
-#### /api/dc/activation?sketch=<sketchname>&details=1
-*GET*: List of available activations
+**Example usage:** `Sample API call to Define environment`
 
+## GET /api/dc/activation?sketch=<sketchname>&details=1
+
+List of available activations
+
+**Example response:**
 ```json
 {
     "meta": {
@@ -583,13 +389,15 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-#### /api/dc/activation/:id/:sketchName?details+	
-* *id*: (identifier of activation)
+## GET /api/dc/activation/:id/:sketchName?details+
+
+Info about specific activations.
+
+**Fields:**
 * *sketchName*: name of the sketch
 * *Params details*: 1 or 0 for host and other details
 
-* **GET**: Info about specific activations
-
+**Example response:**
 ```json
 {
     "meta": {
@@ -646,68 +454,85 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-* **PUT**: Create new activation
+## PUT /api/dc/activation/:id
 
+Create new activation.
+
+**Example Request Body:**
 ```json
-	Request body:
-	{
-             
-	     "environmentName":"092b04a40fdd4cb8bfdb685f2c4a0328",
-	     "paramName":"c53db12b79d5b2b74f319b91caf7e88f",
- 	     "bundleName": "installed"
-	}
+{
+     "environmentName":"092b04a40fdd4cb8bfdb685f2c4a0328",
+     "paramName":"c53db12b79d5b2b74f319b91caf7e88f",
+     "bundleName": "installed"
+}
 ```
 
-* **DELETE**: Delete the activation
+**Example usage:** `Sample API call to Activate sketch`
 
-#### /api/dc/validation
-* **GET**: Get list of validations
-	
-#### /api/dc/validation/:id
-* **GET**: Get specific validations
+## DELETE /api/dc/activation/:id
 
-#### /api/dc/validate/:validationType
-* *validationType*: specific validation type
-* **POST**: validate the data 
-* Request Body:
+Delete the activation.
 
+## GET /api/dc/validation
+
+Get list of validations.
+    
+## GET /api/dc/validation/:id
+
+Get specific validation.
+
+## POST /api/dc/validate/:validationType
+
+**Example Request Body:**
 ```json
-	{
-	"validationData":["asdasd"]
-	}
+{
+    "validationData": ["asdasd"]
+}
 ```
 
-#### /api/dc/workspace
-* **GET**: checks for the workspace and returns the path
+## GET /api/dc/workspace
 
-#### /api/dc/workspace/commit
-* **POST**: Post the commits
+Checks for the workspace and returns the path.
 
+## POST /api/dc/workspace/commit
+
+Post the commits.
+
+**Example Request Body:**
 ```json
-	Request Body:
-	{
-	'message': "some message",
-    	'userEmail': 'email.com'
-	}
+{
+    'message': "some message",
+    'userEmail': 'email.com'
+}
 ```
 
-#### /api/dc/workspace/reset
-* **POST**: Resets the user workspace
+**Example usage:** `Sample API call to Commit changes`
 
-#### /api/dc/workspace/settings
-* **GET**: Returns the settings of the workspace (VCS settings), 404 if not found
-* **POST**: Create the settings. Content-Type header should be multipart/form-data
-* **DELETE**: Delete settings
+## POST /api/dc/workspace/reset
 
+Resets the user workspace.
+
+## GET /api/dc/workspace/settings
+
+Returns the settings of the workspace (VCS settings), 404 if not found.
+
+## POST /api/dc/workspace/settings
+
+Create the settings. Content-Type header should be multipart/form-data.
+
+**Example Request Body:**
 ```json
-		Request Body:
-		{
-		 'gitServer':"serverurl",
-		 'gitEmail': "email.com" ,
-		 'gitBranch':"gitbranch name",
-		 'gitAuthor': "author name",
-		 'gitPrivateKey': "@filepath"
-		}
-		eg: curl -F "gitServer=servername" -F "gitEmail=mail" -F "gitPrivateKey=@/home/user1/Desktop/id_rsa" http://server
-		
+{
+    'gitServer':"serverurl",
+    'gitEmail': "email.com" ,
+    'gitBranch':"gitbranch name",
+    'gitAuthor': "author name",
+    'gitPrivateKey': "@filepath"
+}
+
+eg: curl -F "gitServer=servername" -F "gitEmail=mail" -F "gitPrivateKey=@/home/user1/Desktop/id_rsa" http://server
 ```
+
+## DELETE /api/dc/workspace/settings
+
+Delete settings.
