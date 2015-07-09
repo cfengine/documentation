@@ -382,7 +382,9 @@ limit.
 
 Here is an example `augments_file`:
 
-[%CFEngine_include_example(masterfiles/example_def.json)%]
+<pre>
+[%CFEngine_include_markdown(masterfiles/example_def.json)%]
+</pre>
 
 ###### domain (variable)
 
