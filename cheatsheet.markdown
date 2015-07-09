@@ -372,3 +372,12 @@ You can also use backticks (and get syntax highlighting) - just make sure the ba
 ###### Level 6
 
 *****
+
+## Including External Files
+
+Sometimes it's nice to include an external file
+
+<pre>
+[%CFEngine_include_markdown(masterfiles/CHANGELOG.md)%]
+</pre>
+
