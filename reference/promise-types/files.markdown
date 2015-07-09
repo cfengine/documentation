@@ -2058,7 +2058,7 @@ Seas include {{#seas}} {{.}},{{/seas}}.
 
 * {% raw %}{{#classes.solar_system}}{% endraw %} starts the beginning of a class
   block. Unlike CFEngine’s normal code this block must be ended with
-  {{% raw %}{/classes.solar_system}}{% endraw %}.  Everything in-between is evaluated
+  {% raw %}{/classes.solar_system}}{% endraw %}.  Everything in-between is evaluated
   when the class solar_system is true.
 
 * Strings take the form of {% raw %}{{vars.bundle.name}}{% endraw %} as seen in
