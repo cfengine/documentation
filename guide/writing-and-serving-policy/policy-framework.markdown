@@ -353,6 +353,37 @@ Implementation (warning: advanced usage):
 
 [%CFEngine_include_snippet(masterfiles/controls/3.7/def.cf, .*)%]
 
+###### augments_file (variable)
+
+This variable defines the path to a JSON file used to "augment" the current definitions.
+
+The `augments_file` is intended to ease policy framework upgrades by
+providing a standard location for site specific settings to be
+defined. Currently the augments file supports defining additional
+inputs and classes as well as overriding variables matching `defvars`.
+
+By default the `augments_file` is expected to exist in the root of
+your policy. Should you want to deliver different augments files to
+different clients, you may consider pointing this to a file
+**outside** of the masterfiles tree that is downloaded by the
+individual clients.
+
+###### defvars (variable)
+
+This variable defines the list of variables that are allowed to be
+overridden by the `augments_file`.
+
+###### augments (variable)
+
+This variable contains the augments data as loaded from the
+`augments_file`. By default this is limited to 100k. If your
+`augments_file` is larger than 100k you will want to adjust this
+limit.
+
+Here is an example `augments_file`:
+
+[%CFEngine_include_example(masterfiles/example_def.json)%]
+
 ###### domain (variable)
 
 Set your `domain` to the right value. By default it's used for mail
