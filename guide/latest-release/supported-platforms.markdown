@@ -14,24 +14,23 @@ provide support for the platforms most frequently used by our users.
 
 | Platform     | Versions   | Architecture    |
 |:--------------:|:-----------:|:---------------:|
-| CentOS     | 5, 6 	| x86-64   |
-| Debian 	| 6, 7 	| x86-64   |
-| RHEL 	| 5, 6 	| x86-64   |
+| CentOS     | 5, 6, 7 	| x86-64   |
+| Debian 	| 6, 7, 8 	| x86-64   |
+| RHEL 	| 5, 6, 7 	| x86-64   |
 | SLES 	| 11 	| x86-64   |
 | Ubuntu 	| 10.04, 12.04 	| x86-64   |
 
+Any supported host can be a policy server in Community installations of CFEngine.
 
 ## Hosts ##
-
-Any host can be a policy server in Community installations of CFEngine.
 
 | OS              | Versions     | Architectures      |
 |-----------------|--------------|--------------------|
 | AIX 	| 5.3*, 6, 7 	| PowerPC   |
-| CentOS 	| 4, 5, 6, 7** 	| x86-64, x86   |
-| Debian 	| 6, 7 	| x86-64, x86   |
+| CentOS 	| 4, 5, 6, 7 	| x86-64, x86   |
+| Debian 	| 6, 7, 8 	| x86-64, x86   |
 | HP-UX         | 11.23+ | Itanium  |
-| RHEL 	| 4, 5, 6, 7** 	| x86-64, x86   |
+| RHEL 	| 4, 5, 6, 7 	| x86-64, x86   |
 | SLES 	| 10, 11 	| x86-64, x86   |
 | Solaris 	| 9 	| SPARC   |
 | Solaris 	| 10, 11 	| UltraSparc   |
@@ -40,8 +39,6 @@ Any host can be a policy server in Community installations of CFEngine.
 | Windows 	| 2008, 2012 	| x86-64   |
 
 \* AIX 5.3 is required to have "5300-05-CSP" or later
-
-\** RHEL 7 and CentOS 7 are currently not supported as hubs, see [Known Issues][]
 
 [Known Issues][] also includes platform-specific notes.
 
@@ -52,9 +49,9 @@ to be installed in and manage VIOS environments.
 
 ## Hub/Host compatibility ##
 
-An upgrade path from previous versions is available from 3.6.1.
+An upgrade path from previous versions is available.
 
-Some data will not be available from older hosts, and the policy you serve
+Some data will not be available from hosts on version 3.5.x or older, and the policy you serve
 needs to take into account hosts with different versions.
 
 ## Future platform support ##
