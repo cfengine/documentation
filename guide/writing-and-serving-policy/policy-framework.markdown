@@ -417,7 +417,7 @@ time. This is only useful to be open during for bootstrapping these
 hosts. As the comments say, empty it after your hosts have been
 bootstrapped to avoid unpleasant surprises.
 
-###### services_autorun class
+###### services_autorun (class)
 
 Off by default.
 
@@ -427,7 +427,7 @@ example of such a bundle in `services/autorun/hello.cf`:
 
 [%CFEngine_include_snippet(masterfiles/services/autorun/hello.cf, .*)%]
 
-###### cfengine_internal_rotate_logs class
+###### cfengine_internal_rotate_logs (class)
 
 On by default.
 
@@ -436,13 +436,13 @@ bundle implementation:
 
 [%CFEngine_include_snippet(masterfiles/cfe_internal/core/log_rotation.cf, .*bundle\s+agent\s+cfe_internal_log_rotation, \})%]
 
-###### cfengine_internal_agent_email class
+###### cfengine_internal_agent_email (class)
 
 On by default.
 
 This class enables agent email output from `cf-execd`.
 
-###### cfengine_internal_encrypt_transfers class
+###### cfengine_internal_encrypt_transfers (class)
 
 Duplicate of the one in `update.cf`. They should be set in unison or
 you may get unexpected behavior.
