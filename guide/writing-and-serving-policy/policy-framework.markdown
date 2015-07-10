@@ -77,27 +77,27 @@ nonessential ones.
 There are multiple stages in `update.cf`. This document covers each
 bundle in the order defined by the bundlesequence.
 
-##### update_def bundle
+##### update_def (bundle)
 
 This bundle is defined in
 `controls/$(sys.cf_version_major).$(sys.cfengine_version_minor)/update_def.cf`.
 `bundle common update_def` defines settings and variables that are
 used throughout the update policy.
-
+ 
 As of CFEngine version 3.7 it is reccomended that these setting
 changes are specified in `def.json` to ease policy framework updates.
 
-###### input_name_patterns variable
+###### input_name_patterns (variable)
 
 A list of regular expressions defining which files should be considerd
 for copying during update.
 
-###### masterfiles_perms_mode variable
+###### masterfiles_perms_mode (variable)
 
 Usually you want to leave this at `0600` meaning the inputs will be
 readable only by their owner.
 
-###### trigger_upgrade class
+###### trigger_upgrade (class)
 
 Off by default
 
@@ -105,7 +105,7 @@ When this class is set, the internal CFEngine upgrade mechanism is
 enabled. Currently this upgrade policy is specific to CFEngine
 Enterprise.
 
-###### cfengine_internal_masterfiles_update class
+###### cfengine_internal_masterfiles_update (class)
 
 Off by default.
 
@@ -120,7 +120,7 @@ for details on how to use it.
 
 **This may result in DATA LOSS.**
 
-###### cfengine_internal_encrypt_transfers class
+###### cfengine_internal_encrypt_transfers (class)
 
 Off by default.
 
@@ -135,7 +135,7 @@ Turn this on (set to `any`) to encrypt your policy transfers.
 Note it has a duplicate in `def.cf`, see below. If they are not
 synchronized, you may get unexpected behavior.
 
-###### cfengine_internal_purge_policies class
+###### cfengine_internal_purge_policies (class)
 
 Off by default.
 
@@ -151,7 +151,7 @@ Turn this on (set to `any`) to delete any files in your
 Note it has a duplicate in `def.cf`, see below. If they are not
 synchronized, you may get unexpected behavior.
 
-###### cfengine_internal_preserve_permissions class
+###### cfengine_internal_preserve_permissions (class)
 
 Off by default.
 
@@ -164,7 +164,7 @@ exec bits unexpectedly**
 Note it has a duplicate in `def.cf`, see below. If they are not
 synchronized, you may get unexpected behavior.
 
-###### cfengine_internal_disable_cf_promises_validated class
+###### cfengine_internal_disable_cf_promises_validated (class)
 
 Off by default.
 
@@ -178,21 +178,21 @@ increased load on the hub will affect scalability.
 Consider using [time_based][Hard and Soft Classes], `select_class` or `dist` based
 classes instead of any to retain some of the benefits.
 
-###### enable_cfengine_enterprise_hub_ha class
+###### enable_cfengine_enterprise_hub_ha (class)
 
 Off by default.
 
 This class enables the HA policy for CFEngine Enterprise hubs. This
 class is not set by default.
 
-##### cfe_internal_dc_workflow bundle
+##### cfe_internal_dc_workflow (bundle)
 
 This bundle implements the auto-deployment of policies. See
 [Version Control and Configuration Policy][Best Practices#Version Control and Configuration Policy]
 and `cfengine_internal_masterfiles_update` below for details. This
 policy is currently specific to CFEngine Enterprise.
 
-##### cfe_internal_update_policy bundle
+##### cfe_internal_update_policy (bundle)
 
 This bundle is defined in `cfe_internal/update/update_policy.cf`.
 It updates the policy files themselves. Basically it's a
@@ -207,13 +207,13 @@ Implementation (warning: advanced usage):
 
 [%CFEngine_include_snippet(masterfiles/cfe_internal/update/update_policy.cf, .*)%]
 
-##### cfe_internal_update_bins bundle
+##### cfe_internal_update_bins (bundle)
 
 This step does a self-update of CFEngine. See the Enterprise
 documentation for details; this functionality is unsupported in
 CFEngine Community.
 
-##### cfe_internal_update_processes bundle
+##### cfe_internal_update_processes (bundle)
 
 This step manages the running processes, ensuring `cf-execd` and
 `cf-serverd` and `cf-monitord` are running and doing some other tasks.
@@ -256,7 +256,7 @@ for composing bundles for different classes. This is an advanced topic
 and a risky area (if you get it wrong, your policies will not
 validate) so make sure you test your changes carefully!
 
-##### inventory_control bundle
+##### inventory_control (bundle)
 
 The inventory policy was added in CFEngine version 3.6. Inventory
 modules are desinged to define classes and variables based on the
@@ -265,12 +265,12 @@ levereged when writing policy, and in CFEngine Enterprise they can be
 reported on from Mission Portal. You can disable pieces of it
 (inventory modules) or the whole thing if you wish.
 
-###### disable_inventory class
+###### disable_inventory (class)
 
 This class is off by default (meaning the inventory is on by default).
 Here's the master switch to disable all inventory modules.
 
-###### disable_inventory_lsb class
+###### disable_inventory_lsb (class)
 
 LSB is the Linux Standard Base, see https://wiki.linuxfoundation.org/en/LSB
 
@@ -279,14 +279,14 @@ executable `/usr/bin/lsb_release` can be found. This inventory module
 will populate inventory reports and variables for you with LSB
 details. For details, see [LSB][The Policy Framework#LSB]
 
-###### disable_inventory_dmidecode class
+###### disable_inventory_dmidecode (class)
 
 By default, this class is turned off (and the module is on) if the
 executable `/usr/sbin/dmidecode` can be found. This inventory module
 will populate inventory reports and variables for you. For details,
 see [DMI decoding][The Policy Framework#DMI decoding]
 
-###### disable_inventory_LLDP class
+###### disable_inventory_LLDP (class)
 
 LLDP is a protocol for Link Layer Discovery. See
 http://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol
@@ -295,45 +295,45 @@ By default, this class is turned off (and the module is on) if the
 executable `/usr/bin/lldpctl` can be found. This inventory module will
 populate variables for you. For details, see [LLDP][The Policy Framework#LLDP]
 
-###### disable_inventory_package_refresh class
+###### disable_inventory_package_refresh (class)
 
 By default, this class is turned off (and the module is on). This
 inventory module will populate the installed packages for you. On
 CFEngine Enterprise, the available packages will also be populated.
 
-###### disable_inventory_mtab class
+###### disable_inventory_mtab (class)
 
 By default, this class is turned off (and the module is on) if
 `/etc/mtab` exists. This inventory module will populate variables for
 you based on the mounted filesystems. For details, see [mtab][The Policy Framework#mtab]
 
-###### disable_inventory_fstab class
+###### disable_inventory_fstab (class)
 
 By default, this class is turned off (and the module is on) if
 `$(sys.fstab)` (usually `/etc/fstab` or `/etc/vfstab`) exists. This
 inventory module will populate variables for you based on the defined
 filesystems. For details, see [fstab][The Policy Framework#fstab]
 
-###### disable_inventory_proc class
+###### disable_inventory_proc (class)
 
 By default, this class is turned off (and the module is on) if `/proc`
 is a directory. This inventory module will populate variables for you
 from some of the contents of `/proc`. For details, see [procfs][The Policy Framework#procfs]
 
-###### disable_inventory_cmdb class
+###### disable_inventory_cmdb (class)
 
 By default, this class is turned on (and the module is off).
 
 Turn this on (set to `any`) to allow each client to load a `me.json`
 file from the server and load its contents. For details, see [CMDB][The Policy Framework#CMDB]
 
-##### @(inventory.bundles) variable
+##### @(inventory.bundles) (bundle)
 
-This variable is defined as `bundle common inventory` in `promises.cf`.
+This bundle is defined as `bundle common inventory` in `promises.cf`.
 
 Inventory bundles may vary between platform and other classes.
 
-##### def bundle
+##### def (bundle)
 
 This bundle is defined as `bundle common def` in `controls/3.7/def.cf`
 
@@ -353,7 +353,7 @@ Implementation (warning: advanced usage):
 
 [%CFEngine_include_snippet(masterfiles/controls/3.7/def.cf, .*)%]
 
-###### augments_file variable
+###### augments_file (variable)
 
 This variable defines the path to a JSON file used to "augment" the current definitions.
 
@@ -368,12 +368,12 @@ different clients, you may consider pointing this to a file
 **outside** of the masterfiles tree that is downloaded by the
 individual clients.
 
-###### defvars variable
+###### defvars (variable)
 
 This variable defines the list of variables that are allowed to be
 overridden by the `augments_file`.
 
-###### augments variable
+###### augments (variable)
 
 This variable contains the augments data as loaded from the
 `augments_file`. By default this is limited to 100k. If your
@@ -386,30 +386,30 @@ Here is an example `augments_file`:
 [%CFEngine_include_markdown(masterfiles/example_def.json)%]
 </pre>
 
-###### domain variable
+###### domain (variable)
 
 Set your `domain` to the right value. By default it's used for mail
 and to deduce your file access ACLs.
 
-###### mailto variable
+###### mailto (variable)
 
 This variable defines the email address that agent run output is sent to.
 
-###### mailfrom variable
+###### mailfrom (variable)
 
 This variale defines the email address that emails containing agent
 run output come from.
 
-###### smtpserver variable
+###### smtpserver (variable)
 
 This variale defines the smtp server to use when sending agent emails.
 
-###### acl variable
+###### acl (variable)
 
 The `acl` is crucial. This is used by **every** host, not just the
 policy server. Make sure you only allow hosts you want to allow.
 
-###### trustkeysfrom variable
+###### trustkeysfrom (variable)
 
 `trustkeysfrom` tells the policy server from which IPs it should accept
 connections even if the host's key is unknown, trusting it at connect
@@ -447,17 +447,17 @@ This class enables agent email output from `cf-execd`.
 Duplicate of the one in `update.cf`. They should be set in unison or
 you may get unexpected behavior.
 
-###### cfengine_internal_purge_policies class
+###### cfengine_internal_purge_policies (class)
 
 Duplicate of the one in `update.cf`. They should be set in unison or
 you may get unexpected behavior.
 
-###### cfengine_internal_preserve_permissions class
+###### cfengine_internal_preserve_permissions (class)
 
 Duplicate of the one in `update.cf`. They should be set in unison or
 you may get unexpected behavior.
 
-###### cfengine_internal_sudoers_editing_enable class
+###### cfengine_internal_sudoers_editing_enable (class)
 
 Off by default.  Only used on the CFEngine Enterprise hub.
 
@@ -465,14 +465,14 @@ Turn this on (set to `any`) to allow the hub to edit sudoers in order
 for the Apache user to run passwordless sudo cf-runagent (part of
 Mission Portal troubleshooting).
 
-###### postgresql_mainenance_supported class
+###### postgresql_mainenance_supported (class)
 
 On by default only for CFEngine Enterprise Hubs.
 
 This class enables maintaince routines for the database used in
 CFEngine Enterprise.
 
-###### postgresql_full_maintenance class
+###### postgresql_full_maintenance (class)
 
 On by default only on Sundays at 2am when
 postgresql_maintance_supported is defined.
@@ -480,7 +480,7 @@ postgresql_maintance_supported is defined.
 Set this class accordingly if you want to schedule database
 maintainance operations at a different time.
 
-###### postgresql_vacuum class
+###### postgresql_vacuum (class)
 
 On by default at 2am when postgresql_maintannce_supported is defined
 except for Sundays.
@@ -488,13 +488,13 @@ except for Sundays.
 Set this class accordingly if you want to schedule database
 maintainance operations at a different time.
 
-###### enable_cfengine_enterprise_hub_ha class
+###### enable_cfengine_enterprise_hub_ha (class)
 
 Off by default.
 
 Set this class when you want to enable the CFEngine Enterprise HA policies.
 
-###### enable_cfe_internal_cleanup_agent_reports class
+###### enable_cfe_internal_cleanup_agent_reports (class)
 
 Off by default for core.
 On by default for CFEngine Enteprise clients.
@@ -502,35 +502,35 @@ On by default for CFEngine Enteprise clients.
 This class enables policy that cleans up report diffs when they exceed
 `def.maxclient_history_size`.
 
-#### @(cfengine_enterprise_hub_ha.classification_bundles) variable
+#### @(cfengine_enterprise_hub_ha.classification_bundles) (bundle)
 
 Bundles related to classification for CFEngine Enterprise HA.
 
-#### cfsketch_run bundle
+#### cfsketch_run (bundle)
 
 This bundle activates sketches deployed by the Design Center tooling.
 
-#### services_autorun bundle
+#### services_autorun (bundle)
 
 This bundle loads policies found in `services/autorun` that are
 tagged for autorun.
 
 See services_autorun
 
-#### @(services_autorun.bundles) variable
+#### @(services_autorun.bundles) (bundle)
 
 This activates bundles found by services_autorun.
 
-#### cfe_internal_management bundle
+#### cfe_internal_management (bundle)
 
 This bundle activates policy related to CFEngine itself. For example
 rotation of logs generated by the agent.
 
-#### main bundle
+#### main (bundle)
 
 This bundle is defined as `bundle agent main` in `services/main.cf`, it is the main entry into custom policy.
 
-#### @(cfengine_enterprise_hub_ha.management_bundles) bundle
+#### @(cfengine_enterprise_hub_ha.management_bundles) (bundle)
 
 These bundles activate policy that manages HA in CFEngine Enterprise.
 
