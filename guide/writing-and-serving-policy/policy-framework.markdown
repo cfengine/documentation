@@ -436,7 +436,7 @@ bundle implementation:
 
 [%CFEngine_include_snippet(masterfiles/cfe_internal/core/log_rotation.cf, .*bundle\s+agent\s+cfe_internal_log_rotation, \})%]
 
-###### cfengine_internal_agent_email (class)
+###### cfengine_internal_agent_email class
 
 On by default.
 
