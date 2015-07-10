@@ -242,7 +242,7 @@ https://github.com/cfengine/masterfiles/blob/master/controls/cf_execd.cf. It
 defaults to `root@$(def.domain)` which is configured in `bundle common def`
 https://github.com/cfengine/masterfiles/blob/master/def.cf.
 
-For details see [domain][The Policy Framework#domain].
+For details see [domain][The Policy Framework#domain (variable)].
 
 #### How do I disable agent email output ####
 
@@ -251,7 +251,7 @@ You can simply remove or comment out the settings.
 In 3.6.x there is a convenience class `cfengine_internal_agent_email` avaiable
 in `bundle common def` to switch on/off agent email.
 
-For details see [cfengine_internal_agent_email][The Policy Framework#cfengine_internal_agent_email].
+For details see [cfengine_internal_agent_email][The Policy Framework#cfengine_internal_agent_email (class)].
 
 ### Mustache Templating ###
 
