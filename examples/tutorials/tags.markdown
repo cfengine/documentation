@@ -153,7 +153,7 @@ https://cfengine.com/docs/master/reference-functions-bundlesmatching.html
 for another detailed example.
 
 In fact we found this so useful we implemented
-[services autorun][The Policy Framework#services_autorun] in the
+[services autorun][The Policy Framework#services_autorun (bundle)] in the
 [masterfiles policy framework][The Policy Framework].
 
 There is only one thing to beware. All the bundles have to have the
