@@ -242,7 +242,7 @@ https://github.com/cfengine/masterfiles/blob/master/controls/cf_execd.cf. It
 defaults to `root@$(def.domain)` which is configured in `bundle common def`
 https://github.com/cfengine/masterfiles/blob/master/def.cf.
 
-For details see [domain][The Policy Framework#domain variable].
+For details see [domain][The Policy Framework#domain-variable].
 
 #### How do I disable agent email output ####
 
