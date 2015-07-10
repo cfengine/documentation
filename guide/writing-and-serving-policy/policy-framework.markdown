@@ -386,7 +386,7 @@ Here is an example `augments_file`:
 [%CFEngine_include_markdown(masterfiles/example_def.json)%]
 </pre>
 
-###### domain (variable)
+###### domain variable
 
 Set your `domain` to the right value. By default it's used for mail
 and to deduce your file access ACLs.
@@ -417,7 +417,7 @@ time. This is only useful to be open during for bootstrapping these
 hosts. As the comments say, empty it after your hosts have been
 bootstrapped to avoid unpleasant surprises.
 
-###### services_autorun (class)
+###### services_autorun class
 
 Off by default.
 
@@ -427,7 +427,7 @@ example of such a bundle in `services/autorun/hello.cf`:
 
 [%CFEngine_include_snippet(masterfiles/services/autorun/hello.cf, .*)%]
 
-###### cfengine_internal_rotate_logs (class)
+###### cfengine_internal_rotate_logs class
 
 On by default.
 
@@ -442,7 +442,7 @@ On by default.
 
 This class enables agent email output from `cf-execd`.
 
-###### cfengine_internal_encrypt_transfers (class)
+###### cfengine_internal_encrypt_transfers class
 
 Duplicate of the one in `update.cf`. They should be set in unison or
 you may get unexpected behavior.
