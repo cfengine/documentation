@@ -84,15 +84,15 @@ for some time, including various common directories, and simple access control
 list definition to control which remote hosts could connect. Comparing def.cf
 from 3.5 and 3.6 will reveal many additions
 
-* [services_autorun][The Policy Framework#services_autorun class] provides automatic loading and activation of policy.
-* [cfengine_internal_rotate_logs][The Policy Framework#cfengine_internal_rotate_logs class] Enables log rotation for CFEngines log files.
-* [cfengine_internal_encrypt_transfers][The Policy Framework#cfengine_internal_encrypt_transfers class] Enables encryption for policy and binary updates done during the update policy.
+* [services_autorun][The Policy Framework#services_autorun (class)] provides automatic loading and activation of policy.
+* [cfengine_internal_rotate_logs][The Policy Framework#cfengine_internal_rotate_logs (class)] Enables log rotation for CFEngines log files.
+* [cfengine_internal_encrypt_transfers][The Policy Framework#cfengine_internal_encrypt_transfers (class)] Enables encryption for policy and binary updates done during the update policy.
 
   Note: This setting is mirrored from
   update.cf for CFEngine enterprise reporting. This setting is superfluous
   when `protocol_version` is set to 2 or higher which enables TLS encryption for
   communication.
-* [cfengine_internal_purge_policies][The Policy Framework#cfengine_internal_purge_policies class]: Enables purging of policies that no longer exist in masterfiles.
+* [cfengine_internal_purge_policies][The Policy Framework#cfengine_internal_purge_policies (class)]: Enables purging of policies that no longer exist in masterfiles.
 
   Note: This setting is mirrored from update.cf for [CFEngine Enterprise][] reporting.
   
