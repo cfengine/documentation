@@ -28,7 +28,7 @@ The return is a data container with a list of package descriptions, looking like
 The following code extracts just the package names, then looks for
 some desired packages, and finally reports if they are installed.
 
-[%CFEngine_include_example(packages_matching.cf)%]
+[%CFEngine_include_example(packagesmatching.cf)%]
 
 [%CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex)%]
 
