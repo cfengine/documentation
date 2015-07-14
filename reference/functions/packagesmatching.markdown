@@ -28,25 +28,7 @@ The return is a data container with a list of package descriptions, looking like
 The following code extracts just the package names, then looks for
 some desired packages, and finally reports if they are installed.
 
-```cf3
-bundle agent missing_packages
-{
-  vars:
-    "desired" slist => { "mypackage1", "mypackage2" };
-
-    "installed" data => packagesmatching(".*",".*",".*",".*");
-    "installed_indices" slist => getindices(installed);
-    "installed_name[$(installed_indices)]" string => "$(installed[$(installed_indices)][name])";
-    "installed_names" slist => getvalues("installed_name");
-
-    "missing_list" slist => difference(desired,installed_names);
-
-  reports:
-    "Missing packages = $(missing)";
-    "Installed packages = $(installed_names)";
-    "Desired packages = $(desired)";
-}
-```
+[%CFEngine_include_example(packagesmatching.cf)%]
 
 [%CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex)%]
 
