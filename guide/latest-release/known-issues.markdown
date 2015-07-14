@@ -13,6 +13,10 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
+### Windows agents are unable to use the shortcut feature
+
+Windows agents are unable to use the shortcut feature in access type promises.
+This is resolved in 3.7.x and will not be backported to 3.6.x.
 
 ### Constant variables do not work, variables are always overrideable
 
