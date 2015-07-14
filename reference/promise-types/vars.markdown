@@ -283,7 +283,7 @@ redefined) or they can be constant.
 
 **Default value:**
 
-`policy = constant`
+`policy = free`
 
 **Example:**
 
@@ -291,16 +291,14 @@ redefined) or they can be constant.
     vars:
 
       "varid" string => "value...",
-              policy => "constant";
+              policy => "free";
 ```
 
 **Notes:**
 
-The policy `constant` indicates that the variable value may not be changed.
-The policies `free` and `overridable` are synonymous and indicate that the
-variable's value may be changed.
-
-`data` variables (data containers) can only have policy `constant`.
+The policy `free` and `overridable` are synonyms.  The policy `constant` is
+deprecated, and has no effect. All variables are `free` or `overridable` by
+default which means the variables values may be changed.
 
 The policy `ifdefined` applies only to lists and implies that unexpanded or
 undefined lists are dropped. The default behavior is otherwise to retain this
@@ -317,20 +315,13 @@ example:
 This results in `@(list)` being the same as `@(one)`, and the reference to
 `@(two)` disappears. This is useful for combining lists.
 
-The `policy` attribute gets checked at the moment the variable is assigned -
-i.e. in the second assignment when the same variable is assigned multiple
-times. The `policy` attribute for that assignment is the one used when
-deciding whether to warn you or not. That's why in practice, you need to
-specify the attribute in all declarations of the variable.
-
 For example:
 
 ```cf3
 example_com::
   "domain"
      string => "example.com",
-    comment => "Define a global domain for hosts in the example.com domain",
-     policy => "free";
+    comment => "Define a global domain for hosts in the example.com domain";
 
 # The promise above will be overridden by one of the ones below on hosts
 # within the matching subdomain
@@ -338,12 +329,10 @@ example_com::
 one_example_com::
   "domain"
      string => "one.example.com",
-    comment => "Define a global domain for hosts in the one.example.com domain",
-     policy => "free";
+    comment => "Define a global domain for hosts in the one.example.com domain";
 
 two_example_com::
   "domain"
      string => "two.example.com",
-    comment => "Define a global domain for hosts in the two.example.com domain",
-     policy => "free";
+    comment => "Define a global domain for hosts in the two.example.com domain";
 ```
