@@ -3,10 +3,10 @@ layout: default
 title: Policy Framework Updates
 published: true
 sorting: 40
-tags: [releases, latest release, "3.6", platforms, versions, what's new]
+tags: [releases, latest release, "3.7", platforms, versions, what's new]
 ---
 
-## CFEngine Policy Framework Updates for 3.6 ##
+## CFEngine Policy Framework Updates for 3.7 ##
 
 If you follow the CFEngine masterfiles policy framework (the masterfiles you
 get out of the box) we encourage you to upgrade the policy framework each time
@@ -14,6 +14,9 @@ you upgrade CFEngine. We recommend making as few changes as possible to the
 shipped masterfiles to make these upgrades as painless as possible. Generally
 the best way to accomplish that is to take your custom policy and integrate it
 on top of the new masterfiles.
+
+3.7 introduces some minor re-orginization of policy, and some new
+features aimed at making policy framework upgrades easier.
 
 3.6 introduces significant changes to the masterfiles policy framework.
 Masterfiles was moved out from core into its own repository and was merged
@@ -25,7 +28,7 @@ easily accessible from either product.
 
 Please consult [The Policy Framework] for a map to the policy framework.
 
-* [What is new in the 3.6 masterfiles policy framework][Policy Framework Updates#What is new in the 3.6 masterfiles policy framework]
+* [What is new in the 3.7 masterfiles policy framework][Policy Framework Updates#What is new in the 3.7 masterfiles policy framework]
 	* [Directories][Policy Framework Updates#Directories]
 		* [templates][Policy Framework Updates#templates]
 		* [cfe_internal][Policy Framework Updates#cfe_internal]
@@ -44,7 +47,7 @@ Please consult [The Policy Framework] for a map to the policy framework.
 		* [Options controlling which variables to report have moved and changed][Policy Framework Updates#Options controlling which variables to report have moved and changed]
 		* [Host licenses paid deprecated][Policy Framework Updates#Host licenses paid deprecated]
 
-## What is new in the 3.6 masterfiles policy framework ##
+## What is new in the 3.7 masterfiles policy framework ##
 		
 ## Directories ##
 
@@ -81,15 +84,15 @@ for some time, including various common directories, and simple access control
 list definition to control which remote hosts could connect. Comparing def.cf
 from 3.5 and 3.6 will reveal many additions
 
-* [services_autorun][The Policy Framework#services_autorun] provides automatic loading and activation of policy.
-* [cfengine_internal_rotate_logs][The Policy Framework#cfengine_internal_rotate_logs] Enables log rotation for CFEngines log files.
-* [cfengine_internal_encrypt_transfers][The Policy Framework#cfengine_internal_encrypt_transfers] Enables encryption for policy and binary updates done during the update policy.
+* [services_autorun][The Policy Framework#services_autorun (class)] provides automatic loading and activation of policy.
+* [cfengine_internal_rotate_logs][The Policy Framework#cfengine_internal_rotate_logs (class)] Enables log rotation for CFEngines log files.
+* [cfengine_internal_encrypt_transfers][The Policy Framework#cfengine_internal_encrypt_transfers (class)] Enables encryption for policy and binary updates done during the update policy.
 
   Note: This setting is mirrored from
   update.cf for CFEngine enterprise reporting. This setting is superfluous
   when `protocol_version` is set to 2 or higher which enables TLS encryption for
   communication.
-* [cfengine_internal_purge_policies][The Policy Framework#cfengine_internal_purge_policies]: Enables purging of policies that no longer exist in masterfiles.
+* [cfengine_internal_purge_policies][The Policy Framework#cfengine_internal_purge_policies (class)]: Enables purging of policies that no longer exist in masterfiles.
 
   Note: This setting is mirrored from update.cf for [CFEngine Enterprise][] reporting.
   
