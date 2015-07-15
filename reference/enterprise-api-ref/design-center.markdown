@@ -11,10 +11,10 @@ commands that are wrapped by the following Enterprise API commands.
 ### List of sketches
 
 URI: **http://192.168.122.1/api/dc/sketch/**
-
 Method: **GET**
 
 **Example response:**
+
 ```
 {
   "meta": {
@@ -59,7 +59,7 @@ Method: **GET**
 
 ###  Information about specific sketch
 
-URI: ** http://192.168.122.1/api/dc/sketch/:sketchName/ ** 
+URI: **http://192.168.122.1/api/dc/sketch/:sketchName/**
 Method: **GET**
 
 **Example response:**
