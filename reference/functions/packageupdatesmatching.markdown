@@ -14,7 +14,7 @@ the list of currently available packages.
 
 The return is a data container with a list of package descriptions, looking like this:
 
-```json
+```
 [
   {
     "name": "bfoobar",

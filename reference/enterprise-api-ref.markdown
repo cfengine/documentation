@@ -34,7 +34,7 @@ Pagination is handled by `page` and `count` query parameters to a **GET** reques
 Enterprise API responses are always of the following format, consisting of a 
 'meta' object and a 'data' array.
 
-```json
+```
     {
       "meta": {
         "page": 1,
