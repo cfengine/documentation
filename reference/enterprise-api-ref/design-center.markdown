@@ -10,11 +10,12 @@ commands that are wrapped by the following Enterprise API commands.
 
 ### List of sketches
 
-URI: **http://192.168.122.1/api/dc/sketch/**
+**URI:** http://192.168.122.1/api/dc/sketch
 
-Method: **GET**
+**Method:** GET
 
 **Example response:**
+
 ```
 {
   "meta": {
@@ -59,8 +60,9 @@ Method: **GET**
 
 ###  Information about specific sketch
 
-URI: ** http://192.168.122.1/api/dc/sketch/:sketchName/ ** 
-Method: **GET**
+**URI:** http://192.168.122.1/api/dc/sketch/:sketchName
+
+**Method:** GET
 
 **Example response:**
 
@@ -200,15 +202,17 @@ Method: **GET**
 
 ### Install sketch in the system
 
-URI: **http://192.168.122.1/api/dc/sketch/:sketchName/**
-Method: **PUT**
+**URI:** http://192.168.122.1/api/dc/sketch/:sketchName
+
+**Method:** PUT
 
 **Example usage:** `Sample API call to Install sketch`
 
 ### List of available definitions
 
-URI: **http://192.168.122.1/api/dc/definition/**
-Method: **GET**
+**URI:** http://192.168.122.1/api/dc/definition
+
+**Method:** GET
 
 **Example response:**
 
@@ -255,8 +259,9 @@ Method: **GET**
 
 ### Create new definition
 
-URI: **http://192.168.122.1/api/dc/definition/:definitionName/**
-Method: **PUT**
+**URI:** http://192.168.122.1/api/dc/definition/:definitionName
+
+**Method:** PUT
 
 **Example Request Body:**
 
@@ -273,8 +278,9 @@ Method: **PUT**
 
 ### List of available environments
 
-URI: **http://192.168.122.1/api/dc/environment/**
-Method: **GET**
+**URI:** http://192.168.122.1/api/dc/environment
+
+**Method:** GET
 
 **Example response:**
 
@@ -313,8 +319,9 @@ Method: **GET**
 
 ### Create new environment
 
-URI: **http://192.168.122.1/api/dc/environment/:name/**
-Method: **PUT**
+**URI:** http://192.168.122.1/api/dc/environment/:name
+
+**Method:** PUT
 
 **Example Request Body:**
 
@@ -330,8 +337,9 @@ Method: **PUT**
 
 ### List of available activations
 
-URI: **http://192.168.122.1/api/dc/activation/**
-Method: **GET**
+**URI:** http://192.168.122.1/api/dc/activation
+
+**Method:** GET
 
 **Parameters:**
 
@@ -415,8 +423,9 @@ Method: **GET**
 
 ### Activation details
 
-URI: **http://192.168.122.1/api/dc/activation/:activation_id/:sketchName/**
-Method: **GET**
+**URI:** http://192.168.122.1/api/dc/activation/:activation_id/:sketchName
+
+**Method:** GET
 
 **Parameters:**
 
@@ -484,8 +493,9 @@ Method: **GET**
 
 ### Create new activation
 
-URI: **http://192.168.122.1/api/dc/activation/:id/**
-Method: **PUT**
+**URI:** http://192.168.122.1/api/dc/activation/:id
+
+**Method:** PUT
 
 **Example Request Body:**
 
@@ -501,23 +511,27 @@ Method: **PUT**
 
 ### Delete the activation
 
-URI: **http://192.168.122.1/api/dc/activation/:id/**
-Method: **DELETE**
+**URI:** http://192.168.122.1/api/dc/activation/:id
+
+**Method:** DELETE
 
 ### List of validations
 
-URI: **http://192.168.122.1/api/dc/validation/**
-Method: **GET**
+**URI:** http://192.168.122.1/api/dc/validation
+
+**Method:** GET
 
 ### Get validation details
 
-URI: **http://192.168.122.1/api/dc/validation/:id/**
-Method: **GET**
+**URI:** http://192.168.122.1/api/dc/validation/:id
+
+**Method:** GET
 
 ### Set validation type
 
-URI: **http://192.168.122.1/api/dc/validate/:validationType/**
-Method: **POST**
+**URI:** http://192.168.122.1/api/dc/validate/:validationType
+
+**Method:** POST
 
 **Example Request Body:**
 
@@ -531,15 +545,17 @@ Method: **POST**
 
 ### Get workspace
 
-URI: **http://192.168.122.1/api/dc/workspace/**
-Method: **GET**
+**URI:** http://192.168.122.1/api/dc/workspace
+
+**Method:** GET
 
 Checks for the workspace and returns the path.
 
 ### Post the commits
 
-URI: **http://192.168.122.1/api/dc/workspace/commit/**
-Method: **POST**
+**URI:** http://192.168.122.1/api/dc/workspace/commit
+
+**Method:** POST
 
 **Example Request Body:**
 
@@ -554,20 +570,23 @@ Method: **POST**
 
 ### Reset the user workspace
 
-URI: **http://192.168.122.1/api/dc/workspace/reset/**
-Method: **POST**
+**URI:** http://192.168.122.1/api/dc/workspace/reset
+
+**Method:** POST
 
 ### List workspace settings 
 
-URI: **http://192.168.122.1/api/dc/workspace/settings/**
-Method: **GET**
+**URI:** http://192.168.122.1/api/dc/workspace/settings
+
+**Method:** GET
 
 Returns the settings of the workspace (VCS settings), 404 if not found.
 
 ### Create settings
 
-URI: **http://192.168.122.1/api/dc/workspace/settings/**
-Method: **POST**
+**URI:** http://192.168.122.1/api/dc/workspace/settings
+
+**Method:** POST
 
 Content-Type header should be multipart/form-data.
 
@@ -589,5 +608,6 @@ curl -F "gitServer=servername" -F "gitEmail=mail" -F "gitPrivateKey=@/home/user1
 
 ### Delete settings
 
-URI: **http://192.168.122.1/api/dc/workspace/settings/**
-Method: **DELETE**
+**URI:** http://192.168.122.1/api/dc/workspace/settings
+
+**Method:** DELETE
