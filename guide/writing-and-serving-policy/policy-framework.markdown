@@ -7,7 +7,7 @@ tags: [manuals, writing policy, policy framework, masterfiles, def.cf, update.cf
 ---
 
 The CFEngine policy framework is called the **Masterfiles Policy Framework**,
-**MPF**, or simpley **masterfiles** because the files live in
+**MPF**, or simply **masterfiles** because the files live in
 `/var/cfengine/masterfiles` on the policy server (on the clients, and
 note the policy server is typically also a client, they are cached in
 `/var/cfengine/inputs`).
