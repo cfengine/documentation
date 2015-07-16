@@ -13,13 +13,6 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
-
-### Showing Classes and variables with cf-promsies
-
-`cf-promises --show-classes` and `cf-promises --show-vars` will only show
-classes and variables found on a first pass through the policy, since
-`cf-promises` does not evaluate agent promises.
-
 ### Protocol incompatibility between
 
 The CFEngine protocol versions 1 and 2 are incompatible (the latter is based
