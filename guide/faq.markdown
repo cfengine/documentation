@@ -233,6 +233,12 @@ cf-agent --define my_class,my_other_class
 
 Multiple `-D` flags are not supported, you have to put all the classes in one comma-separated list.
 
+### Showing Classes and variables with cf-promsies
+
+`cf-promises --show-classes` and `cf-promises --show-vars` will only show
+classes and variables found on a first pass through the policy, since
+`cf-promises` does not evaluate agent promises.
+
 ### Agent Email Reports ###
 
 #### How do I set the email where agent reports are sent ####
