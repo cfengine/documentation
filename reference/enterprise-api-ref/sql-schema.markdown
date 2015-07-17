@@ -5,7 +5,7 @@ published: true
 tags: [reference, enterprise, REST, API, reporting, sql, schema]
 ---
 
-CFEngine allows standardized SQL `SELECT` queries to be used with [Query API][Execute SQL query].
+CFEngine allows standardized SQL `SELECT` queries to be used with [Query REST API][Execute SQL query].
 Queries can be used with following database schema.
 
 ```bash
