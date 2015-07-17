@@ -13,12 +13,13 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
-### Protocol incompatibility between
+### Protocol incompatibility (3.5 or earlier)
 
 The CFEngine protocol versions 1 and 2 are incompatible (the latter is based
 on TLS). CFEngine 3.6 supports both protocol versions, but earlier versions
 only support protocol version 1. Protocol version 2 the default in
-3.7.
+3.7. This can be configured with the allowlegacyconnects and protocol_version
+attributes.
 
 ### HP-UX specific
 
