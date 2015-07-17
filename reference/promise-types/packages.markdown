@@ -17,9 +17,9 @@ does not currently cover. To read about the old package promise, go to the
 [old package promise section][packages (deprecated)].
 
 The actual communication with the package manager on the system is handled by so
-called package modules, which are specifically written for each type of package
-manager. CFEngine comes with out-of-the-box support for the following package
-managers:
+called [package modules][Package Modules], which are specifically written for
+each type of package manager. CFEngine comes with out-of-the-box support for the
+following package managers:
 
 * ``yum``: YUM package manager and accompanying rpm package manager.
 * ``apt_get``: Apt package manager and accompanying dpkg package manager.
