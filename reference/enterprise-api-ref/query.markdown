@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Query REST API
+title: Query REST API
 published: true
 tags: [reference, enterprise, REST, API, SQL, reporting, URI]
 ---
@@ -9,7 +9,7 @@ In case of a need for full flexibility, Query API allow users to execute SQL que
 
 Database schema available can be found [here][SQL Schema].
 
-### Execute SQL query.
+### Execute SQL query
 
 **URI:** http://192.168.122.1/api/query
 
