@@ -44,7 +44,7 @@ different approach][General Installation#More Detailed Installation Guides].
 
 This tutorial uses Vagrant to configure your VMs. It is available for Linux,
 Windows and MacOS and can be downloaded from vagrantup.com (this guide has been
-tested with version [1.6.5](http://www.vagrantup.com/download-archive/v1.6.5.html)). After
+tested with version [1.7.3](http://www.vagrantup.com/download-archive/v1.7.3.html)). After
 downloading Vagrant, install it on your computer. You may want to reference the
 Windows Mac or Linux vagrant install guides.
 
@@ -53,25 +53,22 @@ Windows Mac or Linux vagrant install guides.
 This tutorial uses VirtualBox to create virtual machines on your computer, to
 which Vagrant deploys CFEngine. VirtualBox can be downloaded from
 virtualbox.org (this guide has been tested with version
-[4.3.20](http://download.virtualbox.org/virtualbox/4.3.20/)). After
+[5.0.0](http://download.virtualbox.org/virtualbox/5.0.0/)). After
 downloading VirtualBox, install it on your computer.
 
 **Note:** To avoid problems, disable other virtualization environments you are
 running.
 
-## Start the CFEngine Enterprise 3.6 Vagrant Environment
+## Start the CFEngine Enterprise 3.7 Vagrant Environment
 
-Step 1. Download our ready-made Vagrant project (use the
-[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.5-1.tar.gz)
-or the
-[zip-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.6.5-1.zip)
-depending on your preference).
+Step 1. Download our ready-made Vagrant project
+[tar-file](http://cfengine.vagrant-baseboxes.s3.amazonaws.com/enterprise-getting-started/CFEngine_Enterprise_vagrant_quickstart-3.7.0-1.tar.gz).
 
 Step 2. Save and unpack the file anywhere on your drive; this
 creates a Vagrant Project directory.
 
 Step 3. Open a terminal and navigate to the Vagrant Project directory (e.g.
-`/home/user/CFEngine_Enterprise_vagrant_quickstart-3.6.5-1`, or `C:\CFEngine_Enterprise_vagrant_quickstart-3.6.5-1`) and enter the following command:
+`/home/user/CFEngine_Enterprise_vagrant_quickstart-3.7.0-1`, or `C:\CFEngine_Enterprise_vagrant_quickstart-3.7.0-1`) and enter the following command:
 
 ```console
 $ vagrant up
@@ -127,7 +124,7 @@ Last login: Fri Jun 13 18:58:10 2014 from 10.0.2.2
 #### Accessing via GUI
 
 If you launch the virtualbox GUI you should find the vagrant vms named
-`CFEngine Enterprise 3.6.1-1 hub`, and `CFEngine Enterprise 3.6.1-1 agent host001`. Additionally, you can uncomment the `v.gui=true`
+`CFEngine Enterprise 3.7.0-1 hub`, and `CFEngine Enterprise 3.7.0-1 agent host001`. Additionally, you can uncomment the `v.gui=true`
 option in the `Vagrantfile` to have the console gui start with the vms.
 **Note:** There are two `v.gui` settings to uncomment; one for the hub, and one
 for the clients.
@@ -206,9 +203,9 @@ simple instructions:
 To remove the VMs entirely, type: `vagrant destroy`
 
 If you are completely done and do not anticipate using them anymore, you can
-also remove the base box `centos-6.5-x86_64-cfengine_enterprise-3.6.1-1` that was
+also remove the base box `centos-6.5-x86_64-cfengine_enterprise-3.7.0-1` that was
 downloaded. You can see it by typing `vagrant box list`. To delete the basebox
-run `vagrant box remove centos-6.5-x86_64-cfengine_enterprise-3.6.1-1 virtualbox`.
+run `vagrant box remove centos-6.5-x86_64-cfengine_enterprise-3.7.0-1 virtualbox`.
 **Note:** Running `vagrant up` from the vagrant project directory again will
 re-download this basebox.
 
