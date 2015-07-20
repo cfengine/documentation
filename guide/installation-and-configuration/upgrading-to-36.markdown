@@ -11,49 +11,9 @@ Our recommendation is to upgrade the Policy Server first. The rationale is that 
 
 ## Upgrade masterfiles and Policy Server (3.6.X to 3.6.X+1)
 
-If you are doing a minor-minor 3.6 upgrade (e.g. from 3.6.4 to 3.6.5), the upgrade is easier.
+If you are doing a minor-minor 3.6 upgrade (e.g. from 3.6.5 to 3.6.6), the upgrade is easier.
 We would however still recommend to perform a masterfiles upgrade (ideally in a test environment first) to get all the enhancements and fixes.
 The masterfiles are available in the hub package and separately on the [download page](http://cfengine.com/community/download/) (Community and Enterprise editions share masterfiles as of 3.6).
-
-From 3.6.1 to 3.6.5, the following masterfiles files have changed:
-
-* cfe_internal/CFE_cfengine.cf
-* cfe_internal/CFE_hub_specific.cf
-* cfe_internal/CFE_knowledge.cf
-* cfe_internal/cfengine_processes.cf
-* cfe_internal/ha/ha.cf
-* cfe_internal/ha/ha_def.cf
-* cfe_internal/ha/ha_info.json
-* cfe_internal/host_info_report.cf
-* controls/cf_execd.cf
-* controls/cf_hub.cf
-* controls/cf_serverd.cf
-* def.cf
-* inventory/any.cf
-* inventory/lsb.cf
-* inventory/os.cf
-* lib/3.5/bundles.cf
-* lib/3.5/cfe_internal.cf
-* lib/3.5/common.cf
-* lib/3.5/packages.cf
-* lib/3.5/paths.cf
-* lib/3.6/bundles.cf
-* lib/3.6/cfe_internal.cf
-* lib/3.6/cfengine_enterprise_hub_ha.cf
-* lib/3.6/common.cf
-* lib/3.6/files.cf
-* lib/3.6/packages.cf
-* lib/3.6/packages.fc
-* lib/3.6/paths.cf
-* lib/3.6/reports.cf
-* lib/3.6/services.cf
-* lib/3.6/stdlib.cf
-* promises.cf
-* update.cf
-* update/update_bins.cf
-* update/update_policy.cf
-* update/update_processes.cf
-
 
 Normally these new files did not exist in the preivous version or can be completely replaced by the old ones, the only ones that are likely changed by you are *def.cf* and *promises.cf*.
 For these two files, we would need to do a diff between your version and the new version and integrade the diff instead of replacing the whole file.
