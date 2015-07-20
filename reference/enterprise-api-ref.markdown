@@ -15,11 +15,11 @@ always wrapped in a JSON request.
 
 **GET** requests are one of **listing** or **getting**. **Listing** resources 
 means that a number of results will be returned, but each entry may contain 
-limited information. An example of a **listing** query is `/api/user` to list 
+limited information. An example of a **listing** query is [/api/user][List users] to list 
 users. Notice that URI components are always non-plural. An exception to this 
-is `/api/settings`, which returns the singleton resource for settings. 
+is [/api/settings][Get settings], which returns the singleton resource for settings. 
 **Getting** a resource specifies an individual resource to return, e.g. 
-`/api/user/homer`.
+[/api/user/homer][Get user data].
 
 **PUT** request typically create a new resource, e.g. a user.
 
@@ -59,10 +59,10 @@ All timestamps are reported in *Unix Time*, i.e. seconds since 1970.
 The API supports both internal and external authentication. The internal users 
 table will always be consulted first, followed by an external source specified 
 in the settings. External sources are *OpenLDAP* or *Active Directory* servers 
-configurable through `POST /api/settings`.
+configurable through [/api/settings][Update settings].
 
 
 ## Authorization
 
-Some resources require that the request user is a member of the *admin* role. Roles are managed with `/api/role`. Role Based Access Control (RBAC) is configurable through the settings. Users typically have permission to access their own resources, e.g. their own scheduled reports.
+Some resources require that the request user is a member of the *admin* role. Roles are managed with [/api/role][List RBAC roles]. Role Based Access Control (RBAC) is configurable through the settings. Users typically have permission to access their own resources, e.g. their own scheduled reports.
 
