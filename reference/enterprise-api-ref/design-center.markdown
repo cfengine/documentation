@@ -8,7 +8,7 @@ tags: [reference, enterprise, REST, API, DC, sketch, URI, design center]
 Please see [The Design Center API][] for the Design Center API
 commands that are wrapped by the following Enterprise API commands.
 
-### List of sketches
+## List of sketches
 
 **URI:** http://192.168.122.1/api/dc/sketch
 
@@ -58,7 +58,7 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-###  Information about specific sketch
+##  Information about specific sketch
 
 **URI:** http://192.168.122.1/api/dc/sketch/:sketchName
 
@@ -200,7 +200,7 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-### Install sketch in the system
+## Install sketch in the system
 
 **URI:** http://192.168.122.1/api/dc/sketch/:sketchName
 
@@ -208,7 +208,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 **Example usage:** `Sample API call to Install sketch`
 
-### List of available definitions
+## List of available definitions
 
 **URI:** http://192.168.122.1/api/dc/definition
 
@@ -257,7 +257,7 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-### Create new definition
+## Create new definition
 
 **URI:** http://192.168.122.1/api/dc/definition/:definitionName
 
@@ -276,7 +276,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 **Example usage:** `Sample API call to Define sketch parameters`
 
-### List of available environments
+## List of available environments
 
 **URI:** http://192.168.122.1/api/dc/environment
 
@@ -317,7 +317,7 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-### Create new environment
+## Create new environment
 
 **URI:** http://192.168.122.1/api/dc/environment/:name
 
@@ -335,7 +335,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 **Example usage:** `Sample API call to Define environment`
 
-### List of available activations
+## List of available activations
 
 **URI:** http://192.168.122.1/api/dc/activation
 
@@ -421,7 +421,7 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-### Activation details
+## Activation details
 
 **URI:** http://192.168.122.1/api/dc/activation/:activation_id/:sketchName
 
@@ -491,7 +491,7 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-### Create new activation
+## Create new activation
 
 **URI:** http://192.168.122.1/api/dc/activation/:id
 
@@ -509,25 +509,25 @@ commands that are wrapped by the following Enterprise API commands.
 
 **Example usage:** `Sample API call to Activate sketch`
 
-### Delete the activation
+## Delete the activation
 
 **URI:** http://192.168.122.1/api/dc/activation/:id
 
 **Method:** DELETE
 
-### List of validations
+## List of validations
 
 **URI:** http://192.168.122.1/api/dc/validation
 
 **Method:** GET
 
-### Get validation details
+## Get validation details
 
 **URI:** http://192.168.122.1/api/dc/validation/:id
 
 **Method:** GET
 
-### Set validation type
+## Set validation type
 
 **URI:** http://192.168.122.1/api/dc/validate/:validationType
 
@@ -543,7 +543,7 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-### Get workspace
+## Get workspace
 
 **URI:** http://192.168.122.1/api/dc/workspace
 
@@ -551,7 +551,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 Checks for the workspace and returns the path.
 
-### Post the commits
+## Post the commits
 
 **URI:** http://192.168.122.1/api/dc/workspace/commit
 
@@ -568,13 +568,13 @@ Checks for the workspace and returns the path.
 
 **Example usage:** `Sample API call to Commit changes`
 
-### Reset the user workspace
+## Reset the user workspace
 
 **URI:** http://192.168.122.1/api/dc/workspace/reset
 
 **Method:** POST
 
-### List workspace settings 
+## List workspace settings 
 
 **URI:** http://192.168.122.1/api/dc/workspace/settings
 
@@ -582,7 +582,7 @@ Checks for the workspace and returns the path.
 
 Returns the settings of the workspace (VCS settings), 404 if not found.
 
-### Create settings
+## Create settings
 
 **URI:** http://192.168.122.1/api/dc/workspace/settings
 
@@ -606,7 +606,7 @@ Content-Type header should be multipart/form-data.
 curl -F "gitServer=servername" -F "gitEmail=mail" -F "gitPrivateKey=@/home/user1/Desktop/id_rsa" http://server
 ```
 
-### Delete settings
+## Delete settings
 
 **URI:** http://192.168.122.1/api/dc/workspace/settings
 

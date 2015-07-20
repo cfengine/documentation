@@ -11,7 +11,7 @@ users. Settings support two operations, **GET** (view settings) and **POST**
 (update settings). When settings are updated, they are sanity checked 
 individually and as a whole. All or no settings will be updated for a request.
 
-## Viewing settings
+## Example: Viewing settings
 
 **Request**
 
