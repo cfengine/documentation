@@ -153,30 +153,3 @@ Users can only be deleted from the internal users table.
 **Response**
 
     204 No Content
-
-
-## Example: Creating a New Role
-
-Once you've learned how to manage users, managing roles is pretty much the 
-same thing. Roles are defined by four fields that filter host data and policy 
-data: `includeContext`, `excludeContext`, `includeBundles`, `excludeBundles`. 
-Each field is a comma separated list of regular expressions. See the 
-corresponding section on RBAC for an explanation of these fields. Updating, 
-and deleting roles are similar to updating and deleting users, using POST and 
-DELETE.
-
-**Request**
-
-    curl --user admin:admin http://test.cfengine.com/api/user/solaris-admins -X PUT -d
-    {
-      "email": "snookie@mtv.com",
-      "roles": [
-        "description": "Users managing 64-bit Solaris boxes",
-        "includeContext": "solaris,x86_64",
-      ]
-    }
-
-**Response**
-
-    204 No Content
-
