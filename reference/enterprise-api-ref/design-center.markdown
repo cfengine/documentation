@@ -5,7 +5,7 @@ published: true
 tags: [reference, enterprise, REST, API, DC, sketch, URI, design center]
 ---
 
-Please see [The Design Center API][] for the Design Center API
+Please see [The Design Center API][The Design Center API] for the Design Center API
 commands that are wrapped by the following Enterprise API commands.
 
 ## List of sketches
@@ -58,7 +58,7 @@ commands that are wrapped by the following Enterprise API commands.
 }
 ```
 
-##  Information about specific sketch
+## Information about specific sketch
 
 **URI:** http://192.168.122.1/api/dc/sketch/:sketchName
 
