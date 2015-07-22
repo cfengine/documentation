@@ -89,7 +89,7 @@ API performance depend on the query result size, to achieve fastest results cons
 
 **Example usage:**  `Synchronous Example: Listing Hostname and IP for Ubuntu Hosts`
 
-## Schedule SQL query as long running job.
+## Schedule SQL query as long running job
 
 **URI:** http://192.168.122.1/api/query/async
 
@@ -145,7 +145,7 @@ API returns entire query result. Make sure that result size is sensible.
 
 Value of **ID** field is a unique job identifier that can be used to check job status and retrieve query results.
 
-## Check async query status.
+## Check async query status
 
 **URI:** http://192.168.122.1/api/query/async/:id
 
@@ -173,7 +173,7 @@ Check the status of async scheduled job. When the query is finished it will retu
 }
 ```
 
-## Cancel async query.
+## Cancel async query
 
 **URI:** http://192.168.122.1/api/query/async/:id
 
