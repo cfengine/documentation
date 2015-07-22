@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Host REST API
+title: Host REST API
 published: true
 tags: [reference, enterprise, REST, API, reporting, host, monitoring]
 ---
@@ -60,7 +60,7 @@ Host API allows to access host specific information.
 * **id**
     Unique host identifier.
 * **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][/api/settings].
+    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings#Update settings].
 * **ip**
     IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
 * **lastreport**
@@ -103,7 +103,7 @@ Host API allows to access host specific information.
 * **id**
     Unique host identifier.
 * **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][/api/settings].
+    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings#Update settings].
 * **ip**
     IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
 * **lastreport**
@@ -183,7 +183,7 @@ Note: Collecting monitoring data by default is disabled.
 
 **Example usage:** `Example: Listing Available Vital Signs For A Host`
 
-## Get samples from vital.
+## Get samples from vital
 
 **URI:** http://192.168.122.1/api/host/:host-id/vital/:vital-id
 
