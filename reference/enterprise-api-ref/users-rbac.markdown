@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Users, Access-Control REST API
+title: Users and Access-Control REST API
 published: true
 tags: [reference, enterprise, REST, API, reporting, , URI, users, rbac]
 ---
