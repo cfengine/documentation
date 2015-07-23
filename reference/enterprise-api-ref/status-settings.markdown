@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Status and Settings
+title: Status and Settings REST API
 published: true
 tags: [reference, enterprise, REST, API, reporting, status, URI, ldap, settings]
 ---

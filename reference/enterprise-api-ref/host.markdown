@@ -60,7 +60,7 @@ Host API allows to access host specific information.
 * **id**
     Unique host identifier.
 * **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings#Update settings].
+    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings REST API#Update settings].
 * **ip**
     IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
 * **lastreport**
@@ -103,7 +103,7 @@ Host API allows to access host specific information.
 * **id**
     Unique host identifier.
 * **hostname**
-    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings#Update settings].
+    Host name. Can be reconfigured globally to represent variable set in the policy using **hostIdentifier** [setting][Status and Settings REST API#Update settings].
 * **ip**
     IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.
 * **lastreport**

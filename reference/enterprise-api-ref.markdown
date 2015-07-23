@@ -17,7 +17,7 @@ always wrapped in a JSON request.
 means that a number of results will be returned, but each entry may contain 
 limited information. An example of a **listing** query is [/api/user][Users and Access-Control REST API#List users] to list 
 users. Notice that URI components are always non-plural. An exception to this 
-is [/api/settings][Status and Settings#Get settings], which returns the singleton resource for settings. 
+is [/api/settings][Status and Settings REST API#Get settings], which returns the singleton resource for settings. 
 **Getting** a resource specifies an individual resource to return, e.g. 
 [/api/user/homer][Users and Access-Control REST API#Get user data].
 
@@ -59,7 +59,7 @@ All timestamps are reported in *Unix Time*, i.e. seconds since 1970.
 The API supports both internal and external authentication. The internal users 
 table will always be consulted first, followed by an external source specified 
 in the settings. External sources are *OpenLDAP* or *Active Directory* servers 
-configurable through [/api/settings][Status and Settings#Update settings].
+configurable through [/api/settings][Status and Settings REST API#Update settings].
 
 
 ## Authorization
