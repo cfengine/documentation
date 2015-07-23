@@ -6,9 +6,9 @@ sorting: 50
 tags: [examples, enterprise, rest, api, reporting, hosts]
 ---
 
-A resource `/api/host` is added as an alternative interface for browsing host 
+A resource [/api/host][Host REST API#List hosts] is added as an alternative interface for browsing host 
 information. For full flexibility we recommend using [SQL][SQL Schema]
-reports via `/api/query` for this. however, currently vital signs (data 
+reports via [/api/query][Query REST API#Execute SQL query] for this. however, currently vital signs (data 
 gathered from `cf-monitord`) is not part of the SQL reports data model.
 
 
