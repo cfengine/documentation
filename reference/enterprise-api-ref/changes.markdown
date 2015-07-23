@@ -48,7 +48,7 @@ Count changes performed by CFEngine to the infrastructure. Count can be narrowed
 }
 ```
 
-*Output:**
+**Output:**
 
 * **count**
     Total count of changes performed by cf-agent that match specified filtering criteria.
@@ -143,7 +143,7 @@ List changes performed by CFEngine to the infrastructure. List can be narrowed d
 }
 ```
 
-*Output:**
+**Output:**
 
 * **total**
     Total number of results.
