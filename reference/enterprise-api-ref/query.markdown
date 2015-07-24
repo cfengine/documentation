@@ -11,7 +11,7 @@ Database schema available can be found [here][SQL Schema].
 
 ## Execute SQL query
 
-**URI:** http://192.168.122.1/api/query
+**URI:** https://hub.cfengine.com/api/query
 
 **Method:** POST
 
@@ -91,7 +91,7 @@ API performance depend on the query result size, to achieve fastest results cons
 
 ## Schedule SQL query as long running job
 
-**URI:** http://192.168.122.1/api/query/async
+**URI:** https://hub.cfengine.com/api/query/async
 
 **Method:** POST
 
@@ -147,7 +147,7 @@ Value of **ID** field is a unique job identifier that can be used to check job s
 
 ## Check async query status
 
-**URI:** http://192.168.122.1/api/query/async/:id
+**URI:** https://hub.cfengine.com/api/query/async/:id
 
 **Method:** GET
 
@@ -159,7 +159,7 @@ Check the status of async scheduled job. When the query is finished it will retu
 {
   "data": [
     {
-      "href": "http://192.168.122.1/api/static/7b7de87ade18f337d62df26881ff39b1.csv",
+      "href": "https://hub.cfengine.com/api/static/7b7de87ade18f337d62df26881ff39b1.csv",
       "id": "7b7de87ade18f337d62df26881ff39b1",
       "percentageComplete": 100
     }
@@ -175,7 +175,7 @@ Check the status of async scheduled job. When the query is finished it will retu
 
 ## Cancel async query
 
-**URI:** http://192.168.122.1/api/query/async/:id
+**URI:** https://hub.cfengine.com/api/query/async/:id
 
 **Method:** DELETE
 
