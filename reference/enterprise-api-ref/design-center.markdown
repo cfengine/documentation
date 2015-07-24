@@ -10,7 +10,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## List of sketches
 
-**URI:** http://192.168.122.1/api/dc/sketch
+**URI:** https://hub.cfengine.com/api/dc/sketch
 
 **Method:** GET
 
@@ -60,7 +60,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## Information about specific sketch
 
-**URI:** http://192.168.122.1/api/dc/sketch/:sketchName
+**URI:** https://hub.cfengine.com/api/dc/sketch/:sketchName
 
 **Method:** GET
 
@@ -202,7 +202,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## Install sketch in the system
 
-**URI:** http://192.168.122.1/api/dc/sketch/:sketchName
+**URI:** https://hub.cfengine.com/api/dc/sketch/:sketchName
 
 **Method:** PUT
 
@@ -210,7 +210,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## List of available definitions
 
-**URI:** http://192.168.122.1/api/dc/definition
+**URI:** https://hub.cfengine.com/api/dc/definition
 
 **Method:** GET
 
@@ -259,7 +259,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## Create new definition
 
-**URI:** http://192.168.122.1/api/dc/definition/:definitionName
+**URI:** https://hub.cfengine.com/api/dc/definition/:definitionName
 
 **Method:** PUT
 
@@ -278,7 +278,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## List of available environments
 
-**URI:** http://192.168.122.1/api/dc/environment
+**URI:** https://hub.cfengine.com/api/dc/environment
 
 **Method:** GET
 
@@ -319,7 +319,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## Create new environment
 
-**URI:** http://192.168.122.1/api/dc/environment/:name
+**URI:** https://hub.cfengine.com/api/dc/environment/:name
 
 **Method:** PUT
 
@@ -337,7 +337,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## List of available activations
 
-**URI:** http://192.168.122.1/api/dc/activation
+**URI:** https://hub.cfengine.com/api/dc/activation
 
 **Method:** GET
 
@@ -423,7 +423,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## Activation details
 
-**URI:** http://192.168.122.1/api/dc/activation/:activation_id/:sketchName
+**URI:** https://hub.cfengine.com/api/dc/activation/:activation_id/:sketchName
 
 **Method:** GET
 
@@ -493,7 +493,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## Create new activation
 
-**URI:** http://192.168.122.1/api/dc/activation/:id
+**URI:** https://hub.cfengine.com/api/dc/activation/:id
 
 **Method:** PUT
 
@@ -511,25 +511,25 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## Delete the activation
 
-**URI:** http://192.168.122.1/api/dc/activation/:id
+**URI:** https://hub.cfengine.com/api/dc/activation/:id
 
 **Method:** DELETE
 
 ## List of validations
 
-**URI:** http://192.168.122.1/api/dc/validation
+**URI:** https://hub.cfengine.com/api/dc/validation
 
 **Method:** GET
 
 ## Get validation details
 
-**URI:** http://192.168.122.1/api/dc/validation/:id
+**URI:** https://hub.cfengine.com/api/dc/validation/:id
 
 **Method:** GET
 
 ## Set validation type
 
-**URI:** http://192.168.122.1/api/dc/validate/:validationType
+**URI:** https://hub.cfengine.com/api/dc/validate/:validationType
 
 **Method:** POST
 
@@ -545,7 +545,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 ## Get workspace
 
-**URI:** http://192.168.122.1/api/dc/workspace
+**URI:** https://hub.cfengine.com/api/dc/workspace
 
 **Method:** GET
 
@@ -553,7 +553,7 @@ Checks for the workspace and returns the path.
 
 ## Post the commits
 
-**URI:** http://192.168.122.1/api/dc/workspace/commit
+**URI:** https://hub.cfengine.com/api/dc/workspace/commit
 
 **Method:** POST
 
@@ -570,13 +570,13 @@ Checks for the workspace and returns the path.
 
 ## Reset the user workspace
 
-**URI:** http://192.168.122.1/api/dc/workspace/reset
+**URI:** https://hub.cfengine.com/api/dc/workspace/reset
 
 **Method:** POST
 
 ## List workspace settings 
 
-**URI:** http://192.168.122.1/api/dc/workspace/settings
+**URI:** https://hub.cfengine.com/api/dc/workspace/settings
 
 **Method:** GET
 
@@ -584,7 +584,7 @@ Returns the settings of the workspace (VCS settings), 404 if not found.
 
 ## Create settings
 
-**URI:** http://192.168.122.1/api/dc/workspace/settings
+**URI:** https://hub.cfengine.com/api/dc/workspace/settings
 
 **Method:** POST
 
@@ -608,6 +608,6 @@ curl -F "gitServer=servername" -F "gitEmail=mail" -F "gitPrivateKey=@/home/user1
 
 ## Delete settings
 
-**URI:** http://192.168.122.1/api/dc/workspace/settings
+**URI:** https://hub.cfengine.com/api/dc/workspace/settings
 
 **Method:** DELETE
