@@ -9,7 +9,7 @@ tags: [reference, enterprise, REST, API, reporting, changes, repairs]
 
 ## Count changes performed by agent
 
-**URI:** http://192.168.122.1/api/v2/changes/policy/count
+**URI:** https://hub.cfengine.com/api/v2/changes/policy/count
 
 **Method:** GET
 
@@ -57,7 +57,7 @@ Count changes performed by CFEngine to the infrastructure. Count can be narrowed
 
 ## List changes performed by agent
 
-**URI:** http://192.168.122.1/api/v2/changes/policy
+**URI:** https://hub.cfengine.com/api/v2/changes/policy
 
 **Method:** GET
 
@@ -138,7 +138,7 @@ List changes performed by CFEngine to the infrastructure. List can be narrowed d
     }
   ],
   "total": 382723,
-  "next": "http://192.168.122.1/api/v2/changes/policy/?page=2&count=2",
+  "next": "https://hub.cfengine.com/api/v2/changes/policy/?page=2&count=2",
   "previous": null
 }
 ```

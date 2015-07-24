@@ -9,7 +9,7 @@ This REST API allows to manage users allowed to use Mission Portal as also Role 
 
 ## List users 
 
-**URI:** http://192.168.122.1/api/user
+**URI:** https://hub.cfengine.com/api/user
 
 **Method:** GET
 
@@ -81,7 +81,7 @@ API call allowed only for administrator.
 
 ## Get user data
 
-**URI:** http://192.168.122.1/api/user/:username
+**URI:** https://hub.cfengine.com/api/user/:username
 
 **Method:** GET
 
@@ -127,7 +127,7 @@ API call allowed only for administrator.
 
 ## Create new user
 
-**URI:** http://192.168.122.1/api/user/:username
+**URI:** https://hub.cfengine.com/api/user/:username
 
 **Method:** PUT
 
@@ -149,7 +149,7 @@ API call allowed only for administrator.
 
 ## Update user
 
-**URI:** http://192.168.122.1/api/user/:username
+**URI:** https://hub.cfengine.com/api/user/:username
 
 **Method:** POST
 
@@ -171,7 +171,7 @@ API call allowed only for administrator.
 
 ## Delete user
 
-**URI:** http://192.168.122.1/api/user/:username
+**URI:** https://hub.cfengine.com/api/user/:username
 
 **Method:** DELETE
 
@@ -182,7 +182,7 @@ API call allowed only for administrator.
 
 ## List RBAC roles
 
-**URI:** http://192.168.122.1/api/role
+**URI:** https://hub.cfengine.com/api/role
 
 **Method:** GET
 
@@ -236,7 +236,7 @@ API call allowed only for administrator.
 
 ## Get RBAC role
 
-**URI:** http://192.168.122.1/api/role/:role_id
+**URI:** https://hub.cfengine.com/api/role/:role_id
 
 **Method:** GET
 
@@ -281,7 +281,7 @@ API call allowed only for administrator.
 
 ## Create RBAC role
 
-**URI:** http://192.168.122.1/api/role/:role_id
+**URI:** https://hub.cfengine.com/api/role/:role_id
 
 **Method:** PUT
 
@@ -314,7 +314,7 @@ API call allowed only for administrator.
 
 ## Update RBAC role
 
-**URI:** http://192.168.122.1/api/role/:role_id
+**URI:** https://hub.cfengine.com/api/role/:role_id
 
 **Method:** POST
 
@@ -347,7 +347,7 @@ API call allowed only for administrator.
 
 ## Delete RBAC role
 
-**URI:** http://192.168.122.1/api/role/:role_id
+**URI:** https://hub.cfengine.com/api/role/:role_id
 
 **Method:** DELETE
 

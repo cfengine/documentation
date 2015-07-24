@@ -9,7 +9,7 @@ REST API for managing settings, checking hub status.
 
 ## Get server status
 
-**URI:** http://192.168.122.1/api
+**URI:** https://hub.cfengine.com/api
 
 **Method:** GET
 
@@ -70,7 +70,7 @@ REST API for managing settings, checking hub status.
 
 ## Get settings
 
-**URI:** http://192.168.122.1/api/settings
+**URI:** https://hub.cfengine.com/api/settings
 
 **Method:** GET
 
@@ -144,7 +144,7 @@ API call allowed only for administrator.
 
 ## Update settings
 
-**URI:** http://192.168.122.1/api/settings
+**URI:** https://hub.cfengine.com/api/settings
 
 **Method:** POST
 
