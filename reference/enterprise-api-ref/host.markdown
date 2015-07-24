@@ -9,7 +9,7 @@ Host API allows to access host specific information.
 
 ## List hosts
 
-**URI:** http://192.168.122.1/api/host
+**URI:** https://hub.cfengine.com/api/host
 
 **Method:** GET
 
@@ -72,7 +72,7 @@ Host API allows to access host specific information.
 
 ## Host Details
 
-**URI:** http://192.168.122.1/api/host/:host-id
+**URI:** https://hub.cfengine.com/api/host/:host-id
 
 **Method:** GET
 
@@ -113,7 +113,7 @@ Host API allows to access host specific information.
 
 ## Remove host from the hub
 
-**URI:** http://192.168.122.1/api/host/:host-id
+**URI:** https://hub.cfengine.com/api/host/:host-id
 
 **Method:** DELETE
 
@@ -123,7 +123,7 @@ Deleted host need to be re-bootstrapped if it was deleted by accident.
 
 ## List monitoring attributes for host
 
-**URI:** http://192.168.122.1/api/host/:host-id/vital
+**URI:** https://hub.cfengine.com/api/host/:host-id/vital
 
 **Method:** GET
 
@@ -185,7 +185,7 @@ Note: Collecting monitoring data by default is disabled.
 
 ## Get samples from vital
 
-**URI:** http://192.168.122.1/api/host/:host-id/vital/:vital-id
+**URI:** https://hub.cfengine.com/api/host/:host-id/vital/:vital-id
 
 **Method:** GET
 
