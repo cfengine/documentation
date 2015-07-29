@@ -44,6 +44,9 @@ attributes.
   the file `/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting
   to 1024 to guarantee that process promises will work smoothly on the
   platform.
+* Upgrading CFEngine on HP-UX is not supported by the out-of-the-box policy.
+  There is a [support article](https://cfengine.zendesk.com/hc/en-us/articles/205454908)
+  with a workaround.
 
 ### Enterprise emails sent for alert noticies come from 'admin@organization.com'.
 There is currently no setting in Mission Portal to configure the sender email
