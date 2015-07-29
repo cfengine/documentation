@@ -437,7 +437,7 @@ Enterprise inventory reporting.
 ```cf3
 body common control
 {
-    package_inventory => "apt_get";
+    package_inventory => { "apt_get" };
 }
 ```
 
