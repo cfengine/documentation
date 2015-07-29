@@ -59,6 +59,9 @@ only support protocol version 1. Protocol version 1 is still the default in
 * [User promises][users] do not work reliably on HP-UX. It is recommended not to use them at this time. The workaround is to call the useradd/usermod/userdel tools directly.  (fixed in CFEngine 3.6.4)
 * [Process promises][processes] depend on the `ps` native tool, which by default truncates lines at 128 columns on HP-UX. It is recommended to edit the file `/etc/default/ps` and increase the `DEFAULT_CMD_LINE_WIDTH` setting to 1024 to guarantee that process promises will work smoothly on the platform.
 * [`edit_xml` bundles][bundle edit_xml] do not work on HP-UX. (fixed in CFEngine 3.6.4)
+* Upgrading CFEngine on HP-UX is not supported by the out-of-the-box policy.
+  There is a [support article](https://cfengine.zendesk.com/hc/en-us/articles/205454908)
+  with a workaround.
 
 
 ### Enterprise Mission Portal is slow and/or /var/cfengine/state/pg consumes a lot of space/iops or CPU utilization is high ###
