@@ -56,6 +56,9 @@ The VIOS should be configured with Shared Processors in Uncapped mode.
 
 ## Policy Server Requirements
 
+Please note that the resource requirements below are meant as minimum guidelines and have been obtained with syntethic testing, and it is always better to leave some headroom if intermittent bottlenecks should occur.
+The key drivers for the vertical scalability of the Policy Servers are 1) the number of agents bootstrapped and 2) the size and complexity of the CFEngine policy.
+
 ### cfapache and cfpostgres users
 
 The CFEngine Server requires two users: **cfapache** and **cfpostgres**.
@@ -78,6 +81,17 @@ CFEngine Server in a VM. But please consider the performance
 requirements when doing this.
 
 
+### CPU
+
+A modern 64-bit processor with 12 or more cores for handling up to 5000 bootstrapped agents.
+This number is also linear with respect to the number of bootstrapped agents (so 6 cores would suffice for 2500 agents).
+
+
+### Memory
+
+Minimum 2GB memory, but not lower than **8MB per bootstrapped agent**. This means that, for a server with 5000 hosts, you should have at least 40GB of memory.
+
+
 ### Disk sizing and partitioning
 
 It is recommended that /var/cfengine/state/pg is mounted on a **separate disk**. This will give PostgreSQL, which is very disk I/O intensive, dedicated resources.
@@ -90,9 +104,17 @@ xfs is strongly recommended as the file system type for the file system mounted 
 
 ### Disk speed
 
-The disk that serves PostgreSQL (/var/cfengine/state/pg) should be able to perform at least **2000 IOPS** (in 16KiB block size). The disk mounted on /var/cfengine should be able to perform at least 500 IOPS. **SSD is recommmended** for the disk that PostgreSQL writes to.
+For 5000 bootstrapped agents, the disk that serves PostgreSQL (/var/cfengine/state/pg) should be able to perform at least **1000 IOPS** (in 16KiB block size) and 10 MB/s. The disk mounted on /var/cfengine should be able to perform at least 500 IOPS and 0.5 MB/s. **SSD is recommmended** for the disk that serves PostgreSQL (/var/cfengine/state/pg).
+
+If you do not have separate partitions for /var/cfengine and /var/cfengine/state/pg, the speed required by the disk serving /var/cfengine adds up (for 5000 bootstrapped agents it would be 1500 IOPS and 10.5 MB/s).
 
 **Note** Your storage IOPS specification may be given in 4KiB block size, in which case you would need to divide it by 4 to get the corresponding 16KiB *theoretical maximum*.
+
+
+### Network
+
+For serving policy and collecting reports for up to 5000 bootstrapped agents, plan for at least 30 MB/s (240 MBit) speed on the interface that connects the Policy Server with the agents.
+
 
 ### Open file descriptors
 
@@ -101,16 +123,6 @@ The system limit for this is controlled by `ulimit -n`; so the parent process fr
 You should also add such a `ulimit -n` command to the script that implements `service cfengine3 start` (and `restart`) and to any policy that starts `cf-serverd` or `cf-hub`.
 For very large numbers of clients, it may be advantageous to build a custom kernel to allow setting `ulimit -n` high enough.
 You should also amend the value of `maxconnections` set in `cf_serverd.cf` under `/var/cfengine/masterfiles/controls/` to the number of clients, likewise.
-
-
-### Memory
-
-Minimum 2GB memory, but not lower than **8MB per bootstrapped agent**. This means that, for a server with 5000 hosts, you should have at least 40GB of memory.
-
-
-### CPU
-
-A modern 64-bit processor with 8 or more cores for handling up to 5000 bootstrapped agents.
 
 
 ## Download Packages
