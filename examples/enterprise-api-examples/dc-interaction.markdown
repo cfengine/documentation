@@ -13,7 +13,7 @@ Those are exactly what the Mission Portal **Design Center App**
 generates through the GUI.
 
 ## Sample API call to Install sketch
-* **Action**: `POST`
+* **Action**: `PUT`
 * **URL**: http://192.168.33.2/api/dc/sketch/System::motd
 * **HTTP return code**: 200
 * **RESULT**:
@@ -35,7 +35,7 @@ generates through the GUI.
 ```
 
 ## Sample API call to Define sketch parameters
-* **Action**: `POST`
+* **Action**: `PUT`
 * **URL**: http://192.168.33.2/api/dc/definition/myfirstsketchdefinition
 * **HTTP return code**: 200
 * **POST data**:
@@ -50,14 +50,14 @@ generates through the GUI.
 * **RESULT**: ```{"myfirstsketchdefinition":1}```
 
 ## Sample API call to Define environment
-* **Action**: `POST`
+* **Action**: `PUT`
 * **URL**: http://192.168.33.2/api/dc/environment/mymotdenvironment
 * **HTTP return code**: 200
 * **POST data**: ```{'environment': ['linux']}```
 * **RESULT**: ```{"mymotdenvironment":1}```
 
 ## Sample API call to Activate sketch
-* **Action**: `POST`
+* **Action**: `PUT`
 * **URL**: http://192.168.33.2/api/dc/activation/myfirstsketchActivation/System::motd
 * **HTTP return code**: 200
 
