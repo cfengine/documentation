@@ -1147,7 +1147,7 @@ A specific example would be:
     }
 ```
 
-**History:** Was introduced in 3.6.1.
+**History:** Was introduced in 3.7.0.
 
 ### meta
 
@@ -1216,4 +1216,4 @@ A specific example would be:
     }
 ```
 
-**History:** Was introduced in 3.6.1.
+**History:** Was introduced in 3.7.0.
