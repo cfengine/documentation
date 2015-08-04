@@ -26,7 +26,7 @@ fetches any updates.  Again, note that CFEngine Enterprise has this built-in.
 After installing CFEngine on the policy server and before bootstrapping the agent 
 to itself, we create a git clone of our masterfiles.
 
-    $ git clone git@github.com:upstream/masterfiles.git /var/cfengine/masterfiles/
+    $ git clone git@github.com/masterfiles.git /var/cfengine/masterfiles/
 
 The following policy uses `git pull` with the --ff-only flag to avoid 
 potentially bad merges. This assumes that no development takes place in 
