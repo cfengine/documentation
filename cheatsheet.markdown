@@ -386,5 +386,5 @@ Sometimes it's nice to include an external file
 
 ## symlink example
 
-[%CFEngine_include_snippet(masterfiles/lib/3.7/files.cf, "body link_from ln_s.*", "##")%]
+[%CFEngine_include_snippet(masterfiles/lib/3.7/files.cf, ^body\slink_from\sln_s.*, ^##)%]
 
