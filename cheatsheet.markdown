@@ -381,3 +381,10 @@ Sometimes it's nice to include an external file
 [%CFEngine_include_markdown(masterfiles/CHANGELOG.md)%]
 </pre>
 
+
+# Sandbox
+
+## symlink example
+
+[%CFEngine_include_snippet(masterfiles/lib/3.7/files.cf, "body link_from ln_s.*", "##")%]
+
