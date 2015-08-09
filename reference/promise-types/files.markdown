@@ -2546,14 +2546,13 @@ them to the source.
 
 **Default value:** false
 
-**Example:**
+**Example implementation:**
 
-```cf3
-     body link_from example
-     {
-     link_children => "true";
-     }
-```
+[%CFEngine_include_snippet(masterfiles/lib/3.7/files.cf, ^body\slink_from\slinkchildren.*, ^##)%]
+
+**Example usage:**
+
+[%CFEngine_include_example(symlink_children.cf)%]
 
 #### link_type
 
@@ -2584,8 +2583,9 @@ are mutually exclusive.
 
 **Default value:** symlink
 
-**Example:**
+**Example impelementation:**
 
+[%CFEngine_include_snippet(masterfiles/lib/3.7/files.cf, ^body\slink_from\sln_s.*, ^##)%]
 ```cf3
      body link_from example
      {
@@ -2593,6 +2593,11 @@ are mutually exclusive.
      source => "/tmp/source";
      }
 ```
+
+**Example usage:**
+
+[%CFEngine_include_example(symlink.cf)%]
+
 
 **Notes:**
 On Windows, hard links are the only supported type.
