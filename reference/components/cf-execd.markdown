@@ -58,7 +58,7 @@ this threshold. This will reset the timer.
 
 **Allowed input range:** `0,10080`
 
-**Default value:** 10080
+**Default value:** 120
 
 **Example:**
 
