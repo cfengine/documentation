@@ -66,4 +66,6 @@ to switch to in order to protect the current file from duplicate definitions.
 
 This directive can be given within any file, outside of body and bundle 
 definitions, to change the [namespace][namespaces] of subsequent bundles 
-and bodies.
+and bodies. A namespace applies until the next namespace declaration in a
+file, or until the end of a file. This is similar to how class expressions
+apply until the next class expression or end of bundle.
