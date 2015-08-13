@@ -290,6 +290,13 @@ The command should return one entry indicating that *node1* is connected to the 
 
     **IMPORTANT** If fencing is not configured, resources might not be started by default. To enable resource start please run one of the following commands ``` pcs cluster enable --all``` or ```pcs resource debug-start cfvirtip```.
 
+3. Add global cluster configuration.
+
+   ```bash
+   pcs resource defaults resource-stickiness="INFINITY"
+   pcs resource defaults migration-threshold="1"
+   ```
+
 2. Stop PostgreSQL on all nodes.
 
 3. Download the latest version of PostgreSQL RA as the default one is known to have a bug while using Master/Slave configuration.
@@ -316,6 +323,29 @@ The command should return one entry indicating that *node1* is connected to the 
 
     ```
     pcs resource master mscfpgsql cfpgsql master-max=1 master-node-max=1 clone-max=2 clone-node-max=1 notify=true
+    ```
+
+5. Group previously configured shared IP address and PostgreSQL cluster resource to make sure both will always run on the same host and add migration rules to make sure that resources will be started and stopped in correct order.
+
+    ```bash
+    pcs constraint colocation add cfengine with Master mscfpgsql INFINITY
+    pcs constraint order promote mscfpgsql then start cfengine symmetrical=false score=INFINITY
+    pcs constraint order demote mscfpgsql then stop cfengine symmetrical=false score=0
+    ```
+
+5. Verify that constraints configuration is correct.
+
+    ```bash
+    [roott@node1] pcs constraint
+    Location Constraints:
+      Resource: mscfpgsql
+        Enabled on: node1 (score:INFINITY) (role: Master)
+    Ordering Constraints:
+      promote mscfpgsql then start cfengine (score:INFINITY) (non-symmetrical)
+      demote mscfpgsql then stop cfengine (score:0) (non-symmetrical)
+    Colocation Constraints:
+      cfengine with mscfpgsql (score:INFINITY) (rsc-role:Started) (with-rsc-role:Master)
+
     ```
 
 6. After these steps, the cluster should be up and running. To verify, run one of the commands below.
