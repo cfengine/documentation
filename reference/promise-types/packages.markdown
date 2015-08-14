@@ -46,6 +46,10 @@ the local filesystem, like this:
         policy => "present";
 ```
 
+The default package module can be globally specified with the
+[`package_module`][Components and Common Control#package_module] attribute
+in body common control.
+
 Note that if your `policy` attribute specifies "absent", then the promiser
 string needs to be a bare package name, you cannot use a file name for this.
 
