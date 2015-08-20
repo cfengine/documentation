@@ -358,6 +358,8 @@ This attribute determines whether or not to expect the CFEngine module protocol.
 * lines which begin with a `^` are protocol extensions
   * `^context=xyz` sets the module context to `xyz` instead of the default
   * `^meta=a,b,c` sets the class and variable tags for any following definitions to `a`, `b`, and `c`
+  * `^persistence=10` sets any following classes to persist for 10 minutes (use 0 to reset)
+  * `^persistence=0` sets any following classes to have no persistence (this is the default)
 * lines which begin with a `+` are treated as classes to be defined (like -D)
 * lines which begin with a `-` are treated as classes to be undefined (like -N)
 * lines which begin with `=` are scalar variables to be defined
@@ -389,6 +391,8 @@ Here is an example module written in shell:
      /bin/echo "=myarray[key]= array key val"
      /bin/echo "%mydata=[1,2,3]"
      /bin/echo "+module_class"
+     /bin/echo "^persistence=10"
+     /bin/echo "+persistent_10_minute_class"
 ```
 
 And here is an example using it:
