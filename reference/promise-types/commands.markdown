@@ -45,9 +45,10 @@ commands:
 ```
 
   
-When referring to executables whose paths contain spaces, you should
-quote the entire program string separately so that CFEngine knows the
-name of the executable file. For example:
+When referring to executables the full path to the executable must be used.
+When reffereing to executables whose paths contain spaces, you should quote
+the entire program string separately so that CFEngine knows the name of the
+executable file. For example:
 
 ```cf3
       commands:
