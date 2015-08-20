@@ -44,5 +44,5 @@ make install
 ## def.json
 
 Many featues previously enabled in `def.cf` can now be enabled via this
-external data file. The benefit is fewer modificaitons to the policy frameowkr
+external data file. The benefit is fewer modifications to the policy framework
 that need to be worked out during policy framework upgrades.
