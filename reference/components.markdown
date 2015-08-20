@@ -465,7 +465,14 @@ body common control
 
 **Description:** Defines the protocol to use for all outgoing connections.
 
-[%CFEngine_promise_attribute(classic)%]
+[%CFEngine_promise_attribute(2)%]
+
+* 0 - 
+* undefined -
+* 1 - Classic protocol
+* classic - Alias to protocol 1
+* 2 - TLS
+* latest - Alias to protocol 2
 
 **Note:** If `protocol_version` is specified in a [`body copy_from`][files#copy_from],
 then the value there will override this setting.
