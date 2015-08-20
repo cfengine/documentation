@@ -27,7 +27,6 @@ It is possible to set classes based on the return code of a
 commands-promise in a very flexible way. See the `kept_returncodes`,
 `repaired_returncodes` and `failed_returncodes` attributes.
 
-  
 ```cf3
 bundle agent example
 
@@ -44,7 +43,6 @@ commands:
 }
 ```
 
-  
 When referring to executables the full path to the executable must be used.
 When reffereing to executables whose paths contain spaces, you should quote
 the entire program string separately so that CFEngine knows the name of the
@@ -61,6 +59,16 @@ executable file. For example:
      
         "\"/usr/bin/funny command name\" -a -b -c";
 ```
+
+**Note**: Some unices leave a hanging pipe on restart (they never manage to
+detect the end of file condition). This occurs on POSIX.1 and SVR4 popen calls
+which use wait4. For some reason they fail to find and end-of-file for an
+exiting child process and go into a deadlock trying to read from an already
+dead process.  This leaves a zombie behind (the parent daemon process which
+forked and was supposed to exit) though the child continues. A way around this
+is to use a wrapper script which prints the line `cfengine-die` to STDOUT after
+restarting the process. This causes cfengine to close the pipe forcibly and
+continue.
 
 ****
 
