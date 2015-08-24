@@ -37,7 +37,7 @@ In this tutorial we use the following network configuration:
 |-----------------|:-------------|:---------------|:----------------|
 |node1            | 192.168.0.10 | 192.168.10.10  | 192.168.100.10  |
 |node2            | 192.168.0.11 | 192.168.10.11  | 192.168.100.11  |
-|node3 (optional) | ---          | 192.168.10.12  | 192.168.100.11  |
+|node3 (optional) | ---          | 192.168.10.12  | 192.168.100.12  |
 |cluster shared   | ---          | 192.168.10.100 | 192.168.100.100 |
 
 Detailed network configuration is shown on the picture below:
