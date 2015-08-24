@@ -376,9 +376,10 @@ All four octets of the IPv4 address of the first system interface.
 
 If your system has a single ethernet interface, `$(sys.ipv4)` will contain 
 your IPv4 address. However, if your system has multiple interfaces, then 
-`$(sys.ipv4)` will simply be the IPv4 address of the first interface in the 
-list that has an assigned address, Use `$(sys.ipv4[interface_name])` for 
-details on obtaining the IPv4 addresses of all interfaces on a system.
+`$(sys.ipv4)` will be the IPv4 address of the reverse lookup of the
+fully qualified domain name (see `$(sys.fqhost)`). Use
+`$(sys.ipv4[interface_name])` for details on obtaining the IPv4 addresses
+of all interfaces on a system.
 
 ### sys.ipv4[interface_name]
 
