@@ -51,7 +51,7 @@ Before you begin you should have corosync (version 1.4.1 or higher) and pacemake
 
 Once pacemaker and corosync are successfully installed on both nodes please follow steps below to set up it as needed by CFEngine High Availability. Please note that most of those instructions follow the method recommended by the Red Hat High Availability project.
 
-In order to operate cluster, proper fencing must be configured but description how to fence cluster and what mechanism use is out of the scope of this document. For reference please use following guide: 
+In order to operate cluster, proper fencing must be configured but description how to fence cluster and what mechanism use is out of the scope of this document. For reference please use [following guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/High_Availability_Add-On_Administration/s1-fenceconfig-HAAA.html).
 
 
 **IMPORTANT:** please carefully follow the indicators describing if the given step should be performed on active, passive or both nodes.
@@ -190,7 +190,7 @@ In order to operate cluster, proper fencing must be configured but description h
 
 6. Configure PostgreSQL on the **passive** node:
    1. Remove the PostgreSQL directory by running `rm -rf /var/cfengine/state/pg/data/*`.
-   2. Do a database backup by running `su cfpostgres -c "cd /tmp && /var/cfengine/bin/pg_basebackup -h node1 -U cfpostgres -D /var/cfengine/state/pg/data -X stream -P`.
+   2. Do a database backup by running `su cfpostgres -c "cd /tmp && /var/cfengine/bin/pg_basebackup -h node1 -U cfpostgres -D /var/cfengine/state/pg/data -X stream -P"`.
    3. Change the *recovery.conf* file to indicate that PostgreSQL is running as a hot-standby replica:
 
         ```
@@ -209,8 +209,6 @@ In order to operate cluster, proper fencing must be configured but description h
     ```
     cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start"
     ```
-
-9. (optional) Repeat steps 6 and 7 on node3 if 3rd node is used as database backup.
 
 
 
@@ -290,9 +288,16 @@ The command should return one entry indicating that *node1* is connected to the 
 
     **IMPORTANT** If fencing is not configured, resources might not be started by default. To enable resource start please run one of the following commands ``` pcs cluster enable --all``` or ```pcs resource debug-start cfvirtip```.
 
-2. Stop PostgreSQL on all nodes.
+3. Add global cluster configuration.
 
-3. Download the latest version of PostgreSQL RA as the default one is known to have a bug while using Master/Slave configuration.
+   ```bash
+   pcs resource defaults resource-stickiness="INFINITY"
+   pcs resource defaults migration-threshold="1"
+   ```
+
+4. Stop PostgreSQL on all nodes.
+
+5. Download the latest version of PostgreSQL RA as the default one is known to have a bug while using Master/Slave configuration.
 
     ```
     wget https://raw.github.com/ClusterLabs/resource-agents/a6f4ddf76cb4bbc1b3df4c9b6632a6351b63c19e/heartbeat/pgsql
@@ -300,7 +305,7 @@ The command should return one entry indicating that *node1* is connected to the 
     chmod 755 /usr/lib/ocf/resource.d/heartbeat/pgsql
     ```
 
-4. Create the PostgreSQL resource (recommended way with PostgreSQL archive mode enabled).
+6. Create the PostgreSQL resource (recommended way with PostgreSQL archive mode enabled).
 
     ```
     pcs resource create cfpgsql pgsql pgctl="/var/cfengine/bin/pg_ctl" psql="/var/cfengine/bin/psql" pgdata="/var/cfengine/state/pg/data" pgdba="cfpostgres" repuser="cfpostgres" tmpdir="/var/cfengine/state/pg/tmp" rep_mode="async" node_list="node1 node2" primary_conninfo_opt="keepalives_idle=60 keepalives_interval=5 keepalives_count=5" master_ip="192.168.10.100" restart_on_promote="true" logfile="/var/log/postgresql.log" config="/var/cfengine/state/pg/data/postgresql.conf" check_wal_receiver=true restore_command="cp /var/cfengine/state/pg/pg_arch/%f %p" op monitor timeout="60s" interval="3s"  on-fail="restart" role="Master" op monitor timeout="60s" interval="4s" on-fail="restart" 
@@ -312,13 +317,36 @@ The command should return one entry indicating that *node1* is connected to the 
     pcs resource create cfpgsql pgsql pgctl="/var/cfengine/bin/pg_ctl" psql="/var/cfengine/bin/psql" pgdata="/var/cfengine/state/pg/data" pgdba="cfpostgres" repuser="cfpostgres" tmpdir="/var/cfengine/state/pg/tmp" rep_mode="async" node_list="node1 node2" primary_conninfo_opt="keepalives_idle=60 keepalives_interval=5 keepalives_count=5" master_ip="192.168.10.100" restart_on_promote="true" logfile="/var/log/postgresql.log" config="/var/cfengine/state/pg/data/postgresql.conf" op monitor timeout="60s" interval="3s"  on-fail="restart" role="Master" op monitor timeout="60s" interval="4s" on-fail="restart" 
     ```
 
-5. Configure PostgreSQL to work in Master/Slave (active/standby) mode:
+7. Configure PostgreSQL to work in Master/Slave (active/standby) mode:
 
     ```
     pcs resource master mscfpgsql cfpgsql master-max=1 master-node-max=1 clone-max=2 clone-node-max=1 notify=true
     ```
 
-6. After these steps, the cluster should be up and running. To verify, run one of the commands below.
+8. Group previously configured shared IP address and PostgreSQL cluster resource to make sure both will always run on the same host and add migration rules to make sure that resources will be started and stopped in correct order.
+
+    ```bash
+    pcs constraint colocation add cfengine with Master mscfpgsql INFINITY
+    pcs constraint order promote mscfpgsql then start cfengine symmetrical=false score=INFINITY
+    pcs constraint order demote mscfpgsql then stop cfengine symmetrical=false score=0
+    ```
+
+9. Verify that constraints configuration is correct.
+
+    ```bash
+    [roott@node1] pcs constraint
+    Location Constraints:
+      Resource: mscfpgsql
+        Enabled on: node1 (score:INFINITY) (role: Master)
+    Ordering Constraints:
+      promote mscfpgsql then start cfengine (score:INFINITY) (non-symmetrical)
+      demote mscfpgsql then stop cfengine (score:0) (non-symmetrical)
+    Colocation Constraints:
+      cfengine with mscfpgsql (score:INFINITY) (rsc-role:Started) (with-rsc-role:Master)
+
+    ```
+
+10. After these steps, the cluster should be up and running. To verify, run one of the commands below.
 
     ```
     [root@node1] pcs status
@@ -377,7 +405,75 @@ The command should return one entry indicating that *node1* is connected to the 
 
     **IMPORTANT:** Please make sure that *cfpgsql-status* for the active node is reported as *PRI* and passive as *HS:alone* or *HS:async*.
 
-7. **Enjoy your working CFEngine High Availability setup!**
+11. **Enjoy your working CFEngine High Availability setup!**
+
+
+
+### Configuring 3rd node as disaster-recovery or database backup (optional) ###
+
+1. Install the CFEngine hub package on node which will be used as disaster-recovery or database backup node (node3).
+
+2. Bootstrap the disaster-recovery node to active node first (establish trust between hubs) and then bootstrap it to itself. At this point hub will be capable of collecting reports and serve policy.
+
+3. Stop cf-execd and cf-hub processes.
+
+4. Make sure that PostgreSQL configuration allows database replication connection from 3rd node (see PostgreSQL configuration section, point 5.3 for more details).
+
+5. Repeat steps 6 - 7 from PostgreSQL configuration to enable and verify database replication connection from 3rd node. Make sure that both second cluster node (passive) and 3rd node (disaster-recovery) are connected to active database node and streaming replication is in progress.
+
+    ```
+    [root@node1 tmp]# echo "select * from pg_stat_replication;" | /var/cfengine/bin/psql cfdb
+    pid  | usesysid |  usename   | application_name |  client_addr  | client_hostname | client_port |         backend_start         |   state   | sent_location | write_location | flush_location | replay_location | sync_priority | sync_state
+   ------+----------+------------+------------------+---------------+-----------------+-------------+-------------------------------+-----------+---------------+----------------+----------------+-----------------+---------------+------------
+    9252 |       10 | cfpostgres | node2            | 192.168.10.11 |                 |       58919 | 2015-08-24 07:14:45.925341+00 | streaming | 0/2A7034D0    | 0/2A7034D0     | 0/2A7034D0     | 0/2A7034D0      |             0 | async
+    9276 |       10 | cfpostgres | node3            | 192.168.10.12 |                 |       52202 | 2015-08-24 07:14:46.038676+00 | streaming | 0/2A7034D0    | 0/2A7034D0     | 0/2A7034D0     | 0/2A7034D0      |             0 | async
+
+    (2 rows)
+    ```
+
+6. Modify HA JSON configuration file to contain information about 3rd node (see CFEngine configuration, point 2). You should have configuration similar to one below:
+
+    ```
+    [root@node3 masterfiles]# cat /var/cfengine/masterfiles/cfe_internal/enterprise/ha/ha_info.json
+    {
+     "192.168.100.10":
+     {
+      "sha": "b1463b08a89de98793d45a52da63d3f100247623ea5e7ad5688b9d0b8104383f",
+      "internal_ip": "192.168.100.10",
+      "is_in_cluster" : true,
+     },
+     "192.168.100.11":
+     {
+      "sha": "b13db51615afa409a22506e2b98006793c1b0a436b601b094be4ee4b32b321d5",
+      "internal_ip": "192.168.100.11",
+     },
+     "192.168.100.12":
+     {
+      "sha": "98f14786389b2fe5a93dc3ef4c3c973ef7832279aa925df324f40697b332614c",
+      "internal_ip": "192.168.100.12",
+      "is_in_cluster" : false,
+     }
+    }
+    ```
+
+    Please note that ```is_in_cluster``` parameter is optional for 2 nodes HA clusters and by default is set to true. For 3 nodes setup, the node which is not part od pacemaker/corosync cluster setup MUST be marked with ```"is_in_cluster" : false``` configuration parameter.
+
+7. Start cf-execd process (don't start cf-hub process as this is not needed while manual failover to 3rd node is not performed). Please also note, that during normal operations cf-hub process should not be running on 3rd HA node.
+
+
+
+### Manual failover to disaster-recovery node ###
+
+1. Before starting manual failover process make sure both active and passive nodes are not running.
+
+2. Verify that PostgreSQL is running on 3rd node and data replication from active node is not in progress. If database is actively replicating data with active cluster node make sure that this process will be finished and no new data will be stored in active database instance.
+
+3. After verifying that replication is finished and data is synchronized between active database node and replica node (or once node1 and node2 are both down) promote PostgreSQL to exit recovery and begin read-write operations ```cd /tmp && su cfpostgres -c "/var/cfengine/bin/pg_ctl -c -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log  promote"```.
+
+4. In order to make failover process as easy as possible there is ```"failover_to_replication_node_enabled"``` class defined both in */var/cfengine/masterfiles/controls/VERSION/def.cf* and */var/cfengine/masterfiles/controls/VERSION/update_def.cf*. In order to stat collecting reports and serving policy from 3rd node uncomment the line defining mentioned class.
+
+**IMPORTANT:** Please note that as long as any of the active or passive cluster nodes is accessible by client to be contacted, failover to 3rd node is not possible. If the active or passive node is running and failover to 3rd node is required make sure to disable network interfaces where clients are bootstrapped to so that clients won't be able to access any other node than disaster-recovery.
+
 
 
 ### Troubleshooting ###
