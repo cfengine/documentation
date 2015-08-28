@@ -139,6 +139,9 @@ almost never need to do so.  The effect of having it `true` (the
 default) is that the expensive functions will be run just once and
 then their result will be cached.
 
+Note that caching is per-process so results will not be cached between 
+runs of e.g. `cf-agent` and `cf-promises`.
+
 **Type:** [`boolean`][boolean]
 
 **Default value:** true
