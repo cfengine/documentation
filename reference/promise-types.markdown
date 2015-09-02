@@ -973,8 +973,7 @@ they appear in reports and error messages.
 
 ### depends_on
 
-**Description:** Promise handles that this promise builds on or depends on
-somehow.
+**Description:** A list of promise handles for promises that must have an outcome of KEPT or REPAIRED in order for the promise to be actuated.
 
 This is a list of promise handles for whom this promise is a promisee. In other
 words, we acknowledge that this promise will be affected by the list of
@@ -995,17 +994,7 @@ Handles in other namespaces may be referred to by namespace:handle.
 
 **Example:**
 
-```cf3
-    bundle agent one
-    {
-    reports:
-       "two"
-         depends_on => { "handle_one" };
-
-       "one"
-         handle => "handle_one";
-    }
-```
+[%CFEngine_include_example(depends_on.cf)%]
 
 ### handle
 
