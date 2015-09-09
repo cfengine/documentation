@@ -102,12 +102,29 @@ The easiest way to limit the application of a promise to certain conditions is t
 
        Evening::
          "Good evening!";
+
+       "! any"::
+         "This report won't ever be seen.";
+
+       # whitespace allowed only in 3.8 and later
+       Friday . Evening::
+         "It's Friday evening, TGIF!";
+
+       "Monday . Evening"::
+         "It's Monday evening.";
     }
 ```
 
 In this example, the report "Good morning!" is only printed if the class 
 `Morning` is set, while the report "Good evening!" is only printed when the 
 class `Evening` is set.
+
+The `"! any"` context will never be evaluated. Note that since
+CFEngine 3.8 context expressions can contain spaces for legibility.
+
+The `"Monday . Evening"` context will only be true on Monday evenings.
+The `Friday . Evening` context will only be true on Friday evenings.
+See below for more on context operators.
 
 Sometimes it's convenient to put class names in variables. This
 example shows two ways to execute code conditionally based on such
@@ -120,7 +137,6 @@ variables:
       "myclassname" string => "Evening";
 
       reports:
-
        "$(myclassname)"::
          "Good evening!";
 
@@ -128,6 +144,8 @@ variables:
          "Good evening too!" ifvarclass => "$(myclassname)";
     }
 ```
+
+
 
 As you saw above, the class predicate `ifvarclass` (aliased to `if`;
 `unless` is also available) can be used if variable class expressions
@@ -225,8 +243,10 @@ how to make complex decisions in CFEngine, with readable results. It is like
 defining aliases for class combinations. Such class 'aliases' may be specified 
 in any kind of bundle.
 
-Note that whitespace is *not* allowed between operators, so something like
-`a . b`, though perhaps more readable, will be rejected by the CFEngine parser.
+Since CFEngine 3.8, whitespace is **allowed** between operators. It
+was not allowed up to 3.7.
+
+For example `a . b` is equivalent to `a.b` and perhaps more readable.
 
 Classes may be combined with the operators listed here in order from highest 
 to lowest precedence:
