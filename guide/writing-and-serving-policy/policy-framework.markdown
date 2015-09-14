@@ -17,7 +17,7 @@ installation in `/var/cfengine/masterfiles`, and have special roles.
 
 The Masterfiles Policy Framework is continually updated. You can track
 its development on
-[github](https://github.com/cfengine/masterfiles/). Noteable changes
+[github](https://github.com/cfengine/masterfiles/). Notable changes
 to the framework are documented in the changelog.
 
 ## Setting up ##
@@ -25,7 +25,7 @@ to the framework are documented in the changelog.
 First, review `update_def` and `def`.  Most settings you need to
 change will live here.
 
-As of CFEngine version 3.7 it is allowed (and reccomended) to use
+As of CFEngine version 3.7 it is allowed (and recommended) to use
 `def.json` to specify things traditionally set in `update.cf` and
 `def.cf`.
 
@@ -84,12 +84,12 @@ This bundle is defined in
 `bundle common update_def` defines settings and variables that are
 used throughout the update policy.
 
-As of CFEngine version 3.7 it is reccomended that these setting
+As of CFEngine version 3.7 it is recommended that these setting
 changes are specified in `def.json` to ease policy framework updates.
 
 ##### input_name_patterns (variable)
 
-A list of regular expressions defining which files should be considerd
+A list of regular expressions defining which files should be considered
 for copying during update.
 
 ##### masterfiles_perms_mode (variable)
@@ -344,7 +344,7 @@ necessary. This bundle should be configured in conjunction with
 `update_def` as there are some settings that should be kept in sync
 between the two policies.
 
-As of CFEngine version 3.7 it is reccomended that these setting
+As of CFEngine version 3.7 it is recommended that these setting
 changes are specified in `def.json` to ease policy framework updates.
 
 Keep referring to `def.cf` as you read this.
@@ -465,7 +465,7 @@ Turn this on (set to `any`) to allow the hub to edit sudoers in order
 for the Apache user to run passwordless sudo cf-runagent (part of
 Mission Portal troubleshooting).
 
-##### postgresql_mainenance_supported (class)
+##### postgresql_maintenance_supported (class)
 
 On by default only for CFEngine Enterprise Hubs.
 
@@ -475,18 +475,18 @@ CFEngine Enterprise.
 ##### postgresql_full_maintenance (class)
 
 On by default only on Sundays at 2am when
-postgresql_maintance_supported is defined.
+postgresql_maintenance_supported is defined.
 
 Set this class accordingly if you want to schedule database
-maintainance operations at a different time.
+maintenance operations at a different time.
 
 ##### postgresql_vacuum (class)
 
-On by default at 2am when postgresql_maintannce_supported is defined
+On by default at 2am when postgresql_maintenance_supported is defined
 except for Sundays.
 
 Set this class accordingly if you want to schedule database
-maintainance operations at a different time.
+maintenance operations at a different time.
 
 ##### enable_cfengine_enterprise_hub_ha (class)
 

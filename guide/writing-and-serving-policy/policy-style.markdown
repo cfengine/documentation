@@ -136,7 +136,7 @@ information about what is going on. During a normal agent run the goal is to
 have 0 output so reports should always be guarded with a class. Carefully
 consider when your policy should generate report output. For policy degbugging
 type information (value of variables, classes that were set or not) the
-following style is reccomended:
+following style is recommended:
 
 
 ```cf3
