@@ -179,7 +179,7 @@ In order to operate cluster, proper fencing must be configured but description h
 
    4. Create the PostgreSQL archive directory (```mkdir /var/cfengine/state/pg/pg_arch/```) and make the cfpostgres user the owner of it (```chown -R cfpostgres:cfpostgres /var/cfengine/state/pg/pg_arch/```). 
 
-        **IMPORTANT:** If the archive directory location is different, make sure to change the archive_command entry in postgresql.conf and the restore_command command described later in this doccument.
+        **IMPORTANT:** If the archive directory location is different, make sure to change the archive_command entry in postgresql.conf and the restore_command command described later in this document.
 
    5. Restart the PostgreSQL server so that the configuration changes take effect.
 
