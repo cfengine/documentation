@@ -155,7 +155,7 @@ changetimestamp | 2015-03-11 09:50:11+00
 -[ RECORD 2 ]---+-------------------------------------------------------
 hostkey         | SHA=a4dd5...
 contextname     | production
-metatags        | {report,"Production enviroment"}
+metatags        | {report,"Production environment"}
 changetimestamp | 2015-03-11 09:50:11+00
 -[ RECORD 3 ]---+-------------------------------------------------------
 hostkey         | SHA=a4dd5...
@@ -495,7 +495,7 @@ Information about communication between CFEngine clients.
 
 * **LastSeenDirection** *(`INCOMING`/`OUTGOING`)*
     Direction within which the connection was established.
-    * `INCOMING` - host recieved incoming connection.
+    * `INCOMING` - host received incoming connection.
     * `OUTGOING` - host opened connection to remote host.
 
 * **RemoteHostKey** *(text)*
