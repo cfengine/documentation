@@ -73,11 +73,11 @@ of ```cf-agent --bootstrap $HUB_IP```) we take care of the following:
   
   ```trustkey => "true"```
 
-  All occurences of `trustkey` in `masterfiles` directory should be
+  All occurrences of `trustkey` in `masterfiles` directory should be
   changed to "false", or be removed (since it defaults to false
   anyway). It is certain that `failsafe.cf` that we copied in
-  the previous step will contain such occurences that should be
-  changed. (Those occurences are the reason that automatic bootstrapping
+  the previous step will contain such occurrences that should be
+  changed. (Those occurrences are the reason that automatic bootstrapping
   requires a trusted network).
 
 * The previous changes in `masterfiles` need to be properly propagated

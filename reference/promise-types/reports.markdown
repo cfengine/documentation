@@ -34,7 +34,7 @@ distinguish them from other output, for example from `commands`.
 ```
 
 Reports do not fundamentaly make changes to the system and report type promise
-outcomes are *always* considerd kept.
+outcomes are *always* considered kept.
 
 ```cf3
 bundle agent report

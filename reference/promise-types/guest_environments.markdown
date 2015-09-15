@@ -171,7 +171,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 ### environment_resources
 
-**Type:** `body enviornment_resources`
+**Type:** `body environment_resources`
 
 #### env_cpus
 
