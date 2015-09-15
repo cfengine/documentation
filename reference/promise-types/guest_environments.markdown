@@ -36,7 +36,7 @@ other machine.
 
   "unique_name2"
 
-            environment_type => "xen_network",
+            environment_type => "xen_net",
            environment_state => "create",
             environment_host => "atlas";
 ```
