@@ -54,7 +54,7 @@ curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy?nodegro
         "Executing 'no timeout' ... '/var/cfengine/bin/vacuumdb --analyze --quiet --dbname=cfdb'",
         "Completed execution of '/var/cfengine/bin/vacuumdb --analyze --quiet --dbname=cfdb'"
       ],
-      "policyfile": "/var/cfengine/inputs/lib/3.7/cfe_internal_hub.cf",
+      "policyfile": "/var/cfengine/inputs/lib/cfe_internal_hub.cf",
       "promisees": [],
       "promisehandle": "cfe_internal_postgresql_maintenance_commands_run_vacuumdb",
       "promiser": "/var/cfengine/bin/vacuumdb --analyze --quiet --dbname=cfdb",
