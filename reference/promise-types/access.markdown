@@ -106,7 +106,7 @@ reporting and orchestration.
 
 Using the built-in `report_data_select` body `default_data_select_host`:
 
-[%CFEngine_include_snippet(controls/3.7/reports.cf, .+default_data_select_host, \})%]
+[%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \})%]
 
 
 The access promise allows overlapping promises to be made, and these are kept on a
@@ -445,9 +445,9 @@ body report_data_select report_data
 Here are the built-in `report_data_select` bodies `default_data_select_host()` and 
 `default_data_select_policy_hub()`:
 
-[%CFEngine_include_snippet(controls/3.7/reports.cf, .+default_data_select_host, \})%]
+[%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \})%]
 
-[%CFEngine_include_snippet(controls/3.7/reports.cf, .+default_data_select_policy_hub, \})%]
+[%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_policy_hub, \})%]
 
 **History:** Introduced in Enterprise 3.5.0
 

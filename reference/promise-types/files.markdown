@@ -2548,7 +2548,7 @@ them to the source.
 
 **Example implementation:**
 
-[%CFEngine_include_snippet(masterfiles/lib/3.7/files.cf, ^body\slink_from\slinkchildren.*, ^##)%]
+[%CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\slinkchildren.*, ^##)%]
 
 **Example usage:**
 
@@ -2585,7 +2585,7 @@ are mutually exclusive.
 
 **Example impelementation:**
 
-[%CFEngine_include_snippet(masterfiles/lib/3.7/files.cf, ^body\slink_from\sln_s.*, ^##)%]
+[%CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##)%]
 ```cf3
      body link_from example
      {

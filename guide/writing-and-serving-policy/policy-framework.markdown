@@ -51,7 +51,7 @@ new policy files**).
 By default, the policy defined in update.cf is executed at the
 beginning of a `cf-execd` scheduled agent run (see `schedule` and
 `exec_command` as defined in `body executor control` in
-`controls/3.7/cf_execd.cf`). When the update policy completes
+`controls/cf_execd.cf`). When the update policy completes
 (regardless of success or failure) the policy defined in `promises.cf`
 is activated.
 
@@ -80,7 +80,7 @@ bundle in the order defined by the bundlesequence.
 #### update_def (bundle)
 
 This bundle is defined in
-`controls/$(sys.cf_version_major).$(sys.cfengine_version_minor)/update_def.cf`.
+`controls/update_def.cf`.
 `bundle common update_def` defines settings and variables that are
 used throughout the update policy.
 
@@ -335,7 +335,7 @@ Inventory bundles may vary between platform and other classes.
 
 #### def (bundle)
 
-This bundle is defined as `bundle common def` in `controls/3.7/def.cf`
+This bundle is defined as `bundle common def` in `controls/def.cf`
 
 `def` has some crucial settings used by the rest of CFEngine. It's
 expected that users may edit it, but won't normally change the rest of
@@ -351,7 +351,7 @@ Keep referring to `def.cf` as you read this.
 
 Implementation (warning: advanced usage):
 
-[%CFEngine_include_snippet(masterfiles/controls/3.7/def.cf, .*)%]
+[%CFEngine_include_snippet(masterfiles/controls/def.cf, .*)%]
 
 ##### augments_file (variable)
 
@@ -602,9 +602,9 @@ download a working policy, once you fix it on the policy host).
   you will get unexpected behavior
 
 * `controls`: configuration of components, e.g. the `cf-agent` or
-  `cf-serverd`, beyond what `def.cf` can offer. You'll see `3.5`,
-  3.6`, and `3.7` under it. These are the supportd versions for
-  backwards compatibility.
+  `cf-serverd`, beyond what `def.cf` can offer. You'll see `3.6` which is for
+  backwards compatibility and used only by `3.6` agents.  `3.7`+ agents will
+  use the library files directly inside of this directory.
 
 * `def.cf`: defaults you can and should configure, see above
 
