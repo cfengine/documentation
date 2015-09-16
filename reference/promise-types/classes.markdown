@@ -9,7 +9,7 @@ tags: [bundle common, classes, promises]
 bundle. Classes that are set in `common` bundles are global in scope, 
 while classes in all other bundles are local.
 
-Note: The term class and context are sometimes used interchangeably.
+**Note:** The term class and context are sometimes used interchangeably.
 
 ```cf3
     bundle common g
@@ -20,6 +20,42 @@ Note: The term class and context are sometimes used interchangeably.
 
       "client_network" expression => iprange("128.39.89.0/24");
     }
+```
+
+**Note:** You must use at least one of the following attributes to make a
+complete promise. 
+
+* and
+* expression
+* dist
+* or
+* not
+* xor
+
+For example, the following promise is incomplete:
+
+```cf3
+bundle agent example
+{
+  classes:
+      "web"
+        if => fileexists("/etc/httpd/httpd.conf");
+}
+```
+
+The following are complete promsies:
+
+```
+bundle agent example
+{
+  classes:
+      "web"
+        expression => fileexists("/etc/httpd/httpd.conf");
+
+      "webserver"
+        expression => "any",
+        if => fileexists("/etc/httpd/httpd.conf");
+}
 ```
 
 ***
