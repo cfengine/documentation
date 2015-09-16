@@ -129,15 +129,45 @@ Absence of this attribute means that connections from all hosts are accepted.
 
 ### allowciphers
 
-**Description:** List of ciphers the server accepts.
+**Description:** List of ciphers the server accepts for **incoming** connections.
 
 For a list of possible ciphers, see man page for "openssl ciphers".
 
 [%CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA)%]
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version]
+**Example:**
+
+```cf3
+body server control
+{
+      # Only this non-default cipher is to be accepted
+      allowciphers    => "RC4-MD5"
+}
+```
+
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion]
 
 **History:** Introduced in CFEngine 3.6.0
+
+### allowtlsversion
+
+**Description:** Minimum TLS version allowed for **incoming** connections.
+
+[%CFEngine_promise_attribute(1.0)%]
+
+**Example:**
+
+```cf3
+body server control
+{
+      # Allow only TLSv1.1 or higher
+      allowtlsversion => "1.1";
+}
+```
+
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowciphers`][cf-serverd#allowciphers]
+
+**History:** Introduced in CFEngine 3.7.0
 
 ### allowusers
 
