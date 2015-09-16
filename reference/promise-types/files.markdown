@@ -863,6 +863,11 @@ for the client and server hosts.
      }
 ```
 
+**Note:** When used with `protocol_version` 2 or greater this attribute is a
+noop as the entire session is encrypted.
+
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`ifencrypted`][access#ifencrypted], [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion]
+
 #### check_root
 
 **Description:** The `check_root` menu option policy checks permissions on the 

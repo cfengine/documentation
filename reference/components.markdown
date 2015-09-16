@@ -477,11 +477,11 @@ body common control
 * 2 - TLS
 * latest - Alias to protocol 2
 
-**Note:** If `protocol_version` is specified in a [`body copy_from`][files#copy_from],
-then the value there will override this setting.
+**Note:** `protocol_version` can be specified at the individual promise level
+using the [`body copy_from protocol_version`][files#protocol_version]
+attribute.
 
-**See also:** [`protocol_version`][files#protocol_version] in
-[`body copy_from`][files#copy_from], `allowlegacyconnects`
+**See also:**  [`body copy_from protocol_version`][files#protocol_version], `allowlegacyconnects`, [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
 
 **History:** Introduced in CFEngine 3.6.0
 
@@ -608,7 +608,7 @@ body common control
 }
 ```
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion]
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
 
 **History:** Introduced in CFEngine 3.7.0
 
@@ -626,7 +626,7 @@ body common control
 }
 ```
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion]
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`ifencrypted`][access#ifencrypted], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers]
 
 **History:** Introduced in CFEngine 3.7.0
 
