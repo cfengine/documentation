@@ -590,6 +590,46 @@ components may promise to send data.
     }
 ```
 
+### tls_ciphers
+
+**Description:** List of ciphers allowed when making **outgoing** connections.
+
+For a list of possible ciphers, see man page for "openssl ciphers".
+
+[%CFEngine_promise_attribute(undefined)%]
+
+**Example:**
+
+```cf3
+body common control
+{
+    # Use one of these ciphers when making outbound connections
+    tls_ciphers => "AES128-SHA";
+}
+```
+
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion]
+
+**History:** Introduced in CFEngine 3.7.0
+
+### tls_min_version
+
+**Description:** Minimum tls version to allow for **outgoing** connections.
+
+[%CFEngine_promise_attribute(1.0)%]
+
+```cf3
+body common control
+{
+    # Allow only TLSv1.1 or higher for outgoing connections
+    tls_min_version => "1.1";
+}
+```
+
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`allowciphers`][cf-serverd#allowciphers], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`allowtlsversion`][cf-serverd#allowtlsversion]
+
+**History:** Introduced in CFEngine 3.7.0
+
 ### version
 
 **Description:** The `version` string contains the scalar version of the 
