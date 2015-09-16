@@ -145,7 +145,7 @@ body server control
 }
 ```
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion]
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
 
 **History:** Introduced in CFEngine 3.6.0
 
@@ -165,7 +165,10 @@ body server control
 }
 ```
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowciphers`][cf-serverd#allowciphers]
+**Note:** When used with `protocol_version` 2 or greater this attribute is a
+noop as the entire session is encrypted.
+
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
 
 **History:** Introduced in CFEngine 3.7.0
 
@@ -539,6 +542,8 @@ to syslog. These files are deemed to be particularly sensitive.
     logencryptedtransfers => "true";
     }
 ```
+
+**See also:** [`ifencrypted`][access#ifencrypted], [`encrypt`][files#encrypt], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`protocol_version`][Components and Common Control#protocol_version]
 
 ### maxconnections
 

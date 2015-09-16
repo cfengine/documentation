@@ -406,6 +406,11 @@ access:
     ifencrypted => "true";
 ```
 
+**Note:** This attribute is a noop when used with
+[`protocol_version`][Components and Common Control#protocol_version] 2 or
+greater.
+
+**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`allowciphers`][cf-serverd#allowciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
 
 ### report_data_select
 
