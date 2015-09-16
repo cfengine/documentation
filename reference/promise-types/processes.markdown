@@ -5,8 +5,10 @@ published: true
 tags: [reference, bundle agent, promise types, processes, processes promises, promise types]
 ---
 
-Process promises refer to items in the system process table, i.e., a command 
-in some state of execution (with a Process Control Block). Promiser objects are patterns that are [unanchored][unanchored], meaning that they match line fragments in the system process table.
+Process promises refer to items in the system process table, i.e., a command in
+some state of execution (with a Process Control Block). Promiser objects are
+patterns that are [unanchored][unanchored], meaning that they match line
+fragments in the system process table.
 
 ```cf3
       processes:
@@ -18,18 +20,67 @@ in some state of execution (with a Process Control Block). Promiser objects are 
             ..;
 ```
 
-**Note**: Process table formats differ between operating systems, and the use 
-of simple patterns such as program-names is recommended. For more 
-sophisticated matches, users should use the*`process_select`*feature.* For 
-example, on many systems, the process pattern `"^cp"` may not match any 
-processes, even though `"cp"` is running. This is because the process table 
-entry may list `"/bin/cp"`. However, the process pattern `"cp"` will also 
-match a process containing `"scp"`, so take care not to oversimplify your 
-patterns (the PCRE pattern anchors `"\b"` and `"\B"` may prove very useful to 
-you).
+**Note**: Process table formats differ between platforms. You can see
+how cfengine views the process table for your platform by inspecting
+`cf_otherprocs`, `cf_procs`, and `cf_rootprocs` which can be found in
+`$(sys.workdir)/state/` (typically `/var/cfengine/state`).
 
+For example, this is a sample of `$(sys.workdir)/state/cf_rootprocs` on a linux system:
 
-To restart a process, you must use a class to activate and then describe a 
+```
+USER       PID  PPID  PGID %CPU %MEM    VSZ  NI       RSS NLWP STIME     ELAPSED     TIME COMMAND
+root         1     0     1  0.0  0.2  19232   0      1096    1 Sep14  1-21:41:52 00:00:00 /sbin/init
+root         2     0     0  0.0  0.0      0   0         0    1 Sep14  1-21:41:52 00:00:00 [kthreadd]
+root         3     2     0  0.0  0.0      0   -         0    1 Sep14  1-21:41:52 00:00:00 [migration/0]
+```
+
+This is an example showing how to restart splunk when a splunkd process owned
+by root is using 80% or more of the CPU.
+
+```cf3
+bundle agent example
+{
+  processes:
+      # Reference process table in $(sys.workdir)/state/cf_procs
+      # Find lines in the process table starting with root (USER column)
+      # followed by one or more spaces, followed by a digit (PID column),
+      # followed by one or more spaces, followed by a digit (PGID column),
+      # followed by one or more spaces, followed by 8 or 9 followed by a number
+      # in the range 0-9 (to match numbers greater than 80), followed by a dot,
+      # followed by anything, and containing splunkd (expected to match the
+      # COMMAND column).
+
+      "^root\s+\d+\s+\d+\s+\d+\s+[89][0-9]\..*splunkd"
+        handle => "example_splunk_high_cpu_stop_gracefully",
+        process_stop => "/opt/splunkforwarder/bin/splunk stop",
+        comment => "Find splunkd processes owned by root that are consuming more
+		    than 80% of a CPU and restart it with it's preferred
+                    utility. Stop it gracefully with the internal splunk binary.";
+
+      "^root\s.*splunkd"
+        restart_class => "splunk_not_running",
+        comment => "Set splunk_not_running class if we cant find any root owned
+		    splunkd processes so that we can restart it using a
+                    commands promise";
+
+  commands:
+    splunk_not_running::
+      "/opt/splunkforwarder/bin/splunk"
+        args => "--accept-license --answer-yes --no-prompt start";
+}
+```
+
+Getting complex regular expressions just right can be difficult, so for most
+sophisticated matches, users should use a simple pattern match such as program
+names combinded with a *`process_select`* body before delving into complex regular
+expressions. Take care to not oversimplify your patterns as it may match
+unexpected processes. For example, on many systems, the process pattern `"^cp"`
+may not match any processes, even though `"cp"` is running. This is because the
+process table entry may list `"/bin/cp"`. However, the process pattern `"cp"`
+will also match a process containing `"scp"`, (the PCRE pattern anchors `"\b"`
+and `"\B"` may prove very useful to you).
+
+To restart a process, you should set a class to activate and then describe a 
 `command` in that class.
 
 ```cf3
