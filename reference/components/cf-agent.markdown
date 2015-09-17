@@ -95,21 +95,21 @@ Settings describing the details of the fixed behavioral promises
 made by `cf-agent`.
 
 ```cf3
-    body agent control
-    {
-    123_456_789::
+body agent control
+{
+  # Agent email report settings based on their domain.
 
-      domain => "mydomain.com";
+    alpha_cfengine_com::
+      domain => "alpha.cfengine.com";
+      mailto => "admins@alpha.cfengine.com";
 
-    123_456_789_111::
-
-      auditing => "true";
+    beta_domain_com::
+      domain => "beta.cfengine.com";
+      mailto => "admins@beta.cfengine.com";
 
     any::
-
-      fullencryption => "true";
-
-    }
+      mailfrom => "root";
+}
 ```
 
 
