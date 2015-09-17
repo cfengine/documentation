@@ -73,7 +73,13 @@ bundle agent example
 Getting complex regular expressions just right can be difficult, so for most
 sophisticated matches, users should use a simple pattern match such as program
 names combinded with a *`process_select`* body before delving into complex regular
-expressions. Take care to not oversimplify your patterns as it may match
+expressions.
+
+This example shows using `process_select` and `process_count` to define a class when a process has been running for longer than a day.
+
+[%CFEngine_include_example(processes_define_class_based_on_process_runtime.cf)%]
+
+Take care to not oversimplify your patterns as it may match
 unexpected processes. For example, on many systems, the process pattern `"^cp"`
 may not match any processes, even though `"cp"` is running. This is because the
 process table entry may list `"/bin/cp"`. However, the process pattern `"cp"`
@@ -99,37 +105,6 @@ ephemeral command that does not lead to a persistent process. It is
 intended only for commands of the form /etc/inetd service stop, not for
 processes that persist. Processes are restarted at the end of a bundle's
 execution, but stop commands are executed immediately.
-
-```cf3
-    bundle agent example
-    {
-    processes:
-
-     ".*"
-
-        process_count   => anyprocs,
-        process_select  => proc_finder;
-
-    reports:
-
-     any_procs::
-
-       "Found processes out of range";
-    }
-
-    body process_select proc_finder
-    {
-      # Processes started between 5.5 hours and 20 minutes ago
-      stime_range => irange(ago(0,0,0,5,30,0),ago(0,0,0,0,20,0));
-      process_result => "stime";
-    }
-
-    body process_count anyprocs
-    {
-      match_range => "0,0";
-      out_of_range_define => { "any_procs" };
-    }
-```
 
 ### Commands and Processes
 
