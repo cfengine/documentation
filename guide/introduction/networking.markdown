@@ -185,10 +185,111 @@ users must be added to the server configuration file.
 
 ## Encryption
 
-CFEngine provides encryption for keeping file contents private during transfer. If [`protocol_version`][files#protocol_version] is set to `classic` or `1`, then file transfers must be explicitly encrypted by setting `encrypt=>"true"` in a `copy_from` body of a `files` promise. For newer protocol_version, all transfers are encrypted.
+CFEngine has 2 communication protocols. `classic` or `1` and `2` or `latest`.
+Each protocol provides different encryption options for keeping file contents
+private during transfer.
 
-However, the main role of encryption in configuration management is for authentication. Secrets should not be transferred through policy, encrypted or not. Policy files should be considered public, and any leakage should not reveal secret information.
+However, the main role of encryption in configuration management is for
+authentication. Secrets should not be transferred through policy, encrypted or
+not. Policy files should be considered public, and any leakage should not
+reveal secret information.
 
+### Protocol Classic
+
+Encryption for Enterprise is symmetric AES 256 bit in CBC mode, using
+a session key exchanged during the RSA handshake.
+
+In core/community as **outgoing**outlined in the
+[body copy_from `encrypt`][files#encrypt] documentation the initial
+connection is encrypted using the public/private keys for the client
+and server hosts. After the initial connection is established
+subsequent connections and data transfer is encrypted by a randomly
+generated Blowfish key that is refreshed each session.
+
+With the classic protocol cf-serverd has the ability to enforce that a
+file transfer be encrypted by setting the
+[`ifencrypted` access attribute][access#ifencrypted]. When ACLs that
+require encryption have unencrypted access attempts cf-serverd logs an
+error message indicating the file requires encryption. Access to files
+that cf-serverd requires to be encrypted can be logged by setting the
+[body server control `logencryptedtransfers` attribute][cf-serverd#logencryptedtransfers].
+
+### Protocol 2
+
+3.6 introduced a new protocol option for communication with
+cf-serverd. [Protocol 2][Components and Common Control#protocol_version]
+is the default in 3.7+ and uses a TLS session for encryption.
+
+,**Note:** When protocol 2 is in use legacy encryption attributes are **noop**.
+
+The following attributes are affected:
+- [encrypt`][files#encrypt] in copy from bodies
+- [`ifencrypted`][access#ifencrypted] in in access promises
+- [`logencryptedtransfers`][cf-serverd#logencryptedtransfers] in body common control
+
+The specific encryption algorithm used depends on the cipher
+negotiated between the client and the server. You can control which
+ciphers are allowed by cf-serverd for **incoming** connections by
+setting the
+[body server control `allowciphers` attribute][cf-serverd#allowciphers]. Controlling
+which ciphers are allowed to be used in **outgoing** connections is
+done by setting
+[body common control `tls_ciphers`][Components and Common Control#tls_ciphers].
+
+Additionally the minimum version of TLS required for **incoming**
+connections can be set in
+[body server control `allowtlsversion`][cf-serverd#allowtlsversion]
+and the minimum version of TLS required for **outgoing** connections
+can be set in
+[body common control `tls_min_version`][Components and Common Control#tls_min_version].
+
+There are debug and verbose level logs produced by cf-agent to
+indicate when TLS is in use.
+
+The following was captured by running the agent update policy in debug
+mode.
+
+`/var/cfenigne/bin/cf-agent -Kdf update.cf`
+
+```
+verbose: Connected to host 192.168.33.2 address 192.168.33.2 port 5308
+  debug: TLSVerifyCallback: no ssl->peer_cert
+  debug: TLSVerifyCallback: no conn_info->key
+  debug: This must be the initial TLS handshake, accepting
+verbose: TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
+verbose: TLS session established, checking trust...
+verbose: Received public key compares equal to the one we have stored
+verbose: Server is TRUSTED, received key 'SHA=5d20c01e4230aa53863eb36686eaa882094cdbddf53545616dfd588f00cc0659' MATCHES stored one.
+  debug: TLSRecvLines(): CFE_v2 cf-serverd 3.7.1.
+  debug: TLSRecvLines(): OK WELCOME USERNAME=root
+```
+
+cf-serverd emits verbose and debug log messages indicating when TLS is in use.
+
+The following was captured by starting cf-serverd in the foreground
+with debug mode.
+
+`/var/cfenigne/bin/cf-serverd -Fd`
+
+```
+verbose: New connection (from 192.168.33.3, sd 7), spawning new thread...
+verbose: CollectCallHasPending: false
+  debug: Waiting at incoming select...
+   info: 192.168.33.3> Accepting connection
+verbose: 192.168.33.3> Setting socket timeout to 600 seconds.
+verbose: 192.168.33.3> Peeked nothing important in TCP stream, considering the protocol as TLS
+  debug: 192.168.33.3> Peeked data: ....2......ak.
+  debug: 192.168.33.3> TLSVerifyCallback: no ssl->peer_cert
+  debug: 192.168.33.3> TLSVerifyCallback: no conn_info->key
+  debug: 192.168.33.3> This must be the initial TLS handshake, accepting
+verbose: 192.168.33.3> TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
+verbose: 192.168.33.3> TLS session established, checking trust...
+  debug: 192.168.33.3> TLSRecvLines(): CFE_v2 cf-agent 3.7.1.
+  debug: 192.168.33.3> TLSRecvLines(): IDENTITY USERNAME=root.
+verbose: 192.168.33.3> Setting IDENTITY: USERNAME=root
+verbose: 192.168.33.3> Received public key compares equal to the one we have stored
+verbose: 192.168.33.3> SHA=4f25279831eeaf579d2e3451345854a93fdefc856ad741bd59515b859fb84dea: Client is TRUSTED, public key MATCHES stored one.
+```
 
 ## Troubleshooting
 
