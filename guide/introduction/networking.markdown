@@ -199,7 +199,7 @@ reveal secret information.
 Encryption for Enterprise is symmetric AES 256 bit in CBC mode, using
 a session key exchanged during the RSA handshake.
 
-In core/community as **outgoing**outlined in the
+In core/community as **outgoing** outlined in the
 [body copy_from `encrypt`][files#encrypt] documentation the initial
 connection is encrypted using the public/private keys for the client
 and server hosts. After the initial connection is established
@@ -220,12 +220,14 @@ that cf-serverd requires to be encrypted can be logged by setting the
 cf-serverd. [Protocol 2][Components and Common Control#protocol_version]
 is the default in 3.7+ and uses a TLS session for encryption.
 
-,**Note:** When protocol 2 is in use legacy encryption attributes are **noop**.
+**Note:** When protocol 2 is in use legacy encryption attributes are **noop**.
 
 The following attributes are affected:
+
 - [encrypt`][files#encrypt] in copy from bodies
 - [`ifencrypted`][access#ifencrypted] in in access promises
-- [`logencryptedtransfers`][cf-serverd#logencryptedtransfers] in body common control
+- [`logencryptedtransfers`][cf-serverd#logencryptedtransfers] in body common
+  control
 
 The specific encryption algorithm used depends on the cipher
 negotiated between the client and the server. You can control which
