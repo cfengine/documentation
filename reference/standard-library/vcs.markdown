@@ -17,4 +17,4 @@ body file control
 }
 ```
 
-[%CFEngine_library_include(lib/vcs)%]
+[%CFEngine_library_include(lib/vcs.cf)%]

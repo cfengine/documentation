@@ -20,4 +20,4 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/users)%]
+[%CFEngine_library_include(lib/users.cf)%]
