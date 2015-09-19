@@ -8,7 +8,7 @@ then
 fi
 
 OUTDIR=$WRKDIR/documentation-generator/_generated
-LIBDIR=$WRKDIR/masterfiles/lib/3.7
+LIBDIR=$WRKDIR/masterfiles/lib
 mkdir -p $OUTDIR/lib
 $WRKDIR/core/cf-promises/cf-promises -sjson > $OUTDIR/syntax_map.json
 
