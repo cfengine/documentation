@@ -20,5 +20,5 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/databases)%]
+[%CFEngine_library_include(lib/databases.cf)%]
 
