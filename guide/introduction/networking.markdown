@@ -194,6 +194,10 @@ authentication. Secrets should not be transferred through policy, encrypted or
 not. Policy files should be considered public, and any leakage should not
 reveal secret information.
 
+**Note:** Connections from the cf-agent to cf-serverd do not persist beyond a
+single agent run. Connections may be re-initialized for each bundle that uses a
+remote connection.
+
 ### Protocol Classic
 
 Encryption for Enterprise is symmetric AES 256 bit in CBC mode, using
