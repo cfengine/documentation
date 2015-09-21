@@ -21,7 +21,7 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/common.cf)%]
+[%CFEngine_library_include(lib/common)%]
 
 # Re-usable agent bundles
 
@@ -44,5 +44,5 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/bundles.cf)%]
+[%CFEngine_library_include(lib/bundles)%]
 

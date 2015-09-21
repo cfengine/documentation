@@ -20,4 +20,4 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/storage.cf)%]
+[%CFEngine_library_include(lib/storage)%]

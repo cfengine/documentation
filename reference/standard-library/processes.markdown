@@ -20,5 +20,5 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/processes.cf)%]
+[%CFEngine_library_include(lib/processes)%]
 
