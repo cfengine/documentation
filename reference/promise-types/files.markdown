@@ -683,9 +683,9 @@ Diffs for binary files are not generated. Files are considered binary files if [
 
 The copy_from body specifies the details for making remote copies.
 
-**Note:** Connections from the cf-agent to cf-serverd do not persist beyond a
-single agent run. Connections may be re-initialized for each bundle that uses a
-remote connection.
+**Note:** For improved performance, connections from cf-agent to cf-serverd
+are re-used. Currently connection caching is done per pass in each bundle
+activation.
 
 #### source
 
