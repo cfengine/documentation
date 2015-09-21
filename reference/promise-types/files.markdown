@@ -681,6 +681,12 @@ Diffs for binary files are not generated. Files are considered binary files if [
 
 **Type:** `body copy_from`
 
+The copy_from body specifies the details for making remote copies.
+
+**Note:** Connections from the cf-agent to cf-serverd do not persist beyond a
+single agent run. Connections may be re-initialized for each bundle that uses a
+remote connection.
+
 #### source
 
 **Description:** The `source` string represents the reference source file from which to copy. For remote copies this refers to the file name on the remote server. 

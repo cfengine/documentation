@@ -194,6 +194,9 @@ authentication. Secrets should not be transferred through policy, encrypted or
 not. Policy files should be considered public, and any leakage should not
 reveal secret information.
 
+**Note:** Connections from the cf-agent are cached as described in the
+documnetation for body [`copy_from`][files#copy_from].
+
 ### Protocol Classic
 
 Encryption for Enterprise is symmetric AES 256 bit in CBC mode, using
