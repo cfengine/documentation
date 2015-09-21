@@ -55,6 +55,97 @@ The attributes within the body are then type specific. Bodies of type `perms` co
 
 Such bodies can be reused in multiple promises. Like bundles, bodies can have parameters. The body `mog` also consists of the file permissions, file owner, and file group, but the values of those attributes are passed in as parameters.
 
+#### Body Inheritance
+
+CFEngine 3.8 introduced body inheritance via the `inherit_from`
+attribute. It's a parameterized single-inheritance system, so a body
+can only inherit from one other body, and it can apply parameters. The
+two bodies **must** have the same type.
+
+Let's see it with the `system` and `mog` bodies from earlier:
+
+```cf3
+    body perms system
+    {
+      mode => "644";
+      owners => { "root" };
+      groups => { "root" };
+    }
+
+    body perms system_inherited
+    {
+      inherit_from => mog("644", "root", "root");
+    }
+
+```
+
+The earlier `system` body and this `system_inherited` body have the
+same effect, eventually applying mode `644`, owner `root`, and group
+`root`. But they are created differently: the first by explicitly
+listing the parameters; the other by applying parameters to the
+`inherit_from` chain of inheritance.
+
+Which one is better? Usually, inheriting from a more generic
+specification is considered a better design pattern because it reduces
+horizontal complexity. But it's less explicit and some users and sites
+will prefer a more explicit listing of body attributes and their
+values, as in the `system` body. CFEngine will accomodate either.
+
+Body parameters can be used in the inheritance chain. Here's another
+body that inherits from `mog` but takes a mode. All its other
+parameters are specified inside the body. So
+`system_inherited_mode("234")` is exactly like `mog("234", "root",
+"root")`.
+
+```cf3
+    body perms system_inherited_mode(mode)
+    {
+      inherit_from => mog($(mode), "root", "root");
+    }
+
+```
+
+Again, whether you prefer this or directly calling the `mog` body is
+your choice. Keep in mind that if you want to maintain compatibility
+with 3.7 and earlier, `inherit_from` is not available.
+
+Body inheritance simply copies attributes down the chain to the newest
+body. The latest wins. Let's see an example with a chain of
+inheritance from the `system` body from earlier:
+
+```cf3
+    body perms system
+    {
+      mode => "644";
+      owners => { "root" };
+      groups => { "root" };
+    }
+
+    body perms system_once(x)
+    {
+      inherit_from => system;
+      owners => { $(x) };
+      mode => "645";
+    }
+
+    body perms system_twice
+    {
+      inherit_from => system_once("mark");
+      mode => "646";
+    }
+
+```
+
+The inheritance chain goes from `system` to `system_once` to
+`system_twice`. The `owners` attribute in `system_once` will be
+whatever `$(x)` is, **overwriting** the value from `system`. Then
+`system_twice` will inherit that same `owners` value which is now `"mark"`.
+
+The `mode` attribute will be **overwritten** to `645` in `system_once`
+and then **overwritten** to `646` in `system_twice`.
+
+If this gets complicated, just think *"latest wins"*.
+
 #### Implicit, Control Bodies
 
 A special case for bodies are the implicit promises that configure the basic 
