@@ -21,5 +21,5 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/packages.cf)%]
+[%CFEngine_library_include(lib/packages)%]
 

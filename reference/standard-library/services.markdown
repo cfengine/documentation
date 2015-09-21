@@ -20,5 +20,5 @@ body file control
 
 
 
-[%CFEngine_library_include(lib/services.cf)%]
+[%CFEngine_library_include(lib/services)%]
 
