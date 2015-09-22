@@ -151,6 +151,8 @@ platform dependent, see
 and Common Control. The name of the body is expected to be the same as the name
 of the package module inside `/var/cfengine/modules/packages`.
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### default_options
 
 **Description:** Options to pass to to the package module by default.

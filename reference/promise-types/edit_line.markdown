@@ -272,6 +272,8 @@ and `select_end` regular expressions. If the beginning and ending regular
 expressions match more than one region only the first region will be
 selected for editing.
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### include_start_delimiter
 
 **Description:** Whether to include the section delimiter

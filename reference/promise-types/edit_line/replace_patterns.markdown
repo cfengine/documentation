@@ -49,6 +49,8 @@ pattern will match.
 
 **Type:** `body replace_with`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### occurrences
 
 **Description:** Defines which occurrences should be replaced.

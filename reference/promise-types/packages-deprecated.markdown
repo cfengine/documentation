@@ -265,6 +265,8 @@ packages:
 
 **Type:** `body package_method`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### package_add_command
 
 **Description:** Command to install a package to the system

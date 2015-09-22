@@ -152,6 +152,8 @@ a hierarchy of depth 1.
 
 **Type:** `body database_server`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### db_server_owner
 
 **Description:** The `db_server_owner` string represents the user name 

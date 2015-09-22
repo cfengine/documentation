@@ -44,6 +44,8 @@ promise.
 
 **Type:** `body delete_select`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### delete_if_startwith_from_list
 
 **Description:** Delete lines from a file if they begin with the sub-strings 

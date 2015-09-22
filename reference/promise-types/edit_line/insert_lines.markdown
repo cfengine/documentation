@@ -204,6 +204,8 @@ file:
 
 **Type:** `body insert_select`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### insert_if_startwith_from_list
 
 **Description:** Insert line if it starts with a string in the list
@@ -357,6 +359,8 @@ found in the secondary file, it is inserted into the file being edited.
 ### location
 
 **Type:** `body location`
+
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
 
 #### before_after
 
