@@ -143,7 +143,7 @@ as a non-privileged user inside an isolated directory tree.
 
 #### useshell
 
-**Description:** Specifies weather or not tu use a shell when executing the command.
+**Description:** Specifies whether or not to use a shell when executing the command.
 
 The default is to *not* use a shell when executing commands. Use of a
 shell has both resource and security consequences. A shell consumes an
