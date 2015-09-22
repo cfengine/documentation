@@ -91,6 +91,24 @@ Note that the child's parameters can be passed up to the parent.
 
 **History:** Was introduced in 3.8.0.
 
+### meta
+
+**Description:** A list of meta attributes.
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string list)
+
+**Example:**
+
+```cf3
+    body ANYTYPE mybody
+    {
+      meta => { "deprecated" };
+    }
+```
+
+**History:** Was introduced in 3.7.0.
 
 ## Common Attributes
 
