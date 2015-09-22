@@ -59,6 +59,22 @@ executable file. For example:
      
         "\"/usr/bin/funny command name\" -a -b -c";
 ```
+**Note:** Commands executed with CFEngine get the environmnet variables set in
+[`environmnet`][cf-agent#environmnet] in body agent control. If you want to set
+environment variables for an individual command you can prefix the command with
+`env` and set variables before executing the command.
+
+```cf3
+bundle agent example
+{
+  commands:
+    "/usr/bin/env MY_ENVIRONMENT_VARIABLE=something_special /tmp/cmd";
+
+    # Or equivlent
+    "/usr/bin/env"
+      args => "ME=something_special /tmp/cmd";
+}
+```
 
 **Note**: Some unices leave a hanging pipe on restart (they never manage to
 detect the end of file condition). This occurs on POSIX.1 and SVR4 popen calls
@@ -127,7 +143,7 @@ as a non-privileged user inside an isolated directory tree.
 
 #### useshell
 
-**Description:** Specifies which shell to use when executing the command.
+**Description:** Specifies whether or not to use a shell when executing the command.
 
 The default is to *not* use a shell when executing commands. Use of a
 shell has both resource and security consequences. A shell consumes an
