@@ -141,6 +141,8 @@ as a non-privileged user inside an isolated directory tree.
     }
 ```
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### useshell
 
 **Description:** Specifies whether or not to use a shell when executing the command.

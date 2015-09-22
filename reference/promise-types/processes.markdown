@@ -161,6 +161,8 @@ guarantee that process promises will work smoothly on that platform.
 
 **Type:** `body process_count`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### in_range_define
 
 **Description:** List of classes to define if the matches are in range
@@ -227,6 +229,8 @@ failure to be kept.
 ### process_select
 
 **Type:** `body process_select`
+
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
 
 #### command
 

@@ -203,6 +203,8 @@ that contains information about a user's password.
     }
 ```
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### format
 
 **Description:** Specifies the format of the given password data.
