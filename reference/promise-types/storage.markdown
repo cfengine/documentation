@@ -56,6 +56,8 @@ Storage promises refer to disks and filesystem properties.
 
 **Type:** `body mount`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### edit_fstab
 
 **Description:** true/false add or remove entries to the file system table
@@ -180,6 +182,8 @@ options must be legal options for the system mount commands.
 ### volume
 
 **Type:** `body volume`
+
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
 
 #### check_foreign
 
