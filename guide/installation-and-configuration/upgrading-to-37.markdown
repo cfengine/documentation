@@ -15,8 +15,10 @@ If you are doing a minor-minor 3.7 upgrade (e.g. from 3.7.0 to 3.7.1), the upgra
 We would however still recommend to perform a masterfiles upgrade (ideally in a test environment first) to get all the enhancements and fixes.
 The masterfiles are available in the hub package and separately on the [download page](http://cfengine.com/community/download/) (Community and Enterprise editions share masterfiles as of 3.6).
 
-Normally most files can be replaced with new ones, the only ones that are likely changed by you are *def.cf* and *promises.cf*.
-For these two files, we would need to do a diff between your version and the new version and integrade the diff instead of replacing the whole file.
+Normally most files can be replaced with new ones, the only ones that are
+likely changed by you are *def.cf* and *promises.cf*.  For these two files, we
+would need to do a diff between your version and the new version and integrate
+the diff instead of replacing the whole file.
 
 When the new masterfiles have been created and *cf-promises promises.cf* and *cf-promises update.cf* succeeds, you are ready to upgrade the Policy Server. That entails to
 
