@@ -350,6 +350,9 @@ in the list; the same class each time for a given host. This allows hosts to
 be distributed across a controlled list of classes (e.g for load balancing 
 purposes).
 
+If a list is used as the input to select_class the promise will only actuate if
+the list is expandable. If the list has not yet been evaluated, the
+select_class will be skipped and wait for a subsequent evaluation pass.
 
 ### xor
 
