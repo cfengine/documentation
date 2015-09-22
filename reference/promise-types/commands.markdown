@@ -59,8 +59,8 @@ executable file. For example:
      
         "\"/usr/bin/funny command name\" -a -b -c";
 ```
-**Note:** Commands executed with CFEngine get the environmnet variables set in
-[`environmnet`][cf-agent#environmnet] in body agent control. If you want to set
+**Note:** Commands executed with CFEngine get the environment variables set in
+[`environment`][cf-agent#environment] in body agent control. If you want to set
 environment variables for an individual command you can prefix the command with
 `env` and set variables before executing the command.
 
