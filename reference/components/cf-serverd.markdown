@@ -217,14 +217,6 @@ correspond to system identities on the server-side system.
 ```
 
 
-### auditing
-
-**Deprecated:** This menu option policy is deprecated, does
-nothing and is kept for backward compatibility.
-
-**Type:** [`boolean`][boolean]
-
-
 ### bindtointerface
 
 **Description:** IP of the interface to which the server should bind
@@ -462,78 +454,6 @@ See also the warning about regular expressions in
     denyconnects => { "badhost\.domain\.evil", "host3\.domain\.com" };
     }
 ```
-
-
-### dynamicaddresses
-
-**Deprecated:** This is now handled transparently.
-
-List of IPs or hostnames for which the IP/name
-binding is expected to change
-
-The addresses or hostnames here are expected to have non-permanent
-address-name bindings, we must therefor work harder to determine
-whether hosts credentials are trusted by looking for existing
-public keys in files that do not match the current hostname or IP.
-
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
-
-**Example:**
-
-```cf3
-    body server control
-    {
-    dynamicaddresses => { "dhcp_.*" };
-    }
-```
-
-
-### hostnamekeys
-
-**Deprecated:** Host identification is now handled transparently.
-
-true/false store keys using hostname lookup instead of IP addresses
-
-Client side choice to base key associations on host names rather
-than IP address. This is useful for hosts with dynamic addresses.
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-    body server control
-    {
-    hostnamekeys => "true";
-    }
-```
-
-
-### keycacheTTL
-
-**Description:** Maximum number of hours to hold public keys in the
-cache
-
-**Type:** `int`
-
-**Allowed input range:** `0,99999999999`
-
-**Default value:** 24
-
-**Example:**
-
-```cf3
-    body server control
-    {
-    keycacheTTL => "24";
-    }
-```
-
-**History:** Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010)
 
 
 ### logallconnections
