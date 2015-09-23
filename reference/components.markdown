@@ -211,30 +211,6 @@ discovery and name-lookup.
     }
 ```
 
-### fips_mode
-
-**Description:** The `fips_mode` menu option policy determines whether 
-to activate full FIPS mode restrictions.
-
-In CFEngine Enterprise, this value may be set to avoid the use of old 
-deprecated algorithms that are no longer FIPS 140-2 compliant. If not set, 
-there is some degree of compatibility with older versions and algorithms. 
-During an upgrade, setting this parameter can cause a lot of recomputation of 
-checksums etc. Government bodies starting with CFEngine Enterprise 2.0 or  
-higher should set this to 'true' from the start.
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-    body common control
-    {
-    fips_mode => "true";
-    }
-```
 
 ### goal_patterns
 
