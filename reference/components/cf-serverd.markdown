@@ -677,3 +677,17 @@ not be affected. Changing this setting requires a restart of
 ```
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0 (2012)
+
+
+## Deprecated attributes in body server control
+
+The following attributes were functional in previous versions
+of CFEngine, but today they are deprecated, either because
+their functionality is being handled trasparently or because
+it doesn't apply to current CFEngine version.
+
+* ```auditing```
+* ```dynamicaddresses```
+* ```hostnamekeys```
+* ```keycacheTTL```
+* ```fips_mode```
