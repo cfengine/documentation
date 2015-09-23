@@ -358,6 +358,14 @@ found in the secondary file, it is inserted into the file being edited.
 
 **Type:** `body location`
 
+**See Also:**
+[`location` bodies in the standard library][Files Bundles and Bodies#location-bodies]
+[`start` location body in the standard library][Files Bundles and Bodies#location-bodies]
+[`before(srt)` location body in the standard library][Files Bundles and Bodies#before]
+[`after(srt)` location body in the standard library][Files Bundles and Bodies#after]
+
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### before_after
 
 **Description:** Menu option, point cursor before of after matched line
