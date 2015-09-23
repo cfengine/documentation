@@ -7,12 +7,12 @@ tags: [Components, cf-serverd]
 keywords: [server]
 ---
 
-`cf-serverd` is a socket listening daemon providing two services: it acts as a 
-file server for remote file copying and it allows an authorized 
-`cf-runagent` to start a `cf-agent` run. `cf-agent` 
-typically connects to a `cf-serverd` instance to request updated policy code, 
-but may also request additional files for download. `cf-serverd`  employs 
-[role based access control][roles] (defined in policy code) to authorize 
+`cf-serverd` is a socket listening daemon providing two services: it acts as a
+file server for remote file copying and it allows an authorized
+`cf-runagent` to start a `cf-agent` run. `cf-agent`
+typically connects to a `cf-serverd` instance to request updated policy code,
+but may also request additional files for download. `cf-serverd`  employs
+[role based access control][roles] (defined in policy code) to authorize
 requests.
 
 `cf-serverd` keeps the promises made in `common` and `server` bundles, and is
@@ -40,9 +40,10 @@ files must be granted in addition.
     }
 ```
 
+
 ### allowallconnects
 
-**Description:** List of IPs or hostnames that may have more than one
+**Description:** List of IP addresses that may have more than one
 connection to the server port
 
 This list of regular expressions matches hosts that are allowed to
@@ -75,10 +76,11 @@ will potentially match more than one hostname (e.g.,
          };
 ```
 
+
 ### allowconnects
 
-**Description:** List of IPs or hostnames that may connect to the
-server port
+**Description:** List of IP addresses that may connect to the
+server port.
 
 If a client's identity matches an entry in this list it is granted
 to permission to send data to the server port. Clients who are not
@@ -103,6 +105,7 @@ See also the warning about regular expressions in
          };
 ```
 
+
 ### allowlegacyconnects
 
 **Description:** List of hosts from which the server accepts connections
@@ -121,16 +124,17 @@ To define subnets or address ranges, use CIDR notation:
     allowlegacyconnects =>  { "192.168.1.0/24", "192.168.2.123" }
 ```
 
-Absence of this attribute means that connections from all hosts are accepted.
+Absence of this attribute means that connections from all hosts are accepted,
+for compatibility with pre-3.6 CFEngine versions.
 
 [%CFEngine_promise_attribute()%]
 
 **See also:** [`protocol_version`][Components and Common Control#protocol_version]
 
+
 ### allowciphers
 
-**Description:** List of ciphers the server accepts for **incoming** connections.
-
+**Description:** List of TLS ciphers the server accepts for **incoming** connections.
 For a list of possible ciphers, see man page for "openssl ciphers".
 
 [%CFEngine_promise_attribute(AES256-GCM-SHA384:AES256-SHA)%]
@@ -141,15 +145,25 @@ For a list of possible ciphers, see man page for "openssl ciphers".
 body server control
 {
       # Only this non-default cipher is to be accepted
-      allowciphers    => "RC4-MD5"
+      allowciphers    => "RC4-MD5";
 }
 ```
 
-**Note:** When used with [`protocol_version`][Components and Common Control#protocol_version] 2 or greater this is a noop as all transfers are encrypted.
+**Note:** When used with
+[`protocol_version`][Components and Common Control#protocol_version] 1 (classic protocol),
+this does not do anything as the classic protocol does not support TLS ciphers.
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowtlsversion`][cf-serverd#allowtlsversion], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
+**See also:**
+[`protocol_version`][Components and Common Control#protocol_version],
+[`tls_ciphers`][Components and Common Control#tls_ciphers],
+[`tls_min_version`][Components and Common Control#tls_min_version],
+[`allowtlsversion`][cf-serverd#allowtlsversion],
+[`encrypt`][files#encrypt],
+[`logencryptedtransfers`][cf-serverd#logencryptedtransfers],
+[`ifencrypted`][access#ifencrypted]
 
 **History:** Introduced in CFEngine 3.6.0
+
 
 ### allowtlsversion
 
@@ -167,12 +181,21 @@ body server control
 }
 ```
 
-**Note:** When used with `protocol_version` 2 or greater this attribute is a
-noop as the entire session is encrypted.
+**Note:** When used with
+[`protocol_version`][Components and Common Control#protocol_version] 1 (classic protocol),
+this attribute does not do anything.
 
-**See also:** [`protocol_version`][Components and Common Control#protocol_version], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`encrypt`][files#encrypt], [`logencryptedtransfers`][cf-serverd#logencryptedtransfers], [`ifencrypted`][access#ifencrypted]
+**See also:**
+[`protocol_version`][Components and Common Control#protocol_version],
+[`tls_ciphers`][Components and Common Control#tls_ciphers],
+[`tls_min_version`][Components and Common Control#tls_min_version],
+[`allowciphers`][cf-serverd#allowciphers],
+[`encrypt`][files#encrypt],
+[`logencryptedtransfers`][cf-serverd#logencryptedtransfers],
+[`ifencrypted`][access#ifencrypted]
 
 **History:** Introduced in CFEngine 3.7.0
+
 
 ### allowusers
 
@@ -193,12 +216,6 @@ correspond to system identities on the server-side system.
     allowusers => { "cfengine", "root" };
 ```
 
-### auditing
-
-**Deprecated:** This menu option policy is deprecated, does
-nothing and is kept for backward compatibility.
-
-**Type:** [`boolean`][boolean]
 
 ### bindtointerface
 
@@ -236,6 +253,7 @@ confirm.
    ^C
 ```
 
+
 ### cfruncommand
 
 **Description:** Path to the cf-agent command or cf-execd wrapper for
@@ -256,6 +274,7 @@ shell command at your own risk.
     cfruncommand => "/var/cfengine/bin/cf-agent";
     }
 ```
+
 
 ### call_collect_interval
 
@@ -361,6 +380,7 @@ The full configuration would look something like this
 
 **History:** Was introduced in Enterprise 3.0.0 (2012)
 
+
 ### collect_window
 
 **CFEngine Enterprise only.**
@@ -377,6 +397,7 @@ open to a hub to attempt a report transfer before it is closed
 **Default value:** 10.
 
 **History:** Was introduced in Enterprise 3.0.0 (2012)
+
 
 ### denybadclocks
 
@@ -404,9 +425,10 @@ attempts based on clock corruption.
     }
 ```
 
+
 ### denyconnects
 
-**Description:** List of IPs or hostnames that may NOT connect to the
+**Description:** List of IPs that may NOT connect to the
 server port
 
 Hosts or IP addresses that are explicitly denied access. This
@@ -433,75 +455,6 @@ See also the warning about regular expressions in
     }
 ```
 
-### dynamicaddresses
-
-**Deprecated:** This is now handled transparently.
-
-List of IPs or hostnames for which the IP/name
-binding is expected to change
-
-The addresses or hostnames here are expected to have non-permanent
-address-name bindings, we must therefor work harder to determine
-whether hosts credentials are trusted by looking for existing
-public keys in files that do not match the current hostname or IP.
-
-**Type:** `slist`
-
-**Allowed input range:** (arbitrary string)
-
-**Example:**
-
-```cf3
-    body server control
-    {
-    dynamicaddresses => { "dhcp_.*" };
-    }
-```
-
-### hostnamekeys
-
-**Deprecated:** Host identification is now handled transparently.
-
-true/false store keys using hostname lookup instead of IP addresses
-
-Client side choice to base key associations on host names rather
-than IP address. This is useful for hosts with dynamic addresses.
-
-**Type:** [`boolean`][boolean]
-
-**Default value:** false
-
-**Example:**
-
-```cf3
-    body server control
-    {
-    hostnamekeys => "true";
-    }
-```
-
-### keycacheTTL
-
-**Description:** Maximum number of hours to hold public keys in the
-cache
-
-**Type:** `int`
-
-**Allowed input range:** `0,99999999999`
-
-**Default value:** 24
-
-**Example:**
-
-```cf3
-    body server control
-    {
-    keycacheTTL => "24";
-    }
-```
-
-**History:** Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010)
-
 
 ### logallconnections
 
@@ -523,10 +476,12 @@ If set, the server will record connection attempts in syslog.
     }
 ```
 
+
 ### logencryptedtransfers
 
 **Description:** true/false log all successful transfers required to
-be encrypted
+be encrypted. Only applies to classic protocol connections
+(because the new protocol uses TLS which enforces encryption for everything).
 
 If true the server will log all transfers of files which the server
 requires to encrypted in order to grant access (see `ifencrypted`)
@@ -546,6 +501,7 @@ to syslog. These files are deemed to be particularly sensitive.
 ```
 
 **See also:** [`ifencrypted`][access#ifencrypted], [`encrypt`][files#encrypt], [`tls_ciphers`][Components and Common Control#tls_ciphers], [`tls_min_version`][Components and Common Control#tls_min_version], [`allowciphers`][cf-serverd#allowciphers], [`allowtlsversion`][cf-serverd#allowtlsversion], [`protocol_version`][Components and Common Control#protocol_version]
+
 
 ### maxconnections
 
@@ -577,6 +533,7 @@ descriptors which can limit this.
     maxconnections => "1000";
     }
 ```
+
 
 ### port
 
