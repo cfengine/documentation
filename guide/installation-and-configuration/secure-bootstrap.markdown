@@ -52,7 +52,7 @@ of ```cf-agent --bootstrap $HUB_IP```) we take care of the following:
 * Cf-serverd must never accept a connection from a client presenting an
   untrusted key.  So in `body server control` we must empty the
   `trustkeysfrom` attribute:
-  
+
   ```trustkeysfrom => {};```
 
 * Since we will be manually bootstrapping the clients, we need to
@@ -62,15 +62,17 @@ of ```cf-agent --bootstrap $HUB_IP```) we take care of the following:
 
   In order to do that, we copy hub's `failsafe.cf` to `masterfiles`
   directory:
-  
-  ```cp /var/cfengine/inputs/failsafe.cf /var/cfengine/masterfiles/```
+
+  ```
+  cp /var/cfengine/inputs/failsafe.cf /var/cfengine/masterfiles/
+  ```
 
   We'll edit that copy in `masterfiles` in the next step.
 
 * All `copy_from` files promises must never connect to an untrusted
   server, which means that the following line should not be found
   anywhere:
-  
+
   ```trustkey => "true"```
 
   All occurrences of `trustkey` in `masterfiles` directory should be
@@ -83,12 +85,16 @@ of ```cf-agent --bootstrap $HUB_IP```) we take care of the following:
 * The previous changes in `masterfiles` need to be properly propagated
   to the ```inputs``` directory. The automated way to do that is to run the
   update.cf policy:
-  
-  ```cf-agent -f update.cf```
+
+  ```
+  cf-agent -f update.cf
+  ```
 
 * Get the hub's key fingerprint, we'll need it later:
-  
-  ```HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub` ```
+
+  ```
+  HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
+  ```
 
 ### On each client we deploy ###
 
@@ -99,12 +105,16 @@ We should **not** follow the automatic method, i.e. the
 * Generate a private/public key pair by running `cf-key`.
 
 * Get the client's key fingerprint, we'll need it later:
-  
-  ```CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub` ```
+
+  ```
+  CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
+  ```
 
 * Write the policy hub's IP address to `policy_server.dat`:
-  
-  ```echo $HUB_IP > /var/cfengine/policy_server.dat```
+
+  ```
+  echo $HUB_IP > /var/cfengine/policy_server.dat
+  ```
 
 * Manually copy the modified `failsafe.cf` from hub's `masterfiles`
   directory into client's `inputs` directory. You should do
@@ -115,9 +125,9 @@ We should **not** follow the automatic method, i.e. the
   trust between the two hosts has not been established, *you will get a
   failure*, which is totally expected and means everything is correct
   and secure:
-  
+
   ```
-  # cf-agent -f failsafe.cf
+  $# cf-agent -f failsafe.cf
   error: TRUST FAILED, server presented untrusted key: MD5=cc27570b8b831192d9f20b54d07dd80b
   error: No suitable server responded to hail
   error: TRUST FAILED, server presented untrusted key: MD5=cc27570b8b831192d9f20b54d07dd80b
@@ -126,21 +136,25 @@ We should **not** follow the automatic method, i.e. the
   ```
 
 * Put the hub's key into the client's trusted keys:
-  
-  ```scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub```
+
+  ```
+  scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub
+  ```
 
 ### Final steps ###
 
 * Put the client's key into the hub's trusted keys. So
   on the hub, run:
-  
-  ```scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub```
+
+  ```
+  scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
+  ```
 
 * If you now run the failsafe policy on each and every client, it should
   succeed:
 
   ```
-  # cf-agent -f failsafe.cf
+  cf-agent -f failsafe.cf
   ```
 
 Congratulations, you have performed a fully manual bootstrap procedure
