@@ -690,4 +690,3 @@ it doesn't apply to current CFEngine version.
 * ```dynamicaddresses```
 * ```hostnamekeys```
 * ```keycacheTTL```
-* ```fips_mode```

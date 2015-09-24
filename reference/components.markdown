@@ -236,34 +236,6 @@ business goals in promises.
 
 **History:** Was introduced in version 3.1.5, Nova 2.1.0 (2011)
 
-### host_licenses_paid
-
-**Deprecated: 3.5**
-
-**Description:** The value of `host_licenses_paid` represents the number
-of licenses that you promise to have paid for by setting this value 
-(legally binding for CFEngine Enterprise).
-
-Licensees of CFEngine Enterprise have to make a promise in acceptance of 
-contract terms by setting this value to the number of licenses they have paid 
-for. This is tallied with the number of licenses granted. This declaration 
-should be placed in all separate configuration files, e.g. failsafe.cf, 
-promises.cf.
-
-**Type:** `int`
-
-**Allowed input range:** `0,99999999999`
-
-**Default value:** 25
-
-**Example:**
-
-```cf3
-    body common control
-    {
-    host_licenses_paid => "1000";
-    }
-```
 
 ### ignore_missing_bundles
 
@@ -629,3 +601,14 @@ restriction might be lifted later.
     version => "1.2.3";
     }
 ```
+
+
+## Deprecated attributes in body common control
+
+The following attributes were functional in previous versions
+of CFEngine, but today they are deprecated, either because
+their functionality is being handled trasparently or because
+it doesn't apply to current CFEngine version.
+
+* fips_mode
+* host_licenses_paid
