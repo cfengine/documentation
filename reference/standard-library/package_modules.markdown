@@ -119,14 +119,14 @@ $
 CFEngine uses this command to determine what kind of promise has been
 made. Currently two types are supported: "file" and "repo".
 
-The input is expected to be a triplet of `Name/Version/Architecture`, where
-`Name` is the promiser string from the promise, and `Version` and `Architecture`
+The input is expected to be a triplet of `File/Version/Architecture`, where
+`File` is the promiser string from the promise, and `Version` and `Architecture`
 contain the strings from the corresponding promise attributes, if they were
 specified. This implies that either one of `Version` and `Architecture` may not
-be included, so some entries may only contain `Name` or `Name` with one more
+be included, so some entries may only contain `File` or `File` with one more
 attribute.
 
-What the module should do is figure out whether the string passed in `Name` is
+What the module should do is figure out whether the string passed in `File` is
 referring to a file based or a repository based package. Exactly what identifies
 each one is up to the package module, but generally it means that file based
 packages should refer to actual files on the file system, whereas repository
@@ -156,7 +156,7 @@ Example 1:
 
 ```
 $ ./package-module get-package-data <<EOF
-Name=zip
+File=zip
 Version=3.0-4
 Architecture=amd64
 EOF
@@ -169,7 +169,7 @@ Example 2:
 
 ```
 $ ./package-module get-package-data <<EOF
-Name=zip
+File=zip
 EOF
 PackageType=repo
 Name=zip
@@ -180,7 +180,7 @@ Example 3:
 
 ```
 $ ./package-module get-package-data <<EOF
-Name=/home/johndoe/zip-3.0-4.el5.x86_64.rpm
+File=/home/johndoe/zip-3.0-4.el5.x86_64.rpm
 Version=3.0-4
 Architecture=amd64
 EOF
@@ -195,7 +195,7 @@ Example 4:
 
 ```
 $ ./package-module get-package-data <<EOF
-Name=/home/johndoe/zip-3.0-4.el5.x86_64.rpm
+File=/home/johndoe/zip-3.0-4.el5.x86_64.rpm
 EOF
 PackageType=file
 Name=zip
