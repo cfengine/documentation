@@ -19,6 +19,7 @@ for details.
 
 ## Repository synchronization
 
+
 When `/var/cfengine/masterfiles` is backed by VCS, it may be useful to have an 
 agent policy that periodically checks the VCS server for the latest version 
 fetches any updates.  Again, note that CFEngine Enterprise has this built-in.
@@ -32,13 +33,18 @@ The following policy uses `git pull` with the --ff-only flag to avoid
 potentially bad merges. This assumes that no development takes place in 
 `/var/cfengine/masterfiles` itself.
 
+Note that we specify policy_server:: here, as we want only the hub to pull code
+from github, while nodes will be updated through CFEngine.
+
+
 ```cf3
     bundle agent vcs_update
     {
     commands:
-      "/usr/bin/git"
-        args => "pull --ff-only origin master",
-        contain => masterfiles_contain;
+      policy_server::
+        "/usr/bin/git"
+          args => "pull --ff-only origin master",
+          contain => masterfiles_contain;
     }
 
     body contain masterfiles_contain
