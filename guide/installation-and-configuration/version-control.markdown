@@ -82,7 +82,8 @@ and the timestamp of the release (cf_promises_validated). So we add them to a
     cf_promises_release_id
     cf_promises_validated
 
-And then we push it upstream. We are done.
+And then we push it upstream. We then add the vcs_update policy to promises.cf
+and we are done.
 
 ## Commit hooks
 
