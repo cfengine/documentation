@@ -6,9 +6,9 @@ sorting: 60
 tags: [manuals, writing policy, version control, git, subversion]
 ---
 
-CFEngine is policy is stored in `/var/cfengine/masterfiles` on the policy 
-server. It is common that this directory is backed by a version control system 
-(VCS), such as git or subversion. In this document we will focus on git, but 
+CFEngine is policy is stored in `/var/cfengine/masterfiles` on the policy
+server. It is common that this directory is backed by a version control system
+(VCS), such as git or subversion. In this document we will focus on git, but
 CFEngine is VCS agnostic.
 
 Please note that the following applies to CFEngine Community or
@@ -19,18 +19,36 @@ for details.
 
 ## Repository synchronization
 
-
-When `/var/cfengine/masterfiles` is backed by VCS, it may be useful to have an 
-agent policy that periodically checks the VCS server for the latest version 
+When `/var/cfengine/masterfiles` is backed by VCS, it may be useful to have an
+agent policy that periodically checks the VCS server for the latest version
 fetches any updates.  Again, note that CFEngine Enterprise has this built-in.
 
-After installing CFEngine on the policy server and before bootstrapping the agent 
-to itself, we create a git clone of our masterfiles.
+After installing CFEngine on the policy server and before bootstrapping the agent
+to itself, we want to create a git repository out of our masterfiles.
+Assuming that we have a functioning git installation, and a previously configured
+github account:
 
-    $ git clone git@github.com/cfengine/masterfiles.git /var/cfengine/masterfiles/
+    $ cd /var/cfengine/masterfiles
 
-The following policy uses `git pull` with the --ff-only flag to avoid 
-potentially bad merges. This assumes that no development takes place in 
+    $ git init
+
+    $ git remote add origin git@github.com:Username/cf-engine-repo.git
+
+    $ git add *
+
+    $ git commit -m "Initial post installation commit of masterfiles directory"
+
+Now we are good to go and push the content of our /masterfiles directory.
+We push it with the -ff option to overwrite any possible content of our (supposedly
+empty) github repository
+
+    $ git push -ff origin master
+
+The next step is to create a policy that will periodically update the content of
+our /masterfiles directory on the hub, pulling the changes we did on the git repo.
+
+The following policy uses `git pull` with the --ff-only flag to avoid
+potentially bad merges. This assumes that no development takes place in
 `/var/cfengine/masterfiles` itself.
 
 Note that we specify policy_server:: here, as we want only the hub to pull code
@@ -54,6 +72,7 @@ from github, while nodes will be updated through CFEngine.
 ```
 
 ## Commit hooks
+
 
 Commit hooks are scripts that are run when a repository is updated. We can use 
 a hook to notify a policy developer if an update causes a syntax error. While 
