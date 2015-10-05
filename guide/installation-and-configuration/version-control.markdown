@@ -70,6 +70,19 @@ from github, while nodes will be updated through CFEngine.
       chdir => "/var/cfengine/masterfiles";
     }
 ```
+This policy will then regularly and periodically pulling the masterfiles
+(and therefore your new policies) from your git repo to the hub, so that your
+nodes will get configured accordingly. But, there is a catch: two files in the
+/masterfiles directory should be excluded. Those are the cf_promises_release_id,
+and the timestamp of the release (cf_promises_validated). So we add them to a
+.gitignore file and push it to the github repo.
+
+    $vim .gitignore
+
+    cf_promises_release_id
+    cf_promises_validated
+
+And then we push it upstream. We are done.
 
 ## Commit hooks
 
