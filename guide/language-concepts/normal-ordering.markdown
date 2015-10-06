@@ -140,11 +140,12 @@ ordering within the bundle itself. The order may be overridden by making a
 promise depend on a class that is set by another promise, or by using the
 `depends_on` attribute in the promise.
 
-**Note:** All common bundles are evaluated regardless if those are placed 
+**Note:** The evaluation order of common bundles are `classes`, then `variables`
+and finally `reports`. All common bundles are evaluated regardless if they are placed 
 in `bundlesequence` or not. Placing common bundles in `bundlesequence` will cause
-variables and classes will be evaluated once again. What is more together with
-classes and variables evaluation reports promises are evaluated when common 
-bundles are placed in `bundlesequence`.
+classes and variables to be evaluated again, and is generally good practice
+to make sure evaluation works properly.
+
 
 ## Server normal ordering
 
