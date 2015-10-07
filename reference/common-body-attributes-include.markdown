@@ -6,8 +6,6 @@ body attributes can be found in the
 of the [Promise Types and Attributes] page. The common attributes are as
 follows:
 
-##### [inherit_from][Promise Types and Attributes#inherit_from]
-
 ##### [meta][Promise Types and Attributes#meta] 
 
 <hr>
