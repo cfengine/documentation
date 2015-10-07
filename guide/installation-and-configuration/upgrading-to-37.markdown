@@ -90,7 +90,7 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 ## Prepare Client upgrade (all versions)
 
 1. Make client packages available on the Policy Server in `/var/cfengine/master_software_updates`, under the appropriate directories for the OS distributions you use.
-2. Turn on the auto-upgrade policy by setting class `trigger_upgrade` in `update.cf` for a small set of clients, i.e. change `!any` to an appropriate class like an IP network (e.g. `ipv4_10_10_1|ipv4_10_10_2`).
+2. Turn on the auto-upgrade policy by setting class `trigger_upgrade` in `masterfiles/controls/3.7/update_def.cf` for a small set of clients, i.e. change `!any` to an appropriate class like an IP network (e.g. `ipv4_10_10_1|ipv4_10_10_2`).
 3. Verify that the selected hosts are upgrading successfully.
 
     As an Enterprise user, confirm that the hosts start appearing in Mission Portal after 5-10 minutes. Otherwise, log manually into a set of hosts to confirm the successful upgrade.
