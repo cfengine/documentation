@@ -34,6 +34,29 @@ depends on the [bundle][bundles] type:
 See each promise type's reference documentation for detailed lists of available
 attributes.
 
+## Common Body Attributes
+
+The following attributes are available to all body types.
+
+### meta
+
+**Description:** A list of meta attributes.
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string list)
+
+**Example:**
+
+```cf3
+    body ANYTYPE mybody
+    {
+      meta => { "deprecated" };
+    }
+```
+
+**History:** Was introduced in 3.7.0.
+
 ## Common Attributes
 
 The following attributes are available to all promise types.
