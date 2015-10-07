@@ -361,10 +361,10 @@ found in the secondary file, it is inserted into the file being edited.
 **Type:** `body location`
 
 **See Also:**
-[`location` bodies in the standard library][Files Bundles and Bodies#location-bodies]
-[`start` location body in the standard library][Files Bundles and Bodies#location-bodies]
-[`before(srt)` location body in the standard library][Files Bundles and Bodies#before]
-[`after(srt)` location body in the standard library][Files Bundles and Bodies#after]
+[`location` bodies in the standard library](reference-standard-library-files.html#location-bodies)
+[`start` location body in the standard library](reference-standard-library-files.html#location-bodies)
+[`before(srt)` location body in the standard library](reference-standard-library-files.html#before)
+[`after(srt)` location body in the standard library](reference-standard-library-files.html#after)
 
 [%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
 
