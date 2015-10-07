@@ -116,6 +116,8 @@ peers, report above
 
 **Type:** `body printfile`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### file_to_print
 
 **Description:** Path name to the file that is to be sent to standard

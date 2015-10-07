@@ -87,6 +87,8 @@ This attribute is required.
 
 **Type:** `body environment_interface`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### env_addresses
 
 **Description:** `env_addresses` is the IP addresses of the environment's 
@@ -172,6 +174,8 @@ identifier used as 'promiser' by the virtualization manager.
 ### environment_resources
 
 **Type:** `body enviornment_resources`
+
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
 
 #### env_cpus
 

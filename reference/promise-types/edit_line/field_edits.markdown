@@ -115,6 +115,8 @@ ordering the items within them.
      }
 ```
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### allow_blank_fields
 
 **Description:** Setting `allow_blank_fields` defines how blank fields in a line are handled.

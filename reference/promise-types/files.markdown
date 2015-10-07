@@ -295,6 +295,8 @@ body perms null_perms_body {
 }
 ```
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### aces
 
 **Description:**
@@ -567,6 +569,8 @@ that do not have a clear inheritance policy.
 
 **Type:** `body changes`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### hash
 
 **Description:** The `hash` menu option defines the ash files for change detection.
@@ -686,6 +690,8 @@ The copy_from body specifies the details for making remote copies.
 **Note:** For improved performance, connections from cf-agent to cf-serverd
 are re-used. Currently connection caching is done per pass in each bundle
 activation.
+
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
 
 #### source
 
@@ -1308,6 +1314,8 @@ comparison or linking operations).
 
 **Type:** `body delete`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### dirlinks
 
 **Description:** Menu option policy for dealing with symbolic links to
@@ -1410,6 +1418,8 @@ present. If there is no `delete` body then files (and directories) are
 ### depth_search
 
 **Type:** `body depth_search`
+
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
 
 #### depth
 
@@ -1561,6 +1571,8 @@ devices
 ### edit_defaults
 
 **Type:** `body edit_defaults`
+
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
 
 #### edit_backup
 
@@ -2124,6 +2136,8 @@ Seas include  caribbean, dead, black, coral,.
 
 **Type:** `body file_select`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### leaf_name
 
 **Description:** List of regexes that match an acceptable name
@@ -2521,6 +2535,8 @@ modification time is not between 1 day ago and now"; that is, it is older than
 
 **Type:** `body link_from`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### copy_patterns
 
 **Description:** A set of patterns that should be copied and synchronized
@@ -2794,6 +2810,8 @@ separator.
 
 **Type:** `body perms`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### bsdflags
 
 **Description:** List of menu options for BSD file system flags to set
@@ -2925,6 +2943,8 @@ This is ignored on Windows, as the permission model uses ACLs.
 ### rename
 
 **Type:** `body rename`
+
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
 
 #### disable
 

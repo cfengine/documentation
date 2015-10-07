@@ -211,6 +211,8 @@ This is an arbitrary string used in documentation only.
 
 **Type:** `body match_value`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### select_line_matching
 
 **Description:** Regular expression for matching line location

@@ -196,6 +196,8 @@ services:
 
 **Type:** `body service_method`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### service_args
 
 **Description:** Parameters for starting the service as command
