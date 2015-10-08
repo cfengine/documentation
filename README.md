@@ -31,7 +31,7 @@ You can find additional information inside _setup/start.sh
 
 Clean setup
 --
-1. Review and change file _setup/start.sh acordingly to your environment
+1. Review and change file _setup/start.sh accordingly to your environment
 
 
 Final steps

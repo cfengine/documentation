@@ -366,7 +366,7 @@ module Jekyll
     end
 
    
-    # This funtion returns array of pages for each page.
+    # This function returns array of pages for each page.
     # navHash is array of chaned pages, pageLevel1->pageLeve2... ->pagelevel3
     # we must have a chain for each page, in order to build simple list for left navigation
     
