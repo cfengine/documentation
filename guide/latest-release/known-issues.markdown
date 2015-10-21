@@ -80,5 +80,8 @@ you will see them by running `cf-key -s` on the hub.
 
 ### Enterprise software inventory is not out-of-the-box
 
-Software inventory is not out-of-the-box for reporing from the hub on Windows
-platforms.  In order to add it, please contact support for a custom policy.
+Software inventory is not out-of-the-box for reporing from the hub on other
+platforms than Debian, Ubuntu and Red Hat/CentOS.
+
+In order to add software inventory for other platforms,
+please contact support for a custom policy.
