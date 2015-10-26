@@ -137,3 +137,17 @@ you will see them by running `cf-key -s` on the hub.
 
 Software inventory is not out-of-the-box for reporing from the hub on Windows platforms.
 In order to add it, please contact support for a custom policy.
+
+
+### Call collect does not scale ###
+
+A default configuration of call collect (client initiated reporting) does not scale
+above 50-100 hosts in 3.6 due to clients waiting too long to deliver the reports
+which fills up the queue. As a workaround, collect_window can be increased to get
+proporional scale increase; e.g. increasing to 20 from the default of 10 will double the scale.
+
+If you have this issue in 3.6, please increase collect_window and upgrade to 3.6.5 or later
+which improves stability of clients when they do not regularly get reports collected.
+
+This issue is fixed in 3.7, where call collect scales to thousands of hosts with
+default configuration.
