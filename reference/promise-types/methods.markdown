@@ -74,7 +74,7 @@ not_kept, the bundle itself would have an outcome of not_kept. If you activate
 a bundle that has one promise that is repaired, and one promise that is kept,
 the bundle will have an outcome of repaired. A method will only have an outcome
 of kept if all promises inside that bundle are also kept.
-[This acceptance test](https://github.com/cfengine/core/blob/master/tests/acceptance/21_methods/outcomes.cf)
+[This acceptance test](https://github.com/cfengine/core/blob/master/tests/acceptance/21_methods/method_outcomes.cf)
 illustrates the behavior.
 
 Starting from version 3.1.0, methods may be specified using variables.
