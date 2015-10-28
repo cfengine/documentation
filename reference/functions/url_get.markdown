@@ -22,7 +22,8 @@ If the `libcurl` integration is not available, the function will exit
 with an error and the variable will remain undefined. If the `libcurl`
 initialization fails, the function will also exit with an error. In
 every other normal case, the function will return a valid data
-container.
+container. In official CFEngine packages, `libcurl` integration is
+always provided.
 
 The available options currently are:
 
