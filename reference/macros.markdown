@@ -54,6 +54,7 @@ possibly incompatible versions.
 Currently available features are :
 * `xml`
 * `yaml`
+* `curl`
 
 
 **History:** Introduced in CFEngine 3.7.0
