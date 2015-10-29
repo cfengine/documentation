@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFEngine 3.7 Manual
+title: CFEngine 3.8 Manual
 published: true
 sorting: 1
 ---
