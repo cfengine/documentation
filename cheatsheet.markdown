@@ -388,3 +388,10 @@ Sometimes it's nice to include an external file
 
 [%CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##)%]
 
+
+## Variables
+
+Referencing a version of CFEngine? Consider if that appearance should be updated with each new version. For example on the title page.
+
+Will it expand mustache?
+{{ site.CFE_manuals_version }}
