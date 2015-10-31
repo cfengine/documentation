@@ -394,4 +394,5 @@ Sometimes it's nice to include an external file
 Referencing a version of CFEngine? Consider if that appearance should be updated with each new version. For example on the title page.
 
 Will it expand mustache?
-{{ site.CFE_manuals_version }}
+site.CFE_manuals_version double mustache {{ site.CFE_manuals_version }}
+site.CFE_manuals_version tripple mustache {{{ site.CFE_manuals_version }}}
