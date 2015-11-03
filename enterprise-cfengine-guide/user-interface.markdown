@@ -62,7 +62,7 @@ You can reduce the amount of data or find specific information by filtering on a
 
 Add and remove columns from the results table in real time, and once you're happy with your report, save it, export it, or schedule it to be sent by email regularly.
 
-![Enterprise API Overview](add_columns.gif)
+![Enterprise API Overview](add_columns.png)
 
 Find out more: [Reporting][Reporting UI]
 
