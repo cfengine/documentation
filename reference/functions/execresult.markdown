@@ -45,6 +45,9 @@ highly undesirable if the command is expensive.  Consider using
 `commands` promises instead, which have locking and are not evaluated
 by `cf-promises`.
 
+**Limitations:** Only 8192 bytes (8K) of data can be returned from execresult.
+Lines that exceed 8192 bytes are truncated.
+
 **See also:** [`returnszero()`][returnszero].
 
 **Change:** policy change in CFEngine 3.0.5. Previously newlines were
