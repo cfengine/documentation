@@ -31,4 +31,4 @@ Output:
 
 [%CFEngine_include_snippet(regextract.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** `data_regextract()`
+**See also:** `data_regextract()` `regex_replace()`
