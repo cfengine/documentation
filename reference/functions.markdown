@@ -75,6 +75,13 @@ their result will be cached.
 Note that caching is per-process so results will not be cached between
 runs of e.g. `cf-agent` and `cf-promises`.
 
+## Function Skipping
+
+If a variable passed to a function is unable to be resolved the function will
+be skipped. The function will be evaluated during a later pass when all
+variables passed as parameters are able to be resolved. The function will never
+be evaluated if any parameter contains a variable that never resolves.
+
 ## List of all functions
 
 There are a large number of functions built into CFEngine. The following 
