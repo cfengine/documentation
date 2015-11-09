@@ -283,7 +283,7 @@ commands:
 body action logme(x)
 {
 log_repaired => "stdout";
-logstring => " -> Started the $(x) (success)";
+log_string => " -> Started the $(x) (success)";
 }
 ```
 
