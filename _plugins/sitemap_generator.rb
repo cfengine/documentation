@@ -91,6 +91,7 @@ module Jekyll
       else
         puts "--------------------------------------------------------"
         puts "ERROR: ALIAS FOR THE PAGE: " +  page.name + " is not set"  
+        puts "       Potentially because the page is not published    "
         puts "--------------------------------------------------------"
       end    
     end
