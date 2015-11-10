@@ -400,6 +400,8 @@ site.CFE_manuals_version double mustache {{ site.CFE_manuals_version }}
 site.CFE_manuals_version tripple mustache {{{ site.CFE_manuals_version }}}
 {% endraw %}
 
-[This jekylldocumentation](http://jekyllrb.com/docs/posts/#including-images-and-resources)
+[This jekyll documentation](http://jekyllrb.com/docs/posts/#including-images-and-resources)
 indicates that liquid variables like {{ site.url }} can be used directly from
-the markdown.
+the markdown. Unfortunately it didn't work maybe it will without spaces as in
+'{{site.url}}' or maybe its because my _config.yaml does not contain a url key.
+it does have site.CFE_manuals_version '{{site.CFE_manuals_version}}'. Maybe I can use {{title}} or {{page.title}}.
