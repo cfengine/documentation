@@ -29,6 +29,7 @@ following package managers:
   packages:
       "apache2"
         policy => "present",
+        package_module => apt_get,
         version => "2.2.22";
 ```
 
@@ -43,7 +44,8 @@ the local filesystem, like this:
 ```cf3
   packages:
       "/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm"
-        policy => "present";
+        policy => "present",
+        package_module => yum;
 ```
 
 The default package module can be globally specified with the
@@ -75,6 +77,7 @@ indirectly affect other architectures.
   packages:
     "apache"
         policy => "present",
+        package_module => apt_get,
         architecture => "x86_64";
 ```
 
@@ -119,7 +122,8 @@ for this attribute, its usage depends on the package module in question.
 ```cf3
   packages:
     "apache"
-        policy => "absent";
+        policy => "absent",
+        package_module => apt_get;
 ```
 
 
@@ -131,13 +135,22 @@ for this attribute, its usage depends on the package module in question.
 
 **Allowed input range:** (arbitrary string)
 
+**Note:** When policy `present` is used version may be set to `latest` to
+ensure the latest available version from a repository is installed.
+
 **Example:**
 
 ```cf3
   packages:
     "apache"
         policy => "absent",
+        package_module => apt_get,
         version => "2.2.22";
+
+    "ssh"
+        policy => "present",
+        package_module => apt_get,
+        version => "latest";
 ```
 
 
