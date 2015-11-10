@@ -399,3 +399,7 @@ Will it expand liquid (mustache) variables?
 site.CFE_manuals_version double mustache {{ site.CFE_manuals_version }}
 site.CFE_manuals_version tripple mustache {{{ site.CFE_manuals_version }}}
 {% endraw %}
+
+[This jekylldocumentation](http://jekyllrb.com/docs/posts/#including-images-and-resources)
+indicates that liquid variables like {{ site.url }} can be used directly from
+the markdown.
