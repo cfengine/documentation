@@ -3,7 +3,7 @@ layout: default
 title: Known Issues
 sorting: 50
 published: true
-tags: [overviews, releases, latest release, "3.6", platforms, versions, known issues]
+tags: [overviews, releases, latest release, "3.8", platforms, versions, known issues]
 ---
 
 CFEngine defects are managed in our [bug tracker][bug tracker]. Please report
@@ -13,13 +13,13 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
-### Protocol incompatibility (3.5 or earlier)
+* Call collect functionality is not working properly in the 3.8 Beta
+  release. This will be fixed before the final.
 
-The CFEngine protocol versions 1 and 2 are incompatible (the latter is based
-on TLS). CFEngine 3.6 supports both protocol versions, but earlier versions
-only support protocol version 1. Protocol version 2 the default in
-3.7. This can be configured with the allowlegacyconnects and protocol_version
-attributes.
+* There is no 3.8 Beta package for Windows. There will be for the final.
+
+* Mission Portal can not be used over HTTPS in the 3.8 Beta release. This will
+  be fixed before the final.
 
 ### HP-UX specific
 
@@ -68,15 +68,8 @@ versions.  To enable them, change monitoring_include in
 masterfiles/controls/VERSION/reports.cf to e.g. ".*".  Note that this has a
 significant impact on the resource consumption of your hub.
 
-Monitoring graphs are not supported on all platforms, currently Aix and Windows
-do not have this data.
-
-### Enterprise reports not collected from 3.5
-CFEngine Enterprise 3.6 has a new diff-based report collection mechanism,
-and so a 3.7 hub cannot collect reports from 3.5 or earlier agents.
-
-Currently the 3.5 agents will not show in Mission Portal at all, but
-you will see them by running `cf-key -s` on the hub.
+Monitoring graphs are not supported on all platforms, currently AIX, HP-UX and
+Windows do not have this data.
 
 ### Enterprise software inventory is not out-of-the-box
 
