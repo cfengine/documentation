@@ -391,17 +391,20 @@ Sometimes it's nice to include an external file
 
 ## Variables
 
-Referencing a version of CFEngine? Consider if that appearance should be updated with each new version. For example on the title page.
+Referencing a version of CFEngine? Consider if that appearance should be
+updated with each new version.
 
-Will it expand liquid (mustache) variables?
+Variables that are defined in the front matter (thats the content between the
+three dashes at the top) or in
+[_config.yaml](https://github.com/cfengine/documentation-generator/blob/master/_config.yml)
+in the documentation-generator repository can be used directly within markdown.
+
+For example this is the '{{site.CFE_manuals_version}}' version of the
+documentation. That variable comes from _config.yaml.
+
+Since liquid variables look a lot like mustache variables any time you want to
+show the actual variables will need to be inside of raw tags.
 
 {% raw %}
-site.CFE_manuals_version double mustache {{ site.CFE_manuals_version }}
-site.CFE_manuals_version tripple mustache {{{ site.CFE_manuals_version }}}
+site.CFE_manuals_version {{ site.CFE_manuals_version }}
 {% endraw %}
-
-[This jekyll documentation](http://jekyllrb.com/docs/posts/#including-images-and-resources)
-indicates that liquid variables like {{ site.url }} can be used directly from
-the markdown. Unfortunately it didn't work maybe it will without spaces as in
-'{{site.url}}' or maybe its because my _config.yaml does not contain a url key.
-it does have site.CFE_manuals_version '{{site.CFE_manuals_version}}'. Maybe I can use {{title}} or {{page.title}}.
