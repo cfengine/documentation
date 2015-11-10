@@ -10,12 +10,12 @@ tags: [reference, utility functions, functions, variablesmatching]
 **Description:** Return the list of variables matching `name` and any tags
 given. Both `name` and tags are regular expressions.
 
-This function searches for the given [unanchored][unanchored] `name` and
+This function searches for the given [anchored][anchored] `name` and
 `tag1`, `tag2`, ... regular expressions in the list of currently defined
 variables. 
 
 When one or more tags are given, the variables with tags matching any
-of the given [unanchored][unanchored] regular expressions are returned (logical OR semantics).
+of the given [anchored][anchored] regular expressions are returned (logical OR semantics).
 For example, if one variable has tag `inventory`, a second variable has tag `time_based`
 but not `inventory`, *both* are returned by variablesmatching(".*", "inventory", "time_based").
 If you want logical AND semantics instead, you can make two calls to the function
