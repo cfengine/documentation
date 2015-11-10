@@ -394,7 +394,7 @@ open to a hub to attempt a report transfer before it is closed
 
     collect_window => "15";
 
-**Default value:** 10.
+**Default value:** 30.
 
 **History:** Was introduced in Enterprise 3.0.0 (2012)
 
