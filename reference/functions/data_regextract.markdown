@@ -50,4 +50,4 @@ Output:
    
 **History:** Was introduced in version 3.7.0 (2015)
 
-**See also:** `regextract()`
+**See also:** `regextract()` `regex_replace()`
