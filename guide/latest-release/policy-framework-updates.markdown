@@ -3,10 +3,10 @@ layout: default
 title: Policy Framework Updates
 published: true
 sorting: 40
-tags: [releases, latest release, "3.7", platforms, versions, what's new]
+tags: [releases, latest release, platforms, versions, what's new]
 ---
 
-## CFEngine Policy Framework Updates for 3.7 ##
+## CFEngine Policy Framework Updates for {{site.cfengine.branch}} ##
 
 If you follow the CFEngine masterfiles policy framework (the masterfiles you
 get out of the box) we encourage you to upgrade the policy framework each time
@@ -15,19 +15,14 @@ shipped masterfiles to make these upgrades as painless as possible. Generally
 the best way to accomplish that is to take your custom policy and integrate it
 on top of the new masterfiles.
 
-3.7 introduces some minor re-orginization of policy, and some new
+{{site.cfengine.branch}} introduces some minor re-orginization of policy, and some new
 features aimed at making policy framework upgrades easier.
 
 Please consult [The Policy Framework] for a map to the policy framework.
 
-## What is new in the 3.7 masterfiles policy framework ##
+## What is new in the {{site.cfengine.branch}} masterfiles policy framework ##
 
 ## CHANGELOG.md
-
-In 3.7 we have introduced a changelog to the masterfiles repository to make it
-easier to see what has changed in the Masterfiles Policy Framework between
-versions.
-
 [%CFEngine_include_markdown(masterfiles/CHANGELOG.md)%]
 
 ## Makefile
