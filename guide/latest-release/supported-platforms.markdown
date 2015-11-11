@@ -3,7 +3,7 @@ layout: default
 title: Supported Platforms and Versions
 sorting: 20
 published: true
-tags: [overviews, releases, latest release, "3.6", platforms, versions, support]
+tags: [overviews, releases, latest release, platforms, versions, support]
 ---
 
 CFEngine works on a wide range of platforms, and the CFEngine team strives to
@@ -17,7 +17,7 @@ provide support for the platforms most frequently used by our users.
 | CentOS           | 5, 6, 7       | x86-64            |
 | Debian           | 6, 7, 8       | x86-64            |
 | RHEL             | 5, 6, 7       | x86-64            |
-| Ubuntu           | 10.04, 12.04  | x86-64            |
+| Ubuntu           | 12.04         | x86-64            |
 
 Any supported host can be a policy server in Community installations of CFEngine.
 
