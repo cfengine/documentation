@@ -394,10 +394,10 @@ open to a hub to attempt a report transfer before it is closed
 
     collect_window => "15";
 
-**Default value:** 30.
+**Default value:** 30
 
-**History:** Was introduced in Enterprise 3.0.0 (2012)
-
+**History:** Was introduced in Enterprise 3.0.0 (2012). Default value changed
+from 10 to 30 at 3.7.2.
 
 ### denybadclocks
 
