@@ -19,6 +19,8 @@ CFE_DIR: _site
 CFE_manuals_version: master
 cfengine:
   branch: master
+  latest_patch_release: NA
+  latest_package_build: NA
 
 paginate: 500
 
