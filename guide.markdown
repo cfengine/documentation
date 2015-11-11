@@ -66,7 +66,7 @@ experts if you need more help. Contact us!
 * [Installation and Configuration][]
 	* [Pre-Installation Checklist]
 	* [General Installation]
-	* [Upgrading to 3.7]
+	* [Upgrading to {{site.cfengine.branch}}]
 	* [Secure Bootstrap]
 * [Writing and Serving Policy][]
 	* [Language Concepts][]
