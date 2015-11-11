@@ -17,6 +17,8 @@ CFE_OUTPUT: true
 CFE_DIR: _site
 #to create correct links in sitemap
 CFE_manuals_version: master
+cfengine:
+  branch: master
 
 paginate: 500
 
