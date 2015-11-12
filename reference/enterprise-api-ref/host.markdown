@@ -15,10 +15,10 @@ Host API allows to access host specific information.
 
 **Parameters:**
 
-* **include-context** *(comma delimited string of regular expression
+* **context-include** *(comma delimited string of regular expression
     strings)*
     Includes hosts having context matching the expression.
-* **exclude-context** *(comma delimited string of regular expression
+* **context-exclude** *(comma delimited string of regular expression
     strings)*
     Excludes hosts having context matching the expression.
 * **page** *(integer)*
