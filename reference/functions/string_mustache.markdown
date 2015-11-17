@@ -14,8 +14,9 @@ The usual Mustache facilities like conditional evaluation and loops are availabl
 [%CFEngine_function_attributes(template_string, optional_data_container)%]
 
 **Example:**
-
+{%raw%}
 [%CFEngine_include_snippet(string_mustache.cf, #\+begin_src cfengine3, .*end_src)%]
+{%endraw%}
 
 Output:
 
