@@ -16,7 +16,7 @@ The usual Mustache facilities like conditional evaluation and loops are availabl
 **Example:**
 {%raw%}
 [%CFEngine_include_snippet(string_mustache.cf, #\+begin_src cfengine3, .*end_src)%]
-{%endraw}
+{%endraw%}
 
 Output:
 
