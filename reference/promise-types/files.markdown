@@ -2531,6 +2531,12 @@ modification time is not between 1 day ago and now"; that is, it is older than
 
 **See also:** `process_result`
 
+### file_type
+
+By default, `regular` files are created. You can create fifos through this mechanism as well.
+
+[%CFEngine_promise_attribute(cfengine)%]
+
 ### link_from
 
 **Type:** `body link_from`
