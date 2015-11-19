@@ -2531,6 +2531,23 @@ modification time is not between 1 day ago and now"; that is, it is older than
 
 **See also:** `process_result`
 
+### file_type
+
+**Description:** By default, `regular` files are created, when specifying
+`create => "true"`. You can create fifos through this mechanism as well, by
+specifying `fifo` in `file_type`.
+
+**Type:** `string`
+
+**Allowed input range:**
+
+```
+    regular
+    fifo
+```
+
+[%CFEngine_promise_attribute(cfengine)%]
+
 ### link_from
 
 **Type:** `body link_from`
