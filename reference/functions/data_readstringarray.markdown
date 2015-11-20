@@ -15,7 +15,9 @@ One dimension is separated by the regex `split`, the other by the
 lines in the file. The array key (the first field) must be unique; if
 you need to allow duplicate lines use `data_readstringarrayidx()`.
 
-The `comment` field will strip out unwanted patterns from the file being read, leaving unstripped characters to be split into fields. Using the empty string (`""`) indicates no comments.
+The `comment` field is a multiline regular expression and will strip out
+unwanted patterns from the file being read, leaving unstripped characters to be
+split into fields. Using the empty string (`""`) indicates no comments.
 
 [%CFEngine_function_attributes(filename, comment, split, maxentries, maxbytes)%]
 
