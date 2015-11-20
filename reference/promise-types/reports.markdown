@@ -214,4 +214,4 @@ purged from this host's database.
 ### showstate
 
 **Deprecated:** This attribute is kept for source compatibility,
-and has no effect.
+and has no effect. Deprecated in CFEngine 3.5.
