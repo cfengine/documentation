@@ -1,7 +1,7 @@
 ---
 layout: default
 title: NFS and LXC
-published: true
+published: false
 sorting: 110
 tags: [examples, tutorials, nfs, lxc, containers]
 ---
