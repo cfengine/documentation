@@ -100,12 +100,12 @@ versions) below.
 
 ## Prepare masterfiles for upgrade
 
-Merge your masterfiles with the CFEngine {{site.cfengine.branch}} policy framework on an infrastructure separate from your existing CFEngine installation.
-  * Identify existing modifications to the masterfiles directory.  If patches from version control are unavailable or require verification, a copy of /var/cfengine/masterfiles from a clean installation of your previous version can help identify changes which will need to be applied to a new {{site.cfengine.branch}} install.
-  * The {{site.cfengine.branch}} masterfiles can be found in a clean installation of CFEngine (hub package on Enterprise), under /var/cfengine/masterfiles.  Apply any customizations against a copy of the {{site.cfengine.branch}} masterfiles in a well-known location, e.g. `/root/{{site.cfengine.branch}}/masterfiles`.
-  * Use `cf-promises` to verify that the policy runs with {{site.cfengine.branch}}, by running `cf-promises /root/{{site.cfengine.branch}}/masterfiles/promises.cf` and `cf-promises /root/{{site.cfengine.branch}}/masterfiles/update.cf`.
-  * Use `cf-promises` to verify that the policy runs with you previous version of CFEngine (e.g. 3.7), by running the same commands as above on a node with that CFEngine version.
-  * The merged masterfiles should now be based on the {{site.cfengine.branch}} framework, include your policies and work on both the version you are upgrading from and with {{site.cfengine.branch}}.
+1. Merge your masterfiles with the CFEngine {{site.cfengine.branch}} policy framework on an infrastructure separate from your existing CFEngine installation.
+2. Identify existing modifications to the masterfiles directory.  If patches from version control are unavailable or require verification, a copy of /var/cfengine/masterfiles from a clean installation of your previous version can help identify changes which will need to be applied to a new {{site.cfengine.branch}} install.
+3. The {{site.cfengine.branch}} masterfiles can be found in a clean installation of CFEngine (hub package on Enterprise), under /var/cfengine/masterfiles.  Apply any customizations against a copy of the {{site.cfengine.branch}} masterfiles in a well-known location, e.g. `/root/{{site.cfengine.branch}}/masterfiles`.
+4. Use `cf-promises` to verify that the policy runs with {{site.cfengine.branch}}, by running `cf-promises /root/{{site.cfengine.branch}}/masterfiles/promises.cf` and `cf-promises /root/{{site.cfengine.branch}}/masterfiles/update.cf`.
+5. Use `cf-promises` to verify that the policy runs with you previous version of CFEngine (e.g. 3.7), by running the same commands as above on a node with that CFEngine version.
+6. The merged masterfiles should now be based on the {{site.cfengine.branch}} framework, include your policies and work on both the version you are upgrading from and with {{site.cfengine.branch}}.
     
 
 ## Prepare Client upgrade (all versions)
