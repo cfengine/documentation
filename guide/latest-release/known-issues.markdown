@@ -73,7 +73,7 @@ Windows do not have this data.
 
 ### Enterprise software inventory is not out-of-the-box
 
-Software inventory is not out-of-the-box for reporing from the hub on other
+Software inventory is not out-of-the-box for reporting from the hub on other
 platforms than Debian, Ubuntu and Red Hat/CentOS.
 
 In order to add software inventory for other platforms,
