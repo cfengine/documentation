@@ -84,6 +84,8 @@ The workaround is to schedule BOTH CSV and PDF reports. When both CSV and PDF
 reports are scheduled the CSV report will be written to
 `/var/cfengine/httpd/htdocs/tmp` and named for the report title as expected.
 
+Fixed in CFEngine Enterprise 3.7.2
+
 ### Enterprise reports not collected from 3.5
 CFEngine Enterprise 3.6 has a new diff-based report collection mechanism,
 and so a 3.7 hub cannot collect reports from 3.5 or earlier agents.
