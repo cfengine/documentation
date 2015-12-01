@@ -611,10 +611,11 @@ action and is kept for backwards compatibility. Filter data by handle instead.
 
 ### resource_type
 
-**Description:** The `resource_type` is the type of object being granted 
+**Description:** The `resource_type` is the type of object being granted
 access.
 
-By default, access to resources granted by the server are files.
+By default, access to resources granted by the server are files
+(`resource_type => "path"`).
 However, sometimes it is useful to cache `literal` strings, hints and
 data on the server for easy access (e.g. the contents of variables or
 hashed passwords). In the case of literal data, the promise handle
@@ -653,11 +654,16 @@ expression to match persistent classes defined on the server host. If
 these are matched by the request from the client, they will be
 transmitted (See `remoteclassesmatching()`).
 
-The term `query` may also be used in CFEngine Enterprise to query the server 
-for data from embedded databases. This is currently for internal use only, and 
-is used to grant access to report 'menus'. If the promiser of a query request 
-is called `collect_calls`, this grants access to server peering collect-call 
+The term `query` may also be used in CFEngine Enterprise to query the server
+for data from embedded databases. This is currently for internal use only, and
+is used to grant access to report 'menus'. If the promiser of a query request
+is called `collect_calls`, this grants access to server peering collect-call
 tunneling (see also `call_collect_interval`).
+
+If the resource type is `bundle` then the specific bundles are allowed
+to be remotely executed with `cf-runagent --remote-bundles` from the
+specified hosts. The promiser is an anchored regular expression.
+
 
 **Example:**
 
@@ -675,27 +681,29 @@ access:
   "XYZ"
     resource_type => "variable",
     handle => "XYZ",
-    admit_ips => { "127.0.0.1" };
-
-
-  # On the policy hub
-
-  "collect_calls"
-     resource_type => "query",
-     admit_ips => { "127.0.0.1" };
-
-  # On the isolated client in the field
-
+    admit_ips => { "$(sys.policy_hub)" };
 
  "delta"
     comment => "Grant access to cfengine hub to collect report deltas",
     resource_type => "query",
-    admit_ips   => { "127.0.0.1"  };
+    admit_ips   => { "$(sys.policy_hub)"  };
 
  "full"
           comment => "Grant access to cfengine hub to collect full report dump",
     resource_type => "query",
-        admit_ips => { "127.0.0.1"  };
+        admit_ips => { "$(sys.policy_hub)"  };
+
+ "magic_bundle"
+          comment => "Grant access to the hub to activate magic_bundle with cf-runagent",
+    resource_type => "bundle",
+        admit_ips => { "$(sys.policy_hub)" };
+
+ am_policy_hub::
+
+  "collect_calls"
+     comment       => "Enable call-collect report collection for the specific client",
+     resource_type => "query",
+     admit_ips     => { "1.2.3.4" };
 }
 ```
 
