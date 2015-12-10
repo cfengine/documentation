@@ -115,11 +115,6 @@ peers, report above
 
 **Type:** `body printfile`
 
-{% comment %}
-Commenting this inclusion of common body attributes out because it seems to mess with ability to use  [%CFEngine_promise_attribute(5)%] with body attributes (probably due to tree)
-[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
-{% endcomment %}
-
 #### file_to_print
 
 **Description:** Path name to the file that is to be sent to standard
