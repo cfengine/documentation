@@ -6,19 +6,18 @@ tags: [reference, bundle common, reports, promises]
 ---
 
 Reports promises simply print messages. Outputting a message without
-qualification can be a dangerous operation. In a large installation it could
-unleash an avalanche of messaging.
+qualification can be a dangerous operation. In a large installation it
+could unleash an avalanche of messaging, so it is recommended that
+reports are guarded appropriately.
 
-```cf3
-    reports:
+[%CFEngine_include_example(reports.cf)%]
 
-    "literal string or file refererence",
-       printfile = printfile_body,
-       ...;
-```
+{% comment %} TODO: Should link to a page that describes all cfengine output
+here where we explain that output from reports type promises are
+prefixed with the letter R. {% endcomment %}
 
-Messages outputted from report promises are prefixed with the letter R to
-distinguish them from other output, for example from `commands`.
+Messages output by report promises are prefixed with the letter R to
+distinguish them from other output.
 
 ```cf3
     bundle agent report
@@ -131,14 +130,15 @@ Include part of a file in a report.
 
 #### number_of_lines
 
-**Description:** Integer maximum number of lines to print from selected
-file
+**Description:** Integer maximum number of lines to print from selected file
+
+[%CFEngine_promise_attribute(5)%]
 
 **Type:** `int`
 
 **Allowed input range:** `0,99999999999`
 
-**Example:**  
+**Example:**
 
 ```cf3
      bundle agent example
@@ -160,15 +160,15 @@ file
 
 **Description:** The path and filename to which output should be appended
 
-Append the output of the report to the named file instead of standard output. 
-If the file cannot be opened for writing then the report defaults to the 
+Append the output of the report to the named file instead of standard output.
+If the file cannot be opened for writing then the report defaults to the
 standard output.
 
 **Type:** `string`
 
 **Allowed input range:** `"?(/.*)`
 
-**Example:**  
+**Example:**
 
 ```cf3
     bundle agent test
@@ -192,7 +192,7 @@ Return values are limited to scalars.
 
 **Allowed input range:** `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example:**  
+**Example:**
 
 ```cf3
     body common control
@@ -209,8 +209,8 @@ Return values are limited to scalars.
 
 
     reports:
-        "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\""; 
-    
+        "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\"";
+
     }
 
     bundle agent child
@@ -218,10 +218,10 @@ Return values are limited to scalars.
     reports:
        # Map these indices into the useresult namespace
 
-       "this is a return value"  
+       "this is a return value"
           bundle_return_value_index => "1";
 
-       "this is another return value"  
+       "this is another return value"
           bundle_return_value_index => "2";
 
     }
