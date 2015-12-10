@@ -381,6 +381,26 @@ Sometimes it's nice to include an external file
 [%CFEngine_include_markdown(masterfiles/CHANGELOG.md)%]
 </pre>
 
+## Comments inside documentation
+
+Sometimes it's nice to be able to put an internal comment into the
+documentation that will not be rendered.
+
+You can use the comment and endcomment tags in markdown files.
+
+For example:
+
+```
+{% raw %}
+{% comment %} TODO: We should try to improve this at some point.{% endcomment %}
+{% endraw %}
+```
+
+Would render like this:
+
+```
+{% comment %} TODO: We should try to improve this at some point.{% endcomment %}
+```
 
 # Sandbox
 

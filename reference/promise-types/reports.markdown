@@ -115,6 +115,8 @@ peers, report above
 
 **Type:** `body printfile`
 
+[%CFEngine_include_markdown(common-body-attributes-include.markdown)%]
+
 #### file_to_print
 
 **Description:** Path name to the file that is to be sent to standard
@@ -130,9 +132,9 @@ Include part of a file in a report.
 
 **Description:** Integer maximum number of lines to print from selected file
 
-[%CFEngine_promise_attribute(5)%]
-
 **Type:** `int`
+
+**Default value:** `5`
 
 **Allowed input range:** `0,99999999999`
 
