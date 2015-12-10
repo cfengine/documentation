@@ -7,8 +7,8 @@ tags: [reference, bundle common, reports, promises]
 
 Reports promises simply print messages. Outputting a message without
 qualification can be a dangerous operation. In a large installation it
-could unleash an avalanche of messaging, so it is reccomended that reports are
-appropriately.
+could unleash an avalanche of messaging, so it is recommended that
+reports are guarded appropriately.
 
 [%CFEngine_include_example(reports.cf)%]
 
