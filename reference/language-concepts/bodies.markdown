@@ -2,7 +2,7 @@
 layout: default
 title: Bodies
 published: true
-sorting: 30
+sorting: 20
 tags: [language, concepts, syntax, body]
 ---
 

@@ -2,7 +2,7 @@
 layout: default
 title: Variables
 published: true
-sorting: 50
+sorting: 60
 tags: [manuals, language, syntax, concepts, variables]
 ---
 

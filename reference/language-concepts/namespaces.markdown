@@ -2,7 +2,7 @@
 layout: default
 title: Namespaces
 published: true
-sorting: 90
+sorting: 100
 tags: [manuals, language, syntax, concepts, namespace]
 ---
 

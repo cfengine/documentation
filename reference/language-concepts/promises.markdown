@@ -2,7 +2,7 @@
 layout: default
 title: Promises
 published: true
-sorting: 10
+sorting: 30
 tags: [manuals, language, syntax, concepts, promises]
 ---
 
