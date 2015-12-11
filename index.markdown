@@ -1,78 +1,81 @@
 ---
 layout: default
-title: Guide
+title: Home
 published: true
-sorting: 20
+sorting: 1
 ---
 
 CFEngine is a configuration management system that provides a framework for automated management of IT infrastructure.
 
-CFEngine is decentralized and highly scalable. It is powered by autonomous agents that can continuously monitor, self-repair, and update or restore an entire IT system, with negligible impact on system resources or performance.
+CFEngine is decentralized and highly scalable. It is powered by autonomous agents that can continuously monitor, self-repair, and update or restore an entire IT system every five minutes, with negligible impact on system resources or performance.
 
-See Also: [Introduction and System Overview][Introduction and System Overview]
-
-## CFEngine Features ##
-
-* Defines the configuration of an entire IT system, including: Devices, Users, Applications, and Services.
-* Helps maintain that system over time.
-* Checks the system state at any given moment.
-* Ensures compliance with a desired system state.
-* Propagates real-time modifications or updates across the system.
-
-## Choose a CFEngine Version
-
-[CFEngine Enterprise][CFEngine Enterprise] is a licensed edition for enterprises that plan to use the tool in production environments. The Enterprise edition comes in several variants, including one that can be evaluated for free (up to 25 servers).
-
-* [Get the Enterprise Edition][evaluate cfengine]
-
-CFEngine Community, a free GPL v3 open source edition.
-
-* [Get the Community Edition][community download page]
-
-See also:
-
-* [Supported Platforms and Versions][Supported Platforms and Versions]
-
-## Install It
-
-[%CFEngine_include_markdown(include-install-bootstrap-configure-summary.markdown)%]
-
-See [Installation and Configuration][Installation and Configuration] for a more detailed guide on how to get
-CFEngine up and running for various environments.
-
-## Try It
-
-Walk through the examples, tutorials and how to guides to get a better
-feel for the power and value of CFEngine:
-
-* [Policy Examples and Tutorials][Examples and Tutorials]
-
-## Learn More
-
-Take a look at [the CFEngine Guide][Guide] to learn more about CFEngine's architecture and components, as well as how to write policy that can help manage IT systems.
-
-Check out [Additional Resources][Additional Resources] and the [CFEngine Learning Center][learning center], for more guides, demos, and other resources from our CFEngine staff and our special CFEngine contributors.
-
-
-## Use our Help
-
-[Support and Community][Additional Resources#Support and Community] We provide a number of ways to connect you to CFEngine
-experts if you need more help. Contact us!
-
-## CFEngine Guide ##
-
-* [Introduction and System Overview][]
-* [Latest Release][]
-* [Installation and Configuration][]
-	* [Pre-Installation Checklist]
-	* [General Installation]
-	* [Upgrading to {{site.cfengine.branch}}]
-	* [Secure Bootstrap]
-* [Writing and Serving Policy][]
-	* [Language Concepts][]
-	* [Promises Available in CFEngine][]
-	* [Authoring Policy Tools & Workflow][]
-* [Reports][]
-* [Design Center Overview][]
-* [FAQ][]
-* [Additional Resources][]
+<div class="highlight" style="font-weight: normal;">
+<div class="cf3" style="background: #f5f9fb; border: 1px solid #e8eff1; display: block; font-weight: normal; margin: 2em 0; overflow: auto; padding: 2% 2% 2% 1%; width: 96%;font-family: Liberation Mono,Consolas,monospace;font-size: small;">
+<span style="font-weight: normal;" class="k">body common control<span style="font-weight: normal;" class="k"> <br/>   
+<span style="font-weight: normal;" class="p">{</span><br/>    
+<span style="font-weight: normal;" class="kr">bundlesequence <span style="font-weight: normal;" class="o">=&gt;</span> <span style="font-weight: normal;" class="p">{</span> <span style="font-weight: normal;" class="s">"cfengine_documentation"</span> }<span style="font-weight: normal;" class="p">;</span><br/>    
+<span style="font-weight: normal;" class="p">}</span><br/>  
+<br/>    
+<span style="font-weight: normal;" class="k">bundle agent<span style="font-weight: normal;" class="k"> <span style="font-weight: normal;" class="nf">cfengine_documentation</span><br/>     
+<span style="font-weight: normal;" class="p">{</span><br/>     
+<span style="font-weight: normal;" class="kr">vars: </span><br/>   
+<br/>  
+   <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[1]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide-introduction.html">Introduction to CFEngine</a>";</span> <br/>
+ 
+  
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[2]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide.html">Guide to How CFEngine Works</a>";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[3]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide-installation-and-configuration.html">Installing and Configuring CFEngine</a>";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[4]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide-writing-and-serving-policy.html">Read about Policy Language</a>";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[5]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="examples.html">Policy Language Examples & Tutorials</a>";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[6]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="reference.html">Search the Reference Documentation</a>";</span> <br/>
+ 
+  <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[7]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="enterprise-cfengine-guide.html">Discover CFEngine Enterprise Edition</a>";</span> <br/>
+ 
+ <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[8]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="enterprise-cfengine-guide-reporting.html">Learn about Enterprise Reporting</a>";</span> <br/>
+ 
+ <span style="font-weight: normal;" class="p">"</span>
+ <span style="font-weight: normal;" class="nv">links[9]</span>
+ <span style="font-weight: normal;" class="p">"</span>   <span style="font-weight: normal;" class="kt">string </span>
+ <span style="font-weight: normal;" class="o">=&gt; </span>
+ <span style="font-weight: normal;" class="s" style="font-weight: normal;">"<a style="font-weight:bolder; color: #156a90; text-decoration:underline;font-size: 1.1em;line-height: 1.8; padding-left: 0.5em;" href="guide-latest-release-whatsnew.html">What's New in {{site.cfengine.branch}}</a>";</span> <br/>
+ 
+<span style="font-weight: normal;" class="p">}</span> <br/>    
+</div>
+</div>
