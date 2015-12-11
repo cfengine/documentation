@@ -2,7 +2,7 @@
 layout: default
 title: Normal Ordering
 published: true
-sorting: 60
+sorting: 40
 tags: [manuals, language, syntax, concepts, ordering, depends_on]
 ---
 

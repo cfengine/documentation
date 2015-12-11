@@ -2,7 +2,7 @@
 layout: default
 title: Classes and Decisions
 published: true
-sorting: 40
+sorting: 50
 tags: [manuals, language, syntax, concepts, classes, decisions]
 ---
 

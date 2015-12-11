@@ -2,7 +2,7 @@
 layout: default
 title: Bundles
 published: true
-sorting: 20
+sorting: 10
 tags: [language, concepts, syntax, body, bundle]
 ---
 
