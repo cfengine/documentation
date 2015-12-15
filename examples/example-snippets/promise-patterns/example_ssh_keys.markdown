@@ -29,9 +29,10 @@ In the following example we will manage the `authorized_keys` file for
 For each listed user the `ssh_key_distribution` bundle is activated if
 the user exists on the system. Once activated the
 `ssh_key_distribution` bundle ensures that proper permissions are set
-on the users `~/.ssh` directory and ensures that the users
-`~/.ssh/authorized_keys` is a copy of the users `authorized_keys` file
-as found on the server as defined in the `ssh_key_info` bundle.
+on the users `.ssh` directory (home is assumed to be in
+`/home/username`) and ensures that the users `.ssh/authorized_keys` is
+a copy of the users `authorized_keys` file as found on the server as
+defined in the `ssh_key_info` bundle.
 
 Let's assume we collected all users' public keys into a single
 directory on the server and that users exist on the clients (and have
