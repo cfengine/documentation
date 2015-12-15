@@ -37,7 +37,7 @@ Let's assume we collected all users' public keys into a single
 directory on the server and that users exist on the clients (and have
 corresponding home directory).
 
-Note: special variable [`$(sys.policy_hub)`][sys#sys-policy_hub] contains the hostname of
+Note: special variable [`$(sys.policy_hub)`][sys#sys.policy_hub] contains the hostname of
 the policy server.
 
 To deploy this policy simply place it in the `services/autorun`
