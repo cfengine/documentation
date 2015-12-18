@@ -13,7 +13,7 @@ last login, etc.
 
 It is often useful to customize the Message of the Day to inform your users
 about some specifics of the system they are connecting to. In this example we
-render a /etc/motd using a mustache template and add useful information as:
+render a `/etc/motd` using a mustache template and add useful information as:
 
 * The role of the server ( staging / production )
 * The hostname of the server
@@ -25,18 +25,18 @@ render a /etc/motd using a mustache template and add useful information as:
 
 The bundle is defined like this:
 
-[%CFEngine_include_example(motd.cf)%]
+[%CFEngine_include_example(mustache_template_motd.cf)%]
 
 Here is the mustache:
 
 {% raw %}
-[%CFEngine_include_example(motd.cf.mustache)%]
+[%CFEngine_include_example(mustache_template_motd.cf.mustache)%]
 {% endraw %}
 
 Example run:
 
 ```
-root@debian8:~/core/examples# cf-agent -KIb motd -D DEBUG ./motd.cf -b motd
+root@debian8:~/core/examples# cf-agent -KIb motd -D DEBUG ./mustache_template_motd.cf -b motd
     info: Using command line specified bundlesequence
 R: 3.7.2 is the detected version
 R: debian8 is the detected hostname
@@ -45,16 +45,19 @@ R: Policy Server is the detected role for debian8
 R: 20 packages can be updated
 R: This host is managed by root@localhost
 root@debian8:~/core/examples# cat /etc/motd
-      ¤¤¤        Not a prod or stage host
+ WARNING Environment Unknown
+      ¤¤¤
       ¤¤¤
       ¤¤¤	 Welcome into debian8
 
     ¤ ¤¤¤ ¤      This system is controlled by
-    ¤ ¤¤¤ ¤      CFEngine Enterprise 3.7.2
-    ¤ ¤¤¤ ¤	 And is a Policy Server
+    ¤ ¤¤¤ ¤      CFEngine 3.8.0
+    ¤ ¤¤¤ ¤	 And is a Policy Client
     ¤     ¤
       ¤¤¤
-      ¤ ¤	 Administrative contacts:  root@localhost
+      ¤ ¤	 
       ¤ ¤	 Host IP 10.100.251.53
-      ¤ ¤	 There are 20 package updates available.
+      ¤ ¤	 20 package updates available.
+                 Support Contact:
+                   - root@localhost
 ```
