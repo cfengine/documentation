@@ -16,7 +16,7 @@ action.
 Note IPv6 addresses can not use uppercase hexadecimal characters
 (`A-Z`) but must use lowercase (`a-z`) instead.
 
-[%CFEngine_function_attributes(regex, mode)%]
+[%CFEngine_function_attributes(list, mode)%]
 
 **Example:**
 
