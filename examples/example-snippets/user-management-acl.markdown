@@ -1,83 +1,203 @@
 ---
 layout: default
-title: User Management and ACL Examples 
+title: User Management and ACL Examples
 published: true
 sorting: 15
 tags: [Examples,User Management,ACL]
 ---
 
-* [Manage users][User Management and ACL Examples#Manage users]
-* [Add users][User Management and ACL Examples#Add users]
-* [Add users to passwd and group][User Management and ACL Examples#Add users to passwd and group]
-* [ACL file example][User Management and ACL Examples#ACL file example]
-* [ACL generic example][User Management and ACL Examples#ACL generic example]
-* [ACL secret example][User Management and ACL Examples#ACL secret example]
-* [Active directory example][User Management and ACL Examples#Active directory example]
-* [Active list users directory example][User Management and ACL Examples#Active list users directory example]
-* [Active directory show users example][User Management and ACL Examples#Active directory show users example]
-* [Get a list of users][User Management and ACL Examples#Get a list of users]
-* [LDAP interactions][User Management and ACL Examples#LDAP interactions]
+## Local user management
 
-## Manage users
+There are many approaches to managing users. You can edit system files
+like `/etc/passwd` directly, you can use commands on some systems like
+`useradd`.  However the easiest, and preferred way is to use
+CFEngine's native `users` type promise.
 
-There are many approaches to managing users. You can edit system files like /etc/passwd directly, or you can use commands on some systems like ‘useradd’ or ‘adduser’. In all cases it is desirable to make this a data-driven process.
+### Ensuring local users are present
 
-    Add users
-    Remove users
+This example shows ensuring that the local users `jack` and `jill` are
+present on all linux systems using the native `users` type promise.
 
-### Add users
+[%CFEngine_include_example(local_users_present.cf)%]
 
-A simple approach which adds new users to the password file, and to a group called ‘users’ in the group file. Is shown below. This example does not edit the shadow file. A simple pattern that can be modified for use is shown below.
+Lets check the environment to see that the users do not currently
+exist.
 
-Note that, although this is a simple minded approach, it is the most efficient of the approaches shown here as all operations can be carried out in a single operation for each file.
+```console
+root@debian-jessie:/CFEngine/core/examples# egrep "jack|jill" /etc/passwd
+root@debian-jessie:/core/examples# ls -al /home/{jack,jill}
+ls: cannot access /home/jack: No such file or directory
+ls: cannot access /home/jill: No such file or directory
+```
+
+Let's run the policy and inspect the state of the system afterwards.
+
+```console
+root@debian-jessie:/core/examples# cf-agent -KIf ./users_present.cf
+    info: Created directory '/home/jack/.'
+    info: Copying from 'localhost:/etc/skel/.bashrc'
+    info: Copying from 'localhost:/etc/skel/.profile'
+    info: Copying from 'localhost:/etc/skel/.bash_logout'
+    info: User promise repaired
+    info: Created directory '/home/jill/.'
+    info: Copying from 'localhost:/etc/skel/.bashrc'
+    info: Copying from 'localhost:/etc/skel/.profile'
+    info: Copying from 'localhost:/etc/skel/.bash_logout'
+    info: User promise repaired
+root@debian-jessie:/core/examples# egrep "jack|jill" /etc/passwd
+jack:x:1001:1001::/home/jack:/bin/sh
+jill:x:1002:1002::/home/jill:/bin/sh
+root@debian-jessie:/core/examples# ls -al /home/{jack,jill}
+/home/jack:
+total 20
+drwxr-xr-x 2 root root 4096 Dec 22 16:37 .
+drwxr-xr-x 5 root root 4096 Dec 22 16:37 ..
+-rw-r--r-- 1 root root  220 Dec 22 16:37 .bash_logout
+-rw-r--r-- 1 root root 3515 Dec 22 16:37 .bashrc
+-rw-r--r-- 1 root root  675 Dec 22 16:37 .profile
+
+/home/jill:
+total 20
+drwxr-xr-x 2 root root 4096 Dec 22 16:37 .
+drwxr-xr-x 5 root root 4096 Dec 22 16:37 ..
+-rw-r--r-- 1 root root  220 Dec 22 16:37 .bash_logout
+-rw-r--r-- 1 root root 3515 Dec 22 16:37 .bashrc
+-rw-r--r-- 1 root root  675 Dec 22 16:37 .profile
+```
+
+### Ensuring local users are locked
+
+This example shows ensuring that the local users `jack` and `jill` are
+locked if they are present on linux systems using the native `users`
+type promise.
+
+[%CFEngine_include_example(local_users_locked.cf)%]
+
+This output shows the state of the `/etc/shadow` file before running
+the example policy:
+
+```console
+root@debian-jessie:/core/examples# egrep "jack|jill" /etc/shadow
+jack:x:16791:0:99999:7:::
+jill:x:16791:0:99999:7:::
+root@debian-jessie:/core/examples# cf-agent -KIf ./local_users_locked.cf
+    info: User promise repaired
+    info: User promise repaired
+root@debian-jessie:/core/examples# egrep "jack|jill" /etc/shadow
+jack:!x:16791:0:99999:7::1:
+jill:!x:16791:0:99999:7::1:
+```
+
+### Ensuring a local user has a specific password
+
+This example shows ensuring that the local users `root` is managed if
+there is a specific password hash defined.
+
+[%CFEngine_include_example(local_user_password.cf)%]
+
+```console
+root@debian-jessie:/core/examples# grep root /etc/shadow
+root:!:16791:0:99999:7:::
+root@debian-jessie:/core/examples# cf-agent -KIf ./local_user_password.cf
+    info: User promise repaired
+root@debian-jessie:/core/examples# grep root /etc/shadow
+root:$6$1nRTeNoE$DpBSe.eDsuZaME0EydXBEf.DAwuzpSoIJhkhiIAPgRqVKlmI55EONfvjZorkxNQvK2VFfMm9txx93r2bma/4h/:16791:0:99999:7:::
+```
+
+### Ensuring local users are absent
+
+This example shows ensuring that the local users `jack` and `jill` are
+absent on linux systems using the native `users` type promise.
+
+[%CFEngine_include_example(local_users_absent.cf)%]
 
 
-[%CFEngine_include_snippet(add_users.cf, .* )%]
+Before activating the example policy, lets inspect the current state
+of the system.
 
-A second approach is to use the shell commands supplied by some operating systems; this assumes that suitable defaults have been set up manually. Also the result is not repairable in a simple convergent manner. The command needs to edit multiple files for each user, and is quite inefficient.
+```console
+root@debian-jessie:/core/examples# egrep "jack|jill" /etc/passwd
+jack:x:1001:1001::/home/jack:/bin/sh
+jill:x:1002:1002::/home/jill:/bin/sh
+root@debian-jessie:/core/examples# ls -al /home/{jack,jill}
+/home/jack:
+total 20
+drwxr-xr-x 2 root root 4096 Dec 22 16:37 .
+drwxr-xr-x 5 root root 4096 Dec 22 16:37 ..
+-rw-r--r-- 1 root root  220 Dec 22 16:37 .bash_logout
+-rw-r--r-- 1 root root 3515 Dec 22 16:37 .bashrc
+-rw-r--r-- 1 root root  675 Dec 22 16:37 .profile
 
+/home/jill:
+total 20
+drwxr-xr-x 2 root root 4096 Dec 22 16:37 .
+drwxr-xr-x 5 root root 4096 Dec 22 16:37 ..
+-rw-r--r-- 1 root root  220 Dec 22 16:37 .bash_logout
+-rw-r--r-- 1 root root 3515 Dec 22 16:37 .bashrc
+-rw-r--r-- 1 root root  675 Dec 22 16:37 .profile
+```
 
-[%CFEngine_include_snippet(add_users_1.cf, .* )%]
+From the above output we can see that the local users `jack` and
+`jill` are present, and that they both have home directories.
 
-An alternative approach is to use a method to wrap around the handling of a user. Although this looks nice, it is less efficient than the first method because it must edit the files multiple times.
+Now lets activate the example policy and insepect the result.
 
+```console
+root@debian-jessie:/core/examples# cf-agent -KIf ./local_users_absent.cf
+    info: User promise repaired
+    info: User promise repaired
+root@debian-jessie:/core/examples# egrep "jack|jill" /etc/passwd
+root@debian-jessie:/core/examples# ls -al /home/{jack,jill}
+/home/jack:
+total 20
+drwxr-xr-x 2 root root 4096 Dec 22 16:37 .
+drwxr-xr-x 5 root root 4096 Dec 22 16:37 ..
+-rw-r--r-- 1 root root  220 Dec 22 16:37 .bash_logout
+-rw-r--r-- 1 root root 3515 Dec 22 16:37 .bashrc
+-rw-r--r-- 1 root root  675 Dec 22 16:37 .profile
 
-[%CFEngine_include_snippet(add_users_1.cf, .* )%]
+/home/jill:
+total 20
+drwxr-xr-x 2 root root 4096 Dec 22 16:37 .
+drwxr-xr-x 5 root root 4096 Dec 22 16:37 ..
+-rw-r--r-- 1 root root  220 Dec 22 16:37 .bash_logout
+-rw-r--r-- 1 root root 3515 Dec 22 16:37 .bashrc
+-rw-r--r-- 1 root root  675 Dec 22 16:37 .profile
+```
 
-## Add users to passwd and group ##
+From the above output we can see that the local users `jack` and
+`jill` were removed from the system as desired. Note that their home
+directories remain, and if we wanted them to be purged we would have
+to have a seperate promise to perform that cleanup.
 
-Add lines to the password file, and users to group if they are not already there.
+### Add users to passwd and group
 
+Add lines to the password file, and users to group if they are not
+already there.
 
 [%CFEngine_include_snippet(add_users_to_passwd_and_group.cf, .* )%]
 
 ## ACL file example
 
-
 [%CFEngine_include_snippet(acl_file_example.cf, .* )%]
 
 ## ACL generic example
-
 
 [%CFEngine_include_snippet(acl_generic_example.cf, .* )%]
 
 ## ACL secret example
 
-
 [%CFEngine_include_snippet(acl_secret_example.cf, .* )%]
 
 ## Active directory example
-
 
 [%CFEngine_include_snippet(active_directory_example.cf, .* )%]
 
 ## Active list users directory example
 
-
 [%CFEngine_include_snippet(active_list_users_directory_example.cf, .* )%]
 
 ## Active directory show users example
-
 
 [%CFEngine_include_snippet(active_directory_show_users_example.cf, .* )%]
 
