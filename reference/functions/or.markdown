@@ -7,16 +7,22 @@ tags: [reference, data functions, functions, or]
 
 [%CFEngine_function_prototype(...)%]
 
-**Description:** Calculate whether any argument evaluates to true
+**Description:** Returns `any` if any argument evaluates to true and `!any` if
+any argument evaluates to false.
 
 **Example:**
 
 ```cf3
     commands:
       "/usr/bin/generate_config $(config)"
-        ifvarclass => or(not(fileexists("/etc/config/$(config)")), "force_configs");
+        ifvarclass => or( "force_configs",
+                          not(fileexists("/etc/config/$(config)"))
+                        );
 ```
 
-**Notes:**  
+**Notes:** Introduced primarily for use with `ifvarclass`, `if`, and `unless`
+promise attributes.
+
+**See Also:** `and`, `or`, `not`
 
 **History:** Was introduced in 3.2.0, Nova 2.1.0 (2011)
