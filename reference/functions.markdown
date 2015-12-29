@@ -6,9 +6,10 @@ sorting: 30
 tags: [Reference, Functions]
 ---
 
-Functions are parameterized "RVALUES". Parameter values need to be of the
-type and range as documented for each functions. Some functions are documented
-with a `...`, in which case they take an arbitrary amount of parameters.
+Functions take zero or more values as arguments and return a value.
+Argument values need to be of the type and range as documented for each
+function. Some functions are documented with a `...`, in which case they
+take an arbitrary amount of arguments.
 
 They can return scalar and list values:
 
@@ -65,7 +66,7 @@ Some _system_ functions are particularly expensive:
 * `readtcp()` for TCP interactions
 * `hubknowledge()`, `selectservers()`, `remoteclassesmatching()`, and `remotescalar()` for hub queries
 
-As of 3.6.0, the new `cache_system_functions` body common parameter is
+As of 3.6.0, the new `cache_system_functions` body common argument is
 set to `true` by default and CFEngine's evaluator will use it.
 Although you can override it to `false`, in practice you should almost
 never need to do so.  The effect of having it `true` (the default) is
@@ -79,8 +80,8 @@ runs of e.g. `cf-agent` and `cf-promises`.
 
 If a variable passed to a function is unable to be resolved the function will
 be skipped. The function will be evaluated during a later pass when all
-variables passed as parameters are able to be resolved. The function will never
-be evaluated if any parameter contains a variable that never resolves.
+variables passed as arguments are able to be resolved. The function will never
+be evaluated if any argument contains a variable that never resolves.
 
 ## List of all functions
 
