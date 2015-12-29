@@ -12,6 +12,10 @@ any argument evaluates to true.
 
 [%CFEngine_function_attributes(expression)%]
 
+**Argument Descriptions:**
+
+* `expression` - Class, class expression, or function that returns a class
+
 **Example:**
 
 ```cf3
