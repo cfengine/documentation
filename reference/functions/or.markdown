@@ -10,6 +10,9 @@ tags: [reference, data functions, functions, or]
 **Description:** Returns `any` if any argument evaluates to true and `!any` if
 any argument evaluates to false.
 
+**Arguments**: A list of classes, class expressions, or functions that return
+classes.
+
 **Example:**
 
 ```cf3
