@@ -49,11 +49,11 @@ below.
 
 ### Policy evaluation details
 
-Before exact evaluation of promises takes place first command line
-parameters are read and all classes defined using -D parameter are set. Next,
-environment detection takes place and hard classes are discovered.
-When environment detection is complete all the persistent classes are 
-loaded and a policy sanity check is performed using cf-promises.
+Before exact evaluation of promises takes place first command line parameters
+are read and all classes defined using `-D` parameter are set. Next,
+environment detection takes place and hard classes are discovered.  When
+environment detection is complete all the persistent classes are loaded and a
+policy sanity check is performed using cf-promises.
 
 #### cf-promises policy validation step
 
@@ -99,10 +99,11 @@ by variables in agent bundles.
 After pre-evaluation is complete normal evaluation begins.
 
 In this step CFEngine executes agent promise bundles in the strict order
-defined by the `bundlesequence` (possibly overridden by the `-b` or
-`--bundlesequence` command line option).  If the bundlesequence is not provided
+defined by the bundlesequence (possibly overridden by the `-b` or
+`--bundlesequence` command line option). If the bundlesequence is not provided
 via command line argument or is not present in body common control agent will
-fail to execute policy.
+attempt to execute a bundle named `main`. If bundle `main` is not defined, the
+agent will error and exit.
 
 Within a bundle, the promise types are executed in a round-robin fashion
 according to so-called `normal ordering` (essentially deletion first, followed
