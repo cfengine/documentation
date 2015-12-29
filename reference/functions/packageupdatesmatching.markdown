@@ -16,21 +16,28 @@ The return is a data container with a list of package descriptions, looking like
 
 ```
 [
-  {
-    "name": "bfoobar",
-    "version": "1",
-    "arch": "besm6",
-    "method": "printf"
-  }
+   {
+      "arch":"default",
+      "method":"dpkg",
+      "name":"syncthing",
+      "version":"0.12.8"
+   }
 ]
 ```
 
 [%CFEngine_function_attributes(package_regex, version_regex, arch_regex, method_regex)%]
 
+**Argument Descriptions:**
+
+* `package_regex` - Regular expression matching packge name
+* `version_regex` - Regular expression matching package version
+* `arch_regex` - Regular expression matching package architecutre
+* `method_regex` - Regular expression matching package method (apt-get, rpm, etc ...)
+
 **Example:**  
 
 ```cf3
-      "all_packages" data => packageupdatesmatching(".*", ".*", ".*", ".*");
+      "all_package_updates" data => packageupdatesmatching(".*", ".*", ".*", ".*");
 ```
 
 **History:** Introduced in CFEngine 3.6
