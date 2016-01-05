@@ -59,24 +59,20 @@ versions) below.
 
 1. Make a backup of the Policy Server, a full backup of `/var/cfengine` (or
    your `WORKDIR` equivalent) is recommended.
-
    * `cp -r /var/cfengine/ppkeys/ /root/3.7/ppkeys`
    * `tar cvzf /root/3.7/cfengine.tar.gz /var/cfengine`
 
 2. Save the list of hosts currently connecting to the Policy Server.
-
    * `cf-key -s > /root/3.7/hosts`
 
 3. Prepare masterfiles folowing instrusctions in Prepare masterfiles for
    upgrade section below.
 
 4. Copy the merged masterfiles from the perparation you did above.
-
    * `rm -rf /var/cfengine/masterfiles/*` 
    * `cp /root/{{site.cfengine.branch}}/masterfiles/* /var/cfengine/masterfiles/`
 
 5. On your existing Policy Server, stop the CFEngine services.
-
    * `service cfengine3 stop`
    * Verify that the output of `ps -e | grep cf` is empty.
 
@@ -84,7 +80,6 @@ versions) below.
 
 6. Install the new CFEngine Policy Server package (you may need to adjust the
    package name based on CFEngine edition, version and distribution).
-
    * `rpm -U cfengine-nova-hub-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.x86_64.rpm` # Red Hat based distribution
    * `dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64.deb` # Debian based distribution
 
@@ -102,7 +97,6 @@ versions) below.
     ```
 
 8. Take the Policy Server online.
-
    * Verify with `cf-key -s` that connections from all clients have been
      established within 5-10 minutes.
    * Select some clients to confirm that they have received the new policy and
