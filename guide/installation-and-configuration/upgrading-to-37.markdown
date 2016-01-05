@@ -37,42 +37,54 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 
 ## Prepare masterfiles and the Policy Server for upgrade (3.6 to 3.7)
 
-1. Merge your masterfiles with the CFEngine 3.7 policy framework on an infrastructure separate from your existing CFEngine installation.
-  * Identify existing modifications to the masterfiles directory.  If patches from version control are unavailable or require verification, a copy of /var/cfengine/masterfiles from a clean installation of your previous version can help identify changes which will need to be applied to a new 3.7 install.
-  * The 3.7 masterfiles can be found in a clean installation of CFEngine (hub package on Enterprise), under /var/cfengine/masterfiles.  Apply any customizations against a copy of the 3.7 masterfiles in a well-known location, e.g. `/root/3.7/masterfiles`.
-  * Use `cf-promises` to verify that the policy runs with 3.7, by running `cf-promises /root/3.7/masterfiles/promises.cf` and `cf-promises /root/3.7/masterfiles/update.cf`.
-  * Use `cf-promises` to verify that the policy runs with you previous version of CFEngine (e.g. 3.6), by running the same commands as above on a node with that CFEngine version.
-  * The merged masterfiles should now be based on the 3.7 framework, include your policies and work on both the version you are upgrading from and with 3.7.
-2. On your existing Policy Server, stop the CFEngine services.
-  * `service cfengine3 stop`
-  * Verify that the output of `ps -e | grep cf` is empty.
+1. Merge your masterfiles with the CFEngine 3.7 policy framework on an
+   infrastructure separate from your existing CFEngine installation.
+   * Identify existing modifications to the masterfiles directory.  If patches
+     from version control are unavailable or require verification, a copy of
+     `/var/cfengine/masterfiles` from a clean installation of your previous version
+     can help identify changes which will need to be applied to a new 3.7 install.
+   * The 3.7 masterfiles can be found in a clean installation of CFEngine (hub
+     package on Enterprise), under `/var/cfengine/masterfiles`.  Apply any
+     customizations against a copy of the 3.7 masterfiles in a well-known
+     location, e.g. `/root/3.7/masterfiles`.
+   * Use `cf-promises` to verify that the policy runs with 3.7, by running
+     `cf-promises /root/3.7/masterfiles/promises.cf` and
+     `cf-promises /root/3.7/masterfiles/update.cf`.
+   * Use `cf-promises` to verify that the policy runs with you previous version
+     of CFEngine (e.g. 3.6), by running the same commands as above on a node
+     with that CFEngine version.
+   * The merged masterfiles should now be based on the 3.7 framework, include
+     your policies and work on both the version you are upgrading from and with
+     3.7.
 
-    Clients will continue to execute the policy that they have.
-3. Make a backup of the Policy Server, a full backup of `/var/cfengine` (or your `WORKDIR` equivalent) is recommended.
- * `cp -r /var/cfengine/ppkeys/ /root/3.6/ppkeys`
- * `tar cvzf /root/3.6/cfengine.tar.gz /var/cfengine`
+2. On your existing Policy Server, stop the CFEngine services.
+   * `service cfengine3 stop`
+   * Verify that the output of `ps -e | grep cf` is empty.
+ 
+   **Note:** Clients will continue to execute the policy that they have.
+
+3. Make a backup of the Policy Server, a full backup of `/var/cfengine` (or
+   your `WORKDIR` equivalent) is recommended.
+   * `cp -r /var/cfengine/ppkeys/ /root/3.6/ppkeys`
+   * `tar cvzf /root/3.6/cfengine.tar.gz /var/cfengine`
+
 4. Save the list of hosts currently connecting to the Policy Server.
-  * `cf-key -s > /root/3.6/hosts`
-    
+   * `cf-key -s > /root/3.6/hosts`
 
 ## Perform the upgrade of the Policy Server (3.6 to 3.7)
 
 1. Ensure the CFEngine services are still stopped (only on the Policy Server).
-  * Verify that the output of `ps -e | grep cf` is empty.
-2. Install the new CFEngine Policy Server package (you may need to adjust the package name based on CFEngine edition, version and distribution).
-  * ```
-    rpm -i cfengine-nova-hub-3.7.0.x86_64.rpm # Red Hat based distribution
-    ```
-  * ```
-    dpkg --install cfengine-nova-hub_3.7.0-1_amd64.deb # Debian based distribution
-    ``` 
+   * Verify that the output of `ps -e | grep cf` is empty.
+
+2. Install the new CFEngine Policy Server package (you may need to adjust the
+   package name based on CFEngine edition, version and distribution).
+   * `rpm -U cfengine-nova-hub-3.7.0.x86_64.rpm` # Red Hat based distribution
+   * `dpkg --install cfengine-nova-hub_3.7.0-1_amd64.deb` # Debian based distribution
+
 3. Copy the merged masterfiles from the perparation you did above.
-  * ```
-    rm -rf /var/cfengine/masterfiles/*
-    ```
-  * ```
-    cp /root/3.7/masterfiles/* /var/cfengine/masterfiles/
-    ```
+   * `rm -rf /var/cfengine/masterfiles/*`
+   * `cp /root/3.7/masterfiles/* /var/cfengine/masterfiles/` 
+
 4. Bootstrap the Policy Server to itself.
 
     ```
@@ -85,9 +97,10 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
     cf-agent -f update.cf -IK
     ```
 5. Take the Policy Server online.
-  * Verify with `cf-key -s` that connections from all clients have been established within 5-10 minutes.
-  * Select some clients to confirm that they have received the new policy and are running it without error.
-
+   * Verify with `cf-key -s` that connections from all clients have been
+     established within 5-10 minutes.
+   * Select some clients to confirm that they have received the new policy and
+     are running it without error.
 
 ## Prepare Client upgrade (all versions)
 
