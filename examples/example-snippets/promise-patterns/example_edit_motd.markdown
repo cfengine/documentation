@@ -35,13 +35,13 @@ Here is the mustache:
 
 Example run:
 
-```
-root@debian8:~/core/examples# cf-agent -KIb motd -D DEBUG ./mustache_template_motd.cf -b motd
+```console
+root@debian8:~/core/examples# cf-agent --no-lock --bundlesequence motd --define DEBUG_motd --file ./mustache_template_motd.cf
     info: Using command line specified bundlesequence
 R: 3.7.2 is the detected version
 R: debian8 is the detected hostname
 R: 10.100.251.53 is the ipv4 address for debian8
-R: Policy Server is the detected role for debian8
+R: Policy Client is the detected role for debian8
 R: 20 packages can be updated
 R: This host is managed by root@localhost
 root@debian8:~/core/examples# cat /etc/motd
