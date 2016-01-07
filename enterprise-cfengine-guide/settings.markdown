@@ -45,6 +45,33 @@ administrator to change various options, including:
 User management is for adding or adjusting CFEngine Enterprise UI
 users, including their name, role, and password.
 
+## Role Management ##
+
+![Role Management](Settings-role.png)
+
+Roles are used to lmit access. Roles can limit access for reporting on
+hosts that have or do not have spcecific classes, and they can be used
+to limit which sketches from Design Center a user is authorized to
+use.
+
+For example if you want to limit a users ability to report only on
+hosts in the "North American Data Center" you could setup a role that
+includes only the `location_nadc` class.
+
+If you have multiple roles assigned to a user, the user can access
+only hosts that match all of their role restrictions. For example, if
+you have the admin role and a role that matches zero hosts, the user
+will not see any hosts in Mission Portal.
+
+Users without a role will not be able to see any hosts in Mission
+Portal.
+
+**Default Roles:**
+* admin - The admin role can see everything and do anything.
+* cf_remoteagent - This role allows execution of cf-runagent. It can
+  be used from within Design Center to troubleshoot hosts that have
+  failed sketch activations.
+
 ## Manage Apps ##
 
 ![Manage Apps](Settings-4.png)
@@ -52,7 +79,6 @@ users, including their name, role, and password.
 Application settings can help adjust some of CFEngine Enterprise UI
 app features, including the order in which the apps appear and their
 status (on or off).
-
 
 ## Version Control Repository ##
 
