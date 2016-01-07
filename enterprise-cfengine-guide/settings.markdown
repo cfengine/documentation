@@ -67,6 +67,7 @@ Users without a role will not be able to see any hosts in Mission
 Portal.
 
 **Default Roles:**
+
 * admin - The admin role can see everything and do anything.
 * cf_remoteagent - This role allows execution of cf-runagent. It can
   be used from within Design Center to troubleshoot hosts that have
