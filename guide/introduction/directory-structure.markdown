@@ -39,6 +39,7 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 * `cf-execd`: Starts the cf-agent process at a specified time interval.
 * `cf-monitord`: Collects system statistics
 * `cf-serverd`: Provides network services; used to distribute policy and data files
+* `runalerts.sh`: Updates Mission Portal status and activates alert actions (Enterprise only)
 
 See Also: [CFEngine Component Applications and Daemons][Introduction and System Overview#CFEngine Component Applications and Daemons]
 
