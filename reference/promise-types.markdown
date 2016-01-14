@@ -933,7 +933,7 @@ active.
 
 By default classes are ephemeral entities that disappear when `cf-agent`
 terminates. By setting a persistence time, they can last even when the agent is
-not running.
+not running. When a persistent class is activated it gets `scope` namespace.
 
 **Type:** `int`
 
