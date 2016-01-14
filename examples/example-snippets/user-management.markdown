@@ -1,6 +1,6 @@
 ---
 layout: default
-title: User Management
+title: User Management Examples
 published: true
 sorting: 15
 tags: [Examples,User Management]
