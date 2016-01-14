@@ -1,9 +1,9 @@
 ---
 layout: default
-title: User Management and ACL Examples
+title: User Management
 published: true
 sorting: 15
-tags: [Examples,User Management,ACL]
+tags: [Examples,User Management]
 ---
 
 ## Local user management
@@ -13,6 +13,21 @@ like `/etc/passwd` directly, you can use commands on some systems like
 `useradd`.  However the easiest, and preferred way is to use
 CFEngine's native `users` type promise.
 
+### Ensuring a local user has a specific password
+
+This example shows ensuring that the local users `root` is managed if
+there is a specific password hash defined.
+
+[%CFEngine_include_example(local_user_password.cf)%]
+
+```console
+root@debian-jessie:/core/examples# grep root /etc/shadow
+root:!:16791:0:99999:7:::
+root@debian-jessie:/core/examples# cf-agent -KIf ./local_user_password.cf
+    info: User promise repaired
+root@debian-jessie:/core/examples# grep root /etc/shadow
+root:$6$1nRTeNoE$DpBSe.eDsuZaME0EydXBEf.DAwuzpSoIJhkhiIAPgRqVKlmI55EONfvjZorkxNQvK2VFfMm9txx93r2bma/4h/:16791:0:99999:7:::
+```
 ### Ensuring local users are present
 
 This example shows ensuring that the local users `jack` and `jill` are
@@ -86,22 +101,6 @@ root@debian-jessie:/core/examples# cf-agent -KIf ./local_users_locked.cf
 root@debian-jessie:/core/examples# egrep "jack|jill" /etc/shadow
 jack:!x:16791:0:99999:7::1:
 jill:!x:16791:0:99999:7::1:
-```
-
-### Ensuring a local user has a specific password
-
-This example shows ensuring that the local users `root` is managed if
-there is a specific password hash defined.
-
-[%CFEngine_include_example(local_user_password.cf)%]
-
-```console
-root@debian-jessie:/core/examples# grep root /etc/shadow
-root:!:16791:0:99999:7:::
-root@debian-jessie:/core/examples# cf-agent -KIf ./local_user_password.cf
-    info: User promise repaired
-root@debian-jessie:/core/examples# grep root /etc/shadow
-root:$6$1nRTeNoE$DpBSe.eDsuZaME0EydXBEf.DAwuzpSoIJhkhiIAPgRqVKlmI55EONfvjZorkxNQvK2VFfMm9txx93r2bma/4h/:16791:0:99999:7:::
 ```
 
 ### Ensuring local users are absent
@@ -242,35 +241,7 @@ usermod: group 'cfengineers' does not exist
     info: User promise not kept
 ```
 
-## ACL file example
-
-[%CFEngine_include_snippet(acl_file_example.cf, .* )%]
-
-## ACL generic example
-
-[%CFEngine_include_snippet(acl_generic_example.cf, .* )%]
-
-## ACL secret example
-
-[%CFEngine_include_snippet(acl_secret_example.cf, .* )%]
-
-## Active directory example
-
-[%CFEngine_include_snippet(active_directory_example.cf, .* )%]
-
-## Active list users directory example
-
-[%CFEngine_include_snippet(active_list_users_directory_example.cf, .* )%]
-
-## Active directory show users example
-
-[%CFEngine_include_snippet(active_directory_show_users_example.cf, .* )%]
-
 ## Get a list of users
-
 
 [%CFEngine_include_snippet(get_a_list_of_users.cf, .* )%]
 
-## LDAP interactions
-
-[%CFEngine_include_snippet(ldap_interactions.cf, .* )%]
