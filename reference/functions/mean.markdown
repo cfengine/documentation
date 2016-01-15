@@ -11,6 +11,10 @@ tags: [reference, data functions, functions, mean]
 
 `list` can be a data container or a regular list.
 
+**NOTE** that the `list` can be specified as inline JSON
+instead of a separate variable. This is standard across many CFEngine
+functions and explained in the `mergedata()` documentation.
+
 [%CFEngine_function_attributes(list)%]
 
 **Example:**
@@ -25,4 +29,4 @@ Output:
    
 **History:** Was introduced in version 3.6.0 (2014)
 
-**See also:** `sort()`, `variance()`, `sum()`, `max()`, `min()`
+**See also:** `sort()`, `variance()`, `sum()`, `max()`, `min()`, `mergedata()`.
