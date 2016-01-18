@@ -11,6 +11,10 @@ tags: [reference, communication functions, functions, url, www, file, ftp, http,
   a data container. The data is returned in a
   data container.
 
+**NOTE** that the `options_container` can be specified as inline JSON
+instead of a separate variable. This is standard across many CFEngine
+functions and explained in the `mergedata()` documentation.
+
 Currently only `file`, `http`, and `ftp` URLs are supported.
 Internally, `libcurl` is used.
 

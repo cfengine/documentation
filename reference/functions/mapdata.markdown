@@ -15,6 +15,10 @@ or parsed as JSON when `interpretation` is `json`.
 
 `array_or_container` can be a data container.
 
+**NOTE** that the `array_or_container` can be specified as inline JSON
+instead of a separate variable. This is standard across many CFEngine
+functions and explained in the `mergedata()` documentation.
+
 The `$(this.k)` and `$(this.v)` variables expand to the key and value
 of the current element, similar to the way `this` is available for
 `maplist`.
