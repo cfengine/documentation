@@ -1883,7 +1883,10 @@ efficient.
 When iterating over an array, Mustache templates in CFEngine can replace the `@`
 variable with the current iteration's key.  The example below will show it.
 
-The extensions are not in the Mustache standard.
+To iterate over the top-level container, Mustache templates in
+CFEngine can use `{{#-top-}} ... {{/-top-}}`.
+
+These extensions are not in the Mustache standard.
 
 **Example:**
 
