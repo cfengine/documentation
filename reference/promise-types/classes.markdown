@@ -278,7 +278,8 @@ on [Negative Knowledge][classes and decisions].
 ### select_class
 
 **Description:** Select one of the named list of classes to define based on
-host identity
+host's fully qualified domain name, the primary IP address and the UID that
+cf-agent is running under.
 
 The class is chosen deterministically (not randomly) but it is not
 possible to say which host will end up in which class in advance. Only
