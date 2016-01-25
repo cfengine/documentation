@@ -2,7 +2,7 @@
 layout: default
 title: Namespaces
 published: true
-sorting: 90
+sorting: 100
 tags: [manuals, language, syntax, concepts, namespace]
 ---
 
@@ -15,10 +15,11 @@ Everything in CFEngine lives in a namespace (it's the `default` namespace if not
 
 ### Specifying a namespace
 
-To isolate a file into its own namespace, you add a control promise to the 
-file before the relevant bundles or bodies. All bundles and bodies start off in the 
-`default` namespace if you don't explicitly set this. Once set, this applies 
-until the end of the file or the next namespace change.
+To isolate a file into its own namespace, you add a
+[file control promise][file control#namespace] to the file before the relevant
+bundles or bodies. All bundles and bodies start off in the `default` namespace
+if you don't explicitly set this. Once set, this applies until the end of the
+file or the next namespace change.
 
 ```cf3
     body file control

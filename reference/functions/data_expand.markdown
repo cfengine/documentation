@@ -12,6 +12,10 @@ tags: [reference, data functions, functions, json, container, expand]
 This function will take a data container and expand variable
 references **once** in all keys and values.
 
+**NOTE** that the `data_container` can be specified as inline JSON
+instead of a separate variable. This is standard across many CFEngine
+functions and explained in the `mergedata()` documentation.
+
 Any compound (arrays or maps) data structures will be expanded
 recursively, so for instance data in a map inside another map will be
 expanded.
@@ -33,4 +37,4 @@ Output:
    
 **History:** Was introduced in version 3.7.0 (2015)
 
-**See also:** `readcsv()`, `readjson()`, `readyaml()`, and `data` documentation.
+**See also:** `readcsv()`, `readjson()`, `readyaml()`, `mergedata()`, and `data` documentation.

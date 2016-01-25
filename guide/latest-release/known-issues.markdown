@@ -13,14 +13,6 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
-* Call collect functionality is not working properly in the 3.8 Beta
-  release. This will be fixed before the final.
-
-* There is no 3.8 Beta package for Windows. There will be for the final.
-
-* Mission Portal can not be used over HTTPS in the 3.8 Beta release. This will
-  be fixed before the final.
-
 ### HP-UX specific
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX

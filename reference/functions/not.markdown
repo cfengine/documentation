@@ -7,18 +7,26 @@ tags: [reference, data functions, functions, not]
 
 [%CFEngine_function_prototype(expression)%]
 
-**Description:** Calculate whether `expression` is false
+**Description:** Returns `any` if all arguments evaluate to false and `!any` if
+any argument evaluates to true.
 
 [%CFEngine_function_attributes(expression)%]
+
+**Argument Descriptions:**
+
+* `expression` - Class, class expression, or function that returns a class
 
 **Example:**
 
 ```cf3
 commands:
   "/usr/bin/generate_config $(config)"
-    ifvarclass => not(fileexists("/etc/config/$(config)"));
+    ifvarclass => not( fileexists("/etc/config/$(config)") );
 ```
 
-**Notes:**  
-   
+**Notes:** Introduced primarily for use with `ifvarclass`, `if`, and `unless`
+promise attributes.
+
+**See Also:** `and`, `or`, `not`
+
 **History:** Was introduced in 3.2.0, Nova 2.1.0 (2011)

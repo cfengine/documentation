@@ -11,6 +11,10 @@ tags: [reference, data functions, functions, variance]
 
 `list` can be a data container or a regular list.
 
+**NOTE** that the `list` can be specified as inline JSON
+instead of a separate variable. This is standard across many CFEngine
+functions and explained in the `mergedata()` documentation.
+
 [%CFEngine_function_attributes(list)%]
 
 Use the `eval()` function to easily get the standard deviation (square root of the variance).

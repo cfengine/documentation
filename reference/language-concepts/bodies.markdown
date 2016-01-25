@@ -2,7 +2,7 @@
 layout: default
 title: Bodies
 published: true
-sorting: 30
+sorting: 20
 tags: [language, concepts, syntax, body]
 ---
 
@@ -172,3 +172,36 @@ This promise bodies configures the `bundlesequence` to execute on a cf-agent.
 This promise body defines the clients allowed to connect to a cf-serverd. 
 For more information, see the reference documentation about the [CFEngine 
 Agents][Components and Common Control]
+
+#### Default bodies
+
+CFEngine 3.9 introduced a way to create default bodies. It allows defining, for given
+promise and body types, a body that will be used each time no body is defined.
+To use a body as default, name it `<promise_type>_<body_type>` and put it
+in the `bodydefault` namespace. For example, a default `action` body for `files`
+promises will be named `files_action`, and in each `files` promise, if no
+`action` attribute is set, the `files_action` action will be used.
+
+**Note:** The default bodies **only** apply to promises in the `default` namespace.
+
+In the following example, we define a default `action` body for `files`
+promises, that specifies an `action_policy => "warn"` to prevent actually modifying files
+and to only warn about considered modifications. We define it once,
+and don't have to explicitly put this body in all our `files` promises.
+
+```cf3
+body file control
+{
+   namespace => "bodydefault";
+}
+
+body action files_action
+{
+    action_policy => "warn";
+}
+
+body file control
+{
+    namespace => "default";
+}
+```

@@ -31,17 +31,25 @@ a JSON array, then merged as above.
 If any CFEngine "classic" array (`array[key]`) is named, it's first
 converted to a JSON object, then merged as above.
 
+If a literal JSON string like `[ 1,2,3 ]` is provided, it will be
+parsed and used.
+
+If any of the above-mentioned ways to reference variables are used
+**inside** a literal JSON string they will be expanded (or the
+function call will fail). This is similar to the behavior of
+Javascript, for instance.
+
+For example, `mergedata('[ thing, { "mykey": otherthing[123] } ]')`
+will wrap the `thing` in a JSON array; then the contents of
+`otherthing[123]` will be wrapped in a JSON map which will also go in
+the array.
+
+**NOTE** that the inline JSON behavior is standard across many
+CFEngine functions and not specific to `mergedata()`.
+
 `mergedata()` is thus a convenient way, together with `getindices()` and
 `getvalues()`, to bridge the gap between data container and the
 traditional list and array data types in CFEngine.
-
-If any of the above-mentioned variables are named inside brackets like
-`[ thing ]` then the `thing` will be wrapped in a JSON array and
-**then** merged..
-
-If any of the above-mentioned variables are named inside braces with a
-key like `{ "newkey": thing }` then the `thing` will be wrapped
-in a JSON object under key `newkey` and **then** merged.
 
 [%CFEngine_function_attributes()%]
 
@@ -52,5 +60,7 @@ in a JSON object under key `newkey` and **then** merged.
 Output:
 
 [%CFEngine_include_snippet(mergedata.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**History:** Was introduced in CFEngine 3.6.0 (2014). The inline JSON behavior was added in 3.9.
 
 **See also:** `getindices()`, `getvalues()`, `readjson()`, `parsejson()`, `readyaml()`, `parseyaml()`, and `data` documentation.

@@ -9,6 +9,12 @@ tags: [reference, data functions, functions, length]
 
 **Description:** Returns the length of `list`.
 
+`list` can be a data container or a regular list.
+
+**NOTE** that the `list` can be specified as inline JSON
+instead of a separate variable. This is standard across many CFEngine
+functions and explained in the `mergedata()` documentation.
+
 [%CFEngine_function_attributes(list)%]
 
 **Example:**
@@ -19,4 +25,4 @@ Output:
 
 [%CFEngine_include_snippet(length.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`nth()`][nth].
+**See also:** [`nth()`][nth], `mergedata()`.

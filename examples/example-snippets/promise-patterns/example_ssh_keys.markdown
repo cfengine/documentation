@@ -2,161 +2,78 @@
 layout: default
 title: Distribute ssh keys
 published: true
-tags: [Examples, Policy, ssh, distribution]
-reviewed: 2013-06-08
-reviewed-by: atsaloli
+tags: [Examples, Policy, ssh, authorized_keys, distribution]
+reviewed: 2015-12-15
+reviewed-by: nickanderson, enrico
 ---
 
-Let's say we have a list of users that are trusted
-to login to a set of servers managed by CFEngine.
+This example shows a simple ssh key distribution implementation.
 
-We are going to implement this trust relationship
-by ensuring the users' accounts on managed servers
-have a .ssh/authorized_keys file with each user's
-public key.
+The policy was designed to work with the `services_autorun` feature in
+the [Masterfiles Policy Framework][The Policy Framework]. The
+`services_autorun` feature can be enabled from the augments_file. If
+you do not have a `def.json` in the root of your masterfiles directory
+simply create it with the following content.
 
-Let's assume we collected all users' public keys
-into a single directory on the server and that
-users exist on the clients (and have corresponding
-home directory).  The following CFEngine policy
-distributes the keys from /var/cfengine/masterfiles/ssh_keys
-on the policy server to /var/cfengine/inputs/ssh_keys
-on the managed servers and from there each user's
-key will go to each user's .ssh/authorized_keys file.
-
-Note: special variable $(sys.policy_hub) contains
-the hostname of the policy server.
-
-
-You have to adapt this policy in the mentioned places for it to work in your environment.
-
-```cf3
-
-body common control {
-bundlesequence => { "distribute_ssh_keys" };
-inputs => { "libraries/cfengine_stdlib.cf" };
-}
-
-bundle agent distribute_ssh_keys
+```
 {
-vars:
-
-    "users"             slist => { "user1", "user2" };   # List of users to be included in key distribution.
-                                                         # Modify to include actual users.
-    "source_server"    string => "$(sys.policy_hub)";         # Server where keys are stored
-    "source_directory" string => "/var/cfengine/masterfiles/ssh_keys"; # Source directory of key files
-    "local_cache"      string => "/var/cfengine/inputs/ssh_keys";      # Local cache of key files
-
-files:
-
-   "$(local_cache)/$(users).pub"
-
-       comment => "Copy public keys from an authorized source into a cache on localhost",
-         perms => mo("600","root"),
-     copy_from => remote_cp("$(source_directory)/$(users).pub","$(source_server)"),
-        action => if_elapsed("60");  # wait 60 min before checking this promise again
-
-  # Ensure that authorized_keys file exists and has permissions 600 and call a file editing promise
-
-   "/home/$(users)/.ssh/authorized_keys"
-
-     comment => "Edit the authorized keys into the user's personal keyring",
-      create => "true",
-       perms => m("600"),
-   edit_line => insert_file_if_no_line_matching("$(users)","$(local_cache)/$(users).pub"),
-      action => if_elapsed("60"); 
-}
-
-#####
-
-bundle edit_line insert_file_if_no_line_matching(user,file)
-{
-
-# Check if user exists in the authorized_keys file
-classes:
-
-  "have_user"
-    expression => regline("$(user).*","$(this.promiser)");
-
-# Insert the content of the key file into authorized_keys if the user's key is not already there
-insert_lines:
-
-  !have_user::
-
-    "$(file)"
-      insert_type => "file";
+  "classes": {
+               "services_autorun": [ "any" ]
+             }
 }
 ```
 
-Example run:
+In the following example we will manage the `authorized_keys` file for
+`bob`, `frank`, and `kelly`.
 
-First, let's setup for the run. Put users' SSH keys into the key distribution point on the policy hub:
+For each listed user the `ssh_key_distribution` bundle is activated if
+the user exists on the system. Once activated the
+`ssh_key_distribution` bundle ensures that proper permissions are set
+on the users `.ssh` directory (home is assumed to be in
+`/home/username`) and ensures that the users `.ssh/authorized_keys` is
+a copy of the users `authorized_keys` file as found on the server as
+defined in the `ssh_key_info` bundle.
 
-```
-policy_hub# ls /var/cfengine/masterfiles/ssh_keys/*pub 
-/var/cfengine/masterfiles/ssh_keys/user1.pub  /var/cfengine/masterfiles/ssh_keys/user2.pub
-policy_hub# 
-```
+Let's assume we collected all users' public keys into a single
+directory on the server and that users exist on the clients (and have
+corresponding home directory).
 
-There are no authorized_keys files on the managed servers, but the home (and .ssh) directories exist:
+Note: special variable [`$(sys.policy_hub)`][sys#sys.policy_hub] contains the hostname of
+the policy server.
 
-```
-# ls -d /home/user*/.ssh
-/home/user1/.ssh  /home/user2/.ssh
-# ls /home/user?/.ssh/authorized_keys  
-ls: cannot access /home/user?/.ssh/authorized_keys: No such file or directory
-#
-```
+To deploy this policy simply place it in the `services/autorun`
+directory of your masterfiles.
 
-Run CFEngine on one of the managed servers to create
-and populate /var/cfengine/inputs/ssh_keys from source
-(policy_hub:/var/cfengine/masterfiles/ssh_keys)
-and then install each user's key into that user's
-authorized_keys file:
+[%CFEngine_include_example(simple_ssh_key_distribution.cf)%]
 
-```
-# cf-agent -f ssh.cf
-2013-06-08T15:49:29-0700    error: Failed to chdir into '/var/cfengine/inputs/ssh_keys'
-#
-```
-Note: the above error only happens on the first run.  Then /var/cfengine/inputs/ssh_keys
-is created and this error does not recur.
+Example Run:
 
-The local cache now contains the users' public keys:
+First make sure the users exist on your system.
 
 ```
-ls /var/cfengine/inputs/ssh_keys/
-user1.pub
-user2.pub
-#
+root@host001:~# useradd bob
+root@host001:~# useradd frank
+root@host001:~# useradd kelly
 ```
 
-CFEngine created authorized_keys files:
+Then update the policy and run it:
 
 ```
-# ls /home/user?/.ssh/auth*keys
-/home/user1/.ssh/authorized_keys
-/home/user2/.ssh/authorized_keys
-#
-```
-
-CFEngine installed the user's keys:
-
-```
-# more /home/user?/.ssh/auth*keys
-::::::::::::::
-/home/user1/.ssh/authorized_keys
-::::::::::::::
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjtmJf9QfME2KIV19C96EyRg1dizxKMTjLRsPtwsmC2fRyA3fRFvpUVKApigDTNxF5nDqfgGtY9
-0KhnuqjhOgYWnpm4dmiTdFXJ5XHuNPCc4JpsXBeyMy2f8e1aobb/dN5UhSSZmYb84FkYwbI/EkxJ46CmmOpOi6C5AjYfqwzshIGNgJS39hbtsUimc
-qBAOYTHzVpm5+KfHbNryZ9ORWEVcPvnchKtEfNu8iuDdecOxmWWUPhEyhUz7/SfZ4cPs7692JcIX2XQCsvsGWS5JPiVXGDPCcLz7WNI2A7rohoC9f
-vpE11CBigl7zTlB0M7nQYzpjaf7qS3AvOXw5CLUPD user1@examplehost
-::::::::::::::
-/home/user2/.ssh/authorized_keys
-::::::::::::::
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDhaBkZg7t63kNXqduU1LzLH+8DEkTGAhOjharGf6TMWL9fkWXS+Xjj2iD7KZgT2VBC9Hf8o+HhL
-al5kyHYH8qRxtPXMm5UVhIHnq8hxDQQPo/jW62wwxB0N2pF8oU4sMzMzCANJYE3C6H0rjIzgloiCIkBwL21WoFhxZ145z7VoKTEf0ICRk2+xmCc2W
-hX1pQVJzs5GlKlWEsJUp8Skqt+OuJTtIS4R3nJALvo7zindvum12DcbWfsrV5oW3gl89GkyDAdi1mWaqBmGX5qF5b19KaP4qdth61foUTR7NyHuCs
-C/hNB84Loy+2nMU8QpKJ7Ha6UyBtU2YrzDxL3YPgJ user2@examplehost
-#
+root@host001:~# cf-agent -Kf update.cf; cf-agent -KI
+    info: Installing cfe_internal_non_existing_package...
+    info: Created directory '/home/bob/.ssh/.'
+    info: Owner of '/home/bob/.ssh' was 0, setting to 1002
+    info: Object '/home/bob/.ssh' had permission 0755, changed it to 0700
+    info: Copying from '192.168.33.2:/srv/ssh_authorized_keys/bob'
+    info: Owner of '/home/bob/.ssh/authorized_keys' was 0, setting to 1002
+    info: Created directory '/home/frank/.ssh/.'
+    info: Owner of '/home/frank/.ssh' was 0, setting to 1003
+    info: Object '/home/frank/.ssh' had permission 0755, changed it to 0700
+    info: Copying from '192.168.33.2:/srv/ssh_authorized_keys/frank'
+    info: Owner of '/home/frank/.ssh/authorized_keys' was 0, setting to 1003
+    info: Created directory '/home/kelly/.ssh/.'
+    info: Owner of '/home/kelly/.ssh' was 0, setting to 1004
+    info: Object '/home/kelly/.ssh' had permission 0755, changed it to 0700
+    info: Copying from '192.168.33.2:/srv/ssh_authorized_keys/kelly'
+    info: Owner of '/home/kelly/.ssh/authorized_keys' was 0, setting to 1004
 ```
