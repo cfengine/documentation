@@ -61,7 +61,7 @@ bundle agent install_wget
       package_method => yum;
 
   reports:
-    "Installing the wget package is done here using CGEngine's 'packages' promise type. The installation of wget may not be necessary in many cases, as it might already be installed.";
+    "Installing the wget package is done here using CFEngine's 'packages' promise type. The installation of wget may not be necessary in many cases, as it might already be installed.";
 
 }
 
