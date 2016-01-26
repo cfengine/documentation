@@ -100,3 +100,8 @@ platforms than Debian, Ubuntu and Red Hat/CentOS.
 
 In order to add software inventory for other platforms,
 please contact support for a custom policy.
+
+### Enterprise - Unable to edit directory based users with dots in username
+
+Mission Portal does not allow users from a directory to be edited if they have
+dots in their username.
