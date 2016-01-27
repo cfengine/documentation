@@ -263,18 +263,14 @@ For details see [cfengine_internal_agent_email][The Policy Framework#cfengine_in
 
 #### How can I pass a data variable to template_data? ####
 
-Currently you cannot pass a [data variable][vars#data] directly to
-`template_data`, instead you must use one of the data-producing functions for
-example `mergedata`(), `readjson`(), or `parsejson`(). Please see the
-[Functions by Return Type][Functions#Functions by Return Type] table for a list
-of all data-producing functions.
+Just use `template_data => @(mycontainer)`.
 
-Note you can use `mergedata`() directly on a single data container,
-e.g. `template_data => mergedata(mycontainer)` to satisfy the syntactic quirk above.
+If you need to extract a portion of the container or merge it with another, use 
+`template_data => mergedata("mycontainer[piece]", "othercontainer")`.
 
 #### Can I render a Mustache template into a string? ####
 
-Not directly, you could render a file and read that into a string, but you would need to be cautious of CF_BUFSIZE.
+Yes, see `string_mustache()`.
 
 #### How do I render a section only if a given class is defined? ####
 
