@@ -143,7 +143,7 @@ refused access because it's not in the `cfengine.com` domain.
 access:
 
    "/path/file"
-   admit_hostname => { ".cfengine.com", "www.cfengine3.com" };
+   admit_hostnames => { ".cfengine.com", "www.cfengine3.com" };
 ```
 
 **See also:** `deny_hostnames`, `admit_ips`, `admit_keys`
@@ -218,7 +218,7 @@ in the `cfengine.com` domain.
 access:
 
    "/path/file"
-   deny_hostname => { ".cfengine.com", "www.cfengine3.com" };
+   deny_hostnames => { ".cfengine.com", "www.cfengine3.com" };
 ```
 
 [%CFEngine_promise_attribute()%]
