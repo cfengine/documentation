@@ -291,8 +291,8 @@ be IP addresses or hostnames, provided DNS name resolution is active. In
 order to reach this stage, a client must first have passed all of the
 standard connection tests in the control body.
 
-The lists may contain network addresses in CIDR notation or regular
-expressions to match the IP address or name of the connecting host.
+The lists may contain network addresses in CIDR notation
+to match the IP address or name of the connecting host.
 
 [%CFEngine_promise_attribute()%]
 
@@ -301,9 +301,10 @@ expressions to match the IP address or name of the connecting host.
 ```cf3
 access:
 
-  "/home/mark/LapTop"
+  "/var/share/scripts"
 
-    admit   => { "127.0.0.1", "192.168.0.1/24", ".*\.domain\.tld"  };
+    admit   => { "127.0.0.1", "192.168.0.1/24", ".cfengine.com"  };
+
 ```
 
 **Notes:**
@@ -332,8 +333,8 @@ access:
 
   "/path"
 
-    admit   => { ".*\.example\.org" },
-    deny    => { "badhost_1\.example\.org", "badhost_1\.example\.org" };
+    admit   => { ".example.org" },
+    deny    => { "badhost_1.example.org", "badhost_1.example.org" };
 }
 ```
 
@@ -402,7 +403,7 @@ access:
 
    "/path/file"
 
-    admit_hostnames => { ".*\.example\.org" },
+    admit_hostnames => { ".example.org" },
     ifencrypted => "true";
 ```
 
