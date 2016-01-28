@@ -97,7 +97,7 @@ reporting and orchestration.
   "collect_calls"
           comment => "Grant access to cfengine client to request the collection of its reports",
     resource_type => "query",
-        admit_ips => { "10.1.2.*" };
+        admit_ips => { "10.1.2.0/24" };
 
 
 }
@@ -283,60 +283,47 @@ access:
 
 ### admit
 
-**Description:** The `admit` slist contains host names or IP addresses
-to grant access to file objects.
-
-Admit promises grant access to file objects on the server. Arguments may
-be IP addresses or hostnames, provided DNS name resolution is active. In
-order to reach this stage, a client must first have passed all of the
-standard connection tests in the control body.
-
-The lists may contain network addresses in CIDR notation
-to match the IP address or name of the connecting host.
-
-[%CFEngine_promise_attribute()%]
-
-**Example:**
-
-```cf3
-access:
-
-  "/var/share/scripts"
-
-    admit   => { "127.0.0.1", "192.168.0.1/24", ".cfengine.com"  };
-
-```
-
-**Notes:**
-
-`admit` will be deprecated in CFEngine 3.7 in favor of `admit_ips`,
-`admit_hostnames`, and `admit_keys`.
-
+**Description:** The `admit` slist can contain a mix of entries in the
+syntax of `admit_ips`, `admit_hostnames` and `admit_keys`, and offers
+the same functionality. It's a legacy attribute that was split in the
+aforementioned attributes, and it's **not recommended** to use in new
+policy.
 
 ### deny
 
-**Description:** The `deny` slist contains host names or IP addresses
-to deny access to file objects.
-
-Denial is for special exceptions. A better strategy is always to grant
-on a need to know basis. A security policy based on exceptions is a weak
-one.
-
-[%CFEngine_promise_attribute()%]
-
-**Example:**
+**Description:** The `deny` slist can contain a mix of entries in the
+syntax of `deny_ips`, `deny_hostnames` and `deny_keys`, and offers the
+same functionality. It's a legacy attribute that was split in the
+aforementioned attributes, and it's **not recommended** to use in new
+policy. Example:
 
 ```cf3
 bundle server access_rules()
 {
 access:
 
-  "/path"
+  "/directory/"
 
-    admit   => { ".example.org" },
+    admit   => { "127.0.0.1", ".example.org" },
     deny    => { "badhost_1.example.org", "badhost_1.example.org" };
 }
 ```
+
+The best way to write the same policy would be the following:
+
+```cf3
+bundle server access_rules()
+{
+access:
+
+  "/directory/"
+
+    admit_ips       => { "127.0.0.1" },
+    admit_hostnames => { ".example.org" },
+    deny_hostnames  => { "badhost_1.example.org", "badhost_1.example.org" };
+}
+```
+
 
 **Notes:**
 Only regular expressions or exact matches are allowed in this list,
