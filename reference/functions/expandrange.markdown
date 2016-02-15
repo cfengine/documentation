@@ -36,3 +36,4 @@ interfaces:
        link_state => up;
 ```
 
+**History:** Introduced in CFEngine 3.7
