@@ -6,14 +6,14 @@ sorting: 40
 tags: [getting started, installation, enterprise production]
 ---
 
-These instructions describe how to install the latest version of CFEngine Enterprise in a production environment 
+These instructions describe how to install the latest version of CFEngine Enterprise in a production environment
 using pre-compiled rpm and deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.
 
 ## General Requirements
 
 CFEngine recommends the following:
 
-**Host Memory** 
+**Host Memory**
 
 During normal operation the CFEngine processes consume about 30 MB of resident memory (RSS) on hosts
 with the agent only (not acting as Policy Server).
@@ -30,14 +30,14 @@ Files\Cfengine`).  The higher disk usage on Windows is due to lack of support
 for sparse files on this platform, which is utilized by a dependency of
 CFEngine (lmdb) when available.
 
-The agent builds local differential reports for promise outcomes. The longer
-the period between collections from the enterprise hub the more resources are
-required to calculate these differentials. You can control the maximum disk
-space used by diff reports (contexts, variables, software
-installed, software patches, lastseen hosts and promise executions)
-`def.max_client_history_size`.
+The agent builds local differential reports for promise outcomes. The
+longer the period between collections from the enterprise hub the more
+resources are required to calculate these differentials. You can
+control the maximum disk space used by diff reports (contexts,
+variables, software installed, software patches, lastseen hosts and
+promise executions) by adjusting `def.max_client_history_size`.
 
-**Network** 
+**Network**
 
 * Verify that the machine’s network connection is working and that port 5308
   (used by CFEngine) is open for both incoming and outgoing connections.
@@ -137,7 +137,7 @@ You should also amend the value of `maxconnections` set in `cf_serverd.cf` under
 ## Install Packages
 
 CFEngine Enterprise is provided in two packages; one is for the Policy
-Server (hub) and the other is for each Host (client). 
+Server (hub) and the other is for each Host (client).
 
 **Log in as root** and then follow these steps to install CFEngine Enterprise:
 
@@ -172,8 +172,8 @@ $ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
 
 ## Licensed installations
 
-If you are evaluating CFEngine Enterprise or otherwise using it in an environment with 
-less than 25 agents connecting to a Policy Server, 
+If you are evaluating CFEngine Enterprise or otherwise using it in an environment with
+less than 25 agents connecting to a Policy Server,
 you do not need a license and there is no expiry.
 
 If you are a customer, please send the Policy Server's public key (`/var/cfengine/ppkeys/localhost.pub`) to
@@ -189,7 +189,7 @@ The Mission Portal is immediately accessible. Connect to the Policy Server
 through your web browser at http://`<IP address of your Policy Server>`.
 
 To be able to use the Mission Portal's Design Center
-front-end, continue with [integrating Mission Portal with git] [Integrating Mission Portal with git]. 
+front-end, continue with [integrating Mission Portal with git] [Integrating Mission Portal with git].
 
 Learn more about CFEngine by using the following resources:
 
