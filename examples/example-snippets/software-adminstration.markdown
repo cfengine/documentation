@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Software Administration Examples 
+title: Software Administration Examples
 published: true
 sorting: 4
 tags: [Examples,Software Administration]

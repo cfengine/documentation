@@ -90,7 +90,7 @@ network activity, etc. As for execution results, CFEngine can have 3 states:
 | Promise Repaired       | Actual state was not equal to Desired State, but the agent was able to repair the state into compliance |
 | Promise not Kept       | Actual state was not equal to Desired state and the agent was not able to restore into compliance |
 
- 
+
 Graphical illustration of CFEngine process
 ![Graphical illustration of high level workflow](learn_CFEngine-process-in-1-2-3_blocks_with_arrows.png)
 

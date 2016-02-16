@@ -18,5 +18,5 @@ Example output:
 2013-06-08T14:56:26-0700     info: /example/files/'/home/mark/tmp/test_plain': Created file '/home/mark/tmp/test_plain', mode 0640
 2013-06-08T14:56:26-0700     info: /example/files/'/home/mark/tmp/test_dir/.': Created directory '/home/mark/tmp/test_dir/.'
 2013-06-08T14:56:26-0700     info: /example/files/'/home/mark/tmp/test_dir/.': Object '/home/mark/tmp/test_dir' had permission 0755, changed it to 0750
-# 
+#
 ```

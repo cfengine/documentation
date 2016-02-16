@@ -11,10 +11,10 @@ tags: [reference, utility functions, functions, execresult]
 
 If the command is not found, the result will be the empty string.
 
-The `shell` argument decides whether a shell will be used to encapsulate the 
-command. This is necessary in order to combine commands with pipes etc, but 
-remember that each command requires a new process that reads in files beyond 
-CFEngine's control. Thus using a shell is both a performance hog and a 
+The `shell` argument decides whether a shell will be used to encapsulate the
+command. This is necessary in order to combine commands with pipes etc, but
+remember that each command requires a new process that reads in files beyond
+CFEngine's control. Thus using a shell is both a performance hog and a
 potential security issue.
 
 [%CFEngine_function_attributes(command, shell)%]

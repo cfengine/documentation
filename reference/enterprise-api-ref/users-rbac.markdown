@@ -7,13 +7,13 @@ tags: [reference, enterprise, REST, API, reporting, URI, users, rbac]
 
 This REST API allows to manage users allowed to use Mission Portal as also Role Based Access Control settings.
 
-## List users 
+## List users
 
 **URI:** https://hub.cfengine.com/api/user
 
 **Method:** GET
 
-List all users. 
+List all users.
 API call allowed only for administrator.
 
 **Parameters:**

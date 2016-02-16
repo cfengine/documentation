@@ -12,9 +12,9 @@ tags: [reference, communication functions, functions, hostswithclass]
 **Description:** Returns a list from the CFEngine Database with the information
 `field` of hosts on which `classs` is set.
 
-On CFEngine Enterprise, this function can be used to return a list of 
-hostnames or ip-addresses of hosts that have a given class set. Note that this 
-function only works locally on the hub, but allows the hub to construct custom 
+On CFEngine Enterprise, this function can be used to return a list of
+hostnames or ip-addresses of hosts that have a given class set. Note that this
+function only works locally on the hub, but allows the hub to construct custom
 configuration files for (classes of) hosts.
 
 [%CFEngine_function_attributes(class, field)%]

@@ -6,21 +6,21 @@ sorting: 2
 tags: [overviews, writing policy, policy]
 ---
 
-CFEngine offers a number of layers of abstraction. The most fundamental atom 
-in CFEngine is the promise. Promises can be made about many system issues, and 
+CFEngine offers a number of layers of abstraction. The most fundamental atom
+in CFEngine is the promise. Promises can be made about many system issues, and
 you described in what context promises are to be kept.
 
-CFEngine is designed to handle high level simplicity (without sacrificing low 
-level capability) by working with configuration patterns. After all, 
-configuration is all about promising consistent patterns in the resources of 
-the system. Lists, for instance, are a particularly common kind of pattern: 
-*for each of the following... make a similar promise*. There are several ways 
+CFEngine is designed to handle high level simplicity (without sacrificing low
+level capability) by working with configuration patterns. After all,
+configuration is all about promising consistent patterns in the resources of
+the system. Lists, for instance, are a particularly common kind of pattern:
+*for each of the following... make a similar promise*. There are several ways
 to organize patterns, using containers, lists and associative arrays.
 
 ## Menu level
 
-At this high level, a user `selects` from a set of pre-defined `services` (or 
-bundles in CFEngine parlance). The selection is not made by every host, rather 
+At this high level, a user `selects` from a set of pre-defined `services` (or
+bundles in CFEngine parlance). The selection is not made by every host, rather
 one places hosts into roles that will keep certain promises.
 
 ```cf3
@@ -48,12 +48,12 @@ one places hosts into roles that will keep certain promises.
 
 ## Bundle level
 
-At this level, users can switch on and off predefined features, or re-use 
+At this level, users can switch on and off predefined features, or re-use
 standard methods, e.g. for editing files:
 
 ```cf3
-    body common control 
-    { 
+    body common control
+    {
     bundlesequence => {
                      webserver("on"),
                      dns("on"),
@@ -62,14 +62,14 @@ standard methods, e.g. for editing files:
                      };
     }
 ```
-    
+
 The set of bundles that can be selected from is extensible by the user.
 
 ## Promise level
 
-This is the most detailed level of configuration, and gives full convergent 
-promise behavior to the user. At this promise level, you can specify every 
-detail of promise-keeping behavior, and combine promises together, reusing 
+This is the most detailed level of configuration, and gives full convergent
+promise behavior to the user. At this promise level, you can specify every
+detail of promise-keeping behavior, and combine promises together, reusing
 bundles and methods from standard libraries, or creating your own.
 
 ```cf3

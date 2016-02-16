@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, splitstring]
 
 [%CFEngine_function_prototype(string, regex, maxent)%]
 
-**Description:** Splits `string` into at most `maxent` substrings wherever 
+**Description:** Splits `string` into at most `maxent` substrings wherever
 `regex` occurs, and  returns the list with those strings.
 
 The regular expression is [unanchored][unanchored].

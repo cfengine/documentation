@@ -21,7 +21,7 @@ Hosts table contains basic information about hosts managed by CFEngine.
 * **HostKey** *(text)*
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
-* **HostName** *(text)* 
+* **HostName** *(text)*
     Host name locally detected on the host, configurable as `hostIdentifier` option in [Settings API][Status and Settings REST API#Get settings] and Mission Portal settings UI.
 
 * **IPAddress** *(text)*
@@ -36,12 +36,12 @@ Hosts table contains basic information about hosts managed by CFEngine.
 **Example query:**
 
 ```sql
-SELECT hostkey, 
-       hostname, 
-       ipaddress, 
-       lastreporttimestamp, 
-       firstreporttimestamp 
-FROM   hosts; 
+SELECT hostkey,
+       hostname,
+       ipaddress,
+       lastreporttimestamp,
+       firstreporttimestamp
+FROM   hosts;
 ```
 
 **Output:**
@@ -77,7 +77,7 @@ Agent status contains information about last cf-agent execution.
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
 * **AgentExecutionInterval** *(integer)*
-    Estimated interval in which cf-agent is being executed, as cf-agent execution interval is expressed in cfengine context expressions (Min00_05 etc.) it can be not regular, this interval is discovered by analyzing last few cf-agent execution timestamps. Expressed in seconds. 
+    Estimated interval in which cf-agent is being executed, as cf-agent execution interval is expressed in cfengine context expressions (Min00_05 etc.) it can be not regular, this interval is discovered by analyzing last few cf-agent execution timestamps. Expressed in seconds.
 
 * **LastAgentLocalExecutionTimeStamp** *(timestamp)*
     Timestamp of last cf-agent execution on the host.
@@ -88,11 +88,11 @@ Agent status contains information about last cf-agent execution.
 **Example query:**
 
 ```sql
-SELECT hostkey, 
-       agentexecutioninterval, 
-       lastagentlocalexecutiontimestamp, 
-       lastagentexecutionstatus 
-FROM   agentstatus; 
+SELECT hostkey,
+       agentexecutioninterval,
+       lastagentlocalexecutiontimestamp,
+       lastagentexecutionstatus
+FROM   agentstatus;
 ```
 
 **Output:**
@@ -131,17 +131,17 @@ CFEngine contexts present on hosts at their last reported cf-agent execution.
     List of [meta tags][Tags for variables, classes, and bundles] set for the context.
 
 * **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when context is set in its current form. 
+    Timestamp since when context is set in its current form.
     **Note:** If any of context attributes change, the timestamp will be updated.
 
 **Example query:**
 
 ```sql
-SELECT hostkey, 
-       contextname, 
-       metatags, 
-       changetimestamp 
-FROM   contexts; 
+SELECT hostkey,
+       contextname,
+       metatags,
+       changetimestamp
+FROM   contexts;
 ```
 
 **Output:**
@@ -194,21 +194,21 @@ Variables and their values set on hosts at their last reported cf-agent executio
     List of [meta tags][Tags for variables, classes, and bundles] set for the variable.
 
 * **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when variable is set in its current form. 
+    Timestamp since when variable is set in its current form.
     **Note:** If any of variable attributes change such as its `VariableValue` or `Bundle`, the timestamp will be updated.
 
 **Example query:**
 
 ```sql
-SELECT hostkey, 
-       namespace, 
-       bundle, 
-       variablename, 
-       variablevalue, 
-       variabletype, 
-       metatags, 
-       changetimestamp 
-FROM   variables; 
+SELECT hostkey,
+       namespace,
+       bundle,
+       variablename,
+       variablevalue,
+       variabletype,
+       metatags,
+       changetimestamp
+FROM   variables;
 ```
 
 **Output:**
@@ -260,7 +260,7 @@ More information about CFEngine and package management can be found [here][packa
     Software package version.
 
 * **SoftwareArchitecture** *(text)*
-    Architecture. 
+    Architecture.
 
 * **ChangeTimeStamp** *(timestamp)*
     Timestamp when the package was discovered / installed on the host.
@@ -268,12 +268,12 @@ More information about CFEngine and package management can be found [here][packa
 **Example query:**
 
 ```sql
-SELECT hostkey, 
-       softwarename, 
-       softwareversion, 
-       softwarearchitecture, 
-       changetimestamp 
-FROM   software; 
+SELECT hostkey,
+       softwarename,
+       softwareversion,
+       softwarearchitecture,
+       changetimestamp
+FROM   software;
 ```
 
 **Output:**
@@ -333,7 +333,7 @@ SELECT hostkey,
        patcharchitecture,
        patchreporttype,
        changetimestamp
-FROM   softwareupdates; 
+FROM   softwareupdates;
 ```
 
 **Output:**
@@ -402,7 +402,7 @@ Promises executed on hosts during their last reported cf-agent run.
     Promise execution result.
     * `KEPT` - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.
     * `REPAIRED` - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.
-    * `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification. 
+    * `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification.
 
 * **LogMessages** *(text[])*
     List of 5 last messages generated during promise execution. If the promise is `KEPT` the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
@@ -431,7 +431,7 @@ SELECT hostkey,
        logmessages,
        promisees,
        changetimestamp
-FROM   softwareupdates; 
+FROM   softwareupdates;
 ```
 
 **Output:**
@@ -477,7 +477,7 @@ bundlename      | logrotate
 promisetype     | files
 promiser        | /var/cfengine/cf3.hub.runlog
 stackpath       | /default/cfe_internal_management/files/'any'/default/...
-promisehandle   | 
+promisehandle   |
 promiseoutcome  | REPAIRED
 logmessages     | {"Rotating files '/var/cfengine/cf3.hub.runlog'"}
 promisees       | {}
@@ -518,7 +518,7 @@ SELECT hostkey,
        remotehostip,
        lastseentimestamp,
        lastseeninterval
-FROM   lastseenhosts; 
+FROM   lastseenhosts;
 ```
 
 **Output:**
@@ -583,7 +583,7 @@ SELECT hostkey,
        changetimestamp,
        changetype,
        changedetails
-FROM   filechangeslog; 
+FROM   filechangeslog;
 ```
 
 **Output:**
@@ -622,7 +622,7 @@ CFEngine contexts set on hosts by CFEngine over period of time.
     Unique host identifier. All tables can be joined by `HostKey` to connect data concerning same hosts.
 
 * **ChangeTimeStamp** *(timestamp)*
-    Timestamp since when context is set in its current form. 
+    Timestamp since when context is set in its current form.
     **Note:** The statement if true till present time or newer entry claims otherwise.
 
 * **ChangeOperation** *(`ADD`,`CHANGE`,`REMOVE`,`UNTRACKED`)*
@@ -642,12 +642,12 @@ CFEngine contexts set on hosts by CFEngine over period of time.
 **Example query:**
 
 ```sql
-SELECT hostkey, 
-       changetimestamp, 
-       changeoperation, 
+SELECT hostkey,
+       changetimestamp,
+       changeoperation,
        contextname,
        metatags
-FROM   contextslog; 
+FROM   contextslog;
 ```
 
 **Output:**
@@ -725,7 +725,7 @@ SELECT hostkey,
        variablevalue,
        variabletype,
        metatags
-FROM   variableslog; 
+FROM   variableslog;
 ```
 
 **Output:**
@@ -788,7 +788,7 @@ More information about CFEngine and package management can be found [here][packa
     Software package version.
 
 * **SoftwareArchitecture** *(text)*
-    Architecture. 
+    Architecture.
 
 **Example query:**
 
@@ -799,7 +799,7 @@ SELECT hostkey,
        softwarename,
        softwareversion,
        softwarearchitecture
-FROM   softwarelog; 
+FROM   softwarelog;
 ```
 
 **Output:**
@@ -844,7 +844,7 @@ Patches available for installed packages on the hosts (as reported by local pack
 * **ChangeOperation** *(`ADD`,`REMOVE`)*
     CFEngine uses incremental diffs to report it's state. `ChangeOperation` is a diff state describing current entry.
     * `ADD` - New patch have been detected. This is a common in case of release of new patch version or new package was installed that have an upgrate available.
-    * `REMOVE` - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated. 
+    * `REMOVE` - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated.
     **Note:** CFEngine reports only the most up to date version available.
 
 * **PatchName** *(text)*
@@ -869,7 +869,7 @@ SELECT hostkey,
        patchversion,
        patcharchitecture,
        patchreporttype
-FROM   softwareupdateslog; 
+FROM   softwareupdateslog;
 ```
 
 **Output:**
@@ -952,7 +952,7 @@ Promise status / outcome changes over period of time.
     Promise execution result.
     * `KEPT` - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.
     * `REPAIRED` - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.
-    * `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification. 
+    * `NOTKEPT` - CFEngine has failed to converge the system according to the promise specification.
 
 * **LogMessages** *(text[])*
     List of 5 last messages generated during promise execution. If the promise is `KEPT` the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.
@@ -978,7 +978,7 @@ SELECT hostkey,
        promiseoutcome,
        logmessages,
        promisees
-FROM   promiseexecutionslog; 
+FROM   promiseexecutionslog;
 ```
 
 **Output:**
@@ -996,7 +996,7 @@ bundlename      | cfsketch_run
 promisetype     | methods
 promiser        | cfsketch_g
 stackpath       | /default/cfsketch_run/methods/'cfsketch_g'[0]
-promisehandle   | 
+promisehandle   |
 promiseoutcome  | KEPT
 logmessages     | {}
 promisees       | {}
@@ -1067,7 +1067,7 @@ SELECT hostkey,
        averagevalue,
        lastvalue,
        checktimestamp
-FROM   benchmarkslog; 
+FROM   benchmarkslog;
 ```
 
 **Output:**
@@ -1121,7 +1121,7 @@ SELECT hostkey,
        checktimestamp,
        message,
        querytype,
-FROM   hubconnectionErrors; 
+FROM   hubconnectionErrors;
 ```
 
 **Output:**

@@ -7,12 +7,12 @@ tags: [Components, cf-execd]
 keywords: [executor]
 ---
 
-`cf-execd` is the scheduling daemon for `cf-agent`. It runs 
-`cf-agent` locally according to a schedule specified in policy code (executor 
-control body). After a `cf-agent` run is completed, `cf-execd` gathers output 
-from `cf-agent`, and may be configured to email the output to a specified 
-address. It may also be configured to [splay][cf-execd#splaytime] (randomize) 
-the execution schedule to prevent synchronized `cf-agent` runs across a 
+`cf-execd` is the scheduling daemon for `cf-agent`. It runs
+`cf-agent` locally according to a schedule specified in policy code (executor
+control body). After a `cf-agent` run is completed, `cf-execd` gathers output
+from `cf-agent`, and may be configured to email the output to a specified
+address. It may also be configured to [splay][cf-execd#splaytime] (randomize)
+the execution schedule to prevent synchronized `cf-agent` runs across a
 network.
 
 `cf-execd` keeps the promises made in `common` bundles, and is affected by

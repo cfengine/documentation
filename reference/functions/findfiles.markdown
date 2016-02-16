@@ -25,7 +25,7 @@ This function, used together with the `bundlesmatching` function,
 allows you to do dynamic inputs and a dynamic bundle call chain.
 
 
-**Example:**  
+**Example:**
 
 
 [%CFEngine_include_snippet(findfiles.cf, #\+begin_src cfengine3, .*end_src)%]

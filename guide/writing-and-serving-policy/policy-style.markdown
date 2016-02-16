@@ -23,7 +23,7 @@ guide.
 ## Whitespace and Line Length
 
 Spaces are preferred to tab characters. Lines should not have trailing
-whitespace. Generally line length should not surpass 80 characters. 
+whitespace. Generally line length should not surpass 80 characters.
 
 ## Curly brace alignment
 
@@ -108,12 +108,12 @@ the same line after the attribute.
 ```cf3
     bundle agent example(param1)
     # This is an example bundle to illustrate comments
-    # param1 - string - 
+    # param1 - string -
     {
       vars:
           "copy_of_param1" string => "$(param1)";
 
-          "jedi" slist => { 
+          "jedi" slist => {
                             "Obi-Wan Kenobi",
                             "Luke Skywalker",
                             "Yoda",
@@ -168,8 +168,8 @@ when debugging a large policy set.
 
 ## Promise Handles
 
-Promise handles uniquely identify a promise within a policy. We suggest a simple naming 
-scheme of `bundle_name_promise_type_class_restriction_promiser` to keep handles unique and 
+Promise handles uniquely identify a promise within a policy. We suggest a simple naming
+scheme of `bundle_name_promise_type_class_restriction_promiser` to keep handles unique and
 easily identifiable.  Often it may be easier to omit the handle.
 
 ```cf3

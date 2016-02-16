@@ -7,11 +7,11 @@ tags: [reference, components, cf-hub, enterprise]
 keywords: [hub]
 ---
 
-`cf-hub` connects to `cf-serverd` instances to collect data 
+`cf-hub` connects to `cf-serverd` instances to collect data
 about a host managed by CFEngine. `cf-agent` and `cf-monitord`
-both store data at host in local databases. `cf-hub` connects to a 
-`cf-serverd` instance running at a host and collect the data into its own 
-central database. `cf-hub` automatically schedules data collection from hosts 
+both store data at host in local databases. `cf-hub` connects to a
+`cf-serverd` instance running at a host and collect the data into its own
+central database. `cf-hub` automatically schedules data collection from hosts
 that have registered a connection with a collocated `cf-serverd`
 
 `cf-hub` keeps the promises made in `common`, and is affected by
@@ -143,9 +143,9 @@ do it without a good reason.
 
 ### client_history_timeout
 
-**Description:** If the hub can't reach a client for this many (or more) hours, 
-it will not collect the missed reports and it will continue collection 
-from current time. This is done to speed-up report collection 
+**Description:** If the hub can't reach a client for this many (or more) hours,
+it will not collect the missed reports and it will continue collection
+from current time. This is done to speed-up report collection
 and minimize data transfer. The default value is 6 hours.
 
 **Type:** `int`

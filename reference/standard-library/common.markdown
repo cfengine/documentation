@@ -6,7 +6,7 @@ sorting: 10
 tags: [reference, standard library]
 ---
 
-See the [common promise attributes][Promise Types and Attributes#Common Attributes] 
+See the [common promise attributes][Promise Types and Attributes#Common Attributes]
 documentation for a comprehensive reference on the body types and attributes used here.
 
 To use these bodies, add the following to your policy:

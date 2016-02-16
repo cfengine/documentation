@@ -5,8 +5,8 @@ published: true
 tags: [reference, variables, sys, discovery, system, inventory]
 ---
 
-System variables are derived from CFEngine's automated discovery of system 
-values. They are provided as variables in order to make automatically adaptive 
+System variables are derived from CFEngine's automated discovery of system
+values. They are provided as variables in order to make automatically adaptive
 rules for configuration.
 
 ```cf3
@@ -132,7 +132,7 @@ The variable gives the location of the current users's master crontab
 directory.
 
 ```cf3
-    # crontab = /var/spool/crontab/root 
+    # crontab = /var/spool/crontab/root
 ```
 
 ### sys.date
@@ -159,7 +159,7 @@ general there is no way to discover this value automatically. The
 
 ```cf3
     # domain = example.org
- 
+
 ```
 
 ### sys.enterprise_version
@@ -323,7 +323,7 @@ Outputs:
     R: eth0 flags: up broadcast running multicast
 
 
-The following device flags are supported: 
+The following device flags are supported:
 
 * up
 * broadcast
@@ -342,7 +342,7 @@ The following device flags are supported:
 ### sys.ip_addresses
 
 Displays a system list of IP addresses currently in use by the system.
-This list is detected at runtime and passed in the variables report to the 
+This list is detected at runtime and passed in the variables report to the
 CFEngine Enterprise Database.
 
 To use this list in a policy, you will need a local copy since only
@@ -372,12 +372,12 @@ local variables can be iterated.
 
 All four octets of the IPv4 address of the first system interface.
 
-**Note**:  
+**Note**:
 
-If your system has a single ethernet interface, `$(sys.ipv4)` will contain 
-your IPv4 address. However, if your system has multiple interfaces, then 
-`$(sys.ipv4)` will simply be the IPv4 address of the first interface in the 
-list that has an assigned address, Use `$(sys.ipv4[interface_name])` for 
+If your system has a single ethernet interface, `$(sys.ipv4)` will contain
+your IPv4 address. However, if your system has multiple interfaces, then
+`$(sys.ipv4)` will simply be the IPv4 address of the first interface in the
+list that has an assigned address, Use `$(sys.ipv4[interface_name])` for
 details on obtaining the IPv4 addresses of all interfaces on a system.
 
 ### sys.ipv4[interface_name]
@@ -401,7 +401,7 @@ array index, e.g. `$(ipv4[le0])` or `$(ipv4[xr1])`.
     #   ipv4[xr1] = 10.12.7.254
 ```
 
-**Note**:  
+**Note**:
 
 The list of interfaces may be acquired with `getindices("sys.ipv4")` (or
 from any of the other associative arrays). Only those interfaces which
@@ -710,7 +710,7 @@ system directory.
 
 ### sys.workdir
 
-The location of the CFEngine work directory and cache. 
+The location of the CFEngine work directory and cache.
 For the system privileged user this is normally:
 
 ```cf3

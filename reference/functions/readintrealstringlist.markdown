@@ -11,11 +11,11 @@ tags: [reference, io functions, functions, readintlist, readreallist, readstring
 
 **Return type:** `ilist`, `rlist` or `slist`
 
-**Description:** Splits the file `filename` into separated 
+**Description:** Splits the file `filename` into separated
 values and returns the list.
 
-The `comment` regex will strip out unwanted patterns from the file being read, 
-leaving unstripped characters to be split into fields. Using the empty string 
+The `comment` regex will strip out unwanted patterns from the file being read,
+leaving unstripped characters to be split into fields. Using the empty string
 (`""`) indicates no comments.
 
 **Arguments**:
@@ -25,7 +25,7 @@ leaving unstripped characters to be split into fields. Using the empty string
 * `split` : [Unanchored][unanchored] regex to split data, in the range `.*`
 * `maxentries` : Maximum number of entries to read, in the range
 `0,99999999999`
-* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`   
+* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
 
 **Example:**
 

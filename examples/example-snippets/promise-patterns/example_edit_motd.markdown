@@ -55,7 +55,7 @@ root@debian8:~/core/examples# cat /etc/motd
     ¤ ¤¤¤ ¤	 And is a Policy Client
     ¤     ¤
       ¤¤¤
-      ¤ ¤	 
+      ¤ ¤	
       ¤ ¤	 Host IP 10.100.251.53
       ¤ ¤	 20 package updates available.
                  Support Contact:

@@ -13,9 +13,9 @@ or available, but provides a context for variables where one is needed
 
 ```cf3
     bundle agent resolver(s,n)
-    { 
+    {
     files:
-      "$(sys.resolv)" 
+      "$(sys.resolv)"
 
           create        => "true",
           edit_line     => doresolv("@(this.s)","@(this.n)"),
@@ -130,7 +130,7 @@ and is always an integer.  On the Windows platform it's always 0.
 
 ### this.service_policy
 
-In a services promise, this variable is set to the value of the promise 
+In a services promise, this variable is set to the value of the promise
 attribute `service_policy`. For example:
 
 ```cf3
