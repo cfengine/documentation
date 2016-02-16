@@ -8,9 +8,9 @@ tags: [cfengine enterprise, user interface, mission portal]
 
 ## Create a New Alert ##
 
-* From the Dashboard, locate the rectangle with the dotted border. 
+* From the Dashboard, locate the rectangle with the dotted border.
 
-* When the cursor is hovering over top, an **Add** button will appear. 
+* When the cursor is hovering over top, an **Add** button will appear.
 
 
 ![New Alerts](Alerts.new.png)
@@ -47,7 +47,7 @@ tags: [cfengine enterprise, user interface, mission portal]
 * Each alert also has a **Condition type**:
 	* **Policy** conditions trigger alerts based on CFEngine policy compliance status. They can be set on bundles, promisees, and promises. If nothing is specified, they will trigger alerts for all policy.
 
-	* **Inventory** conditions trigger alerts for inventory attributes. These attributes correspond to the ones found in inventory reports. 
+	* **Inventory** conditions trigger alerts for inventory attributes. These attributes correspond to the ones found in inventory reports.
 
 	* **Sketch** conditions trigger alerts based on the compliance status of the part of CFEngine policy which has been added by a specific sketch during its activation.
 

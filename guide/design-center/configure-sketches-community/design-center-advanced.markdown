@@ -8,8 +8,8 @@ tags: [design center, walkthrough, cf-sketch, sketches]
 
 This walkthrough illustrates how a Design Center sketch can be found,
 installed, configured, and executed as policy. Many items are already discussed at
-[Command Line Sketches][Command Line Sketches]. 
-This Walkthrough provides a more advanced look at sketches in that it describes internal and backend processes. 
+[Command Line Sketches][Command Line Sketches].
+This Walkthrough provides a more advanced look at sketches in that it describes internal and backend processes.
 
 Please note the following instructions will work with CFEngine Enterprise as well, but the Mission Portal **Design Center App** is a better user interface for most of the topics covered here.
 
@@ -18,7 +18,7 @@ Please note the following instructions will work with CFEngine Enterprise as wel
 Make certain you have installed all necessary software and have checked out the Design Center repository:
 
 [Complete the software requirements][Command Line Sketches#Requirements]
- 
+
 [Review the basics concepts of sketches][Command Line Sketches#Basic Concepts]
 
 [Check out the Design Center repository][Command Line Sketches#Step 1. Check out the Design Center repository]
@@ -99,7 +99,7 @@ a URL such as
 
 You can save some typing by entering
 
-    export DCJ=~/.cfagent/dc-api-config.json    
+    export DCJ=~/.cfagent/dc-api-config.json
 
 at the prompt. From that point on, all command-line interaction can
 use `$DCJ` and it will expand to the filename above.
@@ -113,7 +113,7 @@ as `$CFAPI` for brevity.
 You can save some typing by entering
 
     export CFAPI=$CHECKOUT/tools/cf-sketch/cf-dc-api.pl
-    
+
 at the prompt.  From that point on, all command-line interaction can
 use `$CFAPI` and it will expand to the command above.
 
@@ -130,7 +130,7 @@ know this protocol or know that it is used.
 	echo '{ dc_api_version: "3.6.0", request: {search: true } }' | $CFAPI $DCJ
 
 If you get errors here, you might be missing Perl modules or the
-CFEngine agent. Look at the [Design Center Wiki](https://github.com/cfengine/design-center/wiki) 
+CFEngine agent. Look at the [Design Center Wiki](https://github.com/cfengine/design-center/wiki)
 for possible solutions to your problem.
 
 Output:
@@ -199,7 +199,7 @@ CFEngine AS, 2013.
 
 Enter any command to cf-sketch, use 'help' for help, or 'quit' or '^D' to quit.
 
-cf-sketch> 
+cf-sketch>
 
 ```
 
@@ -214,7 +214,7 @@ Applications::Memcached Sketch for installing, configuring, and starting memcach
 ...
 Yale::stdlib Yale standard library
 
-cf-sketch> 
+cf-sketch>
 ```
 
 This is the easiest method but you might want the expert or direct API
@@ -225,7 +225,7 @@ interaction for specific purposes.  All three are shown throughout this Walkthro
 #### Install a sketch with the Design Center API
 
     echo '{ dc_api_version: "3.6.0", request: {install: {sketch:"System::motd", force:true} } }' | $CFAPI $DCJ
-    
+
 The `force` parameter tells the Design Center API to overwrite the
 sketch even if it is installed already.
 
@@ -332,7 +332,7 @@ cf-sketch> install System::motd
 
 Sketch System::motd installed under /home/tzz/.cfagent/inputs/sketches.
 
-cf-sketch> 
+cf-sketch>
 ```
 
 To view verbose output, use
@@ -444,7 +444,7 @@ Activating sketch System::motd with parameters motd_params.
 ...
 DCAPI::log(DCAPI.pm:1061): Activations for sketch System::motd are now [{"params":["parameter definition from /home/tzz/source/design-center/sketches/system/motd/params/simple.json"],"environment":"cf_sketch_testing","target":"/home/tzz/.cfagent/inputs/sketches"},{"params":["motd_params"],"environment":"walkthrough","target":"/home/tzz/.cfagent/inputs/sketches","identifier":"System::motd-1"}]
 
-cf-sketch> 
+cf-sketch>
 ```
 
 As you can see, the expert and interactive modes have completely
@@ -500,7 +500,7 @@ Output:
     ...
     DCAPI::log(DCAPI.pm:249): Saving runfile /home/tzz/.cfagent/inputs/api-runfile.cf
 
-Run the runfile:  
+Run the runfile:
 
     cf-agent -KI -f ~/.cfagent/inputs/api-runfile.cf
 
@@ -522,7 +522,7 @@ DCAPI::log(DCAPI.pm:249): Saving runfile /home/tzz/.cfagent/inputs/api-runfile.c
 Runfile /home/tzz/.cfagent/inputs/api-runfile.cf successfully generated.
 ```
 
-Run it:  
+Run it:
 
     cf-agent -KI -f ~/.cfagent/inputs/api-runfile.cf
 

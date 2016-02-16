@@ -9,7 +9,7 @@ CFEngine Enterprise is an IT automation platform that uses a model-based approac
 
 ## WebScale IT Automation ##
 
-CFEngine Enterprise provides a secure and stable platform for building and managing both physical and virtual infrastructure. Its distributed architecture, minimal dependencies, and lightweight autonomous agents enable you to manage 5,000 nodes from a single policy server. 
+CFEngine Enterprise provides a secure and stable platform for building and managing both physical and virtual infrastructure. Its distributed architecture, minimal dependencies, and lightweight autonomous agents enable you to manage 5,000 nodes from a single policy server.
 
 WebScale does not just imply large server deployments. The speed at which changes are conceived and committed across infrastructure and applications is equally important. Due to execution times measurable in seconds, and one of the most efficient verification mechanisms, CFEngine reduces exposure to unwarranted changes, and prevents extreme delays for planned changes that need to be applied urgently at scale.
 
@@ -39,7 +39,7 @@ CFEngine Enterprise has a simple distributed architecture that scales with minim
 
 ### Configurable Data Feeds ###
 
-The CFEngine Enterprise `Mission Portal` provides System Administrators and Infrastructure Engineers with detailed information about the actual state of the IT infrastructure and how that compares with the desired state. 
+The CFEngine Enterprise `Mission Portal` provides System Administrators and Infrastructure Engineers with detailed information about the actual state of the IT infrastructure and how that compares with the desired state.
 
 ### Federation and SQL Reporting ###
 

@@ -12,9 +12,9 @@ fragments in the system process table.
 
 ```cf3
       processes:
-     
+
         "regex contained in process line"
-     
+
             process_select = process_filter_body,
             restart_class = "activation class for process",
             ..;
@@ -86,7 +86,7 @@ process table entry may list `"/bin/cp"`. However, the process pattern `"cp"`
 will also match a process containing `"scp"`, (the PCRE pattern anchors `"\b"`
 and `"\B"` may prove very useful to you).
 
-To restart a process, you should set a class to activate and then describe a 
+To restart a process, you should set a class to activate and then describe a
 `command` in that class.
 
 ```cf3
@@ -97,7 +97,7 @@ To restart a process, you should set a class to activate and then describe a
        "/path/executable" ... ;
 ```
 
-This rationalizes complex restart-commands and avoids unnecessary overlap 
+This rationalizes complex restart-commands and avoids unnecessary overlap
 between `processes` and `commands`.
 
 The `process_stop` is also arguably a command, but it should be an
@@ -108,14 +108,14 @@ execution, but stop commands are executed immediately.
 
 ### Commands and Processes
 
-CFEngine distinguishes between `processes` and [`commands`][commands] so that 
-there is a clean separation between detection (promises about the process 
-table) and certain repairs (promises to execute commands that start 
+CFEngine distinguishes between `processes` and [`commands`][commands] so that
+there is a clean separation between detection (promises about the process
+table) and certain repairs (promises to execute commands that start
 processes).
 
-Command executions are about jobs, services, scripts etc. They are properties 
+Command executions are about jobs, services, scripts etc. They are properties
 of an executable file, and the referring 'promiser' is a file object. On the
-other hand a process is a property of a "process identifier" which is a kernel 
+other hand a process is a property of a "process identifier" which is a kernel
 instantiation, a quite different object altogether. For example:
 
 -   A "PID" (which is not an executable) promises to be reminded of a
@@ -169,7 +169,7 @@ guarantee that process promises will work smoothly on that platform.
 
 Classes are defined if the processes that are found in the process table
 satisfy the promised process count, in other words if the promise about
-the number of processes matching the other criteria is kept.   
+the number of processes matching the other criteria is kept.
 
 **Type:** `slist`
 
@@ -191,7 +191,7 @@ process
 
 This is a numerical range for the number of occurrences of the process
 in the process table. As long as it falls within the specified limits,
-the promise is considered kept.   
+the promise is considered kept.
 
 **Type:** `irange[int,int]`
 
@@ -240,7 +240,7 @@ process
 This expression should match the entire `COMMAND` field of the process
 table, not just a fragment. This field is usually the last field on the
 line, so it thus starts with the first non-space character and ends with
-the end of line.   
+the end of line.
 
 **Type:** `string`
 
@@ -250,10 +250,10 @@ the end of line.
 
 ```cf3
      body process_select example
-     
+
      {
      command => "cf-.*";
-     
+
      process_result => "command";
      }
 ```
@@ -358,8 +358,8 @@ regex is [anchored][anchored], meaning it must match the entire name.
 of process selection criteria
 
 A logical combination of the process selection classifiers. The syntax
-is the same as that for class expressions. If `process_result` is not 
-specified, then all set attributes in the `process_select` body are AND'ed 
+is the same as that for class expressions. If `process_result` is not
+specified, then all set attributes in the `process_select` body are AND'ed
 together.
 
 **Type:** `string`
@@ -371,7 +371,7 @@ together.
 
 ```cf3
      body process_select proc_finder(p)
-     
+
      {
      process_owner  => { "avahi", "bin" };
      command        => "$(p)";
@@ -399,7 +399,7 @@ process, in kilobytes
      {
      rsize => irange("4000","8000");
      }
-     
+
 ```
 
 #### status
@@ -592,7 +592,7 @@ only the kill signal is supported, which terminates the process.
 
 **Type:** (option list)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```cf3
        hup

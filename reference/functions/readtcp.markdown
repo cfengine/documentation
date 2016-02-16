@@ -14,8 +14,8 @@ If the send string is empty, no data are sent or received from the
 socket. Then the function only tests whether the TCP port is alive and
 returns an empty string.
 
-Not all Unix TCP read operations respond to signals for interruption, so 
-poorly formed requests can block the `cf-agent` process. Always test TCP 
+Not all Unix TCP read operations respond to signals for interruption, so
+poorly formed requests can block the `cf-agent` process. Always test TCP
 connections fully before deploying.
 
 [%CFEngine_function_attributes(host, port, sendstring, maxbytes)%]
@@ -31,7 +31,7 @@ R: Server is alive
 ```
 
 **Notes:** Note that on some systems the timeout mechanism does not seem to
-successfully interrupt the waiting system calls so this might hang if you send 
-an incorrect query string. This should not happen, but the cause has yet to be 
+successfully interrupt the waiting system calls so this might hang if you send
+an incorrect query string. This should not happen, but the cause has yet to be
 diagnosed.
 

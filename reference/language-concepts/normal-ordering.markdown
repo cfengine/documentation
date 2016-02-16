@@ -83,7 +83,7 @@ is caused by the fact that both variables and classes placed in common bundles
 are global whereas classes placed in agent bundles are local (by default) to
 bundles where those are defined. This means that during agent bundle
 pre-evaluation dependencies between variables and classes will not be
-resolved. 
+resolved.
 
 <!---What is more, promises in common bundles are pre-evaluated up to 3 times
 in order to resolve variables and classes dependencies.-->
@@ -166,7 +166,7 @@ Within a server bundle, the normal ordering is:
     classes
     roles
     access
-    
+
 ## Monitor normal ordering
 
 As with the agent, common bundles are executed before any monitor bundles;

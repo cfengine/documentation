@@ -27,7 +27,7 @@ This example demonstrates you can have a lot of low-level detailed control if yo
 	   "ntp_conf"    string => "/etc/ntp.conf";  # Target file for NTP configuration
 
 	   "ntp_server"  string => "172.16.12.161";  #
-	   "ntp_network" string => "172.16.12.0";    # IP address and netmask of your local NTP server 
+	   "ntp_network" string => "172.16.12.0";    # IP address and netmask of your local NTP server
 	   "ntp_mask"    string => "255.255.255.0";  #
 
 	   "ntp_pkgs"    slist => { "ntp" };         # NTP packages to be installed to ensure service
@@ -208,7 +208,7 @@ This example demonstrates you can have a lot of low-level detailed control if yo
 	 "list" string =>
 	"######################################
 	# This file is protected by cfengine #
-	###################################### 
+	######################################
 	# ntp.conf-client
 
 	driftfile /var/lib/ntp/ntp.drift

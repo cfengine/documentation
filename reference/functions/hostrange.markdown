@@ -7,7 +7,7 @@ tags: [reference, communication functions, functions, hostrange]
 
 [%CFEngine_function_prototype(prefix, range)%]
 
-**Description:** Returns whether the current host lies in the `range` of 
+**Description:** Returns whether the current host lies in the `range` of
 enumerated hostnames specified with `prefix`.
 
 This is a pattern matching function for non-regular (enumerated)
@@ -19,7 +19,7 @@ expressions.
 
 ```cf3
 bundle agent example
-{     
+{
 classes:
 
   "compute_nodes" expression => hostrange("cpu-","01-32");

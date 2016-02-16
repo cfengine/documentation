@@ -1,13 +1,13 @@
 ---
 layout: default
-title: CFEngine Reference 
+title: CFEngine Reference
 published: true
 sorting: 50
 ---
 
-The reference documentation explains the available promise and bundle types, 
-components, bodies, functions, variables, classes and attributes in detail. 
-Language elements that belong together are typically documented on the same 
+The reference documentation explains the available promise and bundle types,
+components, bodies, functions, variables, classes and attributes in detail.
+Language elements that belong together are typically documented on the same
 page.
 
 * [Components and Common Control][Components and Common Control]

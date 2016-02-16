@@ -8,7 +8,7 @@ tags: [Examples, Tutorials, Inventory, Enterprise]
 
 This tutorial will show you how to add custom inventory attributes that can be
 leveraged in policy and reported on in the CFEngine Enterprise Mission Portal.
-For a more detailed overview on how the inventory system works please reference 
+For a more detailed overview on how the inventory system works please reference
 [CFEngine 3 inventory modules][The Policy Framework#CFEngine 3 Inventory Modules].
 
 ## Overview ##
@@ -87,7 +87,7 @@ This policy will not be activated until it has been included in
 adding it to [common control][Components and Common Control], but note that
 files can include other files through the use of [inputs in file control][file control#inputs].
 
-Add 'services/tutorials/inventory/owner.cf' to [inputs][Components and Common Control#inputs] and 
+Add 'services/tutorials/inventory/owner.cf' to [inputs][Components and Common Control#inputs] and
 'tutorials_inventory_owner' to the [bundlesequence][Components and Common Control#bundlesequence] in
 [common control][Components and Common Control] found in `/var/cfengine/masterfiles/promises.cf` as shown below.
 
