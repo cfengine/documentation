@@ -178,19 +178,19 @@ Server (hub) and the other is for each Host (client).
 
 1. On the designated Policy Server, install the `cfengine-nova-hub` package:
 
-    ```
-        [RedHat/CentOS/SUSE] # rpm -i <hub package>.rpm
-        [Debian/Ubuntu]      # dpkg -i <hub package>.deb
+    ```console
+    [RedHat/CentOS/SUSE] # rpm -i <hub package>.rpm
+    [Debian/Ubuntu]      # dpkg -i <hub package>.deb
     ```
 
 2. On each Host, install the `cfengine-nova` package:
 
-    ```
-        [RedHat/CentOS/SUSE] # rpm -i <agent package>.rpm
-        [Debian/Ubuntu]      # dpkg -i <agent package>.deb
-        [Solaris]            # pkgadd -d <agent package>.pkg all
-        [AIX]                # installp -a -d <agent package>.bff cfengine.cfengine-nova
-        [HP-UX]              # swinstall -s <full path to agent package>.depot cfengine-nova
+    ```console
+    [RedHat/CentOS/SUSE] # rpm -i <agent package>.rpm
+    [Debian/Ubuntu]      # dpkg -i <agent package>.deb
+    [Solaris]            # pkgadd -d <agent package>.pkg all
+    [AIX]                # installp -a -d <agent package>.bff cfengine.cfengine-nova
+    [HP-UX]              # swinstall -s <full path to agent package>.depot cfengine-nova
     ```
 
 Note: Install actions logged to `/var/logs/cfengine-install.log`.
@@ -200,8 +200,8 @@ Note: Install actions logged to `/var/logs/cfengine-install.log`.
 Run the bootstrap command, **first** on the policy server and then on each
 host:
 
-```
-$ /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
+```console
+# /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
 ```
 
 ## Licensed installations
