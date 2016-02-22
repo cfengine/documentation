@@ -53,7 +53,7 @@ Windows Mac or Linux vagrant install guides.
 This tutorial uses VirtualBox to create virtual machines on your computer, to
 which Vagrant deploys CFEngine. VirtualBox can be downloaded from
 virtualbox.org (this guide has been tested with version
-[5.0.2](http://download.virtualbox.org/virtualbox/5.0.2/)). After
+[5.0.12](http://download.virtualbox.org/virtualbox/5.0.12/)). After
 downloading VirtualBox, install it on your computer.
 
 **Note:** To avoid problems, disable other virtualization environments you are
