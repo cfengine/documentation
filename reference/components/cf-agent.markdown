@@ -1179,3 +1179,32 @@ promise.
     }
 ```
 
+### report_class_log
+
+**Description:** The `report_class_log` option enables logging of  classes set by cf-agent. Each class set by cf-agent will be logged at the end of agent execution. Each class includes timestamp information of cf-agent exit which has set the class (all set by same cf-agent execution will share that value). 
+
+Time classes are ignored.
+Destination: '/var/cfengine/state/classes.jsonl'
+
+Format(jsonl):
+
+```
+  {"name":"class_123","timestamp":1456933993}\r\n
+  {"name":"pk_sha_123","timestamp":1456933993}\r\n
+```
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3
+    body agent control
+    {
+    report_class_log => "true";
+    }
+```
+
+**Notes:**
+Available in CFEngine Enterprise.
