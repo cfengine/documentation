@@ -3116,7 +3116,7 @@ ordinarily be stored in an alternative repository as
 
 ### template_data
 
-**Description:** The data to be passed to the template (Mustache only)
+**Description:** The data container to be passed to the template (Mustache only). It can come from a function call like `mergedata()` or from a data container reference like `@(mycontainer)`.
 
 [%CFEngine_promise_attribute()%]
 
@@ -3132,9 +3132,24 @@ ordinarily be stored in an alternative repository as
      template_method => "mustache";
 ```
 
-If this is omitted, the result of the `datastate()` function call is
-used instead.  See `edit_template` for how you can use the data state
-in Mustache.
+**Example:**
+
+```cf3
+    vars:
+     "mycontainer" data => '[ 1, 2, 3 ]';
+
+    files:
+
+     "/path/file"
+     ...
+     edit_template => "mytemplate.mustache",
+     template_data => @(mycontainer),
+     template_method => "mustache";
+```
+
+If this attribute is omitted, the result of the `datastate()` function
+call is used instead. See `edit_template` for how you can use the data
+state in Mustache.
 
 **See also:** `edit_template`, `template_method`, `datastate()`
 
