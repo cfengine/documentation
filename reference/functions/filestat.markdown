@@ -57,9 +57,10 @@ Output:
 
 [%CFEngine_include_snippet(filestat.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**Notes:**  
-   
-The list of fields may be extended as needed by CFEngine.
+**Notes:**
+
+* `linktarget` will prepend the directory name to *relative symlink targets*, in order to be able to resolve them. Use `linktarget_shallow` to get the exact link as-is in case it is a relative link.
+* The list of fields may be extended as needed by CFEngine.
 
 **History:** Was introduced in version 3.5.0,Enterprise 3.1 (2013).  `linktarget` and `linktarget_shallow` were added in version 3.6.
 
