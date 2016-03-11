@@ -2,13 +2,15 @@
 layout: default
 title: every
 published: true
-tags: [reference, data functions, functions, every]
+tags: [reference, data functions, functions, every, inline_json]
 ---
 
 [%CFEngine_function_prototype(regex, list)%]
 
 **Description:** Returns whether every element in the variable `list` matches
 the [unanchored][unanchored] `regex`.
+
+This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 **Arguments**:
 
@@ -26,4 +28,6 @@ Output:
 
 [%CFEngine_include_snippet(every.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`filter()`][filter], [`some()`][some], and [`none()`][none].
+**History:** The [Collecting Functions][collecting function] behavior was added in 3.9.
+
+**See also:** [Collecting Functions][About collecting functions], `filter()`, `some()`, and `none()`.

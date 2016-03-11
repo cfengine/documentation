@@ -2,7 +2,7 @@
 layout: default
 title: maparray
 published: true
-tags: [reference, data functions, functions, maparray]
+tags: [reference, data functions, functions, maparray, inline_json]
 ---
 
 [%CFEngine_function_prototype(pattern, array_or_container)%]
@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, maparray]
 **Description:** Returns a list with each `array_or_container` element
 modified by a `pattern`.
 
-`array_or_container` can be a data container.
+This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 The `$(this.k)` and `$(this.v)` variables expand to the key and value
 of the current element, similar to the way `this` is available for
@@ -36,4 +36,6 @@ Output:
 
 [%CFEngine_include_snippet(maparray.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** `maplist()`, `mapdata()`, and `data` documentation.
+**History:** The [Collecting Functions][collecting function] behavior was added in 3.9.
+
+**See also:** `maplist()`, `mapdata()`, [Collecting Functions][about collecting functions], and `data` documentation.

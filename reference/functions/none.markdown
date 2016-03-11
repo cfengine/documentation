@@ -2,7 +2,7 @@
 layout: default
 title: none
 published: true
-tags: [reference, data functions, functions, none]
+tags: [reference, data functions, functions, none, inline_json]]
 ---
 
 [%CFEngine_function_prototype(regex, list)%]
@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, none]
 **Description:** Returns whether no element in `list` matches the regular 
 expression `regex`.
 
-`list` can be a data container or a regular list.
+This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 [%CFEngine_function_attributes(regex, list)%]
 
@@ -24,4 +24,6 @@ Output:
 
 [%CFEngine_include_snippet(none.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`filter()`][filter], [`every()`][every], and [`some()`][some].
+**History:** The [Collecting Functions][collecting function] behavior was added in 3.9.
+
+**See also:** [Collecting Functions][About collecting functions], `filter()`, `every()`, and `none()`.
