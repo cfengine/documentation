@@ -368,6 +368,30 @@ local variables can be iterated.
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
 
+### sys.ip2iface
+
+A map of full IPv4 addresses (key) to the system interface (value),
+e.g. `$(sys.ip2iface[1.2.3.4])`.
+
+```cf3
+    # If the IPv4 address on the interfaces are
+    #    le0 = 192.168.1.101
+    #    xr1 = 10.12.7.254
+    #
+    # Then you will have
+    # sys.ip2iface[192.168.1.101] = le0
+    # sys.ip2iface[10.12.7.254] = xr1
+```
+
+**Note**:  
+
+The list of addresses may be acquired with
+`getindices("sys.ip2iface")` (or from any of the other associative
+arrays). Only those interfaces which are marked as "up" and have an IP
+address will have entries.
+
+**History:** Was introduced in 3.9.
+
 ### sys.ipv4
 
 All four octets of the IPv4 address of the first system interface.
@@ -383,7 +407,7 @@ details on obtaining the IPv4 addresses of all interfaces on a system.
 ### sys.ipv4[interface_name]
 
 The full IPv4 address of the system interface named as the associative
-array index, e.g. `$(ipv4[le0])` or `$(ipv4[xr1])`.
+array index, e.g. `$(sys.ipv4[le0])` or `$(sys.ipv4[xr1])`.
 
 ```cf3
     # If the IPv4 address on the interfaces are
@@ -391,14 +415,14 @@ array index, e.g. `$(ipv4[le0])` or `$(ipv4[xr1])`.
     #    xr1 = 10.12.7.254
     #
     # Then the octets of all interfaces are accessible as an associative array
-    # ipv4_1[le0] = 192
-    # ipv4_2[le0] = 192.168
-    # ipv4_3[le0] = 192.168.1
-    #   ipv4[le0] = 192.168.1.101
-    # ipv4_1[xr1] = 10
-    # ipv4_2[xr1] = 10.12
-    # ipv4_3[xr1] = 10.12.7
-    #   ipv4[xr1] = 10.12.7.254
+    # sys.ipv4_1[le0] = 192
+    # sys.ipv4_2[le0] = 192.168
+    # sys.ipv4_3[le0] = 192.168.1
+    #   sys.ipv4[le0] = 192.168.1.101
+    # sys.ipv4_1[xr1] = 10
+    # sys.ipv4_2[xr1] = 10.12
+    # sys.ipv4_3[xr1] = 10.12.7
+    #   sys.ipv4[xr1] = 10.12.7.254
 ```
 
 **Note**:  
