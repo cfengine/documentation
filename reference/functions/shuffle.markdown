@@ -2,12 +2,14 @@
 layout: default
 title: shuffle
 published: true
-tags: [reference, data functions, functions, shuffle]
+tags: [reference, data functions, functions, shuffle, inline_json]
 ---
 
 [%CFEngine_function_prototype(list, seed)%]
 
 **Description:** Return `list` shuffled with `seed`.
+
+This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 The same seed will produce the same shuffle every time. For a random shuffle, 
 provide a random seed with the `randomint` function.
@@ -22,4 +24,6 @@ Output:
 
 [%CFEngine_include_snippet(shuffle.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`sort()`][sort].
+**History:** The [Collecting Functions][collecting function] behavior was added in 3.9.
+
+**See also:** `sort()`, [Collecting Functions][about collecting functions], and `data` documentation.

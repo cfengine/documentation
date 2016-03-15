@@ -2,7 +2,7 @@
 layout: default
 title: grep
 published: true
-tags: [reference, data functions, functions, grep]
+tags: [reference, data functions, functions, grep, inline_json]
 ---
 
 [%CFEngine_function_prototype(regex, list)%]
@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, grep]
 **Description:** Returns the sub-list if items  in `list` matching the 
 [anchored][anchored] regular expression `regex`.
 
-`list` can be a data container or a regular list.
+This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 [%CFEngine_function_attributes(regex, list)%]
 
@@ -21,3 +21,7 @@ tags: [reference, data functions, functions, grep]
 Output:
 
 [%CFEngine_include_snippet(grep.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+
+**History:** The [Collecting Functions][collecting function] behavior was added in 3.9.
+
+**See also:** [Collecting Functions][About collecting functions], `filter()`, `every()`, `some()`, and `none()`.

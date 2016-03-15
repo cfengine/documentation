@@ -2,7 +2,7 @@
 layout: default
 title: filter
 published: true
-tags: [reference, data functions, functions, filter]
+tags: [reference, data functions, functions, filter, inline_json]
 ---
 
 [%CFEngine_function_prototype(filter, list, is_regex, invert, max_return)%]
@@ -12,6 +12,8 @@ tags: [reference, data functions, functions, filter]
 This is a generic filtering function that returns a list of up to `max_return` 
 elements in `list` that match the filtering rules specified in `filter`, 
 `is_regex` and `invert`.
+
+This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 **Arguments**:
 
@@ -37,5 +39,6 @@ Output:
 
 [%CFEngine_include_snippet(filter.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`grep()`][grep], [`every()`][every], [`some()`][some], and 
-[`none()`][none].
+**History:** The [Collecting Functions][collecting function] behavior was added in 3.9.
+
+**See also:** [Collecting Functions][About collecting functions], `grep()`, `every()`, `some()`, and `none()`.

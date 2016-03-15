@@ -10,7 +10,9 @@ tags: [reference, utility functions, functions, isvariable]
 **Description:** Returns whether a variable named `var` is defined.
 
 The variable need only exist. This says nothing about its value. Use
-`regcmp` to check variable values.
+`regcmp` to check variable values. Variable references like `foo[bar]`
+are also checked, so this is a way to check if a classic CFEngine
+array or a data container has a specific key or element.
 
 [%CFEngine_function_attributes(var)%]
 

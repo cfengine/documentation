@@ -83,6 +83,46 @@ be skipped. The function will be evaluated during a later pass when all
 variables passed as arguments are able to be resolved. The function will never
 be evaluated if any argument contains a variable that never resolves.
 
+### Collecting Functions
+
+Some function arguments are marked as *collecting* which means they
+can "collect" an argument from various sources. The data is normalized
+into the JSON format internally, so all of the following data types
+have consistent behavior.
+
+* If a key inside a data container is specified (`mycontainer[key]`),
+the value under that key is collected. The key can be a string for
+JSON objects or a number for JSON arrays.
+
+* If a single data container, CFEngine array, or slist is specified
+(`mycontainer` or `myarray` or `myslist`), the contents of it are
+collected.
+
+* If a single data container, CFEngine array, or slist is specified
+with `@()` around it (`@(mycontainer)` or `@(myarray)` or
+`@(myslist)`), the contents of it are collected.
+
+* If a function call that returns a data container or slist is
+  specified, that function call is evaluated and the results are
+  inserted, so you can say for instance `sort(data_expand(...), "lex")`
+  to expand a data container then sort it.
+
+* If a list (slist, ilist, or rlist) is named, its entries are collected.
+
+* If any CFEngine "classic" array (`array[key]`) is named, it's first
+converted to a JSON key-value map, then collected.
+
+* If a literal JSON string like `[ 1,2,3 ]` or `{ "x": 500 }` is
+provided, it will be parsed and used.
+
+* If any of the above-mentioned ways to reference variables are used
+**inside** a literal JSON string they will be expanded (or the
+function call will fail). This is similar to the behavior of
+Javascript, for instance.  For example, `mergedata('[ thing, { "mykey": otherthing[123] } ]')`
+will wrap the `thing` in a JSON array; then the contents of
+`otherthing[123]` will be wrapped in a JSON map which will also go in
+the array.
+
 ## List of all functions
 
 There are a large number of functions built into CFEngine. The following 
