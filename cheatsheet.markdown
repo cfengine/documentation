@@ -35,6 +35,10 @@ Paragraphs
 
 ### Link within documentation and to known pages
 
+You can link to any documentation page section using `[linktext][PageTitle#optional section]`.
+
+For example I can link to [collecting functions][Functions#collecting functions] using `[collecting functions][Functions#collecting functions]`.
+
 `[top of the page][Markdown Cheatsheet], to the [Markdown Cheatsheet][], [inside page][Markdown Cheatsheet#Links] and [inside current page][#Links]`
 
 <!--- Cheating here - this page is not published, so included from link map -->
