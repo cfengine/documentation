@@ -2,12 +2,14 @@
 layout: default
 title: sort
 published: true
-tags: [reference, data functions, functions, sort]
+tags: [reference, data functions, functions, sort, inline_json]
 ---
 
 [%CFEngine_function_prototype(list, mode)%]
 
 **Description:** Returns `list` sorted according to `mode`.
+
+This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
 
 Lexicographical, integer, real, IP, and MAC address sorting is
 supported currently.  The example below will show each sorting mode in
@@ -37,4 +39,6 @@ Output:
 2013-09-05T14:05:04-0400   notice: R: sorted MACs '00:14:BF:F7:23:1D,0:14:BF:F7:23:1D,:14:BF:F7:23:1D,00:014:BF:0F7:23:01D,00:14:BF:F7:23:1D,0:14:BF:F7:23:1D,:14:BF:F7:23:1D,00:014:BF:0F7:23:01D,01:14:BF:F7:23:1D,1:14:BF:F7:23:1D,01:14:BF:F7:23:2D,1:14:BF:F7:23:2D,-1,where are the MAC addresses?' => '-1,:14:BF:F7:23:1D,:14:BF:F7:23:1D,where are the MAC addresses?,00:014:BF:0F7:23:01D,0:14:BF:F7:23:1D,00:14:BF:F7:23:1D,00:014:BF:0F7:23:01D,0:14:BF:F7:23:1D,00:14:BF:F7:23:1D,1:14:BF:F7:23:1D,01:14:BF:F7:23:1D,1:14:BF:F7:23:2D,01:14:BF:F7:23:2D'
 ```
 
-**See also:** [`shuffle()`][shuffle].
+**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+
+**See also:** `shuffle()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

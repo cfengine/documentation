@@ -2,18 +2,14 @@
 layout: default
 title: length
 published: true
-tags: [reference, data functions, functions, length]
+tags: [reference, data functions, functions, length, inline_json]
 ---
 
 [%CFEngine_function_prototype(list)%]
 
 **Description:** Returns the length of `list`.
 
-`list` can be a data container or a regular list.
-
-**NOTE** that the `list` can be specified as inline JSON
-instead of a separate variable. This is standard across many CFEngine
-functions and explained in the `mergedata()` documentation.
+This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
 
 [%CFEngine_function_attributes(list)%]
 
@@ -25,4 +21,6 @@ Output:
 
 [%CFEngine_include_snippet(length.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`nth()`][nth], `mergedata()`.
+**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+
+**See also:** `nth()`, `mergedata()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
