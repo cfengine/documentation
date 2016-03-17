@@ -2,14 +2,14 @@
 layout: default
 title: min
 published: true
-tags: [reference, data functions, functions, min, inline_json]
+tags: [reference, data functions, functions, min]
 ---
 
 [%CFEngine_function_prototype(list, sortmode)%]
 
 **Description:** Return the minimum of the items in `list` according to `sortmode` (same sort modes as in `sort()`).
 
-This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
+`list` can be a data container or a regular list.
 
 [%CFEngine_function_attributes(list, sortmode)%]
 
@@ -21,6 +21,8 @@ Output:
 
 [%CFEngine_include_snippet(max-min-mean-variance.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** Was introduced in version 3.6.0 (2014). The [Collecting Functions][collecting function] behavior was added in 3.9.
+**Notes:**  
+   
+**History:** Was introduced in version 3.6.0 (2014)
 
-**See also:** `sort()`, `variance()`, `sum()`, `max()`, `mean()`, [Collecting Functions][about collecting functions], and `data` documentation.
+**See also:** `sort()`, `variance()`, `sum()`, `max()`, `mean()`

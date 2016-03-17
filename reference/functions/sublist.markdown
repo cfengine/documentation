@@ -2,14 +2,12 @@
 layout: default
 title: sublist
 published: true
-tags: [reference, data functions, functions, sublist, inline_json]
+tags: [reference, data functions, functions, sublist]
 ---
 
 [%CFEngine_function_prototype(list, head_or_tail, max_elements)%]
 
 **Description:** Returns list of up to `max_elements` of `list`, obtained from head or tail depending on `head_or_tail`.
-
-This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 [%CFEngine_function_attributes(list, head_or_tail, max_elements)%]
 
@@ -21,6 +19,5 @@ Output:
 
 [%CFEngine_include_snippet(sublist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** The [Collecting Functions][collecting function] behavior was added in 3.9.
+**Notes:**  
 
-**See also:** `nth()`, `filter()`, [Collecting Functions][about collecting functions], and `data` documentation.

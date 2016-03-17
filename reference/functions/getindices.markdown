@@ -2,7 +2,7 @@
 layout: default
 title: getindices
 published: true
-tags: [reference, data functions, functions, getindices, inline_json]
+tags: [reference, data functions, functions, getindices]
 ---
 
 [%CFEngine_function_prototype(varref)%]
@@ -10,15 +10,13 @@ tags: [reference, data functions, functions, getindices, inline_json]
 **Description:** Returns the list of keys in `varref` which can be
 the name of an array or container.
 
-This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
-
 Make sure you specify the correct scope when supplying the name of the
 variable.
 
 Note the list which getindices returns is not guaranteed to be in any
 specific order.
 
-In the case of a doubly-indexed array (such as `parsestringarrayidx()` and
+In the case of a doubly-indexed array (such as parsestringarrayidx and
 friends produce), the primary keys are returned; i.e. if
 `varref[i][j]` exist for various `i`, `j` and you ask for the keys of
 `varref`, you get the `i` values.  For each such `i` you can then ask
@@ -34,7 +32,3 @@ on, for higher levels of indexing).
 Output:
 
 [%CFEngine_include_snippet(getindices.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-
-**History:** The [Collecting Functions][collecting function] behavior was added in 3.9.
-
-**See also:** `getvalues()`, [Collecting Functions][about collecting functions], and `data` documentation.

@@ -22,7 +22,7 @@ All the math is done with the C `double` type internally.  The results are retur
     "result" expression => eval("200/10", "math", "infix");
 ```
 
-When the `mode` is `class`, the returned string is either false for 0 (`!any`) or true for anything else (`any`) so it can be used in a class expression under `classes`.  The `==` operator (see below) is very convenient for this purpose.  The actual accepted values for false allow a tiny margin around 0, just like `==`.
+When the `mode` is `class`, the returned string is either false for 0 (`!any`) or true for anything else (`any`) so it can be used in an expression.  The `==` operator (see below) is very convenient for this purpose.  The actual accepted values for false allow a tiny margin around 0, just like `==`.
 
 **Example:**
 

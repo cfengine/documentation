@@ -13,15 +13,14 @@ If none are set, returns the last argument.
 
 **Arguments**:
 
-The `ifelse` function is like a multi-level if-else statement. It was
+The `ifelse` function is like a multi-level if-else statement.It was
 inspired by Oracle's `DECODE` function. It must have an odd number of
 arguments (from 1 to N). The last argument is the default value, like
 the `else` clause in standard programming languages. Every pair of
 arguments before the last one are evaluated as a pair. If the first
-one evaluates true then the second one is returned, as if you had used
-the first one in a class `expression`. So the first item in the pair
-can be more than just a class name, it's a whole context like
-`Tuesday.linux.!verbose`)
+one evaluates true (as if you had used it in a class `expression`, so
+it can be more than just a class name, it's a whole context like
+`Tuesday.linux.!verbose`) then the second one is returned.
 
 Generally, if `ifelse` were called with arguments `(a1, a2, b1,
 b2, c)`, the behavior expressed as pseudo-code is:
