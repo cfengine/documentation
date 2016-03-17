@@ -1884,7 +1884,7 @@ When iterating over an array, Mustache templates in CFEngine can replace the `@`
 variable with the current iteration's key.  The example below will show it.
 
 To iterate over the top-level container, Mustache templates in
-CFEngine can use `{{#-top-}} ... {{/-top-}}`.
+CFEngine can use {% raw %}`{{#-top-}}` ... `{{/-top-}}`{% endraw %}.
 
 These extensions are not in the Mustache standard.
 
