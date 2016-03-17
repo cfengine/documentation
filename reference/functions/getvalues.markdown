@@ -2,15 +2,13 @@
 layout: default
 title: getvalues
 published: true
-tags: [reference, data functions, functions, getvalues, inline_json]
+tags: [reference, data functions, functions, getvalues]
 ---
 
 [%CFEngine_function_prototype(varref)%]
 
 **Description:** Returns the list of values in `varref` which can be
 the name of an array or container.
-
-This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 If the array contains list values, then all of the list elements are flattened 
 into a single list to make the return value a list.
@@ -36,6 +34,4 @@ Output:
 
 [%CFEngine_include_snippet(getvalues.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** The [Collecting Functions][collecting function] behavior was added in 3.9.
-
-**See also:** `getindices()`, [Collecting Functions][about collecting functions], and `data` documentation.
+**Notes:**

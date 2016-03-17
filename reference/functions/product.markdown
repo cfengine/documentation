@@ -2,7 +2,7 @@
 layout: default
 title: product
 published: true
-tags: [reference, data functions, functions, product, inline_json]
+tags: [reference, data functions, functions, product]
 ---
 
 [%CFEngine_function_prototype(list)%]
@@ -12,8 +12,6 @@ tags: [reference, data functions, functions, product, inline_json]
 This function might be used for simple ring computation. Of course, you could 
 easily combine `product` with `readstringarray` or `readreallist` etc., to 
 collect summary information from a source external to CFEngine.
-
-This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 [%CFEngine_function_attributes(list)%]
 
@@ -25,6 +23,4 @@ Output:
 
 [%CFEngine_include_snippet(product.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010). The [Collecting Functions][collecting function] behavior was added in 3.9.
-
-**See also:** `sort()`, `variance()`, `sum()`, `max()`, `min()`, [Collecting Functions][about collecting functions], and `data` documentation.
+**History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

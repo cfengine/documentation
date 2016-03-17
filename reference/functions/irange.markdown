@@ -10,9 +10,9 @@ tags: [reference, data functions, functions, irange]
 **Description:** Define a range of integer values for CFEngine internal use.
 
 Used for any scalar attribute which requires an integer range. You can
-generally interchangeably say `"1,10"` or `irange("1","10")`. However, if
-you want to create a range of dates or times, you must use `irange()` if you
-also use the functions `ago()`, `now()`, `accumulated()`, etc.
+generally interchangeably say "1,10" or irange("1","10"). However, if
+you want to create a range of dates or times, you must use irange if you
+also use the functions `ago`, `now`, `accumulated`, etc.
 
 [%CFEngine_function_attributes(arg1, arg2)%]
 

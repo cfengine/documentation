@@ -2,15 +2,13 @@
 layout: default
 title: maplist
 published: true
-tags: [reference, data functions, functions, maplist, inline_json]
+tags: [reference, data functions, functions, maplist]
 ---
 
 [%CFEngine_function_prototype(pattern, list)%]
 
 **Description:** Return a list with each element in `list` modified by a 
 pattern.
-
-This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 The `$(this)` variable expands to the currently processed entry from `list`. 
 This is essentially like the map() function in Perl, and applies to
@@ -26,6 +24,6 @@ Output:
 
 [%CFEngine_include_snippet(maplist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** Was introduced in 3.3.0, Nova 2.2.0 (2011). The [Collecting Functions][collecting function] behavior was added in 3.9.
+**History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
-**See also:** `maplist()`, `maparray()`, [Collecting Functions][about collecting functions], and `data` documentation.
+**See also:** `maparray()`, `mapdata()`, and `data` documentation.

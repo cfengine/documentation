@@ -2,14 +2,18 @@
 layout: default
 title: variance
 published: true
-tags: [reference, data functions, functions, variance, inline_json]
+tags: [reference, data functions, functions, variance]
 ---
 
 [%CFEngine_function_prototype(list)%]
 
 **Description:** Return the variance of the numbers in `list`.
 
-This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
+`list` can be a data container or a regular list.
+
+**NOTE** that the `list` can be specified as inline JSON
+instead of a separate variable. This is standard across many CFEngine
+functions and explained in the `mergedata()` documentation.
 
 [%CFEngine_function_attributes(list)%]
 
@@ -25,6 +29,8 @@ Output:
 
 [%CFEngine_include_snippet(max-min-mean-variance.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** Was introduced in version 3.6.0 (2014). The [Collecting Functions][collecting function] behavior was added in 3.9.
+**Notes:**  
+   
+**History:** Was introduced in version 3.6.0 (2014)
 
-**See also:** `sort()`, `mean()`, `sum()`, `max()`, `min()`, [Collecting Functions][about collecting functions], and `data` documentation.
+**See also:** `sort()`, `mean()`, `sum()`, `max()`, `min()`
