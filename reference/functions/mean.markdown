@@ -2,14 +2,18 @@
 layout: default
 title: mean
 published: true
-tags: [reference, data functions, functions, mean, inline_json]
+tags: [reference, data functions, functions, mean]
 ---
 
 [%CFEngine_function_prototype(list)%]
 
 **Description:** Return the mean of the numbers in `list`.
 
-This is a [collecting function][Functions#collecting function] so it can accept many types of data parameters.
+`list` can be a data container or a regular list.
+
+**NOTE** that the `list` can be specified as inline JSON
+instead of a separate variable. This is standard across many CFEngine
+functions and explained in the `mergedata()` documentation.
 
 [%CFEngine_function_attributes(list)%]
 
@@ -21,6 +25,8 @@ Output:
 
 [%CFEngine_include_snippet(max-min-mean-variance.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**History:** Was introduced in version 3.6.0 (2014). The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+**Notes:**  
+   
+**History:** Was introduced in version 3.6.0 (2014)
 
-**See also:** `sort()`, `variance()`, `sum()`, `max()`, `min()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
+**See also:** `sort()`, `variance()`, `sum()`, `max()`, `min()`, `mergedata()`.
