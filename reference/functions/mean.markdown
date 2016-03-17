@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, mean, inline_json]
 
 **Description:** Return the mean of the numbers in `list`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+This is a [collecting function][Functions#collecting function] so it can accept many types of data parameters.
 
 [%CFEngine_function_attributes(list)%]
 
