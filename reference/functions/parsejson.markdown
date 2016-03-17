@@ -2,7 +2,7 @@
 layout: default
 title: parsejson
 published: true
-tags: [reference, io functions, functions, parsejson, json, container]
+tags: [reference, io functions, functions, parsejson, json, container, inline_json]
 ---
 
 [%CFEngine_function_prototype(json_data)%]
@@ -16,9 +16,7 @@ Please note that because JSON uses double quotes, it's usually most
 convenient to use single quotes for the string (CFEngine allows both
 types of quotes around a string).
 
-**NOTE** that the `json_data` can contain variable references. This is
-standard across many CFEngine functions and explained in the
-`mergedata()` documentation.
+This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
 
 **Example:**
 
@@ -35,4 +33,6 @@ standard across many CFEngine functions and explained in the
          data =>  '{ "key": "value" }';
 ```
 
-**See also:** `readjson()`, `parseyaml()`, `readyaml()`, `mergedata()`, `Inline YAML and JSON data`, and `data` documentation.
+**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+
+**See also:** `readjson()`, `parseyaml()`, `readyaml()`, `mergedata()`, `Inline YAML and JSON data`, [about collecting functions][Functions#collecting functions], and `data` documentation.

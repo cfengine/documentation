@@ -2,7 +2,7 @@
 layout: default
 title: url_get
 published: true
-tags: [reference, communication functions, functions, url, www, file, ftp, http, https, url_get]
+tags: [reference, communication functions, functions, url, www, file, ftp, http, https, url_get, inline_json]
 ---
 
 [%CFEngine_function_prototype(url, options_container)%]
@@ -12,8 +12,8 @@ tags: [reference, communication functions, functions, url, www, file, ftp, http,
   data container.
 
 **NOTE** that the `options_container` can be specified as inline JSON
-instead of a separate variable. This is standard across many CFEngine
-functions and explained in the `mergedata()` documentation.
+
+This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
 
 Currently only `file`, `http`, and `ftp` URLs are supported.
 Internally, `libcurl` is used.
@@ -99,6 +99,6 @@ R: main: from http://nosuchcfenginehost.com with options
 } we got {"returncode":0,"rc":6,"success":false,"content":"","headers":""}
 ```
 
-**History:** Introduced in CFEngine 3.8
+**History:** Introduced in CFEngine 3.8. The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
-**See also:** `readtcp()`, `mergedata()`, `parsejson()`, `data`.
+**See also:** `readtcp()`, `mergedata()`, `parsejson()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
