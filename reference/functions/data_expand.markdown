@@ -2,7 +2,7 @@
 layout: default
 title: data_expand
 published: true
-tags: [reference, data functions, functions, json, container, expand]
+tags: [reference, data functions, functions, json, container, expand, inline_json]
 ---
 
 [%CFEngine_function_prototype(data_container)%]
@@ -12,9 +12,7 @@ tags: [reference, data functions, functions, json, container, expand]
 This function will take a data container and expand variable
 references **once** in all keys and values.
 
-**NOTE** that the `data_container` can be specified as inline JSON
-instead of a separate variable. This is standard across many CFEngine
-functions and explained in the `mergedata()` documentation.
+This is a [Collecting Functions][collecting function] so it can accept many types of data parameters.
 
 Any compound (arrays or maps) data structures will be expanded
 recursively, so for instance data in a map inside another map will be
@@ -35,6 +33,6 @@ Output:
 
 **Notes:**  
    
-**History:** Was introduced in version 3.7.0 (2015)
+**History:** Was introduced in version 3.7.0 (2015). The [Collecting Functions][collecting function] behavior was added in 3.9.
 
-**See also:** `readcsv()`, `readjson()`, `readyaml()`, `mergedata()`, and `data` documentation.
+**See also:** `readcsv()`, `readjson()`, `readyaml()`, `mergedata()`, [Collecting Functions][about collecting functions], and `data` documentation.
