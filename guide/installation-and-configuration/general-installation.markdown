@@ -80,10 +80,9 @@ Starting with CFEngine 3.7, the file `def.json` (typically
 `/var/cfengine/inputs/def.json` for the main `promises.cf`) can be
 used instead of `def.cf` for many settings.
 
-`def.json` can add inputs, variables and classes to the execution of
-**all** CFEngine components **before** any parsing or evaluation
-happen. It's a JSON data file, so you should view and edit it with a
-JSON-aware editor if possible.
+`def.json` can add variables and classes to the execution of **all** CFEngine
+components **before** any parsing or evaluation happen. It's a JSON data file,
+so you should view and edit it with a JSON-aware editor if possible.
 
 Values will be expanded, so you can use the variables from
 [Special Variables][].
@@ -96,9 +95,14 @@ The file `def.json` is found like the policy file to be run:
 
 Currently `def.json` can contain three keys:
 
-* `inputs`: any filenames you put here will be loaded as inputs.
-Again, note that this happens before policy is parsed or evaluated.
-It's as if you passed `-f FILENAME` to the `cf-agent` command line.
+* `inputs`: any filenames you put here will appear in the `def.augments_inputs`
+  variable. The standard set of masterfiles refers to this variable and will
+  autoload those files.
+
+**Note:** In CFEngine 3.8.1 it was possible to use `inputs` to autoload inputs
+  without referencing the `def.augments_inputs` variable. This would happen
+  before all evaluation stages. However, this functionality turned out to be
+  problematic and was removed in later versions.
 
 * `vars`: any variables you put here will be put in the `def` scope. Thus:
 
