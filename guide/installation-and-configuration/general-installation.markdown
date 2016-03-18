@@ -99,6 +99,11 @@ Currently `def.json` can contain three keys:
   variable. The standard set of masterfiles refers to this variable and will
   autoload those files.
 
+**Note:** In CFEngine 3.8.1 it was possible to use `inputs` to autoload inputs
+  without referencing the `def.augments_inputs` variable. This would happen
+  before all evaluation stages. However, this functionality turned out to be
+  problematic and was removed in later versions.
+
 * `vars`: any variables you put here will be put in the `def` scope. Thus:
 
 ```
