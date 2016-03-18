@@ -26,4 +26,4 @@ Output:
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
-**See also:** [About collecting functions][Functions#collecting functions], `filter()`, `every()`, and `some()`.
+**See also:** [About collecting functions][Functions#collecting functions], filter(), every(), and some().
