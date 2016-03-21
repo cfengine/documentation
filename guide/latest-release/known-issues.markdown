@@ -75,3 +75,21 @@ please contact support for a custom policy.
 
 Mission Portal does not allow users from a directory to be edited if they have
 dots in their username.
+
+### Enterprise Hub - PHP warnings after upgrading from `3.6.x`
+
+After upgrading from `3.6.x` PHP warns it is unable to
+initialize the apc module.
+
+```
+  notice: Q: "...hp/bin/php /var": PHP Warning:  PHP Startup: apc: Unable to initialize module
+Q: "...hp/bin/php /var": Module compiled with module API=20100525
+Q: "...hp/bin/php /var": PHP    compiled with module API=20131226
+Q: "...hp/bin/php /var": These options need to match
+Q: "...hp/bin/php /var":  in Unknown on line 0
+```
+
+This warning can be resolved by removing
+`/var/cfengine/httpd/php/lib/apc.ini` and
+`/var/cfengine/httpd/php/lib/php/extensions/no-debug-non-zts-20131226/apc.so`
+
