@@ -55,10 +55,10 @@ affect the behavior of all the components.
 **Description:** The `bundlesequence` contains promise bundles
 to verify, in a specific order.
 
-The `bundlesequence` determines which of the compiled bundles will
-be executed and in what order they will be executed. The list
-refers to the names of bundles (which might be parameterized,
-function-like objects).
+The `bundlesequence` determines which of the compiled bundles will be executed
+by `cf-agent` and in what order they will be executed. The list refers to the
+names of bundles (which might be parameterized, function-like objects).
+
 
 The default value for `bundlesequence` is `{ "main" }`.
 
@@ -82,6 +82,9 @@ A `bundlesequence` may also be specified using the `-b` or
                        };
     }
 ```
+
+**Note:** Only `common` and `agent` bundles are allowed to be listed in the
+bundlesequence.
 
 The order in which you execute bundles can affect the outcome of
 your promises. In general you should always define variables before
@@ -126,7 +129,9 @@ use global variable lists to do this:
     }
 ```
 
-**History:** The default to `{ "main" }` was introduced in version 3.7.0, so if you expect your policies to be run by older version, you'll need an explicit `bundlesequence`.
+**History:** The default to `{ "main" }` was introduced in version 3.7.0, so if
+you expect your policies to be run by older version, you'll need an explicit
+`bundlesequence`.
 
 ### bwlimit
 
