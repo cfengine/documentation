@@ -15,6 +15,8 @@ container (JSON format) if necessary. So for example the variable `x`
 holding the CFEngine slist `{ "1", "a", "foo" }` will be converted to
 the equivalent JSON array under the key `x`: `"x": [ "1", "a", "foo" ]`.
 
+**Note:** unlike `datastate()` classes are **not** collected.
+
 The namespace of the bundle should **not** be included if it's in the
 `default:` namespace (all CFEngine bundles are, unless you override
 that). But if the bundle is in another namespace, you must prefix the
