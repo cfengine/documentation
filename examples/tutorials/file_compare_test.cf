@@ -9,44 +9,44 @@ body common control {
 bundle agent robot
 {
   reports:
-"                                    77777777777";                                
-"                                   77777777777777";                               
-"                                    777 7777 777";                               
-"                                  7777777777777";                                
-"                                   777777777777";                               
-"                                    777 7777 77";    
-"                                    ";                                                    
-"                           ZZZZ     ZZZ ZZZZ ZZZ     ZZZZ";                       
-"                          ZZZZZ    ZZZZZZZZZZZZZZ    ZZZZZ ";                     
-"                        ZZZZZZZ    ZZZZZZZZZZZZZ     ZZZZZZZ"; 
-"                         ZZZZ      -------------      ZZZZZZ";                  
-"                       ZZZZZ        !CFENGINE!        ZZZZZ";  
-"                         ZZZZ      -------------      ZZZZZ";                  
-"                       ZZZZZ       ZZZZZZZZZZZZZZ       ZZZZZ";                   
-"                        ZZZ        ZZZZZZZZZZZZZ         ZZZ";                    
-"                       ZZZZZ       ZZZZZZZZZZZZZ        ZZZZZ";                   
-"                     ..?ZZZ+,,,,,  ZZZZZZZZZZZZZZ       ZZZZZ";                   
-"                    ...ZZZZ~  ,::  ZZZZZZZZZZZZZ         ZZZZ";                   
-"                    ..,ZZZZZ,::::::                     ZZZZZ";                   
-"                        ZZZ                              ZZZ";                    
-"                                  ~       ===+";                                  
-"                                    ZZZZZZZZZZZZZI??";                             
-"                                    ZZZZZZZZZZZZZ$???";                           
-"                                    7Z$+ ZZ  ZZZ???II";                           
-"                                    ZZZZZ+   ZZZZZIIII";                           
-"                                 ZZZZZ    ZZZZZ III77";                        
-"                              +++  +$ZZ???   ZZZ";                               
-"                              +++??ZZZZZIIIIZZZZZ";                              
-"                               ????ZZZZZIIIIZZZZZ";                              
-"                                ??IIZZZZ 7777ZZZ";                                
-"                                 IIZZZZZ  77ZZZZZ";                               
-"                                  I$ZZZZ   $ZZZZ";  
+"                                    77777777777";
+"                                   77777777777777";
+"                                    777 7777 777";
+"                                  7777777777777";
+"                                   777777777777";
+"                                    777 7777 77";
+"                                    ";
+"                           ZZZZ     ZZZ ZZZZ ZZZ     ZZZZ";
+"                          ZZZZZ    ZZZZZZZZZZZZZZ    ZZZZZ ";
+"                        ZZZZZZZ    ZZZZZZZZZZZZZ     ZZZZZZZ";
+"                         ZZZZ      -------------      ZZZZZZ";
+"                       ZZZZZ        !CFENGINE!        ZZZZZ";
+"                         ZZZZ      -------------      ZZZZZ";
+"                       ZZZZZ       ZZZZZZZZZZZZZZ       ZZZZZ";
+"                        ZZZ        ZZZZZZZZZZZZZ         ZZZ";
+"                       ZZZZZ       ZZZZZZZZZZZZZ        ZZZZZ";
+"                     ..?ZZZ+,,,,,  ZZZZZZZZZZZZZZ       ZZZZZ";
+"                    ...ZZZZ~  ,::  ZZZZZZZZZZZZZ         ZZZZ";
+"                    ..,ZZZZZ,::::::                     ZZZZZ";
+"                        ZZZ                              ZZZ";
+"                                  ~       ===+";
+"                                    ZZZZZZZZZZZZZI??";
+"                                    ZZZZZZZZZZZZZ$???";
+"                                    7Z$+ ZZ  ZZZ???II";
+"                                    ZZZZZ+   ZZZZZIIII";
+"                                 ZZZZZ    ZZZZZ III77";
+"                              +++  +$ZZ???   ZZZ";
+"                              +++??ZZZZZIIIIZZZZZ";
+"                               ????ZZZZZIIIIZZZZZ";
+"                                ??IIZZZZ 7777ZZZ";
+"                                 IIZZZZZ  77ZZZZZ";
+"                                  I$ZZZZ   $ZZZZ";
 
 
 }
 
 bundle common global_vars
-{   
+{
     vars:
 
       "gccexec" string => getenv("GCC_BIN",255);
@@ -123,14 +123,14 @@ bundle edit_line Insert(name)
 
 bundle agent create_aout
 {
-  
+
     classes:
-  
+
     "doesfileacexist" expression => fileexists("$(global_vars.workdir)/a.c");
     "doesaoutexist" expression => fileexists("$(global_vars.aoutbin)");
 
   vars:
-  
+
     # Removes any previous binary
     "rmaout" string => execresult("$(global_vars.rmexec) $(global_vars.aoutexec)","noshell");
 	
@@ -139,7 +139,7 @@ bundle agent create_aout
     "gccaout" string => execresult("$(compilestr)","noshell");
 
   reports:
-    doesfileacexist::  
+    doesfileacexist::
       "gcc output: $(gccaout)";
       "Creating aout using $(compilestr)";
 	!doesfileacexist::
@@ -181,24 +181,24 @@ bundle agent do_files_exist_1
 {
 
   classes:
-  
+
     "doesfile1exist" expression => fileexists("$(global_vars.file1)");
     "doesfile2exist" expression => fileexists("$(global_vars.file2)");
 
   methods:
-  
+
     doesfile1exist::
 
     "any" usebundle => delete_file("$(global_vars.file1)");	
     doesfile2exist::
     "any" usebundle => delete_file("$(global_vars.file2)");	
   reports:
-  
+
     !doesfile1exist::
       "$(global_vars.file1) does not exist.";
 	doesfile1exist::
       "$(global_vars.file1) did exist. Call to delete it was made.";	
-	  
+	
     !doesfile2exist::
       "$(global_vars.file2) does not exist.";
 	doesfile2exist::
@@ -207,7 +207,7 @@ bundle agent do_files_exist_1
 }
 
 
-bundle agent create_file_1 
+bundle agent create_file_1
 {
 
   files:
@@ -245,7 +245,7 @@ bundle agent copy_a_file
 bundle agent do_files_exist_2
 
 {
-	  
+	
   methods:
 
     "any" usebundle => does_file_exist($(global_vars.file1));
@@ -275,11 +275,11 @@ bundle agent does_file_exist(filename)
 bundle agent list_file_1
 {
 
-  methods:	  
+  methods:	
     "any" usebundle => file_content($(global_vars.file1));
 	"any" usebundle => file_content($(global_vars.file2));
   reports:
-    "*********************************";  
+    "*********************************";
 
 }
 
@@ -292,7 +292,7 @@ bundle agent exec_aout
   vars:
     doesaoutexist::
     "aout" string => execresult("$(global_vars.aoutexec)","noshell");
-  
+
   reports:
     doesaoutexist::
 	"*********************************";
@@ -305,14 +305,14 @@ bundle agent exec_aout
 
 bundle agent stat
 {
-  
+
   classes:
-  
+
     "doesfile1exist" expression => fileexists("$(global_vars.file1)");
     "doesfile2exist" expression => fileexists("$(global_vars.file2)");
 
   vars:
-  
+
     doesfile1exist::
 	
     "file1" string => "$(global_vars.file1)";
@@ -390,11 +390,11 @@ body replace_with hello_world
 
 bundle agent list_file_2
 {
-	  
+	
   methods:
 
       "any" usebundle => file_content($(global_vars.file1));
-      "any" usebundle => file_content($(global_vars.file2));	  
+      "any" usebundle => file_content($(global_vars.file2));	
 
   classes:
 
@@ -422,7 +422,7 @@ bundle agent file_content(filename)
 
       "file_content" string => readfile( "$(filename)" , "0" );
       "file_stat" string => filestat("$(filename)","mtime");
-	  
+	
   reports:
       "Contents of $(filename) = $(file_content). Last Modified Time = $(file_stat).";
 	  #"The report on contents will only show new content and modifications. Even if the method is called more than once, if the evaluation is exactly the same as the previous call then there will be no report (possibly because the bundle is not evaluated a second time?).";

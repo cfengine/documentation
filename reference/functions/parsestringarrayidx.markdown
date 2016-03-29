@@ -7,7 +7,7 @@ tags: [reference, io functions, functions, parsestringarrayidx]
 
 [%CFEngine_function_prototype(array, input, comment, split, maxentries, maxbytes)%]
 
-**Description:** Populates the two-dimensional array `array` with up to 
+**Description:** Populates the two-dimensional array `array` with up to
 `maxentries` fields from the first `maxbytes` bytes of the string `input`.
 
 This function mirrors the exact behavior of `readstringarrayidx()`, but

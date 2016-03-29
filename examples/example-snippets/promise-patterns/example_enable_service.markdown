@@ -120,20 +120,20 @@ Example run:
 
 ```
 # /etc/init.d/ntp stop
- * Stopping NTP server ntpd                                                                                                                     [ OK ] 
+ * Stopping NTP server ntpd                                                                                                                     [ OK ]
 # cf-agent -f enable_service.cf -K
 2013-06-08T20:11:55-0700   notice: Q: "...init.d/ntp star":  * Starting NTP server ntpd
 Q: "...init.d/ntp star":    ...done.
 
 2013-06-08T20:11:55-0700   notice: R: Test service promise for "ntp" -> start
-# 
+#
 ```
 
 And again, with Inform:
 
 ```
 # /etc/init.d/ntp stop
- * Stopping NTP server ntpd                                                                                                                     [ OK ] 
+ * Stopping NTP server ntpd                                                                                                                     [ OK ]
 # cf-agent -KIf enable_service.cf
 2013-06-08T20:11:32-0700     info: This agent is bootstrapped to '192.168.183.208'
 2013-06-08T20:11:33-0700     info: Running full policy integrity checks

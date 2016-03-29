@@ -9,12 +9,12 @@ tags: [reference, files functions, functions, dirname]
 
 **Description:** Return the parent directory name for given `path`.
 
-This function returns the directory name for `path`. If `path` is a 
+This function returns the directory name for `path`. If `path` is a
 directory, then the name of its parent directory is returned.
 
 [%CFEngine_function_attributes(path)%]
 
-**Example:**  
+**Example:**
 
 [%CFEngine_include_snippet(dirname.cf, #\+begin_src cfengine3, .*end_src)%]
 
@@ -26,5 +26,5 @@ Output:
 
 **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)
 
-**See also:** [`lastnode()`][lastnode], [`filestat()`][filestat], 
+**See also:** [`lastnode()`][lastnode], [`filestat()`][filestat],
 [`splitstring()`][splitstring].

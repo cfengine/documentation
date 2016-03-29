@@ -5,7 +5,7 @@ published: true
 tags: [reference, enterprise, REST, API, SQL, reporting, URI]
 ---
 
-In case of a need for full flexibility, Query API allow users to execute SQL queries on CFEngine Database. 
+In case of a need for full flexibility, Query API allow users to execute SQL queries on CFEngine Database.
 
 Database schema available can be found [here][SQL Schema].
 
@@ -22,7 +22,7 @@ API performance depend on the query result size, to achieve fastest results cons
 **Parameters:**
 
 * **query** *(string)*
-    SQL query string. 
+    SQL query string.
 * **sortColumn** *(string)*
     Column name on which to sort results. Optional parameter.
 * **sortDescending** *(boolean)*
@@ -31,7 +31,7 @@ API performance depend on the query result size, to achieve fastest results cons
     Number of results to skip for the processed
     query. The Mission Portal uses this for pagination. Optional parameter.
 * **limit**  *(integer)*
-    Limit the number of results in the query. 
+    Limit the number of results in the query.
 * **hostContextInclude** *(string)*
     Includes only results that concern hosts which have specified CFEngine context (class) set. Optional parameter.
 * **hostContextExclude** *(string)*
@@ -95,7 +95,7 @@ API performance depend on the query result size, to achieve fastest results cons
 
 **Method:** POST
 
-Execute user SQL query as a async job. Result is available as file to download within specified format after job is finished. 
+Execute user SQL query as a async job. Result is available as file to download within specified format after job is finished.
 
 Accepts SQL compatible with PostgreSQL database. Query is a subject to Role Base Access Control and will include data for hosts that issuing user have permissions to access. Read-only SQL is allowed.
 
@@ -106,7 +106,7 @@ API returns entire query result. Make sure that result size is sensible.
 **Parameters:**
 
 * **query** *(string)*
-    SQL query string. 
+    SQL query string.
 * **outputType** *(string)*
     Supported types: 'csv' (default). Optional parameter.
 * **hostContextInclude** *(string)*

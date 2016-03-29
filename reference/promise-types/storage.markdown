@@ -9,9 +9,9 @@ Storage promises refer to disks and filesystem properties.
 
 ```cf3
       storage:
-     
+
          "/disk volume or mountpoint"
-     
+
            volume = volume_body,
            ...;
 ```
@@ -84,7 +84,7 @@ The default behavior is to not place edits in the file system table.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     nfs
@@ -103,7 +103,7 @@ The default behavior is to not place edits in the file system table.
 ```
 
 **Notes:**
-This field is mainly for future extensions.   
+This field is mainly for future extensions.
 
 #### mount_source
 
@@ -147,7 +147,7 @@ This is the location on the remote device, server, SAN etc.
 ("fstab").
 
 This list is concatenated in a form appropriate for the filesystem. The
-options must be legal options for the system mount commands.   
+options must be legal options for the system mount commands.
 
 **Type:** `slist`
 
@@ -229,7 +229,7 @@ the results of this promise to control other promises.
      {
      freespace => "10%";
      }
-     
+
      body volume example2
      {
      freespace => "50M";

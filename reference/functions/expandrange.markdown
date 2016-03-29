@@ -20,11 +20,11 @@ from the range.
 ```cf3
 vars:
 
- "int_group1" slist => { 
-                       "swp10", 
-                       "swp11", 
-                       "swp12", 
-                       expandrange("swp[13-15]", 1) 
+ "int_group1" slist => {
+                       "swp10",
+                       "swp11",
+                       "swp12",
+                       expandrange("swp[13-15]", 1)
                        };
 
 interfaces:

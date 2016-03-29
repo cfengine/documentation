@@ -13,7 +13,7 @@ Uses whatever configured name service is used by the resolver library to
 translate `hostname` into an IP address. It will return an IPv6 address
 by preference if such an address exists. This function uses the standard
 lookup procedure for a name, so it mimics internal processes and can
-therefore be used not only to cache multiple lookups in the configuration, but 
+therefore be used not only to cache multiple lookups in the configuration, but
 to debug the behavior of the resolver.
 
 [%CFEngine_function_attributes(hostname)%]

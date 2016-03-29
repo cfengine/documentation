@@ -28,5 +28,5 @@ The policy was last updated on Sat Jun  8 15:16:00 2013.
 The system has 4 cpus.
 Network interfaces on this system are eth0, eth1,
 and the ip-addresses assigned are 127.0.0.1, 10.10.23.68, 192.168.183.208.
-# 
+#
 ```

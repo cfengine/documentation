@@ -5,14 +5,14 @@ published: true
 tags: [reference, bundle common, defaults, promises]
 ---
 
-Defaults promises are related to 
-[variables][variables]. If a variable or 
-parameter in a promise bundle is undefined, or its value is defined to be 
+Defaults promises are related to
+[variables][variables]. If a variable or
+parameter in a promise bundle is undefined, or its value is defined to be
 invalid, a default value can be promised instead.
 
-CFEngine does not use Perl semantics: i.e. undefined variables do not map to 
-the empty string, they remain as variables for possible future expansion. Some 
-variables might be defined but still contain unresolved variables. To handle 
+CFEngine does not use Perl semantics: i.e. undefined variables do not map to
+the empty string, they remain as variables for possible future expansion. Some
+variables might be defined but still contain unresolved variables. To handle
 this you will need to match the `$(abc)` form of the variables.
 
 ```cf3
@@ -96,15 +96,15 @@ reports:
 **Description:** If this regular expression matches the current value of
 the variable, replace it with default
 
-If a parameter or variable is already defined in the current context, and the 
-value matches this regular expression, it will be deemed invalid and replaced 
+If a parameter or variable is already defined in the current context, and the
+value matches this regular expression, it will be deemed invalid and replaced
 with the default value.
 
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
 
-**Example:**  
+**Example:**
 
 ```cf3
     bundle agent mymethod(a,b)

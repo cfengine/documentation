@@ -7,7 +7,7 @@ tags: [reference, communication functions, functions, iprange]
 
 [%CFEngine_function_prototype(range)%]
 
-**Description:** Returns whether the current host lies in the range of IP 
+**Description:** Returns whether the current host lies in the range of IP
 addresses specified.
 
 Pattern matching based on IP addresses.

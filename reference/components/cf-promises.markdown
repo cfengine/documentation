@@ -6,12 +6,12 @@ sorting: 40
 tags: [Components, cf-promises]
 ---
 
-`cf-promises` is a  tool for checking CFEngine policy code. It operates by 
-first parsing policy code checking for syntax errors. Second, it validates the 
-integrity of policy consisting of multiple files. Third, it checks for 
-semantic errors, e.g. specific attribute set rules. Finally, `cf-promises` 
-attempts to expose errors by partially evaluating the policy, resolving as 
-many variable and classes promise statements as possible. At no point does 
+`cf-promises` is a  tool for checking CFEngine policy code. It operates by
+first parsing policy code checking for syntax errors. Second, it validates the
+integrity of policy consisting of multiple files. Third, it checks for
+semantic errors, e.g. specific attribute set rules. Finally, `cf-promises`
+attempts to expose errors by partially evaluating the policy, resolving as
+many variable and classes promise statements as possible. At no point does
 `cf-promises` make any changes to the system.
 
 In 3.6.0 and later, `cf-promises` will not evaluate function calls

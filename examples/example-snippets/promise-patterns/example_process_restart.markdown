@@ -7,7 +7,7 @@ reviewed: 2013-06-08
 reviewed-by: atsaloli
 ---
 
-This is a standalone policy that will restart three CFEngine processes if they are not running. 
+This is a standalone policy that will restart three CFEngine processes if they are not running.
 
 ```cf3
 body common control
@@ -33,7 +33,7 @@ processes:
 commands:
 
    "/var/cfengine/bin/$(component)"
-       ifvarclass => canonify("start_$(component)"); # Evaluate the class "start_<component>", CFEngine will run 
+       ifvarclass => canonify("start_$(component)"); # Evaluate the class "start_<component>", CFEngine will run
                                                    # the command if "start_<component> is set.
 
 }
@@ -59,7 +59,7 @@ root      4397     1  0 15:15 ?        00:00:06 /var/cfengine/bin/cf-monitord
 root      4305     1  0 15:14 ?        00:00:02 /var/cfengine/bin/cf-execd
 root      4397     1  0 15:15 ?        00:00:06 /var/cfengine/bin/cf-monitord
 root      8008     1  0 18:18 ?        00:00:00 /var/cfengine/bin/cf-serverd
-# 
+#
 ```
 
 And again, in Inform mode:
@@ -72,5 +72,5 @@ And again, in Inform mode:
 2013-06-08T18:19:51-0700     info: /process_restart/processes/'$(component)': Making a one-time restart promise for 'cf-serverd'
 2013-06-08T18:19:51-0700     info: Executing 'no timeout' ... '/var/cfengine/bin/cf-serverd'
 2013-06-08T18:19:52-0700     info: Completed execution of '/var/cfengine/bin/cf-serverd'
-# 
+#
 ```

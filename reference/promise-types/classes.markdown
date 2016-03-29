@@ -5,8 +5,8 @@ published: true
 tags: [bundle common, classes, promises]
 ---
 
-[Classes][classes] promises may be made in any 
-bundle. Classes that are set in `common` bundles are global in scope, 
+[Classes][classes] promises may be made in any
+bundle. Classes that are set in `common` bundles are global in scope,
 while classes in all other bundles are local.
 
 **Note:** The term class and context are sometimes used interchangeably.
@@ -23,7 +23,7 @@ while classes in all other bundles are local.
 ```
 
 **Note:** You must use at least one of the following attributes to make a
-complete promise. 
+complete promise.
 
 * and
 * expression
@@ -66,7 +66,7 @@ bundle agent example
 
 **Description:** Combine class sources with AND
 
-The class on the left-hand side is set if all of the class expressions listed 
+The class on the left-hand side is set if all of the class expressions listed
 on the right-hand side are true.
 
 **Type:** `clist`
@@ -84,34 +84,34 @@ on the right-hand side are true.
 **Notes:**
 
 If an expression contains a mixture of different object types that need to be
-ANDed together, this list form is more convenient than providing an 
+ANDed together, this list form is more convenient than providing an
 expression.
 
 ### dist
 
 **Description:** Generate a probabilistic class distribution
 
-Always set one generic class and one additional class, randomly weighted on a 
+Always set one generic class and one additional class, randomly weighted on a
 probability distribution.
 
 **Type:** `rlist`
 
 **Allowed input range:** `-9.99999E100,9.99999E100`
 
-**Example:**  
+**Example:**
 
 ```cf3
     classes:
 
-      "my_dist"  
+      "my_dist"
 
         dist => { "10", "20", "40", "50" };
 ```
 
 **Notes:**
 
-In the example above the values sum up to `10+20+40+50 = 120`. When generating 
-the distribution, CFEngine picks a number between `1-120`, and set the class 
+In the example above the values sum up to `10+20+40+50 = 120`. When generating
+the distribution, CFEngine picks a number between `1-120`, and set the class
 `my_dist` as well as one of the following classes:
 
 ```cf3
@@ -132,7 +132,7 @@ side evaluates to true.
 
 **Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example:**  
+**Example:**
 
 ```cf3
     classes:
@@ -152,12 +152,12 @@ the class expressions on the right-hand side are true.
 
 **Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example:**  
+**Example:**
 
 ```cf3
 classes:
 
-    "compound_test" 
+    "compound_test"
 
       or => { classmatch("linux_x86_64_2_6_22.*"), "suse_10_3" };
 ```
@@ -176,18 +176,18 @@ The value specifies time in minutes.
 
 **Allowed input range:** `0,99999999999`
 
-**Example:**  
+**Example:**
 
 ```cf3
 bundle common setclasses
 {
 classes:
 
-  "cached_classes" 
+  "cached_classes"
                 or => { "any" },
        persistence => "1";
 
-  "cached_class" 
+  "cached_class"
        expression => "any",
        persistence => "1";
 
@@ -196,18 +196,18 @@ classes:
 
 **Notes:**
 
-This feature can be used to avoid recomputing expensive classes calculations 
-on each invocation. This is useful if a class discovered is essentially 
-constant or only slowly varying, such as a hostname or alias from a 
+This feature can be used to avoid recomputing expensive classes calculations
+on each invocation. This is useful if a class discovered is essentially
+constant or only slowly varying, such as a hostname or alias from a
 non-standard naming facility.
 
-For example, to create a conditional inclusion of costly class evaluations, 
+For example, to create a conditional inclusion of costly class evaluations,
 put them into a separate bundle in a file `classes.cf.`
 
 ```cf3
     # promises.cf
 
-    body common control 
+    body common control
     {
     persistent_classes::
       bundlesequence => { "test" };
@@ -218,7 +218,7 @@ put them into a separate bundle in a file `classes.cf.`
     !persistent_classes::
       inputs => { "classes.cf" };
     }
- 
+
 
     bundle agent test
     {
@@ -241,11 +241,11 @@ Then create `classes.cf`
     {
     classes:
 
-      "persistent_classes"            # timer flag 
+      "persistent_classes"            # timer flag
              expression => "any",
             persistence => "480";
 
-      "my_persistent_class" 
+      "my_persistent_class"
                     or => { ...long list or heavy function... } ,
            persistence => "480";
 
@@ -258,7 +258,7 @@ Then create `classes.cf`
 
 **Description:** Evaluate the negation of string expression in normal form
 
-The class on the left-hand side will be set if the class expression on the 
+The class on the left-hand side will be set if the class expression on the
 right-hand side evaluates to false.
 
 
@@ -277,7 +277,7 @@ right-hand side evaluates to false.
 
 **Notes:**
 
-Knowing that something is not the case is not the same as not knowing whether 
+Knowing that something is not the case is not the same as not knowing whether
 something is the case. That a class is not set could mean either. See the note
 on [Negative Knowledge][classes and decisions].
 
@@ -325,7 +325,7 @@ that hosts will always end up in the same class every time.
 
 **Allowed input range:** `[a-zA-Z0-9_!@@$|.()\[\]{}:]+`
 
-**Example:**  
+**Example:**
 
 ```cf3
     bundle common g
@@ -345,10 +345,10 @@ that hosts will always end up in the same class every time.
 
 **Notes:**
 
-This feature is similar to the [`splayclass` function][splayclass]. However, 
-instead of selecting a class for a moment in time, it always chooses one class 
-in the list; the same class each time for a given host. This allows hosts to 
-be distributed across a controlled list of classes (e.g for load balancing 
+This feature is similar to the [`splayclass` function][splayclass]. However,
+instead of selecting a class for a moment in time, it always chooses one class
+in the list; the same class each time for a given host. This allows hosts to
+be distributed across a controlled list of classes (e.g for load balancing
 purposes).
 
 If a list is used as the input to select_class the promise will only actuate if

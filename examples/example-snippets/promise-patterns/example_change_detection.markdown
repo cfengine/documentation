@@ -17,8 +17,8 @@ First, let's create some files for CFEngine to monitor:
 
 
 ```
-# mkdir /etc/example 
-# date > /etc/example/example.conf  
+# mkdir /etc/example
+# date > /etc/example/example.conf
 ```
 
 CFEngine detects new files and adds them to the file integrity database:
@@ -34,10 +34,10 @@ If there are no changes, CFEngine runs silently:
 
 ```
 # cf-agent -f unit_change_detect.cf
-#   
+#
 ```
 
-Now let's update the mtime, and then the mtime and content. 
+Now let's update the mtime, and then the mtime and content.
 CFEngine will notice the changes and record the new profile:
 
 ```

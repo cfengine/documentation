@@ -7,10 +7,10 @@ tags: [reference, files functions, functions, isnewerthan]
 
 [%CFEngine_function_prototype(newer, older)%]
 
-**Description:** Returns whether the file `newer` is newer (modified later) 
+**Description:** Returns whether the file `newer` is newer (modified later)
 than the file `older`.
 
-This function compares the modification time (mtime) of the files, referring 
+This function compares the modification time (mtime) of the files, referring
 to changes of content only.
 
 [%CFEngine_function_attributes(newer, older)%]
