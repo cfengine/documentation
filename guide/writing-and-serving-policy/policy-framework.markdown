@@ -429,7 +429,7 @@ actuated (as a policy level feature).
 This class needs to be defined from the beginning of policy execution and should
 be defined using an [augments file][Augments]. Here is an example:
 
-```json
+```
 {
   "classes":{
     "services_autorun":[
