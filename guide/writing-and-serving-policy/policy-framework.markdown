@@ -22,16 +22,16 @@ to the framework are documented in the changelog.
 
 ## Setting up ##
 
-First, review `update_def` and `def`.  Most settings you need to
-change will live here.
+First, review the `update_def` and `def` bundles found in
+`controls/update_def.cf` and `controls/def.cf` respectively. Many settings you
+need to change will live here.
 
-As of CFEngine version 3.7 it is allowed (and recommended) to use
-`def.json` to specify things traditionally set in `update.cf` and
-`def.cf`.
+It is recommended to use an [augments file][Augments] to specify things
+traditionally set in `update_def.cf` and `def.cf`.
 
 We will cover the policy in the order it is activated, starting with
-the update.cf and its bundlesequence followed by promises.cf and
-its bundlesequence.
+`update.cf` and its bundlesequence followed by `promises.cf` and its
+bundlesequence.
 
 ### update.cf
 
@@ -67,10 +67,10 @@ under `libpromises/failsafe.cf` (that `.cf` file is written into the C
 code and can't be modified). If things get to that point, you probably
 have to look at why corrupted policies made it into production.
 
-As is typical for CFEngine, the policy and the configuration are
-mixed. In `update.cf` you'll find some very useful settings. Keep
-referring to `update.cf` as you read this.  We are skipping the
-nonessential ones.
+As is typical for CFEngine, the policy and the configuration are mixed. In
+`controls/update_def.cf` you'll find some very useful settings. Keep referring
+to `controls/update_def.cf` as you read this. We are skipping the nonessential
+ones.
 
 #### How it works ####
 
@@ -236,10 +236,11 @@ operation, it must also have a `bundlesequence`.
 
 #### bundlesequence ####
 
-The `bundlesequence` acts like the 'genetic makeup' of the
-configuration. Edit the `bundlesequence` to add any bundles you have
-defined, or are pre-defined. Consider using the `services_autorun`
-facility so you don't have to edit this setting at all.
+The `bundlesequence` acts like the 'genetic makeup' of the configuration. Edit
+the `bundlesequence` to add any bundles you have defined, or are pre-defined.
+Consider using the `services_autorun` facility, an [augments file][Augments] or
+integrating your bundles as `methods` type promises so you don't have to edit
+this setting at all.
 
 **BEWARE THAT ONLY VALID (KNOWN) BUNDLES CAN BE ADDED.**
 
@@ -421,9 +422,29 @@ bootstrapped to avoid unpleasant surprises.
 
 Off by default.
 
-Turn this on (set to `any`) to auto-load files in `services/autorun`
-and run bundles found that are tagged `autorun`. Here's a simple
-example of such a bundle in `services/autorun/hello.cf`:
+When enabled files in `services/autorun` suffixed with `.cf` are automatically
+added to inputs and bundles that are tagged with `autorun` are automatically
+actuated (as a policy level feature).
+
+This class needs to be defined from the beginning of policy execution and should
+be defined using an [augments file][Augments]. Here is an example:
+
+```json
+{
+  "classes":{
+    "services_autorun":[
+      "any"
+    ]
+  }
+}
+```
+
+**Note:** It is **not** sufficient to define this class within the policy itself
+in order for files to be discovered and added to inputs appropriately.
+
+To tag a bundle with autorun simply define `tags` as a `meta` slist with a value
+that inclused `autorun`. Here's a simple example of such a bundle in
+`services/autorun/hello.cf`:
 
 [%CFEngine_include_snippet(masterfiles/services/autorun/hello.cf, .*)%]
 
