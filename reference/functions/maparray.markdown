@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, maparray]
 
 **Description:** Returns a list with each array element modified by a pattern.
 
-The `$(this.k)` and `$(this.v)` variables expand to the key and value of the 
+The `$(this.k)` and `$(this.v)` variables expand to the key and value of the
 array element, similar to the way `this` is available for `maplist`.
 
 If a value in the array is an `slist`, you'll get one result for each

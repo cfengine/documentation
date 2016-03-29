@@ -7,7 +7,7 @@ tags: [reference, system functions, functions, userexists]
 
 [%CFEngine_function_prototype(user)%]
 
-**Description:** Return whether `user` name or numerical id exists on this 
+**Description:** Return whether `user` name or numerical id exists on this
 host.
 
 Checks whether the user is in the password database for the current host. The

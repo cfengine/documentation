@@ -19,5 +19,5 @@ R: Freedisk 48694692
 # df -k /tmp
 Filesystem     1K-blocks     Used Available Use% Mounted on
 /dev/sda1      149911836 93602068  48694692  66% /
-# 
+#
 ```

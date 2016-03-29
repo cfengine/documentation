@@ -11,7 +11,7 @@ the files live in `/var/cfengine/masterfiles` on the policy server (on
 the clients, and note the policy server is typically also a client,
 they are cached in `/var/cfengine/inputs`).
 
-The following configuration files are part of the default CFEngine 
+The following configuration files are part of the default CFEngine
 installation in `/var/cfengine/masterfiles`, and have special roles.
 
 ## Setting up ##
@@ -33,9 +33,9 @@ you risk losing control of your system (that is, **if CFEngine cannot
 successfully execute `update.cf`, it has no mechanism for distributing
 new policy files**).
 
-By default, the policy defined in update.cf is executed from two sets of 
-promise bodies. The "usual" one (defined in the `bundlesequence` in 
-`promises.cf`) and another in the backup/failsafe `bundlesequence` (defined in 
+By default, the policy defined in update.cf is executed from two sets of
+promise bodies. The "usual" one (defined in the `bundlesequence` in
+`promises.cf`) and another in the backup/failsafe `bundlesequence` (defined in
 `failsafe.cf`).
 
 This is a standalone policy file. You can actually run it with
@@ -421,7 +421,7 @@ download a working policy, once you fix it on the policy host).
 
 Several CFEngine components that read policy (e.g. `cf-agent`, `cf-execd`, `cf-serverd`) run `cf-promises` to validate the syntax of their input files before actually running the policy. To illustrate this, if `cf-promises` runs every 5 minutes then there will be 12 checks occurring every hour, 24 hours a day, 7 days a week -- a total of 2016 possible validation checks. Each of those individual validation sessions can take some number of seconds to perform depending on the system, scale, circumstances and configuration.
 
-Starting with CFEngine 3.1.2, the outcome of every run of `cf-promises` was cached, which lets agents skip the validation of input files that have not changed since the previous run. 
+Starting with CFEngine 3.1.2, the outcome of every run of `cf-promises` was cached, which lets agents skip the validation of input files that have not changed since the previous run.
 
 Starting with CFEngine 3.6, outcome on both hosts and hubs is stored in the file `$(sys.workdir)/masterfiles/cf_promises_validated` (usually `sys.workdir` is `/var/cfengine`). The file can be created by `cf-agent` after it has successfully verified the policy with `cf-promises`. The file can also be created by a user with `cf-promises -T DIRECTORY` which is useful for validating an entire directory.
 

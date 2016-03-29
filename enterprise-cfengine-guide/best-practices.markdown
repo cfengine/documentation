@@ -81,7 +81,7 @@ basic information needed by git to manipulate the repository):
 
 And then make all the changes in the checked-out `masterfiles`
 repository.
-    
+
 ##### Using a remote repository ####
 
 To use a remote repository, you must enter its address, login
@@ -114,7 +114,7 @@ commands (assuming you are already in your local repository checkout):
 
 #### Enable VCS deployments in the versioned `update.cf` ###
 
-In the file `update.cf` in your versioned masterfiles, change 
+In the file `update.cf` in your versioned masterfiles, change
 
     #"cfengine_internal_masterfiles_update" expression => "enterprise.!(cfengine_3_4|cfengine_3_5)";
     "cfengine_internal_masterfiles_update" expression => "!any";
@@ -231,10 +231,10 @@ masterfiles using the built-in facilities in CFEngine Enterprise 3.6
   code or special policies
 
 ## Scalability ##
-  
+
 When running CFEngine Enterprise in a large-scale IT environment with many thousands of hosts, certain issues arise that require different approaches compared with smaller installations.
 
-With CFEngine 3.6, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine. 
+With CFEngine 3.6, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine.
 
 
 ### Moving PostgreSQL to Separate Hard Drive ###

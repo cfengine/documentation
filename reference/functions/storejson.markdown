@@ -16,9 +16,9 @@ tags: [reference, io functions, functions, storejson, json, container]
 ```cf3
    vars:
 
-      "loadthis" 
+      "loadthis"
          data =>  readjson("/tmp/data.json", 4000);
-      "andback" 
+      "andback"
          string =>  storejson(loadthis);
   reports:
       "Converted /tmp/data.json to '$(andback)'";

@@ -16,7 +16,7 @@ This is a simple function to reverse a list.
 * list : The name of the list variable to check, in the range
 `[a-zA-Z0-9_$(){}\[\].:]+`
 
-**Example:**  
+**Example:**
 
 
 [%CFEngine_include_snippet(reverse.cf, #\+begin_src cfengine3, .*end_src)%]

@@ -21,7 +21,7 @@ to manage what goes on within the virtual guests. For that purpose you
 should run CFEngine directly on the virtual machine, as if it were any
 other machine.
 
-  
+
 
 ```cf3
  site1::
@@ -51,7 +51,7 @@ CFEngine currently provides a convergent interface to *libvirt*.
 
 ### environment_host
 
-**Description:** `environment_host` is a class indicating which 
+**Description:** `environment_host` is a class indicating which
 physical node will execute this guest machine
 
 The promise will only apply to the machine with this class set. Thus,
@@ -89,7 +89,7 @@ This attribute is required.
 
 #### env_addresses
 
-**Description:** `env_addresses` is the IP addresses of the environment's 
+**Description:** `env_addresses` is the IP addresses of the environment's
 network interfaces
 
 The IP addresses of the virtual machine can be overridden here at run
@@ -106,15 +106,15 @@ time.
      {
      env_name      => "$(this.promiser)";
      env_addresses => { "$(primary)" };
-     
+
      host1::
-     
+
        env_network => "default_vnet1";
-     
+
      host2::
-     
+
        env_network => "default_vnet2";
-     
+
      }
 ```
 
@@ -123,7 +123,7 @@ time.
 **Description:** `env_name` is the hostname of the virtual environment.
 
 The 'hostname' of a virtual guest may or may not be the same as the
-identifier used as 'promiser' by the virtualization manager.   
+identifier used as 'promiser' by the virtualization manager.
 
 **Type:** `string`
 
@@ -136,10 +136,10 @@ identifier used as 'promiser' by the virtualization manager.
      {
      env_name      => "$(this.promiser)";
      env_addresses => { "$(primary)" };
-     
+
      host1::
        env_network => "default_vnet1";
-     
+
      host2::
        env_network => "default_vnet2";
      }
@@ -175,7 +175,7 @@ identifier used as 'promiser' by the virtualization manager.
 
 #### env_cpus
 
-**Description:** `env_cpus` represents the number of virtual CPUs 
+**Description:** `env_cpus` represents the number of virtual CPUs
 in the environment.
 
 The maximum number of cores or processors in the physical environment
@@ -197,11 +197,11 @@ will set a natural limit on this value.
 ```
 
 **Notes:**
-This attribute conflicts with `env_spec`.   
+This attribute conflicts with `env_spec`.
 
 #### env_memory
 
-**Description:** `env_memory` represents the amount of primary storage 
+**Description:** `env_memory` represents the amount of primary storage
 (RAM) in the virtual environment (in KB).
 
 The maximum amount of memory in the physical environment will set a
@@ -223,11 +223,11 @@ natural limit on this value.
 ```
 
 **Notes:**
-This attribute conflicts with `env_spec`.   
+This attribute conflicts with `env_spec`.
 
 #### env_disk
 
-**Description:** `env_disk` represents the amount of secondary storage 
+**Description:** `env_disk` represents the amount of secondary storage
 (DISK) in the virtual environment (in KB).
 
 This parameter is currently unsupported, for future extension.
@@ -250,11 +250,11 @@ This parameter is currently unsupported, for future extension.
 **Notes:**
 This parameter is currently unsupported, for future extension.
 
-This attribute conflicts with `env_spec`.   
+This attribute conflicts with `env_spec`.
 
 #### env_baseline
 
-**Description:** The `env_baseline` string represents a path to an 
+**Description:** The `env_baseline` string represents a path to an
 image with which to baseline the virtual environment.
 
 **Type:** `string`
@@ -268,14 +268,14 @@ image with which to baseline the virtual environment.
 ```
 
 **Notes:**
-This function is for future development.   
+This function is for future development.
 
 #### env_spec
 
-**Description:** A `env_spec` string contains a technology specific 
+**Description:** A `env_spec` string contains a technology specific
 set of promises for the virtual instance.
 
-This is the preferred way to specify the resources of an environment on 
+This is the preferred way to specify the resources of an environment on
 creation; in other words, when `environment_state` is create.
 
 **Type:** `string`
@@ -287,8 +287,8 @@ creation; in other words, when `environment_state` is create.
 ```cf3
      body environment_resources virt_xml(host)
      {
-     env_spec => 
-     
+     env_spec =>
+
      "<domain type='xen'>
        <name>$(host)/name>
        <os>
@@ -317,7 +317,7 @@ creation; in other words, when `environment_state` is create.
      }
 ```
 
-**Notes:**  
+**Notes:**
 
 This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
@@ -327,10 +327,10 @@ This attribute conflicts with `env_cpus`, `env_memory` and `env_disk`.
 
 **Description:** The `environment_state` defines the desired dynamic state
  of the specified environment.
- 
+
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 * `create`
 
@@ -342,12 +342,12 @@ The guest machine is shut down and deallocated, but no files are removed.
 
 * `running`
 
-The guest machine is in a running state, if it previously exists.   
+The guest machine is in a running state, if it previously exists.
 
 * `suspended`
 
 The guest exists in a suspended state or a shutdown state. If the guest
-is running, it is suspended; otherwise it is ignored.   
+is running, it is suspended; otherwise it is ignored.
 
 * `down`
 
@@ -378,7 +378,7 @@ will be added in the future.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     xen

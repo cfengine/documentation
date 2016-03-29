@@ -309,7 +309,7 @@ shell.
 **Description:** The `uid` attribute specifies the user's UID number.
 
 Note that if the UID of an existing user is changed, the files owned
-by that user do not automatically change ownership. You must create a 
+by that user do not automatically change ownership. You must create a
 separate `files` promise for this.
 
 [%CFEngine_promise_attribute()%]

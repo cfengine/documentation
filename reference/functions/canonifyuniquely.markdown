@@ -20,7 +20,7 @@ a list, but files in the list may have the same name when
 
 [%CFEngine_function_attributes(text)%]
 
-**Example:**  
+**Example:**
 
 
 ```cf3

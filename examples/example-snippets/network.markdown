@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Network Examples 
+title: Network Examples
 published: true
 sorting: 9
 tags: [Examples]

@@ -12,7 +12,7 @@ without having to learn the CFEngine policy language. Although
 sketches are themselves written in the CFEngine policy language, you
 can make use of them by simply installing them, configuring them using
 the appropriate parameters, and deploying them on your
-infrastructure. For users of the Community edition of CFEngine, this can be easily done 
+infrastructure. For users of the Community edition of CFEngine, this can be easily done
 using both a command-line interface called `cf-sketch`.
 
 Please note that CFEngine Enterprise comes with the **Design Center App** to make the work below effortless.
@@ -47,7 +47,7 @@ Additional resources are included at the end of this page.
 
 ## Before you Begin ##
 
-Complete the software requirements and review the basic concepts of sketches 
+Complete the software requirements and review the basic concepts of sketches
 before you begin the instructions:
 
 ### Requirements ###
@@ -100,7 +100,7 @@ the Design Center works. The Design Center framework contains the following:
    multiple named environment definitions, which you can combine in
    arbitrary ways to fine tune the execution of each sketch on each
    machine.
-   
+
 Sketches, Parameters and Environments, by themselves, do nothing. They
 have to be combined into **Activations**:
 
@@ -118,7 +118,7 @@ Server, create two activations:
 `tzconfig-linux`, Environment `linux`
 - Activation #2: Sketch `System::tzconfig`, parameter set
   `tzconfig-solaris`, Environment `solaris`
-  
+
 When these activations are distributed by the policy server to all the
 clients, only Linux and Solaris machines will execute the
 `System::tzconfig` sketch, and each one of them will apply the
@@ -145,13 +145,13 @@ want, just replace it throughout the following instructions):
     cd $HOME/source
     git clone https://github.com/cfengine/design-center.git
 
-A directory called `design-center` is created.  We 
+A directory called `design-center` is created.  We
 call this the **CHECKOUT** directory and henceforth refer to it as
 `$CHECKOUT`. In the examples that follow, **CHECKOUT** is
 `$HOME/source/design-center`. You can save some typing by typing
 
     export CHECKOUT=$HOME/source/design-center
-    
+
 at the prompt.  From that point on, all command-line interaction can
 use `$CHECKOUT` and it will expand to the installation directory.
 
@@ -182,9 +182,9 @@ search command provides, without any parameters, a list of all
 available sketches:
 
     cf-sketch> search
-    
+
     The following sketches are available:
-    
+
     Applications::Memcached Sketch for installing, configuring, and starting memcached.
     ...
     Yale::stdlib Yale standard library
@@ -194,9 +194,9 @@ can also provide a regular expression to search for a particular set
 of sketches:
 
     cf-sketch> search system
-    
+
     The following sketches match your query:
-    
+
     System::Logrotate Sets defaults and user permissions in the sudoers file
     System::Routes Sets defaults and user permissions in the sudoers file
     System::Sudoers Sets defaults and user permissions in the sudoers file
@@ -214,9 +214,9 @@ Use the `info` command to get additional information for a sketch, including det
 about its parameters:
 
     cf-sketch> info -v System::motd
-    
+
     The following sketches match your query:
-    
+
     Sketch System::motd
     Description: Configure the Message of the Day
     Authors: Ben Heilman <bheilman@enova.com>
@@ -238,7 +238,7 @@ The first step in using a sketch is to install it. As an example, install
 the `System::motd` sketch:
 
     cf-sketch> install System::motd
-    
+
     Sketch System::motd installed under /home/vagrant/.cfagent/inputs/sketches.
     Sketch README.md installed under System::motd.
     Sketch main.cf installed under System::motd.
@@ -251,9 +251,9 @@ the `System::motd` sketch:
 Verify that the sketch has been installed using the `list` command:
 
     cf-sketch> list
-    
+
     The following sketches are installed:
-    
+
     CFEngine::dclib Design Center standard library
     CFEngine::stdlib The portions of the CFEngine standard library (also known as COPBL) that are compatible with 3.4.0 releases
     System::motd Configure the Message of the Day
@@ -271,7 +271,7 @@ Define the parameter set that contains the values that will
 be used by the `System::motd` sketch:
 
     cf-sketch> define params System::motd
-    
+
     Please enter a name for the new parameter set (default: System::motd-entry-000): motd_params
     Querying configuration for parameter set 'motd_params' for bundle 'entry'.
     Please enter parameter motd (Message of the Day (aka motd)).
@@ -296,9 +296,9 @@ Confirm that the parameter set has been properly defined using
 the `list` command:
 
     cf-sketch> list -v params
-    
+
     The following parameter sets are defined:
-    
+
     motd_params: Sketch System::motd
       [System::motd][dynamic_path]:
       [System::motd][motd]: Hello there!
@@ -312,16 +312,16 @@ For this example, define an
 environment that is always active:
 
     cf-sketch> define environment -n walkthrough any
-    
+
     Environment 'walkthrough' successfully defined.
 
 Use the `list` command to verify that the environment was
 defined:
 
     cf-sketch> list -v env walk
-    
+
     The following environments match your query:
-    
+
     walkthrough
       [activated]: any
       [test]: !any
@@ -336,7 +336,7 @@ Activate the sketch by tying together the sketch
 name, parameter set, and environment:
 
     cf-sketch> activate System::motd motd_params walkthrough
-    
+
     Using generated activation ID 'System::motd-1'.
     Using existing parameter definition 'motd_params'.
     Using existing environment 'walkthrough'.
@@ -345,9 +345,9 @@ name, parameter set, and environment:
 Verify that the activation has been created:
 
     cf-sketch> list activations
-    
+
     The following activations are defined:
-    
+
     Activation ID System::motd-1
       Sketch: System::motd
       Parameter sets: [ motd_params ]
@@ -372,7 +372,7 @@ encodes all the necessary information for the activated sketches, and
 then executes it using `cf-agent`:
 
     cf-sketch> run
-    
+
     Runfile /var/cfengine/inputs/api-runfile-standalone.cf successfully generated.
     Now executing the runfile with: /var/cfengine/bin/cf-agent  -f /var/cfengine/inputs/api-runfile-standalone.cf
 
@@ -380,7 +380,7 @@ The `deploy` command generates a non-standalone runfile that is meant
 to be loaded and executed from your main `promises.cf` file:
 
     cf-sketch> deploy
-    
+
     Runfile /var/cfengine/inputs/api-runfile.cf successfully generated.
 
 ## More information ##
@@ -388,7 +388,7 @@ to be loaded and executed from your main `promises.cf` file:
 The Design Center framework provides an API that takes care of
 managing all the backend framework, and cf-sketch offers an "expert"
 mode in addition to the interactive mode described in these
-instructions. 
+instructions.
 
 * Once you are familiar with the basic concepts and want to
 learn more about how things work internally, visit
@@ -396,5 +396,5 @@ the [advanced discussion][Advanced Walkthrough] on configuring sketches.
 
 * Visit the [Design Center API][The Design Center API] for reference.
 
-* Once you are ready to start [writing Design Center sketches][Write a new Sketch], refer to the 
+* Once you are ready to start [writing Design Center sketches][Write a new Sketch], refer to the
 [sketch structure][Sketch Structure] documentation.

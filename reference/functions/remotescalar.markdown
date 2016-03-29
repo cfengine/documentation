@@ -10,14 +10,14 @@ tags: [reference, communication functions, functions, remotescalar]
 [%CFEngine_function_prototype(id, server, encrypt)%]
 
 **Description:** Returns a scalar value identified by `id` from a remote CFEngine
-`server`. Communication is encrytped depending on ```encrypt```. 
+`server`. Communication is encrytped depending on ```encrypt```.
 
 If the identifier matches a persistent scalar variable then this will be returned
 preferentially. If no such variable is found, then the server will look for a
 literal string in a server bundle with a handle that matches the requested object.
 
 The remote system's `cf-serverd` must accept the query for the requested
-variable from the host that is requesting it. Access must be granted by making 
+variable from the host that is requesting it. Access must be granted by making
 an `access` promise with `resource_type` set to `literal`.
 
 CFEngine stores the value of this function on the calling host, so that, if the

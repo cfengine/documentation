@@ -22,7 +22,7 @@ regular expression is [anchored][anchored], meaning it must match the entire nam
 
 It is worth re-iterating here that it is not possible to send commands or modify promise definitions by remote access. At best users may try to
 send classes when using `cf-runagent` in order to activate sleeping
-promises. This mechanism limits their ability to do this.  
+promises. This mechanism limits their ability to do this.
 
 ```cf3
 bundle server access_rules()

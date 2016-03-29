@@ -9,8 +9,8 @@ tags: [reference, data functions, functions, filter]
 
 **Description:** Transforms a list or data container into a list subset thereof.
 
-This is a generic filtering function that returns a list of up to `max_return` 
-elements in `list` that match the filtering rules specified in `filter`, 
+This is a generic filtering function that returns a list of up to `max_return`
+elements in `list` that match the filtering rules specified in `filter`,
 `is_regex` and `invert`.
 
 **Arguments**:
@@ -28,7 +28,7 @@ Invert filter.
 
 * `max_return` : Maximum number of elements to return in the range `0,999999999`
 
-**Example:**  
+**Example:**
 
 
 [%CFEngine_include_snippet(filter.cf, #\+begin_src cfengine3, .*end_src)%]
@@ -37,5 +37,5 @@ Output:
 
 [%CFEngine_include_snippet(filter.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**See also:** [`grep()`][grep], [`every()`][every], [`some()`][some], and 
+**See also:** [`grep()`][grep], [`every()`][every], [`some()`][some], and
 [`none()`][none].

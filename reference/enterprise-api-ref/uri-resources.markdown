@@ -86,7 +86,7 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
 
 ### /api/user
 
-**Supported Operations**: `GET`  
+**Supported Operations**: `GET`
 
 **Query Parameters**:
 
@@ -172,7 +172,7 @@ tags: [reference, enterprise, REST, API, reporting, sql, URI, ldap]
 
 ### /api/query
 
-**Supported Operations**:  
+**Supported Operations**:
 `POST`
 
 **Fields**:
@@ -218,7 +218,7 @@ Please see [The Design Center API][] for the Design Center API
 commands that are wrapped by the following Enterprise API commands.
 
 #### /api/dc/sketch
-* **GET**: List of sketches 
+* **GET**: List of sketches
 
 ```
 {
@@ -263,7 +263,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 #### /api/dc/sketch/:name
 
-* **GET**: info about specific sketch 
+* **GET**: info about specific sketch
 
 ```
 {
@@ -524,7 +524,7 @@ commands that are wrapped by the following Enterprise API commands.
         "timestamp": 1383831923
     },
     "data": [
-        {          
+        {
             "Data::Classes": [
                 {
                     "params": [
@@ -581,7 +581,7 @@ commands that are wrapped by the following Enterprise API commands.
                     }
                 }
             ]
-            
+
         }
     ]
 }
@@ -605,7 +605,7 @@ commands that are wrapped by the following Enterprise API commands.
     },
     "data": [
         [
-            
+
             {
                 "params": [
                     "087b875ad637c6392acc3b78b66910cb"
@@ -656,7 +656,7 @@ commands that are wrapped by the following Enterprise API commands.
 ```
 	Request body:
 	{
-             
+
 	     "environmentName":"092b04a40fdd4cb8bfdb685f2c4a0328",
 	     "paramName":"c53db12b79d5b2b74f319b91caf7e88f",
  	     "bundleName": "installed"
@@ -673,7 +673,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 #### /api/dc/validate/:validationType
 * *validationType*: specific validation type
-* **POST**: validate the data 
+* **POST**: validate the data
 * Request Body:
 
 ```

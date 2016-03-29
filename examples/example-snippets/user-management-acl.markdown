@@ -1,6 +1,6 @@
 ---
 layout: default
-title: User Management and ACL Examples 
+title: User Management and ACL Examples
 published: true
 sorting: 15
 tags: [Examples,User Management,ACL]

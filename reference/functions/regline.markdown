@@ -7,10 +7,10 @@ tags: [reference, io functions, functions, regline]
 
 [%CFEngine_function_prototype(regex, filename)%]
 
-**Description:** Returns whether the [anchored][anchored] regular expression 
+**Description:** Returns whether the [anchored][anchored] regular expression
 `regex` matches a line in file `filename`.
 
-Note that `regex` must match an entire line of the file in order to give a 
+Note that `regex` must match an entire line of the file in order to give a
 true result.
 
 [%CFEngine_function_attributes(regex, filename)%]

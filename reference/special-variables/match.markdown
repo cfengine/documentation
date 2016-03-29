@@ -5,10 +5,10 @@ published: true
 tags: [reference, variables, match, strings, file editing, files promises, edit_line]
 ---
 
-Each time CFEngine matches a string, these values are assigned to a special 
-variable context `$(match.`*n*`)`. The fragments can be referred to in the 
-remainder of the promise. There are two places where this makes sense. One is 
-in pattern replacement during file editing, and the other is in searching for 
+Each time CFEngine matches a string, these values are assigned to a special
+variable context `$(match.`*n*`)`. The fragments can be referred to in the
+remainder of the promise. There are two places where this makes sense. One is
+in pattern replacement during file editing, and the other is in searching for
 files.
 
 ```cf3

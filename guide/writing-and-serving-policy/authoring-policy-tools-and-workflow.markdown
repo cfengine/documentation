@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Authoring Policy Tools & Workflow 
+title: Authoring Policy Tools & Workflow
 published: true
 sorting: 5
 ---
@@ -30,7 +30,7 @@ There are several ways to approach authoring promises and ensuring they are copi
 
 There are two methods possible with GitHub: one is to use the web interface at GitHub.com; the second is to use the GitHub application.
 
-Method One: Create Masterfiles Repository Using GitHub Web Interface 
+Method One: Create Masterfiles Repository Using GitHub Web Interface
 
 1a. In the GitHub web interface, click on the `New repository` button.
 1b. Or from the `+` drop down menu on the top right hand side of the screen select `New repository`.
@@ -82,7 +82,7 @@ B) Or, change the remote url to `https://GitUserName@password:github.com/GitUser
 
 1. Change back to the `masterfiles` directory, if not already there:
 	* `> cd /var/cfengine/masterfiles`
-2. Create the remote using the following pattern: 
+2. Create the remote using the following pattern:
 	* `> git remote add upstream ssh://git@github.com/GitUserName/cfengine-masterfiles.git`.
 3. Verify the remote was registered properly by typing `git remote -v` and pressing enter.
 	* You will see the remote definition in a list alongside any other previously defined remote enteries.
@@ -123,7 +123,7 @@ body common control
 
       inputs => {
                  ...
-				 
+				
                   "vcs_update.cf",
       };
 ```

@@ -30,15 +30,15 @@ always equal to 30 days of runtime (one month equals 2,592,000 seconds).
 
 * `days`, in the range `0,1000`
 
-Days of runtime (one day equals 86,400 seconds)   
+Days of runtime (one day equals 86,400 seconds)
 
 * `hours`, in the range `0,1000`
 
-Hours of runtime   
+Hours of runtime
 
 * `minutes`, in the range `0,1000`
 
-Minutes of runtime 0-59   
+Minutes of runtime 0-59
 
 * `seconds`, in the range `0,40000`
 

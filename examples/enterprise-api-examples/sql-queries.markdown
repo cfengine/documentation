@@ -59,12 +59,12 @@ paginate quickly on already processed queries.
 
 ### Subscribed Query Example: Creating A Subscribed Query
 
-Here we create a new query to count file changes by name and have the result 
-sent to us by email. The schedule field is any CFEngine context expression. 
-The backend polls subscriptions in a loop and checks whether it's time to 
-generate a report and send it out. In the following example, user `milton` 
-creates a new subscription to a report which he names `file-changes-report`, 
-which will be sent out every Monday night. His boss will get an email with a 
+Here we create a new query to count file changes by name and have the result
+sent to us by email. The schedule field is any CFEngine context expression.
+The backend polls subscriptions in a loop and checks whether it's time to
+generate a report and send it out. In the following example, user `milton`
+creates a new subscription to a report which he names `file-changes-report`,
+which will be sent out every Monday night. His boss will get an email with a
 link to a PDF version of the report.
 
 **Request** (lines split and indented for presentability)

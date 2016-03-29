@@ -15,8 +15,8 @@ change their details within sensible limits.
 
 See the
 [introduction][Introduction and System Overview#CFEngine Component Applications and Daemons]
-for a high-level overview of the 
-CFEngine components, and each component's reference documentation for the 
+for a high-level overview of the
+CFEngine components, and each component's reference documentation for the
 details about the specific control bodies.
 
 ## Common Control
@@ -26,24 +26,24 @@ hard-coded into all the components of CFEngine, and therefore
 affect the behavior of all the components.
 
 
-```cf3 
+```cf3
      body common control
-     
+
      {
      inputs  => {
                 "update.cf",
                 "library.cf"
                 };
-     
+
      bundlesequence  => {
                         update("policy_host.domain.tld"),
                         "main",
                         "cfengine2"
                         };
-     
+
      goal_categories => { "goals", "targets", "milestones" };
      goal_patterns   => { "goal_.*", "target.*" };
-     
+
      output_prefix => "cfengine>";
      version => "1.2.3";
      }
@@ -73,7 +73,7 @@ line option.
 
 ```cf3
     body common control
-    
+
     {
     bundlesequence  => {
                        update("policy_host.domain.tld"),
@@ -94,11 +94,11 @@ them with classes
 
 ```cf3
     webservers::
-    
+
       bundlesequence => { "main", "web" };
-    
+
     others::
-    
+
       bundlesequence => { "main", "otherstuff" };
 ```
 
@@ -109,20 +109,20 @@ use global variable lists to do this:
     body common control
     {
     webservers::
-    
+
       bundlesequence => { @(g.bs), "web" };
-    
+
     others::
-    
+
       bundlesequence => { @(g.bs), "otherstuff" };
-    
+
     }
-    
+
     bundle common g
     {
     vars:
-    
-      "bs" slist => { "main", "basic_stuff" }; 
+
+      "bs" slist => { "main", "basic_stuff" };
     }
 ```
 
@@ -139,7 +139,7 @@ almost never need to do so.  The effect of having it `true` (the
 default) is that the expensive functions will be run just once and
 then their result will be cached.
 
-Note that caching is per-process so results will not be cached between 
+Note that caching is per-process so results will not be cached between
 runs of e.g. `cf-agent` and `cf-promises`.
 
 **Type:** [`boolean`][boolean]
@@ -177,14 +177,14 @@ discovery and name-lookup.
 
 ### fips_mode
 
-**Description:** The `fips_mode` menu option policy determines whether 
+**Description:** The `fips_mode` menu option policy determines whether
 to activate full FIPS mode restrictions.
 
-In CFEngine Enterprise, this value may be set to avoid the use of old 
-deprecated algorithms that are no longer FIPS 140-2 compliant. If not set, 
-there is some degree of compatibility with older versions and algorithms. 
-During an upgrade, setting this parameter can cause a lot of recomputation of 
-checksums etc. Government bodies starting with CFEngine Enterprise 2.0 or  
+In CFEngine Enterprise, this value may be set to avoid the use of old
+deprecated algorithms that are no longer FIPS 140-2 compliant. If not set,
+there is some degree of compatibility with older versions and algorithms.
+During an upgrade, setting this parameter can cause a lot of recomputation of
+checksums etc. Government bodies starting with CFEngine Enterprise 2.0 or
 higher should set this to 'true' from the start.
 
 **Type:** [`boolean`][boolean]
@@ -202,11 +202,11 @@ higher should set this to 'true' from the start.
 
 ### goal_patterns
 
-**Description:** Contains regular expressions that match promisees/topics 
+**Description:** Contains regular expressions that match promisees/topics
 considered to be organizational goals
 
 It is used as identifier to mark business and organizational goals in
-CFEngine Enterprise. CFEngine uses this to match promisees that represent 
+CFEngine Enterprise. CFEngine uses this to match promisees that represent
 business goals in promises.
 
 **Type:** `slist`
@@ -229,13 +229,13 @@ business goals in promises.
 **Deprecated: 3.5**
 
 **Description:** The value of `host_licenses_paid` represents the number
-of licenses that you promise to have paid for by setting this value 
+of licenses that you promise to have paid for by setting this value
 (legally binding for CFEngine Enterprise).
 
-Licensees of CFEngine Enterprise have to make a promise in acceptance of 
-contract terms by setting this value to the number of licenses they have paid 
-for. This is tallied with the number of licenses granted. This declaration 
-should be placed in all separate configuration files, e.g. failsafe.cf, 
+Licensees of CFEngine Enterprise have to make a promise in acceptance of
+contract terms by setting this value to the number of licenses they have paid
+for. This is tallied with the number of licenses granted. This declaration
+should be placed in all separate configuration files, e.g. failsafe.cf,
 promises.cf.
 
 **Type:** `int`
@@ -257,7 +257,7 @@ promises.cf.
 
 **Description:** Determines whether to ignore missing bundles.
 
-If `ignore_missing_bundles` is set to true, if any bundles in the bundle 
+If `ignore_missing_bundles` is set to true, if any bundles in the bundle
 sequence do not exist, ignore and continue.
 
 **Type:** [`boolean`][boolean]
@@ -284,7 +284,7 @@ to failsafe mode.
 
 The inputs lists determines which files are parsed by CFEngine.
 Normally stringent security checks are made on input files to
-prevent abuse of the system by unauthorized users. 
+prevent abuse of the system by unauthorized users.
 
 Sometimes however, it is appropriate to consider the automatic plug-in of
 modules that might or might not exist. This option permits CFEngine
@@ -332,7 +332,7 @@ as the file which references them (this is usually
 
 **Notes:**
 
-If no filenames are specified, no other filenames will be included in the 
+If no filenames are specified, no other filenames will be included in the
 compilation process.
 
 Library contents are checked for duplication by path and by hash.  For
@@ -403,13 +403,13 @@ then the value there will override this setting.
 
 ### require_comments
 
-**Description:** The `require_comments` menu option policy warns about 
+**Description:** The `require_comments` menu option policy warns about
 promises that do not have comment documentation.
 
 When true, `cf-promises` will report loudly on promises that do not have
 comments. Variables promises are exempted from this rule, since
-they may be considered self-documenting. This may be used as a policy Quality 
-Assurance measure, to remind policy makers to properly document their 
+they may be considered self-documenting. This may be used as a policy Quality
+Assurance measure, to remind policy makers to properly document their
 promises.
 
 **Type:** [`boolean`][boolean]
@@ -420,10 +420,10 @@ promises.
 
 ```cf3
     body common control
-    
+
     {
     common::
-    
+
     require_comments => "true";
     }
 ```
@@ -431,8 +431,8 @@ promises.
 
 ### site_classes
 
-**Description:** A `site_classes` contains classes that will represent 
-geographical site locations for hosts. These should be defined elsewhere in 
+**Description:** A `site_classes` contains classes that will represent
+geographical site locations for hosts. These should be defined elsewhere in
 the configuration in a classes promise.
 
 This list is used to match against topics when connecting
@@ -462,11 +462,11 @@ Each string is expected to be a class.
 
 ### syslog_host
 
-**Description:** The `syslog_host` contains the name or address of a 
+**Description:** The `syslog_host` contains the name or address of a
 host to which syslog messages should be sent directly by UDP.
 
 This is the hostname or IP address of a local syslog service to which all
-CFEngine's components may promise to send data. 
+CFEngine's components may promise to send data.
 
 **Type:** `string`
 
@@ -486,11 +486,11 @@ CFEngine's components may promise to send data.
 
 ### syslog_port
 
-**Description:** The value of `syslog_port` represents the port number 
+**Description:** The value of `syslog_port` represents the port number
 of a UDP syslog service.
 
 It is the UDP port of a local syslog service to which all CFEngine's
-components may promise to send data. 
+components may promise to send data.
 
 **Type:** `int`
 
@@ -508,8 +508,8 @@ components may promise to send data.
 
 ### version
 
-**Description:** The `version` string contains the scalar version of the 
-configuration. 
+**Description:** The `version` string contains the scalar version of the
+configuration.
 
 It is is used in error messages and reports.
 
