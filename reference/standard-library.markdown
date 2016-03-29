@@ -6,12 +6,12 @@ sorting: 90
 tags: [reference, standard library]
 ---
 
-The standard library contains commonly-used promise bundles and bodies. It provides definitions 
-that you can use to build up solutions within CFEngine. The standard library is an interface 
-layer that brings industry-wide standardization of CFEngine configuration 
+The standard library contains commonly-used promise bundles and bodies. It provides definitions
+that you can use to build up solutions within CFEngine. The standard library is an interface
+layer that brings industry-wide standardization of CFEngine configuration
 scripting and hides the technical details.
 
-To import elements of the CFEngine Standard Library into your CFEngine policy, enter the following: 
+To import elements of the CFEngine Standard Library into your CFEngine policy, enter the following:
 
 ```cf3
 body file control

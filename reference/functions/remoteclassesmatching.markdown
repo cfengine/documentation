@@ -10,14 +10,14 @@ tags: [reference, communication functions, functions, remoteclassesmatching]
 [%CFEngine_function_prototype(regex, server, encrypt, prefix)%]
 
 **Description:** Reads persistent classes matching regular expression `regex`
-from a remote CFEngine server `server` and adds them into local context with 
+from a remote CFEngine server `server` and adds them into local context with
 prefix `prefix`.
 
-The return value is true (sets the class) if communication with the server was 
+The return value is true (sets the class) if communication with the server was
 successful and classes were populated in the current bundle.
 
-This function contacts a remote `cf-serverd` and requests access to defined 
-*persistent classes* on that system. Access must be granted by making an 
+This function contacts a remote `cf-serverd` and requests access to defined
+*persistent classes* on that system. Access must be granted by making an
 `access` promise with `resource_type` set to `context`.
 
 [%CFEngine_function_attributes(regex, server, encrypt, prefix)%]

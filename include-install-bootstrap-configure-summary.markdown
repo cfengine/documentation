@@ -7,4 +7,4 @@ There are several steps to bring up a CFEngine installation within an organizati
 5. Bootstrap the Policy Server to itself.
 6. Initiate post-install configuration on the Policy Server.
 7. Install CFEngine on the Host machine(s).
-8. Bootstrap the Host(s) to a Policy Server. 
+8. Bootstrap the Host(s) to a Policy Server.

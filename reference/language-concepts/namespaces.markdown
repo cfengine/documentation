@@ -24,14 +24,14 @@ file or the next namespace change.
 ```cf3
     body file control
     {
-       namespace => "myspace"; 
+       namespace => "myspace";
     }
 ```
 
 ### Accessing syntax elements between namespaces and the default namespace
 
-To distinguish the bundle `mymethod` in the default namespace from one in 
-another namespace, you prefix the bundle name with the namespace, separated by 
+To distinguish the bundle `mymethod` in the default namespace from one in
+another namespace, you prefix the bundle name with the namespace, separated by
 a colon.
 
 ```cf3
@@ -64,7 +64,7 @@ If you don't make any namespace declarations, you'll be in the
 If you use the standard library from your own namespace, remember to
 specify this `default:` prefix.
 
-To access classes, variables, or meta-data in bundles in a different namespace, use the 
+To access classes, variables, or meta-data in bundles in a different namespace, use the
 colon as a namespace prefix:
 
     $(namespace:bundle.variable)

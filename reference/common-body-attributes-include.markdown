@@ -8,6 +8,6 @@ follows:
 
 ##### [inherit_from][Promise Types and Attributes#inherit_from]
 
-##### [meta][Promise Types and Attributes#meta] 
+##### [meta][Promise Types and Attributes#meta]
 
 <hr>

@@ -47,21 +47,21 @@ REST API for managing settings, checking hub status.
 
 * **apiName**
     Human-friendly API name.
-* **apiVersion** 
+* **apiVersion**
     API version string.
-* **enterpriseVersion** 
+* **enterpriseVersion**
     Version of the CFEngine Enterprise build.
-* **uiVersion** 
+* **uiVersion**
     The internal build number of the Enterprise UI.
-* **coreVersion** 
+* **coreVersion**
     The version of CFEngine Core (Community) the Enterprise version was built against.
-* **authenticated** *("internal", "external")* 
+* **authenticated** *("internal", "external")*
     Whether the request was authenticated using the internal users table or an external source.
-* **license.expires** 
+* **license.expires**
     Time when the license expires.
-* **license.owner** 
+* **license.owner**
     The name of the license owner.
-* **license.granted** 
+* **license.granted**
     Host number capacity granted by the license.
 * **license.licenseType**
     License description.
@@ -111,33 +111,33 @@ API call allowed only for administrator.
 
 **Output**:
 
-* **rbacEnabled** *(boolean)* 
+* **rbacEnabled** *(boolean)*
     Whether RBAC is applied to requests.
-* **hostIdentifier** *(string)* 
-    The identfying string for hosts, such as name or IP. 
-* **ldapEnabled** *(boolean)* 
+* **hostIdentifier** *(string)*
+    The identfying string for hosts, such as name or IP.
+* **ldapEnabled** *(boolean)*
     Whether external authentication is activated.
-* **ldapBaseDN** *(string)* 
+* **ldapBaseDN** *(string)*
     LDAP BaseDN to use for external LDAP requests.
-* **ldapEncryption** *("plain", "ssl", "tls")* 
-    Type of LDAP binding to establish to external LDAP server. (Default: "plain"). 
-* **ldapHost** *(string)* 
+* **ldapEncryption** *("plain", "ssl", "tls")*
+    Type of LDAP binding to establish to external LDAP server. (Default: "plain").
+* **ldapHost** *(string)*
     Hostname of external LDAP server.
-* **ldapLoginAttribute** *(string)* 
+* **ldapLoginAttribute** *(string)*
     LDAP attribute to use for usernames. (default: "uid").
-* **ldapUsername** *(string)* 
+* **ldapUsername** *(string)*
     LDAP username.
-* **ldapPassword** *(string)* 
+* **ldapPassword** *(string)*
     LDAP password.
-* **ldapUsersDirectory** *(string)* 
-    Attribute and value to qualify the directory in which to look up users, e.g. "ou=people". 
-* **ldapPort** *(integer)* 
+* **ldapUsersDirectory** *(string)*
+    Attribute and value to qualify the directory in which to look up users, e.g. "ou=people".
+* **ldapPort** *(integer)*
     Port for external LDAP connections not using SSL. (default 389).
-* **ldapPortSSL** *(integer)* 
-    Port for external LDAP connections using SSL. (default 636). 
-* **logLevel** *("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")* 
-    Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error). 
-* **sketchActivationAlertTimeout** *(integer)* 
+* **ldapPortSSL** *(integer)*
+    Port for external LDAP connections using SSL. (default 636).
+* **logLevel** *("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")*
+    Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
+* **sketchActivationAlertTimeout** *(integer)*
     Global timeout in minutes for sketch activation alerts.
 
 **Example usage:** `Example: Viewing settings`
@@ -153,33 +153,33 @@ API call allowed only for administrator.
 
 **Fields**:
 
-* **rbacEnabled** *(boolean)* 
+* **rbacEnabled** *(boolean)*
     Whether RBAC is applied to requests.
-* **hostIdentifier** *(string)* 
-    The identfying string for hosts, such as name or IP. 
-* **ldapEnabled** *(boolean)* 
+* **hostIdentifier** *(string)*
+    The identfying string for hosts, such as name or IP.
+* **ldapEnabled** *(boolean)*
     Whether external authentication is activated.
-* **ldapBaseDN** *(string)* 
+* **ldapBaseDN** *(string)*
     LDAP BaseDN to use for external LDAP requests.
-* **ldapEncryption** *("plain", "ssl", "tls")* 
-    Type of LDAP binding to establish to external LDAP server. (Default: "plain"). 
-* **ldapHost** *(string)* 
+* **ldapEncryption** *("plain", "ssl", "tls")*
+    Type of LDAP binding to establish to external LDAP server. (Default: "plain").
+* **ldapHost** *(string)*
     Hostname of external LDAP server.
-* **ldapLoginAttribute** *(string)* 
+* **ldapLoginAttribute** *(string)*
     LDAP attribute to use for usernames. (default: "uid").
-* **ldapUsername** *(string)* 
+* **ldapUsername** *(string)*
     LDAP username.
-* **ldapPassword** *(string)* 
+* **ldapPassword** *(string)*
     LDAP password.
-* **ldapUsersDirectory** *(string)* 
-    Attribute and value to qualify the directory in which to look up users, e.g. "ou=people". 
-* **ldapPort** *(integer)* 
+* **ldapUsersDirectory** *(string)*
+    Attribute and value to qualify the directory in which to look up users, e.g. "ou=people".
+* **ldapPort** *(integer)*
     Port for external LDAP connections not using SSL. (default 389).
-* **ldapPortSSL** *(integer)* 
-    Port for external LDAP connections using SSL. (default 636). 
-* **logLevel** *("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")* 
-    Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error). 
-* **sketchActivationAlertTimeout** *(integer)* 
+* **ldapPortSSL** *(integer)*
+    Port for external LDAP connections using SSL. (default 636).
+* **logLevel** *("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")*
+    Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
+* **sketchActivationAlertTimeout** *(integer)*
     Global timeout in minutes for sketch activation alerts.
 
 **Example Request Body:**

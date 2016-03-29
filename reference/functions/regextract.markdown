@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, regextract, pcre]
 
 [%CFEngine_function_prototype(regex, string, backref)%]
 
-**Description:** Returns whether the [anchored][anchored] `regex` matches the 
+**Description:** Returns whether the [anchored][anchored] `regex` matches the
 `string`, and fills the array `backref` with back-references.
 
 This function should be avoided in favor of `data_regextract()`

@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, grep, inline_json]
 
 [%CFEngine_function_prototype(regex, list)%]
 
-**Description:** Returns the sub-list if items  in `list` matching the 
+**Description:** Returns the sub-list if items  in `list` matching the
 [anchored][anchored] regular expression `regex`.
 
 This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.

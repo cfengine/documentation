@@ -10,9 +10,9 @@ tags: [body, bodies, components, common, namespace, promises, bundlesequence]
 ```cf3
     body file control
     {
-    namespace => "name1"; 
+    namespace => "name1";
     }
-    
+
     bundle agent private
     {
     ....
@@ -44,7 +44,7 @@ file) to avoid hard-coding paths.
 
 ### namespace
 
-**Description:** The namespace string identifies a private namespace 
+**Description:** The namespace string identifies a private namespace
 to switch to in order to protect the current file from duplicate definitions.
 
 **Type:** `string`
@@ -56,7 +56,7 @@ to switch to in order to protect the current file from duplicate definitions.
 ```cf3
     body file control
     {
-    namespace => "name1"; 
+    namespace => "name1";
     }
 ```
 
@@ -64,8 +64,8 @@ to switch to in order to protect the current file from duplicate definitions.
 
 **History:** Was introduced in 3.4.0, Enterprise 3.0.0 (2012)
 
-This directive can be given within any file, outside of body and bundle 
-definitions, to change the [namespace][namespaces] of subsequent bundles 
+This directive can be given within any file, outside of body and bundle
+definitions, to change the [namespace][namespaces] of subsequent bundles
 and bodies. A namespace applies until the next namespace declaration in a
 file, or until the end of a file. This is similar to how class expressions
 apply until the next class expression or end of bundle.

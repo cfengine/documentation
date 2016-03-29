@@ -6,10 +6,10 @@ sorting: 20
 tags: [language, concepts, syntax, body]
 ---
 
-While the idea of a promise is very simple, the definition of a promise can 
-grow complicated. Complex promises are best understood by breaking them down 
-into independent, re-usable components. The CFEngine reserved word `body` is 
-used to encapsulate the details of complex promise attribute values. Bodies 
+While the idea of a promise is very simple, the definition of a promise can
+grow complicated. Complex promises are best understood by breaking them down
+into independent, re-usable components. The CFEngine reserved word `body` is
+used to encapsulate the details of complex promise attribute values. Bodies
 can optionally have parameters.
 
 ```cf3
@@ -20,7 +20,7 @@ can optionally have parameters.
           "/etc/passwd"
             handle => "example_files_not_windows_passwd",
             perms => system;
-    
+
           "/home/bill/id_rsa.pub"
             handle => "example_files_not_windows_bills_priv_ssh_key",
             perms => mog("600", "bill", "sysop"),
@@ -40,7 +40,7 @@ respectively.
       owners => { "root" };
       groups => { "root" };
     }
-    
+
     body perms mog(mode,user,group)
     {
       owners => { "$(user)" };
@@ -148,14 +148,14 @@ If this gets complicated, just think *"latest wins"*.
 
 #### Implicit, Control Bodies
 
-A special case for bodies are the implicit promises that configure the basic 
-operation of CFEngine. These are hard-coded to CFEngine and control the basic 
-operation of the agents, such as `cf-agent` and `cf-serverd`. Each agent has a 
+A special case for bodies are the implicit promises that configure the basic
+operation of CFEngine. These are hard-coded to CFEngine and control the basic
+operation of the agents, such as `cf-agent` and `cf-serverd`. Each agent has a
 special body whose name is `control`.
 
 ```cf3
     body agent control
-    { 
+    {
         bundlesequence => { "test" };
     }
 ```
@@ -169,8 +169,8 @@ This promise bodies configures the `bundlesequence` to execute on a cf-agent.
     }
 ```
 
-This promise body defines the clients allowed to connect to a cf-serverd. 
-For more information, see the reference documentation about the [CFEngine 
+This promise body defines the clients allowed to connect to a cf-serverd.
+For more information, see the reference documentation about the [CFEngine
 Agents][Components and Common Control]
 
 #### Default bodies

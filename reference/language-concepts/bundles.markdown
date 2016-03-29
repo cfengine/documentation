@@ -6,15 +6,15 @@ sorting: 10
 tags: [language, concepts, syntax, body, bundle]
 ---
 
-A bundle is a collection of promises. They allow to group related promises 
-together into named building blocks that can be thought of as "subroutines" in 
-the CFEngine promise language. A bundle that groups a number of promises 
-related to configuring a web server or a file system would be named 
+A bundle is a collection of promises. They allow to group related promises
+together into named building blocks that can be thought of as "subroutines" in
+the CFEngine promise language. A bundle that groups a number of promises
+related to configuring a web server or a file system would be named
 "webserver" or "filesystem," respectively.
 
-Most promise types are specific to a particular kind of interpretation that 
-requires a typed interpreter - the bundle *type*. Bundles belong to the agent 
-that is used to keep the promises in the bundle. So `cf-agent` has bundles 
+Most promise types are specific to a particular kind of interpretation that
+requires a typed interpreter - the bundle *type*. Bundles belong to the agent
+that is used to keep the promises in the bundle. So `cf-agent` has bundles
 declared as:
 
 ```cf3
@@ -39,31 +39,31 @@ and `cf-monitord` has bundles declared as
     }
 ```
 
-A number of promises can be made in any kind of bundle since they are of a 
+A number of promises can be made in any kind of bundle since they are of a
 generic input/output nature. These are `vars`, [`classes`][classes], `defaults`,
 [`meta`][meta] and `reports` promises.
 
 ### Common Bundles
 
-Bundles of type `common` may only contain the promise types that are common to 
-all bodies. Their main function is to define cross-component global 
+Bundles of type `common` may only contain the promise types that are common to
+all bodies. Their main function is to define cross-component global
 definitions.
 
 ```cf3
      bundle common globals
      {
      vars:
-     
+
        "global_var" string = "value";
-     
+
      classes:
-     
+
        "global_class" expression = "value";
      }
 ```
 
-Common bundles are observed by every agent, whereas the agent 
-specific bundle types are ignored by components other than the intended 
+Common bundles are observed by every agent, whereas the agent
+specific bundle types are ignored by components other than the intended
 recipient.
 
 #### Rules for evaluation of common bundles
@@ -77,8 +77,8 @@ These are the specific evaluation differences between common and agent bundles:
 
 ### Bundle Parameters
 
-Bundles can be parameterized, allowing for code re-use. If you need to do the 
-same thing over and over again with slight variations, using a promise bundle 
+Bundles can be parameterized, allowing for code re-use. If you need to do the
+same thing over and over again with slight variations, using a promise bundle
 is an easy way to avoid unnecessary duplication in your promises.
 
 ```
@@ -92,15 +92,15 @@ is an easy way to avoid unnecessary duplication in your promises.
       methods:
           "Hello World"
             usebundle => ensure_file_has_content("$(myfiles)", "$(desired_content)");
-        
+
           "report" usebundle => subtest_c(@(userinfo));
-    
+
     }
 
     bundle agent ensure_file_has_content(file, content)
     {
       files:
-    
+
           "$(file)"
             handle => "$(this.bundle)_file_content",
             create => "true",
@@ -108,7 +108,7 @@ is an easy way to avoid unnecessary duplication in your promises.
             edit_line => append_if_no_line("$(content)"),
             comment => "Ensure that the given parameter for file '$(file)' has only
                         the contents of the given parameter for content '$(content)'";
-    
+
     }
 
     bundle agent subtest_c(info)
@@ -146,8 +146,8 @@ bundle agent mybundle(x)
 
 and call `mybundle(1)` and `mybundle(2)`, the variable `y` could be `1` or `2`.
 
-[Classes][classes and decisions] defined inside `agent` bundles are not visible outside 
-those bundles.  [Classes][classes and decisions] defined in `common` bundles 
+[Classes][classes and decisions] defined inside `agent` bundles are not visible outside
+those bundles.  [Classes][classes and decisions] defined in `common` bundles
 have global scope, so they are visible everywhere.
 
 Note that namespaced bundles work exactly the same way as

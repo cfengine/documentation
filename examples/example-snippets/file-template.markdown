@@ -1,6 +1,6 @@
 ---
 layout: default
-title: File Template Examples 
+title: File Template Examples
 published: true
 sorting: 7
 tags: [Examples]

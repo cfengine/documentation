@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, regcmp]
 
 [%CFEngine_function_prototype(regex, string)%]
 
-**Description:** Returns whether the [anchored][anchored] regular expression 
+**Description:** Returns whether the [anchored][anchored] regular expression
 `regex` matches the `string.`
 
 [%CFEngine_function_attributes(regex, string)%]

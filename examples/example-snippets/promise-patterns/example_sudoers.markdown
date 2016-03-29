@@ -49,7 +49,7 @@ Example run:
 2013-06-08T19:13:22-0700     info: Running full policy integrity checks
 2013-06-08T19:13:23-0700     info: Copying from '192.168.183.208:/var/cfengine/masterfiles/sudoers'
 2013-06-08T19:13:23-0700     info: /sudoers/files/'/tmp/sudoers': Object '/tmp/sudoers' had permission 0600, changed it to 0440
-# 
+#
 ```
 
 For reference we include an example of a simple sudoers file:

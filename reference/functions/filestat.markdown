@@ -7,7 +7,7 @@ tags: [reference, files functions, functions, filestat]
 
 [%CFEngine_function_prototype(filename, field)%]
 
-**Description:** Returns the requested file field `field` for the file object 
+**Description:** Returns the requested file field `field` for the file object
 `filename`.
 
 If the file object does not exist, the function call fails and the

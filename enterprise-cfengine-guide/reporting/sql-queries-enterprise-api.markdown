@@ -61,7 +61,7 @@ back.
 
 ## Asynchronous Queries
 
-Because some queries can take some time to compute, you can 
+Because some queries can take some time to compute, you can
 fire off a query and check the status of it later. This is useful for
 dumping a lot of data into CSV files for example. The sequence consists
 of three steps:
@@ -151,7 +151,7 @@ the completed report will be available for downloading.
 Subscribed queries happen in the context of a user. Any user can create
 a query on a schedule and have it emailed to someone.
 
-**Request:** 
+**Request:**
 
     curl -k --user admin:admin https://test.cfengine.com/api/user/name/
        subscription/query/file-changes-report -X PUT -d

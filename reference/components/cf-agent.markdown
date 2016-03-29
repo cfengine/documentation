@@ -7,14 +7,14 @@ tags: [Components, cf-agent]
 keywords: [agent]
 ---
 
-`cf-agent` evaluates policy code and makes changes to the system. Policy 
+`cf-agent` evaluates policy code and makes changes to the system. Policy
 bundles are evaluated in the order of the provided `bundlesequence` (this is normally specified in the
-[`common control body`][Components and Common Control#Common Control]). For 
-each bundle, `cf-agent` groups promise statements according to their type. 
-Promise types are then evaluated in a preset order to ensure fast system 
+[`common control body`][Components and Common Control#Common Control]). For
+each bundle, `cf-agent` groups promise statements according to their type.
+Promise types are then evaluated in a preset order to ensure fast system
 convergence to policy.
 
-`cf-agent` keeps the promises made in `common` and `agent` bundles, and is 
+`cf-agent` keeps the promises made in `common` and `agent` bundles, and is
 affected by `common` and `agent` control bodies.
 
 ## Command reference ##
@@ -32,27 +32,27 @@ following Avahi libraries:
 * libavahi-client
 * libavahi-common
 
-To make the CFEngine Server discoverable, it needs to register itself as an 
+To make the CFEngine Server discoverable, it needs to register itself as an
 Avahi service. Run the following command:
 
 ```
     $ /var/cfengine/bin/cf-serverd -A
 ```
 
-This generates the configuration file for Avahi in `/etc/avahi/services` and 
+This generates the configuration file for Avahi in `/etc/avahi/services` and
 restarts the Avahi daemon in order to register the new service.
 
 From this point on, the Policy Server will be discovered with the Avahi service.
 To verify that the server is visible, run the following command (requires
 `avahi-utils`):
 
-``` 
+```
     $ avahi-browse -atr | grep cfenginehub
 ```
 
 The sample output looks like this:
 
-``` 
+```
     eth0 IPv4 CFEngine Community 3.5.0 Policy Server on policy_hub_debian7
     _cfenginehub._tcp local
 ```
@@ -60,17 +60,17 @@ The sample output looks like this:
 Once the Policy Server is configured with the Avahi service, you can
 auto-bootstrap Hosts to it.
 
-``` 
+```
     $ /var/cfengine/bin/cf-agent -B :avahi
 ```
 
-The Hosts require Avahi libraries to be installed in order to use this 
-functionality. By default `cf-agent` looks for libraries in standard install 
-locations. Install locations vary from system to system. If Avahi is 
-installed in a non-standard location (i.e. compiled from source), set the 
+The Hosts require Avahi libraries to be installed in order to use this
+functionality. By default `cf-agent` looks for libraries in standard install
+locations. Install locations vary from system to system. If Avahi is
+installed in a non-standard location (i.e. compiled from source), set the
 `AVAHI_PATH` environmental variable to specify the path.
 
-``` 
+```
    $ AVAHI_PATH=/lib/libavahi-client.so.3 /var/cfengine/bin/cf-agent -B
 ```
 
@@ -79,7 +79,7 @@ address, the list of all available servers is printed and the user is asked to
 manually specify the IP address of the correct server by running the standard
 bootstrap command of cf-agent:
 
-``` 
+```
    $ /var/cfengine/bin/cf-agent --bootstrap <IP address>
 ```
 
@@ -115,7 +115,7 @@ body agent control
 
 ### abortclasses
 
-**Description:** The `abortclasses` slist contains classes which if defined 
+**Description:** The `abortclasses` slist contains classes which if defined
 lead to termination of cf-agent.
 
 Regular expressions are used for classes that `cf-agent` will watch out
@@ -132,7 +132,7 @@ an alias for the expression with a single name.
 
 ```cf3
      body agent control
-    
+
       {
       abortclasses => { "danger.*", "should_not_continue" };
       }
@@ -140,7 +140,7 @@ an alias for the expression with a single name.
 
 ### abortbundleclasses
 
-**Description:** The `abortbundleclasses` slist contains classes which 
+**Description:** The `abortbundleclasses` slist contains classes which
 if defined lead to termination of current bundle.
 
 Regular expressions are used for classes, or class expressions
@@ -158,52 +158,52 @@ method bundle.
 
 ```cf3
     body common control
-    
+
     {
     bundlesequence  => { "testbundle"  };
     version => "1.2.3";
     }
-    
+
     #################################
-    
+
     body agent control
-    
+
     {
     abortbundleclasses => { "invalid.*" };
     }
-    
+
     #################################
-    
+
     bundle agent testbundle
     {
     vars:
-    
+
      "userlist" slist => { "xyz", "mark", "jeang", "jonhenrik", "thomas", "eben" };
-    
+
     methods:
-    
+
      "any" usebundle => subtest("$(userlist)");
-    
+
     }
-    
+
     #################################
-    
+
     bundle agent subtest(user)
-    
+
     {
     classes:
-    
+
       "invalid" not => regcmp("[a-z]{4}","$(user)");
-    
+
     reports:
-    
+
      !invalid::
-    
+
       "User name $(user) is valid at exactly 4 letters";
-    
+
      # abortbundleclasses will prevent this from being evaluated
      invalid::
-    
+
       "User name $(user) is invalid";
     }
 ```
@@ -211,10 +211,10 @@ method bundle.
 
 ### addclasses
 
-**Description:** The `addclasses` slist contains classes to be defined 
+**Description:** The `addclasses` slist contains classes to be defined
 always in the current context.
 
-This adds global, literal classes. The only predicates available during 
+This adds global, literal classes. The only predicates available during
 the control section are hard-classes.
 
 **Type:** `slist`
@@ -226,13 +226,13 @@ the control section are hard-classes.
 ```cf3
 
     any::
-    
+
       addclasses => { "My_Organization" }
-    
+
     solaris::
-    
+
       addclasses => { "some_solaris_alive", "running_on_sunshine" };
-```    
+```
 
 **Notes:**
 
@@ -244,11 +244,11 @@ global hard classes.
 
 ### agentaccess
 
-**Description:** A `agentaccess` slist contains user names that are 
+**Description:** A `agentaccess` slist contains user names that are
 allowed to execute cf-agent.
 
-This represents a list of user names that will be allowed to attempt 
-execution of the current configuration. This is mainly a sanity check 
+This represents a list of user names that will be allowed to attempt
+execution of the current configuration. This is mainly a sanity check
 rather than a security measure.
 
 **Type:** `slist`
@@ -280,7 +280,7 @@ rather than a security measure.
 
 **Default value:** `LOG_USER`
 
-**Description:** The `agentfacility` menu option policy sets the agent's 
+**Description:** The `agentfacility` menu option policy sets the agent's
 syslog facility level.
 
 **Example:**
@@ -292,15 +292,15 @@ syslog facility level.
 
 This is ignored on Windows, as CFEngine Enterprise creates event logs.
 
-**See Also**: Manual pages for syslog. 
+**See Also**: Manual pages for syslog.
 
 ### allclassesreport
 
 **Description:** The `allclassesreport` menu option policy determines
 whether to generate the `allclasses.txt` report.
 
-If set to true, the `state/allclasses.txt` file will be written to disk 
-during agent execution. 
+If set to true, the `state/allclasses.txt` file will be written to disk
+during agent execution.
 
 **Type:** [`boolean`][boolean]
 
@@ -325,8 +325,8 @@ a more convenient way to retrieve a list of set classes at execution time.
 
 ### alwaysvalidate
 
-**Description:** The `alwaysvalidate` menu option policy is a true/false 
-flag to determine whether configurations will always be checked before 
+**Description:** The `alwaysvalidate` menu option policy is a true/false
+flag to determine whether configurations will always be checked before
 executing, or only after updates.
 
 **Type:** [`boolean`][boolean]
@@ -337,9 +337,9 @@ executing, or only after updates.
     body agent control
     {
     Min00_05::
-    
+
       # revalidate once per hour, regardless of change in configuration
-    
+
       alwaysvalidate => "true";
     }
 ```
@@ -357,7 +357,7 @@ will force a revalidation of the input.
 
 ### auditing
 
-**Deprecated:** This menu option policy is deprecated, does 
+**Deprecated:** This menu option policy is deprecated, does
 nothing and is kept for backward compatibility.
 
 **Type:** [`boolean`][boolean]
@@ -376,7 +376,7 @@ nothing and is kept for backward compatibility.
 
 ### binarypaddingchar
 
-**Description:** The `binarypaddingchar` contains the character used to 
+**Description:** The `binarypaddingchar` contains the character used to
 pad unequal replacements in binary editing.
 
 When editing binary files, it can be dangerous to replace a text
@@ -405,7 +405,7 @@ strings can be padded out to the same length.
 
 ### bindtointerface
 
-**Description:** The `bindtointerface` string describes the interface 
+**Description:** The `bindtointerface` string describes the interface
 to be used for outgoing connections.
 
 On multi-homed hosts, the server and client can bind to a specific
@@ -424,11 +424,11 @@ be given as the argument, not the device name.
 
 ### hashupdates
 
-**Description:** The `hashupdates` determines whether stored hashes are 
+**Description:** The `hashupdates` determines whether stored hashes are
 updated when change is detected in source.
 
-If 'true' the stored reference value is updated as soon as a warning 
-message has been given. As most changes are benign (package updates 
+If 'true' the stored reference value is updated as soon as a warning
+message has been given. As most changes are benign (package updates
 etc) this is a common setting.
 
 **Type:** [`boolean`][boolean]
@@ -447,10 +447,10 @@ etc) this is a common setting.
 
 ### childlibpath
 
-**Description:** The `childlibpath` string contains the LD\_LIBRARY\_PATH 
+**Description:** The `childlibpath` string contains the LD\_LIBRARY\_PATH
 for child processes.
 
-This string may be used to set the internal `LD_LIBRARY_PATH` environment 
+This string may be used to set the internal `LD_LIBRARY_PATH` environment
 of the agent.
 
 **Type:** `string`
@@ -469,7 +469,7 @@ of the agent.
 
 ### checksum_alert_time
 
-**Description:** The value of checksum_alert_time represents the 
+**Description:** The value of checksum_alert_time represents the
 persistence time for the checksum_alert class.
 
 When checksum changes trigger an alert, this is registered as a
@@ -493,7 +493,7 @@ class.
 
 ### defaultcopytype
 
-**Description:** The `defaultcopytype` menu option policy sets the global 
+**Description:** The `defaultcopytype` menu option policy sets the global
 default policy for comparing source and image in copy transactions.
 
 **Type:** (menu option)
@@ -520,14 +520,14 @@ default policy for comparing source and image in copy transactions.
 
 ### default_repository
 
-**Description:** The `default_repository` string contains the path to the 
+**Description:** The `default_repository` string contains the path to the
 default file repository.
 
 If defined the default repository is the location where versions of
 files altered by CFEngine are stored. This should be understood in
 relation to the policy for 'backup' in copying, editing etc. If the
 backups are time-stamped, this becomes effective a version control
-repository. 
+repository.
 
 **Type:** `string`
 
@@ -552,11 +552,11 @@ alternative repository as `_usr_local_etc_postfix.conf.cfsaved`.
 
 ### default_timeout
 
-**Description:** The value of `default_timeout` represents the maximum 
+**Description:** The value of `default_timeout` represents the maximum
 time a network connection should attempt to connect.
 
 The time is in seconds. It is not a guaranteed number, since it
-depends on system behavior. 
+depends on system behavior.
 
 **Type:** `int`
 
@@ -573,12 +573,12 @@ depends on system behavior.
     }
 ```
 
-**Notes:** Under Linux, the kernel version plays a role, since not all system 
+**Notes:** Under Linux, the kernel version plays a role, since not all system
 calls seem to respect the signals.
 
 ### dryrun
 
-**Description:** The `dryrun` menu option, if set, makes no changes to 
+**Description:** The `dryrun` menu option, if set, makes no changes to
 the system, and will only report what it needs to do.
 
 **Type:** [`boolean`][boolean]
@@ -597,11 +597,11 @@ the system, and will only report what it needs to do.
 
 ### editbinaryfilesize
 
-**Description:** The value of `editbinaryfilesize` represents the limit 
+**Description:** The value of `editbinaryfilesize` represents the limit
 on maximum binary file size to be edited.
 
 This is a global setting for the file-editing safety-net for binary files,
-and may be overridden on a per-promise basis with `max_file_size`. 
+and may be overridden on a per-promise basis with `max_file_size`.
 
 **Type:** `int`
 
@@ -624,10 +624,10 @@ generally be set higher than for text files.
 
 ### editfilesize
 
-**Description:** The value of `editfilesize` is the limit on maximum text 
+**Description:** The value of `editfilesize` is the limit on maximum text
 file size to be edited.
 
-This is a global setting for the file-editing safety-net, and may be 
+This is a global setting for the file-editing safety-net, and may be
 overridden on a per-promise basis with `max_file_size`.
 
 **Type:** `int`
@@ -647,11 +647,11 @@ overridden on a per-promise basis with `max_file_size`.
 
 ### environment
 
-**Description:** The `environment` slist contains environment variables 
+**Description:** The `environment` slist contains environment variables
 to be inherited by children.
 
-This may be used to set the runtime environment of the agent process. 
-The values of environment variables are inherited by child commands. 
+This may be used to set the runtime environment of the agent process.
+The values of environment variables are inherited by child commands.
 
 **Type:** `slist`
 
@@ -664,16 +664,16 @@ The values of environment variables are inherited by child commands.
     {
     bundlesequence => { "one" };
     }
-    
+
     body agent control
     {
     environment => { "A=123", "B=456", "PGK_PATH=/tmp"};
     }
-    
+
     bundle agent one
     {
     commands:
-    
+
       "/usr/bin/env";
     }
 ```
@@ -682,17 +682,17 @@ Some interactive programs insist on values being set, for example:
 
 ```cf3
     # Required by apt-cache, debian
-    
+
     environment => { "LANG=C"};
 ```
 
 
 ### expireafter
 
-**Description:** The value of `expireafter` is a global default for time 
+**Description:** The value of `expireafter` is a global default for time
 before on-going promise repairs are interrupted.
 
-This represents the locking time after which CFEngine will attempt to 
+This represents the locking time after which CFEngine will attempt to
 kill and restart its attempt to keep a promise.
 
 **Type:** `int`
@@ -713,7 +713,7 @@ kill and restart its attempt to keep a promise.
 
 ### files_single_copy
 
-**Description:** The `files_single_copy` slist contains filenames to be 
+**Description:** The `files_single_copy` slist contains filenames to be
 watched for multiple-source conflicts.
 
 This list of regular expressions will ensure that files matching
@@ -738,7 +738,7 @@ for lazy-evaluation of overlapping file-copy promises.
 
 ### files_auto_define
 
-**Description:** The `files_auto_define` slist contains filenames to 
+**Description:** The `files_auto_define` slist contains filenames to
 define classes if copied.
 
 Classes are automatically defined by the files that are copied. The
@@ -767,11 +767,11 @@ automatically.
 
 **Deprecated:** Host identification is now handled transparently.
 
-**Description:** The `hostnamekeys` menu option policy determines whether 
+**Description:** The `hostnamekeys` menu option policy determines whether
 to label ppkeys by hostname not IP address.
 
-This represents a client side choice to base key associations on host 
-names rather than IP address. This is useful for hosts with dynamic 
+This represents a client side choice to base key associations on host
+names rather than IP address. This is useful for hosts with dynamic
 addresses.
 
 **Type:** [`boolean`][boolean]
@@ -789,7 +789,7 @@ addresses.
 
 ### ifelapsed
 
-**Description:** The value of `ifelapsed` is a global default representing 
+**Description:** The value of `ifelapsed` is a global default representing
 the time that must elapse before a promise will be rechecked.
 
 This overrides the global settings. Promises which take a long time
@@ -810,15 +810,15 @@ another which is not tied to a specific time.
 
 ```cf3
     #local
-    
+
     body action example
     {
     ifelapsed   => "120";   # 2 hours
     expireafter => "240";   # 4 hours
     }
-    
+
     # global
-    
+
     body agent control
     {
     ifelapsed   => "180";   # 3 hours
@@ -827,11 +827,11 @@ another which is not tied to a specific time.
 
 ### inform
 
-**Description:** The `inform` menu option policy sets the default  output 
+**Description:** The `inform` menu option policy sets the default  output
 level 'permanently' within the class context indicated.
 
 It is equivalent to (and when present, overrides) the command line option
-'-I'. 
+'-I'.
 
 **Type:** [`boolean`][boolean]
 
@@ -848,7 +848,7 @@ It is equivalent to (and when present, overrides) the command line option
 
 ### intermittency
 
-**Deprecated:** This attribute does nothing and is kept for backward  
+**Deprecated:** This attribute does nothing and is kept for backward
 compatibility.
 
 **Type:** [`boolean`][boolean]
@@ -858,14 +858,14 @@ compatibility.
 
 ### max_children
 
-**Description:** The value of `max_children` represents the maximum number 
+**Description:** The value of `max_children` represents the maximum number
 of background tasks that should be allowed concurrently.
 
-For the run-agent this is the maximum number of forked background 
-processes allowed when parallelizing connections to servers. 
-For the agent it represents the number of background jobs allowed 
-concurrently. Background jobs often lead to contention of the disk 
-resources slowing down tasks considerably; there is thus a law of 
+For the run-agent this is the maximum number of forked background
+processes allowed when parallelizing connections to servers.
+For the agent it represents the number of background jobs allowed
+concurrently. Background jobs often lead to contention of the disk
+resources slowing down tasks considerably; there is thus a law of
 diminishing returns.
 
 **Type:** `int`
@@ -886,7 +886,7 @@ diminishing returns.
 
 ### maxconnections
 
-**Description:** The value of `maxconnections` represents the maximum 
+**Description:** The value of `maxconnections` represents the maximum
 number of outgoing connections to `cf-serverd`.
 
 **Type:** `int`
@@ -898,8 +898,8 @@ number of outgoing connections to `cf-serverd`.
 **Example:**
 
 ```cf3
-    # client side 
-    
+    # client side
+
     body agent control
     {
     maxconnections => "1000";
@@ -914,7 +914,7 @@ descriptors which can limit this.
 
 ### mountfilesystems
 
-**Description:** The `mountfilesystems` menu option policy determines 
+**Description:** The `mountfilesystems` menu option policy determines
 whether to mount any filesystems promised.
 
 It issues the generic command to mount file systems defined in the
@@ -935,7 +935,7 @@ file system table.
 
 ### nonalphanumfiles
 
-**Description:** The `nonalphanumfiles` menu option policy determines 
+**Description:** The `nonalphanumfiles` menu option policy determines
 whether to warn about filenames with no alphanumeric content.
 
 This test is applied in all recursive/depth searches.
@@ -955,7 +955,7 @@ This test is applied in all recursive/depth searches.
 
 ### repchar
 
-**Description:** The `repchar` string represents a character used to 
+**Description:** The `repchar` string represents a character used to
 canonize pathnames in the file repository.
 
 **Type:** `string`
@@ -977,8 +977,8 @@ canonize pathnames in the file repository.
 
 ### refresh_processes
 
-**Description:** The `refresh_processes` slist contains bundles to reload 
-the process table before verifying the bundles named in this list 
+**Description:** The `refresh_processes` slist contains bundles to reload
+the process table before verifying the bundles named in this list
 (lazy evaluation).
 
 If this list of regular expressions is non-null and an existing
@@ -1001,16 +1001,16 @@ at the start of every scheduled bundle.
     }
 ```
 
-This examples uses a non-empty list with the name 'none'. This is not a 
-reserved word, but as long as there are no bundles with the name 'none' this 
-has the effect of *never* reloading the process table. This keeps improves the 
+This examples uses a non-empty list with the name 'none'. This is not a
+reserved word, but as long as there are no bundles with the name 'none' this
+has the effect of *never* reloading the process table. This keeps improves the
 efficiency of the agent.
 
 **History:** Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)
 
 ### secureinput
 
-**Description:** The `secureinput` menu option policy checks whether 
+**Description:** The `secureinput` menu option policy checks whether
 input files are writable by unauthorized users.
 
 If this is set, the agent will not accept an input file that is not
@@ -1031,7 +1031,7 @@ owned by a privileged user.
 
 ### sensiblecount
 
-**Description:** The value of `sensiblecount` represents the minimum 
+**Description:** The value of `sensiblecount` represents the minimum
 number of files a mounted filesystem is expected to have.
 
 **Type:** `int`
@@ -1043,7 +1043,7 @@ number of files a mounted filesystem is expected to have.
 **Example:**
 
 ```cf3
-    body agent control 
+    body agent control
     {
     sensiblecount => "20";
     }
@@ -1051,7 +1051,7 @@ number of files a mounted filesystem is expected to have.
 
 ### sensiblesize
 
-**Description:** The value of `sensiblesize` represents the minimum 
+**Description:** The value of `sensiblesize` represents the minimum
 number of bytes a mounted filesystem is expected to have.
 
 **Type:** `int`
@@ -1072,8 +1072,8 @@ number of bytes a mounted filesystem is expected to have.
 
 ### skipidentify
 
-**Description:** The `skipidentify` menu option policy determines whether 
-to send an IP/name during server connection because address resolution is 
+**Description:** The `skipidentify` menu option policy determines whether
+to send an IP/name during server connection because address resolution is
 broken.
 
 Hosts that are not registered in DNS cannot supply reasonable
@@ -1096,7 +1096,7 @@ credentials.
 
 ### suspiciousnames
 
-**Description:** The `suspiciousnames` slist contains names to warn about 
+**Description:** The `suspiciousnames` slist contains names to warn about
 if found during any file search.
 
 If CFEngine sees these names during recursive (depth) file searches
@@ -1117,7 +1117,7 @@ it will warn about them.
 
 ### syslog
 
-**Description:** The `syslog` menu option policy determines whether to 
+**Description:** The `syslog` menu option policy determines whether to
 switch on output to syslog at the inform level.
 
 **Type:** [`boolean`][boolean]
@@ -1140,7 +1140,7 @@ no action and is kept for backward compatibility.
 
 ### timezone
 
-**Description:** The `timezone` slist contains allowed timezones this 
+**Description:** The `timezone` slist contains allowed timezones this
 machine must comply with.
 
 **Type:** `slist`
@@ -1159,7 +1159,7 @@ machine must comply with.
 
 ### verbose
 
-**Description:** The `verbose` menu option policy determines whether to 
+**Description:** The `verbose` menu option policy determines whether to
 switch on verbose standard output.
 
 It is equivalent to (and when present, overrides) the command line option
@@ -1181,7 +1181,7 @@ promise.
 
 ### report_class_log
 
-**Description:** The `report_class_log` option enables logging of  classes set by cf-agent. Each class set by cf-agent will be logged at the end of agent execution. Each class includes timestamp information of cf-agent exit which has set the class (all set by same cf-agent execution will share that value). 
+**Description:** The `report_class_log` option enables logging of  classes set by cf-agent. Each class set by cf-agent will be logged at the end of agent execution. Each class includes timestamp information of cf-agent exit which has set the class (all set by same cf-agent execution will share that value).
 
 Time classes are ignored.
 Destination: '/var/cfengine/state/classes.jsonl'

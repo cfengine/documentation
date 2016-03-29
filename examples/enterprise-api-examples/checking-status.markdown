@@ -6,8 +6,8 @@ sorting: 20
 tags: [examples, enterprise, rest, api, reporting, status]
 ---
 
-You can get basic info about the API by issuing [/api][Status and Settings REST API#Get server status]. This status 
-information may also be useful if you contact support, as it gives some basic 
+You can get basic info about the API by issuing [/api][Status and Settings REST API#Get server status]. This status
+information may also be useful if you contact support, as it gives some basic
 diagnostics.
 
 **Request**

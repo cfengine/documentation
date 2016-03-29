@@ -88,25 +88,25 @@ and we are done.
 ## Commit hooks
 
 
-Commit hooks are scripts that are run when a repository is updated. We can use 
-a hook to notify a policy developer if an update causes a syntax error. While 
-the agent on the policy server should not copy from 
-`/var/cfengine/masterfiles` to `/var/cfengine/inputs` if the new policy does 
-not pass validation, it can nevertheless be helpful to employ VCS commit 
-hooks. A hook needs to be installed on the VCS server. Git and subversion 
-store their hooks on the server, under directories `.git/hooks` and `hooks`, 
+Commit hooks are scripts that are run when a repository is updated. We can use
+a hook to notify a policy developer if an update causes a syntax error. While
+the agent on the policy server should not copy from
+`/var/cfengine/masterfiles` to `/var/cfengine/inputs` if the new policy does
+not pass validation, it can nevertheless be helpful to employ VCS commit
+hooks. A hook needs to be installed on the VCS server. Git and subversion
+store their hooks on the server, under directories `.git/hooks` and `hooks`,
 respectively.
 
 ### Example git update hook
 
-We can use a git update hook to prevent a change from being made unless it 
-passes syntax checking. The idea is to check out the revision in a temporary 
+We can use a git update hook to prevent a change from being made unless it
+passes syntax checking. The idea is to check out the revision in a temporary
 directory and run `cf-promises` on it. Here is an example hook.
 
 ```
-    #!/bin/sh                                                                                                                                                                
+    #!/bin/sh
 
-    # --- Command line                                                                                                                                                       
+    # --- Command line
     REF_NAME="$1"
     OLD_REV="$2"
     NEW_REV="$3"
@@ -145,8 +145,8 @@ directory and run `cf-promises` on it. Here is an example hook.
 
 ### Example subversion post-commit hook
 
-For subversion, the principle is essentially the same. Note that for a 
-post-commit hook the check is run after update, so the repository may be left 
+For subversion, the principle is essentially the same. Note that for a
+post-commit hook the check is run after update, so the repository may be left
 with a syntax error, but the committer is notified.
 
 ```
