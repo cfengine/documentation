@@ -117,6 +117,46 @@ So in the example above the command would be:
  /bin/echo one two three
 ```
 
+**See also:** `arglist`, `join()`, `concat()`, `format()`
+
+### arglist
+
+**Description:** Allows to separate the arguments to the command from the 
+command itself, using an slist.
+
+As with `args`, it is convenient to separate command and arguments.
+With `arglist` you can use a slist directly instead of having to
+provide a single string as with `args`. That's particularly useful
+when there are embedded spaces and quotes in your arguments, but also
+when you want to get them directly from a slist without going through
+`join()` or other functions.
+
+The `arglist` is **appended** to `args` if that's defined, to preserve
+backwards compatibility.
+
+**Type:** `slist`
+
+**Allowed input range:** (arbitrary string)
+
+```cf3
+commands:
+
+  "/bin/echo one"
+
+   args => "two three",
+   arglist => { "four", "five" };
+```
+
+So in the example above the command would be:
+
+```cf3
+ /bin/echo one two three four five
+```
+
+**History:** Was introduced in CFEngine 3.9.0.
+
+**See also:** `args`, `join()`, `concat()`, `format()`
+
 ### contain
 
 **Description:** Allows running the command in a 'sandbox'.
