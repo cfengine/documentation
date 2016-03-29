@@ -7,10 +7,10 @@ tags: [reference, data functions, functions, maplist]
 
 [%CFEngine_function_prototype(pattern, list)%]
 
-**Description:** Return a list with each element in `list` modified by a 
+**Description:** Return a list with each element in `list` modified by a
 pattern.
 
-The `$(this)` variable expands to the currently processed entry from `list`. 
+The `$(this)` variable expands to the currently processed entry from `list`.
 This is essentially like the map() function in Perl, and applies to
 lists.
 

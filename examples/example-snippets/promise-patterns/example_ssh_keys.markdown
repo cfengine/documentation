@@ -64,7 +64,7 @@ files:
       create => "true",
        perms => m("600"),
    edit_line => insert_file_if_no_line_matching("$(users)","$(local_cache)/$(users).pub"),
-      action => if_elapsed("60"); 
+      action => if_elapsed("60");
 }
 
 #####
@@ -93,9 +93,9 @@ Example run:
 First, let's setup for the run. Put users' SSH keys into the key distribution point on the policy hub:
 
 ```
-policy_hub# ls /var/cfengine/masterfiles/ssh_keys/*pub 
+policy_hub# ls /var/cfengine/masterfiles/ssh_keys/*pub
 /var/cfengine/masterfiles/ssh_keys/user1.pub  /var/cfengine/masterfiles/ssh_keys/user2.pub
-policy_hub# 
+policy_hub#
 ```
 
 There are no authorized_keys files on the managed servers, but the home (and .ssh) directories exist:
@@ -103,7 +103,7 @@ There are no authorized_keys files on the managed servers, but the home (and .ss
 ```
 # ls -d /home/user*/.ssh
 /home/user1/.ssh  /home/user2/.ssh
-# ls /home/user?/.ssh/authorized_keys  
+# ls /home/user?/.ssh/authorized_keys
 ls: cannot access /home/user?/.ssh/authorized_keys: No such file or directory
 #
 ```

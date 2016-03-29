@@ -23,7 +23,7 @@ The general pattern of the syntax is like this (colors in html version: red, CFE
 
 ```cf3
 bundle component name(parameters)
-{ 
+{
 what_type:
  where_when::
 

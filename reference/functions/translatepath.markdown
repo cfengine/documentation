@@ -7,7 +7,7 @@ tags: [reference, files functions, functions, translatepath]
 
 [%CFEngine_function_prototype(path)%]
 
-**Description:** Translate separators in `path` from Unix style to the host's 
+**Description:** Translate separators in `path` from Unix style to the host's
 native style and returns the result.
 
 Takes a string argument with slashes as path separators and translate

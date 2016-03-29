@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Commands, Scripts, and Execution Examples 
+title: Commands, Scripts, and Execution Examples
 published: true
 sorting: 5
 tags: [Examples,Commands,Scripts]

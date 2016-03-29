@@ -9,7 +9,7 @@ tags: [reference, files functions, functions, lsdir]
 
 **Description:** Returns a list of files in the directory `path` matching the regular expression `regex`.
 
-If `include_base` is true, full paths are returned, otherwise only names 
+If `include_base` is true, full paths are returned, otherwise only names
 relative to the directory are returned.
 
 [%CFEngine_function_attributes(path, regex, include_base)%]
@@ -22,7 +22,7 @@ Output:
 
 [%CFEngine_include_snippet(lsdir.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**Notes:**  
-   
+**Notes:**
+
  **History:** Was introduced in 3.3.0, Nova 2.2.0 (2011)
 

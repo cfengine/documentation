@@ -45,7 +45,7 @@ bundle edit_line inner_bundle
   insert_lines:
     "/* This file is maintained by CFEngine (see $(who) for details) */",
     location => first_line;
-  
+
   replace_patterns:
    # replace shell comments with C comments
 
@@ -316,7 +316,7 @@ unaffected by any `delete_lines` promises. See the next section on
 `include_start_delimiter` for further details.
 
 **History:** This attribute was introduced in CFEngine version 3.0.5
-(2010)   
+(2010)
 
 #### include_end_delimiter
 
@@ -367,13 +367,13 @@ with them. Note that sections can be bounded at both the start and end
 in `include_start_delimiter`).
 
 **History:** This attribute was introduced in CFEngine version 3.0.5
-(2010)   
+(2010)
 
 #### select_start
 
 **Description:** [Anchored][anchored] regular expression matching start of edit region
 
-See also [`select_end`][bundle edit_line#select_end]. These delimiters mark 
+See also [`select_end`][bundle edit_line#select_end]. These delimiters mark
 out the region of a file to be edited.
 
 **Type:** `string`
@@ -394,7 +394,7 @@ out the region of a file to be edited.
 
 **Description:** [Anchored][anchored] regular expression matches end of edit region from start
 
-See also [`select_start`][bundle edit_line#select_start]. These delimiters 
+See also [`select_start`][bundle edit_line#select_start]. These delimiters
 mark out the region of a file to be edited.
 
 **Type:** `string`

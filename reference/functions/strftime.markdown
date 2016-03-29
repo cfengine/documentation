@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, strftime]
 
 [%CFEngine_function_prototype(mode, template, time)%]
 
-**Description:** Interprets a time and date format string at a particular 
+**Description:** Interprets a time and date format string at a particular
 point in GMT or local time using Unix epoch time.
 
 [%CFEngine_function_attributes(mode, template, time)%]

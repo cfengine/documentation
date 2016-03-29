@@ -10,7 +10,7 @@ tags: [reference, utility functions, functions, packages, inventory, packagesmat
 **Description:** Return a data container with the list of installed packages
 matching the parameters.
 
-This function searches for the [unanchored][unanchored] regular expressions in 
+This function searches for the [unanchored][unanchored] regular expressions in
 the list of currently installed packages.
 
 The return is a data container with a list of package descriptions, looking like this:
@@ -41,7 +41,7 @@ some desired packages, and finally reports if they are installed.
 
 [%CFEngine_include_example(packagesmatching.cf)%]
 
-**Example:**  
+**Example:**
 
 ```cf3
       "all_packages" data => packagesmatching(".*", ".*", ".*", ".*");

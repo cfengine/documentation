@@ -11,7 +11,7 @@ There are many ways to configure name resolution. A simple and straightforward a
 
 ```cf3
 
-body common control 
+body common control
 {
 bundlesequence => { "edit_name_resolution" };
 }
@@ -74,5 +74,5 @@ nameserver 128.39.74.66
 search mydomain.tld
 nameserver 128.39.89.8
 nameserver 128.39.74.66
-# 
+#
 ```

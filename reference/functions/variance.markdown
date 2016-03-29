@@ -25,8 +25,8 @@ Output:
 
 [%CFEngine_include_snippet(max-min-mean-variance.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**Notes:**  
-   
+**Notes:**
+
 **History:** Was introduced in version 3.6.0 (2014)
 
 **See also:** `sort()`, `mean()`, `sum()`, `max()`, `min()`

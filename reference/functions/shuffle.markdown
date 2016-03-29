@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, shuffle]
 
 **Description:** Return `list` shuffled with `seed`.
 
-The same seed will produce the same shuffle every time. For a random shuffle, 
+The same seed will produce the same shuffle every time. For a random shuffle,
 provide a random seed with the `randomint` function.
 
 [%CFEngine_function_attributes(list, seed)%]

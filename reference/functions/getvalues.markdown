@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, getvalues]
 **Description:** Returns the list of values in `varref` which can be
 the name of an array or container.
 
-If the array contains list values, then all of the list elements are flattened 
+If the array contains list values, then all of the list elements are flattened
 into a single list to make the return value a list.
 
 If the data container contains non-scalar values (e.g. nested

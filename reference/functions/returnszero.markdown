@@ -7,7 +7,7 @@ tags: [reference, utility functions, functions, returnszero]
 
 [%CFEngine_function_prototype(command, shell)%]
 
-**Description:** Runs `command` and returns whether it has returned with exit 
+**Description:** Runs `command` and returns whether it has returned with exit
 status zero.
 
 This is the complement of `execresult()`, but it returns a class result

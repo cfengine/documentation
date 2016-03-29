@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, none]
 
 [%CFEngine_function_prototype(regex, list)%]
 
-**Description:** Returns whether no element in `list` matches the regular 
+**Description:** Returns whether no element in `list` matches the regular
 expression `regex`.
 
 `list` can be a data container or a regular list.

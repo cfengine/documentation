@@ -343,9 +343,9 @@ commands that are wrapped by the following Enterprise API commands.
 
 **Parameters:**
 
-* **sketch** 
+* **sketch**
     Name of the sketch
-* **details** 
+* **details**
     1 or 0 for extended details
 
 **Example response:**
@@ -429,7 +429,7 @@ commands that are wrapped by the following Enterprise API commands.
 
 **Parameters:**
 
-* **sketchName** 
+* **sketchName**
     Name of the sketch
 * **details**
     1 or 0 for host and other details
@@ -574,7 +574,7 @@ Checks for the workspace and returns the path.
 
 **Method:** POST
 
-## List workspace settings 
+## List workspace settings
 
 **URI:** https://hub.cfengine.com/api/dc/workspace/settings
 

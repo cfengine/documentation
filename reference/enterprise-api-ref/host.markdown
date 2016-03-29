@@ -24,7 +24,7 @@ Host API allows to access host specific information.
 * **page** *(integer)*
     Number of the page with results. By default 1.
 * **count** *(integer)*
-    Size of the page. By default 50 results. 
+    Size of the page. By default 50 results.
 
 **Example response:**
 
@@ -67,7 +67,7 @@ Host API allows to access host specific information.
     Time of receiving last report from the client, successfully. Represented as UNIX TIMESTAMP.
 * **firstseen**
     Time of receiving the first status report from the client. It is equivalent to the time when the client have been bootstrapped to the server for the first time. Represented as UNIX TIMESTAMP.
- 
+
 **Example usage:** `Example: Listing Hosts With A Given Context`, `Example: Looking Up Hosts By Hostname`, `Example: Looking Up Hosts By IP`
 
 ## Host Details
@@ -119,7 +119,7 @@ Host API allows to access host specific information.
 
 Remove data about the host from reporting database and stop collecting reports from the host. API call schedules a job for purging authentication keys exchanged during bootstrap which prevents host from being collected in the future. Key purging usually take an effect within 5-10 minutes.
 
-Deleted host need to be re-bootstrapped if it was deleted by accident. 
+Deleted host need to be re-bootstrapped if it was deleted by accident.
 
 ## List monitoring attributes for host
 
@@ -233,7 +233,7 @@ Note: Collecting monitoring data by default is disabled.
 
 **Output**:
 
-*  **id** 
+*  **id**
     ID of vital sign.
 *   **description**
     Description of vital sign.
@@ -241,7 +241,7 @@ Note: Collecting monitoring data by default is disabled.
     Measurement unit of vital sign.
 *   **timestamp**
     Timestamp of the last received data point.
-*   **values** 
+*   **values**
     Vital sign data. *(array of [ t, y ], where t is the sample timestamp)*
 
 **Example usage:** `Example: Retrieving Vital Sign Data`

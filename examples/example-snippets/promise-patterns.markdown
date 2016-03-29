@@ -6,7 +6,7 @@ published: true
 tags: [examples, policy]
 ---
 
-This section includes includes common promise patterns. Refer to them as you 
+This section includes includes common promise patterns. Refer to them as you
 write policy for your system.
 
 * [Aborting execution][Aborting execution]

@@ -9,8 +9,8 @@ tags: [reference, data functions, functions, sum]
 
 **Description:** Return the sum of the reals in `list`.
 
-This function might be used for simple ring computation. Of course, you could 
-easily combine `sum` with `readstringarray` or `readreallist` etc., to collect 
+This function might be used for simple ring computation. Of course, you could
+easily combine `sum` with `readstringarray` or `readreallist` etc., to collect
 summary information from a source external to CFEngine.
 
 [%CFEngine_function_attributes(list)%]
@@ -30,6 +30,6 @@ generated will be:
 six is 6.000000, zero is 0.000000
 ```
 
-**Notes:**  
-   
+**Notes:**
+
 **History:** Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)

@@ -81,7 +81,7 @@ basic information needed by git to manipulate the repository):
 
 And then make all the changes in the checked-out `masterfiles`
 repository.
-    
+
 ##### Using a remote repository ####
 
 To use a remote repository, you must enter its address, login
@@ -232,10 +232,10 @@ masterfiles using the built-in facilities in CFEngine Enterprise 3.6
   code or special policies
 
 ## Scalability ##
-  
+
 When running CFEngine Enterprise in a large-scale IT environment with many thousands of hosts, certain issues arise that require different approaches compared with smaller installations.
 
-With CFEngine 3.6, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine. 
+With CFEngine 3.6, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine.
 
 
 ### Moving PostgreSQL to Separate Hard Drive ###

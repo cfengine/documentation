@@ -122,13 +122,13 @@ For standard URLs and locations to link to, see the
 
 #### Automatic linking
 
-The documentation generator automatically creates links for words in code 
+The documentation generator automatically creates links for words in code
 markers if that word exists as a page or section title.
 
     **See also:** `attribute_name`, `function()`
 
-This will automatically link to the section or page with title 
-*attribute_name*. To make explicit links from code words, use 
+This will automatically link to the section or page with title
+*attribute_name*. To make explicit links from code words, use
 `code` markers in the link text.
 
     **See also:** [`attribute_name`][page#attributename]
@@ -224,7 +224,7 @@ Generates the **Description** section.
 
     @param attr text
 
-Includes `text` in the documentation for attribute `attr` within the 
+Includes `text` in the documentation for attribute `attr` within the
 **Arguments** section.
 
     @return text
@@ -255,7 +255,7 @@ of the parameters:
 
 ```
     **Prototype:** `title(arg1, arg2, ...)`
-    
+
     **Return type:** `type`
 ```
 
@@ -269,7 +269,7 @@ title of the current page. `arg1` etc are used for the parameter names:
 
 ```
     **Arguments:**
-    
+
     * `arg1`: `type1`, in the range: `regex`
     * `arg2`: `type2`, one of
         * `option1`
@@ -288,7 +288,7 @@ Renders the syntax description of the current promise attribute. The current
 markdown needs to comply with the following:
 
 The current page title is assumed to be the promise type. The current level-3
-header is assumed to be the attribute name, or - if the current promise 
+header is assumed to be the attribute name, or - if the current promise
 attribute is a body type - the name of the body. In a body type, the current
 level 4 header is interpreted to be the body attribute.
 
@@ -434,7 +434,7 @@ As a general note, avoiding abbreviations provides better readability.
 * avoid custom color schemes and hand-coded HTML
 * document the example after the example code
 
-The structure of the technical documentation about CFEngine attributes, 
+The structure of the technical documentation about CFEngine attributes,
 functions etc is as follows:
 
 ### Promise Attributes
@@ -446,7 +446,7 @@ requires a body template, then see next section).
     ----
     title: promise-type
     ----
-    
+
     ...
 
     ### Promise Attribute
@@ -463,7 +463,7 @@ requires a body template, then see next section).
     **Example:**
 
     ```f3
-        Some code with 
+        Some code with
         cf3 markers
         for syntax highlighting
     ```
@@ -474,10 +474,10 @@ requires a body template, then see next section).
     .cf file that is known to run and produce the expected output.
 
     **Notes:**
-    
+
     Additional information, spanning as many paragraphs as necessary, but mind
     the style guide.
-    
+
     **See also:** `related_attribute`, [`attribute`][other_page#attribute]
 
 ### Bodies
@@ -486,14 +486,14 @@ For promise attributes with a body type, you can start with an example of that
 body type, with the most relevant attributes set to self-explanatory values.
 
     ### attribute
-    
+
     **Description:** One line summary.
-    
+
     Longer explanation on what this body template is used for,
     over multiple paragraphs if necessary.
-    
+
     [%CFEngine_promise_attribute()%]
-    
+
     **Example:**
 
     ```cf3
@@ -515,11 +515,11 @@ No header necessary - there is one function per page, and the page's
 title is the name of the function.
 
     [%CFEngine_function_prototype(parameter1, parameters2, ...)%]
-    
+
     **Description:** Returns something based on `parameter1` and `parameter2`.
-    
+
     Longer explanation on what it does and why it is useful then afterwards.
-    
+
     Summarize what the function does and reference the most important parameters by
     name, typical use cases etc.
 
@@ -532,7 +532,7 @@ title is the name of the function.
     **Example:**
 
     ```cf3
-        Some code with 
+        Some code with
         cf3 markers
         for syntax highlighting
     ```
@@ -542,10 +542,10 @@ title is the name of the function.
     macro to inject code from an external .cf file that is known to work.
 
     **Notes:**
-    
+
     Additional information, spanning as many paragraphs as necessary, but mind
     the style guide.
-    
+
     **See also:** `related_function()`, `related_attribute`
 
 
@@ -555,13 +555,13 @@ provided. If you want to explain each attribute directly after it being listed, 
 use the macro, and list the attributes explicitly:
 
     **Arguments:**
-    
+
     * `named`: valid input
-    
+
     First argument does this.
-    
+
     * `parameters`: valid input
-    
+
     This argument does that.
 
 
@@ -570,9 +570,9 @@ use the macro, and list the attributes explicitly:
 Special Variables are documented within the page of their context.
 
     ### context.variable
-    
+
     Explanation.
-    
+
     **See also:** `other_variable`
 
 ## Publishing

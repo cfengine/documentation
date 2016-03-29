@@ -14,7 +14,7 @@ variable does not expand.
 
 [%CFEngine_function_attributes(filename)%]
 
-**Example:**  
+**Example:**
 
 Run:
 

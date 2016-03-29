@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, some]
 
 [%CFEngine_function_prototype(regex, list)%]
 
-**Description:** Return whether any element of `list` matches the 
+**Description:** Return whether any element of `list` matches the
 [Unanchored][unanchored] regular expression `regex`.
 
 `list` can be a data container or a regular list.

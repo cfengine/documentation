@@ -18,8 +18,8 @@ Methods may be parameterized.
 
 ```
 
-Methods are useful for encapsulating repeatedly used configuration issues and 
-iterating over parameters. They are implemented as bundles that are run 
+Methods are useful for encapsulating repeatedly used configuration issues and
+iterating over parameters. They are implemented as bundles that are run
 inline. Note that if the bundle you specify requires no parameters you
 may omit the `usebundle` attribute and give the bundle name directly in
 the promiser string.
@@ -125,8 +125,8 @@ Output:
 **Description:** If true this causes the sub-bundle to inherit the private
 classes of its parent
 
-Inheriting the variables is unnecessary as the child can always access the 
-parent's variables through a qualified reference using its bundle name. For 
+Inheriting the variables is unnecessary as the child can always access the
+parent's variables through a qualified reference using its bundle name. For
 example: `$(bundle.variable)`.
 
 **Type:** [`boolean`][boolean]
@@ -179,7 +179,7 @@ Return values are limited to scalars.
              useresult => "my_return_var";
 
     reports:
-        "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\""; 
+        "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\"";
     }
 
     bundle agent child
@@ -187,10 +187,10 @@ Return values are limited to scalars.
     reports:
        # Map these indices into the useresult namespace
 
-       "this is a return value"  
+       "this is a return value"
           bundle_return_value_index => "1";
 
-       "this is another return value"  
+       "this is another return value"
           bundle_return_value_index => "2";
     }
 ```
