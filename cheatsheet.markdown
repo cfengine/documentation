@@ -297,6 +297,46 @@ index 92555a2..b49c0bb 100644
 ```
 
 
+#### JSON Code Blocks
+
+{% raw %}
+```json
+{
+  "classes":{
+    "services_autorun": [ "any" ]
+  }
+}
+```
+{% endraw %}
+
+
+```json
+{
+  "classes":{
+    "services_autorun": [ "any" ]
+  }
+}
+```
+
+#### YAML Code Blocks
+
+{% raw %}
+```yaml
+---
+  classes:
+    services_autorun:
+      - "any"
+```
+{% endraw %}
+
+
+```yaml
+---
+  classes:
+    services_autorun:
+      - "any"
+```
+
 ### Code Blocks and Lists
 
 If you want to include a code block within a list, put two tabs (8 spaces) in front of the entire block (4 to make the paragraph part of the list item, and 4 for it a code block):
