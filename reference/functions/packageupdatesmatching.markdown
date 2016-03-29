@@ -9,7 +9,7 @@ tags: [reference, utility functions, functions, packages, inventory, packageupda
 
 **Description:** Return a data container with the list of available packages matching the parameters.
 
-This function searches for the [unanchored][unanchored] regular expressions in 
+This function searches for the [unanchored][unanchored] regular expressions in
 the list of currently available packages.
 
 The return is a data container with a list of package descriptions, looking like this:
@@ -34,7 +34,7 @@ The return is a data container with a list of package descriptions, looking like
 * `arch_regex` - Regular expression matching package architecutre
 * `method_regex` - Regular expression matching package method (apt-get, rpm, etc ...)
 
-**Example:**  
+**Example:**
 
 ```cf3
       "all_package_updates" data => packageupdatesmatching(".*", ".*", ".*", ".*");

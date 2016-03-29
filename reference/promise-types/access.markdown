@@ -44,7 +44,7 @@ files, a special variable context `connection` is available with variables `ip`,
 and `hostname`, containing information about the connection through which access is attempted.
 
 ```cf3
-   "/var/cfengine/cmdb/$(connection.key).json" 
+   "/var/cfengine/cmdb/$(connection.key).json"
       shortcut   => "me.json",
       admit_keys => { "$(connection.key)" };
 ```
@@ -283,7 +283,7 @@ access:
 
 ### admit
 
-**Description:** The `admit` slist contains host names or IP addresses 
+**Description:** The `admit` slist contains host names or IP addresses
 to grant access to file objects.
 
 Admit promises grant access to file objects on the server. Arguments may
@@ -315,7 +315,7 @@ access:
 
 ### deny
 
-**Description:** The `deny` slist contains host names or IP addresses 
+**Description:** The `deny` slist contains host names or IP addresses
 to deny access to file objects.
 
 Denial is for special exceptions. A better strategy is always to grant
@@ -339,7 +339,7 @@ access:
 ```
 
 **Notes:**
-Only regular expressions or exact matches are allowed in this list, 
+Only regular expressions or exact matches are allowed in this list,
 as non-specific matches are too greedy for denial.
 
 `deny` will be deprecated in CFEngine 3.7 in favor of `deny_ips`,
@@ -347,7 +347,7 @@ as non-specific matches are too greedy for denial.
 
 ### maproot
 
-**Description:** The `maproot` slist contains host names or IP addresses 
+**Description:** The `maproot` slist contains host names or IP addresses
 to grant full read-privilege on the server.
 
 Normally users authenticated by the server are granted access only to
@@ -379,13 +379,13 @@ access:
 
 **Notes:**
 
-On Windows, `cf-serverd`, `maproot` is required to read files if the 
+On Windows, `cf-serverd`, `maproot` is required to read files if the
 connecting user does not own the file on the server.
 
 ### ifencrypted
 
-**Description:** The `ifencrypted` menu option determines whether the 
-current file access promise is conditional on the connection from the 
+**Description:** The `ifencrypted` menu option determines whether the
+current file access promise is conditional on the connection from the
 client being encrypted.
 
 This option has no effect with the TLS CFEngine protocol, where
@@ -421,7 +421,7 @@ greater.
 for [query][access#resource_type] resources, and allows filtering of data reported to the
 CFEngine Enterprise server.
 
-Use this body template to control the content of reports collected by the 
+Use this body template to control the content of reports collected by the
 CFEngine Enterprise server, and to strip unwanted data (e.g. temporary variables)
 from reporting.
 
@@ -430,7 +430,7 @@ exclude statement is applied to the subset from the include statement.
 
 If more than one `report_data_select` body applies to the same host, all of them are applied.
 
-Usage of this body is only allowed in conjunction with using 
+Usage of this body is only allowed in conjunction with using
 [`resource_type => "query"`][access#resource_type], as this is the resource type that is being affected.
 
 [%CFEngine_promise_attribute()%]
@@ -448,7 +448,7 @@ body report_data_select report_data
 
 **Example:**
 
-Here are the built-in `report_data_select` bodies `default_data_select_host()` and 
+Here are the built-in `report_data_select` bodies `default_data_select_host()` and
 `default_data_select_policy_hub()`:
 
 [%CFEngine_include_snippet(controls/reports.cf, .+default_data_select_host, \})%]
@@ -612,7 +612,7 @@ action and is kept for backwards compatibility. Filter data by handle instead.
 
 ### resource_type
 
-**Description:** The `resource_type` is the type of object being granted 
+**Description:** The `resource_type` is the type of object being granted
 access.
 
 By default, access to resources granted by the server are files.
@@ -654,10 +654,10 @@ expression to match persistent classes defined on the server host. If
 these are matched by the request from the client, they will be
 transmitted (See `remoteclassesmatching()`).
 
-The term `query` may also be used in CFEngine Enterprise to query the server 
-for data from embedded databases. This is currently for internal use only, and 
-is used to grant access to report 'menus'. If the promiser of a query request 
-is called `collect_calls`, this grants access to server peering collect-call 
+The term `query` may also be used in CFEngine Enterprise to query the server
+for data from embedded databases. This is currently for internal use only, and
+is used to grant access to report 'menus'. If the promiser of a query request
+is called `collect_calls`, this grants access to server peering collect-call
 tunneling (see also `call_collect_interval`).
 
 **Example:**
@@ -710,7 +710,7 @@ its shortcut name.
 **Example:**
 
 ```cf3
-  "/var/cfengine/cmdb/$(connection.key).json" 
+  "/var/cfengine/cmdb/$(connection.key).json"
     shortcut   => "me.json",
     admit_keys => { "$(connection.key)" };
 ```

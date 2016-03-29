@@ -14,13 +14,13 @@ Monitoring and reporting capabilities in CFEngine depend on your installation:
 
 ### Enterprise Edition Reporting
 
-The CFEngine Enterprise edition offers a framework for configuration 
-management that goes beyond building and deploying systems. Features include 
-compliance management, reporting and business integration, and tools for 
+The CFEngine Enterprise edition offers a framework for configuration
+management that goes beyond building and deploying systems. Features include
+compliance management, reporting and business integration, and tools for
 handling the necessary complexity.
 
-In a CFEngine Enterprise installation, the CFEngine Server aggregates 
-information about the environment in a centralized database. By default data is collected 
+In a CFEngine Enterprise installation, the CFEngine Server aggregates
+information about the environment in a centralized database. By default data is collected
 every 5 minutes from all bootstrapped hosts and includes information about:
 
 * logs about promises kept, not kept and repaired
@@ -29,7 +29,7 @@ every 5 minutes from all bootstrapped hosts and includes information about:
 * software information
 * file changes
 
-This data can be mined using SQL queries and then used for inventory 
+This data can be mined using SQL queries and then used for inventory
 management, compliance reporting, system diagnostics, and capacity planning.
 
 Access to the data is provided through:
@@ -39,7 +39,7 @@ Access to the data is provided through:
 
 ### Command-Line Reporting
 
-Community Edition 
+Community Edition
 
 Basic output to file or logs can be customized on a per-promise basis.
 Users can design their own log and report formats, but data processing and extraction from

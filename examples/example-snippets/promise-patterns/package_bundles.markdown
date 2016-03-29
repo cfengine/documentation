@@ -21,7 +21,7 @@ library, which makes use of regular expressions to match package names.
 
 In this case, only the name of the desired package is supplied. e.g.
 "zip". The rest is taken care of by the software, which in turn, makes
-use of the package manager native to the platform. 
+use of the package manager native to the platform.
 
 Here is a simple example of a bundle that installs the zip package for supported
 architectures.
@@ -43,7 +43,7 @@ In this case, we would like to ensure our named package is the latest
 available. This type of promise attempts to ensure that the latest
 version of zip is installed. If the installed version is already the
 latest, it does nothing. Otherwise it either upgrades to the latest
-available or installs it if it's not already installed. 
+available or installs it if it's not already installed.
 
 
 
@@ -148,7 +148,7 @@ package on a Redhat system from an rpm file.
 bundle agent SpecificPackageFromRpmFile
 {
  methods:
-      "addZipFromRpmFile" usebundle =>   
+      "addZipFromRpmFile" usebundle =>
          cfe_package_named_ensure_present("/local/repo/zip-3.0-7_x86_64.rpm","==","3.0-7","x86_64");
 }
 ```
@@ -213,7 +213,7 @@ specificed version.
 bundle agent SpecificPackageUpgradeDebian
 {
  methods:
-       "upgradeZip" usebundle => 
+       "upgradeZip" usebundle =>
           cfe_package_named_ensure_upgrade("zip","==","3.0-7","amd64");
 }
 ```

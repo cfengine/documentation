@@ -9,8 +9,8 @@ tags: [reference, data functions, functions, format]
 
 **Description:** Applies sprintf-style formatting to a given `string`.
 
-This function will format numbers (`o`, `x`, `d` and `f`) or strings (`s`) but 
-not potentially dangerous things like individual characters or pointer 
+This function will format numbers (`o`, `x`, `d` and `f`) or strings (`s`) but
+not potentially dangerous things like individual characters or pointer
 offsets.
 
 The `%S` specifier is special and non-standard.  When you use it on a
@@ -21,7 +21,7 @@ This function will fail if it doesn't have enough arguments; if any
 format *specifier* contains the *modifiers* `hLqjzt`; or if any format
 *specifier* is not one of `doxfsS`.
 
-**Example:**  
+**Example:**
 
 [%CFEngine_include_snippet(format.cf, #\+begin_src cfengine3, .*end_src)%]
 

@@ -91,7 +91,7 @@ performance until it has been able to collect from all hosts.
 ## Check Report Results ##
 
 1. The report generated will show each of the selected columns across the report table's header row.
-2. In this tutorial the columns being reported back should be: *Host key*, *Last report time*, *Host name*, *IP address*, *First report-time*. 
+2. In this tutorial the columns being reported back should be: *Host key*, *Last report time*, *Host name*, *IP address*, *First report-time*.
 3. Each row will contain the information for an individual data record, in this case one row for each host.
 4. Some of the cells in the report may provide links to drill down into more detailed information (e.g. *Host name* will provide a link to a *Host information* page).
 5. It is possible to also export the report to a file.
@@ -115,7 +115,7 @@ To begin filtering, one would first select the *Filters* drop down, and then sel
 
 ![Inventory Management](Reports-Inventory-2.png)
 
-After applying the filter, it may be convenient to add the attribute as one of the table columns. 
+After applying the filter, it may be convenient to add the attribute as one of the table columns.
 
 ![Inventory Management](Reports-Inventory-4.png)
 

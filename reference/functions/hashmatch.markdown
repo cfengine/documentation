@@ -20,7 +20,7 @@ version of a binary file (e.g. software patch).
 
 ```cf3
 bundle agent example
-{     
+{
 classes:
 
   "matches" expression => hashmatch("/etc/passwd","md5","c5068b7c2b1707f8939b283a2758a691");

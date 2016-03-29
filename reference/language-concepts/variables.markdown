@@ -6,9 +6,9 @@ sorting: 50
 tags: [manuals, language, syntax, concepts, variables]
 ---
 
-Just like [classes][classes and decisions] are defined as 
-promises, variables (or "variable definitions") are also promises. Variables 
-can be defined in any promise [bundle][bundles]. This bundle name can be used 
+Just like [classes][classes and decisions] are defined as
+promises, variables (or "variable definitions") are also promises. Variables
+can be defined in any promise [bundle][bundles]. This bundle name can be used
 as a context when using variables outside of the bundle they are defined in.
 
 CFEngine variables have three high-level types: scalars, lists, and
@@ -20,8 +20,8 @@ data containers.
 
 ## Scalar Variables
 
-Each scalar may have one of three types: string, int or real. String scalars 
-are sequences of characters, integers are whole numbers, and reals are float 
+Each scalar may have one of three types: string, int or real. String scalars
+are sequences of characters, integers are whole numbers, and reals are float
 pointing numbers.
 
 ```cf3
@@ -31,42 +31,42 @@ pointing numbers.
       "my_real" real     => "567.89";
 ```
 
-Integer constants may use suffixes to represent large numbers.  The following 
+Integer constants may use suffixes to represent large numbers.  The following
 suffixes can be used to create integer values for common powers of 1000.
 
 * 'k' = value times 1000
 * 'm' = value times 1000^2
 * 'g' = value times 1000^3
 
-Since computing systems such as storage and memory are based on binary values, 
-CFEngine also provide the following uppercase suffixes to create integer 
+Since computing systems such as storage and memory are based on binary values,
+CFEngine also provide the following uppercase suffixes to create integer
 values for common powers of 1024.
 
 * 'K' = value times 1024.
 * 'M' = value times 1024^2
 * 'G' = value times 1024^3
 
-However, the values must have an integer numeric part (e.g. 1.5M is not 
+However, the values must have an integer numeric part (e.g. 1.5M is not
 allowed).
 
 In some contexts, `%` can be used a special suffix to denote percentages.
 
-Lastly, there is a reserved value which can be used to specific a parameter as 
+Lastly, there is a reserved value which can be used to specific a parameter as
 having no limit at all.
 
 * 'inf' = a constant representing an unlimited value.
 
-CFEngine typing is mostly dynamic, and CFEngine will try to coerce string 
-values into int and real types, and if it cannot it will report an error. 
-However, arguments to built-in [functions][Functions] check the 
+CFEngine typing is mostly dynamic, and CFEngine will try to coerce string
+values into int and real types, and if it cannot it will report an error.
+However, arguments to built-in [functions][Functions] check the
 defined argument type for consistency.
 
 ### Scalar Referencing and Expansion
 
-Scalar variables are referenced by `$(my_scalar)` (or `${my_scalar}`) and 
-expand to the single value they hold at that time. If you refer to a variable 
-by `$(unqualified)`, then it is assumed to belong to the current bundle. To 
-access any other (scalar) variable, you must qualify the name, using the name 
+Scalar variables are referenced by `$(my_scalar)` (or `${my_scalar}`) and
+expand to the single value they hold at that time. If you refer to a variable
+by `$(unqualified)`, then it is assumed to belong to the current bundle. To
+access any other (scalar) variable, you must qualify the name, using the name
 of the bundle in which it is defined:
 
     $(bundle_name.qualified)
@@ -90,7 +90,7 @@ through scalar variables or arrays.
 
 ## Lists
 
-List variables can be of type `slist`, `ilist` or `rlist` to hold lists of 
+List variables can be of type `slist`, `ilist` or `rlist` to hold lists of
 strings, integers or reals, respectively.
 
 Every element of a list is subject to the same size limitations as a
@@ -107,8 +107,8 @@ They are declared as follows:
 
 ### List Substitution and Expansion
 
-An entire list is referenced with the symbol ‘@’ and can be passed in their 
-entirety in any context where a list is expected as `@(list)`. For example, 
+An entire list is referenced with the symbol ‘@’ and can be passed in their
+entirety in any context where a list is expected as `@(list)`. For example,
 the following variable definition references a list named "shortlist":
 
 ```cf3
@@ -117,17 +117,17 @@ the following variable definition references a list named "shortlist":
         "longlist" slist => { @(shortlist), "plus", "plus" };
 ```
 
-The declaration order does not matter – CFEngine will understand the 
+The declaration order does not matter – CFEngine will understand the
 dependency, and execute the promise to assign the variable `@(shortlist)`
 before the promise to assign the variable `@(longlist)`.
 
 Using the @ symbol in a string scalar will not result in list substitution.
-For example, the string value "My list is @(mylist)" will not expand this 
+For example, the string value "My list is @(mylist)" will not expand this
 reference.
 
-Using the scalar reference to a local list variable, will cause CFEngine to 
-iterate over the values in the list. E.g. suppose we have local list variable 
-`@(list)`, then the scalar `$(list)` implies an iteration over every value of 
+Using the scalar reference to a local list variable, will cause CFEngine to
+iterate over the values in the list. E.g. suppose we have local list variable
+`@(list)`, then the scalar `$(list)` implies an iteration over every value of
 the list.
 
 In some function calls, `listname` instead of `@(listname)` is
@@ -160,7 +160,7 @@ whenever possible to ensure future compatibility of your CFEngine policy.
 Every value in an associative array is subject to the same size
 limitations as a regular scalar.
 
-Associative array variables are written with `[` and `]` brackets that enclose 
+Associative array variables are written with `[` and `]` brackets that enclose
 an arbitrary key. These keys are associated with values
 
 ```cf3
@@ -181,17 +181,17 @@ an arbitrary key. These keys are associated with values
     }
 ```
 
-This example defines three values in an associative array under the keys 
-`cf-monitord`, `cf-serverd`, and `cf-execd`. They and are sequently printed 
+This example defines three values in an associative array under the keys
+`cf-monitord`, `cf-serverd`, and `cf-execd`. They and are sequently printed
 with the echo command.
 
-Arrays are associative and may be of type scalar or list. Enumerated arrays 
-are simply treated as a special case of associative arrays, since there are no 
-numerical loops in CFEngine. Special functions exist to extract lists of keys 
+Arrays are associative and may be of type scalar or list. Enumerated arrays
+are simply treated as a special case of associative arrays, since there are no
+numerical loops in CFEngine. Special functions exist to extract lists of keys
 from array variables for iteration purposes.
 
-Here is an example of using the function [`getindices()`][getindices] which 
-extracts all of the keys from an associative array. If this series of promises 
+Here is an example of using the function [`getindices()`][getindices] which
+extracts all of the keys from an associative array. If this series of promises
 were executed it would print out two messages, one for each key.
 
 ```cf3
@@ -203,7 +203,7 @@ were executed it would print out two messages, one for each key.
           "v[index_2]" string => "value_2";
 
           "parameter_name" slist => getindices("v");
-      
+
       reports:
           "Found index: $(parameter_name)";
     }

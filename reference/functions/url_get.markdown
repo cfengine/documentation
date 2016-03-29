@@ -80,14 +80,14 @@ bundle agent main
 Output:
 
 ```
-R: main: from http://cfengine.com with options 
+R: main: from http://cfengine.com with options
 {
   "cfengine.max_content": 512,
   "curl.verbose": 0,
   "curl.headers": [ "Foo: bar" ]
 } we got {"returncode":200,"rc":0,"success":true,"content":"\n<!DOCTYPE html>\n<!--[if lt IE 7]>\n<html class=\"no-js lt-ie9 lt-ie8 lt-ie7\" lang=\"en-US\" prefix=\"og: http://ogp.me/ns#\"> <![endif]-->\n<!--[if IE 7]>\n<html class=\"no-js lt-ie9 lt-ie8\" lang=\"en-US\" prefix=\"og: http://ogp.me/ns#\"> <![endif]-->\n<!--[if IE 8]>\n<html class=\"no-js lt-ie9\" lang=\"en-US\" prefix=\"og: http://ogp.me/ns#\"> <![endif]-->\n<!--[if gt IE 8]><!-->\n<html class=\"no-js\" lang=\"en-US\" prefix=\"og: http://ogp.me/ns#\"> <!--<![endif]-->\n<head>\n\n    \n    <meta charset=\"utf-8\">\n\n    <title>\n        CFEng","headers":"HTTP/1.1 200 OK\r\nDate: Fri, 27 Mar 2015 18:13:01 GMT\r\nServer: Apache\r\nX-Powered-By: PHP/5.3.3\r\nX-Pingback: http://cfengine.com/xmlrpc.php\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n"}
 
-R: main: from http://nosuchcfenginehost.com with options 
+R: main: from http://nosuchcfenginehost.com with options
 {
   "cfengine.max_content": 512,
   "curl.verbose": 0,

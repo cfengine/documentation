@@ -5,15 +5,15 @@ published: true
 tags: [reference, bundle agent, commands, promises, promise types]
 ---
 
-Commands and [processes][processes] are separated cleanly. Restarting of 
-processes must be coded as a separate command. This stricter type separation 
+Commands and [processes][processes] are separated cleanly. Restarting of
+processes must be coded as a separate command. This stricter type separation
 allows for more careful conflict analysis to be carried out.
 
 ```cf3
      commands:
-     
+
        "/path/to/command args"
-     
+
                   args = "more args",
                   contain = contain_body,
                   module = true/false;
@@ -50,13 +50,13 @@ executable file. For example:
 
 ```cf3
       commands:
-     
+
        windows::
-     
+
         "\"c:\Program Files\my name with space\" arg1 arg2";
-     
+
        linux::
-     
+
         "\"/usr/bin/funny command name\" -a -b -c";
 ```
 **Note:** Commands executed with CFEngine get the environment variables set in
@@ -94,7 +94,7 @@ continue.
 
 ### args
 
-**Description:** Allows to separate the arguments to the command from the 
+**Description:** Allows to separate the arguments to the command from the
 command itself.
 
 Sometimes it is convenient to separate command and arguments. The final arguments are the concatenation with one space.
@@ -121,7 +121,7 @@ So in the example above the command would be:
 
 **Description:** Allows running the command in a 'sandbox'.
 
-Command containment allows you to make a `sandbox' around a command, to run it 
+Command containment allows you to make a `sandbox' around a command, to run it
 as a non-privileged user inside an isolated directory tree.
 
 **Type:** `body contain`
@@ -135,7 +135,7 @@ as a non-privileged user inside an isolated directory tree.
            umask => "077";
       exec_owner => "mysql_user";
       exec_group => "nogroup";
-    exec_timeout => "60";           
+    exec_timeout => "60";
            chdir => "/working/path";
           chroot => "/private/path";
     }
@@ -150,17 +150,17 @@ as a non-privileged user inside an isolated directory tree.
 The default is to *not* use a shell when executing commands. Use of a
 shell has both resource and security consequences. A shell consumes an
 extra process and inherits environment variables, reads commands from
-files and performs other actions beyond the control of CFEngine. 
+files and performs other actions beyond the control of CFEngine.
 
 If one does not need shell functionality such as piping through multiple
 commands then it is best to manage without it. In the Windows version of
-CFEngine Enterprise, the command is run in the `cmd` Command Prompt if this 
-attribute is set to `useshell`, or in the PowerShell if the attribute is set 
+CFEngine Enterprise, the command is run in the `cmd` Command Prompt if this
+attribute is set to `useshell`, or in the PowerShell if the attribute is set
 to `powershell`.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     useshell
@@ -172,7 +172,7 @@ For compatibility, the boolean values are also supported, and map to
 `useshell` and `noshell`, respectively.
 
 **Default value:** `noshell`
-  
+
 **Example:**
 
 ```cf3
@@ -186,12 +186,12 @@ For compatibility, the boolean values are also supported, and map to
 
 **Description:** Sets the internal umask for the process.
 
-Default value for the mask is 077. On Windows, umask is not supported and is 
-thus ignored by Windows versions of CFEngine. 
+Default value for the mask is 077. On Windows, umask is not supported and is
+thus ignored by Windows versions of CFEngine.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     0
@@ -206,7 +206,7 @@ thus ignored by Windows versions of CFEngine.
     072
 ```
 
-**Example:** 
+**Example:**
 
 ```cf3
      body contain example
@@ -225,7 +225,7 @@ running `cf-agent` as the root user, or a user with privileges.
 Windows requires the clear text password for the user account to run
 under. Keeping this in CFEngine policies could be a security hazard.
 Therefore, this option is not yet implemented on Windows versions of
-CFEngine. 
+CFEngine.
 
 **Type:** `string`
 
@@ -247,13 +247,13 @@ CFEngine.
 This is part of the restriction of privilege for child processes when
 running `cf-agent` as the root group, or a group with privileges. It is
 ignored on Windows, as processes do not have any groups associated with
-them. 
+them.
 
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
 
-**Example:** 
+**Example:**
 
 ```cf3
      body contain example
@@ -266,8 +266,8 @@ them.
 
 **Description:** Attempt to time-out after this number of seconds.
 
-This cannot be guaranteed as not all commands are willing to be interrupted in 
-case of failure. 
+This cannot be guaranteed as not all commands are willing to be interrupted in
+case of failure.
 
 **Type:** `int`
 
@@ -298,7 +298,7 @@ it works like the cd shell command.
 
 ```cf3
      body contain example
-     
+
      {
      chdir => "/containment/directory";
      }
@@ -306,11 +306,11 @@ it works like the cd shell command.
 
 #### chroot
 
-**Description:** Specify the path that will be the root directory for the 
+**Description:** Specify the path that will be the root directory for the
 process.
 
-The path of the directory will be experienced as the top-most root directory 
-for the process. In security parlance, this creates a 'sandbox' for the 
+The path of the directory will be experienced as the top-most root directory
+for the process. In security parlance, this creates a 'sandbox' for the
 process. Windows does not support this feature.
 
 **Type:** `string`
@@ -321,7 +321,7 @@ process. Windows does not support this feature.
 
 ```cf3
      body contain example
-     
+
      {
      chroot => "/private/path";
      }
@@ -329,14 +329,14 @@ process. Windows does not support this feature.
 
 #### preview
 
-**Description:** This is the preview command when running in dry-run mode 
+**Description:** This is the preview command when running in dry-run mode
 (with -n).
 
 Previewing shell scripts during a dry-run is a potentially misleading
-activity. It should only be used on scripts that make no changes to the 
-system. It is CFEngine best practice to never write change-functionality into 
-user-written scripts except as a last resort. CFEngine can apply its safety 
-checks to user defined scripts. 
+activity. It should only be used on scripts that make no changes to the
+system. It is CFEngine best practice to never write change-functionality into
+user-written scripts except as a last resort. CFEngine can apply its safety
+checks to user defined scripts.
 
 **Type:** [`boolean`][boolean]
 
@@ -355,7 +355,7 @@ checks to user defined scripts.
 
 **Description:** Allows to discard all output from the command.
 
-Setting this attribute to `true` is equivalent to piping standard output and 
+Setting this attribute to `true` is equivalent to piping standard output and
 error to `/dev/null`.
 
 **Type:** [`boolean`][boolean]
@@ -375,9 +375,9 @@ error to `/dev/null`.
 
 **Description:** Set variables and classes based on command output.
 
-CFEngine `modules` are commands that support a simple protocol in order to set 
-additional variables and classes on execution from user defined code. Modules 
-are intended for use as system probes rather than additional configuration 
+CFEngine `modules` are commands that support a simple protocol in order to set
+additional variables and classes on execution from user defined code. Modules
+are intended for use as system probes rather than additional configuration
 promises. Such a module may be written in any language.
 
 This attribute determines whether or not to expect the CFEngine module protocol. If true, the module protocol is supported for this command:
@@ -400,7 +400,7 @@ module, unless the `^context` extension is used.
 All the variables and classes will have at least the tag
 `source=module` in addition to any tags you may set.
 
-Any other lines of output are cited by `cf-agent` as being erroneous, so you 
+Any other lines of output are cited by `cf-agent` as being erroneous, so you
 should normally make your module completely silent.
 
 **Type:** [`boolean`][boolean]
@@ -467,20 +467,20 @@ Here is an example module written in Perl:
      #
      # module:myplugin
      #
-     
+
        # lots of computation....
-     
+
      if (special-condition)
         {
         print "+specialclass";
         }
 ```
 
-If your module is simple and is best expressed as a shell command, then we 
-suggest that you *expose* the class being defined in the command being 
-executed (making it easier to see what classes are used when reading the 
-promises file). For example, the promises could read as follows (the two 
-`echo` commands are to ensure that the shell always exits with a successful 
+If your module is simple and is best expressed as a shell command, then we
+suggest that you *expose* the class being defined in the command being
+executed (making it easier to see what classes are used when reading the
+promises file). For example, the promises could read as follows (the two
+`echo` commands are to ensure that the shell always exits with a successful
 execution of a command):
 
 ```cf3
@@ -513,5 +513,5 @@ execution of a command):
     }
 ```
 
-Modules inherit the environment variables from `cf-agent` and accept 
+Modules inherit the environment variables from `cf-agent` and accept
 arguments, just as a regular command does.

@@ -7,16 +7,16 @@ tags: [reference, communication functions, functions, selectservers]
 
 [%CFEngine_function_prototype(hostlist, port, query, regex, maxbytes, array)%]
 
-**Description:** Returns the number of tcp servers from `hostlist` which 
-respond with a reply matching `regex` to a `query` send to ```port```, and 
+**Description:** Returns the number of tcp servers from `hostlist` which
+respond with a reply matching `regex` to a `query` send to ```port```, and
 populates `array` with their names.
 
 The regular expression is [anchored][anchored]. If `query` is empty, then no
-reply checking is performed (any server reply is deemed to be satisfactory), 
+reply checking is performed (any server reply is deemed to be satisfactory),
 otherwise at most `maxbytes` bytes are read from the server and matched.
 
-This function allows discovery of all the TCP ports that are active and 
-functioning from an ordered list, and builds an array of their names. This 
+This function allows discovery of all the TCP ports that are active and
+functioning from an ordered list, and builds an array of their names. This
 allows maintaining a list of pretested failover alternatives.
 
 [%CFEngine_function_attributes(hostlist, port, query, regex, maxbyes, array)%]
@@ -25,12 +25,12 @@ allows maintaining a list of pretested failover alternatives.
 
 ```cf3
     bundle agent example
-    {     
+    {
     vars:
 
      "hosts" slist => { "slogans.iu.hio.no", "eternity.iu.hio.no", "nexus.iu.hio.no" };
      "fhosts" slist => { "www.cfengine.com", "www.cfengine.org" };
- 
+
      "up_servers" int =>  selectservers("@(hosts)","80","","","100","alive_servers");
      "has_favicon" int =>
             selectservers(

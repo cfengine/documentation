@@ -50,7 +50,7 @@ Now let's do it again with inform mode turned on, and CFEngine will show the pro
 2013-06-08T16:30:06-0700     info: Running full policy integrity checks
 2013-06-08T16:30:06-0700     info: /process_kill/processes/'sleep': Signalled 'term' (15) to process 5377 (root      5377  3854  5377  0.0  0.0  11352   0   612    1 16:30 00:00:00 /bin/sleep 1000)
 [1]+  Terminated              /bin/sleep 1000
-# 
+#
 ```
 
 If we add the -v switch to turn on verbose mode, we see the /bin/ps command CFEngine used to dump the process table:

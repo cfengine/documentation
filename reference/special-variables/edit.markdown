@@ -5,8 +5,8 @@ published: true
 tags: [reference, variables, edit, edit_line, files promises]
 ---
 
-This context is used to access information about editing promises during 
-their execution. It is context dependent and not universally meaningful or 
+This context is used to access information about editing promises during
+their execution. It is context dependent and not universally meaningful or
 available.
 
 ```cf3
