@@ -84,6 +84,11 @@ my_other_apache                                              source=augments_fil
 
 **History:** Introduced into the Masterfiles Policy Framework with CFEngine
 3.7.0, the file `def.json` in the root of the policy directory was processed by
-policy. In 3.7.3 `def.json` is looked for next to the policy entry file and
-parsing was moved to C to make it more generically useful and .
+policy. In CFEngine 3.8.1 `def.json` parsing was moved from a policy level
+feature into the core agent to address usability issues. It was also possible to
+use `inputs` to autoload inputs without referencing the `def.augments_inputs`
+variable. This would happen before all evaluation stages. However, this
+functionality turned out to be problematic and was removed in later versions.
+Pre-parsing of `def.cf` was introduced to the 3.7.x series in 3.7.3. In 3.7.3,
+3.8.2 and later `def.json` is looked for next to the policy entry file.
 
