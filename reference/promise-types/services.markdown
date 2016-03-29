@@ -52,7 +52,7 @@ passed to services that are started by CFEngine.
     }
 ```
 
-**Note:** Services promises for Windows are only available in CFEngine 
+**Note:** Services promises for Windows are only available in CFEngine
 Enterprise. Windows Vista/Server 2008 and later introduced new complications
 to the service security policy. Therefore, when testing `services`
 promises from the command line, CFEngine may not be given proper access
@@ -114,9 +114,9 @@ The standard bundle can be replaced with another, as follows:
 ```
 
 Note that the special variables [`$(this.promiser)`][this#this.promiser] and
-[`$(this.service_policy)`][this#this.service_policy] may be used to fill in 
-the service and state parameters from the promise definition. The 
-[`$(this.service_policy)`][this#this.service_policy] variable is only defined 
+[`$(this.service_policy)`][this#this.service_policy] may be used to fill in
+the service and state parameters from the promise definition. The
+[`$(this.service_policy)`][this#this.service_policy] variable is only defined
 for services promises.
 
 **History:** This promise type was introduced in CFEngine 3.3.0 (2012).
@@ -136,13 +136,13 @@ while `stop` means that the service is kept in a stopped state. Use
 `enable` to enable the service permanently, for instance in systemd
 environments.
 
-`disable` implies `stop`, and ensures that the service can not be started 
-directly, but needs to be enabled somehow first (e.g. by changing file 
+`disable` implies `stop`, and ensures that the service can not be started
+directly, but needs to be enabled somehow first (e.g. by changing file
 permissions).
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     start
@@ -157,7 +157,7 @@ permissions).
 
 ```cf3
 services:
-  
+
   "Telnet"
      service_policy => "disable";
 ```
@@ -167,15 +167,15 @@ services:
 **Description:** A list of services on which the named service abstraction
 depends
 
-A list of services that must be running before the service can be started. 
-These dependencies can be started automatically by CFEngine if they 
-are not running see `service_dependence_chain`. However, the dependencies will 
+A list of services that must be running before the service can be started.
+These dependencies can be started automatically by CFEngine if they
+are not running see `service_dependence_chain`. However, the dependencies will
 never be implicitly stopped by CFEngine. Specifying dependencies is optional.
 
-Note that the operating system may keep an additional list of dependencies for 
-a given service, defined during installation of the service. CFEngine 
-requires these dependencies to be running as well before starting 
-the service. The complete list of dependencies is thus the union of 
+Note that the operating system may keep an additional list of dependencies for
+a given service, defined during installation of the service. CFEngine
+requires these dependencies to be running as well before starting
+the service. The complete list of dependencies is thus the union of
 `service_dependencies` and the internal operating system list.
 
 **Type:** `slist`
@@ -186,7 +186,7 @@ the service. The complete list of dependencies is thus the union of
 
 ```cf3
 services:
-  
+
   "ftp"
     service_policy => "start",
     service_dependencies => { "network", "logging" };
@@ -235,7 +235,7 @@ dispatched once it is being used.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     none
@@ -253,7 +253,7 @@ dispatched once it is being used.
 ```
 
 **Notes:** `on_demand` is not supported by Windows, and is implemented through
-inetd or xinetd on Unix.   
+inetd or xinetd on Unix.
 
 
 #### service_bundle
@@ -283,11 +283,11 @@ depends on C. If we want to start B, we must first make sure A is
 running. If `start_parent_services` or `all_related` is set, CFEngine
 will start A, if it is not running. On the other hand, if we want
 to stop B, C needs to be stopped first. `stop_child_services` or
-`all_related` means that CFEngine will stop C, if it is running.   
+`all_related` means that CFEngine will stop C, if it is running.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     ignore
@@ -311,7 +311,7 @@ to stop B, C needs to be stopped first. `stop_child_services` or
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     windows

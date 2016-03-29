@@ -7,14 +7,14 @@ tags: [reference, data functions, functions, classify]
 
 [%CFEngine_function_prototype(text)%]
 
-**Description:** Returns whether the canonicalization of `text` is a currently 
+**Description:** Returns whether the canonicalization of `text` is a currently
 set class.
 
 This is useful for transforming variables into classes.
 
 [%CFEngine_function_attributes(text)%]
 
-**Example:**  
+**Example:**
 
 ```cf3
     classes:

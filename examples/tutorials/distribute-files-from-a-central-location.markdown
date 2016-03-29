@@ -6,18 +6,18 @@ published: true
 tags: [Examples, Tutorials, file distribution]
 ---
 
-CFEngine can manage many machines simply by distributing policies to all its hosts. 
-This tutorial describes how to distribute files to hosts from a central policy server location. 
+CFEngine can manage many machines simply by distributing policies to all its hosts.
+This tutorial describes how to distribute files to hosts from a central policy server location.
 For this example, we will distribute software patches.
 
 Files are centrally stored on the policy server (hub). In our example, they are stored in `/storage/patches`.
-These patch files must also exist on the agent host (client) in `/storage/deploy/patches`. To do this, 
+These patch files must also exist on the agent host (client) in `/storage/deploy/patches`. To do this,
 perform the following instructions:
 
 ## Check out masterfiles from your central repository
 
-CFEngine stores the master copy of all policy in the `/var/cfengine/masterfiles` directory. 
-Ensure that you are working with the latest version of your `masterfiles`. 
+CFEngine stores the master copy of all policy in the `/var/cfengine/masterfiles` directory.
+Ensure that you are working with the latest version of your `masterfiles`.
 
 
     git clone url
@@ -39,7 +39,7 @@ definition can be used both by the policy server when granting access and by the
 when performing the copy.
 
 The policy framework includes a common bundle called ```def```. In this example, we
-will add two variables--`dir_patch_store` and `dir_patch_deploy`--to this existing bundle. 
+will add two variables--`dir_patch_store` and `dir_patch_deploy`--to this existing bundle.
 These variables provide path definitions for storing and deploying patches.
 
 Add the following variable information to the `masterfiles/def.cf` file:
@@ -59,14 +59,14 @@ Add the following variable information to the `masterfiles/def.cf` file:
 ```
 
 These common variables can be referenced from the rest of the policy by using their fully
- [qualified names][Variables#Scalar Referencing and Expansion], 
+ [qualified names][Variables#Scalar Referencing and Expansion],
 `$(def.dir_patch_store)` and `$(def.dir_patch_deploy)`
 
 ### Grant file access
 
 Access must be granted before files can be copied. The right to access a file
 is provided by `cf-serverd`, the server component of CFEngine. Enter access information using the `access`
-promise type in the `bundle server access_rules` section. This section is located in 
+promise type in the `bundle server access_rules` section. This section is located in
 `controls/cf_serverd.cf` in the policy framework.
 
 For our example, add the following information to `controls/cf_serverd.cf`:
@@ -81,7 +81,7 @@ For our example, add the following information to `controls/cf_serverd.cf`:
 ### Create a custom library for reusable synchronization policy
 
 You might need to frequently synchronize or copy a directory structure from the policy server to
-an agent host. Thus, identifying reusable parts of policy and abstracting them for later 
+an agent host. Thus, identifying reusable parts of policy and abstracting them for later
 use is a good idea. This information is stored in a custom library.
 
 Create a custom library called `lib/custom/files.cf`. Add the following content:
@@ -101,12 +101,12 @@ Create a custom library called `lib/custom/files.cf`. Add the following content:
           comment      => "Ensure files from $(sys.policy_hub):$(source_path) exist in $(dest_path)";
     }
 ```
-This reusable policy will be used to synchronize a directory on the policy server to a 
+This reusable policy will be used to synchronize a directory on the policy server to a
 directory on the agent host.
 
 ### Create a patch policy
 
-Organize in a way that makes the most sense to you and your team. We recommend organizing 
+Organize in a way that makes the most sense to you and your team. We recommend organizing
 policy by services.
 
 Create `services/patching.cf` with the following content:
@@ -163,7 +163,7 @@ is involved in patch distribution, they can view that bundle for specifics.
 
 Now that all the pieces of the policy are in place, they must be integrated
 into the policy so they can be activated. Add each policy file to the [`inputs`][Components and Common Control#inputs]
-section which is found under `body common control`. Once the policy file is included in 
+section which is found under `body common control`. Once the policy file is included in
 inputs, the bundle can be activated. Bundles can be activated by adding them to either the
 `bundlesequence` or they can be called as a `methods` type promise.
 
@@ -175,8 +175,8 @@ Add the following entries to `promises.cf` under `body common control` -> [`inpu
 and the following to `promises.cf` under `body common control` -> `bundlesequence`:
 
     "patching",
-     
-Now that all of the policy has been edited and is in place, check for syntax errors by 
+
+Now that all of the policy has been edited and is in place, check for syntax errors by
 running `cf-promises -f ./promises.cf`. This promise is activated from the **service_catalogue**
 bundle.
 
@@ -190,20 +190,20 @@ and set up a Tracker so that you can see the policy as it goes out. To do this, 
 following:
 
 Navigate to the **Hosts** section. Select **All hosts**. Select the **Events** tab, located
-in the right-hand panel. Click **Add new tracker**. 
+in the right-hand panel. Click **Add new tracker**.
 
 ![Mission Portal Host Event](hosts-add-new-tracker.png)
 
 
 Name it *Patch Failure*. Set the
 **Report Type** to *Promise not Kept*. Under **Watch**, enter **.patch**.  Set the **Start Time** to **Now**
-and then click **Done** to close the Start Time window. Click **Start** to save the new tracker. 
+and then click **Done** to close the Start Time window. Click **Start** to save the new tracker.
 This tracker watches for  any promise handle that includes the string patch where a promise is not kept.
 
 ![Add New Tracker](add-new-tracker.png)
 
-Add another tracker called *Patch Repaired*. Set the **Report Type** to *Promise Repaired*. 
-Enter the same values as above for **Watch** and **Start Time**. Click **Start** to save the new tracker. 
+Add another tracker called *Patch Repaired*. Set the **Report Type** to *Promise Repaired*.
+Enter the same values as above for **Watch** and **Start Time**. Click **Start** to save the new tracker.
 This tracker allows you to see how the policy reacts as it is activated on your infrastructure.
 
 ### Deploy changes (Enterprise and Community Users)

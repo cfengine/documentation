@@ -6,29 +6,29 @@ sorting: 40
 tags: [manuals, language, syntax, concepts, classes, decisions]
 ---
 
-Classes are used to apply promises only to particular environments, depending 
-on context. A promise might only apply to Linux systems, or should only be 
-applied on Sundays, or only when a 
+Classes are used to apply promises only to particular environments, depending
+on context. A promise might only apply to Linux systems, or should only be
+applied on Sundays, or only when a
 [variable][variables] has a certain value.
 
-Classes are simply facts that represent the current state or context of a 
-system. The list of set classes classifies the environment at time of 
+Classes are simply facts that represent the current state or context of a
+system. The list of set classes classifies the environment at time of
 execution.
 
-Classes are either `set` or `not set`, depending on context. Classes fall into 
-**hard** classes that are discovered by CFEngine, and **soft** classes that are 
-user-defined. Refer to [Hard and Soft Classes][Hard and Soft Classes] in the **Reference** 
+Classes are either `set` or `not set`, depending on context. Classes fall into
+**hard** classes that are discovered by CFEngine, and **soft** classes that are
+user-defined. Refer to [Hard and Soft Classes][Hard and Soft Classes] in the **Reference**
 section for more information.
 
-In [CFEngine Enterprise][], the list of set classes is 
-reported to the CFEngine Database Server and can be used there for reporting, 
+In [CFEngine Enterprise][], the list of set classes is
+reported to the CFEngine Database Server and can be used there for reporting,
 grouping of hosts and inventory management.
 
 ## Hard Classes
 
-Hard classes are discovered by CFEngine. Each time it wakes up, it discovers 
-and reads properties of the environment or context in which it runs.It turns 
-these properties of the environment into classes. This information is 
+Hard classes are discovered by CFEngine. Each time it wakes up, it discovers
+and reads properties of the environment or context in which it runs.It turns
+these properties of the environment into classes. This information is
 effectively cached and may be used to make decisions about configuration.
 
 You can see all of the classes defined on a particular host by running the following command as a privileged user.
@@ -42,9 +42,9 @@ of a week.
 
 ## Soft Classes
 
-Soft classes are user-defined classes which you can use to implement your own 
-classifications. These classes are defined in bundles and are evaluated when 
-the bundle is evaluated. They can be based on test functions or on other 
+Soft classes are user-defined classes which you can use to implement your own
+classifications. These classes are defined in bundles and are evaluated when
+the bundle is evaluated. They can be based on test functions or on other
 classes.
 
 ```cf3
@@ -65,17 +65,17 @@ classes.
 
 This example defines a few soft classes local to the `myclasses` bundle.
 
-* The `solinux` soft class is defined as a combination of the `linux` or the 
-  `solaris` hard classes. This class will be set if the operating 
+* The `solinux` soft class is defined as a combination of the `linux` or the
+  `solaris` hard classes. This class will be set if the operating
   system family is either of these values.
 
-* The `alt_class` soft class is defined as a combination of `linux`, 
-  `solaris`, or the presence of a file named `/etc/fstab`. If one of the two 
-  hard classes evaluate to true, or if there is a file named `/etc/fstab`, the 
+* The `alt_class` soft class is defined as a combination of `linux`,
+  `solaris`, or the presence of a file named `/etc/fstab`. If one of the two
+  hard classes evaluate to true, or if there is a file named `/etc/fstab`, the
   `alt_class` class will also be set.
 
 * The `oth_class` soft class is defined as the combination of two `fileexists`
-  functions - `/etc/shadow` and `/etc/passwd`.  If both of these files are 
+  functions - `/etc/shadow` and `/etc/passwd`.  If both of these files are
   present the `oth_class` class will also be set.
 
 
@@ -83,10 +83,10 @@ This example defines a few soft classes local to the `myclasses` bundle.
 ### Negative Knowledge
 
 If a class is set, then it is certain that the corresponding fact is true.
-However, that a class is not set could mean that something is not the case, or 
+However, that a class is not set could mean that something is not the case, or
 that something is simply not known. This is only a problem with soft classes,
-where the state of a class can change during the execution of a policy, 
-depending on the [order][normal ordering] in which bundles and promises are 
+where the state of a class can change during the execution of a policy,
+depending on the [order][normal ordering] in which bundles and promises are
 evaluated.
 
 ## Making Decisions based on classes
@@ -105,8 +105,8 @@ The easiest way to limit the application of a promise to certain conditions is t
     }
 ```
 
-In this example, the report "Good morning!" is only printed if the class 
-`Morning` is set, while the report "Good evening!" is only printed when the 
+In this example, the report "Good morning!" is only printed if the class
+`Morning` is set, while the report "Good evening!" is only printed when the
 class `Evening` is set.
 
 Sometimes it's convenient to put class names in variables. This
@@ -143,25 +143,25 @@ as the resulting expansion is a legal class expression.
               "german_cities"  slist => { "berlin" };
               "italian_cities" slist => { "milan" };
               "usa_cities"     slist => { "lawrence" };
-             
+
               "all_cities" slist => { @(french_cities), @(german_cities), @(italian_cities), @(usa_cities) };
-    
+
       classes:
           "italy"   or => { @(italian_cities) };
           "germany" or => { @(german_cities) };
           "france"  or => { @(french_cities) };
-    
+
       reports:
         "It's $(sys.date) here";
-    
+
         Morning.italy::
           "Good morning from Italy",
             ifvarclass => "$(all_cities)";
-          
+
         Afternoon.germany::
           "Good afternoon from Germany",
             ifvarclass => "$(all_cities)";
-    
+
         france::
           "Hello from France",
             ifvarclass => "$(all_cities)";
@@ -220,45 +220,45 @@ defined.
 
 ## Operators and Precedence
 
-Classes promises define new classes based on combinations of old ones. This is 
-how to make complex decisions in CFEngine, with readable results. It is like 
-defining aliases for class combinations. Such class 'aliases' may be specified 
+Classes promises define new classes based on combinations of old ones. This is
+how to make complex decisions in CFEngine, with readable results. It is like
+defining aliases for class combinations. Such class 'aliases' may be specified
 in any kind of bundle.
 
 Note that whitespace is *not* allowed between operators, so something like
 `a . b`, though perhaps more readable, will be rejected by the CFEngine parser.
 
-Classes may be combined with the operators listed here in order from highest 
+Classes may be combined with the operators listed here in order from highest
 to lowest precedence:
 
 * ‘()'::
-    ~ The parenthesis group operator. 
+    ~ The parenthesis group operator.
 
 * ‘!’::
-    ~ The NOT operator. 
+    ~ The NOT operator.
 
 * ‘.’::
-    ~ The AND operator. 
+    ~ The AND operator.
 
 * ‘&’::
-    ~ The AND operator (alternative). 
+    ~ The AND operator (alternative).
 
 * ‘|’::
-    ~ The OR operator. 
+    ~ The OR operator.
 
 * ‘||’::
     ~ The OR operator (alternative).
 
-These operators can be combined to form complex expressions.  For example, the 
-following expression would be only true on Mondays or Wednesdays from 2:00pm 
+These operators can be combined to form complex expressions.  For example, the
+following expression would be only true on Mondays or Wednesdays from 2:00pm
 to 2:59pm on Windows XP systems:
 
     (Monday|Wednesday).Hr14.WinXP::
 
 ### Operands that are functions
 
-If an operand is another function and the return value of the function is 
-undefined, the result of the logical operation will also be undefined. 
+If an operand is another function and the return value of the function is
+undefined, the result of the logical operation will also be undefined.
 For this reason, when using functions as operators, it is safer to collapse
 the functions down to scalar values and to test if the values are either
 true or false before using them as operands in a logical expression.
@@ -268,37 +268,37 @@ e.g.
 ```cf3
     ...
     classes:
-            "variable_1" 
+            "variable_1"
             expression => fileexists("/etc/aliases.db");
     ...
 
-    "result" 
+    "result"
     or => { isnewerthan("/etc/aliases", "/etc/aliases.db"),
     "!variable_1" };
 ```
 
-The function, `isnewerthan` can return "undefined" if one or other of the files 
-does not exist. In that case, result would also be undefined. By checking the 
+The function, `isnewerthan` can return "undefined" if one or other of the files
+does not exist. In that case, result would also be undefined. By checking the
 validity of the return value before using it as an operand in a logical expression,
-unpredictable results are avoided. i.e negative knowledge does not necessarily 
+unpredictable results are avoided. i.e negative knowledge does not necessarily
 imply that something is not the case, it could simply be unknown. Checking if
 each file exists before calling `isnewerthan` would avoid this problem.
 
 
 ## Global and Local classes
 
-Classes defined in bundles of type `common` are global in scope, whereas 
-classes defined in all other bundle types are local. Classes are evaluated 
-when the bundle is evaluated (and the bundles are evaluated in the order 
+Classes defined in bundles of type `common` are global in scope, whereas
+classes defined in all other bundle types are local. Classes are evaluated
+when the bundle is evaluated (and the bundles are evaluated in the order
 specified in the `bundlesequence`).
 
-Note that any class promise must have one - and only one - value constraint. 
-That is, you might not leave 'expression' in the example above or add both 
+Note that any class promise must have one - and only one - value constraint.
+That is, you might not leave 'expression' in the example above or add both
 'and' and 'xor' constraints to the single promise.
 
 Another type of class definition uses the
-[`body classes`][Promise Types and Attributes#classes]. This allows setting of 
-classes based on the outcome of a promise. To set a class if a promise is 
+[`body classes`][Promise Types and Attributes#classes]. This allows setting of
+classes based on the outcome of a promise. To set a class if a promise is
 repaired, one might write:
 
 ```cf3
@@ -308,7 +308,7 @@ repaired, one might write:
 ```
 
 These classes are global in scope, but the
-[`scope`][Promise Types and Attributes#scope] attribute can be used to make 
+[`scope`][Promise Types and Attributes#scope] attribute can be used to make
 them local to the bundle.
 
 Finally, `restart_class` classes in `processes` are global.
@@ -322,7 +322,7 @@ See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
 
 ```cf3
     body common control
-    {   
+    {
         bundlesequence => { "global","local_one", "local_two" };
     }
 
@@ -331,7 +331,7 @@ See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
     bundle common global
     {
         classes:
-            # The soft class "zero" is always satisfied, 
+            # The soft class "zero" is always satisfied,
             # and is global in scope
             "zero" expression => "any";
     }
@@ -341,7 +341,7 @@ See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
     bundle agent local_one
     {
         classes:
-            # The soft class "one" is always satisfied, 
+            # The soft class "one" is always satisfied,
             # and is local in scope to local_one
             "one" expression => "any";
     }
@@ -351,7 +351,7 @@ See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
     bundle agent local_two
     {
         classes:
-            # The soft class "two" is always satisfied, 
+            # The soft class "two" is always satisfied,
             # and is local in scope to ls_2
             "two" expression => "any";
 
@@ -362,10 +362,10 @@ See the `cancel_kept`, `cancel_notkept`, and `cancel_repaired` attributes.
     }
 ```
 
-In this example, there are three bundles. One common bundle named `global` 
-with a global scope. Two agent bundles define classes `one` and `two` which 
+In this example, there are three bundles. One common bundle named `global`
+with a global scope. Two agent bundles define classes `one` and `two` which
 are local to those bundles.
 
-The `local_two` bundle promises a report "Success" which applies only if 
-`zero.!one.two` evaluates to true. Within the `local_two` scope this evaluates 
+The `local_two` bundle promises a report "Success" which applies only if
+`zero.!one.two` evaluates to true. Within the `local_two` scope this evaluates
 to `true` because the `one` class is not set.

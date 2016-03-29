@@ -42,7 +42,7 @@ manager and get to your elbows in the details. But try `generic` first. You
 may get lucky.
 
 Mind package names can differ OS to OS.  For example, Apache httpd
-is "httpd" on Red Hat, and "apache2" on Debian.  
+is "httpd" on Red Hat, and "apache2" on Debian.
 
 Version comparison can be tricky when involving multipart version
 identifiers with numbers and letters.
@@ -56,7 +56,7 @@ Example run:
 (Reading database ... 234887 files and directories currently installed.)
 Removing lynx ...
 Removing ntp ...
- * Stopping NTP server ntpd                                                                                                                     [ OK ] 
+ * Stopping NTP server ntpd                                                                                                                     [ OK ]
 Processing triggers for ureadahead ...
 Processing triggers for man-db ...
 # cf-agent -f install_packages.cf # install packages
@@ -68,7 +68,7 @@ Desired=Unknown/Install/Remove/Purge/Hold
 +++-===============================-====================-====================-====================================================================
 ii  lynx                            2.8.8dev.12-2ubuntu0 all                  Text-mode WWW Browser (transitional package)
 ii  ntp                             1:4.2.6.p3+dfsg-1ubu amd64                Network Time Protocol daemon and utility programs
-# 
+#
 ```
 
 There are examples in `/var/cfengine/share/doc/examples/` of installing packages using specific package managers:

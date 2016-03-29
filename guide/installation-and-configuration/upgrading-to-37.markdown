@@ -60,7 +60,7 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 2. On your existing Policy Server, stop the CFEngine services.
    * `service cfengine3 stop`
    * Verify that the output of `ps -e | grep cf` is empty.
- 
+
    **Note:** Clients will continue to execute the policy that they have.
 
 3. Make a backup of the Policy Server, a full backup of `/var/cfengine` (or
@@ -83,7 +83,7 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 
 3. Copy the merged masterfiles from the perparation you did above.
    * `rm -rf /var/cfengine/masterfiles/*`
-   * `cp /root/3.7/masterfiles/* /var/cfengine/masterfiles/` 
+   * `cp /root/3.7/masterfiles/* /var/cfengine/masterfiles/`
 
 4. Bootstrap the Policy Server to itself.
 
@@ -92,7 +92,7 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
     ```
 
     Any  error messages regarding processes can be corrected by running
-    
+
     ```
     cf-agent -f update.cf -IK
     ```

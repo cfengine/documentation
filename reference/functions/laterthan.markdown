@@ -7,7 +7,7 @@ tags: [reference, files functions, functions, laterthan]
 
 [%CFEngine_function_prototype(year, month, day, hour, minute, second)%]
 
-**Description:** Returns whether the current time is later than the given 
+**Description:** Returns whether the current time is later than the given
 date and time.
 
 The specified date/time is an absolute date in the local timezone.

@@ -13,7 +13,7 @@ Return true if `newer` was accessed before `older`.
 
 [%CFEngine_function_attributes(newer, older)%]
 
-**Example:**  
+**Example:**
 
 Prepare:
 

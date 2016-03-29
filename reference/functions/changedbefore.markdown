@@ -17,7 +17,7 @@ Comparisons like this are normally used for updating files (like the
 
 [%CFEngine_function_attributes(newer, older)%]
 
-**Example:**  
+**Example:**
 
 ```cf3
     body common control
@@ -26,10 +26,10 @@ Comparisons like this are normally used for updating files (like the
     }
 
     bundle agent example
-    {     
+    {
       classes:
 
-        "do_it" and => { changedbefore("/tmp/earlier","/tmp/later"), "linux" }; 
+        "do_it" and => { changedbefore("/tmp/earlier","/tmp/later"), "linux" };
 
       reports:
 

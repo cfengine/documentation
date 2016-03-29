@@ -46,8 +46,8 @@ Output:
 
 [%CFEngine_include_snippet(data_regextract.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**Notes:**  
-   
+**Notes:**
+
 **History:** Was introduced in version 3.7.0 (2015)
 
 **See also:** `regextract()`

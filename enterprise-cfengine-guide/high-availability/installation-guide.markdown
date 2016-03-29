@@ -81,14 +81,14 @@ In order to operate cluster, proper fencing must be configured but description h
     ```
 
     As the result you should see a message similar to one below:
-    
+
     ```
     Username: hacluster
     Password:
     node1: Authorized
     node2: Authorized
     ````
-    
+
 5. Create the cluster by running the following command on the **active** node (node1):
 
     ```
@@ -143,7 +143,7 @@ In order to operate cluster, proper fencing must be configured but description h
 5. Configure PostgreSQL on **active** node:
    1. Create two directories owned by PostgreSQL user: /var/cfengine/state/pg/data/pg_archive and /var/cfengine/state/pg/tmp
    2. Modify *postgresql.conf* configuration file
-        
+
         ```
         echo "listen_addresses = '*'
         wal_level = hot_standby
@@ -177,7 +177,7 @@ In order to operate cluster, proper fencing must be configured but description h
 
         **IMPORTANT:** The above configuration allows accessing the hub using the cfpostgres user without any authentication from both cluster nodes. For security reasons we strongly advise to create a replication user in PostgreSQL and protect access using a password or certificate. Furthermore, we advise using ssl-secured replication instead of the unencrypted method described here if the hubs are in an untrusted network.
 
-   4. Create the PostgreSQL archive directory (```mkdir /var/cfengine/state/pg/pg_arch/```) and make the cfpostgres user the owner of it (```chown -R cfpostgres:cfpostgres /var/cfengine/state/pg/pg_arch/```). 
+   4. Create the PostgreSQL archive directory (```mkdir /var/cfengine/state/pg/pg_arch/```) and make the cfpostgres user the owner of it (```chown -R cfpostgres:cfpostgres /var/cfengine/state/pg/pg_arch/```).
 
         **IMPORTANT:** If the archive directory location is different, make sure to change the archive_command entry in postgresql.conf and the restore_command command described later in this doccument.
 
@@ -283,7 +283,7 @@ The command should return one entry indicating that *node1* is connected to the 
    Full list of resources:
 
    Resource Group: cfengine
-       cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1 
+       cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
    ```
 
     **IMPORTANT** If fencing is not configured, resources might not be started by default. To enable resource start please run one of the following commands ``` pcs cluster enable --all``` or ```pcs resource debug-start cfvirtip```.
@@ -308,13 +308,13 @@ The command should return one entry indicating that *node1* is connected to the 
 6. Create the PostgreSQL resource (recommended way with PostgreSQL archive mode enabled).
 
     ```
-    pcs resource create cfpgsql pgsql pgctl="/var/cfengine/bin/pg_ctl" psql="/var/cfengine/bin/psql" pgdata="/var/cfengine/state/pg/data" pgdba="cfpostgres" repuser="cfpostgres" tmpdir="/var/cfengine/state/pg/tmp" rep_mode="async" node_list="node1 node2" primary_conninfo_opt="keepalives_idle=60 keepalives_interval=5 keepalives_count=5" master_ip="192.168.10.100" restart_on_promote="true" logfile="/var/log/postgresql.log" config="/var/cfengine/state/pg/data/postgresql.conf" check_wal_receiver=true restore_command="cp /var/cfengine/state/pg/pg_arch/%f %p" op monitor timeout="60s" interval="3s"  on-fail="restart" role="Master" op monitor timeout="60s" interval="4s" on-fail="restart" 
+    pcs resource create cfpgsql pgsql pgctl="/var/cfengine/bin/pg_ctl" psql="/var/cfengine/bin/psql" pgdata="/var/cfengine/state/pg/data" pgdba="cfpostgres" repuser="cfpostgres" tmpdir="/var/cfengine/state/pg/tmp" rep_mode="async" node_list="node1 node2" primary_conninfo_opt="keepalives_idle=60 keepalives_interval=5 keepalives_count=5" master_ip="192.168.10.100" restart_on_promote="true" logfile="/var/log/postgresql.log" config="/var/cfengine/state/pg/data/postgresql.conf" check_wal_receiver=true restore_command="cp /var/cfengine/state/pg/pg_arch/%f %p" op monitor timeout="60s" interval="3s"  on-fail="restart" role="Master" op monitor timeout="60s" interval="4s" on-fail="restart"
     ```
 
-    Alternatively, you can use following command for minimal setup (no archive enabled): 
+    Alternatively, you can use following command for minimal setup (no archive enabled):
 
     ```
-    pcs resource create cfpgsql pgsql pgctl="/var/cfengine/bin/pg_ctl" psql="/var/cfengine/bin/psql" pgdata="/var/cfengine/state/pg/data" pgdba="cfpostgres" repuser="cfpostgres" tmpdir="/var/cfengine/state/pg/tmp" rep_mode="async" node_list="node1 node2" primary_conninfo_opt="keepalives_idle=60 keepalives_interval=5 keepalives_count=5" master_ip="192.168.10.100" restart_on_promote="true" logfile="/var/log/postgresql.log" config="/var/cfengine/state/pg/data/postgresql.conf" op monitor timeout="60s" interval="3s"  on-fail="restart" role="Master" op monitor timeout="60s" interval="4s" on-fail="restart" 
+    pcs resource create cfpgsql pgsql pgctl="/var/cfengine/bin/pg_ctl" psql="/var/cfengine/bin/psql" pgdata="/var/cfengine/state/pg/data" pgdba="cfpostgres" repuser="cfpostgres" tmpdir="/var/cfengine/state/pg/tmp" rep_mode="async" node_list="node1 node2" primary_conninfo_opt="keepalives_idle=60 keepalives_interval=5 keepalives_count=5" master_ip="192.168.10.100" restart_on_promote="true" logfile="/var/log/postgresql.log" config="/var/cfengine/state/pg/data/postgresql.conf" op monitor timeout="60s" interval="3s"  on-fail="restart" role="Master" op monitor timeout="60s" interval="4s" on-fail="restart"
     ```
 
 7. Configure PostgreSQL to work in Master/Slave (active/standby) mode:
@@ -364,7 +364,7 @@ The command should return one entry indicating that *node1* is connected to the 
     Full list of resources:
 
     Resource Group: cfengine
-        cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1 
+        cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
     Master/Slave Set: mscfpgsql [cfpgsql]
          Masters: [ node1 ]
          Slaves: [ node2 ]
@@ -383,23 +383,23 @@ The command should return one entry indicating that *node1* is connected to the 
     Full list of resources:
 
     Resource Group: cfengine
-         cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1 
+         cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
     Master/Slave Set: mscfpgsql [cfpgsql]
          Masters: [ node1 ]
          Slaves: [ node2 ]
 
     Node Attributes:
         * Node node1:
-        + cfpgsql-data-status               : LATEST    
+        + cfpgsql-data-status               : LATEST
         + cfpgsql-master-baseline           : 000000000B000090
-        + cfpgsql-receiver-status           : ERROR     
-        + cfpgsql-status                    : PRI       
-        + master-cfpgsql                    : 1000      
+        + cfpgsql-receiver-status           : ERROR
+        + cfpgsql-status                    : PRI
+        + master-cfpgsql                    : 1000
 
     * Node node2:
         + cfpgsql-data-status               : STREAMING|ASYNC
-        + cfpgsql-receiver-status           : normal    
-        + cfpgsql-status                    : HS:alone  
+        + cfpgsql-receiver-status           : normal
+        + cfpgsql-status                    : HS:alone
         + master-cfpgsql                    : -INFINITY
     ```
 
@@ -499,7 +499,7 @@ The command should return one entry indicating that *node1* is connected to the 
     Full list of resources:
 
      Resource Group: cfengine
-         cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1 
+         cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
      Master/Slave Set: mscfpgsql [cfpgsql]
          Stopped: [ node1 node2 ]
 
@@ -529,7 +529,7 @@ The command should return one entry indicating that *node1* is connected to the 
     Full list of resources:
 
      Resource Group: cfengine
-         cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1 
+         cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
      Master/Slave Set: mscfpgsql [cfpgsql]
          Masters: [ node1 ]
          Stopped: [ node2 ]

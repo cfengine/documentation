@@ -7,7 +7,7 @@ tags: [reference, files functions, functions, filestat]
 
 [%CFEngine_function_prototype(filename, field)%]
 
-**Description:** Returns the requested file field `field` for the file object 
+**Description:** Returns the requested file field `field` for the file object
 `filename`.
 
 If the file object does not exist, the function call fails and the
@@ -57,8 +57,8 @@ Output:
 
 [%CFEngine_include_snippet(filestat.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
-**Notes:**  
-   
+**Notes:**
+
 The list of fields may be extended as needed by CFEngine.
 
 **History:** Was introduced in version 3.5.0,Enterprise 3.1 (2013).  `linktarget` and `linktarget_shallow` were added in version 3.6.

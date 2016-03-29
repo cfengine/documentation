@@ -10,7 +10,7 @@ This guide describes how to install CFEngine on two Red Hat® Enterprise Linux®
 
 One of the two machines will be a `policy server`, while the other will be a `host`.
 
-Although these instructions walk through the steps needed to install CFEngine Enterprise on two machines, up to 25 machines can be set up using the same procedure and scripts. 
+Although these instructions walk through the steps needed to install CFEngine Enterprise on two machines, up to 25 machines can be set up using the same procedure and scripts.
 
 This tutorial will cover the following steps:
 
@@ -54,7 +54,7 @@ This tutorial will cover the following steps:
 * Remembering the `Security group` name from earlier, click on the appropriate line item in the list.
 * Below the list of security group names will display details for the current security group.
 * Click the `Inbound` tab.
-* Click "Edit" button. A popup window will appear with "SSH" rule already present. 
+* Click "Edit" button. A popup window will appear with "SSH" rule already present.
 * Click the `+Add Rule` button. Select `HTTP` from the drop-down list. Click "Add Rule" button again.
 * Select `Custom TCP rule` and enter `5308` in the `Port range` text entry. Select "Custom IP" from the drop-down menu in the "Source" column.
 * Copy the "Group ID" from the line containing your "Group Name" and copy the "Group ID" into the text entry in the last column. Click "Save."
@@ -68,7 +68,7 @@ See: [Quick-Start Guide to Using PuTTY][Quick-Start Guide to Using PuTTY]
 
 ### Install the Firewall ###
 
-* Ensure you are logged into both virtual machines. 
+* Ensure you are logged into both virtual machines.
 * In both enter `sudo yum install system-config-firewall` to install.
 * Hit 'y' if prompted.
 
@@ -171,12 +171,12 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 
 ### Step 4. Bootstrap the Host to the Policy Server ###
 
-* All hosts must be bootstrapped to the Policy Server in order to establish a connection between the `Host` and the `Policy Server`. 
+* All hosts must be bootstrapped to the Policy Server in order to establish a connection between the `Host` and the `Policy Server`.
 * Run the same commands that you ran in Step 2, `$ sudo /var/cfengine/bin/cfagent bootstrap <IP address of policy server>`.
 
   Example: `$ sudo /var/cfengine/bin/cfagent bootstrap 172.31.3.25`
 
-* The installation process is complete and CFEngine Enterprise is up and running on your system. 
+* The installation process is complete and CFEngine Enterprise is up and running on your system.
 
 ### Step 5. Log in to the Mission Portal ###
 
@@ -194,9 +194,9 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
   This tutorial
   teaches you how to configure and deploy business policy by using the Design Center application in the Mission Portal. Next, it shows you how to verify
   that your business policy is being activated by viewing the Reports in the Mission Portal.
-  
+
 * [Tutorial for Running Examples][Examples and Tutorials#Tutorial for Running Examples]
-  
+
 * [Distribute files from a central location.][Distribute files from a central location]
 
   Whereas the first tutorial in this list teaches you how to deploy business policy

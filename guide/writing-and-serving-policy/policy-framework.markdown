@@ -12,7 +12,7 @@ The CFEngine policy framework is called the **Masterfiles Policy Framework**,
 note the policy server is typically also a client, they are cached in
 `/var/cfengine/inputs`).
 
-The following configuration files are part of the default CFEngine 
+The following configuration files are part of the default CFEngine
 installation in `/var/cfengine/masterfiles`, and have special roles.
 
 The Masterfiles Policy Framework is continually updated. You can track

@@ -9,7 +9,7 @@ tags: [reference, utility functions, functions, classmatch]
 
 **Description:** Tests whether `regex` matches any currently set class.
 
-Returns true if the [anchored][anchored] regular expression matches any 
+Returns true if the [anchored][anchored] regular expression matches any
 currently defined class, otherwise returns false.
 
 You can optionally restrict the search by tags, which you can list after the regular expression.

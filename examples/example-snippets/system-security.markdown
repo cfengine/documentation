@@ -1,6 +1,6 @@
 ---
 layout: default
-title: System Security Examples 
+title: System Security Examples
 published: true
 sorting: 10
 tags: [Examples,System Security]
@@ -11,7 +11,7 @@ tags: [Examples,System Security]
 * Distribute ssh keys
 
 ## Distribute root passwords	
-  
+
 
 [%CFEngine_include_snippet(distribute_root_passwords.cf, .* )%]
 

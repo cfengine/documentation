@@ -61,7 +61,7 @@ affect the default case?).  Here's the alternative with `ifelse`:
 
 ```cf3
 bundle agent example
-{     
+{
   classes:
       "myclass" expression => "any";
       "myclass2" expression => "any";

@@ -30,7 +30,7 @@ curl --user admin:admin 'https://test.cfengine.com/api/v2/changes/policy/count?n
 
 ## Example: Show vacuum command executions
 
-Show all *vacuumdb* executions within last 24 hours executed on policy server. 
+Show all *vacuumdb* executions within last 24 hours executed on policy server.
 
 Example is searching for changes that are performed by *policy_server* machines that execute *commands* promise with command */var/cfengine/bin/vacuumdb%* - there is '%' sign at the end which is a wildcard as vacuumdb is executed with different options across policy.
 

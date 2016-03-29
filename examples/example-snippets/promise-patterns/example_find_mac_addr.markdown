@@ -85,7 +85,7 @@ Example run:
 #
 ```
 
-While the above illustrates the flexiblity of CFEngine in 
+While the above illustrates the flexiblity of CFEngine in
 running external commands and parsing their output,
 as of CFEngine 3.3.0, Nova 2.2.0 (2011), you can get the MAC
 address natively:

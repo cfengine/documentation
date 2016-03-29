@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Promises Available in CFEngine
-sorting: 4 
+sorting: 4
 published: true
 tags: [overviews, promises]
 ---

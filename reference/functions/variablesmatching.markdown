@@ -12,7 +12,7 @@ given. Both `name` and tags are regular expressions.
 
 This function searches for the given [anchored][anchored] `name` and
 `tag1`, `tag2`, ... regular expressions in the list of currently defined
-variables. 
+variables.
 
 When one or more tags are given, the variables with tags matching any
 of the given [anchored][anchored] regular expressions are returned (logical OR semantics).

@@ -7,11 +7,11 @@ tags: [reference, data functions, functions, getgid]
 
 [%CFEngine_function_prototype(groupname)%]
 
-**Description:** Return the integer group id of the group `groupname` on this 
+**Description:** Return the integer group id of the group `groupname` on this
 host.
 
-If the named group does not exist, the function will fail and the variable 
-will not be defined. 
+If the named group does not exist, the function will fail and the variable
+will not be defined.
 
 [%CFEngine_function_attributes(groupname)%]
 

@@ -24,5 +24,5 @@ The specified date/time is an absolute date in the local timezone.
 ```
 
 **Notes:**
-In process matching, dates could be wrong by an hour depending on Daylight 
+In process matching, dates could be wrong by an hour depending on Daylight
 Savings Time / Summer Time. This is a known bug to be fixed.
