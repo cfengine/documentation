@@ -7,7 +7,7 @@ tags: [reference, communication functions, functions, ip2host]
 
 [%CFEngine_function_prototype(ip)%]
 
-**Description:** Returns the primary name-service host name for the IP address 
+**Description:** Returns the primary name-service host name for the IP address
 `ip`.
 
 Uses whatever configured name service is used by the resolver library to

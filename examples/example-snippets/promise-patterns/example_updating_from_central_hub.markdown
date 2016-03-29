@@ -26,13 +26,13 @@ vars:
 
 files:
 
-  "$(sys.workdir)/inputs" 
+  "$(sys.workdir)/inputs"
 
     perms => system("600"),
     copy_from => remote_cp("$(master_location)",$(policy_server)),
     depth_search => recurse("inf"); # This ensures recursive copying of all subdirectories
 
-  "$(sys.workdir)/bin" 
+  "$(sys.workdir)/bin"
 
     perms => system("700"),
     copy_from => remote_cp("/usr/local/sbin","localhost"),

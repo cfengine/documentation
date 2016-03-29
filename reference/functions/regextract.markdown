@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, regextract]
 
 [%CFEngine_function_prototype(regex, string, backref)%]
 
-**Description:** Returns whether the [anchored][anchored] `regex` matches the 
+**Description:** Returns whether the [anchored][anchored] `regex` matches the
 `string`, and fills the array `backref` with back-references.
 
 If there are any back reference matches from the regular expression, then the array will be populated with the values, in the manner:

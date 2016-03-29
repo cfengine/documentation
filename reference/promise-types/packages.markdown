@@ -21,11 +21,11 @@ another, this is the best that can be achieved.
 ```cf3
  vars:
 
-  "match_package" slist => { 
-                           "apache2", 
+  "match_package" slist => {
+                           "apache2",
                            "apache2-mod_php5",
                            "apache2-prefork",
-                           "php5" 
+                           "php5"
                            };
  packages:
 
@@ -84,9 +84,9 @@ one of two different ways:
 
 ```cf3
      packages:
-     
+
        "mypackage"
-     
+
           package_policy => "add",
           package_method => rpm,
           package_select => ">=",
@@ -157,11 +157,11 @@ Normal ordering for packages is the following:
 
      # Test the simplest case -- leave everything to the yum smart manager
 
-     "match_package" slist => { 
-                              "apache2", 
+     "match_package" slist => {
+                              "apache2",
                               "apache2-mod_php5",
                               "apache2-prefork",
-                              "php5" 
+                              "php5"
                               };
     packages:
 
@@ -273,7 +273,7 @@ repository containing the package.
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with `$`
-prevents CFEngine from appending the package name to the string.   
+prevents CFEngine from appending the package name to the string.
 
 **Type:** `string`
 
@@ -295,8 +295,8 @@ package architecture string
 
 This is for use when extracting architecture from the name of the
 promiser, when the architecture is not specified using the
-`package_architectures` list. It is an [unanchored][unanchored] regular expression that 
-contains exactly one parenthesized back-reference which marks the location in 
+`package_architectures` list. It is an [unanchored][unanchored] regular expression that
+contains exactly one parenthesized back-reference which marks the location in
 the *promiser* at which the architecture is specified.
 
 **Type:** `string`
@@ -307,18 +307,18 @@ the *promiser* at which the architecture is specified.
 
 ```cf3
      body package_method rpm
-     
+
      {
      package_list_arch_regex    => "[^.]+\.([^.]+)";
      }
 ```
 
-**Notes:** If no architecture is specified for thegiven package manager, then 
-do not define this.   
+**Notes:** If no architecture is specified for thegiven package manager, then
+do not define this.
 
 #### package_changes
 
-**Description:** Defines whether to group packages into a single aggregate 
+**Description:** Defines whether to group packages into a single aggregate
 command.
 
 This indicates whether the package manager is capable of handling
@@ -326,11 +326,11 @@ package operations with multiple arguments. If this is set to `bulk` then
 multiple arguments will be passed to the package commands. If set to
 `individual` packages will be handled one by one. This might add a
 significant overhead to the operations, and also affect the ability of
-the operating system's package manager to handle dependencies.   
+the operating system's package manager to handle dependencies.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
       individual
@@ -341,7 +341,7 @@ the operating system's package manager to handle dependencies.
 
 ```cf3
      body package_method rpm
-     
+
      {
      package_changes => "bulk";
      }
@@ -357,7 +357,7 @@ the package reference identifier specified by `package_name_convention`.
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with `$`
-prevents CFEngine from appending the package name to the string.   
+prevents CFEngine from appending the package name to the string.
 
 **Type:** `string`
 
@@ -385,7 +385,7 @@ the deletion of existing packages.
 
 Three special variables are defined from the extracted data, in a
 private context for use: `$(name)`, `$(version)` and `$(arch)`. `version` and
-`arch` is the version and architecture (if `package_list_arch_regex` is given) 
+`arch` is the version and architecture (if `package_list_arch_regex` is given)
 of the already installed package. Additionally, if
 `package_file_repositories` is defined, `$(firstrepo)` can be prepended
 to expand the first repository containing the package. For example:
@@ -399,7 +399,7 @@ to expand the first repository containing the package. For example:
 
 ```cf3
      body package_method freebsd
-     
+
      {
      package_file_repositories => { "/path/to/packages" };
      package_name_convention => "$(name)-$(version).tbz";
@@ -409,7 +409,7 @@ to expand the first repository containing the package. For example:
 
 **Notes:**
 If this is not defined, it defaults to the value of
-`package_name_convention`.   
+`package_name_convention`.
 
 #### package_file_repositories
 
@@ -418,7 +418,7 @@ If this is not defined, it defaults to the value of
 If specified, CFEngine will assume that the package installation occurs
 by filename and will search the named paths for a package matching the
 pattern `package_name_convention`. If found the name will be prefixed to
-the package name in the package commands.   
+the package name in the package commands.
 
 **Type:** `slist`
 
@@ -467,7 +467,7 @@ lists architectures explicitly for multiarch-enabled packages.
 
 In case this command is not provided, CFEngine treats all packages
 without explicit architecture set as belonging to implicit default
-architecture.   
+architecture.
 
 **Type:** `string`
 
@@ -479,7 +479,7 @@ architecture.
      body package_method dpkg
      {
        package_default_arch_command => "/usr/bin/dpkg --print-architecture";
-     
+
        # ...
      }
 ```
@@ -508,7 +508,7 @@ architecture is specified.
      }
 ```
 
-**Notes:** If no architecture is specified for the given package manager, then 
+**Notes:** If no architecture is specified for the given package manager, then
 do not define this regex.
 
 #### package_list_command
@@ -532,7 +532,7 @@ prevents CFEngine from appending the package name to the string.
 
 ```cf3
      body package_method rpm
-     
+
      {
      package_list_command => "/bin/rpm -qa --queryformat \"%{name} %{version}-%{release}\n\"";
      }
@@ -554,7 +554,7 @@ reference which marks the name of the package from the package listing.
 
 ```cf3
      body package_method rpm
-     
+
      {
      package_list_name_regex    => "([^\s]+).*";
      }
@@ -578,7 +578,7 @@ executed at intervals determined by `package_list_update_ifelapsed`.
      body package_method xyz
      {
      debian|ubuntu::
-     
+
      package_list_update_command => "/usr/bin/apt-get update";
      package_list_update_ifelapsed => "240";        # 4 hours
      }
@@ -599,7 +599,7 @@ locking time in between updates of the package list
      body package_method xyz
      {
      debian|ubuntu::
-     
+
      package_list_update_command => "/usr/bin/apt-get update";
      package_list_update_ifelapsed => "240";        # 4 hours
      }
@@ -622,7 +622,7 @@ installed.
 
 ```cf3
      body package_method rpm
-     
+
      {
      package_list_version_regex => "[^\s]+ ([^.]+).*";
      }
@@ -664,9 +664,9 @@ If this is not defined, it defaults to the value `$(name)`.
 **Description:** Regular expression with one back-reference to extract
 package name string
 
-This [unanchored][unanchored] regular expression is only used when the *promiser* contains 
+This [unanchored][unanchored] regular expression is only used when the *promiser* contains
 not only the name of the package, but its version and architecture also. In
-that case, this expression should contain a single parenthesized 
+that case, this expression should contain a single parenthesized
 back-reference to extract the name of the package from the string.
 
 **Type:** `string`
@@ -687,7 +687,7 @@ back-reference to extract the name of the package from the string.
 **Description:** Regular expression to match verification failure output
 
 An[anchored][anchored] regular expression to match output from a package verification
-command. If the output string matches this expression, the package is deemed 
+command. If the output string matches this expression, the package is deemed
 broken.
 
 **Type:** `string`
@@ -698,7 +698,7 @@ broken.
 
 ```cf3
      body package_method xyz
-     
+
      {
      package_noverify_regex => "Package .* is not installed.*";
      package_verify_command => "/usr/bin/dpkg -s";
@@ -729,7 +729,7 @@ signal for a failed package verification.
 
 #### package_patch_arch_regex
 
-**Description:** [Anchored][anchored] regular expression with one back-reference to 
+**Description:** [Anchored][anchored] regular expression with one back-reference to
 extract update architecture string
 
 A few package managers keep a separate notion of patches, as opposed to
@@ -768,7 +768,7 @@ interpret as an instruction to not append package names.
 
 ```cf3
      body package_method zypper
-     
+
      {
      package_patch_command => "/usr/bin/zypper -non-interactive patch";
      }
@@ -776,7 +776,7 @@ interpret as an instruction to not append package names.
 
 #### package_patch_installed_regex
 
-**Description:** [Anchored][anchored] regular expression which matches packages that are 
+**Description:** [Anchored][anchored] regular expression which matches packages that are
 already installed
 
 A few package managers keep a separate notion of patches, as opposed to
@@ -809,7 +809,7 @@ already been installed, CFEngine will ignore them.
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with `$`
-prevents CFEngine from appending the package name to the string.   
+prevents CFEngine from appending the package name to the string.
 
 **Type:** `string`
 
@@ -823,7 +823,7 @@ prevents CFEngine from appending the package name to the string.
 
 #### package_patch_name_regex
 
-**Description:** [Unanchored][unanchored] regular expression with one back-reference to 
+**Description:** [Unanchored][unanchored] regular expression with one back-reference to
 extract update name string.
 
 A few package managers keep a separate notion of patches, as opposed to
@@ -845,7 +845,7 @@ an analogous command struct to the packages for patch updates.
 
 #### package_patch_version_regex
 
-**Description:** [Unanchored][unanchored] regular expression with one back-reference to 
+**Description:** [Unanchored][unanchored] regular expression with one back-reference to
 extract update version string.
 
 A few package managers keep a separate notion of patches, as opposed to
@@ -914,7 +914,7 @@ installed, and the verify command must be successful according to
 Package managers generally expect the name of a package to be passed as
 a parameter. However, in some cases we do not need to pass the name of a
 particular package to the command. Ending the command string with `$`
-prevents CFEngine from appending the package name to the string.   
+prevents CFEngine from appending the package name to the string.
 
 **Type:** `string`
 
@@ -924,7 +924,7 @@ prevents CFEngine from appending the package name to the string.
 
 ```cf3
      body package_method rpm
-     
+
      {
      package_verify_command => "/bin/rpm -V";
      package_noverify_returncode => "-1";
@@ -962,7 +962,7 @@ package in multiline output
 This pattern is used in determining when a new package record begins. It
 is used when package managers (like the Solaris package manager) use
 multi-line output formats. This pattern matches the first line of a new
-record.   
+record.
 
 **Type:** `string`
 
@@ -1066,8 +1066,8 @@ v2, and v2 is not less than v1).
      }
 ```
 
-**Notes:**  
-   
+**Notes:**
+
 **History:** Was introduced in 3.4.0 (2012)
 
 
@@ -1078,24 +1078,24 @@ system
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 * `add`
 
 Ensure that a package is present (this is the default setting from
-3.3.0).   
+3.3.0).
 
 * `delete`
 
-Ensure that a package is not present.   
+Ensure that a package is not present.
 
 * `reinstall`
 
-Delete then add package (warning, non-convergent).   
+Delete then add package (warning, non-convergent).
 
 * `update`
 
-Update the package if an update is available (manager dependent).   
+Update the package if an update is available (manager dependent).
 
 * `addupdate`
 
@@ -1108,7 +1108,7 @@ standard library.
 
 * `patch`
 
-Install one or more patches if available (manager dependent).   
+Install one or more patches if available (manager dependent).
 
 * `verify`
 
@@ -1155,7 +1155,7 @@ version requirement.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
      <

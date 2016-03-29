@@ -74,7 +74,7 @@ access on the server.
     }
 ```
 
-  
+
 
 ```cf3
     body common control
@@ -97,12 +97,12 @@ access on the server.
 
         database_operation => "create",
         database_type => "sql",
-        database_columns => { 
+        database_columns => {
                             "topic_name,varchar,256",
                             "topic_comment,varchar,1024",
                             "topic_id,varchar,256",
                             "topic_type,varchar,256",
-                            "topic_extra,varchar,26" 
+                            "topic_extra,varchar,26"
                             },
 
         database_server => myserver;
@@ -154,7 +154,7 @@ a hierarchy of depth 1.
 
 #### db_server_owner
 
-**Description:** The `db_server_owner` string represents the user name 
+**Description:** The `db_server_owner` string represents the user name
 for a database connection.
 
 **Type:** `string`
@@ -169,7 +169,7 @@ for a database connection.
 
 #### db_server_password
 
-**Description:** The `db_server_password ` string represents the clear 
+**Description:** The `db_server_password ` string represents the clear
 text password for a database connection.
 
 **Type:** `string`
@@ -184,8 +184,8 @@ text password for a database connection.
 
 #### db_server_host
 
-**Description:** The `db_server_host` string represents the hostname or 
-address for a database connection. 
+**Description:** The `db_server_host` string represents the hostname or
+address for a database connection.
 
 A blank value is equal to localhost.
 
@@ -200,12 +200,12 @@ A blank value is equal to localhost.
 
 #### db_server_type
 
-**Description:** The `db_server_type` string represents the type of 
+**Description:** The `db_server_type` string represents the type of
 database server being used.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     postgres
@@ -222,14 +222,14 @@ database server being used.
 
 #### db_server_connection_db
 
-**Description:** The `db_server_connection_db` string is the name of an 
+**Description:** The `db_server_connection_db` string is the name of an
 existing database to connect to in order to create/manage other databases.
 
-In order to create a database on a database server (all of which practice 
-voluntary cooperation), one has to be able to connect to the server. 
-However, without an existing database this is not allowed. Thus, database 
-servers provide a default database that can be connected to in order to 
-thereafter create new databases. These are called `postgres` and `mysql` 
+In order to create a database on a database server (all of which practice
+voluntary cooperation), one has to be able to connect to the server.
+However, without an existing database this is not allowed. Thus, database
+servers provide a default database that can be connected to in order to
+thereafter create new databases. These are called `postgres` and `mysql`
 for their respective database servers.
 
 **Type:** `string`
@@ -253,12 +253,12 @@ where x is currently `mysql` or `postgres`.
 
 ### database_type
 
-**Description:** The `database_type` menu option is a type of database 
+**Description:** The `database_type` menu option is a type of database
 that is to be manipulated.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     sql
@@ -275,12 +275,12 @@ database_type => "ms_registry";
 
 ### database_operation
 
-**Description:** The `database_operation` menu option represents the 
+**Description:** The `database_operation` menu option represents the
 nature of the promise.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     create
@@ -299,10 +299,10 @@ database_operation => "create";
 
 ### database_columns
 
-**Description:** A `database_columns` slist defines column definitions 
+**Description:** A `database_columns` slist defines column definitions
 to be promised by SQL databases.
 
-Columns are a list of tuplets (Name,type,size). Array items are triplets, 
+Columns are a list of tuplets (Name,type,size). Array items are triplets,
 and fixed size data elements are doublets.
 
 **Type:** `slist`
@@ -316,12 +316,12 @@ and fixed size data elements are doublets.
 
     database_operation => "create",
     database_type => "sql",
-    database_columns => { 
+    database_columns => {
                         "topic_name,varchar,256",
                         "topic_comment,varchar,1024",
                         "topic_id,varchar,256",
                         "topic_type,varchar,256",
-                        "topic_extra,varchar,26" 
+                        "topic_extra,varchar,26"
                         },
 
     database_server => myserver;
@@ -329,10 +329,10 @@ and fixed size data elements are doublets.
 
 ### database_rows
 
-**Description:** `database_rows` is an ordered list of row values to be 
+**Description:** `database_rows` is an ordered list of row values to be
 promised by SQL databases.
 
-This constraint is used only in adding data to database columns. Rows are 
+This constraint is used only in adding data to database columns. Rows are
 considered to be instances of individual columns.
 
 **Type:** `slist`
@@ -360,20 +360,20 @@ databases:
 
 **Notes:**
 
-In the case of the system registry on Windows, the rows represent data on 
-data-value pairs. The currently supported types (the middle field) for the 
-Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string) 
+In the case of the system registry on Windows, the rows represent data on
+data-value pairs. The currently supported types (the middle field) for the
+Windows registry are `REG_SZ` (string), `REG_EXPAND_SZ` (expandable string)
 and `REG_DWORD` (double word).
 
 ### registry_exclude
 
-**Description:** An `registry_exclude` slist contains regular expressions 
+**Description:** An `registry_exclude` slist contains regular expressions
 to ignore in key/value verification.
 
-During recursive Windows registry scanning, this option allows us to ignore 
-keys of values matching a list of regular expressions. Some values in the 
-registry are ephemeral and some should not be considered. This provides a 
-convenient way of avoiding names. It is analogous to `exclude_dirs` for 
+During recursive Windows registry scanning, this option allows us to ignore
+keys of values matching a list of regular expressions. Some values in the
+registry are ephemeral and some should not be considered. This provides a
+convenient way of avoiding names. It is analogous to `exclude_dirs` for
 files.
 
 **Type:** `slist`
@@ -389,13 +389,13 @@ databases:
 
     database_operation => "cache",
 
-    registry_exclude => { ".*Windows.*CurrentVersion.*", 
+    registry_exclude => { ".*Windows.*CurrentVersion.*",
                           ".*Touchpad.*",
-                          ".*Capabilities.FileAssociations.*", 
-                          ".*Rfc1766.*" , 
-                          ".*Synaptics.SynTP.*", 
-                          ".*SupportedDevices.*8086", 
-                          ".*Microsoft.*ErrorThresholds" 
+                          ".*Capabilities.FileAssociations.*",
+                          ".*Rfc1766.*" ,
+                          ".*Synaptics.SynTP.*",
+                          ".*SupportedDevices.*8086",
+                          ".*Microsoft.*ErrorThresholds"
                         },
 
     database_type     => "ms_registry";

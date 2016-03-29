@@ -125,9 +125,9 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
     Version: 1.1.10-14.el6_5.3-368c726
     2 Nodes configured, 2 expected votes
     4 Resources configured
-    
+
     Online: [ node1 node2 ]
-    
+
     ```
 
 5. Once corosync and pacemaker is running configure pacemaker to be able to manage PostgreSQL and needed shared IP addressees ( **master only** ):
@@ -141,7 +141,7 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
     rsc_defaults \
     resource-stickiness="INFINITY" \
     migration-threshold="1"
-    
+
     primitive ip-cluster ocf:heartbeat:IPaddr2 \
     params \
     ip="192.168.100.13" \                        <<== modify this to be your shared cluster address (accessible by MP)
@@ -150,7 +150,7 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
     op start timeout="60s" interval="0s" on-fail="stop" \
     op monitor timeout="60s" interval="10s" on-fail="restart" \
     op stop timeout="60s" interval="0s" on-fail="block"
-    
+
     primitive ip-rep ocf:heartbeat:IPaddr2 \
     params \
     ip="192.168.10.13" \                        <<== modify this to be your shared address for PostgreSQL replication
@@ -161,7 +161,7 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
     op start timeout="60s" interval="0s" on-fail="restart" \
     op monitor timeout="60s" interval="10s" on-fail="restart" \
     op stop timeout="60s" interval="0s" on-fail="block"
-    
+
     primitive pgsql ocf:heartbeat:pgsql \
     params \
     pgctl="/var/cfengine/bin/pg_ctl" \
@@ -180,7 +180,7 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
     op demote timeout="120s" interval="0s" on-fail="stop" \
     op stop timeout="120s" interval="0s" on-fail="block" \
     op notify timeout="90s" interval="0s"
-    
+
     ms pgsql-ms pgsql \
     meta \
     master-max="1" \
@@ -188,11 +188,11 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
     clone-max="2" \
     clone-node-max="1" \
     notify="true"
-    
+
     group ip-group \
     ip-cluster \
     ip-rep
-    
+
     colocation rsc_colocation-1 inf: ip-group pgsql-ms:Master
     order rsc_order-1 0: pgsql-ms:promote ip-group:start symmetrical=false
     order rsc_order-2 0: pgsql-ms:demote ip-group:stop symmetrical=false
@@ -228,7 +228,7 @@ Once pacemaker and corosync are successfully installed on both nodes please foll
 5. Configure PostgreSQL on active **active node**:
    1. Create two directories owned by PostgreSQL user: /var/cfengine/state/pg/data/pg_archive and /var/cfengine/state/pg/tmp
    2. Modify *postgresql.conf* configuration file
-        
+
         ```bash
         echo "listen_addresses = '*'
         wal_level = hot_standby
@@ -337,7 +337,7 @@ Above should return one entry indicating that host *node1* is connected to datab
     Version: 1.1.10-14.el6_5.3-368c726
     2 Nodes configured, 2 expected votes
     4 Resources configured
-    
+
     Online: [ node1 ]
     OFFLINE: [ node2 ]
 
@@ -382,7 +382,7 @@ Above should return one entry indicating that host *node1* is connected to datab
     Online: [ node1 node2 ]
 
     Full list of resources:
-    
+
     Master/Slave Set: pgsql-ms [pgsql]
          Masters: [ node1 ]
          Slaves: [ node2 ]

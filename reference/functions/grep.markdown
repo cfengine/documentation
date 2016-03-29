@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, grep]
 
 [%CFEngine_function_prototype(regex, list)%]
 
-**Description:** Returns the sub-list if items  in `list` matching the 
+**Description:** Returns the sub-list if items  in `list` matching the
 [anchored][anchored] regular expression `regex`.
 
 `list` can be a data container or a regular list.

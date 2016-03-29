@@ -11,11 +11,11 @@ tags: [reference, io functions, functions, readintarray, readrealarray, readstri
 
 **Return type:** `int`
 
-**Description:** Populates `array` with up to `maxentries` values, parsed from 
+**Description:** Populates `array` with up to `maxentries` values, parsed from
 the first `maxbytes` bytes in file `filename`.
 
-Reads a two dimensional array from a file. One dimension is separated by the 
-regex `split`, the other by the lines in the file. The first field of the 
+Reads a two dimensional array from a file. One dimension is separated by the
+regex `split`, the other by the lines in the file. The first field of the
 lines names the first array argument.
 
 The `comment` field will strip out unwanted patterns from the file being
@@ -34,7 +34,7 @@ lines matched.
 * `split` : [Unanchored][unanchored] regex to split lines into fields, in the range `.*`
 * `maxentries` : Maximum number of entries to read, in the range
 `0,99999999999`
-* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`   
+* `maxbytes` : Maximum bytes to read, in the range `0,99999999999`
 
 **Example:**
 

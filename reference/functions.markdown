@@ -18,8 +18,8 @@ They can return scalar and list values:
       "list" slist => readstringlist("/tmp/listofstring", "#.*", "\s", 10, 400);
 ```
 
-In addition, functions with return type `boolean` evaluate to `true` or 
-`false`. The class on the left-hand side is set if the function evaluates to 
+In addition, functions with return type `boolean` evaluate to `true` or
+`false`. The class on the left-hand side is set if the function evaluates to
 true. If the function evaluates to false, then the class remains unchanged.
 
 ```cf3
@@ -77,7 +77,7 @@ runs of e.g. `cf-agent` and `cf-promises`.
 
 ## List of all functions
 
-There are a large number of functions built into CFEngine. The following 
+There are a large number of functions built into CFEngine. The following
 tables might make it easier for you to find the function you need.
 
 [%CFEngine_function_table()%]

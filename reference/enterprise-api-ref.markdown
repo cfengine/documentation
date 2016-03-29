@@ -15,12 +15,12 @@ always wrapped in a JSON request.
 
 ## Requests
 
-**GET** requests are one of **listing** or **getting**. **Listing** resources 
-means that a number of results will be returned, but each entry may contain 
-limited information. An example of a **listing** query is `/api/user` to list 
-users. Notice that URI components are always non-plural. An exception to this 
-is `/api/settings`, which returns the singleton resource for settings. 
-**Getting** a resource specifies an individual resource to return, e.g. 
+**GET** requests are one of **listing** or **getting**. **Listing** resources
+means that a number of results will be returned, but each entry may contain
+limited information. An example of a **listing** query is `/api/user` to list
+users. Notice that URI components are always non-plural. An exception to this
+is `/api/settings`, which returns the singleton resource for settings.
+**Getting** a resource specifies an individual resource to return, e.g.
 `/api/user/homer`.
 
 **PUT** request typically create a new resource, e.g. a user.
@@ -33,7 +33,7 @@ Pagination is handled by `page` and `count` query parameters to a **GET** reques
 
 ## Responses
 
-Enterprise API responses are always of the following format, consisting of a 
+Enterprise API responses are always of the following format, consisting of a
 'meta' object and a 'data' array.
 
 ```
@@ -45,7 +45,7 @@ Enterprise API responses are always of the following format, consisting of a
         "timestamp": 1350922925
       },
       "data": [
-         ... 
+         ...
       ]
     }
 ```
@@ -58,9 +58,9 @@ All timestamps are reported in *Unix Time*, i.e. seconds since 1970.
 
 ## Authentication
 
-The API supports both internal and external authentication. The internal users 
-table will always be consulted first, followed by an external source specified 
-in the settings. External sources are *OpenLDAP* or *Active Directory* servers 
+The API supports both internal and external authentication. The internal users
+table will always be consulted first, followed by an external source specified
+in the settings. External sources are *OpenLDAP* or *Active Directory* servers
 configurable through `POST /api/settings`.
 
 

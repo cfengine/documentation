@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, strcmp]
 
 [%CFEngine_function_prototype(string1, string2)%]
 
-**Description:** Returns whether the two strings `string1` and `string2` match 
+**Description:** Returns whether the two strings `string1` and `string2` match
 exactly.
 
 [%CFEngine_function_attributes(string1, string2)%]

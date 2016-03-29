@@ -10,9 +10,9 @@ expressed as a PCRE regular expression.
 
 ```cf3
        replace_patterns:
-     
+
         "search pattern"
-     
+
            replace_with => replace_body,
            ...;
 ```
@@ -60,7 +60,7 @@ applies to.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 * `all`
 

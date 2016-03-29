@@ -20,14 +20,14 @@ Example:
 
 ```console
 [root@hub masterfiles]# cf-promises --show-classes
-Class name                                                   Meta tags                               
+Class name                                                   Meta tags
 10_0_2_15                                                    inventory,attribute_name=none,source=agent,hardclass
 127_0_0_1                                                    inventory,attribute_name=none,source=agent,hardclass
 192_168_33_2                                                 inventory,attribute_name=none,source=agent,hardclass
 1_cpu                                                        source=agent,derived-from=sys.cpus,hardclass
-64_bit                                                       source=agent,hardclass                  
-Afternoon                                                    time_based,source=agent,hardclass       
-Day22                                                        time_based,source=agent,hardclass       
+64_bit                                                       source=agent,hardclass
+Afternoon                                                    time_based,source=agent,hardclass
+Day22                                                        time_based,source=agent,hardclass
 ...
 ```
 
@@ -94,7 +94,7 @@ Enterprise only:
     * `have_aptitude`, `powershell`, `systemd`: based on the detected capabilities of the platform or the compiled-in options
     * **See also:** `sys.arch`, `sys.class`, `sys.flavor`, `sys.os`, `sys.ostype`.
 * Network Classes
-    * Unqualified Name of Host. CFEngine truncates it at the first dot. 
+    * Unqualified Name of Host. CFEngine truncates it at the first dot.
       Note: `www.sales.company.com` and `www.research.company.com` have the
       same unqualified name – `www`
     * The IP address octets of any active interface (in the form

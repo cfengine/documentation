@@ -41,7 +41,7 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
   * Use `cf-promises` to verify that the policy runs with 3.6, by running `cf-promises /root/3.6/masterfiles/promises.cf` and `cf-promises /root/3.6/masterfiles/update.cf`.
   * Use `cf-promises` to verify that the policy runs with you previous version of CFEngine (e.g. 3.5), by running the same commands as above on a node with that CFEngine version.
   * The merged masterfiles should now be based on the 3.6 framework, include your policies and work on both the version you are upgrading from and with 3.6.
-2. Set `trustkeysfrom` to trust all hosts, or at least the Policy Server, 
+2. Set `trustkeysfrom` to trust all hosts, or at least the Policy Server,
     in the merged masterfiles policy, e.g. /root/3.6/masterfiles/update/update_policy.cf`.
 
     CFEngine 3.6 uses LMDB for local databases, whereas older versions of CFEngine typically use TokyoCabinet or QDBM. The classic networking protocol uses the `lastseen` database to verify that the mapping between a peer's IP address and the corresponding hostkey is not changed. Since the 3.6 installation will not have any mappings in the lastseen database, hosts won't trust the IP address of the policy server without that setting.
@@ -62,7 +62,7 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
  * `tar cvzf /root/3.5/cfengine.tar.gz /var/cfengine`
 6. Save the list of hosts currently connecting to the Policy Server.
   * `cf-key -s > /root/3.5/hosts`
-    
+
 
 ## Perform the upgrade of the Policy Server (3.5 to 3.6)
 
@@ -80,7 +80,7 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
     ```console
     dpkg -p cfengine-nova-hub
     rm -rf /var/cfengine
-    ``` 
+    ```
 3. Install the new CFEngine Policy Server package (you may need to adjust the package name based on CFEngine edition, version and distribution).
   * Red Hat based distributions:
 
@@ -91,7 +91,7 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 
     ```console
     dpkg --install cfengine-nova-hub_3.6.1-1_amd64.deb
-    ``` 
+    ```
 4. Restore ppkeys and any Enterprise license file (default location is /var/cfengine/masterfiles/license.dat) from backup.
 
     ```console

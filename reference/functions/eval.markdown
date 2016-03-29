@@ -11,7 +11,7 @@ tags: [reference, data functions, functions, eval]
 and `options`.  Currently only the `math` mode with `infix` option
 is supported for evaluating traditional math expressions.
 
-All the math is done with the C `double` type internally.  The results are returned as a string 
+All the math is done with the C `double` type internally.  The results are returned as a string
 
 The supported infix mathematical syntax, in order of precedence, is:
 

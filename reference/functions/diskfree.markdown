@@ -14,7 +14,7 @@ If `path` is not found, this function returns 0.
 
 [%CFEngine_function_attributes(path)%]
 
-**Example:**  
+**Example:**
 
 [%CFEngine_include_snippet(diskfree.cf, #\+begin_src cfengine3, .*end_src)%]
 

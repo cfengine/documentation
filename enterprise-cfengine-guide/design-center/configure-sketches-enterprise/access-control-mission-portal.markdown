@@ -7,11 +7,11 @@ tags: [access, security, role, user, sketch, design center, git, mission portal,
 ---
 
 After you have set up the [integration between CFEngine Enterprise and git][Integrating Mission Portal with git],
-you can grant or revoke access rights for making changes in the Design 
+you can grant or revoke access rights for making changes in the Design
 Center app to your users.
 
 Note that use of the role-based access control (RBAC) for reporting in the Mission Portal
-is not yet supported in conjunction with the Design Center app. For the time being, 
+is not yet supported in conjunction with the Design Center app. For the time being,
 we recommend turning RBAC globally off in the Mission Portal settings when using the
 Design Center app. Support for RBAC might be included in future versions.
 
@@ -33,7 +33,7 @@ Non-members cannot invoke remote `cf-agent` runs to get additional diagnostics d
 ## Allowed changes
 
 Users have access only to what the available sketches in the Design Center app offers. For example,
-if the only available sketch in the app is one that controls file integrity monitoring (Security::file_integrity), 
+if the only available sketch in the app is one that controls file integrity monitoring (Security::file_integrity),
 users can only change files that CFEngine monitors. All users can see the same sketches,
 and can activate on all hosts. There is not yet a concept of RBAC for the Design Center app.
 
@@ -46,14 +46,14 @@ Note however, that malicious users can potentially do damage to hosts even if yo
 abilities. For example, if a user creates many activations of the Security::file_integrity sketch
 for a large amount of directories, this will have a performance impact across the infrastructure.
 
-To get complete control over what users do, changes can be reviewed before 
-they are copied to `/var/cfengine/masterfiles` on the policy server. Refer 
+To get complete control over what users do, changes can be reviewed before
+they are copied to `/var/cfengine/masterfiles` on the policy server. Refer
 to [Integrating Mission Portal with git][Integrating Mission Portal with git] for more information.
 
 
 ## Audit log
 
-All changes that Mission Portal users make through the Design Center app become part of 
+All changes that Mission Portal users make through the Design Center app become part of
 the git commit log. Each change in sketch activation corresponds to one
 commit in git. In the git commit log, the git committer name and email is configured
 in the Mission Portal settings. This allows for easily recognizing and parsing which commits

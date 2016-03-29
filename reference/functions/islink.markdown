@@ -7,7 +7,7 @@ tags: [reference, files functions, functions, islink]
 
 [%CFEngine_function_prototype(filename)%]
 
-**Description:** Returns whether the named object `filename` is a symbolic 
+**Description:** Returns whether the named object `filename` is a symbolic
 link.
 
 The link node must both exist and be a symbolic link. Hard links cannot

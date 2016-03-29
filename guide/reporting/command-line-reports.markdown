@@ -30,7 +30,7 @@ CFEngine's default behavior is to report to the console (known as standard outpu
 default behavior is to report nothing except errors that are judged to be of a critical
 nature.
 
-By using CFEngine with the inform flag, you can alter the default to report on action 
+By using CFEngine with the inform flag, you can alter the default to report on action
 items (actual changes) and warnings:
 
 ```
@@ -38,9 +38,9 @@ items (actual changes) and warnings:
 # cf-agent --inform
 ```
 
-By using CFEngine with the verbose flag, you can alter the default to report all of its 
-thought-processes. You should not interpret a message that only appears in CFEngine's 
-verbose mode as an actual error, only as information that might be relevant to decisions 
+By using CFEngine with the verbose flag, you can alter the default to report all of its
+thought-processes. You should not interpret a message that only appears in CFEngine's
+verbose mode as an actual error, only as information that might be relevant to decisions
 being made by the agent:
 
 ```
@@ -48,9 +48,9 @@ being made by the agent:
 # cf-agent --verbose
 ```
 
-### Creating custom reports 
+### Creating custom reports
 
-CFEngine allows you to use `reports` promises to make reports of your own. A simple 
+CFEngine allows you to use `reports` promises to make reports of your own. A simple
 example of this is shown below.
 
 ```cf3
@@ -71,8 +71,8 @@ reports:
      report_to_file => "/tmp/test_log";
 }
 ```
-We can apply this idea to make more useful custom reports. In this example, 
-the agent tests for certain software package and creates a simple HTML file of 
+We can apply this idea to make more useful custom reports. In this example,
+the agent tests for certain software package and creates a simple HTML file of
 existing software:
 
 ```cf3
@@ -125,8 +125,8 @@ reports:
 }
 ```
 
-The outcome of this promise is a file called /tmp/report.html which contains 
-the following output: 
+The outcome of this promise is a file called /tmp/report.html which contains
+the following output:
 
 ```cf3
       <html>
@@ -142,13 +142,13 @@ the following output:
       </html>
 ```
 
-The mechanism shown above can clearly be used to create a wide variety of report formats, 
-but it requires a lot of coding and maintenance by the user.    
+The mechanism shown above can clearly be used to create a wide variety of report formats,
+but it requires a lot of coding and maintenance by the user.
 
 ### Including data in reports
 
-CFEngine generates information internally that you might want to use in reports. 
-For example, the agent `cf-agent` interfaces with the local light-weight monitoring agent 
+CFEngine generates information internally that you might want to use in reports.
+For example, the agent `cf-agent` interfaces with the local light-weight monitoring agent
 `cf-monitord` so that system state can be reported simply:
 
 ```cf3
@@ -181,18 +181,18 @@ reports:
 
  rootprocs_high_dev2::
 
-   "RootProc anomaly high 2 dev on $(mon.host) at approx $(mon.env_time) 
-    measured value $(mon.value_rootprocs) 
+   "RootProc anomaly high 2 dev on $(mon.host) at approx $(mon.env_time)
+    measured value $(mon.value_rootprocs)
     average $(mon.average_rootprocs) pm $(mon.stddev_rootprocs)"
 
       showstate => { "rootprocs" };
 
  entropy_www_in_high&anomaly_hosts.www_in_high_anomaly::
 
-   "High entropy incoming www anomaly on $(mon.host) at $(mon.env_time) 
-    measured value $(mon.value_www_in) 
+   "High entropy incoming www anomaly on $(mon.host) at $(mon.env_time)
+    measured value $(mon.value_www_in)
     average $(mon.average_www_in) pm $(mon.stddev_www_in)"
-   
+
       showstate => { "incoming.www" };
 
 ```
@@ -263,8 +263,8 @@ R: daemon:x:2:2:Daemon:/sbin:/bin/bash
 
 ### Creating custom logs
 
-Logs can be attached to any promise. In this example, an executed shell command logs a 
-message to the standard output. CFEngine recognizes thestdoutfilename for Standard Output, 
+Logs can be attached to any promise. In this example, an executed shell command logs a
+message to the standard output. CFEngine recognizes thestdoutfilename for Standard Output,
 in the Unix/C standard manner:
 
 ```cf3
@@ -287,7 +287,7 @@ log_string => " -> Started the $(x) (success)";
 }
 ```
 
-In the following example, a file creation promise logs different outcomes 
+In the following example, a file creation promise logs different outcomes
 (success or failure) to different log files:
 
 ```cf3
@@ -332,9 +332,9 @@ Sun Dec  6 11:58:43 2009 /tmp/xyz promise status
 
 ### Redirecting output to logs
 
-CFEngine interfaces with the system logging tools in different ways. `Syslog` is the 
-default log for Unix-like systems, while the `event logger` is the default on Windows. 
-You may choose to copy a fixed level of CFEngine's standard screen messaging to the 
+CFEngine interfaces with the system logging tools in different ways. `Syslog` is the
+default log for Unix-like systems, while the `event logger` is the default on Windows.
+You may choose to copy a fixed level of CFEngine's standard screen messaging to the
 system logger on a per-promise basis:
 
 ```cf3
@@ -362,8 +362,8 @@ log_level => "inform";
 
 ### Change detection: tripwires
 
-Doing a change detection scan is a convergent process, but it can still detect changes 
-and present the data in a compressed format that is often more convenient than a full-scale 
+Doing a change detection scan is a convergent process, but it can still detect changes
+and present the data in a compressed format that is often more convenient than a full-scale
 audit. The result is less precise, but there is a trade-off between precision and cost.
 
 To make a change tripwire, use a files promise, as shown below:
@@ -399,16 +399,16 @@ depth        => "$(d)";
 }
 ```
 
-In CFEngine Enterprise, reports of the following form are generated when these promises 
+In CFEngine Enterprise, reports of the following form are generated when these promises
 are kept by the agent:
 
 ```cf3
 Change detected 	 File change
 Sat Dec 5 18:27:44 2013  group for /tmp/testfile changed 100 -> 0
 Sat Dec 5 18:27:44 2013  /tmp/testfile
-Sat Dec 5 18:20:45 2013  /tmp/testfile 
+Sat Dec 5 18:20:45 2013  /tmp/testfile
 ```
 
-These reports are generated automatically in Enterprise, and are integrated into the 
-web-browsable knowledge map. Community edition users must extract the data and create 
+These reports are generated automatically in Enterprise, and are integrated into the
+web-browsable knowledge map. Community edition users must extract the data and create
 these themselves.

@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, difference]
 
 [%CFEngine_function_prototype(list1, list2)%]
 
-**Description:** Returns the unique elements in `list1` that are not in 
+**Description:** Returns the unique elements in `list1` that are not in
 `list2`.
 
 [%CFEngine_function_attributes(list1, list2)%]

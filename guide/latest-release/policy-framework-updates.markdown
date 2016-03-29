@@ -51,7 +51,7 @@ Please consult [The Policy Framework] for a map to the policy framework.
 ### templates ###
 
 Many users create a top level templates directory for global
-template distribution. We made it easy by creating a `templates/` directory 
+template distribution. We made it easy by creating a `templates/` directory
 that's always copied for you.
 
 ### cfe_internal ###
@@ -92,7 +92,7 @@ from 3.5 and 3.6 will reveal many additions
 * [cfengine_internal_purge_policies][The Policy Framework#cfengine_internal_purge_policies]: Enables purging of policies that no longer exist in masterfiles.
 
   Note: This setting is mirrored from update.cf for [CFEngine Enterprise][] reporting.
-  
+
 * postgresql_maintenance: Enables database maintenance for [CFEngine Enterprise][] Policy hubs.
 
 `def.cf` also sees the addition of `bundle common inventory_control` which is

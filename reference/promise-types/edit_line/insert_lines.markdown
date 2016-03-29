@@ -12,9 +12,9 @@ a file-reference from which to read lines.
 
 ```cf3
       insert_lines:
-     
+
         "literal line or file reference"
-     
+
            location => location_body,
            ...;
 ```
@@ -54,7 +54,7 @@ marker, which should be a single correlated promise.
     bundle edit_line x
     {
     insert_lines:
- 
+
      "line one$(const.n)line two" location => myloc;
     }
 ```
@@ -65,7 +65,7 @@ Or:
     bundle edit_line x
     {
     insert_lines:
- 
+
       "line one
     line two"
       location => myloc;
@@ -127,7 +127,7 @@ lines.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 * `literal` or `string`
 
@@ -139,7 +139,7 @@ The string should be interpreted as a filename from which to import lines.
 
 * `preserve_block`
 
-The default behavior assumes that multi-line entries are not ordered 
+The default behavior assumes that multi-line entries are not ordered
 specifically. They should be treated as a collection of lines of text,
 and not as a single unbroken object.
 
@@ -161,7 +161,7 @@ present. To avoid that the file grows, use this together with
 
 * `file_preserve_block`
 
-Interpret the string as a filename, and assume `preserve_block` semantics. 
+Interpret the string as a filename, and assume `preserve_block` semantics.
 This was added in CFEngine 3.5.x.
 
 **Default value:** literal
@@ -363,11 +363,11 @@ found in the secondary file, it is inserted into the file being edited.
 **Description:** Menu option, point cursor before of after matched line
 
 Determines whether an edit will occur before or after the currently
-matched line.   
+matched line.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     before
@@ -393,11 +393,11 @@ In multiple matches, decide whether the first or last occurrence of the
 matching pattern in the case affected by the change. In principle this
 could be generalized to more cases but this seems like a fragile quality
 to evaluate, and only these two cases are deemed of reproducible
-significance.   
+significance.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     first
@@ -432,12 +432,12 @@ This attribute is mutually exclusive of `select_line_number`.
 
 ```cf3
      # Editing
-     
+
      body location example
      {
      select_line_matching => "Expression match.* whole line";
      }
-     
+
      # Measurement promises
      body match_value example
      {
@@ -468,7 +468,7 @@ such as `authpriv.* /var/log/something` into a syslog config file.
 
 **Type:** (option list)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```cf3
     ignore_leading

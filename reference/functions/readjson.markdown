@@ -17,7 +17,7 @@ file `filename` and returns the result as a `data` variable.
 ```cf3
     vars:
 
-      "loadthis" 
+      "loadthis"
 
          data =>  readjson("/tmp/data.json", 4000);
 ```

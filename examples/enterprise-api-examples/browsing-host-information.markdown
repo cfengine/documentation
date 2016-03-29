@@ -6,9 +6,9 @@ sorting: 50
 tags: [examples, enterprise, rest, api, reporting, hosts]
 ---
 
-A resource `/api/host` is added as an alternative interface for browsing host 
+A resource `/api/host` is added as an alternative interface for browsing host
 information. For full flexibility we recommend using [SQL][SQL Schema]
-reports via `/api/query` for this. however, currently vital signs (data 
+reports via `/api/query` for this. however, currently vital signs (data
 gathered from `cf-monitord`) is not part of the SQL reports data model.
 
 
@@ -76,8 +76,8 @@ for presentability).
 
 #### Example: Looking Up Hosts By IP
 
-Similarly we can lookup the host with hostname 
-`windows2008-2.test.cfengine.com` by IP as follows (lines split and indented 
+Similarly we can lookup the host with hostname
+`windows2008-2.test.cfengine.com` by IP as follows (lines split and indented
 for presentability).
 
 **Request**
@@ -106,8 +106,8 @@ for presentability).
 
 ## Example: Removing Host Data
 
-If a host has been decommissioned from a Hub, we can explicitly remove data 
-associated with the host from the Hub, by issuing a DELETE request (lines 
+If a host has been decommissioned from a Hub, we can explicitly remove data
+associated with the host from the Hub, by issuing a DELETE request (lines
 split and indented for presentability).
 
 **Request**
@@ -172,10 +172,10 @@ SHA=4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a/vital
 
 ## Example: Retrieving Vital Sign Data
 
-Each vital sign has a collected time series of values for up to one week. Here 
-we retrieve the time series for the `mem_free` vital sign at host 
-`4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a` for October 
-23rd 2012 12:20pm to 12:45pm GMT (lines split and indented for 
+Each vital sign has a collected time series of values for up to one week. Here
+we retrieve the time series for the `mem_free` vital sign at host
+`4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a` for October
+23rd 2012 12:20pm to 12:45pm GMT (lines split and indented for
 presentability).
 
 **Request**

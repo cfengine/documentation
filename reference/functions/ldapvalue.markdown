@@ -16,9 +16,9 @@ identified by the search parameters. The first matching value it taken.
 
 [%CFEngine_function_attributes(uri, dn, filter, record, scope, security)%]
 
-`dn` specifies the distinguished name, an ldap formatted name built from 
-components, e.g. "dc=cfengine,dc=com". `filter` is an ldap search, e.g. 
-"(sn=User)", and `record` is the name of the single record to be retrieved, 
+`dn` specifies the distinguished name, an ldap formatted name built from
+components, e.g. "dc=cfengine,dc=com". `filter` is an ldap search, e.g.
+"(sn=User)", and `record` is the name of the single record to be retrieved,
 e.g. `uid`. Which `security` values are supported depends on machine and
 server capabilities.
 
@@ -30,7 +30,7 @@ vars:
    # Get the first matching value for "uid" in schema
 
   "value" string => ldapvalue(
-                             "ldap://ldap.example.org", 
+                             "ldap://ldap.example.org",
                              "dc=cfengine,dc=com",
                              "(sn=User)",
                              "uid",

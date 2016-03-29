@@ -8,7 +8,7 @@ tags: [overviews, releases, latest release, "3.6", platforms, versions, what's n
 
 <!--- TODO: move up when no longer a pre-release
 
-**IMPORTANT NOTE:** This is a pre-release of CFEngine, intended for testing and 
+**IMPORTANT NOTE:** This is a pre-release of CFEngine, intended for testing and
 showcase only.
 
 -->
@@ -43,7 +43,7 @@ A range of new functions allow creating and operating on structured data.
 
 ### Tagging with Meta Data ###
 
-Classes and variables can be tagged with meta data for extended annotation and 
+Classes and variables can be tagged with meta data for extended annotation and
 documentation of knowledge directly in the language. Classes and variables can be
 searched by tags in policy, and CFEngine Enterprise uses tags to identify relevant
 information reported by the host. CFEngine sets a number of tags on hard classes and
@@ -80,7 +80,7 @@ type:
 * `data_readstringarray()` - read a delimited file into a data map
 * `data_readstringarrayidx()` - read a delimited file into a data array
 * `datastate()` - create a `data` variable with currently set classes and variables
-* `datatype()` - 
+* `datatype()` -
 * `format()` - `%S` can be used to serialize 'data' containers into a string
 * `mergedata()` - merge two data containers
 * `parsejson()` - create a data container from a JSON string
@@ -153,5 +153,5 @@ in newly created files.
 
 ## Change History ##
 
-For a complete history of changes in CFEngine, see the `ChangeLog` and 
+For a complete history of changes in CFEngine, see the `ChangeLog` and
 `Enterprise ChangeLog`.
