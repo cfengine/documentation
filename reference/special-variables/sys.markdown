@@ -262,6 +262,531 @@ whether this is qualified or unqualified with a domain name.
     # host = myhost
 ```
 
+### sys.inet
+
+The available information about the IPv4 network stack, from when the agent initialized. This is currently available only on Linux systems with the special `/proc/net/*` information files.
+
+From the route table, the `default_gateway` is extracted. From the list of routes in `routes`, the `default_route` is copied to the top level for convenience.
+
+Each route's flags are extracted in a convenient list format.
+
+The `stats` key contains all the TCP and IP counters provided by the system in `/proc/net/netstat`.
+
+**History:** Was introduced in 3.9.0.
+
+**See also:** `sys.inet6`, `sys.interfaces_data`
+
+```
+
+    % cat /proc/net/route
+Iface	Destination	Gateway 	Flags	RefCnt	Use	Metric	Mask		MTU	Window	IRTT                                                       
+enp4s0	00000000	0102A8C0	0003	0	0	100	00000000	0	0	0                                                                           
+enp4s0	0000FEA9	00000000	0001	0	0	1000	0000FFFF	0	0	0                                                                          
+enp4s0	0002A8C0	00000000	0001	0	0	100	00FFFFFF	0	0	0                                                                           
+
+    % cat /proc/net/netstat
+TcpExt: SyncookiesSent SyncookiesRecv SyncookiesFailed EmbryonicRsts PruneCalled RcvPruned OfoPruned OutOfWindowIcmps LockDroppedIcmps ArpFilter TW TWRecycled TWKilled PAWSPassive PAWSActive PAWSEstab DelayedACKs DelayedACKLocked DelayedACKLost ListenOverflows ListenDrops TCPPrequeued TCPDirectCopyFromBacklog TCPDirectCopyFromPrequeue TCPPrequeueDropped TCPHPHits TCPHPHitsToUser TCPPureAcks TCPHPAcks TCPRenoRecovery TCPSackRecovery TCPSACKReneging TCPFACKReorder TCPSACKReorder TCPRenoReorder TCPTSReorder TCPFullUndo TCPPartialUndo TCPDSACKUndo TCPLossUndo TCPLostRetransmit TCPRenoFailures TCPSackFailures TCPLossFailures TCPFastRetrans TCPForwardRetrans TCPSlowStartRetrans TCPTimeouts TCPLossProbes TCPLossProbeRecovery TCPRenoRecoveryFail TCPSackRecoveryFail TCPSchedulerFailed TCPRcvCollapsed TCPDSACKOldSent TCPDSACKOfoSent TCPDSACKRecv TCPDSACKOfoRecv TCPAbortOnData TCPAbortOnClose TCPAbortOnMemory TCPAbortOnTimeout TCPAbortOnLinger TCPAbortFailed TCPMemoryPressures TCPSACKDiscard TCPDSACKIgnoredOld TCPDSACKIgnoredNoUndo TCPSpuriousRTOs TCPMD5NotFound TCPMD5Unexpected TCPSackShifted TCPSackMerged TCPSackShiftFallback TCPBacklogDrop TCPMinTTLDrop TCPDeferAcceptDrop IPReversePathFilter TCPTimeWaitOverflow TCPReqQFullDoCookies TCPReqQFullDrop TCPRetransFail TCPRcvCoalesce TCPOFOQueue TCPOFODrop TCPOFOMerge TCPChallengeACK TCPSYNChallenge TCPFastOpenActive TCPFastOpenActiveFail TCPFastOpenPassive TCPFastOpenPassiveFail TCPFastOpenListenOverflow TCPFastOpenCookieReqd TCPSpuriousRtxHostQueues BusyPollRxPackets TCPAutoCorking TCPFromZeroWindowAdv TCPToZeroWindowAdv TCPWantZeroWindowAdv TCPSynRetrans TCPOrigDataSent TCPHystartTrainDetect TCPHystartTrainCwnd TCPHystartDelayDetect TCPHystartDelayCwnd TCPACKSkippedSynRecv TCPACKSkippedPAWS TCPACKSkippedSeq TCPACKSkippedFinWait2 TCPACKSkippedTimeWait TCPACKSkippedChallenge TCPWinProbe TCPKeepAlive
+TcpExt: 0 0 0 19896 7 0 0 9 0 0 560727 0 0 0 0 3575 2049614 302 313016 0 0 17283401 130554 186252521 0 126381259 21978 34307113 42386136 481 386568 7 175 316 11 822 2028 483 20959 148926 16709 267 271328 38869 512579 72057 281202 375133 561590 150370 23 59420 0 106 391776 9062 174837 4389 211213 13931 0 14556 0 0 0 585 594 65103 100117 0 0 0 0 2199955 0 0 0 0 0 0 0 15 36402752 5236349 0 7020 7132 4057 0 0 0 0 0 0 70 0 17925237 24 30 71 693624 275201738 33 992 2253 49843 136 484 21848 0 25 218 10478 503111
+IpExt: InNoRoutes InTruncatedPkts InMcastPkts OutMcastPkts InBcastPkts OutBcastPkts InOctets OutOctets InMcastOctets OutMcastOctets InBcastOctets OutBcastOctets InCsumErrors InNoECTPkts InECT1Pkts InECT0Pkts InCEPkts
+IpExt: 0 0 1304886 130589 3784495 6 437612883789 422416538003 334973818 8189234 817859007 284 1 487495405 18258 4804476 543340
+
+    # sys.inet = {
+    "default_gateway": "192.168.2.1",
+    "default_route": {
+      "active_default_gateway": true,
+      "dest": "0.0.0.0",
+      "flags": [
+        "up",
+        "net",
+        "default",
+        "gateway"
+      ],
+      "gateway": "192.168.2.1",
+      "interface": "enp4s0",
+      "irtt": 0,
+      "mask": "0.0.0.0",
+      "metric": 100,
+      "mtu": 0,
+      "refcnt": 0,
+      "use": 0,
+      "window": 0
+    },
+    "routes": [
+      {
+        "active_default_gateway": true,
+        "dest": "0.0.0.0",
+        "flags": [
+          "up",
+          "net",
+          "default",
+          "gateway"
+        ],
+        "gateway": "192.168.2.1",
+        "interface": "enp4s0",
+        "irtt": 0,
+        "mask": "0.0.0.0",
+        "metric": 100,
+        "mtu": 0,
+        "refcnt": 0,
+        "use": 0,
+        "window": 0
+      },
+      {
+        "active_default_gateway": false,
+        "dest": "169.254.0.0",
+        "flags": [
+          "up",
+          "net",
+          "not_default",
+          "local"
+        ],
+        "gateway": "0.0.0.0",
+        "interface": "enp4s0",
+        "irtt": 0,
+        "mask": "255.255.0.0",
+        "metric": 1000,
+        "mtu": 0,
+        "refcnt": 0,
+        "use": 0,
+        "window": 0
+      },
+      {
+        "active_default_gateway": false,
+        "dest": "192.168.2.0",
+        "flags": [
+          "up",
+          "net",
+          "not_default",
+          "local"
+        ],
+        "gateway": "0.0.0.0",
+        "interface": "enp4s0",
+        "irtt": 0,
+        "mask": "255.255.255.0",
+        "metric": 100,
+        "mtu": 0,
+        "refcnt": 0,
+        "use": 0,
+        "window": 0
+      }
+    ],
+    "stats": {
+      "IpExt": {
+        "InBcastOctets": "817859007",
+        "InBcastPkts": "3784495",
+        "InCEPkts": "543340",
+        "InCsumErrors": "1",
+        "InECT0Pkts": "4804476",
+        "InECT1Pkts": "18258",
+        "InMcastOctets": "334973818",
+        "InMcastPkts": "1304886",
+        "InNoECTPkts": "487495405",
+        "InNoRoutes": "0",
+        "InOctets": "437612883789",
+        "InTruncatedPkts": "0",
+        "OutBcastOctets": "284",
+        "OutBcastPkts": "6",
+        "OutMcastOctets": "8189234",
+        "OutMcastPkts": "130589",
+        "OutOctets": "422416538003"
+      },
+      "TcpExt": {
+        "ArpFilter": "0",
+        "BusyPollRxPackets": "0",
+        "DelayedACKLocked": "302",
+        "DelayedACKLost": "313016",
+        "DelayedACKs": "2049614",
+        "EmbryonicRsts": "19896",
+        "IPReversePathFilter": "0",
+        "ListenDrops": "0",
+        "ListenOverflows": "0",
+        "LockDroppedIcmps": "0",
+        "OfoPruned": "0",
+        "OutOfWindowIcmps": "9",
+        "PAWSActive": "0",
+        "PAWSEstab": "3575",
+        "PAWSPassive": "0",
+        "PruneCalled": "7",
+        "RcvPruned": "0",
+        "SyncookiesFailed": "0",
+        "SyncookiesRecv": "0",
+        "SyncookiesSent": "0",
+        "TCPACKSkippedChallenge": "218",
+        "TCPACKSkippedFinWait2": "0",
+        "TCPACKSkippedPAWS": "484",
+        "TCPACKSkippedSeq": "21848",
+        "TCPACKSkippedSynRecv": "136",
+        "TCPACKSkippedTimeWait": "25",
+        "TCPAbortFailed": "0",
+        "TCPAbortOnClose": "13931",
+        "TCPAbortOnData": "211213",
+        "TCPAbortOnLinger": "0",
+        "TCPAbortOnMemory": "0",
+        "TCPAbortOnTimeout": "14556",
+        "TCPAutoCorking": "17925237",
+        "TCPBacklogDrop": "0",
+        "TCPChallengeACK": "7132",
+        "TCPDSACKIgnoredNoUndo": "65103",
+        "TCPDSACKIgnoredOld": "594",
+        "TCPDSACKOfoRecv": "4389",
+        "TCPDSACKOfoSent": "9062",
+        "TCPDSACKOldSent": "391776",
+        "TCPDSACKRecv": "174837",
+        "TCPDSACKUndo": "20959",
+        "TCPDeferAcceptDrop": "0",
+        "TCPDirectCopyFromBacklog": "130554",
+        "TCPDirectCopyFromPrequeue": "186252521",
+        "TCPFACKReorder": "175",
+        "TCPFastOpenActive": "0",
+        "TCPFastOpenActiveFail": "0",
+        "TCPFastOpenCookieReqd": "0",
+        "TCPFastOpenListenOverflow": "0",
+        "TCPFastOpenPassive": "0",
+        "TCPFastOpenPassiveFail": "0",
+        "TCPFastRetrans": "512579",
+        "TCPForwardRetrans": "72057",
+        "TCPFromZeroWindowAdv": "24",
+        "TCPFullUndo": "2028",
+        "TCPHPAcks": "42386136",
+        "TCPHPHits": "126381259",
+        "TCPHPHitsToUser": "21978",
+        "TCPHystartDelayCwnd": "49843",
+        "TCPHystartDelayDetect": "2253",
+        "TCPHystartTrainCwnd": "992",
+        "TCPHystartTrainDetect": "33",
+        "TCPKeepAlive": "503111",
+        "TCPLossFailures": "38869",
+        "TCPLossProbeRecovery": "150370",
+        "TCPLossProbes": "561590",
+        "TCPLossUndo": "148926",
+        "TCPLostRetransmit": "16709",
+        "TCPMD5NotFound": "0",
+        "TCPMD5Unexpected": "0",
+        "TCPMemoryPressures": "0",
+        "TCPMinTTLDrop": "0",
+        "TCPOFODrop": "0",
+        "TCPOFOMerge": "7020",
+        "TCPOFOQueue": "5236349",
+        "TCPOrigDataSent": "275201738",
+        "TCPPartialUndo": "483",
+        "TCPPrequeueDropped": "0",
+        "TCPPrequeued": "17283401",
+        "TCPPureAcks": "34307113",
+        "TCPRcvCoalesce": "36402752",
+        "TCPRcvCollapsed": "106",
+        "TCPRenoFailures": "267",
+        "TCPRenoRecovery": "481",
+        "TCPRenoRecoveryFail": "23",
+        "TCPRenoReorder": "11",
+        "TCPReqQFullDoCookies": "0",
+        "TCPReqQFullDrop": "0",
+        "TCPRetransFail": "15",
+        "TCPSACKDiscard": "585",
+        "TCPSACKReneging": "7",
+        "TCPSACKReorder": "316",
+        "TCPSYNChallenge": "4057",
+        "TCPSackFailures": "271328",
+        "TCPSackMerged": "0",
+        "TCPSackRecovery": "386568",
+        "TCPSackRecoveryFail": "59420",
+        "TCPSackShiftFallback": "2199955",
+        "TCPSackShifted": "0",
+        "TCPSchedulerFailed": "0",
+        "TCPSlowStartRetrans": "281202",
+        "TCPSpuriousRTOs": "100117",
+        "TCPSpuriousRtxHostQueues": "70",
+        "TCPSynRetrans": "693624",
+        "TCPTSReorder": "822",
+        "TCPTimeWaitOverflow": "0",
+        "TCPTimeouts": "375133",
+        "TCPToZeroWindowAdv": "30",
+        "TCPWantZeroWindowAdv": "71",
+        "TCPWinProbe": "10478",
+        "TW": "560727",
+        "TWKilled": "0",
+        "TWRecycled": "0"
+      }
+    }
+  }
+
+```
+
+### sys.inet6
+
+The available information about the IPv6 network stack, from when the agent initialized. This is currently available only on Linux systems with the special `/proc/net/*` information files.
+
+The configured devices with IPv6 addresses from `/proc/net/if_inet6` are collected under `addresses`.
+
+The routes from `/proc/net/ipv6_route` are collected but not analyzed for default route etc. as with IPv4 routes in `sys.inet`.
+
+The network statistics from `/proc/net/snmp6` are converted to a convenient key-value format under `stats`.
+
+**History:** Was introduced in 3.9.0.
+
+**See also:** `sys.inet`, `sys.interfaces_data`
+
+```
+
+    % cat /proc/net/if_inet6
+00000000000000000000000000000001 01 80 10 80       lo
+fe80000000000000004249fffebdd7b4 04 40 20 80  docker0
+fe80000000000000c27cd1fffe3eada6 02 40 20 80   enp4s0
+
+    % cat /proc/net/ipv6_route
+fe800000000000000000000000000000 40 00000000000000000000000000000000 00 00000000000000000000000000000000 00000100 00000001 00000004 00000001   enp4s0
+00000000000000000000000000000000 00 00000000000000000000000000000000 00 00000000000000000000000000000000 ffffffff 00000001 0007e26c 00200200       lo
+00000000000000000000000000000001 80 00000000000000000000000000000000 00 00000000000000000000000000000000 00000000 00000009 0000020b 80200001       lo
+fe80000000000000c27cd1fffe3eada6 80 00000000000000000000000000000000 00 00000000000000000000000000000000 00000000 00000002 00000004 80200001       lo
+ff000000000000000000000000000000 08 00000000000000000000000000000000 00 00000000000000000000000000000000 00000100 00000008 0003ffc5 00000001   enp4s0
+00000000000000000000000000000000 00 00000000000000000000000000000000 00 00000000000000000000000000000000 ffffffff 00000001 0007e26c 00200200       lo
+
+    % cat /proc/net/snmp6
+Ip6InReceives                   	492189
+Ip6InHdrErrors                  	0
+Ip6InTooBigErrors               	0
+Ip6InNoRoutes                   	0
+Ip6InAddrErrors                 	0
+Ip6InUnknownProtos              	0
+Ip6InTruncatedPkts              	0
+Ip6InDiscards                   	0
+Ip6InDelivers                   	490145
+Ip6OutForwDatagrams             	0
+Ip6OutRequests                  	12145
+Ip6OutDiscards                  	6
+Ip6OutNoRoutes                  	249070
+Ip6ReasmTimeout                 	0
+Ip6ReasmReqds                   	0
+Ip6ReasmOKs                     	0
+Ip6ReasmFails                   	0
+Ip6FragOKs                      	0
+Ip6FragFails                    	0
+Ip6FragCreates                  	0
+Ip6InMcastPkts                  	488766
+Ip6OutMcastPkts                 	10304
+Ip6InOctets                     	132343220
+Ip6OutOctets                    	1522724
+Ip6InMcastOctets                	131896014
+Ip6OutMcastOctets               	1076616
+Ip6InBcastOctets                	0
+Ip6OutBcastOctets               	0
+Ip6InNoECTPkts                  	492196
+Ip6InECT1Pkts                   	0
+Ip6InECT0Pkts                   	0
+Ip6InCEPkts                     	0
+Icmp6InMsgs                     	275
+Icmp6InErrors                   	0
+Icmp6OutMsgs                    	1815
+Icmp6OutErrors                  	0
+Icmp6InCsumErrors               	0
+Icmp6InDestUnreachs             	0
+Icmp6InPktTooBigs               	0
+Icmp6InTimeExcds                	0
+Icmp6InParmProblems             	0
+Icmp6InEchos                    	0
+Icmp6InEchoReplies              	0
+Icmp6InGroupMembQueries         	0
+Icmp6InGroupMembResponses       	1
+Icmp6InGroupMembReductions      	1
+Icmp6InRouterSolicits           	0
+Icmp6InRouterAdvertisements     	0
+Icmp6InNeighborSolicits         	5
+Icmp6InNeighborAdvertisements   	268
+Icmp6InRedirects                	0
+Icmp6InMLDv2Reports             	0
+Icmp6OutDestUnreachs            	0
+Icmp6OutPktTooBigs              	0
+Icmp6OutTimeExcds               	0
+Icmp6OutParmProblems            	0
+Icmp6OutEchos                   	0
+Icmp6OutEchoReplies             	0
+Icmp6OutGroupMembQueries        	0
+Icmp6OutGroupMembResponses      	0
+Icmp6OutGroupMembReductions     	0
+Icmp6OutRouterSolicits          	396
+Icmp6OutRouterAdvertisements    	0
+Icmp6OutNeighborSolicits        	206
+Icmp6OutNeighborAdvertisements  	5
+Icmp6OutRedirects               	0
+Icmp6OutMLDv2Reports            	1208
+Icmp6InType131                  	1
+Icmp6InType132                  	1
+Icmp6InType135                  	5
+Icmp6InType136                  	268
+Icmp6OutType133                 	396
+Icmp6OutType135                 	206
+Icmp6OutType136                 	5
+Icmp6OutType143                 	1208
+Udp6InDatagrams                 	486201
+Udp6NoPorts                     	0
+Udp6InErrors                    	0
+Udp6OutDatagrams                	7273
+Udp6RcvbufErrors                	0
+Udp6SndbufErrors                	0
+Udp6InCsumErrors                	0
+Udp6IgnoredMulti                	0
+UdpLite6InDatagrams             	0
+UdpLite6NoPorts                 	0
+UdpLite6InErrors                	0
+UdpLite6OutDatagrams            	0
+UdpLite6RcvbufErrors            	0
+UdpLite6SndbufErrors            	0
+UdpLite6InCsumErrors            	0
+
+    # sys.inet6 = {
+    "addresses": {
+      "docker0": {
+        "address": "d7b4:febd:49ff:42:0:0:0:fe80",
+        "device_number": 4,
+        "interface": "docker0",
+        "prefix_length": 64,
+        "raw_flags": "80",
+        "scope": 32
+      },
+      "enp4s0": {
+        "address": "ada6:fe3e:d1ff:c27c:0:0:0:fe80",
+        "device_number": 2,
+        "interface": "enp4s0",
+        "prefix_length": 64,
+        "raw_flags": "80",
+        "scope": 32
+      },
+      "lo": {
+        "address": "1:0:0:0:0:0:0:0",
+        "device_number": 1,
+        "interface": "lo",
+        "prefix_length": 128,
+        "raw_flags": "80",
+        "scope": 16
+      }
+    },
+    "routes": [
+      {
+        "dest": "0:0:0:0:0:0:0:0",
+        "dest_prefix": "40",
+        "flags": [
+          "up",
+          "net",
+          "local"
+        ],
+        "interface": "enp4s0",
+        "metric": 256,
+        "next_hop": "0:0:0:0:0:0:0:0",
+        "refcnt": 1,
+        "source_prefix": "00",
+        "use": 4
+      },
+      {
+        "dest": "0:0:0:0:0:0:0:0",
+        "dest_prefix": "80",
+        "flags": [
+          "up",
+          "net",
+          "local"
+        ],
+        "interface": "lo",
+        "metric": 0,
+        "next_hop": "0:0:0:0:0:0:0:0",
+        "refcnt": 2,
+        "source_prefix": "00",
+        "use": 4
+      }
+    ],
+    "stats": {
+      "Icmp6InCsumErrors": 0,
+      "Icmp6InDestUnreachs": 0,
+      "Icmp6InEchoReplies": 0,
+      "Icmp6InEchos": 0,
+      "Icmp6InErrors": 0,
+      "Icmp6InGroupMembQueries": 0,
+      "Icmp6InGroupMembReductions": 1,
+      "Icmp6InGroupMembResponses": 1,
+      "Icmp6InMLDv2Reports": 0,
+      "Icmp6InMsgs": 275,
+      "Icmp6InNeighborAdvertisements": 268,
+      "Icmp6InNeighborSolicits": 5,
+      "Icmp6InParmProblems": 0,
+      "Icmp6InPktTooBigs": 0,
+      "Icmp6InRedirects": 0,
+      "Icmp6InRouterAdvertisements": 0,
+      "Icmp6InRouterSolicits": 0,
+      "Icmp6InTimeExcds": 0,
+      "Icmp6InType131": 1,
+      "Icmp6InType132": 1,
+      "Icmp6InType135": 5,
+      "Icmp6InType136": 268,
+      "Icmp6OutDestUnreachs": 0,
+      "Icmp6OutEchoReplies": 0,
+      "Icmp6OutEchos": 0,
+      "Icmp6OutErrors": 0,
+      "Icmp6OutGroupMembQueries": 0,
+      "Icmp6OutGroupMembReductions": 0,
+      "Icmp6OutGroupMembResponses": 0,
+      "Icmp6OutMLDv2Reports": 1208,
+      "Icmp6OutMsgs": 1815,
+      "Icmp6OutNeighborAdvertisements": 5,
+      "Icmp6OutNeighborSolicits": 206,
+      "Icmp6OutParmProblems": 0,
+      "Icmp6OutPktTooBigs": 0,
+      "Icmp6OutRedirects": 0,
+      "Icmp6OutRouterAdvertisements": 0,
+      "Icmp6OutRouterSolicits": 396,
+      "Icmp6OutTimeExcds": 0,
+      "Icmp6OutType133": 396,
+      "Icmp6OutType135": 206,
+      "Icmp6OutType136": 5,
+      "Icmp6OutType143": 1208,
+      "Ip6FragCreates": 0,
+      "Ip6FragFails": 0,
+      "Ip6FragOKs": 0,
+      "Ip6InAddrErrors": 0,
+      "Ip6InBcastOctets": 0,
+      "Ip6InCEPkts": 0,
+      "Ip6InDelivers": 490145,
+      "Ip6InDiscards": 0,
+      "Ip6InECT0Pkts": 0,
+      "Ip6InECT1Pkts": 0,
+      "Ip6InHdrErrors": 0,
+      "Ip6InMcastOctets": 131896014,
+      "Ip6InMcastPkts": 488766,
+      "Ip6InNoECTPkts": 492196,
+      "Ip6InNoRoutes": 0,
+      "Ip6InOctets": 132343220,
+      "Ip6InReceives": 492189,
+      "Ip6InTooBigErrors": 0,
+      "Ip6InTruncatedPkts": 0,
+      "Ip6InUnknownProtos": 0,
+      "Ip6OutBcastOctets": 0,
+      "Ip6OutDiscards": 6,
+      "Ip6OutForwDatagrams": 0,
+      "Ip6OutMcastOctets": 1076616,
+      "Ip6OutMcastPkts": 10304,
+      "Ip6OutNoRoutes": 249070,
+      "Ip6OutOctets": 1522724,
+      "Ip6OutRequests": 12145,
+      "Ip6ReasmFails": 0,
+      "Ip6ReasmOKs": 0,
+      "Ip6ReasmReqds": 0,
+      "Ip6ReasmTimeout": 0,
+      "Udp6IgnoredMulti": 0,
+      "Udp6InCsumErrors": 0,
+      "Udp6InDatagrams": 486201,
+      "Udp6InErrors": 0,
+      "Udp6NoPorts": 0,
+      "Udp6OutDatagrams": 7273,
+      "Udp6RcvbufErrors": 0,
+      "Udp6SndbufErrors": 0,
+      "UdpLite6InCsumErrors": 0,
+      "UdpLite6InDatagrams": 0,
+      "UdpLite6InErrors": 0,
+      "UdpLite6NoPorts": 0,
+      "UdpLite6OutDatagrams": 0,
+      "UdpLite6RcvbufErrors": 0,
+      "UdpLite6SndbufErrors": 0
+    }
+  }
+
+```
+
 ### sys.inputdir
 
 The name of the inputs directory where CFEngine looks for its policy files.
@@ -308,6 +833,83 @@ local variables can be iterated.
 ```
 
 **History:** Was introduced in 3.3.0, Enterprise 2.2.0 (2011)
+
+### sys.interfaces_data
+
+The network statistics of the system interfaces, from when the agent initialized. This is currently available only on Linux systems with the special `/proc/net/dev` file.
+
+**History:** Was introduced in 3.9.0.
+
+**See also:** `sys.inet6`, `sys.inet`
+
+```
+    % cat /proc/net/dev
+Inter-|   Receive                                                |  Transmit
+ face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed
+enp4s0: 446377831179 492136556    0    0    0     0          0         0 428200856331 499195545    0    0    0     0       0          0
+    lo: 1210580426 1049790    0    0    0     0          0         0 1210580426 1049790    0    0    0     0       0          0
+wlp3s0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0
+
+    # sys.interfaces_data = {
+    "enp4s0": {
+      "device": "enp4s0",
+      "receive_bytes": "446377831179",
+      "receive_compressed": "0",
+      "receive_drop": "0",
+      "receive_errors": "0",
+      "receive_fifo": "0",
+      "receive_frame": "0",
+      "receive_multicast": "0",
+      "receive_packets": "492136556",
+      "transmit_bytes": "428200856331",
+      "transmit_compressed": "0",
+      "transmit_drop": "0",
+      "transmit_errors": "0",
+      "transmit_fifo": "0",
+      "transmit_frame": "0",
+      "transmit_multicast": "0",
+      "transmit_packets": "499195545"
+    },
+    "lo": {
+      "device": "lo",
+      "receive_bytes": "1210580426",
+      "receive_compressed": "0",
+      "receive_drop": "0",
+      "receive_errors": "0",
+      "receive_fifo": "0",
+      "receive_frame": "0",
+      "receive_multicast": "0",
+      "receive_packets": "1049790",
+      "transmit_bytes": "1210580426",
+      "transmit_compressed": "0",
+      "transmit_drop": "0",
+      "transmit_errors": "0",
+      "transmit_fifo": "0",
+      "transmit_frame": "0",
+      "transmit_multicast": "0",
+      "transmit_packets": "1049790"
+    },
+    "wlp3s0": {
+      "device": "wlp3s0",
+      "receive_bytes": "0",
+      "receive_compressed": "0",
+      "receive_drop": "0",
+      "receive_errors": "0",
+      "receive_fifo": "0",
+      "receive_frame": "0",
+      "receive_multicast": "0",
+      "receive_packets": "0",
+      "transmit_bytes": "0",
+      "transmit_compressed": "0",
+      "transmit_drop": "0",
+      "transmit_errors": "0",
+      "transmit_fifo": "0",
+      "transmit_frame": "0",
+      "transmit_multicast": "0",
+      "transmit_packets": "0"
+    }
+  }
+```
 
 ### sys.interface_flags
 
