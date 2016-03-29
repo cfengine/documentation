@@ -7,7 +7,7 @@ tags: [reference, files functions, functions, isplain]
 
 [%CFEngine_function_prototype(filename)%]
 
-**Description:** Returns whether the named object `filename` is a 
+**Description:** Returns whether the named object `filename` is a
 plain/regular file.
 
 [%CFEngine_function_attributes(filename)%]

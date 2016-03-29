@@ -10,12 +10,12 @@ All Design Center sketches consists of at least two files:
 * `sketch.json`
 * `main.cf`
 
-There might be additional supporting files for testing and additional CFEngine 
+There might be additional supporting files for testing and additional CFEngine
 policy files (*.cf) for more advanced sketches.
 
 ## sketch.json
 
-This file contains metadata about the sketch and declares the interface to the 
+This file contains metadata about the sketch and declares the interface to the
 sketch. A minimal sketch.json file looks like this:
 
 ````
@@ -56,8 +56,8 @@ sketch. A minimal sketch.json file looks like this:
 
 ### CFEngine Enterprise Compatibility
 
-For a sketch to work well with the CFEngine Enterprise Design Center graphical 
-user interface (GUI), all of the above attributes must be specified. Some 
+For a sketch to work well with the CFEngine Enterprise Design Center graphical
+user interface (GUI), all of the above attributes must be specified. Some
 additional requirements are noted below.
 
 The `depends.os` attribute is checked when a user is activating a sketch, to
@@ -67,17 +67,17 @@ all the operating systems listed in `depends.os` is working well with the sketch
 Each element has the format `{ "os_class" : "OS friendly name" }`. "OS friendly
 name" is displayed in the GUI.
 
-The `enterprise_compatible` tag must be set, otherwise it will not show up as 
+The `enterprise_compatible` tag must be set, otherwise it will not show up as
 an available sketch in the GUI.
 
 All items in api.bundlename:
 
-* any element that takes input (excluding e.g. runenv and metadata) must have 
-`type` either `string` or `list` (support for more types will be added in the 
+* any element that takes input (excluding e.g. runenv and metadata) must have
+`type` either `string` or `list` (support for more types will be added in the
 future)
-* `validation` must be a validation that has been defined in the API (living 
+* `validation` must be a validation that has been defined in the API (living
 either in `constdata.conf` or `vardata.conf`)
-* the referenced validation can use `minimum_value`, `maximum_value`, or 
+* the referenced validation can use `minimum_value`, `maximum_value`, or
 `valid_regex`.  Other choices are available in Enterprise 3.6.
 
 ## Upgrading sketches

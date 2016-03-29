@@ -44,7 +44,7 @@ For example I can link to [collecting functions][Functions#collecting functions]
 <!--- Cheating here - this page is not published, so included from link map -->
 [top of the page](markdown-cheatsheet.html), to the [Markdown Cheatsheet](markdown-cheatsheet.html), [inside page](markdown-cheatsheet.html#Links) and [inside current page](markdown-cheatsheet.html#Links)
 
-**Note:** For known pages, see the 
+**Note:** For known pages, see the
 [_references.md](https://github.com/cfengine/documentation-generator/blob/master/_references.md)
 file.
 
@@ -75,7 +75,7 @@ However, the preprocess will not create links if the code word is in triple back
 
 ## Lists
 
-Unordered lists - Markdown supports other markers than the asterisk, but in 
+Unordered lists - Markdown supports other markers than the asterisk, but in
 CFEngine we use only `*`.
 
 ```
@@ -155,7 +155,7 @@ Just indent by four spaces:
 or use three backticks:
 
     ```
-    some more code 
+    some more code
     in a block
     ```
 
@@ -358,7 +358,7 @@ You can also use backticks (and get syntax highlighting) - just make sure the ba
 
     	```cf3
     	# CFEngine block
-    
+
     	bundle agent example()
     	{
     	}
@@ -371,7 +371,7 @@ You can also use backticks (and get syntax highlighting) - just make sure the ba
 
 	```cf3
 	# CFEngine block
-    
+
 	bundle agent example()
 	{
 	}

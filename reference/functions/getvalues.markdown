@@ -12,7 +12,7 @@ the name of an array or container.
 
 This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
 
-If the array contains list values, then all of the list elements are flattened 
+If the array contains list values, then all of the list elements are flattened
 into a single list to make the return value a list.
 
 If the data container contains non-scalar values (e.g. nested

@@ -13,7 +13,7 @@ This function turns arbitrary text into class data.
 
 [%CFEngine_function_attributes(text)%]
 
-**Example:**  
+**Example:**
 
 
 [%CFEngine_include_snippet(canonify.cf, #\+begin_src cfengine3, .*end_src)%]

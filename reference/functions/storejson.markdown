@@ -18,9 +18,9 @@ This is a [collecting function][Functions#collecting functions] so it can accept
 ```cf3
    vars:
 
-      "loadthis" 
+      "loadthis"
          data =>  readjson("/tmp/data.json", 4000);
-      "andback" 
+      "andback"
          string =>  storejson(loadthis);
    reports:
       "Converted /tmp/data.json to '$(andback)'";

@@ -12,7 +12,7 @@ CFEngine {{site.cfengine.branch}}.
 We reccomend upgrading the Masterfiles Policy Framework first so that you can
 verify that the new policy will work with your old clients across the
 infrastructure. Once the latest policy has been deployed successfully we
-reccomend upgrading the Policy Server and finally the remote agents. 
+reccomend upgrading the Policy Server and finally the remote agents.
 
 ## Upgrade masterfiles and Policy Server ({{site.cfengine.branch}}.X to {{site.cfengine.branch}}.X+1)
 
@@ -69,7 +69,7 @@ versions) below.
    upgrade section below.
 
 4. Copy the merged masterfiles from the perparation you did above.
-   * `rm -rf /var/cfengine/masterfiles/*` 
+   * `rm -rf /var/cfengine/masterfiles/*`
    * `cp /root/{{site.cfengine.branch}}/masterfiles/* /var/cfengine/masterfiles/`
 
 5. On your existing Policy Server, stop the CFEngine services.
@@ -110,7 +110,7 @@ versions) below.
 4. Use `cf-promises` to verify that the policy runs with {{site.cfengine.branch}}, by running `cf-promises /root/{{site.cfengine.branch}}/masterfiles/promises.cf` and `cf-promises /root/{{site.cfengine.branch}}/masterfiles/update.cf`.
 5. Use `cf-promises` to verify that the policy runs with you previous version of CFEngine (e.g. 3.7), by running the same commands as above on a node with that CFEngine version.
 6. The merged masterfiles should now be based on the {{site.cfengine.branch}} framework, include your policies and work on both the version you are upgrading from and with {{site.cfengine.branch}}.
-    
+
 
 ## Prepare Client upgrade (all versions)
 
@@ -121,7 +121,7 @@ versions) below.
    `masterfiles/controls/VER/update_def.cf` or the `augments_file` also known
    as `def.json` for a small set of clients. For example in the appropriate
    `update_def.cf` file(s) change `!any`  to an appropriate class like an IP
-   network `ipv4_10_10_1|ipv4_10_10_2` or in `def.json` 
+   network `ipv4_10_10_1|ipv4_10_10_2` or in `def.json`
 
    ```json
    {

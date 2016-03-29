@@ -49,7 +49,7 @@ Sets up some global variables that are used frequently by other bundles.
 	
 ```cf3
 bundle common global_vars
-{   
+{
 	vars:
 
 	  "gccexec" string => getenv("GCC_BIN",255);
@@ -139,14 +139,14 @@ The difference between this application and using CFEngine's built in support fo
 ```cf3
 bundle agent create_aout
 {
-  
+
 	classes:
-  
+
 	"doesfileacexist" expression => fileexists("$(global_vars.workdir)/a.c");
 	"doesaoutexist" expression => fileexists("$(global_vars.aoutbin)");
 
   vars:
-  
+
 	# Removes any previous binary
 	"rmaout" string => execresult("$(global_vars.rmexec) $(global_vars.aoutexec)","noshell");
 	
@@ -155,7 +155,7 @@ bundle agent create_aout
 	"gccaout" string => execresult("$(compilestr)","noshell");
 
   reports:
-	doesfileacexist::  
+	doesfileacexist::
 	  "gcc output: $(gccaout)";
 	  "Creating aout using $(compilestr)";
 	!doesfileacexist::
@@ -191,24 +191,24 @@ bundle agent do_files_exist_1
 {
 
   classes:
-  
+
 	"doesfile1exist" expression => fileexists("$(global_vars.file1)");
 	"doesfile2exist" expression => fileexists("$(global_vars.file2)");
 
   methods:
-  
+
 	doesfile1exist::
 
 	"any" usebundle => delete_file("$(global_vars.file1)");	
 	doesfile2exist::
 	"any" usebundle => delete_file("$(global_vars.file2)");	
   reports:
-  
+
 	!doesfile1exist::
 	  "$(global_vars.file1) does not exist.";
 	doesfile1exist::
 	  "$(global_vars.file1) did exist. Call to delete it was made.";	
-	  
+	
 	!doesfile2exist::
 	  "$(global_vars.file2) does not exist.";
 	doesfile2exist::
@@ -289,11 +289,11 @@ Reports the contents of each test file.
 bundle agent list_file_1
 {
 
-  methods:	  
+  methods:	
 	"any" usebundle => file_content($(global_vars.file1));
 	"any" usebundle => file_content($(global_vars.file2));
   reports:
-	"*********************************";  
+	"*********************************";
 
 }
 ```
@@ -310,7 +310,7 @@ bundle agent exec_aout
   vars:
 	doesaoutexist::
 	"aout" string => execresult("$(global_vars.aoutexec)","noshell");
-  
+
   reports:
 	doesaoutexist::
 	"*********************************";
@@ -329,14 +329,14 @@ Compares the modified time of each test file using the binary application compil
 ```cf3
 bundle agent stat
 {
-  
+
   classes:
-  
+
 	"doesfile1exist" expression => fileexists("$(global_vars.file1)");
 	"doesfile2exist" expression => fileexists("$(global_vars.file2)");
 
   vars:
-  
+
 	doesfile1exist::
 	
 	"file1" string => "$(global_vars.file1)";
@@ -392,11 +392,11 @@ Uses `filestat` and `isnewerthan` to compare the two test files to see if the se
 ```cf3
 bundle agent list_file_2
 {
-	  
+	
   methods:
 
 	  "any" usebundle => file_content($(global_vars.file1));
-	  "any" usebundle => file_content($(global_vars.file2));	  
+	  "any" usebundle => file_content($(global_vars.file2));	
 
   classes:
 

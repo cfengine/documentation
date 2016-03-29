@@ -12,24 +12,24 @@ tags: [reference, data functions, functions, getfields]
 The function returns the number of lines matched. This function is most
 useful when you want only the first matching line (e.g., to mimic the
 behavior of the *getpwnam(3)* on the file `/etc/passwd`). If you want to
-examine *all* matching lines, use [readstringarray()][readstringarray] 
+examine *all* matching lines, use [readstringarray()][readstringarray]
 instead.
 
 **Arguments**:
 
-* `regex` : Regular expression to match line, in the range `.*`  
+* `regex` : Regular expression to match line, in the range `.*`
 
 A regular expression matching one or more lines. The regular expression
-is [anchored][anchored], meaning it must match the entire line.   
+is [anchored][anchored], meaning it must match the entire line.
 
 * `filename` : Filename to read, in the range `"?(/.*)`
 
-The name of the file to be examined.   
+The name of the file to be examined.
 
 * `split` : Regular expression to split fields, in the range `.*`
 
 A regex pattern that is used to parse the field separator(s) to split up
-the file into items   
+the file into items
 
 * `array_lval` : Return array name, in the range `.*`
 

@@ -265,7 +265,7 @@ For details see [cfengine_internal_agent_email][The Policy Framework#cfengine_in
 
 Just use `template_data => @(mycontainer)`.
 
-If you need to extract a portion of the container or merge it with another, use 
+If you need to extract a portion of the container or merge it with another, use
 `template_data => mergedata("mycontainer[piece]", "othercontainer")`.
 
 #### Can I render a Mustache template into a string? ####

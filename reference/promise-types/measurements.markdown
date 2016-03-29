@@ -10,15 +10,15 @@ tags: [reference, bundle monitor, measurements, monitoring, promise types]
 By default,CFEngine's monitoring component `cf-monitord` records performance data about the system. These include process counts, service traffic, load average and CPU utilization and temperature when available.
 
 CFEngine Enterprise extends this in two ways. First it adds a three year trend
-summary based any 'shift'-averages. Second, it adds customizable 
-`measurements` promises to  monitor or log very specific user data through a 
-generic interface. The end-result is to either generate a periodic time 
-series, like the above mentioned values, or to log the results to 
+summary based any 'shift'-averages. Second, it adds customizable
+`measurements` promises to  monitor or log very specific user data through a
+generic interface. The end-result is to either generate a periodic time
+series, like the above mentioned values, or to log the results to
 custom-defined reports.
 
-Promises of type `measurement` are written just like all other promises within 
-a bundle destined for the agent concerned, in this case `monitor`. However, it 
-is not necessary to add them to the `bundlesequence`, because `cf-monitord` 
+Promises of type `measurement` are written just like all other promises within
+a bundle destined for the agent concerned, in this case `monitor`. However, it
+is not necessary to add them to the `bundlesequence`, because `cf-monitord`
 executes all bundles of type `monitor`.
 
 ```cf3
@@ -72,9 +72,9 @@ It is important to specify a promise `handle` for measurement promises, as the n
     }
 ```
 
-The general pattern of these promises is to decide whether the source of the 
-information is either a file or pipe, determine the data type (integer, string 
-etc.), specify a pattern to match the result in the file stream and then 
+The general pattern of these promises is to decide whether the source of the
+information is either a file or pipe, determine the data type (integer, string
+etc.), specify a pattern to match the result in the file stream and then
 specify what to do with the result afterwards.
 
 ***
@@ -85,8 +85,8 @@ specify what to do with the result afterwards.
 
 **Description:** The datatype being collected.
 
-CFEngine treats all input using a stream abstraction. The preferred interface 
-is files, since they can be read without incurring the cost of a process. 
+CFEngine treats all input using a stream abstraction. The preferred interface
+is files, since they can be read without incurring the cost of a process.
 However pipes from executed commands may also be invoked.
 
 **Type:** (menu option)
@@ -112,7 +112,7 @@ When CFEngine observes data, such as the attached partitions in the example abov
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     counter
@@ -146,22 +146,22 @@ isolated value
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 * `scalar`
 
 A single value, with compressed statistics is retained. The value of the
 data is not expected to change much for the lifetime of the daemon (and
-so will be sampled less often by cf-monitord).   
+so will be sampled less often by cf-monitord).
 
 * `static`
 
-A synonym for 'scalar'.   
+A synonym for 'scalar'.
 
 * `log`
 
 The measured value is logged as an infinite time-series in
-\$(sys.workdir)/state.   
+\$(sys.workdir)/state.
 
 * `weekly`
 
@@ -203,7 +203,7 @@ This is an arbitrary string used in documentation only.
       history_type => "weekly",
       units => "kB",
       match_value => proc_value(".*cf-monitord.*",
-        
+
          "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*");
 ```
 
@@ -230,14 +230,14 @@ This attribute is mutually exclusive of `select_line_number`.
 
 ```cf3
      # Editing
-     
+
      body location example
      {
      select_line_matching => "Expression match.* whole line";
      }
-     
+
      # Measurement promises
-     
+
      body match_value example
      {
      select_line_matching => "Expression match.* whole line";
@@ -248,7 +248,7 @@ This attribute is mutually exclusive of `select_line_number`.
 
 **Description:** Read from the n-th line of the output (fixed format)
 
-This is mutually exclusive of [`select_line_matching`][measurements#select_line_matching].   
+This is mutually exclusive of [`select_line_matching`][measurements#select_line_matching].
 
 **Type:** `int`
 
@@ -271,8 +271,8 @@ This is mutually exclusive of [`select_line_matching`][measurements#select_line_
 **Description:** Regular expression that should contain a single
 back-reference for extracting a value.
 
-A single parenthesized back-reference should be given to lift the value to be 
-measured out of the text stream. The regular expression is [unanchored][unanchored], meaning 
+A single parenthesized back-reference should be given to lift the value to be
+measured out of the text stream. The regular expression is [unanchored][unanchored], meaning
 it may match a partial string
 
 **Type:** `string`
@@ -295,7 +295,7 @@ it may match a partial string
 read when opening the file, and resets to the start if the file has
 since been truncated
 
-This option applies only to file based input streams. If this is true, 
+This option applies only to file based input streams. If this is true,
 CFEngine treats the file as if it were a log file, growing continuously.
 Thus the monitor reads all new entries since the last sampling time on
 each invocation. In this way, the monitor does not count lines in the
@@ -312,28 +312,28 @@ logfile | grep pattern in Unix parlance.
      bundle monitor watch
      {
      measurements:
-     
+
         "/home/mark/tmp/file"
-     
+
               handle => "line_counter",
          stream_type => "file",
            data_type => "counter",
          match_value => scan_log("MYLINE.*"),
         history_type => "log",
               action => sample_rate("0");
-     
+
      }
-     
+
      #
-     
+
      body match_value scan_log(x)
      {
      select_line_matching => "^$(x)$";
      track_growing_file => "true";
      }
-     
+
      #
-     
+
      body action sample_rate(x)
      {
      ifelapsed => "$(x)";
@@ -353,7 +353,7 @@ are used only the first match is used.
 
 **Type:** (menu option)
 
-**Allowed input range:**   
+**Allowed input range:**
 
 ```
     average
@@ -370,7 +370,7 @@ are used only the first match is used.
       select_line_matching => ".*$(xxx).*";
       extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).*";
       select_multiline_policy => "sum";
-     } 
+     }
 ```
 
 **History:** Was introduced in 3.4.0 (2012)

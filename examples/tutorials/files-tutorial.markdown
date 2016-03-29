@@ -46,10 +46,10 @@ Note: The following workflow assumes the directory /home/user already exists. If
 2. Run the following command to remove any existing test file at the location we wish to use for testing this example:
 
 	```console
-	rm /home/user/test_plain.txt 
+	rm /home/user/test_plain.txt
 	```
 
-3. Test to ensure there is no file /home/user/test_plain.txt, using the following command (the expected result is that there should be no file listed at the location /home/user/test_plain.txt): 
+3. Test to ensure there is no file /home/user/test_plain.txt, using the following command (the expected result is that there should be no file listed at the location /home/user/test_plain.txt):
 
 	```console
 	ls /home/user/test_plain.txt

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Windows Registry Examples 
+title: Windows Registry Examples
 published: true
 sorting: 14
 tags: [Examples,Windows Registry]

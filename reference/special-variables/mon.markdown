@@ -6,26 +6,26 @@ tags: [reference, variables, mon, cf-monitord, monitoring]
 ---
 
 The variables discovered by `cf-monitord` are placed in this monitoring
-context. Monitoring variables are expected to be changing rapidly - values are 
+context. Monitoring variables are expected to be changing rapidly - values are
 typically updated or added every 2.5 minutes.
 
-In CFEngine Enterprise, custom defined monitoring targets also become 
-variables in this context, named by the handle of the promise that defined 
+In CFEngine Enterprise, custom defined monitoring targets also become
+variables in this context, named by the handle of the promise that defined
 them.
 
 ### mon.listening_udp4_ports
 
-Port numbers that were observed to be set up to receive connections on the 
+Port numbers that were observed to be set up to receive connections on the
 host concerned.
 
 ### mon.listening_tcp4_ports
 
-Port numbers that were observed to be set up to receive connections on the 
+Port numbers that were observed to be set up to receive connections on the
 host concerned.
 
 ### mon.listening_udp6_ports
 
-Port numbers that were observed to be set up to receive connections on the 
+Port numbers that were observed to be set up to receive connections on the
 host concerned.
 
 ### mon.listening_tcp6_ports

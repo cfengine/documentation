@@ -11,7 +11,7 @@ tags: [reference, data functions, functions, shuffle, inline_json]
 
 This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
 
-The same seed will produce the same shuffle every time. For a random shuffle, 
+The same seed will produce the same shuffle every time. For a random shuffle,
 provide a random seed with the `randomint` function.
 
 [%CFEngine_function_attributes(list, seed)%]

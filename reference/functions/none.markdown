@@ -7,7 +7,7 @@ tags: [reference, data functions, functions, none, inline_json]
 
 [%CFEngine_function_prototype(regex, list)%]
 
-**Description:** Returns whether no element in `list` matches the regular 
+**Description:** Returns whether no element in `list` matches the regular
 expression `regex`.
 
 This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.

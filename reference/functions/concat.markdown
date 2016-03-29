@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, concat]
 
 **Description:** Concatenates all arguments into a string.
 
-**Example:**  
+**Example:**
 
 ```cf3
     commands:

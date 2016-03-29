@@ -1,6 +1,6 @@
 ---
 layout: default
-title: System Administration Examples 
+title: System Administration Examples
 published: true
 sorting: 12
 tags: [Examples,System Administration]

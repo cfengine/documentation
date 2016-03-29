@@ -6,13 +6,13 @@ sorting: 10
 tags: [manuals, enterprise, reporting, architecture, cf-hub]
 ---
 
-The reporting architecture of CFEngine Enterprise uses two software 
+The reporting architecture of CFEngine Enterprise uses two software
 components from the CFEngine Enterprise hub package.
 
 ## cf-hub ##
 
-Like all CFEngine components, `cf-hub` is 
-located in `/var/cfengine/bin`. It is a daemon process that runs in the 
+Like all CFEngine components, `cf-hub` is
+located in `/var/cfengine/bin`. It is a daemon process that runs in the
 background, and is started by `cf-agent` and from the init scripts.
 
 `cf-hub` wakes up every 5 minutes and connects to the `cf-serverd` of

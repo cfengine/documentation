@@ -9,8 +9,8 @@ tags: [reference, data functions, functions, product, inline_json]
 
 **Description:** Returns the product of the reals in `list`.
 
-This function might be used for simple ring computation. Of course, you could 
-easily combine `product` with `readstringarray` or `readreallist` etc., to 
+This function might be used for simple ring computation. Of course, you could
+easily combine `product` with `readstringarray` or `readreallist` etc., to
 collect summary information from a source external to CFEngine.
 
 This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.

@@ -7,7 +7,7 @@ body common control {
 }
 
 bundle common global_vars
-{   
+{
     vars:
 
       "host_ip" string => "10.100.100.129";
