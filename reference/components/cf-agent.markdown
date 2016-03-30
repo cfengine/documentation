@@ -115,14 +115,13 @@ body agent control
 
 ### abortclasses
 
-**Description:** The `abortclasses` slist contains classes which if defined
-lead to termination of cf-agent.
+**Description:** The `abortclasses` slist contains regular expressions that
+match classes which if defined lead to termination of cf-agent.
 
 Regular expressions are used for classes that `cf-agent` will watch out
 for. If any matching class becomes defined, it will cause the
 current execution of `cf-agent` to be aborted. This may be used for
-validation, for example. To handle class expressions, simply create
-an alias for the expression with a single name.
+validation, for example.
 
 **Type:** `slist`
 
@@ -131,17 +130,56 @@ an alias for the expression with a single name.
 **Example:**
 
 ```cf3
-     body agent control
-
-      {
-      abortclasses => { "danger.*", "should_not_continue" };
-      }
+body agent control
+{
+  abortclasses => { "danger.*", "should_not_continue" };
+}
 ```
+
+**Note:** CFEngine class expressions are **not** supported. To handle class
+expressions, simply create an alias for the expression with a single name.
+
+For example:
+
+```cf3
+body agent control
+{
+  abortclasses => { "danger.*", "should_not_continue" };
+}
+
+bundle agent bundle_a
+{
+  classes:
+    "abort_condition_a"
+      expression => "any",
+      scope => "namespace";
+}
+
+bundle common bundle_b
+{
+  classes:
+    "abort_condition_b" expression => "any";
+}
+
+bundle agent bundle_c
+{
+  classes:
+
+    # Here we define a class that will match the abortclasses under more complex
+    # conditions
+
+    "should_not_continue"
+      expression => "(abort_condition_a.abort_condition_b).!something_else" },
+      scope => "namespace";
+}
+```
+
+
 
 ### abortbundleclasses
 
-**Description:** The `abortbundleclasses` slist contains classes which
-if defined lead to termination of current bundle.
+**Description:** The `abortbundleclasses` slist contains regular expressions
+that match classes which if defined lead to termination of current bundle.
 
 Regular expressions are used for classes, or class expressions
 that `cf-agent` will watch out for. If any of these classes becomes
