@@ -169,7 +169,7 @@ bundle agent bundle_c
     # conditions
 
     "should_not_continue"
-      expression => "(abort_condition_a.abort_condition_b).!something_else" },
+      expression => "(abort_condition_a.abort_condition_b).!something_else",
       scope => "namespace";
 }
 ```
