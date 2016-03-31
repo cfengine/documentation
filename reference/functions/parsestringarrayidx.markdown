@@ -13,6 +13,10 @@ tags: [reference, io functions, functions, parsestringarrayidx]
 This function mirrors the exact behavior of `readstringarrayidx()`, but
 reads data from a variable instead of a file. By making data readable from a variable, data driven policies can be kept inline.
 
+The `comment` field is a multiline regular expression and will strip out
+unwanted patterns from the file being read, leaving unstripped characters to be
+split into fields. Using the empty string (`""`) indicates no comments.
+
 [%CFEngine_function_attributes(array, input, comment, split, maxentries, maxbytes)%]
 
 **Example:**
