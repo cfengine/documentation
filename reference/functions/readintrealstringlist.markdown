@@ -14,9 +14,9 @@ tags: [reference, io functions, functions, readintlist, readreallist, readstring
 **Description:** Splits the file `filename` into separated
 values and returns the list.
 
-The `comment` regex will strip out unwanted patterns from the file being read,
-leaving unstripped characters to be split into fields. Using the empty string
-(`""`) indicates no comments.
+The `comment` field is a multiline regular expression and will strip out
+unwanted patterns from the file being read, leaving unstripped characters to be
+split into fields. Using the empty string (`""`) indicates no comments.
 
 **Arguments**:
 
@@ -40,4 +40,3 @@ Run:
 Output:
 
 [%CFEngine_include_snippet(readintrealstringlist.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
-
