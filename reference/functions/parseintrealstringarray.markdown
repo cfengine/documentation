@@ -19,6 +19,10 @@ These functions mirror the exact behavior of their
 instead of a file. By making data readable from a variable, data driven
 policies can be kept inline.
 
+The `comment` field is a multiline regular expression and will strip out
+unwanted patterns from the file being read, leaving unstripped characters to be
+split into fields. Using the empty string (`""`) indicates no comments.
+
 **Arguments**:
 
 * `array` : Array identifier to populate, in the range
