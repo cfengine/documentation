@@ -31,6 +31,10 @@ The current host name does not need to belong to this file.  If it's
 found (fully qualified or unqualified), the string `localhost` is used
 instead of the host name.
 
+The `comment` field is a multiline regular expression and will strip out
+unwanted patterns from the file being read, leaving unstripped characters to be
+split into fields. Using the empty string (`""`) indicates no comments.
+
 [%CFEngine_function_attributes(filename, regex, groupsize)%]
 
 `groupsize` must be between 2 and 64 to avoid nonsensical promises.
