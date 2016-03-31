@@ -18,9 +18,9 @@ Reads a two dimensional array from a file. One dimension is separated by the
 regex `split`, the other by the lines in the file. The first field of the
 lines names the first array argument.
 
-The `comment` field will strip out unwanted patterns from the file being
-read, leaving unstripped characters to be split into fields. Using the
-empty string (`""`) indicates no comments.
+The `comment` field is a multiline regular expression and will strip out
+unwanted patterns from the file being read, leaving unstripped characters to be
+split into fields. Using the empty string (`""`) indicates no comments.
 
 Returns the number of keys in the array, i.e., the number of
 lines matched.
