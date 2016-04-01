@@ -1134,11 +1134,11 @@ credentials.
 
 ### suspiciousnames
 
-**Description:** The `suspiciousnames` slist contains names to warn about
-if found during any file search.
+**Description:** The `suspiciousnames` slist contains names to skip and warn
+about if found during any file search.
 
-If CFEngine sees these names during recursive (depth) file searches
-it will warn about them.
+If CFEngine sees these names during recursive (depth) file searches,
+it will skip them and output a warning message.
 
 **Type:** `slist`
 
