@@ -15,7 +15,9 @@ the file. The array arguments are both integer indexes, allowing for
 non-identifiers at first field (e.g. duplicates or names with spaces), unlike
 `readstringarray`.
 
-The `comment` field will strip out unwanted patterns from the file being read, leaving unstripped characters to be split into fields. Using the empty string (`""`) indicates no comments.
+The `comment` field is a multiline regular expression and will strip out
+unwanted patterns from the file being read, leaving unstripped characters to be
+split into fields. Using the empty string (`""`) indicates no comments.
 
 Returns an integer number of keys in the array (i.e., the number of lines
 matched). If you only want the fields in the first matching line (e.g., to
