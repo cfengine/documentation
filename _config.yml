@@ -22,6 +22,12 @@ cfengine:
   latest_patch_release: NA
   latest_package_build: NA
 
+vagrant:
+  version: "1.7.4"
+
+virtualbox:
+  version: "5.0.16"
+
 paginate: 500
 
 pygments: true
