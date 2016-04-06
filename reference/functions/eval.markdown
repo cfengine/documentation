@@ -14,6 +14,9 @@ expressions.
 
 All the math is done with the C `double` type internally.  The results are returned as a string.  When the `mode` is `math` the returned value is a floating-point value formatted to 6 decimal places as a string.
 
+`mode` and `options` are optional and default to `math` and `infix`,
+respectively.
+
 **Example:**
 
 ```

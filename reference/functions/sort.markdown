@@ -13,7 +13,7 @@ This is a [collecting function][Functions#collecting functions] so it can accept
 
 Lexicographical, integer, real, IP, and MAC address sorting is
 supported currently.  The example below will show each sorting mode in
-action.
+action. `mode` is optional, and defaults to `lex`.
 
 Note IPv6 addresses can not use uppercase hexadecimal characters
 (`A-Z`) but must use lowercase (`a-z`) instead.
