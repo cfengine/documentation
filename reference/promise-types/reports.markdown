@@ -20,16 +20,15 @@ Messages output by report promises are prefixed with the letter R to
 distinguish them from other output.
 
 ```cf3
-    bundle agent report
-    {
-    reports:
+bundle agent report
+{
+  reports:
 
-       "/etc/passwd except $(const.n)"
+    loadavg_high::
 
-        # printfile => pr("/etc/passwd","5");
-
-         showstate => { "otherprocs", "rootprocs" };
-    }
+      "Processes:"
+         printfile => cat("$(sys.statedir)/cf_procs");
+}
 ```
 
 Reports do not fundamentaly make changes to the system and report type promise
@@ -78,36 +77,13 @@ R: found class: report_not_repaired
 
 ### friend_pattern
 
-**Description:** Regular expression to keep selected hosts from the friends
-report list
-
-This regular expression should match hosts we want to exclude from
-friend reports.
-
-**Type:** `string`
-
-**Allowed input range:** (arbitrary string)
-
-**Example:**
-
-```cf3
-reports:
-   "Friend status report"
-           lastseen => "0",
-     friend_pattern => "host1|host2|.*\.domain\.tld";
-```
+**Deprecated:** This attribute is kept for source compatibility,
+and has no effect. Deprecated in CFEngine 3.4.
 
 ### intermittency
 
-**Description:** Real number threshold [0,1] of intermittency about current
-peers, report above
-
-**Type:** `real`
-
-**Allowed input range:** `0,1`
-
-**Default value:** `intermittency => "0"`
-
+**Deprecated:** This attribute is kept for source compatibility,
+and has no effect. Deprecated in CFEngine 3.4.
 
 ### printfile
 
@@ -171,13 +147,14 @@ standard output.
 **Example:**
 
 ```cf3
-    bundle agent test
-    {
-    reports:
-       "$(sys.date),This is a report from $(sys.host)"
+bundle agent main
+{
 
-           report_to_file => "/tmp/test_log";
-    }
+  reports:
+
+      "$(sys.date),This is a report from $(sys.host)"
+        report_to_file => "/tmp/test_log";
+}
 ```
 
 ### bundle_return_value_index
@@ -195,62 +172,42 @@ Return values are limited to scalars.
 **Example:**
 
 ```cf3
-    body common control
-    {
-    bundlesequence => { "test" };
-    }
+bundle agent main
+{
+  methods:
 
-    bundle agent test
-    {
-    methods:
+     "any"
+       usebundle => child,
+       useresult => "my_return_var";
 
-       "any" usebundle => child,
-        useresult => "my_return_var";
+  reports:
 
+     "My return was: '$(my_return_var[1])' and '$(my_return_var[2])' and '$(my_return_var[named])'";
+}
 
-    reports:
-        "My return was: \"$(my_return_var[1])\" and \"$(my_return_var[2])\"";
+bundle agent child
+{
+  reports:
 
-    }
+   # Map these indices into the useresult namespace
 
-    bundle agent child
-    {
-    reports:
-       # Map these indices into the useresult namespace
+     "this is a return value"
+        bundle_return_value_index => "1";
 
-       "this is a return value"
-          bundle_return_value_index => "1";
+     "this is another return value"
+        bundle_return_value_index => "2";
 
-       "this is another return value"
-          bundle_return_value_index => "2";
-
-    }
+     "bundle_return_value_index is not required to be numerical"
+        bundle_return_value_index => "named";
+}
 ```
 
+**History:** Introduced in 3.4.0.
 
 ### lastseen
 
-**Description**: Integer time threshold in hours since current peers were
-last seen, report absence
-
-After this time has passed, CFEngine will begin to warn about the host
-being overdue. After the `lastseenexpireafter` expiry time, hosts will be
-purged from this host's database.
-
-**Type**: `int`
-
-**Allowed input range**: `0,99999999999`
-
-**Default value**: `lastseen => 168 # one week`
-
-**Example**:
-
-```cf3
-    reports:
-      "Comment"
-
-        lastseen => "10";
-```
+**Deprecated:** This attribute is kept for source compatibility,
+and has no effect. Deprecated in CFEngine 3.4.
 
 ### showstate
 
