@@ -64,63 +64,19 @@ process table entry may list `"/bin/cp"`. However, the process pattern `"cp"`
 will also match a process containing `"scp"`, (the PCRE pattern anchors `"\b"`
 and `"\B"` may prove very useful to you).
 
-To restart a process, you should set a class to activate and then describe a
-`command` in that class.
+`process_stop` should only be used for commands that stop processes. To start or
+restart a process, you should set a class to activate and then use a `commands`
+promise together with that class.
 
 ```cf3
+    processes:
+        "/path/executable"
+          restart_class => "restart_me";
+
     commands:
-
       restart_me::
-
        "/path/executable" ... ;
 ```
-
-This rationalizes complex restart-commands and avoids unnecessary overlap
-between `processes` and `commands`.
-
-The `process_stop` is also arguably a command, but it should be an
-ephemeral command that does not lead to a persistent process. It is
-intended only for commands of the form /etc/inetd service stop, not for
-processes that persist. Processes are restarted at the end of a bundle's
-execution, but stop commands are executed immediately.
-
-### Commands and Processes
-
-CFEngine distinguishes between `processes` and [`commands`][commands] so that
-there is a clean separation between detection (promises about the process
-table) and certain repairs (promises to execute commands that start
-processes).
-
-Command executions are about jobs, services, scripts etc. They are properties
-of an executable file, and the referring 'promiser' is a file object. On the
-other hand a process is a property of a "process identifier" which is a kernel
-instantiation, a quite different object altogether. For example:
-
--   A "PID" (which is not an executable) promises to be reminded of a
-    signal, e.g.
-
-```cf3
-    kill signal pid
-```
-
--   An "command" promises to start or stop itself with a parameterized
-    specification.
-
-```cf3
-    exec command argument1 argument2 ...
-```
-
-Neither the file nor the pid necessarily promise to respond to these
-activations, but they are nonetheless physically meaningful phenomena or
-attributes associated with these objects.
-
--   Executable files do not listen for signals as they have no active
-    state.
--   PIDs do not run themselves or stop themselves with new arguments,
-    but they can use signals as they are running.
-
-Executions lead to processes for the duration of their lifetime, so
-these two issues are related, although the promises themselves are not.
 
 ### Platform notes
 
