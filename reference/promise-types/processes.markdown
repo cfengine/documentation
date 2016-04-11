@@ -7,8 +7,8 @@ tags: [reference, bundle agent, promise types, processes, processes promises, pr
 
 Process promises refer to items in the system process table, i.e., a command in
 some state of execution (with a Process Control Block). Promiser objects are
-patterns that are [unanchored][unanchored], meaning that they match line
-fragments in the system process table.
+patterns that are [unanchored][unanchored], meaning that they match parts of
+command lines in the system process table.
 
 ```cf3
       processes:
@@ -20,44 +20,26 @@ fragments in the system process table.
             ..;
 ```
 
-**Note**: Process table formats differ between platforms. You can see
-how cfengine views the process table for your platform by inspecting
-`cf_otherprocs`, `cf_procs`, and `cf_rootprocs` which can be found in
-`$(sys.workdir)/state/` (typically `/var/cfengine/state`).
+**Note**: CFEngine uses the output from the `ps` command to inspect running
+processes, and these formats differ between platforms. You can see how cfengine
+views the process table for your platform by inspecting `cf_otherprocs`,
+`cf_procs`, and `cf_rootprocs` which can be found in `$(sys.workdir)/state/`
+(typically `/var/cfengine/state`).
 
-For example, this is a sample of `$(sys.workdir)/state/cf_rootprocs` on a linux system:
-
-```
-USER       PID  PPID  PGID %CPU %MEM    VSZ  NI       RSS NLWP STIME     ELAPSED     TIME COMMAND
-root         1     0     1  0.0  0.2  19232   0      1096    1 Sep14  1-21:41:52 00:00:00 /sbin/init
-root         2     0     0  0.0  0.0      0   0         0    1 Sep14  1-21:41:52 00:00:00 [kthreadd]
-root         3     2     0  0.0  0.0      0   -         0    1 Sep14  1-21:41:52 00:00:00 [migration/0]
-```
-
-This is an example showing how to restart splunk when a splunkd process owned
-by root is using 80% or more of the CPU.
+This is an example showing how to restart a splunk process owned by root:
 
 ```cf3
 bundle agent example
 {
   processes:
-      # Reference process table in $(sys.workdir)/state/cf_procs
-      # Find lines in the process table starting with root (USER column)
-      # followed by one or more spaces, followed by a digit (PID column),
-      # followed by one or more spaces, followed by a digit (PGID column),
-      # followed by one or more spaces, followed by 8 or 9 followed by a number
-      # in the range 0-9 (to match numbers greater than 80), followed by a dot,
-      # followed by anything, and containing splunkd (expected to match the
-      # COMMAND column).
-
-      "^root\s+\d+\s+\d+\s+\d+\s+[89][0-9]\..*splunkd"
-        handle => "example_splunk_high_cpu_stop_gracefully",
+      "splunkd"
+        process_owner => { "root" },
+        handle => "example_splunk_stop_gracefully",
         process_stop => "/opt/splunkforwarder/bin/splunk stop",
-        comment => "Find splunkd processes owned by root that are consuming more
-		    than 80% of a CPU and restart it with it's preferred
-                    utility. Stop it gracefully with the internal splunk binary.";
+        comment => "Find splunkd processes owned by root. Stop it gracefully
+                    with the internal splunk binary.";
 
-      "^root\s.*splunkd"
+      "splunkd"
         restart_class => "splunk_not_running",
         comment => "Set splunk_not_running class if we cant find any root owned
 		    splunkd processes so that we can restart it using a
@@ -70,12 +52,8 @@ bundle agent example
 }
 ```
 
-Getting complex regular expressions just right can be difficult, so for most
-sophisticated matches, users should use a simple pattern match such as program
-names combinded with a *`process_select`* body before delving into complex regular
-expressions.
-
-This example shows using `process_select` and `process_count` to define a class when a process has been running for longer than a day.
+This example shows using `process_select` and `process_count` to define a class
+when a process has been running for longer than a day.
 
 [%CFEngine_include_example(processes_define_class_based_on_process_runtime.cf)%]
 
@@ -236,6 +214,9 @@ failure to be kept.
 
 **Description:** Regular expression matching the command/cmd field of a
 process
+
+**Note:** For historical reasons, this attribute is identical to the match
+performed by using the promiser, except that the regular expression is anchored.
 
 This expression should match the entire `COMMAND` field of the process
 table, not just a fragment. This field is usually the last field on the
