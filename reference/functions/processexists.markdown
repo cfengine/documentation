@@ -7,7 +7,8 @@ tags: [reference, process functions, functions, processexists, process, processe
 
 [%CFEngine_function_prototype(regex)%]
 
- **Description:** Return whether a process matches the given regular expression `regex`.
+**Description:** Return whether a process matches the given regular expression
+`regex`.
 
 This function searches for the given regular expression in the process
 table. Use `.*sherlock.*` to find all the processes that match
@@ -16,9 +17,10 @@ table. Use `.*sherlock.*` to find all the processes that match
 
 [%CFEngine_function_attributes(regex)%]
 
-The process table is usually obtained with something like
-`ps -eo user,pid,ppid,pgid,%cpu,%mem,vsize,ni,rss,stat,nlwp,stime,time,args`
-but the exact data may change per platform and per CFEngine release.
+The process table is usually obtained with something like `ps -eo
+user,pid,ppid,pgid,%cpu,%mem,vsize,ni,rss,stat,nlwp,stime,time,args`, and the
+`CMD` or `COMMAND` field (`args`) is used to match against. However the exact
+data used may change per platform and per CFEngine release.
 
 **Example:**
 

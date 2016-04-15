@@ -7,7 +7,8 @@ tags: [reference, process functions, functions, findprocesses, process, processe
 
 [%CFEngine_function_prototype(regex)%]
 
-**Description:** Return the list of processes that match the given regular expression `regex`.
+**Description:** Return the list of processes that match the given regular
+expression `regex`.
 
 This function searches for the given regular expression in the process
 table. Use `.*sherlock.*` to find all the processes that match
@@ -20,9 +21,10 @@ The returned data container is a list of key-value maps. Each one is
 guaranteed to have the key `pid` with the process ID. The key `line`
 will also be available with the raw process table contents.
 
-The process table is usually obtained with something like
-`ps -eo user,pid,ppid,pgid,%cpu,%mem,vsize,ni,rss,stat,nlwp,stime,time,args`
-but the exact data under the `line` key may change per platform and per CFEngine release.
+The process table is usually obtained with something like `ps -eo
+user,pid,ppid,pgid,%cpu,%mem,vsize,ni,rss,stat,nlwp,stime,time,args`, and the
+`CMD` or `COMMAND` field (`args`) is used to match against. However the exact
+data used may change per platform and per CFEngine release.
 
 **Example:**
 
