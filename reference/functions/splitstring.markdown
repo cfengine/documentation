@@ -12,9 +12,8 @@ tags: [reference, data functions, functions, splitstring]
 
 The regular expression is [unanchored][unanchored].
 
-If the maximum number of substrings is insufficient to accommodate all
-the entries, the final entry in the generated `slist` will contain the
-rest of the un-split string.
+If the maximum number of substrings is insufficient to accommodate all the
+entries, the rest of the un-split string is thrown away.
 
 [%CFEngine_function_attributes(string, regex, maxent)%]
 
