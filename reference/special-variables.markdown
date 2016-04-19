@@ -33,6 +33,8 @@ Variables defined in a monitoring context.
 * [sys][sys]
 Variables defined in order to automate discovery of system values.
 
+* [def][def]
+Variables with some default value that can be defined by [augments file][Augments] or in policy.
+
 * [this][this]
 Variables used to access information about promises during their execution.
-
