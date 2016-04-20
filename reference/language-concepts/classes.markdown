@@ -304,6 +304,48 @@ unpredictable results are avoided. i.e negative knowledge does not necessarily
 imply that something is not the case, it could simply be unknown. Checking if
 each file exists before calling `isnewerthan` would avoid this problem.
 
+### Operands that are JSON booleans
+
+If an operand is `true` it will succeed, **even though there doesn't have to be
+a class named** `true`. If an operand is `false` it will fail, **even though
+there may be a class named** `false`. This allows JSON booleans from data
+containers to be used in context expressions:
+
+```cf3
+bundle agent main
+{
+    vars:
+      "checks" data => '[true, false]';
+      # find all classes named
+      "classes_named_true" slist => classesmatching('true');
+
+  classes:
+      # always defined
+      "first_check" expression => "$(checks[0])";
+      # never defined
+      "second_check" expression => "$(checks[1])";
+
+  reports:
+      # prints nothing, there are no classes named 'true'
+      "Classes named 'true': $(classes_named_true)";
+
+    first_check::
+      "The class was defined from '$(checks[0])'";
+    !first_check::
+      "The class was NOT defined from '$(checks[0])'";
+    second_check::
+      "The class was defined from '$(checks[1])'";
+    !second_check::
+      "The class was NOT defined from '$(checks[1])'";
+}
+```
+
+Output:
+
+```
+R: The class was defined from 'true'
+R: The class was NOT defined from 'false'
+```
 
 ## Global and Local classes
 

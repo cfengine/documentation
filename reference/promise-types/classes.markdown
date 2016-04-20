@@ -125,8 +125,31 @@ the distribution, CFEngine picks a number between `1-120`, and set the class
 
 **Description:** Evaluate string expression of classes in normal form
 
-Set the class on the left-hand side if the expression on the right-hand
-side evaluates to true.
+Set the class on the left-hand side if the expression on the right-hand side
+evaluates to true. With classes, the notion of "true" is not a boolean state,
+because classes can never be false. They are not booleans. They can be defined
+or undefined, but it's important to understand that a class may be defined
+**during** the execution of the agent, so the result of an expression may
+change during execution.
+
+Expressions can be:
+
+* class names, with or without a namespace
+
+* the literals `true` (always defined) and `false` (never defined) that allow JSON booleans to be used inside expressions
+
+* the logical *and* operation, expressed as `a&b` or `a.b`, which is true if both `a` and `b` are true
+
+* the logical *or* operation, expressed as `a|b`, which is true if either `a` or `b` are true
+
+* the logical *not* operation, expressed as `!a`, which is true if `a` is not
+  true. Note again here that `a` could **become** true during the execution. So
+  if you have `"myclass" expression => "!x"` and `x` starts undefined but is
+  defined later, you could have both `x` **and** `myclass` defined!
+
+* parenthesis `(whatever)` which operate as expected to prioritize expression evaluation
+
+* the return value of a function that returns a class, such as `fileexists()` `and()` `userexists()` etc.
 
 **Type:** `class`
 
@@ -139,6 +162,21 @@ side evaluates to true.
 
       "class_name" expression => "solaris|(linux.specialclass)";
       "has_toor"   expression => userexists("toor");
+
+      # it's unlikely a machine will become Linux during execution
+      # so this is fairly safe
+      "not_linux"   expression => "!linux";
+
+      "a_or_b"   expression => "a|b";
+      # yes, it's OK to define a class twice, and this is the same outcome
+      # with different syntax
+      "a_and_b"   expression => "a&b";
+      "a_and_b"   expression => "a.b";
+
+      # yes, it's OK to define a class twice, and this is the same outcome
+      # with different syntax
+      "linux_and_has_toor" expression => and(userexists("toor"), "linux");
+      "linux_and_has_toor" and => { userexists("toor"), "linux" };
 ```
 
 ### or
