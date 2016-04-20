@@ -123,6 +123,67 @@ symbols may be used if desired.
 
     exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
 
+### mailfilter_exclude
+
+**Description:** List of [anchored][anchored] regular expressions that, if
+matched by a log entry, will cause that log entry to be excluded from agent
+execution emails.
+
+If no filter is set, `cf-execd` acts as if no log entry matches the exclude
+pattern. If a log entry also matches a pattern in `mailfilter_include`, the
+exclude pattern takes precedence.
+
+**Type:** `slist`
+
+**Allowed input range:** `.*`
+
+**Note:** Merely adding or removing a pattern that causes the number of matching
+log entries to change, does not guarantee that the next agent execution will
+generate an email from cf-execd. The actual output from cf-agent still has to be
+different from the previous run for an email to be generated.
+
+**Example:**
+
+```cf3
+    body executor control
+    {
+        # Ignore agent execution emails about permission errors.
+        mailfilter_exclude => { ".*Permission denied.*" };
+    }
+```
+
+**History:** Introduced in CFEngine 3.9.
+
+### mailfilter_include
+
+**Description:** List of [anchored][anchored] regular expressions that must
+match a log entry in order for it to be included in agent execution emails.
+
+If no filter is set, `cf-execd` acts as if every log entry matches the include
+pattern. If a log entry also matches a pattern in `mailfilter_exclude`, the
+exclude pattern takes precedence.
+
+**Type:** `slist`
+
+**Allowed input range:** `.*`
+
+**Note:** Merely adding or removing a pattern that causes the number of matching
+log entries to change, does not guarantee that the next agent execution will
+generate an email from cf-execd. The actual output from cf-agent still has to be
+different from the previous run for an email to be generated.
+
+**Example:**
+
+```cf3
+    body executor control
+    {
+        # Only include reports in agent execution emails.
+        mailfilter_include => { "R:.*" };
+    }
+```
+
+**History:** Introduced in CFEngine 3.9.
+
 ### mailfrom
 
 **Description:** Email-address cfengine mail appears to come from
