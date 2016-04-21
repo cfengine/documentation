@@ -12,7 +12,7 @@ tags: [reference, data functions, functions, join, inline_json]
 Converts a list or data container into a scalar variable using the
 join string in first argument.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 [%CFEngine_function_attributes(glue, list)%]
 

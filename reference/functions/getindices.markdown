@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, getindices, inline_json]
 **Description:** Returns the list of keys in `varref` which can be
 the name of an array or container.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 Make sure you specify the correct scope when supplying the name of the
 variable.

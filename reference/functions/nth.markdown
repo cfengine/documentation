@@ -13,7 +13,7 @@ If an invalid position (below 0 or above the size of the list minus 1)
 or missing key is requested, this function does not return a valid
 value.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 `list_or_container` can be an slist or a data container.  If it's a
 slist, the offset is simply the position in the list.  If it's a data

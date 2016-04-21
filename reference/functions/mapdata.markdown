@@ -14,7 +14,7 @@ is `none`, or canonified when `interpretation` is `canonify`,
 or parsed as JSON when `interpretation` is `json`, or collected from `pattern`,
 invoked as a program, when `interpretation` is `json_pipe`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 The `$(this.k)` and `$(this.v)` variables expand to the key and value
 of the current element, similar to the way `this` is available for

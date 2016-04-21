@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, shuffle, inline_json]
 
 **Description:** Return `list` shuffled with `seed`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 The same seed will produce the same shuffle every time. For a random shuffle,
 provide a random seed with the `randomint` function.

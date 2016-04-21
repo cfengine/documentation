@@ -13,7 +13,7 @@ This is a generic filtering function that returns a list of up to `max_return`
 elements in `list` that match the filtering rules specified in `filter`,
 `is_regex` and `invert`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 **Arguments**:
 

@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, variance, inline_json]
 
 **Description:** Return the variance of the numbers in `list`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 [%CFEngine_function_attributes(list)%]
 

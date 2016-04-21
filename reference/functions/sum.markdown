@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, sum, inline_json]
 
 **Description:** Return the sum of the reals in `list`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 This function might be used for simple ring computation. Of course, you could
 easily combine `sum` with `readstringarray` or `readreallist` etc., to collect

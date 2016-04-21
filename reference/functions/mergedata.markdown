@@ -18,7 +18,7 @@ single array, as you'd expect from merging two arrays.
 If any of the data containers are JSON objects, all the containers are
 treated as JSON objects (for arrays, the key is the element's offset).
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 `mergedata()` is thus a convenient way, together with `getindices()` and
 `getvalues()`, to bridge the gap between data container and the

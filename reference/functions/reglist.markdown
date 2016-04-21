@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, reglist, inline_json]
 **Description:** Returns whether the [anchored][anchored] regular expression
 `regex` matches any item in `list`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 [%CFEngine_function_attributes(list, regex)%]
 

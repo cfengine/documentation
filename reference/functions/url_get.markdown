@@ -13,7 +13,7 @@ tags: [reference, communication functions, functions, url, www, file, ftp, http,
 
 **NOTE** that the `options_container` can be specified as inline JSON
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 Currently only `file`, `http`, and `ftp` URLs are supported.
 Internally, `libcurl` is used.
