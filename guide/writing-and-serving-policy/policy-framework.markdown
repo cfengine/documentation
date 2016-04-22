@@ -33,6 +33,22 @@ We will cover the policy in the order it is activated, starting with
 `update.cf` and its bundlesequence followed by `promises.cf` and its
 bundlesequence.
 
+### Special Classes
+#### persistent\_disable\_*DAEMON*
+
+**Description:** Disable a CFEngine Enterprise daemon component persistently.
+
+`DAEMON` can be one of `cf_execd`, `cf_monitord` or `cf_serverd`.
+
+This will stop the AGENT from starting automatically.
+
+#### clear_persistent\_disable\_*DAEMON*
+
+**Description:** Re-enable a previously disabled CFEngine Enterprise daemon
+component.
+
+`DAEMON` can be one of `cf_execd`, `cf_monitord` or `cf_serverd`.
+
 ### update.cf
 
 Synchronizing clients with the policy server happens here, in
