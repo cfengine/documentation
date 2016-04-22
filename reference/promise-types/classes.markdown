@@ -300,12 +300,12 @@ on [Negative Knowledge][classes and decisions].
 
 ```cf3
     classes:
-      "namespace_context"
+      "namespace_context",
           scope => "namespace";
 
       "bundle_or_namespace_context"; # without an explicit scope, depends on bundle type
 
-      "bundle_context"
+      "bundle_context",
           scope => "bundle";
 ```
 
