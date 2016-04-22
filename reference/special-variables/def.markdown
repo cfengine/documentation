@@ -35,7 +35,7 @@ bundle common def
 ### def.jq
 
 This variable gives a convenient way to invoke
-[jq][https://stedolan.github.io/jq/] for the `mapdata()` function in `json_pipe`
+[jq](https://stedolan.github.io/jq/) for the `mapdata()` function in `json_pipe`
 mode and elsewhere. Note the below is the **default** value defined in the C
 code that you can override in the `vars` section of the
 [augments file][Augments] or in policy as described above.

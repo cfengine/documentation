@@ -43,11 +43,11 @@ The `json_pipe` interpretation is intended to work with programs that take JSON
 as input and produce JSON as output. This is a standard tool convention in the
 Unix world. See the example below for the typical usage.
 
-[jq][https://stedolan.github.io/jq/] has a powerful programming language that
+[jq](https://stedolan.github.io/jq/) has a powerful programming language that
 fits the `json_pipe` interpretation well. It will take JSON input and product
-JSON output. Please read the [jq][https://stedolan.github.io/jq/] manual and
+JSON output. Please read the [jq](https://stedolan.github.io/jq/) manual and
 cookbook to get a feel for the power of this tool. When available,
-[jq][https://stedolan.github.io/jq/] will offer tremendous data manipulation
+[jq](https://stedolan.github.io/jq/) will offer tremendous data manipulation
 power for advanced cases where the built-in CFEngine functions are not enough.
 
 **Example with json_pipe:**
