@@ -140,3 +140,41 @@ versions) below.
 1. Widen the group of hosts on which the `trigger_upgrade` class is set.
 2. Continue to verify from `cf-key -s` or in the Enterprise Mission Portal that hosts are upgraded correctly and start reporting in.
 3. Verify that the list of hosts you captured before the upgrade, e.g. in `/root/3.7/hosts` correspond to what you see is now reporting in.
+
+
+## Optional steps
+
+The steps listed here are not necessary unless you have special needs.
+
+### Migrating Mission Portal database
+
+This step is not needed unless you are upgrading from CFEngine 3.8 or lower, to
+CFEngine 3.9 or higher, and you are unable to use the automatic migration.
+
+Normally the package upgrade will do the migration for you, but if you have a
+very big database, or for other reasons don't have enough space to hold database
+backup files in the `/var/cfengine/state/pg` directory, you may perform these
+steps manually.
+
+1. Before installing the new version of CFEngine, dump the current content of
+   the database to a file using `pg_dump`. You need to do this for each of the
+   three databases, like this:
+
+```
+su cfpostgres -c "/var/cfengine/bin/pg_dump cfdb > cfdb-backup.sql"
+su cfpostgres -c "/var/cfengine/bin/pg_dump cfsettings > cfsettings-backup.sql"
+su cfpostgres -c "/var/cfengine/bin/pg_dump cfmp > cfmp-backup.sql"
+```
+
+2. Shut down CFEngine and then delete or move the `/var/cfengine/state/pg/data`
+   directory in order to prevent the automatic migration by the package scripts.
+
+3. Install the new CFEngine package.
+
+4. Restore the database dump into the new PostgreSQL database by running:
+
+```
+su cfpostgres -c "/var/cfengine/bin/psql cfdb < cfdb-backup.sql"
+su cfpostgres -c "/var/cfengine/bin/psql cfsettings < cfsettings-backup.sql"
+su cfpostgres -c "/var/cfengine/bin/psql cfmp < cfmp-backup.sql"
+```
