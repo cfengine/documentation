@@ -6,13 +6,18 @@ sorting: 30
 ---
 
 This guide documents our recommendation on how to upgrade an existing
-installation of CFEngine Community 3.7 and CFEngine Enterprise 3.7 to
+installation of CFEngine Community 3.7 and 3.8 and CFEngine Enterprise 3.7 and 3.8 to
 CFEngine {{site.cfengine.branch}}.
 
-We reccomend upgrading the Masterfiles Policy Framework first so that you can
+We recommend upgrading the Masterfiles Policy Framework first so that you can
 verify that the new policy will work with your old clients across the
 infrastructure. Once the latest policy has been deployed successfully we
-reccomend upgrading the Policy Server and finally the remote agents.
+recommend upgrading the Policy Server and finally the remote agents.
+
+Upgrading to {{site.cfengine.branch}} from versions older than 3.7 is more
+complicated as some functionality introduced in {{site.cfengine.branch}}
+is not compatible with versions 3.6 and earlier. 
+For more information about upgrading from 3.6 see [Upgrade from 3.6](#upgrade-from-36).
 
 ## Upgrade masterfiles and Policy Server ({{site.cfengine.branch}}.X to {{site.cfengine.branch}}.X+1)
 
@@ -65,10 +70,10 @@ versions) below.
 2. Save the list of hosts currently connecting to the Policy Server.
    * `cf-key -s > /root/3.7/hosts`
 
-3. Prepare masterfiles folowing instrusctions in Prepare masterfiles for
+3. Prepare masterfiles following instructions in the Prepare masterfiles for
    upgrade section below.
 
-4. Copy the merged masterfiles from the perparation you did above.
+4. Copy the merged masterfiles from the preparation you did above.
    * `rm -rf /var/cfengine/masterfiles/*`
    * `cp /root/{{site.cfengine.branch}}/masterfiles/* /var/cfengine/masterfiles/`
 
@@ -110,6 +115,17 @@ versions) below.
 4. Use `cf-promises` to verify that the policy runs with {{site.cfengine.branch}}, by running `cf-promises /root/{{site.cfengine.branch}}/masterfiles/promises.cf` and `cf-promises /root/{{site.cfengine.branch}}/masterfiles/update.cf`.
 5. Use `cf-promises` to verify that the policy runs with you previous version of CFEngine (e.g. 3.7), by running the same commands as above on a node with that CFEngine version.
 6. The merged masterfiles should now be based on the {{site.cfengine.branch}} framework, include your policies and work on both the version you are upgrading from and with {{site.cfengine.branch}}.
+
+## Upgrade from 3.6
+
+As 3.6 policy is not compatible with {{site.cfengine.branch}} some additional steps must be performed to fulfill the upgrade procedure.
+
+1. Beginning with version 3.9 the [Masterfiles Policy Framework][The Policy Framework] defaults to the new packages promise implementation for inventory of [packages installed][packagesmatching()] and [packages updates][packageupdatesmatching()]. See [package_inventory] in body common control for details on modifying the default sources for package inventory.
+   There are `body common control` `package_inventory` and `package_module` attributes which are  not recognized by versions 3.6 and earlier. 
+   While upgrading from 3.6.x make sure that both are commented, so that existing 3.6.x hosts 
+   can communicate with the {{site.cfengine.branch}} hub and can validate policy. 
+   After migrating all the clients to the newest CFEngine version, make sure that both previously commented 
+   parameters are uncommented so that the new package promise can be used as the default one. 
 
 
 ## Prepare Client upgrade (all versions)
