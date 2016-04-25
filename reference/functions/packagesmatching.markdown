@@ -39,12 +39,24 @@ The return is a data container with a list of package descriptions, looking like
 The following code extracts just the package names, then looks for
 some desired packages, and finally reports if they are installed.
 
+**IMPORTANT:** Please note that you need to provide `package_inventory` attribute in `body common control` in order to be able to use this function. Also depending on the value(s) of `package_inventory` only packages from selected package modules will be returned. For more information about `package_inventory` please read [`package_inventory`][Components and Common Control#package_inventory] section.
+
 [%CFEngine_include_example(packagesmatching.cf)%]
 
 **Example:**
 
 ```cf3
       "all_packages" data => packagesmatching(".*", ".*", ".*", ".*");
+```
+
+**Refresh rules:** 
+* inastalled packages cache used by packagesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
+* installed packages cache is refreshed after installing or removing a package.
+* installed packages cache is refreshed if no local cache exists.
+        This means a reliable way to force a refresh of CFEngine's internal package cache is to simply delete the local cache:
+
+```cf3
+            $(sys.statedir)/packages_installed_<package_module>.lmdb*
 ```
 
 **History:** Introduced in CFEngine 3.6
