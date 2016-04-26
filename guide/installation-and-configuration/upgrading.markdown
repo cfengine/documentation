@@ -120,7 +120,7 @@ versions) below.
 
 As 3.6 policy is not compatible with {{site.cfengine.branch}} some additional steps must be performed to fulfill the upgrade procedure.
 
-1. Beginning with version 3.9 the [Masterfiles Policy Framework][The Policy Framework] defaults to the new packages promise implementation for inventory of [packages installed][packagesmatching()] and [packages updates][packageupdatesmatching()]. See [package_inventory] in body common control for details on modifying the default sources for package inventory.
+1. Beginning with version 3.9 the [Masterfiles Policy Framework][The Policy Framework] defaults to the new packages promise implementation for inventory of [packages installed][packagesmatching] and [packages updates][packageupdatesmatching]. See [package_inventory][Components and Common Control#package_inventory] in body common control for details on modifying the default sources for package inventory.
    There are `body common control` `package_inventory` and `package_module` attributes which are  not recognized by versions 3.6 and earlier. 
    While upgrading from 3.6.x make sure that both are commented, so that existing 3.6.x hosts 
    can communicate with the {{site.cfengine.branch}} hub and can validate policy. 
