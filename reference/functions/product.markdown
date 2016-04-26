@@ -13,7 +13,7 @@ This function might be used for simple ring computation. Of course, you could
 easily combine `product` with `readstringarray` or `readreallist` etc., to
 collect summary information from a source external to CFEngine.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 [%CFEngine_function_attributes(list)%]
 

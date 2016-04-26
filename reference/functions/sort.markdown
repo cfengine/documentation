@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, sort, inline_json]
 
 **Description:** Returns `list` sorted according to `mode`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 Lexicographical, integer, real, IP, and MAC address sorting is
 supported currently.  The example below will show each sorting mode in

@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, some, inline_json]
 **Description:** Return whether any element of `list` matches the
 [Unanchored][unanchored] regular expression `regex`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 [%CFEngine_function_attributes(regex, list)%]
 

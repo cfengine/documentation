@@ -12,8 +12,7 @@ tags: [reference, data functions, functions, json, container, expand, inline_jso
 This function will take a data container and expand variable
 references **once** in all keys and values.
 
-This is a [collecting function][Functions#collecting functions] so it can accept
-many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 Any compound (arrays or maps) data structures will be expanded
 recursively, so for instance data in a map inside another map will be

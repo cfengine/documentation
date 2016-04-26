@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, getvalues, inline_json]
 **Description:** Returns the list of values in `varref` which can be
 the name of an array or container.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 If the array contains list values, then all of the list elements are flattened
 into a single list to make the return value a list.

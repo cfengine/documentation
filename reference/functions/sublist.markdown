@@ -9,7 +9,7 @@ tags: [reference, data functions, functions, sublist, inline_json]
 
 **Description:** Returns list of up to `max_elements` of `list`, obtained from head or tail depending on `head_or_tail`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 [%CFEngine_function_attributes(list, head_or_tail, max_elements)%]
 

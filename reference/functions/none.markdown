@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, none, inline_json]
 **Description:** Returns whether no element in `list` matches the regular
 expression `regex`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 [%CFEngine_function_attributes(regex, list)%]
 

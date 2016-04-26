@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, difference, inline_json]
 **Description:** Returns the unique elements in `list1` that are not in
 `list2`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 [%CFEngine_function_attributes(list1, list2)%]
 

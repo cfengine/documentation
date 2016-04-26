@@ -16,7 +16,7 @@ Please note that because JSON uses double quotes, it's usually most
 convenient to use single quotes for the string (CFEngine allows both
 types of quotes around a string).
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 **Example:**
 

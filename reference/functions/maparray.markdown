@@ -10,7 +10,7 @@ tags: [reference, data functions, functions, maparray, inline_json]
 **Description:** Returns a list with each `array_or_container` element
 modified by a `pattern`.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 The `$(this.k)` and `$(this.v)` variables expand to the key and value
 of the current element, similar to the way `this` is available for

@@ -10,7 +10,7 @@ tags: [reference, files functions, functions, makerule, inline_json]
 **Description:** Evaluates whether a `target` file needs to be built or
 rebuilt from one or more `sources` files.
 
-This is a [collecting function][Functions#collecting functions] so it can accept many types of data parameters.
+[This function can accept many types of data parameters.][Functions#collecting functions]
 
 The function is provided to emulate the semantics of the Unix `make` program.
 
