@@ -67,8 +67,9 @@ default:def.phone                        22-333-4444                            
 
   results in `my_always` being always defined. `my_other_apache` will be defined
   if the classes `server3` or `server4` are defined, or if any class starting
-  with `debian` is defined. You can use any classes listed in
-  [Hard and Soft Classes][Hard and Soft Classes#Hard Classes].
+  with `debian` is defined. You can use any **hard** classes listed in
+  [Hard and Soft Classes][Hard and Soft Classes#Hard Classes] with the exception
+  of `am_policy_hub` and `policy_server`.
 
   You can see the list of classes thus defined through `def.json` in the output
   of `cf-promises --show-classes` (see [Components and Common Control][]). They
@@ -91,4 +92,3 @@ variable. This would happen before all evaluation stages. However, this
 functionality turned out to be problematic and was removed in later versions.
 Pre-parsing of `def.cf` was introduced to the 3.7.x series in 3.7.3. In 3.7.3,
 3.8.2 and later `def.json` is looked for next to the policy entry file.
-
