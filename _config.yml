@@ -21,7 +21,6 @@ cfengine:
   branch: master
   latest_patch_release: NA
   latest_package_build: NA
-  custom_search_engine: "012826289311752768906:ofqwltf6-kg"
 
 vagrant:
   version: "1.7.4"
