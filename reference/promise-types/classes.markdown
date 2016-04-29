@@ -16,14 +16,14 @@ while classes in all other bundles are local.
     {
     classes:
 
-      "one" expression => "any";
+      "one" expression => "any"; # always defined
+      "two"; # always defined
 
       "client_network" expression => iprange("128.39.89.0/24");
     }
 ```
 
-**Note:** You must use at least one of the following attributes to make a
-complete promise.
+**Note:** You can use the following attributes to make a complete promise.
 
 * and
 * expression
@@ -32,7 +32,10 @@ complete promise.
 * not
 * xor
 
-For example, the following promise is incomplete:
+If you omit any of them, the class is always defined (as if you said `expression
+=> "any"`).
+
+For example, the following promise defines the class `web` when a file exists:
 
 ```cf3
 bundle agent example
@@ -43,7 +46,10 @@ bundle agent example
 }
 ```
 
-The following are complete promsies:
+**History:** The context attributes `expression`, `and`, `or`, `not`, `xor`,
+`dist` were made optional in CFEngine 3.9.0. Before that, one of them was
+required. So the following examples were the valid equivalents of the example
+above before 3.9.0:
 
 ```
 bundle agent example
