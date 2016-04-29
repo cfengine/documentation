@@ -51,6 +51,8 @@ classes.
     bundle agent myclasses
     {
     classes:
+      "always";
+      "always2" expression => "any";
       "solinux" expression => "linux||solaris";
       "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
       "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
@@ -64,6 +66,8 @@ classes.
 ```
 
 This example defines a few soft classes local to the `myclasses` bundle.
+
+* The `always` and `always2` soft classes are always defined.
 
 * The `solinux` soft class is defined as a combination of the `linux` or the
   `solaris` hard classes. This class will be set if the operating
