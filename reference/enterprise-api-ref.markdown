@@ -27,6 +27,38 @@ is [/api/settings][Status and Settings REST API#Get settings], which returns the
 
 **POST** requests typically updates an existing resource. **DELETE** requests are also supported in some cases.
 
+**Note:** When updating objects via the REST API the behavior is to overwrite
+existing objects. Any missing keys are reset to default values. For example if
+you have custom LDAP settings and want to update the `blueHostHorizon` you
+should first query to get the current settings, and then post the complete
+settings that you desire else the customized LDAP settings will be reset to
+defaults.
+
+This example shows using [JQ](https://stedolan.github.io/jq/) to preserve
+existing setting when updating an individual key value.
+
+```console
+[root@hub]# curl -s -u admin:admin http://localhost:80/api/settings \
+| jq '.data[0] + {"blueHostHorizon": 2222, "logLevel": "warning"}' \
+| curl -s -u admin:admin http://localhost:80/api/settings -X POST -d @-
+
+[root@hub]# curl -s -u admin:admin http://localhost:80/api/settings | jq '.data[0]'
+{
+  "blueHostHorizon": 2222,
+  "hostIdentifier": "default.sys.fqhost",
+  "ldapEnabled": false,
+  "ldapEncryption": "plain",
+  "ldapHost": "localhost",
+  "ldapLoginAttribute": "uid",
+  "ldapPort": 389,
+  "ldapPortSSL": 636,
+  "logLevel": "warning",
+  "rbacEnabled": true,
+  "sketchActivationAlertTimeout": 60
+}
+
+```
+
 ### Pagination
 
 Pagination is handled by `page` and `count` query parameters to a **GET** request, e.g. `/api/user?page=5&count=30` to get the 5th page of pages with 30 entries each. The default `page` is 1 and the default `count` is 50 if these are not specified explicitly.
@@ -67,4 +99,3 @@ configurable through [/api/settings][Status and Settings REST API#Update setting
 ## Authorization
 
 Some resources require that the request user is a member of the *admin* role. Roles are managed with [/api/role][Users and Access-Control REST API#List RBAC roles]. Role Based Access Control (RBAC) is configurable through the settings. Users typically have permission to access their own resources, e.g. their own scheduled reports.
-
