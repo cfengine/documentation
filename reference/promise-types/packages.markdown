@@ -21,8 +21,12 @@ called [package modules][Package Modules], which are specifically written for
 each type of package manager. CFEngine comes with out-of-the-box support for the
 following package managers:
 
-* ``yum``: YUM package manager and accompanying rpm package manager.
-* ``apt_get``: Apt package manager and accompanying dpkg package manager.
+* `yum`: YUM package manager and accompanying rpm package manager.
+* `apt_get`: Apt package manager and accompanying dpkg package manager.
+* `freebsd_ports`: FreeBSD Ports
+* `nimclient` - AIX NIM client
+* `pkg` - FreeBSD pkg
+* `pkgsrc` -  [pkgsrc](https://www.pkgsrc.org/)
 
 Both ``yum`` and ``apt_get`` package managers require Python to be installed on
 the host.
