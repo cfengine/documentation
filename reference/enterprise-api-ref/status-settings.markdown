@@ -148,8 +148,8 @@ API call allowed only for administrator.
 
 **Method:** POST
 
-Update settings for Mission Portal and API's.
-API call allowed only for administrator.
+Update settings for Mission Portal and API's. API call allowed only for
+administrator.
 
 **Fields**:
 
@@ -181,12 +181,29 @@ API call allowed only for administrator.
     Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error).
 * **sketchActivationAlertTimeout** *(integer)*
     Global timeout in minutes for sketch activation alerts.
+* **blueHostHorizon** *(900)*
+    Threshold in minutes that hosts are unreachable before they are considered a health issue.
+
 
 **Example Request Body:**
 
 ```
 {
-  "rbacEnabled": false
+  "ldapPort": 389,
+  "ldapPortSSL": 636,
+  "hostIdentifier": "default.sys.fqhost",
+  "rbacEnabled": false,
+  "logLevel": "error",
+  "ldapEnabled": true,
+  "ldapUsername": "",
+  "ldapPassword": "",
+  "ldapEncryption": "ssl",
+  "ldapLoginAttribute": "uid",
+  "ldapHost": "ldap.example.com",
+  "ldapBaseDN": "ou=people,dc=example,dc=com",
+  "ldapFilter": "(objectClass=inetOrgPerson)",
+  "blueHostHorizon": 900,
+  "sketchActivationAlertTimeout": 60
 }
 ```
 
