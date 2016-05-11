@@ -220,6 +220,12 @@ host:
 # /var/cfengine/bin/cf-agent --bootstrap <IP address of the Policy Server>
 ```
 
+After bootstrapping the hub run the policy to complete the hub configuration.
+
+```console
+# /var/cfengine/bin/cf-agent -Kf update.cf; /var/cfengine/bin/cf-agent -K
+```
+
 ## Licensed installations
 
 If you are evaluating CFEngine Enterprise or otherwise using it in an
@@ -227,8 +233,7 @@ environment with less than 25 agents connecting to a Policy Server,
 you do not need a license and there is no expiry.
 
 If you are a customer, please send the Policy Server's public key
-(`$(sys.workdir)/ppkeys/localhost.pub`) to CFEngine support to obtain
-a license.
+to CFEngine support to obtain a license.
 
 It's best to pack the public key into an archive so that it does not
 get corrupt in transit.
