@@ -15,7 +15,7 @@ via the Status and Setting REST API.
 
 Status and Settings REST API
 This example shows using jq to preserve the existing settings and update the
-LDAP port to =3268= and the LDAP SSL port to =3269=.
+LDAP port to `3268` and the LDAP SSL port to `3269`.
 
 **Note:** The commands are run as root on the hub, and the hubs self signed
 certificate is used to connect to the API over https. Authentication is done via
