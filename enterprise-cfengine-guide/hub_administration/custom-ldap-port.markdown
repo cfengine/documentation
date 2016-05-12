@@ -21,9 +21,10 @@ certificate is used to connect to the API over https. Authentication is done via
 a `~/.netrc` file as indicated by the `--netrc` option.
 
 ```console
-[root@hub ~]# export CURL="curl --netrc --silent --cacert /var/cfengine/httpd/ssl/certs/hub.cert https://hub/api/settings "
+[root@hub ~]# export CACERT="/var/cfengine/httpd/ssl/certs/hub.cert"
+[root@hub ~]# export API="https://hub/api/settings"
+[root@hub ~]# export CURL="curl --netrc --silent --cacert ${CACERT} ${API}" 
 [root@hub ~]# ${CURL} | jq '.data[0] + {"ldapPort": 3268, "ldapPortSSL": 3269}' | ${CURL} -X POST -d @-
-[root@hub ~]# curl --netrc --silent --cacert /var/cfengine/httpd/ssl/certs/hub.cert https://hub/api/settings^C
 [root@hub ~]# $CURL | jq '.data[0]'
 {
   "blueHostHorizon": 900,
