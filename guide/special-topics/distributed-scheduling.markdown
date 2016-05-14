@@ -1,3 +1,11 @@
+---
+layout: default
+title: Distributed Scheduling
+published: true
+sorting: 80
+tags: [overviews, special topics, guide]
+---
+
 # What is distributed scheduling?
 
 Scheduling refers to the execution of non-interactive processes or tasks
