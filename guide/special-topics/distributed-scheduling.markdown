@@ -327,7 +327,9 @@ design criteria are to be secure and generic).
 
 Nevertheless, there are some tricks left in CFEngine for distributed scheduling
 if we want to trigger a number of follow-ups from a single job, or aggregate a
-number of jobs to drive a single follow-up (see figure).
+number of jobs to drive a single follow-up.
+
+![Scheduling Patterns](./scheduleing-patterns.png)
 
 ## Aggregation of multiple jobs
 
