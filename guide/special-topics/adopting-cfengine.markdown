@@ -25,7 +25,7 @@ is recommended, and as much planning as you can manage in advance. Once a
 mission is underway, you should expect to work by making small corrections to
 the mission plan, rather than large risky changes.
 
-![Mission Plan](./adopting-cfengine-mision-plan.png)
+![Mission Plan](./adopting-cfengine-mission-plan.png)
 
 Planning does not mean sitting around a table, or in front of a whiteboard.
 Successful planning is a dialogue between theory and practice. It should include
