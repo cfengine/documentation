@@ -134,8 +134,7 @@ What we call /acceptable/ is a subjective judgement, i.e. a matter for policy to
 decide. So there are many uncertainties and relativisms in such definitions. It
 would be inconceivable to claim any kind of industry standard for these.
 
-
-How agility depends on technology measures.
+![How agility depends on technology measures](./agility.png)
 
 We can write some scaling laws for the dependencies of agility to see where the
 failure modes might arise.
