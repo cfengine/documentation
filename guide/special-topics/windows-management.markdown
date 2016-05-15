@@ -26,8 +26,8 @@ total disk consumption is about 70 MB, and the memory usage is less than 30 MB.
 
 The installation and set-up procedure on Windows is not different than that for
 other operating systems CFE Enterprise runs on, so the CFE Enterprise getting
-started document available athttp://software.cfengine.comapplies to the Windows
-version as well.
+started document available at http://software.cfengine.com applies to the
+Windows version as well.
 
 The Windows msi-packages will get silently installed (no prompts) to Cfengine
 under your program files directory (e.g. C:\Program Files\Cfengine on English
