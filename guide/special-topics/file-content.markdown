@@ -8,8 +8,12 @@ tags: [overviews, special topics, guide]
 
 # From boiler-plates to convergent file editing
 
-
-Many configuration management systems allow you to determine configuration file content to some extent, usually by over-writing files with boiler-plate (template) files. This approach works for some cases, but it is a blunt and inflexible instrument, which forces you to take over the ownership of the file `all or nothing' and determine its entire content yourself. This is more than is necessary or desirable in general.
+Many configuration management systems allow you to determine configuration file
+content to some extent, usually by over-writing files with boiler-plate
+(template) files. This approach works for some cases, but it is a blunt and
+inflexible instrument, which forces you to take over the ownership of the file
+`all or nothing' and determine its entire content yourself. This is more than is
+necessary or desirable in general.
 
 Other approaches to file editing us search and replace, e.g. with the
 long-standing Unix tools awk and sed. Adding a user to a structured file such as
@@ -29,14 +33,17 @@ prejudiced by what you have done before.
 
 # Why is file editing difficult?
 
-
 File content is not made up of simple data objects like permission flags or
 process tables: files contain compound, ordered structures (known as grammars)
 and they cannot always be determined from a single source of information. To
 determine the outcome of a file we have to adopt either a fully deterministic
 approach, or live with a partial approximation.
 
-Some approaches to file editing try to `know' the intended format of a file, by hardcoding it. If the file then fails to follow this format, the algorithms might break. CFEngine gives you generic tools to be able to handle files in any line-based format, without the need to hard-code specialist knowledge about file formats.
+Some approaches to file editing try to `know' the intended format of a file, by
+hardcoding it. If the file then fails to follow this format, the algorithms
+might break. CFEngine gives you generic tools to be able to handle files in any
+line-based format, without the need to hard-code specialist knowledge about file
+formats.
 
 Remember that all changes are adapted to your local context and implemented at
 the final destination by cf-agent.
