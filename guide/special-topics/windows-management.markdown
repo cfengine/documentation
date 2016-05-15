@@ -9,9 +9,10 @@ tags: [overviews, special topics, guide]
 # System requirements
 
 CFEngine Enterprise, being so lightweight, works equally well on Windows clients
-as on Windows servers. Both native 32-bit/x86 (package namei686) and 64-bit/x64
-(package namex86_64) packages are available to customers. It is important that
-you select thex86_64package if you are running 64-bit Windows.
+as on Windows servers. Both native ```32-bit/x86``` (package name i686) and
+```64-bit/x64``` (package name x86_64) packages are available to customers. It
+is important that you select the x86_64 package if you are running 64-bit
+Windows.
 
 Of Windows client operating systems, anything from Windows XP SP2 and newer is
 supported. On the server side, Windows Server 2003 and newer is supported.
@@ -33,7 +34,7 @@ The Windows msi-packages will get silently installed (no prompts) to Cfengine
 under your program files directory (e.g. C:\Program Files\Cfengine on English
 Windows versions). It is important that the installer is run with Administrative
 priviliges. To ensure this, open a Command Prompt in Administrative mode and run
-‘msiexec -i cfengine-nova-VERSION-ARCH.msi’ (replace VERSION and ARCH
+'msiexec -i cfengine-nova-VERSION-ARCH.msi' (replace VERSION and ARCH
 appropriately).
 
 If you are just going to test your policies on a Windows host, it is more
@@ -132,7 +133,7 @@ databases:
 }
 ```
 
-Now, if you create ‘value1’ and ‘value2’ in the key above, cf-agent.exe should
+Now, if you create 'value1' and 'value2' in the key above, cf-agent.exe should
 show the following output.
 
 At the time of writing, CFE Enterprise supports the REG_DWORD (double word),
@@ -156,8 +157,8 @@ desired. More advanced policy options are also available, including support for
 starting and stopping dependencies, and configuring when the services should be
 started (e.g. only when they are being used).
 
-Note that the name of a service in Windows may be different from its “Display
-name”. CFEngine Enterprise policies use the name, not the display name, due to
+Note that the name of a service in Windows may be different from its "Display
+name". CFEngine Enterprise policies use the name, not the display name, due to
 the need of uniqueness.
 
 A complete example of a service management bundle is show below.
@@ -193,8 +194,8 @@ itself, with support for more than ten different permission bits and
 inheritance. CFE Enterprise supports all of this, but we will just cover the
 basics in this document.
 
-The following policy will ensure strict permissions on a directory ‘C:\Secret’
-and a file ‘C:\Secret\file.txt’.
+The following policy will ensure strict permissions on a directory 'C:\Secret'
+and a file 'C:\Secret\file.txt'.
 
 ```cf3
 bundle agent test
@@ -229,14 +230,14 @@ ways.
 
 The CFEngine scheduler in CFE Enterprise (cf-execd) runs as a Windows service.
 This means it runs in the background and starts with Windows, before any user
-logs in. It can be configured, started and stopped from the “Services” listing
+logs in. It can be configured, started and stopped from the "Services" listing
 in Windows, just like any other Windows service.
 
 Event logs are the Windows counterpart to syslog from Unix. The main difference
 is that event logs aim to group similar log messages, giving each group an event
 id. The following event ids are defined in CFEngine Enterprise, allowing
 categorisation of the log message based on its type. The CFE Enterprise event
-logs can be found under the “System” logs.
+logs can be found under the "System" logs.
 
 ```
 Description 	Event ID 	Type
@@ -276,9 +277,9 @@ files:
 Three new special variables have been added to the Windows version of CFEngine
 Enterprise.
 
-* sys.windir contains the Windows directory, e.g. “C:\WINDOWS”.
-* sys.winsysdir contains the Windows system directory, e.g. “C:\WINDOWS\system32”.
-* sys.winprogdir contains the program files directory, e.g. “C:\Program Files”.
+* sys.windir contains the Windows directory, e.g. "C:\WINDOWS".
+* sys.winsysdir contains the Windows system directory, e.g. "C:\WINDOWS\system32".
+* sys.winprogdir contains the program files directory, e.g. "C:\Program Files".
 
 Note that these variables are not statically coded, but retrieved from the
 current system. For example, sys.winprogdir is often different on Windows
