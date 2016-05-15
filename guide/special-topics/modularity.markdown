@@ -1,130 +1,190 @@
 ---
 layout: default
 title: Modularity and Orchestrating System Policy
-published: false
+published: true
 sorting: 80
 tags: [overviews, special topics, guide]
 ---
 
-What is modularity?
+# What is modularity?
 
-Modularity is the ability to separate concerns within a total process, and hide the details of the different concerns in different containers. In CFEngine, this is aservice oriented view, in which different aspects of a problem are separated and turned into generic components that offer a service. We often talk about black boxes, grey boxes or white boxes depending on the extent to which the user of a service can see the details within the containers.
+Modularity is the ability to separate concerns within a total process, and hide
+the details of the different concerns in different containers. In CFEngine, this
+is aservice oriented view, in which different aspects of a problem are separated
+and turned into generic components that offer a service. We often talk about
+black boxes, grey boxes or white boxes depending on the extent to which the user
+of a service can see the details within the containers.
 
-Next: How does CFEngine deal with modularity and orchestration?, Previous: What is modularity?, Up: Top
-What is orchestration?
+# What is orchestration?
 
+Orchestration is the ability to coordinate many different processes in time and
+space, around a system, so that the sum of those processes yields a harmonious
+result through cooperation.
 
-Orchestration is the ability to coordinate many different processes in time and space, around a system, so that the sum of those processes yields a harmonious result through cooperation.
+Orchestration is not about centralized control, though this is common
+misperception. An orchestra does not manage to play a symphony because the
+conductor pulls every player's strings or blows every trumpet in person, but
+rather because each autonomous player has a copy of the script, knows what to
+do, and can use just the little additional information from the conductor to
+access a viewpoint that is not available to an individual. An orchestra is a
+weakly coupled expert system in which the management (conductor) provides a
+service to the players.
 
-Orchestration is not about centralized control, though this is common misperception. An orchestra does not manage to play a symphony because the conductor pulls every player's strings or blows every trumpet in person, but rather because each autonomous player has a copy of the script, knows what to do, and can use just the little additional information from the conductor to access a viewpoint that is not available to an individual. An orchestra is a weakly coupled expert system in which the management (conductor) provides a service to the players.
+CFEngine works like an orchestra – this is why is scales so well. Each computer
+is an autonomous entity, getting its script and a few occasional pieces of
+information from the policy server (conductor). The coupling between the agents
+is weak – there is slack that makes the behaviour robust to minor errors in
+communication or timing.
 
-CFEngine works like an orchestra – this is why is scales so well. Each computer is an autonomous entity, getting its script and a few occasional pieces of information from the policy server (conductor). The coupling between the agents is weak – there is slack that makes the behaviour robust to minor errors in communication or timing.
+# How does CFEngine deal with modularity and orchestration?
 
-Next: Levels of policy abstraction, Previous: What is orchestration?, Up: Top
-How does CFEngine deal with modularity and orchestration?
+Promise Theory provides simple principles for hiding details: agents are
+considered to reveal a kind of service interface to peers, that is advertised by
+making a promise to someone. We assume an agent exerts best effort in keeping
+its promises. Orchestration requires a promise to coordinate and the promise to
+use that coordination service. These basic ideas are built into CFEngine.
 
-Promise Theory provides simple principles for hiding details: agents are considered to reveal a kind of service interface to peers, that is advertised by making a promise to someone. We assume an agent exerts best effort in keeping its promises. Orchestration requires a promise to coordinate and the promise to use that coordination service. These basic ideas are built into CFEngine.
+CFEngine provides containers called bundles for creating modular parts. Bundles
+can be independent (and therefore parallelizable) or they can be dependent (in
+which case the sequence in which they verify their promises matters).
 
-CFEngine provides containers called bundles for creating modular parts. Bundles can be independent (and therefore parallelizable) or they can be dependent (in which case the sequence in which they verify their promises matters).
+In a computer centre with many different machines, there is an additional
+dimension to orchestration – multiple orchestras. Each machine has a number of
+resources that need to be orchestrated, and the different machines themselves
+might also need to cooperate because they provide services to one another. The
+principles are the same in both cases, but the confusion between them is
+typically the reason why large systems do not scale well.
 
-In a computer centre with many different machines, there is an additional dimension to orchestration – multiple orchestras. Each machine has a number of resources that need to be orchestrated, and the different machines themselves might also need to cooperate because they provide services to one another. The principles are the same in both cases, but the confusion between them is typically the reason why large systems do not scale well.
+# Levels of policy abstraction
 
-Next: Is CFEngine patch or package oriented?, Previous: How does CFEngine deal with modularity and orchestration?, Up: Top
-Levels of policy abstraction
+CFEngine offers a number of layers of abstraction. The most fundamental atom in
+CFEngine is the promise. Promises can be made about many system issues, and you
+described in what context promises are to be kept.
 
-CFEngine offers a number of layers of abstraction. The most fundamental atom in CFEngine is the promise. Promises can be made about many system issues, and you described in what context promises are to be kept.
+## Menu level
 
-Menu level
-    At this high level, a user `selects' from a set of pre-defined `services' (or bundles in CFEngine parlance). In commercial editions, users may view the set of services as a Service Catalogue, from which each host selects its roles. The selection is not made by every host, rather one places hosts into roles that will keep certain promises, just as different voices in an orchestra are assigned certain parts to play.
+At this high level, a user `selects' from a set of pre-defined `services' (or
+bundles in CFEngine parlance). In commercial editions, users may view the set of
+services as a Service Catalogue, from which each host selects its roles. The
+selection is not made by every host, rather one places hosts into roles that
+will keep certain promises, just as different voices in an orchestra are
+assigned certain parts to play.
 
-              bundle agent service_catalogue # menu
-              {
-              methods:
-                any:: # selected by everyone
-                   "everyone" usebundle => time_management,
-                              comment => "Ensure clocks are synchronized";
-                   "everyone" usebundle => garbage_collection,
-                              comment => "Clear junk and rotate logs";
+```cf3
+bundle agent service_catalogue # menu
+{
+methods:
+  any:: # selected by everyone
+     "everyone" usebundle => time_management,
+                comment => "Ensure clocks are synchronized";
+     "everyone" usebundle => garbage_collection,
+                comment => "Clear junk and rotate logs";
 
-                mailservers:: # selected by hosts in class
-                  "mail server"  -> { "goal_3", "goal_1", "goal_2" }
-                                usebundle => app_mail_postfix,
-                                  comment => "The mail delivery agent";
-                  "mail server"  -> goal_3,
-                                usebundle => app_mail_imap,
-                                  comment => "The mail reading service";
-                  "mail server"  -> goal_3,
-                                usebundle => app_mail_mailman,
-                                  comment => "The mailing list handler";
-              }
+  mailservers:: # selected by hosts in class
+    "mail server"  -> { "goal_3", "goal_1", "goal_2" }
+                  usebundle => app_mail_postfix,
+                    comment => "The mail delivery agent";
+    "mail server"  -> goal_3,
+                  usebundle => app_mail_imap,
+                    comment => "The mail reading service";
+    "mail server"  -> goal_3,
+                  usebundle => app_mail_mailman,
+                    comment => "The mailing list handler";
+}
+```
 
-    The resulting menu of services can be browsed in the Mission Portal interface.
+The resulting menu of services can be browsed in the Mission Portal interface.
 
+A human-readable Service Catalogue generated from technical specifications shows
+what goals are being attended to automatically
 
+## Bundle level
 
+At this level, users can switch on and off predefined features, or re-use
+standard methods, e.g. for editing files:
 
-    A human-readable Service Catalogue generated from technical specifications
-    shows what goals are being attended to automatically
+```cf3
+body common control
+{
+bundlesequence => {
+                  webserver("on"),
+                  dns("on"),
+                  security_set("on"),
+                  ftp("off")
+                  };
+}
+```
 
+The set of bundles that can be selected from is extensible by the user.
 
+## Promise level
 
+This is the most detailed level of configuration, and gives full convergent
+promise behaviour to the user. At this promise level, you can specificy every
+detail of promise-keeping behaviour, and combine promises together, reusing
+bundles and methods from standard libraries, or creating your own.
 
+```cf3
+bundle agent addpasswd
+{
+vars:
 
-Bundle level
-    At this level, users can switch on and off predefined features, or re-use standard methods, e.g. for editing files:
+  # want to set these values by the names of their array keys
 
-         body common control
-         {
-         bundlesequence => {
-                           webserver("on"),
-                           dns("on"),
-                           security_set("on"),
-                           ftp("off")
-                           };
-         }
+  "pwd[mark]" string => "mark:x:1000:100:Mark B:/home/mark:/bin/bash";
+  "pwd[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
+  "pwd[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
 
-    The set of bundles that can be selected from is extensible by the user.
-Promise level
-    This is the most detailed level of configuration, and gives full convergent promise behaviour to the user. At this promise level, you can specificy every detail of promise-keeping behaviour, and combine promises together, reusing bundles and methods from standard libraries, or creating your own.
+files:
 
-              bundle agent addpasswd
-              {
-              vars:
+  "/etc/passwd"           # Use standard library functions
+        create => "true",
+       comment => "Ensure listed users are present",
+         perms => mog("644","root","root"),
+     edit_line => append_users_starting("addpasswd.pwd");
 
-                # want to set these values by the names of their array keys
+}
+```
 
-                "pwd[mark]" string => "mark:x:1000:100:Mark B:/home/mark:/bin/bash";
-                "pwd[fred]" string => "fred:x:1001:100:Right Said:/home/fred:/bin/bash";
-                "pwd[jane]" string => "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";
+## Spread-sheet level (data-driven)
 
-              files:
+CFEngine community and commercial editions support a kind of spreadsheet. In a
+spreadsheet approach, you create only the data to be inserted into predefined
+promises. The data are entered in tabular form, and may be browsed in the web
+interface. This form of entry is preferred in some environments, especially on
+the Windows platform.
 
-                "/etc/passwd"           # Use standard library functions
-                      create => "true",
-                     comment => "Ensure listed users are present",
-                       perms => mog("644","root","root"),
-                   edit_line => append_users_starting("addpasswd.pwd");
+# Is CFEngine patch-oriented or package-oriented?
 
-              }
+Some system management products are patching systems. They package lumps of
+software and configuration along with scripts. If something goes wrong they
+simply update or replace the package with a new one. This is a patching model of
+system installation, but it is not a good model for repair as it nearly always
+leads to interruption of service or even requires a reboot.
 
+Installation of packages overwrites too much data in one go to be an effective
+model of simple repair1. It can be both ineffecient and destructive. CFEngine
+manages addressable entities at the lowest possible level so that
+ultra-fine-grained repair can be performed with no interruption of service, e.g.
+altering a field within a line in a file, or restarting one process, or altering
+one bit of a flag in each file in a set of directories. The power to express
+sophisticated patterns is what makes CFEngine's approach both non-intrusive and
+robust.
 
-Spread-sheet level (data-driven)
-    CFEngine commercial editions support a kind of spreadsheet. In a spreadsheet approach, you create only the data to be inserted into predefined promises. The data are entered in tabular form, and may be browsed in the web interface. This form of entry is preferred in some environments, especially on the Windows platform.
+# High level services in CFEngine
 
-Next: High level services in CFEngine, Previous: Levels of policy abstraction, Up: Top
-Is CFEngine patch-oriented or package-oriented?
+CFEngine is designed to handle high level simplicity (without sacrificing low
+level capability) by working with configuration patterns, after all
+configuration is all about promising consistent patterns of system state in the
+resources of the system. Lists, for instance, are a particularly common kind of
+pattern: for each of the following... make a similar promise. There are several
+ways to organize patterns, using containers, lists and associative arrays. Let's
+look at how to configure a number of application services.
 
-Some system management products are patching systems. They package lumps of software and configuration along with scripts. If something goes wrong they simply update or replace the package with a new one. This is a patching model of system installation, but it is not a good model for repair as it nearly always leads to interruption of service or even requires a reboot.
+At the simplest or highest level, we can turn services into "genes" to switch on
+and off on your basic "stem cell" machines.
 
-Installation of packages overwrites too much data in one go to be an effective model of simple repair1. It can be both ineffecient and destructive. CFEngine manages addressable entities at the lowest possible level so that ultra-fine-grained repair can be performed with no interruption of service, e.g. altering a field within a line in a file, or restarting one process, or altering one bit of a flag in each file in a set of directories. The power to express sophisticated patterns is what makes CFEngine's approach both non-intrusive and robust.
-
-Next: Hiding details, Previous: Is CFEngine patch or package oriented?, Up: Top
-High level services in CFEngine
-
-CFEngine is designed to handle high level simplicity (without sacrificing low level capability) by working with configuration patterns, after all configuration is all about promising consistent patterns of system state in the resources of the system. Lists, for instance, are a particularly common kind of pattern: for each of the following... make a similar promise. There are several ways to organize patterns, using containers, lists and associative arrays. Let's look at how to configure a number of application services.
-
-At the simplest or highest level, we can turn services into "genes" to switch on and off on your basic "stem cell" machines.
-
+```cf3
 body agent control
 {
 bundlesequence => {
@@ -134,11 +194,22 @@ bundlesequence => {
                   ftp("off")
                   };
 }
+```
 
-This obviously looks simple, but this kind of simplicity is cheating as we are hiding all the details of what is going to happen – we don't know if they are hard-coded, or whether we can decide ourselves. Anyone can play that game! The true test is whether we can retain the power to decide the low-level details without having to program in a low level language like Ruby, Python or Perl. Let's peel back some of the layers, knowing that we can hide as many of the details as we like.
+This obviously looks simple, but this kind of simplicity is cheating as we are
+hiding all the details of what is going to happen – we don't know if they are
+hard-coded, or whether we can decide ourselves. Anyone can play that game! The
+true test is whether we can retain the power to decide the low-level details
+without having to program in a low level language like Ruby, Python or Perl.
+Let's peel back some of the layers, knowing that we can hide as many of the
+details as we like.
 
-A simple, but low level approach to deploying a service, that veteran users will recognize, is the following. This is a simple example of orchestration between a promise to raise a signal about a missing process and another promise to restart said process once its absence has been discovered and signalled.
+A simple, but low level approach to deploying a service, that veteran users will
+recognize, is the following. This is a simple example of orchestration between a
+promise to raise a signal about a missing process and another promise to restart
+said process once its absence has been discovered and signalled.
 
+```cf3
 bundle agent application_services
 {
 processes:
@@ -155,9 +226,13 @@ commands:
    "/etc/init.d/apache restart";
 
 }
+```
 
-But the first thing we see is that there is a repeated pattern, so we could rewrite this as a single promise for a list of services, at the cost of a loss of transparency. However, this is the power of abstraction.
+But the first thing we see is that there is a repeated pattern, so we could
+rewrite this as a single promise for a list of services, at the cost of a loss
+of transparency. However, this is the power of abstraction.
 
+```cf3
 bundle agent application_services
 {
 vars:
@@ -173,14 +248,22 @@ services:
    "$(service)";
 
 }
+```
 
-Next: Black grey and white box encapsulation in CFEngine, Previous: High level services in CFEngine, Up: Top
-Hiding details
+# Hiding details
 
-Resource abstraction, or hiding system specific details inside a kind of grey-box, is just another service as far as CFEngine is concerned – and we generally map services to bundles.
+Resource abstraction, or hiding system specific details inside a kind of
+grey-box, is just another service as far as CFEngine is concerned – and we
+generally map services to bundles.
 
-Many system variables are discovered automatically by CFEngine and provided "out of the box", e.g. the location of the filesystem table might be /etc/fstab, or /etc/vfstab or even /etc/filesystems, but CFEngine allows you to refer simply to <b>$(sys.fstab)</b>. Soft-coded abstraction needs cannot be discovered by the system however. So how do we create this mythical resource abstraction layer? It is simple. Elsewhere we have defined basic settings.
+Many system variables are discovered automatically by CFEngine and provided "out
+of the box", e.g. the location of the filesystem table might be /etc/fstab, or
+/etc/vfstab or even /etc/filesystems, but CFEngine allows you to refer simply to
+**$(sys.fstab)**. Soft-coded abstraction needs cannot be discovered by the
+system however. So how do we create this mythical resource abstraction layer? It
+is simple. Elsewhere we have defined basic settings.
 
+```cf3
 bundle common res # abstraction layer
 {
 vars:
@@ -207,14 +290,22 @@ classes:
 
   "default" and => { "!SuSE", "solaris" };
 }
+```
 
-Some of the attempts to recreate a CFEngine-like tool try to hard code many decisions, meaning that minor changes in operating system versions require basic recoding of the software. CFEngine does not make decisions for you without your permission.
+Some of the attempts to recreate a CFEngine-like tool try to hard code many
+decisions, meaning that minor changes in operating system versions require basic
+re-coding of the software. CFEngine does not make decisions for you without your
+permission.
 
-Next: Bulk operations are handled by repeating patterns over lists, Previous: Hiding details, Up: Top
-Black, grey and white box encapsulation in CFEngine
+# Black, grey and white box encapsulation in CFEngine
 
-CFEngine's ability to abstract system decisions as promises also applies to bundles of promises. After all, we can package promises as bumper compendia for grouping together related matters in a single package. Naturally, CFEngine never abandons its insistence on <b>convergence</b>, merely for the sake of making things look simple. Using CFEngine, you can create convergent orchestration.
+CFEngine's ability to abstract system decisions as promises also applies to
+bundles of promises. After all, we can package promises as bumper compendia for
+grouping together related matters in a single package. Naturally, CFEngine never
+abandons its insistence on <b>convergence</b>, merely for the sake of making
+things look simple. Using CFEngine, you can create convergent orchestration.
 
+```cf3
 bundle agent services
 {
 vars:
@@ -223,11 +314,19 @@ methods:
  "any" usebundle => fix_service("$(service)"),
          comment => "Make sure the basic application services are running";
 }
+```
 
-The code above is all you really want to see. The rest can be hidden in libraries that you rarely look at. In CFEngine, we want the intentions to shine forth and the low level details to be clear on inspection, but hidden from view.
+The code above is all you really want to see. The rest can be hidden in
+libraries that you rarely look at. In CFEngine, we want the intentions to shine
+forth and the low level details to be clear on inspection, but hidden from view.
 
-We can naturally modularize the packaged bundle of fully convergent promises and keep it as library code for reuse. Notice that CFEngine adds comments in the code that follow processes through execution, allowing you to see the full intentions behind the promises in logs and error messages. In commercial versions, you can trace these comments to see your process details.
+We can naturally modularize the packaged bundle of fully convergent promises and
+keep it as library code for reuse. Notice that CFEngine adds comments in the
+code that follow processes through execution, allowing you to see the full
+intentions behind the promises in logs and error messages. In commercial
+versions, you can trace these comments to see your process details.
 
+```cf3
 bundle agent fix_service(service)
 {
 files:
@@ -257,12 +356,16 @@ commands:
         ifvarclass => canonify("$(service)_restart");
 
 }
+```
 
-Next: Ordering operations in CFEngine, Previous: Black grey and white box encapsulation in CFEngine, Up: Top
-Bulk operations are handled by repeating patterns over lists
+# Bulk operations are handled by repeating patterns over lists
 
-The power of CFEngine is to be able to handle lists of similar patterns in a powerful way. You can also wrap the whole experience in a method-bundle, and we can extend this kind of pattern to implement other interfaces, all without low level programming.
+The power of CFEngine is to be able to handle lists of similar patterns in a
+powerful way. You can also wrap the whole experience in a method-bundle, and we
+can extend this kind of pattern to implement other interfaces, all without low
+level programming.
 
+```cf3
 #
 # Remove certain services from xinetd - for system hardening
 #
@@ -290,9 +393,13 @@ methods:
 
    "any"  usebundle => disable_xinetd("$(services)");
 }
+```
 
-In the library of generic templates, we may keep one or more methods for implementing service disablement. For example, this simple interface to Linux's chkconfig is one approach, which need not be hard-coded in Ruby using Cfeninge.
+In the library of generic templates, we may keep one or more methods for
+implementing service disablement. For example, this simple interface to Linux's
+chkconfig is one approach, which need not be hard-coded in Ruby using Cfeninge.
 
+```cf3
 #
 # For the standard library
 #
@@ -320,37 +427,55 @@ reports:
       "$(name) has been already disabled. Don't need to perform the action.";
 
 }
+```
 
-Next: Bundle ordering, Previous: Bulk operations are handled by repeating patterns over lists, Up: Top
-Ordering operations in CFEngine
+# Ordering operations in CFEngine
 
-Ordering of operations is less important than you probably think. We are taught to think of computing as an linear sequence of steps, but this ignores a crucial fact about distributed systems: that many parts are independent of each other and exist in parallel.
+Ordering of operations is less important than you probably think. We are taught
+to think of computing as an linear sequence of steps, but this ignores a crucial
+fact about distributed systems: that many parts are independent of each other
+and exist in parallel.
 
-Nevertheless there are sometimes cases of strong inter-dependency (that we strive to avoid, as they lead to most of the difficulties of system management) where order is important. In re-designing CFEngine, we have taken a pragmatic approach to ordering. Essentially, CFEngine takes care of ordering for you for most cases – and you can override the order in three ways:
+Nevertheless there are sometimes cases of strong inter-dependency (that we
+strive to avoid, as they lead to most of the difficulties of system management)
+where order is important. In re-designing CFEngine, we have taken a pragmatic
+approach to ordering. Essentially, CFEngine takes care of ordering for you for
+most cases – and you can override the order in three ways:
 
-    CFEngine checks promises of the same type in the order in which they are defined, unless overridden
-    Bulk ordering of composite promises (called bundles) is handled using an overall list using the bundlesequence (replaces the actionsequence in previous CFEngines)
-    Dependency coupling through dynamic classes, may be used to guarantee ordering in the few cases where this is required, as in the example below:
+ * CFEngine checks promises of the same type in the order in which they are
+   defined, unless overridden
 
-Next: Overriding order, Previous: Ordering operations in CFEngine, Up: Top
-Bundle ordering
+ * Bulk ordering of composite promises (called bundles) is handled using an
+   overall list using the bundlesequence (replaces the actionsequence in
+   previous CFEngines)
 
-There are two methods, working at different levels. At the top-most level there is the master bundlesequence
+ * Dependency coupling through dynamic classes, may be used to guarantee
+   ordering in the few cases where this is required, as in the example below:
 
+## Bundle ordering
 
+There are two methods, working at different levels. At the top-most level there
+is the master bundlesequence
+
+```cf3
 body common control
 {
 bundlesequence => { "bundle_one", "bundle_two", "bundle_three" };
 }
+```
 
+For simple cases this is good enough, but the main purpose of the bundlesequence
+is to easily be able to switch on or off bundles by commenting them out.
 
-For simple cases this is good enough, but the main purpose of the bundlesequence is to easily be able to switch on or off bundles by commenting them out.
+A more flexible way of ordering bundles is to wrap the ordered process in a
+master-bundle. Then you can create new sequences of bundles (parameterized in
+more sophisticated ways) using methods promises. Methods promises are simply
+promises to re-use bundles, possibly with different parameters.
 
-A more flexible way of ordering bundles is to wrap the ordered process in a master-bundle. Then you can create new sequences of bundles (parameterized in more sophisticated ways) using methods promises. Methods promises are simply promises to re-use bundles, possibly with different parameters.
+The default behaviour is to retain the order of these promises; the effect is to
+`execute' these bundles in the assumed order:
 
-The default behaviour is to retain the order of these promises; the effect is to `execute' these bundles in the assumed order:
-
-
+```cf3
 bundle agent a_bundle_subsequence
 {
 methods:
@@ -361,10 +486,11 @@ methods:
 
 }
 
+```
 
 Alternatively, the same effect can be achieved as follows.
 
-
+```cf3
 bundle agent a_bundle_subsequence
 {
 methods:
@@ -375,10 +501,11 @@ methods:
 
 }
 
+```
 
 Or ultimately:
 
-
+```cf3
 bundle agent a_bundle_subsequence
 {
 vars:
@@ -389,12 +516,17 @@ methods:
    "any" usebundle => generic_bundle("something","$(list)");
 
 }
+```
 
-Next: Distributed Orchestration between hosts with CFEngine Enterprise, Previous: Bundle ordering, Up: Top
-Overriding order
+## Overriding order
 
-CFEngine is designed to handle non-deterministic events, such as anomalies and unexpected changes to system state, so it needs to adapt. For this, there is no deterministic solution and approximate methods are required. Nevertheless, it is possible to make CFEngine sort out dependent orderings, even when confounded by humans, as in this example:
+CFEngine is designed to handle non-deterministic events, such as anomalies and
+unexpected changes to system state, so it needs to adapt. For this, there is no
+deterministic solution and approximate methods are required. Nevertheless, it is
+possible to make CFEngine sort out dependent orderings, even when confounded by
+humans, as in this example:
 
+```cf3
 bundle agent order
 
 {
@@ -414,38 +546,45 @@ commands:
   "/bin/echo $(list)";
 
 }
+```
 
 The output of which becomes:
 
+```
 Q: ".../bin/echo one": one
 Q: ".../bin/echo two": two
 Q: ".../bin/echo three": three
 Q: ".../bin/echo four": four
 Q: ".../bin/echo five": five
+```
 
-Previous: Overriding order, Up: Top
-Distributed Orchestration between hosts with CFEngine Enterprise
+# Distributed Orchestration between hosts with CFEngine Enterprise
 
-CFEngine Enterprise edition adds many powerful features to CFEngine, including a decentralized approach to coordinating activities across multiple hosts. Some tools try to approach this by centralizing data from the network in a single location, but this has two problems:
+CFEngine Enterprise edition adds many powerful features to CFEngine, including a
+decentralized approach to coordinating activities across multiple hosts. Some
+tools try to approach this by centralizing data from the network in a single
+location, but this has two problems:
 
-    It leads to a bottleneck by design that throttles performance seriously.
-    It relies on the network being available.
+ * It leads to a bottleneck by design that throttles performance seriously.
 
-With CFEngine Nova there are are both decentralized network approaches to this problem, and probabilistic methods that do not require the network at all.
+ * It relies on the network being available.
 
-    Basic communication methods for orchestration
-    Run job or reboot only if n out m systems are running
-    The self-healing chain - inverse Dominoes
-    A Domino sequence
-    A Chinese Dragon
+With CFEngine Nova there are are both decentralized network approaches to this
+problem, and probabilistic methods that do not require the network at all.
 
-Next: Run job or reboot only if n out m systems are running, Previous: Distributed Orchestration between hosts with CFEngine Enterprise, Up: Distributed Orchestration between hosts with CFEngine Enterprise
-Basic communication methods for orchestration
+## Basic communication methods for orchestration
 
-The two examples below illustrate the basic syntax constructions for communication using systems. We can pass class data and variable data between systems in a peer to peer fashion, or through an Enterprise hub. You can run these with a server and an agent just on localhost to illustrate the principles.
+The two examples below illustrate the basic syntax constructions for
+communication using systems. We can pass class data and variable data between
+systems in a peer to peer fashion, or through an Enterprise hub. You can run
+these with a server and an agent just on localhost to illustrate the principles.
 
-In this first example, three persistent classes, with names following a known pattern are defined on a remote system (by the agent). The server bundle then grants access to these using an access promise. Finally, a function call to remoteclassesmatching imports the classes, with a prefix to the local system.
+In this first example, three persistent classes, with names following a known
+pattern are defined on a remote system (by the agent). The server bundle then
+grants access to these using an access promise. Finally, a function call to
+remoteclassesmatching imports the classes, with a prefix to the local system.
 
+```cf3
 body common control
 {
 bundlesequence => { "overture" };
@@ -505,19 +644,28 @@ access:
     admit => { "127.0.0.1" };
 
 }
+```
 
 The output of this, on success is simply:
 
+```
+R: task 1 complete
+R: task 2 complete
+R: task 3 complete
+```
 
-     R: task 1 complete
-     R: task 2 complete
-     R: task 3 complete
+In this second example, we pass actual variable data between hosts. The generic
+peer function remotescalar can address any other host running cf-serverd. The
+abbreviated interface hubknowledge assumes that it should get data from a hub.
 
+Both these functions ask for an identifier; it is up to the server to interpret
+what this means and to return a value of its choosing. If the identifier matches
+a persistent scalar variable (such as is used to count distributed processes in
+CFEngine Enterprise) then this will be returned preferentially. If no such
+variable is found, then the server will look for a literal string in a server
+bundle with a handle that matches the requested object.
 
-In this second example, we pass actual variable data between hosts. The generic peer function remotescalar can address any other host running cf-serverd. The abbreviated interface hubknowledge assumes that it should get data from a hub.
-
-Both these functions ask for an identifier; it is up to the server to interpret what this means and to return a value of its choosing. If the identifier matches a persistent scalar variable (such as is used to count distributed processes in CFEngine Enterprise) then this will be returned preferentially. If no such variable is found, then the server will look for a literal string in a server bundle with a handle that matches the requested object.
-
+```cf3
 body common control
 {
 bundlesequence => { "overture" };
@@ -581,23 +729,40 @@ access:
     admit => { "127.0.0.1" };
 
 }
+```
 
-You can run this example on a single host, running the server, the agent and the hub (if you have Enterprise CFEngine). The output will be something like this:
+You can run this example on a single host, running the server, the agent and the
+hub (if you have Enterprise CFEngine). The output will be something like this:
 
+```console
+host$ ./cf-agent -f ~/test.cf -K
+R: GOT remote scalar value of my test_scalar, can expand variables here - cflu-10004
+R: GOT knowedge scalar value of my test_scalar, can expand variables here - cflu-10004
+R: GOT persistent scalar 1
+```
 
-     host$ ./cf-agent -f ~/test.cf -K
-     R: GOT remote scalar value of my test_scalar, can expand variables here - cflu-10004
-     R: GOT knowedge scalar value of my test_scalar, can expand variables here - cflu-10004
-     R: GOT persistent scalar 1
+## Run job or reboot only if n out m systems are running
 
+The ability to base local promises on global knowledge seems superficially
+attractive in some cases. As a strategy this way of thinking requires a lot of
+caution. We have to assume that all knowledge gathered about an environment is
+subject to errors, latencies and a dozen other uncertainties that make any
+snapshot of remotely assessed current state subject to considerable healthy
+suspicion. This is not a weakness of CFEngine – in fact CFEngine has mechanisms
+that make it as reliable as you are likely to find in any technology – rather it
+is a fundamental limitation of distributed systems, and it is strongly dependent
+on the architectures you build.
 
-Next: The self-healing chain - inverse Dominoes, Previous: Basic communication methods for orchestration, Up: Distributed Orchestration between hosts with CFEngine Enterprise
-Run job or reboot only if n out m systems are running
+In the following example, we show how you can make certain decisions based on
+global, uncertain knowledge, allowing for the fact that the information is
+uncertain. In other words, we aim to err on the safe side. In this case we ask
+how could we reboot systems after an upgrade only if doing so would not
+jeopardize a Service Level Agreement to have at least 20 machines running at all
+times. Since the globally counted instances of a running process cannot be
+greater than the actual number, this particular problem satisfies the constraint
+of erring on the side of caution.
 
-The ability to base local promises on global knowledge seems superficially attractive in some cases. As a strategy this way of thinking requires a lot of caution. We have to assume that all knowledge gathered about an environment is subject to errors, latencies and a dozen other uncertainties that make any snapshot of remotely assessed current state subject to considerable healthy suspicion. This is not a weakness of CFEngine – in fact CFEngine has mechanisms that make it as reliable as you are likely to find in any technology – rather it is a fundamental limitation of distributed systems, and it is strongly dependent on the architectures you build.
-
-In the following example, we show how you can make certain decisions based on global, uncertain knowledge, allowing for the fact that the information is uncertain. In other words, we aim to err on the safe side. In this case we ask how could we reboot systems after an upgrade only if doing so would not jeopardize a Service Level Agreement to have at least 20 machines running at all times. Since the globally counted instances of a running process cannot be greater than the actual number, this particular problem satisfies the constraint of erring on the side of caution.
-
+```cf3
 ############################################################
 #
 #  Keep a special promise only if at least n or m hosts
@@ -660,16 +825,26 @@ access:
     admit => { "127.0.0.1" };
 
 }
+```
 
-Next: A Domino sequence, Previous: Run job or reboot only if n out m systems are running, Up: Distributed Orchestration between hosts with CFEngine Enterprise
-The self-healing chain - inverse Dominoes
+# The self-healing chain - inverse Dominoes
 
-A self-healing chain is the opposite of a dominoe event. If a part of the chain is `down', it will be revived. If these events depend on one another, then the resuscitation of this part which cause all of the subsequent parts to be repaired too.
+A self-healing chain is the opposite of a dominoe event. If a part of the chain
+is `down', it will be revived. If these events depend on one another, then the
+resuscitation of this part which cause all of the subsequent parts to be
+repaired too.
 
-Let's start with the more common case of the independently repairable services, such as one might find in a multi-tier architecture: database, web-servers, applications etc.
+Let's start with the more common case of the independently repairable services,
+such as one might find in a multi-tier architecture: database, web-servers,
+applications etc.
 
-The following example can be run on a multiple hosts or on a single host, using the aliases described in the example. It illustrates coordination through the use of CFEngine's remoteclasses function in the Enterprise edition to get confirmation of the self-healing structure. In fact, the verification of the self-healing is optional if one trusts the underlying system.
+The following example can be run on a multiple hosts or on a single host, using
+the aliases described in the example. It illustrates coordination through the
+use of CFEngine's remoteclasses function in the Enterprise edition to get
+confirmation of the self-healing structure. In fact, the verification of the
+self-healing is optional if one trusts the underlying system.
 
+```cf3
 ############################################################
 #
 # The self-healing tower: Anti-Dominoes
@@ -801,18 +976,26 @@ promise_kept => { "$(x)" };
 cancel_notkept => { "$(x)" };
 persist_time => "2";
 }
+```
 
-If we execute this simple test on a single host, or allow it to be executed on distributed hosts, the chain forms and quickly stands up the system into a tower of dependencies.
+If we execute this simple test on a single host, or allow it to be executed on
+distributed hosts, the chain forms and quickly stands up the system into a tower
+of dependencies.
 
+```console
 host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/self-healing-chain.cf -K
 R: tier 1 is ok
 R: tier 2 is ok
 R: tier 3 is ok
 R: tier 4 is ok
 R: The Tower is standing
+```
 
-If we break the tower, by giving it an impossible promise to keep, e.g. changing the name of the directory in tier 3 to something that cannot be created2, then tier 3 will fail and the output looks like this:
+If we break the tower, by giving it an impossible promise to keep, e.g. changing
+the name of the directory in tier 3 to something that cannot be created2, then
+tier 3 will fail and the output looks like this:
 
+``console
 host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/self-healing-chain.cf -K
 Unable to make directories to /xtmp/something_to_do_3
  !!! System reports error for cf_mkdir: "Permission denied"
@@ -820,9 +1003,13 @@ R: tier 1 is ok
 R: tier 2 is ok
 R: tier 4 is ok
 R: The Tower is down
+```
 
-Clearly, whatever tier 3 is really supposed to do, any promise failure would result in the same behaviour. If we then correct the policy to make it repairable, the output heals quickly:
+Clearly, whatever tier 3 is really supposed to do, any promise failure would
+result in the same behaviour. If we then correct the policy to make it
+repairable, the output heals quickly:
 
+```console
 host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/self-healing-chain.cf -K
 R: tier 1 is ok
 R: tier 2 is ok
@@ -830,16 +1017,23 @@ R: tier 4 is ok
 R: The Tower is down
 R: tier 3 is ok
 R: The Tower is standing
+```
 
-Next: A Chinese Dragon, Previous: The self-healing chain - inverse Dominoes, Up: Distributed Orchestration between hosts with CFEngine Enterprise
-A Domino sequence
+## A Domino sequence
 
-A different kind of orchestration is a domino cascade, that starts from some initial trigger, and causes a change in one host that causes a change in the next, etc. These examples show how this can easily be carried out by CFEngine. Dominio cascades can be done with Community or Enterprise editions, but are limited to single machines in each step.
+A different kind of orchestration is a domino cascade, that starts from some
+initial trigger, and causes a change in one host that causes a change in the
+next, etc. These examples show how this can easily be carried out by CFEngine.
+Dominio cascades can be done with Community or Enterprise editions, but are
+limited to single machines in each step.
 
 The basic principle is shown below3.
 
-Note: to simulate this on a single host, start the server and agent with this same file as input, and make aliases to localhost in /etc/hosts as described in the example.
+Note: to simulate this on a single host, start the server and agent with this
+same file as input, and make aliases to localhost in /etc/hosts as described in
+the example.
 
+```cf3
 ############################################################
 #
 #  Dominoes
@@ -991,10 +1185,15 @@ body printfile visitors_book(file)
 file_to_print   => "$(file)";
 number_of_lines => "10";
 }
+```
 
+When executed, this produces output only on the final host in the chain, showing
+the correct ordering out operations. The sequence also passes a file from host
+to host as a coordination token, like a baton in a relay race, and each host
+signs this so that the final host has a log of eery host involved in the
+cascade.
 
-When executed, this produces output only on the final host in the chain, showing the correct ordering out operations. The sequence also passes a file from host to host as a coordination token, like a baton in a relay race, and each host signs this so that the final host has a log of eery host involved in the cascade.
-
+```
 R: Singing the overture...
 R: Singing the first adagio...
 R: Singing second allegro...
@@ -1005,16 +1204,27 @@ R: Knocked over host1 and did: overture
 R: Knocked over host2 and did: first_movement
 R: Knocked over host3 and did: second_movement
 R: Knocked over host4 and did: final_movement
+```
 
-The average time for such a cascade to complete will be half the length of the chain multiplied by the run-interval, if normal cf-execd splaytime is used. Without any splaying, the average time will be the run interval multiplied by the chain length. The completion time could be increased by using cf-runagent.
+The average time for such a cascade to complete will be half the length of the
+chain multiplied by the run-interval, if normal cf-execd splaytime is used.
+Without any splaying, the average time will be the run interval multiplied by
+the chain length. The completion time could be increased by using cf-runagent.
 
-Previous: A Domino sequence, Up: Distributed Orchestration between hosts with CFEngine Enterprise
-A Chinese Dragon star pattern
+## A Chinese Dragon star pattern
 
-The Chinese dragon darts back and forth between different hosts, forming a chain of events, and leaving a trail behind it. This pattern is much like the Domino pattern, except that it follows a star. The orchestrated sequence of events follows the dragon from its lair to the first satellite host, then back to its lair to record the journey, then out to the next satellite, then back to its lair, etc.
+The Chinese dragon darts back and forth between different hosts, forming a chain
+of events, and leaving a trail behind it. This pattern is much like the Domino
+pattern, except that it follows a star. The orchestrated sequence of events
+follows the dragon from its lair to the first satellite host, then back to its
+lair to record the journey, then out to the next satellite, then back to its
+lair, etc.
 
-A prototypical application for this kind of pattern is taking servers, one by one, off a load balancer (in the dragon's lair) and then upgrading them, before reinstating them and moving on to the next host.
+A prototypical application for this kind of pattern is taking servers, one by
+one, off a load balancer (in the dragon's lair) and then upgrading them, before
+reinstating them and moving on to the next host.
 
+```cf3
 ############################################################
 #
 #  Chinese Dragon Dancing on a Star
@@ -1249,16 +1459,20 @@ body printfile visitors_book(file)
 file_to_print   => "$(file)";
 number_of_lines => "100";
 }
+```
 
 Let's test it on a single host, equipped with aliases to the see entire flow.
 
 Without the trigger, this simply yields
 
+```
 R: Done host1
 R: Done host2
 R: Done host3
 R: Done host4
+```
 
+```console
 host$ touch /tmp/unleash_dragon
 
 host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/dragon.cf -K
@@ -1324,6 +1538,7 @@ R: Dragon visited host3 and did: chapter3
 R: Switch new dragon's target  -> Send dragon to host4
 R: Dragon returned from host3
 R: Dragon visited host4 and did: chapter4
+```
 
 Table of Contents
 
