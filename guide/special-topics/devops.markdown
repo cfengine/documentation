@@ -121,11 +121,6 @@ optimized for clarity.
 The main goals of CFEngine are convergence to a desired state, repeatability and
 clear intentions.
 
-* Expressing actions or tasks in CFEngine
-* Expressing conditionals in CFEngine
-* Expressing loops in CFEngine
-* Expressing subroutines in CFEngine
-
 ## Expressing actions or tasks in CFEngine
 
 Most of the actionable items have builtin operational support, which is designed
@@ -339,7 +334,7 @@ R: Hello b 4 z
 R: Hello c 4 z
 ```
 
-# Expressing subroutines in CFEngine
+## Expressing subroutines in CFEngine
 
 Subroutines are used for both expressing and reusing parameterizable chunks of
 code, and for naming chunks for better management of intention. In CFEngine you
@@ -413,10 +408,15 @@ understanding how to build systems. We fully expect the APIs of the future
 virtualized infrastructure to be promise oriented, and for CFEngine to remain a
 viable approach to configuration after other frameworks have become outmoded.
 
-Footnotes
+# Footnotes
 
-[1] Consider, for example, US versus Norwegian legal systems. In Norway more details are codified into federal law. This means that there is less to talk about in court and legal proceedings are much more quickly resolved as there is less need to reinvent interpretations on the fly.
+[1] Consider, for example, US versus Norwegian legal systems. In Norway more
+details are codified into federal law. This means that there is less to talk
+about in court and legal proceedings are much more quickly resolved as there is
+less need to reinvent interpretations on the fly.
 
-[2] For an explanation of convergence, see the Special Topics Guide on Change Management and Incident Repair.
+[2] For an explanation of convergence, see the Special Topics Guide on Change
+Management and Incident Repair.
 
-[3] The term classes was originally used but has since been overloaded with connotations from Object Orientation, etc, making the term confusing.
+[3] The term classes was originally used but has since been overloaded with
+connotations from Object Orientation, etc, making the term confusing.
