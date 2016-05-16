@@ -1,7 +1,7 @@
 ---
 layout: default
-title: STIG Compliance
-published: false
+title: STIGs
+published: true
 sorting: 80
 tags: [overviews, special topics, guide]
 ---
@@ -52,12 +52,14 @@ PCI, SOX etc. Contact us through your regular CFEngine representative or use the
 contact form to learn how CFEngine can help you implement and achieve desired
 compliance. What are the different parts of this policy example?
 
-* STIGs.cf — cfengine3 policy file (ASCII), to be run by cf-agent
+* [STIGs.cf](./STIGs.cf)
 
-* README.txt — Explanation of the various policy components (human readable),
-  referencing STIGs requirements id (such as GEN000560)
+  CFEngine policy file (ASCII), to be run by cf-agent
 
-* FAQ — Answers to frequently asked questions about this STIGs example
+* [README](./STIGs_readme.txt)
+
+  Explanation of the various policy components (human readable), referencing
+  STIGs requirements id (such as ```GEN000560```)
 
 # What are the terms of this STIGs example?
 
