@@ -234,6 +234,7 @@ body select_region test_select
   select_end => "END";
   include_start_delimiter => "true";
   include_end_delimiter => "true";
+  select_end_match_eof => "true";
 }
 ```
 
@@ -410,8 +411,37 @@ mark out the region of a file to be edited.
      select_end => "\[.*\]";
      }
 ```
-
 If you want to match from a starting location to the end of the file
 (even if there are other lines matching `select_start` intervening),
 then just omit the `select_end` promise and the selected region will run
 to the end of the file.
+The default behavior can be modified by using  [`select_end_match_eof`][bundle edit_line#select_end_match_eof]. 
+
+#### select_end_match_eof
+
+**Description:** When `select_end_match_eof` is set to true `select_end` will consider end of file as the end region if it is unable to match
+the end pattern. 
+
+See also [`select_start`][bundle edit_line#select_start] and [`select_end`][bundle edit_line#select_end]. These delimiters
+mark out the region of a file to be edited.
+
+**Type:** [`boolean`][boolean]
+
+**Default value:** false
+
+**Example:**
+
+```cf3
+     body select_region example(x)
+     {
+     select_start => "\[$(x)\]";
+     select_end => "\[.*\]";
+     select_end_match_eof => "false";
+     }
+```
+
+If the `select_end` attribute is omitted, the selected region will run to the end of the file no matter what the value of `select_end_match_eof` is set to.
+
+**History:** This attribute was introduced in CFEngine version 3.9.0 (2016)
+
+
