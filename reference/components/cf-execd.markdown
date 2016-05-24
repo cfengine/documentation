@@ -121,7 +121,17 @@ symbols may be used if desired.
 
 **Example:**
 
-    exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
+```cf3
+    exec_command => "$(sys.workdir)/bin/cf-agent -Dfrom_execd -f update.cf && $(sys.workdir)/bin/cf-agent -Dfrom_execd";
+```
+
+**Note:** In order to inform the agent that it was initiated by `cf-execd`,
+`exec_command` is scanned for the string `-Dfrom_execd`. If it is not found
+`cf-execd` *automatically* appends ' `-Dfrom_cfexecd`' (note the leading space)
+to `exec_command`. Please take this into account when
+
+**Note:** If `exec_command` is not defined the built-in fail-safe policy will be
+triggered.
 
 ### mailfrom
 
