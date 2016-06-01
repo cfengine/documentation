@@ -12,8 +12,7 @@ tags: [reference, data functions, functions, getfields]
 The function returns the number of lines matched. This function is most
 useful when you want only the first matching line (e.g., to mimic the
 behavior of the *getpwnam(3)* on the file `/etc/passwd`). If you want to
-examine *all* matching lines, use [readstringarray()][readstringarray]
-instead.
+examine *all* lines, use [readstringarray()][readstringarray] instead.
 
 **Arguments**:
 
