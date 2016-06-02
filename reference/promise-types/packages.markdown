@@ -95,7 +95,7 @@ rescue solution when a package module has added functionality which is not
 covered by the package promise API. As such there is no official documentation
 for this attribute, its usage depends on the package module in question.
 
-**Type:** `string`
+**Type:** `slist`
 
 **Allowed input range:** (arbitrary string)
 
@@ -106,7 +106,7 @@ for this attribute, its usage depends on the package module in question.
     "apache"
         policy => "present",
         package_module => my_package_module,
-        options => "repository=myrepo";
+        options => { "repository=myrepo" };
 ```
 
 
@@ -175,7 +175,7 @@ of the package module inside `/var/cfengine/modules/packages`.
 
 See the `options` attribute for details on what options do.
 
-**Type:** `string`
+**Type:** `slist`
 
 **Allowed input range:** (arbitrary string)
 
@@ -184,7 +184,7 @@ See the `options` attribute for details on what options do.
 ```cf3
 body package_module apt_get
 {
-    default_options => "use_curl=1";
+    default_options => { "use_curl=1" };
 }
 ```
 
