@@ -7,12 +7,14 @@ tags: [reference, utility functions, functions, packages, inventory, packageupda
 
 [%CFEngine_function_prototype(package_regex, version_regex, arch_regex, method_regex)%]
 
-**Description:** Return a data container with the list of available packages matching the parameters.
+**Description:** Return a data container with the list of available packages
+matching the parameters.
 
-This function searches for the [unanchored][unanchored] regular expressions in
-the list of currently available packages.
+This function searches for the [anchored][anchored] regular expressions in the
+list of currently available packages.
 
-The return is a data container with a list of package descriptions, looking like this:
+The return is a data container with a list of package descriptions, looking like
+this:
 
 ```json
 [
