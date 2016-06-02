@@ -84,11 +84,13 @@ implemented, in order to facilitate a nice debugging cycle during development.
 All the API commands listed below, except `supports-api-version`, support the
 `options` attribute. This attribute will contain the contents from the `options`
 attribute in the promise, or the `default_options` in the package module body,
-if the former is unspecified. This attribute has no inherent meaning to
-CFEngine, and will be passed verbatim. It is meant as a mechanism to communicate
-special attributes to the package module that are not covered by the main
-API. For example, for certain package modules it may be used to pass a
-repository URL.
+if the former is unspecified. It may appear more than once if the `options` list
+has more than one element.
+
+This attribute has no inherent meaning to CFEngine, and will be passed
+verbatim. It is meant as a mechanism to communicate special attributes to the
+package module that are not covered by the main API. For example, for certain
+package modules it may be used to pass a repository URL.
 
 The `options` attribute will not be explicitly listed in the examples below, but
 it is valid in all of them except `supports-api-version`, even when the
