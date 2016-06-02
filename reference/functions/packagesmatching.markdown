@@ -10,10 +10,11 @@ tags: [reference, utility functions, functions, packages, inventory, packagesmat
 **Description:** Return a data container with the list of installed packages
 matching the parameters.
 
-This function searches for the [unanchored][unanchored] regular expressions in
-the list of currently installed packages.
+This function searches for the [anchored][anchored] regular expressions in the
+list of currently installed packages.
 
-The return is a data container with a list of package descriptions, looking like this:
+The return is a data container with a list of package descriptions, looking like
+this:
 
 ```
 [
@@ -49,7 +50,7 @@ some desired packages, and finally reports if they are installed.
       "all_packages" data => packagesmatching(".*", ".*", ".*", ".*");
 ```
 
-**Refresh rules:** 
+**Refresh rules:**
 * inastalled packages cache used by packagesmatching() is refreshed at the end of each agent run in accordance with constraints defined in the relevant package module body.
 * installed packages cache is refreshed after installing or removing a package.
 * installed packages cache is refreshed if no local cache exists.
