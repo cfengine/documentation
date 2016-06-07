@@ -28,8 +28,8 @@ following package managers:
 * `pkg` - FreeBSD pkg
 * `pkgsrc` -  [pkgsrc](https://www.pkgsrc.org/)
 
-Both ``yum`` and ``apt_get`` package managers require Python to be installed on
-the host.
+Both ``yum`` and ``apt_get`` package managers require Python version 2 to be
+installed on the host.
 
 
 ```cf3
