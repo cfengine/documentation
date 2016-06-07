@@ -415,7 +415,7 @@ If you want to match from a starting location to the end of the file
 (even if there are other lines matching `select_start` intervening),
 then just omit the `select_end` promise and the selected region will run
 to the end of the file.
-The default behavior can be modified by using  [`select_end_match_eof`][bundle edit_line#select_end_match_eof]. 
+The default behavior can be modified by using  [`select_end_match_eof`][bundle edit_line#select_end_match_eof] or [`select_end_match_eof`][cf-agent#select_end_match_eof]. 
 
 #### select_end_match_eof
 
@@ -436,11 +436,13 @@ mark out the region of a file to be edited.
      {
      select_start => "\[$(x)\]";
      select_end => "\[.*\]";
-     select_end_match_eof => "false";
+     select_end_match_eof => "true";
      }
 ```
 
 If the `select_end` attribute is omitted, the selected region will run to the end of the file no matter what the value of `select_end_match_eof` is set to.
+
+**Note:** The global body agent control [`select_end_match_eof][cf-agent#select_end_match_eof] sets the default behaviour for the entire policy. The local `edit_line` promise constraint takes precedence over the `body agent control` configuration option.
 
 **History:** This attribute was introduced in CFEngine version 3.9.0 (2016)
 
