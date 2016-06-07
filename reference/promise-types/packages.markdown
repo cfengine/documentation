@@ -24,8 +24,8 @@ following package managers:
 * ``yum``: YUM package manager and accompanying rpm package manager.
 * ``apt_get``: Apt package manager and accompanying dpkg package manager.
 
-Both ``yum`` and ``apt_get`` package managers require Python to be installed on
-the host.
+Both ``yum`` and ``apt_get`` package managers require Python version 2 to be
+installed on the host.
 
 
 ```cf3
