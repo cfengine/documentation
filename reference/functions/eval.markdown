@@ -106,3 +106,7 @@ Output:
 2013-09-14T08:34:16-0400   notice: R: math/prefix eval('3^3') = '27.000000'
 ```
 
+**History:**
+ - Function added in 3.6.0.
+ - `mode` and `options` optional and default to `math` and `infix`, respectively
+    as of 3.9.0.
