@@ -110,3 +110,8 @@ Q: "...hp/bin/php /var":  in Unknown on line 0
 This warning can be resolved by removing
 `/var/cfengine/httpd/php/lib/apc.ini` and
 `/var/cfengine/httpd/php/lib/php/extensions/no-debug-non-zts-20131226/apc.so`
+
+### Enterprise Hub - Mission Portal database not properly preserved
+
+When upgrading from earlier versions, the Mission Portal database may not be preserved, resulting
+in Mission Portal to appear as a fresh installation.
