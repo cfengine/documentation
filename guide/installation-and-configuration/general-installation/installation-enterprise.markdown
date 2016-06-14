@@ -74,22 +74,6 @@ should occur.  The key drivers for the vertical scalability of the
 Policy Servers are 1) the number of agents bootstrapped and 2) the
 size and complexity of the CFEngine policy.
 
-### RedHat/Centos 5.x
-
-- libtool-ltdl
-
-```console
-yum -y install libtool-ltdl
-```
-
-### Debian/Ubuntu
-
-- libltdl7
-
-```console
-apt-get -y install libltdl7
-```
-
 ### cfapache and cfpostgres users
 
 The CFEngine Server requires two users: **cfapache** and
