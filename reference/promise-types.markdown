@@ -1085,8 +1085,9 @@ dependencies and performing impact analyses.
 
 **Allowed input range:** (arbitrary string)
 
-Handles may consist of regular identifier characters. CFEngine automatically
-`canonifies' the names of handles to conform to this standard.
+Handles may consist of regular identifier characters. If the handle is likely to
+contain non-identifier characters, you can use `canonify()` to turn them into
+such characters.
 
 **Example:**
 
