@@ -13,24 +13,6 @@ bug reports.
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
-### Error installing hub package
-
-When installing the hub package there is an error for Failed dependencies.
-
-```console
-root@hub vagrant]# rpm -i /vagrant/cfengine-nova-hub-3.9.0b1-1.x86_64.rpm
-error: Failed dependencies:
-    libtool-ltdl is needed by cfengine-nova-hub-3.9.0b1-1.x86_64
-```
-
-The =libtool-ltdl= package must be installed first.
-
-For example:
-
-```console
-yum -y install libtool-ltdl
-```
-
 ### HP-UX specific
 
 * [Package promises][packages] do not have out-of-the-box support for the HP-UX
