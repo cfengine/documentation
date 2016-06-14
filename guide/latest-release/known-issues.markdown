@@ -97,3 +97,10 @@ This warning can be resolved by removing
 
 When upgrading from earlier versions, the Mission Portal database may not be preserved, resulting
 in Mission Portal to appear as a fresh installation.
+
+### Incompatible Apache config during upgrade
+
+Mis-spellings in the `3.9.0` release of the MPF when run on a hub with `3.6.x`
+binaries results in Apache getting an incompatible configuration.
+
+Fixed in `3.9.1` with [this change](https://github.com/cfengine/masterfiles/pull/740/files).
