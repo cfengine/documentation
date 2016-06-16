@@ -103,9 +103,9 @@ problem, check the Mission Portal application logs (currently at
 see lines like the following you affected by this issue.
 
 ```
-ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(): Peer certificate CN=`hostname.example.com' did not match expected CN=`hostname' /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
+ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(): Peer certificate CN=`myhostname.example.com' did not match expected CN=`myhostname' /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
 ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(): Failed to enable crypto /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
-ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(https://lxf01p479/api/static/e39cfd50f95a853fb103a89477b46eb8.csv): failed to open stream: operation failed /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
+ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(https://myhostname/api/static/e39cfd50f95a853fb103a89477b46eb8.csv): failed to open stream: operation failed /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
 ```
 
 The resulution is to generate a new certificate with the correct CN,
