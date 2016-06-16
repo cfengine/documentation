@@ -93,6 +93,25 @@ and so a 3.7 hub cannot collect reports from 3.5 or earlier agents.
 Currently the 3.5 agents will not show in Mission Portal at all, but
 you will see them by running `cf-key -s` on the hub.
 
+### Enterprise inventory CSV report is empty (0 bytes)
+
+Exporting a CSV-based inventory report can result in a 0-byte length file
+if the CFEngine Server is accessed over https and the certificate's CN
+mismatches with the URL you use to export the report. To verify this is the
+problem, check the Mission Portal application logs (currently at
+/var/cfengine/httpd/htdocs/application/logs) on the CFEngine Server. If you
+see lines like the following you affected by this issue.
+
+```
+ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(): Peer certificate CN=`hostname.example.com' did not match expected CN=`hostname' /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
+ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(): Failed to enable crypto /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
+ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(https://lxf01p479/api/static/e39cfd50f95a853fb103a89477b46eb8.csv): failed to open stream: operation failed /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
+```
+
+The resulution is to generate a new certificate with the correct CN,
+i.e. the one you use to access the CFEngine Server. To see how to do
+this, look at the documentation for using a [Custom SSL certificate][Custom SSL Certificate].
+
 ### Enterprise software inventory is not out-of-the-box
 
 Software inventory is not out-of-the-box for reporting from the hub on other
