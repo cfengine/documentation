@@ -108,8 +108,8 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
    `/var/cfengine/master_software_updates`, under the appropriate directories
    for the OS distributions you use.
 2. Turn on the auto-upgrade policy by setting the `trigger_upgrade` class. Set
-   `masterfiles/controls/VER/update_def.cf` or the `augments_file` also known
-   as `def.json` for a small set of clients. For example in the appropriate
+   `masterfiles/controls/CLIENT_VER/update_def.cf` (where CLIENT_VER is the minor version your clients are on, e.g. 3.7)
+   or the `augments_file` (also known as `def.json`) for a small set of clients. For example in the appropriate
    `update_def.cf` file(s) change `!any`  to an appropriate class like an IP
    network `ipv4_10_10_1|ipv4_10_10_2` or in `def.json` 
 
@@ -123,7 +123,7 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 
 3. Verify that the selected hosts are upgrading successfully.
 
-    As an Enterprise user, confirm that the hosts start appearing in Mission Portal after 5-10 minutes. Otherwise, log manually into a set of hosts to confirm the successful upgrade.
+    As an Enterprise user, confirm that the hosts start appearing in Mission Portal after 5-10 minutes. The easiest way to do this is to use an Inventory Report and add the "CFEngine Version" column. Otherwise, log manually into a set of hosts to confirm the successful upgrade.
 
 ## Complete Client upgrade (all versions) ##
 
