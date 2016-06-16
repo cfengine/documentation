@@ -78,7 +78,7 @@ ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(): Failed to enab
 ERROR - 2016-06-15 07:24:15 --> Severity: Warning --> readfile(https://myhostname/api/static/e39cfd50f95a853fb103a89477b46eb8.csv): failed to open stream: operation failed /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
 ```
 
-The resulution is to generate a new certificate with the correct CN,
+The solution is to generate a new certificate with the correct CN,
 i.e. the one you use to access the CFEngine Server. To see how to do
 this, look at the documentation for using a [Custom SSL certificate][Custom SSL Certificate].
 
