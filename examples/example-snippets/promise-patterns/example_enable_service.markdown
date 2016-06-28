@@ -2,148 +2,114 @@
 layout: default
 title: Ensure a service is enabled and running
 published: true
-tags: [Examples, Policy, ntp, file editing]
-reviewed: 2013-06-08
-reviewed-by: atsaloli
+tags: [examples, services]
+reviewed: 2016-06-28
+reviewed-by: nickanderson
 ---
 
-Bring up time service using the CFEngine services abstraction of
-processes and commands.
+This example shows how to ensure services are started or stopped appropriately.
 
-The `non_standard_services` bundle below is based on `standard_services`
-bundle in the CFEngine Standard Library.  The Standard Library does
-not include ntp today, so we have to supply our own code for it.
+[%CFEngine_include_example(services.cf)%]
 
+**Note:** Not all services behave in the standard way. Some services may require
+custom handling. For example it is not uncommon for some services to not provide
+correct return codes for status checks.
 
-```cf3
-body common control
-{
-bundlesequence => { "enable_ntp_service" };
-inputs => { "libraries/cfengine_stdlib.cf" };
+**See Also:**
 
-}
+* [Services promise type reference][`services`]
+* [Services bundles and bodies in the standard library][Services Bundles and Bodies]
 
-bundle agent enable_ntp_service
-{
+## Example usage on systemd
 
-services:
+We can see that before the policy run `sysstat` is *inactive*, `apache2` is
+*active*, `cups` is *active*, `ssh` is *active* and `cron` is *inactive*.
 
-  "ntp"
-
-    service_policy => "start",
-    service_method => service_ntp;
-}
-
-body service_method service_ntp
-{
-service_bundle => non_standard_services("$(this.promiser)","$(this.service_policy)");
-}
-
-bundle agent non_standard_services(service,state)
-{
-reports:
-
-  !done::
-
-    "Test service promise for \"$(service)\" -> $(state)";
-
-vars:
-
-  ubuntu::
-
-    "startcommand[ntp]"   string => "/etc/init.d/ntp start";
-    "restartcommand[ntp]" string => "/etc/init.d/ntp restart";
-    "reloadcommand[ntp]"  string => "/etc/init.d/ntp reload";
-    "stopcommand[ntp]"    string => "/etc/init.d/ntp stop";
-    "pattern[ntp]"        string => ".*ntpd.*";
-
-  redhat::
-    "startcommand[ntp]"   string => "/etc/init.d/ntpd start";
-    "restartcommand[ntp]" string => "/etc/init.d/ntpd restart";
-    "reloadcommand[ntp]"  string => "/etc/init.d/ntpd reload";
-    "stopcommand[ntp]"    string => "/etc/init.d/ntpd stop";
-    "pattern[ntp]"        string => ".*ntpd.*";
-
- # METHODS that implement these ............................................
-
-classes:
-
-  "start" expression => strcmp("start","$(state)"),
-             comment => "Check if to start a service";
-  "restart" expression => strcmp("restart","$(state)"),
-             comment => "Check if to restart a service";
-  "reload" expression => strcmp("reload","$(state)"),
-             comment => "Check if to reload a service";
-  "stop"  expression => strcmp("stop","$(state)"),
-             comment => "Check if to stop a service";
-
-# Do we want to include the packages here too?
-
-processes:
-
-  start::
-
-    "$(pattern[$(service)])" ->  { "@(stakeholders[$(service)])" }
-
-             comment => "Verify that the service appears in the process table",
-       restart_class => "start_$(service)";
-
-  stop::
-
-    "$(pattern[$(service)])" -> { "@(stakeholders[$(service)])" }
-
-            comment => "Verify that the service does not appear in the process",
-       process_stop => "$(stopcommand[$(service)])",
-            signals => { "term", "kill"};
-
-commands:
-
-  "$(startcommand[$(service)])" -> { "@(stakeholders[$(service)])" }
-
-            comment => "Execute command to start the $(service) service",
-         ifvarclass => canonify("start_$(service)");
-
-  restart::
-    "$(restartcommand[$(service)])" -> { "@(stakeholders[$(service)])" }
-
-            comment => "Execute command to restart the $(service) service";
-
-  reload::
-    "$(reloadcommand[$(service)])" -> { "@(stakeholders[$(service)])" }
-
-            comment => "Execute command to reload the $(service) service";
-}
-
+```console
+root@ubuntu:# systemctl is-active sysstat apache2 cups ssh cron
+inactive
+active
+active
+active
+inactive
 ```
 
-Example run:
+Now we run the policy to converge the system to the desired state.
 
+```console
+root@ubuntu:# cf-agent --no-lock --inform --file ./services.cf
+    info: Executing 'no timeout' ... '/bin/systemctl --no-ask-password --global --system -q stop apache2'
+    info: Completed execution of '/bin/systemctl --no-ask-password --global --system -q stop apache2'
+    info: Executing 'no timeout' ... '/bin/systemctl --no-ask-password --global --system -q stop cups'
+    info: Completed execution of '/bin/systemctl --no-ask-password --global --system -q stop cups'
+    info: Executing 'no timeout' ... '/bin/systemctl --no-ask-password --global --system -q start cron'
+    info: Completed execution of '/bin/systemctl --no-ask-password --global --system -q start cron'
 ```
-# /etc/init.d/ntp stop
- * Stopping NTP server ntpd                                                                                                                     [ OK ]
-# cf-agent -f enable_service.cf -K
-2013-06-08T20:11:55-0700   notice: Q: "...init.d/ntp star":  * Starting NTP server ntpd
-Q: "...init.d/ntp star":    ...done.
 
-2013-06-08T20:11:55-0700   notice: R: Test service promise for "ntp" -> start
-#
+After the policy run we can see that `systat`, `apache2`, and `cups` are
+*inactive*. `ssh` and `cron` are *active* as specified in the policy.
+
+```console
+root@ubuntu:/home/nickanderson/CFEngine/core/examples# systemctl is-active sysstat apache2 cups ssh cron
+inactive
+inactive
+inactive
+active
+active
 ```
 
-And again, with Inform:
+## Example usage with System V
 
+We can see that before the policy run `sysstat` is not reporting status
+correctly , `httpd` is *running*, `cups` is *running*, `sshd` is *running* and
+`crond` is *not running*.
+
+```console
+[root@localhost examples]# service sysstat status; echo $?
+3
+[root@localhost examples]# service httpd status; echo $?
+httpd (pid  3740) is running...
+0
+[root@localhost examples]# service cups status; echo $?
+cupsd (pid  3762) is running...
+0
+[root@localhost examples]# service sshd status; echo $?
+openssh-daemon (pid  3794) is running...
+0
+[root@localhost examples]# service crond status; echo $?
+crond is stopped
+3
 ```
-# /etc/init.d/ntp stop
- * Stopping NTP server ntpd                                                                                                                     [ OK ]
-# cf-agent -KIf enable_service.cf
-2013-06-08T20:11:32-0700     info: This agent is bootstrapped to '192.168.183.208'
-2013-06-08T20:11:33-0700     info: Running full policy integrity checks
-2013-06-08T20:11:33-0700     info: /enable_ntp_service/services/'ntp': Service 'ntp' could not be invoked successfully
-2013-06-08T20:11:33-0700     info: /enable_ntp_service/services/'ntp'/non_standard_services/processes/'$(pattern[$(service)])': Making a one-time restart promise for '/usr/sbin/ntpd.*'
-2013-06-08T20:11:33-0700     info: Executing 'no timeout' ... '/etc/init.d/ntp start'
-2013-06-08T20:11:33-0700   notice: Q: "...init.d/ntp star":  * Starting NTP server ntpd
-Q: "...init.d/ntp star":    ...done.
 
-2013-06-08T20:11:33-0700     info: Last 2 quoted lines were generated by promiser '/etc/init.d/ntp start'
-2013-06-08T20:11:33-0700     info: Completed execution of '/etc/init.d/ntp start'
-2013-06-08T20:11:33-0700   notice: R: Test service promise for "ntp" -> start
+Now we run the policy to converge the system to the desired state.
+
+```console
+[root@localhost examples]# cf-agent -KIf ./services.cf
+    info: Executing 'no timeout' ... '/etc/init.d/crond start'
+    info: Completed execution of '/etc/init.d/crond start'
+    info: Executing 'no timeout' ... '/etc/init.d/httpd stop'
+    info: Completed execution of '/etc/init.d/httpd stop'
+    info: Executing 'no timeout' ... '/etc/init.d/cups stop'
+    info: Completed execution of '/etc/init.d/cups stop'
+```
+
+After the policy run we can see that `systat` is still not reporting status correctly (some services do not respond to standard checks), `apache2`, and `cups` are
+*inactive*. `ssh` and `cron` are *active* as specified in the policy.
+
+
+```console
+[root@localhost examples]# service sysstat status; echo $?
+3
+[root@localhost examples]# service httpd status; echo $?
+httpd is stopped
+3
+[root@localhost examples]# service cups status; echo $?
+cupsd is stopped
+3
+[root@localhost examples]# service sshd status; echo $?
+openssh-daemon (pid  3794) is running...
+0
+[root@localhost examples]# service crond status; echo $?
+crond (pid  3929) is running...
+0
 ```
