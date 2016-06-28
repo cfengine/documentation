@@ -17,7 +17,7 @@ correct return codes for status checks.
 
 **See Also:**
 
-* [Services promise type reference][`services`]
+* [Services promise type reference][services]
 * [Services bundles and bodies in the standard library][Services Bundles and Bodies]
 
 ## Example usage on systemd
