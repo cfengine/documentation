@@ -89,3 +89,27 @@ bundle agent example
       "ifelse result list: $(mylist)";
 }
 ```
+
+**Note:** As a general rule function evaluation is skipped when undefined
+variables are used. However this function has special behavior when **exactly
+three** arguments are used, allowing it to be evaluated even if it contains undefined variables. For example:
+
+```cf3
+bundle agent example
+{
+  vars:
+    "passwd_path"
+      string => ifelse( isvariable("def.passwd_path"), "$(def.passwd_path)",
+                        "/etc/passwd"),
+
+      comment => "Use the user provided path for the passwd file if its defined
+                  in the def scope, else use a sane default. This can allow for
+                  easier policy testing and default overrides.";
+
+}
+```
+
+**History:**
+
+* Special behavior actuating function with undefined variable references when 3
+  parameters are in use added in `3.7.4` and `3.9.1`.
