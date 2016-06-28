@@ -119,9 +119,11 @@ symbols may be used if desired.
 
 **Allowed input range:** `"?(/.*)`
 
+**Note:** If `exec_command` is not defined `cf-agent` will be executed with the `failsafe.cf` policy.
+
 **Example:**
 
-    exec_command => "$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent";
+    exec_command => "$(sys.workdir)/bin/cf-agent -f update.cf && $(sys.workdir)/bin/cf-agent";
 
 ### mailfilter_exclude
 
