@@ -146,7 +146,7 @@ For 5000 bootstrapped agents, the disk that serves PostgreSQL
 (`$(sys.workdir)/state/pg`) should be able to perform at least **1000
 IOPS** (in 16KiB block size) and 10 MB/s. The disk mounted on
 `$(sys.workdir)` should be able to perform at least 500 IOPS and 0.5
-MB/s. **SSD is recommmended** for the disk that serves PostgreSQL
+MB/s. **SSD is recommended** for the disk that serves PostgreSQL
 (`$(sys.workdir)/state/pg`).
 
 If you do not have separate partitions for `$(sys.workdir)` and
