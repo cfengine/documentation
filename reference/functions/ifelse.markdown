@@ -92,8 +92,7 @@ bundle agent example
 
 **Note:** As a general rule function evaluation is skipped when undefined
 variables are used. However this function has special behavior when **exactly
-three** arguments are used allowing it to be actuated in order to enable the
-following use case.
+three** arguments are used, allowing it to be evaluated even if it contains undefined variables. For example:
 
 ```cf3
 bundle agent example
