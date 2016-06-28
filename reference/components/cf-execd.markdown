@@ -119,7 +119,7 @@ symbols may be used if desired.
 
 **Allowed input range:** `"?(/.*)`
 
-**Note:** If `exec_command` is not defined `cf-agent` will be executed with the `failsafe.cf` policy. If `$(sys.inputdir)/failsafe.cf` will be executed.
+**Note:** If `exec_command` is not defined `cf-agent` will be executed with the `failsafe.cf` policy.
 
 **Example:**
 
