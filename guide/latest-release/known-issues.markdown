@@ -3,7 +3,7 @@ layout: default
 title: Known Issues
 sorting: 50
 published: true
-tags: [overviews, releases, latest release, "3.8", platforms, versions, known issues]
+tags: [overviews, releases, latest release, platforms, versions, known issues]
 ---
 
 CFEngine defects are managed in our [bug tracker][bug tracker]. Please report
