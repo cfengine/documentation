@@ -3,7 +3,7 @@
 [professional services]: https://cfengine.com/support "CFEngine - Help and Support"
 [Free25 Forum]: https://groups.google.com/forum/?hl=en&fromgroups#!forum/cfengine-enterprise-free-25 "Free25 Forum"
 [help-cfengine]: https://groups.google.com/forum/?hl=en&fromgroups#!forum/help-cfengine "Help Forum"
-[bug tracker]: http://bug.cfengine.com/ "Bug Tracker"
+[bug tracker]: http://tracker.mender.io/projects/CFE/issues "Bug Tracker"
 [cfengine blog]: http://cfengine.com/blog "CFEngine - Blog"
 [learning center]: http://cfengine.com/learn "CFEngine Learning Center"
 [contact us]: https://cfengine.com/contactUs "CFEngine - Contact Us"
