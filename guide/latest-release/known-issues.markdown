@@ -10,6 +10,8 @@ CFEngine defects are managed in our [bug tracker][bug tracker]. Please report
 bugs or unexpected behavior there, following the documented guideline for new
 bug reports.
 
+* Core Issues affecting [{{site.cfengine.branch}}](https://tracker.mender.io/secure/QuickSearch.jspa?searchString=v:{{site.cfengine.branch}}*)
+
 The items below highlight issues that require additional awareness when starting
 with CFEngine or when upgrading from a previous version.
 
