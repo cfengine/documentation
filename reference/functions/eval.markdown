@@ -43,6 +43,10 @@ The supported infix mathematical syntax, in order of precedence, is:
 - `%` operators for modulo operation
 - `+` and `-` operators for addition and subtraction
 - `==` "close enough" operator to tell if two expressions evaluate to the same number, with a tiny margin to tolerate floating point errors.  It returns 1 or 0.
+- `>=` "greater or close enough" operator with a tiny margin to tolerate floating point errors.  It returns 1 or 0.
+- `>` "greater than" operator.  It returns 1 or 0.
+- `<=` "less than or close enough" operator with a tiny margin to tolerate floating point errors.  It returns 1 or 0.
+- `<` "less than" operator.  It returns 1 or 0.
 
 The numbers can be in any format acceptable to the C `scanf` function with the `%lf` format specifier, followed by the `k`, `m`, `g`, `t`, or `p` SI units.  So e.g. `-100` and `2.34m` are valid numbers.
 
@@ -110,3 +114,4 @@ Output:
  - Function added in 3.6.0.
  - `mode` and `options` optional and default to `math` and `infix`, respectively
     as of 3.9.0.
+ - comparison `<`, `<=`, `>`, `>=` operators added in 3.10.0
