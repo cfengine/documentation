@@ -76,6 +76,7 @@ attributes:
 * `exec_program` in `file_select`
 * class names in [`body classes`][Promise Types and Attributes#classes]
 * logging attributes in [`body action`][Promise Types and Attributes#action]
+* promised service name in `service_method`
 
 For example:
 
@@ -130,18 +131,31 @@ and is always an integer.  On the Windows platform it's always 0.
 
 ### this.service_policy
 
-In a services promise, this variable is set to the value of the promise
-attribute `service_policy`. For example:
+In a `service_method` used by a `services` type promise, this variable is set to
+the value of the `service_policy` promise attribute . For example:
 
 ```cf3
+bundle agent example
+{
     services:
 
-      "www"  service_policy => "start";
-      service_bundle => non_standard_services;
+      "www"
+        service_policy => "start";
+        service_method => non_standard_services;
+}
+body service_method non_standard_services
+{
+  service_bundle => non_standard_services( $(this.service_policy) );
+}
 ```
 
 This is typically used in the adaptations for custom services bundles in
 the service methods.
+
+**See Also:**
+
+* `Services Bundles and Bodies` in the `Masterfiles Policy Framework standard
+  library`
 
 ### this.this
 
