@@ -5,16 +5,12 @@ published: true
 tags: [reference, bundle agent, services, processes, services promises, promise types]
 ---
 
-A service is a set of zero or more processes. It can be zero if the
-service is not currently running. Services run in the background, and do
-not require user intervention.
-
-Service promises may be viewed as an abstraction of process and commands
-promises. An important distinguisher is however that a single service
-may consist of multiple processes. Additionally, services are registered
-in the operating system in some way, and get a unique name. Unlike
-processes and commands promises, this makes it possible to use the same
-name both when it is running and not.
+Services are registered in the operating system in some way, and get a unique name.
+Service promises abstracts the mechanism for interacting with services
+on the given operating system, making it as uniform and easy as possible
+to work with services cross-platform. The exact mechanism CFEngine uses
+vary depending on availability at the OS, but it could be System V scripts,
+systemd units, tools such as `chkconfig`, or the Windows API.
 
 Some operating systems are bundled with a lot of unused services that
 are running as default. At the same time, faulty or inherently insecure
@@ -23,12 +19,9 @@ create promises stating the services that should be stopped and disabled.
 
 The operating system may start a service at boot time, or it can be
 started by CFEngine. Either way, CFEngine will ensure that the service
-maintains the correct state (started, stopped, or disabled). On some
-operating systems, CFEngine also allows services to be started on
-demand, when they are needed. This is implemented though the `inetd` or
-`xinetd` daemon on Unix. Windows does not support this.
+maintains the correct state (started, stopped, or disabled).
 
-CFEngine also allows for the concept of dependencies between services,
+CFEngine supports the concept of dependencies between services,
 and can automatically start or stop these, if desired. Parameters can be
 passed to services that are started by CFEngine.
 
