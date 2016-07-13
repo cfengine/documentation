@@ -360,7 +360,7 @@ error to `/dev/null`.
 
 **Type:** [`boolean`][boolean]
 
-**Default value:** false
+**Default value:** false if `module` is false, true if `module` is true.
 
 **Example:**
 
