@@ -40,3 +40,5 @@ reports:
 ```
 
 **History:** The optional `interface` parameter was introduced in CFEngine 3.9.
+
+**See also:** `isipinsubnet()`
