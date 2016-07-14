@@ -76,6 +76,8 @@ To configure automatic deployments simply ensure the
 
 ## Configuring automatic policy deployments with the augments file
 
+**Note:** This method should be reserved for versions 3.7.3 and greater.
+
 Create `def.json` in the root of your masterfiles with the following content:
 
 ```
@@ -88,7 +90,7 @@ Create `def.json` in the root of your masterfiles with the following content:
 
 ## Configuring automatic policy deployments with policy
 
-Simply edit `bundle common update_def` in `controls/update_def.cf`.
+Simply edit `bundle common update_def` in `controls/3.7/update_def.cf`.
 
 ```cf3
 bundle common update_def
