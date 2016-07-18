@@ -5,22 +5,33 @@ published: true
 sorting: 30
 ---
 
-This guide documents our recommendation on how to upgrade an existing installation of CFEngine Community 3.5/3.6 and CFEngine Enterprise 3.5/3.6 to CFEngine 3.7.0.
+This guide documents our recommendation on how to upgrade an existing
+installation of CFEngine Community 3.5/3.6 and CFEngine Enterprise 3.5/3.6 to
+CFEngine 3.7.x.
 
-Our recommendation is to upgrade the Policy Server first. The rationale is that it is normally a dedicated machine with no business-relevant duties, so the risk is lower.
+Our recommendation is to upgrade the Policy Server first. The rationale is that
+it is normally a dedicated machine with no business-relevant duties, so the risk
+is lower.
 
 ## Upgrade masterfiles and Policy Server (3.7.X to 3.7.X+1)
 
-If you are doing a minor-minor 3.7 upgrade (e.g. from 3.7.0 to 3.7.1), the upgrade is easier.
-We would however still recommend to perform a masterfiles upgrade (ideally in a test environment first) to get all the enhancements and fixes.
-The masterfiles are available in the hub package and separately on the [download page](http://cfengine.com/community/download/) (Community and Enterprise editions share masterfiles as of 3.6).
+If you are doing a minor-minor 3.7 upgrade (e.g. from 3.7.0 to 3.7.1), the
+upgrade is easier. We would however still recommend to perform a masterfiles
+upgrade (ideally in a test environment first) to get all the enhancements and
+fixes.
 
-Normally most files can be replaced with new ones, the only ones that are
-likely changed by you are *def.cf* and *promises.cf*.  For these two files, we
-would need to do a diff between your version and the new version and integrate
-the diff instead of replacing the whole file.
+The masterfiles are available in the hub package and separately on the
+[download page](http://cfengine.com/community/download/) (Community and
+Enterprise editions share masterfiles as of 3.6).
 
-When the new masterfiles have been created and *cf-promises promises.cf* and *cf-promises update.cf* succeeds, you are ready to upgrade the Policy Server. That entails to
+Normally most files can be replaced with new ones, the only ones that are likely
+changed by you are *def.cf* and *promises.cf*. For these two files, we would
+need to do a diff between your version and the new version and integrate the
+diff instead of replacing the whole file.
+
+When the new masterfiles have been created and *cf-promises promises.cf* and
+*cf-promises update.cf* succeeds, you are ready to upgrade the Policy Server.
+That entails to
 
 * stop the CFEngine services
 * upgrade the hub package
@@ -28,11 +39,19 @@ When the new masterfiles have been created and *cf-promises promises.cf* and *cf
 * replace (or merge with your changes) */var/cfengine/state/pg/data/postgresql.conf* with */var/cfengine/share/postgresql/postgresql.conf.cfengine* to update your database configuration.
 * restart the CFEngine services
 
-Check the version with */var/cfengine/bin/cf-promises -V*, and if you are running Enterprise, the Mission Portal About page.
+Check the version with */var/cfengine/bin/cf-promises -V*, and if you are
+running Enterprise, the Mission Portal About page.
 
-If your clients get promise failures (not kept) similar to "Can't stat file '/var/cfengine/master_software_updates/cf-upgrade/linux.x86_64/cf-upgrade' on '<SERVER-IP>' in files.copy_from promise" you can download and unpack [cf-upgrade.tar.gz](http://cfengine.package-repos.s3.amazonaws.com/tools/cf-upgrade-for-linux.tar.gz) on your Policy Server. This is caused by a known issue where some host packages lacked this utility, which is resolved in recent versions.
+If your clients get promise failures (not kept) similar to "Can't stat file
+'/var/cfengine/master_software_updates/cf-upgrade/linux.x86_64/cf-upgrade' on
+'<SERVER-IP>' in files.copy_from promise" you can download and unpack
+[cf-upgrade.tar.gz](http://cfengine.package-repos.s3.amazonaws.com/tools/cf-upgrade-for-linux.tar.gz)
+on your Policy Server. This is caused by a known issue where some host packages
+lacked this utility, which is resolved in recent versions.
 
-If everything looks good, you are ready to upgrade the clients, please skip to Prepare Client upgrade (all versions) followed by Complete Client upgrade (all versions) below.
+If everything looks good, you are ready to upgrade the clients, please skip to
+Prepare Client upgrade (all versions) followed by Complete Client upgrade (all
+versions) below.
 
 
 ## Prepare masterfiles and the Policy Server for upgrade (3.6 to 3.7)
@@ -78,8 +97,8 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 
 2. Install the new CFEngine Policy Server package (you may need to adjust the
    package name based on CFEngine edition, version and distribution).
-   * `rpm -U cfengine-nova-hub-3.7.0.x86_64.rpm` # Red Hat based distribution
-   * `dpkg --install cfengine-nova-hub_3.7.0-1_amd64.deb` # Debian based distribution
+   * `rpm -U cfengine-nova-hub-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.x86_64.rpm` # Red Hat based distribution
+   * `dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64.deb` # Debian based distribution
 
 3. Copy the merged masterfiles from the perparation you did above.
    * `rm -rf /var/cfengine/masterfiles/*`
@@ -108,10 +127,11 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
    `/var/cfengine/master_software_updates`, under the appropriate directories
    for the OS distributions you use.
 2. Turn on the auto-upgrade policy by setting the `trigger_upgrade` class. Set
-   `masterfiles/controls/CLIENT_VER/update_def.cf` (where CLIENT_VER is the minor version your clients are on, e.g. 3.7)
-   or the `augments_file` (also known as `def.json`) for a small set of clients. For example in the appropriate
-   `update_def.cf` file(s) change `!any`  to an appropriate class like an IP
-   network `ipv4_10_10_1|ipv4_10_10_2` or in `def.json` 
+   `masterfiles/controls/CLIENT_VER/update_def.cf` (where CLIENT_VER is the
+   minor version your clients are on, e.g. 3.7) or the `augments_file` (also
+   known as `def.json`) for a small set of clients. For example in the
+   appropriate `update_def.cf` file(s) change `!any` to an appropriate class
+   like an IP network `ipv4_10_10_1|ipv4_10_10_2` or in `def.json`
 
    ```json
    {
@@ -123,10 +143,15 @@ If everything looks good, you are ready to upgrade the clients, please skip to P
 
 3. Verify that the selected hosts are upgrading successfully.
 
-    As an Enterprise user, confirm that the hosts start appearing in Mission Portal after 5-10 minutes. The easiest way to do this is to use an Inventory Report and add the "CFEngine Version" column. Otherwise, log manually into a set of hosts to confirm the successful upgrade.
+    As an Enterprise user, confirm that the hosts start appearing in Mission
+    Portal after 5-10 minutes. The easiest way to do this is to use an Inventory
+    Report and add the "CFEngine Version" column. Otherwise, log manually into a
+    set of hosts to confirm the successful upgrade.
 
 ## Complete Client upgrade (all versions) ##
 
 1. Widen the group of hosts on which the `trigger_upgrade` class is set.
-2. Continue to verify from `cf-key -s` or in the Enterprise Mission Portal that hosts are upgraded correctly and start reporting in.
-3. Verify that the list of hosts you captured before the upgrade, e.g. in `/root/3.6/hosts` correspond to what you see is now reporting in.
+2. Continue to verify from `cf-key -s` or in the Enterprise Mission Portal that
+   hosts are upgraded correctly and start reporting in.
+3. Verify that the list of hosts you captured before the upgrade, e.g. in
+   `/root/3.6/hosts` correspond to what you see is now reporting in.
