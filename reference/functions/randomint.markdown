@@ -26,6 +26,6 @@ context class expression as shown in the example.
 
 [%CFEngine_include_snippet(randomint.cf, #\+begin_src cfengine3, .*end_src)%]
 
-Output:
+Output: (when `show_random` is defined)
 
-[%CFEngine_include_snippet(randomint.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
+[%CFEngine_include_snippet(randomint.cf, #\+begin_src\s+show_random_example_output\s*, .*end_src)%]
