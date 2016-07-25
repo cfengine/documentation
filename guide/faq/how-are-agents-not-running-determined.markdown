@@ -15,21 +15,41 @@ based on the 4 most recent agent executions.
 You can inspect hosts last execution time, execution status (from the hubs
 perspective), and average run interval using the following SQL.
 
-    SELECT Hosts.HostName AS "Host name",
-    AgentStatus.LastAgentLocalExecutionTimeStamp AS "Last agent local execution
-    time", cast(AgentStatus.AgentExecutionInterval AS integer) AS "Agent execution
-    interval", AgentStatus.LastAgentExecutionStatus AS "Last agent execution status"
-    FROM AgentStatus INNER JOIN Hosts ON Hosts.HostKey = AgentStatus.HostKey
+```sql
+SELECT Hosts.HostName AS "Host name",
+AgentStatus.LastAgentLocalExecutionTimeStamp AS "Last agent local execution
+time", cast(AgentStatus.AgentExecutionInterval AS integer) AS "Agent execution
+interval", AgentStatus.LastAgentExecutionStatus AS "Last agent execution status"
+FROM AgentStatus INNER JOIN Hosts ON Hosts.HostKey = AgentStatus.HostKey
+```
 
 This can be queried over the API most easily by placing the query into a json
 file. And then using the `query` API.
 
-    {
-       "query": "SELECT Hosts.HostName, AgentStatus.LastAgentLocalExecutionTimeStamp, cast(AgentStatus.AgentExecutionInterval AS integer), AgentStatus.LastAgentExecutionStatus FROM AgentStatus INNER JOIN Hosts ON Hosts.HostKey = AgentStatus.HostKey"
-    }
+`agent_execution_time_interval_status.query.json`:
 
-    curl -u admin:admin http://localhost:9002/api/query -X POST -d @agent_execution_time_interval_status.query.json | ".data[0].rows"
+```
+{
+  "query": "SELECT Hosts.HostName, AgentStatus.LastAgentLocalExecutionTimeStamp, cast(AgentStatus.AgentExecutionInterval AS integer), AgentStatus.LastAgentExecutionStatus FROM AgentStatus INNER JOIN Hosts ON Hosts.HostKey = AgentStatus.HostKey"
+}
+```
 
+```console
+$ curl -s -u admin:admin http://hub/api/query -X POST -d @agent_execution_time_interval_status.query.json | jq ".data[0].rows"
+[
+  [
+    "hub",
+    "2016-07-25 16:53:23+00",
+    "296",
+    "OK"
+  ],
+  [
+    "host001",
+    "2016-07-25 16:06:50+00",
+    "305",
+    "FAIL"
+  ]
+]
+```
 
-**See Also**: `Enterprise API Reference`, `Enterprise API Examples`, `How are
-hosts not reporting determined?`
+**See Also**: `Enterprise API Reference`, `Enterprise API Examples`, `How are hosts not reporting determined?`

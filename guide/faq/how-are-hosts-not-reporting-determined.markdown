@@ -17,5 +17,4 @@ $ curl -s -u admin:admin http://hub/api/settings/ | jq ".data[0].blueHostHorizon
 900
 ```
 
-**See Also**: `Enterprise API Reference`, `Enterprise API Examples`, `How are
-agents not running determined?`
+**See Also**: `Enterprise API Reference`, `Enterprise API Examples`, `How are agents not running determined?`
