@@ -12,6 +12,8 @@ notices that there are no promise results within 3x of the expected agent run
 interval. The agents average run interval is computed by a geometric average
 based on the 4 most recent agent executions.
 
+![Agents not running](agents-not-running.png)
+
 You can inspect hosts last execution time, execution status (from the hubs
 perspective), and average run interval using the following SQL.
 

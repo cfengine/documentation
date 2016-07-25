@@ -9,6 +9,8 @@ tags: [getting started, faq, health, enterprise]
 Hosts that have not been collected from within `blueHostHorizon` seconds will
 show up under "Hosts not reporting".
 
+![Hosts not reporting](hosts-not-reporting.png)
+
 `blueHostHorizon` defaults to 900 seconds (15 minutes). You can inspect the
 current value of `blueHostHorizon` from Mission Portal or via the API:
 
