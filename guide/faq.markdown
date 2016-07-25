@@ -6,6 +6,8 @@ sorting: 90
 tags: [getting started, installation, enterprise, faq]
 ---
 
+{:toc}
+
 * [Enterprise Installation][#Enterprise Installation and Configuration]
 	* [What steps should I take after installing CFEngine Enterprise?][#What steps should I take after installing CFEngine Enterprise]
 	* [Can I use an existing PostgreSQL installation?][#Can I use an existing PostgreSQL installation]
