@@ -1,12 +1,10 @@
 ---
-layout: index
+layout: default
 title: FAQ
 published: true
 sorting: 90
 tags: [getting started, installation, enterprise, faq]
 ---
-
-{:toc}
 
 * [Enterprise Installation][#Enterprise Installation and Configuration]
 	* [What steps should I take after installing CFEngine Enterprise?][#What steps should I take after installing CFEngine Enterprise]
