@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: index
 title: FAQ
 published: true
 sorting: 90
