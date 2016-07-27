@@ -453,8 +453,17 @@ Would render like this:
 [%CFEngine_include_snippet(masterfiles/lib/files.cf, ^body\slink_from\sln_s.*, ^##)%]
 
 
-## Variables
 
+## Self Documenting Policy
+### For the stdlib:
+
+[%CFEngine_library_include(lib/commands)%]
+
+### For promises.cf?
+
+[%CFEngine_library_include(promises)%]
+
+# Variables
 Referencing a version of CFEngine? Consider if that appearance should be
 updated with each new version.
 
