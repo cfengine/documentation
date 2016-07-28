@@ -14,7 +14,7 @@ fi
 # The generated files will be placed in this directory and processed by separate
 # tooling.
 
-OUTDIR=${WRKDIR}/documentation-generator/_generated
+OUTDIR=${WRKDIR}/documentation-generator/_generated/
 
 # This is the root directory for the policy we want to generate data. Each
 # policy file found under this tree will have the policy converted into JSON
