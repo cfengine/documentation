@@ -20,7 +20,7 @@ OUTDIR=${WRKDIR}/documentation-generator/_generated
 # policy file found under this tree will have the policy converted into JSON
 # format which can more easily be parsed and used by the rest of the
 # documentation system.
-POLICYROOT=${WRKDIR}/../masterfiles/
+POLICYROOT=${WRKDIR}/masterfiles/
 
 # Here we generate the syntax map. This is used to ensure information about
 # function prototypes, return types, and default values are up to date.
