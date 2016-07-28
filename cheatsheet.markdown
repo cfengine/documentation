@@ -459,9 +459,9 @@ Would render like this:
 
 [%CFEngine_library_include(lib/commands)%]
 
-### For promises.cf?
+### For update.cf?
 
-[%CFEngine_library_include(promises)%]
+[%CFEngine_library_include(update)%]
 
 # Variables
 Referencing a version of CFEngine? Consider if that appearance should be
