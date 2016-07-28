@@ -463,6 +463,10 @@ Would render like this:
 
 [%CFEngine_library_include(update)%]
 
+### for Promises.cf?
+
+[%CFEngine_library_include(promises)%]
+
 # Variables
 Referencing a version of CFEngine? Consider if that appearance should be
 updated with each new version.
