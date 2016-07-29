@@ -43,10 +43,10 @@ def processFile(markdown, config):
 	markdown_file = open(markdown, 'r')
 	markdown_lines = markdown_file.readlines()
 	markdown_file.close()
-	
+
 	write_changes = False
 	new_markdown_lines = []
-	
+
 	in_pre = False
 	previous_empty = True
 	markdown_line_number = 0
@@ -68,7 +68,7 @@ def processFile(markdown, config):
 				if markdown_line.find(header_marker) == 0:
 					config["context_current_header"][header_depth] = markdown_line[header_depth + 1:].rstrip().rstrip("#").rstrip()
 					break
-			
+
 		config["context_current_line"] = markdown_line
 		config["context_current_line_number"] = markdown_line_number
 		# skip markdown codeblocks
@@ -78,14 +78,14 @@ def processFile(markdown, config):
 			if in_pre or markdown_line[:4] == "    ":
 				new_markdown_lines.append(markdown_line)
 				continue
-			
+
 		marker = "[%CFEngine_"
 		marker_index = markdown_line.find(marker)
 		if marker_index == -1:
 			new_markdown_lines.append(markdown_line)
 			previous_empty = markdown_line.lstrip() == '\n'
 			continue
-			
+
 		new_lines = []
 		call = markdown_line[marker_index + len(marker):markdown_line.find("%]")]
 		function = call[:call.find('(')]
@@ -94,7 +94,7 @@ def processFile(markdown, config):
 		parameters = [p.lstrip().rstrip() for p in parameters]
 		if len(parameters) == 1 and parameters[0] == "":
 			parameters = None
-		
+
 		try:
 			functor = getattr(sys.modules[__name__], function)
 		except:
@@ -115,14 +115,14 @@ def processFile(markdown, config):
 			print "                 in " + markdown + "(%d)" % markdown_line_number
 			print "                 " + markdown_line
 			new_lines += "<!-- " + markdown_line + "-->"
-			
+
 		if len(new_lines) > 0:
 			write_changes = True
 			for new_line in new_lines:
 				new_markdown_lines += new_line
 		else:
 			new_markdown_lines += markdown_line
-			
+
 	if write_changes == True:
 		new_markdown_filename = markdown_dir + "/new_" + markdown_name
 		new_markdown_file = open(new_markdown_filename, 'w')
@@ -137,7 +137,7 @@ def promise_attribute(parameters, config):
 	header = config["context_current_header"]
 	promise_types = config["syntax_map"]["promiseTypes"]
 	body_types = config["syntax_map"]["bodyTypes"]
-	
+
 	if header[2].find("Attributes") != -1:
 		# assumption for promise type definition
 		# header[1] = promise type
@@ -240,35 +240,35 @@ def dictToTable(dictionary):
 def function_table(parameters, config):
 	qa.LogProcessStart(config, "function_table")
 	link_map = config["link_map"]
-	
+
 	syntax_map = config["syntax_map"]
 	lines = []
 	functions = syntax_map["functions"]
 	ordered_functions = sorted(functions)
-	
+
 	categoryDict = dict()
 	returnTypeDict = dict()
 	functionlist = list()
-	
+
 	for function in ordered_functions:
 		link = function + "()"
 		if not "`" + link + "`" in link_map:
 			qa.LogMissingDocumentation(config, link, ["No documentation"], "")
 		category = functions[function]["category"]
 		addToDict(categoryDict, category, function)
-		
+
 		returnType = functions[function]["returnType"]
 		if returnType == "context": returnType = "class"
 		elif returnType in ["ilist","slist","rlist"]: returnType = "(i,r,s)list"
 		elif returnType in ["irange","rrange"]: returnType = "(i,r)range"
 		addToDict(returnTypeDict, returnType, function)
-		
+
 	lines.append("### Functions by Category\n\n")
 	lines += dictToTable(categoryDict)
-	
+
 	lines.append("### Functions by Return Type\n\n")
 	lines += dictToTable(returnTypeDict)
-	
+
 	return lines
 
 def function_prototype(parameters, config):
@@ -332,7 +332,7 @@ def function_attributes(parameters, config):
 			arguments += parameter_type + ", in the range: `"
 			arguments += parameter["range"] + "`\n"
 		arg_idx += 1
-	
+
 	lines += "**Arguments:** \n\n"
 	for argument in arguments:
 		lines += argument
@@ -345,7 +345,7 @@ def document_type(type, type_definition, excludes, config):
 
 	type_status = type_definition.get("status", "normal")
 	type_attributes = type_definition.get("attributes")
-	
+
 	attributes = sorted(type_attributes.keys())
 	for attribute in attributes:
 		if attribute in excludes:
@@ -354,15 +354,15 @@ def document_type(type, type_definition, excludes, config):
 		if attribute_definition == None:
 			qa.Log(config, "cfdoc_macros: syntax_map - no definition for attribute %s in type %s" % (attribute, type))
 			continue
-		
+
 		attribute_status = attribute_definition.get("status", "normal")
 		attribute_type = attribute_definition.get("type")
 		attribute_range = attribute_definition.get("range")
 		attribute_link = "`%s`" % attribute
-		
+
 		if attribute_status == "normal" and (not attribute_link in link_map):
 			qa.LogMissingDocumentation(config, type + "/" + attribute, ["No documentation for attribute"], "")
-			
+
 		if attribute_type == "body":
 			if ("`body %s`" % attribute) in link_map:
 				attribute_type = "body [`%s`]%s" % (attribute, link_map["`body %s`" % attribute][0])
@@ -382,12 +382,12 @@ def document_type(type, type_definition, excludes, config):
 			attribute_type = "class expression"
 		else:
 			attribute_type = "`%s`" % attribute_type
-		
+
 		if attribute_status == "normal":
 			attribute_status = ""
 		else:
 			attribute_status = "<sup>**%s**</sup>" % attribute_status
-		
+
 		if attribute_link in link_map:
 			type_link = link_map.get("`%s`" % type)
 			if not type_link:
@@ -408,9 +408,9 @@ def document_type(type, type_definition, excludes, config):
 					if highscore < score:
 						highscore = score
 						anchor = a
-				
+
 			attribute_link = "[%s]%s" % (attribute_link, anchor)
-		
+
 		line = "* %s%s: %s" % (attribute_link, attribute_status, attribute_type)
 		if attribute_range:
 			 line += " in range `%s`" % attribute_range
@@ -433,7 +433,7 @@ def document_syntax_map(tree, branch, config):
 	#             * type: int, string, slist...
 	#             * range: regex
 	#             * visibility: (ignored)
-	
+
 	# first, collect everything that all types have and call it "common"
 	types = sorted(tree.keys())
 	common_attributes = dict()
@@ -449,16 +449,16 @@ def document_syntax_map(tree, branch, config):
 					type_count += 1
 			if type_count != len(types):
 				del common_attributes[common_attribute]
-	
+
 		if len(common_attributes):
 			common_definition = dict()
 			common_definition["status"] = "normal"
 			common_definition["attributes"] = common_attributes
 			lines.append("### [Common Attributes][Promise Types and Attributes#Common Attributes]\n\n")
 			lines.append(document_type("common", common_definition, [], config))
-			
+
 	excludes = common_attributes.keys()
-	
+
 	link_map = config["link_map"]
 	for type in types:
 		link = None
@@ -467,7 +467,7 @@ def document_syntax_map(tree, branch, config):
 			link = link_map.get("`body " + type + "`")
 		else:
 			link = link_map.get("`" + type + "`")
-			
+
 		if link:
 			lines.append("### [%s]%s\n\n" % (type, link[0]))
 		else:
@@ -478,7 +478,7 @@ def document_syntax_map(tree, branch, config):
 			qa.Log(config, "cfdoc_macros: syntax_map - no definition for type %s" % type)
 			continue
 		lines.append(document_type(type, type_definition, excludes, config))
-	
+
 	return lines
 
 def syntax_map(parameters, config):
@@ -489,13 +489,13 @@ def syntax_map(parameters, config):
 
 def resolveAttribute(attributes, argument):
 	attribute_line = ""
-	
+
 	for attribute in attributes:
 		rval = attribute["rval"]
 		lval = attribute["lval"]
 		lval_link = "`" + lval + "`"
 		attribute_type = rval["type"]
-		
+
 		if attribute_type == "string":
 			value = rval.get("value")
 			if value == None:
@@ -568,7 +568,7 @@ def include_markdown(parameters, config):
 			raise Exception("Include file not found: '%s'" % parameters[0])
 		filename = find_include_file(parameters[0], ["%s" % searchdir])
 	lines = load_include_file(filename)
-	
+
 	if not len(lines):
 		raise Exception("Include file empty: '%s'" % parameters[0])
 
@@ -597,18 +597,18 @@ def include_markdown(parameters, config):
 
 def include_example(parameters, config):
 	parameters.append(".*") # first line starts
-	
+
 	markdown_lines = include_snippet(parameters, config)
 	if not len(markdown_lines):
 		return markdown_lines
-	
+
 	markdown_lines.append("\n")
 	markdown_lines.append("This policy can be found in\n" )
 	markdown_lines.append("`/var/cfengine/share/doc/examples/" + parameters[0] + "`\n")
 	markdown_lines.append("and downloaded directly from\n")
 	markdown_lines.append("<a href=\"https://raw.github.com/cfengine/core/master/examples/%s\" target=\"_blank\">github</a>." % parameters[0])
 	markdown_lines.append("\n")
-	
+
 	return markdown_lines
 
 def include_snippet(parameters, config):
@@ -662,7 +662,7 @@ def include_snippet(parameters, config):
 	if not len(markdown_lines):
 		raise Exception("Snippet not found: %s" % begin.pattern)
 		return list()
-		
+
 	return prune_include_lines(markdown_lines, filename)
 
 def library_include(parameters, config):
@@ -678,10 +678,10 @@ def library_include(parameters, config):
 		if not os.path.exists(policy_path):
 			qa.Log(config, "File does not exist: " + policy_path)
 			return markdown_lines
-		
+
 		policy_json = json.load(open(policy_path, 'r'))
 		config[policy_filename] = policy_json
-		
+
 	# for all bundles and bodies...
 	for key in policy_json.keys():
 		element_list = policy_json[key]
@@ -699,14 +699,14 @@ def library_include(parameters, config):
 			if element_type == None:
 				qa.Log(config, "element without type: " + name)
 				continue
-				
+
 			# start a new block for changed types
 			# Assumes that bundles and bodies are grouped by type in library.cf
 			print_type = False
 			if element_type != current_type:
 				current_type = element_type
 				print_type = True
-		
+
 			prototype = name
 			if namespace:
 				prototype = namespace + ":" + prototype
@@ -716,13 +716,13 @@ def library_include(parameters, config):
 			if not namespace:
 				link_target = parameters[0] + ":" + link_target
 			linkresolver.addLinkToMap(prototype + "()", link_target, html_name + "#" + prototype, config)
-			
+
 			code_lines = []
 			documentation_lines = []
 			documentation_dict = dict()
 			sourceLines = []
 			sourceLine = -1
-			
+
 			try:
 				source_path = element["sourcePath"]
 				source_path = os.path.normpath(source_path)
@@ -731,14 +731,14 @@ def library_include(parameters, config):
 				sourceLines = source_file.readlines()[sourceLine:]
 			except:
 				qa.Log(config, "could not include code for element %s - check %s" % (name, source_path))
-			
+
 			if len(sourceLines):
 				headerLines = list()
 				code_lines.append("\n```cf3\n")
 				code_lines.append(sourceLines[0])
 				del sourceLines[0]
 				in_code = False
-				
+
 				for line in sourceLines:
 					if not in_code:
 						line = line.lstrip()
@@ -752,7 +752,7 @@ def library_include(parameters, config):
 						if line.find("}") == 0:
 							break
 				code_lines.append("\n```\n")
-				
+
 				# scan comments for doxygen-style documentation
 				if len(headerLines):
 					current_tag = None
@@ -761,7 +761,7 @@ def library_include(parameters, config):
 					for headerLine in headerLines:
 						if headerLine.find("#") != 0:
 							continue
-							
+
 						headerLine = headerLine[1:].rstrip()
 						# strip single whitespace, but maintain indentation
 						if headerLine.find(" ") == 0:
@@ -775,13 +775,13 @@ def library_include(parameters, config):
 								current_tag = current_tag[:tag_end]
 								headerLine = headerLine[tag_end + 1:]
 							documentation_dict[current_tag] = ""
-							
+
 						if current_tag == None:
 							continue
 						if current_tag == "ignore":
 							ignore = True
 							break
-						
+
 						if current_tag == "param":
 							if current_param == None:
 								current_param = headerLine[:headerLine.find(" ")]
@@ -821,7 +821,7 @@ def library_include(parameters, config):
 				argument = arguments[argument_idx]
 				prototype += argument
 				argument_line = "* ```" + argument + "```"
-				
+
 				# if we have already found documentation for this, use it
 				param_line = documentation_dict.get("param_" + argument)
 				if param_line == None:
@@ -847,20 +847,20 @@ def library_include(parameters, config):
 					for context in element["contexts"]:
 						argument_line += resolveAttribute(context["attributes"], argument)
 					argument_line += "\n"
-					
+
 				argument_lines.append(argument_line)
 				argument_idx += 1
 				if argument_idx == len(arguments):
 					prototype += ")"
 				else:
 					prototype += ", "
-			
+
 			if print_type:
 				link_map = config["link_map"]
-				if ("`body %s`" % current_type) in link_map:
-					printable_type = "[%s]%s bodies" % (current_type, link_map["`body %s`" % current_type][0])
-				elif ("`bundle %s`" % current_type) in link_map:
+				if ("`bundle %s`" % current_type) in link_map:
 					printable_type = "[%s]%s bundles" % (current_type, link_map["`bundle %s`" % current_type][0])
+				elif ("`body %s`" % current_type) in link_map:
+					printable_type = "[%s]%s bodies" % (current_type, link_map["`body %s`" % current_type][0])
 				elif ("`%s`" % current_type) in link_map:
 					printable_type = "[%s]%s %s" % (current_type, link_map["`%s`" % current_type][0], key)
 				elif key == "bundles":
@@ -869,7 +869,7 @@ def library_include(parameters, config):
 					printable_type = current_type
 				markdown_lines.append("### %s\n" % printable_type)
 				markdown_lines.append("\n")
-			
+
 			markdown_lines.append("#### " + title + " ####\n")
 			markdown_lines.append("\n")
 			markdown_lines.append("**Prototype:** `" + prototype + "`\n")
@@ -893,7 +893,7 @@ def library_include(parameters, config):
 
 	if len(markdown_lines) == 0:
 		qa.Log(config, "Failure to include " + parameters[0])
-		
+
 	return 	markdown_lines
 
 def redirect(parameters, config):
@@ -905,11 +905,11 @@ def redirect(parameters, config):
 	if target_url == None:
 		print "Invalid redirect target '%s', redirecting to home" % target_anchor
 		target_url = "index.html"
-	
+
 	markdown_lines.append("<script type=\"text/javascript\">\n")
 	markdown_lines.append("<!--\n")
 	markdown_lines.append("window.location = \"%s\"\n" % target_url)
 	markdown_lines.append("-->\n")
 	markdown_lines.append("</script>\n\n")
-	
+
 	return markdown_lines
