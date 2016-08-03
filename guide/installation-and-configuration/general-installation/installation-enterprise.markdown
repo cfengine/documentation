@@ -74,7 +74,12 @@ should occur.  The key drivers for the vertical scalability of the
 Policy Servers are 1) the number of agents bootstrapped and 2) the
 size and complexity of the CFEngine policy.
 
-### RedHat/Centos 5.x
+### Hub dependancies for versions before 3.7.4
+
+Versions prior to 3.7.4 require the installation of `libtool-ltdl`. Versions
+3.7.4 and later do not require this dependancy.
+
+#### RedHat/Centos 5.x
 
 - libtool-ltdl
 
@@ -82,7 +87,7 @@ size and complexity of the CFEngine policy.
 yum -y install libtool-ltdl
 ```
 
-### Debian/Ubuntu
+#### Debian/Ubuntu
 
 - libltdl7
 
