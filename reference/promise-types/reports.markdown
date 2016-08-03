@@ -6,19 +6,18 @@ tags: [reference, bundle common, reports, promises]
 ---
 
 Reports promises simply print messages. Outputting a message without
-qualification can be a dangerous operation. In a large installation it could
-unleash an avalanche of messaging.
+qualification can be a dangerous operation. In a large installation it
+could unleash an avalanche of messaging, so it is recommended that
+reports are guarded appropriately.
 
-```cf3
-    reports:
+[%CFEngine_include_example(reports.cf)%]
 
-    "literal string or file refererence",
-       printfile = printfile_body,
-       ...;
-```
+{% comment %} TODO: Should link to a page that describes all cfengine output
+here where we explain that output from reports type promises are
+prefixed with the letter R. {% endcomment %}
 
-Messages outputted from report promises are prefixed with the letter R to
-distinguish them from other output, for example from `commands`.
+Messages output by report promises are prefixed with the letter R to
+distinguish them from other output.
 
 ```cf3
 bundle agent report
@@ -33,7 +32,7 @@ bundle agent report
 ```
 
 Reports do not fundamentaly make changes to the system and report type promise
-outcomes are *always* considerd kept.
+outcomes are *always* considered kept.
 
 ```cf3
 bundle agent report
@@ -107,10 +106,11 @@ Include part of a file in a report.
 
 #### number_of_lines
 
-**Description:** Integer maximum number of lines to print from selected
-file
+**Description:** Integer maximum number of lines to print from selected file
 
 **Type:** `int`
+
+**Default value:** `5`
 
 **Allowed input range:** `0,99999999999`
 
