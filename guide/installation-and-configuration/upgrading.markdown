@@ -87,7 +87,7 @@ versions) below.
    package name based on CFEngine edition, version and distribution).
    * `rpm -U cfengine-nova-hub-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.x86_64.rpm` # Red Hat based distribution
    * `dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64.deb` # Debian based distribution
-   * Check `/var/log/CFEngineHub-Install.log/` for errors.
+   * Check `/var/log/CFEngineHub-Install.log` for errors.
    * Use the following snippet to see potential updates for your `postgresql.conf` and make changes accordingly.
 
      ```
