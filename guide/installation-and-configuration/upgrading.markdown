@@ -89,9 +89,8 @@ versions) below.
    * `dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64.deb` # Debian based distribution
    * Check `/var/log/CFEngineHub-Install.log/` for errors.
    * Use the following snippet to see potential updates for your `postgresql.conf` and make changes accordingly.
+
      ```
-     # Generating a new postgresql.conf if enough total memory is present
-     #
      # If total memory is lower than 3GB, we use the default pgsql conf file
      # If total memory is beyond 64GB, we use a shared_buffers of 16G
      # Otherwise, we use a shared_buffers equal to 25% of total memory
