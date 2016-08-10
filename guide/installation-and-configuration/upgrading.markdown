@@ -16,7 +16,7 @@ recommend upgrading the Policy Server and finally the remote agents.
 
 Upgrading to {{site.cfengine.branch}} from versions older than 3.7 is more
 complicated as some functionality introduced in {{site.cfengine.branch}}
-is not compatible with versions 3.6 and earlier. 
+is not compatible with versions 3.6 and earlier.
 For more information about upgrading from 3.6 see [Upgrade from 3.6](#upgrade-from-36).
 
 ## Upgrade masterfiles and Policy Server ({{site.cfengine.branch}}.X to {{site.cfengine.branch}}.X+1)
@@ -87,6 +87,43 @@ versions) below.
    package name based on CFEngine edition, version and distribution).
    * `rpm -U cfengine-nova-hub-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.x86_64.rpm` # Red Hat based distribution
    * `dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64.deb` # Debian based distribution
+   * Check `/var/log/CFEngineHub-Install.log/` for errors.
+   * Use the following snippet to see potential updates for your `postgresql.conf` and make changes accordingly.
+     ```
+     # Generating a new postgresql.conf if enough total memory is present
+     #
+     # If total memory is lower than 3GB, we use the default pgsql conf file
+     # If total memory is beyond 64GB, we use a shared_buffers of 16G
+     # Otherwise, we use a shared_buffers equal to 25% of total memory
+     total=$(awk '/^MemTotal:.*[0-9]+\skB/ {print $2}' /proc/meminfo)
+
+     echo "$total" | grep -q '^[0-9]\+$'
+     if [ $? -ne 0 ] ;then
+       echo "Error calculating total memory for setting postgresql shared_buffers";
+     else
+       upper=$(( 64 * 1024 * 1024 ))  #in KB
+       lower=$(( 3 * 1024 * 1024 ))   #in KB
+
+       if [ "$total" -gt "$lower" ]; then
+         maint="2GB"
+         if [ "$total" -ge "$upper" ]; then
+           shared="16GB"
+           effect="11GB"        #70% of 16G
+         else
+           shared=$(( $total * 25 / 100 / 1024 ))   #in MB
+           shared="$shared""MB"
+           effect=$(( $total * 70 / 100 / 1024 ))   #in MB
+           effect="$effect""MB"
+         fi
+         sed -i -e "s/^.effective_cache_size.*/effective_cache_size=$effect/" /var/cfengine/share/postgresql/postgresql.conf.cfengine
+         sed -i -e "s/^shared_buffers.*/shared_buffers=$shared/" /var/cfengine/share/postgresql/postgresql.conf.cfengine
+         sed -i -e "s/^maintenance_work_mem.*/maintenance_work_mem=$maint/" /var/cfengine/share/postgresql/postgresql.conf.cfengine
+         diff -u /var/cfengine/state/pg/data/postgresql.conf /var/cfengine/share/postgresql/postgresql.conf.cfengine
+       else
+         echo "Warning: not enough total memory needed to set shared_buffers=2GB"
+       fi
+     fi
+     ```
 
 7. Bootstrap the Policy Server to itself (this step might not be needed if
    Policy Server is reporting correctly).
@@ -121,11 +158,11 @@ versions) below.
 As 3.6 policy is not compatible with {{site.cfengine.branch}} some additional steps must be performed to fulfill the upgrade procedure.
 
 1. Beginning with version 3.9 the [Masterfiles Policy Framework][The Policy Framework] defaults to the new packages promise implementation for inventory of [packages installed][packagesmatching] and [packages updates][packageupdatesmatching]. See [package_inventory][Components and Common Control#package_inventory] in body common control for details on modifying the default sources for package inventory.
-   There are `body common control` `package_inventory` and `package_module` attributes which are  not recognized by versions 3.6 and earlier. 
-   While upgrading from 3.6.x make sure that both are commented, so that existing 3.6.x hosts 
-   can communicate with the {{site.cfengine.branch}} hub and can validate policy. 
-   After migrating all the clients to the newest CFEngine version, make sure that both previously commented 
-   parameters are uncommented so that the new package promise can be used as the default one. 
+   There are `body common control` `package_inventory` and `package_module` attributes which are  not recognized by versions 3.6 and earlier.
+   While upgrading from 3.6.x make sure that both are commented, so that existing 3.6.x hosts
+   can communicate with the {{site.cfengine.branch}} hub and can validate policy.
+   After migrating all the clients to the newest CFEngine version, make sure that both previously commented
+   parameters are uncommented so that the new package promise can be used as the default one.
 
 
 ## Prepare Client upgrade (all versions)
