@@ -74,7 +74,6 @@ bundle common tutorials_inventory_owner
     inform_mode.have_owner::
       "$(this.bundle): Discovered Owner='$(my_owner)'";
 }
-
 ```
 
 **Note:** For the simplicity of this tutorial we assume that
@@ -134,6 +133,7 @@ Syntax Check:
 No output and return code 0 indicate the policy was successfully validated.
 
 Manual Policy Run:
+
 ```console
 [root@hub ~]# cf-agent -KIf /var/cfengine/masterfiles/promises.cf -b tutorials_inventory_owner
 2014-06-16T19:24:58+0000     info: Using command line specified bundlesequence
@@ -145,7 +145,6 @@ specific policy entry (-f) and activating only a specific bundle (-b). The
 inform output helps me confirm that my hubs owner is discovered from our CSV
 properly.
 
-
 ## Run Reports ##
 
 Once you have integrated the policy into promises.cf it will be distributed and
@@ -156,9 +155,8 @@ Custom attributes appear under the 'User defined' section.
 **Note:** It may take up to 15 minutes for your custom inventory attributes to
 be collected and made available for reporting.
 
-![custom inventory attribute](tutorials_custom_inventory_attribute.jpg)
+![custom inventory attribute](tutorials_custom_inventory_attribute.png)
 
 You will see the host owner as shown in the following report.
 
-![custom inventory report](tutorials_custom_inventory_report.jpg)
-
+![custom inventory report](tutorials_custom_inventory_report.png)
