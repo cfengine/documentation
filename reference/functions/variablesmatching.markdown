@@ -34,4 +34,6 @@ Output:
 
 [%CFEngine_include_snippet(variablesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
+**See also:** [classesmatching()][classesmatching], [bundlesmatching()][bundlesmatching]
+
 **History:** Introduced in CFEngine 3.6

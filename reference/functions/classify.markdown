@@ -22,4 +22,4 @@ This is useful for transforming variables into classes.
      "i_am_the_policy_host" expression => classify("master.example.org");
 ```
 
-**See also:** [canonify()][canonify]
+**See also:** [canonify()][canonify], [classmatch()][classmatch], [classesmatching()][classesmatching]

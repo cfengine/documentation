@@ -24,3 +24,4 @@ Output:
 
 [%CFEngine_include_snippet(classmatch.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
+**See also:** [canonify()][canonify], [classify()][classify], [classesmatching()][classesmatching]

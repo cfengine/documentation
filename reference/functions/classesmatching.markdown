@@ -30,6 +30,7 @@ Output:
 
 [%CFEngine_include_snippet(classesmatching.cf, #\+begin_src\s+example_output\s*, .*end_src)%]
 
+**See also:** [variablesmatching()][variablesmatching], [bundlesmatching()][bundlesmatching]
 
 **Note**: This function replaces the `allclasses.txt` static file available
 in older versions of CFEngine.
