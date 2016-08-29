@@ -217,6 +217,12 @@ body package_module apt_get
 }
 ```
 
+**Note for `package_module` authors**:
+[`list-installed`][Package Modules#list-installed] will be called when the agent
+repairs a package using the given `package_module`, when the lock has expired or
+when the agent is run without locks.
+
+**See Also:** `Package Modules`
 
 #### query_updates_ifelapsed
 
@@ -243,3 +249,11 @@ body package_module apt_get
     query_updates_ifelapsed => "1440";
 }
 ```
+
+**Note for `package_module` authors**:
+[`list-updates`][Package Modules#list-updates] will be called when the lock has
+expired or when the agent is run without locks.
+[`list-updates-local`][Package Modules#list-updates-local] is called in all
+other conditions.
+
+**See Also:** `Package Modules`
