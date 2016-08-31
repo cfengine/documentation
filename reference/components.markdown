@@ -378,10 +378,10 @@ string is also prefixed messages in the event log.
 
 ### package_inventory
 
-**Description:** List of package modules to query for package lists.
+**Description:** List of package module bodies to query for package lists.
 
-Defines the list of [`package modules`][packages] which will be queries for
-package lists, for use in `packagematching`, `packageupdatesmatching` and in
+Defines the list of [`package module bodies`][packages] which will be queries for
+package lists, for use in `packagematching()`, `packageupdatesmatching()` and in
 Enterprise inventory reporting.
 
 **Type:** `slist`
@@ -399,10 +399,10 @@ body common control
 
 ### package_module
 
-**Description:** The default package module to use.
+**Description:** The default package module body to use.
 
-Defines the default package module to use for [package promises][packages], if
-none is specified in the promise.
+Defines the default package module body to use for [package promises][packages],
+if none is specified in the promise.
 
 **Type:** `string`
 
