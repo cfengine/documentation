@@ -27,8 +27,6 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 ### Agents ###
 
 * `cf-agent`: Executes the promises.cf file; ensures that all promises are being kept
-* `cf-consumer`
-* `cf-hub`
 * `cf-key`
 * `cf-promises`: Verifies CFEngine's configuration syntax
 * `cf-runagent`: Contacts a remote system to run cf-agent
@@ -40,6 +38,8 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 * `cf-monitord`: Collects system statistics
 * `cf-serverd`: Provides network services; used to distribute policy and data files
 * `runalerts.sh`: Updates Mission Portal status and activates alert actions (Enterprise only)
+* `cf-consumer`: Responsible for moving collected reports from the redis queue into the postgres database. (CFEngine Enterprise only)
+* `cf-hub`: Responsible for collecting reports from remote agents. (CFEngine Enterprise only)
 
 See Also: [CFEngine Component Applications and Daemons][Introduction and System Overview#CFEngine Component Applications and Daemons]
 
