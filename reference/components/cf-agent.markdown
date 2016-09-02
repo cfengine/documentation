@@ -1070,7 +1070,7 @@ owned by a privileged user.
 #### select_end_match_eof
 
 **Description:** When `select_end_match_eof` is set to true `select_end` will consider end of file as the end region if it is unable to match
-the end pattern. For more details see [`edit_line`][bundle edit_line] promise. 
+the end pattern. For more details see [`edit_line`][bundle edit_line] promise.
 
 **Note:** [bundle edit_line select_end_match_eof][bundle edit_line#select_end_match_eof] can override this setting at the individual promise level.
 
@@ -1239,7 +1239,10 @@ promise.
 
 ### report_class_log
 
-**Description:** The `report_class_log` option enables logging of  classes set by cf-agent. Each class set by cf-agent will be logged at the end of agent execution. Each class includes timestamp information of cf-agent exit which has set the class (all set by same cf-agent execution will share that value).
+**Description:** The `report_class_log` option enables logging of classes set by
+cf-agent. Each class set by cf-agent will be logged at the end of agent
+execution (all classes defined during the same cf-agent execution will have the
+same timestamp).
 
 Time classes are ignored.
 Destination: '/var/cfengine/state/classes.jsonl'
@@ -1247,8 +1250,8 @@ Destination: '/var/cfengine/state/classes.jsonl'
 Format(jsonl):
 
 ```
-  {"name":"class_123","timestamp":1456933993}\r\n
-  {"name":"pk_sha_123","timestamp":1456933993}\r\n
+{"name":"class_123","timestamp":1456933993}\r\n
+{"name":"pk_sha_123","timestamp":1456933993}\r\n
 ```
 
 **Type:** [`boolean`][boolean]
@@ -1258,11 +1261,25 @@ Format(jsonl):
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    report_class_log => "true";
-    }
+body agent control
+{
+  report_class_log => "true";
+}
 ```
 
+**History:**
+
+* Added in 3.9.0
+
 **Notes:**
-Available in CFEngine Enterprise.
+
+* Available in CFEngine Enterprise.
+* Persistent classes are logged with the timestamp of each agent run.
+
+The following classes are excluded from logging:
+
+* Time based classes (`Hr01`, `Tuesday`, `Morning`, etc ...)
+* `license_expired`
+* `any`
+* `from_cfexecd`
+* Life cycle (`Lcycle_0`, `GMT_Lcycle_3`)
