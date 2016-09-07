@@ -17,73 +17,39 @@ recommend upgrading the Policy Server and finally the remote agents.
 Upgrading to {{site.cfengine.branch}} from versions older than 3.7 is more
 complicated as some functionality introduced in {{site.cfengine.branch}}
 is not compatible with versions 3.6 and earlier.
-For more information about upgrading from 3.6 see [Upgrade from 3.6](#upgrade-from-36).
 
-## Upgrade masterfiles and Policy Server ({{site.cfengine.branch}}.X to {{site.cfengine.branch}}.X+1)
-
-If you are doing a minor-minor {{site.cfengine.branch}} upgrade (e.g. from
-{{site.cfengine.branch}}.0 to {{site.cfengine.branch}}.1), the upgrade is
-easier.
+## Upgrade the Masterfiles Policy Framework
 
 We would however still recommend to perform a masterfiles upgrade (ideally in a
 test environment first) to get all the enhancements and fixes.
 
-The Masterfiles Policy Framework is available in the hub package and separately
-on the [download page](http://cfengine.com/community/download/)
+The Masterfiles Policy Framework is available in the hub package, separately on
+the [download page](http://cfengine.com/community/download/), or directly from
+the [masterfiles repository on github](https://github.com/cfengine/masterfiles).
 
-Normally most files can be replaced with new ones, the only ones that are
-likely changed by you are *def.cf* and *promises.cf*.  For these two files, we
-would need to do a diff between your version and the new version and integrate
-the diff instead of replacing the whole file.
+Normally most files can be replaced with new ones, files that typically contain
+user modifications include `promises.cf`, `controls/*.cf`, and
+`services/main.cf`.
 
-For more detailed information on how to upgrade masterfiles please see Prepare masterfiles for upgrade section below.
+Once the Masterfiles Policy Framework has been upgraded, deployed and verified
+working as expected against the current infrastructure you are ready to upgrade
+the binaries on the Policy Server.
 
-When the new masterfiles have been created and *cf-promises promises.cf* and
-*cf-promises update.cf* succeeds, you are ready to upgrade the Policy Server.
-That entails to
-
-* replace /var/cfengine/masterfiles with your new integrated masterfiles
-* stop the CFEngine services
-* upgrade the hub package
-* replace (or merge with your changes)
-  */var/cfengine/state/pg/data/postgresql.conf* with
-  */var/cfengine/share/postgresql/postgresql.conf.cfengine* to update your
-  database configuration.
-* restart the CFEngine services
-
-Check the version with */var/cfengine/bin/cf-promises -V*, and if you are
-running Enterprise, the Mission Portal About page.
-
-If your clients get promise failures (not kept) similar to "Can't stat file '/var/cfengine/master_software_updates/cf-upgrade/linux.x86_64/cf-upgrade' on '<SERVER-IP>' in files.copy_from promise" you can download and unpack [cf-upgrade.tar.gz](http://cfengine.package-repos.s3.amazonaws.com/tools/cf-upgrade-for-linux.tar.gz) on your Policy Server. This is caused by a known issue where some host packages lacked this utility, which is resolved in recent versions.
-
-If everything looks good, you are ready to upgrade the clients, please skip to
-Prepare Client upgrade (all versions) followed by Complete Client upgrade (all
-versions) below.
+- [Masterfiles Policy Framework Upgrade Tutorial][`Masterfiles Policy Framework Upgrade`]
 
 ## Upgrade Policy Server (3.7 to {{site.cfengine.branch}}.X)
 
 1. Make a backup of the Policy Server, a full backup of `/var/cfengine` (or
    your `WORKDIR` equivalent) is recommended.
+   * Stop the CFEngine services.
+   * Verify that the output of `ps -e | grep cf` is empty.
    * `cp -r /var/cfengine/ppkeys/ /root/3.7/ppkeys`
    * `tar cvzf /root/3.7/cfengine.tar.gz /var/cfengine`
 
 2. Save the list of hosts currently connecting to the Policy Server.
    * `cf-key -s > /root/3.7/hosts`
 
-3. Prepare masterfiles following instructions in the Prepare masterfiles for
-   upgrade section below.
-
-4. Copy the merged masterfiles from the preparation you did above.
-   * `rm -rf /var/cfengine/masterfiles/*`
-   * `cp /root/{{site.cfengine.branch}}/masterfiles/* /var/cfengine/masterfiles/`
-
-5. On your existing Policy Server, stop the CFEngine services.
-   * `service cfengine3 stop`
-   * Verify that the output of `ps -e | grep cf` is empty.
-
-   **Note:** Clients will continue to execute the policy that they have.
-
-6. Install the new CFEngine Policy Server package (you may need to adjust the
+3. Install the new CFEngine Policy Server package (you may need to adjust the
    package name based on CFEngine edition, version and distribution).
    * `rpm -U cfengine-nova-hub-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}.x86_64.rpm` # Red Hat based distribution
    * `dpkg --install cfengine-nova-hub_{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}-{{site.cfengine.latest_package_build}}_amd64.deb` # Debian based distribution
@@ -124,8 +90,7 @@ versions) below.
      fi
      ```
 
-7. Bootstrap the Policy Server to itself (this step might not be needed if
-   Policy Server is reporting correctly).
+4. Bootstrap the Policy Server to itself.
 
     ```
     /var/cfengine/bin/cf-agent -B <POLICY-SERVER-IP>
@@ -137,32 +102,13 @@ versions) below.
     cf-agent -f update.cf -IK
     ```
 
-8. Take the Policy Server online.
+5. Start CFEngine services.
    * Verify with `cf-key -s` that connections from all clients have been
      established within 5-10 minutes.
-   * Select some clients to confirm that they have received the new policy and
-     are running it without error.
 
-## Prepare masterfiles for upgrade
-
-1. Merge your masterfiles with the CFEngine {{site.cfengine.branch}} policy framework on an infrastructure separate from your existing CFEngine installation.
-2. Identify existing modifications to the masterfiles directory.  If patches from version control are unavailable or require verification, a copy of /var/cfengine/masterfiles from a clean installation of your previous version can help identify changes which will need to be applied to a new {{site.cfengine.branch}} install.
-3. The {{site.cfengine.branch}} masterfiles can be found in a clean installation of CFEngine (hub package on Enterprise), under /var/cfengine/masterfiles.  Apply any customizations against a copy of the {{site.cfengine.branch}} masterfiles in a well-known location, e.g. `/root/{{site.cfengine.branch}}/masterfiles`.
-4. Use `cf-promises` to verify that the policy runs with {{site.cfengine.branch}}, by running `cf-promises /root/{{site.cfengine.branch}}/masterfiles/promises.cf` and `cf-promises /root/{{site.cfengine.branch}}/masterfiles/update.cf`.
-5. Use `cf-promises` to verify that the policy runs with you previous version of CFEngine (e.g. 3.7), by running the same commands as above on a node with that CFEngine version.
-6. The merged masterfiles should now be based on the {{site.cfengine.branch}} framework, include your policies and work on both the version you are upgrading from and with {{site.cfengine.branch}}.
-
-## Upgrade from 3.6
-
-As 3.6 policy is not compatible with {{site.cfengine.branch}} some additional steps must be performed to fulfill the upgrade procedure.
-
-1. Beginning with version 3.9 the [Masterfiles Policy Framework][The Policy Framework] defaults to the new packages promise implementation for inventory of [packages installed][packagesmatching] and [packages updates][packageupdatesmatching]. See [package_inventory][Components and Common Control#package_inventory] in body common control for details on modifying the default sources for package inventory.
-   There are `body common control` `package_inventory` and `package_module` attributes which are  not recognized by versions 3.6 and earlier.
-   While upgrading from 3.6.x make sure that both are commented, so that existing 3.6.x hosts
-   can communicate with the {{site.cfengine.branch}} hub and can validate policy.
-   After migrating all the clients to the newest CFEngine version, make sure that both previously commented
-   parameters are uncommented so that the new package promise can be used as the default one.
-
+If everything looks good, you are ready to upgrade the clients, please skip to
+Prepare Client upgrade (all versions) followed by Complete Client upgrade (all
+versions) below.
 
 ## Prepare Client upgrade (all versions)
 
