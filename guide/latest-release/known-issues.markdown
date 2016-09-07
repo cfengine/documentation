@@ -113,3 +113,49 @@ Q: "...hp/bin/php /var":  in Unknown on line 0
 This warning can be resolved by removing
 `/var/cfengine/httpd/php/lib/apc.ini` and
 `/var/cfengine/httpd/php/lib/php/extensions/no-debug-non-zts-20131226/apc.so`
+
+### Dynamic bundle actuation results in error about `cf_null`
+
+[Jira #CFE-2426](https://tracker.mender.io/browse/CFE-2426)
+```
+   error: A method attempted to use a bundle 'cf_null' that was apparently not defined
+```
+
+This is a benign error. `cf_null` is an internal implementation detail that is
+used to handle empty lists.
+
+**Workarounds:**
+
+* Explicitly guard against iterating methods on an empty list.
+
+This snippet shows one way to define a class if a list is **not** empty.
+
+```cf3
+  classes:
+    "have_some_zero_dynamic_role_bundles"
+      expression => some( ".*", "roles_dynamic.bundles" );
+```
+
+* Ignore missing bundles in body common control
+
+```cf3
+body common control
+{
+#...
+
+  ignore_missing_bundles => "true";
+
+#...
+}
+```
+
+* Add an empty =cf_null= bundle
+
+```cf3
+bundle common cf_null
+{
+  reports:
+    !any::
+      "This works around an issue iterating over an list of bundles.";
+}
+```
