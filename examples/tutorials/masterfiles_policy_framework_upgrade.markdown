@@ -13,8 +13,8 @@ recommended** first step when upgrading CFEngine.
 
 Upgrading the MPF is not an exact process as the details highly depend on the
 specifics of the changes made to the default policy. This tutorial leverages
-`git` and shows an example of upgrading a simple policy set and can be used as
-a reference for upgrading your own policy sets.
+`git` and shows an example of upgrading a simple policy set based on 3.6.7 to
+3.7.4 and can be used as a reference for upgrading your own policy sets.
 
 # Prepare a git clone of your working masterfiles
 
@@ -243,9 +243,9 @@ supported in git versions 1.7.9.5 and newer.
 
 ```console
 [root@hub MPF_upgrade]# cd ..
-[root@hub ~]# git clone -b {{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}} https://github.com/cfengine/masterfiles
+[root@hub ~]# git clone -b 3.7.4 https://github.com/cfengine/masterfiles
 [root@hub ~]# git describe
-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}
+3.7.4
 ```
 
 Now we will install the masterfiles from upstream into the directory where we
@@ -290,7 +290,7 @@ config.status: creating tests/acceptance/Makefile
 config.status: creating tests/unit/Makefile
 
 DONE: Configuration done. Run "make install" to install CFEngine Masterfiles.
-[root@hub masterfiles]# ./configure --prefix /tmp/masterfiles-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}
+[root@hub masterfiles]# ./configure --prefix /tmp/masterfiles-3.7.4
 checking build system type... x86_64-unknown-linux-gnu
 checking host system type... x86_64-unknown-linux-gnu
 checking target system type... x86_64-unknown-linux-gnu
@@ -307,7 +307,7 @@ checking for a BSD-compatible install... /usr/bin/install -c
 Summary of options:
 Core directory       -> not set - tests are disabled
 Enterprise directory -> not set - some tests are disabled
-Install prefix       -> /tmp/masterfiles-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}
+Install prefix       -> /tmp/masterfiles-3.7.4
 
 configure: generating makefile targets
 configure: creating ./config.status
@@ -326,7 +326,7 @@ DONE: Configuration done. Run "make install" to install CFEngine Masterfiles.
 Then we move the installed masterfiles into our integration directory.
 
 ```console
-[root@hub masterfiles]# mv /tmp/masterfiles-{{site.cfengine.branch}}.{{site.cfengine.latest_patch_release}}/masterfiles/* ../MPF_upgrade
+[root@hub masterfiles]# mv /tmp/masterfiles-3.7.4 /masterfiles/* ../MPF_upgrade
 [root@hub masterfiles]# cd ../MPF_upgrade/
 ```
 
