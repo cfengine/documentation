@@ -32,6 +32,8 @@ parser. In 3.8 and later, it will.
 `@if` calls have to match up: you can't nest them and each one
 requires a matching `@endif` before the end of the file.
 
+**History:** This macro was introduced in CFEngine 3.7.0
+
 ### Features
 
 You can conditionally include policy test using the `@if` macro.
@@ -57,4 +59,4 @@ Currently available features are :
 * `curl`
 
 
-**History:** Introduced in CFEngine 3.7.0
+**History:** This macro was introduced in CFEngine 3.8.0
