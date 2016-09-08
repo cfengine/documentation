@@ -35,7 +35,7 @@ Once the Masterfiles Policy Framework has been upgraded, deployed and verified
 working as expected against the current infrastructure you are ready to upgrade
 the binaries on the Policy Server.
 
-- [Masterfiles Policy Framework Upgrade Tutorial][`Masterfiles Policy Framework Upgrade`]
+- [Masterfiles Policy Framework Upgrade Tutorial][Masterfiles Policy Framework Upgrade]
 
 ## Upgrade Policy Server (3.7 to {{site.cfengine.branch}}.X)
 
