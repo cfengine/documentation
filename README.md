@@ -99,6 +99,10 @@ Give files unique names to avoid overwrites in the generated website.
 See [Style Guide - Charts and graphs](#Charts_and_graphs) for style
 requirements for images.
 
+*Warning:* It is important for images and other binary files to be marked as a
+binary file in `.gitattributes`. Binary file patterns not specifically marked
+may be mangled and corrupted within git.
+
 ### Links
 
 To link to pages within the documentation, use the syntax:
