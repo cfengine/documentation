@@ -558,23 +558,24 @@ time a network connection should attempt to connect.
 The time is in seconds. It is not a guaranteed number, since it
 depends on system behavior.
 
-**Type:** `int`
-
-**Allowed input range:** `0,99999999999`
-
-**Default value:** 30 seconds
+[%CFEngine_promise_attribute(30 seconds)%
 
 **Example:**
 
 ```cf3
-    body agent control
-    {
-    default_timeout => "10";
-    }
+body agent control
+{
+  default_timeout => "10";
+}
 ```
 
-**Notes:** Under Linux, the kernel version plays a role, since not all system
-calls seem to respect the signals.
+**See Also:** [body `copy_from` timeout][files#timeout], [`cf-runagent` timeout][cf-runagent#timeout]
+
+**Notes:**
+
+* `cf-serverd` will time out any transfer that takes longer than 10 minutes
+  (this is not currently tunable).
+
 
 ### dryrun
 
