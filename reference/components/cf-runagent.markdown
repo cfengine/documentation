@@ -29,13 +29,13 @@ on the network (including a database or directory service) in any way:
 introducing such dependencies makes configuration brittle.
 
 ```cf3
-     body runagent control
-     {
-         # default port is 5308
-         hosts => { "127.0.0.1:5308", "eternity.iu.hio.no:80", "slogans.iu.hio.no" };
+body runagent control
+{
+    # default port is 5308
+    hosts => { "127.0.0.1:5308", "eternity.iu.hio.no:80", "slogans.iu.hio.no" };
 
-         #output_to_file => "true";
-     }
+    #output_to_file => "true";
+}
 ```
 
 ### hosts
@@ -55,14 +55,14 @@ port 5308 is assumed.
 **Example:**
 
 ```cf3
-    body runagent control
-    {
-    network1::
-      hosts => { "host1.example.org", "host2", "host3" };
+body runagent control
+{
+  network1::
+    hosts => { "host1.example.org", "host2", "host3" };
 
-    network2::
-      hosts => { "host1.example.com", "host2", "host3" };
-    }
+  network2::
+    hosts => { "host1.example.com", "host2", "host3" };
+}
 ```
 
 ### port
@@ -78,19 +78,19 @@ port 5308 is assumed.
 **Example:**
 
 ```cf3
-    body hub control
-    {
-    port => "5308";
-    }
+body hub control
+{
+  port => "5308";
+}
 
-    body server control
-    {
-    specialhost::
-     port => "5308";
+body server control
+{
+  specialhost::
+   port => "5308";
 
-    !specialhost::
-     port => "5308";
-    }
+  !specialhost::
+   port => "5308";
+}
 ```
 
 **Notes:**
@@ -114,10 +114,10 @@ should not do it without a good reason.
 **Example:**
 
 ```cf3
-    body copy_from example
-    {
-    force_ipv4 => "true";
-    }
+body copy_from example
+{
+  force_ipv4 => "true";
+}
 ```
 
 **Notes:**
@@ -152,10 +152,10 @@ in `WORKDIR/ppkeys`.
 **Example:**
 
 ```cf3
-    body copy_from example
-    {
-    trustkey => "true";
-    }
+body copy_from example
+{
+  trustkey => "true";
+}
 ```
 
 ### encrypt
@@ -173,11 +173,11 @@ public/private keys for the client and server hosts.
 **Example:**
 
 ```cf3
-    body copy_from example
-    {
-    servers  => { "remote-host.example.org" };
-    encrypt => "true";
-    }
+body copy_from example
+{
+  servers  => { "remote-host.example.org" };
+  encrypt => "true";
+}
 ````
 
 ### background_children
@@ -194,10 +194,10 @@ servers.
 **Example:**
 
 ```cf3
-    body runagent control
-    {
-    background_children => "true";
-    }
+body runagent control
+{
+  background_children => "true";
+}
 ```
 
 ### max_children
@@ -221,10 +221,10 @@ law of diminishing returns.
 **Example:**
 
 ```cf3
-    body runagent control
-    {
-    max_children => "10";
-    }
+body runagent control
+{
+  max_children => "10";
+}
 ```
 
 ### output_to_file
@@ -242,10 +242,10 @@ Filenames are chosen automatically and placed in the
 **Example:**
 
 ```cf3
-    body runagent control
-    {
-    output_to_file => "true";
-    }
+body runagent control
+{
+  output_to_file => "true";
+}
 ```
 
 ### output_directory
@@ -262,10 +262,10 @@ running `cf-runagent` in parallel mode.
 **Example:**
 
 ```cf3
-    body runagent control
-    {
-    output_directory => "/tmp/run_output";
-    }
+body runagent control
+{
+  output_directory => "/tmp/run_output";
+}
 ```
 
 **History:** Was introduced in version 3.2.0, Enterprise 2.1.0 (2011)
@@ -281,8 +281,10 @@ running `cf-runagent` in parallel mode.
 **Examples**:
 
 ```cf3
-    body runagent control
-    {
-    timeout => "10";
-    }
+body runagent control
+{
+  timeout => "10";
+}
 ```
+
+**See Also:** [body `copy_from` timeout][files#timeout], [agent `default_timeout`][cf-agent#default_timeout]
