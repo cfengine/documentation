@@ -1188,7 +1188,7 @@ timeout, in seconds.
 
 **Allowed input range:** `1,3600`
 
-**Default Value:** `default_timeout`[cf-agent#default_timeout]
+**Default Value:** [`default_timeout`][cf-agent#default_timeout]
 
 **Example:**
 
@@ -1198,6 +1198,13 @@ timeout, in seconds.
      timeout => "10";
      }
 ```
+
+**See Also:** [agent `default_timeout`][cf-agent#default_timeout], [`cf-runagent` timeout][cf-runagent#timeout]
+
+**Notes:**
+
+* `cf-serverd` will time out any transfer that takes longer than 10 minutes
+  (this is not currently tunable).
 
 #### trustkey
 
