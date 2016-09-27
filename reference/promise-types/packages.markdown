@@ -111,6 +111,11 @@ for this attribute, its usage depends on the package module in question.
         policy => "present",
         package_module => my_package_module,
         options => { "repository=myrepo" };
+    debian::
+      "php7.0"
+        policy => "present",
+        package_module => apt_get,
+        options => { "-o", "APT::Install-Recommends=0" };
 ```
 
 
