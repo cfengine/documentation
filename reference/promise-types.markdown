@@ -1175,7 +1175,7 @@ Notice that the function `canonify()` is provided to convert a general variable
 input into a string composed only of legal characters, using the same algorithm
 that CFEngine uses.
 
-**History:** Has the `if` alias (and `unless` opposite) since 3.6.1.
+**History:** Has the `if` alias (and `unless` opposite) since 3.7.0.
 
 ### if
 
