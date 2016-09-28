@@ -87,14 +87,16 @@ attribute in the promise, or the `default_options` in the package module body,
 if the former is unspecified. It may appear more than once if the `options` list
 has more than one element.
 
-This attribute has no inherent meaning to CFEngine, and will be passed
-verbatim. It is meant as a mechanism to communicate special attributes to the
-package module that are not covered by the main API. For example, for certain
-package modules it may be used to pass a repository URL.
+This attribute has no inherent meaning to CFEngine. It is meant as a mechanism 
+to communicate special attributes to the package module that are not covered 
+by the main API. For example, for certain package modules it may be used to 
+pass a repository URL, or pass options to the command line of the underlying 
+package tool.  The behavior on an `options` attribute is entirely 
+dependent on the module, and should not be assumed to be portable between 
+modules.
 
-The `options` attribute will not be explicitly listed in the examples below, but
-it is valid in all of them except `supports-api-version`, even when the
-description reads "no input".
+The `options` attribute is valid in all of the commands except 
+`supports-api-version`, even when the description reads "no input".
 
 
 #### supports-api-version
@@ -318,6 +320,8 @@ Example:
 
 ```
 $ ./package-module repo-install <<EOF
+Option=-o
+Option=APT::Install-Recommends=0
 Name=zip
 Name=libc6
 Version=2.15
@@ -378,6 +382,7 @@ Name=zip
 Name=libc6
 Version=2.15
 Architecture=amd64
+Option=--noplugins
 Name=libc6
 Version=2.15
 Architecture=i386
