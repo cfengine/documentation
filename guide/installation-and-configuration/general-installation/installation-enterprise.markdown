@@ -26,7 +26,10 @@ available memory in order to run the CFEngine agent software.
 
 **Host disk**
 
-On Unix-like systems, under normal operaton CFEngine can consume up to
+So that the agent is not affected by full disks it is recommended that
+`/var/cfengine` be on it's own partition.
+
+On Unix-like systems, under normal operation CFEngine can consume
 100 MB of the partition mounted where CFEngine is installed (usually
 `/var/cfengine`).  On Windows systems, CFEngine can consume up to 1GB
 (usually `C:\Program Files\Cfengine`).  The higher disk usage on
@@ -127,8 +130,11 @@ have at least 40GB of memory.
 
 ### Disk sizing and partitioning
 
+So that the agent is not affected by full disks it is recommended that
+`/var/cfengine` be on it's own partition.
+
 It is recommended that `$(sys.workdir)/state/pg` is mounted on a
-**separate disk**. This will give PostgreSQL, which is very disk I/O
+**separate disk**. This will give PostgreSQL, which can be very disk I/O
 intensive, dedicated resources.
 
 Plan for approximately **100MB of disk space per bootstrapped agent**.
@@ -138,7 +144,6 @@ least 500 GB available on the database partition.
 xfs is strongly recommended as the file system type for the file
 system mounted on `$(sys.workdir)/state/pg`. ext4 can be used as an
 alternative, but ext3 should be avoided.
-
 
 ### Disk speed
 
